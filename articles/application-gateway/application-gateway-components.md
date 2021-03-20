@@ -1,5 +1,5 @@
 ---
-title: Komponenty aplikační brány
+title: Komponenty Application Gateway
 description: Tento článek poskytuje informace o různých součástech v aplikační bráně.
 services: application-gateway
 author: surajmb
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: surmb
 ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88723312"
 ---
-# <a name="application-gateway-components"></a>Komponenty aplikační brány
+# <a name="application-gateway-components"></a>Komponenty Application Gateway
 
  Aplikační brána slouží jako jeden kontaktní bod pro klienty. Distribuuje příchozí aplikační provoz do několika back-end fondů, mezi které patří virtuální počítače Azure, sady škálování virtuálních počítačů, Azure App Service a místní/externí servery. Pro distribuci provozu používá Aplikační brána několik součástí popsaných v tomto článku.
 
@@ -152,6 +152,6 @@ Další informace najdete v tématu [monitorování stavu služby Application Ga
 
 Vytvoření aplikační brány:
 
-* [Na webu Azure Portal](quick-create-portal.md)
+* [V Azure Portal](quick-create-portal.md)
 * [Pomocí Azure PowerShell](quick-create-powershell.md)
 * [Pomocí Azure CLI](quick-create-cli.md)

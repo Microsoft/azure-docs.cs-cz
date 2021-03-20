@@ -4,10 +4,10 @@ description: V tomto článku zjistíte řešení problémů, se kterými se mů
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: 84646f34d905b570855f655465529eb19b717cab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86513808"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Řešení potíží se System Center Data Protection Managerem

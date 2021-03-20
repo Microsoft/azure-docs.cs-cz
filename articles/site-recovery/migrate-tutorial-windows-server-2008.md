@@ -9,10 +9,10 @@ ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 6cc0855d3a4540de780a566a4613b4dbc647cfc5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369484"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
@@ -99,8 +99,8 @@ Provedením následujících úloh připravte předplatné Azure a VMware v mís
 
 ### <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-1. Přihlaste se [Azure portal](https://portal.azure.com)k  >  **Recovery Services**Azure Portal.
-2. Klikněte na **vytvořit**  >  **Nástroje pro správu**prostředků  >  **zálohování a Site Recovery**.
+1. Přihlaste se [](https://portal.azure.com)k  >  **Recovery Services** Azure Portal.
+2. Klikněte na **vytvořit**  >  **Nástroje pro správu** prostředků  >  **zálohování a Site Recovery**.
 3. Do pole **Název** zadejte popisný název **W2K8-migration**. Pokud máte více předplatných, vyberte příslušné předplatné.
 4. Vytvořte skupinu prostředků **w2k8migrate**.
 5. Zadejte oblast Azure. Pokud chcete zjistit podporované oblasti, přečtěte si článek geografická dostupnost v [Azure Site Recovery podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
@@ -120,14 +120,14 @@ Nový trezor se přidá do oblasti **Řídicí panel** v části **Všechny pro
 
 Vyberte a zkontrolujte cílové prostředky.
 
-1. Klikněte na **připravit**  >  **cíl**infrastruktury a vyberte předplatné Azure, které chcete použít.
+1. Klikněte na **připravit**  >  **cíl** infrastruktury a vyberte předplatné Azure, které chcete použít.
 2. Zadejte model nasazení Resource Manager.
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
 
 ### <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
 
-1. Pokud chcete vytvořit novou zásadu replikace, klikněte na **Site Recovery**  >  **Zásady replikace**infrastruktury  >  **a zásady replikace**.
+1. Pokud chcete vytvořit novou zásadu replikace, klikněte na **Site Recovery**  >  **Zásady replikace** infrastruktury  >  **a zásady replikace**.
 2. V části **Vytvoření zásad replikace** zadejte název zásady.
 3. V části **Prahová hodnota cíle bodu obnovení** (RPO) zadejte omezení cíle bodu obnovení. Když cíl bodu obnovení replikace překročí tento limit, vygeneruje se upozornění.
 4. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý je interval uchovávání dat pro jednotlivé body obnovení. Replikované servery lze obnovit do libovolného bodu v tomto okně. Pro počítače replikované do úložiště úrovně Premium se podporuje uchování po dobu až 24 hodin. V případě úložiště úrovně Standard je to 72 hodin.
@@ -165,7 +165,7 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Vyberte nejnovější bod obnovení.
 3. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Služba Site Recovery se před aktivací převzetí služeb při selhání pokusí server vypnout. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **úlohy** .
 4. Zkontrolujte, že se virtuální počítač Azure zobrazuje v Azure podle očekávání.
-5. V části **replikované položky**klikněte pravým tlačítkem na server > **dokončení migrace**. Provede následující akce:
+5. V části **replikované položky** klikněte pravým tlačítkem na server > **dokončení migrace**. Provede následující akce:
 
     - Dokončí proces migrace, zastaví replikaci serveru a zastaví Site Recovery fakturace pro obsluhu.
     - Tento krok vyčistí data replikace. Migrované virtuální počítače se neodstraňují.

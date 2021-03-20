@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
 ms.openlocfilehash: a3abde9092519be057dcd73ec63318f970fd5c74
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94543081"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Omezení Azure Database for MySQL – flexibilní Server (Preview)
@@ -68,7 +68,7 @@ Následující nejsou podporovány:
 - Nepodporováno v výpočetní úrovni, která je k dispozici.
 
 ### <a name="networking"></a>Sítě
-- Metodu připojení nelze po vytvoření serveru změnit. Pokud je server vytvořený pomocí *privátního přístupu (Integration VNET)* , nedá se po vytvoření změnit na *veřejný přístup (povolené IP adresy)* a naopak.
+- Metodu připojení nelze po vytvoření serveru změnit. Pokud je server vytvořený pomocí *privátního přístupu (Integration VNET)*, nedá se po vytvoření změnit na *veřejný přístup (povolené IP adresy)* a naopak.
 - Protokol TLS/SSL je ve výchozím nastavení povolený a nedá se zakázat.
 - Minimální verze protokolu TLS podporovaná na serveru je TLS 1.2. Další informace najdete [v tématu připojení pomocí protokolu TLS/SSL](./how-to-connect-tls-ssl.md) .
 

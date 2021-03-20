@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 08/16/2020
 ms.author: cshoe
 ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88689545"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrovat rozšíření vazby Azure Functions
@@ -25,7 +25,7 @@ Následující tabulka uvádí, kdy a jak registrovat vazby.
 |portál Azure|Automaticky|Automatické<sup>*</sup>|
 |Jazyky Non-.NET|Automaticky|Používejte [sady rozšíření](#extension-bundles) (doporučeno) nebo [explicitně nainstalujte rozšíření](#explicitly-install-extensions) .|
 |Knihovna tříd C# s využitím sady Visual Studio|[Použití nástrojů NuGet](#vs)|[Použití nástrojů NuGet](#vs)|
-|Knihovna tříd C# pomocí Visual Studio Code|Není k dispozici|[Použít .NET Core CLI](#vs-code)|
+|Knihovna tříd C# pomocí Visual Studio Code|–|[Použít .NET Core CLI](#vs-code)|
 
 <sup>*</sup> Portál používá sady rozšíření.
 
@@ -65,7 +65,7 @@ Pro projekt funkcí založených na knihovně jazyka C# byste měli nainstalovat
 
 ### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>\#Knihovna tříd C se sadou Visual Studio
 
-V **aplikaci Visual Studio**můžete balíčky nainstalovat z konzoly Správce balíčků pomocí příkazu [Install-Package](/nuget/tools/ps-ref-install-package) , jak je znázorněno v následujícím příkladu:
+V **aplikaci Visual Studio** můžete balíčky nainstalovat z konzoly Správce balíčků pomocí příkazu [Install-Package](/nuget/tools/ps-ref-install-package) , jak je znázorněno v následujícím příkladu:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -79,7 +79,7 @@ Pokud používáte `Install-Package` pro odkazování na vazbu, nemusíte použ�
 
 ### <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> Knihovna tříd C# s Visual Studio Code
 
-V **Visual Studio Code**nainstalujte balíčky pro projekt knihovny tříd jazyka C# z příkazového řádku pomocí příkazu [dotnet add Package](/dotnet/core/tools/dotnet-add-package) v .NET Core CLI. Následující příklad ukazuje, jak přidat vazbu:
+V **Visual Studio Code** nainstalujte balíčky pro projekt knihovny tříd jazyka C# z příkazového řádku pomocí příkazu [dotnet add Package](/dotnet/core/tools/dotnet-add-package) v .NET Core CLI. Následující příklad ukazuje, jak přidat vazbu:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>

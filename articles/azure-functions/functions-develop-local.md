@@ -4,10 +4,10 @@ description: Naučte se, jak nasměrovat a testovat Azure Functions v místním 
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 9c37d51abcc8d612b777b845515cf07666369d4f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96168130"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Místní psaní kódu a testování funkcí Azure Functions
@@ -18,7 +18,7 @@ I když máte možnost vyvíjet a testovat Azure Functions v [Azure Portal], mno
 
 Způsob, jakým vyvíjíte funkce v místním počítači, závisí na vašich [jazykových](supported-languages.md) a nástrojových preferencích. Prostředí v následující tabulce podporují místní vývoj:
 
-|Prostředí                              |Jazyky         |Popis|
+|Prostředí                              |Jazyky         |Description|
 |-----------------------------------------|------------|---|
 |[Visual Studio Code](functions-develop-vs-code.md)| [C# (knihovna tříd)](functions-dotnet-class-library.md), [skript c# (. csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](./create-first-function-vs-code-powershell.md), [Python](functions-reference-python.md) | [Rozšíření Azure Functions pro vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) přidává do vs Code podporu funkcí. Vyžaduje základní nástroje. Podporuje vývoj v systémech Linux, MacOS a Windows při použití verze 2. x základních nástrojů. Další informace najdete v tématu [Vytvoření první funkce pomocí Visual Studio Code](./create-first-function-vs-code-csharp.md). |
 | [Příkazový řádek nebo terminál](functions-run-local.md) | [C# (knihovna tříd)](functions-dotnet-class-library.md), [skript c# (. csx)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](functions-reference-powershell.md), [Python](functions-reference-python.md) | [Azure Functions Core Tools] poskytuje základní modul runtime a šablony pro tvorbu funkcí, které umožňují místní vývoj. Verze 2. x podporuje vývoj v systémech Linux, MacOS a Windows. Všechna prostředí využívají základní nástroje pro modul runtime místních funkcí. |

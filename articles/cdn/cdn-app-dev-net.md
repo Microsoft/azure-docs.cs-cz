@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: a812704c42a4da5ddf89fe6c5ba0c9a684047f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88919484"
 ---
 # <a name="get-started-with-the-azure-cdn-library-for-net"></a>Začínáme s knihovnou Azure CDN pro .NET
@@ -49,7 +49,7 @@ V sadě Visual Studio 2015 klikněte na **soubor**, **Nový**, **projekt...** a 
 
 Náš projekt bude používat některé knihovny Azure obsažené v balíčcích NuGet.  Pojďme je přidat do projektu.
 
-1. Klikněte na nabídku **nástroje** , **Správce balíčků NuGet**a pak na **Konzola správce balíčků**.
+1. Klikněte na nabídku **nástroje** , **Správce balíčků NuGet** a pak na **Konzola správce balíčků**.
 
     ![Spravovat balíčky NuGet](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 2. V konzole správce balíčků spusťte následující příkaz pro instalaci **Active Directory Authentication Library (ADAL)**:
@@ -62,7 +62,7 @@ Náš projekt bude používat některé knihovny Azure obsažené v balíčcích
 ## <a name="directives-constants-main-method-and-helper-methods"></a>Direktivy, konstanty, metoda Main a pomocné metody
 Pojďme získat základní strukturu našeho programu napsaného.
 
-1. Zpátky na kartě Program.cs nahraďte `using` direktivy v horní části následujícím způsobem:
+1. Zpátky na kartě program. cs nahraďte `using` direktivy v horní části následujícími kroky:
 
     ```csharp
     using System;
@@ -74,7 +74,7 @@ Pojďme získat základní strukturu našeho programu napsaného.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Musíme definovat některé konstanty, které budou používat naše metody.  Ve `Program` třídě, ale před `Main` metodou, přidejte následující.  Zástupné symboly, včetně ** &lt; lomených závorek &gt; **, nahraďte požadovanými hodnotami.
+2. Musíme definovat některé konstanty, které budou používat naše metody.  Ve `Program` třídě, ale před `Main` metodou, přidejte následující.  Zástupné symboly, včetně **&lt; lomených závorek &gt;**, nahraďte požadovanými hodnotami.
 
     ```csharp
     //Tenant app constants

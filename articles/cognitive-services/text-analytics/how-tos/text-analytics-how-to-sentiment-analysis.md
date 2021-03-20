@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/04/2020
+ms.date: 03/09/2021
 ms.author: aahi
-ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673049"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599119"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Postupy: analýza dolování mínění a jejich názoru
 
-Funkce Analýza mínění rozhraní API pro analýzu textu poskytuje dva způsoby, jak zjistit pozitivní a negativní mínění. Pokud odešlete žádost o Analýza mínění, rozhraní API vrátí mínění popisky (například "negativní", "neutrální" a "pozitivní") a hodnocení spolehlivosti na větě a na úrovni dokumentu. Můžete také odesílat názory na požadavky na dolování pomocí Analýza míněního koncového bodu, který poskytuje podrobné informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu. 
+Funkce Analýza mínění rozhraní API pro analýzu textu poskytuje dva způsoby, jak zjistit pozitivní a negativní mínění. Pokud odešlete žádost o Analýza mínění, rozhraní API vrátí mínění popisky (například "negativní", "neutrální" a "pozitivní") a hodnocení spolehlivosti na větě a na úrovni dokumentu. Můžete také odesílat názory na požadavky na dolování pomocí Analýza míněního koncového bodu, který poskytuje podrobné informace o stanoviscích souvisejících se slovy (například s atributy produktů nebo služeb) v textu. 
 
 Modely AI používané rozhraním API jsou součástí služby, stačí ale odeslat obsah k analýze.
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Analýza mínění verze a funkce
 
-| Příznak                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
+| Funkce                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
 |-------------------------------------------|-----------------------|-----------------------------------|
-| Metody pro jednotlivé a dávkové požadavky    | X                     | X                                 |
-| Analýza mínění skóre a označování             | X                     | X                                 |
-| [Kontejner Docker](text-analytics-how-to-install-containers.md) založený na Linux | X  |  |
-| Dolování názoru                            |                       | X                                 |
+| Metody pro jednotlivé a dávkové požadavky    | ×                     | ×                                 |
+| Analýza mínění skóre a označování             | ×                     | ×                                 |
+| [Kontejner Docker](text-analytics-how-to-install-containers.md) založený na Linux | ×  |  |
+| Dolování názoru                            |                       | ×                                 |
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
@@ -49,9 +49,9 @@ Výsledky spolehlivosti jsou v rozsahu od 1 do 0. Skóre Blíže k 1 znamenají 
 
 ## <a name="opinion-mining"></a>Dolování názoru
 
-Dolování stanovisek je funkce Analýza mínění, počínaje verzí Preview verze 3,1. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
+Dolování stanovisek je funkce Analýza mínění, počínaje verzí Preview verze 3,1. Tato funkce se také označuje jako Analýza mínění na základě aspektů při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s atributy produktů nebo služeb v textu. Rozhraní API vydává názory na cíle (podstatné jméno nebo sloveso) a posouzení (adjektivum).
 
-Například pokud zákazník opustí svůj názor na Hotel, například "místnost byla Skvělé, ale zaměstnanci byli nepříteli.", dolování názorů vyhledá aspekty v textu a jejich přidružená stanoviska a zabarvení. Analýza mínění může hlásit pouze negativní mínění.
+Například pokud zákazník opustí svůj názor na Hotel, jako je například "místnost byla Skvělé, ale zaměstnanci byli nepříteli.", dolování názorů vyhledá v textu cíle (aspekty) a jejich přidružené hodnocení (názory) a zabarvení. Analýza mínění může hlásit pouze negativní mínění.
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="Diagram příkladu dolování podle názoru" lightbox="../media/how-tos/opinion-mining.png":::
 
@@ -72,7 +72,7 @@ Velikost dokumentu musí být v rozmezí 5 120 znaků na dokumentu. Maximální 
 
 Vytvořte žádost POST. V následujících referenčních odkazech můžete [použít možnost post](text-analytics-how-to-call-api.md) nebo **Konzola pro testování API** k rychlému uspořádání a odeslání jednoho. 
 
-#### <a name="version-31-preview3"></a>[Verze 3,1-Preview. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
 
 [Referenční informace pro Analýza mínění v 3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -84,22 +84,22 @@ Vytvořte žádost POST. V následujících referenčních odkazech můžete [po
 
 ### <a name="request-endpoints"></a>Koncové body požadavku
 
-Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Příklad:
+Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Například:
 
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek můžete najít na Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
 
-#### <a name="version-31-preview3"></a>[Verze 3,1-Preview. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
 
 **Analýza mínění**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment`
 
 **Dolování názoru**
 
-Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Příklad:
+Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Například:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment?opinionMining=true`
 
 Tento parametr je ve výchozím nastavení nastaven na hodnotu `false` . 
 
@@ -142,7 +142,7 @@ Rozhraní API pro analýzu textu je Bezstavová. Ve vašem účtu se neukládaj�
 
 Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo uložit výstup do souboru v místním systému. Pak importujte výstup do aplikace, kterou můžete použít k řazení, vyhledávání a manipulaci s daty. Vzhledem k podpoře vícejazyčných a Emoji může odpověď obsahovat posunutí textu. Další informace najdete v tématu [postup zpracování posunů](../concepts/text-offsets.md) .
 
-#### <a name="version-31-preview3"></a>[Verze 3,1-Preview. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Příklad odpovědi na příklad dolování Analýza mínění a názoru
 
@@ -151,97 +151,99 @@ Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která
 
 Analýza mínění v 3.1 může vracet objekty odpovědi pro dolování Analýza mínění a stanovisek.
   
-Mínění Analysis vrátí popisek mínění a hodnocení spolehlivosti pro celý dokument a každou větu v něm. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. Dokument může mít několik vět a hodnocení spolehlivosti v jednotlivých dokumentech nebo větách přidalo až 1.
+Mínění Analysis vrátí popisek mínění a hodnocení spolehlivosti pro celý dokument a každou větu v něm. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. Dokument může mít několik vět a hodnocení spolehlivosti v jednotlivých dokumentech nebo větách přidalo až 1. hodnocení 
 
-Dolování podle názoru vyhledá v textu aspekty a jejich související stanoviska a zabarveníy. V níže uvedené reakci je věta, *že má restaurace skvělou stravu a že náš čekací chvilku byl srozumitelný* , má dva aspekty: *jídlo* a *čekací* služba. Vlastnost každého aspektu `relations` obsahuje `ref` hodnotu s odkazem na identifikátor URI na asociované `documents` objekty, `sentences` a `opinions` .
+Dolování podle názoru vyhledá v textu cíle (podstatné jméno nebo slovesa) a jejich přidružené hodnocení (adjektivum). V níže uvedené reakci je věta, *že má restaurace skvělou potravinu a naše čekací služba byla uživatelsky přívětivá a* má dva cíle: *jídlo* a *čekací* služba. Vlastnost každého cíle `relations` obsahuje `ref` hodnotu s odkazem na identifikátor URI na asociované `documents` `sentences` objekty, a `assessments` .
+
+Rozhraní API vrátí stanoviska jako cíl (podstatné jméno nebo sloveso) a posouzení (adjektivum).
 
 ```json
 {
-    "documents": [
+  "documents": [
+    {
+      "id": "1",
+      "sentiment": "positive",
+      "confidenceScores": {
+        "positive": 1,
+        "neutral": 0,
+        "negative": 0
+      },
+      "sentences": [
         {
-            "id": "1",
-            "sentiment": "positive",
-            "confidenceScores": {
-                "positive": 1.0,
-                "neutral": 0.0,
-                "negative": 0.0
-            },
-            "sentences": [
+          "sentiment": "positive",
+          "confidenceScores": {
+            "positive": 1,
+            "neutral": 0,
+            "negative": 0
+          },
+          "offset": 0,
+          "length": 58,
+          "text": "The restaurant had great food and our waiter was friendly.",
+          "targets": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 25,
+              "length": 4,
+              "text": "food",
+              "relations": [
                 {
-                    "sentiment": "positive",
-                    "confidenceScores": {
-                        "positive": 1.0,
-                        "neutral": 0.0,
-                        "negative": 0.0
-                    },
-                    "offset": 0,
-                    "length": 58,
-                    "text": "The restaurant had great food and our waiter was friendly.",
-                    "aspects": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 25,
-                            "length": 4,
-                            "text": "food",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/0"
-                                }
-                            ]
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 38,
-                            "length": 6,
-                            "text": "waiter",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/1"
-                                }
-                            ]
-                        }
-                    ],
-                    "opinions": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 19,
-                            "length": 5,
-                            "text": "great",
-                            "isNegated": false
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 49,
-                            "length": 8,
-                            "text": "friendly",
-                            "isNegated": false
-                        }
-                    ]
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/0"
                 }
-            ],
-            "warnings": []
+              ]
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 38,
+              "length": 6,
+              "text": "waiter",
+              "relations": [
+                {
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/1"
+                }
+              ]
+            }
+          ],
+          "assessments": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 19,
+              "length": 5,
+              "text": "great",
+              "isNegated": false
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 49,
+              "length": 8,
+              "text": "friendly",
+              "isNegated": false
+            }
+          ]
         }
-    ],
-    "errors": [],
-    "modelVersion": "2020-04-01"
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
 }
 ```
 
@@ -287,7 +289,7 @@ Odpovědi z Analýza mínění V3 obsahují mínění popisky a skóre pro každ
 
 ---
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postup pro analýzu mínění pomocí rozhraní API pro analýzu textu. Souhrn:
 

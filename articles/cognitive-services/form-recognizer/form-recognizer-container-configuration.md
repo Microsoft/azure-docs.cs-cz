@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86537999"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurovat kontejnery pro rozpoznávání formulářů
@@ -35,7 +35,7 @@ Pomocí argumentů příkazu můžete nakonfigurovat prostředí runtime kontejn
 
 `ApiKey`Nastavení určuje klíč prostředku Azure, který se používá ke sledování fakturačních informací pro kontejner. Hodnota parametru ApiKey musí být platným klíčem pro prostředek pro _rozpoznávání formulářů_ , který je zadaný pro `Billing` v části nastavení konfigurace fakturace.
 
-Toto nastavení můžete najít v Azure Portal v části **Správa prostředků nástroje pro rozpoznávání formulářů**v části **klíče**.
+Toto nastavení můžete najít v Azure Portal v části **Správa prostředků nástroje pro rozpoznávání formulářů** v části **klíče**.
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
@@ -45,7 +45,7 @@ Toto nastavení můžete najít v Azure Portal v části **Správa prostředků 
 
 `Billing`Nastavení určuje identifikátor URI koncového bodu prostředku nástroje _pro rozpoznávání formulářů_ v Azure, který se používá k měření informací o fakturaci pro kontejner. Hodnota pro toto nastavení konfigurace musí být platný identifikátor URI koncového bodu pro prostředek pro _rozpoznávání formulářů_ v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
-Toto nastavení najdete v Azure Portal v části **Přehled rozpoznávání formulářů**v části **koncový bod**.
+Toto nastavení najdete v Azure Portal v části **Přehled rozpoznávání formulářů** v části **koncový bod**.
 
 |Vyžadováno| Name | Datový typ | Popis |
 |--|------|-----------|-------------|

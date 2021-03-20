@@ -9,10 +9,10 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 076afcfc8abf4e90d3ccedbb26653656032e59be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85115379"
 ---
 Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření databáze a kontejneru. 
@@ -27,7 +27,7 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
 
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**ID databáze**|Úkoly|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
     |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
     |**ID kontejneru**|Položky|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|

@@ -5,16 +5,16 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 04/08/2019
+ms.date: 03/16/2021
 ms.custom: seodec18
-ms.openlocfilehash: d7e9b1ecef9cfda804b89f0ba1beeb54d7d48b98
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d5b406d260b1c6518d9227c51d84ab7eb3754329
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020345"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598146"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 používání spravovaných identit (Preview)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravovaných identit
 
 Azure Stream Analytics podporuje ověřování pomocí spravované identity pomocí Azure Data Lake Storage (ADLS) Gen1 výstup. Identita je spravovaná aplikace zaregistrovaná v Azure Active Directory, která představuje danou Stream Analytics úlohu a dá se použít k ověření cílového prostředku. Spravované identity odstraňují omezení metod ověřování založených na uživatelích, například nutnost opětovného ověření z důvodu změny hesla nebo vypršení platnosti tokenu uživatele, ke kterému dochází každých 90 dní. Spravované identity navíc usnadňují automatizaci nasazení úloh Stream Analytics, které výstup Azure Data Lake Storage Gen1.
 
@@ -36,7 +36,7 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
  
    Instanční objekt má stejný název jako Stream Analytics úloha. Pokud je název úlohy například **MyASAJob**, název vytvořeného objektu služby je také **MyASAJob**.
 
-3. V okně Vlastnosti výstupu jímky výstupního ADLS Gen1 klikněte na rozevírací seznam režim ověřování a vyberte * * spravovaná identita * *.
+3. V okně Vlastnosti výstupu jímky výstupního ADLS Gen1 klikněte na rozevírací seznam režim ověřování a vyberte **spravovaná identita**.
 
 4. Vyplňte zbytek vlastností. Další informace o vytváření výstupu ADLS najdete v tématu [Vytvoření výstupu Data Lake Store s využitím Stream Analytics](../data-lake-store/data-lake-store-stream-analytics.md). Jakmile budete hotovi, klikněte na **Uložit**.
 
@@ -70,7 +70,7 @@ Tento článek ukazuje tři způsoby, jak povolit spravovanou identitu pro úloh
 
    ![Stream Analytics spravované identity konfigurace úlohy](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. V okně Vlastnosti výstupu jímky výstupního ADLS Gen1 klikněte na rozevírací seznam režim ověřování a vyberte * * spravovaná identita * *.
+2. V okně Vlastnosti výstupu jímky výstupního ADLS Gen1 klikněte na rozevírací seznam režim ověřování a vyberte **spravovaná identita**.
 
    ![ADLS výstup spravovaných identit](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 

@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370181"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
@@ -47,7 +47,7 @@ Privileged Identity Management poskytuje aktivaci rolí na základě času a sch
 
 ## <a name="what-can-i-do-with-it"></a>Co s tím můžu dělat?
 
-Jakmile nastavíte Privileged Identity Management, v levé navigační nabídce uvidíte možnosti **úlohy**, **Spravovat**a **aktivity** . Jako správce si zvolíte mezi možnostmi, jako je Správa **rolí Azure AD**, Správa rolí **prostředků Azure** nebo privilegovaných přístupových skupin. Když zvolíte, co chcete spravovat, zobrazí se příslušná sada možností pro tuto možnost.
+Jakmile nastavíte Privileged Identity Management, v levé navigační nabídce uvidíte možnosti **úlohy**, **Spravovat** a **aktivity** . Jako správce si zvolíte mezi možnostmi, jako je Správa **rolí Azure AD**, Správa rolí **prostředků Azure** nebo privilegovaných přístupových skupin. Když zvolíte, co chcete spravovat, zobrazí se příslušná sada možností pro tuto možnost.
 
 ![Snímek obrazovky Privileged Identity Management Azure Portal](./media/pim-configure/pim-quickstart.png)
 
@@ -83,7 +83,7 @@ Privileged Identity Management podporuje následující scénáře:
 
 Chcete-li lépe pochopit Privileged Identity Management a dokumentaci, měli byste si projít následující výrazy.
 
-| Termín nebo koncept | Kategorie přiřazení role | Popis |
+| Termín nebo koncept | Kategorie přiřazení role | Description |
 | --- | --- | --- |
 | způsobil | Typ | Přiřazení role, které vyžaduje, aby uživatel prováděl jednu nebo více akcí pro použití role. Pokud uživatel nastavil nárok na roli, to znamená, že může roli aktivovat, když potřebují provádět privilegované úlohy. Neexistuje žádný rozdíl v přístupu pro někoho, kdo má trvalé přiřazení oprávnění oproti oprávněné roli. Jediným rozdílem je, že někteří lidé nepotřebují přístup ke všemu času. |
 | active | Typ | Přiřazení role, které nevyžaduje, aby uživatel prováděl žádnou akci pro použití role. Uživatelé přiřazení jako aktivní mají oprávnění přiřazená k roli. |

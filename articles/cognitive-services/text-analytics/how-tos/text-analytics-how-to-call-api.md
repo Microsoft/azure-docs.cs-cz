@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650724"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599203"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
@@ -66,6 +66,7 @@ V následující tabulce najdete informace o tom, které funkce se dají použí
 | Dolování názoru | ✔ |  |
 | Extrakce klíčových frází | ✔ | ✔* |
 | Rozpoznávání pojmenovaných entit (včetně PII a FÍ) | ✔ | ✔* |
+| Propojení entit | ✔ | ✔* |
 | Analýza textu pro stav (kontejner) | ✔ |  |
 | Analýza textu pro stav (API) |  | ✔  |
 
@@ -118,8 +119,9 @@ Následuje příklad požadavku rozhraní API pro synchronní Analýza textu kon
 
 `/analyze`Koncový bod vám umožní vybrat, které z podporovaných funkcí analýza textu chcete použít v jednom volání rozhraní API. Tento koncový bod aktuálně podporuje:
 
-* extrakce klíčových frází 
+* Extrakce klíčových frází 
 * Rozpoznávání pojmenovaných entit (včetně PII a FÍ)
+* Entity Linking
 
 | Prvek | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
@@ -128,7 +130,7 @@ Následuje příklad požadavku rozhraní API pro synchronní Analýza textu kon
 |`documents` | Obsahuje `id` pole a `text` níže. | Vyžadováno | Obsahuje informace pro každý odesílaný dokument a nezpracovaný text dokumentu. |
 |`id` | Řetězec | Vyžadováno | ID, která zadáte, se použijí k uspořádání výstupu. |
 |`text` | Nestrukturovaný nezpracovaný text, maximálně 125 000 znaků. | Vyžadováno | Musí být v anglickém jazyce, což je jediný aktuálně podporovaný jazyk. |
-|`tasks` | Obsahuje následující funkce Analýza textu: `entityRecognitionTasks` , `keyPhraseExtractionTasks` nebo `entityRecognitionPiiTasks` . | Vyžadováno | Jedna nebo více Analýza textuch funkcí, které chcete použít. Všimněte si, že `entityRecognitionPiiTasks` má volitelný `domain` parametr, který lze nastavit na `pii` nebo `phi` . Pokud tento parametr nezadáte, použije se výchozí hodnota systému `pii` . |
+|`tasks` | Obsahuje následující funkce Analýza textu: `entityRecognitionTasks` , `entityLinkingTasks` , `keyPhraseExtractionTasks` nebo `entityRecognitionPiiTasks` . | Vyžadováno | Jedna nebo více Analýza textuch funkcí, které chcete použít. Všimněte si, že `entityRecognitionPiiTasks` má volitelný `domain` parametr, který lze nastavit na `pii` nebo `phi` a `pii-categories` pro detekci vybraných typů entit. Není-li `domain` parametr zadán, je systém standardně nastaven na hodnotu `pii` . |
 |`parameters` | Obsahuje `model-version` pole a `stringIndexType` níže. | Vyžadováno | Toto pole je zahrnuté ve výše uvedených úlohách funkcí, které jste si zvolili. Obsahují informace o verzi modelu, kterou chcete použít, a typ indexu. |
 |`model-version` | Řetězec | Vyžadováno | Určete, která verze modelu je volána, kterou chcete použít.  |
 |`stringIndexType` | Řetězec | Vyžadováno | Určete dekodér textu, který odpovídá vašemu programovacímu prostředí.  Podporované typy jsou `textElement_v8` (výchozí), `unicodeCodePoint` , `utf16CodeUnit` . Další informace najdete v [článku posuny textu](../concepts/text-offsets.md#offsets-in-api-version-31-preview) .  |
@@ -158,6 +160,14 @@ Následuje příklad požadavku rozhraní API pro synchronní Analýza textu kon
                 }
             }
         ],
+        "entityLinkingTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
         "keyPhraseExtractionTasks": [{
             "parameters": {
                 "model-version": "latest"
@@ -165,7 +175,10 @@ Následuje příklad požadavku rozhraní API pro synchronní Analýza textu kon
         }],
         "entityRecognitionPiiTasks": [{
             "parameters": {
-                "model-version": "latest"
+                "model-version": "latest",
+                "stringIndexType": "TextElements_v8",
+                "domain": "phi",
+                "pii-categories":"default"
             }
         }]
     }
@@ -207,7 +220,7 @@ example.json
 
 ## <a name="set-up-a-request"></a>Nastavení žádosti 
 
-V části post (nebo jiný nástroj pro testování webového rozhraní API) přidejte koncový bod pro funkci, kterou chcete použít. Pomocí následující tabulky Najděte příslušný formát koncového bodu a nahraďte `<your-text-analytics-resource>` ho vaším koncovým bodem prostředku. Příklad:
+V části post (nebo jiný nástroj pro testování webového rozhraní API) přidejte koncový bod pro funkci, kterou chcete použít. Pomocí následující tabulky Najděte příslušný formát koncového bodu a nahraďte `<your-text-analytics-resource>` ho vaším koncovým bodem prostředku. Například:
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
@@ -231,16 +244,16 @@ V části post (nebo jiný nástroj pro testování webového rozhraní API) př
 
 | Funkce | Typ žádosti | Koncové body prostředků |
 |--|--|--|
-| Odeslat úlohu analýzy | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
-| Získání stavu a výsledků analýzy | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
+| Odeslat úlohu analýzy | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze` |
+| Získání stavu a výsledků analýzy | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Koncové body pro odesílání asynchronních požadavků na `/health` koncový bod
 
 | Funkce | Typ žádosti | Koncové body prostředků |
 |--|--|--|
-| Odeslat Analýza textu pro úlohu stavu  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
-| Získání stavu a výsledků úlohy | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
-| Zrušit úlohu | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+| Odeslat Analýza textu pro úlohu stavu  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs` |
+| Získání stavu a výsledků úlohy | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
+| Zrušit úlohu | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -276,9 +289,9 @@ Odešlete žádost o rozhraní API. Pokud jste provedli volání synchronního k
 Pokud jste provedli volání asynchronních `/analyze` nebo `/health` koncových bodů, ověřte, že jste obdrželi kód odpovědi 202. k zobrazení výsledků budete muset získat odpověď:
 
 1. V odpovědi rozhraní API vyhledejte `Operation-Location` z hlavičky, která označuje úlohu, kterou jste odeslali do rozhraní API. 
-2. Vytvořte žádost o získání koncového bodu, který jste použili. Přečtěte si v [tabulce výše](#set-up-a-request) pro formát koncového bodu a podívejte se na [referenční dokumentaci k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Příklad:
+2. Vytvořte žádost o získání koncového bodu, který jste použili. Přečtěte si v [tabulce výše](#set-up-a-request) pro formát koncového bodu a podívejte se na [referenční dokumentaci k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Například:
 
-    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>`
 
 3. Přidejte `Operation-Location` k žádosti.
 

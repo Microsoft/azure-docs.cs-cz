@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 50b09fd82461221ae6cd008f6918ac2f3a26fd94
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090824"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588375"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Integrace Azure Spring Cloudu se řešeními pro vyrovnávání zatížení Azure
 
@@ -77,6 +77,17 @@ Pokud chcete integrovat se službou Azure jaře Cloud Service, dokončete násle
 
     ![Aplikační brána 3](media/spring-cloud-load-balancers/app-gateway-3.png)
 
+### <a name="configure-rewrite-set"></a>Konfigurovat sadu přepsání
+1.  Vyberte **přepsání** a potom **sadu přepište** a přidejte sadu přepsání.
+1.  Vyberte pravidla směrování, která směrují požadavky na veřejné koncové body služby Azure jaře Cloud.
+1.  Na kartě **Konfigurace pravidla přepsaní** vyberte **Přidat pravidlo přepsání**.
+1.  **Typ přepsání**: vyberte **hlavičku požadavku** .
+1.  **Typ akce**: vyberte **Odstranit** .
+1.  **Název záhlaví**: vyberte **společné záhlaví** .
+1.  **Společné záhlaví**: vyberte **X-předané – proto**
+
+    ![Brána aplikace 4](media/spring-cloud-load-balancers/app-gateway-4.png)
+
 ## <a name="integrate-azure-spring-cloud-with-azure-front-door"></a>Integrace jarního cloudu Azure s využitím front-dveří Azure
 
 Integrace se službou Azure jarní Cloud Service a konfigurací back-end fondu 
@@ -85,7 +96,7 @@ Integrace se službou Azure jarní Cloud Service a konfigurací back-end fondu
 
     ![Přední dveře 1](media/spring-cloud-load-balancers/front-door-1.png)
 
-1.  Jako *vlastní hostitel*zadejte **typ hostitele back-endu** .
+1.  Jako *vlastní hostitel* zadejte **typ hostitele back-endu** .
 1.  Zadejte plně kvalifikovaný název domény pro veřejné koncové body cloudového cloudu Azure v **názvu hostitele back-endu**.
 1.  Přijměte výchozí **hlavičku hostitele back-end** , která je stejná jako **název hostitele back-endu**.
 

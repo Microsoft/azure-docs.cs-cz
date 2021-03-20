@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 0620f55650d0e4da0cd7a616649df952f3017455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88922323"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Kurz: kurz pro Azure WCF Relay REST
@@ -28,7 +28,7 @@ V tomto kurzu provedete následující úlohy:
 > * Hostování a spuštění služby WCF založené na REST.
 > * Spusťte a otestujte službu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -53,22 +53,22 @@ Hlavním rozdílem mezi smlouvou WCF a smlouvou ve stylu REST je přidání vlas
 
 1. Spusťte Microsoft Visual Studio jako správce. Provedete to tak, že kliknete pravým tlačítkem na ikonu programu Visual Studio a vyberete **Spustit jako správce**.
 1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**.
-1. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
-1. Pojmenujte projekt *ImageListener*. Použijte výchozí **umístění**a potom vyberte **vytvořit**.
+1. V možnosti **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
+1. Pojmenujte projekt *ImageListener*. Použijte výchozí **umístění** a potom vyberte **vytvořit**.
 
-   Pro projekt C# vytvoří Visual Studio soubor *program.cs* . Tato třída obsahuje prázdnou metodu `Main()` potřebnou ke správnému sestavení projektu konzolové aplikace.
+   Pro projekt C# vytvoří Visual Studio soubor *program. cs* . Tato třída obsahuje prázdnou metodu `Main()` potřebnou ke správnému sestavení projektu konzolové aplikace.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **ImageListener** a pak vyberte **Spravovat balíčky NuGet**.
-1. Vyberte **Procházet**, vyhledejte a vyberte **windowsazure. ServiceBus**. Vyberte **nainstalovat**a přijměte podmínky použití.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt **ImageListener** a pak vyberte **Spravovat balíčky NuGet**.
+1. Vyberte **Procházet**, vyhledejte a vyberte **windowsazure. ServiceBus**. Vyberte **nainstalovat** a přijměte podmínky použití.
 
     Tento krok přidá odkazy na Service Bus a *System.ServiceModel.dll*. Tento balíček automaticky přidá odkazy na knihovny Service Bus a WCF `System.ServiceModel` .
 
-1. Explicitně přidejte odkaz na `System.ServiceModel.Web.dll` projekt. V **Průzkumník řešení**klikněte pravým tlačítkem myši na **odkazy** ve složce projektu a vyberte možnost **Přidat odkaz**.
-1. V nástroji **Přidat odkaz**vyberte možnost **Architektura** a do **Hledat**zadejte *System. ServiceModel. Web* . Označte zatržítko **System.ServiceModel.Web** a klikněte na **OK**.
+1. Explicitně přidejte odkaz na `System.ServiceModel.Web.dll` projekt. V **Průzkumník řešení** klikněte pravým tlačítkem myši na **odkazy** ve složce projektu a vyberte možnost **Přidat odkaz**.
+1. V nástroji **Přidat odkaz** vyberte možnost **Architektura** a do **Hledat** zadejte *System. ServiceModel. Web* . Označte zatržítko **System.ServiceModel.Web** a klikněte na **OK**.
 
 Dále proveďte následující změny kódu v projektu:
 
-1. Do `using` horní části souboru *program.cs* přidejte následující příkazy.
+1. Přidejte následující `using` příkazy do horní části souboru *program. cs* .
 
     ```csharp
     using System.ServiceModel;
@@ -130,7 +130,7 @@ Dále proveďte následující změny kódu v projektu:
 
    Kanál je objekt WCF, kterým si služba a klient navzájem posílají informace. Později vytvoříte kanál v hostitelské aplikaci. Azure Relay pak použije tento kanál k předání požadavků HTTP GET z prohlížeče do vaší `GetImage` implementace. Předávání také používá kanál k převzetí `GetImage` návratové hodnoty a jejich překladu do `HTTP GETRESPONSE` pro prohlížeč klienta.
 
-1. Vyberte **sestavit**sestavení  >  **řešení** a ověřte přesnost své dosavadní práce.
+1. Vyberte **sestavit** sestavení  >  **řešení** a ověřte přesnost své dosavadní práce.
 
 ### <a name="example-that-defines-a-wcf-relay-contract"></a>Příklad definující kontrakt WCF Relay
 
@@ -204,7 +204,7 @@ Stejně jako v předchozích krocích existuje trochu rozdíl mezi implementací
 
    Zbytek tohoto kurzu předpokládá, že název obrázku je *image.jpg*. Máte-li jiný soubor, je nutné přejmenovat obrázek nebo změnit kód k kompenzaci.
 
-1. Chcete-li zajistit, aby běžící služba mohla najít soubor bitové kopie, v **Průzkumník řešení** klikněte pravým tlačítkem myši na soubor obrázku a zvolte možnost **vlastnosti**. V nastavení **vlastnosti**nastavte **Kopírovat do výstupního adresáře** na **Kopírovat, pokud je novější**.
+1. Chcete-li zajistit, aby běžící služba mohla najít soubor bitové kopie, v **Průzkumník řešení** klikněte pravým tlačítkem myši na soubor obrázku a zvolte možnost **vlastnosti**. V nastavení **vlastnosti** nastavte **Kopírovat do výstupního adresáře** na **Kopírovat, pokud je novější**.
 
 1. Použijte postup v části [k vytvoření kontraktu s rozhraním](#to-create-a-contract-with-an-interface) pro přidání odkazu na *System.Drawing.dll* sestavení do projektu.
 
@@ -248,13 +248,13 @@ Stejně jako v předchozích krocích existuje trochu rozdíl mezi implementací
     }
     ```
 
-    Tato implementace používá `MemoryStream` k načtení image a její přípravě na streamování do prohlížeče. Spustí pozici streamu na nulu, deklaruje obsah streamu jako *. jpg*a streamuje informace.
+    Tato implementace používá `MemoryStream` k načtení image a její přípravě na streamování do prohlížeče. Spustí pozici streamu na nulu, deklaruje obsah streamu jako *. jpg* a streamuje informace.
 
-1. Vyberte **Build**  >  **řešení**sestavení sestavení.
+1. Vyberte   >  **řešení** sestavení sestavení.
 
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Definování konfigurace pro spuštění webové služby v Service Bus
 
-1. V **Průzkumník řešení**dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio.
+1. V **Průzkumník řešení** dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio.
 
     *App.config* soubor obsahuje název služby, koncový bod a vazbu. Koncový bod je umístění Azure Relay zveřejňuje klienty a hostitele ke vzájemné komunikaci. Vazba je typ protokolu, který se používá ke komunikaci. Hlavní rozdíl je v tom, že nakonfigurovaný koncový bod služby odkazuje na vazbu [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) .
 
@@ -315,7 +315,7 @@ Stejně jako v předchozích krocích existuje trochu rozdíl mezi implementací
     </behaviors>
     ```
 
-1. Stále v *App.config*v `<appSettings>` elementu nahraďte celou hodnotu připojovacího řetězce připojovacím řetězcem, který jste dříve získali z portálu.
+1. Stále v *App.config* v `<appSettings>` elementu nahraďte celou hodnotu připojovacího řetězce připojovacím řetězcem, který jste dříve získali z portálu.
 
     ```xml
     <appSettings>
@@ -325,7 +325,7 @@ Stejně jako v předchozích krocích existuje trochu rozdíl mezi implementací
     </appSettings>
     ```
 
-1. Vyberte **Build**  >  **řešení** sestavení sestavení a sestavte celé řešení.
+1. Vyberte   >  **řešení** sestavení sestavení a sestavte celé řešení.
 
 ### <a name="example-that-implements-the-rest-based-wcf-service-contract"></a>Příklad, který implementuje kontrakt služby WCF na bázi REST
 
@@ -620,7 +620,7 @@ namespace Microsoft.ServiceBus.Samples
 
 Po sestavení řešení proveďte následující kroky pro spuštění aplikace:
 
-1. Vyberte F5 nebo přejděte do umístění spustitelného souboru *ImageListener\bin\Debug\ImageListener.exe*a spusťte službu. Nechte aplikaci spuštěnou, protože je potřeba k dalšímu kroku.
+1. Vyberte F5 nebo přejděte do umístění spustitelného souboru *ImageListener\bin\Debug\ImageListener.exe* a spusťte službu. Nechte aplikaci spuštěnou, protože je potřeba k dalšímu kroku.
 1. Zkopírujte a vložte adresu z příkazového řádku do prohlížeče, zobrazí se obrázek.
 1. Až budete hotovi, v okně příkazového řádku vyberte zadat a aplikaci zavřete.
 

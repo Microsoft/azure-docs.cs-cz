@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2e2b6b3e9a6bdead4e4da7f1a829698d86cfbf52
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366169"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Podmíněný přístup: vyžadovat MFA pro správu Azure
@@ -42,16 +42,16 @@ Zásady podmíněného přístupu jsou výkonné nástroje. doporučujeme, abyst
 Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu, která bude vyžadovat, aby měli oprávnění s přístupem k aplikaci pro [správu Microsoft Azure](concept-conditional-access-cloud-apps.md#microsoft-azure-management) , aby prováděla službu Multi-Factor Authentication.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout**vyberte **Všichni uživatelé**.
-   1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
+1. V části **přiřazení** vyberte **Uživatelé a skupiny** .
+   1. V části **Zahrnout** vyberte **Všichni uživatelé**.
+   1. V části **vyloučit** vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**, zvolte **Správa Microsoft Azure**a pak vyberte **Vybrat** a pak **Hotovo**.
+1. V části **cloudové aplikace nebo akce**  >  vyberte **vybrat aplikace**, zvolte **Správa Microsoft Azure** a pak vyberte **Vybrat** a pak **Hotovo**.
 1. V části **podmínky**  >  **klientské aplikace (Preview)** v části **Vyberte klientské aplikace, na které se bude tato zásada vztahovat, aby** se vybrala všechna výchozí nastavení a vyberte **Hotovo**.
-1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a vyberte **Vybrat**.
+1. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování** a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 

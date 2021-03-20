@@ -4,10 +4,10 @@ description: Naučte se upgradovat konfiguraci, která spouští Cluster Service
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: 692dc2162159ab61a3ac527e12dac43438084a60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842712"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Upgrade konfigurace clusteru v Azure 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak přizpůsobit různá nastavení prostředků infra
 Clustery Azure je možné nakonfigurovat prostřednictvím šablony Správce prostředků JSON. Další informace o různých nastaveních najdete v tématu [nastavení konfigurace pro clustery](service-fabric-cluster-fabric-settings.md). Například následující postup ukazuje, jak přidat nové nastavení *MaxDiskQuotaInMB* do části *Diagnostika* pomocí Azure Resource Explorer.
 
 1. Přejděte na https://resources.azure.com.
-2. Přejděte do svého předplatného rozšířením **předplatných**  ->  **\<Your Subscription>**  ->  **resourceGroups**  ->  **\<Your Resource Group>**  ->  **poskytovatelé**resourceGroups a  ->  clustery**Microsoft. ServiceFabric.**  ->  **clusters** -> **\<Your Cluster Name>**
+2. Přejděte do svého předplatného rozšířením **předplatných**  ->  **\<Your Subscription>**  ->    ->  **\<Your Resource Group>**  ->  **poskytovatelé** resourceGroups a  ->  clustery **Microsoft. ServiceFabric.**  ->   -> **\<Your Cluster Name>**
 3. V pravém horním rohu vyberte možnost **čtení/zápis.**
 4. Vyberte **Upravit** a aktualizujte `fabricSettings` element JSON a přidejte nový element:
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
 ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936499"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve webových aplikacích pomocí služby Application Insights
@@ -76,7 +76,7 @@ Máte několik možností:
 * [TrackException ()](#exceptions) odesílá trasování zásobníku. [Další informace o výjimkách](#exceptions).
 * Pokud již používáte protokolovací rozhraní jako Log4Net nebo NLog, můžete [tyto protokoly zachytit](asp-net-trace-logs.md) a zobrazit je ve vyhledávání diagnostiky společně s daty o požadavcích a výjimkách.
 
-Chcete-li zobrazit tyto události, otevřete [vyhledávání](./diagnostic-search.md) v nabídce vlevo, vyberte **typy událostí**rozevírací nabídky a pak zvolte vlastní událost, trasování nebo výjimka.
+Chcete-li zobrazit tyto události, otevřete [vyhledávání](./diagnostic-search.md) v nabídce vlevo, vyberte **typy událostí** rozevírací nabídky a pak zvolte vlastní událost, trasování nebo výjimka.
 
 ![Podrobná analýza](./media/asp-net-exceptions/customevents.png)
 
@@ -95,7 +95,7 @@ Podrobnosti žádosti neobsahují data odesílaná do aplikace v příspěvku. P
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Zachycování výjimek a souvisejících diagnostických dat
 Nejdříve se na portálu nezobrazí všechny výjimky, které způsobují chyby ve vaší aplikaci. Zobrazí se všechny výjimky prohlížeče (Pokud používáte [sadu JavaScript SDK](./javascript.md) na webových stránkách). Ale většina výjimek serveru je zachycena službou IIS a je nutné napsat bitovou kopii pro jejich zobrazení.
 
-Můžete:
+Další možnosti:
 
 * **Protokolujte výjimky explicitně** vložením kódu do obslužných rutin výjimek pro hlášení výjimek.
 * **Automatické zachycení výjimek** konfigurací architektury ASP.NET Nezbytné doplňky jsou odlišné pro různé typy rozhraní.
@@ -184,7 +184,7 @@ public class GoodController : ApiController
 ## <a name="web-forms"></a>Webové formuláře
 V případě webových formulářů bude modul HTTP moci shromažďovat výjimky, pokud nejsou nakonfigurována žádná přesměrování nakonfigurovaná pomocí CustomErrors.
 
-Pokud ale máte aktivní přesměrování, přidejte následující řádky do funkce Application_Error v Global.asax.cs. (Přidejte soubor Global. asax, pokud ho ještě nemáte.)
+Pokud ale máte aktivní přesměrování, přidejte následující řádky do funkce Application_Error v Global. asax. cs. (Přidejte soubor Global. asax, pokud ho ještě nemáte.)
 
 ```csharp
     void Application_Error(object sender, EventArgs e)
@@ -259,7 +259,7 @@ Nahraďte atribut HandleError novým atributem v řadičích.
 [Ukázka](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
-Zaregistrujte `AiHandleErrorAttribute` se jako globální filtr v Global.asax.cs:
+Zaregistrujte `AiHandleErrorAttribute` se jako globální filtr v Global. asax. cs:
 
 ```csharp
     public class MyMvcApplication : System.Web.HttpApplication
@@ -274,7 +274,7 @@ Zaregistrujte `AiHandleErrorAttribute` se jako globální filtr v Global.asax.cs
 [Ukázka](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
-Zaregistrujte AiHandleErrorAttribute jako globální filtr v FilterConfig.cs:
+Zaregistrujte AiHandleErrorAttribute jako globální filtr v FilterConfig. cs:
 
 ```csharp
     public class FilterConfig
@@ -289,7 +289,7 @@ Zaregistrujte AiHandleErrorAttribute jako globální filtr v FilterConfig.cs:
 
 [Ukázka](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
-## <a name="web-api"></a>Web API
+## <a name="web-api"></a>Webové rozhraní API
 Počínaje verzí Application Insights web SDK verze 2,6 (beta3 a novější) Application Insights shromažďuje neošetřené výjimky, které jsou vyvolány v metodách kontroleru automaticky pro WebAPI 2 +. Pokud jste dříve přidali vlastní obslužnou rutinu ke sledování takových výjimek (jak je popsáno v následujících příkladech), je možné ji odebrat, aby nedocházelo k dvojímu sledování výjimek.
 
 Existuje několik případů, kdy filtry výjimek nemůžou zpracovat. Například:

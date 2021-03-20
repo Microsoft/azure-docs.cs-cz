@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369127"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Úprava informací o skupině pomocí Azure Active Directory
@@ -27,7 +27,7 @@ Pomocí Azure Active Directory (Azure AD) můžete upravit nastavení skupiny, v
 ## <a name="to-edit-your-group-settings"></a>Úprava nastavení skupiny
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
+2. Vyberte **Azure Active Directory** a pak vyberte **skupiny**.
 
     Zobrazí se stránka **skupiny – všechny skupiny** se zobrazenými všemi aktivními skupinami.
 
@@ -37,7 +37,7 @@ Pomocí Azure Active Directory (Azure AD) můžete upravit nastavení skupiny, v
 
     ![Stránka všechny skupiny s textem hledání ve vyhledávacím poli](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. Vyberte skupinu **MDM Policy-západ**a potom v oblasti **Správa** vyberte **vlastnosti** .
+4. Vyberte skupinu **MDM Policy-západ** a potom v oblasti **Správa** vyberte **vlastnosti** .
 
     ![Stránka s přehledem skupin s možnostmi členů a zvýrazněnými informacemi](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 

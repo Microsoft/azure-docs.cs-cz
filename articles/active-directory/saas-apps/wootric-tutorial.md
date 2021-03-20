@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
 ms.openlocfilehash: a959dd3615c9498411b141356420939ad7026189
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92638359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wootric"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Wootric
@@ -49,15 +49,15 @@ Pokud chcete nakonfigurovat integraci Wootric do služby Azure AD, musíte přid
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Wootric** .
 1. Na panelu výsledků vyberte **Wootric** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-wootric"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Wootric
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Wootric pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Wootric.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Wootric pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Wootric.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Wootric, dokončete následující stavební bloky:
 
@@ -72,8 +72,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Wootric** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Wootric** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Wootric několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název |  Zdrojový atribut |
+    | Name |  Zdrojový atribut |
     | -------------- | --------- |
     | id | User. objectID |
 
@@ -103,21 +103,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Wootric.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte **Wootric** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Wootric**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -137,7 +137,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Snímek obrazovky se zobrazí ikona nastavení vybraná z webu Wootric.](./media/wootric-tutorial/configure-1.PNG)
 
-1. V části **integrace** vyberte v nabídce na levé straně **ověřování** a klikněte na **povolit jednotné přihlašování pomocí Azure Active Directory** .
+1. V části **integrace** vyberte v nabídce na levé straně **ověřování** a klikněte na **povolit jednotné přihlašování pomocí Azure Active Directory**.
 
     ![Snímek obrazovky ukazuje povolení jednotného přihlašování s Azure Active Directory připojenou v položce ověřování.](./media/wootric-tutorial/configure-2.PNG)
 
@@ -153,7 +153,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. Zaškrtněte políčko **automaticky udělit přístup k novým uživatelům** .
     
-    e. Klikněte na **Uložit** .
+    e. Klikněte na **Uložit**.
 
 ### <a name="create-wootric-test-user"></a>Vytvořit testovacího uživatele Wootric
 

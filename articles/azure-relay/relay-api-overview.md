@@ -5,10 +5,10 @@ ms.topic: article
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
 ms.openlocfilehash: 98bbb1ecc7e870ff9b7687284e7087d44375d275
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935717"
 ---
 # <a name="available-relay-apis"></a>Dostupná předávací rozhraní API
@@ -22,8 +22,8 @@ V části [Další informace](#additional-information) najdete další informace
 | Jazyk/platforma | Dostupná funkce | Klientský balíček | Repository |
 | --- | --- | --- | --- |
 | .NET Standard | Hybridní připojení | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET Framework | WCF Relay | [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | Není k dispozici |
-| Node | Hybridní připojení | [WebSockets `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[Požadavky HTTP: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| .NET Framework | WCF Relay | [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | – |
+| Uzel | Hybridní připojení | [WebSockets `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[Požadavky HTTP: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>Další informace
 

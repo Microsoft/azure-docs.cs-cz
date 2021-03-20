@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88933510"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivní vytváření dotazů k vypsání prostředků Batch
@@ -53,9 +53,9 @@ V tomto ukázkovém scénáři platí, že pokud je v úloze tisíce úkolů, v�
 
 ## <a name="filter-select-and-expand"></a>Filtrovat, vybrat a rozbalit
 
-Rozhraní REST API služby [Batch .NET](/dotnet/api/microsoft.azure.batch) a [Batch](/rest/api/batchservice/) poskytují možnost omezit počet položek, které jsou vráceny v seznamu, a také množství informací, které jsou pro každý z nich vráceny. Provedete to tak, že zadáte **Filter**, **Select**a **rozbalíte řetězce** při provádění dotazů seznamu.
+Rozhraní REST API služby [Batch .NET](/dotnet/api/microsoft.azure.batch) a [Batch](/rest/api/batchservice/) poskytují možnost omezit počet položek, které jsou vráceny v seznamu, a také množství informací, které jsou pro každý z nich vráceny. Provedete to tak, že zadáte **Filter**, **Select** a **rozbalíte řetězce** při provádění dotazů seznamu.
 
-### <a name="filter"></a>Filtrování
+### <a name="filter"></a>Filtrovat
 
 Řetězec filtru je výraz, který snižuje počet vrácených položek. Můžete například vypsat pouze spuštěné úlohy pro úlohu nebo zobrazit seznam pouze výpočetních uzlů, které jsou připraveny ke spouštění úkolů.
 

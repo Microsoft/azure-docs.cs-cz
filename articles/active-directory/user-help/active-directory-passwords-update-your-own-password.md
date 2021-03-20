@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
 ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91827763"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Resetujte své pracovní nebo školní heslo pomocí bezpečnostních údajů
@@ -85,7 +85,7 @@ Pokud nemůžete získat přístup k účtu Azure Active Directory (Azure AD), m
 
 - **Resetujte heslo pomocí oznámení z ověřovací aplikace.** Pošle oznámení o schválení do aplikace ověřovatele. Pokud správce zapnul prostředí informací o zabezpečení, můžete najít další informace o nastavení ověřovací aplikace k odeslání oznámení v článku [Nastavení bezpečnostních údajů pro použití ověřovací aplikace (Preview)](security-info-setup-auth-app.md) . Pokud ještě nepoužíváte bezpečnostní údaje, můžete najít další informace o nastavení aplikace ověřovatele k odeslání oznámení v článku [Nastavení účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
 
-    1. Vyberte **schválit oznámení v aplikaci Authenticator**a pak vyberte **Odeslat oznámení**.
+    1. Vyberte **schválit oznámení v aplikaci Authenticator** a pak vyberte **Odeslat oznámení**.
 
     2. Schvalte přihlášení z aplikace ověřovatele.
 
@@ -93,7 +93,7 @@ Pokud nemůžete získat přístup k účtu Azure Active Directory (Azure AD), m
 
 - **Resetujte heslo pomocí kódu z ověřovací aplikace.** Přijímá náhodný kód poskytnutý vaší ověřovací aplikací. Pokud váš správce zapnul prostředí informací o zabezpečení, můžete najít další informace o nastavení ověřovací aplikace pro poskytnutí kódu v článku [Nastavení bezpečnostních údajů pro použití ověřovací aplikace (Preview)](security-info-setup-auth-app.md) . Pokud ještě nepoužíváte bezpečnostní údaje, můžete najít další informace o nastavení ověřovací aplikace pro poskytnutí kódu v článku [Nastavení účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
 
-  1. Vyberte možnost **zadat kód z aplikace Authenticator**a pak vyberte **Odeslat oznámení**.
+  1. Vyberte možnost **zadat kód z aplikace Authenticator** a pak vyberte **Odeslat oznámení**.
 
   2. Otevřete ověřovací aplikaci, do pole zadejte ověřovací kód pro svůj účet a pak vyberte **Další**.
 
@@ -117,7 +117,7 @@ Tuto metodu použijte, pokud obvykle k vašim aplikacím přistupujete prostřed
 
 2. V pravé horní části vyberte svůj profil a pak vyberte **Zobrazit účet**.
 
-3. Vyberte **zabezpečení & heslo ochrany osobních údajů**  >  **Password**.
+3. Vyberte **zabezpečení & heslo ochrany osobních údajů**  >  .
 
 4. Zadejte staré heslo, vytvořte a potvrďte nové heslo a pak vyberte **Odeslat**.
 
@@ -155,7 +155,7 @@ Pokud správce zapnul funkci, uvidíte odkaz na **resetování hesla** na přihl
 
 Tady jsou některé běžné chybové případy a jejich řešení:
 
-|Problém|Description|Řešení|
+|Problém|Popis|Řešení|
 | --- | --- | --- |
 |Při pokusu o změnu mého hesla se zobrazí chyba. |Heslo obsahuje slovo, frázi nebo vzor, který umožňuje snadnou možnost uhodnout heslo.| Zkuste to znovu s silnějším heslem.|
 |Když zadáte moje ID uživatele, přejdete na stránku s oznámením "kontaktujte správce."|Společnost Microsoft určila, že vaše heslo účtu uživatele spravuje správce v místním prostředí. V důsledku toho nemůžete resetovat heslo z odkazu "nepřístup k vašemu účtu". |Další nápovědu získáte od správce.|

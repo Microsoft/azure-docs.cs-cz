@@ -9,16 +9,16 @@ ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 2d99a760e3bf44febcee05bf9827479616bf7bd6
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93333422"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní API pro Azure Cosmos DB Core (SQL) pomocí PowerShellu
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Následující příručka popisuje použití prostředí PowerShell ke skriptování a automatizaci správy prostředků rozhraní API pro Azure Cosmos DB Core (SQL), včetně účtu Cosmos, databáze, kontejneru a propustnosti. Rutiny PowerShellu pro další rozhraní API najdete v tématu [ukázky PowerShellu pro Cassandra](powershell-samples-cassandra.md), ukázky PowerShellu pro [MongoDB API](powershell-samples-mongodb.md), ukázky PowerShellu pro Gremlin, [ukázky](powershell-samples-table.md) PowerShellu pro [PowerShell Samples for Gremlin](powershell-samples-gremlin.md)
+Následující příručka popisuje použití prostředí PowerShell ke skriptování a automatizaci správy prostředků rozhraní API pro Azure Cosmos DB Core (SQL), včetně účtu Cosmos, databáze, kontejneru a propustnosti. Rutiny PowerShellu pro další rozhraní API najdete v tématu [ukázky PowerShellu pro Cassandra](powershell-samples-cassandra.md), ukázky PowerShellu pro [MongoDB API](powershell-samples-mongodb.md), ukázky PowerShellu pro Gremlin, [ukázky](powershell-samples-table.md) PowerShellu pro [](powershell-samples-gremlin.md)
 
 > [!NOTE]
 > Ukázky v tomto článku využívají rutiny [AZ. CosmosDB](/powershell/module/az.cosmosdb) Management. Nejnovější změny najdete na stránce s referenční stránkou [AZ. CosmosDB](/powershell/module/az.cosmosdb) API.
@@ -27,7 +27,7 @@ Pro správu Azure Cosmos DB pro různé platformy můžete použít `Az` `Az.Cos
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 Postupujte podle pokynů v tématu [instalace a konfigurace Azure PowerShell][powershell-install-configure] pro instalaci a přihlášení ke svému účtu Azure v prostředí PowerShell.
 

@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3111b3a102abd923169cf655f1d71e79b19f7d5d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875005"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598129"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Registrace a kontrola Azure synapse Analytics
 
 Tento článek popisuje, jak zaregistrovat a zkontrolovat instanci Azure synapse Analytics (dřív SQL DW) v dosah.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Azure synapse Analytics (dřív SQL DW) podporuje úplné a přírůstkové kontroly pro zachycení metadat a schématu. Kontroly také automaticky klasifikují data na základě systémových a vlastních pravidel klasifikace.
 
@@ -26,7 +26,7 @@ Azure synapse Analytics (dřív SQL DW) podporuje úplné a přírůstkové kont
 
 Azure dosah nepodporuje kontrolu [zobrazení](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) v Azure synapse Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 - Musíte být správcem zdroje dat služby Azure dosah.
@@ -127,7 +127,7 @@ Pokud chcete zaregistrovat nový server Azure synapse Analytics v Data Catalog, 
 Na obrazovce **Registrovat zdroje (Azure synapse Analytics)** udělejte toto:
 
 1. Zadejte **název** , se kterým bude zdroj dat uveden v katalogu.
-1. Vyberte, jak chcete odkazovat na požadovaný účet úložiště:
+1. Vyberte způsob, jakým chcete Ukázat na požadované logické SQL Server:
    1. Vyberte **z předplatného Azure**, vyberte příslušné předplatné z rozevíracího seznamu **předplatné Azure** a příslušný server z rozevíracího seznamu **název serveru** .
    1. Případně můžete vybrat možnost **zadat ručně** a zadat **název serveru**.
 1. **Dokončete** registraci zdroje dat.

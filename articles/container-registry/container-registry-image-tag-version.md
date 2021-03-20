@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75445740"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Doporučení pro označování a naznačení verzí imagí kontejneru
@@ -49,7 +49,7 @@ Pokud je obrázek s stabilní značkou aktualizován, dříve označený obráze
 Jedinečné označení jednoduše znamená, že každý obrázek, který byl vložen do registru, má jedinečnou značku. Značky se znovu nepoužívají. Existuje několik vzorů, které můžete použít ke generování jedinečných značek, včetně:
 
 * **Časové razítko** – tento přístup je poměrně společný, protože můžete jasně určit, kdy se obrázek sestavil. Ale jak ho korelovat zpátky do vašeho sestavovacího systému? Je nutné najít sestavení, které bylo dokončeno ve stejnou dobu? V jakém časovém pásmu jste? Jsou všechny vaše systémy sestavení kalibrovány do standardu UTC?
-* **Git Commit**  – tento přístup funguje, dokud nezačnete podporovat základní aktualizace imagí. Pokud dojde k aktualizaci základní image, systém sestavení se zahájí se stejným potvrzením Git jako předchozí sestavení. Základní image ale obsahuje nový obsah. Obecně platí, že Git potvrzení poskytuje *částečně*stabilní značku.
+* **Git Commit**  – tento přístup funguje, dokud nezačnete podporovat základní aktualizace imagí. Pokud dojde k aktualizaci základní image, systém sestavení se zahájí se stejným potvrzením Git jako předchozí sestavení. Základní image ale obsahuje nový obsah. Obecně platí, že Git potvrzení poskytuje *částečně* stabilní značku.
 * **Výtah manifestu** – každá image kontejneru vložená do registru kontejneru je přidružená k manifestu, který je identifikovaný jedinečnou hodnotou hash SHA-256 nebo hodnotou Digest. I když je jedinečný, je výtah dlouhý, obtížně čitelný a nekoreluje s vaším prostředím sestavení.
 * **ID buildu** – Tato možnost může být nejlepší, protože je pravděpodobně přírůstková a umožňuje provést korelaci zpět k určitému sestavení a vyhledat všechny artefakty a protokoly. Podobně jako u výtahu manifestu ale může být obtížné číst člověka.
 

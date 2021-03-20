@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 87179950c33a6facb59ce499aa0ae393e53fb37f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91777220"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Kde a jak používat přizpůsobené přizpůsobování
@@ -34,7 +34,7 @@ Přizpůsobené přizpůsobování můžete použít v situacích, kdy splňujet
 |Pokyn|Vysvětlení|
 |--|--|
 |Obchodní cíl|Pro vaši aplikaci máte cíl pro podnikání nebo použitelnost.|
-|Obsah|V aplikaci máte místo, kde se pro účely kontextového rozhodování o tom, co Ukázat uživatelům, tento cíl vylepší.|
+|Content|V aplikaci máte místo, kde se pro účely kontextového rozhodování o tom, co Ukázat uživatelům, tento cíl vylepší.|
 |Množství obsahu|Pro každé volání máte méně než 50 akcí.|
 |Agregovaná data|Nejlepší volba může a měla by se poznat z kolektivního chování uživatelů a celkové skóre odměňování.|
 |Etické použití|Používání strojového učení pro přizpůsobení se řídí [pokyny pro použití](ethics-responsible-use.md) a volbami, které jste zvolili.

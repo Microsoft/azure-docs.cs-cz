@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90968588"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Rychlá oprava nápravy pro poradce
@@ -26,7 +26,7 @@ Tato funkce je k dispozici pouze pro určitá doporučení prostřednictvím Azu
 
 2. Na stránce s podrobnostmi o doporučení uvidíte seznam prostředků, pro které máte toto doporučení. Vyberte všechny prostředky, které chcete opravit pro doporučení.
 
-   :::image type="content" source="./media/quick-fix-2.png" alt-text="{Snímek obrazovky Azure Advisor, který zobrazuje popisky rychlých oprav v doporučeních.}":::
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="Snímek okna ovlivněných prostředků s vybranými položkami seznamu a tlačítkem pro rychlé opravy":::
    
    *Ceny v imagi jsou třeba jenom pro účely.*
 

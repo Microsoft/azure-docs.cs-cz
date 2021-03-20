@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 3af2e849aa6658e539b0b5bdbda4428cc28e5ce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84887229"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Statistiky v reálném čase v Microsoft Azure CDN

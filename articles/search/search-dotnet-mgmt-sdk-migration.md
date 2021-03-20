@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936703"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Upgrade verzí sady Azure Search .NET Management SDK
@@ -26,9 +26,9 @@ Sady SDK pro správu cílí na konkrétní verzi REST API správy. Další infor
 
 | SDK version (Verze sady SDK) | Odpovídající verze REST API | Přidání nebo změna chování funkce |
 |-------------|--------------------------------|-------------------------------------|
-| [3,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020-30-20 | Přidá zabezpečení koncového bodu (brány firewall IP a integrace pomocí [privátního odkazu Azure](../private-link/private-endpoint-overview.md)). |
-| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Vylepšení použitelnosti. Zásadní změna [klíčů dotazu seznamu](/rest/api/searchmanagement/querykeys/listbysearchservice) (přestává se ukončit). |
-| [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | První verze |
+| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020-30-20 | Přidá zabezpečení koncového bodu (brány firewall IP a integrace pomocí [privátního odkazu Azure](../private-link/private-endpoint-overview.md)). |
+| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Vylepšení použitelnosti. Zásadní změna [klíčů dotazu seznamu](/rest/api/searchmanagement/querykeys/listbysearchservice) (přestává se ukončit). |
+| [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | První verze |
 
 ## <a name="how-to-upgrade"></a>Postup upgradu
 
@@ -60,7 +60,7 @@ Nemůžete už použít možnost získat u žádosti o [klíč dotazu seznamu](/
 
 ## <a name="upgrade-to-20"></a>Upgradovat na 2,0
 
-Verze 2 sady Azure Search .NET Management SDK je menší upgrade, takže změna kódu by měla vyžadovat jenom minimální úsilí. Změny v sadě SDK jsou čistě změny na straně klienta, aby se zlepšila použitelnost samotné sady SDK. Mezi tyto změny patří následující:
+Verze 2 sady Azure Search .NET Management SDK je menší upgrade, takže změna kódu by měla vyžadovat jenom minimální úsilí. Změny v sadě SDK jsou čistě změny na straně klienta, aby se zlepšila použitelnost samotné sady SDK. Dochází k následujícím změnám:
 
 * `Services.CreateOrUpdate` a jeho asynchronní verze nyní automaticky dotazují zřizování `SearchService` a nevrátí se do dokončení zřizování služby. Tím ušetříte, abyste si tento kód cyklického dotazování sami napsali sami.
 

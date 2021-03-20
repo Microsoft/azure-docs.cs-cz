@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368022"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
@@ -132,7 +132,7 @@ Pokud nasáhnete horizontální navýšení kapacity nasazení nad rámec 200 zd
 2. Klikněte pravým tlačítkem na procesový Server, který se právě používá, a pak vyberte **přepínač**.
 
     ![Snímek obrazovky s dialogovým oknem konfigurační server](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
-3. V části **Vybrat cílový procesový Server**vyberte nový procesový Server, který chcete použít. Pak vyberte virtuální počítače, které bude server zpracovávat. Chcete-li získat informace o serveru, vyberte ikonu informace. V rámci rozhodování o zatížení se zobrazí průměrné místo, které je nutné pro replikaci jednotlivých vybraných virtuálních počítačů na nový procesový Server. Zaškrtnutím tohoto políčka zahájíte replikaci na nový procesový Server.
+3. V části **Vybrat cílový procesový Server** vyberte nový procesový Server, který chcete použít. Pak vyberte virtuální počítače, které bude server zpracovávat. Chcete-li získat informace o serveru, vyberte ikonu informace. V rámci rozhodování o zatížení se zobrazí průměrné místo, které je nutné pro replikaci jednotlivých vybraných virtuálních počítačů na nový procesový Server. Zaškrtnutím tohoto políčka zahájíte replikaci na nový procesový Server.
 
 ## <a name="deploy-additional-master-target-servers"></a>Nasaďte další hlavní cílové servery.
 
@@ -146,12 +146,12 @@ Další informace o tom, jak přidat hlavní cílový server pro virtuální po�
 
 Postup přidání hlavního cílového serveru pro virtuální počítač se systémem Windows:
 
-1. Přejít na **Recovery Services trezor**  >  **Site Recovery**  >  **konfiguračního serveru**infrastruktury.
+1. Přejít na **Recovery Services trezor**  >  **Site Recovery**  >  **konfiguračního serveru** infrastruktury.
 2. Vyberte požadovaný konfigurační server a pak vyberte **hlavní cílový server**.
 
     ![Snímek obrazovky, na kterém se zobrazuje tlačítko Přidat hlavní cílový server](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
 3. Stáhněte si soubor sjednocené instalace a pak na virtuálním počítači spusťte soubor a nastavte hlavní cílový server.
-4. Jako další vyberte **nainstalovat hlavní cíl instalace**  >  **Next**.
+4. Jako další vyberte **nainstalovat hlavní cíl instalace**  >  .
 
     ![Snímek obrazovky, který zobrazuje výběr možnosti instalovat hlavní cíl](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
 5. Vyberte výchozí umístění instalace a pak vyberte **nainstalovat**.
@@ -165,7 +165,7 @@ Postup přidání hlavního cílového serveru pro virtuální počítač se sys
     ![Snímek obrazovky, který ukazuje, kde zadat IP adresu a přístupové heslo pro konfigurační server](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. Vyberte **Zaregistrovat**. Po dokončení registrace vyberte **Dokončit**.
 
-Po úspěšném dokončení registrace se server zobrazí v Azure Portal v **Recovery Services trezoru**  >  **Site Recovery**  >  **konfigurační servery**infrastruktury, a to na hlavních cílových serverech konfiguračního serveru.
+Po úspěšném dokončení registrace se server zobrazí v Azure Portal v **Recovery Services trezoru**  >  **Site Recovery**  >  **konfigurační servery** infrastruktury, a to na hlavních cílových serverech konfiguračního serveru.
 
  > [!NOTE]
  > Stáhněte si nejnovější verzi [souboru sjednocené instalace hlavního cílového serveru pro Windows](https://aka.ms/latestmobsvc).

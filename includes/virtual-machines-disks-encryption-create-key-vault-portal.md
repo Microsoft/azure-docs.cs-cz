@@ -9,17 +9,17 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88815466"
 ---
 Nastavení klíčů spravovaných zákazníkem pro vaše disky bude vyžadovat, abyste vytvořili prostředky v určitém pořadí, pokud je v tuto chvíli vytváříte poprvé. Nejprve budete muset vytvořit a nastavit Azure Key Vault.
 
 ## <a name="set-up-your-azure-key-vault"></a>Nastavení Azure Key Vault
 
-1. Přihlaste se k [portálu Azure Portal](https://aka.ms/diskencryptionupdates).
+1. Přihlaste se k webu [Azure Portal](https://aka.ms/diskencryptionupdates).
 1. Vyhledejte a vyberte **trezory klíčů**.
 
     [![Snímek obrazovky Azure Portal se rozbaleným dialogovým oknem hledání](./media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
@@ -39,7 +39,7 @@ Nastavení klíčů spravovaných zákazníkem pro vaše disky bude vyžadovat, 
     ![Snímek obrazovky s prostředím pro vytváření Azure Key Vault Zobrazení konkrétních hodnot, které vytvoříte](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-vault.png)
 
 1. Až se váš Trezor klíčů dokončí, vyberte ho.
-1. V části **Nastavení**vyberte **klíče** .
+1. V části **Nastavení** vyberte **klíče** .
 1. Vyberte **Generovat/importovat**.
 
     ![Snímek obrazovky s podoknem Key Vaultch nastavení prostředků Zobrazuje tlačítko pro generování/import v nastavení.](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-generate-settings.png)

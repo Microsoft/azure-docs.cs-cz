@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: acb056fb959fda320a14059e2b36a0f5e3fb0b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83837178"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Ověřování runbooků s využitím Amazon Web Services
@@ -33,7 +33,7 @@ Přihlašovací údaje AWS musíte uložit jako prostředky v Azure Automation. 
 
 Po vytvoření a zkopírování klíčů zabezpečení AWS musíte vytvořit Asset přihlašovacích údajů s účtem Automation. Asset vám umožní bezpečně ukládat klíče AWS a odkazovat na ně ve svých sadách Runbook. Přečtěte si téma [Vytvoření nového assetu přihlašovacích údajů pomocí Azure Portal](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal). Do uvedených polí zadejte následující AWS informace:
     
-* **Název**  -  **AWScred**nebo vhodnou hodnotu podle standardů pojmenovávání
+* **Název**  -  **AWScred** nebo vhodnou hodnotu podle standardů pojmenovávání
 * **Uživatelské jméno** – ID vašeho přístupu
 * **Heslo** – název tajného klíče 
 

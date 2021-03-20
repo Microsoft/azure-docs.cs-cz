@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: db3f188cc796642285d9b082b46371879491c632
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: cb555eefb19b5db7ed7eb0792a813c295a4bf38b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225230"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588609"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Rychlý Start: vytvoření spravované instance Azure pro cluster Apache Cassandra z Azure Portal (Preview)
  
@@ -89,7 +89,6 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
    :::image type="content" source="./media/create-cluster-portal/resources.png" alt-text="Zobrazení prostředků clusteru." lightbox="./media/create-cluster-portal/resources.png" border="true":::
 
 
-
 ## <a name="connecting-to-your-cluster"></a>Připojování ke clusteru
 
 Spravovaná instance Azure pro Apache Cassandra nevytváří uzly s veřejnými IP adresami, takže pokud se chcete připojit ke svému nově vytvořenému clusteru Cassandra, budete muset v rámci virtuální sítě vytvořit jiný prostředek. Může to být aplikace nebo virtuální počítač s nainstalovaným Open Source dotazovacím nástrojem pro Apache [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) . K nasazení virtuálního počítače s Ubuntu můžete použít [šablonu](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) . Při nasazení se připojte k počítači pomocí SSH a nainstalujte CQLSH pomocí níže uvedených příkazů:
@@ -113,6 +112,15 @@ export SSL_VALIDATE=false
 host=("<IP>" "<IP>" "<IP>")
 cqlsh $host 9042 -u cassandra -p cassandra --ssl
 ```
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud při použití oprávnění k vašemu Virtual Network dojde k chybě, například *nelze najít uživatele nebo instanční objekt v databázi grafu pro ' e5007d2c-4b13-4a74-9b6a-605d99f03501 '*, můžete stejné oprávnění použít ručně z Azure Portal. Chcete-li použít oprávnění z portálu, přejděte do podokna **řízení přístupu (IAM)** ve stávající virtuální síti a přidejte přiřazení role pro "Azure Cosmos DB" do role "správce sítě". Pokud se při hledání "Azure Cosmos DB" zobrazí dvě položky, přidejte obě položky, jak je znázorněno na následujícím obrázku: 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Použít oprávnění" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> Přiřazení role Azure Cosmos DB se používá jenom pro účely nasazení. Spravovaná instance Azure spravovaná pro Apache Cassandra nemá žádné back-endové závislosti na Azure Cosmos DB.   
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

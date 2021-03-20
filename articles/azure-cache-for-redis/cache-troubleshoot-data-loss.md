@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538591"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Řešení potíží se ztrátou dat ve službě Azure Cache for Redis
@@ -27,7 +27,7 @@ Azure cache pro Redis po uložení do paměti náhodně neodstraní klíče. Ode
 
 Pokud zjistíte, že klíče z mezipaměti zmizely, podívejte se na tyto možné příčiny:
 
-| Příčina | Popis |
+| Příčina | Description |
 |---|---|
 | [Vypršení platnosti klíče](#key-expiration) | Klíče se odeberou kvůli časovým limitům nastaveným pro ně. |
 | [Vyřazení klíčů](#key-eviction) | Klíče jsou odebrány v části tlak paměti. |
@@ -86,7 +86,7 @@ Jakákoli instance Azure cache for Redis v úrovni Standard nebo Premium je nako
 
 Pokud z mezipaměti nezmizí většina nebo všechny klíče, podívejte se na tyto možné příčiny:
 
-| Příčina | Popis |
+| Příčina | Description |
 |---|---|
 | [Vyprazdňování klíče](#key-flushing) | Klíče byly vymazány ručně. |
 | [Nesprávný výběr databáze](#incorrect-database-selection) | Mezipaměť Azure pro Redis je nastavená na použití jiné než výchozí databáze. |
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Nesprávný výběr databáze
 
-Azure cache pro Redis ve výchozím nastavení používá databázi **DB0** . Pokud přepnete do jiné databáze (například **DB1** ) a pokusíte se z ní číst klíče, mezipaměť Azure pro Redis je nenalezne. Každá databáze je logicky oddělená jednotka a obsahuje jinou datovou sadu. Pomocí příkazu [Select](https://redis.io/commands/select) můžete použít další dostupné databáze a vyhledat klíče v každém z nich.
+Azure cache pro Redis ve výchozím nastavení používá databázi **DB0** . Pokud přepnete do jiné databáze (například **DB1**) a pokusíte se z ní číst klíče, mezipaměť Azure pro Redis je nenalezne. Každá databáze je logicky oddělená jednotka a obsahuje jinou datovou sadu. Pomocí příkazu [Select](https://redis.io/commands/select) můžete použít další dostupné databáze a vyhledat klíče v každém z nich.
 
 ### <a name="redis-instance-failure"></a>Selhání instance Redis
 

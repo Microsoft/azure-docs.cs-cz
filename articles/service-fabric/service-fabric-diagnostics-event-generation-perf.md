@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75464699"
 ---
 # <a name="performance-metrics"></a>Metriky výkonu
@@ -31,7 +31,7 @@ Pro počítače ve vašem clusteru zvažte shromáždění následujících čí
 | Fyzický disk (na disk) | Bajty čtení z disku/s |
 | Fyzický disk (na disk) | Zápisy na disk/s |
 | Fyzický disk (na disk) | Bajty zápisu na disk/s |
-| Paměť | Dostupná paměť v megabajtech |
+| Memory (Paměť) | Dostupná paměť v megabajtech |
 | PagingFile | % Využití |
 | Procesor (celkem) | Procesorový čas v % |
 | Proces (za službu) | Procesorový čas v % |

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/12/2020
 ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94555596"
 ---
 # <a name="apply-sql-transformation"></a>Použití transformace SQL
@@ -36,7 +36,7 @@ Pomocí modulu použít transformaci SQL můžete:
 
 Modul může jako vstupy trvat až tři datové sady. Když odkazujete na datové sady připojené ke každému vstupnímu portu, musíte použít názvy `t1` , `t2` , a `t3` . Číslo tabulky označuje index vstupního portu.  
 
-Následuje ukázkový kód, který ukazuje, jak spojit dvě tabulky. T1 a T2 jsou dvě datové sady připojené k levému a střednímu vstupnímu portu **použití transformace SQL** :
+Následuje ukázkový kód, který ukazuje, jak spojit dvě tabulky. T1 a T2 jsou dvě datové sady připojené k levému a střednímu vstupnímu portu **použití transformace SQL**:
 
 ```sql
 SELECT t1.*

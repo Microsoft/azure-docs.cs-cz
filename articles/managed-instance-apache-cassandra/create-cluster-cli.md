@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.openlocfilehash: 3890b06b2d085cea57b59cfe34d8b961918471c5
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ef8ef85dde11eb991f14201286dc1a086df71dc8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562378"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588579"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Rychlý Start: vytvoření spravované instance Azure pro cluster Apache Cassandra pomocí rozhraní příkazového řádku Azure (Preview)
 
@@ -58,13 +58,16 @@ Tento rychlý Start ukazuje, jak pomocí příkazů Azure CLI vytvořit cluster 
    > [!NOTE]
    > `assignee`Hodnoty a `role` v předchozím příkazu jsou pevné hodnoty. Tyto hodnoty zadejte přesně tak, jak je uvedeno v příkazu. V takovém případě se to nepovede, takže při vytváření clusteru dojde k chybám. Pokud narazíte na chyby při spuštění tohoto příkazu, možná nemáte oprávnění k jeho spuštění, kontaktujte svého správce a požádejte ho o oprávnění.
 
-1. Potom vytvořte cluster nově vytvořeným Virtual Network pomocí příkazu [AZ Managed-Cassandra cluster Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) . Spusťte následující příkaz a ujistěte se, že jste použili `Resource ID` hodnotu získanou v předchozím příkazu jako hodnotu `delegatedManagementSubnetId` proměnné:
+1. Potom vytvořte cluster nově vytvořeným Virtual Network pomocí příkazu [AZ Managed-Cassandra cluster Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) . Spusťte následující příkaz s hodnotou `delegatedManagementSubnetId` proměnné:
+
+   > [!NOTE]
+   > Hodnota proměnné, kterou poskytnete `delegatedManagementSubnetId` níže, je přesně stejná jako hodnota `--scope` , kterou jste zadali v příkazu výše:
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
    clusterName='<Cluster_Name>'
    location='eastus2'
-   delegatedManagementSubnetId='<Resource_ID>'
+   delegatedManagementSubnetId='/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>'
    initialCassandraAdminPassword='myPassword'
     
    az managed-cassandra cluster create \
@@ -81,14 +84,13 @@ Tento rychlý Start ukazuje, jak pomocí příkazů Azure CLI vytvořit cluster 
    ```azurecli-interactive
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-   delegatedSubnetId='<Resource_ID>'
     
    az managed-cassandra datacenter create \
       --resource-group $resourceGroupName \
       --cluster-name $clusterName \
       --data-center-name $dataCenterName \
       --data-center-location $dataCenterLocation \
-      --delegated-subnet-id $delegatedSubnetId \
+      --delegated-subnet-id $delegatedManagementSubnetId \
       --node-count 3 
    ```
 
@@ -99,7 +101,6 @@ Tento rychlý Start ukazuje, jak pomocí příkazů Azure CLI vytvořit cluster 
    clusterName='<Cluster Name>'
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-   delegatedSubnetId= '<Resource_ID>'
     
    az managed-cassandra datacenter update \
       --resource-group $resourceGroupName \
@@ -131,6 +132,15 @@ export SSL_VALIDATE=false
 host=("<IP>" "<IP>" "<IP>")
 cqlsh $host 9042 -u cassandra -p cassandra --ssl
 ```
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud při použití oprávnění k vašemu Virtual Network dojde k chybě, například *nelze najít uživatele nebo instanční objekt v databázi grafu pro ' e5007d2c-4b13-4a74-9b6a-605d99f03501 '*, můžete stejné oprávnění použít ručně z Azure Portal. Chcete-li použít oprávnění z portálu, přejděte do podokna **řízení přístupu (IAM)** ve stávající virtuální síti a přidejte přiřazení role pro "Azure Cosmos DB" do role "správce sítě". Pokud se při hledání "Azure Cosmos DB" zobrazí dvě položky, přidejte obě položky, jak je znázorněno na následujícím obrázku: 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Použít oprávnění" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> Přiřazení role Azure Cosmos DB se používá jenom pro účely nasazení. Spravovaná instance Azure spravovaná pro Apache Cassandra nemá žádné back-endové závislosti na Azure Cosmos DB.  
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

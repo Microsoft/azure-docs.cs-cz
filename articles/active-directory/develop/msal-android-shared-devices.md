@@ -1,7 +1,7 @@
 ---
 title: Režim sdíleného zařízení pro zařízení s Androidem
 titleSuffix: Microsoft identity platform | Azure
-description: Naučte se povolit režim sdíleného zařízení, aby Firstline pracovníci mohli sdílet zařízení s Androidem.
+description: Naučte se povolit režim sdíleného zařízení, aby prvotní pracovníci mohli sdílet zařízení s Androidem.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: a67e0d851ab544f737097eff9a884752cff9f5fc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: bafd6dade626376f216a271c7b3cadc9b429989a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491536"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578817"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Režim sdíleného zařízení pro zařízení s Androidem
 
-Firstline pracovní procesy, jako jsou maloobchodníci, členové posádky a pracovníci polních služeb často používají ke své práci sdílené mobilní zařízení. To bude problematické, když začnou sdílet hesla nebo čísla PIN pro přístup k datům zákazníků a podnikových dat na sdíleném zařízení.
+Prvotní pracovní procesy, jako jsou maloobchodníci, členové posádky a pracovníci polních služeb často používají ke své práci sdílené mobilní zařízení. To bude problematické, když začnou sdílet hesla nebo čísla PIN pro přístup k datům zákazníků a podnikových dat na sdíleném zařízení.
 
 Režim sdíleného zařízení umožňuje nakonfigurovat zařízení se systémem Android tak, aby ho bylo možné snadno sdílet s více zaměstnanci. Zaměstnanci se můžou rychle přihlašovat a přistupovat k informacím o zákaznících. Až se dokončí s jejich přesunutím nebo úlohou, můžou se odhlásit ze zařízení a okamžitě se připraví k používání dalšího zaměstnance.
 
@@ -85,7 +85,7 @@ V závislosti na tom, jestli je vaše aplikace spuštěná na sdíleném nebo os
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Proč je možné, že budete chtít podporovat jenom režim jednoho účtu
 
-Pokud vytváříte aplikaci, která se bude používat jenom pro pracovní pracovníky Firstline pomocí sdíleného zařízení, doporučujeme napsat aplikaci tak, aby podporovala pouze režim jednoho účtu. To zahrnuje většinu aplikací, které jsou zaměřeny na úlohy, jako jsou lékařské záznamy aplikací, fakturační aplikace a většina obchodních aplikací. Pouze podpora režimu jednoho účtu zjednodušuje vývoj, protože nebudete muset implementovat další funkce, které jsou součástí aplikací s více účty.
+Pokud vytváříte aplikaci, která se bude používat jenom pro pracovní pracovníky prvotní pomocí sdíleného zařízení, doporučujeme napsat aplikaci tak, aby podporovala pouze režim jednoho účtu. To zahrnuje většinu aplikací, které jsou zaměřeny na úlohy, jako jsou lékařské záznamy aplikací, fakturační aplikace a většina obchodních aplikací. Pouze podpora režimu jednoho účtu zjednodušuje vývoj, protože nebudete muset implementovat další funkce, které jsou součástí aplikací s více účty.
 
 ## <a name="what-happens-when-the-device-mode-changes"></a>Co se stane, když se změní režim zařízení
 
@@ -103,4 +103,4 @@ Následující diagram znázorňuje celkový životní cyklus aplikace a běžn�
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si kurz [použití sdíleného zařízení v kurzu aplikace pro Android](tutorial-v2-shared-device-mode.md) , který ukazuje, jak spustit aplikaci Firstline Worker na zařízení s Androidem ve sdíleném režimu.
+Vyzkoušejte si kurz [použití sdíleného zařízení v kurzu aplikace pro Android](tutorial-v2-shared-device-mode.md) , který ukazuje, jak spustit aplikaci prvotní Worker na zařízení s Androidem ve sdíleném režimu.

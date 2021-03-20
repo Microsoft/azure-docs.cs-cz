@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542673"
 ---
 # <a name="sizing-guidance"></a>Pokyny pro změnu velikosti
@@ -124,9 +124,9 @@ Následuje příklad výpočtu velikosti.
 
 Požadavky:
 
-- **"SQL1"** : 1 spravovaná instance SQL s 16 GB paměti RAM, 4 jádra
-- **"Sql2"** : 1 spravovaná instance SQL s 256 GB paměti RAM, 16 jader
-- **"Postgres1"** : 1 PostgreSQL skupina serverů s škálovatelným škálováním a 4 pracovními procesy s 12 GB paměti RAM, 4 jádry
+- **"SQL1"**: 1 spravovaná instance SQL s 16 GB paměti RAM, 4 jádra
+- **"Sql2"**: 1 spravovaná instance SQL s 256 GB paměti RAM, 16 jader
+- **"Postgres1"**: 1 PostgreSQL skupina serverů s škálovatelným škálováním a 4 pracovními procesy s 12 GB paměti RAM, 4 jádry
 
 Výpočty velikosti:
 

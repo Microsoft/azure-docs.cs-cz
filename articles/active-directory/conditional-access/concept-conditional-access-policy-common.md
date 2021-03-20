@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdaaed72b85bc3c0196a8897be311efa5fb714e2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366339"
 ---
 # <a name="common-conditional-access-policies"></a>Běžné zásady podmíněného přístupu
@@ -45,7 +45,7 @@ Další informace o účtech pro nouzový přístup a o tom, proč jsou důleži
 * [Podmíněný přístup na základě rizik přihlašování (vyžaduje Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
 * [Podmíněný přístup na základě rizika uživatele (vyžaduje Azure AD Premium P2)](howto-conditional-access-policy-risk-user.md)
 * [Vyžadování důvěryhodného umístění pro registraci MFA](howto-conditional-access-policy-registration.md)
-* [Blokování přístupu podle umístění](howto-conditional-access-policy-location.md)
+* [Blokovat přístup podle umístění](howto-conditional-access-policy-location.md)
 * [Vyžadování zařízení, které splňuje požadavky](howto-conditional-access-policy-compliant-device.md)
 * [Blokovat přístup kromě konkrétních aplikací](howto-conditional-access-policy-block-access.md)
 

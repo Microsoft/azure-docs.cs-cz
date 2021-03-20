@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 338332eb90fda9afe7655f9f2ad19ed726419b6c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95554828"
 ---
 ### <a name="to-configure-and-register-the-device"></a>Konfigurace a registrace zařízení
@@ -67,7 +67,7 @@ ms.locfileid: "95554828"
     > Průvodce lze kdykoliv ukončit stisknutím kombinace kláves Ctrl+C. Pokud jste zadali všechna nastavení sítě (IP adresu pro rozhraní DATA 0, masku podsítě a bránu), vaše záznamy zůstanou zachovány.
     
     ![Průběh registrace StorSimple](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegistrationProgress-gov-include.png)
-13. Po provedení registrace zařízení se zobrazí šifrovací klíč dat služby. Klíč zkopírujte a uložte na bezpečném místě. **Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Device Manager.** Další informace o tomto klíči najdete v článku [Zabezpečení zařízení StorSimple](../articles/storsimple/storsimple-8000-security.md).
+13. Po provedení registrace zařízení se zobrazí šifrovací klíč dat služby. Klíč zkopírujte a uložte na bezpečném místě. **Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Správce zařízení.** Další informace o tomto klíči najdete v článku [Zabezpečení zařízení StorSimple](../articles/storsimple/storsimple-8000-security.md).
     
     ![Registrace zařízení StorSimple 7](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice7_gov-include.png)
     > [!IMPORTANT]

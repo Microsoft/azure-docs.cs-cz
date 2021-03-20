@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak obnovit data uložená v Azure do
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91813249"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Obnovení souborů na Windows serveru pomocí agenta MARS
 
-Tento článek vysvětluje, jak obnovit data z trezoru služby Backup. Chcete-li obnovit data, použijte Průvodce obnovením dat v agentovi Microsoft Azure Recovery Services (MARS). Můžete:
+Tento článek vysvětluje, jak obnovit data z trezoru služby Backup. Chcete-li obnovit data, použijte Průvodce obnovením dat v agentovi Microsoft Azure Recovery Services (MARS). Další možnosti:
 
 * Obnovte data na stejném počítači, ze kterého byly zálohy pořízeny.
 * Obnovení dat na jiný počítač
@@ -31,7 +31,7 @@ Pomocí okamžitého obnovení s Recovery Services trezory v Azure Portal. Pokud
 
 Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače (ze kterého se zálohování provádí), při obnovování těchto dat vám pomůže následující postup.
 
-1. Otevřete modul snap-in **Microsoft Azure Backup**. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **Microsoft Azure Backup**v počítači nebo na serveru.
+1. Otevřete modul snap-in **Microsoft Azure Backup**. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **Microsoft Azure Backup** v počítači nebo na serveru.
 
     Aplikace klasické pracovní plochy by se měla zobrazit ve výsledcích hledání.
 

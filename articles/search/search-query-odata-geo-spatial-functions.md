@@ -20,17 +20,17 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934833"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geografické prostorové funkce OData v Azure Kognitivní hledání – `geo.distance` a `geo.intersects`
 
 Azure Kognitivní hledání podporuje geografické prostorové dotazy ve [výrazech filtru OData](query-odata-filter-orderby-syntax.md) prostřednictvím `geo.distance` `geo.intersects` funkcí a. `geo.distance`Funkce vrátí vzdálenost v kilometrech mezi dvěma body, jedno je pole nebo proměnná rozsahu a jedna se jako součást filtru předává jako součást. `geo.intersects`Funkce vrátí `true` , zda je daný bod v rámci daného mnohoúhelníku, kde je bod pole nebo proměnná rozsahu a mnohoúhelník je zadán jako součást filtru jako konstanta.
 
-`geo.distance`Funkci lze také použít v [parametru **$OrderBy** ](search-query-odata-orderby.md) k řazení výsledků hledání podle vzdálenosti od daného bodu. Syntaxe pro `geo.distance` v **$OrderBy** je stejná jako v **$Filter**. Při použití `geo.distance` v **$OrderBy**musí pole, na které se vztahuje, být typu `Edm.GeographyPoint` a musí být také možné jej **Seřadit**.
+`geo.distance`Funkci lze také použít v [parametru **$OrderBy**](search-query-odata-orderby.md) k řazení výsledků hledání podle vzdálenosti od daného bodu. Syntaxe pro `geo.distance` v **$OrderBy** je stejná jako v **$Filter**. Při použití `geo.distance` v **$OrderBy** musí pole, na které se vztahuje, být typu `Edm.GeographyPoint` a musí být také možné jej **Seřadit**.
 
 > [!NOTE]
 > Při použití `geo.distance` v parametru **$OrderBy** musí pole, které předáte funkci, obsahovat pouze jeden geografický bod. Jinými slovy, musí být typu `Edm.GeographyPoint` a ne `Collection(Edm.GeographyPoint)` . Pro pole kolekce v Azure Kognitivní hledání není možné řadit.

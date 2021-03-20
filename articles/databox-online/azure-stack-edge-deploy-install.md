@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 9aa02521d91d41380b1bdac3efe50ab3d196a856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90894205"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro"></a>Kurz: instalace Azure Stack Edge pro
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Stojan připojit zařízení
 > * Zapojení kabeláže zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky pro instalaci fyzického zařízení jsou následující:
 
@@ -86,7 +86,7 @@ Zařízení musí být nainstalované na standardním racku na 19 palců. Pomoc�
 > Zařízení Azure Stack Edge pro musí být připojená do racku pro správnou operaci.
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Než začnete, přečtěte si pokyny pro bezpečnost v brožuře o zabezpečení, ochraně životního prostředí a regulativní informace. Tato brožura byla dodávána se zařízením.
 - Zahajte instalaci kolejnic do vyhrazeného místa, které je nejblíže k dolnímu okraji skříňky racku.
@@ -117,7 +117,7 @@ Vyhledejte komponenty pro instalaci sestavení se sadou pro železnici:
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Instalace a odebrání nástrojů na železnici (racky s vlákny)
 
 > [!TIP]
-> Tato možnost je vydaná, protože vyžaduje nástroj (_Screwdriver s plochou_obdobu) pro instalaci a odebrání kolejnic do závitových otvorů v rackech.
+> Tato možnost je vydaná, protože vyžaduje nástroj (_Screwdriver s plochou_ obdobu) pro instalaci a odebrání kolejnic do závitových otvorů v rackech.
 
 1. Odeberte PIN kódy z front-a zadních závorek pomocí Screwdriver s plochou čárkou.
 2. Umožňuje načíst a otočit podsestavení západky kolejnice a odebrat je z montážní hranaté závorky.

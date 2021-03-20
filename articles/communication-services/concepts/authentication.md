@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 83976ed9d6f80b6c785cb84e74a0755472f9579f
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 0146ff9ce3ec4821bee7ce34700ca4198bb23ddc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561800"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598860"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Ověřování ve službě Azure Communication Services
 
@@ -22,7 +22,7 @@ Všechny interakce klientů s komunikačními službami Azure musí být ověře
 
 Jiný typ ověřování používá *tokeny přístupu uživatele* k ověřování vůči službám, které vyžadují účast na uživateli. Například chat nebo volající služba využívá *tokeny přístupu uživatele* , aby umožnila přidávání uživatelů do vlákna a jejich vzájemná konverzace.
 
-## <a name="authentication-options"></a>Možnosti ověřování:
+## <a name="authentication-options"></a>Možnosti ověřování
 
 V následující tabulce jsou uvedeny klientské knihovny služby Azure Communication Services a jejich možnosti ověřování:
 
@@ -36,11 +36,23 @@ V následující tabulce jsou uvedeny klientské knihovny služby Azure Communic
 
 Každá možnost autorizace je stručně popsána níže:
 
-- Ověřování **přístupového klíče** je vhodné pro aplikace služeb běžící v prostředí důvěryhodné služby. Přístupový klíč najdete na portálu Azure Communication Services a aplikace služby ji používá jako přihlašovací údaje k inicializaci odpovídajících klientských knihoven. Podívejte se na příklad použití v [klientské knihovně identity](../quickstarts/access-tokens.md). Vzhledem k tomu, že přístupový klíč je součástí připojovacího řetězce vašeho prostředku, ověřování pomocí připojovacího řetězce je ekvivalentní k ověřování pomocí přístupového klíče.
+### <a name="access-key"></a>Přístupový klíč
 
-- **Spravované ověřování identity** poskytuje prvotřídní zabezpečení a snadné použití v dalších možnostech autorizace. Například při použití Azure AD se vyhnete nutnosti ukládat přístupový klíč účtu k vašemu kódu, jak to uděláte v případě autorizace pomocí přístupového klíče. I když můžete nadále používat autorizaci přístupových klíčů k aplikacím komunikačních služeb, Microsoft doporučuje přejít na Azure AD tam, kde je to možné. Pokud chcete nastavit spravovanou identitu, [vytvořte v Azure CLI registrovanou aplikaci](../quickstarts/managed-identity-from-cli.md). Pak se koncový bod a přihlašovací údaje dají použít k ověření klientských knihoven. Podívejte se na příklady použití [spravované identity](../quickstarts/managed-identity.md) .
+Ověřování přístupového klíče je vhodné pro aplikace služeb běžící v prostředí důvěryhodné služby. Váš přístupový klíč najdete na portálu Azure Communication Services. Aplikace služby ji používá jako přihlašovací údaje k inicializaci odpovídajících klientských knihoven. Podívejte se na příklad použití v [klientské knihovně identity](../quickstarts/access-tokens.md). 
 
-- **Tokeny přístupu uživatele** jsou generovány pomocí klientské knihovny identity a jsou přidruženy k uživatelům vytvořeným v klientské knihovně identity. Podívejte se na příklad [Vytvoření uživatelů a generování tokenů](../quickstarts/access-tokens.md). Tokeny přístupu uživatele pak slouží k ověřování účastníků přidaných do konverzací v chatu nebo v sadě SDK volání. Další informace najdete v tématu [Přidání chatu do aplikace](../quickstarts/chat/get-started.md). Ověřování pomocí tokenu přístupu uživatele se v porovnání s přístupovými klíči a spravovanými identitami liší v tom, že se používá k ověření uživatele místo zabezpečeného prostředku Azure.
+Vzhledem k tomu, že přístupový klíč je součástí připojovacího řetězce vašeho prostředku, ověřování pomocí připojovacího řetězce je ekvivalentní k ověřování pomocí přístupového klíče.
+
+Pokud chcete volat rozhraní API ACS ručně pomocí přístupového klíče, budete muset žádost podepsat. Podepsání žádosti je vysvětleno podrobněji v rámci [kurzu](../tutorials/hmac-header-tutorial.md).
+
+### <a name="managed-identity"></a>Spravovaná identita
+
+Spravované identity poskytují zabezpečení a možnost snadného použití prostřednictvím dalších možností autorizace. Například při použití Azure AD se nemusíte ukládat klíč pro přístup k účtu v rámci kódu, jak je to u přístupu k autorizaci klíčů. I když můžete nadále používat autorizaci přístupových klíčů k aplikacím komunikačních služeb, Microsoft doporučuje přejít na Azure AD tam, kde je to možné. 
+
+Pokud chcete nastavit spravovanou identitu, [vytvořte v Azure CLI registrovanou aplikaci](../quickstarts/managed-identity-from-cli.md). Pak se koncový bod a přihlašovací údaje dají použít k ověření klientských knihoven. Podívejte se na příklady použití [spravované identity](../quickstarts/managed-identity.md) .
+
+### <a name="user-access-tokens"></a>Tokeny přístupu uživatele
+
+Tokeny přístupu uživatele jsou generovány pomocí klientské knihovny identity a jsou přidruženy k uživatelům vytvořeným v klientské knihovně identity. Podívejte se na příklad [Vytvoření uživatelů a generování tokenů](../quickstarts/access-tokens.md). Tokeny přístupu uživatele pak slouží k ověřování účastníků přidaných do konverzací v chatu nebo v sadě SDK volání. Další informace najdete v tématu [Přidání chatu do aplikace](../quickstarts/chat/get-started.md). Ověřování pomocí tokenu přístupu uživatele se v porovnání s přístupovými klíči a spravovanými identitami liší v tom, že se používá k ověření uživatele místo zabezpečeného prostředku Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

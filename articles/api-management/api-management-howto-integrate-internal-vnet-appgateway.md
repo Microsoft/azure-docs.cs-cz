@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 3db1c8bfc3a11151342589af0873d88e3d90c6a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91825632"
 ---
-# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace API Management v interní virtuální síti s Application Gateway
+# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace služby API Management v interní virtuální síti se službou Application Gateway
 
-## <a name="overview"></a><a name="overview"> </a> Přehled
+## <a name="overview"></a><a name="overview"></a> Přehled
 
 Službu API Management lze nakonfigurovat v Virtual Network v interním režimu, který je přístupný pouze v rámci Virtual Network. Azure Application Gateway je služba PAAS, která poskytuje nástroj pro vyrovnávání zatížení vrstvy 7. Funguje jako služba reverzního proxy serveru a nabízí z nabídky bránu firewall webových aplikací (WAF).
 
@@ -35,7 +35,7 @@ Kombinování API Management zřízené v interní virtuální síti s Applicati
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ Pokud chcete postupovat podle kroků popsaných v tomto článku, musíte mít:
 
 * Certifikáty-PFX a CER pro název hostitele rozhraní API a PFX pro název hostitele portálu pro vývojáře.
 
-## <a name="scenario"></a><a name="scenario"> </a> Scénář
+## <a name="scenario"></a><a name="scenario"></a> Scénář
 
 Tento článek popisuje, jak používat jednu API Management službu pro interní i externí spotřebitele a učinit ji jako jeden front-end pro místní i cloudová rozhraní API. Také se dozvíte, jak vystavit jenom podmnožinu vašich rozhraní API (v příkladu, kde jsou zvýrazněna zeleně) pro externí spotřebu pomocí funkce směrování dostupné v Application Gateway.
 
@@ -55,7 +55,7 @@ V prvním příkladu instalace jsou všechna vaše rozhraní API spravovaná jen
 
 ![trasa URL](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"></a><a name="before-you-begin"> </a> Než začnete
+## <a name="before-you-begin"></a><a name="before-you-begin"></a> Než začnete
 
 * Ujistěte se, že používáte nejnovější verzi prostředí Azure PowerShell. Pokyny k instalaci najdete v tématu [instalace Azure PowerShell](/powershell/azure/install-az-ps). 
 
@@ -69,7 +69,7 @@ V prvním příkladu instalace jsou všechna vaše rozhraní API spravovaná jen
 * **Vlastní sonda stavu:** Application Gateway ve výchozím nastavení používá ke zjištění, které servery v BackendAddressPool jsou aktivní, nástroje testy založené na IP adresách. Služba API Management reaguje jenom na žádosti se správnou hlavičkou hostitele, takže výchozí sondy selžou. Je potřeba definovat vlastní sondu stavu, která bude pomáhat aplikační bráně zjistit, jestli je služba aktivní, a měla by překládat požadavky.
 * **Vlastní certifikáty domény:** Chcete-li získat přístup k API Management z Internetu, je třeba vytvořit mapování CNAME svého názvu hostitele na Application Gateway název DNS front-endu. Tím se zajistí, že záhlaví a certifikát hostitele odeslaného do Application Gateway, který předáte do API Management, je jedním APIM, který může rozpoznat jako platný. V tomto příkladu použijeme dva certifikáty – pro back-end a portál pro vývojáře.  
 
-## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"> </a> Kroky vyžadované pro integraci API Management a Application Gateway
+## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"></a> Kroky vyžadované pro integraci API Management a Application Gateway
 
 1. Vytvoření skupiny prostředků pro Resource Manager
 2. Pro Application Gateway vytvořte Virtual Network, podsíť a veřejnou IP adresu. Vytvořte další podsíť pro API Management.
@@ -368,10 +368,10 @@ Název DNS Application Gateway by měl být použit k vytvoření záznamu CNAME
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"></a><a name="summary"> </a> Souhrn
+## <a name="summary"></a><a name="summary"></a> Souhrn
 Azure API Management nakonfigurovaný ve virtuální síti poskytuje rozhraní jediné brány pro všechna nakonfigurovaná rozhraní API, ať už jsou hostovaná místně nebo v cloudu. Integrace Application Gateway s API Management poskytuje flexibilitu selektivního povolení konkrétních rozhraní API k přístupu na internetu a poskytování firewallu webových aplikací jako front-endu vaší instance API Management.
 
-## <a name="next-steps"></a><a name="next-steps"> </a> Další kroky
+## <a name="next-steps"></a><a name="next-steps"></a> Další kroky
 * Další informace o Azure Application Gateway
   * [Přehled Application Gateway](../application-gateway/overview.md)
   * [Application Gateway Firewall webových aplikací](../web-application-firewall/ag/ag-overview.md)
