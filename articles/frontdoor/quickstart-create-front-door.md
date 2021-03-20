@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
 ms.openlocfilehash: 4846438f8479fe622570aa515a4d8b40cccc57b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91252260"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření Front Dooru pro vysoce dostupnou globální webovou aplikaci
@@ -46,7 +46,7 @@ Pokud ještě nemáte webovou aplikaci, použijte následující postup k nastav
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | **Předplatné**               | Vyberte předplatné. |    
+    | **Předplatné**               | Vyberte své předplatné. |    
     | **Skupina prostředků**       | Vyberte **vytvořit nový** a do textového pole zadejte *FrontDoorQS_rg1* .|
     | **Název**                   | Zadejte jedinečný **název** vaší webové aplikace. V tomto příkladu se používá *WebAppContoso-1*. |
     | **Publikovat** | Vyberte **Kód**. |
@@ -56,9 +56,9 @@ Pokud ještě nemáte webovou aplikaci, použijte následující postup k nastav
     | **Plán Windows** | Vyberte **vytvořit nový** a do textového pole zadejte *myAppServicePlanCentralUS* . |
     | **SKU a velikost** | Vyberte **úroveň Standard S1 100 celkem ACU, 1,75 GB paměti**. |
 
-1. Vyberte **zkontrolovat + vytvořit**, zkontrolujte **Souhrn**a pak vyberte **vytvořit**. Dokončení nasazení může trvat několik minut.
+1. Vyberte **zkontrolovat + vytvořit**, zkontrolujte **Souhrn** a pak vyberte **vytvořit**. Dokončení nasazení může trvat několik minut.
 
-    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Kontrola souhrnu pro webovou aplikaci":::
 
 Po dokončení nasazení vytvořte druhou webovou aplikaci. Použijte stejný postup se stejnými hodnotami, s výjimkou následujících hodnot:
 
@@ -67,7 +67,7 @@ Po dokončení nasazení vytvořte druhou webovou aplikaci. Použijte stejný po
 | **Skupina prostředků**   | Vyberte **vytvořit novou** a zadejte *FrontDoorQS_rg2* |
 | **Název**             | Zadejte jedinečný název vaší webové aplikace, v tomto příkladu *WebAppContoso-2* .  |
 | **Oblast**           | Jiné oblasti, v tomto příkladu *střed USA – jih* |
-| **Plán App Service**  >  **Plán Windows**         | Vyberte **nové** a zadejte *myAppServicePlanSouthCentralUS*a pak vyberte **OK** . |
+| **Plán App Service**  >  **Plán Windows**         | Vyberte **nové** a zadejte *myAppServicePlanSouthCentralUS* a pak vyberte **OK** . |
 
 ## <a name="create-a-front-door-for-your-application"></a>Vytvoření Front Dooru pro vaši aplikaci
 
@@ -79,64 +79,64 @@ Nakonfigurujte přední dveře Azure tak, aby směrovaly uživatelský provoz na
 
     | Nastavení | Hodnota |
     | --- | --- |
-    | **Předplatné** | Vyberte předplatné. |    
+    | **Předplatné** | Vyberte své předplatné. |    
     | **Skupina prostředků** | Vyberte **vytvořit nový** a do textového pole zadejte *FrontDoorQS_rg0* .|
     | **Umístění skupiny prostředků** | Vyberte **střed USA**. |
 
-1. Ve **front-endu/doménách**vyberte možnost **+** otevřít **Přidat hostitele front-endu**.
+1. Ve **front-endu/doménách** vyberte možnost **+** otevřít **Přidat hostitele front-endu**.
 
-1. Jako **název hostitele**zadejte globálně jedinečný název hostitele. V tomto příkladu se používá *Contoso-Endu*. Vyberte **Přidat**.
+1. Jako **název hostitele** zadejte globálně jedinečný název hostitele. V tomto příkladu se používá *Contoso-Endu*. Vyberte **Přidat**.
 
-    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Přidání hostitele front-endu pro frontu Azure":::
 
 Dále vytvořte back-end fond, který obsahuje vaše dvě webové aplikace.
 
-1. Pořád v **části vytvořit frontu** **back-endu**vyberte možnost **+** pro otevření **Přidat back-end fond**.
+1. Pořád v **části vytvořit frontu** **back-endu** vyberte možnost **+** pro otevření **Přidat back-end fond**.
 
-1. Jako **název**zadejte *myBackendPool*a pak vyberte **Přidat back-end**.
+1. Jako **název** zadejte *myBackendPool* a pak vyberte **Přidat back-end**.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Přidat back-end fond":::
 
 1. V okně **Přidat back-end** vyberte následující informace a pak vyberte **Přidat**.
 
     | Nastavení | Hodnota |
     | --- | --- |
     | **Typ hostitele back-endu** | Vyberte **App Service**. |   
-    | **Předplatné** | Vyberte předplatné. |    
+    | **Předplatné** | Vyberte své předplatné. |    
     | **Název hostitele back-endu** | Vyberte první webovou aplikaci, kterou jste vytvořili. V tomto příkladu byla webová aplikace *WebAppContoso-1*. |
 
     **Ponechte všechna ostatní pole výchozí.*
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Přidání hostitele back-endu do předních dveří":::
 
 1. Vyberte znovu **Přidat back-end** . Vyberte následující informace a vyberte **Přidat**.
 
     | Nastavení | Hodnota |
     | --- | --- |
     | **Typ hostitele back-endu** | Vyberte **App Service**. |   
-    | **Předplatné** | Vyberte předplatné. |    
+    | **Předplatné** | Vyberte své předplatné. |    
     | **Název hostitele back-endu** | Vyberte druhou webovou aplikaci, kterou jste vytvořili. V tomto příkladu byla webová aplikace *WebAppContoso-2*. |
 
     **Ponechte všechna ostatní pole výchozí.*
 
 1. V okně **Přidat fond back-endu** vyberte **Přidat** a dokončete konfiguraci fondu back-end.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Přidat back-end fond pro Azure na přední dveře":::
 
 Nakonec přidejte pravidlo směrování. Pravidlo směrování namapuje hostitele front-endu do back-endového fondu. Pravidlo přepošle požadavek `contoso-frontend.azurefd.net` na do **myBackendPool**.
 
 1. I když v části **pravidla směrování** **vytvoříte přední dvířka**, vyberte **+** nakonfigurovat pravidlo směrování.
 
-1. Do **Přidat pravidlo**pro **název**zadejte *LocationRule*. Přijměte všechny výchozí hodnoty a pak vyberte **Přidat** a přidejte pravidlo směrování.
+1. Do **Přidat pravidlo** pro **název** zadejte *LocationRule*. Přijměte všechny výchozí hodnoty a pak vyberte **Přidat** a přidejte pravidlo směrování.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Přidat pravidlo na přední dveře":::
 
    >[!WARNING]
    > **Musíte** zajistit, aby každé z hostitelů front-endu v předních dveřích mělo pravidlo směrování s přidruženou výchozí cestou ( `\*` ). To znamená, že všechna vaše pravidla směrování musí mít aspoň jedno pravidlo směrování pro každého hostitele ve front-endu definovaného na výchozí cestě ( `\*` ). Pokud to neuděláte, může to vést k nesprávnému směrování provozu koncového uživatele.
 
-1. Vyberte **zkontrolovat + vytvořit**a pak **vytvořit**.
+1. Vyberte **zkontrolovat + vytvořit** a pak **vytvořit**.
 
-    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
+    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Nakonfigurované přední dveře Azure":::
 
 ## <a name="view-azure-front-door-in-action"></a>Zobrazit přední dveře Azure v akci
 
@@ -150,7 +150,7 @@ Pokud chcete otestovat rychlé globální převzetí služeb při selhání v ak
 
 1. V Azure Portal vyhledejte a vyberte *App Services*. Posuňte se dolů a najděte jednu z vašich webových aplikací, **WebAppContoso-1** v tomto příkladu.
 
-1. Vyberte webovou aplikaci a vyberte možnost **zastavit**a **Ano** pro ověření.
+1. Vyberte webovou aplikaci a vyberte možnost **zastavit** a **Ano** pro ověření.
 
 1. Aktualizujte si stránku v prohlížeči. Měla by se zobrazit stejná informační stránka.
 
@@ -161,13 +161,13 @@ Pokud chcete otestovat rychlé globální převzetí služeb při selhání v ak
 
 1. Aktualizujte si stránku v prohlížeči. Tentokrát by se měla zobrazit chybová zpráva.
 
-   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
+   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Obě instance webové aplikace se zastavily.":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Až budete hotovi, můžete odebrat všechny položky, které jste vytvořili. Odstraněním skupiny prostředků se odstraní také její obsah. Pokud nemáte v úmyslu používat tato přední dvířka, měli byste odebrat prostředky, abyste se vyhnuli zbytečným poplatkům.
 
-1. V Azure Portal vyhledejte a vyberte **skupiny prostředků**nebo v nabídce Azure Portal vyberte **skupiny prostředků** .
+1. V Azure Portal vyhledejte a vyberte **skupiny prostředků** nebo v nabídce Azure Portal vyberte **skupiny prostředků** .
 
 1. Vyfiltrujte nebo přejděte dolů a najděte skupinu prostředků, například **FrontDoorQS_rg0**.
 

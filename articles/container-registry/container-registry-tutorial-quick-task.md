@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
 ms.openlocfilehash: b218f47348d5a26297f14c4bc788a6cf6b78cc60
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96030321"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: Sestavení a nasazení imagí kontejneru v cloudu pomocí úloh služby Azure Container Registry
@@ -28,7 +28,7 @@ V tomto kurzu, který je první částí série, se naučíte:
 
 V následujících kurzech se naučíte použít ACR Tasks k automatizovanému sestavení imagu kontejneru při potvrzení kódu a aktualizaci základní image. ACR úlohy mohou také spouštět [úlohy s více kroky](container-registry-tasks-multi-step.md), pomocí souboru YAML k definování kroků pro sestavení, vložení a volitelně testování více kontejnerů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="github-account"></a>Účet GitHub
 

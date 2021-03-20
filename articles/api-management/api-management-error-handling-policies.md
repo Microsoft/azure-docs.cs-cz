@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92070941"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Zpracování chyb v zásadách služby API Management
@@ -100,7 +100,7 @@ Pokud dojde k chybě a řízení přejde na `on-error` oddíl zásady, je chyba 
 
 Následující chyby jsou předdefinované pro chybové stavy, ke kterým může dojít během hodnocení integrovaných kroků zpracování.
 
-| Zdroj        | Stav                                 | Důvod                  | Zpráva                                                                                                                |
+| Zdroj        | Podmínka                                 | Důvod                  | Zpráva                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | konfigurace | Identifikátor URI neodpovídá žádnému rozhraní API nebo operaci. | OperationNotFound       | Příchozí požadavek nelze spárovat s operací.                                                                      |
 | autorizace | Klíč předplatného není zadaný.             | SubscriptionKeyNotFound | Přístup byl odepřen z důvodu chybějícího klíče předplatného. Při vytváření požadavků na toto rozhraní API nezapomeňte zahrnout klíč předplatného. |
@@ -113,7 +113,7 @@ Následující chyby jsou předdefinované pro chybové stavy, ke kterým může
 
 Následující chyby jsou předdefinované pro chybové stavy, ke kterým může dojít při vyhodnocování zásad.
 
-| Zdroj       | Stav                                                       | Důvod                    | Zpráva                                                                                                                              |
+| Zdroj       | Podmínka                                                       | Důvod                    | Zpráva                                                                                                                              |
 | ------------ | --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | frekvence – omezení   | Překročení limitu přenosové rychlosti                                             | RateLimitExceeded         | Překročení limitu přenosové rychlosti                                                                                                               |
 | kvóta        | Překročení kvóty                                                  | QuotaExceeded             | Překročení kvóty volání. Kvóta bude doplněna v XX: xx: xx. – nebo mimo kvótu šířky pásma. Kvóta bude doplněna v XX: xx: xx. |

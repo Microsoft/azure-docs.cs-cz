@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781222"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestava napříč cloudových databází s horizontálním škálováním (Preview)
@@ -37,7 +37,7 @@ Tady vytvoříte správce map horizontálních oddílů spolu s několika horizo
 1. Sestavte a spusťte ukázkovou aplikaci **nástroje Začínáme s elastic Database** , a to pomocí kroků v části článek [Stažení a spuštění ukázkové aplikace](elastic-scale-get-started.md#download-and-run-the-sample-app-1). Po dokončení všech kroků se zobrazí následující příkazový řádek:
 
     ![příkazový řádek][1]
-2. V příkazovém okně zadejte "1" a stiskněte klávesu **ENTER** . Tím se vytvoří správce map horizontálních oddílů a na server se přidá dva horizontálních oddílů. Pak zadejte "3" a stiskněte **ENTER** ; Opakujte akci čtyřikrát. Tím se vloží vzorové datové řádky do horizontálních oddílů.
+2. V příkazovém okně zadejte "1" a stiskněte klávesu **ENTER**. Tím se vytvoří správce map horizontálních oddílů a na server se přidá dva horizontálních oddílů. Pak zadejte "3" a stiskněte **ENTER**; Opakujte akci čtyřikrát. Tím se vloží vzorové datové řádky do horizontálních oddílů.
 3. [Azure Portal](https://portal.azure.com) by se měly na vašem serveru zobrazovat tři nové databáze:
 
    ![Potvrzení sady Visual Studio][2]
@@ -121,13 +121,13 @@ Všimněte si, že dotaz agreguje výsledky ze všech horizontálních oddílů 
 
 1. Spusťte Excel 2013.
 2. Přejděte na pás karet **data** .
-3. Klikněte na **z jiných zdrojů** a klikněte na **z SQL Server** .
+3. Klikněte na **z jiných zdrojů** a klikněte na **z SQL Server**.
 
    ![Import z jiných zdrojů z Excelu][5]
-4. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje. Potom klikněte na **Další** .
+4. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje. Potom klikněte na **Další**.
 5. V dialogovém okně **Vyberte databázi** obsahující požadovaná data a vyberte databázi **ElasticDBQuery** .
-6. V zobrazení seznamu vyberte tabulku **zákazníci** a klikněte na **Další** . Klikněte na **Dokončit** .
-7. Ve formuláři **importovat data** v části **Vyberte, jakým způsobem chcete zobrazit tato data v sešitu** vyberte **tabulka** a klikněte na tlačítko **OK** .
+6. V zobrazení seznamu vyberte tabulku **zákazníci** a klikněte na **Další**. Klikněte na **Dokončit**.
+7. Ve formuláři **importovat data** v části **Vyberte, jakým způsobem chcete zobrazit tato data v sešitu** vyberte **tabulka** a klikněte na tlačítko **OK**.
 
 Všechny řádky z tabulky **Customers** uložené v různých horizontálních oddílů naplní excelový list.
 

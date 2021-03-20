@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
 ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91269229"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Vytvoření nebo připojení paralelních větví pro akce pracovního postupu v Azure Logic Apps
@@ -20,7 +20,7 @@ Ve výchozím nastavení se vaše akce v pracovních postupech aplikace logiky s
 > [!TIP] 
 > Pokud máte aktivační událost, která přijímá pole a chcete pro každou položku pole Spustit pracovní postup, můžete toto pole v *dávce* [ **SplitOn** vlastností triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -181,7 +181,7 @@ Pokud pracujete v zobrazení kódu, můžete místo toho definovat strukturu spo
 }
 ```
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).

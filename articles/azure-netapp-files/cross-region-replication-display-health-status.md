@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: a14656bc1abc42fdc3e948fdae1ca07469681d21
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2819ee3bc76c0b9ff0f35d442e52149096ddc9f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249848"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590972"
 ---
 # <a name="display-health-status-of-replication-relationship"></a>Zobrazení stavu vztahu replikace 
 
@@ -57,7 +57,8 @@ Stav replikace můžete zobrazit na zdrojovém svazku nebo cílovém svazku.
 
 * [Replikace mezi oblastmi](cross-region-replication-introduction.md)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
+* [Změna velikosti cílového svazku replikace mezi oblastmi](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
-* [Odstranit replikace svazků nebo svazky](cross-region-replication-delete.md)
+* [Odstranění svazků nebo replikací svazků](cross-region-replication-delete.md)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)
 

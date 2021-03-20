@@ -7,10 +7,10 @@ ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743113"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
@@ -25,7 +25,7 @@ Microsoft Teams na virtuálním počítači s Windows podporuje chat a spoluprá
 
 Díky optimalizaci médií pro Microsoft Teams klient pro stolní počítače s Windows zpracovává zvuk a video místně pro volání a schůzky týmů. Na virtuálním počítači s Windows můžete dál používat Microsoft Teams s ostatními klienty bez optimalizovaného volání a schůzek. Týmy a funkce pro spolupráci jsou podporované na všech platformách. Pokud chcete přesměrovat místní zařízení ve vzdálené relaci, přečtěte si [Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů](#customize-remote-desktop-protocol-properties-for-a-host-pool).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct používat Microsoft Teams na virtuálním počítači s Windows, musíte provést tyto akce:
 

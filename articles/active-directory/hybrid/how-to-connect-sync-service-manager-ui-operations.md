@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64ab5901ad54e37fc05d7da757ce7f31d42fe3b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357099"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Použití karty synchronizace Service Manager operací
@@ -43,7 +43,7 @@ Sloupec **Status (stav** ) obsahuje nejdůležitější informace a zobrazuje ne
 | dokončeno – \* Upozornění |Běh se dokončil, ale některá data nejsou v očekávaném stavu. Pokud máte chyby, pak je tato zpráva obvykle jenom příznakem. Dokud nebudete řešit chyby, neměli byste prozkoumat upozornění. |
 | úspěch |Žádné problémy. |
 
-Když vyberete řádek, v dolní části aktualizace zobrazíte podrobnosti o daném spuštění. Vlevo od dolního okraje může být seznam, který říká **Krok #**. Tento seznam se zobrazí pouze v případě, že máte více domén v doménové struktuře, kde je každá doména reprezentována krokem. Název domény najdete pod **oddílem**nadpisu. V části **Statistika synchronizace**můžete najít další informace o počtu zpracovaných změn. Můžete kliknout na odkazy a získat tak seznam změněných objektů. Pokud máte objekty s chybami, zobrazí se tyto chyby v části **chyby synchronizace**.
+Když vyberete řádek, v dolní části aktualizace zobrazíte podrobnosti o daném spuštění. Vlevo od dolního okraje může být seznam, který říká **Krok #**. Tento seznam se zobrazí pouze v případě, že máte více domén v doménové struktuře, kde je každá doména reprezentována krokem. Název domény najdete pod **oddílem** nadpisu. V části **Statistika synchronizace** můžete najít další informace o počtu zpracovaných změn. Můžete kliknout na odkazy a získat tak seznam změněných objektů. Pokud máte objekty s chybami, zobrazí se tyto chyby v části **chyby synchronizace**.
 
 Další informace najdete v tématu [řešení potíží s objektem, který se nesynchronizuje](tshoot-connect-object-not-syncing.md) .
 

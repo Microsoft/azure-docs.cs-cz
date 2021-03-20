@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89020180"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
 V tomto příkladu se dozvíte, jak vytvořit vlastní dovednost webového rozhraní API. Tato dovednost bude přijímat umístění, veřejné údaje a organizace a vrátí popisy pro ně. Tento příklad používá [funkci Azure](https://azure.microsoft.com/services/functions/) k zabalení [rozhraní API Bingu pro vyhledávání entit](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) tak, aby implementovala vlastní rozhraní dovedností.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Přečtěte si o vlastním článku o [dovednostech rozhraní](cognitive-search-custom-skill-interface.md) , pokud neznáte vstupní/výstupní rozhraní, které by měla vlastní dovednost implementovat.
 
@@ -34,9 +34,9 @@ I když tento příklad používá funkci Azure k hostování webového rozhran�
 
 ### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
-1. V aplikaci Visual Studio vyberte v nabídce soubor možnost **Nový**  >  **projekt** .
+1. V sadě Visual Studio zvolte v nabídce Soubor možnost **Nový** > **Projekt**.
 
-1. V dialogovém okně Nový projekt vyberte **instalovat**, rozbalte Cloud **Visual C#**  >  **Cloud**, vyberte **Azure Functions**, zadejte název projektu a vyberte **OK**. Název aplikace funkcí musí být platný jako obor názvů jazyka C#, proto nepoužívejte podtržítka, spojovníky nebo žádné jiné jiné než alfanumerické znaky.
+1. V dialogovém okně Nový projekt vyberte **instalovat**, rozbalte Cloud **Visual C#**  >  , vyberte **Azure Functions**, zadejte název projektu a vyberte **OK**. Název aplikace funkcí musí být platný jako obor názvů jazyka C#, proto nepoužívejte podtržítka, spojovníky nebo žádné jiné jiné než alfanumerické znaky.
 
 1. Vyberte **Azure Functions v2 (.NET Core)**. Můžete to také provést s verzí 1, ale kód napsaný níže je založen na šabloně v2.
 
@@ -50,7 +50,7 @@ I když tento příklad používá funkci Azure k hostování webového rozhran�
 
 Visual Studio vytvoří projekt a v něm třídu, která obsahuje často používaný kód pro zvolený typ funkce. Atribut *FunctionName* metody nastavuje název funkce. Atribut *HttpTrigger* určuje, že je funkce aktivována požadavkem HTTP.
 
-Nyní nahraďte veškerý obsah souboru *function1.cs* následujícím kódem:
+Nyní nahraďte veškerý obsah souboru *function1. cs* následujícím kódem:
 
 ```csharp
 using System;

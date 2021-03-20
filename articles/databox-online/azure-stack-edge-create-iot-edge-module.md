@@ -10,10 +10,10 @@ ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 96a6692524eca3a2845d648ab3df2932d00ce823
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91951141"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>Vývoj modulu C# IoT Edge pro přesun souborů pomocí Azure Stack Edge pro
@@ -125,8 +125,8 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-1. V Průzkumníku VS Code otevřete **moduly > FileCopyModule > program.cs**.
-2. V horní části **oboru názvů FileCopyModule**přidejte následující příkazy using pro typy, které se používají později. **Microsoft. Azure. Devices. Client. Transport. MQTT** je protokol, který slouží k odesílání zpráv do centra IoT Edge.
+1. V Průzkumníku VS Code otevřete **moduly > FileCopyModule > program. cs**.
+2. V horní části **oboru názvů FileCopyModule** přidejte následující příkazy using pro typy, které se používají později. **Microsoft. Azure. Devices. Client. Transport. MQTT** je protokol, který slouží k odesílání zpráv do centra IoT Edge.
 
     ```
     namespace FileCopyModule
@@ -160,7 +160,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     }
     ```
 
-5. V **metodě Init**kód vytvoří a nakonfiguruje objekt **ModuleClient** . Tento objekt umožňuje modulu připojit se k místnímu modulu Azure IoT Edge runtime pomocí protokolu MQTT pro odesílání a příjem zpráv. Modul runtime IoT Edge poskytne modulu připojovací řetězec používaný metodou Init. Kód zaregistruje zpětné volání kopírovacího kopírování pro příjem zpráv z centra IoT Edge prostřednictvím koncového bodu **input1** . **Metodu init** nahraďte následujícím kódem.
+5. V **metodě Init** kód vytvoří a nakonfiguruje objekt **ModuleClient** . Tento objekt umožňuje modulu připojit se k místnímu modulu Azure IoT Edge runtime pomocí protokolu MQTT pro odesílání a příjem zpráv. Modul runtime IoT Edge poskytne modulu připojovací řetězec používaný metodou Init. Kód zaregistruje zpětné volání kopírovacího kopírování pro příjem zpráv z centra IoT Edge prostřednictvím koncového bodu **input1** . **Metodu init** nahraďte následujícím kódem.
 
     ```
     /// <summary>
@@ -240,7 +240,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     ```
 
 7. Soubor uložte.
-8. Můžete si také [Stáhnout existující ukázku kódu](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) pro tento projekt. Pak můžete ověřit soubor, který jste uložili proti souboru **program.cs** v této ukázce.
+8. Můžete si také [Stáhnout existující ukázku kódu](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) pro tento projekt. Pak můžete ověřit soubor, který jste uložili proti souboru **program. cs** v této ukázce.
 
 ## <a name="build-your-iot-edge-solution"></a>Vytvoření řešení IoT Edge
 

@@ -13,10 +13,10 @@ ms.author: sasapopo
 ms.reviewer: sstein, bonova
 ms.date: 10/08/2020
 ms.openlocfilehash: f9d5528746a85668677ab122d98e954bd39cd163
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790725"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>Nastavení a Správa důvěryhodnosti mezi spravovanými instancemi SQL pomocí skupin důvěryhodných serverů
@@ -32,7 +32,7 @@ Skupina důvěryhodných serverů je koncept, který se používá ke správě v
 
 Následující část popisuje nastavení skupiny důvěryhodných serverů.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com/).
+1. Přejděte na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte do spravované instance Azure SQL, kterou plánujete přidat do nově vytvořené skupiny důvěryhodných serverů.
 
@@ -42,13 +42,13 @@ Následující část popisuje nastavení skupiny důvěryhodných serverů.
 
 4. Na stránce Konfigurace skupiny důvěryhodných serverů vyberte ikonu **Nová skupina** .
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="Nová skupina":::
 
-5. V okně vytvořit **skupinu důvěryhodných certifikátů SQL** nastavte **název skupiny** . Musí být jedinečný ve všech oblastech, kde se nacházejí členové skupiny. **Obor důvěryhodnosti** definuje typ scénáře mezi instancemi, který je povolený pro skupinu důvěryhodných serverů. Ve verzi Preview je jediným platným oborem důvěryhodnosti **distribuované transakce** , takže je předvybráno a nelze je změnit. Všichni **Členové skupiny** musí patřit do stejného **předplatného** , ale můžou být v různých skupinách prostředků. Vyberte **skupinu prostředků** a **SQL Server/instanci** pro výběr spravované instance Azure SQL, která bude členem skupiny.
+5. V okně vytvořit **skupinu důvěryhodných certifikátů SQL** nastavte **název skupiny**. Musí být jedinečný ve všech oblastech, kde se nacházejí členové skupiny. **Obor důvěryhodnosti** definuje typ scénáře mezi instancemi, který je povolený pro skupinu důvěryhodných serverů. Ve verzi Preview je jediným platným oborem důvěryhodnosti **distribuované transakce**, takže je předvybráno a nelze je změnit. Všichni **Členové skupiny** musí patřit do stejného **předplatného** , ale můžou být v různých skupinách prostředků. Vyberte **skupinu prostředků** a **SQL Server/instanci** pro výběr spravované instance Azure SQL, která bude členem skupiny.
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="Okno vytvořit skupinu důvěryhodných serverů":::
 
-6. Po vyplnění všech povinných polí klikněte na **Uložit** .
+6. Po vyplnění všech povinných polí klikněte na **Uložit**.
 
 ## <a name="server-trust-group-maintenance-and-deletion"></a>Údržba a odstraňování skupiny důvěryhodnosti serveru
 
@@ -59,11 +59,11 @@ Následující část popisuje proces odstranění skupiny důvěryhodnosti serv
 2. Přejděte do spravované instance, která patří do skupiny důvěryhodnosti.
 3. Na stránce nastavení **zabezpečení** vyberte kartu **skupiny důvěryhodných certifikátů SQL** .
 4. Vyberte skupinu důvěryhodnosti, kterou chcete odstranit.
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
-5. Klikněte na **Odstranit skupinu** .
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
-6. Zadáním názvu skupiny důvěryhodných serverů potvrďte odstranění a klikněte na **Odstranit** .
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="Vybrat skupinu důvěryhodných serverů":::
+5. Klikněte na **Odstranit skupinu**.
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="Odstranit skupinu důvěryhodných serverů":::
+6. Zadáním názvu skupiny důvěryhodných serverů potvrďte odstranění a klikněte na **Odstranit**.
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="Potvrďte odstranění skupiny důvěryhodných serverů":::
 
 > [!NOTE]
 > Odstraněním skupiny důvěryhodných serverů se nemusí okamžitě odstranit vztah důvěryhodnosti mezi těmito dvěma spravovanými instancemi. Odstranění vztahu důvěryhodnosti se dá vyhovět vyvoláním [převzetí služeb](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover) spravovaných instancí při selhání. Další informace najdete v části [známé problémy](../database/doc-changes-updates-release-notes.md?tabs=managed-instance#known-issues) s nejnovějšími aktualizacemi.

@@ -4,17 +4,17 @@ description: Tento článek vás provede procesem vytvoření testovacího prost
 ms.topic: article
 ms.date: 10/12/2020
 ms.openlocfilehash: 9fa33a59dd35bfe3469f30f2349f8a08c45bd5e3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92058321"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Vytvoření testovacího prostředí v Azure DevTest Labs
 
 Testovací prostředí ve službě Azure DevTest Labs je infrastruktura, která zahrnuje skupinu prostředků, třeba službu Virtual Machines, která vám umožní lépe spravovat tyto prostředky zadáním omezení a kvót. Tento článek vás provede procesem vytvoření testovacího prostředí pomocí webu Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytvoření testovacího prostředí potřebujete:
 
@@ -69,7 +69,7 @@ Pokud chcete vytvořit vlastní označování, které se přidá ke každému pr
 
 ![Karta značky ](./media/devtest-lab-create-lab/tags.png)
 
-### <a name="review-and-create"></a>Podokno Zkontrolovat a vytvořit
+### <a name="review-and-create"></a>Zkontrolovat a vytvořit
 
 Po dokončení vyberte **vytvořit**. Stav procesu vytváření testovacího prostředí můžete sledovat v oblasti **oznámení** v pravém horním rohu stránky portálu. 
 

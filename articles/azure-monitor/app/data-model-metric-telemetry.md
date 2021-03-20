@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87320574"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: datový model Application Insights
@@ -49,7 +49,7 @@ Váha metriky agregované metriky. Neměl by být nastaven pro měření.
 
 Minimální hodnota agregované metriky Neměl by být nastaven pro měření.
 
-## <a name="max"></a>Max
+## <a name="max"></a>Maximum
 
 Maximální hodnota agregované metriky Neměl by být nastaven pro měření.
 

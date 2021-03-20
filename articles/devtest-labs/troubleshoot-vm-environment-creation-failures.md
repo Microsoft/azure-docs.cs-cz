@@ -4,10 +4,10 @@ description: Naučte se řešit potíže s vytvářením virtuálních počíta�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b7d3f3ad34d8a5bb48607816623c67121d21d78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476474"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Řešení chyb při vytváření virtuálních počítačů a prostředí v Azure DevTest Labs
@@ -62,7 +62,7 @@ Pokud se vaše prostředí nebo virtuální počítač vytvořil prostřednictv�
 Chcete-li zobrazit protokoly nasazení šablon testovacího prostředí, postupujte takto:
 
 1. Spusťte stránku pro skupinu prostředků, ve které testovací prostředí existuje.
-2. V části **Nastavení**v nabídce vlevo vyberte **nasazení** .
+2. V části **Nastavení** v nabídce vlevo vyberte **nasazení** .
 3. Vyhledejte nasazení se stavem selhání a vyberte je.
 4. Na stránce **nasazení** vyberte odkaz **Podrobnosti operace** pro operaci, která selhala.
 5. Zobrazí se podrobnosti o operaci, která selhala v okně **Podrobnosti operace** .

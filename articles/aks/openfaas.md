@@ -7,10 +7,10 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 319107127b79383fc3b49f0eeb856a0e6c5b09f8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747771"
 ---
 # <a name="using-openfaas-on-aks"></a>Používání OpenFaaS v AKS
@@ -132,7 +132,7 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 Teď, když je OpenFaaS funkční, vytvořte funkci pomocí portálu OpenFaas.
 
-Klikněte na **nasadit novou funkci** a vyhledejte **FIGlet** . Vyberte funkci FIGlet a klikněte na **nasadit** .
+Klikněte na **nasadit novou funkci** a vyhledejte **FIGlet**. Vyberte funkci FIGlet a klikněte na **nasadit**.
 
 ![Snímek obrazovky se zobrazí dialogové okno nasadit novou funkci s textem FIGlet na řádku pro hledání.](media/container-service-serverless/figlet.png)
 

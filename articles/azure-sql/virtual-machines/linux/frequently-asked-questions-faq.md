@@ -12,10 +12,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792544"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Nejčastější dotazy k SQL Server on Linux virtuálním počítačům
@@ -69,7 +69,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Můžu změnit virtuální počítač tak, aby používal vlastní licenci SQL Serveru, pokud byl vytvořený z některé z imagí z galerie s průběžnými platbami?**
 
-   Ne. Nemůžete přepnout z licencování platby za sekundu na používání vlastní licence. Musíte vytvořit nový virtuální počítač Linux, nainstalovat SQL Server a migrovat data. Další podrobnosti o tom, jak vlastnit vlastní licenci, najdete na předchozí otázce.
+   No. Nemůžete přepnout z licencování platby za sekundu na používání vlastní licence. Musíte vytvořit nový virtuální počítač Linux, nainstalovat SQL Server a migrovat data. Další podrobnosti o tom, jak vlastnit vlastní licenci, najdete na předchozí otázce.
 
 ## <a name="administration"></a>Správa
 
@@ -93,15 +93,15 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
    V tuto chvíli to není možné. Skupiny dostupnosti Always On a clusteringu s podporou převzetí služeb při selhání vyžadují řešení clusteringu v systému Linux, například Pacemaker. Podporovaná distribuce systému Linux pro SQL Server v cloudu nepodporuje jejich doplňky pro vysokou dostupnost.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
-**Virtuální počítače se systémem Linux** :
+**Virtuální počítače se systémem Linux**:
 
 * [Přehled SQL Server na virtuálním počítači se systémem Linux](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Zřízení SQL Server na virtuálním počítači se systémem Linux](sql-vm-create-portal-quickstart.md)
 * [Dokumentace k SQL Server on Linux](/sql/linux/sql-server-linux-overview)
 
-**Virtuální počítače s Windows** :
+**Virtuální počítače s Windows**:
 
 * [Přehled SQL Server na virtuálním počítači s Windows](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Zřízení SQL Server na virtuálním počítači s Windows](../windows/sql-vm-create-portal-quickstart.md)

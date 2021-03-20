@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: b4a8ea5c08f66bc0c64d4762e695dd4e2822af44
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92452001"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Kurz: Azure Active Directory integrací s předpokládanou sadou CX
@@ -30,7 +30,7 @@ Integrací předvídatelné sady CX pomocí Azure AD získáte následující v�
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s využitím předvídatelné sady CX budete potřebovat následující položky:
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí Azure AD s využi
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Pokud máte **soubor metadat poskytovatele služeb**v **základní části Konfigurace SAML** , proveďte následující kroky:
+4. Pokud máte **soubor metadat poskytovatele služeb** v **základní části Konfigurace SAML** , proveďte následující kroky:
 
     a. Klikněte na **nahrát soubor metadat**.
 
@@ -142,7 +142,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování na straně **předvídate
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -166,7 +166,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k předprodukční sadě CX.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **předpokládaná sada CX Suite**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **předpokládaná sada CX Suite**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -198,7 +198,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici předvídatelné sady pro sadu CX, měli byste být automaticky přihlášení do sady předvídatelná CX Suite, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

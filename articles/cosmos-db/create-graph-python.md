@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: chrande
 ms.custom: devx-track-python
 ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95972418"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí Pythonu a Azure Portal
@@ -30,7 +30,7 @@ ms.locfileid: "95972418"
 
 V tomto rychlém startu vytvoříte a spravujete účet rozhraní API pro Azure Cosmos DB Gremlin (Graph) z Azure Portal a přidáte data pomocí aplikace Python naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
 - [Python 3.5 +](https://www.python.org/downloads/) včetně instalačního balíčku balíčku [PIP](https://pip.pypa.io/en/stable/installing/)
 - [Ovladač Pythonu pro Gremlin](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
@@ -187,7 +187,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 5. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
 
-    key|value|Poznámky
+    key|hodnota|Poznámky
     ----|----|----
     PK|/pk| 
     id|ashley|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
@@ -205,7 +205,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 9. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností:
 
-    key|value|Poznámky
+    key|hodnota|Poznámky
     ----|----|----
     PK|/pk| 
     id|rakesh|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.

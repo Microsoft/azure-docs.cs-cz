@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6811a06eb3483fd53b6e566033935c3b2e00ceca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84887248"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Výstrahy v reálném čase v Microsoft Azure CDN
@@ -60,19 +60,19 @@ Tento dokument vysvětluje výstrahy v reálném čase v Microsoft Azure CDN. Ta
     ![Typ média s vybraným Large Object HTTP](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > Jako **typ média**musíte vybrat **large object http** .  Ostatní možnosti nejsou používány **Azure CDN z Verizon**.  Nepodařilo se vybrat **large object http** způsobí, že se výstraha nikdy neaktivuje.
+   > Jako **typ média** musíte vybrat **large object http** .  Ostatní možnosti nejsou používány **Azure CDN z Verizon**.  Nepodařilo se vybrat **large object http** způsobí, že se výstraha nikdy neaktivuje.
    > 
    > 
-8. Vytvořte **výraz** , který se má monitorovat, a to výběrem **metriky**, **operátoru**a **hodnoty triggeru**.
+8. Vytvořte **výraz** , který se má monitorovat, a to výběrem **metriky**, **operátoru** a **hodnoty triggeru**.
    
-   * V poli **metrika**vyberte typ podmínky, kterou chcete monitorovat.  **Šířka pásma MB/s** je velikost využití šířky pásma v megabajtech za sekundu.  **Čítač připojení (celkem** ) představuje počet souběžných připojení HTTP k našim hraničním serverům.  Definice různých stavů a stavů mezipaměti najdete v tématech [stavové kódy Azure CDN cache](/previous-versions/azure/mt759237(v=azure.100)) a [Azure CDN STAVové kódy http](/previous-versions/azure/mt759238(v=azure.100)) .
+   * V poli **metrika** vyberte typ podmínky, kterou chcete monitorovat.  **Šířka pásma MB/s** je velikost využití šířky pásma v megabajtech za sekundu.  **Čítač připojení (celkem** ) představuje počet souběžných připojení HTTP k našim hraničním serverům.  Definice různých stavů a stavů mezipaměti najdete v tématech [stavové kódy Azure CDN cache](/previous-versions/azure/mt759237(v=azure.100)) a [Azure CDN STAVové kódy http](/previous-versions/azure/mt759238(v=azure.100)) .
    * **Operátor** je matematický operátor, který vytváří vztah mezi metrikou a hodnotou triggeru.
    * **Hodnota triggeru** je prahová hodnota, která musí být splněna před odesláním oznámení.
      
      V následujícím příkladu vytvářený výraz označuje, že je odesláno oznámení, když je počet stavových kódů 404 větší než 25.
      
      ![Vzorový výraz výstrahy v reálném čase](./media/cdn-real-time-alerts/cdn-expression.png)
-9. Jako **interval**zadejte, jak často se má výraz vyhodnotit.
+9. Jako **interval** zadejte, jak často se má výraz vyhodnotit.
 10. V rozevíracím seznamu **oznámit pro** vyberte, kdy se má zobrazit oznámení, když je výraz pravdivý.
     
     * **Podmínka Start** označuje, že oznámení je odesláno při prvním zjištění zadané podmínky.
@@ -83,7 +83,7 @@ Tento dokument vysvětluje výstrahy v reálném čase v Microsoft Azure CDN. Ta
     
     ![E-mailová forma s informacemi](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
-    Do pole **do** zadejte e-mailovou adresu, na kterou chcete odesílat oznámení. U **předmětu** a **textu**můžete ponechat výchozí nastavení nebo můžete upravit zprávu pomocí seznamu **dostupná klíčová slova** k dynamickému vkládání dat výstrah při odeslání zprávy.
+    Do pole **do** zadejte e-mailovou adresu, na kterou chcete odesílat oznámení. U **předmětu** a **textu** můžete ponechat výchozí nastavení nebo můžete upravit zprávu pomocí seznamu **dostupná klíčová slova** k dynamickému vkládání dat výstrah při odeslání zprávy.
     
     > [!NOTE]
     > E-mailové oznámení můžete otestovat kliknutím na tlačítko **testovat oznámení** , ale až po uložení konfigurace výstrahy.
@@ -93,7 +93,7 @@ Tento dokument vysvětluje výstrahy v reálném čase v Microsoft Azure CDN. Ta
     
     ![Odeslat zprávu odesláním formuláře HTTP POST](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    Do pole **Adresa URL** zadejte adresu URL, na kterou chcete zprávu HTTP odeslat. Do textového pole **Headers (hlavičky** ) zadejte hlavičky protokolu HTTP, které se mají odeslat v žádosti.  V případě **těla**můžete zprávu přizpůsobit pomocí seznamu **dostupná klíčová slova** k dynamickému vkládání dat výstrah při odeslání zprávy.  **Záhlaví** a **tělo** jako výchozí datovou část XML, podobně jako v následujícím příkladu:
+    Do pole **Adresa URL** zadejte adresu URL, na kterou chcete zprávu HTTP odeslat. Do textového pole **Headers (hlavičky** ) zadejte hlavičky protokolu HTTP, které se mají odeslat v žádosti.  V případě **těla** můžete zprávu přizpůsobit pomocí seznamu **dostupná klíčová slova** k dynamickému vkládání dat výstrah při odeslání zprávy.  **Záhlaví** a **tělo** jako výchozí datovou část XML, podobně jako v následujícím příkladu:
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">

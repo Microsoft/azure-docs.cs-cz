@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5d6fb23d7325347a1b27165d3e9bc3bf33797682
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994348"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C pomocí vlastní zásady
@@ -26,7 +26,7 @@ V Azure Active Directory B2C (Azure AD B2C) je tok přihlašovacích údajů vla
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md).
 
@@ -125,7 +125,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
     </TechnicalProfile>
     ```
 
-    Nahraďte **DefaultValue** hodnotu DefaultValue **client_id** číslem ID aplikace ProxyIdentityExperienceFramework, kterou jste vytvořili v kurzu požadavků. Potom nahraďte parametr **DefaultValue** **resource_id** ID aplikace aplikace IdentityExperienceFramework, kterou jste vytvořili také v kurzu požadavků.
+    Nahraďte  hodnotu DefaultValue **client_id** číslem ID aplikace ProxyIdentityExperienceFramework, kterou jste vytvořili v kurzu požadavků. Potom nahraďte parametr **DefaultValue** **resource_id** ID aplikace aplikace IdentityExperienceFramework, kterou jste vytvořili také v kurzu požadavků.
 
 5. Přidejte následující prvky **ClaimsProvider** s jejich technickými profily do prvku **ClaimsProviders** :
 

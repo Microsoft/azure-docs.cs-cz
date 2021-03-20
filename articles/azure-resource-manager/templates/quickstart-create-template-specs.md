@@ -6,17 +6,17 @@ ms.date: 12/14/2020
 ms.topic: quickstart
 ms.author: tomfitz
 ms.openlocfilehash: 1d3e7c6ee6d19d4d2cd3828d5abf95ccb5457e76
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511344"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Rychlý Start: vytvoření a nasazení specifikace šablony (Preview)
 
 V tomto rychlém startu se dozvíte, jak zabalit šablonu Azure Resource Manager (šablonu ARM) do [specifikace šablony](template-specs.md). Pak nasadíte tuto specifikaci šablony. Vaše specifikace šablony obsahuje šablonu ARM, která nasazuje účet úložiště.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -103,7 +103,7 @@ Specifikace šablony je typ prostředku s názvem `Microsoft.Resources/templateS
     - **Umístění:**: Vyberte umístění pro skupinu prostředků. Například  **západní USA 2**.
     - **Verze**: Zadejte verzi specifikace šablony. použijte **1,0**.
 
-1. Vyberte **zkontrolovat + vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit**.
 1. Vyberte **Vytvořit**.
 
 # <a name="arm-template"></a>[Šablona ARM](#tab/azure-resource-manager)

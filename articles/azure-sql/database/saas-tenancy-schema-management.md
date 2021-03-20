@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
 ms.openlocfilehash: e4328be0aade0658dedb034dbbb6980b810f771a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793190"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Správa schématu v aplikaci SaaS pomocí modelu databáze na tenanta s Azure SQL Database
@@ -62,7 +62,7 @@ Zdrojový kód aplikace a skripty pro správu jsou k dispozici v úložišti Git
 
 Tento kurz vyžaduje, abyste pomocí PowerShellu vytvořili agenta úloh a jeho záložní databázi agenta úloh. Databáze agenta úloh obsahuje definice úloh, stav úlohy a historii. Po vytvoření agenta úlohy a jeho databáze můžete okamžitě vytvořit a monitorovat úlohy.
 
-1.  .
+1. **V prostředí POWERSHELL ISE** otevřete... \\Demo-SchemaManagement.ps1Správa schématu ve výukových modulech \\ \\ **.
 1. Stisknutím klávesy **F5** spusťte skript.
 
 Skript *Demo-SchemaManagement.ps1* volá skript *Deploy-SchemaManagement.ps1* , aby vytvořil databázi s názvem *osagent* na serveru katalogu. Pak vytvoří agenta úloh pomocí databáze jako parametru.
@@ -74,7 +74,7 @@ V aplikaci Wingtip Tickets obsahuje každá databáze tenanta sadu podporovanýc
 Nejprve zkontrolujte typy míst, které jsou součástí každé databáze tenanta. Připojte se k jedné z databází tenantů v SQL Server Management Studio (SSMS) a prozkoumejte tabulku VenueTypes.  Tuto tabulku můžete také dotazovat v editoru dotazů v Azure Portal, ke kterému se dostanete ze stránky databáze. 
 
 1. Otevřete SSMS a připojte se k tenantovi serveru: *tenants1-DPT- &lt; user &gt; . Database.Windows.NET*
-1. Pokud si chcete ověřit, že *Swimming Club* **se** *motocykly na motocyklu* a v tuto chvíli nezahrnují, přejděte k databázi _contosoconcerthall_ na serveru *tenants1-DPT- &lt; User &gt;* a Dotazujte se na tabulku *VenueTypes* .
+1. Pokud si chcete ověřit, že  **se** *motocykly na motocyklu* a v tuto chvíli nezahrnují, přejděte k databázi _contosoconcerthall_ na serveru *tenants1-DPT- &lt; User &gt;* a Dotazujte se na tabulku *VenueTypes* .
 
 Teď vytvoříme úlohu, která aktualizuje tabulku *VenueTypes* ve všech databázích tenantů, aby se přidaly nové typy míst konání.
 
@@ -88,7 +88,7 @@ Chcete-li vytvořit novou úlohu, použijte sadu systémových uložených proce
 Ve skriptu *DeployReferenceData. SQL* Sledujte následující prvky:
 * **SP \_ Přidat \_ cílovou \_ skupinu** vytvoří název cílové skupiny DemoServerGroup.
 * v části **\_ Přidat \_ \_ \_ člena cílové skupiny** se používá k definování sady cílových databází.  Nejprve se přidá server _tenants1-DPT- &lt; User &gt;_ .  Přidání serveru jako cíle způsobí, že databáze na tomto serveru v době spuštění úlohy budou zahrnuty do úlohy. Pak se databáze _basetenantdb_ a databáze *adhocreporting* (použité v pozdějším kurzu) přidají jako cíle.
-* **SP \_ Add \_ Job** vytvoří úlohu s názvem _nasazení referenčních dat_ .
+* **SP \_ Add \_ Job** vytvoří úlohu s názvem _nasazení referenčních dat_.
 * **SP \_ Add \_ jobstep** vytvoří krok úlohy obsahující text příkazu T-SQL, který aktualizuje referenční tabulku VenueTypes.
 * Zbývající pohledy ve skriptu zobrazují existující objekty a monitorují provádění úlohy. Pomocí těchto dotazů můžete zkontrolovat hodnotu stavu ve sloupci **životní cyklus** a zjistit, kdy se úloha dokončila ve všech cílových databázích.
 

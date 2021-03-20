@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak můžou tvůrci testovacího prost�
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 3e04245c3f2d9b0a4f4e98ae21287983cf679ec6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445045"
 ---
 # <a name="view-support-information-lab-creator-in-azure-lab-services"></a>Zobrazit informace o podpoře (autor testovacího prostředí v Azure Lab Services)
@@ -24,7 +24,7 @@ Tyto informace můžete použít k získání informací o tom, jak se při vytv
 ## <a name="view-support-information"></a>Zobrazit informace o podpoře
 1. Přihlaste se k [portálu Azure Lab Services](https://labs.azure.com).
 2. Vyberte otazník (**?**) v pravém horním rohu stránky. 
-3. Ověřte, že se zobrazí odkazy na **web zobrazit podporu**, **e-mail podpora**a **telefonní číslo podpory**.
+3. Ověřte, že se zobrazí odkazy na **web zobrazit podporu**, **e-mail podpora** a **telefonní číslo podpory**.
 
     ![Zobrazit informace o podpoře](./media/lab-creator-support-information/support-information.png)
 

@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98739782"
 ---
 # <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>LoadBalancerProbe schéma definice pro Azure Cloud Services (Classic)
@@ -58,7 +58,7 @@ Pokud používáte vlastní test nástroje pro vyrovnávání zatížení, je nu
 
 Následující tabulka popisuje atributy `LoadBalancerProbe` prvku:
 
-|Atribut|Typ|Popis|
+|Atribut|Typ|Description|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Povinná hodnota. Název testu nástroje pro vyrovnávání zatížení. Název musí být jedinečný.|
 | `protocol`          | `string` | Povinná hodnota. Určuje protokol koncového bodu. Možné hodnoty jsou `http` nebo `tcp`. Je-li `tcp` parametr zadán, je pro úspěšné dokončení testu vyžadováno přijaté potvrzení. Je-li `http` zadán parametr, je k úspěšnému dokončení testu nutná odpověď 200 OK ze zadaného identifikátoru URI.|

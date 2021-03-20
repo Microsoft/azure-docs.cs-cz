@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 4de7e428bff0feaafdec00b0c0014bbaf6acb917
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790963"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace pro více tenantů
@@ -41,7 +41,7 @@ Kdokoli může stáhnout zdrojový kód C# a PowerShell pro lístky Wingtip z [j
 > - Jak nasadit aplikaci SaaS lístky Wingtip.
 > - Kde získat zdrojový kód aplikace a skripty pro správu.
 > - O serverech a databázích, které tvoří aplikaci.
-> - Jak jsou klienti mapováni na svá data pomocí *katalogu* .
+> - Jak jsou klienti mapováni na svá data pomocí *katalogu*.
 > - Jak zřídit nového tenanta.
 > - Jak monitorovat aktivitu klienta v aplikaci.
 
@@ -73,19 +73,19 @@ Vyberte si své názvy a napište je.
 1. Zadejte požadované hodnoty parametrů pro nasazení.
 
     > [!IMPORTANT]
-    > Pro tuto ukázku nepoužívejte žádné již existující skupiny prostředků, servery nebo fondy. Místo toho vyberte **vytvořit novou skupinu prostředků** . Po ukončení práce s aplikací tuto skupinu prostředků odstraňte, aby se zastavilo související účtování.
+    > Pro tuto ukázku nepoužívejte žádné již existující skupiny prostředků, servery nebo fondy. Místo toho vyberte **vytvořit novou skupinu prostředků**. Po ukončení práce s aplikací tuto skupinu prostředků odstraňte, aby se zastavilo související účtování.
     > Nepoužívejte tuto aplikaci ani žádné prostředky, které vytvoří, pro produkční prostředí. Některé aspekty ověřování a nastavení brány firewall serveru jsou v aplikaci záměrně nezabezpečené, aby se usnadnila ukázka.
 
     - V části **Skupina prostředků** – vyberte **vytvořit novou** a potom zadejte **název** skupiny prostředků (rozlišuje velká a malá písmena).
         - Z rozevíracího seznamu vyberte **umístění** .
     - Pro **uživatele** – doporučujeme zvolit krátkou hodnotu **uživatele** .
 
-1. **Nasaďte aplikaci** .
+1. **Nasaďte aplikaci**.
 
     - Kliknutím souhlasíte s podmínkami a ujednáními.
-    - Klikněte na **Koupit** .
+    - Klikněte na **Koupit**.
 
-1. Stav nasazení můžete monitorovat kliknutím na **oznámení** , což je ikona zvonku napravo od vyhledávacího pole. Nasazení aplikace Wingtip trvá přibližně pět minut.
+1. Stav nasazení můžete monitorovat kliknutím na **oznámení**, což je ikona zvonku napravo od vyhledávacího pole. Nasazení aplikace Wingtip trvá přibližně pět minut.
 
    ![nasazení bylo úspěšné](./media/saas-multitenantdb-get-started-deploy/succeeded.png)
 
@@ -97,20 +97,20 @@ Při nasazení aplikace si Stáhněte zdrojový kód aplikace a skripty pro spr�
 > Obsah spustitelného souboru (skripty, knihovny DLL) může systém Windows zablokovat, pokud jsou soubory zip staženy z externího zdroje a extrahovány. Při extrakci skriptů ze souboru ZIP použijte následující postup k odblokování souboru. zip před extrakcí. Odblokování souboru. zip zajišťuje, aby bylo možné spouštět skripty.
 
 1. Přejděte do [úložiště GitHub WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb).
-2. Klikněte na **klonovat nebo stáhnout** .
+2. Klikněte na **klonovat nebo stáhnout**.
 3. Klikněte na **Stáhnout ZIP** a uložte soubor.
-4. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-MultiTenantDb-master.zip** a vyberte **vlastnosti** .
-5. Na kartě **Obecné** vyberte **odblokovat** a klikněte na **použít** .
-6. Klikněte na **OK** .
+4. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-MultiTenantDb-master.zip** a vyberte **vlastnosti**.
+5. Na kartě **Obecné** vyberte **odblokovat** a klikněte na **použít**.
+6. Klikněte na **OK**.
 7. Extrahujte soubory.
 
 Skripty jsou umístěny v *.. \\ WingtipTicketsSaaS-MultiTenantDb – hlavní složka \\ výukových modulů \\*
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>Aktualizovat konfigurační soubor pro toto nasazení
 
-Před spuštěním všech skriptů nastavte *skupinu prostředků* a *uživatelské* hodnoty v **userconfig. psm1** . Nastavte tyto proměnné na stejné hodnoty, které jste nastavili během nasazování.
+Před spuštěním všech skriptů nastavte *skupinu prostředků* a *uživatelské* hodnoty v **userconfig. psm1**. Nastavte tyto proměnné na stejné hodnoty, které jste nastavili během nasazování.
 
-1. Otevřít... \\ Výukové moduly \\ *userconfig. psm1* ve *ISE PowerShellu* .
+1. Otevřít... \\ Výukové moduly \\ *userconfig. psm1* ve *ISE PowerShellu*.
 2. Aktualizujte *ResourceGroupName* a *název* o konkrétní hodnoty pro vaše nasazení (jenom na řádcích 10 a 11).
 3. Uložte změny.
 
@@ -129,7 +129,7 @@ Webová stránka centrálního **centra událostí** obsahuje seznam odkazů na 
 
      ![centrum akcí](./media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
-2. V **Centru akcí** klikněte na **Fabrikam Jazz Club** .
+2. V **Centru akcí** klikněte na **Fabrikam Jazz Club**.
 
    ![Události](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
@@ -137,7 +137,7 @@ Webová stránka centrálního **centra událostí** obsahuje seznam odkazů na 
 
 Aby bylo možné řídit distribuci příchozích požadavků, používá aplikace Wingtip [Traffic Manager Azure](../../traffic-manager/traffic-manager-overview.md). Stránka události pro každého tenanta zahrnuje název tenanta v adrese URL. Každá adresa URL obsahuje také konkrétní hodnotu uživatele. Každá adresa URL dodržuje zobrazený formát pomocí následujících kroků:
 
-- http://events.wingtip-mt.&lt; User &gt; . trafficmanager.NET/ *fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; User &gt; . trafficmanager.NET/*fabrikamjazzclub*
 
 1. Aplikace události analyzuje název tenanta z adresy URL. Název tenanta je *fabrikamjazzclub* v předchozím příkladu URL.
 2. Aplikace potom vyhodnotí název tenanta vytvořením klíče pro přístup ke katalogu pomocí [správy mapování horizontálních oddílů](elastic-scale-shard-map-management.md).
@@ -164,14 +164,14 @@ Po spuštění úlohy na popředí zůstane ve stavu vyvolání úlohy. Tato úl
 
 Zavřením relace PowerShellu se zastaví všechny úlohy.
 
-Můžete chtít restartovat relaci generátoru zatížení, aby bylo možné použít jiné hodnoty parametrů. Pokud ano, zavřete relaci generování PowerShellu a pak znovu spusťte *Demo-LoadGenerator.ps1* .
+Můžete chtít restartovat relaci generátoru zatížení, aby bylo možné použít jiné hodnoty parametrů. Pokud ano, zavřete relaci generování PowerShellu a pak znovu spusťte *Demo-LoadGenerator.ps1*.
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Zřízení nového tenanta do databáze horizontálně dělené
 
 Počáteční nasazení zahrnuje tři ukázkové klienty v databázi *Tenants1* . Pojďme vytvořit jiného tenanta a sledovat jeho účinky na nasazené aplikaci. V tomto kroku vytvoříte nového tenanta stisknutím jednoho klávesy:
 
-1. Otevřít... \\ Výukové moduly \\ zřídí a \\ *Demo-ProvisionTenants.ps1* katalogu v *prostředí PowerShell ISE* .
-2. Stisknutím klávesy **F5** (ne **F8** ) spusťte skript (ponechte výchozí hodnoty nyní).
+1. Otevřít... \\ Výukové moduly \\ zřídí a \\ *Demo-ProvisionTenants.ps1* katalogu v *prostředí PowerShell ISE*.
+2. Stisknutím klávesy **F5** (ne **F8**) spusťte skript (ponechte výchozí hodnoty nyní).
 
    > [!NOTE]
    > Skripty PowerShellu je nutné spustit pouze stisknutím klávesy **F5** , nikoli stisknutím klávesy **F8** pro spuštění vybrané části skriptu. Problém s **F8** je, že proměnná *$PSScriptRoot* není vyhodnocena. Tuto proměnnou vyžaduje mnoho skriptů pro procházení složek, vyvolání jiných skriptů nebo importování modulů.
@@ -193,7 +193,7 @@ Do databází s více klienty můžete umístit zákazníky s bezplatnou zkušeb
 
 V dalším kroku zřídíme dalšího tenanta, tentokrát ve své vlastní databázi:
 
-1. V... \\ Výukové \\ moduly zřizování a katalog \\ *Demo-ProvisionTenants.ps1* , úpravy *$TenantName* na **Salix Salsa** , *$VenueType* na **roztancoval** a *$Scenario* na **2** .
+1. V... \\ Výukové \\ moduly zřizování a katalog \\ *Demo-ProvisionTenants.ps1*, úpravy *$TenantName* na **Salix Salsa**, *$VenueType* na **roztancoval** a *$Scenario* na **2**.
 
 2. Stisknutím klávesy **F5** spusťte skript znovu.
     - Tím **F5** stisknete tlačítko zřídit nového tenanta v samostatné databázi. Databáze a tenant jsou zaregistrované v katalogu. Pak se prohlížeč otevře na stránce události v tenantovi.
@@ -212,7 +212,7 @@ Teď se podíváme na některé nasazené prostředky:
 
    ![skupina prostředků](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. Klikněte na **katalog – &lt; Mt &gt; User** Server. Server katalogu obsahuje dvě databáze s názvem *tenantcatalog* a *basetenantdb* . Databáze *basetenantdb* je prázdná databáze šablon. Kopíruje se, aby se vytvořila nová databáze tenanta, ať už se používá pro mnoho tenantů, nebo jenom pro jednoho tenanta.
+2. Klikněte na **katalog – &lt; Mt &gt; User** Server. Server katalogu obsahuje dvě databáze s názvem *tenantcatalog* a *basetenantdb*. Databáze *basetenantdb* je prázdná databáze šablon. Kopíruje se, aby se vytvořila nová databáze tenanta, ať už se používá pro mnoho tenantů, nebo jenom pro jednoho tenanta.
 
    ![katalogový server](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -260,7 +260,7 @@ V tomto kurzu jste se dozvěděli:
 > [!div class="checklist"]
 > - Jak nasadit aplikaci SaaS multi-tenant Database Database aplikace Wingtip lístky
 > - O serverech a databázích, které tvoří aplikaci.
-> - Klienti jsou namapováni na svá data pomocí *katalogu* .
+> - Klienti jsou namapováni na svá data pomocí *katalogu*.
 > - Jak zřídit nové klienty v databázi s více klienty a v databázi s jedním klientem.
 > - Jak zobrazit využití fondu pro monitorování aktivity tenanta
 > - Jak odstranit ukázkové prostředky pro zastavení související fakturace

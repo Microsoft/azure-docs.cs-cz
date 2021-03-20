@@ -4,10 +4,10 @@ description: Naučte se, jak poskytnout přístup k obrázkům v privátním reg
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74456516"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Ověřování pomocí Azure Container Registry z Azure Container Instances
@@ -18,7 +18,7 @@ V tomto článku se naučíte, jak vytvořit a nakonfigurovat instanční objekt
 
 ## <a name="when-to-use-a-service-principal"></a>Kdy použít instanční objekt
 
-Pro ověřování z ACI v případě neintegrovaných **scénářů**byste měli použít instanční objekt, například v aplikacích nebo službách, které vytvářejí instance kontejnerů automatizovaným nebo jiným způsobem.
+Pro ověřování z ACI v případě neintegrovaných **scénářů** byste měli použít instanční objekt, například v aplikacích nebo službách, které vytvářejí instance kontejnerů automatizovaným nebo jiným způsobem.
 
 Pokud máte například automatizovaný skript, který běží v noci, a vytvoří [instanci kontejneru založenou na úlohách](../container-instances/container-instances-restart-policy.md) pro zpracování některých dat, může použít instanční objekt s oprávněním pro vyžádání obsahu k ověření do registru. Pak můžete znovu otočit přihlašovací údaje instančního objektu nebo odvolat jeho úplný přístup, aniž by to ovlivnilo jiné služby a aplikace.
 

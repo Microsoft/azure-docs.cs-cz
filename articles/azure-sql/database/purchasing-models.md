@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788821"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Výběr mezi modely nákupu vCore a DTU – Azure SQL Database a SQL Managed instance
@@ -104,7 +104,7 @@ Prostředky používané úlohou nemají vliv na prostředky dostupné pro jiné
 
 ![Ohraničovací rámeček](./media/purchasing-models/bounding-box.png)
 
-DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze s různými výpočetními velikostmi a úrovněmi služeb. Příklad:
+DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze s různými výpočetními velikostmi a úrovněmi služeb. Například:
 
 - Zdvojnásobuje se DTU zvýšením velikosti databáze, která je rovna zdvojnásobení sady prostředků, které jsou k dispozici pro danou databázi.
 - P11 databáze úrovně Premium Service s 1750 DTU poskytuje 350 dob výpočetní výkon, než je základní databáze vrstvy služeb s 5 DTU.  
@@ -162,11 +162,11 @@ Zákazníci s pracovními postupy, které jsou citlivé na změny hardwaru nebo 
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Potřebuji aplikaci převést do režimu offline, aby se převedla z úrovně služby založené na DTU na úroveň služby založenou na vCore?
 
-Ne. Nemusíte přebírat aplikaci offline. Nové úrovně služeb nabízejí jednoduchou metodu online převodu, která je podobná stávajícímu procesu upgradu databází z úrovně Standard na úroveň služby Premium a dalším způsobem. Tento převod můžete spustit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa](single-database-scale.md) izolovaných databází a [Správa elastických fondů](elastic-pool-overview.md).
+No. Nemusíte přebírat aplikaci offline. Nové úrovně služeb nabízejí jednoduchou metodu online převodu, která je podobná stávajícímu procesu upgradu databází z úrovně Standard na úroveň služby Premium a dalším způsobem. Tento převod můžete spustit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa jednoúčelových databází](single-database-scale.md) a [Správa elastických fondů](elastic-pool-overview.md).
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Můžu převést databázi z vrstvy služeb v nákupním modelu založeném na vCore na úroveň služby v nákupním modelu založeném na DTU?
 
-Ano, databázi můžete snadno převést na jakýkoli podporovaný cíl výkonu pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa](single-database-scale.md) izolovaných databází a [Správa elastických fondů](elastic-pool-overview.md).
+Ano, databázi můžete snadno převést na jakýkoli podporovaný cíl výkonu pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, T-SQL nebo REST API. Viz [Správa jednoúčelových databází](single-database-scale.md) a [Správa elastických fondů](elastic-pool-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

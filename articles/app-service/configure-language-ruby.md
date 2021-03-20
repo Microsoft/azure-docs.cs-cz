@@ -6,10 +6,10 @@ ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.openlocfilehash: 038d62573b491325adc60647debf17fa87e06cfe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92743680"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurace linuxové aplikace v Ruby pro Azure App Service
@@ -96,8 +96,8 @@ Ve výchozím nastavení kontejner Ruby spustí server Rails v následujícím p
 
 1. Vygenerujte hodnotu [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security), pokud ještě neexistuje. Tato hodnota se vyžaduje pro spuštění aplikace v provozním režimu.
 1. Proměnnou prostředí `RAILS_ENV` nastavte na `production`.
-1. Odstraňte všechny *. PID* v adresáři *tmp/pids* , které za sebou zanechal předchozí spuštěný server Rails.
-1. Ověřte, jestli jsou nainstalované všechny závislosti. Pokud ne, zkuste nainstalovat gemy z místního adresáře *vendor/cache* .
+1. Odstraňte všechny *. PID* v adresáři *tmp/pids*, které za sebou zanechal předchozí spuštěný server Rails.
+1. Ověřte, jestli jsou nainstalované všechny závislosti. Pokud ne, zkuste nainstalovat gemy z místního adresáře *vendor/cache*.
 1. Spusťte `rails server -e $RAILS_ENV`.
 
 Proces spouštění můžete přizpůsobit následujícími způsoby:

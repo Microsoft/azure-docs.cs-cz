@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792102"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč cloudových databází s horizontálním škálováním (Preview)
@@ -163,7 +163,7 @@ Klauzule distribuce určuje distribuci dat použitou pro tuto tabulku. Procesor 
 2. **Replikovaný** znamená, že se v každé databázi nacházejí identické kopie tabulky. Je vaší zodpovědností zajistit, aby byly repliky identické napříč databázemi.
 3. Kulatá kolečka **\_ DOTAZování** znamená, že je tabulka horizontálně rozdělená pomocí metody distribuce závislé na aplikaci.
 
-**Odkaz na datovou vrstvu** : instance DDL externí tabulky odkazuje na externí zdroj dat. Externí zdroj dat určuje mapu horizontálních oddílů, která poskytuje externí tabulku s informacemi potřebnými k vyhledání všech databází v datové vrstvě.
+**Odkaz na datovou vrstvu**: instance DDL externí tabulky odkazuje na externí zdroj dat. Externí zdroj dat určuje mapu horizontálních oddílů, která poskytuje externí tabulku s informacemi potřebnými k vyhledání všech databází v datové vrstvě.
 
 ### <a name="security-considerations"></a>Důležité informace o zabezpečení
 

@@ -11,10 +11,10 @@ ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340222"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Procesor kanálu změn ve službě Azure Cosmos DB
@@ -64,7 +64,7 @@ Normální životní cyklus instance hostitele je následující:
 1. Přečtěte si kanál změn.
 1. Pokud nedošlo k žádným změnám, přejdete do režimu spánku v předdefinovaném čase (dá se přizpůsobit `WithPollInterval` v Tvůrci) a přejdete na #1.
 1. Pokud dojde ke změnám, odešlete je **delegátovi**.
-1. Když delegát dokončí zpracování změn **úspěšně** , aktualizujte úložiště zapůjčení s nejnovějším zpracovávaným bodem v čase a přejděte na #1.
+1. Když delegát dokončí zpracování změn **úspěšně**, aktualizujte úložiště zapůjčení s nejnovějším zpracovávaným bodem v čase a přejděte na #1.
 
 ## <a name="error-handling"></a>Zpracování chyb
 
@@ -106,7 +106,7 @@ Ve výchozím nastavení se při prvním spuštění procesoru Change feed inici
 
 ### <a name="reading-from-a-previous-date-and-time"></a>Čtení z předchozího data a času
 
-Je možné inicializovat procesor změn, aby bylo možné číst změny od **určitého data a času** , a to předáním instance do `DateTime` `WithStartTime` rozšíření tvůrce:
+Je možné inicializovat procesor změn, aby bylo možné číst změny od **určitého data a času**, a to předáním instance do `DateTime` `WithStartTime` rozšíření tvůrce:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -134,7 +134,7 @@ Procesor změnového kanálu lze hostovat na libovolné platformě, která podpo
 
 I když se procesor Change feed může spouštět v krátkodobých prostředích, protože kontejner zapůjčení udržuje stav, cyklus spuštění těchto prostředí přidá zpoždění pro příjem oznámení (kvůli režii při spouštění procesoru při každém spuštění prostředí).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Kompletní ukázková aplikace na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675201"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Přidání prostředků do prostředí ISE (Integration Service Environment) v Azure Logic Apps
@@ -34,7 +34,7 @@ Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps
 
 Pokud chcete sestavovat aplikace logiky, které běží ve vašem prostředí ISE (Integration Service Environment), postupujte podle následujících kroků:
 
-1. Vyhledejte a otevřete své ISE, pokud ještě není otevřený. V nabídce ISE v části **Nastavení** vyberte **Logic Apps**  >  **Přidat** .
+1. Vyhledejte a otevřete své ISE, pokud ještě není otevřený. V nabídce ISE v části **Nastavení** vyberte **Logic Apps**  >  **Přidat**.
 
    ![Přidání nové aplikace logiky do ISE](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
@@ -44,13 +44,13 @@ Pokud chcete sestavovat aplikace logiky, které běží ve vašem prostředí IS
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název** | Ano | Název aplikace logiky, která se má vytvořit |
-   | **Předplatné** | Ano | Název předplatného Azure, které se má použít |
-   | **Skupina prostředků** | Ano | Název skupiny prostředků Azure (nová nebo existující), která se má použít |
-   | **Umístění** | Ano | V části **prostředí integrační služby** vyberte ISE, který se má použít, pokud ještě není vybraný. <p><p> **Důležité** : Pokud chcete používat vaše aplikace logiky s účtem pro integraci, musí oba používat stejný ISE. |
+   | **Název** | Yes | Název aplikace logiky, která se má vytvořit |
+   | **Předplatné** | Yes | Název předplatného Azure, které se má použít |
+   | **Skupina prostředků** | Yes | Název skupiny prostředků Azure (nová nebo existující), která se má použít |
+   | **Umístění** | Yes | V části **prostředí integrační služby** vyberte ISE, který se má použít, pokud ještě není vybraný. <p><p> **Důležité**: Pokud chcete používat vaše aplikace logiky s účtem pro integraci, musí oba používat stejný ISE. |
    ||||
 
-1. Po dokončení vyberte **Vytvořit** .
+1. Po dokončení vyberte **Vytvořit**.
 
 1. Pokračujte [v vytváření aplikace logiky obvyklým způsobem](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -66,7 +66,7 @@ V závislosti na [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-e
 
 Pokud chcete vytvořit účet pro integraci, který používá ISE, postupujte podle následujících kroků:
 
-1. Vyhledejte a otevřete své ISE, pokud ještě není otevřený. V nabídce ISE v části **Nastavení** vyberte účty pro **integraci**  >  **Přidat** .
+1. Vyhledejte a otevřete své ISE, pokud ještě není otevřený. V nabídce ISE v části **Nastavení** vyberte účty pro **integraci**  >  **Přidat**.
 
    ![Přidat nový účet pro integraci do ISE](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
@@ -76,14 +76,14 @@ Pokud chcete vytvořit účet pro integraci, který používá ISE, postupujte p
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název** | Ano | Název účtu pro integraci, který chcete vytvořit. |
-   | **Předplatné** | Ano | Název předplatného Azure, které chcete použít |
-   | **Skupina prostředků** | Ano | Název skupiny prostředků Azure (nová nebo existující), která se má použít |
-   | **Cenová úroveň** | Ano | Cenová úroveň, která se má použít pro účet pro integraci |
-   | **Umístění** | Ano | V části **prostředí integrační služby** vyberte stejný ISE, které vaše aplikace logiky používají, pokud ještě není vybraná. <p><p> **Důležité** : Pokud chcete použít účet pro integraci s Logic Apps, musí oba používat stejný ISE. |
+   | **Název** | Yes | Název účtu pro integraci, který chcete vytvořit. |
+   | **Předplatné** | Yes | Název předplatného Azure, které chcete použít |
+   | **Skupina prostředků** | Yes | Název skupiny prostředků Azure (nová nebo existující), která se má použít |
+   | **Cenová úroveň** | Yes | Cenová úroveň, která se má použít pro účet pro integraci |
+   | **Umístění** | Yes | V části **prostředí integrační služby** vyberte stejný ISE, které vaše aplikace logiky používají, pokud ještě není vybraná. <p><p> **Důležité**: Pokud chcete použít účet pro integraci s Logic Apps, musí oba používat stejný ISE. |
    ||||
 
-1. Po dokončení vyberte **Vytvořit** .
+1. Po dokončení vyberte **Vytvořit**.
 
 1. [Obvyklým způsobem propojte aplikaci logiky s vaším integračním účtem](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
@@ -111,11 +111,11 @@ Po vytvoření ISE se spravované konektory ISE automaticky nezobrazí ve výbě
 > 
 > Pokud tedy chcete přidat konektory ISE, musíte zásadu buď zakázat, nebo odebrat. 
 
-1. V nabídce ISE v části **Nastavení** vyberte **spravované konektory** . Na panelu nástrojů vyberte **Přidat** .
+1. V nabídce ISE v části **Nastavení** vyberte **spravované konektory**. Na panelu nástrojů vyberte **Přidat**.
 
    ![Zobrazit spravované konektory](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. V podokně **Přidat nový spravovaný konektor** otevřete seznam **najít konektor** . Vyberte konektor ISE, který chcete použít, ale ve vašem ISE ještě není nasazený. Vyberte **Vytvořit** .
+1. V podokně **Přidat nový spravovaný konektor** otevřete seznam **najít konektor** . Vyberte konektor ISE, který chcete použít, ale ve vašem ISE ještě není nasazený. Vyberte **Vytvořit**.
 
    ![Vyberte konektor ISE, který chcete nasadit v ISE.](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
@@ -127,17 +127,17 @@ Po vytvoření ISE se spravované konektory ISE automaticky nezobrazí ve výbě
 
 Pokud chcete používat vlastní konektory v ISE, vytvářejte tyto vlastní konektory přímo v rámci vaší ISE.
 
-1. Vyhledejte a otevřete své ISE, pokud ještě není otevřený. V nabídce ISE v části **Nastavení** vyberte **vlastní konektory**  >  **Přidat** .
+1. Vyhledejte a otevřete své ISE, pokud ještě není otevřený. V nabídce ISE v části **Nastavení** vyberte **vlastní konektory**  >  **Přidat**.
 
    ![Vytvoření vlastního konektoru](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 
 1. Zadejte název, předplatné Azure a skupinu prostředků Azure (nová nebo existující), která se použije pro vlastní konektor.
 
-1. V seznamu **umístění** v části **prostředí integrační služby** vyberte stejný ISE, které vaše aplikace logiky používají, a vyberte **vytvořit** , například:
+1. V seznamu **umístění** v části **prostředí integrační služby** vyberte stejný ISE, které vaše aplikace logiky používají, a vyberte **vytvořit**, například:
 
    ![Snímek obrazovky s oknem vytvořit Logic Apps vlastní konektor, kde jsou vybrané příklady informací.](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
-1. Vyberte svůj nový vlastní konektor a pak vyberte **Upravit** , například:
+1. Vyberte svůj nový vlastní konektor a pak vyberte **Upravit**, například:
 
    ![Vybrat a upravit vlastní konektor](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 

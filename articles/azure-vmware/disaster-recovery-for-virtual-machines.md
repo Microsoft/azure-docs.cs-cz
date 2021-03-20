@@ -4,10 +4,10 @@ description: Tento článek ukazuje, jak dokončit zotavení po havárii virtuá
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 688d91bc181e1479f5090a10af4b3b262d7ddb7f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779607"
 ---
 # <a name="complete-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Dokončení zotavení po havárii virtuálních počítačů pomocí řešení Azure VMware
@@ -38,17 +38,17 @@ Tato příručka se zabývá následujícími scénáři replikace:
 
 ## <a name="protect-vms"></a>Ochrana virtuálních počítačů
 
-1. Přihlaste se ke **klientovi vSphere** ve zdrojové lokalitě a přístup k **modulu plug-in HCX** .
+1. Přihlaste se ke **klientovi vSphere** ve zdrojové lokalitě a přístup k **modulu plug-in HCX**.
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/hcx-vsphere.png" alt-text="Možnost HCX v vSphere" border="true":::
 
-1. Zadejte oblast **zotavení po havárii** a vyberte **chránit virtuální počítače** .
+1. Zadejte oblast **zotavení po havárii** a vyberte **chránit virtuální počítače**.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png" alt-text="Výběr chránit virtuální počítače" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png":::
 
 1. Vyberte zdroj a vzdálené lokality. Vzdálená lokalita v tomto případě by měla být privátní cloud řešení Azure VMware.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machines.png" alt-text="Možnost HCX v vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machines.png" alt-text="okno pro ochranu virtuálních počítačů" border="true":::
 
 1. V případě potřeby vyberte **výchozí možnosti replikace** :
 
@@ -68,21 +68,21 @@ Tato příručka se zabývá následujícími scénáři replikace:
 
    - **Počet snímků:** Celkový počet snímků v rámci nakonfigurovaného intervalu snímků.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png" alt-text="chránit možnosti virtuálních počítačů" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine-options.png":::
 
 1. V seznamu vyberte jeden nebo víc virtuálních počítačů a podle potřeby nakonfigurujte možnosti replikace.
 
    Virtuální počítače ve výchozím nastavení dědí zásadu globálního nastavení nakonfigurovanou v možnostech výchozí replikace. Pro každé síťové rozhraní ve vybraném virtuálním počítači nakonfigurujte **skupinu portů vzdálené sítě** a kliknutím na **Dokončit** zahajte proces ochrany.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/network-interface-options.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/network-interface-options.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/network-interface-options.png" alt-text="možnosti síťového rozhraní" border="true" lightbox="./media/disaster-recovery-virtual-machines/network-interface-options.png":::
 
 1. Monitorujte proces pro všechny vybrané virtuální počítače ve stejné oblasti zotavení po havárii.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png" alt-text="monitorování průběhu ochrany" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-monitor-progress.png":::
 
 1. Po ochraně virtuálního počítače můžete zobrazit různé snímky na kartě **snímky** .
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/list-of-snapshots.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/list-of-snapshots.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/list-of-snapshots.png" alt-text="seznam snímků" border="true" lightbox="./media/disaster-recovery-virtual-machines/list-of-snapshots.png":::
 
    Žlutý trojúhelník znamená, že se snímky a virtuální počítače v operaci obnovení testu neotestovaly.
 
@@ -91,55 +91,55 @@ Tato příručka se zabývá následujícími scénáři replikace:
 ## <a name="complete-a-test-recover-of-vms"></a>Dokončit test obnovení virtuálních počítačů
 
 1. Přihlaste se ke **klientovi vSphere** ve vzdálené lokalitě, což je privátní cloud řešení Azure VMware. 
-1. V rámci **modulu plug-in HCX** v oblasti zotavení po havárii vyberte svislé tři tečky na libovolném virtuálním počítači, aby se zobrazila nabídka operace, a pak vyberte **test obnovení virtuálního počítače** .
+1. V rámci **modulu plug-in HCX** v oblasti zotavení po havárii vyberte svislé tři tečky na libovolném virtuálním počítači, aby se zobrazila nabídka operace, a pak vyberte **test obnovení virtuálního počítače**.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/test-recover-virtual-machine.png" alt-text="Možnost HCX v vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/test-recover-virtual-machine.png" alt-text="Vybrat test obnovit virtuální počítač" border="true":::
 
 1. Vyberte možnosti pro test a snímek, který chcete použít k otestování různých stavů virtuálního počítače.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/choose-snapshot.png" alt-text="Možnost HCX v vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/choose-snapshot.png" alt-text="Zvolte snímek a vyberte test" border="true":::
 
 1. Po výběru **testu** začíná operace obnovení.
 
 1. Po dokončení můžete nový virtuální počítač vyzkoušet v rámci úložiště Azure VMware privátního cloudu vCenter.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/verify-test-recovery.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/verify-test-recovery.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/verify-test-recovery.png" alt-text="ověřit operaci obnovení" border="true" lightbox="./media/disaster-recovery-virtual-machines/verify-test-recovery.png":::
 
 1. Po provedení testování na virtuálním počítači nebo v jakékoli aplikaci, která je na něm běží, proveďte vyčištění, aby se odstranila instance testu.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png" alt-text="instance testu vyčištění" border="true" lightbox="./media/disaster-recovery-virtual-machines/cleanup-test-instance.png":::
 
 ## <a name="recover-vms"></a>Obnovení virtuálních počítačů
 
-1. Přihlaste se ke **klientovi vSphere** ve vzdálené lokalitě, která je privátním cloudem řešení Azure VMware a získejte přístup k **modulu plug-in HCX** .
+1. Přihlaste se ke **klientovi vSphere** ve vzdálené lokalitě, která je privátním cloudem řešení Azure VMware a získejte přístup k **modulu plug-in HCX**.
 
    Pro scénář obnovení se jedná o skupinu virtuálních počítačů použitých v tomto příkladu.
 
-1. Vyberte virtuální počítač, který se má obnovit ze seznamu, otevřete nabídku **Akce** a vyberte **obnovení virtuálních počítačů** .
+1. Vyberte virtuální počítač, který se má obnovit ze seznamu, otevřete nabídku **Akce** a vyberte **obnovení virtuálních počítačů**.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines.png" alt-text="Možnost HCX v vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines.png" alt-text="obnovení virtuálních počítačů" border="true":::
 
 1. Nakonfigurujte možnosti obnovení pro jednotlivé instance a výběrem možnosti **obnovit** spusťte operaci obnovení.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines-confirm.png" alt-text="Možnost HCX v vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines-confirm.png" alt-text="potvrzení obnovení virtuálních počítačů" border="true":::
 
 1. Po dokončení operace obnovení se nové virtuální počítače objeví v inventáři vzdálené vCenter Server.
 
 ## <a name="complete-a-reverse-replication-on-vms"></a>Dokončení zpětné replikace na virtuálních počítačích
 
-1. Přihlaste se ke **klientovi vSphere** v privátním cloudu řešení Azure VMware a získejte přístup k **modulu plug-in HCX** .
+1. Přihlaste se ke **klientovi vSphere** v privátním cloudu řešení Azure VMware a získejte přístup k **modulu plug-in HCX**.
    
    >[!NOTE]
    > Před zahájením zpětné replikace zajistěte, aby byly původní virtuální počítače ve zdrojové lokalitě vypnuté. Operace se nezdařila, pokud virtuální počítače nejsou vypnuté.
 
-1. V seznamu vyberte virtuální počítače, které chcete replikovat zpět do zdrojové lokality, otevřete nabídku **Akce** a vyberte možnost **obrátit** . 
+1. V seznamu vyberte virtuální počítače, které chcete replikovat zpět do zdrojové lokality, otevřete nabídku **Akce** a vyberte možnost **obrátit**. 
 1. Kliknutím na tlačítko **zpět** spusťte replikaci.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/reverse-operation-virtual-machines.png" alt-text="Možnost HCX v vSphere" border="true":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/reverse-operation-virtual-machines.png" alt-text="V části chránit operace vyberte možnost obrátit akci." border="true":::
 
 1. Monitorujte v části Podrobnosti každého virtuálního počítače.
 
-   :::image type="content" source="./media/disaster-recovery-virtual-machines/review-reverse-operation.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/review-reverse-operation.png":::
+   :::image type="content" source="./media/disaster-recovery-virtual-machines/review-reverse-operation.png" alt-text="Kontrola výsledků zpětné akce" border="true" lightbox="./media/disaster-recovery-virtual-machines/review-reverse-operation.png":::
 
 ## <a name="disaster-recovery-plan-automation"></a>Automatizace plánu zotavení po havárii
 

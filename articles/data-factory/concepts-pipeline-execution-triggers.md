@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2dba9e4f727b56e5093171c2ea59382075563f31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374775"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592047"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 
@@ -323,13 +323,8 @@ Aktivační události pro přeskakující okno jsou typem aktivačních událost
 
 Další informace o aktivačních událostech pro bubny oken a příklady najdete v tématu [Vytvoření aktivační události bubnového okna](how-to-create-tumbling-window-trigger.md).
 
-## <a name="event-based-trigger"></a>Aktivační událost na základě události
-
-Aktivační událost založená na událostech spouští kanály v reakci na událost, jako je například doručení souboru nebo odstranění souboru, v Azure Blob Storage.
-
-Další informace o aktivačních událostech na základě událostí najdete v tématu věnovaném [vytvoření aktivační události, která spustí kanál v reakci na událost](how-to-create-event-trigger.md).
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Příklady plánů opakování aktivačních událostí
+
 Tato část obsahuje příklady plánů opakování. Zaměřuje se na objekt **schedule** a jeho elementy.
 
 V příkladech se předpokládá, že hodnota **intervalu** je 1 a hodnota **frekvence** je správná podle definice plánu. Například není možné, aby vlastnost **frequency** měla hodnotu „day“ a zároveň objekt **schedule** obsahoval úpravu atributu **monthDays**. Tyto typy omezení jsou popsané v tabulce v předchozí části.
@@ -364,6 +359,7 @@ V příkladech se předpokládá, že hodnota **intervalu** je 1 a hodnota **fre
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Spuštění každou třetí středu v měsíci v 5:15, 5:45, 17:15 a 17:45. |
 
 ## <a name="trigger-type-comparison"></a>Porovnání typů aktivačních událostí
+
 Aktivační událost pro přeskakující okno i aktivační událost plánovače pracují s časovými intervaly. Jaký je mezi nimi rozdíl?
 
 > [!NOTE]
@@ -380,9 +376,19 @@ Následující tabulka obsahuje porovnání aktivační události pro přeskakuj
 | **Systémové proměnné** | Společně s @trigger (). scheduledTime a @trigger (). čas_spuštění podporuje také použití systémových proměnných **WindowStart** a **WindowEnd** . Uživatelé mají v definici aktivační události přístup k `trigger().outputs.windowStartTime` a `trigger().outputs.windowEndTime` jako systémovým proměnným aktivační události. Tyto hodnoty se používají v čase začátku okna a v čase konce okna. Například pro aktivační událost pro přeskakující okno, která se spouští každou hodinu, je definice okna od 1:00 do 2:00 následující: `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` a `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z`. | Podporuje pouze výchozí @trigger proměnné (). scheduledTime a @trigger (). čas_spuštění. |
 | **Vztah mezi kanálem a aktivační událostí** | Podporuje vztah 1:1. Je možné aktivovat pouze jeden kanál. | Podporuje vztahy M:N. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů. |
 
+## <a name="event-based-trigger"></a>Aktivační událost na základě události
+
+Aktivační událost založená na událostech spouští kanály jako odpověď na událost. Triggery založené na událostech jsou dva typy.
+
+* _Trigger události úložiště_ spustí kanál proti událostem, které probíhají v účtu úložiště, jako je například doručení souboru nebo odstranění souboru v účtu Azure Blob Storage.
+* _Vlastní procesy triggeru událostí_ a zpracovává [vlastní témata](../event-grid/custom-topics.md) v Event Grid
+
+Další informace o aktivačních událostech založených na událostech najdete v tématu [Trigger události úložiště](how-to-create-event-trigger.md) a [aktivační událost vlastní události](how-to-create-custom-event-trigger.md).
+
 ## <a name="next-steps"></a>Další kroky
+
 Projděte si tyto kurzy:
 
 - [Rychlý start: Vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md)
-- [Vytvoření aktivační události plánu](how-to-create-schedule-trigger.md)
+- [Vytvoření aktivační události plánovače](how-to-create-schedule-trigger.md)
 - [Vytvoření aktivační události pro přeskakující okno](how-to-create-tumbling-window-trigger.md)

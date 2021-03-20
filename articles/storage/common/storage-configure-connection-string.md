@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783874"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Nakonfigurování připojovacích řetězců Azure Storage
@@ -57,7 +57,7 @@ Například váš připojovací řetězec může vypadat podobně jako:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-I když Azure Storage podporuje HTTP i HTTPS v připojovacím řetězci, *důrazně se doporučuje protokol HTTPS* .
+I když Azure Storage podporuje HTTP i HTTPS v připojovacím řetězci, *důrazně se doporučuje protokol HTTPS*.
 
 > [!TIP]
 > Připojovací řetězce účtu úložiště najdete v [Azure Portal](https://portal.azure.com). V okně nabídky účtu úložiště přejděte na **Nastavení**  >  **přístupové klíče** a zobrazte připojovací řetězce pro primární i sekundární přístupový klíč.

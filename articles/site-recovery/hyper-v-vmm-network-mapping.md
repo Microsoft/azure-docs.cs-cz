@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082559"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Příprava mapování sítě pro zotavení po havárii virtuálního počítače Hyper-V do Azure
@@ -73,8 +73,8 @@ Tady je postup nastavení cloudů VMM v naší ukázkové organizaci a logické 
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
-SilverCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>Nastavení logické sítě a sítě virtuálních počítačů
 
@@ -104,7 +104,7 @@ Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný
 Pokud se chcete podívat, co se stane v případě navrácení služeb po obnovení (reverzní replikace), předpokládáme, že VMNetwork1-NewYork je namapovaný na VMNetwork1-Chicago s následujícím nastavením.
 
 
-**SÍŤ** | **Připojeno k síti virtuálních počítačů**
+**Virtuální počítač** | **Připojeno k síti virtuálních počítačů**
 ---|---
 VM1 | VMNetwork1-Network
 VM2 (Replika VM1) | VMNetwork1-Chicago

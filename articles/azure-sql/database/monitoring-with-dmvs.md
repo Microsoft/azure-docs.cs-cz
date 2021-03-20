@@ -11,13 +11,13 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 1/14/2021
-ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 03/15/2021
+ms.openlocfilehash: 5c0de2c1589bfa495ab6ad287b998c403041674c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219126"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592145"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Monitorování výkonu služeb Microsoft Azure SQL Database a Azure SQL Managed Instance s využitím zobrazení dynamické správy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,6 +31,10 @@ Microsoft Azure SQL Database a Azure SQL Managed instance částečně podporuj�
 - Zobrazení dynamické správy související s transakcemi.
 
 Podrobné informace o zobrazeních dynamické správy naleznete v tématu [dynamická zobrazení a funkce správy (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
+
+## <a name="monitor-with-sql-insights"></a>Monitorování pomocí SQL Insights
+
+[Azure monitor SQL Insights](../../azure-monitor/insights/sql-insights-overview.md) je nástroj pro monitorování spravovaných instancí Azure SQL, databází SQL Azure a instancí SQL Server na virtuálních počítačích Azure SQL. Tato služba používá vzdáleného agenta k zachycení dat ze zobrazení dynamické správy (zobrazení dynamické správy) a směruje data do Azure Log Analytics, kde je lze monitorovat a analyzovat. Tato data můžete zobrazit z [Azure monitor](../../azure-monitor/overview.md) v zobrazených zobrazeních nebo získat přímý přístup k datům protokolu ke spouštění dotazů a analýze trendů. Pokud chcete začít používat Azure Monitor SQL Insights, přečtěte si téma [Povolení SQL Insights](../../azure-monitor/insights/sql-insights-enable.md).
 
 ## <a name="permissions"></a>Oprávnění
 

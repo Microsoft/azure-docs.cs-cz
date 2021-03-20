@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
 ms.openlocfilehash: 0cd1f6210fbdb74e3fd511150157dccca3e92dda
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91932460"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Výhody použití Azure NetApp Files s Windows Virtual Desktopem 
@@ -29,7 +29,7 @@ Azure NetApp Files je vysoce výkonná služba File Storage z Azure. Může posk
 
 ## <a name="sample-blueprints"></a>Ukázkové plány
 
-Následující ukázkové plány znázorňují integraci virtuálního klienta s Windows s Azure NetApp Files. Ve scénáři společného stolního počítače se uživatelé přesměrují do hostitele s více relacemi [breadth-first mode](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method), a to pomocí [virtuálních počítačů s více relacemi](../virtual-desktop/windows-10-multisession-faq.md#what-is-windows-10-enterprise-multi-session)ve fondu. Na druhé straně jsou osobní plochy rezervované pro scénáře, ve kterých má každý uživatel svůj vlastní virtuální počítač.
+Následující ukázkové plány znázorňují integraci virtuálního klienta s Windows s Azure NetApp Files. Ve scénáři společného stolního počítače se uživatelé přesměrují do hostitele s více relacemi [](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method), a to pomocí [virtuálních počítačů s více relacemi](../virtual-desktop/windows-10-multisession-faq.md#what-is-windows-10-enterprise-multi-session)ve fondu. Na druhé straně jsou osobní plochy rezervované pro scénáře, ve kterých má každý uživatel svůj vlastní virtuální počítač.
 
 ### <a name="pooled-desktop-scenario"></a>Scénář sdružené plochy
 

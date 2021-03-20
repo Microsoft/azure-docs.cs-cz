@@ -7,10 +7,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91929587"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
@@ -39,11 +39,11 @@ Při prvním vytvoření fondu hostitelů a hostitele relací budete také potř
 
 Rozšíření fondu hostitelů přidáním virtuálních počítačů:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyhledejte a vyberte **virtuální počítač s Windows**.
 
-3. V nabídce na levé straně obrazovky vyberte **fondy hostitelů**a pak vyberte název fondu hostitelů, do kterého chcete přidat virtuální počítače.
+3. V nabídce na levé straně obrazovky vyberte **fondy hostitelů** a pak vyberte název fondu hostitelů, do kterého chcete přidat virtuální počítače.
 
 4. V nabídce na levé straně obrazovky vyberte **hostitelé relace** .
 
@@ -58,9 +58,9 @@ Rozšíření fondu hostitelů přidáním virtuálních počítačů:
     >[!NOTE]
     >I když je možné upravit image a prefix virtuálních počítačů, nedoporučujeme je upravovat, pokud máte virtuální počítače s různými imagemi ve stejném fondu hostitelů. Upravte image a předponu jenom v případě, že plánujete odebrání virtuálních počítačů se staršími imagí z ovlivněného fondu hostitelů.
 
-9. Pro **informace o virtuální síti**vyberte virtuální síť a podsíť, ke kterým chcete virtuální počítače připojit. Můžete vybrat stejnou virtuální síť, kterou existující počítače používají, nebo vybrat jiný, který je vhodnější pro oblast vybranou v kroku 7.
+9. Pro **informace o virtuální síti** vyberte virtuální síť a podsíť, ke kterým chcete virtuální počítače připojit. Můžete vybrat stejnou virtuální síť, kterou existující počítače používají, nebo vybrat jiný, který je vhodnější pro oblast vybranou v kroku 7.
 
-10. Pro **účet správce**zadejte uživatelské jméno a heslo domény služby Active Directory přidružené k virtuální síti, kterou jste vybrali. Tyto přihlašovací údaje se použijí pro připojení virtuálních počítačů k virtuální síti.
+10. Pro **účet správce** zadejte uživatelské jméno a heslo domény služby Active Directory přidružené k virtuální síti, kterou jste vybrali. Tyto přihlašovací údaje se použijí pro připojení virtuálních počítačů k virtuální síti.
 
       >[!NOTE]
       >Zajistěte, aby názvy správců splňovaly informace, které jsou zde uvedeny. A že na účtu není povolený žádný MFA.

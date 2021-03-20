@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 26add03929551c912b4d7b7cf10741d53333689a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780559"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Naučte se zřizovat nové klienty a registrovat je v katalogu.
@@ -53,7 +53,7 @@ V ukázkách Wingtip Tickets SaaS se katalog implementuje pomocí funkcí správ
 Mapa horizontálních oddílů obsahuje seznam horizontálních oddílů (databází) a mapování mezi klíči (klienty) a horizontálních oddílů. Funkce EDCL se používají během zřizování tenanta k vytvoření položek v mapě horizontálních oddílů. Používají se v době běhu v aplikacích pro připojení ke správné databázi. EDCL ukládá informace o připojení do mezipaměti pro minimalizaci provozu do databáze katalogu a urychlení aplikace.
 
 > [!IMPORTANT]
-> Data mapování jsou přístupná v databázi katalogu, ale *neupravujete je* . Upraví data mapování jenom pomocí Elastic Database klientské knihovny API. Přímá manipulace s riziky mapování dat, která poškozují katalog a nejsou podporovaná.
+> Data mapování jsou přístupná v databázi katalogu, ale *neupravujete je*. Upraví data mapování jenom pomocí Elastic Database klientské knihovny API. Přímá manipulace s riziky mapování dat, která poškozují katalog a nejsou podporovaná.
 
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>Úvod do vzoru zřizování SaaS
@@ -64,7 +64,7 @@ Můžete použít různé přístupy k zřizování databáze. Můžete spoušt�
 
 Zřizování databáze musí být součástí strategie správy schématu. Je potřeba zajistit, aby se nové databáze zřídily s nejnovějším schématem. Tento požadavek se prozkoumá v [kurzu správy schématu](saas-tenancy-schema-management.md).
 
-Aplikace Wingtip Tickets Database – pro každého tenanta zřídí nové klienty zkopírováním databáze šablony s názvem _basetenantdb_ , která je nasazena na serveru katalogu. Zřizování se dá do aplikace integrovat jako součást prostředí pro registraci. Můžete ho taky podporovat offline pomocí skriptů. V tomto kurzu se seznámíte s zřizováním pomocí prostředí PowerShell.
+Aplikace Wingtip Tickets Database – pro každého tenanta zřídí nové klienty zkopírováním databáze šablony s názvem _basetenantdb_, která je nasazena na serveru katalogu. Zřizování se dá do aplikace integrovat jako součást prostředí pro registraci. Můžete ho taky podporovat offline pomocí skriptů. V tomto kurzu se seznámíte s zřizováním pomocí prostředí PowerShell.
 
 Skripty pro zřizování kopírují databázi _basetenantdb_ , aby se vytvořila nová databáze tenanta v elastickém fondu. Databáze tenanta se vytvoří na serveru tenanta namapovaném na alias DNS _newtenant_ . Tento alias udržuje odkaz na server, který se používá ke zřízení nových tenantů a aktualizuje se tak, aby odkazoval na server tenanta pro obnovení v kurzech pro zotavení po havárii ([Dr pomocí Restore](./saas-dbpertenant-dr-geo-restore.md), [Dr pomocí inreplikace](./saas-dbpertenant-dr-geo-replication.md)). Skripty pak inicializují databázi s informacemi, které jsou specifické pro tenanta, a zaregistrují je v mapě horizontálních oddílů katalogu. K databázím tenanta se přidávají názvy na základě názvu tenanta. Toto schéma pojmenovávání není důležitou součástí vzoru. Katalog mapuje klíč tenanta na název databáze, takže je možné použít jakékoli zásady vytváření názvů.
 
@@ -80,11 +80,11 @@ Aby bylo možné pochopit, jak aplikace Wingtip Tickets implementuje nové zřiz
 
 1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ ProvisionAndCatalog \\ _Demo-ProvisionAndCatalog.ps1_ a nastavte následující parametry:
 
-   * **$TenantName** = název nového místa (například *Bushwillow Blues* ).
-   * **$VenueType** = jeden z předdefinovaných typů místa: _blues, ClassicalMusic, roztancoval, jazz, Judo, motorové dostihy, Multipurpose, Opera, rockmusic, fotbal_ .
-   * **$DemoScenario**  =  **1** *zřízení jednoho tenanta* .
+   * **$TenantName** = název nového místa (například *Bushwillow Blues*).
+   * **$VenueType** = jeden z předdefinovaných typů místa: _blues, ClassicalMusic, roztancoval, jazz, Judo, motorové dostihy, Multipurpose, Opera, rockmusic, fotbal_.
+   * **$DemoScenario**  =  **1** *zřízení jednoho tenanta*.
 
-2. Chcete-li přidat zarážku, umístěte kurzor na libovolné místo na řádku, který říká *New-tenant* . Pak stiskněte F9.
+2. Chcete-li přidat zarážku, umístěte kurzor na libovolné místo na řádku, který říká *New-tenant*. Pak stiskněte F9.
 
    ![Snímek obrazovky zobrazuje skript s New-Tenant zvýrazněnou pro přidání zarážky.](./media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 
@@ -104,17 +104,17 @@ Tento pracovní postup nemusíte explicitně sledovat. Vysvětluje, jak skript l
 * **Importujte modul CatalogAndDatabaseManagement. psm1.** Poskytuje katalog a abstrakci na úrovni tenanta v rámci funkcí [správy horizontálních oddílů](elastic-scale-shard-map-management.md) . Tento modul zapouzdřuje většinu vzorů katalogu a je prozkoumávat.
 * **Importujte modul SubscriptionManagement. psm1.** Obsahuje funkce pro přihlášení k Azure a výběr předplatného Azure, se kterým chcete pracovat.
 * **Získat podrobnosti o konfiguraci.** Krok do Get-Configuration pomocí klávesy F11 a podívejte se, jak je zadaná konfigurace aplikace. Tady jsou definované názvy prostředků a další hodnoty specifické pro danou aplikaci. Tyto hodnoty neměňte, dokud nebudete znát skripty.
-* **Získá objekt katalogu.** Krok do příkazového katalogu Get-Catalog, který vytváří a vrací objekt katalogu, který se používá ve skriptu vyšší úrovně. Tato funkce používá funkce správy horizontálních oddílů, které jsou importovány z **AzureShardManagement. psm1** . Objekt Catalog se skládá z následujících prvků:
+* **Získá objekt katalogu.** Krok do příkazového katalogu Get-Catalog, který vytváří a vrací objekt katalogu, který se používá ve skriptu vyšší úrovně. Tato funkce používá funkce správy horizontálních oddílů, které jsou importovány z **AzureShardManagement. psm1**. Objekt Catalog se skládá z následujících prvků:
 
-   * $catalogServerFullyQualifiedName je vytvořen pomocí standardního kmene plus vaše uživatelské jméno: _Catalog- \<user\> . Database. Windows .NET_ .
-   * $catalogDatabaseName se načte z této konfigurace: *tenantcatalog* .
+   * $catalogServerFullyQualifiedName je vytvořen pomocí standardního kmene plus vaše uživatelské jméno: _Catalog- \<user\> . Database. Windows .NET_.
+   * $catalogDatabaseName se načte z této konfigurace: *tenantcatalog*.
    * Objekt $shardMapManager se inicializuje z databáze katalogu.
    * Objekt $shardMap se inicializuje z mapy horizontálního dělení _tenantcatalog_ v databázi katalogu. Objekt katalogu se skládá a vrátí. Používá se ve skriptu vyšší úrovně.
 * **Vypočítejte nový klíč tenanta.** K vytvoření klíče tenanta z jeho jména se používá funkce hash.
 * **Ověřte, zda klíč tenanta již existuje.** V katalogu se ověří, že je klíč k dispozici.
 * **Ke zřízení databáze tenanta se použije New-TenantDatabase.** Použijte klávesu F11 ke krokování toho, jak se databáze zřídí pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
-    Název databáze je sestavený z názvu tenanta, aby bylo jasné, jakému tenantovi příslušný horizontální oddíl patří. Můžete také použít jiné zásady vytváření názvů databází. Šablona Správce prostředků vytvoří databázi tenanta zkopírováním databáze šablony ( _baseTenantDB_ ) na serveru katalogu. Jako alternativu můžete vytvořit databázi a inicializovat ji pomocí importu BacPac. Případně můžete spustit inicializační skript z dobře známého umístění.
+    Název databáze je sestavený z názvu tenanta, aby bylo jasné, jakému tenantovi příslušný horizontální oddíl patří. Můžete také použít jiné zásady vytváření názvů databází. Šablona Správce prostředků vytvoří databázi tenanta zkopírováním databáze šablony (_baseTenantDB_) na serveru katalogu. Jako alternativu můžete vytvořit databázi a inicializovat ji pomocí importu BacPac. Případně můžete spustit inicializační skript z dobře známého umístění.
 
     Šablona Správce prostředků je ve složce. ..\Learning Modules\Common\: *tenantdatabasecopytemplate.jsna*
 
@@ -136,9 +136,9 @@ Po dokončení zřizování se spuštění vrátí do původního skriptu *demo-
 
 Toto cvičení zřídí dávku o 17 klientech. Doporučujeme, abyste tuto dávku tenantů zřídili před spuštěním dalších kurzů Wingtip Tickets SaaS Database-per-tenant. Existuje více než jen několik databází, se kterými pracujete.
 
-1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ ProvisionAndCatalog \\ *Demo-ProvisionAndCatalog.ps1* . Změňte parametr *$DemoScenario* na 3:
+1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ ProvisionAndCatalog \\ *Demo-ProvisionAndCatalog.ps1*. Změňte parametr *$DemoScenario* na 3:
 
-   * **$DemoScenario**  =  **3** *zřiďte dávku tenantů* .
+   * **$DemoScenario**  =  **3** *zřiďte dávku tenantů*.
 2. Pokud chcete skript spustit, stiskněte klávesu F5.
 
 Skript nasadí dávku dalších tenantů. Používá [šablonu Azure Resource Manager](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) , která řídí dávku a deleguje zřizování každé databáze s propojenou šablonou. Tento způsob použití šablon umožňuje Azure Resource Manageru zprostředkovat skriptu proces zřizování. Šablony zřídí v případě potřeby databáze paralelně a pokusy o opakované pořizování. Skript je idempotentní, takže pokud z nějakého důvodu dojde k chybě nebo jeho zastavení, spusťte ho znovu.
@@ -155,9 +155,9 @@ Skript nasadí dávku dalších tenantů. Používá [šablonu Azure Resource Ma
 
 Další vzory zřizování nezahrnuté v tomto kurzu:
 
-**Předběžné zřizování databází** : vzor předběžného zřizování zneužije skutečnost, že databáze v elastickém fondu nezahrnují dodatečné náklady. Fakturuje se pro elastický fond, ne pro databáze. Nečinné databáze nevyužívají žádné prostředky. Po předběžném zřizování databází ve fondu a jejich přidělování v případě potřeby můžete zkrátit dobu přidávání klientů. Počet databází, které jsou předem zřízené, se dá upravit podle potřeby, aby se zajistila vyrovnávací paměť vhodná pro předpokládanou rychlost zřizování.
+**Předběžné zřizování databází**: vzor předběžného zřizování zneužije skutečnost, že databáze v elastickém fondu nezahrnují dodatečné náklady. Fakturuje se pro elastický fond, ne pro databáze. Nečinné databáze nevyužívají žádné prostředky. Po předběžném zřizování databází ve fondu a jejich přidělování v případě potřeby můžete zkrátit dobu přidávání klientů. Počet databází, které jsou předem zřízené, se dá upravit podle potřeby, aby se zajistila vyrovnávací paměť vhodná pro předpokládanou rychlost zřizování.
 
-**Automatické zřizování** : ve vzorech automatického zřizování zřídí služba automaticky servery, fondy a databáze podle potřeby. Pokud chcete, můžete zahrnout předběžné zřizování databází v elastických fondech. Pokud jsou databáze vyřazeny z provozu a odstraněny, může služba zřizování vyplňovat mezery v elastických fondech. Taková služba může být jednoduchá nebo složitá, jako je například manipulace s zřizováním napříč několika geografickými oblastmi a nastavení geografické replikace pro zotavení po havárii.
+**Automatické zřizování**: ve vzorech automatického zřizování zřídí služba automaticky servery, fondy a databáze podle potřeby. Pokud chcete, můžete zahrnout předběžné zřizování databází v elastických fondech. Pokud jsou databáze vyřazeny z provozu a odstraněny, může služba zřizování vyplňovat mezery v elastických fondech. Taková služba může být jednoduchá nebo složitá, jako je například manipulace s zřizováním napříč několika geografickými oblastmi a nastavení geografické replikace pro zotavení po havárii.
 
 Pomocí vzoru automatického zřizování odešle klientská aplikace nebo skript požadavek na zřízení do fronty, kterou má zpracovat služba zřizování. Pak se dotáže služby na určení dokončení. Je-li použito předběžné zřizování, požadavky jsou zpracovávány rychle. Služba zřídí náhradní databázi na pozadí.
 

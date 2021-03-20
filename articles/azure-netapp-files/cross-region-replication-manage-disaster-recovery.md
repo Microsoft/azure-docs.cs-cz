@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: eab55f881c250c2e07717604d4ba00587a8b6031
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 5b1c1a5216b7a1ad5b23167e776f2b0bbb0a578f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243201"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590989"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Správa zotavení po havárii pomocí replikace mezi oblastmi 
 
@@ -38,10 +38,10 @@ Pokud potřebujete aktivovat cílový svazek (například když chcete převzít
 1. Chcete-li přerušit partnerský vztah replikace, vyberte cílový svazek. Klikněte na **replikace** v části služba úložiště.  
 
 2.  Než budete pokračovat, ověřte následující pole:  
-    * Ujistěte se, že stav zrcadlení znázorňuje ***zrcadlené** _.   
-        Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje _Uninitialized *.
-    * Ujistěte se, že stav vztahu zobrazuje ***nečinné** _.   
-        Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje _Transferring *.   
+    * Ujistěte se, že stav zrcadlení zobrazuje ***zrcadlený svazek***.   
+        Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje *uninicializovaný*.
+    * Ujistěte se, že stav vztahu zobrazuje ***nečinné***.   
+        Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje *přenos*.   
 
     Podívejte se [na téma zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md). 
 
@@ -80,10 +80,10 @@ Po dokončení operace opětovné synchronizace z cílového umístění do zdro
 1. Přerušit partnerský vztah replikace:  
     a. Vyberte *cílový* svazek. Klikněte na **replikace** v části služba úložiště.  
     b. Než budete pokračovat, ověřte následující pole:   
-    * Ujistěte se, že stav zrcadlení znázorňuje ***zrcadlené** _.   
-    Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje _uninitialized *.  
-    * Ujistěte se, že stav vztahu zobrazuje ***nečinné** _.   
-    Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje _transferring *.    
+    * Ujistěte se, že stav zrcadlení zobrazuje ***zrcadlený svazek***.   
+    Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje *uninicializovaný*.  
+    * Ujistěte se, že stav vztahu zobrazuje ***nečinné***.   
+    Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje *přenos*.    
 
         Podívejte se [na téma zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md). 
 
@@ -102,7 +102,8 @@ Po dokončení operace opětovné synchronizace z cílového umístění do zdro
 * [Replikace mezi oblastmi](cross-region-replication-introduction.md)
 * [Požadavky a předpoklady pro použití replikace mezi oblastmi](cross-region-replication-requirements-considerations.md)
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
+* [Změna velikosti cílového svazku replikace mezi oblastmi](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)
-* [Odstranit replikace svazků nebo svazky](cross-region-replication-delete.md)
+* [Odstranění svazků nebo replikací svazků](cross-region-replication-delete.md)
 * [Řešení potíží s replikací mezi oblastmi](troubleshoot-cross-region-replication.md)
 

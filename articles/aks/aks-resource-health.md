@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
 ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92070652"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Kontrolovat Resource Health události, které mají vliv na váš cluster AKS (Preview)
@@ -39,7 +39,7 @@ Při spouštění vašich kontejnerových úloh na AKS chcete zajistit, aby bylo
 
 Azure Resource Health vám pomůže s diagnostikou a získáním podpory pro problémy se službami, které ovlivňují vaše prostředky Azure. Resource Health sestavuje aktuální a minulý stav vašich prostředků a pomůže vám zjistit, jestli je problém způsobený uživatelem zahájenou akcí nebo událostí platformy.
 
-Resource Health přijímá signály pro spravovaný cluster ke zjištění stavu clusteru. Kontroluje stav vašeho clusteru AKS a oznamuje akce vyžadované pro každý signál stavu. Tyto signály jsou v rozsahu od automatického řešení potíží, plánovaných aktualizací, neplánovaných událostí stavu a nedostupností způsobené uživatelem inicializovanými akcemi. Tyto signály jsou klasifikovány pomocí stavu Azure Resource Health: *k dispozici*, *nedostupné*, *neznámé*a *omezené*.
+Resource Health přijímá signály pro spravovaný cluster ke zjištění stavu clusteru. Kontroluje stav vašeho clusteru AKS a oznamuje akce vyžadované pro každý signál stavu. Tyto signály jsou v rozsahu od automatického řešení potíží, plánovaných aktualizací, neplánovaných událostí stavu a nedostupností způsobené uživatelem inicializovanými akcemi. Tyto signály jsou klasifikovány pomocí stavu Azure Resource Health: *k dispozici*, *nedostupné*, *neznámé* a *omezené*.
 
 - **K dispozici**: Pokud neexistují žádné známé problémy, které by ovlivnily stav vašeho clusteru, Resource Health nahlásí cluster jako *dostupný*.
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697839"
 ---
 # <a name="http-api-reference"></a>Reference k rozhraní HTTP API
@@ -498,7 +498,7 @@ Může být vráceno několik možných hodnot stavového kódu.
 * **HTTP 404 (Nenalezeno)**: Zadaná instance nebyla nalezena.
 * **HTTP 410 (pryč)**: Zadaná instance byla dokončena nebo se nezdařila a nemůže zpracovat žádné události, které byly vyvolány.
 
-Tady je příklad požadavku, který odesílá řetězec JSON `"incr"` do instance, která čeká na **operaci**s názvem události:
+Tady je příklad požadavku, který odesílá řetězec JSON `"incr"` do instance, která čeká na **operaci** s názvem události:
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX

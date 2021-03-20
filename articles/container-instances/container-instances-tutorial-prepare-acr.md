@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc, devx-track-azurecli
 ms.openlocfilehash: 2eda960c53fc7ba851ffcfbe96bd8e9a48844910
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746945"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Kurz: vytvoření služby Azure Container registry a vložení image kontejneru
@@ -40,7 +40,7 @@ Nejprve získejte úplný název přihlašovacího serveru pro svůj registr kon
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Pokud se například váš registr jmenuje *mycontainerregistry082* , bude příkaz vypadat takto:
+Pokud se například váš registr jmenuje *mycontainerregistry082*, bude příkaz vypadat takto:
 
 ```azurecli
 az acr show --name mycontainerregistry082 --query loginServer --output table
@@ -58,7 +58,7 @@ Nyní zobrazte seznam místních imagí pomocí příkazu [docker images][docker
 docker images
 ```
 
-Kromě ostatních imagí, které máte na svém počítači, byste měli vidět image *aci-tutorial-app* , které jste vytvořili v [předchozím kurzu](container-instances-tutorial-prepare-app.md):
+Kromě ostatních imagí, které máte na svém počítači, byste měli vidět image *aci-tutorial-app*, které jste vytvořili v [předchozím kurzu](container-instances-tutorial-prepare-app.md):
 
 ```console
 $ docker images
@@ -111,7 +111,7 @@ Pokud si chcete ověřit, že image, kterou jste právě odeslali, se skutečně
 az acr repository list --name <acrName> --output table
 ```
 
-Příklad:
+Například:
 
 ```azurecli
 az acr repository list --name mycontainerregistry082 --output table

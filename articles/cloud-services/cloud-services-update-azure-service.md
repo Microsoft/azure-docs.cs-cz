@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741107"
 ---
 # <a name="how-to-update-an-azure-cloud-service-classic"></a>Jak aktualizovat cloudovou službu Azure (Classic)
@@ -51,18 +51,18 @@ V následující tabulce jsou uvedeny povolené změny služby během aktualizac
 
 | Změny povolené pro hostování, služby a role | Místní aktualizace | Připraveno (prohození VIP) | Odstranit a znovu nasadit |
 | --- | --- | --- | --- |
-| Verze operačního systému |Ano |Ano |Ano |
-| Úroveň důvěryhodnosti .NET |Ano |Ano |Ano |
-| Velikost virtuálního počítače<sup>1</sup> |Ano<sup>2</sup> |Ano |Ano |
-| Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Ano |Ano |
-| Přidání nebo odebrání rolí ve službě |Ano |Ano |Ano |
-| Počet instancí konkrétní role |Ano |Ano |Ano |
-| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Ano |
-| Názvy a hodnoty nastavení konfigurace |Ano |Ano |Ano |
-| Hodnoty (ale ne názvy) nastavení konfigurace |Ano |Ano |Ano |
-| Přidat nové certifikáty |Ano |Ano |Ano |
-| Změna existujících certifikátů |Ano |Ano |Ano |
-| Nasadit nový kód |Ano |Ano |Ano |
+| Verze operačního systému |Yes |Yes |Yes |
+| Úroveň důvěryhodnosti .NET |Yes |Yes |Yes |
+| Velikost virtuálního počítače<sup>1</sup> |Ano<sup>2</sup> |Yes |Yes |
+| Nastavení místního úložiště |Zvýšit jenom<sup>2</sup> |Yes |Yes |
+| Přidání nebo odebrání rolí ve službě |Yes |Yes |Yes |
+| Počet instancí konkrétní role |Yes |Yes |Yes |
+| Počet nebo typ koncových bodů pro službu |Ano<sup>2</sup> |No |Yes |
+| Názvy a hodnoty nastavení konfigurace |Yes |Yes |Yes |
+| Hodnoty (ale ne názvy) nastavení konfigurace |Yes |Yes |Yes |
+| Přidat nové certifikáty |Yes |Yes |Yes |
+| Změna existujících certifikátů |Yes |Yes |Yes |
+| Nasadit nový kód |Yes |Yes |Yes |
 
 <sup>1</sup> Změna velikosti omezená na podmnožinu velikostí dostupných pro cloudovou službu.
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92678334"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Vývoj aplikací Service Fabric C# pomocí Visual Studio Code
@@ -34,7 +34,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-st
 ## <a name="open-the-application-in-vs-code"></a>Otevřete aplikaci v VS Code
 
 ### <a name="windows"></a>Windows
-V nabídce Start klikněte pravým tlačítkem myši na ikonu VS Code a vyberte **Spustit jako správce** . Chcete-li připojit ladicí program k vašim službám, je třeba spustit VS Code jako správce.
+V nabídce Start klikněte pravým tlačítkem myši na ikonu VS Code a vyberte **Spustit jako správce**. Chcete-li připojit ladicí program k vašim službám, je třeba spustit VS Code jako správce.
 
 ### <a name="linux"></a>Linux
 Pomocí terminálu přejděte do cesty/service-fabric-dotnet-core-getting-started/Services/CounterService z adresáře, do kterého byla aplikace naklonována místně.
@@ -57,7 +57,7 @@ Aplikace by se teď měla zobrazit v pracovním prostoru VS Code.
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Nasazení aplikace do místního clusteru
 Po vytvoření aplikace ji můžete nasadit do místního clusteru. 
 
-1. Z **palety příkazů** vyberte **příkaz Service Fabric: nasadit aplikaci (localhost)** . Výstup procesu instalace se pošle do integrovaného terminálu.
+1. Z **palety příkazů** vyberte **příkaz Service Fabric: nasadit aplikaci (localhost)**. Výstup procesu instalace se pošle do integrovaného terminálu.
 
    ![Příkaz nasadit aplikaci v VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
@@ -74,7 +74,7 @@ Společně s nasazením aplikace do místního clusteru můžete také publikova
 
 1. Ujistěte se, že jste sestavili aplikaci pomocí výše uvedených pokynů. Aktualizujte vygenerovaný konfigurační soubor `Cloud.json` s podrobnostmi o vzdáleném clusteru, do kterého chcete publikovat.
 
-2. Z **palety příkazů** vyberte **příkaz Service Fabric: publikování aplikace** . Výstup procesu instalace se pošle do integrovaného terminálu.
+2. Z **palety příkazů** vyberte **příkaz Service Fabric: publikování aplikace**. Výstup procesu instalace se pošle do integrovaného terminálu.
 
    ![Příkaz publikování aplikace v VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
@@ -101,7 +101,7 @@ Chcete-li nastavit zarážku a ladit, proveďte následující kroky:
 
    ![Primární proces](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
-5. Zarážka v souboru *CounterService.cs* bude velmi rychlá. Pak můžete prozkoumat hodnoty místních proměnných. Pomocí panelu nástrojů ladění v horní části VS Code můžete pokračovat v provádění, krokovat řádky, Krokovat s vnořením do metod nebo krokovat s aktuální metodou. 
+5. Zarážka v souboru *CounterService. cs* bude velmi rychlá. Pak můžete prozkoumat hodnoty místních proměnných. Pomocí panelu nástrojů ladění v horní části VS Code můžete pokračovat v provádění, krokovat řádky, Krokovat s vnořením do metod nebo krokovat s aktuální metodou. 
 
    ![Hodnoty ladění](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
 

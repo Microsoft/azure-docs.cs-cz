@@ -1,5 +1,5 @@
 ---
-title: Postup reakce na Key Vault výstrahy na Azure Defender
+title: Reakce na upozornění Azure Defenderu pro Key Vault
 description: Přečtěte si o krocích nezbytných pro reakci na výstrahy z Azure Defenderu pro Key Vault.
 author: memildin
 ms.author: memildin
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 67c556e44f07240b1ad1bcde61f40042da46def8
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96122201"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Reakce na upozornění Azure Defenderu pro Key Vault
-Když obdržíte výstrahu od Azure Defenderu pro Key Vault, doporučujeme, abyste si vyšetřili a odpověděli na výstrahu, jak je popsáno níže. Azure Defender pro Key Vault chrání aplikace a přihlašovací údaje, takže i v případě, že jste obeznámeni s aplikací nebo uživatelem, který výstrahu aktivoval, je důležité ověřit situaci okolní s každou výstrahou.  
+Když obdržíte výstrahu od Azure Defenderu pro Key Vault, doporučujeme, abyste si vyšetřili a odpověděli na výstrahu, jak je popsáno níže. Azure Defender pro službu Key Vault chrání aplikace a přihlašovací údaje, takže i v případě, že znáte aplikaci nebo uživatele, který upozornění aktivoval, je potřeba u každého upozornění ověřit konkrétní situaci.  
 
 Každé upozornění z Azure Defenderu pro Key Vault zahrnuje tyto prvky:
 
@@ -23,7 +23,7 @@ Každé upozornění z Azure Defenderu pro Key Vault zahrnuje tyto prvky:
 - Hlavní název uživatele nebo IP adresa podezřelého prostředku
 
 > [!TIP]
-> Na základě *typu* přístupu, ke kterému došlo, nemusí být některá pole k dispozici. Pokud jste například k vašemu trezoru klíčů přistupovali v rámci aplikace, nebude se vám zobrazovat přidružený hlavní název uživatele. Pokud provoz pochází mimo Azure, neuvidíte ID objektu.
+> Na základě *typu* přístupu, ke kterému došlo, nemusí být některá pole k dispozici. Například pokud k trezoru klíčů přistupovala aplikace, nezobrazí se přidružený hlavní název uživatele (UPN). Pokud provoz nepocházel z Azure, nezobrazí se ID objektu.
 
 ## <a name="step-1-contact"></a>Krok 1. Kontakt
 

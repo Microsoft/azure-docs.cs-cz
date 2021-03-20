@@ -8,10 +8,10 @@ ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 118b02ab694d27dbe4e13cbfa1a617a56b052772
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043064"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Integrace digitálních vláken Azure s ostatními službami
@@ -39,9 +39,9 @@ Digitální vlákna Azure může posílat data do připojených **koncových bod
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Koncové body jsou připojené k digitálním Vlákenám Azure pomocí rozhraní API pro správu nebo Azure Portal. Přečtěte si další informace o tom, jak připojit koncový bod k digitálním Vlákenám Azure v tématu [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes-apis-cli.md).
+Koncové body jsou připojené k Azure Digital Twins pomocí rozhraní API pro správu nebo webu Azure Portal. Přečtěte si další informace o tom, jak připojit koncový bod k digitálním Vlákenám Azure v tématu [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes-apis-cli.md).
 
-Existuje mnoho dalších služeb, kde můžete chtít data nakonec směrovat, například [Azure Storage](../storage/common/storage-introduction.md), [Azure Maps](../azure-maps/about-azure-maps.md)nebo [Time Series Insights](../time-series-insights/overview-what-is-tsi.md). Pokud chcete odesílat data do služeb, jako jsou, připojte cílovou službu ke koncovému bodu.
+K dispozici je mnoho dalších služeb, do kterých můžete chtít případně směrovat vaše data, například [Azure Storage](../storage/common/storage-introduction.md), [Azure Maps](../azure-maps/about-azure-maps.md) nebo [Time Series Insights](../time-series-insights/overview-what-is-tsi.md). Pokud chcete odesílat data do služeb, jako jsou, připojte cílovou službu ke koncovému bodu.
 
 Pokud například používáte také Azure Maps a chcete sladit umístění s dodaným [grafem](concepts-twins-graph.md)digitálních vláken Azure pomocí služby Azure, můžete použít Azure Functions s Event Grid k navázání komunikace mezi všemi službami v nasazení. Další informace najdete v tématu [ *Postupy: použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps.*](how-to-integrate-maps.md)
 

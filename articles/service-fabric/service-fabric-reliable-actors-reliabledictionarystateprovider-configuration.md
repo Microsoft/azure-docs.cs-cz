@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: fbd6f7cd3ade753c659464522408aa715cce48f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75609736"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurace Reliable Actors--ReliableDictionaryActorStateProvider
@@ -30,7 +30,7 @@ Globální konfigurace je určena v manifestu clusteru pro cluster v části Ktl
 Manifest clusteru je jeden soubor XML, který obsahuje nastavení a konfigurace, které platí pro všechny uzly a služby v clusteru. Tento soubor se obvykle označuje jako ClusterManifest.xml. Manifest clusteru pro cluster můžete zobrazit pomocí příkazu Get-ServiceFabricClusterManifest PowerShellu.
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobajtů |8388608 |Minimální počet KB pro přidělení v režimu jádra pro fond paměti vyrovnávací paměti zápisu pro protokolovací nástroj. Tento fond paměti se používá k ukládání informací o stavu do mezipaměti před zápisem na disk. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobajtů |Bez omezení |Maximální velikost, do které může růst fondu paměti zápisu pro zápis protokolovacího nástroje. |
@@ -75,10 +75,10 @@ Výchozí konfigurace je generována šablonou sady Visual Studio a měla by sta
 &lt;Jméno objektu actor &gt; ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0,015 |Časové období, po které se Replikátor v sekundárním čekání po přijetí operace před odesláním zpět na primární. Jakékoli další potvrzení, která se mají odeslat pro operace zpracovávané v tomto intervalu, se odešlou jako jedna odpověď. |
-| ReplicatorEndpoint |Není k dispozici |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
+| ReplicatorEndpoint |– |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
 | MaxReplicationMessageSize |Bajty |50 MB |Maximální velikost replikačních dat, která se dají přenést v jedné zprávě |
 | MaxPrimaryReplicationQueueSize |Počet operací |8192 |Maximální počet operací v primární frontě. Když primární Replikátor dostane potvrzení ze všech sekundárních replikátorů, operace se uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
 | MaxSecondaryReplicationQueueSize |Počet operací |16384 |Maximální počet operací v sekundární frontě. Po zajištění vysoké dostupnosti stavu prostřednictvím trvalosti se operace uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |

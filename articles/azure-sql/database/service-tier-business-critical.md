@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: 830ecc44d0def13e51cb06704bef429bb8860cd6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780219"
 ---
 # <a name="business-critical-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Pro důležité obchodní informace úroveň – Azure SQL Database a spravovaná instance Azure SQL 
@@ -52,10 +52,10 @@ Hlavní důvody, proč byste měli zvolit Pro důležité obchodní informace ú
 -   **Nízké požadavky na latenci v/v** – úlohy, které potřebují rychlou odezvu z vrstvy úložiště (1-2 milisekund v průměru), by měly používat pro důležité obchodní informace úrovně. 
 -   **Častá komunikace mezi aplikací a databází** Aplikace, které nemůžou využívat ukládání do mezipaměti aplikační vrstvy nebo vyžadují [dávkování](../performance-improve-use-batching.md) a potřebují poslat mnoho dotazů SQL, které se musí rychle zpracovat, jsou dobrými kandidáty na pro důležité obchodní informaceou úroveň.
 -   **Velký počet aktualizací** – operace vložení, aktualizace a odstranění upraví datové stránky v paměti (nezměněná stránka), které je třeba uložit do datových souborů s `CHECKPOINT` operací. Možná dojde k selhání procesu databázového stroje nebo převzetí služeb při selhání databáze s velkým počtem nezměněných stránek, což může prodloužit dobu obnovení Pro obecné účely úrovně. Pro důležité obchodní informace úroveň použijte v případě, že máte zatížení, které způsobuje mnoho změn v paměti. 
--   **Dlouho běžící transakce, které upravují data** . Transakce, které jsou otevřeny po delší dobu, brání v zkracování souboru protokolu, což může zvýšit velikost protokolu a počet [virtuálních souborů protokolu (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). Vysoký počet VLFs může zpomalit obnovení databáze po převzetí služeb při selhání.
+-   **Dlouho běžící transakce, které upravují data**. Transakce, které jsou otevřeny po delší dobu, brání v zkracování souboru protokolu, což může zvýšit velikost protokolu a počet [virtuálních souborů protokolu (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). Vysoký počet VLFs může zpomalit obnovení databáze po převzetí služeb při selhání.
 -   **Úlohy s vytvářením sestav a analytickými dotazy** , které se dají přesměrovat na bezplatnou sekundární repliku jen pro čtení.
-- **Vyšší odolnost a rychlejší obnovení při selhání** . V případě selhání systému bude databáze na primární instanci zakázaná a jedna ze sekundárních replik se hned stala novou primární databází pro čtení a zápis, která je připravená na zpracování dotazů. Databázový stroj nemusí analyzovat a opakovat transakce ze souboru protokolu a načíst všechna data do vyrovnávací paměti.
-- **Rozšířená ochrana před poškozením dat** . Pro důležité obchodní informace vrstva využívá repliky databáze za účelem zajištění kontinuity podnikových aplikací, a proto služba také využívá automatickou opravu stránky, což je stejná technologie, která se používá pro SQL Server [zrcadlení databáze a skupiny dostupnosti](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). V případě, že replika nemůže přečíst stránku z důvodu problému s integritou dat, bude nová kopie stránky načtena z jiné repliky, která nahrazuje nečitelný stránku, aniž by došlo ke ztrátě dat nebo výpadkům zákazníků. Tato funkce se vztahuje na vrstvu Pro obecné účely, pokud má databáze geograficky sekundární repliku.
+- **Vyšší odolnost a rychlejší obnovení při selhání**. V případě selhání systému bude databáze na primární instanci zakázaná a jedna ze sekundárních replik se hned stala novou primární databází pro čtení a zápis, která je připravená na zpracování dotazů. Databázový stroj nemusí analyzovat a opakovat transakce ze souboru protokolu a načíst všechna data do vyrovnávací paměti.
+- **Rozšířená ochrana před poškozením dat**. Pro důležité obchodní informace vrstva využívá repliky databáze za účelem zajištění kontinuity podnikových aplikací, a proto služba také využívá automatickou opravu stránky, což je stejná technologie, která se používá pro SQL Server [zrcadlení databáze a skupiny dostupnosti](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). V případě, že replika nemůže přečíst stránku z důvodu problému s integritou dat, bude nová kopie stránky načtena z jiné repliky, která nahrazuje nečitelný stránku, aniž by došlo ke ztrátě dat nebo výpadkům zákazníků. Tato funkce se vztahuje na vrstvu Pro obecné účely, pokud má databáze geograficky sekundární repliku.
 - **Vyšší dostupnost** – pro důležité obchodní informace úroveň v nástroji multi-AZ configuration garantuje 99,995% dostupnost, ve srovnání s 99,99% pro obecné účely úrovně.
 - **Rychlá úroveň geografického obnovení** – pro důležité obchodní informace nakonfigurovaná s geografickou replikací, má zaručený cíl bodu obnovení (RPO) 5 sec a doba obnovení (RTO) 30 sekund po dobu 100% nasazených hodin.
 

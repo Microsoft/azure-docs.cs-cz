@@ -4,10 +4,10 @@ description: Tento článek popisuje dvě role klienta a oprávnění poskytnut�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75451899"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Řízení přístupu na základě role pro klienty Service Fabric
@@ -56,7 +56,7 @@ Typ řízení přístupu správce má úplný přístup ke všem rozhraním API 
 * **GetNodeDeactivationStatus**: Kontrola stavu deaktivace                             
 * **Operace nodestateremoved**: byl odebrán stav uzlu vytváření sestav.                             
 * **ReportFault**: Chyba generování sestav                             
-* **Obsah**souboru: přenos souborů klienta úložiště imagí (externí do clusteru)                             
+* **Obsah** souboru: přenos souborů klienta úložiště imagí (externí do clusteru)                             
 * Soubor **ke stažení**: zahájení stahování souboru klienta úložiště imagí (externí do clusteru)                             
 * **InternalList**: operace seznamu klientských souborů v úložišti imagí (interní)                             
 * **Odstranit**: operace odstranění klienta úložiště imagí                              
@@ -65,7 +65,7 @@ Typ řízení přístupu správce má úplný přístup ke všem rozhraním API 
 * **MoveReplicaControl**: přesun replik z jednoho uzlu do druhého                             
 
 ### <a name="miscellaneous-operations"></a>Různé operace
-* **Test**klienta: příkazy pro odeslání klientů                             
+* **Test** klienta: příkazy pro odeslání klientů                             
 * **Dotaz**: všechny dotazy povoleny
 * **NameExists**: pojmenovávání kontrol existence identifikátoru URI                             
 
@@ -89,7 +89,7 @@ Typ řízení přístupu uživatele je ve výchozím nastavení omezen na násle
 Řízení přístupu správce má také přístup k předchozím operacím.
 
 ## <a name="changing-default-settings-for-client-roles"></a>Změna výchozího nastavení pro role klientů
-V souboru manifestu clusteru můžete v případě potřeby poskytnout klientovi možnosti správy. Výchozí hodnoty můžete změnit tak, že v průběhu [vytváření clusteru](service-fabric-cluster-creation-via-portal.md)kliknete na možnost **nastavení prostředků infrastruktury** a v poli **název**, **správce**, **uživatel**a **hodnota** zadáte předchozí nastavení.
+V souboru manifestu clusteru můžete v případě potřeby poskytnout klientovi možnosti správy. Výchozí hodnoty můžete změnit tak, že v průběhu [vytváření clusteru](service-fabric-cluster-creation-via-portal.md)kliknete na možnost **nastavení prostředků infrastruktury** a v poli **název**, **správce**, **uživatel** a **hodnota** zadáte předchozí nastavení.
 
 ## <a name="next-steps"></a>Další kroky
 [Service Fabric zabezpečení clusteru](service-fabric-cluster-security.md)
