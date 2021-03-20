@@ -10,10 +10,10 @@ ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: 8aad9df4720c833a74659b5cd36b7f5aafdf9b60
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631835"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy pro zvýšení výkonu pro sadu Java SDK v4 služby Azure Cosmos DB
@@ -150,15 +150,15 @@ Ve výchozím nastavení se požadavky přímého režimu Cosmos DB při použit
 
 V Azure Cosmos DB Java SDK v4 je přímým řešením nejlepší volbou pro zlepšení výkonu databáze s většinou úloh. 
 
-* ***Přehled přímého režimu** _
+* ***Přehled přímého režimu***
 
 :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Ilustrace architektury přímého režimu" border="false":::
 
-Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 _ *kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby** repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
+Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 **kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby** repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
 
-* ***Možnosti konfigurace pro přímý režim** _
+* ***Možnosti konfigurace pro přímý režim***
 
-Pokud je žádoucí jiné než výchozí chování přímého režimu, vytvořte instanci _DirectConnectionConfig * a upravte její vlastnosti a pak předejte vlastní instanci vlastnosti metodě *directMode ()* v nástroji Azure Cosmos DB Client Builder.
+Pokud je žádoucí jiné než výchozí chování přímého režimu, vytvořte instanci *DirectConnectionConfig* a přizpůsobte její vlastnosti a pak předejte přizpůsobenou instanci vlastnosti metodě *directMode ()* v Tvůrci klienta Azure Cosmos DB.
 
 Tato nastavení konfigurace řídí chování základní architektury přímého režimu popsané výše.
 
@@ -176,19 +176,19 @@ V prvním kroku použijte následující doporučené konfigurační nastavení.
 
 Azure Cosmos DB Java SDK v4 podporuje paralelní dotazy, které umožňují paralelní dotazování dělené kolekce. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples) týkající se práce s Azure Cosmos DB Java SDK v4. Paralelní dotazy jsou navržené tak, aby se zlepšila latence a propustnost dotazů v rámci svého sériového protějšku.
 
-* ***Vyladění \: setMaxDegreeOfParallelism** _
+* ***Vyladění setMaxDegreeOfParallelism\:***
     
 Paralelní dotazy fungují paralelně dotazování na více oddílů. Data z jednotlivých dělených kolekcí se ale v souvislosti s dotazem načítají sériově. Proto použijte setMaxDegreeOfParallelism k nastavení počtu oddílů, které mají maximální šanci dosáhnout nejvíce výkonného dotazu. za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. Pokud neznáte počet oddílů, můžete použít setMaxDegreeOfParallelism k nastavení vysokého čísla a systém zvolí minimální (počet oddílů, uživatelem zadaný vstup) jako maximální stupeň paralelismu.
 
 Je důležité si uvědomit, že paralelní dotazy poskytují nejlepší výhody, pokud jsou data rovnoměrně rozložena napříč všemi oddíly v souvislosti s dotazem. Pokud je dělená kolekce rozdělena takovým způsobem, že všechna nebo většina dat vrácených dotazem je soustředěna v několika oddílech (jeden oddíl v nejhorším případě), výkon dotazu by tyto oddíly měl být kritický.
 
-_ ***Vyladění \: setMaxBufferedItemCount** _
+* ***Vyladění setMaxBufferedItemCount\:***
     
 Paralelní dotaz je navržený tak, aby byly výsledky předem načteny, zatímco aktuální dávka výsledků je zpracovávána klientem. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. setMaxBufferedItemCount omezuje počet předběžně načtených výsledků. Nastavení setMaxBufferedItemCount na očekávaný počet vrácených výsledků (nebo vyšší číslo) umožňuje, aby dotaz získal maximální přínos před načtením.
 
 Předběžné načítání funguje stejným způsobem bez ohledu na Z MaxDegreeOfParallelism a existuje jedna vyrovnávací paměť pro data ze všech oddílů.
 
-_ **Horizontálního navýšení kapacity klienta – zatížení**
+* **Horizontální navýšení kapacity klienta – zatížení**
 
 Pokud testujete na úrovních vysoké propustnosti, může se klientská aplikace stát kritickým bodem, protože počítač capping na využití procesoru nebo sítě. Pokud se dostanou k tomuto bodu, můžete dál nasdílet Azure Cosmos DB účet tím, že navedete horizontální navýšení kapacity klientských aplikací napříč více servery.
 
@@ -233,11 +233,11 @@ Další informace o Azure Cosmos DB Java SDK v4 najdete v [adresáři Cosmos DB 
 
 Z nejrůznějších důvodů možná budete chtít přidat protokolování do vlákna, které generuje propustnost vysokého požadavku. Pokud je vaším cílem plně nazvýšit výkon zajištěné propustnosti kontejneru pomocí požadavků generovaných tímto vláknem, optimalizace protokolování můžou významně zlepšit výkon.
 
-* ***Konfigurace asynchronního protokolovacího** nástroje _
+* ***Konfigurace asynchronního protokolovacího nástroje***
 
 Latence synchronního protokolovacího nástroje nutně zohledňuje celkové latence ve vašem vlákně generující požadavky. Asynchronní protokolovací nástroj, jako je [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) , se doporučuje oddělit režijní náklady od vašich vysoce výkonných aplikačních vláken.
 
-_ ***Zakázat protokolování síťoviny** _
+* ***Zakázat protokolování síťoviny***
 
 Protokolování do knihovny síťoviny je konverzace a je nutné je vypnout (potlačení konfigurace nemusí být dostatečné), aby se předešlo dalším nákladům na procesor. Pokud nejste v režimu ladění, zakažte protokolování síťoviny úplně. Takže pokud používáte log4j k odebrání dalších nákladů na procesor vynaložených ``org.apache.log4j.Category.callAppenders()`` z síťoviny, přidejte do základu kódu následující řádek:
 
@@ -245,7 +245,7 @@ Protokolování do knihovny síťoviny je konverzace a je nutné je vypnout (pot
 org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
 ```
 
- _ **Omezení prostředků otevřených souborů operačního systému**
+ * **Omezení prostředků otevřených souborů operačního systému**
  
 Některé systémy Linux (jako Red Hat) mají horní limit počtu otevřených souborů a celkový počet připojení. Chcete-li zobrazit aktuální omezení, spusťte následující:
 
@@ -361,7 +361,7 @@ Pokud máte více než jednoho klienta, který se konzistentně pracuje konziste
 
 I když automatizované chování při opakování pomáhá zlepšit odolnost a použitelnost většiny aplikací, může při měření latence docházet k lichá při provádění srovnávacích testů, zejména při měření latence. Latence zjištěná klientem bude špička, pokud experiment narazí na omezení serveru a způsobí, že se klientská sada SDK tiše znovu pokusí. Aby se zabránilo špičkám latence během experimentů s výkonem, změřte poplatky vracené jednotlivými operacemi a zajistěte, aby požadavky byly v provozu pod rezervovanými sazbami požadavků. Další informace najdete v tématu [jednotky žádostí](request-units.md).
 
-* **Návrh pro menší dokumenty pro vyšší propustnost**
+* **Pro zajištění vyšší propustnosti navrhujte menší dokumenty.**
 
 Poplatek za požadavek (náklady na zpracování požadavku) dané operace se přímo koreluje s velikostí dokumentu. Operace s velkým objemem dokumentů se při používání malých dokumentů dotýkají více než operací. V ideálním případě bude vaše aplikace a pracovní postupy mít velikost vaší položky ~ 1 KB nebo podobné pořadí nebo velikost. U velkých položek aplikací citlivých na latenci by se mělo vyhýbat, že vaše aplikace bude zpomalovat dokumenty s více MB.
 

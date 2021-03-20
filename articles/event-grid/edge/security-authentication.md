@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 42f6107ff79d6262cdc0a35cf972cf65d3a9a802
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171376"
 ---
 # <a name="security-and-authentication"></a>Zabezpečení a ověřování
@@ -56,7 +56,7 @@ Ve výchozím nastavení je modul Event Grid nakonfigurovaný tak, aby přijíma
 
 ### <a name="certificate-based-client-authentication"></a>Ověřování klientů na základě certifikátu
 
-Ověřování na základě certifikátu je ve výchozím nastavení zapnuté. Ověřování na základě certifikátů můžete zakázat prostřednictvím **inbound__clientAuth__clientCert__enabled**vlastností. Následující tabulka zachycuje možné hodnoty.
+Ověřování na základě certifikátu je ve výchozím nastavení zapnuté. Ověřování na základě certifikátů můžete zakázat prostřednictvím **inbound__clientAuth__clientCert__enabled** vlastností. Následující tabulka zachycuje možné hodnoty.
 
 | Možné hodnoty | Description |
 | ----------------  | ------------ |
@@ -118,7 +118,7 @@ Konfigurace, která řídí zdroj certifikátu, je **outbound__clientAuth__clien
 
 Jeden z cílových typů pro předplatitele Event Grid je Webhook. Ve výchozím nastavení jsou pro tyto předplatitele přijímány pouze koncové body HTTPS.
 
-Konfigurace pro řízení cílových **outbound__webhook__httpsOnly**zásad pro Webhook.
+Konfigurace pro řízení cílových **outbound__webhook__httpsOnly** zásad pro Webhook.
 
 | Možné hodnoty | Description |
 | ----------------  | ------------ |
@@ -145,7 +145,7 @@ Pokud je certifikát předplatitele podepsaný svým držitelem, pak ve výchoz�
 > [!NOTE]
 >IoT Edge prostředí generuje certifikáty podepsané svým držitelem. Doporučujeme, abyste vygenerovali certifikáty vydávané autorizovanými certifikačními autoritami pro produkční úlohy a nastavili vlastnost **allowUnknownCA** u příchozích i odchozích na **hodnotu false**.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Event Grid modul je **ve výchozím nastavení zabezpečený**. Pro produkční nasazení doporučujeme ponechat tato výchozí nastavení.
 

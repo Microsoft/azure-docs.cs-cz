@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
 ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913836"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Kurz: nasazení skupiny s více kontejnery pomocí Docker Compose 
@@ -86,8 +86,8 @@ services:
 
 V `azure-vote-front` konfiguraci proveďte následující dvě změny:
 
-1. Aktualizuje `image` vlastnost ve `azure-vote-front` službě. Jako předponu názvu obrázku použijte název přihlašovacího serveru služby Azure Container Registry, \<acrName\> . azurecr.IO. Pokud je například registr nazvaný *myregistry* , název přihlašovacího serveru je *myregistry.azurecr.IO* (všechny malé písmeno) a vlastnost Image je pak `myregistry.azurecr.io/azure-vote-front` .
-1. Změňte `ports` mapování na `80:80` . Uložte soubor.
+1. Aktualizuje `image` vlastnost ve `azure-vote-front` službě. Jako předponu názvu obrázku použijte název přihlašovacího serveru služby Azure Container Registry, \<acrName\> . azurecr.IO. Pokud je například registr nazvaný *myregistry*, název přihlašovacího serveru je *myregistry.azurecr.IO* (všechny malé písmeno) a vlastnost Image je pak `myregistry.azurecr.io/azure-vote-front` .
+1. Změňte `ports` mapování na `80:80` . Soubor uložte.
 
 Aktualizovaný soubor by měl vypadat nějak takto:
 
@@ -216,9 +216,9 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 Pokud chcete zobrazit spuštěnou aplikaci v cloudu, zadejte zobrazenou IP adresu v místním webovém prohlížeči. V tomto příkladu zadejte `52.179.23.131` . Načte se ukázková aplikace, jak je znázorněno v následujícím příkladu:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Obrázek hlasovací aplikace":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Obrázek hlasovací aplikace v ACI":::
 
-Pokud chcete zobrazit protokoly front-endu kontejneru, spusťte příkaz [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) . Příklad:
+Pokud chcete zobrazit protokoly front-endu kontejneru, spusťte příkaz [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) . Například:
 
 ```console
 docker logs azurevotingappredis_azure-vote-front

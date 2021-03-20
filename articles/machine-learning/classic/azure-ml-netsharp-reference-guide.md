@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100519248"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Příručka k jazyku .NET # neuronové Network Specification pro Machine Learning Studio (Classic)
@@ -90,17 +90,17 @@ Například následující příkaz definuje konstantu `x` :
 
 `Const X = 28;`
 
-Pro definování dvou nebo více konstant současně vložte názvy identifikátorů a hodnot do složených závorek a oddělte je pomocí středníků. Příklad:
+Pro definování dvou nebo více konstant současně vložte názvy identifikátorů a hodnot do složených závorek a oddělte je pomocí středníků. Například:
 
 `Const { X = 28; Y = 4; }`
 
-Pravá strana každého výrazu přiřazení může být celé číslo, reálné číslo, logická hodnota (true nebo false) nebo matematický výraz. Příklad:
+Pravá strana každého výrazu přiřazení může být celé číslo, reálné číslo, logická hodnota (true nebo false) nebo matematický výraz. Například:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Deklarace vrstvy
 
-Deklarace vrstvy je povinná. Definuje velikost a zdroj vrstvy, včetně jejích sad připojení a atributů. Příkaz deklarace začíná názvem vrstvy (vstup, skrytý nebo výstup) následovaný rozměry vrstvy (řazené kolekce členů s kladnými celými čísly). Příklad:
+Deklarace vrstvy je povinná. Definuje velikost a zdroj vrstvy, včetně jejích sad připojení a atributů. Příkaz deklarace začíná názvem vrstvy (vstup, skrytý nebo výstup) následovaný rozměry vrstvy (řazené kolekce členů s kladnými celými čísly). Například:
 
 ```Net#
 input Data auto;

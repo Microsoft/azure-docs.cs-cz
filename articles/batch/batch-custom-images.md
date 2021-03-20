@@ -4,10 +4,10 @@ description: Vytvořte vlastní fond imagí dávky ze spravované image a zříd
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94916572"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí spravované image
@@ -19,7 +19,7 @@ Pokud chcete vytvořit vlastní fond imagí pro virtuální počítače ve fondu
 
 V tomto tématu se dozvíte, jak vytvořit vlastní fond imagí jenom pomocí spravované image.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Prostředek spravované image** Pokud chcete vytvořit fond virtuálních počítačů s použitím vlastní image, musíte mít nebo vytvořit prostředek spravované image ve stejném předplatném Azure a oblasti jako účet Batch. Image by se měla vytvořit ze snímků disku s operačním systémem virtuálního počítače a volitelně z připojených datových disků.
   - Pro každý vytvořený fond použijte jedinečnou vlastní image.

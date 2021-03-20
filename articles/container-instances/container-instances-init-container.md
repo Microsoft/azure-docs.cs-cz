@@ -4,10 +4,10 @@ description: Pomocí spouštěcích kontejnerů v Azure Container Instances prov
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 5a729263ee632eb9227694ec8684eb6889c6324b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85954277"
 ---
 # <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>Spuštění kontejneru init pro úlohy nastavení ve skupině kontejnerů
@@ -39,7 +39,7 @@ Začněte tím, že zkopírujete následující JSON do nového souboru s názve
 * Kontejner *init1* spouští image [BUSYBOX](https://hub.docker.com/_/busybox) z Docker Hub. V režimu spánku po dobu 60 sekund a pak zapíše řetězec příkazového řádku do souboru ve [svazku emptyDir](container-instances-volume-emptydir.md).
 * V kontejnerech aplikací je spuštěná `aci-wordcount` Image kontejneru Microsoftu:
     * Kontejner *Hamlet* spustí aplikaci WORDCOUNT ve své výchozí konfiguraci a spočítá wordové kmitočty v Shakespeare *Hamlet*.
-    * Kontejner aplikace *Juliet* čte řetězec příkazového řádku ze svazku emptDir, aby se spouštěla aplikace WORDCOUNT místo na *Romeo a julietu*Shakespeare.
+    * Kontejner aplikace *Juliet* čte řetězec příkazového řádku ze svazku emptDir, aby se spouštěla aplikace WORDCOUNT místo na *Romeo a julietu* Shakespeare.
 
 Další informace a příklady použití `aci-wordcount` obrázku najdete v tématu [nastavení proměnných prostředí v instancích kontejnerů](container-instances-environment-variables.md).
 
@@ -213,7 +213,7 @@ Výstup:
 
 Kontejnery init vám pomůžou provádět úlohy nastavení a inicializace pro kontejnery aplikací. Další informace o spuštění kontejnerů založených na úlohách najdete v tématu [spuštění kontejnerových úloh pomocí zásad restartování](container-instances-restart-policy.md).
 
-Azure Container Instances poskytuje další možnosti pro úpravu chování kontejnerů aplikací. Příklady:
+Azure Container Instances poskytuje další možnosti pro úpravu chování kontejnerů aplikací. Mezi příklady patří:
 
 * [Nastavení proměnných prostředí v instancích kontejnerů](container-instances-environment-variables.md)
 * [Nastavení příkazového řádku v instanci kontejneru pro přepsání výchozí operace příkazového řádku](container-instances-start-command.md)

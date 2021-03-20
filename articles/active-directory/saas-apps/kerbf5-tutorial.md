@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 2fd96c47e98a6f8a66a5fda555304c4448d772e0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646091"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte integrovat F5 s Azure Active Directory (Azure AD). P�
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -345,8 +345,8 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
     * ID entity *: https://kerb-app.com.cutestat.com
     * Nastavení názvu SP
     * Schéma: https
-    * Host: kerbapp200. demo. Live
-    * Popis: kerbapp200. demo. Live
+    * Hostitel: kerbapp200.superdemo.live
+    * Popis: kerbapp200.superdemo.live
 
      ![Snímek obrazovky s oknem upravit S A M L S P Service s vybraným obecným nastavením](./media/kerbf5-tutorial/configure25.png)
 
@@ -382,7 +382,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 1. Klikněte na název, KerbApp200, vyplňte následující informace a klikněte na **aktualizovat**.
 
-    * Doménový soubor cookie: Ukázka. Live
+    * Soubor cookie domény: superdemo.live
     * Konfigurace jednotného přihlašování: KerAppSSO_sso
 
         ![Snímek obrazovky, na které se zobrazuje stránka s názvem domény s D/ověřením se zvýrazněným rozevíracím seznamem "doména soubor cookie" a "S S konfigurací", a vybraným tlačítkem aktualizovat.](./media/kerbf5-tutorial/configure31.png)
@@ -397,7 +397,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
     * **Session. Logon. Last. usernameUPN expr {[mcget {Session. SAML. Last. identity}]}**
 
-    * **Session. AD. lastactualdomain TEXT demo. Live**
+    * **Session. AD. lastactualdomain TEXT superdemo.live**
 
         ![Snímek obrazovky zobrazující stránku "zásady přístupu" a dialogové okno Active Directory se zvýrazněným textovým polem "SearchFilter".](./media/kerbf5-tutorial/configure35.png)
 
@@ -452,7 +452,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 *  **Krok 1:** Vytvoření účtu delegování
 
     **Příklad:**
-    * Název domény: **Ukázka. Live**
+    * Název domény: **superdemo.Live**
 
     * Název účtu SAM: **Big-ipuser**
 

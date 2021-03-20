@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 2a1744feedc3e0ffae6cf2cd45cd090a6c2f06d5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422089"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity
@@ -80,12 +80,12 @@ api-key: [Search service admin key]
 
 Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat následující pole:
 
-| Pole   | Popis |
+| Pole   | Description |
 |---------|-------------|
 | **Jméno** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
 |**textový**| Povinná hodnota. Musí být `cosmosdb` . |
-|**přihlašovací údaje** | Povinná hodnota. <br/><br/>Při připojování pomocí spravované identity by měl mít formát **pověření** : *Database = [název databáze]; ResourceId = [Resource-ID-String];(ApiKind = [typ rozhraní API];)*<br/> <br/>Formát ResourceId: *ResourceID =/Subscriptions/ **ID vašeho předplatného** /resourceGroups/ **název vaší skupiny prostředků** /Providers/Microsoft.DocumentDB/databaseAccounts/ **název vašeho účtu služby Cosmos DB** /;*<br/><br/>V případě kolekcí SQL nevyžaduje připojovací řetězec ApiKind.<br/><br/>Pro kolekce MongoDB přidejte **ApiKind = MongoDB** do připojovacího řetězce. <br/><br/>V případě grafů Gremlin a tabulek Cassandra si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.<br/>|
-| **vnitřního** | Obsahuje následující prvky: <br/>**název** : povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz** : volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
+|**přihlašovací údaje** | Povinná hodnota. <br/><br/>Při připojování pomocí spravované identity by měl mít formát **pověření** : *Database = [název databáze]; ResourceId = [Resource-ID-String];(ApiKind = [typ rozhraní API];)*<br/> <br/>Formát ResourceId: *ResourceID =/Subscriptions/**ID vašeho předplatného**/resourceGroups/**název vaší skupiny prostředků**/Providers/Microsoft.DocumentDB/databaseAccounts/**název vašeho účtu služby Cosmos DB**/;*<br/><br/>V případě kolekcí SQL nevyžaduje připojovací řetězec ApiKind.<br/><br/>Pro kolekce MongoDB přidejte **ApiKind = MongoDB** do připojovacího řetězce. <br/><br/>V případě grafů Gremlin a tabulek Cassandra si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.<br/>|
+| **vnitřního** | Obsahuje následující prvky: <br/>**název**: povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
 | **dataChangeDetectionPolicy** | Doporučeno |
 |**dataDeletionDetectionPolicy** | Volitelné |
 
@@ -138,7 +138,7 @@ Další informace o rozhraní API Create indexeru najdete v části [Vytvoření
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud zjistíte, že nemůžete indexovat data z Cosmos DB zvažte následující:
 

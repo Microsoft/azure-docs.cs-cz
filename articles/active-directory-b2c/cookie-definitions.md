@@ -12,10 +12,10 @@ ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85389339"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Definice souborů cookie pro Azure AD B2C
@@ -30,7 +30,7 @@ Aby bylo možné chránit přístup k webům, budou webové prohlížeče zavád
 
 `SameSite=None`Aby mohli vývojáři určit soubory cookie pro přístup k více lokalitám, musí použít nové nastavení souborů cookie. Pokud `SameSite=None` je přítomen atribut, je `Secure` nutné použít další atribut, aby soubory cookie mezi weby byly dostupné pouze prostřednictvím připojení HTTPS. Ověří a otestuje všechny vaše aplikace, včetně aplikací, které používají Azure AD B2C.
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 * [Zpracování změn souborů cookie SameSite v prohlížeči Chrome](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
 * [Vliv na zákaznické weby a služby a produkty Microsoftu v Chrome verze 80 nebo novější](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)
@@ -39,7 +39,7 @@ Další informace naleznete v tématech:
 
 V následující tabulce jsou uvedeny soubory cookie používané v Azure AD B2C.
 
-| Název | Doména | Konec platnosti | Účel |
+| Name | Doména | Konec platnosti | Účel |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Konec [relace prohlížeče](session-behavior.md) | Uchovává data o členství uživatelů napříč klienty. Klienti, na kterých je uživatel členem, a úroveň členství (správce nebo uživatel). |
 | `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, značka domény | Konec [relace prohlížeče](session-behavior.md) | Slouží ke směrování požadavků do příslušné provozní instance. |

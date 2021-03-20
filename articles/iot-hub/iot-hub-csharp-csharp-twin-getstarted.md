@@ -11,10 +11,10 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89013754"
 ---
 # <a name="get-started-with-device-twins-net"></a>Začínáme se zdvojením zařízení (.NET)
@@ -31,7 +31,7 @@ V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
 > V článku sady [SDK Azure IoT](iot-hub-devguide-sdks.md) najdete informace o sadách SDK Azure IoT, které můžete použít k vytvoření zařízení i back-endové aplikace.
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Visual Studio
 
@@ -39,7 +39,7 @@ V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -57,9 +57,9 @@ V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
 
 V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která přidá metadata umístění do vlákna v zařízení přidruženého k **myDeviceId**. Pak se dotazuje na vlákna uložená ve službě IoT Hub a vybere zařízení umístěná v USA a potom ty, které nahlásily mobilní připojení.
 
-1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**. V poli **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**. V poli **vytvořit nový projekt** vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. V části **Konfigurovat nový projekt**pojmenujte projekt **AddTagsAndQuery**.
+1. V části **Konfigurovat nový projekt** pojmenujte projekt **AddTagsAndQuery**.
 
     ![Konfigurace projektu AddTagsAndQuery](./media/iot-hub-csharp-csharp-twin-getstarted/config-addtagsandquery-app.png)
 
@@ -114,7 +114,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která p
     }
     ```
 
-    Třída **RegistryManager** zpřístupňuje všechny metody, které jsou potřeba pro interakci se zařízeními ze služby. Předchozí kód nejprve inicializuje objekt **registryManager** , potom načte vlákna zařízení pro **myDeviceId**a nakonec aktualizuje své značky o požadované informace o umístění.
+    Třída **RegistryManager** zpřístupňuje všechny metody, které jsou potřeba pro interakci se zařízeními ze služby. Předchozí kód nejprve inicializuje objekt **registryManager** , potom načte vlákna zařízení pro **myDeviceId** a nakonec aktualizuje své značky o požadované informace o umístění.
 
     Po aktualizaci se spustí dva dotazy: první vybere jenom zařízení, která se nacházejí v **Redmond43** , a druhá ho vyplní a vybere jenom zařízení, která jsou taky připojená přes mobilní síť.
 
@@ -129,7 +129,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která p
     Console.ReadLine();
     ```
 
-1. Spusťte tuto aplikaci tak, že kliknete pravým tlačítkem na projekt **AddTagsAndQuery** a vyberete **ladění**a potom **zahájíte novou instanci**. Ve výsledcích dotazu pro všechna zařízení umístěná v **Redmond43** byste měli vidět jedno zařízení, které pro dotaz neomezuje výsledky na zařízení, která používají mobilní síť.
+1. Spusťte tuto aplikaci tak, že kliknete pravým tlačítkem na projekt **AddTagsAndQuery** a vyberete **ladění** a potom **zahájíte novou instanci**. Ve výsledcích dotazu pro všechna zařízení umístěná v **Redmond43** byste měli vidět jedno zařízení, které pro dotaz neomezuje výsledky na zařízení, která používají mobilní síť.
 
     ![Výsledky dotazu v okně](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
 
@@ -139,9 +139,9 @@ V další části vytvoříte aplikaci pro zařízení, která oznamuje informac
 
 V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vašemu rozbočovači jako **myDeviceId**, a pak aktualizuje své hlášené vlastnosti tak, aby obsahovala informace, které jsou připojené pomocí mobilní sítě.
 
-1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V možnosti **vytvořit nový projekt**zvolte **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
+1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V možnosti **vytvořit nový projekt** zvolte **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
 
-1. V části **Konfigurovat nový projekt**pojmenujte projekt **ReportConnectivity**. V případě **řešení**zvolte možnost **Přidat do řešení**a pak vyberte **vytvořit**.
+1. V části **Konfigurovat nový projekt** pojmenujte projekt **ReportConnectivity**. V případě **řešení** zvolte možnost **Přidat do řešení** a pak vyberte **vytvořit**.
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **ReportConnectivity** a pak vyberte **Spravovat balíčky NuGet**.
 
@@ -232,9 +232,9 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na řešení a vyberte **nastavit projekty po spuštění**.
 
-1. V možnosti **běžné vlastnosti**  >  **spouštěný projekt**vyberte **více projektů po spuštění**. Pro **ReportConnectivity**vyberte **Spustit** jako **akci**. Výběrem **OK** uložte změny.  
+1. V možnosti **běžné vlastnosti**  >  **spouštěný projekt** vyberte **více projektů po spuštění**. Pro **ReportConnectivity** vyberte **Spustit** jako **akci**. Výběrem **OK** uložte změny.  
 
-1. Spusťte tuto aplikaci tak, že kliknete pravým tlačítkem na projekt **ReportConnectivity** a vyberete **ladění**a potom **zahájíte novou instanci**. Měli byste vidět, že aplikace získává informace o zdvojení, a pak odesílat připojení jako ***hlášenou vlastnost***.
+1. Spusťte tuto aplikaci tak, že kliknete pravým tlačítkem na projekt **ReportConnectivity** a vyberete **ladění** a potom **zahájíte novou instanci**. Měli byste vidět, že aplikace získává informace o zdvojení, a pak odesílat připojení jako **_hlášenou vlastnost_**.
 
     ![Spuštění aplikace zařízení pro hlášení připojení](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
 

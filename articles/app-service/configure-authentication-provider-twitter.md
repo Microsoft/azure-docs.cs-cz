@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80519909"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>Konfigurace aplikace App Service nebo Azure Functions, aby používala přihlášení k Twitteru
@@ -40,7 +40,7 @@ K dokončení postupu v tomto článku potřebujete účet na Twitteru s ověře
 ## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Přidání informací o Twitteru do aplikace
 
 1. V [Azure Portal]přejdete do své aplikace.
-1. Vyberte **Nastavení**  >  **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
+1. Vyberte **Nastavení**  >  **ověřování/autorizace** a ujistěte se, že je **zapnuté** **ověřování App Service** .
 1. Vyberte **Twitter**.
 1. Vložte `API key` `API secret key` hodnoty a, které jste získali dříve.
 1. Vyberte **OK**.

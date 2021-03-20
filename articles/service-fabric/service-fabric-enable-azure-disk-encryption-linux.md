@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak povolit šifrování disku pro uzly cl
 ms.topic: article
 ms.date: 03/22/2019
 ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78252814"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Povolení šifrování disku pro uzly clusteru Azure Service Fabric v systému Linux 
@@ -29,7 +29,7 @@ Průvodce obsahuje následující témata:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
  **Samoobslužná registrace**
 
@@ -39,7 +39,7 @@ Náhled šifrování disku pro sadu škálování virtuálního počítače vyž
     ```powershell
     Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
     ```
-2. Počkejte asi 10 minut, než se *zaregistruje*stav čtení. Stav můžete zjistit spuštěním následujícího příkazu:
+2. Počkejte asi 10 minut, než se *zaregistruje* stav čtení. Stav můžete zjistit spuštěním následujícího příkazu:
     ```powershell
     Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
     Register-AzResourceProvider -ProviderNamespace Microsoft.Compute

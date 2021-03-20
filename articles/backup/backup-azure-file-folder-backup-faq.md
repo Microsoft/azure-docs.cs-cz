@@ -4,10 +4,10 @@ description: Řeší běžné otázky týkající se zálohování souborů a sl
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94917354"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Nejčastější dotazy – agent Microsoft Azure Recovery Services (MARS)
@@ -84,7 +84,7 @@ Při přejmenování počítače se systémem Windows se zastaví všechna aktu�
 
 * Nový název počítače je potřeba zaregistrovat v úložišti záloh.
 * Když zaregistrujete nový název trezoru, první operace je *Úplná* záloha.
-* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Přečtěte si další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Jaká je maximální délka cesty k souboru pro zálohování?
 
@@ -167,7 +167,7 @@ Složka mezipaměti a virtuální pevný disk metadat nemají potřebné atribut
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Existuje způsob, jak upravit šířku pásma používanou pro zálohování?
 
-Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Přečtěte si další informace](backup-windows-with-mars-agent.md#enable-network-throttling).
+Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Další informace](backup-windows-with-mars-agent.md#enable-network-throttling).
 
 ## <a name="restore"></a>Obnovení
 
@@ -198,7 +198,7 @@ Pokud máte stejné heslo (které jste zadali během registrace) původního po�
 
 | Původní počítač | Hesel | Dostupné možnosti |
 | --- | --- | --- |
-| Ztráty |K dispozici |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. **Recovery Option**  >  Chcete-li provést obnovení, vyberte možnost obnovení **jiné umístění** . Další informace najdete v tomto [článku](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Ztráty |K dispozici |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače.   >  Chcete-li provést obnovení, vyberte možnost obnovení **jiné umístění** . Další informace najdete v tomto [článku](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Úlohy zálohování se nezdařily nebo nejsou spuštěny po dlouhou dobu. Jsem po dobu uchování. Můžu I nadále obnovit?

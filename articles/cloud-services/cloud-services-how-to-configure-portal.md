@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: f16fcfe227663958279281659b09929a4cd2d386
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743419"
 ---
 # <a name="how-to-configure-and-azure-cloud-service-classic"></a>Jak nakonfigurovat cloudovou službu Azure (Classic)
@@ -47,7 +47,7 @@ Pokud potřebujete cílit na konkrétní verzi operačního systému, můžete j
 >[!IMPORTANT]
 > Výběr konkrétní verze operačního systému zakáže automatické aktualizace operačního systému a provede opravu vaší zodpovědnosti. Musíte zajistit, aby vaše instance role přijímaly aktualizace, nebo můžete svou aplikaci vystavit chybám zabezpečení.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Do své cloudové služby můžete přidat výstrahy. Klikněte na **Nastavení**  >  **pravidla výstrahy**  >  **Přidat výstrahu**.
 

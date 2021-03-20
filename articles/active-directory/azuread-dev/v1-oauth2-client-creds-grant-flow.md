@@ -14,10 +14,10 @@ ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 977dfea28c5c0dc3f34ada0c138556d70c979e04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551700"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Volání služeb prostřednictvím přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát)
@@ -55,8 +55,8 @@ Při použití sdíleného tajného klíče obsahuje požadavek na přístupový
 | Parametr | Typ | Description |
 | --- | --- | --- |
 | grant_type |vyžadováno |Určuje požadovaný typ udělení. V toku udělení přihlašovacích údajů klienta musí být hodnota **client_credentials**. |
-| client_id |vyžadováno |Určuje ID klienta služby Azure AD volající webové služby. Pokud chcete najít ID klienta volající aplikace, klikněte v [Azure Portal](https://portal.azure.com)na **Azure Active Directory**, klikněte na **Registrace aplikací**a pak na aplikaci. Client_id je *ID aplikace* |
-| client_secret |vyžadováno |Zadejte klíč zaregistrovaný pro volání webové služby nebo démona aplikace v Azure AD. Pokud chcete vytvořit klíč, v Azure Portal klikněte na **Azure Active Directory**, klikněte na **Registrace aplikací**, klikněte na aplikaci, klikněte na **Nastavení**, klikněte na **klíče**a přidejte klíč.  Adresa URL – tento tajný klíč se zakóduje při jeho poskytování. |
+| client_id |vyžadováno |Určuje ID klienta služby Azure AD volající webové služby. Pokud chcete najít ID klienta volající aplikace, klikněte v [Azure Portal](https://portal.azure.com)na **Azure Active Directory**, klikněte na **Registrace aplikací** a pak na aplikaci. Client_id je *ID aplikace* |
+| client_secret |vyžadováno |Zadejte klíč zaregistrovaný pro volání webové služby nebo démona aplikace v Azure AD. Pokud chcete vytvořit klíč, v Azure Portal klikněte na **Azure Active Directory**, klikněte na **Registrace aplikací**, klikněte na aplikaci, klikněte na **Nastavení**, klikněte na **klíče** a přidejte klíč.  Adresa URL – tento tajný klíč se zakóduje při jeho poskytování. |
 | prostředek |vyžadováno |Zadejte identifikátor URI ID aplikace přijímající webové služby. Pokud chcete najít identifikátor URI ID aplikace, klikněte v Azure Portal na **Azure Active Directory**, klikněte na **Registrace aplikací**, klikněte na aplikaci služby a pak klikněte na **Nastavení** a **vlastnosti**. |
 
 #### <a name="example"></a>Příklad
@@ -76,7 +76,7 @@ Požadavek na přístupový token služby na službu s certifikátem obsahuje n�
 | Parametr | Typ | Description |
 | --- | --- | --- |
 | grant_type |vyžadováno |Určuje požadovaný typ odpovědi. V toku udělení přihlašovacích údajů klienta musí být hodnota **client_credentials**. |
-| client_id |vyžadováno |Určuje ID klienta služby Azure AD volající webové služby. Pokud chcete najít ID klienta volající aplikace, klikněte v [Azure Portal](https://portal.azure.com)na **Azure Active Directory**, klikněte na **Registrace aplikací**a pak na aplikaci. Client_id je *ID aplikace* |
+| client_id |vyžadováno |Určuje ID klienta služby Azure AD volající webové služby. Pokud chcete najít ID klienta volající aplikace, klikněte v [Azure Portal](https://portal.azure.com)na **Azure Active Directory**, klikněte na **Registrace aplikací** a pak na aplikaci. Client_id je *ID aplikace* |
 | client_assertion_type |vyžadováno |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |vyžadováno | Kontrolní výraz (JSON Web Token), který potřebujete k vytvoření a podepsání certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [přihlašovacích údajích k certifikátu](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) , kde se dozvíte, jak zaregistrovat certifikát a formát kontrolního výrazu.|
 | prostředek | vyžadováno |Zadejte identifikátor URI ID aplikace přijímající webové služby. Pokud chcete najít identifikátor URI ID aplikace, klikněte v Azure Portal na **Azure Active Directory**, klikněte na **Registrace aplikací**, klikněte na aplikaci služby a pak klikněte na **Nastavení** a **vlastnosti**. |

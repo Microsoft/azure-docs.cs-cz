@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 3bfa911921e9bacde2649ee8c4f0d4bc31b56f54
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92910538"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Postup přidání datových sad do existující sdílené složky v Azure Data Share
@@ -25,7 +25,7 @@ V části Azure Data Share přejděte do odeslané sdílené složky a vyberte k
 
 ![Snímek obrazovky ukazuje vybrané přidat datové sady.](./media/how-to/how-to-add-datasets/add-datasets.png)
 
-V panelu na pravé straně vyberte typ datové sady, který chcete přidat, a potom klikněte na **Další** . Vyberte předplatné a skupinu prostředků dat, která chcete přidat. Pomocí šipek rozevíracího seznamu vyhledejte a zaškrtněte políčko vedle dat, která chcete přidat.
+V panelu na pravé straně vyberte typ datové sady, který chcete přidat, a potom klikněte na **Další**. Vyberte předplatné a skupinu prostředků dat, která chcete přidat. Pomocí šipek rozevíracího seznamu vyhledejte a zaškrtněte políčko vedle dat, která chcete přidat.
 
 ![Snímek obrazovky se zobrazí v podokně Přidat Blob Storage, kde můžete vybrat data.](./media/how-to/how-to-add-datasets/add-datasets-side.png)
 

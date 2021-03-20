@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 9950951ab5189c8c7b72de78bca9465ec5f22748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87290590"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Monitorování, vytváření a správa prostředků Salesforce s využitím Azure Logic Apps
@@ -23,7 +23,7 @@ Pomocí Azure Logic Apps a konektoru Salesforce můžete vytvářet automatizova
 
 Můžete použít triggery Salesforce, které získávají odpovědi ze služby Salesforce, a zpřístupnit výstup ostatním akcím. Akce v aplikacích logiky můžete použít k provádění úloh s prostředky Salesforce. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -58,7 +58,7 @@ Můžete použít triggery Salesforce, které získávají odpovědi ze služby 
 
 Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/salesforce/)konektoru.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).

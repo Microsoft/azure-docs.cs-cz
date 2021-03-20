@@ -7,17 +7,17 @@ ms.topic: sample
 ms.date: 07/07/2020
 ms.custom: mvc
 ms.openlocfilehash: a1577d42de9a4452467a448a0de5cd5f9575a55f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169421"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Ukázky PowerShellu pro Azure App Service
 
 Následující tabulka obsahuje odkazy na skripty PowerShellu sestavené pomocí Azure PowerShell.
 
-| Skript | Popis |
+| Skript | Description |
 |-|-|
 |**Vytvoření aplikace**||
 | [Vytvoření aplikace s nasazením z GitHubu](./scripts/powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří aplikaci App Service, která načte kód z GitHubu. |

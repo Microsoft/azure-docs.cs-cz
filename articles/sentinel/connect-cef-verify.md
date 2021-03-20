@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
 ms.openlocfilehash: f9fb1c917a0719cb9d250b997329d3415b5872eb
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98747470"
 ---
 # <a name="step-3-validate-connectivity"></a>Krok 3: ověření připojení
 
 Po nasazení služby pro přeposílání protokolů (v kroku 1) a konfiguraci řešení zabezpečení pro posílání zpráv CEF (v kroku 2) postupujte podle těchto pokynů, abyste ověřili konektivitu mezi vaším řešením zabezpečení a službou Azure Sentinel. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V počítači pro překládání protokolů musíte mít zvýšená oprávnění (sudo).
 

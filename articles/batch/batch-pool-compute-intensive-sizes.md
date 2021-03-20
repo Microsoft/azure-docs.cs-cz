@@ -4,10 +4,10 @@ description: Jak využít výhod velikosti virtuálních počítačů HPC a GPU 
 ms.topic: how-to
 ms.date: 12/17/2018
 ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86147339"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Použití instancí RDMA nebo GPU ve fondech Batch
@@ -36,8 +36,8 @@ Schopnosti RDMA nebo GPU pro velikosti náročné na výpočetní výkon ve slu�
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, s.](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS nebo<br/>HPC založené na CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Ovladače systému Linux RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
-| [Řady NC, NCv2, NCv3, NDv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3 nebo 7,4<br/>(Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit | Není k dispozici | 
-| [NV, NVv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla M60 | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3<br/>(Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Není k dispozici |
+| [Řady NC, NCv2, NCv3, NDv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3 nebo 7,4<br/>(Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit | – | 
+| [NV, NVv2 Series](../virtual-machines/linux/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla M60 | Ubuntu 16,04 LTS nebo<br/>CentOS 7,3<br/>(Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | – |
 
 <sup>*</sup>Velikosti N-Series podporující RDMA obsahují také NVIDIA Tesla GPU
 
@@ -46,8 +46,8 @@ Schopnosti RDMA nebo GPU pro velikosti náročné na výpočetní výkon ve slu�
 | Velikost | Schopnost | Operační systémy | Požadovaný software | Nastavení fondu |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, s.](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 nebo<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 nebo novější nebo<br/> Intel MPI 5<br/><br/>Ovladače Windows RDMA | Povolit komunikaci mezi uzly, zakázat souběžné provádění úloh |
-| [Řady NC, NCv2, NCv3, ND, NDv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Windows Server 2016 nebo <br/>2012 R2 (Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit| Není k dispozici | 
-| [NV, NVv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla M60 | Windows Server 2016 nebo<br/>2012 R2 (Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | Není k dispozici |
+| [Řady NC, NCv2, NCv3, ND, NDv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla (liší se podle řad) | Windows Server 2016 nebo <br/>2012 R2 (Azure Marketplace) | Ovladače NVIDIA CUDA nebo CUDA Toolkit| – | 
+| [NV, NVv2 Series](../virtual-machines/windows/n-series-driver-setup.md) | Grafický procesor NVIDIA Tesla M60 | Windows Server 2016 nebo<br/>2012 R2 (Azure Marketplace) | Ovladače pro MŘÍŽKu NVIDIA | – |
 
 <sup>*</sup>Velikosti N-Series podporující RDMA obsahují také NVIDIA Tesla GPU
 

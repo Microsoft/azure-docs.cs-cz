@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 2bc056620ff964747dfd83e7525cb5bfd2eb8e52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91449140"
 ---
 # <a name="front-door-routing-methods"></a>Metody směrování front-dveří
@@ -24,10 +24,10 @@ Přední dvířka Azure podporují různé druhy metod směrování provozu, kte
 
 Existují čtyři metody směrování provozu, které jsou k dispozici na front-dveřích:
 
-* ** [Latence](#latency):** Směrování na základě latence zajišťuje, aby se požadavky odesílaly do nejnižší latence back-endu přijatelné v rozsahu citlivosti. V podstatě se požadavky uživatelů odesílají do nejbližší sady back-endu v souvislosti s latencí sítě.
-* ** [Priorita](#priority):** Pokud chcete nakonfigurovat primární back-end pro provoz všech přenosů, můžete přiřadit priority k back-endu. Sekundární back-end může být záloha pro případ, že primární back-end nebude k dispozici.
-* ** [Vážená](#weighted):** Váhy můžete přiřadit k back-endu, pokud chcete distribuovat provoz napříč sadou back-endu. Bez ohledu na to, zda chcete rovnoměrně rozmístit nebo podle váhy.
-* ** [Spřažení relace](#affinity):** Můžete nakonfigurovat spřažení relace pro hostitele nebo domény front-endu, aby bylo zajištěno, že se požadavky od stejného koncového uživatele odesílají do stejného back-endu.
+* **[Latence](#latency):** Směrování na základě latence zajišťuje, aby se požadavky odesílaly do nejnižší latence back-endu přijatelné v rozsahu citlivosti. V podstatě se požadavky uživatelů odesílají do nejbližší sady back-endu v souvislosti s latencí sítě.
+* **[Priorita](#priority):** Pokud chcete nakonfigurovat primární back-end pro provoz všech přenosů, můžete přiřadit priority k back-endu. Sekundární back-end může být záloha pro případ, že primární back-end nebude k dispozici.
+* **[Vážená](#weighted):** Váhy můžete přiřadit k back-endu, pokud chcete distribuovat provoz napříč sadou back-endu. Bez ohledu na to, zda chcete rovnoměrně rozmístit nebo podle váhy.
+* **[Spřažení relace](#affinity):** Můžete nakonfigurovat spřažení relace pro hostitele nebo domény front-endu, aby bylo zajištěno, že se požadavky od stejného koncového uživatele odesílají do stejného back-endu.
 
 Všechny konfigurace služby Front Door zahrnují monitorování stavu back-endu a automatické okamžité globální převzetí služeb při selhání. Další informace najdete v tématu [monitorování back-endu na předních dveřích](front-door-health-probes.md). Vaše přední dveře můžou pracovat na základě jediné metody směrování. V závislosti na potřebách vaší aplikace můžete také kombinovat více metod směrování a vytvořit tak optimální topologii směrování.
 

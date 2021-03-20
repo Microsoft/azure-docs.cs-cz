@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008272"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
@@ -196,7 +196,7 @@ Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifi
   * DeployedApplication. Název aplikace (URI) a název uzlu (řetězec).
   * DeployedServicePackage. Název aplikace (URI), název uzlu (řetězec) a název manifestu služby (řetězec).
 * **Vlastnost**. *Řetězec* (nejedná se o pevný výčet), který umožňuje zpravodaji kategorizovat událost stavu pro konkrétní vlastnost entity. Například zpravodaj A může hlásit stav vlastnosti "úložiště" Node01 a zpravodaj B může ohlásit stav vlastnosti "připojení" Node01. V Health Store se tyto sestavy považují za samostatné události stavu pro entitu Node01.
-* **Popis**. Řetězec, který umožňuje zpravodaji poskytovat podrobné informace o události stavu. **SourceId**, **Property** a **elementu** stav by měly plně popsat sestavu. Popis přidá do sestavy informace o tom, které se dají přečíst lidmi. Tento text usnadňuje správcům a uživatelům pochopení sestavy o stavu.
+* **Popis:** Řetězec, který umožňuje zpravodaji poskytovat podrobné informace o události stavu. **SourceId**, **Property** a **elementu** stav by měly plně popsat sestavu. Popis přidá do sestavy informace o tom, které se dají přečíst lidmi. Tento text usnadňuje správcům a uživatelům pochopení sestavy o stavu.
 * Stav **elementu**. [Výčet](service-fabric-health-introduction.md#health-states) , který popisuje stav sestavy. Přijaté hodnoty jsou OK, varování a chyba.
 * **TimeToLive**. Interval TimeSpan, který určuje, jak dlouho je sestava stavu platná. Společně s **RemoveWhenExpired** umožňuje Health Store zjistit, jak vyhodnotit události, jejichž platnost vypršela. Ve výchozím nastavení je hodnota nekonečno a sestava je platná trvale.
 * **RemoveWhenExpired**. Logická hodnota. Pokud je nastavená hodnota true, zpráva o stavu s vypršenou platností se automaticky odebere z Health Store a sestava nebude mít vliv na hodnocení stavu entity. Používá se, když je sestava platná jenom po zadanou dobu, a zpravodaj je nepotřebuje explicitně vymazat. Používá se také k odstranění sestav z Health Store (například sledovací zařízení se změnilo a zastaví odesílání sestav s předchozím zdrojem a vlastností). Může odeslat sestavu se stručným TimeToLive společně s RemoveWhenExpired, aby se vymazal jakýkoli předchozí stav z Health Store. Pokud je hodnota nastavená na false, zpráva o vypršení platnosti se považuje za chybu při vyhodnocování stavu. Hodnota false signalizuje Health Store, že zdroj by měl pravidelně vykazovat tuto vlastnost. Pokud tomu tak není, musí být u sledovacího zařízení něco špatné. Stav sledovacího zařízení se zachycuje s ohledem na událost jako chybu.

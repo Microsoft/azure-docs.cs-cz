@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/08/2021
 ms.author: jeedes
 ms.openlocfilehash: a0d1debc7baa15aeb765f9539bbbf0774f22268d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101647043"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Paylocity
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Paylocity s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Paylocity svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Paylocity několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale je nutné aktualizovat tyto atributy skutečnými hodnotami.
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ---------------| --------------- |
     | PartnerID | `P8000010` |
     | PaylocityUser | `user.mail`|

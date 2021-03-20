@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81730753"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu AMQP
@@ -131,7 +131,7 @@ for msg in batch:
 
 Jak je uvedeno v předchozím kódu, zpráva o zpětné vazbě z cloudu na zařízení má typ obsahu *aplikace/vnd.microsoft.iothub.feedback.js*. Stav doručení původní zprávy můžete odvodit pomocí vlastností v těle zprávy JSON:
 
-* Klíč `statusCode` v těle zpětné vazby má jednu z následujících hodnot: *úspěch*, *vypršení platnosti*, *DeliveryCountExceeded*, *zamítnutí*nebo *vyprázdnění*.
+* Klíč `statusCode` v těle zpětné vazby má jednu z následujících hodnot: *úspěch*, *vypršení platnosti*, *DeliveryCountExceeded*, *zamítnutí* nebo *vyprázdnění*.
 
 * Klíč `deviceId` v těle zpětné vazby má ID cílového zařízení.
 

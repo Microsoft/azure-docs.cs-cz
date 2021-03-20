@@ -4,10 +4,10 @@ description: Nakonfigurujte nastavení diagnostiky Log Analytics pro všechny tr
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92171540"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
@@ -22,7 +22,7 @@ Pro zjednodušení vytváření nastavení diagnostiky se škálováním (s LA j
 
 * Zásady je možné použít v jednom okamžiku pro všechny trezory Recovery Services v rámci konkrétního předplatného (nebo do skupiny prostředků v rámci předplatného). Uživatel, kterému se přiřadí zásada, musí mít přístup **vlastníka** k předplatnému, ke kterému je zásada přiřazená.
 
-* Pracovní prostor LA zadaný uživatelem (do kterého budou odesílána diagnostická data) může být v jiném předplatném než trezory, ke kterým je zásada přiřazena. Uživatel musí mít přístup pro **čtenáře**, **přispěvatele**nebo **vlastníka** k předplatnému, ve kterém zadaný pracovní prostor La existuje.
+* Pracovní prostor LA zadaný uživatelem (do kterého budou odesílána diagnostická data) může být v jiném předplatném než trezory, ke kterým je zásada přiřazena. Uživatel musí mít přístup pro **čtenáře**, **přispěvatele** nebo **vlastníka** k předplatnému, ve kterém zadaný pracovní prostor La existuje.
 
 * Obor skupiny pro správu se momentálně nepodporuje.
 
@@ -46,11 +46,11 @@ Chcete-li přiřadit zásadu pro trezory v požadovaném oboru, postupujte podle
 
 5. V horní části podokna vyberte tlačítko **přiřadit** . Tím vás přesměruje do podokna **zásady přiřazení** .
 
-6. V části **základy**vyberte tři tečky vedle pole **obor** . Otevře se pravé podokno kontextu, kde můžete vybrat předplatné, na které se má zásada použít. Volitelně můžete také vybrat skupinu prostředků, aby se zásady používaly jenom pro trezory v určité skupině prostředků.
+6. V části **základy** vyberte tři tečky vedle pole **obor** . Otevře se pravé podokno kontextu, kde můžete vybrat předplatné, na které se má zásada použít. Volitelně můžete také vybrat skupinu prostředků, aby se zásady používaly jenom pro trezory v určité skupině prostředků.
 
     ![Základy přiřazení zásad](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
-7. V části **parametry**zadejte následující informace:
+7. V části **parametry** zadejte následující informace:
 
     * **Název profilu** – název, který se přiřadí k nastavení diagnostiky, které vytvořila zásada.
     * **Log Analytics Workspace** – pracovní prostor Log Analytics, ke kterému má být přidruženo nastavení diagnostiky. Diagnostická data všech trezorů v oboru přiřazení zásad budou vložena do zadaného pracovního prostoru LA.

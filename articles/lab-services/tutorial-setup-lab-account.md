@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit účet testovacího prostředí pomocí Az
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445062"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Kurz: Nastavení účtu testovacího prostředí s Azure Lab Services
@@ -19,12 +19,12 @@ V tomto kurzu provedete následující akce:
 > * Vytvoření účtu testovacího prostředí
 > * Přidání uživatele do role Autor testovacího prostředí
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-lab-account"></a>Vytvoření účtu testovacího prostředí
 Následující kroky ukazují postup vytvoření účtu testovacího prostředí se službou Azure Lab Services pomocí webu Azure Portal. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** . Vyberte **DevOps** z **kategorií**. Pak vyberte **služby testovacího prostředí**. Vyberete-li možnost hvězdička ( `*` ) vedle položky **testovací služby**, přidá se do části **Oblíbené** v nabídce vlevo. Od dalšího okamžiku vyberte v části **Oblíbené položky** **testovací služby** .
 
     ![Všechny služby – > laboratorní služby](./media/tutorial-setup-lab-account/select-lab-accounts-service.png)
@@ -34,15 +34,15 @@ Následující kroky ukazují postup vytvoření účtu testovacího prostředí
 4. Na kartě **základy** na stránce **vytvořit účet testovacího prostředí** proveďte následující akce: 
     1. V části **Lab account name** (Název účtu testovacího prostředí) zadejte název. 
     2. Vyberte **předplatné Azure**, ve kterém chcete účet testovacího prostředí vytvořit.
-    3. V poli **Skupina prostředků**vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**a zadejte název skupiny prostředků.
-    4. V poli **umístění**vyberte umístění nebo oblast, ve které chcete vytvořit účet testovacího prostředí. 
+    3. V poli **Skupina prostředků** vyberte existující skupinu prostředků nebo vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    4. V poli **umístění** vyberte umístění nebo oblast, ve které chcete vytvořit účet testovacího prostředí. 
 
         ![Stránka s základy účtu testovacího prostředí](./media/tutorial-setup-lab-account/lab-account-basics-page.png)
     5. Vyberte **Zkontrolovat a vytvořit**.
     6. Zkontrolujte souhrn a vyberte **vytvořit**. 
 
         ![Kontrola + vytvoření-> vytvoření](./media/tutorial-setup-lab-account/create-button.png)    
-5. Po dokončení nasazení rozbalte **Další kroky**a vyberte **Přejít k prostředku**. 
+5. Po dokončení nasazení rozbalte **Další kroky** a vyberte **Přejít k prostředku**. 
 
     ![Přejít na stránku účtu testovacího prostředí](./media/tutorial-setup-lab-account/go-to-lab-account.png)
 6. Potvrďte, že se zobrazí stránka **účet testovacího prostředí** . 

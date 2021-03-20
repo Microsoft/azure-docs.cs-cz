@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91444025"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Připojení Excelu k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance a vytvoření sestavy
@@ -48,7 +48,7 @@ Budete také potřebovat Excel. V tomto článku používáme [Microsoft Excel 2
    > [!TIP]
    > V závislosti na vašem síťovém prostředí se možná nebudete moct připojit nebo může přijít o připojení, pokud Server nepovoluje provoz z IP adresy klienta. Přejděte na [portál Azure](https://portal.azure.com/), klikněte na SQL servery, klikněte na svůj server, v nastavení klikněte na bránu firewall a přidejte IP adresu svého klienta. Podrobnosti najdete v tématu [Jak nakonfigurovat nastavení brány firewall](firewall-configure.md).
 
-5. V **navigátoru**vyberte v seznamu databázi, se kterou chcete pracovat, vyberte tabulky nebo zobrazení, se kterými chcete pracovat (zvolili jsme **vGetAllCategories**), a pak vyberte **načíst** , chcete-li přesunout data z databáze do tabulky aplikace Excel.
+5. V **navigátoru** vyberte v seznamu databázi, se kterou chcete pracovat, vyberte tabulky nebo zobrazení, se kterými chcete pracovat (zvolili jsme **vGetAllCategories**), a pak vyberte **načíst** , chcete-li přesunout data z databáze do tabulky aplikace Excel.
 
     ![Vyberte databázi a tabulku.](./media/connect-excel/select-database-and-table.png)
 
@@ -56,7 +56,7 @@ Budete také potřebovat Excel. V tomto článku používáme [Microsoft Excel 2
 
 Teď, když jste navázali připojení, máte k dispozici několik různých možností, jak načíst data. Následující kroky například vytvoří kontingenční graf na základě dat nalezených ve vaší databázi v SQL Database.
 
-1. Postupujte podle kroků v předchozí části, ale tentokrát místo výběru možnosti **načíst**vyberte **načíst do** v rozevíracím seznamu **načíst** .
+1. Postupujte podle kroků v předchozí části, ale tentokrát místo výběru možnosti **načíst** vyberte **načíst do** v rozevíracím seznamu **načíst** .
 2. V dalším kroku vyberte, jak chcete zobrazit tato data v sešitu. Zvolili jsme možnost **Kontingenční graf**. Můžete také zvolit možnost **Nový list** nebo **Přidat tato data do datového modelu**. Další informace o datových modelech najdete v tématu [Vytvoření datového modelu v Excelu](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B).
 
     ![Volba formátu pro data v Excelu](./media/connect-excel/import-data.png)
@@ -80,14 +80,14 @@ Chcete-li uložit podrobnosti o připojení trvale, můžete vytvořit soubor. o
 
       ![Nové připojení – dialogové okno](./media/connect-excel/new-connection.png)
 
-2. V **Průvodci datovým připojením**zadejte název serveru a přihlašovací údaje pro SQL Database. Vyberte **Další**.
+2. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje pro SQL Database. Vyberte **Další**.
    1. Z rozevíracího seznamu vyberte databázi, která obsahuje vaše data.
    2. Vyberte tabulku nebo zobrazení, na které vás zajímáte. Zvolili jsme vGetAllCategories.
    3. Vyberte **Další**.
 
       ![Průvodce datovým připojením](./media/connect-excel/data-connection-wizard.png)
 
-3. Na další obrazovce Průvodce datovým připojením vyberte umístění souboru, **název souboru**a **popisný název** . Můžete také zvolit uložení hesla do souboru, i když to může potenciálně vystavit data nežádoucímu přístupu. Po **dokončení vyberte Dokončit** .
+3. Na další obrazovce Průvodce datovým připojením vyberte umístění souboru, **název souboru** a **popisný název** . Můžete také zvolit uložení hesla do souboru, i když to může potenciálně vystavit data nežádoucímu přístupu. Po **dokončení vyberte Dokončit** .
 
     ![Uložit datové připojení](./media/connect-excel/save-data-connection.png)
 
@@ -95,7 +95,7 @@ Chcete-li uložit podrobnosti o připojení trvale, můžete vytvořit soubor. o
 
     ![Import dat](./media/connect-excel/import-data2.png)
 
-5. Rozbalením karty **data** a vybráním **existujících připojení**ověřte, zda bylo nové připojení uloženo.
+5. Rozbalením karty **data** a vybráním **existujících připojení** ověřte, zda bylo nové připojení uloženo.
 
     ![Existující připojení](./media/connect-excel/existing-connection.png)
 

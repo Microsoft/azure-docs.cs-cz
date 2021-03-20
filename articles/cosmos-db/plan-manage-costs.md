@@ -1,5 +1,5 @@
 ---
-title: Plánování a Správa nákladů na Azure Cosmos DB
+title: Plánování a správa nákladů na službu Azure Cosmos DB
 description: Naučte se plánovat a spravovat náklady na Azure Cosmos DB pomocí analýzy nákladů v Azure Portal.
 author: SnehaGunda
 ms.author: sngun
@@ -8,20 +8,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.openlocfilehash: 2bea2324817986654de6689a2be15d0cbf999b38
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602135"
 ---
-# <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Plánování a Správa nákladů na Azure Cosmos DB
+# <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Plánování a správa nákladů na službu Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Tento článek popisuje, jak můžete plánovat a spravovat náklady na Azure Cosmos DB. Nejprve pomocí kalkulačky kapacity Azure Cosmos DB odhadnout náklady na zatížení před vytvořením jakýchkoli prostředků. Později můžete zkontrolovat odhadované náklady a začít vytvářet prostředky.
 
 Po zahájení práce s prostředky Azure Cosmos DB použijte funkce Cost Management k nastavení rozpočtů a monitorování nákladů. Můžete si také projít předpokládané náklady a identifikovat trendy útraty, které identifikují oblasti, kde můžete chtít pracovat. Náklady na Azure Cosmos DB jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak naplánovat a spravovat náklady na Azure Cosmos DB, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="provisioned-throughput-or-serverless"></a>Zřízená propustnost nebo bez serveru
 
@@ -83,7 +83,7 @@ Při použití analýzy nákladů můžete zobrazit Azure Cosmos DB náklady v g
 
 Postup zobrazení Azure Cosmos DBch nákladů při analýze nákladů:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Otevřete obor v Azure Portal a v nabídce vyberte **Analýza nákladů** . Například přejděte na **odběry**, v seznamu vyberte předplatné a v nabídce vyberte  **Analýza nákladů** . Vyberte **obor** , který se má při analýze nákladů přepnout na jiný obor.
 
@@ -112,7 +112,7 @@ Další informace o tom, jak ceny fungují Azure Cosmos DB, najdete v následuj�
 * [Cenový model ve službě Azure Cosmos DB](how-pricing-works.md)
 * [Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB](optimize-cost-throughput.md)
 * [Optimalizace nákladů na dotazování ve službě Azure Cosmos DB](./optimize-cost-reads-writes.md)
-* [Optimalizace nákladů na úložiště v Azure Cosmos DB](optimize-cost-storage.md)
+* [Optimalizace nákladů na úložiště ve službě Azure Cosmos DB](optimize-cost-storage.md)
 * Naučte se [optimalizovat investice do cloudu pomocí Azure cost management](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 * Přečtěte si další informace o správě nákladů pomocí [analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 * Přečtěte si, jak se [vyhnout neočekávaným nákladům](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
 ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99225339"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transakční replikace se spravovanou instancí Azure SQL (Preview)
@@ -45,10 +45,10 @@ Klíčovými součástmi transakční replikace jsou **Vydavatel**, **distributo
 
 | Role | Azure SQL Database | Spravovaná instance Azure SQL |
 | :----| :------------- | :--------------- |
-| **Publisher** | Ne | Ano |
-| **Rozdělovač** | Ne | Ano|
-| **Předplatitel pro vyžádání obsahu** | Ne | Ano|
-| **Předplatitel nabízených oznámení**| Ano | Ano|
+| **Publisher** | No | Yes |
+| **Rozdělovač** | No | Yes|
+| **Předplatitel pro vyžádání obsahu** | No | Yes|
+| **Předplatitel nabízených oznámení**| Yes | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
 
 **Vydavatel** zveřejňuje změny provedené v některých tabulkách (články) odesláním aktualizací distributorovi. Vydavatelem může být spravovaná instance Azure SQL nebo instance SQL Server.
@@ -74,12 +74,12 @@ Existují různé [typy replikace](/sql/relational-databases/replication/types-o
 
 | Replikace | Azure SQL Database | Spravovaná instance Azure SQL |
 | :----| :------------- | :--------------- |
-| [**Standardní transakční**](/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Ano |
-| [**Snímek**](/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
-| [**Sloučit replikaci**](/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
-| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
-| [**Obousměrné**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Ne | Ano|
-| [**Odběry, které by možné aktualizovat**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
+| [**Standardní transakční**](/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Yes |
+| [**Snímek**](/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Yes|
+| [**Sloučit replikaci**](/sql/relational-databases/replication/merge/merge-replication) | No | No|
+| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | No | No|
+| [**Obousměrné**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
+| [**Odběry, které by možné aktualizovat**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | No | No|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>Matice podpory

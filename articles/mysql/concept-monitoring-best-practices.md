@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: 59301e26f4d42056322ba5a7cdaff1555c531096
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96354956"
 ---
 # <a name="best-practices-for-monitoring-azure-database-for-mysql--single-server"></a>Osvědčené postupy pro monitorování Azure Database for MySQL – jeden server
@@ -30,7 +30,7 @@ Monitorujte databázový server a ujistěte se, že prostředky přiřazené k d
 ### <a name="cpu-utilization"></a>Využití procesoru
 Monitorujte využití CPU a pokud databáze vyčerpá prostředky CPU. Pokud je využití procesoru 90% nebo více než, měli byste škálovat výpočetní výkon zvýšením počtu virtuální jádra nebo škálovat na další cenovou úroveň.  Zajistěte, aby propustnost nebo souběžnost byly očekávané při horizontálním navýšení kapacity procesoru. 
 
-### <a name="memory"></a>Paměť 
+### <a name="memory"></a>Memory (Paměť) 
 Velikost paměti, která je k dispozici pro databázový server, je úměrná [počtu virtuální jádra](concepts-pricing-tiers.md). Ujistěte se, že je paměť pro úlohu dostačující. Zátěžový test aplikace pro ověření, zda je paměť dostatečná pro operace čtení a zápisu. Pokud se spotřeba paměti databáze často zvětšuje nad rámec definované prahové hodnoty, znamená to, že byste měli upgradovat instanci tím, že zvýšíte virtuální jádra nebo vyšší úroveň výkonu. Použijte [úložiště dotazů](concepts-query-store.md), proveďte [dotaz na doporučení výkonu](concepts-performance-recommendations.md) a Identifikujte dotazy s nejdelší dobou trvání, který je spuštěný. Prozkoumejte příležitosti k optimalizaci. 
 
 ### <a name="storage"></a>Storage 

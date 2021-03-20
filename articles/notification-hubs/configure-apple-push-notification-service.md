@@ -12,17 +12,17 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 63c7e0c9569428b55420911f253deee52ce440cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85255394"
 ---
 # <a name="configure-apple-push-notification-service-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurace nastavení Apple Push Notification Service pro Centrum oznámení v Azure Portal
 
 V tomto článku se dozvíte, jak nakonfigurovat nastavení služby Apple Push Notification Service (APNS) pro Centrum oznámení Azure pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md).
 
@@ -32,7 +32,7 @@ Následující postup vám poskytne postup konfigurace nastavení Apple Push Not
 
 1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Apple (APNs)** .
 
-1. V **režimu ověřování**vyberte buď **certifikát** , nebo **token**.
+1. V **režimu ověřování** vyberte buď **certifikát** , nebo **token**.
 
    - Pokud vyberete možnost **certifikát**:
       - Vyberte ikonu souboru a potom vyberte soubor *. p12* , který chcete nahrát.
@@ -42,7 +42,7 @@ Následující postup vám poskytne postup konfigurace nastavení Apple Push Not
      ![Snímek obrazovky s konfigurací certifikátu APNS v Azure Portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-cert.png)
 
    - Pokud vyberete **token**:
-      - Zadejte hodnoty **ID klíče**, **ID sady**, **ID týmu**a **tokenu**.
+      - Zadejte hodnoty **ID klíče**, **ID sady**, **ID týmu** a **tokenu**.
       - Vyberte režim **Izolovaný prostor**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
 
      ![Snímek obrazovky s konfigurací tokenu APNS v Azure Portal](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)

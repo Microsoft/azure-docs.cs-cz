@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92146320"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpečení v Azure Data Lake Storage Gen1
 
 Řada podniků využívá analýzu velkých objemů dat pro Business Insights, která jim usnadňuje rozhodování. Organizace může mít komplexní a regulované prostředí s rostoucím počtem různých uživatelů. Podnik má jistotu, že kritická podniková data se ukládají bezpečněji, se správnou úrovní přístupu uděleným pro jednotlivé uživatele. Azure Data Lake Storage Gen1 je navržena tak, aby pomohla splnit tyto požadavky na zabezpečení. V tomto článku se dozvíte o možnostech zabezpečení Data Lake Storage Gen1, včetně těchto:
 
-* Ověřování
+* Authentication
 * Autorizace
 * Izolace sítě
 * Ochrana dat
@@ -111,7 +111,7 @@ Můžete povolit auditování přístupu k datům a diagnostické protokolován�
 
 Další informace o práci s diagnostickými protokoly pomocí Data Lake Storage Gen1 najdete v tématu [přístup k diagnostickým protokolům pro data Lake Storage Gen1](data-lake-store-diagnostic-logs.md).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Podnikoví zákazníci požadují cloudovou platformu pro analýzu dat, která je zabezpečená a snadno použitelná. Data Lake Storage Gen1 je navržená tak, aby vám pomohla vyřešit tyto požadavky prostřednictvím správy identit a ověřování prostřednictvím Azure Active Directory integrace, ověřování na základě seznamů ACL, izolace sítě, šifrování dat při přenosu a v klidovém provozu a auditování.
 

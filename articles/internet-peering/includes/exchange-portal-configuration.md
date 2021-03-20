@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 268703081a2a40e8bcc665889eaeaf8edd673bfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81680956"
 ---
 1. Na stránce **vytvořit partnerský vztah** na kartě **Konfigurace** vyplňte pole, jak je vidět na obrázku.
@@ -20,7 +20,7 @@ ms.locfileid: "81680956"
     > [!div class="mx-imgBorder"]
     > ![Vytvoření partnerského vztahu typu stránky pro výměnu](../media/setup-exchange-conf-tab.png)
 
-    * Jako **typ partnerského vztahu**vyberte **Exchange**.
+    * Jako **typ partnerského vztahu** vyberte **Exchange**.
     * Vyberte **SKU** jako **základní zdarma**.
     * Vyberte umístění **Metro** , kde chcete nastavit partnerský vztah.
 
@@ -28,7 +28,7 @@ ms.locfileid: "81680956"
         > Pokud už máte partnerské vztahy s Microsoftem ve vybraném umístění **Metro** a při prvním použití portálu nastavíte partnerský vztah v tomto umístění, budou se existující připojení partnerských vztahů zobrazovat v části **připojení partnerských vztahů** , jak je znázorněno na obrázku. Microsoft automaticky převede Tato připojení partnerských vztahů na prostředek Azure, aby je bylo možné spravovat společně s novými připojeními na jednom místě. Další informace najdete v tématu [převedení staršího partnerského vztahu serveru Exchange na prostředek Azure pomocí portálu](../howto-legacy-exchange-portal.md).
         >
 
-1. V části **připojení partnerského vztahu**vyberte **vytvořit novou** a přidejte řádek pro každé nové připojení, které chcete nastavit.
+1. V části **připojení partnerského vztahu** vyberte **vytvořit novou** a přidejte řádek pro každé nové připojení, které chcete nastavit.
 
     * Chcete-li konfigurovat nebo upravit nastavení připojení, vyberte tlačítko Upravit pro řádek.
 
@@ -62,7 +62,7 @@ ms.locfileid: "81680956"
     > [!div class="mx-imgBorder"]
     > ![Karta ověření partnerského vztahu](../media/setup-direct-review-tab-validation.png)
 
-1. Po změně zprávy na *prošlé ověření*ověřte své informace. Žádost odešlete tak, že vyberete **vytvořit**. Pokud chcete žádost upravit, vyberte **Předchozí** a opakujte postup.
+1. Po změně zprávy na *prošlé ověření* ověřte své informace. Žádost odešlete tak, že vyberete **vytvořit**. Pokud chcete žádost upravit, vyberte **Předchozí** a opakujte postup.
 
     > [!div class="mx-imgBorder"]
     > ![Odesílání partnerských vztahů](../media/setup-exchange-review-tab-submit.png)

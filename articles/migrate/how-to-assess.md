@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.openlocfilehash: 9a4ed5542945b8d281ec750d9bbd3a8f444e44d2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752256"
 ---
 # <a name="add-assessment-tools"></a>Přidání nástrojů pro vyhodnocení
@@ -41,7 +41,7 @@ Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate]
     
          ![Tlačítko pro přidání dalších nástrojů pro posouzení](./media/how-to-assess/add-assessment-tool.png)
 
-    - Pokud jste vytvořili projekt pomocí jiné možnosti a zatím nemáte žádné nástroje pro posouzení, v nástroji servery pro **Servers**  >  **vyhodnocení** vyberte **možnost klikněte sem**.
+    - Pokud jste vytvořili projekt pomocí jiné možnosti a zatím nemáte žádné nástroje pro posouzení, v nástroji servery pro   >  **vyhodnocení** vyberte **možnost klikněte sem**.
 
         ![Tlačítko pro přidání prvního nástroje pro posouzení](./media/how-to-assess/no-assessment-tool.png)
 
@@ -69,7 +69,7 @@ Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate]
 Pokud jste vytvořili Azure Migrate projekt pomocí možnosti **Prozkoumat další**  >  **webapps** na portálu, nástroj pro vyhodnocení webové aplikace se automaticky přidá do projektu. 
 
 
-1. Pokud nástroj pro vyhodnocení webové aplikace v projektu není, vyberte v **Web Apps**  >  **nástroji Web Apps Assessment Tools** **možnost kliknutím sem**.
+1. Pokud nástroj pro vyhodnocení webové aplikace v projektu není, vyberte v   >  **nástroji Web Apps Assessment Tools** **možnost kliknutím sem**.
     
     ![Přidat nástroje pro posouzení webové aplikace](./media/how-to-assess/no-web-app-assessment-tool.png)
 

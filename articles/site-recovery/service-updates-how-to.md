@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: ramamill
 ms.openlocfilehash: a1ea8b6fb9800d796670161288be0d86ce6ffc42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89424935"
 ---
 # <a name="service-updates-in-site-recovery"></a>Aktualizace služby v Site Recovery
@@ -92,7 +92,7 @@ V tomto scénáři důrazně doporučujeme [Povolit automatické aktualizace](az
 
 Pokud chcete ručně spravovat aktualizace, můžete vybrat jednu z následujících možností:
 
-1. Když je k dispozici nová aktualizace agenta, Site Recovery v trezoru k hornímu okraji stránky oznámení. V trezoru > **replikované položky**klikněte v horní části obrazovky na toto oznámení: 
+1. Když je k dispozici nová aktualizace agenta, Site Recovery v trezoru k hornímu okraji stránky oznámení. V trezoru > **replikované položky** klikněte v horní části obrazovky na toto oznámení: 
     
     **K dispozici je nová aktualizace agenta replikace Site Recovery. Kliknutím nainstalujete >** <br/><br/>Vyberte virtuální počítače, pro které chcete aktualizaci použít, a potom klikněte na **OK**.
 

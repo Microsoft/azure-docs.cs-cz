@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
 ms.openlocfilehash: 268943463002ddd1dbdbf67df9587758f81f537f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Kurz: Azure Active Directory integrace s absorpčním LMS
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat pomocí Azure Active Directory (Azure 
 * Umožněte uživatelům, aby se automaticky přihlásili k pohlcování LMS pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s použitím nástroje pro zavedení s použitím absorpčního LMS potřebujete následující položky:
 

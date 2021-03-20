@@ -8,10 +8,10 @@ ms.author: philmea
 ms.date: 11/19/2020
 ms.topic: how-to
 ms.openlocfilehash: 19d8738790b5634b9de989fa94edac6a542f85f4
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94917337"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
@@ -117,7 +117,7 @@ Po vytvoření úlohy se sloupec **stav** aktualizuje s nejnovější zprávou o
 | Dokončeno            | Tato úloha se spustila na všech zařízeních.              |
 | Neúspěšný               | Tato úloha se nezdařila a na zařízeních se nedokončilo úplné spuštění.  |
 | Čekající              | Tato úloha se na zařízeních ještě nezačala používat.         |
-| Spuštěný              | Tato úloha v tuto chvíli běží na zařízeních.             |
+| Spuštěno              | Tato úloha v tuto chvíli běží na zařízeních.             |
 | Zastaveno              | Uživatel tuto úlohu zastavil ručně.           |
 | Zrušeno             | Tato úloha byla zrušena, protože byla překročena prahová hodnota nastavená na stránce **Možnosti doručení** . |
 

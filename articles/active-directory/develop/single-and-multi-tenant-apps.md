@@ -14,13 +14,13 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.openlocfilehash: 0868d87d977b15a552b04d5dbd6d19de6931f0ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91395902"
 ---
-# <a name="tenancy-in-azure-active-directory"></a>Tenantů v Azure Active Directory
+# <a name="tenancy-in-azure-active-directory"></a>Architektura tenantů v Azure Active Directory
 
 Azure Active Directory (Azure AD) uspořádá objekty, jako jsou uživatelé a aplikace, do skupin označovaných jako *klienti*. Klienti umožňují správcům nastavit zásady pro uživatele v rámci organizace a aplikace, které organizace vlastní, aby splnila své zásady zabezpečení a provozu. 
 

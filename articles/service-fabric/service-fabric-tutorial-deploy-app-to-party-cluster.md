@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
 ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91441288"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Kurz: Nasazení aplikace Service Fabric do clusteru v Azure
@@ -74,7 +74,7 @@ Poznamenejte si koncový bod služby, který je potřeba v pozdějším kroku.  
 ### <a name="create-a-test-cluster-in-azure"></a>Vytvoření testovacího clusteru v Azure
 V Průzkumníku řešení klikněte pravým tlačítkem na aplikaci **Voting** a vyberte **Publikovat**.
 
-V **koncový bod připojení**vyberte **vytvořit nový cluster**.  Pokud nasazujete na existující cluster, vyberte koncový bod clusteru ze seznamu.  Otevře se dialogové okno vytvořit cluster Service Fabric.
+V **koncový bod připojení** vyberte **vytvořit nový cluster**.  Pokud nasazujete na existující cluster, vyberte koncový bod clusteru ze seznamu.  Otevře se dialogové okno vytvořit cluster Service Fabric.
 
 Na kartě **cluster** zadejte **název clusteru** (například "mytestcluster"), vyberte své předplatné, vyberte oblast clusteru (například střed USA – jih), zadejte počet uzlů clusteru (pro testovací cluster doporučujeme tři uzly) a zadejte skupinu prostředků (například "mytestclustergroup"). Klikněte na **Next** (Další).
 
@@ -88,7 +88,7 @@ Na kartě **Podrobnosti o virtuálním počítači** zadejte **uživatelské jm�
 
 ![Snímek obrazovky se zobrazí karta Podrobnosti V M dialogového okna vytvořit cluster Service Fabric.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
-V části **porty**Zadejte koncový bod služby VotingWeb z předchozího kroku (například 8080).  Po vytvoření clusteru se tyto porty aplikace otevřou v nástroji pro vyrovnávání zatížení Azure, abyste přesměrovali provoz do clusteru.  Kliknutím na **vytvořit** vytvořte cluster, který trvá několik minut.
+V části **porty** Zadejte koncový bod služby VotingWeb z předchozího kroku (například 8080).  Po vytvoření clusteru se tyto porty aplikace otevřou v nástroji pro vyrovnávání zatížení Azure, abyste přesměrovali provoz do clusteru.  Kliknutím na **vytvořit** vytvořte cluster, který trvá několik minut.
 
 ![Snímek obrazovky se zobrazí na kartě Upřesnit v dialogovém okně vytvořit cluster Service Fabric.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
@@ -98,7 +98,7 @@ Když je nový cluster připravený, můžete hlasovací aplikaci nasadit přím
 
 V Průzkumníku řešení klikněte pravým tlačítkem na aplikaci **Voting** a vyberte **Publikovat**. Zobrazí se dialogové okno **Publikovat**.
 
-V části **koncový bod připojení**vyberte koncový bod pro cluster, který jste vytvořili v předchozím kroku.  Například "mytestcluster.southcentral.cloudapp.azure.com:19000". Pokud vyberete **rozšířené parametry připojení**, informace o certifikátu by měly být automaticky vyplněné.  
+V části **koncový bod připojení** vyberte koncový bod pro cluster, který jste vytvořili v předchozím kroku.  Například "mytestcluster.southcentral.cloudapp.azure.com:19000". Pokud vyberete **rozšířené parametry připojení**, informace o certifikátu by měly být automaticky vyplněné.  
 ![Publikování aplikace Service Fabric](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
 Vyberte **Publikovat**.

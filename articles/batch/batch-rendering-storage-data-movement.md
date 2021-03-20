@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86147299"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Možnosti úložiště a přesunu dat pro vykreslování assetů a výstupních souborů
@@ -126,12 +126,12 @@ Příklad příkazového řádku úlohy úlohy:
 
 Služba soubory Azure je podporovaná všemi hlavními rozhraními API a nástroji, které Azure Storage podporu podporují. např. AzCopy, Azure CLI, Průzkumník služby Storage, Azure PowerShell, Batch Explorer atd.
 
-K dispozici je [Azure File Sync](../storage/files/storage-sync-files-planning.md) k automatické synchronizaci souborů mezi místním systémem souborů a sdílenou složkou Azure.
+K dispozici je [synchronizace souborů Azure](../storage/files/storage-sync-files-planning.md) k automatické synchronizaci souborů mezi místním systémem souborů a sdílenou složkou Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o možnostech úložiště najdete v podrobné dokumentaci:
 
-* [Úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md)
+* [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)
 * [Blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)
-* [Soubory Azure](../storage/files/storage-files-introduction.md)
+* [Azure Files](../storage/files/storage-files-introduction.md)

@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak pomocí šablon Azure Resource Ma
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86115158"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>Vytváření systémových témat v Azure Event Grid pomocí šablon Správce prostředků
@@ -52,7 +52,7 @@ Chcete-li nejprve vytvořit systémové téma na zdroji Azure a pak vytvořit od
             "type": "String",
             "defaultValue": "mystoragesystemtopic",
             "metadata": {
-                "description": "Provide a name for the system topic."
+                "description": "Provide a name for the system topic."
             }
         }
     },
@@ -80,7 +80,7 @@ Chcete-li nejprve vytvořit systémové téma na zdroji Azure a pak vytvořit od
                 "[parameters('storageName')]"
             ],
             "properties": {
-                "source": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]",
+                "source": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]",
                 "topicType": "Microsoft.Storage.StorageAccounts"
             }
         },

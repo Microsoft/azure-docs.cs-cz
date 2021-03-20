@@ -4,10 +4,10 @@ description: Naučte se určit skupinu prostředků pro virtuální počítače 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483359"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Zadejte skupinu prostředků pro virtuální počítače v testovacím prostředí v Azure DevTest Labs
@@ -27,7 +27,7 @@ Pomocí této funkce můžete použít skript k zadání nové nebo existující
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 Pomocí těchto kroků určete skupinu prostředků pro všechny virtuální počítače vytvořené v testovacím prostředí. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V levé navigační nabídce vyberte **všechny služby** . 
 3. Ze seznamu vyberte **DevTest Labs**.
 4. V seznamu cvičení vyberte **testovací prostředí**.  
@@ -103,9 +103,9 @@ K dispozici jsou následující možnosti jako vlastník testovacího prostřed�
 Toto nastavení platí pro nové virtuální počítače vytvořené v testovacím prostředí. Starší virtuální počítače v testovacím prostředí, které byly vytvořeny ve vlastních skupinách prostředků, zůstávají neovlivněné. Prostředí, která jsou vytvořená v testovacím prostředí, zůstávají pořád ve vlastních skupinách prostředků.
 
 Jak používat toto rozhraní API:
-- Použijte **2018_10_15_preview**verze rozhraní API.
+- Použijte **2018_10_15_preview** verze rozhraní API.
 - Pokud zadáte novou skupinu prostředků, ujistěte se, že máte **oprávnění k zápisu do skupin prostředků** v rámci vašeho předplatného. Pokud nemáte oprávnění k zápisu, nepodaří se vytvořit nové virtuální počítače v zadané skupině prostředků.
-- Při používání rozhraní API předejte **úplné ID skupiny prostředků**. Například: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Ujistěte se, že je skupina prostředků ve stejném předplatném jako testovací prostředí. 
+- Při používání rozhraní API předejte **úplné ID skupiny prostředků**. Příklad: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Ujistěte se, že je skupina prostředků ve stejném předplatném jako testovací prostředí. 
 
 
 ## <a name="next-steps"></a>Další kroky

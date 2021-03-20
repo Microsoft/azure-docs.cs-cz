@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
 ms.openlocfilehash: c804e13029dcec42a43885cbf0d9b227b3d0338f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96750798"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s replikací a převzetím služeb při selhání Hyper-V do Azure
@@ -26,7 +26,7 @@ Pokud se setkáte s problémy, když povolíte ochranu pro virtuální počíta�
 1. Ověřte, že hostitelé a virtuální počítače Hyper-V splňují všechny [požadavky a](hyper-v-azure-support-matrix.md)požadavky.
 2. Pokud se servery Hyper-V nacházejí v cloudech System Center Virtual Machine Manager (VMM), ověřte, že jste připravili [server VMM](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional).
 3. Ověřte, zda je na hostitelích Hyper-V spuštěná služba správy virtuálních počítačů Hyper-V.
-4. Vyhledejte problémy, které se zobrazí v Hyper-V-VMMS\Admin přihlášení k virtuálnímu počítači. Tento protokol se nachází v **protokolech aplikací a služeb** v  >  **Microsoft**  >  **systému Microsoft Windows**.
+4. Vyhledejte problémy, které se zobrazí v Hyper-V-VMMS\Admin přihlášení k virtuálnímu počítači. Tento protokol se nachází v **protokolech aplikací a služeb** v  >    >  **systému Microsoft Windows**.
 5. Na virtuálním počítači hosta ověřte, zda je služba WMI povolená a přístupná.
    - [Přečtěte si o](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) základních testech rozhraní WMI.
    - [Řešení potíží](/windows/win32/wmisdk/wmi-troubleshooting) WMI.
@@ -138,13 +138,13 @@ Snímek konzistentní vzhledem k aplikacím je snímkem dat aplikací v rámci v
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>Selhání služby VSS v rámci hostitele Hyper-V
 
 1. V protokolech událostí vyhledejte chyby a doporučení služby VSS:
-    - Na hostitelském serveru Hyper-v otevřete protokol událostí správce technologie Hyper-v v **Prohlížeč událostí**  >  **aplikace a služby protokoly**  >  **správce Microsoft**  >  **Windows**  >  **Hyper-v**  >  **Admin**.
+    - Na hostitelském serveru Hyper-v otevřete protokol událostí správce technologie Hyper-v v **Prohlížeč událostí**  >  **aplikace a služby protokoly**  >  **správce Microsoft**  >  **Windows**  >  **Hyper-v**  >  .
     - Ověřte, jestli existují nějaké události, které indikují selhání snímku konzistentního vzhledem k aplikacím.
     - Typická chyba je: "technologie Hyper-V selhala při generování sady snímků VSS pro virtuální počítač" XYZ ": modul pro zápis zjistil nepřechodnou chybu. Restartování služby VSS může vyřešit problémy, pokud služba nereaguje. "
 
 2. Pokud chcete pro virtuální počítač vygenerovat snímky VSS, ověřte, že jsou na virtuálním počítači nainstalované integrační služby technologie Hyper-V a že je povolená služba Backup (VSS).
     - Zajistěte, aby na hostovi běžela služba nebo démony služby VSS integrační služby a jsou ve stavu **OK** .
-    - Tuto kontrolu můžete provést z relace PowerShellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **Get-VMIntegrationService-VMName \<VMName> -Name VSS** . Tyto informace můžete také získat tak, že se přihlásíte do virtuálního počítače hosta. [Přečtěte si další informace](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Tuto kontrolu můžete provést z relace PowerShellu se zvýšenými oprávněními na hostiteli Hyper-V pomocí příkazu **Get-VMIntegrationService-VMName \<VMName> -Name VSS** . Tyto informace můžete také získat tak, že se přihlásíte do virtuálního počítače hosta. [Další informace](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Ujistěte se, že na virtuálním počítači běží služby Backup/VSS Integration Services, a to v dobrém stavu. V takovém případě tyto služby restartujte a na hostitelském serveru technologie Hyper-V svazek služba žadatele stínové kopie svazku.
 
 ### <a name="common-errors"></a>Běžné chyby
@@ -158,7 +158,7 @@ Snímek konzistentní vzhledem k aplikacím je snímkem dat aplikací v rámci v
 
 ## <a name="collect-replication-logs"></a>Shromáždit protokoly replikace
 
-Všechna událost replikace technologie Hyper-V se zaznamenávají do protokolu Hyper-V-VMMS\Admin, který se nachází v protokolech **aplikací a služeb** v  >  **Microsoft**  >  **systému Microsoft Windows**. Kromě toho můžete povolit analytický protokol pro službu správy virtuálních počítačů s technologií Hyper-V následujícím způsobem:
+Všechna událost replikace technologie Hyper-V se zaznamenávají do protokolu Hyper-V-VMMS\Admin, který se nachází v protokolech **aplikací a služeb** v  >    >  **systému Microsoft Windows**. Kromě toho můžete povolit analytický protokol pro službu správy virtuálních počítačů s technologií Hyper-V následujícím způsobem:
 
 1. Zpřístupněte protokoly pro analýzu a ladění v Prohlížeč událostí. Aby byly protokoly dostupné, klikněte v Prohlížeč událostí na **Zobrazit**  >  **Zobrazit protokoly pro analýzu a ladění.** Analytický protokol se zobrazí pod položkou **Hyper-V-VMMS**.
 2. V podokně **Akce** klikněte na **Povolit protokol**. 
