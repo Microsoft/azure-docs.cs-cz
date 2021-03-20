@@ -6,10 +6,10 @@ ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
 ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94686272"
 ---
 # <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
@@ -28,7 +28,7 @@ Pro šifrování dat kontejneru můžete spoléhat na klíče spravované Micros
 |----|----|----|
 |    **Operace šifrování a dešifrování**    |    Azure    |    Azure    |
 |    **Úložiště klíčů**    |    Úložiště klíčů Microsoftu    |    Azure Key Vault    |
-|    **Zodpovědnost za střídání klíčů**    |    Partnerský vztah Microsoftu    |    Zákazník    |
+|    **Zodpovědnost za střídání klíčů**    |    Microsoft    |    Zákazník    |
 |    **Přístup ke klíči**    |    Jenom Microsoft    |    Microsoft, zákazník    |
 
 Zbývající část dokumentu popisuje kroky potřebné k zašifrování dat nasazení ACI s klíčem (klíč spravovaný zákazníkem). 

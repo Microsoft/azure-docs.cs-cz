@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/11/2020
 ms.author: alkohli
 ms.openlocfilehash: 7337e940ff67f0c0cfd38e5e58a2ac81bf593970
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96581833"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Poznámky k verzi pro Azure Data Box Edge a Azure Data Box Gateway 1905
@@ -31,7 +31,7 @@ Tato verze odpovídá verzím softwaru:
 > [!NOTE]
 > Aktualizaci 1905 lze použít pouze pro Data Box Edge zařízení, na kterých je spuštěná verze GA softwaru.
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 - **Vylepšení protokolování v poli programovatelné brány pole (FPGA)** – v této verzi jsme udělali vylepšení protokolování a upozornění související s FPGA. Toto je požadovaná aktualizace pro Data Box Edge, pokud používáte funkci Edge COMPUTE s FPGA. Další informace najdete v tématu Jak [transformovat data pomocí hraničních výpočtů na data box Edge](../databox-online/azure-stack-edge-deploy-configure-compute-advanced.md).
 

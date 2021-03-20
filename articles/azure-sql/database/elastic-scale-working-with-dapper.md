@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: d660e62ea293bd3cc377b95612cfaf41a9f1cd6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793360"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>Použití klientské knihovny elastické databáze s Dapperem
@@ -23,7 +23,7 @@ ms.locfileid: "92793360"
 
 Tento dokument je určen vývojářům, kteří se spoléhají na Dapperem k vytváření aplikací, ale také chtějí využít [elastické databázové nástroje](elastic-scale-introduction.md) k vytváření aplikací, které implementují horizontálního dělení pro horizontální navýšení kapacity datové vrstvy.  Tento dokument popisuje změny v aplikacích založených na Dapperem, které jsou nezbytné pro integraci s nástroji elastické databáze. Naše zaměření se zaměřuje na vytváření horizontálních oddílů správy elastické databáze a směrování závislého na datech pomocí Dapperem. 
 
-**Vzorový kód** : [nástroje elastické databáze pro integraci Azure SQL Database-dapperem](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Vzorový kód**: [nástroje elastické databáze pro integraci Azure SQL Database-dapperem](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 Integrace **dapperem** a **DapperExtensions** s klientskou knihovnou elastické databáze pro Azure SQL Database je snadné. Vaše aplikace mohou používat směrování závislé na datech změnou vytváření a otevírání nových objektů [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) pro použití volání [OpenConnectionForKey](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) z [klientské knihovny](/previous-versions/azure/dn765902(v=azure.100)). Tím se změny v aplikaci omezí jenom na místo, kde se vytvářejí a otevřou nová připojení. 
 
@@ -39,7 +39,7 @@ Další výhodou Dapperem a také DapperExtensions je, že aplikace řídí vytv
 Chcete-li získat sestavení Dapperem, přečtěte si část [dapperem tečka net](https://www.nuget.org/packages/Dapper/). Rozšíření Dapperem naleznete v tématu [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Rychlý pohled na klientskou knihovnu elastické databáze
-Pomocí klientské knihovny elastické databáze definujete oddíly dat vaší aplikace s názvem *shardlety* , namapujete je na databáze a identifikujete je pomocí *klíčů horizontálního dělení* . Můžete mít tolik databází, kolik potřebujete, a distribuovat shardlety napříč těmito databázemi. Mapování hodnot klíče horizontálního dělení na databáze je uloženo v mapě horizontálních oddílů, kterou poskytuje rozhraní API knihovny. Tato funkce se nazývá **Správa mapování horizontálních oddílů** . Mapa horizontálních oddílů slouží také jako zprostředkovatel připojení databáze pro požadavky, které přenášejí klíč horizontálního dělení. Tato funkce se označuje jako **Směrování závislé na datech** .
+Pomocí klientské knihovny elastické databáze definujete oddíly dat vaší aplikace s názvem *shardlety*, namapujete je na databáze a identifikujete je pomocí *klíčů horizontálního dělení*. Můžete mít tolik databází, kolik potřebujete, a distribuovat shardlety napříč těmito databázemi. Mapování hodnot klíče horizontálního dělení na databáze je uloženo v mapě horizontálních oddílů, kterou poskytuje rozhraní API knihovny. Tato funkce se nazývá **Správa mapování horizontálních oddílů**. Mapa horizontálních oddílů slouží také jako zprostředkovatel připojení databáze pro požadavky, které přenášejí klíč horizontálního dělení. Tato funkce se označuje jako **Směrování závislé na datech**.
 
 ![Mapy horizontálních oddílů a směrování závislé na datech][1]
 
@@ -51,10 +51,10 @@ Místo používání tradičního způsobu vytváření připojení pro Dapperem
 Při práci s knihovnou klienta elastické databáze a rozhraními API Dapperem chcete zachovat následující vlastnosti:
 
 * **Horizontální** navýšení kapacity: chceme v případě požadavků na kapacitu aplikace přidat nebo odebrat databáze z datové vrstvy aplikace horizontálně dělené. 
-* **Konzistence** : vzhledem k tomu, že aplikace se škáluje pomocí horizontálního dělení, je nutné provést směrování závislé na datech. K tomu chceme použít možnosti směrování závislé na datech knihovny. Konkrétně je vhodné zachovat záruky ověřování a konzistence poskytované připojeními, které jsou zprostředkované prostřednictvím Správce map horizontálních oddílů, aby se předešlo poškození nebo špatnému výsledku dotazu. Tím zajistíte, že připojení k danému shardletuu se odmítnou nebo zastaví, pokud (například instance) shardletu je v současné době přesunuta do jiného horizontálních oddílů pomocí rozhraní API pro dělení a slučování.
-* **Mapování objektu** : chceme zachovat pohodlí mapování poskytovaných dapperem k překladu mezi třídami v aplikaci a podkladové struktury databáze. 
+* **Konzistence**: vzhledem k tomu, že aplikace se škáluje pomocí horizontálního dělení, je nutné provést směrování závislé na datech. K tomu chceme použít možnosti směrování závislé na datech knihovny. Konkrétně je vhodné zachovat záruky ověřování a konzistence poskytované připojeními, které jsou zprostředkované prostřednictvím Správce map horizontálních oddílů, aby se předešlo poškození nebo špatnému výsledku dotazu. Tím zajistíte, že připojení k danému shardletuu se odmítnou nebo zastaví, pokud (například instance) shardletu je v současné době přesunuta do jiného horizontálních oddílů pomocí rozhraní API pro dělení a slučování.
+* **Mapování objektu**: chceme zachovat pohodlí mapování poskytovaných dapperem k překladu mezi třídami v aplikaci a podkladové struktury databáze. 
 
-V následující části najdete pokyny pro tyto požadavky na aplikace založené na **dapperem** a **DapperExtensions** .
+V následující části najdete pokyny pro tyto požadavky na aplikace založené na **dapperem** a **DapperExtensions**.
 
 ## <a name="technical-guidance"></a>Technické pokyny
 ### <a name="data-dependent-routing-with-dapper"></a>Směrování závislé na datech s Dapperem

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1b7f5d1ad671b6d97bd6597386c714b026c02232
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376849"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytváření, sledování a Správa datových továrn Azure pomocí sady Azure Data Factory .NET SDK
@@ -25,7 +25,7 @@ Pomocí sady Data Factory .NET SDK můžete programově vytvářet, monitorovat 
 > [!NOTE]
 > Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. V tématu [Data Factory rozhraní .NET API Reference](/dotnet/api/overview/azure/data-factory) pro komplexní dokumentaci k rozhraní .NET api pro Data Factory. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -135,7 +135,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     </configuration>
     ```
 5. V souboru App.Config aktualizujte hodnoty **&lt; ID &gt; aplikace**, **&lt; heslo &gt;**, **&lt; ID &gt; předplatného** a **&lt; ID &gt; tenanta** vlastními hodnotami.
-6. Přidejte následující příkazy **using** do souboru **program.cs** v projektu.
+6. Přidejte následující příkazy **using** do souboru **program. cs** v projektu.
 
     ```csharp
     using System.Configuration;

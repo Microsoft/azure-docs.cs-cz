@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98183128"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Správa metod ověřování uživatelů pro Azure AD Multi-Factor Authentication
@@ -44,12 +44,12 @@ Metody ověřování pro uživatele můžete přidat prostřednictvím Azure Por
 
 Postup přidání metod ověřování pro uživatele prostřednictvím Azure Portal:  
 
-1. Přihlaste se k **portálu Azure Portal**. 
+1. Přihlaste se k webu **Azure Portal**. 
 1. Přejděte na **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**. 
 1. Zvolte uživatele, pro kterého chcete přidat metodu ověřování, a vyberte **metody ověřování**.  
 1. V horní části okna vyberte **+ Přidat metodu ověřování**.
    1. Vyberte metodu (telefonní číslo nebo e-mail). E-mail se dá použít pro resetování hesla, ale ne pro ověřování. Když přidáváte telefonní číslo, vyberte typ telefonu a zadejte telefonní číslo s platným formátem (např. + 1 4255551234).
-   1. Vyberte **Add** (Přidat).
+   1. Vyberte **Přidat**.
 
 > [!NOTE]
 > Prostředí Preview umožňuje správcům přidat všechny dostupné metody ověřování pro uživatele, zatímco původní prostředí umožňuje aktualizovat jenom telefon a alternativní telefonní metody.
@@ -88,7 +88,7 @@ Metody ověřování se dají spravovat taky pomocí Microsoft Graph rozhraní A
 
 Pokud jste přiřadili roli *Správce ověřování* , můžete vyžadovat, aby uživatelé resetoval heslo, znovu zaregistrovali MFA nebo odvolali stávající relace MFA z jejich uživatelského objektu. Pokud chcete spravovat uživatelská nastavení, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vlevo vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**. V horní části okna vyberte jednu z následujících možností pro uživatele:
    - **Resetovat heslo** obnoví heslo uživatele a přiřadí dočasné heslo, které se musí při příštím přihlášení změnit.
@@ -107,7 +107,7 @@ Pro uživatele, kteří mají definovaná hesla aplikací, můžou správci taky
 
 Pokud chcete odstranit hesla aplikací uživatele, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na levé straně vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky: [ ![ Vyberte Multi-Factor Authentication z okna uživatelé ve službě Azure AD.](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
 ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192683"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné HTTP pro modul pravidel Azure CDN
@@ -38,7 +38,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 | ---- | -------- | ----------- | ------------ |
 | ASN (žadatel) | % {geo_asnum} | Označuje žadatele jako číslo. <br /><br />**Zastaralé:** % {virt_dst_asnum}. <br />Tato proměnná se už nepoužívá namísto% {geo_asnum}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | AS15133 |
 | Město (žadatel) | % {geo_city} | Označuje město žadatele. | Los Angeles |
-| Kontinent (žadatel) | % {geo_continent} | Označuje kontinenta žadatele prostřednictvím zkratky. <br />Platné hodnoty jsou: <br />AF: Afrika<br />JAKO: Asie<br />EU: Evropa<br />NA: Severní Amerika<br />°C: Oceánie a<br />SA: Jižní Amerika<br /><br />**Zastaralé:** % {virt_dst_continent}. <br />Tato proměnná se už nepoužívá namísto% {geo_continent}. <br />I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou.| Není k dispozici |
+| Kontinent (žadatel) | % {geo_continent} | Označuje kontinenta žadatele prostřednictvím zkratky. <br />Platné hodnoty jsou: <br />AF: Afrika<br />JAKO: Asie<br />EU: Evropa<br />NA: Severní Amerika<br />°C: Oceánie a<br />SA: Jižní Amerika<br /><br />**Zastaralé:** % {virt_dst_continent}. <br />Tato proměnná se už nepoužívá namísto% {geo_continent}. <br />I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou.| – |
 | Hodnota souboru cookie | % {cookie_Cookie} | Vrátí hodnotu odpovídající klíči souboru cookie identifikovanému termínem souboru cookie. | Ukázka použití: <br />% {cookie__utma}<br /><br />Ukázková hodnota:<br />111662281.2.10.1222100123 |
 | Země/oblast (žadatel) | % {geo_country} | Určuje zemi nebo oblast původu žadatele prostřednictvím kódu země nebo oblasti. <br />**Zastaralé:** % {virt_dst_country}. <br /><br />Tato proměnná se už nepoužívá namísto% {geo_country}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | USA |
 | Vymezená oblast trhu (žadatel) | % {geo_dma_code} |Označuje mediální trh žadatele podle kódu oblasti. <br /><br />Toto pole se vztahuje pouze na žádosti, které pocházejí z USA.| 745 |
@@ -59,7 +59,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 | Hodnota hlavičky žádosti | % {http_RequestHeader} | Vrátí hodnotu odpovídající hlavičce požadavku identifikovaného termínem RequestHeader. <br /><br />Pokud název hlavičky požadavku obsahuje spojovník (například User-Agent), nahraďte ho podtržítkem (například User_Agent).| Ukázkové použití:% {http_Connection}<br /><br />Ukázková hodnota: Keep-Alive | 
 | Hostitel žádosti | % {Host} | Určuje hostitele definovaného v adrese URL požadavku. | <www.mydomain.com> |
 | Protokol žádosti | % {request_protocol} | Označuje protokol žádosti. | HTTP/1.1 |
-| Schéma žádosti | % {schéma} | Určuje schéma požadavků. |HTTP |
+| Schéma žádosti | % {schéma} | Určuje schéma požadavků. |http |
 | Identifikátor URI žádosti (relativní) | % {request_uri} | Určuje relativní cestu, včetně řetězce dotazu definovaného v identifikátoru URI požadavku. | /Marketing/foo.js? LoggedIn = true |
 | Identifikátor URI žádosti (relativní bez řetězce dotazu) | % {URI} | Určuje relativní cestu k požadovanému obsahu. <br /><br/>Informace o klíči:<br />– Tato relativní cesta vyloučí řetězec dotazu.<br />– Tato relativní cesta odráží přepsání adresy URL. Adresa URL bude přepsána za následující podmínky:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Funkce přepisu adresy URL: Tato funkce přepíše relativní cestu definovanou v identifikátoru URI požadavku.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Adresa URL CNAME Edge: Tento typ požadavku se přepíše na odpovídající adresu URL CDN. |/800001/corigin/rewrittendir/foo.js |
 | Identifikátor URI žádosti | % {Request} | Popisuje požadavek. <br />Syntaxe: &lt; protokol HTTP &gt; &lt; relativní cesty &gt; k metodě &lt; http&gt; | ZÍSKAT/marketing/foo.js? LoggedIn = true HTTP/1.1 |
@@ -110,7 +110,7 @@ Oddělovače jsou popsány v následující tabulce.
 ## <a name="exceptions"></a>Výjimky
 Následující tabulka popisuje okolnosti, za kterých se zadaný text nepovažuje za proměnnou HTTP.
 
-| Stav | Popis | Příklad |
+| Podmínka | Popis | Příklad |
 | --------- | ----------- | --------|
 | Symbol uvozovacího znaku% | Symbol procenta může být uvozen pomocí zpětného lomítka. <br />Vzorová hodnota vpravo bude považována za hodnotu literálu a ne jako proměnnou HTTP.| \%provoz |
 | Neznámé proměnné | U neznámých proměnných se vždycky vrátí prázdný řetězec. | % {unknown_variable} |
@@ -125,7 +125,7 @@ Výchozí hodnota může být přiřazena k hlavičce, pokud splňuje některou 
 
 Následující tabulka popisuje, jak definovat výchozí hodnotu.
 
-| Stav | Syntax | Příklad | Description |
+| Podmínka | Syntax | Příklad | Description |
 | --------- | ------ | --------| ----------- |
 | Nastavte hlavičku na výchozí hodnotu, pokud splňuje některou z následujících podmínek: <br /><br />– Chybějící hlavička <br /><br />-Hodnota hlavičky je nastavena na hodnotu NULL.| % {Proměnná: = hodnota} | % {http_referrer: = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud buď chybí, nebo nastaveno na hodnotu null. Žádná akce se neprovede, pokud byla nastavena. |
 | Nastavte hlavičku na výchozí hodnotu, pokud chybí. | % {Variable = hodnota} | % {http_referrer = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud chybí. Žádná akce se neprovede, pokud byla nastavena. |
@@ -229,13 +229,13 @@ Informace o klíči:
 - Případ zástupného symbolu vzoru (například $1) lze upravit pomocí následujících příznaků:
      - U: velká písmena rozšířené hodnoty.
 
-         Ukázková syntaxe:
+         Ukázka syntaxe
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$U2.$3:80}`
 
      - L: malá písmena rozšířené hodnoty.
 
-         Ukázková syntaxe:
+         Ukázka syntaxe
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$L2.$3:80}`
 

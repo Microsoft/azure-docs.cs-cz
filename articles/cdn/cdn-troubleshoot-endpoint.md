@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192481"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Řešení potíží s Azure CDNmi koncovými body, které vracejí stavový kód 404
@@ -90,7 +90,7 @@ Zobrazí se stránka pro **konfiguraci** koncového bodu CDN.
 ![Konfigurace stránky](./media/cdn-troubleshoot-endpoint/cdn-configure.png)
 
 #### <a name="protocols"></a>Protokoly
-V případě **protokolů**ověřte, zda je vybrán protokol používaný klienty. Vzhledem k tomu, že stejný protokol, který používá klient, je ten, který se používá pro přístup ke zdroji, je důležité mít v předchozí části správně nakonfigurované zdrojové porty. Koncový bod CDN naslouchá jenom na výchozích portech HTTP a HTTPS (80 a 443) bez ohledu na počáteční porty.
+V případě **protokolů** ověřte, zda je vybrán protokol používaný klienty. Vzhledem k tomu, že stejný protokol, který používá klient, je ten, který se používá pro přístup ke zdroji, je důležité mít v předchozí části správně nakonfigurované zdrojové porty. Koncový bod CDN naslouchá jenom na výchozích portech HTTP a HTTPS (80 a 443) bez ohledu na počáteční porty.
 
 Pojďme se z našeho hypotetického příkladu vrátit http: \/ /www.contoso.com:8080/file.txt.  Jak budete si pamatovat, společnost Contoso zadala *8080* jako svůj port http, ale můžeme také předpokládat, že jako port HTTPS zadali *44300* .  Pokud vytvořili koncový bod s názvem *Contoso*, bude jeho název hostitele koncového bodu CDN *contoso.azureedge.NET*.  Požadavek na http: \/ /contoso.azureedge.net/file.txt je požadavek HTTP, takže koncový bod by na portu 8080 použil protokol HTTP, aby ho získal od počátku.  Zabezpečený požadavek přes HTTPS, https: \/ /contoso.azureedge.net/file.txt způsobí, že koncový bod při načítání souboru z počátku použije https na portu 44300.
 
@@ -102,5 +102,5 @@ Nakonec byste měli ověřit naši cestu k **původnímu zdroji**.  Ve výchozí
 
 V ukázkovém koncovém bodu jsme chtěli mít k dispozici všechny prostředky v účtu úložiště, takže **původní cesta** byla ponechána prázdná.  To znamená, že požadavek na https: \/ /cdndocdemo.azureedge.net/publicblob/lorem.txt vede k připojení z koncového bodu k cdndocdemo.Core.Windows.NET, který požaduje */publicblob/lorem.txt*.  Podobně požadavek na protokol https: \/ /cdndocdemo.azureedge.net/donotcache/status.png vede ke zjištění koncového bodu, který požaduje */donotcache/status.png* od počátku.
 
-Ale co když nechcete používat CDN pro každou cestu k vašemu zdroji?  Řekněme, že jste chtěli zveřejnit cestu *publicblob* .  Pokud zadáte */publicblob* do pole **cesta zdroje** , bude koncový bod vložit */publicblob* před každou vydanou žádost do původního umístění.  To znamená, že žádost o protokol https: \/ /lorem.txt cdndocdemo.azureedge.NET/publicblob/nyní bude ve skutečnosti přebírat část adresy URL, */publicblob/lorem.txt*a přidá */publicblob* do začátku. Výsledkem je požadavek na */publicblob/publicblob/lorem.txt* od počátku.  Pokud tato cesta nebude přeložená na skutečný soubor, vrátí původní stav 404.  Správná adresa URL pro načtení lorem.txt v tomto příkladu by byla ve skutečnosti https: \/ /cdndocdemo.azureedge.net/lorem.txt.  Všimněte si, že nezahrnujeme cestu */publicblob* vůbec, protože část žádosti adresy URL je */lorem.txt* a koncový bod přidá */publicblob*, což vede k tomu, že se v */publicblob/lorem.txt* požadavek předává zdroji.
+Ale co když nechcete používat CDN pro každou cestu k vašemu zdroji?  Řekněme, že jste chtěli zveřejnit cestu *publicblob* .  Pokud zadáte */publicblob* do pole **cesta zdroje** , bude koncový bod vložit */publicblob* před každou vydanou žádost do původního umístění.  To znamená, že žádost o protokol https: \/ /lorem.txt cdndocdemo.azureedge.NET/publicblob/nyní bude ve skutečnosti přebírat část adresy URL, */publicblob/lorem.txt* a přidá */publicblob* do začátku. Výsledkem je požadavek na */publicblob/publicblob/lorem.txt* od počátku.  Pokud tato cesta nebude přeložená na skutečný soubor, vrátí původní stav 404.  Správná adresa URL pro načtení lorem.txt v tomto příkladu by byla ve skutečnosti https: \/ /cdndocdemo.azureedge.net/lorem.txt.  Všimněte si, že nezahrnujeme cestu */publicblob* vůbec, protože část žádosti adresy URL je */lorem.txt* a koncový bod přidá */publicblob*, což vede k tomu, že se v */publicblob/lorem.txt* požadavek předává zdroji.
 

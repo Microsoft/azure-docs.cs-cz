@@ -9,10 +9,10 @@ ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 3bc97a932e622838315f717cc7b036a559787805
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97369153"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Přehled srovnávacích testů zabezpečení Azure (v2)
@@ -28,7 +28,7 @@ Tento srovnávací test je součástí sady holistických pokynů pro zabezpeče
  Srovnávací test zabezpečení Azure se zaměřuje na oblasti řízení zaměřené na Cloud. Tyto ovládací prvky jsou konzistentní s dobře známými srovnávacími testy zabezpečení, jako jsou ty, které jsou popsány v centru pro řízení internetového zabezpečení (CIS) verze 7,1 a National Institute of Standards and Technology (NIST) SP 800-53.
 Srovnávací testy zabezpečení Azure obsahují následující ovládací prvky:
 
-| DOKUMENTEM SSAE – domény ovládacích prvků | Popis 
+| DOKUMENTEM SSAE – domény ovládacích prvků | Description 
 |--|--|
 | [&nbsp;Zabezpečení sítě &nbsp; (NS)](security-controls-v2-network-security.md) | Zabezpečení sítě pokrývá ovládací prvky pro zabezpečení a ochranu sítí Azure, včetně zabezpečení virtuálních sítí, vytváření privátních připojení, prevenci a zmírnění externích útoků a zabezpečení DNS. |
 | [&nbsp;Správa identit &nbsp; (IM)](security-controls-v2-identity-management.md) | Správa identit pokrývá ovládací prvky pro vytvoření zabezpečeného řízení identity a přístupu pomocí Azure Active Directory, včetně použití jednotného přihlašování, silného ověřování, spravovaných identit (a principů služeb) pro aplikace, podmíněný přístup a monitorování anomálií. |

@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 133674e6764e12742f5b238946e943d9b5011cd2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92891325"
 ---
 # <a name="read-and-write-spatial-data"></a>Čtení a zápis prostorových dat
@@ -41,7 +41,7 @@ Při čtení komprimovaného souboru buď jako zip, nebo jako KMZ, bude vyhledá
 
 Výsledek z funkce Read je `SpatialDataSet` objekt. Tento objekt rozšiřuje třídu rozhraní injson pro funkci. Dá se snadno předat `DataSource` jako, aby se vykreslily jeho funkce na mapě. `SpatialDataSet`Obsahuje nejen informace o funkci, ale může zahrnovat i překrytí KML, zpracování metrik a další podrobnosti, jak je uvedeno v následující tabulce.
 
-| Název vlastnosti | Typ | Popis | 
+| Název vlastnosti | Typ | Description | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | Ohraničující rámeček všech dat v datové sadě. |
 | `features` | `Feature[]` | Funkce pro injson v rámci datové sady. |
@@ -57,7 +57,7 @@ Následující kód ukazuje, jak načíst prostorovou datovou sadu a vykreslit j
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Jednoduché načítání prostorových dat' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, jak se v CodePen () na <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>načítají data prostorů</a> pro pero Azure Maps jednoduché <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Jednoduché načítání prostorových dat' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, jak se v CodePen () na <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>načítají data prostorů</a> pro pero Azure Maps jednoduché <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 Další ukázka kódu ukazuje, jak číst a načíst KML nebo KMZ na mapě. KML může obsahovat základní překryvy, které budou ve formě `ImageLyaer` nebo `OgcMapLayer` . Tyto překryvy je nutné přidat na mapě odděleně od funkcí. Kromě toho, pokud má datová sada vlastní ikony, musí být tyto ikony načteny do prostředků map předtím, než jsou funkce načteny.

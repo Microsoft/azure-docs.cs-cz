@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0d81e0474d898ffee7f128c0bcea61f077c3d758
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103216"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (Classic)
@@ -26,7 +26,7 @@ Tento článek vám pomůže vytvořit připojení brány VPN mezi virtuálními
 Postup v tomto článku se týká modelu nasazení Classic a Azure Portal. Tuto konfiguraci můžete vytvořit také pomocí jiného nástroje nasazení nebo pro jiný model nasazení, a to výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
-> * [Klasický](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+> * [Standardním](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Resource Manager](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Připojení virtuální sítě v různých modelech nasazení](vpn-gateway-connect-different-deployment-models-portal.md)
 >
@@ -38,7 +38,7 @@ Připojení virtuální sítě k jiné virtuální síti (VNet-to-VNet) v modelu
 
 Virtuální sítě, které se připojíte, může být v různých předplatných a různých oblastech. Můžete zkombinovat virtuální síť k síti VNet s konfiguracemi s více lokalitami. Díky tomu je možné vytvářet topologie sítí, ve kterých se používá propojování více míst i propojování virtuálních sítí.
 
-:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="Diagram znázorňující klasickou architekturu VNet-to-VNet":::
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="Diagram znázorňující připojení":::
 
 ### <a name="why-connect-virtual-networks"></a><a name="why"></a>Proč propojovat virtuální sítě?
 
@@ -145,14 +145,14 @@ Mějte na paměti, že místní lokalita pro každou virtuální síť je druhá
 
 Místní lokalita obvykle odkazuje na vaše místní umístění. Obsahuje IP adresu zařízení VPN, ke kterému vytvoříte připojení, a rozsah IP adres, které budou do tohoto zařízení VPN směrovány přes bránu VPN.
 
-1. Na stránce pro virtuální síť v části **Nastavení**vyberte **připojení Site-to-site**.
+1. Na stránce pro virtuální síť v části **Nastavení** vyberte **připojení Site-to-site**.
 1. Na stránce připojení Site-to-site vyberte **+ Přidat**.
-1. Na stránce **Konfigurovat připojení k síti VPN a bránu** pro **Typ připojení**ponechte vybranou možnost **site-to-site** .
+1. Na stránce **Konfigurovat připojení k síti VPN a bránu** pro **Typ připojení** ponechte vybranou možnost **site-to-site** .
 
    * **IP adresa brány VPN:** Toto je veřejná IP adresa zařízení VPN pro vaši místní síť. Pro toto cvičení můžete umístit zástupnou adresu, protože ještě nemáte IP adresu pro bránu VPN pro druhý Web. Například 5.4.3.2. Později, až nakonfigurujete bránu pro jinou virtuální síť, můžete tuto hodnotu upravit.
 
    * **Adresní prostor klienta:** Vypíše rozsahy IP adres, které chcete směrovat do jiné virtuální sítě prostřednictvím této brány. Můžete přidat více různých rozsahů adres. Ujistěte se, že se zde zadané rozsahy nepřekrývají s rozsahy jiných sítí, ke kterým se vaše virtuální síť připojuje, nebo s rozsahy adres samotné virtuální sítě.
-1. V dolní části stránky nevybírejte možnost zkontrolovat + vytvořit. Místo toho vyberte **Další:>brány **.
+1. V dolní části stránky nevybírejte možnost zkontrolovat + vytvořit. Místo toho vyberte **Další:>brány**.
 
 ### <a name="to-configure-a-virtual-network-gateway"></a><a name="sku"></a>Konfigurace brány virtuální sítě
 

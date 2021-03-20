@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e047f11cc243ab1a36a8c61dd1b229d9e115115
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92892481"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: použití PowerShellu k hromadnému pozvání uživatelů spolupráce Azure AD B2B
@@ -77,7 +77,7 @@ List vytvořte například v následujícím formátu:
 
 ![Výstup PowerShellu zobrazující zatím neschválené pozvání uživatele](media/tutorial-bulk-invite/AddUsersExcel.png)
 
-Soubor uložte jako **C:\BulkInvite\Invitations.csv** . 
+Soubor uložte jako **C:\BulkInvite\Invitations.csv**. 
 
 Pokud nemáte Excel, můžete soubor CSV vytvořit v libovolném textovém editoru, jako je například Poznámkový blok. Každou hodnotu oddělte čárkou a každý řádek novým řádkem. 
 
@@ -126,7 +126,7 @@ Pokud chcete ověřit, zda se uživatelé do Azure AD přidali, spusťte násled
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Měli byste vidět uživatele, které jste pozvali v seznamu, s hlavním názvem uživatele (UPN) ve formátu *emailaddress* #EXT # \@ *Domain* . Například *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com* , kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
+Měli byste vidět uživatele, které jste pozvali v seznamu, s hlavním názvem uživatele (UPN) ve formátu *emailaddress*#EXT # \@ *Domain*. Například *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -11,17 +11,17 @@ ms.date: 03/04/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c188a4b7fe8e9223faa1cdeb52ae01ed83b94d84
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99549775"
 ---
 # <a name="use-event-grid-for-app-configuration-data-change-notifications"></a>Použití Event Grid k oznamování změn konfiguračních dat aplikace
 
 V tomto článku se dozvíte, jak nastavit odběry událostí konfigurace aplikací Azure pro odesílání událostí úprav klíč-hodnota do webového koncového bodu. Uživatelé Azure App Configuration se můžou přihlásit k odběru událostí emitovaných při změně klíčových hodnot. Tyto události mohou aktivovat Webhooky, Azure Functions, Azure Storage fronty nebo jakékoli jiné obslužné rutiny událostí, které Azure Event Grid podporuje. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/). Volitelně můžete použít Azure Cloud Shell.
 

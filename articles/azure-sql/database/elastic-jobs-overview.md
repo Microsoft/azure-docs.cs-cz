@@ -12,10 +12,10 @@ ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792170"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>Vytváření, konfigurace a Správa elastických úloh (Preview)
@@ -54,7 +54,7 @@ Nastavení správných přihlašovacích údajů pro spuštění úlohy může b
 - **Všechny cílové databáze musí mít přihlašovací údaje s [dostatečným oprávněním](/sql/relational-databases/security/permissions-database-engine) , aby se úloha úspěšně dokončila** ( `jobuser` v diagramu níže).
 - Přihlašovací údaje je možné opakovaně používat napříč úlohami a hesla přihlašovacích údajů jsou šifrovaná a zabezpečená uživatelům, kteří mají k objektům úlohy přístup jen pro čtení.
 
-Následující obrázek by vám měl pomoct porozumět přihlašovacím údajům úloh a správně je nastavit. **Nezapomeňte vytvořit příslušného uživatele v každé databázi (ve všech *cílových uživatelských databázích* ), ve které se má úloha spouštět** .
+Následující obrázek by vám měl pomoct porozumět přihlašovacím údajům úloh a správně je nastavit. **Nezapomeňte vytvořit příslušného uživatele v každé databázi (ve všech *cílových uživatelských databázích*), ve které se má úloha spouštět**.
 
 ![Přihlašovací údaje k elastickým úlohám](./media/elastic-jobs-overview/job-credentials.png)
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/02/2019
 ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88207265"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Připojení k Azure SQL Database pomocí Azure Functions
@@ -18,7 +18,7 @@ V tomto článku se dozvíte, jak pomocí Azure Functions vytvořit naplánovano
 
 Pokud se jedná o vaše první prostředí při práci s funkcemi jazyka C#, měli byste si přečíst [referenční informace pro vývojáře Azure Functions C#](functions-dotnet-class-library.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Dokončete kroky v článku [Vytvoření první funkce pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md) k vytvoření místní aplikace Function App, která cílí na verzi 2. x nebo novější verzi modulu runtime. Projekt musíte také publikovat do aplikace Function App v Azure.
 
@@ -30,7 +30,7 @@ Pokud se jedná o vaše první prostředí při práci s funkcemi jazyka C#, mě
 
 Pro databázi, kterou jste vytvořili po dokončení [vytváření databáze v Azure SQL Database pomocí Azure Portal](../azure-sql/database/single-database-create-quickstart.md), je třeba získat připojovací řetězec.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. V nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte svou databázi.
 
@@ -44,7 +44,7 @@ Function App hostuje provádění vašich funkcí v Azure. Osvědčeným postupe
 
 Je potřeba, abyste aplikaci publikovali už dřív v Azure. Pokud jste to ještě neudělali, [publikujte aplikaci Function App do Azure](functions-develop-vs.md#publish-to-azure).
 
-1. V Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace Function App a vyberte **publikovat**  >  **Úpravy Azure App Service nastavení**. Vyberte **Přidat nastavení**, v **nastavení nový název aplikace**zadejte `sqldb_connection` a vyberte **OK**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na projekt aplikace Function App a vyberte **publikovat**  >  **Úpravy Azure App Service nastavení**. Vyberte **Přidat nastavení**, v **nastavení nový název aplikace** zadejte `sqldb_connection` a vyberte **OK**.
 
     ![Nastavení aplikace pro aplikaci Function App](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
