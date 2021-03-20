@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 91bcd998849c619a328a198c97bb8c977b9d8232
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792221"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Oprava problémů s mapováním horizontálních oddílů pomocí třídy RecoveryManager
@@ -33,11 +33,11 @@ Definice termínů najdete v článku [Glosář nástrojů pro elastic Database]
 
 ## <a name="why-use-the-recovery-manager"></a>Proč používat Správce obnovení
 
-V prostředí databáze horizontálně dělené je jeden tenant na databázi a mnoho databází na jeden server. V prostředí může být také mnoho serverů. Každá databáze je mapována v mapě horizontálních oddílů, takže volání lze směrovat do správného serveru a databáze. Databáze jsou sledovány podle **horizontálního dělení klíče** a každá horizontálních oddílů je přiřazena **Rozsah hodnot klíče** . Horizontálního dělení klíč může například představovat jména zákazníků z "D" do "F". Mapování všech horizontálních oddílů (označovaných také jako databáze) a jejich rozsahy mapování jsou obsaženy v **globálním mapování horizontálních oddílů (GSM)** . Každá databáze také obsahuje mapu rozsahů obsažených v horizontálních oddílů, které se označují jako **místní Mapa horizontálních oddílů (LSM)** . Když se aplikace připojí k horizontálních oddílů, mapování se uloží do mezipaměti s aplikací pro rychlé načtení. LSM se používá k ověření dat uložených v mezipaměti.
+V prostředí databáze horizontálně dělené je jeden tenant na databázi a mnoho databází na jeden server. V prostředí může být také mnoho serverů. Každá databáze je mapována v mapě horizontálních oddílů, takže volání lze směrovat do správného serveru a databáze. Databáze jsou sledovány podle **horizontálního dělení klíče** a každá horizontálních oddílů je přiřazena **Rozsah hodnot klíče**. Horizontálního dělení klíč může například představovat jména zákazníků z "D" do "F". Mapování všech horizontálních oddílů (označovaných také jako databáze) a jejich rozsahy mapování jsou obsaženy v **globálním mapování horizontálních oddílů (GSM)**. Každá databáze také obsahuje mapu rozsahů obsažených v horizontálních oddílů, které se označují jako **místní Mapa horizontálních oddílů (LSM)**. Když se aplikace připojí k horizontálních oddílů, mapování se uloží do mezipaměti s aplikací pro rychlé načtení. LSM se používá k ověření dat uložených v mezipaměti.
 
 Z následujících důvodů se může stát, že se nesynchronizují LSM a GSM.
 
-1. Odstranění horizontálních oddílů, jehož rozsah je považován za již nepoužitý, nebo přejmenování horizontálních oddílů. Výsledkem odstranění horizontálních oddílů je **osamocené mapování horizontálních oddílů** . Podobně přejmenovaná databáze může způsobit oddělené mapování horizontálních oddílů. V závislosti na záměru změny může být nutné odebrat horizontálních oddílů nebo umístění horizontálních oddílů musí být aktualizováno. Informace o obnovení odstraněné databáze najdete v tématu [Obnovení odstraněné databáze](recovery-using-backups.md).
+1. Odstranění horizontálních oddílů, jehož rozsah je považován za již nepoužitý, nebo přejmenování horizontálních oddílů. Výsledkem odstranění horizontálních oddílů je **osamocené mapování horizontálních oddílů**. Podobně přejmenovaná databáze může způsobit oddělené mapování horizontálních oddílů. V závislosti na záměru změny může být nutné odebrat horizontálních oddílů nebo umístění horizontálních oddílů musí být aktualizováno. Informace o obnovení odstraněné databáze najdete v tématu [Obnovení odstraněné databáze](recovery-using-backups.md).
 2. Dojde k události geografické převzetí služeb při selhání. Chcete-li pokračovat, je třeba aktualizovat název serveru a název databáze správce mapy horizontálních oddílů v aplikaci a poté aktualizovat podrobnosti mapování horizontálních oddílů pro všechny horizontálních oddílů v mapě horizontálních oddílů. Pokud dojde k geografickému převzetí služeb při selhání, musí být tato logika obnovení automatizovaná v rámci pracovního postupu převzetí služeb při selhání. Automatizace akcí obnovení umožňuje bezproblémovou správu pro geograficky dostupné databáze a vyhnout se ručním lidským akcím. Další informace o možnostech obnovení databáze v případě výpadku datového centra najdete v tématu [provozní kontinuita](business-continuity-high-availability-disaster-recover-hadr-overview.md) a [zotavení po havárii](disaster-recovery-guidance.md).
 3. Horizontálních oddílů nebo databáze ShardMapManager se obnovily do dřívějšího bodu v čase. Informace o obnovení bodu v čase pomocí zálohování najdete v tématu [obnovení pomocí záloh](recovery-using-backups.md).
 

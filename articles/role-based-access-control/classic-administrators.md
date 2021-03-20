@@ -15,10 +15,10 @@ ms.date: 11/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100557535"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure Classic
@@ -125,8 +125,8 @@ V každém předplatném Azure může být jen jeden správce služby. Změna sp
 
 | Účet správce účtu | Může změnit správce služby na jiný účet Microsoft? | Můžete změnit správce služby na účet Azure AD ve stejném adresáři? | Může změnit správce služby na účet Azure AD v jiném adresáři? |
 | --- | --- | --- | --- |
-| Účet Microsoft | Ano | Ne | Ne |
-| Účet Azure AD | Ano | Ano | Ne |
+| Účet Microsoft | Yes | No | No |
+| Účet Azure AD | Yes | Yes | No |
 
 Pokud je správcem účtu účet Azure AD, můžete změnit správce služby na účet Azure AD ve stejném adresáři, ale ne v jiném adresáři. Například abby@contoso.com může změnit správce služby na bob@contoso.com , ale nemůže změnit správce služby na, john@notcontoso.com Pokud john@notcontoso.com nemá přítomnost v adresáři contoso.com.
 

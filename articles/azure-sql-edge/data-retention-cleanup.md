@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
 ms.openlocfilehash: f547f0b3219889b54364c4805c2dd5b183a9861a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392363"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Správa historických dat pomocí zásad uchovávání informací
@@ -70,7 +70,7 @@ Operace čištění zásad uchovávání dat se dají monitorovat pomocí rozš�
 
 Následující šest rozšířených událostí vám pomůžou sledovat stav operací čištění. 
 
-| Název | Popis |
+| Název | Description |
 |------| ------------|
 | data_retention_task_started  | Nastane, pokud se spustí úloha na pozadí pro vyčištění tabulek se zachováním zásad uchovávání informací. |
 | data_retention_task_completed  | Vyvolá se v případě, že je úloha na pozadí pro vyčištění tabulek se zakončením zásad uchovávání informací. |

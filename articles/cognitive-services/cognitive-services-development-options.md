@@ -9,10 +9,10 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98873565"
 ---
 # <a name="cognitive-services-development-options"></a>Možnosti vývoje služby Cognitive Services
@@ -35,7 +35,7 @@ Než se pustíme do, je důležité, abyste věděli, že se Cognitive Services 
 
 ## <a name="development-options-for-prediction-and-analysis"></a>Vývojové možnosti pro předpověď a analýzu 
 
-Nástroje, které použijete k přizpůsobení a konfiguraci modelů, se liší od těch, které použijete k volání Cognitive Services. Nejvíce Cognitive Services umožňuje odesílat data a získávat přehledy bez jakýchkoli úprav. Příklad: 
+Nástroje, které použijete k přizpůsobení a konfiguraci modelů, se liší od těch, které použijete k volání Cognitive Services. Nejvíce Cognitive Services umožňuje odesílat data a získávat přehledy bez jakýchkoli úprav. Například: 
 
 * Do služby Počítačové zpracování obrazu můžete odeslat image, která detekuje slova a fráze nebo spočítá počet osob v rámci rámce.
 * Zvukový soubor můžete odeslat do služby pro rozpoznávání řeči a získat přepis a převést řeč na text ve stejnou dobu.
@@ -114,7 +114,7 @@ Ke správě nasazení můžete použít akce Azure DevOps a GitHub. V [níže uv
 
 ## <a name="tools-to-customize-and-configure-models"></a>Nástroje pro přizpůsobení a konfiguraci modelů
 
-Jak budete postupovat na cestě při vytváření aplikace nebo pracovního postupu s Cognitive Services, můžete zjistit, že je potřeba model přizpůsobit, abyste dosáhli požadovaného výkonu. Mnohé z našich služeb vám umožňují sestavovat sestavování předem vytvořených modelů, aby vyhovovaly vašim konkrétním obchodním potřebám. Pro všechny naše přizpůsobitelné služby poskytujeme prostředí založené na uživatelském rozhraní pro procházení procesu i rozhraní API pro školení řízené kódem. Příklad:
+Jak budete postupovat na cestě při vytváření aplikace nebo pracovního postupu s Cognitive Services, můžete zjistit, že je potřeba model přizpůsobit, abyste dosáhli požadovaného výkonu. Mnohé z našich služeb vám umožňují sestavovat sestavování předem vytvořených modelů, aby vyhovovaly vašim konkrétním obchodním potřebám. Pro všechny naše přizpůsobitelné služby poskytujeme prostředí založené na uživatelském rozhraní pro procházení procesu i rozhraní API pro školení řízené kódem. Například:
 
 * Chcete vytvořit výuku Custom Speech modelu, aby správně rozpoznala lékařské výrazy s chybovými zprávami (WER) pod 3%
 * Chcete vytvořit klasifikátor obrázku s Custom Vision, který může sdělit rozdíl mezi jehličnatými a listnatými stromy

@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88142498"
 ---
 # <a name="private-cloud-vmware-components"></a>Komponenty VMware privátního cloudu
@@ -48,7 +48,7 @@ zařízení vCenter Server (VCSA) poskytuje funkce ověřování, správy a orch
 
 ### <a name="vcenter-single-sign-on"></a>jednotné přihlašování vCenter
 
-Služba Embedded Platform Service Controller na VCSA je přidružená k řadiči **vCenter s jednou Sign-On doménou**.  Název domény je **cloudsimple. Local**.  **CloudOwner@cloudsimple.com**Pro přístup k serveru vCenter se vytvoří výchozí uživatel.  Pro vCenter můžete přidat své místní nebo [zdroje identit](set-vcenter-identity.md)služby Azure Active Directory.
+Služba Embedded Platform Service Controller na VCSA je přidružená k řadiči **vCenter s jednou Sign-On doménou**.  Název domény je **cloudsimple. Local**.  **CloudOwner@cloudsimple.com** Pro přístup k serveru vCenter se vytvoří výchozí uživatel.  Pro vCenter můžete přidat své místní nebo [zdroje identit](set-vcenter-identity.md)služby Azure Active Directory.
 
 ## <a name="vsan-storage"></a>úložiště síti vSAN
 

@@ -1,6 +1,6 @@
 ---
 title: Pokyny pro zřizování sdílených složek Azure
-description: Zřídí sdílené složky Azure pro použití s Azure File Sync. Společný textový blok sdílený v rámci migračních dokumentů.
+description: Zřídí sdílené složky Azure pro použití s Synchronizace souborů Azure. Společný textový blok sdílený v rámci migračních dokumentů.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: d48baba5ee60a2bf5a4cb5e4d1ce840fce8eec43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82143579"
 ---
 Sdílená složka Azure je uložená v cloudu v účtu úložiště Azure.
@@ -22,7 +22,7 @@ Pokud máte vysoce aktivní sdílené složky (sdílené položky používá mno
 Osvědčeným postupem je nasazování účtů úložiště s jednou sdílenou složkou.
 Můžete seskupit více sdílených složek Azure do stejného účtu úložiště pro případ, že máte archivované sdílené složky nebo v nich očekáváte nízkou denní aktivitu.
 
-Tyto požadavky se vztahují i na přímý přístup do cloudu (přes virtuální počítač Azure) než Azure File Sync. Pokud plánujete použít Azure File Sync jenom na těchto sdílených složkách, je v pořádku seskupení několika do jednoho účtu Azure Storage.
+Tyto požadavky se vztahují i na přímý přístup do cloudu (přes virtuální počítač Azure) než Synchronizace souborů Azure. Pokud plánujete použít Synchronizace souborů Azure jenom na těchto sdílených složkách, je v pořádku seskupení několika do jednoho účtu Azure Storage.
 
 Pokud jste vytvořili seznam sdílených složek, měli byste namapovat každou sdílenou složku na účet úložiště, ve kterém se bude nacházet.
 

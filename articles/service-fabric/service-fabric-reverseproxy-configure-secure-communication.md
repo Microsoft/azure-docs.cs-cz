@@ -4,10 +4,10 @@ description: Nakonfigurujte reverzní proxy tak, aby umožňoval zabezpečenou k
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86256131"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení k zabezpečené službě pomocí reverzního proxy serveru
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak vytvořit zabezpečené připojení mezi rever
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Zabezpečené vytváření připojení mezi reverzním proxy serverem a službami 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Reverzní proxy ověřování pro služby:
-Reverzní proxy server identifikuje sám sebe se službami pomocí jejího certifikátu. V případě clusterů Azure je certifikát zadaný pomocí vlastnosti ***reverseProxyCertificate*** v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. ServiceFabric/clustery**](/azure/templates/microsoft.servicefabric/clusters) v šabloně správce prostředků. V případě samostatných clusterů je certifikát určen buď pomocí ***ReverseProxyCertificate*** , nebo pomocí vlastnosti ***ReverseProxyCertificateCommonNames*** v části **zabezpečení** ClusterConfig.jszapnuté. Další informace najdete v tématu [Povolení reverzního proxy na samostatných clusterech](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+Reverzní proxy server identifikuje sám sebe se službami pomocí jejího certifikátu. V případě clusterů Azure je certifikát zadaný pomocí vlastnosti ***reverseProxyCertificate** _ v [části _ typ prostředku](../azure-resource-manager/templates/template-syntax.md) [*Microsoft. ServiceFabric/clustery* *](/azure/templates/microsoft.servicefabric/clusters) v šabloně správce prostředků. U samostatných clusterů je certifikát zadaný pomocí **vlastnosti _ReverseProxyCertificate_*_ nebo _*_ReverseProxyCertificateCommonNames_*_ v* části zabezpečení _** ClusterConfig.js. Další informace najdete v tématu [Povolení reverzního proxy na samostatných clusterech](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 Služby můžou implementovat logiku, která ověří certifikát prezentovaný reverzním proxy serverem. Služby můžou určit podrobnosti přijímaného klientského certifikátu jako konfigurační nastavení v konfiguračním balíčku. To je možné číst za běhu a použít k ověření certifikátu prezentovaného reverzním proxy serverem. Chcete-li přidat nastavení konfigurace, přečtěte si téma [Správa parametrů aplikace](service-fabric-manage-multiple-environment-app-configuration.md) . 
 
@@ -73,7 +73,7 @@ V části [**ApplicationGateway/http**](./service-fabric-cluster-fabric-settings
    }
    ```
 
-   Pokud chcete zadat seznam běžných názvů služeb a kryptografických otisků vystavitelů, přidejte v oblasti **fabricSettings**oddíl [**ApplicationGateway/http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) , jak je znázorněno níže. Do pole **Parameters** lze přidat více než jednou dvojici společného názvu certifikátu a otisků kryptografických otisků vystavitele. 
+   Pokud chcete zadat seznam běžných názvů služeb a kryptografických otisků vystavitelů, přidejte v oblasti **fabricSettings** oddíl [**ApplicationGateway/http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) , jak je znázorněno níže. Do pole **Parameters** lze přidat více než jednou dvojici společného názvu certifikátu a otisků kryptografických otisků vystavitele. 
 
    Pokud se připojení ke koncovému bodu proxy serveru zaznamená, vytvoří se kanál protokolu TLS s certifikátem, který obsahuje běžný název a kryptografický otisk vystavitele.
    Po neúspěšném přiřazení podrobností certifikátu selže reverzní proxy požadavek klienta se stavovým kódem 502 (špatným bránou). Stavový řádek protokolu HTTP bude obsahovat také frázi "Neplatný certifikát SSL". 

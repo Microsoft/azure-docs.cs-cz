@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792085"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Dotazování napříč cloudovou databází s různými schématy (Preview)
@@ -63,7 +63,7 @@ Syntaxe:
     CREDENTIAL = <credential_name>) [;]
 
 > [!IMPORTANT]
-> Parametr typu musí být nastaven na **RDBMS** .
+> Parametr typu musí být nastaven na **RDBMS**.
 
 ### <a name="example"></a>Příklad
 
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 Elastický dotaz rozšiřuje existující syntax externí tabulky a definuje externí tabulky, které používají externí zdroje dat typu RDBMS. Definice externí tabulky pro vertikální dělení zahrnuje následující aspekty:
 
-* **Schéma** : DDL externí tabulky definuje schéma, které mohou vaše dotazy použít. Schéma zadané v definici externí tabulky musí odpovídat schématu tabulek ve vzdálené databázi, kde jsou uložena skutečná data.
-* **Odkaz na vzdálenou databázi** : instance DDL externí tabulky odkazuje na externí zdroj dat. Externí zdroj dat určuje název serveru a databázi vzdálené databáze, ve které jsou uložena skutečná data tabulky.
+* **Schéma**: DDL externí tabulky definuje schéma, které mohou vaše dotazy použít. Schéma zadané v definici externí tabulky musí odpovídat schématu tabulek ve vzdálené databázi, kde jsou uložena skutečná data.
+* **Odkaz na vzdálenou databázi**: instance DDL externí tabulky odkazuje na externí zdroj dat. Externí zdroj dat určuje název serveru a databázi vzdálené databáze, ve které jsou uložena skutečná data tabulky.
 
 Pomocí externího zdroje dat, jak je uvedeno v předchozí části, syntaxe pro vytvoření externích tabulek je následující:
 
@@ -135,7 +135,7 @@ Následující příkaz DDL přenechá existující definici externí tabulky z 
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**Oprávnění pro možnost vytvořit/vyřadit externí tabulku** : Změňte všechna oprávnění externích zdrojů dat, která jsou zapotřebí pro externí tabulku DDL, což je také nutné pro odkazování na podkladový zdroj dat.  
+**Oprávnění pro možnost vytvořit/vyřadit externí tabulku**: Změňte všechna oprávnění externích zdrojů dat, která jsou zapotřebí pro externí tabulku DDL, což je také nutné pro odkazování na podkladový zdroj dat.  
 
 ## <a name="security-considerations"></a>Důležité informace o zabezpečení
 

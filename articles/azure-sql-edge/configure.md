@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392329"
 ---
 # <a name="configure-azure-sql-edge"></a>Konfigurace Edge Azure SQL
@@ -32,7 +32,7 @@ Azure SQL Edge zpřístupňuje několik různých proměnných prostředí, kter
 
 Následující nové proměnné prostředí se přidaly do Azure SQL Edge. 
 
-| Proměnná prostředí | Popis | Hodnoty |     
+| Proměnná prostředí | Description | Hodnoty |     
 |-----|-----| ---------- | 
 | **PlanId** | Určuje skladovou jednotku Azure SQL Edge, která se má použít při inicializaci. Tato proměnná prostředí se vyžaduje jenom v případě, že nasazujete Azure SQL Edge pomocí Azure IoT Edge. | **asde – Developer-on-IoT-Edge** nebo **asde-Premium-on-IoT-Edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | Povolí nebo zakáže shromažďování dat o využití a diagnostice. | TRUE nebo FALSE |  
@@ -42,7 +42,7 @@ Následující nové proměnné prostředí se přidaly do Azure SQL Edge.
 
 Následující proměnná prostředí SQL Server on Linux pro Azure SQL Edge podporována. Pokud je tato proměnná prostředí definována, bude při inicializaci kontejneru ignorována.
 
-| Proměnná prostředí | Popis |
+| Proměnná prostředí | Description |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Povolte skupinu dostupnosti. Například hodnota **1** je povolena a **hodnota 0** je zakázána. |
 

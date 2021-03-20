@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 12951f25feb6f3710b8d35fbc682caeeb480e788
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555605"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Udělení oprávnění webovému rozhraní API
 > * Aktualizace ukázky pro použití aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky a požadavky v [kurzu: ověřování uživatelů v nativním klientském počítači](tutorial-desktop-app.md).
 
@@ -88,7 +88,7 @@ Když je teď webové rozhraní API zaregistrované a máte nastavené obory a o
 V předpokladech tohoto článku jste upravili [desktopovou aplikaci WPF](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) , která umožňuje přihlášení pomocí toku uživatele v Azure AD B2C tenantovi. V této části aktualizujete stejnou aplikaci tak, aby odkazovala na webové rozhraní API, které jste předtím zaregistrovali, *webapi1*.
 
 1. Otevřete řešení **Active-Directory-B2C-WPF** ( `active-directory-b2c-wpf.sln` ) v aplikaci Visual Studio.
-1. V projektu **Active-Directory-B2C-WPF** otevřete soubor *App.XAML.cs* a vyhledejte následující definice proměnných.
+1. V projektu **Active-Directory-B2C-WPF** otevřete soubor *App. XAML. cs* a vyhledejte následující definice proměnných.
     1. Nahraďte hodnotu proměnné hodnotou `ApiScopes` , kterou jste si poznamenali dříve, když jste definovali obor **demo. Read** .
     1. Nahraďte hodnotu `ApiEndpoint` proměnné **identifikátorem URI přesměrování** , který jste si poznamenali dříve, když jste zaregistrovali webové rozhraní API (například *webapi1*) ve vašem tenantovi.
 

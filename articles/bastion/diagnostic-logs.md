@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91445386"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>Povolení protokolů prostředků služby Bastion a práce s nimi
@@ -23,7 +23,7 @@ Uživatelé, kteří se připojují k úlohám pomocí Azure bastionu, můžou b
 1. V [Azure Portal](https://portal.azure.com)přejděte do svého prostředku Azure bastionu a na stránce Azure bastionu vyberte **nastavení diagnostiky** .
 
    ![Snímek obrazovky zobrazující stránku "nastavení diagnostiky".](./media/diagnostic-logs/1diagnostics-settings.png)
-2. Vyberte **nastavení diagnostiky**a pak vyberte **+ Přidat nastavení diagnostiky** a přidejte tak cíl pro protokoly.
+2. Vyberte **nastavení diagnostiky** a pak vyberte **+ Přidat nastavení diagnostiky** a přidejte tak cíl pro protokoly.
 
    ![Snímek obrazovky zobrazující stránku nastavení diagnostiky s vybraným tlačítkem Přidat nastavení diagnostiky](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. Na stránce **nastavení diagnostiky** vyberte typ účtu úložiště, který se má použít k ukládání diagnostických protokolů.

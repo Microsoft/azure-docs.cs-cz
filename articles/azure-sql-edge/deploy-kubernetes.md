@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395287"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Nasazení kontejneru Edge Azure SQL v Kubernetes
@@ -108,7 +108,7 @@ Konfigurace [trvalého svazku](https://kubernetes.io/docs/concepts/storage/persi
          storage: 8Gi
    ```
 
-   Uložte soubor (například **PVC. yaml** ).
+   Uložte soubor (například **PVC. yaml**).
 
 2. Vytvořte v Kubernetes deklaraci trvalého svazku.
 
@@ -241,7 +241,7 @@ spec:
    >[!NOTE]
    >Pomocí `LoadBalancer` typu služby je instance Azure SQL Edge přístupná vzdáleně (přes Internet) na portu 1433.
 
-   Uložte soubor (například **sqledgedeploy. yaml** ).
+   Uložte soubor (například **sqledgedeploy. yaml**).
 
 2. Vytvořte nasazení.
 
@@ -305,7 +305,7 @@ Chcete-li ověřit selhání a obnovení, můžete odstranit pole pod. Proveďte
 
 Kubernetes automaticky znovu vytvoří objekt pod a obnoví instanci Azure SQL Edge a připojí se k trvalému úložišti. Použijte `kubectl get pods` k ověření, že je nasazen nový pod. Použijte `kubectl get services` k ověření, že IP adresa nového kontejneru je stejná. 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste zjistili, jak nasadit kontejnery Azure SQL Edge do clusteru Kubernetes pro zajištění vysoké dostupnosti. 
 

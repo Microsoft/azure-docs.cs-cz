@@ -9,10 +9,10 @@ ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 3ac1f5bd3d44b7f98284cead60b34689f3d7be30
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395491"
 ---
 # <a name="setup-azure-site-recovery-for-azure-vmware-solution-vms"></a>Nastavení Azure Site Recovery pro virtuální počítače řešení Azure VMware
@@ -43,7 +43,7 @@ Dokončete předchozí kurzy:
 3. V tomto kurzu si ukážeme, jak replikovat jeden virtuální počítač. Pokud nasazujete více virtuálních počítačů, měli byste použít [nástroj Plánovač nasazení](https://aka.ms/asr-deployment-planner). [Přečtěte si další informace](site-recovery-deployment-planner.md) o tomto nástroji.
 4. V tomto kurzu se používá několik možností, které byste mohli chtít udělat jinak:
     - V tomto kurzu se pomocí šablony vajíček vytvoří virtuální počítač VMware konfiguračního serveru. Pokud to z nějakého důvodu nemůžete udělat, postupujte podle [těchto pokynů](physical-manage-configuration-server.md) a nastavte konfigurační server ručně.
-    - V tomto kurzu Site Recovery automaticky stáhne a nainstaluje MySQL na konfigurační server. Pokud chcete, můžete ho místo toho nastavit ručně. [Přečtěte si další informace](vmware-azure-deploy-configuration-server.md#configure-settings).
+    - V tomto kurzu Site Recovery automaticky stáhne a nainstaluje MySQL na konfigurační server. Pokud chcete, můžete ho místo toho nastavit ručně. [Další informace](vmware-azure-deploy-configuration-server.md#configure-settings).
 
 
 
@@ -52,7 +52,7 @@ Dokončete předchozí kurzy:
 
 1. V okně **Trezory Recovery Services** vyberte název trezoru. Pro tento scénář používáme **ContosoVMVault**.
 2. V části **Začínáme** vyberte Site Recovery. Pak vyberte **Příprava infrastruktury**.
-3. V nabídce **cíl ochrany**  >  , **kde jsou umístěny vaše počítače** , vyberte možnost **místní**.
+3. V nabídce **cíl ochrany**  >  ,**kde jsou umístěny vaše počítače**, vyberte možnost **místní**.
 4. V části **Kam chcete počítače replikovat?** vyberte **Do Azure**.
 5. V části **Máte počítače ve virtuální podobě?** vyberte **Ano, s VMware vSphere Hypervisor**. Pak vyberte **OK**.
 
@@ -62,9 +62,9 @@ Dokončete předchozí kurzy:
 
 Ve vašem zdrojovém prostředí potřebujete jeden vysoce dostupný místní počítač, který bude hostovat tyto místní Site Recovery komponenty:
 
-- **Konfigurační server** : konfigurační server koordinuje komunikaci mezi privátním cloudem řešení Azure VMware a Azure a spravuje replikaci dat.
-- **Procesový Server** : procesový server funguje jako brána replikace. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do účtu úložiště mezipaměti v Azure. Procesový Server také nainstaluje agenta služby mobility na virtuální počítače, které chcete replikovat, a provádí automatické zjišťování virtuálních počítačů řešení Azure VMware.
-- **Hlavní cílový server** : hlavní cílový Server zpracovává replikační data během navrácení služeb po obnovení z Azure.
+- **Konfigurační server**: konfigurační server koordinuje komunikaci mezi privátním cloudem řešení Azure VMware a Azure a spravuje replikaci dat.
+- **Procesový Server**: procesový server funguje jako brána replikace. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do účtu úložiště mezipaměti v Azure. Procesový Server také nainstaluje agenta služby mobility na virtuální počítače, které chcete replikovat, a provádí automatické zjišťování virtuálních počítačů řešení Azure VMware.
+- **Hlavní cílový server**: hlavní cílový Server zpracovává replikační data během navrácení služeb po obnovení z Azure.
 
 
 Všechny tyto součásti jsou nainstalovány společně na jednom počítači řešení Azure VMware, který se označuje jako *konfigurační server*. Ve výchozím nastavení se pro zotavení po havárii řešení Azure VMware nastaví konfigurační server jako vysoce dostupný virtuální počítač VMware. Pokud to chcete provést, Stáhněte si připravenou šablonu Open Application Virtualization (VAJÍČK) a importujte ji do VMware a vytvořte virtuální počítač.
@@ -120,7 +120,7 @@ Po nastavení konfiguračního serveru ho zaregistrujete v trezoru.
 3. Po dokončení instalace se přihlaste k virtuálnímu počítači jako správce.
 4. Při prvním přihlášení se během pár vteřin spustí nástroj pro konfiguraci služby Azure Site Recovery.
 5. Zadejte název, pod kterým se konfigurační server zaregistruje do služby Site Recovery. Pak vyberte **Další**.
-6. Nástroj zkontroluje, jestli se virtuální počítač může připojit k Azure. Po navázání spojení vyberte **Přihlásit se** , abyste se mohli přihlásit ke svému předplatnému Azure. Přihlašovací údaje musí zajišťovat přístup k trezoru, do kterého chcete konfigurační server zaregistrovat. Zajistěte, aby k tomuto uživateli byly přiřazeny potřebné [role](vmware-azure-deploy-configuration-server.md#azure-active-directory-permission-requirements) .
+6. Nástroj zkontroluje, jestli se virtuální počítač může připojit k Azure. Po navázání spojení vyberte **Přihlásit se**, abyste se mohli přihlásit ke svému předplatnému Azure. Přihlašovací údaje musí zajišťovat přístup k trezoru, do kterého chcete konfigurační server zaregistrovat. Zajistěte, aby k tomuto uživateli byly přiřazeny potřebné [role](vmware-azure-deploy-configuration-server.md#azure-active-directory-permission-requirements) .
 7. Nástroj provede několik úloh konfigurace a pak restartuje počítač.
 8. Znovu se přihlaste k počítači. Za chvilku se spustí automaticky průvodce správou konfiguračního serveru.
 
@@ -132,7 +132,7 @@ Dokončete nastavení a registraci konfiguračního serveru. Než budete pokrač
 
 1. V Průvodci správou konfiguračního serveru vyberte **nastavení připojení**. V rozevíracích seznamech vyberte nejdřív síťovou kartu, kterou používá integrovaný procesový Server pro zjišťování a nabízenou instalaci služby mobility na zdrojových počítačích, a pak vyberte síťovou kartu, kterou konfigurační server používá pro připojení k Azure. Pak vyberte **Uložit**. Po nakonfigurování tohoto nastavení už toto nastavení nemůžete změnit.
 2. V části **vybrat Recovery Services trezor** vyberte své předplatné Azure a příslušnou skupinu prostředků a trezor.
-3. V části **Nainstalovat software třetí strany** přijměte licenční smlouvu. Vyberte **Stáhnout a nainstalovat** a nainstalujte MySQL Server. Pokud jste v cestě umístili MySQL, tento krok se dá přeskočit. [Další](vmware-azure-deploy-configuration-server.md#configure-settings) informace
+3. V části **Nainstalovat software třetí strany** přijměte licenční smlouvu. Vyberte **Stáhnout a nainstalovat** a nainstalujte MySQL Server. Pokud jste v cestě umístili MySQL, tento krok se dá přeskočit. Další [informace](vmware-azure-deploy-configuration-server.md#configure-settings)
 4. Než budete pokračovat, v části **Ověřit konfiguraci zařízení** se ověří požadavky.
 5. V části **Konfigurovat vCenter Server nebo server vSphere ESXi** zadejte plně kvalifikovaný název domény nebo IP adresu vCenter Serveru nebo hostitele vSphere, na kterém jsou umístěné virtuální počítače, které chcete replikovat. Zadejte port, na kterém server naslouchá. Zadejte popisný název, který se použije pro server VMware v trezoru.
 6. Zadejte přihlašovací údaje uživatele, které bude konfigurační server používat pro připojení k serveru VMware. Ujistěte se, že jsou uživatelské jméno a heslo správné a že je uživatel součástí skupiny Administrators ve virtuálním počítači, který chcete chránit. Služba Site Recovery je použije k automatickému zjištění virtuálních počítačů VMware, které jsou dostupné pro replikaci. Vyberte **Přidat** a pak **Pokračovat**.
@@ -159,8 +159,8 @@ Vyberte a zkontrolujte cílové prostředky.
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
-1. Otevřete web [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **trezory Recovery Services**.
-2. Vyberte trezor služby Recovery Services (v tomto kurzu **ContosoVMVault** ).
+1. Otevřete [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **trezory Recovery Services**.
+2. Vyberte trezor služby Recovery Services (v tomto kurzu **ContosoVMVault**).
 3. Pokud chcete vytvořit zásadu replikace, vyberte **Site Recovery**  >  **Zásady replikace** infrastruktury  >  **a zásady replikace**.
 4. V části **Vytvoření zásady replikace** zadejte název zásady. Používáme **VMwareRepPolicy**.
 5. V části **Prahová hodnota cíle bodu obnovení (RPO)** použijte výchozí hodnotu 60 minut. Tato hodnota určuje, jak často se tvoří body obnovení. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
@@ -170,7 +170,7 @@ Vyberte a zkontrolujte cílové prostředky.
    ![Snímek obrazovky s možnostmi vytvoření zásad replikace](./media/vmware-azure-tutorial/replication-policy.png)
 
 - Tato zásada se automaticky přidruží ke konfiguračnímu serveru.
-- Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud má zásada replikace název například **rep-policy** , zásada navrácení služeb po obnovení bude mít název **rep-policy-failback**. Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
+- Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud má zásada replikace název například **rep-policy**, zásada navrácení služeb po obnovení bude mít název **rep-policy-failback**. Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
 
 Poznámka: ve scénáři VMware-to-Azure se snímek konzistentní vzhledem k chybě provádí v intervalu 5 minut.
 
@@ -186,7 +186,7 @@ Replikaci pro virtuální počítače povolíte takto:
 6. V části **Cíl** vyberte předplatné a skupinu prostředků, ve které chcete vytvořit virtuální počítače, jejichž služby se převezmou při selhání. Používáme model nasazení Resource Manager.
 7. Vyberte síť Azure a podsíť, ke kterým se připojí virtuální počítače Azure, když se vytvoří po převzetí služeb při selhání.
 8. Vyberte možnost **Nakonfigurovat pro vybrané počítače** a použijte tak nastavení sítě pro všechny virtuální počítače, na kterých jste povolili replikaci. Vyberte **Konfigurovat později** a vyberte síť Azure na jeden počítač.
-9. V **Virtual Machines**  >  **vyberte virtuální počítače** , vyberte všechny počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**. Pokud si nejste schopni zobrazit nebo vybrat žádný konkrétní virtuální počítač, [Přečtěte si další informace](./vmware-azure-troubleshoot-replication.md) o řešení tohoto problému.
+9. V **Virtual Machines**  >  **vyberte virtuální počítače**, vyberte všechny počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**. Pokud si nejste schopni zobrazit nebo vybrat žádný konkrétní virtuální počítač, [Přečtěte si další informace](./vmware-azure-troubleshoot-replication.md) o řešení tohoto problému.
 10. V části **vlastnosti**  >  **Konfigurace vlastností** vyberte účet, který má procesový Server použít k automatické instalaci služby mobility na počítač.
 11. V **nastavení replikace**  >  **nakonfigurujte nastavení replikace** a ověřte, jestli je vybraná správná zásada replikace.
 12. Vyberte **Povolit replikaci**. Jakmile bude replikace virtuálního počítače povolená, nainstaluje Site Recovery automaticky službu mobility.

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86256341"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
@@ -20,10 +20,10 @@ Azure Portal poskytuje možnost Povolit reverzní proxy server při vytváření
 
 Pokud chcete konfigurovat reverzní proxy server, když [vytvoříte cluster pomocí Azure Portal](./service-fabric-cluster-creation-via-portal.md), ujistěte se, že jste provedli následující akce:
 
-1. V **kroku 2: konfigurace clusteru**v části **typ uzlu Konfigurace**vyberte **Povolit reverzní proxy server**.
+1. V **kroku 2: konfigurace clusteru** v části **typ uzlu Konfigurace** vyberte **Povolit reverzní proxy server**.
 
    ![Povolit reverzní proxy na portálu](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. Volitelné Ke konfiguraci zabezpečeného reverzního proxy serveru musíte nakonfigurovat certifikát TLS/SSL. V **kroku 3: zabezpečení**v části **Konfigurace nastavení zabezpečení clusteru**v části **typ konfigurace**vyberte možnost **vlastní**. Pak v části **certifikát SSL pro reverzní proxy**vyberte **Zahrnout certifikát SSL pro reverzní proxy** a zadejte podrobnosti o certifikátu.
+2. Volitelné Ke konfiguraci zabezpečeného reverzního proxy serveru musíte nakonfigurovat certifikát TLS/SSL. V **kroku 3: zabezpečení** v části **Konfigurace nastavení zabezpečení clusteru** v části **typ konfigurace** vyberte možnost **vlastní**. Pak v části **certifikát SSL pro reverzní proxy** vyberte **Zahrnout certifikát SSL pro reverzní proxy** a zadejte podrobnosti o certifikátu.
 
    ![Konfigurace zabezpečeného reverzního proxy serveru na portálu](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ Po vytvoření šablony Správce prostředků můžete povolit reverzní proxy p
         ...
     }
     ```
-3. Chcete-li nakonfigurovat certifikáty TLS/SSL na portu reverzního proxy serveru, přidejte certifikát do vlastnosti ***reverseProxyCertificate*** v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) **Microsoft. ServiceFabric/clustery** .
+3. Chcete-li nakonfigurovat certifikáty TLS/SSL na portu reverzního proxy serveru, přidejte certifikát do vlastnosti ***reverseProxyCertificate** _ v části _ *Microsoft. ServiceFabric/clustery* *  [typ prostředku](../azure-resource-manager/templates/template-syntax.md).
 
     ```json
     {
@@ -243,10 +243,10 @@ Pokud chcete server reverzního proxy zveřejnit jako samostatný cluster, bude 
 ### <a name="expose-the-reverse-proxy-using-azure-portal"></a>Zpřístupnění reverzního proxy serveru pomocí Azure Portal 
 
 1. Na Azure Portal klikněte na skupinu prostředků clusteru a pak klikněte na nástroj pro vyrovnávání zatížení pro váš cluster.
-2. Pokud chcete přidat sondu stavu pro port reverzního proxy serveru, klikněte v levém podokně okna nástroje pro vyrovnávání zatížení v části **Nastavení**na **sondy stavu**. Pak klikněte na tlačítko **Přidat** v horní části okna sondy stavu a zadejte podrobnosti o portu reverzního proxy serveru a klikněte na tlačítko **OK**. Ve výchozím nastavení je port reverzního proxy 19081, pokud jste ho nezměnili při vytváření clusteru.
+2. Pokud chcete přidat sondu stavu pro port reverzního proxy serveru, klikněte v levém podokně okna nástroje pro vyrovnávání zatížení v části **Nastavení** na **sondy stavu**. Pak klikněte na tlačítko **Přidat** v horní části okna sondy stavu a zadejte podrobnosti o portu reverzního proxy serveru a klikněte na tlačítko **OK**. Ve výchozím nastavení je port reverzního proxy 19081, pokud jste ho nezměnili při vytváření clusteru.
 
    ![Konfigurace testu stavu reverzního proxy](./media/service-fabric-reverseproxy-setup/lb-rp-probe.png)
-3. Pokud chcete přidat pravidlo Load Balancer pro vystavení portu reverzního proxy serveru, v levém podokně okna nástroje pro vyrovnávání zatížení v části **Nastavení**klikněte na **pravidla vyrovnávání zatížení**. Pak v horní části okna pravidla vyrovnávání zatížení klikněte na **Přidat** a zadejte podrobnosti pro port reverzního proxy serveru. Ujistěte se, že jste nastavili hodnotu **portu** na port, na který chcete, aby byl reverzní proxy server vystavený, hodnota **portu back-endu** na port, který jste nastavili, když jste povolili reverzní proxy, a hodnotu **sondy stavu** pro test stavu, který jste nakonfigurovali v předchozím kroku. Podle potřeby nastavte další pole a klikněte na tlačítko **OK**.
+3. Pokud chcete přidat pravidlo Load Balancer pro vystavení portu reverzního proxy serveru, v levém podokně okna nástroje pro vyrovnávání zatížení v části **Nastavení** klikněte na **pravidla vyrovnávání zatížení**. Pak v horní části okna pravidla vyrovnávání zatížení klikněte na **Přidat** a zadejte podrobnosti pro port reverzního proxy serveru. Ujistěte se, že jste nastavili hodnotu **portu** na port, na který chcete, aby byl reverzní proxy server vystavený, hodnota **portu back-endu** na port, který jste nastavili, když jste povolili reverzní proxy, a hodnotu **sondy stavu** pro test stavu, který jste nakonfigurovali v předchozím kroku. Podle potřeby nastavte další pole a klikněte na tlačítko **OK**.
 
    ![Konfigurace pravidla nástroje pro vyrovnávání zatížení pro reverzní proxy](./media/service-fabric-reverseproxy-setup/lb-rp-rule.png)
 

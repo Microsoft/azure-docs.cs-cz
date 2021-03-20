@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88212216"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazba pro Azure Functions
@@ -250,9 +250,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** |neuvedeno| Musí být nastaven na hodnotu `notificationHub` . |
-|**směr** |neuvedeno| Musí být nastaven na hodnotu `out` . | 
-|**Jméno** |neuvedeno| Název proměnné použitý v kódu funkce pro zprávu centra oznámení |
+|**textový** |Není k dispozici| Musí být nastaven na hodnotu `notificationHub` . |
+|**směr** |Není k dispozici| Musí být nastaven na hodnotu `out` . | 
+|**Jméno** |Není k dispozici| Název proměnné použitý v kódu funkce pro zprávu centra oznámení |
 |**tagExpression** |**TagExpression** | Výrazy značek umožňují určit, že oznámení budou doručena do sady zařízení, která jsou zaregistrovaná pro příjem oznámení, která odpovídají výrazu značky.  Další informace najdete v tématu [výrazy směrování a značek](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Název prostředku centra oznámení v Azure Portal. |
 |**vázán** | **ConnectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec Notification Hubs.  Připojovací řetězec musí být nastaven na hodnotu *DefaultFullSharedAccessSignature* vašeho centra oznámení. Viz [nastavení připojovacího řetězce](#connection-string-setup) dále v tomto článku.|
@@ -287,7 +287,7 @@ Chcete-li použít výstupní vazbu centra oznámení, je nutné nakonfigurovat 
 
 Konfigurace připojovacího řetězce pro existující centrum oznámení:
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do centra oznámení, zvolte **zásady přístupu**a klikněte na tlačítko Kopírovat vedle zásady **DefaultFullSharedAccessSignature** . Tím se do centra oznámení zkopíruje připojovací řetězec pro zásady *DefaultFullSharedAccessSignature* . Tento připojovací řetězec umožňuje, aby vaše funkce odesílala zprávy s oznámením do centra.
+1. V [Azure Portal](https://portal.azure.com)přejděte do centra oznámení, zvolte **zásady přístupu** a klikněte na tlačítko Kopírovat vedle zásady **DefaultFullSharedAccessSignature** . Tím se do centra oznámení zkopíruje připojovací řetězec pro zásady *DefaultFullSharedAccessSignature* . Tento připojovací řetězec umožňuje, aby vaše funkce odesílala zprávy s oznámením do centra.
     ![Zkopírování připojovacího řetězce centra oznámení](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
 1. V Azure Portal přejděte do aplikace Function App, zvolte **nastavení aplikace**, přidejte klíč, jako je například **MyHubConnectionString**, vložte zkopírované *DefaultFullSharedAccessSignature*  pro vaše centrum oznámení jako hodnotu a potom klikněte na **Uložit**.
 
@@ -297,7 +297,7 @@ Název tohoto nastavení aplikace je to, co se nachází v nastavení připojen�
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Odkaz |
+| Vazba | Reference |
 |---|---|
 | Centrum oznámení | [Provozní příručka](/rest/api/notificationhubs/) |
 

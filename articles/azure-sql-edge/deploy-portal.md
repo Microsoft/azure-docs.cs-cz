@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 5d7d232ada814d5d3c30e7b012c6289f847d641f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395083"
 ---
 # <a name="deploy-azure-sql-edge"></a>Nasazení Edge Azure SQL 
@@ -23,7 +23,7 @@ Azure SQL Edge je relační databázový stroj optimalizovaný pro nasazení IoT
 ## <a name="before-you-begin"></a>Než začnete
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+* Přihlaste se na [Azure Portal](https://portal.azure.com/).
 * Vytvořte [IoT Hub Azure](../iot-hub/iot-hub-create-through-portal.md).
 * Vytvořte [zařízení Azure IoT Edge](../iot-edge/how-to-install-iot-edge.md).
 
@@ -52,7 +52,7 @@ Azure Marketplace je tržiště aplikací a služeb online, kde můžete prochá
 
 4. Na stránce **nastavit moduly na zařízení:** klikněte v části **IoT Edge moduly** na modul Azure SQL Edge. Výchozí název modulu je nastavený na *AzureSQLEdge*. 
 
-5. V části *nastavení modulu* v okně **aktualizovat IoT Edge modul** zadejte požadované hodnoty pro *název IoT Edge modulu* , *zásady restartování* a *požadovaný stav*. 
+5. V části *nastavení modulu* v okně **aktualizovat IoT Edge modul** zadejte požadované hodnoty pro *název IoT Edge modulu*, *zásady restartování* a *požadovaný stav*. 
 
    > [!IMPORTANT]    
    > Neměňte ani neaktualizujte nastavení **identifikátoru URI image** v modulu.

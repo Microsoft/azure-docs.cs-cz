@@ -4,10 +4,10 @@ description: Naučte se vytvářet prostředí s více virtuálními počítači
 ms.topic: article
 ms.date: 08/12/2020
 ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88182404"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
@@ -62,8 +62,8 @@ Pro uspořádání šablon Azure Resource Manager v úložišti je potřeba prov
 
 Po vytvoření a konfiguraci úložiště ho můžete přidat do testovacího prostředí pomocí Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte testovací prostředí, které chcete.
 1. V podokně s **přehledem** testovacího prostředí vyberte **Konfigurace a zásady**.
 
@@ -97,9 +97,9 @@ Uživatelé testovacího prostředí mají ve výchozím nastavení roli **Čten
 
 Pokud chcete uživatelům testovacího prostředí poskytnout roli **přispěvatele** , aby mohli upravovat prostředky v jejich prostředích, postupujte podle následujících kroků:
 
-1. V podokně s **přehledem** [Azure Portal](https://portal.azure.com)v podokně Přehled testovacího prostředí vyberte **Konfigurace a zásady**a pak vyberte **Nastavení testovacího prostředí**.
+1. V podokně s **přehledem** [Azure Portal](https://portal.azure.com)v podokně Přehled testovacího prostředí vyberte **Konfigurace a zásady** a pak vyberte **Nastavení testovacího prostředí**.
 
-1. V podokně **Nastavení testovacího prostředí** vyberte **Přispěvatel**a pak vyberte **Uložit** a udělte uživatelům testovací oprávnění k zápisu.
+1. V podokně **Nastavení testovacího prostředí** vyberte **Přispěvatel** a pak vyberte **Uložit** a udělte uživatelům testovací oprávnění k zápisu.
 
    ![Konfigurace přístupových práv uživatele testovacího prostředí](./media/devtest-lab-create-environment-from-arm/config-access-rights.png)
 
@@ -109,9 +109,9 @@ V další části se seznámíte s vytvářením prostředí ze šablony Azure R
 
 Po přidání šablony Azure Resource Manager do testovacího prostředí mohou uživatelé testovacího prostředí vytvořit prostředí v Azure Portal pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 
 1. V seznamu cvičení vyberte testovací prostředí, které chcete.
 
@@ -125,7 +125,7 @@ Po přidání šablony Azure Resource Manager do testovacího prostředí mohou 
 
    Šablona Azure Resource Manager definuje zbývající část vstupních polí. Pokud šablona *azuredeploy.parameter.jsv* souboru definuje výchozí hodnoty, zobrazí vstupní pole tyto hodnoty.
 
-   Pro parametry typu *zabezpečený řetězec*můžete použít tajné kódy z Azure Key Vault. Další informace o ukládání tajných klíčů v trezoru klíčů a jejich použití při vytváření prostředků testovacího prostředí najdete [v tématu uložení tajných kódů v Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).  
+   Pro parametry typu *zabezpečený řetězec* můžete použít tajné kódy z Azure Key Vault. Další informace o ukládání tajných klíčů v trezoru klíčů a jejich použití při vytváření prostředků testovacího prostředí najdete [v tématu uložení tajných kódů v Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).  
 
    ![Přidat podokno](./media/devtest-lab-create-environment-from-arm/add.png)
 

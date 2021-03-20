@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: f84707e454a8b1f5d5947478fe65108a142a9757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88236314"
 ---
 # <a name="guidelines-for-table-design"></a>Pokyny pro návrh tabulek
@@ -22,10 +22,10 @@ Navrhování tabulek pro použití s tabulkovou službou Azure Storage se velmi 
 ## <a name="design-your-table-service-solution-to-be-read-efficient"></a>Navrhněte své řešení Table service, aby bylo možné je efektivně číst.
 
 * ***Návrh pro dotazování v aplikacích s vysokým oprávněním*** Když navrhujete tabulky, zamyslete se nad dotazy (zejména s citlivostí na latenci), kterou budete spouštět před tím, než si myslíte, jak budete entity aktualizovat. To obvykle vede k efektivnímu a výkonnému řešení.  
-* ***V dotazech zadejte jak PartitionKey, tak RowKey.*** *Dotazy na body* , jako jsou ty, jedná se o nejúčinnější dotazy služby Table.  
+* ***V dotazech zadejte jak PartitionKey, tak RowKey.** _ _Point dotazů * jako jsou to nejúčinnější dotazy služby Table Service.  
 * ***Zvažte uložení duplicitních kopií entit.*** Úložiště tabulek je levné, proto zvažte uložení stejné entity vícekrát (s různými klíči), čímž umožníte efektivnější dotazy.  
 * ***Zvažte denormalizaci vašich dat.*** Úložiště tabulek je levné, takže zvažte denormalizaci vašich dat. Můžete například uložit souhrnné entity, aby dotazy na agregovaná data měly jenom přístup k jedné entitě.  
-* ***Použijte hodnoty složených klíčů.*** Jedinými klíči jsou **PartitionKey** a **RowKey**. Použijte například hodnoty složeného klíče k povolení alternativních přístupových cest k entitám.  
+* ***Použijte hodnoty složených klíčů.** _ Jsou to jediné klíče _ *PartitionKey** a **RowKey**. Použijte například hodnoty složeného klíče k povolení alternativních přístupových cest k entitám.  
 * ***Použití projekce dotazu.*** Množství dat přenášených přes síť můžete snížit pomocí dotazů, které vyberou pouze pole, která potřebujete.  
 
 ## <a name="design-your-table-service-solution-to-be-write-efficient"></a>Návrh Table service řešení pro zápis  

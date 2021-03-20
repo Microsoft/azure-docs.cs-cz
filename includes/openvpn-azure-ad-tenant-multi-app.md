@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3236f9c60cb359349d96e93f674c3e278e44f1e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93375814"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. vytvoření tenanta Azure AD
@@ -31,7 +31,7 @@ Vytvořte tenanta Azure AD pomocí kroků v článku [Vytvoření nového tenant
 V tomto kroku vytvoříte dva uživatele klienta Azure AD: jeden globální účet správce a jeden hlavní uživatelský účet. Hlavní uživatelský účet se používá jako účet pro vložení hlavního serveru (účet služby). Když vytvoříte uživatelský účet tenanta Azure AD, upravíte roli adresáře pro typ uživatele, který chcete vytvořit. Postup v [tomto článku](../articles/active-directory/fundamentals/add-users-azure-active-directory.md) použijte k vytvoření alespoň dvou uživatelů pro vašeho TENANTA Azure AD. Nezapomeňte změnit **roli adresáře** , aby se vytvořily typy účtů:
 
 * Globální správce
-* Uživatel
+* User
 
 ## <a name="3-register-the-vpn-client"></a><a name="register-client"></a>3. Zaregistrujte klienta VPN.
 

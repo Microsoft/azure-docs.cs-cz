@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88212232"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps vazby pro Azure Functions 
@@ -137,10 +137,10 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-| **textový**| neuvedeno | Musí být nastavené na "mobilní".|
-| **směr**| neuvedeno |Musí být nastavené na "in"|
-| **Jméno**| neuvedeno | Název vstupního parametru v signatuře funkce.|
-|**tableName** |**Tabulky**|Název tabulky dat mobilní aplikace|
+| **textový**| Není k dispozici | Musí být nastavené na "mobilní".|
+| **směr**| Není k dispozici |Musí být nastavené na "in"|
+| **Jméno**| Není k dispozici | Název vstupního parametru v signatuře funkce.|
+|**Tabulky** |**TableName**|Název tabulky dat mobilní aplikace|
 | **id**| **Účet** | Identifikátor záznamu, který se má načíst Může být statický nebo založený na triggeru, který funkci vyvolá. Pokud například pro funkci použijete Trigger fronty, `"id": "{queueTrigger}"` použije se jako ID záznamu řetězcová hodnota zprávy Queue, která se má načíst.|
 |**vázán**|**Připojení**|Název nastavení aplikace, které má adresu URL mobilní aplikace Funkce používá tuto adresu URL k sestavení požadovaných operací REST v mobilní aplikaci. Ve své aplikaci Function App vytvořte nastavení aplikace, které obsahuje adresu URL mobilní aplikace, a potom zadejte název nastavení aplikace ve `connection` vlastnosti ve vstupní vazbě. Adresa URL vypadá jako `http://<appname>.azurewebsites.net` .
 |**apiKey**|**ApiKey**|Název nastavení aplikace, které má klíč rozhraní API mobilní aplikace. Pokud [implementujete klíč rozhraní API v mobilní aplikaci Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)nebo [implementujete klíč rozhraní API v mobilní aplikaci .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key), zadejte klíč rozhraní API. Klíč zadáte tak, že ve své aplikaci Function App vytvoříte nastavení aplikace, které obsahuje klíč rozhraní API, a potom `apiKey` do vstupní vazby přidáte vlastnost s názvem nastavení aplikace. |
@@ -295,10 +295,10 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-| **textový**| neuvedeno | Musí být nastavené na "mobilní".|
-| **směr**| neuvedeno |Musí být nastavené na out.|
-| **Jméno**| neuvedeno | Název výstupního parametru v podpisu funkce.|
-|**tableName** |**Tabulky**|Název tabulky dat mobilní aplikace|
+| **textový**| Není k dispozici | Musí být nastavené na "mobilní".|
+| **směr**| Není k dispozici |Musí být nastavené na out.|
+| **Jméno**| Není k dispozici | Název výstupního parametru v podpisu funkce.|
+|**Tabulky** |**TableName**|Název tabulky dat mobilní aplikace|
 |**vázán**|**MobileAppUriSetting**|Název nastavení aplikace, které má adresu URL mobilní aplikace Funkce používá tuto adresu URL k sestavení požadovaných operací REST v mobilní aplikaci. Ve své aplikaci Function App vytvořte nastavení aplikace, které obsahuje adresu URL mobilní aplikace, a potom zadejte název nastavení aplikace ve `connection` vlastnosti ve vstupní vazbě. Adresa URL vypadá jako `http://<appname>.azurewebsites.net` .
 |**apiKey**|**ApiKeySetting**|Název nastavení aplikace, které má klíč rozhraní API mobilní aplikace. Pokud [implementujete klíč rozhraní API v back-endu mobilní aplikace Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)nebo implementujete klíč rozhraní API [do back-endu mobilní aplikace .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key), zadejte klíč rozhraní API. Klíč zadáte tak, že ve své aplikaci Function App vytvoříte nastavení aplikace, které obsahuje klíč rozhraní API, a potom `apiKey` do vstupní vazby přidáte vlastnost s názvem nastavení aplikace. |
 

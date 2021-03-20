@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997779"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Možnosti přihlášení uživatele Azure AD Connect
@@ -155,7 +155,7 @@ Následující informace vám předpokládají, že máme obavy s příponou UPN
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Expresní nastavení/synchronizace hodnot hash hesel
 
-| State | Vliv na uživatelské prostředí Azure pro přihlašování |
+| Stav | Vliv na uživatelské prostředí Azure pro přihlašování |
 |:---:|:--- |
 | Nepřidáno |V tomto případě se v adresáři Azure AD nepřidala žádná vlastní doména pro contoso.com. Uživatelé, kteří mají místní uživatelské jméno (UPN) s příponou, nebudou @contoso.com moct používat svůj místní hlavní název uživatele (UPN), aby se mohli přihlásit k Azure. Místo toho budou muset použít nový hlavní název uživatele, který jim poskytla služba Azure AD, a to přidáním přípony pro výchozí adresář služby Azure AD. Pokud například provádíte synchronizaci uživatelů s adresářem Azure AD azurecontoso.onmicrosoft.com, bude místnímu uživateli user@contoso.com přiřazen hlavní název uživatele (UPN) user@azurecontoso.onmicrosoft.com . |
 | Neověřeno |V tomto případě máme vlastní doménu contoso.com, která se přidá do adresáře Azure AD. Ale zatím se neověřuje. Pokud budete pokračovat s synchronizací uživatelů bez ověřování domény, pak se uživatelům přiřadí nový hlavní název uživatele (UPN) Azure AD, stejně jako ve scénáři "nepřidáno". |
@@ -166,7 +166,7 @@ Nemůžete vytvořit federaci s výchozí doménou. onmicrosoft.com ve službě 
 
 Pokud jste vybrali možnost přihlašování uživatele v rámci **AD FS**, musíte mít vlastní doménu, abyste mohli pokračovat v vytváření federace ve službě Azure AD. Pro naši diskuzi to znamená, že by měl být do adresáře služby Azure AD přidán vlastní contoso.com domény.
 
-| State | Vliv na uživatelské prostředí Azure pro přihlašování |
+| Stav | Vliv na uživatelské prostředí Azure pro přihlašování |
 |:---:|:--- |
 | Nepřidáno |V takovém případě Azure AD Connect nenalezl odpovídající vlastní doménu pro příponu UPN contoso.com v adresáři služby Azure AD. Pokud potřebujete, aby se uživatelé přihlásili pomocí AD FS s místním hlavním názvem uživatele (například), musíte přidat vlastní doménu contoso.com user@contoso.com . |
 | Neověřeno |V takovém případě vás Azure AD Connect vyzve s příslušnými podrobnostmi o tom, jak můžete doménu ověřit v pozdější fázi. |

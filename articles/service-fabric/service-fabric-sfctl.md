@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86257049"
 ---
 # <a name="sfctl"></a>sfctl
@@ -24,11 +24,11 @@ Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v t�
 | [chaos](service-fabric-sfctl-chaos.md) | Spuštění, zastavení a hlášení služby chaos test Service. |
 | [služby](service-fabric-sfctl-cluster.md) | Umožňuje vybrat, spravovat a provozovat clustery Service Fabric. |
 | [sestavit](service-fabric-sfctl-compose.md) | Vytvářejte, odstraňujte a spravujte aplikace Docker Compose. |
-| [container (kontejner)](service-fabric-sfctl-container.md)  | Spusťte příkazy související s kontejnerem na uzlu clusteru. |
+| [vnitřního](service-fabric-sfctl-container.md) | Spusťte příkazy související s kontejnerem na uzlu clusteru. |
 | [událost](service-fabric-sfctl-events.md) | Načtěte události z úložiště událostí (Pokud je už nainstalovaná služba Eventstoru). |
-| [dojde](service-fabric-sfctl-is.md) | Dotazování a posílání příkazů do služby infrastruktury |
+| [is](service-fabric-sfctl-is.md) | Dotazování a posílání příkazů do služby infrastruktury |
 | [dílce](service-fabric-sfctl-mesh.md) | Umožňuje odstraňovat a spravovat aplikace Service Fabric sítě. |
-| [uzlu](service-fabric-sfctl-node.md) | Spravujte uzly, které tvoří cluster. |
+| [node](service-fabric-sfctl-node.md) | Spravujte uzly, které tvoří cluster. |
 | [rozdělován](service-fabric-sfctl-partition.md) | Dotazování a Správa oddílů pro libovolnou službu. |
 | [majetek](service-fabric-sfctl-property.md) | Uložení a dotazování vlastností pod názvy Service Fabric. |
 | [změněno](service-fabric-sfctl-replica.md) | Spravovat repliky patřící k oddílům služeb. |

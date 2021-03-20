@@ -10,10 +10,10 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
 ms.openlocfilehash: b0536a152797d17cba0930b3a142a7fb92eaf5ea
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98685153"
 ---
 # <a name="supported-data-types"></a>Podporované datové typy
@@ -26,7 +26,7 @@ Následující tabulka uvádí typy dat podporované nástrojem Azure Time Serie
 | **datetime** | Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Vyjádřeno ve formátu [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) . Vlastnosti DateTime jsou vždy uloženy ve formátu UTC. Posuny časového pásma, jsou-li správně formátovány, budou aplikovány a pak vracející hodnotu uloženou v UTC. V [této](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) části najdete další informace o vlastnosti časového razítka prostředí a posunech data a času. | `"eventProcessedLocalTime": "2020-03-20T09:03:32.8301668Z"` |  Pokud je "eventProcessedLocalTime" časové razítko zdroje událostí: `$event.$ts` . Pokud se jedná o jinou vlastnost JSON: `$event.eventProcessedLocalTime.DateTime` nebo `$event['eventProcessedLocalTime'].DateTime` | `eventProcessedLocalTime_datetime`
 | **double** | 64-bit číslo s dvojitou přesností  | `"value": 31.0482941` | `$event.value.Double` nebo `$event['value'].Double` |  `value_double`
 | **long** | Podepsané 64 celé číslo se znaménkem  | `"value" : 31` | `$event.value.Long` nebo `$event['value'].Long` |  `value_long`
-| **řetezce** | Textové hodnoty musí obsahovat platnou znakovou sadu UTF-8. Hodnoty null a prázdné řetězce jsou ošetřeny stejným způsobem. |  `"site": "DIM_MLGGG"`| `$event.site.String` nebo `$event['site'].String`| `site_string`
+| **řetězec** | Textové hodnoty musí obsahovat platnou znakovou sadu UTF-8. Hodnoty null a prázdné řetězce jsou ošetřeny stejným způsobem. |  `"site": "DIM_MLGGG"`| `$event.site.String` nebo `$event['site'].String`| `site_string`
 | **dynamic** | Komplexní (neprimitivní) typ tvořený buď polem, nebo kontejnerem objektů a objektů (Dictionary). V současné době se jako dynamická budou ukládat jenom pole dokument JSON primitivních hodnot nebo polí objektů, které neobsahují ID TS nebo vlastnost Timestamp (y). Přečtěte si tento [článek](./concepts-json-flattening-escaping-rules.md) , abyste pochopili, jak budou objekty shrnuty, a pole může být nekumulativní. Vlastnosti datové části uložené jako tento typ jsou přístupné jenom výběrem `Explore Events` v průzkumníkovi Time Series Insights k zobrazení nezpracovaných událostí nebo prostřednictvím [`GetEvents`](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) rozhraní API pro analýzu na straně klienta. |  `"values": "[197, 194, 189, 188]"` | Odkazování na dynamické typy ve výrazu časové řady ještě není podporováno. | `values_dynamic`
 
 > [!NOTE]

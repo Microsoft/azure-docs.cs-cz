@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98684051"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Vyžádat data zvýšení oprávnění pomocí služby zvýšení úrovně Azure Maps (Preview)
@@ -24,7 +24,7 @@ ms.locfileid: "98684051"
 
 [Služba zvýšení oprávnění](/rest/api/maps/elevation) Azure Maps poskytuje rozhraní API pro data zvýšení úrovně dotazu kdekoli na povrchu země. Můžete požadovat ukázková data zvýšení úrovně podél cest, v rámci definovaného ohraničujícího pole nebo v určitých souřadnicích. K načtení dat zvýšení úrovně ve formátu dlaždic můžete také použít [rozhraní vykreslování dlaždice pro vykreslení v2 – získat dlaždici mapy](/rest/api/maps/renderv2) . Dlaždice se doručují ve formátu Informat Raster. V tomto článku se dozvíte, jak používat službu zvýšení úrovně Azure Maps a rozhraní API pro dlaždici získat mapu pro vyžádání dat zvýšení úrovně. Data zvýšení oprávnění lze požadovat ve formátech informated JSON i intiff.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvoření účtu Azure Maps v cenové úrovni S1](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.

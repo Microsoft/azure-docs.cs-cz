@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792068"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Nasazení služby dělení a slučování pro přesun dat mezi databázemi horizontálně dělené
@@ -39,9 +39,9 @@ Soubory jsou umístěny v adresáři s názvem **Microsoft. Azure. SqlDatabase. 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-1. Vytvořte databázi Azure SQL Database, která bude použita jako databáze stavu rozdělení a sloučení. Přejděte na web [Azure Portal](https://portal.azure.com). Vytvoří nový **SQL Database** . Zadejte název databáze a vytvořte nového správce a heslo. Nezapomeňte si název a heslo zaznamenat pro pozdější použití.
+1. Vytvořte databázi Azure SQL Database, která bude použita jako databáze stavu rozdělení a sloučení. Přejděte na [Azure Portal](https://portal.azure.com). Vytvoří nový **SQL Database**. Zadejte název databáze a vytvořte nového správce a heslo. Nezapomeňte si název a heslo zaznamenat pro pozdější použití.
 
-1. Ujistěte se, že váš server umožňuje připojení služeb Azure. Na portálu v **nastavení brány firewall** ověřte, že nastavení **povolený přístup ke službám Azure** je nastavené na **zapnuto** . Klikněte na ikonu Uložit.
+1. Ujistěte se, že váš server umožňuje připojení služeb Azure. Na portálu v **nastavení brány firewall** ověřte, že nastavení **povolený přístup ke službám Azure** je nastavené na **zapnuto**. Klikněte na ikonu Uložit.
 
 1. Vytvořte účet Azure Storage pro výstup diagnostiky.
 
@@ -51,7 +51,7 @@ Soubory jsou umístěny v adresáři s názvem **Microsoft. Azure. SqlDatabase. 
 
 ### <a name="split-merge-service-configuration"></a>Konfigurace služby Split-Merge
 
-1. Ve složce, do které jste stáhli Split-Merge sestavení, vytvořte kopii souboru *ServiceConfiguration. template. cscfg* , který byl dodán společně s *SplitMergeService. cspkg* a přejmenujte ho *ServiceConfiguration. cscfg* .
+1. Ve složce, do které jste stáhli Split-Merge sestavení, vytvořte kopii souboru *ServiceConfiguration. template. cscfg* , který byl dodán společně s *SplitMergeService. cspkg* a přejmenujte ho *ServiceConfiguration. cscfg*.
 
 1. Otevřete *ServiceConfiguration. cscfg* v textovém editoru, jako je například Visual Studio, který ověřuje vstupy, jako je například formát kryptografických otisků certifikátů.
 
@@ -99,17 +99,17 @@ Spusťte následující příkaz ze stejného okna, ve kterém bylo provedeno Ma
 
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>Importovat klientský certifikát do osobního úložiště
 
-1. V Průzkumníku Windows poklikejte na *mycert. pfx* .
-2. V **Průvodci importem certifikátu** vyberte **aktuální uživatel** a klikněte na **Další** .
-3. Potvrďte cestu k souboru a klikněte na tlačítko **Další** .
-4. Zadejte heslo, nechte zaškrtnuté políčko **Zahrnout všechny rozšířené vlastnosti** a klikněte na **Další** .
-5. Ponechte **automaticky vybrat úložiště certifikátů [...]** a klikněte na **Další** .
-6. Klikněte na **Dokončit** a pak na **OK** .
+1. V Průzkumníku Windows poklikejte na *mycert. pfx*.
+2. V **Průvodci importem certifikátu** vyberte **aktuální uživatel** a klikněte na **Další**.
+3. Potvrďte cestu k souboru a klikněte na tlačítko **Další**.
+4. Zadejte heslo, nechte zaškrtnuté políčko **Zahrnout všechny rozšířené vlastnosti** a klikněte na **Další**.
+5. Ponechte **automaticky vybrat úložiště certifikátů [...]** a klikněte na **Další**.
+6. Klikněte na **Dokončit** a pak na **OK**.
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Nahrání souboru PFX do cloudové služby
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
-2. Vyberte **Cloud Services** .
+1. Přejděte na [Azure Portal](https://portal.azure.com).
+2. Vyberte **Cloud Services**.
 3. Vyberte cloudovou službu, kterou jste vytvořili výše pro službu dělení a sloučení.
 4. V horní nabídce klikněte na **certifikáty** .
 5. Klikněte na **nahrát** na dolním panelu.
@@ -143,8 +143,8 @@ Upozorňujeme, že pro produkční nasazení by se měly pro certifikační auto
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. Vyberte cloudovou službu, kterou jste vytvořili dříve.
-3. Klikněte na **Přehled** .
-4. Zvolte testovací prostředí a pak klikněte na **nahrát** .
+3. Klikněte na **Přehled**.
+4. Zvolte testovací prostředí a pak klikněte na **nahrát**.
 5. V dialogovém okně zadejte popisek nasazení. Pro "balíček" i "konfigurace" klikněte na "z místního" a vyberte soubor *SplitMergeService. cspkg* a soubor. cscfg, který jste nakonfigurovali dříve.
 6. Zajistěte, aby se zaškrtávací políčko s názvem nasadit i v případě, že je zaškrtnuta **jedna nebo více rolí, které obsahují jednu instanci** .
 7. Spusťte nasazení kliknutím na tlačítko se značkou dole vpravo. Očekává se, že dokončení může trvat několik minut.
@@ -161,7 +161,7 @@ Pokud se vaše role pracovního procesu nepodaří přejít do režimu online, a
 
    `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<user>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-- Zajistěte, aby název serveru nezačínal na **https://** .
+- Zajistěte, aby název serveru nezačínal na **https://**.
 - Ujistěte se, že váš server umožňuje připojení služeb Azure. Pokud to chcete provést, otevřete databázi na portálu a ujistěte se, že nastavení **Povolit přístup ke službám Azure** je nastaveno na * * zapnuto * * * *.
 
 ## <a name="test-the-service-deployment"></a>Testování nasazení služby
@@ -324,14 +324,14 @@ Aby bylo možné provést operaci dělení na sloučení, je nutné deklarovat t
 1. Pro každou tabulku horizontálně dělené vytvořte objekt **ShardedTableInfo** popisující název nadřazeného schématu tabulky (volitelné, výchozí nastavení je "dbo"), název tabulky a název sloupce v tabulce, která obsahuje klíč horizontálního dělení.
 2. Pro každou referenční tabulku vytvořte objekt **ReferenceTableInfo** popisující název nadřazeného schématu tabulky (volitelné, výchozí nastavení je "dbo") a název tabulky.
 3. Přidejte výše uvedené objekty TableInfo do nového objektu **SchemaInfo** .
-4. Získejte odkaz na objekt **ShardMapManager** a zavolejte **GetSchemaInfoCollection** .
+4. Získejte odkaz na objekt **ShardMapManager** a zavolejte **GetSchemaInfoCollection**.
 5. Přidejte **SchemaInfo** do **SchemaInfoCollection** a poskytněte název mapy horizontálních oddílů.
 
 Příkladem toho lze zobrazit ve skriptu SetupSampleSplitMergeEnvironment.ps1.
 
 Služba Split-Merge nevytváří cílovou databázi (nebo schéma pro žádné tabulky v databázi) za vás. Před odesláním žádosti službě je nutné je předem vytvořit.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Při spouštění ukázkových skriptů PowerShellu se může zobrazit následující zpráva:
 
@@ -343,7 +343,7 @@ Pokud nemůžete odesílat žádosti, může se zobrazit tato:
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-V takovém případě Ověřte konfigurační soubor, konkrétně nastavení pro **WorkerRoleSynchronizationStorageAccountConnectionString** . Tato chyba obvykle indikuje, že role pracovního procesu nemohla úspěšně inicializovat databázi metadat při prvním použití.
+V takovém případě Ověřte konfigurační soubor, konkrétně nastavení pro **WorkerRoleSynchronizationStorageAccountConnectionString**. Tato chyba obvykle indikuje, že role pracovního procesu nemohla úspěšně inicializovat databázi metadat při prvním použití.
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
 

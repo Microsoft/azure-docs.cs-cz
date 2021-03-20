@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3afeadff71bd373354b891bd6690d94d28fc0805
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92096347"
 ---
 # <a name="custom-installation-of-azure-active-directory-connect"></a>Vlastní instalace Azure Active Directory Connect
@@ -46,10 +46,10 @@ Při instalaci služeb synchronizace můžete nechat nevybranou možnost volitel
 
 ![Snímek obrazovky s volitelnými volbami pro požadované součásti instalace v Azure AD Connect.](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| Volitelná konfigurace | Popis |
+| Volitelná konfigurace | Description |
 | --- | --- |
 |Zadat vlastní umístění instalace| Umožňuje změnit výchozí instalační cestu pro Azure AD Connect.|
-| Použít existující server SQL Server |Umožňuje zadat název SQL Server a název instance. Tuto možnost vyberte, pokud již máte databázový server, který chcete použít. Do pole **název instance**zadejte název instance, čárku a číslo portu, pokud vaše instance SQL Server nemá povoleno procházení.  Pak zadejte název databáze Azure AD Connect.  Vaše oprávnění SQL určují, jestli je možné vytvořit novou databázi, nebo že správce SQL musí databázi vytvořit předem.  Pokud máte oprávnění správce SQL Server (SA), přečtěte si téma [instalace Azure AD Connect pomocí existující databáze](how-to-connect-install-existing-database.md).  Pokud máte delegovaná oprávnění (DBO), přečtěte si téma [instalace Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md). |
+| Použít existující server SQL Server |Umožňuje zadat název SQL Server a název instance. Tuto možnost vyberte, pokud již máte databázový server, který chcete použít. Do pole **název instance** zadejte název instance, čárku a číslo portu, pokud vaše instance SQL Server nemá povoleno procházení.  Pak zadejte název databáze Azure AD Connect.  Vaše oprávnění SQL určují, jestli je možné vytvořit novou databázi, nebo že správce SQL musí databázi vytvořit předem.  Pokud máte oprávnění správce SQL Server (SA), přečtěte si téma [instalace Azure AD Connect pomocí existující databáze](how-to-connect-install-existing-database.md).  Pokud máte delegovaná oprávnění (DBO), přečtěte si téma [instalace Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md). |
 | Použít existující účet služby |Ve výchozím nastavení Azure AD Connect poskytuje účet virtuální služby pro synchronizační služby. Pokud používáte vzdálenou instanci SQL Server nebo používáte proxy server, který vyžaduje ověření, můžete použít *účet spravované služby* nebo účet služby chráněný heslem v doméně. V těchto případech zadejte účet, který chcete použít. Pokud chcete instalaci spustit, musíte být v SQL serveru SA, abyste mohli vytvořit přihlašovací údaje pro účet služby. Další informace najdete v tématu [Azure AD Connect účty a oprávnění](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>Pomocí nejnovějšího sestavení může správce SQL nyní zřídit databázi mimo IP síť. Správce Azure AD Connect ho může nainstalovat s právy vlastníka databáze.  Další informace najdete v tématu [instalace Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md).|
 | Zadat vlastní skupiny pro synchronizaci |Ve výchozím nastavení, když jsou nainstalovány synchronizační služby, Azure AD Connect vytvoří čtyři skupiny, které jsou místní pro server. Tyto skupiny jsou správci, operátoři, procházení a resetování hesla. Tady můžete zadat vlastní skupiny. Skupiny musí být na serveru místní. Nemůžou být umístěné v doméně. |
 |Importovat nastavení synchronizace (Preview)|Umožňuje importovat nastavení z jiných verzí Azure AD Connect.  Další informace najdete v tématu [Import a export nastavení konfigurace Azure AD Connect](how-to-connect-import-export-config.md).|
@@ -59,7 +59,7 @@ Po instalaci požadovaných součástí vyberte metodu jednotného přihlašová
 
 ![Snímek obrazovky zobrazující stránku přihlášení uživatele Je vybraná možnost synchronizace hodnot hash hesel.](./media/how-to-connect-install-custom/usersignin4.png)
 
-| Možnost jednotného přihlašování | Popis |
+| Možnost jednotného přihlašování | Description |
 | --- | --- |
 | Synchronizace hodnot hash hesel |Uživatelé se mohou přihlásit ke cloudovým službám Microsoftu, jako je například Microsoft 365, pomocí stejného hesla, které používají ve své místní síti. Uživatelská hesla se synchronizují do Azure AD jako hodnota hash hesla. Ověřování probíhá v cloudu. Další informace najdete v tématu [synchronizace hodnot hash hesel](how-to-connect-password-hash-synchronization.md). |
 |Předávací ověřování|Uživatelé se mohou přihlásit ke cloudovým službám Microsoftu, jako je například Microsoft 365, pomocí stejného hesla, které používají ve své místní síti.  Hesla uživatelů se ověřují pomocí předávání do místního řadiče domény služby Active Directory.
@@ -92,7 +92,7 @@ Pokud se chcete připojit k Active Directory Domain Services (Azure služba AD D
 
 ![Snímek obrazovky, na kterém se zobrazuje stránka "připojit adresáře"](./media/how-to-connect-install-custom/connectdir01.png)
 
-Po zadání názvu doménové struktury a výběru  **Přidat adresář**se zobrazí okno. Následující tabulka popisuje vaše možnosti.
+Po zadání názvu doménové struktury a výběru  **Přidat adresář** se zobrazí okno. Následující tabulka popisuje vaše možnosti.
 
 | Možnost | Popis |
 | --- | --- |
@@ -205,7 +205,7 @@ Na další stránce můžete vybrat volitelné funkce pro váš scénář.
 
 
 
-| Volitelné funkce | Popis |
+| Volitelné funkce | Description |
 | --- | --- |
 | Hybridní nasazení Exchange |Funkce hybridního nasazení systému Exchange umožňuje souběžnou existenci poštovních schránek Exchange místních i v Microsoft 365. Azure AD Connect synchronizuje konkrétní sadu [atributů](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) z Azure AD zpátky do místního adresáře. |
 | Veřejné složky pošty Exchange | Funkce veřejné složky pošty Exchange umožňuje synchronizovat objekty veřejné složky s povolenými e-maily z místní instance služby Active Directory do Azure AD. |
@@ -260,7 +260,7 @@ V počítači, který má nástroje pro správu Zásady skupiny:
 
 1.  Otevřete Zásady skupiny nástroje pro správu.
 2.  Upravte zásady skupiny, které se použijí pro všechny uživatele. Například výchozí zásada domény.
-3.  Přejít na **konfiguraci uživatele**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**  >  Stránka zabezpečení**ovládacích panelů Internetu**aplikace Internet Explorer  >  **Security Page**. Pak vyberte **seznam přiřazení lokality k zóně**.
+3.  Přejít na **konfiguraci uživatele**  >  **šablony pro správu**  >  **součásti systému Windows**  >    >  Stránka zabezpečení **ovládacích panelů Internetu** aplikace Internet Explorer  >  . Pak vyberte **seznam přiřazení lokality k zóně**.
 4.  Povolte tuto zásadu. Potom v dialogovém okně zadejte název `https://autologon.microsoftazuread-sso.com` a hodnotu hodnoty `1` . Instalační program by měl vypadat jako na následujícím obrázku.
   
     ![Snímek obrazovky zobrazující zóny intranetu](./media/how-to-connect-install-custom/sitezone.png)

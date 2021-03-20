@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793105"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Nasazení spravované instance Azure SQL do fondu instancí
@@ -30,16 +30,16 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 |Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
-|Vytvoření fondu instancí|Ne|Ano|
-|Aktualizace fondu instancí (omezený počet vlastností)|Ne |Ano |
-|Ověření využití fondu instancí a vlastností|Ne|Ano |
-|Odstranění fondu instancí|Ne|Ano|
-|Vytvoření spravované instance v rámci fondu instancí|Ne|Ano|
-|Aktualizace využití prostředků pro spravovanou instanci|Ano |Ano|
-|Zkontroluje využití a vlastnosti spravované instance.|Ano|Ano|
-|Odstranění spravované instance z fondu|Ano|Ano|
-|Vytvoření databáze v instanci v rámci fondu|Ano|Ano|
-|Odstranění databáze z spravované instance SQL|Ano|Ano|
+|Vytvoření fondu instancí|No|Yes|
+|Aktualizace fondu instancí (omezený počet vlastností)|No |Yes |
+|Ověření využití fondu instancí a vlastností|No|Yes |
+|Odstranění fondu instancí|No|Yes|
+|Vytvoření spravované instance v rámci fondu instancí|No|Yes|
+|Aktualizace využití prostředků pro spravovanou instanci|Yes |Yes|
+|Zkontroluje využití a vlastnosti spravované instance.|Yes|Yes|
+|Odstranění spravované instance z fondu|Yes|Yes|
+|Vytvoření databáze v instanci v rámci fondu|Yes|Yes|
+|Odstranění databáze z spravované instance SQL|Yes|Yes|
 
 Dostupné [Příkazy prostředí PowerShell](/powershell/module/az.sql/):
 

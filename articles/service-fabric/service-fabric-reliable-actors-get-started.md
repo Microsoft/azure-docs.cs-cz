@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 225ccb67153a33ed47af68ebb1549dce37426278
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573457"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
@@ -44,15 +44,15 @@ Vytvořený projekt zobrazuje následující strukturu:
 
 * **Projekt rozhraní (HelloWorld. Interfaces)**. Tento projekt obsahuje definici rozhraní objektu actor. Rozhraní objektu actor lze definovat v jakémkoli projektu s libovolným názvem.  Rozhraní definuje kontrakt objektu actor, který je sdílen implementací objektu actor, a klienty, kteří volají objekt actor.  Vzhledem k tomu, že klientské projekty mohou být na něm závislé, obvykle má smysl ho definovat v sestavení, které je odděleno od implementace objektu actor.
 
-* **Projekt služby objektu actor (HelloWorld)**. Tento projekt definuje službu Service Fabric, která bude hostovat objekt actor. Obsahuje implementaci objektu actor, *HelloWorld.cs*. Implementace objektu actor je třída, která je odvozena od základního typu `Actor` a implementuje rozhraní definovaná v projektu *MyActor. Interfaces* . Třída objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instanci a `ActorId` předává je do základní `Actor` třídy.
+* **Projekt služby objektu actor (HelloWorld)**. Tento projekt definuje službu Service Fabric, která bude hostovat objekt actor. Obsahuje implementaci objektu actor, *HelloWorld. cs*. Implementace objektu actor je třída, která je odvozena od základního typu `Actor` a implementuje rozhraní definovaná v projektu *MyActor. Interfaces* . Třída objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instanci a `ActorId` předává je do základní `Actor` třídy.
     
-    Tento projekt obsahuje také *program.cs*, který registruje třídy Actor pomocí modulu runtime Service Fabric pomocí `ActorRuntime.RegisterActorAsync<T>()` . `HelloWorld`Třída je již zaregistrována. Všechny další implementace objektu actor přidané do projektu musí být také registrovány v `Main()` metodě.
+    Tento projekt také obsahuje *program. cs*, který registruje třídy objektu actor pomocí modulu runtime Service Fabric pomocí `ActorRuntime.RegisterActorAsync<T>()` . `HelloWorld`Třída je již zaregistrována. Všechny další implementace objektu actor přidané do projektu musí být také registrovány v `Main()` metodě.
 
 ## <a name="customize-the-helloworld-actor"></a>Přizpůsobení objektu actor Hello
 
 Šablona projektu definuje některé metody v `IHelloWorld` rozhraní a implementuje je v `HelloWorld` implementaci objektu actor.  Nahraďte tyto metody, aby služba objektu actor vrátila jednoduchý řetězec "Hello World".
 
-V projektu *HelloWorld. Interfaces* v souboru *IHelloWorld.cs* Nahraďte definici rozhraní následujícím způsobem:
+V projektu *HelloWorld. Interfaces* v souboru *IHelloWorld. cs* Nahraďte definici rozhraní následujícím způsobem:
 
 ```csharp
 public interface IHelloWorld : IActor
@@ -61,7 +61,7 @@ public interface IHelloWorld : IActor
 }
 ```
 
-V projektu **HelloWorld** v **HelloWorld.cs** nahraďte celou definici třídy následujícím způsobem:
+V projektu **HelloWorld** v souboru **HelloWorld. cs** nahraďte celou definici třídy následujícím způsobem:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -110,7 +110,7 @@ Vytvořte jednoduchou konzolovou aplikaci pro volání služby objektu actor.
     
     ![Přidat odkaz – dialogové okno][7]
 
-6. V projektu ActorClient nahraďte celý obsah *program.cs* následujícím kódem:
+6. V projektu ActorClient nahraďte celý obsah *programu. cs* následujícím kódem:
     
     ```csharp
     using System;

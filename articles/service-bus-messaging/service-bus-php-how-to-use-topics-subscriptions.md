@@ -5,10 +5,10 @@ ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88066198"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Rychlý Start: jak používat Service Bus témata a odběry pomocí PHP
@@ -88,7 +88,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Kde `Endpoint` je obvykle formát `https://[yourNamespace].servicebus.windows.net` .
 
-Chcete-li vytvořit libovolného klienta služby Azure, musíte použít `ServicesBuilder` třídu. Máte následující možnosti:
+Chcete-li vytvořit libovolného klienta služby Azure, musíte použít `ServicesBuilder` třídu. Další možnosti:
 
 * Předání připojovacího řetězce přímo do něj.
 * Použijte **CloudConfigurationManager (ccm)** pro kontrolu několika externích zdrojů pro připojovací řetězec:
