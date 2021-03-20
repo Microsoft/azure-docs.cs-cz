@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: 00dadf8a91b7ed01ab9f91933d296744305a95af
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518802"
 ---
 # <a name="face-recognition-concepts"></a>Koncepce rozpoznávání obličeje
@@ -25,12 +25,12 @@ V tomto článku se dozvíte o konceptech ověřování, hledání podobných, s
 
 Operace rozpoznávání používají hlavně následující datové struktury. Tyto objekty jsou uložené v cloudu a můžou na ně odkazovat řetězce ID. Řetězce ID jsou vždycky jedinečné v rámci předplatného. Pole názvů je možné duplikovat.
 
-|Název|Popis|
+|Název|Description|
 |:--|:--|
 |DetectedFace| Tato reprezentace jedné plochy je načítána operací [detekce obličeje](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) . Jeho ID vyprší 24 hodin po jeho vytvoření.|
 |PersistedFace| Když se do skupiny přidají objekty DetectedFace, jako je například FaceList nebo person, stanou se objekty PersistedFace. Můžete je kdykoli [načíst](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) a nemusíte vypršet jeho platnost.|
 |[FaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b) nebo [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)| Tato datová struktura je seznam roztříděných PersistedFace objektů. FaceList má jedinečné ID, řetězec názvu a volitelně uživatelský Datový řetězec.|
-|[Osoba](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| Tato datová struktura je seznam objektů PersistedFace, které patří stejné osobě. Má jedinečné ID, řetězec názvu a volitelně uživatelský Datový řetězec.|
+|[Person (Osoba)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| Tato datová struktura je seznam objektů PersistedFace, které patří stejné osobě. Má jedinečné ID, řetězec názvu a volitelně uživatelský Datový řetězec.|
 |[Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) nebo [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)| Tato datová struktura je seznam objektů osob. Má jedinečné ID, řetězec názvu a volitelně uživatelský Datový řetězec. Předtím, než se dá použít při operacích rozpoznávání, musí být [školená](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) osoba.|
 
 ## <a name="recognition-operations"></a>Operace rozpoznávání

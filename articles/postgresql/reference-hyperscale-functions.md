@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026229"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Funkce v rozhraní Citus API pro škálování na více systému ()
@@ -30,7 +30,7 @@ Funkce vytvořit \_ distribuovanou \_ tabulku () se používá k definování di
 
 Tato funkce nahradí využití hlavní \_ tabulky Create \_ Distributed \_ Table () následovanou hlavním \_ vytvořením \_ pracovního procesu \_ horizontálních oddílů ().
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název tabulky:** název tabulky, která musí být distribuována.
 
@@ -64,7 +64,7 @@ SELECT create_distributed_table('github_events', 'repo_id',
 
 Funkce vytvořit \_ referenční \_ tabulku () se používá k definování malého odkazu nebo tabulky dimenzí. Tato funkce přijímá název tabulky a vytvoří distribuovanou tabulku s pouze jedním horizontálních oddílů, která se replikuje do všech pracovních uzlů.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název tabulky:** název malé dimenze nebo referenční tabulky, která musí být distribuována.
 
@@ -84,7 +84,7 @@ SELECT create_reference_table('nation');
 
 Funkce upgradu \_ na \_ referenční \_ tabulku () převezme existující distribuovanou tabulku, která má horizontálních oddílů počet 1, a upgraduje ji tak, aby byla rozpoznanou referenční tabulkou. Po volání této funkce bude tabulka obsahovat, jako kdyby byla vytvořena pomocí [create_reference_table](#create_reference_table).
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název tabulky:** název distribuované tabulky (s horizontálních oddílů Count = 1), která bude distribuována jako referenční tabulka.
 
@@ -106,7 +106,7 @@ SELECT upgrade_to_reference_table('nation');
 
 Tabulky se stejným umístěním by se měly provádět v době distribuce v tabulce `colocate_with` , a to prostřednictvím parametru [create_distributed_table](#create_distributed_table), ale v `mark_tables_colocated` případě potřeby se můžou postarat později.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název zdrojové tabulky \_ :** název distribuované tabulky, jejíž skupina pro kolokace bude přiřazována k odpovídajícím cílům.
 
@@ -142,7 +142,7 @@ SELECT mark_tables_colocated('stores', ARRAY['products', 'line_items']);
 
 Cesta pro vyhledávání Postgres není šířena od koordinátora k pracovníkům během provádění distribuované funkce, takže kód distribuované funkce by měl plně kvalifikovat názvy databázových objektů. Oznámení vygenerovaná funkcemi se uživatelům nezobrazují také.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název funkce:** název funkce, která se má distribuovat. Název musí obsahovat typy parametrů funkce v závorkách, protože více funkcí může mít stejný název v PostgreSQL. Instance se například `'foo(int)'` liší od `'foo(int, text)'` .
 
@@ -184,7 +184,7 @@ SELECT create_distributed_function(
 
 Funkce Master \_ Get \_ Table \_ metadata () se dá použít k vrácení metadat souvisejících s distribucí pro distribuovanou tabulku. Tato metadata zahrnují ID vztahu, typ úložiště, způsob distribuce, distribuční sloupec, počet replikací, maximální velikost horizontálních oddílů a zásady umístění horizontálních oddílů pro tabulku. Za sebou tato funkce dotazuje tabulky metadat Citus (), aby získala požadované informace a zřetězí ji do řazené kolekce členů předtím, než ji vrátí uživateli.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název tabulky:** název distribuované tabulky, pro kterou chcete načíst metadata.
 
@@ -222,7 +222,7 @@ SELECT * from master_get_table_metadata('github_events');
 
 Citus () přiřadí každý řádek distribuované tabulky k horizontálních oddílů na základě hodnoty sloupce distribuce řádku a metody distribuce tabulky. Ve většině případů je přesné mapování podrobnosti nízké úrovně, které správce databáze může ignorovat. Může to ale být užitečné pro určení horizontálních oddílů řádku, a to buď pro ruční úlohy údržby databáze, nebo jenom pro uspokojení objevili. `get_shard_id_for_distribution_column`Funkce poskytuje tyto informace pro tabulky s hodnotami hash a rozsah a také referenční tabulky. Nefunguje pro připojení distribuce.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název tabulky:** distribuovaná tabulka.
 
@@ -249,7 +249,7 @@ Přeloží sloupec na `partkey` `pg_dist_partition` název textového sloupce. P
 
 Podrobnější diskuzi najdete v tématu [Volba distribučního sloupce](concepts-hyperscale-choose-distribution-column.md).
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název tabulky:** distribuovaná tabulka.
 
@@ -284,7 +284,7 @@ Výstup:
 Získá místo na disku využívané všemi horizontálních oddílůy zadané distribuované tabulky.
 Místo na disku zahrnuje velikost \" hlavní větve, \" ale nezahrnuje mapu viditelnosti a mapu volného místa pro horizontálních oddílů.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **logicalrelid:** název distribuované tabulky.
 
@@ -308,7 +308,7 @@ pg_size_pretty
 
 Získejte místo na disku využité všemi horizontálních oddílůy zadané distribuované tabulky, kromě indexů (ale včetně informačních zpráv, mapy volného místa a mapy viditelnosti).
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **logicalrelid:** název distribuované tabulky.
 
@@ -332,7 +332,7 @@ pg_size_pretty
 
 Získejte celkové místo na disku využité všemi horizontálních oddílů zadanými distribuovanými tabulkami, včetně všech indexů a dat informačních zpráv.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **logicalrelid:** název distribuované tabulky.
 
@@ -357,7 +357,7 @@ pg_size_pretty
 Odebere všechny řádky z [citus_stat_statements](reference-hyperscale-metadata.md#query-statistics-table).
 Tato funkce funguje nezávisle na `pg_stat_statements_reset()` . Chcete-li obnovit všechny statistiky, zavolejte obě funkce.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 –
 
@@ -373,7 +373,7 @@ Pokud se umístění horizontálních oddílů nepovede aktualizovat během př�
 
 K opravě horizontálních oddílů funkce nejprve přenechá nestavové horizontálních oddílů umístění a znovu ho vytvoří pomocí schématu koordinátora. Po vytvoření umístění horizontálních oddílů funkce zkopíruje data z umístění v pořádku a aktualizuje metadata tak, aby označila nové umístění horizontálních oddílů jako v pořádku. Tato funkce zajišťuje, že horizontálních oddílů bude během opravy chráněn před všemi souběžnými úpravami.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ ID horizontálních oddílů:** ID horizontálních oddílů, které se má opravit
 
@@ -407,7 +407,7 @@ Druhý způsob, kterým se vyhnete blokování horizontálních oddílů zápis�
 
 Po úspěšné operaci přesunu se horizontálních oddílů ve zdrojovém uzlu odstraní. Pokud se přesun v kterémkoli okamžiku nepovede, tato funkce vyvolá chybu a zdrojový a cílový uzel ponechá beze změny.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ ID horizontálních oddílů:** ID horizontálních oddílů, které se má přesunout.
 
@@ -450,9 +450,9 @@ Výchozí strategii je vhodná pro tyto případy:
 
 Pokud některý z těchto předpokladů nedrží, výchozí vyrovnávání zatížení může mít za následek špatný plán. V takovém případě můžete strategii přizpůsobit pomocí `rebalance_strategy` parametru.
 
-Aby bylo [get_rebalance_table_shards_plan](#get_rebalance_table_shards_plan) \_ \_ možné zobrazit a ověřit akce, které mají být provedeny, je vhodné volat get_rebalance_table_shards_plan před spuštěním horizontálních oddílůí tabulky s vyrovnáváním zatížení.
+Aby bylo [](#get_rebalance_table_shards_plan) \_ \_ možné zobrazit a ověřit akce, které mají být provedeny, je vhodné volat get_rebalance_table_shards_plan před spuštěním horizontálních oddílůí tabulky s vyrovnáváním zatížení.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název tabulky:** (nepovinný) název tabulky, jejíž horizontálních oddílů musí být znovu vyrovnaný. Pokud je hodnota NULL, pak znovu vyvážit všechny existující skupiny kolokace.
 
@@ -498,7 +498,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 Výstup plánovaných pohybů [rebalance_table_shards](#rebalance_table_shards) horizontálních oddílů bez jejich provedení.
 I když je pravděpodobné, že \_ plán horizontálních oddílů tabulky pro vyrovnávání zatížení \_ \_ může mít \_ za výsledek trochu jiný plán než \_ \_ volání tabulky horizontálních oddílů se stejnými argumenty. Nejsou spouštěny současně, takže fakta týkající se skupiny serverů \- – například místo na disku \- – může být mezi voláními odlišná.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 Stejné argumenty jako horizontálních oddílů tabulky s vyrovnáváním zatížení \_ \_ : vztah, prahová hodnota, Max \_ horizontálních oddílů – \_ přesunout, vyloučený \_ \_ seznam horizontálních oddílů a jenom vyprázdnit \_ . Význam těchto argumentů naleznete v dokumentaci této funkce.
 
@@ -518,7 +518,7 @@ Stejné argumenty jako horizontálních oddílů tabulky s vyrovnáváním zatí
 
 Po zahájení horizontálních oddílů rovnováha `get_rebalance_progress()` funkce vypíše průběh každého horizontálních oddílů. Monitoruje plánované a spouštěné přesuny `rebalance_table_shards()` .
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 –
 
@@ -557,7 +557,7 @@ SELECT * FROM get_rebalance_progress();
 
 Připojí řádek do [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md?#rebalancer-strategy-table) .
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 Další informace o těchto argumentech naleznete v tématu odpovídající hodnoty sloupce v `pg_dist_rebalance_strategy` .
 
@@ -581,7 +581,7 @@ Další informace o těchto argumentech naleznete v tématu odpovídající hodn
 
 Aktualizujte [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table) tabulku a změňte strategii s názvem podle jejího argumentu na výchozí hodnotu vybranou při vyrovnávání horizontálních oddílů.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **Name (název):** název strategie v rámci \_ \_ strategie rerovnováhy pro distribuci pg \_
 
@@ -599,7 +599,7 @@ SELECT citus_set_default_rebalance_strategy('by_disk_size');
 
 \_ \_ Funkce statistiky vzdáleného připojení citus \_ () zobrazuje počet aktivních připojení ke každému vzdálenému uzlu.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 –
 
@@ -620,7 +620,7 @@ SELECT * from citus_remote_connection_stats();
 
 Funkce hlavního \_ vyprázdnění \_ uzlu () přesouvá horizontálních oddílů z určeného uzlu a do jiných uzlů, které `shouldhaveshards` v [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table)mají nastavené na hodnotu true. Zavolejte funkci před odebráním uzlu ze skupiny serverů a vypnutím fyzického serveru uzlu.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **Node:** Název hostitele uzlu, který se má vyprázdnit
 
@@ -675,7 +675,7 @@ Při vyprazdňování více uzlů doporučujeme místo toho použít [rebalance_
 
 Funkce replikovat \_ tabulku \_ horizontálních oddílů () replikuje replikované horizontálních oddílů z dané tabulky. Funkce nejprve vypočítá seznam replikovaných horizontálních oddílů a umístění, ze kterých je možné je načíst pro replikaci. Funkce pak zkopíruje tyto horizontálních oddílů a aktualizuje odpovídající metadata horizontálních oddílů, aby odrážela kopii.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název tabulky:** název tabulky, jejíž horizontálních oddílů je třeba replikovat.
 
@@ -707,7 +707,7 @@ SELECT replicate_table_shards('github_events', max_shard_copies:=10);
 
 Tato funkce vytvoří nový horizontálních oddílů, který bude uchovávat řádky s konkrétní jednou hodnotou v distribučním sloupci. Je to obzvláště užitečné pro případ použití Citus (multi-tenant), kde se velký tenant dá umístit samostatně na vlastní horizontálních oddílů a nakonec na vlastní fyzický uzel.
 
-#### <a name="arguments"></a>Arguments
+#### <a name="arguments"></a>Argumenty
 
 **\_ název tabulky:** název tabulky, do které se má načíst nový horizontálních oddílů.
 

@@ -13,10 +13,10 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536966"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojte své pracovní zařízení k síti vaší organizace.
@@ -57,11 +57,11 @@ Pokud je vaše zařízení zcela nové a ještě není nastavené, můžete k p�
 ## <a name="to-make-sure-youre-joined-new-device"></a>Abyste se ujistili, že jste připojeni (nové zařízení)
 Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
-1. Otevřete **Nastavení**a pak vyberte **účty**.
+1. Otevřete **Nastavení** a pak vyberte **účty**.
 
     ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že je zobrazený text, který je podobný jako **PŘIPOJENÝ k *\<your_organization>* Azure AD**.
+2. Vyberte možnost **přístup do práce nebo do školy** a ujistěte se, že je zobrazený text, který je podobný jako **PŘIPOJENÝ k *\<your_organization>* Azure AD**.
 
     ![Snímek obrazovky, který zobrazuje okno přístup do práce nebo do školy se zvoleným účtem "připojené k (vaší organizaci)" Azure AD ".](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -69,9 +69,9 @@ Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Připojení již nakonfigurovaného zařízení s Windows 10
 Pokud máte zařízení v době a a už je nastavené, můžete pomocí těchto kroků připojit zařízení k síti.
 
-1. Otevřete **Nastavení**a pak vyberte **účty**.
+1. Otevřete **Nastavení** a pak vyberte **účty**.
 
-2. Vyberte možnost **přístup do práce nebo do školy**a pak vyberte **připojit**.
+2. Vyberte možnost **přístup do práce nebo do školy** a pak vyberte **připojit**.
 
     ![Přístup k pracovním nebo školním odkazům a připojením](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
 
@@ -83,7 +83,7 @@ Pokud máte zařízení v době a a už je nastavené, můžete pomocí těchto 
 
     ![Pojďme vám přihlášený displej](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
-5. Na obrazovce **Zadejte heslo** zadejte heslo a pak vyberte **Přihlásit**se.
+5. Na obrazovce **Zadejte heslo** zadejte heslo a pak vyberte **Přihlásit** se.
 
     ![Zadejte heslo](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
@@ -102,11 +102,11 @@ Pokud máte zařízení v době a a už je nastavené, můžete pomocí těchto 
 ## <a name="to-make-sure-youre-joined"></a>Abyste se ujistili, že jste připojeni
 Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
-1. Otevřete **Nastavení**a pak vyberte **účty**.
+1. Otevřete **Nastavení** a pak vyberte **účty**.
 
     ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že je zobrazený text, který je podobný jako **PŘIPOJENÝ k *\<your_organization>* Azure AD**.
+2. Vyberte možnost **přístup do práce nebo do školy** a ujistěte se, že je zobrazený text, který je podobný jako **PŘIPOJENÝ k *\<your_organization>* Azure AD**.
 
     ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

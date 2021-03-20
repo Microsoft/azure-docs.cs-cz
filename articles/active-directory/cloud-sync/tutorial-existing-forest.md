@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64536024af7e939de2bd8f98a9ce14bb4df3303f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614546"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Integrace stávající doménové struktury a nové doménové struktury s jedním tenantem Azure AD
@@ -28,7 +28,7 @@ Prostředí, které vytvoříte v tomto kurzu, můžete použít pro účely tes
 
 V tomto scénáři je existující doménová struktura synchronizovaná pomocí Azure AD Connect synchronizace s tenant služby Azure AD. A máte novou doménovou strukturu, kterou chcete synchronizovat do stejného tenanta služby Azure AD. Pro novou doménovou strukturu nanastavíte synchronizaci cloudu. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 ### <a name="in-the-azure-active-directory-admin-center"></a>V centru pro správu Azure Active Directory
 
 1. Vytvořte v tenantovi Azure AD jenom cloudový účet globálního správce. Tímto způsobem můžete spravovat konfiguraci vašeho tenanta, pokud vaše místní služby selžou nebo nebudou k dispozici. Seznamte [se s přidáním účtu globálního správce jenom pro Cloud](../fundamentals/add-users-azure-active-directory.md). Dokončení tohoto kroku je důležité, aby se zajistilo, že nebudete mít uzamčený přístup k vašemu tenantovi.
@@ -80,7 +80,7 @@ K ověření agenta dochází v Azure Portal a na místním serveru, na kterém 
 ### <a name="azure-portal-agent-verification"></a>Ověřování agenta Azure Portal
 Pokud chcete ověřit, že se agent zobrazuje v Azure, postupujte podle těchto kroků:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect** a ve středu vyberte **spravovat synchronizaci cloudu**.</br>
 ![Azure Portal](media/how-to-install/install-6.png)</br>
 

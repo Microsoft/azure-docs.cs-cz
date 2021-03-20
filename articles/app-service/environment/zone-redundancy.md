@@ -8,10 +8,10 @@ ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98624721"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Podpora zón dostupnosti pro App Service prostředí
@@ -36,7 +36,7 @@ Oblast interního nástroje služby ASE lze vytvořit v kterékoli z následují
 - USA – východ 2
 - Východní USA 2 (EUAP)
 - Francie – střed 
-- Japan East
+- Japonsko – východ
 - Severní Evropa
 - West Europe
 - Southeast Asia
@@ -49,9 +49,9 @@ Aplikace nasazené v oblasti interního nástroje pomocného mechanismu pro prá
 
 Oblast interního nástroje služby ASE je nutné vytvořit pomocí šablon ARM. Jakmile se interního nástroje pomocného mechanismu služby vytvoří prostřednictvím šablony ARM, dá se zobrazit a interagovat pomocí Azure Portal a CLI.  Šablona ARM je nutná jenom pro počáteční vytváření interního nástroje pomocného mechanismu.
 
-Jediná změna potřebná pro zadání oblasti interního nástroje pomocného mechanismu řízení pro oblast je nová vlastnost ***Zone** _. Vlastnost _*_Zones_*_ by měla být nastavena na hodnotu "1", "2" nebo "3" v závislosti na logické zóně dostupnosti, ke které by měl být PŘIpnuté interního nástroje pomocného mechanismu řízení.
+Jediná změna potřebná pro zadání oblasti interního nástroje pomocného mechanismu řízení pro oblast je nová vlastnost ***Zone** _. Vlastnost *_zonees_** by měla být nastavená na hodnotu "1", "2" nebo "3" v závislosti na logické zóně dostupnosti, ke které by měl být PŘIpnuté interního nástroje pomocného mechanismu řízení.
 
-Příklad fragmentu šablony ARM dole ukazuje vlastnost nové _*_zóny_*_ , která určuje, že se má PŘIpnutí interního nástroje připnout ke zóně 2.
+Příklad fragmentu šablony ARM dole ukazuje vlastnost nové ***zóny*** , která určuje, že se má PŘIpnutí interního nástroje připnout ke zóně 2.
 
 ```
    "resources": [
@@ -89,6 +89,6 @@ Zákazníci zajišťují, aby data v jedné oblasti byla zavedena podle kroků u
 
 Zákazníci můžou ověřit, jestli je App Service Environment správně nakonfigurovaný tak, aby ukládala data v jedné oblasti pomocí následujících kroků: 
 
-1. Pomocí [Průzkumník prostředků](https://resources.azure.com)přejděte k prostředku ARM pro App Service Environment.  Služby ASE jsou uvedeny v části _providers/Microsoft.Web/hostingEnvironments *.
+1. Pomocí [Průzkumník prostředků](https://resources.azure.com)přejděte k prostředku ARM pro App Service Environment.  Služby ASE jsou uvedena v části *poskytovatelé/Microsoft. Web/hostingEnvironments*.
 2. Pokud vlastnost *Zones* existuje v zobrazení syntaxe JSON pro ARM a obsahuje jedno ohodnocené pole JSON s hodnotou "1", "2" nebo "3", pak je pomocného zonally nasazený a zákaznická data zůstanou ve stejné oblasti.
 2. Pokud vlastnost *zóny* neexistuje nebo vlastnost nemá platnou hodnotu zóny, jak je uvedeno výše, pak není zonally nasazený a zákaznická data se neukládají výhradně ve stejné oblasti.

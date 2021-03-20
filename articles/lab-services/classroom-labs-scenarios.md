@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak použít Azure DevTest Labs pro vytvá
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f9eb3d44d470a978e676f6268cd693b283dd2703
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433572"
 ---
 # <a name="use-labs-for-trainings"></a>Použití cvičení pro školení
@@ -29,7 +29,7 @@ V tomto článku se dozvíte o různých funkcích Azure Lab Services, které se
 ## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Vytvoření účtu testovacího prostředí jako správce účtu testovacího prostředí
 Prvním krokem při použití Azure Lab Services je vytvoření účtu testovacího prostředí v Azure Portal. Po vytvoření účtu testovacího prostředí správcem účtu testovacího prostředí přidá správce uživatele, kteří chtějí vytvořit cvičení, do role **testovacího prostředí** . Pedagogy vytvářejí laboratoře s virtuálními počítači, které studentům povedou cvičení pro kurz, který jsou výukou. Podrobnosti najdete v tématu [Vytvoření a Správa účtu testovacího prostředí](how-to-manage-lab-accounts.md).
 
-## <a name="create-and-manage-labs"></a>Vytváření a Správa cvičení
+## <a name="create-and-manage-labs"></a>Vytváření a správa testovacích prostředí
 Educator, který je členem role tvůrce testovacího prostředí v účtu testovacího prostředí, může vytvořit jednu nebo více cvičení v účtu testovacího prostředí. Vytvoříte a nakonfigurujete virtuální počítač šablony s veškerým požadovaným softwarem pro provádění cvičení ve vašem kurzu. Předem vytvořenou image můžete vybrat z dostupných imagí pro vytvoření testovacího prostředí pro učebnu a pak ho přizpůsobit instalací softwaru potřebného pro testovací prostředí. Podrobnosti najdete v tématu [vytváření a Správa Labs](how-to-manage-classroom-labs.md).
 
 ## <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení a zásad použití

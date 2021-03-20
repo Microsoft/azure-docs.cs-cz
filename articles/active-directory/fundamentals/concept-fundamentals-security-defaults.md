@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9c912b7122a40ae39bcbb703e1387af25fff2bc8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029902"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98600134"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
@@ -76,7 +76,7 @@ Doporučujeme, abyste si myslíte, že účty správců jsou jedinými účty, k
 
 Po získání přístupu pro tyto útočníky můžou požádat o přístup k privilegovaným informacím jménem původního držitele účtu. Můžou si dokonce stáhnout celý adresář a udělat tak útok útoku phishing na celou organizaci. 
 
-Jednou z běžných metod pro zlepšení ochrany pro všechny uživatele je vyžadovat silnější formu ověření účtu, například Multi-Factor Authentication pro každého. Jakmile se uživatelé dokončí Multi-Factor Authentication registraci, budou vyzváni k dalšímu ověřování, kdykoli to bude nutné. Tato funkce chrání všechny aplikace zaregistrované ve službě Azure AD, včetně aplikací SaaS.
+Jednou z běžných metod pro zlepšení ochrany pro všechny uživatele je vyžadovat silnější formu ověření účtu, například Multi-Factor Authentication pro každého. Jakmile se uživatelé dokončí Multi-Factor Authentication registraci, budou vyzváni k dalšímu ověřování, kdykoli to bude nutné. Uživatelům se zobrazí výzva primárně při ověřování pomocí nového zařízení nebo aplikace nebo při provádění kritických rolí a úloh. Tato funkce chrání všechny aplikace zaregistrované ve službě Azure AD, včetně aplikací SaaS.
 
 ### <a name="blocking-legacy-authentication"></a>Blokování starších verzí ověřování
 
@@ -124,18 +124,18 @@ Tato bezplatná výchozí nastavení zabezpečení umožňují registraci a pou�
 
 | Metoda | Výchozí nastavení zabezpečení | Podmíněný přístup |
 | --- | --- | --- |
-| Oznámení prostřednictvím mobilní aplikace | X | X |
-| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu | × * * | X |
-| Textová zpráva na telefon |   | X |
-| Zavolat na telefon |   | X |
-| Hesla aplikací |   | X * * _ |
+| Oznámení prostřednictvím mobilní aplikace | × | × |
+| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu | × * * | × |
+| Textová zpráva na telefon |   | × |
+| Zavolat na telefon |   | × |
+| Hesla aplikací |   | × * * * |
 
-- _ * Uživatelé můžou použít ověřovací kódy z aplikace Microsoft Authenticator, ale můžou se zaregistrovat jenom pomocí možnosti oznámení.
-- * * _ Hesla aplikací jsou k dispozici pouze v případě MFA pro jednotlivé uživatele se staršími scénáři ověřování, pokud jsou povolena správci.
+- * * Uživatelé můžou používat ověřovací kódy z aplikace Microsoft Authenticator, ale můžou se registrovat jenom pomocí možnosti oznámení.
+- Hesla aplikací jsou k dispozici pouze v případě MFA pro jednotlivé uživatele se staršími scénáři ověřování, pokud jsou povolena správci.
 
 ### <a name="disabled-mfa-status"></a>Stav zakázaného MFA
 
-Pokud je vaše organizace předchozím uživatelem Multi-Factor Authentication Azure AD, který je založený na uživatelích, nebudete budíkem, aby neviděli uživatele vpřípadě, že se podíváte na **stránku stavu multi** -Factor auth. **Disabled (zakázáno** ) je odpovídající stav pro uživatele, kteří používají výchozí hodnoty zabezpečení nebo Multi-Factor Authentication Azure AD založené na podmíněném přístupu.
+Pokud je vaše organizace předchozím uživatelem Multi-Factor Authentication Azure AD, který je založený na uživatelích, nebudete alarmem zobrazovat uživatele v **povoleném** nebo vyřízeném stavu, pokud se podíváte na stránku **se stavem** Multi-Factor auth. **Disabled (zakázáno** ) je odpovídající stav pro uživatele, kteří používají výchozí hodnoty zabezpečení nebo Multi-Factor Authentication Azure AD založené na podmíněném přístupu.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
 

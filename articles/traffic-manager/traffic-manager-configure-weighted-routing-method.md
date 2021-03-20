@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2020
 ms.author: duau
 ms.openlocfilehash: abcfce43b90c7371d5b38aa5b7a6d478e9d6a0dd
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92207812"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Kurz: Konfigurace metody váženého směrování provozu v Traffic Manager
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > - Použijte profil Traffic Manager.
 > - Odstranit profil Traffic Manager.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 1. Na panelu hledání na portálu vyhledejte název **profilu Traffic Manager** , který jste vytvořili v předchozí části, a v zobrazených výsledcích vyberte profil Traffic Manageru.
 
-    :::image type="content" source="./media/traffic-manager-weighted-routing-method/search-traffic-manager-weighted-profile.png" alt-text="Vyhledat profil Traffic Manager&quot;:::
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/search-traffic-manager-weighted-profile.png" alt-text="Vyhledat profil Traffic Manager":::
 
 1. Vyberte **Konfigurace** a vyberte nebo zadejte následující nastavení:
 
@@ -51,7 +51,7 @@ V tomto kurzu se naučíte:
     | Hodnota TTL (Time to Live) pro DNS | Tato hodnota určuje, jak často bude názvový server místní mezipaměti klienta dotazován na Traffic Manager systém pro aktualizované položky DNS. Jakékoli změny, ke kterým dojde u Traffic Manager, jako je například změna metody směrování provozu nebo změny v dostupnosti přidaných koncových bodů, budou tuto dobu trvat v globálním systému serverů DNS. |
     | Protokol    | Vyberte protokol pro monitorování koncového bodu. *Možnosti: HTTP, HTTPS a TCP* |
     | Port | Zadejte číslo portu. |
-    | Cesta | Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko &quot;/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí). |
+    | Cesta | Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko "/" je platná položka relativní cesty a předpokládá, že se soubor nachází v kořenovém adresáři (výchozí). |
     | Vlastní nastavení hlaviček | Nakonfigurujte vlastní hlavičky ve formátu Host:contoso. com, newheader: NewValue. Maximální podporovaný pár je 8. Platí pro protokol HTTP a HTTPS. Platí pro všechny koncové body v profilu. |
     | Očekávané rozsahy stavových kódů (výchozí: 200) | Nakonfigurujte rozsahy stavových kódů ve formátu 200-299301-301. Maximální podporovaný rozsah je 8. Platí pro protokol HTTP a HTTPS. Platí pro všechny koncové body v profilu. |
     | Interval testování | Nakonfigurujte časový interval mezi sondami stavu koncového bodu. Můžete zvolit 10 nebo 30 sekund. |
@@ -60,63 +60,23 @@ V tomto kurzu se naučíte:
 
 1. Kliknutím na **Uložit** dokončete konfiguraci.
 
-    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-configuration.png" alt-text="Vyhledat profil Traffic Manager&quot;:::
-
-1. Vyberte **Konfigurace** a vyberte nebo zadejte následující nastavení:
-
-    | Nastavení         | Hodnota                                              |
-    | ---             | ---                                                |
-    | Metoda směrování            | Vyberte **Vážená**. |    
-    | Hodnota TTL (Time to Live) pro DNS | Tato hodnota určuje, jak často bude názvový server místní mezipaměti klienta dotazován na Traffic Manager systém pro aktualizované položky DNS. Jakékoli změny, ke kterým dojde u Traffic Manager, jako je například změna metody směrování provozu nebo změny v dostupnosti přidaných koncových bodů, budou tuto dobu trvat v globálním systému serverů DNS. |
-    | Protokol    | Vyberte protokol pro monitorování koncového bodu. *Možnosti: HTTP, HTTPS a TCP* |
-    | Port | Zadejte číslo portu. |
-    | Cesta | Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko &quot;/"::: 
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-configuration.png" alt-text="Traffic Manager vážená konfigurace"::: 
 
 1. Vyberte **koncový bod** a nakonfigurujte váhu každého koncového bodu. Váha může být mezi 1-1000. Čím vyšší je váha, tím vyšší je priorita.  
 
-    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-configure-endpoints-weighted.png" alt-text="Vyhledat profil Traffic Manager&quot;:::
-
-1. Vyberte **Konfigurace** a vyberte nebo zadejte následující nastavení:
-
-    | Nastavení         | Hodnota                                              |
-    | ---             | ---                                                |
-    | Metoda směrování            | Vyberte **Vážená**. |    
-    | Hodnota TTL (Time to Live) pro DNS | Tato hodnota určuje, jak často bude názvový server místní mezipaměti klienta dotazován na Traffic Manager systém pro aktualizované položky DNS. Jakékoli změny, ke kterým dojde u Traffic Manager, jako je například změna metody směrování provozu nebo změny v dostupnosti přidaných koncových bodů, budou tuto dobu trvat v globálním systému serverů DNS. |
-    | Protokol    | Vyberte protokol pro monitorování koncového bodu. *Možnosti: HTTP, HTTPS a TCP* |
-    | Port | Zadejte číslo portu. |
-    | Cesta | Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko &quot;/"::: 
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-configure-endpoints-weighted.png" alt-text="Konfigurace Traffic Manager vážených koncových bodů"::: 
 
 ## <a name="use-the-traffic-manager-profile"></a>Použít profil Traffic Manager
 
 V části **Profil služby Traffic Manager** se zobrazí název DNS nově vytvořeného profilu služby Traffic Manager. Název můžou použít všichni klienti (například tak, že se k němu přejde pomocí webového prohlížeče), aby se směroval do správného koncového bodu, který určuje typ směrování. V takovém případě všechny požadavky jsou směrovány do každého koncového bodu kruhové dotazování.
 
-:::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-overview.png" alt-text="Vyhledat profil Traffic Manager&quot;:::
-
-1. Vyberte **Konfigurace** a vyberte nebo zadejte následující nastavení:
-
-    | Nastavení         | Hodnota                                              |
-    | ---             | ---                                                |
-    | Metoda směrování            | Vyberte **Vážená**. |    
-    | Hodnota TTL (Time to Live) pro DNS | Tato hodnota určuje, jak často bude názvový server místní mezipaměti klienta dotazován na Traffic Manager systém pro aktualizované položky DNS. Jakékoli změny, ke kterým dojde u Traffic Manager, jako je například změna metody směrování provozu nebo změny v dostupnosti přidaných koncových bodů, budou tuto dobu trvat v globálním systému serverů DNS. |
-    | Protokol    | Vyberte protokol pro monitorování koncového bodu. *Možnosti: HTTP, HTTPS a TCP* |
-    | Port | Zadejte číslo portu. |
-    | Cesta | Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko &quot;/"::: 
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-overview.png" alt-text="Traffic Manager vážený přehled"::: 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud nepotřebujete profil Traffic Manager, najděte profil a vyberte **Odstranit profil**.
 
-:::image type="content" source="./media/traffic-manager-weighted-routing-method/delete-traffic-manager-weighted-profile.png" alt-text="Vyhledat profil Traffic Manager&quot;:::
-
-1. Vyberte **Konfigurace** a vyberte nebo zadejte následující nastavení:
-
-    | Nastavení         | Hodnota                                              |
-    | ---             | ---                                                |
-    | Metoda směrování            | Vyberte **Vážená**. |    
-    | Hodnota TTL (Time to Live) pro DNS | Tato hodnota určuje, jak často bude názvový server místní mezipaměti klienta dotazován na Traffic Manager systém pro aktualizované položky DNS. Jakékoli změny, ke kterým dojde u Traffic Manager, jako je například změna metody směrování provozu nebo změny v dostupnosti přidaných koncových bodů, budou tuto dobu trvat v globálním systému serverů DNS. |
-    | Protokol    | Vyberte protokol pro monitorování koncového bodu. *Možnosti: HTTP, HTTPS a TCP* |
-    | Port | Zadejte číslo portu. |
-    | Cesta | Chcete-li monitorovat koncové body, je nutné zadat cestu a název souboru. Lomítko &quot;/":::
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/delete-traffic-manager-weighted-profile.png" alt-text="Odstranit Traffic Manager vážený profil":::
 
 ## <a name="next-steps"></a>Další kroky
 

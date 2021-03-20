@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: ae7965dd319f2ff885f4329262ae4772452afd62
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 73c5d1f31d9e0651ee710593aa4e1b68fe972560
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523239"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender pro rozhraní API pro senzory IoT a konzolu pro správu
@@ -110,38 +110,38 @@ Pole objektů JSON, které reprezentují zařízení.
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **id** | Číselný | Ne | - |
-| **IP adresy** | Pole JSON | Ano | IP adresy (můžou být víc než jedna adresa v případě internetových adres nebo zařízení se dvěma síťovými kartami) |
-| **name** | Řetězec | Ne | - |
-| **textový** | Řetězec | Ne | Neznámá, inženýrská stanice, PLC, HMI, historian, řadič domény, databázový server, bezdrátový přístupový bod, směrovač, přepínač, server, pracovní stanice, IP kamera, tiskárna, brána firewall, Terminálová stanice, VPN Gateway, Internet nebo vícesměrové vysílání a všesměrové vysílání |
-| **macAddresses** | Pole JSON | Ano | Adresy MAC (v případě zařízení se dvěma síťovými kartami můžou být víc než jedna adresa) |
-| **operatingSystem** | Řetězec | Ano | - |
-| **engineeringStation** | Logická hodnota | Ne | True nebo false |
-| **skener** | Logická hodnota | Ne | True nebo false |
-| **cizí** | Logická hodnota | Ne | True nebo false |
-| **dodavatelské** | Řetězec | Ano | - |
-| **protokolů** | Pole JSON | Ano | Objekt protokolu |
-| **Firmwar** | Pole JSON | Ano | Firmware – objekt |
+| **id** | Číselný | No | - |
+| **IP adresy** | Pole JSON | Yes | IP adresy (můžou být víc než jedna adresa v případě internetových adres nebo zařízení se dvěma síťovými kartami) |
+| **name** | Řetězec | No | - |
+| **textový** | Řetězec | No | Neznámá, inženýrská stanice, PLC, HMI, historian, řadič domény, databázový server, bezdrátový přístupový bod, směrovač, přepínač, server, pracovní stanice, IP kamera, tiskárna, brána firewall, Terminálová stanice, VPN Gateway, Internet nebo vícesměrové vysílání a všesměrové vysílání |
+| **macAddresses** | Pole JSON | Yes | Adresy MAC (v případě zařízení se dvěma síťovými kartami můžou být víc než jedna adresa) |
+| **operatingSystem** | Řetězec | Yes | - |
+| **engineeringStation** | Logická hodnota | No | True nebo false |
+| **skener** | Logická hodnota | No | True nebo false |
+| **cizí** | Logická hodnota | No | True nebo false |
+| **dodavatelské** | Řetězec | Yes | - |
+| **protokolů** | Pole JSON | Yes | Objekt protokolu |
+| **Firmwar** | Pole JSON | Yes | Firmware – objekt |
 
 #### <a name="protocol-fields"></a>Pole protokolu
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **Název** | Řetězec | Ne |  |
-| **Adresy** | Pole JSON | Ano | Hlavní nebo číselné hodnoty |
+| **Název** | Řetězec | No |  |
+| **Adresy** | Pole JSON | Yes | Hlavní nebo číselné hodnoty |
 
 #### <a name="firmware-fields"></a>Pole firmwaru
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **sér** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **vzorový** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **firmwareVersion** | dvojité | Ne | Není k dispozici nebo skutečná hodnota |
-| **additionalData** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **moduleAddress** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **skříně** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **slotu** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **adresáře** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
+| **sér** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **vzorový** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **firmwareVersion** | dvojité | No | Není k dispozici nebo skutečná hodnota |
+| **additionalData** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **moduleAddress** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **skříně** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **slotu** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **adresáře** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
 
 #### <a name="response-example"></a>Příklad odpovědi
 
@@ -335,19 +335,19 @@ Pole objektů JSON, která reprezentují připojení zařízení.
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **firstDeviceId** | Číselný | Ne | - |
-| **secondDeviceId** | Číselný | Ne | - |
-| **lastSeen** | Číselný | Ne | Epocha (UTC) |
-| **zjistil** | Číselný | Ne | Epocha (UTC) |
-| **přístavu** | Číselné pole | Ne | - |
-| **protokolů** | Pole JSON | Ne | Pole protokol |
+| **firstDeviceId** | Číselný | No | - |
+| **secondDeviceId** | Číselný | No | - |
+| **lastSeen** | Číselný | No | Epocha (UTC) |
+| **zjistil** | Číselný | No | Epocha (UTC) |
+| **přístavu** | Číselné pole | No | - |
+| **protokolů** | Pole JSON | No | Pole protokol |
 
 #### <a name="protocol-field"></a>Pole protokol
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **name** | Řetězec | Ne | - |
-| **příkaz** | Pole řetězců | Ne | - |
+| **name** | Řetězec | No | - |
+| **příkaz** | Pole řetězců | No | - |
 
 #### <a name="response-example"></a>Příklad odpovědi
 
@@ -499,11 +499,11 @@ Pole objektů JSON, které reprezentují CVEs identifikované na IP adresách.
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **cveId** | Řetězec | Ne | - |
-| **Adresa** | Řetězec | Ne | IP adresa |
-| **podtržítk** | Řetězec | Ne | 0,0 – 10,0 |
-| **attackVector** | Řetězec | Ne | Síť, sousední síť, místní nebo fyzická |
-| **název** | Řetězec | Ne | - |
+| **cveId** | Řetězec | No | - |
+| **Adresa** | Řetězec | No | IP adresa |
+| **podtržítk** | Řetězec | No | 0,0 – 10,0 |
+| **attackVector** | Řetězec | No | Síť, sousední síť, místní nebo fyzická |
+| **název** | Řetězec | No | - |
 
 #### <a name="response-example"></a>Příklad odpovědi
 
@@ -618,21 +618,21 @@ Pole objektů JSON, které reprezentují výstrahy.
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **ID** | Číselný | Ne | - |
-| **interval** | Číselný | Ne | Epocha (UTC) |
-| **title** | Řetězec | Ne | - |
-| **Zpráva** | Řetězec | Ne | - |
-| **závažnost** | Řetězec | Ne | Upozornění, vedlejší, hlavní nebo kritická |
-| **jádra** | Řetězec | Ne | Porušení protokolu, porušení zásad, malware, anomálie nebo provozní |
-| **sourceDevice** | Číselný | Ano | ID zařízení |
-| **destinationDevice** | Číselný | Ano | ID zařízení |
-| **additionalInformation** | Objekt další informace | Ano | - |
+| **ID** | Číselný | No | - |
+| **interval** | Číselný | No | Epocha (UTC) |
+| **title** | Řetězec | No | - |
+| **zpráva** | Řetězec | No | - |
+| **závažnost** | Řetězec | No | Upozornění, vedlejší, hlavní nebo kritická |
+| **jádra** | Řetězec | No | Porušení protokolu, porušení zásad, malware, anomálie nebo provozní |
+| **sourceDevice** | Číselný | Yes | ID zařízení |
+| **destinationDevice** | Číselný | Yes | ID zařízení |
+| **additionalInformation** | Objekt další informace | Yes | - |
 
 #### <a name="additional-information-fields"></a>Další pole s informacemi
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **název** | Řetězec | Ne | - |
+| **název** | Řetězec | No | - |
 | **informace** | Pole JSON | No | Řetězec |
 
 #### <a name="response-example"></a>Příklad odpovědi
@@ -741,11 +741,11 @@ Pole objektů JSON, které reprezentují výstrahy.
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|--|
-| **časové razítko** | Číselný | Ne | Epocha (UTC) |
-| **title** | Řetězec | Ne | - |
-| **závažnost** | Řetězec | Ne | INFORMACE, oznámení nebo upozornění |
-| **Owner** | Řetězec | Ano | Pokud byla událost vytvořena ručně, bude toto pole obsahovat uživatelské jméno, které vytvořilo událost. |
-| **obsah** | Řetězec | Ne | - |
+| **časové razítko** | Číselný | No | Epocha (UTC) |
+| **title** | Řetězec | No | - |
+| **závažnost** | Řetězec | No | INFORMACE, oznámení nebo upozornění |
+| **Owner** | Řetězec | Yes | Pokud byla událost vytvořena ručně, bude toto pole obsahovat uživatelské jméno, které vytvořilo událost. |
+| **obsah** | Řetězec | No | - |
 
 #### <a name="response-example"></a>Příklad odpovědi
 
@@ -854,74 +854,74 @@ Objekt zařízení obsahuje:
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **name** | Řetězec | Ne | - |
-| **IP adresy** | Pole JSON | Ne | - |
-| **securityScore** | Číselný | Ne | - |
-| **dodavatelské** | Řetězec | Ano |  |
-| **firmwareVersion** | Řetězec | Ano | - |
-| **vzorový** | Řetězec | Ano | - |
-| **isWirelessAccessPoint** | Logická hodnota | Ne | True nebo false |
-| **operatingSystem** | Objekt operačního systému | Ano | - |
-| **míst** | Objekt ohrožení zabezpečení | Ano | - |
+| **name** | Řetězec | No | - |
+| **IP adresy** | Pole JSON | No | - |
+| **securityScore** | Číselný | No | - |
+| **dodavatelské** | Řetězec | Yes |  |
+| **firmwareVersion** | Řetězec | Yes | - |
+| **vzorový** | Řetězec | Yes | - |
+| **isWirelessAccessPoint** | Logická hodnota | No | True nebo false |
+| **operatingSystem** | Objekt operačního systému | Yes | - |
+| **míst** | Objekt ohrožení zabezpečení | Yes | - |
 
 #### <a name="operating-system-fields"></a>Pole operačního systému
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **Název** | Řetězec | Ano | - |
-| **Typ** | Řetězec | Ano | - |
-| **Verze** | Řetězec | Ano | - |
-| **latestVersion** | Řetězec | Ano | - |
+| **Název** | Řetězec | Yes | - |
+| **Typ** | Řetězec | Yes | - |
+| **Verze** | Řetězec | Yes | - |
+| **latestVersion** | Řetězec | Yes | - |
 
 #### <a name="vulnerabilities-fields"></a>Pole ohrožení zabezpečení
  
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **antiviru** | Pole JSON | Ano | Názvy antivirové ochrany |
-| **plainTextPasswords** | Pole JSON | Ano | Objekty hesla |
-| **remoteAccess** | Pole JSON | Ano | Objekty vzdáleného přístupu |
-| **isBackupServer** | Logická hodnota | Ne | True nebo false |
-| **openedPorts** | Pole JSON | Ano | Otevřené objekty portu |
-| **isEngineeringStation** | Logická hodnota | Ne | True nebo false |
-| **isKnownScanner** | Logická hodnota | Ne | True nebo false |
-| **cves** | Pole JSON | Ano | CVE – objekty |
-| **Neautorizováno** | Logická hodnota | Ne | True nebo false |
-| **malwareIndicationsDetected** | Logická hodnota | Ne | True nebo false |
-| **weakAuthentication** | Pole JSON | Ano | Zjištěné aplikace, které používají slabé ověřování |
+| **antiviru** | Pole JSON | Yes | Názvy antivirové ochrany |
+| **plainTextPasswords** | Pole JSON | Yes | Objekty hesla |
+| **remoteAccess** | Pole JSON | Yes | Objekty vzdáleného přístupu |
+| **isBackupServer** | Logická hodnota | No | True nebo false |
+| **openedPorts** | Pole JSON | Yes | Otevřené objekty portu |
+| **isEngineeringStation** | Logická hodnota | No | True nebo false |
+| **isKnownScanner** | Logická hodnota | No | True nebo false |
+| **cves** | Pole JSON | Yes | CVE – objekty |
+| **Neautorizováno** | Logická hodnota | No | True nebo false |
+| **malwareIndicationsDetected** | Logická hodnota | No | True nebo false |
+| **weakAuthentication** | Pole JSON | Yes | Zjištěné aplikace, které používají slabé ověřování |
 
 #### <a name="password-fields"></a>Pole hesla
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **heslo** | Řetězec | Ne | - |
-| **protokol** | Řetězec | Ne | - |
-| **obsahem** | Řetězec | Ne | Velmi slabé, slabé, střední nebo silné |
+| **heslo** | Řetězec | No | - |
+| **protokol** | Řetězec | No | - |
+| **obsahem** | Řetězec | No | Velmi slabé, slabé, střední nebo silné |
 
 #### <a name="remote-access-fields"></a>Pole vzdáleného přístupu
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **přístavní** | Číselný | Ne | - |
-| **přepravu** | Řetězec | Ne | Protokol TCP nebo UDP |
-| **Služba** | Řetězec | Ne | IP adresa |
-| **clientSoftware** | Řetězec | Ne | SSH, VNC, Vzdálená plocha nebo prohlížeč týmu |
+| **přístavní** | Číselný | No | - |
+| **přepravu** | Řetězec | No | Protokol TCP nebo UDP |
+| **Služba** | Řetězec | No | IP adresa |
+| **clientSoftware** | Řetězec | No | SSH, VNC, Vzdálená plocha nebo prohlížeč týmu |
 
 #### <a name="open-port-fields"></a>Otevřít pole portů
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **přístavní** | Číselný | Ne | - |
-| **přepravu** | Řetězec | Ne | Protokol TCP nebo UDP |
-| **protokol** | Řetězec | Ano | - |
-| **isConflictingWithFirewall** | Logická hodnota | Ne | True nebo false |
+| **přístavní** | Číselný | No | - |
+| **přepravu** | Řetězec | No | Protokol TCP nebo UDP |
+| **protokol** | Řetězec | Yes | - |
+| **isConflictingWithFirewall** | Logická hodnota | No | True nebo false |
 
 #### <a name="cve-fields"></a>CVE – pole
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **ID** | Řetězec | Ne | - |
-| **podtržítk** | Číselný | Ne | dvojité |
-| **název** | Řetězec | Ne | - |
+| **ID** | Řetězec | No | - |
+| **podtržítk** | Číselný | No | dvojité |
+| **název** | Řetězec | No | - |
 
 #### <a name="response-example"></a>Příklad odpovědi
 
@@ -1542,8 +1542,8 @@ Pro použití tohoto rozhraní API nepotřebujete k používání tohoto rozhran
 
 | **Název** | **Typ** | **Povoleno** |
 |--|--|--|
-| **jmen** | Řetězec | Ne |
-| **heslo** | Řetězec | Ne |
+| **jmen** | Řetězec | No |
+| **heslo** | Řetězec | No |
 
 #### <a name="request-example"></a>Příklad požadavku
 
@@ -1655,9 +1655,9 @@ response:
 
 | **Název** | **Typ** | **Povoleno** |
 |--|--|--|
-| **jmen** | Řetězec | Ne |
-| **heslo** | Řetězec | Ne |
-| **new_password** | Řetězec | Ne |
+| **jmen** | Řetězec | No |
+| **heslo** | Řetězec | No |
+| **new_password** | Řetězec | No |
 
 #### <a name="curl-command"></a>Příkaz cURL
 
@@ -1734,10 +1734,10 @@ response:
 
 | **Název** | **Typ** | **Povoleno** |
 |--|--|--|
-| **admin_username** | Řetězec | Ne |
-| **admin_password** | Řetězec | Ne |
-| **jmen** | Řetězec | Ne |
-| **new_password** | Řetězec | Ne |
+| **admin_username** | Řetězec | No |
+| **admin_password** | Řetězec | No |
+| **jmen** | Řetězec | No |
+| **new_password** | Řetězec | No |
 
 #### <a name="curl-command"></a>Příkaz cURL
 
@@ -1827,40 +1827,40 @@ Pole objektů JSON, které reprezentují zařízení.
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **sensorId** | Číselný | Ne | - |
-| **zoneId** | Číselný | Ano | - |
-| **Počty** | Číselný | Ano | - |
-| **IP adresy** | Pole JSON | Ano | IP adresy (můžou být víc než jedna adresa v případě internetových adres nebo zařízení se dvěma síťovými kartami) |
-| **name** | Řetězec | Ne | - |
-| **textový** | Řetězec | Ne | Neznámá, inženýrská stanice, PLC, HMI, historian, řadič domény, databázový server, bezdrátový přístupový bod, směrovač, přepínač, server, pracovní stanice, IP kamera, tiskárna, brána firewall, Terminálová stanice, VPN Gateway, Internet nebo vícesměrové vysílání a všesměrové vysílání |
-| **macAddresses** | Pole JSON | Ano | Adresy MAC (v případě zařízení se dvěma síťovými kartami můžou být víc než jedna adresa) |
-| **operatingSystem** | Řetězec | Ano | - |
-| **engineeringStation** | Logická hodnota | Ne | True nebo false |
-| **skener** | Logická hodnota | Ne | True nebo false |
-| **cizí** | Logická hodnota | Ne | True nebo false |
-| **dodavatelské** | Řetězec | Ano | - |
-| **Protokoly** | Pole JSON | Ano | Objekt protokolu |
-| **Firmwar** | Pole JSON | Ano | Firmware – objekt |
+| **sensorId** | Číselný | No | - |
+| **zoneId** | Číselný | Yes | - |
+| **Počty** | Číselný | Yes | - |
+| **IP adresy** | Pole JSON | Yes | IP adresy (můžou být víc než jedna adresa v případě internetových adres nebo zařízení se dvěma síťovými kartami) |
+| **name** | Řetězec | No | - |
+| **textový** | Řetězec | No | Neznámá, inženýrská stanice, PLC, HMI, historian, řadič domény, databázový server, bezdrátový přístupový bod, směrovač, přepínač, server, pracovní stanice, IP kamera, tiskárna, brána firewall, Terminálová stanice, VPN Gateway, Internet nebo vícesměrové vysílání a všesměrové vysílání |
+| **macAddresses** | Pole JSON | Yes | Adresy MAC (v případě zařízení se dvěma síťovými kartami můžou být víc než jedna adresa) |
+| **operatingSystem** | Řetězec | Yes | - |
+| **engineeringStation** | Logická hodnota | No | True nebo false |
+| **skener** | Logická hodnota | No | True nebo false |
+| **cizí** | Logická hodnota | No | True nebo false |
+| **dodavatelské** | Řetězec | Yes | - |
+| **Protokoly** | Pole JSON | Yes | Objekt protokolu |
+| **Firmwar** | Pole JSON | Yes | Firmware – objekt |
 
 #### <a name="protocol-fields"></a>Pole protokolu
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| Název | Řetězec | Ne | - |
-| Adresy | Pole JSON | Ano | Hlavní nebo číselné hodnoty |
+| Name | Řetězec | No | - |
+| Adresy | Pole JSON | Yes | Hlavní nebo číselné hodnoty |
 
 #### <a name="firmware-fields"></a>Pole firmwaru
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **sér** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **vzorový** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **firmwareVersion** | dvojité | Ne | Není k dispozici nebo skutečná hodnota |
-| **additionalData** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **moduleAddress** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **skříně** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **slotu** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
-| **adresáře** | Řetězec | Ne | Není k dispozici nebo skutečná hodnota |
+| **sér** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **vzorový** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **firmwareVersion** | dvojité | No | Není k dispozici nebo skutečná hodnota |
+| **additionalData** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **moduleAddress** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **skříně** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **slotu** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
+| **adresáře** | Řetězec | No | Není k dispozici nebo skutečná hodnota |
 
 #### <a name="response-example"></a>Příklad odpovědi
 
@@ -2048,21 +2048,21 @@ Pomocí tohoto rozhraní API můžete načíst všechny nebo filtrované výstra
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **ID** | Číselný | Ne | - |
-| **interval** | Číselný | Ne | Epocha (UTC) |
-| **title** | Řetězec | Ne | - |
-| **Zpráva** | Řetězec | Ne | - |
-| **závažnost** | Řetězec | Ne | Upozornění, vedlejší, hlavní nebo kritická |
-| **jádra** | Řetězec | Ne | Porušení protokolu, porušení zásad, malware, anomálie nebo provozní |
-| **sourceDevice** | Číselný | Ano | ID zařízení |
-| **destinationDevice** | Číselný | Ano | ID zařízení |
-| **additionalInformation** | Objekt další informace | Ano | - |
+| **ID** | Číselný | No | - |
+| **interval** | Číselný | No | Epocha (UTC) |
+| **title** | Řetězec | No | - |
+| **zpráva** | Řetězec | No | - |
+| **závažnost** | Řetězec | No | Upozornění, vedlejší, hlavní nebo kritická |
+| **jádra** | Řetězec | No | Porušení protokolu, porušení zásad, malware, anomálie nebo provozní |
+| **sourceDevice** | Číselný | Yes | ID zařízení |
+| **destinationDevice** | Číselný | Yes | ID zařízení |
+| **additionalInformation** | Objekt další informace | Yes | - |
 
 #### <a name="additional-information-fields"></a>Další pole s informacemi
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **název** | Řetězec | Ne | - |
+| **název** | Řetězec | No | - |
 | **informace** | Pole JSON | No | Řetězec |
 
 #### <a name="response-example"></a>Příklad odpovědi
@@ -2210,7 +2210,7 @@ Objekt JSON, který představuje akci, která má být provedena u výstrahy obs
 
 | Název | Typ | Vynulovatelné | Seznam hodnot |
 |--|--|--|--|
-| **akce** | Řetězec | Ne | popisovač nebo handleAndLearn |
+| **kroky** | Řetězec | No | popisovač nebo handleAndLearn |
 
 #### <a name="request-example"></a>Příklad požadavku
 
@@ -2232,13 +2232,13 @@ Pole objektů JSON, které reprezentují zařízení.
 #### <a name="response-fields"></a>Pole odpovědi
 
 
-| Název | Typ | Vynulovatelné | Popis |
+| Název | Typ | Vynulovatelné | Description |
 |--|--|--|--|
-| **obsah/chyba** | Řetězec | Ne | Pokud je požadavek úspěšný, zobrazí se vlastnost obsah. V opačném případě se zobrazí vlastnost Error. |
+| **obsah/chyba** | Řetězec | No | Pokud je požadavek úspěšný, zobrazí se vlastnost obsah. V opačném případě se zobrazí vlastnost Error. |
 
 #### <a name="possible-content-values"></a>Možné hodnoty obsahu
 
-| Stavový kód | Hodnota obsahu | Popis |
+| Stavový kód | Hodnota obsahu | Description |
 |--|--|--|
 | 200 | Žádost o aktualizaci výstrahy se úspěšně dokončila. | Žádost o aktualizaci se úspěšně dokončila. Žádné komentáře. |
 | 200 | Výstraha již byla zpracována (**popisovač**). | Výstraha byla již zpracována, když byla přijata žádost o popisovač výstrahy.<br />Výstraha zůstane **zpracována**. |
@@ -2476,8 +2476,8 @@ request:
 
 | **Název** | **Typ** | **Povoleno** |
 |--|--|--|
-| **jmen** | Řetězec | Ne |
-| **heslo** | Řetězec | Ne |
+| **jmen** | Řetězec | No |
+| **heslo** | Řetězec | No |
 
 #### <a name="response-example"></a>Příklad odpovědi
 
@@ -2561,9 +2561,9 @@ response:
 
 | **Název** | **Typ** | **Povoleno** |
 |--|--|--|
-| **jmen** | Řetězec | Ne |
-| **heslo** | Řetězec | Ne |
-| **new_password** | Řetězec | Ne |
+| **jmen** | Řetězec | No |
+| **heslo** | Řetězec | No |
+| **new_password** | Řetězec | No |
 
 #### <a name="curl-command"></a>Příkaz cURL
 
@@ -2640,10 +2640,10 @@ response:
 
 | **Název** | **Typ** | **Povoleno** |
 |--|--|--|
-| **admin_username** | Řetězec | Ne |
-| **admin_password** | Řetězec | Ne |
-| **jmen** | Řetězec | Ne |
-| **new_password** | Řetězec | Ne |
+| **admin_username** | Řetězec | No |
+| **admin_password** | Řetězec | No |
+| **jmen** | Řetězec | No |
+| **new_password** | Řetězec | No |
 
 #### <a name="curl-command"></a>Příkaz cURL
 
@@ -2654,6 +2654,6 @@ response:
 
 ## <a name="next-steps"></a>Další kroky
 
-[Prošetření detekovaných senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+- [Prošetření detekovaných senzorů v inventáři zařízení](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 
-[Prošetření všech detekovaných podnikových senzorů v inventáři zařízení](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+- [Prošetření všech detekovaných podnikových senzorů v inventáři zařízení](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)

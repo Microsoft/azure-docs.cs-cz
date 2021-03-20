@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 5cd872d66088e165bfc8356ab6d96a0a6135a0e0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94538304"
 ---
 # <a name="detect-domain-specific-content"></a>Rozpoznávání obsahu specifického doménu
@@ -100,7 +100,7 @@ Následující odpověď JSON ukazuje, jak může být analýza specifická pro 
 
 V současné době Počítačové zpracování obrazu podporuje následující modely specifické pro doménu:
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | celebrit | Rozpoznávání celebrit, podporované pro obrázky klasifikované v `people_` kategorii |
 | památek | Rozpoznávání bodů podporované pro obrázky klasifikované v `outdoor_` `building_` kategoriích nebo |

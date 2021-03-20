@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: fe17fa4349085be47201974b418493fe8d912ece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90527390"
 ---
 # <a name="view-or-delete-user-data-in-custom-vision"></a>Zobrazení nebo odstranění uživatelských dat v Custom Vision
@@ -31,7 +31,7 @@ Informace o tom, jak zobrazit a odstranit data uživatelů v Custom Vision, najd
 | Podrobnosti iterace | [Getiterace](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
 | Podrobnosti o výkonu iterace | [GetIterationPerformance](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Seznam iterací | [Getiterace](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
-| Podrobnosti o projektech a projektech | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) Getproject a [getprojects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Značky obrázku | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) a [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Images | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (poskytuje identifikátor URI pro stažení obrázku) a [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (poskytuje identifikátor URI pro stažení obrázku) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Podrobnosti o projektech a projektech | [](https://go.microsoft.com/fwlink/?linkid=865446) Getproject a [getprojects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Značky imagí | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) a [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Obrázky | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (poskytuje identifikátor URI pro stažení obrázku) a [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (poskytuje identifikátor URI pro stažení obrázku) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Exportované iterace | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Odstraněno při odstraňování účtu |

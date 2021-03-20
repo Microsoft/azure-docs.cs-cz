@@ -7,10 +7,10 @@ keywords: inventory, automation, change, tracking
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2acf22ba76acdfa6152ef8966f4000aa325a9e91
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92209636"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Správa shromažďování dat pro inventarizaci z virtuálních počítačů
@@ -30,13 +30,13 @@ V tomto článku se předpokládá, že máte virtuální počítač, který se 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>Povolit shromažďování inventáře ze stránky prostředku virtuálního počítače
 
 1. V levém podokně webu Azure Portal vyberte **Virtuální počítače**.
 2. V seznamu virtuálních počítačů vyberte počítač.
-3. V nabídce **prostředek** v části **operace**vyberte **inventarizace**.
+3. V nabídce **prostředek** v části **operace** vyberte **inventarizace**.
 4. Vyberte Log Analytics pracovní prostor pro ukládání datových protokolů.
     Pokud v dané oblasti nemáte k dispozici žádný pracovní prostor, zobrazí se výzva k vytvoření výchozího pracovního prostoru a účtu Automation.
 5. Chcete-li začít počítač povolit, vyberte možnost **Povolit**.
@@ -54,7 +54,7 @@ Po dokončení nasazení stavový řádek zmizí. Systém stále shromažďuje d
 Ve výchozím nastavení jsou pro shromažďování nakonfigurovány software, služby Windows a linuxové procesy démon. Pokud chcete shromažďovat data pro inventarizaci registru a souborů systému Windows, nakonfigurujte nastavení shromažďování dat pro inventarizaci.
 
 1. Na stránce inventarizace klikněte na **Upravit nastavení** v horní části stránky.
-2. Chcete-li přidat nové nastavení kolekce, do kategorie nastavení, kterou chcete přidat, vyberte kartu soubory **registru systému Windows**, **soubory systému Windows**nebo **Linux** .
+2. Chcete-li přidat nové nastavení kolekce, do kategorie nastavení, kterou chcete přidat, vyberte kartu soubory **registru systému Windows**, **soubory systému Windows** nebo **Linux** .
 3. Vyberte příslušnou kategorii a klikněte na **Přidat** v horní části stránky.
 
 Následující části obsahují informace o jednotlivých vlastnostech, které je možné nakonfigurovat pro různé kategorie.
@@ -114,9 +114,9 @@ Pokud chcete vytvořit novou skupinu počítačů, klikněte na **+ vytvořit sk
 
 Odebrání virtuálního počítače ze správy Change Tracking a inventáře:
 
-1. V levém podokně Azure Portal vyberte **Log Analytics**a pak vyberte pracovní prostor, který jste použili při povolování virtuálního počítače pro Change Tracking a inventář.
+1. V levém podokně Azure Portal vyberte **Log Analytics** a pak vyberte pracovní prostor, který jste použili při povolování virtuálního počítače pro Change Tracking a inventář.
 2. Na stránce **Log Analytics** otevřete nabídku **prostředků** .
-3. V části **zdroje dat pracovního prostoru**vyberte **Virtual Machines** .
+3. V části **zdroje dat pracovního prostoru** vyberte **Virtual Machines** .
 4. V seznamu vyberte virtuální počítač, který chcete odpojit. Počítač má vedle **tohoto pracovního prostoru** ve sloupci **připojení OMS** zelenou značku zaškrtnutí.
 
    >[!NOTE]

@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522729"
 ---
 # <a name="forward-alert-information"></a>Předávání informací o upozornění
@@ -26,7 +26,7 @@ Defender pro správce IoT má oprávnění používat pravidla pro předávání
 
 ## <a name="about-forwarded-alert-information"></a>Informace o předaných výstrahách
 
-Výstrahy obsahují informace o rozsáhlém rozsahu zabezpečení a provozních událostí. Příklad:
+Výstrahy obsahují informace o rozsáhlém rozsahu zabezpečení a provozních událostí. Například:
 
   - Datum a čas výstrahy
 
@@ -112,7 +112,7 @@ Zadejte následující parametry:
     
 :::image type="content" source="media/how-to-work-with-alerts-sensor/configure-encryption.png" alt-text="Nakonfigurujte šifrování pro pravidlo předávání.":::
 
-| Výstupní pole textové zprávy syslog | Popis |
+| Výstupní pole textové zprávy syslog | Description |
 |--|--|
 | Datum a čas | Datum a čas, kdy počítač serveru syslog tyto informace přijal. |
 | Priorita | Uživatel. Alert |
@@ -121,7 +121,7 @@ Zadejte následující parametry:
 | Zpráva | Senzor: název snímače.<br /> Výstraha: název výstrahy.<br /> Typ: Typ výstrahy. Může se jednat o **porušení protokolu**, **porušení zásad**, **malware**, **anomálii** nebo **provoz**.<br /> Závažnost: Závažnost výstrahy. Může být **Upozornění**, **podverze**, **hlavní** nebo **kritická**.<br /> Zdroj: název zdrojového zařízení.<br /> Zdrojová IP adresa: IP adresa zdrojového zařízení.<br /> Cíl: název cílového zařízení.<br /> Cílová IP adresa: IP adresa cílového zařízení.<br /> Zpráva: zpráva výstrahy.<br /> Skupina výstrah: Skupina výstrah přidružená k výstraze. |
 
 
-| Výstup objektu syslog | Popis |
+| Výstup objektu syslog | Description |
 |--|--|
 | Datum a čas |   Datum a čas, kdy počítač serveru syslog tyto informace přijal. |  
 | Priorita |    Uživatel. Alert | 
@@ -129,14 +129,14 @@ Zadejte následující parametry:
 | Zpráva | Název snímače: název zařízení. <br /> Čas upozornění: čas, kdy byla výstraha zjištěna: může se lišit od času počítače serveru syslog a závisí na konfiguraci časového pásma pravidla předávání. <br /> Název výstrahy: název výstrahy. <br /> Zpráva upozornění: zpráva výstrahy. <br /> Závažnost výstrahy: Závažnost výstrahy: **Upozornění**, **podverze**, **hlavní** nebo **kritická**. <br /> Typ výstrahy: **porušení protokolu**, **porušení zásad**, **malware**, **anomálie** nebo **provoz**. <br /> Protokol: protokol výstrahy.  <br /> **Source_MAC**: IP adresa, název, dodavatel nebo operační systém zdrojového zařízení. <br /> Destination_MAC: IP adresa, název, dodavatel nebo operační systém cíle. Pokud data chybí, bude hodnota **N/a**. <br /> alert_group: Skupina výstrah přidružená k výstraze. |
 
 
-| Výstupní formát syslog CEF | Popis |
+| Výstupní formát syslog CEF | Description |
 |--|--|
 | Datum a čas | Datum a čas, kdy počítač serveru syslog tyto informace přijal. |
 | Priorita | Uživatel. Alert | 
 | Název hostitele | IP adresa senzoru |
 | Zpráva | CEF: 0 <br />Azure Defender for IoT <br />Název snímače: název zařízení snímače. <br />Verze senzoru <br />Název výstrahy: název výstrahy. <br />Msg: zpráva výstrahy. <br />protokol: protokol výstrahy. <br />závažnost: **Upozornění**, **podverze**, **hlavní** nebo **kritická**. <br />Typ: **porušení protokolu**, **porušení zásad**, **malware**, **anomálie** nebo **provozní**. <br /> začátek: čas, kdy byla výstraha zjištěna. <br />Může se lišit od času počítače serveru syslog a závisí na konfiguraci časového pásma pravidla předávání. <br />src_ip: IP adresa zdrojového zařízení.  <br />dst_ip: IP adresa cílového zařízení.<br />Cat: Skupina výstrah přidružená k výstraze.  |
 
-| Výstupní formát syslog LEEF | Popis |
+| Výstupní formát syslog LEEF | Description |
 |--|--|
 | Datum a čas |   Datum a čas, kdy počítač serveru syslog tyto informace přijal. |  
 | Priorita |    Uživatel. Alert | 
@@ -203,6 +203,6 @@ Je možné, že Správce definoval pravidla vyloučení výstrah. Tato pravidla 
 
 To znamená, že pravidla pro předávání, která definujete, se můžou ignorovat na základě pravidel vyloučení, která vytvořil správce. Pravidla vyloučení jsou definována v místní konzole pro správu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 [Urychlení pracovních postupů výstrah](how-to-accelerate-alert-incident-response.md)

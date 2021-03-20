@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak nakonfigurovat úlohy replikace.
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: b15a5baa5c370014784f20792ff8af7cc19e8938
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97663616"
 ---
 # <a name="configured-replication-tasks"></a>Nakonfigurované úlohy replikace

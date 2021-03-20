@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217520"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Kurz: přidání back-endu úložiště a konfigurace virtuálního oboru názvů
@@ -80,7 +80,7 @@ Mezi dílčí úkoly patří:
 
   ![Informace o cloud Core souborového v Průvodci novým jádrem souborového](media/fxt-cluster-config/new-core-filer-cloud3.png)
   
-  Pokud jste už přidali přihlašovací údaje cloudového přístupu pro tento cluster, zobrazí se v seznamu. Aktualizujte a přidejte přihlašovací údaje **Cluster**na  >  stránce nastavení**přihlašovacích údajů cloudového** clusteru.
+  Pokud jste už přidali přihlašovací údaje cloudového přístupu pro tento cluster, zobrazí se v seznamu. Aktualizujte a přidejte přihlašovací údaje na  >  stránce nastavení **přihlašovacích údajů cloudového** clusteru.
 
 Po vyplnění všech požadovaných nastavení v průvodci klikněte na tlačítko **přidat souborového** a odešlete změnu.
 
@@ -130,7 +130,7 @@ K vytvoření nového VServer potřebujete následující informace:
 
 * Pokud má síť sítě VLAN, kterou síť VLAN použijete pro tento VServer
 
-**VServer**  >  K vytvoření nového VServer použijte stránku VServer**Spravovat nastavení VServers** . Podrobnosti najdete v [tématu Vytvoření VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) v Průvodci konfigurací clusteru.
+  >  K vytvoření nového VServer použijte stránku VServer **Spravovat nastavení VServers** . Podrobnosti najdete v [tématu Vytvoření VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) v Průvodci konfigurací clusteru.
 
 ![automaticky otevírané okno pro vytvoření nového VServer](media/fxt-cluster-config/new-vserver.png)
 
@@ -142,7 +142,7 @@ Tento systém můžete použít ke zjednodušení cesty používané v přípojn
 
 ![Stránka Průvodce přidáním nového spojení s vyplněnými nastaveními](media/fxt-cluster-config/add-junction-full.png)
 
-Kompletní informace o vytvoření spojení oboru názvů najdete v tématu [ **VServer**  >  **Namespace** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) v Průvodci konfigurací clusteru.
+Kompletní informace o vytvoření spojení oboru názvů najdete v tématu [ **VServer**  >  **Namespace**](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) v Průvodci konfigurací clusteru.
 
 ![Stránka nastavení oboru názvů VServer > zobrazující podrobnosti o spojení](media/fxt-cluster-config/namespace-populated.png)
 
@@ -150,7 +150,7 @@ Kompletní informace o vytvoření spojení oboru názvů najdete v tématu [ **
 
 Až budete mít VServer i Core souborového, měli byste přizpůsobit pravidla exportu a exportovat zásady, které řídí, jak můžou klienti přistupovat k souborům v základních exportech souborového.
 
-Nejprve pomocí **VServer**  >  stránky**export pravidel** VServer přidejte nová pravidla, upravte výchozí zásady nebo vytvořte vlastní zásadu exportu.
+Nejprve pomocí   >  stránky **export pravidel** VServer přidejte nová pravidla, upravte výchozí zásady nebo vytvořte vlastní zásadu exportu.
 
 Za druhé použijte stránku **VServer**  >  Export Policy (**zásady exportu** ), pomocí které můžete přizpůsobené zásady použít pro export základních souborovéhoů při použití v tomto VServer.
 

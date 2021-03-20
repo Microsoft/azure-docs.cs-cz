@@ -13,10 +13,10 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-csharp
 ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98625195"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a protokolů ve službě IoT Hub
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující úlohy:
 > * Zobrazení grafu metrik na řídicím panelu.
 > * Zobrazit IoT Hub chyby a operace v protokolech Azure Monitor.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -333,7 +333,7 @@ Stažení řešení pro [Simulaci zařízení IoT](https://github.com/Azure-Samp
         await Task.Delay(1);
         ```
 
-    1. Uložte změny do **SimulatedDevice.cs**.
+    1. Uložte změny do souboru **SimulatedDevice. cs**.
 
 1. V okně místního terminálu spusťte následující příkaz, který nainstaluje požadované balíčky pro aplikaci simulovaného zařízení:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a00cf11edfea2e732a18a392d465525b38ea45f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Kurz: Azure Active Directory integrace s Picturepark
@@ -122,7 +122,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Picturep
 
     ![Kopírovat hodnotu kryptografického otisku](common/copy-thumbprint.png)
 
-7. V části **Nastavení Picturepark** zkopírujte příslušné adresy URL podle vašich požadavků. Pro **přihlašovací adresu URL**použijte hodnotu s následujícím vzorem: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
+7. V části **Nastavení Picturepark** zkopírujte příslušné adresy URL podle vašich požadavků. Pro **přihlašovací adresu URL** použijte hodnotu s následujícím vzorem: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ je ID tenanta předplatného služby Azure AD.
@@ -137,11 +137,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Picturep
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Picturepark společnosti jako správce.
 
-2. Na panelu nástrojů v horní části klikněte na **Nástroje pro správu**a potom klikněte na **Konzola pro správu**.
+2. Na panelu nástrojů v horní části klikněte na **Nástroje pro správu** a potom klikněte na **Konzola pro správu**.
    
     ![Konzola pro správu](./media/picturepark-tutorial/ic795062.png "Konzola pro správu")
 
-3. Klikněte na **ověřování**a potom klikněte na **Zprostředkovatelé identity**.
+3. Klikněte na **ověřování** a potom klikněte na **Zprostředkovatelé identity**.
    
     ![Authentication](./media/picturepark-tutorial/ic795063.png "Authentication")
 
@@ -169,7 +169,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Picturep
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -193,7 +193,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Picturepark.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Picturepark**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Picturepark**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -223,7 +223,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Picturepark, musí se zřídit
 
 1. Přihlaste se ke svému tenantovi **Picturepark** .
 
-1. Na panelu nástrojů v horní části klikněte na **Nástroje pro správu**a potom klikněte na **Uživatelé**.
+1. Na panelu nástrojů v horní části klikněte na **Nástroje pro správu** a potom klikněte na **Uživatelé**.
    
     ![Uživatelé](./media/picturepark-tutorial/ic795067.png "Uživatelé")
 
@@ -233,7 +233,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Picturepark, musí se zřídit
 
 1. V dialogovém okně **vytvořit uživatele** proveďte následující kroky platného Azure Active Directoryho uživatele, který chcete zřídit:
    
-    ![Vytvořit uživatele](./media/picturepark-tutorial/ic795069.png "Vytvořit uživatele")
+    ![Vytvoření uživatele](./media/picturepark-tutorial/ic795069.png "Vytvořit uživatele")
    
     a. Do textového pole **e-mailová adresa** zadejte **e-mailovou adresu** uživatele `BrittaSimon@contoso.com` .  
    
@@ -265,7 +265,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Picturepark, měli byste se automaticky přihlásit k Picturepark, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

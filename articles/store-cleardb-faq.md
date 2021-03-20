@@ -13,10 +13,10 @@ ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
 ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98599797"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím MySql v ClearDB s Azure App Service
@@ -48,7 +48,7 @@ To závisí na typu předplatného, které používáte. Tady jsou některé bě
 Výchozí možnost databáze je Titan, což je $3,50. Neúčtujeme vám náklady během vytváření databáze a můžete si omylem koupit databázi, kterou jste nechtěli zavádět. Snažíme se najít způsob, jak vylepšit prostředí, ale až potom musíte zaškrtnout všechny vybrané cenové úrovně pro webovou aplikaci a databázi před tím, než kliknete na **vytvořit** a spustit nasazení prostředků.
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>Spouštím MySQL na mém vlastním virtuálním počítači Azure. Můžu připojit svou webovou aplikaci Azure k databázi?
-Yes. Webovou aplikaci můžete připojit k databázi, pokud váš virtuální počítač Azure má vzdálený přístup k vaší webové aplikaci. Další informace najdete v tématu [Instalace MySQL na virtuálním počítači](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Ano. Webovou aplikaci můžete připojit k databázi, pokud váš virtuální počítač Azure má vzdálený přístup k vaší webové aplikaci. Další informace najdete v tématu [Instalace MySQL na virtuálním počítači](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>Ve kterých zemích nebo oblastech jsou podporované clustery ClearDB Premium MySQL?
 Clustery ClearDB Premium MySQL jsou dostupné ve všech oblastech Azure po celém světě s výjimkou Indie, Austrálie, Brazílie – jih a Číny.

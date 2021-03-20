@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2044653673da10de59d5ff125da44ac1f89e22f9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861846"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
@@ -264,8 +264,8 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
-    | Popis | *Zadejte popis.* |  |
+    | Name | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
+    | Description | *Zadejte popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby AD* |  |
     | Typ připojeného systémového objektu | **Uživatel** |  |
     | Typ objektu úložiště metaverse | **Person (Osoba)** |  |
@@ -276,7 +276,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
-    | adminDescription | NOTSTARTWITH | Uživatel\_ |
+    | adminDescription | NOTSTARTWITH | Uživatelský\_ |
 
     Filtr oboru určuje, které místní objekty služby AD toto pravidlo příchozí synchronizace používá. V tomto příkladu používáme stejný filtr pro vytváření oborů, který se používá v nástroji *ve službě AD – společné* pravidlo pro synchronizaci předem, které brání použití synchronizačního pravidla pro uživatelské objekty vytvořené prostřednictvím funkce zpětného zápisu uživatelů Azure AD. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 
@@ -306,8 +306,8 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Název | *Zadat název* | Například pro *AAD – uživatel – usertype* |
-    | Popis | *Zadejte popis.* ||
+    | Name | *Zadat název* | Například pro *AAD – uživatel – usertype* |
+    | Description | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor AAD.* ||
     | Typ připojeného systémového objektu | **Uživatel** ||
     | Typ objektu úložiště metaverse | **Person (Osoba)** ||
@@ -318,8 +318,8 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
-    | sourceObjectType | VÝŠI | Uživatel |
-    | cloudMastered | NOTEQUAL | Pravda |
+    | sourceObjectType | VÝŠI | User |
+    | cloudMastered | NOTEQUAL | Ano |
 
     Filtr oboru určuje, které objekty služby Azure AD toto pravidlo odchozí synchronizace používá. V tomto příkladu použijeme stejný filtr pro vytváření oborů z pravidla *pro synchronizaci od pro AD – aktuální identita uživatele* . Zabraňuje použití synchronizačního pravidla pro uživatelské objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 

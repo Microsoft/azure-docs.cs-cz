@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215769"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Přepište adresu URL pomocí Azure Application Gateway-Azure Portal (Preview)
@@ -37,7 +37,7 @@ V následujícím příkladu pokaždé, když adresa URL požadavku obsahuje */a
 
 `contoso.com/article/123/fabrikam` -> `contoso.com/article.aspx?id=123&title=fabrikam`
 
-1. Vyberte **všechny prostředky**a pak vyberte svoji Aplikační bránu.
+1. Vyberte **všechny prostředky** a pak vyberte svoji Aplikační bránu.
 
 2. V levém podokně vyberte **přepsat** .
 
@@ -53,13 +53,13 @@ V následujícím příkladu pokaždé, když adresa URL požadavku obsahuje */a
     
     c. Vyberte **Další**.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Přidat sadu přepsání":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="Přidružit k pravidlu":::
 
 5. Vytvořit pravidlo přepsání:
 
     a. Vyberte **Přidat pravidlo přepsání**.
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Přidat sadu přepsání":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="Snímek obrazovky, který zvýrazní pravidlo přidat přepsání":::
     
     b. Do pole **název pravidla přepsání** zadejte název pravidla pro přepsání. Zadejte číslo do pole **pořadí pravidel** .
 
@@ -71,7 +71,7 @@ V následujícím příkladu pokaždé, když adresa URL požadavku obsahuje */a
     
     c. V seznamu **proměnné serveru** vyberte uri_path
     
-    d. V části rozlišovat **velikost písmen**vyberte možnost **ne**.
+    d. V části rozlišovat **velikost písmen** vyberte možnost **ne**.
     
     e. V seznamu **operátor** vyberte **EQUAL (=)**.
     
@@ -81,7 +81,7 @@ V následujícím příkladu pokaždé, když adresa URL požadavku obsahuje */a
 
     například Vyberte **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Přidat sadu přepsání"::: (Podmínka)
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Condition"::: (Podmínka)
 
  
 
@@ -91,23 +91,23 @@ V následujícím příkladu pokaždé, když adresa URL požadavku obsahuje */a
 
    b. V seznamu **typ akce** vyberte možnost **nastavit**.
 
-   c. V části **součásti**vyberte možnost **cesta URL a řetězec dotazu URL** .
+   c. V části **součásti** vyberte možnost **cesta URL a řetězec dotazu URL** .
 
-   d. Do pole **Adresa URL**zadejte novou hodnotu v cestě. V tomto příkladu použijeme **/article.aspx** . 
+   d. Do pole **Adresa URL** zadejte novou hodnotu v cestě. V tomto příkladu použijeme **/article.aspx** . 
 
-   e. Do pole **hodnota řetězce dotazu URL**zadejte novou hodnotu řetězce dotazu URL. V tomto příkladu použijeme **ID = {var_uri_path_1} &title = {var_uri_path_2}** .
+   e. Do pole **hodnota řetězce dotazu URL** zadejte novou hodnotu řetězce dotazu URL. V tomto příkladu použijeme **ID = {var_uri_path_1} &title = {var_uri_path_2}** .
     
     `{var_uri_path_1}` a `{var_uri_path_1}` slouží k načtení podřetězců zachycených při vyhodnocování podmínky v tomto výrazu `.*article/(.*)/(.*)`
     
    f. Vyberte **OK**.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Přidat sadu přepsání":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="Akce":::
 
 8. Kliknutím na **vytvořit** vytvořte sadu přepsání.
 
 9. Ověřte, že se nová sada přepisování zobrazuje v seznamu přepsaných sad.
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Přidat sadu přepsání":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="Přidat pravidlo pro přepsání":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>Ověření přepsání adresy URL prostřednictvím protokolů přístupu
 

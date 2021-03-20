@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 97294bdd088f50a46786c3568f4230706f750c4c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Kurz: Azure Active Directory integrace s Mozy Enterprise
@@ -132,7 +132,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Mozy Ent
    
     ![Snímek obrazovky se zobrazí v části zásady ověřování, kde můžete zadat hodnoty, které jsou popsány.](./media/mozy-enterprise-tutorial/ic777315.png "Zásady ověřování")
    
-    a. Jako **zprostředkovatel**vyberte **adresářová služba** .
+    a. Jako **zprostředkovatel** vyberte **adresářová služba** .
    
     b. Vyberte **použít nabízení protokolu LDAP**.
    
@@ -152,7 +152,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Mozy Ent
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -177,7 +177,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Mozy Enterprise.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Mozy Enterprise**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Mozy Enterprise**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -210,12 +210,12 @@ Aby se uživatelé Azure AD mohli přihlašovat do Mozy Enterprise, musí se zř
 
 1. Přihlaste se ke svému klientovi **Mozy Enterprise** .
 
-2. Klikněte na **Uživatelé**a potom klikněte na **Přidat nového uživatele**.
+2. Klikněte na **Uživatelé** a potom klikněte na **Přidat nového uživatele**.
    
     ![Uživatelé](./media/mozy-enterprise-tutorial/ic777317.png "Uživatelé")
    
     >[!NOTE]
-    >Možnost **Přidat nového uživatele** se zobrazí jenom v případě, že je v části **zásady ověřování**vybraný **Mozy** jako zprostředkovatel. Pokud je nakonfigurováno ověřování SAML, přidají se uživatelé automaticky při prvním přihlášení prostřednictvím jednotného přihlašování.
+    >Možnost **Přidat nového uživatele** se zobrazí jenom v případě, že je v části **zásady ověřování** vybraný **Mozy** jako zprostředkovatel. Pokud je nakonfigurováno ověřování SAML, přidají se uživatelé automaticky při prvním přihlášení prostřednictvím jednotného přihlašování.
     
 3. V dialogovém okně Nový uživatel proveďte následující kroky:
    
@@ -242,7 +242,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Mozy Enterprise na přístupovém panelu, měli byste se automaticky přihlásit k Mozy podniku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

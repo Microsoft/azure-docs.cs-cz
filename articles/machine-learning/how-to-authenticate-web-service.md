@@ -12,10 +12,10 @@ ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 5bd938fce347d439c2acb4e3fcace04d5b27d770
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94447586"
 ---
 # <a name="configure-authentication-for-models-deployed-as-web-services"></a>Konfigurace ověřování pro modely nasazené jako webové služby
@@ -24,8 +24,8 @@ Azure Machine Learning umožňuje nasazení vašich školicích modelů strojov�
 
 Nasazení modelu vytvořená Azure Machine Learning lze nakonfigurovat tak, aby používalo jednu ze dvou metod ověřování:
 
-* **založené na klíčích** : ke ověřování webové služby se používá statický klíč.
-* **založené na tokenech** : dočasný token se musí získat z Azure Machine Learningho pracovního prostoru (pomocí Azure Active Directory) a použít ho k ověření webové služby. Platnost tohoto tokenu vyprší po uplynutí určité doby a je nutné ji aktualizovat, aby bylo možné pokračovat v práci s webovou službou.
+* **založené na klíčích**: ke ověřování webové služby se používá statický klíč.
+* **založené na tokenech**: dočasný token se musí získat z Azure Machine Learningho pracovního prostoru (pomocí Azure Active Directory) a použít ho k ověření webové služby. Platnost tohoto tokenu vyprší po uplynutí určité doby a je nutné ji aktualizovat, aby bylo možné pokračovat v práci s webovou službou.
 
     > [!NOTE]
     > Ověřování založené na tokenech je dostupné jenom při nasazení do služby Azure Kubernetes.

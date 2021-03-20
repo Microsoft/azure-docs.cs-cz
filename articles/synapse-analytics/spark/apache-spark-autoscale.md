@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
 ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93313645"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatické škálování Apache Sparkch fondů Azure synapse Analytics
 
-Apache Spark funkce automatického škálování fondu služby Azure synapse Analytics automaticky škáluje počet uzlů v instanci clusteru směrem nahoru a dolů. Během vytváření nového Apache Spark pro fond analýz Azure synapse se dá nastavit minimální a maximální počet uzlů, pokud je vybraná možnost automatické škálování. Automatické škálování pak monitoruje požadavky na prostředky pro zatížení a škáluje počet uzlů nahoru nebo dolů. Pro tuto funkci se neúčtují žádné další poplatky.
+Funkce automatického škálování fondu Apache Sparku pro Azure Synapse Analytics zajišťuje automatické zvyšování a snižování počtu uzlů v instanci clusteru. Pokud vyberete automatické škálování, při vytváření nového fondu Apache Sparku pro Azure Synapse Analytics můžete nastavit minimální a maximální počet uzlů. Automatické škálování pak bude monitorovat požadavky na prostředky při zatížení a zvyšovat nebo snižovat počet uzlů. Za tuto funkci se neúčtují žádné další poplatky.
 
 ## <a name="metrics-monitoring"></a>Monitorování metrik
 
 Automatické škálování nepřetržitě monitoruje instanci Spark a shromažďuje následující metriky:
 
-|Metrika|Popis|
+|Metric|Popis|
 |---|---|
 |Celkový počet vyřízených PROCESORů|Celkový počet jader potřebných ke spuštění provádění všech nevyřízených uzlů.|
 |Celkový počet nevyřízených paměti|Celková paměť (v MB) požadovaná k zahájení provádění všech nevyřízených uzlů.|

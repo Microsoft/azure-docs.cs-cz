@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91576094"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování služba-služba pomocí Azure Data Lake Storage Gen1 s využitím Azure Active Directory
@@ -29,7 +29,7 @@ Obě tyto možnosti mají za následek, že vaše aplikace bude k dispozici s to
 
 Tento článek pojednává o tom, jak vytvořit **webovou aplikaci Azure AD pro ověřování služby-služba**. Pokyny týkající se konfigurace aplikací Azure AD pro ověřování koncových uživatelů najdete v tématu [ověřování koncových uživatelů pomocí Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="step-1-create-an-active-directory-web-application"></a>Krok 1: Vytvoření webové aplikace Active Directory
@@ -60,7 +60,7 @@ Když se programově přihlašujete, budete potřebovat ID vaší aplikace. Poku
 4. V okně **přístup** se zobrazí standardní přístup a vlastní přístup, který je už přiřazený ke kořenu. Kliknutím na ikonu **Přidat** přidáte seznamy řízení přístupu (ACL) na vlastní úrovni.
    
     ![Vypsat standardní a vlastní přístup](./media/data-lake-store-authenticate-using-active-directory/adl.acl.2.png "Vypsat standardní a vlastní přístup")
-5. Kliknutím na ikonu **Přidat** otevřete okno **Přidat vlastní přístup** . V tomto okně klikněte na **Vybrat uživatele nebo skupinu**a potom v okně **Vybrat uživatele nebo skupinu** vyhledejte aplikaci Azure Active Directory, kterou jste vytvořili dříve. Pokud máte více skupin, ze kterých můžete vyhledávat, použijte k filtrování názvu skupiny textové pole v horní části. Klikněte na skupinu, kterou chcete přidat, a potom klikněte na **Vybrat**.
+5. Kliknutím na ikonu **Přidat** otevřete okno **Přidat vlastní přístup** . V tomto okně klikněte na **Vybrat uživatele nebo skupinu** a potom v okně **Vybrat uživatele nebo skupinu** vyhledejte aplikaci Azure Active Directory, kterou jste vytvořili dříve. Pokud máte více skupin, ze kterých můžete vyhledávat, použijte k filtrování názvu skupiny textové pole v horní části. Klikněte na skupinu, kterou chcete přidat, a potom klikněte na **Vybrat**.
    
     ![Přidat skupinu](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Přidat skupinu")
 6. Klikněte na **vybrat oprávnění**, vyberte oprávnění a určete, jestli chcete přiřadit oprávnění jako výchozí seznam ACL, přístup k seznamu ACL nebo obojí. Klikněte na **OK**.

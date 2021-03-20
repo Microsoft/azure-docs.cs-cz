@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014032"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics vlastní dělení výstupu objektů BLOB
@@ -72,13 +72,13 @@ Všimněte si, že každý záznam v objektu BLOB má **client_id** sloupec odpo
 
 ## <a name="custom-datetime-path-patterns"></a>Vlastní vzory cesty DateTime
 
-Vlastní vzorce pro cestu DateTime umožňují zadat výstupní formát, který bude odpovídat konvencím pro streamování, což dává Azure Stream Analytics schopnost odesílat data do služby Azure HDInsight a Azure Databricks pro zpracování pro příjem dat. Vlastní vzorce cesty DateTime se snadno implementují pomocí `datetime` klíčového slova v poli Předpona cesty pro výstup objektu BLOB spolu s specifikátorem formátu. Například `{datetime:yyyy}`.
+Vlastní vzorce pro cestu DateTime umožňují zadat výstupní formát, který bude odpovídat konvencím pro streamování, což dává Azure Stream Analytics schopnost odesílat data do služby Azure HDInsight a Azure Databricks pro zpracování pro příjem dat. Vlastní vzorce cesty DateTime se snadno implementují pomocí `datetime` klíčového slova v poli Předpona cesty pro výstup objektu BLOB spolu s specifikátorem formátu. Například, `{datetime:yyyy}`.
 
 ### <a name="supported-tokens"></a>Podporované tokeny
 
 Následující tokeny specifikátoru formátu lze použít samostatně nebo v kombinaci k dosažení vlastních formátů data a času:
 
-|Specifikátor formátu   |Popis   |Výsledky pro příklad času 2018-01-02T10:06:08|
+|Specifikátor formátu   |Description   |Výsledky pro příklad času 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{DateTime: rrrr}|Rok jako čtyřmístné číslo|2018|
 |{DateTime: MM}|Měsíc od 01 do 12|01|
@@ -110,7 +110,7 @@ V předponě cesty můžete několikrát použít stejný specifikátor formátu
 
 Vlastní vzory cest pro úložiště objektů BLOB lze použít s konvencí pro streamování podregistru, která očekává, že složky budou označeny `column=` v názvu složky.
 
-Například `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
+Například, `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
 
 Vlastní výstup eliminuje nepříjemnosti při změnách tabulek a Ruční přidávání oddílů do dat portů mezi Azure Stream Analytics a podregistru. Místo toho je možné automaticky přidat mnoho složek pomocí:
 

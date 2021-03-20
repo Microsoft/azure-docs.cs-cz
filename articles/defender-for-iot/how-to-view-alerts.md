@@ -8,10 +8,10 @@ ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
 ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523664"
 ---
 # <a name="view-alerts"></a>Zobrazení upozornění
@@ -32,7 +32,7 @@ Zobrazení výstrah:
 
 Výstrahy můžete zobrazit podle různých kategorií v hlavním zobrazení **výstrahy** . Vyberte výstrahu, chcete-li zkontrolovat podrobnosti a spravovat událost.
 
-| Seřadit podle typu | Popis |
+| Seřadit podle typu | Description |
 |--|--|
 | **Důležité výstrahy** | Výstrahy seřazené podle důležitosti. |
 | **Připnuté výstrahy** | Upozorňuje, že uživatel připnul k dalšímu šetření. Připnuté výstrahy nejsou archivovány a jsou uloženy po dobu 14 dní v připnuté složce. |

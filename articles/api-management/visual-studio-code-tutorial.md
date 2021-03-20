@@ -7,10 +7,10 @@ ms.author: apimpm
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.openlocfilehash: 0dea8e43d5f09b84c5795bc257cf3331ad919fcb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101649542"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>Kurz: použití rozšíření API Management pro Visual Studio Code k importu a správě rozhraní API
@@ -30,7 +30,7 @@ Získáte informace o těchto tématech:
 
 Úvod k dalším funkcím API Management najdete v kurzech API Management pomocí [Azure Portal](import-and-publish.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Vysvětlení [terminologie služby Azure API Management](api-management-terminology.md)
 - Ujistěte se, že máte nainstalované [Visual Studio Code](https://code.visualstudio.com/) a nejnovější [rozšíření Azure API Management pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
 - [Vytvoření instance API Management](vscode-create-service-instance.md)

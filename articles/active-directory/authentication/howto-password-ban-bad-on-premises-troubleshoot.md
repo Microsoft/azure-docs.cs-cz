@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101648721"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Řešení potíží: místní ochrana heslem Azure AD
@@ -328,7 +328,7 @@ Rutina Test-AzureADPasswordProtectionDCAgentHealth podporuje několik testů sta
 
 Následující testy lze spustit jednotlivě a nepřijmout. Stručný popis
 
-|Test stavu agenta řadiče domény|Popis|
+|Test stavu agenta řadiče domény|Description|
 | --- | :---: |
 |-VerifyPasswordFilterDll|Ověřuje, jestli je knihovna DLL filtru hesel aktuálně načtená a může volat službu agenta DC.|
 |-VerifyForestRegistration|Ověřuje, jestli je doménová struktura aktuálně zaregistrovaná.|

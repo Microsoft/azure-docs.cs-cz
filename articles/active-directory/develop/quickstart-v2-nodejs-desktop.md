@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: v-doeris
 ms.openlocfilehash: beef869b891fe6e3f0ea2f667763cb310008b2fc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653265"
 ---
 # <a name="quickstart-acquire-an-access-token-and-call-the-microsoft-graph-api-from-an-electron-desktop-app"></a>Rychlý Start: získání přístupového tokenu a volání rozhraní Microsoft Graph API z aplikace pracovní plochy
@@ -23,7 +23,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která demonstru
 
 V tomto rychlém startu se používá [Knihovna ověřování Microsoft pro Node.js (uzel MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node) s [tokem autorizačního kódu s PKCE](v2-oauth2-auth-code-flow.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
@@ -140,7 +140,7 @@ const MSAL_CONFIG = {
 const pca = new PublicClientApplication(MSAL_CONFIG);
 ```
 
-> | Kde: |Popis |
+> | Kde: |Description |
 > |---------|---------|
 > | `clientId` | Je **ID aplikace (klienta)**, kterou jste zaregistrovali na webu Azure Portal. Tuto hodnotu najdete na stránce **Přehled** aplikace na webu Azure Portal. |
 > | `authority`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, Obvykle `https://login.microsoftonline.com/{tenant}` pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta.|
@@ -231,7 +231,7 @@ async function listenForAuthCode(navigateUrl, authWindow) {
 }
 ```
 
-> |Kde:| Popis |
+> |Kde:| Description |
 > |---------|---------|
 > | `authWindow` | Aktuální elektronické okno v procesu. |
 > | `tokenRequest` | Obsahuje požadované obory, například `"User.Read"` pro Microsoft Graph nebo `"api://<Application ID>/access_as_user"` pro vlastní webová rozhraní API. |

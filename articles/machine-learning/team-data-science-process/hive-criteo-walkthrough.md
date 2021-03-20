@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e66bd0a4e56f63185d8361355d6cf8e0e29bc30b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305942"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – použití clusteru Azure HDInsight Hadoop s datovou sadou 1 TB
@@ -50,11 +50,11 @@ V číselném i kategorií sloupci v této datové sadě chybí hodnoty. Je pops
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Příklady úkolů předpovědi
 V tomto návodu jsou řešeny dva ukázkové problémy předpovědi:
 
-1. **Binární klasifikace** : odhadne, jestli uživatel klikl na přidání:
+1. **Binární klasifikace**: odhadne, jestli uživatel klikl na přidání:
 
    * Třída 0: žádné kliknutí
    * Třída 1: klikněte na
-2. **Regrese** : předpověď pravděpodobnosti kliknutí na reklamu z uživatelských funkcí.
+2. **Regrese**: předpověď pravděpodobnosti kliknutí na reklamu z uživatelských funkcí.
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>Nastavení clusteru HDInsight Hadoop pro datové vědy
 > [!NOTE]
@@ -99,7 +99,7 @@ Vlevo je příkazový řádek Hadoop, který je náš WorkHorse pro zkoumání d
 Nyní jste nastavili a připraveni začít první část návodu: zkoumání dat pomocí podregistru a získání dat pro Azure Machine Learning.
 
 ## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Vytvoření databáze a tabulek podregistru
-Chcete-li vytvořit tabulky podregistru pro naši datovou sadu Criteo, otevřete příkazový *_řádek systému Hadoop_* _ na ploše hlavního uzlu a zadejte adresář podregistru zadáním příkazu.
+Chcete-li vytvořit tabulky podregistru pro naši datovou sadu Criteo, otevřete ***příkazový řádek Hadoop*** na ploše hlavního uzlu a zadejte adresář podregistru zadáním příkazu.
 
 ```console
 cd %hive_home%\bin
@@ -118,7 +118,7 @@ Po zobrazení podregistru se REPL s označením "podregistr >", jednoduše vyvyj
 
 Následující kód vytvoří databázi "Criteo" a pak vygeneruje čtyři tabulky:
 
-_ *tabulka pro generování počtů* na základě dnů od \_ 00 do dne \_ 20,
+* *tabulka pro generování počtů* na základě dnů od \_ 00 do dne \_ 20 dní,
 * tabulka, která *se má použít jako datová sada vlaku* postavená dne \_ 21.
 * dvě *tabulky pro použití jako testovací datové sady, které* jsou založené na dni \_ 22 a dne \_ 23.
 
@@ -161,7 +161,7 @@ Všechny tyto tabulky jsou externí, takže můžete odkazovat na jejich umíst�
 
 **Existují dva způsoby, jak spustit libovolný dotaz z podregistru:**
 
-* **Pomocí příkazového řádku REPL podregistru** : první z nich je vydání příkazu "podregistr" a zkopírování a vložení dotazu do podregistru REPL příkazového řádku:
+* **Pomocí příkazového řádku REPL podregistru**: první z nich je vydání příkazu "podregistr" a zkopírování a vložení dotazu do podregistru REPL příkazového řádku:
 
   ```console
   cd %hive_home%\bin
@@ -169,7 +169,7 @@ Všechny tyto tabulky jsou externí, takže můžete odkazovat na jejich umíst�
   ```
 
      Nyní na příkazovém řádku REPL provede vyjmutí a vložení dotazu.
-* **Ukládání dotazů do souboru a spuštění příkazu** : druhý postup uloží dotazy do souboru. HQL ( [vzorový&#95;podregistr&#95;create&#95;criteo&#95;database&#95;a&#95;Tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) a potom pro spuštění dotazu vydejte následující příkaz:
+* **Ukládání dotazů do souboru a spuštění příkazu**: druhý postup uloží dotazy do souboru. HQL ([vzorový&#95;podregistr&#95;create&#95;criteo&#95;database&#95;a&#95;Tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) a potom pro spuštění dotazu vydejte následující příkaz:
 
   ```console
   hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
@@ -502,13 +502,13 @@ V případě modulu **Import dat** jsou hodnoty parametrů, které jsou k dispoz
 
 1. Zvolit dotaz na podregistr pro **zdroj dat**
 2. V poli **dotaz do databáze podregistru** je jednoduchý výběr * z <\_ název vaší databáze \_ . \_ název tabulky \_ je>-je dostatečně.
-3. **Identifikátor URI serveru Hcatalog** : Pokud je váš cluster "ABC", je to jednoduše: https: \/ /ABC.azurehdinsight.NET
-4. **Název uživatelského účtu Hadoop** : uživatelské jméno, které jste zvolili při vystavení clusteru v době od jejího provozu. (Nejedná se o uživatelské jméno vzdáleného přístupu.)
-5. **Heslo uživatelského účtu Hadoop** : heslo pro uživatelské jméno, které jste zvolili při vystavení clusteru v době od jejího provozu. (Nejedná se o heslo vzdáleného přístupu.)
-6. **Umístění výstupních dat** : vyberte Azure.
-7. **Název účtu Azure Storage** : účet úložiště, který je přidružený ke clusteru.
-8. **Klíč účtu Azure Storage** : klíč účtu úložiště přidruženého ke clusteru.
-9. **Název kontejneru Azure** : Pokud je název clusteru "ABC", je to jednoduše "ABC", obvykle.
+3. **Identifikátor URI serveru Hcatalog**: Pokud je váš cluster "ABC", je to jednoduše: https: \/ /ABC.azurehdinsight.NET
+4. **Název uživatelského účtu Hadoop**: uživatelské jméno, které jste zvolili při vystavení clusteru v době od jejího provozu. (Nejedná se o uživatelské jméno vzdáleného přístupu.)
+5. **Heslo uživatelského účtu Hadoop**: heslo pro uživatelské jméno, které jste zvolili při vystavení clusteru v době od jejího provozu. (Nejedná se o heslo vzdáleného přístupu.)
+6. **Umístění výstupních dat**: vyberte Azure.
+7. **Název účtu Azure Storage**: účet úložiště, který je přidružený ke clusteru.
+8. **Klíč účtu Azure Storage**: klíč účtu úložiště přidruženého ke clusteru.
+9. **Název kontejneru Azure**: Pokud je název clusteru "ABC", je to jednoduše "ABC", obvykle.
 
 Jakmile **data importu** dokončí načítání dat (uvidíte zelenou značku v modulu), uložte tato data jako datovou sadu (s názvem podle vlastního výběru). Co vypadá takto:
 

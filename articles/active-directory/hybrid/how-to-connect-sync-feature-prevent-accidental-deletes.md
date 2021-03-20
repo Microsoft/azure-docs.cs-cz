@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16d48cda87b8226ebc3bbab179c1034abf0a486f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084605"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Synchronizace Azure AD Connect: Prevence náhodného odstranění
@@ -54,7 +54,7 @@ Pokud se to neočekávalo, prozkoumejte a proveďte nápravné akce. Chcete-li z
 2. Přejít na **konektory**.
 3. Vyberte konektor s typem **Azure Active Directory**.
 4. V části **Akce** vpravo vyberte **Hledat místo v konektoru**.
-5. V místní nabídce v části **obor**vyberte **Odpojit od** a vyberte čas v minulosti. Klikněte na **Vyhledat**. Tato stránka poskytuje zobrazení všech objektů, které mají být odstraněny. Kliknutím na jednotlivé položky můžete získat další informace o objektu. Můžete také kliknout na **Nastavení sloupce** a přidat další atributy, které mají být viditelné v mřížce.
+5. V místní nabídce v části **obor** vyberte **Odpojit od** a vyberte čas v minulosti. Klikněte na **Vyhledat**. Tato stránka poskytuje zobrazení všech objektů, které mají být odstraněny. Kliknutím na jednotlivé položky můžete získat další informace o objektu. Můžete také kliknout na **Nastavení sloupce** a přidat další atributy, které mají být viditelné v mřížce.
 
 ![Hledat místo v konektoru](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 

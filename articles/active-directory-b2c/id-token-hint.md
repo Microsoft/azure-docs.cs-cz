@@ -12,10 +12,10 @@ ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97669155"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definice technického profilu pomocného tokenu ID v Azure Active Directory B2C vlastní zásady
@@ -34,7 +34,7 @@ Pomocí id_token_hint Vystavitel tokenu (aplikace předávající strany nebo po
 
 Id_token_hint musí být platný token JWT. V následující tabulce jsou uvedeny deklarace identity, které jsou povinné. Další deklarace identity jsou volitelné.
 
-| Název | Deklarovat | Příklad hodnoty | Popis |
+| Name | Deklarovat | Příklad hodnoty | Description |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifikuje zamýšleného příjemce tokenu. Cílová skupina je libovolný řetězec definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a zamítnutí tokenu, pokud se neshoduje.  |
 | Vystavitel | `iss` |`https://localhost` | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Vystavitel je libovolný identifikátor URI definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a zamítnutí tokenu, pokud se neshoduje.  |
@@ -84,16 +84,16 @@ Následující metadata jsou relevantní při použití symetrického klíče.
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| issuer | Ano | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace tokenu JWT. | 
-| IdTokenAudience | Ano | Identifikuje zamýšleného příjemce tokenu. Musí být identické s `aud` deklarací identity v rámci deklarace tokenu JWT. | 
+| issuer | Yes | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace tokenu JWT. | 
+| IdTokenAudience | Yes | Identifikuje zamýšleného příjemce tokenu. Musí být identické s `aud` deklarací identity v rámci deklarace tokenu JWT. | 
 
 Následující metadata jsou relevantní při použití asymetrického klíče. 
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MEZIPAMĚŤ| Ano | Adresa URL, která odkazuje na dokument konfigurace vystavitele tokenu, který je také známý jako OpenID dobře známý koncový bod konfigurace.   |
-| issuer | Ne | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota se dá použít k přepsání hodnoty nakonfigurované v metadatech a musí být identická s `iss` deklarací identity v rámci deklarace tokenu JWT. |  
-| IdTokenAudience | Ne | Identifikuje zamýšleného příjemce tokenu. Musí být identické s `aud` deklarací identity v rámci deklarace tokenu JWT. |  
+| MEZIPAMĚŤ| Yes | Adresa URL, která odkazuje na dokument konfigurace vystavitele tokenu, který je také známý jako OpenID dobře známý koncový bod konfigurace.   |
+| issuer | No | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota se dá použít k přepsání hodnoty nakonfigurované v metadatech a musí být identická s `iss` deklarací identity v rámci deklarace tokenu JWT. |  
+| IdTokenAudience | No | Identifikuje zamýšleného příjemce tokenu. Musí být identické s `aud` deklarací identity v rámci deklarace tokenu JWT. |  
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -101,7 +101,7 @@ Při použití symetrického klíče obsahuje element **CryptographicKeys** nás
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_secret | Ano | Kryptografický klíč, který se používá k ověření podpisu tokenu JWT.|
+| client_secret | Yes | Kryptografický klíč, který se používá k ověření podpisu tokenu JWT.|
 
 
 ## <a name="how-to-guide"></a>Praktičtí průvodci
@@ -185,7 +185,7 @@ Vystavitel tokenu musí poskytovat následující koncové body:
 * `/.well-known/openid-configuration` – Dobře známý koncový bod konfigurace se souvisejícími informacemi o tokenu, jako je název vystavitele tokenu a odkaz na koncový bod JWK. 
 * `/.well-known/keys` – koncový bod JSON web Key (JWK) s veřejným klíčem, který se používá k podepsání klíče (s částí certifikátu privátního klíče).
 
-Podívejte se na ukázku kontroleru [TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC.
+Podívejte se na ukázku řadiče [TokenMetadataController. cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC.
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>Krok 1. Příprava certifikátu podepsaného svým držitelem
 
@@ -249,7 +249,7 @@ V případě symetrických i asymetrických přístupů `id_token_hint` je techn
     ```xml
     <OrchestrationStep Order="1" Type="GetClaims" CpimIssuerTechnicalProfileReferenceId="IdTokenHint_ExtractClaims" />
     ``` 
-1. V zásadách předávající strany opakujte stejné vstupní deklarace identity, které jste nakonfigurovali v IdTokenHint_ExtractClaims Technical Profile. Příklad:
+1. V zásadách předávající strany opakujte stejné vstupní deklarace identity, které jste nakonfigurovali v IdTokenHint_ExtractClaims Technical Profile. Například:
     ```xml
    <RelyingParty>
      <DefaultUserJourney ReferenceId="SignUp" />

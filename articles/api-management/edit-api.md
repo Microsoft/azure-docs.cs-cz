@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 1c4e64251390936e8a63ee904ec69f173cac6114
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146701"
 ---
 # <a name="edit-an-api"></a>Úprava rozhraní API
@@ -37,18 +37,18 @@ Kroky v tomto kurzu popisují, jak pomocí služby API Management (APIM) upravit
 
 ![Snímek obrazovky, který zvýrazňuje proces pro úpravu rozhraní API v APIM.](./media/edit-api/edit-api001.png)
 
-1. Klikněte na kartu **Rozhraní API** .
+1. Klikněte na kartu **Rozhraní API**.
 2. Vyberte některé z rozhraní API, která jste předtím naimportovali.
-3. Vyberte kartu **Návrh** .
+3. Vyberte kartu **Návrh**.
 4. Vyberte operaci, kterou chcete upravit.
-5. Pokud chcete operaci přejmenovat, vyberte **tužku** v okně **Front-end** .
+5. Pokud chcete operaci přejmenovat, vyberte **tužku** v okně **Front-end**.
 
 ## <a name="update-the-swagger"></a>Aktualizace swaggeru
 
 Back-end rozhraní API můžete upravit na webu Azure Portal pomocí následujících kroků:
 
-1. Vyberte **Všechny operace** .
-2. Klikněte na tužku v okně **Front-end** .
+1. Vyberte **Všechny operace**.
+2. Klikněte na tužku v okně **Front-end**.
 
     ![Snímek obrazovky, který zvýrazní ikonu tužky na obrazovce front-endu.](./media/edit-api/edit-api002.png)
 
@@ -57,7 +57,7 @@ Back-end rozhraní API můžete upravit na webu Azure Portal pomocí následují
     ![Úprava rozhraní API](./media/edit-api/edit-api003.png)
 
 3. Aktualizujte swagger.
-4. Stiskněte **Uložit** .
+4. Stiskněte **Uložit**.
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

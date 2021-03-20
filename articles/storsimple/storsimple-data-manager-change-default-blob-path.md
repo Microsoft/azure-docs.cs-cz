@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011434"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Změna výchozí cesty k objektu blob
 
 Když Služba StorSimple Data Manager transformuje data, ve výchozím nastavení umístí transformované objekty blob do kontejneru úložiště, jak je zadané během vytváření cílového úložiště. Vzhledem k tomu, že objekty blob přicházejí do tohoto umístění, možná budete chtít přesunout tyto objekty blob do alternativního umístění. Tento článek popisuje, jak nastavit funkci Azure pro přejmenování výchozí cesty k souboru BLOB, a proto přesunout objekty blob na jiné místo.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že máte ve službě StorSimple Data Manager správnou nakonfigurovanou definici úlohy.
 
@@ -25,7 +25,7 @@ Ujistěte se, že máte ve službě StorSimple Data Manager správnou nakonfigur
 
 Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com/).
+1. Přejděte na [Azure Portal](https://portal.azure.com/).
 
 2. Klikněte na **+ Vytvořit prostředek**. Do **vyhledávacího** pole zadejte **Function App** a stiskněte klávesu **ENTER**. V zobrazeném seznamu aplikací vyberte a klikněte na **aplikace Function App** .
 

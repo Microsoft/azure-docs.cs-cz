@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91744147"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Otevřete lístek podpory pro Azure Data Box
@@ -30,33 +30,33 @@ Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
 
     ![Nová žádost o podporu](./media/data-box-disk-contact-microsoft-support/data-box-disk-support-request.png)
 
-2. V **nové žádosti o podporu**vyberte **základy**. V části **základy**proveďte následující kroky:
+2. V **nové žádosti o podporu** vyberte **základy**. V části **základy** proveďte následující kroky:
 
     1. V rozevíracím seznamu **typ problému** vyberte možnost **technický**.
     2. Vyberte své **předplatné**.
-    3. V části **Služba**zaškrtněte **všechny služby**. V rozevíracím seznamu vyberte možnost **data box**. 
+    3. V části **Služba** zaškrtněte **všechny služby**. V rozevíracím seznamu vyberte možnost **data box**. 
     4. Zadejte svůj **plán podpory**.
     5. Klikněte na **Next** (Další).
 
         ![Základy](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
-3. V **nové žádosti o podporu**vyberte **Krok 2 problém**. V části **problém**proveďte následující kroky:
+3. V **nové žádosti o podporu** vyberte **Krok 2 problém**. V části **problém** proveďte následující kroky:
 
     1. Vyberte **závažnost** jako **C-minimální dopad**. Podpora bude v případě potřeby aktualizovat.
     2. V rozevíracím seznamu vyberte **typ problému** .
     3. Na základě vybraného typu problému vyberte odpovídající **kategorii**.
     4. Zadejte **název** problému a další **Podrobnosti**.
     5. Zadejte datum a čas spuštění problému.
-    6. V **souboru pro nahrání**klikněte na ikonu složky a procházejte dalšími soubory, které chcete nahrát.
+    6. V **souboru pro nahrání** klikněte na ikonu složky a procházejte dalšími soubory, které chcete nahrát.
     7. Podívejte se na **sdílené diagnostické informace**.
     8. Klikněte na **Next** (Další).
 
        ![Problém](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
 
-4. V **nové žádosti o podporu**klikněte na **Krok 3 kontaktní informace**. V části **kontaktní informace**proveďte následující kroky:
+4. V **nové žádosti o podporu** klikněte na **Krok 3 kontaktní informace**. V části **kontaktní informace** proveďte následující kroky:
 
-   1. V **možnostech kontaktů**zadejte preferovanou metodu kontaktu (telefon nebo e-mail) a jazyk. Doba odezvy se automaticky vybere na základě vašeho plánu předplatného.
-   2. V **kontaktní informace**zadejte své jméno, e-mail, nepovinný kontakt, země/oblast. Vyberte **Uložit změny kontaktů pro budoucí žádosti o podporu**.
+   1. V **možnostech kontaktů** zadejte preferovanou metodu kontaktu (telefon nebo e-mail) a jazyk. Doba odezvy se automaticky vybere na základě vašeho plánu předplatného.
+   2. V **kontaktní informace** zadejte své jméno, e-mail, nepovinný kontakt, země/oblast. Vyberte **Uložit změny kontaktů pro budoucí žádosti o podporu**.
    3. Klikněte na **Vytvořit**.
 
        ![Kontaktní informace](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
@@ -74,7 +74,7 @@ Po vytvoření lístku můžete spravovat lístek v celém jeho životním cyklu
 
     ![Správa žádostí o podporu](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket1.png)
 
-2. V **nápovědě a podpoře**se zobrazí tabulkový výpis **posledních žádostí o podporu** .
+2. V **nápovědě a podpoře** se zobrazí tabulkový výpis **posledních žádostí o podporu** .
 
     ![Spravovat žádosti o podporu 2](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 

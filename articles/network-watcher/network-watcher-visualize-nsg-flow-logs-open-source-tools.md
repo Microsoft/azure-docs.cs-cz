@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: aca8c75f262e472cbc770c052b86d6e760ee449a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026467"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Vizualizace protokolů toku skupin zabezpečení sítě, které jsou ve službě Azure Network Watcher, s použitím opensourcových nástrojů
@@ -25,7 +25,7 @@ Protokoly toku skupin zabezpečení sítě poskytují informace, které se dají
 
 Tyto protokoly toků můžou být obtížné ručně analyzovat a získávat z nich přehledy. Existuje však několik open source nástrojů, které vám mohou vizualizovat tato data. Tento článek vám poskytne řešení pro vizualizaci těchto protokolů pomocí elastického zásobníku, který vám umožní rychle indexovat a vizualizovat protokoly toku na řídicím panelu Kibana.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 V tomto článku nastavíme řešení, které vám umožní vizualizovat protokoly toku skupin zabezpečení sítě pomocí elastického zásobníku.  Vstupní modul plug-in Logstash získá protokoly toku přímo z objektu BLOB úložiště nakonfigurovaného pro obsahující protokoly toku. Poté pomocí elastického zásobníku budou protokoly toku indexovány a použity k vytvoření řídicího panelu Kibana k vizualizaci informací.
 

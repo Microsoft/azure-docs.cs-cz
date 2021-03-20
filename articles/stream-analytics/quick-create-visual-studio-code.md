@@ -8,10 +8,10 @@ ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 104dfe7b2ce253d7ae42c7484532cfd5b2993aec
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014607"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code (Preview)
@@ -43,7 +43,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Azure Stream
 
 1. Na řádku Visual Studio Code aktivity vyberte ikonu **Azure** . V části **Stream Analytics** na bočním panelu vyberte **Přihlásit se k Azure**.
 
-   ![Přihlaste se k Azure v Visual Studio Code](./media/quick-create-visual-studio-code/azure-sign-in.png)
+   ![Přihlášení k Azure ve Visual Studio Code](./media/quick-create-visual-studio-code/azure-sign-in.png)
 
 2. Když jste přihlášení, váš název účtu Azure se zobrazí na stavovém řádku v levém dolním rohu okna Visual Studio Code.
 
