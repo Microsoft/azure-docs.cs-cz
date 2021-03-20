@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646380"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Nejčastější dotazy k nasazení pro klíče zabezpečení Hybrid FIDO2 ve službě Azure AD 
@@ -66,7 +66,7 @@ Další informace o registraci a používání klíčů zabezpečení FIDO2 najd
 
 Ne, v tuto chvíli ne.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Funguje tato funkce, pokud není k dispozici připojení k Internetu?](#does-this-feature-work-if-theres-no-internet-connectivity)
 * [Jaké jsou konkrétní koncové body, které je potřeba otevřít ve službě Azure AD?](#what-are-the-specific-end-points-that-are-required-to-be-open-to-azure-ad)
@@ -231,7 +231,7 @@ Požadavek HTTP je standardní žádost o primární obnovovací token (PRT). Ta
 
 Azure AD kombinuje zašifrovaný klíč klienta a vyrovnávací paměť zpráv do odpovědi PRT jako další vlastnosti. Datová část je šifrovaná pomocí klíče relace zařízení Azure AD.
 
-| Pole              | Typ   | Popis  |
+| Pole              | Typ   | Description  |
 |--------------------|--------|--------------|
 | tgt_client_key     | řetězec | Klíč klienta kódovaný v kódování Base64 (tajný kód). Tento klíč je tajný kód klienta, který se používá k ochraně lístku TGT. V tomto scénáři bez hesla je tajný klíč klienta vygenerovaný serverem v rámci každé žádosti TGT a pak se vrátí klientovi v odpovědi. |
 | tgt_key_type       | int    | Typ místního služba AD DS klíče použitý pro klíč klienta i klíč relace protokolu Kerberos obsažený v KERB_MESSAGE_BUFFER. |

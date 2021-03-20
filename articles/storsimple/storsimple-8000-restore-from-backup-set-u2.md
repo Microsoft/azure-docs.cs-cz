@@ -1,6 +1,6 @@
 ---
 title: Obnovení svazku ze zálohy v StorSimple 8000 series | Microsoft Docs
-description: Vysvětluje způsob použití katalogu záloh služby StorSimple Device Manager k obnovení svazku StorSimple ze zálohovacího skladu.
+description: Vysvětluje způsob použití katalogu záloh služby StorSimple Správce zařízení k obnovení svazku StorSimple ze zálohovacího skladu.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94950723"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovení svazku StorSimple ze zálohovacího skladu
@@ -39,7 +39,7 @@ Než začnete s obnovením, Projděte si následující upozornění:
 
 * **Během obnovování svazku se nedá rozšířit** – počkejte, než se dokončí operace obnovení, než se pokusíte svazek rozšířit. Informace o rozšíření svazku získáte, když přejdete na [Upravit svazek](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
 
-* **Během obnovování místního svazku můžete provést zálohování** – pro postupy [použijte službu StorSimple Device Manager ke správě zásad zálohování](storsimple-8000-manage-backup-policies-u2.md).
+* **Během obnovování místního svazku můžete provést zálohování** – pro postupy [použijte službu StorSimple Správce zařízení ke správě zásad zálohování](storsimple-8000-manage-backup-policies-u2.md).
 
 * **Operaci obnovení můžete zrušit** – Pokud zrušíte úlohu obnovení, svazek se vrátí zpět do stavu, ve kterém byl předtím, než jste zahájili operaci obnovení. Postupy získáte, když přejdete na [Zrušit úlohu](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
 
@@ -95,7 +95,7 @@ K obnovení svazku StorSimple z konkrétní zálohy můžete použít okno **kat
 
 
 ### <a name="to-restore-your-volume"></a>Postup obnovení svazku
-1. Přejděte ke službě StorSimple Device Manager a potom klikněte na **katalog záloh**.
+1. Přejděte ke službě StorSimple Správce zařízení a potom klikněte na **katalog záloh**.
 
 2. Vyberte zálohovací sklad následujícím způsobem:
    
@@ -136,4 +136,4 @@ Chcete-li dokončit operaci obnovení, zaveďte svazek do režimu offline na hos
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [Spravovat StorSimple svazky](storsimple-8000-manage-volumes-u2.md).
-* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Naučte se [používat službu StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

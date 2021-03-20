@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: c2a062b75caa84a0e3c342ca1ce45ccce12f2bb7
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012610"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
@@ -89,7 +89,7 @@ Podporované typy vstupu streamu jsou:
 
 Podporované typy výstupu streamu jsou:
 * Hraniční centrum
-* Databáze SQL
+* SQL Database
 * Centrum událostí
 * Blob Storage/ADLS Gen2
 
@@ -122,7 +122,7 @@ Informace o této verzi byly naposledy aktualizovány v 2020-09-21:
       - operační systém: Linux
       
       
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 Pokud chcete získat další pomoc, zkuste [Azure Stream Analytics na stránce s dotazem pro Microsoft Q&](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91362576"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Odkazy na modul Azure CDN z Verizon Premium Rules
@@ -99,7 +99,7 @@ Znak | Description
 % | Symbol procenta se používá k označení kódování adresy URL (například `%20` ).
 \* | Hvězdička je zástupný znak, který reprezentuje jeden nebo více znaků.
 Místo | Znak mezery označuje, že podmínka shody může být splněna některou ze zadaných hodnot nebo vzorů.
-osa | Jedna nabídka nemá zvláštní význam. Sada jednoduchých uvozovek však používá k označení toho, že by měla být hodnota považována za hodnotu literálu. Dá se použít následujícími způsoby:<br><br/>– Umožňuje splnění podmínky shody vždy, když zadaná hodnota odpovídá jakékoli části hodnoty porovnání.  Například `'ma'` by odpovídaly jakémukoli z následujících řetězců: <br/><br/>/Business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template. **ma**p<br /><br />– Umožňuje zadat speciální znak jako literální znak. Například můžete zadat literální znak mezery ohraničujícím znakem mezery v rámci sady jednoduchých uvozovek (tj `' '` `'sample value'` . nebo).<br/>– Povoluje zadání prázdné hodnoty. Zadáním sady jednoduchých uvozovek (tj.) zadejte prázdnou hodnotu.<br /><br/>**Důležité:**<br/>– Pokud zadaná hodnota neobsahuje zástupný znak, je automaticky považována za literálovou hodnotu, což znamená, že není nutné zadávat sadu jednoduchých uvozovek.<br/>– Pokud zpětné lomítko neřídí jiný znak v této tabulce, je ignorováno, pokud je zadáno v rámci sady jednoduchých uvozovek.<br/>– Jiný způsob, jak zadat speciální znak jako literální znak, je vystavení pomocí zpětného lomítka (tj `\` .).
+osa | Jedna nabídka nemá zvláštní význam. Sada jednoduchých uvozovek však používá k označení toho, že by měla být hodnota považována za hodnotu literálu. Dá se použít následujícími způsoby:<br><br/>– Umožňuje splnění podmínky shody vždy, když zadaná hodnota odpovídá jakékoli části hodnoty porovnání.  Například `'ma'` by odpovídaly jakémukoli z následujících řetězců: <br/><br/>/Business/**ma** rathon/asset.htm<br/>**ma** p.gif<br/>/business/template. **ma** p<br /><br />– Umožňuje zadat speciální znak jako literální znak. Například můžete zadat literální znak mezery ohraničujícím znakem mezery v rámci sady jednoduchých uvozovek (tj `' '` `'sample value'` . nebo).<br/>– Povoluje zadání prázdné hodnoty. Zadáním sady jednoduchých uvozovek (tj.) zadejte prázdnou hodnotu.<br /><br/>**Důležité:**<br/>– Pokud zadaná hodnota neobsahuje zástupný znak, je automaticky považována za literálovou hodnotu, což znamená, že není nutné zadávat sadu jednoduchých uvozovek.<br/>– Pokud zpětné lomítko neřídí jiný znak v této tabulce, je ignorováno, pokud je zadáno v rámci sady jednoduchých uvozovek.<br/>– Jiný způsob, jak zadat speciální znak jako literální znak, je vystavení pomocí zpětného lomítka (tj `\` .).
 
 ### <a name="regular-expressions"></a>Regulární výrazy
 

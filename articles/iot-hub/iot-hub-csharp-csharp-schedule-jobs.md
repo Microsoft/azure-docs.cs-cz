@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142458"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Úlohy plánování a vysílání (.NET)
@@ -70,15 +70,15 @@ Na konci tohoto kurzu máte dvě konzolové aplikace .NET (C#):
 
 V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou metodu volanou back-endu řešení.
 
-1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**a pak zvolte šablonu projektu **Konzolová aplikace (.NET Framework)** . Pokračujte výběrem tlačítka **Další**.
+1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt** a pak zvolte šablonu projektu **Konzolová aplikace (.NET Framework)** . Pokračujte výběrem tlačítka **Další**.
 
-1. V části **Konfigurovat nový projekt**pojmenujte projekt *SimulateDeviceMethods*a pak vyberte **vytvořit**.
+1. V části **Konfigurovat nový projekt** pojmenujte projekt *SimulateDeviceMethods* a pak vyberte **vytvořit**.
 
     ![Konfigurace projektu SimulateDeviceMethods](./media/iot-hub-csharp-csharp-schedule-jobs/configure-device-app.png)
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulateDeviceMethods** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. V **nástroji Správce balíčků NuGet**vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Nainstalovat**.
+1. V **nástroji Správce balíčků NuGet** vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Nainstalovat**.
 
     ![Klientská aplikace okna Správce balíčků NuGet](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
@@ -167,15 +167,15 @@ V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou
 
 V této části vytvoříte konzolovou aplikaci .NET (pomocí jazyka C#), která používá úlohy pro volání přímé metody **LockDoor** a odeslání požadovaných aktualizací vlastností do více zařízení.
 
-1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V možnosti **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. V části **Konfigurovat nový projekt**pojmenujte projekt *ScheduleJob*. V případě **řešení**zvolte možnost **Přidat do řešení**a pak vyberte **vytvořit**.
+1. V části **Konfigurovat nový projekt** pojmenujte projekt *ScheduleJob*. V případě **řešení** zvolte možnost **Přidat do řešení** a pak vyberte **vytvořit**.
 
     ![Název a konfigurace projektu ScheduleJob](./media/iot-hub-csharp-csharp-schedule-jobs/config-schedule-job-app.png)
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **ScheduleJob** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. V okně **Správce balíčků NuGet**vyberte **Procházet**, vyhledejte a zvolte **Microsoft. Azure. Devices**a pak vyberte **nainstalovat**.
+1. V okně **Správce balíčků NuGet** vyberte **Procházet**, vyhledejte a zvolte **Microsoft. Azure. Devices** a pak vyberte **nainstalovat**.
 
    Tento krok stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) a jeho závislosti a přidá odkaz na něj.
 
@@ -295,7 +295,7 @@ Nyní jste připraveni aplikaci spustit.
 
 1. V sadě Visual Studio Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**.
 
-1. Vyberte **společné vlastnosti**  >  **spouštěný projekt**a potom vyberte **více projektů po spuštění**.
+1. Vyberte **společné vlastnosti**  >  **spouštěný projekt** a potom vyberte **více projektů po spuštění**.
 
 1. Ujistěte se, že `SimulateDeviceMethods` je na začátku seznamu a následuje `ScheduleJob` . Nastavte obě akce na **Start** a vyberte **OK**.
 

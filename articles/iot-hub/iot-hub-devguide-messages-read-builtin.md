@@ -12,15 +12,15 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147671"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
 
-Ve výchozím nastavení jsou zprávy směrovány do integrovaného koncového bodu s přístupem ke službě (**zprávy/události**), které jsou kompatibilní s [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Tento koncový bod se v tuto chvíli zveřejňuje jenom pomocí protokolu [AMQP](https://www.amqp.org/) na portu 5671. Služba IoT Hub zpřístupňuje následující vlastnosti, které vám umožní řídit integrované **zprávy a události**koncového bodu zasílání zpráv kompatibilních s centrem událostí.
+Ve výchozím nastavení jsou zprávy směrovány do integrovaného koncového bodu s přístupem ke službě (**zprávy/události**), které jsou kompatibilní s [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Tento koncový bod se v tuto chvíli zveřejňuje jenom pomocí protokolu [AMQP](https://www.amqp.org/) na portu 5671. Služba IoT Hub zpřístupňuje následující vlastnosti, které vám umožní řídit integrované **zprávy a události** koncového bodu zasílání zpráv kompatibilních s centrem událostí.
 
 | Vlastnost            | Popis |
 | ------------------- | ----------- |
@@ -47,13 +47,13 @@ Pokud používáte Event Hubs sady SDK nebo integrace produktů, které nevědí
 
 2. Klikněte na **Předdefinované koncové body**.
 
-3. Část **události** obsahuje následující hodnoty: **oddíly**, **název kompatibilní**s centrem událostí, **koncový bod kompatibilní**s centrem událostí, **dobu uchování**a **skupiny uživatelů**.
+3. Část **události** obsahuje následující hodnoty: **oddíly**, **název kompatibilní** s centrem událostí, **koncový bod kompatibilní** s centrem událostí, **dobu uchování** a **skupiny uživatelů**.
 
     ![Nastavení zařízení-Cloud](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
 V portálu obsahuje pole koncový bod kompatibilní s centrem událostí úplný Event Hubs připojovací řetězec, který vypadá nějak takto: **koncový bod = Sb://abcd1234namespace.ServiceBus.Windows.NET/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-ehub-abcd-1234-123456**. Pokud sada SDK, kterou používáte, vyžaduje jiné hodnoty, pak by byla:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | ---- | ----- |
 | Koncový bod | sb://abcd1234namespace.servicebus.windows.net/ |
 | Název hostitele | abcd1234namespace.servicebus.windows.net |

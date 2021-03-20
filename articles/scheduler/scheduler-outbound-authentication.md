@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80878965"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Odchozí ověřování pro Azure Scheduler
@@ -48,9 +48,9 @@ Při přidávání ověřování pomocí `ClientCertificate` modelu zadejte tyto
 | Prvek | Povinné | Popis |
 |---------|----------|-------------|
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití certifikátu klienta protokolu SSL/TLS |
-| **textový** | Ano | Typ ověřování. Pro klientské certifikáty SSL/TLS je hodnota `ClientCertificate` . |
-| **PFX** | Ano | Obsah souboru PFX zakódovaný ve formátu base64 |
-| **heslo** | Ano | Heslo pro přístup k souboru PFX |
+| **textový** | Yes | Typ ověřování. Pro klientské certifikáty SSL/TLS je hodnota `ClientCertificate` . |
+| **PFX** | Yes | Obsah souboru PFX zakódovaný ve formátu base64 |
+| **heslo** | Yes | Heslo pro přístup k souboru PFX |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Tělo odpovědi – klientský certifikát 
@@ -159,7 +159,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="basic"></a>Základní
+## <a name="basic"></a>Basic
 
 ### <a name="request-body---basic"></a>Text žádosti – základní
 
@@ -168,9 +168,9 @@ Při přidávání ověřování pomocí `Basic` modelu zadejte tyto další prv
 | Prvek | Povinné | Popis |
 |---------|----------|-------------|
 | **ověřování** (nadřazený element) | Objekt ověřování pro použití základního ověřování | 
-| **textový** | Ano | Typ ověřování. Pro základní ověřování je tato hodnota `Basic` . | 
-| **jmen** | Ano | Uživatelské jméno, které se má ověřit | 
-| **heslo** | Ano | Heslo, které se má ověřit |
+| **textový** | Yes | Typ ověřování. Pro základní ověřování je tato hodnota `Basic` . | 
+| **jmen** | Yes | Uživatelské jméno, které se má ověřit | 
+| **heslo** | Yes | Heslo, které se má ověřit |
 |||| 
 
 ### <a name="response-body---basic"></a>Tělo odpovědi – základní
@@ -285,12 +285,12 @@ Při přidávání ověřování pomocí `ActiveDirectoryOAuth` modelu zadejte t
 
 | Prvek | Povinné | Popis |
 |---------|----------|-------------|
-| **ověřování** (nadřazený element) | Ano | Objekt ověřování pro použití ověřování ActiveDirectoryOAuth |
-| **textový** | Ano | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je hodnota `ActiveDirectoryOAuth` . |
-| **tenant** | Ano | Identifikátor tenanta pro tenanta služby Azure AD. Pokud chcete najít identifikátor tenanta pro tenanta Azure AD, spusťte `Get-AzureAccount` v Azure PowerShell. |
-| **osoby** | Ano | Tato hodnota je nastavena na `https://management.core.windows.net/` . | 
-| **clientId** | Ano | Identifikátor klienta pro aplikaci Azure AD | 
-| **otázku** | Ano | Tajný kód klienta, který požaduje token | 
+| **ověřování** (nadřazený element) | Yes | Objekt ověřování pro použití ověřování ActiveDirectoryOAuth |
+| **textový** | Yes | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je hodnota `ActiveDirectoryOAuth` . |
+| **tenant** | Yes | Identifikátor tenanta pro tenanta služby Azure AD. Pokud chcete najít identifikátor tenanta pro tenanta Azure AD, spusťte `Get-AzureAccount` v Azure PowerShell. |
+| **osoby** | Yes | Tato hodnota je nastavena na `https://management.core.windows.net/` . | 
+| **clientId** | Yes | Identifikátor klienta pro aplikaci Azure AD | 
+| **Tajný kód** | Yes | Tajný kód klienta, který požaduje token | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Tělo odpovědi – Active Directory OAuth

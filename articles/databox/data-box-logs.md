@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147927"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy pořadí importu
@@ -360,7 +360,7 @@ Pokud se posunete přes historii objednávek, uvidíte:
 
 - Informace o sledování dopravce pro vaše zařízení.
 - Události s aktivitou *SecureErase* Tyto události odpovídají mazání dat na disku.
-- Data Box odkazy protokolu. Zobrazí se cesty k *protokolům auditu*, *kopírování protokolů*a souborům *kusovníků* .
+- Data Box odkazy protokolu. Zobrazí se cesty k *protokolům auditu*, *kopírování protokolů* a souborům *kusovníků* .
 
 Tady je ukázka protokolu historie objednávky z Azure Portal:
 

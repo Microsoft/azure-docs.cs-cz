@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91359150"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Vyhrazené sítě HSM v Azure
@@ -66,7 +66,7 @@ Virtuální privátní síť typu Site-to-site umožňuje zabezpečenou komunika
 
 Typická architektura nasazení pro vyhrazený modul HARDWAROVÉho zabezpečení spustí jednu virtuální síť a odpovídající podsíť, ve které se vytvoří a zřídí zařízení HSM. V rámci stejné oblasti může být pro součásti aplikací, které by používaly vyhrazený modul HARDWAROVÉho zabezpečení, také další virtuální sítě a podsítě. Pokud chcete povolit komunikaci mezi těmito sítěmi, používáme Virtual Network partnerský vztah.
 
-### <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
+### <a name="virtual-network-peering"></a>Peering virtuálních sítí
 
 Pokud je v oblasti více virtuálních sítí, které potřebují přístup k prostředkům dalších zdrojů, můžete k vytváření zabezpečených komunikačních kanálů mezi nimi použít Virtual Network partnerský vztah.  Partnerský vztah virtuálních sítí poskytuje nejen zabezpečenou komunikaci, ale taky zajišťuje připojení s nízkou latencí a velkou šířkou pásma mezi prostředky v Azure.
 

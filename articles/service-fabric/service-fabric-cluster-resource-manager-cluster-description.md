@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5d27a09f0ff38ec7422636ef0933552aa310c387
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92911762"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Popište Cluster Service Fabric pomocí Správce prostředků clusteru.
@@ -64,7 +64,7 @@ Co vypadají domény jako nevyrovnané? Následující diagram znázorňuje dvě
 
 V Azure můžete zvolit, která doména selhání obsahuje uzel, se spravuje za vás. V závislosti na počtu uzlů, které jste zřídili, můžete i nadále končit doménami selhání, které mají více uzlů v nich než jiné.
 
-Řekněme například, že máte pět domén selhání v clusteru, ale zřizujete sedm uzlů pro typ uzlu ( **NodeType** ). V takovém případě se první dvě domény selhání ukončí s více uzly. Pokud budete pokračovat v nasazování více instancí **NodeType** s pouze několika instancemi, bude problém horší. Z tohoto důvodu doporučujeme, aby počet uzlů v každém typu uzlu byl násobek počtu domén selhání.
+Řekněme například, že máte pět domén selhání v clusteru, ale zřizujete sedm uzlů pro typ uzlu (**NodeType**). V takovém případě se první dvě domény selhání ukončí s více uzly. Pokud budete pokračovat v nasazování více instancí **NodeType** s pouze několika instancemi, bude problém horší. Z tohoto důvodu doporučujeme, aby počet uzlů v každém typu uzlu byl násobek počtu domén selhání.
 
 ## <a name="upgrade-domains"></a>Upgradovat domény
 
@@ -119,7 +119,7 @@ Ve výchozím nastavení Clusterová Správce prostředků udržuje služby vyv�
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
 
-Nyní řekněme, že vytvoříme službu s **TargetReplicaSetSize** (nebo pro bezstavovou službu, **InstanceCount** ) s hodnotou 5. Repliky půdy na N1 – N5. Ve skutečnosti se N6 nikdy nepoužívá bez ohledu na to, kolik služeb jako to vytvoříte. Ale proč? Pojďme se podívat na rozdíl mezi aktuálním rozložením a co se stane, pokud je zvolená možnost N6.
+Nyní řekněme, že vytvoříme službu s **TargetReplicaSetSize** (nebo pro bezstavovou službu, **InstanceCount**) s hodnotou 5. Repliky půdy na N1 – N5. Ve skutečnosti se N6 nikdy nepoužívá bez ohledu na to, kolik služeb jako to vytvoříte. Ale proč? Pojďme se podívat na rozdíl mezi aktuálním rozložením a co se stane, pokud je zvolená možnost N6.
 
 Tady je rozložení, které jsme získali, a celkový počet replik na jednu chybu a upgradovací doménu:
 
@@ -179,7 +179,7 @@ Cluster Správce prostředků podporuje další verzi omezení pro domény selh�
 > [!NOTE]
 > V případě stavové služby definujeme *ztrátu kvora* v situaci, kdy se většina replik oddílů nachází ve stejnou dobu. Například pokud je **TargetReplicaSetSize** pět, sada všech tří replik představuje kvorum. Podobně platí, že pokud je **TargetReplicaSetSize** šest, jsou pro kvorum nezbytné čtyři repliky. V obou případech může být nefunkční více než dvě repliky ve stejnou dobu, pokud oddíl chce pokračovat v běžném provozu.
 >
-> U bezstavových služeb neexistuje žádná taková věc jako *ztráta kvora* . Bezstavové služby fungují normálně i v případě, že většina instancí rozchází ve stejnou dobu. Proto se ve zbývající části tohoto článku zaměříme na stavové služby.
+> U bezstavových služeb neexistuje žádná taková věc jako *ztráta kvora*. Bezstavové služby fungují normálně i v případě, že většina instancí rozchází ve stejnou dobu. Proto se ve zbývající části tohoto článku zaměříme na stavové služby.
 >
 
 Pojďme se vrátit k předchozímu příkladu. V případě, že je verze tohoto omezení v bezpečí "kvorum" bezpečná, všechna tři rozložení budou platná. I v případě, že se FD0 nepovedlo ve druhém rozložení nebo UD1 selhalo ve třetím rozložení, oddíl by měl kvorum pořád. (Většina replik by se pořád nastavila.) V této verzi omezení může být N6 téměř vždy využíváno.
@@ -343,19 +343,19 @@ V některých případech (ve skutečnosti většinou) budete chtít zajistit, a
 
 Skvělým příkladem cílení hardwaru na konkrétní úlohy je skoro každá architektura n-vrstvá. Některé počítače slouží jako front-end nebo rozhraní API pro poskytování aplikace a jsou vystavena klientům nebo Internetu. Různé počítače, často s různými hardwarovými prostředky, zpracovávají práci výpočetních nebo úložných vrstev. Obvykle _nejsou_ vystaveny přímo klientům nebo Internetu.
 
-Service Fabric očekává, že v některých případech může být potřeba spustit konkrétní úlohy na určitých konfiguracích hardwaru. Příklad:
+Service Fabric očekává, že v některých případech může být potřeba spustit konkrétní úlohy na určitých konfiguracích hardwaru. Například:
 
 * Existující n-vrstvá aplikace byla "vyzdvižena a přesunuta" do Service Fabricho prostředí.
 * Zatížení musí být spuštěno na konkrétním hardwaru pro účely výkonu, škálování nebo důvodů izolace zabezpečení.
 * Úlohy by měly být izolované od jiných úloh pro účely zásad nebo spotřeby prostředků.
 
-Pro podporu těchto řazení konfigurací Service Fabric obsahuje značky, které můžete použít na uzly. Tyto značky se nazývají *Vlastnosti uzlu* . *Omezení umístění* jsou příkazy připojené k jednotlivým službám, které vyberete pro jednu nebo více vlastností uzlu. Omezení umístění definují, kde by měly služby běžet. Sada omezení je rozšiřitelná. Může fungovat jakýkoli pár klíč/hodnota.
+Pro podporu těchto řazení konfigurací Service Fabric obsahuje značky, které můžete použít na uzly. Tyto značky se nazývají *Vlastnosti uzlu*. *Omezení umístění* jsou příkazy připojené k jednotlivým službám, které vyberete pro jednu nebo více vlastností uzlu. Omezení umístění definují, kde by měly služby běžet. Sada omezení je rozšiřitelná. Může fungovat jakýkoli pár klíč/hodnota.
 
 ![Různé úlohy pro rozložení clusteru][Image5]
 
 ### <a name="built-in-node-properties"></a>Předdefinované vlastnosti uzlu
 
-Service Fabric definuje některé výchozí vlastnosti uzlů, které se dají použít automaticky, takže je nemusíte definovat. Výchozí vlastnosti definované na jednotlivých uzlech jsou **NodeType** a **Node** .
+Service Fabric definuje některé výchozí vlastnosti uzlů, které se dají použít automaticky, takže je nemusíte definovat. Výchozí vlastnosti definované na jednotlivých uzlech jsou **NodeType** a **Node**.
 
 Můžete například zapsat omezení umístění jako `"(NodeType == NodeType03)"` . **NodeType** je běžně používaná vlastnost. To je užitečné, protože odpovídá 1:1 s typem počítače. Každý typ počítače odpovídá typu úlohy v tradiční n-vrstvé aplikaci.
 
@@ -465,7 +465,7 @@ Nejprve je zajištěno, že nejsou počítače přetíženy. To znamená, že na
 
 Za druhé je vyrovnávání a optimalizace, které jsou důležité pro efektivní spouštění služeb. Cenově výhodné nebo nenáročné nabídky služeb neumožňují, aby některé uzly byly horké, zatímco jiné jsou studené. Aktivní uzly vedou k kolizí prostředků a k špatnému výkonu. Studené uzly reprezentují plýtvání prostředky a zvýšené náklady.
 
-Service Fabric představuje prostředky jako *metriky* . Metriky jsou libovolný logický nebo fyzický prostředek, který chcete popsat Service Fabric. Příklady metrik jsou "WorkQueueDepth" nebo "MemoryInMb". Informace o fyzických prostředcích, které se Service Fabric můžou řídit na uzlech, najdete v tématu zásady [správného řízení prostředků](service-fabric-resource-governance.md). Informace o výchozích metrikách používaných Správce prostředků clusteru a o tom, jak nakonfigurovat vlastní metriky, najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md).
+Service Fabric představuje prostředky jako *metriky*. Metriky jsou libovolný logický nebo fyzický prostředek, který chcete popsat Service Fabric. Příklady metrik jsou "WorkQueueDepth" nebo "MemoryInMb". Informace o fyzických prostředcích, které se Service Fabric můžou řídit na uzlech, najdete v tématu zásady [správného řízení prostředků](service-fabric-resource-governance.md). Informace o výchozích metrikách používaných Správce prostředků clusteru a o tom, jak nakonfigurovat vlastní metriky, najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md).
 
 Metriky se liší od omezení umístění a vlastností uzlů. Vlastnosti uzlu jsou statické popisovače uzlů samotné. Metriky popisují prostředky, které mají uzly a které služby spotřebovávají při jejich spuštění na uzlu. Vlastnost uzlu může být **HasSSD** a může být nastavena na hodnotu true nebo false. Množství místa, které je dostupné na disku SSD a kolik je spotřebované službami, by bylo metrika, jako je například "DriveSpaceInMb".
 
@@ -566,7 +566,7 @@ Také je možné určit, že se má nekonečná kapacita při zakládání. V ta
 
 Metrika nemůže mít současně určenou kapacitu pro vyrovnávací paměť uzlů i pro přetečení.
 
-Tady je příklad, jak určit kapacitu pro vytvoření vyrovnávací paměti uzlu nebo pro přetečení v *ClusterManifest.xml* :
+Tady je příklad, jak určit kapacitu pro vytvoření vyrovnávací paměti uzlu nebo pro přetečení v *ClusterManifest.xml*:
 
 ```xml
 <Section Name="NodeBufferPercentage">

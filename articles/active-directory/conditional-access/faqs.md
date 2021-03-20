@@ -13,10 +13,10 @@ ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 8043e85db1ee1aadc814e98db12cab10ec17e129
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92145232"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Nejčastější dotazy týkající se podmíněného přístupu
@@ -31,7 +31,7 @@ Pro uživatele spolupráce B2B (Business-to-Business) se vynutily zásady. V ně
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>Vztahují se zásady SharePointu Online i na OneDrive pro firmy?
 
-Yes. Zásady SharePointu Online platí i pro OneDrive pro firmy. Další informace najdete v článku [závislosti služby podmíněného přístupu](service-dependencies.md) a místo toho zvažte cílení zásad na [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365) .
+Ano. Zásady SharePointu Online platí i pro OneDrive pro firmy. Další informace najdete v článku [závislosti služby podmíněného přístupu](service-dependencies.md) a místo toho zvažte cílení zásad na [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365) .
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Proč nejde nastavit zásadu přímo na klientských aplikacích, jako je Word nebo Outlook?
 

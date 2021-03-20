@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: da021e3ba0fd93a182ea76a1ba4b7042b325aacc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142373"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>Vytvoření centra IoT pomocí rutiny New-AzIotHub
@@ -22,7 +22,7 @@ ms.locfileid: "92142373"
 
 Pomocí rutin Azure PowerShell můžete vytvářet a spravovat centra IoT Azure. V tomto kurzu se dozvíte, jak vytvořit centrum IoT pomocí PowerShellu.
 
-K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -39,7 +39,7 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-K nasazení služby IoT Hub potřebujete skupinu prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou.
+K nasazení služby IoT Hub potřebujete skupinu prostředků. Můžete použít stávající skupinu prostředků nebo vytvořit novou skupinu.
 
 Pokud chcete vytvořit skupinu prostředků pro Centrum IoT, použijte příkaz [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) . Tento příklad vytvoří skupinu prostředků s názvem **MyIoTRG1** v oblasti **východní USA** :
 

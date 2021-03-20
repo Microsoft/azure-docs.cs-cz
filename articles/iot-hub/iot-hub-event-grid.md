@@ -13,15 +13,15 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92152139"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí
 
-Azure IoT Hub se může integrovat s Azure Event Gridem, abyste mohli posílat oznámení o událostech jiným službám a aktivovat podřízené procesy. Nakonfigurujte obchodní aplikace na naslouchání událostem IoT Hubu, abyste mohli reagovat na kritické události a současně zajistili spolehlivost, škálovatelnost a zabezpečení.Například sestavíte aplikaci, která aktualizuje databázi, vytvoří pracovní lístek a doručí e-mailové oznámení pokaždé, když se do vašeho centra IoT (neboli IoT Hubu) zaregistruje nové zařízení IoT.
+Azure IoT Hub se může integrovat s Azure Event Gridem, abyste mohli posílat oznámení o událostech jiným službám a aktivovat podřízené procesy. Nakonfigurujte obchodní aplikace na naslouchání událostem IoT Hubu, abyste mohli reagovat na kritické události a současně zajistili spolehlivost, škálovatelnost a zabezpečení. Například sestavíte aplikaci, která aktualizuje databázi, vytvoří pracovní lístek a doručí e-mailové oznámení pokaždé, když se do vašeho centra IoT (neboli IoT Hubu) zaregistruje nové zařízení IoT.
 
 [Azure Event Grid](../event-grid/overview.md) je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid má integrovanou podporu pro služby Azure, jako je [Azure Functions](../azure-functions/functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md), a může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](../event-grid/overview.md).
 

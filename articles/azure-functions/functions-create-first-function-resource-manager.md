@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
 ms.openlocfilehash: 1e623405faa89ff41eccdaa57578bc8ac94cd78c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422820"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Rychlý Start: vytvoření a nasazení Azure Functionsch prostředků ze šablony ARM
@@ -127,7 +127,7 @@ Ve výstupu zkopírujte adresu URL triggeru HTTP. Tuto funkci použijete k otest
 
     :::image type="content" source="media/functions-create-first-function-arm/choose-publish-target-visual-studio.png" alt-text="Zvolit existující cíl publikování":::
 
-1. Zvolte své **předplatné** , rozbalte skupinu prostředků, vyberte aplikaci Function App a vyberte **OK**.
+1. Zvolte své **předplatné**, rozbalte skupinu prostředků, vyberte aplikaci Function App a vyberte **OK**.
 
 1. Po dokončení publikování zkopírujte **adresu URL webu**.
 

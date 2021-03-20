@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.openlocfilehash: ef916e0e8b32c96382a731d4a307e2b2a98ba1ea
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96753854"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Sestavení plánu migrace s využitím Azure Migrate
@@ -116,7 +116,7 @@ Několik doporučení:
 
 - Určení **priorit rychlé služby WINS**: pomocí sestav hodnocení Identifikujte neúplné ovoce, včetně serverů a databází, které jsou plně připravené a vyžadují minimální úsilí při migraci do Azure. Tato tabulka shrnuje několik způsobů, jak to provést.
 
-    **Státech** | **Akce**
+    **Stav** | **Akce**
     --- | ---
     **Virtuální počítače připravené pro Azure** | Exportujte sestavu posouzení a vyfiltrujte všechny počítače se stavem *připraveným pro Azure*. Může se jednat o první skupinu počítačů, které získáte a přesunete do Azure, pomocí nástroje [Azure Migrate: Server pro migraci](migrate-services-overview.md#azure-migrate-server-migration-tool) .
     **Operační systémy ukončení podpory** | Exportujte sestavu posouzení a filtrujte všechny počítače se systémem Windows Server 2008 R2/Windows Server 2008. Tyto operační systémy jsou na konci podpory a jenom Azure poskytuje zdarma tři roky aktualizací zabezpečení, když je migrujete do Azure. Pokud kombinujete Zvýhodněné hybridní využití Azure a použijete služby vzdálené instalace, může být úspory mnohem vyšší.
@@ -145,7 +145,7 @@ Plán testování po migraci by měl zahrnovat funkce pro testování funkčnost
 
 Sestavte plán migrace a deklarujete okno údržby pro migraci vašich aplikací a databází s minimálním počtem nulových výpadků a omezte potenciální provozní a obchodní dopad na migraci.  
 
-## <a name="migrate"></a>Migrace
+## <a name="migrate"></a>Migrate
 
 Před zahájením migrace v plném rozsahu doporučujeme spustit migraci testů v Azure Migrate. Testovací migrace vám pomůže odhadnout čas a upravit plán migrace. Nabízí příležitost zjistit případné problémy a opravit je před úplnou migrací.
 

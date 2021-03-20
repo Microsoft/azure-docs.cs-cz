@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
 ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013035"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrace Azure Active Directory Domain Services z modelu klasických virtuálních sítí do Správce prostředků
@@ -153,11 +153,11 @@ Migrace na model nasazení Správce prostředků a virtuální síť je rozděle
 
 | Krok    | Provedeno prostřednictvím  | Odhadovaný čas  | Výpadek  | Vrátit zpět a obnovit? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | portál Azure | 15 minut | Nepožaduje se žádný výpadek | Nelze použít |
+| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | portál Azure | 15 minut | Nepožaduje se žádný výpadek | – |
 | [Krok 2 – Příprava spravované domény na migraci](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minut v průměru | Výpadek služby Azure služba AD DS začíná po dokončení tohoto příkazu. | Vrácení zpět a obnovení k dispozici. |
 | [Krok 3 – přesunutí spravované domény do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény. | Při selhání jsou k dispozici obě vrácení zpět (Samoobslužná služba) i obnovení. |
 | [Krok 4 – testování a čekání na repliku řadiče domény](#test-and-verify-connectivity-after-the-migration)| PowerShell a Azure Portal | 1 hodina nebo více, v závislosti na počtu testů | K dispozici jsou oba řadiče domény a měly by fungovat normálně, výpadky končí. | Není k dispozici. Po úspěšné migraci prvního virtuálního počítače není k dispozici možnost vrácení nebo obnovení. |
-| [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | Nelze použít | Nepožaduje se žádný výpadek | Nelze použít |
+| [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | – | Nepožaduje se žádný výpadek | – |
 
 > [!IMPORTANT]
 > Abyste se vyhnuli dalším výpadkům, přečtěte si tento článek a pokyny k migraci před zahájením procesu migrace. Proces migrace má na určitou dobu vliv na dostupnost řadičů domény Azure služba AD DS. Uživatelé, služby a aplikace se nemůžou během procesu migrace ověřit ve spravované doméně.
@@ -329,7 +329,7 @@ Jako poslední možnost se Azure AD Domain Services dá obnovit z poslední dost
 
 Chcete-li obnovit spravovanou doménu ze zálohy, [otevřete lístek podpory případu pomocí Azure Portal][azure-support]. Zadejte ID adresáře, název domény a důvod pro obnovení. Dokončení procesu podpory a obnovení může trvat několik dní.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud máte po migraci do modelu nasazení Správce prostředků problémy, přečtěte si některé z následujících běžných oblastí pro odstraňování potíží:
 

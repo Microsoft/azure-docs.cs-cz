@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 3bd85d6faf05fcf659e9335ee9de3d64198dfa08
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98011165"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Kontrola paketů pomocí Network Watcher Azure
@@ -29,7 +29,7 @@ Tento článek prochází některými předkonfigurovanými scénáři při zach
 
 Tento scénář předpokládá, že jste už spustili zachytávání paketů na virtuálním počítači. Informace o tom, jak vytvořit zachytávání paketů, najdete v tématu Správa zachytávání paketů pomocí [portálu](network-watcher-packet-capture-manage-portal.md) nebo se zbytkem v tématu [Správa zachytávání paketů pomocí REST API](network-watcher-packet-capture-manage-rest.md).
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 V tomto scénáři:
 

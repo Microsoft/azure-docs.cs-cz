@@ -9,10 +9,10 @@ ms.date: 04/03/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 1a0502568c1673bcd7f57d3e9bc9c95ed90bbefa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80756931"
 ---
 <!-- This tells how to create a custom shared access policy that has service connect and registry RW permissions for your IoT hub and get the connection string for it-->
@@ -25,13 +25,13 @@ Pokud chcete vytvořit zásadu sdíleného přístupu, která uděluje oprávně
 
 1. V horní nabídce nad seznamem zásad vyberte **Přidat**.
 
-1. V části **Přidat zásadu sdíleného přístupu**zadejte popisný název zásady, například *serviceAndRegistryReadWrite*. V části **oprávnění**vyberte **zápis do registru** a **Služba připojit**a pak vyberte **vytvořit**. (Oprávnění **ke čtení registru** je zahrnuté automaticky při výběru **zápisu do registru**.)
+1. V části **Přidat zásadu sdíleného přístupu** zadejte popisný název zásady, například *serviceAndRegistryReadWrite*. V části **oprávnění** vyberte **zápis do registru** a **Služba připojit** a pak vyberte **vytvořit**. (Oprávnění **ke čtení registru** je zahrnuté automaticky při výběru **zápisu do registru**.)
 
     ![Ukázat, jak přidat nové zásady sdíleného přístupu](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-add-svc-regrw-policy.png)
 
 1. V seznamu zásad vyberte nové zásady.
 
-1. V části **sdílené přístupové klíče**vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
+1. V části **sdílené přístupové klíče** vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
 
     ![Zobrazit způsob načtení připojovacího řetězce](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-get-connection-string.png)
 

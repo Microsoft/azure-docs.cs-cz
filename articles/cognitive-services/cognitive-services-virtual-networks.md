@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: aahi
 ms.openlocfilehash: eaffa535b51b786a53f1e6cc35233c55dd837233
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99989078"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí služeb Azure Cognitive Services
@@ -52,7 +52,7 @@ Virtuální sítě (virtuální sítě) jsou podporované v [oblastech, kde jsou
 > * Asistivní čtečka
 > * Language Understanding (LUIS)
 > * Personalizace
-> * Hlasové služby
+> * Služby Speech
 > * Analýza textu
 > * QnA Maker
 > * Translator Text

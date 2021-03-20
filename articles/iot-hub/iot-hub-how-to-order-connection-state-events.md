@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147272"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Uspořádání událostí připojení zařízení z Azure IoT Hubu pomocí služby Azure Cosmos DB
@@ -153,7 +153,7 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
    > [!NOTE]
    > Chcete-li znovu vyhledat a otevřít aplikaci logiky, vyberte skupiny **prostředků** a vyberte skupinu prostředků, kterou používáte pro tento postup. Pak vyberte svou novou aplikaci logiky. Otevře se Návrhář aplikace logiky.
 
-4. V návrháři aplikace logiky se posuňte doprava, dokud neuvidíte běžné aktivační události. V části **šablony**vyberte **prázdná aplikace logiky** , abyste mohli vytvořit aplikaci logiky od začátku.
+4. V návrháři aplikace logiky se posuňte doprava, dokud neuvidíte běžné aktivační události. V části **šablony** vyberte **prázdná aplikace logiky** , abyste mohli vytvořit aplikaci logiky od začátku.
 
 ### <a name="select-a-trigger"></a>Výběr aktivační události
 
@@ -201,7 +201,7 @@ Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu t
 
 V pracovním postupu aplikace logiky můžou podmínky po předání této konkrétní podmínky spustit konkrétní akce. Po splnění podmínky lze definovat požadovanou akci. V tomto kurzu je podmínka určena ke kontrole, jestli je typ eventType připojený k zařízení nebo zařízení odpojeno. Akce bude provádět uloženou proceduru ve vaší databázi.
 
-1. Vyberte **+ Nový krok** a potom **předdefinované**a pak najděte a vyberte **podmínku**. Klikněte na **vybrat hodnotu** a pole se zobrazí, aby se zobrazil dynamický obsah – pole, která se dají vybrat. Vyplňte pole, jak je uvedeno níže, aby se spustilo pouze pro události připojené k zařízení a odpojené zařízení:
+1. Vyberte **+ Nový krok** a potom **předdefinované** a pak najděte a vyberte **podmínku**. Klikněte na **vybrat hodnotu** a pole se zobrazí, aby se zobrazil dynamický obsah – pole, která se dají vybrat. Vyplňte pole, jak je uvedeno níže, aby se spustilo pouze pro události připojené k zařízení a odpojené zařízení:
 
    * Zvolte hodnotu: **EventType** – vyberte tuto položku z polí v dynamickém obsahu, která se zobrazí po kliknutí na toto pole.
    * Změna "rovná se" na **končí**.
@@ -225,7 +225,7 @@ V pracovním postupu aplikace logiky můžou podmínky po předání této konkr
 
    **ID sproc**: LatestDeviceConnectionState
 
-5. Vyberte **Přidat nový parametr**. V rozevíracím seznamu, který se zobrazí, zaškrtněte políčka **klíč oddílu** a **parametry pro uloženou proceduru**a pak klikněte kamkoli jinam na obrazovku. Přidá pole pro hodnotu klíče oddílu a pole pro parametry pro uloženou proceduru.
+5. Vyberte **Přidat nový parametr**. V rozevíracím seznamu, který se zobrazí, zaškrtněte políčka **klíč oddílu** a **parametry pro uloženou proceduru** a pak klikněte kamkoli jinam na obrazovku. Přidá pole pro hodnotu klíče oddílu a pole pro parametry pro uloženou proceduru.
 
    ![Snímek obrazovky zobrazuje položku Spustit uloženou proceduru s vybraným možnost Přidat nový parametr.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
@@ -233,7 +233,7 @@ V pracovním postupu aplikace logiky můžou podmínky po předání této konkr
 
    ![Snímek obrazovky zobrazuje položku Spustit uloženou proceduru se zadanými parametry.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. V horní části **podokna, kde je uvedeno, v**části **vyberte výstup z předchozích kroků**se ujistěte, že je vybráno  **tělo** IT.
+7. V horní části **podokna, kde je uvedeno, v** části **vyberte výstup z předchozích kroků** se ujistěte, že je vybráno  **tělo** IT.
 
    ![naplnění aplikace logiky pro každý](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
@@ -257,7 +257,7 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
 1. Na webu Azure Portal přejděte do svého centra IoT.
 
-2. Vyberte **události**.
+2. Vyberte **Události**.
 
    ![Otevření podrobností Event Gridu](./media/iot-hub-how-to-order-connection-state-events/event-grid.png)
 
@@ -271,7 +271,7 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
    ![Nastavte typy událostí, které se mají hledat.](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
-6. V části **Podrobnosti o koncovém bodu**vyberte typ koncového bodu jako **Webhook** , klikněte na vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
+6. V části **Podrobnosti o koncovém bodu** vyberte typ koncového bodu jako **Webhook** , klikněte na vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
 
    ![Vyberte adresu URL koncového bodu.](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 

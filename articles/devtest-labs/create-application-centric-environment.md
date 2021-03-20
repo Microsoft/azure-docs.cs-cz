@@ -4,10 +4,10 @@ description: Tento článek ukazuje, jak vytvořit prostředí orientované na a
 ms.topic: how-to
 ms.date: 11/26/2020
 ms.openlocfilehash: 88244f268d5ed038e9bb7082d3d5cc1179e5ec4e
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94918154"
 ---
 # <a name="create-an-application-centric-environment"></a>Vytvoření prostředí zaměřeného na aplikace
@@ -20,7 +20,7 @@ Tento článek ukazuje, jak vytvořit prostředí zaměřené na aplikace s Clou
 
 1. Zaregistrujte se do bezplatné zkušební verze [dvojtečky](https://azuremarketplace.microsoft.com/marketplace/apps/quali_systems.cloudshell_colony?tab=Overview).
 
-    :::image type="content" source="./media/create-application-centric-environment/free-trial.png" alt-text="Zaregistrovat se k bezplatné zkušební verzi":::    
+    :::image type="content" source="./media/create-application-centric-environment/free-trial.png" alt-text="Registrace bezplatné zkušební verze":::    
 1. Propojte svůj účet Azure ([tady si můžete prohlédnout kroky](https://colonysupport.quali.com/hc/articles/360008222234)).
 
     :::image type="content" source="./media/create-application-centric-environment/welcome.png" alt-text="Vítá vás dvojtečka":::     

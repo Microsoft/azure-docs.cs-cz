@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92171454"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
@@ -41,7 +41,7 @@ Operace Refresh je [asynchronní operace](../azure-resource-manager/management/a
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |204 bez obsahu     |         |  OK bez vráceného obsahu      |
 |202 přijato     |         |     Přijato    |
@@ -104,7 +104,7 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba ž�
 
 #### <a name="responses-to-get-operation"></a>Odpovědi na operaci získání
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Chcete-li vytvořit chráněnou položku, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
 
@@ -208,7 +208,7 @@ Vytvoření chráněné položky je [asynchronní operace](../azure-resource-man
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 přijato     |         |     Přijato    |
@@ -323,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
 
@@ -348,7 +348,7 @@ Aktivace zálohování na vyžádání je [asynchronní operace](../azure-resour
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
@@ -435,7 +435,7 @@ Odpověď bude následovat po stejném formátu, jak je uvedeno [pro povolení o
 Pokud je virtuální počítač Azure již zálohovaný, můžete změnit zásadu ochrany a zadat seznam disků, které mají být zálohovány nebo vyloučeny. Stačí jenom připravit žádost ve stejném formátu jako při [povolování ochrany s výjimkou disků](#excluding-disks-in-azure-vm-backup) .
 
 > [!IMPORTANT]
-> Výše uvedený text žádosti je vždycky poslední kopie datových disků, které se mají vyloučit nebo zahrnout. Nepřidá *add* se do předchozí konfigurace. Příklad: Pokud nejprve aktualizujete ochranu jako "vyloučit datový disk 1" a pak se znovu pokusíte "vyloučit datový disk 2", v následujících zálohách se vyloučí *jenom datový disk 2* , který obsahuje datový disk 1. Toto je vždy konečný seznam, který bude zahrnut nebo vyloučen v následujících zálohách.
+> Výše uvedený text žádosti je vždycky poslední kopie datových disků, které se mají vyloučit nebo zahrnout. Nepřidá  se do předchozí konfigurace. Příklad: Pokud nejprve aktualizujete ochranu jako "vyloučit datový disk 1" a pak se znovu pokusíte "vyloučit datový disk 2", v následujících zálohách se vyloučí *jenom datový disk 2* , který obsahuje datový disk 1. Toto je vždy konečný seznam, který bude zahrnut nebo vyloučen v následujících zálohách.
 
 Pokud chcete získat aktuální seznam disků, které jsou vyloučené nebo zahrnuté, Získejte informace o chráněných položkách, jak je uvedeno [zde](/rest/api/backup/protecteditems/get). Odpověď poskytne seznam logických jednotek dat a označuje, zda jsou zahrnuty nebo vyloučeny.
 
@@ -477,7 +477,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 (obsah) po dokončení této operace.
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |204. obsah     |         |  Obsah       |
 |202 přijato     |         |     Přijato    |

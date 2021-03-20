@@ -13,15 +13,15 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147791"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Vysvětlení a volání přímých metod ze služby IoT Hub
 
-IoT Hub poskytuje možnost vyvolat z cloudu přímé metody ze zařízení. Přímé metody představují interakci požadavek-odpověď se zařízením podobným volání HTTP v tom, že je úspěšné nebo neúspěšné (po uplynutí časového limitu zadaného uživatelem). Tento přístup je užitečný pro scénáře, ve kterých je průběh okamžité akce odlišný v závislosti na tom, jestli zařízení bylo schopné reagovat.
+IoT Hub poskytuje možnost vyvolat z cloudu přímé metody ze zařízení. Přímé metody představují interakci požadavek-odpověď se zařízením podobným volání HTTP v tom, že je úspěšné nebo neúspěšné (po uplynutí časového limitu zadaného uživatelem). Tento přístup je užitečný v případě scénářů, kdy se průběh okamžité akce liší podle toho, jestli zařízení bylo schopné reagovat.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

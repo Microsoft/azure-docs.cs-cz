@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o ověřování aplikace s Azure
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: 25ec5f11ca7b5e801e18155f1a3da6474c8e66e2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913309"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření aplikace s Azure Active Directory pro přístup k prostředkům Event Hubs
@@ -75,7 +75,7 @@ Po registraci aplikace přiřadíte instanční objekt aplikace k Event Hubs rol
 
     ![Výběr centra událostí](./media/authenticate-application/select-event-hub.png)
 1. Vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro centrum událostí. 
-1. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí. Na panelu nástrojů vyberte tlačítko **Přidat** a pak vyberte **Přidat přiřazení role** . 
+1. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí. Na panelu nástrojů vyberte tlačítko **Přidat** a pak vyberte **Přidat přiřazení role**. 
 
     ![Přidat tlačítko na panelu nástrojů](./media/authenticate-application/role-assignments-add-button.png)
 1. Na stránce **Přidat přiřazení role** proveďte následující kroky:

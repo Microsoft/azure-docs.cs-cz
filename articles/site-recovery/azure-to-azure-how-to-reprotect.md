@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91360867"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Znovunastavení ochrany virtuálních počítačů Azure, u kterých proběhlo převzetí služeb při selhání, v primární oblasti
@@ -22,14 +22,14 @@ Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálníc
 1. Znovu nastavte ochranu virtuálních počítačů v sekundární oblasti, aby se začaly replikovat do primární oblasti.
 1. Po dokončení ochrany a replikaci virtuálních počítačů můžete převzít služby při selhání ze sekundární do primární oblasti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Převzetí služeb virtuálního počítače při selhání z primární do sekundární oblasti musí být potvrzené.
 - Primární cílový webový server by měl být dostupný a měl by být přístupný nebo vytvářet prostředky v této oblasti.
 
 ## <a name="reprotect-a-vm"></a>Opětovné zapnutí ochrany virtuálního počítače
 
-1. V **trezoru**  >  **replikované položky**klikněte pravým tlačítkem na virtuální počítač převzetí služeb při selhání a vyberte **znovu zapnout ochranu**. Směr další ochrany by se měl zobrazit ze sekundárního na primární.
+1. V **trezoru**  >  **replikované položky** klikněte pravým tlačítkem na virtuální počítač převzetí služeb při selhání a vyberte **znovu zapnout ochranu**. Směr další ochrany by se měl zobrazit ze sekundárního na primární.
 
    ![Snímek obrazovky zobrazuje virtuální počítač s místní nabídkou, která má vybranou možnost znovu nastavit ochranu.](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 

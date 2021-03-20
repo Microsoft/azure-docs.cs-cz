@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: duau
 ms.openlocfilehash: 7f14f43fa341df40ecd35340b7311e1acd18004c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92204703"
 ---
 # <a name="expressroute-qos-requirements"></a>Požadavky na technologii QoS služby ExpressRoute
@@ -29,7 +29,7 @@ Následující tabulka uvádí seznam označení DSCP používaných Microsoft t
 | **Třída provozu** | **Zpracování (označení DSCP)** | **Úlohy Microsoft teams a Skype pro firmy** |
 | --- | --- | --- |
 | **Hlas** |EF (46) |Skype/Microsoft Teams/Lync – hlas |
-| **Interaktivit** |AF41 (34) |Video, VBSS |
+| **Interaktivní** |AF41 (34) |Video, VBSS |
 | |AF21 (18) |Sdílení aplikací | 
 | **Výchozí** |AF11 (10) |Přenos souborů |
 | |CS0 (0) |Cokoliv jiného |

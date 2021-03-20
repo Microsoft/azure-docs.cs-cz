@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: fb8bf593568825793a1a205a2955599b16fa78cf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151755"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Odesílání zpráv na server MQTT
@@ -46,10 +46,10 @@ Dokončete [průvodce Začínáme](./iot-hub-arduino-iot-devkit-az3166-get-start
 
 ## <a name="open-the-mqttclient-sample"></a>Otevřete ukázku MQTTClient
 
-Rozbalte části **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > MQTT**a vyberte **MQTTClient**. Otevře se nové okno VS Code se složkou projektu.
+Rozbalte části **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > MQTT** a vyberte **MQTTClient**. Otevře se nové okno VS Code se složkou projektu.
 
 > [!NOTE]
-> Můžete také otevřít příklad z palety příkazů. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
+> Můžete také otevřít příklad z palety příkazů. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) k otevření palety příkazů, zadejte **Arduino** a pak vyhledejte a vyberte **Arduino: příklady**.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Sestavení a nahrání Arduino náčrtu do DevKit
 

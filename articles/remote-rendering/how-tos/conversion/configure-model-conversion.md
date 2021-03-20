@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92205315"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurace převodu modelů
@@ -182,7 +182,7 @@ Tyto formáty jsou povolené pro příslušné součásti:
 
 | :::no-loc text="Vertex"::: (komponenta) | Podporované formáty (tučné = výchozí) |
 |:-----------------|:------------------|
-|position| **32_32_32_FLOAT**16_16_16_16_FLOAT |
+|position| **32_32_32_FLOAT** 16_16_16_16_FLOAT |
 |color0| **8_8_8_8_UNSIGNED_NORMALIZED**, žádný |
 |color1| 8_8_8_8_UNSIGNED_NORMALIZED, **žádný**|
 |běžnou| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, žádné |
@@ -195,7 +195,7 @@ Tyto formáty jsou povolené pro příslušné součásti:
 
 Paměťové nároky na formáty jsou následující:
 
-| Formát | Popis | Počet bajtů za sekundu :::no-loc text="vertex"::: |
+| Formát | Description | Počet bajtů za sekundu :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|Úplná přesnost plovoucí desetinné čárky se dvěma komponentami|8
 |16_16_FLOAT|poloviční přesnost s plovoucí desetinnou čárkou pro dvě komponenty|4

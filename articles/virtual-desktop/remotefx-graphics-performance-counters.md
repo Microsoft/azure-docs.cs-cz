@@ -7,10 +7,10 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007162"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostika problémů s výkonem grafiky na vzdálené ploše
@@ -33,8 +33,8 @@ K identifikaci čítačů výkonu grafiky budete potřebovat název vzdálené r
 
 Po určení názvu vzdálené relace postupujte podle těchto pokynů a Shromážděte čítače výkonu grafiky RemoteFX pro vzdálenou relaci.
 
-1. Vyberte možnost **Spustit**  >  monitorování výkonu**nástrojů pro správu**  >  **Performance Monitor**.
-2. V dialogovém okně **sledování výkonu** rozbalte položku **Nástroje pro monitorování**, vyberte **sledování výkonu**a pak vyberte **Přidat**.
+1. Vyberte možnost **Spustit**  >  monitorování výkonu **nástrojů pro správu**  >  .
+2. V dialogovém okně **sledování výkonu** rozbalte položku **Nástroje pro monitorování**, vyberte **sledování výkonu** a pak vyberte **Přidat**.
 3. V dialogovém okně **Přidat čítače** rozbalte v seznamu **Dostupné čítače** oddíl grafiky RemoteFX.
 4. Vyberte čítače, které chcete monitorovat.
 5. V seznamu **instance vybraného objektu** vyberte konkrétní instance, které chcete monitorovat pro vybrané čítače, a pak vyberte **Přidat**. Chcete-li vybrat všechny dostupné instance čítače, vyberte možnost **všechny instance**.

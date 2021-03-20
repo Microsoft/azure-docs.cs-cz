@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646278"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
@@ -28,7 +28,7 @@ Tento článek popisuje, jak můžou organizace nastavit zásady podmíněného 
 
 Následující diagram znázorňuje tok: ![ obrázek znázorňuje tok ověřování pro uživatele typu Host B2B z externího adresáře.](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-| Krok | Popis |
+| Krok | Description |
 |--------------|-----------------------|
 | 1. | Uživatel typu Host B2B požaduje přístup k prostředku. Prostředek přesměruje uživatele do svého tenanta prostředků, důvěryhodného IdP.|
 | 2. | Tenant prostředků identifikuje uživatele jako externí a přesměruje uživatele na IdP uživatele typu Host B2B. Uživatel provede primární ověřování v IdP.
@@ -39,7 +39,7 @@ Následující diagram znázorňuje tok: ![ obrázek znázorňuje tok ověřová
 
 Následující diagram znázorňuje tok: ![ obrázek znázorňuje tok ověřování pro uživatele typu Host B2B s jedním časovým účtem.](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
 
-| Krok | Popis |
+| Krok | Description |
 |--------------|-----------------------|
 | 1. |Uživatel požaduje přístup k prostředku v jiném tenantovi. Prostředek přesměruje uživatele do svého tenanta prostředků, důvěryhodného IdP.|
 | 2. | Tenant prostředků identifikuje uživatele jako [externí e-mailové heslo (jednorázového hesla)](./one-time-passcode.md) a pošle mu E-mail s jednorázovým heslem.|

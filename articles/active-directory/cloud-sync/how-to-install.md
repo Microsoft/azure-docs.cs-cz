@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 742b9fc79489feba8192b6e62a6431bb37f55ad4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98613369"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Instalace agenta pro zřizování Azure AD Connect
@@ -74,7 +74,7 @@ K ověření agenta dochází v Azure Portal a na místním serveru, na kterém 
 ### <a name="azure-portal-agent-verification"></a>Ověřování agenta Azure Portal
 Pokud chcete ověřit, jestli je agent v Azure, postupujte podle těchto kroků.
 
- 1. Přihlaste se k portálu Azure.
+ 1. Přihlaste se k webu Azure Portal.
  2. Na levé straně vyberte **Azure Active Directory**  >  **Azure AD Connect**. V centru vyberte možnost **Spravovat cloudovou synchronizaci**.
 
    ![portál Azure](media/how-to-install/install-6.png)</br>

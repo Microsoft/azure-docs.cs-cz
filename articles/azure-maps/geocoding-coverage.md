@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92897207"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps pokrytí geografické kódování
@@ -76,7 +76,7 @@ Schopnost geografického kódu v zemi nebo oblasti závisí na rozsahu dat a př
 | Svatý Kryštof a Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatá Lucie                                         |                 |                |              |      ✓     |          ✓         |
 | Svatý Martin (Francie)                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Saint-Pierre a Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint Pierre a Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Vincenc a Grenadiny                    |                 |                |              |      ✓     |          ✓         |
 | Svatý Martin (Nizozemsko)                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Jižní Georgie a Jižní Sandwichovy ostrovy        |                 |                |              |      ✓     |          ✓         |
@@ -107,7 +107,7 @@ Schopnost geografického kódu v zemi nebo oblasti závisí na rozsahu dat a př
 | Cookovy ostrovy                                        |                 |                |              |      ✓     |          ✓         |
 | Fidži                                                |                  |                |              |      ✓     |          ✓        |
 | Francouzská Polynésie                                    |                 |                |              |      ✓     |          ✓         |
-| Heardův ostrov a MacDonaldovy ostrovy                   |                 |                |              |      ✓     |          ✓         |
+| Heardův ostrov a McDonaldovy ostrovy                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong – zvláštní administrativní oblast                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonésie                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indie                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
@@ -206,7 +206,7 @@ Schopnost geografického kódu v zemi nebo oblasti závisí na rozsahu dat a př
 | Slovensko                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Slovinsko                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Španělsko                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Svalbard                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
+| Špicberky                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Švédsko                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Švýcarsko                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Tádžikistán                                          |                 |                |              |      ✓     |          ✓         |

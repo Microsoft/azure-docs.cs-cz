@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
 ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143261"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Režim služby ve službě Azure Signal
@@ -21,7 +21,7 @@ Režim služby je důležitý koncept ve službě Azure Signal. Při vytvářen�
 
 Můžete ho také později změnit v nabídce nastavení:
 
-:::image type="content" source="media/concept-service-mode/update.png" alt-text="Zvolit režim služby při vytvoření":::
+:::image type="content" source="media/concept-service-mode/update.png" alt-text="Aktualizovat režim služby":::
 
 Služba signalizace Azure v současné době podporuje tři režimy služby: **výchozí**, bez **serveru** a **klasický**. Prostředek signalizace se bude chovat odlišně v různých režimech. V tomto článku se dozvíte o rozdílech a o tom, jak zvolit správný režim služby na základě vašeho scénáře.
 
@@ -29,7 +29,7 @@ Služba signalizace Azure v současné době podporuje tři režimy služby: **v
 
 Výchozím režimem je výchozí hodnota pro režim služby při vytváření nového prostředku signalizace. V tomto režimu funguje vaše aplikace jako typická aplikace pro signalizaci ASP.NET Core (nebo ASP.NET), kde máte webový server, který je hostitelem rozbočovače (označovaného jako hub Server), a klienti mohou mít oboustrannou komunikaci v reálném čase se serverem hub. Jediným rozdílem je, že místo přímého připojení klienta a serveru se klient a Server připojují ke službě Signal Service a službu používají jako proxy. Níže je diagram, který ilustruje typickou strukturu aplikace ve výchozím režimu:
 
-:::image type="content" source="media/concept-service-mode/default.png" alt-text="Zvolit režim služby při vytvoření":::
+:::image type="content" source="media/concept-service-mode/default.png" alt-text="Struktura aplikace ve výchozím režimu":::
 
 Takže pokud máte aplikaci pro signalizaci a chcete ji integrovat se službou Signaler, výchozí režim by měl být ve většině případů správným výběrem.
 
@@ -59,7 +59,7 @@ Další informace o tom, jak nakonfigurovat nadřazený datový proud, najdete v
 
 Níže je uvedený diagram, který znázorňuje, jak funguje režim bez serveru:
 
-:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Zvolit režim služby při vytvoření":::
+:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="Struktura aplikace v režimu bez serveru":::
 
 > [!NOTE]
 > Všimněte si prosím, že ve výchozím režimu můžete použít také REST API/Management SDK/funkce vazby k přímému odesílání zpráv klientovi, pokud nechcete projít serverem centrálního serveru. Ale ve výchozím režimu se připojení klienta pořád zpracovávají servery hub a v tomto režimu nebudou fungovat.

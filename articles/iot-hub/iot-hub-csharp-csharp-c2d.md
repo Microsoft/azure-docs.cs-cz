@@ -16,10 +16,10 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-csharp
 ms.openlocfilehash: d8df9884c0104792240d85d9ebd4235ef2a18741
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142364"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Posílání zpráv z cloudu do zařízení pomocí IoT Hub (.NET)
@@ -36,7 +36,7 @@ Tento kurz sestaví na [odeslání telemetrie ze zařízení do služby IoT Hub]
 
 * Příjem zpráv typu cloud-zařízení na zařízení.
 
-* Z back-endu vašeho řešení požadavek na doručení zpráv*feedback*odesílaných do zařízení z IoT Hub.
+* Z back-endu vašeho řešení požadavek na doručení zprávodesílaných do zařízení z IoT Hub.
 
 Další informace o zprávách z cloudu na zařízení najdete v [D2C a C2D zasílání zpráv pomocí IoT Hub](iot-hub-devguide-messaging.md).
 
@@ -116,19 +116,19 @@ V tomto článku vytvoříte back-end službu pro posílání zpráv z cloudu na
 
 V této části vytvoříte konzolovou aplikaci .NET, která odesílá zprávy typu cloud-zařízení do aplikace simulovaného zařízení.
 
-1. V aktuálním řešení sady Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V poli **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+1. V aktuálním řešení sady Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V poli **vytvořit nový projekt** vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. Pojmenujte projekt *SendCloudToDevice*. V části **řešení**vyberte **Přidat do řešení** a přijměte nejnovější verzi .NET Framework. Vyberte **Vytvořit** a vytvořte projekt.
+1. Pojmenujte projekt *SendCloudToDevice*. V části **řešení** vyberte **Přidat do řešení** a přijměte nejnovější verzi .NET Framework. Vyberte **Vytvořit** a vytvořte projekt.
 
    ![Konfigurace nového projektu v aplikaci Visual Studio](./media/iot-hub-csharp-csharp-c2d/sendcloudtodevice-project-configure.png)
 
 1. V Průzkumník řešení klikněte pravým tlačítkem myši na nový projekt a vyberte možnost **Spravovat balíčky NuGet**.
 
-1. V **možnosti spravovat balíčky NuGet**vyberte **Procházet**a pak vyhledejte a vyberte **Microsoft. Azure. Devices**. Vyberte  **nainstalovat**.
+1. V **možnosti spravovat balíčky NuGet** vyberte **Procházet** a pak vyhledejte a vyberte **Microsoft. Azure. Devices**. Vyberte  **nainstalovat**.
 
    Tento krok stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/).
 
-1. Do `using` horní části souboru **program.cs** přidejte následující příkaz.
+1. Do `using` horní části souboru **program. cs** přidejte následující příkaz.
 
    ``` csharp
    using Microsoft.Azure.Devices;
@@ -167,7 +167,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která odesílá zprávy t
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na své řešení a vyberte **nastavit projekty po spuštění**.
 
-1. V **okně běžné vlastnosti**  >  **spouštěný projekt**vyberte **více projektů po spuštění**a pak vyberte akci **spuštění** pro **SimulatedDevice** a **SendCloudToDevice**. Výběrem **OK** uložte změny.
+1. V **okně běžné vlastnosti**  >  **spouštěný projekt** vyberte **více projektů po spuštění** a pak vyberte akci **spuštění** pro **SimulatedDevice** a **SendCloudToDevice**. Výběrem **OK** uložte změny.
 
 1. Stiskněte klávesu **F5**. Obě aplikace by měly být spuštěny. Vyberte okno **SendCloudToDevice** a stiskněte klávesu **ENTER**. Měla by se zobrazit zpráva přijímaná aplikací zařízení.
 

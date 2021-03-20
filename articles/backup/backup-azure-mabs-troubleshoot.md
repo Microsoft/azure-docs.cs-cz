@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91403003"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
@@ -22,7 +22,7 @@ Před zahájením řešení potíží s Microsoft Azure Backup serverem (MABS) d
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Zajistěte, aby mezi agentem MARS a Azure bylo síťové připojení.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte operaci a operaci opakujte.
-- [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Zajistěte, aby v umístění pomocné složky bylo k dispozici 5-10% volného místa na disku](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - Pokud se registrace nedaří, ujistěte se, že server, na který se pokoušíte nainstalovat Azure Backup Server, už není zaregistrovaný v jiném trezoru.
 - Pokud nabízená instalace selže, zkontrolujte, jestli už agent DPM neexistuje. Pokud agent existuje, odinstalujte ho a pak instalaci opakujte.
 - [Zajištění, aby službě Azure Backup nepřekáží jiný proces nebo antivirový software](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
@@ -36,15 +36,15 @@ MABS je kompatibilní s nejoblíbenějšími antivirovými softwarovými produkt
     - `C:\Program Files<MABS Installation path>\XSD` složky
     - `C:\Program Files<MABS Installation path>\Temp` složky
     - Písmeno jednotky Moderní úložiště zálohování svazku
-    - Replika a protokoly přenosů: Chcete-li to provést, zakažte sledování **dpmra.exe**v reálném čase, který je umístěn ve složce `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` . Monitorování v reálném čase snižuje výkon, protože antivirový software kontroluje repliky pokaždé, když se MABS synchronizuje s chráněným serverem, a kontroluje všechny zasažené soubory pokaždé, když MABS použije změny v replikách.
-    - Konzola pro správu: Chcete-li se vyhnout dopadu na výkon, zakažte sledování **csc.exeho ** procesu v reálném čase. **csc.exe** proces je kompilátor jazyka C \# a sledování v reálném čase může snížit výkon, protože antivirový software kontroluje soubory, které proces **csc.exe** generuje při generování zpráv XML. **CSC.exe** se nachází v následujících cestách:
+    - Replika a protokoly přenosů: Chcete-li to provést, zakažte sledování **dpmra.exe** v reálném čase, který je umístěn ve složce `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` . Monitorování v reálném čase snižuje výkon, protože antivirový software kontroluje repliky pokaždé, když se MABS synchronizuje s chráněným serverem, a kontroluje všechny zasažené soubory pokaždé, když MABS použije změny v replikách.
+    - Konzola pro správu: Chcete-li se vyhnout dopadu na výkon, zakažte sledování **csc.exeho** procesu v reálném čase. **csc.exe** proces je kompilátor jazyka C \# a sledování v reálném čase může snížit výkon, protože antivirový software kontroluje soubory, které proces **csc.exe** generuje při generování zpráv XML. **CSC.exe** se nachází v následujících cestách:
         - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
         - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
     - Pro agenta MARS nainstalovaného na serveru MABS doporučujeme, abyste vyloučili následující soubory a umístění:
         - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` jako proces
         - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
         - Pomocné umístění (Pokud nepoužíváte standardní umístění)
-2. **Zakázat sledování v reálném čase na chráněném serveru**: zakáže sledování **dpmra.exe**v reálném čase, které se nachází ve složce `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` , na chráněném serveru.
+2. **Zakázat sledování v reálném čase na chráněném serveru**: zakáže sledování **dpmra.exe** v reálném čase, které se nachází ve složce `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` , na chráněném serveru.
 3. **Konfigurace antivirového softwaru k odstranění nakažených souborů na chráněných serverech a na serveru MABS**: Pokud chcete zabránit poškození dat repliky a bodů obnovení, nakonfigurujte antivirový software tak, aby odstranil napadené soubory místo automatického čištění nebo umístění do karantény. Automatické čištění a umístění do karantény může způsobovat antivirovému softwaru upravovat soubory a provádět změny, které MABS nemůže detekovat.
 
 Měli byste spustit ruční synchronizaci s konzistencí. Zkontroluje úlohu pokaždé, když antivirový software odstraní soubor z repliky, a to i v případě, že je replika označena jako nekonzistentní.
@@ -61,11 +61,11 @@ Pokud chcete najít cestu k instalační složce, můžete taky spustit následu
 Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 ```
 
-## <a name="invalid-vault-credentials-provided"></a>Zadali jste neplatné přihlašovací údaje trezoru.
+## <a name="invalid-vault-credentials-provided"></a>Zadané neplatné přihlašovací údaje trezoru
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Registrace do trezoru | Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá k dispozici nejnovější přihlašovací údaje přidružené ke službě obnovení. | Doporučená akce: <br> <ul><li> Stáhněte si nejnovější soubor s přihlašovacími údaji z trezoru a zkuste to znovu. <br>ANI</li> <li> Pokud předchozí akce nefungovala, zkuste stáhnout přihlašovací údaje do jiného místního adresáře nebo vytvořit nový trezor. <br>ANI</li> <li> Zkuste aktualizovat nastavení data a času, jak je popsáno v [tomto článku](./backup-azure-mars-troubleshoot.md#invalid-vault-credentials-provided). <br>ANI</li> <li> Zkontrolujte, jestli má c:\Windows\Temp víc než 65000 souborů. Přesuňte zastaralé soubory do jiného umístění nebo odstraňte položky v dočasné složce. <br>ANI</li> <li> Ověřte stav certifikátů. <br> a. Otevřete **spravovat certifikáty počítače** (v Ovládacích panelech). <br> b. Rozbalte **osobní** uzel a jeho **certifikáty**podřízeného uzlu.<br> c.  Odeberte certifikát **nástroje Windows Azure Tools**. <br> d. Opakujte registraci v klientovi Azure Backup. <br> ANI </li> <li> Zkontrolujte, jestli nejsou nastavené žádné zásady skupiny. </li></ul> |
+| Registrace do trezoru | Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá k dispozici nejnovější přihlašovací údaje přidružené ke službě obnovení. | Doporučená akce: <br> <ul><li> Stáhněte si nejnovější soubor s přihlašovacími údaji z trezoru a zkuste to znovu. <br>ANI</li> <li> Pokud předchozí akce nefungovala, zkuste stáhnout přihlašovací údaje do jiného místního adresáře nebo vytvořit nový trezor. <br>ANI</li> <li> Zkuste aktualizovat nastavení data a času, jak je popsáno v [tomto článku](./backup-azure-mars-troubleshoot.md#invalid-vault-credentials-provided). <br>ANI</li> <li> Zkontrolujte, jestli má c:\Windows\Temp víc než 65000 souborů. Přesuňte zastaralé soubory do jiného umístění nebo odstraňte položky v dočasné složce. <br>ANI</li> <li> Ověřte stav certifikátů. <br> a. Otevřete **spravovat certifikáty počítače** (v Ovládacích panelech). <br> b. Rozbalte **osobní** uzel a jeho **certifikáty** podřízeného uzlu.<br> c.  Odeberte certifikát **nástroje Windows Azure Tools**. <br> d. Opakujte registraci v klientovi Azure Backup. <br> ANI </li> <li> Zkontrolujte, jestli nejsou nastavené žádné zásady skupiny. </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>Replika je nekonzistentní.
 
@@ -126,7 +126,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
 | Backup | Během běhu úlohy došlo k neočekávané chybě. Zařízení není připravené. | **Pokud Doporučená akce, která je zobrazená v produktu, nefunguje, proveďte následující kroky:** <br> <ul><li>Nastavte prostor úložiště stínové kopie na neomezený pro položky ve skupině ochrany a poté spusťte kontrolu konzistence.<br></li> ANI <li>Zkuste odstranit existující skupinu ochrany a vytvořit několik nových skupin. Každá nová skupina ochrany by měla obsahovat jednotlivou položku.</li></ul> |
-| Backup | Pokud zálohujete pouze stav systému, ověřte, zda je v chráněném počítači dostatek volného místa pro uložení zálohy stavu systému. | <ol><li>Ověřte, že je na chráněném počítači nainstalovaná Zálohování Windows Serveru.</li><li>Ověřte, zda je v chráněném počítači dostatek místa pro stav systému. Nejjednodušší způsob, jak to ověřit, je přejít na chráněný počítač, otevřít Zálohování Windows Serveru, kliknout na výběr a pak vybrat BMR. Uživatelské rozhraní pak oznamuje, kolik místa je potřeba. Otevřete **WSB**  >  **Local backup**  >  možnost**plán zálohování**místních záloh WSB  >  **Vybrat nastavení zálohování**  >  **úplný Server** (velikost se zobrazí). Tuto velikost použijte k ověření.</li></ol>
+| Backup | Pokud zálohujete pouze stav systému, ověřte, zda je v chráněném počítači dostatek volného místa pro uložení zálohy stavu systému. | <ol><li>Ověřte, že je na chráněném počítači nainstalovaná Zálohování Windows Serveru.</li><li>Ověřte, zda je v chráněném počítači dostatek místa pro stav systému. Nejjednodušší způsob, jak to ověřit, je přejít na chráněný počítač, otevřít Zálohování Windows Serveru, kliknout na výběr a pak vybrat BMR. Uživatelské rozhraní pak oznamuje, kolik místa je potřeba. Otevřete   >    >  možnost **plán zálohování** místních záloh WSB  >  **Vybrat nastavení zálohování**  >  **úplný Server** (velikost se zobrazí). Tuto velikost použijte k ověření.</li></ol>
 | Backup | Selhání zálohování pro BMR | Pokud je velikost BMR velká, přesuňte některé soubory aplikace na jednotku operačního systému a zkuste to znovu. |
 | Backup | Možnost znovu zapnout ochranu virtuálního počítače VMware na novém serveru Microsoft Azure Backup nezobrazuje, jak je možné přidat. | Vlastnosti VMware jsou odkazovaly na starou a vyřazenou instanci serveru Microsoft Azure Backup. Řešení tohoto problému:<br><ol><li>V VCenter (ekvivalent SC-VMM), přejít na kartu **Souhrn** a pak na **vlastní atributy**.</li>  <li>Odstraňte starý název Microsoft Azure Backup serveru z hodnoty **DPMServer** .</li>  <li>Vraťte se na nový server Microsoft Azure Backup a upravte PG.  Po výběru tlačítka **aktualizovat** se virtuální počítač zobrazí se zaškrtávacím políčkem, jako je k dispozici pro přidání do ochrany.</li></ol> |
 | Backup | Při přístupu k souborům nebo sdíleným složkám došlo k chybě. | Zkuste upravit nastavení antivirového programu podle doporučení v tomto článku [Spusťte antivirový software na serveru DPM](/system-center/dpm/run-antivirus-server).|
@@ -135,8 +135,8 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Změnit heslo |Zadaný kód PIN zabezpečení je nesprávný. Pro dokončení této operace zadejte správný bezpečnostní kód PIN. |**Příčina:**<br/> K této chybě dojde, když zadáte neplatný nebo vypršelý PIN kód pro zabezpečení při provádění kritické operace (například změna hesla). <br/>**Doporučená akce:**<br/> K dokončení této operace je nutné zadat platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejít do trezoru Recovery Services. Pak přejdete **Settings**na  >  **vlastnosti**nastavení  >  **generovat bezpečnostní kód PIN**. Pro změnu hesla použijte tento PIN kód. |
-| Změnit heslo |Operace se nezdařila. ID: 120002 |**Příčina:**<br/>K této chybě dochází, pokud je povoleno nastavení zabezpečení nebo pokud se pokusíte změnit heslo při použití nepodporované verze.<br/>**Doporučená akce:**<br/> Pokud chcete změnit heslo, musíte nejdřív aktualizovat agenta Zálohování na minimální verzi, která je 2.0.9052. Musíte taky aktualizovat Azure Backup Server na minimum aktualizace 1 a pak zadat platný bezpečnostní PIN kód. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejít do trezoru Recovery Services. Pak přejdete **Settings**na  >  **vlastnosti**nastavení  >  **generovat bezpečnostní kód PIN**. Pro změnu hesla použijte tento PIN kód. |
+| Změnit heslo |Zadaný kód PIN zabezpečení je nesprávný. Pro dokončení této operace zadejte správný bezpečnostní kód PIN. |**Příčina:**<br/> K této chybě dojde, když zadáte neplatný nebo vypršelý PIN kód pro zabezpečení při provádění kritické operace (například změna hesla). <br/>**Doporučená akce:**<br/> K dokončení této operace je nutné zadat platný bezpečnostní kód PIN. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejít do trezoru Recovery Services. Pak přejdete na  >  **vlastnosti** nastavení  >  **generovat bezpečnostní kód PIN**. Pro změnu hesla použijte tento PIN kód. |
+| Změnit heslo |Operace se nezdařila. ID: 120002 |**Příčina:**<br/>K této chybě dochází, pokud je povoleno nastavení zabezpečení nebo pokud se pokusíte změnit heslo při použití nepodporované verze.<br/>**Doporučená akce:**<br/> Pokud chcete změnit heslo, musíte nejdřív aktualizovat agenta Zálohování na minimální verzi, která je 2.0.9052. Musíte taky aktualizovat Azure Backup Server na minimum aktualizace 1 a pak zadat platný bezpečnostní PIN kód. Pokud chcete získat kód PIN, přihlaste se k Azure Portal a přejít do trezoru Recovery Services. Pak přejdete na  >  **vlastnosti** nastavení  >  **generovat bezpečnostní kód PIN**. Pro změnu hesla použijte tento PIN kód. |
 
 ## <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení
 

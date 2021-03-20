@@ -4,10 +4,10 @@ description: Naučte se zálohovat Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172124"
 ---
 # <a name="back-up-the-mabs-server"></a>Zálohování serveru MABS
@@ -72,7 +72,7 @@ Databázi můžete obnovit z Azure pomocí libovolného serveru MABS, který je 
 
 2. Zadejte přihlašovací údaje trezoru (Stáhněte si z trezoru Azure Backup). Upozorňujeme, že přihlašovací údaje jsou platné jenom dva dny.
 
-3. V části **vybrat externí MABS pro obnovení**vyberte server MABS, pro který chcete obnovit databázi, zadejte šifrovací heslo a vyberte **OK.**
+3. V části **vybrat externí MABS pro obnovení** vyberte server MABS, pro který chcete obnovit databázi, zadejte šifrovací heslo a vyberte **OK.**
 
 4. V seznamu dostupných bodů obnovení vyberte ten, který chcete použít. Vyberte možnost **Vymazat externí MABS** a vraťte se do místního zobrazení MABS.
 
@@ -194,7 +194,7 @@ Tato možnost zálohování používá nativní SQL pro zálohování databáze 
 
 ### <a name="before-you-start"></a>Než začnete
 
-1. Na SQL Server vytvořte složku na disku s dostatkem volného místa pro uložení jedné kopie zálohy. Například: `C:\MABSBACKUP`.
+1. Na SQL Server vytvořte složku na disku s dostatkem volného místa pro uložení jedné kopie zálohy. Příklad: `C:\MABSBACKUP`.
 
 1. Složku nasdílejte. Sdílejte například `C:\MABSBACKUP` složku jako *DPMBackup*.
 
@@ -226,7 +226,7 @@ Tato možnost zálohování používá nativní SQL pro zálohování databáze 
 
 1. Pokud nepovolíte samoobslužné obnovení, budete potřebovat některé další kroky pro sdílení složky MABSBACKUP v replice:
 
-    1. V konzole MABS > **Protection**vyhledejte zdroj dat MABSBACKUP a vyberte ho. V části Podrobnosti vyberte **kliknutím kliknutím zobrazíte podrobnosti** o odkazu na cestu k replice a zkopírujte cestu do poznámkového bloku. Odeberte zdrojovou cestu a uložte cílovou cestu. Cesta by měla vypadat nějak takto: `C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP` .
+    1. V konzole MABS > **Protection** vyhledejte zdroj dat MABSBACKUP a vyberte ho. V části Podrobnosti vyberte **kliknutím kliknutím zobrazíte podrobnosti** o odkazu na cestu k replice a zkopírujte cestu do poznámkového bloku. Odeberte zdrojovou cestu a uložte cílovou cestu. Cesta by měla vypadat nějak takto: `C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP` .
 
     2. Vytvořte v této cestě sdílenou složku pomocí názvu sdílené složky **MABSSERVERNAME-DPMDB**. Můžete použít příkaz Net Share z příkazového řádku pro správu.
 
@@ -287,7 +287,7 @@ Databázi MABS můžete zálohovat stejně jako jakoukoli jinou SQL Server datab
 | Parametr      | Popis    |
 |----------------|-----------------------------|
 | **– RestoreDb**                       | Obnoví databázi MABS ze zadaného umístění.|
-| **-Sync**                            | Synchronizuje obnovené databáze. Po obnovení databází je nutné spustit nástroj **DpmSync – synchronizace** . Po spuštění příkazu **DpmSync – Sync**mohou být některé repliky stále označeny jako chybějící. |
+| **-Sync**                            | Synchronizuje obnovené databáze. Po obnovení databází je nutné spustit nástroj **DpmSync – synchronizace** . Po spuštění příkazu **DpmSync – Sync** mohou být některé repliky stále označeny jako chybějící. |
 | **– DbLoc** *umístění*                | Určuje umístění zálohy databáze MABS.|
 | **-InstanceName** <br/>*server\instance*     | Instance, do které se musí obnovit DPMDB|
 | **– ReallocateReplica**         | Znovu přidělí všechny chybějící svazky repliky bez synchronizace. |

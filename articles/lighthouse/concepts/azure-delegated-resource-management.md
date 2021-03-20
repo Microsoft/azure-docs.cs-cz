@@ -4,10 +4,10 @@ description: Správa delegovaných prostředků Azure je klíčovou součástí 
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92203853"
 ---
 # <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
@@ -43,7 +43,7 @@ V takovém případě funguje Správa delegovaných prostředků v Azure na nejv
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Podpora správy delegovaných prostředků Azure
 
-Pokud potřebujete pomoc související se správou delegovaných prostředků Azure, můžete na Azure Portal otevřít žádost o podporu. Jako **typ problému**vyberte **technický**. Vyberte předplatné a pak vyberte **Lighthouse** (pod položkou **monitorování & Správa**).
+Pokud potřebujete pomoc související se správou delegovaných prostředků Azure, můžete na Azure Portal otevřít žádost o podporu. Jako **typ problému** vyberte **technický**. Vyberte předplatné a pak vyberte **Lighthouse** (pod položkou **monitorování & Správa**).
 
 ## <a name="next-steps"></a>Další kroky
 

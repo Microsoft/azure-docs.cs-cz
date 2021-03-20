@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86129913"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure s využitím PowerShellu
@@ -31,7 +31,7 @@ Získáte informace o těchto tématech:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, potřebujete:
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Nastavte kontext trezoru pomocí rutiny Set-ASRVaultContext. Po nastavení se následné operace Azure Site Recovery v relaci PowerShellu provádějí v kontextu vybraného trezoru.
 
 > [!TIP]
-> Modul Azure Site Recovery PowerShellu (AZ. RecoveryServices Module) obsahuje snadné použití aliasů pro většinu rutin. Rutiny v modulu mají formu * \<Operation> - **AzRecoveryServicesAsr** \<Object> * a mají ekvivalentní aliasy, které mají formu * \<Operation> - **ASR** \<Object> *. Můžete nahradit aliasy rutiny pro snadné použití.
+> Modul Azure Site Recovery PowerShellu (AZ. RecoveryServices Module) obsahuje snadné použití aliasů pro většinu rutin. Rutiny v modulu mají formu *\<Operation> - **AzRecoveryServicesAsr** \<Object>* a mají ekvivalentní aliasy, které mají formu *\<Operation> - **ASR** \<Object>*. Můžete nahradit aliasy rutiny pro snadné použití.
 
 V následujícím příkladu se k určení kontextu trezoru pro relaci PowerShellu použijí podrobnosti trezoru z $vault proměnné.
 
@@ -172,7 +172,7 @@ V tomto příkladu máme následující:
    1     ConfigurationServer
    ```
 
-   Z výstupu nad ***$ProcessServers [0]*** odpovídá *ProcessServer* a ***$ProcessServers [1]*** odpovídá roli procesového serveru v *ConfigurationServer* .
+   Z výstupu výše ***$ProcessServers [0]** _ odpovídá parametru _Scale-ProcessServer * a ***$ProcessServers [1]**_ odpovídá roli procesového serveru v _ConfigurationServer *
 
 3. Identifikujte účty, které byly nastaveny na konfiguračním serveru.
 
@@ -189,7 +189,7 @@ V tomto příkladu máme následující:
    3         LinuxAccount
    ```
 
-   Z výstupu výše ***$AccountHandles [0]*** odpovídá účtu *vCenter_account*, ***$AccountHandles [1]*** k účtu *WindowsAccount*a ***$AccountHandles [2]*** k účtu *LinuxAccount*
+   Z výstupu výše ***$AccountHandles [0]** _ odpovídá účtu _vCenter_account *, ***$AccountHandles [1]**_ pro účet _WindowsAccount * a ***$AccountHandles [2]**_ na účet _LinuxAccount *
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
@@ -342,7 +342,7 @@ K ochraně zjištěného virtuálního počítače budete potřebovat následuj�
 * Chráněná položka, která má být replikována.
 * Účet úložiště, do kterého se má virtuální počítač replikovat (jenom v případě, že se replikuje do účtu úložiště). 
 * Úložiště protokolu je potřeba k ochraně virtuálních počítačů s účtem Premium Storage nebo se spravovaným diskem.
-* Procesový Server, který se má použít pro replikaci. Seznam dostupných procesových serverů byl načten a uložen do ***$ProcessServers [0]***  *(Scale-ProcessServer)* a ***$ProcessServers [1]*** *(ConfigurationServer)* proměnných.
+* Procesový Server, který se má použít pro replikaci. Seznam dostupných procesových serverů byl načten a uložen v proměnné ***$ProcessServers [0]** _ _(Scale-ProcessServer) * a ***$ProcessServers [1]**_ _ (ConfigurationServer) *.
 * Účet, který se má použít k instalaci softwaru služby mobility do počítačů. Seznam dostupných účtů byl načten a uložen v proměnné ***$AccountHandles*** .
 * Mapování kontejneru ochrany pro zásady replikace, které se má použít pro replikaci.
 * Skupina prostředků, ve které se musí vytvořit virtuální počítače při převzetí služeb při selhání.
@@ -353,9 +353,9 @@ Teď replikujte následující virtuální počítače pomocí nastavení zadan�
 
 |Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásady           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |Není k dispozici| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
+|CentOSVM1       |ConfigurationServer   |–| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Není k dispozici                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
 
 
 ```azurepowershell

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 631fdba451f69e44a675d396a42e1cddaea50a3b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013953"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure SQL Database výstup z Azure Stream Analytics
@@ -23,10 +23,10 @@ Můžete také použít [spravovanou instanci Azure SQL](../azure-sql/managed-in
 
 Následující tabulka uvádí seznam názvů vlastností a jejich popis pro vytvoření výstupu SQL Database.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k směrování výstupu dotazu do této databáze. |
-| Databáze | Název databáze, do které posíláte výstup. |
+| databáze | Název databáze, do které posíláte výstup. |
 | Název serveru | Název logického serveru SQL nebo název spravované instance. Pro spravovanou instanci SQL je nutné zadat port 3342. Například *sampleserver. Public. Database. Windows. NET, 3342* |
 | Uživatelské jméno | Uživatelské jméno, které má přístup pro zápis do databáze. Stream Analytics podporuje pouze ověřování SQL. |
 | Heslo | Heslo pro připojení k databázi. |
@@ -40,7 +40,7 @@ Existují dva adaptéry, které umožňují výstup z Azure Stream Analytics do 
 
 * **Vstupní oddíly**: Pokud máte osm nebo více vstupních oddílů, použijte možnost výstup Azure synapse pro lepší horizontální navýšení kapacity.
 
-## <a name="partitioning"></a>Dělení na oddíly
+## <a name="partitioning"></a>Dělení
 
 Dělení je nutné povolit a je založené na klauzuli PARTITION BY v dotazu. Když je povolená možnost zdědit dělení, bude postupovat podle vstupního dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). Další informace o dosažení lepšího výkonu propustnosti zápisu při načítání dat do Azure SQL Database naleznete v tématu [Azure Stream Analytics Output to Azure SQL Database](stream-analytics-sql-output-perf.md).
 

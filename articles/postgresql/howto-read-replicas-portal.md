@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.openlocfilehash: 9fdef187e9bdf77b29c548f767a4b4edfeb62f44
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422174"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytváření a Správa replik pro čtení v serveru Azure Database for PostgreSQL-Single z Azure Portal
@@ -39,9 +39,9 @@ Ke konfiguraci správné úrovně protokolování použijte parametr podpory rep
 
 1. V Azure Portal vyberte existující server Azure Database for PostgreSQL, který chcete použít jako hlavní server.
 
-2. V nabídce serveru vyberte **replikace**. Pokud je podpora replikace Azure nastavená na aspoň **repliku** , můžete vytvořit repliky pro čtení. 
+2. V nabídce serveru vyberte **replikace**. Pokud je podpora replikace Azure nastavená na aspoň **repliku**, můžete vytvořit repliky pro čtení. 
 
-3. Pokud není podpora replikace Azure nastavená na aspoň **repliku** , nastavte ji. Vyberte **Uložit**.
+3. Pokud není podpora replikace Azure nastavená na aspoň **repliku**, nastavte ji. Vyberte **Uložit**.
 
    :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="Azure Database for PostgreSQL – replikace – nastavit repliku a uložit":::
 
@@ -73,7 +73,7 @@ K vytvoření repliky pro čtení použijte následující postup:
 
 5. Vyberte umístění repliky. Výchozí umístění je stejné jako na primárním serveru.
 
-    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Vybrat umístění":::
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Výběr umístění":::
 
    > [!NOTE]
    > Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md). 

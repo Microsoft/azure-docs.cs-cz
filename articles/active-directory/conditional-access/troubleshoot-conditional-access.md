@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92145089"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Řešení potíží s přihlášením s využitím podmíněného přístupu
@@ -71,7 +71,7 @@ Pokud chcete zjistit, které zásady nebo zásady podmíněného přístupu se n
 1. Jakmile se najde přihlašovací událost, která odpovídá neúspěšnému přihlášení uživatele, vyberte kartu **podmíněný přístup** . Na kartě podmíněný přístup se zobrazí konkrétní zásady nebo zásady, které vedly k přerušení přihlášení.
    1. Informace na kartě **Poradce při potížích a podpoře** můžou mít jasný důvod, proč se nezdařilo přihlášení jako zařízení, které nevyhovělo požadavkům na dodržování předpisů.
    1. Pokud chcete prozkoumat další postup, přejděte k podrobnostem o konfiguraci zásad kliknutím na **název zásady**. Kliknutím na **název zásady** zobrazíte uživatelské rozhraní konfigurace zásad pro vybranou zásadu pro kontrolu a úpravy.
-   1. Podrobnosti **o uživateli** a **zařízení** klienta, které byly použity pro vyhodnocení zásad podmíněného přístupu, jsou k dispozici také na kartách **základní informace**, **umístění**, **informace o zařízení**, **Podrobnosti o ověřování**a další karty **podrobností** události přihlášení.
+   1. Podrobnosti **o uživateli** a **zařízení** klienta, které byly použity pro vyhodnocení zásad podmíněného přístupu, jsou k dispozici také na kartách **základní informace**, **umístění**, **informace o zařízení**, **Podrobnosti o ověřování** a další karty **podrobností** události přihlášení.
 
 ### <a name="policy-details"></a>Podrobnosti zásady
 

@@ -9,10 +9,10 @@ ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
 ms.openlocfilehash: 3338f7b6bd418cea2bfdbbcd40692b9342f48cfa
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744354"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Nejčastější dotazy ke službám Azure Cloud Services (s rozšířenou podporou)
@@ -60,7 +60,7 @@ Nasazení Cloud Services (Rozšířená podpora) se nedají škálovat mezi víc
 
 ### <a name="are-there-any-pricing-differences-between-cloud-services-classic-and-cloud-services-extended-support"></a>Existují nějaké cenové rozdíly mezi Cloud Services (Classic) a Cloud Services (Rozšířená podpora)?
 Cloud Services (Rozšířená podpora) používá veřejné IP adresy Azure Key Vault a Basic (ARM).Zákazníci vyžadující certifikáty potřebují použít Azure Key Vault pro správu certifikátů ([Další informace](https://azure.microsoft.com/pricing/details/key-vault/) o cenách Azure Key Vault.)   Každá veřejná IP adresa pro Cloud Services (Rozšířená podpora) se účtuje samostatně ([Další informace](https://azure.microsoft.com/pricing/details/ip-addresses/) o cenách veřejných IP adres). 
-## <a name="resources"></a>Zdroje a prostředky 
+## <a name="resources"></a>Zdroje informací 
 
 ### <a name="what-resources-linked-to-a-cloud-services-extended-support-deployment-need-to-live-in-the-same-resource-group"></a>Které prostředky propojené s nasazením služby Cloud Services (Rozšířená podpora) musí být živé ve stejné skupině prostředků?
 Nástroje pro vyrovnávání zatížení, skupiny zabezpečení sítě a směrovací tabulky musí být živé ve stejné oblasti a skupině prostředků. 
@@ -117,7 +117,7 @@ Ano. Cloud Services (rozšířené podpoře) se taky dá předávat název DNS. 
 Cloud Services (Rozšířená podpora) přijal stejný postup jako jiné výpočetní nabídky, kde se certifikáty nacházejí v trezorech spravovaného klíče zákazníka. Díky tomu mohou zákazníci mít úplnou kontrolu nad svými tajnými klíči & certifikátů. 
 
 ### <a name="can-i-use-one-key-vault-for-all-my-deployments-in-all-regions"></a>Můžu použít jednu Key Vault pro všechna moje nasazení ve všech oblastech?
-Ne. Key Vault je regionální prostředek a zákazníci potřebují jednu Key Vault v každé oblasti. Jeden Key Vault však lze použít pro všechna nasazení v rámci dané oblasti.
+No. Key Vault je regionální prostředek a zákazníci potřebují jednu Key Vault v každé oblasti. Jeden Key Vault však lze použít pro všechna nasazení v rámci dané oblasti.
 
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete začít používat Cloud Services (Rozšířená podpora), přečtěte si téma [nasazení cloudové služby (Rozšířená podpora) pomocí PowerShellu](deploy-powershell.md) .

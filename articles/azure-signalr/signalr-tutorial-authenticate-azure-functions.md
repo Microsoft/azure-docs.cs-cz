@@ -8,10 +8,10 @@ ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
 ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92150906"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Kurz: Ověřování služby Azure SignalR s využitím služby Azure Functions
@@ -58,7 +58,7 @@ Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude m�
 
 1. Zadejte následující informace.
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     |---|---|
     | Název prostředku | Jedinečný název instance služby SignalR |
     | Skupina prostředků | Vytvořte novou skupinu prostředků s jedinečným názvem. |
@@ -327,7 +327,7 @@ Aplikace Function App běžící v Azure vyžaduje účet Azure Storage. Také b
 
 1. Zadejte následující informace.
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     |---|---|
     | Předplatné | Vyberte předplatné, které obsahuje instanci služby signalizace. |
     | Skupina prostředků | Vyberte stejnou skupinu prostředků. |
@@ -338,7 +338,7 @@ Aplikace Function App běžící v Azure vyžaduje účet Azure Storage. Také b
     | Replikace | Místně redundantní úložiště (LRS) |
     | Úroveň přístupu | Horká |
 
-1. Klikněte na tlačítko **zkontrolovat + vytvořit**a pak **vytvořit**.
+1. Klikněte na tlačítko **zkontrolovat + vytvořit** a pak **vytvořit**.
 
 ### <a name="configure-static-websites"></a>Konfigurace statických webů
 
@@ -348,7 +348,7 @@ Aplikace Function App běžící v Azure vyžaduje účet Azure Storage. Také b
 
 1. Pokud chcete povolit funkci statického webu, vyberte **povoleno** .
 
-1. Do **název dokumentu indexu**zadejte *index.html*.
+1. Do **název dokumentu indexu** zadejte *index.html*.
 
 1. Klikněte na **Uložit**.
 
@@ -461,7 +461,7 @@ K hostování webové aplikace využijeme funkci statického webu ve službě Az
 
 1. Zadejte tyto hodnoty:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     |---|---|
     | Předplatné | Vyberte své předplatné. |
     | Účet úložiště | Vyberte účet úložiště, který jste vytvořili dříve. |
@@ -497,7 +497,7 @@ Přestože soubor **local.settings.json** obsahuje nastavení CORS, toto nastave
 
 1. Soukromé zprávy můžete odesílat kliknutím na uživatelské jméno v historii chatu. Tyto zprávy obdrží pouze vybraný příjemce.
 
-Blahopřejeme! Nasadili jste chatovací aplikaci bez serveru, která funguje v reálném čase.
+Gratulujeme! Nasadili jste chatovací aplikaci bez serveru, která funguje v reálném čase.
 
 ![Ukázka](media/signalr-tutorial-authenticate-azure-functions/signalr-serverless-chat.gif)
 

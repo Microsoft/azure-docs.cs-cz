@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336390"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace při živém streamování vyprší metadata 
@@ -144,7 +144,7 @@ Doporučuje se odesílat zprávy s vypršenou platností – zprávy s metadaty 
 
 Datová část pro **"onUserDataEvent"** by měla být zpráva formátu [MPEGDASH] EventStream XML. Díky tomu je snadné předat vlastní definovaná schémata, která se dají přenášet v EMSG datových vytíženích pro CMAF [MPEGCMAF] obsah, který se doručuje přes protokoly HLS nebo POMLČKy. Každá zpráva streamování událostí obsahuje schemeIdUri, který funguje jako identifikátor schématu zprávy URN a definuje datovou část zprávy. Některá schémata, jako je například " https://aomedia.org/emsg/ID3 " pro [ID3v2] nebo **urn: scte: scte35:2013: bin** pro [scte-35], jsou standardizovány v oboru pro interoperabilitu. Libovolný poskytovatel aplikace může definovat vlastní schéma pomocí adresy URL, kterou řídí (vlastní doména), a v případě potřeby může zadat specifikaci na této adrese URL. Pokud hráč má obslužnou rutinu pro definované schéma, pak to je jediná součást, která potřebuje pochopit datovou část a protokol.
 
-Schéma pro datovou část XML EventStream [MPEG-SPOJOVNÍK] je definováno jako (výňatek z POMLČKy ISO-IEC-23009-1-3 Edition). Všimněte si, že v tuto chvíli je podporovaná jenom jedna "EventType" na "EventStream". Pokud je v **EventStream**k dispozici více událostí, bude zpracován pouze první prvek **události** .
+Schéma pro datovou část XML EventStream [MPEG-SPOJOVNÍK] je definováno jako (výňatek z POMLČKy ISO-IEC-23009-1-3 Edition). Všimněte si, že v tuto chvíli je podporovaná jenom jedna "EventType" na "EventStream". Pokud je v **EventStream** k dispozici více událostí, bude zpracován pouze první prvek **události** .
 
 ```xml
   <!-- Event Stream -->
@@ -419,7 +419,7 @@ Aby bylo možné dosáhnout přesného vkládání reklam, musí kodér rozděli
 
 Zhuštěná stopa **musí** být deklarována v poli manifestu živého serveru s **\<textstream\>** položkou a **musí** mít následující sady atributů:
 
-| **Název atributu** | **Typ pole** | **Požadovanou?** | **Popis**                                                                                                                                                                                                              |
+| **Název atributu** | **Typ pole** | **Požadováno?** | **Popis**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | systemBitrate      | Číslo         | Vyžadováno      | **Musí** být "0", což znamená, že záznam má neznámou proměnlivou přenosovou rychlost.                                                                                                                                                          |
 | parentTrackName    | Řetězec         | Vyžadováno      | **Musí** být název nadřazeného záznamu, na který jsou kódy času zhuštěného stopy zarovnané na časovou osu. Nadřazená stopa nemůže být zhuštěná stopa.                                                                             |
@@ -437,7 +437,7 @@ Pole video (' Moov ') se řídí polem manifest pro živý Server jako součást
 
 Pole Moov **by mělo** obsahovat pole **TrackHeaderBox (' tkhd ')** , jak je definováno v [ISO-14496-12] s následujícími omezeními:
 
-| **Název pole** | **Typ pole**          | **Požadovanou?** | **Popis**                                                                                                    |
+| **Název pole** | **Typ pole**          | **Požadováno?** | **Popis**                                                                                                    |
 | -------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
 | doba trvání       | 64 – bitová unsigned integer | Vyžadováno      | Hodnota **by měla** být 0, protože pole Track má nula vzorků a celková doba trvání vzorků v poli stop je 0. |
 
@@ -445,7 +445,7 @@ Pole Moov **by mělo** obsahovat pole **TrackHeaderBox (' tkhd ')** , jak je def
 
 Pole Moov **by mělo** obsahovat **HandlerBox (' HDLR ')** , jak je definováno v [ISO-14496-12] s těmito omezeními:
 
-| **Název pole** | **Typ pole**          | **Požadovanou?** | **Popis**       |
+| **Název pole** | **Typ pole**          | **Požadováno?** | **Popis**       |
 | -------------- | ----------------------- | ------------- | --------------------- |
 | handler_type   | 32 – bitová unsigned integer | Vyžadováno      | **Měla by** být meta. |
 
@@ -463,7 +463,7 @@ Fragmenty zhuštěného sledování se skládají z pole fragment videa (' Moof 
 
 Pole MovieFragmentBox (' Moof ') **musí** obsahovat pole **TrackFragmentExtendedHeaderBox (' UUID ')** , jak je definováno v [MS-SSTR] pomocí následujících polí:
 
-| **Název pole**         | **Typ pole**          | **Požadovanou?** | **Popis**                                                                                           |
+| **Název pole**         | **Typ pole**          | **Požadováno?** | **Popis**                                                                                           |
 | ---------------------- | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
 | fragment_absolute_time | 64 – bitová unsigned integer | Vyžadováno      | **Musí** se jednat o dobu příjezdu události. Tato hodnota Zarovná zprávu s nadřazenou stopou.           |
 | fragment_duration      | 64 – bitová unsigned integer | Vyžadováno      | **Musí** se jednat o dobu trvání události. Doba trvání může být nulová, aby označovala, že doba trvání je neznámá. |
@@ -473,7 +473,7 @@ Pole MovieFragmentBox (' Moof ') **musí** obsahovat pole **TrackFragmentExtende
 
 Pole MediaDataBox (' mdat ') **musí** mít následující formát:
 
-| **Název pole**          | **Typ pole**                   | **Požadovanou?** | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| **Název pole**          | **Typ pole**                   | **Požadováno?** | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | verze                 | 32-bit unsigned integer (uimsbf) | Vyžadováno      | Určuje formát obsahu v poli ' mdat '. Nerozpoznané verze budou ignorovány. V současné době je jediná podporovaná verze 1.                                                                                                                                                                                                                                                                                                                                                                      |
 | id                      | 32-bit unsigned integer (uimsbf) | Vyžadováno      | Identifikuje tuto instanci zprávy. Zprávy s ekvivalentní sémantikou musí mít stejnou hodnotu. To znamená, že zpracování libovolného okna se zprávou o události se stejným ID je dostatečné.                                                                                                                                                                                                                                                                                                                            |
@@ -928,7 +928,7 @@ Media Services (verze 2 a 3 API) podporuje výstup značky EXT-X-CUE, jak je def
 
 Označení "starší" verze "EXT-X-HROMÁDKy je definováno níže a také může být normativní odkaz ve specifikaci [Adobe-primetime]. To by mělo být použito pouze pro SCTE35, pokud je to potřeba, v opačném případě je doporučená značka definována v [RFC8216] jako EXT-X-DATERANGE. 
 
-| **Název atributu** | **Typ**                      | **Požadovanou?**                             | **Popis**                                                                                                                                                                                                                                                                          |
+| **Název atributu** | **Typ**                      | **Požadováno?**                             | **Popis**                                                                                                                                                                                                                                                                          |
 | ------------------ | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | INFORMOVAT                | řetězec v uvozovkách                 | Vyžadováno                                  | Zpráva zakódovaná jako řetězec kódovaný v kódování Base64, jak je popsáno v [RFC4648]. U zpráv [SCTE-35] se jedná o splice_info_section kódovaný v kódování Base64 ().                                                                                                                                      |
 | TYP               | řetězec v uvozovkách                 | Vyžadováno                                  | Název URN nebo adresa URL, které identifikují schéma zprávy. U zpráv [SCTE-35] má typ speciální hodnotu "scte35".                                                                                                                                                                          |
@@ -1050,10 +1050,10 @@ Manifest (MPD) dekorace událostí bude signalizována v MPD pomocí elementu Ev
 
 Element EventStream má následující atributy:
 
-| **Název atributu** | **Typ**                | **Požadovanou?** | **Popis**                                                                                                                                                                                                                                                                                                                                                                         |
+| **Název atributu** | **Typ**                | **Požadováno?** | **Popis**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | scheme_id_uri      | řetězec                  | Vyžadováno      | Určuje schéma zprávy. Schéma je nastaveno na hodnotu atributu schématu v poli manifest živého serveru. Hodnota **by měla** být název URN nebo adresa URL identifikující schéma zprávy; Podporovaná výstupní schemeId by měla být "urn: scte: scte35:2014: XML + bin" na [SCTE-214-1] SEK 6.7.4 (MPD), protože služba v tuto chvíli podporuje pouze "XML + bin" pro zkrácení v MPD. |
-| value              | řetězec                  | Volitelné      | Další řetězcovou hodnotu, kterou vlastníci schématu používají k přizpůsobení sémantiky zprávy. Aby bylo možné odlišit více datových proudů událostí se stejným schématem, **musí** být hodnota nastavena na název datového proudu událostí (stopovat pro [MS-SSTR-ingesta] nebo AMF název zprávy pro [RTMP] ingestovat).                                                                         |
+| hodnota              | řetězec                  | Volitelné      | Další řetězcovou hodnotu, kterou vlastníci schématu používají k přizpůsobení sémantiky zprávy. Aby bylo možné odlišit více datových proudů událostí se stejným schématem, **musí** být hodnota nastavena na název datového proudu událostí (stopovat pro [MS-SSTR-ingesta] nebo AMF název zprávy pro [RTMP] ingestovat).                                                                         |
 | Timescale          | 32 – bitová unsigned integer | Vyžadováno      | Časová osa v taktech za sekundu.                                                                                                                                                                                                                                                                                                                                                     |
 
 
@@ -1308,7 +1308,7 @@ Normativní definice přepravosti [SCTE-35] ve zprávách ve bandu jsou definova
 
 Následující podrobnosti popisují konkrétní hodnoty, které by měl klient očekávat v ' EMSG ' v souladu s [SCTE-214-3]:
 
-| **Název pole**          | **Typ pole**          | **Požadovanou?** | **Popis**                                                                                                                                                                                                                                                                                        |
+| **Název pole**          | **Typ pole**          | **Požadováno?** | **Popis**                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | scheme_id_uri           | řetězec                  | Vyžadováno      | Určuje schéma zprávy. Schéma je nastaveno na hodnotu atributu schématu v poli manifest živého serveru. Hodnota **musí** být název URN identifikující schéma zprávy. Pro zprávy [SCTE-35] **musí** být "urn: SCTE: scte35:2013: bin" v souladu s [SCTE-214-3].          |
 | Hodnota                   | řetězec                  | Vyžadováno      | Další řetězcovou hodnotu, kterou vlastníci schématu používají k přizpůsobení sémantiky zprávy. Aby bylo možné odlišit více datových proudů událostí se stejným schématem, bude hodnota nastavena na název datového proudu událostí (název stopy pro hladkou zprávu ingesta nebo název zprávy AMF pro ingestování RTMP). |
@@ -1350,7 +1350,7 @@ Při testování vaší implementace s Azure Media Services platformou Nejdřív
 
 ## <a name="change-history"></a>Historie změn
 
-| Datum     | Změny                                                                                                             |
+| Date (Datum)     | Změny                                                                                                             |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |
 | 07/2/19  | Revidovaná podpora pro ingestování RTMP, přidání RTMP "onCuePoint" pro živé prvky                                            |
 | 08/22/19 | Aktualizováno, aby se přidala OnUserDataEvent do RTMP pro vlastní metadata                                                          |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94920436"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
@@ -37,7 +37,7 @@ Certifikáty se skládají ze tří vzájemně propojených prostředků společ
 
 **Krok 1** – poskytovatelé certifikační autority (CA)  
 -   Připojování jako správce IT, správce PKI nebo kdokoli, kdo spravuje účty s CAs pro danou společnost (např. Contoso) je předpokladem pro použití Key Vaultch certifikátů.  
-    Následující CA jsou současnými partnerskými poskytovateli s Key Vault. Další informace najdete [tady](./create-certificate.md#partnered-ca-providers).   
+    Následující CA jsou současnými partnerskými poskytovateli s Key Vault. [Další informace](./create-certificate.md#partnered-ca-providers)   
     -   DigiCert-Key Vault nabízí OV certifikáty TLS/SSL s DigiCert.  
     -   GlobalSign-Key Vault nabízí OV certifikáty TLS/SSL s GlobalSign.  
 

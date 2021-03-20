@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: c23dca40d50c5837bd9ff45bc3c3d7fb2581685b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420746"
 ---
 # <a name="join-data"></a>Spojení dat
@@ -47,17 +47,17 @@ Chcete-li provést spojení se dvěma datovými sadami, měly by se vztahovat na
    
 1. Pomocí rozevíracího seznamu **typ spojení** můžete určit, jak se mají datové sady kombinovat.  
   
-    * **Vnitřní spojení** : nejběžnější operace spojení je *vnitřní spojení* . Vrátí kombinované řádky pouze v případě, že se hodnoty klíčových sloupců shodují.  
+    * **Vnitřní spojení**: nejběžnější operace spojení je *vnitřní spojení* . Vrátí kombinované řádky pouze v případě, že se hodnoty klíčových sloupců shodují.  
   
-    * **Levé vnější spojení** : *levé vnější spojení* vrátí připojené řádky pro všechny řádky z levé tabulky. Pokud řádek v levé tabulce nemá odpovídající řádky v pravé tabulce, vrácený řádek obsahuje chybějící hodnoty pro všechny sloupce, které pocházejí z pravé tabulky. Můžete také zadat náhradní hodnotu pro chybějící hodnoty.  
+    * **Levé vnější spojení**: *levé vnější spojení* vrátí připojené řádky pro všechny řádky z levé tabulky. Pokud řádek v levé tabulce nemá odpovídající řádky v pravé tabulce, vrácený řádek obsahuje chybějící hodnoty pro všechny sloupce, které pocházejí z pravé tabulky. Můžete také zadat náhradní hodnotu pro chybějící hodnoty.  
   
-    * **Úplné vnější spojení** : *úplné vnější spojení* vrátí všechny řádky z levé tabulky ( **Tabulka1** ) a z pravé tabulky ( **Tabulka2** ).  
+    * **Úplné vnější spojení**: *úplné vnější spojení* vrátí všechny řádky z levé tabulky (**Tabulka1**) a z pravé tabulky (**Tabulka2**).  
   
          Pro každý z řádků v obou tabulkách, které nemají odpovídající řádky v druhé, výsledek zahrnuje řádek obsahující chybějící hodnoty.  
   
-    * **LEFT JOIN** : *levá polovina spojení* vrátí pouze hodnoty z levé tabulky, když se hodnoty klíčových sloupců shodují.  
+    * **LEFT JOIN**: *levá polovina spojení* vrátí pouze hodnoty z levé tabulky, když se hodnoty klíčových sloupců shodují.  
 
-1. Pro možnost **zachovat pravé klíčové sloupce v připojené tabulce** :
+1. Pro možnost **zachovat pravé klíčové sloupce v připojené tabulce**:
 
     * Tuto možnost vyberte, pokud chcete zobrazit klíče z obou vstupních tabulek.
     * Zrušte zaškrtnutí, pokud chcete vrátit pouze klíčové sloupce z levého vstupu.

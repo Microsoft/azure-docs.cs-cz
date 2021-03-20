@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0479e470f5d2f3880062c45a5e14981f8a4c1e56
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743538"
 ---
 # <a name="tutorial-configure-mondaycom-for-automatic-user-provisioning"></a>Kurz: Konfigurace monday.com pro Automatické zřizování uživatelů
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v monday.com i Azure Active
 > * Zřizování skupin a členství ve skupinách v monday.com
 > * [Jednotné přihlašování](mondaycom-tutorial.md) k Monday.com (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

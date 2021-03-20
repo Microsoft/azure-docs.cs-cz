@@ -18,10 +18,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74c9cd1c55f1b0dde173a7ffbeac92e5518db81e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88005798"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Licenční požadavky pro použití Privileged Identity Management
@@ -52,7 +52,7 @@ Další informace o licencích najdete v tématu [přiřazení nebo odebrání l
 
 Tady je několik ukázkových scénářů licencí, které vám pomůžou určit počet licencí, které musíte mít.
 
-| Scénář | Výpočet | Počet licencí |
+| Scenario | Výpočet | Počet licencí |
 | --- | --- | --- |
 | Woodgrove banka má 10 správců pro různá oddělení a 2 globální správce, kteří konfigurují a spravují PIM. Poskytují pět správcům nároků. | Pět licencí pro správce, kteří mají nárok | 5 |
 | Graphics design Institute má 25 správců, z nichž 14 spravuje PIM. Aktivace role vyžaduje schválení a v organizaci existují tři různé uživatele, kteří můžou schvalovat aktivace. | 14 licencí na opravňující role a tři schvalovatele | 17 |

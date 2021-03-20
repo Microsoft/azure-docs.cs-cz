@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.openlocfilehash: 97051e97ec9868f6941b579241e16e62fdd2162b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96751780"
 ---
 # <a name="add-migration-tools"></a>Přidání nástrojů pro migraci
@@ -69,7 +69,7 @@ Pokud jste vytvořili Azure Migrate projekt pomocí možnosti **vyhodnocení a m
 
 Pokud jste vytvořili Azure Migrate projekt pomocí možnosti **Prozkoumat další**  >  **webapps** na portálu, nástroj pro migraci webové aplikace se automaticky přidá do projektu. 
 
-1. Pokud nástroj pro migraci webové aplikace v projektu není, vyberte v **Web apps**  >  **nástrojích pro vyhodnocení** Web Apps možnost **klikněte sem**.
+1. Pokud nástroj pro migraci webové aplikace v projektu není, vyberte v   >  **nástrojích pro vyhodnocení** Web Apps možnost **klikněte sem**.
 
     ![Přidat nástroje pro migraci webové aplikace](./media/how-to-migrate/no-web-app-migration-tool.png)
  

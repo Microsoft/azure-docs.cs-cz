@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: a4f7f8a7793f31ffbf2099cbfb314fc5097319f5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421256"
 ---
 # <a name="multiclass-neural-network-module"></a>Neuronové síťový modul pro více tříd
@@ -40,17 +40,17 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
 
 ## <a name="configure-multiclass-neural-network"></a>Nakonfigurovat neuronové síť s více třídami
 
-1. Přidejte do kanálu neuronové síťový modul s více **třídami** v návrháři. Tento modul můžete najít v části **Machine Learning** , **Initialize** , v kategorii **klasifikace** .
+1. Přidejte do kanálu neuronové síťový modul s více **třídami** v návrháři. Tento modul můžete najít v části **Machine Learning**, **Initialize**, v kategorii **klasifikace** .
 
-2. **Vytvořit režim Trainer** : pomocí této možnosti určíte, jak chcete model vyškolet:
+2. **Vytvořit režim Trainer**: pomocí této možnosti určíte, jak chcete model vyškolet:
 
-    - **Jeden parametr** : tuto možnost vyberte, pokud už víte, jak chcete model nakonfigurovat.
+    - **Jeden parametr**: tuto možnost vyberte, pokud už víte, jak chcete model nakonfigurovat.
 
-    - **Rozsah parametrů** : tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
+    - **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
 
-3. **Skrytá specifikace vrstvy** : Vyberte typ síťové architektury, která se má vytvořit.
+3. **Skrytá specifikace vrstvy**: Vyberte typ síťové architektury, která se má vytvořit.
 
-    - **Plně připojené případy** : tuto možnost vyberte, pokud chcete vytvořit model s použitím výchozí neuronové síťové architektury. Pro modely neuronové sítě s více třídami jsou výchozí hodnoty následující:
+    - **Plně připojené případy**: tuto možnost vyberte, pokud chcete vytvořit model s použitím výchozí neuronové síťové architektury. Pro modely neuronové sítě s více třídami jsou výchozí hodnoty následující:
 
         - Jedna skrytá vrstva
         - Výstupní vrstva je plně připojená ke skryté vrstvě.
@@ -61,17 +61,17 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
   
    
 
-5. **Počet skrytých uzlů** : Tato možnost umožňuje přizpůsobit počet skrytých uzlů ve výchozí architektuře. Zadejte počet skrytých uzlů. Výchozím nastavením je jedna skrytá vrstva s 100 uzly.
+5. **Počet skrytých uzlů**: Tato možnost umožňuje přizpůsobit počet skrytých uzlů ve výchozí architektuře. Zadejte počet skrytých uzlů. Výchozím nastavením je jedna skrytá vrstva s 100 uzly.
 
-6. **Rychlost učení** : Definujte velikost kroku provedeného v každé iteraci před opravou. Větší hodnota pro studijní kurzy může způsobit, že se model konverguje rychleji, ale může vyhodnotit místní minima.
+6. **Rychlost učení**: Definujte velikost kroku provedeného v každé iteraci před opravou. Větší hodnota pro studijní kurzy může způsobit, že se model konverguje rychleji, ale může vyhodnotit místní minima.
 
-7. **Počet iterací učení** : Určete maximální počet pokusů, kolikrát by měl algoritmus zpracovat školicí případy.
+7. **Počet iterací učení**: Určete maximální počet pokusů, kolikrát by měl algoritmus zpracovat školicí případy.
 
-8. **Průměr počátečních vah pro studium** : Určete tloušťky uzlů na začátku procesu učení.
+8. **Průměr počátečních vah pro studium**: Určete tloušťky uzlů na začátku procesu učení.
 
-9. **Potenciál** : zadejte váhu, která se má použít při učení pro uzly z předchozích iterací.
+9. **Potenciál**: zadejte váhu, která se má použít při učení pro uzly z předchozích iterací.
   
-11. **Náhodně – příklady** : tuto možnost vyberte, pokud chcete mezi iteracemi přemíchat případy.
+11. **Náhodně – příklady**: tuto možnost vyberte, pokud chcete mezi iteracemi přemíchat případy.
 
     Pokud zrušíte výběr této možnosti, jsou případy zpracovávány přesně stejným způsobem pokaždé, když spustíte kanál.
 
@@ -79,9 +79,9 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
 
 14. Výukové modely:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 

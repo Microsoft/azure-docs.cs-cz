@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 6dc201af2271909de15af9bac1a2e2bb68faed1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91401045"
 ---
 Následující omezení se vztahují na data při přesunu do Azure.
@@ -16,8 +16,8 @@ Následující omezení se vztahují na data při přesunu do Azure.
 - Doporučujeme, aby více než jedno zařízení nepsalo do stejného kontejneru.
 - Pokud máte v cloudu existující objekt Azure (například objekt BLOB nebo soubor), který má stejný název jako objekt, který se právě kopíruje, zařízení přepíše soubor v cloudu.
 - Prázdná hierarchie adresářů (bez souborů) vytvořená v části sdílet složky není nahrána do kontejnerů objektů BLOB.
-- Data můžete kopírovat pomocí přetažení pomocí Průzkumníka souborů nebo pomocí příkazového řádku. Pokud je agregovaná velikost kopírovaných souborů větší než 10 GB, doporučujeme použít program hromadného kopírování, například Robocopy nebo rsync. Nástroje hromadného kopírování zopakují operaci kopírování pro občasné chyby a zajištění vyšší odolnosti.
-- Pokud sdílená složka přidružená k kontejneru úložiště Azure nahraje objekty blob, které neodpovídají typu objektů BLOB definovaných pro sdílenou složku v době vytváření, takové objekty BLOB se neaktualizují. Například na zařízení vytvoříte sdílenou složku objektů blob bloku. Přidružte sdílenou složku ke stávajícímu kontejneru cloudu, který má objekty blob stránky. Aktualizujte tuto sdílenou složku a Stáhněte soubory. Upravte některé obnovené soubory, které jsou už uložené jako objekty blob stránky v cloudu. Zobrazí se chyba nahrávání.
+- Data můžete kopírovat přetažením v Průzkumníku souborů nebo přes příkazový řádek. Pokud je agregovaná velikost kopírovaných souborů větší než 10 GB, doporučujeme použít program hromadného kopírování, jako je Robocopy nebo rsync. Nástroje hromadného kopírování v případě přechodných chyb opakují operaci kopírování a zajišťují vyšší odolnost.
+- Pokud sdílená složka přidružená k kontejneru úložiště Azure nahraje objekty blob, které neodpovídají typu objektů BLOB definovaných pro sdílenou složku v době vytváření, takové objekty BLOB se neaktualizují. Příklad: Vytvoříte na zařízení sdílenou složku objektů blob bloku. Přidružíte sdílenou složku k existujícímu cloudovému kontejneru, který obsahuje objekty blob stránky. Aktualizujete sdílenou složku, aby se stáhly soubory. Upravíte některé z aktualizovaných souborů, které jsou v cloudu již uložené jako objekty blob stránky. Při nahrávání dojde k selhání.
 - Po vytvoření souboru ve sdílených složkách se přejmenování souboru nepodporuje.
 - Odstraněním souboru ze sdílené složky se neodstraní příslušná položka v účtu úložiště.
 - Pokud ke kopírování dat používáte rsync, pak není `rsync -a` možnost podporována.

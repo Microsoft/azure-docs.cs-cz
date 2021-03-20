@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 2f924d84967c1a1928a47b59fd3a8c28da091130
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743555"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Místní testování výkonu cloudové služby (Classic) v emulátoru služby COMPUTE Azure pomocí profileru sady Visual Studio
@@ -153,7 +153,7 @@ Sestavy zvýrazňují rozdíly mezi dvěma spuštěními.
 
 Gratulujeme! V profileru jste začali pracovat.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 * Nezapomeňte profilovat sestavení pro vydání a spustit bez ladění.
 * Pokud v nabídce profileru není povolená možnost připojit/odpojit, spusťte Průvodce výkonem.
 * K zobrazení stavu aplikace použijte uživatelské rozhraní emulátoru Compute. 

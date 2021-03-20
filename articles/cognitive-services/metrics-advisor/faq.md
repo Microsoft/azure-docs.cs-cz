@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: mbullwin
 ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420953"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Nejčastější dotazy k metrickým nástrojům
@@ -109,14 +109,14 @@ Podrobnosti najdete v tématu [konfigurace detekce anomálií](how-tos/configure
 
 1.  Uživatel s oprávněním správce předplatného nebo správce skupiny prostředků musí přejít na prostředek poradce metriky, který se vytvořil v Azure Portal, a vybrat kartu **řízení přístupu (IAM)** . 
 2.  Vyberte **Přidat přiřazení rolí** .
-3.  Vyberte roli **správce Poradce pro Cognitive Services metriky** , vyberte svůj účet jako na obrázku níže.
+3.  Vyberte roli **správce Poradce pro Cognitive Services metriky**, vyberte svůj účet jako na obrázku níže.
 4.  Klikněte na tlačítko **Uložit** a pak jste úspěšně přidali jako správce prostředku Advisory metrik. Všechny výše uvedené akce musíte provést správcem předplatného nebo správcem skupiny prostředků. 
 
 :::image type="content" source="media/access-control.png" alt-text="Na stránce nabídky pro řízení přístupu (IAM) s vybraným přidáním přiřazení role následovaný polem s přiřazením přístupu k vybranému uživateli, který je zobrazený s rolí přístupu Cognitive Services správce Poradce pro metriky, a následným tlačítkem uložit v uživatelském rozhraní, které se vybere k ilustraci kroků hledání uživatele a přidání určité úrovně oprávnění k přístupu." lightbox="media/access-control.png":::
 
 
 5.  Může trvat až jednu minutu, než se oprávnění rozšíří. Pak vyberte svůj pracovní prostor Poradce pro metriky a v levém navigačním panelu vyberte možnost **Nastavení e-mailu** . Vyplňte požadované položky, zejména informace týkající se protokolu SMTP. 
-6.  Vyberte **Save (Uložit** ) a pak se nastaví Konfigurace e-mailu. U upozornění téměř v reálném čase můžete vytvořit nové háky a přihlásit se k odběru metrik metriky. 
+6.  Vyberte **Save (Uložit**) a pak se nastaví Konfigurace e-mailu. U upozornění téměř v reálném čase můžete vytvořit nové háky a přihlásit se k odběru metrik metriky. 
 
 ## <a name="advanced-concepts"></a>Pokročilé koncepty
 

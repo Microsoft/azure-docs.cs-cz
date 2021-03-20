@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
 ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913751"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Použití privátního odkazu ve virtuální síti WAN
@@ -38,11 +38,11 @@ Můžete vytvořit koncový bod privátního propojení pro celou řadu různýc
 
 Po vytvoření Azure SQL Database můžete ověřit IP adresu privátního koncového bodu procházející vašimi privátními koncovými body:
 
-:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="vytvořit privátní odkaz" lightbox="./media/howto-private-link/endpoints.png":::
+:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="privátní koncové body" lightbox="./media/howto-private-link/endpoints.png":::
 
 Kliknutím na soukromý koncový bod, který jsme vytvořili, by se měla zobrazit jeho privátní IP adresa a plně kvalifikovaný název domény (FQDN). Upozorňujeme, že privátní koncový bod obsahuje IP adresu v rozsahu virtuální sítě, ve které je nasazený (10.1.3.0/24):
 
-:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="vytvořit privátní odkaz" lightbox="./media/howto-private-link/sql-endpoint.png":::
+:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="Koncový bod SQL" lightbox="./media/howto-private-link/sql-endpoint.png":::
 
 ## <a name="verify-connectivity-from-the-same-vnet"></a><a name="connectivity"></a>Ověření připojení ze stejné virtuální sítě
 
@@ -61,7 +61,7 @@ Address: 10.1.3.228
 
 Jak vidíte v předchozím výstupu, je plně kvalifikovaný název domény `wantest.database.windows.net` namapovaný na `wantest.privatelink.database.windows.net` , aby se privátní zóna DNS vytvořená v privátním koncovém bodě přeložila na privátní IP adresu `10.1.3.228` . Při hledání v privátní zóně DNS se potvrdí, že existuje záznam A pro soukromý koncový bod mapovaný na privátní IP adresu:
 
-:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="vytvořit privátní odkaz" lightbox="./media/howto-private-link/dns-zone.png":::
+:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="Zóna DNS" lightbox="./media/howto-private-link/dns-zone.png":::
 
 Po ověření správného překladu DNS se můžeme pokusit připojit k databázi:
 
@@ -87,7 +87,7 @@ Jakmile budete mít připojení mezi virtuální sítí nebo větví k virtuáln
 
 V tomto příkladu se připojíme z jiné virtuální sítě, proto připojíme privátní zónu DNS k nové virtuální síti, aby její úlohy mohly přeložit Azure SQL Database plně kvalifikovaný název domény na privátní IP adresu. To se provádí prostřednictvím propojení privátní zóny DNS s novou virtuální sítí:
 
-:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="vytvořit privátní odkaz" lightbox="./media/howto-private-link/dns-link.png":::
+:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="Odkaz DNS" lightbox="./media/howto-private-link/dns-link.png":::
 
 Virtuální počítač v připojené virtuální síti by teď měl správně přeložit Azure SQL Database plně kvalifikovaný název domény na privátní IP adresu privátního propojení:
 
@@ -104,7 +104,7 @@ Address: 10.1.3.228
 
 Aby bylo možné dvakrát zkontrolovat, že tato virtuální síť (10.1.1.0/24) má připojení k původní virtuální síti, ve které byl nakonfigurován privátní koncový bod (10.1.3.0/24), můžete ověřit tabulku efektivní trasy na jakémkoli virtuálním počítači ve virtuální síti:
 
-:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="vytvořit privátní odkaz" lightbox="./media/howto-private-link/effective-routes.png":::
+:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="efektivní trasy" lightbox="./media/howto-private-link/effective-routes.png":::
 
 Jak vidíte, existuje trasa ukazující na virtuální síť 10.1.3.0/24, kterou vychází Virtual Network brány v Azure Virtual WAN. Nyní můžeme otestovat připojení k databázi:
 

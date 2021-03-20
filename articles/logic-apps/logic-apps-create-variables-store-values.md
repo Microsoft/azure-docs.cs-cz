@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91333898"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Ukládání a správa hodnot s využitím proměnných v Azure Logic Apps
@@ -29,7 +29,7 @@ Proměnné existují a jsou globální jenom v instanci aplikace logiky, která 
 > [!IMPORTANT]
 > Ve výchozím nastavení se cyklická smyčka "for each" spouští paralelně. Když použijete proměnné ve smyčce, spusťte smyčku [sekvenčně](../logic-apps/logic-apps-control-flow-loops.md#sequential-foreach-loop) , aby proměnné vracely předvídatelné výsledky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -59,7 +59,7 @@ Můžete vytvořit proměnnou a deklarovat její datový typ a počáteční hod
 
    * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `variables` jako filtr. V seznamu akce vyberte možnost **inicializovat proměnnou**.
+1. V části **zvolit akci** zadejte do vyhledávacího pole `variables` jako filtr. V seznamu akce vyberte možnost **inicializovat proměnnou**.
 
    ![Vybrat akci](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
@@ -238,7 +238,7 @@ Proměnné se běžně používají pro počítání počtu spuštění smyčky.
 
 1. V Azure Portal vytvořte prázdnou aplikaci logiky. Přidejte aktivační událost, která kontroluje nové e-maily a přílohy.
 
-   V tomto příkladu se **při přijetí nového e-mailu**použije trigger Office 365 Outlook. Tuto aktivační událost můžete nastavit tak, aby se aktivovala pouze v případě, že má e-mail přílohy. Můžete ale použít libovolný konektor, který kontroluje nové e-maily s přílohami, jako je konektor Outlook.com.
+   V tomto příkladu se **při přijetí nového e-mailu** použije trigger Office 365 Outlook. Tuto aktivační událost můžete nastavit tak, aby se aktivovala pouze v případě, že má e-mail přílohy. Můžete ale použít libovolný konektor, který kontroluje nové e-maily s přílohami, jako je konektor Outlook.com.
 
 1. V aktivační události pro kontrolu příloh a předání těchto příloh do pracovního postupu vaší aplikace logiky vyberte **Ano** pro tyto vlastnosti:
 
@@ -247,7 +247,7 @@ Proměnné se běžně používají pro počítání počtu spuštění smyčky.
 
    ![Kontrolovat a zahrnovat přílohy](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-1. Přidejte akci [ **inicializovat proměnnou** ](#create-variable). Vytvořte celočíselnou proměnnou s názvem `Count` , která má nulovou počáteční hodnotu.
+1. Přidejte akci [ **inicializovat proměnnou**](#create-variable). Vytvořte celočíselnou proměnnou s názvem `Count` , která má nulovou počáteční hodnotu.
 
    ![Přidat akci pro "inicializovat proměnnou"](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -255,7 +255,7 @@ Proměnné se běžně používají pro počítání počtu spuštění smyčky.
 
    1. V akci **inicializovat proměnnou** vyberte **Nový krok**.
 
-   1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `for each` jako filtr hledání a **pro každý**vyberte.
+   1. V části **zvolit akci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `for each` jako filtr hledání a **pro každý** vyberte.
 
       ![Přidejte smyčku For Each.](./media/logic-apps-create-variables-store-values/add-loop.png)
 
@@ -370,7 +370,7 @@ Tady jsou vlastnosti pro akci **nastavit proměnnou** :
 >
 > 1. V pravém horním rohu smyčky vyberte tlačítko se třemi tečkami (**...**) a pak vyberte **Nastavení**.
 > 
-> 2. V části **řízení souběžnosti**změňte **výchozí nastavení přepsat** na **zapnuto**.
+> 2. V části **řízení souběžnosti** změňte **výchozí nastavení přepsat** na **zapnuto**.
 >
 > 3. Přetáhněte jezdec **stupeň paralelismu** na **1**.
 

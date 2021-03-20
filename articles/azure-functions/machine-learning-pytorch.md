@@ -7,10 +7,10 @@ ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422837"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Kurz: nasazení předem připraveného modelu klasifikace imagí pro Azure Functions s využitím PyTorch
@@ -21,7 +21,7 @@ V tomto článku se naučíte, jak pomocí Pythonu, PyTorch a Azure Functions na
 > * Inicializujte místní prostředí pro vývoj Azure Functions v Pythonu.
 > * Naimportujte předem trained PyTorch model strojového učení do aplikace Function App.
 > * Sestavte rozhraní HTTP API bez serveru pro klasifikaci obrázku jako jednu z 1000 [tříd](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)ImageNet.
-> * Využívání rozhraní API z webové aplikace
+> * Využijete rozhraní API z webové aplikace.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -115,7 +115,7 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     func new --name classify --template "HTTP trigger"
     ```
 
-    Tento příkaz vytvoří složku, která odpovídá názvu funkce, *klasifikovat*. V této složce jsou dva soubory: *\_ \_ init \_ \_ . py* , který obsahuje kód funkce a *function.jsv* , které popisují Trigger funkce a její vstupní a výstupní vazby. Podrobnosti o obsahu těchto souborů najdete v tématu [prohlédnutí obsahu souboru](./create-first-function-cli-python.md#optional-examine-the-file-contents) v rychlém startu Pythonu.
+    Tento příkaz vytvoří složku, která odpovídá názvu funkce, *klasifikovat*. V této složce jsou dva soubory: *\_ \_ init \_ \_ . py*, který obsahuje kód funkce a *function.jsv*, které popisují Trigger funkce a její vstupní a výstupní vazby. Podrobnosti o obsahu těchto souborů najdete v tématu [prohlédnutí obsahu souboru](./create-first-function-cli-python.md#optional-examine-the-file-contents) v rychlém startu Pythonu.
 
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce

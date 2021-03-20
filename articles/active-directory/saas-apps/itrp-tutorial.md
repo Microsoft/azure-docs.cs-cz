@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Azure Active Directory integrace s ITRP
@@ -225,7 +225,7 @@ Chcete-li vytvořit uživatelský účet, proveďte následující kroky:
 
 1. Vyberte znaménko plus ( **+** ) a přidejte novou osobu:
 
-    ![Vyberte znaménko plus.](./media/itrp-tutorial/ic775576.png "Vyberte znaménko plus.")
+    ![Vyberte znaménko plus](./media/itrp-tutorial/ic775576.png "Vyberte znaménko plus")
 
 1. V dialogovém okně **Přidat novou osobu** proveďte následující kroky.
 
