@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80878421"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurace kontejnerů Docker obličeje
@@ -51,7 +51,7 @@ Toto nastavení najdete na následujícím místě:
 
 Nezapomeňte přidat směrování _obličeje_ k identifikátoru URI koncového bodu, jak je znázorněno v příkladu. 
 
-|Požaduje se| Name | Datový typ | Popis |
+|Vyžadováno| Name | Datový typ | Popis |
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](face-how-to-install-containers.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
@@ -69,7 +69,7 @@ Konfigurační nastavení v `CloudAI` oddílu poskytují možnosti specifické p
 
 Kontejner obličeje ukládá data objektů blob, cache, metadata a Queue v závislosti na tom, co se ukládá. Například školicí indexy a výsledky pro velkou skupinu osob jsou uloženy jako data objektů BLOB. Kontejner obličeje nabízí dva různé scénáře úložiště při interakci s těmito typy dat a jejich ukládání:
 
-* Paměť  
+* Memory (Paměť)  
   Všechny čtyři typy dat jsou uloženy v paměti. Nejsou distribuované, ani trvalé. Pokud je kontejner obličeje zastavený nebo odebraný, všechna data v úložišti tohoto kontejneru se zničí.  
   Toto je výchozí scénář úložiště pro kontejner obličeje.
 * Azure  

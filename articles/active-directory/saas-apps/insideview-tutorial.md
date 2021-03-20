@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Kurz: Azure Active Directory integrace s InsideView
@@ -31,7 +31,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jedno
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s InsideView, musíte mít:
 
@@ -125,7 +125,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí InsideVi
 
 1. V novém okně webového prohlížeče se přihlaste k webu InsideView společnosti jako správce.
 
-1. V horní části okna vyberte **správce**, **Nastavení SingleSignon**a pak **přidejte SAML**.
+1. V horní části okna vyberte **správce**, **Nastavení SingleSignon** a pak **přidejte SAML**.
    
    ![Nastavení jednotného přihlašování SAML](./media/insideview-tutorial/ic794135.png "Nastavení jednotného přihlašování SAML")
 
@@ -153,7 +153,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí InsideVi
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory** , vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**:
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory** , vyberte **Uživatelé** a pak vyberte **Všichni uživatelé**:
 
     ![Vyberte Všichni uživatelé.](common/users.png)
 
@@ -167,9 +167,9 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Například BrittaSimon@contoso.com .)
+    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Například BrittaSimon@contoso.com .)
 
-    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která je uvedena v poli **heslo** .
+    1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu, která je uvedena v poli **heslo** .
 
     1. Vyberte **Vytvořit**.
 
@@ -177,7 +177,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k InsideView.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **InsideView**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **InsideView**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -189,7 +189,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     ![Vyberte Uživatelé a skupiny.](common/users-groups-blade.png)
 
-4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
@@ -214,7 +214,7 @@ Teď je potřeba otestovat konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici InsideView, měli byste se automaticky přihlásit k instanci InsideView, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

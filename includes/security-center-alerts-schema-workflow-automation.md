@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91401113"
 ---
 ```json
@@ -71,7 +71,7 @@ ms.locfileid: "91401113"
 |**Incident**|Logická hodnota|Toto pole určuje, zda je výstraha incidentem (složené seskupení několika výstrah) nebo jedinou výstrahou. Výchozí hodnota pro pole je false (to znamená, že se jedná o jedinou výstrahu).|
 |**ProcessingEndTime**|DateTime|Čas, kdy byla výstraha přístupná koncovému uživateli v původním produktu, který tuto výstrahu zachovává.|
 |**NázevVýrobku**|Řetězec|Název produktu, který publikoval toto upozornění (Azure Security Center, Azure ATP, Microsoft Defender ATP, MCAS atd.).|
-|**RemediationSteps**|Seznamu<String>|Položky ručních akcí, které se mají provést k nápravě výstrahy|
+|**RemediationSteps**|Seznam<String>|Položky ručních akcí, které se mají provést k nápravě výstrahy|
 |**ResourceIdentifiers**|Seznam (identifikátory prostředků)|Identifikátory prostředků pro tuto výstrahu, které se dají použít k přesměrování výstrahy do správné skupiny expozice produktů (tenant, pracovní prostor, předplatné atd.). Pro každou výstrahu může existovat více identifikátorů různého typu.|
 |**Závažnost**|Výčet|Závažnost výstrahy, jak je hlášena zprostředkovatelem. Možné hodnoty: informativní, nízká, střední a vysoká.|
 |**StartTimeUtc**|DateTime|Čas první události nebo aktivity obsažené v upozornění. Pole by měl být řetězec, který odpovídá formátu ISO8601, včetně informací o časovém pásmu UTC.|

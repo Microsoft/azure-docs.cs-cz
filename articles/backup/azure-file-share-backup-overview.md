@@ -4,15 +4,15 @@ description: Naučte se zálohovat sdílené složky Azure v trezoru Recovery Se
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89378079"
 ---
 # <a name="about-azure-file-share-backup"></a>Zálohování Azure File Share
 
-Zálohování sdílené složky Azure je nativní cloudové řešení zálohování, které chrání vaše data v cloudu a odstraňuje další režijní náklady spojené s místními řešeními zálohování. Služba Azure Backup hladce integruje s Azure File Sync a umožňuje centralizovat vaše data sdílené složky i zálohy. Toto jednoduché, spolehlivé a zabezpečené řešení umožňuje nakonfigurovat ochranu firemních sdílených složek v několika jednoduchých krocích s jistotou, že můžete data obnovit v jakémkoli scénáři havárie.
+Zálohování sdílené složky Azure je nativní cloudové řešení zálohování, které chrání vaše data v cloudu a odstraňuje další režijní náklady spojené s místními řešeními zálohování. Služba Azure Backup hladce integruje s Synchronizace souborů Azure a umožňuje centralizovat vaše data sdílené složky i zálohy. Toto jednoduché, spolehlivé a zabezpečené řešení umožňuje nakonfigurovat ochranu firemních sdílených složek v několika jednoduchých krocích s jistotou, že můžete data obnovit v jakémkoli scénáři havárie.
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Klíčové výhody zálohování Azure File Share
 
@@ -44,7 +44,7 @@ Zálohování sdílené složky Azure je nativní cloudové řešení zálohová
 
 6. Obsah sdílené složky Azure (jednotlivé soubory nebo celou sdílenou složku) můžete obnovit ze snímků dostupných ve zdrojové sdílené složce. Po aktivaci operace se z úložiště metadat načte adresa URL snímku a data se zobrazí a přenesou ze zdrojového snímku do cílové sdílené složky, kterou si zvolíte.
 
-7. Pokud používáte Azure File Sync, služba zálohování indikuje službě Azure File Sync cestu k obnoveným souborům, které potom spustí proces detekce změn na pozadí u těchto souborů. Všechny soubory, které se změnily, se synchronizují s koncovým bodem serveru. K tomuto procesu dochází paralelně s původním obnovením sdílené složky Azure.
+7. Pokud používáte Synchronizace souborů Azure, služba zálohování indikuje službě Synchronizace souborů Azure cestu k obnoveným souborům, které potom spustí proces detekce změn na pozadí u těchto souborů. Všechny soubory, které se změnily, se synchronizují s koncovým bodem serveru. K tomuto procesu dochází paralelně s původním obnovením sdílené složky Azure.
 
 8. Data sledování úloh zálohování a obnovení se odešlou do služby monitorování Azure Backup. To vám umožní monitorovat zálohy souborů v cloudu na jednom řídicím panelu. Kromě toho můžete nakonfigurovat také výstrahy nebo e-mailová oznámení v případě, že bude ovlivněn stav zálohování. E-maily se odesílají přes e-mailovou službu Azure.
 

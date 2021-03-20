@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 91fd974c730037907258cb4a670f6fa836bfda6c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144872"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Osvědčené postupy pro Azure App Service
@@ -37,7 +37,7 @@ Další informace o stavových a bezstavových aplikacích můžete sledovat v t
 Běžným důvodem pro vyčerpání odchozích připojení TCP je použití klientských knihoven, které nejsou implementované k opakovanému použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně, jako je HTTP-Keep-Alive. Přečtěte si dokumentaci ke každé knihovně, na kterou odkazují aplikace v plánu App Service, abyste se ujistili, že jsou ve vašem kódu nakonfigurované nebo používané pro efektivní opakované použití odchozích připojení. Dále postupujte podle pokynů v dokumentaci ke knihovně pro správné vytvoření a vystavení nebo vyčištění, abyste zabránili nevracení připojení. I když tyto klientské knihovny probíhá šetření, dopad může být omezen škálováním na více instancí.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js a odchozí požadavky http
-Při práci s Node.js a mnoho odchozích požadavků HTTP, které řeší Keep-Alive HTTP, je důležité. Pomocí balíčku agentkeepalive můžete [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` usnadnit práci s vaším kódem.
+Při práci s Node.js a mnoho odchozích požadavků HTTP, které řeší Keep-Alive HTTP, je důležité. Pomocí balíčku agentkeepalive můžete [](https://www.npmjs.com/package/agentkeepalive) `npm` usnadnit práci s vaším kódem.
 
 Vždy zpracujte `http` odpověď, i když neuděláte nic v obslužné rutině. Pokud odpověď nezpracujete správně, vaše aplikace se zablokuje, protože už nejsou k dispozici žádné další sokety.
 

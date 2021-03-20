@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
 ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97630747"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Podpora Gremlin graphu a kompatibility s funkcemi TinkerPop Azure Cosmos DB
@@ -121,7 +121,7 @@ Každá vlastnost může ukládat více hodnot v rámci pole.
 
 Nyní se podívejme na kroky v jazyce Gremlin, které Azure Cosmos DB podporuje. Úplné referenční informace o jazyce Gremlin najdete v [referenčních materiálech ke standardu TinkerPop](https://tinkerpop.apache.org/docs/3.3.2/reference).
 
-| Krok | Popis | Dokumentace TinkerPop 3.2 |
+| Krok | Description | Dokumentace TinkerPop 3.2 |
 | --- | --- | --- |
 | `addE` | Přidá okraj mezi dva vrcholy. | [addE step](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
 | `addV` | Přidá do grafu vrchol. | [addV step](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |
@@ -169,31 +169,31 @@ Modul optimalizovaný pro zápis, který Azure Cosmos DB poskytuje, podporuje ve
 
 ## <a name="behavior-differences"></a>Rozdíly v chování
 
-* Modul graphu Azure Cosmos DB spouští ***šíře-First** _ průchod, zatímco je TinkerPop Gremlin na úrovni hloubka. Toto chování dosahuje lepšího výkonu v horizontálním škálovatelném systému, jako je Cosmos DB.
+* Modul graphu pro Azure Cosmos DB pracuje ***s prvními*** průchody, zatímco je TinkerPop Gremlin na hloubku. Toto chování dosahuje lepšího výkonu v horizontálním škálovatelném systému, jako je Cosmos DB.
 
 ## <a name="unsupported-features"></a>Nepodporované funkce
 
-_ ***[Gremlin bajt](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)** _ je programovací jazyk nezávislá specifikace pro Graph procházení. Cosmos DB Graph ho ještě nepodporuje. Použijte `GremlinClient.SubmitAsync()` a předejte procházení jako textový řetězec.
+* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** je na konkrétním programovacím jazyku nezávislá specifikace pro procházení grafů. Cosmos DB Graph ho ještě nepodporuje. Použijte `GremlinClient.SubmitAsync()` a předejte procházení jako textový řetězec.
 
-_ * **`property(set, 'xyz', 1)`** _ sada mohutnosti není dnes podporována. Místo toho použijte `property(list, 'xyz', 1)`. Další informace najdete v tématu [vlastnosti vrcholu pomocí TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
+* ***`property(set, 'xyz', 1)`*** sada mohutnosti se v současné době nepodporuje. Místo toho použijte `property(list, 'xyz', 1)`. Další informace najdete v tématu [vlastnosti vrcholu pomocí TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-_ ***`match()` Krok** _ není aktuálně k dispozici. Tento krok poskytuje možnosti deklarativního dotazování.
+* ***`match()` Krok*** není aktuálně k dispozici. Tento krok poskytuje možnosti deklarativního dotazování.
 
-_ ***Objekty jako vlastnosti** _ na vrcholech nebo hranách nejsou podporovány. Vlastnosti můžou být pouze primitivní typy nebo pole.
+* ***Objekty jako vlastnosti*** na vrcholech nebo hranách nejsou podporovány. Vlastnosti můžou být pouze primitivní typy nebo pole.
 
-_ ***Řazení podle vlastností pole** _ `order().by(<array property>)` není podporováno. Podporuje se řazení pouze podle primitivních typů.
+* ***Řazení podle vlastností pole*** `order().by(<array property>)` není podporováno. Podporuje se řazení pouze podle primitivních typů.
 
-_ ***Neprimitivní typy JSON** _ nejsou podporovány. Použijte `string` `number` typy, nebo `true` / `false` . `null` hodnoty nejsou podporovány. 
+* ***Neprimitivní typy JSON*** nejsou podporovány. Použijte `string` `number` typy, nebo `true` / `false` . `null` hodnoty nejsou podporovány. 
 
-Serializátor _ ***GraphSONv3** _ není aktuálně podporován. `GraphSONv2`V konfiguraci připojení použijte třídy serializátoru, čtecího zařízení a zapisovače. Výsledky vracené rozhraním API Azure Cosmos DB Gremlin nemají stejný formát jako formát GraphSON. 
+* Serializátor ***GraphSONv3*** se v tuto chvíli nepodporuje. `GraphSONv2`V konfiguraci připojení použijte třídy serializátoru, čtecího zařízení a zapisovače. Výsledky vracené rozhraním API Azure Cosmos DB Gremlin nemají stejný formát jako formát GraphSON. 
 
-_ **Výrazy lambda a funkce** nejsou aktuálně podporovány. To zahrnuje `.map{<expression>}` `.by{<expression>}` funkce, a `.filter{<expression>}` . Další informace a informace o tom, jak je přepsat pomocí Gremlin kroků, najdete v [poznámce pro výrazy lambda](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
+* **Výrazy lambda a funkce** nejsou aktuálně podporovány. To zahrnuje `.map{<expression>}` `.by{<expression>}` funkce, a `.filter{<expression>}` . Další informace a informace o tom, jak je přepsat pomocí Gremlin kroků, najdete v [poznámce pro výrazy lambda](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
 
-* ***Transakce** _ nejsou podporovány z důvodu distribuované povahy systému.  Nakonfigurujte vhodný model konzistence v účtu Gremlin na číst vlastní zápisy a pomocí optimistické souběžnosti vyřešte konfliktní zápisy.
+* ***Transakce*** nejsou podporovány z důvodu distribuované povahy systému.  Nakonfigurujte vhodný model konzistence v účtu Gremlin na číst vlastní zápisy a pomocí optimistické souběžnosti vyřešte konfliktní zápisy.
 
 ## <a name="known-limitations"></a>Známá omezení
 
-_ **Využití indexu pro dotazy Gremlin s `.V()` kroky středního průchodu**: v současné době pouze první `.V()` volání průchodu použije index k vyřešení všech filtrů nebo predikátů, které jsou k nim připojeny. Následná volání nebudou vyhledávat v indexu, což může zvýšit latenci a náklady na dotaz.
+* **Využití indexu pro dotazy Gremlin pomocí `.V()` kroků středního přecházení**: v současné době pouze první `.V()` volání průchodu použije index k vyřešení všech filtrů nebo predikátů, které jsou k nim připojeny. Následná volání nebudou vyhledávat v indexu, což může zvýšit latenci a náklady na dotaz.
     
 Předpokládá se výchozí indexování. typický dotaz Read Gremlin, který začíná `.V()` krokem, by v rámci svých připojených kroků filtrování používal parametry, jako je `.has()` nebo `.where()` pro optimalizaci nákladů a výkonu dotazu. Například:
 

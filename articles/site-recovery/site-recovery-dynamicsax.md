@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86133823"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro aplikaci s více vrstvami Dynamics AX   
@@ -25,7 +25,7 @@ Tento článek vysvětluje, jak můžete vytvořit řešení zotavení po havár
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Implementace zotavení po havárii pro aplikaci Dynamics AX pomocí Site Recovery vyžaduje následující předpoklady:
 
@@ -99,7 +99,7 @@ Můžete vytvořit plán obnovení v Site Recovery pro automatizaci procesu pře
 
 1. Ve svém předplatném vyberte trezor Site Recovery a vyberte dlaždici **plány obnovení** .
 
-2. Vyberte **+ plán obnovení**a zadejte název.
+2. Vyberte **+ plán obnovení** a zadejte název.
 
 3. Vyberte **zdroj** a **cíl**. Cílem může být Azure nebo sekundární lokalita. Pokud zvolíte Azure, musíte zadat model nasazení.
 
@@ -153,7 +153,7 @@ Další informace o provádění testovacího převzetí služeb při selhání 
 
 2. Vyberte plán obnovení vytvořený pro aplikaci Dynamics AX.
 
-3. Vyberte **převzetí služeb při selhání**a vyberte **převzít**.
+3. Vyberte **převzetí služeb při selhání** a vyberte **převzít**.
 
 4. Vyberte cílovou síť a vyberte **✓** pro spuštění procesu převzetí služeb při selhání.
 
@@ -167,7 +167,7 @@ Informace specifické pro SQL Server během navrácení služeb po obnovení naj
 
 2. Vyberte plán obnovení vytvořený pro aplikaci Dynamics AX.
 
-3. Vyberte **převzetí služeb při selhání**a vyberte **převzít**.
+3. Vyberte **převzetí služeb při selhání** a vyberte **převzít**.
 
 4. Vyberte možnost **změnit směr**.
 
@@ -178,7 +178,7 @@ Informace specifické pro SQL Server během navrácení služeb po obnovení naj
 
 Další informace o navrácení služeb po obnovení najdete v tématu [navrácení služeb po obnovení VMware z Azure do místního](./vmware-azure-failback.md)prostředí.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Pomocí Site Recovery můžete pro aplikaci Dynamics AX vytvořit úplný automatizovaný plán zotavení po havárii. V případě přerušení můžete převzít služby při selhání v řádu sekund odkudkoli a spustit aplikaci v řádu minut.
 
 ## <a name="next-steps"></a>Další kroky

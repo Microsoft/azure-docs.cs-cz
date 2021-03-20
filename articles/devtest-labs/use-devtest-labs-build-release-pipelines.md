@@ -4,10 +4,10 @@ description: Naučte se používat Azure DevTest Labs v Azure Pipelines vytvář
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88080330"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Použití DevTest Labs v kanálech sestavování a vydávání verzí Azure Pipelines
@@ -81,7 +81,7 @@ Vytvoříte kanál verze se dvěma úlohami: **nasazení Azure: vytvořit nebo a
 
 Pro první úlohu zadejte název a umístění skupiny prostředků. Umístění šablony je propojený artefakt. Pokud šablona Správce prostředků obsahuje propojené šablony, je nutné implementovat vlastní nasazení skupiny prostředků. Šablona je v publikovaném artefaktu zrušení. Přepsat parametry šablony pro šablonu Správce prostředků. Zbývající nastavení můžete nechat s výchozími hodnotami. 
 
-Pro druhý **Azure App Service nasazení**úlohy zadejte předplatné Azure, jako **Typ aplikace**vyberte **Web App** a jako **název App Service** **$ (Web)** . Zbývající nastavení můžete nechat s výchozími hodnotami. 
+Pro druhý **Azure App Service nasazení** úlohy zadejte předplatné Azure, jako **Typ aplikace** vyberte **Web App** a jako **název App Service** **$ (Web)** . Zbývající nastavení můžete nechat s výchozími hodnotami. 
 
 ## <a name="test-run"></a>Testovací běh
 Teď, když jsou oba kanály nastavené, ručně zařadí sestavení do fronty a zjistí, že funguje. Dalším krokem je nastavení vhodné aktivační události pro sestavení a připojení sestavení k kanálu vydání.

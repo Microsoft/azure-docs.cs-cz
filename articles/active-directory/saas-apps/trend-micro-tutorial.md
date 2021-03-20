@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008391"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Trend Micro Web Security (TMWS)
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Trend Micro Web Security (TMWS) s Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Na začátek budete potřebovat:
 
@@ -144,7 +144,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V části **Spravovat** vyberte **Registrace aplikací** a potom v části **všechny aplikace** vyberte novou podnikovou aplikaci.
 
-1. V části **Spravovat** vyberte **certifikáty & tajných** kódů.
+1. V části **Správa** vyberte **Certifikáty a tajné kódy**.
 
 1. V oblasti **tajné klíče klienta** vyberte **nový tajný klíč klienta**.
 
@@ -224,7 +224,7 @@ Až nakonfigurujete službu Azure AD a jako metodu ověření uživatele zadáte
 
 1. Navštivte libovolný internetový web. TMWS vás přesměruje na portál TMWS pro všechny uživatele.
 
-1. Zadejte účet Active Directory (formát: *doména* \\ *sAMAccountName* nebo doména *sAMAccountName* @ *domain*), e-mailovou adresu nebo hlavní název uživatele (UPN) a pak vyberte **Přihlásit** se. TMWS vám pošle přihlašovací okno služby Azure AD.
+1. Zadejte účet Active Directory (formát: *doména* \\ *sAMAccountName* nebo doména *sAMAccountName* @ ), e-mailovou adresu nebo hlavní název uživatele (UPN) a pak vyberte **Přihlásit** se. TMWS vám pošle přihlašovací okno služby Azure AD.
 
 1. V okně přihlášení k Azure AD zadejte svoje přihlašovací údaje k účtu Azure AD. Nyní byste měli být přihlášeni do TMWS.
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86245037"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: nasazení clusteru Service Fabric se systémem Windows do virtuální sítě Azure
@@ -42,7 +42,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -183,7 +183,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > Pro národní cloudy (například Azure Government, Azure Čína, Azure Německo) zadejte `-Location` parametr.
 
-*TenantId*nebo ID adresáře můžete najít v [Azure Portal](https://portal.azure.com). Vyberte **Azure Active Directory**  >  **vlastnosti** a zkopírujte hodnotu **ID adresáře** .
+*TenantId* nebo ID adresáře můžete najít v [Azure Portal](https://portal.azure.com). Vyberte **Azure Active Directory**  >  **vlastnosti** a zkopírujte hodnotu **ID adresáře** .
 
 *Název_clusteru* slouží k vytvoření předpony aplikací služby Azure AD, které jsou vytvořeny pomocí skriptu. Nemusí přesně odpovídat skutečnému názvu clusteru. Usnadňuje mapování artefaktů Azure AD na Service Fabric používaný cluster.
 

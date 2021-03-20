@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
 ms.openlocfilehash: 18225703b2a390f64b4bebd58b0167dd77c454d0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98930382"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí Azure Portal
@@ -23,7 +23,7 @@ Pokud používáte více clusterů společně, budete chtít vytvořit virtuáln
 > [!IMPORTANT]  
 > Clustery HDInsight se fakturují za minutu bez ohledu na to, jestli je používáte, nebo ne. Až přestanete cluster používat, nezapomeňte ho odstranit. Další informace najdete v části [Vyčištění prostředků](#clean-up-resources) tohoto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -46,7 +46,7 @@ Pomocí Azure Portal vytvoříte cluster HDInsight, který jako úložiště clu
     |Předplatné  | V rozevíracím seznamu vyberte předplatné Azure, které se používá pro cluster. |
     |Skupina prostředků | V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**.|
     |Název clusteru | Zadejte globálně jedinečný název.|
-    |Region (Oblast)   | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří. |
+    |Oblast   | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří. |
     |Typ clusteru| Vyberte vybrat typ clusteru a otevřete seznam. V seznamu vyberte možnost **Spark**.|
     |Verze clusteru|Po výběru typu clusteru bude toto pole automaticky vyplněno výchozí verzí.|
     |Uživatelské jméno přihlášení clusteru| Zadejte uživatelské jméno přihlášení clusteru.  Výchozí název je **admin**. Pomocí tohoto účtu se přihlásíte k Jupyter Notebook později v rychlém startu. |

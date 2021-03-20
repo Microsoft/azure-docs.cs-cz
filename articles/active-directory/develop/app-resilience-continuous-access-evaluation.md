@@ -13,10 +13,10 @@ ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
 ms.openlocfilehash: f6ce792b3db0100d7356884bbc6ee2696580df10
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652054"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>Jak používat rozhraní API s povoleným vyhodnocováním průběžného přístupu ve vašich aplikacích
@@ -35,7 +35,7 @@ Pokud rozhraní API prostředků implementuje CAE a vaše aplikace ji deklaruje,
 
 Prvním krokem je přidání kódu pro zpracování odpovědi z rozhraní API prostředků, které volání přemítne z důvodu CAE. Pomocí CAE budou rozhraní API vracet stav 401 a hlavičku WWW-Authenticate, když přístupový token byl odvolán, nebo rozhraní API zjistí změnu v použité IP adrese. Hlavička WWW-Authenticate obsahuje deklaraci identity, kterou může aplikace použít k získání nového přístupového tokenu.
 
-Příklad:
+Například:
 
 ```console
 HTTP 401; Unauthorized

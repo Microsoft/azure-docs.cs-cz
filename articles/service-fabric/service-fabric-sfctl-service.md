@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 426220f38e6ddfaaf8b24bf4f7d34473d881ae56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86245598"
 ---
 # <a name="sfctl-service"></a>sfctl service
@@ -25,7 +25,7 @@ Umožňuje vytvářet, odstraňovat a spravovat služby, typy služeb a balíčk
 | delete | Odstraní existující službu Service Fabric. |
 | nasazený typ | Získá informace o zadaném typu služby aplikace nasazené na uzlu v clusteru Service Fabric. |
 | nasazený typ – seznam | Získá seznam obsahující informace o typech služeb z aplikací nasazených na uzlu v clusteru Service Fabric. |
-| Popis | Získá popis existující služby Service Fabric. |
+| description | Získá popis existující služby Service Fabric. |
 | získat protokoly kontejnerů | Získá protokoly kontejneru pro kontejner nasazený na uzlu Service Fabric. |
 | nezávadnost | Získá stav zadané služby Service Fabric. |
 | příjemce | Získá informace o konkrétní službě, která patří do aplikace Service Fabric. |

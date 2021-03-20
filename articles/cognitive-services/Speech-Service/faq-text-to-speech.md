@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.openlocfilehash: 67284225299641a71050342056ad7ca91bf39740
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353710"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Převod textu na řeč nejčastějších dotazech
@@ -45,7 +45,7 @@ V současné době neposkytujeme podporu online nahrávání ani nahrávání do
 
 **Otázka: Jaké skripty mám použít k nahrání dat řeči pro vlastní hlasové školení?**
 
-**A** Odpověď: neomezujeme skripty pro záznam hlasu. Pro nahrání řeči můžete použít vlastní skripty. Stačí se ujistit, že máte v datech řeči dostatečné pokrytí foneticky. Pro výuku vlastního hlasu můžete začít s malým objemem dat řeči, což může být 50 různých vět (asi 3-5 minut řeči). Další data, která zadáte, bude přirozený váš hlas. V případě, že zadáte nahrávky o více než 2 000 vět (asi 3-4 hodin řeči), můžete začít zajišťovat všechna hlasová písma. Abyste získali vysoce kvalitní a plný hlas, musíte připravit nahrávky o více než 6 000 vět (asi 8-10 hodin řeči).
+Odpověď: neomezujeme skripty pro záznam hlasu. Pro nahrání řeči můžete použít vlastní skripty. Stačí se ujistit, že máte v datech řeči dostatečné pokrytí foneticky. Pro výuku vlastního hlasu můžete začít s malým objemem dat řeči, což může být 50 různých vět (asi 3-5 minut řeči). Další data, která zadáte, bude přirozený váš hlas. V případě, že zadáte nahrávky o více než 2 000 vět (asi 3-4 hodin řeči), můžete začít zajišťovat všechna hlasová písma. Abyste získali vysoce kvalitní a plný hlas, musíte připravit nahrávky o více než 6 000 vět (asi 8-10 hodin řeči).
 
 Poskytujeme další služby, které vám pomůžou připravit skripty pro nahrávání. Kontaktujte [zákaznickou podporu vlastního hlasu](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) pro dotazy.
 
@@ -59,7 +59,7 @@ Odpověď **: model** můžete škálovat v přírůstcích po 20 souběžných 
 
 **Otázka: jsou omezeny moje požadavky?**
 
-**A** Odpověď: viz [kvóty a limity služby Speech Services](speech-services-quotas-and-limits.md).
+Odpověď: viz [kvóty a limity služby Speech Services](speech-services-quotas-and-limits.md).
 
 ## <a name="next-steps"></a>Další kroky
 

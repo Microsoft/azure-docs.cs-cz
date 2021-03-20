@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 23b3aabf8e991e512ef9a5c07d725c3084ea7f83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86244731"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Kurz: Upgrade modulu runtime clusteru Service Fabric v Azure
@@ -37,14 +37,14 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) nebo rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli).
 * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
-* Nastavte vývojové prostředí systému Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a vývojové úlohy pro vývoj pro **Azure**, **ASP.NET a**vývoj pro web a **.NET Core pro různé platformy** .  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
+* Nastavte vývojové prostředí systému Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a vývojové úlohy pro vývoj pro **Azure**, **ASP.NET a** vývoj pro web a **.NET Core pro různé platformy** .  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b76c2e346adb6c2afd146b0d73c8f20165145bac
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460355"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Kurz: Azure Active Directory integrace s obrázkovým přenosem
@@ -30,7 +30,7 @@ Integrace Image Relay se službou Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s využitím Image Relay potřebujete následující položky:
 
@@ -154,11 +154,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím Ima
 
     b. Do textového pole **Adresa URL pro odhlášení**  vložte hodnotu **adresy URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
 
-    c. Jako **formát ID názvu**vyberte název **urn: Oasis: název: TC: SAML: 1.1: NameId-Format: EmailAddress**.
+    c. Jako **formát ID názvu** vyberte název **urn: Oasis: název: TC: SAML: 1.1: NameId-Format: EmailAddress**.
 
     d. Jako **Možnosti vazby pro žádosti od poskytovatele služeb (Image Relay)** vyberte **post Binding (Odeslat vazbu**).
 
-    e. V části **certifikát x. 509**klikněte na **aktualizovat certifikát**.
+    e. V části **certifikát x. 509** klikněte na **aktualizovat certifikát**.
 
     ![Snímek obrazovky ukazuje možnost aktualizovat certifikát.](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
@@ -180,7 +180,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím Ima
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -205,7 +205,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k předávání obrázků.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Image Relay**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Image Relay**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -239,7 +239,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v obrazovém
 
     ![Snímek obrazovky se v nabídce zobrazí možnost vytvořit S/O uživatel.](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
-3. Zadejte **e-mail**, jméno, **příjmení**a **firmu** **uživatele, kterého**chcete ZŘÍDIT, a vyberte skupinu oprávnění (například SSO Basic), která je skupina, která se může přihlásit pouze prostřednictvím jednotného přihlašování.
+3. Zadejte **e-mail**, jméno, **příjmení** a **firmu** **uživatele, kterého** chcete ZŘÍDIT, a vyberte skupinu oprávnění (například SSO Basic), která je skupina, která se může přihlásit pouze prostřednictvím jednotného přihlašování.
 
     ![Snímek obrazovky se zobrazí stránka vytvořit uživatele S příponou O/S, kde můžete zadat požadované informace.](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
@@ -251,7 +251,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici s obrázkem Relay na přístupovém panelu byste měli být automaticky přihlášeni k předávání obrázků, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

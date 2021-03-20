@@ -7,10 +7,10 @@ ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
 ms.custom: devx-track-js
 ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91335445"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první odolné funkce v JavaScriptu
@@ -43,7 +43,7 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 
 1. V Visual Studio Code stisknutím klávesy F1 (nebo Ctrl/Cmd + Shift + P) otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create New Project...` .
 
-    ![Vytvoření funkce](media/quickstart-js-vscode/functions-create-project.png)
+    ![Funkce Create](media/quickstart-js-vscode/functions-create-project.png)
 
 1. Zvolte prázdné umístění složky pro váš projekt a zvolte **možnost vybrat**.
 
@@ -145,7 +145,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
     | Vyberte účet úložiště. | Vytvoření nového účtu úložiště |  |
     | Zadejte název nového účtu úložiště. | *jedinečný název* | Název účtu úložiště, který se má vytvořit |
     | Výběr skupiny prostředků | *jedinečný název* | Název skupiny prostředků, která se má vytvořit |
-    | Výběr umístění | *oblast* | Vyberte oblast, kterou chcete zavřít. |
+    | Výběr umístění | *věřitel* | Vyberte oblast, kterou chcete zavřít. |
 
 1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 

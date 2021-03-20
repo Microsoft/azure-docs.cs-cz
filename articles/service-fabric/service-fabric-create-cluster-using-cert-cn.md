@@ -4,10 +4,10 @@ description: Naučte se vytvořit cluster Service Fabric s využitím běžného
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: c852b40d35f936753d3c16420159676da239b6c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86246431"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Nasazení clusteru Service Fabric, který místo kryptografického otisku používá běžný název certifikátu
@@ -78,7 +78,7 @@ Nejprve otevřete *azuredeploy.parameters.js* v souboru v textovém editoru a p�
 },
 ```
 
-Dále nastavte hodnoty parametru *certificateCommonName*, *sourceVaultValue*a *certificateUrlValue* na hodnoty vrácené předchozím skriptem:
+Dále nastavte hodnoty parametru *certificateCommonName*, *sourceVaultValue* a *certificateUrlValue* na hodnoty vrácené předchozím skriptem:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -120,7 +120,7 @@ V dalším kroku otevřete *azuredeploy.js* v souboru v textovém editoru a prov
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. V prostředku **Microsoft. COMPUTE/virtualMachineScaleSets** aktualizujte rozšíření virtuálního počítače tak, aby místo kryptografického otisku používalo běžný název v nastavení certifikátu.  V **Nastavení virtualMachineProfile** -> **extensionProfile** -> **rozšíření**– -> **vlastnosti** -> **settings** -> **certifikátu**– přidat 
+3. V prostředku **Microsoft. COMPUTE/virtualMachineScaleSets** aktualizujte rozšíření virtuálního počítače tak, aby místo kryptografického otisku používalo běžný název v nastavení certifikátu.  V **Nastavení virtualMachineProfile** -> **extensionProfile** -> **rozšíření**– -> **vlastnosti** ->  -> **certifikátu**– přidat 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"

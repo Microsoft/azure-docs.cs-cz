@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e081acc357c1b8872dd3a25c552d4cbe9785e212
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96007065"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Aktualizace 3 poznámky k verzi pro zařízení řady StorSimple 8000
@@ -53,7 +53,7 @@ Následující tabulky obsahují souhrn problémů, které byly opraveny ve verz
 ## <a name="known-issues-in-update-3"></a>Známé problémy v aktualizaci Update 3
 Následující tabulka poskytuje souhrn známých problémů v této verzi.
 
-| Ne. | Funkce | Problém | Komentáře a alternativní řešení | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
+| No. | Funkce | Problém | Komentáře a alternativní řešení | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Kvorum disku |Ve výjimečných případech dojde k odpojení většiny disků v EBOD skříni zařízení 8600, což způsobí nedostatečné diskové kvorum, ale fond úložiště přejde do režimu offline. Zůstane v režimu offline i v případě, že jsou disky znovu připojeny. |Budete muset zařízení restartovat. Pokud se problém opakuje, kontaktujte prosím podpora Microsoftu pro další kroky. |Yes |No |
 | 2 |Nesprávné ID kontroleru |Když se provede nahrazení řadiče, může se řadič 0 zobrazit jako kontroler 1. Když se při nahrazení řadiče načte z uzlu rovnocenného uzlu, ID kontroleru se může zpočátku zobrazit jako ID partnerského řadiče. Ve výjimečných případech se toto chování může zobrazit i po restartování systému. |Není vyžadována žádná akce uživatele. Tato situace se vyřeší sám po dokončení nahrazení kontroleru. |Yes |No |

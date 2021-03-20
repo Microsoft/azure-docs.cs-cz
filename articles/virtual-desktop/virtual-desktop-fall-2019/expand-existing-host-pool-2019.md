@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88009167"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Rozšíření existujícího fondu hostitelů na nové hostitele relací ve virtuálním počítači s Windows (Classic)
@@ -47,7 +47,7 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Reso
 
 Zde je postup, jak znovu nasadit šablonu Azure Resource Manager pro rozšíření fondu hostitelů:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Na panelu hledání v horní části Azure Portal vyhledejte **skupiny prostředků** a vyberte položku v části **služby**.
 3. Vyhledejte a vyberte skupinu prostředků, kterou jste vytvořili při vytváření fondu hostitelů.
 4. V panelu na levé straně prohlížeče vyberte **nasazení**.
@@ -57,14 +57,14 @@ Zde je postup, jak znovu nasadit šablonu Azure Resource Manager pro rozšířen
 6. Vyberte **znovu nasadit**.
 
      >[!NOTE]
-     >Pokud se šablona po výběru **opětovného nasazení**automaticky znovu nespustí, vyberte **šablonu** na panelu na levé straně prohlížeče a pak vyberte **nasadit**.
+     >Pokud se šablona po výběru **opětovného nasazení** automaticky znovu nespustí, vyberte **šablonu** na panelu na levé straně prohlížeče a pak vyberte **nasadit**.
 
 7. Vyberte skupinu prostředků, která obsahuje virtuální počítače hostitele aktuální relace v existujícím fondu hostitelů.
 
      >[!NOTE]
      >Pokud se zobrazí chyba s informací, že chcete vybrat jinou skupinu prostředků, i když je ta, kterou jste zadali, je správná, vyberte jinou skupinu prostředků a pak vyberte původní skupinu prostředků.
 
-8. Jako *_artifactsLocation*zadejte následující adresu URL: `https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
+8. Jako *_artifactsLocation* zadejte následující adresu URL: `https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
 9. Zadejte nový celkový počet hostitelů relací, které chcete mít, do *počtu instancí relace vzdálené plochy*. Pokud například rozšíříte fond hostitelů z pěti hostitelů relace na osm, zadejte **8**.
 10. Zadejte stejné existující heslo k doméně, které jste použili pro existující hlavní název uživatele domény. Neměňte uživatelské jméno, protože při spuštění šablony dojde k chybě.
 11. Zadejte stejné heslo správce klienta, které jste použili pro ID uživatele nebo aplikace, které jste zadali pro *hlavní název uživatele (UPN) správce klienta nebo ID aplikace*. Znovu neměňte uživatelské jméno.
@@ -78,16 +78,16 @@ Postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí Azure M
 
 Všechny hodnoty v této části by se měly shodovat s tím, co jste zadali při prvním vytváření virtuálních počítačů hostitelů a hostitele relací, s výjimkou *výchozích uživatelů plochy*:
 
-1.    V poli *předplatné*vyberte předplatné, ve kterém jste poprvé vytvořili fond hostitelů.
-2.    V poli *Skupina prostředků*vyberte stejnou skupinu prostředků, ve které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
-3.    V poli *oblast*vyberte stejnou oblast, ve které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
-4.    Do pole *název Hostpool*zadejte název existujícího fondu hostitelů.
-5.    Jako *typ stolního počítače*vyberte typ pracovní plochy, který odpovídá stávajícímu fondu hostitelů.
-6.    U *výchozích uživatelů plochy*zadejte seznam oddělený čárkami všech dalších uživatelů, kteří se chtějí přihlašovat k klientům virtuálních klientů Windows, a získat přístup k ploše po dokončení nabídky Azure Marketplace. Například pokud chcete přiřadit user3@contoso.com a user4@contoso.com přístup, zadejte user3@contoso.com , user4@contoso.com .
+1.    V poli *předplatné* vyberte předplatné, ve kterém jste poprvé vytvořili fond hostitelů.
+2.    V poli *Skupina prostředků* vyberte stejnou skupinu prostředků, ve které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
+3.    V poli *oblast* vyberte stejnou oblast, ve které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
+4.    Do pole *název Hostpool* zadejte název existujícího fondu hostitelů.
+5.    Jako *typ stolního počítače* vyberte typ pracovní plochy, který odpovídá stávajícímu fondu hostitelů.
+6.    U *výchozích uživatelů plochy* zadejte seznam oddělený čárkami všech dalších uživatelů, kteří se chtějí přihlašovat k klientům virtuálních klientů Windows, a získat přístup k ploše po dokončení nabídky Azure Marketplace. Například pokud chcete přiřadit user3@contoso.com a user4@contoso.com přístup, zadejte user3@contoso.com , user4@contoso.com .
 7.    Vyberte **Další: konfigurace virtuálního počítače**.
 
 >[!NOTE]
->S výjimkou *výchozích uživatelů stolních počítačů*se všechna pole musí přesně shodovat s tím, co bylo konfigurováno v existujícím fondu hostitelů. Pokud dojde k neshodě, která bude mít za následek nový fond hostitelů.
+>S výjimkou *výchozích uživatelů stolních počítačů* se všechna pole musí přesně shodovat s tím, co bylo konfigurováno v existujícím fondu hostitelů. Pokud dojde k neshodě, která bude mít za následek nový fond hostitelů.
 
 ### <a name="configure-virtual-machines"></a>Konfigurace virtuálních počítačů
 
@@ -98,7 +98,7 @@ Všechny hodnoty parametrů v této části se musí shodovat s tím, co jste za
     >[!NOTE]
     >Pokud se konkrétní velikost virtuálního počítače, kterou hledáte, nezobrazuje v selektoru velikosti virtuálního počítače, je to proto, že jsme ho ještě nepřipojili k nástroji Azure Marketplace. Pokud si chcete vyžádat velikost virtuálního počítače, vytvořte žádost nebo nahlaste stávající požadavek ve [fóru Windows Virtual Desktop UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
 
-2. Pokud chcete vybrat celkový počet hostitelů relací, které chcete mít ve fondu hostitelů, upravte *profil využití*, *Celkový počet uživatelů*a *počet parametrů virtuálních počítačů* . Pokud například rozšíříte fond hostitelů z pěti hostitelů relace na osm, nakonfigurujte tyto možnosti tak, aby se dosáhlo 8 virtuálních počítačů.
+2. Pokud chcete vybrat celkový počet hostitelů relací, které chcete mít ve fondu hostitelů, upravte *profil využití*, *Celkový počet uživatelů* a *počet parametrů virtuálních počítačů* . Pokud například rozšíříte fond hostitelů z pěti hostitelů relace na osm, nakonfigurujte tyto možnosti tak, aby se dosáhlo 8 virtuálních počítačů.
 3. Zadejte předponu názvů virtuálních počítačů. Pokud například zadáte název "prefix", virtuální počítače budou nazývány "prefix-0," prefix-1, "atd.
 4. Vyberte **Další: nastavení virtuálního počítače**.
 
@@ -106,7 +106,7 @@ Všechny hodnoty parametrů v této části se musí shodovat s tím, co jste za
 
 Všechny hodnoty parametrů v této části se musí shodovat s tím, co jste zadali při prvním vytvoření fondu hostitelů a hostitelů relací hostitele:
 
-1. V části *zdroj image* a *image operačního systému*zadejte stejné informace, jaké jste zadali při prvním vytvoření fondu hostitelů.
+1. V části *zdroj image* a *image operačního systému* zadejte stejné informace, jaké jste zadali při prvním vytvoření fondu hostitelů.
 2. V případě *hlavního názvu uživatele (UPN) pro připojení k doméně AD* a přidružených hesel zadejte stejné informace, jaké jste zadali při prvním vytvoření fondu hostitelů pro připojení k virtuálním počítačům do domény služby Active Directory. Tyto přihlašovací údaje se použijí k vytvoření místního účtu na virtuálních počítačích. Můžete resetovat tyto místní účty a později změnit jejich přihlašovací údaje.
 3. Pro informace o virtuální síti vyberte stejnou virtuální síť a podsíť, pro které se nacházejí existující virtuální počítače hostitele relace fondu hostitelů.
 4. Vyberte **Další: Konfigurace informací o virtuálním počítači s Windows**.
@@ -115,8 +115,8 @@ Všechny hodnoty parametrů v této části se musí shodovat s tím, co jste za
 
 Všechny hodnoty parametrů v této části se musí shodovat s tím, co jste zadali při prvním vytvoření fondu hostitelů a hostitelů relací hostitele:
 
-1. V poli *název skupiny tenantů virtuálních klientů Windows*zadejte název skupiny tenantů, která obsahuje vašeho tenanta. Pokud jste nezadali konkrétní název skupiny tenantů, ponechte ho jako výchozí.
-2. Do pole *název tenanta virtuálních klientů Windows*zadejte název tenanta, do kterého budete tento fond hostitelů vytvářet.
+1. V poli *název skupiny tenantů virtuálních klientů Windows* zadejte název skupiny tenantů, která obsahuje vašeho tenanta. Pokud jste nezadali konkrétní název skupiny tenantů, ponechte ho jako výchozí.
+2. Do pole *název tenanta virtuálních klientů Windows* zadejte název tenanta, do kterého budete tento fond hostitelů vytvářet.
 3. Zadejte stejné přihlašovací údaje, které jste použili při prvním vytvoření fondu hostitelů a virtuálních počítačů hostitele relací. Pokud používáte instanční objekt, zadejte ID instance Azure Active Directory, kde se nachází váš instanční objekt.
 4. Vyberte **Další: zkontrolovat + vytvořit**.
 

@@ -8,10 +8,10 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86220554"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>Škálování aplikací ve App Service Environment v1
@@ -39,11 +39,11 @@ Můžete vytvořit několik plánů služby App Service s využitím výpočetn�
 ### <a name="scaling-the-number-of-instances"></a>Škálování počtu instancí
 Při prvním vytvoření webové aplikace v App Service Environment začíná s 1 instancí.  Pak můžete horizontální navýšení kapacity na další instance a poskytnout tak pro svou aplikaci další výpočetní prostředky.   
 
-Pokud má vaše pomocného mechanismu dostatek kapacity, je to poměrně jednoduché.  Přejdete na plán App Service, který obsahuje weby, které chcete škálovat, a vyberte škálovat.  Tím se otevře uživatelské rozhraní, kde můžete ručně nastavit škálování pro ASP nebo nakonfigurovat pravidla automatického škálování pro ASP.  K ručnímu škálování aplikace stačí nastavit ***škálování*** na ***počet instancí, který zadáte ručně***.  Z tohoto místa buď přetáhněte posuvník na požadované množství, nebo ho zadejte do pole vedle posuvníku.  
+Pokud má vaše pomocného mechanismu dostatek kapacity, je to poměrně jednoduché.  Přejdete na plán App Service, který obsahuje weby, které chcete škálovat, a vyberte škálovat.  Tím se otevře uživatelské rozhraní, kde můžete ručně nastavit škálování pro ASP nebo nakonfigurovat pravidla automatického škálování pro ASP.  K ručnímu škálování aplikace stačí nastavit ***škálovat** na _ *_počet instancí, který zadáte ručně_* *.  Z tohoto místa buď přetáhněte posuvník na požadované množství, nebo ho zadejte do pole vedle posuvníku.  
 
 ![Snímek obrazovky, který ukazuje, kde můžete nastavit měřítko pro ASP nebo nakonfigurovat pravidla automatického škálování pro ASP.][2] 
 
-Pravidla automatického škálování pro ASP v pomocném mechanismu služby fungují stejně jako normálně.  Můžete vybrat ***procento CPU*** v části ***škálovat podle*** a vytvořit pravidla automatického škálování pro ASP na základě PROCENTUÁLNÍho podílu procesoru, nebo můžete vytvořit složitější pravidla pomocí ***pravidel plánování a výkonu***.  Pokud chcete zobrazit podrobnější informace o konfiguraci automatického škálování, postupujte podle pokynů [v tématu škálování aplikace v Azure App Service][AppScale]. 
+Pravidla automatického škálování pro ASP v pomocném mechanismu služby fungují stejně jako normálně.  Můžete vybrat **procento využití procesoru** _ v části _*_škálovat podle_*_ a vytvořit pravidla automatického škálování pro váš ASP na základě PROCENTUÁLNÍho podílu procesoru, nebo můžete vytvořit složitější pravidla pomocí _ *_pravidla plánování a výkonu_* *.  Pokud chcete zobrazit podrobnější informace o konfiguraci automatického škálování, postupujte podle pokynů [v tématu škálování aplikace v Azure App Service][AppScale]. 
 
 ### <a name="worker-pool-selection"></a>Výběr fondu pracovních procesů
 Jak bylo uvedeno dříve, k výběru fondu pracovních procesů se dostanete z uživatelského rozhraní ASP.  Otevřete okno pro ASP, u kterého chcete škálovat a vyberte fond pracovních procesů.  Zobrazí se všechny fondy pracovních procesů, které jste nakonfigurovali v App Service Environment.  Pokud máte jenom jeden fond pracovních procesů, zobrazí se jenom jeden z nich.  Pokud chcete změnit, na jaký fond pracovních procesů je ASP, stačí vybrat fond pracovních procesů, do kterého chcete App Service plán přesunout.  

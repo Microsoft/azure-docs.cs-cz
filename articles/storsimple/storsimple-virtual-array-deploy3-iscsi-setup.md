@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 6289f335234c9b7efec02a18e12b40a1140c1b3f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94956547"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako serveru iSCSI prostřednictvím Azure Portal
@@ -38,8 +38,8 @@ Dokončení popsané procedury trvá přibližně 30 minut až 1 hodinu. Informa
 Před konfigurací a nastavením StorSimple virtuálního pole se ujistěte, že:
 
 * Zřídili jste virtuální pole a připojili se k němu, jak je popsáno v tématu [nasazení virtuálního pole StorSimple – zřízení virtuálního pole v Hyper-V](./storsimple-virtual-array-deploy2-provision-hyperv.md) nebo nasazení virtuálního pole [StorSimple – zřízení virtuálního pole ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
-* Máte registrační klíč služby ze služby StorSimple Device Manager, kterou jste vytvořili pro správu virtuálních polí StorSimple. Další informace najdete v části **Krok 2: získání registračního klíče služby** v [nasazení StorSimple Virtual Array – Příprava portálu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
-* Pokud se jedná o druhé nebo následné virtuální pole, které zaregistrujete pomocí existující služby StorSimple Device Manager, měli byste mít šifrovací klíč dat služby. Tento klíč byl vygenerován při úspěšné registraci prvního zařízení s touto službou. Pokud jste tento klíč ztratili, přečtěte si téma **získání šifrovacího klíče dat služby** v tématu [použití webového uživatelského rozhraní pro správu vašeho virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key).
+* Máte registrační klíč služby ze služby StorSimple Správce zařízení, kterou jste vytvořili pro správu virtuálních polí StorSimple. Další informace najdete v části **Krok 2: získání registračního klíče služby** v [nasazení StorSimple Virtual Array – Příprava portálu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+* Pokud se jedná o druhé nebo následné virtuální pole, které zaregistrujete pomocí existující služby StorSimple Správce zařízení, měli byste mít šifrovací klíč dat služby. Tento klíč byl vygenerován při úspěšné registraci prvního zařízení s touto službou. Pokud jste tento klíč ztratili, přečtěte si téma **získání šifrovacího klíče dat služby** v tématu [použití webového uživatelského rozhraní pro správu vašeho virtuálního pole StorSimple](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key).
 
 ## <a name="step-by-step-setup"></a>Podrobný postup instalace
 
@@ -64,7 +64,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
 2. Přihlaste se k webovému uživatelskému rozhraní virtuálního zařízení jako **StorSimpleAdmin**. Zadejte heslo správce zařízení, které jste změnili v kroku 3: spuštění virtuálního zařízení v části [nasazení virtuálního pole StorSimple – zřízení virtuálního zařízení v Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [nasazení virtuálního pole StorSimple – zřízení virtuálního zařízení ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
    
     ![Přihlašovací stránka](./media/storsimple-virtual-array-deploy3-iscsi-setup/image4.png)
-3. Přejdete na **domovskou** stránku. Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního zařízení ve službě StorSimple Device Manager. Všimněte si, že nastavení **sítě**, **nastavení webového proxy serveru** a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **nastavení zařízení** a **Nastavení cloudu**.
+3. Přejdete na **domovskou** stránku. Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního zařízení ve službě StorSimple Správce zařízení. Všimněte si, že nastavení **sítě**, **nastavení webového proxy serveru** a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **nastavení zařízení** a **Nastavení cloudu**.
    
     ![Domovská stránka](./media/storsimple-virtual-array-deploy3-iscsi-setup/image5.png)
 4. Na stránce **nastavení sítě** v části **Síťová rozhraní** se pro vás automaticky nakonfigurují data 0. Každé síťové rozhraní je standardně nastavené tak, aby se IP adresa automaticky získala (DHCP). Proto se automaticky přiřadí IP adresa, podsíť a brána (pro IPv4 a IPv6).
@@ -114,10 +114,10 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
    2. Zadejte **primární server NTP** pro vaše zařízení nebo přijměte výchozí hodnotu Time.Windows.com. Ujistěte se, že vaše síť umožňuje přenos dat NTP z vašeho datového centra na internet.
    3. Volitelně můžete zadat **sekundární server NTP** pro vaše zařízení.
    4. Klikněte na **Použít**. Tím se ověří a použije nakonfigurovaná nastavení času.
-9. Nakonfigurujte nastavení cloudu pro vaše zařízení. V tomto kroku dokončíte konfiguraci místních zařízení a pak zaregistrujete zařízení ve službě StorSimple Device Manager.
+9. Nakonfigurujte nastavení cloudu pro vaše zařízení. V tomto kroku dokončíte konfiguraci místních zařízení a pak zaregistrujete zařízení ve službě StorSimple Správce zařízení.
    
    1. Zadejte **registrační klíč služby** , který jste získali v **kroku 2: získání registračního klíče služby** v části [nasazení StorSimple Virtual Array – Příprava portálu](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
-   2. Pokud se nejedná o první zařízení, které zaregistrujete v rámci této služby, budete muset zadat **šifrovací klíč dat služby**. Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Device Manager. Další informace najdete v tématu [získání šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) v místním webovém uživatelském rozhraní.
+   2. Pokud se nejedná o první zařízení, které zaregistrujete v rámci této služby, budete muset zadat **šifrovací klíč dat služby**. Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Správce zařízení. Další informace najdete v tématu [získání šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) v místním webovém uživatelském rozhraní.
    3. Klikněte na **Zaregistrovat**. Tím se zařízení restartuje. Možná budete muset počkat na 2-3 minut, než se zařízení úspěšně zaregistruje. Jakmile se zařízení restartuje, přejdete na přihlašovací stránku.
       
       ![Registrovat zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
@@ -133,7 +133,7 @@ Provedením následujících kroků v Azure Portal dokončete požadované nasta
 
 #### <a name="to-configure-the-device-as-iscsi-server"></a>Konfigurace zařízení jako serveru iSCSI
 
-1. Přejít do služby StorSimple Device Manager a pak přejít na **> zařízení pro správu**. V okně **zařízení** vyberte zařízení, které jste právě vytvořili. Toto zařízení se zobrazí jako **připravené k nastavení**.
+1. Přejít do služby StorSimple Správce zařízení a pak přejít na **> zařízení pro správu**. V okně **zařízení** vyberte zařízení, které jste právě vytvořili. Toto zařízení se zobrazí jako **připravené k nastavení**.
    
     ![Konfigurace zařízení jako serveru iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. Klikněte na zařízení a zobrazí se informační zpráva oznamující, že zařízení je připravené k instalaci.

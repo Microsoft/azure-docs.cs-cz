@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171750"
 ---
 # <a name="rest-api"></a>REST API
@@ -33,7 +33,7 @@ Všechny požadavky rozhraní API vyžadují následující parametr řetězce d
 ### <a name="request-content-type"></a>Typ obsahu žádosti
 Všechny požadavky rozhraní API musí mít **typ Content-Type**.
 
-V případě **EventGridSchema** nebo **CustomSchema**může být hodnotou Content-type jedna z následujících hodnot:
+V případě **EventGridSchema** nebo **CustomSchema** může být hodnotou Content-type jedna z následujících hodnot:
 
 ```Content-Type: application/json```
 

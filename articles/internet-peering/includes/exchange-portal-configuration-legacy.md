@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b8869e93a7156b24d61ac555c95b9ca7f850ae34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81678566"
 ---
 1. Na stránce **vytvořit partnerský vztah** na kartě **Konfigurace** vyplňte pole, jak je znázorněno zde.
@@ -20,7 +20,7 @@ ms.locfileid: "81678566"
     > [!div class="mx-imgBorder"]
     > ![Vytvoření partnerského vztahu typu stránky pro výměnu](../media/setup-exchange-conf-tab.png)
 
-    * Jako **typ partnerského vztahu**vyberte **Exchange**.
+    * Jako **typ partnerského vztahu** vyberte **Exchange**.
     * Vyberte **SKU** jako **základní zdarma**.
     * Vyberte umístění **Metro** , kde chcete převést partnerský vztah na prostředek Azure. Pokud máte připojení s partnerským vztahem k Microsoftu ve vybraném umístění **Metro** , které se nepřevede na prostředek Azure, budou tato připojení uvedená v části **připojení partnerských vztahů** , jak je znázorněno na obrázku. Nyní můžete tato připojení partnerských vztahů převést na prostředek Azure.
 
@@ -36,7 +36,7 @@ ms.locfileid: "81678566"
     > [!div class="mx-imgBorder"]
     > ![Karta ověření partnerského vztahu](../media/setup-direct-review-tab-validation.png)
 
-1. Po změně zprávy na *prošlé ověření*ověřte své informace. Žádost odešlete tak, že vyberete **vytvořit**. Pokud potřebujete žádost upravit, vyberte **Předchozí** a opakujte postup.
+1. Po změně zprávy na *prošlé ověření* ověřte své informace. Žádost odešlete tak, že vyberete **vytvořit**. Pokud potřebujete žádost upravit, vyberte **Předchozí** a opakujte postup.
 
     > [!div class="mx-imgBorder"]
     > ![Odesílání partnerských vztahů](../media/setup-exchange-review-tab-submit.png)

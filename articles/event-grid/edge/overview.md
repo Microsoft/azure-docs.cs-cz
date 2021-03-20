@@ -4,10 +4,10 @@ description: Pro přeposílání událostí mezi moduly, hraničními zařízen�
 ms.topic: overview
 ms.date: 07/08/2020
 ms.openlocfilehash: 82a68f6ab32d8ad18c3af506c810b01d12cf794d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171512"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Co je Azure Event Grid v Azure IoT Edge?
@@ -71,7 +71,7 @@ V Azure Event Grid existuje pět konceptů, které vám umožní začít:
 * **Odběry událostí** – koncový bod nebo integrovaný mechanismus pro směrování událostí, někdy do více než jedné obslužné rutiny. Pomocí odběrů taky obslužné rutiny inteligentně filtrují příchozí události.
 * **Obslužné rutiny událostí** – aplikace nebo služba, která reaguje na událost.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Náklady
 
 Event Grid v IoT Edge je ve verzi Public Preview zdarma.
 

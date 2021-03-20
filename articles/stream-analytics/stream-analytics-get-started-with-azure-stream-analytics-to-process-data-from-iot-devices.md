@@ -7,22 +7,22 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
 ms.openlocfilehash: a438401ff93c20d8759e6128936c3626bd3de484
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012678"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Zpracování datových proudů IoT v reálném čase pomocí Azure Stream Analytics
 
 V tomto článku se dozvíte, jak vytvořit logiku zpracování datového proudu pro shromažďování dat ze zařízení Internet věcí (IoT). Pomocí případu použití Real-World Internet věcí (IoT) můžete předvést, jak rychle a ekonomicky sestavovat řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte si bezplatné [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Stáhněte si ukázkový dotaz a datové soubory z [GitHubu](https://aka.ms/azure-stream-analytics-get-started-iot).
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Contoso, společnost působící v oboru automatizace průmyslu, zcela automatizovala svůj výrobní proces. Stroje v továrně společnosti mají snímače, které dokáží vysílat datové proudy v reálném čase. V tomto scénáři chce manažer provozovny v reálném čase získávat informace na základě dat ze senzorů, hledat jejich pomocí různé vzorce a na jejich základě provádět potřebné akce. K vyhledání zajímavých vzorů z příchozího datového proudu dat můžete použít jazyk SAQL (Stream Analytics Query Language) prostřednictvím dat snímače.
 

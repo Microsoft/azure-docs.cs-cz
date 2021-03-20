@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
 ms.openlocfilehash: 88a71eb5a8ca9a6f2bf1d17fc4eaf9780527d2cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98930549"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Kurz: Vytvoření aplikace Apache Spark Machine Learning ve službě Azure HDInsight
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vývoj aplikace Apache Spark Machine Learning
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 

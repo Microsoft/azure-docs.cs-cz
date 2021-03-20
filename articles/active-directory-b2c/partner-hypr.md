@@ -12,17 +12,17 @@ ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: b80b1a4b3f9bcde6cf01b0e0e59425c6783bd5d9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953759"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci HYPR s využitím Azure Active Directory B2C
 
 V tomto ukázkovém kurzu poskytujeme pokyny ke konfiguraci Azure AD B2C pomocí [HYPR](https://get.hypr.com). Když Azure AD B2C jako poskytovatel identity, můžete integrovat HYPR se všemi vašimi zákaznickými aplikacemi a poskytnout uživatelům tak skutečné ověřování bez hesla. HYPR nahrazuje hesla s použitím šifrování veřejných klíčů, které eliminují podvod, útoky phishing a opakované použití přihlašovacích údajů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -32,7 +32,7 @@ Abyste mohli začít, budete potřebovat:
 
 - HYPR Cloud tenant získáte bezplatný [zkušební účet](https://get.hypr.com/free-trial).
 
-- Mobilní zařízení uživatele registrované pomocí rozhraní REST API HYPR nebo HYPR Device Manager ve vašem tenantovi HYPR. K provedení této úlohy můžete například použít [sadu HYPR Java SDK](https://docs.hypr.com/integratinghypr/docs/hypr-java-web-sdk) .
+- Mobilní zařízení uživatele registrované pomocí rozhraní REST API HYPR nebo HYPR Správce zařízení ve vašem tenantovi HYPR. K provedení této úlohy můžete například použít [sadu HYPR Java SDK](https://docs.hypr.com/integratinghypr/docs/hypr-java-web-sdk) .
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Snímek obrazovky pro hypr – architektura – diagram](media/partner-hypr/hypr-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na přihlašovací stránku. Uživatelé vyberou přihlášení a zaregistrují se na stránku a zadají uživatelské jméno.
 | 2. | Aplikace pošle atributy uživatele Azure AD B2C k identifikaci ověřování.

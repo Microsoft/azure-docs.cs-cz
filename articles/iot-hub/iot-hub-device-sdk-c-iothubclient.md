@@ -10,10 +10,10 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92149136"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Sada SDK pro zařízení Azure IoT pro C – Další informace o IoTHubClient
@@ -32,7 +32,7 @@ Můžete najít [**sadu SDK pro zařízení Azure IoT pro**](https://github.com/
 
 ## <a name="the-lower-level-apis"></a>Rozhraní API na nižší úrovni
 
-Předchozí článek popisuje základní operaci **IotHubClient** v rámci kontextu aplikace ** \_ \_ \_ AMQP Sample Client iothub** . Například vysvětluje, jak inicializovat knihovnu pomocí tohoto kódu.
+Předchozí článek popisuje základní operaci **IotHubClient** v rámci kontextu aplikace **\_ \_ \_ AMQP Sample Client iothub** . Například vysvětluje, jak inicializovat knihovnu pomocí tohoto kódu.
 
 ```C
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
@@ -77,7 +77,7 @@ Podobně pokud zaregistrujete funkci zpětného volání pro zprávy pomocí **I
 
 Rozhraní **API pro** všechny nevytvářejí vlákno na pozadí. Místo toho je nutné volat nové rozhraní API, aby bylo možné explicitně odesílat a přijímat data z IoT Hub. To je patrné z následujícího příkladu.
 
-** \_ \_ Ukázková aplikace \_ http klienta iothub** , která je součástí sady SDK, ukazuje rozhraní API nižší úrovně. V této ukázce pošleme události, které se IoT Hub s kódem, jako je následující:
+**\_ \_ Ukázková aplikace \_ http klienta iothub** , která je součástí sady SDK, ukazuje rozhraní API nižší úrovně. V této ukázce pošleme události, které se IoT Hub s kódem, jako je následující:
 
 ```C
 EVENT_INSTANCE message;
@@ -87,7 +87,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-První tři řádky vytvoří zprávu a poslední řádek odešle událost. Jak již bylo zmíněno dříve, odeslání události znamená, že data jsou jednoduše umístěna do vyrovnávací paměti. Při volání **IoTHubClient \_ ll \_ SendEventAsync**není v síti přenášena žádná data. Aby bylo možné data ve skutečnosti IoT Hub, je nutné volat **IoTHubClient \_ ll \_ DoWork**, jako v tomto příkladu:
+První tři řádky vytvoří zprávu a poslední řádek odešle událost. Jak již bylo zmíněno dříve, odeslání události znamená, že data jsou jednoduše umístěna do vyrovnávací paměti. Při volání **IoTHubClient \_ ll \_ SendEventAsync** není v síti přenášena žádná data. Aby bylo možné data ve skutečnosti IoT Hub, je nutné volat **IoTHubClient \_ ll \_ DoWork**, jako v tomto příkladu:
 
 ```C
 while (1)
@@ -134,7 +134,7 @@ Podle toho, jaký model si zvolíte, se ujistěte, že používáte rozhraní AP
 
 Opak je také pravda. Pokud začnete s **IoTHubClient \_ CreateFromConnectionString**, použijte pro jakékoli další zpracování rozhraní API bez jakýchkoli těchto údajů.
 
-V sadě SDK pro zařízení Azure IoT pro jazyk C najdete kompletní příklad rozhraní API na nižší úrovni v ** \_ ukázkové aplikaci \_ \_ http klienta iothub** . Na ** \_ \_ ukázkovou aplikaci \_ AMQP klienta iothub** se dá odkazovat úplným příkladem rozhraní API, která nejsou typu šechny.
+V sadě SDK pro zařízení Azure IoT pro jazyk C najdete kompletní příklad rozhraní API na nižší úrovni v **\_ ukázkové aplikaci \_ \_ http klienta iothub** . Na **\_ \_ ukázkovou aplikaci \_ AMQP klienta iothub** se dá odkazovat úplným příkladem rozhraní API, která nejsou typu šechny.
 
 ## <a name="property-handling"></a>Zpracování vlastností
 
@@ -155,7 +155,7 @@ sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 ```
 
-Začneme voláním ** \_ vlastností IoTHubMessage** a předáním popisovače naší zprávy. To, co se vrátí, je odkaz na **mapový \_ popisovač** , který nám umožňuje začít přidávat vlastnosti. Druhý je dosaženo voláním **mapy \_ AddOrUpdate**, která přebírá odkaz na mapový \_ popisovač, název vlastnosti a hodnotu vlastnosti. Pomocí tohoto rozhraní API můžeme přidat tolik vlastností, kolik bychom chtěli.
+Začneme voláním **\_ vlastností IoTHubMessage** a předáním popisovače naší zprávy. To, co se vrátí, je odkaz na **mapový \_ popisovač** , který nám umožňuje začít přidávat vlastnosti. Druhý je dosaženo voláním **mapy \_ AddOrUpdate**, která přebírá odkaz na mapový \_ popisovač, název vlastnosti a hodnotu vlastnosti. Pomocí tohoto rozhraní API můžeme přidat tolik vlastností, kolik bychom chtěli.
 
 Když je událost čtena z **Event Hubs**, může příjemce vytvořit výčet vlastností a načíst jejich odpovídající hodnoty. Například v rozhraní .NET to by bylo provedeno přístupem k [kolekci vlastností objektu EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata).
 
@@ -191,13 +191,13 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 }
 ```
 
-Volání ** \_ vlastností IoTHubMessage** vrací odkaz na ** \_ popisovač mapy** . Pak předáte tento odkaz na **mapování \_ getinternals** , aby se získal odkaz na pole párů název/hodnota (a také na počet vlastností). V tomto okamžiku je jednoduché vytvořit výčet vlastností a získat tak hodnoty, které chceme.
+Volání **\_ vlastností IoTHubMessage** vrací odkaz na **\_ popisovač mapy** . Pak předáte tento odkaz na **mapování \_ getinternals** , aby se získal odkaz na pole párů název/hodnota (a také na počet vlastností). V tomto okamžiku je jednoduché vytvořit výčet vlastností a získat tak hodnoty, které chceme.
 
 Ve své aplikaci nemusíte používat vlastnosti. Pokud ale potřebujete je nastavit na události nebo je načíst ze zpráv, knihovna **IoTHubClient** to usnadňuje.
 
 ## <a name="message-handling"></a>Zpracování zpráv
 
-Jak bylo uvedeno dříve, při doručení zpráv z IoT Hub knihovna **IoTHubClient** odpoví vyvoláním funkce zaregistrovaného zpětného volání. K dispozici je návratový parametr této funkce, který zachová nějaké další vysvětlení. Tady je ukázka funkce zpětného volání v ** \_ ukázce klienta iothub ukázkové \_ aplikace \_ http** :
+Jak bylo uvedeno dříve, při doručení zpráv z IoT Hub knihovna **IoTHubClient** odpoví vyvoláním funkce zaregistrovaného zpětného volání. K dispozici je návratový parametr této funkce, který zachová nějaké další vysvětlení. Tady je ukázka funkce zpětného volání v **\_ ukázce klienta iothub ukázkové \_ aplikace \_ http** :
 
 ```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -223,7 +223,7 @@ V každém případě si pamatujte na různé návratové kódy, abyste mohli zj
 
 ## <a name="alternate-device-credentials"></a>Alternativní přihlašovací údaje zařízení
 
-Jak bylo vysvětleno dříve, první věc, kterou je třeba provést při práci s knihovnou **IoTHubClient** , je získat ** \_ \_ popisovač klienta IOTHUB** s voláním, jako je následující:
+Jak bylo vysvětleno dříve, první věc, kterou je třeba provést při práci s knihovnou **IoTHubClient** , je získat **\_ \_ popisovač klienta IOTHUB** s voláním, jako je následující:
 
 ```C
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
@@ -238,7 +238,7 @@ HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSK
 
 V tomto řetězci jsou čtyři informace: IoT Hub název, IoT Hub přípona, ID zařízení a sdílený přístupový klíč. Plně kvalifikovaný název domény (FQDN) služby IoT Hub získáte při vytváření instance služby IoT Hub v Azure Portal – to vám poskytne název služby IoT Hub (první část plně kvalifikovaného názvu domény) a příponu služby IoT Hub (zbytek plně kvalifikovaného názvu domény). ID zařízení a sdílený přístupový klíč získáte při registraci zařízení v IoT Hub (jak je popsáno v [předchozím článku](iot-hub-device-sdk-c-intro.md)).
 
-**IoTHubClient \_ CreateFromConnectionString** poskytuje jeden způsob, jak knihovnu inicializovat. Pokud chcete, můžete vytvořit nový ** \_ \_ popisovač klienta IOTHUB** pomocí těchto jednotlivých parametrů místo připojovacího řetězce zařízení. Toho dosáhnete pomocí následujícího kódu:
+**IoTHubClient \_ CreateFromConnectionString** poskytuje jeden způsob, jak knihovnu inicializovat. Pokud chcete, můžete vytvořit nový **\_ \_ popisovač klienta IOTHUB** pomocí těchto jednotlivých parametrů místo připojovacího řetězce zařízení. Toho dosáhnete pomocí následujícího kódu:
 
 ```C
 IOTHUB_CLIENT_CONFIG iotHubClientConfig;
@@ -256,7 +256,7 @@ Může se zdát, že byste chtěli použít **IoTHubClient \_ CreateFromConnecti
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-Zatím všechno popsané o způsobu, jakým funguje knihovna **IoTHubClient** , odráží její výchozí chování. Existuje však několik možností, kterými můžete změnit způsob fungování knihovny. K tomu je možné využít rozhraní API IoTHubClient s funkcí ** \_ \_ SetOption** . Podívejte se na tento příklad:
+Zatím všechno popsané o způsobu, jakým funguje knihovna **IoTHubClient** , odráží její výchozí chování. Existuje však několik možností, kterými můžete změnit způsob fungování knihovny. K tomu je možné využít rozhraní API IoTHubClient s funkcí **\_ \_ SetOption** . Podívejte se na tento příklad:
 
 ```C
 unsigned int timeout = 30000;
@@ -265,7 +265,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 K dispozici je několik možností, které se běžně používají:
 
-* **SetBatching** (bool) – je-li **nastavena hodnota true**, jsou data odesílaná do IoT Hub odeslána v dávkách. V případě **hodnoty false**se zprávy odesílají jednotlivě. Výchozí hodnota je **false**. Dávkování přes AMQP/AMQP-WS a přidávání systémových vlastností na zprávy D2C je podporováno.
+* **SetBatching** (bool) – je-li **nastavena hodnota true**, jsou data odesílaná do IoT Hub odeslána v dávkách. V případě **hodnoty false** se zprávy odesílají jednotlivě. Výchozí hodnota je **false**. Dávkování přes AMQP/AMQP-WS a přidávání systémových vlastností na zprávy D2C je podporováno.
 
 * **Timeout** (unsigned int) – Tato hodnota je vyjádřena v milisekundách. Pokud odeslání požadavku HTTPS nebo přijetí odpovědi trvá déle než tento čas, vyprší časový limit připojení.
 

@@ -4,10 +4,10 @@ description: Naučte se šifrovat data aplikací v Azure Storage a nasazovat je 
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 5524b749b1e15342dd0133920d7190e33ced18ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92146039"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
@@ -71,7 +71,7 @@ Aktualizace nastavení této aplikace způsobí, že se vaše webová aplikace r
 
 Osvědčeným postupem je pravidelně střídat klíč SAS účtu úložiště. Aby se zajistilo, že webová aplikace neúmyslně ztratí přístup, musíte taky aktualizovat adresu URL SAS v Key Vault.
 
-1. Otočte klíč SAS tak, že přejdete na svůj účet úložiště v Azure Portal. V části **Nastavení**  >  **přístupových klíčů**klikněte na ikonu pro otočení klíče SAS.
+1. Otočte klíč SAS tak, že přejdete na svůj účet úložiště v Azure Portal. V části **Nastavení**  >  **přístupových klíčů** klikněte na ikonu pro otočení klíče SAS.
 
 1. Zkopírujte adresu URL nového SAS a použijte následující příkaz k nastavení aktualizované adresy URL SAS ve vašem trezoru klíčů:
 
@@ -99,7 +99,7 @@ Pokud se klíč SAS pro účet úložiště otočí, Webová aplikace už nebude
 
 Přístup webové aplikace můžete odvolat k datům lokality tím, že zakážete přístup k webové aplikaci Key Vault. Uděláte to tak, že odeberete zásady přístupu pro identitu webové aplikace. Jedná se o stejnou identitu, kterou jste vytvořili dříve při konfiguraci odkazů na Trezor klíčů.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Soubory vaší aplikace jsou teď ve vašem účtu úložiště zašifrované v klidovém stavu. Po spuštění webové aplikace načte adresu URL SAS z vašeho trezoru klíčů. Nakonec webová aplikace načte soubory aplikace z účtu úložiště. 
 

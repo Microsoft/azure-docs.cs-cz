@@ -5,10 +5,10 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80348386"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Přehled vývoje služeb Azure blockchain
@@ -29,7 +29,7 @@ Další informace najdete v tématu [rychlý Start: použití Visual Studio Code
 
 ### <a name="metamask"></a>MetaMask
 
-MetaMask je peněženka založená na prohlížeči (vzdálený klient), klient RPC a základní Průzkumník kontraktů. Na rozdíl od jiných kapesních prohlížečů MetaMask vloží instanci web3 do kontextu JavaScript v prohlížeči, který funguje jako klient RPC, který se připojuje k nejrůznějším Ethereem blockchainy (*mainnet*, *Ropsten testnet*, *Kovan*testnet, místnímu uzlu RPC atd.). Můžete snadno nastavit vlastní RPC pro připojení ke službě Azure blockchain a zahájit vývoj blockchain pomocí Remix.
+MetaMask je peněženka založená na prohlížeči (vzdálený klient), klient RPC a základní Průzkumník kontraktů. Na rozdíl od jiných kapesních prohlížečů MetaMask vloží instanci web3 do kontextu JavaScript v prohlížeči, který funguje jako klient RPC, který se připojuje k nejrůznějším Ethereem blockchainy (*mainnet*, *Ropsten testnet*, *Kovan* testnet, místnímu uzlu RPC atd.). Můžete snadno nastavit vlastní RPC pro připojení ke službě Azure blockchain a zahájit vývoj blockchain pomocí Remix.
 
 Další informace najdete v tématu [rychlý Start: použití MetaMask k připojení a nasazení inteligentní smlouvy.](connect-metamask.md)
 
@@ -44,7 +44,7 @@ Další informace najdete v tématu [rychlý Start: použití Geth k připojení
 Kvorum je protokol distribuované hlavní knihy založený na Ethereem s transakcí a ochranou osobních údajů smluv a novými mechanismy konsensu. Mezi Go-Ethereum jsou klíčové vylepšení:
 
 * **Soukromí** – kvorum podporuje privátní transakce a soukromé kontrakty prostřednictvím oddělení veřejných a soukromých stavů a využívá zašifrované zprávy typu peer-to-peer, které slouží k přímému přenosu privátních dat do účastníků sítě.
-* **Alternativní** požadavky na konsensu – ověření platnosti nebo ověření příložení není pro udělenou síť nutné. Kvorum nabízí více mechanismů konsensu, které jsou navrženy pro konsorcia, jako jsou například vory a IBFT.Služba Azure blockchain používá mechanismus IBFT konsensu.
+* **Alternativní** požadavky na konsensu – ověření platnosti nebo ověření příložení není pro udělenou síť nutné. Kvorum nabízí více mechanismů konsensu, které jsou navrženy pro konsorcia, jako jsou například vory a IBFT.  Služba Azure blockchain používá mechanismus IBFT konsensu.
 * Oprávnění **peer-to** -node a peer s oprávněními pomocí inteligentních kontraktů zajišťuje, že se k síti budou moci připojit pouze známí oprávnění.
 * **Vyšší výkon** – kvorum nabízí vyšší výkon než veřejný Geth.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88065450"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Postup při nasazení instance služby Azure API Management do několika oblastí Azure
@@ -60,7 +60,7 @@ Aby bylo možné plně využít geografickou distribuci vašeho systému, měli 
 
 1. Přejděte do instance Azure API Management a v nabídce vlevo klikněte na **rozhraní API** .
 2. Vyberte požadované rozhraní API.
-3. V rozevíracím seznamu šipky v **příchozím zpracování**klikněte na **Editor kódu** .
+3. V rozevíracím seznamu šipky v **příchozím zpracování** klikněte na **Editor kódu** .
 
     ![Editor kódu rozhraní API](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
 

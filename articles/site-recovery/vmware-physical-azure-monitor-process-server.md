@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86134731"
 ---
 # <a name="monitor-the-process-server"></a>Monitorování procesového serveru
@@ -76,12 +76,12 @@ Procesový Server vygeneruje množství upozornění na stav, shrnuté v násled
 
 Stav serverů procesů můžete monitorovat následujícím způsobem: 
 
-1. Pokud chcete monitorovat stav replikace a stav replikovaného počítače a jeho procesový Server, v trezoru > **replikované položky**klikněte na počítač, který chcete monitorovat.
-2. V části stav **replikace**můžete monitorovat stav virtuálního počítače. Kliknutím na stav přejdete k podrobnostem o podrobnostech o chybě.
+1. Pokud chcete monitorovat stav replikace a stav replikovaného počítače a jeho procesový Server, v trezoru > **replikované položky** klikněte na počítač, který chcete monitorovat.
+2. V části stav **replikace** můžete monitorovat stav virtuálního počítače. Kliknutím na stav přejdete k podrobnostem o podrobnostech o chybě.
 
     ![Stav procesového serveru na řídicím panelu virtuálních počítačů](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. V části stav **procesového**serveru můžete monitorovat stav procesového serveru. Podrobnosti najdete v podrobnostech.
+4. V části stav **procesového** serveru můžete monitorovat stav procesového serveru. Podrobnosti najdete v podrobnostech.
 
     ![Podrobnosti procesového serveru na řídicím panelu virtuálních počítačů](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
@@ -90,7 +90,7 @@ Stav serverů procesů můžete monitorovat následujícím způsobem:
     - Pokud je procesový Server spuštěný ve výchozím nasazení na konfiguračním serveru, pak bude konfigurační server zvýrazněný odpovídajícím způsobem.
     - Chcete-li přejít k podrobnostem, klikněte na konfigurační server nebo procesový Server. Poznamenejte si všechny problémy a veškerá doporučení k nápravě.
 
-Můžete také monitorovat procesní servery v trezoru v části **Site Recovery infrastruktura**. V oblasti **Správa infrastruktury Site Recovery**klikněte na **konfigurační servery**. Vyberte konfigurační server přidružený k procesu serveru a přejděte k podrobnostem o procesovém serveru.
+Můžete také monitorovat procesní servery v trezoru v části **Site Recovery infrastruktura**. V oblasti **Správa infrastruktury Site Recovery** klikněte na **konfigurační servery**. Vyberte konfigurační server přidružený k procesu serveru a přejděte k podrobnostem o procesovém serveru.
 
 
 ## <a name="next-steps"></a>Další kroky

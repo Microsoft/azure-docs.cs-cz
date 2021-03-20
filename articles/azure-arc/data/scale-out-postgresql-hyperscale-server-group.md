@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 17bdae658c7095c44a7ae9f30fd85a6c45bf1546
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96779970"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Horizontální navýšení kapacity PostgreSQL skupiny serverů s rozšířením Azure ARC přidáním dalších pracovních uzlů
@@ -33,7 +33,7 @@ Pokud už jste obeznámeni s modelem škálování s povoleným PostgreSQLm šk�
 
 > \* V dokumentech výše přeskočte oddíly, **které se přihlásí k Azure Portal**, & **Vytvoření Azure Database for PostgreSQL-Citus (škálování)**. Implementujte zbývající kroky v nasazení ARC Azure. Tyto části jsou specifické pro Azure Database for PostgreSQL Citus (PaaS), které nabízíme jako službu v cloudu Azure, ale ostatní části dokumentů jsou přímo použitelné pro PostgreSQL škálování na úrovni Azure ARC.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 Tento scénář odkazuje na PostgreSQL skupinu serverů s škálovatelným škálováním, která se vytvořila jako příklad v dokumentaci k [Vytvoření skupiny serverů PostgreSQL s podporou škálování na úrovni Azure ARC](create-postgresql-hyperscale-server-group.md) .
 
 ### <a name="load-test-data"></a>Načtení testovacích dat

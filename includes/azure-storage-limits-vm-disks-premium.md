@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
 ms.openlocfilehash: ef18feb10dabc6a77e6512c6a32ad44b32c6e832
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80334975"
 ---
 **Nespravované disky virtuálních počítačů úrovně Premium: omezení podle účtů**
@@ -19,7 +19,7 @@ ms.locfileid: "80334975"
 | Celková kapacita snímků na účet |10 TB |
 | Maximální šířka pásma na účet (příchozí přenos dat a odchozí přenos dat)<sup>1</sup> |<=50 Gbp/s |
 
-<sup>1</sup>příchozí přenos*dat odkazuje na* všechna data z požadavků, které se odesílají do účtu úložiště. *Výstupní* služba odkazuje na všechna data z odpovědí, které jsou přijímány z účtu úložiště.
+<sup>1</sup>příchozí přenos *dat odkazuje na* všechna data z požadavků, které se odesílají do účtu úložiště. *Výstupní* služba odkazuje na všechna data z odpovědí, které jsou přijímány z účtu úložiště.
 
 **Nespravované disky virtuálních počítačů úrovně Premium: omezení na disk**
 

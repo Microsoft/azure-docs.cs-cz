@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 564c7cf6e9627db08d543b964ce476e71bfb473d
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93040741"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Parametrizace mapování toků dat
@@ -28,7 +28,7 @@ Využijte tuto možnost k tomu, aby vaše datové toky byly pro obecné účely,
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Vytváření parametrů v toku dat mapování
 
-Pokud chcete do toku dat přidat parametry, klikněte na prázdnou část plátna toku dat a zobrazte obecné vlastnosti. V podokně nastavení se zobrazí karta s názvem **parametr** . Vyberte **Nový** a vygenerujte nový parametr. Pro každý parametr musíte přiřadit název, vybrat typ a volitelně nastavit výchozí hodnotu.
+Pokud chcete do toku dat přidat parametry, klikněte na prázdnou část plátna toku dat a zobrazte obecné vlastnosti. V podokně nastavení se zobrazí karta s názvem **parametr**. Vyberte **Nový** a vygenerujte nový parametr. Pro každý parametr musíte přiřadit název, vybrat typ a volitelně nastavit výchozí hodnotu.
 
 ![Vytvoření parametrů toku dat](media/data-flow/create-params.png "Vytvoření parametrů toku dat")
 
@@ -52,7 +52,7 @@ Při přiřazování hodnot parametrů můžete použít jazyk [výrazu kanálu]
 
 ### <a name="pipeline-expression-parameters"></a>Parametry výrazu kanálu
 
-Parametry výrazu kanálu umožňují odkazovat systémové proměnné, funkce, parametry kanálu a proměnné podobně jako jiné aktivity kanálu. Když kliknete na **kanál – výraz** , otevře se vedlejší navigace, která vám umožní zadat výraz pomocí Tvůrce výrazů.
+Parametry výrazu kanálu umožňují odkazovat systémové proměnné, funkce, parametry kanálu a proměnné podobně jako jiné aktivity kanálu. Když kliknete na **kanál – výraz**, otevře se vedlejší navigace, která vám umožní zadat výraz pomocí Tvůrce výrazů.
 
 ![Snímek obrazovky se zobrazí v podokně Tvůrce výrazů.](media/data-flow/parameter-pipeline.png "Nastavení parametru toku dat")
 

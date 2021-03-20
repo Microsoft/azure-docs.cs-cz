@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
 ms.openlocfilehash: 647ac363dd81604f0a5a1d750d98a3349beb19c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98931718"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití sdílených přístupových podpisů Azure Blob Storage k omezení přístupu k datům v HDInsight
@@ -22,7 +22,7 @@ Služba HDInsight má úplný přístup k datům v účtech služby Azure Blob S
 > [!WARNING]  
 > HDInsight musí mít úplný přístup k výchozímu úložišti pro cluster.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Klient SSH. Další informace najdete v tématu [Připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 

@@ -10,10 +10,10 @@ ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
 ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86185836"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Šifrování zabezpečených prostředků ve službě Azure Automation
@@ -94,7 +94,7 @@ Identita přiřazená systémem pro účet Automation se vrátí v odpovědi pod
 
 ### <a name="configuration-of-the-key-vault-access-policy"></a>Konfigurace zásad přístupu Key Vault
 
-Jakmile se ke účtu Automation přiřadí spravovaná identita, nakonfigurujete přístup k trezoru klíčů, který ukládá klíče spravované zákazníkem. Azure Automation pro klíče spravované zákazníkem vyžaduje **Get**, **Recovery**, **wrapKey**a **UnwrapKey** .
+Jakmile se ke účtu Automation přiřadí spravovaná identita, nakonfigurujete přístup k trezoru klíčů, který ukládá klíče spravované zákazníkem. Azure Automation pro klíče spravované zákazníkem vyžaduje **Get**, **Recovery**, **wrapKey** a **UnwrapKey** .
 
 Tyto zásady přístupu se dají nastavit pomocí následujícího REST API volání:
 

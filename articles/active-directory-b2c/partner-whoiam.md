@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: d1b2c7513562e951e1098cf327780387ddf6a495
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953538"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci WhoIAM s využitím Azure Active Directory B2C
@@ -24,7 +24,7 @@ V tomto ukázkovém kurzu poskytujeme pokyny k tomu, jak ve svém prostředí na
 
 BRIMS je sada aplikací a služeb, které jsou nasazené ve vašem prostředí. Poskytuje hlasová, SMS a ověřování e-mailů vaší uživatelské základny. BRIMS funguje ve spojení s vaším stávajícím řešením pro správu identit a přístupu a je nezávislá platformy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Diagram architektury Azure AD B2C integrace s WhoIAM](media/partner-whoiam/whoiam-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na stránku a spustí žádost o registraci nebo přihlášení do aplikace, která jako poskytovatele identity používá Azure AD B2C.
 | 2. | V rámci ověřování si uživatel vyžádá buď, aby ověřil vlastnictví e-mailu nebo telefonu, nebo použil svůj hlas jako faktor biometrického ověřování.  

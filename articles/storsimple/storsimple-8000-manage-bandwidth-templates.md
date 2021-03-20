@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 56170ffbbfe14248bcfd1f94549a3565873f8646
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005890"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>Správa šablon šířky pásma StorSimple pomocí služby StorSimple Device Manager
+# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>Správa šablon šířky pásma StorSimple pomocí služby StorSimple Správce zařízení
 
 ## <a name="overview"></a>Přehled
 
@@ -55,7 +55,7 @@ Chcete-li vytvořit novou šablonu šířky pásma, proveďte následující kro
 
 #### <a name="to-add-a-bandwidth-template"></a>Přidání šablony šířky pásma
 
-1. Přejděte ke službě StorSimple Device Manager, klikněte na **šablony šířky pásma** a potom klikněte na **+ Přidat šablonu šířky pásma**.
+1. Přejděte ke službě StorSimple Správce zařízení, klikněte na **šablony šířky pásma** a potom klikněte na **+ Přidat šablonu šířky pásma**.
 
     ![Klikněte na + Přidat šablonu šířky pásma.](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
 
@@ -88,7 +88,7 @@ Chcete-li upravit šablonu šířky pásma, proveďte následující kroky.
 
 ### <a name="to-edit-a-bandwidth-template"></a>Úprava šablony šířky pásma
 
-1. Přejděte do služby StorSimple Device Manager a klikněte na **šablony šířky pásma**.
+1. Přejděte do služby StorSimple Správce zařízení a klikněte na **šablony šířky pásma**.
 2. V seznamu šablon šířky pásma vyberte šablonu, kterou chcete odstranit. Klikněte pravým tlačítkem myši a v místní nabídce vyberte **Odstranit**.
 3. Po zobrazení výzvy k potvrzení klikněte na tlačítko **OK**. Tato šablona by měla odstranit šablonu šířky pásma. 
 4. Seznam šablon šířky pásma se aktualizuje tak, aby odrážel odstranění.
@@ -102,7 +102,7 @@ K odstranění šablony šířky pásma proveďte následující kroky.
 
 #### <a name="to-delete-a-bandwidth-template"></a>Odstranění šablony šířky pásma
 
-1. Přejděte do služby StorSimple Device Manager a klikněte na **šablony šířky pásma**.
+1. Přejděte do služby StorSimple Správce zařízení a klikněte na **šablony šířky pásma**.
 2. V seznamu šablon šířky pásma vyberte šablonu, kterou chcete odstranit. Klikněte pravým tlačítkem myši a v místní nabídce vyberte Odstranit.
 3. Po zobrazení výzvy k potvrzení klikněte na tlačítko **OK**. Tato šablona by měla odstranit šablonu šířky pásma.
 4. Seznam šablon šířky pásma se aktualizuje tak, aby odrážel odstranění.
@@ -171,5 +171,5 @@ Použijte tyto osvědčené postupy pro zařízení StorSimple:
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+Přečtěte si další informace o [používání služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

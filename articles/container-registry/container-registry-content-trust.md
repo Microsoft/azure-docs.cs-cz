@@ -4,10 +4,10 @@ description: Naučte se, jak povolit důvěryhodnost obsahu pro službu Azure Co
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148571"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Důvěryhodnost obsahu ve službě Azure Container Registry
@@ -38,7 +38,7 @@ Důvěryhodnost obsahu se spravuje prostřednictvím používání sady kryptogr
 
 Prvním krokem je povolení důvěryhodnosti obsahu na úrovni registru. Jakmile povolíte důvěryhodnost obsahu, klienti (uživatelé nebo služby) budou do vašeho registru moct odesílat podepsané image. Po povolení důvěryhodnosti obsahu v registru nedojde k omezení možnosti využívat registr pouze na zákazníky s povolenou důvěryhodností obsahu. Příjemci bez povolené důvěryhodnosti obsahu můžou váš registr normálně využívat i nadále. Příjemcům, kteří ve svých klientech povolili důvěryhodnost obsahu, se však zobrazí *pouze* podepsané image ve vašem registru.
 
-Pokud chcete pro svůj registr povolit důvěryhodnost obsahu, nejprve přejděte do tohoto registru na webu Azure Portal. V části **zásady**vyberte možnost Uložit povolený **vztah důvěryhodnosti obsahu**  >  **Enabled**  >  **Save**. V Azure CLI taky můžete použít příkaz [AZ ACR config Content-Trust Update][az-acr-config-content-trust-update] .
+Pokud chcete pro svůj registr povolit důvěryhodnost obsahu, nejprve přejděte do tohoto registru na webu Azure Portal. V části **zásady** vyberte možnost Uložit povolený **vztah důvěryhodnosti obsahu**  >    >  . V Azure CLI taky můžete použít příkaz [AZ ACR config Content-Trust Update][az-acr-config-content-trust-update] .
 
 ![Snímek obrazovky ukazuje povolení vztahu důvěryhodnosti obsahu pro registr v Azure Portal.][content-trust-01-portal]
 
@@ -80,7 +80,7 @@ Následují podrobnosti o udělení role `AcrImageSigner` na webu Azure Portal a
 
 ### <a name="azure-portal"></a>portál Azure
 
-Přejděte do registru v Azure Portal a pak vyberte **řízení přístupu (IAM)**  >  **Přidat přiřazení role**. V části **Přidat přiřazení role**vyberte `AcrImageSigner` v části **role**, **Vyberte** jednoho nebo více uživatelů nebo instančních objektů a pak klikněte na **Uložit**.
+Přejděte do registru v Azure Portal a pak vyberte **řízení přístupu (IAM)**  >  **Přidat přiřazení role**. V části **Přidat přiřazení role** vyberte `AcrImageSigner` v části **role**, **Vyberte** jednoho nebo více uživatelů nebo instančních objektů a pak klikněte na **Uložit**.
 
 V tomto příkladu byla roli přiřazena dvě entity `AcrImageSigner` : instanční objekt s názvem "instanční objekt" a uživatel s názvem "uživatel Azure".
 
@@ -195,7 +195,7 @@ Pokud ztratíte přístup ke svému kořenovému klíči, ztratíte tím příst
 > [!WARNING]
 > Zakázáním a opětovným povolením důvěryhodnosti obsahu v registru se **odstraní veškerá data důvěryhodnosti pro všechny podepsané značky ve všech úložištích ve vašem registru**. Tato akce je nevratná – Azure Container Registry nemůže odstraněná data důvěryhodnosti obnovit. Samotné image se zákazem důvěryhodnosti obsahu neodstraní.
 
-Pokud chcete pro svůj registr zakázat důvěryhodnost obsahu, přejděte do tohoto registru na webu Azure Portal. V části **zásady**vyberte možnost **důvěryhodnost obsahu**  >  **zakázáno**  >  **Uložit**. Zobrazí se upozornění na ztrátu všech podpisů v registru. Výběrem **OK** trvale odstraníte všechny podpisy ve vašem registru.
+Pokud chcete pro svůj registr zakázat důvěryhodnost obsahu, přejděte do tohoto registru na webu Azure Portal. V části **zásady** vyberte možnost **důvěryhodnost obsahu**  >  **zakázáno**  >  **Uložit**. Zobrazí se upozornění na ztrátu všech podpisů v registru. Výběrem **OK** trvale odstraníte všechny podpisy ve vašem registru.
 
 ![Zakázání důvěryhodnosti obsahu pro registr na webu Azure Portal][content-trust-03-portal]
 
