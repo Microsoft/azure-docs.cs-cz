@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792595"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Jak používat dávkování ke zlepšování Azure SQL Database a výkonu aplikací spravované instance Azure SQL
@@ -42,7 +42,7 @@ První část tohoto článku prověřuje různé techniky dávkování pro apli
 ### <a name="note-about-timing-results-in-this-article"></a>Poznámka o výsledcích časování v tomto článku
 
 > [!NOTE]
-> Výsledky nejsou srovnávacími testy, ale mají za následek zobrazení **relativního výkonu** . Časování jsou založena na průměru alespoň 10 testovacích běhů. Operace jsou vloženy do prázdné tabulky. Tyto testy byly měřeny před V12 a nemusí nutně odpovídat propustnosti, ke které může dojít v databázi V12 pomocí nových [úrovní služeb DTU](database/service-tiers-dtu.md) nebo [úrovní služeb Vcore](database/service-tiers-vcore.md). Relativní výhoda techniky dávkování by měla být podobná.
+> Výsledky nejsou srovnávacími testy, ale mají za následek zobrazení **relativního výkonu**. Časování jsou založena na průměru alespoň 10 testovacích běhů. Operace jsou vloženy do prázdné tabulky. Tyto testy byly měřeny před V12 a nemusí nutně odpovídat propustnosti, ke které může dojít v databázi V12 pomocí nových [úrovní služeb DTU](database/service-tiers-dtu.md) nebo [úrovní služeb Vcore](database/service-tiers-vcore.md). Relativní výhoda techniky dávkování by měla být podobná.
 
 ### <a name="transactions"></a>Transakce
 
@@ -97,7 +97,7 @@ Transakce jsou ve skutečnosti používány v obou těchto příkladech. V prvn�
 
 Následující tabulka uvádí některé výsledky ad hoc testování. Testy prováděly stejné sekvenční vložení s transakcemi a bez nich. Pro další perspektivu se první sada testů vzdáleně spustila z přenosného počítače do databáze v Microsoft Azure. Druhá sada testů běžela z cloudové služby a databáze, která se nachází v rámci stejného Microsoft Azure datacentra (Západní USA). Následující tabulka ukazuje dobu v milisekundách sekvenčních vkládání s transakcemi a bez nich.
 
-**Z místního prostředí do Azure** :
+**Z místního prostředí do Azure**:
 
 | Operace | Bez transakce (MS) | Transakce (MS) |
 | --- | --- | --- |
@@ -106,7 +106,7 @@ Následující tabulka uvádí některé výsledky ad hoc testování. Testy pro
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-Z **Azure do Azure (stejné datacentrum)** :
+Z **Azure do Azure (stejné datacentrum)**:
 
 | Operace | Bez transakce (MS) | Transakce (MS) |
 | --- | --- | --- |
@@ -128,7 +128,7 @@ Další informace o transakcích v ADO.NET naleznete v tématu [místní transak
 
 ### <a name="table-valued-parameters"></a>Parametry vracející tabulku
 
-Parametry s hodnotou tabulky podporují uživatelsky definované typy tabulek jako parametry v příkazech jazyka Transact-SQL, uložených procedurách a funkcích. Tato metoda dávkování na straně klienta umožňuje odeslat více řádků dat v rámci parametru s hodnotou tabulky. Chcete-li použít parametry s hodnotou tabulky, nejprve Definujte typ tabulky. Následující příkaz Transact-SQL vytvoří typ tabulky s názvem **MyTableType** .
+Parametry s hodnotou tabulky podporují uživatelsky definované typy tabulek jako parametry v příkazech jazyka Transact-SQL, uložených procedurách a funkcích. Tato metoda dávkování na straně klienta umožňuje odeslat více řádků dat v rámci parametru s hodnotou tabulky. Chcete-li použít parametry s hodnotou tabulky, nejprve Definujte typ tabulky. Následující příkaz Transact-SQL vytvoří typ tabulky s názvem **MyTableType**.
 
 ```sql
     CREATE TYPE MyTableType AS TABLE
@@ -169,7 +169,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-V předchozím příkladu objekt **SqlCommand** vloží řádky z parametru s hodnotou tabulky **\@ TestTvp** . Dříve vytvořený objekt **DataTable** je přiřazen tomuto parametru pomocí metody **SqlCommand. Parameters. Add** . Dávkování vkládání v jednom volání významně zvyšuje výkon při sekvenčních vkládáních.
+V předchozím příkladu objekt **SqlCommand** vloží řádky z parametru s hodnotou tabulky **\@ TestTvp**. Dříve vytvořený objekt **DataTable** je přiřazen tomuto parametru pomocí metody **SqlCommand. Parameters. Add** . Dávkování vkládání v jednom volání významně zvyšuje výkon při sekvenčních vkládáních.
 
 Pro zlepšení předchozího příkladu použijte namísto textového příkazu uloženou proceduru. Následující příkaz Transact-SQL vytvoří uloženou proceduru, která převezme parametr s hodnotou tabulky **SimpleTestTableType** .
 
@@ -212,7 +212,7 @@ Další informace o parametrech s hodnotou tabulky najdete v tématu [parametry 
 
 ### <a name="sql-bulk-copy"></a>Hromadné kopírování SQL
 
-Hromadné kopírování SQL je dalším způsobem, jak vložit velké objemy dat do cílové databáze. Aplikace .NET můžou k provádění hromadných operací vložení použít třídu **SqlBulkCopy** . **SqlBulkCopy** je obdobou funkcí nástroje příkazového řádku, **Bcp.exe** nebo příkazu jazyka Transact-SQL **Bulk INSERT** . Následující příklad kódu ukazuje, jak hromadně zkopírovat řádky ve zdrojovém **objektu DataTable** , tabulce, do cílové tabulky myTable.
+Hromadné kopírování SQL je dalším způsobem, jak vložit velké objemy dat do cílové databáze. Aplikace .NET můžou k provádění hromadných operací vložení použít třídu **SqlBulkCopy** . **SqlBulkCopy** je obdobou funkcí nástroje příkazového řádku, **Bcp.exe** nebo příkazu jazyka Transact-SQL **Bulk INSERT**. Následující příklad kódu ukazuje, jak hromadně zkopírovat řádky ve zdrojovém **objektu DataTable**, tabulce, do cílové tabulky myTable.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -321,7 +321,7 @@ Z důvodu těchto kompromisů vyhodnoťte typ operací, které jste dávkují. D
 
 V našich testech neexistovala obvykle žádná výhoda pro rozdělení velkých dávek do menších bloků dat. Ve skutečnosti toto rozdělení často vedlo k nižšímu výkonu než odeslání jedné velké dávky. Představte si třeba situaci, kdy chcete vložit 1000 řádků. Následující tabulka ukazuje, jak dlouho trvá použití parametrů s hodnotou tabulky k vložení 1000 řádků při rozdělení do menších dávek.
 
-| Velikost dávky | Iterací | Parametry s hodnotou tabulky (MS) |
+| Velikost dávky | Iterace | Parametry s hodnotou tabulky (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |

@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
 ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103777"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí Azure Active Directory
@@ -37,7 +37,7 @@ Tento článek pojednává o tom, jak vytvořit **nativní aplikaci Azure AD pro
 
     ![Získat ID předplatného](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Název domény služby Azure AD. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. Na snímku obrazovky níže je název domény **contoso.onmicrosoft.com**a identifikátor GUID v závorkách je ID tenanta.
+* Název domény služby Azure AD. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. Na snímku obrazovky níže je název domény **contoso.onmicrosoft.com** a identifikátor GUID v závorkách je ID tenanta.
 
     ![Získat doménu AAD](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
@@ -82,7 +82,7 @@ Viz [získání ID aplikace](../active-directory/develop/howto-create-service-pr
 
 Pro načtení identifikátoru URI přesměrování proveďte následující kroky.
 
-1. V Azure Portal vyberte **Azure Active Directory**, klikněte na **Registrace aplikací**a pak vyhledejte a klikněte na nativní aplikaci Azure AD, kterou jste vytvořili.
+1. V Azure Portal vyberte **Azure Active Directory**, klikněte na **Registrace aplikací** a pak vyhledejte a klikněte na nativní aplikaci Azure AD, kterou jste vytvořili.
 
 2. V okně **Nastavení** aplikace klikněte na možnost **přesměrovat identifikátory URI**.
 
@@ -93,17 +93,17 @@ Pro načtení identifikátoru URI přesměrování proveďte následující krok
 
 ## <a name="step-3-set-permissions"></a>Krok 3: nastavení oprávnění
 
-1. V Azure Portal vyberte **Azure Active Directory**, klikněte na **Registrace aplikací**a pak vyhledejte a klikněte na nativní aplikaci Azure AD, kterou jste vytvořili.
+1. V Azure Portal vyberte **Azure Active Directory**, klikněte na **Registrace aplikací** a pak vyhledejte a klikněte na nativní aplikaci Azure AD, kterou jste vytvořili.
 
-2. V okně **Nastavení** aplikace klikněte na **požadovaná oprávnění**a pak klikněte na **Přidat**.
+2. V okně **Nastavení** aplikace klikněte na **požadovaná oprávnění** a pak klikněte na **Přidat**.
 
     ![Snímek obrazovky okna nastavení s parametrem redirect U R I s názvem a přesměrování U R I v okně s skutečným U R, které jsem vyvolal](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
-3. V okně **Přidat přístup přes rozhraní API** klikněte na **Vybrat rozhraní API**, klikněte na **Azure Data Lake**a pak klikněte na **Vybrat**.
+3. V okně **Přidat přístup přes rozhraní API** klikněte na **Vybrat rozhraní API**, klikněte na **Azure Data Lake** a pak klikněte na **Vybrat**.
 
     ![Snímek obrazovky okna přidat přístup přes rozhraní API pomocí možnosti vyberte rozhraní API, které se vyvolaly, a vyberte okno vybrat rozhraní API s možností Azure Data Lake a možnost vybrat s názvem.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
-4.  V okně **Přidat přístup přes rozhraní API** klikněte na **vybrat oprávnění**. Zaškrtnutím políčka udělíte **úplný přístup k Data Lake Store**a potom klikněte na **Vybrat**.
+4.  V okně **Přidat přístup přes rozhraní API** klikněte na **vybrat oprávnění**. Zaškrtnutím políčka udělíte **úplný přístup k Data Lake Store** a potom klikněte na **Vybrat**.
 
     ![Snímek obrazovky okna přidat přístup přes rozhraní API s možností vybrat oprávnění a v okně Povolit přístup s úplným přístupem k možnosti služby Azure Data Lake a s možností vybrat s názvem.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 

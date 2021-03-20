@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793343"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Distribuované transakce v cloudových databázích (Preview)
@@ -30,7 +30,7 @@ V tomto dokumentu se termínem "distribuované transakce" a "transakce elastick�
 
   ![Distribuované transakce s Azure SQL Database s využitím transakcí elastické databáze ][1]
 
-## <a name="common-scenarios"></a>Typické scénáře
+## <a name="common-scenarios"></a>Obvyklé scénáře
 
 Transakce elastické databáze umožňují aplikacím provádět atomické změny dat uložených v několika různých databázích. Verze Preview se zaměřuje na prostředí vývoje na straně klienta v jazycích C# a .NET. Prostředí na straně serveru (kód napsaný v uložených procedurách nebo skriptech na straně serveru) pomocí [jazyka Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) je k dispozici pouze pro spravovanou instanci.
 > [!IMPORTANT]
@@ -238,9 +238,9 @@ Transakce elastické databáze jsou podporovány napříč různými servery v A
 
 Pomocí následujících rutin PowerShellu můžete spravovat vztahy komunikace mezi servery pro transakce elastické databáze:
 
-* **New-AzSqlServerCommunicationLink** : pomocí této rutiny můžete vytvořit nový vztah komunikace mezi dvěma servery v Azure SQL Database. Vztah je symetrický, což znamená, že oba servery mohou iniciovat transakce s jiným serverem.
-* **Get-AzSqlServerCommunicationLink** : tuto rutinu použijte k načtení existujících komunikačních vztahů a jejich vlastností.
-* **Remove-AzSqlServerCommunicationLink** : pomocí této rutiny můžete odebrat existující komunikační vztah.
+* **New-AzSqlServerCommunicationLink**: pomocí této rutiny můžete vytvořit nový vztah komunikace mezi dvěma servery v Azure SQL Database. Vztah je symetrický, což znamená, že oba servery mohou iniciovat transakce s jiným serverem.
+* **Get-AzSqlServerCommunicationLink**: tuto rutinu použijte k načtení existujících komunikačních vztahů a jejich vlastností.
+* **Remove-AzSqlServerCommunicationLink**: pomocí této rutiny můžete odebrat existující komunikační vztah.
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Transakce napříč několika servery pro spravovanou instanci Azure SQL
 
@@ -258,9 +258,9 @@ Pomocí zobrazení dynamické správy (zobrazení dynamické správy) můžete m
 
 Tyto zobrazení dynamické správy jsou zvláště užitečné:
 
-* **Sys.DM \_ Tran \_ Active \_ Transactions** : vypíše aktuálně aktivní transakce a jejich stav. Sloupec UOW (jednotka práce) může identifikovat různé podřízené transakce, které patří do stejné distribuované transakce. Všechny transakce v rámci stejné distribuované transakce mají stejnou hodnotu UOW. Další informace najdete v [dokumentaci k DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql).
-* **\_ \_ \_ transakce sys.DM Tran Database** : poskytuje další informace o transakcích, jako je umístění transakce v protokolu. Další informace najdete v [dokumentaci k DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql).
-* **Sys.DM \_ Tran \_ zámky** : poskytuje informace o zámkech, které jsou aktuálně uchovávány v probíhajících transakcích. Další informace najdete v [dokumentaci k DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
+* **Sys.DM \_ Tran \_ Active \_ Transactions**: vypíše aktuálně aktivní transakce a jejich stav. Sloupec UOW (jednotka práce) může identifikovat různé podřízené transakce, které patří do stejné distribuované transakce. Všechny transakce v rámci stejné distribuované transakce mají stejnou hodnotu UOW. Další informace najdete v [dokumentaci k DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql).
+* **\_ \_ \_ transakce sys.DM Tran Database**: poskytuje další informace o transakcích, jako je umístění transakce v protokolu. Další informace najdete v [dokumentaci k DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql).
+* **Sys.DM \_ Tran \_ zámky**: poskytuje informace o zámkech, které jsou aktuálně uchovávány v probíhajících transakcích. Další informace najdete v [dokumentaci k DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
 
 ## <a name="limitations"></a>Omezení
 

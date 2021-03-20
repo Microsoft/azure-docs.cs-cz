@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.openlocfilehash: 8acb3c31a41521eace46e065c06f04e69d97a2e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037213"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Odesílat vlastní metriky pro prostředek Azure do úložiště metrik Azure Monitor pomocí REST API
@@ -86,7 +86,7 @@ Uložte přístupový token z odpovědi.
 1. Změna časového razítka a hodnot v souboru JSON. 
 1. Předchozí dva kroky zopakujte několikrát, takže budete mít data několik minut.
 
-## <a name="troubleshooting"></a>Řešení potíží 
+## <a name="troubleshooting"></a>Poradce při potížích 
 Pokud se vám v některé části procesu zobrazí chybová zpráva, vezměte v úvahu následující informace pro řešení potíží:
 
 1. Nemůžete vystavovat metriky pro předplatné nebo skupinu prostředků jako prostředek Azure. 
@@ -98,7 +98,7 @@ Pokud se vám v některé části procesu zobrazí chybová zpráva, vezměte v 
 
 ## <a name="view-your-metrics"></a>Zobrazit vaše metriky 
 
-1. Přihlaste se k portálu Azure. 
+1. Přihlaste se k webu Azure Portal. 
 
 1. V nabídce na levé straně vyberte **monitor**. 
 

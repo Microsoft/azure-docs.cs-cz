@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123316"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Použití pracovních postupů k integraci aplikace IoT Central Azure s dalšími Cloud Services
@@ -27,7 +27,7 @@ Konektor Azure IoT Central v3 pro automatické automatizace a Azure Logic Apps u
 
 ## <a name="prerequisites"></a>Předpoklady
 
-K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Nastavení řešení vyžaduje verzi 3 IoT Central aplikaci. Informace o tom, jak zjistit verzi vaší aplikace, najdete v tématu [o vaší aplikaci](./howto-get-app-info.md). Informace o tom, jak vytvořit aplikaci IoT Central, najdete v tématu [Vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md).
 
@@ -40,16 +40,16 @@ Než budete moci aktivovat pracovní postup v Power Automate nebo Azure Logic Ap
 
 Postup přidání konektoru **Azure IoT Central V3-Preview** jako triggeru v Power Automate:
 
-1. V Power automatu vyberte **+ vytvořit**a vyberte **vlastní** karta.
-1. Vyhledejte *IoT Central*a vyberte konektor **Azure IoT Central V3-Preview** .
+1. V Power automatu vyberte **+ vytvořit** a vyberte **vlastní** karta.
+1. Vyhledejte *IoT Central* a vyberte konektor **Azure IoT Central V3-Preview** .
 1. V seznamu triggerů vyberte, **kdy se má pravidlo aktivovat (Preview)**.
 1. V kroku **při vyvolání pravidla** vyberte svou aplikaci IoT Central a pravidlo, které používáte.
 
 Přidání konektoru **Azure IoT Central V3-Preview** jako triggeru v Azure Logic Apps:
 
-1. V **návrháři Logic Apps**vyberte šablonu **prázdná aplikace logiky** .
+1. V **návrháři Logic Apps** vyberte šablonu **prázdná aplikace logiky** .
 1. V návrháři vyberte **vlastní** kartu.
-1. Vyhledejte *IoT Central*a vyberte konektor **Azure IoT Central V3-Preview** .
+1. Vyhledejte *IoT Central* a vyberte konektor **Azure IoT Central V3-Preview** .
 1. V seznamu triggerů vyberte, **kdy se má pravidlo aktivovat (Preview)**.
 1. V kroku **při vyvolání pravidla** vyberte svou aplikaci IoT Central a pravidlo, které používáte.
 
@@ -70,12 +70,12 @@ Postup přidání konektoru služby **Azure IoT Central V3-Preview** jako akce v
 
 Postup přidání konektoru služby **Azure IoT Central V3-Preview** jako akce v Azure Logic Apps:
 
-1. V **návrháři Logic Apps**v panelu **Zvolte akci** vyberte **vlastní** kartu.
-1. Vyhledejte *IoT Central*a vyberte konektor **Azure IoT Central V3-Preview** .
+1. V **návrháři Logic Apps** v panelu **Zvolte akci** vyberte **vlastní** kartu.
+1. Vyhledejte *IoT Central* a vyberte konektor **Azure IoT Central V3-Preview** .
 1. V seznamu akcí vyberte akci IoT Central, kterou chcete použít.
 1. V kroku akce dokončete konfiguraci pro akci, kterou jste zvolili. Pak vyberte **Uložit**.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Najděte konektor Azure IoT Central-Preview a vyberte Trigger.":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Najděte konektor Azure IoT Central v3 a vyberte akci.":::
 
 ## <a name="list-of-actions"></a>Seznam akcí
 
@@ -85,7 +85,7 @@ Následující seznam obsahuje všechny dostupné IoT Central akce v konektoru *
 
 Pomocí této akce můžete v aplikaci IoT Central vytvořit nebo aktualizovat zařízení.
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Aplikace | Vyberte si ze seznamu IoT Central aplikací. |
 | Zařízení | Jedinečné ID zařízení, které se má vytvořit nebo aktualizovat |
@@ -99,7 +99,7 @@ Pomocí této akce můžete v aplikaci IoT Central vytvořit nebo aktualizovat z
 
 Pomocí této akce můžete z aplikace IoT Central odstranit zařízení.
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Aplikace | Vyberte si ze seznamu IoT Central aplikací. |
 | Zařízení | Jedinečné ID zařízení, které se má odstranit |
@@ -108,7 +108,7 @@ Pomocí této akce můžete z aplikace IoT Central odstranit zařízení.
 
 Tuto akci použijte ke spuštění příkazu definovaného v jednom z rozhraní zařízení.
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Aplikace | Vyberte si ze seznamu IoT Central aplikací. |
 | Zařízení | Jedinečné ID zařízení, které se má odstranit |
@@ -124,18 +124,18 @@ Tuto akci použijte ke spuštění příkazu definovaného v jednom z rozhraní 
 
 Pomocí této akce načtete podrobnosti o zařízení.
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Aplikace | Vyberte si ze seznamu IoT Central aplikací. |
 | Zařízení | Jedinečné ID zařízení, které se má odstranit |
 
-Můžete použít vrácené podrobnosti v dynamických výrazech v jiných akcích. Mezi vracené podrobnosti o zařízení patří: **schváleno**, **text**, **Popis zařízení**, **název zařízení**, **Šablona zařízení**, **zřízené**a **simulované**.
+Můžete použít vrácené podrobnosti v dynamických výrazech v jiných akcích. Mezi vracené podrobnosti o zařízení patří: **schváleno**, **text**, **Popis zařízení**, **název zařízení**, **Šablona zařízení**, **zřízené** a **simulované**.
 
 ### <a name="get-device-cloud-properties"></a>Získat vlastnosti cloudu zařízení
 
 Tuto akci použijte, pokud chcete načíst hodnoty vlastností cloudu pro konkrétní zařízení.
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Aplikace | Vyberte si ze seznamu IoT Central aplikací. |
 | Zařízení | Jedinečné ID zařízení, které se má odstranit |
@@ -147,7 +147,7 @@ V jiných akcích můžete použít vrácené hodnoty vlastností cloudu v dynam
 
 Tuto akci použijte, pokud chcete načíst hodnoty vlastností pro konkrétní zařízení.
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Aplikace | Vyberte si ze seznamu IoT Central aplikací. |
 | Zařízení | Jedinečné ID zařízení, které se má odstranit |
@@ -159,7 +159,7 @@ Můžete použít hodnoty vrácených vlastností v dynamických výrazech v jin
 
 Tuto akci použijte, pokud chcete načíst hodnoty telemetrie pro konkrétní zařízení.
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Aplikace | Vyberte si ze seznamu IoT Central aplikací. |
 | Zařízení | Jedinečné ID zařízení, které se má odstranit |
@@ -171,7 +171,7 @@ Můžete použít vrácené hodnoty telemetrie v dynamických výrazech v jinýc
 
 Tuto akci použijte, pokud chcete aktualizovat hodnoty vlastností cloudu pro konkrétní zařízení.
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Aplikace | Vyberte si ze seznamu IoT Central aplikací. |
 | Zařízení | Jedinečné ID zařízení, které se má odstranit |
@@ -182,7 +182,7 @@ Tuto akci použijte, pokud chcete aktualizovat hodnoty vlastností cloudu pro ko
 
 Tuto akci použijte k aktualizaci hodnot zapisovatelných vlastností pro konkrétní zařízení.
 
-| Pole | Popis |
+| Pole | Description |
 | ----- | ----------- |
 | Aplikace | Vyberte si ze seznamu IoT Central aplikací. |
 | Zařízení | Jedinečné ID zařízení, které se má odstranit |

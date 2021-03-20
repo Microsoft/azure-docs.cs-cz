@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89594182"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Integrace REST APIch výměn deklarací identity do vlastních zásad Azure AD B2C
@@ -68,10 +68,10 @@ V [technickém profilu RESTful](restful-technical-profile.md) `InputClaims` elem
 
 Můžete nakonfigurovat, jak se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful pomocí atributu SendClaimsIn. Možné hodnoty jsou:
 
-- **Tělo**odeslané v těle požadavku HTTP POST ve formátu JSON.
-- **Formulář**odeslaný v těle požadavku HTTP POST ve formátu hodnoty "&" oddělených klíčů.
+- **Tělo** odeslané v těle požadavku HTTP POST ve formátu JSON.
+- **Formulář** odeslaný v těle požadavku HTTP POST ve formátu hodnoty "&" oddělených klíčů.
 - **Hlavička**, která se odešle v HLAVIČCE požadavku HTTP GET.
-- Dotaz **QueryString**odeslaný v řetězci dotazu požadavku HTTP GET.
+- Dotaz **QueryString** odeslaný v řetězci dotazu požadavku HTTP GET.
 
 Když je nakonfigurovaná možnost **tělo** , REST API Technical profil vám umožní poslat do koncového bodu složitou datovou část JSON. Další informace najdete v tématu [Odeslání datové části JSON](restful-technical-profile.md#send-a-json-payload).
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 9d0197a16c8074ce961c2b403724149929f566f7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890713"
 ---
 # <a name="show-directions-from-a-to-b"></a>Zobrazení pokynů pro trasu z A do B
@@ -24,7 +24,7 @@ Existují dva způsoby, jak to provést. Prvním způsobem je dotazování [rozh
 
 ## <a name="query-the-route-via-service-module"></a>Dotazování trasy prostřednictvím modulu služby
 
-<iframe height='500' scrolling='no' title='Zobrazit pokyny od A do B na mapě (modul služby)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Informace o tom, jak na CodePen () na, najdete na stránce s <a href='https://codepen.io/azuremaps/pen/RBZbep/'>pokyny od a do B na mapě (Service Module Azure Maps)</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Zobrazit pokyny od A do B na mapě (modul služby)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Informace o tom, jak na CodePen () na, najdete na stránce s <a href='https://codepen.io/azuremaps/pen/RBZbep/'>pokyny od a do B na mapě (Service Module Azure Maps)</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 Ve výše uvedeném kódu první blok vytvoří objekt mapy a nastaví mechanismus ověřování na použití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .

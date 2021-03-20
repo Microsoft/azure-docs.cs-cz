@@ -7,17 +7,17 @@ ms.date: 02/16/2021
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 5dd6183bf88c167adb2f084c319cd90b94351dfb
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100560467"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení Gitu pro Azure App Service
 
 V této příručce se dozvíte, jak nasadit aplikaci pro [Azure App Service](overview.md) z úložiště Git na místním počítači.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup je popsaný v tomto návodu:
 
@@ -43,7 +43,7 @@ Pokud už máte aplikaci App Service a chcete pro ni nakonfigurovat místní nas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Spusťte [`az webapp create`](/cli/azure/webapp#az_webapp_create) s `--deployment-local-git` možností. Příklad:
+Spusťte [`az webapp create`](/cli/azure/webapp#az_webapp_create) s `--deployment-local-git` možností. Například:
 
 ```azurecli-interactive
 az webapp create --resource-group <group-name> --plan <plan-name> --name <app-name> --runtime "<runtime-flag>" --deployment-local-git
@@ -53,7 +53,7 @@ Výstup obsahuje adresu URL, jako je: `https://<deployment-username>@<app-name>.
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Spusťte rutinu [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) z kořenového adresáře úložiště Git. Příklad:
+Spusťte rutinu [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) z kořenového adresáře úložiště Git. Například:
 
 ```azurepowershell-interactive
 New-AzWebApp -Name <app-name>
@@ -73,7 +73,7 @@ Pokud jste ještě aplikaci nevytvořili, přečtěte si místo toho možnost [v
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Spusťte příkaz [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) . Příklad:
+Spusťte příkaz [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) . Například:
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>

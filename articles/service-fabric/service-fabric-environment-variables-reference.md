@@ -4,10 +4,10 @@ description: Přečtěte si o proměnných prostředí v Azure Service Fabric. O
 ms.topic: reference
 ms.date: 12/07/2017
 ms.openlocfilehash: b70249daa439b5a631b5a84b10c47f082ce75985
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96574577"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric proměnných prostředí
@@ -19,7 +19,7 @@ Service Fabric má pro každou instanci služby nastavenou předdefinované prom
 | Fabric_ApplicationName                       | Název identifikátoru URI prostředků infrastruktury aplikace                                 | Fabric:/MyApplication                                                |
 | Fabric_CodePackageName                       | Název balíčku kódu, ke kterému patří proces              | Kód                                                                 |
 | Fabric_Endpoint \_ IPOrFQDN. \_ *ServiceEndpoint*     | IP adresa nebo plně kvalifikovaný název domény koncového bodu                                 | 10.0.0.1                                                     |
-| Fabric – \_ koncový bod koncového bodu \_ *ServiceEndpointName*              | Číslo portu pro koncový bod                                  | 8234                                                                 |
+| Fabric – \_ koncový bod koncového bodu \_               | Číslo portu pro koncový bod                                  | 8234                                                                 |
 | Fabric_Folder_App_Log                        | Složka protokolu                                                             | C: \\ \\ datový \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ protokolu      |
 | Fabric_Folder_App_Temp                       | Dočasná složka                                                            | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ TEMP     |
 | Fabric_Folder_App_Work                       | Pracovní složka                                                            | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ práci     |

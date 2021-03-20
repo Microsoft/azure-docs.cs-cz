@@ -8,10 +8,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000347"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: Zpracování výjimek a protokolování chyb v aplikacích logiky
@@ -99,7 +99,7 @@ Je potřeba protokolovat zdroj (žádost) záznamu pacienta z portálu Dynamics 
    Aktivační událost přicházející z CRM poskytuje US **PatentId**, **typ záznamu**, **Nový nebo aktualizovaný záznam** (novou nebo aktualizovat logickou hodnotu) a **SalesforceId**. **SalesforceId** může mít hodnotu null, protože se používá pouze pro aktualizaci.
    Záznam CRM získáme pomocí **PATIENTID** CRM a **typu záznamu**.
 
-2. Dál je potřeba přidat naši Azure Cosmos DB operaci InsertLogEntry API App **InsertLogEntry** , jak je znázorněno v návrháři aplikace logiky.
+2. Dál je potřeba přidat naši Azure Cosmos DB operaci InsertLogEntry API App  , jak je znázorněno v návrháři aplikace logiky.
 
    **Vložit položku protokolu**
 
@@ -118,7 +118,7 @@ Je potřeba protokolovat zdroj (žádost) záznamu pacienta z portálu Dynamics 
 > [!NOTE]
 > Následující příklady jsou pouze ukázky. Vzhledem k tomu, že je tento kurz založený na implementaci nyní v produkčním prostředí, hodnota **zdrojového uzlu** nemusí zobrazovat vlastnosti související s plánováním schůzky. > 
 
-### <a name="logging"></a>Protokolování
+### <a name="logging"></a>protokolování
 
 Následující ukázka kódu aplikace logiky ukazuje, jak zpracovat protokolování.
 

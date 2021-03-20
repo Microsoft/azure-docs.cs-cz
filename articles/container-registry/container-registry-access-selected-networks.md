@@ -4,10 +4,10 @@ description: Nakonfigurujte pravidla protokolu IP pro povolení přístupu ke sl
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89488758"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurace pravidel sítě veřejných IP adres
@@ -46,9 +46,9 @@ az acr network-rule add \
 ## <a name="access-from-selected-public-network---portal"></a>Přístup z vybrané veřejné sítě – portál
 
 1. Na portálu přejděte do registru kontejneru.
-1. V části **Nastavení**vyberte **sítě**.
+1. V části **Nastavení** vyberte **sítě**.
 1. Na kartě **veřejný přístup** vyberte možnost povolíte veřejný přístup z **vybraných sítí**.
-1. V části **Brána firewall**zadejte veřejnou IP adresu, třeba veřejnou IP adresu virtuálního počítače ve virtuální síti. Případně zadejte rozsah adres v zápisu CIDR, který obsahuje IP adresu virtuálního počítače.
+1. V části **Brána firewall** zadejte veřejnou IP adresu, třeba veřejnou IP adresu virtuálního počítače ve virtuální síti. Případně zadejte rozsah adres v zápisu CIDR, který obsahuje IP adresu virtuálního počítače.
 1. Vyberte **Uložit**.
 
 ![Konfigurace pravidla brány firewall pro Registry kontejneru][acr-access-selected-networks]
@@ -77,7 +77,7 @@ az acr update --name myContainerRegistry --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Zakázat veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Pak vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti** možnost **zakázáno**. Pak vyberte **Uložit**.
 
 ![Zakázat veřejný přístup][acr-access-disabled]
 
@@ -100,7 +100,7 @@ az acr update --name myContainerRegistry --public-network-enabled true
 ### <a name="restore-public-access---portal"></a>Obnovit veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **všechny sítě**. Pak vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti** možnost **všechny sítě**. Pak vyberte **Uložit**.
 
 ![Veřejný přístup ze všech sítí][acr-access-all-networks]
 

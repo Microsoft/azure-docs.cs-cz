@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397531"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Pravidla směrování žádostí Application Gateway
 
-Když vytvoříte Aplikační bránu pomocí Azure Portal, vytvoříte výchozí pravidlo ( *rule1* ). Toto pravidlo váže výchozí naslouchací proces ( *appGatewayHttpListener* ) s výchozím fondem back-end ( *appGatewayBackendPool* ) a výchozím nastavením back-endu http ( *appGatewayBackendHttpSettings* ). Po vytvoření brány můžete upravit nastavení výchozího pravidla nebo vytvořit nová pravidla.
+Když vytvoříte Aplikační bránu pomocí Azure Portal, vytvoříte výchozí pravidlo (*rule1*). Toto pravidlo váže výchozí naslouchací proces (*appGatewayHttpListener*) s výchozím fondem back-end (*appGatewayBackendPool*) a výchozím nastavením back-endu http (*appGatewayBackendHttpSettings*). Po vytvoření brány můžete upravit nastavení výchozího pravidla nebo vytvořit nová pravidla.
 
 ## <a name="rule-type"></a>Typ pravidla
 
@@ -57,7 +57,7 @@ Další informace o přesměrování najdete v tématu [Přehled přesměrován�
 
 ### <a name="redirection-type"></a>Typ přesměrování
 
-Vyberte typ požadovaného přesměrování: *trvalá (301)* , *dočasná (307)* , *Nalezeno (302* ) nebo *jiný (303)*.
+Vyberte typ požadovaného přesměrování: *trvalá (301)*, *dočasná (307)*, *Nalezeno (302*) nebo *jiný (303)*.
 
 ### <a name="redirection-target"></a>Cíl přesměrování
 
@@ -87,7 +87,7 @@ Další informace o přesměrování najdete v tématu:
 Pomocí pravidel pro přepsání můžete přidat, odebrat nebo aktualizovat žádosti a hlavičky odpovědí HTTP (S) a také cestu URL a parametry řetězce dotazu, protože pakety požadavků a odpovědí se pohybují mezi klienty klienta a back-endu přes Aplikační bránu.
 
 Parametry hlaviček a adres URL lze nastavit na statické hodnoty nebo na jiné hlavičky a proměnné serveru. To pomáhá s důležitými případy použití, jako je například extrakce IP adres klientů, odebrání citlivých informací o back-endu, přidání dalších zabezpečení atd.
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
  - [Přehled přepsaných hlaviček a adres URL protokolu HTTP](rewrite-http-headers-url.md)
  - [Konfigurace přepsání hlaviček HTTP](rewrite-http-headers-portal.md)

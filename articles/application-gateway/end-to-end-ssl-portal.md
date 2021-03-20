@@ -10,13 +10,13 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 6e2d1828acefacb03cc2f42193b8cd8897578b6f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397497"
 ---
-# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Konfigurace kompletního TLS pomocí Application Gateway s portálem
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Konfigurace koncového šifrování TLS s využitím služby Application Gateway a portálu
 
 Tento článek popisuje, jak pomocí Azure Portal nakonfigurovat komplexní šifrování TLS (Transport Layer Security), dříve označované jako šifrování SSL (Secure Sockets Layer) (SSL), prostřednictvím SKU Azure Application Gateway v1.
 

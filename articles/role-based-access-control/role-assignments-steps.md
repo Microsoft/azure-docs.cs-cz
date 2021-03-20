@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556032"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Postup přiřazení role Azure
@@ -62,7 +62,7 @@ Zbývající předdefinované role umožňují správu konkrétních prostředk�
 
 ![Obor přiřazení role](./media/shared/rbac-scope.png)
 
-Když přiřadíte roli v nadřazeném oboru, budou tato oprávnění děděna do podřízených oborů. Příklad:
+Když přiřadíte roli v nadřazeném oboru, budou tato oprávnění děděna do podřízených oborů. Například:
 
 - Pokud přiřadíte roli [Čtenář](built-in-roles.md#reader) k uživateli v oboru skupiny pro správu, může tento uživatel číst vše ve všech předplatných ve skupině pro správu.
 - Pokud přiřadíte roli [Čtenář fakturace](built-in-roles.md#billing-reader) skupině v oboru předplatného, členové této skupiny mohou číst fakturační data pro každou skupinu prostředků a prostředek v rámci předplatného.

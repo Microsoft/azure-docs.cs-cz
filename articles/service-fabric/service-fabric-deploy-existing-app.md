@@ -4,10 +4,10 @@ description: Naučte se, jak zabalit existující aplikaci jako spustitelný sou
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86259266"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Zabalit a nasadit existující spustitelný soubor pro Service Fabric
@@ -22,7 +22,7 @@ Při balení existující spustitelný soubor jako [hostující spustitelný sou
 
 Visual Studio poskytuje šablonu služby Service Fabric, která vám umožní nasadit spustitelný soubor hosta do clusteru Service Fabric.
 
-1. Vyberte **soubor**  >  **Nový projekt**a vytvořte aplikaci Service Fabric.
+1. Vyberte **soubor**  >  **Nový projekt** a vytvořte aplikaci Service Fabric.
 2. Jako šablonu služby vyberte **spustitelný soubor typu Host** .
 3. Klikněte na **Procházet** a vyberte složku s vaším spustitelným souborem a vyplňte zbývající parametry a vytvořte službu.
    * *Chování balíčku kódu*. Může být nastaveno na zkopírování veškerého obsahu vaší složky do projektu aplikace Visual Studio, což je užitečné, pokud se spustitelný soubor nemění. Pokud očekáváte, že se spustitelný soubor změní a chcete, aby se dynamicky vybrala nová sestavení, můžete místo toho použít odkaz na složku. Můžete použít propojené složky při vytváření projektu aplikace v aplikaci Visual Studio. Tato vazba odkazuje na zdrojové umístění v rámci projektu, což vám umožní aktualizovat spustitelný soubor hosta ve zdrojovém cílovém umístění. Tyto aktualizace se stanou součástí balíčku aplikace při sestavení.
@@ -33,7 +33,7 @@ Visual Studio poskytuje šablonu služby Service Fabric, která vám umožní na
      * `CodePackage` Určuje, že bude pracovní adresář nastaven na kořen balíčku aplikace ( `GuestService1Pkg` zobrazený v předchozí struktuře souborů).
      * `Work` Určuje, že soubory jsou umístěny v podadresáři s názvem Work.
 4. Zadejte název služby a klikněte na **OK**.
-5. Pokud vaše služba potřebuje koncový bod pro komunikaci, můžete nyní do souboru ServiceManifest.xml přidat protokol, port a typ. Například: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
+5. Pokud vaše služba potřebuje koncový bod pro komunikaci, můžete nyní do souboru ServiceManifest.xml přidat protokol, port a typ. Příklad: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
 6. Pomocí ladění řešení v aplikaci Visual Studio teď můžete použít akci balíčku a publikování pro svůj místní cluster. Až budete připraveni, můžete aplikaci publikovat do vzdáleného clusteru nebo vrátit se změnami řešení do správy zdrojového kódu.
 7. Přečtěte si, jak [Spustit aplikaci](#check-your-running-application) , abyste viděli, jak zobrazit službu spustitelných souborů hosta běžící v Service Fabric Explorer.
 

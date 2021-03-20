@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0b7d08d610c883240abedc66c55abba64a74c8e3
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576311"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Ladění aplikace Service Fabric pomocí Visual Studia
@@ -39,7 +39,7 @@ Můžete ušetřit čas a peníze nasazením a laděním aplikace Azure Service 
     ![Otevření okna diagnostické události][viewdiagnosticevents]
    
     Pokud chcete filtrovat trasování na určitou službu nebo aplikaci, povolte trasování streamování na konkrétní službě nebo aplikaci.
-6. Diagnostické události lze zobrazit v automaticky generovaném souboru **ServiceEventSource.cs** a jsou volány z kódu aplikace.
+6. Diagnostické události lze zobrazit v automaticky generovaném souboru **ServiceEventSource. cs** a jsou volány z kódu aplikace.
    
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());

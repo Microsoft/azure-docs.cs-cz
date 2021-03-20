@@ -12,10 +12,10 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
 ms.openlocfilehash: 4f0588667df6acb11a43e8c3469c67f65ed3cdd9
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98165174"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Podpora jednotného přihlašování a zásad ochrany aplikací v mobilních aplikacích, které vyvíjíte
@@ -70,7 +70,7 @@ Kromě toho musíte pro ověřování použít aplikaci zprostředkovatele. Zpro
 
 Nakonec přidejte do své aplikace [Intune SDK](/mem/intune/developer/app-sdk-get-started) , abyste mohli povolit zásady ochrany aplikací. Sada SDK pro většinu částí sleduje model zachycení a automaticky použije zásady ochrany aplikací k určení, jestli jsou povolené akce, které aplikace přijímá. K dispozici jsou také rozhraní API, která můžete volat ručně a sdělit aplikaci, pokud existují určitá omezení pro určité akce.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Plánování nasazení s jednotným přihlašováním Azure Active Directory](../manage-apps/plan-sso-deployment.md)
 - [Postupy: Konfigurace jednotného přihlašování v macOS a iOS](single-sign-on-macos-ios.md)

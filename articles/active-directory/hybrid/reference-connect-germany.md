@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect v Microsoft Cloudu Německo
-description: Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To vám umožní poskytovat společnou identitu pro aplikace Microsoft 365, Azure a SaaS integrované s Azure AD.
+description: Nástroj Azure AD Connect integruje vaše místní adresáře do Azure Active Directory. To vám umožní poskytovat společnou identitu pro aplikace Microsoft 365, Azure a SaaS integrované s Azure AD.
 keywords: Úvod do služby Azure AD Connect, přehled služby Azure AD Connect, co je Azure AD Connect, instalace služby Active Directory, Německo, Černý les
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 246f8326f7112825de98ee824cf4bab7952a7878
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90014583"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect v Microsoft Cloudu Německo – verze Public Preview

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94693745"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Přesunout externí nástroj pro vyrovnávání zatížení do jiné oblasti pomocí Azure Portal
@@ -141,9 +141,9 @@ Následující postupy ukazují, jak připravit externí nástroj pro vyrovnáv�
  
 13. V online editoru vyberte **Uložit** .
 
-14. Vyberte předplatná **základní**  >  **Subscription** a vyberte předplatné, ve kterém se bude nasazovat cílová veřejná IP adresa.
+14. Vyberte předplatná **základní**  >   a vyberte předplatné, ve kterém se bude nasazovat cílová veřejná IP adresa.
 
-15. Vyberte **BASICS** možnost  >  **Skupina prostředků** základy a zvolte skupinu prostředků, do které bude nasazena cílová veřejná IP adresa. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílovou veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající zdrojové veřejné IP adresy.
+15. Vyberte možnost  >  **Skupina prostředků** základy a zvolte skupinu prostředků, do které bude nasazena cílová veřejná IP adresa. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílovou veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků stávající zdrojové veřejné IP adresy.
 
 16. Ověřte, zda je umístění **základních**  >  **umístění** nastaveno na cílové umístění, kam chcete nasadit veřejnou IP adresu.
 
@@ -389,11 +389,11 @@ Následující postupy ukazují, jak připravit externí nástroj pro vyrovnáv�
 
 12. V online editoru vyberte **Uložit** .
 
-13. Vyberte předplatná **základní**  >  **Subscription** a zvolte předplatné, ve kterém bude nasazený cílový externí nástroj pro vyrovnávání zatížení.
+13. Vyberte předplatná **základní**  >   a zvolte předplatné, ve kterém bude nasazený cílový externí nástroj pro vyrovnávání zatížení.
 
-15. Vyberte **BASICS** možnost  >  **Skupina prostředků** základy a zvolte skupinu prostředků, do které bude nasazený cílový Nástroj pro vyrovnávání zatížení. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílový externí nástroj pro vyrovnávání zatížení. Nebo můžete vybrat existující skupinu prostředků, kterou jste vytvořili dříve pro veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků existujícího zdrojového externího nástroje pro vyrovnávání zatížení.
+15. Vyberte možnost  >  **Skupina prostředků** základy a zvolte skupinu prostředků, do které bude nasazený cílový Nástroj pro vyrovnávání zatížení. Můžete vybrat **vytvořit novou** a vytvořit novou skupinu prostředků pro cílový externí nástroj pro vyrovnávání zatížení. Nebo můžete vybrat existující skupinu prostředků, kterou jste vytvořili dříve pro veřejnou IP adresu. Ujistěte se, že název není stejný jako zdrojová skupina prostředků existujícího zdrojového externího nástroje pro vyrovnávání zatížení.
 
-16. Ověřte, **BASICS** zda  >  je umístění základních **umístění** nastaveno na cílové umístění, do kterého chcete nasadit externí nástroj pro vyrovnávání zatížení.
+16. Ověřte, zda  >  je umístění základních **umístění** nastaveno na cílové umístění, do kterého chcete nasadit externí nástroj pro vyrovnávání zatížení.
 
 17. V části **Nastavení** ověřte, že se název shoduje s názvem, který jste zadali dříve v editoru parametrů. Ověřte, jestli se v konfiguraci naplní ID prostředků pro všechny veřejné IP adresy.
 

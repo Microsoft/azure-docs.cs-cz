@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 745aeb9844f1abad075d34b34735563200ea618b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90054938"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Použití Snapshot Manager StorSimple k vytváření a správě zásad zálohování
@@ -36,7 +36,7 @@ Pomocí následujícího postupu vytvořte nové zásady zálohování.
 
 #### <a name="to-create-a-backup-policy"></a>Vytvoření zásady zálohování
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
-2. V podokně **obor** klikněte pravým tlačítkem na **zásady zálohování**a pak klikněte na **vytvořit zásadu zálohování**.
+2. V podokně **obor** klikněte pravým tlačítkem na **zásady zálohování** a pak klikněte na **vytvořit zásadu zálohování**.
 
     ![Vytvoření zásad zálohování](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
@@ -55,9 +55,9 @@ Pomocí následujícího postupu vytvořte nové zásady zálohování.
 5. Na kartě **plán** vyplňte následující informace:
 
    1. Chcete-li naplánovat další zálohování, klikněte na zaškrtávací políčko **Povolit** .
-   2. V části nastavení vyberte **jednu z** **možností**:, **denně**, **týdně**nebo **měsíčně**.
+   2. V části nastavení vyberte **jednu z** **možností**:, **denně**, **týdně** nebo **měsíčně**.
    3. V textovém poli **začátek** klikněte na ikonu kalendáře a vyberte počáteční datum.
-   4. V části **Upřesnit nastavení**můžete nastavit volitelné plány opakování a koncové datum.
+   4. V části **Upřesnit nastavení** můžete nastavit volitelné plány opakování a koncové datum.
    5. Klikněte na **OK**.
 
 Po vytvoření zásady zálohování se v podokně **výsledků** zobrazí následující informace:

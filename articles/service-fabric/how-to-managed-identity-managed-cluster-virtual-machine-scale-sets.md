@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/24/2020
 ms.custom: references_regions
 ms.openlocfilehash: 3ff5d66160ddbb037469378634826fd9eeae0c54
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100651642"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>Přidání spravované identity do typu spravovaného uzlu clusteru Service Fabric (Preview)
@@ -127,7 +127,7 @@ Nakonec přidejte `vmManagedIdentity` `userAssignedIdentities` vlastnosti a do d
 
 Po nasazení se vytvořená spravovaná identita přidala do sady škálování virtuálního počítače typu určeného uzlu a dá se použít podle očekávání, stejně jako v jakémkoli nespravovaném clusteru.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 V případě nesprávného přidání přiřazení role bude při nasazení splněna následující chyba:
 

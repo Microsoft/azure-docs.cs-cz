@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: b9b27a432776635290c7e8e796e84d8c1e0e8675
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92168337"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown – element uživatelského rozhraní
@@ -26,19 +26,19 @@ Je-li pro výběr povolena pouze jedna položka, zobrazí se ovládací prvek ja
 
 Pokud jsou popisy zahrnuty, zobrazí se ovládací prvek jako:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. Common. DropDown – jeden výběr":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. Common. DropDown – jeden výběr s popisy":::
 
 Pokud je povolen vícenásobný výběr, ovládací prvek přidá možnost **Vybrat vše** a zaškrtávací políčka pro výběr více než jedné položky:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. DropDown – jeden výběr":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. DropDown vícenásobný výběr":::
 
 Popisy lze zahrnout s povoleným vícenásobným výběrem.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft. Common. DropDown – jeden výběr":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Snímek obrazovky, který ukazuje, jak můžou být popisy zahrnuté s povoleným vícenásobným výběrem":::
 
 Pokud je povoleno filtrování, obsahuje ovládací prvek textové pole pro přidání hodnoty filtrování.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. DropDown – jeden výběr":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. DropDown vícenásobný výběr s popisy":::
 
 ## <a name="schema"></a>Schéma
 

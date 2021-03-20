@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 15f68e8cbca65e7b970944f7ca5ef1952140cc6b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397634"
 ---
 # <a name="application-gateway-listener-configuration"></a>Konfigurace naslouchacího procesu Application Gateway
@@ -20,7 +20,7 @@ ms.locfileid: "93397634"
 
 Naslouchací proces je logická entita, která kontroluje příchozí požadavky na připojení pomocí portu, protokolu, hostitele a IP adresy. Při konfiguraci naslouchacího procesu je nutné zadat hodnoty, které odpovídají odpovídajícím hodnotám v příchozím požadavku na bráně.
 
-Když vytváříte Aplikační bránu pomocí Azure Portal, vytvoříte také výchozí naslouchací proces zvolením protokolu a portu pro naslouchací proces. Můžete zvolit, jestli se má povolit podpora HTTP2 pro naslouchací proces. Po vytvoření aplikační brány můžete upravit nastavení tohoto výchozího naslouchacího procesu ( *appGatewayHttpListener* ) nebo vytvořit nové naslouchací procesy.
+Když vytváříte Aplikační bránu pomocí Azure Portal, vytvoříte také výchozí naslouchací proces zvolením protokolu a portu pro naslouchací proces. Můžete zvolit, jestli se má povolit podpora HTTP2 pro naslouchací proces. Po vytvoření aplikační brány můžete upravit nastavení tohoto výchozího naslouchacího procesu (*appGatewayHttpListener*) nebo vytvořit nové naslouchací procesy.
 
 ## <a name="listener-type"></a>Typ naslouchacího procesu
 
@@ -87,7 +87,7 @@ Pokud chcete nakonfigurovat globální vlastní chybovou stránku, přečtěte s
 
 ## <a name="tls-policy"></a>Zásada TLS
 
-Můžete centralizovat správu certifikátů TLS/SSL a snížit režijní náklady na dešifrování pro back-endové serverové farmy. Centralizované zpracování TLS také umožňuje určit centrální zásady TLS, které jsou vhodné pro vaše požadavky na zabezpečení. Můžete zvolit *výchozí* , *předdefinované* nebo *vlastní* zásady TLS.
+Můžete centralizovat správu certifikátů TLS/SSL a snížit režijní náklady na dešifrování pro back-endové serverové farmy. Centralizované zpracování TLS také umožňuje určit centrální zásady TLS, které jsou vhodné pro vaše požadavky na zabezpečení. Můžete zvolit *výchozí*, *předdefinované* nebo *vlastní* zásady TLS.
 
 Zásady TLS se konfigurují pro řízení verzí protokolu TLS. Aplikační bránu můžete nakonfigurovat tak, aby používala minimální verzi protokolu pro handshake TLS z TLS 1.0, TLS 1.1 a TLS 1.2. Ve výchozím nastavení jsou SSL 2,0 a 3,0 zakázané a nedají se konfigurovat. Další informace najdete v tématu [Přehled zásad Application Gateway TLS](./application-gateway-ssl-policy-overview.md).
 

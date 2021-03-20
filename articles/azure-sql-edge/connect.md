@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
 ms.openlocfilehash: b56b65261950e9cf534a3755d214229ef7d5bb1e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395202"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>Připojení a dotazování na Edge Azure SQL
@@ -36,8 +36,8 @@ Můžete se připojit k instanci instance Azure SQL Edge z kteréhokoli z těcht
 
 Pokud se chcete připojit k databázovému stroji Azure SQL Edge ze síťového počítače, potřebujete následující:
 
-- **IP adresa nebo síťový název hostitelského počítače** : Toto je hostitelský počítač, na kterém je spuštěný kontejner Azure SQL Edge.
-- **Mapování portů hostitele kontejneru Azure SQL Edge** : Jedná se o mapování portu kontejneru Docker na port v hostiteli. V rámci kontejneru je Azure SQL Edge vždycky namapovaný na port 1433. Tuto možnost můžete změnit, pokud chcete. Pokud chcete změnit číslo portu, aktualizujte **možnosti vytvoření kontejneru** pro modul Azure SQL Edge v Azure IoT Edge. V následujícím příkladu je port 1433 na kontejneru namapován na port 1600 na hostiteli.
+- **IP adresa nebo síťový název hostitelského počítače**: Toto je hostitelský počítač, na kterém je spuštěný kontejner Azure SQL Edge.
+- **Mapování portů hostitele kontejneru Azure SQL Edge**: Jedná se o mapování portu kontejneru Docker na port v hostiteli. V rámci kontejneru je Azure SQL Edge vždycky namapovaný na port 1433. Tuto možnost můžete změnit, pokud chcete. Pokud chcete změnit číslo portu, aktualizujte **možnosti vytvoření kontejneru** pro modul Azure SQL Edge v Azure IoT Edge. V následujícím příkladu je port 1433 na kontejneru namapován na port 1600 na hostiteli.
 
     ```JSON
     {
@@ -51,7 +51,7 @@ Pokud se chcete připojit k databázovému stroji Azure SQL Edge ze síťového 
     }
     ```
 
-- **Heslo SA pro instanci Azure SQL Edge** : Jedná se o hodnotu zadanou pro `SA_PASSWORD` proměnnou prostředí během nasazování Azure SQL Edge.
+- **Heslo SA pro instanci Azure SQL Edge**: Jedná se o hodnotu zadanou pro `SA_PASSWORD` proměnnou prostředí během nasazování Azure SQL Edge.
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Připojení k databázovému stroji v rámci kontejneru
 
@@ -94,7 +94,7 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ## <a name="connect-to-azure-sql-edge-from-another-network-machine"></a>Připojení k Azure SQL Edge z jiného síťového počítače
 
-Možná se budete chtít připojit k instanci Azure SQL Edge z jiného počítače v síti. Provedete to tak, že použijete IP adresu hostitele Docker a port hostitele, na který je kontejner Edge SQL Azure namapovaný. Pokud je například IP adresa hostitele Docker *xxx.xxx.xxx.xxx* a kontejner Azure SQL Edge je namapován na port hostitele *1600* , adresa serveru pro instanci Azure SQL Edge by byla *xxx. xxx. xxx. xxx, 1600*. Aktualizovaný skript jazyka Python:
+Možná se budete chtít připojit k instanci Azure SQL Edge z jiného počítače v síti. Provedete to tak, že použijete IP adresu hostitele Docker a port hostitele, na který je kontejner Edge SQL Azure namapovaný. Pokud je například IP adresa hostitele Docker *xxx.xxx.xxx.xxx* a kontejner Azure SQL Edge je namapován na port hostitele *1600*, adresa serveru pro instanci Azure SQL Edge by byla *xxx. xxx. xxx. xxx, 1600*. Aktualizovaný skript jazyka Python:
 
 ```python
 

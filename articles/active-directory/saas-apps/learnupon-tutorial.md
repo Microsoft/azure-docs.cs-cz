@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 297395fbd0a7fd3fc8959eed5c0aeabd7b8e5751
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458672"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Kurz: Azure Active Directory integrace s LearnUpon
@@ -30,7 +30,7 @@ Integrace LearnUpon s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s LearnUpon potřebujete následující položky:
 
@@ -132,7 +132,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí LearnUpo
 
     ![Snímek obrazovky se zobrazí karta nastavení.](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
-1. Klikněte na **jednotné přihlašování – SAML**a pak klikněte na **Obecné nastavení** a nakonfigurujte nastavení SAML.
+1. Klikněte na **jednotné přihlašování – SAML** a pak klikněte na **Obecné nastavení** a nakonfigurujte nastavení SAML.
    
     ![Snímek obrazovky, který zobrazuje jednotné přihlašování-SAML, je vybraný s obecným nastavením.](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
@@ -154,9 +154,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí LearnUpo
   
     například V poli **Adresa URL** pro odhlášení vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
 
-    h. Klikněte na **Spravovat prst tiskne**a pak nahrajte tisk svého staženého certifikátu.
+    h. Klikněte na **Spravovat prst tiskne** a pak nahrajte tisk svého staženého certifikátu.
 
-1. Klikněte na **nastavení uživatele**a pak proveďte následující kroky:
+1. Klikněte na **nastavení uživatele** a pak proveďte následující kroky:
 
      ![Snímek obrazovky se zobrazí oddíl nastavení uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
@@ -168,7 +168,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí LearnUpo
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -192,7 +192,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k LearnUpon.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **LearnUpon**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **LearnUpon**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -224,7 +224,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici LearnUpon, měli byste se automaticky přihlásit k LearnUpon, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
