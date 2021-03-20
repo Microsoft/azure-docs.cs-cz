@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98874138"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace pro nasazení v jarním cloudu Azure
@@ -57,7 +57,7 @@ Pro Steeltoe 3,0 přidejte do souboru projektu nejnovější balíček [Microsof
 </ItemGroup>
 ```
 
-## <a name="update-programcs"></a>Aktualizovat Program.cs
+## <a name="update-programcs"></a>Update program. cs
 
 V `Program.Main` metodě zavolejte `UseAzureSpringCloudService` metodu.
 

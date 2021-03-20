@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: migrace, ARO, OpenShift, Red Hat
 ms.openlocfilehash: 371672de83a6d745d7b367f8327a64e11059923e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100653274"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migrace z Azure Red Hat OpenShift 3,11 na Azure Red Hat OpenShift 4
@@ -102,7 +102,7 @@ Azure Red Hat OpenShift 4 dokáže sestavovat image ze zdrojového kódu, nasazo
 
 Pokud používáte externí Registry, například [Azure Container Registry](../container-registry/index.yml), [Red Hat Quay Registry](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)nebo [ověřování s povoleným ověřováním Red Hat](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), postupujte podle pokynů pro zadání přihlašovacích údajů do clusteru, aby cluster mohl přistupovat k úložištím.
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 Azure Red Hat OpenShift zahrnuje předem nakonfigurovanou, předem nainstalovanou a samostatnou sadu monitorování, která je založená na Prometheus open source projektu a jeho širším ekosystému. Poskytuje monitorování součástí clusteru a obsahuje sadu výstrah, které okamžitě upozorní správce clusteru na všechny problémy, ke kterým dochází, a na sadu Grafanach řídicích panelů. Zásobník monitorování clusteru se podporuje jenom pro monitorování clusterů Azure Red Hat OpenShift. Další informace najdete v tématu [monitorování clusteru pro Azure Red Hat OpenShift](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html).
 

@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 12/02/2020
 ms.openlocfilehash: 99c36354334701dcd4c7c30c5fd5039c13885525
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358703"
 ---
 # <a name="create-a-dynamics-365-for-business-central-offer"></a>Vytvoření nabídky Dynamics 365 for Business Central
@@ -131,8 +131,8 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Shrnutí
-9. Popis
+8. Souhrn
+9. Description
 10. Snímky obrazovky a videa
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
@@ -276,7 +276,7 @@ Pokud je vaše nabídka doplňkovou aplikací, je nutné nahrát soubor **testů
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 

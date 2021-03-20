@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b9999ae92840d79bb19464216c0f28504011b3f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008317"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic) pomocí šablony Azure Resource Manager
@@ -38,11 +38,11 @@ Začněte tím, že přejdete na [tuto adresu URL GitHubu](https://github.com/Az
 
 ### <a name="deploy-the-template-to-azure"></a>Nasazení šablony do Azure
 
-Pokud nasazujete v rámci podnikového předplatného, posuňte se dolů a vyberte **nasadit do Azure**a pak přeskočte před vyplněním parametrů na základě vašeho zdroje imagí.
+Pokud nasazujete v rámci podnikového předplatného, posuňte se dolů a vyberte **nasadit do Azure** a pak přeskočte před vyplněním parametrů na základě vašeho zdroje imagí.
 
 Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, proveďte následující postup nasazení do Azure:
 
-1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
+1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure** a pak vyberte **Kopírovat umístění odkazu**.
 2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
 3. Hned za znakem " https://portal.azure.com/ " a před hashtagem (#) zadejte znak po znaku (@) následovaný názvem domény klienta. Tady je příklad formátu, který byste měli použít: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` .
 4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.

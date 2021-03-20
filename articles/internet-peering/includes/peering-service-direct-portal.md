@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 3/18/2020
 ms.author: derekol
 ms.openlocfilehash: e5804aa1b005e670d8b430b1c0a3bd62efd0bb06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81687051"
 ---
 1. Vyberte připojení partnerského vztahu, které chcete povolit pro službu Azure peering Service. Pak vyberte **...**  >  **Upravit připojení**.
     > [!div class="mx-imgBorder"]
     > ![Připojení pro úpravu partnerského vztahu](../media/setup-direct-modify-editconnection.png)
-1. V části **použít pro službu partnerského vztahu**vyberte **povoleno** a pak vyberte **Uložit**.
+1. V části **použít pro službu partnerského vztahu** vyberte **povoleno** a pak vyberte **Uložit**.
     > [!div class="mx-imgBorder"]
     > ![Připojení partnerského vztahu povolit službu partnerského vztahu](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
 1. Na obrazovce **Přehled** se zobrazí podrobnosti o nasazení. Po dokončení nasazení vyberte **Přejít k prostředku**.

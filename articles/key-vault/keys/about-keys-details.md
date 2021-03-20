@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
 ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98133272"
 ---
 # <a name="key-types-algorithms-and-operations"></a>Klíčové typy, algoritmy a operace
@@ -24,9 +24,9 @@ Následující tabulka obsahuje souhrn typů klíčů a podporovaných algoritm�
 
 |Typy/velikosti a křivky klíčů| Šifrování a dešifrování<br>(Zabalení a rozbalení) | Podepsat/ověřit | 
 | --- | --- | --- |
-|ES-P256, ES-P256K, ES-KLÍČEM P384, ES-521|Není k dispozici|ES256<br>ES256K<br>ES384<br>ES512|
+|ES-P256, ES-P256K, ES-KLÍČEM P384, ES-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
 |RSA 2K, 3K, 4K| RSA1_5<br>RSA – VÝPLNĚ OAEP<br>RSA – VÝPLNĚ OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
-|AES 128-bit, 256-bit <br/>(Jenom spravované HSM)| AES – KW<br>AES – GCM<br>AES – CBC| Není k dispozici| 
+|AES 128-bit, 256-bit <br/>(Jenom spravované HSM)| AES – KW<br>AES – GCM<br>AES – CBC| NA| 
 |||
 
 ##  <a name="ec-algorithms"></a>Algoritmy ES

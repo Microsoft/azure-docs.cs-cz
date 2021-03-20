@@ -12,10 +12,10 @@ ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
 ms.openlocfilehash: 56e92a698446bd417c74820d6da662ad9ee55c77
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555682"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Kurz: povolení ověřování ve webové aplikaci Pythonu pomocí Azure AD B2C
@@ -32,7 +32,7 @@ V tomto kurzu:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v krocích v tomto kurzu, budete potřebovat následující Azure AD B2C prostředky:
 
@@ -125,7 +125,7 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-1. V konzole nebo terminálu přejděte do adresáře, který obsahuje ukázku. Příklad:
+1. V konzole nebo terminálu přejděte do adresáře, který obsahuje ukázku. Například:
 
     ```console
     cd ms-identity-python-webapp

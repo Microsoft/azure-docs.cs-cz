@@ -8,10 +8,10 @@ ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90892866"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Principy stavu aplikací v Azure Spring Cloudu
@@ -42,7 +42,7 @@ Chcete-li zobrazit celkový stav typu aplikace, vyberte možnost **aplikace** v 
 | Výčet | Definice |
 |:--:|:----------------:|
 | Vytváření | Prostředek se vytváří. |
-| Doplnění | Prostředek se aktualizuje. |
+| Aktualizace | Prostředek se aktualizuje. |
 | Úspěšný | Úspěšně dodány prostředky a nasazují binární soubor. |
 | Neúspěšný | Nepovedlo se dosáhnout cíle *úspěšného* dokončení. |
 | odstraňování | Prostředek se odstraňuje. Tím se zabrání operace a prostředek není v tomto stavu k dispozici. |

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
 ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93359897"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Extrakce informací v Excelu pomocí Analýza textu a automatizace 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Extrakce textu z aplikace Excel a odeslání do rozhraní API pro analýzu textu 
 > * K aktualizaci excelového listu použijte informace z rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Microsoft Azure. [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/) nebo se [přihlaste](https://portal.azure.com/).
 - Prostředek Analýza textu. Pokud ho ještě nemáte, můžete [ho vytvořit v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) a k dokončení tohoto kurzu použít bezplatnou úroveň.
@@ -170,7 +170,7 @@ V podmínce **if Yes (Pokud ano** ) zadejte do Excelu a pak vyberte **aktualizov
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. 6":::
 
-Zadejte informace o Excelu a aktualizujte **klíčový sloupec** , **hodnotu klíče** a pole jméno **osoby** . Tím se do excelového listu připojí název zjištěný rozhraním API. 
+Zadejte informace o Excelu a aktualizujte **klíčový sloupec**, **hodnotu klíče** a pole jméno **osoby** . Tím se do excelového listu připojí název zjištěný rozhraním API. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu. čl":::
@@ -218,7 +218,7 @@ V části **Pokud není** podmínka klikněte na **přidat akci** a vyberte **ak
 
 ## <a name="test-the-workflow"></a>Test pracovního postupu
 
-V pravém horním rohu obrazovky klikněte na **Uložit** a pak na **test**. Vyberte možnost  **provedem akci aktivace**. Klikněte na **uložit & test** , **Spustit tok** a potom na **Hotovo**.
+V pravém horním rohu obrazovky klikněte na **Uložit** a pak na **test**. Vyberte možnost  **provedem akci aktivace**. Klikněte na **uložit & test**, **Spustit tok** a potom na **Hotovo**.
 
 Excelový soubor se aktualizuje v účtu OneDrive. Bude vypadat podobně jako v následujícím příkladu.
 

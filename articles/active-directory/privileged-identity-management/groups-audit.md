@@ -15,10 +15,10 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88141665"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Historie auditu aktivity pro přiřazení privilegovaných skupin přístupu (Preview) v Privileged Identity Management
@@ -40,7 +40,7 @@ Pomocí těchto kroků zobrazíte historii auditu pro privilegovaný přístup s
 
 1. Vyberte skupinu privilegovaný přístup, pro kterou chcete zobrazit historii auditu.
 
-1. V části **aktivita**vyberte **audit prostředků**.
+1. V části **aktivita** vyberte **audit prostředků**.
 
 1. Filtruje historii s použitím předdefinovaného data nebo vlastního rozsahu.
 
@@ -56,7 +56,7 @@ Pomocí těchto kroků zobrazíte historii auditu pro privilegovaný přístup s
 
 1. Vyberte skupinu privilegovaný přístup, pro kterou chcete zobrazit historii auditu.
 
-1. V části **aktivita**vyberte **Moje audit**.
+1. V části **aktivita** vyberte **Moje audit**.
 
 1. Filtruje historii s použitím předdefinovaného data nebo vlastního rozsahu.
 

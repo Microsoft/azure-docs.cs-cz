@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: V této části najdete popis procesů, které Azure Dev Spaces výkonu a způsobu fungování směrování.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: 2d2c6f336222b4ae0907d6579289a8cad8d73aa6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91977965"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Jak funguje směrování s Azure Dev Spaces
@@ -60,9 +60,9 @@ Odvozené místo pro vývoj také inteligentně směruje požadavky mezi vlastn�
 Například:
 * *Výchozí* místo pro vývoj má aplikace *Service* a *serviceB*.
 * Vývojové místo *azureuser* je odvozeno od *výchozího nastavení*.
-* Do *azureuser*se nasadí aktualizovaná verze *služby Service* .
+* Do *azureuser* se nasadí aktualizovaná verze *služby Service* .
 
-Při použití *azureuser*budou všechny požadavky na *službu* směrovány do aktualizované verze v *azureuser*. Požadavek na *serviceB* se nejprve pokusí o směrování na *azureuser* verzi *serviceB*. Protože neexistuje, bude směrována do *výchozí* verze *serviceB*. Pokud je odebrána verze *služby* *azureuser* , všechny požadavky na *službu* se vrátí k používání *výchozí* verze *služby*.
+Při použití *azureuser* budou všechny požadavky na *službu* směrovány do aktualizované verze v *azureuser*. Požadavek na *serviceB* se nejprve pokusí o směrování na *azureuser* verzi *serviceB*. Protože neexistuje, bude směrována do *výchozí* verze *serviceB*. Pokud je odebrána verze *služby* *azureuser* , všechny požadavky na *službu* se vrátí k používání *výchozí* verze *služby*.
 
 ## <a name="next-steps"></a>Další kroky
 

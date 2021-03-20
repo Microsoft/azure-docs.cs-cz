@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/12/2020
 ms.author: alkohli
 ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91992752"
 ---
 # <a name="azure-stack-edge-pro-limits"></a>Omezení pro Azure Stack Edge Pro
@@ -31,8 +31,8 @@ V následující tabulce jsou popsány limity Azure Stack hraničního zařízen
 
 | Description | Hodnota |
 |---|---|
-|Ne. souborů na zařízení |100 000 000 |
-|Ne. sdílených složek na kontejner |1 |
+|No. souborů na zařízení |100 000 000 |
+|No. sdílených složek na kontejner |1 |
 |Maximální počet. koncových bodů sdílení a koncových bodů REST na zařízení| 24 |
 |Maximální počet. účtů vrstveného úložiště na zařízení| 24|
 |Maximální velikost souboru zapsaná do sdílené složky| 5 TB |

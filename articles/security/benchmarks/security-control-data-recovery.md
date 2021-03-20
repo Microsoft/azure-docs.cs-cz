@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 835e4f681d514bb6b92caa5ee076e3794ed59236
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698814"
 ---
 # <a name="security-control-data-recovery"></a>Řízení zabezpečení: obnovení dat
@@ -32,7 +32,7 @@ Povolte Azure Backup a nakonfigurujte zdroj zálohy (virtuální počítače Azu
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 9,2 | 10,2 | Zákazník |
+| 9.2 | 10,2 | Zákazník |
 
 Povolte Azure Backup a cílové virtuální počítače a také požadovanou četnost a dobu uchování. Zálohujte spravované klíče zákazníka v rámci Azure Key Vault.
 
@@ -44,7 +44,7 @@ Povolte Azure Backup a cílové virtuální počítače a také požadovanou če
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 9,3 | 10,3 | Zákazník |
+| 9.3 | 10.3 | Zákazník |
 
 Zajistěte, aby možnost pravidelně prováděla obnovování obsahu v rámci Azure Backup. Test obnovení zálohovaných spravovaných klíčů zákazníka
 

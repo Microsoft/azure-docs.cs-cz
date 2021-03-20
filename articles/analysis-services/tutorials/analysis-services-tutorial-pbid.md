@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 46805427e6d00e858cf869eef68bf68549f57fb9
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92018113"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Kurz: Připojení pomocí Power BI Desktopu
@@ -23,7 +23,7 @@ V tomto kurzu použijete Power BI Desktop pro připojení k ukázkové modelové
 > * Připojení pomocí Power BI Desktopu
 > * Vytvoření základní sestavy
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Přidejte ukázkovou modelovou databázi adventureworks](../analysis-services-create-sample-model.md) na server.
 - Ukázková modelová databáze adventureworks musí mít oprávnění ke [*čtení*](../analysis-services-server-admins.md).
@@ -43,7 +43,7 @@ Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopí
 
 ## <a name="connect-in-power-bi-desktop"></a>Připojení v Power BI Desktopu
 
-1. V Power BI Desktop klikněte na **získat data**  >  **Azure**  >  **databáze Azure Azure Analysis Services**.
+1. V Power BI Desktop klikněte na **získat data**  >    >  **databáze Azure Azure Analysis Services**.
 
    ![Připojení v okně Získat data](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aasserver.png)
 
@@ -59,7 +59,7 @@ Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopí
 
    ![Vizualizace](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. V **poli**  >  tabulka**internetových prodejů** vyberte míry **internetového prodeje celková** a **marže** . V tabulce **Product Category** (Kategorie produktů) vyberte **Product Category Name** (Název kategorie produktů).
+5. V **poli**  >  tabulka **internetových prodejů** vyberte míry **internetového prodeje celková** a **marže** . V tabulce **Product Category** (Kategorie produktů) vyberte **Product Category Name** (Název kategorie produktů).
 
    ![Dokončení sestavy](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 
@@ -70,4 +70,4 @@ Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopí
 Pokud už sestavu nepotřebujete, neukládejte ji. Pokud jste ji uložili, soubor můžete odstranit.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste se naučili používat Power BI Desktop pro připojení k datovému modelu na serveru a také vytvořit základní sestavu. Pokud nejste obeznámeni s tím, jak vytvořit datový model, přečtěte si kurz o vytváření [tabulkových dat společnosti Adventure Works Internet Sales](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) v dokumentaci SQL Server Analysis Services.
+V tomto kurzu jste se naučili používat Power BI Desktop pro připojení k datovému modelu na serveru a také vytvořit základní sestavu. Pokud nejste obeznámeni s tím, jak vytvořit datový model, přečtěte si kurz o vytváření [tabulkových dat společnosti Adventure Works Internet Sales](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) v dokumentaci služba Analysis Services serveru SQL.

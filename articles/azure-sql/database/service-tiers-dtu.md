@@ -12,10 +12,10 @@ ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
 ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793173"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
@@ -42,7 +42,7 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 |**Procesor**|Nízká|Nízká, střední, vysoká|Střední, vysoká|
 |**IOPS (přibližná)**\* |1-4 IOPS na DTU| 1-4 IOPS na DTU | 25 IOPS na DTU|
 |**Latence v/v (přibližná)**|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
-|**Indexování columnstore** |Není k dispozici|S3 a vyšší|Podporováno|
+|**Indexování columnstore** |–|S3 a vyšší|Podporováno|
 |**OLTP v paměti**|N/A|N/A|Podporováno|
 
 \* Všechny vstupně-výstupní operace čtení a zápisu proti datovým souborům, včetně/v v/v (kontrolní bod a opožděný zápis)
@@ -73,7 +73,7 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení eDTU elastického fondu, úložiště a databáze ve fondu
 
-|| **Basic** | **Standard** | **Nárok** |
+|| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | **Maximální velikost úložiště na databázi**  | 2 GB | 1 TB | 1 TB |
 | **Maximální velikost úložiště na fond** | 156 GB | 4 TB | 4 TB |
@@ -114,7 +114,7 @@ Databáze má velikost na základě "faktoru škálování". Faktor škálován�
 
 Zatížení se skládá z devíti typů transakcí, jak je znázorněno v následující tabulce. Každá transakce je navržena k zdůraznění konkrétní sady systémových vlastností v databázovém stroji a na systémovém hardwaru s vysokým kontrastem od ostatních transakcí. Tento přístup usnadňuje vyhodnocení dopadu různých komponent na celkový výkon. Například transakce "Read těžký" vytváří velký počet operací čtení z disku.
 
-| Transaction Type (Typ transakce) | Popis |
+| Transaction Type (Typ transakce) | Description |
 | --- | --- |
 | Přečíst Lite |VYBRALI v paměti; jen pro čtení |
 | Přečíst médium |VYBRALI hlavně v paměti; jen pro čtení |
@@ -176,8 +176,8 @@ Klíčové metriky v srovnávacím testu jsou propustnost a doba odezvy.
 | Třída služby | Míra propustnosti | Doba odezvy – požadavek |
 | --- | --- | --- |
 | Premium |Transakcí za sekundu |95. percentil v 0,5 sekundách |
-| Standardní |Transakcí za minutu |90. percentil v 1,0 sekundách |
-| Základní |Transakcí za hodinu |80th percentil v 2,0 sekundách |
+| Standard |Transakcí za minutu |90. percentil v 1,0 sekundách |
+| Basic |Transakcí za hodinu |80th percentil v 2,0 sekundách |
 
 ## <a name="next-steps"></a>Další kroky
 

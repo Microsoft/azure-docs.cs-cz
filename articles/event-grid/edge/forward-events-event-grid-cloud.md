@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171597"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Kurz: přeposílání událostí do cloudu Event Grid
@@ -23,7 +23,7 @@ Tento článek vás provede všemi kroky potřebnými k předání hraničních 
 
  K dokončení tohoto kurzu potřebujete rozumět konceptům Event Grid na [Edge](concepts.md) a v [Azure](../concepts.md). Další cílové typy naleznete v tématu [obslužné rutiny událostí](event-handlers.md). 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 Aby bylo možné dokončit tento kurz, budete potřebovat:
 
 * **Předplatné Azure** – Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) . 
@@ -103,7 +103,7 @@ Například pokud jste vytvořili téma s názvem `testegcloudtopic` v západní
    >[!NOTE]
    > **EndpointUrl** určuje, že adresa URL tématu Event Grid v cloudu. **SasKey** odkazuje na klíč tématu Event Grid cloudu. Hodnota v **části** prokládá se použije k označení všech odchozích událostí, které se mají Event Grid. To může být užitečné při odeslání do tématu Event Grid domény. Další informace o Event Grid doméně najdete v tématu věnovaném [doménám událostí](../event-domains.md) .
 
-    Příklad:
+    Třeba
   
     ```json
         {

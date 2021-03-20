@@ -1,5 +1,5 @@
 ---
-title: Nasazení služby StorSimple Device Manager v Azure | Microsoft Docs
+title: Nasazení služby StorSimple Správce zařízení v Azure | Microsoft Docs
 description: Přečtěte si o krocích potřebných k vytvoření, odstranění, migraci služby a správě registračního klíče služby.
 services: storsimple
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360670"
 ---
-# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby StorSimple Device Manager pro zařízení řady StorSimple 8000
+# <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby StorSimple Správce zařízení pro zařízení řady StorSimple 8000
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Přehled
 
-Služba StorSimple Device Manager běží v Microsoft Azure a připojuje se k více zařízením StorSimple. Po vytvoření služby ji můžete použít ke správě všech zařízení, která jsou připojená ke službě StorSimple Device Manager, z jediného centrálního umístění, což minimalizuje administrativní zatížení.
+Služba StorSimple Správce zařízení běží v Microsoft Azure a připojuje se k více zařízením StorSimple. Po vytvoření služby ji můžete použít ke správě všech zařízení, která jsou připojená ke službě StorSimple Správce zařízení, z jediného centrálního umístění, což minimalizuje administrativní zatížení.
 
-Tento kurz popisuje kroky potřebné k vytvoření, odstranění, migraci služby a správě registračního klíče služby. Informace obsažené v tomto článku se vztahují jenom na zařízení řady StorSimple 8000. Další informace o virtuálních polích StorSimple najdete v [nasazení služby StorSimple Device Manager pro virtuální pole StorSimple](storsimple-virtual-array-manage-service.md).
+Tento kurz popisuje kroky potřebné k vytvoření, odstranění, migraci služby a správě registračního klíče služby. Informace obsažené v tomto článku se vztahují jenom na zařízení řady StorSimple 8000. Další informace o virtuálních polích StorSimple najdete v [nasazení služby StorSimple Správce zařízení pro virtuální pole StorSimple](storsimple-virtual-array-manage-service.md).
 
 > [!NOTE]
 > -  Azure Portal podporuje zařízení se systémem Update 5,0 nebo novějším. Pokud zařízení není v aktuálním stavu, nainstalujte aktualizaci 5 hned. Další informace najdete na webu [instalace aktualizace Update 5](storsimple-8000-install-update-5.md). 
@@ -37,7 +37,7 @@ Tento kurz popisuje kroky potřebné k vytvoření, odstranění, migraci služb
 > - Všechna zařízení se systémem Update 4,0 nebo starším budou mít omezenou funkčnost správy. 
 
 ## <a name="create-a-service"></a>Vytvoření služby
-Chcete-li vytvořit službu StorSimple Device Manager, budete potřebovat:
+Chcete-li vytvořit službu StorSimple Správce zařízení, budete potřebovat:
 
 * Předplatné s smlouva Enterprise
 * Účet úložiště Active Microsoft Azure
@@ -48,17 +48,17 @@ Jsou povoleny pouze odběry s smlouva Enterprise. Při vytváření služby mů�
 Jedna služba může spravovat více zařízení. Zařízení ale nemůže zahrnovat víc služeb. Velký podnik může mít více instancí služby pro práci s různými předplatnými, organizacemi nebo i umístěními nasazení. 
 
 > [!NOTE]
-> Abyste mohli spravovat zařízení řady StorSimple 8000 a virtuální pole StorSimple, potřebujete samostatné instance služby StorSimple Device Manager.
+> Abyste mohli spravovat zařízení řady StorSimple 8000 a virtuální pole StorSimple, potřebujete samostatné instance služby StorSimple Správce zařízení.
 
 Chcete-li vytvořit službu, proveďte následující kroky.
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-8000-create-new-service.md)]
 
 
-Pro každou službu StorSimple Device Manager existují následující atributy:
+Pro každou službu StorSimple Správce zařízení existují následující atributy:
 
-* **Název** – název, který byl přiřazen službě StorSimple Device Manager při vytvoření. **Po vytvoření služby se název služby nedá změnit. Platí to taky pro jiné entity, jako jsou zařízení, svazky, kontejnery svazků a zásady zálohování, které se nedají přejmenovat v Azure Portal.**
-* **Stav** – stav služby, který může být **aktivní** , **vytváří** nebo je **online**.
+* **Název** – název, který byl přiřazen službě StorSimple Správce zařízení při vytvoření. **Po vytvoření služby se název služby nedá změnit. Platí to taky pro jiné entity, jako jsou zařízení, svazky, kontejnery svazků a zásady zálohování, které se nedají přejmenovat v Azure Portal.**
+* **Stav** – stav služby, který může být **aktivní**, **vytváří** nebo je **online**.
 * **Location (umístění** ) – zeměpisné umístění, ve kterém bude nasazeno zařízení StorSimple.
 * **Předplatné** – fakturační předplatné, které je přidružené k vaší službě.
 
@@ -77,7 +77,7 @@ Chcete-li odstranit službu, proveďte následující kroky.
 
     ![Vyhledat službu, která se má odstranit](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. Tím přejdete do okna StorSimple Device Manager Service. Klikněte na **Odstranit**.
+2. Tím přejdete do okna StorSimple Správce zařízení Service. Klikněte na **Odstranit**.
 
     ![Odstranit službu](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
@@ -87,7 +87,7 @@ Chcete-li odstranit službu, proveďte následující kroky.
 
 ## <a name="get-the-service-registration-key"></a>Získání registračního klíče služby
 
-Po úspěšném vytvoření služby budete muset zaregistrovat zařízení StorSimple ve službě. K registraci prvního zařízení StorSimple budete potřebovat registrační klíč služby. K registraci dalších zařízení pomocí existující služby StorSimple potřebujete registrační klíč a šifrovací klíč dat služby (který se při registraci generuje na prvním zařízení). Další informace o šifrovacím klíči dat služby najdete v tématu [zabezpečení StorSimple](storsimple-8000-security.md). Registrační klíč můžete získat přístupem k **klíčům** v okně StorSimple Device Manager.
+Po úspěšném vytvoření služby budete muset zaregistrovat zařízení StorSimple ve službě. K registraci prvního zařízení StorSimple budete potřebovat registrační klíč služby. K registraci dalších zařízení pomocí existující služby StorSimple potřebujete registrační klíč a šifrovací klíč dat služby (který se při registraci generuje na prvním zařízení). Další informace o šifrovacím klíči dat služby najdete v tématu [zabezpečení StorSimple](storsimple-8000-security.md). Registrační klíč můžete získat přístupem k **klíčům** v okně StorSimple Správce zařízení.
 
 K získání registračního klíče služby proveďte následující kroky.
 
@@ -103,7 +103,7 @@ Registrační klíč služby je nutné znovu vygenerovat, pokud potřebujete pro
 K opětovnému vygenerování registračního klíče služby proveďte následující kroky.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>Opětovné vygenerování registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **klíče** pro **správu &gt;** .
+1. V okně **StorSimple Správce zařízení** otevřete okno **klíče** pro **správu &gt;** .
     
     ![Přejít k oknu klíče](./media/storsimple-8000-manage-service/regenregkey2.png)
 
@@ -200,7 +200,7 @@ V Azure Portal se podporují jenom zařízení StorSimple, která používají a
 | Vytvoření, úprava a odstranění svazku                                                                                             | No             |
 | Vytváření, úpravy a odstraňování zásad zálohování                                                                                      | No             |
 | Provedení ručního zálohování                                                                                                            | No             |
-| Proveďte naplánované zálohování.                                                                                                         | Nelze použít |
+| Proveďte naplánované zálohování.                                                                                                         | Neuvedeno |
 | Obnovení ze sady záloh                                                                                                        | No             |
 | Klonování na zařízení se systémem Update 3,0 a novějším <br> Na zdrojovém zařízení je spuštěná verze před aktualizací 3,0.                                | Yes            |
 | Klonování na zařízení s verzemi staršími než aktualizace 3,0                                                                          | No             |
@@ -214,4 +214,4 @@ V Azure Portal se podporují jenom zařízení StorSimple, která používají a
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [procesu nasazení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 * Přečtěte si další informace o [správě účtu úložiště StorSimple](storsimple-8000-manage-storage-accounts.md).
-* Přečtěte si další informace o tom, jak [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o tom, jak [používat službu StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

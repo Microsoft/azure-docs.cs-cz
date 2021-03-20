@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92057973"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>Rychlý Start: vytvoření Azure Firewall s více veřejnými IP adresami – šablona ARM
@@ -45,7 +45,7 @@ V šabloně je definováno víc prostředků Azure:
 - [**Microsoft. Network/publicIPPrefix**](/azure/templates/microsoft.network/publicipprefixes)
 - [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
@@ -61,7 +61,7 @@ Nasazení šablony ARM do Azure:
 
 2. Na portálu na stránce **vytvořit Azure firewall s více adresami veřejné IP adresy** zadejte nebo vyberte následující hodnoty:
    - Předplatné: vyberte z existujících předplatných. 
-   - Skupina prostředků: vyberte z existujících skupin prostředků nebo vyberte **vytvořit novou**a vyberte **OK**.
+   - Skupina prostředků: vyberte z existujících skupin prostředků nebo vyberte **vytvořit novou** a vyberte **OK**.
    - Umístění: vyberte umístění.
    - Uživatelské jméno správce: zadejte uživatelské jméno pro uživatelský účet správce. 
    - Heslo správce: zadejte heslo nebo klíč správce.

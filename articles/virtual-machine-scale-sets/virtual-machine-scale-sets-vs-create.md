@@ -10,10 +10,10 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86503077"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Jak vytvořit sadu škálování virtuálního počítače pomocí sady Visual Studio
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak nasadit sadu škálování virtuálních poč�
 
 Nasazení skupiny prostředků Azure je způsob, jak seskupit a publikovat sadu souvisejících prostředků Azure v rámci jediné operace nasazení. Další informace najdete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít nasazovat Virtual Machine Scale Sets v aplikaci Visual Studio, potřebujete následující požadavky:
 
@@ -38,9 +38,9 @@ Chcete-li začít nasazovat Virtual Machine Scale Sets v aplikaci Visual Studio,
 
 1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
 
-1. V možnosti **vytvořit nový projekt**vyberte **skupinu prostředků Azure** pro C# a pak vyberte **Další**.
+1. V možnosti **vytvořit nový projekt** vyberte **skupinu prostředků Azure** pro C# a pak vyberte **Další**.
 
-1. V **konfiguraci nového projektu**zadejte název a vyberte **vytvořit**.
+1. V **konfiguraci nového projektu** zadejte název a vyberte **vytvořit**.
 
     ![Název a vytvoření projektu](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
 
@@ -64,11 +64,11 @@ Nástroj pro vyrovnávání zatížení umožňuje připojit se k instancím vir
 
 Nasazením šablony Azure Resource Manager vytvořte prostředek sady škálování virtuálního počítače:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt a vyberte **nasadit**  >  **Nový**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **nasadit**  >  **Nový**.
 
     ![Nasazení projektu](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
-1. V možnosti **nasadit do skupiny prostředků**vyberte předplatné, které chcete použít, a vyberte skupinu prostředků. V případě potřeby můžete vytvořit skupinu prostředků.
+1. V možnosti **nasadit do skupiny prostředků** vyberte předplatné, které chcete použít, a vyberte skupinu prostředků. V případě potřeby můžete vytvořit skupinu prostředků.
 
 1. V dalším kroku vyberte **Upravit parametry** a zadejte parametry, které se předávají do šablony.
 
@@ -78,7 +78,7 @@ Nasazením šablony Azure Resource Manager vytvořte prostředek sady škálová
 
     ![Upravit parametry nasazení](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
 
-1. V v **nasazení do skupiny prostředků**vyberte **nasadit**. Akce spustí skript **Deploy-AzureResourceGroup.ps1** . V okně **výstup** se zobrazí průběh nasazení.
+1. V v **nasazení do skupiny prostředků** vyberte **nasadit**. Akce spustí skript **Deploy-AzureResourceGroup.ps1** . V okně **výstup** se zobrazí průběh nasazení.
 
    ![Výstup zobrazuje výsledky](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 

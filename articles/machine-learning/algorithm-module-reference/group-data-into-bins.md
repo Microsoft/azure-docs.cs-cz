@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/13/2020
 ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91998494"
 ---
 # <a name="group-data-into-bins-module"></a>Seskupit data do modulu přihrádky
@@ -23,7 +23,7 @@ Tento článek popisuje, jak použít modul seskupit data do přihrádek v Návr
 Modul seskupit data do přihrádek podporuje více možností pro binningu data. Můžete přizpůsobit, jak jsou okraje přihrádky nastaveny a jak jsou hodnoty rozděleny do přihrádek. Můžete například:  
 
 + Ručně zadejte řadu hodnot, které budou sloužit jako hranice přihrádky.  
-+ Přiřaďte hodnoty do přihrádek pomocí *quantiles*nebo percentilu.  
++ Přiřaďte hodnoty do přihrádek pomocí *quantiles* nebo percentilu.  
 + Vynutit rovnoměrné rozložení hodnot do přihrádek.  
 
 ## <a name="more-about-binning-and-grouping"></a>Další informace o binningu a seskupení
@@ -51,7 +51,7 @@ Vzhledem k tomu, že existuje mnoho způsobů, jak seskupovat data, je vše při
 
 ## <a name="how-to-configure-group-data-into-bins"></a>Konfigurace dat skupin do přihrádek
 
-1. Přidejte do kanálu modul **data skupiny** do kanálu v návrháři. Tento modul můžete najít v **transformaci dat**kategorií.
+1. Přidejte do kanálu modul **data skupiny** do kanálu v návrháři. Tento modul můžete najít v **transformaci dat** kategorií.
 
 2. Připojte datovou sadu, která má číselná data pro přihrádku. Kvantizační lze použít pouze pro sloupce, které obsahují číselná data. 
 
@@ -70,16 +70,16 @@ Vzhledem k tomu, že existuje mnoho způsobů, jak seskupovat data, je vše při
     > [!Note]
     > V nástroji Studio (Classic) je definovaný režim *entropie MDL* a neexistuje žádný odpovídající otevřený zdrojový balíček, který by se mohl ještě využít pro podporu v návrháři.        
 
-4. Pokud používáte režimy **quantiles** a **stejné šířky** binningu, použijte možnost **počet přihrádek** k určení, kolik přihrádek nebo *quantiles*chcete vytvořit.
+4. Pokud používáte režimy **quantiles** a **stejné šířky** binningu, použijte možnost **počet přihrádek** k určení, kolik přihrádek nebo *quantiles* chcete vytvořit.
 
-5. Pro **sloupce do přihrádky**použijte selektor sloupců a vyberte sloupce, které mají hodnoty, které chcete vyhodnotit. Sloupce musí být číselného datového typu.
+5. Pro **sloupce do přihrádky** použijte selektor sloupců a vyberte sloupce, které mají hodnoty, které chcete vyhodnotit. Sloupce musí být číselného datového typu.
 
     Stejné pravidlo binningu se použije na všechny použitelné sloupce, které vyberete. Pokud potřebujete vytvořit přihrádku některých sloupců pomocí jiné metody, použijte pro každou sadu sloupců samostatnou instanci dat skupiny do modulu bin.
 
     > [!WARNING]
     > Pokud vyberete sloupec, který není povoleným typem, je vygenerována Běhová chyba. Modul vrátí chybu, jakmile najde libovolný sloupec nepovoleného typu. Pokud se zobrazí chyba, zkontrolujte všechny vybrané sloupce. Chyba nezobrazuje seznam všech neplatných sloupců.
 
-6. V **režimu výstupu**určete, jak chcete výstup hodnot quantized:
+6. V **režimu výstupu** určete, jak chcete výstup hodnot quantized:
 
     + **Append**: vytvoří nový sloupec s hodnotami rozdělený a připojí ho ke vstupní tabulce.
 

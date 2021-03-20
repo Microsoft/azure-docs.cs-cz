@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90884421"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Společné umístění tabulky v Azure Database for PostgreSQL – měřítko (Citus)
@@ -96,7 +96,7 @@ Následně je třeba, aby se výsledky ze dvou kroků spojily s aplikací.
 
 Spuštění dotazů musí prostudovat data v horizontálních oddílů rozptýlených napříč uzly.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Horizontálních oddílů":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Neefektivní dotazy":::
 
 V takovém případě distribuce dat vytváří zásadní nevýhody:
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 Vzhledem k tomu, že filtr a spojení tenant_id, Citus (škálování) ví, že je možné odpovědět na celý dotaz pomocí sady společně umístěných horizontálních oddílů, které obsahují data tohoto konkrétního tenanta. Jeden uzel PostgreSQL může odpovědět na dotaz v jednom kroku.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Horizontálních oddílů":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Lepší dotaz":::
 
 V některých případech se dotazy a schémata tabulek musí změnit tak, aby zahrnovaly ID tenanta v jedinečných omezeních a podmínkách připojení. Tato změna je obvykle jednoduchá.
 

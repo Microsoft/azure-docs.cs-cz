@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878540"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo VNet-to-VNet: Azure Portal
@@ -28,8 +28,10 @@ Tento článek poskytuje pokyny k vytvoření a konfiguraci zásad IPsec/IKE a p
 ### <a name="considerations"></a>Požadavky
 
 * Zásady IPsec/IKE fungují jenom na následujících SKU brány:
-  * ***VpnGw1 ~ 5 a VpnGw1AZ ~ 5AZ** _ _ ***Standard** _ a _*_HighPerformance_*_ _ pro dané připojení můžete zadat pouze ***jednu** kombinaci zásad.
-  _ Musíte zadat všechny algoritmy a parametry pro protokol IKE (hlavní režim) i pro protokol IPsec (rychlý režim). Zadání částečných zásad není povoleno.
+  * ***VpnGw1 ~ 5 a VpnGw1AZ ~ 5AZ***
+  * ***Standardní** _ a _ *_HighPerformance_**
+* Pro jedno připojení můžete zadat pouze ***jednu*** kombinaci zásad.
+* Je nutné zadat všechny algoritmy a parametry pro protokol IKE (hlavní režim) i pro protokol IPsec (rychlý režim). Zadání částečných zásad není povoleno.
 * Pokud chcete zajistit, aby se zásady na místních zařízeních VPN podporovaly, kontaktujte specifikace dodavatele zařízení VPN. Připojení S2S nebo VNet-to-VNet nelze nastavit, pokud jsou zásady nekompatibilní.
 
 ## <a name="workflow"></a><a name ="workflow"></a>Pracovní postup
