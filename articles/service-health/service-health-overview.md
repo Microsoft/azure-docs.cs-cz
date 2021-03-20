@@ -4,10 +4,10 @@ description: Přečtěte si, jak vám Service Health poskytne přizpůsobitelný
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90967782"
 ---
 # <a name="service-health-overview"></a>Přehled Service Health
@@ -54,7 +54,7 @@ Můžete získat odkaz na problém, který se má použít v systému pro správ
 
 [![Správa problému se službou – Správa problémů](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
-## <a name="get-support-from-microsoft"></a>Získat podporu od Microsoftu
+## <a name="get-support-from-microsoft"></a>Získání podpory od Microsoftu
 
 Pokud je váš prostředek ponechán v nesprávném stavu i po vyřešení problému, obraťte se na podporu.  Použijte odkazy na podporu na pravé straně stránky.  
 

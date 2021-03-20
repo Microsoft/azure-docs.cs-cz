@@ -4,13 +4,13 @@ description: Referenční informace pro událost selhání plánu úlohy Batch T
 ms.topic: reference
 ms.date: 09/20/2020
 ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91852140"
 ---
-# <a name="task-schedule-fail-event"></a>Událost selhání plánu úlohy
+# <a name="task-schedule-fail-event"></a>Událost selhání plánu úloh
 
  Tato událost je generována v případě, že se úloha nezdařila a bude opakována později. Jedná se o dočasnou chybu v době plánování úkolu v důsledku omezení prostředků, například nedostatek slotů dostupných na uzlech ke spuštění úlohy se `requiredSlots` zadaným.
 

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: 74f65780594c7bc938ed6d59437473c4363e5848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90982044"
 ---
 # <a name="linux-performance-troubleshooting"></a>Řešení potíží s výkonem pro Linux
@@ -121,7 +121,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 
 `vmstat` poskytuje podobné informace `mpstat` a `top` výčet počtu procesů, které čekají na procesor (sloupec r), statistiku paměti a procento času procesoru stráveného v jednotlivých pracovních stavech.
 
-## <a name="memory"></a>Paměť
+## <a name="memory"></a>Memory (Paměť)
 
 Paměť je velice důležitá a naštěstí snadné, což je prostředek ke sledování. Některé nástroje mohou hlásit procesor i paměť, například `vmstat` . Ale nástroje, jako například `free` , mohou být stále užitečné pro rychlé ladění.
 

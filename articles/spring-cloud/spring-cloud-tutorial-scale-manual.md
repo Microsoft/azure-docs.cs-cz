@@ -8,10 +8,10 @@ author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 5632f9a6126615255306cc89425bd08a9ffa9753
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96531798"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Škálování aplikace ve jarním cloudu Azure
@@ -28,7 +28,7 @@ Po dokončení budete potřebovat, abyste v každé aplikaci v rámci služby pr
 
 Chcete-li provést tyto postupy, potřebujete:
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 * Nasazená instance služby jarní cloudová služba Azure  Pokud chcete začít, postupujte podle pokynů k [rychlému zprovoznění nasazení aplikace přes Azure CLI](spring-cloud-quickstart.md) .
 * V instanci služby už je vytvořená aspoň jedna aplikace.
 

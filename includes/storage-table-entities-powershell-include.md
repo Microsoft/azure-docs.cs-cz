@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67174682"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -18,7 +18,7 @@ ms.locfileid: "67174682"
 
 Teď, když máte tabulku, se podívejme na to, jak spravovat entity nebo řádky v tabulce. 
 
-Entity můžou mít až 255 vlastností, včetně tří systémových vlastností: **PartitionKey**, **RowKey**a **timestamp**. Zodpovídáte za vkládání a aktualizaci hodnot **PartitionKey** a **RowKey**. Server spravuje hodnotu **časového razítka**, kterou nelze upravit. Společně **PartitionKey** a **RowKey** jednoznačně identifikují každou entitu v tabulce.
+Entity můžou mít až 255 vlastností, včetně tří systémových vlastností: **PartitionKey**, **RowKey** a **timestamp**. Zodpovídáte za vkládání a aktualizaci hodnot **PartitionKey** a **RowKey**. Server spravuje hodnotu **časového razítka**, kterou nelze upravit. Společně **PartitionKey** a **RowKey** jednoznačně identifikují každou entitu v tabulce.
 
 * **PartitionKey**: Určuje oddíl, ve kterém je entita uložená.
 * **RowKey**: jednoznačně identifikuje entitu v rámci oddílu.
@@ -60,7 +60,7 @@ Add-AzTableRow `
 Pomocí příkazu **Get-AzTableRow** můžete zadávat dotazy na entity v tabulce.
 
 > [!NOTE]
-> Rutiny **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName**a **Get-AzureStorageTableRowByCustomFilter** jsou zastaralé a v budoucí aktualizaci verze se odeberou.
+> Rutiny **Get-AzureStorageTableRowAll**, **Get-AzureStorageTableRowByPartitionKey**, **Get-AzureStorageTableRowByColumnName** a **Get-AzureStorageTableRowByCustomFilter** jsou zastaralé a v budoucí aktualizaci verze se odeberou.
 
 #### <a name="retrieve-all-entities"></a>Načíst všechny entity
 
@@ -101,7 +101,7 @@ Get-AzTableRow -table $cloudTable `
 
 Tento dotaz načte jeden záznam.
 
-|pole|value|
+|pole|hodnota|
 |----|----|
 | UserID | 1 |
 | username | Chris |
@@ -118,7 +118,7 @@ Get-AzTableRow `
 
 Tento dotaz načte jeden záznam.
 
-|pole|value|
+|pole|hodnota|
 |----|----|
 | UserID | 1 |
 | username | Chris |
@@ -153,7 +153,7 @@ Get-AzTableRow -table $cloudTable `
 
 Ve výsledcích se zobrazí záznam Jessie2.
 
-|pole|value|
+|pole|hodnota|
 |----|----|
 | UserID | 2 |
 | username | Jessie2 |

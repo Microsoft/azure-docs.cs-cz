@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96169439"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Postupy: Konfigurace MSAL pro iOS a macOS pro používání různých zprostředkovatelů identity
@@ -180,7 +180,7 @@ Je možné, že budete muset do každého svrchovaného cloudu předat různé o
 
 Když je adresa URL autority nastavená na `"login.microsoftonline.com/common"` , uživatel se přihlásí do svého domovského tenanta. Některé aplikace ale můžou potřebovat podepsat uživatele do jiného tenanta a některé aplikace fungují jenom s jedním klientem.
 
-Pokud chcete uživatele podepsat do konkrétního tenanta, nakonfigurujte ho `MSALPublicClientApplication` pomocí konkrétní autority. Příklad:
+Pokud chcete uživatele podepsat do konkrétního tenanta, nakonfigurujte ho `MSALPublicClientApplication` pomocí konkrétní autority. Například:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 

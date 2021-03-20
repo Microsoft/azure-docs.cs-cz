@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
 ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96121752"
 ---
-# <a name="connect-data-from-threat-intelligence-providers"></a>Připojení dat od zprostředkovatelů pro analýzu hrozeb
+# <a name="connect-data-from-threat-intelligence-providers"></a>Propojení dat od poskytovatelů analýzy hrozeb
 
 > [!IMPORTANT]
 > Datové konektory pro analýzu hrozeb v Azure Sentinel jsou momentálně ve verzi Public Preview.
@@ -76,7 +76,7 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (TI
 
 2. [Konfigurace oprávnění rozhraní API](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) pro registrovanou aplikaci: přidejte do registrované aplikace oprávnění aplikace Microsoft Graph **ThreatIndicators. OwnedBy** .
 
-3. Požádejte správce tenanta Azure Active Directory o udělení souhlasu správce k registrované aplikaci pro vaši organizaci. Z Azure Portal: **Azure Active Directory**  >  **App registrations**  >  **\<_app name_>**  >  **oprávnění k rozhraní API**  >  **pro \<_tenant name_> zobrazení Azure Active Directory registrace aplikací udělují správcům udělení souhlasu správce**.
+3. Požádejte správce tenanta Azure Active Directory o udělení souhlasu správce k registrované aplikaci pro vaši organizaci. Z Azure Portal:   >    >  **\<_app name_>**  >  **oprávnění k rozhraní API**  >  **pro \<_tenant name_> zobrazení Azure Active Directory registrace aplikací udělují správcům udělení souhlasu správce**.
 
 4. Pomocí přímé integrace s rozhraním Microsoft Graph Security tiIndicators API pro odesílání ukazatelů do Azure Sentinel určete následující nastavení:
     
@@ -86,7 +86,7 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (TI
     
     c. Pro akci zadejte výstrahu.
 
-5. V Azure Portal přejděte na **Azure Sentinel**  >  **datové konektory** Azure Sentinel a pak vyberte konektor **platformy pro analýzu hrozeb (Preview)** .
+5. V Azure Portal přejděte na   >  **datové konektory** Azure Sentinel a pak vyberte konektor **platformy pro analýzu hrozeb (Preview)** .
 
 6. Vyberte **stránku otevřít konektor** a pak **připojit**.
 
@@ -102,7 +102,7 @@ Pomocí jednoho z produktů s integrovanými platformami pro analýzu hrozeb (TI
 
 ### <a name="instructions"></a>Pokyny
 
-1. V Azure Portal přejděte na **Azure Sentinel**  >  **datové konektory** Azure Sentinel a pak vyberte konektor **Threat Intelligence-TAXII (Preview)** .
+1. V Azure Portal přejděte na   >  **datové konektory** Azure Sentinel a pak vyberte konektor **Threat Intelligence-TAXII (Preview)** .
 
 2. Vyberte **stránku otevřít konektor**.
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68727199"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Komponenty a hranice informačních systémů Azure
@@ -69,7 +69,7 @@ Hostitel a nativní jsou posílené image operačních systémů, které hostuj�
 
 U interních komponent Azure, které běží na virtuálních počítačích hostovaných operačních systémů, nejsou žádné možnosti pro spuštění protokol RDP (Remote Desktop Protocol). Všechny změny nastavení konfigurace standardních hodnot musí projít procesem správy změn a vydaných verzí.
 
-## <a name="azure-datacenters"></a>Datová centra Azure
+## <a name="azure-datacenters"></a>datacentra Azure
 Tým Microsoft Cloud infrastruktury a provozu (MCIO) spravuje fyzickou infrastrukturu a zařízení Datacenter pro všechny online služby společnosti Microsoft. MCIO je primárně zodpovědný za správu fyzického a environmentálního řízení v datových centrech a také pro správu a podporu zařízení s vnější hraniční sítí (jako jsou hraniční směrovače a směrovače Datacenter). MCIO je také zodpovědný za nastavení minimálního hardwarového serveru v rackech v datacentru. Zákazníci nemají žádnou přímou interakci s Azure.
 
 ## <a name="service-management-and-service-teams"></a>Týmy pro správu a údržbu služeb
@@ -84,7 +84,7 @@ Týmy služby jsou:
 - Služby pro cloudovou inženýry
 - ISSD: zabezpečení
 - Vícefaktorového ověřování
-- Databáze SQL
+- SQL Database
 - Storage
 
 ## <a name="types-of-users"></a>Typy uživatelů

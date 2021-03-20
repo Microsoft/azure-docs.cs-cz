@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68989682"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rychlý start: Stažení sestavy auditování pomocí portálu Azure Portal
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak stáhnout soubor CSV protokolů auditu 
 Budete potřebovat:
 
 * Tenanta Azure Active Directory. 
-* Uživatel, který je v roli **Správce zabezpečení**, **Čtenář zabezpečení**nebo globální role **správce** pro tenanta. Každý uživatel v tenantovi může navíc použít vlastní protokoly auditu.
+* Uživatel, který je v roli **Správce zabezpečení**, **Čtenář zabezpečení** nebo globální role **správce** pro tenanta. Každý uživatel v tenantovi může navíc použít vlastní protokoly auditu.
 
 ## <a name="quickstart-download-an-audit-report"></a>Rychlý start: Stažení sestavy auditování
 
@@ -43,7 +43,7 @@ Budete potřebovat:
 4. Pokud chcete zobrazit protokoly auditu za posledních 24 hodin, v rozevíracím seznamu filtru **Rozsah data** zvolte **Posledních 24 hodin** a vyberte **Použít**. 
 5. Vyberte tlačítko **Stáhnout** , jako formát souboru vyberte **CSV** a zadejte název souboru, ze kterého se má stáhnout soubor CSV obsahující filtrované záznamy. 
 
-![Generování sestav](./media/quickstart-download-audit-report/download-audit-logs.png)
+![Vytváření sestav](./media/quickstart-download-audit-report/download-audit-logs.png)
 
 ## <a name="next-steps"></a>Další kroky
 

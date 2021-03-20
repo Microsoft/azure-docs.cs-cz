@@ -6,10 +6,10 @@ ms.date: 03/22/2019
 ms.author: sngun
 ms.custom: seo-java-september2019
 ms.openlocfilehash: a8162afadb5a7d327804d7202b29ca0dccf275c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95972414"
 ---
 Azure Portal sleduje propustnost účtu Cosmos DB, úložiště, dostupnost, latenci a konzistenci. Grafy pro metriky přidružené k [Azure Cosmos DB smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) ukazují hodnotu SLA v porovnání s skutečným výkonem. Tato sada metrik umožňuje monitorovat SLA transparentním způsobem.

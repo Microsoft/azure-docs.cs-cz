@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 4a3604a3256fb2d3f4253891bbc28c7685748cd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75651017"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Konfigurace a schválení přístupu za běhu pro Azure Managed Applications
@@ -35,11 +35,11 @@ Tento článek se zaměřuje na akce, které příjemci převezmou, aby mohli po
 
 ## <a name="enable-during-deployment"></a>Povolit během nasazení
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Najde položku Marketplace pro spravovanou aplikaci s povoleným JIT. Vyberte **Vytvořit**.
 
-1. Když poskytujete hodnoty pro novou spravovanou aplikaci, krok **Konfigurace JIT** vám umožní povolit nebo zakázat přístup JIT pro spravovanou aplikaci. Pro **Povolení přístupu JIT**vyberte **Ano** . Tato možnost je ve výchozím nastavení vybraná pro spravované aplikace, které jsou definované s povolenou podporou JIT na webu Marketplace.
+1. Když poskytujete hodnoty pro novou spravovanou aplikaci, krok **Konfigurace JIT** vám umožní povolit nebo zakázat přístup JIT pro spravovanou aplikaci. Pro **Povolení přístupu JIT** vyberte **Ano** . Tato možnost je ve výchozím nastavení vybraná pro spravované aplikace, které jsou definované s povolenou podporou JIT na webu Marketplace.
 
    ![Konfigurace přístupu](./media/approve-just-in-time-access/configure-jit-access.png)
 
@@ -103,7 +103,7 @@ Postup při schvalování žádostí prostřednictvím Azure AD Privileged Ident
 
    ![Vybrat schvalovat žádosti](./media/approve-just-in-time-access/select-approve-requests.png)
 
-1. Vyberte **spravované aplikace Azure**a vyberte žádost ke schválení.
+1. Vyberte **spravované aplikace Azure** a vyberte žádost ke schválení.
 
    ![Vybrat žádosti](./media/approve-just-in-time-access/view-requests.png)
 

@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741328"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Přizpůsobení životního cyklu webové role nebo role pracovního procesu v .NET
@@ -37,7 +37,7 @@ Při rozšiřování **RoleEntryPoint** byste měli mít na paměti následujíc
 Pokud se vaše role nespustí nebo je recyklace mezi inicializací, zaneprázdněnou a stavem zastavení, váš kód může při každém restartování role vystavit neošetřenou výjimku v rámci jedné z událostí životního cyklu. V takovém případě použijte událost [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) k určení příčiny výjimky a patřičně ji zpracujte. Vaše role může být vrácena také z metody [Run](/previous-versions/azure/reference/ee772746(v=azure.100)) , což způsobí, že se role restartuje. Další informace o stavech nasazení najdete v tématu [běžné problémy, které způsobují recyklaci rolí](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
-> Pokud používáte **nástroje Azure pro Microsoft Visual Studio** k vývoji vaší aplikace, šablony projektu role automaticky rozšířily třídu **RoleEntryPoint** pro vás, v souborech *WebRole.cs* a *WorkerRole.cs* .
+> Pokud k vývoji vaší aplikace používáte **nástroje Azure pro Microsoft Visual Studio** , šablony projektu role automaticky rozšířily třídu **RoleEntryPoint** , a to v souborech *webrole. cs* a *role pracovního procesu. cs* .
 > 
 > 
 

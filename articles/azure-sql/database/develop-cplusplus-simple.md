@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
 ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674757"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k SQL Database pomocí jazyka C a C++
@@ -81,7 +81,7 @@ Případně můžete vytvořit soubor DSN pomocí průvodce, který se spustí, 
 
 ![Vytvořit soubor DSN](./media/develop-cplusplus-simple/datasource.png)
 
-Blahopřejeme vám. Úspěšně jste se připojili k Azure SQL pomocí C++ a ODBC ve Windows. Můžete pokračovat v čtení, aby to bylo stejné i pro Linux Platform.
+Gratulujeme! Úspěšně jste se připojili k Azure SQL pomocí C++ a ODBC ve Windows. Můžete pokračovat v čtení, aby to bylo stejné i pro Linux Platform.
 
 ## <a name="step-5-connecting-from-a-linux-cc-application"></a><a id="Linux"></a>Krok 5: připojení z linuxové aplikace C/C++
 
@@ -131,7 +131,7 @@ Pokud bylo připojení úspěšné, měl by se teď zobrazit aktuální název d
 
 ![Výstup okna konzoly pro Linux](./media/develop-cplusplus-simple/linuxconsolewindow.png)
 
-Blahopřejeme vám. Úspěšně jste dokončili kurz a můžete se teď připojit k Azure SQL Database z C++ na platformách Windows a Linux.
+Gratulujeme! Úspěšně jste dokončili kurz a můžete se teď připojit k Azure SQL Database z C++ na platformách Windows a Linux.
 
 ## <a name="get-the-complete-cc-tutorial-solution"></a><a id="GetSolution"></a>Získání kompletního řešení kurzu pro C/C++
 

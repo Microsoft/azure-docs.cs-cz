@@ -9,16 +9,16 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792344"
 ---
 # <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kódování zpráv X12 v Azure Logic Apps pomocí Enterprise Integration Packu
 
 Pomocí konektoru pro kódování zpráv X12 můžete ověřit vlastnosti specifické pro EDI a partnera, převést zprávy kódované XML na sady transakcí EDI ve výměně a požádat o technické potvrzení, funkční potvrzení nebo obojí.
-Pokud chcete tento konektor použít, musíte ho přidat do existujícího triggeru v aplikaci logiky.
+Pokud chcete tento konektor použít, musíte ho přidat do existující aktivační události v aplikaci logiky.
 
 ## <a name="before-you-start"></a>Než začnete
 

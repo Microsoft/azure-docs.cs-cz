@@ -4,10 +4,10 @@ description: V tomto kurzu se dozvíte, jak spustit úlohu Azure Container Regis
 ms.topic: article
 ms.date: 11/24/2020
 ms.openlocfilehash: 13a4ccac4ea97538583c1c063a6dc61e4d25686a
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96030607"
 ---
 # <a name="tutorial-run-an-acr-task-on-a-defined-schedule"></a>Kurz: spuštění úlohy ACR podle definovaného plánu

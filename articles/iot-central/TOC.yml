@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: Nejnovější aktualizace
       items:
+        - name: Února 2021 nové a aktualizované funkce
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-february-2021/'
         - name: Ledna 2021 nové a aktualizované funkce
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
         - name: Nové a aktualizované funkce z listopadu 2020
@@ -129,6 +131,8 @@
       href: core/concepts-architecture.md
     - name: Příručka pro vývojáře zařízení
       href: core/overview-iot-central-developer.md
+    - name: Průvodce operátorem
+      href: core/overview-iot-central-operator.md
     - name: Průvodce tvůrcem řešení
       href: core/overview-iot-central-solution-builder.md
     - name: Co jsou šablony aplikací?

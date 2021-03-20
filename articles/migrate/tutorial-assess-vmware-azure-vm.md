@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: e7251f8b83110bc24a7ba3d7b078993b39a2c001
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98566888"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-azure-vms"></a>Kurz: posouzení virtuálních počítačů VMware pro migraci na virtuální počítače Azure
@@ -82,7 +82,7 @@ Proveďte posouzení následujícím způsobem:
         - Případně vyberte typ úložiště, který chcete použít pro virtuální počítač, když ho migrujete.
     - V části **rezervované instance** určete, jestli chcete pro virtuální počítač použít rezervované instance, když ho migrujete.
         - Pokud vyberete možnost použití rezervované instance, nemůžete zadat hodnotu "**sleva (%)**" nebo **Doba provozu virtuálního počítače**. 
-        - [Přečtěte si další informace](https://aka.ms/azurereservedinstances).
+        - [Další informace](https://aka.ms/azurereservedinstances).
  1. Ve **velikosti virtuálního počítače**:
      - V části **kritéria změny velikosti** vyberte, pokud chcete vyhodnotit vyhodnocení pro data konfigurace počítače/metadata nebo na data založená na výkonu. Pokud používáte údaje o výkonu:
         - V části **Historie výkonu** určete dobu trvání dat, na které chcete vyhodnotit základ posouzení.

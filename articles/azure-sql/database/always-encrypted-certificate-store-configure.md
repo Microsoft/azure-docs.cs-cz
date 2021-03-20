@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
 ms.openlocfilehash: 60dea826a12ea475806adb6db88faa88e26463a1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674835"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Konfigurace Always Encrypted pomocí úložiště certifikátů Windows
@@ -70,8 +70,8 @@ Pokud se otevře okno **nové pravidlo brány firewall** , přihlaste se k Azure
 
 V této části vytvoříte tabulku, která bude uchovávat data o pacientech. Toto bude zpočátku normální tabulka – v další části budete konfigurovat šifrování.
 
-1. Rozbalte položku **databáze** .
-2. Pravým tlačítkem myši klikněte na **Clinic** Database a klikněte na **Nový dotaz** .
+1. Rozbalte položku **databáze**.
+2. Pravým tlačítkem myši klikněte na **Clinic** Database a klikněte na **Nový dotaz**.
 3. Vložte následující příkaz Transact-SQL (T-SQL) do nového okna dotazu a **Spusťte** jej.
     
     ```tsql
@@ -94,12 +94,12 @@ V této části vytvoříte tabulku, která bude uchovávat data o pacientech. T
 
 SSMS poskytuje průvodce pro snadnou konfiguraci Always Encrypted nastavením CMK, CEK a šifrovaných sloupců.
 
-1. Rozbalte položku **databáze**  >  **Clinic**  >  **Tables** .
+1. Rozbalte položku **databáze**  >  **Clinic**  >  **Tables**.
 2. Klikněte pravým tlačítkem na tabulku **pacientům** a vyberte možnost **Šifrovat sloupce** a otevřete tak Průvodce Always Encrypted:
 
     ![Snímek obrazovky, který zobrazuje Colunns šifrování... možnost nabídky v tabulce pacientů.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
-Průvodce Always Encrypted obsahuje následující části: **Výběr sloupce** , **Konfigurace hlavního klíče** (CMK), **ověřování** a **Shrnutí** .
+Průvodce Always Encrypted obsahuje následující části: **Výběr sloupce**, **Konfigurace hlavního klíče** (CMK), **ověřování** a **Shrnutí**.
 
 ### <a name="column-selection"></a>Výběr sloupce
 
@@ -115,13 +115,13 @@ Nastavte **typ šifrování** pro sloupec **SSN** na **deterministické** a slou
 
 Na stránce **Konfigurace hlavního klíče** je místo, kde jste nastavili CMK a vyberete poskytovatele úložiště klíčů, kde se CMK uloží. V současné době můžete CMK ukládat do úložiště certifikátů Windows, Azure Key Vault nebo modulu hardwarového zabezpečení (HSM). V tomto kurzu se dozvíte, jak ukládat klíče do úložiště certifikátů Windows.
 
-Ověřte, zda je vybráno **úložiště certifikátů systému Windows** , a klikněte na tlačítko **Další** .
+Ověřte, zda je vybráno **úložiště certifikátů systému Windows** , a klikněte na tlačítko **Další**.
 
 ![Konfigurace hlavního klíče](./media/always-encrypted-certificate-store-configure/master-key-configuration.png)
 
 ### <a name="validation"></a>Ověřování
 
-Nyní můžete šifrovat sloupce nebo uložit skript prostředí PowerShell pro pozdější spuštění. Pro tento kurz vyberte **pokračovat** a klikněte na **Další** .
+Nyní můžete šifrovat sloupce nebo uložit skript prostředí PowerShell pro pozdější spuštění. Pro tento kurz vyberte **pokračovat** a klikněte na **Další**.
 
 ### <a name="summary"></a>Souhrn
 
@@ -137,7 +137,7 @@ Po dokončení průvodce je vaše databáze nastavená pro Always Encrypted. Pr�
 * Vytvořil se CEK.
 * Nakonfigurovali jste vybrané sloupce pro šifrování. Vaše tabulka **pacientů** momentálně neobsahuje žádná data, ale všechna existující data ve vybraných sloupcích jsou teď zašifrovaná.
 
-Vytváření klíčů v SSMS můžete ověřit tak, že na stránce **Clinic**  >  **Security**  >  **Always Encrypted Keys** . Teď vidíte nové klíče, které vám průvodce vygeneroval.
+Vytváření klíčů v SSMS můžete ověřit tak, že na stránce **Clinic**  >  **Security**  >  **Always Encrypted Keys**. Teď vidíte nové klíče, které vám průvodce vygeneroval.
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Vytvořit klientskou aplikaci, která funguje s šifrovanými daty
 
@@ -147,7 +147,7 @@ Teď, když je nastavené Always Encrypted, můžete vytvořit aplikaci, která 
 > Vaše aplikace musí při předávání nešifrovaných dat na server pomocí Always Encrypted sloupců používat objekty [SqlParameter](/dotnet/api/system.data.sqlclient.sqlparameter) . Předání literálových hodnot bez použití objektů SqlParameter způsobí výjimku.
 
 1. Otevřete Visual Studio a vytvořte novou konzolovou aplikaci v jazyce C#. Ujistěte se, že je váš projekt nastaven na **.NET Framework 4,6** nebo novější.
-2. Pojmenujte projekt **AlwaysEncryptedConsoleApp** a klikněte na **OK** .
+2. Pojmenujte projekt **AlwaysEncryptedConsoleApp** a klikněte na **OK**.
 
 ![Snímek obrazovky, který zobrazuje nově pojmenovaný projekt AlwaysEncryptedConsoleApp.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
@@ -155,9 +155,9 @@ Teď, když je nastavené Always Encrypted, můžete vytvořit aplikaci, která 
 
 V této části se dozvíte, jak povolit Always Encrypted v připojovacím řetězci databáze. Konzolovou aplikaci, kterou jste právě vytvořili, upravíte v následující části, "Always Encrypted ukázkové konzolové aplikace".
 
-Chcete-li povolit Always Encrypted, je nutné přidat klíčové slovo **nastavení šifrování sloupce** do připojovacího řetězce a nastavit jej na **povoleno** .
+Chcete-li povolit Always Encrypted, je nutné přidat klíčové slovo **nastavení šifrování sloupce** do připojovacího řetězce a nastavit jej na **povoleno**.
 
-Tuto hodnotu můžete nastavit přímo v připojovacím řetězci nebo ji můžete nastavit pomocí [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder). Ukázková aplikace v další části ukazuje, jak používat **SqlConnectionStringBuilder** .
+Tuto hodnotu můžete nastavit přímo v připojovacím řetězci nebo ji můžete nastavit pomocí [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder). Ukázková aplikace v další části ukazuje, jak používat **SqlConnectionStringBuilder**.
 
 > [!NOTE]
 > Toto je jediná změna požadovaná v klientské aplikaci, která je specifická pro Always Encrypted. Pokud máte existující aplikaci, která ukládá připojovací řetězec externě (to znamená v konfiguračním souboru), může být možné povolit Always Encrypted bez změny kódu.
@@ -190,7 +190,7 @@ Tato ukázka předvádí, jak:
 * Vloží data do šifrovaných sloupců.
 * Vyberte záznam filtrováním konkrétní hodnoty v zašifrovaném sloupci.
 
-Obsah **program.cs** nahraďte následujícím kódem. Nahraďte připojovací řetězec pro globální proměnnou connectionString v řádku přímo nad metodou Main s platným připojovacím řetězcem z Azure Portal. Toto je jediná změna, kterou je třeba provést v tomto kódu.
+Obsah **programu program. cs** nahraďte následujícím kódem. Nahraďte připojovací řetězec pro globální proměnnou connectionString v řádku přímo nad metodou Main s platným připojovacím řetězcem z Azure Portal. Toto je jediná změna, kterou je třeba provést v tomto kódu.
 
 Spusťte aplikaci, abyste viděli Always Encrypted v akci.
 
@@ -514,9 +514,9 @@ Můžete vidět, že šifrované sloupce neobsahují žádná data ve formátu p
 
 Pokud chcete pro přístup k datům ve formátu prostého textu použít SSMS, můžete do připojení přidat parametr **nastavení šifrování sloupce = povoleno** .
 
-1. V SSMS klikněte pravým tlačítkem na server v **Průzkumník objektů** a pak klikněte na **Odpojit** .
-2. Kliknutím na **připojit**  >  **databázový stroj** otevřete okno **připojit k serveru** a potom klikněte na **Možnosti** .
-3. Klikněte na **Další parametry připojení** a **nastavení šifrování sloupce typ = povoleno** .
+1. V SSMS klikněte pravým tlačítkem na server v **Průzkumník objektů** a pak klikněte na **Odpojit**.
+2. Kliknutím na **připojit**  >  **databázový stroj** otevřete okno **připojit k serveru** a potom klikněte na **Možnosti**.
+3. Klikněte na **Další parametry připojení** a **nastavení šifrování sloupce typ = povoleno**.
 
     ![Snímek obrazovky zobrazující kartu dalších parametrů připojení s nastavením šifrování sloupce = povolenou v poli](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. Spusťte následující dotaz na **Clinic** Database.

@@ -9,21 +9,21 @@ ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
 ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73182190"
 ---
 ### <a name="what-is-expressroute-direct"></a>Co je ExpressRoute Direct?
 
 ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke globální síti Microsoftu v místech partnerských uzlů strategicky rozmístěných po celém světě. ExpressRoute Direct poskytuje připojení Dual 100 nebo 10 GB/s, které podporuje škálovatelné připojení aktivní/aktivní. 
 
-### <a name="how-do-customers-connect-to-expressroute-direct"></a>Jak se zákazníci připojí k ExpressRoute Direct? 
+### <a name="how-do-customers-connect-to-expressroute-direct"></a>Jak se zákazníci připojí k ExpressRoute Direct? 
 
 Zákazníci budou muset spolupracovat s místními poskytovateli a poskytovateli společného umístění a získat tak připojení k ExpressRoute směrovačům, aby mohli využívat ExpressRoute přímo.
 
-### <a name="what-locations-currently-support-expressroute-direct"></a>Jaká umístění momentálně podporují ExpressRoute Direct? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Jaká umístění momentálně podporují ExpressRoute Direct? 
 
 Zkontrolujte prosím dostupnost na [stránce umístění](../articles/expressroute/expressroute-locations-providers.md). 
 
@@ -31,11 +31,11 @@ Zkontrolujte prosím dostupnost na [stránce umístění](../articles/expressrou
 
 ExpressRoute Direct využije stejnou [podnikovou třídu ExpressRoute](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/). 
 
-### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Jaké scénáře by měly zákazníci zvážit pomocí ExpressRoute Direct?  
+### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Jaké scénáře by měly zákazníci zvážit pomocí ExpressRoute Direct?  
 
-ExpressRoute Direct poskytuje zákazníkům přímé páry portů 100 nebo 10 GB/s v globální páteřní síti Microsoft. Mezi scénáře, které budou zákazníkům poskytovat největší výhody, patří: obrovský příjem dat, fyzická izolace pro regulované trhy a vyhrazená kapacita pro scénář shluku, jako je například vykreslování. 
+ExpressRoute Direct poskytuje zákazníkům přímé páry portů 100 nebo 10 GB/s v globální páteřní síti Microsoft. Mezi scénáře, které budou zákazníkům poskytovat největší výhody, patří: obrovský příjem dat, fyzická izolace pro regulované trhy a vyhrazená kapacita pro scénář shluku, jako je například vykreslování. 
 
-### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Jaký je model fakturace pro ExpressRoute Direct? 
+### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Jaký je model fakturace pro ExpressRoute Direct? 
 
 ExpressRoute Direct se bude účtovat jako pár portů za pevnou částku. Standardní okruhy budou zahrnuté bez dalších hodin a Premium budou mít za mírné doplňkové poplatky. Výstup se bude účtovat podle jednotlivých okruhů na základě zóny umístění partnerského vztahu.
 

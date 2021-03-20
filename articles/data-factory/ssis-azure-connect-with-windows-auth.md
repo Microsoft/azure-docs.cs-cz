@@ -11,10 +11,10 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 77283596e4b0d7e25d757c9de76c284ca4f5d4f2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98556388"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Přístup k úložištím dat a sdíleným složkám s využitím ověřování systému Windows z balíčků SSIS v Azure
@@ -99,7 +99,7 @@ Chcete-li ověřit, zda se můžete připojit k SQL Server místně, proveďte n
 
 3. V SSMS ověřte, jestli se můžete připojit k SQL Server místně.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete získat přístup k SQL Server místním prostředím z balíčků spuštěných v Azure, udělejte tyto věci:
 
@@ -126,7 +126,7 @@ Chcete-li ověřit, zda se můžete připojit ke sdílené složce místně, pro
 
 3. Ověřte, jestli se výpis adresáře pro sdílenou složku místně vrátí.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pro přístup ke sdílené složce v místním prostředí z balíčků spuštěných v Azure proveďte následující akce:
 

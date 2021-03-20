@@ -9,10 +9,10 @@ ms.date: 1/17/2021
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98557650"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>Defender pro aplikaci správy služby ICS pro IoT pro ServiceNow
@@ -153,7 +153,7 @@ Postup při definování pravidla:
 
 ### <a name="send-defender-for-iot-device-attributes"></a>Poslat Defender pro atributy zařízení IoT
 
-Tento článek popisuje, jak nakonfigurovat program Defender pro IoT tak, aby do tabulek ServiceNow nanabízel velký rozsah atributů zařízení. Podrobnosti o druhu nabízených informací do ServiceNow najdete v tématu **_informace o inventáři_*.
+Tento článek popisuje, jak nakonfigurovat program Defender pro IoT tak, aby do tabulek ServiceNow nanabízel velký rozsah atributů zařízení. Podrobnosti o druhu nabízených informací do ServiceNow najdete v ***informacích o inventáři*** .
 
 K odeslání atributů do ServiceNow je nutné mapovat místní konzolu pro správu na instanci ServiceNow. Tím zajistíte, aby platforma Defender pro IoT mohla komunikovat s instancí a ověřit ji.
 
@@ -161,7 +161,7 @@ Přidání instance ServiceNow:
 
 1. Přihlaste se k programu Defender pro místní konzolu pro správu IoT.
 
-1. Vyberte _ *Systémová nastavení** a pak **ServiceNow** z části věnované integraci konzoly pro správu místního prostředí.
+1. Vyberte **nastavení systému** a potom **ServiceNow** z části věnované integraci konzoly pro správu.
 
       :::image type="content" source="media/integration-servicenow/servicenow.png" alt-text="Vyberte tlačítko ServiceNow.":::
 
@@ -329,7 +329,7 @@ Tento článek popisuje informace o výstrahách zařízení nabízených do Ser
 | Vytvořeno | Čas a datum, kdy byla výstraha vygenerována. |
 | Modul | Modul, který zjistil událost. |
 | Nadpis | Název výstrahy. |
-| Popis | Popis výstrahy |
+| Description | Popis výstrahy |
 | Protokol | Protokol zjištěný v provozu. |
 | Závažnost | Závažnost výstrahy definovaná v programu Defender pro IoT |
 | Náplně | Název senzoru, který zjistil provoz. |
@@ -349,9 +349,9 @@ Vyberte položku ve sloupci vytvořeno pro zobrazení informací o výstrahách 
 
 Tento článek popisuje typ výstrah, které jednotlivé moduly aktivují.
 
-| Typ upozornění | Popis |
+| Typ upozornění | Description |
 |--|--|
-| Upozornění na porušení zásad | Aktivováno, když modul porušení zásad detekuje odchylku od dříve zjištěného provozu. Příklad: <br /><br />– Zjistilo se nové zařízení. <br /><br />– V zařízení se zjistila nová konfigurace. <br /><br />– Zařízení, které není definované jako programové zařízení, provede změnu v programování. <br /><br />– Změnila se verze firmwaru. |
+| Upozornění na porušení zásad | Aktivováno, když modul porušení zásad detekuje odchylku od dříve zjištěného provozu. Například: <br /><br />– Zjistilo se nové zařízení. <br /><br />– V zařízení se zjistila nová konfigurace. <br /><br />– Zařízení, které není definované jako programové zařízení, provede změnu v programování. <br /><br />– Změnila se verze firmwaru. |
 | Výstrahy porušení protokolu | Aktivováno, když modul porušení protokolu detekuje struktury paketů nebo hodnoty polí, které nevyhovují specifikaci protokolu. |
 | Provozní výstrahy | Aktivuje se, když provozní modul detekuje provozní incidenty sítě nebo zařízení nefunguje. Například síťové zařízení bylo zastaveno pomocí příkazu zastavit PLC nebo rozhraní na senzoru zastavilo monitorování provozu. |
 | Výstrahy malwaru | Aktivováno, když malware detekuje aktivitu škodlivou v síti, například známé útoky, jako je například Conficker. |

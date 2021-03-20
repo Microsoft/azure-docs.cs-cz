@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2c327154e2f4eae735e7078be3b057b1d8cf1c5
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 99b74319581b4e74c63045afe73ee66b6efcf53c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490870"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585311"
 ---
 # <a name="azure-ad-built-in-roles"></a>Předdefinované role Azure AD
 
@@ -227,9 +227,9 @@ Role [správce zásad ověřování](#authentication-policy-administrator) má o
 
 | Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | Ne | Ne | Ne |
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | Ne | Ne | Ne |
-| Správce zásad ověřování | Ne |Ne | Ano | Ano | Ano |
+| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No |
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No |
+| Správce zásad ověřování | No |No | Yes | Yes | Yes |
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
@@ -262,9 +262,9 @@ Role správce [ověřování](#authentication-administrator) a [správce privile
 
 | Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | Ne | Ne | Ne |
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | Ne | Ne | Ne |
-| Správce zásad ověřování | Ne | Ne | Ano | Ano | Ano |
+| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No |
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No |
+| Správce zásad ověřování | No | No | Yes | Yes | Yes |
 
 > [!IMPORTANT]
 > Tato role v tuto chvíli není schopná spravovat nastavení vícefaktorového ověřování na portálu pro správu starších verzí.
@@ -1400,9 +1400,9 @@ Role [správce zásad ověřování](#authentication-policy-administrator) má o
 
 | Role | Umožňuje spravovat metody ověřování uživatele. | Správa MFA pro jednotlivé uživatele | Správa nastavení vícefaktorového ověřování | Správa zásad metod ověřování | Spravovat zásady ochrany heslem |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | Ne | Ne | Ne |
-| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | Ne | Ne | Ne |
-| Správce zásad ověřování | Ne | Ne | Ano | Ano | Ano |
+| Správce ověřování | Ano pro některé uživatele (viz výše) | Ano pro některé uživatele (viz výše) | No | No | No |
+| Správce privilegovaného ověřování| Ano pro všechny uživatele | Ano pro všechny uživatele | No | No | No |
+| Správce zásad ověřování | No | No | Yes | Yes | Yes |
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
@@ -1415,7 +1415,7 @@ Role [správce zásad ověřování](#authentication-policy-administrator) má o
 
 
 > [!IMPORTANT]
-> Tato role v tuto chvíli není schopná spravovat MFA pro uživatele na portálu pro správu starší verze MFA. Stejné funkce můžete provést pomocí modulu [set-MsolUser](https://docs.microsoft.com/powershell/module/msonline/set-msoluser) RUTINY Azure AD PowerShell.
+> Tato role v tuto chvíli není schopná spravovat MFA pro uživatele na portálu pro správu starší verze MFA. Stejné funkce můžete provést pomocí modulu [set-MsolUser](/powershell/module/msonline/set-msoluser) RUTINY Azure AD PowerShell.
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |

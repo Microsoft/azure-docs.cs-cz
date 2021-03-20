@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73501768"
 ---
 # <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Vytvoření testu přes Internet Analyzer pomocí portálu (Preview)
@@ -35,7 +35,7 @@ Verze Public Preview je k dispozici pro použití globálně; úložiště dat j
 5. Na stránce **Internet Analyzer (Preview)** klikněte na **vytvořit** a otevřete stránku **vytvořit analyzátor sítě Internet** .
 6. Pro prostředek nástroje Internet Analyzer zadejte následující nastavení konfigurace:
 
-    * **Předplatné:** Předplatné Azure pro hostování nového prostředku Internet Analyzer. ***Použijte stejné ID předplatného, které se používá k vyžádání přístupu k verzi Preview.***
+    * **Předplatné:** Předplatné Azure pro hostování nového prostředku Internet Analyzer. **_Použijte stejné ID předplatného, které se používá k vyžádání přístupu k verzi Preview._**
     * **Skupina prostředků:** Skupina prostředků Azure, ve které se vytvoří nový prostředek Internet Analyzer. Pokud nemáte existující skupinu prostředků, můžete vytvořit novou.
     * **Název:** Název nového profilu prostředku nástroje Internet Analyzer.
     * **Oblast:** Veřejná oblast Azure, ve které se prostředek vytvoří. Během období Preview je k dispozici pouze *USA – západ 2* .
@@ -65,12 +65,12 @@ Splnění základních kroků je předpokladem pro konfiguraci testu a vložení
 4. Kliknutím na **Přidat** přidejte koncový bod do testu.
 5. Opakujte kroky 1-4 ke konfiguraci druhého koncového bodu. Koncový bod B je vždy měřen jako relativní ke koncovému bodu A – při konfiguraci koncových bodů zvažte, který koncový bod by měl být testovacím ovládacím prvkem.
 6. Kliknutím na tlačítko **Uložit** uložte test. Po uložení testu již nelze upravovat koncové body určitého testu.
-7. Vyberte testy, které chcete spustit, a klikněte na **Spustit test**. Tím se změní ***stav*** testů na ***spuštěno***. Testy můžete spustit kdykoli, ale klient JavaScript musí být vložen pro test a zahájit shromažďování měření.
+7. Vyberte testy, které chcete spustit, a klikněte na **Spustit test**. Tím se změní **_stav_*testů na _*_spuštěno_**. Testy můžete spustit kdykoli, ale klient JavaScript musí být vložen pro test a zahájit shromažďování měření.
 8. V jakémkoli okamžiku přidejte další testy. Počítejte s tím, že jedinečný klient jazyka JavaScript nebude vygenerován, dokud nebude vytvořen jeden test.
 
 ## <a name="embed-client"></a>Vložit klienta
 
-Chcete-li zahájit libovolný test, musí být klient jazyka JavaScript vložen do vaší webové aplikace. Po nakonfigurování alespoň jednoho testu klikněte na tlačítko **zkontrolovat + vytvořit**, přejděte na **Nastavení > konfigurace**a zkopírujte klienta JavaScriptu. Konkrétní pokyny najdete na stránce pro [vložení klienta Internet Analyzer](internet-analyzer-embed-client.md) .  
+Chcete-li zahájit libovolný test, musí být klient jazyka JavaScript vložen do vaší webové aplikace. Po nakonfigurování alespoň jednoho testu klikněte na tlačítko **zkontrolovat + vytvořit**, přejděte na **Nastavení > konfigurace** a zkopírujte klienta JavaScriptu. Konkrétní pokyny najdete na stránce pro [vložení klienta Internet Analyzer](internet-analyzer-embed-client.md) .  
 
 ## <a name="next-steps"></a>Další kroky
 

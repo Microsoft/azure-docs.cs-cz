@@ -11,10 +11,10 @@ ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
 ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674880"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Kurz: návrh relační databáze v Azure SQL Database pomocí SSMS
@@ -48,7 +48,7 @@ Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>Vytvoření prázdné databáze v Azure SQL Database
 
@@ -56,8 +56,8 @@ Databáze v Azure SQL Database se vytvoří s definovanou sadou výpočetních p
 
 Pomocí těchto kroků vytvořte prázdnou databázi.
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek** .
-2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database** .
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
+2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database**.
 
    ![Vytvoření prázdné databáze](./media/design-first-database-tutorial/create-empty-database.png)
 
@@ -81,10 +81,10 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
     ![create database-server](./media/design-first-database-tutorial/create-database-server.png)
 
-5. Klikněte na **Vybrat** .
+5. Klikněte na **Vybrat**.
 6. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Můžete prozkoumat možnosti pro počet DTU/virtuální jádra a úložiště, které máte k dispozici pro jednotlivé úrovně služeb.
 
-    Po výběru úrovně služby, počtu DTU nebo virtuální jádra a velikosti úložiště klikněte na **použít** .
+    Po výběru úrovně služby, počtu DTU nebo virtuální jádra a velikosti úložiště klikněte na **použít**.
 
 7. Zadejte **kolaci** pro prázdnou databázi (pro tento kurz použijte výchozí hodnotu). Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations).
 
@@ -109,15 +109,15 @@ Azure SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. Ta
 
 1. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a databázím z SQL Server Management Studio.
 
-1. Na panelu nástrojů klikněte na **Nastavit bránu firewall serveru** . Otevře se stránka **nastavení brány firewall** pro server.
+1. Na panelu nástrojů klikněte na **Nastavit bránu firewall serveru**. Otevře se stránka **nastavení brány firewall** pro server.
 
    ![pravidlo brány firewall protokolu IP na úrovni serveru](./media/design-first-database-tutorial/server-firewall-rule.png)
 
 1. Kliknutím na **Přidat IP adresu klienta** na panelu nástrojů přidejte svoji aktuální IP adresu do nového pravidla brány firewall protokolu IP. Pravidlo brány firewall protokolu IP může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-1. Klikněte na **Uložit** . Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru.
+1. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru.
 
-1. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall** .
+1. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
 
 Vaše IP adresa teď může projít bránou firewall protokolu IP. Nyní se můžete připojit k databázi pomocí SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Ujistěte se, že používáte účet správce serveru, který jste předtím vytvořili.
 
@@ -134,18 +134,18 @@ K navázání připojení k databázi použijte [SQL Server Management Studio](/
    | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Typ serveru** | Databázový stroj | Tato hodnota se vyžaduje. |
-   | **Název serveru** | Plně kvalifikovaný název serveru | Například *yourserver.Database.Windows.NET* . |
+   | **Název serveru** | Plně kvalifikovaný název serveru | Například *yourserver.Database.Windows.NET*. |
    | **Authentication** | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme nakonfigurovali v tomto kurzu. |
-   | **Přihlášení** | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
+   | **Přihlásit** | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
    | **Heslo** | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
 
    ![Připojení k serveru](./media/design-first-database-tutorial/connect.png)
 
-3. Klikněte na **Možnosti** v dialogovém okně **Připojit k serveru** . V části **připojit k databázi** zadejte *yourDatabase* pro připojení k této databázi.
+3. Klikněte na **Možnosti** v dialogovém okně **Připojit k serveru**. V části **připojit k databázi** zadejte *yourDatabase* pro připojení k této databázi.
 
     ![připojení k databázi na serveru](./media/design-first-database-tutorial/options-connect-to-db.png)  
 
-4. Klikněte na **Připojit** . Okno **Průzkumník objektů** se otevře v SSMS.
+4. Klikněte na **Připojit**. Okno **Průzkumník objektů** se otevře v SSMS.
 
 5. V **Průzkumník objektů** rozbalte **databáze** a potom rozbalte *yourDatabase* a zobrazte objekty v ukázkové databázi.
 
@@ -155,7 +155,7 @@ K navázání připojení k databázi použijte [SQL Server Management Studio](/
 
 Vytvořte schéma databáze se čtyřmi tabulkami, které modelují systém správy studentů univerzity, pomocí [Transact-SQL](/sql/t-sql/language-reference):
 
-- Osoba
+- Person (Osoba)
 - Kurz
 - Student
 - Kredit
@@ -167,7 +167,7 @@ Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisej�
 
 ![Vztahy mezi tabulkami](./media/design-first-database-tutorial/tutorial-database-tables.png)
 
-1. V **Průzkumník objektů** klikněte pravým tlačítkem na *YourDatabase* a vyberte **Nový dotaz** . Otevře se prázdné okno dotazu připojené k vaší databázi.
+1. V **Průzkumník objektů** klikněte pravým tlačítkem na *YourDatabase* a vyberte **Nový dotaz**. Otevře se prázdné okno dotazu připojené k vaší databázi.
 
 2. V okně dotazu vytvořte v databázi čtyři tabulky spuštěním následujícího dotazu:
 
@@ -231,7 +231,7 @@ Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisej�
 
 3. Otevřete okno příkazového řádku a přejděte do složky *sampleData* .
 
-4. Spuštěním následujících příkazů vložte ukázková data do tabulek, které nahradí hodnoty pro *Server* , *databázi* , *uživatele* a *heslo* hodnotami pro vaše prostředí.
+4. Spuštěním následujících příkazů vložte ukázková data do tabulek, které nahradí hodnoty pro *Server*, *databázi*, *uživatele* a *heslo* hodnotami pro vaše prostředí.
 
    ```cmd
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","

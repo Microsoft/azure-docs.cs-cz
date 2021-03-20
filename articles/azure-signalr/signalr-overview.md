@@ -1,5 +1,5 @@
 ---
-title: Co je služba signalizace Azure?
+title: Co je služba Azure SignalR Service?
 description: Lépe pochopíte typické scénáře použití pro používání služby Azure Signal a Naučte se klíčové výhody služby Azure Signal.
 author: sffamily
 ms.service: signalr
@@ -8,13 +8,13 @@ ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 92da400616ace9f24da121d81798d5ebd9222e35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88921881"
 ---
-# <a name="what-is-azure-signalr-service"></a>Co je služba signalizace Azure?
+# <a name="what-is-azure-signalr-service"></a>Co je služba Azure SignalR Service?
 
 Služba Azure SignalR zjednodušuje proces přidávání webových funkcí pracujících v reálném čase do aplikací přes HTTP. Tato funkce v reálném čase umožňuje službě nabízet aktualizace obsahu do připojených klientů, například jednu webovou stránku nebo mobilní aplikaci. Klienti díky tomu můžou získávat aktualizace, aniž by museli zadávat dotazy na server nebo odesílat nové požadavky HTTP na aktualizace.
 

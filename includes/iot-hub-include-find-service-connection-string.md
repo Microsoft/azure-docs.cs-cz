@@ -9,10 +9,10 @@ ms.date: 07/16/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 55cdd864d73ce084d994c64233e79d5a58b17def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "69558500"
 ---
 <!-- This tells how to get the connection string for the service shared access policy of your IoT hub -->
@@ -25,7 +25,7 @@ Pro získání připojovacího řetězce IoT Hub pro zásady **služby** použij
 
 1. V seznamu zásad vyberte zásadu **služby** .
 
-1. V části **sdílené přístupové klíče**vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
+1. V části **sdílené přístupové klíče** vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
 
     ![Zobrazit způsob načtení připojovacího řetězce](./media/iot-hub-include-find-service-connection-string/iot-hub-get-connection-string.png)
 

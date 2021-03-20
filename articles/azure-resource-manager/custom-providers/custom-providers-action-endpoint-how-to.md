@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75650393"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Přidání vlastních akcí do Azure REST API
@@ -134,7 +134,7 @@ Parametr | Povinné | Popis
 ---|---|---
 akce | *Ano* | Název akce definované v **ResourceProvider**.
 identifikační | *Ano* | ID prostředku **ResourceProvider**.
-tělo žádosti | *ne* | Text žádosti, který se odešle do **koncového bodu**.
+tělo žádosti | *Ne* | Text žádosti, který se odešle do **koncového bodu**.
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
@@ -188,7 +188,7 @@ Parametr | Povinné | Popis
 ---|---|---
 resourceIdentifier | *Ano* | ID prostředku **ResourceProvider**.
 apiVersion | *Ano* | Verze rozhraní API modulu runtime prostředků Tato možnost by měla být vždy "2018-09-01-Preview".
-functionValues | *ne* | Text žádosti, který se odešle do **koncového bodu**.
+functionValues | *Ne* | Text žádosti, který se odešle do **koncového bodu**.
 
 ## <a name="next-steps"></a>Další kroky
 

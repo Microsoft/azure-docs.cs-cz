@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983885"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Vystavení místní služby WCF pro webovou aplikaci v cloudu pomocí Azure Relay
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující úlohy:
 > * Nasaďte webovou aplikaci do Azure.
 > * Spusťte aplikaci v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -51,7 +51,7 @@ Architekti řešení začínají používat cloud, protože jim to umožňuje sn
 
 V tomto kurzu vytvoříte web ASP.NET, který vám umožní zobrazit seznam produktů na stránce inventáře produktů.
 
-![Scénář][0]
+![Scenario][0]
 
 Kurz předpokládá, že máte produktové informace dostupné v existujícím místním systému, a používá Azure Relay k získání přístupu do takového systému. Webová služba, která běží v jednoduché konzolové aplikaci, simuluje tuto situaci. Obsahuje sadu produktů v paměti. Tuto konzolovou aplikaci můžete spustit na vlastním počítači a nasadit webovou roli do Azure. Tím zjistíte, jak webová role běžící v datacentru Azure volá do vašeho počítače. K tomuto volání dochází i v případě, že se Váš počítač bude za téměř určitě nacházet alespoň s jednou bránou firewall a vrstvou překladu adres (NAT).
 
@@ -78,20 +78,20 @@ Nejprve sestavíte simulovaný místní systém katalogu produktů.  Tento proje
 
 1. Spusťte Microsoft Visual Studio jako správce. Provedete to tak, že kliknete pravým tlačítkem na ikonu programu Visual Studio a vyberete **Spustit jako správce**.
 1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**.
-1. V v poli **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
+1. V v poli **vytvořit nový projekt** vyberte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
 1. Pojmenujte projekt *ProductsServer* a vyberte **vytvořit**.
 
    ![Konfigurovat nový projekt][11]
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **ProductsServer** a pak vyberte **Spravovat balíčky NuGet**.
-1. Vyberte **Procházet**, vyhledejte a vyberte **windowsazure. ServiceBus**. Vyberte **nainstalovat**a přijměte podmínky použití.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt **ProductsServer** a pak vyberte **Spravovat balíčky NuGet**.
+1. Vyberte **Procházet**, vyhledejte a vyberte **windowsazure. ServiceBus**. Vyberte **nainstalovat** a přijměte podmínky použití.
 
    ![Vybrat balíček NuGet][13]
 
    Odkazy na požadovaná sestavení klienta jsou nyní odkazovány.
 
-1. Přidejte novou třídu pro váš produktový kontrakt. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **ProductsServer** a vyberte **Přidat**  >  **třídu**.
-1. Do pole **název**zadejte název *ProductsContract.cs* a vyberte **Přidat**.
+1. Přidejte novou třídu pro váš produktový kontrakt. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt **ProductsServer** a vyberte **Přidat**  >  **třídu**.
+1. Do pole **název** zadejte název *ProductsContract. cs* a vyberte **Přidat**.
 
 Proveďte následující změny kódu v řešení:
 
@@ -132,7 +132,7 @@ Proveďte následující změny kódu v řešení:
     }
     ```
 
-1. V *program.cs*Nahraďte definici oboru názvů následujícím kódem, který přidá profilovou službu a hostitele pro něj.
+1. V *programu program. cs* Nahraďte definici oboru názvů následujícím kódem, který přidá profilovou službu a hostitele pro něj.
 
     ```csharp
     namespace ProductsServer
@@ -187,7 +187,7 @@ Proveďte následující změny kódu v řešení:
     }
     ```
 
-1. V **Průzkumník řešení**dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio. V dolní části `<system.ServiceModel>` prvku, ale stále v `<system.ServiceModel>` , přidejte následující kód XML. Nezapomeňte nahradit `yourServiceNamespace` názvem vašeho oboru názvů a `yourKey` klíč SAS, který jste dříve získali z portálu:
+1. V **Průzkumník řešení** dvakrát klikněte na **App.config** a otevřete soubor v editoru sady Visual Studio. V dolní části `<system.ServiceModel>` prvku, ale stále v `<system.ServiceModel>` , přidejte následující kód XML. Nezapomeňte nahradit `yourServiceNamespace` názvem vašeho oboru názvů a `yourKey` klíč SAS, který jste dříve získali z portálu:
 
     ```xml
     <system.serviceModel>
@@ -214,7 +214,7 @@ Proveďte následující změny kódu v řešení:
     > [!NOTE]
     > Chyba způsobila, že `transportClientEndpointBehavior` je pouze upozornění a není blokujícím problémem pro tento příklad.
 
-1. Stále v *App.config*v `<appSettings>` elementu nahraďte hodnotu připojovacího řetězce připojovacím řetězcem, který jste dříve získali z portálu.
+1. Stále v *App.config* v `<appSettings>` elementu nahraďte hodnotu připojovacího řetězce připojovacím řetězcem, který jste dříve získali z portálu.
 
     ```xml
     <appSettings>
@@ -234,26 +234,26 @@ V této části vytvoříte jednoduchou aplikaci ASP.NET, která zobrazuje data 
 
 1. Ujistěte se, že je aplikace Visual Studio spuštěna jako správce.
 1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**.
-1. V poli **vytvořit nový projekt**vyberte **ASP.NET webová aplikace (.NET Framework)** pro C# a vyberte **Další**.
+1. V poli **vytvořit nový projekt** vyberte **ASP.NET webová aplikace (.NET Framework)** pro C# a vyberte **Další**.
 1. Pojmenujte projekt *ProductsPortal* a vyberte **vytvořit**.
-1. V části **vytvořit novou webovou aplikaci v ASP.NET**zvolte **MVC** a v části **ověřování**vyberte **změnit** .
+1. V části **vytvořit novou webovou aplikaci v ASP.NET** zvolte **MVC** a v části **ověřování** vyberte **změnit** .
 
    ![Výběr webové aplikace ASP .NET][16]
 
-1. V možnosti **změnit ověřování**zvolte možnost **bez ověřování** a pak vyberte **OK**. Pro tento kurz nasazujete aplikaci, která nevyžaduje, aby se uživatel přihlásil.
+1. V možnosti **změnit ověřování** zvolte možnost **bez ověřování** a pak vyberte **OK**. Pro tento kurz nasazujete aplikaci, která nevyžaduje, aby se uživatel přihlásil.
 
     ![Zadat ověřování][18]
 
-1. Zpátky v části **vytvořit novou webovou aplikaci v ASP.NET**vyberte **vytvořit** a vytvořte aplikaci MVC.
+1. Zpátky v části **vytvořit novou webovou aplikaci v ASP.NET** vyberte **vytvořit** a vytvořte aplikaci MVC.
 1. Konfigurace prostředků Azure pro novou webovou aplikaci Postupujte podle kroků v části [publikování webové aplikace](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard). Pak se vraťte k tomuto kurzu a pokračujte k dalšímu kroku.
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na **modely** a pak vyberte **Přidat**  >  **třídu**.
-1. Pojmenujte třídu *Product.cs*a pak vyberte **Přidat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na **modely** a pak vyberte **Přidat**  >  **třídu**.
+1. Pojmenujte třídu *Product. cs* a pak vyberte **Přidat**.
 
     ![Vytvoření modelu produktu][17]
 
 ### <a name="modify-the-web-application"></a>Úprava webové aplikace
 
-1. V souboru *Product.cs* v aplikaci Visual Studio nahraďte existující definici oboru názvů následujícím kódem:
+1. V souboru *Product. cs* v aplikaci Visual Studio nahraďte existující definici oboru názvů následujícím kódem:
 
    ```csharp
     // Declare properties for the products inventory.
@@ -268,8 +268,8 @@ V této části vytvoříte jednoduchou aplikaci ASP.NET, která zobrazuje data 
     }
     ```
 
-1. V **Průzkumník řešení**rozbalte položku **řadiče**a potom poklikejte na **HomeController.cs** a otevřete soubor v aplikaci Visual Studio.
-1. V *HomeController.cs*nahraďte existující definici oboru názvů následujícím kódem:
+1. V **Průzkumník řešení** rozbalte položku **řadiče** a potom poklikejte na **HomeController. cs** a otevřete soubor v aplikaci Visual Studio.
+1. V *HomeController. cs* nahraďte existující definici oboru názvů následujícím kódem:
 
     ```csharp
     namespace ProductsWeb.Controllers
@@ -291,13 +291,13 @@ V této části vytvoříte jednoduchou aplikaci ASP.NET, která zobrazuje data 
     }
     ```
 
-1. V **Průzkumník řešení**rozbalte **zobrazení**  >  **Shared**a potom poklikejte na **_Layout. cshtml** pro otevření souboru v editoru sady Visual Studio.
+1. V **Průzkumník řešení** rozbalte **zobrazení**  >  **Shared** a potom poklikejte na **_Layout. cshtml** pro otevření souboru v editoru sady Visual Studio.
 1. Změňte všechny výskyty `My ASP.NET Application` na *Northwind Traders Products*.
 1. Odeberte `Home` odkazy, `About` a `Contact` . V následujícím příkladu odstraňte zvýrazněný kód.
 
     ![Odstranit vygenerované položky seznamu][41]
 
-1. V **Průzkumník řešení**rozbalte položku **zobrazení**  >  **Domů**a potom poklikejte na **index. cshtml** . tím otevřete soubor v editoru sady Visual Studio. Celý obsah souboru nahraďte následujícím kódem:
+1. V **Průzkumník řešení** rozbalte položku **zobrazení**  >  **Domů** a potom poklikejte na **index. cshtml** . tím otevřete soubor v editoru sady Visual Studio. Celý obsah souboru nahraďte následujícím kódem:
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -351,10 +351,10 @@ Měla by se objevit vaše aplikace, jak běží v prohlížeči.
 Dalším krokem je spojit lokální produktový server s aplikací ASP.NET.
 
 1. Pokud ještě není otevřený, v aplikaci Visual Studio otevřete projekt **ProductsPortal** , který jste vytvořili v části [Vytvoření aplikace ASP.NET](#create-an-aspnet-application) .
-1. Podobně jako v části [Vytvoření místního serveru](#create-an-on-premises-server) přidejte do odkazů projektu balíček NuGet. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **ProductsPortal** a pak vyberte **Spravovat balíčky NuGet**.
+1. Podobně jako v části [Vytvoření místního serveru](#create-an-on-premises-server) přidejte do odkazů projektu balíček NuGet. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt **ProductsPortal** a pak vyberte **Spravovat balíčky NuGet**.
 1. Vyhledejte *WindowsAzure.ServiceBus* a vyberte položku **WindowsAzure.ServiceBus**. Potom dokončete instalaci a zavřete toto dialogové okno.
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **ProductsPortal** a pak vyberte **Přidat**  >  **existující položku**.
-1. Přejděte na soubor *ProductsContract.cs* v konzolovém projektu **ProductsServer**. Zvýrazněte *ProductsContract.cs*. Vyberte šipku dolů vedle **Přidat**a pak zvolte **Přidat jako odkaz**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt **ProductsPortal** a pak vyberte **Přidat**  >  **existující položku**.
+1. Přejděte na soubor *ProductsContract.cs* v konzolovém projektu **ProductsServer**. Zvýrazněte *ProductsContract. cs*. Vyberte šipku dolů vedle **Přidat** a pak zvolte **Přidat jako odkaz**.
 
    ![Přidat jako odkaz][24]
 
@@ -400,23 +400,23 @@ Dalším krokem je spojit lokální produktový server s aplikací ASP.NET.
    }
    ```
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na řešení **ProductsPortal** . Ujistěte se, že kliknete pravým tlačítkem na řešení, nikoli na projekt. Vyberte **Přidat**  >  **existující projekt**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na řešení **ProductsPortal** . Ujistěte se, že kliknete pravým tlačítkem na řešení, nikoli na projekt. Vyberte **Přidat**  >  **existující projekt**.
 1. Přejděte do projektu **ProductsServer**, pak poklikejte na řešení *ProductsServer.csproj* a tím ho přidejte.
-1. **ProductsServer** musí běžet, aby se zobrazila data v **ProductsPortal**. V **Průzkumník řešení**klikněte pravým tlačítkem na řešení **ProductsPortal** a vyberte **vlastnosti** . zobrazí se **stránky vlastností**.
+1. **ProductsServer** musí běžet, aby se zobrazila data v **ProductsPortal**. V **Průzkumník řešení** klikněte pravým tlačítkem na řešení **ProductsPortal** a vyberte **vlastnosti** . zobrazí se **stránky vlastností**.
 1. Vyberte **společné vlastnosti**  >  **spouštěný projekt** a zvolte **více projektů po spuštění**. Zajistěte, aby se **ProductsServer** a **ProductsPortal** zobrazovaly v tomto pořadí a aby se **spustila** **Akce** pro obě.
 
       ![Více projektů po spuštění][25]
 
 1. Na levé straně vyberte **společné vlastnosti**  >  **závislosti projektu** .
-1. V případě **projektů**vyberte možnost **ProductsPortal**. Zkontrolujte, že je **ProductsServer** vybraný.
+1. V případě **projektů** vyberte možnost **ProductsPortal**. Zkontrolujte, že je **ProductsServer** vybraný.
 
     ![Závislosti projektu][26]
 
-1. V případě **projektů**vyberte možnost **ProductsServer**. Ujistěte se, že není vybraná možnost **ProductsPortal** , a pak kliknutím na **tlačítko OK** uložte změny.
+1. V případě **projektů** vyberte možnost **ProductsServer**. Ujistěte se, že není vybraná možnost **ProductsPortal** , a pak kliknutím na **tlačítko OK** uložte změny.
 
 ## <a name="run-the-project-locally"></a>Spusťte projekt lokálně.
 
-Chcete-li aplikaci otestovat místně, v aplikaci Visual Studio vyberte F5. Jako první se musí spustit místní server **ProductsServer**a pak by se měla aplikace **ProductsPortal** spustit v okně prohlížeče. Tentokrát vidíte, že inventář produktů obsahuje data získaná z místního systému služby produkt.
+Chcete-li aplikaci otestovat místně, v aplikaci Visual Studio vyberte F5. Jako první se musí spustit místní server **ProductsServer** a pak by se měla aplikace **ProductsPortal** spustit v okně prohlížeče. Tentokrát vidíte, že inventář produktů obsahuje data získaná z místního systému služby produkt.
 
 ![Webová aplikace][10]
 
@@ -428,7 +428,7 @@ Než budete pokračovat k další části, zavřete obě aplikace.
 
 Dalším krokem je opětovné publikování webu Azure Web App **ProductsPortal** front-end:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **ProductsPortal** a vyberte **publikovat**. Na stránce **Publikovat** vyberte **Publikovat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt **ProductsPortal** a vyberte **publikovat**. Na stránce **Publikovat** vyberte **Publikovat**.
 
    > [!NOTE]
    > V okně prohlížeče se při automatickém spuštění webového projektu **ProductsPortal** po nasazení může objevit chybová zpráva. To je v pořádku a děje se to, protože aplikace **ProductsServer** ještě neběží.
@@ -443,12 +443,12 @@ Dalším krokem je opětovné publikování webu Azure Web App **ProductsPortal*
 <a name="set-productsportal-as-web-app"></a>Před spuštěním aplikace v cloudu je nutné zajistit, aby se **ProductsPortal** spustil v rámci sady Visual Studio jako webová aplikace.
 
 1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt **ProductsPortal** a vyberte **vlastnosti**.
-1. Vyberte **Web**. V části **Spustit akci**vyberte možnost **Počáteční adresa URL**. V tomto příkladu zadejte adresu URL pro dříve nasazenou webovou aplikaci `https://productsportal20190906122808.azurewebsites.net/` .
+1. Vyberte **Web**. V části **Spustit akci** vyberte možnost **Počáteční adresa URL**. V tomto příkladu zadejte adresu URL pro dříve nasazenou webovou aplikaci `https://productsportal20190906122808.azurewebsites.net/` .
 
     ![Počáteční adresa URL][27]
 
 1. Vyberte **soubor**  >  **Uložit vše**.
-1. Vyberte **Build**  >  **řešení**pro opětovné sestavení sestavení.
+1. Vyberte   >  **řešení** pro opětovné sestavení sestavení.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 

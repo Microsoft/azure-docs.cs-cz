@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674803"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurace a Správa zabezpečení Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání
@@ -82,7 +82,7 @@ WHERE [type_desc] = 'SQL_USER'
 ```
 
 > [!NOTE]
-> Uživatelé **INFORMATION_SCHEMA** a **sys** mají *null* identifikátory SID a identifikátor SID **hosta** je **0x00** . Identifikátor SID **dbo** může začínat na *0x01060000000001648000000000048454* , pokud autor databáze byl správcem serveru, ne členem **DbManager** .
+> Uživatelé **INFORMATION_SCHEMA** a **sys** mají *null* identifikátory SID a identifikátor SID **hosta** je **0x00**. Identifikátor SID **dbo** může začínat na *0x01060000000001648000000000048454*, pokud autor databáze byl správcem serveru, ne členem **DbManager**.
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3. vytvoření přihlašovacích údajů na cílovém serveru
 

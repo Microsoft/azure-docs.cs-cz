@@ -8,10 +8,10 @@ author: mingshen
 ms.author: mingshen
 ms.date: 09/02/2020
 ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91858168"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Plány a ceny pro komerční nabídky na webu Marketplace
@@ -115,12 +115,12 @@ Před publikováním pečlivě zkontrolujte své ceny, protože existují určit
 Ceny nastavené v USA dolarů (USD) se při uložení převedou na místní měnu všech vybraných trhů. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a provedete kontrolu ceny na všech vybraných trzích.
 
 1. Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen. U dolního okraje karty **ceny a dostupnost** vyberte **Uložit koncept**.
-1. V části **ceny**vyberte odkaz **exportovat data cen** .
+1. V části **ceny** vyberte odkaz **exportovat data cen** .
 1. Otevřete soubor exportedPrice.xlsx v aplikaci Microsoft Excel.
 1. V tabulce proveďte požadované aktualizace informací o cenách a pak uložte. Soubor CSV.
     > [!NOTE]
     > Než budete moct soubor aktualizovat, možná budete muset povolit úpravy v Excelu.
-1. Na kartě **ceny a dostupnost** v části **ceny**vyberte odkaz **importovat data ceny** .
+1. Na kartě **ceny a dostupnost** v části **ceny** vyberte odkaz **importovat data ceny** .
 1. V dialogovém okně, které se zobrazí, vyberte **Ano**.
 1. Vyberte soubor exportedPrice.xlsx, který jste aktualizovali, a pak vyberte **otevřít**.
 
