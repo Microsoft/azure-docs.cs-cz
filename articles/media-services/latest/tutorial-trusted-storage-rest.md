@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 2/8/2021
 ms.openlocfilehash: 18cb4e3ada94822c2f4cb1ca7675310a37e44e84
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100590645"
 ---
 # <a name="tutorial-media-services-trusted-storage"></a>Kurz: Media Services důvěryhodné úložiště
@@ -48,7 +48,7 @@ Toto jsou obecné kroky pro vytvoření důvěryhodného úložiště pro Media 
 
 <!-- Link to storage role contributor role access differences information -->
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, potřebujete předplatné Azure.  Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free/).
 

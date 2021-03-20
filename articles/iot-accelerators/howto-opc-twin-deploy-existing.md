@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92071638"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení OPC vlákna do existujícího projektu
@@ -31,7 +31,7 @@ Jádrem modulu je identita správce. Správce spravuje vlákna koncového bodu, 
 > [!NOTE]
 > Další informace o podrobnostech a pokynech k nasazení najdete v [úložišti](https://github.com/Azure/azure-iiot-opc-twin-module)GitHub.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že máte nainstalované rozšíření PowerShell a [AzureRM prostředí PowerShell](/powershell/azure/azurerm/install-azurerm-ps) . Pokud jste to ještě neudělali, naklonujte toto úložiště GitHub. V prostředí PowerShell spusťte následující příkazy:
 

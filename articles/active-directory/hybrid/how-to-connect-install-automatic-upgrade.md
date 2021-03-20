@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317612"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
@@ -37,7 +37,7 @@ Automatický upgrade je ve výchozím nastavení povolený pro následující:
 
 Aktuální stav automatického upgradu můžete zobrazit pomocí rutiny PowerShellu `Get-ADSyncAutoUpgrade` . Má následující stavy:
 
-| State | Komentář |
+| Stav | Komentář |
 | --- | --- |
 | Povoleno |Automatický upgrade je povolen. |
 | Dočasně blokován. |Nastaveno pouze systémem. Systém nemá v **současné době** nárok na příjem automatických upgradů. |

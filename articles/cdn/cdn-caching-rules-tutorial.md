@@ -15,10 +15,10 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779233"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Kurz: Nastavení pravidel ukládání do mezipaměti v Azure CDN
@@ -48,11 +48,11 @@ Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a a
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte profil CDN a potom vyberte koncový bod.
 
-2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti** .
+2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti**.
 
    ![Tlačítko Pravidla ukládání do mezipaměti CDN](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
-   Zobrazí se stránka **Pravidla ukládání do mezipaměti** .
+   Zobrazí se stránka **Pravidla ukládání do mezipaměti**.
 
    ![Stránka CDN Pravidla ukládání do mezipaměti](./media/cdn-caching-rules/cdn-caching-rules-page.png)
 
@@ -61,9 +61,9 @@ Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a a
 
 Následujícím způsobem vytvořte globální pravidlo ukládání do mezipaměti:
 
-1. V části **Globální pravidla ukládání do mezipaměti** nastavte **Chování při ukládání řetězců dotazů do mezipaměti** na **Ignorovat řetězce dotazů** .
+1. V části **Globální pravidla ukládání do mezipaměti** nastavte **Chování při ukládání řetězců dotazů do mezipaměti** na **Ignorovat řetězce dotazů**.
 
-2. **Chování ukládání do mezipaměti** nastavte na **Nastavit, pokud chybí** .
+2. **Chování ukládání do mezipaměti** nastavte na **Nastavit, pokud chybí**.
        
 3. U **Doba vypršení platnosti mezipaměti** zadejte do pole **Dny** číslo 10.
 
@@ -90,15 +90,15 @@ V předchozích krocích jste vytvořili pravidla ukládání do mezipaměti. Po
  
 1. Vyberte profil CDN a potom vyberte koncový bod s pravidly ukládání do mezipaměti, které chcete odebrat.
 
-2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti** .
+2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti**.
 
-3. V části **Globální pravidla ukládání do mezipaměti** nastavte **Chování ukládání do mezipaměti** na **Nenastaveno** .
+3. V části **Globální pravidla ukládání do mezipaměti** nastavte **Chování ukládání do mezipaměti** na **Nenastaveno**.
  
 4. V části **Vlastní pravidla ukládání do mezipaměti** vyberte zaškrtávací políčko vedle pravidla, které chcete odstranit.
 
-5. Vyberte **Odstranit** .
+5. Vyberte **Odstranit**.
 
-6. V horní části stránky vyberte **Uložit** .
+6. V horní části stránky vyberte **Uložit**.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78186195"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Kurz: ověřování uživatelů v nativním klientském počítači pomocí Azure Active Directory B2C
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s pracovními procesy pro vývoj **desktopových** aplikací pro .NET a **ASP.NET a web** .
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 Chcete-li aktualizovat aplikaci pro práci s vaším klientem Azure AD B2C a vyvolat jeho toky uživatelů místo těch, kteří jsou ve výchozím ukázkovém tenantovi:
 
 1. Otevřete řešení **Active-Directory-B2C-WPF** ( `active-directory-b2c-wpf.sln` ) v aplikaci Visual Studio.
-2. V projektu **Active-Directory-B2C-WPF** otevřete soubor *App.XAML.cs* a vyhledejte následující definice proměnných. Nahraďte `{your-tenant-name}` názvem klienta Azure AD B2C a `{application-ID}` ID aplikace, které jste si poznamenali dříve.
+2. V projektu **Active-Directory-B2C-WPF** otevřete soubor *App. XAML. cs* a vyhledejte následující definice proměnných. Nahraďte `{your-tenant-name}` názvem klienta Azure AD B2C a `{application-ID}` ID aplikace, které jste si poznamenali dříve.
 
     ```csharp
     private static readonly string Tenant = "{your-tenant-name}.onmicrosoft.com";

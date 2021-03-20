@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78898479"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Plány a fakturace pro Azure Scheduler
@@ -28,7 +28,7 @@ Kolekce úloh ve službě Azure Scheduler obsahuje určitý počet úloh. Kolekc
 
 | Plán kolekce úloh | Maximální počet úloh na kolekci | Maximální opakování | Maximální počet kolekcí úloh na předplatné | Omezení | 
 |:--- |:--- |:--- |:--- |:--- |
-| **Standardní** | 50 úloh na kolekci | Jedna za minutu. Úlohy nejde spouštět častěji než jednou za minutu. | Každé předplatné Azure může mít až 100 standardních kolekcí úloh. | Přístup k úplné sadě funkcí Scheduleru | 
+| **Standard** | 50 úloh na kolekci | Jedna za minutu. Úlohy nejde spouštět častěji než jednou za minutu. | Každé předplatné Azure může mít až 100 standardních kolekcí úloh. | Přístup k úplné sadě funkcí Scheduleru | 
 | **P10 Premium** | 50 úloh na kolekci | Jedna za minutu. Úlohy nejde spouštět častěji než jednou za minutu. | Každé předplatné Azure může mít až 10 000 kolekcí úloh P10 Premium. Pokud máte další kolekce, <a href="mailto:wapteams@microsoft.com">kontaktujte nás</a>. | Přístup k úplné sadě funkcí Scheduleru |
 | **P20 Premium** | 1000 úloh na kolekci | Jedna za minutu. Úlohy nejde spouštět častěji než jednou za minutu. | Každé předplatné Azure může mít až 5 000 kolekcí úloh P20 Premium. Pokud máte další kolekce, <a href="mailto:wapteams@microsoft.com">kontaktujte nás</a>. | Přístup k úplné sadě funkcí Scheduleru |
 |||||| 

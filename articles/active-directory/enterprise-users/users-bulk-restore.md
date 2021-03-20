@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be3947e3de18f8ccaf47382c4035e187521ac710
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96571500"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Hromadné obnovení odstraněných uživatelů v Azure Active Directory
@@ -62,7 +62,7 @@ Stáhněte si a vyplňte šablonu sdíleného svazku clusteru, která vám umož
 1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která uživatele obnoví.
 1. Po dokončení operace obnovení se zobrazí oznámení, že hromadná operace byla úspěšná.
 
-Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvod každé chyby.
+Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvody jednotlivých chyb.
 
 ## <a name="check-status"></a>Zkontrolování stavu
 

@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92784094"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Výpis prostředků Azure Storage v C++
@@ -34,7 +34,7 @@ Každá z těchto metod je zobrazena pomocí různých přetížení pro různé
 
 ## <a name="asynchronous-versus-synchronous"></a>Asynchronní versus synchronní
 
-Vzhledem k tomu, že klientská knihovna pro úložiště pro C++ je postavená na [knihovně REST jazyka c++](https://github.com/Microsoft/cpprestsdk), podstatně podporujeme asynchronní operace pomocí aplikace [PPLX:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Příklad:
+Vzhledem k tomu, že klientská knihovna pro úložiště pro C++ je postavená na [knihovně REST jazyka c++](https://github.com/Microsoft/cpprestsdk), podstatně podporujeme asynchronní operace pomocí aplikace [PPLX:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Například:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -59,8 +59,8 @@ Proto je nepraktické zobrazit seznam všech objektů v jediné odpovědi. Míst
 
 Odpověď pro segmentované operace výpisu zahrnuje:
 
-* *_segment* , která obsahuje sadu výsledků vrácených pro jedno volání rozhraní API výpisu.
-* *continuation_token* , která je předána dalšímu volání, aby se zobrazila další stránka výsledků. Pokud neexistují žádné další výsledky k vrácení, token pokračování má hodnotu null.
+* *_segment*, která obsahuje sadu výsledků vrácených pro jedno volání rozhraní API výpisu.
+* *continuation_token*, která je předána dalšímu volání, aby se zobrazila další stránka výsledků. Pokud neexistují žádné další výsledky k vrácení, token pokračování má hodnotu null.
 
 Například typické volání pro výpis všech objektů BLOB v kontejneru může vypadat jako následující fragment kódu. Kód je k dispozici v našich [ukázkách](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp):
 

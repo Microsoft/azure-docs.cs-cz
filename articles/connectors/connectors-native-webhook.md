@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
 ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89227895"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Vytváření a spouštění automatizovaných pracovních postupů založených na událostech pomocí webhooků HTTP v Azure Logic Apps
@@ -44,7 +44,7 @@ Další informace najdete v těchto tématech:
 
 Informace o šifrování, zabezpečení a autorizaci příchozích volání do vaší aplikace logiky, jako je například [TLS (Transport Layer Security)](https://en.wikipedia.org/wiki/Transport_Layer_Security), dříve označované jako SSL (Secure SOCKETS Layer) (SSL) nebo [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí na základě požadavků](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -58,7 +58,7 @@ Informace o šifrování, zabezpečení a autorizaci příchozích volání do v
 
 Tato integrovaná aktivační událost volá koncový bod přihlášení k odběru cílové služby a zaregistruje adresu URL zpětného volání s cílovou službou. Vaše aplikace logiky potom počká, než cílová služba pošle `HTTP POST` požadavek na adresu URL zpětného volání. Když dojde k této události, aktivační událost se aktivuje a předá do pracovního postupu veškerá data v žádosti.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. Do vyhledávacího pole návrháře zadejte `http webhook` jako filtr. V seznamu **triggery** vyberte aktivační událost **http Webhooku** .
 
@@ -72,7 +72,7 @@ Tato integrovaná aktivační událost volá koncový bod přihlášení k odbě
 
    ![Zadejte parametry triggeru Webhooku protokolu HTTP.](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
    | **Předplatné – metoda** | Yes | Metoda, která se má použít při přihlášení k odběru cílového koncového bodu |
    | **Přihlášení k odběru – identifikátor URI** | Yes | Adresa URL, která se má použít pro přihlášení k odběru cílového koncového bodu |
@@ -98,7 +98,7 @@ Tato integrovaná aktivační událost volá koncový bod přihlášení k odbě
 
 Tato Vestavěná akce volá koncový bod přihlášení k odběru v cílové službě a zaregistruje adresu URL zpětného volání s cílovou službou. Vaše aplikace logiky se pak pozastaví a počká, až cílová služba pošle `HTTP POST` požadavek na adresu URL zpětného volání. Pokud k této události dojde, akce předá do pracovního postupu všechna data v žádosti. Pokud se operace úspěšně dokončí, akce odhlásit odběr koncového bodu a vaše aplikace logiky pokračuje v běhu zbývajícího pracovního postupu.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se jako první krok používá Trigger Webhooku HTTP.
 
@@ -118,7 +118,7 @@ Tato Vestavěná akce volá koncový bod přihlášení k odběru v cílové slu
 
    ![Zadejte parametry akce Webhooku protokolu HTTP.](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
    | **Předplatné – metoda** | Yes | Metoda, která se má použít při přihlášení k odběru cílového koncového bodu |
    | **Přihlášení k odběru – identifikátor URI** | Yes | Adresa URL, která se má použít pro přihlášení k odběru cílového koncového bodu |

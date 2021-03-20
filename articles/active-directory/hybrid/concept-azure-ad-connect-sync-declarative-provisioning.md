@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313616"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect synchronizace: principy deklarativního zřizování
@@ -42,13 +42,13 @@ Kanál má několik různých modulů. Každý z nich zodpovídá za jeden konce
 * [Priorita](#precedence), řeší konfliktní příspěvky atributů
 * Cíl, cílový objekt
 
-## <a name="scope"></a>Rozsah
+## <a name="scope"></a>Obor
 Modul Scope vyhodnocuje objekt a určuje pravidla, která jsou v oboru a měla by být součástí zpracování. V závislosti na hodnotách atributů objektu jsou vyhodnocena odlišná pravidla synchronizace, která jsou v oboru. Například zakázaný uživatel, který nemá poštovní schránku Exchange, má různá pravidla, než je povolený uživatel s poštovní schránkou.  
 ![Diagram, který zobrazuje modul oboru pro objekt.](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 Obor je definován jako skupiny a klauzule. Klauzule jsou uvnitř skupiny. Logický operátor AND se používá mezi všemi klauzulemi ve skupině. Například (oddělení = IT a země = Dánsko). Logická nebo se používá mezi skupinami.
 
-![Rozsah](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+![Obor](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
 Obor tohoto obrázku by měl být čten jako (oddělení = IT a země = Dánsko) nebo (země = Švédsko). Pokud je skupina 1 nebo 2 vyhodnocena na hodnotu true, pak je pravidlo v rozsahu.
 
 Modul Scope podporuje následující operace.
@@ -66,7 +66,7 @@ Modul Scope podporuje následující operace.
 | ISBITSET, ISNOTBITSET |Vyhodnotí, zda je nastaven konkrétní bit. Můžete například použít k vyhodnocení bitů v rámci služby správce \ a zjistit, jestli je uživatel povolený nebo zakázaný. |
 | ISNOTMEMBEROF |Hodnota by měla obsahovat DN pro skupinu v prostoru konektoru. Pokud je objekt členem zadané skupiny, pravidlo je v oboru. |
 
-## <a name="join"></a>Spojit
+## <a name="join"></a>Připojení
 Modul JOIN v kanálu synchronizace zodpovídá za nalezení vztahu mezi objektem ve zdroji a objektem v cíli. U příchozího pravidla by tato relace byla objektem v prostoru konektoru, kde najdete relaci k objektu v úložišti Metaverse.  
 ![Spojení mezi cs a MV](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
 Cílem je zjistit, jestli už v úložišti Metaverse není nějaký objekt, který vytvořil jiný konektor, musí být přidružený k. Například v doménové struktuře prostředků účtu by uživatel z doménové struktury účtu měl být připojený k uživateli z doménové struktury prostředků.
@@ -87,7 +87,7 @@ Při pokusu o zřízení objektu na cílový prostor konektoru má odchozí spoj
 Modul JOIN se vyhodnocuje jenom jednou, když se nové pravidlo synchronizace dostane do rozsahu. Když se objekt připojí, nepřipojí se ani v případě, že už nejsou splněná kritéria spojení. Pokud chcete objekt odpojíte, pravidlo synchronizace, které se připojilo k objektům, musí přejít mimo rozsah.
 
 ### <a name="metaverse-delete"></a>Odstranění Metaverse
-Objekt Metaverse zůstane, dokud je v oboru s **typem odkazu** nastaveno na **zřídit** nebo **StickyJoin**jedno pravidlo synchronizace. StickyJoin se používá v případě, že konektor nemá povoleno zřídit nový objekt do úložiště metaverse, ale když se připojí, musí být před odstraněním objektu Metaverse odstraněn ve zdroji.
+Objekt Metaverse zůstane, dokud je v oboru s **typem odkazu** nastaveno na **zřídit** nebo **StickyJoin** jedno pravidlo synchronizace. StickyJoin se používá v případě, že konektor nemá povoleno zřídit nový objekt do úložiště metaverse, ale když se připojí, musí být před odstraněním objektu Metaverse odstraněn ve zdroji.
 
 Při odstranění objektu Metaverse jsou všechny objekty přidružené k pravidlu odchozí synchronizace označené pro **zřizování** označeny pro odstranění.
 
@@ -105,7 +105,7 @@ V tokůch atributů je k dispozici nastavení určující, zda mají být atribu
 
 K dispozici jsou také **slučované** a **MergeCaseInsensitive**. Tyto možnosti umožňují sloučit hodnoty z různých zdrojů. Můžete ji například použít ke sloučení atributu member nebo proxyAddresses z několika různých doménových struktur. Při použití této možnosti musí všechna pravidla synchronizace v oboru pro objekt používat stejný typ sloučení. Nelze definovat **aktualizaci** z jednoho konektoru a **Sloučit** z jiného. Pokud se pokusíte, zobrazí se chyba.
 
-Rozdíl mezi **sloučením** a **MergeCaseInsensitive** je způsob zpracování duplicitních hodnot atributů. Synchronizační modul zajišťuje, že duplicitní hodnoty nejsou vloženy do atributu target. V případě **MergeCaseInsensitive**nejsou k dispozici duplicitní hodnoty pouze s rozdílem v případě, že nejsou k dispozici. V cílovém atributu byste například neměli vidět obě " SMTP:bob@contoso.com " i " smtp:bob@contoso.com ". **Sloučení** se díváte jenom na přesné hodnoty a několik hodnot, u kterých se může vyskytovat jenom rozdíl.
+Rozdíl mezi **sloučením** a **MergeCaseInsensitive** je způsob zpracování duplicitních hodnot atributů. Synchronizační modul zajišťuje, že duplicitní hodnoty nejsou vloženy do atributu target. V případě **MergeCaseInsensitive** nejsou k dispozici duplicitní hodnoty pouze s rozdílem v případě, že nejsou k dispozici. V cílovém atributu byste například neměli vidět obě " SMTP:bob@contoso.com " i " smtp:bob@contoso.com ". **Sloučení** se díváte jenom na přesné hodnoty a několik hodnot, u kterých se může vyskytovat jenom rozdíl.
 
 Možnost **nahradit** je stejná jako **aktualizace**, ale není použita.
 

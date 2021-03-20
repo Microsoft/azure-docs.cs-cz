@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: chrande
 ms.openlocfilehash: 20cb4cea52317022aea8a5b9e4b8280f8b88ff85
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93361507"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rychlý start: Vytváření, zadávání dotazů a procházení grafové databáze Azure Cosmos DB v konzole Gremlin
@@ -34,7 +34,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit Azure Cosmos DB účet [rozhr
 
 Konzola Gremlin je založena na technologii Groovy nebo Java a běží v systémech Linux, Mac a Windows. Můžete si ji stáhnout z [webu Apache TinkerPop](https://tinkerpop.apache.org/downloads.html).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste si mohli vytvořit účet služby Azure Cosmos DB pro tento rychlý start, musíte mít předplatné Azure.
 
@@ -53,11 +53,11 @@ Musíte si také nainstalovat [konzolu Gremlin](https://tinkerpop.apache.org/dow
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Připojení ke službě App Service/Graph
 
 1. Než začnete používat konzolu Gremlin, vytvořte nebo upravte v adresáři `apache-tinkerpop-gremlin-console-3.2.5/conf` konfigurační soubor remote-secure.yaml.
-2. Podle následující tabulky vyplňte konfigurace *Hostitel* , *Port* , *Uživatelské jméno* , *Heslo* , *Fond připojení* a  *Serializátor* :
+2. Podle následující tabulky vyplňte konfigurace *Hostitel*, *Port*, *Uživatelské jméno*, *Heslo*, *Fond připojení* a *Serializátor*:
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    hostitelé|[ *název účtu*. **Gremlin**. Cosmos.Azure.com]|Viz následující snímek obrazovky. Jedná se o hodnotu **GREMLIN URI** na stránce Přehled Azure Portal v hranatých závorkách a na konci: 443/odebrané. Poznámka: Nezapomeňte použít hodnotu Gremlin a **ne** identifikátor URI, který končí na [ *account-Name*. Documents.Azure.com], což by pravděpodobně způsobilo, že "hostitel při pokusu o spuštění dotazů Gremlin na dotazech neodpověděl včas". 
+    hostitelé|[*název účtu*. **Gremlin**. Cosmos.Azure.com]|Viz následující snímek obrazovky. Jedná se o hodnotu **GREMLIN URI** na stránce Přehled Azure Portal v hranatých závorkách a na konci: 443/odebrané. Poznámka: Nezapomeňte použít hodnotu Gremlin a **ne** identifikátor URI, který končí na [*account-Name*. Documents.Azure.com], což by pravděpodobně způsobilo, že "hostitel při pokusu o spuštění dotazů Gremlin na dotazech neodpověděl včas". 
     port|443|Nastavte na hodnotu 443.
     username|*Vaše uživatelské jméno*|Prostředek ve formátu `/dbs/<db>/colls/<coll>`, kde `<db>` je název vaší databáze a `<coll>` je název vaší kolekce.
     heslo|*Váš primární klíč*| Viz druhý snímek obrazovky níže. Toto je váš primární klíč, který můžete získat ze stránky Klíče na webu Azure Portal v poli Primární klíč. Pomocí tlačítka pro kopírování na levé straně pole hodnotu zkopírujte.
@@ -109,7 +109,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>Vytváření vrcholů a okrajů
 
-Začněme přidáním pěti osob pro nastavení vrcholů: *Tomáš* , *Marie* , *Robin* , *Petr* a  *Jan*.
+Začněme přidáním pěti osob pro nastavení vrcholů: *Tomáš*, *Marie*, *Robin*, *Petr* a *Jan*.
 
 Vstup (Tomáš):
 
@@ -215,7 +215,7 @@ Výstup:
 
 ## <a name="update-a-vertex"></a>Aktualizace vrcholu
 
-Aktualizujme vrchol *Tomáš* s novým věkovým údajem *45*  let.
+Aktualizujme vrchol *Tomáš* s novým věkovým údajem *45* let.
 
 Vstup:
 ```java
@@ -310,7 +310,7 @@ g.E().drop()
 g.V().drop()
 ```
 
-Blahopřejeme vám. Dokončili jste kurz rozhraní Gremlin API služby Azure Cosmos DB.
+Gratulujeme! Dokončili jste kurz rozhraní Gremlin API služby Azure Cosmos DB.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

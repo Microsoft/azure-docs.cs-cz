@@ -4,10 +4,10 @@ description: Popisuje, jak vyhledat vlastnosti prostředku.
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91327744"
 ---
 # <a name="discover-resource-properties"></a>Zjistit vlastnosti prostředku
@@ -41,7 +41,7 @@ Rozšíření také poskytuje seznam možností pro vlastnosti konfigurace.
 Odkaz na šablonu Azure Resource Manager je nejucelenější prostředek pro schéma šablon. Můžete najít verze rozhraní API, formát šablony a informace o vlastnostech.
 
 1. Přejděte na [Azure Resource Manager odkaz na šablonu](/azure/templates/).
-1. V levém navigačním panelu vyberte **úložiště**a pak vyberte **všechny prostředky**. Stránka všechny prostředky shrnuje typy prostředků a verze.
+1. V levém navigačním panelu vyberte **úložiště** a pak vyberte **všechny prostředky**. Stránka všechny prostředky shrnuje typy prostředků a verze.
 
     ![verze prostředků odkazu na šablonu](./media/view-resources/resource-manager-template-reference-resource-versions.png)
 
@@ -71,17 +71,17 @@ Průzkumník prostředků je vložen do Azure Portal. Před použitím této met
 
 [![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Do vyhledávacího pole zadejte **Průzkumník prostředků**a potom vyberte **Průzkumník prostředků**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Do vyhledávacího pole zadejte **Průzkumník prostředků** a potom vyberte **Průzkumník prostředků**.
 
     ![Snímek obrazovky ukazuje hledání Průzkumník prostředků v Azure Portal.](./media/view-resources/azure-portal-resource-explorer.png)
 
-1. Vlevo rozbalte položku **předplatná**a potom rozbalte své předplatné Azure. Účet úložiště můžete najít buď v části **poskytovatelé** , nebo v **ResourceGroups**.
+1. Vlevo rozbalte položku **předplatná** a potom rozbalte své předplatné Azure. Účet úložiště můžete najít buď v části **poskytovatelé** , nebo v **ResourceGroups**.
 
     ![Azure Portal Průzkumník prostředků](./media/view-resources/azure-portal-resource-explorer-home.png)
 
-    - **Zprostředkovatelé**: rozbalte položku **poskytovatelé**  ->  **Microsoft. Storage**  ->  **storageAccounts**a pak vyberte svůj účet úložiště.
-    - **ResourceGroups**: vyberte skupinu prostředků, která obsahuje účet úložiště, vyberte **prostředky**a potom vyberte účet úložiště.
+    - **Zprostředkovatelé**: rozbalte položku **poskytovatelé**  ->  **Microsoft. Storage**  ->  **storageAccounts** a pak vyberte svůj účet úložiště.
+    - **ResourceGroups**: vyberte skupinu prostředků, která obsahuje účet úložiště, vyberte **prostředky** a potom vyberte účet úložiště.
 
     Napravo se zobrazí konfigurace SKU pro existující účet úložiště podobná této:
 
@@ -105,9 +105,9 @@ K předvedení toho, jak načíst informace o schématu pomocí tohoto nástroje
     ![mapování rozhraní API resource.azure.com](./media/view-resources/resources-azure-com-api-mapping.png)
 
     Uzel na levé straně odpovídá volání rozhraní API na pravé straně. Volání rozhraní API můžete provést tak, že vyberete tlačítko **získat** .
-1. Vlevo rozbalte položku **předplatná**a potom rozbalte své předplatné Azure. Účet úložiště můžete najít buď v části **poskytovatelé** , nebo v **ResourceGroups**.
+1. Vlevo rozbalte položku **předplatná** a potom rozbalte své předplatné Azure. Účet úložiště můžete najít buď v části **poskytovatelé** , nebo v **ResourceGroups**.
 
-    - **Poskytovatelé**: rozbalte položku **poskytovatelé**  ->  **Microsoft. Storage**  ->  **storageAccounts**a potom přejděte k účtu úložiště.
+    - **Poskytovatelé**: rozbalte položku **poskytovatelé**  ->  **Microsoft. Storage**  ->  **storageAccounts** a potom přejděte k účtu úložiště.
     - **ResourceGroups**: vyberte skupinu prostředků, která obsahuje účet úložiště, a pak vyberte **prostředky**.
 
     Napravo se zobrazí konfigurace SKU pro existující účet úložiště podobná této:

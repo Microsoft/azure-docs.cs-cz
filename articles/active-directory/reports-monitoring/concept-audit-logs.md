@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995977"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
@@ -34,7 +34,7 @@ Architektura vytváření sestav se skládá z následujících součástí:
 
 - **Aktivita** 
     - **Přihlášení** – [Sestava přihlášení](concept-sign-ins.md) poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
-    - **Protokoly auditu** – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny provedené u všech prostředků v rámci Azure AD, jako je přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
+    - **Protokoly auditu** – poskytuje sledovatelnost prostřednictvím protokolů pro všechny změny prováděné různými funkcemi v rámci služby Azure AD. Mezi příklady protokolů auditu patří změny jakýchkoli prostředků v rámci Azure AD, jako jsou přidání nebo odebrání uživatelů, aplikací, skupin, rolí nebo zásad.
     - **Zřizování protokolů**  -  [Protokoly zřizování](./concept-provisioning-logs.md) umožňují zákazníkům monitorovat aktivity prostřednictvím služby zřizování, například vytvoření skupiny v ServiceNow nebo uživatele naimportovaného z Workday. 
 - **Zabezpečení** 
     - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
@@ -191,7 +191,7 @@ S použitím sestav auditu orientovaných na uživatele a skupiny můžete nají
 
 Chcete-li zkontrolovat pouze auditovaná data, která se vztahují k uživatelům, můžete filtrované zobrazení najít v části **protokoly auditu** v části **monitorování** na kartě **Uživatelé** . Tento vstupní bod má **UserManagement** jako předvybranou kategorii.
 
-![Uživatel](./media/concept-audit-logs/users.png "Uživatel")
+![Uživatel](./media/concept-audit-logs/users.png "User")
 
 Pokud chcete zkontrolovat jenom auditovaná data, která souvisí se skupinami, najdete filtrované zobrazení v části **protokoly auditu** v části **monitorování** na kartě **skupiny** . Tento vstupní bod má **GroupManagement** jako předvybranou kategorii.
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2aa1a30c548ef60cd9b596031f4115297dd20844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89278594"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Ochrana osobních údajů uživatelů a bezproblémové jednotné přihlašování Azure AD
@@ -43,7 +43,7 @@ Tuto druhou možnost důrazně doporučujeme, protože je snazší ji implemento
 
 ### <a name="delete-azure-ad-connect-trace-log-files"></a>Odstranit Azure AD Connect soubory protokolu trasování
 
-Ověřte obsah složky **%ProgramData%\AADConnect** a odstraňte obsah protokolu trasování (soubory**Trace- \* . log** ) této složky během 48 hodin od instalace nebo upgradování Azure AD Connect nebo úpravou bezproblémové konfigurace jednotného přihlašování, protože tato akce může vytvářet data, která jsou pokrytá GDPR.
+Ověřte obsah složky **%ProgramData%\AADConnect** a odstraňte obsah protokolu trasování (soubory **Trace- \* . log** ) této složky během 48 hodin od instalace nebo upgradování Azure AD Connect nebo úpravou bezproblémové konfigurace jednotného přihlašování, protože tato akce může vytvářet data, která jsou pokrytá GDPR.
 
 >[!IMPORTANT]
 >Neodstraňujte soubor **PersistedState.xml** v této složce, protože tento soubor slouží k údržbě stavu předchozí instalace Azure AD Connect a používá se v případě, že je dokončena instalace upgradu. Tento soubor nikdy nebude obsahovat žádná data o osobě a neměl by se nikdy odstranit.

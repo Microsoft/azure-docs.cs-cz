@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: tisande
 ms.openlocfilehash: c0d953c8d99582f63744d51b505852b5c44bc409
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96553384"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Agregační funkce v Azure Cosmos DB
@@ -28,7 +28,7 @@ Agregační funkce provádějí výpočet pro sadu hodnot v `SELECT` klauzuli a 
 
 Rozhraní SQL API podporuje následující agregační funkce. `SUM` a `AVG` pracují s numerickými hodnotami, a `COUNT` , `MIN` a `MAX` pracují na číslech, řetězcích, logických hodnotách a hodnotách null.
 
-| Funkce | Popis |
+| Funkce | Description |
 |-------|-------------|
 | [VOLÁNÍ](sql-query-aggregate-avg.md) | Vrátí průměr hodnot ve výrazu. |
 | [COUNT](sql-query-aggregate-count.md) | Vrátí počet položek ve výrazu. |

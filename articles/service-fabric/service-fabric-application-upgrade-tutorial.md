@@ -4,10 +4,10 @@ description: Tento článek vás provede nasazením aplikace Service Fabric, zm�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996232"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric kurz upgradu aplikací pomocí sady Visual Studio
@@ -37,7 +37,7 @@ Nyní můžete v dialogovém okně kliknout na **publikovat** . [K zobrazení cl
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: aktualizace ukázky vizuálních objektů
 Můžete si všimnout, že ve verzi, která byla nasazena v kroku 1, se neotáčí vizuální objekty. Pojďme tuto aplikaci upgradovat na jednu, kde se také otočí vizuální objekty.
 
-V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor **VisualObjectActor.cs** . V tomto souboru přejdete do metody `MoveObject` , nakomentovat `visualObject.Move(false)` a odkomentujte `visualObject.Move(true)` . Tato změna kódu otočí objekty po upgradu služby.  **Nyní můžete sestavit (ne znovu sestavit) řešení**, které vytvoří upravené projekty. Pokud vyberete možnost *znovu sestavit vše*, je nutné aktualizovat verze pro všechny projekty.
+V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor **VisualObjectActor. cs** . V tomto souboru přejdete do metody `MoveObject` , nakomentovat `visualObject.Move(false)` a odkomentujte `visualObject.Move(true)` . Tato změna kódu otočí objekty po upgradu služby.  **Nyní můžete sestavit (ne znovu sestavit) řešení**, které vytvoří upravené projekty. Pokud vyberete možnost *znovu sestavit vše*, je nutné aktualizovat verze pro všechny projekty.
 
 Musíme také poznáte verzi naší aplikace. Chcete-li provést změny verze po kliknutí pravým tlačítkem na projekt **VisualObjects** , můžete použít možnost **Upravit verze manifestu** aplikace Visual Studio. Když vyberete tuto možnost, zobrazí se dialogové okno pro verze edice následujícím způsobem:
 

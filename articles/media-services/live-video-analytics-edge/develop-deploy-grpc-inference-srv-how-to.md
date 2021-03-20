@@ -4,10 +4,10 @@ description: Tento článek poskytuje pokyny pro vývoj a nasazení gRPC odvozen
 ms.topic: how-to
 ms.date: 12/02/2020
 ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881648"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Návod – vývoj a nasazení gRPC odvozeného serveru
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak můžete zabalit model AI podle vašeho výbě
 * [Úvod do gRPC](https://www.grpc.io/docs/what-is-grpc/introduction/)
 * [Průvodce jazyky proto3](https://developers.google.com/protocol-buffers/docs/proto3)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Zařízení s platformou X86-64 nebo ARM64, které používá některý z [podporovaných operačních systémů Linux](../../iot-edge/support.md#operating-systems) nebo počítače s Windows.
 * [Nainstalujte do počítače Docker](https://docs.docker.com/desktop/#download-and-install) .
@@ -148,7 +148,7 @@ Abychom porozuměli podrobnostem o vývoji serveru gRPC, Projděte si ukázku k�
 1. Spusťte VSCode a přejděte do složky/src/edge/modules/grpcExtension.
 1. Pojďme si rychle prodávat soubory:
 
-    1. **Program.cs**: Toto je vstupní bod aplikace. Zodpovídá za inicializaci a správu serveru gRPC, který bude fungovat jako hostitel. V naší ukázce port pro příjem příchozích zpráv gRPC z klienta gRPC (jako je například analýza živých videí) je určen elementem konfigurace grpcBindings v AppConfig.js.
+    1. **Program. cs**: Toto je vstupní bod aplikace. Zodpovídá za inicializaci a správu serveru gRPC, který bude fungovat jako hostitel. V naší ukázce port pro příjem příchozích zpráv gRPC z klienta gRPC (jako je například analýza živých videí) je určen elementem konfigurace grpcBindings v AppConfig.js.
     
         ```json    
         {
@@ -191,7 +191,7 @@ Teď, když jsme nakonfigurovali a inicializoval připojení portů serveru gRPC
               }
             }
             ```
-        * V závislosti na hodnotě batchSize v Appconfig.jsna serveru bude náš server dál přijímat zprávy a bude ukládat snímky videa do seznamu. Po dosažení limitu batchSize funkce zavolá funkci nebo soubor, který zpracuje obrázek. V našem případě metoda volá soubor s názvem BatchImageProcessor.cs
+        * V závislosti na hodnotě batchSize v Appconfig.jsna serveru bude náš server dál přijímat zprávy a bude ukládat snímky videa do seznamu. Po dosažení limitu batchSize funkce zavolá funkci nebo soubor, který zpracuje obrázek. V našem případě metoda volá soubor s názvem BatchImageProcessor. cs.
     1. **Processors\BatchImageProcessor.cs**: Tato třída zodpovídá za zpracování imagí. V této ukázce jsme použili model klasifikace obrázků. Pro každý obrázek, který se zpracuje, se používá následující algoritmus:
 
         1. Převeďte obrázek v bajtovém poli ke zpracování. Viz metoda: `GetBytes(Bitmap image)`
@@ -207,7 +207,7 @@ Teď, když jsme nakonfigurovali a inicializoval připojení portů serveru gRPC
     IEnumerable<Inference> ProcessImage(List<Image> images) 
     ```
 
-    Po přidání nové třídy bude nutné aktualizovat MediaGraphExtensionService.cs, aby vytvořila instanci vaší třídy a vyvolala metodu ProcessImage pro spuštění logiky zpracování. 
+    Po přidání nové třídy bude nutné aktualizovat MediaGraphExtensionService. cs, aby vytvořila instanci vaší třídy a vyvolala metodu ProcessImage pro spuštění logiky zpracování. 
 
 ## <a name="connect-with-live-video-analytics-module"></a>Propojit s modulem Live video Analytics
 
@@ -228,7 +228,7 @@ Teď, když jste vytvořili modul rozšíření gRPC, teď vytvoříme a nasadí
 
     * C2D-Console-App. csproj – soubor projektu pro Visual Studio Code.
     * operations.jsna seznam operací, které má program spustit.
-    * Program.cs – vzorový programový kód. Tento kód:
+    * Program. cs – ukázkový kód programu Tento kód:
 
         * Načte nastavení aplikace.
         * Vyvolá přímé metody, které zveřejňuje živá analýza videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](direct-methods.md).

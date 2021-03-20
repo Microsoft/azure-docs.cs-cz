@@ -9,10 +9,10 @@ ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89226025"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio
@@ -53,7 +53,7 @@ Nasaďte projekt jako webovou úlohu samostatně nebo ji propojte s webovým pro
 
 ![Diagram znázorňující, že se projekt úlohy WebJob odkazuje na webový projekt](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Nainstalujte Visual Studio 2017 nebo Visual Studio 2019 s [úlohou vývoj pro Azure](/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
@@ -71,7 +71,7 @@ Máte dvě možnosti:
 
 #### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a> Povolení automatického nasazení webových úloh pomocí webového projektu
 
-1. Klikněte pravým tlačítkem na webový projekt v **Průzkumník řešení**a pak vyberte **Přidat**  >  **existující projekt jako webovou úlohu Azure**.
+1. Klikněte pravým tlačítkem na webový projekt v **Průzkumník řešení** a pak vyberte **Přidat**  >  **existující projekt jako webovou úlohu Azure**.
    
     ![Existující projekt jako webová úloha Azure](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
@@ -82,7 +82,7 @@ Máte dvě možnosti:
 3. Dokončete dialog [Přidat webovou úlohu Azure](#configure) a pak vyberte **OK**. 
 
 #### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a> Povolit nasazení webové úlohy bez webového projektu
-1. Klikněte pravým tlačítkem na projekt konzolové aplikace v **Průzkumník řešení**a pak vyberte **Publikovat jako webovou úlohu Azure**. 
+1. Klikněte pravým tlačítkem na projekt konzolové aplikace v **Průzkumník řešení** a pak vyberte **Publikovat jako webovou úlohu Azure**. 
    
     ![Publikovat jako webovou úlohu Azure](./media/webjobs-dotnet-deploy-vs/paw.png)
    
@@ -102,7 +102,7 @@ Chcete-li vytvořit nový projekt s podporou WebJobs, použijte šablonu projekt
     Vytvořte projekt, který je nakonfigurován pro automatické nasazení jako webovou úlohu při nasazení webového projektu ve stejném řešení. Tuto možnost použijte, pokud chcete spustit webovou úlohu ve stejné webové aplikaci, ve které spouštíte související webovou aplikaci.
 
 > [!NOTE]
-> Šablona New – projekt WebJobs automaticky nainstaluje balíčky NuGet a obsahuje kód v *program.cs* pro [sadu WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Pokud nechcete používat sadu WebJobs SDK, odeberte nebo změňte `host.RunAndBlock` příkaz v *program.cs*.
+> Šablona nové projektu WebJobs automaticky nainstaluje balíčky NuGet a obsahuje kód v *programu program. cs* pro [sadu WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Pokud nechcete používat sadu WebJobs SDK, odeberte nebo změňte `host.RunAndBlock` příkaz v *programu program. cs*.
 > 
 > 
 
@@ -112,7 +112,7 @@ Chcete-li vytvořit nový projekt s podporou WebJobs, použijte šablonu projekt
 2. Postupujte podle předchozích pokynů a [zpřístupněte projekt konzolové aplikace nezávisle na projektu WebJobs](#convertnolink).
 
 #### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a> Použití šablony WebJobs New-Project pro webovou úlohu propojenou s webovým projektem
-1. Klikněte pravým tlačítkem na webový projekt v **Průzkumník řešení**a pak vyberte **Přidat**  >  **Nový projekt webové úlohy Azure**.
+1. Klikněte pravým tlačítkem na webový projekt v **Průzkumník řešení** a pak vyberte **Přidat**  >  **Nový projekt webové úlohy Azure**.
    
     ![Nový záznam nabídky projektu úlohy WebJob Azure](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
@@ -233,7 +233,7 @@ Pokud povolíte možnost **vždy zapnuto** v Azure, můžete pomocí sady Visual
 
 1. Na kartě **publikovat** vyberte možnost **Upravit**. 
 
-1. V dialogovém okně **nastavení profilu** zvolte možnost **souvislá** pro **typ webové úlohy**a pak zvolte **Uložit**.
+1. V dialogovém okně **nastavení profilu** zvolte možnost **souvislá** pro **typ webové úlohy** a pak zvolte **Uložit**.
 
     ![Dialogové okno nastavení publikování pro webovou úlohu](./media/webjobs-dotnet-deploy-vs/publish-settings.png)
 

@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230776"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Rychlý start: Vytvoření serveru – portál
@@ -30,7 +30,7 @@ Tento rychlý start popisuje, jak pomocí portálu vytvořit prostředek serveru
 
 ## <a name="create-a-server"></a>Vytvoření serveru
 
-1. Klikněte na **+ vytvořit Analysis Services pro**  >  **analýzu**prostředků  >  **Analysis Services**.
+1. Klikněte na **+ vytvořit Analysis Services pro**  >  **analýzu** prostředků  >  .
 
     ![Portál](./media/analysis-services-create-server/aas-create-server-portal.png)
 
@@ -58,4 +58,4 @@ Pokud už server nepotřebujete, odstraňte ho. Na stránce **Přehled** vašeho
 V tomto rychlém startu jste zjistili, jak vytvořit server v předplatném Azure. Když teď máte server, můžete ho zabezpečit nakonfigurováním (volitelné) brány firewall serveru. Na server také můžete přímo z portálu přidat základní ukázkový datový model. Na ukázkovém modelu se naučíte konfigurovat role modelové databáze a testovat připojení klientů. Ve výuce pokračujte kurzem, ve kterém přidáte ukázkový model.
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   
+> [Rychlé zprovoznění: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   

@@ -8,10 +8,10 @@ ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98882378"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
@@ -119,7 +119,7 @@ Nejlepším způsobem, jak změřit požadavky na výkon vaší aplikace, je pou
 
 Čítače výkonu jsou k dispozici pro procesor, paměť a každý logický disk a fyzický disk serveru. Když použijete disky Premium Storage s virtuálním počítačem, čítače fyzického disku jsou pro každý disk Storage úrovně Premium a čítače logických disků jsou pro každý svazek vytvořený na discích úložiště úrovně Premium. Je nutné zachytit hodnoty pro disky, které hostují zatížení vaší aplikace. Pokud existuje mapování mezi logickými a fyzickými disky, můžete se podívat na čítače fyzického disku. v opačném případě se podívejte na čítače logických disků. V systému Linux příkaz iostat vygeneruje sestavu využití procesoru a disku. Sestava využití disku poskytuje statistiku pro každé fyzické zařízení nebo oddíl. Pokud máte databázový server s daty a protokoly na samostatných discích, shromážděte tato data pro oba disky. Následující tabulka popisuje čítače pro disky, procesory a paměť:
 
-| Čítač | Popis | PerfMon | Iostat |
+| Čítač | Description | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **Počet vstupně-výstupních operací za sekundu** |Počet vstupně-výstupních požadavků vydaných na disk úložiště za sekundu. |Čtení z disku/s <br> Zápisy na disk/s |TPS <br> r/s <br> w/s |
 | **Čtení a zápisy na disk** |% operací čtení a zápisu provedených na disku. |% Doby čtení disku <br> % Času zápisu na disk |r/s <br> w/s |
@@ -155,7 +155,7 @@ Další informace o velikostech virtuálních počítačů a počtu IOPS, propus
 | **Velikost disku** |Použijte velikost disku, která nabízí IOPS větší než požadavek vaší aplikace. |Použijte velikost disku s limitem propustnosti větším, než je požadavek vaší aplikace. |Použijte velikost disku, která nabízí limity škálování větší než požadavek vaší aplikace. |
 | **Omezení škálování virtuálního počítače a disku** |Limit IOPS zvolené velikosti virtuálního počítače by měl být větší než celkový počet IOPS, který je založený na discích úložiště, které jsou k němu připojené. |Limit propustnosti zvolené velikosti virtuálního počítače by měl být větší než celková propustnost řízená disky Premium Storage, které jsou k ní připojené. |Limity škálování zvolené velikosti virtuálního počítače musí být větší než celková omezení škálování připojených disků úložiště úrovně Premium. |
 | **Ukládání disku do mezipaměti** |Povolte mezipaměť jen pro čtení na discích úložiště úrovně Premium s operacemi čtení těžkých operací, abyste získali vyšší počet IOPS. | &nbsp; |Povolte mezipaměť jen pro čtení na discích úložiště úrovně Premium s připravenými náročnými operacemi, abyste dosáhli velmi nízké latence čtení. |
-| **Diskové svazky** |Použijte více disků a propojte je dohromady, abyste získali kombinovaný limit s vyšším počtem vstupně-výstupních operací a propustnosti. Kombinovaný limit na virtuální počítač musí být vyšší než kombinované limity připojených prémiových disků. | &nbsp; | &nbsp; |
+| **Prokládání disků** |Použijte více disků a propojte je dohromady, abyste získali kombinovaný limit s vyšším počtem vstupně-výstupních operací a propustnosti. Kombinovaný limit na virtuální počítač musí být vyšší než kombinované limity připojených prémiových disků. | &nbsp; | &nbsp; |
 | **Velikost pruhu** |Menší velikost obložení pro náhodný vzor malých vstupně-výstupních operací, který se zobrazuje v aplikacích OLTP. Například použijte velikost Stripe 64 KB pro aplikaci SQL Server OLTP. |Větší velikost proložení pro sekvenční velký vstupně-výstupní vzor, který se zobrazuje v aplikacích datového skladu. Například použijte velikost pruhu 256 KB pro SQL Server aplikaci datového skladu. | &nbsp; |
 | **Multithreading** |Použijte multithreading k nabízení většího počtu požadavků na Premium Storage, které vedou k vyšším vstupně-výstupním operacím a propustnosti. Například na SQL Server nastavte vysokou hodnotu MAXDOP pro přidělení dalších procesorů k SQL Server. | &nbsp; | &nbsp; |
 | **Hloubka fronty** |Větší hloubka fronty poskytuje vyšší IOPS. |Větší hloubka fronty poskytuje vyšší propustnost. |Menší hloubka fronty poskytuje nižší latenci. |

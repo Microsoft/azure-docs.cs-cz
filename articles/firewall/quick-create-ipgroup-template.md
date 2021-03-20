@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079128"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Rychlý Start: vytvoření Azure Firewall a skupin IP – šablona ARM
@@ -46,7 +46,7 @@ V šabloně je definováno víc prostředků Azure:
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
@@ -59,7 +59,7 @@ Nasazení šablony ARM do Azure:
 
 2. Na portálu na stránce **vytvořit Azure firewall se IpGroups** zadejte nebo vyberte následující hodnoty:
    - Předplatné: vyberte z existujících předplatných. 
-   - Skupina prostředků: vyberte z existujících skupin prostředků nebo vyberte **vytvořit novou**a vyberte **OK**.
+   - Skupina prostředků: vyberte z existujících skupin prostředků nebo vyberte **vytvořit novou** a vyberte **OK**.
    - Umístění: vyberte umístění.
    - Virtual Network název: zadejte název nové virtuální sítě (VNet). 
    - Název skupiny IP adres 1: název typu pro skupinu IP adres 1 
@@ -76,7 +76,7 @@ V Azure Portal zkontrolujte nasazené prostředky, zejména pravidla brány fire
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="Skupiny IP adres.":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Skupiny IP adres.":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Síťová pravidla.":::
 
 Další informace o syntaxi a vlastnostech JSON pro bránu firewall v šabloně najdete v referenčních informacích k [šabloně Microsoft. Network azureFirewalls](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls).
 

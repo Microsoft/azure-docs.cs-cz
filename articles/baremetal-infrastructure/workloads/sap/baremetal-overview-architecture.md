@@ -5,10 +5,10 @@ ms.custom: references_regions
 ms.topic: conceptual
 ms.date: 1/4/2021
 ms.openlocfilehash: eb4dc129719dc410f7101598e3d72e68f17809c1
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97860989"
 ---
 #  <a name="what-is-baremetal-infrastructure-preview-on-azure"></a>Co je BareMetal infrastruktura ve verzi Preview v Azure?
@@ -71,7 +71,7 @@ Dostupné verze operačních systémů Linux:
    - SLES 12 SP5
    - SLES 15 SP1
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 Instance BareMetal založené na konkrétním typu SKU přicházejí s předdefinovaným úložištěm NFS pro konkrétní typ úlohy. Když zřizujete BareMetal, můžete zřídit další úložiště na základě odhadovaného nárůstu tím, že odešlete žádost o podporu. Veškeré úložiště obsahuje disk s veškerým bliknutím v revizi 4,2 s podporou pro NFSv3 a názvů NFSv4. K dispozici bude novější revize 4,5 NVMe SSD. Další informace o velikosti úložiště najdete v části [BareMetal úlohy typ](../../../virtual-machines/workloads/sap/get-started.md) .
 
 >[!NOTE]

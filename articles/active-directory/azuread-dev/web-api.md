@@ -15,13 +15,13 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9cf5a9c81ca1d7a42a5a8e342dee55f335656c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80154419"
 ---
-# <a name="web-api"></a>Web API
+# <a name="web-api"></a>Webové rozhraní API
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -66,7 +66,7 @@ V toku níže jsou popsány typy identity identity aplikace i delegovaný uživa
 
 Podívejte se na ukázky kódu pro scénáře webové aplikace do webového rozhraní API. A znovu se podívejte na časté – nové ukázky se přidávají často. Webová [aplikace do webového rozhraní API](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
 
-## <a name="app-registration"></a>Registrace aplikací
+## <a name="app-registration"></a>Registrace aplikace
 
 Pokud chcete zaregistrovat aplikaci s koncovým bodem Azure AD v 1.0, přečtěte si téma [Registrace aplikace](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

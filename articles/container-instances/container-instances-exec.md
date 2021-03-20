@@ -4,10 +4,10 @@ description: Přečtěte si, jak spustit příkaz v kontejneru, který je aktuá
 ms.topic: article
 ms.date: 03/30/2018
 ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "79247199"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Spuštění příkazu ve spuštěné instanci kontejneru Azure
@@ -74,7 +74,7 @@ Bye.
 
 Pokud má vaše [Skupina kontejnerů](container-instances-container-groups.md) více kontejnerů, například kontejner aplikace a postranní vozík, zadejte název kontejneru, ve kterém se má příkaz Spustit `--container-name` .
 
-Například ve skupině kontejnerů *mynginx* jsou dva kontejnery, *Nginx-App* a *protokolovací*nástroj. Spuštění prostředí v kontejneru *Nginx-App* :
+Například ve skupině kontejnerů *mynginx* jsou dva kontejnery, *Nginx-App* a *protokolovací* nástroj. Spuštění prostředí v kontejneru *Nginx-App* :
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"

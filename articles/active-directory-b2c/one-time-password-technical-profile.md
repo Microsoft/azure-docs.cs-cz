@@ -12,10 +12,10 @@ ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97881187"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu s jednorázovým heslem v Azure AD B2C vlastní zásady
@@ -53,7 +53,7 @@ Element **InputClaims** obsahuje seznam deklarací identity potřebných k odesl
 
 | ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
-| identifikátor | Ano | Identifikátor k identifikaci uživatele, který potřebuje později ověřit kód. Obvykle se používá jako identifikátor cílového umístění, do kterého se kód doručuje, například e-mailová adresa nebo telefonní číslo. |
+| identifikátor | Yes | Identifikátor k identifikaci uživatele, který potřebuje později ověřit kód. Obvykle se používá jako identifikátor cílového umístění, do kterého se kód doručuje, například e-mailová adresa nebo telefonní číslo. |
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před odesláním do poskytovatele protokolu jednorázového hesla.
 
@@ -63,7 +63,7 @@ Element **OutputClaims** obsahuje seznam deklarací generovaných poskytovatelem
 
 | ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
-| otpGenerated | Ano | Generovaný kód, jehož relace je spravovaná pomocí Azure AD B2C. |
+| otpGenerated | Yes | Generovaný kód, jehož relace je spravovaná pomocí Azure AD B2C. |
 
 Element **OutputClaimsTransformations** může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových.
 
@@ -73,13 +73,13 @@ Následující nastavení lze použít ke konfiguraci režimu generování kódu
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Ne | Doba v sekundách, po kterou bude vypršení platnosti kódu. Minimum: `60` ; Maximum: `1200` ; Výchozí: `600` . Pokaždé, když je poskytnut kód (stejný kód s použitím `ReuseSameCode` nebo nový kód), je prodloužení platnosti kódu prodlouženo. Tato doba se používá také k nastavení časového limitu opakování (po dosažení maximálního počtu pokusů je uživatel zablokován z pokusu o získání nových kódů až do vypršení platnosti této doby). |
-| CodeLength | Ne | Délka kódu. Výchozí hodnota je `6`. |
-| CharacterSet | Ne | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
-| NumRetryAttempts | Ne | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
-| NumCodeGenerationAttempts | Ne | Počet pokusů o generování kódu na identifikátor. Výchozí hodnota je 10, pokud není zadána. |
-| Operace | Ano | Operace, která má být provedena. Možná hodnota: `GenerateCode` . |
-| ReuseSameCode | Ne | Zda by měl být uveden stejný kód namísto generování nového kódu, pokud daný kód nevypršel a je stále platný. Výchozí hodnota je `false`.  |
+| CodeExpirationInSeconds | No | Doba v sekundách, po kterou bude vypršení platnosti kódu. Minimum: `60` ; Maximum: `1200` ; Výchozí: `600` . Pokaždé, když je poskytnut kód (stejný kód s použitím `ReuseSameCode` nebo nový kód), je prodloužení platnosti kódu prodlouženo. Tato doba se používá také k nastavení časového limitu opakování (po dosažení maximálního počtu pokusů je uživatel zablokován z pokusu o získání nových kódů až do vypršení platnosti této doby). |
+| CodeLength | No | Délka kódu. Výchozí hodnota je `6`. |
+| CharacterSet | No | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například, `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
+| NumRetryAttempts | No | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
+| NumCodeGenerationAttempts | No | Počet pokusů o generování kódu na identifikátor. Výchozí hodnota je 10, pokud není zadána. |
+| Operace | Yes | Operace, která má být provedena. Možná hodnota: `GenerateCode` . |
+| ReuseSameCode | No | Zda by měl být uveden stejný kód namísto generování nového kódu, pokud daný kód nevypršel a je stále platný. Výchozí hodnota je `false`.  |
 
 
 
@@ -119,8 +119,8 @@ Element **InputClaims** obsahuje seznam deklarací identity potřebných k odesl
 
 | ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
-| identifikátor | Ano | Identifikátor k identifikaci uživatele, který dříve vygeneroval kód. Obvykle se používá jako identifikátor cílového umístění, do kterého se kód doručuje, například e-mailová adresa nebo telefonní číslo. |
-| otpToVerify | Ano | Ověřovací kód poskytnutý uživatelem |
+| identifikátor | Yes | Identifikátor k identifikaci uživatele, který dříve vygeneroval kód. Obvykle se používá jako identifikátor cílového umístění, do kterého se kód doručuje, například e-mailová adresa nebo telefonní číslo. |
+| otpToVerify | Yes | Ověřovací kód poskytnutý uživatelem |
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před odesláním do poskytovatele protokolu jednorázového hesla.
 
@@ -136,7 +136,7 @@ V režimu ověření kódu lze použít následující nastavení:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Ano | Operace, která má být provedena. Možná hodnota: `VerifyCode` . |
+| Operace | Yes | Operace, která má být provedena. Možná hodnota: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
@@ -145,12 +145,12 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfSessionDoesNotExist | Ne | Zpráva, která se zobrazí uživateli, pokud vypršela platnost relace ověření kódu Buď je tento kód neplatný, nebo kód nebyl nikdy vygenerován pro daný identifikátor. |
-| UserMessageIfMaxRetryAttempted | Ne | Zpráva, která se zobrazí uživateli, pokud překročila maximální povolený počet pokusů o ověření. |
-| UserMessageIfMaxNumberOfCodeGenerated | Ne | Zpráva, která se zobrazí uživateli, pokud generování kódu překročilo maximální povolený počet pokusů. |
-| UserMessageIfInvalidCode | Ne | Zpráva, která se zobrazí uživateli, pokud jim byl zadán neplatný kód. |
-| UserMessageIfVerificationFailedRetryAllowed | Ne | Zpráva, která se zobrazí uživateli, pokud jim byl poskytnut neplatný kód a uživatel je oprávněn poskytnout správný kód.  |
-|UserMessageIfSessionConflict|Ne| Zpráva, která se zobrazí uživateli, pokud nelze kód ověřit|
+| UserMessageIfSessionDoesNotExist | No | Zpráva, která se zobrazí uživateli, pokud vypršela platnost relace ověření kódu Buď je tento kód neplatný, nebo kód nebyl nikdy vygenerován pro daný identifikátor. |
+| UserMessageIfMaxRetryAttempted | No | Zpráva, která se zobrazí uživateli, pokud překročila maximální povolený počet pokusů o ověření. |
+| UserMessageIfMaxNumberOfCodeGenerated | No | Zpráva, která se zobrazí uživateli, pokud generování kódu překročilo maximální povolený počet pokusů. |
+| UserMessageIfInvalidCode | No | Zpráva, která se zobrazí uživateli, pokud jim byl zadán neplatný kód. |
+| UserMessageIfVerificationFailedRetryAllowed | No | Zpráva, která se zobrazí uživateli, pokud jim byl poskytnut neplatný kód a uživatel je oprávněn poskytnout správný kód.  |
+|UserMessageIfSessionConflict|No| Zpráva, která se zobrazí uživateli, pokud nelze kód ověřit|
 
 ### <a name="example"></a>Příklad
 

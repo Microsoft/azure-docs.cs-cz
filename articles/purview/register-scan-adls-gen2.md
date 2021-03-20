@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98882395"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Registrovat a kontrolovat Azure Data Lake Storage Gen2
 
 Tento článek popisuje, jak zaregistrovat Azure Data Lake Storage Gen2 jako zdroj dat ve službě Azure dosah a nastavit kontrolu.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Zdroj dat Azure Data Lake Storage Gen2 podporuje následující funkce:
 
@@ -26,7 +26,7 @@ Zdroj dat Azure Data Lake Storage Gen2 podporuje následující funkce:
 
 - Počet **řádků** mezi datovými prostředky pro aktivity kopírování a toku dat ADF
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 

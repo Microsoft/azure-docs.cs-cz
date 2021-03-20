@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
 ms.openlocfilehash: abecddb6f5469cb4ef463e65d6c74149bf34dca9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100590222"
 ---
 # <a name="connect-your-domain-name-server"></a>Připojit váš názvový server domény
@@ -73,7 +73,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 V Log Analytics vyhledejte **DnsEvents** schématu a ujistěte se, že existují události.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se vyhledávací dotazy nezobrazují ve službě Azure Sentinel, postupujte podle těchto kroků, aby se dotazy zobrazovaly správně:
 1. Zapněte [DNS Analytics protokoly na serverech](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)).

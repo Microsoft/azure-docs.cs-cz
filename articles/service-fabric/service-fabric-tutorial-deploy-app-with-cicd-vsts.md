@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326333"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric
@@ -61,7 +61,7 @@ Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracov
 
 Nasdílejte zdrojové soubory své aplikace do projektu v Azure DevOps, abyste mohli generovat buildy.
 
-Pro svůj projekt vytvořte nové místní úložiště Git, a to **Add to Source Control**tak, že  ->  na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete Přidat do správy zdrojového kódu**Git** .
+Pro svůj projekt vytvořte nové místní úložiště Git, a to tak, že  ->  na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete Přidat do správy zdrojového kódu **Git** .
 
 V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps** tlačítko **Publikovat úložiště Git**.
 
@@ -83,7 +83,7 @@ Kanál verze Azure Pipelines popisuje pracovní postup, který nasadí balíček
 
 Otevřete webový prohlížeč a přejděte do nového projektu na adrese: [https://&lt;váš_účet&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Vyberte kartu **kanály** a pak **sestavení**a pak klikněte na **Nový kanál**.
+Vyberte kartu **kanály** a pak **sestavení** a pak klikněte na **Nový kanál**.
 
 ![Nový kanál][new-pipeline]
 
@@ -91,15 +91,15 @@ Vyberte **Azure Repos Git** jako zdroj, **hlasovací** týmový projekt, **hlaso
 
 ![Vybrat úložiště][select-repo]
 
-V části **Vybrat šablonu**vyberte šablonu **aplikace Azure Service Fabric** a klikněte na **použít**.
+V části **Vybrat šablonu** vyberte šablonu **aplikace Azure Service Fabric** a klikněte na **použít**.
 
 ![Výběr šablony sestavení][select-build-template]
 
-Do pole **úlohy**zadejte "hostované VS2017" jako **fond agentů**.
+Do pole **úlohy** zadejte "hostované VS2017" jako **fond agentů**.
 
 ![Výběr úloh][save-and-queue]
 
-V části **Triggery** povolte průběžnou integraci zaškrtnutím políčka **Povolit průběžnou integraci**. Ve **filtrech větví**je **specifikace větve** standardně **hlavní**. Pokud chcete ručně spustit sestavení, vyberte **Uložit a zařadit do fronty**.
+V části **Triggery** povolte průběžnou integraci zaškrtnutím políčka **Povolit průběžnou integraci**. Ve **filtrech větví** je **specifikace větve** standardně **hlavní**. Pokud chcete ručně spustit sestavení, vyberte **Uložit a zařadit do fronty**.
 
 ![Výběr triggerů][save-and-queue2]
 
@@ -107,7 +107,7 @@ Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. 
 
 ### <a name="create-a-release-pipeline"></a>Vytvoření kanálu verze
 
-Vyberte kartu **kanály** a pak **verze**a potom **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
+Vyberte kartu **kanály** a pak **verze** a potom **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
 
 ![Výběr šablony vydání][select-release-template]
 
@@ -131,7 +131,7 @@ Povolte trigger průběžného nasazování, aby se po dokončení sestavení au
 
 ![Povolení triggeru][enable-trigger]
 
-Výběrem **+ vydaná**verze  ->  **vytvořit vydání**  ->  **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
+Výběrem **+ vydaná** verze  ->  **vytvořit vydání**  ->  **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
 
 Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
 

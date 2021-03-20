@@ -13,10 +13,10 @@ ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89268600"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
@@ -58,7 +58,7 @@ Pomocí těchto kroků můžete zobrazit sestavu stavu synchronizace zařízení
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/).
 1. Vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. Vyberte uživatele a pak vyberte **zařízení**.
-1. V části **Zobrazit**vyberte **zařízení, která synchronizují nastavení a data aplikací** , a zobrazte tak stav synchronizace.
+1. V části **Zobrazit** vyberte **zařízení, která synchronizují nastavení a data aplikací** , a zobrazte tak stav synchronizace.
   
    ![Obrázek nastavení synchronizace dat zařízení](./media/enterprise-state-roaming-enable/sync-status.png)
   

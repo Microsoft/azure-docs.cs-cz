@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9c734ff03b1cf277c7e0967d8b76b1941434f414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86050425"
 ---
 V tomto postupu provedete tyto kroky:
@@ -20,7 +20,7 @@ V tomto postupu provedete tyto kroky:
 
 #### <a name="to-prepare-to-run-the-maintainer"></a>Příprava na spuštění údržby
 1. Na webovém front-end serveru otevřete prostředí SharePoint 2013 Management Shell jako správce.
-2. Přejděte na *spouštěcí jednotku*složky: \Program Files\Microsoft SQL Remote BLOB Storage 10.50 \ Maintainer\.
+2. Přejděte na *spouštěcí jednotku* složky: \Program Files\Microsoft SQL Remote BLOB Storage 10.50 \ Maintainer\.
 3. Přejmenujte **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** na **web.config**.
 4. Slouží `aspnet_regiis -pdf connectionStrings` k dešifrování souboru web.config.
 5. V dešifrovaném web.config souboru pod `connectionStrings` uzlem přidejte připojovací řetězec pro instanci serveru SQL Server a název databáze obsahu. Prohlédněte si následující příklad.
@@ -38,7 +38,7 @@ V tomto postupu provedete tyto kroky:
 
     `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
 
-2. Na webovém front-end serveru v části **Centrální správa**upravte **Obecná nastavení webové aplikace** pro požadovanou databázi obsahu pro dočasné vypnutí odpadkového koše. Tato akce také vyprázdní odpadkový koš pro všechny související kolekce webů. Provedete to tak, že kliknete na Správa aplikací **centrální**správy  ->  **aplikace**  ->  **webové aplikace (spravovat webové aplikace)**  ->  nastavení pro obecné aplikace**SharePoint-80**  ->  **General Application Settings**. Nastavte **stav odpadkového koše** na **off (vypnuto**).
+2. Na webovém front-end serveru v části **Centrální správa** upravte **Obecná nastavení webové aplikace** pro požadovanou databázi obsahu pro dočasné vypnutí odpadkového koše. Tato akce také vyprázdní odpadkový koš pro všechny související kolekce webů. Provedete to tak, že kliknete na Správa aplikací **centrální** správy  ->  **aplikace**  ->  **webové aplikace (spravovat webové aplikace)**  ->  nastavení pro obecné aplikace **SharePoint-80**  ->  . Nastavte **stav odpadkového koše** na **off (vypnuto**).
    
     ![Obecná nastavení webové aplikace](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
@@ -62,5 +62,5 @@ V tomto postupu provedete tyto kroky:
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. Na webovém front-end serveru v **centrální správě**upravte **Obecná nastavení webové aplikace** pro požadovanou databázi obsahu, aby bylo možné koš znovu povolit. Provedete to tak, že kliknete na Správa aplikací **centrální**správy  ->  **aplikace**  ->  **webové aplikace (spravovat webové aplikace)**  ->  nastavení pro obecné aplikace**SharePoint-80**  ->  **General Application Settings**. Nastavte stav odpadkového koše **na zapnuto**.
+2. Na webovém front-end serveru v **centrální správě** upravte **Obecná nastavení webové aplikace** pro požadovanou databázi obsahu, aby bylo možné koš znovu povolit. Provedete to tak, že kliknete na Správa aplikací **centrální** správy  ->  **aplikace**  ->  **webové aplikace (spravovat webové aplikace)**  ->  nastavení pro obecné aplikace **SharePoint-80**  ->  . Nastavte stav odpadkového koše **na zapnuto**.
 

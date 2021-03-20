@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte o schématu odvozených metadat.
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 2de437577dc00692fb98c46fec32bfaa6612dc99
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019490"
 ---
 # <a name="inference-metadata-schema"></a>Schéma odvozování metadat 
@@ -24,7 +24,7 @@ Každý objekt odvození bez ohledu na použití kontraktu HTTP nebo kontraktu z
 |Atribut|Další atributy přidružené k výsledku. Můžete přidat nové atributy, které obdržíte z modulu Inferencing, spolu s hodnotou spolehlivosti.|
 |Seznam atributů|Seznam volitelných atributů|
 |Obdélník|Obdélníková oblast relativní vzhledem k levému hornímu rohu obrázku Požadované vlastnosti budou být "Délka", "Šířka", Výška "a" horní hrana vzdálenosti od počátku ".|
-|Classification|Popisek třídění je často použitelný pro celou ukázku. Pomocí "značky" můžete klasifikovat výsledek.|
+|Klasifikace|Popisek třídění je často použitelný pro celou ukázku. Pomocí "značky" můžete klasifikovat výsledek.|
 |Entita|V ukázce se zjistila nebo identifikovala entita. Když modul Inferencing zjistí entitu, získá "tag", další atributy, které byly odvoditelné a jsou vráceny souřadnice obdélníkového pole kolem nalezené nalezené entity.|
 |Událost|V ukázce byla zjištěna událost. Při zjištění události v ukázce se vrátí název události a vlastnosti specifické pro událost.|
 |Pohybu|V ukázce byl zjištěn pohyb. Při zjištění pohybu v ukázce se vrátí souřadnice obdélníkového ohraničovacího rámečku, kde je pohyb zjištěn.|

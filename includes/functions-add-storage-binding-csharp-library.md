@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 07/05/2019
 ms.author: glenga
 ms.openlocfilehash: 5e1a2622df0038141dd5cb05237f93d5e33e0bfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78190907"
 ---
 V projektu knihovny tříd jazyka C# jsou vazby definovány jako atributy vazby v metodě Function. *function.jsv* souboru vyžadovaném funkcemi se pak automaticky generuje na základě těchto atributů.
 
-Otevřete soubor projektu *HttpExample.cs* a do definice metody přidejte následující parametr `Run` :
+Otevřete soubor projektu *HttpExample. cs* a přidejte do `Run` definice metody následující parametr:
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 

@@ -7,10 +7,10 @@ ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: cbafa7997d203cf06a3e91965355258f0088d77e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589895"
 ---
 # <a name="availability-alerts"></a>Upozornění na dostupnost
@@ -67,7 +67,7 @@ Pomocí [nových sjednocených výstrah](../alerts/alerts-overview.md)můžete u
 
 Pokud chcete tento proces automatizovat pomocí šablon Azure Resource Manager, přečtěte si dokumentaci k tématu [Vytvoření upozornění na metriku pomocí šablony Správce prostředků](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 
