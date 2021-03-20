@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: 04642e69adba82cf33b933829d72c51109ad2ee1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578173"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Zpracování typů obsahu v Azure Logic Apps
@@ -59,7 +59,7 @@ Logic Apps poskytuje možnost generovat uživatelsky přívětivé tokeny, kter�
   
   1. V triggeru žádosti vyberte **použít ukázkovou datovou část k vygenerování schématu**.  
   
-  2. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte ukázkovou datovou část a pak zvolte **Hotovo**. Například: 
+  2. V části **Zadejte nebo vložte ukázkovou datovou část JSON** zadejte ukázkovou datovou část a pak zvolte **Hotovo**. Například: 
 
      ![Snímek obrazovky zobrazující akci při přijetí požadavku HTTP s ukázkovou datovou částí JSON](./media/logic-apps-content-type/request-trigger.png)
 

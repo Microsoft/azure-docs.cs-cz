@@ -4,17 +4,17 @@ description: Přečtěte si o funkcích a omezeních (kvótách) na úrovních s
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015656"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry úrovní služeb
 
 Azure Container Registry je k dispozici ve více úrovních služby (označované také jako SKU). Tyto úrovně poskytují předvídatelné ceny a několik možností pro zarovnávání se vzory kapacity a využití vašeho privátního registru Docker v Azure.
 
-| Úroveň | Popis |
+| Úroveň | Description |
 | --- | ----------- |
 | **Basic** | Vstupní bod optimalizovaný z hlediska nákladů pro vývojáře, kteří se seznamují se službou Azure Container Registry. Základní registry mají stejné programové možnosti jako standard a Premium (jako je Azure Active Directory [integrace ověřování](container-registry-authentication.md#individual-login-with-azure-ad), [odstraňování imagí][container-registry-delete]a [Webhooky][container-registry-webhook]). Zahrnutá propustnost úložiště a imagí je ale nejvhodnější pro scénáře s nižším využitím. |
 | **Standard** | Registry úrovně Standard nabízejí stejné možnosti jako základní a zvyšují propustnost úložiště a imagí. Registry úrovně Standard by měly vyhovovat požadavkům většiny produkčních scénářů. |

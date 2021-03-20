@@ -8,13 +8,13 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/01/2020
 ms.openlocfilehash: 1d5f2248d94796d5e3ee76301642a95abddebfe4
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489331"
 ---
-# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Potenciální zákazníci z komerční nabídky na webu Marketplace
+# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Potenciální zákazníci z nabídky komerčního marketplace
 
 Potenciální zákazníci zajímá nebo nasazují vaše nabídky z [Microsoft AppSource](https://appsource.microsoft.com) a [Azure Marketplace](https://azuremarketplace.microsoft.com). Po publikování vaší nabídky na komerčním webu Marketplace můžete dostávat potenciální zákazníky. V tomto článku se dozvíte o následujících konceptech řízení vedoucích:
 
@@ -48,21 +48,21 @@ Tady jsou místa, kde se vygeneruje zájemce:
 
 ## <a name="understand-lead-data"></a>Pochopení údajů o potenciálních datech
 
-Každý zájemce, kterého obdržíte během procesu pořízení zákazníka, má data v konkrétních polích. První pole, pro které se má zjistit `LeadSource` , je pole, které následuje po tomto formátu: nabídka **zdroje a akce**  |  **Offer**.
+Každý zájemce, kterého obdržíte během procesu pořízení zákazníka, má data v konkrétních polích. První pole, pro které se má zjistit `LeadSource` , je pole, které následuje po tomto formátu: nabídka **zdroje a akce**  |  .
 
-**Zdroje** : hodnota pro toto pole je naplněná na základě tržiště, který vygeneroval zájemce. Možné hodnoty jsou `"AzureMarketplace"` , `"AzurePortal"` a `"AppSource (SPZA)"` .
+**Zdroje**: hodnota pro toto pole je naplněná na základě tržiště, který vygeneroval zájemce. Možné hodnoty jsou `"AzureMarketplace"` , `"AzurePortal"` a `"AppSource (SPZA)"` .
 
-**Akce** : hodnota pro toto pole je naplněná na základě akce, kterou zákazník zavedl na webu Marketplace, který zájemce vygeneroval.
+**Akce**: hodnota pro toto pole je naplněná na základě akce, kterou zákazník zavedl na webu Marketplace, který zájemce vygeneroval.
 
 Možné hodnoty:
 
-- **"Ins"** : představuje *instalaci*. Tato akce je Azure Marketplace nebo AppSource, když zákazník získá svůj produkt.
-- **"PLT"** : zastupuje *zkušební verzi, která se zavedla pro partnery*. Tato akce se provádí v AppSource, když zákazník vybere možnost **kontakt mi** .
-- **"DNC"** : představuje *nekontaktování*. Tato akce se nachází v AppSource, když se partner, který byl křížově uvedený na stránce aplikace, vyžádá, aby kontaktoval. Sdílíme oznámení, že tento zákazník byl ve vaší aplikaci křížově uveden, ale není potřeba ho kontaktovat.
-- **"Vytvořit"** : Tato akce je pouze uvnitř Azure Portal a je generována, když zákazník koupí vaši nabídku na svůj účet.
-- **"StartTestDrive"** : Tato akce je určena pouze pro možnost **testovací jednotka** a je generována, když zákazník spustí testovací jednotku.
+- **"Ins"**: představuje *instalaci*. Tato akce je Azure Marketplace nebo AppSource, když zákazník získá svůj produkt.
+- **"PLT"**: zastupuje *zkušební verzi, která se zavedla pro partnery*. Tato akce se provádí v AppSource, když zákazník vybere možnost **kontakt mi** .
+- **"DNC"**: představuje *nekontaktování*. Tato akce se nachází v AppSource, když se partner, který byl křížově uvedený na stránce aplikace, vyžádá, aby kontaktoval. Sdílíme oznámení, že tento zákazník byl ve vaší aplikaci křížově uveden, ale není potřeba ho kontaktovat.
+- **"Vytvořit"**: Tato akce je pouze uvnitř Azure Portal a je generována, když zákazník koupí vaši nabídku na svůj účet.
+- **"StartTestDrive"**: Tato akce je určena pouze pro možnost **testovací jednotka** a je generována, když zákazník spustí testovací jednotku.
 
-**Nabídky** : na komerčním webu Marketplace můžete mít několik nabídek. Hodnota tohoto pole je vyplněna na základě nabídky, která zájemce vygenerovala. ID vydavatele a ID nabídky jsou odesílány v tomto poli a jsou to hodnoty, které jste zadali při publikování nabídky na webu Marketplace.
+**Nabídky**: na komerčním webu Marketplace můžete mít několik nabídek. Hodnota tohoto pole je vyplněna na základě nabídky, která zájemce vygenerovala. ID vydavatele a ID nabídky jsou odesílány v tomto poli a jsou to hodnoty, které jste zadali při publikování nabídky na webu Marketplace.
 
 Následující příklady znázorňují hodnoty v očekávaném formátu `publisherid.offerid` : 
 
@@ -89,10 +89,10 @@ Informace o zákazníkovi se odesílají prostřednictvím několika polí. Nás
 
 Tady je několik doporučení pro řízení zájemců prostřednictvím prodejního cyklu:
 
-- **Proces** : Definujte jasný prodejní proces s milníky, analýzou a jasným vlastnictvím týmu.
-- **Kvalifikace** : Definujte předpoklady, které označují, zda byl zájemce plně kvalifikován. Zajistěte, aby prodejci prodeje nebo marketingu zabírali před úplným prodejem.
+- **Proces**: Definujte jasný prodejní proces s milníky, analýzou a jasným vlastnictvím týmu.
+- **Kvalifikace**: Definujte předpoklady, které označují, zda byl zájemce plně kvalifikován. Zajistěte, aby prodejci prodeje nebo marketingu zabírali před úplným prodejem.
 - **Následná** akce: Nezapomeňte během 24 hodin pokračovat. Přímo poté, co zákazník nasadí testovací verzi, dostanete zájemce v aplikaci CRM zvolené možnosti. odešlete je e-mailem v době, kdy jsou pořád zahřívání. Požádejte o plánování telefonního hovoru, abyste lépe pochopili, jestli je váš produkt dobrým řešením pro svůj problém. Očekává se, že typická transakce vyžaduje několik následných volání.
-- **Nurture** : nurture vašich zájemců, abyste vám pomohli dosáhnout vyššího ziskového rozpětí. Vrátit se změnami, ale bombard je. Doporučujeme, abyste před uzavřením e-mailu před zavřením přeposlali aspoň pár zákazníků. Nedávejte po prvním pokusu. Pamatujte na to, že tito zákazníci přímo využívají váš produkt a stráví čas v bezplatné zkušební verzi; jsou to skvělé potenciální zákazníky.
+- **Nurture**: nurture vašich zájemců, abyste vám pomohli dosáhnout vyššího ziskového rozpětí. Vrátit se změnami, ale bombard je. Doporučujeme, abyste před uzavřením e-mailu před zavřením přeposlali aspoň pár zákazníků. Nedávejte po prvním pokusu. Pamatujte na to, že tito zákazníci přímo využívají váš produkt a stráví čas v bezplatné zkušební verzi; jsou to skvělé potenciální zákazníky.
 
 Po uvedení technického nastavení zahrňte tyto zájemce do své aktuální prodejní a marketingové strategie a provozní procesy. Uvažujete o tom, abychom lépe porozuměli celkovému procesu prodeje a chtěli byste úzce spolupracovat s vámi na zajištění vysoce kvalitních zájemců a dostatečného množství dat, aby bylo možné to úspěšně provést. Uvítáme vaše názory na to, jak můžeme optimalizovat a zdokonalovat zájemce, abychom vám poslali další data, abychom těmto zákazníkům pomohli zajistit úspěch. Dejte nám vědět, pokud máte zájem o [poskytování zpětné vazby](mailto:AzureMarketOnboard@microsoft.com) a návrhů, které umožní vašemu prodejnímu týmu lepší úspěšnost s komerčními zájemci na webu Marketplace.
 

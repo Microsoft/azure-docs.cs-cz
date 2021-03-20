@@ -9,10 +9,10 @@ ms.date: 10/14/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 4caf43cb972b44dd1482b9e6e467e41cae294708
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93100095"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container---sql-api"></a>Zřízení standardní (ruční) propustnosti v kontejneru Azure Cosmos – SQL API
@@ -28,13 +28,13 @@ Pokud používáte jiné rozhraní API, přečtěte si téma [rozhraní API pro 
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nový kontejner** . Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte **Nový kontejner**. Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující.
    * Zadejte ID kontejneru.
    * Zadejte hodnotu klíče oddílu (například `/ItemID` ).
    * Zadejte propustnost, kterou chcete zřídit (například 1000 ru).
-   * Vyberte **OK** .
+   * Vyberte **OK**.
 
     :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="Snímek obrazovky Průzkumník dat se zvýrazněnou novou kolekcí":::
 

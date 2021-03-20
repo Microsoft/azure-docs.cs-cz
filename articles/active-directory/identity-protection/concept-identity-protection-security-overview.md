@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098463"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – přehled zabezpečení
@@ -45,7 +45,7 @@ Tento graf znázorňuje počet rizikových přihlášení zjištěných ve zvole
 
 Na dlaždici uživatelé s vysokým rizikem se zobrazuje nejnovější počet uživatelů s vysokou pravděpodobností ohrožení identity. Ty by měly být nejvyšší prioritou pro šetření. Kliknutím na dlaždici s vysokým rizikovým uživatelům se přesměruje na filtrované zobrazení sestavy rizikové uživatele, která zobrazuje jenom uživatele s úrovní rizika vysoká. Pomocí této sestavy můžete získat další informace a opravit tyto uživatele s resetováním hesla.
 
-:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Snímek obrazovky s přehledem zabezpečení Azure Portal Pruhové grafy zobrazují počet rizik v průběhu času. Dlaždice shrnují informace o uživatelích a přihlášeních." border="false":::
+:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Snímek obrazovky s přehledem zabezpečení Azure Portal s dlaždicemi, které jsou viditelné pro vysoce rizikové a středně rizikové uživatele a jiné rizikové faktory." border="false":::
 
 ### <a name="medium-risk-users"></a>Středně rizikové uživatele
 Dlaždice středně rizikové uživatele zobrazuje nejnovější počet uživatelů se střední pravděpodobností ohrožení identity. Kliknutím na dlaždici středně rizikové uživatele se přesměruje na filtrované zobrazení sestavy rizikové uživatele, která zobrazuje jenom uživatele, kteří mají úroveň rizika střední. Pomocí této sestavy můžete tyto uživatele dále prozkoumat a opravit.

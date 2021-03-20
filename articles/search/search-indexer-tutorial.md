@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e2ca5f42120661b887d07e697596f41cb7a7fce4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745763"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Kurz: indexování dat SQL Azure pomocí sady .NET SDK
@@ -125,8 +125,8 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 Indexery vyžadují objekt zdroje dat a index. Relevantní kód je ve dvou souborech:
 
-  + **Hotel.cs** obsahující schéma, které definuje index
-  + **Program.cs**, obsahující funkce pro vytváření a správu struktur ve vaší službě
+  + **hotelu. cs** obsahující schéma, které definuje index.
+  + **Program. cs**, který obsahuje funkce pro vytváření a správu struktur ve vaší službě
 
 ### <a name="in-hotelcs"></a>Soubor hotel.cs
 

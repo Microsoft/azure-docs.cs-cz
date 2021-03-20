@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91400976"
 ---
 Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterých SQL Server Skupina dostupnosti naslouchá. Chcete-li vytvořit naslouchací proces skupiny dostupnosti, postupujte následovně:
@@ -37,7 +37,7 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
     d. Chcete-li dokončit vytváření naslouchacího procesu, klikněte dvakrát na tlačítko **Další** a potom klikněte na tlačítko **Dokončit**. V tuto chvíli nepřineste naslouchací proces nebo prostředek online.
 
-1. Převeďte roli clusteru skupiny dostupnosti do režimu offline. V **Správce clusteru s podporou převzetí služeb při selhání** v části **role**klikněte pravým tlačítkem na roli a vyberte **zastavit roli**.
+1. Převeďte roli clusteru skupiny dostupnosti do režimu offline. V **Správce clusteru s podporou převzetí služeb při selhání** v části **role** klikněte pravým tlačítkem na roli a vyberte **zastavit roli**.
 
 1. <a name="congroup"></a>Nakonfigurujte prostředek IP pro skupinu dostupnosti.
 
@@ -48,7 +48,7 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
     b. Klikněte pravým tlačítkem na prostředek IP a pak klikněte na vlastnosti. Poznamenejte si název IP adresy a použijte ji v `$IPResourceName` proměnné ve skriptu PowerShellu.
 
-    c. V části **IP adresa**klikněte na **statická IP adresa**. Nastavte IP adresu jako stejnou adresu, kterou jste použili při nastavování adresy nástroje pro vyrovnávání zatížení na Azure Portal.
+    c. V části **IP adresa** klikněte na **statická IP adresa**. Nastavte IP adresu jako stejnou adresu, kterou jste použili při nastavování adresy nástroje pro vyrovnávání zatížení na Azure Portal.
 
    ![Snímek obrazovky, na kterém se zobrazuje, kde můžete nastavit IP adresu](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
@@ -58,9 +58,9 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
 1. <a name = "dependencyGroup"></a>Zajistěte, aby byl prostředek skupiny dostupnosti SQL Server závislý na klientském přístupovém bodu.
 
-    a. V Správce clusteru s podporou převzetí služeb při selhání klikněte na **role**a potom klikněte na svou skupinu dostupnosti.
+    a. V Správce clusteru s podporou převzetí služeb při selhání klikněte na **role** a potom klikněte na svou skupinu dostupnosti.
 
-    b. Na kartě **prostředky** v části **jiné prostředky**klikněte pravým tlačítkem na skupinu prostředků dostupnosti a potom klikněte na **vlastnosti**. 
+    b. Na kartě **prostředky** v části **jiné prostředky** klikněte pravým tlačítkem na skupinu prostředků dostupnosti a potom klikněte na **vlastnosti**. 
 
     c. Na kartě závislosti přidejte název prostředku klientského přístupového bodu (naslouchacího procesu).
 
@@ -70,9 +70,9 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
 1. <a name="listname"></a>Nastavte prostředek klientského přístupového bodu na základě IP adresy.
 
-    a. V Správce clusteru s podporou převzetí služeb při selhání klikněte na **role**a potom klikněte na svou skupinu dostupnosti. 
+    a. V Správce clusteru s podporou převzetí služeb při selhání klikněte na **role** a potom klikněte na svou skupinu dostupnosti. 
 
-    b. Na kartě **prostředky** klikněte pravým tlačítkem na prostředek klientského přístupového bodu v části **název serveru**a pak klikněte na **vlastnosti**. 
+    b. Na kartě **prostředky** klikněte pravým tlačítkem na prostředek klientského přístupového bodu v části **název serveru** a pak klikněte na **vlastnosti**. 
 
    ![Snímek obrazovky, který zobrazuje možnost nabídky vlastnosti pro název serveru](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
@@ -81,7 +81,7 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
    ![Prostředek IP](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
     >[!TIP]
-    >Můžete ověřit, zda jsou závislosti správně nakonfigurovány. V Správce clusteru s podporou převzetí služeb při selhání přejděte na role, klikněte pravým tlačítkem na skupinu dostupnosti, klikněte na **Další akce**a pak klikněte na  **Zobrazit sestavu závislostí**. Pokud jsou závislosti správně nakonfigurovány, je skupina dostupnosti závislá na názvu sítě a název sítě závisí na IP adrese. 
+    >Můžete ověřit, zda jsou závislosti správně nakonfigurovány. V Správce clusteru s podporou převzetí služeb při selhání přejděte na role, klikněte pravým tlačítkem na skupinu dostupnosti, klikněte na **Další akce** a pak klikněte na  **Zobrazit sestavu závislostí**. Pokud jsou závislosti správně nakonfigurovány, je skupina dostupnosti závislá na názvu sítě a název sítě závisí na IP adrese. 
 
 
 1. <a name="setparam"></a>Nastavte parametry clusteru v prostředí PowerShell.
@@ -108,13 +108,13 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
    > [!NOTE]
    > Pokud jsou vaše SQL Server instance v samostatných oblastech, je potřeba PowerShellový skript spustit dvakrát. Při prvním použití `$ListenerILBIP` a `$ListenerProbePort` z první oblasti. Podruhé použijte `$ListenerILBIP` a `$ListenerProbePort` z druhé oblasti. Název sítě clusteru a název prostředku IP adresy clusteru se také liší pro každou oblast.
 
-1. Přepněte roli clusteru skupiny dostupnosti do online režimu. V **Správce clusteru s podporou převzetí služeb při selhání** v části **role**klikněte pravým tlačítkem na roli a vyberte **Spustit roli**.
+1. Přepněte roli clusteru skupiny dostupnosti do online režimu. V **Správce clusteru s podporou převzetí služeb při selhání** v části **role** klikněte pravým tlačítkem na roli a vyberte **Spustit roli**.
 
 V případě potřeby opakujte výše uvedené kroky a nastavte parametry clusteru pro IP adresu clusteru služby WSFC.
 
-1. Získejte název IP adresy pro IP adresu clusteru služby WSFC. V **Správce clusteru s podporou převzetí služeb při selhání** pod položkou **základní prostředky clusteru**Najděte **název serveru**.
+1. Získejte název IP adresy pro IP adresu clusteru služby WSFC. V **Správce clusteru s podporou převzetí služeb při selhání** pod položkou **základní prostředky clusteru** Najděte **název serveru**.
 
-1. Klikněte pravým tlačítkem na **IP adresu**a vyberte **vlastnosti**.
+1. Klikněte pravým tlačítkem na **IP adresu** a vyberte **vlastnosti**.
 
 1. Zkopírujte **název** IP adresy. Může to být `Cluster IP Address` . 
 

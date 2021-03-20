@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016979"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Sledování synchronizace Azure AD Connect pomocí služby Azure AD Connect Health
@@ -88,7 +88,7 @@ Sestava zařazuje stávající chyby synchronizace do následujících kategori�
 | Chyba ověřování dat |Chyby vzniklé v důsledku neplatných dat, jako jsou nepodporované znaky v klíčových atributech (např. UserPrincipalName), chyby formátování, které se před zápisem do Azure AD nepodaří ověřit |
 | Změna federované domény | Chyby, když účty používají jinou federovanou doménu. |
 | Rozsáhlý atribut |Chyby vzniklé v důsledku toho, že některé atributy překračují povolenou velikost, délku nebo počet |
-| Další |Všechny ostatní chyby, které nevyhovují uvedeným kategoriím Na základě zpětné vazby rozdělíme tuto kategorii do podkategorií. |
+| Jiné |Všechny ostatní chyby, které nevyhovují uvedeným kategoriím Na základě zpětné vazby rozdělíme tuto kategorii do podkategorií. |
 
 ![Souhrnná sestava chyb synchronizace](./media/how-to-connect-health-sync/errorreport01.png)
 ![Kategorie sestavy chyb synchronizace](./media/how-to-connect-health-sync/SyncErrorByTypes.PNG)

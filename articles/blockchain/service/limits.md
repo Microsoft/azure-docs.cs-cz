@@ -5,10 +5,10 @@ ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80676513"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Omezení ve službě Azure blockchain
@@ -21,7 +21,7 @@ Maximální limity pro transakce a uzly validátoru závisí na tom, jestli zři
 
 | Cenová úroveň | Maximální počet uzlů transakcí | Maximální počet uzlů validátoru |
 |:---|:---:|:---:|
-| Základní | 10 | 1 |
+| Basic | 10 | 1 |
 | Standard | 10 | 2 |
 
 Vaše síť konsorcia musí mít alespoň dva uzly úrovně Standard služby Azure blockchain. Uzly úrovně Standard zahrnují dva uzly validátoru. Pro splnění [konsensu Byzantine odolnost proti chybám](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)se vyžadují čtyři uzly validátoru.

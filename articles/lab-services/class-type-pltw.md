@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit testovací prostředí, aby projekt pomohl
 ms.topic: article
 ms.date: 10/28/2020
 ms.openlocfilehash: ca4fdae2372895c17c4a98dd3959935108846744
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95024615"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Nastavení testovacích prostředí pro projekt vedoucí způsob, jakým třídy
@@ -54,7 +54,7 @@ ms.locfileid: "95024615"
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-Pokud chcete začít nastavovat laboratoře pro PLTW, potřebujete předplatné Azure a účet testovacího prostředí. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). 
+Pokud chcete začít nastavovat laboratoře pro PLTW, potřebujete předplatné Azure a účet testovacího prostředí. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). 
 
 Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v tématu [Nastavení účtu testovacího prostředí](./tutorial-setup-lab-account.md). Můžete použít i existující účet testovacího prostředí.
 
@@ -130,7 +130,7 @@ Studenti se můžou připojit ke svým testovacím virtuálním počítačům z 
 - [Připojení z Mac](./connect-virtual-machine-mac-remote-desktop.md)
 - [Připojení z Chromebook](./connect-virtual-machine-chromebook-remote-desktop.md)
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Náklady
 Pojďme pokrýt příklad odhadu nákladů pro třídy PLTW.  Tento odhad nezahrnuje náklady na spuštění licenčního serveru nebo použití Galerie sdílených imagí. Předpokládejme, že máte třídu 25 studentů, z nichž každý má 20 hodin plánovaného času třídy.  Každý student má také dalších 10 hodinových hodin pro domácí úkoly nebo přiřazení mimo plánovaný čas třídy.  Zde jsou odhadované náklady:
 
 - **Velký virtuální počítač**

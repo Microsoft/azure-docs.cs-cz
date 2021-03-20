@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 33626b7aee615d07ef88dd9fbca46e6512e2cafc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090359"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
@@ -142,7 +142,7 @@ Na nejvyšší úrovni:
 Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* oznámení, změňte aplikaci pro iOS tak, aby zpracovala toto ID, a načtěte bohatou zprávu z back-endu:
 
 1. Otevřete svůj projekt pro iOS a povolte vzdálená oznámení tak, že v části **cíle** spustíte hlavní cíl aplikace.
-2. Vyberte **Možnosti**, povolit **režimy na pozadí**a zaškrtněte políčko **Vzdálená oznámení** .
+2. Vyberte **Možnosti**, povolit **režimy na pozadí** a zaškrtněte políčko **Vzdálená oznámení** .
 
     ![Snímek obrazovky s projektem iOS, na kterém se zobrazuje obrazovka možnosti Režimy pozadí jsou zapnuté a zaškrtávací políčko pro vzdálené oznámení je zaškrtnuté.][IOS3]
 3. Otevřete `Main.storyboard` a ujistěte se, že máte kontroler zobrazení (v tomto kurzu se označuje jako kontroler domácí zobrazení) z kurzu pro [upozorňování uživatele](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) .
@@ -153,7 +153,7 @@ Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* ozná
 6. Ve scénáři klikněte na **kontroler domovského zobrazení** a ujistěte se, že se v inspektoru identity **HomeViewController** jako **vlastní třída** a **ID scénáře** .
 7. Proveďte stejné pro kontroler zobrazení obrázku, jako **imageViewController**.
 8. Pak vytvořte novou třídu kontroleru zobrazení s názvem **imageViewController** pro zpracování právě vytvořeného uživatelského rozhraní.
-9. V **imageViewController. h**přidejte do deklarací rozhraní kontroleru následující kód. Nezapomeňte ovládat – přetáhněte z zobrazení image ve scénáři na tyto vlastnosti, abyste provedli propojení dvou:
+9. V **imageViewController. h** přidejte do deklarací rozhraní kontroleru následující kód. Nezapomeňte ovládat – přetáhněte z zobrazení image ve scénáři na tyto vlastnosti, abyste provedli propojení dvou:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;

@@ -9,10 +9,10 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: a5669b15c041f663605a62ef8d02b206928d0c14
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101591"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>Vytvoření kontejneru v rozhraní Azure Cosmos DB API pro MongoDB
@@ -31,13 +31,13 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner v rozhraní Az
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nový kontejner** . Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte **Nový kontejner**. Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující.
    * Zadejte ID kontejneru.
    * Zadejte horizontálních oddílů klíč.
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
-   * Vyberte **OK** .
+   * Vyberte **OK**.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Snímek obrazovky Azure Cosmos DB API pro MongoDB, dialogové okno Přidat kontejner":::
 

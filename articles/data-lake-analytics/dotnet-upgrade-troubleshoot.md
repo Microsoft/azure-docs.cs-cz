@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/11/2019
 ms.openlocfilehash: ab03ea8a88187289f5dce55f8a396a9d51346a3f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217673"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics upgradovat na .NET Framework v 4.7.2
@@ -61,7 +61,7 @@ Nejběžnější zpětně nekompatibility, které je pravděpodobné, že je kon
   - Navrhovaná akce: Ujistěte se, že TaskFactory. FromAsync vrátí hodnotu true správně.
 
 - DataObject. GetData teď načítá data jako UTF-8.
-  - Pro aplikace cílené na .NET Framework 4 nebo spuštěné v .NET Framework 4.5.1 nebo dřívějších verzích načítá DataObject. GetData data ve formátu HTML jako řetězec ASCII. V důsledku toho jsou znaky, které nejsou ASCII (znaky, jejichž kódy ASCII jsou větší než 0x7F), reprezentovány dvěma náhodnými znaky. #N # #N # pro aplikace cílené na .NET Framework 4,5 nebo novější a spuštěné v .NET Framework 4.5.2 `DataObject.GetData` načte data ve formátu HTML jako UTF-8, která představuje znaky větší než 0x7F správně.
+  - Pro aplikace cílené na .NET Framework 4 nebo spuštěné v .NET Framework 4.5.1 nebo dřívějších verzích načítá DataObject. GetData data ve formátu HTML jako řetězec ASCII. V důsledku toho jsou znaky, které nejsou ASCII (znaky, jejichž kódy ASCII jsou větší než 0x7F), reprezentovány dvěma náhodnými znaky. #N # #N#For aplikace cílené na .NET Framework 4,5 nebo novější a spuštěné v .NET Framework 4.5.2 `DataObject.GetData` načte data ve formátu HTML jako UTF-8, která představuje znaky větší než 0x7F správně.
   - Ovlivněné knihovny: GLO
   - Navrhovaná akce: Ujistěte se, že načtená data jsou ve formátu, který chcete.
 

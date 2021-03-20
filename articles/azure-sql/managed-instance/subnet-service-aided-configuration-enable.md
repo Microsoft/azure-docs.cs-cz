@@ -11,10 +11,10 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
 ms.openlocfilehash: 67b398194d9094cd99fccaa85ed0df3be362ce2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91618008"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>Povolení konfigurace podsítě pro službu Azure SQL Managed instance
@@ -22,7 +22,7 @@ ms.locfileid: "91618008"
 
 Konfigurace podsítě s podporou služby poskytuje automatizovanou správu konfigurace sítě pro podsítě hostující spravované instance. Uživatel s konfigurací podsítě s podporou služeb zůstává v plné kontrole přístupu k datům (toky přenosu dat TDS), zatímco spravovaná instance vezme zodpovědnost za zajištění nepřerušovaného toku provozu správy za účelem splnění smlouvy SLA.
 
-Automaticky konfigurované skupiny zabezpečení sítě a pravidla směrovací tabulky je možné zobrazit zákazníkům a opatřit poznámkami předponou _Microsoft. SQL-managedInstances_UseOnly__.
+Automaticky konfigurované skupiny zabezpečení sítě a pravidla směrovací tabulky je možné zobrazit zákazníkům a opatřit poznámkami předponou _Microsoft. SQL-managedInstances_UseOnly_ _.
 
 Konfigurace podporující službu je povolená automaticky, když zapnete [delegování podsítě](../../virtual-network/subnet-delegation-overview.md) pro `Microsoft.Sql/managedInstances` poskytovatele prostředků.
 

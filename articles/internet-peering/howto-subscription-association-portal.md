@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
 ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91540264"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Přidružení partnerského čísla ASN k předplatnému Azure s využitím portálu
@@ -39,7 +39,7 @@ Pomocí následujícího postupu zaregistrujte pro poskytovatele prostředků pa
     > [!div class="mx-imgBorder"]
     > ![Spustit odběr](./media/rp-subscriptions-launch.png)
 
-1. Po otevření předplatného klikněte na levé straně na **poskytovatelé prostředků**. Pak v pravém podokně vyhledejte *partnerské vztahy* v okně hledání nebo pomocí posuvníku Najděte **Microsoft. peering** a podívejte se na **stav**. Pokud je stav ***zaregistrován***, přeskočte následující postup a přejděte k části **Vytvoření PeerAsn**. Pokud je stav ***NotRegistered***, vyberte **Microsoft. peering** a klikněte na **zaregistrovat**.
+1. Po otevření předplatného klikněte na levé straně na **poskytovatelé prostředků**. Pak v pravém podokně vyhledejte *partnerské vztahy* v okně hledání nebo pomocí posuvníku Najděte **Microsoft. peering** a podívejte se na **stav**. Pokud je stav **_zaregistrován_*_, přeskočte následující postup a přejděte k části _* vytvoření PeerAsn**. Pokud je stav **_NotRegistered_*_, vyberte _* Microsoft. peering** a klikněte na **zaregistrovat**.
 
     > [!div class="mx-imgBorder"]
     > ![Začátek registrace](./media/rp-register-start.png)
@@ -49,7 +49,7 @@ Pomocí následujícího postupu zaregistrujte pro poskytovatele prostředků pa
     > [!div class="mx-imgBorder"]
     > ![Probíhá registrace.](./media/rp-register-progress.png)
 
-1. Počkejte na minimální nebo tak, aby se registrace dokončila. Pak klikněte na **aktualizovat** a ověřte, jestli je stav ***zaregistrovaný***.
+1. Počkejte na minimální nebo tak, aby se registrace dokončila. Pak klikněte na **aktualizovat** a ověřte, jestli je stav **_zaregistrovaný_**.
 
     > [!div class="mx-imgBorder"]
     > ![Registrace dokončena](./media/rp-register-completed.png)
@@ -101,6 +101,6 @@ Odstranění PeerAsn se v tuto chvíli nepodporuje. Pokud potřebujete odstranit
 * [Vytvoření nebo úprava partnerského vztahu serveru Exchange pomocí portálu](howto-exchange-portal.md)
 * [Převod starší verze peeringu typu Exchange na prostředek Azure s využitím portálu](howto-legacy-exchange-portal.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Další informace najdete v tématu [Nejčastější dotazy týkající se partnerského vztahu Internetu](faqs.md) .

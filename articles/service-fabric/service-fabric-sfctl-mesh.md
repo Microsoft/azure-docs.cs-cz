@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 4682eee93b5ff9f01e65611e8d5e0920930776a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86257240"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
@@ -22,8 +22,8 @@ Umožňuje odstraňovat a spravovat aplikace Service Fabric sítě.
 | [Code-Package-log](service-fabric-sfctl-mesh-code-package-log.md) | Načte protokoly pro kontejner zadaného balíčku kódu pro danou repliku služby. |
 | [prostředí](service-fabric-sfctl-mesh-deployment.md) | Vytvořte Service Fabric prostředky sítě. |
 | [brány](service-fabric-sfctl-mesh-gateway.md) | Získejte a odstraňte prostředky brány sítě. |
-| [sítě](service-fabric-sfctl-mesh-network.md) | Získat a odstranit síťové prostředky sítě. |
-| [otázku](service-fabric-sfctl-mesh-secret.md) | Získá a odstraní prostředky tajného klíče sítě. |
+| [network](service-fabric-sfctl-mesh-network.md) | Získat a odstranit síťové prostředky sítě. |
+| [Tajný kód](service-fabric-sfctl-mesh-secret.md) | Získá a odstraní prostředky tajného klíče sítě. |
 | [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | Získejte a odstraňte secretvalue prostředky sítě. |
 | [službám](service-fabric-sfctl-mesh-service.md) | Získejte podrobnosti o službě a seznam služeb prostředku aplikace. |
 | [replika služby](service-fabric-sfctl-mesh-service-replica.md) | Získá podrobnosti o replice a vypíše repliky dané služby v prostředku aplikace. |

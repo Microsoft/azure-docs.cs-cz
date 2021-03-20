@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011808"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Monitorování bran VPN pomocí Network Watcher řešení potíží
 
 Získání podrobných přehledů o výkonu vaší sítě je důležité pro poskytování spolehlivých služeb zákazníkům. Proto je důležité zjistit stav výpadku sítě rychle a provést nápravná opatření ke zmírnění stavu výpadku. Azure Automation umožňuje implementovat a spustit úlohu programovým způsobem prostřednictvím runbooků. Použití Azure Automation vytvoří dokonalý recept pro průběžné a proaktivní monitorování sítě a výstrahy.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Scénář na následujícím obrázku je Vícevrstvá aplikace s místním připojením vytvořeným pomocí VPN Gateway a tunelového propojení. Zajištění, že je VPN Gateway v provozu, je pro výkon aplikací zásadní.
 

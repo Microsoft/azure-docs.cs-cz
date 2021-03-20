@@ -9,17 +9,17 @@ ms.subservice: blobs
 ms.topic: sample
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 79ff7b3d174407da929f201bdce691cecf9b9a89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88035038"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Ukázky v Azure CLI pro službu Azure Blob Storage
 
 Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure CLI pro vytvoření a správu služby Azure Storage.
 
-| Skript | Popis |
+| Skript | Description |
 |---|---|
 |**Účty úložiště**||
 | [Vytvoření účtu úložiště a načtení/obměna přístupových klíčů](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří účet služby Azure Storage a načte a obmění jeho přístupové klíče. |

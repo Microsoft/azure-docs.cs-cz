@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657119"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a Správa Azure AD Connect
@@ -38,7 +38,7 @@ Teď, když byli vaši uživatelé synchronizováni do cloudu, musíte jim při�
 2. Na levé straně vyberte **Active Directory**.
 3. Na stránce **služby Active Directory** dvakrát klikněte na adresář, který obsahuje uživatele, které chcete nastavit.
 4. V horní části stránky adresáře vyberte možnost **Licence**.
-5. Na stránce **licence** vyberte **Active Directory Premium** nebo **Enterprise Mobility Suite**a pak klikněte na **přiřadit**.
+5. Na stránce **licence** vyberte **Active Directory Premium** nebo **Enterprise Mobility Suite** a pak klikněte na **přiřadit**.
 6. V dialogovém okně vyberte uživatele, kterým chcete přiřadit licence, a potom změny uložte kliknutím na ikonu zaškrtnutí.
 
 ## <a name="verify-the-scheduled-synchronization-task"></a>Ověřte naplánovanou úlohu synchronizace.

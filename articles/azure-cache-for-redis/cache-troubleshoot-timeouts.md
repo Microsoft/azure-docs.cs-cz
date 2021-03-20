@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
 ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88213458"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s časovými limity služby Azure Cache for Redis
@@ -48,7 +48,7 @@ Tato chybová zpráva obsahuje metriky, které vám pomohou Ukázat příčinu a
 | qs |67 probíhajících operací bylo odesláno na server, ale odpověď zatím není k dispozici. Odpověď může být `Not yet sent by the server` nebo. `sent by the server but not yet processed by the client.` |
 | QC |počet probíhajících operací zaznamenal odpovědi, ale ještě nebyly označeny jako splněné, protože čekají na cyklus dokončení. |
 | radiační |Existuje aktivní zapisovač (to znamená, že 6 neodeslaných požadavků se Neignoruje) bajtů/activewriters |
-| in |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
+| dovnitř |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
 
 Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 

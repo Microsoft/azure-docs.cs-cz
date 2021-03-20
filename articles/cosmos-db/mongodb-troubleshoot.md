@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
 ms.openlocfilehash: de39aee73a6f4b422af4524d3302f8858f8b060b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101692228"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Řešení běžných problémů v rozhraní Azure Cosmos DB API pro MongoDB
@@ -27,14 +27,14 @@ Následující článek popisuje běžné chyby a řešení pro nasazení pomoc�
 | Kód       | Chyba                | Popis  | Řešení  |
 |------------|----------------------|--------------|-----------|
 | 2 | BadValue | Jednou z běžných příčin je, že cesta indexu odpovídající zadané položce řazení je vyloučená nebo dotaz řazení nemá odpovídající složený index, který by ho mohl obsloužit. Dotaz vyžaduje řazení podle pole, které není indexované. | Vytvořte pro dotaz řazení, který se pokoušíte provést, odpovídající index (nebo složený index). |
-| 2 | Transakce není aktivní. | Transakce s více dokumenty překročí pevný limit 5 sekund. | Opakujte transakci více dokumentů nebo Omezte rozsah operací v rámci transakce více dokumentů, aby byla dokončena v rámci 5 sekund časového limitu. |
+| 2 | Transakce není aktivní | Transakce s více dokumenty překročila pevný časový limit 5 sekund. | Zopakujte transakci s více dokumenty nebo omezte rozsah operací v rámci transakce s více dokumenty, aby se mohla dokončit během časového limitu 5 sekund. |
 | 13 | Neautorizováno | Požadavek nemá oprávnění potřebná k dokončení. | Ujistěte se, že používáte správné klíče.  |
 | 26 | NamespaceNotFound | Nepodařilo se najít databázi nebo kolekci, na kterou se odkazuje v dotazu. | Ujistěte se, že název vaší databáze nebo kolekce přesně odpovídá názvu ve vašem dotazu.|
 | 50 | ExceededTimeLimit | Požadavek překročil 60sekundový časový limit provádění. |  Tato chyba může mít celou řadu příčin. Jednou z možných příčin je nedostatečná kapacita aktuálně přidělených jednotek žádostí k dokončení požadavku. Tento problém je možné vyřešit zvýšením počtu jednotek žádostí dané kolekce nebo databáze. V ostatních případech je možné tuto chybu obejít rozdělením velkého požadavku na menší požadavky. Zopakováním operace zápisu, u které došlo k této chybě, může dojít k duplicitnímu zápisu. <br><br>Pokud se pokoušíte odstranit velký objem dat, aniž by to mělo vliv na RU: <br>Zvažte použití hodnoty TTL (na základě časového razítka): [Vypršení platnosti dat s využitím rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-time-to-live.md). <br>Použijte k odstranění kurzor a velikost dávky. S využitím smyčky můžete postupně načíst jednotlivé dokumenty a odstranit je. Tímto způsobem můžete pomalu provést odstranění dat, aniž by to mělo vliv na produkční aplikaci.|
 | 61 | ShardKeyNotFound | Dokument ve vašem požadavku neobsahoval klíč horizontálního dělení kolekce (klíč oddílu Azure Cosmos DB). | Zajistěte, aby se v požadavku používal klíč horizontálního dělení kolekce.|
 | 66 | ImmutableField | Požadavek se pokouší změnit neměnné pole. | pole "_id" jsou neměnné. Zajistěte, aby se váš požadavek nepokoušel aktualizovat toto pole nebo pole klíče horizontálního dělení. |
 | 67 | CannotCreateIndex | Požadavek na vytvoření indexu není možné dokončit. | V rámci kontejneru je možné vytvořit až 500 indexů jednotlivých polí. Složený index může obsahovat až 8 polí (složené indexy se podporují ve verzi 3.6 nebo novější). |
-| 112 | WriteConflict | Transakce více dokumentů se nezdařila z důvodu kolidující transakce s více dokumenty. | Opakujte transakci více dokumentů, dokud to neproběhne úspěšně. |
+| 112 | WriteConflict | Transakce s více dokumenty selhala kvůli konfliktní transakci s více dokumenty. | Opakujte transakci s více dokumenty, dokud se úspěšně nedokončí. |
 | 115 | CommandNotSupported | Požadavek, který se pokoušíte provést, se nepodporuje. | V této chybě by měly být uvedené další informace. Pokud je tato funkce pro vaše nasazení důležitá, vytvořte v [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) lístek podpory a Azure Cosmos DB tým se vám vrátí. |
 | 11000 | DuplicateKey | Klíč horizontálního dělení (klíč oddílu Azure Cosmos DB) dokumentu, který vkládáte, již v kolekci existuje, nebo došlo k porušení omezení pro pole jedinečného indexu. | Pomocí funkce update() aktualizujte existující dokument. Pokud došlo k porušení omezení pro pole jedinečného indexu, vložte dokument s hodnotou pole, která v oddílu nebo horizontálním oddílu ještě neexistuje, případně dokument na takovou hodnotu aktualizujte. Další možností je použít pole obsahující kombinaci polí ID a klíče horizontálního dělení. |
 | 16500 | TooManyRequests  | Celkový počet spotřebovaných jednotek žádostí je vyšší než zřízený počet jednotek žádostí pro kolekci, a proto došlo k omezení. | Zvažte škálování propustnosti přiřazené kontejneru nebo sadě kontejnerů na webu Azure Portal, případně můžete zkusit operaci zopakovat. Pokud povolíte opakování na straně serveru, Azure Cosmos DB bude automaticky opakovat požadavky, které selžou kvůli této chybě. |

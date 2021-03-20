@@ -14,10 +14,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96852553"
 ---
 # <a name="create-an-advanced-device-model"></a>Vytvoření pokročilého modelu zařízení
@@ -169,7 +169,7 @@ Pole uvedená ve schématu mohou mít následující typy:
 
 ### <a name="supported-methods"></a>Podporované metody
 
-Simulovaná zařízení mohou také reagovat na volání metody. v takovém případě spouštějí určitou logiku a poskytnou určitou odpověď. Podobně jako simulace je logika metody uložena v souboru JavaScriptu a může komunikovat se stavem zařízení. Zde je příklad:
+Simulovaná zařízení mohou také reagovat na volání metody. v takovém případě spouštějí určitou logiku a poskytnou určitou odpověď. Podobně jako simulace je logika metody uložena v souboru JavaScriptu a může komunikovat se stavem zařízení. Například:
 
 ```json
 "CloudToDeviceMethods": {
@@ -259,7 +259,7 @@ Soubory JavaScriptu musí mít funkci **Main** , která přijímá dva parametry
     * **deviceModel**. Například **výtah**.
 * Objekt **stavu** , který je hodnotou vrácenou funkcí v předchozím volání. Tento stav zařízení je udržován službou simulace a používá se ke generování zpráv telemetrie.
 
-Funkce **Main** vrátí nový stav zařízení. Zde je příklad:
+Funkce **Main** vrátí nový stav zařízení. Například:
 
 ```JavaScript
 function main(context, state) {

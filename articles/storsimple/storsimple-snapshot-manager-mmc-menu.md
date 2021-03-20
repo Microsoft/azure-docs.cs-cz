@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 01064c3668b673baea7aedd9a65c92b03c48dc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055999"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Použití akcí v nabídce MMC v StorSimple Snapshot Manager
@@ -26,7 +26,7 @@ ms.locfileid: "90055999"
 ## <a name="overview"></a>Přehled
 V StorSimple Snapshot Manager uvidíte následující akce uvedené na všech nabídkách akce a všech variacích podokna **Akce** .
 
-* Zobrazit
+* Zobrazení
 * New Window from Here 
 * Aktualizovat 
 * Exportovat seznam 
@@ -34,7 +34,7 @@ V StorSimple Snapshot Manager uvidíte následující akce uvedené na všech na
 
 Tyto akce jsou součástí konzoly Microsoft Management Console (MMC) a nejsou specifické pro StorSimple Snapshot Manager. Tento kurz popisuje tyto akce a vysvětluje, jak je používat StorSimple Snapshot Manager.
 
-## <a name="view"></a>Zobrazit
+## <a name="view"></a>Zobrazení
 Pomocí možnosti **zobrazení** můžete změnit zobrazení podokna **výsledků** a změnit zobrazení okna konzoly. 
 
 #### <a name="to-change-the-results-pane-view"></a>Změna zobrazení podokna výsledků
@@ -53,7 +53,7 @@ Pomocí možnosti **zobrazení** můžete změnit zobrazení podokna **výsledk�
 
 #### <a name="to-change-the-console-window-view"></a>Změna zobrazení okna konzoly
 1. Kliknutím na ikonu na ploše spusťte StorSimple Snapshot Manager.
-2. V podokně **obor** klikněte pravým tlačítkem na libovolný uzel, klikněte na **Zobrazit**a pak klikněte na **přizpůsobit**. Zobrazí se dialogové okno **přizpůsobit** .
+2. V podokně **obor** klikněte pravým tlačítkem na libovolný uzel, klikněte na **Zobrazit** a pak klikněte na **přizpůsobit**. Zobrazí se dialogové okno **přizpůsobit** .
    
     ![Přizpůsobení okna konzoly](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
 3. Zaškrtnutím nebo zrušením zaškrtnutí políček zobrazíte nebo skryjete položky v okně konzoly. Až budete s vybranými možnostmi hotovi, klikněte na **OK**.

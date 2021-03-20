@@ -16,10 +16,10 @@ ms.date: 03/15/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8637c691f946c02176c441cfcf5ad5abbea10396
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016877"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health katalogu výstrah 
@@ -30,13 +30,13 @@ Výstrahy Azure AD Connect Health se vyřeší při splnění podmínky úspěch
 
 ## <a name="general-alerts"></a>Obecné výstrahy
 
-| Název výstrahy | Popis | Náprava |
+| Název výstrahy | Description | Náprava |
 | --- | --- | ----- |
 | Data služby Health Service nejsou aktuální | Agenti stavu běžící na jednom nebo více serverech nejsou připojeni k Health Service a Health Service nepřijímá nejnovější data z tohoto serveru. Poslední data zpracovaná Health Service jsou starší než 2 hodiny. | Ujistěte se, že agenti stavu mají odchozí připojení k požadovaným koncovým bodům služby. [Další informace](how-to-connect-health-data-freshness.md) |
 
 ## <a name="alerts-for-azure-ad-connect-sync"></a>Výstrahy pro Azure AD Connect (synchronizace)
 
-| Název výstrahy | Popis | Náprava |
+| Název výstrahy | Description | Náprava |
 | --- | --- | ----- |
 | Synchronizační služba Azure AD Connect není spuštěná | Služba Microsoft Azure AD Sync pro Windows není spuštěná nebo se ji nepodařilo spustit. Objekty se proto nebudou synchronizovat s Azure Active Directory. | Spustit Synchronizační služba služby Microsoft Azure Active Directory</b> <ol> <li>Klikněte na tlačítko <b>Start</b>, klikněte na příkaz <b>Spustit</b>, zadejte příkaz <b>Services. msc</b>a poté klikněte na tlačítko <b>OK</b>.</li> <li>Vyhledejte <b>službu Microsoft Azure AD Sync</b>a zkontrolujte, jestli je služba spuštěná. Pokud služba není spuštěná, klikněte na ni pravým tlačítkem myši a pak klikněte na <b>Spustit</b>. | 
 | Import z Azure Active Directory neproběhl úspěšně | Operace importu z konektoru Azure Active Directory selhala. |  Další podrobnosti najdete v chybách operace importu v protokolu událostí.  |
@@ -51,7 +51,7 @@ Výstrahy Azure AD Connect Health se vyřeší při splnění podmínky úspěch
 | Export do Azure Active Directory se zastavil. Byla dosažena prahová hodnota náhodného odstranění. | Operace exportu pro Azure Active Directory se nezdařila. Bylo více objektů, které se mají odstranit, než je nastavená prahová hodnota. V důsledku toho nebyly exportovány žádné objekty. | <li> Počet objektů, které jsou označeny k odstranění, je větší než prahová hodnota set. Ujistěte se, že tento výsledek je požadovaný.</li> <li> Chcete-li, aby export mohl pokračovat, proveďte následující kroky: <ol type="a"> <li>Zakázat prahovou hodnotu spuštěním Disable-ADSyncExportDeletionThreshold</li> <li>Spustit Synchronization Service Manager</li> <li>Spustit export v konektoru s typem = Azure Active Directory</li> <li>Po úspěšném exportování objektů povolte prahovou hodnotu spuštěním: Enable-ADSyncExportDeletionThreshold</li> </ol> </li> |
 
 ## <a name="alerts-for-active-directory-federation-services"></a>Výstrahy pro Active Directory Federation Services (AD FS)
-| Název výstrahy | Popis | Náprava |
+| Název výstrahy | Description | Náprava |
 | --- | --- | ----- |
 |Žádost o testovací ověření (syntetická transakce) nedokázala získat token. | Žádosti o ověření testu (syntetické transakce) iniciované z tohoto serveru nedokázaly získat token po 5 opakovaných pokusech. To může být způsobeno přechodnými problémy se sítí, služba AD DS dostupnosti řadiče domény nebo nesprávným nakonfigurovaným AD FS serverem.  V důsledku toho může dojít k selhání požadavků na ověření zpracovaných službou FS. Agent používá kontext účtu místního počítače k získání tokenu z služba FS (Federation Service). | Ujistěte se, že jste provedli následující kroky, abyste ověřili stav serveru.<ol><li>Ověřte, že pro tento nebo jiné servery AD FS ve vaší farmě nejsou žádné další nevyřešené výstrahy.</li><li>Ověřte, že tato podmínka není přechodným selháním. Přihlaste se pomocí testovacího uživatele na přihlašovací stránce AD FS k dispozici na adrese https://{your_adfs_server_name}/adfs/ls/IDPinitiatedSignOn.aspx</li><li>Přejít na <a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a> kartu office 365 a vybrat na kartě ' office '. proveďte příkaz ' office 365 Single Sign-On test '.</li><li>Spuštěním následujícího příkazu z příkazového řádku na tomto serveru ověřte, zda je možné název služby AD FS přeložit z tohoto serveru. your_adfs_server_name nslookup</li></ol><p>Pokud se název služby nedá vyřešit, přečtěte si část Nejčastější dotazy, kde najdete pokyny k přidání položky HOSTITELSKÉho souboru AD FS služby s IP adresou tohoto serveru. Tím umožníte, aby se syntetická transakční modul běžící na tomto serveru vyžádal o token.</p> | 
 | proxy server se nemůže připojit k federačnímu serveru. | Tato AD FS proxy server se nemůže spojit se službou AD FS. V důsledku toho se žádosti o ověření zpracovávané tímto serverem nezdaří. | Provedením následujících kroků ověříte připojení mezi tímto serverem a službou AD FS. <ol><li> Zajistěte, aby byla správně nakonfigurovaná brána firewall mezi tímto serverem a službou AD FS. </li><li> Zajistěte, aby překlad DNS pro název služby AD FS správně odkazoval na službu AD FS, která se nachází v podnikové síti. Toho je možné dosáhnout pomocí serveru DNS, který obsluhuje tento server v hraniční síti nebo prostřednictvím záznamů v souborech hostitelů pro název služby AD FS. </li><li> Ověřte připojení k síti tak, že otevřete prohlížeč na tomto serveru a získáte přístup ke koncovému bodu federačních metadat, který je v `https://<your-adfs-service-name>/federationmetadata/2007-06/federationmetadata.xml` </li> | 
@@ -78,7 +78,7 @@ Výstrahy Azure AD Connect Health se vyřeší při splnění podmínky úspěch
 
 ## <a name="alerts-for-active-directory-domain-services"></a>Výstrahy pro Active Directory Domain Services
 
-| Název výstrahy | Popis | Náprava |
+| Název výstrahy | Description | Náprava |
 | --- | --- | ----- |
 | Řadič domény je nedosažitelný prostřednictvím příkazů protokolu LDAP. | Řadič domény není dosažitelný prostřednictvím testu LDAP. Příčinou může být problémy se sítí nebo problémy s počítačem. V důsledku toho selžou příkazy příkazového testu LDAP. |  <li>Prostudujte si seznam výstrah pro související výstrahy, například: řadič domény neinzeruje. </li><li>Zajistěte, aby měl ovlivněný řadič domény dostatek místa na disku. Při nedostatku místa se řadič domény přestane hlásit jako server LDAP. </li><li> Pokus o nalezení primárního řadiče domény: spustit <br> <i>netdom query fsmo </i> </br> na dotčeném řadiči domény. <li> Zajistěte, aby byla fyzická síť správně nakonfigurovaná/připojená. </li> |
 | Došlo k chybě replikace služby Active Directory. | V tomto řadiči domény dochází k problémům s replikací, které najdete na řídicím panelu stavu replikace. Chyby replikace mohou být způsobeny nesprávným nastavením nebo jinými souvisejícími problémy. Neošetřené chyby replikace můžou vést k nekonzistenci dat. | Podívejte se na další podrobnosti o názvech ovlivněných zdrojových a cílových řadičů domény. Přejděte na řídicí panel stavu replikace a podívejte se na aktivní chyby na ovlivněných řadičích domény. Kliknutím na chybu otevřete okno s dalšími podrobnostmi o tom, jak opravit konkrétní chybu.| 

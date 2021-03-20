@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215531"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL s Azure Data Lake U-SQL SDK
@@ -140,7 +140,7 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 Níže jsou uvedené nepovinné argumenty pro **běh**:
 
-|Argument|Výchozí hodnota|Popis|
+|Argument|Výchozí hodnota|Description|
 |--------|-------------|-----------|
 |– CodeBehind|Ne|Skript obsahuje kód. cs za|
 |-CppSDK| |Adresář CppSDK|
@@ -160,7 +160,7 @@ Tady je příklad:
 
 `LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
-Kromě kombinování **kompilace** a **provádění**lze zkompilovat a spustit samostatně zkompilované spustitelné soubory.
+Kromě kombinování **kompilace** a **provádění** lze zkompilovat a spustit samostatně zkompilované spustitelné soubory.
 
 #### <a name="compile-a-u-sql-script"></a>Kompilace skriptu U-SQL
 
@@ -172,7 +172,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 Následující jsou nepovinné argumenty pro **kompilaci**:
 
-|Argument|Popis|
+|Argument|Description|
 |--------|-----------|
 | -CodeBehind [výchozí hodnota false]|Skript obsahuje kód. cs za|
 | -CppSDK [výchozí hodnota]|Adresář CppSDK|
@@ -217,7 +217,7 @@ LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_argument
 
 Níže jsou uvedené volitelné argumenty pro **provedení**:
 
-|Argument|Výchozí hodnota|Popis|
+|Argument|Výchozí hodnota|Description|
 |--------|-------------|-----------|
 |– Dataroot | '' |Kořen dat pro provedení metadat. Nastaví se jako výchozí proměnná prostředí **LOCALRUN_DATAROOT** .|
 |– Zpráva | '' |Vypíše zprávy v konzole nástroje do souboru.|
@@ -330,13 +330,13 @@ LocalRunHelper.exe poskytuje rozhraní pro programování pro místní kompilaci
 
 Public LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
-|Parametr|Typ|Popis|
+|Parametr|Typ|Description|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|pro výstupní zprávy nastavte na hodnotu null, aby se použila konzola.|
 
 ### <a name="properties"></a>Vlastnosti
 
-|Vlastnost|Typ|Popis|
+|Vlastnost|Typ|Description|
 |--------|----|-----------|
 |AlgebraPath|řetězec|Cesta k souboru algebraický (soubor algebraický je jedním z výsledků kompilace)|
 |CodeBehindReferences|řetězec|Pokud má skript další kód na pozadí, zadejte cesty oddělené znakem '; '|
@@ -374,7 +374,7 @@ Public LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
 E_CSC_SYSTEM_INTERNAL: došlo k vnitřní chybě! Nelze načíst soubor nebo sestavení ' ScopeEngineManaged.dll ' nebo některou z jeho závislostí. Zadaný modul nebyl nalezen.
 
-Zkontrolujte prosím následující:
+Zkontrolujte následující:
 
 - Ujistěte se, že máte prostředí x64. Cílová platforma sestavení a testovací prostředí by měly být x64, Projděte si **téma krok 1: vytvoření projektu testování částí v jazyce C# a konfigurace** výše.
 - Ujistěte se, že jste zkopírovali všechny soubory závislosti v NugetPackage\build\runtime\ do pracovního adresáře projektu.

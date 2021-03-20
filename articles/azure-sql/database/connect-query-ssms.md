@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
 ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91598260"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití SSMS pro připojení k a dotazování Azure SQL Database nebo spravované instance Azure SQL
@@ -53,7 +53,7 @@ Pokud jednoduše chcete spustit některé dotazy ad-hoc bez instalace SSMS, pře
 
 Získejte informace o připojení, které potřebujete pro připojení k vaší databázi. K dokončení tohoto rychlého startu budete potřebovat plně kvalifikovaný název [serveru](logical-servers.md) nebo název hostitele, název databáze a přihlašovací informace.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte do **databáze** nebo **spravované instance** , pro kterou chcete zadat dotaz.
 
@@ -143,7 +143,7 @@ Spuštěním tohoto příkazu [vložte](/sql/t-sql/statements/insert-transact-sq
            ,GETDATE() );
    ```
 
-2. Vyberte **Spustit**  pro vložení nového řádku do `Product` tabulky. Zobrazí **Messages** se podokno zprávy **(počet ovlivněných řádků: 1)**.
+2. Vyberte **Spustit**  pro vložení nového řádku do `Product` tabulky. Zobrazí  se podokno zprávy **(počet ovlivněných řádků: 1)**.
 
 #### <a name="view-the-result"></a>Zobrazit výsledek
 
@@ -170,7 +170,7 @@ Spusťte tento [kód](/sql/t-sql/queries/update-transact-sql) Transact-SQL pro �
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte **provést** a aktualizujte zadaný řádek v `Product` tabulce. Zobrazí **Messages** se podokno zprávy **(počet ovlivněných řádků: 1)**.
+2. Vyberte **provést** a aktualizujte zadaný řádek v `Product` tabulce. Zobrazí  se podokno zprávy **(počet ovlivněných řádků: 1)**.
 
 ### <a name="delete-data"></a>Odstranění dat
 
@@ -183,7 +183,7 @@ Spuštěním tohoto příkazu [odstraňte](/sql/t-sql/statements/delete-transact
    WHERE Name = 'myNewProduct';
    ```
 
-2. Zvolením příkazu **Spustit** odstraňte zadaný řádek v `Product` tabulce. Zobrazí **Messages** se podokno zprávy **(počet ovlivněných řádků: 1)**.
+2. Zvolením příkazu **Spustit** odstraňte zadaný řádek v `Product` tabulce. Zobrazí  se podokno zprávy **(počet ovlivněných řádků: 1)**.
 
 ## <a name="next-steps"></a>Další kroky
 

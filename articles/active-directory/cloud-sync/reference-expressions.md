@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 869d60d4ccb3bae58924fe4221f83b1b0125ae04
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98613240"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů v Azure Active Directory
@@ -383,7 +383,7 @@ Pokud je možné výraz vyhodnotit na typ řetězce, pak je funkce typu String v
 Slouží k určení, zda může být CStr () úspěšné k analýze výrazu.
 
 ---
-### <a name="join"></a>Spojit
+### <a name="join"></a>Připojení
 **Slouží**<br> Join (oddělovač, source1, SOURCE2,...)
 
 **Popis:**<br> Join () je podobný jako Append (), s tím rozdílem, že může zkombinovat více hodnot **zdrojového** řetězce do jednoho řetězce a každá hodnota bude oddělena řetězcem **oddělovače** .
