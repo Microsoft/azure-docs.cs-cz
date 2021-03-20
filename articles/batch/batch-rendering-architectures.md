@@ -5,10 +5,10 @@ ms.date: 02/07/2019
 ms.topic: how-to
 ms.custom: seodec18
 ms.openlocfilehash: 784fd89c3dea88e25a2058713897c7a655c8a3af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83726515"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Referenční architektury pro vykreslování Azure
@@ -23,7 +23,7 @@ Následující diagram znázorňuje hybridní scénář, který obsahuje násled
 
 * Místní **síť** : Azure EXPRESSROUTE nebo VPN. Azure: virtuální síť Azure.
 
-* Vstupní a výstupní soubory **úložiště** : systém souborů NFS nebo CFS s využitím virtuálních počítačů Azure, které se synchronizují s místním úložištěm pomocí Azure File Sync nebo rsync. Alternativně: avere vFXT pro vstupní nebo výstupní soubory z místních zařízení NAS pomocí systému souborů NFS.
+* Vstupní a výstupní soubory **úložiště** : systém souborů NFS nebo CFS s využitím virtuálních počítačů Azure, které se synchronizují s místním úložištěm pomocí synchronizace souborů Azure nebo rsync. Alternativně: avere vFXT pro vstupní nebo výstupní soubory z místních zařízení NAS pomocí systému souborů NFS.
 
   ![Shlukování cloudu – Hybrid se systémem souborů NFS nebo CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542163"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Rychlý Start: vytvoření Azure Database for MySQL pomocí jednoduchého příkazu rozhraní příkazového řádku Azure – AZ MySQL up (Preview)
@@ -22,7 +22,7 @@ ms.locfileid: "94542163"
 
 Azure Database for MySQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí příkazu [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) vytvořit server Azure Database for MySQL pomocí rozhraní příkazového řádku Azure CLI. Kromě vytvoření serveru `az mysql up` vytvoří příkaz ukázkovou databázi, root user v databázi, otevře bránu firewall pro služby Azure a vytvoří výchozí pravidla brány firewall pro klientský počítač. To pomáhá urychlit proces vývoje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

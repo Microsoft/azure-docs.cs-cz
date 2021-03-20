@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 11/09/2020
-ms.openlocfilehash: 60eeceac916a7f8c64214b7a74a8cf60fd1ec8ac
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.date: 03/16/2020
+ms.openlocfilehash: a7f12891bf394e54ee46c60598536faed1731202
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986120"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600872"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Nastavení předplatného Azure Marketplace pro hostované testovací jednotky
 
@@ -43,26 +43,18 @@ Tento článek vysvětluje, jak nastavit předplatné Azure Marketplace a **dyna
     5. V části Podporované typy účtů vyberte možnost **účet v libovolném adresáři organizace a na osobních účtech Microsoft**.
     6. Vyberte **vytvořit** a počkejte, než se vaše aplikace vytvoří.
     7. Po vytvoření aplikace si poznamenejte **ID aplikace** zobrazené na obrazovce Přehled. Tuto hodnotu budete potřebovat později při konfiguraci testovacího disku.
-    8. Pokud chcete přidat identifikátor URI pro přesměrování nativeclient, vyberte okno **ověřování** . V části **konfigurace platformy** vyberte možnost **Přidat platformu**  >  **mobilní**  >  **desktopovou** aplikaci. Zvolte identifikátor URI pro přesměrování **nativeclient** a vyberte **Konfigurovat**.
-
-        :::image type="content" source="./media/test-drive/configure-desktop-devices.png" alt-text="Přidávání identifikátoru URI pro přesměrování nativeclient":::
-
-    9. V části **Spravovat aplikaci** vyberte **oprávnění rozhraní API**.
-    10. Vyberte **Přidat oprávnění** a pak **Microsoft Graph API**.
-    11. Vyberte kategorii oprávnění **aplikace** a pak **adresář. Read. All** a **Directory. pro čtení. všechna** oprávnění.
+    8. V části **Spravovat aplikaci** vyberte **oprávnění rozhraní API**.
+    9. Vyberte **Přidat oprávnění** a pak **Microsoft Graph API**.
+    10. Vyberte kategorii oprávnění **aplikace** a pak položku **User. četl. All**, **Directory. Read. All** a Directory. pro čtení **. všechna** oprávnění.
 
         :::image type="content" source="./media/test-drive/microsoft-graph.png" alt-text="Nastavení oprávnění aplikace.":::
 
-    12. Chcete-li přidat aplikaci **Dynamics CRM – přístup uživatelů k zosobnění** pro seznam povolených aplikací Azure AD, vyberte možnost **Přidat oprávnění** znovu.
-
-        :::image type="content" source="./media/test-drive/request-api-permissions.png" alt-text="Požaduje se oprávnění aplikace.":::
-
-    13. Po přidání oprávnění vyberte **udělení souhlasu správce Microsoftu**.
-    14. V okně Výstraha zprávy vyberte **Ano**.
+    11. Po přidání oprávnění vyberte **udělení souhlasu správce Microsoftu**.
+    12. V okně Výstraha zprávy vyberte **Ano**.
 
         [![Zobrazuje oprávnění aplikace byla úspěšně udělena.](media/test-drive/api-permissions-confirmation-customer.png)](media/test-drive/api-permissions-confirmation-customer.png#lightbox)
 
-    15. Pro vygenerování tajného klíče pro Aplikace Azure AD:
+    13. Pro vygenerování tajného klíče pro Aplikace Azure AD:
         1. V **možnosti spravovat aplikaci** vyberte **certifikát a tajné klíče**.
         2. V části tajné klíče klienta vyberte **nový tajný klíč klienta**.
         3. Zadejte popis, jako je například *testovací jednotka*, a vyberte vhodnou dobu trvání. Po vypršení platnosti klíče se testovací jednotka pozastaví, a to tak, že budete muset vygenerovat a zadat AppSource nový klíč.
@@ -70,8 +62,7 @@ Tento článek vysvětluje, jak nastavit předplatné Azure Marketplace a **dyna
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Přidání tajného klíče klienta.":::
 
-5. V některých případech trvá synchronizace uživatele ze služby Azure AD s instancí CRM déle, než se očekávalo. Pro pomoc s tímto jsme přidali proces pro vynucení synchronizace, ale vyžaduje, aby se aplikace Azure AD allowlisted prostřednictvím partnerského centra. Provedete to tak, že si přečtěte téma [synchronizace uživatelů s instancí Engagement zákazníka](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md).
-6. Přidejte do aplikace roli instančního objektu, aby aplikace Azure AD mohla odebrat uživatele z vašeho tenanta Azure.
+5. Přidejte do aplikace roli instančního objektu, aby aplikace Azure AD mohla odebrat uživatele z vašeho tenanta Azure.
     1. Otevřete příkazový řádek PowerShellu na úrovni správy.
     2. Install-Module MSOnline (Pokud není nainstalován MSOnline, spusťte tento příkaz).
     3. Connect-MsolService (zobrazí se místní okno, přihlaste se pomocí nově vytvořeného tenanta organizace).
@@ -81,7 +72,7 @@ Tento článek vysvětluje, jak nastavit předplatné Azure Marketplace a **dyna
 
         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="Přihlaste se ke svému účtu.":::
 
-7. Přidejte výše vytvořenou aplikaci Azure jako uživatele aplikace do instance služby Test Drive CRM.
+6. Přidejte výše vytvořenou aplikaci Azure jako uživatele aplikace do instance služby Test Drive CRM.
     1. Přidat nového uživatele v **Azure Active Directory**. K vytvoření tohoto uživatele se vyžadují jenom hodnoty **název** a **uživatelské jméno** (patřící ke stejnému tenantovi) a ostatní pole ponechte jako výchozí. Zkopírujte hodnotu uživatelské jméno.
     2. Přihlaste se do **instance CRM** a vyberte **Nastavení**  >    >  **Uživatelé** zabezpečení.
     3. Změňte zobrazení na **uživatele aplikace**.
@@ -97,7 +88,8 @@ Tento článek vysvětluje, jak nastavit předplatné Azure Marketplace a **dyna
 
         :::image type="content" source="./media/test-drive/security-roles-selection.png" alt-text="Výběr oprávnění role.":::
 
-    10. Přiřaďte uživateli aplikace vlastní roli zabezpečení, kterou jste vytvořili pro testovací jednotku.
+    10. Také povolte funkci **Act jménem jiného uživatele** .
+    11. Přiřaďte uživateli aplikace vlastní roli zabezpečení, kterou jste vytvořili pro testovací jednotku.
 
 ## <a name="set-up-for-dynamics-365-for-operations"></a>Nastavení pro Dynamics 365 pro operace
 
@@ -130,7 +122,7 @@ Tento článek vysvětluje, jak nastavit předplatné Azure Marketplace a **dyna
     12. Po přidání oprávnění vyberte **udělení souhlasu správce Microsoftu**.
     13. V okně Výstraha zprávy vyberte **Ano**.
 
-        [![Zobrazuje úspěšně udělená oprávnění aplikace.](media/test-drive/api-permissions-confirmation-operations.png)](media/test-drive/api-permissions-confirmation-operations.png#lightbox)
+        [![Zobrazuje úspěšné udělení oprávnění aplikace.](media/test-drive/api-permissions-confirmation-operations.png)](media/test-drive/api-permissions-confirmation-operations.png#lightbox)
 
     14. Pro vygenerování tajného klíče pro Aplikace Azure AD:
         1. V **možnosti spravovat aplikaci** vyberte **certifikát a tajné klíče**.

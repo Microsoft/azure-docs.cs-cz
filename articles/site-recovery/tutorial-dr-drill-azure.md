@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84699613"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure
@@ -47,7 +47,7 @@ Před spuštěním testovacího převzetí služeb při selhání ověřte vlast
 
 1. V části **Chráněné položky** klikněte na **Replikované položky** a pak na virtuální počítač.
 2. V podokně **Replikovaná položka** se zobrazí souhrn informací o virtuálním počítači, jeho stav a nejnovější dostupné body obnovení. Kliknutím na **Vlastnosti** zobrazíte další podrobnosti.
-3. V části **výpočty a síť**můžete upravit název Azure, skupinu prostředků, cílovou velikost, skupinu dostupnosti a nastavení spravovaného disku.
+3. V části **výpočty a síť** můžete upravit název Azure, skupinu prostředků, cílovou velikost, skupinu dostupnosti a nastavení spravovaného disku.
 4. Můžete zobrazit a upravit nastavení sítě, včetně sítě a podsítě, do které se virtuální počítače Azure umístí po převzetí služeb při selhání, a IP adresy, která se jim přiřadí.
 5. V části **Disky** se zobrazí informace o operačním systému a datových discích ve virtuálním počítači.
 
@@ -69,14 +69,14 @@ Když spustíte testovací převzetí služeb při selhání, stane se následuj
 
 Spusťte testovací převzetí služeb při selhání následujícím způsobem:
 
-1. V **Nastavení**  >  **replikované položky**klikněte na virtuální počítač > **+ testovací převzetí služeb při selhání**.
+1. V **Nastavení**  >  **replikované položky** klikněte na virtuální počítač > **+ testovací převzetí služeb při selhání**.
 2. Pro účely tohoto kurzu vyberte **Nejnovější zpracovaný** bod obnovení. Tím se převezmou služby při selhání virtuálního počítače k nejnovějšímu dostupnému bodu v čase. Zobrazí se časové razítko. Tato možnost neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
 3. V části **Testovací převzetí služeb při selhání** vyberte cílovou síť Azure, ke které se virtuální počítače Azure po převzetí služeb při selhání připojí.
 4. Kliknutím na **OK** zahajte převzetí služeb při selhání. Průběh můžete sledovat kliknutím na virtuální počítač, které otevře jeho vlastnosti. Případně můžete kliknout na úlohu **Testovací převzetí služeb při selhání** v části název_trezoru > **Nastavení** > **Úlohy** >
    **Úlohy Site Recovery**.
 5. Po dokončení převzetí služeb při selhání se na portálu Azure Portal v části **Virtuální počítače** objeví replika virtuálního počítače Azure. Zkontrolujte, že má virtuální počítač odpovídající velikost, je připojený ke správné síti a běží.
 6. Nyní byste se měli moct k replikovanému virtuálnímu počítači v Azure připojit.
-7. Virtuální počítače Azure vytvořené během testu převzetí služeb při selhání odstraníte kliknutím na **Vyčistit testovací převzetí služeb při selhání** na virtuálním počítači. V části **poznámky**si zaznamenejte a uložte všechny poznámky spojené s testovacím převzetím služeb při selhání.
+7. Virtuální počítače Azure vytvořené během testu převzetí služeb při selhání odstraníte kliknutím na **Vyčistit testovací převzetí služeb při selhání** na virtuálním počítači. V části **poznámky** si zaznamenejte a uložte všechny poznámky spojené s testovacím převzetím služeb při selhání.
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování, které trvá asi osm až deset minut. Možná si všimnete delšího trvání testovacího převzetí služeb při selhání u počítačů VMware s Linuxem, virtuálních počítačů VMware, které nemají povolenou službu DHCP, a virtuálních počítačů VMware, které nemají následující ovladače spuštění: storvsc, vmbus, storflt, intelide, atapi.
 

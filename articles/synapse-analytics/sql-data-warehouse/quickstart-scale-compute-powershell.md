@@ -12,10 +12,10 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.openlocfilehash: 87e10740e6081431bad96daa930f61238ca495bd
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96921915"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Rychlý Start: škálování COMPUTE pro vyhrazený fond SQL (dřív SQL DW) s Azure PowerShell
@@ -56,7 +56,7 @@ Vyhledejte název databáze, název serveru a skupinu prostředků pro datový s
 
 Informace o umístění vašeho datového skladu vyhledáte pomocí následujících kroků.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. V levé navigační stránce Azure Portal klikněte na **Azure synapse Analytics (dřív SQL DW)** .
 3. Vyberte **mySampleDataWarehouse** ze stránky **Azure synapse Analytics (dříve SQL DW)** a otevřete datový sklad.
 

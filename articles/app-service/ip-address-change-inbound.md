@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74672422"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Příprava na změnu příchozí IP adresy
@@ -29,7 +29,7 @@ Pokud se vám zobrazilo oznámení, že se příchozí IP adresa vaší aplikace
 
 Nová příchozí IP adresa, která je dána vaší aplikaci, je na portálu v poli **virtuální IP adresa** . Tuto novou IP adresu i starou je teď připojené k vaší aplikaci a později se její starý odpojí.
 
-1.  Otevřete web [Azure Portal](https://portal.azure.com).
+1.  Otevřete [Azure Portal](https://portal.azure.com).
 
 2.  V navigační nabídce na levé straně vyberte **App Services**.
 

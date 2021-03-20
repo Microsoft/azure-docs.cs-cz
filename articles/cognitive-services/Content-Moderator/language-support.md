@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84310304"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Jazyková podpora pro rozhraní Content Moderator API
 
 > [!NOTE]
-> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
+> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače  (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
 >
 > Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
 

@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 680e22974aa85ae2d179f0b927a44b3471b4939d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87101990"
 ---
 # <a name="what-is-azure-dev-tools-for-teaching"></a>Co je Azure Dev Tools for Teaching?
@@ -26,7 +26,7 @@ Jako správce předplatného Azure dev Tools pro vzdělávání budete moct:
 
 ## <a name="program-details"></a>Podrobnosti o programu
 
-Navrhli jsme vývojové nástroje Azure pro výuku pro instrukce zaměřené na KMENe. Všechny studijní kurzy zaměřené na vědy, technologie, inženýrství nebo matematické služby mají nárok na použití vývojářských nástrojů Azure pro výuku, které vám pomůžou profesory naučit a studentům efektivněji učit. 
+Azure Dev Tools for Teaching jsme navrhli pro výuku zaměřenou na STEM. Azure Dev Tools for Teaching může pomoct zefektivnit výuku a učení studentů v jakýchkoli výukových plánech kurzů zaměřených na vědu, technologie, inženýrství nebo matematiku. 
 
 Vaše Microsoft Azure vývojářské nástroje pro výukové předplatné nabízí přístup k určitým vývojářským nástrojům pro software. Tyto nástroje jsou k dispozici pro stažení zdarma. Pokud jste členem vyučujícího ve schváleném kurzu, máte nárok na instalaci vývojářských nástrojů Azure pro výuku softwaru do osobního počítače pro nekomerční použití.
 

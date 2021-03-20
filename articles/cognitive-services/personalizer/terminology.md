@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.openlocfilehash: cd0d85be5447aad0f2a3c37041e7d5d5d047a468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91777288"
 ---
 # <a name="personalizer-terminology"></a>Terminologie přizpůsobování
@@ -87,7 +87,7 @@ Přizpůsobování je nakonfigurované z [Azure Portal](https://portal.azure.com
 V režimu učni jsou k dispozici následující **metriky vyhodnocení**:
 * **Směrný plán – Průměrná odměna**: Průměrná doba využívání výchozích hodnot (standardní hodnoty) aplikace
 * **Přizpůsobování – Průměrná doba odměna**: průměr z celkového počtu nedokončených akcí by byl potenciálně dosažen.
-* **Průměrná**doba úhrady: poměr nestandardních hodnot na úrovni směrného plánu a přizpůsobování – normalizované nad nejnovějšími událostmi 1000.
+* **Průměrná** doba úhrady: poměr nestandardních hodnot na úrovni směrného plánu a přizpůsobování – normalizované nad nejnovějšími událostmi 1000.
 
 ## <a name="next-steps"></a>Další kroky
 

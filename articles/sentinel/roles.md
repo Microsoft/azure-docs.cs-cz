@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 69f78f6e70fa4f0b04ca7527751085ec0265363a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5a3b7d4f60877d1301f03aa4f015695a6a4639be
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048212"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580704"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění ve službě Azure Sentinel
 
@@ -41,6 +41,8 @@ Existují tři vyhrazené předdefinované role Sentinel Azure.
 - Kromě výše uvedeného může spravovat incidenty [Azure Sentinel](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) (přiřazovat, odpustit atd.).
 
 - [Azure Sentinel Přispěvatel](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) může kromě výše uvedených vytvořit a upravit sešity, analytická pravidla a další prostředky služby Azure Sentinel.
+
+- [Přispěvatel Azure Sentinel Automation](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) umožňuje, aby Azure Sentinel přidal playbooky do pravidel automatizace. Není určeno pro uživatelské účty.
 
 > [!NOTE]
 >

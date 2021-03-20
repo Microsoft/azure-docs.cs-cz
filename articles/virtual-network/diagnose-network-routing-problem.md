@@ -16,33 +16,33 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84705045"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnostika problému s směrováním virtuálního počítače
 
 V tomto článku se dozvíte, jak diagnostikovat problém s směrováním zobrazením tras, které jsou platné pro síťové rozhraní ve virtuálním počítači (VM). Azure vytvoří několik výchozích tras pro každou podsíť virtuální sítě. Výchozí trasy Azure můžete přepsat tak, že definujete trasy v tabulce směrování a potom přiřadíte směrovací tabulku k podsíti. Kombinace tras, které vytvoříte, výchozích tras Azure a všech tras, které se šíří z vaší místní sítě prostřednictvím služby Azure VPN Gateway (Pokud je vaše virtuální síť připojená k vaší místní síti) prostřednictvím protokolu BGP (Border Gateway Protocol), jsou platné trasy pro všechna síťová rozhraní v podsíti. Pokud nejste obeznámeni s koncepcí služby Virtual Network, síťového rozhraní nebo směrování, přečtěte si téma [Přehled virtuální sítě](virtual-networks-overview.md), [síťové rozhraní](virtual-network-network-interface.md)a [Směrování](virtual-networks-udr-overview.md).
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Pokusíte se připojit k virtuálnímu počítači, ale připojení se nezdaří. Abyste zjistili, proč se nemůžete připojit k virtuálnímu počítači, můžete zobrazit efektivní trasy pro síťové rozhraní pomocí webu Azure [Portal](#diagnose-using-azure-portal), [PowerShellu](#diagnose-using-powershell)nebo rozhraní příkazového [řádku Azure CLI](#diagnose-using-azure-cli).
 
-Následující postup předpokládá, že máte existující virtuální počítač pro zobrazení efektivních tras pro. Pokud nemáte existující virtuální počítač, nasaďte nejdřív virtuální počítač se systémem [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , abyste mohli dokončit úkoly v tomto článku. Příklady v tomto článku jsou pro virtuální počítač s názvem *myVM* se síťovým rozhraním s názvem *myVMNic1*. Virtuální počítač a síťové rozhraní jsou ve skupině prostředků s názvem *myResourceGroup*a jsou v oblasti *východní USA* . Podle potřeby změňte hodnoty v krocích pro virtuální počítač, pro který chcete problém diagnostikovat.
+Následující postup předpokládá, že máte existující virtuální počítač pro zobrazení efektivních tras pro. Pokud nemáte existující virtuální počítač, nasaďte nejdřív virtuální počítač se systémem [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , abyste mohli dokončit úkoly v tomto článku. Příklady v tomto článku jsou pro virtuální počítač s názvem *myVM* se síťovým rozhraním s názvem *myVMNic1*. Virtuální počítač a síťové rozhraní jsou ve skupině prostředků s názvem *myResourceGroup* a jsou v oblasti *východní USA* . Podle potřeby změňte hodnoty v krocích pro virtuální počítač, pro který chcete problém diagnostikovat.
 
 ## <a name="diagnose-using-azure-portal"></a>Diagnostika pomocí Azure Portal
 
 1. Přihlaste se k webu Azure [Portal](https://portal.azure.com) pomocí účtu Azure, který má [potřebná oprávnění](virtual-network-network-interface.md#permissions).
 2. V horní části Azure Portal do vyhledávacího pole zadejte název virtuálního počítače, který je ve stavu spuštěno. Jakmile se ve výsledcích hledání zobrazí název virtuálního počítače, vyberte ho.
-3. V části **Nastavení** vlevo vyberte **sítě**a přejděte na prostředek síťového rozhraní, a to tak, že vyberete jeho název.
+3. V části **Nastavení** vlevo vyberte **sítě** a přejděte na prostředek síťového rozhraní, a to tak, že vyberete jeho název.
      ![Zobrazit síťová rozhraní](./media/diagnose-network-routing-problem/view-nics.png)
 4. Na levé straně vyberte **efektivní trasy**. Na následujícím obrázku jsou zobrazeny efektivní trasy pro síťové rozhraní s názvem **myVMNic1** : ![ zobrazení efektivních tras](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     Pokud existuje více síťových rozhraní připojených k virtuálnímu počítači, můžete zobrazit efektivní trasy pro jakékoli síťové rozhraní, a to tak, že je vyberete. Vzhledem k tomu, že každé síťové rozhraní může být v jiné podsíti, může mít každé síťové rozhraní různé efektivní trasy.
 
-    V příkladu zobrazeném na předchozím obrázku jsou uvedené trasy výchozí trasy, které Azure vytvoří pro každou podsíť. Váš seznam má alespoň tyto trasy, ale může mít další trasy v závislosti na možnostech, které jste povolili pro virtuální síť, jako je například partnerský vztah s jinou virtuální sítí nebo připojenou k místní síti prostřednictvím služby Azure VPN Gateway. Další informace o jednotlivých trasách a dalších trasách, které se vám můžou zobrazit pro vaše síťové rozhraní, najdete v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md). Pokud váš seznam obsahuje velký počet tras, může být snazší vybrat **Stáhnout**a stáhnout soubor. CSV se seznamem tras.
+    V příkladu zobrazeném na předchozím obrázku jsou uvedené trasy výchozí trasy, které Azure vytvoří pro každou podsíť. Váš seznam má alespoň tyto trasy, ale může mít další trasy v závislosti na možnostech, které jste povolili pro virtuální síť, jako je například partnerský vztah s jinou virtuální sítí nebo připojenou k místní síti prostřednictvím služby Azure VPN Gateway. Další informace o jednotlivých trasách a dalších trasách, které se vám můžou zobrazit pro vaše síťové rozhraní, najdete v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md). Pokud váš seznam obsahuje velký počet tras, může být snazší vybrat **Stáhnout** a stáhnout soubor. CSV se seznamem tras.
 
 I když se v předchozích krocích prohlédly efektivní trasy, můžete si také zobrazit efektivní trasy prostřednictvím:
 - **Individuální síťové rozhraní**: Naučte se [zobrazovat síťové rozhraní](virtual-network-network-interface.md#view-network-interface-settings).
@@ -116,7 +116,7 @@ az vm show \
 
 Pokud stále dochází k potížím s komunikací, přečtěte si téma [předpoklady](#considerations) a další Diagnostika.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Při řešení potíží s komunikací Vezměte v úvahu následující body:
 

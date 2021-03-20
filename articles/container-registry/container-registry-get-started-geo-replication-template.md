@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/06/2020
 ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91827008"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Rychlý Start: vytvoření geograficky replikovaného registru kontejnerů pomocí šablony ARM
@@ -61,11 +61,11 @@ Další příklady šablon Azure Container Registry najdete v [galerii šablon r
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="Vlastnosti šablony":::
 
-1. Vyberte **zkontrolovat + vytvořit**a pak si prohlédněte podmínky a ujednání. Pokud souhlasíte, vyberte **vytvořit**.
+1. Vyberte **zkontrolovat + vytvořit** a pak si prohlédněte podmínky a ujednání. Pokud souhlasíte, vyberte **vytvořit**.
 
 1. Po úspěšném vytvoření registru se zobrazí oznámení:
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Vlastnosti šablony":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Oznámení portálu":::
 
  K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -77,17 +77,17 @@ Pomocí Azure Portal nebo nástroje, jako je Azure CLI, si můžete prohlédnout
 
 1. Na stránce **Přehled** si poznamenejte **přihlašovací server** registru. Tento identifikátor URI použijte, když použijete Docker k označení a vložení obrázků do registru. Informace najdete v tématu [vložení první Image pomocí Docker CLI](container-registry-get-started-docker-cli.md).
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Vlastnosti šablony":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Přehled registru":::
 
 1. Na stránce **replikace** potvrďte umístění domovské repliky a repliku přidanou prostřednictvím šablony. V případě potřeby přidejte na tuto stránku další repliky.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Vlastnosti šablony":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Replikace registru":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud je už nepotřebujete, odstraňte skupinu prostředků, registr a repliku registru. Provedete to tak, že přejdete na Azure Portal, vyberete skupinu prostředků, která obsahuje registr, a pak vyberete **Odstranit skupinu prostředků**.
 
-:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Vlastnosti šablony":::
+:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Odstranění skupiny prostředků":::
 
 ## <a name="next-steps"></a>Další kroky
 

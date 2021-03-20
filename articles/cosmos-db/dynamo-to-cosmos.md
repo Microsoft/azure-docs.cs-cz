@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
 ms.openlocfilehash: 9b4b5fca8017a906fa44b02edcf5f0bdcf6166b3
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334221"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Migrace aplikace z Amazon DynamoDB na Azure Cosmos DB
@@ -25,14 +25,14 @@ Níže jsou uvedené klíčové rozdíly mezi Azure Cosmos DB a DynamoDB:
 
 |  DynamoDB | Azure Cosmos DB  |
 |---|---|
-|Nelze použít|  databáze |
+|Neuvedeno|  databáze |
 |Tabulka      |  Kolekce |
 |  Položka |  Dokument |
 |Atribut|Pole|
 |Sekundární index|Sekundární index|
 |Primary Key – klíč oddílu|Partition Key (Klíč oddílu)|
 |Primary Key – klíč řazení| Nepožadováno |
-|Datový proud|ChangeFeed|
+|Stream|ChangeFeed|
 |Zapsat výpočetní jednotku|Jednotka požadavku (flexibilní, dá se použít pro čtení nebo zápisy)|
 |Čtení výpočetní jednotky    |Jednotka požadavku (flexibilní, dá se použít pro čtení nebo zápisy)|
 |Globální tabulky| Nepožadováno. Při zřizování účtu Azure Cosmos můžete oblast vybrat přímo (později můžete změnit její oblast).|
@@ -41,7 +41,7 @@ Níže jsou uvedené klíčové rozdíly mezi Azure Cosmos DB a DynamoDB:
 
 Azure Cosmos DB má jednodušší strukturu JSON v porovnání s hodnotou DynamoDB. Následující příklad ukazuje rozdíly
 
-**DynamoDB** :
+**DynamoDB**:
 
 Následující objekt JSON představuje formát dat v DynamoDB
 
@@ -75,7 +75,7 @@ ProvisionedThroughput: {
 }
  ```
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 Následující objekt JSON představuje formát dat v Azure Cosmos DB
 
@@ -124,7 +124,7 @@ Install-Package Microsoft.Azure.Cosmos
 
 ### <a name="establish-connection"></a>Navázat připojení
 
-**DynamoDB** :
+**DynamoDB**:
 
 V Amazon DynamoDB se pro připojení používá následující kód:
 
@@ -134,7 +134,7 @@ V Amazon DynamoDB se pro připojení používá následující kód:
         try { aws_dynamodbclient = new AmazonDynamoDBClient( addbConfig ); }
 ```
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 Pokud se chcete připojit Azure Cosmos DB, aktualizujte kód na:
 
@@ -166,7 +166,7 @@ Pomocí Azure Cosmos DB můžete k optimalizaci připojení použít následují
 
 ### <a name="provision-the-container"></a>Zřízení kontejneru
 
-**DynamoDB** :
+**DynamoDB**:
 
 K ukládání dat do Amazon DynamoDB je třeba nejprve vytvořit tabulku. V tomto procesu definujete schéma, typ klíče a atributy, jak je znázorněno v následujícím kódu:
 
@@ -222,7 +222,7 @@ request = new CreateTableRequest
 };
 ```
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 V Amazon DynamoDB musíte zřídit výpočetní jednotky pro čtení & zapisovat výpočetní jednotky. V Azure Cosmos DB zadáte propustnost jako [jednotky žádosti (ru/s)](request-units.md), které lze použít pro všechny operace dynamicky. Data jsou uspořádaná jako databáze > kontejner--> položka. Propustnost můžete určit na úrovni databáze nebo na úrovni kolekce nebo obojího.
 
@@ -240,7 +240,7 @@ await cosmosDatabase.CreateContainerIfNotExistsAsync(new ContainerProperties() {
 
 ### <a name="load-the-data"></a>Načtení dat
 
-**DynamoDB** :
+**DynamoDB**:
 
 Následující kód ukazuje, jak načíst data v Amazon DynamoDB. MoviesArray sestává ze seznamu dokumentů JSON a pak je potřeba iterovat a načítat dokument JSON do Amazon DynamoDB:
 
@@ -264,7 +264,7 @@ for( int i = 0, j = 99; i < n; i++ )
     await putItem;
 ```
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 V Azure Cosmos DB můžete pro Stream a zápis napsat `moviesContainer.CreateItemStreamAsync()` . V této ukázce se ale kód JSON deserializace do typu *MovieModel* , aby se ukázala funkce přetypování typů. Tento kód je vícevláknový, který bude používat distribuovanou architekturu Azure Cosmos DB a zrychlit načítání:
 
@@ -299,7 +299,7 @@ await Task.WhenAll(concurrentTasks);
 
 ### <a name="create-a-document"></a>Vytvoření dokumentu
 
-**DynamoDB** :
+**DynamoDB**:
 
 Zápis nového dokumentu v Amazon DynamoDB není typově bezpečný, v následujícím příkladu se jako typ dokumentu používá zástupného prvku NewItem:
 
@@ -308,7 +308,7 @@ Task<Document> writeNew = moviesTable.PutItemAsync(newItem, token);
 await writeNew;
 ```
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 Azure Cosmos DB poskytuje bezpečnost typů prostřednictvím datového modelu. Používáme datový model s názvem MovieModel:
 
@@ -359,7 +359,7 @@ V Azure Cosmos DB zástupného prvku NewItem bude MovieModel:
 
 ### <a name="read-a-document"></a>Čtení dokumentu
 
-**DynamoDB** :
+**DynamoDB**:
 
 Pro čtení v Amazon DynamoDB je nutné definovat primitivní typy:
 
@@ -372,7 +372,7 @@ Primitive range = new Primitive(title, false);
   movie_record = await readMovie;
 ```
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 U Azure Cosmos DB je však dotaz přirozené (LINQ):
 
@@ -393,13 +393,13 @@ Kolekce Documents v předchozím příkladu bude:
 
 ### <a name="update-an-item"></a>Aktualizace položky
 
-**DynamoDB** : Pokud chcete aktualizovat položku v Amazon DynamoDB:
+**DynamoDB**: Pokud chcete aktualizovat položku v Amazon DynamoDB:
 
 ```csharp
 updateResponse = await client.UpdateItemAsync( updateRequest );
 ````
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 V Azure Cosmos DB bude aktualizace považována za operaci Upsert operace vložit dokument, pokud neexistuje:
 
@@ -409,7 +409,7 @@ await moviesContainer.UpsertItemAsync<MovieModel>(updatedMovieModel);
 
 ### <a name="delete-a-document"></a>Odstranění dokumentu
 
-**DynamoDB** :
+**DynamoDB**:
 
 Pokud chcete odstranit položku v Amazon DynamoDB, musíte se znovu zařadit do primitivních hodnot:
 
@@ -424,7 +424,7 @@ Primitive hash = new Primitive(year.ToString(), true);
         deletedItem = await delItem;
 ```
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 V Azure Cosmos DB můžeme dokument získat a asynchronně ho odstranit:
 
@@ -442,7 +442,7 @@ while (result.HasMoreResults)
 
 ### <a name="query-documents"></a>Dotazování na dokumenty
 
-**DynamoDB** :
+**DynamoDB**:
 
 V Amazon DynamoDB jsou pro dotazování na data požadovány funkce rozhraní API:
 
@@ -456,7 +456,7 @@ QueryOperationConfig config = new QueryOperationConfig( );
   search = moviesTable.Query( config ); 
 ```
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 V Azure Cosmos DB můžete vydávat projekce a filtrovat v jednoduchém dotazu SQL:
 
@@ -496,7 +496,7 @@ var result = moviesContainer.GetItemQueryIterator<MovieModel>(
 
 ### <a name="delete-a-container"></a>Odstranění kontejneru
 
-**DynamoDB** :
+**DynamoDB**:
 
 Pokud chcete odstranit tabulku v Amazon DynamoDB, můžete zadat:
 
@@ -504,7 +504,7 @@ Pokud chcete odstranit tabulku v Amazon DynamoDB, můžete zadat:
 client.DeleteTableAsync( tableName );
 ```
 
-**Azure Cosmos DB** :
+**Azure Cosmos DB**:
 
 Pokud chcete kolekci v Azure Cosmos DB odstranit, můžete zadat:
 

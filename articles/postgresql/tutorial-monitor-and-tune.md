@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
 ms.openlocfilehash: a12068259d82e833826bcac5e6c58059fb51c56c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336975"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Kurz: monitorování a ladění Azure Database for PostgreSQL – jeden server
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL obsahuje funkce, které vám pomohou pochopit a zl
 Musíte mít server Azure Database for PostgreSQL s PostgreSQL verze 9.6 nebo 10. Chcete-li vytvořit server, můžete sledovat postup v části [Vytvořit kurz](tutorial-design-database-using-azure-portal.md).
 
 > [!IMPORTANT]
-> **Query Store** , **Query Performance Insight** a **doporučení k výkonu** jsou ve verzi Public Preview.
+> **Query Store**, **Query Performance Insight** a **doporučení k výkonu** jsou ve verzi Public Preview.
 
 ## <a name="enabling-data-collection"></a>Povolení shromažďování dat
 [Query Store](concepts-query-store.md) na váš server zaznamenává historii dotazů a statistické údaje čekání a ukládá je do databáze na serveru **azure_sys**. Je to funkce vyžadující váš souhlas. Chcete-li ji aktivovat:
@@ -36,9 +36,9 @@ Musíte mít server Azure Database for PostgreSQL s PostgreSQL verze 9.6 nebo 1
 
 2. Vyberte svůj server Azure Database for PostgreSQL.
 
-3. Vyberte **Parametry serveru** , které najdete v části **Nastavení** na levé straně.
+3. Vyberte **Parametry serveru**, které najdete v části **Nastavení** na levé straně.
 
-4. Nastavte **pg_qs.query_capture_mode** na **TOP** , aby se začala shromažďovat data o výkonu. Nastavte **pgms_wait_sampling.query_capture_mode** na **VŠE** , aby začaly shromažďovat statistiky čekání. Uložte.
+4. Nastavte **pg_qs.query_capture_mode** na **TOP**, aby se začala shromažďovat data o výkonu. Nastavte **pgms_wait_sampling.query_capture_mode** na **VŠE**, aby začaly shromažďovat statistiky čekání. Uložte.
    
    :::image type="content" source="./media/tutorial-performance-intelligence/query-store-parameters.png" alt-text="Parametry serveru Query Store":::
 
@@ -83,7 +83,7 @@ Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzu
 
 4. Okno **Doporučení k výkonu** zobrazí seznam doporučení, jestliže byla nějaká nalezena. 
 
-5. Doporučení zobrazí informace o příslušné **databázi** , **tabulce** , **sloupci** a **velikosti indexu**.
+5. Doporučení zobrazí informace o příslušné **databázi**, **tabulce**, **sloupci** a **velikosti indexu**.
 
    :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Výsledky Doporučení k výkonu":::
 

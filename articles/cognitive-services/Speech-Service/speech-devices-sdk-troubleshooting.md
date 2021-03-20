@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
 ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74815559"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Řešení potíže se sadou Speech Devices SDK
@@ -25,11 +25,11 @@ Tento článek poskytuje informace, které vám pomůžou při řešení problé
 
 Pokud při používání služby řeči dojde k chybě certifikátu, ujistěte se, že má vaše zařízení správné datum a čas:
 
-1. Přejít na **Nastavení**. V části **systém**vyberte **Datum & čas**.
+1. Přejít na **Nastavení**. V části **systém** vyberte **Datum & čas**.
 
     ![V části nastavení vyberte datum & čas.](media/speech-devices-sdk/qsg-12.png)
 
-1. Ponechte vybranou možnost **automatického data & času** . V části **Vybrat časové pásmo**vyberte své aktuální časové pásmo.
+1. Ponechte vybranou možnost **automatického data & času** . V části **Vybrat časové pásmo** vyberte své aktuální časové pásmo.
 
     ![Výběr možností data a času v časovém pásmu](media/speech-devices-sdk/qsg-13.png)
 

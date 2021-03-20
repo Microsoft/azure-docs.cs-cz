@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: bee84c41d95c0220129fbf2133b57e1ad35eebdc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542044"
 ---
 # <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>Automatické zvětšování Azure Database for MySQLho úložiště pomocí Azure CLI
@@ -19,7 +19,7 @@ Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure 
 
 Server, který [dosáhl limitu úložiště](./concepts-pricing-tiers.md#reaching-the-storage-limit), je nastaven na hodnotu jen pro čtení. Pokud je pro servery s méně než 100 GB zřízené úložiště povolené automatické zvětšování úložiště, velikost zřízeného úložiště se zvýší o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště pod 5% velikosti zřízeného úložiště. Maximální limity úložiště, jak je uvedeno [zde](./concepts-pricing-tiers.md#storage) , platí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup dokončení této příručky:
 

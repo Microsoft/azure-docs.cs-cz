@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
 ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708539"
 ---
 # <a name="iot-edge-modules"></a>Moduly IoT Edge
@@ -54,7 +54,7 @@ Ve všech případech by IoT Edge moduly měly vybrat možnost publikování v r
 
 Všechny podmínky Microsoft Azure Marketplace smluv a zásad se vztahují na nabídky modulu IoT Edge.  Kromě toho existují požadavky a technické požadavky pro IoT Edge moduly.  
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Chcete-li publikovat modul IoT Edge do Azure Marketplace, je nutné splnit následující požadavky:
 

@@ -15,10 +15,10 @@ manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 2e32a4abeae78aa7105f21ecffbb18c2eae841a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96185619"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>Rychlý Start: použití R s Azure SQL Database Machine Learning Services (Preview) k dotazování databáze 
@@ -45,7 +45,7 @@ Machine Learning Services s R je funkce Azure SQL Database používaná ke spou�
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 

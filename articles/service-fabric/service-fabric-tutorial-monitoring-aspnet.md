@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: e7fe68c2d0c51ffcc67693da722d9243ea3506f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91840791"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Kurz: Monitorování a diagnostika aplikace ASP.NET Core na platformě Service Fabric pomocí Application Insights
@@ -30,7 +30,7 @@ V této sérii kurzů se naučíte:
 > * [Nakonfigurovat CI/CD s využitím služby Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * Nastavit monitorování a diagnostiku aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -99,15 +99,15 @@ Tady je postup nastavení balíčku NuGet:
 4. Na pravé straně zaškrtněte dvě zaškrtávací políčka vedle těchto dvou služeb v aplikaci, **VotingWeb** a **VotingData** a vyberte **instalovat**.
     ![Balíček NuGet sady Application Insights SDK](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. V dialogovém okně *Náhled změn* , které se zobrazí, vyberte **OK** a přijměte *přijetí licence*. Tím se dokončí přidání balíčku NuGet do služeb.
-6. Teď je potřeba v obou službách nastavit inicializátor telemetrie. Provedete to tak, že otevřete *VotingWeb.cs* a *VotingData.cs*. U obou z nich proveďte následující kroky:
-    1. Přidejte tyto dva příkazy *using* v horní části každého * \<ServiceName> . cs*a za existující příkazy *using* :
+6. Teď je potřeba v obou službách nastavit inicializátor telemetrie. Provedete to tak, že otevřete *VotingWeb. cs* a *VotingData. cs*. U obou z nich proveďte následující kroky:
+    1. Přidejte tyto dva příkazy *using* v horní části každého *\<ServiceName> . cs* a za existující příkazy *using* :
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
 
-    2. V obou souborech, v rámci vnořeného příkazu *return* *CreateServiceInstanceListeners ()* nebo *CreateServiceReplicaListeners ()* v oblasti *ConfigureServices*  >  *Services*s dalšími deklarovanými službami s jedním prvkem, přidejte:
+    2. V obou souborech, v rámci vnořeného příkazu *return* *CreateServiceInstanceListeners ()* nebo *CreateServiceReplicaListeners ()* v oblasti *ConfigureServices*  >  *Services* s dalšími deklarovanými službami s jedním prvkem, přidejte:
     ```csharp
     .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
     ```
@@ -148,7 +148,7 @@ Tady je postup nastavení balíčku NuGet:
         .Build();
     ```
 
-Dvakrát ověřte, že `UseApplicationInsights()` je metoda volána jak v *VotingWeb.cs* , tak v *VotingData.cs* , jak je uvedeno výše.
+Dvakrát ověřte, že `UseApplicationInsights()` je metoda volána jak v *VotingWeb. cs* , tak v *VotingData. cs* , jak je uvedeno výše.
 
 >[!NOTE]
 >Tato ukázková aplikace pro zajištění komunikace služeb používá protokol HTTP. Pokud vyvíjíte aplikaci s využitím vzdálené komunikace služeb V2, budete muset na stejné místo jako výše přidat také následující řádky kódu.

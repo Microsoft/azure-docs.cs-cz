@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.openlocfilehash: 26b503e7d55ed3d2f9bd06837551655e7af05a17
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541936"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MySQL pomocí Azure Portal
 
 V tomto článku se naučíte, jak vytvořit a spravovat repliky pro čtení ve službě Azure Database for MySQL pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md) , který se bude používat jako zdrojový server.
 
@@ -31,7 +31,7 @@ V tomto článku se naučíte, jak vytvořit a spravovat repliky pro čtení ve 
 
 Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte existující server Azure Database for MySQL, který chcete použít jako hlavní server. Tato akce otevře stránku s **přehledem** .
 
@@ -125,7 +125,7 @@ Pokud chcete odstranit zdrojový server z Azure Portal, použijte následující
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte Azure Database for MySQL server repliky, který chcete monitorovat.
 
-2. V části **monitorování** v postranním panelu vyberte **metriky** :
+2. V části **monitorování** v postranním panelu vyberte **metriky**:
 
 3. V rozevíracím seznamu dostupných metrik vyberte **prodlevu replikace v sekundách** .
 

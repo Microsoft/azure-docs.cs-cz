@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 45bdd569741dc13181bcaf9e8587a02b3d02c621
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68728826"
 ---
 1. Přihlaste se ke [konzole Firebase](https://firebase.google.com/console/). Vytvořte nový projekt Firebase, pokud jej ještě nemáte.
@@ -21,7 +21,7 @@ ms.locfileid: "68728826"
     ![Přidání Firebase do aplikace pro Android](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
 
 3. Na stránce **Přidat Firebase na svou aplikaci pro Android** proveďte následující kroky: 
-    1. Jako **název balíčku pro Android**zadejte název svého balíčku. Například: `tutorials.tutoria1.xamarinfcmapp`. 
+    1. Jako **název balíčku pro Android** zadejte název svého balíčku. Příklad: `tutorials.tutoria1.xamarinfcmapp`. 
 
         ![Zadejte název balíčku.](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
     2. Vyberte **Registrovat aplikaci**.  

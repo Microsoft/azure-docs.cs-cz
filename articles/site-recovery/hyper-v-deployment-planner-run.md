@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082605"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Spuštění Plánovače nasazení služby Azure Site Recovery pro zotavení po havárii Hyper-V do Azure
@@ -97,7 +97,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Directory|(Volitelné) Název UNC nebo cesta k místnímu adresáři, do kterého se během profilace budou ukládat data profilace. Pokud název není zadaný, jako výchozí se použije adresář ProfiledData v aktuální cestě.|
 |-Password|(Volitelné) Heslo pro připojení k hostiteli Hyper-V. Pokud ho neurčíte jako parametr, budete k tomu vyzváni při spuštění příkazu.|
 |-StorageAccountName|(Volitelné) Název účtu úložiště, který se použije k zjištění dosažitelné propustnost pro replikaci místních dat do Azure. Nástroj vypočítává propustnost tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být typu Univerzální v1 (GPv1).|
-|-StorageAccountKey|(Volitelné) Klíč, který se použije pro přístup k účtu úložiště. Přejděte do Azure Portal > **účty úložiště**  >  *účet*úložiště  >  **Nastavení**  >  **přístupové klíče**  >  **klíč1** (nebo primární přístupový klíč pro klasický účet úložiště).|
+|-StorageAccountKey|(Volitelné) Klíč, který se použije pro přístup k účtu úložiště. Přejděte do Azure Portal > **účty úložiště**  >  *účet* úložiště  >  **Nastavení**  >  **přístupové klíče**  >  **klíč1** (nebo primární přístupový klíč pro klasický účet úložiště).|
 |-Environment|(Volitelné) Cílové prostředí pro účet úložiště Azure. Může mít jednu ze tří hodnot: AzureCloud, AzureUSGovernment nebo AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud je vaše cílová oblast buď Azure USA – státní správa nebo Azure Čína 21Vianet.|
 
 Doporučujeme profilovat virtuální počítače po dobu delší než 7 dní. Pokud se vzor četnosti změn v měsíci mění, doporučujeme profilaci v týdnu, kdy je četnost změn maximální. Nejlepší způsob, jak získat lepší doporučení, je provádět profilaci 31 dní. 
@@ -157,7 +157,7 @@ Pokud předáte název a klíč účtu úložiště, nástroj bude měřit propu
 Azure Site Recovery nepodporuje virtuální počítače, které mají iSCSI a průchozí disky. Nástroj nemůže detekovat a profilovat iSCSI a průchozí disky, které jsou připojené k virtuálním počítačům.
 
 ## <a name="generate-a-report"></a>Generování sestav
-Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM). Ten shrnuje veškerá doporučení pro nasazení. Sestava má název DeploymentPlannerReport_*jedinečný číselný identifikátor*.xlsm a je umístěná v zadaném adresáři.
+Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM). Ten shrnuje veškerá doporučení pro nasazení. Sestava má název DeploymentPlannerReport_ *jedinečný číselný identifikátor*.xlsm a je umístěná v zadaném adresáři.
 
 Po dokončení profilace můžete nástroj spustit v režimu generování sestav. 
 
@@ -281,7 +281,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 |-Virtualization|Typ virtualizace (VMware nebo Hyper-V).|
 |-Directory|(Volitelné) Název UNC nebo cesta k místnímu adresáři, ve kterém jsou uložena profilovaná data (soubory vytvořené během profilace). Tato data jsou vyžadovaná k vygenerování sestavy. Pokud název není zadaný, jako výchozí se použije adresář ProfiledData v aktuální cestě.|
 | -StorageAccountName | Název účtu úložiště, který se použije k zjištění využité šířky pásma pro replikaci místních dat do Azure. Nástroj zjistí využitou šířku pásma tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být typu Univerzální v1 (GPv1).|
-| -StorageAccountKey | Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte do části Azure Portal > **úložiště účty**úložiště  >  *– název účtu úložiště*  >  **Nastavení**  >  **přístupové klíče**  >  **klíč1**.|
+| -StorageAccountKey | Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte do části Azure Portal > **úložiště účty** úložiště  >  *– název účtu úložiště*  >  **Nastavení**  >  **přístupové klíče**  >  **klíč1**.|
 | -VMListFile | Soubor se seznamem virtuálních počítačů určených k profilaci pro výpočet využité šířky pásma. Cesta k souboru může být absolutní nebo relativní. Pro Hyper-V je tento soubor výstupním souborem operace GetVMList. Pokud provádíte přípravu ručně, měl by tento soubor obsahovat jednu IP adresu nebo název serveru, následované názvem virtuálního počítače (oddělené \ na každém řádku). Název virtuálního počítače zadaný v souboru se musí shodovat s názvem virtuálního počítače na hostiteli Hyper-V.<br><br>**Příklad:** Soubor VMList.txt obsahuje následující virtuální počítače:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Environment|(Volitelné) Cílové prostředí pro účet úložiště Azure. Může mít jednu ze tří hodnot: AzureCloud, AzureUSGovernment nebo AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaše cílová oblast Azure je buď Azure USA (státní správa), nebo Azure Čína 21Vianet.|
 
@@ -292,7 +292,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Direc
 
 ### <a name="throughput-considerations"></a>Důležité informace o propustnosti
 
-Nástroj vytvoří v zadaném adresáři několik souborů asrvhdfile*číslo*.vhd (kde *číslo* je počet souborů) o velikosti 64 MB. Nástroj tyto soubory nahraje do účtu úložiště a tak zjistí propustnost. Po změření propustnosti nástroj všechny tyto soubory odstraní z účtu úložiště i z místního serveru. Pokud se nástroj z nějakého důvodu během výpočtu propustnosti ukončí, z účtu úložiště ani z místního serveru tyto soubory neodstraní. Budete je muset odstranit ručně.
+Nástroj vytvoří v zadaném adresáři několik souborů asrvhdfile *číslo*.vhd (kde *číslo* je počet souborů) o velikosti 64 MB. Nástroj tyto soubory nahraje do účtu úložiště a tak zjistí propustnost. Po změření propustnosti nástroj všechny tyto soubory odstraní z účtu úložiště i z místního serveru. Pokud se nástroj z nějakého důvodu během výpočtu propustnosti ukončí, z účtu úložiště ani z místního serveru tyto soubory neodstraní. Budete je muset odstranit ručně.
 
 Propustnost se měří v určeném časovém bodu. Jedná se o maximální propustnost, které může služba Azure Site Recovery dosáhnout během replikace, pokud všechny ostatní faktory zůstanou stejné. Například pokud ve stejné síti nějaká aplikace začne využívat větší šířku pásma, skutečná propustnost během replikace se bude lišit. Výsledná naměřená propustnost se bude lišit, když operaci GetThroughput spustíte v době vysoké četnosti změn dat na chráněných virtuálních počítačích. 
 

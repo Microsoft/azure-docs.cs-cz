@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: e2804c8f9b1af89ac0ea86ec14136df66d900060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83846118"
 ---
 1. Vyberte **vytvořit prostředek**  >  **Zobrazit vše**.
@@ -35,8 +35,8 @@ ms.locfileid: "83846118"
     > [!div class="mx-imgBorder"]
     > ![Karta základy partnerského vztahu](../media/setup-basics-tab.png)
 
-    * Vyberte své **předplatné**Azure.
-    * V případě **skupiny prostředků**můžete buď zvolit existující skupinu prostředků z rozevíracího seznamu, nebo vytvořit novou skupinu výběrem možnosti **vytvořit nový**. V tomto příkladu vytvoříme novou skupinu prostředků.
+    * Vyberte své **předplatné** Azure.
+    * V případě **skupiny prostředků** můžete buď zvolit existující skupinu prostředků z rozevíracího seznamu, nebo vytvořit novou skupinu výběrem možnosti **vytvořit nový**. V tomto příkladu vytvoříme novou skupinu prostředků.
     * **Název** odpovídá názvu prostředku a může to být cokoli, co si zvolíte.
     * Pokud jste zvolili existující skupinu prostředků, je vybrána možnost vybrat **oblast** . Pokud se rozhodnete vytvořit novou skupinu prostředků, musíte taky zvolit oblast Azure, ve které chcete prostředek umístit.
 
@@ -52,4 +52,4 @@ ms.locfileid: "83846118"
         > [!div class="mx-imgBorder"]
         > ![Vyplněné základy partnerských vztahů](../media/setup-direct-basics-filled-tab.png)
 
-    * Chcete-li pokračovat, vyberte možnost **Další: >konfigurace ** .
+    * Chcete-li pokračovat, vyberte možnost **Další: >konfigurace** .

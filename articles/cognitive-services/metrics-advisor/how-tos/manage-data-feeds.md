@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: mbullwin
 ms.openlocfilehash: fb6eaf44967732d3a41ea92b0896540a40f694e3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96184718"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>Postupy: Správa datových kanálů
@@ -66,7 +66,7 @@ Poradce pro metriky umožňuje udělit oprávnění různým skupinám uživatel
 - Viewer: kdo má přístup k zobrazení datového kanálu jen pro čtení.
  
 
-## <a name="advanced-settings"></a>Pokročilá nastavení
+## <a name="advanced-settings"></a>Rozšířená nastavení
 
 Při vytváření nového datového kanálu je k dispozici několik volitelných upřesňujících nastavení, která je možné upravit na stránce s podrobnostmi o datovém kanálu.
 
@@ -89,7 +89,7 @@ Při vytváření nového datového kanálu je k dispozici několik volitelných
     | :------------ | :--------------- |
     | Denně, Custom (>= 1 den), týdně, měsíčně     | 30 minut          |
     | Každou hodinu, vlastní (< 1 den)      | 10 minut |
-    | Roční | 1 den          |
+    | Ročně | 1 den          |
  
 ### <a name="fill-gap-when-detecting"></a>Při detekci vyplnit mezeru: 
 

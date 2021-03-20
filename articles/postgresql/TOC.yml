@@ -27,6 +27,8 @@
         - name: Migrace s minimem výpadků pomocí DMS
           href: howto-migrate-online.md
           displayName: 'dms, data migration service'
+        - name: Migrace z Oracle
+          href: howto-migrate-from-oracle.md
     - name: Zásady správy verzí
       href: concepts-version-policy.md
       displayName: 'version, postgresql'

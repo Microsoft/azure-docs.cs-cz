@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84343016"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC – ladění hlaviček protokolu HTTP pro modul pravidel Azure CDN
@@ -54,7 +54,7 @@ Hlavičky odpovědí mezipaměti ladění mohou být požadovány vložením ná
 ## <a name="cache-status-code-information"></a>Informace o stavovém kódu mezipaměti
 Hlavička odpovědi X-EC-Debug může určit server a způsob, jakým zpracovává odpověď, prostřednictvím následujících direktiv:
 
-Záhlaví | Description
+Hlavička | Description
 -------|------------
 X-EC-ladění: x-EC – mezipaměť | Tato hlavička se oznamuje při každém směrování obsahu přes CDN. Identifikuje server POP, který požadavek splnil.
 X-EC-ladění: x-EC-cache-Remote | Tato hlavička se oznamuje jenom v případě, že je požadovaný obsah uložený v mezipaměti na zdrojovém serveru ochrany nebo na serveru brány a.

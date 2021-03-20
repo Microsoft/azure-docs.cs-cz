@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87073912"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý Start – konfigurace prostředí privátního cloudu
@@ -37,13 +37,13 @@ Privátní cloudy se spravují prostřednictvím portálu CloudSimple. Mají sv�
 1. Vyberte **Všechny služby**.
 2. Vyhledejte **služby CloudSimple Services**.
 3. Vyberte službu CloudSimple, na které chcete vytvořit privátní cloud.
-4. V **přehledu**klikněte na **vytvořit privátní cloud** . otevře se nová karta prohlížeče pro CloudSimple portál.  Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení do Azure.  
+4. V **přehledu** klikněte na **vytvořit privátní cloud** . otevře se nová karta prohlížeče pro CloudSimple portál.  Pokud se zobrazí výzva, přihlaste se pomocí přihlašovacích údajů pro přihlášení do Azure.  
 
     ![Vytvoření privátního cloudu z Azure](media/create-private-cloud-from-azure.png)
 
 5. Na portálu CloudSimple zadejte název vašeho privátního cloudu.
 6. Vyberte **umístění** vašeho privátního cloudu.
-7. Vyberte **typ uzlu**konzistentní s tím, co jste zřídili v Azure.
+7. Vyberte **typ uzlu** konzistentní s tím, co jste zřídili v Azure.
 8. Zadejte **počet uzlů**.  K vytvoření privátního cloudu se vyžadují aspoň tři uzly.
 
     ![Vytvořit privátní cloud – základní informace](media/create-private-cloud-basic-info.png)
@@ -85,14 +85,14 @@ Připojení VPN typu Point-to-site je nejjednodušší způsob, jak se připojit
 
     ![Vytvoření brány VPN](media/create-vpn-gateway.png)
 
-4. V části **Konfigurace brány**zadejte následující nastavení a klikněte na **Další**.
+4. V části **Konfigurace brány** zadejte následující nastavení a klikněte na **Další**.
 
     * Jako typ brány vyberte **síť VPN typu Point-to-site** .
     * Zadejte název pro identifikaci brány.
     * Vyberte umístění Azure, kde je vaše služba CloudSimple nasazená.
     * Zadejte podsíť klienta pro bránu Point-to-site.  Adresy DHCP budou předány z této podsítě, když se připojíte.
 
-5. V poli **připojení/uživatel**zadejte následující nastavení a klikněte na tlačítko **Další**.
+5. V poli **připojení/uživatel** zadejte následující nastavení a klikněte na tlačítko **Další**.
 
     * Pokud chcete všem současným a budoucím uživatelům automaticky dovolit přístup k privátnímu cloudu prostřednictvím této brány Point-to-site, vyberte **automaticky přidat všechny uživatele**. Když vyberete tuto možnost, automaticky se vyberou všichni uživatelé v seznamu uživatelů. Automatickou možnost můžete přepsat tak, že zrušíte výběr jednotlivých uživatelů v seznamu.
     * Chcete-li vybrat pouze jednotlivé uživatele, klikněte na zaškrtávací políčka v seznamu uživatelů.
@@ -154,7 +154,7 @@ CloudSimple poskytuje okruh ExpressRoute pro váš privátní cloud. Virtuální
 
 Nyní se můžete přihlásit k vCenter a nastavit virtuální počítače a zásady.
 
-1. Pokud chcete získat přístup k serveru vCenter, začněte na portálu CloudSimple. Na domovské stránce v části **běžné úlohy**klikněte na **Spustit klienta vSphere**.  Vyberte privátní cloud a pak klikněte na **Spustit klienta vSphere** v privátním cloudu.
+1. Pokud chcete získat přístup k serveru vCenter, začněte na portálu CloudSimple. Na domovské stránce v části **běžné úlohy** klikněte na **Spustit klienta vSphere**.  Vyberte privátní cloud a pak klikněte na **Spustit klienta vSphere** v privátním cloudu.
 
     ![Spustit klienta vSphere](media/launch-vcenter-from-cloudsimple-portal.png)
 

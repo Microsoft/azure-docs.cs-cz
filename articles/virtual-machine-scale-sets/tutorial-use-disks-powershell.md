@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92367954"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure PowerShellu
@@ -111,7 +111,7 @@ New-AzVmss `
 Vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Připojení disku k existující škálovací sadě
-Disky můžete připojit také k existující škálovací sadě. Pomocí sady škálování vytvořené v předchozím kroku přidejte další disk pomocí [Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk). Následující příklad připojí k existující škálovací sadě další *128*GB disk:
+Disky můžete připojit také k existující škálovací sadě. Pomocí sady škálování vytvořené v předchozím kroku přidejte další disk pomocí [Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk). Následující příklad připojí k existující škálovací sadě další *128* GB disk:
 
 ```azurepowershell-interactive
 # Get scale set object

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541925"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for MySQL pomocí prostředí PowerShell
@@ -22,7 +22,7 @@ V tomto článku se naučíte vytvářet a spravovat repliky pro čtení ve slu�
 
 Pomocí PowerShellu můžete vytvářet a spravovat repliky pro čtení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce budete potřebovat:
 
@@ -54,10 +54,10 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMySqlReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
-| Název | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
+| Name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
 
 Pokud chcete vytvořit repliku čtení ve více oblastech, použijte parametr **Location (umístění** ). V následujícím příkladu se vytvoří replika v oblasti **západní USA** .
 
@@ -83,7 +83,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMySqlReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | ServerName | mydemoserver | Název nebo ID zdrojového serveru. |

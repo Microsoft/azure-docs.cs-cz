@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 40a6815bb10ce9725405d68498b9a554706f3af8
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920539"
 ---
 # <a name="array-functions-for-arm-templates"></a>Funkce pole pro šablony ARM
@@ -24,10 +24,10 @@ Správce prostředků poskytuje několik funkcí pro práci s poli v šabloně A
 * [posledního](#last)
 * [length](#length)
 * [počet](#max)
-* [dlouhé](#min)
+* [min](#min)
 * [oblasti](#range)
 * [přímo](#skip)
-* [take](#take)
+* [nezbytná](#take)
 * [sjednocovací](#union)
 
 Chcete-li získat pole řetězcových hodnot oddělených hodnotou, viz [rozdělit](template-functions-string.md#split).
@@ -42,9 +42,9 @@ Převede hodnotu na pole.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Ano |int, String, Array nebo Object |Hodnota, která má být převedena na pole. |
+| convertToArray |Yes |int, String, Array nebo Object |Hodnota, která má být převedena na pole. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -129,10 +129,10 @@ Kombinuje více polí a vrátí zřetězené pole, nebo kombinuje více řetězc
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |První pole nebo řetězec pro zřetězení. |
-| Další argumenty |Ne |pole nebo řetězec |Další pole nebo řetězce v sekvenčním pořadí pro zřetězení. |
+| arg1 |Yes |pole nebo řetězec |První pole nebo řetězec pro zřetězení. |
+| Další argumenty |No |pole nebo řetězec |Další pole nebo řetězce v sekvenčním pořadí pro zřetězení. |
 
 Tato funkce může mít libovolný počet argumentů a může přijmout buď řetězce nebo pole pro parametry. Pro parametry však nelze zadat obě pole a řetězce. Pole jsou zřetězena pouze s jinými poli.
 
@@ -252,10 +252,10 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč, nebo řetězec ob
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| kontejner |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
-| itemToFind |Ano |řetězec nebo int |Hodnota, která se má najít |
+| kontejner |Yes |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
+| itemToFind |Yes |řetězec nebo int |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -364,9 +364,9 @@ Vytvoří pole z parametrů. `createArray`Funkce není podporována nástrojem b
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| args |Ne |Řetězec, celé číslo, pole nebo objekt |Hodnoty v poli. |
+| args |No |Řetězec, celé číslo, pole nebo objekt |Hodnoty v poli. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -448,9 +448,9 @@ Určuje, zda je pole, objekt nebo řetězec prázdný.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ano |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
+| itemToTest |Yes |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -529,9 +529,9 @@ Vrátí první prvek pole nebo první znak řetězce.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Hodnota pro načtení prvního prvku nebo znaku. |
+| arg1 |Yes |pole nebo řetězec |Hodnota pro načtení prvního prvku nebo znaku. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -598,11 +598,11 @@ Vrátí jedno pole nebo objekt se společnými prvky z parametrů.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo objekt |První hodnota, která má být použita pro hledání běžných prvků. |
-| arg2 |Ano |pole nebo objekt |Druhá hodnota, která má být použita pro vyhledání běžných prvků. |
-| Další argumenty |Ne |pole nebo objekt |Další hodnoty, které se mají použít pro hledání běžných prvků. |
+| arg1 |Yes |pole nebo objekt |První hodnota, která má být použita pro hledání běžných prvků. |
+| arg2 |Yes |pole nebo objekt |Druhá hodnota, která má být použita pro vyhledání běžných prvků. |
+| Další argumenty |No |pole nebo objekt |Další hodnoty, které se mají použít pro hledání běžných prvků. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -706,9 +706,9 @@ Vrátí poslední prvek pole nebo poslední znak řetězce.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Hodnota, která načte poslední prvek nebo znak. |
+| arg1 |Yes |pole nebo řetězec |Hodnota, která načte poslední prvek nebo znak. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -775,9 +775,9 @@ Vrátí počet prvků v poli, znaky v řetězci nebo vlastnosti na kořenové ú
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
+| arg1 |Yes |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -899,9 +899,9 @@ Vrátí maximální hodnotu z pole celých čísel nebo seznam celých čísel o
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá maximální hodnotu |
+| arg1 |Yes |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá maximální hodnotu |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -969,9 +969,9 @@ Vrátí minimální hodnotu z pole celých čísel nebo seznam celých čísel o
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá minimální hodnotu. |
+| arg1 |Yes |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá minimální hodnotu. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1039,10 +1039,10 @@ Vytvoří pole celých čísel od počátečního celého čísla a obsahuje ně
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| Indexu |Ano |int |První celé číslo v poli Součet hodnoty startIndex a Count nesmí být větší než 2147483647. |
-| count |Ano |int |Počet celých čísel v poli. Musí být nezáporné celé číslo od do 10000. |
+| Indexu |Yes |int |První celé číslo v poli Součet hodnoty startIndex a Count nesmí být větší než 2147483647. |
+| count |Yes |int |Počet celých čísel v poli. Musí být nezáporné celé číslo od do 10000. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1103,10 +1103,10 @@ Vrátí pole se všemi prvky po zadaném čísle v poli nebo vrátí řetězec s
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| Původní |Ano |pole nebo řetězec |Pole nebo řetězec, který se má použít pro přeskočení. |
-| numberToSkip |Ano |int |Počet prvků nebo znaků, které mají být přeskočeny. Pokud je tato hodnota 0 nebo méně, vrátí se všechny prvky nebo znaky v hodnotě. Pokud je větší než délka pole nebo řetězce, je vráceno prázdné pole nebo řetězec. |
+| Původní |Yes |pole nebo řetězec |Pole nebo řetězec, který se má použít pro přeskočení. |
+| numberToSkip |Yes |int |Počet prvků nebo znaků, které mají být přeskočeny. Pokud je tato hodnota 0 nebo méně, vrátí se všechny prvky nebo znaky v hodnotě. Pokud je větší než délka pole nebo řetězce, je vráceno prázdné pole nebo řetězec. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1191,10 +1191,10 @@ Vrátí pole se zadaným počtem prvků od začátku pole nebo řetězec, který
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| Původní |Ano |pole nebo řetězec |Pole nebo řetězec, ze kterého mají být přebírat prvky. |
-| numberToTake |Ano |int |Počet prvků nebo znaků, které mají být přebírat. Pokud je tato hodnota 0 nebo méně, vrátí se prázdné pole nebo řetězec. Pokud je větší než délka daného pole nebo řetězce, vrátí se všechny prvky v poli nebo řetězci. |
+| Původní |Yes |pole nebo řetězec |Pole nebo řetězec, ze kterého mají být přebírat prvky. |
+| numberToTake |Yes |int |Počet prvků nebo znaků, které mají být přebírat. Pokud je tato hodnota 0 nebo méně, vrátí se prázdné pole nebo řetězec. Pokud je větší než délka daného pole nebo řetězce, vrátí se všechny prvky v poli nebo řetězci. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1279,11 +1279,11 @@ Vrátí jedno pole nebo objekt se všemi prvky z parametrů. Duplicitní hodnoty
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo objekt |První hodnota, která se má použít pro spojování prvků. |
-| arg2 |Ano |pole nebo objekt |Druhá hodnota, která se má použít pro spojování prvků. |
-| Další argumenty |Ne |pole nebo objekt |Další hodnoty, které se mají použít pro spojování prvků. |
+| arg1 |Yes |pole nebo objekt |První hodnota, která se má použít pro spojování prvků. |
+| arg2 |Yes |pole nebo objekt |Druhá hodnota, která se má použít pro spojování prvků. |
+| Další argumenty |No |pole nebo objekt |Další hodnoty, které se mají použít pro spojování prvků. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

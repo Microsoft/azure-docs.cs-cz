@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 88006fb354af2673496c6476090d7f73c8a005e6
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95542996"
 ---
 # <a name="move-azure-vms-to-an-availability-zone-in-another-region"></a>Přesun virtuálních počítačů Azure do zóny dostupnosti v jiné oblasti
@@ -35,7 +35,7 @@ Pokud chcete přesunout virtuální počítače do jiné zóny dostupnosti ve st
 - Přístup *vlastníka* k předplatnému, ve kterém se nacházejí prostředky, které chcete přesunout.
     - Při prvním přidání prostředku pro konkrétní mapování zdrojového a cílového umístění v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
     - Pokud chcete vytvořit identitu a přiřadit jí požadovanou roli (přispěvatel nebo správce přístupu uživatele ve zdrojovém předplatném), účet, který použijete k přidání prostředků, potřebuje oprávnění *vlastníka* k tomuto předplatnému. [Přečtěte si další informace](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) o rolích Azure.
-- K vytvoření zdrojových prostředků v cílové oblasti vyžaduje předplatné dostatečnou kvótu. Pokud ne, požádejte o další omezení. [Přečtěte si další informace](../azure-resource-manager/management/azure-subscription-service-limits.md).
+- K vytvoření zdrojových prostředků v cílové oblasti vyžaduje předplatné dostatečnou kvótu. Pokud ne, požádejte o další omezení. [Další informace](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Ověřte ceny a poplatky spojené s cílovou oblastí, do které přesouváte virtuální počítače. Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) vám pomůžeme.
     
 
@@ -92,7 +92,7 @@ Po kliknutí na oznámení se prostředky zobrazí na stránce **napříč oblas
 
 > [!NOTE]
 > Po kliknutí na oznámení se prostředky zobrazí na stránce **napříč oblastmi** ve stavu *Příprava čeká na vyřízení* .
-> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Přečtěte si další informace](remove-move-resources.md).
+> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Další informace](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Vyřešit závislosti
 

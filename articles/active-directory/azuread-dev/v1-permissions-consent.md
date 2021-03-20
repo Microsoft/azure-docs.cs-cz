@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 2b85115d905cb6a7eb7c6aed64a4834425d2f1d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366390"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v 1.0
@@ -61,7 +61,7 @@ Oprávnění ve službě Azure AD mají řadu vlastností, které uživatelům, 
 | --- | --- | --- |
 | `ID` | Hodnota GUID, která jednoznačně identifikuje toto oprávnění. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
 | `IsEnabled` | Určuje, jestli je toto oprávnění k dispozici pro použití. | true |
-| `Type` | Určuje, jestli toto oprávnění vyžaduje souhlas uživatele nebo souhlas správce. | Uživatel |
+| `Type` | Určuje, jestli toto oprávnění vyžaduje souhlas uživatele nebo souhlas správce. | User |
 | `AdminConsentDescription` | Popis, který se zobrazí správcům při udělování souhlasu správce. | Umožňuje aplikaci číst e-maily v poštovních schránkách uživatelů. |
 | `AdminConsentDisplayName` | Popisný název, který se zobrazí správcům při udělování souhlasu správce. | Čtení pošty uživatelů |
 | `UserConsentDescription` | Popis, který se zobrazí uživatelům při udělování souhlasu uživatele. |  Umožňuje aplikaci číst e-maily ve vaší poštovní schránce. |
@@ -102,7 +102,7 @@ Aplikace ve službě Azure AD získávají přístup k potřebným prostředkům
   - `Permission` odpovídá akci, kterou uživatel může na těchto datech použít.
   - `Modifier` se používá volitelně k popisu specializací jiného oprávnění.
     
-    Příklad:
+    Například:
   - Mail.Read – Umožňuje uživatelům číst poštu.
   - Mail.ReadWrite – Umožňuje uživatelům číst nebo psát poštu.
   - Mail.ReadWrite.All – Umožňuje správci nebo uživateli přístup k poště v organizaci.

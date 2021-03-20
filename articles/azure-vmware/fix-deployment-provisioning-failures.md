@@ -4,10 +4,10 @@ description: Získejte informace z privátního cloudu řešení Azure VMware a 
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.openlocfilehash: 27b645f4ca225fdd74bca6499b6581b3803e41a4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542401"
 ---
 # <a name="open-a-support-request-for-an-azure-vmware-solution-deployment-or-provisioning-failure"></a>Otevření žádosti o podporu pro nasazení řešení Azure VMware nebo selhání zřizování
@@ -55,7 +55,7 @@ Přístup k protokolu nasazení:
 
    :::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Snímek obrazovky, který zobrazuje ikonu oznámení v Azure Portal.":::
 
-1. V podokně **oznámení** vyberte **Další události v protokolu aktivit** :
+1. V podokně **oznámení** vyberte **Další události v protokolu aktivit**:
 
     :::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Snímek obrazovky, který zobrazuje další události v odkazu protokolu aktivit vybrané v podokně oznámení.":::
 
@@ -112,7 +112,7 @@ Vytvoření žádosti o podporu pro nasazení řešení Azure VMware nebo selhá
 
 1. Zadejte nebo vyberte požadované informace:
 
-   1. Vyberte kartu **Základy** :
+   1. Vyberte kartu **Základy**:
 
       1. Jako **typ problému** vyberte **Konfigurace a problémy s instalací**.
 

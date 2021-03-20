@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 096da0547806680f62b569f7c7809a7bbb04cb86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84742075"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-privileged-identity-management"></a>Schválení nebo zamítnutí žádostí o role prostředků Azure v Privileged Identity Management
@@ -32,7 +32,7 @@ Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti o role
 
 Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role prostředku Azure čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

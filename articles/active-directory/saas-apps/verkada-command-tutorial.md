@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 33e404a7569f4d68fa4679ce492c7713714ce09f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636659"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verkada-command"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí příkazu Verkada
@@ -49,15 +49,15 @@ Pokud chcete nakonfigurovat integraci příkazu Verkada do služby Azure AD, mus
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **příkaz Verkada** .
 1. Z panelu výsledků vyberte **příkaz Verkada** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-verkada-command"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Verkada příkaz
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí příkazu Verkada pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v příkazu Verkada.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí příkazu Verkada pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v příkazu Verkada.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí příkazu Verkada, dokončete následující stavební bloky:
 
@@ -72,19 +72,19 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **příkazů Verkada** najděte část **Správa** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **příkazů Verkada** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. Pokud v **základním oddílu konfigurace SAML** máte **soubor metadat poskytovatele služeb** a chcete ho nakonfigurovat v režimu iniciované **IDP** , proveďte následující kroky:
 
-    a. Klikněte na **nahrát soubor metadat** .
+    a. Klikněte na **nahrát soubor metadat**.
 
     ![Nahrát soubor metadat](common/upload-metadata.png)
 
-    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát** .
+    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
 
     ![zvolit soubor metadat](common/browse-upload-metadata.png)
 
@@ -102,13 +102,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory Verkada příkazů klientů](mailto:support@verkada.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Aplikace Verkada Command očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName** . Příkazová aplikace Verkada očekává, že **NameIdentifier** budou mapovány pomocí **User. mail** , takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
+1. Aplikace Verkada Command očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Příkazová aplikace Verkada očekává, že **NameIdentifier** budou mapovány pomocí **User. mail**, takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/default-attributes.png)
 
 1. Kromě toho očekává aplikace Verkada Command v odpovědi SAML méně dalších atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
     | uniqueUserId | uživatel. pošta |
     | lastName | User. příjmení |
@@ -128,21 +128,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k příkazu Verkada.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte **příkaz Verkada** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **příkaz Verkada**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 

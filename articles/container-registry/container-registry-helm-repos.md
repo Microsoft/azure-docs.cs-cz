@@ -4,10 +4,10 @@ description: Naučte se ukládat Helm grafy pro aplikace Kubernetes pomocí úlo
 ms.topic: article
 ms.date: 06/12/2020
 ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86537863"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Vložení a vyžádání Helm grafů do služby Azure Container Registry
@@ -33,7 +33,7 @@ Helm 3 by se měly použít k hostování Helm grafů v Azure Container Registry
 > [!NOTE]
 > Od Helm 3 se nepoužívají příkazy [AZ ACR Helm][az-acr-helm] pro použití s klientem Helm 2. Seznamte se s [plánem produktu](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Pokud jste již dříve nasadili grafy Helm 2, přečtěte si téma [migrace Helm v2 na V3](https://helm.sh/docs/topics/v2_v3_migration/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro scénář v tomto článku jsou potřeba tyto prostředky:
 
@@ -93,7 +93,7 @@ Další informace o vytvoření a spuštění tohoto příkladu naleznete v tém
 
 Změňte adresář na podadresář `hello-world` . Pak spusťte příkaz `helm chart save` pro uložení kopie grafu místně a také vytvořte alias s plně kvalifikovaným názvem registru (všechny malé písmeno) a cílovým úložištěm a označením. 
 
-V následujícím příkladu je název registru *mycontainerregistry*, cílové úložiště je *Hello World*a jmenovka cílového grafu je *v1*, ale nahrazující hodnoty pro vaše prostředí:
+V následujícím příkladu je název registru *mycontainerregistry*, cílové úložiště je *Hello World* a jmenovka cílového grafu je *v1*, ale nahrazující hodnoty pro vaše prostředí:
 
 ```console
 cd ..

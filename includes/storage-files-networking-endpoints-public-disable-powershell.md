@@ -9,13 +9,13 @@ ms.date: 6/2/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a0a9bc29c3e20a025fb2c46a71c2f134c37bee04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84464976"
 ---
-Následující příkaz PowerShellu odmítne veškerý provoz do veřejného koncového bodu účtu úložiště. Všimněte si, že tento příkaz má `-Bypass` Parametr nastavený na `AzureServices` . Tím umožníte důvěryhodným službám, jako je například Azure File Sync, získat přístup k účtu úložiště prostřednictvím veřejného koncového bodu.
+Následující příkaz PowerShellu odmítne veškerý provoz do veřejného koncového bodu účtu úložiště. Všimněte si, že tento příkaz má `-Bypass` Parametr nastavený na `AzureServices` . Tím umožníte důvěryhodným službám, jako je například Synchronizace souborů Azure, získat přístup k účtu úložiště prostřednictvím veřejného koncového bodu.
 
 ```PowerShell
 # This assumes $storageAccount is still defined from the beginning of this of this guide.

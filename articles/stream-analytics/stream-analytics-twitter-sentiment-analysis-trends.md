@@ -1,21 +1,21 @@
 ---
-title: Analýza mínění na Twitteru v reálném čase pomocí Azure Stream Analytics
-description: Tento článek popisuje, jak použít Stream Analytics analýzy mínění pro Twitter v reálném čase. Podrobné pokyny pro generování událostí pro data na aktivním řídicím panelu.
+title: Analýza sociálních médií pomocí Azure Stream Analytics
+description: Tento článek popisuje, jak používat Stream Analytics pro analýzu sociálních médií pomocí rozhraní API pro Twitter klienta. Podrobné pokyny pro generování událostí pro data na aktivním řídicím panelu.
 services: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 02/10/2020
-ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: e2369e8f4349a3b4a83c1729c6414d319dd8419e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734830"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589663"
 ---
-# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analýza subjektivního hodnocení na Twitteru v reálném čase v Azure Stream Analytics
+# <a name="social-media-analysis-with-azure-stream-analytics"></a>Analýza sociálních médií pomocí Azure Stream Analytics
 
 V tomto článku se dozvíte, jak vytvořit řešení pro analýzu mínění na sociálních médiích prostřednictvím služby Twitter v reálném čase do Azure Event Hubs. Napíšete Azure Stream Analytics dotaz k analýze dat a uložení výsledků pro pozdější použití nebo vytvoření [Power BIho](https://powerbi.com/) řídicího panelu pro poskytování přehledů v reálném čase.
 
@@ -29,7 +29,7 @@ Společnost, která má web s novinkami na pracovišti, má za následek získá
 
 Aby bylo možné v reálném čase na Twitteru identifikovat témata týkající se trendů, společnost potřebuje analýzy v reálném čase o svazku na disku a mínění pro klíčové témata.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V této příručce se naučíte používat klientskou aplikaci, která se připojuje k Twitteru a hledá tweety s určitými hashtagy (které můžete nastavit). Pokud chcete spustit aplikaci a analyzovat tweety pomocí Azure Stream Analytics, musíte mít následující:
 

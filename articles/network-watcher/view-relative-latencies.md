@@ -13,10 +13,10 @@ ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737899"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Zobrazení relativní latence připojení k oblastem Azure z konkrétních umístění
@@ -134,7 +134,7 @@ Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher
 
 Data jsou k dispozici pouze pro země, oblasti, stavy a města vrácené předchozím příkazem. Předchozí příkaz vyžaduje, abyste zadali existující sledovací proces sítě. V příkladu je zadaný *NetworkWatcher_eastus* sledovací proces sítě ve skupině prostředků s názvem *NetworkWatcherRG*, ale můžete zadat libovolný existující sledovací proces sítě. Pokud nemáte existující sledovací proces sítě, vytvořte ho provedením úkolů v tématu [Vytvoření sledovacího procesu sítě](#create-a-network-watcher). 
 
-Po spuštění předchozího příkazu můžete vyfiltrovat vrácený výstup zadáním platných hodnot pro **zemi**, **stát**a **město**, pokud je to potřeba.  Pokud například chcete zobrazit seznam poskytovatelů internetových služeb dostupných v Seattle, Washington, zadejte v USA následující příkaz:
+Po spuštění předchozího příkazu můžete vyfiltrovat vrácený výstup zadáním platných hodnot pro **zemi**, **stát** a **město**, pokud je to potřeba.  Pokud například chcete zobrazit seznam poskytovatelů internetových služeb dostupných v Seattle, Washington, zadejte v USA následující příkaz:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList `
@@ -146,4 +146,4 @@ Get-AzNetworkWatcherReachabilityProvidersList `
 ```
 
 > [!WARNING]
-> Hodnota zadaná pro **zemi** musí být velká a malá písmena. Hodnoty zadané pro **stav** a **město** musí být malé. Hodnoty musí být uvedeny ve výstupu vráceném po spuštění příkazu bez hodnot pro **zemi**, **stát**a **město**. Pokud zadáte nesprávné zadání velkých a malých písmen, nebo zadejte hodnotu pro **zemi**, **stát**nebo **město** , která není ve výstupu vracená po spuštění příkazu bez hodnot těchto vlastností, vrácený výstup je prázdný.
+> Hodnota zadaná pro **zemi** musí být velká a malá písmena. Hodnoty zadané pro **stav** a **město** musí být malé. Hodnoty musí být uvedeny ve výstupu vráceném po spuštění příkazu bez hodnot pro **zemi**, **stát** a **město**. Pokud zadáte nesprávné zadání velkých a malých písmen, nebo zadejte hodnotu pro **zemi**, **stát** nebo **město** , která není ve výstupu vracená po spuštění příkazu bez hodnot těchto vlastností, vrácený výstup je prázdný.

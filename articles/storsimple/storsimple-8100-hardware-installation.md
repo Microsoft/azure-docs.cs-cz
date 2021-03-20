@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84699103"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Rozbalení, připojení k racku a zapojení zařízení StorSimple 8100
@@ -98,7 +98,7 @@ Skříň 8100 je navržená pro instalaci ve standardní skříňové skříni z
 K dispozici je sada montážní kolejnice, která se používá pro skříň na racku 19 – 15palcový. Kolejnice byly testovány tak, aby zpracovávala maximální váhu skříně. Tyto kolejnice budou také umožňovat instalaci více skříní bez ztráty místa v rámci stojanu.
 
 #### <a name="to-install-the-device-on-the-rails"></a>Instalace zařízení do kolejnic
-1. Tento krok proveďte jenom v případě, že na zařízení nejsou nainstalované vnitřní kolejnice. Vnitřní kolejnice jsou obvykle nainstalovány v továrně. Pokud nejsou kolejnice nainstalované, nainstalujte snímky z levé a pravé kolejnice na strany skříně skříně. Připojovat se šesti metrickými šrouby na každé straně. Pro usnadnění orientace jsou železniční snímky označeny jako **LH – přední** a **RH – dopředu**a konec, který je připevněn ke zadní části skříně, má zúžený konec.<br/>
+1. Tento krok proveďte jenom v případě, že na zařízení nejsou nainstalované vnitřní kolejnice. Vnitřní kolejnice jsou obvykle nainstalovány v továrně. Pokud nejsou kolejnice nainstalované, nainstalujte snímky z levé a pravé kolejnice na strany skříně skříně. Připojovat se šesti metrickými šrouby na každé straně. Pro usnadnění orientace jsou železniční snímky označeny jako **LH – přední** a **RH – dopředu** a konec, který je připevněn ke zadní části skříně, má zúžený konec.<br/>
    
     ![Připojení železničních snímků k skříni skříně](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
@@ -109,7 +109,7 @@ K dispozici je sada montážní kolejnice, která se používá pro skříň na 
     1     | M 3x4 tlačítka – šrouby hlav
     2     | Snímky skříní
 
-2. Připojte vnějšího a vnějšího železničního sestavení se svislými členy racku Cabinet. Hranaté závorky jsou označeny jako **LH**, **RH**a **Tato strana až** po správné orientaci.
+2. Připojte vnějšího a vnějšího železničního sestavení se svislými členy racku Cabinet. Hranaté závorky jsou označeny jako **LH**, **RH** a **Tato strana až** po správné orientaci.
 3. Vyhledejte čepy v přední a zadní části montážní lišty. Rozšíříte kolejnici tak, aby vyhovovala mezi příspěvky v racku, a vkládat PIN kódy do čelního a zadního skříňku pro vertikální členské otvory. Ujistěte se, že je na úrovni železničního sestavení úroveň.
 4. Pomocí dvou z poskytnutých šrouby metriky Zabezpečte železniční sestavení se svislými členy stojanu. Použijte jeden šroub na přední stranu a druhý na zadní straně.
 5. Opakujte tyto kroky pro druhé železniční sestavení.<br/>
@@ -153,7 +153,7 @@ Dalším krokem je připojení zařízení k napájení, síti a sériovému př
 ## <a name="cable-your-storsimple-8100-device"></a>Zapojení kabeláže zařízení StorSimple 8100
 Následující postupy vysvětlují, jak můžete zařízení StorSimple 8100 připojit k napájení, síťovému a sériovému připojení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Než začnete zapojovat kabeláž zařízení, budete potřebovat následující:
 
 * Zařízení úložiště, kompletně nezabalená a připojená do racku.

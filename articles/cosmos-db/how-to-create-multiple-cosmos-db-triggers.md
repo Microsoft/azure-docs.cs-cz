@@ -9,10 +9,10 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336669"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Vytvoření více triggerů Azure Functions pro Cosmos DB
@@ -34,14 +34,14 @@ Vzhledem k *požadavkům* Azure Functions triggeru pro Cosmos DB potřebujeme dr
 
 Tady máte dvě možnosti:
 
-* Vytvoření **jednoho kontejneru zapůjčení na funkci** : Tento přístup se může překládat na další náklady, pokud nepoužíváte [sdílenou databázi propustnosti](./set-throughput.md#set-throughput-on-a-database). Pamatujte na to, že minimální propustnost na úrovni kontejneru je 400 [jednotek žádostí](./request-units.md)a v případě kontejneru zapůjčení se používá jenom k vytvoření kontrolního bodu a stavu jeho údržby.
+* Vytvoření **jednoho kontejneru zapůjčení na funkci**: Tento přístup se může překládat na další náklady, pokud nepoužíváte [sdílenou databázi propustnosti](./set-throughput.md#set-throughput-on-a-database). Pamatujte na to, že minimální propustnost na úrovni kontejneru je 400 [jednotek žádostí](./request-units.md)a v případě kontejneru zapůjčení se používá jenom k vytvoření kontrolního bodu a stavu jeho údržby.
 * Mít **jeden kontejner zapůjčení a sdílet ho** pro všechny vaše funkce: Tato druhá možnost zajišťuje lepší využití jednotek zřízené žádosti na kontejneru, protože umožňuje sdílení a používání stejné zřízené propustnosti více Azure Functions.
 
 Cílem tohoto článku je provést druhou možnost.
 
 ## <a name="configuring-a-shared-leases-container"></a>Konfigurace kontejneru sdílených zapůjčení
 
-Chcete-li konfigurovat kontejner Shared Leases, je nutné, aby při triggerech byly přidány pouze dodatečné konfigurace, `LeaseCollectionPrefix` Pokud používáte jazyk JavaScript nebo atribut [, pokud používáte](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) `leaseCollectionPrefix` [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) jazyk JavaScript. Hodnota atributu by měla být logickým popisovačem toho, co konkrétní Trigger spouští.
+Chcete-li konfigurovat kontejner Shared Leases, je nutné, aby při triggerech byly přidány pouze dodatečné konfigurace, `LeaseCollectionPrefix` Pokud používáte jazyk JavaScript nebo atribut [, pokud používáte](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) `leaseCollectionPrefix` [](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) jazyk JavaScript. Hodnota atributu by měla být logickým popisovačem toho, co konkrétní Trigger spouští.
 
 Například pokud máte tři triggery: jednu, která odesílá e-maily, jednu, která má agregaci pro vytvoření materializované zobrazení, a jeden, který odesílá změny do jiného úložiště, pro pozdější analýzu můžete přiřadit `LeaseCollectionPrefix` "e-maily" prvnímu "materializované" druhé "a" analytické "třetí straně.
 
