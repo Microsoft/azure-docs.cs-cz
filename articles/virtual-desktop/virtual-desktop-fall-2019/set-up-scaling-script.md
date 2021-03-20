@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078176"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Škálování hostitelů relací virtuálních počítačů s Windows (Classic) pomocí Azure Automation
@@ -44,7 +44,7 @@ Během doby mimo špičku úloha určuje, kolik virtuálních počítačů hosti
 >[!NOTE]
 >Pokud jste ručně nastavili virtuální počítač hostitele relace na režim vyprázdnění, úloha nebude spravovat virtuální počítač hostitele relace. Pokud je virtuální počítač hostitele relace spuštěný a nastavený na režim vyprázdnění, bude se považovat za nedostupný, což způsobí, že úloha spustí další virtuální počítače pro zpracování zatížení. Než ručně nastavíte režim vyprázdnění, doporučujeme vám označit všechny virtuální počítače Azure. Značku můžete pojmenovat pomocí parametru *MaintenanceTagName* při pozdějším vytvoření plánovače aplikace Azure Logic App. Značky vám pomůžou tyto virtuální počítače odlišit od těch, které spravuje Nástroj pro škálování. Nastavení značky údržby také zabrání nástroji škálování v provádění změn na virtuálním počítači, dokud neodeberete značku.
 
-Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na hodnotu nula, úloha umožní nastavení konfigurace relace v zadaných zásadách skupiny zpracovávat odhlašování uživatelských relací. Chcete-li zobrazit tyto zásady skupiny, přejděte na zásady **Konfigurace počítače**  >  **Policies**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **časových omezení relace**. Pokud na virtuálním počítači hostitele relace existují aktivní relace, úloha ponechá virtuální počítač hostitele relace spuštěný. Pokud neexistují žádné aktivní relace, úloha vypne virtuální počítač hostitele relace.
+Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na hodnotu nula, úloha umožní nastavení konfigurace relace v zadaných zásadách skupiny zpracovávat odhlašování uživatelských relací. Chcete-li zobrazit tyto zásady skupiny, přejděte na zásady **Konfigurace počítače**  >    >  **šablony pro správu**  >  **součásti systému Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **časových omezení relace**. Pokud na virtuálním počítači hostitele relace existují aktivní relace, úloha ponechá virtuální počítač hostitele relace spuštěný. Pokud neexistují žádné aktivní relace, úloha vypne virtuální počítač hostitele relace.
 
 V každém okamžiku úloha také převezme *MaxSessionLimit* fondu hostitelů do účtu, aby zjistil, jestli je aktuální počet relací větší než 90% maximální kapacity. V takovém případě bude úloha spustit další virtuální počítače hostitele relace.
 
@@ -59,7 +59,7 @@ Nástroj má však také následující omezení:
 >[!NOTE]
 >Nástroj pro škálování řídí režim vyrovnávání zatížení fondu hostitelů, který aktuálně mění velikost. Nástroj používá režim vyrovnávání zatížení pro špičku i dobu mimo špičku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s nastavením nástroje pro škálování, ujistěte se, že máte připravené následující akce:
 

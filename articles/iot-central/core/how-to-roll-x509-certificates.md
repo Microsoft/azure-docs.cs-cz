@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: a9e35c7d4d64279c65971dd512bcd2107dad6594
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92000068"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>Postup při navrácení certifikátů zařízení X. 509 v aplikaci IoT Central
@@ -31,7 +31,7 @@ Pokud chcete aktualizovat registraci skupiny v reakci na porušení zabezpečen�
 
 1. V levém podokně přejděte do části **Správa**  a vyberte **připojení zařízení**.
 
-2. Vyberte **skupiny**registrací a v seznamu vyberte název skupiny.
+2. Vyberte **skupiny** registrací a v seznamu vyberte název skupiny.
 
 3. V případě aktualizace certifikátu vyberte možnost **Spravovat primární** nebo **spravovat sekundární**.
 
@@ -45,7 +45,7 @@ Pokud vytváříte certifikáty pro zpracování vypršení platnosti certifiká
 
 1. V levém podokně přejděte do části **Správa**  a vyberte **připojení zařízení**.
 
-2. Vyberte **skupiny**registrací a v seznamu vyberte název skupiny.
+2. Vyberte **skupiny** registrací a v seznamu vyberte název skupiny.
 
 3. V případě aktualizace certifikátu vyberte možnost **Spravovat primární**.
 
@@ -57,9 +57,9 @@ Pokud vytváříte certifikáty pro zpracování vypršení platnosti certifiká
 
 Pokud během reakce na porušení zabezpečení provádíte certifikáty, použijte následující postup, který okamžitě aktualizuje aktuální certifikát:
 
-1. Vyberte **zařízení**a vyberte zařízení.
+1. Vyberte **zařízení** a vyberte zařízení.
 
-2. Vyberte **připojit**a jako **jednotlivou registraci** vyberte metodu připojit.
+2. Vyberte **připojit** a jako **jednotlivou registraci** vyberte metodu připojit.
 
 3. Jako mechanismus vyberte **certifikáty (X. 509)** .
 
@@ -75,9 +75,9 @@ Pokud vytváříte certifikáty pro zpracování vypršení platnosti certifiká
 
 Když se sekundární certifikát blíží k vypršení platnosti a je potřeba ho navrátit, můžete ho použít k primární konfiguraci. Otáčení mezi primárním a sekundárním certifikátem tímto způsobem zkracuje výpadky zařízení, která se snaží zřídit.
 
-1. Vyberte **zařízení**a vyberte zařízení.
+1. Vyberte **zařízení** a vyberte zařízení.
 
-2. Vyberte **připojit**a jako **jednotlivou registraci** vyberte metodu připojit.
+2. Vyberte **připojit** a jako **jednotlivou registraci** vyberte metodu připojit.
 
 3. Jako mechanismus vyberte **certifikáty (X. 509)** .
 

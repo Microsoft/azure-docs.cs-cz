@@ -12,10 +12,10 @@ ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659967"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
@@ -39,7 +39,7 @@ Můžete zkontrolovat a otestovat podrobné rozhraní API, které je k dispozici
 Úlohy dávkového přepisu jsou plánovány na základě optimálního úsilí.
 Nemůžete odhadnout, kdy se úloha změní do běžícího stavu, ale v rámci normálního zatížení systému by se měla vyskytnout během několika minut. Ve spuštěném stavu dojde k přepisu rychleji než rychlost přehrávání zvukového běhu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](overview.md#try-the-speech-service-for-free)klíč předplatného z [Azure Portal](https://portal.azure.com) .
 

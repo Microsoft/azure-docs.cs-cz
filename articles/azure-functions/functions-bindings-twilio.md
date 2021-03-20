@@ -7,10 +7,10 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
 ms.openlocfilehash: 31d5c528112ccacab47282729b1b5f8a72f19af0
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91999278"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio vazba pro Azure Functions
@@ -334,8 +334,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**Jméno**|**Jméno**| Název proměnné použitý v kódu funkce pro textovou zprávu SMS Twilio. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Tato hodnota musí být nastavená na název nastavení aplikace, které obsahuje váš účet Twilio SID ( `TwilioAccountSid` ). Pokud není nastavená, výchozí název nastavení aplikace je "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Tato hodnota musí být nastavená na název nastavení aplikace, které obsahuje váš ověřovací token Twilio ( `TwilioAccountAuthToken` ). Pokud není nastavená, výchozí název nastavení aplikace je "AzureWebJobsTwilioAuthToken". |
-|**schopn**| Není k dispozici – zadejte v kódu | **Záměr**| Tato hodnota je nastavená na telefonní číslo, na které se pošle text SMS.|
-|**Výsledkem**|**Výsledkem** | **Z**| Tato hodnota je nastavená na telefonní číslo, ze kterého se posílá text SMS.|
+|**na**| Není k dispozici – zadejte v kódu | **Do**| Tato hodnota je nastavená na telefonní číslo, na které se pošle text SMS.|
+|**Výsledkem**|**Výsledkem** | **From**| Tato hodnota je nastavená na telefonní číslo, ze kterého se posílá text SMS.|
 |**těles**|**těles** | **Text**| Tato hodnota se dá použít k zakódování textové zprávy SMS, pokud ji nemusíte dynamicky nastavovat v kódu pro vaši funkci. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

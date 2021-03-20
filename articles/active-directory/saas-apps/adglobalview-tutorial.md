@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s použitím ADP Globalview | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ADP Globalview.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s ADP Globalview (nepoužívané) | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ADP Globalview (zastaralé).
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,91 +9,89 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: c11dd5ae3bc312cfea1a047c2db4396ba2cb50da
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 08b1294436ead372234104008a48ca23e56de389
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309038"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589306"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) pomocí ADP Globalview
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview-deprecated"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s ADP Globalview (zastaralé)
 
-V tomto kurzu se naučíte integrovat ADP Globalview s Azure Active Directory (Azure AD). Když integrujete ADP Globalview s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat ADP Globalview (nepoužívané) pomocí Azure Active Directory (Azure AD). Když integrujete ADP Globalview (nepoužívané) ve službě Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup k ADP Globalview.
-* Umožněte uživatelům, aby se automaticky přihlásili k ADP Globalview pomocí svých účtů Azure AD.
+* Řízení ve službě Azure AD, která má přístup k ADP Globalview (zastaralé).
+* Umožněte uživatelům, aby se automaticky přihlásili do složky ADP Globalview (nepoužívané) se svými účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
-
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Předplatné ADP Globalview jednotného přihlašování (SSO).
+* ADP Globalview (nepoužívané) odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* ADP Globalview podporuje jednotné přihlašování **IDP** .
+* ADP Globalview (nepoužívané) podporuje jednotné přihlašování (SSO) **IDP** .
 
-## <a name="adding-adp-globalview-from-the-gallery"></a>Přidávání Globalview ADP z Galerie
+## <a name="adding-adp-globalview-deprecated-from-the-gallery"></a>Přidávání ADP Globalview (zastaralé) z Galerie
 
-Pokud chcete nakonfigurovat integraci ADP Globalview do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat ADP Globalview z galerie.
+Pokud chcete nakonfigurovat integraci ADP Globalview (nepoužívané) na Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat ADP Globalview (nepoužívané) z galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **ADP Globalview** .
-1. Z panelu výsledků vyberte **ADP Globalview** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **ADP Globalview (zastaralé)** .
+1. Z panelu výsledků vyberte **ADP Globalview (zastaralé)** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-adp-globalview"></a>Konfigurace a testování jednotného přihlašování Azure AD pro ADP Globalview
+## <a name="configure-and-test-azure-ad-sso-for-adp-globalview-deprecated"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro ADP Globalview (zastaralé)
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ADP Globalview pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci ADP Globalview.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ADP Globalview (zastaralé) pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Globalview (zastaralé).
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ADP Globalview, dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ADP Globalview (zastaralé), proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[NAKONFIGURUJTE ADP GLOBALVIEW SSO](#configure-adp-globalview-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte Globalview Test User](#create-adp-globalview-test-user)** -to, abyste měli protějšek B. Simon v ADP Globalview, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Nakonfigurujte jednotné přihlašování ADP Globalview (nepoužívané)](#configure-adp-globalview-deprecated-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte Globalview (nepoužívané) testovacího uživatele](#create-adp-globalview-deprecated-test-user)** , aby měl protějšek B. Simon v ADP Globalview (zastaralé), která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **Globalview** , najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce **ADP Globalview (nepoužívané)** integrace aplikací najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
     
-    Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
+    Do textového pole **identifikátor** zadejte adresu URL pomocí jednoho z následujících vzorů:
 
-    ```https
-    https://<subdomain>.globalview.adp.com/federate
-    https://<subdomain>.globalview.adp.com/federate2
-    ```
-
+    | Identifikátor |
+    | ----------- |
+    | `https://<subdomain>.globalview.adp.com/federate` |
+    | `https://<subdomain>.globalview.adp.com/federate2` |
+    |
 
     > [!NOTE]
-    > Tato hodnota není reálné číslo. Aktualizujte hodnotu skutečným identifikátorem. Pokud chcete získat hodnotu, kontaktujte [tým podpory Globalview ADP](https://www.adp.com/contact-us/overview.aspx) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tato hodnota není reálné číslo. Aktualizujte hodnotu skutečným identifikátorem. Pro získání hodnoty kontaktujte [ADP Globalview (nepoužívaného) tým podpory klientů](https://www.adp.com/contact-us/overview.aspx) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. V části **Nastavení GLOBALVIEW ADP** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+1. V části **Nastavení ADP Globalview (nepoužívané)** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -101,7 +99,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -111,42 +109,33 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k ADP Globalview.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k ADP Globalview (zastaralé).
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte možnost **ADP Globalview**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **ADP Globalview (zastaralé)**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-adp-globalview-sso"></a>Konfigurace ADP Globalview SSO
+## <a name="configure-adp-globalview-deprecated-sso"></a>Konfigurace ADP Globalview (nepoužívané) SSO
 
-Ke konfiguraci jednotného přihlašování na straně **ADP Globalview** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory ADP Globalview](https://www.adp.com/contact-us/overview.aspx). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **ADP Globalview (nepoužívané)** , je nutné odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory ADP Globalview (nepoužívané)](https://www.adp.com/contact-us/overview.aspx). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-adp-globalview-test-user"></a>Vytvořit Globalview testovacího uživatele ADP
+### <a name="create-adp-globalview-deprecated-test-user"></a>Vytvořit Globalview ADP (nepoužívané) testovací uživatel
 
-V této části vytvoříte uživatele s názvem B. Simon v ADP Globalview. Pracujte s [týmem podpory ADP Globalview](https://www.adp.com/contact-us/overview.aspx) a přidejte uživatele na platformě ADP Globalview. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v oddílu ADP Globalview (zastaralé). Pracujte s [týmem podpory ADP Globalview (nepoužívané)](https://www.adp.com/contact-us/overview.aspx) a přidejte uživatele na platformě ADP Globalview (nepoužívané). Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 
-Když na přístupovém panelu kliknete na dlaždici Globalview, měli byste se automaticky přihlásit k Globalview ADP, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+* Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k Globalview ADP (nepoužívané), pro kterou jste si nastavili jednotné přihlašování.
 
-## <a name="additional-resources"></a>Další zdroje informací
+* Můžete použít aplikaci Microsoft moje aplikace. Po kliknutí na dlaždici ADP Globalview (nepoužívané) v okně moje aplikace byste měli být automaticky přihlášeni ke složce ADP Globalview (nepoužívané), pro kterou jste nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Další kroky
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
-
-- [Vyzkoušejte si ADP Globalview s Azure AD](https://aad.portal.azure.com/)
+Jakmile nakonfigurujete ADP Globalview (zastaralé), můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

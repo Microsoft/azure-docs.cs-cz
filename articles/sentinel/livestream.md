@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 06/14/2020
 ms.author: yelevin
 ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84783159"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>K detekci hrozeb použijte lovecké živě ve službě Azure Sentinel.
+# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Detekce hrozeb s využitím živého streamování proaktivního vyhledávání ve službě Azure Sentinel
 
 K vytváření interaktivních relací umožňujících testování nově vytvořených dotazů, když dojde k událostem, dostávat oznámení z relací, když se najde shoda, a v případě potřeby můžete spustit šetření. Relaci živě můžete rychle vytvořit pomocí libovolného dotazu Log Analytics.
 

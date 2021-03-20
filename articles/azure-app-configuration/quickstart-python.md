@@ -9,17 +9,17 @@ ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
 ms.openlocfilehash: 954f4edcd10d701d00d9cd23280aaac7c287992d
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91997465"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí konfigurace aplikace Azure
 
 V tomto rychlém startu použijete Azure App Configuration k centralizaci úložiště a správy nastavení aplikace pomocí [klientské knihovny pro konfiguraci aplikací Azure pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/appconfiguration/azure-appconfiguration).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Python 2,7 nebo 3,5 nebo novější – informace o nastavení Pythonu ve Windows najdete v [dokumentaci k Pythonu v systému Windows]( https://docs.microsoft.com/windows/python/) .
@@ -77,7 +77,7 @@ V tomto rychlém startu použijete Azure App Configuration k centralizaci úlož
 
 ## <a name="configure-your-app-configuration-connection-string"></a>Konfigurace připojovacího řetězce konfigurace aplikace
 
-1. Nastavte proměnnou prostředí s názvem **AZURE_APP_CONFIG_CONNECTION_STRING**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Na příkazovém řádku spusťte následující příkaz:
+1. Nastavte proměnnou prostředí s názvem **AZURE_APP_CONFIG_CONNECTION_STRING** a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Na příkazovém řádku spusťte následující příkaz:
 
     ```cmd
     setx AZURE_APP_CONFIG_CONNECTION_STRING "connection-string-of-your-app-configuration-store"

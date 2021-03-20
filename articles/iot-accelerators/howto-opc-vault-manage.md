@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91281911"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>Správa služby OPC trezor certifikátů
@@ -31,7 +31,7 @@ Po nasazení úložiště OPC je potřeba vytvořit certifikát kořenové certi
 1. Otevřete svou službu Certificate Service na adrese `https://myResourceGroup-app.azurewebsites.net` a přihlaste se.
 2. Přejít na **skupiny certifikátů**.
 3. Je uvedena jedna výchozí skupina certifikátů. Vyberte **Upravit**.
-4. V části **Upravit podrobnosti skupiny certifikátů**můžete upravit název subjektu a dobu života certifikační autority a certifikátů aplikací. Předmět a životnost by se měly nastavit jenom jednou, než se vystaví první certifikát certifikační autority. Změny doby života během operací můžou vést k nekonzistentním životnosti vydaných certifikátů a seznamů CRL.
+4. V části **Upravit podrobnosti skupiny certifikátů** můžete upravit název subjektu a dobu života certifikační autority a certifikátů aplikací. Předmět a životnost by se měly nastavit jenom jednou, než se vystaví první certifikát certifikační autority. Změny doby života během operací můžou vést k nekonzistentním životnosti vydaných certifikátů a seznamů CRL.
 5. Zadejte platný předmět (například `CN=My CA Root, O=MyCompany, OU=MyDepartment` ).<br>
    > [!IMPORTANT]
    > Pokud změníte předmět, je nutné obnovit certifikát vystavitele, jinak se služba nepodaří podepsat certifikáty aplikací. Předmět konfigurace se kontroluje v předmětu aktivního certifikátu vystavitele. Pokud se subjekty neshodují, podepsání certifikátu je odmítnuto.
@@ -101,11 +101,11 @@ Ve výchozím nastavení má identita služby pouze omezená oprávnění pro p�
 4. Přejděte na **zásady přístupu**.
 5. Vyberte **Přidat nový**.
 6. Přeskočit šablonu. Neexistuje žádná šablona, která by odpovídala požadavkům.
-7. Zvolte **Vybrat objekt zabezpečení**a vyberte uživatele, který chcete přidat, nebo Pozvěte nového uživatele k tenantovi.
-8. Vyberte následující **oprávnění klíče**: **získat**, **vypsat**a **podepsat**.
-9. Vyberte následující **oprávnění tajných klíčů**: **získat**, **vypsat**, **nastavit**a **Odstranit**.
+7. Zvolte **Vybrat objekt zabezpečení** a vyberte uživatele, který chcete přidat, nebo Pozvěte nového uživatele k tenantovi.
+8. Vyberte následující **oprávnění klíče**: **získat**, **vypsat** a **podepsat**.
+9. Vyberte následující **oprávnění tajných klíčů**: **získat**, **vypsat**, **nastavit** a **Odstranit**.
 10. Vyberte následující **oprávnění certifikátu**: **načíst** a **seznam**.
-11. Vyberte **OK**a vyberte **Uložit**.
+11. Vyberte **OK** a vyberte **Uložit**.
 
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>Pro roli správce musí být do Key Vault přidána následující oprávnění.
 
@@ -115,11 +115,11 @@ Ve výchozím nastavení má identita služby pouze omezená oprávnění pro p�
 4. Přejděte na **zásady přístupu**.
 5. Vyberte **Přidat nový**.
 6. Přeskočit šablonu. Neexistuje žádná šablona, která by odpovídala požadavkům.
-7. Zvolte **Vybrat objekt zabezpečení**a vyberte uživatele, který chcete přidat, nebo Pozvěte nového uživatele k tenantovi.
-8. Vyberte následující **oprávnění klíče**: **získat**, **vypsat**a **podepsat**.
-9. Vyberte následující **oprávnění tajných klíčů**: **získat**, **vypsat**, **nastavit**a **Odstranit**.
-10. Vyberte následující **oprávnění certifikátu**: **získat**, **vypsat**, **aktualizovat**, **vytvořit**a **importovat**.
-11. Vyberte **OK**a vyberte **Uložit**.
+7. Zvolte **Vybrat objekt zabezpečení** a vyberte uživatele, který chcete přidat, nebo Pozvěte nového uživatele k tenantovi.
+8. Vyberte následující **oprávnění klíče**: **získat**, **vypsat** a **podepsat**.
+9. Vyberte následující **oprávnění tajných klíčů**: **získat**, **vypsat**, **nastavit** a **Odstranit**.
+10. Vyberte následující **oprávnění certifikátu**: **získat**, **vypsat**, **aktualizovat**, **vytvořit** a **importovat**.
+11. Vyberte **OK** a vyberte **Uložit**.
 
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>Odebrat zásady přístupu uživatele z Azure Key Vault
 

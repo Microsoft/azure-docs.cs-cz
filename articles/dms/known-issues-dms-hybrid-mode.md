@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 819fe5ced6c91819c817065305a31fca456ea5c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91291839"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Známé problémy/omezení migrace s využitím hybridního režimu
@@ -73,9 +73,9 @@ Ve výchozím nastavení se služba Azure Database Migration Service Hybrid Work
     - Instalační klíč Hybrid Worker DMS
     - Pár klíčů pro jádro scénáře DMS
 
-    b. Klikněte pravým tlačítkem myši na položku **klíčová aplikace DMS Hybrid App** , přejděte na **všechny úlohy**a pak vyberte **Spravovat privátní klíče**.
+    b. Klikněte pravým tlačítkem myši na položku **klíčová aplikace DMS Hybrid App** , přejděte na **všechny úlohy** a pak vyberte **Spravovat privátní klíče**.
 
-    c. Na kartě **zabezpečení** vyberte **Přidat**a potom zadejte název účtu.
+    c. Na kartě **zabezpečení** vyberte **Přidat** a potom zadejte název účtu.
 
     d. Použijte stejný postup pro udělení oprávnění privátního klíče pro nový účet do certifikátu **páru klíčů pro modul DMS scénáře** .
 

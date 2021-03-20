@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91274108"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení Active Directory Federation Services (AD FS) pomocí Azure AD Connect
@@ -58,7 +58,7 @@ Azure AD Connect můžete použít ke kontrole aktuálního stavu AD FS a vztahu
 
    ![Snímek obrazovky se stránkou přihlašovací údaje pro vzdálený přístup, která obsahuje příklady zadaných přihlašovacích údajů](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
-    Po kliknutí na tlačítko **další**Azure AD Connect zkontroluje stav certifikátu a zobrazí všechny problémy.
+    Po kliknutí na tlačítko **další** Azure AD Connect zkontroluje stav certifikátu a zobrazí všechny problémy.
 
     ![Stav certifikátů](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
 
@@ -92,7 +92,7 @@ Konfigurace alternativního přihlašovacího ID pro AD FS se skládá ze dvou h
 > [!NOTE]
 > Chcete-li přidat server AD FS, Azure AD Connect vyžaduje certifikát PFX. Proto můžete tuto operaci provést pouze v případě, že jste nakonfigurovali AD FS farmu pomocí Azure AD Connect.
 
-1. Vyberte **nasadit další federační server**a klikněte na **Další**.
+1. Vyberte **nasadit další federační server** a klikněte na **Další**.
 
    ![Další federační server](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
 
@@ -114,7 +114,7 @@ Konfigurace alternativního přihlašovacího ID pro AD FS se skládá ze dvou h
 
    ![AD FS servery](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
-6. Klikněte na **Další**a přejděte na stránku finální **Konfigurace** . Až Azure AD Connect dokončí přidávání serverů do farmy AD FS, budete mít možnost ověřit připojení.
+6. Klikněte na **Další** a přejděte na stránku finální **Konfigurace** . Až Azure AD Connect dokončí přidávání serverů do farmy AD FS, budete mít možnost ověřit připojení.
 
    ![Snímek obrazovky, na které se zobrazí stránka připraveno ke konfiguraci se seznamem akcí, které mají být dokončeny po kliknutí na tlačítko nainstalovat.](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
@@ -200,7 +200,7 @@ Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 > Parametr *TargetName* je povinný. Výchozí motiv vydaný pomocí AD FS se nazývá výchozí.
 
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Přidat popis přihlášení 
-K přidání popisu přihlašovací stránky na **přihlašovací stránku**použijte následující rutinu Windows PowerShellu a syntaxi.
+K přidání popisu přihlašovací stránky na **přihlašovací stránku** použijte následující rutinu Windows PowerShellu a syntaxi.
 
 ```azurepowershell-interactive
 Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
@@ -225,7 +225,7 @@ c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccou
 
 V tomto pravidle se dotazuje na hodnoty **MS-DS-consistencyguid** a **objectGUID** pro uživatele ze služby Active Directory. V nasazení AD FS změňte název úložiště na příslušný název úložiště. Změňte také typ deklarace identity na správný typ deklarací identity pro vaši federaci, jak je definováno pro **objectGUID** a **MS-DS-consistencyguid**.
 
-Kromě **toho se**můžete vyhnout přidáním odchozího problému pro entitu **a použít** hodnoty jako mezilehlé hodnoty. Tuto deklaraci budete vydávat v pozdějším pravidle po stanovení hodnoty, která se má použít jako neproměnlivé ID.
+Kromě **toho se** můžete vyhnout přidáním odchozího problému pro entitu **a použít** hodnoty jako mezilehlé hodnoty. Tuto deklaraci budete vydávat v pozdějším pravidle po stanovení hodnoty, která se má použít jako neproměnlivé ID.
 
 **Pravidlo 2: Ověřte, jestli pro uživatele existuje ms-DS-consistencyguid.**
 

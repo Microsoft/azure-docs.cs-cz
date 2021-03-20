@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak používat pravidla brány firewall k 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: ad8feed5df49dcc4503226a5fae50195bb9d48aa
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91999507"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Konfigurace brány firewall protokolu IP pro obor názvů Azure Relay
@@ -32,7 +32,7 @@ V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány 
     ![Snímek obrazovky s vybranou možností všechny sítě zobrazí stránku síť.](./media/ip-firewall/all-networks-selected.png)
 1. Pokud chcete omezit přístup k určitým sítím a IP adresám, vyberte možnost **vybrané sítě** . V části **Brána firewall** postupujte podle následujících kroků:
     1. Vyberte možnost **Přidat IP adresu klienta** a poskytněte vaší aktuální IP adrese přístup k oboru názvů. 
-    2. Pro **Rozsah adres**zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 
+    2. Pro **Rozsah adres** zadejte konkrétní IPv4 adresu nebo rozsah adres IPv4 v zápisu CIDR. 
 
         ![Firewall – vybraná možnost všechny sítě](./media/ip-firewall/selected-networks-trusted-access-disabled.png)
 3. Nastavení uložte kliknutím na **Uložit** na panelu nástrojů. Počkejte několik minut, než se potvrzení zobrazí v oznámeních na portálu.

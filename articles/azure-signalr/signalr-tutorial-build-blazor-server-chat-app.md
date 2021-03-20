@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
 ms.openlocfilehash: b0059e986b9a6ba8152a1a61f8d696f1caa4646a
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97755901"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Kurz: Vytvoření aplikace chat serveru Blazor
@@ -24,7 +24,7 @@ V tomto kurzu se dozvíte, jak vytvořit a upravit aplikaci Blazor serveru. Dozv
 > * Rychlé nasazení Azure App Service v aplikaci Visual Studio.
 > * Migrujte místní signál do služby Azure Signal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Nainstalovat [sadu .NET Core 3,0 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0) (verze >= 3.0.100)
 * Instalace sady [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) (verze >= 16,3)
 > Verze Visual Studio 2019 Preview funguje i pro vydání nejnovější šablony aplikace Blazor serveru, která cílí na novější verzi .Net Core.
@@ -467,6 +467,6 @@ Přečtěte si další informace o vysoké dostupnosti.
 > [!div class="nextstepaction"]
 > [Odolnost a zotavení po havárii](signalr-concept-disaster-recovery.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [ASP.NET Core Blazor](/aspnet/core/blazor)

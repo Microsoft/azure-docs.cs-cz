@@ -12,10 +12,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 430da23986fc36a0e94c049512ef716aff1fed5c
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98660246"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nové prostředí Registrace aplikací pro Azure Active Directory B2C
@@ -63,7 +63,7 @@ Ve starší verzi prostředí se aplikace vždycky vytvořily jako aplikace s p�
 > [!NOTE]
 > Tato možnost vyžaduje, aby bylo možné spouštět Azure AD B2C toků uživatelů pro ověřování uživatelů pro tuto aplikaci. Naučte se [, jak zaregistrovat aplikaci pro použití s toky uživatelů.](tutorial-register-applications.md)
 
-Tuto možnost můžete použít také k použití Azure AD B2C jako poskytovatele služby SAML. [Přečtěte si další informace](identity-provider-adfs.md).
+Tuto možnost můžete použít také k použití Azure AD B2C jako poskytovatele služby SAML. [Další informace](identity-provider-adfs.md).
 
 ## <a name="applications-for-devops-scenarios"></a>Aplikace pro scénáře DevOps
 

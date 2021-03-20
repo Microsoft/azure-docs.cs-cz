@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/25/2021
+ms.date: 03/15/2021
 ms.custom: generated
-ms.openlocfilehash: c91172ff110b950335c66f2c0ea9ac59c37e0a76
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 150c174842d50663779012e57f8402ec8b3d3b02
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487847"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580925"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -94,11 +94,11 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft.MachineLearningServices](#microsoftmachinelearningservices) |
 | **Internet věcí** |
 | [Microsoft.Devices](#microsoftdevices) |
+| [Microsoft. DeviceUpdate](#microsoftdeviceupdate) |
 | [Microsoft. IoTCentral](#microsoftiotcentral) |
 | [Microsoft. NotificationHubs](#microsoftnotificationhubs) |
 | [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights) |
 | **Mixed realita** |
-| [Microsoft. IoTSpaces](#microsoftiotspaces) |
 | [Microsoft. MixedReality](#microsoftmixedreality) |
 | **Integrace** |
 | [Microsoft. ApiManagement](#microsoftapimanagement) |
@@ -125,7 +125,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. DevTestLab](#microsoftdevtestlab) |
 | [Microsoft. LabServices](#microsoftlabservices) |
 | [Microsoft. VisualStudio](#microsoftvisualstudio) |
-| **Přenes** |
+| **Migrate** |
 | [Microsoft. migruje](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Monitorování** |
@@ -284,7 +284,7 @@ Služba Azure: jádro
 > | Microsoft. support/supportTickets/Communications/Read | Uvádí jednu nebo všechny komunikace lístků podpory. |
 > | Microsoft. support/supportTickets/Communications/Write | Přidá novou komunikaci k lístku podpory. |
 
-## <a name="compute"></a>Výpočetní prostředky
+## <a name="compute"></a>Compute
 
 ### <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -982,6 +982,12 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/ddosProtectionPlans/JOIN/Action | Připojí DDoS Protection plán. Nelze upozorňovat. |
 > | Microsoft. Network/dnsoperationresults/Read | Získá výsledky operace DNS. |
 > | Microsoft. Network/dnsoperationstatuses/Read | Získá stav operace DNS.  |
+> | Microsoft. Network/dnsResolvers/Read | Získá vlastnosti překladače DNS ve formátu JSON. |
+> | Microsoft. Network/dnsResolvers/Write | Vytvoří nebo aktualizuje Překladač DNS ve formátu JSON. |
+> | Microsoft. Network/dnsResolvers/DELETE | Odstraní Překladač DNS. |
+> | Microsoft. Network/dnsResolvers/inboundEndpoints/Read | Získá příchozí koncový bod překladače DNS ve formátu JSON. |
+> | Microsoft. Network/dnsResolvers/inboundEndpoints/Write | Vytvoří nebo aktualizuje příchozí koncový bod překladače DNS ve formátu JSON. |
+> | Microsoft. Network/dnsResolvers/inboundEndpoints/DELETE | Odstraní příchozí koncový bod překladače DNS ve formátu JSON. |
 > | Microsoft. Network/dnszones/Read | Získejte zónu DNS ve formátu JSON. Mezi vlastnosti zóny patří značky, ETag, numberOfRecordSets a maxNumberOfRecordSets. Všimněte si, že tento příkaz nenačte sady záznamů obsažené v zóně. |
 > | Microsoft. Network/dnszones/Write | Vytvoří nebo aktualizuje zónu DNS v rámci skupiny prostředků.  Používá se k aktualizaci značek v prostředku zóny DNS. Všimněte si, že tento příkaz nelze použít k vytvoření nebo aktualizaci sad záznamů v rámci zóny. |
 > | Microsoft. Network/dnszones/DELETE | Odstraňte zónu DNS ve formátu JSON. Mezi vlastnosti zóny patří značky, ETag, numberOfRecordSets a maxNumberOfRecordSets. |
@@ -1143,6 +1149,8 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/Locations/availablePrivateEndpointTypes/Read | Získá dostupné prostředky privátního koncového bodu. |
 > | Microsoft. Network/Locations/availableServiceAliases/Read | Získá dostupné aliasy služby. |
 > | Microsoft. Network/Locations/checkDnsNameAvailability/Read | Zkontroluje, jestli je popisek DNS k dispozici v zadaném umístění. |
+> | Microsoft. Network/Locations/dnsResolverOperationResults/Read | Získá výsledky operace překladače DNS ve formátu JSON. |
+> | Microsoft. Network/Locations/dnsResolverOperationStatuses/Read | Získá stav operace překladače DNS. |
 > | Microsoft. Network/Locations/operationResults/Read | Vrátí výsledek operace asynchronní operace POST nebo DELETE. |
 > | Microsoft. Network/umístění/operace/čtení | Získá prostředek operace, který reprezentuje stav asynchronní operace. |
 > | Microsoft. Network/Locations/serviceTags/Read | Získat značky služby |
@@ -1233,6 +1241,7 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/networkWatchers/pingMeshes/Read | Získat podrobnosti o PingMesh |
 > | Microsoft. Network/networkWatchers/pingMeshes/Write | Vytvoří PingMesh. |
 > | Microsoft. Network/networkWatchers/pingMeshes/DELETE | Odstraní PingMesh |
+> | Microsoft. Network/networkWatchers/Topology/Read | Načte zobrazení prostředků na úrovni sítě a jejich vztahů ve skupině prostředků. |
 > | Microsoft. Network/Operations/Read | Získat dostupné operace |
 > | Microsoft. Network/p2sVpnGateways/Read | Načte objekt P2SVpnGateway. |
 > | Microsoft. Network/p2sVpnGateways/Write | Vloží P2SVpnGateway. |
@@ -1394,6 +1403,8 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/virtualNetworks/BastionHosts/Action | Získá odkazy na hostitele bastionu v Virtual Network. |
 > | Microsoft. Network/virtualNetworks/bastionHosts/default/Action | Získá odkazy na hostitele bastionu v Virtual Network. |
 > | Microsoft. Network/virtualNetworks/checkIpAddressAvailability/Read | Ověřte, jestli je v zadané virtuální síti dostupná IP adresa. |
+> | Microsoft. Network/virtualNetworks/dnsForwardingRulesets/Read | Získá RuleSet předávání DNS pro Virtual Network ve formátu JSON. |
+> | Microsoft. Network/virtualNetworks/dnsResolvers/Read | Načte Překladač DNS pro Virtual Network ve formátu JSON. |
 > | Microsoft. Network/virtualNetworks/privateDnsZoneLinks/Read | Získá odkaz Privátní DNS zóny na vlastnosti virtuální sítě ve formátu JSON. |
 > | Microsoft. Network/virtualNetworks/podsítí/čtení | Získá definici podsítě virtuální sítě. |
 > | Microsoft. Network/virtualNetworks/podsítí/Write | Vytvoří podsíť virtuální sítě nebo aktualizuje existující podsíť virtuální sítě. |
@@ -2330,6 +2341,9 @@ Služba Azure: [Azure Search](../search/index.yml)
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/Write | Vytvoří proxy server připojení privátního koncového bodu se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný proxy privátního koncového bodu. |
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/Read | Vrátí seznam proxy serverů připojení privátního koncového bodu nebo získá vlastnosti zadaného proxy serveru připojení privátního koncového bodu. |
 > | Microsoft. Search/searchServices/privateEndpointConnectionProxies/DELETE | Odstraní existující proxy připojení privátního koncového bodu. |
+> | Microsoft. Search/searchServices/privateEndpointConnections/Write | Vytvoří připojení privátního koncového bodu se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaná připojení privátních koncových bodů. |
+> | Microsoft. Search/searchServices/privateEndpointConnections/Read | Vrátí seznam připojení privátního koncového bodu nebo získá vlastnosti pro zadaná připojení privátních koncových bodů. |
+> | Microsoft. Search/searchServices/privateEndpointConnections/DELETE | Odstraní existující připojení privátního koncového bodu. |
 > | Microsoft. Search/searchServices/sharedPrivateLinkResources/Write | Vytvoří nový sdílený prostředek privátního propojení se zadanými parametry nebo aktualizuje vlastnosti zadaného sdíleného prostředku privátního propojení. |
 > | Microsoft. Search/searchServices/sharedPrivateLinkResources/Read | Vrátí seznam sdílených prostředků privátního propojení nebo získá vlastnosti zadaného sdíleného prostředku privátního propojení. |
 > | Microsoft. Search/searchServices/sharedPrivateLinkResources/DELETE | Odstraní existující sdílený prostředek privátního propojení. |
@@ -2346,7 +2360,6 @@ Služba Azure: [Služba signalizace Azure](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/zrušit registraci/akce | Zruší registraci poskytovatele prostředků Microsoft. SignalRService u předplatného. |
 > | Microsoft. SignalRService/Locations/checknameavailability/Action | Zkontroluje, jestli je název k dispozici pro použití s novou službou Signal. |
 > | Microsoft. SignalRService/Locations/operationresults/signaler/Read | Dotaz na výsledek asynchronní operace na základě umístění |
-> | Microsoft. SignalRService/Locations/operationStatuses/operationId/Read | Dotaz na stav asynchronní operace na základě umístění |
 > | Microsoft. SignalRService/Locations/operationStatuses/signaler/Read | Dotaz na stav asynchronní operace na základě umístění |
 > | Microsoft. SignalRService/umístění/použití/číst | Získání využití kvót pro službu Azure Signal |
 > | Microsoft. SignalRService/operationresults/Read | Dotaz na výsledek asynchronní operace na úrovni zprostředkovatele |
@@ -2969,6 +2982,9 @@ Služba Azure: [Container Registry](../container-registry/index.yml)
 > | Microsoft. ContainerRegistry/Registry/privateEndpointConnectionProxies/Write | Vytvoření proxy připojení privátního koncového bodu (jenom NRP) |
 > | Microsoft. ContainerRegistry/Registry/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu (jenom NRP) |
 > | Microsoft. ContainerRegistry/Registry/privateEndpointConnectionProxies/operationStatuses/Read | Získat stav operace Async proxy připojení privátního koncového bodu |
+> | Microsoft. ContainerRegistry/Registry/privateEndpointConnections/Read | Získá vlastnosti připojení privátního koncového bodu nebo Vypíše všechna připojení privátního koncového bodu pro zadaný registr kontejnerů. |
+> | Microsoft. ContainerRegistry/Registry/privateEndpointConnections/Write | Schválí nebo odmítne připojení privátního koncového bodu. |
+> | Microsoft. ContainerRegistry/Registry/privateEndpointConnections/DELETE | Odstraní připojení privátního koncového bodu. |
 > | Microsoft. ContainerRegistry/registrys/Pull/Read | Vyžádání nebo získání imagí z registru kontejneru. |
 > | Microsoft. ContainerRegistry/Registry/push/Write | Vložení nebo zápis imagí do registru kontejneru. |
 > | Microsoft. ContainerRegistry/registrys/karanténa/čtení | Vyžádání nebo získání imagí v karanténě z registru kontejnerů |
@@ -3381,6 +3397,7 @@ Služba Azure: [Azure cache pro Redis](../azure-cache-for-redis/index.yml)
 > | Microsoft. cache/checknameavailability/Action | Zkontroluje, jestli je název k dispozici pro použití s novým Redis Cache. |
 > | Microsoft. cache/registrovat/akce | Zaregistruje poskytovatele prostředků Microsoft. cache v rámci předplatného. |
 > | Microsoft. cache/zrušit registraci/akce | Zruší registraci poskytovatele prostředků Microsoft. cache u předplatného. |
+> | Microsoft. cache/Locations/checknameavailability/Action | Zkontroluje, jestli je název k dispozici pro použití s novou mezipamětí Redis Enterprise. |
 > | Microsoft. cache/Locations/asyncOperations/Read | Přečte stav asynchronní operace. |
 > | Microsoft. cache/Locations/operationResults/Read | Získá výsledek dlouhotrvající operace, pro kterou se dřív vrátila hlavička Location do klienta. |
 > | Microsoft. cache/Locations/operationsStatus/Read | Zobrazit stav dlouhotrvající operace, pro kterou se dřív vrátila hlavička ' AzureAsync ' do klienta |
@@ -3422,7 +3439,13 @@ Služba Azure: [Azure cache pro Redis](../azure-cache-for-redis/index.yml)
 > | Microsoft. cache/redisEnterprise/databáze/DELETE | Odstraní databázi Redis Enterprise a její obsah. |
 > | Microsoft. cache/redisEnterprise/databázes/Read | Zobrazit nastavení a konfiguraci databáze Redis Enterprise cache na portálu pro správu |
 > | Microsoft. cache/redisEnterprise/databáze/Write | Úprava nastavení a konfigurace databáze Redis Enterprise cache na portálu pro správu |
+> | Microsoft. cache/redisEnterprise/databáze/export/Action | Export dat do objektů BLOB úložiště z databáze Redis Enterprise  |
 > | Microsoft. cache/redisEnterprise/databáze/forceUnlink/Action | Vynucené zrušení propojení podnikové databáze Redis se stejnou replikou od partnerských uzlů |
+> | Microsoft. cache/redisEnterprise/databáze/import/Action | Import dat z objektů BLOB úložiště do databáze Redis Enterprise |
+> | Microsoft. cache/redisEnterprise/databáze/klíče listkey/Action | Zobrazení hodnoty přístupových klíčů Redis Enterprise Database na portálu pro správu |
+> | Microsoft. cache/redisEnterprise/databáze/regenerateKey/Action | Změna hodnoty přístupových klíčů Redis Enterprise Database na portálu pro správu |
+> | Microsoft. cache/redisEnterprise/databáze/operationResults/Read | Zobrazit výsledek operací Redis Enterprise Database na portálu pro správu |
+> | Microsoft. cache/redisEnterprise/operationResults/Read | Zobrazení výsledku Redis podnikových operací na portálu pro správu |
 > | Microsoft. cache/redisEnterprise/privateEndpointConnectionProxies/ověřit/akce | Ověření proxy připojení privátního koncového bodu |
 > | Microsoft. cache/redisEnterprise/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
 > | Microsoft. cache/redisEnterprise/privateEndpointConnectionProxies/Write | Vytvoření proxy připojení privátního koncového bodu |
@@ -3912,6 +3935,8 @@ Služba Azure: [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Microsoft.DocumentDB/cassandraClusters/Read | Načte spravovaný cluster Cassandra nebo vypíše všechny spravované clustery Cassandra. |
 > | Microsoft.DocumentDB/cassandraClusters/Write | Vytvoření nebo aktualizace spravovaného clusteru Cassandra |
 > | Microsoft.DocumentDB/cassandraClusters/DELETE | Odstranění spravovaného clusteru Cassandra |
+> | Microsoft.DocumentDB/cassandraClusters/opravit/akce | Požádat o opravu spravovaného prostoru Cassandra |
+> | Microsoft.DocumentDB/cassandraClusters/fetchNodeStatus/Action | Asynchronně načíst stav uzlu u všech uzlů ve spravovaném clusteru Cassandra |
 > | Microsoft.DocumentDB/cassandraClusters/datacentra/číst | Čtení datového centra ve spravovaném clusteru Cassandra nebo vypsání všech datových center ve spravovaném clusteru Cassandra |
 > | Microsoft.DocumentDB/cassandraClusters/datová centra/zápis | Vytvoření nebo aktualizace datového centra ve spravovaném clusteru Cassandra |
 > | Microsoft.DocumentDB/cassandraClusters/DataCentre/DELETE | Odstranění datového centra ve spravovaném clusteru Cassandra |
@@ -4181,6 +4206,8 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/Locations/extendedAuditingSettingsOperationResults/Read | Načíst výsledek operace set zásad auditování objektu BLOB rozšířeného serveru |
 > | Microsoft. SQL/Locations/firewallRulesAzureAsyncOperation/Read | Získá stav operace pravidla brány firewall. |
 > | Microsoft. SQL/Locations/firewallRulesOperationResults/Read | Získá stav operace pravidla brány firewall. |
+> | Microsoft. SQL/Locations/hybridCertificateAzureAsyncOperation/Read | Získá stav dlouhodobé asynchronní operace hybridního certifikátu na spravované instanci Azure SQL. |
+> | Microsoft. SQL/Locations/hybridCertificateOperationResults/Read | Získá stav dlouhodobé asynchronní operace hybridního certifikátu. |
 > | Microsoft. SQL/Locations/hybridLinkAzureAsyncOperation/Read | Získá stav asynchronní operace dlouhodobého připojení Hybrid Link na spravované instanci Azure SQL. |
 > | Microsoft. SQL/Locations/hybridLinkOperationResults/Read | Získá stav asynchronní operace dlouhodobého propojení Hybrid. |
 > | Microsoft. SQL/Locations/instanceFailoverGroups/Read | Vrátí seznam skupin instancí převzetí služeb při selhání nebo získá vlastnosti pro zadanou skupinu převzetí služeb při selhání. |
@@ -4246,10 +4273,11 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/Locations/virtualNetworkRulesAzureAsyncOperation/Read | Vrátí podrobnosti zadaného pravidla virtuální sítě. asynchronní operace Azure  |
 > | Microsoft. SQL/Locations/virtualNetworkRulesOperationResults/Read | Vrátí podrobnosti o zadané operaci pravidel virtuální sítě.  |
 > | Microsoft. SQL/managedInstances/tdeCertificates/Action | Vytvořit nebo aktualizovat certifikát TDE |
+> | Microsoft. SQL/managedInstances/joinServerTrustGroup/Action | Určení, jestli má uživatel povolený přístup ke spravovanému serveru do skupiny důvěryhodných serverů |
+> | Microsoft. SQL/managedInstances/hybridCertificate/Action | Vytvoří nebo aktualizuje hybridní certifikát se zadanými parametry. |
 > | Microsoft. SQL/managedInstances/Read | Vrátí seznam spravovaných instancí nebo získá vlastnosti zadané spravované instance. |
 > | Microsoft. SQL/managedInstances/Write | Vytvoří spravovanou instanci se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadanou spravovanou instanci. |
 > | Microsoft. SQL/managedInstances/DELETE | Odstraní existující spravovanou instanci. |
-> | Microsoft. SQL/managedInstances/joinServerTrustGroup/Action | Určení, jestli má uživatel povolený přístup ke spravovanému serveru do skupiny důvěryhodných serverů |
 > | Microsoft. SQL/managedInstances/převzetí služeb při selhání/akce | Vyvolané převzetí služeb při selhání spravované instance od zákazníka |
 > | Microsoft. SQL/managedInstances/Administrators/Read | Načte seznam správců spravované instance. |
 > | Microsoft. SQL/managedInstances/Administrators/Write | Vytvoří nebo aktualizuje správce spravované instance se zadanými parametry. |
@@ -4429,6 +4457,7 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/servery/databáze/recommendedSensitivityLabels/Read | Vypsat popisky citlivosti dané databáze |
 > | Microsoft. SQL/servery/databáze/recommendedSensitivityLabels/Write | Doporučené popisky citlivosti aktualizace Batch |
 > | Microsoft. SQL/servery/databáze/replicationLinks/Read | Vrátí seznam replikačních propojení nebo získá vlastnosti pro zadané replikační odkazy. |
+> | Microsoft. SQL/servery/databáze/replicationLinks/DELETE | Nuceně ukončit vztah replikace a s potenciální ztrátou dat |
 > | Microsoft. SQL/servery/databáze/replicationLinks/převzetí služeb při selhání/akce | Převzetí služeb při selhání po synchronizaci všech změn z primární databáze, aby se tato databáze relationship\u0027s jako primární a prováděla se vzdálená primární databáze sekundární |
 > | Microsoft. SQL/servery/databáze/replicationLinks/forceFailoverAllowDataLoss/Action | Převzetí služeb při selhání hned s možnou ztrátou dat, provedení této databáze na primárním relationship\u0027s replikace a provedení vzdálené primární databáze do sekundárního počítače |
 > | Microsoft. SQL/servery/databáze/replicationLinks/updateReplicationMode/Action | Aktualizovat režim replikace pro odkaz na synchronní nebo asynchronní režim |
@@ -4912,6 +4941,9 @@ Služba Azure: [azure Průzkumník dat](/azure/data-explorer/)
 > | Microsoft. Kusto/Clusters/dataconnections/Read | Přečte prostředek připojení dat clusteru. |
 > | Microsoft. Kusto/Clusters/dataconnections/Write | Zapíše prostředek připojení dat clusteru. |
 > | Microsoft. Kusto/Clusters/dataconnections/DELETE | Odstraní prostředek připojení dat clusteru. |
+> | Microsoft. Kusto/Clusters/ManagedPrivateEndpoints/Read | Načte prostředek konfigurace připojené databáze. |
+> | Microsoft. Kusto/Clusters/ManagedPrivateEndpoints/Write |  |
+> | Microsoft. Kusto/Clusters/ManagedPrivateEndpoints/DELETE |  |
 > | Microsoft. Kusto/Clusters/PrincipalAssignments/Read | Přečte prostředek přiřazení objektů v clusteru. |
 > | Microsoft. Kusto/Clusters/PrincipalAssignments/Write | Zapíše prostředek přiřazení objektu zabezpečení clusteru. |
 > | Microsoft. Kusto/Clusters/PrincipalAssignments/DELETE | Odstraní prostředek přiřazení objektu zabezpečení clusteru. |
@@ -5089,6 +5121,9 @@ Služba Azure: [Azure synapse Analytics](../synapse-analytics/index.yml)
 > | Microsoft. synapse/pracovní prostory/knihovny/čtení | Čtení artefaktů knihovny |
 > | Microsoft. synapse/pracovní prostory/managedIdentitySqlControlSettings/Write | Aktualizace nastavení řízení SQL spravované identity v pracovním prostoru |
 > | Microsoft. synapse/pracovní prostory/managedIdentitySqlControlSettings/číst | Získat nastavení řízení SQL spravované identity |
+> | Microsoft. synapse/pracovní prostory/managedVirtualNetworks/managedPrivateEndpoints/číst | Čtení spravovaného privátního koncového bodu. |
+> | Microsoft. synapse/pracovní prostory/managedVirtualNetworks/managedPrivateEndpoints/DELETE | Odstraňte libovolný spravovaný privátní koncový bod. |
+> | Microsoft. synapse/pracovní prostory/managedVirtualNetworks/managedPrivateEndpoints/Write | Vytvoří nebo aktualizuje libovolný spravovaný privátní koncový bod. |
 > | Microsoft. synapse/pracovní prostory/operationResults/číst | Přečtěte si výsledek asynchronní operace. |
 > | Microsoft. synapse/pracovní prostory/operationStatuses/číst | Přečtěte si stav asynchronní operace. |
 > | Microsoft. synapse/pracovní prostory/privateEndpointConnections/Write | Vytvořit nebo aktualizovat připojení privátního koncového bodu |
@@ -5105,6 +5140,8 @@ Služba Azure: [Azure synapse Analytics](../synapse-analytics/index.yml)
 > | Microsoft. synapse/pracovní prostory/sqlAdministrators/Write | Nastavení správce služby Active Directory v pracovním prostoru |
 > | Microsoft. synapse/pracovní prostory/sqlAdministrators/číst | Získat správce služby Active Directory pracovního prostoru |
 > | Microsoft. synapse/pracovní prostory/sqlAdministrators/DELETE | Odstranit správce služby Active Directory pracovního prostoru |
+> | Microsoft. synapse/pracovní prostory/sqlDatabases/Write | Vytvoří nebo aktualizuje jakékoli databáze SQL Analytics. |
+> | Microsoft. synapse/pracovní prostory/sqlDatabases/číst | Přečtěte si všechny databáze SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/Write | Vytvořte nebo aktualizujte všechny fondy SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/číst | Přečtěte si všechny fondy SQL Analytics. |
 > | Microsoft. synapse/pracovní prostory/sqlPools/DELETE | Odstraňte všechny fondy SQL Analytics. |
@@ -5581,13 +5618,19 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/import/Action | Importuje aplikaci do LUIS, v těle žádosti by měla být obsažena JSON aplikace. Vrátí nové ID aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Publish/Action | Publikuje konkrétní verzi aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/querylogsasync/Action | Spusťte požadavek na stažení pro protokoly dotazů v minulém měsíci pro danou aplikaci. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Move/Action | Přesune aplikaci na jiný LUIS vytváření prostředků Azure. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/asistenti/číst | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/azureaccounts/Read | Načte LUIS účty Azure přiřazené k aplikaci pro uživatele pomocí jeho Azure Resource Managerho tokenu. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/azureaccounts/DELETE | Načte LUIS účty Azure pro uživatele pomocí tokenu Azure Resource Manager. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/kultury/Read | Načte podporované jazykové verze aplikace LUIS. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/kultury/tokenizerversions/Read | Získá jazykovou verzi aplikace LUIS a podporované verze provádějících tokenizaci pro jazykovou verzi. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/customprebuiltdomains/Write | Přidá předem vytvořenou doménu spolu se svými modely jako novou aplikaci. Vrátí nové ID aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/customprebuiltdomains/Read | Získá všechny dostupné vlastní předem sestavené domény pro konkrétní jazykovou verzi a získá všechny dostupné vlastní předdefinované domény pro všechny jazykové verze. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/doméns/Read | Získá dostupné domény aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Endpoints/Read | Vrátí dostupné oblasti a adresy URL pro nasazení koncového bodu. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/oprávnění/Write | Přidá uživatele do seznamu povolených uživatelů pro přístup k této aplikaci LUIS. Nahradí seznam současný přístup uživatelů pomocí některého z odesílaných v těle. * |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/oprávnění/číst | Získá seznam e-mailů uživatelů, které mají oprávnění pro přístup k vaší aplikaci.  |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/Permissions/DELETE | Uživatel odebral uživatele do seznamu povolených uživatelů pro přístup k této aplikaci LUIS. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/publishsettings/Read | Získá nastavení publikování pro aplikaci. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/publishsettings/Write | Aktualizuje nastavení publikování aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/querylogs/Read | Načte protokoly dotazů za minulý měsíc pro aplikaci. |
@@ -5601,6 +5644,8 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/číst | Získá informace o verzi aplikace. Získá informace o seznamu verzí aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/import/Action | Importuje novou verzi do aplikace LUIS. v textu žádosti by se měla zahrnout JSON verze. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/zápis | Aktualizuje název nebo Popis verze aplikace. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/assignedkey/Write | **TATO JE ZASTARALÁ.** |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/assignedkey/Read | **TATO JE ZASTARALÁ.** |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/closedlists/Write | Přidá entitu seznamu do aplikace LUIS. Přidá dávku podseznamů do existujícího closedlist. * aktualizuje uzavřený model seznamu. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/closedlists/DELETE | Odstraní uzavřenou entitu seznamu z aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/closedlists/Read | Získá informace o zavřeném modelu seznamu. Načte informace o modelech closedlist. |
@@ -5617,6 +5662,9 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/compositeentities/Roles/Write | Přidá roli pro model složené entity. Aktualizuje roli pro model složené entity. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/compositeentities/Roles/DELETE | Odstraní roli pro model složené entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/compositeentities/role/čtení | Získá roli pro model složené entity. Získá role pro model složené entity. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/připojených služeb/Write | Vytvoří mapování mezi záměrem a službou aktualizaci mapování mezi záměrem a službou *. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/připojených služeb/DELETE | Odstraní mapování mezi záměrem a službou. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/připojených služeb/Read | Získá mapování mezi záměrem a službou. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/customprebuiltdomains/Write | Přidá přizpůsobitelné předem sestavené domény spolu se všemi jeho modely do této verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/customprebuiltdomains/DELETE | Odstraní předdefinované modely domény z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/customprebuiltentities/Write | Přidá do verze aplikace vlastní model entity předem sestavené domény. K odebrání této entity použijte [Delete entity](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c1f) s ID entity. |
@@ -5627,18 +5675,26 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/customprebuiltintents/Write | Přidá do aplikace vlastní předem sestavený model záměru domény. Pro odebrání tohoto záměru použijte [odstranění záměru](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c1c) s ID záměru. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/customprebuiltintents/Read | Načte vlastní předem připravené informace o této verzi aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/customprebuiltmodels/Read | Načte všechny vlastní předem připravené informace o doménových modelech pro tuto verzi aplikace. |
-> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/Write | Přidá do verze aplikace jednoduchý extraktor entit. Aktualizuje název extraktoru entity. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/Write | Přidá do verze aplikace jednoduchý extraktor entit. Aktualizuje název extraktoru entity. Aktualizuje extraktor entit. * |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/odstranit | Odstraní jednoduchý extraktor entit z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/číst | Získá informace o modelu jednoduché entity. Získá informace o modelech jednoduchých entit ve verzi aplikace. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/podřízené/zápis | Vytvoří jednu podřízenou položku v existujícím modelu entity. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/funkce/zápis | Přidá relaci funkce pro model entity – aktualizuje seznam vztahů funkcí pro entitu * |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/funkce/Odstranit | Odstraní vztah funkce pro model entity. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/funkce/číst | Získá relace funkcí pro model entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/role/zápis | Přidá roli pro jednoduchý model entit aktualizuje roli jednoduchého modelu entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/role/odstranění | Odstraní roli pro model jednoduché entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/role/číst | Získá roli pro model jednoduché entity. Získá role pro model jednoduché entity. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/entity/Roles/navrhnout/číst | Navrhuje příklady, které by vylepšily přesnost modelu entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/entity/navrhnout/číst | Navrhuje příklady, které by vylepšily přesnost modelu entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/příklad/zápis | Přidá příklad označený jako verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/příklady/zápis | Přidá do zadané aplikace dávku příkladů neduplicitních popisků. Batch nemůže zahrnovat hierarchické podřízené entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/příklady/odstranit | Odstraní popisek se zadaným ID. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/příklady/čtení | Vrátí podmnožinu příkladů koncových bodů, které se mají zkontrolovat. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/export/čtení | Exportuje verzi aplikace LUIS do formátu JSON. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/externalkeys/DELETE | TOTO ROZHRANÍ API JE ZASTARALÉ. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/externalkeys/Read | **TATO JE ZASTARALÁ.** |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/externalkeys/Write | **TATO JE ZASTARALÁ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/funkce/číst | Získá všechny funkce verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/hierarchicalentities/Write | Přidá k verzi aplikace hierarchické extrakci entit. Aktualizuje název a podřízené objekty modelu extrakce hierarchické entity. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/hierarchicalentities/DELETE | Odstraní objekt pro extrakci hierarchické entity z verze aplikace. |
@@ -5652,10 +5708,14 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/Write | Přidá klasifikátor záměru do verze aplikace. Aktualizuje název klasifikátoru záměru. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/odstranit | Odstraní klasifikátor záměru z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/číst | Získá informace o modelu záměru. Získá informace o modelech záměrů ve verzi aplikace. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/funkce/zápis | Přidá relaci funkce pro model záměru aktualizace seznamu vztahů funkcí pro záměr * |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/funkce/Odstranit | Odstraní relaci funkce pro model záměru. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/funkce/číst | Získá relace funkcí pro model záměrů. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/patternrules/Read | Získá vzory pro určitý záměr. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/záměry/navrhnout/číst | Navrhuje příklady, které by vylepšily přesnost modelu záměru. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/listprebuilts/Read | Získá všechny dostupné předem připravené entity pro aplikaci na základě jazykové verze aplikace. |
-> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/modely/čtení | Získá informace o modelech verze aplikace. |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/modely/čtení | Získá informace o modelech verze aplikace. Načte informace o modelu. * |
+> | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/modely/příklady/čtení | Získá seznam příkladů modelu. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/patternanyentities/Write | Přidá vzorek. libovolný objekt pro extrakci entit do verze aplikace. Aktualizuje vzor. jakýkoli extraktor entit. |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/patternanyentities/DELETE | Odstraní vzorek. libovolný objekt pro extrakci entit z verze aplikace. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/patternanyentities/Read | Získá informace o vzoru. libovolný model entity. Získá informace o vzorci. všechny modely entit ve verzi aplikace. |
@@ -5692,8 +5752,15 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Apps/verze/navrhnout/odstranit | Odstranil se koncový bod utterance. Tento utterance je v seznamu "View Endpoint projevy". |
 > | Microsoft. Cognitiveservices Account/účty/LUIS/aplikace/verze/výuka/čtení | Získá stav školení všech modelů (záměrů a entit) pro zadanou verzi aplikace. Před voláním tohoto rozhraní API k získání stavu školení musíte volat rozhraní API pro vlaky, abyste mohli výuku aplikace LUIS vyvolat. |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/azureaccounts/Read | Načte LUIS účty Azure pro uživatele pomocí tokenu Azure Resource Manager. |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/externalkeys/Write | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/externalkeys/DELETE | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/externalkeys/Read | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Package/slot/gzip/Read | Balíčky publikované aplikací LUIS jako GZip |
 > | Microsoft. Cognitiveservices Account/Accounts/LUIS/Package/verze/gzip/Read | Balíčky vyškolené aplikace LUIS jako GZip |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/programmatickey/Write | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Subscriptions/Write | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Subscriptions/DELETE | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
+> | Microsoft. Cognitiveservices Account/Accounts/LUIS/Subscriptions/Read | **TOTO ROZHRANÍ API JE ZASTARALÉ.** |
 > | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Alert/anomálie/Configurations/Write | Vytvořit nebo aktualizovat konfiguraci upozornění na anomálii |
 > | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Alert/anomálie/Configurations/DELETE | Odstranit konfiguraci upozornění na anomálii |
 > | Microsoft. Cognitiveservices Account/Accounts/MetricsAdvisor/Alert/anomálie/Configurations/Read | Dotazování na jednu konfiguraci upozorňující na anomálii |
@@ -5786,6 +5853,22 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/klíčová fráze/akce | Rozhraní API vrátí seznam řetězců, ve kterých se ve vstupním textu zaznamená klíčové body. |
 > | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/mínění/Action | Rozhraní API vrací číselné skóre v rozsahu 0 až 1.<br>Skóre blížící se 1 značí pozitivní mínění, zatímco skóre blížící se 0 značí negativní mínění.<br>Skóre 0,5 označuje nedostatek mínění (např.<br>příkaz factoid). |
 > | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/analyzovat/Action | Odeslat kolekci textových dokumentů k analýze. Zadejte jeden nebo více jedinečných úloh, které mají být provedeny. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/Action | QnA Maker |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/Alters/Read | Stažení změn z modulu runtime. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/Alters/Write | Nahraďte data změn. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/endpointkeys/Read | Získá klíče koncového bodu pro koncový bod. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/endpointkeys/refreshkeys/Action | Znovu vygeneruje klíč koncového bodu. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/endpointsettings/Read | Získá nastavení koncového bodu pro koncový bod. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/endpointsettings/Write | Aktualizujte koncový bod seettings pro koncový bod. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/knowledgebases/Publish/Action | Publikuje všechny změny v indexu testu znalostní báze s jeho výrobním indexem. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/knowledgebases/DELETE | Odstraní znalostní báze a veškerá jeho data. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/knowledgebases/Read | Získá seznam Knowledgebases nebo podrobností konkrétního knowledgebaser. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/knowledgebases/Write | Asynchronní operace pro úpravu znalostní báze nebo nahrazení obsahu v rámci znalostní báze |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/knowledgebases/generateanswer/Action | GenerateAnswer volání pro dotaz na znalostní báze. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/knowledgebases/vlak/Action | Zavolejte na vlak a přidejte návrhy do znalostní báze. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/knowledgebases/Create/Write | Asynchronní operace pro vytvoření nové znalostní báze |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/knowledgebases/Download/Read | Stáhněte si znalostní báze. |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/Qnamakerem/Operations/Read | Získá podrobnosti o konkrétní dlouhodobé operaci s dlouhou dobou provozu. |
 > | Microsoft. Cognitiveservices Account/Accounts/TextTranslation/Detect/Action | Určuje jazyk části textu. |
 > | Microsoft. Cognitiveservices Account/Accounts/TextTranslation/breaksentence/Action | Určuje umístění vět v části textu. |
 > | Microsoft. Cognitiveservices Account/Accounts/TextTranslation/překládat/Action | Přeloží text. |
@@ -5841,6 +5924,10 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/umístění/použití/číst | Sestava využití pro výpočetní prostředky AML v předplatném |
 > | Microsoft. MachineLearningServices/Locations/povolených velikostí/Read | Získání podporovaných velikostí virtuálních počítačů |
 > | Microsoft. MachineLearningServices/Operations/Read | Získat všechny operace pro poskytovatele prostředků Machine Learning Services |
+> | Microsoft. MachineLearningServices/virtualclusters/Read | Získá Machine Learning Services virtuálních clusterů. |
+> | Microsoft. MachineLearningServices/virtualclusters/Write | Vytvoří nebo aktualizuje virtuální clustery Machine Learning Services. |
+> | Microsoft. MachineLearningServices/virtualclusters/DELETE | Odstraní virtuální clustery s Machine Learning Services. |
+> | Microsoft. MachineLearningServices/virtualclusters/Jobs/Submit/Action | Odeslat úlohu na virtuální cluster Machine Learning Services |
 > | Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action | Kontroluje název COMPUTE v koncovém bodu služby Batch v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/číst | Získá Machine Learning Services pracovní prostor (y). |
 > | Microsoft. MachineLearningServices/pracovní prostory/zápis | Vytvoří nebo aktualizuje Machine Learning Services pracovní prostor (y). |
@@ -5954,7 +6041,7 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/číst | Získá koncové body odvození online v Machine Learning Servicesch prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/Write | Vytvoří nebo aktualizuje koncový bod odvození online v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/DELETE | Odstraní koncový bod odvození online v Machine Learning Servicesch pracovních prostorech. |
-> | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/skore/Action | Skóre koncových bodů pro odvození online v Machine Learning Servicesch pracovních prostorech |
+> | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/skore/Action | Načtení ověřovacího tokenu nebo klíčů pro skóre online koncových bodů v Machine Learning Servicesch prostorech |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/checkNameAvailability/číst | Kontroluje název koncového bodu pro online odvozování v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/nasazení/číst | Získá nasazení v koncovém bodu odvození online v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/onlineEndpoints/nasazení/zápis | Vytvoří nebo aktualizuje nasazení v koncovém bodu online odvození v Machine Learning Servicesch pracovních prostorech. |
@@ -5974,7 +6061,7 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/Write | Vytvoří nebo aktualizuje AKS služby v pracovních prostorech Machine Learning Services. |
 > | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/klíče listkey/Action | Seznam klíčů pro služby AKS Services v Machine Learning Servicesch pracovních prostorech |
 > | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/DELETE | Odstraní služby AKS v Machine Learning Servicesch pracovních prostorech. |
-> | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/skore/Action | Hodnocení služby AKS v pracovních prostorech v Machine Learning Services |
+> | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/skore/Action | Načtení ověřovacího tokenu nebo klíčů pro hodnocení služeb AKS v Machine Learning Servicesch pracovních prostorech |
 
 ## <a name="internet-of-things"></a>Internet věcí
 
@@ -6123,6 +6210,34 @@ Služba Azure: [IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning Ser
 > | Microsoft. zařízení/používání/čtení | Získat podrobnosti o použití předplatného pro tohoto poskytovatele. |
 > | Microsoft. zařízení/používání/čtení | Získat podrobnosti o použití předplatného pro tohoto poskytovatele. |
 
+### <a name="microsoftdeviceupdate"></a>Microsoft. DeviceUpdate
+
+Služba Azure: [aktualizace zařízení pro IoT Hub](../iot-hub-device-update/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. DeviceUpdate/checkNameAvailability/Action | Kontroluje dostupnost názvu. |
+> | Microsoft. DeviceUpdate/Register/Action | Zaregistruje aktualizaci zařízení. |
+> | Microsoft. DeviceUpdate/zrušit registraci/akce | Zruší registraci aktualizace zařízení. |
+> | Microsoft. DeviceUpdate/Accounts/Read | Vrátí seznam účtů aktualizace zařízení. |
+> | Microsoft. DeviceUpdate/Accounts/Write | Vytvoří nebo aktualizuje účet aktualizace zařízení. |
+> | Microsoft. DeviceUpdate/Accounts/DELETE | Odstraní účet aktualizace zařízení. |
+> | Microsoft. DeviceUpdate/Accounts/Instances/Read | Vrátí seznam instancí aktualizace zařízení. |
+> | Microsoft. DeviceUpdate/Accounts/Instances/Write | Vytvoří nebo aktualizuje instanci aktualizace zařízení. |
+> | Microsoft. DeviceUpdate/Accounts/Instances/DELETE | Odstraní instanci aktualizace zařízení. |
+> | Microsoft. DeviceUpdate/Locations/operationStatuses/Read | Získá stav operace. |
+> | Microsoft. DeviceUpdate/Locations/operationStatuses/Write | Aktualizuje stav operace. |
+> | Microsoft. DeviceUpdate/Operations/Read | Vypisuje operace aktualizace zařízení. |
+> | Microsoft. DeviceUpdate/registeredSubscriptions/Read | Čtení registrovaných předplatných |
+> | **Akce dataaction** | **Popis** |
+> | Microsoft. DeviceUpdate/Accounts/Instances/Management/Read | Provede operaci čtení související se správou. |
+> | Microsoft. DeviceUpdate/Accounts/Instances/Management/Write | Provede operaci zápisu související se správou. |
+> | Microsoft. DeviceUpdate/Accounts/Instances/Management/DELETE | Provede operaci odstranění související se správou. |
+> | Microsoft. DeviceUpdate/Accounts/Instances/Update/Read | Provede operaci čtení související s aktualizacemi. |
+> | Microsoft. DeviceUpdate/Accounts/Instances/Update/Write | Provede operaci zápisu související s aktualizacemi. |
+> | Microsoft. DeviceUpdate/Accounts/Instances/Updates/DELETE | Provede operaci odstranění související s aktualizacemi. |
+
 ### <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
 
 Služba Azure: [IoT Central](../iot-central/index.yml)
@@ -6203,18 +6318,6 @@ Služba Azure: [Time Series Insights](../time-series-insights/index.yml)
 > | Microsoft. TimeSeriesInsights/prostředí/stav/čtení | Získejte stav prostředí, stav svých přidružených operací, jako je příchozí přenos dat. |
 
 ## <a name="mixed-reality"></a>Smíšená realita
-
-### <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
-
-Služba Azure: [digitální vlákna Azure](../digital-twins/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | Akce | Popis |
-> | --- | --- |
-> | Microsoft. IoTSpaces/Register/Action | Registrace předplatného pro poskytovatele prostředků Microsoft. IoTSpaces Graph pro povolení vytváření prostředků |
-> | Microsoft. IoTSpaces/Graph/Write | Vytvořit prostředek Microsoft. IoTSpaces Graph |
-> | Microsoft. IoTSpaces/Graph/Read | Načte prostředky grafu Microsoft. IoTSpaces. |
-> | Microsoft. IoTSpaces/Graph/DELETE | Odstraní prostředek Microsoft. IoTSpaces Graph. |
 
 ### <a name="microsoftmixedreality"></a>Microsoft. MixedReality
 
@@ -6430,7 +6533,7 @@ Služba Azure: [API Management](../api-management/index.yml)
 > | Microsoft. ApiManagement/Service/Policy/DELETE | Odstranění konfigurace zásad na úrovni tenanta |
 > | Microsoft. ApiManagement/Service/policyDescriptions/Read | Zobrazí seznam všech popisů zásad. |
 > | Microsoft. ApiManagement/Service/policySnippets/Read | Vypíše všechny fragmenty zásad. |
-> | Microsoft. ApiManagement/Service/portalRevisions/Read | Vypíše kolekci revizí portálu pro vývojáře. nebo získá revizi portálu pro vývojáře určenou jeho identifikátorem. |
+> | Microsoft. ApiManagement/Service/portalRevisions/Read | Vypíše kolekci entit revize portálu pro vývojáře. nebo získá revizi portálu pro vývojáře určenou jeho identifikátorem. |
 > | Microsoft. ApiManagement/Service/portalRevisions/Write | Vytvoří novou revizi portálu pro vývojáře. nebo aktualizuje popis zadané revize portálu nebo vytvoří aktuální. |
 > | Microsoft. ApiManagement/Service/portalSettings/Read | Vypíše kolekci nastavení portálu. Můžete také získat nastavení pro přihlášení k portálu nebo získat nastavení pro registraci portálu nebo získat nastavení delegování pro portál. |
 > | Microsoft. ApiManagement/Service/portalSettings/Write | Aktualizujte nastavení Sign-In. nebo vytvořte nebo aktualizujte nastavení Sign-In. nebo aktualizovat nastavení registrace nebo aktualizovat nastavení registrace nebo aktualizovat nastavení delegování. nebo vytvořte nebo aktualizujte nastavení delegování. |
@@ -6716,6 +6819,7 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 > | Microsoft. EventGrid/eventSubscriptions/Read | Přečíst eventSubscription |
 > | Microsoft. EventGrid/eventSubscriptions/DELETE | Odstranění eventSubscription |
 > | Microsoft. EventGrid/eventSubscriptions/getFullUrl/Action | Získat úplnou adresu URL pro odběr události |
+> | Microsoft. EventGrid/eventSubscriptions/getDeliveryAttributes/Action | Získat atributy doručení EventSubscription |
 > | Microsoft. EventGrid/eventSubscriptions/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro odběry událostí. |
 > | Microsoft. EventGrid/eventSubscriptions/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro odběry událostí. |
 > | Microsoft. EventGrid/eventSubscriptions/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro eventSubscriptions. |
@@ -6750,6 +6854,11 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 > | Microsoft. EventGrid/partnerTopics/DELETE | Odstranění partnerského tématu |
 > | Microsoft. EventGrid/partnerTopics/Activate/Action | Aktivovat téma partnera |
 > | Microsoft. EventGrid/partnerTopics/deaktivovat/Action | Deaktivovat téma partnera |
+> | Microsoft. EventGrid/partnerTopics/eventSubscriptions/Write | Vytvoří nebo aktualizuje PartnerTopic eventSubscription. |
+> | Microsoft. EventGrid/partnerTopics/eventSubscriptions/Read | Přečíst PartnerTopic eventSubscription |
+> | Microsoft. EventGrid/partnerTopics/eventSubscriptions/DELETE | Odstranění eventSubscriptionu PartnerTopic |
+> | Microsoft. EventGrid/partnerTopics/eventSubscriptions/getFullUrl/Action | Získat úplnou adresu URL pro odběr události PartnerTopic |
+> | Microsoft. EventGrid/partnerTopics/eventSubscriptions/getDeliveryAttributes/Action | Získat atributy doručení PartnerTopic EventSubscription |
 > | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro témata partnerů. |
 > | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro témata partnerů. |
 > | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. Insights/logDefinitions/Read | Povolit přístup k diagnostickým protokolům |
@@ -6758,6 +6867,11 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 > | Microsoft. EventGrid/systemTopics/Read | Přečíst systémové téma |
 > | Microsoft. EventGrid/systemTopics/Write | Vytvořit nebo aktualizovat systémové téma |
 > | Microsoft. EventGrid/systemTopics/DELETE | Odstranit systémové téma |
+> | Microsoft. EventGrid/systemTopics/eventSubscriptions/Write | Vytvoří nebo aktualizuje SystemTopic eventSubscription. |
+> | Microsoft. EventGrid/systemTopics/eventSubscriptions/Read | Přečíst SystemTopic eventSubscription |
+> | Microsoft. EventGrid/systemTopics/eventSubscriptions/DELETE | Odstranění eventSubscriptionu SystemTopic |
+> | Microsoft. EventGrid/systemTopics/eventSubscriptions/getFullUrl/Action | Získat úplnou adresu URL pro odběr události SystemTopic |
+> | Microsoft. EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/Action | Získat atributy doručení SystemTopic EventSubscription |
 > | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro systémová témata. |
 > | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro systémová témata. |
 > | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/logDefinitions/Read | Povolit přístup k diagnostickým protokolům |
@@ -8764,6 +8878,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/notificationSettings/DELETE | Odstraní nastavení oznámení uživatele pro pracovní prostor. |
 > | Microsoft. operationalinsights/pracovní prostory/operace/číst | Získá stav operace pracovního prostoru OperationalInsights. |
 > | Microsoft. OperationalInsights/pracovní prostory/dotaz/čtení | Spouštění dotazů nad daty v pracovním prostoru |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/AACHttpRequest/číst | Čtení dat z tabulky AACHttpRequest |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AADDomainServicesAccountLogon/číst | Čtení dat z tabulky AADDomainServicesAccountLogon |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AADDomainServicesAccountManagement/číst | Čtení dat z tabulky AADDomainServicesAccountManagement |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AADDomainServicesDirectoryServiceAccess/číst | Čtení dat z tabulky AADDomainServicesDirectoryServiceAccess |
@@ -8778,6 +8893,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ABSBotRequests/číst | Čtení dat z tabulky ABSBotRequests |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ABSChannelToBotRequests/číst | Čtení dat z tabulky ABSChannelToBotRequests |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ABSDependenciesRequests/číst | Čtení dat z tabulky ABSDependenciesRequests |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/ACSAuthIncomingOperations/číst | Čtení dat z tabulky ACSAuthIncomingOperations |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ACSBillingUsage/číst | Čtení dat z tabulky ACSBillingUsage |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ACSChatIncomingOperations/číst | Čtení dat z tabulky ACSChatIncomingOperations |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ACSSMSIncomingOperations/číst | Čtení dat z tabulky ACSSMSIncomingOperations |
@@ -8799,6 +8915,8 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADFSSISPackageExecutionComponentPhases/číst | Čtení dat z tabulky ADFSSISPackageExecutionComponentPhases |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADFSSISPackageExecutionDataStatistics/číst | Čtení dat z tabulky ADFSSISPackageExecutionDataStatistics |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADFTriggerRun/číst | Čtení dat z tabulky ADFTriggerRun |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADPAudit/číst | Čtení dat z tabulky ADPAudit |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADPRequests/číst | Čtení dat z tabulky ADPRequests |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADReplicationResult/číst | Čtení dat z tabulky ADReplicationResult |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADSecurityAssessmentRecommendation/číst | Čtení dat z tabulky ADSecurityAssessmentRecommendation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADTDigitalTwinsOperation/číst | Čtení dat z tabulky ADTDigitalTwinsOperation |
@@ -8853,6 +8971,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AutoscaleScaleActionsLog/číst | Čtení dat z tabulky AutoscaleScaleActionsLog |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AWSCloudTrail/číst | Čtení dat z tabulky AWSCloudTrail |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AzureActivity/číst | Čtení dat z tabulky AzureActivity |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/AzureActivityV2/číst | Čtení dat z tabulky AzureActivityV2 |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AzureAssessmentRecommendation/číst | Čtení dat z tabulky AzureAssessmentRecommendation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AzureDevOpsAuditing/číst | Čtení dat z tabulky AzureDevOpsAuditing |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AzureDiagnostics/číst | Čtení dat z tabulky AzureDiagnostics |
@@ -9083,6 +9202,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SigninLogs/číst | Čtení dat z tabulky SigninLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SPAssessmentRecommendation/číst | Čtení dat z tabulky SPAssessmentRecommendation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SQLAssessmentRecommendation/číst | Čtení dat z tabulky SQLAssessmentRecommendation |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/SqlAtpStatus/číst | Čtení dat z tabulky SqlAtpStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SqlDataClassification/číst | Čtení dat z tabulky SqlDataClassification |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SQLQueryPerformance/číst | Čtení dat z tabulky SQLQueryPerformance |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SqlVulnerabilityAssessmentResult/číst | Čtení dat z tabulky SqlVulnerabilityAssessmentResult |
@@ -9137,6 +9257,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/VMConnection/číst | Čtení dat z tabulky VMConnection |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/VMProcess/číst | Čtení dat z tabulky VMProcess |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/W3CIISLog/číst | Čtení dat z tabulky W3CIISLog |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/W3CIISLogV2/číst | Čtení dat z tabulky W3CIISLogV2 |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WaaSDeploymentStatus/číst | Čtení dat z tabulky WaaSDeploymentStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WaaSInsiderStatus/číst | Čtení dat z tabulky WaaSInsiderStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WaaSUpdateStatus/číst | Čtení dat z tabulky WaaSUpdateStatus |
@@ -9148,6 +9269,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WindowsFirewall/číst | Čtení dat z tabulky WindowsFirewall |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WindowsServerAssessmentRecommendation/číst | Čtení dat z tabulky WindowsServerAssessmentRecommendation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WireData/číst | Čtení dat z tabulky WireData |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/WorkloadDiagnosticLogs/číst | Čtení dat z tabulky WorkloadDiagnosticLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WorkloadMonitoringPerf/číst | Čtení dat z tabulky WorkloadMonitoringPerf |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WUDOAggregatedStatus/číst | Čtení dat z tabulky WUDOAggregatedStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WUDOStatus/číst | Čtení dat z tabulky WUDOStatus |
@@ -9180,6 +9302,9 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/storageinsightconfigs/DELETE | Odstraní konfiguraci úložiště. Tím se zastaví, aby Microsoft Operational Insights číst data z účtu úložiště. |
 > | Microsoft. OperationalInsights/pracovní prostory/upgradetranslationfailures/číst | Získat protokol selhání překladu upgradu pro pracovní prostor |
 > | Microsoft. OperationalInsights/pracovní prostory/použití/číst | Načte data o využití pro pracovní prostor, včetně množství dat, které pracovní prostor přečetl. |
+> | Microsoft. operationalinsights/pracovní prostory/zobrazení/číst | Získat zobrazení pracovního prostoru. |
+> | Microsoft. operationalinsights/pracovní prostory/zobrazení/zápis | Vytvoří nebo aktualizuje zobrazení pracovního prostoru. |
+> | Microsoft. operationalinsights/pracovní prostory/zobrazení/odstranit | Odstraní zobrazení pracovního prostoru. |
 
 ### <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
@@ -10146,83 +10271,83 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. RecoveryServices/Register/Action | Zaregistruje předplatné pro daného poskytovatele prostředků. |
-> | Microsoft. recoveryservices/Locations/backupCrossRegionRestore/Action | Aktivovat obnovení mezi oblastmi |
-> | Microsoft. recoveryservices/Locations/backupCrrJob/Action | Získejte podrobnosti o úloze obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
-> | Microsoft. recoveryservices/Locations/backupCrrJobs/Action | Vypíše úlohy obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
-> | Microsoft. recoveryservices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. recoveryservices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
-> | Microsoft. recoveryservices/Locations/backupValidateFeatures/Action | Ověřit funkce |
+> | Microsoft. RecoveryServices/Locations/backupCrossRegionRestore/Action | Aktivovat obnovení mezi oblastmi |
+> | Microsoft. RecoveryServices/Locations/backupCrrJob/Action | Získejte podrobnosti o úloze obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
+> | Microsoft. RecoveryServices/Locations/backupCrrJobs/Action | Vypíše úlohy obnovení mezi oblastmi v sekundární oblasti pro Recovery Services trezor. |
+> | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
+> | Microsoft. RecoveryServices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
+> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Ověřit funkce |
 > | Microsoft. RecoveryServices/Locations/allocateStamp/Action | AllocateStamp je interní operace, kterou používá služba. |
 > | Microsoft. RecoveryServices/Locations/checkNameAvailability/Action | Ověřit dostupnost názvu prostředku je rozhraní API, které kontroluje, jestli je název prostředku dostupný. |
 > | Microsoft. RecoveryServices/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
-> | Microsoft. recoveryservices/Locations/backupAadProperties/Read | Získejte vlastnosti AAD pro ověřování ve třetí oblasti pro obnovení mezi oblastmi. |
-> | Microsoft. recoveryservices/Locations/backupCrrOperationResults/Read | Vrátí výsledek operace CRR pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/Locations/backupCrrOperationsStatus/Read | Vrátí stav operace CRR pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/Locations/backupProtectedItem/Write | Vytvořit položku chráněnou zálohováním |
-> | Microsoft. recoveryservices/Locations/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
+> | Microsoft. RecoveryServices/Locations/backupAadProperties/Read | Získejte vlastnosti AAD pro ověřování ve třetí oblasti pro obnovení mezi oblastmi. |
+> | Microsoft. RecoveryServices/Locations/backupCrrOperationResults/Read | Vrátí výsledek operace CRR pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/Locations/backupCrrOperationsStatus/Read | Vrátí stav operace CRR pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/Locations/backupProtectedItem/Write | Vytvořit položku chráněnou zálohováním |
+> | Microsoft. RecoveryServices/Locations/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
 > | Microsoft. RecoveryServices/Locations/stav operationstatus/Read | Získá stav operace pro danou operaci. |
 > | Microsoft. RecoveryServices/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
-> | Microsoft. recoveryservices/trezory/backupJobsExport/Action | Exportovat úlohy |
-> | Microsoft. recoveryservices/trezory/backupSecurityPIN/Action | Vrátí informace o bezpečnostním PIN kódu pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
+> | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
+> | Microsoft. RecoveryServices/trezory/backupSecurityPIN/Action | Vrátí informace o bezpečnostním PIN kódu pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
 > | Microsoft. RecoveryServices/trezory/Write | Operace vytvořit trezor vytvoří prostředek Azure typu trezor. |
 > | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
 > | Microsoft. RecoveryServices/trezory/odstranit | Operace odstranění trezoru odstraní zadaný prostředek Azure typu trezor. |
-> | Microsoft. recoveryservices/trezory/backupconfig/Read | Vrátí konfiguraci pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupconfig/Write | Aktualizuje konfiguraci pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupEncryptionConfigs/Read | Získá konfiguraci šifrování prostředků zálohování. |
-> | Microsoft. recoveryservices/trezory/backupEncryptionConfigs/Write | Aktualizuje konfiguraci šifrování prostředků zálohy. |
-> | Microsoft. recoveryservices/trezory/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/backupProtectionIntent/DELETE | Odstranit záložní záměr ochrany |
-> | Microsoft. recoveryservices/trezory/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
-> | Microsoft. recoveryservices/trezory/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
-> | Microsoft. recoveryservices/trezory/backupFabrics/operationResults/Read | Vrátí stav operace. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/operationsStatus/Read | Vrátí stav operace. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/DELETE | Odstraní registrovaný kontejner. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Dotázat se/Action | Dotazování na úlohy v rámci kontejneru |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/operationsStatus/Read | Načte stav operace provedené na kontejneru ochrany. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/Backup/Action | Provede zálohování chráněné položky. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/DELETE | Odstraní chráněnou položku. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPointsRecommendedForMove/Action | Získat body obnovení doporučené pro přesun na jinou úroveň |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/operationResults/číst | Načte výsledek operace provedené na chráněných položkách. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/operationsStatus/číst | Vrátí stav operace provedené na chráněných položkách. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/Action | Získejte AccessToken pro obnovení mezi oblastmi. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Move/Action | Přesunout bod obnovení do jiné úrovně |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Zřídit rychlé obnovení položky pro chráněnou položku |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/číst | Získat body obnovení pro chráněné položky. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky. |
-> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
-> | Microsoft. recoveryservices/trezory/backupJobs/Cancel/Action | Zrušit úlohu |
-> | Microsoft. recoveryservices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
-> | Microsoft. recoveryservices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
-> | Microsoft. recoveryservices/trezory/backupJobs/operationsStatus/Read | Vrátí stav operace úlohy. |
-> | Microsoft. recoveryservices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
-> | Microsoft. recoveryservices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupOperationVaultGuardProxies/DELETE | Operace odstranění proxy serveru VaultGuard Odstraní zadaný prostředek Azure typu VaultGuard proxy. |
-> | Microsoft. recoveryservices/trezory/backupOperationVaultGuardProxies/Read | Operace Get proxy serveru VaultGuard Získá objekt, který představuje prostředek Azure typu VaultGuard proxy. |
-> | Microsoft. recoveryservices/trezory/backupOperationVaultGuardProxies/Read | Získat seznam proxy serverů VaultGuard pro určitý prostředek |
-> | Microsoft. recoveryservices/trezory/backupOperationVaultGuardProxies/unlockDelete/Action | Odemčení operace odstranění proxy serveru VaultGuard odemkne další kritickou operaci odstranění. |
-> | Microsoft. recoveryservices/trezory/backupOperationVaultGuardProxies/Write | Operace vytvoření proxy serveru VaultGuard vytvoří prostředek Azure typu VaultGuard proxy. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/DELETE | Odstraní zásady ochrany. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/Write | Vytvoří zásady ochrany. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
-> | Microsoft. recoveryservices/trezory/backupPolicies/operace/číst | Získá stav operace zásad. |
-> | Microsoft. recoveryservices/trezory/backupProtectableItems/Read | Vrátí seznam všech chráněných položek. |
-> | Microsoft. recoveryservices/trezory/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
-> | Microsoft. recoveryservices/trezory/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
-> | Microsoft. recoveryservices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
-> | Microsoft. recoveryservices/trezory/backupstorageconfig/Read | Vrátí konfiguraci úložiště pro Recovery Services trezor. |
-> | Microsoft. recoveryservices/trezory/backupstorageconfig/Write | Aktualizuje konfiguraci úložiště pro trezor Recovery Services. |
-> | Microsoft. recoveryservices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupconfig/Read | Vrátí konfiguraci pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupconfig/Write | Aktualizuje konfiguraci pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupEncryptionConfigs/Read | Získá konfiguraci šifrování prostředků zálohování. |
+> | Microsoft. RecoveryServices/trezory/backupEncryptionConfigs/Write | Aktualizuje konfiguraci šifrování prostředků zálohy. |
+> | Microsoft. RecoveryServices/trezory/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/DELETE | Odstranit záložní záměr ochrany |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/operationResults/Read | Vrátí stav operace. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/operationsStatus/Read | Vrátí stav operace. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/DELETE | Odstraní registrovaný kontejner. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Dotázat se/Action | Dotazování na úlohy v rámci kontejneru |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/operationsStatus/Read | Načte stav operace provedené na kontejneru ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Backup/Action | Provede zálohování chráněné položky. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/DELETE | Odstraní chráněnou položku. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPointsRecommendedForMove/Action | Získat body obnovení doporučené pro přesun na jinou úroveň |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationResults/číst | Načte výsledek operace provedené na chráněných položkách. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationsStatus/číst | Vrátí stav operace provedené na chráněných položkách. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/Action | Získejte AccessToken pro obnovení mezi oblastmi. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Move/Action | Přesunout bod obnovení do jiné úrovně |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Zřídit rychlé obnovení položky pro chráněnou položku |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/číst | Získat body obnovení pro chráněné položky. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky. |
+> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
+> | Microsoft. RecoveryServices/trezory/backupJobs/Cancel/Action | Zrušit úlohu |
+> | Microsoft. RecoveryServices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
+> | Microsoft. RecoveryServices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
+> | Microsoft. RecoveryServices/trezory/backupJobs/operationsStatus/Read | Vrátí stav operace úlohy. |
+> | Microsoft. RecoveryServices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
+> | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/DELETE | Operace odstranění proxy serveru VaultGuard Odstraní zadaný prostředek Azure typu VaultGuard proxy. |
+> | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/Read | Operace Get proxy serveru VaultGuard Získá objekt, který představuje prostředek Azure typu VaultGuard proxy. |
+> | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/Read | Získat seznam proxy serverů VaultGuard pro určitý prostředek |
+> | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/unlockDelete/Action | Odemčení operace odstranění proxy serveru VaultGuard odemkne další kritickou operaci odstranění. |
+> | Microsoft. RecoveryServices/trezory/backupOperationVaultGuardProxies/Write | Operace vytvoření proxy serveru VaultGuard vytvoří prostředek Azure typu VaultGuard proxy. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/DELETE | Odstraní zásady ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/Write | Vytvoří zásady ochrany. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
+> | Microsoft. RecoveryServices/trezory/backupPolicies/operace/číst | Získá stav operace zásad. |
+> | Microsoft. RecoveryServices/trezory/backupProtectableItems/Read | Vrátí seznam všech chráněných položek. |
+> | Microsoft. RecoveryServices/trezory/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
+> | Microsoft. RecoveryServices/trezory/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
+> | Microsoft. RecoveryServices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
+> | Microsoft. RecoveryServices/trezory/backupstorageconfig/Read | Vrátí konfiguraci úložiště pro Recovery Services trezor. |
+> | Microsoft. RecoveryServices/trezory/backupstorageconfig/Write | Aktualizuje konfiguraci úložiště pro trezor Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/certifikáty/zapisovat | Operace aktualizovat certifikát prostředku aktualizuje certifikát přihlašovacích údajů k prostředku nebo úložišti. |
 > | Microsoft. RecoveryServices/trezory/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
 > | Microsoft. RecoveryServices/trezory/extendedInformation/Write | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
@@ -10231,14 +10356,14 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/trezory/monitoringAlerts/Write | Vyřeší upozornění. |
 > | Microsoft. RecoveryServices/trezory/monitoringConfigurations/Read | Získá konfiguraci oznámení trezoru služby Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/monitoringConfigurations/Write | Nakonfiguruje e-mailová oznámení pro trezor služby Recovery Services. |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/DELETE | Počkejte několik minut a potom operaci opakujte. Pokud problém přetrvá, obraťte se na podporu Microsoftu. |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/ověřit/akci | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/Write | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/operationsStatus/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnections/DELETE | Odstranění požadavků na soukromý koncový bod Toto volání provádí správce zálohování. |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnections/Write | Schvalte nebo odmítněte požadavky na soukromý koncový bod. Toto volání provádí správce zálohování. |
-> | Microsoft. recoveryservices/trezory/privateEndpointConnections/operationsStatus/Read | Vrátí stav operace pro připojení privátního koncového bodu. |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/DELETE | Počkejte několik minut a potom operaci opakujte. Pokud problém přetrvá, obraťte se na podporu Microsoftu. |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/ověřit/akci | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/Write | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/operationsStatus/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnections/DELETE | Odstranění požadavků na soukromý koncový bod Toto volání provádí správce zálohování. |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnections/Write | Schvalte nebo odmítněte požadavky na soukromý koncový bod. Toto volání provádí správce zálohování. |
+> | Microsoft. RecoveryServices/trezory/privateEndpointConnections/operationsStatus/Read | Vrátí stav operace pro připojení privátního koncového bodu. |
 > | Microsoft. RecoveryServices/trezory/registeredIdentities/Write | Operaci kontejneru registrovat službu lze použít k registraci kontejneru pomocí služby Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
 > | Microsoft. RecoveryServices/trezory/registeredIdentities/DELETE | Operaci zrušení registrace kontejneru lze použít k odregistraci kontejneru. |
@@ -10359,7 +10484,7 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/trezory/replicationVaultSettings/Read | Přečíst vše  |
 > | Microsoft. RecoveryServices/trezory/replicationVaultSettings/Write | Vytvořit nebo aktualizovat libovolnou  |
 > | Microsoft. RecoveryServices/trezory/replicationvCenters/Read | Číst libovolný servery vCenter |
-> | Microsoft. recoveryservices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/používání/čtení | Čtení všech použití trezoru |
 > | Microsoft. RecoveryServices/trezory/vaultTokens/Read | Operaci tokenu trezoru jde použít k získání tokenu trezoru pro operace back-endu na úrovni trezoru. |
 
@@ -10500,7 +10625,7 @@ Služba Azure: přehledy monitorování Microsoftu
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Ostatní
+## <a name="other"></a>Jiné
 
 ### <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
@@ -10527,6 +10652,7 @@ Služba Azure: [virtuální plocha Windows](../virtual-desktop/index.yml)
 > | Microsoft. DesktopVirtualization/hostpools/Read | Číst hostpools |
 > | Microsoft. DesktopVirtualization/hostpools/Write | Zápis hostpools |
 > | Microsoft. DesktopVirtualization/hostpools/DELETE | Odstranit hostpools |
+> | Microsoft. DesktopVirtualization/hostpools/retrieveRegistrationToken/Action | Načíst registrační token pro fond hostitelů |
 > | Microsoft. DesktopVirtualization/hostpools/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky. |
 > | Microsoft. DesktopVirtualization/hostpools/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky. |
 > | Microsoft. DesktopVirtualization/hostpools/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly. |

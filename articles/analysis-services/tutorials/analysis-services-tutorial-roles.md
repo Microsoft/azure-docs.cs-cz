@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92018691"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
@@ -27,7 +27,7 @@ ms.locfileid: "92018691"
 
 Další informace o zabezpečení uživatelů ve službě Azure Analysis Services najdete v článku o [ověřování a oprávněních uživatelů](../analysis-services-manage-users.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ve vašem předplatném je služba Azure Active Directory.
 - Ve vašem předplatném je vytvořený [server Azure Analysis Services](../analysis-services-create-server.md).
@@ -136,7 +136,7 @@ V rámci tohoto úkolu použijete příkaz [Create](/analysis-services/tmsl/crea
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Provedete to tak **Role Properties**, že pomocí  >  **členství ve** vlastnostech role odeberete uživatelské účty nebo kliknete pravým tlačítkem na roli a pak kliknete na **Odstranit**.
+Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Provedete to tak , že pomocí  >  **členství ve** vlastnostech role odeberete uživatelské účty nebo kliknete pravým tlačítkem na roli a pak kliknete na **Odstranit**.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, snímač, SDK, hloubka kamery, TOF, zásady, výkon, neplatnost
 ms.openlocfilehash: 22f04b983ed7c6a2ab19a5c1c709621655ee31c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277157"
 ---
 # <a name="azure-kinect-dk-depth-camera"></a>Hloubka kamery Azure Kinect DK
@@ -56,7 +56,7 @@ Systematická chyba je definována jako rozdíl mezi měřenou hloubkou po odebr
 
 ![Systematická chyba hloubky](./media/concepts/depth-camera-systematic-error.png)
 
-Kde *d<sub>t</sub> * označuje hloubku míry v čase *t*, *N* je počet snímků použitých v postupu průměrování a *d<sub>gt</sub> * je hloubka pravdivosti základní desky.
+Kde *d <sub>t</sub>* označuje hloubku míry v čase *t*, *N* je počet snímků použitých v postupu průměrování a *d <sub>gt</sub>* je hloubka pravdivosti základní desky.
 
 Specifikace systematické chyby kamery hloubky se vylučuje rušení více cest (MPI). MPI je v případě, že jeden senzor obrazu integruje světlo, který se projeví více než jedním objektem. MPI je částečně zmírňovaná v naší hloubce fotoaparátu pomocí vyšších četností modulace a neplatnosti hloubky, kterou zavádíme později.
 
@@ -66,7 +66,7 @@ Předpokládejme, že vezmeme 100 imagí stejného objektu, aniž byste museli p
 
 ![Náhodná chyba hloubky](./media/concepts/depth-camera-random-error.png)
 
-Kde *N* označuje počet měření hloubky, představuje *d<sub>t</sub> * hloubkové měření v čase *t* a *d* značí střední hodnotu vypočítanou ve všech měřeních hloubky *d<sub>t</sub>*.
+Kde *N* označuje počet měření hloubky, představuje *d <sub>t</sub>* hloubkové měření v čase *t* a *d* značí střední hodnotu vypočítanou ve všech měřeních hloubky *d <sub>t</sub>*.
 
 ## <a name="invalidation"></a>Zneplatnění
 

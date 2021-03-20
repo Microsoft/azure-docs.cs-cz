@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/16/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9e248c10c15ba0318c6b23fcbf88be04dd9896a2
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 1255c4962de1fce19efa9c0b0e1d28fc348463ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573060"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580143"
 ---
 # <a name="embedded-sign-in-experience"></a>Vložené prostředí pro přihlašování
 
@@ -35,7 +36,7 @@ Při použití prvku IFRAME zvažte následující:
 - Vložené přihlášení podporuje pouze místní účty. Většina poskytovatelů sociálních identit (například Google a Facebook) blokuje jejich přihlašovací stránky při jejich vykreslování ve vložených rámečcích.
 - Vzhledem k tomu, že soubory cookie relací Azure AD B2C v rámci prvku IFRAME jsou považovány za soubory cookie třetích stran, některé prohlížeče (například Safari nebo Chrome v režimu anonymním) zablokují nebo vymažou tyto soubory cookie, což vede k nežádoucímu uživatelskému prostředí. Chcete-li tomuto problému zabránit, ujistěte se, že název domény aplikace a vaše Azure AD B2C doména mají *stejný původ*. Pokud chcete použít stejný původ, povolte pro klienta Azure AD B2C [vlastní domény](custom-domain.md) a pak nakonfigurujte svou webovou aplikaci se stejným zdrojem. Například aplikace hostovaná na https://app.contoso.com má stejný původ jako Azure AD B2C běžící na https://login.contoso.com .
 
-## <a name="perquisites"></a>Možnost
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončete kroky v části [Začínáme s vlastními zásadami v Active Directory B2C](custom-policy-get-started.md).
 * [Povolte vlastní domény](custom-domain.md) pro vaše zásady.
@@ -87,7 +88,7 @@ div.api_container{
 
 V některých případech můžete chtít sdělit aplikaci, na které Azure AD B2C stránka aktuálně prezentuje. Když třeba uživatel vybere možnost registrace, možná budete chtít, aby aplikace reagovala skrytím odkazů pro přihlášení pomocí účtu sociální sítě nebo úpravou velikosti prvku IFRAME.
 
-Pro upozornění aplikace na aktuální Azure AD B2C stránku, [povolte zásady pro JavaScript](javascript-samples.md)a pak použijte následné zprávy HTML5. Následující kód jazyka JavaScript pošle zprávu odeslání do aplikace pomocí `signUp` :
+Pro upozornění aplikace na aktuální Azure AD B2C stránku, [povolte zásady pro JavaScript](./javascript-and-page-layout.md)a pak použijte následné zprávy HTML5. Následující kód jazyka JavaScript pošle zprávu odeslání do aplikace pomocí `signUp` :
 
 ```javascript
 window.parent.postMessage("signUp", '*');
@@ -155,5 +156,5 @@ Podívejte se na následující související články:
 
 - [Přizpůsobení uživatelského rozhraní](customize-ui.md)
 - Odkaz na element [RelyingParty](relyingparty.md)
-- [Povolit zásady pro JavaScript](javascript-samples.md)
+- [Povolit zásady pro JavaScript](./javascript-and-page-layout.md)
 - [Ukázky kódu](code-samples.md)

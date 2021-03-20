@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91275179"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indexování tabulek z Azure Table Storage pomocí Azure Kognitivní hledání
@@ -70,7 +70,7 @@ Další informace o rozhraní API Create DataSource najdete v tématu [Create Da
 Přihlašovací údaje pro tabulku můžete zadat jedním z těchto způsobů: 
 
 - **Připojovací řetězec spravované identity**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` Tento připojovací řetězec nevyžaduje klíč účtu, ale musíte postupovat podle pokynů pro [nastavení připojení k účtu Azure Storage pomocí spravované identity](search-howto-managed-identities-storage.md).
-- **Úplný přístup k účtu úložiště s úplným přístupem**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` připojovací řetězec můžete z Azure Portal získat tak, že v okně nastavení **účtu úložiště**zadáte  >  **Settings**  >  **klíče** pro účty úložiště (pro účty Classic) nebo **Settings**  >  **přístupové klíče** nastavení (pro účty Azure Resource Manager úložiště).
+- **Úplný přístup k účtu úložiště s úplným přístupem**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` připojovací řetězec můžete z Azure Portal získat tak, že v okně nastavení **účtu úložiště** zadáte  >    >  **klíče** pro účty úložiště (pro účty Classic) nebo   >  **přístupové klíče** nastavení (pro účty Azure Resource Manager úložiště).
 - **Připojovací řetězec sdíleného přístupového podpisu účtu úložiště**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` sdílený přístupový podpis by měl mít oprávnění list a číst na kontejnerech (v tomto případě tabulky) a objekty (řádky tabulky).
 -  **Sdílený přístupový podpis tabulky**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` sdílený přístupový podpis by měl mít v tabulce oprávnění Query (čtení).
 

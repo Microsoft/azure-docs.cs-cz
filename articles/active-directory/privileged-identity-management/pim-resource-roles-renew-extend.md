@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f0d22fc540aae448a3da731b709a3b4ea13a69d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84742229"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>Prodloužit nebo prodloužit přiřazení rolí prostředků Azure v Privileged Identity Management
@@ -43,7 +43,7 @@ Následující kroky popisují proces pro vyžádání, řešení nebo správu r
 
 ### <a name="self-extend-expiring-assignments"></a>Prodloužení platnosti přiřazení samy sebe
 
-Uživatelé nebo skupiny, kteří jsou přiřazeni k roli, mohou rozhodnou přiřazení **Eligible** rolí na **Active** stránce **Moje role** v prostředku a ze stránky **role** na nejvyšší úrovni na portálu Privileged Identity Management. Uživatelé nebo skupiny můžou požádat o prodloužení oprávněných a aktivních (přiřazených) rolí, jejichž platnost vyprší během příštích 14 dnů.
+Uživatelé nebo skupiny, kteří jsou přiřazeni k roli, mohou rozhodnou přiřazení  rolí na  stránce **Moje role** v prostředku a ze stránky **role** na nejvyšší úrovni na portálu Privileged Identity Management. Uživatelé nebo skupiny můžou požádat o prodloužení oprávněných a aktivních (přiřazených) rolí, jejichž platnost vyprší během příštích 14 dnů.
 
 ![Prostředky Azure – stránka moje role se seznamem oprávněných rolí se sloupcem akce](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 

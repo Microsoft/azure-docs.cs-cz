@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 164e06024844fb5262586450b737db9c807e373a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 36cb5720e409c86fcb4bc1a97863e5d3523cd3bc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099101"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588745"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Vytvoření vlastní domény na Azure front-SKU Standard/Premium SKU (Preview) pomocí Azure Portal
 
@@ -30,7 +30,7 @@ Po vytvoření profilu služby Azure front-endu Standard nebo Premium bude mít 
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v tématu [**doplňujících podmínek použití pro Microsoft Azure**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [rychlý Start: Vytvoření front-dveří Standard/Premium](create-front-door-portal.md).
 
 * Pokud ještě nemáte vlastní doménu, musíte ji nejdřív koupit se zprostředkovatelem domény. Příklad najdete v tématu [Nákup vlastního názvu domény](../../app-service/manage-custom-dns-buy-domain.md).
@@ -38,6 +38,9 @@ Po vytvoření profilu služby Azure front-endu Standard nebo Premium bude mít 
 * Pokud k hostování [domén DNS](../../dns/dns-overview.md)používáte Azure, musíte delegovat DNS (Domain Name System) poskytovatele domény na Azure DNS. Další informace najdete v tématu [delegování domény na Azure DNS](../../dns/dns-delegate-domain-azure-dns.md). V opačném případě, pokud ke zpracování vaší domény DNS používáte poskytovatele domény, musíte doménu ověřit ručně tak, že zadáte výzvy záznamy TXT DNS.
 
 ## <a name="add-a-new-custom-domain"></a>Přidat novou vlastní doménu
+
+> [!NOTE]
+> V Public Preview se použití Azure DNS k vytváření domén Apex nepodporuje na úrovni Standard/Premium pro Azure. Existují další poskytovatelé DNS, kteří podporují sloučení CNAME nebo dohledávání DNS, které umožní použití domén APEX pro službu Azure front-Premium Standard/Premium.
 
 Část vlastní doména spravovaná doménami na portálu. Vlastní doménu je možné vytvořit a ověřit před přidružením ke koncovému bodu. K vlastní doméně a jejím subdoménám lze současně přidružit pouze jeden koncový bod. Pro různé přední dveře ale můžete použít různé subdomény ze stejné vlastní domény. Můžete také namapovat vlastní domény s různými subdoménami do stejného koncového bodu služby front-dveří.
 

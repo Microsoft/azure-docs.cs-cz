@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75609770"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurace Reliable Actors--KVSActorStateProvider
@@ -41,10 +41,10 @@ Výchozí konfigurace je generována šablonou sady Visual Studio a měla by sta
 &lt;Jméno objektu actor &gt; ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0,015 |Časové období, po které se Replikátor v sekundárním čekání po přijetí operace před odesláním zpět na primární. Jakékoli další potvrzení, která se mají odeslat pro operace zpracovávané v tomto intervalu, se odešlou jako jedna odpověď. |
-| ReplicatorEndpoint |Není k dispozici |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
+| ReplicatorEndpoint |– |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
 | RetryInterval |Sekundy |5 |Časové období, po kterém Replikátor znovu přenáší zprávu, pokud neobdrží potvrzení operace. |
 | MaxReplicationMessageSize |Bajty |50 MB |Maximální velikost replikačních dat, která se dají přenést v jedné zprávě |
 | MaxPrimaryReplicationQueueSize |Počet operací |1024 |Maximální počet operací v primární frontě. Když primární Replikátor dostane potvrzení ze všech sekundárních replikátorů, operace se uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
@@ -58,7 +58,7 @@ Výchozí konfigurace je generována šablonou sady Visual Studio a měla by sta
 &lt;Jméno objektu actor &gt; ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurací
-| Název | Jednotka | Výchozí hodnota | Poznámky |
+| Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |Milisekund |200 |Nastaví maximální interval dávkování pro potvrzení trvalého místního úložiště. |
 | MaxVerPages |Počet stránek |16384 |Maximální počet stránek verze v místní databázi úložiště Určuje maximální počet nezpracovaných transakcí. |

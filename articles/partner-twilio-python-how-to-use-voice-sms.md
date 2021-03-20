@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000432"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580943"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Pythonu
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -86,14 +86,14 @@ Nejprve [nastavte nový virtuální počítač Azure Linux] [azure_vm_setup], kt
 ### <a name="add-an-incoming-rule"></a>Přidat příchozí pravidlo
   1. Přejít na stránku [skupina zabezpečení sítě] [azure_nsg].
   2. Vyberte skupinu zabezpečení sítě, která odpovídá vašemu virtuálnímu počítači.
-  3. Přidat a **odchozí pravidlo** pro **port 80**. Ujistěte se, že povolíte příchozí přenos z libovolné adresy.
+  3. Přidejte **odchozí pravidlo** pro **port 80**. Ujistěte se, že povolíte příchozí přenos z libovolné adresy.
 
 ### <a name="set-the-dns-name-label"></a>Nastavit popisek názvu DNS
   1. Přejít na stránku [Veřejné IP adresy] [azure_ips].
   2. Vyberte veřejnou IP adresu, která odpovídá vašemu virtuálnímu počítači.
   3. V **konfiguračním** oddílu nastavte **popisek název DNS** . V případě tohoto příkladu bude vypadat nějak takto: *-Domain-Label*. centralus.cloudapp.Azure.com
 
-Až budete schopni připojit se přes SSH k virtuálnímu počítači, můžete nainstalovat webovou architekturu podle vlastního výběru (dvě nejužitečnější v Pythonu a [Flask](http://flask.pocoo.org/) [Django](https://www.djangoproject.com)). Jednu z nich můžete nainstalovat pouhým spuštěním `pip install` příkazu.
+Až budete schopni připojit se přes SSH k virtuálnímu počítači, můžete nainstalovat webovou architekturu podle vlastního výběru (dvě nejužitečnější v Pythonu a [](http://flask.pocoo.org/) [Django](https://www.djangoproject.com)). Jednu z nich můžete nainstalovat pouhým spuštěním `pip install` příkazu.
 
 Mějte na paměti, že jsme nakonfigurovali virtuální počítač tak, aby povoloval provoz jenom na portu 80. Nezapomeňte ale nakonfigurovat aplikaci tak, aby používala tento port.
 
@@ -151,6 +151,9 @@ call = client.calls.create(to=to_number,
                            url=url + urlencode({'Message': message}))
 print(call.sid)
 ```
+
+> [!IMPORTANT]
+> Telefonní čísla by se měla formátovat znakem "+" a kódem země. Například + 16175551212 (formát E. 164). Twilio budou také přijímat neformátovaná čísla v USA. Například (415) 555-1212 nebo 415-555-1212.
 
 Jak bylo zmíněno, tento kód používá Twilio web k vrácení TwiML odpovědi. Místo toho můžete k poskytnutí odpovědi TwiML použít svůj vlastní web. Další informace najdete v tématu [jak poskytnout TwiML odpovědi z vašeho vlastního](#howto_provide_twiml_responses)webu.
 

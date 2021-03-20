@@ -7,10 +7,10 @@ ms.date: 03/27/2018
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a36425acf42a469c7f48b2e954bdacfdfcce1b10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89011476"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Přidání protokolování do aplikace Service Fabric
@@ -93,7 +93,7 @@ internal sealed class ServiceEventSource : EventSource
 
 Použití hybridní struktury strukturovaných a obecných instrumentací také může fungovat dobře. Strukturovaná instrumentace se používá pro hlášení chyb a metrik. Obecné události lze použít pro podrobné protokolování, které technici spotřebují při řešení potíží.
 
-## <a name="microsoftextensionslogging"></a>Microsoft. Extensions. Logging
+## <a name="microsoftextensionslogging"></a>Microsoft.Extensions.Logging
 
 Protokolování ASP.NET Core ([balíček NuGet Microsoft. Extensions. Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) je protokolovací rozhraní, které pro vaši aplikaci poskytuje standardní protokolovací rozhraní API. Podpora pro jiné back-endy protokolování se dá připojit k ASP.NET Core protokolování. Získáte tak širokou škálu podpory pro protokolování ve vaší aplikaci, aniž byste museli měnit mnohem více kódu.
 
@@ -126,7 +126,7 @@ Protokolování ASP.NET Core ([balíček NuGet Microsoft. Extensions. Logging](h
 
 Někteří poskytovatelé třetích stran používají přístup popsaný v předchozí části, včetně [Serilog](https://serilog.net/), [nLOG](https://nlog-project.org/)a [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Každé z nich můžete připojit k ASP.NET Core protokolování, nebo je můžete použít samostatně. Serilog má funkci, která rozšiřuje všechny zprávy odesílané z protokolovacího nástroje. Tato funkce může být užitečná pro výstup názvu služby, typu a informací o oddílu. Pokud chcete tuto funkci použít v infrastruktuře ASP.NET Core, proveďte tyto kroky:
 
-1. Přidejte rozhraní **Serilog**, **Serilog. Extensions. Logging**, **Serilog. umyvadla. přepisy**a **Serilog. sinks. pozorovatelované** balíčky NuGet do projektu. 
+1. Přidejte rozhraní **Serilog**, **Serilog. Extensions. Logging**, **Serilog. umyvadla. přepisy** a **Serilog. sinks. pozorovatelované** balíčky NuGet do projektu. 
 2. Vytvořte `LoggerConfiguration` instanci protokolovacího nástroje a.
 
    ```csharp
@@ -139,7 +139,7 @@ Někteří poskytovatelé třetích stran používají přístup popsaný v pře
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
    ```
 
-4. V konstruktoru služby vytvoří rozšíření vlastností pro **ServiceType**, **ServiceName**, **PartitionID**a **InstanceId**.
+4. V konstruktoru služby vytvoří rozšíření vlastností pro **ServiceType**, **ServiceName**, **PartitionID** a **InstanceId**.
 
    ```csharp
    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)

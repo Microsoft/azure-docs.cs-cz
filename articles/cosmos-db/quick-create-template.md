@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339661"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Rychlý Start: vytvoření Azure Cosmos DB a kontejneru pomocí šablony ARM
@@ -64,18 +64,18 @@ Další příklady šablon Azure Cosmos DB najdete v [galerii šablon rychlý St
     Pokud není zadaný, použijte k vytvoření prostředků Azure Cosmos výchozí hodnoty.
 
     * **Předplatné:** Vyberte předplatné Azure.
-    * **Skupina prostředků** : vyberte **vytvořit novou** , zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**.
+    * **Skupina prostředků**: vyberte **vytvořit novou**, zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**.
     * **Umístění:** Vyberte prosím umístění.  Například **USA – střed**.
-    * **Název účtu** : zadejte název účtu Azure Cosmos. Musí být globálně jedinečný.
-    * **Umístění** : zadejte umístění, kde chcete vytvořit účet Azure Cosmos. Účet Azure Cosmos může být ve stejném umístění jako skupina prostředků.
-    * **Primární oblast** : primární oblast repliky pro účet Azure Cosmos.
-    * **Sekundární oblast** : sekundární oblast repliky pro účet Azure Cosmos.
-    * **Výchozí úroveň konzistence** : výchozí úroveň konzistence pro účet Azure Cosmos.
-    * **Maximální předpona aktuálnosti** : maximální počet zastaralých požadavků. Vyžaduje se pro BoundedStaleness.
-    * **Maximální délka intervalu v sekundách** : maximální prodleva. Vyžaduje se pro BoundedStaleness.
-    * **Název databáze** : název databáze Azure Cosmos.
-    * **Název kontejneru** : název kontejneru Azure Cosmos.
-    * **Propustnost** : propustnost kontejneru, minimální hodnota propustnosti je 400 ru/s.
+    * **Název účtu**: zadejte název účtu Azure Cosmos. Musí být globálně jedinečný.
+    * **Umístění**: zadejte umístění, kde chcete vytvořit účet Azure Cosmos. Účet Azure Cosmos může být ve stejném umístění jako skupina prostředků.
+    * **Primární oblast**: primární oblast repliky pro účet Azure Cosmos.
+    * **Sekundární oblast**: sekundární oblast repliky pro účet Azure Cosmos.
+    * **Výchozí úroveň konzistence**: výchozí úroveň konzistence pro účet Azure Cosmos.
+    * **Maximální předpona aktuálnosti**: maximální počet zastaralých požadavků. Vyžaduje se pro BoundedStaleness.
+    * **Maximální délka intervalu v sekundách**: maximální prodleva. Vyžaduje se pro BoundedStaleness.
+    * **Název databáze**: název databáze Azure Cosmos.
+    * **Název kontejneru**: název kontejneru Azure Cosmos.
+    * **Propustnost**: propustnost kontejneru, minimální hodnota propustnosti je 400 ru/s.
     * **Souhlasím s podmínkami a ujednáními uvedenými nahoře:** Toto políčko zaškrtněte.
 
 3. Vyberte **Koupit**. Po úspěšném nasazení účtu Azure Cosmos se zobrazí oznámení:

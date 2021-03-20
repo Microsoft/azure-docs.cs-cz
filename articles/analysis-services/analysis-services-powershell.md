@@ -8,17 +8,17 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 28f414c5eaaea7b987f2c3694cb8fc73b70838e9
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92018759"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Správa služby Azure Analysis Services pomocí PowerShellu
 
 Tento článek popisuje rutiny prostředí PowerShell, které se používají k provádění úloh správy Azure Analysis Services serveru a databáze. 
 
-Úlohy správy prostředků serveru, jako je vytvoření nebo odstranění serveru, pozastavení nebo obnovení operací serveru nebo změna úrovně služby (vrstvy) pomocí rutin Azure Analysis Services. Další úlohy týkající se správy databází, jako je přidání nebo odebrání členů role, zpracování nebo dělení, obsahují rutiny, které jsou součástí stejného modulu SqlServer jako SQL Server Analysis Services.
+Úlohy správy prostředků serveru, jako je vytvoření nebo odstranění serveru, pozastavení nebo obnovení operací serveru nebo změna úrovně služby (vrstvy) pomocí rutin Azure Analysis Services. Další úlohy týkající se správy databází, jako je přidání nebo odebrání členů role, zpracování nebo dělení, obsahují rutiny, které jsou součástí stejného modulu SqlServer jako Služba Analysis Services serveru SQL.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,7 +35,7 @@ Dokumentace – [reference AZ. AnalysisServices](/powershell/module/az.analysiss
 
 ## <a name="database-operations"></a>Databázové operace
 
-Operace Azure Analysis Services Database používají stejný modul SqlServer jako SQL Server Analysis Services. Některé rutiny ale nejsou podporované pro Azure Analysis Services. 
+Operace Azure Analysis Services Database používají stejný modul SqlServer jako Služba Analysis Services serveru SQL. Některé rutiny ale nejsou podporované pro Azure Analysis Services. 
 
 Modul SqlServer poskytuje rutiny pro správu databáze specifické pro úlohu a také rutinu pro obecné účely Invoke-ASCmd, která přijímá dotaz nebo skript TMSL (Tabular model Scripting Language). Pro Azure Analysis Services jsou podporovány následující rutiny v modulu SqlServer.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 7021367e1230573343ddf57ccd399d998ad5280e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339270"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Čtení z kanálu změn služby Azure Cosmos DB
@@ -29,7 +29,7 @@ Při čtení z kanálu změn Azure Cosmos DB obvykle doporučujeme použít mode
 - Vyrovnávání zatížení mezi více klienty, které spotřebovávají změny. Například pokud jeden klient nemůže uchovávat změny zpracování a další má dostupnou kapacitu.
 - [Zpracování chyb](change-feed-processor.md#error-handling). Například automatické opakování neúspěšných změn, které nebyly správně zpracovány po neošetřené výjimce v kódu nebo přechodný problém sítě.
 
-Většina scénářů, které používají kanál změny Azure Cosmos DB, bude používat jednu z možností modelu nabízených oznámení. Existují však situace, kdy můžete chtít další řízení nízké úrovně pro model Pull. Mezi ně patří:
+Většina scénářů, které používají kanál změny Azure Cosmos DB, bude používat jednu z možností modelu nabízených oznámení. Existují však situace, kdy můžete chtít další řízení nízké úrovně pro model Pull. Tady jsou některé z nich:
 
 - Čtení změn z konkrétního klíče oddílu
 - Řízení tempa, ve kterém klient přijímá změny ke zpracování

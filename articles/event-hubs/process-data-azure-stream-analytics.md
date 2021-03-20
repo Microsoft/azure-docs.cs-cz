@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak zpracovávat data z centra událo
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85312900"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Zpracování dat z centra událostí pomocí Azure Stream Analytics 
@@ -21,7 +21,7 @@ Tady jsou klíčové výhody služby Azure Event Hubs a Integrace Azure Stream A
 
 ## <a name="end-to-end-flow"></a>Koncový tok
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 1. Přejděte do **oboru názvů Event Hubs** a potom přejděte do **centra událostí**, které obsahuje příchozí data. 
 1. Na stránce centrum událostí vyberte **zpracovat data** .  
 

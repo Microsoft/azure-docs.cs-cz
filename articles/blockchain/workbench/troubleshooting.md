@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: troubleshooting
 ms.reviewer: brendal
 ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85212849"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Řešení potíží s Azure blockchain Workbench Preview
@@ -44,8 +44,8 @@ Skript přijímá následující parametry:
 
 | Parametr  | Popis | Povinné |
 |---------|---------|----|
-| SubscriptionID | SubscriptionID pro vytvoření nebo vyhledání všech prostředků. | Ano |
-| ResourceGroupName | Název skupiny prostředků Azure, do které se nasadila aplikace blockchain Workbench | Ano |
+| SubscriptionID | SubscriptionID pro vytvoření nebo vyhledání všech prostředků. | Yes |
+| ResourceGroupName | Název skupiny prostředků Azure, do které se nasadila aplikace blockchain Workbench | Yes |
 | OutputDirectory | Cesta pro vytvoření výstupu Soubor ZIP. Pokud není zadaný, použije se ve výchozím nastavení aktuální adresář. | No |
 | LookbackHours | Počet hodin, které se mají použít při přijímání telemetrie Výchozí hodnota je 24 hodin. Maximální hodnota je 90 hodin. | No |
 | OmsSubscriptionId | ID předplatného, kde se nasadí protokoly Azure Monitor Tento parametr předejte jenom v případě, že protokoly Azure Monitor pro síť blockchain se nasazují mimo skupinu prostředků blockchain Workbench.| No |
@@ -56,7 +56,7 @@ Skript přijímá následující parametry:
 
 Výstupní soubor ZIP obsahuje následující strukturu složek:
 
-| Složka nebo soubor | Popis  |
+| Složka nebo soubor | Description  |
 |---------|---------|
 | \Summary.txt | Souhrn systému |
 | \Metrics\blockchain | Metriky o blockchain |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97797124"
 ---
 # <a name="what-are-application-templates"></a>Co jsou šablony aplikací?
@@ -43,7 +43,7 @@ Azure IoT Central je nezávislá aplikační platforma pro odvětví. Šablony a
   - Analýza v obchodě – rezervace
   - Správa inteligentních inventářů
   - Analýza videa – detekce objektů a pohybu
-- [Energetický sektor](../energy/overview-iot-central-energy.md)
+- [Konfiguruje](../energy/overview-iot-central-energy.md)
   - Monitorování inteligentních měřičů
   - Sledování panelu slunečníku
 - [Státní správa](../government/overview-iot-central-government.md)

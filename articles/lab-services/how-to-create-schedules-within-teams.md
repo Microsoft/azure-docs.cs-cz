@@ -4,10 +4,10 @@ description: Naučte se vytvářet plány testovacích služeb v rámci týmů.
 ms.topic: article
 ms.date: 10/07/2020
 ms.openlocfilehash: 202b202f99868875a51d13e95fbcac677246cc05
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92042333"
 ---
 # <a name="create-and-manage-lab-services-schedules-within-teams"></a>Vytváření a Správa plánů testovacích služeb v rámci týmů
@@ -28,7 +28,7 @@ Uživatelé můžou plány testovacího prostředí vytvářet, upravovat a odst
 ## <a name="automatic-shutdown-and-disconnect-settings"></a>Nastavení automatického vypnutí a odpojení
 
 Můžete povolit několik funkcí řízení nákladů na automatické vypnutí, abyste proaktivně zabránili dalším nákladům, když se virtuální počítače aktivně nepoužívají. Kombinace následujících tří funkcí automatického vypnutí a odpojení zachytává většinu případů, kdy uživatelé omylem odejdou z virtuálních počítačů, na kterých běží:
- 
+ 
 - Automaticky odpojí uživatele z virtuálních počítačů, které operační systém považuje za nečinné.
 - Automaticky vypne virtuální počítače, když se uživatelé odpojí.
 - Automaticky vypne virtuální počítače, které jsou spuštěné, ale uživatelé se nepřipojí.

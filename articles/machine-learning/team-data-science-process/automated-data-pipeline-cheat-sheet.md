@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
 ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250636"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Tahák k automatizovanému datovému kanálu pro predikce služby Azure Machine Learning
@@ -27,7 +27,7 @@ Tento list tahák vás provede rozhodnutími, která potřebujete, a nabízí od
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Stažení tahákho listu Machine Learning automatizovaného datového kanálu
 Po stažení listu tahák ho můžete vytisknout ve velikosti Tabloid (11 x 17 v.).
 
-Stáhněte si tahák list sem: ** [Microsoft Azure Machine Learning automaticky tahák list datového kanálu](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf) .**
+Stáhněte si tahák list sem: **[Microsoft Azure Machine Learning automaticky tahák list datového kanálu](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf) .**
 
 ![Přehled možností Microsoft Azure Machine Learning Studio (Classic)][op-cheat-sheet]
 

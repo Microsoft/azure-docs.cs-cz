@@ -10,10 +10,10 @@ ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: ef45a6277adeff09a34fe22b7abeb21d3e603167
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98624350"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí proxy aplikace Node.js (Preview)
@@ -22,7 +22,7 @@ ms.locfileid: "98624350"
 
 V tomto rychlém startu povolíte odesílání Secure Shell (SSH) a protokol RDP (Remote Desktop Protocol) (RDP) do zařízení přes datový proud zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Tento rychlý Start popisuje spuštění aplikace Node.js proxy serveru, která běží na straně služby. Ve verzi Public Preview podporuje Node.js SDK pouze datové proudy zařízení na straně služby. V důsledku toho tento rychlý Start popisuje pokyny ke spuštění pouze místní proxy aplikace služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončení [Povolení protokolu SSH a RDP přes IoT Hub datových proudů zařízení pomocí aplikace proxy](./quickstart-device-streams-proxy-c.md) v jazyce C nebo [Povolení protokolu SSH a RDP přes IoT Hub datových proudů zařízení pomocí proxy aplikace jazyka C#](./quickstart-device-streams-proxy-csharp.md).
 

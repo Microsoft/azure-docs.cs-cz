@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de59b3f26a9a4696c721cab94cd5b96bd0200e9e
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614544"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Kurz: základní prostředí služby Active Directory
@@ -27,7 +27,7 @@ Tento kurz vás provede vytvořením základního prostředí Active Directory.
 Prostředí, které vytvoříte v tomto kurzu, můžete použít k otestování různých aspektů hybridních scénářů identity a pro některé z těchto kurzů se vyžaduje předpoklad.  Pokud již máte existující prostředí služby Active Directory, můžete ho použít jako náhradu.  Tyto informace jsou k dispozici pro jednotlivce, kteří začínají od Nothing.
 
 Tento kurz se skládá z
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Počítač s nainstalovanou [technologií Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
 - [Externí síťový adaptér](/virtualization/hyper-v-on-windows/quick-start/connect-to-network) , který umožňuje, aby virtuální počítač komunikoval s internetem.

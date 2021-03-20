@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 050dfa737ad04127f8c72158fbecb2e8e70e05c1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89075337"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Rychlý Start: zabezpečení virtuálního centra pomocí šablony Azure Firewall Manager – ARM
@@ -46,7 +46,7 @@ V šabloně je definováno víc prostředků Azure:
 - [**Microsoft. Network/firewallPolicies**](/azure/templates/microsoft.network/firewallPolicies)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
@@ -63,7 +63,7 @@ Nasazení šablony ARM do Azure:
 
 2. Na portálu na stránce **Zabezpečená virtuální centra** zadejte nebo vyberte následující hodnoty:
    - Předplatné: vyberte z existujících předplatných. 
-   - Skupina prostředků: vyberte z existujících skupin prostředků nebo vyberte **vytvořit novou**a vyberte **OK**.
+   - Skupina prostředků: vyberte z existujících skupin prostředků nebo vyberte **vytvořit novou** a vyberte **OK**.
    - Umístění: vyberte umístění.
    - Uživatelské jméno správce: zadejte uživatelské jméno pro uživatelský účet správce. 
    - Heslo správce: zadejte heslo nebo klíč správce.
@@ -78,7 +78,7 @@ Nyní otestujte pravidla brány firewall a potvrďte, že funguje podle očekáv
 2. Připojte vzdálenou plochu k virtuálnímu počítači **skoku** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše v rámci **úlohy-SRV** privátní IP adresa.
 
 3. Otevřete prohlížeč Internet Explorer a přejděte na adresu `www.microsoft.com`.
-4. **OK**  >  V okně výstrahy zabezpečení aplikace Internet Explorer vyberte OK**Zavřít** .
+4.   >  V okně výstrahy zabezpečení aplikace Internet Explorer vyberte OK **Zavřít** .
 
    Měla by se zobrazit Domovská stránka společnosti Microsoft.
 

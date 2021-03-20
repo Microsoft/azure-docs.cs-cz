@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.openlocfilehash: 15b01f92fe0d39d099c10c7c086790a4dbb91379
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96581761"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Omezení Azure Data Box Gateway
@@ -27,11 +27,11 @@ Tato omezení zvažte při nasazení a provozu Data Box Gateway řešení Micros
 
 Následující tabulka popisuje omezení pro Data Box Gateway zařízení.
 
-| Popis | Hodnota |
+| Description | Hodnota |
 |---|---|
-|Ne. souborů na zařízení |100 000 000 <br> Pro každý 25 000 000 souborů, které se přidávají (s maximálním limitem na 100 000 000), byste měli přidat 2 TB místa na disku, 8 GB paměti RAM a 4 jádra procesoru. |
-|Ne. sdílených složek na zařízení |24 |
-|Ne. sdílených složek na kontejner úložiště Azure |1 |
+|No. souborů na zařízení |100 000 000 <br> Pro každý 25 000 000 souborů, které se přidávají (s maximálním limitem na 100 000 000), byste měli přidat 2 TB místa na disku, 8 GB paměti RAM a 4 jádra procesoru. |
+|No. sdílených složek na zařízení |24 |
+|No. sdílených složek na kontejner úložiště Azure |1 |
 |Maximální velikost souboru zapsaná do sdílené složky|Pro virtuální zařízení o velikosti 2 TB je maximální velikost souboru 500 GB. <br> Maximální velikost souboru se zvětšuje s velikostí datových disků v předchozím poměru, dokud nedosáhne maximálního počtu 5 TB. |
 
 ## <a name="azure-storage-limits"></a>Omezení úložiště Azure

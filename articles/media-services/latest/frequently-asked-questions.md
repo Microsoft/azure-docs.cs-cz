@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a9394a5e117a577c903eccdf91cf22d0c359df2b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505762"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581112"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 
@@ -86,12 +86,12 @@ Vaše webová aplikace by měla uživatele vyzvat, pokud chce ukončit všesměr
 
 #### <a name="server-side"></a>Strana serveru
 
-Můžete monitorovat živé události tím, že se přihlásíte k odběru Azure Event Gridch událostí. Další informace najdete v tématu [schéma událostí EventGrid](media-services-event-schemas.md#live-event-types).
+Můžete monitorovat živé události tím, že se přihlásíte k odběru Azure Event Gridch událostí. Další informace najdete v tématu [schéma událostí EventGrid](monitoring/media-services-event-schemas.md#live-event-types).
 
 Máte tyto možnosti:
 
-* [Přihlaste](reacting-to-media-services-events.md) se k odběru událostí [Microsoft. Media. LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) na úrovni datového proudu a sledujte, že v průběhu chvilky nejsou žádné znovu navázány, aby se zastavila a odstranila živá událost.
-* [Přihlaste](reacting-to-media-services-events.md) se k odběru událostí [prezenčního signálu](media-services-event-schemas.md#liveeventingestheartbeat) na úrovni sledování. Pokud se u všech stop přestanou příchozí přenosové rychlosti na 0 nebo když se poslední časové razítko nezvyšuje, můžete živou událost bezpečně vypnout. Události prezenčního signálu přicházejí v každé 20 sekundách pro každou stopu, takže se může jednat o bitovou podrobnou bitovou kopii.
+* [Přihlaste](monitoring/reacting-to-media-services-events.md) se k odběru událostí [Microsoft. Media. LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md#liveeventencoderdisconnected) na úrovni datového proudu a sledujte, že v průběhu chvilky nejsou žádné znovu navázány, aby se zastavila a odstranila živá událost.
+* [Přihlaste](monitoring/reacting-to-media-services-events.md) se k odběru událostí [prezenčního signálu](monitoring/media-services-event-schemas.md#liveeventingestheartbeat) na úrovni sledování. Pokud se u všech stop přestanou příchozí přenosové rychlosti na 0 nebo když se poslední časové razítko nezvyšuje, můžete živou událost bezpečně vypnout. Události prezenčního signálu přicházejí v každé 20 sekundách pro každou stopu, takže se může jednat o bitovou podrobnou bitovou kopii.
 
 ###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>V živém streamu Návody vkládat rozlomení, videa a obrazové položky?
 
@@ -117,7 +117,7 @@ Další informace najdete v tématu [Ochrana obsahu pomocí Media Services dynam
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Jak a kde získá token JWT před jeho použitím k vyžádání licence nebo klíče?
 
-V případě produkčního prostředí musíte mít službu zabezpečeného tokenu (tj. webovou službu), která vydává token JWT po požadavku HTTPS. Pro test můžete použít kód zobrazený v `GetTokenAsync` metodě definované v [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
+V případě produkčního prostředí musíte mít službu zabezpečeného tokenu (tj. webovou službu), která vydává token JWT po požadavku HTTPS. Pro test můžete použít kód zobrazený v `GetTokenAsync` metodě definované v [programu program. cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
 
 Hráč vytvoří požadavek, po ověření uživatele, na službu STS pro takový token a přiřadí ho jako hodnotu tokenu. Můžete použít [rozhraní Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/).
 

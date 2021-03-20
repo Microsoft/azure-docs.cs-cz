@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 1f7eb3b38b4ae04e81839fce2b14c1a84f3f0204
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 84960e6247edc708bedb899c96ebf7522397269a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564590"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580364"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>Instalace a konfigurace xrdp pro používání vzdálené plochy s Ubuntu
 
@@ -22,7 +22,7 @@ Virtuální počítače se systémem Linux v Azure jsou obvykle spravovány z p�
 
 Článek byl WRITEN a testován pomocí virtuálního počítače s Ubuntu 18,04. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek vyžaduje existující virtuální počítač s Ubuntu 18,04 LTS v Azure. Pokud potřebujete vytvořit virtuální počítač, použijte jednu z následujících metod:
 
@@ -138,7 +138,7 @@ tail -f /var/log/syslog
 
 Jiné distribuce systému Linux, například Red Hat Enterprise Linux a SUSE, mohou mít různé způsoby, jak restartovat služby a alternativní umístění souborů protokolu ke kontrole.
 
-Pokud neobdržíte žádnou odpověď v klientovi vzdálené plochy a nezobrazují žádné události v systémovém protokolu, toto chování indikuje, že přenos z vzdálené plochy se nemůže připojit k virtuálnímu počítači. Zkontrolujte pravidla skupiny zabezpečení sítě, abyste měli jistotu, že máte pravidlo, které povoluje TCP na portu 3389. Další informace najdete v tématu [řešení potíží s připojením k aplikacím](../troubleshooting/troubleshoot-app-connection.md).
+Pokud neobdržíte žádnou odpověď v klientovi vzdálené plochy a nezobrazují žádné události v systémovém protokolu, toto chování indikuje, že přenos z vzdálené plochy se nemůže připojit k virtuálnímu počítači. Zkontrolujte pravidla skupiny zabezpečení sítě, abyste měli jistotu, že máte pravidlo, které povoluje TCP na portu 3389. Další informace najdete v tématu [řešení potíží s připojením k aplikacím](/troubleshoot/azure/virtual-machines/troubleshoot-app-connection).
 
 
 ## <a name="next-steps"></a>Další kroky

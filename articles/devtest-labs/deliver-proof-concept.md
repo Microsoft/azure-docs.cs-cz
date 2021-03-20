@@ -4,15 +4,15 @@ description: Naučte se, jak doručovat koncept, aby se Azure DevTest Labs mohl 
 ms.topic: article
 ms.date: 06/2/2020
 ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87288019"
 ---
 # <a name="deliver-a-proof-of-concept"></a>Doručovat zkoušku konceptu 
 
-Jedním z klíčových scénářů pro Azure DevTest Labs je povolení prostředí pro vývoj a testování v cloudu. Příklady:
+Jedním z klíčových scénářů pro Azure DevTest Labs je povolení prostředí pro vývoj a testování v cloudu. Mezi příklady patří:
 
 * Vytváření desktopových ploch pro vývojáře v cloudu.
 * Konfigurace prostředí pro testování.
@@ -33,7 +33,7 @@ Abyste mohli začít dodávat zkoušku konceptu. Je důležité věnovat nějako
 * [Dokumentace k DevTest Labs Enterprise](devtest-lab-guidance-prescriptive-adoption.md)
 * [Úvod do sítě Azure](../virtual-network/virtual-networks-overview.md)
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 K úspěšnému dokončení pilotního nebo zkušebního konceptu pomocí DevTest Labs existuje několik požadavků: 
 

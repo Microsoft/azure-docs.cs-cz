@@ -1,5 +1,5 @@
 ---
-title: Použití jazyků Java a JDBC s Azure SQL Database
+title: Používání Javy a JDBC se službou Azure SQL Database
 description: Naučte se používat Java a JDBC s Azure SQL Database.
 services: sql-database
 author: jdubois
@@ -11,10 +11,10 @@ ms.devlang: java
 ms.date: 06/26/2020
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: badf6b8887c356c2a7fc7308f6aa15f551e4bb67
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95972670"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Použití jazyků Java a JDBC s Azure SQL Database
@@ -23,7 +23,7 @@ Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a 
 
 JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - [Azure Cloud Shell](../../cloud-shell/quickstart.md) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.

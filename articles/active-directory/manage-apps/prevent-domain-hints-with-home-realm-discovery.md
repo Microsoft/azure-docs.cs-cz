@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: hirsin
-ms.openlocfilehash: 67cb1003e139a085d45d01617cd44647bad420f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 53dfdfaf37695059d6d52428c2ba109970d9f7f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693045"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589374"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>Zakázat automatickou akceleraci pro federované IDP během přihlašování uživatelů pomocí zásad zjišťování domovské sféry
 
-[Zásady zjišťování domovské sféry](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) nabízí správcům několik způsobů, jak určit, jak a kde se jejich uživatelé ověřují. `domainHintPolicy`Oddíl zásad hrd se používá k tomu, aby vám pomohla migrovat federované uživatele na cloudové přihlašovací údaje, jako je [Fido](../authentication/howto-authentication-passwordless-security-key.md), tím, že zajistí, aby vždycky navštívili přihlašovací stránku Azure AD a neautomaticky se urychlila na federované IDP kvůli parametrům domény.
+[Zásady zjišťování domovské sféry](/graph/api/resources/homeRealmDiscoveryPolicy) (HRD) nabízí správcům několik způsobů, jak určit, jak a kde se jejich uživatelé ověřují. `domainHintPolicy`Oddíl zásad hrd se používá k tomu, aby vám pomohla migrovat federované uživatele na cloudové přihlašovací údaje, jako je [Fido](../authentication/howto-authentication-passwordless-security-key.md), tím, že zajistí, aby vždycky navštívili přihlašovací stránku Azure AD a neautomaticky se urychlila na federované IDP kvůli parametrům domény.
 
 Tato zásada je nutná v situacích, kdy aplikace, které správce nemůže během přihlašování řídit nebo aktualizovat pomocné parametry domény.  Například `outlook.com/contoso.com` odesílá uživatele na přihlašovací stránku s přidaným `&domain_hint=contoso.com` parametrem, aby automaticky urychlila uživatele přímo pro federované IDP pro `contoso.com` doménu. Uživatelé se spravovanými přihlašovacími údaji odeslanými do federovaného IDP se nemůžou přihlásit pomocí svých spravovaných přihlašovacích údajů, snížit zabezpečení a frustrující uživatele s náhodným přihlašováním. Správci, kteří používají spravovaná pověření, [by měli také nastavit tuto zásadu](#suggested-use-within-a-tenant) , aby měli jistotu, že uživatelé můžou vždycky používat svoje spravované přihlašovací údaje.
 
@@ -101,7 +101,7 @@ Až krok 4 dokončí všechny uživatele, kromě těch v `guestHandlingDomain.co
 
 ## <a name="configuring-policy-through-graph-explorer"></a>Konfigurace zásad pomocí Graph Exploreru
 
-Nastavte [zásady hrd](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) jako obvykle pomocí Microsoft Graph.  
+Nastavte [zásady hrd](/graph/api/resources/homeRealmDiscoveryPolicy) jako obvykle pomocí Microsoft Graph.  
 
 1. Udělte oprávnění Policy. ApplicationConfiguration v [Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer).  
 1. Použít adresu URL `https://graph.microsoft.com/v1.0/policies/homeRealmDiscoveryPolicies`

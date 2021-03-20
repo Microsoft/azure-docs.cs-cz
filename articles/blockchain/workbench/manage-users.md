@@ -5,17 +5,17 @@ ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91263007"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Správa uživatelů v Azure blockchain Workbench
 
 Azure blockchain Workbench zahrnuje správu uživatelů pro lidi a organizace, které jsou součástí vaší konsorcia.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vyžaduje se nasazení aplikace blockchain Workbench. Podrobnosti o nasazení najdete v tématu [nasazení Azure blockchain Workbench](deploy.md) .
 
@@ -25,7 +25,7 @@ Azure blockchain Workbench používá pro ověřování, řízení přístupu a 
 
 Uživatelé blockchain Workbench musí existovat v tenantovi Azure AD, aby je bylo možné přiřadit k aplikacím a rolím. Pokud chcete přidat uživatele do služby Azure AD, použijte následující postup:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V pravém horním rohu vyberte svůj účet a přepněte se na tenanta Azure AD, který je přidružený k blockchain Workbench.
 1. Vyberte **Azure Active Directory > uživatelé**. Zobrazí se seznam uživatelů v adresáři.
 1. Pokud chcete do adresáře přidat uživatele, vyberte **Nový uživatel**. U externích uživatelů vyberte **Nový uživatel typu Host**.
@@ -39,7 +39,7 @@ Po přidání uživatelů do adresáře si v dalším kroku zvolíte, kteří u�
 
 Chcete-li přidat uživatele do skupiny **Administrators** v adresáři služby Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ověřte, že jste v tenantovi Azure AD, který je přidružený k blockchain Workbench, výběrem účtu v pravém horním rohu.
 1. Vyberte **Azure Active Directory > podnikových aplikací**.
 1. Rozevírací filtr **typu aplikace** změňte na **všechny aplikace** a vyberte **použít**.

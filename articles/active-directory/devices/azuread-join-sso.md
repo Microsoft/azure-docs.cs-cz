@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da22a4e5e9ab13ec18347e58bea6cfc5f45333de
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98630696"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Jak jednotné přihlašování k místním prostředkům funguje v zařízeních připojených ke službě Azure AD
@@ -24,7 +24,7 @@ Pravděpodobně se nejedná o neočekávaně, že zařízení připojené k Azur
 
 Tento článek vysvětluje, jak to funguje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Místní jednotné přihlašování vyžaduje komunikaci s místními služba AD DS řadiči domény od začátku pohledu. Pokud zařízení připojená k Azure AD nejsou připojená k síti vaší organizace, vyžaduje se síť VPN nebo jiná síťová infrastruktura. 
 

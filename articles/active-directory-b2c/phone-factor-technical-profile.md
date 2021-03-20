@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 322e4b78fbfb38f1822fb7a7cdcdbfcc0738b303
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950393"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu pro telefonní faktor v Azure Active Directory B2C vlastní zásady
@@ -57,10 +57,10 @@ Element InputClaimsTransformations může obsahovat kolekci vstupních transform
 
 Element InputClaims musí obsahovat následující deklarace identity. Název vaší deklarace identity můžete také namapovat na název definovaný v technickém profilu pro telefonní faktor. 
 
-|  Datový typ| Povinné | Popis |
+|  Datový typ| Povinné | Description |
 | --------- | -------- | ----------- | 
-| řetězec| Ano | Jedinečný identifikátor pro uživatele. Název deklarace identity nebo PartnerClaimType musí být nastaven na hodnotu `UserId` . Tato deklarace identity by neměla obsahovat osobní údaje, které by se mohly identifikovat.|
-| řetězec| Ano | Seznam typů deklarací. Každá deklarace identity obsahuje jedno telefonní číslo. Pokud jakákoli vstupní deklarace identity neobsahuje telefonní číslo, bude uživatel vyzván k registraci a ověření nového telefonního čísla. Ověřené telefonní číslo se vrátí jako výstupní deklarace. Pokud jedna ze vstupních deklarací identity obsahuje telefonní číslo, zobrazí se uživateli výzva k jeho ověření. Pokud více vstupních deklarací obsahuje telefonní číslo, zobrazí se uživateli výzva k výběru a ověření jednoho z telefonních čísel. |
+| řetězec| Yes | Jedinečný identifikátor pro uživatele. Název deklarace identity nebo PartnerClaimType musí být nastaven na hodnotu `UserId` . Tato deklarace identity by neměla obsahovat osobní údaje, které by se mohly identifikovat.|
+| řetězec| Yes | Seznam typů deklarací. Každá deklarace identity obsahuje jedno telefonní číslo. Pokud jakákoli vstupní deklarace identity neobsahuje telefonní číslo, bude uživatel vyzván k registraci a ověření nového telefonního čísla. Ověřené telefonní číslo se vrátí jako výstupní deklarace. Pokud jedna ze vstupních deklarací identity obsahuje telefonní číslo, zobrazí se uživateli výzva k jeho ověření. Pokud více vstupních deklarací obsahuje telefonní číslo, zobrazí se uživateli výzva k výběru a ověření jednoho z telefonních čísel. |
 
 Následující příklad ukazuje použití více telefonních čísel. Další informace najdete v tématu [Vzorová zásada](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa).
 
@@ -78,8 +78,8 @@ Element OutputClaims obsahuje seznam deklarací vrácených technickým profilem
 
 |  Datový typ| Povinné | Popis |
 |  -------- | ----------- |----------- |
-| boolean | Ano | Určuje, zda uživatel zadal nové telefonní číslo. Název deklarace identity nebo PartnerClaimType musí být nastaven na. `newPhoneNumberEntered`|
-| řetězec| Ano | Ověřené telefonní číslo. Název deklarace identity nebo PartnerClaimType musí být nastaven na hodnotu `Verified.OfficePhone` .|
+| boolean | Yes | Určuje, zda uživatel zadal nové telefonní číslo. Název deklarace identity nebo PartnerClaimType musí být nastaven na. `newPhoneNumberEntered`|
+| řetězec| Yes | Ověřené telefonní číslo. Název deklarace identity nebo PartnerClaimType musí být nastaven na hodnotu `Verified.OfficePhone` .|
 
 Element OutputClaimsTransformations může obsahovat kolekci prvků OutputClaimsTransformation, které se používají k úpravě výstupních deklarací, nebo k vygenerování nových.
 
@@ -92,7 +92,7 @@ Element **CryptographicKeys** se nepoužívá.
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ContentDefinitionReferenceId | Ano | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto technickému profilu. |
+| ContentDefinitionReferenceId | Yes | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto technickému profilu. |
 | ManualPhoneNumberEntryAllowed| No | Určuje, jestli uživatel smí ručně zadat telefonní číslo. Možné hodnoty: `true` , nebo `false` (výchozí).|
 | nastavení. authenticationMode | No | Metoda pro ověření telefonního čísla. Možné hodnoty: `sms` , `phone` , nebo `mixed` (výchozí).|
 | nastavení. Autodial| No| Určete, zda má technický profil automaticky vytočit nebo automaticky odeslat zprávu SMS. Možné hodnoty: `true` , nebo `false` (výchozí). Automatické vytáčení vyžaduje `setting.authenticationMode` , aby byla metadata nastavena na `sms` , nebo `phone` . Vstupní kolekce deklarací musí obsahovat jedno telefonní číslo. |

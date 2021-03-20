@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002788"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementace omezující navigace v Azure Kognitivní hledání
@@ -283,7 +283,7 @@ V podrobném procházení podrobností obvykle chcete zahrnout pouze dokumenty, 
 
 **Oříznout výsledky omezujících vlastností s dalšími filtry**
 
-Výsledky omezující vlastnosti jsou dokumenty nalezené ve výsledcích hledání, které odpovídají termínům omezující podmínky. V následujícím příkladu jsou ve výsledcích hledání pro *cloud computingu*254 položek *interní specifikace* jako typ obsahu. Položky nejsou nutně vzájemně exkluzivní. Pokud položka splňuje kritéria obou filtrů, počítá se v každé z nich. Tato duplicita je možná při vytváření omezujících podmínek pro `Collection(Edm.String)` pole, která se často používají k implementaci označování dokumentu.
+Výsledky omezující vlastnosti jsou dokumenty nalezené ve výsledcích hledání, které odpovídají termínům omezující podmínky. V následujícím příkladu jsou ve výsledcích hledání pro *cloud computingu* 254 položek *interní specifikace* jako typ obsahu. Položky nejsou nutně vzájemně exkluzivní. Pokud položka splňuje kritéria obou filtrů, počítá se v každé z nich. Tato duplicita je možná při vytváření omezujících podmínek pro `Collection(Edm.String)` pole, která se často používají k implementaci označování dokumentu.
 
 ```output
 Search term: "cloud computing"

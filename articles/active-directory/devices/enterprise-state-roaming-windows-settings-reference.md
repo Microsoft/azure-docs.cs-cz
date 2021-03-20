@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85252963"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
@@ -28,10 +28,10 @@ V následující tabulce najdete souhrn typů zařízení a účtů, které jsou
 
 | Typ účtu a operace | Plocha | Mobilní |
 | --- | --- | --- |
-| Azure Active Directory: synchronizace |Ano |No |
+| Azure Active Directory: synchronizace |Yes |No |
 | Azure Active Directory: zálohování a obnovení |No |No |
-| Účet Microsoft: synchronizace |Ano |Ano |
-| Účet Microsoft: zálohování a obnovení |No |Ano |
+| Účet Microsoft: synchronizace |Yes |Yes |
+| Účet Microsoft: zálohování a obnovení |No |Yes |
 
 ## <a name="what-is-backup"></a>Co je zálohování?
 
@@ -72,11 +72,11 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | Nastavení | Plocha | Mobilní | Group (Skupina) |
 | --- | --- | --- | --- |
 | **Účty**: obrázek účtu |synchronizace |× |Motiv |
-| **Účty**: Další nastavení účtu |X |X | |
-| **Rozšířené mobilní širokopásmové**připojení: název sítě pro sdílení připojení k Internetu (umožňuje automatické zjišťování mobilních Wi-Fi hotspotů přes Bluetooth) |X |X |Hesla |
+| **Účty**: Další nastavení účtu |× |× | |
+| **Rozšířené mobilní širokopásmové** připojení: název sítě pro sdílení připojení k Internetu (umožňuje automatické zjišťování mobilních Wi-Fi hotspotů přes Bluetooth) |× |× |Hesla |
 | **Data aplikací**: jednotlivé aplikace můžou synchronizovat data |synchronizovat zálohu |synchronizovat zálohu |internal |
-| **Seznam aplikací**: seznam nainstalovaných aplikací |× |zálohování |Ostatní |
-| **Bluetooth**: všechna nastavení Bluetooth |X |X | |
+| **Seznam aplikací**: seznam nainstalovaných aplikací |× |zálohování |Jiné |
+| **Bluetooth**: všechna nastavení Bluetooth |× |× | |
 | **Příkazový řádek**: výchozí nastavení pro příkazový řádek |synchronizace |× |internal |
 | **Přihlašovací údaje**: schránka na přihlašovací údaje |synchronizace |synchronizace |heslo |
 | **Datum, čas a oblast**: Automatický čas (synchronizace v internetovém čase) |synchronizace |synchronizace |language |
@@ -95,7 +95,7 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Individuální nastavení plochy**: Tapeta prezentace |synchronizace |× |Motiv |
 | **Individuální nastavení plochy**: nastavení hlavního panelu (pozice, automatické skrývání atd.) |synchronizace |× |Motiv |
 | **Individuální nastavení plochy**: rozložení úvodní obrazovky |× |zálohování | |
-| **Zařízení**: sdílené tiskárny, ke kterým jste se připojili |X |X |other |
+| **Zařízení**: sdílené tiskárny, ke kterým jste se připojili |× |× |other |
 | **Prohlížeč Microsoft Edge**: seznam pro čtení |synchronizace |synchronizace |internal |
 | **Prohlížeč Microsoft Edge**: oblíbené položky |synchronizace |synchronizace |internal |
 | **Prohlížeč Microsoft Edge**: hlavní lokality <sup> [[1]](#footnote-1)</sup> |synchronizace |synchronizace |internal |
@@ -141,20 +141,20 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Jazyk**: CHS WUBI-ZvukovýSignál, když 4-kódování je neplatné. |synchronizace |× |Jazyk |
 | **Jazyk**: CHT Ču-to zahrnuje CJK-A |synchronizace |× |Jazyk |
 | **Jazyk**: japonské editor IME – prediktivní psaní a vlastní slova |synchronizace |synchronizace |Jazyk |
-| **Language**: Korejština (KOR) IME |X |X |Jazyk |
-| **Jazyk**: rozpoznávání rukopisu |X |X |Jazyk |
+| **Language**: Korejština (KOR) IME |× |× |Jazyk |
+| **Jazyk**: rozpoznávání rukopisu |× |× |Jazyk |
 | **Jazyk**: Profil jazyka |synchronizace |zálohování |Jazyk |
 | **Jazyk**: Kontrola pravopisu – automatické opravy a zvýraznění chybných pravopisů |synchronizace |zálohování |Jazyk |
 | **Jazyk**: seznam klávesnic |synchronizace |zálohování |Jazyk |
-| **Zamykací obrazovka**: všechna nastavení zamykací obrazovky |X |X | |
-| **Lupa**: zapnuto nebo vypnuto (přepínač Master) |X |X |Usnadnění přístupu |
+| **Zamykací obrazovka**: všechna nastavení zamykací obrazovky |× |× | |
+| **Lupa**: zapnuto nebo vypnuto (přepínač Master) |× |× |Usnadnění přístupu |
 | **Lupa**: zapnout nebo vypnout barvu inverze (ve výchozím nastavení vypnuté) |synchronizace |× |Usnadnění přístupu |
 | **Lupa**: sledování – Sledujte fokus klávesnice |synchronizace |× |Usnadnění přístupu |
 | **Lupa**: sledování – následovat ukazatel myši |synchronizace |× |Usnadnění přístupu |
 | **Lupa**: spustit při přihlášení uživatele (ve výchozím nastavení vypnuté) |synchronizace |× |Usnadnění přístupu |
 | **Myš**: Změna velikosti kurzoru myši |synchronizace |× |other |
 | **Myš**: Změna barvy kurzoru myši |synchronizace |× |other |
-| **Myš**: všechna ostatní nastavení |X |X | |
+| **Myš**: všechna ostatní nastavení |× |× | |
 | **Narrator**: Snadné spuštění |synchronizace |× |Usnadnění přístupu |
 | **Narrator**: uživatelé můžou měnit rozteč mluvené řeči. |synchronizace |× |Usnadnění přístupu |
 | **Narrator**: uživatelé můžou zapnout nebo vypnout čtení tipů pro společné položky (ve výchozím nastavení zapnuté). |synchronizace |× |Usnadnění přístupu |
@@ -166,7 +166,7 @@ Nastavení, která se nevztahují k roamingu nebo synchronizaci, nepatří do sk
 | **Narrator**: aktivace kláves na dotykové klávesnici při zvedání prstu (ve výchozím nastavení vypnuté) |synchronizace |× |Usnadnění přístupu |
 | **Usnadnění přístupu**: Nastavte tloušťku blikajícího kurzoru. |synchronizace |× |Usnadnění přístupu |
 | **Usnadnění přístupu**: odebrání imagí na pozadí (ve výchozím nastavení vypnuté) |synchronizace |× |Usnadnění přístupu |
-| **Napájení a režim spánku**: všechna nastavení |X |X | |
+| **Napájení a režim spánku**: všechna nastavení |× |× | |
 | **Přizpůsobení úvodní obrazovky**: Barva zvýraznění (jenom telefon) |× |synchronizace |Motiv |
 | **Psaní**: slovník pravopisu |synchronizace |zálohování |Jazyk |
 | **Psaní**: Automatické opravy chybně napsaného slova |synchronizace |zálohování |Jazyk |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.openlocfilehash: b3806d768e8335801e2dd097eac7a440b157de38
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92444631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Kurz: Azure Active Directory integrace s HighGear
@@ -30,7 +30,7 @@ Integrace HighGear s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s HighGear potřebujete následující položky:
 
@@ -145,7 +145,7 @@ Pokud chcete nakonfigurovat HighGear pro jednotné přihlašování, přihlaste 
 
 ![Položka nabídky nastavení pro jednu Sign-On](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-1. Do pole **název zprostředkovatele identity**zadejte krátký popis, který se zobrazí v HighGearm tlačítku pro jedno Sign-On na přihlašovací stránce. Příklad: Azure AD
+1. Do pole **název zprostředkovatele identity** zadejte krátký popis, který se zobrazí v HighGearm tlačítku pro jedno Sign-On na přihlašovací stránce. Příklad: Azure AD
 
 2. Do pole **Adresa URL jednotného Sign-On (SSO)** v HighGear vložte hodnotu z pole **Adresa URL pro přihlášení** , které se nachází v části **Nastavení HighGear** v Azure.
 
@@ -163,7 +163,7 @@ Pokud chcete nakonfigurovat HighGear pro jednotné přihlašování, přihlaste 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -188,7 +188,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k HighGear.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **HighGear**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte možnost **HighGear**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -248,7 +248,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici HighGear, měli byste se automaticky přihlásit k HighGear, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
