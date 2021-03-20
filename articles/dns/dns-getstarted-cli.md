@@ -10,10 +10,10 @@ ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 1929cd512d18d7fd234aff1f55814c423455e63b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94561365"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Rychlý start: Vytvoření zóny Azure DNS a záznam pomocí Azure CLI
@@ -42,7 +42,7 @@ az group create --name MyResourceGroup --location "East US"
 
 Zóna DNS se vytvoří příkazem `az network dns zone create`. Pokud chcete zobrazit nápovědu k tomuto příkazu, zadejte `az network dns zone create -h`.
 
-Následující příklad vytvoří zónu DNS s názvem *contoso. xyz* ve skupině prostředků *MyResourceGroup*. Nahraďte hodnoty vlastními a použijte tento příklad k vytvoření zóny DNS.
+Následující příklad vytvoří zónu DNS s názvem *contoso.xyz* ve skupině prostředků *MyResourceGroup*. Nahraďte hodnoty vlastními a použijte tento příklad k vytvoření zóny DNS.
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.xyz
@@ -52,7 +52,7 @@ az network dns zone create -g MyResourceGroup -n contoso.xyz
 
 K vytvoření záznamu DNS použijte příkaz `az network dns record-set [record type] add-record`. Nápovědu k záznamům A najdete v tématu `azure network dns record-set A add-record -h`.
 
-Následující příklad vytvoří záznam s relativním názvem "www" v zóně DNS "contoso. xyz" ve skupině prostředků "MyResourceGroup". Plně kvalifikovaný název sady záznamů je "www. contoso. xyz". Typ záznamu je A, IP adresa "10.10.10.10" a výchozí hodnota TTL 3600 sekund (1 hodina).
+Následující příklad vytvoří záznam s relativním názvem "www" v zóně DNS "contoso.xyz" ve skupině prostředků "MyResourceGroup". Plně kvalifikovaný název sady záznamů je "www.contoso.xyz". Typ záznamu je A, IP adresa "10.10.10.10" a výchozí hodnota TTL 3600 sekund (1 hodina).
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.xyz -n www -a 10.10.10.10
@@ -96,7 +96,7 @@ Teď, když máte testovací zónu DNS s testovacím záznamem "A", můžete ote
 
    ![Snímek obrazovky zobrazuje okno příkazového řádku s vyhledávacím příkazem n s a hodnotami pro server, adresu, název a adresu.](media/dns-getstarted-portal/nslookup.PNG)
 
-Název hostitele **www \. contoso. xyz** se přeloží na **10.10.10.10** , stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
+Název hostitele **www \. contoso.xyz** se přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

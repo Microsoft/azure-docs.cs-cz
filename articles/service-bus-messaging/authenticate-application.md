@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o ověřování aplikace s Azure
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518224"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service Busm entitám
@@ -43,7 +43,7 @@ Než do objektu zabezpečení přiřadíte roli Azure, určete rozsah přístupu
 
 Následující seznam popisuje úrovně, na jejichž základě můžete nastavit rozsah přístupu k prostředkům Service Bus, počínaje nejužším rozsahem:
 
-- **Zařazení do fronty**, **tématu**nebo **předplatného**: přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí Azure na úrovni předplatného. 
+- **Zařazení do fronty**, **tématu** nebo **předplatného**: přiřazení role se vztahuje na konkrétní entitu Service Bus. V současné době Azure Portal nepodporuje přiřazování uživatelů/skupin/spravovaných identit do Service Bus rolí Azure na úrovni předplatného. 
 - **Service Bus obor názvů**: přiřazování rolí zahrnuje celou topologii Service Bus pod oborem názvů a do skupiny uživatelů, které jsou k ní přidružené.
 - **Skupina prostředků**: přiřazení role se vztahuje na všechny prostředky Service Bus v rámci skupiny prostředků.
 - **Předplatné**: přiřazení role se vztahuje na všechny prostředky Service Bus ve všech skupinách prostředků v rámci předplatného.
@@ -98,7 +98,7 @@ Následující obrázky ukazují kroky pro registraci webové aplikace:
 > [!Note]
 > Pokud aplikaci zaregistrujete jako nativní aplikaci, můžete pro identifikátor URI přesměrování zadat libovolný platný identifikátor URI. Pro nativní aplikace nemusí být tato hodnota skutečnou adresou URL. Pro webové aplikace musí být identifikátor URI pro přesměrování platným identifikátorem URI, protože určuje adresu URL, na které jsou tokeny poskytovány.
 
-Po zaregistrování aplikace se v části **Nastavení**zobrazí **ID aplikace (klienta)** :
+Po zaregistrování aplikace se v části **Nastavení** zobrazí **ID aplikace (klienta)** :
 
 ![ID aplikace registrované aplikace](./media/authenticate-application/application-id.png)
 
@@ -112,7 +112,7 @@ Aplikace potřebuje při žádosti o tokenu klíč klienta k prokázání jeho i
 
 1. Pokud na stránce ještě nemáte, přejděte k registraci vaší aplikace v Azure Portal.
 1. V nabídce vlevo vyberte **certifikáty & tajné klíče** .
-1. V části **tajné klíče klienta**vyberte **nový tajný klíč klienta** a vytvořte nový tajný klíč.
+1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta** a vytvořte nový tajný klíč.
 
     ![Nový tajný klíč klienta – tlačítko](./media/authenticate-application/new-client-secret-button.png)
 1. Zadejte popis tajného kódu a vyberte požadovaný interval vypršení platnosti a pak vyberte **Přidat**.

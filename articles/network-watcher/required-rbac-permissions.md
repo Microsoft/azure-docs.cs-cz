@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 47418b9c5235255ff7dbf4a1a151e51e4c9aba58
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019665"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Oprávnění řízení přístupu na základě role v Azure, která jsou nutná k použití možností Network Watcher
@@ -103,7 +103,7 @@ ms.locfileid: "98019665"
 
 Funkce Network Watcher také vyžadují následující akce:
 
-| Akce:                                                           | Popis                                                    |
+| Akce:                                                           | Description                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Authorization/ \* /Read                                     | Používá se k načtení přiřazení rolí Azure a definic zásad.          |
 | Microsoft. Resources/Subscriptions/resourceGroups/Read               | Používá se k zobrazení výčtu všech skupin prostředků v rámci předplatného.    |

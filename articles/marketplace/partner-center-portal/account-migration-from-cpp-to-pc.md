@@ -8,10 +8,10 @@ author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
 ms.openlocfilehash: 9e9f3b7ea3d99de51b9398bda82b690d2c249a1d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520961"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Postup migrace účtu z portál partnerů cloudu do partnerského centra
@@ -81,7 +81,7 @@ Konkrétní informace o tom, co je potřeba udělat **15. října 2019** pro nab
     * Certifikace nebo recertifikace vyžaduje, aby vaše aplikace podporovala nejnovější verzi naší Business Applications platformy.
     * Po schválení vaší aplikace obdržíte e-mail, který se má vrátit na nabídku, a vyberte "přejít do živého", aby se nabídka mohla na Microsoft AppSource živě začít.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 Získejte pomoc od expertů a partnerů ve fórech a Objevte Blogy, webináře, videa, události a další informace v [Microsoft Dynamics CRM](https://community.dynamics.com/crm?wa=wsignin1.0).
 

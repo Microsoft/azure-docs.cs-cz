@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 2/4/2021
 ms.author: baanders
 ms.openlocfilehash: 9a02c4f5c5699b4a6308bfaa519fa9eb776414d6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102244754"
 ---
 * **Pokud nepotřebujete žádné prostředky, které jste vytvořili v tomto kurzu**, můžete odstranit instanci digitálních vláken Azure a všechny další prostředky z tohoto článku pomocí příkazu [AZ Group Delete](/cli/azure/group#az-group-delete) . Tím se odstraní všechny prostředky Azure ve skupině prostředků i v samotné skupině prostředků.

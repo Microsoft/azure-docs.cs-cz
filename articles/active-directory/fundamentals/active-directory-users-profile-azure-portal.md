@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370912"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory
@@ -28,7 +28,7 @@ Jak vidíte, v profilu uživatele jsou k dispozici další informace, než kolik
 ## <a name="to-add-or-change-profile-information"></a>Přidání nebo změna informací o profilu
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce uživatele pro organizaci.
 
-2. Vyberte **Azure Active Directory**, vyberte **uživatele**a pak vyberte uživatele. Například _Alain Charon_.
+2. Vyberte **Azure Active Directory**, vyberte **uživatele** a pak vyberte uživatele. Například _Alain Charon_.
 
     Zobrazí se stránka **Alain Charon-Profile** .
 

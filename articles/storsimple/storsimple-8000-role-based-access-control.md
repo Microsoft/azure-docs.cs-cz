@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518972"
 ---
 # <a name="azure-role-based-access-control-for-storsimple"></a>Řízení přístupu na základě role v Azure pro StorSimple
@@ -37,7 +37,7 @@ Na základě rolí se dá přiřadit Azure RBAC. Role zajišťují určité úro
 
 * **Vlastní role** – Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role Azure pro StorSimple. Pokud chcete vytvořit vlastní roli Azure, začněte s předdefinovanou rolí, upravte ji a pak ji znovu naimportujte do prostředí. Stažení a nahrání role se spravují pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Další informace najdete v tématu [Vytvoření vlastních rolí pro Access Control na základě rolí](../role-based-access-control/custom-roles.md).
 
-Pokud chcete zobrazit různé role dostupné pro uživatele zařízení StorSimple v Azure Portal, přejděte do služby StorSimple Device Manager a pak přejděte do části **řízení přístupu (IAM) > role**.
+Pokud chcete zobrazit různé role dostupné pro uživatele zařízení StorSimple v Azure Portal, přejděte do služby StorSimple Správce zařízení a pak přejděte do části **řízení přístupu (IAM) > role**.
 
 
 ## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>Vytvoření vlastní role pro správce infrastruktury StorSimple
@@ -58,7 +58,7 @@ V následujícím příkladu Začínáme integrovanou **čtečkou** rolí, kter�
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Otevřete soubor JSON v aplikaci Visual Studio. Uvidíte, že typická role Azure se skládá ze tří hlavních sekcí, **akcí**, **NotActions**a **AssignableScopes**.
+4. Otevřete soubor JSON v aplikaci Visual Studio. Uvidíte, že typická role Azure se skládá ze tří hlavních sekcí, **akcí**, **NotActions** a **AssignableScopes**.
 
     V části **Akce** jsou uvedeny všechny povolené operace pro tuto roli. Každá akce je přiřazena od poskytovatele prostředků. Pro správce infrastruktury StorSimple použijte `Microsoft.StorSimple` poskytovatele prostředků.
 
@@ -70,7 +70,7 @@ V následujícím příkladu Začínáme integrovanou **čtečkou** rolí, kter�
 
     V oddílech **NotActions** jsou uvedené všechny omezené akce pro určitou roli Azure. V tomto příkladu nejsou omezeny žádné akce.
     
-    Pod **AssignableScopes**jsou uvedena ID předplatného. Ujistěte se, že role Azure obsahuje explicitní ID předplatného, kde se používá. Pokud není zadané správné ID předplatného, nebudete moct do svého předplatného importovat roli.
+    Pod **AssignableScopes** jsou uvedena ID předplatného. Ujistěte se, že role Azure obsahuje explicitní ID předplatného, kde se používá. Pokud není zadané správné ID předplatného, nebudete moct do svého předplatného importovat roli.
 
     Upravte soubor tak, aby byl v souladu s předchozími požadavky.
 

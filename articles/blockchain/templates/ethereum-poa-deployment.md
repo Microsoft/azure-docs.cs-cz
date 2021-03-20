@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: contperf-fy21q3
 ms.openlocfilehash: 70c9498bae9117585963e111bea4f1e127cab232
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097937"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
@@ -158,7 +158,7 @@ Kontrakt oprávnění transakce | Kód pro kontrakt oprávnění transakce. Omez
 
 Vyberte **OK**.
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 Monitorování umožňuje nakonfigurovat prostředek protokolu pro vaši síť. Agent monitorování shromažďuje a vystavuje užitečné metriky a protokoly z vaší sítě, které poskytují možnost rychle kontrolovat stav sítě nebo problémy s laděním.
 
@@ -166,7 +166,7 @@ Monitorování umožňuje nakonfigurovat prostředek protokolu pro vaši síť. 
 
 Parametr | Popis | Příklad hodnoty
 ----------|-------------|--------------
-Sledování | Možnost povolení monitorování | Povolit
+Monitorování | Možnost povolení monitorování | Povolit
 Připojit k existujícím protokolům Azure Monitor | Možnost vytvoření nové instance protokolu Azure Monitor nebo připojení k existující instanci | Vytvořit nový
 Umístění | Oblast, ve které je nasazena nová instance | East US
 Existující ID pracovního prostoru Log Analytics (připojit k existujícím protokolům Azure Monitor = připojit existující)|ID pracovního prostoru existující instance protokolu Azure Monitor||NA

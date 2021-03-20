@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3c61dc689d19e1a7d6f9b6dbefae846e9458d750
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146854"
 ---
-# <a name="secure-virtual-hubs-using-check-point-cloudguard-connect"></a>Zabezpečená virtuální centra pomocí Check Point cloudguard Connect
+# <a name="secure-virtual-hubs-using-check-point-cloudguard-connect"></a>Zabezpečení virtuálních center pomocí služby Check Point Cloudguard Connect
 
 Check Point CloudGuard Connect je důvěryhodný partner zabezpečení ve Správci Azure Firewall. Chrání globálně distribuovanou pobočku pro připojení k Internetu (B2I) nebo virtuální síť k Internetu (V2I) s pokročilou ochranou před hrozbami. 
 

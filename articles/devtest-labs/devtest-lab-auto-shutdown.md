@@ -4,10 +4,10 @@ description: Přečtěte si, jak nastavit zásady automatického vypnutí pro te
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cd7974580ea30c9d0591c88380a4e626711bad1e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93318984"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurace automatické vypnutí testovacího prostředí a virtuálních počítačů COMPUTE v Azure DevTest Labs
@@ -39,10 +39,10 @@ Chcete-li zobrazit nebo změnit zásady pro testovací prostředí, postupujte p
 
 1. Na domovské stránce testovacího prostředí vyberte **Konfigurace a zásady**.
 2. V levé nabídce vyberte **Automatické vypnutí** v části **plány** .
-3. Výběrem **zapnuto** tuto zásadu povolíte a **Off** zakážete.
+3. Výběrem **zapnuto** tuto zásadu povolíte a  zakážete.
      ![Podrobnosti automatického vypnutí](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 4. Pokud tuto zásadu povolíte, zadejte čas (a časové pásmo) pro vypnutí všech virtuálních počítačů v aktuálním testovacím prostředí.
-5. Zadejte **hodnotu yes** nebo **No** pro možnost odeslání oznámení 30 minut před zadaným časem pro automatické vypnutí. Pokud zvolíte **Ano** , zadejte koncový bod adresy URL Webhooku nebo e-mailovou adresu, která určuje, kam chcete oznámení publikovat nebo odeslat. Uživatel obdrží oznámení a získá možnost zpoždění vypnutí. Další informace najdete v části [oznámení](#notifications) .
+5. Zadejte **hodnotu yes** nebo **No** pro možnost odeslání oznámení 30 minut před zadaným časem pro automatické vypnutí. Pokud zvolíte **Ano**, zadejte koncový bod adresy URL Webhooku nebo e-mailovou adresu, která určuje, kam chcete oznámení publikovat nebo odeslat. Uživatel obdrží oznámení a získá možnost zpoždění vypnutí. Další informace najdete v části [oznámení](#notifications) .
 6. Vyberte **Uložit**.
 
     Ve výchozím nastavení platí, že když je tato zásada povolená, vztahuje se na všechny virtuální počítače v aktuálním testovacím prostředí. Pokud chcete toto nastavení odebrat z konkrétního virtuálního počítače, otevřete podokno pro správu virtuálního počítače a změňte jeho nastavení **automatického vypnutí** .
@@ -72,8 +72,8 @@ Pokud nastavíte testovací prostředí na tuto zásadu, uživatelé testovacíh
 
 1. Na stránce **virtuální počítač** vyberte v nabídce vlevo v části **operace** možnost **Automatické vypnutí** .
 2. Na stránce **Automatické vypínání** vyberte **zapnuto** , **Pokud chcete tuto zásadu Povolit a zakázat** .
-3. Pokud tuto zásadu povolíte, zadejte **čas** (a **časové pásmo** ), ve kterém se má virtuální počítač vypnout.
-4. Vyberte **Ano** nebo **ne** pro možnost Odeslat oznámení 30 minut před zadanou dobu pro automatické vypnutí. Pokud zvolíte **Ano** , zadejte koncový bod adresy URL Webhooku nebo e-mailovou adresu, která určuje, kam chcete oznámení publikovat nebo odeslat. Uživatel obdrží oznámení a získá možnost zpoždění vypnutí. Další informace najdete v části [oznámení](#notifications) .
+3. Pokud tuto zásadu povolíte, zadejte **čas** (a **časové pásmo**), ve kterém se má virtuální počítač vypnout.
+4. Vyberte **Ano** nebo **ne** pro možnost Odeslat oznámení 30 minut před zadanou dobu pro automatické vypnutí. Pokud zvolíte **Ano**, zadejte koncový bod adresy URL Webhooku nebo e-mailovou adresu, která určuje, kam chcete oznámení publikovat nebo odeslat. Uživatel obdrží oznámení a získá možnost zpoždění vypnutí. Další informace najdete v části [oznámení](#notifications) .
 5. Vyberte **Uložit**.
 
     ![Konfigurace automatického vypnutí pro výpočetní virtuální počítač](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)

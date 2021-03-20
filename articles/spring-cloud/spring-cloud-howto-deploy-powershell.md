@@ -9,13 +9,13 @@ ms.devlang: azurepowershell
 ms.date: 11/16/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3cb320a37818084f2fbcad22a3cc992655b19c3d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95549934"
 ---
-# <a name="deploy-azure-spring-cloud-with-azure-powershell"></a>Nasazení jarního cloudu Azure pomocí Azure PowerShell
+# <a name="deploy-azure-spring-cloud-with-azure-powershell"></a>Nasazení Azure Spring Cloudu s využitím Azure PowerShellu
 
 Tento článek popisuje, jak můžete vytvořit instanci Azure jarního cloudu pomocí modulu [AZ. SpringCloud](/powershell/module/Az.SpringCloud) PowerShellu.
 
@@ -26,7 +26,7 @@ Tento článek popisuje, jak můžete vytvořit instanci Azure jarního cloudu p
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > I když je modul PowerShell **AZ. SpringCloud** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Až bude tento modul PowerShellu všeobecně dostupný, bude součástí budoucna ve výchozím nastavení AZ PowerShell Module releases a Available v rámci Azure Cloud Shell.
+  > I když je modul PowerShell **AZ. SpringCloud** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Jakmile bude tento powershellový modul obecně dostupný, stane se součástí budoucích verzí modulu Az PowerShellu a bude ve výchozím nastavení dostupný v rámci Azure Cloud Shellu.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.SpringCloud

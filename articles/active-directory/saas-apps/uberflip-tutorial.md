@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521828"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Kurz: Azure Active Directory integrace s Uberflip
@@ -55,7 +55,7 @@ Pokud chcete nakonfigurovat integraci Uberflip do služby Azure AD, musíte při
 
    ![Možnost Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
    ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat integraci Uberflip do služby Azure AD, musíte při
 
    ![Možnost nové aplikace](common/add-new-app.png)
 
-1. Do vyhledávacího pole zadejte **Uberflip**. Ve výsledcích hledání vyberte **Uberflip**a pak vyberte **Přidat** , aby se aplikace přidala.
+1. Do vyhledávacího pole zadejte **Uberflip**. Ve výsledcích hledání vyberte **Uberflip** a pak vyberte **Přidat** , aby se aplikace přidala.
 
    ![Uberflip v seznamu výsledků](common/search-new-app.png)
 
@@ -109,7 +109,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Uberflip
      > [!NOTE]
      > Tato hodnota není skutečná. Aktualizujte tuto hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat skutečnou hodnotu, obraťte se na [tým podpory Uberflip](mailto:support@uberflip.com). Můžete také odkazovat na vzory zobrazené v podokně **základní konfigurace SAML** v Azure Portal.
 
-   * Chcete-li nakonfigurovat aplikaci v režimu jednotného přihlašování iniciované SP, vyberte možnost **nastavit další adresy URL**a v poli **Adresa URL pro přihlášení** zadejte tuto adresu URL:
+   * Chcete-li nakonfigurovat aplikaci v režimu jednotného přihlašování iniciované SP, vyberte možnost **nastavit další adresy URL** a v poli **Adresa URL pro přihlášení** zadejte tuto adresu URL:
 
      `https://app.uberflip.com/users/login`
 
@@ -149,7 +149,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 
     1. Do pole **název** zadejte **BSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BSimon \@ \<yourcompanydomain> . \<extension> **. Například **BSimon \@ contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **BSimon \@ \<yourcompanydomain> . \<extension>**. Například **BSimon \@ contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -167,11 +167,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     ![Uberflip v seznamu aplikací](common/all-applications.png)
 
-1. V levém podokně v části **Spravovat**vyberte **Uživatelé a skupiny**.
+1. V levém podokně v části **Spravovat** vyberte **Uživatelé a skupiny**.
 
     ![Možnost Uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **+ Přidat uživatele**a pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **+ Přidat uživatele** a pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
@@ -194,7 +194,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když vyberete **Uberflip** na portálu moje aplikace, měli byste být automaticky přihlášeni k předplatnému Uberflip, pro které jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

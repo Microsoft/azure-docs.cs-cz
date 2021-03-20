@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: e1099f271291c6d86610237454e08e06b5fe48c7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Kurz: Azure Active Directory integrace s lidstvo
@@ -129,7 +129,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí lidstvo,
 2. V nabídce v horní části klikněte na **správce**.
 
     ![Správce](./media/shiftplanning-tutorial/iC786619.png "Správce")
-3. V části **integrace**klikněte na **jednotné přihlašování**.
+3. V části **integrace** klikněte na **jednotné přihlašování**.
 
     ![Snímek obrazovky zobrazuje jednu Sign-On vybranou z nabídky integrace.](./media/shiftplanning-tutorial/iC786620.png "Jednotné přihlašování")
 
@@ -153,7 +153,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí lidstvo,
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -178,7 +178,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k lidstvo.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **lidstvo**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **lidstvo**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -216,7 +216,7 @@ Aby se uživatelé Azure AD mohli přihlásit k lidstvo, musí se zřídit v lid
 
     ![Sazovat](./media/shiftplanning-tutorial/ic786623.png "Sazovat")
 
-4. V části **Akce**klikněte na **Přidat zaměstnance**.
+4. V části **Akce** klikněte na **Přidat zaměstnance**.
 
     ![Přidat zaměstnance](./media/shiftplanning-tutorial/iC786624.png "Přidat zaměstnance")
 
@@ -224,7 +224,7 @@ Aby se uživatelé Azure AD mohli přihlásit k lidstvo, musí se zřídit v lid
 
     ![Uložení zaměstnanců](./media/shiftplanning-tutorial/iC786625.png "Uložení zaměstnanců")
 
-    a. Zadejte **jméno**, **příjmení**a **e-mail** platného účtu Azure AD, který chcete zřídit do souvisejících textových polí.
+    a. Zadejte **jméno**, **příjmení** a **e-mail** platného účtu Azure AD, který chcete zřídit do souvisejících textových polí.
 
     b. Klikněte na možnost **Uložit zaměstnance**.
 
@@ -237,7 +237,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici lidstvo, měli byste se automaticky přihlásit k lidstvo, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

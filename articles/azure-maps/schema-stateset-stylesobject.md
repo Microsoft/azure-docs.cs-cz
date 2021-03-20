@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96903339"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>Referenční příručka schématu StylesObject pro dynamická mapování
@@ -88,9 +88,9 @@ Následující kód JSON ukazuje příklady použití každého ze tří typů s
 
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
-| `keyName` | řetězec | Název *stavu* nebo dynamické vlastnosti. `keyName`Element by měl být v `StyleObject` poli jedinečný.| Ano |
-| `type` | řetězec | Hodnota je "číselná hodnota". | Ano |
-| `rules` | [`NumberRuleObject`](#numberruleobject)[]| Pole číselných stylů a rozsahů s přidruženými barvami. Každý rozsah definuje barvu, která se použije, když hodnota *stavu* splní rozsah.| Ano |
+| `keyName` | řetězec | Název *stavu* nebo dynamické vlastnosti. `keyName`Element by měl být v `StyleObject` poli jedinečný.| Yes |
+| `type` | řetězec | Hodnota je "číselná hodnota". | Yes |
+| `rules` | [`NumberRuleObject`](#numberruleobject)[]| Pole číselných stylů a rozsahů s přidruženými barvami. Každý rozsah definuje barvu, která se použije, když hodnota *stavu* splní rozsah.| Yes |
 
 ### <a name="numberruleobject"></a>NumberRuleObject
 
@@ -126,7 +126,7 @@ V následujícím příkladu JSON budou oba rozsahy platit, pokud je hodnota *st
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
 | `range` | [RangeObject](#rangeobject) | [RangeObject](#rangeobject) definuje sadu logických podmínek rozsahu, které v případě `true` změny barvy zobrazení *stavu* na barvu určenou `color` vlastností. Pokud `range` parametr není zadán, bude vždy použita barva definovaná ve `color` Vlastnosti.   | No |
-| `color` | řetězec | Barva, která se má použít, pokud hodnota stavu spadá do rozsahu. `color`Vlastnost je řetězec formátu JSON v jednom z následujících formátů: <ul><li> Šestnáctkové hodnoty ve stylu HTML </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100; 50%; 50%; 1)")</li><li> Předdefinované názvy barev HTML, jako je žlutá a modrá.</li></ul> | Ano |
+| `color` | řetězec | Barva, která se má použít, pokud hodnota stavu spadá do rozsahu. `color`Vlastnost je řetězec formátu JSON v jednom z následujících formátů: <ul><li> Šestnáctkové hodnoty ve stylu HTML </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100; 50%; 50%; 1)")</li><li> Předdefinované názvy barev HTML, jako je žlutá a modrá.</li></ul> | Yes |
 
 ### <a name="rangeobject"></a>RangeObject
 
@@ -172,9 +172,9 @@ A `StringTypeStyleRule` je [`StyleObject`](#styleobject) a skládá se z násled
 
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
-| `keyName` | řetězec |  Název *stavu* nebo dynamické vlastnosti.  `keyName`Element by měl být v `StyleObject` poli jedinečný.| Ano |
-| `type` | řetězec |Hodnota je "String". | Ano |
-| `rules` | [`StringRuleObject`](#stringruleobject)[]| Pole N počtu hodnot *stavu* .| Ano |
+| `keyName` | řetězec |  Název *stavu* nebo dynamické vlastnosti.  `keyName`Element by měl být v `StyleObject` poli jedinečný.| Yes |
+| `type` | řetězec |Hodnota je "String". | Yes |
+| `rules` | [`StringRuleObject`](#stringruleobject)[]| Pole N počtu hodnot *stavu* .| Yes |
 
 ### <a name="stringruleobject"></a>StringRuleObject
 
@@ -214,9 +214,9 @@ A `BooleanTypeStyleRule` je [`StyleObject`](#styleobject) a skládá se z násle
 
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
-| `keyName` | řetězec |  Název *stavu* nebo dynamické vlastnosti.  `keyName`Element by měl být v `StyleObject` poli jedinečný.| Ano |
-| `type` | řetězec |Hodnota je "Boolean". | Ano |
-| `rules` | [`BooleanRuleObject`](#booleanruleobject)první| Logický pár s barvami pro `true` a `false` hodnoty *stavu* .| Ano |
+| `keyName` | řetězec |  Název *stavu* nebo dynamické vlastnosti.  `keyName`Element by měl být v `StyleObject` poli jedinečný.| Yes |
+| `type` | řetězec |Hodnota je "Boolean". | Yes |
+| `rules` | [`BooleanRuleObject`](#booleanruleobject)první| Logický pár s barvami pro `true` a `false` hodnoty *stavu* .| Yes |
 
 ### <a name="booleanruleobject"></a>BooleanRuleObject
 
@@ -224,8 +224,8 @@ A `BooleanTypeStyleRule` je [`StyleObject`](#styleobject) a skládá se z násle
 
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
-| `true` | řetězec | Barva, která se má použít, pokud je hodnota *stavu* `true` . `color`Vlastnost je řetězec formátu JSON v jednom z následujících formátů: <ul><li> Šestnáctkové hodnoty ve stylu HTML </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100; 50%; 50%; 1)")</li><li> Předdefinované názvy barev HTML, jako je žlutá a modrá.</li></ul>| Ano |
-| `false` | řetězec | Barva, která se má použít, pokud je hodnota *stavu* `false` . | Ano |
+| `true` | řetězec | Barva, která se má použít, pokud je hodnota *stavu* `true` . `color`Vlastnost je řetězec formátu JSON v jednom z následujících formátů: <ul><li> Šestnáctkové hodnoty ve stylu HTML </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100; 50%; 50%; 1)")</li><li> Předdefinované názvy barev HTML, jako je žlutá a modrá.</li></ul>| Yes |
+| `false` | řetězec | Barva, která se má použít, pokud je hodnota *stavu* `false` . | Yes |
 
 ### <a name="example-of-booleantypestylerule"></a>Příklad BooleanTypeStyleRule
 

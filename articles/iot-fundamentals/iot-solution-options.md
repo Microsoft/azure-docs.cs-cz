@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
 ms.openlocfilehash: 7ff8193e87d138878d95e783d144d445436e7a08
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96453010"
 ---
 # <a name="what-is-the-right-iot-solution-for-your-business"></a>Jaké je správné řešení IoT pro vaši firmu?
@@ -55,7 +55,7 @@ Jakou cenovou strukturu nejlépe vyhovuje vašim potřebám?
 
 - Vyberte přístup k spravované aplikační platformě pro jednoduchou a předvídatelný cenovou strukturu.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Přístup ke službám platformy je vhodný pro firmu s cloudovým řešením a odbornými znalostmi zařízení, které chtějí:
 

@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 702cc1fc8b135b2eb4af9106a81946873918c4fa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694389"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Analýza Azure synapse Analytics – úlohy Portál pro správu monitorování
@@ -26,7 +26,7 @@ Existují dvě různé kategorie metrik skupin úloh, které jsou k dispozici pr
 
 ## <a name="workload-management-metric-definitions"></a>Definice metrik správy úloh
 
-|Název metriky                    |Popis  |Typ agregace |
+|Název metriky                    |Description  |Typ agregace |
 |-------------------------------|-------------|-----------------|
 |Procento efektivního Cap prostředku | *Procentuální hodnota efektivního* limitu prostředků je pevně nastavená procentuální hodnota z prostředků, které skupina úloh zpřístupní, přičemž vezme v úvahu *efektivní minimální procento prostředků* přidělených pro jiné skupiny úloh. Metrika *procenta efektivního limitu prostředků* je nakonfigurovaná pomocí `CAP_PERCENTAGE_RESOURCE` parametru v SYNTAXI [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .  Platné hodnoty jsou popsány zde.<br><br>Pokud je například `DataLoads` vytvořená skupina úloh s `CAP_PERCENTAGE_RESOURCE` = 100 a je vytvořena jiná skupina úloh s platným minimálním procentem 25%, je *procento prostředku efektivního limitu* pro `DataLoads` skupinu úloh 75%.<br><br>*Procentuální hodnota prostředku efektivního Cap* určuje horní mez souběžnosti (a tudíž potenciální propustnost), kterou může skupina úloh dosáhnout.  Pokud je potřeba další propustnost, než je aktuálně hlášena metrikou *procentuální hodnoty efektivního snížení kapacity prostředku* , zvětšete `CAP_PERCENTAGE_RESOURCE` , snižte `MIN_PERCENTAGE_RESOURCE` počet ostatních skupin úloh nebo nahorizontální navýšení kapacity instance, aby bylo možné přidat další prostředky.  Snížení úrovně `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může zvýšit souběžnost, ale nemusí zvyšovat celkovou propustnost.| Min, AVG, Max |
 |Efektivní minimální procento prostředků |*Platný* minimální procento prostředků je minimální procento rezervovaných a izolovaných prostředků pro skupinu úloh, které berou v úvahu minimum úrovně služby.  Metrika platných minimálních procentuálních hodnot prostředků je nakonfigurovaná pomocí `MIN_PERCENTAGE_RESOURCE` parametru v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .  Platné hodnoty jsou popsány [zde](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values).<br><br>Pokud chcete monitorovat celkovou izolaci úloh nakonfigurovanou v systému, použijte typ agregace Sum, pokud je tato metrika nefiltrovaná, a nerozdělujte.<br><br>*Hodnota platné minimální procento prostředků* určuje dolní mez garantované souběžnosti (a tak zaručenou propustnost), kterou může skupina úloh dosáhnout.  Pokud jsou požadovány další garantované prostředky, které jsou aktuálně hlášeny v *hodnotě efektivní minimální* metriky prostředku, zvyšte `MIN_PERCENTAGE_RESOURCE` parametr nakonfigurovaný pro skupinu úloh.  Snížení úrovně `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může zvýšit souběžnost, ale nemusí zvyšovat celkovou propustnost. |Min, AVG, Max|

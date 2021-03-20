@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/03/2021
 ms.author: jeedes
 ms.openlocfilehash: 9e233e30521e5c1fa05509fa6dc42a567f6ac4e2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653095"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Kurz: integrace Bynder s Azure Active Directory
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Bynder s Azure Active Directory (Azure
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Bynder svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

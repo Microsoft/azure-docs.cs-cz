@@ -8,10 +8,10 @@ ms.date: 11/10/2020
 author: sayantanroy83
 ms.author: sroy
 ms.openlocfilehash: 1b98948100c06868cd14f636f2049ca515fec18d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94564800"
 ---
 # <a name="commercial-marketplace-analytics-common-questions"></a>Nejčastější dotazy k komerčním obchodům na webu Marketplace
@@ -30,7 +30,7 @@ Proč se vám může zobrazit tato zpráva:
 
 - Pro vaše publikované nabídky na komerčním webu Marketplace aktuálně neexistují žádné akvizice. To může znamenat, že vaše nabídky jsou živé na komerčním webu Marketplace a zákazníci si prohlížejí stránky se seznamem produktů, ale ještě neudělali k jejich nákupu a nasazení žádné akce.
 - Vaše nabídka může být v procesu publikování, ale ještě není aktivní. Zákazníci mohou získat pouze živé nabídky. Pokud chcete zjistit stav nabídek, podívejte se na stránku **Souhrn** na [řídicím panelu analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). Další informace najdete v tématu [souhrnný řídicí panel v tématu Analýza komerčního tržiště](summary-dashboard.md).
-- Vaše nabídky můžou být uvedené jako **kontaktní mě** , což jsou nabídky jen pro seznam a zákazníci je nemůžou koupit na komerčním webu Marketplace. I když tyto nabídky umožňují generovat zájemce a sdílí se s vámi, objednávky pro tyto nabídky se nevytvoří, protože je nejde koupit. Chcete-li zjistit typ seznamu nabídek, klikněte na stránku nastavení pro vaši nabídku.
+- Vaše nabídky můžou být uvedené jako **kontaktní mě**, což jsou nabídky jen pro seznam a zákazníci je nemůžou koupit na komerčním webu Marketplace. I když tyto nabídky umožňují generovat zájemce a sdílí se s vámi, objednávky pro tyto nabídky se nevytvoří, protože je nejde koupit. Chcete-li zjistit typ seznamu nabídek, klikněte na stránku nastavení pro vaši nabídku.
 
 ### <a name="i-know-i-have-analytics-data-so-why-does-the-no-analytics-available-message-appear"></a>Vím, že mám analytická data, takže proč se nezobrazí zpráva k dispozici pro analýzu?
 

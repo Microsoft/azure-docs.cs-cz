@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: f0fbd93e2a5f4e92089e10e75dc17e304ff80bf6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93147075"
 ---
 # <a name="weather-partner-integration-with-farmbeats"></a>Integrace s informacemi o počasí s FarmBeats
@@ -75,7 +75,7 @@ Služba API tuto dict – zaserializace a uloží ji do [trezoru klíčů](../..
 
 [Azure Data Factory](../../data-factory/introduction.md) slouží k orchestraci úloh počasí. Roztočí prostředky pro spuštění kódu Docker. Data Factory taky poskytuje mechanismus pro zabezpečené odesílání dat do virtuálního počítače, na kterém běží úloha Docker. Přihlašovací údaje rozhraní API se pak bezpečně ukládají do trezoru klíčů. 
 
-Přihlašovací údaje se čtou jako zabezpečené řetězce z trezoru klíčů. Poskytují se jako rozšířené vlastnosti v pracovním adresáři kontejneru Docker. Cesta k souboru je */mnt/working_dir/activity.jsna* . 
+Přihlašovací údaje se čtou jako zabezpečené řetězce z trezoru klíčů. Poskytují se jako rozšířené vlastnosti v pracovním adresáři kontejneru Docker. Cesta k souboru je */mnt/working_dir/activity.jsna*. 
 
 Kód Docker může číst přihlašovací údaje z *activity.jsv* průběhu doby běhu pro přístup k rozhraním API na straně partnera pro zákazníka. V souboru JSON by přihlašovací údaje vypadaly například jako tento příklad kódu:
 
@@ -99,7 +99,7 @@ Další informace o tom, jak Data Factory kanály a aktivity fungují, najdete v
 
 V následující tabulce jsou uvedeny nejběžnější hlavičky požadavků, které je třeba zadat při volání rozhraní API do FarmBeats.
 
-Záhlaví | Popis a příklad
+Hlavička | Popis a příklad
 --- | ---
 Typ obsahu | Formát požadavku. Příklad: `Content-Type: application/<format>` <br/>Pro rozhraní FarmBeats DataHub API je formát JSON. Příklad: ` Content-Type: application/json`
 Autorizace | Přístupový token, který je vyžadován pro volání rozhraní API. Příklad: `Authorization: Bearer <Access-Token>`
@@ -117,8 +117,8 @@ Docker program potřebuje dvě komponenty: Bootstrap a úlohu. Program může m�
 
 Spouštěcí komponenta by se měla spustit, když zákazník spustí registraci Docker na FarmBeats. `arg1` `arg2` Do programu jsou předány následující argumenty (a):
 
-- **Koncový bod rozhraní API FarmBeats** : koncový bod rozhraní FarmBeats API pro žádosti rozhraní API. Tento koncový bod zpřístupňuje volání rozhraní API FarmBeats nasazení.
-- **Adresa URL Azure Functions** : váš vlastní koncový bod. Tato adresa URL poskytuje token pro přístup k rozhraním API FarmBeats. K `GET` načtení přístupového tokenu můžete zavolat na tuto adresu URL.
+- **Koncový bod rozhraní API FarmBeats**: koncový bod rozhraní FarmBeats API pro žádosti rozhraní API. Tento koncový bod zpřístupňuje volání rozhraní API FarmBeats nasazení.
+- **Adresa URL Azure Functions**: váš vlastní koncový bod. Tato adresa URL poskytuje token pro přístup k rozhraním API FarmBeats. K `GET` načtení přístupového tokenu můžete zavolat na tuto adresu URL.
 
 Bootstrap vytvoří metadata, která uživatelé potřebují ke spouštění vašich úloh, aby mohli získat data o počasí. Další informace najdete v [referenční implementaci](https://github.com/azurefarmbeats/noaa_docker). 
 
@@ -127,8 +127,8 @@ Pokud přizpůsobíte *bootstrap_manifest.jsv* souboru, pak program pro spuště
  > [!NOTE]
  > Pokud aktualizujete *bootstrap_manifest.jspro* soubor, jak popisuje [referenční implementace](https://github.com/azurefarmbeats/noaa_docker) , nemusíte vytvářet následující metadata. Spouštěcí program použije váš soubor manifestu k vytvoření potřebných metadat.
 
-- /**WeatherDataModel** : metadata WeatherDataModel představují data o počasí. Odpovídá datovým sadám, které poskytuje zdroj. DailyForecastSimpleModel může například poskytnout průměrnou teplotu, vlhkost a informace o vysrážení jednou denně. Naopak DailyForecastAdvancedModel může poskytovat mnohem více informací v hodinové členitosti. Můžete vytvořit libovolný počet datových modelů počasí.
-- /**JobType** : FarmBeats má rozšiřitelný systém správy úloh. Jako poskytovatel dat počasí budete mít různé datové sady a rozhraní API (například GetDailyForecasts). Tyto datové sady a rozhraní API můžete v FarmBeats povolit pomocí JobType. Po vytvoření typu úlohy může zákazník aktivovat úlohy tohoto typu, aby získal data o počasí pro svoje umístění nebo jejich farmu, které vás zajímají. Další informace najdete v tématu rozhraní API pro JobType a úlohy v [Swagger FarmBeats](https://aka.ms/farmbeatsswagger).
+- /**WeatherDataModel**: metadata WeatherDataModel představují data o počasí. Odpovídá datovým sadám, které poskytuje zdroj. DailyForecastSimpleModel může například poskytnout průměrnou teplotu, vlhkost a informace o vysrážení jednou denně. Naopak DailyForecastAdvancedModel může poskytovat mnohem více informací v hodinové členitosti. Můžete vytvořit libovolný počet datových modelů počasí.
+- /**JobType**: FarmBeats má rozšiřitelný systém správy úloh. Jako poskytovatel dat počasí budete mít různé datové sady a rozhraní API (například GetDailyForecasts). Tyto datové sady a rozhraní API můžete v FarmBeats povolit pomocí JobType. Po vytvoření typu úlohy může zákazník aktivovat úlohy tohoto typu, aby získal data o počasí pro svoje umístění nebo jejich farmu, které vás zajímají. Další informace najdete v tématu rozhraní API pro JobType a úlohy v [Swagger FarmBeats](https://aka.ms/farmbeatsswagger).
 
 ### <a name="jobs"></a>Úlohy
 

@@ -14,10 +14,10 @@ ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 3509185baa3a9d7be90c1fa4bd8000da4a8a6fe5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95562415"
 ---
 ## <a name="prepare-for-akv-integration"></a>Příprava na integraci integrace
@@ -25,7 +25,7 @@ Pokud chcete použít integraci Azure Key Vault ke konfiguraci SQL Server virtu�
 
 1. [Instalace Azure PowerShellu](#install)
 2. [Vytvoření Azure Active Directory](#register)
-3. [Vytvoření trezoru klíčů](#createkeyvault)
+3. [Vytvořte trezor klíčů.](#createkeyvault)
 
 Následující části popisují tyto požadavky a informace, které potřebujete ke shromáždění, aby později běžely rutiny prostředí PowerShell.
 

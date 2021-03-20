@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 5f77e99dc5c34867fef2b0ac47c709824fa4477d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095999"
 ---
 # <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>Podívejte se na video stream RTSP ve službě Azure Percept DK
 
 Podle tohoto průvodce si můžete zobrazit datový proud videa RTSP z Azure Percept DK v rámci Azure Percept studia. Inferencing z visionových modelů AI nasazených do vašeho zařízení se budou zobrazovat ve webovém streamu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Percept DK (DevKit)
 - [Předplatné Azure](https://azure.microsoft.com/free/)

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
 ms.openlocfilehash: b22ef4ee0a8b5978bb2ec1c02fadf368815f3014
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095778"
 ---
 # <a name="configure-voice-assistant-application-using-azure-iot-hub"></a>Konfigurace aplikace hlasového asistenta pomocí Azure IoT Hub
@@ -34,7 +34,7 @@ Tento článek popisuje, jak nakonfigurovat aplikaci hlasového asistenta pomoc�
 
 1. Ověřte, že je v části **Container Registry přihlašovací údaje** k dispozici následující položka. V případě potřeby přidejte přihlašovací údaje.
 
-    |Název|Adresa|Uživatelské jméno|Heslo|
+    |Name|Adresa|Uživatelské jméno|Heslo|
     |----|-------|--------|--------|
     |azureedgedevices|azureedgedevices.azurecr.io|devkitprivatepreviewpull|
 

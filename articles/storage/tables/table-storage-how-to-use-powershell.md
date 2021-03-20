@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93306904"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provádění operací úložiště Azure Table pomocí Azure PowerShell 
@@ -38,7 +38,7 @@ Příklady vyžadují AZ PowerShell modules `Az.Storage (1.1.0 or greater)` a `A
 > Použití této funkce Azure z PowerShellu vyžaduje, abyste `Az` modul nainstalovali. Aktuální verze nástroje `AzTable` není kompatibilní s starším modulem AzureRM.
 > V případě potřeby použijte [nejnovější pokyny k instalaci pro instalaci AZ Module](/powershell/azure/install-az-ps) .
 
-Po instalaci nebo aktualizaci Azure PowerShell je nutné nainstalovat modul **AzTable** , který obsahuje příkazy pro správu entit. Pokud chcete tento modul nainstalovat, spusťte PowerShell jako správce a použijte příkaz **install-Module** .
+Po instalaci nebo aktualizaci Azure PowerShell je nutné nainstalovat modul **AzTable**, který obsahuje příkazy pro správu entit. Pokud chcete tento modul nainstalovat, spusťte PowerShell jako správce a použijte příkaz **install-Module** .
 
 > [!IMPORTANT]
 > V případě důvodů kompatibility s názvem modulu stále publikujete stejný modul pod starým názvem `AzureRmStorageTables` v Galerie prostředí PowerShell. Tento dokument bude odkazovat pouze na nový název.

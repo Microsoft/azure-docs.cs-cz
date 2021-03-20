@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92342395"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
@@ -75,8 +75,8 @@ Při plánování síťové infrastruktury clusteru avere vFXT postupujte podle 
   |----------|-----------|----------|
   | Skupina prostředků | Ano, je-li prázdné | Musí být prázdné|
   | Účet úložiště | **Ano** , pokud se po vytvoření clusteru připojí existující kontejner objektů BLOB <br/>  **Ne** při vytváření nového kontejneru objektů BLOB během vytváření clusteru | Existující kontejner objektů BLOB musí být prázdný. <br/> &nbsp; |
-  | Virtuální síť | Ano | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
-  | Podsíť | Ano | Nemůže obsahovat jiné prostředky. |
+  | Virtuální síť | Yes | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
+  | Podsíť | Yes | Nemůže obsahovat jiné prostředky. |
 
 ## <a name="ip-address-requirements"></a>Požadavky na IP adresu
 
@@ -86,7 +86,7 @@ Cluster avere vFXT používá následující IP adresy:
 
 * Jedna IP adresa pro správu clusteru. Tato adresa se dá v clusteru přesunout z uzlu podle potřeby tak, aby byla vždy dostupná. Tuto adresu použijte pro připojení k nástroji pro konfiguraci ovládacího panelu avere.
 * Pro každý uzel clusteru:
-  * Aspoň jedna IP adresa pro klientské klienta. (Všechny adresy směřující na klienta se spravují pomocí *VServer*clusteru, což může v případě potřeby přesunout IP adresy mezi uzly.)
+  * Aspoň jedna IP adresa pro klientské klienta. (Všechny adresy směřující na klienta se spravují pomocí *VServer* clusteru, což může v případě potřeby přesunout IP adresy mezi uzly.)
   * Jedna IP adresa pro komunikaci clusteru
   * Jedna instance IP adresa (přiřazená k virtuálnímu počítači)
 

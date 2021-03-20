@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 809b1be4f9f12e1963ff5caeaacd109c84db154f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93323658"
 ---
 # <a name="linear-regression-module"></a>Modul lineární regrese
@@ -41,7 +41,7 @@ Azure Machine Learning podporuje různé regresní modely kromě lineární regr
 
 Pro roky byly statistikou vyvinuty stále větší pokročilé metody pro regresi. To platí i pro lineární regresi. Tento modul podporuje dvě metody měření chyby a odpovídá regresní čáře: obyčejnému nejmenšímu čtverci a zaklesání gradientu.
 
-- **Klesání gradientu** je metoda, která minimalizuje množství chyb v každém kroku procesu školení modelu. Existuje spousta variací pro klesání gradientu a jeho optimalizace pro různé problémy s učením byla značně vyzkoušena. Pokud zvolíte tuto možnost pro **metodu řešení** , můžete nastavit různé parametry pro řízení velikosti kroku, studijní frekvence a tak dále. Tato možnost také podporuje použití integrovaného úklidu parametrů.
+- **Klesání gradientu** je metoda, která minimalizuje množství chyb v každém kroku procesu školení modelu. Existuje spousta variací pro klesání gradientu a jeho optimalizace pro různé problémy s učením byla značně vyzkoušena. Pokud zvolíte tuto možnost pro **metodu řešení**, můžete nastavit různé parametry pro řízení velikosti kroku, studijní frekvence a tak dále. Tato možnost také podporuje použití integrovaného úklidu parametrů.
 
 - **Běžný nejmenší počet čtverců** je jedním z nejčastěji používaných technik v lineární regresi. Například nejméně čtverce je metoda, která se používá v analytickém doplňku pro aplikaci Microsoft Excel.
 
@@ -63,7 +63,7 @@ Tento modul podporuje dvě metody pro přizpůsobení regresního modelu s různ
 
 1. Přidejte modul **lineární regrese** do kanálu v návrháři.
 
-    Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte položku **inicializovat model** , rozbalte položku **regrese** a poté přetáhněte modul **lineární regrese** do vašeho kanálu.
+    Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte položku **inicializovat model**, rozbalte položku **regrese** a poté přetáhněte modul **lineární regrese** do vašeho kanálu.
 
 2. V podokně **vlastnosti** v rozevíracím seznamu **Metoda řešení** vyberte možnost **obyčejné nejméně čtverce**. Tato možnost určuje metodu výpočtu, která se používá k nalezení regresní čáry.
 
@@ -71,7 +71,7 @@ Tento modul podporuje dvě metody pro přizpůsobení regresního modelu s různ
 
      Další informace o tom, jak pravidelná změna má vliv na model, najdete v tomto článku: [L1 a pro použití algoritmu L2 pro Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)
 
-4. Vyberte možnost **včetně podmínky zachycení** , pokud chcete zobrazit termín pro Intercept.
+4. Vyberte možnost **včetně podmínky zachycení**, pokud chcete zobrazit termín pro Intercept.
 
     Tuto možnost zrušte, pokud nepotřebujete kontrolovat vzorec regrese.
 
@@ -96,22 +96,22 @@ Po dokončení školení:
 
 1. Přidejte modul **lineární regrese** do kanálu v návrháři.
 
-    Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte možnost **inicializovat model** , rozbalte **regresi** a přetáhněte modul **lineární regrese** do vašeho kanálu.
+    Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte možnost **inicializovat model**, rozbalte **regresi** a přetáhněte modul **lineární regrese** do vašeho kanálu.
 
 2. V podokně **vlastnosti** v rozevíracím seznamu **Metoda řešení** vyberte možnost **online přechodové** prolomení jako metodu výpočtu použitou k nalezení regresní čáry.
 
 3. V případě **režimu vytvoření Trainer** určete, zda chcete vytvořit výuku modelu pomocí předdefinované sady parametrů, nebo pokud chcete model optimalizovat pomocí parametru sweep.
 
-    + **Jediný parametr** : Pokud víte, jak chcete nakonfigurovat síť lineární regrese, můžete zadat konkrétní sadu hodnot jako argumenty.
+    + **Jediný parametr**: Pokud víte, jak chcete nakonfigurovat síť lineární regrese, můžete zadat konkrétní sadu hodnot jako argumenty.
     
-    + **Rozsah parametrů** : tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
+    + **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
 
    
 4. Do pole **rychlost učení** zadejte počáteční rychlost učení pro Optimalizátor stochastického pro prorážku klesání.
 
 5. Pro **počet epochs školení** zadejte hodnotu, která označuje, kolikrát by se měl algoritmus iterovat prostřednictvím příkladů. U datových sad s malým počtem příkladů by toto číslo mělo být velké, aby se dosáhlo konvergence.
 
-6. **Funkce normalizace** : Pokud už máte normalizovaná číselná data, která se používají pro výuku modelu, můžete tuto možnost zrušit. Ve výchozím nastavení modul normalizuje všechny číselné vstupy na rozsah od 0 do 1.
+6. **Funkce normalizace**: Pokud už máte normalizovaná číselná data, která se používají pro výuku modelu, můžete tuto možnost zrušit. Ve výchozím nastavení modul normalizuje všechny číselné vstupy na rozsah od 0 do 1.
 
     > [!NOTE]
     > 
@@ -129,9 +129,9 @@ Po dokončení školení:
 
 12. Výukové modely:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 

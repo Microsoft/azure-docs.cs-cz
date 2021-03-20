@@ -7,17 +7,17 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92314841"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Spouštění akcí na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
 Chcete-li spouštět akce až po úspěšném nebo neúspěšném provedení jiné skupiny akcí, seskupte tyto akce do *oboru*. Tato struktura je užitečná v případě, že chcete uspořádat akce jako logickou skupinu, vyhodnotit stav této skupiny a provést akce, které jsou založeny na stavu oboru. Po dokončení všech akcí v oboru, který je spuštěn, rozsah také získá svůj stav. Můžete například použít obory, pokud chcete implementovat [výjimku a zpracování chyb](../logic-apps/logic-apps-exception-handling.md#scopes). 
 
-Chcete-li zjistit stav oboru, můžete použít stejná kritéria, která použijete k určení stavu spuštění aplikace logiky, jako je například **úspěšné**, **neúspěšné**, **zrušené**a tak dále. Ve výchozím nastavení se po úspěšném dokončení všech akcí oboru stav oboru označí jako **úspěšný**. Pokud ale dojde k selhání jakékoli akce v oboru nebo zrušení, stav tohoto oboru se označí jako **neúspěšné**. Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+Chcete-li zjistit stav oboru, můžete použít stejná kritéria, která použijete k určení stavu spuštění aplikace logiky, jako je například **úspěšné**, **neúspěšné**, **zrušené** a tak dále. Ve výchozím nastavení se po úspěšném dokončení všech akcí oboru stav oboru označí jako **úspěšný**. Pokud ale dojde k selhání jakékoli akce v oboru nebo zrušení, stav tohoto oboru se označí jako **neúspěšné**. Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
 Tady je například aplikace logiky vysoké úrovně, která používá obor ke spouštění specifických akcí a podmínku pro kontrolu stavu oboru. Pokud některé akce v oboru selžou nebo neočekávaně skončí, je obor označený jako **neúspěšný** nebo **přerušený** a aplikace logiky pošle zprávu "obor se nepovedlo". Pokud všechny akce v oboru proběhnou úspěšně, aplikace logiky pošle zprávu "obor byl úspěšný".
 
@@ -209,7 +209,7 @@ Dále přidejte obor, abyste mohli seskupit konkrétní akce a vyhodnotit jejich
 
       ![Konfigurace vlastnosti ' Runafter šablonové '](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
 
-   1. Vybrat všechny tyto stavy oboru: **úspěšné**, **neúspěšné**, **přeskočení**a vypršel **časový limit** .
+   1. Vybrat všechny tyto stavy oboru: **úspěšné**, **neúspěšné**, **přeskočení** a vypršel **časový limit** .
 
       ![Výběr stavu oboru](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
 
