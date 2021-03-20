@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87078146"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Referenční příručka schématu pro jazyk definice pracovního postupu v Azure Logic Apps
@@ -290,7 +290,7 @@ Pokud chcete získat výstup z pracovního postupu, přečtěte si historii spu�
 
 Ve [výrazech](#expressions) a [funkcích](#functions)operátory provádějí konkrétní úkoly, jako je například odkaz na vlastnost nebo hodnotu v poli.
 
-| Operátor | Úloha |
+| Operátor | Úkol |
 |----------|------|
 | ' | Chcete-li použít řetězcový literál jako vstup nebo ve výrazech a funkcích, zabalte řetězec pouze s jednoduchými uvozovkami, například `'<myString>'` . Nepoužívejte dvojité uvozovky (""), které jsou v konfliktu s formátováním JSON kolem celého výrazu. Například: <p>**Ano**: délka (' Hello ') </br>**Ne**: délka ("Hello") <p>Když předáte pole nebo čísla, nebudete potřebovat interpunkci zalomení. Například: <p>**Ano**: délka ([1; 2; 3]) </br>**Ne**: délka ("[1, 2, 3]") |
 | [] | Pro odkazování na hodnotu na konkrétní pozici (index) v poli použijte hranaté závorky. Například pro získání druhé položky v poli: <p>`myArray[1]` |
@@ -300,7 +300,7 @@ Ve [výrazech](#expressions) a [funkcích](#functions)operátory provádějí ko
 
 <a name="functions"></a>
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Některé výrazy získají jejich hodnoty z běhových akcí, které nemusí být k dispozici, když začne běžet definice pracovního postupu. Chcete-li odkazovat nebo pracovat s těmito hodnotami ve výrazech, můžete použít [*funkce*](../logic-apps/workflow-definition-language-functions-reference.md) , které poskytuje jazyk definice pracovního postupu.
 

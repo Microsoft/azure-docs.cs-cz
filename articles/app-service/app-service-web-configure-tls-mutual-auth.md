@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97347713"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro Azure App Service
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro službu Azure App Service
 
 Přístup k aplikaci Azure App Service můžete omezit povolením různých typů ověřování. Jedním ze způsobů, jak to provést, je požádat o klientský certifikát, když požadavek klienta překročí protokol TLS/SSL a ověří certifikát. Tento mechanismus se nazývá vzájemné ověřování TLS nebo ověřování klientským certifikátem. Tento článek popisuje, jak nastavit aplikaci tak, aby používala ověřování klientským certifikátem.
 

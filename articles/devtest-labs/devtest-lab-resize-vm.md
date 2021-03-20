@@ -4,10 +4,10 @@ description: Naučte se, jak změnit velikost virtuálního počítače v Azure 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 592be0862bc33ead86fe43d37753fb72fde120c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85482016"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Změna velikosti virtuálního počítače v testovacím prostředí v Azure DevTest Labs
@@ -20,8 +20,8 @@ Pokud chcete změnit velikost virtuálního počítače v testovacím prostřed�
 > [!NOTE]
 > Pokud jste připojeni k virtuálnímu počítači přes relaci vzdálené plochy (RDP), uložte svou práci a odpojte se od virtuálního počítače před změnou velikosti.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 3. V seznamu Labs vyberte testovací prostředí, které obsahuje virtuální počítač, který chcete změnit.  
 4. Na levém panelu vyberte **moje Virtual Machines**. 
 5. V seznamu virtuálních počítačů vyberte virtuální počítač.

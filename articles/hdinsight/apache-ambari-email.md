@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
 ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946963"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Kurz: Konfigurace e-mailových oznámení Apache Ambari v Azure HDInsight
@@ -21,7 +21,7 @@ V tomto kurzu se naučíte:
 > * Získat uživatelské jméno pro SendGrid
 > * Konfigurace e-mailových oznámení Apache Ambari
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * SendGrid e-mailový účet. Pokyny najdete v tématu [odeslání e-mailu pomocí SendGrid s Azure](../sendgrid-dotnet-how-to-send-email.md) .
 
@@ -60,7 +60,7 @@ V tomto kurzu se naučíte:
     |Název|Zadejte název oznámení.|
     |Skupiny|Nakonfigurujte podle potřeby.|
     |Závažnost|Nakonfigurujte podle potřeby.|
-    |Popis|Nepovinný parametr.|
+    |Description|Nepovinný parametr.|
     |Metoda|Ponechte v **e-mailu**.|
     |E-mail na|Zadejte e-maily pro příjem oznámení, oddělené čárkou.|
     |Server SMTP|`smtp.sendgrid.net`|

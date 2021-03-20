@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak odstranit testovací prostředí 
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 495fb98f3da41a47d316dd64554ba616ede0af47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481217"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Odstranění testovacího prostředí nebo virtuálního počítače v testovacím prostředí v Azure DevTest Labs
@@ -21,7 +21,7 @@ Když odstraníte instanci DevTest Labs ze skupiny prostředků, služba DevTest
 
 Chcete-li odstranit testovací prostředí, proveďte následující akce: 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny prostředky** , vyberte **DevTest Labs** pro typ služby a vyberte testovací prostředí.
 
     ![Výběr testovacího prostředí](media/devtest-lab-delete-lab-vm/select-lab.png)
@@ -46,7 +46,7 @@ Odstraní se virtuální počítač, síťové rozhraní a disk přidružený k 
 
 Pokud chcete odstranit virtuální počítač v testovacím prostředí, proveďte následující akce: 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny prostředky** , vyberte **DevTest Labs** pro typ služby a vyberte testovací prostředí.
 
     ![Výběr testovacího prostředí](media/devtest-lab-delete-lab-vm/select-lab.png)

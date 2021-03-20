@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75979377"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověřování XML s využitím schémat v Azure Logic Apps s rozšířením Enterprise Integration Pack
@@ -21,7 +21,7 @@ Pokud chcete ověřit, že dokumenty používají platný kód XML a mají oček
 
 Omezení související s integračními účty a artefakty, jako jsou schémata, najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
@@ -60,7 +60,7 @@ Při vytváření a přidávání schémat nepotřebujete aplikaci logiky. Pokud
 
    ![Vybrat účet pro integraci](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
 
-1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty**dlaždici **schémata** .
+1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty** dlaždici **schémata** .
 
    ![Vybrat schémata](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
 
@@ -74,7 +74,7 @@ V závislosti na velikosti souboru schématu (. XSD) postupujte podle kroků pro
 
 ### <a name="add-schemas-up-to-2-mb"></a>Přidat schémata až do 2 MB
 
-1. V části **Přidat schéma**zadejte název schématu. 
+1. V části **Přidat schéma** zadejte název schématu. 
    Ponechat vybraný **malý soubor** . Vedle pole **schéma** vyberte ikonu složky. Vyhledejte a vyberte schéma, které nahráváte, například:
 
    ![Nahrání menšího schématu](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
@@ -97,11 +97,11 @@ Chcete-li přidat větší schémata, můžete své schéma nahrát do kontejner
 
 1. V místní nabídce kontejneru objektů BLOB vyberte **nastavit úroveň veřejného přístupu**.
 
-   * Pokud má váš kontejner objektů BLOB aspoň veřejný přístup, klikněte na **Zrušit**a pak na této stránce použijte následující postup: [nahrání do kontejnerů s veřejným přístupem](#public-access)
+   * Pokud má váš kontejner objektů BLOB aspoň veřejný přístup, klikněte na **Zrušit** a pak na této stránce použijte následující postup: [nahrání do kontejnerů s veřejným přístupem](#public-access)
 
      ![Veřejný přístup](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Pokud Váš kontejner objektů BLOB nemá veřejný přístup, klikněte na **Zrušit**a pak na této stránce proveďte následující kroky: [nahrání do kontejnerů bez veřejného přístupu](#public-access) .
+   * Pokud Váš kontejner objektů BLOB nemá veřejný přístup, klikněte na **Zrušit** a pak na této stránce proveďte následující kroky: [nahrání do kontejnerů bez veřejného přístupu](#public-access) .
 
      ![Bez veřejného přístupu](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -123,7 +123,7 @@ Chcete-li přidat větší schémata, můžete své schéma nahrát do kontejner
 1. Do pole **identifikátor URI obsahu** vložte adresu URL vašeho schématu. 
    Dokončete přidání vašeho schématu.
 
-Po dokončení nahrávání schématu se schéma zobrazí v seznamu **schémata** . Na stránce **Přehled** v účtu pro integraci se teď v části **komponenty**na dlaždici **schémata** zobrazuje počet nahraných schémat.
+Po dokončení nahrávání schématu se schéma zobrazí v seznamu **schémata** . Na stránce **Přehled** v účtu pro integraci se teď v části **komponenty** na dlaždici **schémata** zobrazuje počet nahraných schémat.
 
 <a name="no-public-access"></a>
 
@@ -144,7 +144,7 @@ Po dokončení nahrávání schématu se schéma zobrazí v seznamu **schémata*
 
 1. Do pole **identifikátor URI obsahu** vložte identifikátor URI SAS, který jste předtím vygenerovali. Dokončete přidání vašeho schématu.
 
-Po dokončení nahrávání schématu se schéma zobrazí v seznamu **schémata** . Na stránce **Přehled** v účtu pro integraci se teď v části **komponenty**na dlaždici **schémata** zobrazuje počet nahraných schémat.
+Po dokončení nahrávání schématu se schéma zobrazí v seznamu **schémata** . Na stránce **Přehled** v účtu pro integraci se teď v části **komponenty** na dlaždici **schémata** zobrazuje počet nahraných schémat.
 
 ## <a name="edit-schemas"></a>Upravit schémata
 
@@ -158,10 +158,10 @@ Chcete-li aktualizovat existující schéma, je nutné nahrát nový soubor sch�
 
 1. Vyberte účet pro integraci, ve kterém chcete schéma aktualizovat.
 
-1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty**dlaždici **schémata** .
+1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty** dlaždici **schémata** .
 
 1. Po otevření stránky **schémata** vyberte své schéma. 
-   Chcete-li nejprve stáhnout a upravit schéma, klikněte na tlačítko **Stáhnout**a uložte schéma.
+   Chcete-li nejprve stáhnout a upravit schéma, klikněte na tlačítko **Stáhnout** a uložte schéma.
 
 1. Až budete připraveni na nahrání aktualizovaného schématu, vyberte na stránce **schémata** schéma, které chcete aktualizovat, a zvolte **aktualizovat**.
 
@@ -178,7 +178,7 @@ Chcete-li aktualizovat existující schéma, je nutné nahrát nový soubor sch�
 
 1. Vyberte účet pro integraci, ve kterém chcete schéma odstranit.
 
-1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty**dlaždici **schémata** .
+1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty** dlaždici **schémata** .
 
 1. Po otevření stránky **schémata** vyberte schéma a zvolte **Odstranit**.
 

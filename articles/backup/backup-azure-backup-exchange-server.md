@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: ee89af311619922fa6ca585381d70ca66955f36a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91271643"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
@@ -24,7 +24,7 @@ Chcete-li úspěšně zaregistrovat server aplikace DPM pomocí Azure Backup, je
 >
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že byly splněny všechny [požadavky](backup-azure-dpm-introduction.md#prerequisites-and-limitations) pro použití Microsoft Azure Backup k ochraně úloh. Mezi tyto požadavky patří následující:
 
@@ -43,7 +43,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
 
-1. V Konzola správce aplikace DPM vyberte **ochrana**a pak na pásu karet nástroje vyberte **Nový** . otevře se průvodce **vytvořením nové skupiny ochrany** .
+1. V Konzola správce aplikace DPM vyberte **ochrana** a pak na pásu karet nástroje vyberte **Nový** . otevře se průvodce **vytvořením nové skupiny ochrany** .
 2. Na **úvodní** obrazovce průvodce vyberte **Další**.
 3. Na obrazovce **Vybrat typ skupiny ochrany** vyberte **servery** a vyberte **Další**.
 4. Vyberte databázi systému Exchange Server, kterou chcete chránit, a vyberte možnost **Další**.
@@ -73,20 +73,20 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
    >
    >
 8. Vyberte **Další**.
-9. Vyberte databázi pro **zálohování kopírováním**a pak vyberte **Další**.
+9. Vyberte databázi pro **zálohování kopírováním** a pak vyberte **Další**.
 
    > [!NOTE]
    > Pokud nevyberete možnost Úplná záloha pro alespoň jednu DAG kopii databáze, protokoly se nezkrátí.
    >
    >
-10. Nakonfigurujte cíle pro **krátkodobé zálohování**a pak vyberte **Další**.
+10. Nakonfigurujte cíle pro **krátkodobé zálohování** a pak vyberte **Další**.
 11. Zkontrolujte dostupné místo na disku a pak vyberte **Další**.
 12. Vyberte čas, kdy bude server DPM vytvořit počáteční replikaci, a pak vyberte **Další**.
 13. Vyberte možnosti kontroly konzistence a pak vyberte **Další**.
 14. Zvolte databázi, kterou chcete zálohovat do Azure, a pak vyberte **Další**. Například:
 
     ![Zadat data online ochrany](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Definujte plán pro **Azure Backup**a pak vyberte **Další**. Například:
+15. Definujte plán pro **Azure Backup** a pak vyberte **Další**. Například:
 
     ![Zadat plán online zálohování](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -94,7 +94,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
     > Poznámka: body obnovení online jsou založené na expresním úplném bodu obnovení. Proto je nutné naplánovat online bod obnovení po uplynutí času zadaného pro expresní úplný bod obnovení.
     >
     >
-16. Nakonfigurujte zásady uchovávání informací pro **Azure Backup**a pak vyberte **Další**.
+16. Nakonfigurujte zásady uchovávání informací pro **Azure Backup** a pak vyberte **Další**.
 17. Zvolte možnost pro online replikaci a vyberte **Další**.
 
     Pokud máte rozsáhlou databázi, může trvat dlouhou dobu, než se počáteční záloha vytvoří po síti. Chcete-li se tomuto problému vyhnout, můžete vytvořit offline zálohování.  

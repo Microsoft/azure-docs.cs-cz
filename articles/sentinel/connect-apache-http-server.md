@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
 ms.openlocfilehash: 6a1a2a2a7dac961e49e6ced38803649ebf5ad523
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100096850"
 ---
 # <a name="connect-your-apache-http-server-to-azure-sentinel"></a>Připojení serveru Apache HTTP k Azure Sentinel
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak připojit server Apache HTTP k Azure Sentinel. K
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V pracovním prostoru Sentinel Azure musíte mít oprávnění k zápisu.
 

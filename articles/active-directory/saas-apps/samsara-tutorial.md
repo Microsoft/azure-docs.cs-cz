@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 9512287f656c6c64399cb8749b7451a5a780bba8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677644"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsara"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Samsara
@@ -49,11 +49,11 @@ Pokud chcete nakonfigurovat integraci Samsara do služby Azure AD, musíte přid
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
     
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
@@ -66,7 +66,7 @@ Pokud chcete nakonfigurovat integraci Samsara do služby Azure AD, musíte přid
 
 ## <a name="configure-and-test-azure-ad-sso-for-samsara"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Samsara
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Samsara pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Samsara.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Samsara pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Samsara.
 
 K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Samsara postupujte takto:
 
@@ -81,11 +81,11 @@ K nakonfigurování a testování jednotného přihlašování Azure AD pomocí 
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace aplikací **Samsara** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování** .
+1. V Azure Portal na stránce integrace aplikací **Samsara** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
@@ -116,21 +116,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Samsara.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte **Samsara** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Samsara**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.

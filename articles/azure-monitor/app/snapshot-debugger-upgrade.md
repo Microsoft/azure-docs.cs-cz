@@ -7,10 +7,10 @@ ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77671388"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>Upgrade Snapshot Debugger
@@ -25,7 +25,7 @@ Abychom zajistili nejlepší možnou bezpečnost vašich dat, Microsoft se přes
 
 Pokud jste povolili program Snapshot debugger pomocí rozšíření lokality, můžete upgradovat pomocí následujícího postupu:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Přejděte k prostředku, který má povolenou Application Insights a Snapshot Debugger. Například pro webovou aplikaci přejděte na prostředek App Service:
 
    ![Snímek obrazovky s jednotlivými App Service prostředky s názvem DiagService01](./media/snapshot-debugger-upgrade/app-service-resource.png)
@@ -50,7 +50,7 @@ Pokud jste povolili program Snapshot debugger pomocí rozšíření lokality, m�
 
    ![Snímek obrazovky konfigurační stránky Application Insights App Service se zvýrazněným tlačítkem použít v červené](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
 
-8. Po kliknutí na **použít**se zobrazí výzva k potvrzení změn.
+8. Po kliknutí na **použít** se zobrazí výzva k potvrzení změn.
 
     > [!NOTE]
     > Lokalita bude restartována v rámci procesu upgradu.

@@ -11,10 +11,10 @@ ms.date: 12/06/2016
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5195241003b1ce4ea505002e2cc3c10410e6cde1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78183716"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: žádosti o podporu souborů
@@ -48,7 +48,7 @@ ms.locfileid: "78183716"
     * Vyberte příslušnou **kategorii**.
     * Popište svůj problém v poli **podrobností** . Zadejte podrobnosti, jako je název tenanta B2C, popis problému, chybové zprávy, ID korelace (Pokud je k dispozici) a tak dále.
     * V poli **časový rámec** zadejte datum a čas (včetně časového pásma), k němuž došlo k problému.
-    * V části **nahrávání souborů**Nahrajte všechny snímky obrazovky a soubory, které vám pomohou při řešení problému.
+    * V části **nahrávání souborů** Nahrajte všechny snímky obrazovky a soubory, které vám pomohou při řešení problému.
 
      ![Stránka s problémem s zvýrazněným tlačítkem Další v Azure Portal](./media/support-options/support-problem.png)
 

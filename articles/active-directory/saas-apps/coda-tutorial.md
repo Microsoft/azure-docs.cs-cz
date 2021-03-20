@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
 ms.openlocfilehash: c78744538991e337b226e49a053807ef8174d507
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455727"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Coda
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat CODA s Azure Active Directory (Azure A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -122,7 +122,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.
@@ -134,13 +134,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Coda.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte položku **Coda**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -155,9 +155,9 @@ Chcete-li dokončit instalaci, zadejte hodnoty z Azure Active Directory v panelu
 1. V prostředí Coda otevřete panel **Nastavení organizace** .
 1. V části **ověřování pomocí jednotného přihlašování (SAML)** vyberte možnost **Konfigurovat protokol SAML** .
 1. Nastavte **poskytovatele SAML** na **Azure Active Directory**.
-1. V části **Adresa URL pro přihlášení zprostředkovatele identity**vložte **přihlašovací adresu URL** z konzoly Azure.
-1. V části **Vystavitel zprostředkovatele identity**vložte **identifikátor Azure AD** z konzoly Azure.
-1. V části **veřejný certifikát poskytovatele identity**vyberte možnost **nahrát certifikát** a vyberte soubor certifikátu, který jste stáhli dříve.
+1. V části **Adresa URL pro přihlášení zprostředkovatele identity** vložte **přihlašovací adresu URL** z konzoly Azure.
+1. V části **Vystavitel zprostředkovatele identity** vložte **identifikátor Azure AD** z konzoly Azure.
+1. V části **veřejný certifikát poskytovatele identity** vyberte možnost **nahrát certifikát** a vyberte soubor certifikátu, který jste stáhli dříve.
 1. Vyberte **Uložit**.
 
 Tím se dokončí práce, která je nezbytná pro nastavení připojení SAML SSO.
@@ -172,7 +172,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici CODA na přístupovém panelu byste se měli automaticky přihlášeni k Coda, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

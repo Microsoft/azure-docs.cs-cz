@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 05/11/2020
 ms.openlocfilehash: a31c089971b7e70e70c5906480deb2b17c197b9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87043606"
 ---
 # <a name="known-issues"></a>Známé problémy #
@@ -75,7 +75,7 @@ Aktuální verze má následující známé problémy:
 - Existují problémy s titulky a titulky na tomto Techu. Tyto pracovníky můžou nebo nemusí být k dispozici ani zobrazitelné na této technické nabídce.
 - Výsledkem omezené šířky pásma ve HLS/technickém scénáři Html5 je přehrávání zvuku bez videa.
 
-### <a name="microsoft"></a>Partnerský vztah Microsoftu ###
+### <a name="microsoft"></a>Microsoft ###
 
 - Přehrávání IE8 aktuálně nefunguje v důsledku nekompatibility s ECMAScript 5.
 - V IE a některých verzích hraničních zařízení nemůže být celá obrazovka vložená pomocí klávesy tabulátorem k tlačítku a výběrem nebo pomocí klávesové zkratky F/f.

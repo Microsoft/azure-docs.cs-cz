@@ -8,10 +8,10 @@ ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: b7f5d4206140bf2101c10b1cd4ac46d80bdd3342
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881699"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Co je Azure Spring Cloud?
@@ -52,7 +52,7 @@ Tato dokumentace obsahuje oddíly, které vysvětlují, jak začít a využívat
     * [Spuštění první aplikace](spring-cloud-quickstart.md)
     * [Zřízení služby jarního cloudu Azure](spring-cloud-quickstart-provision-service-instance.md)
     * [Nastavení konfiguračního serveru]()
-    * [Sestavování a nasazování aplikací](spring-cloud-quickstart-deploy-apps.md)
+    * [Sestavování a nasazování aplikací](spring-cloud-quickstart-deploy-apps.md)
     * [Použití metrik a trasování protokolů](spring-cloud-quickstart-logs-metrics-tracing.md)
 * Postupy
     * [Vývoj](spring-cloud-tutorial-prepare-app-deployment.md): Příprava existující aplikace pružiny v jazyce Java pro nasazení do jarního cloudu Azure. Pokud jsou správně nakonfigurovány, poskytuje Azure jarní Cloud robustní služby pro monitorování, škálování a aktualizace aplikací Java pro jarní Cloud.

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84699596"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>Konfigurace a správa zásad replikace pro zotavení po havárii VMware
@@ -21,11 +21,11 @@ Tento článek popisuje, jak nakonfigurovat zásady replikace při replikaci vir
 ## <a name="create-a-policy"></a>Vytvoření zásad
 
 1. Vyberte možnost **Spravovat**  >  **infrastrukturu Site Recovery**.
-2. V nástroji **pro VMware a fyzické počítače**vyberte **Zásady replikace**.
-3. Klikněte na **+ zásada replikace**a zadejte název zásady.
-4. V části **prahová hodnota**cíle bodu obnovení zadejte limit RPO. Výstrahy jsou generovány, pokud průběžná replikace překročí tento limit.
+2. V nástroji **pro VMware a fyzické počítače** vyberte **Zásady replikace**.
+3. Klikněte na **+ zásada replikace** a zadejte název zásady.
+4. V části **prahová hodnota** cíle bodu obnovení zadejte limit RPO. Výstrahy jsou generovány, pokud průběžná replikace překročí tento limit.
 5. V části **Uchování bodu obnovení** zadejte (v hodinách) délku intervalu uchovávání dat pro jednotlivé body obnovení. Chráněné počítače je možné obnovit do libovolného bodu v rámci tohoto intervalu. Pro počítače replikované do úložiště úrovně Premium se podporuje interval uchování až 24 hodin. Pro standardní úložiště se podporuje až 72 hodin.
-6. V nastavení **frekvence snímků konzistentní vzhledem k aplikacím**vyberte z rozevíracího seznamu, jak často (v hodinách) se mají vytvářet body obnovení obsahující snímky konzistentní vzhledem k aplikacím. Pokud chcete vypnout generování bodů konzistence aplikací, v rozevíracím seznamu vyberte hodnotu OFF.
+6. V nastavení **frekvence snímků konzistentní vzhledem k aplikacím** vyberte z rozevíracího seznamu, jak často (v hodinách) se mají vytvářet body obnovení obsahující snímky konzistentní vzhledem k aplikacím. Pokud chcete vypnout generování bodů konzistence aplikací, v rozevíracím seznamu vyberte hodnotu OFF.
 7. Klikněte na **OK**. Zásada by se měla vytvořit během přibližně 30–60 sekund.
 
 Když vytvoříte zásadu replikace, automaticky se vytvoří odpovídající zásada replikace pro navrácení služeb po obnovení s příponou "navrácení služeb po obnovení". Jakmile zásadu vytvoříte, můžete ji upravit tak, že ji vyberete > **Upravit nastavení**.
@@ -34,7 +34,7 @@ Když vytvoříte zásadu replikace, automaticky se vytvoří odpovídající z�
 
 Přidružte zásady replikace k vašemu místnímu konfiguračnímu serveru.
 
-1. Klikněte na tlačítko **přidružit**a vyberte konfigurační server.
+1. Klikněte na tlačítko **přidružit** a vyberte konfigurační server.
 
     ![Přidružení konfiguračního serveru](./media/vmware-azure-set-up-replication/associate1.png)
 2. Klikněte na **OK**. Přidružení konfiguračního serveru by se mělo provést během přibližně 1 až 2 minut.
@@ -49,10 +49,10 @@ Po vytvoření můžete zásady replikace upravit.
 - Chcete-li přidružit replikované počítače k jiné zásadě replikace, je třeba zakázat a znovu povolit ochranu pro příslušné počítače.
 
 Zásadu upravte takto:
-1. Vyberte **Spravovat**  >  **Site Recovery Infrastructure**  >  **Zásady replikace**Site Recovery infrastruktury.
+1. Vyberte **Spravovat**  >    >  **Zásady replikace** Site Recovery infrastruktury.
 2. Vyberte zásadu replikace, kterou chcete upravit.
-3. Klikněte na **Upravit nastavení**a v případě potřeby aktualizujte pole četnosti snímků RPO/doba uchovávání bodů obnovení/konzistentní doba uchování pro aplikaci.
-4. Pokud chcete vypnout generování bodů konzistence aplikací, vyberte v rozevíracím seznamu **frekvence snímků konzistentních vzhledem k aplikacím**pole hodnota vypnuto.
+3. Klikněte na **Upravit nastavení** a v případě potřeby aktualizujte pole četnosti snímků RPO/doba uchovávání bodů obnovení/konzistentní doba uchování pro aplikaci.
+4. Pokud chcete vypnout generování bodů konzistence aplikací, vyberte v rozevíracím seznamu **frekvence snímků konzistentních vzhledem k aplikacím** pole hodnota vypnuto.
 5. Klikněte na **Uložit**. Zásada by se měla aktualizovat v rozmezí 30 až 60 sekund.
 
 

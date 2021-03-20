@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88949170"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Glosář Azure Active Directory Identity Protection
@@ -32,7 +32,7 @@ Modul zabezpečení Azure Active Directory, který poskytuje konsolidovanou pohl
 ### <a name="conditional-access"></a>Podmíněný přístup
 Zásada pro zabezpečení přístupu k prostředkům. Pravidla podmíněného přístupu se ukládají v Azure Active Directory a před udělením přístupu k prostředku se vyhodnocují ve službě Azure AD.  Příklady pravidel zahrnují omezení přístupu na základě umístění uživatele, stavu zařízení nebo metody ověřování uživatelů.
 
-### <a name="credentials"></a>Credentials
+### <a name="credentials"></a>Přihlašovací údaje
 Informace, které zahrnují identifikaci a ověření identifikace, která se používá k získání přístupu k místním a síťovým prostředkům. Příklady přihlašovacích údajů jsou uživatelská jména a hesla, čipové karty a certifikáty.
 
 ### <a name="event"></a>Událost

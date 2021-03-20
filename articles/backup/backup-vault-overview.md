@@ -4,17 +4,17 @@ description: Přehled trezorů služby Backup.
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92091283"
 ---
 # <a name="backup-vaults-overview"></a>Přehled trezorů služby Backup
 
 Tento článek popisuje funkce trezoru služby Backup. Trezor záloh je entita úložiště v Azure, která poskytuje zálohovaná data pro některé novější úlohy, které Azure Backup podporuje. Trezory služby Backup můžete použít k uchovávání zálohovaných dat pro různé služby Azure, jako jsou Azure Database for PostgreSQL servery a novější úlohy, které Azure Backup budou podporovat. Trezory služby Backup usnadňují uspořádání zálohovaných dat a současně minimalizují nároky na správu. Trezory služby Backup jsou založené na modelu Azure Resource Manager Azure, který poskytuje funkce, jako například:
 
-- **Rozšířené možnosti, které vám pomůžou zabezpečit**zálohovaná data: pomocí trezorů služby Backup Azure Backup poskytuje funkce zabezpečení pro ochranu cloudových záloh. Funkce zabezpečení zajistí, že budete moci zabezpečit zálohy a bezpečně obnovit data, i když dojde k ohrožení produkčního a záložního serveru. [Další informace](backup-azure-security-feature.md)
+- **Rozšířené možnosti, které vám pomůžou zabezpečit** zálohovaná data: pomocí trezorů služby Backup Azure Backup poskytuje funkce zabezpečení pro ochranu cloudových záloh. Funkce zabezpečení zajistí, že budete moci zabezpečit zálohy a bezpečně obnovit data, i když dojde k ohrožení produkčního a záložního serveru. [Další informace](backup-azure-security-feature.md)
 
 - **Řízení přístupu na základě role v Azure (Azure RBAC)**: Azure RBAC zajišťuje v Azure jemně odstupňované řízení přístupu. [Azure poskytuje různé předdefinované role](../role-based-access-control/built-in-roles.md)a Azure Backup má tři [předdefinované role pro správu bodů obnovení](backup-rbac-rs-vault.md). Trezory služby Backup jsou kompatibilní s Azure RBAC, což omezuje přístup k zálohování a obnovení na definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
 
@@ -47,13 +47,13 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com>.
 ### <a name="create-backup-vault"></a>Vytvoření trezoru služby Backup
 
 1. Do vyhledávacího pole zadejte **trezory služby Backup** .
-1. V části **služby**vyberte **trezory služby Backup**.
+1. V části **služby** vyberte **trezory služby Backup**.
 1. Na stránce **trezory záloh** vyberte **Přidat**.
-1. Na **kartě základy**v části **Project Details (podrobnosti projektu**) Zkontrolujte, zda je vybráno správné předplatné, a pak zvolte možnost **vytvořit novou** skupinu prostředků. Jako název zadejte *myResourceGroup* .
+1. Na **kartě základy** v části **Project Details (podrobnosti projektu**) Zkontrolujte, zda je vybráno správné předplatné, a pak zvolte možnost **vytvořit novou** skupinu prostředků. Jako název zadejte *myResourceGroup* .
 
   ![Vytvořit novou skupinu prostředků](./media/backup-vault-overview/new-resource-group.png)
 
-1. V části **Podrobnosti o instanci**zadejte *myVault* pro **název trezoru záloh** a zvolte vaši oblast, v tomto případě *východní USA* pro vaši **oblast**.
+1. V části **Podrobnosti o instanci** zadejte *myVault* pro **název trezoru záloh** a zvolte vaši oblast, v tomto případě *východní USA* pro vaši **oblast**.
 1. Teď vyberte **redundanci úložiště**. Redundanci úložiště nelze změnit po ochraně položek do trezoru.
 1. Pokud používáte Azure jako primární koncový bod úložiště záloh, doporučujeme, abyste používali výchozí **geograficky redundantní** nastavení.
 1. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure.
@@ -96,7 +96,7 @@ Po dokončení těchto kroků můžete trezor i nadále odstranit.
 
 Pokud v trezoru nejsou žádné další položky, vyberte **Odstranit** na řídicím panelu trezoru. Zobrazí se potvrzovací text s dotazem, jestli chcete trezor odstranit.
 
-![Odstranit trezor](./media/backup-vault-overview/delete-vault.png)
+![Odstranění trezoru](./media/backup-vault-overview/delete-vault.png)
 
 1. Vyberte **Ano** , pokud chcete ověřit, že chcete trezor odstranit. Trezor se odstraní. Portál se vrátí do nabídky **Nová** služba.
 

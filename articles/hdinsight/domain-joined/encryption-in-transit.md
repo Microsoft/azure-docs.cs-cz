@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.openlocfilehash: fb3761ce7839cb4450997da094646b6604aeb895
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946850"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Šifrování IPSec při přenosu pro Azure HDInsight
@@ -25,7 +25,7 @@ Azure HDInsight nabízí celou řadu funkcí zabezpečení pro zabezpečení pod
 
 ## <a name="enable-encryption-in-transit"></a>Povolit šifrování při přenosu
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomocí Azure Portal, proveďte následující kroky:
 
@@ -44,7 +44,7 @@ Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomoc�
 
 Můžete [Stáhnout vzorovou šablonu a soubor parametrů](https://github.com/Azure-Samples/hdinsight-enterprise-security). Než použijete šablonu a fragment kódu Azure CLI níže, nahraďte následující zástupné symboly jejich správnými hodnotami:
 
-| Zástupný symbol | Popis |
+| Zástupný symbol | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | ID vašeho předplatného Azure |
 | `<RESOURCE_GROUP>` | Skupina prostředků, ve které chcete vytvořit nový cluster a účet úložiště. |

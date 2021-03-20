@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/26/2020
 ms.author: spelluru
 ms.openlocfilehash: b4477e0b98ef534b8170ee297edf88ac6fa62dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476440"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Kurz: Přístup k testovacímu prostředí v Azure DevTest Labs
@@ -21,11 +21,11 @@ V tomto kurzu provedete následující akce:
 > * Připojení k virtuálnímu počítači
 > * Vrácení virtuálního počítače
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="access-the-lab"></a>Přístup k testovacímu prostředí
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **Všechny prostředky**. 
 3. Jako typ prostředku vyberte **DevTest Labs**. 
 4. Vyberte testovací prostředí. 
@@ -34,7 +34,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 ## <a name="claim-a-vm"></a>Nárokování virtuálního počítače
 
-1. V seznamu **Nárokovatelné virtuální počítače** vyberte **... ** (tři tečky) a vyberte **Nárokovat počítač**.
+1. V seznamu **Nárokovatelné virtuální počítače** vyberte **...** (tři tečky) a vyberte **Nárokovat počítač**.
 
     ![Nárokování virtuálního počítače](./media/tutorial-use-custom-lab/claim-virtual-machine.png)
 1. Zkontrolujte, jestli virtuální počítač vidíte v seznamu **Moje virtuální počítače**.

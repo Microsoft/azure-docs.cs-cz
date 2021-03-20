@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8091890d174ae68f012a6ec24685a0e705100f8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84743673"
 ---
 # <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>Kontrola přístupu k rolím prostředků Azure v Privileged Identity Management
@@ -37,14 +37,14 @@ Můžete schválit nebo odepřít přístup na základě toho, jestli tuto roli 
 
 Pomocí těchto kroků můžete najít a dokončit kontrolu přístupu:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Vyberte **Azure Active Directory** a otevřete **Privileged Identity Management**.
 1. Vyberte **zkontrolovat přístup**.
 
    ![Snímek obrazovky aplikace Privileged Identity Management s vybraným oknem kontrola přístupu](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 1. Vyberte revizi, kterou chcete dokončit.
-1. Vyberte **schválit** nebo **Odepřít**. V případě potřeby v poli **Zadejte důvod**zadejte obchodní odůvodnění.
+1. Vyberte **schválit** nebo **Odepřít**. V případě potřeby v poli **Zadejte důvod** zadejte obchodní odůvodnění.
 
    ![Snímek obrazovky se stránkou s podrobnostmi o kontrole](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 

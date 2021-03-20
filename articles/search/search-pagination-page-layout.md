@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98209827"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
@@ -95,7 +95,7 @@ Pro fulltextové vyhledávací dotazy jsou výsledky automaticky seřazené podl
 
 Hledání skóre vyjadřuje obecnou představu o závažnosti a odráží sílu porovnávání vzhledem k ostatním dokumentům ve stejné sadě výsledků. Ale skóre nejsou vždy konzistentní od jednoho dotazu k dalšímu, takže při práci s dotazy si můžete všimnout malých nedostatků při řazení dokumentů pro hledání. K tomu může dojít z několika vysvětlení.
 
-| Příčina | Popis |
+| Příčina | Description |
 |-----------|-------------|
 | Nestálost dat | Obsah indexu se při přidávání, upravování a odstraňování dokumentů liší. Termínové kmitočty se změní, protože aktualizace indexu jsou zpracovávány v průběhu času, což má vliv na výsledky hledání u vyhovujících dokumentů. |
 | Více replik | Pro služby, které používají více replik, jsou dotazy vydávány paralelně pro každou repliku. Statistiky indexu použité k výpočtu skóre vyhledávání se počítají na základě repliky a výsledky se sloučily a seřazeny v odpovědi na dotaz. Repliky jsou většinou zrcadlově navzájem, ale statistiky se mohou lišit v důsledku malých rozdílů ve stavu. Například jedna replika mohla odstranit dokumenty přispívající do jejich statistik, které byly sloučeny mimo jiné repliky. Rozdíly v statistikách pro jednotlivé repliky jsou obvykle patrné v menších indexech. |

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 137959f51b08dceee150962f77110ee2ac1dc193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444994"
 ---
 # <a name="setup-a-lab-to-teach-matlab"></a>Nastavení testovacího prostředí pro výuku programu MATLAB
@@ -30,7 +30,7 @@ Za předpokladu, že se licenční server nachází v místní síti nebo v priv
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít.  Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services nebo použít existující účet.  Pokud chcete vytvořit nový účet testovacího prostředí, přečtěte si [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít.  Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services nebo použít existující účet.  Pokud chcete vytvořit nový účet testovacího prostředí, přečtěte si [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
 
 Pokud chcete vytvořit nové testovací prostředí, postupujte podle [kurzu Vytvoření laboratorního prostředí pro učebnu](tutorial-setup-classroom-lab.md).  Použijte následující nastavení:
 
@@ -65,7 +65,7 @@ Abyste mohli stáhnout instalační soubory a získat licenční soubor a instal
 7. Na stránce **Přihlásit se k účtu MathWorks** zadejte svůj účet MathWorks.
 8. Na stránce **Licenční smlouva MathWorks** přijměte podmínky a klikněte na tlačítko **Další** .
 9. Klikněte na rozevírací nabídku **Upřesnit možnosti** a vyberte možnost **Chci si stáhnout bez instalace**.
-10. V nabídce **Vybrat cílovou složku**klikněte na **Další**.
+10. V nabídce **Vybrat cílovou složku** klikněte na **Další**.
 11. Jako platformu počítače, do kterého budete instalovat MATLAB, vyberte **Windows** .
 12. Na stránce **Vybrat produkt** se ujistěte, že je vybraná možnost MATLAB spolu s dalšími MathWorks produkty, které byste chtěli nainstalovat.
 13. Na stránce **Potvrdit vybrané možnosti a stažení** klikněte na **zahájit stahování**.  

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
 ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91295732"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Vytváření uživatelů v Azure Database for PostgreSQL – Citus (škálování)
@@ -52,7 +52,7 @@ Jak už bylo zmíněno, `citus` účet správce nemá oprávnění k vytvářen�
 
 2. Zadejte název role a heslo. Klikněte na **Uložit**.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Stránka role":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Přidat roli":::
 
 Uživatel bude vytvořen v uzlu koordinátor skupiny serverů a bude šířen do všech pracovních uzlů. Role vytvořené prostřednictvím Azure Portal mají `LOGIN` atribut, což znamená, že se jedná o skutečné uživatele, kteří se mohou přihlásit k databázi.
 
@@ -77,7 +77,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 Chcete-li aktualizovat uživatele, přejděte na stránku **role** pro skupinu serverů Citus (vlastní měřítko) a klikněte na tlačítko se třemi tečkami. **..** vedle uživatele. Tři tečky otevřou nabídku pro odstranění uživatele nebo resetování hesla.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Stránka role":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Upravit roli":::
 
 `citus`Role má oprávnění a nelze ji odstranit.
 

@@ -4,10 +4,10 @@ description: Naučte se nasazovat vnořené Azure Resource Manager šablony, kte
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 39002e286fafd4f813333a14ed86256a517897e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481336"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Nasazení vnořených Azure Resource Manager šablon pro testovací prostředí
@@ -57,7 +57,7 @@ Tady je jednoduchý příklad vnořeného nasazení:
 "outputs": {}
 ```
 
-Složka v úložišti, která obsahuje tuto šablonu, má podsložku `nestedtemplates` se soubory **NestOne.jsv** a **NestOne.parameters.jsna**. V **azuredeploy.jsna**je identifikátor URI pro šablonu sestaven pomocí umístění artefaktů, vnořené složky šablony, názvu vnořeného souboru šablony. Podobně identifikátor URI pro parametry je sestaven pomocí umístění artefaktů, vnořené složky šablony a souboru parametrů pro vnořenou šablonu. 
+Složka v úložišti, která obsahuje tuto šablonu, má podsložku `nestedtemplates` se soubory **NestOne.jsv** a **NestOne.parameters.jsna**. V **azuredeploy.jsna** je identifikátor URI pro šablonu sestaven pomocí umístění artefaktů, vnořené složky šablony, názvu vnořeného souboru šablony. Podobně identifikátor URI pro parametry je sestaven pomocí umístění artefaktů, vnořené složky šablony a souboru parametrů pro vnořenou šablonu. 
 
 Zde je obrázek stejné struktury projektu v aplikaci Visual Studio: 
 

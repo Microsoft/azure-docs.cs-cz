@@ -4,10 +4,10 @@ description: DevTest Labs poskytují informace, které můžete použít k diagn
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480809"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnostika selhání artefaktů v testovacím prostředí 
@@ -23,7 +23,7 @@ Po vytvoření artefaktu můžete zjistit, zda bylo úspěšné nebo neúspěšn
 
 1. V Azure Portal v seznamu prostředků vyberte testovací prostředí.
 2. Vyberte virtuální počítač s Windows, který obsahuje artefakt, který chcete prozkoumat.
-3. Na levém panelu v části **Obecné**vyberte **artefakty**. Zobrazí se seznam artefaktů přidružených k tomuto virtuálnímu počítači. Název artefaktu a stav artefaktu jsou označeny.
+3. Na levém panelu v části **Obecné** vyberte **artefakty**. Zobrazí se seznam artefaktů přidružených k tomuto virtuálnímu počítači. Název artefaktu a stav artefaktu jsou označeny.
 
    ![Stav artefaktu](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure-new.png)
 
