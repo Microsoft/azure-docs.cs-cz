@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: lajanuar
 ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895420"
 ---
 # <a name="translator-30-transliterate"></a>Překladatel 3,0: přepis
@@ -58,7 +58,7 @@ Hlavičky požadavku zahrnují:
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
     <td><em>Požadovaná hlavička žádosti</em><br/>Podívejte se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
@@ -115,7 +115,7 @@ Příklad odpovědi JSON:
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>X-RequestId</td>
     <td>Hodnota, kterou služba vygenerovala k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
@@ -128,7 +128,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 
 <table width="100%">
   <th width="20%">Stavový kód</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Úspěch.</td>

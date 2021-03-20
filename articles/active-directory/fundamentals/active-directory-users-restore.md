@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd4d42e1cafa58aaf6a47188c9e86c24ac175047
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514385"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odebrání nedávno odstraněného uživatele pomocí Azure Active Directory
@@ -45,7 +45,7 @@ Můžete zobrazit všechny uživatele, kteří byli odstraněni před méně ne�
 ### <a name="to-view-your-restorable-users"></a>Zobrazení uživatelů obnovitelné
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce organizace.
 
-2. Vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **odstraněné uživatele**.
+2. Vyberte **Azure Active Directory**, vyberte **Uživatelé** a pak vyberte **odstraněné uživatele**.
 
     Zkontrolujte seznam uživatelů, které jsou k dispozici pro obnovení.
 

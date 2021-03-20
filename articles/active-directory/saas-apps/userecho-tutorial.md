@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: be52d220848a27c1307e71fdb7cc4dccfaeb9618
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92509331"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Kurz: Azure Active Directory integrace s UserEcho
@@ -134,7 +134,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí UserEcho
    
     ![Snímek obrazovky zobrazuje integrace vybrané z nabídky nastavení.](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
-4. Klikněte na **Web**a potom klikněte na **jednotné přihlašování (typu Saml2)**.
+4. Klikněte na **Web** a potom klikněte na **jednotné přihlašování (typu Saml2)**.
    
     ![Snímek obrazovky se v nabídce integrace zobrazuje typu Saml2 s jednotným přihlašováním.](./media/userecho-tutorial/tutorial_userecho_08.png) 
 
@@ -156,7 +156,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí UserEcho
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -180,7 +180,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k UserEcho.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **UserEcho**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **UserEcho**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -214,7 +214,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v UserEcho.
    
     ![Snímek obrazovky se zobrazí nastavení vybrané na webu UserEcho.](./media/userecho-tutorial/tutorial_userecho_06.png)
 
-3. Kliknutím na **Uživatelé**rozbalte oddíl **Uživatelé** .
+3. Kliknutím na **Uživatelé** rozbalte oddíl **Uživatelé** .
    
     ![Snímek obrazovky zobrazuje uživatele vybrané v nabídce nastavení.](./media/userecho-tutorial/tutorial_userecho_10.png)
 
@@ -242,7 +242,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici UserEcho, měli byste se automaticky přihlásit k UserEcho, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

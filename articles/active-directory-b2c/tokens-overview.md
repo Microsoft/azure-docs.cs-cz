@@ -11,10 +11,10 @@ ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97516362"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
@@ -50,7 +50,7 @@ Deklarace identity v tokenech ID se nevrací v žádném konkrétním pořadí. 
 
 V následující tabulce jsou uvedeny deklarace identity, které můžete očekávat v tokenech ID a přístupových tokenech vydaných Azure AD B2C.
 
-| Name | Deklarovat | Příklad hodnoty | Popis |
+| Name | Deklarovat | Příklad hodnoty | Description |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifikuje zamýšleného příjemce tokenu. Pro Azure AD B2C je cílovou skupinou ID aplikace. Vaše aplikace by měla tuto hodnotu ověřit a zamítnout token, pokud se neshoduje. Cílová skupina je synonymum s prostředkem. |
 | Vystavitel | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token. Identifikuje taky adresář, ve kterém se uživatel ověřil. Vaše aplikace by měla ověřit deklaraci vystavitele, aby se zajistilo, že token pochází z příslušného koncového bodu. |
@@ -62,7 +62,7 @@ V následující tabulce jsou uvedeny deklarace identity, které můžete oček�
 | Hodnota hash tokenu přístupu | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Hodnota hash přístupového tokenu, která je obsažená v tokenu ID jenom v případě, že je token vydaný společně s přístupovým tokenem OAuth 2,0. K ověření pravosti přístupového tokenu se dá použít hodnota hash přístupového tokenu. Další informace o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) .  |
 | Generované | `nonce` | `12345` | Hodnota nonce je strategie používaná ke zmírnění útoků opakovaného přehrání tokenu. Vaše aplikace může zadat hodnotu NONCE v žádosti o autorizaci pomocí `nonce` parametru dotazu. Hodnota, kterou zadáte v požadavku, je vygenerována beze změny v `nonce` deklaraci identity tokenu ID. Tato deklarace umožňuje vaší aplikaci ověřit hodnotu oproti hodnotě zadané v požadavku. Vaše aplikace by měla provést toto ověření během procesu ověřování tokenu ID. |
 | Předmět | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k bezpečnému provádění kontrol autorizace, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři. |
-| Referenční dokumentace třídy kontextu ověřování | `acr` | Není | Používá se jenom se staršími zásadami. |
+| Referenční dokumentace třídy kontextu ověřování | `acr` | Neuvedeno | Používá se jenom se staršími zásadami. |
 | Zásada pro pravidlo důvěryhodnosti | `tfp` | `b2c_1_signupsignin1` | Název zásady, která byla použita k získání tokenu ID. |
 | Čas ověřování | `auth_time` | `1438535543` | Čas, kdy uživatel naposledy zadal pověření, reprezentovaný v epocha čase. Neexistuje žádná diskriminace mezi tímto ověřováním, jedná se o nové přihlášení, relaci jednotného přihlašování (SSO) nebo jiný typ přihlášení. `auth_time`Je poslední čas, kdy aplikace (nebo uživatel) iniciovala pokus o ověření u Azure AD B2C. Metoda použitá k ověření není odlišná. |
 | Obor | `scp` | `Read`| Oprávnění udělená prostředku pro přístupový token. Vícenásobná udělená oprávnění jsou oddělená mezerou. |

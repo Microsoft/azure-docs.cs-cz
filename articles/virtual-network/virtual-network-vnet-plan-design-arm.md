@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
 ms.openlocfilehash: 9ed060c1f3fc47aa7050c0f9b25c757953fa22fe
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220333"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuálních sítí
@@ -43,7 +43,7 @@ V rámci každého předplatného můžete nasadit libovolný počet virtuální
 
 Můžete vytvořit více virtuálních sítí pro každé předplatné a jednotlivé oblasti. V každé virtuální síti můžete vytvořit několik podsítí. Následující pokyny vám pomůžou určit, kolik virtuálních sítí a podsítí budete potřebovat:
 
-### <a name="virtual-networks"></a>virtuální sítě,
+### <a name="virtual-networks"></a>Virtuální sítě
 
 Virtuální síť je virtuální izolovaná část veřejné sítě Azure. Každá virtuální síť je vyhrazena pro vaše předplatné. Co je potřeba vzít v úvahu při rozhodování, zda vytvořit jednu virtuální síť nebo více virtuálních sítí v rámci předplatného:
 
@@ -54,7 +54,7 @@ Virtuální síť je virtuální izolovaná část veřejné sítě Azure. Každ
 - Máte k prostředkům v různých virtuálních sítích nějaké požadavky na správu organizace? V takovém případě můžete prostředky oddělit do samostatné virtuální sítě, aby se zjednodušilo [přiřazení oprávnění](#permissions) jednotlivcům ve vaší organizaci nebo k přiřazování různých zásad k různým virtuálním sítím.
 - Když nasadíte některé prostředky služeb Azure do virtuální sítě, vytvoří se jejich vlastní virtuální síť. Pokud chcete zjistit, jestli služba Azure vytvoří svou vlastní virtuální síť, přečtěte si informace pro každou [službu Azure, kterou je možné nasadit do virtuální sítě](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network).
 
-### <a name="subnets"></a>podsítě,
+### <a name="subnets"></a>Podsítě
 
 Virtuální síť je možné rozdělit do jedné nebo víc podsítí až do [limitů](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Co je potřeba vzít v úvahu při rozhodování, zda vytvořit jednu podsíť nebo více virtuálních sítí v rámci předplatného:
 

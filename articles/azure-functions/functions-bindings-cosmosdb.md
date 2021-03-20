@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002102"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB vazby pro Azure Functions 1. x
@@ -180,9 +180,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastaven na hodnotu `cosmosDBTrigger` . |
-|**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Tento parametr se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje seznam dokumentů se změnami. |
+|**textový** | Není k dispozici | Musí být nastaven na hodnotu `cosmosDBTrigger` . |
+|**směr** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tento parametr se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje seznam dokumentů se změnami. |
 |**connectionStringSetting**|**ConnectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec, který se používá pro připojení k monitorovanému účtu Azure Cosmos DB. |
 |**Databáze**|**DatabaseName**  | Název databáze Azure Cosmos DB s monitorovanou kolekcí. |
 |**collectionName** |**Název kolekce** | Název monitorované kolekce. |
@@ -1117,9 +1117,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový**     | neuvedeno | Musí být nastaven na hodnotu `documentdb` .        |
-|**směr**     | neuvedeno | Musí být nastaven na hodnotu `in` .         |
-|**Jméno**     | neuvedeno | Název parametru vazby, který představuje dokument ve funkci.  |
+|**textový**     | Není k dispozici | Musí být nastaven na hodnotu `documentdb` .        |
+|**směr**     | Není k dispozici | Musí být nastaven na hodnotu `in` .         |
+|**Jméno**     | Není k dispozici | Název parametru vazby, který představuje dokument ve funkci.  |
 |**Databáze** |**DatabaseName** |Databáze obsahující dokument.        |
 |**collectionName** |**Název kolekce** | Název kolekce, která obsahuje dokument. |
 |**id**    | **Účet** | ID dokumentu, který se má načíst Tato vlastnost podporuje [výrazy vazby](./functions-bindings-expressions-patterns.md). Nenastavte vlastnosti **ID** i **sqlQuery** . Pokud nenastavíte žádné nastavení, načte se celá kolekce. |
@@ -1458,9 +1458,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový**     | neuvedeno | Musí být nastaven na hodnotu `documentdb` .        |
-|**směr**     | neuvedeno | Musí být nastaven na hodnotu `out` .         |
-|**Jméno**     | neuvedeno | Název parametru vazby, který představuje dokument ve funkci.  |
+|**textový**     | Není k dispozici | Musí být nastaven na hodnotu `documentdb` .        |
+|**směr**     | Není k dispozici | Musí být nastaven na hodnotu `out` .         |
+|**Jméno**     | Není k dispozici | Název parametru vazby, který představuje dokument ve funkci.  |
 |**Databáze** | **DatabaseName**|Databáze obsahující kolekci, ve které je dokument vytvořen.     |
 |**collectionName** |**Název kolekce**  | Název kolekce, ve které je dokument vytvořen. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Logická hodnota určující, zda je kolekce vytvořena, pokud neexistuje. Výchozí hodnota je *false* , protože nové kolekce jsou vytvořeny s rezervovanou propustností, která má vliv na náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/documentdb/).  |

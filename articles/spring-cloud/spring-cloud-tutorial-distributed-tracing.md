@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: a78aec8c18f3b89629bbf696de3a097397ac59bc
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337912"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Použití distribuovaného trasování u jarního cloudu Azure
@@ -22,7 +22,7 @@ Pomocí nástrojů pro distribuované trasování v Azure jarním cloudu můžet
 ::: zone pivot="programming-language-csharp"
 V tomto článku se dozvíte, jak povolit aplikaci .NET Core Steeltoe k použití distribuovaného trasování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle těchto postupů, potřebujete aplikaci Steeltoe, která je už [připravená pro nasazení do služby Azure jaře Cloud](spring-cloud-tutorial-prepare-app-deployment.md).
 
@@ -37,7 +37,7 @@ Pro Steeltoe 3.0.0 přidejte následující balíček NuGet:
 
 * [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
 
-## <a name="update-startupcs"></a>Aktualizovat Startup.cs
+## <a name="update-startupcs"></a>Aktualizovat Startup. cs
 
 1. Pro Steeltoe 2.4.4 volejte `AddDistributedTracing` a `AddZipkinExporter` v `ConfigureServices` metodě.
 
@@ -79,7 +79,7 @@ Přidejte do zdroje konfigurace následující nastavení, která se použijí p
 
 1. Nastavte `management.tracing.alwaysSample` na true.
 
-2. Pokud chcete zobrazit trasování mezi serverem Eureka, konfiguračním serverem a uživatelskými aplikacemi: nastavte `management.tracing.egressIgnorePattern` na/API/v2/spans |/v2/Apps/. */Permissions |/Eureka/.* | /oauth/.*".
+2. Pokud chcete zobrazit trasování mezi serverem Eureka, konfiguračním serverem a uživatelskými aplikacemi: nastavte `management.tracing.egressIgnorePattern` na/API/v2/spans |/v2/Apps/.*/Permissions |/Eureka/.*| /oauth/.*".
 
 Například *appsettings.js* by měl obsahovat následující vlastnosti:
  
@@ -103,7 +103,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Zobrazte mapy závislostí pro vaše aplikace mikroslužeb.
 > * Vyhledávejte data trasování pomocí různých filtrů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle těchto pokynů, potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete průvodce [nasazením prvního jarního cloudu aplikace na platformě Azure](spring-cloud-quickstart.md) , abyste zřídili a spustili službu jarní cloudu Azure.
 

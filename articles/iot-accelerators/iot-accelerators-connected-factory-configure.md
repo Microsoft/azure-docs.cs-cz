@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002234"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátoru řešení propojené továrny
@@ -337,7 +337,7 @@ Tato konfigurace umožňuje dotazování na hodnoty telemetrie tohoto uzlu pomoc
 * Průměr všech hodnot.
 * Součet všech hodnot pro všechny jedinečné páry **OpcUri** (**ApplicationUri**), **NodeId** v daném časovém rozpětí.
 
-Jedna z vlastností **NumberOfManufactureredProducts** uzlu znamená, že se zvyšuje jenom. K výpočtu počtu produktů vyrobených v rámci TimeSpan používá propojená továrna SubMaxMin **operačního** **SubMaxMin** systému. Výpočet načte minimální hodnotu na začátku TimeSpan a maximální hodnotu na konci časového rozpětí.
+Jedna z vlastností **NumberOfManufactureredProducts** uzlu znamená, že se zvyšuje jenom. K výpočtu počtu produktů vyrobených v rámci TimeSpan používá propojená továrna SubMaxMin **operačního** systému. Výpočet načte minimální hodnotu na začátku TimeSpan a maximální hodnotu na konci časového rozpětí.
 
 **Operační kód** v konfiguraci konfiguruje logiku výpočtu pro výpočet výsledku rozdílu mezi maximální a minimální hodnotou. Tyto výsledky se pak sčítají až do kořenové (globální) úrovně a zobrazují se na řídicím panelu.
 

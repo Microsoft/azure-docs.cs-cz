@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002744"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Fulltextové vyhledávání v Azure Kognitivní hledání
@@ -251,7 +251,7 @@ To je běžné, ale nevyžadují se pro použití stejných analyzátorů pro op
 
 Návrat do našeho příkladu pro pole **title** má obrácený index vypadat takto:
 
-| Termín | Seznam dokumentů |
+| Označení | Seznam dokumentů |
 |------|---------------|
 | atman | 1 |
 | míčů | 2 |
@@ -265,7 +265,7 @@ V poli title se pouze *Hotel* zobrazuje ve dvou dokumentech: 1, 3.
 
 Pro pole **Popis** je index následující:
 
-| Termín | Seznam dokumentů |
+| Označení | Seznam dokumentů |
 |------|---------------|
 | letové | 3
 | a | 4
@@ -362,7 +362,7 @@ V tomto příkladu je znázorněna tato záležitost. Hledání pomocí zástupn
 Existují dva způsoby, jak ve službě Azure Kognitivní hledání naladit hodnocení relevance:
 
 1. **Profily vyhodnocování** podporují dokumenty v seřazeném seznamu výsledků na základě sady pravidel. V našem příkladu můžeme zvážit, že se dokumenty, které odpovídají poli title, považují za relevantnější než dokumenty, které odpovídají poli Popis. Pokud má náš index pro každý Hotel pole s cenami, můžeme zvýšit úroveň dokumentů s nižší cenou. Přečtěte si další informace o tom, jak [Přidat profily vyhodnocování do indexu vyhledávání.](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. **Zvyšování termínů** (k dispozici pouze v úplné syntaxi dotazů Lucene) poskytuje operátor zvyšování `^` , který lze použít na jakoukoli část stromu dotazu. V našem příkladu se místo hledání předpony Air v *air-condition* \* jednom z nich může vyhledat buď přesný pojem *Air* , nebo předpona, ale dokumenty, které odpovídají přesnému termínu, jsou seřazené výše, a to tak, že se zvýší na termínový dotaz: * klimatizační podmínka ^ 2 | | klimatizační znak * *. Přečtěte si další informace o [zvyšování podmínek](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. **Zvyšování termínů** (k dispozici pouze v úplné syntaxi dotazů Lucene) poskytuje operátor zvyšování `^` , který lze použít na jakoukoli část stromu dotazu. V našem příkladu se místo hledání předpony Air v  \* jednom z nich může vyhledat buď přesný pojem *Air* , nebo předpona, ale dokumenty, které odpovídají přesnému termínu, jsou seřazené výše, a to tak, že se zvýší na termínový dotaz: * klimatizační podmínka ^ 2 | | klimatizační znak * *. Přečtěte si další informace o [zvyšování podmínek](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Bodování v distribuovaném indexu

@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397888"
 ---
-# <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Nakonfigurujte verze zásad TLS a šifrovací sady na Application Gateway
+# <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurace verzí zásad TLS a šifrovacích sad ve službě Application Gateway
 
 Naučte se konfigurovat verze zásad TLS/SSL a šifrovací sady na Application Gateway. Můžete vybrat ze seznamu předdefinovaných zásad, které obsahují různé konfigurace verzí zásad TLS a povolených šifrovacích sad. Máte také možnost definovat [vlastní zásady TLS](#configure-a-custom-tls-policy) na základě vašich požadavků.
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>Aktualizace existující aplikační brány s předem definovanými zásadami TLS
 
-Pokud chcete nastavit vlastní zásady TLS, předejte tyto parametry: **policyType** , **MinProtocolVersion** , **CipherSuite** a **ApplicationGateway**. Pokud chcete nastavit předdefinované zásady TLS, předejte následující parametry: **policyType** , **Policy** a **ApplicationGateway**. Pokud se pokusíte předat další parametry, zobrazí se při vytváření nebo aktualizaci Application Gateway chyba.
+Pokud chcete nastavit vlastní zásady TLS, předejte tyto parametry: **policyType**, **MinProtocolVersion**, **CipherSuite** a **ApplicationGateway**. Pokud chcete nastavit předdefinované zásady TLS, předejte následující parametry: **policyType**, **Policy** a **ApplicationGateway**. Pokud se pokusíte předat další parametry, zobrazí se při vytváření nebo aktualizaci Application Gateway chyba.
 
 V následujícím příkladu jsou k dispozici ukázky kódu pro vlastní zásady i předdefinované zásady. Odkomentujte zásady, které chcete použít.
 

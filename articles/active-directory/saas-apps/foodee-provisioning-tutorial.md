@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 8b4bfa7e9bf457d79c6c4a0b5255bce4fe36dff4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358673"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Kurz: Konfigurace Foodee pro Automatické zřizování uživatelů
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak nakonfigurovat Azure Active Directory (Azure A
 >
 > Tento konektor je momentálně ve verzi Preview. Další informace o funkci používání podmínek Azure pro funkce ve verzi Preview najdete v [části dodatečné použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste splnili následující požadavky:
 
@@ -83,7 +83,7 @@ Pokud chcete přidat Foodee z Galerie aplikací Azure AD, udělejte toto:
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-1. Do vyhledávacího pole zadejte **Foodee** , v podokně výsledků vyberte **Foodee** a pak vyberte **Přidat** , aby se aplikace přidala.
+1. Do vyhledávacího pole zadejte **Foodee**, v podokně výsledků vyberte **Foodee** a pak vyberte **Přidat** , aby se aplikace přidala.
 
     ![Foodee v seznamu výsledků](common/search-new-app.png)
 

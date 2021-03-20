@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.openlocfilehash: 000f8a1457298901dcfc94bc5e0923e94ba35dc7
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620898"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – škálovatelné (Citus)
@@ -31,7 +31,7 @@ V následujících tabulkách jsou uvedeny standardní rozšíření PostgreSQL,
 ### <a name="data-types-extensions"></a>Datové typy – rozšíření
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Linka** | **Popis** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Poskytuje znakový typ řetězce bez rozlišení velkých a malých písmen. |
 > | [datov](https://www.postgresql.org/docs/current/static/cube.html) | Poskytuje datový typ pro multidimenzionální datové krychle. |
@@ -47,7 +47,7 @@ V následujících tabulkách jsou uvedeny standardní rozšíření PostgreSQL,
 ### <a name="full-text-search-extensions"></a>Rozšíření fulltextového vyhledávání
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Linka** | **Popis** |
 > |---|---|
 > | [DICT – \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | Poskytuje šablonu slovníku pro hledání textu pro celá čísla. |
 > | [DICT – \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Šablona slovníku pro hledání textu pro zpracování rozšířeného synonyma |
@@ -56,7 +56,7 @@ V následujících tabulkách jsou uvedeny standardní rozšíření PostgreSQL,
 ### <a name="functions-extensions"></a>Rozšíření funkcí
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Linka** | **Popis** |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Funkce pro pole AutoIncrement. |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Poskytuje způsob, jak vypočítat Skvělé vzdálenosti na povrchu země. |
@@ -78,14 +78,14 @@ V následujících tabulkách jsou uvedeny standardní rozšíření PostgreSQL,
 ### <a name="hyperscale-citus-extensions"></a>Rozšíření Citus ()
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Linka** | **Popis** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Distribuovaná databáze Citus |
 
 ### <a name="index-types-extensions"></a>Rozšíření typů indexu
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Linka** | **Popis** |
 > |---|---|
 > | [bloom](https://www.postgresql.org/docs/current/bloom.html) | Bloom metoda přístupu – index založený na souboru signatury. |
 > | [BTREE \_ gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | Poskytuje ukázkové třídy operátorů GIN, které implementují chování typu B-Tree pro určité typy dat. |
@@ -94,14 +94,14 @@ V následujících tabulkách jsou uvedeny standardní rozšíření PostgreSQL,
 ### <a name="language-extensions"></a>Jazyková rozšíření
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Linka** | **Popis** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PgSQLový jazyk PL/spustitelný. |
 
 ### <a name="miscellaneous-extensions"></a>Různá rozšíření
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Linka** | **Popis** |
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | Funkce správy pro PostgreSQL. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Funkce pro ověření integrity vztahu |
@@ -126,7 +126,7 @@ V následujících tabulkách jsou uvedeny standardní rozšíření PostgreSQL,
 ### <a name="postgis-extensions"></a>Rozšíření PostGIS
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření** | **Popis** |
+> | **Linka** | **Popis** |
 > |---|---|
 > | [PostGIS](https://www.postgis.net/), PostGIS, \_ topologie PostGIS \_ tygr \_ , PostGIS \_ sfcgal | Prostorové a geografické objekty pro PostgreSQL. |
 > | adresa pro \_ standardizaci adresování, adresové \_ \_ data \_ | Slouží k analýze adresy na prvky prvku. Slouží k podpoře kroku pro normalizaci adres geografického kódování. |

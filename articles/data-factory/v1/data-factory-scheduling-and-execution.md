@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: bfdae688f7736149fe7ddf04cd3833d9adf30818
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382714"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Plánování a provádění Data Factory
@@ -691,7 +691,7 @@ Tady je ukázkový formát JSON kanálu:
 
 Všimněte si, že v příkladu je výstupní datová sada první aktivity kopírování (Dataset2) zadána jako vstup pro druhou aktivitu. Proto se druhá aktivita spustí pouze v případě, že je výstupní datová sada z první aktivity připravena.  
 
-V tomto příkladu může mít CopyActivity2 jiný vstup, jako je například Dataset3, ale zadáte Dataset2 jako vstup do CopyActivity2, takže se aktivita nespustí až do dokončení soubor copyactivity1. Příklad:
+V tomto příkladu může mít CopyActivity2 jiný vstup, jako je například Dataset3, ale zadáte Dataset2 jako vstup do CopyActivity2, takže se aktivita nespustí až do dokončení soubor copyactivity1. Například:
 
 Soubor copyactivity1
 

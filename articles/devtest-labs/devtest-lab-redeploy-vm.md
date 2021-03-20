@@ -4,10 +4,10 @@ description: Naučte se znovu nasadit virtuální počítač (přesunout z jedno
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530314"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Opětovné nasazení virtuálního počítače v testovacím prostředí v Azure DevTest Labs
@@ -16,8 +16,8 @@ Pokud se nemůžete připojit k virtuálnímu počítači v testovacím prostře
 ## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>Postup opětovného nasazení virtuálního počítače v testovacím prostředí 
 Pokud chcete znovu nasadit virtuální počítač v testovacím prostředí v Azure DevTest Labs, proveďte následující kroky: 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí, které obsahuje virtuální počítač, který chcete znovu nasadit.  
 4. Na levém panelu vyberte **moje Virtual Machines**. 
 5. V seznamu virtuálních počítačů vyberte virtuální počítač.

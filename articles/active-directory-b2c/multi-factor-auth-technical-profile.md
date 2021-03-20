@@ -12,17 +12,17 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e81ac35555e6653cecb602e5af2f19aa3e2f05e9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840589"
 ---
 # <a name="define-an-azure-ad-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu Azure AD MFA v Azure AD B2C vlastní zásady
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro ověření telefonního čísla pomocí Azure AD Multi-Factor Authentication (MFA). Tento technický profil použijte k vygenerování a odeslání kódu na telefonní číslo a pak ověřte kód. Technický profil Azure AD MFA může také vracet chybovou zprávu.  Technický profil ověření ověřuje uživatelem poskytnutá data před pokračováním cesty uživatele. S technickým profilem ověření se zobrazí chybová zpráva na stránce s vlastním kontrolním jménem.
+Azure Active Directory B2C (Azure AD B2C) nabízí podporu ověření telefonního čísla pomocí vícefaktorového ověřování (MFA) Azure AD. Pokud chcete vygenerovat kód, odeslat ho na telefonní číslo a pak tento kód ověřit, použijte tento technický profil. Technický profil Azure AD MFA může také vracet chybovou zprávu.  Technický profil ověření ověřuje uživatelem poskytnutá data před pokračováním cesty uživatele. S technickým profilem ověření se zobrazí chybová zpráva na stránce s vlastním kontrolním jménem.
 
 Tento technický profil:
 
@@ -61,8 +61,8 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do Azure AD MF
 | --------- | -------- | ----------- |
 | userPrincipalName (Hlavní název uživatele) | Yes | Identifikátor uživatele, který vlastní telefonní číslo. |
 | phoneNumber | Yes | Telefonní číslo, do kterého se má poslat SMS kód |
-| Společnosti | Ne |Název společnosti v serveru SMS. Pokud není zadaný, použije se název vaší aplikace. |
-| locale | Ne | Národní prostředí serveru SMS. Pokud není zadaný, použije se národní prostředí prohlížeče uživatele. |
+| Společnosti | No |Název společnosti v serveru SMS. Pokud není zadaný, použije se název vaší aplikace. |
+| locale | No | Národní prostředí serveru SMS. Pokud není zadaný, použije se národní prostředí prohlížeče uživatele. |
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových dat před odesláním do služby Azure AD MFA.
 
@@ -84,10 +84,10 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfCouldntSendSms | Ne | Chybová zpráva uživatele, pokud telefonní číslo nepřijímá zprávu SMS. |
-| UserMessageIfInvalidFormat | Ne | Chybová zpráva uživatele v případě, že zadané telefonní číslo není platné telefonní číslo. |
-| UserMessageIfServerError | Ne | Chybová zpráva uživatele v případě, že došlo k vnitřní chybě serveru |
-| UserMessageIfThrottled| Ne | Chybová zpráva uživatele, pokud byl požadavek omezen.|
+| UserMessageIfCouldntSendSms | No | Chybová zpráva uživatele, pokud telefonní číslo nepřijímá zprávu SMS. |
+| UserMessageIfInvalidFormat | No | Chybová zpráva uživatele v případě, že zadané telefonní číslo není platné telefonní číslo. |
+| UserMessageIfServerError | No | Chybová zpráva uživatele v případě, že došlo k vnitřní chybě serveru |
+| UserMessageIfThrottled| No | Chybová zpráva uživatele, pokud byl požadavek omezen.|
 
 ### <a name="example-send-an-sms"></a>Příklad: odeslání serveru SMS
 
@@ -144,10 +144,10 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfMaxAllowedCodeRetryReached| Ne | Chybová zpráva uživatele v případě, že se uživatel pokusil o ověřovací kód příliš mnohokrát. |
-| UserMessageIfServerError | Ne | Chybová zpráva uživatele v případě, že došlo k vnitřní chybě serveru |
-| UserMessageIfThrottled| Ne | Chybová zpráva uživatele, pokud je požadavek omezen.|
-| UserMessageIfWrongCodeEntered| Ne| Chybová zpráva uživatele, je-li kód pro ověření zadán nesprávně.|
+| UserMessageIfMaxAllowedCodeRetryReached| No | Chybová zpráva uživatele v případě, že se uživatel pokusil o ověřovací kód příliš mnohokrát. |
+| UserMessageIfServerError | No | Chybová zpráva uživatele v případě, že došlo k vnitřní chybě serveru |
+| UserMessageIfThrottled| No | Chybová zpráva uživatele, pokud je požadavek omezen.|
+| UserMessageIfWrongCodeEntered| No| Chybová zpráva uživatele, je-li kód pro ověření zadán nesprávně.|
 
 ### <a name="example-verify-a-code"></a>Příklad: ověření kódu
 

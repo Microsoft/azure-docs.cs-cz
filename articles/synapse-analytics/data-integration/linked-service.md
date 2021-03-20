@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220112"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí privátních odkazů
 
 V tomto článku se dozvíte, jak zabezpečit propojenou službu v synapse pomocí privátního koncového bodu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet Azure Storage**: Azure Data Lake Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/common/storage-account-create.md) , kde najdete kroky pro jeho vytvoření. Ujistěte se, že účet úložiště má k přístupu přístup synapse Studio IP a že povolujete přístup jenom **vybraným sítím** k účtu úložiště. Nastavení v okně **brány firewall a virtuální sítě** by mělo vypadat jako na obrázku níže.

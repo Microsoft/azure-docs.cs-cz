@@ -13,19 +13,19 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840185"
 ---
-# <a name="user-flows-in-azure-active-directory-b2c"></a>Toky uživatelů v Azure Active Directory B2C
+# <a name="user-flows-in-azure-active-directory-b2c"></a>Toky uživatelů ve službě Azure Active Directory B2C
 
-Aby vám pomohlo nastavit nejběžnější úlohy identit pro vaše aplikace, Azure AD B2C portál obsahuje předdefinované a konfigurovatelné zásady nazývané **uživatelské toky**. Tok uživatele umožňuje určit, jak uživatelé budou pracovat s vaší aplikací, když provádějí věci, jako je přihlášení, registrace, úprava profilu nebo resetování hesla. Pomocí uživatelských toků můžete řídit následující možnosti:
+Portál Azure AD B2C obsahuje předdefinované konfigurovatelné zásady označované jako **toky uživatelů**, které vám pomůžou nastavit nejběžnější úlohy identit pro vaše aplikace. Tok uživatele umožňuje určit, jak uživatelé budou pracovat s vaší aplikací, když provádějí věci, jako je přihlášení, registrace, úprava profilu nebo resetování hesla. Pomocí uživatelských toků můžete řídit následující možnosti:
 
 - Typy účtů používané pro přihlašování, jako jsou účty sociálních sítí, jako je například Facebook nebo místní účet
 - Atributy, které se mají shromáždit od příjemce, jako je křestní jméno, PSČ a velikost bot
-- Multi-Factor Authentication Azure AD
+- Vícefaktorové ověřování Azure AD
 - Přizpůsobení uživatelského rozhraní
 - Informace, které aplikace obdrží jako deklarace identity v tokenu
 
@@ -68,7 +68,7 @@ Azure AD B2C obsahuje několik typů uživatelských toků:
 Většina typů uživatelských toků má jak **doporučenou** verzi, tak i **standardní** verzi. Podrobnosti najdete v tématu [verze toku uživatele](user-flow-versions.md).
 
 > [!IMPORTANT]
-> Pokud jste s toky uživatelů v Azure AD B2C pracovali předem, všimnete si, že jsme změnili způsob, jakým odkazujeme na verze uživatelského toku. Dříve jsme nabídli verze V1 (připravené pro produkční prostředí) a verze V 1.1 a v2 (Preview). Nyní jsme konsoliduje toky uživatelů do dvou verzí:
+> Pokud jste s toky uživatelů v Azure AD B2C pracovali předem, všimnete si, že jsme změnili způsob, jakým odkazujeme na verze uživatelského toku. Dříve jsme nabízeli verze v1 (připravené pro produkční prostředí) a verze v1.1 a v2 (Preview). Nyní jsme konsoliduje toky uživatelů do dvou verzí:
 >
 >- **Doporučené** toky pro uživatele jsou nové verze Preview toků uživatelů. Jsou důkladně testovány a kombinovány se všemi funkcemi starších verzí **v2** a **v 1.1** . Až dál, budou se udržovat a aktualizovat nové doporučené toky uživatelů. Po přechodu na tyto nové doporučené toky uživatelů budete mít přístup k novým funkcím, jakmile jsou vydány.
 >- **Standardní** uživatelské toky, dříve označované jako **v1**, jsou všeobecně dostupné, uživatelské toky připravené pro produkční prostředí. Pokud jsou toky uživatelů klíčové a závisí na vysoce stabilních verzích, můžete pokračovat v používání standardních uživatelských toků a realizovat, že tyto verze nebudou zachované a aktualizované.

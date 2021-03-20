@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: 2cfef9626983ed0fa120e11bbfebdc2a38d91096
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97506280"
 ---
 Chcete-li použít nejnovější verzi klientské knihovny Analýza textu v3, bude nutné stáhnout nejnovější softwarový balíček v `Azure.AI.TextAnalytics` oboru názvů. Oddíl **Nastavení** v [článku rychlý Start](../quickstarts/client-libraries-rest-api.md) obsahuje seznam příkazů, které můžete použít pro preferovaný jazyk, s příklady kódu.

@@ -4,10 +4,10 @@ description: Využijte řízení přístupu na základě role Azure (Azure RBAC)
 ms.topic: article
 ms.date: 10/14/2020
 ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92207950"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry role a oprávnění
@@ -16,10 +16,10 @@ Služba Azure Container Registry podporuje sadu [integrovaných rolí Azure](../
 
 | Role/oprávnění       | [Přístup Správce prostředků](#access-resource-manager) | [Vytvořit nebo odstranit registr](#create-and-delete-registry) | [Obrázek push](#push-image) | [Obrázek pro vyžádání obsahu](#pull-image) | [Odstranit data obrázku](#delete-image-data) | [Změnit zásady](#change-policies) |   [Podepsat obrázky](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| Vlastník | X | X | X | X | X | X |  |  
-| Přispěvatel | X | X | X |  X | X | X |  |  
-| Čtenář | X |  |  | X |  |  |  |
-| AcrPush |  |  | X | X | |  |  |  
+| Vlastník | × | × | × | × | × | × |  |  
+| Přispěvatel | × | × | × |  × | × | × |  |  
+| Čtenář | × |  |  | × |  |  |  |
+| AcrPush |  |  | × | × | |  |  |  
 | AcrPull |  |  |  | × |  |  |  |  
 | AcrDelete |  |  |  |  | × |  |  |
 | AcrImageSigner |  |  |  |  |  |  | × |

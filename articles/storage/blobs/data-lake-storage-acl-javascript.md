@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
 ms.openlocfilehash: 4d3e13c6593c0e11df84131a9a07eb2868277d2f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100654095"
 ---
 # <a name="use-javascript-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Použití JavaScriptu ke správě seznamů ACL v Azure Data Lake Storage Gen2
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak pomocí JavaScriptu získat, nastavit a aktual
 
 [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -225,6 +225,6 @@ await fileClient.setAccessControl(acl);
 
 - [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-file-datalake)
 - [ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
-- [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)
+- [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-sdk-for-java/issues)
 - [Model řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)
 - [Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

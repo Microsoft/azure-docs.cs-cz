@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93100401"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: migrace dat na účet rozhraní API Cassandra v Azure Cosmos DB
@@ -25,13 +25,13 @@ Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Plánování migrace
-> * Požadavky pro migraci
+> * Požadavky na migraci
 > * Migrace dat pomocí příkazu cqlsh COPY
 > * Migrace dat pomocí Sparku
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites-for-migration"></a>Požadavky pro migraci
+## <a name="prerequisites-for-migration"></a>Požadavky na migraci
 
 * **Odhad vašich potřeb propustnosti:** Před migrací dat na účet rozhraní API Cassandra v Azure Cosmos DB byste měli odhadnout nároky na propustnost vašich úloh. Obecně se doporučuje začít s průměrnou propustností vyžadovanou pro operace CRUD a potom přidat další propustnost požadovanou pro extrakci, transformaci a načítání (ETL) a nárazové operace. K naplánování migrace budete potřebovat následující podrobnosti: 
 
@@ -84,7 +84,7 @@ Data můžete přesunout data z existujících úloh Cassandra do Azure Cosmos D
 
    * Přihlaste se k [Azure Portal](https://portal.azure.com)a přejděte k účtu Azure Cosmos.
 
-   * Otevřete podokno **Připojovací řetězec** , které obsahuje všechny informace potřebné pro připojení k vašemu účtu rozhraní API Cassandra z cqlsh.
+   * Otevřete podokno **Připojovací řetězec**, které obsahuje všechny informace potřebné pro připojení k vašemu účtu rozhraní API Cassandra z cqlsh.
 
 2. Přihlaste se ke cqhsh pomocí informací o připojení z portálu.
 

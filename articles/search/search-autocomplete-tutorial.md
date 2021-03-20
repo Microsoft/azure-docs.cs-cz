@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96339604"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Přidání automatického dokončování a návrhů do klientských aplikací s využitím Azure Kognitivní hledání
@@ -117,7 +117,7 @@ $(function () {
 });
 ```
 
-Obsahuje `source` informace o funkci automatického dokončování uživatelského rozhraní jQuery, kde získat seznam položek, které se mají zobrazit v poli hledání. Vzhledem k tomu, že tento projekt je projekt MVC, volá funkci **navrhnout** v **HomeController.cs** , která obsahuje logiku pro vracení návrhů dotazů. Tato funkce také předá několik parametrů pro řízení světel, přibližné spárování a termínu. Rozhraní JavaScript API pro automatické dokončování přidá parametr term.
+Obsahuje `source` informace o funkci automatického dokončování uživatelského rozhraní jQuery, kde získat seznam položek, které se mají zobrazit v poli hledání. Vzhledem k tomu, že tento projekt je projekt MVC, volá funkci **navrhnout** v **HomeController. cs** , která obsahuje logiku pro vracení návrhů dotazů. Tato funkce také předá několik parametrů pro řízení světel, přibližné spárování a termínu. Rozhraní JavaScript API pro automatické dokončování přidá parametr term.
 
 Tím `minLength: 3` zajistíte, aby se doporučení zobrazovala pouze v případě, že pole hledání obsahuje alespoň tři znaky.
 
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Navrhnout funkci
 
-Pokud používáte jazyk C# a aplikaci MVC, soubor **HomeController.cs** v adresáři Controllers je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě SuggestAsync](/dotnet/api/azure.search.documents.searchclient.suggestasync). Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](search-howto-dotnet-sdk.md).
+Pokud používáte jazyk C# a aplikaci MVC, v adresáři Controllers se nachází soubor **HomeController. cs** , kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě SuggestAsync](/dotnet/api/azure.search.documents.searchclient.suggestasync). Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](search-howto-dotnet-sdk.md).
 
 `InitSearch`Metoda vytvoří ověřeného klienta http indexu pro službu Azure kognitivní hledání. Vlastnosti třídy [SuggestOptions](/dotnet/api/azure.search.documents.suggestoptions) určují, která pole se prohledávají a vrátí ve výsledcích, počet shod a zda se používá přibližná shoda. 
 
@@ -218,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Funkce AutoComplete
 
-Automatické dokončování je založené na [metodě AutocompleteAsync](/dotnet/api/azure.search.documents.searchclient.autocompleteasync). Stejně jako u návrhů by tento blok kódu byl v souboru **HomeController.cs** .
+Automatické dokončování je založené na [metodě AutocompleteAsync](/dotnet/api/azure.search.documents.searchclient.autocompleteasync). Stejně jako u návrhů by tento blok kódu měl přejít do souboru **HomeController. cs** .
 
 ```csharp
 public async Task<ActionResult> AutoCompleteAsync(string term)

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98201429"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Připojení ke službě Azure Database for MySQL s přesměrováním
@@ -18,7 +18,7 @@ ms.locfileid: "98201429"
 Toto téma vysvětluje, jak připojit aplikaci Azure Database for MySQL server s režimem přesměrování. Přesměrování se zaměřuje na snížení latence sítě mezi klientskými aplikacemi a servery MySQL tím, že umožňuje aplikacím připojení přímo k uzlům back-end serverů.
 
 ## <a name="before-you-begin"></a>Než začnete
-Přihlaste se na web [Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MySQL server s modulem verze 5,6, 5,7 nebo 8,0. 
+Přihlaste se na [Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MySQL server s modulem verze 5,6, 5,7 nebo 8,0. 
 
 Podrobnosti najdete v tématu Postup vytvoření Azure Database for MySQL serveru pomocí [Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
@@ -57,7 +57,7 @@ V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` ro
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
-#### <a name="prerequisites"></a>Požadavky 
+#### <a name="prerequisites"></a>Předpoklady 
 - Verze PHP 7.2.15 + a 7.3.2 +
 - HRUŠKY PHP 
 - PHP – MySQL
@@ -96,7 +96,7 @@ V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` ro
 
 ### <a name="windows"></a>Windows
 
-#### <a name="prerequisites"></a>Požadavky 
+#### <a name="prerequisites"></a>Předpoklady 
 - Verze PHP 7.2.15 + a 7.3.2 +
 - PHP – MySQL
 - Server Azure Database for MySQL

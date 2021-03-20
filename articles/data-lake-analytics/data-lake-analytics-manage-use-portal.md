@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: c1057478d9ae7d63bef9477a0b1297fa2c507ffa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218421"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí webu Azure Portal
@@ -25,7 +25,7 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
 
 ### <a name="create-an-account"></a>Vytvoření účtu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Klikněte na **vytvořit prostředek**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**.
 3. Vyberte hodnoty pro následující položky: 
    1. **Název**: název účtu Data Lake Analytics.
@@ -69,7 +69,7 @@ Průzkumník dat můžete použít k procházení zdrojů dat a provádění zá
 
 Pomocí Data Lake Analytics můžete dál uzamknout přístup k vašemu účtu Data Lake Analytics na úrovni sítě. Můžete povolit bránu firewall, zadat IP adresu nebo definovat rozsah IP adres pro důvěryhodné klienty. Po povolení těchto měr se ke Storu můžou připojit jenom klienti, kteří mají IP adresy v definovaném rozsahu.
 
-Pokud se k účtu Data Lake Analytics připojí jiné služby Azure, například Azure Data Factory nebo virtuální počítače, ujistěte se, že **je zapnutá**možnost **Povolit služby Azure** . 
+Pokud se k účtu Data Lake Analytics připojí jiné služby Azure, například Azure Data Factory nebo virtuální počítače, ujistěte se, že **je zapnutá** možnost **Povolit služby Azure** . 
 
 ### <a name="set-up-a-firewall-rule"></a>Nastavení pravidla brány firewall
 
@@ -81,7 +81,7 @@ Pokud se k účtu Data Lake Analytics připojí jiné služby Azure, například
 **Průvodce přidáním uživatele** můžete použít ke snadnému zřízení nových uživatelů Data Lake.
 
 1. V Azure Portal přejít na účet Data Lake Analytics.
-2. Na levé straně v části **Začínáme**klikněte na možnost **Průvodce přidáním uživatele**.
+2. Na levé straně v části **Začínáme** klikněte na možnost **Průvodce přidáním uživatele**.
 3. Vyberte uživatele a pak klikněte na **Vybrat**.
 4. Vyberte roli a pak klikněte na **Vybrat**. Pokud chcete nastavit nového vývojáře pro použití Azure Data Lake, vyberte roli **vývojář Data Lake Analytics** .
 5. Vyberte seznamy řízení přístupu (ACL) pro databáze U-SQL. Až budete s vašimi možnostmi spokojeni, klikněte na **Vybrat**.
@@ -137,7 +137,7 @@ Pomocí vývojářské role Data Lake Analytics můžete povolit vývojářům U
 
 1. V Azure Portal přejít na účet Data Lake Analytics.
 2. Klikněte na **Zobrazit všechny úlohy**. Zobrazí se seznam všech aktivních a nedávno dokončených úloh v účtu.
-3. V případě potřeby můžete kliknout na tlačítko **Filtr** , což vám umožní najít úlohy podle **časového rozsahu**, **názvu úlohy**a hodnot **autora** . 
+3. V případě potřeby můžete kliknout na tlačítko **Filtr** , což vám umožní najít úlohy podle **časového rozsahu**, **názvu úlohy** a hodnot **autora** . 
 
 ### <a name="monitoring-pipeline-jobs"></a>Monitorování úloh kanálu
 Úlohy, které jsou součástí kanálu, jsou většinou sekvenční, k dosažení konkrétního scénáře. Můžete mít například kanál, který vyčistí, extrahuje, transformuje a agreguje využití pro zákaznické poznatky. Úlohy kanálu se při odeslání úlohy identifikují pomocí vlastnosti kanálu. U úloh naplánovaných pomocí ADF v2 se tato vlastnost naplní automaticky. 

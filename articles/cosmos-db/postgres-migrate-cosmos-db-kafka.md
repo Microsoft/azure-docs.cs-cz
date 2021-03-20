@@ -9,10 +9,10 @@ ms.date: 01/05/2021
 ms.author: abhishgu
 ms.reviewer: abhishgu
 ms.openlocfilehash: 0038219ee8c1721ff5ab2be76231d33d2bd9064d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98203061"
 ---
 # <a name="migrate-data-from-postgresql-to-azure-cosmos-db-cassandra-api-account-using-apache-kafka"></a>Migrace dat z PostgreSQL do Azure Cosmos DB rozhraní API Cassandra účtu pomocí Apache Kafka
@@ -39,7 +39,7 @@ Data v tabulce PostgreSQL budou vložena do Apache Kafka pomocí [konektoru Post
 > [!NOTE]
 > Použití specifických funkcí konektoru DataStax Apache Kafka umožňuje odeslat data do několika tabulek. V tomto příkladu konektor pomůže zachovat záznamy změn dat změny ve dvou Cassandra tabulkách, které mohou podporovat různé požadavky na dotazy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Zřídit účet Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 * [Použít cqlsh nebo hostované prostředí pro ověření](cassandra-support.md#hosted-cql-shell-preview)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
 ms.openlocfilehash: ca060e75e50a3e2327fc0516c3cfc9550afbf90f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96581801"
 ---
 1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
@@ -49,7 +49,7 @@ ms.locfileid: "96581801"
     |-----------|-------------|
     | FriendlyName                   | Popisný název zařízení nakonfigurovaný prostřednictvím místního webového uživatelského rozhraní během nasazování zařízení. Výchozím popisným názvem je sériové číslo zařízení.  |
     | SerialNumber                   | Sériové číslo zařízení je jedinečné číslo přiřazené v továrně.                                                                             |
-    | Model                          | Model pro vaše zařízení. Model je virtuální pro Data Box Gateway.                   |
+    | Modelování                          | Model pro vaše zařízení. Model je virtuální pro Data Box Gateway.                   |
     | FriendlySoftwareVersion        | Popisný řetězec, který odpovídá verzi softwaru zařízení. V systému, ve kterém je spuštěný náhled, by se měla používat popisná verze softwaru Data Box Edge 1902. |
     | HcsVersion                     | Verze softwaru klientovi HCS spuštěná na vašem zařízení. Například verze softwaru klientovi HCS, která odpovídá Data Box Edge 1902, je 1.4.771.324.            |
     | LocalCapacityInMb              | Celková místní kapacita zařízení v megabajtech.                                                                                                        |

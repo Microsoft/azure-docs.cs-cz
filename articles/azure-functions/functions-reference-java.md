@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96326450"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
@@ -155,7 +155,7 @@ V následující tabulce jsou uvedeny aktuální podporované verze jazyka Java 
 | Verze funkcí | Verze Java (Windows) | Verze Java (Linux) |
 | ----- | ----- | --- |
 | 3.x | 11 <br/>8 | 11 <br/>8 |
-| 2.x | 8 | neuvedeno |
+| 2.x | 8 | Není k dispozici |
 
 Pokud pro nasazení nezadáte verzi Java, Maven Archetype ve výchozím nastavení je Java 8 během nasazování do Azure.
 
@@ -165,7 +165,7 @@ Verzi Java, která cílí na Maven Archetype, můžete řídit pomocí `-DjavaVe
 
 Maven Archetype vygeneruje pom.xml, která cílí na zadanou verzi Java. Následující prvky v pom.xml označují verzi jazyka Java, která se má použít:
 
-| Prvek |  Hodnota Java 8 | Hodnota Java 11 | Popis |
+| Prvek |  Hodnota Java 8 | Hodnota Java 11 | Description |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Verze jazyka Java, kterou používá modul Maven-Compiler-plugin. |
 | **`JavaVersion`** | 8 | 11 | Verze Java hostovaná aplikací Function App v Azure |

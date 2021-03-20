@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: e7d6a67f5322c5bb640430f66ccb0917f6faada1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003493"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení k Azure Cosmos DB pomocí nástrojů BI Analytics s ovladačem ODBC
@@ -107,7 +107,7 @@ Existují dva typy metod vzorkování, které lze použít: **mapování kontejn
     - Pokud chcete tento sloupec z výsledků dotazu vyloučit, můžete nastavit možnost **Skrýt sloupec** na **hodnotu true** . Sloupce označené jako skrýt sloupec = true nejsou vraceny pro výběr a projekci, i když jsou stále součástí schématu. Můžete například skrýt všechny požadované vlastnosti Azure Cosmos DB systému začínající znakem "_".
     - Sloupec **ID** je jediné pole, které nelze skrýt, protože se používá jako primární klíč v normalizovaném schématu. 
 
-1. Po dokončení definování schématu klikněte na **File**  |  **Uložit** soubor, přejděte do adresáře a uložte schéma a pak klikněte na **Uložit**.
+1. Po dokončení definování schématu klikněte na   |  **Uložit** soubor, přejděte do adresáře a uložte schéma a pak klikněte na **Uložit**.
 
 1. Pokud chcete toto schéma použít se zdrojem DSN, otevřete **okno Azure Cosmos DB nastavení DSN ovladače ODBC** (přes Správce zdrojů dat ODBC), klikněte na **Upřesnit možnosti** a pak v poli **schématu** přejděte do uloženého schématu. Uložením souboru schématu do stávajícího DSN se upraví připojení DSN k oboru pro data a strukturu, která je definovaná schématem.
 
@@ -137,7 +137,7 @@ Následující postup vytvoří schéma pro data v jednom nebo více kontejnerec
     - Pokud chcete tento sloupec z výsledků dotazu vyloučit, můžete nastavit možnost **Skrýt sloupec** na **hodnotu true** . Sloupce označené jako skrýt sloupec = true nejsou vraceny pro výběr a projekci, i když jsou stále součástí schématu. Můžete například skrýt všechny požadované vlastnosti Azure Cosmos DB systému od `_` .
     - Sloupec **ID** je jediné pole, které nelze skrýt, protože se používá jako primární klíč v normalizovaném schématu. 
 
-1. Po dokončení definování schématu klikněte na **File**  |  **Uložit** soubor, přejděte do adresáře a uložte schéma a pak klikněte na **Uložit**.
+1. Po dokončení definování schématu klikněte na   |  **Uložit** soubor, přejděte do adresáře a uložte schéma a pak klikněte na **Uložit**.
 
 1. Zpátky v okně **Azure Cosmos DB nastavení DSN ovladače ODBC** klikněte na **Upřesnit možnosti**. Pak v poli **soubor schématu** přejděte do uloženého souboru schématu a klikněte na **OK**. Opětovným kliknutím na tlačítko **OK** uložte název DSN. Tím se uloží schéma, které jste vytvořili do DSN. 
 
@@ -242,7 +242,7 @@ Pomocí nového názvu DSN se můžete připojit k Azure Cosmos DB pomocí libov
 
 1. Vizuály teď můžete vytvářet pomocí Power BI kliknutím na kartu Sestava :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: , kliknutím na **Nový vizuál** a přizpůsobením dlaždice. Další informace o vytváření vizualizací v Power BI Desktop najdete v tématu [typy vizualizací v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/). 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se zobrazí následující chyba, ujistěte se, že hodnoty pro **hostitele** a **přístupová oprávnění** , které jste zkopírovali Azure Portal v [kroku 2](#connect) jsou správné, a pak to zkuste znovu. Použijte tlačítka Kopírovat napravo od **hostitele** a přístupové hodnoty **klíčů** v Azure Portal ke zkopírování hodnoty bez chyb.
 

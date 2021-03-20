@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91540961"
 ---
 # <a name="add-entities-to-extract-data"></a>Přidat entity pro extrakci dat
@@ -62,7 +62,7 @@ Tento proces funguje pro entity, které jsou v počítači zjištěny, seznam en
 1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
 1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název.
 1. Vyberte stránku **entity** .
-1. Vyberte **+ vytvořit**a pak vyberte typ entity.
+1. Vyberte **+ vytvořit** a pak vyberte typ entity.
 1. Pokračujte v konfiguraci entity a potom po dokončení vyberte **vytvořit** .
 
 ## <a name="create-a-machine-learned-entity"></a>Vytvoření entity, která se naučila pro počítač
@@ -75,7 +75,7 @@ Tento proces funguje pro entity, které jsou v počítači zjištěny, seznam en
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s vytvořením entity získané počítačem](media/add-entities/machine-learned-entity-with-structure.png)
 
-1. V části **Přidat**subentity přidejte podentitu výběrem možnosti **+** na řádku nadřazené entity.
+1. V části **Přidat** subentity přidejte podentitu výběrem možnosti **+** na řádku nadřazené entity.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s přidáním podentit](media/add-entities/machine-learned-entity-with-subentities.png)
@@ -100,7 +100,7 @@ Tento proces funguje pro entity, které jsou v počítači zjištěny, seznam en
 1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název.
 1. V části **sestavení** vyberte **entity** na levém panelu a potom vyberte **+ vytvořit**.
 
-1. V dialogovém okně **vytvořit typ entity** zadejte název entity a vyberte **regulární**výraz, do pole **Regex** zadejte regulární výraz a vyberte **vytvořit**.
+1. V dialogovém okně **vytvořit typ entity** zadejte název entity a vyberte **regulární** výraz, do pole **Regex** zadejte regulární výraz a vyberte **vytvořit**.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s vytvořením entity regulárního výrazu](media/add-entities/add-regular-expression-entity.png)
@@ -116,8 +116,8 @@ Následující seznam znázorňuje kanonický název a synonyma.
 
 |Název položky seznamu barev|Barva – synonyma|
 |--|--|
-|Červený|Crimson, krev, Apple, hasicí stroj|
-|Modrý|Nebeská, kobalt|
+|Red|Crimson, krev, Apple, hasicí stroj|
+|Blue|Nebeská, kobalt|
 |Green|Kelly, vápno|
 
 Pomocí postupu vytvořte entitu seznamu. Po vytvoření entity seznamu nemusíte v záměru popsat vzorový projevy. Položky seznamu a synonyma se shodují pomocí přesného textu.

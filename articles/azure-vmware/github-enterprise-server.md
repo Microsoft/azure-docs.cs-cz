@@ -4,10 +4,10 @@ description: Přečtěte si, jak nastavit server GitHub Enterprise v privátním
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.openlocfilehash: 59a76c3976f6fcda88423b7b78344f2abed1ea84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382017"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Nastavení serveru GitHub Enterprise v privátním cloudu řešení Azure VMware

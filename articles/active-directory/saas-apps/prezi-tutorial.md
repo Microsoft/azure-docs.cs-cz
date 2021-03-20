@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515317"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Prezi
@@ -52,7 +52,7 @@ Pokud chcete nakonfigurovat integraci Prezi do služby Azure AD, musíte přidat
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V podokně úplně vlevo vyberte **Azure Active Directory**.
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Prezi** .
 1. Na panelu výsledků vyberte **Prezi** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
@@ -82,7 +82,7 @@ Postup při povolení jednotného přihlašování služby Azure AD v Azure Port
 
 1. V části **základní konfigurace SAML** nemusí uživatel dělat žádný krok, protože aplikace už je předem integrovaná s Azure.
 
-1. Vyberte **nastavit další adresy URL**a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované pomocí **SP**:
+1. Vyberte **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované pomocí **SP**:
 
     Do pole **přihlašovací adresa** URL zadejte adresu URL: `https://prezi.com/login/sso/` .
 
@@ -111,7 +111,7 @@ Postup při povolení jednotného přihlašování služby Azure AD v Azure Port
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V podokně Azure Portal v levém podokně vyberte možnost **Azure Active Directory**. Klikněte na **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V podokně Azure Portal v levém podokně vyberte možnost **Azure Active Directory**. Klikněte na **Uživatelé** a pak vyberte **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech uživatele proveďte následující kroky:
    1. Do pole **název** zadejte **B. Simon**.
@@ -129,7 +129,7 @@ V této části povolíte B. Simon používat jednotné přihlašování Azure t
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -141,7 +141,7 @@ V této části povolíte B. Simon používat jednotné přihlašování Azure t
 
 1. V jiném okně webového prohlížeče se přihlaste k Prezi pomocí svého týmového účtu a otevřete [konzolu pro správu](https://prezi.com/organizations/manage).
 
-1. V **konzole pro správu**vyberte kartu **Nastavení** .
+1. V **konzole pro správu** vyberte kartu **Nastavení** .
 
     ![Karta nastavení](./media/prezi-tutorial/settings-image.png)
 
@@ -171,7 +171,7 @@ V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupov�
 
 Když na přístupovém panelu vyberete dlaždici Prezi, měli byste se automaticky přihlásit k účtu Prezi, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
