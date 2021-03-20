@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: dd4f4ad7f84ebc1f5e254843e7afa4aa0f3f224f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87319129"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Doprovodné materiály k komunikace zařízení-Cloud
@@ -36,10 +36,10 @@ Tady je podrobné porovnání různých možností komunikace mezi zařízeními
 
 | Faktor | Zprávy typu zařízení-cloud | Vlastnosti hlášené v zařízení | Nahrání souborů |
 | ---- | ------- | ---------- | ---- |
-| Scénář | Časová řada telemetrie a výstrahy. Například 256 – datové balíky snímač KB jsou odesílány každých 5 minut. | Dostupné možnosti a podmínky. Například aktuální režim připojení zařízení, jako je mobilní síť nebo Wi-Fi. Synchronizace dlouhodobě spuštěných pracovních postupů, jako jsou konfigurace a aktualizace softwaru. | Mediální soubory. Velké (obvykle komprimované) dávky telemetrie. |
+| Scenario | Časová řada telemetrie a výstrahy. Například 256 – datové balíky snímač KB jsou odesílány každých 5 minut. | Dostupné možnosti a podmínky. Například aktuální režim připojení zařízení, jako je mobilní síť nebo Wi-Fi. Synchronizace dlouhodobě spuštěných pracovních postupů, jako jsou konfigurace a aktualizace softwaru. | Mediální soubory. Velké (obvykle komprimované) dávky telemetrie. |
 | Ukládání a načítání | Dočasně uloženo IoT Hub až 7 dní. Pouze sekvenční čtení. | Uloženo IoT Hub v zařízení je v nevlákna. Získatelné pomocí [dotazovacího jazyka IoT Hub](iot-hub-devguide-query-language.md). | Uloženo v uživatelsky zadaném Azure Storage účtu. |
 | Velikost | Až 256 – zprávy KB. | Maximální velikost hlášených vlastností je 32 KB. | Maximální velikost souboru podporovaná službou Azure Blob Storage. |
-| Frequency | Vysoká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Střední. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Nízká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). |
+| Frekvence | Vysoká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Střední. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Nízká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). |
 | Protokol | K dispozici na všech protokolech. | K dispozici pomocí MQTT nebo AMQP. | K dispozici při použití libovolného protokolu, ale na zařízení vyžaduje HTTPS. |
 
 Aplikace může potřebovat odesílat informace jak jako časovou řadu telemetrie, tak pro upozornění a zpřístupňuje je v zařízení. V tomto scénáři můžete vybrat jednu z následujících možností:

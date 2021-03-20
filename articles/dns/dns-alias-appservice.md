@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954507"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Webové aplikace Azure s vyrovnáváním zatížení hostitele ve vrcholu zóny
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit záznam aliasu pro svůj doménový 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte mít k dispozici název domény, kterou můžete hostovat v Azure DNS a použít k testování. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 
@@ -46,7 +46,7 @@ Vytvořte dva plány Web App Service ve skupině prostředků pomocí následuj�
 |Name  |Operační systém  |Umístění  |Cenová úroveň  |
 |---------|---------|---------|---------|
 |ASP – 01     |Windows|East US|D1-Shared pro vývoj a testování|
-|ASP-02     |Windows|Střední USA|D1-Shared pro vývoj a testování|
+|ASP-02     |Windows|USA – střed|D1-Shared pro vývoj a testování|
 
 ## <a name="create-app-services"></a>Vytvořit App Services
 
@@ -61,7 +61,7 @@ Vytvořte dvě webové aplikace, jednu v každém plánu App Service.
    |Name<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Oblast|App Service plán/umístění
    |---------|---------|-|-|-------|
    |App – 01|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|East US|ASP-01 (D1)|
-   |App-02|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|Střední USA|ASP-02 (D1)|
+   |App-02|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|USA – střed|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Shromáždit nějaké podrobnosti
 
@@ -90,7 +90,7 @@ Nyní můžete vytvořit koncové body pro tyto dvě webové aplikace.
    |Typ  |Name  |Cíl  |Umístění  |Vlastní nastavení hlaviček|
    |---------|---------|---------|---------|---------|
    |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|East US|provoz\<the URL you recorded for App-01\><br>Příklad: **Host: App-01.azurewebsites.NET**|
-   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|Střední USA|provoz\<the URL you recorded for App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
+   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|USA – střed|provoz\<the URL you recorded for App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
 
 ## <a name="create-dns-zone"></a>Vytvořit zónu DNS
 

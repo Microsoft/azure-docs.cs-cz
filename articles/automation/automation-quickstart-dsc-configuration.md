@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86186074"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s požadovanou konfigurací stavu
@@ -48,7 +48,7 @@ Existuje mnoho různých metod, jak povolit funkci Konfigurace počítače pro s
 
 Moduly obsahují prostředky DSC a mnoho najdete v [Galerie prostředí PowerShell](https://www.powershellgallery.com). Všechny prostředky, které se používají ve vašich konfiguracích, musí být před kompilací naimportovány do účtu Automation. Pro účely tohoto kurzu se vyžaduje modul **nx**.
 
-1. V levém podokně účtu Automation v části **sdílené prostředky**vyberte **Galerie modulů** .
+1. V levém podokně účtu Automation v části **sdílené prostředky** vyberte **Galerie modulů** .
 1. Vyhledejte modul, který chcete importovat, zadáním části jeho názvu: `nx` .
 1. Klikněte na modul, který chcete naimportovat.
 1. Klikněte na **importovat**.

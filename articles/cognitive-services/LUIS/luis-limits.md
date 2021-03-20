@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
 ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97976788"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Omezení pro LUIS model a klíče
@@ -39,7 +39,7 @@ Pokud vaše aplikace překračuje omezení modelu LUIS, zvažte použití aplika
 | [Předem připravené entity](./howto-add-prebuilt-models.md) | bez omezení|
 | [Entity regulárního výrazu](./luis-concept-entity-types.md)|20 entit<br>maximální počet znaků: 500 pro vzor entity regulárního výrazu|
 | [Role](./luis-concept-entity-types.md)|role 300 na aplikaci 10 rolí na entitu|
-| [Promluva][utterances] | 500 znaků<br><br>Pokud máte text delší, než je tento limit znaků, je nutné nejprve segmentovat utterance před vstupem do LUIS a obdržíte jednotlivé reakce na segment. Existují zřejmé přestávky, se kterými můžete pracovat, jako jsou například interpunkční znaménka a dlouhá pauza v řeči.|
+| [Výrok][utterances] | 500 znaků<br><br>Pokud máte text delší, než je tento limit znaků, je nutné nejprve segmentovat utterance před vstupem do LUIS a obdržíte jednotlivé reakce na segment. Existují zřejmé přestávky, se kterými můžete pracovat, jako jsou například interpunkční znaménka a dlouhá pauza v řeči.|
 | [Příklady utterance][utterances] | 15 000 na aplikaci – počet projevy na záměr není nijak omezený.<br><br>Pokud potřebujete vytvořit výuku aplikace s dalšími příklady, použijte přístup k modelu [odeslání](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) . Jednotlivé aplikace LUIS (označované jako podřízené aplikace pro nadřazenou aplikaci pro expedici) provedete pomocí jednoho nebo více záměrů a potom zajistěte odeslání aplikace, která se vzorkuje z každého podřízeného projevy aplikace LUIS, aby směrovala požadavek předpovědi na správnou podřízenou aplikaci. |
 | [Versions](./luis-concept-app-iteration.md) (Verze)| verze 100 na aplikaci |
 | [Název verze][luis-how-to-manage-versions] | 128 znaků |
@@ -108,7 +108,7 @@ Porozumění jazyku má samostatné prostředky, jeden typ pro vytváření obsa
 
 ## <a name="keyboard-controls"></a>Ovládací prvky klávesnice
 
-|Vstup z klávesnice | Popis |
+|Vstup z klávesnice | Description |
 |--|--|
 |CTRL + E|Přepíná mezi tokeny a entitami v seznamu projevy.|
 

@@ -10,10 +10,10 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92152229"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Sada SDK pro zařízení Azure IoT pro C – Další informace o serializátoru
@@ -48,7 +48,7 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-Jak vidíte, modelovací jazyk je založen na makrech jazyka C. Vždy zahájíte definici pomocí ** \_ oboru názvů Begin** a vždy ukončete s **koncovým \_ oborem názvů**. Je běžné pojmenovat obor názvů vaší společnosti nebo, jako v tomto příkladu, projekt, na kterém pracujete.
+Jak vidíte, modelovací jazyk je založen na makrech jazyka C. Vždy zahájíte definici pomocí **\_ oboru názvů Begin** a vždy ukončete s **koncovým \_ oborem názvů**. Je běžné pojmenovat obor názvů vaší společnosti nebo, jako v tomto příkladu, projekt, na kterém pracujete.
 
 Co se nachází uvnitř oboru názvů, jsou definice modelu. V tomto případě existuje jeden model pro anemometer. Model se pak může pojmenovat cokoli, ale obvykle je tento model pojmenován pro zařízení nebo typ dat, která chcete vyměňovat pomocí IoT Hub.  
 
@@ -65,7 +65,7 @@ To, co se v této ukázce neukazuje, jsou další datové typy, které sada SDK 
 
 V modelech vytvořených pomocí knihovny **serializátoru** jsou podporovány následující datové typy:
 
-| Typ | Popis |
+| Typ | Description |
 | --- | --- |
 | double |číslo s plovoucí desetinnou čárkou typu Double Precision |
 | int |32-bitové celé číslo |
@@ -169,9 +169,9 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 }
 ```
 
-Tato funkce serializovat danou událost dat a pošle ji do IoT Hub pomocí ** \_ SendEventAsyncu IoTHubClient**. To je stejný kód, který je popsán v předchozích článcích (**SendAsync** zapouzdřuje logiku do pohodlné funkce).
+Tato funkce serializovat danou událost dat a pošle ji do IoT Hub pomocí **\_ SendEventAsyncu IoTHubClient**. To je stejný kód, který je popsán v předchozích článcích (**SendAsync** zapouzdřuje logiku do pohodlné funkce).
 
-Jedna další pomocná funkce použitá v předchozím kódu je **getdatetimeoffset**. Tato funkce transformuje daný čas na hodnotu typu ** \_ Datum a \_ čas \_ posunu datového času EDM**:
+Jedna další pomocná funkce použitá v předchozím kódu je **getdatetimeoffset**. Tato funkce transformuje daný čas na hodnotu typu **\_ Datum a \_ čas \_ posunu datového času EDM**:
 
 ```C
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
@@ -279,7 +279,7 @@ Když spustíte předchozí kód k odeslání události teploty, bude tato seria
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Posíláme teplotu, která je typu **TemperatureEvent**a tato struktura obsahuje člen **teploty** a **času** . To se přímo odrazí v serializovaných datech.
+Posíláme teplotu, která je typu **TemperatureEvent** a tato struktura obsahuje člen **teploty** a **času** . To se přímo odrazí v serializovaných datech.
 
 Podobně můžeme odeslat událost vlhkosti s tímto kódem:
 
@@ -300,7 +300,7 @@ Serializovaná forma, která se pošle IoT Hub, se zobrazí takto:
 
 Znovu, toto je očekáváno.
 
-S tímto modelem si můžete představit, jak lze snadno přidat další události. Můžete definovat více struktur pomocí příkazu **Declare \_ struct**a zahrnout odpovídající událost do modelu pomocí **s \_ daty**.
+S tímto modelem si můžete představit, jak lze snadno přidat další události. Můžete definovat více struktur pomocí příkazu **Declare \_ struct** a zahrnout odpovídající událost do modelu pomocí **s \_ daty**.
 
 Teď model upravíte tak, aby obsahoval stejná data, ale s jinou strukturou.
 
@@ -436,7 +436,7 @@ Tím se vygeneruje přesně jedna serializovaná událost, jako kdyby jsme defin
 
 Důležité je, že pokud předáte více datových událostí k **serializaci,** předpokládá se, že každá událost je vlastnost v jednom objektu JSON.
 
-Nejlepší přístup závisí na vás a na tom, jak si svůj model myslíte. Pokud odesíláte "události" do cloudu a každá událost obsahuje definovanou sadu vlastností, pak první přístup přináší spoustu smyslů. V takovém případě použijte **deklaraci \_ struct** k definování struktury každé události a poté ji zahrňte do svého modelu pomocí makra **s \_ daty** . Pak každou událost odešlete jako v prvním příkladu výše. V tomto přístupu byste k **serializátoru**předávali jenom jednu událost dat.
+Nejlepší přístup závisí na vás a na tom, jak si svůj model myslíte. Pokud odesíláte "události" do cloudu a každá událost obsahuje definovanou sadu vlastností, pak první přístup přináší spoustu smyslů. V takovém případě použijte **deklaraci \_ struct** k definování struktury každé události a poté ji zahrňte do svého modelu pomocí makra **s \_ daty** . Pak každou událost odešlete jako v prvním příkladu výše. V tomto přístupu byste k **serializátoru** předávali jenom jednu událost dat.
 
 Pokud si myslíte o modelu v objektově orientovaném způsobem, druhý přístup vám může vyhovovat. V tomto případě prvky definované pomocí **s \_ daty** jsou vlastnosti objektu. Dodáte jakoukoli podmnožinu událostí k **serializaci** , kterou chcete, v závislosti na tom, kolik stavu objektu chcete odeslat do cloudu.
 
@@ -556,7 +556,7 @@ Tato složka obsahuje řešení sady Visual Studio s názvem nástroje pro **mak
 
   ![Snímek obrazovky maco_utils_h_generator řešení sady Visual Studio](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
 
-Program v tomto řešení vygeneruje soubor ** \_ . h sady maker** . \_Sada SDK obsahuje výchozí soubor util. h. Toto řešení umožňuje upravit některé parametry a pak znovu vytvořit hlavičkový soubor založený na těchto parametrech.
+Program v tomto řešení vygeneruje soubor **\_ . h sady maker** . \_Sada SDK obsahuje výchozí soubor util. h. Toto řešení umožňuje upravit některé parametry a pak znovu vytvořit hlavičkový soubor založený na těchto parametrech.
 
 Mezi dva klíčové parametry, které se mají zabývat, patří **nArithmetic** a **nMacroParameters**, které jsou definované na těchto dvou řádcích, které se našly v \_ utils.TTU makra:
 
@@ -609,7 +609,7 @@ Všimněte si, že zvětšení těchto hodnot je dostatečně vysoké, může p�
 Zatím jsme pokryli všechno, co potřebujete, abyste měli informace o tom, jak psát kód pomocí knihovny **serializátorů** . Než se pustíte do uzavírání, podíváme se na některá témata z předchozích článků, o kterých můžete zajímat.
 
 ## <a name="the-lower-level-apis"></a>Rozhraní API na nižší úrovni
-Ukázková aplikace, na které se tento článek zaměřuje, je **SimpleSample \_ AMQP**. Tato ukázka používá rozhraní API vyšší úrovně (**nesouvisející s) k**odesílání událostí a přijímání zpráv. Pokud používáte tato rozhraní API, spouští se vlákno na pozadí, které postará o posílání událostí i přijímání zpráv. Rozhraní API nižší úrovně ale můžete použít k odstranění tohoto vlákna na pozadí a při posílání událostí nebo přijímání zpráv z cloudu přebírat explicitní kontrolu.
+Ukázková aplikace, na které se tento článek zaměřuje, je **SimpleSample \_ AMQP**. Tato ukázka používá rozhraní API vyšší úrovně (**nesouvisející s) k** odesílání událostí a přijímání zpráv. Pokud používáte tato rozhraní API, spouští se vlákno na pozadí, které postará o posílání událostí i přijímání zpráv. Rozhraní API nižší úrovně ale můžete použít k odstranění tohoto vlákna na pozadí a při posílání událostí nebo přijímání zpráv z cloudu přebírat explicitní kontrolu.
 
 Jak je popsáno v [předchozím článku](iot-hub-device-sdk-c-iothubclient.md), existuje sada funkcí, které se skládají z rozhraní API vyšší úrovně:
 
@@ -632,7 +632,7 @@ Všimněte si, že rozhraní API nižší úrovně fungují přesně stejným zp
 Příklad toho, jak se používají rozhraní API nižší úrovně s knihovnou **serializátoru** , najdete v tématu aplikace **SimpleSample \_ http** .
 
 ## <a name="additional-topics"></a>Další témata
-Několik dalších témat, která se nahrazují, jsou zpracování vlastností, použití alternativních přihlašovacích údajů zařízení a možností konfigurace. Toto jsou všechna témata zahrnutá v [předchozím článku](iot-hub-device-sdk-c-iothubclient.md). Hlavním bodem je, že všechny tyto funkce fungují stejným způsobem s knihovnou **serializátoru** stejně jako s knihovnou **IoTHubClient** . Například pokud chcete připojit vlastnosti k události z modelu, použijte ** \_ vlastnosti IoTHubMessage** a **map** \_ **AddorUpdate**stejným způsobem, jak je popsáno dříve:
+Několik dalších témat, která se nahrazují, jsou zpracování vlastností, použití alternativních přihlašovacích údajů zařízení a možností konfigurace. Toto jsou všechna témata zahrnutá v [předchozím článku](iot-hub-device-sdk-c-iothubclient.md). Hlavním bodem je, že všechny tyto funkce fungují stejným způsobem s knihovnou **serializátoru** stejně jako s knihovnou **IoTHubClient** . Například pokud chcete připojit vlastnosti k události z modelu, použijte **\_ vlastnosti IoTHubMessage** a **map** \_ **AddorUpdate** stejným způsobem, jak je popsáno dříve:
 
 ```C
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -642,9 +642,9 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 Bez ohledu na to, zda byla událost vygenerována z knihovny **serializátorů** nebo vytvořená ručně pomocí knihovny **IoTHubClient** .
 
-V případě alternativních přihlašovacích údajů ke službě se pomocí **IoTHubClientu \_ \_ Create** funguje stejně jako **IoTHubClient \_ CreateFromConnectionString** pro přidělování ** \_ klientských \_ popisovačů IOTHUB**.
+V případě alternativních přihlašovacích údajů ke službě se pomocí **IoTHubClientu \_ \_ Create** funguje stejně jako **IoTHubClient \_ CreateFromConnectionString** pro přidělování **\_ klientských \_ popisovačů IOTHUB**.
 
-Nakonec, pokud používáte knihovnu **serializátorů** , můžete nastavit možnosti konfigurace pomocí IoTHubClient s metodou ** \_ \_ SetOption** stejným způsobem jako při použití knihovny **IoTHubClient** .
+Nakonec, pokud používáte knihovnu **serializátorů** , můžete nastavit možnosti konfigurace pomocí IoTHubClient s metodou **\_ \_ SetOption** stejným způsobem jako při použití knihovny **IoTHubClient** .
 
 Funkce, která je jedinečná pro knihovnu **serializátorů** , jsou inicializační rozhraní API. Předtím, než můžete začít pracovat s knihovnou, je nutné **volat \_ inicializaci serializátoru**:
 
@@ -654,7 +654,7 @@ serializer_init(NULL);
 
 To se provádí těsně před voláním **IoTHubClient \_ CreateFromConnectionString**.
 
-Podobně když jste hotovi s knihovnou, poslední volání, které uděláte, je ** \_ deinicializace serializátoru**:
+Podobně když jste hotovi s knihovnou, poslední volání, které uděláte, je **\_ deinicializace serializátoru**:
 
 ```C
 serializer_deinit();

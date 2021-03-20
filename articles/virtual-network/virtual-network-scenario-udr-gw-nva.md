@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86231705"
 ---
 # <a name="virtual-appliance-scenario"></a>Scénář virtuálního zařízení
@@ -38,7 +38,7 @@ Toto je standardní hraniční síť (označovaná také jako DMZ) s DMZ a chrá
 
 Řešení níže používá virtuální zařízení brány firewall k implementaci scénáře sítě/Protected hraniční sítě (DMZ).
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 Prostředí můžete nasadit v Azure podrobněji pomocí různých funkcí dostupných v současnosti, a to následujícím způsobem.
 
 * **Virtuální síť (VNet)** . Virtuální síť Azure funguje podobně jako místní síť a dá se rozdělit do jedné nebo víc podsítí, aby poskytovala izolaci provozu a oddělení obav.
@@ -75,7 +75,7 @@ Každá podsíť v Azure se dá propojit s tabulkou UDR, která slouží k defin
 Aby bylo zajištěno, že komunikace probíhá přes správné zařízení brány firewall na základě posledního požadavku výše, je třeba vytvořit následující směrovací tabulku obsahující udr v **azurevnet**.
 
 ### <a name="azgwudr"></a>azgwudr
-V tomto scénáři se k řízení bran firewall pomocí připojení k **AZF3**použije jediný přenos z místního prostředí do Azure a tento provoz musí projít interní bránou firewall **AZF2**. Proto je v **GatewaySubnet** nutná pouze jedna trasa, jak je znázorněno níže.
+V tomto scénáři se k řízení bran firewall pomocí připojení k **AZF3** použije jediný přenos z místního prostředí do Azure a tento provoz musí projít interní bránou firewall **AZF2**. Proto je v **GatewaySubnet** nutná pouze jedna trasa, jak je znázorněno níže.
 
 | Cíl | Další směrování | Vysvětlení |
 | --- | --- | --- |
@@ -121,11 +121,11 @@ Představte si například, že máte ve virtuální síti Azure následující 
 
 V tomto okamžiku se v případě, že se **onpremvm1** pokusí navázat spojení s **onpremvm2**, se použije udr a provoz se pošle **OPFW** jako další segment směrování. Mějte na paměti, že skutečný cíl paketu se nemění, stále říká, že **onpremvm2** je cílem. 
 
-Bez povoleného předávání IP pro **OPFW**vynechá logika virtuálních sítí Azure pakety, protože povoluje odesílání paketů do virtuálního počítače jenom v případě, že je IP adresa virtuálního počítače cílová pro daný paket.
+Bez povoleného předávání IP pro **OPFW** vynechá logika virtuálních sítí Azure pakety, protože povoluje odesílání paketů do virtuálního počítače jenom v případě, že je IP adresa virtuálního počítače cílová pro daný paket.
 
 Díky předávání IP je logika virtuální sítě Azure předávat pakety do OPFW beze změny původní cílové adresy. **OPFW** musí pakety zpracovávat a určit, co s nimi dělat.
 
-Aby výše uvedený scénář fungoval, musíte povolit předávání IP na síťových kartách pro **OPFW**, **AZF1**, **AZF2**a **AZF3** , které se používají pro směrování (všechny síťové karty kromě těch, které jsou propojené s podsítí pro správu). 
+Aby výše uvedený scénář fungoval, musíte povolit předávání IP na síťových kartách pro **OPFW**, **AZF1**, **AZF2** a **AZF3** , které se používají pro směrování (všechny síťové karty kromě těch, které jsou propojené s podsítí pro správu). 
 
 ## <a name="firewall-rules"></a>Pravidla brány firewall
 Jak je popsáno výše, předávání IP zajišťuje pouze odeslání paketů do virtuálních zařízení. Vaše zařízení pořád potřebuje rozhodnout, co s těmito pakety udělat. Ve výše uvedeném scénáři budete muset ve svých zařízeních vytvořit tato pravidla:

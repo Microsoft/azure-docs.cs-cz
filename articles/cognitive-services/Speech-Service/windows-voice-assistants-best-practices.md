@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
 ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92165141"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Prostředí pomocníka návrhů pro Windows 10
@@ -149,7 +149,7 @@ Asistent společnosti Contoso má doma na hlavním panelu: jeho spirála, kruhov
 
 ![Snímek obrazovky hlasového pomocníka ve Windows v kompaktním zobrazení při ověřování aktivace](media/voice-assistants/windows_voice_assistant/compact_view_activating.png)
 
-**Po potvrzení konečné aktivace**pomocník prezentuje své naslouchající uživatelské rozhraní. Pomocník musí v pravém horním rohu verze Preview aktivace hlasu vždy nakreslit.
+**Po potvrzení konečné aktivace** pomocník prezentuje své naslouchající uživatelské rozhraní. Pomocník musí v pravém horním rohu verze Preview aktivace hlasu vždy nakreslit.
 
 ![Snímek obrazovky hlasového asistenta při naslouchání ve Windows v kompaktním zobrazení](media/voice-assistants/windows_voice_assistant/compact_view_listening.png)
 

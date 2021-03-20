@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 36dc7d098892fb2be7c2ba3d75de7c7adef1a4f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171546"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Kurz: přeposílání událostí do IoTHub
@@ -26,7 +26,7 @@ K dokončení tohoto kurzu potřebujete pochopit následující koncepty:
 - [Event Grid koncepty](concepts.md)
 - [Centrum IoT Edge](../../iot-edge/module-composition.md) 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 Aby bylo možné dokončit tento kurz, budete potřebovat:
 
 * **Předplatné Azure** – Pokud ho ještě nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) . 
@@ -145,7 +145,7 @@ Aktualizujte trasu hraničního centra pro přeposílání událostí odběru ud
   "fromEventGridToIoTHub":"FROM /messages/modules/eventgridmodule/outputs/sampleSub4 INTO $upstream"
   ```
 
-  Příklad:
+  Třeba
 
   ```json
   {

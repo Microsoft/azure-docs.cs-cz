@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 375a81127a000741ca5e0397642800794610bcda
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754669"
 ---
-# <a name="respond-to-azure-defender-for-dns-alerts"></a>Reakce na Azure Defender pro výstrahy DNS
+# <a name="respond-to-azure-defender-for-dns-alerts"></a>Reakce na upozornění Azure Defenderu pro DNS
 
 Když obdržíte výstrahu od Azure Defenderu pro DNS, doporučujeme, abyste prošetřili a odpověděli na výstrahu, jak je popsáno níže. Azure Defender pro službu DNS chrání všechny připojené prostředky, takže i když jste obeznámeni s aplikací nebo uživatelem, který výstrahu aktivoval, je důležité ověřit situaci okolní s každou výstrahou.  
 

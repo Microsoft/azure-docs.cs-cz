@@ -4,10 +4,10 @@ description: Vyhledání ukázek šablon Azure Resource Manager k nasazení Azur
 ms.topic: article
 ms.date: 03/07/2019
 ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169642"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Šablony Azure Resource Manager pro Azure Container Instances
@@ -18,15 +18,15 @@ Možnosti nasazení najdete v části věnované [nasazení](#deployment) . Chce
 
 ## <a name="sample-templates"></a>Ukázkové šablony
 
-| Šablona | Description |
+| Template (Šablona) | Description |
 |-|-|
 | **Aplikace** ||
 | [WordPress][app-wp] | Vytvoří web WordPress a jeho databázi MySQL ve skupině kontejnerů. Obsah webu WordPress a databáze MySQL jsou trvalé ve sdílené složce souborů Azure. Vytvoří také aplikační bránu pro zpřístupnění přístupu k veřejné síti pro WordPress. |
 | [MS NAV s SQL Server a službou IIS][app-nav] | Nasadí jeden kontejner Windows s plně vybaveným samoobslužným podnikovým prostředím Dynamics NAV/Dynamics 365. |
-| **Svazků** ||
+| **Svazky** ||
 | [emptyDir][vol-emptydir] | Nasadí dva kontejnery Linux, které sdílejí svazek emptyDir. |
 | [gitRepo][vol-gitrepo] | Nasadí kontejner pro Linux, který naklonuje úložiště GitHubu a připojí ho jako svazek. |
-| [otázku][vol-secret] | Nasadí kontejner pro Linux s certifikátem PFX připojeným jako tajný svazek. |
+| [Tajný kód][vol-secret] | Nasadí kontejner pro Linux s certifikátem PFX připojeným jako tajný svazek. |
 | **Sítě** ||
 | [Kontejner vystavený UDP][net-udp] | Nasadí kontejner systému Windows nebo Linux, který zveřejňuje port UDP. |
 | [Kontejner pro Linux s veřejnou IP adresou][net-publicip] | Nasadí jeden kontejner pro Linux přístupný prostřednictvím veřejné IP adresy. |

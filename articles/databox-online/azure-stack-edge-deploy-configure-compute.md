@@ -10,10 +10,10 @@ ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 10741fbf2deb61d63f444ff9e2247bc59f41af38
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97968675"
 ---
 # <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>Kurz: transformace dat pomocí Azure Stack Edge pro
@@ -57,8 +57,8 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
     |---------|---------|
     |Předplatné     |Vyberte předplatné pro prostředek IoT Hub. Můžete použít stejné předplatné, jako používá prostředek Azure Stack Edge.         |
     |Skupina prostředků     |Vyberte skupinu prostředků pro prostředek IoT Hub. Můžete použít stejnou skupinu prostředků, jako kterou používá prostředek Azure Stack Edge.         |
-    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-    |Název     |Zadejte název prostředku IoT Hub.         |
+    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> Prostředek služby IoT Hub v každém případě používá stejné předplatné a stejnou skupinu prostředků jako prostředek Azure Stack Edge.     |
+    |Name     |Zadejte název prostředku IoT Hub.         |
 
     ![Začínáme s výpočetním prostředím 3](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
@@ -127,7 +127,7 @@ V této části přidáte vlastní modul do zařízení IoT Edge, které jste vy
 
     ![Přidat a nakonfigurovat modul](./media/azure-stack-edge-deploy-configure-compute/add-module-1.png)
 
-3. Vyberte **Add** (Přidat). Modul se přidá. Aktualizace stránky **IoT Edge >** , která označuje, že je modul nasazený. 
+3. Vyberte **Přidat**. Modul se přidá. Aktualizace stránky **IoT Edge >** , která označuje, že je modul nasazený. 
 
     ![Nasazený modul](./media/azure-stack-edge-deploy-configure-compute/add-module-2.png)
 

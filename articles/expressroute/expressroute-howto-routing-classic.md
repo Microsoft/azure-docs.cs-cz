@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
 ms.openlocfilehash: a4a3bad1e868fa0e75611630ffb5db5ba13126b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89395549"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute (Classic)
@@ -44,7 +44,7 @@ Tyto pokyny platí jenom pro okruhy vytvořené s poskytovateli služeb, kteří
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
-## <a name="azure-private-peering"></a>Privátní partnerský vztah Azure
+## <a name="azure-private-peering"></a>Privátní partnerský vztah s Azure
 
 Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit konfiguraci soukromého partnerského vztahu Azure pro okruh ExpressRoute. 
 
@@ -255,7 +255,7 @@ Konfiguraci partnerského vztahu můžete odebrat spuštěním následující ru
 Remove-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
 ```
 
-## <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
+## <a name="microsoft-peering"></a>Partnerský vztah s Microsoftem
 
 Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit konfiguraci partnerského vztahu Microsoftu pro okruh ExpressRoute. 
 

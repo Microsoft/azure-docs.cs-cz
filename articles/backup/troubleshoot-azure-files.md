@@ -4,10 +4,10 @@ description: Tento článek obsahuje informace o řešení potíží, ke kterým
 ms.date: 02/10/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376974"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
@@ -51,7 +51,7 @@ Zkuste registraci zopakovat. Pokud se problém opakuje, obraťte se na podporu.
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Po zrušení ochrany sdílené složky nejde odstranit Recovery Services trezor.
 
-V Azure Portal otevřete **Vault**  >  **Backup Infrastructure**  >  **účty úložiště**infrastruktury zálohování trezoru. Vyberte zrušit **registraci** pro odebrání účtů úložiště z Recovery Services trezoru.
+V Azure Portal otevřete   >    >  **účty úložiště** infrastruktury zálohování trezoru. Vyberte zrušit **registraci** pro odebrání účtů úložiště z Recovery Services trezoru.
 
 >[!NOTE]
 >Trezor Recovery Services je možné odstranit až po zrušení registrace všech účtů úložiště zaregistrovaných v trezoru.
@@ -222,13 +222,13 @@ Chybová zpráva: operace obnovení se nezdařila, protože došlo k chybě při
 
 Zkuste data obnovit později. Pokud potíže trvají, obraťte se na podporu Microsoftu.
 
-### <a name="azurefilesyncchangedetectioninprogress--azure-file-sync-service-change-detection-is-in-progress-for-the-target-file-share-the-change-detection-was-triggered-by-a-previous-restore-to-the-target-file-share"></a>AzureFileSyncChangeDetectionInProgress-Azure File Sync zjišťování změn služby probíhá pro cílovou sdílenou složku. Detekci změn aktivovala předchozí obnovení do cílové sdílené složky.
+### <a name="azurefilesyncchangedetectioninprogress--azure-file-sync-service-change-detection-is-in-progress-for-the-target-file-share-the-change-detection-was-triggered-by-a-previous-restore-to-the-target-file-share"></a>AzureFileSyncChangeDetectionInProgress-Synchronizace souborů Azure zjišťování změn služby probíhá pro cílovou sdílenou složku. Detekci změn aktivovala předchozí obnovení do cílové sdílené složky.
 
 Kód chyby: AzureFileSyncChangeDetectionInProgress
 
-Chybová zpráva: pro cílovou sdílenou složku probíhá zjišťování změn služby Azure File Sync. Detekci změn aktivovala předchozí obnovení do cílové sdílené složky.
+Chybová zpráva: pro cílovou sdílenou složku probíhá zjišťování změn služby Synchronizace souborů Azure. Detekci změn aktivovala předchozí obnovení do cílové sdílené složky.
 
-Použijte jinou cílovou sdílenou složku. Alternativně můžete počkat na dokončení Azure File Sync zjišťování změn služby pro cílovou sdílenou složku před opakováním pokusu o obnovení.
+Použijte jinou cílovou sdílenou složku. Alternativně můžete počkat na dokončení Synchronizace souborů Azure zjišťování změn služby pro cílovou sdílenou složku před opakováním pokusu o obnovení.
 
 ### <a name="usererrorafsrecoverysomefilesnotrestored--one-or-more-files-could-not-be-recovered-successfully-for-more-information-check-the-failed-file-list-in-the-path-given-above"></a>UserErrorAFSRecoverySomeFilesNotRestored – jeden nebo víc souborů se nepovedlo úspěšně obnovit. Další informace najdete v seznamu neúspěšných souborů v cestě uvedené výše.
 
@@ -261,7 +261,7 @@ Kód chyby: UserErrorAnotherRestoreInProgressOnSameTarget
 
 Chybová zpráva: probíhá jiná úloha obnovení ve stejné cílové sdílené složce.
 
-Použijte jinou cílovou sdílenou složku. Případně můžete zrušit nebo počkat na dokončení jiného obnovení.
+Použijte jinou cílovou sdílenou složku. Případně můžete operaci zrušit a počkat, než se druhé obnovení dokončí.
 
 ## <a name="common-modify-policy-errors"></a>Běžné chyby zásad úprav
 

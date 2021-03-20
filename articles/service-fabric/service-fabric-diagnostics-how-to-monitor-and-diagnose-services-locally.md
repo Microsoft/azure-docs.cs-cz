@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86247417"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a diagnostika služeb v nastavení místních počítačů pro vývoj
@@ -43,13 +43,13 @@ Service Fabric generuje události ETW, které vývojářům aplikací pomůžou 
 Pro projekty vytvořené ze **šablon služeb** (bezstavové nebo stavové) stačí vyhledat `RunAsync` implementaci:
 
 1. Volání `ServiceEventSource.Current.ServiceMessage` v `RunAsync` metodě ukazuje příklad vlastního trasování ETW z kódu aplikace.
-2. V souboru **ServiceEventSource.cs** naleznete přetížení pro `ServiceEventSource.ServiceMessage` metodu, která se má použít pro události s vysokou frekvencí z důvodů výkonu.
+2. V souboru **ServiceEventSource. cs** najdete přetížení pro `ServiceEventSource.ServiceMessage` metodu, která se má použít pro události s vysokou frekvencí z důvodů výkonu.
 
 Pro projekty vytvořené z **šablon objektu actor** (Bezstavová nebo stavová):
 
 1. Otevřete soubor **ProjectName". cs** , kde *ProjectName* je název, který jste zvolili pro projekt sady Visual Studio.  
 2. Vyhledejte kód `ActorEventSource.Current.ActorMessage(this, "Doing Work");` v metodě *DoWorkAsync* .  Toto je příklad vlastního trasování ETW napsaného z kódu aplikace.  
-3. V souboru **ActorEventSource.cs**naleznete přetížení pro `ActorEventSource.ActorMessage` metodu, která se má použít pro události s vysokou frekvencí z důvodů výkonu.
+3. V souboru **ActorEventSource. cs** najdete přetížení pro `ActorEventSource.ActorMessage` metodu, která se má použít pro události s vysokou frekvencí z důvodů výkonu.
 
 Po přidání vlastního trasování ETW do kódu služby můžete aplikaci sestavit, nasadit a spustit znovu, abyste viděli události v prohlížeči diagnostických událostí. Pokud ladění aplikace pomocí nástroje **F5**, otevře se prohlížeč diagnostických událostí automaticky.
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148429"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
@@ -50,7 +50,7 @@ V části **Web App for Containers**, která se zobrazí po výběru možnosti N
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-westus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
 | **Plán/umístění služby App Service** | Vytvořte nový plán s názvem `plan-westus` v oblasti **USA – západ**. |
-| **Image** | `acr-helloworld:v1` |
+| **Obrázek** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 > [!NOTE]
@@ -66,7 +66,7 @@ Po dokončení nasazování můžete běžící aplikaci zobrazit tak, že přej
 
 Na portálu vyberte **App Services** a pak vyberte webovou aplikaci, kterou jste zřídili v předchozím kroku. V tomto příkladu je název webové aplikace *uniqueregistryname-westus*.
 
-Výběrem hypertextového odkazu na adresu URL webové aplikace v pravé horní části přehledu **App Service** zobrazíte běžící aplikaci v prohlížeči.
+Vyberte adresu URL webové aplikace v pravém horním rohu přehledu **App Service** a zobrazte běžící aplikaci v prohlížeči.
 
 ![Snímek obrazovky s zvýrazněnou adresou URL webové aplikace zobrazuje přehled App Service.][deploy-app-portal-04]
 
@@ -83,7 +83,7 @@ Podle postupu uvedeného v předchozí části nasaďte druhou webovou aplikaci 
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-eastus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
 | **Plán/umístění služby App Service** | Vytvořte nový plán s názvem `plan-eastus` v oblasti **USA – východ**. |
-| **Image** | `acr-helloworld:v1` |
+| **Obrázek** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – východ*.

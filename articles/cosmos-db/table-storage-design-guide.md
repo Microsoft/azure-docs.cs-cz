@@ -9,10 +9,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 603c891e53e5712d489fcef8415e3db55328c9ad
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99988424"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Průvodce návrhem tabulek v Azure Table Storage: Škálovatelné a výkonné tabulky
@@ -665,7 +665,7 @@ V relační databázi obvykle Normalizujte data pro odstranění duplicit, ke kt
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="Grafika entity oddělení a entit zaměstnanců":::
 
 #### <a name="solution"></a>Řešení
-Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Příklad:  
+Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Například:  
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="Obrázek denormalizované a kombinované entity oddělení":::
 

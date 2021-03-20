@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6ca42137192fefbc669fca775b0deff2f5226c5c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99253828"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů
@@ -32,7 +32,7 @@ Všechny aplikace jsou přiřazeny ke skupině konektorů. Pokud nevytvoříte s
 > [!TIP]
 > Pokud máte velké nasazení aplikačního proxy serveru, nepřiřazujte žádné aplikace do výchozí skupiny konektorů. Nové konektory tak nebudou dostávat žádný živý provoz, dokud je nepřiřazujete do skupiny aktivních konektorů. Tato konfigurace také umožňuje vkládat konektory do režimu nečinnosti tak, že je přesunete zpátky do výchozí skupiny, takže můžete provádět údržbu bez dopadu na uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li seskupit konektory, musíte se ujistit, že jste [nainstalovali více konektorů](application-proxy-add-on-premises-application.md). Při instalaci nového konektoru se automaticky připojí **výchozí** skupina konektorů.
 

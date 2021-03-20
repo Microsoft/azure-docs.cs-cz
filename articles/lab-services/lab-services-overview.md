@@ -4,10 +4,10 @@ description: Zjistěte, jak lze pomocí služby Lab Services zjednodušit vytvá
 ms.topic: overview
 ms.date: 09/16/2020
 ms.openlocfilehash: ad17ebb3a803a15d1ac9ef8cb71cf8ca7976243b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91333932"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Seznámení s Azure Lab Services
@@ -27,9 +27,9 @@ Následující části poskytují další podrobnosti o těchto testovacích pro
 ## <a name="managed-lab-types"></a>Typy spravovaného testovacího prostředí
 Azure Lab Services umožňuje vytvářet testovací prostředí, jejichž infrastrukturu spravuje Azure. Tento článek se na ně odkazuje jako na typy spravovaných testovacích prostředí. Spravované typy testovacího prostředí nabízejí různé typy cvičení, které odpovídají vašim konkrétním potřebám. V současné době se jako jediný podporovaný typ spravovaného testovacího prostředí používá **učebna**. 
 
-Spravované typy testovacího prostředí vám umožňují hned začít s minimálním nastavením. Tato služba zpracovává veškerou správu infrastruktury pro testovací prostředí, od toho, aby vypnula virtuální počítače za účelem zpracování chyb a škálování infrastruktury.Chcete-li vytvořit spravovaný typ testovacího prostředí, jako je například učebna, musíte nejprve vytvořit účet testovacího prostředí pro vaši organizaci. Účet testovacího prostředí slouží jako centrální účet, ve kterém se spravují všechna testovací prostředí v organizaci. 
+Spravované typy testovacího prostředí vám umožňují hned začít s minimálním nastavením. Tato služba zpracovává veškerou správu infrastruktury pro testovací prostředí, od toho, aby vypnula virtuální počítače za účelem zpracování chyb a škálování infrastruktury. Chcete-li vytvořit spravovaný typ testovacího prostředí, jako je například učebna, musíte nejprve vytvořit účet testovacího prostředí pro vaši organizaci. Účet testovacího prostředí slouží jako centrální účet, ve kterém se spravují všechna testovací prostředí v organizaci. 
 
-Při vytváření a používání prostředků Azure v těchto spravovaných typech testovacích prostředí služba vytvoří a spravuje prostředky v interních předplatných Microsoftu. Nevytvářejí se ve vašem vlastním předplatném Azure. Služba uchovává informace o využití těchto prostředků v interních předplatných Microsoftu. Toto využití se fakturuje zpět na vaše předplatné Azure, které obsahuje účet testovacího prostředí.   
+Při vytváření a používání prostředků Azure v těchto spravovaných typech testovacích prostředí služba vytvoří a spravuje prostředky v interních předplatných Microsoftu. Nevytvářejí se ve vašem vlastním předplatném Azure. Služba uchovává informace o využití těchto prostředků v interních předplatných Microsoftu. Toto využití se fakturuje zpět na vaše předplatné Azure, které obsahuje účet testovacího prostředí.   
 
 Zde jsou některé **případy použití pro spravované typy testovacích prostředí**: 
 

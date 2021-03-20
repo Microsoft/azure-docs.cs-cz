@@ -4,10 +4,10 @@ description: Popisuje, jak se používají manifesty k popisu Service Fabric apl
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86248216"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric manifestů aplikací a služeb
@@ -74,7 +74,7 @@ Další informace o tom, jak nakonfigurovat SetupEntryPoint, najdete v tématu [
 
 Datový **balíček** (není nastaven v předchozím příkladu) deklaruje složku s názvem atribut **Name** , která obsahuje libovolná statická data, která má proces za běhu spotřebovat.
 
-**ConfigPackage** deklaruje složku, která je pojmenována atributem **Name** , který obsahuje soubor *Settings.xml* . Soubor nastavení obsahuje oddíly nastavení dvojice klíč-hodnota, které proces načítá za běhu zpět. Pokud se během upgradu změnila jenom **ConfigPackage** **verze** ConfigPackage, spuštěný proces se nerestartuje. Místo toho zpětné volání upozorní proces, že došlo ke změně nastavení konfigurace, aby bylo možné je znovu načíst dynamicky. Tady je příklad *Settings.xml* souboru:
+**ConfigPackage** deklaruje složku, která je pojmenována atributem **Name** , který obsahuje soubor *Settings.xml* . Soubor nastavení obsahuje oddíly nastavení dvojice klíč-hodnota, které proces načítá za běhu zpět. Pokud se během upgradu změnila jenom  **verze** ConfigPackage, spuštěný proces se nerestartuje. Místo toho zpětné volání upozorní proces, že došlo ke změně nastavení konfigurace, aby bylo možné je znovu načíst dynamicky. Tady je příklad *Settings.xml* souboru:
 
 ```xml
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">

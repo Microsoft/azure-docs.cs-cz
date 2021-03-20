@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 50dbe9ab649a708fb36b1c9e4fe89bccadc7ea90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86209430"
 ---
 # <a name="audit-logs-for-your-azure-data-box-and-azure-data-box-heavy"></a>Protokoly auditu pro váš Azure Data Box a Azure Data Box Heavy
@@ -65,9 +65,9 @@ Následující identifikátory událostí protokolu zabezpečení se shromažďu
 
 Následující identifikátory událostí protokolu aplikace se shromažďují jako součást protokolů auditu balíčku v Data Box.     
 
-- **Microsoft-Azure-Databox-OOBE-audit** – obsahuje události, ke kterým dochází v místním uživatelském rozhraní. 
+- **Microsoft-Azure-Databox-OOBE-audit** – obsahuje události, ke kterým dochází v místním uživatelském rozhraní. 
 - **Microsoft-Azure-Databox-Revision-audit** -obsahuje události týkající se opětovného zřízení data Boxho zařízení. Opětovné zřízení Data Box nastane, když se zařízení resetuje prostřednictvím místního uživatelského rozhraní. Tuto možnost vyberte, když chcete vymazat zkopírovaná data odebráním stávajících sdílených složek a opětovným vytvořením sdílených složek v rámci opětovného zřízení nebo resetování zařízení.
-- **Microsoft-Azure-Databox-HcsMgmt-audit** -obsahuje události, které souvisejí pouze s krokem **Příprava na dodání** , před odesláním zařízení zpět do datacentra Azure. 
+- **Microsoft-Azure-Databox-HcsMgmt-audit** -obsahuje události, které souvisejí pouze s krokem **Příprava na dodání** , před odesláním zařízení zpět do datacentra Azure. 
 - **Microsoft-Azure-Databox-IfxAudit** -obsahuje zprávy zaznamenávané různými entitami produktu o úlohách, protokoly, které označují další informace o tom, co se děje v některých tocích.
 
 Tady je tabulka shrnující různé zprostředkovatele událostí a odpovídající ID událostí, která se shromažďují v jednotlivých případech.

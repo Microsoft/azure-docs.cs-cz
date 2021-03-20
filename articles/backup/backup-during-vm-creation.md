@@ -4,10 +4,10 @@ description: Popisuje, jak povolit zálohování při vytváření virtuálního
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89377331"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Povolení zálohování při vytvoření virtuálního počítače Azure
@@ -28,11 +28,11 @@ Pokud jste k vašemu účtu ještě přihlášeni, přihlaste se k [Azure Portal
 
 1. V Azure Portal vyberte **vytvořit prostředek**.
 
-2. V Azure Marketplace vyberte **COMPUTE**a potom vyberte image virtuálního počítače.
+2. V Azure Marketplace vyberte **COMPUTE** a potom vyberte image virtuálního počítače.
 
 3. Nastavte virtuální počítač v souladu s pokyny pro [Windows](../virtual-machines/windows/quick-create-portal.md) nebo [Linux](../virtual-machines/linux/quick-create-portal.md) .
 
-4. Na kartě **Správa** v části **Povolit zálohování**vyberte **zapnuto**.
+4. Na kartě **Správa** v části **Povolit zálohování** vyberte **zapnuto**.
 5. Azure Backup zálohy do trezoru Recovery Services. Vyberte **vytvořit novou** , pokud nemáte existující trezor.
 6. Přijměte navrhovaný název trezoru nebo zadejte vlastní.
 7. Zadejte nebo vytvořte skupinu prostředků, ve které bude uložený trezor. Úložiště skupin prostředků se může lišit od skupiny prostředků virtuálních počítačů.

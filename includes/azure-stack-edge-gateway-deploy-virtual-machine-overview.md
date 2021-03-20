@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2019
 ms.author: alkohli
 ms.openlocfilehash: b7bb6045154b6579483329731dee64e1ca720bea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89088374"
 ---
-Pomocí rozhraní API můžete vytvářet a spravovat virtuální počítače na Azure Stack hraničním zařízení. Tato rozhraní API jsou standardní Azure Resource Manager rozhraní API označovaná pomocí místního koncového bodu Azure Stack Edge. Rozhraní API pro Azure Resource Manager poskytují konzistentní vrstvu správy, která v tomto případě umožňuje vytvářet, aktualizovat a odstraňovat virtuální počítače v místním předplatném, které na zařízení existuje. K Azure Resource Manager běžícímu na Azure Stack Edge se můžete připojit prostřednictvím rutin Azure PowerShell.
+Na zařízení Azure Stack Edge můžete vytvářet a spravovat virtuální počítače pomocí rozhraní API. Tato rozhraní API jsou standardní Azure Resource Manager rozhraní API označovaná pomocí místního koncového bodu Azure Stack Edge. Rozhraní API Azure Resource Manageru nabízejí konzistentní vrstvu správy, která v tomto případě umožňuje vytvářet, aktualizovat a odstraňovat virtuální počítače v místním předplatném na zařízení. K Azure Resource Manageru na zařízení Azure Stack Edge se můžete připojit prostřednictvím rutin Azure PowerShellu.

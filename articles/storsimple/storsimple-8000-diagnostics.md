@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954065"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Řešení potíží se zařízeními 8000 series pomocí nástroje Diagnostika StorSimple
@@ -414,7 +414,7 @@ Controller0>
 
 Tady je Tabulka popisující, k jakým různým parametrům prostředí Windows PowerShell v mapě systémových informací. 
 
-| Parametr PowerShellu    | Popis  |
+| Parametr PowerShellu    | Description  |
 |-------------------------|------------------|
 | Instance ID             | Každý kontroler má jedinečný identifikátor nebo identifikátor GUID, který je k němu přidružený.|
 | Name                    | Popisný název zařízení nakonfigurovaného prostřednictvím Azure Portal během nasazování zařízení. Výchozím popisným názvem je sériové číslo zařízení. |

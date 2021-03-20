@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027699"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testování aplikací logiky s využitím povedených dat nastavením statických výsledků
@@ -37,11 +37,11 @@ Pokud jste například nastavili statické výsledky pro akci odeslat poštu v a
 
 1. Na akci, kde chcete nastavit statické výsledky, postupujte takto: 
 
-   1. V pravém horním rohu akce zvolte tlačítko se třemi tečkami ( *...* ) a vyberte **statický výsledek** , například:
+   1. V pravém horním rohu akce zvolte tlačítko se třemi tečkami (*...*) a vyberte **statický výsledek**, například:
 
       ![Vyberte "statický výsledek" > "Povolit statický výsledek"](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
-   1. Vyberte možnost **Povolit statický výsledek** . U povinných vlastností (*) zadejte modely výstupních hodnot, které chcete vrátit pro odpověď akce.
+   1. Vyberte možnost **Povolit statický výsledek**. U povinných vlastností (*) zadejte modely výstupních hodnot, které chcete vrátit pro odpověď akce.
 
       Tady jsou například požadované vlastnosti pro akci HTTP:
 
@@ -60,7 +60,7 @@ Pokud jste například nastavili statické výsledky pro akci odeslat poštu v a
 
       ![Vybrat volitelné vlastnosti](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. Až budete připraveni na uložení, klikněte na **Hotovo** .
+1. Až budete připraveni na uložení, klikněte na **Hotovo**.
 
    V pravém horním rohu se v záhlaví akce nyní zobrazuje ikona kádinky testu ( ![ ikona pro statické výsledky ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ), která označuje, že jste povolili statické výsledky.
 
@@ -76,7 +76,7 @@ Pokud vaše aplikace logiky obsahuje předchozí běh s výstupy, můžete je po
 
 1. Pokud jste to ještě neudělali, v [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v Návrháři Logic Apps.
 
-1. V hlavní nabídce aplikace logiky vyberte **Přehled** .
+1. V hlavní nabídce aplikace logiky vyberte **Přehled**.
 
 1. V části **historie spuštění** vyberte požadovaný běh aplikace logiky.
 
@@ -110,15 +110,15 @@ Pokud vaše aplikace logiky obsahuje předchozí běh s výstupy, můžete je po
 
 Historie spuštění vaší aplikace logiky identifikuje spuštění, kde akce používají statické výsledky. K vyhledání těchto spuštění použijte následující postup:
 
-1. V hlavní nabídce aplikace logiky vyberte **Přehled** . 
+1. V hlavní nabídce aplikace logiky vyberte **Přehled**. 
 
 1. V pravém podokně v části **historie spuštění** vyhledejte sloupec **statických výsledků** . 
 
-   Každý běh, který zahrnuje akce s výsledky, má sloupec **statických výsledků** nastavený na **povoleno** , například:
+   Každý běh, který zahrnuje akce s výsledky, má sloupec **statických výsledků** nastavený na **povoleno**, například:
 
    ![Historie spuštění – sloupec statických výsledků](./media/test-logic-apps-mock-data-static-results/run-history.png)
 
-1. Pokud chcete zobrazit akce, které používají statické výsledky, vyberte požadované spuštění, ve kterém je sloupec **statických výsledků** nastavený na **povoleno** .
+1. Pokud chcete zobrazit akce, které používají statické výsledky, vyberte požadované spuštění, ve kterém je sloupec **statických výsledků** nastavený na **povoleno**.
 
    U akcí, které používají statické výsledky, se zobrazí ikona zkušební kádinka ( ![ ikona pro statické výsledky ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ), například:
 
@@ -132,7 +132,7 @@ Vypnutím statických výsledků nedojde k vygenerování hodnot z poslední ins
 
    ![Snímek obrazovky zobrazuje akci H T T P, kde můžete vybrat ikonu kádinky pro testování.](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. Vyberte možnost **Zakázat statický výsledek**  >  **Done** .
+1. Vyberte možnost **Zakázat statický výsledek**  >  .
 
    ![Snímek obrazovky ukazuje možnost zakázat statický výsledek, kterou můžete vybrat.](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 

@@ -8,10 +8,10 @@ ms.date: 09/11/2019
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86244034"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>Posílení zabezpečení pro hostitelský operační systém uzlu agenta AKS
@@ -73,7 +73,7 @@ Cílem hostitelského operačního systému s posíleným zabezpečením je sní
 |5.4.1.1 |Zajistěte, aby vypršení platnosti hesla bylo 90 dní nebo méně. |
 |5.4.1.4 |Zajistěte, aby byl neaktivní zámek hesla nastaven na 30 dní nebo méně. |
 |5.4.4 |Zajistěte, aby výchozí uživatel umask byl 027 nebo více omezující. |
-|5,6 |Zajistěte, aby byl omezený přístup k příkazu su|
+|5.6 |Zajistěte, aby byl omezený přístup k příkazu su|
 
 ## <a name="additional-notes"></a>Další poznámky
  

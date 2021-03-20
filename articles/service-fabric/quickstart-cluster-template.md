@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 07/29/2020
 ms.openlocfilehash: 359b527733ee8eebf7e1e7d12c40a0c74ec1c9bd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87460299"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Rychlý Start: Vytvoření clusteru Service Fabric pomocí šablony ARM
@@ -111,9 +111,9 @@ Otevřete *azuredeploy.parameters.js* a upravte hodnoty parametrů tak, aby:
 * název **clusteru** odpovídá hodnotě, kterou jste zadali pro *CertDNSName* při vytváření certifikátu clusteru.
 * **adminUserName** je jiná hodnota než výchozí *gen – jedinečný* token.
 * hodnota **adminPassword** je jinou hodnotou než výchozí token *pro obecné heslo* .
-* **certificateThumbprint**, **sourceVaultResourceId**a **certificateUrlValue** jsou všechny prázdné řetězce ( `""` ).
+* **certificateThumbprint**, **sourceVaultResourceId** a **certificateUrlValue** jsou všechny prázdné řetězce ( `""` ).
 
-Příklad:
+Například:
 
 ```json
 {

@@ -8,10 +8,10 @@ ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 2545915edf9e39b63100a2bb16bd34fa6777675c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100417374"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>Povolit privátní přístup pomocí privátního odkazu (Preview): Azure Portal
@@ -26,7 +26,7 @@ Tady je postup, který je popsaný v tomto článku:
 1. Zapnout privátní odkaz a nakonfigurovat privátní koncový bod pro instanci digitálních vláken Azure
 1. Zakáže nebo povolí příznaky přístupu k veřejné síti, aby se omezil přístup k rozhraním API jenom na připojení přes privátní propojení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct nastavit privátní koncový bod, budete potřebovat službu [**Azure Virtual Network (VNET)**](../virtual-network/virtual-networks-overview.md) , ve které se dá koncový bod nasadit. Pokud ještě nemáte virtuální síť, můžete ji nastavit pomocí některého z [rychlých startů](../virtual-network/quick-create-portal.md) pro Azure Virtual Network.
 
