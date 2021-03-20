@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95023441"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internetový peering vs. Peering Service
@@ -48,7 +48,7 @@ Na obrázku, který se nachází na každé pobočce globálního podniku, se p�
 * Partner bude udržovat vysokou dostupnou, vysokou propustnost a geograficky redundantní připojení pomocí globální sítě Microsoft.
 * Partner může využít stávající partnerský vztah pro podporu služby partnerského vztahu, pokud splňuje požadavky.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 Nejčastější dotazy najdete v tématu [Služba peering Service – Nejčastější dotazy](service-faqs.md).
 
 ## <a name="next-steps"></a>Další kroky

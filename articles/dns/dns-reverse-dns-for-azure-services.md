@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: c72e17e601ebf87b0f344a4723159ae22abc81d1
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919863"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurace reverzního DNS pro služby hostované v Azure
@@ -211,7 +211,7 @@ Odebrání reverzní vlastnosti DNS z existující cloudové služby:
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="how-much-do-reverse-dns-records-cost"></a>Kolik stojí reverzních záznamů DNS?
 
@@ -223,7 +223,7 @@ Ano. Po nastavení reverzní vlastnosti DNS pro vaši službu Azure spravuje Azu
 
 ### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Jsou výchozí reverzní záznamy DNS vytvořené pro moje služby Azure?
 
-Ne. Reverzní služba DNS je funkce výslovného souhlasu. Pokud se rozhodnete nekonfigurovat, nebudou vytvořeny žádné výchozí záznamy DNS reverzní.
+No. Reverzní služba DNS je funkce výslovného souhlasu. Pokud se rozhodnete nekonfigurovat, nebudou vytvořeny žádné výchozí záznamy DNS reverzní.
 
 ### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>Jaký je formát plně kvalifikovaného názvu domény (FQDN)?
 
@@ -235,15 +235,15 @@ Pokud se kontrola reverzního ověřování DNS nezdařila, operace konfigurace 
 
 ### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>Můžu pro Azure App Service nakonfigurovat reverzní DNS?
 
-Ne. Reverzní DNS se pro Azure App Service nepodporuje.
+No. Reverzní DNS se pro Azure App Service nepodporuje.
 
 ### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>Můžu nakonfigurovat více reverzních záznamů DNS pro službu Azure?
 
-Ne. Azure podporuje jeden reverzní záznam DNS pro každou cloudovou službu Azure nebo PublicIpAddress.
+No. Azure podporuje jeden reverzní záznam DNS pro každou cloudovou službu Azure nebo PublicIpAddress.
 
 ### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>Můžu nakonfigurovat reverzní DNS pro prostředky PublicIpAddress IPv6?
 
-Ne. Azure aktuálně podporuje reverzní DNS jenom pro prostředky IPv4 PublicIpAddress a Cloud Services.
+No. Azure aktuálně podporuje reverzní DNS jenom pro prostředky IPv4 PublicIpAddress a Cloud Services.
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Můžu odeslat e-maily externím doménám z výpočetních služeb Azure?
 

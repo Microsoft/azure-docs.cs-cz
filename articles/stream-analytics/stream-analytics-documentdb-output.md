@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2d00d489ff248ecf5599d78e0a351c93248cf8ee
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018085"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics výstup do Azure Cosmos DB  
@@ -106,13 +106,13 @@ Použití Azure Cosmos DB jako výstupu v Stream Analytics generuje následujíc
 
 ![Informační pole pro výstupní datový proud Azure Cosmos DB](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|Pole           | Popis|
+|Pole           | Description|
 |-------------   | -------------|
 |Alias pro výstup    | Alias pro odkazování na tento výstup v dotazu Stream Analytics.|
 |Předplatné    | Předplatné Azure.|
 |Account ID      | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB.|
 |Klíč účtu     | Sdílený přístupový klíč pro účet Azure Cosmos DB.|
-|Databáze        | Azure Cosmos DB název databáze.|
+|databáze        | Azure Cosmos DB název databáze.|
 |Název kontejneru | Název kontejneru, například `MyContainer` . Musí existovat jeden kontejner s názvem `MyContainer` .  |
 |ID dokumentu     | Nepovinný parametr. Název sloupce ve výstupních událostech použitý jako jedinečný klíč, na kterém musí být operace INSERT nebo Update založená. Pokud necháte pole prázdné, budou vloženy všechny události bez možnosti aktualizace.|
 

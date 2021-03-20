@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90528414"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení v jazyce C# pro IoT Hub Device Provisioning Service
@@ -49,7 +49,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="provision-the-simulated-device"></a>Zřízení simulovaného zařízení
 
-1. Přihlaste se k portálu Azure. V nabídce na levé straně vyberte tlačítko **všechny prostředky** a otevřete svou službu Device Provisioning. V okně **Přehled** si poznamenejte hodnotu **_Rozsah ID_** .
+1. Přihlaste se k webu Azure Portal. V nabídce na levé straně vyberte tlačítko **všechny prostředky** a otevřete svou službu Device Provisioning. V okně **Přehled** si poznamenejte hodnotu **_Rozsah ID_** .
 
     ![Zkopírování hodnoty Rozsah ID služby zřizování z okna portálu](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
 

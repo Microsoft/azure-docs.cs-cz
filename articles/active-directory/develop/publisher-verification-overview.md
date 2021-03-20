@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93308776"
 ---
 # <a name="publisher-verification"></a>Ověření vydavatele
@@ -33,11 +33,11 @@ Tato funkce je primárně určená pro vývojáře, kteří sestavují víceklie
 
 ## <a name="benefits"></a>Výhody
 Ověřování vydavatele nabízí následující výhody:
-- **Zvýšení transparentnosti a snížení rizik pro zákazníky** – Tato možnost pomáhá zákazníkům pochopit, které aplikace používané ve svých organizacích jsou publikovány vývojáři, kterým důvěřují. 
+- **Zvýšení transparentnosti a snížení rizik pro zákazníky**– Tato možnost pomáhá zákazníkům pochopit, které aplikace používané ve svých organizacích jsou publikovány vývojáři, kterým důvěřují. 
 
-- **Vylepšené branding** – "ověřené" označení se zobrazí na stránce s [výzvou k vyjádření souhlasu](application-consent-experience.md)služby Azure AD, na stránce podnikové aplikace a na dalších plochách uživatelského prostředí, které používají koncoví uživatelé a správci. 
+- **Vylepšené branding**– "ověřené" označení se zobrazí na stránce s [výzvou k vyjádření souhlasu](application-consent-experience.md)služby Azure AD, na stránce podnikové aplikace a na dalších plochách uživatelského prostředí, které používají koncoví uživatelé a správci. 
 
-- Zajištění **plynulejšího podnikání** – správci můžou konfigurovat [zásady pro vyjádření souhlasu s uživatelem](../manage-apps/configure-user-consent.md), přičemž stav ověření vydavatele je jedno z primárních kritérií zásad.
+- Zajištění **plynulejšího podnikání**– správci můžou konfigurovat [zásady pro vyjádření souhlasu s uživatelem](../manage-apps/configure-user-consent.md), přičemž stav ověření vydavatele je jedno z primárních kritérií zásad.
 
 > [!NOTE]
 > Od listopadu 2020 již koncoví uživatelé nebudou moci udělit souhlas s nově registrovanými aplikacemi pro více tenantů bez ověřených vydavatelů. Tato akce bude platit pro aplikace, které jsou zaregistrované po 8. listopadu 2020, pomocí OAuth 2.0 vyžádá oprávnění mimo základní přihlášení a čtení profilu uživatele a vyžádá si souhlas od uživatelů v různých tenantůch, než je ta, ve které je aplikace zaregistrovaná. Na obrazovce pro vyjádření souhlasu se zobrazí upozornění informující o uživatelích, že tyto aplikace jsou riskantní a že jsou od neověřených vydavatelů.    

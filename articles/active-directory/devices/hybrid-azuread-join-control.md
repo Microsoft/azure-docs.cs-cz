@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96860928"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Řízené ověřování hybridního připojení k Azure AD
@@ -55,7 +55,7 @@ Pomocí následujícího příkladu vytvořte objekt Zásady skupiny (GPO), kter
 
 1. Otevřete konzolu pro správu Zásady skupiny a vytvořte nový objekt Zásady skupiny ve vaší doméně.
    1. Zadejte název nově vytvořeného objektu zásad skupiny (například ClientSideSCP).
-1. Upravte objekt zásad skupiny a vyhledejte následující cestu: **Předvolby konfigurace počítače**  >  **Preferences**  >  **Windows registr nastavení systému Windows**  >  **Registry**
+1. Upravte objekt zásad skupiny a vyhledejte následující cestu: **Předvolby konfigurace počítače**  >    >  **Windows registr nastavení systému Windows**  >  
 1. Klikněte pravým tlačítkem na registr a vyberte možnost **Nová**  >  **položka registru** .
    1. Na kartě **Obecné** nakonfigurujte následující
       1. Akce: **aktualizace**

@@ -6,10 +6,10 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 76063c479950d12985d5f3f52393f9bb0d5ecd8d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92222217"
 ---
 # <a name="limit-update-management-deployment-scope"></a>Omezení rozsahu nasazení Update Management
@@ -24,17 +24,17 @@ Konfigurace oboru je skupina jednoho nebo několika uložených hledání (dotaz
 
 Omezení rozsahu nasazení Update Management:
 
-1. V účtu Automation vyberte v části **související prostředky**možnost **propojený pracovní prostor** .
+1. V účtu Automation vyberte v části **související prostředky** možnost **propojený pracovní prostor** .
 
 2. Vyberte **Přejít k pracovnímu prostoru**.
 
-3. V části **zdroje dat pracovního prostoru**vyberte **Konfigurace oboru (Preview)** .
+3. V části **zdroje dat pracovního prostoru** vyberte **Konfigurace oboru (Preview)** .
 
 4. Vyberte tři tečky napravo od  `MicrosoftDefaultScopeConfig-Updates` Konfigurace oboru a vyberte **Upravit**.
 
 5. V podokně úpravy rozbalte položku **Vybrat skupiny počítačů**. V podokně skupiny počítačů se zobrazí uložená hledání, která slouží k vytvoření konfigurace oboru. Uložené hledání, které používá Update Management, je:
 
-    |Název     |Kategorie  |Alias  |
+    |Name     |Kategorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
 

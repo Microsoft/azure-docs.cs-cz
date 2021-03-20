@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
 ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93289172"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Přístup ke službě Azure Key Vault za bránou firewall
@@ -56,7 +56,7 @@ Pro správu služby Key Vault (CRUD a nastavení zásad přístupu) je nutné, a
 
 ## <a name="key-vault-operations"></a>Operace služby Key Vault
 
-Pro všechny operace správy objektů trezoru klíčů (klíče a tajné kódy) a kryptografické operace je nutné, aby klient trezoru klíčů měl přístup ke koncovému bodu trezoru klíčů. V závislosti na umístění trezoru klíčů se bude lišit přípona DNS koncového bodu. Koncový bod trezoru klíčů je ve formátu *název_trezoru*. *přípona_dns_konkrétní_oblasti* , jak je popsáno v tabulce níže.  
+Pro všechny operace správy objektů trezoru klíčů (klíče a tajné kódy) a kryptografické operace je nutné, aby klient trezoru klíčů měl přístup ke koncovému bodu trezoru klíčů. V závislosti na umístění trezoru klíčů se bude lišit přípona DNS koncového bodu. Koncový bod trezoru klíčů je ve formátu *název_trezoru*.*přípona_dns_konkrétní_oblasti*, jak je popsáno v tabulce níže.  
 
 | Typ operace | Koncový bod:port |
 | --- | --- |
@@ -65,7 +65,7 @@ Pro všechny operace správy objektů trezoru klíčů (klíče a tajné kódy) 
 ## <a name="ip-address-ranges"></a>Rozsahy IP adres
 
 Služba Key Vault používá jiné prostředky Azure, například infrastrukturu modelu PaaS. Proto není možné poskytnout konkrétní rozsah IP adres, který budou mít koncové body služby Key Vault v určitém čase. Pokud vaše brána firewall podporuje jenom rozsahy IP adres, přečtěte si téma Microsoft Azure dokumenty rozsahů IP adres datového centra dostupné na adrese:
-* [Republik](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
+* [Veřejná](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
 * [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
 * [Německo](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
 * [Čína](https://www.microsoft.com/en-us/download/details.aspx?id=57062)

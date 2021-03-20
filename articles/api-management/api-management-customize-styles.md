@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 0cdad245981ad02d3cdaefba447d131c775e242f
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93145765"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Přizpůsobení stylu stránek portálu pro vývojáře
@@ -45,14 +45,14 @@ V tomto článku se dozvíte, jak přizpůsobit styl prvků na stránkách star�
 
 ## <a name="customize-the-developer-portal"></a>Přizpůsobení portálu pro vývojáře
 
-1. Vyberte **Přehled** .
+1. Vyberte **Přehled**.
 2. V horní části okna **Přehled** klikněte na tlačítko **portál pro vývojáře (starší verze)** .
 3. V levé horní části obrazovky se zobrazí ikona se dvěma štětci. Najeďte na tuto ikonu myší a otevřete nabídku přizpůsobení portálu.
 
     ![Snímek obrazovky, který zvýrazní ikonu dvěma štětci štětce.](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
 4. V nabídce vyberte **Styly** a otevřete podokno pro přizpůsobení stylů.
 
-    Na stránce se zobrazí všechny elementy, které můžete přizpůsobit pomocí **stylů** .
+    Na stránce se zobrazí všechny elementy, které můžete přizpůsobit pomocí **stylů**.
 5. Do pole **Změna hodnot proměnných pro přizpůsobení vzhledu portálu pro vývojáře** zadejte headings-color.
 
     Element **\@ záhlaví-barva** se zobrazí na stránce. Tato proměnná řídí barvu textu.
@@ -67,7 +67,7 @@ V tomto článku se dozvíte, jak přizpůsobit styl prvků na stránkách star�
     > [!TIP]
     > Pro všechny změny je k dispozici náhled v reálném čase. V horní části podokna přizpůsobení se zobrazí indikátor průběhu. Po několika sekundách se barva textu v záhlaví změní na nově vybranou barvu.
 
-8. V levém dolním rohu nabídky podokna přizpůsobení vyberte **Publikovat** .
+8. V levém dolním rohu nabídky podokna přizpůsobení vyberte **Publikovat**.
 9. Vyberte **Publikovat vlastní nastavení** a zpřístupněte změny veřejnosti.
 
 ## <a name="view-your-change"></a>Zobrazení změn

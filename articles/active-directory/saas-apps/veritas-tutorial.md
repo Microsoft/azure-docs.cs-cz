@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace se službou Veritas Enterprise trezor. jednotné přihlašování do cloudu | Microsoft Docs'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Veritas Enterprise trezor. jednotné přihlašování pro Cloud.
+title: 'Kurz: integrace s Azure Active Directoryem pomocí jednotného přihlašování společnosti Veritas Enterprise Vault.cloud | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Veritas Enterprise Vault.cloud SSO.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 5e777a27e793b1f4ef5489248c170824d69d615c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517680"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Kurz: Azure Active Directory integrace se službou Veritas Enterprise trezor. jednotné přihlašování ke cloudu
+# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Kurz: integrace s Azure Active Directoryem pomocí jednotného přihlašování společnosti Veritas Enterprise Vault.cloud
 
-V tomto kurzu se dozvíte, jak integrovat Veritas Enterprise trezor. jednotné přihlašování do cloudu pomocí Azure Active Directory (Azure AD).
-Integrací programu Veritas Enterprise trezor. cloudové jednotné přihlašování pomocí Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat službu Veritas Enterprise Vault.cloud SSO pomocí služby Azure Active Directory (Azure AD).
+Integrování programu Veritas Enterprise Vault.cloud SSO s Azure AD poskytuje následující výhody:
 
-* Můžete kontrolovat v Azure AD, kteří mají přístup k webu Veritas Enterprise trezor. cloud SSO.
-* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k programu Veritas Enterprise trezor. cloud SSO (jednotné přihlašování) se svými účty Azure AD.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k webu Veritas Enterprise Vault.cloud SSO.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k programu Veritas Enterprise Vault.cloud SSO (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
@@ -32,22 +32,22 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete nakonfigurovat integraci služby Azure AD s využitím programu Veritas Enterprise trezor. cloud SSO, budete potřebovat následující položky:
+K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování společnosti Veritas Enterprise Vault.cloud potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
-* Veritas Enterprise trezor. předplatné s povoleným jednotným přihlašováním jednotného přihlašování
+* Předplatné Veritas Enterprise Vault.cloud SSO s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Veritas Enterprise trezor. jednotné přihlašování pro Cloud podporuje **SP** iniciované jednotné přihlašování.
+* Veritas Enterprise Vault.cloud SSO podporuje jednotné přihlašování v rámci **SP**
 
-## <a name="adding-veritas-enterprise-vaultcloud-sso-from-the-gallery"></a>Přidává se Veritas Enterprise trezor. cloud SSO z Galerie
+## <a name="adding-veritas-enterprise-vaultcloud-sso-from-the-gallery"></a>Přidání jednotného přihlašování k programu Veritas Enterprise Vault.cloud z Galerie
 
-Pokud chcete nakonfigurovat integraci aplikace Veritas Enterprise trezor. cloud SSO do Azure AD, musíte přidat Veritas Enterprise trezor. cloud SSO z Galerie do vašeho seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci programu Veritas Enterprise Vault.cloud SSO do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat program Veritas Enterprise Vault.cloud SSO z galerie.
 
-**Chcete-li přidat Veritas Enterprise trezor. cloud SSO z Galerie, proveďte následující kroky:**
+**K přidání programu Veritas Enterprise Vault.cloud SSO z Galerie proveďte následující kroky:**
 
 1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
@@ -61,31 +61,31 @@ Pokud chcete nakonfigurovat integraci aplikace Veritas Enterprise trezor. cloud 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Veritas Enterprise trezor. cloud SSO**, vyberte **Veritas Enterprise trezor. jednotné přihlašování cloudu** z panelu výsledků a pak kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Veritas enterprise Vault.cloud SSO**, vyberte **Veritas Enterprise Vault.cloud SSO** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Veritas Enterprise trezor. jednotné přihlašování cloudu v seznamu výsledků](common/search-new-app.png)
+     ![Veritas Enterprise Vault.cloud SSO v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí programu Veritas Enterprise trezor. jednotné přihlašování ke cloudu na základě testovacího uživatele s názvem **Britta Simon**.
-V případě jednotného přihlašování funguje odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v nástroji Veritas Enterprise trezor. je třeba zřídit cloud SSO.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí jednotného přihlašování pomocí programu Veritas Enterprise Vault.cloud SSO na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Veritas Enterprise Vault.cloud SSO.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby Veritas Enterprise trezor. cloud SSO, je nutné dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování pro Veritas Enterprise Vault.cloud, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte si Veritas Enterprise trezor. jednotné přihlašování](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** pro jednotné přihlašování – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování pro Veritas Enterprise Vault.cloud SSO](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte si Veritas Enterprise trezor. cloudový test jednotného přihlašování pro Cloud](#create-veritas-enterprise-vaultcloud-sso-test-user)** , který má protějšek Britta Simon v programu Veritas Enterprise trezor. cloudové jednotné přihlašování, které je propojené s reprezentací uživatele v Azure AD.
+5. **[Vytvořte uživatele Veritas enterprise Vault.cloud SSO Test User](#create-veritas-enterprise-vaultcloud-sso-test-user)** – abyste měli protějšek Britta Simon v Veritas Enterprise Vault.cloud SSO, který je propojený s reprezentací uživatele Azure AD.
 6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby Veritas Enterprise trezor, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotného přihlašování pro Veritas Enterprise Vault.cloud, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce **Veritas Enterprise trezor. Cloud** Application Integration Application SSO vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací pro **Veritas Enterprise Vault.cloud SSO** vyberte **jednotné přihlašování**.
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
 4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Veritas Enterprise trezor. cloudové přihlašovací údaje domény a adresy URL pro jednotné přihlašování](common/sp-identifier-reply.png)
+    ![Informace o jednotném přihlašování pro doménu Veritas Enterprise Vault.cloud SSO a adresy URL](common/sp-identifier-reply.png)
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
 
@@ -120,13 +120,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
     | Asie a Tichomoří| `https://auth.syd.archivecloud.net`|
 
     > [!NOTE]
-    > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu skutečnou adresou URL Sign-On. Obraťte se na [Společnost Veritas Enterprise trezor. tým podpory klienta jednotného přihlašování pro Cloud](https://www.veritas.com/support/.html) získá tuto hodnotu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu skutečnou adresou URL Sign-On. Tuto hodnotu získáte od [společnosti Veritas Enterprise Vault.cloud SSO Client Support Team](https://www.veritas.com/support/.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Set the Veritas Enterprise trezor. cloud SSO** zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V části **nastavení pro Veritas Enterprise Vault.cloud SSO** zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -136,15 +136,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>Nakonfigurujte si Veritas Enterprise trezor. jednotné jednotné přihlašování pro Cloud Sign-On
+### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>Konfigurace jednotného Sign-On jednotného přihlašování pro Veritas Enterprise Vault.cloud
 
-Pokud chcete nakonfigurovat jednotné přihlašování na **webu Veritas Enterprise trezor** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [Veritas Enterprise trezoru. tým podpory jednotného přihlašování pro Cloud](https://www.veritas.com/support/.html). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně **jednotného přihlašování společnosti Veritas enterprise Vault.Cloud** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory pro Veritas Enterprise Vault.cloud SSO](https://www.veritas.com/support/.html). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -166,15 +166,15 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k nástroji Veritas Enterprise trezor. cloud SSO.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k webu Veritas Enterprise Vault.cloud SSO.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Veritas Enterprise trezor. jednotné přihlašování pro Cloud**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Veritas Enterprise Vault.cloud SSO**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Veritas Enterprise trezor. jednotné přihlašování do cloudu**.
+2. V seznamu aplikace vyberte **Veritas Enterprise Vault.cloud SSO**.
 
-    ![Připojení k webu Veritas Enterprise trezor. cloud SSO v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na jednotné přihlašování k webu Veritas Enterprise Vault.cloud v seznamu aplikací](common/all-applications.png)
 
 3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
@@ -190,17 +190,17 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>Vytvořte si Veritas Enterprise trezor. test jednotného přihlašování pro cloudový uživatel
+### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>Vytvoření testovacího uživatele jednotného přihlašování pro Veritas Enterprise Vault.cloud
 
-V této části vytvoříte uživatele s názvem Britta Simon v rámci aplikace Veritas Enterprise trezor. cloud SSO. Pracujte s [Veritas Enterprise trezorem. tým podpory jednotného přihlašování pro Cloud](https://www.veritas.com/support/.html) umožňuje přidávat uživatele v rámci platformy Veritas Enterprise trezor. cloud SSO. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Veritas Enterprise Vault.cloud SSO. Spolupracujte se svým [týmem podpory pro Veritas enterprise Vault.cloud SSO](https://www.veritas.com/support/.html) a přidejte uživatele na platformě veritas Enterprise Vault.cloud SSO. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Veritas Enterprise trezor. cloud SSO na přístupovém panelu, měli byste být automaticky přihlášení do trezoru Veritas Enterprise. Cloud, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+Po kliknutí na dlaždici Vault.cloud SSO Enterprise SSO na přístupovém panelu byste se měli automaticky přihlášeni k přihlašování k webu Veritas Enterprise Vault.cloud SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

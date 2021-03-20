@@ -6,10 +6,10 @@ ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 1d83f859fce33b9499d01c4b58e69f56fdbbb293
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92222241"
 ---
 # <a name="remove-update-management-from-automation-account"></a>Odebrat Update Management z účtu Automation
@@ -18,7 +18,7 @@ Po povolení správy aktualizací na virtuálních počítačích pomocí Azure 
 
 ## <a name="sign-into-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="remove-management-of-vms"></a>Odebrání správy virtuálních počítačů
 
@@ -28,7 +28,7 @@ Před odebráním Update Management musíte nejdřív přestat spravovat vaše v
 
 Než budete moct zrušit propojení účtu Automation s pracovním prostorem, je potřeba pomocí těchto kroků úplně odebrat Update Management. Odeberete řešení **aktualizace** z pracovního prostoru.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Po zahájení psaní seznam vyfiltruje návrhy na základě vašeho vstupu. Vyberte **Log Analytics**.
 

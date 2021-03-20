@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93279397"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Zobrazit konfiguraci skupiny serverů PostgreSQL s podporou ARC
@@ -36,7 +36,7 @@ Vypíše seznam prostředků Kubernetes typu Postgres. Spusťte příkaz:
 kubectl get postgresqls [-n <namespace name>]
 ```
 
-Výstup tohoto příkazu zobrazuje seznam skupin serverů, které byly vytvořeny. U každého z nich označuje počet lusků. Příklad:
+Výstup tohoto příkazu zobrazuje seznam skupin serverů, které byly vytvořeny. U každého z nich označuje počet lusků. Například:
 
 ```output
 NAME                                             STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
@@ -54,7 +54,7 @@ Spusťte tento příkaz:
 kubectl get pods [-n <namespace name>]
 ```
 
-Vrátí seznam lusků. V závislosti na názvech, které jste pro tyto skupiny serverů zadali, se zobrazí lusky používané vašimi skupinami serverů. Příklad:
+Vrátí seznam lusků. V závislosti na názvech, které jste pro tyto skupiny serverů zadali, se zobrazí lusky používané vašimi skupinami serverů. Například:
 
 ```console 
 NAME                 READY   STATUS    RESTARTS   AGE
@@ -108,7 +108,7 @@ Ve výchozím nastavení předpona názvu okruhu PVC indikuje jeho využití:
 - `data-`...: je trvalý virtuální okruh použitý pro datové soubory.
 - `logs-`...: je trvalý virtuální okruh, který se používá pro soubory transakčních protokolů/WAL.
 
-Příklad:
+Například:
 
 ```output
 NAME                                            STATUS   VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS    AGE
@@ -183,7 +183,7 @@ Obecný formát tohoto příkazu je:
 kubectl describe <CRD name>/<server group name> [-n <namespace name>]
 ```
 
-Příklad:
+Například:
 
 ```console
 kubectl describe postgresql-12/postgres02
@@ -289,7 +289,7 @@ Obecný formát příkazu je:
 azdata arc postgres server show -n <server group name>
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server show -n postgres02

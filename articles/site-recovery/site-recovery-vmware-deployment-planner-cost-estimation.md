@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: ramamill
 ms.openlocfilehash: dba585fbadca479c146ad42ac1bc5aa9d5349f49
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93186701"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Kontrola odhadů nákladů v Plánovač nasazení VMware 
@@ -105,7 +105,7 @@ Ruční přidání virtuálních počítačů:
 * Number of DR drills in a year 
 * Each DR drill duration (Days) 
 * Typ operačního systému
-* Redundance dat 
+* Data redundancy 
 * Zvýhodněné hybridní využití Azure
 
 1. Pokud chcete použít stejnou hodnotu pro všechny virtuální počítače v tabulce, klikněte na tlačítko Apply to all (Použít u všech) pro sloupce DR-Drills in a year, Each DR-Drill duration (Days), Data redundancy a Azure Hybrid Use Benefit.
@@ -122,7 +122,7 @@ Ruční přidání virtuálních počítačů:
 
 **Storage type:** Typ úložiště, který virtuální počítač využívá. Je to Storage úrovně Standard nebo Premium.
 
-**Virtuální počítač celková velikost úložiště (GB)** : Celková velikost úložiště zdrojového virtuálního počítače.
+**Virtuální počítač celková velikost úložiště (GB)**: Celková velikost úložiště zdrojového virtuálního počítače.
 
 **Number of DR-Drills in a year:** Počet, kolikrát za rok provedete nácvik zotavení po havárii. Ve výchozím nastavení je to 4krát do roka. Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače, a to zadáním požadované hodnoty do horního řádku a kliknutím na tlačítko Apply to all (Použít u všech). Na základě počtu nácviků zotavení po havárii za rok a délce trvání jednotlivých nácviků se vypočtou celkové náklady na nácvik zotavení po havárii.  
 
@@ -150,7 +150,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Podporované měny
 Plánovač nasazení Azure Site Recovery může vygenerovat sestavu nákladů s libovolnou z následujících měn.
 
-|Měna|Název|Měna|Název|Měna|Název|
+|Měna|Name|Měna|Name|Měna|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentinské peso ($)|AUD|Australský dolar ($)|BRL|Brazilský real (R$)|
 |CAD|Kanadský dolar ($)|CHF|Švýcarský frank (chf)|DKK|Dánská koruna (kr)|

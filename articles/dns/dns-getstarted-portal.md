@@ -9,15 +9,15 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282155"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Rychlý Start: vytvoření zóny Azure DNS a záznamu pomocí Azure Portal
 
-Azure DNS můžete nakonfigurovat k překladu názvů hostitelů ve veřejné doméně. Pokud jste například koupili název domény *contoso. xyz* z registrátora názvu domény, můžete nakonfigurovat Azure DNS pro hostování domény *contoso. xyz* a přeložit *`www.contoso.xyz`* na IP adresu vašeho webového serveru nebo webové aplikace.
+Azure DNS můžete nakonfigurovat k překladu názvů hostitelů ve veřejné doméně. Pokud jste například zakoupili název domény *contoso.xyz* z registrátora názvu domény, můžete nakonfigurovat Azure DNS pro hostování domény *contoso.xyz* a přeložit *`www.contoso.xyz`* na IP adresu vašeho webového serveru nebo webové aplikace.
 
 V tomto rychlém startu vytvoříte testovací doménu a pak vytvoříte záznam adresy pro překlad *webové* služby na IP adresu *10.10.10.10*.
 
@@ -46,12 +46,12 @@ Zóna DNS obsahuje záznamy DNS pro doménu. Pokud chcete začít hostovat vaši
 
 **Postup vytvoření zóny DNS:**
 
-1. V levém horním rohu vyberte **vytvořit prostředek**, pak **sítě**a **zónu DNS**.
+1. V levém horním rohu vyberte **vytvořit prostředek**, pak **sítě** a **zónu DNS**.
 
 1. Na stránce **vytvořit ZÓNU DNS** zadejte nebo vyberte následující hodnoty:
 
-   - **Název**: zadejte *contoso. xyz* pro tento příklad rychlého startu. Název zóny DNS může být libovolná hodnota, která ještě není nakonfigurovaná na Azure DNSch serverech. Ve skutečné situaci byste použili doménu zakoupenou od registrátora názvu domény.
-   - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte *MyResourceGroup*a vyberte **OK**. Název skupiny prostředků musí být v rámci předplatného Azure jedinečný. 
+   - **Název**: pro tento příklad rychlého startu zadejte *contoso.xyz* . Název zóny DNS může být libovolná hodnota, která ještě není nakonfigurovaná na Azure DNSch serverech. Ve skutečné situaci byste použili doménu zakoupenou od registrátora názvu domény.
+   - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte *MyResourceGroup* a vyberte **OK**. Název skupiny prostředků musí být v rámci předplatného Azure jedinečný. 
 
 1. Vyberte **Vytvořit**.
 
@@ -65,7 +65,7 @@ Položky DNS nebo záznamy pro vaši doménu vytvoříte v zóně DNS. Vytvořte
 
 **Vytvoření záznamu A:**
 
-1. V Azure Portal v části **všechny prostředky**ve skupině prostředků **MyResourceGroup** otevřete zónu DNS **contoso. xyz** . V poli **filtrovat podle názvu** můžete zadat *contoso. xyz* , aby bylo snazší ho najít.
+1. V Azure Portal v části **všechny prostředky** otevřete zónu DNS **contoso.xyz** ve skupině prostředků **MyResourceGroup** . Můžete zadat *contoso.xyz* do pole **filtrovat podle názvu** , aby bylo snazší ho najít.
 
 1. V horní části stránky **zóny DNS** vyberte **+ Sada záznamů**.
 
@@ -85,7 +85,7 @@ Teď, když máte testovací zónu DNS s testovacím záznamem "A", můžete ote
 
 **Testování překladu názvů DNS:**
 
-1. V Azure Portal v části **všechny prostředky**ve skupině prostředků **MyResourceGroup** otevřete zónu DNS **contoso. xyz** . V poli **filtrovat podle názvu** můžete zadat *contoso. xyz* , aby bylo snazší ho najít.
+1. V Azure Portal v části **všechny prostředky** otevřete zónu DNS **contoso.xyz** ve skupině prostředků **MyResourceGroup** . Můžete zadat *contoso.xyz* do pole **filtrovat podle názvu** , aby bylo snazší ho najít.
 
 1. Zkopírujte název názvového serveru ze seznamu názvového serveru na stránce **Přehled** . 
 
@@ -97,7 +97,7 @@ Teď, když máte testovací zónu DNS s testovacím záznamem "A", můžete ote
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Příklad:
+   Například:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -107,7 +107,7 @@ Teď, když máte testovací zónu DNS s testovacím záznamem "A", můžete ote
 
    ![Snímek obrazovky zobrazuje okno příkazového řádku s vyhledávacím příkazem n s a hodnotami pro server, adresu, název a adresu.](media/dns-getstarted-portal/nslookup.PNG)
 
-Název hostitele **www \. contoso. xyz** se přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně. 
+Název hostitele **www \. contoso.xyz** se přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

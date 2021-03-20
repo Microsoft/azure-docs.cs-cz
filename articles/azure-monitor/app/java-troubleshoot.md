@@ -7,10 +7,10 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.openlocfilehash: df1f58418452ecafacddd013ab815ebca5cb8a35
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100097547"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Řešení potíží a otázky a odpovědi pro Application Insights pro Java SDK
@@ -75,7 +75,7 @@ V kódu:
     config.setTrackingIsDisabled(true);
 ```
 
-**Ani**
+**Nebo**
 
 Aktualizujte ApplicationInsights.xml (ve složce Resources ve vašem projektu). Do kořenového uzlu přidejte následující:
 

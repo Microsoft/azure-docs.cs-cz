@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
 ms.openlocfilehash: 5723e8d9fc7b0a72393dda1b225ca073a6474a0a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94534309"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0,5 ve virtuálním poli StorSimple
@@ -42,7 +42,7 @@ Pokud používáte aktualizaci 0,2 a novější, doporučujeme nainstalovat aktu
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-Po dokončení instalace přejdete do služby StorSimple Device Manager. Vyberte **zařízení** a pak vyberte a klikněte na zařízení, které jste právě aktualizovali. Přejít na **nastavení > spravovat > aktualizace zařízení**. Zobrazená verze softwaru by měla být **10.0.10290.0**.
+Po dokončení instalace přejdete do služby StorSimple Správce zařízení. Vyberte **zařízení** a pak vyberte a klikněte na zařízení, které jste právě aktualizovali. Přejít na **nastavení > spravovat > aktualizace zařízení**. Zobrazená verze softwaru by měla být **10.0.10290.0**.
 
 ## <a name="use-the-local-web-ui"></a>Použití místního webového uživatelského rozhraní
 
@@ -67,7 +67,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
    
     ![Prohledávání katalogu](./media/storsimple-virtual-array-install-update-05/download1.png)
 
-4. Klikněte na tlačítko **Stáhnout**. 
+4. Klikněte na **Stáhnout**. 
 
 5. Měli byste vidět dva soubory ke stažení, soubor *. msu* a *. cab* . Každý z těchto souborů si stáhněte do složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
 
@@ -106,7 +106,7 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
    
     ![Snímek obrazovky ukazuje zprávu o úspěchu aktualizace.](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance** navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10290.0** pro aktualizaci 0,5.
+5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10290.0** pro aktualizaci 0,5.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10290** a sestavy Azure Portal **10.0.10290.0** pro stejnou verzi.

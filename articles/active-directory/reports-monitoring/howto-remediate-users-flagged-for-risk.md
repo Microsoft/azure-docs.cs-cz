@@ -16,10 +16,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92308941"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Oprava uživatelů označených příznakem rizika na portálu Azure Active Directory
@@ -44,7 +44,7 @@ Další informace najdete v tématu [o sestavě zabezpečení pro uživatele ozn
 
 ### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Předplatné Azure AD pro zákazníky Microsoft 365
 
-Pro přístup k **centru pro správu Azure**můžete použít také přihlašovací údaje Microsoft 365. Po aktivaci přístupu ke službě Azure AD budete přesměrováni na portál služby Azure AD. Na úrovni základního předplatného je v sestavách uvedené omezené množství podrobností. Pro předplatitele Azure na úrovni Premium jsou k dispozici další data a analýzy.
+Pro přístup k **centru pro správu Azure** můžete použít také přihlašovací údaje Microsoft 365. Po aktivaci přístupu ke službě Azure AD budete přesměrováni na portál služby Azure AD. Na úrovni základního předplatného je v sestavách uvedené omezené množství podrobností. Pro předplatitele Azure na úrovni Premium jsou k dispozici další data a analýzy.
 
 Přístup k sestavám **uživatelů označeným příznakem rizika** v centru pro správu Microsoft 365:
 

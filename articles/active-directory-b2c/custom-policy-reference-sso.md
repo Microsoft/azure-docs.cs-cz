@@ -12,10 +12,10 @@ ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095761"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
@@ -120,7 +120,7 @@ Tento zprostředkovatel se používá k potlačení obrazovky "zvolit zprostřed
 
 | Atribut | Povinné | Popis|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Ne | Aktuálně se nepoužívá, může být ignorováno. |
+| AlwaysFetchClaimsFromProvider | No | Aktuálně se nepoužívá, může být ignorováno. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -162,8 +162,8 @@ Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServicePro
 
 | Atribut | Povinné | Popis|
 | --- | --- | --- |
-| IncludeSessionIndex | Ne | Aktuálně se nepoužívá, může být ignorováno.|
-| RegisterServiceProviders | Ne | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false` .|
+| IncludeSessionIndex | No | Aktuálně se nepoužívá, může být ignorováno.|
+| RegisterServiceProviders | No | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false` .|
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,10 +4,10 @@ description: Tento článek popisuje funkce zabezpečení sítě, jako jsou zna�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92310464"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Zabezpečení sítě pro Azure Service Bus 
@@ -16,7 +16,7 @@ Tento článek popisuje, jak používat následující funkce zabezpečení pro 
 - Značky služeb
 - Pravidla brány firewall protokolu IP
 - Koncové body síťové služby
-- Soukromé koncové body
+- Privátní koncové body
 
 
 ## <a name="service-tags"></a>Značky služeb
@@ -26,11 +26,11 @@ Pomocí značek služeb můžete definovat řízení přístupu k síti pro [sku
 
 | Značka služby | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ServiceBus** | Azure Service Bus provoz, který využívá úroveň služby Premium. | Odchozí | Ano | Ano |
+| **ServiceBus** | Azure Service Bus provoz, který využívá úroveň služby Premium. | Odchozí | Yes | Yes |
 
 
 > [!NOTE]
-> Značky služeb můžete použít jenom pro obory názvů úrovně **Premium** . Pokud používáte **standardní** obor názvů, použijte IP adresu, kterou vidíte při spuštění následujícího příkazu: `nslookup <host name for the namespace>` . Například: `nslookup contosons.servicebus.windows.net`. 
+> Značky služeb můžete použít jenom pro obory názvů úrovně **Premium** . Pokud používáte **standardní** obor názvů, použijte IP adresu, kterou vidíte při spuštění následujícího příkazu: `nslookup <host name for the namespace>` . Příklad: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>Brána firewall protokolu IP 
 Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na další jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v zápisu [CIDR (bez třídy) (směrování Inter-Domain)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -71,7 +71,7 @@ Pravidlo virtuální sítě je přidružení oboru názvů Service Bus k podsít
 
 Další informace najdete v tématu [Konfigurace koncových bodů služby virtuální sítě pro obor názvů Service Bus](service-bus-service-endpoints.md) .
 
-## <a name="private-endpoints"></a>Soukromé koncové body
+## <a name="private-endpoints"></a>Privátní koncové body
 
 Služba privátního propojení Azure vám umožňuje přístup ke službám Azure (například Azure Service Bus, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
 

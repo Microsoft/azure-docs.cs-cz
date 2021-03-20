@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91652036"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s událostmi řízeným zpracováním na pozadí pomocí sady Azure WebJobs SDK
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak pomocí sady Visual Studio 2019 vytvořit proj
 
 V tomto článku se dozvíte, jak nasadit WebJobs jako konzolovou aplikaci .NET Core. Pokud chcete nasadit WebJobs jako konzolovou aplikaci .NET Framework, přečtěte si téma [WebJobs jako .NET Framework konzolové aplikace](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Pokud vás zajímá Sada WebJobs SDK verze 2. x, která podporuje jenom .NET Framework, přečtěte si téma [vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Nainstalujte Visual Studio 2019](/visualstudio/install/) s úlohou **vývoj pro Azure** . Pokud již máte aplikaci Visual Studio, ale nemáte tuto úlohu, přidejte úlohu výběrem **nástrojů > získat nástroje a funkce**.
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak nasadit WebJobs jako konzolovou aplikaci .NET 
 
 2. Vyberte **aplikace konzoly (.NET Core)**.
 
-3. Pojmenujte projekt *WebJobsSDKSample*a pak vyberte **vytvořit**.
+3. Pojmenujte projekt *WebJobsSDKSample* a pak vyberte **vytvořit**.
 
    ![Dialogové okno Nový projekt](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -52,7 +52,7 @@ V tomto článku se dozvíte, jak nasadit WebJobs jako konzolovou aplikaci .NET 
 
 Hostitel je kontejner modulu runtime pro funkce, které naslouchá triggerům a volání funkcí. Následující kroky vytvoří hostitele, který implementuje [`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost) , což je obecný hostitel v ASP.NET Core.
 
-1. Do *program.cs*přidejte tyto `using` příkazy:
+1. V *programu program. cs* přidejte tyto `using` příkazy:
 
     ```cs
     using System.Threading.Tasks;
@@ -92,7 +92,7 @@ V této části nastavíte protokolování konzoly, které používá rozhraní 
    ```
    V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku 3. x.
 
-1. Do *program.cs*přidejte `using` příkaz:
+1. V *programu program. cs* přidejte `using` příkaz:
 
    ```cs
    using Microsoft.Extensions.Logging;
@@ -162,9 +162,9 @@ Počínaje verzí 3. x musíte explicitně nainstalovat rozšíření vazby úlo
 
 ## <a name="create-a-function"></a>Vytvoření funkce
 
-1. Klikněte pravým tlačítkem myši na projekt, vyberte možnost **Přidat**  >  **novou položku...**, zvolte možnost **Třída**, pojmenujte nový soubor třídy jazyka C# *Functions.cs*a vyberte možnost **Přidat**.
+1. Klikněte pravým tlačítkem myši na projekt, vyberte možnost **Přidat**  >  **novou položku...**, zvolte možnost **Třída**, pojmenujte nový soubor třídy jazyka C# a pak vyberte **Přidat**. 
 
-1. V Functions.cs nahraďte vygenerovanou šablonu následujícím kódem:
+1. V Functions. cs nahraďte vygenerovanou šablonu následujícím kódem:
     
     ```cs
     using Microsoft.Azure.WebJobs;
@@ -186,7 +186,7 @@ Počínaje verzí 3. x musíte explicitně nainstalovat rozšíření vazby úlo
 
    `message`Parametr nemusí být řetězec. Můžete také vytvořit propojení s objektem JSON, bajtovým polem nebo objektem [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) . [Viz Použití triggeru fronty](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage). Každý typ vazby (například fronty, objekty blob nebo tabulky) má jinou sadu typů parametrů, které lze svázat.
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, které vyžaduje Sada WebJobs SDK. Takže v této části vytvoříte účet úložiště v Azure a nakonfigurujete ho tak, aby ho používal. Pokud už máte účet úložiště, přeskočte dolů na krok 6.
 
@@ -194,7 +194,7 @@ Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, kt
 
    ![Přihlášení k Azure](./media/webjobs-sdk-get-started/sign-in.png)
 
-1. V uzlu **Azure** v **Průzkumník serveru**klikněte pravým tlačítkem na **úložiště**a pak vyberte **vytvořit účet úložiště**.
+1. V uzlu **Azure** v **Průzkumník serveru** klikněte pravým tlačítkem na **úložiště** a pak vyberte **vytvořit účet úložiště**.
 
    ![Nabídka vytvořit účet úložiště](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
 
@@ -206,7 +206,7 @@ Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, kt
 
    ![Vytvořit účet úložiště](./media/webjobs-sdk-get-started/create-storage-account.png)
 
-1. V uzlu **úložiště** v **Průzkumník serveru**vyberte nový účet úložiště. V okně **vlastnosti** vyberte tři tečky (**...**) napravo od pole hodnota **připojovacího řetězce** .
+1. V uzlu **úložiště** v **Průzkumník serveru** vyberte nový účet úložiště. V okně **vlastnosti** vyberte tři tečky (**...**) napravo od pole hodnota **připojovacího řetězce** .
 
    ![Tři tečky připojovacího řetězce](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 
@@ -272,7 +272,7 @@ V této části sestavíte a spustíte projekt místně a aktivujete funkci vytv
 
    ![Snímek obrazovky, který zvýrazní ikonu Přidat zprávu](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. V dialogovém okně **přidat zprávu** zadejte *Hello World!* jako **text zprávy**a vyberte **OK**. Ve frontě je nyní zpráva.
+1. V dialogovém okně **přidat zprávu** zadejte *Hello World!* jako **text zprávy** a vyberte **OK**. Ve frontě je nyní zpráva.
 
    ![Vytvořit frontu](./media/webjobs-sdk-get-started/hello-world-text.png)
 
@@ -313,7 +313,7 @@ V této části provedete následující úlohy, abyste nastavili protokolován�
 
 1. Pokud ještě nemáte aplikaci App Service, kterou můžete použít, [vytvořte ji](quickstart-dotnet-framework.md). Když vytváříte aplikaci, můžete také vytvořit prostředek připojené Application Insights. Když to uděláte, `APPINSIGHTS_INSTRUMENTATIONKEY` nastaví se pro vás ve vaší aplikaci.
 
-1. Pokud ještě nemáte prostředek Application Insights, který můžete použít, [vytvořte ho](../azure-monitor/app/create-new-resource.md ). Nastavte **Typ aplikace** na **Obecné**a přeskočte oddíly, které následují **po zkopírování klíče instrumentace**.
+1. Pokud ještě nemáte prostředek Application Insights, který můžete použít, [vytvořte ho](../azure-monitor/app/create-new-resource.md ). Nastavte **Typ aplikace** na **Obecné** a přeskočte oddíly, které následují **po zkopírování klíče instrumentace**.
 
 1. Pokud již máte Application Insights prostředek, který chcete použít, [Zkopírujte klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key).
 
@@ -370,7 +370,7 @@ Pokud chcete využít výhod protokolování [Application Insights](../azure-mon
    ```
     V tomto příkazu nahraďte `<3_X_VERSION>` podporovanou verzí balíčku.
 
-1. Otevřete *program.cs* a nahraďte kód v `Main` metodě následujícím kódem:
+1. Otevřete *program. cs* a nahraďte kód v `Main` metodě následujícím kódem:
 
     ```cs
     static async Task Main()
@@ -460,7 +460,7 @@ Během nasazování vytvoříte instanci služby App Service, ve které se budou
 
 Vstupní vazby zjednodušují kód, který čte data. V tomto příkladu bude zpráva fronty název objektu BLOB a vy použijete název objektu BLOB k vyhledání a načtení objektu BLOB v Azure Storage.
 
-1. V *Functions.cs*nahraďte `ProcessQueueMessage` metodu následujícím kódem:
+1. V *Functions. cs* nahraďte `ProcessQueueMessage` metodu následujícím kódem:
 
    ```cs
    public static void ProcessQueueMessage(
@@ -482,23 +482,23 @@ Vstupní vazby zjednodušují kód, který čte data. V tomto příkladu bude zp
 
 1. Vytvořte ve svém účtu úložiště kontejner objektů BLOB.
 
-   a. V **Průzkumník serveru** v aplikaci Visual Studio rozbalte uzel pro svůj účet úložiště, klikněte pravým tlačítkem na **objekty blob**a pak vyberte **vytvořit kontejner objektů BLOB**.
+   a. V **Průzkumník serveru** v aplikaci Visual Studio rozbalte uzel pro svůj účet úložiště, klikněte pravým tlačítkem na **objekty blob** a pak vyberte **vytvořit kontejner objektů BLOB**.
 
    b. V dialogovém okně **vytvořit kontejner objektů BLOB** zadejte jako název kontejneru *kontejner* a pak klikněte na **OK**.
 
-1. Nahrajte soubor *program.cs* do kontejneru objektů BLOB. (Tento soubor se tady používá jako příklad. můžete nahrát libovolný textový soubor a vytvořit zprávu fronty s názvem souboru.)
+1. Nahrajte soubor *program. cs* do kontejneru objektů BLOB. (Tento soubor se tady používá jako příklad. můžete nahrát libovolný textový soubor a vytvořit zprávu fronty s názvem souboru.)
 
-   a. V **Průzkumník serveru**dvakrát klikněte na uzel pro kontejner, který jste vytvořili.
+   a. V **Průzkumník serveru** dvakrát klikněte na uzel pro kontejner, který jste vytvořili.
 
    b. V okně **kontejner** vyberte tlačítko **nahrát** .
 
    ![Tlačítko pro nahrání objektu BLOB](./media/webjobs-sdk-get-started/blob-upload-button.png)
 
-   c. Najděte a vyberte *program.cs*a pak vyberte **OK**.
+   c. Vyhledejte a vyberte *program. cs* a pak vyberte **OK**.
 
-1. Ve frontě, kterou jste vytvořili dříve, vytvořte zprávu queue s *program.cs* jako text zprávy.
+1. Ve frontě, kterou jste vytvořili dříve, vytvořte zprávu queue s *programem program. cs* jako text zprávy.
 
-   ![Program.cs zprávy ve frontě](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
+   ![Program Message Queue. cs](./media/webjobs-sdk-get-started/queue-msg-program-cs.png)
 
 1. Spustit projekt místně.
 
@@ -532,11 +532,11 @@ Výstupní vazby zjednodušují kód, který zapisuje data. Tento příklad upra
    }
    ```
 
-1. Vytvoří další zprávu fronty s *program.cs* jako text zprávy.
+1. Vytvořte další zprávu fronty pomocí *programu program. cs* jako text zprávy.
 
 1. Spustit projekt místně.
 
-   Zpráva ve frontě aktivuje funkci, která pak přečte objekt blob, zaprotokoluje jeho délku a vytvoří nový objekt BLOB. Výstup konzoly je stejný, ale když přejdete do okna kontejneru objektů BLOB a vyberete **aktualizovat**, zobrazí se nový objekt BLOB s názvem *copy-program.cs.*
+   Zpráva ve frontě aktivuje funkci, která pak přečte objekt blob, zaprotokoluje jeho délku a vytvoří nový objekt BLOB. Výstup konzoly je stejný, ale když přejdete do okna kontejneru objektů BLOB a vyberete **aktualizovat**, zobrazí se nový objekt BLOB s názvem *copy-program. cs.*
 
 ## <a name="republish-the-updates-to-azure"></a>Znovu publikovat aktualizace do Azure
 

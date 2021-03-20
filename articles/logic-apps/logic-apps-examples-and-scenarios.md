@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92317377"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, ukázky, kurzy a návody pro Azure Logic Apps
@@ -31,7 +31,7 @@ Tady jsou příklady, které popisují běžně používané triggery:
 
 * Triggery *cyklického dotazování* :
 
-  * [Trigger **opakování** ](../connectors/connectors-native-recurrence.md) umožňuje nastavit počáteční datum a čas plus opakování pro vypálení aplikace logiky. Můžete například vybrat dny v týdnu a denní dobu, kdy se má aktivovat aplikace logiky. Další informace najdete v těchto tématech:<p>
+  * [Trigger **opakování**](../connectors/connectors-native-recurrence.md) umožňuje nastavit počáteční datum a čas plus opakování pro vypálení aplikace logiky. Můžete například vybrat dny v týdnu a denní dobu, kdy se má aktivovat aplikace logiky. Další informace najdete v těchto tématech:<p>
 
     * [Plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [Kurz: vytvoření automatických opakovaných pracovních postupů založených na plánu pomocí Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
@@ -46,13 +46,13 @@ Tady jsou příklady, které popisují běžně používané triggery:
     * [Kurz: vytváření pracovních postupů pro automatizované schvalování pomocí Azure Logic Apps](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
     * [Kurz: automatizace úloh pro zpracování e-mailů pomocí Azure Logic Apps, Azure Functions a Azure Storage](../logic-apps/tutorial-process-email-attachments-workflow.md)
 
-  * [Aktivační procedura **http** ](../connectors/connectors-native-http.md) může zavolat koncový bod služby přes protokol HTTP nebo HTTPS. Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnořování pomocí koncových bodů http](../logic-apps/logic-apps-http-endpoint.md).
+  * [Aktivační procedura **http**](../connectors/connectors-native-http.md) může zavolat koncový bod služby přes protokol HTTP nebo HTTPS. Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnořování pomocí koncových bodů http](../logic-apps/logic-apps-http-endpoint.md).
 
 * Aktivační události *nabízených oznámení* :
 
-  * [Aktivační událost **žádosti** ](../connectors/connectors-native-reqres.md) může přijímat příchozí požadavky HTTPS.
+  * [Aktivační událost **žádosti**](../connectors/connectors-native-reqres.md) může přijímat příchozí požadavky HTTPS.
 
-  * Trigger [ **Webhooku protokolu HTTP** ](../connectors/connectors-native-webhook.md) se přihlásí k odběru koncovému bodu služby registrací *adresy URL zpětného volání* s touto službou. Díky tomu může služba vyvolat Trigger jenom v případě, že dojde k zadané události, takže Trigger nepotřebuje dotazovat službu.
+  * Trigger [ **Webhooku protokolu HTTP**](../connectors/connectors-native-webhook.md) se přihlásí k odběru koncovému bodu služby registrací *adresy URL zpětného volání* s touto službou. Díky tomu může služba vyvolat Trigger jenom v případě, že dojde k zadané události, takže Trigger nepotřebuje dotazovat službu.
 
 Jakmile dojde k zadané události, Trigger se aktivuje, čímž se vytvoří nová instance pracovního postupu aplikace logiky a spustí akce v pracovním postupu. K jakýmkoli datům z triggeru můžete přistupovat v průběhu pracovního postupu. Například Twitter **na novém triggeru v systému** se předá do spuštění aplikace logiky. Pokud chcete začít s Azure Logic Apps, zkuste tato témata pro rychlý Start:
 
@@ -99,7 +99,7 @@ V některých případech vaše aplikace logiky a účty pro integraci potřebuj
 
 Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, Azure DevOps nebo jakéhokoli jiného nástroje pro správu zdrojového kódu a automatizovaných nástrojů sestavení. Pro podporu nasazení pro pracovní postupy a závislá připojení v šabloně prostředků Logic Apps používá šablony nasazení prostředků Azure. Nástroje sady Visual Studio automaticky generují tyto šablony, které lze vrátit se změnami do správy zdrojového kódu. Pro oznamování a diagnostické protokoly pro stav spuštění pracovního postupu Azure Logic Apps také nabízí monitorování a výstrahy.
 
-### <a name="deploy"></a>Nasazení
+### <a name="deploy"></a>Nasadit
 
 * [Rychlý Start: vytváření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Přehled: Automatizace nasazení aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
@@ -111,13 +111,13 @@ Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, 
 * [Ukázka: připojení k účtu pro integraci z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 * [Ukázka: orchestrace Azure Pipelines pomocí Azure Logic Apps](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
-### <a name="manage"></a>Správa
+### <a name="manage"></a>Spravovat
 
 * [Správa aplikací logiky pomocí sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [Vytváření a Správa účtů pro integraci pro podniková integrace B2B](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [Správa prostředí ISE (Integration Service Environment) v Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>Monitorování
+### <a name="monitor"></a>Monitor
 
 * [Monitorování stavu spuštění, zobrazení historie aktivačních událostí a nastavení upozornění pro Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
 * [Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)

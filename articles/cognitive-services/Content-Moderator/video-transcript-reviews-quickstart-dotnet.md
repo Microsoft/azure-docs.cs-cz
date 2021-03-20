@@ -12,10 +12,10 @@ ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 326fc2cc162a2ab54b40888250fbeef55ad8800a
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96853454"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Vytváření recenzí přepisů videa pomocí .NET
@@ -150,7 +150,7 @@ Vytvoří recenzi videa pomocí **ContentModeratorClient. Reviews. CreateVideoRe
 **CreateVideoReviewsBodyItem** má několik vlastností. Minimálně nastavte následující vlastnosti:
 - **Obsah**. Adresa URL videa, která se má zkontrolovat
 - ID **obsahu.** ID, které se má přiřadit k recenzi videa
-- **Stav**. Nastavte hodnotu na Nepublikováno. Pokud ho nenastavíte, použije se výchozí nastavení "čeká", což znamená, že se recenze videa publikuje a čeká na revizi pro lidskou kontrolu. Po publikování recenze videa už nemůžete do ní přidávat snímky videa, přepisy ani jejich nemoderování.
+- **Stav:** Nastavte hodnotu na Nepublikováno. Pokud ho nenastavíte, použije se výchozí nastavení "čeká", což znamená, že se recenze videa publikuje a čeká na revizi pro lidskou kontrolu. Po publikování recenze videa už nemůžete do ní přidávat snímky videa, přepisy ani jejich nemoderování.
 
 > [!NOTE]
 > **CreateVideoReviews** vrací objekt IList \<string> . Každý z těchto řetězců obsahuje ID pro kontrolu videa. Tato ID jsou identifikátory GUID a nejsou stejná jako **hodnota vlastnosti ID** obsahu.
@@ -367,7 +367,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>Přejít na kontrolu přepisu videa
 
-Přejít na kontrolu přepisu videa v nástroji pro kontrolu Content moderator na obrazovce **Kontrola** > **Video** > **přepisu** videa.
+Přejít na kontrolu přepisu videa v nástroji pro kontrolu Content moderator na obrazovce **Kontrola** >  > **přepisu** videa.
 
 Zobrazí se následující funkce:
 - Dva řádky přepisu, které jste přidali

@@ -4,10 +4,10 @@ description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, defi
 ms.date: 01/27/2021
 ms.topic: overview
 ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919338"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
@@ -47,7 +47,7 @@ V definici podrobného plánu může být zásada obsažena jako jeden z mnoha _
 
 Podrobný plán se skládá z _artefaktů_. Plány Azure v současné době podporují následující zdroje jako artefakty:
 
-|Prostředek  | Možnosti hierarchie| Popis  |
+|Prostředek  | Možnosti hierarchie| Description  |
 |---------|---------|---------|
 |Skupiny prostředků | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků umožňují organizovat prostředky přesně tak, jak chcete, aby byly strukturované a poskytovaly omezení oboru pro zahrnuté artefakty a přiřazení rolí a šablony ARM. |
 |Šablona ARM | Předplatné, skupina prostředků | Šablony, včetně vnořených a propojených šablon, slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor služby Log Analytics. |
@@ -108,7 +108,7 @@ Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš ú
 
 K dispozici jsou následující předdefinované role:
 
-|Role Azure | Popis |
+|Role Azure | Description |
 |-|-|
 |[Vlastník](../../role-based-access-control/built-in-roles.md#owner) | Kromě dalších oprávnění zahrnuje všechna Azure Blueprint související oprávnění. |
 |[Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) | Kromě dalších oprávnění může vytvořit a odstranit definice podrobného plánu, ale nemá oprávnění k přiřazení podrobného plánu. |

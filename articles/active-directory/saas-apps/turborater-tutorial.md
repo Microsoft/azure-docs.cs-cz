@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: 7483e7a9300088d07e85d238ad897522d59c5464
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519380"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Kurz: Azure Active Directory integrace s TurboRater
@@ -52,7 +52,7 @@ Pokud chcete nakonfigurovat integraci TurboRater do služby Azure AD, musíte p�
 
     ![Možnost Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Možnost Enterprise Applications](common/enterprise-applications.png)
 
@@ -60,7 +60,7 @@ Pokud chcete nakonfigurovat integraci TurboRater do služby Azure AD, musíte p�
 
     ![Možnost nové aplikace](common/add-new-app.png)
 
-1. Do vyhledávacího pole zadejte **TurboRater**. Ve výsledcích hledání vyberte **TurboRater**a pak vyberte **Přidat** , aby se aplikace přidala.
+1. Do vyhledávacího pole zadejte **TurboRater**. Ve výsledcích hledání vyberte **TurboRater** a pak vyberte **Přidat** , aby se aplikace přidala.
 
     ![TurboRater v seznamu výsledků](common/search-new-app.png)
 
@@ -147,7 +147,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BSimon \@ \<yourcompanydomain> . \<extension> **. Například **BSimon \@ contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **BSimon \@ \<yourcompanydomain> . \<extension>**. Například **BSimon \@ contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -165,11 +165,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     ![TurboRater v seznamu aplikací](common/all-applications.png)
 
-1. V levém podokně v části **Spravovat**vyberte **Uživatelé a skupiny**.
+1. V levém podokně v části **Spravovat** vyberte **Uživatelé a skupiny**.
 
     ![Možnost Uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **+ Přidat uživatele**a pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **+ Přidat uživatele** a pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
@@ -189,7 +189,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když vyberete **TurboRater** na portálu moje aplikace, měli byste být automaticky přihlášeni k předplatnému TurboRater, pro které jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

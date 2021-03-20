@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131271"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Odebrání virtuálních počítačů z řešení Change Tracking a Inventory
@@ -30,7 +30,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com).
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. V Azure Portal přejděte na **Log Analytics pracovní prostory** . V seznamu vyberte svůj pracovní prostor.
+3. V Azure Portal přejděte na **Log Analytics pracovní prostory**. V seznamu vyberte svůj pracovní prostor.
 
 4. V pracovním prostoru Log Analytics vyberte možnost **protokoly** a pak zvolte možnost **Průzkumník dotazů** v nabídce Top Actions (akce).
 

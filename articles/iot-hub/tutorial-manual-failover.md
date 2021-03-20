@@ -12,10 +12,10 @@ ms.custom:
 - mvc
 - mqtt
 ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98622909"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Kurz: provedení ručního převzetí služeb při selhání pro Centrum IoT
@@ -33,7 +33,7 @@ V tomto kurzu provedete následující úlohy:
 
 Další informace o ručním převzetí služeb při selhání a převzetí služeb při selhání iniciované Microsoftem IoT Hub najdete v tématu [zotavení po havárii mezi oblast](iot-hub-ha-dr.md#cross-region-dr)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
 ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012442"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Určení požadované velikosti podsítě & rozsahu pro spravovanou instanci SQL Azure
@@ -52,14 +52,14 @@ Velikost podsítě proveďte v souladu s budoucím nasazením a škálováním i
 
 GP = obecné účely; BC = kritické pro podnikání; VC = virtuální cluster
 
-| **Hardware – obecné** | **Cenová úroveň** | **Využití Azure** | **Využití VC** | **Použití instance** | **Celkem** _ |
+| **Hardware – obecné** | **Cenová úroveň** | **Využití Azure** | **Využití VC** | **Použití instance** | **Čtení*** |
 | --- | --- | --- | --- | --- | --- |
 | COMPUTE GEN4 – | GP | 5 | 1 | 5 | 11 |
 | COMPUTE GEN4 – | BC | 5 | 1 | 5 | 11 |
 | Gen5 | GP | 5 | 6 | 3 | 14 |
 | Gen5 | BC | 5 | 6 | 5 | 16 |
 
-  \_ Sloupec celkem zobrazuje počet adres, které se provedou při nasazení jedné instance v podsíti. Každá další instance v podsíti přidá počet adres představovaných sloupcem použití instance. Adresy reprezentované sloupcem využití Azure se sdílejí napříč několika virtuálními clustery a adresy reprezentované sloupcem využití VC se sdílejí mezi instancemi, které jsou umístěné v daném virtuálním clusteru.
+  \* Sloupec celkem zobrazuje počet adres, které se provedou při nasazení jedné instance v podsíti. Každá další instance v podsíti přidá počet adres představovaných sloupcem použití instance. Adresy reprezentované sloupcem využití Azure se sdílejí napříč několika virtuálními clustery a adresy reprezentované sloupcem využití VC se sdílejí mezi instancemi, které jsou umístěné v daném virtuálním clusteru.
 
 Operace aktualizace obvykle vyžaduje změnu velikosti virtuálního clusteru. V některých případech bude operace aktualizace vyžadovat vytvoření virtuálního clusteru (další podrobnosti najdete v [článku o operacích správy](sql-managed-instance-paas-overview.md#management-operations)). V případě vytvoření virtuálního clusteru se počet požadovaných dalších adres rovná počtu adres, které jsou reprezentované sloupcem využití VC, sečtený s adresami vyžadovanými pro instance uložené ve virtuálním clusteru (sloupec použití instance).
 
@@ -74,12 +74,12 @@ Jak je uvedeno výše, v některých případech bude operace aktualizace vyžad
 
 Během škálování instancí operací se dočasně vyžaduje další kapacita IP, která závisí na cenové úrovni a na generaci hardwaru.
 
-| **Hardware – obecné** | **Cenová úroveň** | **Scénář** | **Další adresy** _ |
+| **Hardware – obecné** | **Cenová úroveň** | **Scénář** | **Další adresy*** |
 | --- | --- | --- | --- |
 | COMPUTE GEN4 – | GP nebo BC | Škálování virtuální jádra | 5 |
 | COMPUTE GEN4 – | GP nebo BC | Škálování úložiště | 5 |
 | COMPUTE GEN4 – | GP nebo BC | Přepínání z GP na BC nebo BC na GP | 5 |
-| COMPUTE GEN4 – | GP | Přepínání na Gen5_ | 9 |
+| COMPUTE GEN4 – | GP | Přepínání na Gen5 * | 9 |
 | COMPUTE GEN4 – | BC | Přepínání na Gen5 * | 11 |
 | Gen5 | GP | Škálování virtuální jádra | 3 |
 | Gen5 | GP | Škálování úložiště | 0 |

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321376"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Vědecké zkoumání dat pomocí Scala a Spark v Azure
@@ -257,7 +257,7 @@ sqlResultsDF.show(3)
 
 | fare_amount | passenger_count | tip_amount | po obskládkované |
 | --- | --- | --- | --- |
-|        13,5 |1.0 |2.9 |1.0 |
+|        13.5 |1.0 |2.9 |1.0 |
 |        16,0 |2.0 |3.4 |1.0 |
 |        10,5 |2.0 |1.0 |1.0 |
 
@@ -922,7 +922,7 @@ V této části použijete nástroje strojového učení, které vývojáři ča
 * Optimalizujte model pomocí křížového ověřování a přechodu s použitím technologie Hyper-parametr pomocí funkce CrossValidator Spark ML (binární klasifikace).
 * Optimalizujte model pomocí vlastního kódu pro křížové ověřování a nastavování parametrů pro použití libovolné funkce machine learningu a sady parametrů (lineární regrese).
 
-**Křížové ověřování** je technika, která posuzuje, jak dobře je model vyhodnocený na známou sadu dat generalizuje, aby předpovídá funkce datových sad, na kterých nebyla vyškolená. Obecný nápad za tímto postupem je, že model je vyškolen na datové sadě známých dat a pak je přesnost jeho předpovědi testována na nezávislou datovou sadu. Společná implementace je rozdělit datovou sadu na skládání *k* --a poté vytvořit model v kruhovém dotazování pro všechny kromě jednoho ze skládání.
+**Křížové ověřování** je technika, která posuzuje, jak dobře je model vyhodnocený na známou sadu dat generalizuje, aby předpovídá funkce datových sad, na kterých nebyla vyškolená. Obecný nápad za tímto postupem je, že model je vyškolen na datové sadě známých dat a pak je přesnost jeho předpovědi testována na nezávislou datovou sadu. Společná implementace je rozdělit datovou sadu na skládání *k*--a poté vytvořit model v kruhovém dotazování pro všechny kromě jednoho ze skládání.
 
 **Optimalizace parametrů technologie Hyper-** v je problém, který vybírá sadu Hyper-Parameters pro vzdělávací algoritmus, obvykle s cílem optimalizace míry výkonu algoritmu v nezávislé sadě dat. Parametr Hyper-v je hodnota, kterou je nutné zadat mimo postup při výuce modelu. Předpoklady týkající se hodnot parametrů technologie Hyper-v mohou ovlivnit flexibilitu a přesnost modelu. Rozhodovací stromy mají parametry typu Hyper-v, například požadovanou hloubku a počet listů ve stromu. Je nutné nastavit termín penalizace netřídění na počítač pro vektorový vektor (SVM).
 

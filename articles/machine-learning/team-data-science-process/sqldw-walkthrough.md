@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b638cb2b33f24220e7ceb852402862c707cc7bc6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93316007"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Vědecké zpracování týmových dat v akci: používání Azure synapse Analytics
@@ -63,8 +63,8 @@ Data NYC taxislužby se skládají z přibližně 20 GB komprimovaných souborů
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Adresovat tři typy úloh předpovědi
 Pro ilustraci tří druhů úloh modelování formuluje tři problémy s předpovědí na základě *\_ výše uvedeného popisu* :
 
-1. **Binární klasifikace** : Chcete-li předpovědět, zda byla pro cestu vyplacena *\_ hodnota* tipu, to znamená, že hodnota tipu větší než $0 je pozitivním příkladem, zatímco je *\_ hodnota tipu* $0 záporná.
-2. **Klasifikace více tříd** : pro předpověď rozsahu tipu placeného pro danou cestu. *\_ Velikost tipu* rozdělíme na pět přihrádek nebo tříd:
+1. **Binární klasifikace**: Chcete-li předpovědět, zda byla pro cestu vyplacena *\_ hodnota* tipu, to znamená, že hodnota tipu větší než $0 je pozitivním příkladem, zatímco je *\_ hodnota tipu* $0 záporná.
+2. **Klasifikace více tříd**: pro předpověď rozsahu tipu placeného pro danou cestu. *\_ Velikost tipu* rozdělíme na pět přihrádek nebo tříd:
 
 `Class 0 : tip_amount = $0`
 
@@ -76,14 +76,14 @@ Pro ilustraci tří druhů úloh modelování formuluje tři problémy s předpo
 
 `Class 4 : tip_amount > $20`
 
-3. **Regresní úloha** : pro předpověď množství tipu placeného pro cestu.
+3. **Regresní úloha**: pro předpověď množství tipu placeného pro cestu.
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Nastavení prostředí pro Azure Data vědu pro pokročilé analýzy
 Pokud chcete nastavit prostředí pro datové vědy v Azure, postupujte podle těchto kroků.
 
 **Vytvoření vlastního účtu úložiště Azure Blob**
 
-* Když zřizujete vlastní úložiště objektů BLOB v Azure, vyberte geografickou polohu pro úložiště objektů BLOB v Azure v nebo co nejblíže **střed USA – jih** , což je místo, kde se ukládají data taxislužby NYC. Data se zkopírují pomocí AzCopy z veřejného kontejneru úložiště objektů blob do kontejneru ve vlastním účtu úložiště. Čím blíže je úložiště objektů BLOB v Azure Střed USA – jih, tím rychleji se tato úloha (krok 4) dokončí.
+* Když zřizujete vlastní úložiště objektů BLOB v Azure, vyberte geografickou polohu pro úložiště objektů BLOB v Azure v nebo co nejblíže **střed USA – jih**, což je místo, kde se ukládají data taxislužby NYC. Data se zkopírují pomocí AzCopy z veřejného kontejneru úložiště objektů blob do kontejneru ve vlastním účtu úložiště. Čím blíže je úložiště objektů BLOB v Azure Střed USA – jih, tím rychleji se tato úloha (krok 4) dokončí.
 * Pokud chcete vytvořit vlastní účet Azure Storage, postupujte podle kroků uvedených v části [informace o Azure Storagech účtech](../../storage/common/storage-account-create.md). Nezapomeňte si dělat poznámky k hodnotám těchto přihlašovacích údajů k účtu úložiště, které budete potřebovat později v tomto návodu.
 
   * **Název účtu úložiště**
@@ -93,7 +93,7 @@ Pokud chcete nastavit prostředí pro datové vědy v Azure, postupujte podle t�
 **Zřiďte svou instanci Azure synapse Analytics.**
 Pokud chcete zřídit instanci Azure synapse Analytics, postupujte podle dokumentace v části [Vytvoření a dotazování analýzy Azure synapse v Azure Portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) . Ujistěte se, že jste provedli zápisy následujících přihlašovacích údajů služby Azure synapse Analytics, které budou použity v pozdějších krocích.
 
-* **Název serveru** : \<server Name> . Database.Windows.NET
+* **Název serveru**: \<server Name> . Database.Windows.NET
 * **Název SQLDW (databáze)**
 * **Uživatelské jméno**
 * **Heslo**
@@ -154,7 +154,7 @@ Při prvním spuštění skriptu PowerShell budete požádáni o zadání inform
 
 Tento soubor **skriptu PowerShellu** dokončí následující úlohy:
 
-* **Stáhne a nainstaluje AzCopy** , pokud AzCopy ještě není nainstalovaný.
+* **Stáhne a nainstaluje AzCopy**, pokud AzCopy ještě není nainstalovaný.
 
   ```azurepowershell
   $AzCopy_path = SearchAzCopy
@@ -609,7 +609,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Příprava dat pro vytváření modelů
-Následující dotaz se spojí s tabulkami **nyctaxi \_ TRIPS** a **nyctaxi \_ tarifs** , vygeneruje **binární popisek klasifikace** , který je na ní popsán, **\_ třídu tipů** klasifikační klasifikace s více třídami a extrahuje ukázku z plné připojené datové sady. Vzorkování se provádí načtením podmnožiny cest na základě doby vyzvednutí.  Tento dotaz se dá zkopírovat a vložit přímo do modulu [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) [Import dat]import[-data] pro příjem přímých dat z instance SQL Database v Azure. Dotaz vyloučí záznamy s nesprávnými souřadnicemi (0, 0).
+Následující dotaz se spojí s tabulkami **nyctaxi \_ TRIPS** a **nyctaxi \_ tarifs** , vygeneruje **binární popisek klasifikace**, který je na ní popsán, **\_ třídu tipů** klasifikační klasifikace s více třídami a extrahuje ukázku z plné připojené datové sady. Vzorkování se provádí načtením podmnožiny cest na základě doby vyzvednutí.  Tento dotaz se dá zkopírovat a vložit přímo do modulu [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) [Import dat]import[-data] pro příjem přímých dat z instance SQL Database v Azure. Dotaz vyloučí záznamy s nesprávnými souřadnicemi (0, 0).
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
@@ -937,9 +937,9 @@ pd.read_sql(query,conn)
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Modely sestavení v Azure Machine Learning
 Nyní je připraven pokračovat na sestavení modelu a nasazení modelu v [Azure Machine Learning](https://studio.azureml.net). Data jsou připravena k použití v některém z dříve zjištěných problémů, konkrétně:
 
-1. **Binární klasifikace** : pro předpověď, zda byl pro cestu zaplacen Tip.
-2. **Třída klasifikace s více třídami** : pro předpověď rozsahu zaplaceného tipu podle dříve definovaných tříd.
-3. **Regresní úloha** : pro předpověď množství tipu placeného pro cestu.
+1. **Binární klasifikace**: pro předpověď, zda byl pro cestu zaplacen Tip.
+2. **Třída klasifikace s více třídami**: pro předpověď rozsahu zaplaceného tipu podle dříve definovaných tříd.
+3. **Regresní úloha**: pro předpověď množství tipu placeného pro cestu.
 
 Pokud chcete začít modelování, přihlaste se k pracovnímu prostoru **Azure Machine Learning (Classic)** . Pokud jste ještě nevytvořili pracovní prostor machine learningu, přečtěte si téma [Vytvoření pracovního prostoru Azure Machine Learning Studio (Classic)](../classic/create-workspace.md).
 
@@ -976,7 +976,7 @@ Příklad binární klasifikace experimentu, který čte data přímo z databáz
 ![Výukový program Azure ML][10]
 
 > [!IMPORTANT]
-> V ukázkách dotazů pro extrakci a vzorkování dat modelování, které jsou uvedené v předchozích částech, **jsou v dotazu zahrnuté všechny popisky pro tři cvičení modelování**. Důležitým (vyžadovaným) krokem v každé cvičení modelování je **vyloučení** zbytečných popisků pro ostatní dva problémy a jakékoli jiné **cíle nevracení**. Například při použití binární klasifikace **použijte popisek,** který se zanechal a vyloučí pole **\_ Třída Tip** , **\_ hodnota tipu** a **celkovou \_ částku**. Tato druhá z nich nevrací cíle, protože implikuje Tip.
+> V ukázkách dotazů pro extrakci a vzorkování dat modelování, které jsou uvedené v předchozích částech, **jsou v dotazu zahrnuté všechny popisky pro tři cvičení modelování**. Důležitým (vyžadovaným) krokem v každé cvičení modelování je **vyloučení** zbytečných popisků pro ostatní dva problémy a jakékoli jiné **cíle nevracení**. Například při použití binární klasifikace **použijte popisek,** který se zanechal a vyloučí pole **\_ Třída Tip**, **\_ hodnota tipu** a **celkovou \_ částku**. Tato druhá z nich nevrací cíle, protože implikuje Tip.
 >
 > Chcete-li vyloučit nepotřebné sloupce nebo nevrácené cíle, můžete použít modul [Vybrat sloupce v datové sadě][select-columns] nebo [Upravit metadata][edit-metadata]. Další informace najdete v tématu [Výběr sloupců v datové sadě][select-columns] a úpravy odkazů na [metadata][edit-metadata] .
 >
@@ -1012,7 +1012,7 @@ Abyste rekapitulacei, co jsme udělali v tomto výukovém kurzu, vytvořili jste
 ### <a name="license-information"></a>Informace o licenci
 Tento ukázkový návod a příslušné doprovodné skripty a IPython Poznámkový blok sdílí Microsoft v rámci licence MIT. Další podrobnosti najdete v souboru LICENSE.txt v adresáři ukázkového kódu na GitHubu.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 - [Stránka stahování Andrés Monroy NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/)
 - [FÓLIE NYC data taxislužby na cestách pomocí Chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC taxislužby a výzkum a statistika Komise Limousine](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

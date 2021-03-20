@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 2d69427f9f11a47cedeccb4b1da38b770952f029
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240762"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Zálohování a obnovení v Azure Database for MySQL flexibilním serveru (Preview)
@@ -18,7 +18,7 @@ ms.locfileid: "93240762"
 > [!IMPORTANT] 
 > Azure Database for MySQL – flexibilní Server je momentálně ve verzi Public Preview.
 
-Azure Database for MySQL flexibilní server automaticky vytvoří zálohy serveru a bezpečně je ukládá v místním redundantním úložišti v rámci oblasti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou důležitou součástí jakékoli strategie pro provozní kontinuitu, protože chrání vaše data před náhodným poškozením nebo odstraněním.
+Azure Database for MySQL flexibilní server automaticky vytvoří zálohy serveru a bezpečně je ukládá v místním redundantním úložišti v rámci oblasti. Zálohy lze použít k obnovení serveru do určitého bodu v čase. Zálohování a obnovení jsou základní součástí jakékoli strategie kontinuity podnikových procesů, protože chrání data před náhodným poškozením nebo odstraněním.
 
 ## <a name="backup-overview"></a>Přehled služby Backup
 
@@ -68,8 +68,8 @@ Obnovení k bodu v čase je užitečné ve více scénářích. Mezi běžné p�
 
 Můžete si vybrat mezi posledním bodem obnovení a vlastním bodem obnovení prostřednictvím [Azure Portal](how-to-restore-server-portal.md).
 
--   **Poslední bod obnovení** : nejnovější bod obnovení vám pomůže obnovit server do poslední zálohy provedené na zdrojovém serveru. Časové razítko pro obnovení se zobrazí také na portálu. Tato možnost je užitečná pro rychlé obnovení serveru do nejaktualizovaného stavu.
--   **Vlastní bod obnovení** : umožní vám zvolit jakýkoli časový okamžik v rámci doby uchování definované pro tento flexibilní Server. Tato možnost je užitečná k obnovení serveru v přesném bodě v čase k obnovení z chyby uživatele.
+-   **Poslední bod obnovení**: nejnovější bod obnovení vám pomůže obnovit server do poslední zálohy provedené na zdrojovém serveru. Časové razítko pro obnovení se zobrazí také na portálu. Tato možnost je užitečná pro rychlé obnovení serveru do nejaktualizovaného stavu.
+-   **Vlastní bod obnovení**: umožní vám zvolit jakýkoli časový okamžik v rámci doby uchování definované pro tento flexibilní Server. Tato možnost je užitečná k obnovení serveru v přesném bodě v čase k obnovení z chyby uživatele.
 
 Odhadovaná doba obnovení závisí na několika faktorech, včetně velikosti databáze, velikosti zálohy transakčního protokolu, výpočetní velikosti skladové jednotky a času obnovení. Obnovení protokolu transakcí je čas, který je v rámci procesu obnovení nejvíce náročný. Pokud je zvolena doba obnovení blíže k plánu úplného nebo rozdílového zálohování snímků, obnovení je rychlejší, protože je aplikace transakčního protokolu minimální. Abyste mohli odhadnout přesný čas obnovení serveru, důrazně doporučujeme, abyste ho otestovali ve vašem prostředí, protože má příliš mnoho proměnných specifických pro prostředí.
 

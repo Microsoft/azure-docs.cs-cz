@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/25/2018
 ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91619385"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Správa historických dat v dočasnách tabulkách pomocí zásad uchovávání informací
@@ -35,7 +35,7 @@ V předchozím příkladu předpokládáme, že sloupec **ValidTo** odpovídá k
 
 ## <a name="how-to-configure-retention-policy"></a>Jak nakonfigurovat zásady uchovávání informací
 
-Než nakonfigurujete zásady uchovávání informací pro dočasnou tabulku, nejprve si projděte, jestli je *na úrovni databáze*povolené dočasné historické uchovávání.
+Než nakonfigurujete zásady uchovávání informací pro dočasnou tabulku, nejprve si projděte, jestli je *na úrovni databáze* povolené dočasné historické uchovávání.
 
 ```sql
 SELECT is_temporal_history_retention_enabled, name
@@ -168,7 +168,7 @@ Nespoléhat se na obchodní logiku při čtení tabulky historie po dobu uchová
 
 ## <a name="point-in-time-restore-considerations"></a>Předpoklady pro obnovení bodu v čase
 
-Při vytváření nové databáze [obnovením existující databáze k určitému bodu v čase](recovery-using-backups.md)bude dočasné uchovávání zakázáno na úrovni databáze. (příznak**is_temporal_history_retention_enabled** nastavený na vypnuto). Tato funkce umožňuje kontrolovat všechny historické řádky při obnovení, aniž byste se museli zabývat tím, že se zastaralými řádky odeberou předtím, než se jim zobrazí dotaz. Můžete ji použít ke *kontrole historických dat nad rámec nakonfigurované doby uchovávání*.
+Při vytváření nové databáze [obnovením existující databáze k určitému bodu v čase](recovery-using-backups.md)bude dočasné uchovávání zakázáno na úrovni databáze. (příznak **is_temporal_history_retention_enabled** nastavený na vypnuto). Tato funkce umožňuje kontrolovat všechny historické řádky při obnovení, aniž byste se museli zabývat tím, že se zastaralými řádky odeberou předtím, než se jim zobrazí dotaz. Můžete ji použít ke *kontrole historických dat nad rámec nakonfigurované doby uchovávání*.
 
 Řekněme, že dočasná tabulka má určenou dobu uchování v měsíci. Pokud byla vaše databáze vytvořena na úrovni služby Premium, budete moci vytvořit kopii databáze se stavem databáze až 35 dní zpět v minulosti. To vám umožní analyzovat historické řádky, které jsou až 65 dnů staré, a to tak, že se dotazují přímo na tabulku historie.
 

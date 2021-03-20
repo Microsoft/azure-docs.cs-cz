@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 814bf085ca910ef07a13df779eef25e0e6510e57
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011694"
 ---
 Všechna data uložená v souborech Azure jsou v klidovém stavu zašifrovaná pomocí šifrování služby Azure Storage (SSE). Šifrování služby Storage funguje podobně jako BitLocker ve Windows: data se šifrují pod úrovní systému souborů. Vzhledem k tomu, že se data šifrují pod systémem souborů sdílené složky Azure, protože je zašifrovaná na disk, nemusíte mít přístup k základnímu klíči v klientovi, aby bylo možné číst a zapisovat do sdílené složky Azure. Šifrování v klidovém umístění platí pro protokoly SMB i NFS.

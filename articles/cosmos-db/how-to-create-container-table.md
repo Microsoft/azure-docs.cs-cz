@@ -9,10 +9,10 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: fde3145e7bd7f4e53ae7a0c44f02e066c28ec785
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101574"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-table-api"></a>Vytvoření kontejneru v Azure Cosmos DB rozhraní API pro tabulky
@@ -31,11 +31,11 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner v Azure Cosmos
 
 1. [Vytvořte nový účet Azure Cosmos](create-table-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte možnost **Nová tabulka** . Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte možnost **Nová tabulka**. Dále zadejte následující podrobnosti:
 
    * Zadejte ID tabulky.
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
-   * Vyberte **OK** .
+   * Vyberte **OK**.
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Snímek obrazovky rozhraní API pro tabulky, dialogové okno Přidat tabulku":::
 

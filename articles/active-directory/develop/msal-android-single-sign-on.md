@@ -15,10 +15,10 @@ ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
 ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104089"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi na Androidu pomocí MSAL
@@ -29,7 +29,7 @@ Jednotné přihlašování (SSO) umožňuje uživatelům zadat přihlašovací �
 
 V tomto postupu se naučíte, jak nakonfigurovat sady SDK používané vaší aplikací k poskytování jednotného přihlašování pro vaše zákazníky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento postup předpokládá, že máte tyto informace:
 
@@ -81,7 +81,7 @@ Pokud na zařízení ještě není nainstalovaná aplikace zprostředkovatele, M
 
 Když je v zařízení nainstalován zprostředkovatel, budou všechny následné požadavky na interaktivní tokeny (volání `acquireToken()` ) zpracovávány zprostředkovatelem namísto místně pomocí MSAL. Pro zprostředkovatele není k dispozici jakýkoli stav jednotného přihlašování, který je dřív dostupný pro MSAL. V důsledku toho se uživatel bude muset znovu ověřit nebo vybrat účet ze stávajícího seznamu účtů, které zařízení zná.
 
-Instalace zprostředkovatele nevyžaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit, `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException` může být vyvolána z několika důvodů a je třeba je přeložit interaktivně. Příklad:
+Instalace zprostředkovatele nevyžaduje, aby se uživatel znovu přihlásil. Pouze v případě, že uživatel potřebuje vyřešit, `MsalUiRequiredException` bude další požadavek přejít do služby Broker. `MsalUiRequiredException` může být vyvolána z několika důvodů a je třeba je přeložit interaktivně. Například:
 
 - Uživatel změnil heslo přidružené k účtu.
 - Uživatelský účet už nesplňuje zásady podmíněného přístupu.

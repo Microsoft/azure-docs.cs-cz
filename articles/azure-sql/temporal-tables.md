@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: ea037d12417c8fad9d80b77df69285ed2c8df31b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91618654"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Začínáme s dočasnými tabulkami v Azure SQL Database a Azure SQL Managed instance
@@ -27,7 +27,7 @@ Dočasné tabulky jsou programovatelností Azure SQL Database a spravované inst
 
 Tento článek popisuje kroky, jak využít dočasné tabulky ve scénáři použití aplikace. Předpokládejme, že chcete sledovat aktivitu uživatelů na novém webu, který je vyvíjen od začátku, nebo na stávajícím webu, který chcete s analýzou aktivity od uživatele zvětšit. V tomto zjednodušeném příkladu předpokládáme, že počet navštívených webových stránek během časového období je ukazatel, který se musí zachytit a monitorovat v databázi webu, která je hostovaná v Azure SQL Database nebo Azure SQL Managed instance. Cílem historické analýzy aktivity uživatelů je získat vstupy pro změnu návrhu webu a poskytování lepší zkušenosti pro návštěvníky.
 
-Databázový model pro tento scénář je velmi jednoduchý – metrika aktivity uživatele je reprezentovaná jediným polem typu Integer, **PageVisited**a je zachyceno spolu se základními informacemi o profilu uživatele. V případě analýzy založené na čase byste navíc měli pro každého uživatele zachovávat řadu řádků, kde každý řádek představuje počet stránek, které konkrétní uživatel navštívil během konkrétního časového období.
+Databázový model pro tento scénář je velmi jednoduchý – metrika aktivity uživatele je reprezentovaná jediným polem typu Integer, **PageVisited** a je zachyceno spolu se základními informacemi o profilu uživatele. V případě analýzy založené na čase byste navíc měli pro každého uživatele zachovávat řadu řádků, kde každý řádek představuje počet stránek, které konkrétní uživatel navštívil během konkrétního časového období.
 
 ![Schéma](./media/temporal-tables/AzureTemporal1.png)
 

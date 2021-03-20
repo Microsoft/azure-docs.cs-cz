@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: bd7d6ae1af85bd483c96c8425c55c3c92a1b8ec2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520621"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>Kurz: Azure Active Directory integrace s Skilljar
@@ -125,13 +125,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Skilljar
 
 ### <a name="configure-skilljar-single-sign-on"></a>Nakonfigurovat Skilljar jednu Sign-On
 
-Ke konfiguraci jednotného přihlašování na straně **Skilljar** je potřeba odeslat stažená **metadata federačních metadat**a **Formát identifikátoru názvu-URN: Oasis: names: TC: SAML: 1.1: NameId-Format: EmailAddress** na [Skilljar tým podpory](https://support.skilljar.com/hc/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně **Skilljar** je potřeba odeslat stažená **metadata federačních metadat** a **Formát identifikátoru názvu-URN: Oasis: names: TC: SAML: 1.1: NameId-Format: EmailAddress** na [Skilljar tým podpory](https://support.skilljar.com/hc/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -156,7 +156,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Skilljar.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Skilljar**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Skilljar**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -191,7 +191,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Skilljar, měli byste se automaticky přihlásit k Skilljar, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: 11efdb727bacadb674fb49374ef1c70fcc788ecc
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219985"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Vývoj uživatelem definovaných operátorů U-SQL (Udo)
@@ -21,7 +21,7 @@ Tento článek popisuje, jak vyvíjet uživatelsky definované operátory pro zp
 
 1. V aplikaci Visual Studio vyberte **soubor > nový projekt > > U-SQL**.
 2. Klikněte na **OK**. Visual Studio vytvoří řešení se souborem Script.usql.
-3. Z **Průzkumník řešení**rozbalte položku Script. usql a dvakrát klikněte na položku **script.usql.cs**.
+3. V **Průzkumník řešení** rozbalte Script. usql a dvakrát klikněte na **script. usql. cs**.
 4. Do souboru vložte následující kód:
 
    ```usql
@@ -77,7 +77,7 @@ Tento článek popisuje, jak vyvíjet uživatelsky definované operátory pro zp
    }
    ```
 
-5. Otevřete **skript. usql**a vložte následující skript U-SQL:
+5. Otevřete **skript. usql** a vložte následující skript U-SQL:
 
    ```usql
    @drivers =
@@ -118,7 +118,7 @@ Tento článek popisuje, jak vyvíjet uživatelsky definované operátory pro zp
 
 ### <a name="to-see-the-output"></a>Zobrazení výstupu
 
-1. V **Průzkumník serveru**rozbalte položku **Azure**, rozbalte položku **Data Lake Analytics**, rozbalte účet služby Data Lake Analytics, rozbalte položku **účty úložiště**, klikněte pravým tlačítkem na výchozí úložiště a pak klikněte na tlačítko **Průzkumník**.
+1. V **Průzkumník serveru** rozbalte položku **Azure**, rozbalte položku **Data Lake Analytics**, rozbalte účet služby Data Lake Analytics, rozbalte položku **účty úložiště**, klikněte pravým tlačítkem na výchozí úložiště a pak klikněte na tlačítko **Průzkumník**.
 
 2. Rozbalte položku ukázky, rozbalte položku výstupy a dvakrát klikněte na položku **Drivers.csv**.
 

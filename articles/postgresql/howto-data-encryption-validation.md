@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.openlocfilehash: 7ec27cc4f28151214ca97ffb5113607d6b60ee36
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240575"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Ověřování šifrování dat pro Azure Database for PostgreSQL
@@ -23,16 +23,16 @@ Tento článek vám pomůže ověřit, že šifrování dat pomocí spravovanéh
 
 1. Pokud chcete ověřit, jestli se klíč zákazníka používá k šifrování, postupujte podle těchto kroků:
 
-    * V Azure Portal přejděte na **Azure Key Vault**  ->  **klíče** Azure Key Vault
+    * V Azure Portal přejděte na   ->  **klíče** Azure Key Vault
     * Vyberte klíč, který se používá pro šifrování serveru.
-    * Nastavte stav **povoleného** klíče na **ne** .
+    * Nastavte stav **povoleného** klíče na **ne**.
   
-       Po určité době ( **~ 15 min** ) by měl být **stav** serveru Azure Database for PostgreSQL **nepřístupný** . Jakékoli vstupně-výstupní operace provedené na serveru selžou, což Ověří, jestli je server skutečně zašifrovaný s klíčem Customers a klíč není aktuálně platný.
+       Po určité době (**~ 15 min**) by měl být **stav** serveru Azure Database for PostgreSQL **nepřístupný**. Jakékoli vstupně-výstupní operace provedené na serveru selžou, což Ověří, jestli je server skutečně zašifrovaný s klíčem Customers a klíč není aktuálně platný.
     
         Aby byl server **dostupný** pro, můžete klíč znovu ověřit. 
     
-    * Nastavte stav klíče v Key Vault na **Ano** .
-    * V **šifrování dat** serveru vyberte znovu **Ověřit klíč** .
+    * Nastavte stav klíče v Key Vault na **Ano**.
+    * V **šifrování dat** serveru vyberte znovu **Ověřit klíč**.
     * Po úspěšném ověření klíče se **stav** serveru změní na **k dispozici** .
 
 2. Pokud se v Azure Portal můžete ujistit, že je šifrovací klíč nastavený, data se šifrují pomocí klíče Customers používaného v Azure Portal.

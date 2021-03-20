@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 757782e8842fbcaca9c8d95ec8086dd5791a817b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240609"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure CLI
@@ -46,10 +46,10 @@ Naučte se používat Azure CLI k nastavení a správě šifrování dat pro vá
       az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
       ```
 
-* Klíč musí obsahovat následující atributy, které se použijí jako klíč spravovaný zákazníkem:
-  * Žádné datum vypršení platnosti
-  * Nezakázáno
-  * Provádění operací **Get** , **Wrap** a **Unwrap**
+* Aby bylo možné klíč použít jako klíč spravovaný zákazníkem, musí mít následující atributy:
+  * Nesmí mít žádné datum ukončení platnosti.
+  * Nesmí být zakázaný.
+  * Provádění operací **Get**, **Wrap** a **Unwrap**
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Nastavení správných oprávnění pro klíčové operace
 
@@ -67,7 +67,7 @@ Naučte se používat Azure CLI k nastavení a správě šifrování dat pro vá
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. Nastavte **klíčová oprávnění** ( **získání** , **zabalení** , **rozbalení** ) pro **objekt zabezpečení** , což je název serveru PostgreSQL Single server.
+2. Nastavte **klíčová oprávnění** (**získání**, **zabalení**, **rozbalení**) pro **objekt zabezpečení**, což je název serveru PostgreSQL Single server.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>

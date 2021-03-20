@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92311138"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Konfigurace vlastního názvu domény pro instanci Azure API Management
@@ -64,8 +64,8 @@ K provedení kroků popsaných v tomto článku musíte mít:
 1. Vyberte koncový bod, který chcete aktualizovat.
 1. V okně na pravé straně klikněte na **vlastní**.
 
-    - Do pole **vlastní název domény**zadejte název, který chcete použít. Například, `api.contoso.com`.
-    - V části **certifikát**vyberte certifikát z Key Vault. Můžete také nahrát platnou hodnotu. Soubor PFX a zadejte **heslo**, pokud je certifikát chráněn heslem.
+    - Do pole **vlastní název domény** zadejte název, který chcete použít. Například, `api.contoso.com`.
+    - V části **certifikát** vyberte certifikát z Key Vault. Můžete také nahrát platnou hodnotu. Soubor PFX a zadejte **heslo**, pokud je certifikát chráněn heslem.
 
     > [!NOTE]
     > Názvy domén se zástupnými znaky, např., `*.contoso.com` jsou podporovány ve všech úrovních s výjimkou úrovně spotřeby.

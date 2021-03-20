@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012165"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurace kontejnerů služby Speech
@@ -104,7 +104,7 @@ Nastavení připojení svazku se skládá ze tří `:` polí s oddělovači bare
 Tento příkaz připojí adresář _C:\input_ hostitelského počítače k adresáři _/usr/local/Models_ kontejnerů.
 
 > [!IMPORTANT]
-> Nastavení připojení svazku se dá použít jenom pro kontejnery **Custom Speechho** textu na text a **na vlastní řeč** . Neuronové **Převod řeči na text** a pro **Neural Text-to-speech** převod textu **na řeč** nepoužívají připojení svazků.
+> Nastavení připojení svazku se dá použít jenom pro kontejnery **Custom Speechho** textu na text a **na vlastní řeč** . Neuronové **Převod řeči na text** a pro  převod textu **na řeč** nepoužívají připojení svazků.
 
 ## <a name="example-docker-run-commands"></a>Příklady příkazů pro spuštění Docker
 

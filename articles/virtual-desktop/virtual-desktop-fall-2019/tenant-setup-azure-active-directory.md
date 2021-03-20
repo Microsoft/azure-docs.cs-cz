@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f41584194f8f5e8afde630405116b8b169cb5656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542032"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows (Classic)
@@ -79,7 +79,7 @@ Přiřazení role aplikace TenantCreator:
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s vyhledáváním podnikových aplikací v Azure Portal](../media/azure-portal-enterprise-applications.png)
 
-2. V rámci **podnikových aplikací**vyhledejte **virtuální počítač s Windows**. V předchozí části uvidíte dvě aplikace, které jste zadali jako souhlas. Z těchto dvou aplikací vyberte **virtuální klient Windows**.
+2. V rámci **podnikových aplikací** vyhledejte **virtuální počítač s Windows**. V předchozí části uvidíte dvě aplikace, které jste zadali jako souhlas. Z těchto dvou aplikací vyberte **virtuální klient Windows**.
 
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s výsledky hledání při hledání "virtuální plochy Windows" v "podnikových aplikacích" Zvýrazní se aplikace s názvem virtuální plocha Windows.](../media/tenant-enterprise-app.png)
@@ -89,7 +89,7 @@ Přiřazení role aplikace TenantCreator:
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky uživatelů a skupin přiřazený ke správě podnikové aplikace "virtuální plocha Windows" Snímek obrazovky zobrazuje pouze jedno přiřazení, které je pro "výchozí přístup".](../media/tenant-default-access.png)
 
-4. Vyberte **Přidat uživatele**a pak na kartě **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+4. Vyberte **Přidat uživatele** a pak na kartě **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 5. Vyhledejte uživatelský účet, který vytvoří tenanta pro virtuální počítače s Windows. Pro jednoduchost může to být účet globálního správce.
    - Pokud používáte poskytovatele identity Microsoftu, jako je contosoadmin@live.com nebo contosoadmin@outlook.com , možná se nebudete moct přihlásit k virtuálnímu počítači s Windows. Doporučujeme použít účet specifický pro doménu, jako je admin@contoso.com nebo admin@contoso.onmicrosoft.com místo.
 
@@ -116,8 +116,8 @@ Zjištění ID tenanta Azure Active Directory (nebo **ID adresáře**):
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s výsledky hledání "Azure Active Directory" v Azure Portal. Výsledek hledání v části služby je zvýrazněný.](../media/tenant-search-azure-active-directory.png)
 
-2. Posuňte se dolů, dokud nenajdete **vlastnosti**a pak je vyberte.
-3. Vyhledejte **ID adresáře**a potom vyberte ikonu schránky. Vložte ho do užitečného umístění, abyste ho později mohli použít jako hodnotu **AadTenantId** .
+2. Posuňte se dolů, dokud nenajdete **vlastnosti** a pak je vyberte.
+3. Vyhledejte **ID adresáře** a potom vyberte ikonu schránky. Vložte ho do užitečného umístění, abyste ho později mohli použít jako hodnotu **AadTenantId** .
 
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s vlastnostmi Azure Active Directory. Myš najede myší na ikonu schránky pro položku "ID adresáře", která se má zkopírovat a vložit.](../media/tenant-directory-id.png)
@@ -129,7 +129,7 @@ Pokud chcete zjistit ID vašeho předplatného Azure:
    > ![Snímek obrazovky s výsledky hledání "Azure Active Directory" v Azure Portal. Výsledky hledání pro "služby" se zvýrazní.](../media/tenant-search-subscription.png)
 
 2. Vyberte předplatné Azure, které chcete použít pro příjem oznámení služby Windows Virtual Desktop.
-3. Vyhledejte **ID předplatného**a umístěte ukazatel myši na hodnotu, dokud se nezobrazí ikona schránky. Vyberte ikonu schránky a vložte ji do užitečného umístění, abyste ji mohli použít později jako hodnotu **AzureSubscriptionId** .
+3. Vyhledejte **ID předplatného** a umístěte ukazatel myši na hodnotu, dokud se nezobrazí ikona schránky. Vyberte ikonu schránky a vložte ji do užitečného umístění, abyste ji mohli použít později jako hodnotu **AzureSubscriptionId** .
 
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky vlastností předplatného Azure Myš najede myší na ikonu schránky pro "ID předplatného" ke zkopírování a vložení.](../media/tenant-subscription-id.png)

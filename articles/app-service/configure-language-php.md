@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055295"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurace aplikace PHP pro Azure App Service
@@ -203,7 +203,7 @@ fi
 Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
 
 1. Spusťte vlastní skript, pokud je určen `PRE_BUILD_SCRIPT_PATH` .
-1. Spusťte příkaz `php composer.phar install`.
+1. Spusťte `php composer.phar install`.
 1. Spusťte vlastní skript, pokud je určen `POST_BUILD_SCRIPT_PATH` .
 
 `PRE_BUILD_COMMAND` a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND` . Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND` .
@@ -332,7 +332,7 @@ php_value upload_max_filesize 10M
 
 Znovu nasaďte aplikaci se změnami a restartujte ji. Pokud ho nasadíte pomocí Kudu (například pomocí [Gitu](deploy-local-git.md)), po nasazení se automaticky restartuje.
 
-Jako alternativu k používání *. htaccess*můžete v aplikaci použít [ini_set ()](https://www.php.net/manual/function.ini-set.php) k přizpůsobení těchto nePHP_INI_SYSTEMch direktiv.
+Jako alternativu k používání *. htaccess* můžete v aplikaci použít [ini_set ()](https://www.php.net/manual/function.ini-set.php) k přizpůsobení těchto nePHP_INI_SYSTEMch direktiv.
 
 ::: zone-end
 
@@ -470,7 +470,7 @@ Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje c
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
 - Otestujte aplikaci místně v provozním režimu. App Service spustí vaši aplikaci v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v provozním režimu místně. Například:
-    - V závislosti na vaší *composer.js*se můžou v produkčním režimu ( `require` vs.) nainstalovat různé balíčky `require-dev` .
+    - V závislosti na vaší *composer.js* se můžou v produkčním režimu ( `require` vs.) nainstalovat různé balíčky `require-dev` .
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.
 - Spusťte aplikaci v App Service v režimu ladění. Například v [Laravel](https://meanjs.org/)můžete nakonfigurovat aplikaci tak, aby výstupní zprávy ladění v produkčním prostředí nakonfigurovali nastavením [ `APP_DEBUG` aplikace na `true` ](configure-common.md#configure-app-settings).

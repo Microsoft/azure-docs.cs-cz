@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
 ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241731"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Správa redundantní vysoké dostupnosti zóny v Azure Database for MySQL flexibilním serveru (Preview)
@@ -32,18 +32,18 @@ Tato stránka poskytuje pokyny, jak můžete povolit nebo zakázat vysokou dostu
 
 V této části najdete podrobnosti konkrétně pro pole související s HA. Pomocí těchto kroků můžete nasadit vysokou dostupnost při vytváření flexibilního serveru.
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server a klikněte na **vytvořit** .  Podrobnosti o tom, jak vyplnit podrobnosti, jako je například **předplatné** , **Skupina prostředků** , **název serveru** , **oblast** a další pole, najdete v tématu dokumentace k vytvoření serveru.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server a klikněte na **vytvořit**.  Podrobnosti o tom, jak vyplnit podrobnosti, jako je například **předplatné**, **Skupina prostředků**, **název serveru**, **oblast** a další pole, najdete v tématu dokumentace k vytvoření serveru.
 
 2.  V možnosti dostupnosti klikněte na zaškrtávací políčko pro **redundantní vysokou dostupnost zóny** .
 
-3.  Pokud chcete změnit výchozí výpočetní výkon a úložiště, klikněte na  **Konfigurovat Server** .
+3.  Pokud chcete změnit výchozí výpočetní výkon a úložiště, klikněte na  **Konfigurovat Server**.
 
 4.  Pokud je zaškrtnuté políčko vysoká dostupnost, nebudete moct zvolit vrstvu s možností vysoké dostupnosti. Můžete si vybrat buď výpočetní úrovně pro **obecné účely** , nebo **paměťově optimalizované** .
 
     > [!IMPORTANT]
-    > Podporujeme jenom redundantní vysokou dostupnost zóny pro cenovou úroveň [pro *_obecné účely_* _ a _*_paměťově optimalizované pro paměť_*_ .
+    > Podporujeme jenom redundantní vysokou dostupnost zóny pro cenovou úroveň ***obecné účely** _ a _ *_paměť optimalizované pro paměť_*.
 
-5.  Z rozevíracího seznamu vyberte *Velikost COMPUTE* _ * pro vaši volbu.
+5.  Z rozevíracího seznamu vyberte požadovanou **Velikost** pro výběr.
 
 6.  V GiB vyberte **velikost úložiště** pomocí posuvných pruhů a vyberte **dobu uchovávání záloh** mezi 7 dny a 35 dny.   
 

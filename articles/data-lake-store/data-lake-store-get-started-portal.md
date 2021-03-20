@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578576"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal
@@ -26,7 +26,7 @@ ms.locfileid: "91578576"
 
 Naučte se, jak pomocí Azure Portal vytvořit účet Data Lake Storage Gen1 a provádět základní operace, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace najdete v tématu [přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu musíte mít tyto položky:
 
@@ -84,7 +84,7 @@ Pokud jste použili klíče z Azure Key Vault ke konfiguraci šifrování pro Da
 
 Můžete vytvořit složky pod účtem Data Lake Storage Gen1, abyste mohli spravovat a ukládat data.
 
-1. Otevřete účet Data Lake Storage Gen1, který jste vytvořili. V levém podokně klikněte na **všechny prostředky**a potom v okně **všechny prostředky** klikněte na název účtu, pod kterým chcete vytvořit složky. Pokud jste účet připnuli na úvodní panel, klikněte na dlaždici tohoto účtu.
+1. Otevřete účet Data Lake Storage Gen1, který jste vytvořili. V levém podokně klikněte na **všechny prostředky** a potom v okně **všechny prostředky** klikněte na název účtu, pod kterým chcete vytvořit složky. Pokud jste účet připnuli na úvodní panel, klikněte na dlaždici tohoto účtu.
 2. V okně Data Lake Storage Gen1 účtu klikněte na **Průzkumník dat**.
 
     ![Snímek obrazovky okna Data Lake Storage účet 1. generace s možností Průzkumník dat s názvem.](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Vytváření složek v účtu Data Lake Storage Gen1")
