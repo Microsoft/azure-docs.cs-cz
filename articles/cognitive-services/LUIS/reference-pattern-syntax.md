@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542185"
 ---
 # <a name="pattern-syntax"></a>Syntaxe vzoru
@@ -33,7 +33,7 @@ Syntaxe vzoru podporuje následující syntaxi:
 
 ## <a name="nesting-syntax-in-patterns"></a>Syntaxe vnořování ve vzorcích
 
-**Volitelná** syntaxe s hranatými závorkami může být vnořená na dvě úrovně. Například: `[[this]is] a new form`. Tento příklad umožňuje následující projevy:
+**Volitelná** syntaxe s hranatými závorkami může být vnořená na dvě úrovně. Příklad: `[[this]is] a new form`. Tento příklad umožňuje následující projevy:
 
 |Příklad vnořeného volitelného utteranceu|Vysvětlení|
 |--|--|
@@ -41,7 +41,7 @@ Syntaxe vzoru podporuje následující syntaxi:
 |je nový formulář|odpovídá vnějšímu volitelnému slovu a jiným nevolitelným slovům ve vzoru|
 |nový formulář|odpovídá pouze povinným slovům|
 
-Syntaxe **seskupení** s kulatými závorkami může být vnořená dvě úrovně. Například: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Tato funkce umožňuje, aby se všechny tři entity shodovaly.
+Syntaxe **seskupení** s kulatými závorkami může být vnořená dvě úrovně. Příklad: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Tato funkce umožňuje, aby se všechny tři entity shodovaly.
 
 Pokud je Entity1 umístění s rolemi, jako je počátek (Seattle) a cíl (Cairo) a entita 2 je známý název budovy ze seznamu entit (RedWest-C), následující projevy by se namapovaly na tento vzor:
 
@@ -113,7 +113,7 @@ Vezměte v úvahu vzor e-mailu [najít] o {Subject} [z {Person}].
 
 V následujícím projevy jsou subjekt a **osoba** správně extrahovány **a nesprávně** :
 
-|Promluva|Entita|Opravit extrakci|
+|Výrok|Entita|Opravit extrakci|
 |--|--|:--:|
 |e-mail o psy z Chrisho|Předmět = psi<br>person = Novák|✔|
 |e-mail o člověku z La Mancha|Předmět = muž<br>person = La Mancha|×|

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c11b58954eefda67f981d618b04ab2bd69fa6b43
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077757"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování spravovaných zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
@@ -60,19 +60,19 @@ Pokud chcete získat zařízení zaregistrované ve službě Azure AD, máte tř
 
 Tyto tři možnosti jsou popsány v článku [co je identita zařízení?](../devices/overview.md)
 
-Aby se stala spravované zařízení, musí se jednat o zařízení připojené k **hybridní službě Azure AD** nebo o **zařízení, které je označené jako vyhovující** .  
+Aby se stala spravované zařízení, musí se jednat o zařízení připojené k **hybridní službě Azure AD** nebo o **zařízení, které je označené jako vyhovující**.  
 
-:::image type="content" source="./media/require-managed-devices/47.png" alt-text="Snímek obrazovky s podoknem zařízení v Azure A D. je zvýrazněna možnost povolit a zakázat položky." border="false":::
+:::image type="content" source="./media/require-managed-devices/47.png" alt-text="Snímek obrazovky s podoknem grantu Azure A D Je vybraná možnost udělit přístup, protože zařízení budou vyhovovat předpisům a hybridní Azure A D připojené k." border="false":::
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>Vyžadovat zařízení připojená k hybridní službě Azure AD
 
 V rámci zásad podmíněného přístupu můžete vybrat **vyžadovat zařízení připojené k hybridní službě Azure AD** , ke kterému se mají přístup k vybraným cloudovým aplikacím přistupovat jenom pomocí spravovaného zařízení. 
 
-:::image type="content" source="./media/require-managed-devices/10.png" alt-text="Snímek obrazovky s podoknem zařízení v Azure A D. je zvýrazněna možnost povolit a zakázat položky." border="false":::
+:::image type="content" source="./media/require-managed-devices/10.png" alt-text="Snímek obrazovky s podoknem grantu Azure A D Je vybráno udělení přístupu. Je také zaškrtnuto políčko vyžadovat, aby zařízení byla hybridní. připojeno D." border="false":::
 
 Toto nastavení platí jenom pro zařízení s Windows 10 nebo nižší úrovně, jako je Windows 7 nebo Windows 8, která jsou připojená k místní službě AD. Tato zařízení můžete zaregistrovat jenom ve službě Azure AD s využitím hybridního připojení k Azure AD, což je [automatizovaný proces](../devices/hybrid-azuread-join-plan.md) získání registrovaného zařízení s Windows 10. 
 
-:::image type="content" source="./media/require-managed-devices/45.png" alt-text="Snímek obrazovky s podoknem zařízení v Azure A D. je zvýrazněna možnost povolit a zakázat položky." border="false":::
+:::image type="content" source="./media/require-managed-devices/45.png" alt-text="Tabulka uvádějící název, povolený stav, O S, verzi, typ spojení, vlastník, M D M a stav kompatibility zařízení. Stav kompatibility je ne." border="false":::
 
 K čemu zařízení připojené k hybridní službě Azure AD využívá spravované zařízení?  U zařízení, která jsou připojená k místní službě AD, se předpokládá, že se ovládací prvek u těchto zařízení vynutil pomocí řešení pro správu, jako je **Configuration Manager** nebo **Zásady skupiny (GP)** , abyste je mohli spravovat. Vzhledem k tomu, že neexistuje žádná metoda pro Azure AD, která by mohla zjistit, jestli se některá z těchto metod v zařízení nepoužívala, je nutné, aby zařízení připojené k hybridní službě Azure AD mělo poměrně slabý mechanismus pro vyžadování spravovaného zařízení. Je to na vás jako správce, aby bylo možné posoudit, jestli jsou metody, které se vztahují na vaše místní zařízení připojená k doméně, dostatečně silné, aby představovaly spravované zařízení, pokud takové zařízení je také hybridní zařízení připojené k Azure AD.
 
@@ -80,14 +80,14 @@ K čemu zařízení připojené k hybridní službě Azure AD využívá spravov
 
 Možnost vyžadovat, *aby zařízení byla označena jako vyhovující předpisům* , je nejsilnějším formulářem pro vyžádání spravovaného zařízení.
 
-:::image type="content" source="./media/require-managed-devices/11.png" alt-text="Snímek obrazovky s podoknem zařízení v Azure A D. je zvýrazněna možnost povolit a zakázat položky." border="false":::
+:::image type="content" source="./media/require-managed-devices/11.png" alt-text="Snímek obrazovky s podoknem grantu Azure A D Je vybráno udělení přístupu. Políčko vyžadovat, aby zařízení bylo označené jako vyhovující, je také zaškrtnuto." border="false":::
 
 Tato možnost vyžaduje, aby zařízení bylo zaregistrované ve službě Azure AD a taky bylo označeno jako vyhovující tomuto:
          
 - Intune
 - Systém správy mobilních zařízení (MDM) třetí strany, který spravuje zařízení s Windows 10 prostřednictvím integrace služby Azure AD. Systémy MDM třetích stran pro jiné typy operačních systémů zařízení, než je Windows 10, se nepodporují.
  
-:::image type="content" source="./media/require-managed-devices/46.png" alt-text="Snímek obrazovky s podoknem zařízení v Azure A D. je zvýrazněna možnost povolit a zakázat položky." border="false":::
+:::image type="content" source="./media/require-managed-devices/46.png" alt-text="Tabulka uvádějící název, povolený stav, O S, verzi, typ spojení, vlastník, M D M a stav kompatibility zařízení. Stav kompatibility je zvýrazněný." border="false":::
 
 U zařízení, které je označeno jako vyhovující, můžete předpokládat, že: 
 
@@ -103,19 +103,19 @@ V tomto scénáři společnost Contoso rozhodla, že veškerý mobilní přístu
 Organizace musí provést následující kroky, aby vyžadovaly použití zaregistrovaného mobilního zařízení.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup** zabezpečení.
-1. Vyberte **nové zásady** .
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
+1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení** vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout** vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
-   1. Vyberte **Hotovo** .
-1. V části **cloudové aplikace nebo akce**  >  **Include** vyberte **Office 365** .
-1. V části **podmínky** vyberte **platformy zařízení** .
-   1. Nastavte **Konfigurovat** na **Ano** .
-   1. Zahrňte **Android** a **iOS** .
+   1. Vyberte **Hotovo**.
+1. V části **cloudové aplikace nebo akce**  >  vyberte **Office 365**.
+1. V části **podmínky** vyberte **platformy zařízení**.
+   1. Nastavte **Konfigurovat** na **Ano**.
+   1. Zahrňte **Android** a **iOS**.
 1. V části **řízení přístupu**  >  **udělení** přístupu vyberte následující možnosti:
    - **Vyžadovat, aby zařízení bylo označené jako vyhovující**
-1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto** .
+1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 
 ### <a name="known-behavior"></a>Známé chování

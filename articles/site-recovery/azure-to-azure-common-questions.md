@@ -6,10 +6,10 @@ manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
 ms.openlocfilehash: d4fa7348df647cf699ebd55dd6415a79454ab5f1
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397945"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné dotazy: Zotavení po havárii Azure do Azure
@@ -53,7 +53,7 @@ Ano. Site Recovery podporuje zotavení po havárii virtuálních počítačů s 
 - Site Recovery podporuje:
     - ADE verze 0,1, která má schéma, které vyžaduje Azure Active Directory (Azure AD).
     - ADE verze 1,1, která nevyžaduje Azure AD Pro verzi 1,1 musí mít virtuální počítače s Windows Azure spravované disky.
-    - [Přečtěte si další informace](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema). o schématech rozšíření.
+    - [Další informace](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema). o schématech rozšíření.
 
 [Přečtěte si další informace](azure-to-azure-how-to-enable-replication-ade-vms.md) o povolení replikace pro šifrované virtuální počítače.
 
@@ -61,7 +61,7 @@ Ano. Site Recovery podporuje zotavení po havárii virtuálních počítačů s 
 
 Když povolíte Site Recovery ke správě aktualizací pro rozšíření služby mobility spuštěné na replikovaných virtuálních počítačích Azure, nasadí globální Runbook (používaný službami Azure) prostřednictvím účtu Azure Automation. Můžete použít účet Automation, který Site Recovery vytvoří, nebo vybrat, jestli se má použít existující účet Automation. 
 
-V současné době můžete na portálu vybrat pouze účet Automation ve stejné skupině prostředků jako trezor. Můžete vybrat účet Automation z jiné skupiny prostředků pomocí PowerShellu. [Přečtěte si další informace](azure-to-azure-autoupdate.md#enable-automatic-updates).
+V současné době můžete na portálu vybrat pouze účet Automation ve stejné skupině prostředků jako trezor. Můžete vybrat účet Automation z jiné skupiny prostředků pomocí PowerShellu. [Další informace](azure-to-azure-autoupdate.md#enable-automatic-updates).
 
 ### <a name="if-i-use-a-customer-automation-account-thats-not-in-the-vault-resource-group-can-i-delete-the-default-runbook"></a>Pokud používám účet služby Automation pro zákazníky, který není ve skupině prostředků trezoru, můžu výchozí Runbook odstranit?
 
@@ -81,11 +81,11 @@ Tato podpora není na portálu podporována. K tomu můžete použít REST API n
 
 ### <a name="can-i-replicate-zoned-vms-to-a-different-zone-in-the-same-region"></a>Je možné replikovat virtuální počítače v zóně do jiné zóny ve stejné oblasti?
 
-Podpora je omezená na několik oblastí. [Přečtěte si další informace](azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+Podpora je omezená na několik oblastí. [Další informace](azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
 ### <a name="can-i-exclude-disks-from-replication"></a>Můžu vyloučit disky z replikace?
 
-Ano, disky můžete vyloučit při nastavování replikace pomocí PowerShellu. [Přečtěte si další informace](azure-to-azure-exclude-disks.md).
+Ano, disky můžete vyloučit při nastavování replikace pomocí PowerShellu. [Další informace](azure-to-azure-exclude-disks.md).
 
 ### <a name="can-i-replicate-new-disks-added-to-replicated-vms"></a>Můžu replikovat nové disky přidané do replikovaných virtuálních počítačů?
 
@@ -111,7 +111,7 @@ Virtuální počítače můžete replikovat a obnovovat mezi dvěma oblastmi v r
 
 ### <a name="does-site-recovery-need-internet-connectivity"></a>Vyžaduje Site Recovery připojení k Internetu?
 
-Ne, ale virtuální počítače potřebují přístup k Site Recovery adres URL a rozsahy IP adres. [Přečtěte si další informace](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls).
+Ne, ale virtuální počítače potřebují přístup k Site Recovery adres URL a rozsahy IP adres. [Další informace](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls).
 
 ### <a name="can-i-replicate-an-application-tiered-across-resource-groups"></a>Můžu replikovat aplikaci vrstvenou napříč skupinami prostředků?
 
@@ -182,7 +182,7 @@ Pokud máte zásady replikace 24 hodin a Site Recovery nemůžou generovat body 
 
 ### <a name="can-i-change-the-replication-policy-after-replication-is-enabled"></a>Můžu po povolení replikace změnit zásady replikace?
 
-Ano. V trezoru > **Site Recovery Infrastructure**  >  **Zásady replikace** Site Recovery infrastruktury, vyberte a upravte zásady. Změny se projeví i u stávajících zásad.
+Ano. V trezoru >   >  **Zásady replikace** Site Recovery infrastruktury, vyberte a upravte zásady. Změny se projeví i u stávajících zásad.
 
 ### <a name="are-all-recovery-points-a-complete-vm-copy"></a>Mají všechny body obnovení úplnou kopii virtuálního počítače?
 
@@ -205,7 +205,7 @@ Konzistence s více virtuálními počítači zajišťuje, aby body obnovení by
 
 ### <a name="can-i-fail-over-a-single-vm-in-a-replication-group"></a>Můžu převzít služby při selhání jednoho virtuálního počítače v replikační skupině?
 
-Ne. Pokud povolíte konzistenci pro víc virtuálních počítačů, odvodí se, že aplikace bude závislá na všech virtuálních počítačích v replikační skupině, a jedno převzetí služeb virtuálního počítače není povolené.
+No. Pokud povolíte konzistenci pro víc virtuálních počítačů, odvodí se, že aplikace bude závislá na všech virtuálních počítačích v replikační skupině, a jedno převzetí služeb virtuálního počítače není povolené.
 
 ### <a name="how-many-vm-can-i-replicate-together-in-a-group"></a>Kolik virtuálních počítačů je možné replikovat společně ve skupině?
 
@@ -285,7 +285,7 @@ Site Recovery RTO SLA po [dvou hodinách](https://azure.microsoft.com/support/le
 
 ### <a name="how-does-sequencing-work"></a>Jak sekvencování funguje?
 
-V plánu obnovení můžete vytvořit více skupin virtuálních počítačů pro řazení. Skupiny se převezmou v jednom okamžiku, aby se virtuální počítače, které jsou součástí stejné skupiny, převzaly společně. [Přečtěte si další informace](recovery-plan-overview.md#model-apps).
+V plánu obnovení můžete vytvořit více skupin virtuálních počítačů pro řazení. Skupiny se převezmou v jednom okamžiku, aby se virtuální počítače, které jsou součástí stejné skupiny, převzaly společně. [Další informace](recovery-plan-overview.md#model-apps).
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>Jak můžu najít RTO plánu obnovení?
 
@@ -295,17 +295,17 @@ Pokud chcete zkontrolovat RTO plánu obnovení, proveďte test převzetí služe
 
 ### <a name="can-i-add-automation-runbooks-to-recovery-plans"></a>Můžu přidat Runbooky Automation do plánů obnovení?
 
-Ano. [Přečtěte si další informace](site-recovery-runbook-automation.md).
+Ano. [Další informace](site-recovery-runbook-automation.md).
 
 ## <a name="reprotection-and-failback"></a>Znovu naochrana a navrácení služeb po obnovení
 
 ### <a name="after-failover-are-vms-in-the-secondary-region-protected-automatically"></a>Po převzetí služeb při selhání jsou virtuální počítače v sekundární oblasti chráněné automaticky? 
 
-Ne. Při převzetí služeb při selhání virtuálních počítačů z jedné oblasti do druhé se virtuální počítače spustí v cílové oblasti zotavení po havárii v nechráněném stavu. Pokud chcete znovu nastavit [ochranu](./azure-to-azure-how-to-reprotect.md) virtuálních počítačů v sekundární oblasti, Povolte replikaci zpátky do primární oblasti.
+No. Při převzetí služeb při selhání virtuálních počítačů z jedné oblasti do druhé se virtuální počítače spustí v cílové oblasti zotavení po havárii v nechráněném stavu. Pokud chcete znovu nastavit [ochranu](./azure-to-azure-how-to-reprotect.md) virtuálních počítačů v sekundární oblasti, Povolte replikaci zpátky do primární oblasti.
 
 ### <a name="when-i-reprotect-is-all-data-replicated-from-the-secondary-region-to-primary"></a>Při opětovném zapnutí ochrany jsou všechna data replikovaná ze sekundární oblasti do primární? 
 
-Záleží na tom. Pokud virtuální počítač oblasti zdroje existuje, synchronizují se jenom změny mezi zdrojovým diskem a cílovým diskem. Site Recovery porovná disky s tím, co se liší, a pak data přenáší. Tento proces obvykle trvá několik hodin. [Přečtěte si další informace](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection).
+Záleží na tom. Pokud virtuální počítač oblasti zdroje existuje, synchronizují se jenom změny mezi zdrojovým diskem a cílovým diskem. Site Recovery porovná disky s tím, co se liší, a pak data přenáší. Tento proces obvykle trvá několik hodin. [Další informace](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection).
 
 ### <a name="how-long-does-it-take-fail-back"></a>Jak dlouho trvá navrácení služeb po obnovení?
 

@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: c8e2c707566b08219b495e76be7f6f6130d876ab
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93081310"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – přidání funkcí CRUD do aplikace
@@ -39,7 +39,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 1. V Visual Studio Code otevřete **routes.js** a **hero.service.js** vedle sebe stisknutím tlačítka **rozdělit Editor** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png"::: .
 
-    Podívejte se, že řádek 7 v souboru routes.js volá funkci `getHeroes` na řádku 5 v souboru **hero.service.js** .  Stejné párování potřebujeme vytvořit i pro funkce post, put a delete. 
+    Podívejte se, že řádek 7 v souboru routes.js volá funkci `getHeroes` na řádku 5 v souboru **hero.service.js**.  Stejné párování potřebujeme vytvořit i pro funkce post, put a delete. 
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="Soubory routes.js a hero.service.js ve Visual Studio Code":::
     
@@ -77,7 +77,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     };
     ```
 
-4. V souboru **routes.js** za směrovač `get` přidejte směrovač pro funkci `post`. Tento směrovač odesílá hrdiny jednotlivě. Strukturování směrovacího souboru tímto způsobem jasně ukazuje všechny dostupné koncové body rozhraní API a skutečnou práci nechává na souboru **hero.service.js** .
+4. V souboru **routes.js** za směrovač `get` přidejte směrovač pro funkci `post`. Tento směrovač odesílá hrdiny jednotlivě. Strukturování směrovacího souboru tímto způsobem jasně ukazuje všechny dostupné koncové body rozhraní API a skutečnou práci nechává na souboru **hero.service.js**.
 
     ```javascript
     router.post('/hero', (req, res) => {
@@ -89,11 +89,11 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 6. Nyní přejděte zpět do internetového prohlížeče a stisknutím klávesy F12 (na většině počítačů) otevřete Vývojářské nástroje a kartu Síť. Přejděte na adresu `http://localhost:3000` a sledujte prováděná volání přes síť.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Soubory routes.js a hero.service.js ve Visual Studio Code":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Karta Síť v prohlížeči Chrome ukazující aktivitu sítě":::
 
 7. Přidejte nového hrdinu výběrem tlačítka **Add New Hero** (Přidat nového hrdinu). Zadejte ID 999, jméno (name) Fred a slavný výrok (saying) „Hello“ a pak vyberte **Save** (Uložit). Na kartě Síť by se mělo zobrazit odeslání požadavku POST pro nového hrdinu. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Soubory routes.js a hero.service.js ve Visual Studio Code":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Karta Síť v prohlížeči Chrome se zobrazenou aktivitou sítě pro funkce Get a Post":::
 
     Vraťme se zpět a přidejme do aplikace funkce Put a Delete.
 
@@ -174,15 +174,15 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 5. V internetovém prohlížeči aktualizujte stránku a vyberte tlačítko **Add New Hero** (Přidat nového hrdinu). Přidejte nového hrdinu s ID 9, jménem (name) Starlord a slavným výrokem (saying) „Hi“. Výběrem tlačítka **Save** (Uložit) nového hrdinu uložte.
 
-6. Teď vyberte hrdinu **Starlord** , změňte slavný výrok (saying) z „Hi“ na „Bye“ a vyberte tlačítko **Save** (Uložit). 
+6. Teď vyberte hrdinu **Starlord**, změňte slavný výrok (saying) z „Hi“ na „Bye“ a vyberte tlačítko **Save** (Uložit). 
 
     Teď můžete na kartě Síť vybrat příslušné ID a zobrazit datovou část. V datové části se zobrazí, ze slavný výrok (saying) je teď nastavený na „Bye“.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Soubory routes.js a hero.service.js ve Visual Studio Code"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Aplikace Heroes a karta Síť se zobrazenou datovou částí"::: 
 
     V uživatelském rozhraní také můžete některého z hrdinů odstranit a podívat se, jak dlouho dokončení operace odstranění trvá. Vyzkoušejte to výběrem tlačítka Delete (Odstranit) u hrdiny se jménem Fred.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Soubory routes.js a hero.service.js ve Visual Studio Code"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Aplikace Heroes a karta Síť se zobrazenými časy dokončení funkcí"::: 
 
     Pokud stránku aktualizujete, na kartě Síť se zobrazí čas potřebný k získání hrdinů. I když jsou tyto časy rychlé, hodně záleží na tom, kde na světě se vaše data nacházejí, a na vaší schopnosti geograficky je replikovat do oblastí blízko vašim uživatelům. Další informace o geografické replikaci najdete v dalším kurzu, který bude vydaný už brzy.
 

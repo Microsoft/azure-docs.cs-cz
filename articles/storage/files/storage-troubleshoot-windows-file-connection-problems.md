@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878506"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
@@ -210,7 +210,7 @@ Pokud chcete vynutit, aby se popisovač souboru zavřel, použijte rutinu [Close
 > Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="cause-2"></a>Příčina 2
-Zapůjčení souborů brání v úpravě nebo odstranění souboru. Můžete zjistit, jestli soubor má zapůjčení souboru s následujícím PowerShellem, nahrazujete `<resource-group>` , `<storage-account>` , `<file-share>` a `<path-to-file>` s odpovídajícími hodnotami pro vaše prostředí:
+Zapůjčení souboru zajišťuje, aby soubor nebylo možné upravit ani odstranit. Můžete zjistit, jestli soubor má zapůjčení souboru s následujícím PowerShellem, nahrazujete `<resource-group>` , `<storage-account>` , `<file-share>` a `<path-to-file>` s odpovídajícími hodnotami pro vaše prostředí:
 
 ```PowerShell
 # Set variables 
@@ -236,7 +236,7 @@ $fileClient = $file.ShareFileClient
 $fileClient.GetProperties().Value
 ```
 
-Pokud má soubor zapůjčení, vrácený objekt by měl obsahovat následující vlastnosti:
+Pokud je soubor zapůjčený, vrácený objekt by měl obsahovat následující vlastnosti:
 
 ```Output
 LeaseDuration         : Infinite
@@ -245,7 +245,7 @@ LeaseStatus           : Locked
 ```
 
 ### <a name="solution-2"></a>Řešení 2
-Pokud chcete odebrat zapůjčení ze souboru, můžete zapůjčení uvolnit nebo zrušit jeho zapůjčení. Pokud chcete uvolnit zapůjčení, budete potřebovat LeaseId zapůjčení, které jste nastavili při vytváření zapůjčení. LeaseId nepotřebujete k přerušení zapůjčení.
+Pokud chcete odebrat zapůjčení souboru, můžete zapůjčení uvolnit nebo zrušit. K uvolnění zapůjčení potřebujete ID zapůjčení, které jste nastavili při vytváření zapůjčení. Ke zrušení zapůjčení ID zapůjčení nepotřebujete.
 
 Následující příklad ukazuje, jak přerušit zapůjčení pro soubor uvedený ve příčině 2 (Tento příklad pokračuje s proměnnými PowerShellu z příčiny 2):
 

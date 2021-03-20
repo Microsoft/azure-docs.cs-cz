@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: a7042a67081475311341ad6d56e35b2a71b8b12c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100379331"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning Studio (Classic) a Azure Data Factory
@@ -179,7 +179,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
    }
    ```
 
-   Vstupní soubor CSV musí obsahovat řádek záhlaví sloupce. Pokud používáte **aktivitu kopírování** k vytvoření nebo přesunutí sdíleného svazku clusteru do úložiště objektů blob, měli byste nastavit vlastnost jímky **blobWriterAddHeader** na **hodnotu true**. Příklad:
+   Vstupní soubor CSV musí obsahovat řádek záhlaví sloupce. Pokud používáte **aktivitu kopírování** k vytvoření nebo přesunutí sdíleného svazku clusteru do úložiště objektů blob, měli byste nastavit vlastnost jímky **blobWriterAddHeader** na **hodnotu true**. Například:
 
    ```json
    sink:

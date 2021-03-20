@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: e3af713d6e120e66a0cde5116f4556bb8caedf55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097840"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – vytvoření aplikace Node.js Express
@@ -82,9 +82,9 @@ V tomto kurzu budete také potřebovat:
 
 ## <a name="build-the-app-using-the-express-framework"></a>Sestavení aplikace pomocí rozhraní Express
 
-1. Ve Visual Studio Code v podokně **Průzkumník** klikněte pravým tlačítkem na složku **src** , klikněte na **Nová složka** a pojmenujte novou složku *server* .
+1. Ve Visual Studio Code v podokně **Průzkumník** klikněte pravým tlačítkem na složku **src**, klikněte na **Nová složka** a pojmenujte novou složku *server*.
 
-2. V podokně **Průzkumník** klikněte pravým tlačítkem na složku **server** , klikněte na **Nový soubor** a pojmenujte nový soubor *index.js* .
+2. V podokně **Průzkumník** klikněte pravým tlačítkem na složku **server**, klikněte na **Nový soubor** a pojmenujte nový soubor *index.js*.
 
 3. Zpět na příkazovém řádku pomocí následujícího příkazu nainstalujte analyzátor textu. Ten pomáhá aplikaci parsovat data JSON předávaná prostřednictvím rozhraní API.
 
@@ -126,7 +126,7 @@ V tomto kurzu budete také potřebovat:
    app.listen(port, () => console.log(`API running on localhost:${port}`));
    ```
 
-5. Ve Visual Studio Code v podokně **Průzkumník** klikněte pravým tlačítkem na složku **server** a pak klikněte na **Nový soubor** . Pojmenujte nový soubor *routes.js* . 
+5. Ve Visual Studio Code v podokně **Průzkumník** klikněte pravým tlačítkem na složku **server** a pak klikněte na **Nový soubor**. Pojmenujte nový soubor *routes.js*. 
 
 6. Do souboru **routes.js** zkopírujte následující kód. Tento kód:
    * Přidá referenci na směrovač Express.

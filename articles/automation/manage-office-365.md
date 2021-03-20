@@ -5,10 +5,10 @@ services: automation
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93398041"
 ---
 # <a name="manage-office-365-services"></a>Správa služeb Office 365
@@ -98,7 +98,7 @@ Můžete použít svůj skript v sadě Azure Automation Runbook. Pro účely toh
 2. Z účtu Automation v části **Automatizace procesu** vyberte **Runbooky** .
 3. Vyberte novou sadu Runbook a klikněte na **Upravit**.
 4. Zkopírujte skript a vložte ho do textového editoru pro sadu Runbook.
-5. Vyberte **assety** , potom rozbalte **přihlašovací údaje** a ověřte, jestli je zde přihlašovací údaje pro Office 365.
+5. Vyberte **assety**, potom rozbalte **přihlašovací údaje** a ověřte, jestli je zde přihlašovací údaje pro Office 365.
 6. Klikněte na **Uložit**.
 7. Vyberte **podokno test** a potom kliknutím na **Spustit** zahajte testování Runbooku. Viz [Správa runbooků v Azure Automation](./manage-runbooks.md).
 8. Po dokončení testování ukončete z podokna test.

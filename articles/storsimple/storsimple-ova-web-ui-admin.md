@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000925"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Správa virtuálního pole StorSimple pomocí webového uživatelského rozhraní
@@ -40,7 +40,7 @@ Tento článek obsahuje následující návody:
 Pokud jste svůj šifrovací klíč dat služby nastavili a potřebujete ho načíst, proveďte následující kroky v místním webovém uživatelském rozhraní zařízení zaregistrovaného ve vaší službě.
 
 #### <a name="to-get-the-service-data-encryption-key"></a>Získání šifrovacího klíče dat služby
-1. Připojte se k místnímu webovému uživatelskému rozhraní. Přejít na **Configuration**  >  **Nastavení cloudu** konfigurace.
+1. Připojte se k místnímu webovému uživatelskému rozhraní. Přejít na   >  **Nastavení cloudu** konfigurace.
 2. V dolní části stránky klikněte na **získat šifrovací klíč dat služby**. Zobrazí se klíč. Zkopírujte a uložte tento klíč.
    
     ![získat šifrovací klíč dat služby 1](./media/storsimple-ova-web-ui-admin/image27.png)
@@ -80,7 +80,7 @@ Balíček protokolu se skládá ze všech relevantních protokolů, které vám 
 Virtuální zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme, abyste před restartováním převedli svazky nebo sdílené složky do režimu offline na hostiteli a pak na zařízení. Tím se minimalizuje jakákoli možnost poškození dat. 
 
 #### <a name="to-shut-down-your-virtual-device"></a>Vypnutí virtuálního zařízení
-1. V místním webovém uživatelském rozhraní přejdete na **Maintenance**  >  **nastavení napájení** údržby.
+1. V místním webovém uživatelském rozhraní přejdete na   >  **nastavení napájení** údržby.
 2. V dolní části stránky klikněte na tlačítko **vypnout**.
    
     ![vypnutí zařízení 1](./media/storsimple-ova-web-ui-admin/image36.png)
@@ -95,7 +95,7 @@ Virtuální zařízení můžete vypnout nebo restartovat pomocí místního web
     Zařízení se teď vypne. Pokud chcete zařízení spustit, budete ho muset udělat přes Správce technologie Hyper-V.
 
 #### <a name="to-restart-your-virtual-device"></a>Restartování virtuálního zařízení
-1. V místním webovém uživatelském rozhraní přejdete na **Maintenance**  >  **nastavení napájení** údržby.
+1. V místním webovém uživatelském rozhraní přejdete na   >  **nastavení napájení** údržby.
 2. V dolní části stránky klikněte na **restartovat**.
    
     ![restartování zařízení](./media/storsimple-ova-web-ui-admin/image36.png)

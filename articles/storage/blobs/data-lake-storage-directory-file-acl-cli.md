@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3e9afd4617eb7445ba83948d46eef0890832e2be
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100650350"
 ---
 # <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Použití rozhraní příkazového řádku Azure ke správě adresářů a souborů v Azure Data Lake Storage Gen2
@@ -25,7 +25,7 @@ Další informace o tom, jak získat, nastavit a aktualizovat seznamy řízení 
 
 [Ukázky](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-cli-extensions/issues)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -223,6 +223,6 @@ az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --accou
 ## <a name="see-also"></a>Viz také
 
 - [ukázky](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
-- [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-cli-extensions/issues)
+- [Sdělte nám svůj názor](https://github.com/Azure/azure-cli-extensions/issues)
 - [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 - [Použití rozhraní příkazového řádku Azure ke správě seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-cli.md)

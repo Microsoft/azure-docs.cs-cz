@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96583389"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Kurz: Připojení, nastavení a aktivace služby Azure Data Box Gateway
@@ -53,7 +53,7 @@ Než nakonfigurujete a nastavíte Data Box Gateway, ujistěte se, že:
    
     ![Přihlaste se k místnímu webovému uživatelskému rozhraní](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
-4. V příkazovém řádku změňte heslo zařízení. Nové heslo musí obsahovat 8 až 16 znaků. Musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky.
+4. V příkazovém řádku změňte heslo zařízení. Nové heslo musí mít 8 až 16 znaků. Musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky.
 
     ![Změna hesla zařízení](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
@@ -89,7 +89,7 @@ Nyní jste na **řídicím panelu** zařízení.
    Na stránce **webový proxy server** proveďte následující kroky:
    
    1. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://&lt;host-IP address or FQDN&gt;:Port number` . Adresy URL protokolu HTTPS se nepodporují.
-   2. V části **ověřování** vyberte **žádné** nebo **NTLM**.
+   2. V části **Ověřování** vyberte **Žádné** nebo **NTLM**.
    3. Pokud používáte ověřování, zadejte **uživatelské jméno** a **heslo**.
    4. Pokud chcete ověřit a použít nakonfigurovaná nastavení webového proxy serveru, vyberte **použít**.
 

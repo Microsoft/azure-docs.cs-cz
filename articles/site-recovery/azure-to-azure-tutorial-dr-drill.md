@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: c7cd1898f27f3b7255009efb40f6bcc8938dbf9e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395574"
 ---
 # <a name="tutorial-run-a-disaster-recovery-drill-for-azure-vms"></a>Kurz: spuštění postupu zotavení po havárii pro virtuální počítače Azure
@@ -54,10 +54,10 @@ Než začnete tento kurz, musíte povolit zotavení po havárii pro jeden nebo n
 
 2. V části **testovací převzetí služeb při selhání** vyberte bod obnovení. Virtuální počítač Azure v cílové oblasti se vytvoří pomocí dat z tohoto bodu obnovení.
   
-   - **Poslední zpracovaná** : používá nejnovější bod obnovení zpracovaný pomocí Site Recovery. Zobrazí se časové razítko. Žádná doba nestrávila zpracováním dat, takže poskytuje nízkou dobu obnovení (RTO).
-   -  **Nejnovější** : zpracovává všechna data odesílaná do Site Recovery, aby bylo možné vytvořit bod obnovení pro každý virtuální počítač před převzetím služeb při selhání. Poskytuje nejnižší cíl bodu obnovení (RPO), protože všechna data jsou replikována do Site Recovery při aktivaci převzetí služeb při selhání.
-   - **Nejnovější konzistentní vzhledem k aplikacím** : Tato možnost převzetí služeb při selhání virtuálních počítačů do nejnovějšího bodu obnovení konzistentního vzhledem k aplikacím. Zobrazí se časové razítko.
-   - **Vlastní** : převzetí služeb při selhání konkrétním bodem obnovení. Vlastní je k dispozici jenom v případě, že převezmete služby při selhání jednoho virtuálního počítače a nepoužijete plán obnovení.
+   - **Poslední zpracovaná**: používá nejnovější bod obnovení zpracovaný pomocí Site Recovery. Zobrazí se časové razítko. Žádná doba nestrávila zpracováním dat, takže poskytuje nízkou dobu obnovení (RTO).
+   -  **Nejnovější**: zpracovává všechna data odesílaná do Site Recovery, aby bylo možné vytvořit bod obnovení pro každý virtuální počítač před převzetím služeb při selhání. Poskytuje nejnižší cíl bodu obnovení (RPO), protože všechna data jsou replikována do Site Recovery při aktivaci převzetí služeb při selhání.
+   - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost převzetí služeb při selhání virtuálních počítačů do nejnovějšího bodu obnovení konzistentního vzhledem k aplikacím. Zobrazí se časové razítko.
+   - **Vlastní**: převzetí služeb při selhání konkrétním bodem obnovení. Vlastní je k dispozici jenom v případě, že převezmete služby při selhání jednoho virtuálního počítače a nepoužijete plán obnovení.
 
 3. V **Azure Virtual Network** vyberte cílovou síť, ve které se virtuální počítače Azure vytvoří po převzetí služeb při selhání. Pokud je to možné, vyberte jinou neprodukční síť, nikoli síť vytvořenou při povolení replikace.
 
@@ -77,7 +77,7 @@ Než začnete tento kurz, musíte povolit zotavení po havárii pro jeden nebo n
 
     ![Tlačítko pro spuštění procesu čištění](./media/azure-to-azure-tutorial-dr-drill/select-cleanup.png)
 
-2. V části testovat poznámky k **Vyčištění pro převzetí služeb při selhání**  >  **Notes** záznam a uložte všechny poznámky spojené s testovacím převzetím služeb 
+2. V části testovat poznámky k **Vyčištění pro převzetí služeb při selhání**  >  záznam a uložte všechny poznámky spojené s testovacím převzetím služeb 
 3. Vyberte **testování bylo dokončeno** , aby se odstranily virtuální počítače vytvořené během testovacího převzetí služeb při selhání.
 
     ![Stránka s možnostmi vyčištění](./media/azure-to-azure-tutorial-dr-drill/cleanup-failover.png)

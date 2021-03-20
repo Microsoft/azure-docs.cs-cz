@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94701836"
 ---
 # <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí starší verze Microsoft. Azure. Search Client Library v10 za účelem
@@ -106,19 +106,19 @@ Pro tento projekt použijte verzi 10 `Microsoft.Azure.Search` balíčku NuGet a 
 
 Tento krok je nutný k vytváření smysluplného výstupu v konzole nástroje. Při tisku výsledků do okna konzoly musí být jednotlivá pole z objektu hotelu vrácena jako řetězce. Tento krok implementuje [metodu ToString ()](/dotnet/api/system.object.tostring) pro provedení této úlohy, kterou provedete tak, že zkopírujete potřebný kód do dvou nových souborů.
 
-1. Přidejte do projektu dvě prázdné definice tříd: Address.Methods.cs, Hotel.Methods.cs
+1. Přidejte do projektu dvě prázdné definice tříd: Address. Methods. cs, hotelu. Methods. cs
 
-1. V Address.Methods.cs přepište výchozí obsah následujícím kódem, [řádky 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
+1. V části Address. Methods. cs přepište výchozí obsah následujícím kódem, [řádky 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
 
-1. Na Hotel.Methods.cs zkopírujte [řádky 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
+1. V hotelu. Methods. cs, zkopírujte [řádky 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
 
 ## <a name="1---create-index"></a>1. vytvoření indexu
 
 Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduché pole "hotelů" nebo "Description" a složitá pole jsou adresa s podpoli nebo kolekcí místností. Pokud index obsahuje komplexní typy, izolujte definice komplexních polí v samostatných třídách.
 
-1. Přidejte do projektu dvě prázdné definice tříd: Address.cs, Hotel.cs
+1. Přidejte do projektu dvě prázdné definice tříd: Address. cs, hotelu. cs.
 
-1. V Address.cs přepište výchozí obsah následujícím kódem:
+1. V části Address. cs přepište výchozí obsah následujícím kódem:
 
     ```csharp
     using System;
@@ -148,7 +148,7 @@ Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduch�
     }
     ```
 
-1. V Hotel.cs třída definuje celkovou strukturu indexu, včetně odkazů na třídu adres.
+1. V hotelu. cs třída definuje celkovou strukturu indexu, včetně odkazů na třídu adres.
 
     ```csharp
     namespace AzureSearchQuickstart
@@ -205,7 +205,7 @@ Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduch�
 
     V tomto indexu pole Popis používají volitelnou [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer) vlastnost zadanou v případě, že chcete přepsat výchozí standardní analyzátor Lucene. `description_fr`Pole používá nástroj pro francouzštinu Lucene ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene)), protože ukládá francouzský text. Používá `description` nepovinný nástroj Microsoft Language Analyzer ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft)).
 
-1. V Program.cs vytvořte instanci [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) třídy pro připojení ke službě pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json). 
+1. V programu program. cs vytvořte instanci [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) třídy pro připojení ke službě pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json). 
 
    `SearchServiceClient` má [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes) vlastnost, která poskytuje všechny metody, které potřebujete k vytvoření, výpisu, aktualizaci nebo odstranění indexů služby Azure kognitivní hledání. 
 
@@ -309,7 +309,7 @@ V Azure Kognitivní hledání jsou dokumenty datové struktury, které jsou ve d
 
 Při odesílání dokumentů je nutné použít [`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch) objekt. `IndexBatch`Obsahuje kolekci [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction) objektů, z nichž každý obsahuje dokument a vlastnost sdělující Azure kognitivní hledání, jakou akci chcete provést ([nahrávání, sloučení, odstranění a mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
-1. V Program.cs vytvořte pole dokumentů a indexových akcí a pak předejte pole do `IndexBatch` . Níže uvedené dokumenty odpovídají indexu pro rychlé spuštění v hotelu, jak je definováno v rámci tříd hotelů a Address.
+1. V programu program. cs vytvořte pole dokumentů a indexových akcí a pak předejte pole do `IndexBatch` . Níže uvedené dokumenty odpovídají indexu pro rychlé spuštění v hotelu, jak je definováno v rámci tříd hotelů a Address.
 
     ```csharp
     // Upload documents as a batch
@@ -435,7 +435,7 @@ Při odesílání dokumentů je nutné použít [`IndexBatch`](/dotnet/api/micro
 
     Zpoždění dvou sekund se kompenzuje při indexování, což je asynchronní, aby bylo možné všechny dokumenty před spuštěním dotazů indexovat. Kódování v zpoždění je obvykle nutné pouze v ukázkách, testech a ukázkových aplikacích.
 
-1. V Program.cs v části Main Odkomentujte řádky pro "2-Load Documents". 
+1. V části program. cs v hlavní Odkomentujte řádky pro "2 – načíst dokumenty". 
 
     ```csharp
     // Uncomment next 3 lines in "2 - Load documents"
@@ -458,7 +458,7 @@ V této části se přidávají dvě části funkčnosti: logika dotazů a výsl
 [`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)Třída představuje výsledky.
 
 
-1. V Program.cs vytvořte metodu WriteDocuments, která vytiskne výsledky hledání do konzoly.
+1. V programu program. cs vytvořte metodu WriteDocuments, která vytiskne výsledky hledání do konzoly.
 
     ```csharp
     private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
@@ -540,7 +540,7 @@ V této části se přidávají dvě části funkčnosti: logika dotazů a výsl
 
     Vyhledávání i filtrování se provádí pomocí metody `Documents.Search`. Vyhledávací dotaz lze předat v parametru `searchText`, zatímco výraz filtru lze předat ve vlastnosti `Filter` třídy `SearchParameters`. Chcete-li filtrovat bez vyhledávání, stačí předat `"*"` jako hodnotu parametru `searchText`. Chcete-li vyhledávat bez filtrování, ponechte vlastnost `Filter` nenastavenou nebo instanci `SearchParameters` vůbec nepředávejte.
 
-1. V Program.cs v části Main Odkomentujte řádky pro "3-hledání". 
+1. V části program. cs v hlavní Odkomentujte řádky pro "3-hledání". 
 
     ```csharp
     // Uncomment next 2 lines in "3 - Search an index"

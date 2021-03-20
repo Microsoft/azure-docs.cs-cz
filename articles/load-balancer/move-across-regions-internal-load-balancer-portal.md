@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
 ms.openlocfilehash: 68a2cb6926cb41956711a9e3c15d21c250d27f0b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698466"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Přesunout interní Load Balancer Azure do jiné oblasti pomocí Azure Portal
@@ -43,7 +43,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>Exportujte šablonu virtuální sítě a nasaďte ji z Azure Portal
 
-1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků** Azure Portal.
+1. Přihlaste [](https://portal.azure.com)se ke  >  **skupinám prostředků** Azure Portal.
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojovou virtuální síť, a klikněte na ni.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
@@ -91,7 +91,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 12. V případě, že zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích, můžete také změnit jiné parametry v **template.jsv** souboru.
 
-    * **Adresní prostor** – adresní prostor virtuální sítě je možné změnit před uložením úpravou části addressSpace **prostředků**  >  **addressSpace** a změnou vlastnosti **addressPrefixes** v **template.js** souboru:
+    * **Adresní prostor** – adresní prostor virtuální sítě je možné změnit před uložením úpravou části addressSpace **prostředků**  >   a změnou vlastnosti **addressPrefixes** v **template.js** souboru:
 
         ```json
                 "resources": [
@@ -194,7 +194,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>Exportujte šablonu interního nástroje pro vyrovnávání zatížení a nasaďte ji z Azure PowerShell
 
-1. Přihlaste [Azure portal](https://portal.azure.com)se ke  >  **skupinám prostředků** Azure Portal.
+1. Přihlaste [](https://portal.azure.com)se ke  >  **skupinám prostředků** Azure Portal.
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojový interní nástroj pro vyrovnávání zatížení, a klikněte na ni.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
@@ -220,7 +220,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
     1. Přihlaste se k [Azure Portal](https://portal.azure.com)  >  **skupinám prostředků** na jiné kartě nebo okně prohlížeče.
     2. Vyhledejte cílovou skupinu prostředků, která obsahuje přesunutou virtuální síť z výše uvedených kroků, a klikněte na ni.
-    3. Vyberte > **Settings**  >  **vlastnosti** nastavení.
+    3. Vyberte >   >  **vlastnosti** nastavení.
     4. V okně vpravo zvýrazněte **ID prostředku** a zkopírujte ho do schránky.  Případně můžete kliknout na tlačítko **Kopírovat do schránky** napravo od cesty k **ID prostředku** .
     5. Vložte ID prostředku do vlastnosti **DefaultValue** v editoru **úprav parametrů** otevřeném v jiném okně nebo na kartě prohlížeče:
 
@@ -259,7 +259,7 @@ Následující kroky ukazují, jak připravit interní nástroj pro vyrovnáván
 
 10. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard změnou **sku**  >  vlastnosti **název** SKU v **template.jsv** souboru:
+    * **SKU** -SKU interního nástroje pro vyrovnávání zatížení můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard změnou   >  vlastnosti **název** SKU v **template.jsv** souboru:
 
         ```json
         "resources": [

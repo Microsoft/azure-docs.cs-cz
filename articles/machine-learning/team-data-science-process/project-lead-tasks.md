@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000976"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Úkoly vedoucího projektu v rámci vědeckého zpracování týmových dat
@@ -36,7 +36,7 @@ Pro krok 6: nastavení řízení zabezpečení pro úložiště projektu, viz [P
 > [!NOTE] 
 > Tento článek používá Azure Repos k nastavení projektu TDSP, protože to znamená, jak implementovat TDSP v Microsoftu. Pokud váš tým používá jinou platformu hostování kódu, úkoly vedoucího projektu jsou stejné, ale způsob jejich dokončení může být jiný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že váš [správce skupin](group-manager-tasks.md) a [vedoucí týmu](team-lead-tasks.md) si nastavili následující prostředky a oprávnění:
 

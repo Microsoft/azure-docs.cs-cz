@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91570782"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformace XML s využitím map v Azure Logic Apps s rozšířením Enterprise Integration Pack
@@ -23,7 +23,7 @@ Předpokládejme například, že pravidelně dostanete objednávky B2B nebo fak
 
 Omezení související s integračními účty a artefakty, jako jsou mapy, najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -40,7 +40,7 @@ Omezení související s integračními účty a artefakty, jako jsou mapy, najd
     |------|-------------|
     | [Účet úložiště Azure](../storage/common/storage-account-overview.md) | V tomto účtu vytvořte kontejner objektů BLOB v Azure pro vaše sestavení. Naučte [se vytvořit účet úložiště](../storage/common/storage-account-create.md). |
     | Kontejner objektů blob | V tomto kontejneru můžete nahrát sestavení. Toto umístění kontejneru budete potřebovat také při přidávání sestavení do účtu pro integraci. Přečtěte si, jak [vytvořit kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Tento nástroj vám pomůže snadněji spravovat účty úložiště a kontejnery objektů BLOB. Chcete-li použít Průzkumník služby Storage, buď [Stáhněte a nainstalujte Průzkumník služby Azure Storage](https://www.storageexplorer.com/). Potom připojte Průzkumník služby Storage k účtu úložiště podle kroků uvedených v části [Začínáme s Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Další informace najdete v tématu [rychlý Start: vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Nebo v Azure Portal vyhledejte a vyberte svůj účet úložiště. V nabídce účtu úložiště vyberte **Průzkumník služby Storage**. |
+    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Tento nástroj vám pomůže snadněji spravovat účty úložiště a kontejnery objektů BLOB. Chcete-li použít Průzkumník služby Storage, buď [Stáhněte a nainstalujte Průzkumník služby Azure Storage](https://www.storageexplorer.com/). Potom připojte Průzkumník služby Storage k účtu úložiště podle kroků uvedených v části [Začínáme s Průzkumník služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Další informace najdete v tématu [rychlý Start: vytvoření objektu BLOB v úložišti objektů pomocí Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md). <p>Nebo v Azure Portal vyhledejte a vyberte svůj účet úložiště. V nabídce účtu úložiště vyberte **Průzkumník služby Storage**. |
     |||
 
   * U map můžete v současnosti přidat větší mapy pomocí [Azure Logic Apps REST API Maps](/rest/api/logic/maps/createorupdate).
@@ -63,7 +63,7 @@ Při vytváření a přidávání map nepotřebujete aplikaci logiky. Pokud ale 
 
    ![Vybrat účet pro integraci](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty**dlaždici **sestavení** .
+1. Na stránce **Přehled** účtu pro integraci vyberte v části **komponenty** dlaždici **sestavení** .
 
    ![Vybrat sestavení](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
 
@@ -81,7 +81,7 @@ Omezení množství sestavení v integračních účtech najdete v tématu [omez
 
 ### <a name="add-assemblies-up-to-2-mb"></a>Přidat sestavení až do 2 MB
 
-1. V části **Přidat sestavení**zadejte název sestavení. Ponechat vybraný **malý soubor** . Vedle pole **sestavení** vyberte ikonu složky. Vyhledejte a vyberte sestavení, které nahráváte, například:
+1. V části **Přidat sestavení** zadejte název sestavení. Ponechat vybraný **malý soubor** . Vedle pole **sestavení** vyberte ikonu složky. Vyhledejte a vyberte sestavení, které nahráváte, například:
 
    ![Nahrát menší sestavení](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
 
@@ -93,7 +93,7 @@ Omezení množství sestavení v integračních účtech najdete v tématu [omez
 
    ![Seznam odeslaných sestavení](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
 
-   Na stránce **Přehled** v účtu pro integraci se teď v části **komponenty**na dlaždici **sestavení** zobrazuje počet nahraných sestavení, například:
+   Na stránce **Přehled** v účtu pro integraci se teď v části **komponenty** na dlaždici **sestavení** zobrazuje počet nahraných sestavení, například:
 
    ![Odeslaná sestavení](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
 
@@ -111,11 +111,11 @@ Chcete-li přidat větší sestavení, můžete nahrát sestavení do kontejneru
 
 1. V místní nabídce kontejneru objektů BLOB vyberte **nastavit úroveň veřejného přístupu**.
 
-   * Pokud má váš kontejner objektů BLOB aspoň veřejný přístup, klikněte na **Zrušit**a pak na této stránce použijte následující postup: [nahrání do kontejnerů s veřejným přístupem](#public-access-assemblies)
+   * Pokud má váš kontejner objektů BLOB aspoň veřejný přístup, klikněte na **Zrušit** a pak na této stránce použijte následující postup: [nahrání do kontejnerů s veřejným přístupem](#public-access-assemblies)
 
      ![Veřejný přístup](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Pokud Váš kontejner objektů BLOB nemá veřejný přístup, klikněte na **Zrušit**a pak na této stránce proveďte následující kroky: [nahrání do kontejnerů bez veřejného přístupu](#no-public-access-assemblies) .
+   * Pokud Váš kontejner objektů BLOB nemá veřejný přístup, klikněte na **Zrušit** a pak na této stránce proveďte následující kroky: [nahrání do kontejnerů bez veřejného přístupu](#no-public-access-assemblies) .
 
      ![Bez veřejného přístupu](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -138,7 +138,7 @@ Chcete-li přidat větší sestavení, můžete nahrát sestavení do kontejneru
    Dokončete přidání sestavení.
 
 Po dokončení nahrávání sestavení se schéma zobrazí v seznamu **sestavení** .
-Na stránce **Přehled** v účtu pro integraci teď v části **komponenty**dlaždice **sestavení** zobrazuje počet nahraných sestavení.
+Na stránce **Přehled** v účtu pro integraci teď v části **komponenty** dlaždice **sestavení** zobrazuje počet nahraných sestavení.
 
 <a name="no-public-access-assemblies"></a>
 
@@ -161,7 +161,7 @@ Na stránce **Přehled** v účtu pro integraci teď v části **komponenty**dla
 
 1. Do pole **identifikátor URI obsahu** vložte identifikátor URI SAS, který jste předtím vygenerovali. Dokončete přidání sestavení.
 
-Po dokončení nahrávání sestavení se sestavení zobrazí v seznamu **schémata** . Na stránce **Přehled** v účtu pro integraci teď v části **komponenty**dlaždice **sestavení** zobrazuje počet nahraných sestavení.
+Po dokončení nahrávání sestavení se sestavení zobrazí v seznamu **schémata** . Na stránce **Přehled** v účtu pro integraci teď v části **komponenty** dlaždice **sestavení** zobrazuje počet nahraných sestavení.
 
 ## <a name="create-maps"></a>Vytváření map
 
@@ -184,7 +184,7 @@ Po nahrání všech sestavení, na která mapa odkazuje, teď můžete nahrát m
 
    ![Vybrat účet pro integraci](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Na stránce **Přehled** účtu Integration klikněte v části **komponenty**na dlaždici **mapy** .
+1. Na stránce **Přehled** účtu Integration klikněte v části **komponenty** na dlaždici **mapy** .
 
    ![Vyberte Maps](./media/logic-apps-enterprise-integration-maps/select-maps.png)
 
@@ -196,9 +196,9 @@ Po nahrání všech sestavení, na která mapa odkazuje, teď můžete nahrát m
 
 ### <a name="add-maps-up-to-2-mb"></a>Přidat mapy až do 2 MB
 
-1. V části **Přidat mapu**zadejte název mapy. 
+1. V části **Přidat mapu** zadejte název mapy. 
 
-1. V části **typ mapy**vyberte typ, například: **Liquid**, **XSLT**, **XSLT 2,0**nebo **XSLT 3,0**.
+1. V části **typ mapy** vyberte typ, například: **Liquid**, **XSLT**, **XSLT 2,0** nebo **XSLT 3,0**.
 
 1. Ponechat vybraný **malý soubor** . Vedle pole **Mapa** vyberte ikonu složky. Najděte a vyberte mapu, kterou nahráváte, například:
 
@@ -212,7 +212,7 @@ Po nahrání všech sestavení, na která mapa odkazuje, teď můžete nahrát m
 
    ![Seznam odeslaných map](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
 
-   Na stránce **Přehled** účtu pro integraci teď v části **komponenty**zobrazuje dlaždice **mapy** počet nahraných map, například:
+   Na stránce **Přehled** účtu pro integraci teď v části **komponenty** zobrazuje dlaždice **mapy** počet nahraných map, například:
 
    ![Nahrané mapy](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
 
@@ -318,10 +318,10 @@ Chcete-li aktualizovat existující mapu, je nutné nahrát nový soubor mapy, k
 
 1. Vyberte účet pro integraci, ve kterém chcete aktualizovat mapu.
 
-1. Na stránce **Přehled** účtu Integration klikněte v části **komponenty**na dlaždici **mapy** .
+1. Na stránce **Přehled** účtu Integration klikněte v části **komponenty** na dlaždici **mapy** .
 
 1. Po otevření stránky **mapy** vyberte mapu. 
-   Chcete-li nejprve stáhnout a upravit mapu, vyberte možnost **Stáhnout**a mapa uložte.
+   Chcete-li nejprve stáhnout a upravit mapu, vyberte možnost **Stáhnout** a mapa uložte.
 
 1. Až budete připraveni nahrát aktualizovanou mapu, vyberte na stránce **mapy** mapu, kterou chcete aktualizovat, a zvolte **aktualizovat**.
 
@@ -338,7 +338,7 @@ Chcete-li aktualizovat existující mapu, je nutné nahrát nový soubor mapy, k
 
 1. Vyberte účet pro integraci, ve kterém chcete mapu odstranit.
 
-1. Na stránce **Přehled** účtu Integration klikněte v části **komponenty**na dlaždici **mapy** .
+1. Na stránce **Přehled** účtu Integration klikněte v části **komponenty** na dlaždici **mapy** .
 
 1. Po otevření stránky **mapy** vyberte mapu a zvolte **Odstranit**.
 

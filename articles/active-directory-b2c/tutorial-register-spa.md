@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d2eaf1dce432821dcfc693dc69dcf975a3d8be8d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92503857"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>Kurz: registrace jednostránkové aplikace (SPA) v Azure Active Directory B2C
@@ -56,10 +56,10 @@ Pokud jste ještě nevytvořili vlastního [tenanta Azure AD B2C](tutorial-creat
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
+1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
 1. Zadejte **název** aplikace. Například *spaapp1*.
-1. V části **podporované typy účtů**vyberte **účty v jakémkoli zprostředkovateli identity nebo organizačním adresáři (pro ověřování uživatelů pomocí toků uživatelů)** .
-1. V části **identifikátor URI pro přesměrování**vyberte **JEDNOSTRÁNKOVÉ aplikace (Spa)** a potom `https://jwt.ms` do textového pole Adresa URL zadejte.
+1. V části **podporované typy účtů** vyberte **účty v jakémkoli zprostředkovateli identity nebo organizačním adresáři (pro ověřování uživatelů pomocí toků uživatelů)** .
+1. V části **identifikátor URI pro přesměrování** vyberte **JEDNOSTRÁNKOVÉ aplikace (Spa)** a potom `https://jwt.ms` do textového pole Adresa URL zadejte.
 
     Identifikátor URI přesměrování je koncový bod, na který se uživatel pošle prostřednictvím autorizačního serveru (Azure AD B2C, v tomto případě) po dokončení jeho interakce s uživatelem a ke kterému se po úspěšné autorizaci pošle přístupový token nebo autorizační kód. V produkční aplikaci je obvykle veřejně přístupný koncový bod, ve kterém je vaše aplikace spuštěná, třeba `https://contoso.com/auth-response` . Pro účely testování, jako je tento kurz, můžete ho nastavit na `https://jwt.ms` , webovou aplikaci ve vlastnictví společnosti Microsoft, která zobrazuje Dekódovatelné obsah tokenu (obsah tokenu nikdy nezůstane v prohlížeči). Během vývoje aplikace můžete přidat koncový bod, ve kterém vaše aplikace naslouchá místně, například `http://localhost:5000` . V registrovaných aplikacích můžete kdykoli přidat a změnit identifikátory URI pro přesměrování.
 
@@ -68,15 +68,15 @@ Pokud jste ještě nevytvořili vlastního [tenanta Azure AD B2C](tutorial-creat
     * `https`Pokud nepoužíváte, musí adresa URL odpovědi začínat schématem `localhost` .
     * Adresa URL odpovědi rozlišuje velká a malá písmena. Jeho velikost se musí shodovat s písmenem adresy URL vaší běžící aplikace. Například pokud vaše aplikace obsahuje jako součást cesty `.../abc/response-oidc` , nezadávejte `.../ABC/response-oidc` v adrese URL odpovědi. Vzhledem k tomu, že webový prohlížeč považuje cesty jako rozlišování velkých a malých písmen, mohou být soubory cookie přidružené k `.../abc/response-oidc` vyloučeny při přesměrování na neshodnou `.../ABC/response-oidc` adresu URL.
 
-1. V části **oprávnění**zaškrtněte políčko *udělit souhlas správcům oprávnění OpenID a offline_access* .
+1. V části **oprávnění** zaškrtněte políčko *udělit souhlas správcům oprávnění OpenID a offline_access* .
 1. Vyberte **Zaregistrovat**.
 
 
 ## <a name="enable-the-implicit-flow"></a>Povolit implicitní tok
 Pokud používáte implicitní tok, musíte povolit tok implicitního udělení v registraci aplikace.
 
-1. V nabídce vlevo v části **Spravovat**vyberte **ověřování**.
-1. V části **implicitní udělení**vyberte zaškrtávací políčka **přístupové tokeny** i **tokeny ID** .
+1. V nabídce vlevo v části **Spravovat** vyberte **ověřování**.
+1. V části **implicitní udělení** vyberte zaškrtávací políčka **přístupové tokeny** i **tokeny ID** .
 1. Vyberte **Uložit**.
 
 ## <a name="migrate-from-the-implicit-flow"></a>Migrace z implicitního toku
@@ -85,8 +85,8 @@ Pokud máte existující aplikaci, která používá implicitní tok, doporučuj
 
 Když všechny vaše produkční aplikace s jednou stránkou reprezentované registrací aplikace používají tok autorizačního kódu, zakažte nastavení implicitního toku udělení. 
 
-1. V nabídce vlevo v části **Spravovat**vyberte **ověřování**.
-1. V části **implicitní udělení**zrušte zaškrtnutí políček **přístupové tokeny** i **tokeny ID** .
+1. V nabídce vlevo v části **Spravovat** vyberte **ověřování**.
+1. V části **implicitní udělení** zrušte zaškrtnutí políček **přístupové tokeny** i **tokeny ID** .
 1. Vyberte **Uložit**.
 
 Pokud necháte implicitní tok povolený (zaškrtnuto), můžou aplikace, které používají implicitní tok, fungovat i nadále.

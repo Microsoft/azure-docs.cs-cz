@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92173686"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Nastavení vlastní domény ve službě Azure Static Web Apps ve verzi Preview
 
 Ve výchozím nastavení poskytuje Azure static Web Apps automaticky generovaný název domény. V tomto článku se dozvíte, jak namapovat vlastní název domény na statickou Web Apps aplikaci Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Název zakoupené domény
 - Přístup k vlastnostem konfigurace DNS pro vaši doménu
@@ -57,7 +57,7 @@ Záznam CNAME mapuje jednu doménu do druhé. Záznam CNAME můžete použít k 
 
 2. Vyhledejte stránku pro správu záznamů DNS. Každý poskytovatel domén má vlastní rozhraní pro správu záznamů DNS, takže se obraťte na dokumentaci poskytovatele. Hledejte oblasti webu označené jako **Domain Name** (Název domény), **DNS** nebo **Name Server Management** (Správa názvových serverů).
 
-3. Často můžete stránku záznamů DNS najít tak, že zobrazíte informace o vašem účtu a vyhledáte odkaz jako **My domains** (Moje domény). Přejít na tuto stránku a vyhledat odkaz s názvem podobný **souboru zóny**, **záznamům DNS**nebo **rozšířené konfiguraci**.
+3. Často můžete stránku záznamů DNS najít tak, že zobrazíte informace o vašem účtu a vyhledáte odkaz jako **My domains** (Moje domény). Přejít na tuto stránku a vyhledat odkaz s názvem podobný **souboru zóny**, **záznamům DNS** nebo **rozšířené konfiguraci**.
 
     Následující snímek obrazovky obsahuje příklad stránky záznamů DNS:
 
@@ -102,7 +102,7 @@ Někdy budete chtít, aby byl veškerý provoz odeslaný do subdomény směrová
 
 2. Vyhledejte stránku pro správu záznamů DNS. Každý poskytovatel domén má vlastní rozhraní pro správu záznamů DNS, takže se obraťte na dokumentaci poskytovatele. Hledejte oblasti webu označené jako **Domain Name** (Název domény), **DNS** nebo **Name Server Management** (Správa názvových serverů).
 
-3. Často můžete stránku záznamů DNS najít tak, že zobrazíte informace o vašem účtu a vyhledáte odkaz jako **My domains** (Moje domény). Přejít na tuto stránku a vyhledat odkaz s názvem podobným pro **soubor zóny**, **záznamy DNS**nebo **pokročilou konfiguraci**.
+3. Často můžete stránku záznamů DNS najít tak, že zobrazíte informace o vašem účtu a vyhledáte odkaz jako **My domains** (Moje domény). Přejít na tuto stránku a vyhledat odkaz s názvem podobným pro **soubor zóny**, **záznamy DNS** nebo **pokročilou konfiguraci**.
 
     Následující snímek obrazovky obsahuje příklad stránky záznamů DNS:
 

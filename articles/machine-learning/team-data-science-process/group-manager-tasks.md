@@ -11,10 +11,10 @@ ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7ab6d6511d1e2cec82b321003c9d663249ddcf49
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94740222"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Úlohy správce skupin procesů týmu pro data vědeckého zpracování
@@ -213,7 +213,7 @@ git push
 ```
 
 > [!NOTE]
-> Pokud se jedná o první potvrzení do úložiště Git, možná budete muset nakonfigurovat globální parametry *User.Name* a *User. email* před spuštěním `git commit` příkazu. Spusťte následující dva příkazy:
+> Pokud se jedná o první potvrzení do úložiště Git, možná budete muset před spuštěním příkazu nakonfigurovat globální parametry *User.Name* a *User.email* `git commit` . Spusťte následující dva příkazy:
 > 
 > `git config --global user.name <your name>`
 > 

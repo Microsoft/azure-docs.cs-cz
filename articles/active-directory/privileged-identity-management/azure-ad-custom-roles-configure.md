@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835318"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurace vlastních rolí Azure AD v Privileged Identity Management
@@ -64,7 +64,7 @@ Můžete také zvolit jednu z těchto možností trvání *aktivních* přiřaze
 - **Povolení trvalého aktivního přiřazení**: Správci můžou přiřadit trvalé aktivní členství.
 - **Ukončit aktivní přiřazení po**: Správci můžou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum.
 
-### <a name="require-azure-ad-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication služby Azure AD
+### <a name="require-azure-ad-multi-factor-authentication"></a>Vyžadování vícefaktorového ověřování Azure AD
 
 Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Authentication Azure AD pro dva různé scénáře.
 

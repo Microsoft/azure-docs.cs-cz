@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
 ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396851"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Vytvořit Aplikační bránu a přepsat hlavičky HTTP
@@ -107,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 Nakonfigurujte nové objekty vyžadované pro přepsání hlaviček protokolu http:
 
-- **RequestHeaderConfiguration** : Tento objekt slouží k zadání polí hlavičky požadavku, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
-- **ResponseHeaderConfiguration** : Tento objekt slouží k zadání polí hlavičky odpovědi, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
-- **ActionSet** : Tento objekt obsahuje konfigurace výše uvedených hlaviček požadavků a odpovědí. 
-- **RewriteRule** : Tento objekt obsahuje všechny *actionSets* uvedené výše. 
-- **RewriteRuleSet** – tento objekt obsahuje všechny *rewriteRules* a bude nutné ho připojit k pravidlu směrování požadavku – Basic nebo na základě cesty.
+- **RequestHeaderConfiguration**: Tento objekt slouží k zadání polí hlavičky požadavku, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
+- **ResponseHeaderConfiguration**: Tento objekt slouží k zadání polí hlavičky odpovědi, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
+- **ActionSet**: Tento objekt obsahuje konfigurace výše uvedených hlaviček požadavků a odpovědí. 
+- **RewriteRule**: Tento objekt obsahuje všechny *actionSets* uvedené výše. 
+- **RewriteRuleSet**– tento objekt obsahuje všechny *rewriteRules* a bude nutné ho připojit k pravidlu směrování požadavku – Basic nebo na základě cesty.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"

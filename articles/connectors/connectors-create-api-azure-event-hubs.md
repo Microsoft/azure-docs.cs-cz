@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 65da8e07c01561577fe7eff449bfc10348c7f277
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716597"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitorování, příjem a odesílání událostí s využitím služby Azure Event Hubs a Azure Logic Apps
 
 V tomto článku se dozvíte, jak můžete monitorovat a spravovat události odeslané do [Azure Event Hubs](../event-hubs/event-hubs-about.md) z aplikace logiky pomocí konektoru Azure Event Hubs. Můžete tak vytvářet aplikace logiky, které automatizují úlohy a pracovní postupy kontroly, odesílání a příjmu událostí z centra událostí. Technické informace specifické pro konektor najdete v referenčních informacích k [Azure Event Hubs Connectoru](/connectors/eventhubs/) </a> .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -79,23 +79,23 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky p
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název centra událostí** | Ano | Název centra událostí, které chcete monitorovat |
-   | **Typ obsahu** | Ne | Typ obsahu události Výchozí formát je `application/octet-stream`. |
-   | **Název skupiny uživatelů** | Ne | [Název skupiny uživatelů centra událostí](../event-hubs/event-hubs-features.md#consumer-groups) , která se má použít pro čtení událostí. Pokud není zadaný, použije se výchozí skupina uživatelů. |
-   | **Maximální počet událostí** | Ne | Maximální počet událostí. Aktivační událost se vrátí mezi 1 a počtem událostí určených touto vlastností. |
-   | **Interval** | Ano | Kladné celé číslo, které popisuje, jak často se Workflow spouští na základě frekvence |
-   | **Frekvence** | Ano | Jednotka času opakování |
+   | **Název centra událostí** | Yes | Název centra událostí, které chcete monitorovat |
+   | **Typ obsahu** | No | Typ obsahu události Výchozí formát je `application/octet-stream`. |
+   | **Název skupiny uživatelů** | No | [Název skupiny uživatelů centra událostí](../event-hubs/event-hubs-features.md#consumer-groups) , která se má použít pro čtení událostí. Pokud není zadaný, použije se výchozí skupina uživatelů. |
+   | **Maximální počet událostí** | No | Maximální počet událostí. Aktivační událost se vrátí mezi 1 a počtem událostí určených touto vlastností. |
+   | **Interval** | Yes | Kladné celé číslo, které popisuje, jak často se Workflow spouští na základě frekvence |
+   | **Frekvence** | Yes | Jednotka času opakování |
    ||||
 
    **Další vlastnosti**
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Schéma obsahu** | Ne | Schéma obsahu JSON pro události, které se mají číst z centra událostí. Pokud například zadáte schéma obsahu, můžete spustit aplikaci logiky jenom pro události, které odpovídají schématu. |
-   | **Minimální klíč oddílu** | Ne | Zadejte minimální ID [oddílu](../event-hubs/event-hubs-features.md#partitions) , který se má přečíst. Ve výchozím nastavení jsou všechny oddíly čteny. |
-   | **Maximální klíč oddílu** | Ne | Zadejte maximální ID [oddílu](../event-hubs/event-hubs-features.md#partitions) , který se má přečíst. Ve výchozím nastavení jsou všechny oddíly čteny. |
-   | **Časové pásmo** | Ne | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá posun UTC. Vyberte časové pásmo, které chcete použít. <p>Další informace najdete v tématu [vytváření a spouštění opakujících se úloh a pracovních postupů s Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
-   | **Čas spuštění** | Ne | Zadejte čas spuštění v tomto formátu: <p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo<p>-nebo-<p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo<p>Další informace najdete v tématu [vytváření a spouštění opakujících se úloh a pracovních postupů s Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
+   | **Schéma obsahu** | No | Schéma obsahu JSON pro události, které se mají číst z centra událostí. Pokud například zadáte schéma obsahu, můžete spustit aplikaci logiky jenom pro události, které odpovídají schématu. |
+   | **Minimální klíč oddílu** | No | Zadejte minimální ID [oddílu](../event-hubs/event-hubs-features.md#partitions) , který se má přečíst. Ve výchozím nastavení jsou všechny oddíly čteny. |
+   | **Maximální klíč oddílu** | No | Zadejte maximální ID [oddílu](../event-hubs/event-hubs-features.md#partitions) , který se má přečíst. Ve výchozím nastavení jsou všechny oddíly čteny. |
+   | **Časové pásmo** | No | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá posun UTC. Vyberte časové pásmo, které chcete použít. <p>Další informace najdete v tématu [vytváření a spouštění opakujících se úloh a pracovních postupů s Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
+   | **Čas spuštění** | No | Zadejte čas spuštění v tomto formátu: <p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo<p>-nebo-<p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo<p>Další informace najdete v tématu [vytváření a spouštění opakujících se úloh a pracovních postupů s Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
    ||||
 
 1. Až budete hotovi, na panelu nástrojů návrháře klikněte na **Uložit**.
@@ -130,10 +130,10 @@ V seznamu akce vyberte tuto akci: **Odeslat událost – Event Hubs**
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název centra událostí** | Ano | Centrum událostí, do kterého chcete událost odeslat |
-   | **Obsah** | Ne | Obsah události, kterou chcete odeslat |
-   | **Vlastnosti** | Ne | Vlastnosti a hodnoty aplikace, které se mají odeslat |
-   | **Klíč oddílu** | Ne | ID [oddílu](../event-hubs/event-hubs-features.md#partitions) , kde má být událost odeslána |
+   | **Název centra událostí** | Yes | Centrum událostí, do kterého chcete událost odeslat |
+   | **Obsah** | No | Obsah události, kterou chcete odeslat |
+   | **Vlastnosti** | No | Vlastnosti a hodnoty aplikace, které se mají odeslat |
+   | **Klíč oddílu** | No | ID [oddílu](../event-hubs/event-hubs-features.md#partitions) , kde má být událost odeslána |
    ||||
 
    Můžete třeba poslat výstup z aktivační události Event Hubs do jiného centra událostí:
@@ -152,8 +152,8 @@ V seznamu akce vyberte tuto akci: **Odeslat událost – Event Hubs**
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
-   | **Obor názvů Event Hubs** | Ano | <*Event-Centers – obor názvů*> | Vyberte obor názvů Event Hubs, který chcete použít. |
+   | **Název připojení** | Yes | <*název připojení*> | Název, který se má pro připojení vytvořit |
+   | **Obor názvů Event Hubs** | Yes | <*Event-Centers – obor názvů*> | Vyberte obor názvů Event Hubs, který chcete použít. |
    |||||  
 
    Například:

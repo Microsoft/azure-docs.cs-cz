@@ -14,17 +14,17 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90087005"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktory ovlivňující výkon nástroje Azure AD Connect
 
 Azure AD Connect synchronizuje vaši službu Active Directory s Azure AD. Tento server je důležitou součástí přesunutí identity uživatelů do cloudu. Hlavní faktory ovlivňující výkon Azure AD Connect jsou:
 
-| **Faktor návrhu**| **Definice** |
+| **Faktor návrhu**| **Definition** |
 |:-|-|
 | Topologie| Distribuce koncových bodů a komponent Azure AD Connect musí spravovat v síti. |
 | Měřítko| Počet objektů, jako jsou uživatelé, skupiny a organizační jednotky, budou spravovány Azure AD Connect. |

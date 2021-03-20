@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
 ms.openlocfilehash: d6f0f30d7437b6f8ecc1d915eb3d3195f2504fec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098242"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Jak monitorovat propustnost nebo využití jednotek žádosti operace v Azure Cosmos DB
@@ -37,29 +37,29 @@ Pokud si všimnete, že některé dotazy pobírají více jednotek žádostí, m
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky** .
+1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 
    :::image type="content" source="./media/monitor-request-unit-usage/monitor-metrics-blade.png" alt-text="Podokno metrik v Azure Monitor":::
 
-1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné** a **skupinu prostředků** . Jako **typ prostředku** vyberte **Azure Cosmos DB účty** , zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít** .
+1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné** a **skupinu prostředků**. Jako **typ prostředku** vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
 
-   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Podokno metrik v Azure Monitor":::
+   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Vyberte účet Azure Cosmos DB, pro který chcete zobrazit metriky.":::
 
 1. Potom v seznamu dostupných metrik vyberte položku Celková metrika **jednotek požadavků** . Podrobné informace o všech dostupných metrikách v tomto seznamu najdete v článku [metriky podle kategorií](monitor-cosmos-db-reference.md) . V tomto příkladu vybereme možnost **Celkový počet jednotek žádostí** a **průměr** jako hodnotu agregace. Kromě těchto podrobností můžete také vybrat **časový rozsah** a **časovou členitost** metrik. V poli Max (maximum) si můžete zobrazit metriky za posledních 30 dní.  Po použití filtru se v závislosti na vašem filtru zobrazí graf. Pro vybrané období můžete zobrazit průměrný počet spotřebovaných jednotek žádostí za minutu.  
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Podokno metrik v Azure Monitor":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Vyberte metriku z Azure Portal":::
 
 ## <a name="filters-for-request-unit-usage"></a>Filtry pro využití jednotky požadavku
 
-Můžete také filtrovat metriky a získat grafy zobrazené konkrétním názvem **CollectionName** , **DatabaseName** , **typem operace OperationType** , **oblastí** , **stavem** a **StatusCode** . Možnosti **Přidat filtr** a **použít rozdělení** umožňují filtrovat využití jednotek požadavků a seskupit metriky.
+Můžete také filtrovat metriky a získat grafy zobrazené konkrétním názvem **CollectionName**, **DatabaseName**, **typem operace OperationType**, **oblastí**, **stavem** a **StatusCode**. Možnosti **Přidat filtr** a **použít rozdělení** umožňují filtrovat využití jednotek požadavků a seskupit metriky.
 
 Pokud chcete získat využití jednotky žádosti každé operace buď podle součtu (Sum), nebo průměrně, vyberte **použít rozdělení** a zvolte **typ operace** a hodnotu filtru, jak je znázorněno na následujícím obrázku:
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="Podokno metrik v Azure Monitor":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="Cosmos DB jednotky žádostí o operace ve službě Azure monitor":::
 
 Pokud chcete zobrazit využití jednotky žádosti podle kolekce, vyberte **použít rozdělení** a jako filtr zvolte název kolekce. V rámci řídicího panelu se zobrazí chat podobný tomuto: s výběrem kolekce. Pak můžete vybrat konkrétní název kolekce a zobrazit další podrobnosti:
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Podokno metrik v Azure Monitor":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Cosmos DB jednotky žádostí pro všechny operace podle kolekce ve službě Azure monitor":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001085"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro vývoj pro systém Windows, je nutné vytvořit projekt, nastavit aplikaci Visual Studio pro vývoj desktopových aplikací .NET, nainstalovat sadu Speech SDK a vybrat cílovou architekturu.

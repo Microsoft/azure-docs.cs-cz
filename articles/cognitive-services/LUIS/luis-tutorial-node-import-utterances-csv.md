@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.openlocfilehash: 58eb92f4d0bc3de4671ca2ece14a178a876e4a6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91541033"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programové vytvoření aplikace v LUIS pomocí Node.js
@@ -22,10 +22,10 @@ LUIS poskytuje programové rozhraní API, které provádí všechny weby [Luis](
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Přihlaste se k webu [Luis](luis-reference-regions.md) a vyhledejte svůj [klíč pro vytváření obsahu](luis-how-to-azure-subscription.md#authoring-key) v nastavení účtu. Tento klíč použijete k volání rozhraní API pro vytváření obsahu.
-* Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 * Tento článek začíná na CSV pro soubory protokolu hypotetické společnosti pro požadavky uživatelů. Stáhněte si ho [sem](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * Nainstalujte nejnovější Node.js pomocí nástroje NPM. Stáhněte [si ho odsud.](https://nodejs.org/en/download/)
 * **[Doporučeno]** Visual Studio Code pro IntelliSense a ladění, Stáhněte si ho [odsud zdarma](https://code.visualstudio.com/) .
@@ -82,7 +82,7 @@ Například položka pro "zapnout světla" namapuje na tento kód JSON:
         }
 ```
 
-V tomto příkladu `intentName` pochází z požadavku uživatele v záhlaví sloupce **žádosti** v souboru CSV a `entityName` z dalších sloupců obsahuje klíčové informace. Pokud je například položka pro **operaci** nebo **zařízení**a k tomuto řetězci dojde také v samotné žádosti, může být označena jako entita. Následující kód demonstruje tento proces analýzy. Můžete ho zkopírovat nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) a Uložit do `_parse.js` .
+V tomto příkladu `intentName` pochází z požadavku uživatele v záhlaví sloupce **žádosti** v souboru CSV a `entityName` z dalších sloupců obsahuje klíčové informace. Pokud je například položka pro **operaci** nebo **zařízení** a k tomuto řetězci dojde také v samotné žádosti, může být označena jako entita. Následující kód demonstruje tento proces analýzy. Můžete ho zkopírovat nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) a Uložit do `_parse.js` .
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
@@ -179,7 +179,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>Otevření aplikace LUIS
-Až se skript dokončí, můžete se přihlásit k [Luis](luis-reference-regions.md) a zobrazit aplikaci Luis, kterou jste vytvořili v části **Moje aplikace**. Měli byste být schopni zobrazit projevy, které jste přidali pod **TurnOn**, **TurnOff**a **žádné** záměry.
+Až se skript dokončí, můžete se přihlásit k [Luis](luis-reference-regions.md) a zobrazit aplikaci Luis, kterou jste vytvořili v části **Moje aplikace**. Měli byste být schopni zobrazit projevy, které jste přidali pod **TurnOn**, **TurnOff** a **žádné** záměry.
 
 ![Záměr TurnOn](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
@@ -189,7 +189,7 @@ Až se skript dokončí, můžete se přihlásit k [Luis](luis-reference-regions
 > [!div class="nextstepaction"]
 > [Testování a výuka aplikace na webu LUIS](luis-interactive-test.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Tato ukázková aplikace používá následující LUIS rozhraní API:
 - [vytvořit aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
