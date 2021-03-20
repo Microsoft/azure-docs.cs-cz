@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99537742"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Než budete moct dokončit kroky v tomto kurzu, vytvořte profil CDN a aspoň jeden koncový bod CDN. 
     * Další informace najdete v tématu [Rychlý start: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).

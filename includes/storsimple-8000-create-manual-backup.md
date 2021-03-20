@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 89f7be31514f0b78c3bfb3efd6e6aca14658d5cd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93375899"
 ---
 #### <a name="to-create-a-manual-backup"></a>Ruční vytvoření zálohy
@@ -21,7 +21,7 @@ ms.locfileid: "93375899"
 
 3. V okně **Zálohovat nyní** proveďte následující kroky:
 
-    1. Z rozevíracího seznamu zvolte vhodný **Typ snímku** : **Místní** snímek nebo **Cloudový** snímek. Pokud chcete rychlejší zálohování a obnovení, vyberte místní snímek; cloudový snímek vyberte, pokud chcete větší odolnost dat.
+    1. Z rozevíracího seznamu zvolte vhodný **Typ snímku**: **Místní** snímek nebo **Cloudový** snímek. Pokud chcete rychlejší zálohování a obnovení, vyberte místní snímek; cloudový snímek vyberte, pokud chcete větší odolnost dat.
 
         ![Vytvoření ruční zálohy 2](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "93375899"
 
         ![Vytvoření ruční zálohy 3](./media/storsimple-8000-create-manual-backup/createmanualbu4.png)
 
-    3. Pokud chcete úlohu monitorovat, klikněte na oznámení. Tím přejdete do okna **Úlohy** , kde můžete zobrazit průběh úlohy.
+    3. Pokud chcete úlohu monitorovat, klikněte na oznámení. Tím přejdete do okna **Úlohy**, kde můžete zobrazit průběh úlohy.
 
 
 5. Po dokončení úlohy zálohování přejděte na kartu **Backup catalog** (Katalog zálohování).

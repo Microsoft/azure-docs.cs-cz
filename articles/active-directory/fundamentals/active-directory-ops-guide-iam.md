@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370997"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Referenční příručka operací správy identit a přístupu Azure Active Directory
@@ -31,7 +31,7 @@ Tato část [Referenční příručka operací Azure AD](active-directory-ops-gu
 
 Správa Azure Active Directory vyžaduje nepřetržité provádění klíčových provozních úloh a procesů, které nemusí být součástí projektu zavedení. Stále je důležité, abyste nastavili tyto úlohy pro zachování vašeho prostředí. Mezi klíčové úlohy a jejich Doporučené vlastníky patří:
 
-| Úloha | Vlastník |
+| Úkol | Vlastník |
 | :- | :- |
 | Definování procesu vytváření předplatných Azure | Liší se podle organizace |
 | Rozhodnutí o tom, kdo obdrží licence Enterprise Mobility + Security | Provozní tým IAM |
@@ -97,7 +97,7 @@ Pokud vaše organizace nemá strategii zotavení po havárii a převzetí služe
 
 ![Snímek obrazovky s konfigurací pracovního režimu Azure AD Connect](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
-#### <a name="stay-current"></a>Zajištění aktuálnosti
+#### <a name="stay-current"></a>Aktuální přehled
 
 Aktualizace společnosti Microsoft Azure AD Connect pravidelně. Současným využitím vylepšení výkonu, oprav chyb a nových funkcí, které poskytuje každá nová verze.
 

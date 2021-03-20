@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: sharrai
 ms.openlocfilehash: 5860928d71c0e7431190908d5df5d7496e8ffb17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89426312"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Vyřazení funkce šifrování dat Site Recovery
@@ -29,7 +29,7 @@ Upozorňujeme, že pokud jste stávající zákazník používající tuto funkc
 
 ## <a name="what-are-the-implications"></a>Jaké jsou důsledky?
 
-Po **30. dubna 2022**nebudou moct převzetí služeb při selhání provádět žádné virtuální počítače, které pořád používají vyřazenou funkci šifrování. 
+Po **30. dubna 2022** nebudou moct převzetí služeb při selhání provádět žádné virtuální počítače, které pořád používají vyřazenou funkci šifrování. 
 
 ## <a name="required-action"></a>Požadovaná akce
 Pokud chcete pokračovat v úspěšných operacích převzetí služeb při selhání a replikace, postupujte podle níže uvedených kroků:

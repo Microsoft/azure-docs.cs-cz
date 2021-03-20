@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: cf9901b4e49460dd2fb91dceaf239571058c5284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88213314"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Vlastní ukládání do mezipaměti ve službě Azure API Management
@@ -277,5 +277,5 @@ Ve větších nasazeních s více klienty vytvářejí některé společnosti sa
 
 Místo vrácení upřednostňované verze rozhraní API pro každý klíč předplatného byste vrátili identifikátor, který vztahuje tenanta k přiřazené hardwarové skupině. Tento identifikátor lze použít k vytvoření příslušné adresy URL back-endu.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Volná mezipaměť služby Azure API Management pro ukládání jakéhokoli druhu dat umožňuje efektivní přístup k datům konfigurace, který může ovlivnit způsob zpracování příchozího požadavku. Dá se taky použít k ukládání fragmentů dat, které můžou rozšiřovat odpovědi, které se vrátí z back-endu rozhraní API.

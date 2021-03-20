@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9aed5f282ff7b5d573a6f8511f2fc4dbfd27135d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371813"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Odstranění skupiny pomocí Azure Active Directory
@@ -32,7 +32,7 @@ Skupinu Azure Active Directory (Azure AD) můžete odstranit z libovolného poč
 ## <a name="to-delete-a-group"></a>Odstranění skupiny
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
+2. Vyberte **Azure Active Directory** a pak vyberte **skupiny**.
 
 3. Na stránce **skupiny – všechny skupiny** vyhledejte a vyberte skupinu, kterou chcete odstranit. Pro tyto kroky použijeme **zásady MDM – východ**.
 

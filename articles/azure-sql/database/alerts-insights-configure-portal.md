@@ -12,10 +12,10 @@ ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 05/04/2020
 ms.openlocfilehash: c7f72a9b140c68320e221a4cfb20cbf107a5f531
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572278"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Vytváření upozornění pro Azure SQL Database a Azure synapse Analytics pomocí Azure Portal
@@ -52,7 +52,7 @@ Můžete nakonfigurovat a získat informace o pravidlech upozornění pomocí
 1. Na [portálu](https://portal.azure.com/)vyhledejte prostředek, který chcete monitorovat, a vyberte ho.
 2. V části monitorování vyberte **výstrahy** . Text a ikona se mohou mírně lišit pro různé prostředky.  
 
-   ![Sledování](./media/alerts-insights-configure-portal/Alerts.png)
+   ![Monitorování](./media/alerts-insights-configure-portal/Alerts.png)
   
 3. Kliknutím na tlačítko **nové pravidlo výstrahy** otevřete stránku **vytvořit pravidlo** .
   ![Vytvořit pravidlo](./media/alerts-insights-configure-portal/create-rule.png)

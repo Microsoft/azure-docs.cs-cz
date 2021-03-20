@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
 ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97006139"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
@@ -26,7 +26,7 @@ V této dílně použijete Azure Data Factory (ADF) k ingestování dat z Azure 
 
 Data použitá v tomto testovacím prostředí jsou v New Yorku City taxislužby data. Pokud ho chcete importovat do databáze v SQL Database, Stáhněte si [soubor taxislužby-data BacPac](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 88e433dbfa87d8ea483789b1fd838c62a6a481c0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536755"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
@@ -28,7 +28,7 @@ V tomto tématu se dozvíte, jak provádět běžné úlohy, jako je vytvářen�
 
 Další informace o modelu nasazení Classic najdete v tématu [Azure Resource Manager vs. Classic Deployment: Principy modelů nasazení a stavu vašich prostředků](../azure-resource-manager/management/deployment-models.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud jste již nainstalovali Azure PowerShell, je nutné, abyste měli Azure PowerShell verze 1.0.0 nebo novější. Verzi Azure PowerShell, kterou jste nainstalovali s tímto příkazem, můžete zjistit na příkazovém řádku Azure PowerShell.
 
 ```azurepowershell
@@ -141,12 +141,12 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 
 | Parametr | Popis | Výchozí |
 | --- | --- | --- |
-| Název |Název mezipaměti | |
+| Name |Název mezipaměti | |
 | Umístění |Umístění mezipaměti | |
 | ResourceGroupName |Název skupiny prostředků, ve které se má mezipaměť vytvořit | |
 | Velikost |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB, 2,5 GB, 6 GB, 13GB, 26GB, 53GB. |PAMĚT |
 | ShardCount |Počet horizontálních oddílů, které se mají vytvořit při vytváření mezipaměti Premium s povoleným clusteringem Platné hodnoty jsou: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. | |
-| Skladová položka |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Standard |
+| SKU |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Standard |
 | RedisConfiguration |Určuje nastavení konfigurace Redis. Podrobnosti o jednotlivých nastaveních najdete v následujících tabulkách [vlastností RedisConfiguration](#redisconfiguration-properties) . | |
 | EnableNonSslPort |Určuje, jestli je povolený port bez SSL. |Ne |
 | MaxMemoryPolicy |Tento parametr je zastaralý – místo toho použijte RedisConfiguration. | |

@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c1d7bf933b487c40d571f1912341b5ef771e4e67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90527322"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Vytváření filtrů pomocí Media Services REST API
@@ -33,7 +33,7 @@ V tomto tématu se dozvíte, jak definovat filtr pro prostředek video na vyžá
 > [!NOTE]
 > Nezapomeňte zkontrolovat [presentationTimeRange](filters-concept.md#presentationtimerange).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 K dokončení kroků popsaných v tomto tématu je třeba provést následující kroky:
 
@@ -95,7 +95,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Vyberte kartu **tělo** a vložte kód JSON, který jste [definovali dříve](#define-a-filter).
 
-Vyberte **Poslat**. 
+Vyberte **Odeslat**. 
 
 Filtr byl vytvořen.
 
@@ -113,7 +113,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Vyberte kartu **tělo** a vložte kód JSON, který jste [definovali dříve](#define-a-filter).
 
-Vyberte **Poslat**. 
+Vyberte **Odeslat**. 
 
 Filtr assetu byl vytvořen.
 

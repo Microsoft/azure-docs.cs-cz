@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084732"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Plánovač
@@ -169,7 +169,7 @@ Když je spuštěný cyklus synchronizace, nemůžete provádět změny konfigur
 
    ![Snímek obrazovky ukazuje Synchronization Service Manager s vybranými konektory a běžící konektor zvýrazněný vybranou akcí zastavit.](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
 
-   * Spusťte **synchronizační službu** z nabídky Start. Přejděte na **konektory**, zvýrazněte konektor se stavem **spuštěno**a vyberte možnost **zastavit** z akcí.
+   * Spusťte **synchronizační službu** z nabídky Start. Přejděte na **konektory**, zvýrazněte konektor se stavem **spuštěno** a vyberte možnost **zastavit** z akcí.
 
 Plánovač je stále aktivní a při další příležitosti se znovu spustí.
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: b8dde3ed76587e2343edaec8626287853ec6ef9b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487503"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>Šifrování ExpressRoute: protokol IPsec over ExpressRoute pro virtuální síť WAN
@@ -95,7 +95,7 @@ Prostředek sítě je stejný jako lokalita VPN bez ExpressRoute pro virtuální
 
    Pokud je protokol BGP povolený, bude platit pro všechna připojení vytvořená pro tento web v Azure. Konfigurace protokolu BGP ve virtuální síti WAN je rovnocenná konfiguraci protokolu BGP v bráně Azure VPN. 
    
-   Vaše místní adresa partnerského uzlu BGP *nesmí* být SHODNÁ s IP adresou vaší sítě VPN k zařízení nebo adresnímu prostoru virtuální sítě sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může se jednat o adresu přiřazenou rozhraní zpětné smyčky v zařízení. Nejedná se *can't* však o APIPA (169,254).*x*. *x*) adresa. Tuto adresu zadejte v odpovídající lokalitě VPN, která představuje umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+   Vaše místní adresa partnerského uzlu BGP *nesmí* být SHODNÁ s IP adresou vaší sítě VPN k zařízení nebo adresnímu prostoru virtuální sítě sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může se jednat o adresu přiřazenou rozhraní zpětné smyčky v zařízení. Nejedná se  však o APIPA (169,254).*x*. *x*) adresa. Tuto adresu zadejte v odpovídající lokalitě VPN, která představuje umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
 1. Vyberte **Další: Zkontrolujte a vytvořte >** a zkontrolujte hodnoty nastavení a vytvořte lokalitu VPN. Pokud jste vybrali **rozbočovače** k připojení, připojení se vytvoří mezi místní sítí a bránou VPN centra.
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 7a71502ec361004079e0962d8bc6433316a4ba81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90007634"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Přesun prostředků Azure napříč oblastmi
@@ -43,7 +43,7 @@ Prostředky můžete přesunout do jiné oblasti pomocí programu [Azure Resourc
 Prostředky můžete přesunout do jiné oblasti pomocí několika různých metod:
 
 - **Zahájení přesouvání prostředků ze skupiny prostředků**: s touto metodou jste v rámci skupiny prostředků aktivovali přesunutí oblasti. Po výběru prostředků, které chcete přesunout, proces pokračuje v centru zdrojů pro kontrolu závislostí prostředků a orchestruje proces přesunutí. [Další informace](../../resource-mover/move-region-within-resource-group.md).
-- **Začněte přesouvat prostředky přímo z centra pro**podávání prostředků: s touto metodou jste v oblasti přesunuli proces přesunutí přímo do centra. [Další informace](../../resource-mover/tutorial-move-region-virtual-machines.md).
+- **Začněte přesouvat prostředky přímo z centra pro** podávání prostředků: s touto metodou jste v oblasti přesunuli proces přesunutí přímo do centra. [Další informace](../../resource-mover/tutorial-move-region-virtual-machines.md).
 
 
 ## <a name="support-for-region-move"></a>Podpora pro přesun oblasti

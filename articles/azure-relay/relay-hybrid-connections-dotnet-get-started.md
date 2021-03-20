@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
 ms.openlocfilehash: bf22b8b11dc386644803b43ee4e3a51d04b70419
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90527424"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Začínáme s objekty WebSocket Relay Hybrid Connections v .NET
@@ -24,7 +24,7 @@ V tomto rychlém startu proveďte následující kroky:
 4. Napíšeme konzolovou aplikaci klienta (odesílatele) pro odesílání zpráv.
 5. Spusťte aplikace. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 

@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
 ms.openlocfilehash: 8224ae4a48bb4915492240c414b90edb86a4c258
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93393128"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesun virtuálních počítačů Azure do Zóny dostupnosti
@@ -116,15 +116,15 @@ Po dokončení úlohy replikace můžete zkontrolovat stav replikace, upravit na
 2. Můžete kontrolovat stav replikace, vytvořené body obnovení a zdrojovou a cílovou oblast na mapě.
 
 
-## <a name="test-the-configuration"></a>Otestování konfigurace
+## <a name="test-the-configuration"></a>Otestujte konfiguraci.
 
 1. V nabídce virtuální počítač vyberte možnost  **zotavení po havárii**.
 2. Vyberte ikonu **Test převzetí služeb při selhání** .
 3. V části **testovací převzetí služeb při selhání** vyberte bod obnovení, který chcete použít pro převzetí služeb při selhání:
 
    - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. U této možnosti nedochází k prodlevě při zpracování dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
-   - **Nejnovější konzistentní vzhledem k aplikacím** : Tato možnost vrátí všechny virtuální počítače k nejnovějšímu konzistentnímu bodu obnovení vzhledem k aplikacím. Zobrazí se časové razítko.
-   - **Vlastní** : Vyberete si libovolný bod obnovení.
+   - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost vrátí všechny virtuální počítače k nejnovějšímu konzistentnímu bodu obnovení vzhledem k aplikacím. Zobrazí se časové razítko.
+   - **Vlastní**: Vyberete si libovolný bod obnovení.
 
 3. Vyberte testovací cílovou virtuální síť Azure, ke které chcete přesunout virtuální počítače Azure, abyste mohli otestovat konfiguraci. 
 

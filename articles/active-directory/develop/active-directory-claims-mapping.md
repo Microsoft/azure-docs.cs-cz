@@ -14,10 +14,10 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94647592"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
@@ -44,7 +44,7 @@ Zásada mapování deklarací identity je typ objektu **zásad** , který mění
 
 Existují určité sady deklarací, které definují, jak a kdy se používají v tokenech.
 
-| Sada deklarací identity | Popis |
+| Sada deklarací identity | Description |
 |---|---|
 | Základní sada deklarací identity | Jsou přítomny v každém tokenu bez ohledu na zásadu. Tyto deklarace jsou také považovány za omezené a nelze je upravit. |
 | Základní sada deklarací identity | Zahrnuje deklarace identity, které jsou ve výchozím nastavení emitované pro tokeny (kromě základní sady deklarací identity). Základní deklarace identity můžete vynechat nebo upravit pomocí zásad mapování deklarací identity. |
@@ -287,48 +287,48 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: platné hodnoty ID na zdroj
 
-| Zdroj | ID | Popis |
+| Zdroj | ID | Description |
 |-----|-----|-----|
-| Uživatel | surname | Název rodiny |
-| Uživatel | givenname | jméno |
-| Uživatel | DisplayName | Zobrazovaný název |
-| Uživatel | objektu | ObjectId |
-| Uživatel | pošta | E-mailová adresa |
-| Uživatel | třídy | Hlavní název uživatele |
-| Uživatel | Oddělení|Oddělení|
-| Uživatel | onpremisessamaccountname | Místní název účtu SAM |
-| Uživatel | NetBiosName| Název pro rozhraní NetBios |
-| Uživatel | dnsdomainname | Název domény DNS |
-| Uživatel | onpremisesecurityidentifier | Místní identifikátor zabezpečení |
-| Uživatel | společnosti| Název organizace |
-| Uživatel | streetaddress | Adresa |
-| Uživatel | ovládacím | PSČ |
-| Uživatel | preferredlanguage | Preferovaný jazyk |
-| Uživatel | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |*
-| Uživatel | mailNickname | Přezdívka pošty |
-| Uživatel | extensionattribute1 | Atribut rozšíření 1 |
-| Uživatel | extensionattribute2 | Atribut rozšíření 2 |
-| Uživatel | extensionattribute3 | Atribut rozšíření 3 |
-| Uživatel | extensionattribute4 | Atribut rozšíření 4 |
-| Uživatel | extensionattribute5 | Atribut rozšíření 5 |
-| Uživatel | extensionattribute6 | Atribut rozšíření 6 |
-| Uživatel | extensionattribute7 | Atribut rozšíření 7 |
-| Uživatel | extensionattribute8 | Atribut rozšíření 8 |
-| Uživatel | extensionattribute9 | Atribut rozšíření 9 |
-| Uživatel | extensionattribute10 | Atribut rozšíření 10 |
-| Uživatel | extensionattribute11 | Atribut rozšíření 11 |
-| Uživatel | extensionattribute12 | Atribut rozšíření 12 |
-| Uživatel | extensionattribute13 | Atribut rozšíření 13 |
-| Uživatel | extensionattribute14 | Atribut rozšíření 14 |
-| Uživatel | extensionattribute15 | Atribut rozšíření 15 |
-| Uživatel | othermail | Jiná pošta |
-| Uživatel | country | Země/oblast |
-| Uživatel | city | City (Město) |
-| Uživatel | state | Stav |
-| Uživatel | jobtitle | Název pozice |
-| Uživatel | zaměstnance | ID zaměstnance |
-| Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
-| Uživatel | assignedroles | seznam rolí aplikace přiřazených uživateli|
+| User | surname | Název rodiny |
+| User | givenname | jméno |
+| User | DisplayName | Zobrazovaný název |
+| User | objektu | ObjectId |
+| User | pošta | E-mailová adresa |
+| User | třídy | Hlavní název uživatele |
+| User | Oddělení|Oddělení|
+| User | onpremisessamaccountname | Místní název účtu SAM |
+| User | NetBiosName| Název pro rozhraní NetBios |
+| User | dnsdomainname | Název domény DNS |
+| User | onpremisesecurityidentifier | Místní identifikátor zabezpečení |
+| User | společnosti| Název organizace |
+| User | streetaddress | Adresa |
+| User | ovládacím | PSČ |
+| User | preferredlanguage | Preferovaný jazyk |
+| User | onpremisesuserprincipalname | Místní hlavní název uživatele (UPN) |*
+| User | mailNickname | Přezdívka pošty |
+| User | extensionattribute1 | Atribut rozšíření 1 |
+| User | extensionattribute2 | Atribut rozšíření 2 |
+| User | extensionattribute3 | Atribut rozšíření 3 |
+| User | extensionattribute4 | Atribut rozšíření 4 |
+| User | extensionattribute5 | Atribut rozšíření 5 |
+| User | extensionattribute6 | Atribut rozšíření 6 |
+| User | extensionattribute7 | Atribut rozšíření 7 |
+| User | extensionattribute8 | Atribut rozšíření 8 |
+| User | extensionattribute9 | Atribut rozšíření 9 |
+| User | extensionattribute10 | Atribut rozšíření 10 |
+| User | extensionattribute11 | Atribut rozšíření 11 |
+| User | extensionattribute12 | Atribut rozšíření 12 |
+| User | extensionattribute13 | Atribut rozšíření 13 |
+| User | extensionattribute14 | Atribut rozšíření 14 |
+| User | extensionattribute15 | Atribut rozšíření 15 |
+| User | othermail | Jiná pošta |
+| User | country | Země/oblast |
+| User | city | City (Město) |
+| User | state | Stav |
+| User | jobtitle | Název pozice |
+| User | zaměstnance | ID zaměstnance |
+| User | facsimiletelephonenumber | Telefonní číslo faxu |
+| User | assignedroles | seznam rolí aplikace přiřazených uživateli|
 | aplikace, prostředek, cílová skupina | DisplayName | Zobrazovaný název |
 | aplikace, prostředek, cílová skupina | objektu | ObjectId |
 | aplikace, prostředek, cílová skupina | tags | Značka objektu služby |
@@ -364,9 +364,9 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: metody transformace a očekávané vstupy a výstupy
 
-|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
+|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Description|
 |-----|-----|-----|-----|
-|Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: " foo@bar.com ", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: " foo@bar.com.sandbox "|
+|Připojení|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: " foo@bar.com ", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-mail nebo hlavní název uživatele|extrahovaný řetězec|ExtensionAttributes 1-15 nebo jiná rozšíření schématu, která pro uživatele ukládají hodnotu hlavního názvu uživatele (UPN) nebo e-mailové adresy, například johndoe@contoso.com . Extrahuje místní část e-mailové adresy. Například: mail: " foo@bar.com " má za následek outputClaim: "foo". Pokud \@ není k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
 
 **InputClaims:** Pomocí elementu InputClaims předejte data ze záznamu schématu deklarace do transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
@@ -390,34 +390,34 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: atributy povolené jako zdroj dat pro SAML NameID
 
-|Zdroj|ID|Popis|
+|Zdroj|ID|Description|
 |-----|-----|-----|
-| Uživatel | pošta|E-mailová adresa|
-| Uživatel | třídy|Hlavní název uživatele|
-| Uživatel | onpremisessamaccountname|Místní název účtu SAM|
-| Uživatel | zaměstnance|ID zaměstnance|
-| Uživatel | extensionattribute1 | Atribut rozšíření 1 |
-| Uživatel | extensionattribute2 | Atribut rozšíření 2 |
-| Uživatel | extensionattribute3 | Atribut rozšíření 3 |
-| Uživatel | extensionattribute4 | Atribut rozšíření 4 |
-| Uživatel | extensionattribute5 | Atribut rozšíření 5 |
-| Uživatel | extensionattribute6 | Atribut rozšíření 6 |
-| Uživatel | extensionattribute7 | Atribut rozšíření 7 |
-| Uživatel | extensionattribute8 | Atribut rozšíření 8 |
-| Uživatel | extensionattribute9 | Atribut rozšíření 9 |
-| Uživatel | extensionattribute10 | Atribut rozšíření 10 |
-| Uživatel | extensionattribute11 | Atribut rozšíření 11 |
-| Uživatel | extensionattribute12 | Atribut rozšíření 12 |
-| Uživatel | extensionattribute13 | Atribut rozšíření 13 |
-| Uživatel | extensionattribute14 | Atribut rozšíření 14 |
-| Uživatel | extensionattribute15 | Atribut rozšíření 15 |
+| User | pošta|E-mailová adresa|
+| User | třídy|Hlavní název uživatele|
+| User | onpremisessamaccountname|Místní název účtu SAM|
+| User | zaměstnance|ID zaměstnance|
+| User | extensionattribute1 | Atribut rozšíření 1 |
+| User | extensionattribute2 | Atribut rozšíření 2 |
+| User | extensionattribute3 | Atribut rozšíření 3 |
+| User | extensionattribute4 | Atribut rozšíření 4 |
+| User | extensionattribute5 | Atribut rozšíření 5 |
+| User | extensionattribute6 | Atribut rozšíření 6 |
+| User | extensionattribute7 | Atribut rozšíření 7 |
+| User | extensionattribute8 | Atribut rozšíření 8 |
+| User | extensionattribute9 | Atribut rozšíření 9 |
+| User | extensionattribute10 | Atribut rozšíření 10 |
+| User | extensionattribute11 | Atribut rozšíření 11 |
+| User | extensionattribute12 | Atribut rozšíření 12 |
+| User | extensionattribute13 | Atribut rozšíření 13 |
+| User | extensionattribute14 | Atribut rozšíření 14 |
+| User | extensionattribute15 | Atribut rozšíření 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabulka 6: metody transformace povolené pro NameID SAML
 
 | TransformationMethod | Omezení |
 | ----- | ----- |
 | ExtractMailPrefix | Žádné |
-| Spojit | Připojená přípona musí být ověřená doména tenanta prostředků. |
+| Připojení | Připojená přípona musí být ověřená doména tenanta prostředků. |
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
 
@@ -443,7 +443,7 @@ V Azure AD je mnoho scénářů možné, když můžete přizpůsobit deklarace 
 
 Při vytváření zásad mapování deklarací identity můžete také vygenerovat deklaraci identity z atributu rozšíření schématu adresáře v tokenech. Použijte *ExtensionID* pro atribut Extension namísto *ID* v `ClaimsSchema` elementu.  Další informace o atributech rozšíření najdete v tématu [použití atributů rozšíření schématu adresáře](active-directory-schema-extensions.md).
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.
 

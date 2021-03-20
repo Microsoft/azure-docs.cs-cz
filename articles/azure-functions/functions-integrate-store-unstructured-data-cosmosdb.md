@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91661155"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Ukládání nestrukturovaných dat pomocí služeb Azure Functions a Azure Cosmos DB
@@ -36,17 +36,17 @@ Před vytvořením výstupní vazby potřebujete účet služby Azure Cosmos DB,
 
 1. V Azure Portal přejděte na a vyberte aplikaci funkcí, kterou jste vytvořili dříve.
 
-1. Vyberte **funkce**a pak vyberte funkci HttpTrigger.
+1. Vyberte **funkce** a pak vyberte funkci HttpTrigger.
 
     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-select-http-function.png" alt-text="V Azure Portal vyberte svou funkci http." border="true":::
 
 1. Vyberte **integrace** a **+ Přidat výstup**.
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="V Azure Portal vyberte svou funkci http." border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="Přidejte výstupní vazbu Azure Cosmos DB." border="true":::
 
 1. Použijte nastavení **vytvořit výstup** , jak je uvedeno v tabulce:
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="V Azure Portal vyberte svou funkci http." border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="Nakonfigurujte výstupní vazbu Azure Cosmos DB." border="true":::
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                |
     | ------------ | ---------------- | ------------------------------------------ |
@@ -54,7 +54,7 @@ Před vytvořením výstupní vazby potřebujete účet služby Azure Cosmos DB,
     | **Název parametru dokumentu** | taskDocument | Název, který odkazuje na objekt Cosmos DB v kódu. |
     | **Název databáze** | taskDatabase | Název databáze pro uložení dokumentů. |
     | **Název kolekce** | Kolekci taskcollection | Název kolekce databáze. |
-    | **Je-li nastavená hodnota true, vytvoří se databáze a kolekce Cosmos DB** | Ano | Kolekce ještě neexistuje, takže ji vytvořte. |
+    | **Je-li nastavená hodnota true, vytvoří se databáze a kolekce Cosmos DB** | Yes | Kolekce ještě neexistuje, takže ji vytvořte. |
     | **Připojení účtu databáze Cosmos DB** | Nové nastavení | Vyberte **Nový**, pak vyberte **Azure Cosmos DB účet** a **databázový účet** , který jste vytvořili dříve, a pak vyberte **OK**. Vytvoří nastavení aplikace pro připojení k vašemu účtu. Toto nastavení vazba použije k připojení k databázi. |
 
 1. Vyberte **OK** a vytvořte vazbu.
@@ -132,29 +132,29 @@ Tento vzorový kód přečte řetězce dotazů požadavků HTTP a přiřadí je 
 
 ## <a name="test-the-function-and-database"></a>Testování funkce a databáze
 
-1. Vyberte **test/spustit**. V části **dotaz**vyberte **+ Přidat parametr** a do řetězce dotazu přidejte následující parametry:
+1. Vyberte **Testovat/spustit**. V části **dotaz** vyberte **+ Přidat parametr** a do řetězce dotazu přidejte následující parametry:
 
     + `name`
     + `task`
     + `duedate`
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="V Azure Portal vyberte svou funkci http." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="Otestujte funkci." border="true":::
 
 
 1. Vyberte **Spustit** a ověřte, že je vrácen stav 200.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="V Azure Portal vyberte svou funkci http." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Po vybrání možnosti Spustit snímek obrazovky se zobrazí stav kód odpovědi HTTP 200 zvýrazněný." border="true":::
 
 
 1. V Azure Portal vyhledejte a vyberte **Azure Cosmos DB**.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="V Azure Portal vyberte svou funkci http." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Vyhledejte službu Cosmos DB." border="true":::
 
 1. Zvolte účet Azure Cosmos DB a pak vyberte  **Průzkumník dat**.
 
 1. Rozbalte uzly **úlohacollection** , vyberte nový dokument a potvrďte, že dokument obsahuje vaše hodnoty řetězce dotazu spolu s dalšími metadaty.
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="V Azure Portal vyberte svou funkci http." border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="Ověřte hodnoty řetězce v dokumentu." border="true":::
 
 Úspěšně jste přidali vazbu na váš trigger HTTP, který ukládá nestrukturovaná data ve službě Azure Cosmos DB.
 

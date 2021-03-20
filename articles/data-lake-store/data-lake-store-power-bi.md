@@ -7,25 +7,25 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91574190"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analýza dat v Azure Data Lake Storage Gen1 pomocí Power BI
 V tomto článku se naučíte, jak pomocí Power BI Desktop analyzovat a vizualizovat data uložená v Azure Data Lake Storage Gen1.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md). V tomto článku se předpokládá, že jste už vytvořili účet Data Lake Storage Gen1 s názvem **myadlsg1**a nahráli jste do něj Ukázkový datový soubor (**Drivers.txt**). Tento ukázkový soubor je k dispozici ke stažení z [Azure Data Lake úložiště Git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
+* **Účet Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md). V tomto článku se předpokládá, že jste už vytvořili účet Data Lake Storage Gen1 s názvem **myadlsg1** a nahráli jste do něj Ukázkový datový soubor (**Drivers.txt**). Tento ukázkový soubor je k dispozici ke stažení z [Azure Data Lake úložiště Git](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
 * **Power BI Desktop**. Můžete si ho stáhnout z [webu Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Vytvoření sestavy v Power BI Desktopu
 1. V počítači spusťte Power BI Desktop.
-2. Na pásu karet **Domů** klikněte na **získat data**a pak klikněte na další. V dialogovém okně **získat data** klikněte na **Azure**, klikněte na **Azure Data Lake Store**a pak klikněte na **připojit**.
+2. Na pásu karet **Domů** klikněte na **získat data** a pak klikněte na další. V dialogovém okně **získat data** klikněte na **Azure**, klikněte na **Azure Data Lake Store** a pak klikněte na **připojit**.
    
     ![Snímek obrazovky dialogového okna načíst data s zvýrazněnou možností Azure Data Lake Store a možností připojit se vyvolala.](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Připojení k Data Lake Storage Gen1")
 3. Pokud se zobrazí dialogové okno s konektorem v vývojové fázi, nezapomeňte pokračovat.
@@ -62,7 +62,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 12. Měl by se zobrazit výstup, jak je znázorněno níže. Vaše data jsou teď dostupná ve formátu, který můžete použít k vytváření vizualizací.
     
     ![Snímek obrazovky editoru dotazů s výstupem zobrazeným podle očekávání](./media/data-lake-store-power-bi/convert-query3.png "Úprava dotazů")
-13. Na pásu karet **Domů** klikněte na **Zavřít a použít**a pak klikněte na **Zavřít a použít**.
+13. Na pásu karet **Domů** klikněte na **Zavřít a použít** a pak klikněte na **Zavřít a použít**.
     
     ![Snímek obrazovky pásu karet domů s možností zavřít a použít s názvem.](./media/data-lake-store-power-bi/load-edited-query.png "Úprava dotazů")
 14. Po aktualizaci dotazu se na kartě **pole** zobrazí nová pole, která jsou k dispozici pro vizualizaci.
@@ -79,7 +79,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
     3. Výsečový graf by měl nyní vypadat podobně jako na následujícím obrázku.
        
         ![Výsečový graf](./media/data-lake-store-power-bi/pie-chart.png "Vytváření vizualizací")
-16. Výběrem konkrétní země nebo oblasti z filtrů na úrovni stránek teď můžete zobrazit počet ovladačů v každém městě vybrané země nebo oblasti. Například na kartě **vizualizace** v části **filtry na úrovni stránky**vyberte **Brazílie**.
+16. Výběrem konkrétní země nebo oblasti z filtrů na úrovni stránek teď můžete zobrazit počet ovladačů v každém městě vybrané země nebo oblasti. Například na kartě **vizualizace** v části **filtry na úrovni stránky** vyberte **Brazílie**.
     
     ![Vybrat zemi/oblast](./media/data-lake-store-power-bi/select-country.png "Vybrat zemi/oblast")
 17. Výsečový graf se automaticky aktualizuje, aby zobrazoval ovladače ve městech Brazílie.

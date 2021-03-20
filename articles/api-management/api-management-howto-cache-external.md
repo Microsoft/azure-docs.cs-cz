@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018218"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Použití externí mezipaměti kompatibilní s Redis v Azure API Management
@@ -39,20 +39,20 @@ Naučíte se:
 > [!div class="checklist"]
 > * Přidat externí mezipaměť v API Management
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
 + [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
 + Vysvětlení [ukládání do mezipaměti v Azure API Management](api-management-howto-cache.md)
 
-## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a> Vytvoření mezipaměti Azure pro Redis
+## <a name="create-azure-cache-for-redis"></a><a name="create-cache"></a> Vytvoření mezipaměti Azure pro Redis
 
 V této části se dozvíte, jak vytvořit mezipaměť Azure pro Redis v Azure. Pokud už máte mezipaměť Azure pro Redis, v rámci nebo mimo Azure můžete <a href="#add-external-cache">Přejít</a> k další části.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"> </a> Nasazení Redis Cache do Kubernetes
+## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"></a> Nasazení Redis Cache do Kubernetes
 
 Pro ukládání do mezipaměti jsou brány v místním prostředí závislé výhradně na externích mezipamětech. Aby bylo možné ukládat do mezipaměti efektivní brány pro místní hostování a mezipaměť, na které spoléhají, musí být umístěna blízko sebe, aby se minimalizovala latence vyhledávání a ukládání. Nejlepší možností je nasadit mezipaměť Redis do stejného clusteru Kubernetes nebo v blízkosti samostatného clusteru. Pomocí tohoto [odkazu](https://github.com/kubernetes/examples/tree/master/guestbook) se dozvíte, jak nasadit Redis Cache do clusteru Kubernetes.
 

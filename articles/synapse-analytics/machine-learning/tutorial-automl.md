@@ -10,10 +10,10 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: aaf0aab2ef600b269b9b47182aeb096ca13c7a87
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943525"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>Kurz: výuka modelu strojového učení bez kódu
@@ -26,7 +26,7 @@ Místo ručního kódování prostředí budete používat automatické strojov�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Pracovní prostor analýzy Azure synapse](../get-started-create-workspace.md). Ujistěte se, že má účet úložiště Azure Data Lake Storage Gen2 nakonfigurovaný jako výchozí úložiště. U Data Lake Storage Gen2 systému souborů, se kterými pracujete, se ujistěte, že jste *přispěvatelem dat objektů BLOB úložiště*.
 - Fond Apache Spark ve vašem pracovním prostoru Azure synapse Analytics. Podrobnosti najdete v tématu [rychlý Start: vytvoření vyhrazeného fondu SQL pomocí synapse studia](../quickstart-create-sql-pool-studio.md).

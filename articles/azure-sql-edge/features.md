@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 19dcbbf102a1d8d21f1b14780ea33816a1677c55
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392023"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Podporované funkce Edge SQL Azure 
@@ -59,7 +59,7 @@ Kromě podpory podmnožiny funkcí SQL Server on Linux zahrnuje Azure SQL Edge p
 
 Následující seznam obsahuje SQL Server 2019 o funkcích systému Linux, které aktuálně nejsou podporovány v hraničních dotazech Azure SQL.
 
-| Oblast | Nepodporovaná funkce nebo služba |
+| Plošný | Nepodporovaná funkce nebo služba |
 |-----|-----|
 | **Návrh databáze** | OLTP v paměti a související příkazy DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy. |
 | &nbsp; | `HierarchyID` datový typ a související příkazy jazyka DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy. |

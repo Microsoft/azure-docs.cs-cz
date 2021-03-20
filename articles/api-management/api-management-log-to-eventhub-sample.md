@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88205510"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Monitorování rozhraní API pomocí API Management Azure, Event Hubs a Moesif
@@ -295,7 +295,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-Využívá `MoesifHttpMessageProcessor` [knihovnu rozhraní C# API pro Moesif](https://www.moesif.com/docs/api?csharp#events) , která usnadňuje vkládání dat událostí http do služby. Aby bylo možné odesílat data HTTP do rozhraní API Moesif collector, potřebujete účet a ID aplikace. ID aplikace Moesif získáte vytvořením účtu na [webu Moesif](https://www.moesif.com) a následným přechodem k nastavení aplikace v _pravém horním_rohu  ->  _App Setup_.
+Využívá `MoesifHttpMessageProcessor` [knihovnu rozhraní C# API pro Moesif](https://www.moesif.com/docs/api?csharp#events) , která usnadňuje vkládání dat událostí http do služby. Aby bylo možné odesílat data HTTP do rozhraní API Moesif collector, potřebujete účet a ID aplikace. ID aplikace Moesif získáte vytvořením účtu na [webu Moesif](https://www.moesif.com) a následným přechodem k nastavení aplikace v _pravém horním_ rohu  ->  .
 
 ## <a name="complete-sample"></a>Kompletní ukázka
 [Zdrojový kód](https://github.com/dgilling/ApimEventProcessor) a testy pro ukázku jsou na GitHubu. Potřebujete [službu API Management](get-started-create-service-instance.md), [připojené centrum událostí](api-management-howto-log-event-hubs.md)a [účet úložiště](../storage/common/storage-account-create.md) , abyste mohli ukázku spustit sami.   
@@ -306,7 +306,7 @@ Na následujícím animovaném obrázku vidíte na portálu pro vývojáře pož
 
 ![Ukázka přesměrovaného požadavku na Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Služba Azure API Management poskytuje ideální místo pro zachycení provozu HTTP na cestách a z vašich rozhraní API. Azure Event Hubs je vysoce škálovatelné řešení s nízkými náklady pro zachytávání provozu a jejich krmení do sekundárních zpracovatelských systémů pro protokolování, monitorování a další propracované analýzy. Připojení k systémům monitorování provozu třetích stran, jako je Moesif, je jednoduché jako několik desítek řádků kódu.
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
 ms.openlocfilehash: b61faf74d96e2571e91f7bf9d10eac88cdbf8345
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94639253"
 ---
 # <a name="implement-quality-of-service-qos-for-windows-virtual-desktop-preview"></a>Implementace technologie QoS (Quality of Service) pro virtuální počítače s Windows (Preview)
@@ -87,7 +87,7 @@ V rámci Zásady skupiny můžete použít technologii QoS (Quality of Service) 
 
 Chcete-li vytvořit zásadu QoS pro hostitele relace připojené k doméně, nejprve se přihlaste k počítači, na kterém je nainstalovaná Zásady skupiny Správa. Otevřete správu Zásady skupiny (vyberte Start, přejděte na nástroje pro správu a pak vyberte Zásady skupiny Správa) a pak proveďte následující kroky:
 
-1. V části Správa Zásady skupiny Najděte kontejner, ve kterém se má vytvořit nová zásada. Pokud je například každá vaše relace hostitelem počítačů umístěná v organizační jednotce s názvem **"hostitelé relace"** , je nutné vytvořit novou zásadu v relaci, která je hostitelem organizační jednotky.
+1. V části Správa Zásady skupiny Najděte kontejner, ve kterém se má vytvořit nová zásada. Pokud je například každá vaše relace hostitelem počítačů umístěná v organizační jednotce s názvem **"hostitelé relace"**, je nutné vytvořit novou zásadu v relaci, která je hostitelem organizační jednotky.
 
 2. Klikněte pravým tlačítkem na příslušný kontejner a pak vyberte **vytvořit objekt zásad skupiny v této doméně a propojit ho sem**.
 
@@ -95,7 +95,7 @@ Chcete-li vytvořit zásadu QoS pro hostitele relace připojené k doméně, nej
 
 4. Klikněte pravým tlačítkem na nově vytvořenou zásadu a pak vyberte **Upravit**.
 
-5. V Editor pro správu zásad skupiny rozbalte položku **Konfigurace počítače** , rozbalte **nastavení systému Windows** , klikněte pravým tlačítkem na možnost **QoS na základě zásad** a pak vyberte **vytvořit novou zásadu**.
+5. V Editor pro správu zásad skupiny rozbalte položku **Konfigurace počítače**, rozbalte **nastavení systému Windows**, klikněte pravým tlačítkem na možnost **QoS na základě zásad** a pak vyberte **vytvořit novou zásadu**.
 
 6. V dialogovém okně **technologie QoS založené na zásadách** zadejte na úvodní stránce název nové zásady do pole **název** . Vyberte **zadat hodnotu DSCP** a nastavte hodnotu na **46**. Nechejte možnost zadat nevybranou **míru odchozího omezení** a pak vyberte **Další**.
 
@@ -109,7 +109,7 @@ Chcete-li vytvořit zásadu QoS pro hostitele relace připojené k doméně, nej
 
 Nové zásady, které jste vytvořili, se projeví až po aktualizaci Zásady skupiny na hostitelských počítačích relací. I když se Zásady skupiny pravidelně aktualizuje sami, můžete vynutit okamžitou aktualizaci pomocí následujících kroků:
 
-1. Na každém hostiteli relace, pro který chcete aktualizovat Zásady skupiny otevřete příkazový řádek jako správce ( *Spustit jako správce* ).
+1. Na každém hostiteli relace, pro který chcete aktualizovat Zásady skupiny otevřete příkazový řádek jako správce (*Spustit jako správce*).
 
 1. Do příkazového řádku zadejte
 

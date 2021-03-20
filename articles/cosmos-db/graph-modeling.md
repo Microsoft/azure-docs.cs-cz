@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: chrande
 ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93357041"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
@@ -36,7 +36,7 @@ Proces popsaný v této příručce je založený na následujících předpokla
 * Mezi entitami existuje několik **vztahů mezi několika různými** entitami.
 * Existují **požadavky na zápis a čtení u entit i vztahů**. 
 
-Pokud jsou výše uvedená kritéria splněna, je pravděpodobnější, že přístup k databázi grafu bude mít výhody pro **složitost dotazů** , **škálovatelnost datového modelu** a **výkon dotazů**.
+Pokud jsou výše uvedená kritéria splněna, je pravděpodobnější, že přístup k databázi grafu bude mít výhody pro **složitost dotazů**, **škálovatelnost datového modelu** a **výkon dotazů**.
 
 Dalším krokem je určit, jestli se má graf použít pro účely analýzy nebo transakce. Pokud je graf určený k použití pro náročné úlohy výpočtů a zpracování dat, je vhodné prozkoumat [Cosmos DB konektor Spark](./spark-connector.md) a použít [knihovnu GRAPHX](https://spark.apache.org/graphx/). 
 
@@ -72,11 +72,11 @@ Prvním krokem pro datový model grafu je namapovat každou identifikovanou enti
 
 Jednou z běžných Pitfall je mapovat vlastnosti jedné entity jako samostatné vrcholy. Vezměte v úvahu následující příklad, ve kterém je stejná entita zastoupena dvěma různými způsoby:
 
-* **Vlastnosti založené na vrcholu** : v tomto přístupu entita používá tři samostatné vrcholy a dva hrany k popsání jejích vlastností. I když tento přístup může snížit redundanci, zvyšuje složitost modelu. Zvýšení složitosti modelu může mít za následek přidání latence, složitosti dotazu a výpočetních nákladů. Tento model může také prezentovat problémy při dělení.
+* **Vlastnosti založené na vrcholu**: v tomto přístupu entita používá tři samostatné vrcholy a dva hrany k popsání jejích vlastností. I když tento přístup může snížit redundanci, zvyšuje složitost modelu. Zvýšení složitosti modelu může mít za následek přidání latence, složitosti dotazu a výpočetních nákladů. Tento model může také prezentovat problémy při dělení.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Model entity s vrcholy pro vlastnosti" border="false":::
 
-* **Vrcholy vložené vlastností** : Tento přístup využívá výhod seznamu párů klíč-hodnota, který představuje všechny vlastnosti entity uvnitř vrcholu. Tento přístup poskytuje nižší složitost modelu, což vede k jednodušším dotazům a efektivnějším procházeníům.
+* **Vrcholy vložené vlastností**: Tento přístup využívá výhod seznamu párů klíč-hodnota, který představuje všechny vlastnosti entity uvnitř vrcholu. Tento přístup poskytuje nižší složitost modelu, což vede k jednodušším dotazům a efektivnějším procházeníům.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Diagram znázorňuje vrchol Luis z předchozího diagramu s i d, jmenovkou a vlastnostmi." border="false":::
 

@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
 ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98164868"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker limity a hranice znalostní báze
@@ -20,7 +20,7 @@ Níže uvedené limity QnA Maker jsou kombinací [omezení cenové úrovně Azur
 
 Maximální počet základů znalostní báze je založený na [omezeních vrstvy Azure kognitivní hledání](../../search/search-limits-quotas-capacity.md).
 
-|**Úroveň Kognitivní hledání Azure** | Zadejte možnost pro **bezplatnou** SKU. | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Úroveň Kognitivní hledání Azure** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximální povolený počet publikovaných základů znalostí|2|14|49|199|199|2 999|
 
@@ -66,7 +66,7 @@ Metadata jsou uvedena jako textový klíč: dvojice hodnot, jako je například 
 
 Maximální počet polí metadat na bázi znalostní báze je založený na **[omezeních vaší vrstvy Azure kognitivní hledání](../../search/search-limits-quotas-capacity.md)**.
 
-|**Úroveň Kognitivní hledání Azure** | Zadejte možnost pro **bezplatnou** SKU. | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Úroveň Kognitivní hledání Azure** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximální počet polí metadat na službu QnA Maker (napříč všemi aktualizací KB)|1 000|100 *|1 000|1 000|1 000|1 000|
 

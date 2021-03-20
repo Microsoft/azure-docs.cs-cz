@@ -1,5 +1,5 @@
 ---
-title: Nastavení Azure Load Balancer portálu
+title: Nastavení služby Azure Load Balancer na portálu
 description: Začínáme se seznámení s Azure Load Balancerm nastavením portálu
 services: load-balancer
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 09/8/2020
 ms.author: allensu
 ms.openlocfilehash: e1080aea12e70f4312fbee07b063d5a5cfbd1201
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89596278"
 ---
-# <a name="azure-load-balancer-portal-settings"></a>Nastavení Azure Load Balancer portálu
+# <a name="azure-load-balancer-portal-settings"></a>Nastavení služby Azure Load Balancer na portálu
 
 Informace v tomto článku vám pomůžou při vytváření Azure Load Balancer. Další informace o jednotlivých nastaveních a o tom, jaká je správná konfigurace, najdete tady.
 
@@ -49,7 +49,7 @@ Pokud jako typ vyberete **Public** , zobrazí se následující informace:
 | Název veřejné IP adresy | Název veřejné IP adresy.|
 | SKU veřejné IP adresy | Veřejné IP adresy mají dvě SKU: **Basic** a **Standard**. </br> Základní nepodporuje atributy Zone-odolnost a Zona. </br> Pro produkční úlohy se doporučuje **Standard** . </br> Vyrovnávání zatížení a SKU veřejné IP adresy se **musí shodovat**. |
 | Přiřazení | **Statická** je automaticky vybraná pro standard. </br> Základní veřejné IP adresy mají dva typy: **Dynamická** a **statická**. </br> Dynamické veřejné IP adresy se nepřiřazují až do vytvoření. </br> Pokud se prostředek odstraní, můžou se tyto IP adresy ztratit. </br> Doporučuje se statická IP adresa. |
-| Zóna dostupnosti | Chcete-li vytvořit odolný Nástroj pro vyrovnávání zatížení, vyberte **zónu – redundantní** . </br> Pokud chcete vytvořit nástroj pro vyrovnávání zatížení, vyberte konkrétní zónu z **1**, **2**nebo **3**. </br> Standardní zóny pro vyrovnávání zatížení a podpora veřejných IP adres. </br> Přečtěte si další informace o [nástroji pro vyrovnávání zatížení a zónách dostupnosti](load-balancer-standard-availability-zones.md). </br> Pro základní nelze zobrazit výběr zóny. Nástroj pro vyrovnávání zatížení úrovně Basic nepodporuje zóny. |
+| Zóna dostupnosti | Chcete-li vytvořit odolný Nástroj pro vyrovnávání zatížení, vyberte **zónu – redundantní** . </br> Pokud chcete vytvořit nástroj pro vyrovnávání zatížení, vyberte konkrétní zónu z **1**, **2** nebo **3**. </br> Standardní zóny pro vyrovnávání zatížení a podpora veřejných IP adres. </br> Přečtěte si další informace o [nástroji pro vyrovnávání zatížení a zónách dostupnosti](load-balancer-standard-availability-zones.md). </br> Pro základní nelze zobrazit výběr zóny. Nástroj pro vyrovnávání zatížení úrovně Basic nepodporuje zóny. |
 | Přidat veřejnou IPv6 adresu | Nástroj pro vyrovnávání zatížení podporuje adresy **IPv6** pro váš front-end. </br> Další informace o [nástroji pro vyrovnávání zatížení a protokolu IPv6](load-balancer-ipv6-overview.md)
 | Předvolba směrování | Vyberte **síť Microsoft**. </br> Síť Microsoftu znamená, že provoz se směruje přes globální síť Microsoft. </br> Internet znamená, že provoz se směruje přes síť poskytovatele internetových služeb. </br> Další informace o [předvolbách směrování](../virtual-network/routing-preference-overview.md)|
 
@@ -63,7 +63,7 @@ Pokud vyberete **interní** v typu, zobrazí se následující informace:
 | Přiřazení IP adresy | Vaše možnosti jsou **statické** nebo **dynamické**. </br> Statická zajišťuje, že se IP adresa nemění. Dynamická IP adresa se může změnit. |
 | Zóna dostupnosti | Máte tyto možnosti: </br> **Zóna redundantní** </br> **Zóna 1** </br> **Zóna 2** </br> **Zóna 3** </br> Pokud chcete vytvořit nástroj pro vyrovnávání zatížení, který je vysoce dostupný a odolný vůči selháním zóny dostupnosti, vyberte IP adresu **redundantní v zóně** . |
 
-:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="Vytvořte veřejnou službu Vyrovnávání zatížení." border="true":::
+:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="Vytvořte interní nástroj pro vyrovnávání zatížení." border="true":::
 
 ## <a name="frontend-ip-configuration"></a>Konfigurace IP adresy front-endu
 
@@ -71,7 +71,7 @@ IP adresa vašeho Azure Load Balancer. Je to kontaktní bod pro klienty.
 
 Můžete mít jednu nebo mnoho konfigurací protokolu IP front-endu. Pokud jste prošli částí základy výše, už jste vytvořili front-end pro váš nástroj pro vyrovnávání zatížení. 
 
-Pokud chcete do nástroje pro vyrovnávání zatížení Přidat konfiguraci IP adresy front-endu, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte **Konfigurace IP adresy front-endu**a pak vyberte **+ Přidat**.
+Pokud chcete do nástroje pro vyrovnávání zatížení Přidat konfiguraci IP adresy front-endu, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte **Konfigurace IP adresy front-endu** a pak vyberte **+ Přidat**.
 
 | Nastavení |  Podrobnosti |
 | ---------- | ---------- |
@@ -80,13 +80,13 @@ Pokud chcete do nástroje pro vyrovnávání zatížení Přidat konfiguraci IP 
 | Typ IP adresy | Typ IP adresy určuje, jestli je jedna IP adresa přidružená k front-endu nebo rozsahu IP adres s použitím předpony IP adresy. </br> Pokud se potřebujete opakovaně připojit ke stejnému koncovému bodu, pomůže vám [předpona veřejných IP adres](../virtual-network/public-ip-address-prefix.md) . Předpona zajišťuje dostatek portů, které pomáhají s problémy s porty SNAT. |
 | Veřejná IP adresa (nebo předpona, pokud jste vybrali předponu výše) | Pro front-endu nástroje pro vyrovnávání zatížení vyberte nebo vytvořte novou veřejnou IP adresu (nebo předponu). |
 
-:::image type="content" source="./media/manage/frontend.png" alt-text="Vytvořte veřejnou službu Vyrovnávání zatížení." border="true":::
+:::image type="content" source="./media/manage/frontend.png" alt-text="Vytvoří stránku konfigurace IP adresy front-endu." border="true":::
 
 ## <a name="backend-pools"></a>Back-endové fondy
 
 Fond adres back-endu obsahuje IP adresy rozhraní virtuální sítě ve fondu back-endu. 
 
-Pokud chcete do svého nástroje pro vyrovnávání zatížení přidat back-end fond, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte **back-endové fondy**a pak vyberte **+ Přidat**.
+Pokud chcete do svého nástroje pro vyrovnávání zatížení přidat back-end fond, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte **back-endové fondy** a pak vyberte **+ Přidat**.
 
 | Nastavení | Podrobnosti |
 | ---------- |  ---------- |
@@ -96,13 +96,13 @@ Pokud chcete do svého nástroje pro vyrovnávání zatížení přidat back-end
 
 Virtuální počítače nebo sady škálování virtuálních počítačů můžete přidat do fondu back-end vašeho Azure Load Balancer. Nejdřív vytvořte virtuální počítače nebo sadu škálování virtuálního počítače. Pak je přidejte do nástroje pro vyrovnávání zatížení na portálu.
 
-:::image type="content" source="./media/manage/backend.png" alt-text="Vytvořte veřejnou službu Vyrovnávání zatížení." border="true":::
+:::image type="content" source="./media/manage/backend.png" alt-text="Stránka vytvořit fond back-endu" border="true":::
 
 ## <a name="health-probes"></a>Sondy stavu
 
 Sonda stavu se používá k monitorování stavu virtuálních počítačů nebo instancí back-endu. Stav sondy stavu určuje, kdy se nová připojení odesílají do instance na základě kontrol stavu. 
 
-Pokud chcete přidat sondu stavu do nástroje pro vyrovnávání zatížení, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a pak vyberte **+ Přidat**.
+Pokud chcete přidat sondu stavu do nástroje pro vyrovnávání zatížení, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte **sondy stavu** a pak vyberte **+ Přidat**.
 
 | Nastavení | Podrobnosti |
 | ---------- | ---------- |
@@ -112,13 +112,13 @@ Pokud chcete přidat sondu stavu do nástroje pro vyrovnávání zatížení, v 
 | Interval | Počet sekund mezi pokusy o sondy. </br> Interval určí, jak často se sonda stavu pokusí spojit s instancí back-endu. </br> Vyberete-li možnost 5, bude druhý pokus o testování proveden po 5 sekundách a tak dále. |
 | Prahová hodnota pro poškozený stav | Počet po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za špatný.</br> Pokud vyberete 2, žádné nové toky se po dvou po sobě jdoucích selhání nenastaví na tuto instanci back-endu. |
 
-:::image type="content" source="./media/manage/health-probe.png" alt-text="Vytvořte veřejnou službu Vyrovnávání zatížení." border="true":::
+:::image type="content" source="./media/manage/health-probe.png" alt-text="Přidejte sondu stavu." border="true":::
 
 ## <a name="load-balancing-rules"></a>Pravidla vyrovnávání zatížení
 
 Definuje způsob distribuce příchozího provozu do všech instancí v rámci fondu back-endu. Pravidlo vyrovnávání zatížení mapuje danou konfiguraci IP adresy front-endu a port na více IP adres a portů back-endu.
 
-Chcete-li do nástroje pro vyrovnávání zatížení přidat pravidlo nástroje pro vyrovnávání zatížení, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte možnost **pravidla vyrovnávání zatížení**a pak vyberte **+ Přidat**.
+Chcete-li do nástroje pro vyrovnávání zatížení přidat pravidlo nástroje pro vyrovnávání zatížení, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte možnost **pravidla vyrovnávání zatížení** a pak vyberte **+ Přidat**.
     
 | Nastavení | Podrobnosti |
 | ---------- | ---------- |
@@ -136,7 +136,7 @@ Chcete-li do nástroje pro vyrovnávání zatížení přidat pravidlo nástroje
 | Plovoucí IP adresa | Plovoucí IP adresa je terminologie Azure, která je součástí toho, co je známo jako **přímé vrácení serveru (DSR)**. </br> DSR se skládá ze dvou částí: <br> 1. topologie toků </br> 2. schéma mapování IP adresy na úrovni platformy. </br></br> Azure Load Balancer vždy funguje v topologii signálu DSR, zda je povolena plovoucí IP adresa. </br> Tato operace znamená, že výstupní část toku je vždy správně přepsána do toku přímo zpět k původnímu zdroji. </br> Bez plovoucí IP adresy poskytuje Azure tradiční schéma mapování IP adres s vyrovnáváním zatížení, které je IP instancemi virtuálních počítačů. </br> Povolením plovoucí IP adresy změní mapování IP adres na front-end IP adresu nástroje pro vyrovnávání zatížení, aby byla umožněna další flexibilita. </br> Další informace najdete v tématu [více front-endu pro Azure Load Balancer](load-balancer-multivip-overview.md).|
 | Vytvořit implicitní odchozí pravidla | Vyberte **Ne**. </br> Výchozí: **disableOutboundSnat = false**  </br> V tomto případě odchozí připojení probíhá přes stejnou front-end IP adresu. </br></br> **disableOutboundSnat = true** </br>V tomto případě jsou odchozí pravidla potřebná pro odchozí připojení. |
 
-:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="Vytvořte veřejnou službu Vyrovnávání zatížení." border="true":::
+:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="Přidat pravidlo vyrovnávání zatížení." border="true":::
 
 ## <a name="inbound-nat-rules"></a>Příchozí pravidla NAT
 
@@ -163,19 +163,19 @@ Pokud chcete do nástroje pro vyrovnávání zatížení přidat příchozí pra
 | Cílový virtuální počítač | Virtuální počítač, ke kterému se má toto pravidlo přidružit, do back-endu fondu. |
 | Mapování portů | Toto nastavení může být na základě preference vaší aplikace výchozí nebo vlastní. |
 
-:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="Vytvořte veřejnou službu Vyrovnávání zatížení." border="true":::
+:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="Přidat pravidlo příchozího překladu adres (NAT)" border="true":::
 
 ## <a name="outbound-rules"></a>Pravidla odchozích přenosů
 
 Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí SNAT pro virtuální počítače ve fondu back-endu.
 
-Pokud chcete do svého nástroje pro vyrovnávání zatížení přidat odchozí pravidlo, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte **odchozí pravidla**a pak vyberte **+ Přidat**.
+Pokud chcete do svého nástroje pro vyrovnávání zatížení přidat odchozí pravidlo, v Azure Portal klikněte na nástroj pro vyrovnávání zatížení, vyberte **odchozí pravidla** a pak vyberte **+ Přidat**.
 
 | Nastavení | Podrobnosti |
 | ------- | ------ |
 | Name | Název odchozího pravidla. |
 | IP adresa front-endu | Vyberte IP adresu front-endu. </br> Front-end IP adresa vašeho nástroje pro vyrovnávání zatížení, ke kterému má být přidruženo odchozí pravidlo. |
-| Protokol | Azure Load Balancer je síťový nástroj pro vyrovnávání zatížení vrstvy 4. </br> Máte tyto možnosti: **All**, **TCP**nebo **UDP**. |
+| Protokol | Azure Load Balancer je síťový nástroj pro vyrovnávání zatížení vrstvy 4. </br> Máte tyto možnosti: **All**, **TCP** nebo **UDP**. |
 | Časový limit nečinnosti (minuty) | Nechejte připojení **TCP** nebo **http** otevřené, aniž byste se museli spoléhat na to, že klienti odesílají zprávy Keep-Alive. |
 | Resetování protokolu TCP | Nástroj pro vyrovnávání zatížení může odesílat **resety TCP** , aby bylo možné lépe vytvořit předvídatelné chování aplikace v případě nečinnosti připojení. </br> Další informace o [resetování protokolu TCP](load-balancer-tcp-reset.md) |
 | Back-endový fond | Back-end fond, na kterém se má toto odchozí pravidlo použít. |
@@ -193,7 +193,7 @@ Pokud chcete do svého nástroje pro vyrovnávání zatížení přidat odchozí
 | Zvolit podle | Vybrat **porty na instanci** |
 | Porty na instanci | Zadejte **10 000**. |
 
-:::image type="content" source="./media/manage/outbound-rule.png" alt-text="Vytvořte veřejnou službu Vyrovnávání zatížení." border="true":::
+:::image type="content" source="./media/manage/outbound-rule.png" alt-text="Přidat příchozí odchozí pravidlo" border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

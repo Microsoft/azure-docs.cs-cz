@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
 ms.openlocfilehash: 39f893e9375970ff4bb6e3cfa2c93ceea48ec896
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92331800"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Rychlý Start: vytvoření instance hybridního režimu pomocí Azure Portal & Azure Database Migration Service
@@ -63,7 +63,7 @@ Před vytvořením první instance Azure Database Migration Service Zaregistrujt
 
 1. Vyberte +**vytvořit prostředek** pro vytvoření instance Azure Database Migration Service.
 
-2. Vyhledejte na webu Marketplace "migrace", vyberte **Azure Database Migration Service**a pak na obrazovce **Azure Database Migration Service** vyberte **vytvořit**.
+2. Vyhledejte na webu Marketplace "migrace", vyberte **Azure Database Migration Service** a pak na obrazovce **Azure Database Migration Service** vyberte **vytvořit**.
 
 3. Na obrazovce **Vytvořit službu Migration Service**:
 
@@ -71,7 +71,7 @@ Před vytvořením první instance Azure Database Migration Service Zaregistrujt
     - Vyberte **Předplatné** Azure, ve kterém chcete instanci vytvořit.
     - Vyberte existující **skupinu prostředků** nebo vytvořte novou.
     - Zvolte **Umístění**, které je nejblíže vašemu zdrojovému nebo cílovému serveru.
-    - Jako **režim služby**vyberte **hybridní (Preview)**.
+    - Jako **režim služby** vyberte **hybridní (Preview)**.
 
          ![Vytvoření základních informací o službě migrace](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
@@ -85,7 +85,7 @@ Před vytvořením první instance Azure Database Migration Service Zaregistrujt
 
     ![Instance hybridního režimu Azure Database Migration Service](media/quickstart-create-data-migration-service-hybrid-portal/dms-instance-hybrid-mode.png)
 
-6. Po vytvoření služby vyberte **vlastnosti**a potom zkopírujte hodnotu zobrazenou v poli **ID prostředku** , které použijete k instalaci Azure Database Migration Service Hybrid Worker.
+6. Po vytvoření služby vyberte **vlastnosti** a potom zkopírujte hodnotu zobrazenou v poli **ID prostředku** , které použijete k instalaci Azure Database Migration Service Hybrid Worker.
 
     ![Azure Database Migration Service vlastnosti hybridního režimu](media/quickstart-create-data-migration-service-hybrid-portal/dms-copy-resource-id.png)
 
@@ -93,8 +93,8 @@ Před vytvořením první instance Azure Database Migration Service Zaregistrujt
 
 Musíte vytvořit registraci aplikace Azure, kterou může místní hybridní pracovní proces používat ke komunikaci s Azure Database Migration Service v cloudu.
 
-1. V Azure Portal vyberte **Azure Active Directory**, vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
-2. Zadejte název aplikace a potom v části **podporované typy účtů**vyberte typ účtů, které mají být podporovány, chcete-li určit, kdo může aplikaci používat.
+1. V Azure Portal vyberte **Azure Active Directory**, vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
+2. Zadejte název aplikace a potom v části **podporované typy účtů** vyberte typ účtů, které mají být podporovány, chcete-li určit, kdo může aplikaci používat.
 
     ![Registrace aplikace v Azure Database Migration Service hybridního režimu](media/quickstart-create-data-migration-service-hybrid-portal/dms-register-application.png)
 
@@ -106,7 +106,7 @@ Musíte vytvořit registraci aplikace Azure, kterou může místní hybridní pr
 
     ![Azure Database Migration Service hybridního režimu přiřazení role Přispěvatel](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-assign-contributor.png)
 
-6. Jako roli vyberte **Přispěvatel** , přiřaďte přístup k **uživateli služby Azure AD nebo instančnímu objektu**a potom vyberte název ID aplikace.
+6. Jako roli vyberte **Přispěvatel** , přiřaďte přístup k **uživateli služby Azure AD nebo instančnímu objektu** a potom vyberte název ID aplikace.
 
     ![Podrobnosti o přiřazení role přispěvatele Azure Database Migration Serviceho hybridního režimu](media/quickstart-create-data-migration-service-hybrid-portal/dms-add-role-assignment.png)
 
@@ -116,7 +116,7 @@ Musíte vytvořit registraci aplikace Azure, kterou může místní hybridní pr
 
 1. V Azure Portal přejděte do vaší instance Azure Database Migration Service.
 
-2. V části **Nastavení**vyberte **hybridní**a potom vyberte **stáhnout instalační program** a Stáhněte si hybridního pracovního procesu.
+2. V části **Nastavení** vyberte **hybridní** a potom vyberte **stáhnout instalační program** a Stáhněte si hybridního pracovního procesu.
 
     ![Stažení hybridního pracovního procesu Azure Database Migration Service](media/quickstart-create-data-migration-service-hybrid-portal/dms-installer-download.png)
 
@@ -125,7 +125,7 @@ Musíte vytvořit registraci aplikace Azure, kterou může místní hybridní pr
     > [!IMPORTANT]
     > Azure Database Migration Service Hybrid Installer vyžaduje rozhraní .NET 4.7.2 nebo novější. Nejnovější verze rozhraní .NET najdete na stránce [stažení .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) .
 
-4. Ve složce Install vyhledejte a otevřete **dmsSettings.jsv** souboru, zadejte **ApplicationId** a **ResourceID**a pak soubor uložte.
+4. Ve složce Install vyhledejte a otevřete **dmsSettings.jsv** souboru, zadejte **ApplicationId** a **ResourceID** a pak soubor uložte.
 
     ![Azure Database Migration Service nastavení hybridního pracovního procesu](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
 
@@ -139,7 +139,7 @@ Musíte vytvořit registraci aplikace Azure, kterou může místní hybridní pr
 
     ![Azure Database Migration Service certifikát Hybrid Worker](media/quickstart-create-data-migration-service-hybrid-portal/dms-certificate.png)
 
-6. V Azure Portal přejděte na ID aplikace v části **Spravovat**vyberte možnost s **certifikátem &** a pak vyberte **nahrát certifikát** a vyberte veřejný certifikát, který jste vygenerovali.
+6. V Azure Portal přejděte na ID aplikace v části **Spravovat** vyberte možnost s **certifikátem &** a pak vyberte **nahrát certifikát** a vyberte veřejný certifikát, který jste vygenerovali.
 
     ![Azure Database Migration Service nahrávání certifikátu Hybrid Worker](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-upload-certificate.png)
 

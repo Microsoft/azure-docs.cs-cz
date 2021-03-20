@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
 ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98683696"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
@@ -29,7 +29,7 @@ Když vytvoříte odkaz na image virtuálního počítače, musíte zadat násle
 | --- | --- |
 | Publisher |Canonical |
 | Nabídka |UbuntuServer |
-| Skladová položka |18,04 – LTS |
+| SKU |18,04 – LTS |
 | Verze |nejnovější |
 
 > [!TIP]

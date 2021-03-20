@@ -12,10 +12,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487299"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Cílový kód cyklické vyrovnávací paměti pro rozšířené události v Azure SQL Database
@@ -55,7 +55,7 @@ Toto téma představuje ukázku kódu Transact-SQL, který:
 
 ## <a name="code-sample"></a>Ukázka kódu
 
-S velmi drobnými úpravami se dá spustit následující ukázka kódu Ring bufferu buď Azure SQL Database, nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu ' _database ' v názvu některých zobrazení dynamické správy (zobrazení dynamické správy), která se používá v klauzuli FROM v kroku 5. Příklad:
+S velmi drobnými úpravami se dá spustit následující ukázka kódu Ring bufferu buď Azure SQL Database, nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu ' _database ' v názvu některých zobrazení dynamické správy (zobrazení dynamické správy), která se používá v klauzuli FROM v kroku 5. Například:
 
 * sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets

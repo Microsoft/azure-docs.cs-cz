@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93358452"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytváření smyček opakujících akce pracovních postupů nebo zpracovávajících pole v Azure Logic Apps
@@ -22,7 +22,7 @@ Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můž
 > [!TIP]
 > Pokud máte aktivační událost, která přijímá pole a chcete pro každou položku pole Spustit pracovní postup, můžete toto pole v *dávce* [ **SplitOn** vlastností triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -124,7 +124,7 @@ Pokud pracujete v zobrazení kódu aplikace logiky, můžete `Foreach` místo to
 
 Ve výchozím nastavení se cyklická smyčka "foreach" spouští paralelně. Chcete-li každý cyklus spustit postupně, nastavte možnost **sekvenční** smyčky. Smyčky "foreach" musí běžet sekvenčně, pokud máte vnořené smyčky nebo proměnné uvnitř smyček, kde očekáváte předvídatelné výsledky. 
 
-1. V pravém horním rohu smyčky vyberte **tři tečky** ( **...** ) > **Nastavení**.
+1. V pravém horním rohu smyčky vyberte **tři tečky** (**...**) > **Nastavení**.
 
    ![Na smyčce "foreach" vyberte možnost "..." > "nastavení".](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
@@ -234,7 +234,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
       | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
-      | **Schopn** | *\<email-address\@domain>* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
+      | **Do** | *\<email-address\@domain>* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
       | **Předmět** | Aktuální hodnota pro omezení je **limit** . | Zadejte předmět e-mailu. V tomto příkladu se ujistěte, že jste zahrnuli **mezní** proměnnou. | 
       | **Text** | <*e-mail – obsah*> | Zadejte obsah e-mailové zprávy, kterou chcete odeslat. V tomto příkladu zadejte libovolný text, který chcete. | 
       |||| 
@@ -251,9 +251,9 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
 Smyčka "do" zastaví provádění na základě těchto vlastností, takže nezapomeňte nastavit jejich hodnoty odpovídajícím způsobem:
 
-* **Count** : Tato hodnota je nejvyšší počet cyklů, které se spouštějí před ukončením smyčky. V případě výchozích a maximálních limitů počtu "do", které může aplikace logiky spustit, najdete v tématu [omezení souběžnosti, smyček a dedávkování](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+* **Count**: Tato hodnota je nejvyšší počet cyklů, které se spouštějí před ukončením smyčky. V případě výchozích a maximálních limitů počtu "do", které může aplikace logiky spustit, najdete v tématu [omezení souběžnosti, smyček a dedávkování](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-* **Timeout** : Tato hodnota je maximální doba, kterou smyčka spustí před ukončením a je zadána ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí a maximální limity hodnoty **časového limitu** najdete v tématu [omezení souběžnosti, smyček a dedávkování](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+* **Timeout**: Tato hodnota je maximální doba, kterou smyčka spustí před ukončením a je zadána ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí a maximální limity hodnoty **časového limitu** najdete v tématu [omezení souběžnosti, smyček a dedávkování](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
   Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud akce ve smyčce trvá déle, než je časový limit, aktuální cyklus se nezastaví. Další cyklus se ale nespustí, protože podmínka limitu není splněná.
 

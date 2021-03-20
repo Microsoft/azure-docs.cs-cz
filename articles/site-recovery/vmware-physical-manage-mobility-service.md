@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530144"
 ---
 # <a name="manage-the-mobility-agent"></a>Správa agenta mobility 
@@ -32,7 +32,7 @@ Na serveru můžete nastavit agenta mobility, když používáte Azure Site Reco
 
      ![Okno replikované položky](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. Klikněte na oznámení a v části **aktualizace agenta**vyberte počítače, na kterých chcete upgradovat službu mobility. Pak klikněte na **OK**.
+4. Klikněte na oznámení a v části **aktualizace agenta** vyberte počítače, na kterých chcete upgradovat službu mobility. Pak klikněte na **OK**.
 
      ![Seznam virtuálních počítačů replikovaných položek](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
@@ -69,7 +69,7 @@ Když nasadíte Site Recovery a povolíte nabízenou instalaci služby mobility,
 
 Odinstalujte z uživatelského rozhraní nebo z příkazového řádku.
 
-- **Z uživatelského rozhraní**: v Ovládacích panelech počítače vyberte **programy**. Vyberte **Microsoft Azure odinstalace služby mobility Site Recovery nebo hlavního cílového serveru**  >  **Uninstall**.
+- **Z uživatelského rozhraní**: v Ovládacích panelech počítače vyberte **programy**. Vyberte **Microsoft Azure odinstalace služby mobility Site Recovery nebo hlavního cílového serveru**  >  .
 - **Z příkazového řádku**: Otevřete okno příkazového řádku jako správce v počítači. Spusťte následující příkaz: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"

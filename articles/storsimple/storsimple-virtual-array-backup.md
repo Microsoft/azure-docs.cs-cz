@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 99c7f4ab92e4cce3937a933fec97008c281a0eae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018286"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Zálohování sdílených složek nebo svazků ve virtuálním poli StorSimple
@@ -46,7 +46,7 @@ Vaše virtuální pole StorSimple má výchozí zásadu zálohování, která za
 
 #### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>Změna počátečního času pro výchozí zásady zálohování
 
-1. Přejít na **zařízení**. Zobrazí se seznam zařízení zaregistrovaných ve službě StorSimple Device Manager. 
+1. Přejít na **zařízení**. Zobrazí se seznam zařízení zaregistrovaných ve službě StorSimple Správce zařízení. 
    
     ![Přejít na zařízení](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
@@ -102,7 +102,7 @@ Chcete-li zobrazit existující zálohy, proveďte následující kroky v Azure 
    
    - **Časový rozsah** – může být **za 1 hodinu**, **posledních 24 hodin**, **posledních 7 dní**, **posledních 30 dní**, **minulý rok** a **vlastní datum**.
     
-   - **Zařízení** – vyberte ze seznamu souborové servery nebo servery iSCSI, které jsou zaregistrované ve službě StorSimple Device Manager.
+   - **Zařízení** – vyberte ze seznamu souborové servery nebo servery iSCSI, které jsou zaregistrované ve službě StorSimple Správce zařízení.
    
    - **Iniciované** – dá se automaticky **naplánovat** (zásady zálohování) nebo **ručně** iniciované (vámi).
    

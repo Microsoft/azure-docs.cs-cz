@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86499388"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilace produkčních aplikací v Azure pomocí Application Insights
@@ -30,9 +30,9 @@ Pokud jste povolili profilování, ale nevidíte trasování, podívejte se na n
 
 ## <a name="view-profiler-data"></a>Zobrazit data profileru
 
-Aby Profiler mohl nahrávat trasování, musí vaše aplikace aktivně zpracovávat požadavky. Pokud provádíte experiment, můžete vygenerovat žádosti do vaší webové aplikace pomocí [Application Insights testování výkonu](/vsts/load-test/app-service-web-app-performance-test). Pokud máte nově povolený Profiler, můžete spustit krátký zátěžový test. Když je spuštěn zátěžový test, v [podokně **Nastavení profileru** ](profiler-settings.md)vyberte tlačítko **profil nyní** . Když je profiler spuštěný, profiluje se náhodně přibližně jednou za hodinu a po dobu 2 minut. Pokud vaše aplikace zpracovává konstantní datový proud požadavků, profilery nahraje každou hodinu.
+Aby Profiler mohl nahrávat trasování, musí vaše aplikace aktivně zpracovávat požadavky. Pokud provádíte experiment, můžete vygenerovat žádosti do vaší webové aplikace pomocí [Application Insights testování výkonu](/vsts/load-test/app-service-web-app-performance-test). Pokud máte nově povolený Profiler, můžete spustit krátký zátěžový test. Když je spuštěn zátěžový test, v [podokně **Nastavení profileru**](profiler-settings.md)vyberte tlačítko **profil nyní** . Když je profiler spuštěný, profiluje se náhodně přibližně jednou za hodinu a po dobu 2 minut. Pokud vaše aplikace zpracovává konstantní datový proud požadavků, profilery nahraje každou hodinu.
 
-Poté, co vaše aplikace obdrží nějaký provoz a Profiler měl čas na nahrání trasování, byste měli mít trasování k zobrazení. Tento proces může trvat 5 až 10 minut. Chcete-li zobrazit trasování, v podokně **výkon** vyberte **provést akce**a pak vyberte tlačítko **Profiler trasování** .
+Poté, co vaše aplikace obdrží nějaký provoz a Profiler měl čas na nahrání trasování, byste měli mít trasování k zobrazení. Tento proces může trvat 5 až 10 minut. Chcete-li zobrazit trasování, v podokně **výkon** vyberte **provést akce** a pak vyberte tlačítko **Profiler trasování** .
 
 ![Application Insights náhledu podokna výkonu náhled trasování profileru][performance-blade]
 
@@ -55,7 +55,7 @@ Zásobník volání zobrazený v zobrazení Časová osa je výsledkem vzorková
 
 ### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Přidělení objektů (CLR! JIT \_ New nebo CLR! JIT \_ Newarr1)
 
-**CLR! JIT JIT \_ New** a **CLR! JIT \_ Newarr1** jsou pomocné funkce v .NET Framework, které přidělují paměť ze spravované haldy. **CLR! JIT \_ ** je vyvolána nově, když je objekt přidělen. **CLR! \_NEWARR1 JIT** se vyvolá při přidělení pole objektu. Tyto dvě funkce jsou obvykle rychlé a mohou trvat poměrně krátké množství času. Pokud **CLR! JIT \_ New** nebo **CLR! \_NEWARR1 JIT** na časové ose zabere spoustu času, kód může přidělit mnoho objektů a spotřebovávat značné množství paměti.
+**CLR! JIT JIT \_ New** a **CLR! JIT \_ Newarr1** jsou pomocné funkce v .NET Framework, které přidělují paměť ze spravované haldy. **CLR! JIT \_** je vyvolána nově, když je objekt přidělen. **CLR! \_NEWARR1 JIT** se vyvolá při přidělení pole objektu. Tyto dvě funkce jsou obvykle rychlé a mohou trvat poměrně krátké množství času. Pokud **CLR! JIT \_ New** nebo **CLR! \_NEWARR1 JIT** na časové ose zabere spoustu času, kód může přidělit mnoho objektů a spotřebovávat značné množství paměti.
 
 ### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>Načítání kódu (CLR! ThePreStub)
 
@@ -107,7 +107,7 @@ Aplikace provádí síťové operace.
 
 ### <a name="when-column"></a><a id="when"></a>Když sloupec
 
-Sloupec **when** je vizualizace, jak se shromažďují celkové vzorky pro uzel v průběhu času. Celkový rozsah žádosti je dělený na 32 časových intervalů. Zahrnuté vzorky pro tento uzel se shromažďují v těchto intervalech 32. Jednotlivé intervaly jsou reprezentovány jako pruhy. Výška pruhu představuje hodnotu škálované. Pro uzly, které jsou označeny **CPU_TIME** nebo **BLOCKED_TIME**nebo kde existuje zřejmá relace pro využívání prostředku (například CPU, disku nebo vlákna), představuje tento pruh spotřebu jednoho ze zdrojů během intervalu. Pro tyto metriky je možné získat hodnotu větší než 100% díky využívání více prostředků. Pokud například použijete v průměru dva procesory během intervalu, dostanete 200 procent.
+Sloupec **when** je vizualizace, jak se shromažďují celkové vzorky pro uzel v průběhu času. Celkový rozsah žádosti je dělený na 32 časových intervalů. Zahrnuté vzorky pro tento uzel se shromažďují v těchto intervalech 32. Jednotlivé intervaly jsou reprezentovány jako pruhy. Výška pruhu představuje hodnotu škálované. Pro uzly, které jsou označeny **CPU_TIME** nebo **BLOCKED_TIME** nebo kde existuje zřejmá relace pro využívání prostředku (například CPU, disku nebo vlákna), představuje tento pruh spotřebu jednoho ze zdrojů během intervalu. Pro tyto metriky je možné získat hodnotu větší než 100% díky využívání více prostředků. Pokud například použijete v průměru dva procesory během intervalu, dostanete 200 procent.
 
 ## <a name="limitations"></a>Omezení
 

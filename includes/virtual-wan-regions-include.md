@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e978a5e7e76c8ddc9b7e6b80ec7170c45baa2cae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82784108"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>Oblasti Azure v geopolitické oblasti
@@ -29,7 +29,7 @@ Virtuální síť WAN je dostupná pro tyto oblasti:
 | Japonsko  | Japonsko – západ, Japonsko – východ |
 | Oceánie | Austrálie – jihovýchod, Austrálie – východ |
 | Jižní Afrika | Jižní Afrika sever, Jižní Afrika – západ |
-| Jižní Amerika |Brazil South |
+| Jižní Amerika |Brazílie – jih |
 | Jižní Korea | Jižní Korea – střed, Jižní Korea – jih |
 | Spojené arabské emiráty | Spojené arabské emiráty sever, Spojené arabské emiráty střed |
 

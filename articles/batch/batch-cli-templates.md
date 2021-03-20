@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91848717"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití Azure Batch šablon CLI a přenosu souborů
@@ -256,11 +256,11 @@ Můžete nahrát šablonu Batch CLI do desktopové aplikace [Batch Explorer](htt
 
 Postup nahrání šablony:
 
-1. V Batch Explorer vyberte **Gallery**  >  **místní šablony**galerie.
+1. V Batch Explorer vyberte   >  **místní šablony** galerie.
 
 2. Vyberte nebo přetáhněte místní fond nebo šablonu úlohy do seznamu.
 
-3. Vyberte **použít tuto šablonu**a postupujte podle pokynů na obrazovce.
+3. Vyberte **použít tuto šablonu** a postupujte podle pokynů na obrazovce.
 
 ## <a name="file-groups-and-file-transfer"></a>Skupiny souborů a přenos souborů
 
@@ -280,7 +280,7 @@ az batch file download --file-group ffmpeg-output --local-path
 
 Šablony fondů a úloh umožňují zadání souborů uložených ve skupinách souborů pro kopírování uzlů fondu nebo mimo uzly fondu zpět do skupiny souborů. Například v šabloně úlohy, která byla zadána dříve, je pro objekt pro vytváření úloh zadána skupina souborů *ffmpeg-Input* jako umístění zdrojových videosouborů, které byly zkopírovány do uzlu pro překódování. Skupina souborů *ffmpeg-Output* je umístění, kde jsou zkopírovány výstupní soubory z uzlu, na kterém každý úkol spouští.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Podpora pro přenos šablon a souborů se v tuto chvíli přidala jenom do Azure CLI. Cílem je rozšířit cílovou skupinu, která může používat dávku uživatelům, kteří nepotřebují vyvíjet kód pomocí rozhraní API pro Batch, jako jsou například výzkumníki a uživatelé IT. Bez psaní kódu můžou uživatelé s poznatky o Azure, službě Batch a aplikacích, které mají spustit pomocí služby Batch, vytvořit šablony pro vytvoření fondu a úloh. S parametry šablony můžou uživatelé bez podrobných znalostí o službě Batch a aplikace používat šablony.
 

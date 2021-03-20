@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492195"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
@@ -54,7 +54,7 @@ V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následuj
 1. V možnosti **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** pro C# a pak vyberte **Další**.
 1. V části **Konfigurace nového projektu** zadejte název aplikace a vyberte **vytvořit**.
 
-Do `Program` třídy v souboru *program.cs* přidejte všechny příklady kódu v tomto článku.
+Do `Program` třídy v souboru *program. cs* přidejte všechny příklady kódu v tomto článku.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>Použití balíčku NuGet k instalaci požadovaných balíčků
 
@@ -135,7 +135,7 @@ Nahraďte `myaccount` názvem svého účtu úložiště a `StorageAccountKeyEnd
 
 ## <a name="add-using-directives"></a>Přidání direktiv using
 
-V **Průzkumník řešení** otevřete soubor *program.cs* a na začátek souboru přidejte následující direktivy using.
+V **Průzkumník řešení** otevřete soubor *program. cs* a na začátek souboru přidejte následující direktivy using.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -156,7 +156,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>Programový přístup ke sdílené složce
 
-Do souboru *program.cs* přidejte následující kód pro přístup ke sdílené složce programově.
+Do souboru *program. cs* přidejte následující kód pro přístup ke sdílené složce programově.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -559,7 +559,7 @@ Následující příklad kódu ukazuje, jak pomocí klientské knihovny .NET pov
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-Nejprve `using` do souboru *program.cs* přidejte následující direktivy spolu s těmi, které jste přidali výše:
+Nejprve `using` do souboru *program. cs* přidejte následující direktivy spolu s těmi, které jste přidali výše:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
@@ -627,7 +627,7 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 - [Začínáme s nástrojem AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 - [Řešení potíží se službou Azure Files ve Windows](./storage-troubleshoot-windows-file-connection-problems.md)
 
-### <a name="reference"></a>Referenční informace
+### <a name="reference"></a>Reference
 
 - [Rozhraní API služby Azure Storage pro .NET](/dotnet/api/overview/azure/storage)
 - [Rozhraní REST API služby File Service](/rest/api/storageservices/File-Service-REST-API)
