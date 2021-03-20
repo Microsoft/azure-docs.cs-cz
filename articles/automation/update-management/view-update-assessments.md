@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 09/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 39df5888a330a92ae043e34c3043da5b1f566345
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92222211"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Zobrazit posouzení aktualizací v Update Management
@@ -42,7 +42,7 @@ Aktualizace pro vaše prostředí jsou uvedené na stránce **Správa aktualizac
 
 Ve sloupci **dodržování předpisů** můžete vidět čas, kdy byl počítač naposledy vyhodnocen. Ve sloupci **připravenost aktualizace agenta** můžete zobrazit stav agenta aktualizace. Pokud se vyskytne problém, vyberte odkaz pro řešení potíží, které vám pomůžou problém vyřešit.
 
-V části **informační odkaz**vyberte odkaz pro aktualizaci, abyste otevřeli článek podpory, který vám poskytne důležité informace o této aktualizaci.
+V části **informační odkaz** vyberte odkaz pro aktualizaci, abyste otevřeli článek podpory, který vám poskytne důležité informace o této aktualizaci.
 
 [![Zobrazit stav aktualizace](./media/view-update-assessments/missing-updates.png)](./media/view-update-assessments/missing-updates-expanded.png#lightbox)
 
@@ -70,7 +70,7 @@ V následujících tabulkách jsou uvedeny podporované klasifikace aktualizací
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Sady oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|nástroje     | Nástroje nebo funkce, které pomůžou dokončit jednu nebo více úloh.        |
+|Nástroje     | Nástroje nebo funkce, které pomůžou dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikací nebo souborů, které jsou aktuálně nainstalovány.        |
 
 ### <a name="linux"></a>Linux

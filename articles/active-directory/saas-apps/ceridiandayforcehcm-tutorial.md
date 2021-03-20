@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
 ms.openlocfilehash: 1f2e01a79f980e63102bb6538859f0da30c555c8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101651843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Kurz: Azure Active Directory integrace s Ceridian Dayforce HCM
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Ceridian Dayforce HCM s Azure Active D
 * Umožněte uživatelům, aby se automaticky přihlásili k Ceridian Dayforce HCM pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -107,7 +107,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------| --------- |
     | name  | User. extensionAttribute2 |
 

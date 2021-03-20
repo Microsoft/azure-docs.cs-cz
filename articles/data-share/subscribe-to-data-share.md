@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 11/12/2020
 ms.openlocfilehash: a225989f0670e9b62b00a35bac719c9357c8a130
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017045"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: Přijetí a získání dat prostřednictvím služby Azure Data Share  
@@ -23,7 +23,7 @@ V tomto kurzu se dozvíte, jak přijmout pozvánku ke sdílení dat pomocí Azur
 > * Zadejte cíl pro vaše data.
 > * Vytvořte předplatné pro vaši sdílenou složku dat pro plánovanou aktualizaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než budete moct přijmout pozvánku ke sdílení dat, musíte zřídit několik prostředků Azure, které jsou uvedené níže. 
 
 Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné všechny požadavky. 
@@ -116,7 +116,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 Připravte prostředí Azure CLI a pak si prohlédněte své pozvánky.
 
-Začněte tím, že připravíte prostředí pro rozhraní příkazového řádku Azure:
+Začněte přípravou prostředí pro rozhraní příkazového řádku Azure:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 

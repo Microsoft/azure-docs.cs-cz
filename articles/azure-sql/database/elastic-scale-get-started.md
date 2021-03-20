@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919540"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji pro Elastic Database
@@ -25,7 +25,7 @@ Tento dokument vás seznámí s vývojářským prostředím pro [klientskou kni
 
 ## <a name="elastic-database-tools-for-java"></a>Elastic Database Tools for Java
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Sada Java Developer Kit (JDK), verze 1,8 nebo novější
 * [Maven](https://maven.apache.org/download.cgi)
@@ -72,7 +72,7 @@ Chcete-li přidat knihovnu klienta do vlastního projektu Maven, přidejte do so
 
 ## <a name="elastic-database-tools-for-net"></a>Elastic Database nástroje pro .NET
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Visual Studio 2012 nebo novější s C#. Stáhněte si bezplatnou verzi na webu [Stažení sady Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 * NuGet 2,7 nebo novější. Pokud chcete získat nejnovější verzi, přečtěte si téma [instalace NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
@@ -104,13 +104,13 @@ Gratulujeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizon
 
 ## <a name="key-pieces-of-the-code-sample"></a>Klíčové části Ukázky kódu
 
-* **Správa map horizontálních oddílů a horizontálních oddílů**: kód ukazuje, jak pracovat s horizontálních oddílů, rozsahy a mapováními v souboru *ShardManagementUtils.cs* . Další informace najdete v tématu horizontální navýšení [kapacity databází pomocí Správce map horizontálních oddílů](https://go.microsoft.com/?linkid=9862595).  
+* **Správa map horizontálních oddílů a horizontálních oddílů**: kód ukazuje, jak pracovat s horizontálních oddílů, rozsahy a mapováními v souboru *ShardManagementUtils. cs* . Další informace najdete v tématu horizontální navýšení [kapacity databází pomocí Správce map horizontálních oddílů](https://go.microsoft.com/?linkid=9862595).  
 
-* **Směrování závislé na datech**: směrování transakcí do pravého horizontálních oddílůu je zobrazeno v souboru *DataDependentRoutingSample.cs* . Další informace najdete v tématu [Směrování závislé na datech](https://go.microsoft.com/?linkid=9862596).
+* **Směrování závislé na datech**: směrování transakcí do pravého horizontálních oddílůu je zobrazeno v souboru *DataDependentRoutingSample. cs* . Další informace najdete v tématu [Směrování závislé na datech](https://go.microsoft.com/?linkid=9862596).
 
-* **Dotazování na více horizontálních oddílů**: dotazování napříč horizontálních oddílů je znázorněno v souboru *MultiShardQuerySample.cs* . Další informace najdete v tématu [dotazování multi-horizontálních oddílů](https://go.microsoft.com/?linkid=9862597).
+* **Dotazování na více horizontálních oddílů**: dotazování napříč horizontálních oddílů je znázorněno v souboru *MultiShardQuerySample. cs* . Další informace najdete v tématu [dotazování multi-horizontálních oddílů](https://go.microsoft.com/?linkid=9862597).
 
-* **Přidání prázdných horizontálních oddílů**: iterativní přidání nového prázdného horizontálních oddílů je provedeno kódem v souboru *CreateShardSample.cs* . Další informace najdete v tématu horizontální navýšení [kapacity databází pomocí Správce map horizontálních oddílů](https://go.microsoft.com/?linkid=9862595).
+* **Přidání prázdných horizontálních oddílů**: iterativní přidání nového prázdného horizontálních oddílů je provedeno kódem v souboru *CreateShardSample. cs* . Další informace najdete v tématu horizontální navýšení [kapacity databází pomocí Správce map horizontálních oddílů](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Jiné operace elastického škálování
 

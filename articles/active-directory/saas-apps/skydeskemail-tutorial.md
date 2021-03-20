@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 30e94c9737241ff49c29898adcc5e50c6b73a9b1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516016"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Kurz: Azure Active Directory integrace s SkyDesk e-mailem
@@ -124,7 +124,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí e-mailu 
 
 1. V jiném webovém prohlížeči se přihlaste ke svému e-mailovému účtu SkyDesk jako správce.
 
-1. V nabídce v horní části klikněte na **Nastavení**a vyberte **org**.
+1. V nabídce v horní části klikněte na **Nastavení** a vyberte **org**.
 
     ![Snímek obrazovky se zobrazí v nabídce nastavení vybraná možnost org.](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
@@ -161,7 +161,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí e-mailu 
 
     d. Kliknutím na **získat klíč ze souboru** vyberte stažený certifikát z Azure Portal a potom kliknutím na **otevřít** Nahrajte certifikát.
 
-    e. Jako **algoritmus**vyberte **RSA**.
+    e. Jako **algoritmus** vyberte **RSA**.
 
     f. Změny uložíte kliknutím na tlačítko **OK** .
 
@@ -169,7 +169,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí e-mailu 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -194,7 +194,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k e-mailu SkyDesk.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **SkyDesk e-mail**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **SkyDesk e-mail**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -233,7 +233,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici SkyDesk E-mail, měli byste se automaticky přihlásit k e-mailu SkyDesk, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

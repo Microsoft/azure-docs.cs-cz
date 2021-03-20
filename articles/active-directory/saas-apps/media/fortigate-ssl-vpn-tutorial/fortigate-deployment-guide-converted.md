@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: jeedes
 ms.openlocfilehash: cdaa6a9601452100ab90ef8b0f2191002f256b74
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95025427"
 ---
 # <a name="fortigate-azure-virtual-machine-deployment-guide"></a>Průvodce nasazením virtuálního počítače Azure s FortiGate
@@ -164,9 +164,9 @@ Můžete chtít nakonfigurovat virtuální počítač FortiGate s vlastním cert
 5. Vyberte **importovat**  >  certifikát **Local Certificate**  >  **PKCS #12**.
 6. Přejděte k části. Soubor PFX, který obsahuje certifikát SSL a soukromý klíč.
 7. Zadejte. Heslo PFX a smysluplný název certifikátu. Pak vyberte **OK**.
-8. V nabídce vlevo vyberte **System**  >  **Nastavení** systému.
+8. V nabídce vlevo vyberte   >  **Nastavení** systému.
 9. V části **Nastavení správy** rozbalte seznam vedle položky **certifikát serveru HTTPS** a vyberte certifikát SSL, který jste naimportovali dříve.
-10. Vyberte **Apply** (Použít).
+10. Vyberte **Použít**.
 11. Zavřete okno prohlížeče a pokračujte na `https://<address>:8443` .
 12. Přihlaste se pomocí přihlašovacích údajů správce FortiGate. Nyní byste měli vidět správný certifikát SSL.
 

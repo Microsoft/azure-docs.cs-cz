@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: ff071d03e00a0380d1ab6642828b0940931d3302
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097444"
 ---
 # <a name="add-a-line-layer-to-the-map-android-sdk"></a>Přidat řádkovou vrstvu na mapu (Android SDK)
@@ -23,7 +23,7 @@ Spojnicová vrstva se dá použít k vykreslování `LineString` a zobrazování
 > [!TIP]
 > Vrstvy čar ve výchozím nastavení vykreslí souřadnice mnohoúhelníků a také čáry ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslovat pouze funkce geometrie LineString, nastavte `filter` možnost vrstvy na `eq(geometryType(), "LineString")` . Pokud chcete zahrnout i funkce MultiLineString, nastavte `filter` možnost vrstvy na `any(eq(geometryType(), "LineString"), eq(geometryType(), "MultiLineString"))` .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jste dokončili kroky v [rychlém startu: vytvoření dokumentu aplikace pro Android](quick-android-map.md) . Bloky kódu v tomto článku lze vložit do `onReady` obslužné rutiny události Maps.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 64e40341ec56a2e1c561b2bcbb5e584830c14015
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93145578"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Přehled podpory více tenantů pro zotavení po havárii VMware do Azure pomocí CSP
@@ -24,11 +24,11 @@ Tento článek poskytuje přehled implementace a správy víceklientské archite
 
 Existují tři hlavní modely s více klienty:
 
-* **Poskytovatel sdílených hostitelských služeb (HSP)** : partner vlastní fyzickou infrastrukturu a používá sdílené prostředky (vCenter, datacentra, fyzické úložiště atd.) k hostování více virtuálních počítačů tenantů ve stejné infrastruktuře. Partner může jako spravovanou službu poskytnout správu zotavení po havárii, nebo může klient vlastní zotavení po havárii jako samoobslužné řešení.
+* **Poskytovatel sdílených hostitelských služeb (HSP)**: partner vlastní fyzickou infrastrukturu a používá sdílené prostředky (vCenter, datacentra, fyzické úložiště atd.) k hostování více virtuálních počítačů tenantů ve stejné infrastruktuře. Partner může jako spravovanou službu poskytnout správu zotavení po havárii, nebo může klient vlastní zotavení po havárii jako samoobslužné řešení.
 
-* **Vyhrazený poskytovatel hostitelských služeb** : partner vlastní fyzickou infrastrukturu, ale využívá vyhrazené prostředky (více servery vCenter, fyzických úložišť dat atd.) k hostování virtuálních počítačů jednotlivých tenantů na samostatné infrastruktuře. Partner může jako spravovanou službu poskytnout správu zotavení po havárii, nebo může tento tenant vlastnit jako samoobslužné řešení.
+* **Vyhrazený poskytovatel hostitelských služeb**: partner vlastní fyzickou infrastrukturu, ale využívá vyhrazené prostředky (více servery vCenter, fyzických úložišť dat atd.) k hostování virtuálních počítačů jednotlivých tenantů na samostatné infrastruktuře. Partner může jako spravovanou službu poskytnout správu zotavení po havárii, nebo může tento tenant vlastnit jako samoobslužné řešení.
 
-* **Zprostředkovatel spravovaných služeb (MSP)** : zákazník vlastní fyzickou infrastrukturu, která je hostitelem virtuálních počítačů, a partner poskytuje povolení a správu zotavení po havárii.
+* **Zprostředkovatel spravovaných služeb (MSP)**: zákazník vlastní fyzickou infrastrukturu, která je hostitelem virtuálních počítačů, a partner poskytuje povolení a správu zotavení po havárii.
 
 ## <a name="shared-hosting-services-provider-hsp"></a>Zprostředkovatel sdíleného hostování služeb (HSP)
 
@@ -56,9 +56,9 @@ Samostatný procesový Server se škálováním na více instancí je také pod 
 
 Každý konfigurační server ve scénáři s více klienty používá dva účty:
 
-- **účet pro přístup k serveru vCenter** : Tento účet se používá ke zjišťování virtuálních počítačů tenanta. Má přiřazená přístupová oprávnění vCenter. Aby se zabránilo nevracení přístupu, doporučujeme, aby partneři tyto přihlašovací údaje zadali sami v nástroji pro konfiguraci.
+- **účet pro přístup k serveru vCenter**: Tento účet se používá ke zjišťování virtuálních počítačů tenanta. Má přiřazená přístupová oprávnění vCenter. Aby se zabránilo nevracení přístupu, doporučujeme, aby partneři tyto přihlašovací údaje zadali sami v nástroji pro konfiguraci.
 
-- **Účet pro přístup k virtuálnímu počítači** : Tento účet se používá k instalaci agenta služby mobility na virtuální počítače tenantů s automatickým vložením. Obvykle se jedná o doménový účet, který může klient poskytnout partnerovi, nebo účet, který může partner spravovat přímo. Pokud tenant nechce sdílet podrobnosti s partnerem přímo, můžou přihlašovací údaje zadat prostřednictvím přístupu ke konfiguračnímu serveru v omezeném čase. Nebo s asistencí partnera může nainstalovat agenta služby mobility ručně.
+- **Účet pro přístup k virtuálnímu počítači**: Tento účet se používá k instalaci agenta služby mobility na virtuální počítače tenantů s automatickým vložením. Obvykle se jedná o doménový účet, který může klient poskytnout partnerovi, nebo účet, který může partner spravovat přímo. Pokud tenant nechce sdílet podrobnosti s partnerem přímo, můžou přihlašovací údaje zadat prostřednictvím přístupu ke konfiguračnímu serveru v omezeném čase. Nebo s asistencí partnera může nainstalovat agenta služby mobility ručně.
 
 ## <a name="vcenter-account-requirements"></a>požadavky na účet vCenter
 
@@ -75,11 +75,11 @@ Nakonfigurujte konfigurační server pomocí účtu, který má přiřazenou zvl
 1. Vytvořte novou roli klonováním předdefinované role *jen pro čtení* a pak jí poskytněte pohodlný název (například Azure_Site_Recovery, jak je znázorněno v tomto příkladu).
 2. Přiřaďte této roli tato oprávnění:
 
-   * **Úložiště dat** : přidělit prostor, procházet úložiště dat, operace se soubory na nízké úrovni, odebrat soubor, aktualizovat soubory virtuálního počítače
-   * **Síť** : přiřazení sítě
-   * **Prostředek** : přiřazení virtuálního počítače ke fondu zdrojů, migrace napájení z virtuálního počítače a migrace na virtuálním počítači
-   * **Úlohy** : vytvořit úlohu, aktualizovat úlohu
-   * **Konfigurace virtuálního počítače** : vše
+   * **Úložiště dat**: přidělit prostor, procházet úložiště dat, operace se soubory na nízké úrovni, odebrat soubor, aktualizovat soubory virtuálního počítače
+   * **Síť**: přiřazení sítě
+   * **Prostředek**: přiřazení virtuálního počítače ke fondu zdrojů, migrace napájení z virtuálního počítače a migrace na virtuálním počítači
+   * **Úlohy**: vytvořit úlohu, aktualizovat úlohu
+   * **Konfigurace virtuálního počítače**: vše
    * **Virtuální počítač – interakce** > odpověď, připojení zařízení, konfigurace média CD, konfigurace disketových médií, zapnutí, zapnutí, instalace nástrojů VMware
    * **Virtuální počítač-inventář** > vytvořit z existujícího, vytvořit nové, registrovat, zrušit registraci
    * **Zřizování virtuálních počítačů –** > povolení stahování virtuálního počítače, povolení nahrávání souborů virtuálního počítače
@@ -92,7 +92,7 @@ Nakonfigurujte konfigurační server pomocí účtu, který má přiřazenou zvl
 >| Objekt | Role | Poznámky |
 >| --- | --- | --- |
 >| vCenter | Read-Only | Potřeba jenom k tomu, aby byl přístup vCenter povolený pro správu různých objektů. Toto oprávnění můžete odebrat, pokud se účet nikdy neposkytne klientovi nebo se nepoužije pro žádné operace správy na vCenter. |
->| Datacentrum | Azure_Site_Recovery |  |
+>| Datové centrum | Azure_Site_Recovery |  |
 >| Hostitelský cluster a hostitelský cluster | Azure_Site_Recovery | Znovu zajistěte, aby byl přístup na úrovni objektu, aby k převzetí služeb při selhání a po navrácení služeb po obnovení měly virtuální počítače tenanta jenom přístupné hostitele. |
 >| Úložiště dat a cluster úložiště dat | Azure_Site_Recovery | Stejné jako předchozí. |
 >| Síť | Azure_Site_Recovery |  |

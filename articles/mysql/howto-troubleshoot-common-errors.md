@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
 ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631363"
 ---
 # <a name="common-errors"></a>Běžné chyby
@@ -25,9 +25,9 @@ K výše uvedené chybě dojde po úspěšném přihlášení, ale před spušt�
 
 Existují některé parametry serveru, například require_secure_transport, které nejsou podporovány na úrovni relace, a proto se pokusíte změnit hodnoty těchto parametrů pomocí init_connect může dojít k chybě 1184 při připojování k serveru MySQL, jak je uvedeno níže.
 
-MySQL> Zobrazit databáze; Chyba 2006 (HY000): Server MySQL neztratil připojení. Probíhá pokus o opětovné připojení... ID připojení: 64897 aktuální databáze: * * * žádné * * _ chyba 1184 (08S01): přerušené připojení 22 k databázi: ' DB-name ' uživatel: ' uživatel ' ' hostitel ' ' hostIP ' (init_connect příkaz se nezdařil)
+MySQL> Zobrazit databáze; Chyba 2006 (HY000): Server MySQL neztratil připojení. Probíhá pokus o opětovné připojení... ID připojení: 64897 aktuální databáze: * * * žádné * * * chyba 1184 (08S01): přerušené připojení 22 k databázi: ' DB-name ' uživatel: ' uživatel ' ' host ' ' hostIP ' (init_connect příkaz se nezdařil)
 
-_ *Řešení**: v Azure Portal byste měli resetovat init_connect hodnotu na kartě parametry serveru a nastavit jenom podporované parametry serveru pomocí parametru init_connect. 
+**Řešení** : v Azure Portal byste měli resetovat init_connect hodnotu na kartě parametry serveru a nastavit jenom podporované parametry serveru pomocí parametru init_connect. 
 
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>Chyby z důvodu nedostatku role SUPER Privilege a DBA

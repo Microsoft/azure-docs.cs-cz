@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98632178"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Připojení protokolů Office 365 ke službě Azure Sentinel
 
 Konektor protokolu [Office 365](/office/) přináší do Azure Sentinel informace o probíhajících činnostech uživatelů a správců v **Exchange** a **SharePointu** (včetně **OneDrivu**) a teď i v **týmech** . Tyto informace zahrnují podrobnosti o akcích, jako jsou třeba soubory ke stažení, odeslané požadavky na přístup, změny v událostech skupiny, operace poštovní schránky, týmové události (například události chatu, týmu, člena a kanálu) a také podrobnosti uživatele, který akce provedl. Připojení protokolů Office 365 k Azure Sentinel umožňuje zobrazit a analyzovat tato data v sešitech, dotazovat se na ně a vytvořit vlastní výstrahy a začlenit je ke zvýšení vašeho procesu šetření, což vám poskytne lepší přehled o zabezpečení sady Office 365.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít oprávnění ke čtení a zápisu v pracovním prostoru Sentinel Azure.
 

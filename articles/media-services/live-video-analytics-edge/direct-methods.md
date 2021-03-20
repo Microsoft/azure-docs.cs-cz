@@ -4,10 +4,10 @@ description: Live video Analytics na IoT Edge zveřejňuje několik přímých m
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656236"
 ---
 # <a name="direct-methods"></a>Přímé metody
@@ -98,7 +98,7 @@ Podrobná Chyba při ověřování, jako jsou třeba ověřování modulu grafu,
 }
 ```
 
-|Status|    Podrobný kód   |Popis|
+|Status|    Podrobný kód   |Description|
 |---|---|---|
 |400|   GraphValidationError|   Obecné chyby grafu, jako jsou cykly nebo dělení na oddíly atd.|
 |400|   ModuleValidationError|  Chyby ověřování specifické pro modul|

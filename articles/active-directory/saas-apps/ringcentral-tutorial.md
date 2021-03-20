@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
 ms.openlocfilehash: 20e59f134c51662f9530862790d5a47b8bb21d6d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101650718"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Kurz: integrace RingCentral s Azure Active Directory
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat RingCentral s Azure Active Directory (
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k RingCentral svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

@@ -4,10 +4,10 @@ description: V tomto rychlém startu budete postupovat podle pokynů pro povolen
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 41769359eaa1f930d34b0a182f35da38a6f5109d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98920033"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Ruby
@@ -16,7 +16,7 @@ Prvním krokem k použití Azure Resource graphu je ověření, že je nainstalo
 
 Na konci tohoto procesu přidáte Gems do instalace Ruby a spustíte váš první dotaz na graf prostředku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Objekt služby Azure, včetně _ClientID_ a _clientSecret_.

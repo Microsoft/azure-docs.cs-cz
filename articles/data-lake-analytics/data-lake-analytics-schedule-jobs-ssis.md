@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/17/2018
 ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221447"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Plánování úloh U-SQL pomocí služba SSIS (SQL Server Integration Services) (SSIS)
@@ -35,7 +35,7 @@ Skript U-SQL můžete získat z různých míst pomocí integrovaných funkcí a
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>Scénář 1 – použití vloženého skriptového volání TVF a uložených procesů
 
-V editoru úloh Azure Data Lake Analytics nakonfigurujte typ **sourceType** jako **DirectInput**a vložte příkazy U-SQL do **USQLStatement**.
+V editoru úloh Azure Data Lake Analytics nakonfigurujte typ **sourceType** jako **DirectInput** a vložte příkazy U-SQL do **USQLStatement**.
 
 V případě snadné údržby a správy kódu vložte pouze krátký skript U-SQL jako vložené skripty, například můžete volat existující funkce vracející tabulku a uložené procedury v databázích U-SQL. 
 
@@ -89,13 +89,13 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
     Vytvoření tohoto připojení k souboru:
 
    1. Vyberte možnost **\<New Connection...>** v nastavení připojení \.
-   2. Nastavte **typ využití** na **existující soubor**a nastavte **soubor** na cestu k souboru existujícímu souboru.
+   2. Nastavte **typ využití** na **existující soubor** a nastavte **soubor** na cestu k souboru existujícímu souboru.
 
        ![Snímek obrazovky, který zobrazuje Editor Správce připojení souborů s vybraným "existujícím souborem", pro "typ využití".](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. V zobrazení **Správci připojení** klikněte pravým tlačítkem myši na vytvořené připojení k souboru a vyberte možnost **vlastnosti**.
 
-   4. V okně **vlastnosti** rozbalte **výrazy**a nastavte **ConnectionString** na proměnnou definovanou v kontejneru smyčky foreach, například `@[User::FileName]` .
+   4. V okně **vlastnosti** rozbalte **výrazy** a nastavte **ConnectionString** na proměnnou definovanou v kontejneru smyčky foreach, například `@[User::FileName]` .
 
        ![Konfigurovat kontejner smyčky foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -128,7 +128,7 @@ Kromě použití souborů U-SQL uložených v cloudu můžete také použít sou
 
 2. Vyberte typ **souboru** a klikněte na **Přidat...**.
 
-3. Nastavte **typ využití** na **existující soubor**a nastavte **soubor** na soubor na místním počítači.
+3. Nastavte **typ využití** na **existující soubor** a nastavte **soubor** na soubor na místním počítači.
 
     ![Přidat připojení k souboru do místního souboru](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 

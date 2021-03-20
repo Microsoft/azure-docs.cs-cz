@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6eb9a20920f0a340491459f0875fc85b90dfa193
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92209678"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Omezení rozsahu nasazení Change Tracking a inventáře
@@ -24,23 +24,23 @@ Konfigurace oboru je skupina jednoho nebo několika uložených hledání (dotaz
 
 Omezení rozsahu pro nasazení Change Tracking a inventáře:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Automation**. Po zahájení psaní seznam vyfiltruje návrhy na základě vašeho vstupu. Vyberte **Účty Automation**.
 
 3. V seznamu účtů Automation vyberte účet, který jste zvolili při povolování Change Tracking a inventáře.
 
-4. V účtu Automation vyberte v části **související prostředky**možnost **propojený pracovní prostor** .
+4. V účtu Automation vyberte v části **související prostředky** možnost **propojený pracovní prostor** .
 
 5. Klikněte na **Přejít k pracovnímu prostoru**.
 
-6. V části **zdroje dat pracovního prostoru**vyberte **Konfigurace oboru (Preview)** .
+6. V části **zdroje dat pracovního prostoru** vyberte **Konfigurace oboru (Preview)** .
 
 7. Vyberte tři tečky napravo od  `MicrosoftDefaultScopeConfig-ChangeTracking` Konfigurace oboru a klikněte na **Upravit**.
 
 8. V podokně úpravy vyberte **Vybrat skupiny počítačů**. V podokně skupiny počítačů se zobrazí uložená hledání, která slouží k vytvoření konfigurace oboru. Uložené výsledky hledání, které používá Change Tracking a inventář:
 
-    |Název     |Kategorie  |Alias  |
+    |Name     |Kategorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 

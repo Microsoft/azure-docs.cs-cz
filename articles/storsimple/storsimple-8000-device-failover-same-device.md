@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017096"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Převzetí služeb při selhání fyzického zařízení StorSimple na stejné zařízení
@@ -32,7 +32,7 @@ Další informace o převzetí služeb při selhání zařízení a způsobu jeh
 Pokud chcete převzít služby při selhání fyzického zařízení na jiné fyzické zařízení, přečtěte si [převzetí služeb při selhání na stejné StorSimple fyzické zařízení](storsimple-8000-device-failover-physical-device.md). Pokud chcete převzít služby při selhání fyzického zařízení StorSimple na StorSimple Cloud Appliance, přečtěte si [převzetí služeb při selhání do StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že jste si prošli požadavky na převzetí služeb při selhání zařízení. Další informace najdete v [častých otázkách pro převzetí služeb zařízení při selhání](storsimple-8000-device-failover-disaster-recovery.md).
 
@@ -41,13 +41,13 @@ Pokud chcete převzít služby při selhání fyzického zařízení na jiné fy
 
 Pokud potřebujete převzít služby při selhání do stejného zařízení, proveďte následující kroky.
 
-1. Využijte cloudové snímky všech svazků v zařízení. Další informace najdete v pro [vytváření záloh pomocí služby StorSimple Device Manager](storsimple-8000-manage-backup-policies-u2.md).
+1. Využijte cloudové snímky všech svazků v zařízení. Další informace najdete v pro [vytváření záloh pomocí služby StorSimple Správce zařízení](storsimple-8000-manage-backup-policies-u2.md).
 2. Resetujte zařízení do výchozího továrního nastavení. Postupujte podle podrobných pokynů v tématu [Postup resetování zařízení StorSimple do výchozího továrního nastavení](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
-3. Ve službě StorSimple Device Manager a pak vyberte **zařízení**. V okně **zařízení** by se původní zařízení mělo zobrazit jako **offline**.
+3. Ve službě StorSimple Správce zařízení a pak vyberte **zařízení**. V okně **zařízení** by se původní zařízení mělo zobrazit jako **offline**.
 
     ![Zdrojové zařízení offline](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
 
-4. Nakonfigurujte zařízení a znovu ho zaregistrujte ve službě StorSimple Device Manager. Nově registrované zařízení by se mělo zobrazit jako **připravené k nastavení**. Název zařízení pro nové zařízení je stejný jako původní zařízení, ale připojené s číslicí, které indikuje, že se zařízení obnovilo do továrního nastavení a zaregistruje se znovu.
+4. Nakonfigurujte zařízení a znovu ho zaregistrujte ve službě StorSimple Správce zařízení. Nově registrované zařízení by se mělo zobrazit jako **připravené k nastavení**. Název zařízení pro nové zařízení je stejný jako původní zařízení, ale připojené s číslicí, které indikuje, že se zařízení obnovilo do továrního nastavení a zaregistruje se znovu.
 
     ![Nově zaregistrované zařízení je připravené k nastavení.](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
 5. Pro nové zařízení dokončete instalaci zařízení. Další informace najdete v [kroku 4: dokončení minimální instalace zařízení](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). V okně **zařízení** se stav zařízení změní na **online**.
@@ -82,5 +82,5 @@ Pokud potřebujete převzít služby při selhání do stejného zařízení, pr
 ## <a name="next-steps"></a>Další kroky
 
 * Po provedení převzetí služeb při selhání možná budete muset [zařízení StorSimple deaktivovat nebo odstranit](storsimple-8000-deactivate-and-delete-device.md).
-* Informace o tom, jak používat službu StorSimple Device Manager, najdete v článku [použití služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Informace o tom, jak používat službu StorSimple Správce zařízení, najdete v článku [použití služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

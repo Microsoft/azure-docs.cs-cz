@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93124913"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Nabídky Azure AD a SaaS s podporou transakcí na komerčním webu Marketplace
@@ -27,7 +27,7 @@ Podle pokynů v tomto článku vám pomůžete certifikovat nabídku SaaS na kom
 
 Když [vytvoříte nabídku SaaS](./create-new-saas-offer.md) v partnerském centru, zvolíte ze sady specifických možností výpisu, která se zobrazí v seznamu nabídek. Vaše volba určuje, jak se vaše nabídka používá na komerčním webu Marketplace. Nabídky prodávané prostřednictvím Microsoftu se nazývají transakční nabídky. Zákazníkům účtujeme vaše jménem všechny nabídky s podporou transakcí. Pokud se rozhodnete prodávat prostřednictvím Microsoftu a máte za vás transakce s hostováním v USA (možnost **Ano** ), pak jste se rozhodli vytvořit nabídku s podporou transakcí a tento článek je určený pro vás. Doporučujeme si ho přečíst v celém rozsahu.
 
-Pokud se rozhodnete, že nabídku zobrazíte jenom prostřednictvím komerčního tržiště a nezávisle na tom **, že** nezávisle na tom, jak se budou k vaší nabídce pracovat, máte k dispozici tři možnosti, jak budou mít potenciální zákazníci přístup k vaší nabídce: získat hned (zdarma), bezplatnou zkušební verzi Pokud vyberete **získat hned (zdarma)** nebo **bezplatnou zkušební verzi** , Tento článek není pro vás. Místo toho si přečtěte další informace [v tématu sestavení cílové stránky bezplatné nebo zkušební SaaS nabídky na komerčním webu Marketplace](./azure-ad-free-or-trial-landing-page.md) . Pokud vyberete **kontakt mi** , neexistují žádné přímé zodpovědnosti vydavatele. Pokračujte v vytváření vaší nabídky v partnerském centru.
+Pokud se rozhodnete, že nabídku zobrazíte jenom prostřednictvím komerčního tržiště a nezávisle na tom **, že** nezávisle na tom, jak se budou k vaší nabídce pracovat, máte k dispozici tři možnosti, jak budou mít potenciální zákazníci přístup k vaší nabídce: získat hned (zdarma), bezplatnou zkušební verzi Pokud vyberete **získat hned (zdarma)** nebo **bezplatnou zkušební verzi**, Tento článek není pro vás. Místo toho si přečtěte další informace [v tématu sestavení cílové stránky bezplatné nebo zkušební SaaS nabídky na komerčním webu Marketplace](./azure-ad-free-or-trial-landing-page.md) . Pokud vyberete **kontakt mi**, neexistují žádné přímé zodpovědnosti vydavatele. Pokračujte v vytváření vaší nabídky v partnerském centru.
 
 ## <a name="how-azure-ad-works-with-the-commercial-marketplace-for-saas-offers"></a>Jak Azure AD funguje s komerčním Marketplace pro nabídky SaaS
 
@@ -35,7 +35,7 @@ Azure AD umožňuje bezproblémové nakupování, plnění a správu komerčníc
 
 Jak je znázorněno na obrázku 1, když nákupčí vybere vaši nabídku, zahájí řetěz pracovních postupů, které zahrnují nákup, předplatné a správu uživatelů. V rámci tohoto řetězce je Vydavatel zodpovědný za určité požadavky, přičemž společnost Microsoft poskytuje podporu na klíčových místech.
 
-**_Obrázek 1: použití Azure AD pro nabídky SaaS na komerčním webu Marketplace_* _
+***Obrázek 1: použití Azure AD pro nabídky SaaS na komerčním webu Marketplace***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow.png" alt-text="Znázorňuje postupy správy nákupu, správy předplatného a volitelného procesu správy uživatelů.":::
 
@@ -45,14 +45,14 @@ Následující části obsahují podrobné informace o požadavcích na jednotli
 
 Na tomto obrázku je znázorněno čtyři kroky procesu pro správu nákupu.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Znázorňuje postupy správy nákupu, správy předplatného a volitelného procesu správy uživatelů.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Znázorňuje čtyři kroky procesu pro správu nákupu.":::
 
 Tato tabulka poskytuje podrobnosti o krocích procesu správy nákupu.
 
 | Krok procesu | Akce vydavatele | Doporučené nebo vyžadované pro vydavatele |
 | ------------ | ------------- | ------------- |
-| 1. nákupčí se přihlásí k komerčnímu tržišti pomocí své identity ID Azure a vybere SaaS nabídku. | Není vyžadována žádná akce vydavatele. | Nelze použít |
-| 2. po zakoupení kupující vybere _ *Konfigurace účtu* * v Azure Marketplace nebo v AppSourceě **nakonfigurujte** v, který nasměruje kupující na úvodní stránku vydavatele pro tuto nabídku. Kupující musí být schopný se přihlašovat k aplikaci SaaS vydavatele pomocí jednotného přihlašování služby Azure AD a musí vyžadovat jenom minimální souhlas, který nevyžaduje schválení správcem Azure AD. | Navrhněte [cílovou stránku](azure-ad-transactable-saas-landing-page.md) nabídky tak, aby získala uživatele s identitou Azure AD nebo účet Microsoft (MSA), a usnadňuje jakékoli další zřizování nebo nastavení, které je potřeba. | Vyžadováno |
+| 1. nákupčí se přihlásí k komerčnímu tržišti pomocí své identity ID Azure a vybere SaaS nabídku. | Není vyžadována žádná akce vydavatele. | Neuvedeno |
+| 2. po zakoupení kupující vybere **konfigurovat účet** v Azure Marketplace nebo **nakonfigurovat nyní** v AppSource, který nasměruje kupující na úvodní stránku vydavatele pro tuto nabídku. Kupující musí být schopný se přihlašovat k aplikaci SaaS vydavatele pomocí jednotného přihlašování služby Azure AD a musí vyžadovat jenom minimální souhlas, který nevyžaduje schválení správcem Azure AD. | Navrhněte [cílovou stránku](azure-ad-transactable-saas-landing-page.md) nabídky tak, aby získala uživatele s identitou Azure AD nebo účet Microsoft (MSA), a usnadňuje jakékoli další zřizování nebo nastavení, které je potřeba. | Vyžadováno |
 | 3. Vydavatel požaduje informace o nákupu z rozhraní API pro plnění SaaS. | Pomocí [přístupového tokenu](./partner-center-portal/pc-saas-registration.md) generovaného z ID aplikace cílové stránky [zavolejte koncový bod](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) , který načte konkrétní informace o nákupu. | Vyžadováno |
 | 4. prostřednictvím služby Azure AD a rozhraní Microsoft Graph API shromažďuje Vydavatel údaje o společnosti a uživatelích požadovaných ke zřízení kupujícího v aplikaci SaaS vydavatele.  | Rozložíte uživatelský token Azure AD tak, aby našli jméno a e-mail, nebo [volejte rozhraní Microsoft Graph API](/graph/use-the-api) a pomocí delegovaných oprávnění [načetli informace](/graph/api/user-get) o přihlášeném uživateli. | Vyžadováno |
 ||||
@@ -61,7 +61,7 @@ Tato tabulka poskytuje podrobnosti o krocích procesu správy nákupu.
 
 Tento obrázek znázorňuje dva kroky procesu pro správu předplatného.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Znázorňuje postupy správy nákupu, správy předplatného a volitelného procesu správy uživatelů.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Popisuje dva kroky procesu pro správu předplatného.":::
 
 Tato tabulka obsahuje podrobné informace o krocích procesu správy předplatného.
 
@@ -75,13 +75,13 @@ Tato tabulka obsahuje podrobné informace o krocích procesu správy předplatn�
 
 Na tomto obrázku jsou tři kroky procesu správy uživatelů.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Znázorňuje postupy správy nákupu, správy předplatného a volitelného procesu správy uživatelů.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Popisuje tři volitelné kroky procesu pro správu uživatelů.":::
 
 Kroky procesu 7 až 9 jsou volitelné kroky procesu správy uživatelů. Poskytují další výhody pro vydavatele, kteří podporují jednotné přihlašování Azure AD. Tato tabulka obsahuje podrobné informace o krocích procesu správy uživatelů.
 
 | Krok procesu | Akce vydavatele | Doporučené nebo vyžadované pro vydavatele |
 | ------------ | ------------- | ------------- |
-| 7. správci Azure AD na společnosti kupujícího můžou volitelně spravovat přístup pro uživatele a skupiny přes Azure AD. | Žádná akce vydavatele není nutná, pokud je služba Azure AD SSO nastavena pro uživatele (krok 9). | Nelze použít |
+| 7. správci Azure AD na společnosti kupujícího můžou volitelně spravovat přístup pro uživatele a skupiny přes Azure AD. | Žádná akce vydavatele není nutná, pokud je služba Azure AD SSO nastavena pro uživatele (krok 9). | Neuvedeno |
 | 8. služba zřizování Azure AD komunikuje se změnami mezi Azure AD a aplikací SaaS vydavatele. | [Implementujte koncový bod SCIM](../active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md) pro příjem aktualizací ze služby Azure AD při přidávání a odebírání uživatelů. | Doporučeno |
 | 9. Jakmile je aplikace oprávněná a zřízená, uživatelé z společnosti kupujícího můžou použít jednotné přihlašování Azure AD k přihlášení k aplikaci SaaS vydavatele. | [Pomocí služby Azure AD SSO](../active-directory/manage-apps/what-is-single-sign-on.md) můžete uživatelům povolit, aby se jednou přihlásili pomocí jednoho účtu do aplikace SaaS vydavatele. | Doporučeno |
 ||||

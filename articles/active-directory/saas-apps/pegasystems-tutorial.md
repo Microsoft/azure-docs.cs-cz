@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
 ms.openlocfilehash: 802bd61d499f64a128a4d1c0585363cb1962f8a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101649997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Kurz: Azure Active Directory integrací se systémy PEGA
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat systémy PEGA s Azure Active Directory
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k PEGA systémům pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

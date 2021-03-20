@@ -10,10 +10,10 @@ ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: f2563c33d02490732f73fcf9d1a78f548ec2d3e2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282220"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Rychlé zprovoznění: Vytvoření záznamu a zóny Azure DNS pomocí Azure PowerShellu
@@ -43,7 +43,7 @@ New-AzResourceGroup -name MyResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
-Zóna DNS se vytvoří pomocí rutiny `New-AzDnsZone`. Následující příklad vytvoří zónu DNS s názvem *contoso. xyz* ve skupině prostředků s názvem *MyResourceGroup*. Nahraďte hodnoty vlastními a použijte tento příklad k vytvoření zóny DNS.
+Zóna DNS se vytvoří pomocí rutiny `New-AzDnsZone`. Následující příklad vytvoří zónu DNS s názvem *contoso.xyz* ve skupině prostředků s názvem *MyResourceGroup*. Nahraďte hodnoty vlastními a použijte tento příklad k vytvoření zóny DNS.
 
 ```powershell
 New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
@@ -51,7 +51,7 @@ New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
 
 ## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
 
-Sady záznamů vytvoříte pomocí rutiny `New-AzDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem "www" v zóně DNS "contoso. xyz" ve skupině prostředků "MyResourceGroup". Plně kvalifikovaný název sady záznamů je "www. contoso. xyz". Typ záznamu je A, IP adresa je 10.10.10.10 a hodnota TTL je 3600 sekund.
+Sady záznamů vytvoříte pomocí rutiny `New-AzDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem "www" v zóně DNS "contoso.xyz" ve skupině prostředků "MyResourceGroup". Plně kvalifikovaný název sady záznamů je "www.contoso.xyz". Typ záznamu je A, IP adresa je 10.10.10.10 a hodnota TTL je 3600 sekund.
 
 ```powershell
 New-AzDnsRecordSet -Name www -RecordType A -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.10.10.10")
@@ -85,7 +85,7 @@ Teď, když máte testovací zónu DNS s testovacím záznamem "A", můžete ote
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Příklad:
+   Například:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -95,7 +95,7 @@ Teď, když máte testovací zónu DNS s testovacím záznamem "A", můžete ote
 
    ![Snímek obrazovky zobrazuje okno příkazového řádku s vyhledávacím příkazem n s a hodnotami pro server, adresu, název a adresu.](media/dns-getstarted-portal/nslookup.PNG)
 
-Název hostitele **www \. contoso. xyz** se přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
+Název hostitele **www \. contoso.xyz** se přeloží na **10.10.10.10**, stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

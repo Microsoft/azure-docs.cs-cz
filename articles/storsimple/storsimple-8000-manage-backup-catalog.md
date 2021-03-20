@@ -1,6 +1,6 @@
 ---
 title: Správa katalogu zálohování StorSimple | Microsoft Docs
-description: Vysvětluje způsob použití stránky katalogu zálohování služby StorSimple Device Manager k vypsání, výběru a odstranění zálohovacích skladů.
+description: Vysvětluje způsob použití stránky katalogu zálohování služby StorSimple Správce zařízení k vypsání, výběru a odstranění zálohovacích skladů.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017368"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Správa katalogu záloh pomocí služby StorSimple Device Manager
+# <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Správa katalogu záloh pomocí služby StorSimple Správce zařízení
 ## <a name="overview"></a>Přehled
-V okně StorSimple Device Manager Service **Backup Catalog** se zobrazí všechny zálohovací sklady, které se vytvoří při ručním nebo plánovaném zálohování. Pomocí této stránky můžete zobrazit seznam všech záloh pro zásady zálohování nebo svazek, vybrat nebo odstranit zálohy nebo použít zálohu k obnovení nebo klonování svazku.
+V okně StorSimple Správce zařízení Service **Backup Catalog** se zobrazí všechny zálohovací sklady, které se vytvoří při ručním nebo plánovaném zálohování. Pomocí této stránky můžete zobrazit seznam všech záloh pro zásady zálohování nebo svazek, vybrat nebo odstranit zálohy nebo použít zálohu k obnovení nebo klonování svazku.
 
 Tento kurz vysvětluje, jak vytvořit seznam, vybrat a odstranit zálohovací sklad. Informace o tom, jak obnovit zařízení ze zálohy, najdete [v tématu Obnovení zařízení ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md). Informace o tom, jak klonovat svazek, najdete v tématu [klonování svazku StorSimple](storsimple-8000-clone-volume-u2.md).
 
@@ -47,7 +47,7 @@ Filtrované zálohovací sklady jsou pak na základě těchto atributů:
 Provedením následujících kroků zobrazíte seznam všech záloh pro zásady zálohování.
 
 #### <a name="to-list-backup-sets"></a>Seznam zálohovacích sad
-1. Přejděte do služby StorSimple Device Manager a klikněte na **katalog záloh**.
+1. Přejděte do služby StorSimple Správce zařízení a klikněte na **katalog záloh**.
 
 2. Filtrovat výběry následujícím způsobem:
    
@@ -65,7 +65,7 @@ Provedením následujících kroků zobrazíte seznam všech záloh pro zásady 
 Provedením následujících kroků vyberte zálohovací sklad pro svazek nebo zásady zálohování.
 
 #### <a name="to-select-a-backup-set"></a>Výběr zálohovacího sady
-1. Přejděte do služby StorSimple Device Manager a klikněte na **katalog záloh**.
+1. Přejděte do služby StorSimple Správce zařízení a klikněte na **katalog záloh**.
 2. Filtrovat výběry následujícím způsobem:
    
    1. Zadejte časový rozsah. 
@@ -85,7 +85,7 @@ Provedením následujících kroků vyberte zálohovací sklad pro svazek nebo z
 Pokud už nechcete uchovávat data, která jsou k němu přidružená, odstraňte zálohu. Chcete-li odstranit zálohovací sklad, proveďte následující kroky.
 
 #### <a name="to-delete-a-backup-set"></a>Odstranění zálohovacího skladu
- Přejděte do služby StorSimple Device Manager a klikněte na **katalog záloh**.
+ Přejděte do služby StorSimple Správce zařízení a klikněte na **katalog záloh**.
 1. Filtrovat výběry následujícím způsobem:
    
    1. Zadejte časový rozsah. 
@@ -111,5 +111,5 @@ Pokud už nechcete uchovávat data, která jsou k němu přidružená, odstraňt
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [používat katalog záloh k obnovení zařízení ze zálohovacího skladu](storsimple-8000-restore-from-backup-set-u2.md).
-* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Naučte se [používat službu StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

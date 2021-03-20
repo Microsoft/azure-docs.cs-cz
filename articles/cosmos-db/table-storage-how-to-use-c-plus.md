@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489875"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí C++
@@ -498,12 +498,12 @@ else
 }
 ```
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
-Pro Visual Studio Community Edition, pokud projekt získá chyby sestavení z důvodu souborů include *storage_account. h* a *Table. h* , odeberte přepínač kompilátoru **/Permissive-** :
+Pro Visual Studio Community Edition, pokud projekt získá chyby sestavení z důvodu souborů include *storage_account. h* a *Table. h*, odeberte přepínač kompilátoru **/Permissive-** :
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na váš projekt a vyberte **Vlastnosti**.
-1. V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace** , pak rozbalte **C/C++** a vyberte **Jazyk**.
+1. V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace**, pak rozbalte **C/C++** a vyberte **Jazyk**.
 1. Nastavte **Režim přizpůsobení** na hodnotu **Ne**.
 
 ## <a name="next-steps"></a>Další kroky

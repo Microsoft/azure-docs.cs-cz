@@ -10,10 +10,10 @@ ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
 ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098651"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření konzolové aplikace Node.js s využitím sady JavaScript SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB
@@ -86,7 +86,7 @@ Teď, když aplikace existuje, musíte se ujistit, že může komunikovat s Azur
 
 1. Otevřete *config.js* soubor ve svém oblíbeném textovém editoru.
 
-1. Zkopírujte a vložte následující fragment kódu do souboru *config.js* a nastavte vlastnosti `endpoint` a `key` na identifikátor URI koncového bodu Azure Cosmos DB a primární klíč. Databáze, názvy kontejnerů jsou nastaveny na **úlohy** a **položky** . Klíč oddílu, který budete používat pro tuto aplikaci, je **/Category** .
+1. Zkopírujte a vložte následující fragment kódu do souboru *config.js* a nastavte vlastnosti `endpoint` a `key` na identifikátor URI koncového bodu Azure Cosmos DB a primární klíč. Databáze, názvy kontejnerů jsou nastaveny na **úlohy** a **položky**. Klíč oddílu, který budete používat pro tuto aplikaci, je **/Category**.
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
@@ -94,7 +94,7 @@ Teď, když aplikace existuje, musíte se ujistit, že může komunikovat s Azur
 
    :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Snímek obrazovky se získáním klíčů z webu Azure Portal":::
 
-Sada JavaScript SDK používá obecný pojem *kontejner* a *položka* . Kontejner může být kolekce, graf nebo tabulka. Položka představuje obsah uvnitř kontejneru a může to být dokument, pár hrany a vrcholu nebo řádek. V předchozím fragmentu kódu se `module.exports = config;` kód používá k exportu konfiguračního objektu, abyste na něj mohli odkazovat v souboru *app.js* .
+Sada JavaScript SDK používá obecný pojem *kontejner* a *položka*. Kontejner může být kolekce, graf nebo tabulka. Položka představuje obsah uvnitř kontejneru a může to být dokument, pár hrany a vrcholu nebo řádek. V předchozím fragmentu kódu se `module.exports = config;` kód používá k exportu konfiguračního objektu, abyste na něj mohli odkazovat v souboru *app.js* .
 
 ## <a name="create-a-database-and-a-container"></a>Vytvoření databáze a kontejneru
 
@@ -124,7 +124,7 @@ V souboru *app.js* zkopírujte a vložte následující kód pro použití dří
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
 
 > [!Note]
-> Pokud se připojujete k **emulátoru Cosmos DB** , zakažte ověřování TLS pro váš proces uzlu:
+> Pokud se připojujete k **emulátoru Cosmos DB**, zakažte ověřování TLS pro váš proces uzlu:
 >   ```javascript
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
@@ -138,7 +138,7 @@ Azure Cosmos DB podporuje formátované dotazy proti položkám JSON uloženým 
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="QueryItems":::
 
-## <a name="create-an-item"></a><a id="CreateItem"></a>Vytvořit položku
+## <a name="create-an-item"></a><a id="CreateItem"></a>Vytvoření položky
 
 Položku lze vytvořit pomocí funkce Create `Items` třídy. Pokud používáte rozhraní API SQL, položky se procházejí jako dokumenty, které jsou uživatelsky definovaným (libovolným) obsahem JSON. V tomto kurzu vytvoříte novou položku v rámci databáze Tasks.
 

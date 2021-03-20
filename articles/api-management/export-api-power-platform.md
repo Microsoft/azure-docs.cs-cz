@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/01/2020
 ms.author: apimpm
 ms.openlocfilehash: 7c4d32dd63120a52fd7351977943574455e5cfad
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146650"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>Export rozhraní API z Azure API Management do Power Platform 
@@ -35,12 +35,12 @@ Tento článek vás provede kroky pro export rozhraní API z API Management na p
 
 1. V Azure Portal přejděte do služby API Management a v nabídce vyberte **rozhraní API** .
 2. Klikněte na tři tečky vedle rozhraní API, které chcete exportovat. 
-3. Vyberte **Exportovat** .
-4. Vyberte **Power Apps a Power Automatizujte** .
+3. Vyberte **Exportovat**.
+4. Vyberte **Power Apps a Power Automatizujte**.
 5. Vyberte prostředí, do kterého se má rozhraní API exportovat. 
 6. Zadejte zobrazovaný název, který se použije jako název vlastního konektoru.  
 7. Volitelné – Pokud je rozhraní API chráněné serverem OAuth 2,0, budete taky muset zadat další podrobnosti `Client ID` , včetně, `Client secret` ,, `Authorization URL` `Token URL` a `Refresh URL` .  
-8. Vyberte **Exportovat** . 
+8. Vyberte **Exportovat**. 
 
 Až se export dokončí, přejděte do Power aplikace nebo na Power Automate prostředí. Rozhraní API se zobrazí jako vlastní konektor.
 

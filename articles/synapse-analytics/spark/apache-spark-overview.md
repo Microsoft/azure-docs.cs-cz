@@ -10,13 +10,13 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: b31fe5daaa0882dc0927c1340902b20df56eb6b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96450433"
 ---
-# <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark ve službě Azure synapse Analytics
+# <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark v Azure Synapse Analytics
 
 Apache Spark je paralelní procesor pro zpracování, který podporuje zpracování v paměti, aby se zvýšil výkon analytických aplikací s velkým objemem dat. Apache Spark ve službě Azure synapse Analytics je jedním z implementací Apache Spark v cloudu od Microsoftu. Azure synapse umožňuje snadno vytvořit a nakonfigurovat fond Apache Spark bez serveru v Azure. Fondy Spark ve službě Azure synapse jsou kompatibilní s úložištěm Azure Storage a Azure Data Lake generace 2. Takže můžete použít fondy Spark ke zpracování dat uložených v Azure.
 

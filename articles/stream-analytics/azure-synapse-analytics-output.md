@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 7e85df8ae67624a253a9fb617629d7355109c210
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019597"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Výstup služby Azure synapse Analytics z Azure Stream Analytics
@@ -27,10 +27,10 @@ Pokud chcete jako výstup použít Azure synapse, musíte zajistit, aby byl úč
 
 V následující tabulce jsou uvedené názvy vlastností a jejich popisy pro vytváření výstupu Azure synapse Analytics.
 
-|Název vlastnosti|Popis|
+|Název vlastnosti|Description|
 |-|-|
 |Alias pro výstup |Popisný název, který se používá v dotazech k směrování výstupu dotazu do této databáze. |
-|Databáze |vyhrazený název fondu SQL, kam posíláte výstup. |
+|databáze |vyhrazený název fondu SQL, kam posíláte výstup. |
 |Název serveru |Název serveru Azure synapse.  |
 |Uživatelské jméno |Uživatelské jméno, které má přístup pro zápis do databáze. Stream Analytics podporuje pouze ověřování SQL. |
 |Heslo |Heslo pro připojení k databázi. |

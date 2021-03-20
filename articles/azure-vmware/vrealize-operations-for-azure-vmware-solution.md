@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit operace vRealize pro privátní cloud ře�
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101738425"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Nastavení operací vRealize pro řešení Azure VMware
@@ -27,7 +27,7 @@ vRealize Operations Manager je platforma pro správu provozu, která správcům 
 * Volitelně si přečtěte dokumentaci k produktu [VRealize Operations Remote Controller](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-263F9219-E801-4383-8A59-E84F3D01ED6B.html) pro místní operace vRealize, které spravují možnost nasazení řešení Azure VMware. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * je nainstalovaná [Operations Manager vRealize](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) .
 * SÍŤ VPN nebo Azure ExpressRoute konfigurovaná mezi místními prostředími a Azure VMware Solution SDDC.
 * V Azure je nasazený privátní cloud řešení Azure VMware.

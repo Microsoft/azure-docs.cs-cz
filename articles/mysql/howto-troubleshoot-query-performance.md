@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: 81ec7e6f822f24f2b9e6ca4298e9668358c78149
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540752"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Jak používat vysvětlení k profilování výkonu dotazů v Azure Database for MySQL
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Jak je vidět ve výstupu, MySQL nepoužívá žádné indexy, protože nejsou k dispozici žádné správné indexy. Zobrazuje se také jako *dočasné použití; Pomocí řazení souborů* , což znamená, že MySQL vytvoří dočasnou tabulku pro splnění klauzule **Group by** .
+Jak je vidět ve výstupu, MySQL nepoužívá žádné indexy, protože nejsou k dispozici žádné správné indexy. Zobrazuje se také jako *dočasné použití; Pomocí řazení souborů*, což znamená, že MySQL vytvoří dočasnou tabulku pro splnění klauzule **Group by** .
  
 Vytvoření indexu na samostatném sloupci **C2** neposkytuje žádný rozdíl a MySQL stále potřebuje vytvořit dočasnou tabulku:
 

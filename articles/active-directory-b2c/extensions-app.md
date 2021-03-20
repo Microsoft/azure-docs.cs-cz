@@ -11,15 +11,15 @@ ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dc536fa4292d794e8d89a2564ad10a3c10dd0a3d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94560850"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: rozšíření aplikace
 
-Při vytvoření adresáře Azure AD B2C `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` se v novém adresáři automaticky vytvoří aplikace s názvem. Tato aplikace, která se označuje jako **B2C-Extensions-App** , je v *Registrace aplikací* viditelná. Služba Azure AD B2C ji používá k ukládání informací o uživatelích a vlastních atributech. Pokud se aplikace odstraní, Azure AD B2C nebude správně fungovat a bude to mít vliv na vaše produkční prostředí.
+Při vytvoření adresáře Azure AD B2C `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` se v novém adresáři automaticky vytvoří aplikace s názvem. Tato aplikace, která se označuje jako **B2C-Extensions-App**, je v *Registrace aplikací* viditelná. Služba Azure AD B2C ji používá k ukládání informací o uživatelích a vlastních atributech. Pokud se tato aplikace odstraní, Azure AD B2C nebude správně fungovat, což bude mít vliv na vaše produkční prostředí.
 
 > [!IMPORTANT]
 > Pokud neplánujete okamžitě odstranit tenanta, neodstraňujte B2C-Extensions-App. Pokud aplikace zůstane smazána déle než 30 dní, informace o uživateli budou trvale ztraceny.

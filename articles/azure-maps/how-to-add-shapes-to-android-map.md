@@ -10,17 +10,17 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 68d68424e71bcf60bf504ae174b84b9c361b8637
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097257"
 ---
 # <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>Přidat mnohoúhelníkovou vrstvu na mapu (Android SDK)
 
 V tomto článku se dozvíte, jak vykreslovat oblasti `Polygon` a `MultiPolygon` funkce geometrií na mapě pomocí mnohoúhelníkové vrstvy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jste dokončili kroky v [rychlém startu: vytvoření dokumentu aplikace pro Android](quick-android-map.md) . Bloky kódu v tomto článku lze vložit do `onReady` obslužné rutiny události Maps.
 

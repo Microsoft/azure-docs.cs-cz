@@ -7,24 +7,24 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 45081c6ba161686498398f2c4ccae8b4cff4c0d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91704306"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Knihovny připojení pro Azure Database for PostgreSQL – jeden server
 Tento článek obsahuje seznam knihoven a ovladačů, které můžou vývojáři použít k vývoji aplikací pro připojení k Azure Database for PostgreSQL a dotazování na ně.
 
 ## <a name="client-interfaces"></a>Klientská rozhraní
-Většina jazykových klientských knihoven používaných pro připojení k serveru PostgreSQL je externí projekty a distribuuje se nezávisle. Uvedené knihovny jsou podporované na platformách Windows, Linux a Mac pro připojení k Azure Database for PostgreSQL. V části Další kroky jsou uvedeny některé příklady rychlých startů.
+Většina jazykových klientských knihoven používaných pro připojení k serveru PostgreSQL jsou nezávisle distribuované externí projekty. Uvedené knihovny jsou podporované na platformách Windows, Linux a Mac pro připojení k Azure Database for PostgreSQL. V části Další kroky jsou uvedeny některé příklady rychlých startů.
 
 | **Jazyk** | **Rozhraní klienta** | **Další informace** | **Stáhnout** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
 | Python | [psycopg](http://initd.org/psycopg/) | DB API 2,0 – kompatibilní | [Stáhnout](http://initd.org/psycopg/download/) |
 | PHP | [php – PgSQL](https://secure.php.net/manual/en/book.pgsql.php) | Rozšíření databáze | [Instalace](https://secure.php.net/manual/en/pgsql.installation.php) |
 | Node.js | [Balíček pg npm](https://www.npmjs.com/package/pg) | Čistý JavaScript bez blokování klienta | [Instalace](https://www.npmjs.com/package/pg) |
-| Java | [JDBC](https://jdbc.postgresql.org/) | Typ 4 ovladač JDBC | [Stáhnout](https://jdbc.postgresql.org/download.html)  |
+| Java | [JDBC](https://jdbc.postgresql.org/) | Typ 4 ovladač JDBC | [Stáhnout](https://jdbc.postgresql.org/download.html)  |
 | Ruby | [PG Gem](https://deveiate.org/code/pg/) | Rozhraní Ruby | [Stáhnout](https://rubygems.org/downloads/pg-0.20.0.gem) |
 | Go | [PQ balíčku](https://godoc.org/github.com/lib/pq) | Ovladač čistého přechodu na Postgres | [Instalace](https://github.com/lib/pq/blob/master/README.md) |
 | C \# /.NET | [Npgsql](https://www.npgsql.org/) | ADO.NET Zprostředkovatel dat | [Stáhnout](https://www.microsoft.com/net/) |

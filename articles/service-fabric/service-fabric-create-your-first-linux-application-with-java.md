@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.custom: devx-track-java
 ms.openlocfilehash: 7d87b72437f86d7dc1ca4e3cf9f3d67609691c70
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97655947"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
@@ -20,7 +20,7 @@ ms.locfileid: "97655947"
 
 Tento rychlý start vám pomůže během několika minut vytvořit první aplikaci Azure Service Fabric v Javě v linuxovém vývojovém prostředí.  Až budete hotovi, budete mít jednoduchou jednoúčelovou aplikaci v Javě spuštěnou v místním vývojovém clusteru.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete, nainstalujte sadu Service Fabric SDK, Service Fabric CLI a Yeoman a nastavte ve svém [linuxovém vývojovém prostředí](service-fabric-get-started-linux.md) vývojové prostředí Java a vývojový cluster. Pokud používáte Mac OS X, můžete k [nastavit vývojové prostředí na Macu pomocí Dockeru](service-fabric-get-started-mac.md).
 
 Nainstalujte také [Service Fabric CLI](service-fabric-cli.md).
@@ -32,7 +32,7 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
   npm install -g generator-azuresfjava
   ```
 
-## <a name="basic-concepts"></a>Základní pojmy
+## <a name="basic-concepts"></a>Základní koncepty
 K tomu, abyste mohli začít s Reliable Actors, vám stačí pochopit pár základních konceptů:
 
 * **Služba objektu actor**. Služby Reliable Actors jsou zabalené ve službách Reliable Services, které je možné nasadit v infrastruktuře Service Fabric. Instance objektu actor se aktivují v pojmenované instanci služby.

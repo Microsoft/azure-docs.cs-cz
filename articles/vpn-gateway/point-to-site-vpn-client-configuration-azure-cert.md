@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: c7b186aa1a6f63b1bc3e9dbefa5001faac967762
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94556096"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace připojení typu point-to-site s využitím nativního ověřování Azure pomocí certifikátů
@@ -34,8 +34,8 @@ Než začnete, ujistěte se, že všichni připojující se uživatelé mají na
 
 Konfigurační soubory klienta můžete vygenerovat pomocí PowerShellu nebo pomocí Azure Portal. Kterákoli z metod vrátí stejný soubor zip. Rozbalte soubor pro zobrazení následujících složek:
 
-* **WindowsAmd64** a **WindowsX86** , které obsahují instalační balíčky Windows 32-bit a 64, v uvedeném pořadí. Balíček Instalační služby **WindowsAmd64** je pro všechny podporované 64 klienty Windows, ne jenom pro procesory AMD.
-* **Obecné** , který obsahuje obecné informace, které se používají k vytvoření vlastní konfigurace klienta VPN. Obecná složka je k dispozici, pokud byla v bráně nakonfigurována IKEv2 nebo SSTP + IKEv2. Je-li nakonfigurován pouze protokol SSTP, není obecná složka k dispozici.
+* **WindowsAmd64** a **WindowsX86**, které obsahují instalační balíčky Windows 32-bit a 64, v uvedeném pořadí. Balíček Instalační služby **WindowsAmd64** je pro všechny podporované 64 klienty Windows, ne jenom pro procesory AMD.
+* **Obecné**, který obsahuje obecné informace, které se používají k vytvoření vlastní konfigurace klienta VPN. Obecná složka je k dispozici, pokud byla v bráně nakonfigurována IKEv2 nebo SSTP + IKEv2. Je-li nakonfigurován pouze protokol SSTP, není obecná složka k dispozici.
 
 ### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>Generovat soubory pomocí Azure Portal
 
@@ -66,8 +66,8 @@ Konfigurační soubory klienta můžete vygenerovat pomocí PowerShellu nebo pom
 
  Na každém počítači Mac, který se bude připojovat k Azure, je potřeba ručně nakonfigurovat nativního klienta IKEv2 VPN. Azure neposkytuje soubor mobileconfig pro nativní ověřování certifikátů Azure. **Obecné** obsahuje všechny informace, které potřebujete pro konfiguraci. Pokud složku Generic mezi staženými soubory nevidíte, pravděpodobně jste jako typ tunelu nevybrali IKEv2. Upozorňujeme, že základní skladová položka služby VPN Gateway nepodporuje IKEv2. Jakmile vyberete IKEv2, znovu vygenerujte soubor zip a načtěte složku Generic.<br>Složka Generic obsahuje následující soubory:
 
-* **VpnSettings.xml** , která obsahuje důležitá nastavení jako adresa serveru a typ tunelového propojení. 
-* **VpnServerRoot. cer** , který obsahuje kořenový certifikát nutný k ověření služby Azure VPN Gateway během nastavení připojení P2S.
+* **VpnSettings.xml**, která obsahuje důležitá nastavení jako adresa serveru a typ tunelového propojení. 
+* **VpnServerRoot. cer**, který obsahuje kořenový certifikát nutný k ověření služby Azure VPN Gateway během nastavení připojení P2S.
 
 Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN na Macu pro ověřování certifikátů. Tyto kroky je potřeba provést na všech počítačích Mac, které se budou připojovat k Azure:
 

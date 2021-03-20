@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739258"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Sdílení a příjem dat ze služeb Azure Blob Storage a Azure Data Lake Storage
@@ -61,7 +61,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure pro váš účet pro sdílení dat.|
     | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte skupinu prostředků. |
     | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
-    | Název | *datashareaccount* | Pojmenujte svůj účet pro sdílení dat. |
+    | Name | *datashareaccount* | Pojmenujte svůj účet pro sdílení dat. |
     | | |
 
 1. Vyberte **zkontrolovat + vytvořit**  >  **vytvořit** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty. 

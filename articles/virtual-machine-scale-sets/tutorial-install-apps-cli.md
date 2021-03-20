@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: d9969cf0fa453f857de421dd10934f63f5773f6c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94516726"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Instalace aplikací ve škálovacích sadách virtuálních počítačů pomocí Azure CLI
@@ -78,7 +78,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 
 
 ## <a name="apply-the-custom-script-extension"></a>Použití rozšíření vlastních skriptů
-Použijte konfiguraci rozšíření vlastních skriptů na instance virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss extension set](/cli/azure/vmss/extension). Následující příklad použije konfiguraci *customConfig.json* na instance virtuálních počítačů ve škálovací sadě *myScaleSet* a ve skupině prostředků *myResourceGroup* :
+Použijte konfiguraci rozšíření vlastních skriptů na instance virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss extension set](/cli/azure/vmss/extension). Následující příklad použije konfiguraci *customConfig.json* na instance virtuálních počítačů ve škálovací sadě *myScaleSet* a ve skupině prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -94,7 +94,7 @@ Každá instance virtuálního počítače ve škálovací sadě stáhne a spust
 
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Pokud chcete webovému serveru povolit příjem provozu, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb* :
+Pokud chcete webovému serveru povolit příjem provozu, vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb*:
 
 ```azurecli-interactive
 az network lb rule create \

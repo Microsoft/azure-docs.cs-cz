@@ -4,10 +4,10 @@ description: Přehled trezorů Recovery Services.
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755112"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
@@ -20,9 +20,9 @@ Tento článek popisuje funkce trezoru Recovery Services. Recovery Services trez
 
 - **Řízení přístupu na základě role v Azure (Azure RBAC)**: Azure RBAC zajišťuje v Azure jemně odstupňované řízení přístupu. [Azure poskytuje různé předdefinované role](../role-based-access-control/built-in-roles.md)a Azure Backup má tři [předdefinované role pro správu bodů obnovení](backup-rbac-rs-vault.md). Trezory Recovery Services jsou kompatibilní s Azure RBAC, což omezuje přístup k zálohování a obnovení na definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
 
-- **Obnovitelné odstranění**: u obnovitelného odstranění, i když škodlivý objekt actor odstraní zálohu (nebo se zálohovaná data nechtěně odstraní), zálohovaná data se uchovávají po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohových dat ve stavu "obnovitelné odstranění" za vás neúčtují žádné náklady. [Přečtěte si další informace](backup-azure-security-feature-cloud.md).
+- **Obnovitelné odstranění**: u obnovitelného odstranění, i když škodlivý objekt actor odstraní zálohu (nebo se zálohovaná data nechtěně odstraní), zálohovaná data se uchovávají po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohových dat ve stavu "obnovitelné odstranění" za vás neúčtují žádné náklady. [Další informace](backup-azure-security-feature-cloud.md).
 
-- **Obnovení mezi oblastmi**: obnovení mezi oblastmi (crr) vám umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je spárována s oblastí Azure. Povolením této funkce na [úrovni trezoru](backup-create-rs-vault.md#set-cross-region-restore)můžete kdykoli obnovit replikovaná data v sekundární oblasti, když zvolíte. To vám umožní obnovit data sekundární oblasti pro účely dodržování předpisů pro audit a během výpadků, aniž byste čekali na to, že Azure deklaruje havárií (na rozdíl od nastavení GRS trezoru). [Přečtěte si další informace](backup-azure-arm-restore-vms.md#cross-region-restore).
+- **Obnovení mezi oblastmi**: obnovení mezi oblastmi (crr) vám umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je spárována s oblastí Azure. Povolením této funkce na [úrovni trezoru](backup-create-rs-vault.md#set-cross-region-restore)můžete kdykoli obnovit replikovaná data v sekundární oblasti, když zvolíte. To vám umožní obnovit data sekundární oblasti pro účely dodržování předpisů pro audit a během výpadků, aniž byste čekali na to, že Azure deklaruje havárií (na rozdíl od nastavení GRS trezoru). [Další informace](backup-azure-arm-restore-vms.md#cross-region-restore).
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>Nastavení úložiště v trezoru Recovery Services
 
@@ -40,7 +40,7 @@ Tato část popisuje možnosti, které jsou k dispozici pro šifrování záloho
 
 Ve výchozím nastavení se všechna vaše data šifrují pomocí klíčů spravovaných platformou. Pro povolení tohoto šifrování není nutné provádět žádnou explicitní akci z vašeho konce. Platí pro všechny úlohy, které se zálohují do vašeho trezoru Recovery Services.
 
-### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat pomocí klíčů spravovaných zákazníkem
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Šifrování zálohovaných dat s využitím klíčů spravovaných zákazníkem
 
 Data můžete šifrovat pomocí šifrovacích klíčů vlastněných a spravovaných vámi. Azure Backup umožňuje používat klíče RSA uložené v Azure Key Vault k šifrování záloh. Šifrovací klíč, který se používá k šifrování záloh, může být jiný než ten, který se používá pro zdroj. Data jsou chráněná pomocí šifrovacího klíče založeného na standardu AES 256 (klíč DEK), který je zase chráněn pomocí vašich klíčů. Díky tomu máte plnou kontrolu nad daty a klíči. Aby bylo šifrování povoleno, musí mít Recovery Services trezoru udělen přístup k šifrovacímu klíči v Azure Key Vault. Kdykoli je to potřeba, můžete klíč zakázat nebo odvolat přístup. Před tím, než se pokusíte ochránit jakékoli položky do trezoru, je však nutné povolit šifrování pomocí vašich klíčů.
 

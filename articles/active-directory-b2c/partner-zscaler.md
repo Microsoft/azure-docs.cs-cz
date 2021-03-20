@@ -12,17 +12,17 @@ ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102096849"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Kurz: konfigurace privátního přístupu Zscaler pomocí Azure Active Directory B2C
 
 V tomto kurzu se dozvíte, jak integrovat ověřování Azure Active Directory B2C (Azure AD B2C) s [privátním přístupem Zscaler (ZPA)](https://www.zscaler.com/products/zscaler-private-access). ZPA zajišťuje zabezpečený přístup k soukromým aplikacím a prostředkům na základě zásad, aniž by došlo k nákladům, nepříjemnostem nebo bezpečnostním rizikům virtuální privátní sítě (VPN). Nabídka Zscaler Secure Hybrid Access nabízí prostor pro vypínání s nulovým přístupem pro aplikace, které jsou v kombinaci s Azure AD B2C.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete potřebovat:
 
@@ -44,7 +44,7 @@ Následující diagram znázorňuje, jak se ZPA integruje s Azure AD B2C.
 
 Sekvence je popsána v následující tabulce:
 
-|Krok | Popis |
+|Krok | Description |
 | :-----:| :-----------|
 | 1 | Uživatel přirazí na portál ZPA User Portal nebo na aplikaci pro přístup přes prohlížeč ZPA.
 | 2 | ZPA vyžaduje informace o kontextu uživatele předtím, než se rozhodne, zda uživateli povolí přístup k webové aplikaci. K ověření uživatele ZPA provede přesměrování SAML na přihlašovací stránku Azure AD B2C.  

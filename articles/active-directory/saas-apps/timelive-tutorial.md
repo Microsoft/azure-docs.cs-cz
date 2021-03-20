@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 49dff636e7ffb9889219abfae80a4bd8b1c0da1f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516405"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Kurz: Azure Active Directory integrace s TimeLive
@@ -128,7 +128,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TimeLive
 
 1. V jiném okně webového prohlížeče se přihlaste k webu TimeLive společnosti jako správce.
 
-2. V části **Možnosti pro správu**vyberte **Předvolby** .
+2. V části **Možnosti pro správu** vyberte **Předvolby** .
 
     ![Snímek obrazovky zobrazuje možnosti správy s vybranými preferencemi.](./media/timelive-tutorial/configure1.png)
 
@@ -142,9 +142,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TimeLive
 
     c. V rozevírací nabídce vyberte **SAML** s **přihlašováním pomocí jednotného Sign-On (SSO) s**.
 
-    d. Do **adresy URL jednotného přihlašování SAML**vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali, a Azure Portal.
+    d. Do **adresy URL jednotného přihlašování SAML** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali, a Azure Portal.
 
-    e. Do pole **Adresa URL pro vzdálené**odhlašování vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali, do formuláře Azure Portal.
+    e. Do pole **Adresa URL pro vzdálené** odhlašování vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali, do formuláře Azure Portal.
 
     f. Otevřete stažený **certifikát s kódováním Base-64** z Azure Portal v programu Poznámkový blok, zkopírujte jeho obsah a vložte ho do textového pole **certifikát X. 509** .
 
@@ -154,7 +154,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TimeLive
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -178,7 +178,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k TimeLive.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **TimeLive**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **TimeLive**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -210,7 +210,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici TimeLive, měli byste se automaticky přihlásit k TimeLive, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
