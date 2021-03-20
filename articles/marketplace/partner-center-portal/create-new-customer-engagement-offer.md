@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 12/02/2020
 ms.openlocfilehash: 0c220daab0d1d9ae7d50d37d9303d6677bd52cc1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97360301"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
@@ -131,7 +131,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 1. Adresa podpory (odkaz)
 1. Podmínky použití
 1. Název nabídky
-1. Popis
+1. Description
 1. Snímky obrazovky a videa
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
@@ -269,7 +269,7 @@ Nahrajte soubor PDF, ve kterém jsou uvedené klíčové scénáře použití va
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 

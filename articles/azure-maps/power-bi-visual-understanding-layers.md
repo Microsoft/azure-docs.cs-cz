@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a5c7296a0e7b7f6ea33c1f4a669675efd90f9e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86261716"
 ---
 # <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>Principy vrstev v Azure Maps Power BI vizuálu
@@ -63,7 +63,7 @@ Druhý typ vrstvy spojuje přidání externích zdrojů dat k mapování, aby po
     :::column-end:::
 :::row-end:::
 
-Všechny vrstvy vykreslování dat i **vrstva dlaždic**mají možnosti pro minimální a maximální úrovně přiblížení, které se používají k určení rozsahu úrovně přiblížení, které by měly být zobrazeny v. To umožňuje použít jeden typ vrstvy vykreslování na jednu úroveň přiblížení a přechod na jinou vrstvu vykreslování v jiné úrovni přiblížení.
+Všechny vrstvy vykreslování dat i **vrstva dlaždic** mají možnosti pro minimální a maximální úrovně přiblížení, které se používají k určení rozsahu úrovně přiblížení, které by měly být zobrazeny v. To umožňuje použít jeden typ vrstvy vykreslování na jednu úroveň přiblížení a přechod na jinou vrstvu vykreslování v jiné úrovni přiblížení.
 
 Tyto vrstvy mají také možnost umístění relativní k ostatním vrstvám na mapě. Při použití více vrstev vykreslování dat určuje pořadí, ve kterém jsou přidány na mapu, jejich relativní pořadí vrstev, pokud mají stejnou hodnotu **pozice vrstvy** .
 

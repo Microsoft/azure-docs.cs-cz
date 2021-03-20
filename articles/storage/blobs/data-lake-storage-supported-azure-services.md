@@ -9,10 +9,10 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 36e1a8a288e1f9b2a8d65ab966b607b594d66f4e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100653597"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Služby Azure, které podporují Azure Data Lake Storage Gen2
@@ -40,7 +40,7 @@ V této tabulce jsou uvedené služby Azure, které můžete používat s Azure 
 |IoT Hub |Obecná dostupnost|Yes|Yes|[Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|Obecná dostupnost|Yes|Yes|[Analyzovat data v Data Lake Storage Gen2 pomocí Power BI](/power-query/connectors/datalakestorage)|
 |Azure Synapse Analytics (dříve SQL Data Warehouse)|Obecná dostupnost|Yes|Yes|[Analýza dat v účtu úložiště](../../synapse-analytics/get-started-analyze-storage.md)|
-|Služba SSIS (SQL Server Integration Services)|Obecná dostupnost|Yes|Yes|[Správce připojení Azure Storage](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
+|SQL Server Integration Services (SSIS)|Obecná dostupnost|Yes|Yes|[Správce připojení Azure Storage](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Průzkumník dat Azure|Obecná dostupnost|Yes|Yes|[Dotazování dat v Azure Data Lake pomocí Azure Průzkumník dat](/azure/data-explorer/data-lake-query-data)|
 |Azure Cognitive Search|Preview|Yes|Yes|[Index a hledání Azure Data Lake Storage Gen2ch dokumentů (Preview)](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure Content Delivery Network|Zatím nepodporováno|Nelze použít|Nelze použít|[Index a hledání Azure Data Lake Storage Gen2ch dokumentů (Preview)](../../cdn/cdn-overview.md)|
@@ -49,6 +49,6 @@ V této tabulce jsou uvedené služby Azure, které můžete používat s Azure 
 ## <a name="see-also"></a>Viz také
 
 - [Známé problémy s Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
-- [Funkce BLOB Storage dostupné v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
+- [Dostupné funkce úložiště objektů blob v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
 - [Open Source platformy, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-open-source-platforms.md)
 - [Přístup k více protokolům na Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)

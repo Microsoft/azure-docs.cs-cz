@@ -12,10 +12,10 @@ ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 69355b58e36f435b5b5dbe94af72d55d9806b156
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100557180"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Kurz pro rozšíření Azure AD B2C k ochraně místních aplikací pomocí vrstev
@@ -29,7 +29,7 @@ Maverics identity Orchestrator rozšiřuje Azure AD B2C k ochraně místních ap
 
 - **Snadná konfigurace**: Azure AD B2C poskytuje jednoduché podrobné uživatelské rozhraní pro připojení konektorů Maverics identity Orchestrator nebo OIDC k Azure AD B2C.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -57,7 +57,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek – zobrazení architektury Azure AD B2C integrace s Mavericsy pro povolení přístupu k hybridním aplikacím](./media/partner-strata/strata-architecture-diagram.png)
 
-| Postup | Popis |
+| Postup | Description |
 |:-------|:---------------|
 | 1. | Uživatel vytvoří žádost o přístup k místní hostované aplikaci. Maverics identity Orchestrator proxy vyžádá požadavek, který uživatel odeslal do aplikace.|
 | 2. | Nástroj Orchestrator zkontroluje stav ověřování uživatele. Pokud neobdrží token relace nebo poskytnutý token relace není platný, pošle uživatel, aby Azure AD B2C k ověření.|

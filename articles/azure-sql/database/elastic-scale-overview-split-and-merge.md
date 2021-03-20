@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793462"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
@@ -187,7 +187,7 @@ Služba dělení a slučování běží jako cloudová služba v rámci předpla
 
 Služba rozdělení a sloučení poskytuje tabulku **stavem žádosti** v databázi úložiště metadat pro monitorování dokončených a probíhajících požadavků. Tabulka obsahuje řádek pro každou žádost o dělené sloučení, která byla odeslána do této instance služby dělení a slučování. Pro každý požadavek poskytuje tyto informace:
 
-- **Timestamp**
+- **Časové razítko**
 
   Čas a datum spuštění žádosti.
 

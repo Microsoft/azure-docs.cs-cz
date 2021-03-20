@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: a473085f9c94ca42a75d01b342d60cc33836b096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88244835"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Analýza výukové smyčky pomocí offline vyhodnocení
@@ -23,7 +23,7 @@ Vyhodnocení v režimu offline umožňuje měřit, jak efektivní přizpůsoben�
 
 Další informace najdete v článku o [hodnoceních offline](concepts-offline-evaluation.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nakonfigurované smyčka přizpůsobeného přizpůsobování
 * Smyčka přizpůsobování musí mít reprezentativní množství dat – jako jen ve svých protokolech doporučujeme minimálně 50 000 událostí pro smysluplné výsledky vyhodnocení. Volitelně můžete také dříve exportovat soubory _zásad učení_ , které můžete porovnat a testovat ve stejném vyhodnocení.
@@ -42,7 +42,7 @@ Další informace najdete v článku o [hodnoceních offline](concepts-offline-e
     > [!div class="mx-imgBorder"]
     > ![Zvolit nastavení online vyhodnocení](./media/offline-evaluation/create-an-evaluation-form.png)
 
-1. Kliknutím na **tlačítko OK**spusťte hodnocení.
+1. Kliknutím na **tlačítko OK** spusťte hodnocení.
 
 ## <a name="review-the-evaluation-results"></a>Kontrola výsledků hodnocení
 

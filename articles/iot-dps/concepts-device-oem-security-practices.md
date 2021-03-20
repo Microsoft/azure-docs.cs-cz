@@ -9,10 +9,10 @@ ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
 ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90527203"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Postupy zabezpečení pro výrobce zařízení Azure IoT
@@ -184,7 +184,7 @@ Jakmile zařízení dorazí do konečného umístění, provede to prostřednict
 
 Další informace najdete v tématu [zřizování](about-iot-dps.md#provisioning-process) a [ověření identity čipem TPM](concepts-tpm-attestation.md). 
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 Kromě doporučených postupů zabezpečení v tomto článku poskytuje Azure IoT prostředky, které vám pomůžou vybrat zabezpečený hardware a vytvářet zabezpečená nasazení IoT: 
 - [Doporučení zabezpečení](../iot-fundamentals/security-recommendations.md) Azure IoT, která vám pomohou s procesem nasazení. 

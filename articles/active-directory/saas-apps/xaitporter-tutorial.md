@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: f729828627fdb0be18f220d34227aac756ed4e13
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92894861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Kurz: Azure Active Directory integrace s XaitPorter
@@ -61,13 +61,13 @@ Pokud chcete nakonfigurovat integraci XaitPorter do služby Azure AD, musíte p�
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **XaitPorter** , vyberte **XaitPorter** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **XaitPorter**, vyberte **XaitPorter** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![XaitPorter v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí XaitPorter na základě testovacího uživatele s názvem **Britta Simon** .
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí XaitPorter na základě testovacího uživatele s názvem **Britta Simon**.
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v XaitPorter.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí XaitPorter, musíte dokončit tyto stavební bloky:
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí XaitPorter, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **XaitPorter** vyberte **jednotné přihlašování** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **XaitPorter** vyberte **jednotné přihlašování**.
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -116,7 +116,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí XaitPort
 
 ### <a name="configure-xaitporter-single-sign-on"></a>Nakonfigurovat XaitPorter jednu Sign-On
 
-1. Pokud chcete automatizovat konfiguraci v rámci XaitPorter, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření** .
+1. Pokud chcete automatizovat konfiguraci v rámci XaitPorter, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
     ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí XaitPort
 
 3. Pokud chcete nastavit XaitPorter ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu XaitPorter společnosti jako správce a proveďte následující kroky:
 
-4. Klikněte na **správce** .
+4. Klikněte na **správce**.
 
     ![Snímek obrazovky ukazuje správce vybraný na webu XaitPorter.](./media/xaitporter-tutorial/user1.png)
 
@@ -138,19 +138,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí XaitPort
 
     ![Snímek obrazovky se zobrazí část Správa jednotného přihlašování, kde můžete provádět tyto kroky.](./media/xaitporter-tutorial/user3.png)
 
-    a. Vyberte možnost **Povolit ověřování pomocí jednoho Sign-On** .
+    a. Vyberte možnost **Povolit ověřování pomocí jednoho Sign-On**.
 
-    b. V poli **nastavení zprostředkovatele identity** vložte **adresu URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal, a klikněte na **načíst** .
+    b. V poli **nastavení zprostředkovatele identity** vložte **adresu URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal, a klikněte na **načíst**.
 
-    c. Vyberte **Povolit autotvorbu uživatelů** .
+    c. Vyberte **Povolit autotvorbu uživatelů**.
 
-    d. Klikněte na **OK** .
+    d. Klikněte na **OK**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -162,27 +162,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon** .
+    a. Do pole **název** zadejte **BrittaSimon**.
   
     b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit** .
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k XaitPorter.
 
-1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **XaitPorter** .
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **XaitPorter**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **XaitPorter** .
+2. V seznamu aplikace vyberte **XaitPorter**.
 
     ![Odkaz XaitPorter v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -206,7 +206,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici XaitPorter, měli byste se automaticky přihlásit k XaitPorter, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

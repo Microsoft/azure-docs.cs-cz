@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109149"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Šifrování dat v Azure Data Lake Storage Gen1
@@ -21,7 +21,7 @@ ms.locfileid: "92109149"
 
 Data Lake Storage Gen1 podporuje šifrování dat v klidovém režimu i při přenosu. V případě neaktivních dat Data Lake Storage Gen1 podporuje ve výchozím nastavení "transparentní šifrování". Tady je podrobnější vysvětlení významu těchto termínů:
 
-* **Ve výchozím**nastavení: Když vytváříte nový účet Data Lake Storage Gen1, výchozí nastavení povolí šifrování. Data, která jsou uložená v Data Lake Storage Gen1, se pak před uložením na trvalé médium vždycky šifrují. Toto chování platí pro veškerá data a po vytvoření účtu nejde změnit.
+* **Ve výchozím** nastavení: Když vytváříte nový účet Data Lake Storage Gen1, výchozí nastavení povolí šifrování. Data, která jsou uložená v Data Lake Storage Gen1, se pak před uložením na trvalé médium vždycky šifrují. Toto chování platí pro veškerá data a po vytvoření účtu nejde změnit.
 * **Transparentní**: Data Lake Storage Gen1 automaticky šifruje data před jejich uložením a dešifruje data před jejich načtením. Šifrování je nakonfigurované a spravované na úrovni účtu Data Lake Storage Gen1 správcem. Rozhraní API pro přístup k datům se nemění. Proto se v aplikacích a službách, které komunikují s Data Lake Storage Gen1 v důsledku šifrování, nevyžadují žádné změny.
 
 Data v přenosu (označovaná také jako data v pohybu) se také vždy šifrují v Data Lake Storage Gen1. Kromě šifrování dat před uložením na trvalé médium se také vždy šifrují přenášená data pomocí protokolu HTTPS. Protokol HTTPS je jediným protokolem, který je podporován pro rozhraní Data Lake Storage Gen1 REST. Následující diagram znázorňuje, jak se data zašifrují v Data Lake Storage Gen1:
@@ -56,8 +56,8 @@ Tady je stručné porovnání možností, které nabízí dva režimy správy hl
 | -------- | -------------------- | --------------------- |
 |Jak se data ukládají?|Před uložením se vždy šifrují.|Před uložením se vždy šifrují.|
 |Kde je uložený hlavní šifrovací klíč?|Key Vault|Key Vault|
-|Jsou nějaké šifrovací klíče uložené v nezašifrované podobě mimo službu Key Vault? |Ne|Ne|
-|Může služba Key Vault načíst hlavní šifrovací klíč?|Ne. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|Ne. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|
+|Jsou nějaké šifrovací klíče uložené v nezašifrované podobě mimo službu Key Vault? |No|No|
+|Může služba Key Vault načíst hlavní šifrovací klíč?|No. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|No. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|
 |Kdo je vlastníkem instance služby Key Vault a hlavního šifrovacího klíče?|Služba Data Lake Storage Gen1|Vlastníte instanci služby Key Vault, která patří do vašeho předplatného Azure. Hlavní šifrovací klíč ve službě Key Vault může být spravovaný softwarem nebo hardwarem.|
 |Můžete odvolat přístup k hlavní šifrovací klíč pro službu Data Lake Storage Gen1?|No|Yes. Můžete spravovat seznamy řízení přístupu v Key Vault a odebrat položky řízení přístupu k identitě služby Data Lake Storage Gen1.|
 |Je možné trvale odstranit hlavní šifrovací klíč?|No|Yes. Odstraníte-li hlavní šifrovací klíč z Key Vault, nelze data v Data Lake Storage Gen1m účtu dešifrovat nikdo, včetně služby Data Lake Storage Gen1. <br><br> Pokud jste hlavní šifrovací klíč před odstraněním ze služby Key Vault explicitně zazálohovali, je možné ho obnovit a následně obnovit i data. Pokud jste ale hlavní šifrovací klíč ještě před odstraněním z Key Vault nezálohovali, data v Data Lake Storage Gen1m účtu už nebude možné dešifrovat.|
@@ -115,7 +115,7 @@ Všimněte si, že pokud použijete výchozí možnosti šifrování, vaše data
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>Jak otočit hlavní šifrovací klíč v Data Lake Storage Gen1
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Přejděte do instance Key Vault, kde jsou uložené vaše klíče přidružené k vašemu účtu Data Lake Storage Gen1. Vyberte **Klíče**.
 
     ![Snímek obrazovky služby Key Vault](./media/data-lake-store-encryption/keyvault.png)

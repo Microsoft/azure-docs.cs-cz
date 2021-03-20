@@ -10,10 +10,10 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88080469"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k Web Apps v Azure
@@ -73,7 +73,7 @@ Nápovědu k prozkoumání problémů s průběžným nasazováním z GitHubu ne
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Návody publikovat můj kód do App Service?
 
-Rychlý Start Azure je navržený tak, aby vám usnadnil nasazení aplikace pomocí zásobníku nasazení a metody podle vašeho výběru. Pokud chcete používat rychlý Start, klikněte v Azure Portal do služby App Service v části **nasazení**vyberte **rychlý Start**.
+Rychlý Start Azure je navržený tak, aby vám usnadnil nasazení aplikace pomocí zásobníku nasazení a metody podle vašeho výběru. Pokud chcete používat rychlý Start, klikněte v Azure Portal do služby App Service v části **nasazení** vyberte **rychlý Start**.
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Proč se moje aplikace někdy po nasazení do App Service restartuje?
 

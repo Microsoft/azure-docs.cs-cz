@@ -14,17 +14,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895355b5acebffe6ad24b15b0c709d21e8f20be4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90016644"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Co je hybridní identita s Azure Active Directory?
 
 V současné době se podniky a společnosti stávají více a více než v různých místních i cloudových aplikacích.  Uživatelé vyžadují přístup k těmto aplikacím místně i v cloudu. Správa uživatelů v místním prostředí i v cloudu přináší náročné scénáře. 
 
-Řešení identit od Microsoftu využívají místní a cloudové možnosti.  Tato řešení vytváří společnou identitu uživatelů pro ověřování a autorizaci pro všechny prostředky bez ohledu na jejich umístění. Tuto **hybridní identitu**voláme.
+Řešení identit od Microsoftu využívají místní a cloudové možnosti.  Tato řešení vytváří společnou identitu uživatelů pro ověřování a autorizaci pro všechny prostředky bez ohledu na jejich umístění. Tuto **hybridní identitu** voláme.
 
 S hybridní identitou pro Azure AD a hybridní správu identit se tyto scénáře stanou možné.
 

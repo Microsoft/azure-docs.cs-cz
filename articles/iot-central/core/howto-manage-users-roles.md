@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: f6c45b8d9804f16c4e59d259f562cc03f187e6a0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92122973"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Správa uživatelů a rolí v aplikaci IoT Central
@@ -21,7 +21,7 @@ Tento článek popisuje, jak jako správce můžete přidávat, upravovat a odst
 
 Pokud chcete získat přístup k části **Správa** a používat ji, musíte být v roli **správce** aplikace Azure IoT Central. Pokud vytvoříte aplikaci IoT Central Azure, automaticky se přiřadíte do role **správce** této aplikace.
 
-## <a name="add-users"></a>Přidávání uživatelů
+## <a name="add-users"></a>Přidání uživatelů
 
 Každý uživatel musí mít uživatelský účet, aby se mohl přihlásit a získat přístup k aplikaci Azure IoT Central. Účty Microsoft a účty Azure Active Directory jsou podporované ve službě Azure IoT Central. Azure Active Directory skupiny se v Azure IoT Central aktuálně nepodporují.
 
@@ -55,7 +55,7 @@ Role se po přiřazení nedají změnit. Chcete-li změnit roli přiřazenou už
 
 Pokud chcete uživatele odstranit, zaškrtněte jedno nebo více políček na stránce **Uživatelé** . Vyberte **Odstranit**.
 
-## <a name="manage-roles"></a>Správa rolí
+## <a name="manage-roles"></a>Spravovat role
 
 Role umožňují řídit, kdo ve vaší organizaci může provádět různé úkoly v IoT Central. Existují tři předdefinované role, které můžete přiřadit uživatelům vaší aplikace. Pokud vyžadujete jemnější kontrolu, můžete také [vytvořit vlastní role](#create-a-custom-role) .
 
@@ -78,7 +78,7 @@ Uživatelé v roli **operátora** mohou monitorovat stav a stav zařízení. Neu
 
 ## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
-Pokud vaše řešení vyžaduje jemnější řízení přístupu, můžete vytvořit vlastní role s vlastními sadami oprávnění. Chcete-li vytvořit vlastní roli, přejděte na stránku **role** v části **Správa** vaší aplikace. Pak vyberte **+ Nová role**a přidejte název a popis pro vaši roli. Vyberte oprávnění, které vaše role vyžaduje, a pak vyberte **Uložit**.
+Pokud vaše řešení vyžaduje jemnější řízení přístupu, můžete vytvořit vlastní role s vlastními sadami oprávnění. Chcete-li vytvořit vlastní roli, přejděte na stránku **role** v části **Správa** vaší aplikace. Pak vyberte **+ Nová role** a přidejte název a popis pro vaši roli. Vyberte oprávnění, které vaše role vyžaduje, a pak vyberte **Uložit**.
 
 Do vlastní role můžete přidat uživatele stejným způsobem, jakým přidáváte uživatele do předdefinované role.
 
@@ -93,36 +93,36 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 **Oprávnění pro šablony zařízení**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné     |
-| Spravovat | Zobrazit <br/> Další závislosti: zobrazení instancí zařízení  |
+| Zobrazení | Žádné     |
+| Spravovat | Zobrazení <br/> Další závislosti: zobrazení instancí zařízení  |
 | Úplné řízení | Zobrazit, spravovat <br/> Další závislosti: zobrazení instancí zařízení |
 
 **Oprávnění instance zařízení**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení |
-| Aktualizace | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
-| Vytvořit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
-| Odstranit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
+| Zobrazení | Žádné <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení |
+| Aktualizace | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
+| Vytvořit | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
+| Odstranit | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
 | Spustit příkazy | Aktualizace, zobrazení <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit, spustit příkazy <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
 
 **Oprávnění skupin zařízení**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení |
-| Aktualizace | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
+| Zobrazení | Žádné <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení |
+| Aktualizace | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
 | Vytvořit | Zobrazit, aktualizovat <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
-| Odstranit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
+| Odstranit | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení |
 
 **Oprávnění pro správu připojení zařízení**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
 | Čtení instance | Žádné <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, instancí zařízení |
 | Spravovat instanci | Žádné |
@@ -132,48 +132,48 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 **Oprávnění úloh**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
-| Aktualizace | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
+| Zobrazení | Žádné <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
+| Aktualizace | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
 | Vytvořit | Zobrazit, aktualizovat <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
-| Odstranit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
-| Spuštěním | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení; Aktualizace instancí zařízení; Spouštění příkazů na instancích zařízení |
+| Odstranit | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
+| Spuštěním | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení; Aktualizace instancí zařízení; Spouštění příkazů na instancích zařízení |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit, spustit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení; Aktualizace instancí zařízení; Spouštění příkazů na instancích zařízení |
 
 **Oprávnění pravidel**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné <br/> Další závislosti: zobrazení šablon zařízení |
-| Aktualizace | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení |
+| Zobrazení | Žádné <br/> Další závislosti: zobrazení šablon zařízení |
+| Aktualizace | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení |
 | Vytvořit | Zobrazit, aktualizovat <br/> Další závislosti: zobrazení šablon zařízení |
-| Odstranit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení |
+| Odstranit | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit <br/> Další závislosti: zobrazení šablon zařízení |
 
 #### <a name="managing-the-app"></a>Správa aplikace
 
 **Oprávnění nastavení aplikace**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné     |
-| Aktualizace | Zobrazit   |
-| Kopírovat | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení, skupin zařízení, řídicích panelů, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
-| Odstranit | Zobrazit   |
+| Zobrazení | Žádné     |
+| Aktualizace | Zobrazení   |
+| Kopírovat | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení, skupin zařízení, řídicích panelů, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
+| Odstranit | Zobrazení   |
 | Úplné řízení | Zobrazit, aktualizovat, kopírovat, odstranit <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, řídicích panelů aplikací, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
 
 **Oprávnění k exportu šablony aplikace**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné     |
-| Export | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení, skupin zařízení, řídicích panelů, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
+| Zobrazení | Žádné     |
+| Export | Zobrazení <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení, skupin zařízení, řídicích panelů, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
 | Úplné řízení | Zobrazit, exportovat <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, řídicích panelů aplikací, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
 
 **Fakturační oprávnění**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
 | Spravovat | Žádné     |
 | Úplné řízení | Spravovat |
@@ -182,21 +182,21 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 **Oprávnění vlastních rolí**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné |
-| Aktualizace | Zobrazit |
+| Zobrazení | Žádné |
+| Aktualizace | Zobrazení |
 | Vytvořit | Zobrazit, aktualizovat |
-| Odstranit | Zobrazit |
+| Odstranit | Zobrazení |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit |
 
 **Oprávnění správy uživatelů**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné <br/> Další závislosti: zobrazení vlastních rolí |
-| Přidat | Zobrazit <br/> Další závislosti: zobrazení vlastních rolí |
-| Odstranit | Zobrazit <br/> Další závislosti: zobrazení vlastních rolí |
+| Zobrazení | Žádné <br/> Další závislosti: zobrazení vlastních rolí |
+| Přidání | Zobrazení <br/> Další závislosti: zobrazení vlastních rolí |
+| Odstranit | Zobrazení <br/> Další závislosti: zobrazení vlastních rolí |
 | Úplné řízení | Zobrazit, přidat, odstranit <br/> Další závislosti: zobrazení vlastních rolí |
 
 > [!NOTE]
@@ -206,59 +206,59 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 **Oprávnění řídicího panelu aplikace**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné     |
-| Aktualizace | Zobrazit   |
+| Zobrazení | Žádné     |
+| Aktualizace | Zobrazení   |
 | Vytvořit | Zobrazit, aktualizovat |
-| Odstranit | Zobrazit   |
+| Odstranit | Zobrazení   |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit |
 
 **Oprávnění osobních řídicích panelů**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné     |
-| Aktualizace | Zobrazit   |
+| Zobrazení | Žádné     |
+| Aktualizace | Zobrazení   |
 | Vytvořit | Zobrazit, aktualizovat   |
-| Odstranit | Zobrazit   |
+| Odstranit | Zobrazení   |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit |
 
 **Oprávnění brandingu, favicon a barev**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné     |
-| Aktualizace | Zobrazit   |
+| Zobrazení | Žádné     |
+| Aktualizace | Zobrazení   |
 | Úplné řízení | Zobrazit, aktualizovat |
 
 **Oprávnění k odkazům na odkazy**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné     |
-| Aktualizace | Zobrazit   |
+| Zobrazení | Žádné     |
+| Aktualizace | Zobrazení   |
 | Úplné řízení | Zobrazit, aktualizovat |
 
 #### <a name="extending-the-app"></a>Rozšíření aplikace
 
 **Oprávnění k exportu dat**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné     |
-| Aktualizace | Zobrazit   |
+| Zobrazení | Žádné     |
+| Aktualizace | Zobrazení   |
 | Vytvořit | Zobrazit, aktualizovat  |
-| Odstranit | Zobrazit   |
+| Odstranit | Zobrazení   |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit |
 
 **Oprávnění tokenu API**
 
-| Název | Závislosti |
+| Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádné     |
-| Vytvořit | Zobrazit   |
-| Odstranit | Zobrazit   |
+| Zobrazení | Žádné     |
+| Vytvořit | Zobrazení   |
+| Odstranit | Zobrazení   |
 | Úplné řízení | Zobrazit, vytvořit, odstranit |
 
 ## <a name="next-steps"></a>Další kroky

@@ -11,15 +11,15 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8f037d4283b4b05081ef47e7223495f6e19d460e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97386863"
 ---
 # <a name="sub-journeys"></a>Dílčí cesty
 
-Dílčí cesty lze použít k organizování a zjednodušení toku kroků orchestrace v rámci cesty uživatele. [Cesty uživatelů](userjourneys.md) určují explicitní cesty, pomocí kterých zásada umožňuje aplikaci předávající strany získat požadované deklarace identity pro uživatele. Uživatel se převezme prostřednictvím těchto cest, aby načetl deklarace identity, které se mají předložit předávající straně. Jinými slovy, cesty uživatelů definují obchodní logiku toho, co koncový uživatel projde, jako Azure AD B2C architektura pro prostředí identity zpracuje požadavek. Cesta uživatele je reprezentována jako sekvence orchestrace, která musí následovat po úspěšné transakci. Element [ClaimsExchange](userjourneys.md#claimsexchanges) kroku orchestrace je svázán s jedním [technickým profilem](technicalprofiles.md) , který se spustí.
+Dílčí cesty lze použít k organizování a zjednodušení toku kroků orchestrace v rámci cesty uživatele. [Cesty uživatelů](userjourneys.md) určují explicitní cesty, prostřednictvím kterých zásady umožňují aplikaci přijímající strany získat pro uživatele požadované deklarace identity. Uživatel těmito cestami získá deklarace identity, které se mají předložit přijímající straně. Jinými slovy, cesty uživatelů definují obchodní logiku toho, co koncový uživatel projde, jako Azure AD B2C architektura pro prostředí identity zpracuje požadavek. Cesta uživatele je reprezentována jako sekvence orchestrace, která musí následovat po úspěšné transakci. Element [ClaimsExchange](userjourneys.md#claimsexchanges) kroku orchestrace je svázán s jedním [technickým profilem](technicalprofiles.md) , který se spustí.
 
 Podcesta je seskupení kroků orchestrace, které lze vyvolat kdykoli v rámci cesty uživatele. Pomocí dílčích cest můžete vytvořit opakovaně použitelné sekvence kroků nebo implementovat větvení pro lepší znázornění obchodní logiky.
 
@@ -116,7 +116,7 @@ Pro definování dílčích cest, které zásady podporují, přidejte element *
 
 Element **recestes** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | Subcesta | 1: n | Dílčí cesta definující všechny konstrukce, které jsou nezbytné pro kompletní tok uživatele. |
 
@@ -124,12 +124,12 @@ Element **recestes** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | Ano | Identifikátor dílčí cesty, který může být použit cestou uživatele k odkazování na dílčí cestu v zásadě. Element **SubJourneyReferenceId** elementu [kandidáta](userjourneys.md#journeylist) odkazuje na tento atribut. |
-| Typ | Ano | Možné hodnoty: `Call` , nebo `Transfer` . Další informace najdete v tématu [větvení cest uživatele](#user-journey-branching) .|
+| Id | Yes | Identifikátor dílčí cesty, který může být použit cestou uživatele k odkazování na dílčí cestu v zásadě. Element **SubJourneyReferenceId** elementu [kandidáta](userjourneys.md#journeylist) odkazuje na tento atribut. |
+| Typ | Yes | Možné hodnoty: `Call` , nebo `Transfer` . Další informace najdete v tématu [větvení cest uživatele](#user-journey-branching) .|
 
 Element dílčí **cesty** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1: n | Sekvence orchestrace, která musí následovat po úspěšné transakci. Každá cesta uživatele se skládá z uspořádaného seznamu kroků orchestrace, které se spustí v posloupnosti. Pokud nějaký krok selhává, transakce se nezdařila. |
 

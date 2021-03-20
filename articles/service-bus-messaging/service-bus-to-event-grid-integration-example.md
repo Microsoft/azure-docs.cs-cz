@@ -8,10 +8,10 @@ ms.date: 10/16/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 93375f6047fbe4eda2132e024dab0e067e83ccf1
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998979"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>Kurz: reakce na události Azure Service Bus přijatých prostřednictvím Azure Event Grid pomocí Azure Logic Apps
@@ -28,7 +28,7 @@ V tomto kroku vytvoříte aplikaci logiky Azure, která přijímá Service Bus u
     3. Vyberte své **předplatné** Azure. 
     4. Vyberte pro **skupinu prostředků** možnost **použít existující** a vyberte skupinu prostředků, kterou jste použili pro jiné prostředky (třeba funkci Azure Functions Service Bus obor názvů), kterou jste vytvořili dříve. 
     5. Vyberte **umístění** aplikace logiky. 
-    6. Vyberte **zkontrolovat + vytvořit**. 
+    6. Vyberte **Zkontrolovat a vytvořit**. 
     1. Na stránce **Revize + vytvořit** vyberte **vytvořit** a vytvořte aplikaci logiky. 
 1. Na stránce **návrháře Logic Apps** v části **šablony** vyberte **prázdná aplikace logiky** . 
 1. V Návrháři proveďte následující kroky:

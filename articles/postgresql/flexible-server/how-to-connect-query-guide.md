@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 12/08/2020
 ms.openlocfilehash: ee3b1f7db8bdafb1233b32579e032e8c864c37a9
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97364563"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--flexible-server"></a>Přehled připojení a dotazování pro Azure Database for PostgreSQL – flexibilní Server
@@ -23,7 +23,7 @@ Následující dokument obsahuje odkazy na příklady, které ukazují, jak se p
 
 ## <a name="quickstarts"></a>Rychlé starty
 
-| Rychlé zprovoznění | Popis |
+| Rychlé zprovoznění | Description |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|Pomocí pgAdmin se můžete připojit k serveru a zjednoduší se tím vytváření, údržba a používání databázových objektů.|
 |[psql v Azure Cloud Shell](./quickstart-create-server-cli.md#connect-using-postgresql-command-line-client)|Tento článek ukazuje, jak spustit [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) v [Azure Cloud Shell](../../cloud-shell/overview.md) pro připojení k vašemu serveru a následné spuštění příkazů pro dotazování, vkládání, aktualizaci a odstraňování dat v databázi. **Psql** můžete spustit, pokud je nainstalovaná ve vašem vývojovém prostředí.|

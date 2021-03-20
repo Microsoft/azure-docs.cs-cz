@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652985"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
@@ -18,7 +18,7 @@ V tomto kurzu vytvoříte konzolové aplikace .NET Core pro posílání zpráv a
 > [!WARNING]
 > V tomto rychlém startu se používá starý balíček Microsoft. Azure. ServiceBus. Rychlý Start, který používá nejnovější balíček Azure. Messaging. ServiceBus, najdete v tématu [posílání a přijímání událostí pomocí balíčku Azure. Messaging. ServiceBus](service-bus-dotnet-get-started-with-queues.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
@@ -48,7 +48,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Napsání kódu pro odesílání zpráv do fronty
 
-1. V *program.cs* přidejte následující příkazy v `using` horní části definice oboru názvů před deklaraci třídy:
+1. V *programu program. cs* přidejte následující `using` příkazy v horní části definice oboru názvů před deklaraci třídy:
 
     ```csharp
     using System.Text;
@@ -114,7 +114,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
     }
     ```
 
-Soubor *program.cs* by měl vypadat nějak takto:
+Soubor *program. cs* by měl vypadat nějak takto:
 
 ```csharp
 namespace CoreSenderApp
@@ -194,7 +194,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikac
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Napsání kódu pro příjem zpráv z fronty
 
-1. V *program.cs* přidejte následující příkazy v `using` horní části definice oboru názvů před deklaraci třídy:
+1. V *programu program. cs* přidejte následující `using` příkazy v horní části definice oboru názvů před deklaraci třídy:
 
     ```csharp
     using System;
@@ -295,7 +295,7 @@ Pokud chcete přijímat zprávy, které jste odeslali, vytvořte další aplikac
     }
     ```
 
-Soubor *program.cs* by měl vypadat nějak takto:
+Soubor *program. cs* by měl vypadat takto:
 
 ```csharp
 namespace CoreReceiverApp

@@ -16,17 +16,17 @@ ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: de179ab2fe1c02b3912262ee57fbb41a23d56164
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101715432"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření interního nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -115,7 +115,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **(Evropa) západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **Standard** |
@@ -267,7 +267,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 | VIRTUÁLNÍ POČÍTAČ 3 |
     | ------- | ----- | ---- |
-    | Název |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | Zóna dostupnosti | **2** | **3** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG** |
 
@@ -350,7 +350,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **(Evropa) západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **základní** |
@@ -507,7 +507,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 | VIRTUÁLNÍ POČÍTAČ 3 |
     | ------- | ----- | ---- |
-    | Název |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | Skupina dostupnosti | Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG** | Vybrat existující **myNSG** |
 

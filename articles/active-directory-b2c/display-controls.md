@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97387050"
 ---
 # <a name="display-controls"></a>Ovládací prvky zobrazení
@@ -28,7 +28,7 @@ Následující obrázek znázorňuje přihlašovací stránku s vlastním uplatn
 
 ![Příklad ovládacího prvku vykresleného zobrazení](media/display-controls/display-control-email.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
  V části [metadata](self-asserted-technical-profile.md#metadata) [technického profilu s vlastním](self-asserted-technical-profile.md)přístavem musí být odkazovaný [ContentDefinition](contentdefinitions.md) `DataUri` nastaven na stránku verze kontraktu 2.0.0 nebo vyšší. Například:
 
@@ -46,12 +46,12 @@ Element **zobrazitelné ovládací** prvky obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | Ano | Identifikátor, který se používá pro ovládací prvek zobrazení. Lze na něj [odkazovat](#referencing-display-controls). |
-| UserInterfaceControlType | Ano | Typ ovládacího prvku zobrazení Aktuálně se podporuje [VerificationControl](display-control-verification.md) |
+| Id | Yes | Identifikátor, který se používá pro ovládací prvek zobrazení. Lze na něj [odkazovat](#referencing-display-controls). |
+| UserInterfaceControlType | Yes | Typ ovládacího prvku zobrazení Aktuálně se podporuje [VerificationControl](display-control-verification.md) |
 
 Element **Zobrazit ovládací** prvek obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims** slouží k předvyplnění hodnoty deklarací, které se mají shromažďovat od uživatele. Další informace naleznete v tématu [InputClaims](technicalprofiles.md#input-claims) element. |
 | DisplayClaims | 0:1 | **DisplayClaims** slouží k reprezentaci deklarací, které se mají shromažďovat od uživatele. Další informace naleznete v tématu [DisplayClaim](technicalprofiles.md#displayclaim) element.|
@@ -110,11 +110,11 @@ Element **Action** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | Ano | Typ operace. Možné hodnoty: `SendCode` nebo `VerifyCode` . `SendCode`Hodnota pošle uživateli kód. Tato akce může obsahovat dva technické profily ověřování: jednu pro vygenerování kódu a jednu pro odeslání. `VerifyCode`Hodnota ověří kód, který uživatel zadal ve vstupním textovém poli. |
+| Id | Yes | Typ operace. Možné hodnoty: `SendCode` nebo `VerifyCode` . `SendCode`Hodnota pošle uživateli kód. Tato akce může obsahovat dva technické profily ověřování: jednu pro vygenerování kódu a jednu pro odeslání. `VerifyCode`Hodnota ověří kód, který uživatel zadal ve vstupním textovém poli. |
 
 Element **Action** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | ValidationClaimsExchange | 1:1 | Identifikátory technických profilů, které se používají k ověření některých nebo všech zobrazených deklarací identity s referenčním technickým profilem. Všechny vstupní deklarace odkazovaného technického profilu se musí zobrazit v deklaracích, které odkazují na technický profil. |
 
@@ -122,7 +122,7 @@ Element **Action** obsahuje následující element:
 
 Element **ValidationClaimsExchange** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Technický profil, který se má použít k ověření některých nebo všech zobrazených deklarací identity s referenčním technickým profilem. |
 
@@ -130,13 +130,13 @@ Element **ValidationTechnicalProfile** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ReferenceId | Ano | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
-|ContinueOnError|Ne| Určuje, jestli se má v případě, že bude tento technický profil ověřování zobrazovat chyba, ověřit, jestli má ověřování všech následných technických profilů. Možné hodnoty: `true` nebo `false` (výchozí, zpracování dalších profilů ověřování se zastaví a vrátí se chyba). |
-|ContinueOnSuccess | Ne | Určuje, zda má ověřování všech následných ověřovacích profilů pokračovat v případě úspěšného ověření tohoto technického profilu. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true` , což znamená, že zpracování dalších profilů ověření bude pokračovat. |
+| ReferenceId | Yes | Identifikátor technického profilu, který je už definovaný v zásadách nebo v nadřazené zásadě. |
+|ContinueOnError|No| Určuje, jestli se má v případě, že bude tento technický profil ověřování zobrazovat chyba, ověřit, jestli má ověřování všech následných technických profilů. Možné hodnoty: `true` nebo `false` (výchozí, zpracování dalších profilů ověřování se zastaví a vrátí se chyba). |
+|ContinueOnSuccess | No | Určuje, zda má ověřování všech následných ověřovacích profilů pokračovat v případě úspěšného ověření tohoto technického profilu. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true` , což znamená, že zpracování dalších profilů ověření bude pokračovat. |
 
 Element **ValidationTechnicalProfile** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | Předběžné podmínky | 0:1 | Seznam předpokladů, které musí být splněny, aby byl technický profil ověření proveden. |
 
@@ -145,11 +145,11 @@ Prvek **předběžné podmínky** obsahuje následující atributy:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | `Type` | Ano | Typ kontroly nebo dotazu, který má být proveden pro předběžnou podmínku. Možné hodnoty: `ClaimsExist` nebo `ClaimEquals` . `ClaimsExist` Určuje, že akce by se měly provádět v případě, že zadané deklarace existují v aktuální sadě deklarací uživatele. `ClaimEquals` Určuje, že akce mají být provedeny, pokud existuje zadaná deklarace identity a její hodnota je rovna zadané hodnotě. |
-| `ExecuteActionsIf` | Ano | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
+| `ExecuteActionsIf` | Yes | Určuje, zda mají být provedeny akce v předběžné podmínce, pokud je test nastaven na hodnotu true nebo false. |
 
 Prvek **podmínky** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | Hodnota | 1: n | Data, která se používají při kontrole. Pokud je typ této kontroly `ClaimsExist` , toto pole určuje ClaimTypeReferenceId k dotazování na. Pokud je typ kontroly `ClaimEquals` , toto pole určuje ClaimTypeReferenceId k dotazování na. Zadejte hodnotu, kterou chcete zkontrolovat v jiném hodnotovém prvku.|
 | Akce | 1:1 | Akce, která má být provedena, pokud je splněna podmínka kontroly předběžných podmínek v rámci kroku orchestrace. Hodnota **Akce** je nastavena na hodnotu `SkipThisValidationTechnicalProfile` , která určuje, zda by neměl být proveden příslušný technický profil ověření. |

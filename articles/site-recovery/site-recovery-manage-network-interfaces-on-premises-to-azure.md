@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: harshacs
 ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90068111"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Správa síťových rozhraní virtuálních počítačů pro zotavení po havárii místního prostředí do Azure
@@ -32,7 +32,7 @@ Pro VMware a fyzické počítače a pro virtuální počítače Hyper-V (bez Sys
 
 2. Vyberte kartu **výpočty a síť** pro přístup k nastavení sítě pro replikovanou položku.
 
-3. V části **Vlastnosti sítě**vyberte virtuální síť ze seznamu dostupných síťových rozhraní.
+3. V části **Vlastnosti sítě** vyberte virtuální síť ze seznamu dostupných síťových rozhraní.
 
     ![Nastavení sítě](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/compute-and-network.png)
 

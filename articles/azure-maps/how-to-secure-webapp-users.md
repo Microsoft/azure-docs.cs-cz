@@ -11,10 +11,10 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: ebdc4b219e0840c18e6bef8ebfe9b8eefa8faf3b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895562"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>Zabezpečení webové aplikace pomocí přihlášení uživatele
@@ -27,21 +27,21 @@ Následující příručka se vztahuje na aplikaci, která je hostována na webo
 
 Aby se uživatelé mohli přihlásit, musíte ve službě Azure AD vytvořit webovou aplikaci. Tato webová aplikace pak bude delegovat přístup uživatelů k Azure Maps rozhraní REST API.
 
-1. V Azure Portal v seznamu služeb Azure vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **Nová registrace** .  
+1. V Azure Portal v seznamu služeb Azure vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **Nová registrace**.  
 
     > [!div class="mx-imgBorder"]
     > ![Registrace aplikace](./media/how-to-manage-authentication/app-registration.png)
 
-2. Zadejte **název** , vyberte **typ účtu podpory** , zadejte identifikátor URI pro přesměrování, který bude představovat adresu URL, kterou služba Azure AD vydá token, a je adresa URL, kde je ovládací prvek mapy hostovaný. Další podrobnosti najdete v tématu scénář Azure AD [: webová aplikace, která](../active-directory/develop/scenario-web-app-sign-user-overview.md)přihlašuje uživatele. Dokončete uvedené kroky ze scénáře služby Azure AD.  
+2. Zadejte **název**, vyberte **typ účtu podpory**, zadejte identifikátor URI pro přesměrování, který bude představovat adresu URL, kterou služba Azure AD vydá token, a je adresa URL, kde je ovládací prvek mapy hostovaný. Další podrobnosti najdete v tématu scénář Azure AD [: webová aplikace, která](../active-directory/develop/scenario-web-app-sign-user-overview.md)přihlašuje uživatele. Dokončete uvedené kroky ze scénáře služby Azure AD.  
 
 3. Po dokončení registrace aplikace potvrďte, že přihlašování aplikace funguje pro uživatele. Po přihlášení můžete aplikaci udělit delegovaný přístup k Azure Maps rozhraní REST API.
     
-4.  Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, Projděte si aplikaci. Pak vyberte **oprávnění API**  >  **Přidat oprávnění** . V části **rozhraní API moje organizace používá** , vyhledejte a vyberte **Azure Maps** .
+4.  Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, Projděte si aplikaci. Pak vyberte **oprávnění API**  >  **Přidat oprávnění**. V části **rozhraní API moje organizace používá**, vyhledejte a vyberte **Azure Maps**.
 
     > [!div class="mx-imgBorder"]
     > ![Přidat oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Zaškrtněte políčko vedle pole přístup k **Azure Maps** a pak vyberte **Přidat oprávnění** .
+5. Zaškrtněte políčko vedle pole přístup k **Azure Maps** a pak vyberte **Přidat oprávnění**.
 
     > [!div class="mx-imgBorder"]
     > ![Výběr oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/select-app-permissions.png)

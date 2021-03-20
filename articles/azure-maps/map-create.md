@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890917"
 ---
 # <a name="create-a-map"></a>Vytvoření mapy
@@ -130,7 +130,7 @@ V následujícím kódu vytvoří první blok kódu mapu a nastaví styly pro vl
 
 ## <a name="request-transforms"></a>Transformace požadavků
 
-Někdy je vhodné, aby bylo možné upravovat požadavky HTTP provedené mapovým ovládacím prvkem. Příklad:
+Někdy je vhodné, aby bylo možné upravovat požadavky HTTP provedené mapovým ovládacím prvkem. Například:
 
 - Přidejte další záhlaví do požadavků dlaždic. To se často provádí pro služby chráněné heslem.
 - Upravte adresy URL tak, aby se spouštěly požadavky prostřednictvím proxy služby.
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>Vyzkoušejte si kód
 
-Podívejte se na ukázky kódu. Kód jazyka JavaScript můžete upravit na **kartě js** a zobrazit změny zobrazení mapy na **kartě výsledek** . Můžete také kliknout na **Upravit v CodePen** , v pravém horním rohu a upravit kód v CodePen.
+Podívejte se na ukázky kódu. Kód jazyka JavaScript můžete upravit na **kartě js** a zobrazit změny zobrazení mapy na **kartě výsledek**. Můžete také kliknout na **Upravit v CodePen**, v pravém horním rohu a upravit kód v CodePen.
 
 <a id="relatedReference"></a>
 

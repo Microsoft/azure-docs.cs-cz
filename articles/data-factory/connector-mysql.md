@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: jingwang
 ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375251"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopírování dat z MySQL pomocí Azure Data Factory
@@ -25,7 +25,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory
 >[!NOTE]
 >Chcete-li kopírovat data z nebo do služby [Azure Database for MySQL](../mysql/overview.md) , použijte specializovaný [konektor Azure Database for MySQL](connector-azure-database-for-mysql.md).
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor MySQL se podporuje pro následující činnosti:
 
@@ -36,7 +36,7 @@ Data z databáze MySQL můžete kopírovat do libovolného podporovaného úlož
 
 Konkrétně tento konektor MySQL podporuje MySQL **verze 5,6, 5,7 a 8,0**.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

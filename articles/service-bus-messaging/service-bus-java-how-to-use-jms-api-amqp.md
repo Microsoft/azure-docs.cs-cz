@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 97031abaedaa3e5595e290fa0292646feb744d47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90086687"
 ---
 # <a name="use-the-java-message-service-with-azure-service-bus-and-amqp-10"></a>Použijte službu zprávy Java s Azure Service Bus a AMQP 1,0
@@ -386,7 +386,7 @@ Service Bus rozdělí plochu ovládacího prvku z roviny dat, takže nepodporuje
 | createTemporaryQueue        | Vytvořte frontu pomocí rozhraní API pro správu, nástrojů nebo portálu s *AutoDeleteOnIdle* nastavenou na období vypršení platnosti. |
 | receiveNoWait               | Použijte metodu Receive () poskytovanou sadou Service Bus SDK a zadejte velmi nízký nebo nulový časový limit. |
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Tento článek vám ukázal, jak Service Bus pomocí oblíbených JMS rozhraní API a AMQP 1,0 používat funkce zprostředkovaných zpráv, jako jsou fronty a témata pro publikování nebo odběry v jazyce Java.
 

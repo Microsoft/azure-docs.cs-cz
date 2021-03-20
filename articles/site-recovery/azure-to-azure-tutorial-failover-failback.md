@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: 99263c83d25542073d63c1cba394a147bd5b2170
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392733"
 ---
 # <a name="tutorial-fail-over-azure-vms-to-a-secondary-region"></a>Kurz: převzetí služeb při selhání virtuálních počítačů Azure do sekundární oblasti
@@ -57,10 +57,10 @@ Než začnete s tímto kurzem, měli byste mít:
 
 3. V části **převzetí služeb při selhání** vyberte bod obnovení. Virtuální počítač Azure v cílové oblasti se vytvoří pomocí dat z tohoto bodu obnovení.
   
-   - **Poslední zpracovaná** : používá nejnovější bod obnovení zpracovaný pomocí Site Recovery. Zobrazí se časové razítko. Žádná doba nestrávila zpracováním dat, takže poskytuje nízkou dobu obnovení (RTO).
-   -  **Nejnovější** : zpracovává všechna data odesílaná do Site Recovery, aby bylo možné vytvořit bod obnovení pro každý virtuální počítač před převzetím služeb při selhání. Poskytuje nejnižší cíl bodu obnovení (RPO), protože všechna data jsou replikována do Site Recovery při aktivaci převzetí služeb při selhání.
-   - **Nejnovější konzistentní vzhledem k aplikacím** : Tato možnost převzetí služeb při selhání virtuálních počítačů do nejnovějšího bodu obnovení konzistentního vzhledem k aplikacím. Zobrazí se časové razítko.
-   - **Vlastní** : převzetí služeb při selhání konkrétním bodem obnovení. Vlastní je k dispozici jenom v případě, že převezmete služby při selhání jednoho virtuálního počítače a nepoužijete plán obnovení.
+   - **Poslední zpracovaná**: používá nejnovější bod obnovení zpracovaný pomocí Site Recovery. Zobrazí se časové razítko. Žádná doba nestrávila zpracováním dat, takže poskytuje nízkou dobu obnovení (RTO).
+   -  **Nejnovější**: zpracovává všechna data odesílaná do Site Recovery, aby bylo možné vytvořit bod obnovení pro každý virtuální počítač před převzetím služeb při selhání. Poskytuje nejnižší cíl bodu obnovení (RPO), protože všechna data jsou replikována do Site Recovery při aktivaci převzetí služeb při selhání.
+   - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost převzetí služeb při selhání virtuálních počítačů do nejnovějšího bodu obnovení konzistentního vzhledem k aplikacím. Zobrazí se časové razítko.
+   - **Vlastní**: převzetí služeb při selhání konkrétním bodem obnovení. Vlastní je k dispozici jenom v případě, že převezmete služby při selhání jednoho virtuálního počítače a nepoužijete plán obnovení.
 
     > [!NOTE]
     > Pokud jste po povolení replikace přidali disk k virtuálnímu počítači, body replikace zobrazí disky dostupné k obnovení. Například bod replikace vytvořený před přidáním druhého disku se zobrazí jako "1 z 2 disků".

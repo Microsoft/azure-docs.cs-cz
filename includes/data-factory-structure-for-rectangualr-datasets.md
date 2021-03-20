@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67175677"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Určení definice struktury pro pravoúhlé datové sady
@@ -16,7 +16,7 @@ Oddíl Structure v datových sadách JSON je **volitelný** oddíl pro obdélní
 
 Každý sloupec obsahuje následující vlastnosti:
 
-| Vlastnost | Popis | Povinné |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | name |Název sloupce |Yes |
 | typ |Datový typ sloupce Další podrobnosti o tom, kdy byste měli zadat informace o typu, najdete v části převody typů níže. |No |

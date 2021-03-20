@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716189"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Zobrazení a konfigurace telemetrie ochrany před útoky DDoS
@@ -37,14 +37,14 @@ V tomto kurzu se naučíte:
 Pro Azure DDoS Protection Standard jsou k dispozici následující [metriky](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) . Tyto metriky je také možné exportovat prostřednictvím nastavení diagnostiky (viz [zobrazení a konfigurace diagnostického protokolování DDoS](diagnostic-logging.md)).
 
 
-| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace | Popis |
+| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace | Description |
 | --- | --- | --- | --- | --- |
 | BytesDroppedDDoS | Příchozí bajty vynechané DDoS | BytesPerSecond | Maximum | Příchozí bajty vynechané DDoS| 
 | BytesForwardedDDoS | Příchozí bajty předané DDoS | BytesPerSecond | Maximum | Příchozí bajty předané DDoS |
 | BytesInDDoS | Příchozí bajty DDoS | BytesPerSecond | Maximum | Příchozí bajty DDoS |
-| DDoSTriggerSYNPackets | Příchozí pakety SYN pro aktivaci zmírnění DDoS | CountPerSecond | Maximum | Příchozí pakety SYN pro aktivaci zmírnění DDoS |
-| DDoSTriggerTCPPackets | Příchozí pakety TCP pro aktivaci zmírnění DDoS | CountPerSecond | Maximum | Příchozí pakety TCP pro aktivaci zmírnění DDoS |
-| DDoSTriggerUDPPackets | Příchozí pakety UDP pro aktivaci zmírnění DDoS | CountPerSecond | Maximum | Příchozí pakety UDP pro aktivaci zmírnění DDoS |
+| DDoSTriggerSYNPackets | Příchozí pakety SYN pro aktivaci omezení rizik útoku DDoS | CountPerSecond | Maximum | Příchozí pakety SYN pro aktivaci omezení rizik útoku DDoS |
+| DDoSTriggerTCPPackets | Příchozí pakety TCP pro aktivaci omezení rizik útoku DDoS | CountPerSecond | Maximum | Příchozí pakety TCP pro aktivaci omezení rizik útoku DDoS |
+| DDoSTriggerUDPPackets | Příchozí pakety UDP pro aktivaci omezení rizik útoku DDoS | CountPerSecond | Maximum | Příchozí pakety UDP pro aktivaci omezení rizik útoku DDoS |
 | IfUnderDDoSAttack | V části útok DDoS nebo ne | Počet | Maximum | V části útok DDoS nebo ne |
 | PacketsDroppedDDoS | Vynechané příchozí pakety DDoS | CountPerSecond | Maximum | Vynechané příchozí pakety DDoS |
 | PacketsForwardedDDoS | DDoS předaných příchozích paketů | CountPerSecond | Maximum | DDoS předaných příchozích paketů |

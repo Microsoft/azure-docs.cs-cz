@@ -8,10 +8,10 @@ ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997337"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité aspekty sítí pro službu App Service Environment #
@@ -109,7 +109,7 @@ Pokud změníte nastavení DNS virtuální sítě, ve které je váš přihláš
 Kromě funkčních závislostí pomocného mechanismu je několik dalších položek, které se týkají prostředí portálu. Některé funkce v Azure Portal závisí na přímém přístupu k _webu SCM_. Pro každou aplikaci v Azure App Service jsou k dispozici dvě adresy URL. První adresa URL má přístup k vaší aplikaci. Druhá adresa URL má přístup k webu SCM, který se také nazývá _Konzola Kudu_. K funkcím, které používají web SCM, patří:
 
 -   Web Jobs
--   Funkce
+-   Functions
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
@@ -180,9 +180,9 @@ Při zohlednění vstupních a odchozích požadavků by měl skupin zabezpečen
 
 ![Příchozí pravidla zabezpečení][4]
 
-Výchozí pravidlo povoluje, aby IP adresy ve virtuální síti komunikovaly s podsítí pomocného mechanismu. Další výchozí pravidlo povolí službě Vyrovnávání zatížení, která se označuje jako veřejná VIP, ke komunikaci s pomocným mechanismem řízení. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle ikony **Přidat** . Pokud před výchozími pravidly vložíte pravidlo Odepřít vše jiného, zabráníte tak provozu mezi VIP a pomocným mechanismem řízení. Pokud chcete zabránit provozu v rámci virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použijte zdroj, který se rovná **AzureLoadBalancer, s** cílovým umístěním a rozsahem portů * *\** _. Vzhledem k tomu, že pravidlo NSG se používá pro podsíť pomocného mechanismu, nemusíte být v cíli specifická.
+Výchozí pravidlo povoluje, aby IP adresy ve virtuální síti komunikovaly s podsítí pomocného mechanismu. Další výchozí pravidlo povolí službě Vyrovnávání zatížení, která se označuje jako veřejná VIP, ke komunikaci s pomocným mechanismem řízení. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle ikony **Přidat** . Pokud před výchozími pravidly vložíte pravidlo Odepřít vše jiného, zabráníte tak provozu mezi VIP a pomocným mechanismem řízení. Pokud chcete zabránit provozu v rámci virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použijte **zdroj, který** se rovná AzureLoadBalancer, s cílovým umístěním a rozsahem portů **\*** . Vzhledem k tomu, že pravidlo NSG se používá pro podsíť pomocného mechanismu, nemusíte být v cíli specifická.
 
-Pokud jste aplikaci přiřadili IP adresu, zajistěte, aby byly porty otevřené. Porty zobrazíte tak, že vyberete _ *App Service Environment** > **IP adresy**.  
+Pokud jste aplikaci přiřadili IP adresu, zajistěte, aby byly porty otevřené. Porty zobrazíte tak, že vyberete **App Service Environment**  >  **IP adresy**.  
 
 Všechny položky zobrazené v následujících odchozích pravidlech jsou potřeba s výjimkou poslední položky. Umožňují síťovému přístupu ke závislostem pomocného mechanismu, které byly popsány dříve v tomto článku. Pokud je některý z nich zablokujete, váš pomocného programu přestane fungovat. Poslední položka v seznamu umožňuje vašemu přihlášenému uživatelům komunikovat s ostatními prostředky ve vaší virtuální síti.
 

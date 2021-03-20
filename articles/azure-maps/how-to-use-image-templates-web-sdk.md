@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 5f455a1132a0f63e1ba3eb5d2a57a1f9bfa9a867
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895677"
 ---
 # <a name="how-to-use-image-templates"></a>Používání šablon obrázků
@@ -86,7 +86,7 @@ Následující ukázka vykreslí mnohoúhelníkovou vrstvu pomocí `dot` šablon
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Vyplnit mnohoúhelník pomocí předdefinované šablony ikon" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-Podívejte se, jak se v CodePen () na nachází <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>mnohoúhelník výplně perem pomocí předdefinované Azure Maps šablony ikon</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Podívejte se, jak se v CodePen () na nachází <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>mnohoúhelník výplně perem pomocí předdefinované Azure Maps šablony ikon</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 > [!TIP]
@@ -106,7 +106,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>značku HTML
 
 
 > [!TIP]
-> Šablony obrázků lze použít i mimo mapu. GetImageTemplate atanh vrátí řetězec SVG, který obsahuje zástupné symboly; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Chcete-li vytvořit platný řetězec SVG, nahraďte tyto zástupné hodnoty. Pak můžete buď přidat řetězec SVG přímo do modelu DOM HTML, nebo ho převést na identifikátor URI dat a vložit ho do značky obrázku. Příklad:
+> Šablony obrázků lze použít i mimo mapu. GetImageTemplate atanh vrátí řetězec SVG, který obsahuje zástupné symboly; `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Chcete-li vytvořit platný řetězec SVG, nahraďte tyto zástupné hodnoty. Pak můžete buď přidat řetězec SVG přímo do modelu DOM HTML, nebo ho převést na identifikátor URI dat a vložit ho do značky obrázku. Například:
 > ```JavaScript
 > //Retrieve an SVG template and replace the placeholder values.
 > var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
@@ -119,7 +119,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>značku HTML
 
 Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vytváříte modul, který přidává další šablony obrázků, můžete tyto ikony snadno přidat a načíst z Azure Maps webové sady SDK. V oboru názvů použijte následující statické funkce `atlas` .
 
-| Název | Návratový typ | Popis | 
+| Name | Návratový typ | Description | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Přidá do oboru názvů Atlas vlastní šablonu obrázku SVG. |
 |  `getImageTemplate(templateName: string, scale?: number)`| řetězec | Načte šablonu SVG podle názvu. |
@@ -127,7 +127,7 @@ Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vyt
 
 Šablony obrázků SVG podporují následující zástupné hodnoty:
 
-| Zástupný symbol | Popis |
+| Zástupný symbol | Description |
 |-|-|
 | `{color}` | Primární barva. | 
 | `{secondaryColor}` | Vedlejší barva. | 
@@ -506,7 +506,7 @@ Pomocí následujícího nástroje můžete vykreslit různé předdefinované �
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Možnosti šablony ikony" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Možnosti šablony s ikonami</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
+V CodePen () na se podívejte na Azure Maps <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Možnosti šablony s ikonami</a> pera <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'></a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky

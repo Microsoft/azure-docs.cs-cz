@@ -10,15 +10,15 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890628"
 ---
 # <a name="use-the-drawing-tools-module"></a>Použití modulu nástrojů pro kreslení
 
-Sada Azure Maps Web SDK poskytuje *modul nástrojů pro kreslení* . Tento modul usnadňuje vykreslování a úpravu obrazců na mapě pomocí vstupního zařízení, jako je například myš nebo dotyková obrazovka. Základní třídou tohoto modulu je [Správce výkresu](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Správce kreslení poskytuje všechny schopnosti potřebné k vykreslování a úpravám obrazců na mapě. Dá se použít přímo a je integrovaný do vlastního uživatelského rozhraní panelu nástrojů. Můžete také použít integrovanou třídu nástrojů pro [Kreslení](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) . 
+Sada Azure Maps Web SDK poskytuje *modul nástrojů pro kreslení*. Tento modul usnadňuje vykreslování a úpravu obrazců na mapě pomocí vstupního zařízení, jako je například myš nebo dotyková obrazovka. Základní třídou tohoto modulu je [Správce výkresu](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Správce kreslení poskytuje všechny schopnosti potřebné k vykreslování a úpravám obrazců na mapě. Dá se použít přímo a je integrovaný do vlastního uživatelského rozhraní panelu nástrojů. Můžete také použít integrovanou třídu nástrojů pro [Kreslení](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) . 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Načtení modulu nástrojů pro kreslení na webové stránce
 
@@ -89,7 +89,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Vykreslování volných rukou" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Přečtěte si <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a> , jak Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>vykreslování na ruky.
+Přečtěte si <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'></a> , jak Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>vykreslování na ruky.
 </iframe>
 
 

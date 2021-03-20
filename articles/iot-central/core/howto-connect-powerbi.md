@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123333"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Vizualizace a analýza dat IoT Central Azure v řídicím panelu Power BI
@@ -31,7 +31,7 @@ Toto řešení nastaví kanál, který čte data z účtu služby Azure Blob Sto
 
 ## <a name="prerequisites"></a>Předpoklady
 
-K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Nastavení řešení vyžaduje následující zdroje:
 
@@ -47,7 +47,7 @@ Nastavení řešení vyžaduje následující zdroje:
 
 ## <a name="install"></a>Instalace
 
-Pokud chcete nastavit kanál, přejděte na **Microsoft AppSource** na webu na stránku [řešení Power BI pro Azure IoT Central V3](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) . Vyberte **získat hned**a postupujte podle pokynů.
+Pokud chcete nastavit kanál, přejděte na **Microsoft AppSource** na webu na stránku [řešení Power BI pro Azure IoT Central V3](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) . Vyberte **získat hned** a postupujte podle pokynů.
 
 Když otevřete soubor PBIX, ujistěte se, že je čten a postupujte podle pokynů na titulní stránce. Tyto pokyny popisují, jak připojit sestavu ke službě SQL Database.
 
@@ -55,13 +55,13 @@ Když otevřete soubor PBIX, ujistěte se, že je čten a postupujte podle pokyn
 
 Soubor PBIX obsahuje zprávu **zařízení a telemetrie** zobrazuje historický přehled telemetrie, která byla odeslána zařízeními. Poskytuje rozpis různých typů telemetrie a také zobrazuje nejnovější telemetrie, kterou odesílají zařízení.
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI kanál řešení":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI zařízení a sestava telemetrie":::
 
 ## <a name="pipeline-resources"></a>Prostředky kanálu
 
 Ke všem prostředkům Azure, které tvoří kanál, máte přístup v Azure Portal. Všechny prostředky jsou ve skupině prostředků, kterou jste vytvořili při nastavení kanálu.
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI kanál řešení":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Azure Portal zobrazení skupiny prostředků":::
 
 Následující seznam popisuje role jednotlivých prostředků v kanálu:
 

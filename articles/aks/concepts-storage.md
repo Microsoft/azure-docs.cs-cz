@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: bf910c66694a62505f259c0a95a88f7dfed05d19
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98127953"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti úložiště pro aplikace ve službě Azure Kubernetes (AKS)
@@ -127,7 +127,7 @@ spec:
         claimName: azure-managed-disk
 ```
 
-Pro připojení svazku v kontejneru Windows zadejte písmeno jednotky a cestu. Příklad:
+Pro připojení svazku v kontejneru Windows zadejte písmeno jednotky a cestu. Například:
 
 ```yaml
 ...      

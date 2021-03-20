@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a6c85ba017656bd312ddfe3d5f6d98014a3dc89a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090342"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
@@ -119,7 +119,7 @@ Abychom dosáhli tohoto cíle, musíme napsat logiku, která načte zabezpečen�
 
     Tato metoda volá back-end aplikace pro načtení obsahu oznámení pomocí přihlašovacích údajů uložených ve sdílených preferencích.
 
-4. Nyní zpracujte příchozí oznámení a pomocí výše uvedené metody načtěte obsah, který se má zobrazit. Nejdřív při přijímání nabízeného oznámení Povolte aplikaci pro iOS běžet na pozadí. V **Xcode**vyberte projekt aplikace na levém panelu a pak klikněte na cíl vaší hlavní aplikace v části **cíle** v centrálním podokně.
+4. Nyní zpracujte příchozí oznámení a pomocí výše uvedené metody načtěte obsah, který se má zobrazit. Nejdřív při přijímání nabízeného oznámení Povolte aplikaci pro iOS běžet na pozadí. V **Xcode** vyberte projekt aplikace na levém panelu a pak klikněte na cíl vaší hlavní aplikace v části **cíle** v centrálním podokně.
 5. Pak v horní části centrálního podokna klikněte na kartu **Možnosti** a zaškrtněte políčko **Vzdálená oznámení** .
 
     ![Snímek obrazovky s XCode s vybraným projektem aplikace a otevřenou kartou možnosti. Zaškrtávací políčko pro vzdálené oznámení je zaškrtnuté.][IOS1]
@@ -157,6 +157,6 @@ Chcete-li spustit aplikaci, postupujte následovně:
 
 1. V XCode spusťte aplikaci na fyzickém zařízení s iOS (nabízená oznámení nebudou v simulátoru fungovat).
 2. V uživatelském rozhraní aplikace pro iOS zadejte uživatelské jméno a heslo. Může se jednat o libovolný řetězec, ale musí se jednat o stejnou hodnotu.
-3. V uživatelském rozhraní aplikace pro iOS klikněte na **Přihlásit**se. Pak klikněte na **Odeslat nabízení**. V centru oznámení by se mělo zobrazit zabezpečené oznámení.
+3. V uživatelském rozhraní aplikace pro iOS klikněte na **Přihlásit** se. Pak klikněte na **Odeslat nabízení**. V centru oznámení by se mělo zobrazit zabezpečené oznámení.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

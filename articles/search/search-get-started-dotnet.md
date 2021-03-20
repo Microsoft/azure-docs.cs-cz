@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f0d912d5b14932c43d109f8f955d5f16381cf773
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98180094"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí klientské knihovny Azure.Search.Documents
@@ -26,7 +26,7 @@ Použijte novou [Azure.Search.Docknihovnu klienta uments (verze 11)](/dotnet/api
 > [!NOTE]
 > Hledáte starší verzi? Podívejte [se na téma Vytvoření indexu vyhledávání pomocí Microsoft. Azure. Search v10 za účelem](search-get-started-dotnet-v10.md) místo toho.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete mít k dispozici následující nástroje a služby:
 
@@ -74,7 +74,7 @@ Po vytvoření projektu přidejte knihovnu klienta. [BalíčekAzure.Search.Docum
 
 ### <a name="create-a-search-client"></a>Vytvoření vyhledávacího klienta
 
-1. V **program.cs** změňte obor názvů na `AzureSearch.SDK.Quickstart.v11` a pak přidejte následující `using` direktivy.
+1. V **programu program. cs** změňte obor názvů na `AzureSearch.SDK.Quickstart.v11` a pak přidejte následující `using` direktivy.
 
    ```csharp
    using Azure;
@@ -108,9 +108,9 @@ V tomto rychlém startu se vytvoří index hotelů, který nahrajete s daty hote
 
 V tomto příkladu se synchronní metody knihovny Azure.Search.Documents používají pro jednoduchost a čitelnost. Nicméně v produkčních scénářích byste měli použít asynchronní metody, abyste zachovali škálovatelnou a odezvu vaší aplikace. Například byste použili [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) namísto [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex).
 
-1. Přidejte do projektu prázdnou definici třídy: **Hotel.cs**
+1. Přidejte do projektu prázdnou definici třídy: **hotelu. cs**
 
-1. Zkopírujte následující kód do **Hotel.cs** k definování struktury dokumentu hotelu. Atributy pole určují, jak se používá v aplikaci. Například `IsFilterable` atribut musí být přiřazen každému poli, které podporuje výraz filtru.
+1. Zkopírujte následující kód do souboru **hotelu. cs** a definujte strukturu dokumentu hotelu. Atributy pole určují, jak se používá v aplikaci. Například `IsFilterable` atribut musí být přiřazen každému poli, které podporuje výraz filtru.
 
     ```csharp
     using System;
@@ -158,13 +158,13 @@ V tomto příkladu se synchronní metody knihovny Azure.Search.Documents použí
 
    V klientské knihovně Azure.Search.Documents můžete použít [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) a [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) pro zjednodušení definic polí. Obě jsou odvozené z [seachfield](/dotnet/api/azure.search.documents.indexes.models.searchfield) a mohou potenciálně zjednodušit váš kód:
 
-   + `SimpleField` může se jednat o libovolný datový typ, je vždycky neprohledávatelné (pro fulltextové vyhledávací dotazy se ignoruje) a dá se získat (není skrytý). Ostatní atributy jsou ve výchozím nastavení vypnuté, ale dají se povolit. Můžete použít `SimpleField` pro ID dokumentů nebo pole, která se používají jenom v filtrech, omezujících objektech nebo profilech vyhodnocování. Pokud ano, nezapomeňte použít všechny atributy, které jsou nezbytné pro daný scénář, například `IsKey = true` pro ID dokumentu. Další informace naleznete v tématu [SimpleFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) ve zdrojovém kódu.
+   + `SimpleField` může se jednat o libovolný datový typ, je vždycky neprohledávatelné (pro fulltextové vyhledávací dotazy se ignoruje) a dá se získat (není skrytý). Ostatní atributy jsou ve výchozím nastavení vypnuté, ale dají se povolit. Můžete použít `SimpleField` pro ID dokumentů nebo pole, která se používají jenom v filtrech, omezujících objektech nebo profilech vyhodnocování. Pokud ano, nezapomeňte použít všechny atributy, které jsou nezbytné pro daný scénář, například `IsKey = true` pro ID dokumentu. Další informace naleznete v tématu [SimpleFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) ve zdrojovém kódu.
 
-   + `SearchableField` musí to být řetězec, který je vždycky prohledávatelný a dá se získat. Ostatní atributy jsou ve výchozím nastavení vypnuté, ale dají se povolit. Vzhledem k tomu, že tento typ pole lze prohledávat, podporuje synonyma a úplný doplněk vlastností analyzátoru. Další informace naleznete v tématu [SearchableFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) ve zdrojovém kódu.
+   + `SearchableField` musí to být řetězec, který je vždycky prohledávatelný a dá se získat. Ostatní atributy jsou ve výchozím nastavení vypnuté, ale dají se povolit. Vzhledem k tomu, že tento typ pole lze prohledávat, podporuje synonyma a úplný doplněk vlastností analyzátoru. Další informace naleznete v tématu [SearchableFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) ve zdrojovém kódu.
 
    Bez ohledu na to, jestli používáte základní `SearchField` rozhraní API nebo některý z pomocných modelů, musíte explicitně povolit atributy Filter, Face a Sort. Například může být [nefiltrovaná](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [nesetříditelné](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)a vlastnost- [Face](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) , jak je znázorněno v ukázce výše. 
 
-1. Přidejte do projektu druhou prázdnou definici třídy: **Address.cs**.  Zkopírujte následující kód do třídy.
+1. Přidejte do projektu druhou prázdnou definici třídy: **Address. cs**.  Zkopírujte následující kód do třídy.
 
    ```csharp
    using Azure.Search.Documents.Indexes;
@@ -191,9 +191,9 @@ V tomto příkladu se synchronní metody knihovny Azure.Search.Documents použí
     }
    ```
 
-1. Vytvořte dvě další třídy: **Hotel.Methods.cs** a **Address.Methods.cs** pro přepsání ToString (). Tyto třídy slouží k vykreslení výsledků hledání ve výstupu konzoly.  Obsah těchto tříd není uveden v tomto článku, ale můžete zkopírovat kód ze [souborů v GitHubu](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11/AzureSearchQuickstart-v11).
+1. Vytvořte dvě další třídy: **hotelu. Methods. cs** a **Address. Methods. cs** pro přepsání metody ToString (). Tyto třídy slouží k vykreslení výsledků hledání ve výstupu konzoly.  Obsah těchto tříd není uveden v tomto článku, ale můžete zkopírovat kód ze [souborů v GitHubu](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11/AzureSearchQuickstart-v11).
 
-1. V **program.cs** vytvořte objekt [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) a pak zavolejte metodu [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) pro vyjádření indexu ve vyhledávací službě. Index obsahuje také [SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester) , který umožňuje automatické dokončování pro zadaná pole.
+1. V **programu program. cs** vytvořte objekt [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) a zavolejte metodu [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) pro vyjádření indexu ve vyhledávací službě. Index obsahuje také [SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester) , který umožňuje automatické dokončování pro zadaná pole.
 
    ```csharp
     // Create hotels-quickstart index
@@ -221,7 +221,7 @@ Ve službě Azure Kognitivní hledání vyhledávání dokumentů jsou datové s
 
 Při odesílání dokumentů je nutné použít objekt [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) . `IndexDocumentsBatch`Objekt obsahuje kolekci [akcí](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions), z nichž každá obsahuje dokument a vlastnost oznamuje službě Azure kognitivní hledání, jakou akci chcete provést ([nahrávání, sloučení, odstranění a mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
-1. V **program.cs** vytvořte pole dokumentů a indexových akcí a pak předejte pole do `IndexDocumentsBatch` . Následující dokumenty odpovídají indexu pro rychlé spuštění v hotelů, jak je definováno třídou hotelu.
+1. V **programu program. cs** vytvořte pole dokumentů a indexových akcí a pak předejte pole do `IndexDocumentsBatch` . Následující dokumenty odpovídají indexu pro rychlé spuštění v hotelů, jak je definováno třídou hotelu.
 
     ```csharp
     // Upload documents in a single Upload request.
@@ -357,7 +357,7 @@ V této části se přidávají dvě části funkčnosti: logika dotazů a výsl
 
 Třída [searchResults](/dotnet/api/azure.search.documents.models.searchresults-1) představuje výsledky.
 
-1. V **program.cs** vytvořte metodu **WriteDocuments** , která vytiskne výsledky hledání do konzoly.
+1. V **programu program. cs** vytvořte metodu **WriteDocuments** , která vytiskne výsledky hledání do konzoly.
 
     ```csharp
     // Write search results to console
