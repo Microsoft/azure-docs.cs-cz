@@ -4,10 +4,10 @@ description: Posílání událostí od partnerů Event Grid SaaS a PaaS od jiný
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94506140"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Partnerské události v Azure Event Grid (Preview)
@@ -82,12 +82,12 @@ Následující obrázek ukazuje tok operací řízení roviny.
 
 1. Vydavatel vytvoří **registraci partnera**. Registrace partnerů jsou globální. To znamená, že nejsou přidruženy ke konkrétní oblasti Azure. Tento krok je volitelný.
 1. Vydavatel vytvoří **obor názvů partnera** v konkrétní oblasti.
-1. Když se předplatitel 1 pokusí vytvořit partnerský předmět, v předplatném Azure vydavatele se nejprve vytvoří **kanál událostí** , kanál událostí 1.
+1. Když se předplatitel 1 pokusí vytvořit partnerský předmět, v předplatném Azure vydavatele se nejprve vytvoří **kanál událostí**, kanál událostí 1.
 1. V rámci předplatného Azure předplatitele se pak vytvoří **příbuzné** téma 1. Předplatitel musí aktivovat téma partnera. 
 1. Předplatitel 1 vytvoří **předplatné Azure Logic Apps** pro partnera 1.
 1. Předplatitel 1 vytvoří **předplatné služby Azure Blob Storage** pro partnery s tématem 1. 
-1. Když se předplatitele 2 pokusí vytvořit partnerské téma, v předplatném Azure vydavatele se nejprve vytvoří jiný **kanál událostí** , kanál událostí 2. 
-1. Pak se v rámci předplatného Azure druhého předplatitele vytvoří **téma partner** , Partnerská část 2. Předplatitel musí aktivovat téma partnera. 
+1. Když se předplatitele 2 pokusí vytvořit partnerské téma, v předplatném Azure vydavatele se nejprve vytvoří jiný **kanál událostí**, kanál událostí 2. 
+1. Pak se v rámci předplatného Azure druhého předplatitele vytvoří **téma partner**, Partnerská část 2. Předplatitel musí aktivovat téma partnera. 
 1. Předplatitel 2 vytvoří **Azure Functions předplatné** pro partnera 2. 
 
 ## <a name="pricing"></a>Ceny

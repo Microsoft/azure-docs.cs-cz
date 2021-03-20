@@ -9,10 +9,10 @@ ms.date: 03/01/2021
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: a1d3bdae1e870b094472a63d4b808d9df95c129d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101741901"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Kurz: filtrování příchozího internetového provozu pomocí Azure Firewall DNAT pomocí Azure Portal
@@ -153,7 +153,7 @@ Po dokončení nasazení si poznamenejte privátní IP adresu virtuálního poč
    |---------|---------|
    |Předplatné     |\<your subscription\>|
    |Skupina prostředků     |Vybrat **RG-DNAT-test** |
-   |Název     |**FW-DNAT-test**|
+   |Name     |**FW-DNAT-test**|
    |Oblast     |Vyberte dříve použité umístění.|
    |Správa brány firewall|**Ke správě této brány firewall použít pravidla brány firewall (Classic)**|
    |Volba virtuální sítě     |**Použít existující:** VN-Hub|

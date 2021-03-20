@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 192aca589c3b1e660667dbe8377afe7802b56f17
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146190"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Vyvážení clusteru Service Fabric
@@ -74,12 +74,12 @@ prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv 
 
 V současné době cluster Správce prostředků provádí pouze jednu z těchto akcí postupně. Proto na tyto časovače odkazujeme jako na "minimální intervaly" a na akce, které se provedou, když se časovače najdou jako "nastavení příznaků". Například cluster Správce prostředků postará o nedokončené žádosti o vytvoření služeb před vyrovnáváním clusteru. Jak vidíte ve výchozích časových intervalech, Správce prostředků clusteru vyhledá cokoli, co potřebuje k tomu často. Obvykle to znamená, že sada změn provedených během každého kroku je malá. Provádění malých změn často umožňuje, aby cluster Správce prostředků reagovat, když se v clusteru vyskytují nějaké věci. Výchozí časovače poskytují určitou dávkování, protože mnohé ze stejných typů událostí se obvykle vyskytují současně. 
 
-Například když uzly selžou, můžou to udělat po celou dobu selhání. Všechny tyto chyby jsou zachyceny během příští aktualizace stavu po *PLBRefreshGap* . Opravy se určují během následujícího umístění, kontroly omezení a vyrovnávání spuštění. Ve výchozím nastavení Správce prostředků clusteru nekontrolují hodiny změn v clusteru a snaží se vyřešit všechny změny najednou. To by vedlo k nárůstu počtu změn.
+Například když uzly selžou, můžou to udělat po celou dobu selhání. Všechny tyto chyby jsou zachyceny během příští aktualizace stavu po *PLBRefreshGap*. Opravy se určují během následujícího umístění, kontroly omezení a vyrovnávání spuštění. Ve výchozím nastavení Správce prostředků clusteru nekontrolují hodiny změn v clusteru a snaží se vyřešit všechny změny najednou. To by vedlo k nárůstu počtu změn.
 
-Cluster Správce prostředků taky potřebuje nějaké další informace, abyste zjistili, jestli je cluster nevyvážený. V případě, že máme dvě další části konfigurace: *BalancingThresholds* a *ActivityThresholds* .
+Cluster Správce prostředků taky potřebuje nějaké další informace, abyste zjistili, jestli je cluster nevyvážený. V případě, že máme dvě další části konfigurace: *BalancingThresholds* a *ActivityThresholds*.
 
 ## <a name="balancing-thresholds"></a>Prahové hodnoty vyvážení
-Prahová hodnota pro vyrovnávání je hlavním ovládacím prvkem pro aktivaci opětovného vyrovnávání. Prahová hodnota vyvážení metriky je _poměr_ . Pokud zatížení metriky na největším načteném uzlu dělené množstvím zatížení u nejmenšího načteného uzlu přesáhne tuto metriku *BalancingThreshold* , cluster se vyrovnává. Při příští kontrole Správce prostředků clusteru se aktivuje vyvážení výsledku. Časovač *MinLoadBalancingInterval* definuje, jak často by měl správce prostředků cluster kontrolovat, jestli je potřeba vyrovnávání zatížení. Kontrola neznamená, že dojde k nějakému problému. 
+Prahová hodnota pro vyrovnávání je hlavním ovládacím prvkem pro aktivaci opětovného vyrovnávání. Prahová hodnota vyvážení metriky je _poměr_. Pokud zatížení metriky na největším načteném uzlu dělené množstvím zatížení u nejmenšího načteného uzlu přesáhne tuto metriku *BalancingThreshold*, cluster se vyrovnává. Při příští kontrole Správce prostředků clusteru se aktivuje vyvážení výsledku. Časovač *MinLoadBalancingInterval* definuje, jak často by měl správce prostředků cluster kontrolovat, jestli je potřeba vyrovnávání zatížení. Kontrola neznamená, že dojde k nějakému problému. 
 
 Prahové hodnoty pro vyvážení jsou definovány na základě metriky jako součást definice clusteru. Další informace o metrikách najdete v [tomto článku](service-fabric-cluster-resource-manager-metrics.md).
 
@@ -130,7 +130,7 @@ V dolním příkladu je maximální zatížení uzlu 10, zatímco minimum je dva
 > "Vyrovnává" zpracovává dvě různé strategie pro správu zatížení v clusteru. Výchozí strategií, kterou Správce prostředků cluster používá, je distribuce zatížení mezi uzly v clusteru. Další strategií je [Defragmentace](service-fabric-cluster-resource-manager-defragmentation-metrics.md). Defragmentace se provádí během stejného vyrovnávání běhu. Strategie vyrovnávání a defragmentace lze použít pro různé metriky v rámci stejného clusteru. Služba může mít metriky vyrovnávání i defragmentace. V případě metriky defragmentace se poměr zatížení v clusteru spustí znovu vyvážení, pokud je _pod_ prahovou hodnotou vyrovnávání. 
 >
 
-Získání pod prahovou hodnotou pro vyvážení není explicitní cíl. Prahové hodnoty vyvážení jsou pouze *triggerem* . Při vyrovnávání zatížení cluster Správce prostředků určuje, která vylepšení může dělat, pokud nějaké máte. Vzhledem k tomu, že se vypíná vyrovnávání vyhledávání, neznamená to, že se přesune. V některých případech je cluster nevyvážený, ale je moc omezený na správný. Další možností je, že vylepšení vyžadují příliš [nákladné](service-fabric-cluster-resource-manager-movement-cost.md)přesuny.
+Získání pod prahovou hodnotou pro vyvážení není explicitní cíl. Prahové hodnoty vyvážení jsou pouze *triggerem*. Při vyrovnávání zatížení cluster Správce prostředků určuje, která vylepšení může dělat, pokud nějaké máte. Vzhledem k tomu, že se vypíná vyrovnávání vyhledávání, neznamená to, že se přesune. V některých případech je cluster nevyvážený, ale je moc omezený na správný. Další možností je, že vylepšení vyžadují příliš [nákladné](service-fabric-cluster-resource-manager-movement-cost.md)přesuny.
 
 ## <a name="activity-thresholds"></a>Prahové hodnoty aktivity
 I když jsou uzly relativně nevyvážené, *celkové* množství zatížení v clusteru je nízké. Nedostatku zátěže může být přechodný DIP nebo to, že cluster je nový a jenom se načítá. V obou případech možná nebudete chtít strávit dobu vyrovnávání clusterů, protože je to málo. Pokud je vyrovnávání zatížení clusteru, strávíte tím síťové a výpočetní prostředky, které se budou pohybovat bez jakýchkoli velkých *absolutních* rozdílů. Aby nedocházelo k zbytečnému přesunutí, je další ovládací prvek známý jako prahové hodnoty aktivity. Prahové hodnoty aktivity umožňují zadat absolutní dolní mez pro aktivitu. Pokud žádný uzel není nad touto prahovou hodnotou, vyvážení se neaktivuje ani v případě, že je splněno prahová hodnota pro vyvážení.

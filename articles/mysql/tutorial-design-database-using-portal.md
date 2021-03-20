@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
 ms.openlocfilehash: 7559bc2246ca26cf2b14071396e075b28d2af3a7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94532677"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MySQL pomocí webu Azure Portal
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte, jak pomocí webu Azure Portal provést následujíc�
 > * Aktualizace dat
 > * Obnovení dat
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -57,12 +57,12 @@ Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních
     Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | *myresourcegroup* | Zadejte název nové nebo existující skupiny prostředků.
     Zvolit zdroj | *Trhnout* | Vyberte *Prázdné* a vytvořte nový server od začátku. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for MySQL, vyberte *Záloha*.)
-    Přihlášení správce serveru | myadmin | Přihlašovací účet, který budete používat při připojování k serveru. Přihlašovací jméno správce nemůže být **azure_superuser** , **admin** , **administrator** , **root** , **guest** ani **public**.
+    Přihlášení správce serveru | myadmin | Přihlašovací účet, který budete používat při připojování k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
     Heslo | *Podle vašeho výběru* | Zadejte nové heslo pro účet správce serveru. Musí se skládat z 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
     Potvrzení hesla | *Podle vašeho výběru*| Potvrďte heslo účtu správce.
     Umístění | *Oblast nejblíže vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
     Verze | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující jinou verzi).
-    Cenová úroveň | **Obecné účely** , **Gen 5** , **2 virtuální jádra** , **5 GB** , **7 dní** , **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **cenovou úroveň**. V dalším kroku vyberte kartu **pro obecné účely** . *5* , *2 virtuální jádra* , *5 GB* a *7 dní* jsou výchozí hodnoty pro **výpočetní generaci** , **Vcore** , **úložiště** a **dobu uchovávání záloh**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte z **možností redundance zálohy** možnost **geograficky redundantní** . Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Cenová úroveň | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte položku **Cenová úroveň**. V dalším kroku vyberte kartu **pro obecné účely** . *5*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **výpočetní generaci**, **Vcore**, **úložiště** a **dobu uchovávání záloh**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte z **možností redundance zálohy** možnost **geograficky redundantní** . Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="Cenová úroveň":::
 
@@ -88,7 +88,7 @@ Teď se můžete připojit k serveru pomocí nástroje příkazového řádku my
 
 Na webu Azure Portal získejte plně kvalifikovaný **Název serveru** a **Přihlašovací jméno správce serveru** pro váš server Azure Database for MySQL. Plně kvalifikovaný název serveru použijete k připojení k serveru pomocí nástroje příkazového řádku mysql.
 
-1. Na [webu Azure Portal](https://portal.azure.com/) klikněte v levé nabídce na **Všechny prostředky** , zadejte název a vyhledejte svůj server Azure Database for MySQL. Výběrem názvu serveru zobrazte podrobnosti.
+1. Na [webu Azure Portal](https://portal.azure.com/) klikněte v levé nabídce na **Všechny prostředky**, zadejte název a vyhledejte svůj server Azure Database for MySQL. Výběrem názvu serveru zobrazte podrobnosti.
 
 2. Na stránce **Přehled** si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Může kliknout na tlačítko kopírování vedle jednotlivých polí a zkopírovat údaje do schránky.
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="4-2 Vlastnosti serveru":::

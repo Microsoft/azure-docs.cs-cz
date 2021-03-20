@@ -9,13 +9,13 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: f085858a9d550623704efd4f051ed525e55a37e0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94557668"
 ---
-# <a name="project-cerberus"></a>Cerberus projektu
+# <a name="project-cerberus"></a>Project Cerberus
 
 Cerberus je kořenovým hardwarem kompatibilním s NIST 800-193 a identitou, kterou nelze klonovat. Cerberus je navržený tak, aby lépe vyvolal zabezpečení stav infrastruktury Azure tím, že poskytuje silnou kotvu vztahu důvěryhodnosti pro integritu firmwaru.
 

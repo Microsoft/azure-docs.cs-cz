@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452226"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen1
@@ -104,7 +104,7 @@ Níže jsou uvedené hlavní tři Doporučené možnosti pro orchestraci replika
 |**Podporuje kopírování rozdílových souborů.**     |   Yes      | No         | No         |
 |**Integrovaná orchestrace**     |  Ne (použití Oozieho toku nebo úloh cron)       | Yes        | Ne (použít Azure Automation nebo Windows Plánovač úloh)         |
 |**Podporované systémy souborů**     | ADL, HDFS, WASB, S3, GS, CFS        |Množství, viz [konektory](../data-factory/connector-azure-blob-storage.md).         | ADL na ADL, WASB na ADL (jenom stejná oblast)        |
-|**Podpora operačního systému**     |Libovolný operační systém se systémem Hadoop         | Není k dispozici          | Windows 10         |
+|**Podpora operačního systému**     |Libovolný operační systém se systémem Hadoop         | –          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Použití Distcp k přesunu dat mezi dvěma místy
 

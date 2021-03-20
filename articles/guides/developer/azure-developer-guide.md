@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: 12b90bf709cb20bed844940570663a76052a540d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101738935"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
@@ -85,7 +85,7 @@ Azure Service Fabric je platforma distribuovaných systémů. Tato platforma usn
 
 * Zřizování
 * Nasazení
-* Sledování
+* Monitorování
 * Upgrade/opravy
 * odstraňování
 
@@ -182,7 +182,7 @@ Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k t
 
 Další informace o osvědčených postupech zabezpečení v Azure najdete v tématu [osvědčené postupy a vzory zabezpečení Azure](../../security/fundamentals/best-practices-and-patterns.md).
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat problémy a zjistit, jak zákazníci používají vaši aplikaci. Azure nabízí několik možností monitorování.
 
@@ -199,7 +199,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHubu
+* GitHub
 * Puppet
 * Chef
 * TeamCity

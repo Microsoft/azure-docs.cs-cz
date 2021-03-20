@@ -7,10 +7,10 @@ ms.reviewer: camerost, logicappspm
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.openlocfilehash: f5b04c563dc81497f591788dc4890d379c0f898f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93102867"
 ---
 # <a name="handle-stored-procedure-timeouts-in-the-sql-connector-for-azure-logic-apps"></a>Zpracování časových limitů uložených procedur v konektoru SQL pro Azure Logic Apps
@@ -37,10 +37,10 @@ BEGIN
 END
 ```
 
-Místo toho, abyste přímo volali uloženou proceduru, můžete proceduru na pozadí asynchronně spustit pomocí *agenta úloh* . Vstupy a výstupy můžete ukládat do tabulky stavů, které pak můžete interagovat s aplikací logiky. Pokud nepotřebujete vstupy a výstupy, nebo pokud už výsledky píšete do tabulky uložené procedury, můžete tento přístup zjednodušit.
+Místo toho, abyste přímo volali uloženou proceduru, můžete proceduru na pozadí asynchronně spustit pomocí *agenta úloh*. Vstupy a výstupy můžete ukládat do tabulky stavů, které pak můžete interagovat s aplikací logiky. Pokud nepotřebujete vstupy a výstupy, nebo pokud už výsledky píšete do tabulky uložené procedury, můžete tento přístup zjednodušit.
 
 > [!IMPORTANT]
-> Ujistěte se, že je uložená procedura a všechny úlohy *idempotentní* , což znamená, že můžou běžet víckrát, aniž by to ovlivnilo výsledky. Pokud dojde k chybě asynchronního zpracování nebo vypršení časového limitu, Agent úlohy může tento krok opakovat, a proto je uložená procedura několikrát. Aby se zabránilo duplikování výstupu, před vytvořením objektů si Projděte tyto [osvědčené postupy a přístupy](../azure-sql/database/elastic-jobs-overview.md#idempotent-scripts).
+> Ujistěte se, že je uložená procedura a všechny úlohy *idempotentní*, což znamená, že můžou běžet víckrát, aniž by to ovlivnilo výsledky. Pokud dojde k chybě asynchronního zpracování nebo vypršení časového limitu, Agent úlohy může tento krok opakovat, a proto je uložená procedura několikrát. Aby se zabránilo duplikování výstupu, před vytvořením objektů si Projděte tyto [osvědčené postupy a přístupy](../azure-sql/database/elastic-jobs-overview.md#idempotent-scripts).
 
 V další části se dozvíte, jak můžete použít agenta elastické úlohy Azure pro Azure SQL Database. Pro SQL Server a Azure SQL Managed instance můžete použít agenta SQL Server. Některé podrobnosti správy se budou lišit, ale základní postup zůstane stejný jako nastavení agenta úlohy pro Azure SQL Database.
 
@@ -48,7 +48,7 @@ V další části se dozvíte, jak můžete použít agenta elastické úlohy Az
 
 ## <a name="job-agent-for-azure-sql-database"></a>Agent úlohy pro Azure SQL Database
 
-Pokud chcete vytvořit úlohu, která může spustit uloženou proceduru pro [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md), použijte [agenta elastické úlohy Azure](../azure-sql/database/elastic-jobs-overview.md). Vytvořte agenta úloh v Azure Portal. Tento přístup přidá několik uložených procedur do databáze, kterou používá agent, označovaný také jako *databáze agenta* . Pak můžete vytvořit úlohu, která spustí uloženou proceduru v cílové databázi a po dokončení zachytí výstup.
+Pokud chcete vytvořit úlohu, která může spustit uloženou proceduru pro [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md), použijte [agenta elastické úlohy Azure](../azure-sql/database/elastic-jobs-overview.md). Vytvořte agenta úloh v Azure Portal. Tento přístup přidá několik uložených procedur do databáze, kterou používá agent, označovaný také jako *databáze agenta*. Pak můžete vytvořit úlohu, která spustí uloženou proceduru v cílové databázi a po dokončení zachytí výstup.
 
 Než budete moct vytvořit úlohu, musíte nastavit oprávnění, skupiny a cíle, jak je popsáno v [celé dokumentaci pro agenta elastické úlohy Azure](../azure-sql/database/elastic-jobs-overview.md). Také je nutné vytvořit podpůrnou tabulku v cílové databázi, jak je popsáno v následujících částech.
 

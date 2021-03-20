@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
 ms.openlocfilehash: cc88561f8882b1712648a261d1f0208a18bab26d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095472"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Ochrana prostředků pomocí Azure Security Center
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace zásad přístupu k VIRTUÁLNÍm počítačům za běhu
 > * Konfigurace zásady řízení aplikací
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro krokování s funkcemi popsanými v tomto kurzu musíte mít povolený Azure Defender. K dispozici je bezplatná zkušební verze. Informace o upgradu najdete v tématu [Povolení Azure Defenderu](enable-azure-defender.md).
 
 ## <a name="manage-vm-access"></a>Správa přístupu k virtuálním počítačům

@@ -7,10 +7,10 @@ author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
 ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101652381"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management Soft-Delete (Preview)
@@ -27,7 +27,7 @@ Funkce obnovitelného odstranění je k dispozici prostřednictvím [REST API](/
 > [!TIP]
 > Tipy a nástroje pro volání rozhraní Azure REST API najdete v [referenčních informacích k azure REST API](/rest/api/azure/) .
 
-| Operace | Popis | Obor názvů API Management | Minimální verze rozhraní API |
+| Operace | Description | Obor názvů API Management | Minimální verze rozhraní API |
 |--|--|--|--|
 | [Vytvořit nebo aktualizovat](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Vytvoří nebo aktualizuje službu API Management.  | Služba API Management | Všechny |
 | [Vytvořit nebo aktualizovat](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) s `restore` vlastností nastavenou na **hodnotu true** | Odstraní API Management službu, pokud byla dříve odstraněna. Pokud `restore` je zadána a nastavena na `true` všechny ostatní vlastnosti, budou ignorovány.  | Služba API Management |  2020-06-01 – Preview |

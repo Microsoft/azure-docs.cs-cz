@@ -10,10 +10,10 @@ ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93309216"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Kopírování dat z Azure Cosmos DB do vyhrazeného fondu SQL pomocí Apache Spark
@@ -50,7 +50,7 @@ V tomto příkladu používáme kontejner HTAP s názvem **RetailSales**. Je sou
 * weekStarting: Long (Nullable = true)
 * _etag: řetězec (Nullable = true)
 
-Pro účely generování sestav agregujeme prodej ( *množství* , *výnosy* (cena × množství) podle hodnoty *productCode* a *weekStarting* . Nakonec tato data exportujeme do vyhrazené tabulky fondu SQL s názvem **dbo. ProductSales**.
+Pro účely generování sestav agregujeme prodej (*množství*, *výnosy* (cena × množství) podle hodnoty *productCode* a *weekStarting* . Nakonec tato data exportujeme do vyhrazené tabulky fondu SQL s názvem **dbo. ProductSales**.
 
 ## <a name="configure-a-spark-notebook"></a>Konfigurace poznámkového bloku Spark
 Vytvořte notebook Spark s Scala jako Spark (Scala) jako hlavní jazyk. Pro relaci používáme výchozí nastavení poznámkového bloku.

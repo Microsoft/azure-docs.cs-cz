@@ -14,10 +14,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
 ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452423"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorizace přístupu k databázi pro služby SQL Database, SQL Managed Instance a Azure Synapse Analytics
@@ -59,7 +59,7 @@ Při prvním nasazení Azure SQL zadejte přihlašovací jméno správce a přid
 
 - Přihlašovací jméno SQL s oprávněními správce se vytvoří pomocí zadaného přihlašovacího jména. [Přihlášení](/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) je individuální uživatelský účet pro přihlášení k SQL Database, spravované instanci SQL a Azure synapse.
 - Tomuto přihlášení je uděleno úplné oprávnění správce pro všechny databáze jako [objekt zabezpečení na úrovni serveru](/sql/relational-databases/security/authentication-access/principals-database-engine). Přihlášení má všechna dostupná oprávnění a nedá se omezit. V rámci spravované instance SQL se toto přihlášení přidá do [pevné role serveru sysadmin](/sql/relational-databases/security/authentication-access/server-level-roles) (Tato role v Azure SQL Database neexistuje).
-- [user account](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Pro toto přihlášení se vytvoří uživatelský účet s názvem v každé uživatelské databázi. Uživatel [dbo](/sql/relational-databases/security/authentication-access/principals-database-engine) má všechna oprávnění databáze v databázi a je namapován na `db_owner` pevně danou databázovou roli. Další pevné databázové role jsou popsány dále v tomto článku.
+- [](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Pro toto přihlášení se vytvoří uživatelský účet s názvem v každé uživatelské databázi. Uživatel [dbo](/sql/relational-databases/security/authentication-access/principals-database-engine) má všechna oprávnění databáze v databázi a je namapován na `db_owner` pevně danou databázovou roli. Další pevné databázové role jsou popsány dále v tomto článku.
 
 Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a přejděte na kartu **vlastnosti** serveru nebo spravované instance.
 

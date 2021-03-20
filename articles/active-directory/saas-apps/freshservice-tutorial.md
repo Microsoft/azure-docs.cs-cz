@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
 ms.openlocfilehash: fb8b12cdb8fd9ed37ac4086d213183e800d6febc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101651743"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Freshservice
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Freshservice s Azure Active Directory 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Freshservice svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -133,7 +133,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V nabídce na levé straně klikněte na **správce** a v **obecných nastaveních** vyberte **zabezpečení helpdesku** .
 
-    ![Správce](./media/freshservice-tutorial/configure-1.png "správce")
+    ![Správce](./media/freshservice-tutorial/configure-1.png "Správce")
 
 1. V části **zabezpečení** klikněte na **přejít na Freshservice 360 Security**.
 

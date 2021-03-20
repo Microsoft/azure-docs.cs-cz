@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 4ce7ffc66e0b6164b2e4ca9725b3f26403292a4a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220767"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Kurz: Konfigurace nastavení sítě v clusteru
@@ -46,7 +46,7 @@ Pokud chcete získat další informace o nastavení sítě pro cluster, přečt�
 
 * Konfigurace služby Active Directory a jména uživatele nebo názvu skupiny ke stažení (v případě potřeby)
 
-  Pokud vaše síť používá službu Active Directory nebo jiný druh externí adresářové služby, musíte upravit konfiguraci adresářových služeb clusteru a nastavit, jak cluster stáhne informace o uživatelském jménu a skupině. **Cluster**  >  Podrobnosti najdete v Průvodci konfigurací clusterových**služeb** v clusteru.
+  Pokud vaše síť používá službu Active Directory nebo jiný druh externí adresářové služby, musíte upravit konfiguraci adresářových služeb clusteru a nastavit, jak cluster stáhne informace o uživatelském jménu a skupině.   >  Podrobnosti najdete v Průvodci konfigurací clusterových **služeb** v clusteru.
 
   Pokud požadujete podporu protokolu SMB, je nutné zadat server služby AD. Před zahájením instalace protokolu SMB nakonfigurujte AD.
 
@@ -59,7 +59,7 @@ Pokud chcete získat další informace o nastavení sítě pro cluster, přečt�
   Pokud váš cluster používá proxy server k dosažení externích adres, postupujte podle těchto kroků a nastavte:
 
   1. Definování proxy server na stránce nastavení **konfigurace proxy serveru**
-  1. Použijte konfiguraci proxy server na **Cluster**  >  stránce**Obecné nastavení** clusteru nebo na základní stránce s **podrobnostmi souborového** .
+  1. Použijte konfiguraci proxy server na   >  stránce **Obecné nastavení** clusteru nebo na základní stránce s **podrobnostmi souborového** .
   
   Další informace najdete v tématu [použití webových proxy serverů](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/proxy_overview.html) v Průvodci konfigurací clusteru.
 
@@ -75,9 +75,9 @@ Cluster FXT Edge souborového používá certifikáty X. 509 pro tyto funkce:
 
 * Ověření certifikátů serveru poskytovatelé cloudu
 
-Pokud potřebujete do clusteru nahrávat certifikáty, použijte **Cluster**  >  stránku nastavení**certifikátů** clusteru. Podrobnosti najdete na stránce [> certifikáty clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) v Průvodci konfigurací clusteru.
+Pokud potřebujete do clusteru nahrávat certifikáty, použijte   >  stránku nastavení **certifikátů** clusteru. Podrobnosti najdete na stránce [> certifikáty clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) v Průvodci konfigurací clusteru.
 
-Chcete-li zašifrovat komunikaci správy clusterů, použijte **Cluster**  >  stránku**Obecné** nastavení clusteru a vyberte certifikát, který chcete použít pro správu TLS.
+Chcete-li zašifrovat komunikaci správy clusterů, použijte   >  stránku **Obecné** nastavení clusteru a vyberte certifikát, který chcete použít pro správu TLS.
 
 > [!Note]
 > Přístupové klíče cloudové služby se ukládají pomocí stránky konfigurace **přihlašovacích údajů cloudu** . Příklad najdete v části [Add a Core souborového](fxt-add-storage.md#add-a-core-filer) . Podrobnosti najdete v části Průvodce konfigurací clusteru [Cloud přihlašovací údaje](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) .
@@ -139,7 +139,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ### <a name="enable-dns-in-the-cluster"></a>Povolit DNS v clusteru
 
-Zadejte server DNS, který cluster používá, na **Cluster**  >  stránce nastavení**sítě pro správu** clusteru. Nastavení na této stránce zahrnují:
+Zadejte server DNS, který cluster používá, na   >  stránce nastavení **sítě pro správu** clusteru. Nastavení na této stránce zahrnují:
 
 * Adresa serveru DNS
 * Název domény DNS

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740779"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Front Dooru
@@ -44,7 +44,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před dokončením kroků v tomto kurzu musíte nejprve vytvořit Front Door s minimálně jednou začleněnou vlastní doménou. Další informace najdete v [kurzu přidání vlastní domény do Front Dooru](front-door-custom-domain.md).
 
@@ -133,7 +133,12 @@ Udělte pro přístup k certifikátům ve vašem účtu Azure Key Vault oprávn�
     Přední dvířka Azure obsahují následující informace: 
     - Účty trezoru klíčů pro ID vašeho předplatného 
     - Certifikáty (tajné kódy) v rámci vybraného trezoru klíčů 
-    - Dostupné verze certifikátu
+    - Dostupné verze certifikátu 
+
+> [!NOTE]
+> Verze certifikátu zůstane prázdná, takže by to vedlo k následujícím akcím:
+> - Vybrala se nejnovější verze certifikátu.
+> - Automatické otočení certifikátů na nejnovější verzi, pokud je v Key Vault k dispozici novější verze certifikátu.
  
 5. Při použití vlastního certifikátu se ověření domény nevyžaduje. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation).
 
@@ -273,7 +278,7 @@ V tomto kurzu jste se naučili:
 
 * Nahrajte certifikát do Key Vault.
 * Ověří doménu.
-* Povolte HTTPS pro vaši vlastní doménu.
+* Pro vlastní doménu povolte HTTPS.
 
 Pokud se chcete dozvědět, jak nastavit zásady geografického filtrování pro vaše přední dveře, přejděte k dalšímu kurzu.
 

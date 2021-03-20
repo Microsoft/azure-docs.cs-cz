@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
 ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491071"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Použití Marketo ke správě potenciálních zákazníků z obchodu na webu Marketplace
@@ -60,7 +60,7 @@ Tento článek popisuje, jak nastavit systém Marketo pro CRM na zpracování po
     Další způsob, jak zjistit tyto hodnoty:
 
     - ID serveru najdete v adrese URL vaší instance Marketo, například `serverID.marketo.com` .
-    - Pořiďte si Munchkin ID vašeho předplatného tak **Admin**  >  , že v poli **ID účtu Munchkin** zobrazíte nabídku správce **Munchkin** , nebo z první části vaší REST API domény hostitele Marketo: `https://{Munchkin ID}.mktorest.com` .
+    - Pořiďte si Munchkin ID vašeho předplatného tak   >  , že v poli **ID účtu Munchkin** zobrazíte nabídku správce **Munchkin** , nebo z první části vaší REST API domény hostitele Marketo: `https://{Munchkin ID}.mktorest.com` .
     - ID formuláře je ID formuláře pro vložení kódu, který jste vytvořili v kroku 7 ke směrování potenciálních zákazníků z webu Marketplace.
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Konfigurace nabídky pro odesílání zájemců do markety
@@ -79,7 +79,7 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 
     ![Zvolit cíl zájemce](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-1. Zadejte **ID serveru** , **ID účtu Munchkin** a **ID formuláře**.
+1. Zadejte **ID serveru**, **ID účtu Munchkin** a **ID formuláře**.
 
     > [!NOTE]
     > Musíte dokončit konfiguraci zbytku nabídky a publikovat ji předtím, než budete moct získat zájemce pro tuto nabídku. 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92331732"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Použití zásad Azure Firewall k definování hierarchie pravidel
@@ -48,7 +48,7 @@ Vytvořte zásady pro každý tým aplikace:
 - Zásada brány firewall databáze. Zásady brány firewall databáze dědí základní zásady brány firewall.
 - Zásady brány firewall pro vývoj. Zásady pro technický firewall také dědí základní zásady brány firewall.
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Týmy a požadavky" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Hierarchie zásad" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>Vytvoření vlastních rolí pro přístup ke skupinám kolekcí pravidel 
 
@@ -91,13 +91,13 @@ Pro definování vlastních rolí použijte následující postup vysoké úrovn
    `*/read", "Microsoft.Network/*/read", "Microsoft.Network/firewallPolicies/ruleCollectionGroups/write` 
 
    operace s vlastností **Actions**   . Nezapomeňte vložit čárku za operaci čtení. Tato akce umožní uživateli vytvořit a aktualizovat skupiny kolekcí pravidel.
-6. V **AssignableScopes**přidejte své ID předplatného s následujícím formátem: 
+6. V **AssignableScopes** přidejte své ID předplatného s následujícím formátem: 
 
    `/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxx`
 
    Musíte přidat explicitní ID předplatných, jinak tuto roli nebudete moct importovat do svého předplatného.
-7. Odstraňte **Id**   řádek vlastnosti ID a změňte vlastnost IsDeleted **IsCustom**   na hodnotu true.
-8. Změnit vlastnosti **Name**   a **Description**   na *AZFM autor skupiny kolekcí pravidel* a *Uživatelé v této roli můžou upravovat skupiny kolekcí pravidel zásad brány firewall* .
+7. Odstraňte ****   řádek vlastnosti ID a změňte vlastnost IsDeleted ****   na hodnotu true.
+8. Změnit vlastnosti  **Name**   a  **Description**   na *AZFM autor skupiny kolekcí pravidel* a *Uživatelé v této roli můžou upravovat skupiny kolekcí pravidel zásad brány firewall* .
 
 Váš soubor JSON by měl vypadat podobně jako v následujícím příkladu:
 
@@ -134,9 +134,9 @@ Chcete-li zobrazit seznam všech vlastních rolí, můžete použít příkaz Ge
 
 Můžete také zobrazit vlastní role v Azure Portal. Přejděte do svého předplatného, vyberte **řízení přístupu (IAM)**, **role**.
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="Týmy a požadavky":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Týmy a požadavky":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Oprávnění ke čtení SalesAppPolicy":::
 
 Další informace najdete v tématu [kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell](../role-based-access-control/tutorial-custom-role-powershell.md).
 

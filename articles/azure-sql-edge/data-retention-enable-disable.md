@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
 ms.openlocfilehash: 5b8dd911952a63ba8775f27a6128ff61e849e823
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861421"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Povolit a zakázat zásady uchovávání dat
@@ -56,7 +56,7 @@ CONSTRAINT [pk_current_data_retention_table] PRIMARY KEY CLUSTERED ([product_cod
 
 - DATA_DELETION – určuje, zda je uchovávání dat ZAPNUTo nebo vypnuto.
 - FILTER_COLUMN – název sloupce v tabulce, který se použije ke zjištění, jestli jsou řádky zastaralé nebo ne. Sloupec filtru může být pouze sloupec s těmito datovými typy. 
-    - Datum
+    - Date (Datum)
     - SmallDateTime
     - DateTime
     - DateTime2

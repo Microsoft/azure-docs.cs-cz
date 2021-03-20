@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92327633"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testů pro replikaci Hyper-V do sekundární lokality
@@ -106,7 +106,7 @@ Výsledky jasně ukazují, že Site Recovery, společně s replikou technologie 
 
 ![Požadavky na primární hardware](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| Server | Paměť RAM | Model | Procesor | Počet procesorů | NIC | Software |
+| Server | Paměť RAM | Modelování | Procesor | Počet procesorů | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
 | Servery Hyper-V v clusteru: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 má 256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 |V/v mi × 4 |Windows Server Datacenter 2012 R2 (x64) + role Hyper-V |
 | Server VMM |2 | | |2 |1 Gb/s |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
@@ -118,7 +118,7 @@ Výsledky jasně ukazují, že Site Recovery, společně s replikou technologie 
 
 ![Specifikace primárního hardwaru](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| Server | Paměť RAM | Model | Procesor | Počet procesorů | NIC | Software |
+| Server | Paměť RAM | Modelování | Procesor | Počet procesorů | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
 | Servery Hyper-V v clusteru: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel (R) Xeon (R) CPU E5-2630 0 \@ 2.30 GHz |2 |V/v mi × 4 |Windows Server Datacenter 2012 R2 (x64) + role Hyper-V |
 | ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + role Hyper-V |
@@ -170,7 +170,7 @@ Výsledky jasně ukazují, že Site Recovery, společně s replikou technologie 
 
 Tabulka shrnuje metriky výkonu a čítače, které byly v nasazení měřeny.
 
-| Metrika | Čítač |
+| Metric | Čítač |
 | --- | --- |
 | Procesor |\Processor(_Total)\% Processor Time |
 | Dostupná paměť |\Memory\Available MB |

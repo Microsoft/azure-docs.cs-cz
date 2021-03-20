@@ -8,10 +8,10 @@ ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: b418a9cae6f6d58dbe82babcfe6fe1e1a5027d43
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97657069"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Strategie ověřování služby měření na Marketplace
@@ -44,7 +44,7 @@ Další informace o těchto tokenech naleznete v tématu [Azure Active Directory
 
 #### <a name="http-method"></a>HTTP – metoda
 
-**POST**
+**SPUŠTĚNÍ**
 
 #### <a name="request-url"></a>*Adresa URL požadavku*
 
@@ -54,24 +54,24 @@ Další informace o těchto tokenech naleznete v tématu [Azure Active Directory
 
 |  **Název parametru** |  **Povinné**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `tenantId`         |   Pravda         | ID tenanta registrované aplikace služby Azure AD   |
+|  `tenantId`         |   Ano         | ID tenanta registrované aplikace služby Azure AD   |
 | | | |
 
 #### <a name="request-header"></a>*Hlavička žádosti*
 
 |  **Název hlavičky**    |  **Povinné**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Content-Type`     |   Pravda         | Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`.  |
+|  `Content-Type`     |   Ano         | Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`.  |
 | | | |
 
 #### <a name="request-body"></a>*Text žádosti*
 
 |  **Název vlastnosti**  |  **Povinné**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   Pravda         | Typ udělení Použijte `client_credentials`. |
-|  `Client_id`        |   Pravda         | Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD|
-|  `client_secret`    |   Pravda         | Tajný kód přidružený k aplikaci Azure AD.  |
-|  `Resource`         |   Pravda         | Cílový prostředek, pro který je požadován token. Použijte `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
+|  `Grant_type`       |   Ano         | Typ udělení Použijte `client_credentials`. |
+|  `Client_id`        |   Ano         | Identifikátor klienta nebo aplikace přidružený k aplikaci Azure AD|
+|  `client_secret`    |   Ano         | Tajný kód přidružený k aplikaci Azure AD.  |
+|  `Resource`         |   Ano         | Cílový prostředek, pro který je požadován token. Použijte `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
 | | | |
 
 #### <a name="response"></a>*Response* (Odpověď)
@@ -114,7 +114,7 @@ Například použijte následující postup k ověření pomocí virtuálního p
     * [Azure Portal UI](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
     * [Rozhraní příkazového řádku](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
     * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
-    * [Šablona Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Šablona Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
     * [REST](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
     * [Sady Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 

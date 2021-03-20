@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
 ms.openlocfilehash: 15b08ea67afe0d307470b5a4fb0f7d26e0f4ea82
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241918"
 ---
 # <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Zastavení/spuštění Azure Database for MySQL-flexibilního serveru (verze Preview)
@@ -20,7 +20,7 @@ ms.locfileid: "93241918"
 
 Tento článek poskytuje podrobný postup, jak provést zastavení a spuštění flexibilního serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce budete potřebovat:
 
@@ -36,7 +36,7 @@ K dokončení tohoto průvodce budete potřebovat:
 
 3.  Kliknutím na **Ano** potvrďte zastavení serveru.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Zastavení flexibilního serveru."::: 
+    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Potvrďte zastavení flexibilního serveru."::: 
 
 > [!NOTE]
 > Po zastavení serveru nejsou pro flexibilní Server k dispozici jiné operace správy.
@@ -47,7 +47,7 @@ K dokončení tohoto průvodce budete potřebovat:
 
 2.  Na stránce **Přehled** klikněte na tlačítko **Start** na panelu nástrojů.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Zastavení flexibilního serveru.":::  
+    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Spusťte flexibilní Server.":::  
 
 > [!NOTE]
 > Po spuštění serveru jsou nyní všechny operace správy k dispozici pro flexibilní Server.

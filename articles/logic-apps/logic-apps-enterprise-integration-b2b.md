@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93310498"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Příjem a potvrzení zpráv B2B AS2 pomocí Azure Logic Apps a Enterprise Integration Pack
@@ -73,11 +73,11 @@ Nyní přidejte akce B2B, které chcete použít. V tomto příkladu se použív
 
 1. Pro vlastnost **zpráva k dekódování** zadejte vstup, který má AS2 akce dekódovat, což je `body` obsah přijatý triggerem požadavku HTTP. Tento obsah můžete zadat několika způsoby, buď ze seznamu dynamického obsahu, nebo jako výraz:
 
-   * Pokud chcete vybrat ze seznamu, který zobrazuje dostupné výstupy triggeru, klikněte do pole **zpráva k dekódování** . Až se zobrazí seznam dynamického obsahu, v části **když se přijme požadavek HTTP** , vyberte hodnotu vlastnosti **body** , například:
+   * Pokud chcete vybrat ze seznamu, který zobrazuje dostupné výstupy triggeru, klikněte do pole **zpráva k dekódování** . Až se zobrazí seznam dynamického obsahu, v části **když se přijme požadavek HTTP**, vyberte hodnotu vlastnosti **body** , například:
 
      ![Vybrat hodnotu "tělo" z triggeru](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-   * Pokud chcete zadat výraz, který odkazuje na výstup triggeru `body` , klikněte do pole **zpráva k dekódování** . Po zobrazení seznamu dynamický obsah vyberte **výraz**. V editoru výrazů zadejte tento výraz a vyberte **OK** :
+   * Pokud chcete zadat výraz, který odkazuje na výstup triggeru `body` , klikněte do pole **zpráva k dekódování** . Po zobrazení seznamu dynamický obsah vyberte **výraz**. V editoru výrazů zadejte tento výraz a vyberte **OK**:
 
      `triggerOutputs()['body']`
 
@@ -95,7 +95,7 @@ Nyní přidejte akce B2B, které chcete použít. V tomto příkladu se použív
 
       ![Snímek obrazovky, na kterém je vybraná možnost přepnout záhlaví zpráv na režim textu](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
 
-   1. Klikněte do pole **záhlaví zpráv** . Po zobrazení seznamu dynamický obsah vyberte **výraz**. V editoru výrazů zadejte tento výraz a vyberte **OK** :
+   1. Klikněte do pole **záhlaví zpráv** . Po zobrazení seznamu dynamický obsah vyberte **výraz**. V editoru výrazů zadejte tento výraz a vyberte **OK**:
 
       `triggerOutputs()['Headers']`
 

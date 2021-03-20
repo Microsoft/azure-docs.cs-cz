@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99255369"
 ---
-# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Ochrana uživatelských účtů před útoky pomocí Azure Active Directory inteligentní uzamčení
+# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Ochrana uživatelských účtů před útoky s využitím inteligentního uzamykání Azure Active Directory
 
-Inteligentní uzamčení pomáhá uzamknout chybné aktéry, které se snaží odhadnout hesla uživatelů, nebo používat metody hrubou silou k získání. Inteligentní uzamčení dokáže rozpoznávat přihlášení, která pocházejí od platných uživatelů, a považovat je za odlišnou, než u útočníků a jiných neznámých zdrojů. Útočníci se zablokují, zatímco vaši uživatelé budou mít přístup ke svým účtům a budou produktivní.
+Inteligentní uzamykání pomáhá blokovat pochybné aktéry, kteří se pokouší uhádnout hesla uživatelů nebo získat přístup hrubou silou. Inteligentní uzamykání dokáže rozpoznat pokusy o přihlášení, které pochází od platných uživatelů, a pracuje s nimi jinak než s pokusy o přihlášení útočníků nebo pokusy o přihlášení z neznámých zdrojů. Útočníci se zablokují, zatímco uživatelé získají přístup ke svým účtům, aby mohli být produktivní.
 
 ## <a name="how-smart-lockout-works"></a>Jak funguje inteligentní zamykání
 

@@ -4,10 +4,10 @@ description: V tomto kurzu implementujete Azure Policy jako pracovní postup kó
 ms.date: 10/20/2020
 ms.topic: tutorial
 ms.openlocfilehash: 76a46adc3fc8efab4f7a2d6e656e83c2537dd037
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92326140"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>Kurz: implementace Azure Policy jako kódu pomocí GitHubu
@@ -79,7 +79,7 @@ Prostředky Azure Policy jsou exportovány do následující struktury v rámci 
 
 1. Tento soubor pracovního postupu používá akci [spravovat Azure Policy](https://github.com/marketplace/actions/manage-azure-policy) k odesílání změn provedených v exportovaných objektech zásad v úložišti GitHub zpět do Azure Policy. Ve výchozím nastavení akce bere v úvahu a synchronizuje pouze ty soubory, které se liší od těch, které jsou v Azure již použity. Můžete také použít `assignments` parametr v akci a synchronizovat pouze změny provedené v konkrétních souborech přiřazení. Tento parametr lze použít k aplikování přiřazení zásad pouze pro konkrétní prostředí. Další informace najdete v [souboru Readme pro správu Azure Policyového úložiště](https://github.com/Azure/manage-azure-policy).
 
-1. Ve výchozím nastavení se pracovní postup musí aktivovat ručně. Provedete to tak, že použijete **Akce** v GitHubu, vyberete `manage-azure-policy-<randomLetters>` pracovní postup, vyberete **Spustit pracovní postup**a znovu **spustíte pracovní postup** .
+1. Ve výchozím nastavení se pracovní postup musí aktivovat ručně. Provedete to tak, že použijete **Akce** v GitHubu, vyberete `manage-azure-policy-<randomLetters>` pracovní postup, vyberete **Spustit pracovní postup** a znovu **spustíte pracovní postup** .
 
    :::image type="content" source="../media/policy-as-code-github/manually-trigger-workflow.png" alt-text="Snímek obrazovky karty akce, pracovního postupu a tlačítka pro spuštění pracovního postupu ve webovém rozhraní GitHubu":::
 
@@ -88,11 +88,11 @@ Prostředky Azure Policy jsou exportovány do následující struktury v rámci 
 
 1. Pracovní postup synchronizuje změny provedené v objektech zásad pomocí Azure a poskytne vám stav v protokolech.
 
-   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="Snímek obrazovky karty akce, pracovního postupu a tlačítka pro spuštění pracovního postupu ve webovém rozhraní GitHubu":::
+   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="Snímek obrazovky pracovního postupu v akci a podrobnosti protokolu k protokolům":::
 
 1. Pracovní postup také přidá podrobnosti v Azure Policy objektů, které `properties.metadata` můžete sledovat.
 
-   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Snímek obrazovky karty akce, pracovního postupu a tlačítka pro spuštění pracovního postupu ve webovém rozhraní GitHubu":::
+   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Snímek obrazovky definice Azure Policy v Azure Portal aktualizoval metadata, která jsou specifická pro akci GitHubu.":::
 
 ### <a name="trigger-compliance-scans-using-github-action"></a>Spustit kontroly dodržování předpisů pomocí akce GitHubu
 

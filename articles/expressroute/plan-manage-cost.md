@@ -8,10 +8,10 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.openlocfilehash: de8405477611d62b8a46e8b6b645887cc4d30099
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784237"
 ---
 # <a name="plan-and-manage-costs-for-azure-expressroute"></a>Plánování a Správa nákladů pro Azure ExpressRoute
@@ -22,7 +22,7 @@ Po zahájení používání prostředků ExpressRoute použijte funkce Cost Mana
 
 Pamatujte, že náklady na ExpressRoute jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak plánovat a spravovat náklady na ExpressRoute, účtuje se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Analýza nákladů v Cost Management podporuje většinu typů účtů Azure, ale ne všechny. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). K zobrazení dat o nákladech potřebujete alespoň oprávnění ke čtení pro účet Azure. 
 
@@ -88,7 +88,7 @@ Když použijete analýzu nákladů, zobrazí se v grafech a tabulkách v různ�
 
 Zobrazení nákladů na ExpressRoute při analýze nákladů:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 1. Přejděte na **odběry**, v seznamu vyberte předplatné a v nabídce vyberte  **Analýza nákladů** . Vyberte **obor** , který se má při analýze nákladů přepnout na jiný obor. Ve výchozím nastavení se náklady na služby zobrazují v prvním prstenovém grafu.
 

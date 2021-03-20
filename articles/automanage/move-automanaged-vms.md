@@ -10,16 +10,16 @@ ms.date: 02/05/2021
 ms.author: alsin
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 99371b8618756c196b75858288c5c4785272a7e8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101650461"
 ---
 # <a name="move-an-azure-automanage-virtual-machine-to-a-different-region"></a>Přesunout virtuální počítač Azure automanage do jiné oblasti
 Tento článek popisuje, jak zajistit, aby byla při přesunu do jiné oblasti zapnutá funkce automanage na virtuálním počítači. Virtuální počítače můžete chtít přesunout do jiné oblasti z řady důvodů. Například pro využití nové oblasti Azure, abyste splnili požadavky na interní zásady a požadavky zásad správného řízení nebo v reakci na požadavky na plánování kapacity. Tyto virtuální počítače, které přesouváte, mohou být aktuálně spravovány a můžete chtít, aby byly po přesunu nadále spravovány.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Ujistěte se, že se vaše cílová oblast [podporuje prostřednictvím automanage](./automanage-virtual-machines.md#prerequisites).
 * Zajistěte, aby vaše oblast pracovního prostoru Log Analytics, oblast účtu služby Automation a vaše cílová oblast byly všemi oblastmi, které [tady](../automation/how-to/region-mappings.md)mapování oblastí podporuje.
 

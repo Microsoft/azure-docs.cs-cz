@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
 ms.openlocfilehash: 5920f2b5823e568d56d13107200eb0025a654db0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219917"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s U-SQL v Azure Data Lake Analytics
@@ -19,8 +19,8 @@ U-SQL je jazyk, který kombinuje deklarativní SQL s imperativně v jazyce C#, k
 ## <a name="learning-resources"></a>Studijní materiály
 
 * [Kurz u-SQL](https://aka.ms/usqltutorial) poskytuje podrobný návod pro většinu jazyka u-SQL. Tento dokument se doporučuje přečíst u všech vývojářů, kteří se chtějí dozvědět U-SQL.
-* Podrobné informace o **syntaxi jazyka u-SQL**najdete v tématu Referenční dokumentace [jazyka u-SQL](/u-sql/).
-* Informace o **filozofie návrhu u-SQL**najdete v příspěvku na blogu sady Visual Studio [Představujeme u-SQL – jazyk, který usnadňuje zpracování velkých](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)objemů dat.
+* Podrobné informace o **syntaxi jazyka u-SQL** najdete v tématu Referenční dokumentace [jazyka u-SQL](/u-sql/).
+* Informace o **filozofie návrhu u-SQL** najdete v příspěvku na blogu sady Visual Studio [Představujeme u-SQL – jazyk, který usnadňuje zpracování velkých](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)objemů dat.
 
 ## <a name="prerequisites"></a>Předpoklady
 

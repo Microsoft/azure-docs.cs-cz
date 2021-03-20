@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91626943"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>Kurz: Import a publikování vašeho prvního rozhraní API
@@ -48,7 +48,7 @@ V této části se dozvíte, jak importovat a publikovat rozhraní API pro back-
 
    Hodnoty rozhraní API můžete nastavit během vytváření nebo později tak, že na kartu **Nastavení** kliknete.
 
-   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="Nové rozhraní API v API Management":::
+   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="Vytvoření rozhraní API":::
 
 
    |Nastavení|Hodnota|Popis|
@@ -75,11 +75,11 @@ Pokud máte problémy s importem definice rozhraní API, přečtěte si [seznam 
 
 Můžete volat operace rozhraní API přímo z Azure Portal, což poskytuje pohodlný způsob, jak zobrazit a otestovat operace.
 
-1. V levém navigačním panelu instance API Management vyberte **rozhraní**API  >  **ukázková konferenční konference API**.
+1. V levém navigačním panelu instance API Management vyberte **rozhraní** API  >  **ukázková konferenční konference API**.
 1. Vyberte kartu **test** a pak vyberte **getspeakers**. Stránka zobrazuje **parametry dotazu** a **záhlaví**, pokud existují. Klíč **OCP-APIM-Subscription-Key** se vyplní automaticky pro klíč předplatného přidružený k tomuto rozhraní API.
-1. Vyberte **Poslat**.
+1. Vyberte **Odeslat**.
 
-   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="Nové rozhraní API v API Management":::
+   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="Test API v Azure Portal":::
 
    Back-end odpoví s **200 OK** a dalšími daty.
 

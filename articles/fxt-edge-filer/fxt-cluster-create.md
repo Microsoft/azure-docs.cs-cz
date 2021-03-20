@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220801"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Kurz: Vytvoření clusteru Azure FXT Edge souborového
@@ -168,7 +168,7 @@ V horní části vyplňte základní informace pro nový cluster.
   * Může obsahovat písmena, číslice a znaky spojovníku (-) a podtržítka (_).
   * Nesmí obsahovat další interpunkční znaménka ani speciální znaky.
   
-  Tento název můžete později změnit na **Cluster**  >  stránce konfigurace**obecného nastavení** clusteru. (Další informace o nastaveních clusteru najdete v tématu [Průvodce konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html), který není součástí této sady dokumentace.)
+  Tento název můžete později změnit na   >  stránce konfigurace **obecného nastavení** clusteru. (Další informace o nastaveních clusteru najdete v tématu [Průvodce konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html), který není součástí této sady dokumentace.)
 
   > [!NOTE]
   > Název clusteru se používá k identifikaci systémových informací nahraných pro podporu monitorování nebo řešení potíží, takže je vhodné zahrnout název vaší společnosti.
@@ -177,7 +177,7 @@ V horní části vyplňte základní informace pro nový cluster.
   
   Pro každou osobu, která spravuje cluster, byste měli nastavit jednotlivé uživatelské účty, ale uživatele nemůžete odebrat `admin` . Přihlaste se jako v `admin` případě, že potřebujete vytvořit další uživatele.
 
-  Heslo můžete změnit na `admin` stránce nastavení uživatelů pro **správu**  >  **Users** v ovládacím panelu clusteru. Podrobnosti najdete v dokumentaci pro **uživatele** v [Průvodci konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
+  Heslo můžete změnit na `admin` stránce nastavení uživatelů pro **správu**  >   v ovládacím panelu clusteru. Podrobnosti najdete v dokumentaci pro **uživatele** v [Průvodci konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
@@ -205,7 +205,7 @@ Nastavení v části **Správa** jsou pro síť, která poskytuje přístup spr�
 
 * **IP adresa pro správu** – zadejte IP adresu, kterou budete používat pro přístup k ovládacímu panelu clusteru. Tato adresa bude uplatněna v primárním uzlu clusteru, ale automaticky se přesune na uzel v pořádku, pokud původní primární uzel nebude k dispozici.
 
-  Většina clusterů používá jenom jednu IP adresu pro správu. Pokud potřebujete více než jedno, můžete je přidat po vytvoření clusteru pomocí **Cluster**  >  stránky nastavení**sítě pro správu** clusteru. Další informace najdete v [Průvodci konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
+  Většina clusterů používá jenom jednu IP adresu pro správu. Pokud potřebujete více než jedno, můžete je přidat po vytvoření clusteru pomocí   >  stránky nastavení **sítě pro správu** clusteru. Další informace najdete v [Průvodci konfigurací clusteru](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html).
 
 * Síťová **Maska** – zadejte síťovou masku pro síť pro správu.
 
@@ -213,7 +213,7 @@ Nastavení v části **Správa** jsou pro síť, která poskytuje přístup spr�
 
 * **Značka VLAN (volitelné)** – Pokud váš cluster používá značky VLAN, zadejte značku pro síť pro správu.
 
-  Další nastavení sítě VLAN jsou nakonfigurovaná **Cluster**na  >  stránce nastavení**sítě VLAN** pro clustery. Další informace najdete v tématu [práce s](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) virtuálními sítěmi a [sítí VLAN >](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) v Průvodci konfigurací clusteru.
+  Další nastavení sítě VLAN jsou nakonfigurovaná na  >  stránce nastavení **sítě VLAN** pro clustery. Další informace najdete v tématu [práce s](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) virtuálními sítěmi a [sítí VLAN >](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vlan.html) v Průvodci konfigurací clusteru.
 
 * **MTU** – v případě potřeby upravte maximální přenosovou jednotku (MTU) pro síť pro správu vašeho clusteru.
 
@@ -371,14 +371,14 @@ Cluster Azure FXT Edge souborového může automaticky nahrávat údaje o podpo�
 
 Chcete-li nastavit odesílání podpory, postupujte podle těchto kroků.
 
-1. Přejděte na **Cluster**  >  stránku nastavení**podpory** clusteru. Přijměte zásady ochrany osobních údajů.
+1. Přejděte na   >  stránku nastavení **podpory** clusteru. Přijměte zásady ochrany osobních údajů.
 
    ![Snímek obrazovky s tlačítkem pro ovládací panely a automaticky otevírané okno s tlačítkem potvrdit pro přijetí zásad ochrany osobních údajů](media/fxt-cluster-create/fxt-privacy-policy.png)
 
 1. Kliknutím na trojúhelník nalevo od **informací o zákaznících** rozbalte oddíl.
 1. Klikněte na tlačítko znovu **ověřit informace o nahrání** .
 1. V **jedinečném názvu clusteru** nastavte název podpory clusteru – Ujistěte se, že jednoznačně identifikuje váš cluster pro podporu pracovníků.
-1. Zaškrtněte políčka pro **monitorování statistiky**, **odesílání obecných informací**a **nahrávání informací o chybách**.
+1. Zaškrtněte políčka pro **monitorování statistiky**, **odesílání obecných informací** a **nahrávání informací o chybách**.
 1. Klikněte na **Odeslat**.  
 
    ![Snímek obrazovky s oddílem informace o dokončených zákaznících stránky nastavení podpory](media/fxt-cluster-create/fxt-support-info.png)

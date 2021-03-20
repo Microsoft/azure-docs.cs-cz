@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012999"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Zálohování a obnovení databáze Analysis Services
@@ -59,7 +59,7 @@ Před zálohováním musíte nakonfigurovat nastavení úložiště pro váš se
 
 1. V SSMS klikněte pravým tlačítkem na databázi > **zálohovat**.
 
-2. V záložním souboru zálohy **databáze**  >  **Backup file** klikněte na tlačítko **Procházet**.
+2. V záložním souboru zálohy **databáze**  >  klikněte na tlačítko **Procházet**.
 
 3. V dialogovém okně **Uložit soubor jako** ověřte cestu ke složce a potom zadejte název záložního souboru. 
 
@@ -107,6 +107,6 @@ Použijte rutinu [Restore-ASDatabase](/powershell/module/sqlserver/restore-asdat
 
 ## <a name="related-information"></a>Související informace
 
-[Účty úložiště Azure](../storage/common/storage-account-create.md)  
+[Účty služby Azure Storage](../storage/common/storage-account-create.md)  
 [Vysoká dostupnost](analysis-services-bcdr.md)      
 [Nejčastější dotazy k Analysis Services připojení k síti](analysis-services-network-faq.md)
