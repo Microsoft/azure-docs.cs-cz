@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75707182"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Správa e-mailů, kalendářů a kontaktů v Outlook.com pomocí Azure Logic Apps
@@ -27,7 +27,7 @@ Můžete použít libovolný Trigger ke spuštění pracovního postupu, napří
 > [!NOTE]
 > K automatizaci úloh pro pracovní účet Microsoft, jako @fabrikam.onmicrosoft.com je například, použijte [konektor Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Účet Outlook.com](https://outlook.live.com/owa/)
 
@@ -47,7 +47,7 @@ Můžete použít libovolný Trigger ke spuštění pracovního postupu, napří
 
 1. V aktivační události nastavte hodnoty **frekvence** a **interval** .
 
-   Například pokud chcete, aby se Trigger dotazoval každých 15 minut, nastavte **četnost** na **minuty**a nastavte **interval** na **15**.
+   Například pokud chcete, aby se Trigger dotazoval každých 15 minut, nastavte **četnost** na **minuty** a nastavte **interval** na **15**.
 
 1. Na panelu nástrojů návrháře vyberte **Save (Uložit**), která uloží vaši aplikaci logiky.
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 1/13/2021
 ms.openlocfilehash: 4b5020b6cf7ac2f7aec586d7e6499285c1447b68
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98209759"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
@@ -182,9 +182,9 @@ Povolené oblasti:
 - Austrálie – východ
 - Austrálie – jihovýchod
 - Austrálie – střed
-- Brazil South
+- Brazílie – jih
 - Střední Kanada
-- Střední USA
+- USA – střed
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
@@ -219,7 +219,7 @@ Povolené oblasti:
 
 Jedná se o aktuální omezení úrovně služby škálování na úrovni služeb (GA).  Aktivně pracujeme na odebrání tolika těchto omezení, co je možné.
 
-| Problém | Popis |
+| Problém | Description |
 | :---- | :--------- |
 | Podokno Správa zálohování serveru nezobrazuje databáze s škálovatelnými škálováními. Budou filtrovány ze zobrazení.  | Vlastní škálování má samostatnou metodu pro správu záloh, takže nastavení uchovávání Long-Term a nastavení uchovávání záloh v určitém časovém okamžiku neplatí. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování.<br><br>Pro databáze migrované do škálování z jiných Azure SQL Database úrovní služeb se zálohy před migrací uchovávají po dobu [uchovávání záloh](automated-backups-overview.md#backup-retention) zdrojové databáze. Tyto zálohy lze použít k [obnovení](recovery-using-backups.md#programmatic-recovery-using-automated-backups) zdrojové databáze k určitému bodu v čase před migrací.|
 | Obnovení k určitému bodu v čase | Nemůžete obnovit databázi s neškálovatelným škálováním jako databázi s škálovatelnými škálováními a databázi s měřítkem ve formátu. V případě databáze bez škálování na úrovni služby, která byla migrována do škálování, změnou její úrovně služeb, obnovení do bodu v čase před migrací a v rámci doby uchovávání záloh databáze je [programově](recovery-using-backups.md#programmatic-recovery-using-automated-backups)podporována. Obnovená databáze nebude škálovatelná. |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87027389"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Migrace klasických zásad v Azure Portal
@@ -32,7 +32,7 @@ Proces migrace se skládá z následujících kroků:
 
 ## <a name="open-a-classic-policy"></a>Otevření klasických zásad
 
-1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte **klasické zásady**.
 
    ![Zobrazení klasických zásad](./media/policy-migration-mfa/12.png)
@@ -41,12 +41,12 @@ Proces migrace se skládá z následujících kroků:
 
 ## <a name="create-a-new-conditional-access-policy"></a>Vytvořit nové zásady podmíněného přístupu
 
-1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Nové zásady podmíněného přístupu vytvoříte tak, že vyberete **nové zásady**.
 1. Na **nové** stránce zadejte do textového pole **název** název zásady.
 1. V části **přiřazení** klikněte na **Uživatelé a skupiny**.
    1. Pokud máte všechny uživatele vybrané v klasických zásadách, klikněte na **Všichni uživatelé**. 
-   1. Pokud máte v klasických zásadách vybrané skupiny, klikněte na **Vybrat uživatele a skupiny**a pak vyberte požadované uživatele a skupiny.
+   1. Pokud máte v klasických zásadách vybrané skupiny, klikněte na **Vybrat uživatele a skupiny** a pak vyberte požadované uživatele a skupiny.
    1. Pokud máte Vyloučené skupiny, klikněte na kartu **vyloučit** a pak vyberte požadované uživatele a skupiny. 
    1. Vyberte **Hotovo** .
 1. V části **přiřazení** klikněte na **cloudové aplikace nebo akce**.
@@ -57,7 +57,7 @@ Proces migrace se skládá z následujících kroků:
    1. Na stránce **cloudové aplikace** klikněte na **Hotovo**.
 1. Pokud máte vybrané **ověřování Multi-Factor Authentication** :
    1. V části **řízení přístupu** klikněte na **udělit**.
-   1. Na stránce **udělení** klikněte na **udělit přístup**a pak klikněte na **vyžadovat službu Multi-Factor Authentication**.
+   1. Na stránce **udělení** klikněte na **udělit přístup** a pak klikněte na **vyžadovat službu Multi-Factor Authentication**.
    1. Klikněte na **Vybrat**.
 1. Kliknutím **na zapnout zásadu** povolíte a pak vyberete **Uložit**.
 

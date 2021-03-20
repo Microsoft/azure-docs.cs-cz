@@ -10,10 +10,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: e9bbadc95be3479da82d91e9a4a4f712fbc32c57
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100520387"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Vědecké zkoumání dat pro začátečníky – Video 1: 5 otázek, na které odpovídá vědecké zkoumání dat
@@ -66,7 +66,7 @@ Tato rodina algoritmů se nazývá klasifikace se dvěma třídami.
 
 Je vhodný pro všechny otázky, které mají jenom dvě možné odpovědi.
 
-Příklad:
+Například:
 
 * Netire se toto selhání za dalších 1 000 mil: Ano nebo ne?
 * Který přináší větší zákazníky: $5 kupón nebo 25% sleva?

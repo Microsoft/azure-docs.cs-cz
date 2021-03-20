@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880131"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Příklad: Vytvoření vlastní dovednosti pro rozpoznávání formulářů
 
 V tomto příkladu Azure Kognitivní hledání dovednosti se dozvíte, jak vytvořit vlastní dovednosti pro rozpoznávání formulářů pomocí C# a Visual studia. Nástroj pro rozpoznávání formulářů analyzuje dokumenty a extrahuje páry klíč/hodnota a tabulková data. Když rozbalíte Nástroj pro rozpoznávání formulářů do [vlastního rozhraní dovedností](cognitive-search-custom-skill-interface.md), můžete tuto funkci přidat jako krok v rámci kompletního kanálu pro rozšíření. Kanál pak může načíst dokumenty a dělat další transformace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (libovolná edice).
 - Nejméně pět forem stejného typu. Můžete použít ukázková data uvedená v této příručce.
@@ -43,7 +43,7 @@ Nejprve přidejte proměnné prostředí na úrovni projektu. V levém podokně 
 * `FORMS_RECOGNIZER_RETRY_DELAY` s hodnotou nastavenou na 1000. Tato hodnota je čas v milisekundách, po který bude program čekat před opakováním dotazu.
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS` s hodnotou nastavenou na 100. Tato hodnota představuje počet pokusů, kolikrát program dotazuje službu při pokusu o získání úspěšné odpovědi.
 
-Dále otevřete _AnalyzeForm.cs_ a najděte `fieldMappings` proměnnou, která odkazuje na *field-mappings.jsv* souboru. Tento soubor (a proměnná, která na něj odkazuje) definuje seznam klíčů, které chcete extrahovat z vašich formulářů, a vlastní popisek pro každý klíč. Například hodnota `{ "Address:", "address" }, { "Invoice For:", "recipient" }` znamená, že skript uloží pouze hodnoty pro zjištěné `Address:` a `Invoice For:` pole a označí tyto hodnoty pomocí `"address"` a v `"recipient"` uvedeném pořadí.
+Dále otevřete _AnalyzeForm. cs_ a najděte `fieldMappings` proměnnou, která odkazuje na *field-mappings.jsv* souboru. Tento soubor (a proměnná, která na něj odkazuje) definuje seznam klíčů, které chcete extrahovat z vašich formulářů, a vlastní popisek pro každý klíč. Například hodnota `{ "Address:", "address" }, { "Invoice For:", "recipient" }` znamená, že skript uloží pouze hodnoty pro zjištěné `Address:` a `Invoice For:` pole a označí tyto hodnoty pomocí `"address"` a v `"recipient"` uvedeném pořadí.
 
 Nakonec si poznamenejte `contentType` proměnnou. Tento skript spustí daný model rozpoznávání formulářů na vzdálených dokumentech, na které odkazuje adresa URL, takže typ obsahu je `application/json` . Pokud chcete analyzovat místní soubory zahrnutím jejich datových proudů do požadavků HTTP, budete muset změnit na `contentType` příslušný [typ MIME](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) pro váš soubor.
 

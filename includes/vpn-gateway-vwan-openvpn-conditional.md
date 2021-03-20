@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77471500"
 ---
 Podmíněný přístup umožňuje jemně odstupňované řízení přístupu na základě jednotlivých aplikací. Aby bylo možné používat podmíněný přístup, měli byste mít Azure AD Premium 1 nebo vyšší licence pro uživatele, na které budou platit pravidla podmíněného přístupu.

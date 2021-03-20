@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91871809"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Rozbalení, připojení k racku a zapojení zařízení StorSimple 8600
@@ -42,7 +42,7 @@ Dále proveďte následující kroky a rozbalte své zařízení.
    
     **Nebalené zobrazení úložného zařízení**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    | --- | --- |
    |   1 |Expediční box |
    |   2 |Kabely SAS (v zásobníku příslušenství a kabely) |
@@ -100,17 +100,17 @@ Skříně jsou navržené pro instalaci ve standardní skříňové skříni z 1
 K dispozici je sada montážní kolejnice, která se bude používat pro skříň na racku s 19 mm. Kolejnice byly testovány tak, aby zpracovávala maximální váhu skříně. Tyto kolejnice budou také umožňovat instalaci více skříní bez ztráty místa v rámci stojanu. Nejdřív nainstalujte skříň EBOD.
 
 #### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>Instalace skříně EBOD na kolejnicích
-1. Tento krok proveďte jenom v případě, že na zařízení nejsou nainstalované vnitřní kolejnice. Vnitřní kolejnice jsou obvykle nainstalovány v továrně. Pokud nejsou kolejnice nainstalované, nainstalujte snímky z levé a pravé kolejnice na strany skříně skříně. Připojovat se šesti metrickými šrouby na každé straně. Pro usnadnění orientace jsou železniční snímky označeny jako **LH – přední** a **RH – dopředu**a konec, který je připevněn ke zadní části skříně, má zúžený konec.
+1. Tento krok proveďte jenom v případě, že na zařízení nejsou nainstalované vnitřní kolejnice. Vnitřní kolejnice jsou obvykle nainstalovány v továrně. Pokud nejsou kolejnice nainstalované, nainstalujte snímky z levé a pravé kolejnice na strany skříně skříně. Připojovat se šesti metrickými šrouby na každé straně. Pro usnadnění orientace jsou železniční snímky označeny jako **LH – přední** a **RH – dopředu** a konec, který je připevněn ke zadní části skříně, má zúžený konec.
    
     ![Připojení železničních snímků k skříni skříně](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
    
     **Připojení kolejnicových snímků ke stěnám skříně**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    | --- | --- |
    |  1 |M 3x4 tlačítka – šrouby hlav |
    |  2 |Snímky skříní |
-2. Připojte levou kolejnici a pravou železniční sestavení k vertikálním členům racku Cabinet. Závorky jsou označené jako **LH**, **RH**a **Tato strana až** po správné orientaci.
+2. Připojte levou kolejnici a pravou železniční sestavení k vertikálním členům racku Cabinet. Závorky jsou označené jako **LH**, **RH** a **Tato strana až** po správné orientaci.
 3. Vyhledejte čepy v přední a zadní části montážní lišty. Rozšíříte kolejnici tak, aby vyhovovala mezi příspěvky v racku, a vkládat PIN kódy do front a zadních stojanů po svislých členských otvorech. Ujistěte se, že je na úrovni železničního sestavení úroveň.
 4. Zabezpečte železniční sestavení na vertikálních členech racku pomocí dvou dostupných příšroubů metriky. Použijte jeden šroub na přední stranu a druhý na zadní straně.
 5. Opakujte tyto kroky pro druhé železniční sestavení.
@@ -119,7 +119,7 @@ K dispozici je sada montážní kolejnice, která se bude používat pro skří�
    
     **Připojení železničních sestavení k stojanu**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    | --- | --- |
    |   1 |Montážní šroub |
    |   2 |Šroubový prstenec na druhou stranu |
@@ -145,7 +145,7 @@ Pomocí následujících kroků připojte skříň EBOD do racku a použijte rac
    
     **Instalace Cap k přírubám**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    | --- | --- |
    |   1 |Šroub uzávěrky skříně |
 
@@ -164,7 +164,7 @@ Dalším krokem je připojení zařízení k napájení, síti a sériovému př
 ## <a name="cable-your-storsimple-8600-device"></a>Zapojení kabeláže zařízení StorSimple 8600
 Následující postupy vysvětlují, jak můžete zařízení StorSimple 8600 připojit k napájení, síťovému a sériovému připojení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Než začnete kabelovat zařízení, budete potřebovat:
 
 * Vaše primární skříň a skříň EBOD kompletně rozbalené
@@ -198,7 +198,7 @@ Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba 
    
     **Zpět zařízení, které zobrazuje datové porty**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    | --- | --- |
    |   0, 1, 4, 5 |Síťová rozhraní 1 GbE |
    |   2, 3 |Síťová rozhraní 10 GbE |
@@ -209,7 +209,7 @@ Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba 
 
 **Síťové kabely pro vaše zařízení**
 
-| Popisek | Popis |
+| Popisek | Description |
 | --- | --- |
 | A |SÍŤ LAN s přístupem k Internetu |
 | B |Kontroler 0 |

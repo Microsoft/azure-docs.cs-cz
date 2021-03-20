@@ -14,10 +14,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0af74967e2de47afeb357e2ac31b1a0ee849ef36
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96547096"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzetí nespravovaného adresáře v roli správce v Azure Active Directory
@@ -45,7 +45,7 @@ Některé produkty, které zahrnují SharePoint a OneDrive, jako je například 
   
    ![první snímek obrazovky, který se stane správcem](./media/domains-admin-takeover/become-admin-first.png)
   
-5. Přidejte záznam TXT, který prokáže, že vlastníte název domény **fourthcoffee. xyz** ve svém registrátoru názvu domény. V tomto příkladu je GoDaddy.com.
+5. Přidejte záznam TXT, abyste prokázali, že vlastníte název domény **fourthcoffee.xyz** ve svém registrátoru názvu domény. V tomto příkladu je GoDaddy.com.
   
    ![Přidat záznam TXT pro název domény](./media/domains-admin-takeover/become-admin-txt-record.png)
 
@@ -71,7 +71,7 @@ Po dokončení předchozích kroků teď jste globálním správcem čtvrté ká
    ![Doména ověřena jako přidaná do Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v Microsoft 365 organizaci, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je například *uživatel \@ fourthcoffeexyz.onmicrosoft.com* *, nikoli User \@ fourthcoffee. xyz*.
+> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v Microsoft 365 organizaci, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je například *uživatel \@ fourthcoffeexyz.onmicrosoft.com* , nikoli *Uživatel \@ fourthcoffee.xyz*.
 
 ## <a name="external-admin-takeover"></a>Převzetí externím správcem
 
@@ -143,12 +143,12 @@ rutiny | Využití
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    Příklad:
+    Například:
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Zkopírujte hodnotu (Challenge), která se vrátí z tohoto příkazu. Příklad:
+4. Zkopírujte hodnotu (Challenge), která se vrátí z tohoto příkazu. Například:
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -159,7 +159,7 @@ rutiny | Využití
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   Příklad:
+   Například:
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force

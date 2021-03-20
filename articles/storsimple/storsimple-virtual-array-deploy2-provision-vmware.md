@@ -9,14 +9,14 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87021473"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Nasazení virtuálního pole StorSimple – zřizování ve VMware
-![Diagram znázorňující kroky potřebné k nasazení virtuálního poleDruhá část druhého kroku je označena jako zřizování na VMware a zvýrazní se.](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
+![Diagram znázorňující kroky potřebné k nasazení virtuálního pole Druhá část druhého kroku je označena jako zřizování na VMware a zvýrazní se.](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>Přehled
 
@@ -83,7 +83,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 3. V klientovi vSphere v části inventář v levém podokně vyberte server ESXi.
 
    ![Snímek obrazovky s hlavní stránkou klienta vSphere V oddílu inventarizace je server ESXi zvýrazněný.](./media/storsimple-virtual-array-deploy2-provision-vmware/image2.png)
-4. Nahrajte VMDK na server ESXi. V pravém podokně přejděte na kartu **Konfigurace** . V části **hardware**vyberte **úložiště**.
+4. Nahrajte VMDK na server ESXi. V pravém podokně přejděte na kartu **Konfigurace** . V části **hardware** vyberte **úložiště**.
 
    ![Snímek obrazovky zobrazující kartu Konfigurace klienta vSphere V části hardware je zvýrazněné úložiště.](./media/storsimple-virtual-array-deploy2-provision-vmware/image3.png)
 5. V pravém podokně v části **Úložiště dat** vyberte úložiště dat, do kterého chcete VMDK nahrát. Úložiště dat musí mít dostatek volného místa pro operační systém a datové disky.
@@ -127,7 +127,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 18. Na stránce **verze virtuálního počítače** vyberte **verze virtuálního počítače: 8**.
 
     ![Snímek obrazovky se stránkou verze virtuálního počítače Je vybraná možnost virtuální počítač verze 8 a zvýrazní se tlačítko Další.](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
-19. Na stránce **hostovaný operační systém** vyberte **hostovaný operační systém** jako **Windows**. V rozevíracím seznamu **verze**vyberte možnost **Microsoft Windows Server 2012 (64-bit)**.
+19. Na stránce **hostovaný operační systém** vyberte **hostovaný operační systém** jako **Windows**. V rozevíracím seznamu **verze** vyberte možnost **Microsoft Windows Server 2012 (64-bit)**.
 
     ![Snímek obrazovky se stránkou hostovaného operačního systému s vybraným systémem Windows, verze nastavená na Microsoft Windows Server 2012 (64-bit) a další zvýrazněný](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. Na stránce **procesory** upravte **počet virtuálních soketů** a **počet jader na virtuální soket** , aby **Celkový počet jader** byl 4 (nebo více). Klikněte na **Next** (Další).
@@ -145,7 +145,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 24. Na stránce **vybrat disk** zvolte možnost **použít existující virtuální disk**. Klikněte na **Next** (Další).
 
     ![Snímek obrazovky se stránkou vyberte disk s vybranou možností použít existující virtuální disk a zvýrazněným tlačítkem Další.](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. Na stránce **Vybrat existující disk** klikněte v části **cesta k souboru na disku**na **Procházet**. Tím se otevře dialogové okno **Procházet úložiště dat** . Přejděte do umístění, kam jste nahráli VMDK. V úložišti dat teď uvidíte jenom jeden soubor, protože se sloučily dva soubory, které jste původně nahráli. Vyberte soubor a klikněte na **OK**. Klikněte na **Next** (Další).
+25. Na stránce **Vybrat existující disk** klikněte v části **cesta k souboru na disku** na **Procházet**. Tím se otevře dialogové okno **Procházet úložiště dat** . Přejděte do umístění, kam jste nahráli VMDK. V úložišti dat teď uvidíte jenom jeden soubor, protože se sloučily dva soubory, které jste původně nahráli. Vyberte soubor a klikněte na **OK**. Klikněte na **Next** (Další).
 
     ![Snímek obrazovky se stránkou vybrat existující disk Tlačítko Procházet je zvýrazněno a dialogové okno obsahuje jeden soubor a zvýrazněné tlačítko OK.](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. Na stránce **Upřesnit možnosti** přijměte výchozí nastavení a klikněte na **Další**.
@@ -157,13 +157,13 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 28. Na stránce **vlastnosti Virtual Machines** na kartě **hardware** vyhledejte hardware zařízení. Vyberte **nový pevný disk**. Klikněte na **Přidat**.
 
     ![Snímek obrazovky karty hardware na stránce vlastností Virtual Machines V seznamu hardwaru je vybrán nový pevný disk. Tlačítko Přidat je zvýrazněno.](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
-29. Zobrazí se okno **Přidat hardware** . Na stránce **typ zařízení** v části **Zvolte typ zařízení, které chcete přidat**, vyberte možnost **pevný disk**a klikněte na tlačítko **Další**.
+29. Zobrazí se okno **Přidat hardware** . Na stránce **typ zařízení** v části **Zvolte typ zařízení, které chcete přidat**, vyberte možnost **pevný disk** a klikněte na tlačítko **Další**.
 
     ![Snímek obrazovky se stránkou typ zařízení v okně Přidat hardware. Vybere se zařízení na pevném disku a zvýrazní se tlačítko Další.](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
 30. Na stránce **vybrat disk** zvolte možnost **vytvořit nový virtuální disk**. Klikněte na **Next** (Další).
 
     ![Snímek obrazovky se stránkou vybrat disk Je vybraná možnost vytvořit nový virtuální disk a zvýrazní se tlačítko Další.](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. Na stránce **vytvořit disk** změňte **velikost disku** na 500 GB (nebo více). I když je minimální požadavek 500 GB, můžete vždy zřídit větší disk. Všimněte si, že po zřízení nelze disk rozbalit ani zmenšit. Další informace o velikosti disku, který se má zřídit, najdete v části Změna velikosti v [dokumentu osvědčené postupy](storsimple-ova-best-practices.md). V části **zřízení disku**vyberte **dynamické zajišťování**. Klikněte na **Next** (Další).
+31. Na stránce **vytvořit disk** změňte **velikost disku** na 500 GB (nebo více). I když je minimální požadavek 500 GB, můžete vždy zřídit větší disk. Všimněte si, že po zřízení nelze disk rozbalit ani zmenšit. Další informace o velikosti disku, který se má zřídit, najdete v části Změna velikosti v [dokumentu osvědčené postupy](storsimple-ova-best-practices.md). V části **zřízení disku** vyberte **dynamické zajišťování**. Klikněte na **Next** (Další).
 
     ![Snímek obrazovky se stránkou vytvořit disk Velikost disku je nastavená na 500 GB, je vybraná možnost dynamického zřizování a zvýrazní se tlačítko Další.](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. Na stránce **Upřesnit možnosti** přijměte výchozí nastavení.

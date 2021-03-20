@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76990500"
 ---
 # <a name="manage-multiple-tenants"></a>Správa několika klientů
@@ -34,7 +34,7 @@ Při použití této architektury se pro každého tenanta vytvoří účet Vide
 
 ![Jeden účet Video Indexeru na tenanta](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 * Zákazníci nesdílejí účty úložiště (Pokud je ručně nenakonfiguroval zákazník).
 * Zákazníci nesdílejí výpočetní výkon (rezervované jednotky) a neovlivňují zpracování úloh navzájem.
@@ -57,7 +57,7 @@ Díky této možnosti mohou být modely přizpůsobení (osoba, jazyk a značky)
 
 Při [nahrávání videí](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)můžete pro každého tenanta zadat jiný atribut oddílu. To umožní izolaci v [rozhraní API pro hledání](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Zadáním atributu partition v rozhraní API pro hledání získáte jenom výsledky zadaného oddílu. 
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 * Možnost sdílet obsah a přizpůsobit modely mezi klienty.
 * Jeden tenant má dopad na výkon jiných tenantů.
@@ -72,7 +72,7 @@ Když použijete tuto architekturu, bude mít každý tenant vlastní předplatn
 
 ![Jedno předplatné Azure na tenanta](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 * Toto je jediná možnost, která umožňuje oddělení fakturace.
 * Tato integrace má větší nároky na správu než Video Indexer účet na tenanta. Pokud fakturace není požadavkem, doporučuje se použít jednu z dalších možností popsaných v tomto článku.

@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 12/02/2020
 ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97355137"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Vytvoření nabídky Dynamics 365 for Operations
@@ -129,7 +129,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 6. Podmínky použití
 7. Zásady ochrany osobních údajů
 8. Název nabídky
-9. Popis
+9. Description
 10. Snímky obrazovky a videa
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
@@ -265,7 +265,7 @@ Odpovězte na **Ano** , pokud se text v řešení dá přeložit do jiných jazy
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 

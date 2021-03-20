@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
 ms.openlocfilehash: aad2e80598146be7b45a8a7b8a02cfe050163102
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340936"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastické škálování účtu Azure Cosmos DB rozhraní API Cassandra
@@ -40,7 +40,7 @@ Pokud potřebujete minimalizovat latenci, existuje spektrum možností správy �
 
 Následující části vysvětlují výhody a nevýhody jednotlivých přístupů. Pak se můžete rozhodnout, co nejlepší strategii pro vyrovnání požadavků na škálování vašeho systému, celkových nákladů a potřeb efektivity pro vaše řešení.
 
-## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Použití webu Azure Portal
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Použití Azure Portal
 
 Prostředky můžete škálovat v Azure Cosmos DB rozhraní API Cassandra účet pomocí Azure Portal. Další informace najdete v článku o [zřízení propustnosti v kontejnerech a databázích](set-throughput.md). Tento článek vysvětluje relativní výhody nastavení propustnosti na úrovni [databáze](set-throughput.md#set-throughput-on-a-database) nebo [kontejneru](set-throughput.md#set-throughput-on-a-container) v Azure Portal. Výrazy "Database" a "Container" zmíněné v těchto článcích jsou mapovány na "místo" a "Tabulka" v tomto rozhraní API Cassandra.
 

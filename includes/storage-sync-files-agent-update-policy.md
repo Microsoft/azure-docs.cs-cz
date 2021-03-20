@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
 ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77123219"
 ---
-Agent Azure File Sync se pravidelně aktualizuje, aby bylo možné přidat nové funkce a vyřešit problémy. Doporučujeme, abyste nakonfigurovali Microsoft Update, abyste získali aktualizace pro agenta Azure File Sync, jak jsou k dispozici.
+Agent Synchronizace souborů Azure se pravidelně aktualizuje, aby bylo možné přidat nové funkce a vyřešit problémy. Doporučujeme, abyste nakonfigurovali Microsoft Update, abyste získali aktualizace pro agenta Synchronizace souborů Azure, jak jsou k dispozici.
 
 #### <a name="major-vs-minor-agent-versions"></a>Hlavní verze agentů vs.
 * Hlavní verze agenta často obsahují nové funkce a v první části čísla verze se zvyšuje číslo. Příklad: \* 2. \* .\*\*
 * Dílčí verze agenta se také nazývají "opravy" a jsou vydávány častěji než hlavní verze. Často obsahují opravy chyb a menší vylepšení, ale žádné nové funkce. Příklad: \* \* . 3.\*\*
 
 #### <a name="upgrade-paths"></a>Cesty upgradu
-Existují čtyři schválené a testované způsoby, jak nainstalovat aktualizace agenta Azure File Sync. 
+Existují čtyři schválené a testované způsoby, jak nainstalovat aktualizace agenta Synchronizace souborů Azure. 
 1. **Doporučeno Nakonfigurujte Microsoft Update pro automatické stažení a instalaci aktualizací agenta.**  
-    Vždycky doporučujeme, abyste provedli každou aktualizaci Azure File Sync, abyste měli jistotu, že máte přístup k nejnovějším opravám pro agenta serveru. Microsoft Update tento proces plynule provede automatickým stažením a instalací aktualizací.
+    Vždycky doporučujeme, abyste provedli každou aktualizaci Synchronizace souborů Azure, abyste měli jistotu, že máte přístup k nejnovějším opravám pro agenta serveru. Microsoft Update tento proces plynule provede automatickým stažením a instalací aktualizací.
 2. **Pomocí AfsUpdater.exe stáhnout a nainstalovat aktualizace agenta.**  
     AfsUpdater.exe se nachází v instalačním adresáři agenta. Dvakrát klikněte na spustitelný soubor ke stažení a instalaci aktualizací agenta. 
-3. **Opravte stávajícího agenta Azure File Sync pomocí souboru Microsoft Update opravy nebo spustitelného souboru. msp. Nejnovější balíček aktualizace Azure File Sync lze stáhnout z [katalogu Microsoft Update](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync).**  
-    Spuštění souboru. msp provede upgrade instalace Azure File Sync stejným způsobem použitým automaticky pomocí Microsoft Update v předchozí cestě upgradu. Použití opravy Microsoft Update provede místní upgrade instalace Azure File Sync.
-4. **Stáhněte si nejnovější Azure File Sync instalátor agenta z webu [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257).**  
-    Pokud chcete upgradovat existující instalaci agenta Azure File Sync, odinstalujte starší verzi a pak nainstalujte nejnovější verzi ze staženého instalačního programu. Služba Azure File Sync Installer udržuje registraci serveru, skupiny synchronizace a všechna ostatní nastavení.
+3. **Opravte stávajícího agenta Synchronizace souborů Azure pomocí souboru Microsoft Update opravy nebo spustitelného souboru. msp. Nejnovější balíček aktualizace Synchronizace souborů Azure lze stáhnout z [katalogu Microsoft Update](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync).**  
+    Spuštění souboru. msp provede upgrade instalace Synchronizace souborů Azure stejným způsobem použitým automaticky pomocí Microsoft Update v předchozí cestě upgradu. Použití opravy Microsoft Update provede místní upgrade instalace Synchronizace souborů Azure.
+4. **Stáhněte si nejnovější Synchronizace souborů Azure instalátor agenta z webu [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257).**  
+    Pokud chcete upgradovat existující instalaci agenta Synchronizace souborů Azure, odinstalujte starší verzi a pak nainstalujte nejnovější verzi ze staženého instalačního programu. Služba Synchronizace souborů Azure Installer udržuje registraci serveru, skupiny synchronizace a všechna ostatní nastavení.
 
 #### <a name="automatic-agent-lifecycle-management"></a>Automatické řízení životního cyklu agentů
 S agentem verze 6 zavedl tým synchronizace souborů funkci automatického upgradu agenta. Můžete vybrat kterýkoli ze dvou režimů a určit časové období údržby, ve kterém se upgrade na serveru bude pokoušet. Tato funkce je navržená tak, aby vám pomohla se správou životního cyklu agentů tím, že poskytuje guardrail, který brání vašemu vypršení platnosti vašeho agenta, nebo umožňuje neaktuální nastavení.
@@ -56,7 +56,7 @@ Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest
 ```
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>Životní cyklus agenta a záruky správy změn
-Azure File Sync je cloudová služba, která průběžně přináší nové funkce a vylepšení. To znamená, že konkrétní verzi agenta Azure File Sync lze podporovat pouze po dobu omezeného času. V zájmu usnadnění nasazení vám následující pravidla zaručují dostatek času a oznámení, aby bylo možné v procesu správy změn zajišťovat aktualizace a upgrady agenta:
+Synchronizace souborů Azure je cloudová služba, která průběžně přináší nové funkce a vylepšení. To znamená, že konkrétní verzi agenta Synchronizace souborů Azure lze podporovat pouze po dobu omezeného času. V zájmu usnadnění nasazení vám následující pravidla zaručují dostatek času a oznámení, aby bylo možné v procesu správy změn zajišťovat aktualizace a upgrady agenta:
 
 - Hlavní verze agenta se podporují aspoň po dobu šesti měsíců od data prvotní verze.
 - U podpory hlavních verzí agentů garantujeme, že se překrývá aspoň tři měsíce. 

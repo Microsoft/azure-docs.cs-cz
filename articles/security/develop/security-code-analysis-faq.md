@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879911"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
@@ -26,7 +26,7 @@ Máte nějaké otázky? Další informace najdete v následujících nejčastěj
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Můžu nainstalovat rozšíření na mou instanci sady Visual Studio Team Foundation Server místo v instanci Azure DevOps?
 
-Ne. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio Team Foundation Server.
+No. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio Team Foundation Server.
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Musím v mém buildu spustit analýzu kódu zabezpečení od Microsoftu? 
 
@@ -55,7 +55,7 @@ Patrné rozdíly:
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Můžu spustit úlohu sestavení, jako je třeba skener přihlašovacích údajů v rámci několika úložišť v sestavení Azure DevOps?
 
-Ne. Používání nástrojů pro bezpečné vývoj v různých úložištích v jednom kanálu se nepodporuje.
+No. Používání nástrojů pro bezpečné vývoj v různých úložištích v jednom kanálu se nepodporuje.
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>Zadaný výstupní soubor se nevytváří nebo nejde najít zadaný výstupní soubor.
 
@@ -90,7 +90,7 @@ Po jejich instalaci budou úkoly sestavení zabezpečení poskytované rozšíř
 
 ### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Mění se v instalaci rozšíření moje existující Azure Pipelines? 
 
-Ne. Instalace rozšíření zpřístupňuje úlohy sestavení zabezpečení pro přidání do vašich kanálů. Stále je nutné přidat nebo aktualizovat definice sestavení, aby nástroje mohly pracovat s procesem sestavení.
+No. Instalace rozšíření zpřístupňuje úlohy sestavení zabezpečení pro přidání do vašich kanálů. Stále je nutné přidat nebo aktualizovat definice sestavení, aby nástroje mohly pracovat s procesem sestavení.
 
 ## <a name="task-specific-faq"></a>Nejčastější dotazy ke konkrétním úlohám
 
@@ -192,11 +192,11 @@ Hledání obsahu je definováno následujícím způsobem:
 
 #### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>Co jsou běžné chyby při použití úlohy analyzátorů Roslyn?
 
-##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>Projekt se obnovil s použitím nesprávné verze Microsoft. NETCore. app.
+##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>Projekt se obnovil pomocí nesprávné verze Microsoft.NETCore.App.
 
 Úplná chybová zpráva:
 
-"Chyba: projekt se obnovil pomocí Microsoft. NETCore. app verze *x. x. x*, ale s aktuálním nastavením se místo toho použije verze *y. y. y* . Chcete-li tento problém vyřešit, zajistěte, aby se pro obnovení používalo stejné nastavení a pro následné operace, jako je například sestavení nebo publikování. K tomuto problému obvykle dochází, pokud je vlastnost RuntimeIdentifier nastavena během sestavování nebo publikování, ale nikoli během obnovení. "
+"Chyba: projekt se obnovil pomocí Microsoft.NETCore.App verze *x. x. x*, ale s aktuálním nastavením se místo toho použije verze *y. y. y* . Chcete-li tento problém vyřešit, zajistěte, aby se pro obnovení používalo stejné nastavení a pro následné operace, jako je například sestavení nebo publikování. K tomuto problému obvykle dochází, pokud je vlastnost RuntimeIdentifier nastavena během sestavování nebo publikování, ale nikoli během obnovení. "
 
 Vzhledem k tomu, že se úlohy analyzátorů Roslyn spouštějí jako součást kompilace, musí být zdrojový strom na sestavovacím počítači ve stavu pro sestavení.
 

@@ -9,10 +9,10 @@ ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339831"
 ---
 # <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn
@@ -55,7 +55,7 @@ Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení
 > [!NOTE]
 > Estimator kanálu změn není nutné nasazovat jako součást procesoru změny kanálu ani být součástí stejného projektu. Může být nezávislý a musí běžet v zcela jiné instanci. Stačí použít stejný název a konfiguraci zapůjčení.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

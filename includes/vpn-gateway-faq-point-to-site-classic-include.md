@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3c1e34bb418f9be2e26afc117343f1fa50bd8566
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76309029"
 ---
 Tyto nejčastější dotazy se vztahují na připojení P2S, která používají model nasazení Classic.
@@ -31,7 +31,7 @@ Podporovány jsou následující operační systémy:
 
 ### <a name="can-i-use-any-software-vpn-client-that-supports-sstp-for-point-to-site"></a>Můžu použít libovolného softwarového klienta sítě VPN, který podporuje SSTP pro připojení Point-to-site?
 
-Ne. Podpora je omezená jenom na uvedené verze operačního systému Windows.
+No. Podpora je omezená jenom na uvedené verze operačního systému Windows.
 
 ### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>Kolik koncových bodů klienta VPN může existovat v konfiguraci typu Point-to-site?
 
@@ -52,7 +52,7 @@ Ve výchozím nastavení klientský počítač automaticky znovu nevytvoří př
 
 ### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients"></a>Podporuje Point-to-site automatické obnovení připojení a DDNS na klientech VPN?
 
-Ne. Automatické opětovné připojení a DDNS se v tuto chvíli nepodporují u sítí VPN typu Point-to-site.
+No. Automatické opětovné připojení a DDNS se v tuto chvíli nepodporují u sítí VPN typu Point-to-site.
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-for-the-same-virtual-network"></a>Můžu mít pro stejnou virtuální síť konfigurace site-to-site a Point-to-site?
 

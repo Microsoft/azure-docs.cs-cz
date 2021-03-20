@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91948931"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
@@ -34,13 +34,13 @@ U parametrů se rozlišují malá a velká písmena.
 
 | Název parametru     | Description |
 |--------------------|-------------|
-| `defaultLanguageCode` |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/><br/>Podporované jazyky: <br/>*EN* -angličtina (výchozí) <br/> *ES* – španělština <br/> *ja* Japonsko – japonština <br/> *PT* – portugalština <br/> *zh* – zjednodušená čínština|
+| `defaultLanguageCode` |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/><br/>Podporované jazyky: <br/>*EN* -angličtina (výchozí) <br/> *ES* – španělština <br/>  Japonsko – japonština <br/> *PT* – portugalština <br/> *zh* – zjednodušená čínština|
 | `visualFeatures` |    Pole řetězců udávající typy vizuálních funkcí, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li>*dospělý* – zjistí, jestli je obrázek pornografickýý (znázorňuje nahotu nebo sex), nebo je gorie (znázorňuje extrémní násilí nebo krev). Zjistila se také sexuální sugestivní obsah (označovaný také jako obsah pikantní).</li><li>*značky* – detekuje různé značky v rámci obrázku, včetně přibližného umístění. Funkce vizuálních *značek* je k dispozici pouze v angličtině.</li><li> *Categories* – roztřídí obsah obrázků podle taxonomie definované v [dokumentaci Cognitive Services počítačové zpracování obrazu](../cognitive-services/computer-vision/category-taxonomy.md). </li><li>*Popis* – popisuje obsah obrázku s úplnou větou v podporovaných jazycích.</li><li>*obličeje* – zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygeneruje souřadnice, pohlaví a stáří.</li><li>  *objekty* – detekuje různé objekty v rámci obrázku, včetně přibližného umístění. Funkce vizuálů *objektů* je k dispozici pouze v angličtině.</li><li> *Tags* – Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.</li></ul> Názvy vizuálních funkcí rozlišují velká a malá písmena. Všimněte si, že vizuální funkce *Color* a *ImageType* se už nepoužívají, ale k této funkci můžete přistupovat prostřednictvím [vlastní dovednosti](./cognitive-search-custom-skill-interface.md).|
 | `details` | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné. </li></ul> |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                                          |
+| Název vstupu      | Description                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem Azure Blob, pokud ```imageAction``` je nastavena na jinou hodnotu než ```none``` . Další informace najdete v [ukázce](#sample-output) .|
 
@@ -512,7 +512,7 @@ Můžete definovat mapování polí pro výstup na vlastnosti nižší úrovně,
 ## <a name="error-cases"></a>Chybové případy
 V následujících chybových případech nejsou extrahovány žádné prvky.
 
-| Kód chyby | Popis |
+| Kód chyby | Description |
 |------------|-------------|
 | `NotSupportedLanguage` | Zadaný jazyk není podporován. |
 | `InvalidImageUrl` | Adresa URL obrázku je chybně naformátovaná nebo není přístupná.|

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77194275"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Co je Enterprise State Roaming?
@@ -28,7 +28,7 @@ S Windows 10 uživatelé [Azure Active Directory (Azure AD)](../fundamentals/act
 
 Enterprise State Roaming je k dispozici ve více oblastech Azure. Aktualizovaný seznam dostupných oblastí najdete na stránce [služby Azure podle oblastí](https://azure.microsoft.com/regions/#services) v části Azure Active Directory.
 
-| Článek | Popis |
+| Článek | Description |
 | --- | --- |
 | [Povolení služby Enterprise State Roaming v Azure Active Directory](enterprise-state-roaming-enable.md) |Enterprise State Roaming je k dispozici pro libovolnou organizaci s předplatným Premium Azure Active Directory (Azure AD). Další informace o tom, jak získat předplatné služby Azure AD, najdete na stránce [produktu Azure AD](https://azure.microsoft.com/services/active-directory) . |
 | [Nejčastější dotazy k nastavení a datovému roamingu](enterprise-state-roaming-faqs.md) |Tento článek obsahuje odpovědi na některé otázky, které správci IT můžou narazit na nastavení a synchronizaci dat aplikace. |

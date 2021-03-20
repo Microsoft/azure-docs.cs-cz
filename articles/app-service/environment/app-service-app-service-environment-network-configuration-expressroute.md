@@ -8,10 +8,10 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961818"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Podrobnosti o konfiguraci sítě pro App Service Environment pro PowerApps s Azure ExpressRoute
@@ -85,9 +85,9 @@ Informace o tom, jak vytvořit a nakonfigurovat uživatelsky definované trasy, 
 
 Tato část ukazuje příklad konfigurace UDR pro App Service Environment.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-* Nainstalujte Azure PowerShell na [stránce soubory ke stažení pro Azure][AzureDownloads]. Vyberte soubor ke stažení s datem od června 2015 nebo novějším. V části **nástroje příkazového řádku**  >  **Windows PowerShell**vyberte **instalovat** a nainstalujte nejnovější rutiny PowerShellu.
+* Nainstalujte Azure PowerShell na [stránce soubory ke stažení pro Azure][AzureDownloads]. Vyberte soubor ke stažení s datem od června 2015 nebo novějším. V části **nástroje příkazového řádku**  >  **Windows PowerShell** vyberte **instalovat** a nainstalujte nejnovější rutiny PowerShellu.
 
 * Vytvořte jedinečnou podsíť pro výhradní použití pomocí App Service Environment. Jedinečná podsíť zajišťuje, že udr, který se použije pro podsíť, otevírá odchozí provoz jenom pro App Service Environment.
 

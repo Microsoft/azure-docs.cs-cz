@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 0e1cb33ca0a5fb9a1c7ddb2c4625dfef4acd3a1e
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627393"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
@@ -23,7 +23,7 @@ Tabulka shrnuje podporované scénáře zjišťování, hodnocení a migrace.
 
 **Nasazení** | **Podrobnosti** 
 --- | --- 
-**Rozpoznávání** | Můžete zjistit metadata počítače a dynamická data o výkonu.
+**Zjišťování** | Můžete zjistit metadata počítače a dynamická data o výkonu.
 **Zjišťování aplikací** | Můžete zjišťovat aplikace, role a funkce spuštěné na virtuálních počítačích VMware. V tuto chvíli je tato funkce omezená jenom na zjišťování. Posouzení je aktuálně na úrovni počítače. Ještě nenabízíme vyhodnocení na základě aplikací, rolí nebo funkcí. 
 **Posouzení** | Vyhodnoťte místní úlohy a data běžící na virtuálních počítačích VMware, virtuálních počítačích Hyper-V a fyzických serverech. Vyhodnotit pomocí Azure Migrate: posouzení serveru, Microsoft Data Migration Assistant (DMA) i další nástroje a nabídky ISV.
 **Migrace** | Migrujte úlohy a data spuštěná na fyzických serverech, virtuálních počítačích VMware, virtuálních počítačích Hyper-V, fyzických serverech a cloudových virtuálních počítačích do Azure. Migrace pomocí Azure Migrate: Server Assessment and Azure Database Migration Service (DMS) a také další nástroje a nabídky ISV.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
 ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84343213"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Hlavičky protokolu HTTP specifické pro Verizon pro modul pravidel pro Azure CDN
@@ -37,12 +37,12 @@ Hlavička požadavku | Popis | Příklad
 ---------------|-------------|--------
 [Vedení](#via-request-header) | Identifikuje server POP, který odeslal požadavek na zdrojový server. | Protokol HTTP/1.1 ECS (DCA/1A2B)
 X-předané – pro | Určuje IP adresu žadatele.| 10.10.10.10
-X-předáno – proto | Označuje protokol žádosti. | HTTP
+X-předáno – proto | Označuje protokol žádosti. | http
 X-host | Určuje název hostitele žádosti. | cdn.mydomain.com
 X – Midgress | Určuje, zda byl požadavek proxy serverem prostřednictvím dalšího serveru CDN. Například server, který je na serveru POP nebo server brány POP serveru pro a. <br />Tato hlavička se přidá do žádosti pouze v případě, že dojde k midgress provozu. V tomto případě je hlavička nastavená na hodnotu 1, aby označovala, že žádost byla proxy serverem prostřednictvím dalšího serveru CDN.| 1
 [Hostitel](#host-request-header) | Identifikuje hostitele a port, kde může být nalezen požadovaný obsah. | marketing.mydomain.com:80
 [X-Gateway – seznam](#x-gateway-list-request-header) | A: identifikuje seznam převzetí služeb při selhání serverů brány a přiřazených ke zdroji zákazníka. <br />Počátek štítku: označuje sadu počátečních ochranných serverů přiřazených ke zdroji zákazníka. | `icn1,hhp1,hnd1`
-X-EC –_ &lt; název &gt; _ | Hlavičky požadavku začínající *x-EC* (například x-EC-tag, [x-EC-Debug](cdn-http-debug-headers.md)) jsou vyhrazené pro použití v CDN.| WAF-produkční
+X-EC –_&lt; název &gt;_ | Hlavičky požadavku začínající *x-EC* (například x-EC-tag, [x-EC-Debug](cdn-http-debug-headers.md)) jsou vyhrazené pro použití v CDN.| WAF-produkční
 
 ## <a name="via-request-header"></a>Přes hlavičku žádosti
 Formát, pomocí kterého `Via` Hlavička požadavku identifikuje server POP, je určen následující syntaxí:

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87025587"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
@@ -86,7 +86,7 @@ Zařízení, která jsou připojená k Azure AD nebo hybridní služba Azure AD,
 
 Získání zařízení v rámci služby Azure AD se dá provádět samoobslužným způsobem nebo řízeným procesem zřizování správců.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Správa identit zařízení ve službě Azure AD vám umožní:
 

@@ -8,10 +8,10 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
 ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880266"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikování integrovaného řešení
@@ -39,7 +39,7 @@ Přehled programu integrovaných řešení najdete v části [video s přehledem
     - Integrace aplikací
     - Správa životního cyklu aplikací
     - Cloudová platforma
-    - Analýza dat
+    - Datové analýzy
     - Datové centrum
     - Datová platforma
     - DevOps
@@ -55,7 +55,7 @@ Partneři, kteří chtějí účast v programu, by měli identifikovat jiné par
 
 ## <a name="develop-an-integrated-solution"></a>Vývoj integrovaného řešení
 
-Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte následovně:
+Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte takto:
 
 1. Dokončete klíčové obchodní a technické diskuze ve formátu dílny, abyste mohli definovat řešení a integrační přístup.
 
@@ -64,7 +64,7 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     * Cílové zákazníky
     * Pozice hodnoty
     * Ceny
-    * Licensing
+    * Licencování
     * podmínky a ujednání
     * Přístup k podpoře
     * Marketingové aktivity
@@ -76,7 +76,7 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     * Architektura řešení
     * Authentication
     * Uživatelské rozhraní
-    * Sledování
+    * Monitorování
     * Mechanismus nasazení
     * Rozhraní API
     * Sjednocené úložiště dat

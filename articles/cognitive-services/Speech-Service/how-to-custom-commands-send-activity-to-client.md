@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566091"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Odeslat aktivitu vlastních příkazů klientské aplikaci
@@ -26,7 +26,7 @@ Dokončili jste následující úkoly:
 - Definování a odeslání vlastní datové části JSON z aplikace Custom Commands
 - Příjem a vizualizace vlastního obsahu datové části JSON z klientské aplikace sady Speech pro rozpoznávání řeči v C#
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) nebo vyšší. Tato příručka používá Visual Studio 2019
 > * Klíč předplatného Azure pro službu Speech: [Získejte ho zdarma](overview.md#try-the-speech-service-for-free) nebo si ho vytvořte na webu [Azure Portal](https://portal.azure.com)
@@ -57,7 +57,7 @@ Dokončili jste následující úkoly:
 
 V tématu [Postupy: nastavení klientské aplikace pomocí sady Speech SDK (Preview)](./how-to-custom-commands-setup-speech-sdk.md)jste vytvořili klientskou aplikaci UWP se sadou Speech SDK, která zpracovává příkazy `turn on the tv` , jako je například `turn off the fan` . V případě přidaných vizuálů vidíte výsledek těchto příkazů.
 
-Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná** , přidejte následující blok XML StackPanel do `MainPage.xaml` .
+Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná**, přidejte následující blok XML StackPanel do `MainPage.xaml` .
 
 ```xml
 <StackPanel Orientation="Vertical" H......>
@@ -85,8 +85,8 @@ Chcete-li přidat pole s popiskem s textem, **který označuje nebo** **vypíná
 Vzhledem k tomu, že jste vytvořili datovou část JSON, je nutné přidat odkaz na knihovnu [JSON.NET](https://www.newtonsoft.com/json) pro zpracování deserializace.
 
 1. Napravo od klienta vaše řešení.
-1. Zvolte možnost **Spravovat balíčky NuGet pro řešení** , vyberte **Procházet** . 
-1. Pokud jste již nainstalovali **Newtonsoft.jsna** , ujistěte se, že je její verze alespoň 12.0.3. Pokud ne, klikněte na **Spravovat balíčky NuGet pro řešení – aktualizace** a vyhledejte **Newtonsoft.jsna** webu. Tato příručka používá verzi 12.0.3.
+1. Zvolte možnost **Spravovat balíčky NuGet pro řešení**, vyberte **Procházet** . 
+1. Pokud jste již nainstalovali **Newtonsoft.jsna**, ujistěte se, že je její verze alespoň 12.0.3. Pokud ne, klikněte na **Spravovat balíčky NuGet pro řešení – aktualizace** a vyhledejte **Newtonsoft.jsna** webu. Tato příručka používá verzi 12.0.3.
 
     > [!div class="mx-imgBorder"]
     > ![Datová část aktivity odeslání](media/custom-commands/send-activity-to-client-json-nuget.png)

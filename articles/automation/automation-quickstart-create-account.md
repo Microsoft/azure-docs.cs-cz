@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: a07c6ac524aa213519ace1ae204ac2d76db802aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83836698"
 ---
 # <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
@@ -21,7 +21,7 @@ Tento rychlý Start vás provede vytvořením účtu Automation a spuštěním R
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-[Přihlaste se k Azure](https://portal.azure.com).
+[Přihlaste se do Azure](https://portal.azure.com).
 
 ## <a name="create-automation-account"></a>Vytvoření účtu Automation
 
@@ -32,7 +32,7 @@ Tento rychlý Start vás provede vytvořením účtu Automation a spuštěním R
 
 2. Klikněte na tlačítko **vytvořit prostředek** v levém horním rohu Azure Portal.
 
-3. Vyberte **& nástroje pro správu**a pak vyberte **Automation**.
+3. Vyberte **& nástroje pro správu** a pak vyberte **Automation**.
 
 4. Zadejte informace o účtu, včetně vybraného názvu účtu. U možnosti **Vytvořit účet Spustit v Azure jako** zvolte **Ano**, aby se automaticky povolily artefakty, které zjednoduší ověřování do Azure. Po dokončení informací kliknutím na **vytvořit** spusťte nasazení účtu Automation.
 
@@ -51,7 +51,7 @@ Tento rychlý Start vás provede vytvořením účtu Automation a spuštěním R
 
 Spusťte některý z runbooků pro tento kurz.
 
-1. V části **Automatizace procesu**klikněte na **Runbooky** . Zobrazí se seznam runbooků. Ve výchozím nastavení jsou v účtu povoleny různé Runbooky kurzů.
+1. V části **Automatizace procesu** klikněte na **Runbooky** . Zobrazí se seznam runbooků. Ve výchozím nastavení jsou v účtu povoleny různé Runbooky kurzů.
 
     ![Seznam runbooků v účtu Automation](./media/automation-quickstart-create-account/automation-runbooks-overview.png)
 

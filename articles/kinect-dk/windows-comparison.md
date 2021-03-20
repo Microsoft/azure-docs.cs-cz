@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, porovnání, SDK, rozdíly, hardware, software
 ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87031571"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Porovnání Azure Kinect a Kinect Windows v2
@@ -22,7 +22,7 @@ Nástroje pro vývoj hardwaru a softwaru ve službě Azure Kinect DK mají rozd�
 
 V následující tabulce jsou uvedeny rozdíly vysoké úrovně mezi službou Azure Kinect Development Kit a Kinect pro Windows v2.
 
-| Příznak | Typ | Azure Kinect DK | Kinect pro Windows v2 |
+| Funkce | Typ | Azure Kinect DK | Kinect pro Windows v2 |
 | ------- | ---- | --------------- | --------------------- |
 | **Zvuk** | Podrobnosti  | 7. kruhové pole MIC | 4 – lineární pole s podporou MIC |
 | **Snímač pohybu** | Podrobnosti | Gyro na 3 osy akcelerometr – osa 3 | akcelerometr – 3 osy |
@@ -48,7 +48,7 @@ Následující tabulka poskytuje porovnání funkcí přístupu snímače zaří
 |---------|---------|------------|---------|
 | **Úrovní** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |
-| **Color** | ✔️ | ✔️ | Formát barev podporuje rozdíly, Azure Kinect DK podporuje tyto ovládací prvky kamery: expozici, vyvážení bílé, jas, kontrast, sytost, ostrost a řízení získání. |
+| **Barva** | ✔️ | ✔️ | Formát barev podporuje rozdíly, Azure Kinect DK podporuje tyto ovládací prvky kamery: expozici, vyvážení bílé, jas, kontrast, sytost, ostrost a řízení získání. |
 | **Zvuk** | ✔️ | ✔️ | K Azure Kinect DK MICS se dostanete prostřednictvím sady Speech SDK nebo rozhraní API systému Windows Native. |
 | **IMU** | ✔️ |  | Azure Kinect DK má plné IMU na ose 6 a Kinect pro Windows poskytuje jenom 1 osu. |
 | **Data kalibrace** | ✔️ | ✔️ | Kalibrace modelu kamery kompatibilního s OpenCV |
@@ -71,7 +71,7 @@ Sada funkcí sady Azure Kinect SDK se liší od Kinect pro Windows v2, jak je po
 | | BodyIndexFrame | Sada SDK pro sledování textu  |
 | Mapování souřadnic|CoordinateMapper| [SADA senzorů – transformace obrázků](use-image-transformation.md) |
 |Sledování obličeje | FaceFrame | [Cognitive Services: Face](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    Rozpoznávání řeči    |    Není k dispozici                      |    [Cognitive Services: řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    Rozpoznávání řeči    |    –                      |    [Cognitive Services: řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>Další kroky
 

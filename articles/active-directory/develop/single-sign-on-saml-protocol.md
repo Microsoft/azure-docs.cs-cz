@@ -15,13 +15,13 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950665"
 ---
-# <a name="single-sign-on-saml-protocol"></a>Jeden Sign-On protokol SAML
+# <a name="single-sign-on-saml-protocol"></a>Protokol SAML pro jednotné přihlašování
 
 Tento článek popisuje žádosti o ověření SAML 2,0 a odpovědi, které Azure Active Directory (Azure AD) podporuje pro jednotné Sign-On (SSO).
 
@@ -48,9 +48,9 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Parametr | Typ | Popis |
 | --- | --- | --- |
-| ID | Povinné | Azure AD používá tento atribut k naplnění `InResponseTo` atributu vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platný identifikátor. |
-| Verze | Povinné | Tento parametr by měl být nastaven na **2,0**. |
-| IssueInstant | Povinné | Toto je řetězec DateTime s hodnotou UTC a [formátem Round-Trip ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD očekává hodnotu DateTime tohoto typu, ale nevyhodnotí ani nepoužije hodnotu. |
+| ID | Vyžadováno | Azure AD používá tento atribut k naplnění `InResponseTo` atributu vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platný identifikátor. |
+| Verze | Vyžadováno | Tento parametr by měl být nastaven na **2,0**. |
+| IssueInstant | Vyžadováno | Toto je řetězec DateTime s hodnotou UTC a [formátem Round-Trip ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD očekává hodnotu DateTime tohoto typu, ale nevyhodnotí ani nepoužije hodnotu. |
 | AssertionConsumerServiceURL | Volitelné | Je-li tento parametr zadán, musí odpovídat `RedirectUri` cloudové službě ve službě Azure AD. |
 | ForceAuthn | Volitelné | Jedná se o logickou hodnotu. Pokud má hodnotu true, znamená to, že se uživatel bude nuceně znovu ověřovat, i když má platnou relaci se službou Azure AD. |
 | Podpasse | Volitelné | Jedná se o logickou hodnotu, která určuje, jestli má služba Azure AD bez zásahu uživatele ověřit uživatele bez ohledu na to, jestli existuje. Pokud je to pravda, Azure AD se pokusí ověřit uživatele pomocí souboru cookie relace. |
