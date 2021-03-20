@@ -8,17 +8,17 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91360884"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Co je Internet Analyzer? (Preview)
 
 Internet Analyzer je měřicí platforma na straně klienta, která testuje, jak se změní síťová infrastruktura, která má vliv na výkon vašich zákazníků. Ať už provádíte migraci z místního prostředí do Azure, nebo vyhodnocujete novou službu Azure, Internet Analyzer vám umožní využívat data vašich uživatelů a bohaté analýzy Microsoftu k tomu, abyste ještě před migrací lépe porozuměli vaší síťové architektuře v Azure a mohli ji optimalizovat.
 
-Internet Analyzer používá k měření latence od koncových uživatelů do vaší vybrané sady síťových cílů malý JavaScriptový klient vložený do vaší webové aplikace. tyto _koncové body_volají. Nástroj Internet Analyzer umožňuje nastavit vícenásobné souběžné testy, což vám umožní vyhodnotit celou řadu scénářů, které se vaše infrastruktura a zákaznická potřeba vyvíjí. Internet Analyzer poskytuje vlastní a předem nakonfigurované koncové body, které vám poskytnou pohodlí a flexibilitu při rozhodování o důvěryhodných vznesených uživatelích. 
+Internet Analyzer používá k měření latence od koncových uživatelů do vaší vybrané sady síťových cílů malý JavaScriptový klient vložený do vaší webové aplikace. tyto _koncové body_ volají. Nástroj Internet Analyzer umožňuje nastavit vícenásobné souběžné testy, což vám umožní vyhodnotit celou řadu scénářů, které se vaše infrastruktura a zákaznická potřeba vyvíjí. Internet Analyzer poskytuje vlastní a předem nakonfigurované koncové body, které vám poskytnou pohodlí a flexibilitu při rozhodování o důvěryhodných vznesených uživatelích. 
 
 
 > [!IMPORTANT]
@@ -36,7 +36,7 @@ Můžete buď nakonfigurovat vlastní koncový bod, nebo vybrat z nejrůznějš�
 Během období Preview jsou k dispozici následující předem nakonfigurované koncové body: 
 
 * **Oblasti Azure**
-    * Brazil South
+    * Brazílie – jih
     * Indie – střed
     * USA – střed
     * Východní Asie

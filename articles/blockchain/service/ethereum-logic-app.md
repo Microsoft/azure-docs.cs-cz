@@ -5,10 +5,10 @@ ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
 ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96763787"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Použití konektoru Ethereem blockchain s Azure Logic Apps
@@ -177,12 +177,12 @@ Adresa koncového bodu RPC služby Azure blockchain se vyžaduje pro připojení
 
 **Použití Azure Portal:**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejít na člena služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
     ![Stránka uzly transakce s výběrem (výchozí uzel)](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. Vyberte přístupové klíče **připojovacích řetězců**  >  **Access keys**.
+1. Vyberte přístupové klíče **připojovacích řetězců**  >  .
 1. Zkopírujte adresu koncového bodu z **https (přístupový klíč 1)** nebo **https (přístupový klíč 2)**.
 
     ![Azure Portal pomocí přístupových klíčů připojovacího řetězce](./media/ethereum-logic-app/connection-string.png)

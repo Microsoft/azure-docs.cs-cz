@@ -10,10 +10,10 @@ ms.date: 02/08/2021
 ms.reviewer: sngun
 robots: noindex
 ms.openlocfilehash: bd244b0bb0aa5c5b2377b5a5675466645da3256c
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99982087"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB ke službě Azure Cosmos DB
@@ -26,7 +26,7 @@ Tento kurz nabízí dva způsoby, jak načíst informace o připojovacím řetě
 - [Metoda rychlý Start](#get-the-mongodb-connection-string-by-using-the-quick-start)pro použití s ovladači .net, Node.js, MongoDB Shell, Java a Python
 - [Metoda vlastního připojovacího řetězce](#get-the-mongodb-connection-string-to-customize)pro použití s jinými ovladači
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Pokud nemáte účet Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) hned teď.
 - Účet Cosmos. Pokyny najdete v tématu [Vytvoření webové aplikace pomocí rozhraní API Azure Cosmos DB pro MongoDB a .NET SDK](create-mongodb-dotnet.md).

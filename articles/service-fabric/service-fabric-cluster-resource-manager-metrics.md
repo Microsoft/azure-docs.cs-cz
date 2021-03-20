@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92173003"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a načítání v Service Fabric se metrikami
@@ -25,9 +25,9 @@ Příklady metrik se týkají například paměti, disku a využití procesoru. 
   - ReplicaCount – počet celkových stavových replik na uzlu
   - Count – počet všech objektů služby (bezstavových a stavových) na uzlu
 
-| Metrika | Bezstavová zátěžová instance | Stavové sekundární zatížení | Stavové primární zatížení | Hmotnost |
+| Metric | Bezstavová zátěžová instance | Stavové sekundární zatížení | Stavové primární zatížení | Hmotnost |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |Vysoké |
+| PrimaryCount |0 |0 |1 |Vysoká |
 | ReplicaCount |0 |1 |1 |Střední |
 | Počet |1 |1 |1 |Nízká |
 

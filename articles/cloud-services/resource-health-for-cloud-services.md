@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743504"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Podpora Resource Health (RHC) pro Azure Cloud Services (Classic)
@@ -50,7 +50,7 @@ Neznámý znamená, že agregovaný stav nasazení cloudové služby se nedá ur
 Vzhledem k tomu, že instance rolí jsou v podstatě virtuální počítače a pro instance role se znovu používají kontroly stavu virtuálních počítačů, termín pro virtuální počítač se používá k reprezentaci instancí rolí. 
 
 ## <a name="cloud-services-deployment-level-annotations--their-meanings"></a>Cloud Services (úroveň nasazení) poznámky & jejich významy
-| Poznámka | Popis | 
+| Poznámka | Description | 
 | --- | --- | 
 | K dispozici| Toto nasazení cloudové služby nemá vliv na žádné známé problémy s platformou Azure. |
 | Neznámý | V tuto chvíli nemůžeme určit stav tohoto nasazení cloudové služby. | 
@@ -63,7 +63,7 @@ Vzhledem k tomu, že instance rolí jsou v podstatě virtuální počítače a p
 | Neznámé a možná ovlivněné | V tuto chvíli nemůžeme určit stav tohoto nasazení cloudové služby. Příčinou může být probíhající výpadek služby Azure, který může mít vliv na tento virtuální počítač, který se při vyřešení výpadku automaticky obnoví. |
 
 ## <a name="cloud-services-role-instance-level-annotations--their-meanings"></a>Cloud Services (úroveň instance role) poznámky & jejich významy
-| Poznámka | Popis | 
+| Poznámka | Description | 
 | --- | --- | 
 | K dispozici | Tento virtuální počítač nemá vliv na žádné známé problémy s platformou Azure. | 
 | Neznámý | V tuto chvíli nemůžeme určit stav tohoto virtuálního počítače. |

@@ -7,10 +7,10 @@ ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94445148"
 ---
 # <a name="hierarchical-state-override"></a>Přepsání hierarchického stavu
@@ -28,32 +28,32 @@ Můžete například zvážit model automobilu a chcete přepnout celý automobi
 
 Pevná sada stavů, které lze přepsat, jsou následující:
 
-* **`Hidden`** : Odpovídající sítě v grafu scény jsou skryté nebo zobrazené.
-* **`Tint color`** : Vykreslený objekt může mít barevný nádech s jeho individuálním barevným nádechem a váhou odstínu. Následující obrázek ukazuje barevný nádech okraje kolečka.
+* **`Hidden`**: Odpovídající sítě v grafu scény jsou skryté nebo zobrazené.
+* **`Tint color`**: Vykreslený objekt může mít barevný nádech s jeho individuálním barevným nádechem a váhou odstínu. Následující obrázek ukazuje barevný nádech okraje kolečka.
   
   ![Barevný nádech použitý k zapnutí objektu zeleně](./media/color-tint.png)
 
-* **`See-through`** : Geometrie se vykresluje s poloviční transparentní, například k zobrazení vnitřních částí objektu. Následující obrázek ukazuje, že se celý automobil vykresluje v režimu zobrazení, s výjimkou červené brzdy Caliper:
+* **`See-through`**: Geometrie se vykresluje s poloviční transparentní, například k zobrazení vnitřních částí objektu. Následující obrázek ukazuje, že se celý automobil vykresluje v režimu zobrazení, s výjimkou červené brzdy Caliper:
 
   ![Režim zobrazení, který slouží k výběru vybraných objektů jako transparentní](./media/see-through.png)
 
   > [!IMPORTANT]
   > Efekt převádění funguje pouze v případě, že je použit [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* .
 
-* **`Shell`** : Geometrie se vykresluje jako transparentní a denasycené prostředí. Tento režim umožňuje podobu nedůležitých částí scény a přitom zachovat smysl tvaru a relativního umístění. Chcete-li změnit vzhled pro vykreslování prostředí, použijte stav [ShellRenderingSettings](shell-effect.md) . Podívejte se na následující obrázek pro model auta, který je zcela vykreslený, kromě modrých pružin:
+* **`Shell`**: Geometrie se vykresluje jako transparentní a denasycené prostředí. Tento režim umožňuje podobu nedůležitých částí scény a přitom zachovat smysl tvaru a relativního umístění. Chcete-li změnit vzhled pro vykreslování prostředí, použijte stav [ShellRenderingSettings](shell-effect.md) . Podívejte se na následující obrázek pro model auta, který je zcela vykreslený, kromě modrých pružin:
 
   ![Režim prostředí používaný pro zeslabení specifických objektů](./media/shell.png)
 
   > [!IMPORTANT]
   > Efekt prostředí funguje pouze v případě, že je použit [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* .
 
-* **`Selected`** : Geometrie je vykreslena s [obrysem výběru](outlines.md).
+* **`Selected`**: Geometrie je vykreslena s [obrysem výběru](outlines.md).
 
   ![Možnost obrysu, která slouží k zvýraznění vybrané části](./media/selection-outline.png)
 
-* **`DisableCollision`** : Geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **`Hidden`** Příznak nemá vliv na příznak stavu kolizí, takže tyto dva příznaky jsou často nastaveny dohromady.
+* **`DisableCollision`**: Geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **`Hidden`** Příznak nemá vliv na příznak stavu kolizí, takže tyto dva příznaky jsou často nastaveny dohromady.
 
-* **`UseCutPlaneFilterMask`** : Použijte bitovou masku pro jednotlivé filtry k řízení vyjmuté roviny výběru. Tento příznak určuje, zda má být použita nebo zděděna jednotlivá maska filtru ze své nadřazené položky. Bitová maska bitového filtru je nastavena prostřednictvím `CutPlaneFilterMask` Vlastnosti. Podrobné informace o tom, jak filtrování funguje, najdete v [odstavci selektivních vyjmutých ploch](cut-planes.md#selective-cut-planes). Podívejte se na následující příklad, kde pouze Tire a ráfk jsou vyjmuty, zatímco zbytek scény zůstává neovlivněný.
+* **`UseCutPlaneFilterMask`**: Použijte bitovou masku pro jednotlivé filtry k řízení vyjmuté roviny výběru. Tento příznak určuje, zda má být použita nebo zděděna jednotlivá maska filtru ze své nadřazené položky. Bitová maska bitového filtru je nastavena prostřednictvím `CutPlaneFilterMask` Vlastnosti. Podrobné informace o tom, jak filtrování funguje, najdete v [odstavci selektivních vyjmutých ploch](cut-planes.md#selective-cut-planes). Podívejte se na následující příklad, kde pouze Tire a ráfk jsou vyjmuty, zatímco zbytek scény zůstává neovlivněný.
 ![Selektivní vyjmuté plochy](./media/selective-cut-planes-hierarchical-override.png)
 
 

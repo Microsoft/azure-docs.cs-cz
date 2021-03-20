@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
 ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89568774"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Připojení k virtuálním počítačům Azure po převzetí služeb při selhání z místního prostředí 
@@ -137,11 +137,11 @@ Aby bylo možné tyto adresy zachovat, je zde postup.
 
 Před převzetím služeb při selhání zadejte nastavení sítě a IP adresu pro cílový virtuální počítač Azure.
 
-1.  V poli Recovery Services trezor – > **replikované položky**vyberte místní počítač.
-2. Na stránce **výpočty a síť** počítače klikněte na **Upravit**a nakonfigurujte nastavení sítě a adaptéru pro cílový virtuální počítač Azure.
-3. V **okně Vlastnosti sítě**vyberte cílovou síť, ve které se virtuální počítač Azure při vytvoření po převzetí služeb při selhání bude nacházet.
-4. V části **Síťová rozhraní**nakonfigurujte síťové adaptéry v cílové síti. Ve výchozím nastavení Site Recovery zobrazuje všechny zjištěné síťové karty na místním počítači.
-    - V poli **typ cílového síťového rozhraní** můžete nastavit každou síťovou kartu jako **primární**, **sekundární**nebo **nevytvořenou** , pokud nepotřebujete konkrétní síťovou kartu v cílové síti. Jeden síťový adaptér musí být nastaven jako primární pro převzetí služeb při selhání. Všimněte si, že změna cílové sítě má vliv na všechny síťové karty virtuálního počítače Azure.
+1.  V poli Recovery Services trezor – > **replikované položky** vyberte místní počítač.
+2. Na stránce **výpočty a síť** počítače klikněte na **Upravit** a nakonfigurujte nastavení sítě a adaptéru pro cílový virtuální počítač Azure.
+3. V **okně Vlastnosti sítě** vyberte cílovou síť, ve které se virtuální počítač Azure při vytvoření po převzetí služeb při selhání bude nacházet.
+4. V části **Síťová rozhraní** nakonfigurujte síťové adaptéry v cílové síti. Ve výchozím nastavení Site Recovery zobrazuje všechny zjištěné síťové karty na místním počítači.
+    - V poli **typ cílového síťového rozhraní** můžete nastavit každou síťovou kartu jako **primární**, **sekundární** nebo **nevytvořenou** , pokud nepotřebujete konkrétní síťovou kartu v cílové síti. Jeden síťový adaptér musí být nastaven jako primární pro převzetí služeb při selhání. Všimněte si, že změna cílové sítě má vliv na všechny síťové karty virtuálního počítače Azure.
     - Kliknutím na název síťové karty určete podsíť, do které se virtuální počítač Azure nasadí.
     - Proveďte **dynamické** přepsání pomocí privátní IP adresy, kterou chcete přiřadit k CÍLOVÉmu virtuálnímu počítači Azure. Pokud IP adresa není zadaná Site Recovery přiřadí k síťovému rozhraní při převzetí služeb při selhání další dostupnou IP adresu v podsíti.
     - [Přečtěte si další informace](site-recovery-manage-network-interfaces-on-premises-to-azure.md) o správě síťových adaptérů pro místní převzetí služeb při selhání do Azure.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95021962"
 ---
 # <a name="speech-service-for-telephony-data"></a>Služba řeči pro data telefonního subsystému
@@ -70,7 +70,7 @@ Naše kompletní latence je výrazně nízká pro různé technologie, jako je n
 
 Naše nové hlasy jsou také odlišitelné od lidského hlasy. Naše hlasy vám umožní dát své robot své jedinečné preference.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 
 Další sešívání analýz je identifikace interakcí, u kterých došlo k určité události nebo zkušenostem. To se obvykle provádí s jedním ze dvou přístupů; buď vyhledávání ad hoc, kde uživatel jednoduše zadá frázi a systém odpoví, nebo více strukturovaný dotaz, kde analytik může vytvořit sadu logických příkazů, které identifikují scénář ve volání, a potom každé volání může být indexováno proti této sadě dotazů. Dobrým příkladem hledání je příkaz všudypřítomný dodržování předpisů "Toto volání se bude zaznamenávat z hlediska kvality... ". Mnohé společnosti chtějí zajistit, aby jejich agenti poskytovali tomuto právnímu omezení zákazníkům před tím, než se volání skutečně zaznamená. Většina analytických systémů má schopnost trendu chování zjištěného pomocí algoritmů dotazu nebo vyhledávání a vytváření sestav trendů je nakonec jednou z nejdůležitějších funkcí analytického systému. V [adresáři služby pro rozpoznávání](https://azure.microsoft.com/services/cognitive-services/directory/search/) koncových služeb je možné výrazně zvýšit možnosti indexování a vyhledávání.
 
@@ -121,7 +121,7 @@ Dalším scénářem je přímá integrace s protokolem protokolu SIP (Session I
 
  Služba Speech funguje dobře s integrovanými modely. Můžete ale chtít ještě více přizpůsobit a vyladit prostředí pro svůj produkt nebo prostředí. Možnosti přizpůsobení jsou v rozsahu od ladění akustického modelu až po jedinečná hlasová písma pro vaši značku. Po vytvoření vlastního modelu ho můžete použít s kteroukoli funkcí služby Speech Service v reálném čase nebo v režimu dávky.
 
-| Služba Speech | Modelování | Popis |
+| Služba Speech | Modelování | Description |
 | -------------- | ----- | ----------- |
 | Převod řeči na text | [Akustický model](./how-to-custom-speech-train-model.md) | Vytvořte si vlastní akustický model pro aplikace, nástroje nebo zařízení, které se používají v různých prostředích, jako je třeba v kleci nebo v továrně, z nichž každá má konkrétní podmínky záznamu. Mezi příklady patří zvýrazněné rozpoznávání řeči, konkrétní šum na pozadí nebo použití konkrétního mikrofonu pro záznam. |
 |                | [Jazykový model](./how-to-custom-speech-train-model.md) | Vytvořte vlastní jazykový model pro zlepšení přepisu slovníku a gramatiky specifické pro konkrétní odvětví, jako je lékařské terminologie nebo žargonu. |

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 54790795aab8aac247e17198159130d7139dd38c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754652"
 ---
-# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Reakce na Správce prostředků upozornění na Azure Defender
+# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Reakce na upozornění Azure Defenderu pro Resource Manager
 
 Když obdržíte výstrahu od Azure Defenderu pro Správce prostředků, doporučujeme, abyste si vyšetřili a odpověděli na výstrahu, jak je popsáno níže. Azure Defender pro Správce prostředků chrání všechny připojené prostředky, takže i když jste obeznámeni s aplikací nebo uživatelem, který výstrahu aktivoval, je důležité ověřit situaci okolní s každou výstrahou.  
 

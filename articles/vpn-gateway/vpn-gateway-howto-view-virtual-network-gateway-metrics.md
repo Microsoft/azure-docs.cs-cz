@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
 ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89443173"
 ---
 # <a name="view-vpn-gateway-metrics"></a>Zobrazení metrik VPN Gateway
@@ -37,7 +37,7 @@ Brány VPN Azure můžete monitorovat pomocí Azure Monitor. Tento článek popi
 1. Přejděte na prostředek brány virtuální sítě na portálu.
 2. Výběrem **přehledu** zobrazíte celkový počet metrik příchozího tunelového propojení a odchozího přenosu dat.
 
-   ![Výběry pro vytvoření pravidla výstrahy](./media/vpn-gateway-howto-view-virtual-network-gateway-metrics/overview.png "Zobrazit")
+   ![Výběry pro vytvoření pravidla výstrahy](./media/vpn-gateway-howto-view-virtual-network-gateway-metrics/overview.png "Zobrazení")
 
 3. Pro zobrazení jakékoli jiné metriky uvedené výše. V rámci prostředku brány virtuální sítě klikněte na část **metriky** a vyberte metriku v rozevíracím seznamu.
 

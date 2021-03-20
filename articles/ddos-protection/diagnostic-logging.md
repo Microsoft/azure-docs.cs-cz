@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100591883"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Zobrazení a konfigurace protokolování diagnostiky DDoS
 
-Azure DDoS Protection Standard poskytuje podrobné přehledy a vizualizace útoků pomocí DDoSch analýz. Zákazníci, kteří chrání své virtuální sítě před útoky DDoS, mají podrobnější přehled o útokech na útoky a akcích podniknutých za účelem zmírnění útoku prostřednictvím sestav o zmírnění útoků, & protokolů pro zmírnění rizik. Bohatá telemetrie se zveřejňuje prostřednictvím Azure Monitor včetně podrobných metrik během doby trvání útoku DDoS. Výstrahy je možné nakonfigurovat pro libovolnou Azure Monitor metriky, které jsou vystavené v DDoS Protection. Protokolování se dá dál integrovat s [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics a Azure Storage pro pokročilou analýzu prostřednictvím rozhraní diagnostiky Azure monitor.
+Azure DDoS Protection Standard poskytuje podrobné přehledy a vizualizace útoků pomocí DDoSch analýz. Zákazníci, kteří chrání své virtuální sítě před útoky DDoS, mají podrobnější přehled o útokech na útoky a akcích podniknutých za účelem zmírnění útoku prostřednictvím sestav o zmírnění útoků, & protokolů pro zmírnění rizik. Bohatá telemetrie se zveřejňuje prostřednictvím Azure Monitor včetně podrobných metrik během doby trvání útoku DDoS. Upozornění je možné nakonfigurovat pro všechny metriky služby Azure Monitor zveřejněné službou DDoS Protection. Protokolování se dá dál integrovat s [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics a Azure Storage pro pokročilou analýzu prostřednictvím rozhraní diagnostiky Azure monitor.
 
 Pro Azure DDoS Protection Standard jsou k dispozici následující diagnostické protokoly: 
 
@@ -40,18 +40,18 @@ V tomto kurzu se naučíte:
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit [plán Azure DDoS Standard](manage-ddos-protection.md) a na virtuální síti musí být povolený DDoS Protection Standard.
-- DDoS sleduje veřejné IP adresy přiřazené k prostředkům v rámci virtuální sítě. Pokud ve virtuální síti nemáte žádné prostředky s veřejnými IP adresami, musíte nejdřív vytvořit prostředek s veřejnou IP adresou. Pro [služby Azure](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (včetně nástrojů pro vyrovnávání zatížení Azure, kde jsou virtuální počítače back-end ve virtuální síti), s výjimkou prostředí Azure App Service můžete monitorovat veřejnou IP adresu všech prostředků nasazených prostřednictvím Správce prostředků (ne Classic). Pokud chcete pokračovat v tomto kurzu, můžete rychle vytvořit virtuální počítač s [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linuxem](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .    
+- DDoS sleduje veřejné IP adresy přiřazené k prostředkům v rámci virtuální sítě. Pokud ve virtuální síti nemáte žádné prostředky s veřejnými IP adresami, musíte nejprve vytvořit prostředek s veřejnou IP adresou. Pro [služby Azure](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (včetně nástrojů pro vyrovnávání zatížení Azure, kde jsou virtuální počítače back-end ve virtuální síti), s výjimkou prostředí Azure App Service můžete monitorovat veřejnou IP adresu všech prostředků nasazených prostřednictvím Správce prostředků (ne Classic). Pokud chcete pokračovat v tomto kurzu, můžete rychle vytvořit virtuální počítač s [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linuxem](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .    
 
 ## <a name="configure-ddos-diagnostic-logs"></a>Konfigurace diagnostických protokolů DDoS
 
 Pokud chcete automaticky povolit protokolování diagnostiky u všech veřejných IP adres v rámci prostředí, přeskočte na [Povolit protokolování diagnostiky u všech veřejných IP adres](#enable-diagnostic-logging-on-all-public-ips).
 
-1. Vyberte **všechny služby** nahoře, vlevo na portálu.
-2. Do pole **Filtr** zadejte *monitor* . Když se **monitor** zobrazí ve výsledcích, vyberte ho.
-3. V části **Nastavení** vyberte **nastavení diagnostiky**.
+1. V levé horní části portálu vyberte **Všechny služby**.
+2. Do pole **Filtr** zadejte *Monitor*. Jakmile se ve výsledcích zobrazí služba **Monitor**, vyberte ji.
+3. V části **Nastavení** vyberte **Nastavení diagnostiky**.
 4. Vyberte **předplatné** a **skupinu prostředků** obsahující veřejnou IP adresu, kterou chcete protokolovat.
 5. Vyberte možnost **Veřejná IP adresa** pro **typ prostředku** a pak vyberte konkrétní veřejnou IP adresu, pro kterou chcete povolit protokoly.
-6. Vyberte **Přidat nastavení diagnostiky**. V části **Podrobnosti kategorie** vyberte tolik z následujících možností, které požadujete, a pak vyberte **Uložit**.
+6. Vyberte **Přidat nastavení diagnostiky**. V části **Podrobnosti o kategorii** vyberte libovolný počet požadovaných možností a pak vyberte **Uložit**.
 
     ![DDoS nastavení diagnostiky](./media/ddos-attack-telemetry/ddos-diagnostic-settings.png)
 

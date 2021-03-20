@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98569976"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Úvod k řešení potíží s prostředky v Azure Network Watcher
@@ -54,11 +54,11 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | PlannedMaintenance |  Probíhá údržba instance brány.  |Ne|
 | UserDrivenUpdate | Tato chyba nastane, když probíhá aktualizace uživatele. Aktualizací může být i operace, která spočívá ve změně velikosti. | Ne |
 | VipUnResponsive | K této chybě dojde, když se nepodaří spojení s primární instancí brány kvůli neúspěšné sondě stavu. | Ne |
-| PlatformInActive | Došlo k problému s platformou. | Ne|
-| ServiceNotRunning | Podkladová služba není spuštěná. | Ne|
-| NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Tato chyba je jenom upozornění.| Ne|
-| ConnectionsNotConnected | Připojení nejsou připojena. Tato chyba je jenom upozornění.| Ano|
-| GatewayCPUUsageExceeded | Aktuální využití procesoru brány je > 95%. | Ano |
+| PlatformInActive | Došlo k problému s platformou. | No|
+| ServiceNotRunning | Podkladová služba není spuštěná. | No|
+| NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Tato chyba je jenom upozornění.| No|
+| ConnectionsNotConnected | Připojení nejsou připojena. Tato chyba je jenom upozornění.| Yes|
+| GatewayCPUUsageExceeded | Aktuální využití procesoru brány je > 95%. | Yes |
 
 ### <a name="connection"></a>Připojení
 
@@ -68,15 +68,15 @@ V následujících tabulkách jsou uvedeny různé typy chyb (ID z předchozího
 | GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
 | PlannedMaintenance | Probíhá údržba instance brány.  |Ne|
 | UserDrivenUpdate | Tato chyba nastane, když probíhá aktualizace uživatele. Aktualizací může být i operace, která spočívá ve změně velikosti.  | Ne |
-| VipUnResponsive | K této chybě dojde, když se nepodaří spojení s primární instancí brány kvůli neúspěšné sondě stavu. | Ne |
-| ConnectionEntityNotFound | Chybí konfigurace připojení. | Ne |
-| ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |Ne|
-| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
-| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Authentication | Neshoda předsdíleného klíče | Ano|
-| PeerReachability | Partnerská brána není dostupná. | Ano|
-| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
-| Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
+| VipUnResponsive | K této chybě dojde, když se nepodaří spojení s primární instancí brány kvůli neúspěšné sondě stavu. | No |
+| ConnectionEntityNotFound | Chybí konfigurace připojení. | No |
+| ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojené. |No|
+| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Yes |
+| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Yes|
+| Authentication | Neshoda předsdíleného klíče | Yes|
+| PeerReachability | Partnerská brána není dostupná. | Yes|
+| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Yes|
+| Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Yes|
 
 ## <a name="supported-gateway-types"></a>Podporované typy bran
 

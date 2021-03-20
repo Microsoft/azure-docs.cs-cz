@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak zálohovat jeden virtuální poč
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 55b71d2a2901cdde984df3ebfd68a2a643b78b74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89667518"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
@@ -31,17 +31,17 @@ K zálohování virtuálních počítačů Azure Azure Backup nainstaluje na age
 
 ## <a name="back-up-from-azure-vm-settings"></a>Zálohování z nastavení virtuálního počítače Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
-2. Vyberte **všechny služby** a ve filtru zadejte **virtuální počítače**a pak vyberte **virtuální počítače**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+2. Vyberte **všechny služby** a ve filtru zadejte **virtuální počítače** a pak vyberte **virtuální počítače**.
 3. V seznamu virtuálních počítačů vyberte virtuální počítač, který chcete zálohovat.
 4. V nabídce virtuální počítač vyberte **zálohování**.
-5. V **Recovery Services trezoru**postupujte takto:
-   - Pokud už máte trezor, vyberte **Vybrat existující**a vyberte trezor.
+5. V **Recovery Services trezoru** postupujte takto:
+   - Pokud už máte trezor, vyberte **Vybrat existující** a vyberte trezor.
    - Pokud nemáte trezor, vyberte **vytvořit novou**. Zadejte název trezoru. Vytvoří se ve stejné oblasti a skupině prostředků jako virtuální počítač. Tato nastavení nemůžete změnit, když povolíte zálohování přímo z nastavení virtuálního počítače.
 
         ![Průvodce povolením zálohování](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. V části **zvolit zásadu zálohování**proveďte jednu z následujících akcí:
+6. V části **zvolit zásadu zálohování** proveďte jednu z následujících akcí:
 
    - Ponechte výchozí zásadu. Tím se virtuální počítač zálohuje jednou denně v zadaném čase a zachovává zálohy v trezoru po dobu 30 dnů.
    - Vyberte existující zásadu zálohování, pokud ji máte.
@@ -68,7 +68,7 @@ K zálohování virtuálních počítačů Azure Azure Backup nainstaluje na age
 
     ![Spustit zálohování](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
-2. V části **zálohovat**pomocí ovládacího prvku kalendáře vyberte, do kdy se bude bod obnovení uchovávat > a **OK**.
+2. V části **zálohovat** pomocí ovládacího prvku kalendáře vyberte, do kdy se bude bod obnovení uchovávat > a **OK**.
 
     ![Den uchování zálohy](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 

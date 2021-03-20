@@ -10,10 +10,10 @@ ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97968111"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Kurz: transformace dat pomocí Azure Stack Edge pro pro pokročilý tok nasazení
@@ -26,7 +26,7 @@ Výpočetní prostředí je možné nakonfigurovat pro jednoduchý nebo pokroči
 |------------------|--------------------------------------------------|---------------------------------------|
 | Určeno pro     | Správce IT                                | Vývojáři                            |
 | Typ             | Použití služby Azure Stack Edge k nasazení modulů      | Použití služby IoT Hub k nasazení modulů |
-| Nasazené moduly | Jeden                                           | Zřetězené nebo vícenásobné moduly           |
+| Nasazené moduly | Jednoduché                                           | Zřetězené nebo vícenásobné moduly           |
 
 
 Dokončení této procedury může trvat přibližně 20 až 30 minut.
@@ -68,7 +68,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
     |Předplatné     |Vyberte předplatné pro prostředek IoT Hub. Můžete vybrat stejné předplatné, které používá prostředek Azure Stack Edge.        |
     |Skupina prostředků     |Zadejte název skupiny prostředků pro prostředek IoT Hub. Můžete vybrat stejnou skupinu prostředků, jakou používá prostředek Azure Stack Edge.         |
     |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek.      |
-    |Název     |Přijměte výchozí hodnotu nebo zadejte název prostředku IoT Hub.         |
+    |Name     |Přijměte výchozí hodnotu nebo zadejte název prostředku IoT Hub.         |
 
     ![Začínáme s výpočetním prostředím 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 

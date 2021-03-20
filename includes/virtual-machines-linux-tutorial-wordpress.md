@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68857347"
 ---
 ## <a name="install-wordpress"></a>Instalace WordPressu
@@ -37,7 +37,7 @@ V pracovním adresáři vytvořte textový soubor `wordpress.sql`, který použi
 sudo sensible-editor wordpress.sql
 ```
 
-Přidejte následující příkazy a hodnotu *yourPassword* nahraďte libovolným heslem databáze (ostatní hodnoty nechte beze změny). Pokud jste dříve nastavili zásady zabezpečení MySQL pro ověřování síly hesla, ujistěte se, že vaše heslo splňuje tyto požadavky na sílu hesla. Uložte soubor.
+Přidejte následující příkazy a hodnotu *yourPassword* nahraďte libovolným heslem databáze (ostatní hodnoty nechte beze změny). Pokud jste dříve nastavili zásady zabezpečení MySQL pro ověřování síly hesla, ujistěte se, že vaše heslo splňuje tyto požadavky na sílu hesla. Soubor uložte.
 
 ```sql
 CREATE DATABASE wordpress;

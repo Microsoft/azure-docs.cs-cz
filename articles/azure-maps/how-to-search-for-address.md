@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98598369"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Vyhledat umístění pomocí služby Azure Maps Search Services
@@ -27,7 +27,7 @@ V tomto článku se naučíte:
 * Chcete-li přeložit polohu souřadnic na ulici, proveďte [hledání zpětného překladu adres](/rest/api/maps/search/getsearchaddressreverse) .
 * Přeloží umístění souřadnic do uživatelsky srozumitelnější meziulice pomocí [hledané adresy rozhraní API pro reverzní meziulici](/rest/api/maps/search/getsearchaddressreversecrossstreet).  Nejčastěji to je potřeba při sledování aplikací, které přijímají informační kanál GPS ze zařízení nebo z assetu, a chcete zjistit, kde se nachází souřadnice.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.

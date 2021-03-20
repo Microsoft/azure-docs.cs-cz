@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 7195a126938deabf542e6fa3e52b72c2efdddac2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515215"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Kurz: Azure Active Directory integrace s rozpoznáváním
@@ -97,7 +97,7 @@ Pokud chcete konfigurovat jednotné přihlašování Azure AD pomocí rozpoznáv
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Pokud máte **soubor metadat poskytovatele služeb**v **základní části Konfigurace SAML** , proveďte následující kroky:
+4. Pokud máte **soubor metadat poskytovatele služeb** v **základní části Konfigurace SAML** , proveďte následující kroky:
 
     >[!NOTE]
     >**Soubor metadat poskytovatele služeb** získáte v části **Konfigurace rozpoznávat rozpoznávání jednotného přihlašování** v tomto kurzu.
@@ -149,7 +149,7 @@ Pokud chcete konfigurovat jednotné přihlašování Azure AD pomocí rozpoznáv
    
     ![Snímek obrazovky ukazuje nastavení S S S, kde můžete zadat hodnoty, které jsou popsány.](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a. Jako **Povolit jednotné přihlašování**vyberte **zapnuto**.
+    a. Jako **Povolit jednotné přihlašování** vyberte **zapnuto**.
 
     b. Do textového pole **ID entity IDP** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
     
@@ -173,7 +173,7 @@ Pokud chcete konfigurovat jednotné přihlašování Azure AD pomocí rozpoznáv
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -197,7 +197,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k rozpoznávání.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **rozpoznat**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **rozpoznat**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -237,9 +237,9 @@ Tato aplikace nepodporuje zřizování SCIM, ale má alternativní synchronizaci
    
     ![Nový uživatel](./media/recognize-tutorial/tutorial_recognize_005.png "Nový uživatel")
    
-    a. Jako **zapnutá synchronizace**vyberte **zapnuto**.
+    a. Jako **zapnutá synchronizace** vyberte **zapnuto**.
    
-    b. Jako **zvolit poskytovatele synchronizace**vyberte **Microsoft/Office 365**.
+    b. Jako **zvolit poskytovatele synchronizace** vyberte **Microsoft/Office 365**.
    
     c. Klikněte na **Spustit synchronizaci uživatelů**.
 
@@ -249,7 +249,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici rozpoznávání na přístupovém panelu, měli byste být automaticky přihlášeni k rozpoznávání, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

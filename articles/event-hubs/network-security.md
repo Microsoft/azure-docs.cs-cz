@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak nakonfigurovat přístup z privátníc
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.openlocfilehash: 9503fc26c22d7dbff13c5754288f577b7bb3242f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010992"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Zabezpečení sítě pro Azure Event Hubs 
@@ -16,7 +16,7 @@ Tento článek popisuje, jak používat následující funkce zabezpečení pro 
 - Značky služeb
 - Pravidla brány firewall protokolu IP
 - Koncové body síťové služby
-- Soukromé koncové body
+- Privátní koncové body
 
 
 ## <a name="service-tags"></a>Značky služeb
@@ -66,7 +66,7 @@ Pravidlo virtuální sítě je přidružení oboru názvů Event Hubs k podsíti
 
 Další informace najdete v tématu [Konfigurace koncových bodů služby virtuální sítě pro centrum událostí](event-hubs-service-endpoints.md) .
 
-## <a name="private-endpoints"></a>Soukromé koncové body
+## <a name="private-endpoints"></a>Privátní koncové body
 
 [Služba privátního propojení Azure](../private-link/private-link-overview.md) umožňuje přístup ke službám Azure (například k Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
 

@@ -7,22 +7,22 @@ ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91400753"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps
 
-Od **1. května 2020**můžou změny v důsledku [zabezpečení a zásad ochrany osobních údajů](https://www.blog.google/technology/safety-security/project-strobe/) v Google ovlivnit pracovní postupy aplikace logiky, které používají [konektor Gmail](/connectors/gmail/). Pokud vaše aplikace logiky používají konektor Gmail s účtem uživatele Gmail (e-mailová adresa, která končí @gmail.com @googlemail.com na nebo), vaše aplikace logiky můžou používat jenom konkrétní [triggery, akce a konektory schválené společností Google](#approved-connectors).
+Od **1. května 2020** můžou změny v důsledku [zabezpečení a zásad ochrany osobních údajů](https://www.blog.google/technology/safety-security/project-strobe/) v Google ovlivnit pracovní postupy aplikace logiky, které používají [konektor Gmail](/connectors/gmail/). Pokud vaše aplikace logiky používají konektor Gmail s účtem uživatele Gmail (e-mailová adresa, která končí @gmail.com @googlemail.com na nebo), vaše aplikace logiky můžou používat jenom konkrétní [triggery, akce a konektory schválené společností Google](#approved-connectors).
 
 > [!NOTE]
 > Pokud vaše aplikace logiky používají konektor Gmail s obchodním účtem G-Suite (e-mailová adresa s vlastní doménou), vaše aplikace logiky se nijak nedotýká a nebude mít k dispozici žádné omezení na používání konektoru gmail.
 
 ## <a name="affected-logic-apps"></a>Ovlivněné aplikace logiky
 
-Pokud máte Logic Apps, které používají konektor Gmail, obdržíte e-mail s potenciálně ovlivněnými Logic Apps. Od 15. **června 2020**se ale všechny pracovní postupy, které nedodržují předpisy, zakážou. Můžete provést jednu z těchto akcí:
+Pokud máte Logic Apps, které používají konektor Gmail, obdržíte e-mail s potenciálně ovlivněnými Logic Apps. Od 15. **června 2020** se ale všechny pracovní postupy, které nedodržují předpisy, zakážou. Můžete provést jednu z těchto akcí:
 
 * Aktualizujte ovlivněné aplikace logiky podle [kroků v tomto tématu](#update-affected-workflows). Musíte vytvořit klientskou aplikaci Google, která poskytuje ID klienta a tajný kód klienta, který používáte k ověřování ve triggeru nebo akci gmail.
 
@@ -105,7 +105,7 @@ Pokud chcete použít ID klienta a tajný klíč klienta z vaší klientské apl
    | **Tajný kód klienta** | <*tajný kód klienta*> | Tajný kód klienta z klientské aplikace Google |
    ||||
 
-1. Až budete hotovi, vyberte **Přihlásit**se.
+1. Až budete hotovi, vyberte **Přihlásit** se.
 
    Zobrazí se stránka, která obsahuje klientskou aplikaci, kterou jste vytvořili. Pokud používáte účet příjemce Gmail, může se zobrazit stránka, na které se zobrazí vaše klientská aplikace Google, a zobrazí se výzva, abyste nejdřív povolili přístup k vašemu účtu Google.
 

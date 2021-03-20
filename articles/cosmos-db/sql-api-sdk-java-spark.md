@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 7ff75bf9d45803dd96927bcf7c70e7c7912db979
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097154"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Apache Spark konektor pro jádro (SQL) API: poznámky k verzi a prostředky
@@ -44,7 +44,7 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 
 | Součást | Verze |
 |---------|-------|
-| Apache Spark | 2,4. *x* , 2,3. *x* , 2,2. *x* a 2,1. *x* |
+| Apache Spark | 2,4.*x*, 2,3. *x*, 2,2. *x* a 2,1. *x* |
 | Scala | 2,11 |
 | Azure Databricks (verze modulu runtime) | Později než 3,4 |
 
@@ -54,7 +54,7 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 > Pro rozhraní API Cassandra Cosmos DB použijte [konektor Cassandra Spark](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 | Prostředek | Odkaz |
 |---|---|
@@ -119,7 +119,7 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 #### <a name="new-features"></a>Nové funkce
 * Vylepšuje správu připojení a sdružování připojení, aby se snížil počet volání metadat.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: e9695a268d1c6ec43a737afd36536e4ec2a41a41
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012474"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics uživatelsky definovaných agregací jazyka JavaScript
@@ -223,7 +223,7 @@ Vytvořte místní soubor JSON s níže uvedeným obsahem, nahrajte soubor do St
 ]
 ```
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Pokud chcete získat další nápovědu, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 

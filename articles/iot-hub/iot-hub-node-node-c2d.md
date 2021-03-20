@@ -14,10 +14,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: e398138f12c38e5235a0004679d9574dbde607db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91446872"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Node.js)
@@ -32,13 +32,13 @@ Tento kurz sestaví na [odeslání telemetrie ze zařízení do služby IoT Hub]
 
 * Z back-endu vašeho řešení odesílají zprávy typu cloud-zařízení do jediného zařízení prostřednictvím IoT Hub.
 * Příjem zpráv typu cloud-zařízení na zařízení.
-* Z back-endu vašeho řešení požadavek na doručení zpráv*feedback*odesílaných do zařízení z IoT Hub.
+* Z back-endu vašeho řešení požadavek na doručení zprávodesílaných do zařízení z IoT Hub.
 
 Další informace o zprávách z cloudu na zařízení najdete v [příručce pro vývojáře IoT Hub](iot-hub-devguide-messaging.md).
 
 Na konci tohoto kurzu spustíte dvě Node.js konzolové aplikace:
 
-* **SimulatedDevice**upravenou verzi aplikace vytvořenou v části [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-node.md), která se připojí ke službě IoT Hub a přijímá zprávy typu cloud-zařízení.
+* **SimulatedDevice** upravenou verzi aplikace vytvořenou v části [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-node.md), která se připojí ke službě IoT Hub a přijímá zprávy typu cloud-zařízení.
 
 * **SendCloudToDeviceMessage**, která pošle zprávu typu cloud-zařízení do aplikace simulovaného zařízení prostřednictvím IoT Hub a potom obdrží potvrzení o doručení.
 
@@ -46,7 +46,7 @@ Na konci tohoto kurzu spustíte dvě Node.js konzolové aplikace:
 > IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení (včetně C, Java, Pythonu a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot).
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Node.js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node.js pro tento kurz v systému Windows nebo Linux.
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489535"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Konfigurace parametrů serveru v Azure Database for MySQL flexibilním serveru pomocí Azure CLI
@@ -70,7 +70,7 @@ Aktualizujte parametr **init \_ Connect** serveru serveru **mydemoserver.MySQL.D
 az mysql flexible-server parameter set --name init_connect --resource-group myresourcegroup --server-name mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```
 >[!Note]
-> Pomocí příkazu `init_connect` je možné měnit parametry, které nevyžadují oprávnění SUPER na úrovni relace. Pokud chcete ověřit, jestli můžete nastavit parametr pomocí příkazu `init_connect`, spusťte příkaz `set session parameter_name=YOUR_DESIRED_VALUE;` – pokud selže s chybou **Přístup byl odepřen, potřebujete oprávnění SUPER** , znamená to, že tento parametr nemůžete nastavit pomocí příkazu init_connect.
+> Pomocí příkazu `init_connect` je možné měnit parametry, které nevyžadují oprávnění SUPER na úrovni relace. Pokud chcete ověřit, jestli můžete nastavit parametr pomocí příkazu `init_connect`, spusťte příkaz `set session parameter_name=YOUR_DESIRED_VALUE;` – pokud selže s chybou **Přístup byl odepřen, potřebujete oprávnění SUPER**, znamená to, že tento parametr nemůžete nastavit pomocí příkazu init_connect.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
 

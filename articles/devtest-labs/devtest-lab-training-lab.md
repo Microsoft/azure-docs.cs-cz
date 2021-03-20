@@ -4,10 +4,10 @@ description: Tento článek poskytuje podrobné kroky, pomocí kterých můžete
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b2de9550c62f04286a4f9ad42238bfefb9846477
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89294845"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Použití Azure DevTest Labs pro školení
@@ -33,7 +33,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úloha | Co se naučíte |
+   | Úkol | Co se naučíte |
    | --- | --- |
    | [Vytvoření testovacího prostředí v Azure DevTest Labs](devtest-lab-create-lab.md) |Naučte se, jak vytvořit testovací prostředí v Azure DevTest Labs Azure Portal. |
 2. **Vytváření školicích virtuálních počítačů během několika minut pomocí připravených imagí a vlastních imagí z Marketplace** 
@@ -42,7 +42,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úloha | Co se naučíte |
+   | Úkol | Co se naučíte |
    | --- | --- |
    | [Konfigurace imagí na Azure Marketplace](devtest-lab-configure-marketplace-images.md) |Přečtěte si, jak můžete Azure Marketplace imagí použít. zpřístupnění pro výběr pouze těch imagí, které chcete pro školení použít. |
    | [Vytvoření vlastní image](devtest-lab-create-template.md) |Vytvořte vlastní image předinstalací softwaru, který potřebujete pro školení, aby mohli praktikanti rychle vytvořit virtuální počítač pomocí vlastní image. |
@@ -52,7 +52,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úloha | Co se naučíte |
+   | Úkol | Co se naučíte |
    | --- | --- |
    | [Správa vzorců DevTest Labs pro vytváření virtuálních počítačů](devtest-lab-manage-formulas.md) |Zjistěte, jak můžete vytvořit vzorec vyzvednutím image, velikosti virtuálního počítače (kombinace CPU a paměti RAM) a virtuální sítě. |
 4. **Náklady pod kontrolou**
@@ -65,7 +65,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úloha | Co se naučíte |
+   | Úkol | Co se naučíte |
    | --- | --- |
    | [Definice zásad testovacího prostředí](devtest-lab-set-lab-policy.md) |Řízení nákladů pomocí nastavení zásad v testovacím prostředí. |
    | [Odstranění všech virtuálních počítačů testovacího prostředí pomocí skriptu PowerShellu](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Až se školení dokončí, odstraňte všechny cvičení v jedné operaci. |
@@ -75,7 +75,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úloha | Co se naučíte |
+   | Úkol | Co se naučíte |
    | --- | --- |
    | [Přidání praktikantu do testovacího prostředí v Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Pomocí Azure Portal můžete do školicího prostředí přidat praktikanty. |
    | [Přidání praktikantů do testovacího prostředí pomocí skriptu PowerShellu](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Pomocí PowerShellu můžete automatizovat přidávání praktikantů do školicího prostředí. |
@@ -86,7 +86,7 @@ V tomto článku se dozvíte o různých funkcích Azure DevTest Labs, které se
    
     Další informace získáte kliknutím na odkazy v následující tabulce:
    
-   | Úloha | Co se naučíte |
+   | Úkol | Co se naučíte |
    | --- | --- |
    | [Vytvoření testovacího prostředí pomocí šablony Správce prostředků](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Pomocí šablon Správce prostředků vytvořte cvičení v Azure DevTest Labs. |
 
