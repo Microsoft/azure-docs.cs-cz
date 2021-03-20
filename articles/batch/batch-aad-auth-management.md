@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88930209"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Ověřování řešení Batch Management se službou Active Directory
@@ -25,7 +25,7 @@ Další informace o používání knihovny Batch Management .NET a ukázky služ
 
 [Knihovna Azure Active Directory Authentication Library](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) poskytuje programový rozhraní pro Azure AD pro použití v rámci svých aplikací. Pokud chcete volat ADAL z vaší aplikace, musíte aplikaci zaregistrovat v tenantovi Azure AD. Při registraci aplikace zadáte Azure AD s informacemi o vaší aplikaci, včetně názvu v rámci tenanta Azure AD. Azure AD pak poskytuje ID aplikace, které použijete k přidružení aplikace k Azure AD za běhu. Další informace o ID aplikace najdete [v tématu aplikace a objekty zabezpečení služby v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Pokud chcete zaregistrovat ukázkovou aplikaci službu AccountManagement, postupujte podle kroků v části [Přidání aplikace](../active-directory/develop/quickstart-register-app.md) v tématu [integrace aplikací s Azure Active Directory](../active-directory/develop/quickstart-register-app.md). Zadejte **nativní klientskou aplikaci** pro daný typ aplikace. Oborový standard OAuth 2,0 identifikátor URI pro **identifikátor URI přesměrování** je `urn:ietf:wg:oauth:2.0:oob` . Můžete ale pro identifikátor URI přesměrování zadat jakýkoli platný identifikátor URI (například `http://myaccountmanagementsample` ) **Redirect URI**, protože nemusí být skutečným koncovým bodem.
+Pokud chcete zaregistrovat ukázkovou aplikaci službu AccountManagement, postupujte podle kroků v části [Přidání aplikace](../active-directory/develop/quickstart-register-app.md) v tématu [integrace aplikací s Azure Active Directory](../active-directory/develop/quickstart-register-app.md). Zadejte **nativní klientskou aplikaci** pro daný typ aplikace. Oborový standard OAuth 2,0 identifikátor URI pro **identifikátor URI přesměrování** je `urn:ietf:wg:oauth:2.0:oob` . Můžete ale pro identifikátor URI přesměrování zadat jakýkoli platný identifikátor URI (například `http://myaccountmanagementsample` ) , protože nemusí být skutečným koncovým bodem.
 
 ![Přidání aplikace](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -39,7 +39,7 @@ V dalším kroku budete muset delegovat přístup k vaší aplikaci na rozhraní
 
 Na webu Azure Portal postupujte podle těchto pokynů:
 
-1. V levém navigačním podokně Azure Portal vyberte **všechny služby**, klikněte na **Registrace aplikací**a pak klikněte na **Přidat**.
+1. V levém navigačním podokně Azure Portal vyberte **všechny služby**, klikněte na **Registrace aplikací** a pak klikněte na **Přidat**.
 2. V seznamu registrací aplikací vyhledejte název vaší aplikace:
 
     ![Vyhledejte název vaší aplikace.](./media/batch-aad-auth-management/search-app-registration.png)
@@ -47,7 +47,7 @@ Na webu Azure Portal postupujte podle těchto pokynů:
 3. Zobrazte okno **Nastavení** . V části **přístup k rozhraní API** vyberte **požadovaná oprávnění**.
 4. Kliknutím na **Přidat** přidejte nové požadované oprávnění.
 5. V kroku 1 zadejte **Windows Azure rozhraní API pro správu služeb**, vyberte toto rozhraní API ze seznamu výsledků a klikněte na tlačítko **Vybrat** .
-6. V kroku 2 zaškrtněte políčko vedle **přístupu k modelu nasazení Azure Classic jako uživatelé organizace**a klikněte na tlačítko **Vybrat** .
+6. V kroku 2 zaškrtněte políčko vedle **přístupu k modelu nasazení Azure Classic jako uživatelé organizace** a klikněte na tlačítko **Vybrat** .
 7. Klikněte na tlačítko **Hotovo** .
 
 Okno **požadovaná oprávnění** teď zobrazuje, že oprávnění k vaší aplikaci se udělují rozhraním API ADAL i správce prostředků. Při první registraci aplikace v Azure AD jsou oprávnění ve výchozím nastavení udělena službě ADAL.

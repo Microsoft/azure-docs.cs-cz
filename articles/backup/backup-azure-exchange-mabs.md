@@ -5,17 +5,17 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91262990"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Zálohování serveru Exchange do Azure pomocí Azure Backup Server
 
 Tento článek popisuje, jak nakonfigurovat Microsoft Azure Backup Server (MABS) pro zálohování Microsoft Exchange serveru do Azure.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že jsou [nainstalované a připravené](backup-azure-microsoft-azure-backup.md)Azure Backup Server.
 
@@ -28,7 +28,7 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
 
-1. V konzole pro správu MABS vyberte **ochrana**a pak na pásu karet nástroje vyberte **Nový** . otevře se průvodce **vytvořením nové skupiny ochrany** .
+1. V konzole pro správu MABS vyberte **ochrana** a pak na pásu karet nástroje vyberte **Nový** . otevře se průvodce **vytvořením nové skupiny ochrany** .
 2. Na **úvodní** obrazovce průvodce vyberte **Další**.
 3. Na obrazovce **Vybrat typ skupiny ochrany** vyberte **servery** a vyberte **Další**.
 4. Vyberte databázi systému Exchange Server, kterou chcete chránit, a vyberte možnost **Další**.
@@ -58,20 +58,20 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
    >
    >
 8. Vyberte **Další**.
-9. Vyberte databázi pro **zálohování kopírováním**a pak vyberte **Další**.
+9. Vyberte databázi pro **zálohování kopírováním** a pak vyberte **Další**.
 
    > [!NOTE]
    > Pokud nevyberete možnost Úplná záloha pro alespoň jednu DAG kopii databáze, protokoly se nezkrátí.
    >
    >
-10. Nakonfigurujte cíle pro **krátkodobé zálohování**a pak vyberte **Další**.
+10. Nakonfigurujte cíle pro **krátkodobé zálohování** a pak vyberte **Další**.
 11. Zkontrolujte dostupné místo na disku a pak vyberte **Další**.
 12. Vyberte čas, kdy bude server MABS vytvořit počáteční replikaci, a pak vyberte **Další**.
 13. Vyberte možnosti kontroly konzistence a pak vyberte **Další**.
 14. Zvolte databázi, kterou chcete zálohovat do Azure, a pak vyberte **Další**. Například:
 
     ![Zadat data online ochrany](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Definujte plán pro **Azure Backup**a pak vyberte **Další**. Například:
+15. Definujte plán pro **Azure Backup** a pak vyberte **Další**. Například:
 
     ![Zadat plán online zálohování](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -79,7 +79,7 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
     > Poznámka: body obnovení online jsou založené na expresním úplném bodu obnovení. Proto je nutné naplánovat online bod obnovení po uplynutí času zadaného pro expresní úplný bod obnovení.
     >
     >
-16. Nakonfigurujte zásady uchovávání informací pro **Azure Backup**a pak vyberte **Další**.
+16. Nakonfigurujte zásady uchovávání informací pro **Azure Backup** a pak vyberte **Další**.
 17. Zvolte možnost pro online replikaci a vyberte **Další**.
 
     Pokud máte rozsáhlou databázi, může trvat dlouhou dobu, než se počáteční záloha vytvoří po síti. Chcete-li se tomuto problému vyhnout, můžete vytvořit offline zálohování.  

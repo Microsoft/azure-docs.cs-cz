@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
 ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88797662"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Nastavte bezpečnostní klíč jako metodu ověřování.
@@ -65,11 +65,11 @@ Abyste se mohli přihlásit ke svému pracovnímu nebo školnímu účtu pomocí
 
 1. Pokud jste to ještě neudělali, klikněte na stránku **můj profil** https://myaccount.microsoft.com a přihlaste se.
 
-2. Vyberte **informace o zabezpečení**, vyberte **Přidat metodu**a pak v rozevíracím seznamu **Přidat metodu** vyberte **klíč zabezpečení** .
+2. Vyberte **informace o zabezpečení**, vyberte **Přidat metodu** a pak v rozevíracím seznamu **Přidat metodu** vyberte **klíč zabezpečení** .
 
     ![Přidat pole metody s vybraným klíčem zabezpečení](media/security-info/security-info-security-key-add-method.png)
 
-3. Vyberte **Přidat**a potom vyberte typ klíče zabezpečení, který máte, buď **zařízení USB** nebo **zařízení NFC**.
+3. Vyberte **Přidat** a potom vyberte typ klíče zabezpečení, který máte, buď **zařízení USB** nebo **zařízení NFC**.
 
     ![Vyberte, jestli máte k dispozici typ USB nebo NFC bezpečnostního klíče.](media/security-info/security-info-security-key-choose-type.png)
 
@@ -82,7 +82,7 @@ Abyste se mohli přihlásit ke svému pracovnímu nebo školnímu účtu pomocí
 
     Zobrazí se nové okno, které vám umožní nastavit novou metodu přihlašování.
 
-5. V poli **Nastavení nové metody přihlašování** vyberte možnost **Další**a potom:
+5. V poli **Nastavení nové metody přihlašování** vyberte možnost **Další** a potom:
 
     - Pokud je váš bezpečnostní klíč zařízením USB, vložte svůj bezpečnostní klíč do portu USB vašeho zařízení.
 
@@ -134,7 +134,7 @@ Chcete-li odstranit všechny informace o účtu uložené ve vašem fyzickém be
 
 #### <a name="to-reset-your-security-key"></a>Resetování klíče zabezpečení
 
-1. Otevřete aplikaci nastavení Windows, vyberte **účty**, vyberte **Možnosti přihlášení**, vyberte **klíč zabezpečení**a pak vyberte **Spravovat**.
+1. Otevřete aplikaci nastavení Windows, vyberte **účty**, vyberte **Možnosti přihlášení**, vyberte **klíč zabezpečení** a pak vyberte **Spravovat**.
 
 2. Vložte svůj bezpečnostní klíč do portu USB nebo klepnutím na čtečku NFC ověřte svoji identitu.
 
@@ -148,7 +148,7 @@ Pro svůj bezpečnostní klíč můžete vytvořit nový PIN klíč pro zabezpe�
 
 #### <a name="to-create-a-new-security-key-pin"></a>Vytvoření nového PIN kódu pro klíč zabezpečení
 
-1. Otevřete aplikaci nastavení Windows, vyberte **účty**, vyberte **Možnosti přihlášení**, vyberte **klíč zabezpečení**a pak vyberte **Spravovat**.
+1. Otevřete aplikaci nastavení Windows, vyberte **účty**, vyberte **Možnosti přihlášení**, vyberte **klíč zabezpečení** a pak vyberte **Spravovat**.
 
 2. Vložte svůj bezpečnostní klíč do portu USB nebo klepnutím na čtečku NFC ověřte svoji identitu.
 3. Vyberte **Přidat** z oblasti **PIN kód bezpečnostního klíče** , zadejte a potvrďte nový PIN klíč zabezpečení a pak vyberte **OK**.

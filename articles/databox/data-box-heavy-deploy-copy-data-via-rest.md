@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: e2fc174147b99b7b952c6d10084cfc969dacf5a6
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91949135"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API  
@@ -41,7 +41,7 @@ Než začnete, ujistěte se, že:
 
 ## <a name="connect-via-http-or-https"></a>Připojení přes HTTP nebo https
 
-Pomocí *protokolu HTTP* nebo *https*se můžete připojit k data box úložišti objektů BLOB.
+Pomocí *protokolu HTTP* nebo *https* se můžete připojit k data box úložišti objektů BLOB.
 
 - *Protokol HTTPS* je zabezpečený a doporučený způsob, jak se připojit k data box úložišti objektů BLOB.
 - *Protokol HTTP* se používá při připojování přes důvěryhodné sítě.
@@ -92,7 +92,7 @@ K stažení certifikátu použijte Azure Portal.
 
 1. Přihlaste se k portálu Azure Portal.
 2. Přejděte do objednávky Data Box a přejděte na **obecné > informace o zařízení**.
-3. V části **přihlašovací údaje pro zařízení**přejděte na **rozhraní API přístup** k zařízení. Klikněte na tlačítko **Stáhnout**. Tato akce stáhne soubor certifikátu ** \<your order name> . cer** . **Uložte** tento soubor. Tento certifikát nainstalujete na klienta nebo na hostitelský počítač, který budete používat pro připojení k zařízení.
+3. V části **přihlašovací údaje pro zařízení** přejděte na **rozhraní API přístup** k zařízení. Klikněte na **Stáhnout**. Tato akce stáhne soubor certifikátu **\<your order name> . cer** . **Uložte** tento soubor. Tento certifikát nainstalujete na klienta nebo na hostitelský počítač, který budete používat pro připojení k zařízení.
 
     ![Stáhnout certifikát v Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -116,11 +116,11 @@ Pomocí následujícího postupu naimportujte `.cer` soubor do kořenového úlo
 #### <a name="use-windows-server-ui"></a>Použít uživatelské rozhraní systému Windows Server
 
 1.  Klikněte na soubor pravým tlačítkem `.cer` a vyberte **nainstalovat certifikát**. Tato akce spustí Průvodce importem certifikátu.
-2.  V poli **umístění úložiště**vyberte **místní počítač**a pak klikněte na **Další**.
+2.  V poli **umístění úložiště** vyberte **místní počítač** a pak klikněte na **Další**.
 
     ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3.  Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a klikněte na **Další**.
+3.  Vyberte možnost **umístit všechny certifikáty do následujícího úložiště** a pak klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a klikněte na **Další**.
 
     ![Import certifikátu pomocí PowerShellu 2](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
@@ -143,13 +143,13 @@ Několik, například Ubuntu a Debian, použijte `update-ca-certificates` přík
 Poslední verze RHEL, Fedora a CentOS používají `update-ca-trust` příkaz.
 
 - Zkopírujte soubor certifikátu do `/etc/pki/ca-trust/source/anchors` adresáře.
-- Spusťte příkaz `update-ca-trust`.
+- Spusťte `update-ca-trust`.
 
 Podrobnosti najdete v dokumentaci specifické pro vaši distribuci.
 
 ### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Přidat IP adresu zařízení a koncový bod služby BLOB Service 
 
-[Při připojování přes *protokol HTTP*použijte stejný postup při přidávání IP adresy zařízení a koncového bodu služby BLOB Service](#add-device-ip-address-and-blob-service-endpoint).
+[Při připojování přes *protokol HTTP* použijte stejný postup při přidávání IP adresy zařízení a koncového bodu služby BLOB Service](#add-device-ip-address-and-blob-service-endpoint).
 
 ### <a name="configure-partner-software-and-verify-connection"></a>Konfigurace partnerského softwaru a ověření připojení
 
@@ -182,7 +182,7 @@ Prvním krokem je vytvoření kontejneru, protože objekty blob jsou vždycky na
 
 1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte účet úložiště, ve kterém chcete vytvořit kontejner objektů BLOB.
-3. Klikněte pravým tlačítkem na **kontejnery objektů BLOB**a v místní nabídce vyberte **vytvořit kontejner objektů BLOB**.
+3. Klikněte pravým tlačítkem na **kontejnery objektů BLOB** a v místní nabídce vyberte **vytvořit kontejner objektů BLOB**.
 
    ![Místní nabídka pro vytvoření kontejnerů objektů BLOB](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 

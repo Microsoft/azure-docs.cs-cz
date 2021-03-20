@@ -8,10 +8,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339525"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Vytváření upozornění pro Azure Cosmos DB pomocí Azure Monitor
@@ -65,7 +65,7 @@ V této části se dozvíte, jak vytvořit výstrahu, když obdržíte stavový 
 
    * V **logice výstrahy** nastavte **prahovou hodnotu** na **static**. Statická prahová hodnota používá pro vyhodnocení pravidla uživatelsky definovanou prahovou hodnotu, zatímco dynamické prahové hodnoty používají předdefinované algoritmy strojového učení, které se průběžně učí vzor chování metriky a automaticky vypočítávají prahové hodnoty.
 
-   * Nastavte **operátor** na hodnotu **větší než** , **typ agregace** na hodnotu **Total** a **prahovou hodnotu** **100**. Pokud se v této logice klient zobrazuje více než 100 požadavků, které mají kód stavu 429, výstraha se aktivuje. Můžete také nakonfigurovat typ agregace, členitost agregace a frekvenci vyhodnocení podle vašeho požadavku.
+   * Nastavte **operátor** na hodnotu **větší než**, **typ agregace** na hodnotu **Total** a **prahovou hodnotu** **100**. Pokud se v této logice klient zobrazuje více než 100 požadavků, které mají kód stavu 429, výstraha se aktivuje. Můžete také nakonfigurovat typ agregace, členitost agregace a frekvenci vyhodnocení podle vašeho požadavku.
 
    * Po vyplnění formuláře vyberte **Hotovo**. Následující snímek obrazovky ukazuje podrobnosti logiky výstrah:
 

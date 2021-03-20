@@ -9,10 +9,10 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97607605"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Řešení potíží s certifikátem v doméně a TLS/SSL v Azure App Service
@@ -201,8 +201,8 @@ App Service certifikát vyžaduje ověření domény před tím, než bude certi
 #### <a name="solution"></a>Řešení
 Ručně ověřte doménu přidáním záznamu TXT:
 
-1. Přejít na poskytovatele služby DNS (Domain Name Service), který hostuje název vaší domény.
-1. Přidejte záznam TXT pro vaši doménu, který používá hodnotu tokenu domény, který je zobrazený v Azure Portal. 
+1. Přejděte k poskytovateli DNS (Domain Name System), který je hostitelem vašeho názvu domény.
+1. Přidejte pro vaši doménu záznam TXT s hodnotou tokenu domény, který se zobrazuje na webu Azure Portal. 
 
 Počkejte několik minut, než se rozšíření DNS spustí, a potom výběrem tlačítka **aktualizovat** spusťte ověření. 
 
@@ -265,7 +265,7 @@ K tomuto problému dochází z jednoho z následujících důvodů:
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Musím po nákupu nakonfigurovat vlastní doménu pro svůj web?**
 
@@ -305,7 +305,7 @@ Když si koupíte doménu, nebudete se vám účtovat po dobu pěti dnů, během
 
 **Můžu v předplatném použít doménu v jiné aplikaci Azure App Service?**
 
-Yes. Při přístupu k oknu vlastní domény a TLS v Azure Portal uvidíte domény, které jste zakoupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
+Ano. Při přístupu k oknu vlastní domény a TLS v Azure Portal uvidíte domény, které jste zakoupili. Aplikaci můžete nakonfigurovat tak, aby používala některou z těchto domén.
 
 **Můžu přenést doménu z jednoho předplatného do jiného předplatného?**
 

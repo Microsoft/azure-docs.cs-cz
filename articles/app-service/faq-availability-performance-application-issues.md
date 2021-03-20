@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88958993"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se výkonu aplikací pro Web Apps v Azure
@@ -32,11 +32,11 @@ K zpomalení výkonu aplikace může přispět více faktorů. Podrobné kroky p
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Návody řešit potíže s vysokým scénářem využití procesoru?
 
-V některých velmi vysokých scénářích spotřeby procesoru může vaše aplikace skutečně vyžadovat více výpočetních prostředků.V takovém případě zvažte škálování na vyšší úroveň služby, takže aplikace získá všechny prostředky, které potřebuje. V ostatních případech může být vysoká spotřeba procesoru způsobena chybnou smyčkou nebo postupem kódování. Seznámení s tím, co se aktivuje zvýšené spotřeby procesoru, je proces dvou částí. Nejprve vytvořte výpis procesu a poté Analyzujte výpis procesu. Další informace najdete v tématu [zachycení a analýza souboru s výpisem paměti pro vysokou spotřebu procesoru pro Web Apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
+V některých velmi vysokých scénářích spotřeby procesoru může vaše aplikace skutečně vyžadovat více výpočetních prostředků. V takovém případě zvažte škálování na vyšší úroveň služby, takže aplikace získá všechny prostředky, které potřebuje. V ostatních případech může být vysoká spotřeba procesoru způsobena chybnou smyčkou nebo postupem kódování. Seznámení s tím, co se aktivuje zvýšené spotřeby procesoru, je proces dvou částí. Nejprve vytvořte výpis procesu a poté Analyzujte výpis procesu. Další informace najdete v tématu [zachycení a analýza souboru s výpisem paměti pro vysokou spotřebu procesoru pro Web Apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Návody řešení potíží s vysokým využitím paměti?
 
-V některých scénářích s vysokými nároky na paměť může vaše aplikace skutečně vyžadovat více výpočetních prostředků.V takovém případě zvažte škálování na vyšší úroveň služby, takže aplikace získá všechny prostředky, které potřebuje. Jindy může chyba v kódu způsobit nevracení paměti. Postup kódování může také zvýšit spotřebu paměti.Získání přehledu o tom, co spouští vysokou spotřebu paměti, je proces dvou částí. Nejprve vytvořte výpis procesu a poté Analyzujte výpis procesu. Diagnostiku havárií z galerie rozšíření webu Azure může efektivně provádět oba tyto kroky. Další informace najdete v tématu [zachycení a analýza souboru s výpisem paměti pro přerušovanou vysokou paměť pro Web Apps](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
+V některých scénářích s vysokými nároky na paměť může vaše aplikace skutečně vyžadovat více výpočetních prostředků. V takovém případě zvažte škálování na vyšší úroveň služby, takže aplikace získá všechny prostředky, které potřebuje. Jindy může chyba v kódu způsobit nevracení paměti. Postup kódování může také zvýšit spotřebu paměti. Získání přehledu o tom, co spouští vysokou spotřebu paměti, je proces dvou částí. Nejprve vytvořte výpis procesu a poté Analyzujte výpis procesu. Diagnostiku havárií z galerie rozšíření webu Azure může efektivně provádět oba tyto kroky. Další informace najdete v tématu [zachycení a analýza souboru s výpisem paměti pro přerušovanou vysokou paměť pro Web Apps](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Návody Automatizujte App Service webové aplikace pomocí PowerShellu?
 
@@ -94,7 +94,7 @@ Ve výchozím nastavení jsou webové aplikace uvolněny, pokud nejsou po stanov
 1. V Azure Portal přejdete do své webové aplikace.
 2. Vybrat **konfiguraci**
 3. Vyberte **Obecné nastavení**.
-4. Pro možnost **vždy zapnuto**vyberte **zapnuto**.
+4. Pro možnost **vždy zapnuto** vyberte **zapnuto**.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Návody zapnout trasování chybných požadavků?
 
@@ -102,7 +102,7 @@ Zapnutí trasování chybných požadavků:
 
 1. V Azure Portal přejdete do své webové aplikace.
 3. Vyberte **všechna nastavení**  >  **diagnostické protokoly**.
-4. Pro **trasování chybných požadavků**vyberte **zapnuto**.
+4. Pro **trasování chybných požadavků** vyberte **zapnuto**.
 5. Vyberte **Uložit**.
 6. V okně webová aplikace vyberte **nástroje**.
 7. Vyberte **Visual Studio Online**.

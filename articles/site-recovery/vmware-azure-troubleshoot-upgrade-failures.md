@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84434367"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Řešení potíží se selháním upgradu Microsoft Azure Site Recovery Provider
@@ -46,7 +46,7 @@ K upgradu použijte následující postup:
 
 Aby byl upgrade úspěšný, nesmí být složka třetí strany přejmenována.
 
-K vyřešení tohoto problému.
+Pokud chcete tento problém vyřešit,
 
 1. Spusťte Editor registru (regedit.exe) a otevřete větev HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
 1. Zkontrolujte `Build_Version` hodnotu klíče. Pokud je nastavená na nejnovější verzi, snižte číslo verze. Například pokud je nejnovější verze 9,22. \* a `Build_Version` nastavte klíč na tuto hodnotu a pak ho snižte na 9,21. \* .
@@ -74,7 +74,7 @@ Při upgradu zprostředkovatele Microsoft Azure Site Recovery Provider (DRA) se 
 Příčinou může být hodnota null pro parametr v klíči registru. Řešení problému –
 
 1. Spusťte Editor registru (regedit.exe) a otevřete větev HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4.
-1. Zkontrolujte hodnotu klíče ' InstallDirectory '.Pokud má hodnotu null, přidejte hodnotu aktuální instalační adresář.
+1. Zkontrolujte hodnotu klíče ' InstallDirectory '. Pokud má hodnotu null, přidejte hodnotu aktuální instalační adresář.
 1. Podobně otevřete větev HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 v editoru registru.
 1. Zkontrolujte hodnotu klíče InstallDirectory a přidejte hodnotu aktuální instalační adresář.
 1. Spusťte znovu instalační program sjednocené instalace.

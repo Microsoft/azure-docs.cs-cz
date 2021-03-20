@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/18/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2ec67669edeb52af1044c97c984eb6ba36fd1a0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918208"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579633"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Kurz: registrace webové aplikace v Azure Active Directory B2C
 
@@ -80,7 +80,7 @@ K registraci webové aplikace ve vašem tenantovi Azure AD B2C můžete využít
 
 ## <a name="create-a-client-secret"></a>Vytvoření tajného klíče klienta
 
-U webové aplikace je třeba vytvořit tajný klíč aplikace. Pomocí tohoto tajného kódu bude vaše aplikace používat k výměně autorizačního kódu pro přístupový token.
+U webové aplikace je třeba vytvořit tajný klíč aplikace. Tajný kód klienta je také označován jako *heslo aplikace*. Tajný kód bude používat vaše aplikace k výměně autorizačního kódu pro přístupový token.
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
@@ -89,7 +89,7 @@ U webové aplikace je třeba vytvořit tajný klíč aplikace. Pomocí tohoto ta
 1. Vyberte **Nový tajný klíč klienta**.
 1. Do pole **Popis** zadejte popis tajného klíče klienta. Například *clientsecret1*.
 1. Pod položkou **konec platnosti** vyberte dobu, po kterou je tajný kód platný, a pak vyberte **Přidat**.
-1. Poznamenejte si **hodnotu** tajného klíče. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
+1. Poznamenejte si **hodnotu** tajného klíče pro použití v kódu klientské aplikace. Tato hodnota tajného klíče se po opuštění této stránky už znovu nezobrazí. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
@@ -98,6 +98,9 @@ U webové aplikace je třeba vytvořit tajný klíč aplikace. Pomocí tohoto ta
 1. Vyberte **Save (Uložit** ) a zobrazte si klíč. Poznamenejte si hodnotu **Klíč aplikace**. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
 
 * * *
+
+> [!NOTE]
+> Z bezpečnostních důvodů můžete pravidelně převádět tajný klíč aplikace nebo to hned v případě nouze. Každá aplikace, která se integruje s Azure AD B2C, by měla být připravená zpracovat tajnou událost změny tajného kódu bez ohledu na to, jak často to může nastat. Můžete nastavit dva tajné klíče aplikace a umožnit tak, aby aplikace při střídání tajného klíče aplikace dál používala starý tajný klíč. Chcete-li přidat jiný tajný klíč klienta, opakujte kroky v této části. 
 
 ## <a name="enable-id-token-implicit-grant"></a>Povolit implicitní udělení tokenu ID
 

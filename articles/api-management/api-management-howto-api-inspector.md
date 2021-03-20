@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542310"
 ---
 # <a name="tutorial-debug-your-apis-using-request-tracing"></a>Kurz: ladění rozhraní API pomocí trasování požadavků
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="Nástroj pro inspekci rozhraní API":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
@@ -53,12 +53,12 @@ Musí být povolené nastavení **Povolit trasování** pro předplatné použí
   :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="Konfigurace trasování rozhraní API":::
 
 > [!TIP]
-> Pokud se **OCP-APIM-Subscription-Key** v požadavku HTTP nevyplní automaticky, můžete ho načíst na portálu. Vyberte **předplatná** a otevřete místní nabídku ( **...** ) pro předplatného. Vyberte **Zobrazit/skrýt klíče**. V případě potřeby můžete také znovu vygenerovat klíče. Pak do záhlaví přidejte klíč.
+> Pokud se **OCP-APIM-Subscription-Key** v požadavku HTTP nevyplní automaticky, můžete ho načíst na portálu. Vyberte **předplatná** a otevřete místní nabídku (**...**) pro předplatného. Vyberte **Zobrazit/skrýt klíče**. V případě potřeby můžete také znovu vygenerovat klíče. Pak do záhlaví přidejte klíč.
 
 ## <a name="review-trace-information"></a>Kontrola informací o trasování
 
 1. Po dokončení volání přejdete na kartu **trasování** v **odpovědi HTTP**.
-1. Vyberte některý z následujících odkazů pro přechod na podrobné informace o trasování: **příchozí** , **back-end** , **odchozí**.
+1. Vyberte některý z následujících odkazů pro přechod na podrobné informace o trasování: **příchozí**, **back-end**, **odchozí**.
 
      :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="Zkontrolovat trasování odpovědi":::
 

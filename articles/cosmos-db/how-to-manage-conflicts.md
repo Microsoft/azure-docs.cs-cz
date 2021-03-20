@@ -9,10 +9,10 @@ ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339338"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktů v Azure Cosmos DB
@@ -136,10 +136,10 @@ Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešen�
 
 Uložené procedury řešení Custom konfliktů by se měly implementovat pomocí signatury funkce uvedené níže. Název funkce se nemusí shodovat s názvem použitým při registraci uložené procedury s kontejnerem, ale zjednodušuje pojmenování. Zde je popis parametrů, které musí být pro tuto uloženou proceduru implementovány.
 
-- **incomingItem** : položka, která je vložena nebo aktualizována v potvrzení, které generuje konflikty. Má hodnotu null pro operace odstranění.
-- **existingItem** : aktuálně potvrzená položka. Tato hodnota je v aktualizaci jiná než null a pro vložení nebo odstranění je null.
+- **incomingItem**: položka, která je vložena nebo aktualizována v potvrzení, které generuje konflikty. Má hodnotu null pro operace odstranění.
+- **existingItem**: aktuálně potvrzená položka. Tato hodnota je v aktualizaci jiná než null a pro vložení nebo odstranění je null.
 - neoznačovatelné **položky: logická** hodnota označující, jestli je incomingItem v konfliktu s dříve odstraněnou položkou. V případě hodnoty true je existingItem také null.
-- **conflictingItems** : pole zapsané verze všech položek v kontejneru, které jsou v konfliktu s INCOMINGITEM na ID nebo jakékoli jiné jedinečné vlastnosti indexu.
+- **conflictingItems**: pole zapsané verze všech položek v kontejneru, které jsou v konfliktu s INCOMINGITEM na ID nebo jakékoli jiné jedinečné vlastnosti indexu.
 
 > [!IMPORTANT]
 > Stejně jako u jakékoli uložené procedury má vlastní procedura řešení konfliktů přístup k jakýmkoli datům se stejným klíčem oddílu a může provést jakoukoli operaci vložení, aktualizace nebo odstranění pro vyřešení konfliktů.

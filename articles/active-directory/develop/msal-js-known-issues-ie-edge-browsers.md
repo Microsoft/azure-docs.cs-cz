@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83772076"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Známé problémy s Internet Explorerem a prohlížeči Microsoft Edge (MSAL.js)
@@ -65,7 +65,7 @@ Upozorňujeme, že tento problém se nevyřeší při procházení InPrivate, pr
 
 Existují případy, kdy jsou automaticky otevíraná okna blokována v IE nebo Microsoft Edge, například když během služby [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)dojde k druhému místnímu přihlášení. V prohlížeči se zobrazí upozornění, aby se místní nabídka povolila jednou nebo vždycky. Pokud se rozhodnete pro povolení, prohlížeč otevře automaticky otevírané okno a vrátí `null` popisovač pro něj. V důsledku toho knihovna nemá popisovač pro okno a neexistuje žádný způsob, jak zavřít překryvné okno. Ke stejnému problému nedochází v Chrome, když vás vyzve k povolení překryvných oken, protože neotevře automaticky otevírané okno.
 
-**Alternativním řešením**je, že vývojáři budou muset v IE a Microsoft Edge povolená překryvná okna předtím, než začnou používat svoji aplikaci, aby se tomuto problému vyhnuli.
+**Alternativním řešením** je, že vývojáři budou muset v IE a Microsoft Edge povolená překryvná okna předtím, než začnou používat svoji aplikaci, aby se tomuto problému vyhnuli.
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [používání MSAL.js v Internet Exploreru](msal-js-use-ie-browser.md).

@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961801"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Zabezpečené připojení k prostředkům back-endu z App Serviceho prostředí
@@ -42,7 +42,7 @@ Konfigurace běžného SQL Server má koncový bod naslouchat na portu 1433:
 Existují dva přístupy k omezení provozu do tohoto koncového bodu:
 
 * [Seznamy síťových Access Control][NetworkAccessControlLists] (seznamy ACL sítě)
-* [Skupiny zabezpečení sítě][NetworkSecurityGroups]
+* [Network Security Groups (Skupiny zabezpečení sítě)][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Omezení přístupu pomocí seznamu ACL sítě
 Port 1433 se dá zabezpečit pomocí seznamu řízení přístupu k síti.  Následující příklad přidá k oprávněním pro přiřazení adresy klientů, které pocházejí z virtuální sítě, a zablokuje přístup všem ostatním klientům.

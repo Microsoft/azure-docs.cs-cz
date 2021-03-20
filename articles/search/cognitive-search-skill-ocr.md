@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950801"
 ---
 # <a name="ocr-cognitive-skill"></a>Dovednost rozpoznávání OCR
@@ -51,13 +51,13 @@ Dříve existoval parametr s názvem "textExtractionAlgorithm", který určuje, 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                                          |
+| Název vstupu      | Description                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem Azure Blob, pokud ```imageAction``` je nastavena na jinou hodnotu než ```none``` . Další informace najdete v [ukázce](#sample-output) .|
 
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
-| Název výstupu     | Popis                   |
+| Název výstupu     | Description                   |
 |---------------|-------------------------------|
 | `text`            | Z obrázku byl extrahován prostý text.   |
 | `layoutText`    | Komplexní typ, který popisuje extrahovaný text a umístění, kde byl text nalezen.|

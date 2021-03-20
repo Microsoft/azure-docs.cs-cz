@@ -10,10 +10,10 @@ ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
 ms.openlocfilehash: 7a4d9fb9f803a497e84fa189d9a89c2d9097bb70
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675051"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Vytvoření uživatelů Azure AD typu host a nastavení jako správce Azure AD
@@ -21,9 +21,9 @@ ms.locfileid: "92675051"
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 > [!NOTE]
-> Tento článek je ve **verzi Public Preview** .
+> Tento článek je ve **verzi Public Preview**.
 
-Uživatelé typu Host v Azure Active Directory (Azure AD) jsou uživatelé, kteří byli importováni do aktuální služby Azure AD z jiných adresářů Azure Active Directory nebo mimo ni. Uživatelé typu Host můžou například zahrnovat uživatele z jiných adresářů Azure Active Directory nebo z účtů, jako jsou *\@ Outlook.com* , *\@ hotmail.com* , *\@ Live.com* nebo *\@ gmail.com* . V tomto článku se dozvíte, jak vytvořit uživatele typu hosta Azure AD, a nastavit tohoto uživatele jako správce Azure AD pro logický Server Azure SQL, aniž by bylo potřeba mít tohoto uživatele hosta v rámci Azure AD jako součást skupiny.
+Uživatelé typu Host v Azure Active Directory (Azure AD) jsou uživatelé, kteří byli importováni do aktuální služby Azure AD z jiných adresářů Azure Active Directory nebo mimo ni. Uživatelé typu Host můžou například zahrnovat uživatele z jiných adresářů Azure Active Directory nebo z účtů, jako jsou *\@ Outlook.com*, *\@ hotmail.com*, *\@ Live.com* nebo *\@ gmail.com*. V tomto článku se dozvíte, jak vytvořit uživatele typu hosta Azure AD, a nastavit tohoto uživatele jako správce Azure AD pro logický Server Azure SQL, aniž by bylo potřeba mít tohoto uživatele hosta v rámci Azure AD jako součást skupiny.
 
 ## <a name="feature-description"></a>Popis funkce
 
@@ -59,7 +59,7 @@ Postupujte podle těchto kroků a vytvořte uživatele databáze pomocí hostova
     SELECT * FROM sys.database_principals
     ```
 
-1. Odpojte se a přihlaste se k databázi jako uživatel typu host `user1@gmail.com` pomocí [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) pomocí metody ověřování **Azure Active Directory-Universal s MFA** . Další informace najdete v tématu [použití služby Multi-factor Azure Active Directory Authentication](authentication-mfa-ssms-overview.md).
+1. Odpojte se a přihlaste se k databázi jako uživatel typu host `user1@gmail.com` pomocí [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) pomocí metody ověřování **Azure Active Directory-Universal s MFA**. Další informace najdete v tématu [použití služby Multi-factor Azure Active Directory Authentication](authentication-mfa-ssms-overview.md).
 
 ### <a name="create-guest-user-in-sql-managed-instance"></a>Vytvořit uživatele typu Host ve spravované instanci SQL
 
@@ -90,7 +90,7 @@ Postupujte podle těchto kroků a vytvořte uživatele databáze pomocí hostova
 
 1. Nyní by měl být vytvořen uživatel databáze pro uživatele typu host `user1@gmail.com` .
 
-1. Odpojte se a přihlaste se k databázi jako uživatel typu host `user1@gmail.com` pomocí [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) pomocí metody ověřování **Azure Active Directory-Universal s MFA** . Další informace najdete v tématu [použití služby Multi-factor Azure Active Directory Authentication](authentication-mfa-ssms-overview.md).
+1. Odpojte se a přihlaste se k databázi jako uživatel typu host `user1@gmail.com` pomocí [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) pomocí metody ověřování **Azure Active Directory-Universal s MFA**. Další informace najdete v tématu [použití služby Multi-factor Azure Active Directory Authentication](authentication-mfa-ssms-overview.md).
 
 ## <a name="setting-a-guest-user-as-an-azure-ad-admin"></a>Nastavení uživatele typu Host jako správce Azure AD
 
@@ -133,7 +133,7 @@ Postupujte podle těchto kroků a nastavte uživatele hosta Azure AD jako správ
 
 ## <a name="limitations"></a>Omezení
 
-Existuje omezení Azure Portal, které brání výběru uživatele typu Host služby Azure AD jako spravované instance Azure AD admin pro SQL. Pro účty hostů mimo vaši službu Azure AD, jako je *\@ Outlook.com* , *\@ hotmail.com* , *\@ Live.com* nebo *\@ gmail.com* , se v selektoru pro správu služby AD zobrazí tyto účty, ale jejich zobrazení je šedé a nedá se vybrat. Pomocí výše uvedených [příkazů PowerShellu nebo rozhraní příkazového řádku](#setting-a-guest-user-as-an-azure-ad-admin) nastavte správce Azure AD. Případně skupinu Azure AD obsahujícího uživatele typu Host můžete nastavit jako správce Azure AD pro spravovanou instanci SQL.
+Existuje omezení Azure Portal, které brání výběru uživatele typu Host služby Azure AD jako spravované instance Azure AD admin pro SQL. Pro účty hostů mimo vaši službu Azure AD, jako je *\@ Outlook.com*, *\@ hotmail.com*, *\@ Live.com* nebo *\@ gmail.com*, se v selektoru pro správu služby AD zobrazí tyto účty, ale jejich zobrazení je šedé a nedá se vybrat. Pomocí výše uvedených [příkazů PowerShellu nebo rozhraní příkazového řádku](#setting-a-guest-user-as-an-azure-ad-admin) nastavte správce Azure AD. Případně skupinu Azure AD obsahujícího uživatele typu Host můžete nastavit jako správce Azure AD pro spravovanou instanci SQL.
 
 Tato funkce bude pro spravovanou instanci SQL povolena před všeobecnou dostupností této funkce.
 

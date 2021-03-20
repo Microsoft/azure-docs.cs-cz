@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 087c1d2efc93b8460a3683a4e66916d73fd4e885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87015676"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro základní funkce plánovače ve službě Azure Kubernetes Service (AKS)
@@ -31,7 +31,7 @@ Požadavky na prostředky a omezení jsou umístěné ve specifikaci pod. Tato o
 Chcete-li zajistit způsob, jak rezervovat a omezit prostředky v rámci vývojového týmu nebo projektu, měli byste použít *kvóty prostředků*. Tyto kvóty jsou definované v oboru názvů a dají se použít k nastavení kvót na následujícím základě:
 
 * **Výpočetní prostředky**, jako je například procesor a paměť nebo GPU.
-* **Prostředky úložiště**zahrnují celkový počet svazků nebo velikost místa na disku pro danou třídu úložiště.
+* **Prostředky úložiště** zahrnují celkový počet svazků nebo velikost místa na disku pro danou třídu úložiště.
 * Je možné vytvořit **počet objektů**, jako je například maximální počet tajných klíčů, služeb nebo úloh.
 
 Kubernetes neprovádí přepisování prostředků. Jakmile kumulativní součet požadavků na prostředky nebo omezení projde přiřazenou kvótou, neproběhne žádná další nasazení.

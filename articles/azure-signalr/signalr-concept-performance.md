@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74157666"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Průvodce výkonem pro službu Azure SignalR Service
@@ -43,7 +43,7 @@ Služba signalizace Azure definuje sedm standardních úrovní pro různé kapac
 
 -   Jaký druh aplikačního serveru (velikost virtuálního počítače) je vhodný pro mě? Kolik z nich mám nasadit?
 
-Pro zodpovězení těchto otázek obsahuje tato příručka nejdůležitější vysvětlení faktorů, které mají vliv na výkon. Pak ukazuje maximální příchozí a odchozí zprávy pro každou vrstvu pro typické případy použití: **echo**, **všesměrové**, **odesílací ke skupině**a **odeslání do připojení** (konverzace peer-to-peer).
+Pro zodpovězení těchto otázek obsahuje tato příručka nejdůležitější vysvětlení faktorů, které mají vliv na výkon. Pak ukazuje maximální příchozí a odchozí zprávy pro každou vrstvu pro typické případy použití: **echo**, **všesměrové**, **odesílací ke skupině** a **odeslání do připojení** (konverzace peer-to-peer).
 
 Tato příručka se nezabývá všemi scénáři (a různými případy použití, velikostmi zpráv, schématy odesílání zpráv atd.). Nabízí vám ale několik metod, které vám pomůžou:
 
@@ -58,7 +58,7 @@ Tato část popisuje metodologie hodnocení výkonu a pak uvádí všechny fakto
 
 *Propustnost* a *latence* jsou dva typické aspekty kontroly výkonu. U služby signalizace Azure má každá úroveň SKU vlastní zásady omezování propustnosti. Tato zásada definuje *maximální povolenou propustnost (příchozí a odchozí šířka pásma)* jako maximální dosaženou propustnosti, když 99 procento zpráv má latenci menší než 1 sekunda.
 
-Latence je časové období z připojení, které odesílá zprávu pro příjem zprávy s odpovědí ze služby Azure Signal. Pojďme si jako příklad vykonat **ozvěnu** . Každé připojení klienta přidá do zprávy časové razítko. Centrum aplikačního serveru pošle původní zprávu zpátky do klienta. Proto je zpoždění šíření snadno vypočítáno při každém připojení klienta. Časové razítko je připojeno ke každé zprávě ve **vysílání**, **Odeslat do skupiny**a **poslat připojení**.
+Latence je časové období z připojení, které odesílá zprávu pro příjem zprávy s odpovědí ze služby Azure Signal. Pojďme si jako příklad vykonat **ozvěnu** . Každé připojení klienta přidá do zprávy časové razítko. Centrum aplikačního serveru pošle původní zprávu zpátky do klienta. Proto je zpoždění šíření snadno vypočítáno při každém připojení klienta. Časové razítko je připojeno ke každé zprávě ve **vysílání**, **Odeslat do skupiny** a **poslat připojení**.
 
 K simulaci tisíců souběžných připojení klientů se ve virtuální privátní síti v Azure vytvoří víc virtuálních počítačů. Všechny tyto virtuální počítače se připojují ke stejné instanci služby signalizace Azure.
 
@@ -74,7 +74,7 @@ WebSocket je obousměrný a plně duplexní komunikační protokol přes jedno p
 
 Náklady na směrování zpráv také omezují výkon. Služba signalizace Azure hraje roli jako směrovač zpráv, který směruje zprávu ze sady klientů nebo serverů na jiné klienty nebo servery. Jiný scénář nebo rozhraní API vyžaduje jinou zásadu směrování. 
 
-Pro **echo**klient pošle zprávu sám sobě a cíl směrování také sám o sobě. Tento model má nejnižší náklady na směrování. Pro **vysílání**, **odesílání do skupin**a **odesílání připojení**ale služba signálu Azure potřebuje vyhledat cílová připojení prostřednictvím interní distribuované struktury dat. Toto dodatečné zpracování využívá větší kapacitu procesoru, paměti a šířky pásma sítě. Výsledkem je, že výkon je pomalejší.
+Pro **echo** klient pošle zprávu sám sobě a cíl směrování také sám o sobě. Tento model má nejnižší náklady na směrování. Pro **vysílání**, **odesílání do skupin** a **odesílání připojení** ale služba signálu Azure potřebuje vyhledat cílová připojení prostřednictvím interní distribuované struktury dat. Toto dodatečné zpracování využívá větší kapacitu procesoru, paměti a šířky pásma sítě. Výsledkem je, že výkon je pomalejší.
 
 Ve výchozím režimu se může v některých scénářích taky stát, že se aplikační server stane kritickým bodem. Sada SDK pro službu Azure Signal musí vyvolat centrum, zatímco udržuje živé připojení ke každému klientovi prostřednictvím signálů prezenčního signálu.
 
@@ -118,7 +118,7 @@ Každá úroveň má svou vlastní maximální příchozí a odchozí šířku p
 
 **Echo** poskytuje maximální příchozí šířku pásma, protože má nejnižší náklady na směrování. **Všesměrové vysílání** definuje maximální šířku pásma odchozích zpráv.
 
-Nepřekračuje zvýrazněné hodnoty v následujících dvou tabulkách. *not*
+Nepřekračuje zvýrazněné hodnoty v následujících dvou tabulkách. 
 
 |       Zvuk                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
@@ -172,7 +172,7 @@ V případě Unit100 je maximální odchozí šířka pásma 400 MB z předchoz�
 
 ##### <a name="mixed-use-cases"></a>Smíšené případy použití
 
-Skutečný případ použití typicky kombinuje čtyři základní případy použití dohromady: **echo**, **Broadcast**, **Send to Group**a **Send to Connection**. Metodologie, kterou použijete k vyhodnocení kapacity, je:
+Skutečný případ použití typicky kombinuje čtyři základní případy použití dohromady: **echo**, **Broadcast**, **Send to Group** a **Send to Connection**. Metodologie, kterou použijete k vyhodnocení kapacity, je:
 
 1. Jednotlivé kombinované případy použití můžete rozdělit do čtyř základních případů použití.
 1. Vypočítá maximální šířku pásma příchozích a odchozích zpráv pomocí předchozích vzorců samostatně.
@@ -187,7 +187,7 @@ Pro případ použití odeslání zprávy *klientům se ujistěte* , že aplika�
 
 ## <a name="case-study"></a>Případová studie
 
-V následujících částech najdete čtyři typické případy použití pro přenos protokolu WebSocket: **echo**, **všesměrové**, **odesílací ke skupině**a **odesílání na připojení**. V jednotlivých scénářích obsahuje oddíl aktuální příchozí a odchozí kapacitu pro službu Azure Signal Service. Vysvětluje také hlavní faktory ovlivňující výkon.
+V následujících částech najdete čtyři typické případy použití pro přenos protokolu WebSocket: **echo**, **všesměrové**, **odesílací ke skupině** a **odesílání na připojení**. V jednotlivých scénářích obsahuje oddíl aktuální příchozí a odchozí kapacitu pro službu Azure Signal Service. Vysvětluje také hlavní faktory ovlivňující výkon.
 
 Ve výchozím režimu vytvoří aplikační server pro službu Azure Signal Service pět připojení k serveru. Aplikační server používá službu Azure Signal Service SDK ve výchozím nastavení. V následujících výsledcích testu výkonu se připojení k serveru zvyšují na 15 (nebo více pro vysílání a odesílání zprávy do velké skupiny).
 
@@ -235,7 +235,7 @@ I u tohoto jednoduchého centra je přenos dat na aplikačním serveru výrazný
 | Počet aplikačních serverů | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> Celkový výkon **ozvěny**má vliv na číslo klientského připojení, velikost zprávy, rychlost odesílání zpráv, úroveň SKU a procesor/paměť aplikačního serveru.
+> Celkový výkon **ozvěny** má vliv na číslo klientského připojení, velikost zprávy, rychlost odesílání zpráv, úroveň SKU a procesor/paměť aplikačního serveru.
 
 #### <a name="broadcast"></a>To
 
@@ -265,7 +265,7 @@ Vysílající klienti, kteří odesílají zprávy, nejsou delší než čtyři.
 > [!NOTE]
 > Zvyšte výchozí připojení serveru z 5 na 40 na každém serveru aplikace, abyste zabránili možným nevyváženým připojením k serveru ke službě Azure Signal.
 >
-> Celkový výkon **všesměrového vysílání**má vliv na číslo klientského připojení, velikost zprávy, rychlost odeslání zprávy a úroveň SKU.
+> Celkový výkon **všesměrového vysílání** má vliv na číslo klientského připojení, velikost zprávy, rychlost odeslání zprávy a úroveň SKU.
 
 #### <a name="send-to-group"></a>Odeslat do skupiny
 
@@ -303,11 +303,11 @@ Mnoho připojení klientů volá centrum, takže je pro výkon také důležité
 | Počet aplikačních serverů | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> Celkový výkon **pro odesílání do malých skupin**má vliv na číslo klientského připojení, velikost zprávy, rychlost odesílání zpráv, náklady na směrování, úroveň SKU a procesor/paměť aplikačního serveru.
+> Celkový výkon **pro odesílání do malých skupin** má vliv na číslo klientského připojení, velikost zprávy, rychlost odesílání zpráv, náklady na směrování, úroveň SKU a procesor/paměť aplikačního serveru.
 
 ##### <a name="big-group"></a>Velká skupina
 
-U pole **Odeslat do velké skupiny**se odchozí šířka pásma bude kritickým bodem, než se zasáhne limit nákladů na směrování. Následující tabulka uvádí maximální šířku pásma, která je téměř stejná jako u **všesměrového vysílání**.
+U pole **Odeslat do velké skupiny** se odchozí šířka pásma bude kritickým bodem, než se zasáhne limit nákladů na směrování. Následující tabulka uvádí maximální šířku pásma, která je téměř stejná jako u **všesměrového vysílání**.
 
 |    Odeslat do velké skupiny      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
@@ -372,7 +372,7 @@ Následující tabulka obsahuje navrhovaný počet webových aplikací pro ASP.N
 | Připojení      | 1 000 | 2 000 | 5 000 | 10 000 | 20 000 | 50,000 | 100 000 |
 | Počet aplikačních serverů | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
-Následující tabulka poskytuje navrhovaný počet webových aplikací pro **vysílání**signálem ASP.NET.
+Následující tabulka poskytuje navrhovaný počet webových aplikací pro **vysílání** signálem ASP.NET.
 
 |  To       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|

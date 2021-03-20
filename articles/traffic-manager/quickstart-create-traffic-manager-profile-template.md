@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
 ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675998"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>Rychlý Start: vytvoření profilu Traffic Manager pomocí šablony ARM
@@ -21,7 +21,7 @@ V tomto rychlém startu se dozvíte, jak pomocí šablony Azure Resource Manager
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-traffic-manager-external-endpoint%2Fazuredeploy.json)
 
@@ -62,11 +62,11 @@ Další šablony, které souvisejí s Azure Traffic Manager, najdete v tématu [
 
 1. Pro zkopírování skriptu PowerShellu vyberte **Kopírovat** z předchozího bloku kódu.
 
-1. Klikněte pravým tlačítkem na Podokno konzole prostředí a pak vyberte **Vložit** .
+1. Klikněte pravým tlačítkem na Podokno konzole prostředí a pak vyberte **Vložit**.
 
 1. Zadejte hodnoty.
 
-    Nasazení šablony vytvoří profil se dvěma externími koncovými body. **Endpoint1** používá cílový koncový bod `www.microsoft.com` s umístěním v **Severní Evropa** . **Pro endpoint2 u** používá cílový koncový bod `docs.microsoft.com` s umístěním v **střed USA – jih** .
+    Nasazení šablony vytvoří profil se dvěma externími koncovými body. **Endpoint1** používá cílový koncový bod `www.microsoft.com` s umístěním v **Severní Evropa**. **Pro endpoint2 u** používá cílový koncový bod `docs.microsoft.com` s umístěním v **střed USA – jih**.
 
     Název skupiny prostředků je název projektu s připojeným **RG** .
 

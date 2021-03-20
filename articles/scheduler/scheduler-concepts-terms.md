@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368158"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
@@ -27,7 +27,7 @@ ms.locfileid: "92368158"
 
 Rozhraní REST API služby Scheduler zpřístupňuje a používá tyto hlavní entity neboli prostředky:
 
-| Entita | Popis |
+| Entita | Description |
 |--------|-------------|
 | **Úloha** | Definuje jednu opakující se akci s jednoduchými nebo komplexními strategiemi provedení. Akce můžou zahrnovat požadavky HTTP, fronty úložiště, fronty služby Service Bus nebo tématu služby Service Bus. | 
 | **Kolekce úloh** | Obsahuje skupinu úloh a zachovává nastavení, kvóty a omezení, které jsou sdílené mezi úlohami v kolekci. Jako vlastník předplatného Azure můžete vytvářet kolekce úloh a seskupovat úlohy na základě jejich využití nebo hranic aplikací. Kolekce úloh má tyto vlastnosti: <p>– Je omezená na jednu oblast. <br>– Umožňuje vynucovat kvóty, takže můžete omezit využití všech úloh v kolekci. <br>– Mezi kvóty patří například MaxJobs a MaxRecurrence. | 
@@ -84,13 +84,13 @@ Azure Scheduler podporuje několik typů úloh:
 
 | Prvek | Povinné | Popis | 
 |---------|----------|-------------| 
-| [**Spuštění**](#start-time) | Ne | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**kroky**](#action) | Ano | Podrobnosti pro primární akci, které můžou zahrnovat objekt **errorAction** | 
-| [**errorAction**](#error-action) | Ne | Podrobnosti pro sekundární akci, která se spustí, pokud primární akce selže |
-| [**vzorec**](#recurrence) | Ne | Podrobnosti pro opakující se úlohu, například frekvence a interval opakování | 
-| [**retryPolicy**](#retry-policy) | Ne | Podrobnosti o tom, jak často se má akce opakovat | 
-| [**státech**](#state) | Ano | Podrobnosti o aktuálním stavu úlohy |
-| [**stav**](#status) | Ano | Podrobnosti o aktuálním statusu úlohy, který řídí služba |
+| [**Spuštění**](#start-time) | No | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**kroky**](#action) | Yes | Podrobnosti pro primární akci, které můžou zahrnovat objekt **errorAction** | 
+| [**errorAction**](#error-action) | No | Podrobnosti pro sekundární akci, která se spustí, pokud primární akce selže |
+| [**vzorec**](#recurrence) | No | Podrobnosti pro opakující se úlohu, například frekvence a interval opakování | 
+| [**retryPolicy**](#retry-policy) | No | Podrobnosti o tom, jak často se má akce opakovat | 
+| [**státech**](#state) | Yes | Podrobnosti o aktuálním stavu úlohy |
+| [**stav**](#status) | Yes | Podrobnosti o aktuálním statusu úlohy, který řídí služba |
 ||||
 
 Tady je příklad, který ukazuje komplexní definici úlohy pro akci HTTP (podrobnější popis elementů najdete v dalších částech): 
@@ -248,16 +248,16 @@ Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakov
 
 | Vlastnost | Požaduje se | Hodnota | Popis | 
 |----------|----------|-------|-------------| 
-| **frequency** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
-| **interval** | Ne | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
-| **CXL** | Ne | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
-| **hodin** | Ne | 1 až 60 | Pole s hodinami, kdy se má úloha spustit | 
-| **minuty** | Ne | 0 až 59 | Pole s minutami, kdy se má úloha spustit | 
-| **months** | Ne | 1 až 12 | Pole s měsíci, kdy se má úloha spustit | 
-| **monthDays** | Ne | Různé | Pole se dny v měsíci, kdy se má úloha spustit | 
-| **weekDays** | Ne | Monday (pondělí), Tuesday (úterý), Wednesday (středa), Thursday (čtvrtek), Friday (pátek), Saturday (sobota), Sunday (neděle) | Pole se dny v týdnu, kdy se má úloha spustit | 
-| **výpočtu** | Ne | <*nTato*> | Počet opakování. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
-| **endTime** | Ne | <*nTato*> | Datum a čas, kdy se má opakování zastavit. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
+| **opakování** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
+| **doba** | No | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
+| **CXL** | No | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
+| **hodin** | No | 1 až 60 | Pole s hodinami, kdy se má úloha spustit | 
+| **minuty** | No | 0 až 59 | Pole s minutami, kdy se má úloha spustit | 
+| **months** | No | 1 až 12 | Pole s měsíci, kdy se má úloha spustit | 
+| **monthDays** | No | Různé | Pole se dny v měsíci, kdy se má úloha spustit | 
+| **weekDays** | No | Monday (pondělí), Tuesday (úterý), Wednesday (středa), Thursday (čtvrtek), Friday (pátek), Saturday (sobota), Sunday (neděle) | Pole se dny v týdnu, kdy se má úloha spustit | 
+| **count** | No | <*nTato*> | Počet opakování. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
+| **endTime** | No | <*nTato*> | Datum a čas, kdy se má opakování zastavit. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
 ||||
 
 Další informace o těchto elementech najdete v tématu [Vytváření složitých plánů a pokročilých opakování](../scheduler/scheduler-advanced-complexity.md).
@@ -278,9 +278,9 @@ Pro případ, že by došlo k selhání úlohy služby Scheduler, můžete nasta
 
 | Vlastnost | Požaduje se | Hodnota | Popis | 
 |----------|----------|-------|-------------| 
-| **retryType** | Ano | **Pevné**, **Žádné** | Určuje, jestli jste zadali určili zásadu opakování (**pevné**), nebo ne (**žádné**). | 
-| **retryInterval** | Ne | PT30S | Určuje interval a frekvenci opakovaných pokusů ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimální hodnota je 15 sekund a maximální hodnota je 18 měsíců. | 
-| **retryCount** | Ne | 4 | Určuje počet opakovaných pokusů. Maximální hodnota je 20. | 
+| **retryType** | Yes | **Pevné**, **Žádné** | Určuje, jestli jste zadali určili zásadu opakování (**pevné**), nebo ne (**žádné**). | 
+| **retryInterval** | No | PT30S | Určuje interval a frekvenci opakovaných pokusů ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimální hodnota je 15 sekund a maximální hodnota je 18 měsíců. | 
+| **retryCount** | No | 4 | Určuje počet opakovaných pokusů. Maximální hodnota je 20. | 
 ||||
 
 Další informace najdete v tématu [Vysoká dostupnost a spolehlivost](../scheduler/scheduler-high-availability-reliability.md).
@@ -308,7 +308,7 @@ Po spuštění úlohy vrací Scheduler informace o stavu úlohy prostřednictví
 * Počet selhání, pokud k nějakým došlo
 * Počet chyb, pokud k nějakým došlo
 
-Příklad:
+Například:
 
 ```json
 "status": {

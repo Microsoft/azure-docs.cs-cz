@@ -9,10 +9,10 @@ ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
 ms.openlocfilehash: a15c6b5919f428b28daab86fea9c3b6473d19162
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606194"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
@@ -27,7 +27,7 @@ Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s
 | Couchbase | Azure Cosmos DB |
 |--|--|
 | Server Couchbase | Účet |
-| Blocích | Database |
+| Blocích | databáze |
 | Blocích | Kontejner/kolekce |
 | Dokument JSON | Položka/dokument |
 

@@ -1,23 +1,22 @@
 ---
-title: Správa zřizování uživatelů pro podnikové aplikace v Azure AD
-description: Naučte se spravovat zřizování uživatelských účtů pro podnikové aplikace pomocí Azure Active Directory
+title: Správa zřizování uživatelů pro podnikové aplikace v Azure Active Directory
+description: Naučte se spravovat zřizování uživatelských účtů pro podnikové aplikace pomocí Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/04/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 5dceeb11ed9a4d6af88650a6146f58db412748d9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555626"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579412"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal
 
@@ -63,9 +62,7 @@ Vyberte **Test připojení** a otestujte přihlašovací údaje tím, že se Azu
 
 Rozbalením **mapování** můžete zobrazit a upravit atributy uživatele, které se při zřizování nebo aktualizaci uživatelských účtů flowují mezi službou Azure AD a cílovou aplikací.
 
-Existuje předem nakonfigurovaná sada mapování mezi uživatelskými objekty Azure AD a všemi uživatelskými objekty aplikace v SaaS. Některé aplikace také spravují objekty skupiny. Vyberte mapování v tabulce, chcete-li otevřít Editor mapování vpravo, kde je můžete zobrazit a přizpůsobit.
-
-![Zobrazuje obrazovku mapování atributů.](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+Existuje předem nakonfigurovaná sada mapování mezi uživatelskými objekty Azure AD a všemi uživatelskými objekty aplikace v SaaS. Některé aplikace také spravují objekty skupiny. Vyberte mapování v tabulce pro otevření editoru mapování, kde je můžete zobrazit a přizpůsobit.
 
 Mezi podporovaná přizpůsobení patří:
 
@@ -79,10 +76,10 @@ Mezi podporovaná přizpůsobení patří:
 
 ### <a name="settings"></a>Nastavení
 
-Službu zřizování Azure AD pro vybranou aplikaci můžete spustit a zastavit v oblasti **Nastavení** na obrazovce **zřizování** . Můžete se také rozhodnout vymazat mezipaměť zřizování a službu restartovat.
+Rozbalte **Nastavení** a nastavte e-mailovou adresu pro příjem oznámení a to, jestli se mají zobrazovat výstrahy o chybách. Můžete také vybrat rozsah uživatelů, které se mají synchronizovat. Můžete si vybrat, jestli chcete synchronizovat všechny uživatele a skupiny, nebo jenom ty, které jsou přiřazené.
+
+### <a name="provisioning-status"></a>Stav zřizování 
 
 Pokud je zřizování pro aplikaci poprvé zapnuté, zapněte službu změnou **stavu zřizování** na **zapnuto**. Tato změna způsobí, že služba zřizování Azure AD spustí počáteční cyklus. Načte uživatele, kteří jsou přiřazeni v části **Uživatelé a skupiny** , zadá dotaz na cílovou aplikaci pro ně a potom spustí akce zřizování definované v oddílu **mapování** Azure AD. Během tohoto procesu služba zřizování ukládá data uložená v mezipaměti s informacemi o tom, jaké uživatelské účty spravuje, takže nespravované účty v cílových aplikacích, které nikdy nejsou v oboru pro přiřazení, nejsou ovlivněné operacemi zrušení zřízení. Po počátečním cyklu služba zřizování automaticky synchronizuje objekty uživatelů a skupin v intervalu 40 minut.
 
 Změňte **stav zřizování** na **vypnuto**  , aby se služba zřizování zastavila. V tomto stavu Azure v aplikaci nevytvoří, neaktualizuje ani neodebere žádné objekty uživatelů ani skupin. Změňte stav zpět na **zapnuto** a služba se ponechá tam, kde skončila.
-
-**Vymazání aktuálního stavu a restartuje synchronizaci** aktivuje počáteční cyklus. Služba potom znovu vyhodnotí všechny uživatele ve zdrojovém systému a určí, jestli jsou v oboru pro zřizování. To může být užitečné, pokud je vaše aplikace momentálně v karanténě nebo potřebujete provést změnu mapování atributů. Všimněte si, že počáteční cyklus trvá déle než typický přírůstkový cyklus z důvodu počtu objektů, které je třeba vyhodnotit. Další informace o výkonu počátečních a přírůstkových cyklů najdete [tady](application-provisioning-when-will-provisioning-finish-specific-user.md).

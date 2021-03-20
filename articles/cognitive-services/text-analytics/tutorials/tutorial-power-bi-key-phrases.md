@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47feddb88fd7ddae1f8be54709019b4c339d177d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736674"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599166"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Používat rozhraní API pro analýzu klíčových frází v textu k extrakci nejdůležitějších frází z připomínek zákazníků
 > * Vytvořit z připomínek zákazníků Word Cloud
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop. [Stáhněte si ho zdarma](https://powerbi.microsoft.com/get-started/).
@@ -91,7 +91,7 @@ Můžete také vyfiltrovat prázdné zprávy filtrem Odebrat prázdné nebo odeb
 
 [Rozhraní API Klíčové fráze](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/operations/KeyPhrases) služby Analýza textu dokáže v jednom požadavku HTTP zpracovat až tisíc textových dokumentů. Power BI ale upřednostňuje postupné zpracování jednotlivých záznamů. V tomto kurzu bude ve voláních rozhraní API vždy jen jeden dokument. Rozhraní API Klíčové fráze vyžaduje, aby každý zpracovávaný dokument obsahoval následující pole.
 
-| Pole | Popis |
+| Pole | Description |
 | - | - |
 | `id`  | Jedinečný identifikátor tohoto dokumentu v rámci požadavku. Odpověď také obsahuje toto pole. Tímto způsobem můžete v případě zpracování více dokumentů snadno přidružit extrahované klíčové fráze k dokumentu, ze kterého pocházejí. V tomto kurzu zpracováváte pro každou žádost jenom jeden dokument. Proto můžete hodnotu `id` pevně zadat, aby byla pro všechny požadavky stejná.|
 | `text`  | Text, který se má zpracovat. Hodnota tohoto pole pochází ze sloupce `Merged` vytvořeného v [předchozím oddílu](#PreparingData). V tomto sloupci je sloučený řádek předmětu s textem komentáře. Rozhraní API pro klíčové fráze vyžaduje, aby tato data nebyla delší než 5 120 znaků.|
@@ -190,7 +190,7 @@ Teď tento sloupec použijete k vygenerování Word Cloudu. Začněte tím, že 
 > [!NOTE]
 > Proč k vygenerování Word Cloudu použít extrahované klíčové fráze, a ne úplný text každého komentáře? Klíčové fráze nám poskytují *důležitá* slova z komentářů našich zákazníků, ne pouze *nejčastější* slova. Navíc nedojde ke zkreslení velikosti slov ve výsledném Cloudu častým používáním určitého slova v relativně malém počtu komentářů.
 
-Pokud ještě nemáte nainstalovaný vlastní vizuál Word Cloud, nainstalujte ho. Na panelu Vizualizace napravo od pracovního prostoru klikněte na tři tečky (**...**) a zvolte **Importovat ze Storu**. Vyhledejte „cloud“ a klikněte na tlačítko **Přidat** vedle vizuálu Word Cloud. Power BI nainstaluje vizuál Word Cloud a bude vás informovat o úspěšné instalaci.
+Pokud ještě nemáte nainstalovaný vlastní vizuál Word Cloud, nainstalujte ho. Na panelu vizualizace napravo od pracovního prostoru klikněte na tři tečky (**...**) a vyberte **importovat z trhu**. Pokud se v seznamu nenachází slovo cloudu mezi zobrazenými nástroji vizualizace, můžete vyhledat "Cloud" a kliknout na tlačítko **Přidat** vedle cloudového vizuálu pro Word. Power BI nainstaluje vizuál Word Cloud a bude vás informovat o úspěšné instalaci.
 
 ![[Přidání vlastního vizuálu]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -200,7 +200,7 @@ Nejprve klikněte na ikonu Word Cloud na panelu Vizualizace.
 
 V pracovním prostoru se zobrazí nová sestava. Přetáhněte pole `keyphrases` z panelu Pole do pole Kategorie na panelu Vizualizace. Uvnitř sestavy se zobrazí Word Cloud.
 
-Teď na panelu Vizualizace přepněte na stránku Formát. V kategorii Nevýznamová slova zapněte **Výchozí nevýznamová slova**. Tím se z Cloudu odstraní běžná krátká slova, jako je například „of“. 
+Teď na panelu Vizualizace přepněte na stránku Formát. V kategorii Nevýznamová slova zapněte **Výchozí nevýznamová slova**. Tím se z Cloudu odstraní běžná krátká slova, jako je například „of“. Protože však vizualizujeme klíčové fráze, nemusí obsahovat slova stop.
 
 ![[Aktivace výchozích nevýznamových slov]](../media/tutorials/power-bi/default-stop-words.png)
 
@@ -232,8 +232,7 @@ Následující funkce Analýzy mínění vrátí skóre značící, jak pozitivn
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    sentiment   = jsonresp[documents]{0}[confidenceScores]
-in  sentiment
+    sentiment   = jsonresp[documents]{0}[detectedLanguage][confidenceScore] in  sentiment
 ```
 
 Tady jsou dvě verze funkce Rozpoznávání jazyka. První vrátí kód ISO jazyka (například pro angličtinu je to `en`), zatímco druhá vrací popisný název (například `English`). Jak si můžete všimnout, tyto dvě verze se liší pouze v posledním řádku těla funkce.
@@ -249,8 +248,7 @@ Tady jsou dvě verze funkce Rozpoznávání jazyka. První vrátí kód ISO jazy
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[iso6391Name]
-in  language
+    language    = jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 ```fsharp
 // Returns the name (for example, 'English') of the language in which the text is written
@@ -263,8 +261,7 @@ in  language
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[name]
-in  language
+    language    jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 
 A konečně, tady je již uvedená varianta funkce Klíčové fráze, která vrátí fráze jako objekt seznamu, a ne jako jeden řetězec čárkami oddělených frází. 

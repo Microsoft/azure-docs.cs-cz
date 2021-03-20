@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8481c562ecbab1f26e877e55a5a9454695ddf4c0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370827"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Zobrazit historii auditu pro role Azure AD v Privileged Identity Management
@@ -98,7 +98,7 @@ Pomocí těchto kroků zobrazíte historii auditu pro role Azure AD.
     | Reasoning | Text, který byl zadán do pole důvod během aktivace |
     | Konec platnosti | Jakmile vyprší platnost aktivované role. Vztahuje se pouze na přiřazení oprávněných rolí. |
 
-1. Chcete-li seřadit historii auditu, klikněte na tlačítka **čas**, **Akce**a **role** .
+1. Chcete-li seřadit historii auditu, klikněte na tlačítka **čas**, **Akce** a **role** .
 
 ## <a name="filter-audit-history"></a>Filtrovat historii auditu
 
@@ -106,9 +106,9 @@ Pomocí těchto kroků zobrazíte historii auditu pro role Azure AD.
 
     Zobrazí se podokno **aktualizovat parametry grafu** .
 
-1. V **časovém rozsahu**vyberte časový rozsah.
+1. V **časovém rozsahu** vyberte časový rozsah.
 
-1. V části **role**zaškrtněte políčka pro určení rolí, které chcete zobrazit.
+1. V části **role** zaškrtněte políčka pro určení rolí, které chcete zobrazit.
 
     ![Aktualizovat podokno parametrů grafu](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 

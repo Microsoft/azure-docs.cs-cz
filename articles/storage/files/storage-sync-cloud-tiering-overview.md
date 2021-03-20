@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/4/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ca8df21e0221d364f75eaeb26f0b2961d7e0b08
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: dcd58e966da7ca596a14ca1b2839cbeb6399a855
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204379"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576454"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu, volitelná funkce Synchronizace souborů Azure, snižuje množství potřebných místních úložišť a zároveň udržuje výkon místního souborového serveru.
@@ -39,7 +39,7 @@ V případě **zásad data** jsou studené soubory vrstveny do cloudu, pokud k n
 Další příklady, jak zásady data a volného místa ve svazku spolupracují, najdete v tématu [výběr synchronizace souborů Azure zásad clouding](storage-sync-choose-cloud-tiering-policies.md).
 
 ### <a name="windows-server-data-deduplication"></a>Odstranění duplicitních dat Windows serveru
-Odstranění duplicitních dat je podporováno na svazcích s povoleným vytvářením vrstev cloudu počínaje systémem Windows Server 2016. Další podrobnosti najdete v tématu [Plánování nasazení synchronizace souborů Azure](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication).
+Odstranění duplicitních dat je podporováno na svazcích s povoleným vytvářením vrstev cloudu počínaje systémem Windows Server 2016. Další podrobnosti najdete v tématu [Plánování nasazení synchronizace souborů Azure](./storage-sync-files-planning.md#data-deduplication).
 
 ### <a name="cloud-tiering-heatmap"></a>Heatmapuování vrstev cloudu
 Synchronizace souborů Azure monitoruje přístup k souborům (operace čtení a zápisu) v průběhu času a podle toho, jak často a nedávno je přístup, přiřadí ke každému souboru skóre tepla. Pomocí těchto výsledků sestaví "heatmapu" svého oboru názvů na každém koncovém bodu serveru. Tento heatmapu je seznam všech synchronizovaných souborů v umístění s povoleným vrstvou cloudu, seřazené podle jejich skóre. Často používané soubory, které se nedávno otevřely, se považují za horkou, zatímco soubory, které se zlomek a nebyly k dispozici, se považují za studené. 
@@ -109,4 +109,3 @@ Je také možné, že se soubor částečně vrstvený (nebo částečně odvola
 ## <a name="next-steps"></a>Další kroky
 * [Zvolit Synchronizace souborů Azure zásady cloudové vrstvy](storage-sync-choose-cloud-tiering-policies.md)
 * [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
-

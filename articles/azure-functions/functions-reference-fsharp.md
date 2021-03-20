@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87088015"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Referenční informace pro vývojáře v jazyce F # Azure Functions
@@ -61,7 +61,7 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Vaše funkce F # Azure provede jeden nebo více argumentů. Když hovoříme o Azure Functionsch argumentech, odkazujeme na *vstupní* argumenty a *výstupní* argumenty. Vstupní argument je přesně to, co zvuk vypadá: vstup do funkce Azure Functions jazyka F #. *Výstupní* argument je proměnlivá data nebo `byref<>` argument, který slouží jako způsob, jak předat data zpět *out* z vaší funkce.
+Vaše funkce F # Azure provede jeden nebo více argumentů. Když hovoříme o Azure Functionsch argumentech, odkazujeme na *vstupní* argumenty a *výstupní* argumenty. Vstupní argument je přesně to, co zvuk vypadá: vstup do funkce Azure Functions jazyka F #. *Výstupní* argument je proměnlivá data nebo `byref<>` argument, který slouží jako způsob, jak předat data zpět  z vaší funkce.
 
 V předchozím příkladu `blob` je vstupní argument a `output` je výstupní argument. Všimněte si, že jsme použili `byref<>` pro `output` (není nutné přidávat `[<Out>]` anotaci). Použití `byref<>` typu umožňuje vaší funkci změnit, na který záznam nebo objekt odkazuje argument.
 

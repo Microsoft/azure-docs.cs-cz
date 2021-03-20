@@ -12,10 +12,10 @@ ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96170918"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci nástroje pro správu TheAccessHub pomocí Azure Active Directory B2C
@@ -52,7 +52,7 @@ Nástroj pro správu TheAccessHub se spouští jako jakákoli jiná aplikace v A
 
 ![Obrázek znázorňující diagram architektury n8identity](./media/partner-n8identity/n8identity-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na přihlašovací stránku. Uživatelé si vyberou přihlášení a vytvoří nový účet a na stránce se zadají informace. Azure AD B2C shromažďuje atributy uživatele.
 | 2. | Azure AD B2C volá Nástroj pro správu TheAccessHub a předává atributy uživatele.
@@ -194,7 +194,7 @@ Oprávnění ke správě uživatelů a oddělení služeb zákazníkům a helpde
 
 1. Přihlaste se k nástroji pro správu TheAccessHub pomocí přihlašovacích údajů, které jste poskytli N8 identity.
 
-2. Přejít na **Manager Tools**  >  **stromové zobrazení** nástrojů pro správu
+2. Přejít na   >  **stromové zobrazení** nástrojů pro správu
 
 3. V této prezentaci můžete vizualizovat, kteří kolegové a skupiny mohou spravovat, které organizace.
 
@@ -210,7 +210,7 @@ Postup při přizpůsobování oznámení:
 
 1. Přihlaste se k TheAccessHub pomocí přihlašovacích údajů, které vám poskytla N8 identita.
 
-2. Přejít na **oznámení správce systému**  >  **Notifications**
+2. Přejít na **oznámení správce systému**  >  
 
 3. Vyberte **šablonu vytvořit kolegu** .
 
@@ -228,7 +228,7 @@ Pomocí nástroje pro správu TheAccessHub můžete importovat data z různých 
 
 1. Přihlaste se k nástroji pro správu TheAccessHub pomocí přihlašovacích údajů, které jste poskytli N8 identity.
 
-2. Přejít do **System Admin**  >  **zdrojů dat** správce systému
+2. Přejít do   >  **zdrojů dat** správce systému
 
 3. Vyberte **Přidat zdroj dat** .
 
@@ -290,7 +290,7 @@ Pomocí nástroje pro správu TheAccessHub můžete importovat data z různých 
 
 1. Přihlaste se k nástroji pro správu TheAccessHub pomocí přihlašovacích údajů, které jste poskytli N8 identity.
 
-2. Přejít na **System Admin**  >  **synchronizaci dat** správce systému
+2. Přejít na   >  **synchronizaci dat** správce systému
 
 3. Vybrat **nové zatížení**
 
@@ -332,7 +332,7 @@ Synchronizace dat z Azure AD B2C do nástroje pro správu TheAccessHub:
 
 1. Přihlaste se k nástroji pro správu TheAccessHub pomocí přihlašovacích údajů, které jste poskytli N8 identity.
 
-2. Přejít na **System Admin**  >  **synchronizaci dat** správce systému
+2. Přejít na   >  **synchronizaci dat** správce systému
 
 3. Vybrat **nové zatížení**
 
@@ -364,7 +364,7 @@ Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho sch
 
 1. Přihlaste se k nástroji pro správu TheAccessHub pomocí přihlašovacích údajů, které jste poskytli N8 identity.
 
-2. Přejít do nástroje pro správu **správce systému**  >  **Admin Tools**  >  **zabezpečení rozhraní API**
+2. Přejít do nástroje pro správu **správce systému**  >    >  **zabezpečení rozhraní API**
 
 3. Vyberte **Generovat**
 
@@ -378,7 +378,7 @@ Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho sch
 
 1. Přihlaste se k nástroji pro správu TheAccessHub pomocí přihlašovacích údajů, které jste poskytli N8 identity.
 
-2. Navigace do nástroje pro správu **správce systému**  >  **Admin Tools**  >  **zásady Azure B2C**
+2. Navigace do nástroje pro správu **správce systému**  >    >  **zásady Azure B2C**
 
 3. Zadejte svou doménu tenanta Azure AD B2C a dvě ID rozhraní identity Experience Framework z konfigurace architektury identity Experience Framework.
 

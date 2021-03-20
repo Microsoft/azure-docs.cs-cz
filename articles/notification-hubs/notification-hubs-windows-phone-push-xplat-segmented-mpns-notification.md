@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998233"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Kurz: odeslání nabízených oznámení do konkrétních telefonů Windows pomocí Azure Notification Hubs
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 > * Posílání označených oznámení
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete [kurz Zasílání nabízených oznámení aplikacím pro Windows Phone službou Azure Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md). V tomto kurzu aktualizujete mobilní aplikaci, abyste si mohli zaregistrovat kategorie nejnovějších zpráv, které vás zajímají, a dostávat nabízená oznámení jenom k těmto kategoriím.
 
@@ -252,7 +252,7 @@ Tento postup provede při spuštění registraci v centru oznámení. Použije k
 > [!NOTE]
 > Identifikátor URI kanálu přiřazený službě MPNS (Microsoft Push Notification Service) se může kdykoliv změnit, a proto byste měli oznámení často registrovat, abyste se vyhnuli chybám v oznámeních. Tento příklad registruje oznámení při každém spuštění aplikace. Pokud se aplikace spouštějí často, třeba častěji než jednou denně, pravděpodobně můžete registraci přeskočit kvůli úspoře šířky pásma, protože od předchozí registrace neuplynul ani den.
 
-1. Otevřete soubor App.xaml.cs a přidejte `async` k `Application_Launching` metodě modifikátor a nahraďte Notification Hubs registračním kódem, který jste přidali v části začínáme [s Notification Hubs] s následujícím kódem:
+1. Otevřete soubor App. XAML. cs a přidejte `async` k `Application_Launching` metodě modifikátor a nahraďte Notification Hubs registračním kódem, který jste přidali v části [Začínáme s Notification Hubs] s následujícím kódem:
 
     ```csharp
     private async void Application_Launching(object sender, LaunchingEventArgs e)
@@ -268,7 +268,7 @@ Tento postup provede při spuštění registraci v centru oznámení. Použije k
     ```
 
     Tento kód zajistí, aby aplikace při každém spuštění načetla kategorie z místního úložiště a vyžadovala registraci těchto kategorií.
-2. V souboru projektu MainPage.xaml.cs přidejte následující kód, který implementuje `OnNavigatedTo` metodu:
+2. V souboru projektu MainPage. XAML. cs přidejte následující kód, který implementuje `OnNavigatedTo` metodu:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)

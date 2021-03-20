@@ -8,10 +8,10 @@ ms.service: sql-database
 ms.topic: how-to
 ms.date: 01/15/2021
 ms.openlocfilehash: 56cf30d89460df8ac50d258bd8b29cf4e7236690
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98734626"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>Plánování a Správa nákladů na Azure SQL Database
@@ -19,7 +19,7 @@ ms.locfileid: "98734626"
 Tento článek popisuje, jak plánujete a spravovat náklady na Azure SQL Database. Nejprve pomocí cenové kalkulačky Azure přidejte prostředky Azure a Prohlédněte si odhadované náklady. Po zahájení práce s prostředky Azure SQL Database použijte funkce Cost Management k nastavení rozpočtů a monitorování nákladů. Můžete si také projít předpokládané náklady a identifikovat trendy útraty, které identifikují oblasti, kde můžete chtít pracovat. Náklady na Azure SQL Database jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak naplánovat a spravovat náklady na Azure SQL Database, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně všech služeb třetích stran.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Analýza nákladů podporuje většinu typů účtů Azure, ale ne všechny. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). K zobrazení dat o nákladech potřebujete alespoň oprávnění ke čtení pro účet Azure. 
 

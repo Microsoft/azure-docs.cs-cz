@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339194"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB konstanty dotazů SQL  
@@ -25,11 +25,11 @@ ms.locfileid: "93339194"
 |-|-|  
 |**Nedefinované**|Jedna hodnota: **Nedefinováno**|  
 |**Null**|Jedna hodnota: **null**|  
-|**Logická hodnota**|Hodnoty: **false** , **true**.|  
+|**Logická hodnota**|Hodnoty: **false**, **true**.|  
 |**Číselná**|Číslo s plovoucí desetinnou čárkou a dvojitou přesností, Standard IEEE 754.|  
 |**Řetězec**|Sekvence nula nebo více znaků Unicode. Řetězce musí být uzavřeny v jednoduchých nebo dvojitých uvozovkách.|  
 |**Skupin**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného**.|  
-|**Předmětů**|Neuspořádaná sada nula nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být jakýkoli skalární datový typ, s výjimkou **nedefinovaného**.|  
+|**Objekt**|Neuspořádaná sada nula nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být jakýkoli skalární datový typ, s výjimkou **nedefinovaného**.|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
@@ -115,7 +115,7 @@ ms.locfileid: "93339194"
 |\f|informační kanál formuláře|U + 000C|  
 |\n|čárový kanál|U + 000A|  
 |\r|návrat na začátek řádku|U + 000D|  
-|\t| tabulátor|U + 0009|  
+|\t|rážky|U + 0009|  
 |\uXXXX|Znak Unicode definovaný 4 šestnáctkovými číslicemi.|U + XXXX|  
 
 ## <a name="next-steps"></a>Další kroky

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91266135"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování schválených klientských aplikací pro cloudový přístup k aplikaci pomocí podmíněného přístupu
@@ -41,37 +41,37 @@ Aby bylo možné vyžadovat použití schválené klientské aplikace na mobiln�
 **Krok 1: zásady pro klienty moderních ověřování založené na Androidu a iOS vyžadující použití schválené klientské aplikace při přístupu k Exchangi Online.**
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
+1. V části **přiřazení** vyberte **Uživatelé a skupiny** .
+   1. V části **Zahrnout** vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365**.
-1. V části **podmínky**vyberte **platformy zařízení**.
+1. V části **cloudové aplikace nebo akce**  >  vyberte **Office 365**.
+1. V části **podmínky** vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Zahrňte **Android** a **iOS**.
-1. V části **podmínky**vyberte **klientské aplikace (Preview)**.
+1. V části **podmínky** vyberte **klientské aplikace (Preview)**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Vyberte **mobilní aplikace a klienti pro stolní počítače** a **moderní ověřování**.
-1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci**a vyberte **Vybrat**.
+1. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci** a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 
 **Krok 2: Konfigurace zásad podmíněného přístupu Azure AD pro Exchange Online pomocí ActiveSync (EAS)**
 
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
+1. V části **přiřazení** vyberte **Uživatelé a skupiny** .
+   1. V části **Zahrnout** vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 Exchange Online**.
+1. V části **cloudové aplikace nebo akce**  >  vyberte **Office 365 Exchange Online**.
 1. V části **podmínky**:
    1. **Klientské aplikace (Preview)**:
       1. Nastavte **Konfigurovat** na **Ano**.
       1. Vyberte **mobilní aplikace a klienti klasické pracovní plochy** a **klienti Exchange ActiveSync**.
-1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci**a vyberte **Vybrat**.
+1. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci** a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 
@@ -88,37 +88,37 @@ Aby organizace vyžadovala použití schválené klientské aplikace na mobilní
 **Krok 1: zásady pro klienty moderních ověřování založené na Androidu a iOS vyžadující použití schválené klientské aplikace při přístupu k Exchangi Online a SharePointu Online.**
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
+1. V části **přiřazení** vyberte **Uživatelé a skupiny** .
+   1. V části **Zahrnout** vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 Exchange Online** a **Office 365 SharePoint Online**.
-1. V části **podmínky**vyberte **platformy zařízení**.
+1. V části **cloudové aplikace nebo akce**  >  vyberte **Office 365 Exchange Online** a **Office 365 SharePoint Online**.
+1. V části **podmínky** vyberte **platformy zařízení**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Zahrňte **Android** a **iOS**.
-1. V části **podmínky**vyberte **klientské aplikace (Preview)**.
+1. V části **podmínky** vyberte **klientské aplikace (Preview)**.
    1. Nastavte **Konfigurovat** na **Ano**.
    1. Vyberte **mobilní aplikace a klienti pro stolní počítače** a **moderní ověřování**.
-1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci**a vyberte **Vybrat**.
+1. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci** a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 
 **Krok 2: zásady pro klienty Exchange ActiveSync vyžadující použití schválené klientské aplikace**
 
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
-   1. V části **Zahrnout**vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
+1. V části **přiřazení** vyberte **Uživatelé a skupiny** .
+   1. V části **Zahrnout** vyberte **všechny uživatele** nebo konkrétní **uživatele a skupiny** , u kterých chcete použít tuto zásadu. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **Office 365 Exchange Online**.
+1. V části **cloudové aplikace nebo akce**  >  vyberte **Office 365 Exchange Online**.
 1. V části **podmínky**:
    1. **Klientské aplikace (Preview)**:
       1. Nastavte **Konfigurovat** na **Ano**.
       1. Vyberte **mobilní aplikace a klienti klasické pracovní plochy** a **klienti Exchange ActiveSync**.
-1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci**a vyberte **Vybrat**.
+1. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**, **vyžadovat schválenou klientskou aplikaci** a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte a povolte zásady.
 
@@ -132,4 +132,4 @@ Přečtěte si článek [jak vytvořit a přiřadit zásady ochrany aplikací](/
 
 [Komponenty podmíněného přístupu](concept-conditional-access-policies.md)
 
-[Běžné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+[Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)

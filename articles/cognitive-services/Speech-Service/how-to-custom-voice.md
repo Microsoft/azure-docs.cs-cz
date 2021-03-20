@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99af0ee46e2827ac8a5749d58bb19cf85f96aa46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733512"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577457"
 ---
 # <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 
@@ -69,7 +69,9 @@ Pokud chcete vytvořit svůj první projekt, vyberte kartu **Převod textu na ř
 
 ## <a name="how-to-migrate-to-custom-neural-voice"></a>Postup migrace na vlastní neuronové hlas
 
-Pokud používáte vlastní hlas bez neuronové (nebo standardního), zvažte, jestli chcete migrovat na vlastní neuronové hlas hned podle následujících kroků. Přechod na vlastní neuronové hlas vám pomůže vyvíjet realističtější hlasy ještě více přirozených konverzací a umožnit zákazníkům a koncovým uživatelům těžit z nejnovější technologie pro převod textu na řeč, a to podle zodpovědného způsobu. 
+Úroveň školení Standard/non-neuronové (adaptivní, statistické parametry, concacenative) vlastního hlasu je zastaralá. Oznámení byl odeslán všem existujícím předplatným řeči před 2/28/2021. Během období vyřazení (3/1/2021-2/29/2024) mohou stávající uživatelé úrovně Standard nadále používat své neuronové vytvořené modely. Všichni noví uživatelé/nové prostředky pro rozpoznávání řeči by se měly přesunout do neuronové úrovně nebo vlastního hlasu neuronové. Po 2/29/2024 se už nepodporují všechny vlastní hlasy Standard/neuronové. 
+
+Pokud používáte vlastní hlas, který není neuronové nebo standardní, migrujte na vlastní neuronové hlas hned podle následujících kroků. Přechod na vlastní neuronové hlas vám pomůže vyvíjet realističtější hlasy ještě více přirozených konverzací a umožnit zákazníkům a koncovým uživatelům těžit z nejnovější technologie pro převod textu na řeč, a to podle zodpovědného způsobu. 
 
 1. Přečtěte si další informace o našich [zásadách pro omezení přístupu](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) a [použijte je tady](https://aka.ms/customneural). Všimněte si, že přístup k vlastní hlasové službě neuronové se může vztahovat jenom na naše kritérium týkající se nároků Microsoftu. Zákazníci mohou získat přístup k technologii až po kontrole jejich aplikace a potvrdili, že ji budou používat v souladu se svými [odpovědnými principy AI](https://microsoft.com/ai/responsible-ai) a [kodexem chování](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext). 
 2. Jakmile je vaše aplikace schválená, budete mít přístup k funkci školení "neuronové". Ujistěte se, že se přihlašujete k [vlastnímu hlasovému portálu](https://speech.microsoft.com/customvoice) pomocí stejného předplatného Azure, které zadáte ve své aplikaci. 

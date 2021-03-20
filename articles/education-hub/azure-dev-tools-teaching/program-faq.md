@@ -8,10 +8,10 @@ ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
 ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675704"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Nejčastější dotazy týkající se Centrum Education
@@ -54,7 +54,7 @@ Azure for Students poskytuje přístup ke všem produktům Azure, které jsou v�
 
 ### <a name="can-i-apply-any-of-my-100-credit-toward-azure-marketplace-offers"></a>Můžu pro Azure Marketplace nabídky použít jakýkoliv kredit z $100?
 
-Ne. Váš kredit nemůžete použít pro Azure Marketplace nabídky. Mnoho Azure Marketplaceových partnerů však nabízí bezplatné zkušební verze nebo plány úrovně Free pro svá řešení.
+No. Váš kredit nemůžete použít pro Azure Marketplace nabídky. Mnoho Azure Marketplaceových partnerů však nabízí bezplatné zkušební verze nebo plány úrovně Free pro svá řešení.
 
 ## <a name="azure-for-students-starter"></a>Azure for Students Starter
 
@@ -172,7 +172,7 @@ Machine Learning Server (dřív R Server)<br>
 Hyper-V Server<br>
 Microsoft Project<br>
 Remote Tools for Visual Studio<br>
-SharePoint Server<br>
+SharePoint Designer<br>
 Server Skypu pro firmy<br>
    :::column-end:::
    :::column span="":::
@@ -186,7 +186,7 @@ Aplikace Microsoft Visio<br>
 Visual Studio Code<br>
 Visual Studio Community<br>
 Visual Studio Enterprise<br>
-Visual Studio pro Mac<br>
+Visual Studio for Mac<br>
 Windows 10<br>
 Windows Server<br>
    :::column-end:::
@@ -232,7 +232,7 @@ Po schválení se budete moct přihlásit k [portálu sady Visual Studio](https:
 
 ### <a name="does-microsoft-azure-dev-tools-for-teaching-include-microsoft-office"></a>Zahrnuje Microsoft Azure vývojářské nástroje pro vzdělávání systém Microsoft Office?
 
-Ne. Cílem Microsoft Azurech vývojářských nástrojů pro vzdělávání je poskytnout oddělením, vyučujícím a studentům nástroje potřebné k tomu, aby se konkrétně rozšířila studie vývoje a testování softwaru. Proto poskytujeme technologie, jako je Windows Server, Visual Studio .NET, SQL Server a sada SDK platformy.
+No. Cílem Microsoft Azurech vývojářských nástrojů pro vzdělávání je poskytnout oddělením, vyučujícím a studentům nástroje potřebné k tomu, aby se konkrétně rozšířila studie vývoje a testování softwaru. Proto poskytujeme technologie, jako je Windows Server, Visual Studio .NET, SQL Server a sada SDK platformy.
 
 ### <a name="does-azure-dev-tools-for-teaching-include-azure-credit"></a>Zahrnuje Azure dev Tools pro vzdělávání kredit Azure?
 
@@ -240,7 +240,7 @@ Ne, Microsoft Azure vývojářské nástroje pro výukové předplatné nezahrnu
 
 ### <a name="do-students-need-an-office-365-or-active-directory-account-to-access-azure-dev-tools-for-teaching"></a>Potřebují studenti pro přístup k vývojářským nástrojům Azure pro pedagogy účet Office 365 nebo Active Directory?
 
-Ne. Studenti nepotřebují účet Office 365. Pokud mají studenti přístup k vašemu účtu služby Active Directory, používají stejné přihlašovací údaje pro přihlášení k softwaru.
+No. Studenti nepotřebují účet Office 365. Pokud mají studenti přístup k vašemu účtu služby Active Directory, používají stejné přihlašovací údaje pro přihlášení k softwaru.
 
 Pokud studenti nepoužívají službu Active Directory, musí vytvořit [účet Microsoft](https://account.microsoft.com/account) (pokud ho ještě nemají) pomocí stejné e-mailové adresy, kterou jim poskytnete.
 
@@ -252,8 +252,8 @@ Pokud se stále nemůžete přihlásit, obraťte se na správce předplatného. 
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>Návody najít ID předplatitele?
 
-- **Při prvním přihlášení do programu** : vaše číslo ID předplatitele je v uvítacím e-mailu předplatného, které obdržíte.
-- **Pokud jste si obnovili předplatné** : vaše ID předplatitele je v e-mailu pro obnovení, který správce předplatného přijal.
+- **Při prvním přihlášení do programu**: vaše číslo ID předplatitele je v uvítacím e-mailu předplatného, které obdržíte.
+- **Pokud jste si obnovili předplatné**: vaše ID předplatitele je v e-mailu pro obnovení, který správce předplatného přijal.
 
 Vaše ID předplatitele je také na portálu Visual Studio Subscription. Až se přihlásíte, na stránce **můj účet** se podívejte na **Moje předplatné** .
 
@@ -282,7 +282,7 @@ Pokud tyto e-maily s připomenutím neobdržíte a máte obavy, že vaše předp
 
 Alternativně můžete přejít na [stránku Azure dev Tools for vyučující – obnovit](https://portal.azureforeducation.microsoft.com/)a dokončit proces obnovení.
 
-Pokud chcete zkontrolovat datum vypršení platnosti vašeho předplatného, navštivte [portál pro vývoj pro Azure pro vzdělávání](https://azureforeducation.microsoft.com/account/Subscriptions)a podívejte se na **předplatné** .
+Pokud chcete zkontrolovat datum vypršení platnosti vašeho předplatného, navštivte [portál pro vývoj pro Azure pro vzdělávání](https://azureforeducation.microsoft.com/account/Subscriptions)a podívejte se na **předplatné**.
 
 ### <a name="what-if-i-need-more-help"></a>Co když potřebuji další podrobnější informace?
 

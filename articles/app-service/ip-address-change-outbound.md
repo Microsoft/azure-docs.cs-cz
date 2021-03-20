@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 2be4bc92dde278b054bd04f412f937440027ece7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74671666"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Příprava na změnu odchozí IP adresy
@@ -27,7 +27,7 @@ Pokud jste obdrželi oznámení o změně odchozích IP adres vaší aplikace Az
 
 Nové odchozí IP adresy se zobrazí na portálu, než začnou platit. Když Azure začne používat nové, staré se už nebudou používat. V jednom okamžiku se používá jenom jedna sada, takže položky v seznamech zahrnutí musí mít staré i nové IP adresy, aby se zabránilo výpadku, když dojde k přepnutí. 
 
-1.  Otevřete web [Azure Portal](https://portal.azure.com).
+1.  Otevřete [Azure Portal](https://portal.azure.com).
 
 2.  V navigační nabídce na levé straně vyberte **App Services**.
 
