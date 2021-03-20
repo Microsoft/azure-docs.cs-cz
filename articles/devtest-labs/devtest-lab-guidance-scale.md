@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 50bf08678a12a1a0499abd08c52a264d03f4a401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85478786"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Horizontální navýšení kapacity Azure DevTest Labs infrastruktury
@@ -16,7 +16,7 @@ Před implementací DevTest Labs v podnikovém měřítku je k dispozici několi
 
 - Sítě a zabezpečení
 - Topologie předplatného
-- Role a odpovědnosti
+- Role a povinnosti
 
 ## <a name="networking-and-security"></a>Sítě a zabezpečení
 Sítě a zabezpečení jsou základem pro všechny organizace. I když nasazení na podnikové úrovni vyžaduje mnohem hlubší analýzu, existuje omezený počet požadavků na úspěšné provedení zkušebního konceptu. Mezi několik klíčových oblastí fokusu patří:
@@ -50,7 +50,7 @@ Samostatné předplatné na uživatele poskytuje stejné možnosti jako alternat
 
 V podniku může být k dispozici dostatek omezení pro extrémní spektrum. Proto možná budete muset nastavit odběry způsobem, který spadá do středu těchto extrémních hodnot. V rámci osvědčeného postupu by měl být cílem organizace použití minimálního počtu předplatných, pokud je to možné, mějte na paměti vynucené funkce, které zvyšují celkový počet předplatných. Pro opakování iterace je topologie předplatného zásadní pro podnikové nasazení DevTest Labs, ale nemělo by se zpozdit o koncept. V článku týkajícím se [zásad správného řízení](devtest-lab-guidance-governance-policy-compliance.md) najdete další podrobnosti o tom, jak se rozhodnout na členitosti a předplatném v organizaci.
 
-## <a name="roles-and-responsibilities"></a>Role a odpovědnosti
+## <a name="roles-and-responsibilities"></a>Role a povinnosti
 Koncepce konceptu DevTest Labs má tři primární role s definovanými zodpovědností – vlastníkem předplatného, vlastníkem DevTest Labs a uživatelem DevTest Labs a volitelně také přispěvatelem.
 
 - **Vlastník předplatného** – vlastník předplatného má práva ke správě předplatného Azure, včetně přiřazování uživatelů, správy zásad, vytváření & správy síťové topologie, vyžádání zvýšení kvóty atd. Další informace najdete v [tomto článku](../role-based-access-control/rbac-and-directory-admin-roles.md).

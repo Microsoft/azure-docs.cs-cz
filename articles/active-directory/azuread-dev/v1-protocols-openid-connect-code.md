@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551547"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím s použitím OpenID Connect a Azure Active Directory
@@ -32,25 +32,25 @@ OpenID Connect je naše doporučení, pokud vytváříte webovou aplikaci, kter�
 ## <a name="register-your-application-with-your-ad-tenant"></a>Registrace aplikace pomocí tenanta AD
 Nejdřív svou aplikaci zaregistrujete u svého tenanta Azure Active Directory (Azure AD). Pro svou aplikaci tak získáte ID a umožníte jí přijímat tokeny.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
    
 1. Zvolte svého tenanta Azure AD tak, že vyberete svůj účet v pravém horním rohu stránky a potom vyberete možnost navigace v **adresáři přepínače** a pak vyberete příslušného tenanta. 
    - Tento krok přeskočte, pokud máte ve svém účtu jenom jednoho tenanta Azure AD, nebo pokud jste už vybrali příslušného tenanta Azure AD.
    
 1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
    
-1. V nabídce **Azure Active Directory** vlevo vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
+1. V nabídce **Azure Active Directory** vlevo vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
    
 1. Postupujte podle zobrazených pokynů a vytvořte novou aplikaci. Nezáleží na tom, jestli se jedná o aplikaci webové aplikace nebo veřejného klienta (mobilní & Desktop) pro tento kurz, ale pokud byste chtěli mít konkrétní příklady pro webové aplikace nebo veřejné klientské aplikace, podívejte se na naše [rychlé starty](v1-overview.md).
    
    - **Název** je název aplikace, který aplikaci popisuje koncovým uživatelům.
-   - V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+   - V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
    - Zadejte **identifikátor URI pro přesměrování**. U webových aplikací se jedná o základní adresu URL vaší aplikace, kde se uživatelé můžou přihlásit.  Například, `http://localhost:12345`. U veřejného klienta (Mobile & Desktop) Azure AD používá k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci.  Například, `http://MyFirstAADApp`.
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
 1. Po dokončení registrace vám Azure AD přiřadí aplikaci jedinečný identifikátor klienta ( **ID aplikace**). Tuto hodnotu budete potřebovat v dalších částech, proto je zkopírujte ze stránky aplikace.
    
-1. Chcete-li najít aplikaci v Azure Portal, vyberte možnost **Registrace aplikací**a pak vyberte možnost **Zobrazit všechny aplikace**.
+1. Chcete-li najít aplikaci v Azure Portal, vyberte možnost **Registrace aplikací** a pak vyberte možnost **Zobrazit všechny aplikace**.
 
 ## <a name="authentication-flow-using-openid-connect"></a>Tok ověřování pomocí OpenID Connect
 
@@ -208,7 +208,7 @@ Když uživatele přesměrujete na `end_session_endpoint` , Azure AD vymaže rel
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Kliknutím na svůj účet v pravém horním rohu stránky vyberte svoji službu Active Directory.
 3. V levém navigačním panelu zvolte **Azure Active Directory**, zvolte **Registrace aplikací** a vyberte svou aplikaci.
-4. Klikněte na **Nastavení**a pak na **vlastnosti** a vyhledejte textové pole **odhlašovací adresa URL** . 
+4. Klikněte na **Nastavení** a pak na **vlastnosti** a vyhledejte textové pole **odhlašovací adresa URL** . 
 
 ## <a name="token-acquisition"></a>Získání tokenu
 Mnohé webové aplikace potřebují pouze podepsat uživatele v, ale také k webové službě jménem tohoto uživatele pomocí OAuth. Tento scénář kombinuje OpenID Connect pro ověřování uživatelů, zatímco současně `authorization_code` načítá, který je možné použít k získání `access_tokens` používání [toku autorizačního kódu OAuth](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token).

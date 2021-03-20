@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 045cec85174a88d1d608a4adc679461008852768
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514586"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Výměna napájecího a chladicího modulu na zařízení StorSimple
@@ -134,7 +134,7 @@ Podle těchto pokynů nainstalujte do zařízení StorSimple PCM. Před instalac
 5. Připojte napájecí kabely ke zdroji napájení a k PCM.
 6. Zabezpečte Bales omezení.
 7. Zapněte PCM.
-8. Ověřte, že nahrazení bylo úspěšné: v Azure Portal služby Device Manager StorSimple přejděte do svého zařízení a pak na **nastavení > monitorování > stav hardwaru**. Ve **sdílených součástech**by měl být stav PCM zelený.
+8. Ověřte, že nahrazení bylo úspěšné: v Azure Portal služby Správce zařízení StorSimple přejděte do svého zařízení a pak na **nastavení > monitorování > stav hardwaru**. Ve **sdílených součástech** by měl být stav PCM zelený.
    
    > [!NOTE]
    > Aby se náhradní modul PCM mohl úplně inicializovat, může trvat několik minut.

@@ -9,10 +9,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 968f82a143872fd282222539ab71a70db488a20d
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91935672"
 ---
 # <a name="set-up-a-business-continuity-and-disaster-recovery-plan"></a>Nastavte provozní kontinuitu a plán zotavení po havárii.
@@ -80,7 +80,7 @@ Pokud používáte kontejnery profilu, je dalším krokem nastavení replikace d
 
    - Prostory úložiště s přímým přístupem (S2D)
    - Síťové jednotky (virtuální počítač s dalšími jednotkami)
-   - Soubory Azure
+   - Azure Files
    - Azure NetApp Files
    - Mezipaměť cloudu pro replikaci
 
@@ -105,7 +105,7 @@ Agent FSLogix může podporovat více umístění profilů, pokud nakonfigurujet
 Konfigurace položek registru:
 
 1. Otevřete **Editor registru**.
-2. Přejít na **profily počítače**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**  >  **Profiles**.
+2. Přejít na **profily počítače**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**  >  .
    
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky okna profily v editoru registru. Je vybraná možnost VHDLocation.](media/regedit-profiles.png)
@@ -134,7 +134,7 @@ Vzhledem k tomu, že S2D zpracovává replikaci mezi oblastmi interně, nemusít
 
 Pokud replikují virtuální počítače síťového úložiště pomocí Azure Site Recovery, jako jsou třeba virtuální počítače hostitele relace, pak obnovení zachová stejnou cestu, což znamená, že nemusíte překonfigurovat FSlogix.
 
-### <a name="azure-files"></a>Soubory Azure
+### <a name="azure-files"></a>Azure Files
 
 Služba soubory Azure podporuje asynchronní replikaci mezi jednotlivými oblastmi, kterou můžete zadat při vytváření účtu úložiště. Pokud již asynchronní povaha souborů Azure pokrývá vaše cíle zotavení po havárii, nemusíte provádět žádnou další konfiguraci.
 

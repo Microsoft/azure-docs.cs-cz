@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85570200"
 ---
 ## <a name="create-a-project-zip-file"></a>Vytvořit souboru ZIP projektu
@@ -23,7 +23,7 @@ ms.locfileid: "85570200"
 
 V místním okně terminálu přejděte do kořenového adresáře projektu aplikace. 
 
-Tento adresář by měl obsahovat vstupní soubor vaší webové aplikace, například _index.html_, _index. php_a _app.js_. Může také obsahovat soubory správy balíčků, například _project.json_, _composer.json_, _package.json_, _bower.json_a _requirements.txt_.
+Tento adresář by měl obsahovat vstupní soubor vaší webové aplikace, například _index.html_, _index. php_ a _app.js_. Může také obsahovat soubory správy balíčků, například _project.json_, _composer.json_, _package.json_, _bower.json_ a _requirements.txt_.
 
 Pokud nechcete, aby App Service spustila automatizaci nasazení za vás, spusťte všechny úlohy sestavení (například `npm` ,,, `bower` `gulp` `composer` a `pip` ) a ujistěte se, že máte všechny soubory, které potřebujete ke spuštění aplikace. Tento krok je nutný, pokud chcete [balíček spustit přímo](../articles/app-service/deploy-run-package.md).
 

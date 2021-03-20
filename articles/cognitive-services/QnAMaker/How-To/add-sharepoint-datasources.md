@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 0832b54e02cabecb0b1f0e7af600b8adc621a8b0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99584766"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidání zabezpečeného zdroje dat SharePointu do znalostní báze
@@ -20,7 +20,7 @@ Když do znalostní báze přidáte zabezpečený dokument služby SharePoint, j
 
 Pokud správce znalostní báze QnA Maker Knowledge Base není správce služby Active Directory, bude nutné komunikovat se správcem služby Active Directory a dokončit tento proces.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cloudová služba SharePoint – QnA Maker používá Microsoft Graph pro oprávnění. Pokud je váš SharePoint v místním prostředí, nebudete se moct extrahovat ze SharePointu, protože Microsoft Graph nebude moct určit oprávnění.
 * Formát adresy URL – QnA Maker podporují jenom adresy URL SharePointu, které jsou vygenerované pro sdílení a mají formát. `https://\*.sharepoint.com`

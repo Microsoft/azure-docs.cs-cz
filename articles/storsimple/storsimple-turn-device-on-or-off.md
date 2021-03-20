@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85515271"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Zapnutí nebo vypnutí zařízení řady StorSimple 8000
@@ -146,7 +146,7 @@ Pokud chcete zařízení vypnout podle pořadí a řízeného způsobu, můžete
 > [!IMPORTANT]
 > Neukončí spuštěné zařízení pomocí tlačítka napájení na zadní straně zařízení.
 > 
-> Před vypnutím zařízení se ujistěte, že jsou všechny součásti zařízení v pořádku. V Azure Portal přejděte na **zařízení**  >  **monitorovat**stav  >  **hardwaru**a ověřte, že stav všech komponent je zelený. To platí jenom pro dobrý systém. Pokud se systém vypíná, aby nahradil nefunkční komponentu, zobrazí se u příslušné součásti ve **stavu hardwaru**stav neúspěšné (červené) nebo zhoršený (žlutý).
+> Před vypnutím zařízení se ujistěte, že jsou všechny součásti zařízení v pořádku. V Azure Portal přejděte na **zařízení**  >  **monitorovat** stav  >  **hardwaru** a ověřte, že stav všech komponent je zelený. To platí jenom pro dobrý systém. Pokud se systém vypíná, aby nahradil nefunkční komponentu, zobrazí se u příslušné součásti ve **stavu hardwaru** stav neúspěšné (červené) nebo zhoršený (žlutý).
 > 
 > 
 
@@ -154,7 +154,7 @@ Po přístupu k Windows PowerShell pro StorSimple nebo Azure Portal postupujte p
 
 ### <a name="device-with-ebod-enclosure"></a>Zařízení s EBOD skříní <a name="8600a"></a>
 > [!IMPORTANT]
-> Před vypnutím primární skříně a skříně EBOD zajistěte, aby byly všechny součásti zařízení v dobrém stavu. V Azure Portal přejděte na **zařízení**  >  **monitor**  >  **stav hardwaru**a ověřte, zda jsou všechny součásti v pořádku.
+> Před vypnutím primární skříně a skříně EBOD zajistěte, aby byly všechny součásti zařízení v dobrém stavu. V Azure Portal přejděte na **zařízení**  >  **monitor**  >  **stav hardwaru** a ověřte, zda jsou všechny součásti v pořádku.
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Vypnutí běžícího zařízení pomocí skříně EBOD

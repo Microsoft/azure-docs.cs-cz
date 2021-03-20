@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
 ms.openlocfilehash: 58563629b30e7be764732a9810162e1a0b1931e6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98725832"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Architektura připojení pro službu Azure SQL Managed Instance
@@ -111,7 +111,7 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná příchozí pravidla zabezpečení s konfigurací podsítě s podporou služby
 
-| Name       |Port                        |Protokol|Zdroj           |Cíl|Akce|
+| Název       |Port                        |Protokol|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |správa  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |PODSÍŤ MI  |Povolit |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |PODSÍŤ MI  |Povolit |
@@ -121,7 +121,7 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná odchozí pravidla zabezpečení s konfigurací podsítě s podporou služby
 
-| Name       |Port          |Protokol|Zdroj           |Cíl|Akce|
+| Název       |Port          |Protokol|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
 |mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |

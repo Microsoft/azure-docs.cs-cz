@@ -8,10 +8,10 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514570"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Vzdálené připojení k zařízení řady StorSimple 8000
@@ -185,8 +185,8 @@ Všechny předchozí postupy jsou popsány níže.
 1. Klikněte pravým tlačítkem na soubor. cer a vyberte **nainstalovat certifikát**. Tím spustíte Průvodce importem certifikátu.
    
     ![Průvodce importem certifikátu 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. V poli **umístění úložiště**vyberte **místní počítač**a pak klikněte na **Další**.
-3. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a klikněte na **Další**.
+2. V poli **umístění úložiště** vyberte **místní počítač** a pak klikněte na **Další**.
+3. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště** a pak klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a klikněte na **Další**.
    
     ![Průvodce importem certifikátu 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
 4. Klikněte na **Finish** (Dokončit). Zobrazí se zpráva oznamující, že import proběhl úspěšně.
@@ -195,7 +195,7 @@ Všechny předchozí postupy jsou popsány níže.
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>Přidání sériových čísel zařízení ke vzdálenému hostiteli
 1. Spusťte Poznámkový blok jako správce a pak otevřete soubor Hosts umístěný na adrese \Windows\System32\Drivers\etc.
-2. Do souboru hostitelů přidejte následující tři položky: **IP adresa data 0**, **Pevná IP adresa řadiče 0**a **Pevná IP adresa řadiče 1**.
+2. Do souboru hostitelů přidejte následující tři položky: **IP adresa data 0**, **Pevná IP adresa řadiče 0** a **Pevná IP adresa řadiče 1**.
 3. Zadejte sériové číslo zařízení, které jste předtím uložili. Namapujte ji na IP adresu, jak je znázorněno na následujícím obrázku. Pro řadič 0 a řadič 1 přidejte **prvku Controller0** a **prvku Controller1** na konci sériového čísla (název CN).
    
     ![Přidání názvu CN do souboru hostitelů](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
@@ -239,5 +239,5 @@ V počítači, ze kterého chcete vzdálené připojení Windows PowerShell, pro
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [použití Windows PowerShellu ke správě zařízení StorSimple](storsimple-8000-windows-powershell-administration.md).
-* Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o [používání služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

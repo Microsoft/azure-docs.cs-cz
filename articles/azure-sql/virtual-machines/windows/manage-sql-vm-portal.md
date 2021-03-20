@@ -14,10 +14,10 @@ ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 68c7805136a7361a64a6ff6dfbb9e7d910b2ea9b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97357938"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Správa virtuálních počítačů s SQL Server v Azure pomocí Azure Portal
@@ -37,7 +37,7 @@ V [Azure Portal](https://portal.azure.com)prostředek [**virtuálních počíta�
 ## <a name="access-the-sql-virtual-machines-resource"></a>Přístup k prostředku virtuálních počítačů SQL
 Pokud chcete získat přístup k prostředku **virtuálních počítačů SQL** , udělejte toto:
 
-1. Otevřete web [Azure Portal](https://portal.azure.com). 
+1. Otevřete [Azure Portal](https://portal.azure.com). 
 1. Vyberte **všechny služby**. 
 1. Do vyhledávacího pole zadejte **virtuální počítače SQL** .
 1. (Volitelné): vyberte hvězdičku vedle možnosti **virtuální počítače SQL** a přidejte tuto možnost do nabídky **Oblíbené** . 
@@ -62,7 +62,7 @@ Karta **konfigurace SQL Server** je zastaralá. V tuto chvíli je jedinou metodo
 
 Pokud chcete získat přístup k zastaralé **SQL Server kartě Konfigurace** , přejděte do prostředku **virtuální počítače** . Použijte k tomu následující postup:
 
-1. Otevřete web [Azure Portal](https://portal.azure.com). 
+1. Otevřete [Azure Portal](https://portal.azure.com). 
 1. Vyberte **všechny služby**. 
 1. Do vyhledávacího pole zadejte **virtuální počítače** .
 1. (Volitelné): Pokud chcete přidat tuto možnost do nabídky **Oblíbené** , vyberte hvězdičku vedle možnosti **virtuální počítače** . 

@@ -7,10 +7,10 @@ ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
 ms.openlocfilehash: 980e8e3c2f2c1ca1dc716df1e77caaa3fe3181aa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386165"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Spouštění balíčků služba SSIS (SQL Server Integration Services) pomocí nástroje DTExec s povoleným Azure
@@ -27,7 +27,7 @@ AzureDTExec spustí vaše balíčky jako aktivity balíčku SSIS ve Data Factory
 
 AzureDTExec je možné nakonfigurovat prostřednictvím SSMS tak, aby používala aplikaci Azure Active Directory (Azure AD), která generuje kanály ve vaší datové továrně. Dá se taky nakonfigurovat tak, aby měl přístup k systémům souborů, sdíleným složkám nebo souborům Azure, do kterých ukládáte balíčky. V závislosti na hodnotách, které udělíte pro své možnosti volání, AzureDTExec vygeneruje a spustí jedinečný Data Factory kanál s aktivitou balíčku Execute SSIS. Vyvolání AzureDTExec se stejnými hodnotami pro příslušné možnosti znovu spustí existující kanál.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Chcete-li použít AzureDTExec, Stáhněte a nainstalujte nejnovější verzi nástroje SSMS, která je verze 18,3 nebo novější. Stáhněte si ho z [tohoto webu](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ## <a name="configure-the-azuredtexec-utility"></a>Konfigurace nástroje AzureDTExec

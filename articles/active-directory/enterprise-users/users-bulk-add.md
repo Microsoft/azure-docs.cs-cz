@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c653f3e8583ef3aadff26cb2b7a3266555d313a2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96547810"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Hromadné vytvoření uživatelů v Azure Active Directory
@@ -70,7 +70,7 @@ Stáhněte si a vyplňte šablonu CSV hromadného nahrání, která vám umožn�
 1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která importuje nové uživatele.
 1. Po dokončení operace importu se zobrazí oznámení o stavu úlohy hromadné operace.
 
-Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvod každé chyby. Odeslání souboru se musí shodovat s poskytnutou šablonou a zahrnout přesné názvy sloupců.
+Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvody jednotlivých chyb. Odeslání souboru se musí shodovat s poskytnutou šablonou a zahrnout přesné názvy sloupců.
 
 ## <a name="check-status"></a>Zkontrolování stavu
 

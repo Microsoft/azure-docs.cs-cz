@@ -10,10 +10,10 @@ ms.date: 06/23/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: bc0ac1a6e882f4197828bf79c7989c16b2eb16f7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98217664"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>Rychlý Start: Vytvoření šablony Správce prostředků virtuální sítě
@@ -72,4 +72,4 @@ Remove-AzResourceGroup -Name <your resource group name>
 V tomto rychlém startu jste nasadili virtuální síť Azure se dvěma podsítěmi. Další informace o virtuálních sítích Azure najdete v kurzu pro virtuální sítě.
 
 > [!div class="nextstepaction"]
-> [Filtrování síťového provozu](tutorial-filter-network-traffic.md)
+> [Filtrování provozu sítě](tutorial-filter-network-traffic.md)

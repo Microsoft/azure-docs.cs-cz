@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak může uživatel testovacího prost
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 8d0c8a3ad8ba92e606f19480bdb36483f377fa04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85443498"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Zobrazit informace o podpoře (uživatel testovacího prostředí v Azure Lab Services)
@@ -24,7 +24,7 @@ Tyto informace můžete použít k získání pomoci při spuštění technické
 ## <a name="view-support-information"></a>Zobrazit informace o podpoře
 1. Přihlaste se k [portálu Azure Lab Services](https://labs.azure.com).
 2. Vyberte **testovací prostředí nebo virtuální počítač** , pro který potřebujete nápovědu, a vyberte **?** v pravém horním rohu stránky. 
-3. Ověřte, že se zobrazí odkazy na **web zobrazit podporu**, **e-mail podpora**a **telefonní číslo podpory**.
+3. Ověřte, že se zobrazí odkazy na **web zobrazit podporu**, **e-mail podpora** a **telefonní číslo podpory**.
 
     ![Zobrazit informace o podpoře](./media/lab-user-support-information/support-information.png)
 4. Kontaktní informace podpory pro jiné testovací prostředí můžete zobrazit tak, že v rozevíracím seznamu přepnete do tohoto testovacího prostředí. 

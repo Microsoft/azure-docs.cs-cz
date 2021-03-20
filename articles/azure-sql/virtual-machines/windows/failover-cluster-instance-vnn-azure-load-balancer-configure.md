@@ -16,10 +16,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97357972"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>Konfigurace Azure Load Balancer pro instanci clusteru s podporou převzetí služeb při selhání VNN
@@ -138,8 +138,8 @@ Následující tabulka popisuje hodnoty, které je třeba aktualizovat:
 
 |**Hodnota**|**Popis**|
 |---------|---------|
-|`Cluster Network Name`| Název clusteru převzetí služeb při selhání systému Windows Server pro síť. V **Správce clusteru s podporou převzetí služeb při selhání**  >  **sítě** klikněte pravým tlačítkem myši na síť a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
-|`SQL Server FCI/AG listener IP Address Resource Name`|Název prostředku pro IP adresu naslouchacího procesu SQL Server FCI nebo AG V   >  **rolích** Správce clusteru s podporou převzetí služeb při selhání v rámci role SQL Server FCI v části **název serveru** klikněte pravým tlačítkem na prostředek IP adresy a vyberte **vlastnosti**. Správná hodnota je pod **názvem** na kartě **Obecné** .|
+|`Cluster Network Name`| Název clusteru převzetí služeb při selhání systému Windows Server pro síť. V **Správce clusteru s podporou převzetí služeb při selhání**  >  **sítě** klikněte pravým tlačítkem myši na síť a vyberte **vlastnosti**. Správná hodnota se zobrazí v poli **Název** na kartě **Obecné**.|
+|`SQL Server FCI/AG listener IP Address Resource Name`|Název prostředku pro IP adresu naslouchacího procesu SQL Server FCI nebo AG V   >  **rolích** Správce clusteru s podporou převzetí služeb při selhání v rámci role SQL Server FCI v části **název serveru** klikněte pravým tlačítkem na prostředek IP adresy a vyberte **vlastnosti**. Správná hodnota se zobrazí v poli **Název** na kartě **Obecné**.|
 |`ILBIP`|IP adresa interního nástroje pro vyrovnávání zatížení (interního nástroje). Tato adresa je nakonfigurovaná v Azure Portal jako interního nástroje adresa front-endu. To je také adresa IP SQL Server FCI. Můžete ji najít v **Správce clusteru s podporou převzetí služeb při selhání** na stejné stránce vlastností, kde jste našli `<SQL Server FCI/AG listener IP Address Resource Name>` .|
 |`nnnnn`|Port testu, který jste nakonfigurovali v testu stavu nástroje pro vyrovnávání zatížení. Platný je jakýkoli nepoužívaný port TCP.|
 |SubnetMask| Maska podsítě pro parametr clusteru. Musí se jednat o adresu všesměrového vysílání IP protokolu TCP: `255.255.255.255` .| 

@@ -4,10 +4,10 @@ description: Naučte se, jak do Azure DevTest Labs přidat úložiště GitHubu 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483138"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Přidání úložiště Git pro uložení vlastních artefaktů a šablon Správce prostředků
@@ -36,7 +36,7 @@ Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získej
 4. V pravém horním rohu GitHubu vyberte profilový obrázek a pak vyberte **Nastavení**.
 5. V nabídce **osobní nastavení** na levé straně vyberte **tokeny osobních přístupů**.
 6. Vyberte možnost **generovat nový token**.
-7. Na stránce **Nový token osobního přístupu** zadejte v části **Popis tokenu**popis. Přijměte výchozí položky v části **Vybrat obory**a pak vyberte **vygenerovat token**.
+7. Na stránce **Nový token osobního přístupu** zadejte v části **Popis tokenu** popis. Přijměte výchozí položky v části **Vybrat obory** a pak vyberte **vygenerovat token**.
 8. Uložte vygenerovaný token. Token použijete později.
 9. Zavřete GitHub.   
 10. Přejděte k části [připojení laboratoře k úložišti](#connect-your-lab-to-the-repository) .
@@ -56,14 +56,14 @@ Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získej
    3. V seznamu **účty** vyberte **všechny účty k dispozici**.
    4. Vyberte možnost jen **pro čtení** .
    5. Vyberte **vytvořit token**.
-9. Nový token se zobrazí v seznamu **tokenů osobního přístupu** . Vyberte možnost **Kopírovat token**a pak hodnotu token uložte pro pozdější použití.
+9. Nový token se zobrazí v seznamu **tokenů osobního přístupu** . Vyberte možnost **Kopírovat token** a pak hodnotu token uložte pro pozdější použití.
 10. Přejděte k části [připojení laboratoře k úložišti](#connect-your-lab-to-the-repository) .
 
 ## <a name="connect-your-lab-to-the-repository"></a>Připojení testovacího prostředí k úložišti
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Vyberte **Další služby**a v seznamu služeb vyberte **DevTest Labs** .
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+2. Vyberte **Další služby** a v seznamu služeb vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí. 
-4. Vyberte **Konfigurace a**  >  **úložiště**zásad  >  **+ Přidat**.
+4. Vyberte **Konfigurace a**  >  **úložiště** zásad  >  **+ Přidat**.
 
     ![Tlačítko Přidat úložiště](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. Na stránce druhá **úložiště** zadejte následující informace:

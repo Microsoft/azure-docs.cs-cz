@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 336f23f83c33bcee1887d0e41710e686b794a663
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87272007"
 ---
 # <a name="retrieve-offer-status"></a>Načtení stavu nabídky
@@ -29,10 +29,10 @@ Načte aktuální stav nabídky.
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | Identifikátor vydavatele, například `Contoso`  |     Řetězec     |
 |  Hodnotami OfferId        | Identifikátor GUID, který jedinečně identifikuje nabídku      |     Řetězec     |
-|  verze-api    | Nejnovější verze rozhraní API                        |     Datum       |
+|  verze-api    | Nejnovější verze rozhraní API                        |     Date (Datum)       |
 |  |  |
 
-## <a name="header"></a>Záhlaví
+## <a name="header"></a>Hlavička
 
 
 |  Name           |  Hodnota               |
@@ -126,7 +126,7 @@ Načte aktuální stav nabídky.
 |  estimatedTimeFrame   | Odhad doby provedení tohoto kroku v popisném formátu                       |
 |  id                   | Identifikátor kroku                                                                         |
 |  Step             | Název kroku                                                                               |
-|  Popis          | Popis kroku                                                                        |
+|  description          | Popis kroku                                                                        |
 |  status               | Stav kroku. Seznam možných hodnot najdete v tématu [stav kroku](#step-status) níže.    |
 |  cloud-zařízení             | Pole zpráv souvisejících s krokem                                                          |
 |  processPercentage    | Procentuální podíl dokončení kroku                                                              |

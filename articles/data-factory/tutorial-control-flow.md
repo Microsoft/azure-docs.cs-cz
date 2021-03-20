@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 111fff6e35bed9c2af9c638549362039f25def12
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386012"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
@@ -87,7 +87,7 @@ Vytvořte konzolovou aplikaci v jazyce C# .NET:
 
 ### <a name="create-a-data-factory-client"></a>Vytvoření klienta datové továrny
 
-1. Otevřete *program.cs* a přidejte následující příkazy:
+1. Otevřete *program. cs* a přidejte následující příkazy:
 
    ```csharp
    using System;
@@ -145,7 +145,7 @@ Vytvořte konzolovou aplikaci v jazyce C# .NET:
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. `CreateOrUpdateDataFactory`Do souboru *program.cs* přidejte metodu:
+1. `CreateOrUpdateDataFactory`Do souboru *program. cs* přidejte metodu:
 
    ```csharp
    static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
@@ -178,7 +178,7 @@ Vytvořte konzolovou aplikaci v jazyce C# .NET:
 
 ## <a name="create-an-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
 
-1. `StorageLinkedServiceDefinition`Do souboru *program.cs* přidejte metodu:
+1. `StorageLinkedServiceDefinition`Do souboru *program. cs* přidejte metodu:
 
    ```csharp
    static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
@@ -210,7 +210,7 @@ V této části vytvoříte dvě datové sady, jednu pro zdroj a jednu pro jímk
 
 Přidejte metodu, která vytvoří *datovou sadu objektů BLOB v Azure*. Další informace o podporovaných vlastnostech a podrobnostech najdete v tématu [Vlastnosti datové sady objektů BLOB v Azure](connector-azure-blob-storage.md#dataset-properties).
 
-`SourceBlobDatasetDefinition`Do souboru *program.cs* přidejte metodu:
+`SourceBlobDatasetDefinition`Do souboru *program. cs* přidejte metodu:
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -237,7 +237,7 @@ Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer` je n�
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Vytvoření datové sady pro objekt blob Azure jímky
 
-1. `SourceBlobDatasetDefinition`Do souboru *program.cs* přidejte metodu:
+1. `SourceBlobDatasetDefinition`Do souboru *program. cs* přidejte metodu:
 
    ```csharp
    static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)

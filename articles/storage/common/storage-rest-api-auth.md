@@ -12,23 +12,23 @@ ms.reviewer: ozge
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89010898"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Volání REST API operací s autorizací sdíleného klíče
 
 V tomto článku se dozvíte, jak volat Azure Storage rozhraní REST API, včetně toho, jak vytvořit autorizační hlavičku. Je napsaný z pohledu vývojáře, který neví nic o REST a neobsahuje žádné informace o tom, jak provést volání REST. Až se dozvíte, jak zavolat operaci REST, můžete tyto znalosti využít k používání dalších Azure Storagech operací REST.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ukázková aplikace obsahuje seznam kontejnerů objektů BLOB pro účet úložiště. K tomu, abyste si vyzkoušeli kód v tomto článku, potřebujete následující položky:
 
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) s úlohou **vývoj pro Azure** .
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Účet úložiště pro obecné účely. Pokud ještě nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](storage-account-create.md).
 
@@ -66,7 +66,7 @@ Projděte si odkaz na operaci [ListContainers](/rest/api/storageservices/List-Co
 
 **Metoda požadavku**: získat. Tato operace je metoda HTTP, kterou zadáte jako vlastnost objektu Request. Mezi další hodnoty tohoto příkazu patří HEADers, PUT a DELETE v závislosti na rozhraní API, které voláte.
 
-**Identifikátor URI žádosti**: `https://myaccount.blob.core.windows.net/?comp=list` .Identifikátor URI žádosti se vytvoří z koncového bodu účtu úložiště objektů BLOB `https://myaccount.blob.core.windows.net` a řetězce prostředků `/?comp=list` .
+**Identifikátor URI žádosti**: `https://myaccount.blob.core.windows.net/?comp=list` .  Identifikátor URI žádosti se vytvoří z koncového bodu účtu úložiště objektů BLOB `https://myaccount.blob.core.windows.net` a řetězce prostředků `/?comp=list` .
 
 [Parametry identifikátoru URI](/rest/api/storageservices/List-Containers2#uri-parameters): existují další parametry dotazu, které lze použít při volání ListContainers. Několik z těchto parametrů je *časovým limitem* pro volání (v sekundách) a *předponou*, která se používá pro filtrování.
 
@@ -94,7 +94,7 @@ V případě zabezpečení při provozu v produkčním prostředí vždy použij
 
 V našem ukázkovém projektu je kód pro vytvoření autorizační hlavičky v samostatné třídě. Nápad je, že můžete použít celou třídu a přidat ji do vlastního řešení a použít ji "tak, jak je". Kód autorizační hlavičky funguje pro většinu REST API volání Azure Storage.
 
-Chcete-li vytvořit požadavek, který je objektem zprávy HttpRequestMessage, v Program.cs použijte ListContainersAsyncREST. Postup pro sestavování žádosti:
+Chcete-li vytvořit požadavek, který je objektem zprávy HttpRequestMessage, v programu program. cs použijte ListContainersAsyncREST. Postup pro sestavování žádosti:
 
 - Vytvořte identifikátor URI, který se má použít pro volání služby.
 - Vytvořte objekt zprávy HttpRequestMessage a nastavte datovou část. Datová část má pro ListContainersAsyncREST hodnotu null, protože neprovádíme žádnou možnost.
@@ -286,19 +286,19 @@ Tento fragment kódu ukazuje formát řetězce podpisu sdíleného klíče:
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 Většina těchto polí se používá zřídka. Pro úložiště objektů BLOB zadáte příkazy, MD5, délku obsahu, kanonické hlavičky a kanonický prostředek. Ostatní můžete nechat prázdné (ale umístit je do, `\n` aby znali, že jsou prázdné).
@@ -564,7 +564,7 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili, jak vytvořit požadavek na úložiště objektů BLOB REST API. S požadavkem můžete načíst seznam kontejnerů nebo seznam objektů BLOB v kontejneru. Zjistili jste, jak vytvořit autorizační podpis pro volání REST API a jak ho použít v žádosti REST. Nakonec jste zjistili, jak můžete odpověď prostudovat.
 

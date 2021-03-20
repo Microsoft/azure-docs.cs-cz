@@ -16,13 +16,13 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8bc8846d546faec194617ccb753cdbd105e16bf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85513623"
 ---
-# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Změňte heslo správce zařízení StorSimple Virtual Array pomocí StorSimple Device Manager
+# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Změňte heslo správce zařízení StorSimple Virtual Array pomocí StorSimple Správce zařízení
 
 ## <a name="overview"></a>Přehled
 
@@ -60,7 +60,7 @@ Pomocí následujících kroků můžete změnit heslo správce zařízení pros
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Změna hesla správce zařízení prostřednictvím místního webového uživatelského rozhraní
 
-1. V místním webovém uživatelském rozhraní klikněte na **Maintenance**možnost  >  **změny hesla** údržby pro vaše zařízení.
+1. V místním webovém uživatelském rozhraní klikněte na možnost  >  **změny hesla** údržby pro vaše zařízení.
    
     ![změnit Heslo1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. Zadejte **aktuální heslo**.

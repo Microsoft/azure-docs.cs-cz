@@ -11,10 +11,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89018395"
 ---
 # <a name="get-started-with-device-management-net"></a>Začínáme se správou zařízení (.NET)
@@ -35,7 +35,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 * **TriggerReboot**. Tato aplikace volá přímou metodu v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizované hlášené vlastnosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Visual Studio
 
@@ -43,7 +43,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -63,13 +63,13 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která i
 
 1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**.
 
-1. V části **vytvořit nový projekt**vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
+1. V části **vytvořit nový projekt** vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
 
-1. V části **Konfigurace nového projektu**zadejte název projektu *TriggerReboot*a vyberte .NET Framework verze 4.5.1 nebo novější. Vyberte **Vytvořit**.
+1. V části **Konfigurace nového projektu** zadejte název projektu *TriggerReboot* a vyberte .NET Framework verze 4.5.1 nebo novější. Vyberte **Vytvořit**.
 
     ![Nový klasický desktopový projekt Visual C# pro systém Windows](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **TriggerReboot** a pak vyberte **Spravovat balíčky NuGet**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na projekt **TriggerReboot** a pak vyberte **Spravovat balíčky NuGet**.
 
 1. Vyberte **Procházet**, vyhledejte a vyberte **Microsoft. Azure. Devices**. Vyberte **nainstalovat** a nainstalujte balíček **Microsoft. Azure. Devices** .
 
@@ -129,7 +129,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která i
    Console.ReadLine();
    ```
 
-1. Vyberte **Build**  >  **řešení**sestavení sestavení.
+1. Vyberte   >  **řešení** sestavení sestavení.
 
 > [!NOTE]
 > Tento kurz provede pouze jeden dotaz pro hlášené vlastnosti zařízení. V produkčním kódu doporučujeme dotazování na detekci změn v hlášených vlastnostech.
@@ -146,9 +146,9 @@ V této části:
 
 K vytvoření aplikace simulovaného zařízení použijte následující postup:
 
-1. V aplikaci Visual Studio v řešení TriggerReboot, které jste již vytvořili, vyberte **soubor**  >  **Nový**  >  **projekt**. V části **vytvořit nový projekt**vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
+1. V aplikaci Visual Studio v řešení TriggerReboot, které jste již vytvořili, vyberte **soubor**  >  **Nový**  >  **projekt**. V části **vytvořit nový projekt** vyhledejte a vyberte šablonu projektu **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
 
-1. V části **Konfigurovat nový projekt**, pojmenujte projekt *SimulateManagedDevice*a pro **řešení**vyberte možnost **Přidat do řešení**. Vyberte **Vytvořit**.
+1. V části **Konfigurovat nový projekt**, pojmenujte projekt *SimulateManagedDevice* a pro **řešení** vyberte možnost **Přidat do řešení**. Vyberte **Vytvořit**.
 
     ![Název a přidání projektu do řešení](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
@@ -237,9 +237,9 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**.
 
-1. Pro **běžné vlastnosti**  >  **spouštěný projekt**vyberte **jeden spouštěný projekt**a pak vyberte projekt **SimulateManagedDevice** . Výběrem **OK** uložte změny.
+1. Pro **běžné vlastnosti**  >  **spouštěný projekt** vyberte **jeden spouštěný projekt** a pak vyberte projekt **SimulateManagedDevice** . Výběrem **OK** uložte změny.
 
-1. Vyberte **Build**  >  **řešení**sestavení sestavení.
+1. Vyberte   >  **řešení** sestavení sestavení.
 
 > [!NOTE]
 > Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například exponenciální omezení rychlosti), jak je navrženo při [zpracování přechodné chyby](/azure/architecture/best-practices/transient-faults).
@@ -248,9 +248,9 @@ K vytvoření aplikace simulovaného zařízení použijte následující postup
 
 Nyní jste připraveni spustit aplikace.
 
-1. Pokud chcete spustit aplikaci zařízení .NET **SimulateManagedDevice**, klikněte v Průzkumník řešení pravým tlačítkem myši na projekt **SimulateManagedDevice** , vyberte **ladit**a pak vyberte **spustit novou instanci**. Aplikace by měla začít naslouchat voláním metod ze služby IoT Hub.
+1. Pokud chcete spustit aplikaci zařízení .NET **SimulateManagedDevice**, klikněte v Průzkumník řešení pravým tlačítkem myši na projekt **SimulateManagedDevice** , vyberte **ladit** a pak vyberte **spustit novou instanci**. Aplikace by měla začít naslouchat voláním metod ze služby IoT Hub.
 
-1. Po tom, co je zařízení připojené a čeká se na vyvolání metod, klikněte pravým tlačítkem na projekt **TriggerReboot** , vyberte **ladit**a pak vyberte **spustit novou instanci**.
+1. Po tom, co je zařízení připojené a čeká se na vyvolání metod, klikněte pravým tlačítkem na projekt **TriggerReboot** , vyberte **ladit** a pak vyberte **spustit novou instanci**.
 
    Měla by se zobrazit zpráva "restartování!". napsané v konzole **SimulatedManagedDevice** a v hlášených vlastnostech zařízení, což zahrnuje čas posledního restartování, který je zapsaný v konzole **TriggerReboot** .
 

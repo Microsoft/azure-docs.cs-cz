@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91278324"
 ---
 # <a name="storage-hierarchy-of-azure-netapp-files"></a>Hierarchie úložiště služby Azure NetApp Files
@@ -74,7 +74,7 @@ Typ QoS je atributem fondu kapacit. Azure NetApp Files poskytuje dva typy QoS fo
     Například fond kapacit 4 TiB s úrovní Ultra Service úrovně Standard má celkovou kapacitu propustnosti 512 MiB/s (4 TiB x 128 MiB/s/TiB) dostupné pro svazky.
 
 
-## <a name="volumes"></a><a name="volumes"></a>Svazků
+## <a name="volumes"></a><a name="volumes"></a>Svazky
 
 - Svazek se měří podle spotřeby logické kapacity a je škálovatelný. 
 - Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu.

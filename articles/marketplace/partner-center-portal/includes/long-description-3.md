@@ -8,17 +8,17 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
 ms.openlocfilehash: 5197b71db4f46d9908d5539c114d636b9474a870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87317631"
 ---
 Použijte značky HTML k formátování popisu, aby bylo lépe zajímavější. Většina značek vyžaduje levou i pravou komponentu, jak je znázorněno v této tabulce.
 
 |   Akce  |  Použití  |  Nějak tak  |  K získání   |
 | --- | --- | --- | --- |
-|   Tučný  |  `<b> & </b>`  |  `<b>`Příklad `</b>` : bezplatná zkušební verze  |  **Příklad**: bezplatná zkušební verze   |
+|   Bold  |  `<b> & </b>`  |  `<b>`Příklad `</b>` : bezplatná zkušební verze  |  **Příklad**: bezplatná zkušební verze   |
 |   Kurzíva  |  `<i> & </i>`  |  Vyberte `<i>` první `</i>` řádek.  |  Vyberte *první* řádek.   |
 |   Nový řádek  |  `<br>`  |  Toto je můj první řádek. `<br>` Toto je můj druhý řádek.  |  Toto je můj první řádek.<br>Toto je můj druhý řádek.  |
 |  Znějí  |  `<p> & </p>`  |  `<p>`Toto je můj první odstavec.`</p>`<br>`<p>`Toto je můj druhý odstavec.`</p>`   |   <p>Toto je můj první odstavec.</p><p>Toto je můj druhý odstavec.</p>   |

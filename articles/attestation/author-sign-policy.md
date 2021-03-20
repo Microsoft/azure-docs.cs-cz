@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3e36de62b79788e2efdc3e9abf711924c4fba0c4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341803"
 ---
 # <a name="how-to-author-an-attestation-policy"></a>Vytvoření zásad ověření identity
@@ -36,7 +36,7 @@ issuancerules
  
 Soubor zásad má tři segmenty, jak vidíte výše:
 
-- **Version (verze** ): verze je číslo verze gramatiky, která je následována. 
+- **Version (verze**): verze je číslo verze gramatiky, která je následována. 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ Soubor zásad má tři segmenty, jak vidíte výše:
 
     V současné době je podporována pouze verze 1,0.
 
-- **autorizačních pravidel** : Zajistěte si kolekci pravidel deklarací identity, která se zkontrolují jako první, abyste zjistili, jestli by ověřování Azure mělo pokračovat na **issuancerules**. Pravidla deklarace identity platí v pořadí, ve kterém jsou definována.
+- **autorizačních pravidel**: Zajistěte si kolekci pravidel deklarací identity, která se zkontrolují jako první, abyste zjistili, jestli by ověřování Azure mělo pokračovat na **issuancerules**. Pravidla deklarace identity platí v pořadí, ve kterém jsou definována.
 
-- **issuancerules** : kolekce pravidel deklarací identity, která se vyhodnotí, aby se do výsledku ověřování přidaly Další informace, jak jsou definované v zásadách. Pravidla deklarace identity platí v pořadí, ve kterém jsou definována a jsou také volitelná.
+- **issuancerules**: kolekce pravidel deklarací identity, která se vyhodnotí, aby se do výsledku ověřování přidaly Další informace, jak jsou definované v zásadách. Pravidla deklarace identity platí v pořadí, ve kterém jsou definována a jsou také volitelná.
 
 Další informace najdete v tématu [deklarace identity a deklarace identity](claim-rule-grammar.md) .
    
@@ -128,8 +128,8 @@ Po vytvoření souboru zásad pro nahrání zásady ve formátu JWS postupujte p
      ```
 
 2. Volitelné Podepište zásadu. Azure Attestation podporuje následující algoritmy:
-     - **Žádné** : nepodepisujte datovou část zásad.
-     - **RS256** : podporovaný algoritmus pro podepsání datové části zásad
+     - **Žádné**: nepodepisujte datovou část zásad.
+     - **RS256**: podporovaný algoritmus pro podepsání datové části zásad
 
 3. Nahrajte JWS a ověřte zásady.
      - Pokud soubor zásad neobsahuje chyby syntaxe, je soubor zásad přijatý službou.

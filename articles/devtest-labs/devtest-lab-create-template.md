@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit vlastní image v Azure DevTest Labs ze so
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87289409"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Vytvoření vlastní image ze souboru VHD
@@ -22,9 +22,9 @@ ms.locfileid: "87289409"
 
 Následující kroky vás provedou vytvořením vlastní image ze souboru VHD pomocí Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 
 1. V seznamu cvičení vyberte požadované testovací prostředí.  
 
@@ -40,7 +40,7 @@ Následující kroky vás provedou vytvořením vlastní image ze souboru VHD po
 
 1. Zadejte popis vlastní image. Tento popis se zobrazí v seznamu základních imagí při vytváření virtuálního počítače.
 
-1. Jako **typ operačního systému**vyberte buď **Windows** , nebo **Linux**.
+1. Jako **typ operačního systému** vyberte buď **Windows** , nebo **Linux**.
 
     - Pokud vyberete možnost **Windows**, určete pomocí zaškrtávacího políčka, zda byl na počítači spuštěn *Nástroj Sysprep* . 
     - Pokud vyberete možnost **Linux**, určete pomocí zaškrtávacího políčka, zda bylo na počítači spuštěno *zrušení zřízení* . 

@@ -15,13 +15,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85608122"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Postupy: řešení chyb při přihlašování pomocí sestav Azure Active Directory
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Postup: Řešení chyb přihlášení s využitím sestav Azure Active Directory
 
 [Sestava přihlášení](concept-sign-ins.md) v Azure Active Directory (Azure AD) umožňuje najít odpovědi na otázky týkající se správy přístupu k aplikacím ve vaší organizaci, včetně těchto:
 
@@ -32,12 +32,12 @@ ms.locfileid: "85608122"
 
 Kromě toho sestava přihlášení také může pomoct při odstraňování potíží s přihlášením pro uživatele ve vaší organizaci. V této příručce se dozvíte, jak v sestavě přihlášení izolovat selhání při přihlašování a jak je použít k pochopení hlavní příčiny selhání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat:
 
 * Tenant Azure AD s licencí Premium (P1/P2). Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) .
-* Uživatel, který je v roli **globální správce**, **Správce zabezpečení**, **Čtenář zabezpečení**nebo **Čtenář sestav** pro tenanta. Každý uživatel má navíc přístup ke svým vlastním přihlášením. 
+* Uživatel, který je v roli **globální správce**, **Správce zabezpečení**, **Čtenář zabezpečení** nebo **Čtenář sestav** pro tenanta. Každý uživatel má navíc přístup ke svým vlastním přihlášením. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Řešení chyb při přihlašování pomocí sestavy přihlášení
 

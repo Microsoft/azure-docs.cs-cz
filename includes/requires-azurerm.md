@@ -5,16 +5,16 @@ author: dbradish-microsoft
 ms.author: dbradish
 manager: barbkess
 ms.openlocfilehash: 083d2ecb973a2c0ffc6cfddb9cdcb387e6025fb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85378622"
 ---
 > [!IMPORTANT]
 >
 > Použití této funkce Azure z PowerShellu vyžaduje, aby byl `AzureRM` nainstalovaný modul. Toto je starší modul, který je dostupný jenom pro Windows PowerShell 5,1, který už nepřijímá nové funkce.
-> `Az`Moduly a `AzureRM` nejsou kompatibilní __not__ , pokud jsou nainstalované pro stejné verze prostředí PowerShell.
+> `Az`Moduly a `AzureRM` nejsou kompatibilní  , pokud jsou nainstalované pro stejné verze prostředí PowerShell.
 > Pokud potřebujete obě verze:
 >
 > 1. [Odinstalujte modul AZ Module](/powershell/azure/uninstall-az-ps) z relace powershellu 5,1.

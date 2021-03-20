@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92742807"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Postup povolení spravované identity přiřazené systémem pro aplikaci Azure jaře Cloud
@@ -34,8 +34,8 @@ Pokud chcete nastavit spravovanou identitu v [Azure Portal](https://portal.azure
 
 1. Vytvořte aplikaci na portálu obvyklým způsobem. Přejděte na portál na portálu.
 2. Přejděte dolů do skupiny **Nastavení** v levém navigačním podokně.
-3. Vyberte **Identita** .
-4. V rámci karty **přiřazené systémem** přepněte **stav** na *zapnuto* . Klikněte na **Uložit** .
+3. Vyberte **Identita**.
+4. V rámci karty **přiřazené systémem** přepněte **stav** na *zapnuto*. Klikněte na **Uložit**.
 
  ![Spravovaná identita na portálu](./media/spring-cloud-managed-identity/identity-1.png)
 
@@ -72,8 +72,8 @@ Když odeberete identitu přiřazenou systémem, odstraní se taky z Azure AD. P
 Pokud chcete odebrat spravovanou identitu přiřazenou systémem z aplikace, která ji už nepotřebuje:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu přidruženého k předplatnému Azure, které obsahuje instanci Azure jaře Cloud.
-1. Přejděte k požadovanému virtuálnímu počítači a vyberte možnost **Identita** .
-1. V části stav **přiřazení systému** / **Status** vyberte **vypnuto** a potom klikněte na **Uložit** :
+1. Přejděte k požadovanému virtuálnímu počítači a vyberte možnost **Identita**.
+1. V části stav **přiřazení systému** / vyberte **vypnuto** a potom klikněte na **Uložit**:
 
  ![Spravovaná identita](./media/spring-cloud-managed-identity/remove-identity.png)
 

@@ -9,17 +9,17 @@ ms.date: 08/13/2020
 ms.author: danlep
 ms.custom: include file, devx-track-azurecli
 ms.openlocfilehash: 173c9156f253e43111299b53287e97ab7b2c0aa5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746950"
 ---
 ## <a name="create-azure-container-registry"></a>Vytvoření registru kontejneru Azure
 
-Než vytvoříte registr kontejneru, budete potřebovat *skupinu prostředků* , do které ho budete moct nasadit. Skupina prostředků je logická kolekce, ve které se nasazují a spravují všech prostředky Azure.
+Než vytvoříte registr kontejneru, budete potřebovat *skupinu prostředků*, do které ho budete moct nasadit. Skupina prostředků je logická kolekce, ve které se nasazují a spravují všech prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus* :
+Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -31,7 +31,7 @@ Jakmile vytvoříte skupinu prostředků, vytvořte registr kontejneru Azure pom
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
-Tady je částečný výstup nového registru kontejneru Azure s názvem *mycontainerregistry082* :
+Tady je částečný výstup nového registru kontejneru Azure s názvem *mycontainerregistry082*:
 
 ```output
 {
@@ -63,7 +63,7 @@ Před nahráváním imagí do instance služby Azure Container Registry se k ní
 az acr login --name <acrName>
 ```
 
-Příklad:
+Například:
 
 ```azurecli
 az acr login --name mycontainerregistry082

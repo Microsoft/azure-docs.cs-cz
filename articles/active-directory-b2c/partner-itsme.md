@@ -12,17 +12,17 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87489511"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Konfigurace itsme OpenID Connect (OIDC) pomocí Azure Active Directory B2C
 
 Aplikace itsme Digital ID vám umožní bezpečně se přihlásit bez čtecího zařízení, hesla, dvojúrovňového ověřování nebo více kódů PIN. Aplikace itsme poskytuje silné ověřování zákazníků s ověřenou identitou. V tomto článku se dozvíte, jak integrovat ověřování Azure AD B2C pomocí itsme OpenID Connect (OIDC) pomocí zásad toku uživatele tajného kódu klienta.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -74,9 +74,9 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
-2. V části **služby Azure**vyberte možnost **Azure AD B2C** (nebo vyberte **Další služby** a vyhledejte *Azure AD B2C*pomocí vyhledávacího pole **všechny služby** ).
+2. V části **služby Azure** vyberte možnost **Azure AD B2C** (nebo vyberte **Další služby** a vyhledejte *Azure AD B2C* pomocí vyhledávacího pole **všechny služby** ).
 
-3. Vyberte **Zprostředkovatelé identity**a potom vyberte **Nový poskytovatel OpenID Connect**.
+3. Vyberte **Zprostředkovatelé identity** a potom vyberte **Nový poskytovatel OpenID Connect**.
 
 4. Vyplňte formulář pomocí následujících informací:
 
@@ -86,7 +86,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    | Adresa URL metadat | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>kde `<environment>` je buď `e2e` (testovací prostředí) nebo `prd` (produkční)  |
    | ClientID     | **ID klienta**, označované také jako **partnerský kód**  |
    | Tajný klíč klienta | Vaše **client_secret** |
-   | Rozsah  | Služba OpenID: e-mailový profil YOURSERVICECODE [telefon] [adresa]  |
+   | Obor  | Služba OpenID: e-mailový profil YOURSERVICECODE [telefon] [adresa]  |
    |Typ odpovědi | kód |
    |Režim odezvy | query |
    |Pomocný parametr domény | *Tohle můžete nechat prázdné.* |
@@ -100,11 +100,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 ### <a name="configure-a-user-flow"></a>Konfigurace toku uživatele
 
-1. Ve vašem tenantovi Azure AD B2C v části **zásady**vyberte **toky uživatelů**.
+1. Ve vašem tenantovi Azure AD B2C v části **zásady** vyberte **toky uživatelů**.
 
 2. Vyberte **Nový tok uživatele**.
 
-3. Vyberte **zaregistrovat, přihlaste**se, vyberte verzi a pak vyberte **vytvořit**.
+3. Vyberte **zaregistrovat, přihlaste** se, vyberte verzi a pak vyberte **vytvořit**.
 
 4. Zadejte **název**.
 
@@ -121,7 +121,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 ### <a name="register-an-application"></a>Registrace aplikace
 
-1. V tenantovi B2C v části **Spravovat**vyberte **Registrace aplikací**  >  **Nová registrace**.
+1. V tenantovi B2C v části **Spravovat** vyberte **Registrace aplikací**  >  **Nová registrace**.
 
 2. Zadejte **název** aplikace a zadejte **identifikátor URI pro přesměrování**. Pro účely testování zadejte `https://jwt.ms` .
 
@@ -129,7 +129,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 4. Vyberte **Zaregistrovat**.
 
-   a. Pro účely testování vyberte možnost **ověřování**a v části **implicitní udělení udělte**zaškrtněte políčka **přístupové tokeny** a **tokeny ID** .  
+   a. Pro účely testování vyberte možnost **ověřování** a v části **implicitní udělení udělte** zaškrtněte políčka **přístupové tokeny** a **tokeny ID** .  
 
    b. Vyberte **Uložit**.
 

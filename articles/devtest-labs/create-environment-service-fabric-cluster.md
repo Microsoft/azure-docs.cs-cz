@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 530cf3b20820e34913612419d0ffa731a70f6a58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85484005"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Vytvoření prostředí pomocí samostatného Service Fabricho clusteru v Azure DevTest Labs
@@ -33,11 +33,11 @@ Clustery Service Fabric se vytvářejí pomocí prostředí v DevTest Labs. Kaž
 
     ![V seznamu vyberte Cluster Service Fabric Lab.](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
 4. Na stránce **Konfigurovat nastavení** proveďte následující kroky: 
-    1. Zadejte **název** pro **prostředí**clusteru. Toto je název skupiny prostředků v Azure, ve které se vytvoří cluster Service Fabric. 
+    1. Zadejte **název** pro **prostředí** clusteru. Toto je název skupiny prostředků v Azure, ve které se vytvoří cluster Service Fabric. 
     2. Vyberte **operační systém (OS)** pro virtuální počítače clusteru. Výchozí hodnota je: **Windows**.
     3. Zadejte název **správce** clusteru. 
     4. Zadejte **heslo** pro správce. 
-    5. Pro **certifikát**zadejte informace o certifikátu jako řetězec kódovaný v kódování Base64. Chcete-li vytvořit certifikát, proveďte následující kroky:
+    5. Pro **certifikát** zadejte informace o certifikátu jako řetězec kódovaný v kódování Base64. Chcete-li vytvořit certifikát, proveďte následující kroky:
         1. Stáhněte soubor **Create-ClusterCertificate.ps1** z [úložiště Git](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster). Případně naklonujte úložiště na svém počítači. 
         2. Spusťte **PowerShell**. 
         3. Spusťte soubor **ps1** pomocí příkazu `.\Create-ClusterCertificate.ps1` . V programu Poznámkový blok se zobrazí textový soubor s informacemi, které potřebujete k vyplnění polí souvisejících s certifikátem na této stránce. . 
