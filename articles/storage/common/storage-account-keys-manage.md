@@ -10,10 +10,10 @@ ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89069655"
 ---
 # <a name="manage-storage-account-access-keys"></a>Správa přístupových klíčů účtu úložiště
@@ -34,7 +34,7 @@ Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo p�
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na svůj účet úložiště.
 1. V části **Nastavení** vyberte **Přístupové klíče**. Zobrazí se přístupové klíče vašeho účtu a také úplný připojovací řetězec pro jednotlivé klíče.
-1. Vyhledejte hodnotu **klíče** pod **klíč1**a kliknutím na tlačítko **Kopírovat** Zkopírujte klíč účtu.
+1. Vyhledejte hodnotu **klíče** pod **klíč1** a kliknutím na tlačítko **Kopírovat** Zkopírujte klíč účtu.
 1. Alternativně můžete zkopírovat celý připojovací řetězec. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a kliknutím na tlačítko **Kopírovat** zkopírujte připojovací řetězec.
 
     :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="Snímek obrazovky znázorňující zobrazení přístupových klíčů v Azure Portal":::
@@ -66,7 +66,7 @@ az storage account keys list \
 
 Pro přístup k Azure Storage můžete použít kterýkoli ze dvou klíčů, ale obecně je dobrým zvykem použít první klíč a při střídání klíčů rezervovat použití druhého klíče.
 
-Aby mohl uživatel zobrazit nebo číst přístupové klíče účtu, musí být buď správcem služby, nebo musí mít přiřazenou roli Azure, která zahrnuje **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Některé předdefinované role Azure, které zahrnují tuto akci, jsou role **vlastníka**, **přispěvatele**a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
+Aby mohl uživatel zobrazit nebo číst přístupové klíče účtu, musí být buď správcem služby, nebo musí mít přiřazenou roli Azure, která zahrnuje **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Některé předdefinované role Azure, které zahrnují tuto akci, jsou role **vlastníka**, **přispěvatele** a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Správa přístupových klíčů pomocí Azure Key Vault
 
@@ -133,7 +133,7 @@ K otočení přístupových klíčů účtu úložiště pomocí Azure CLI:
 > [!NOTE]
 > Microsoft doporučuje používat ve všech aplikacích současně jenom jeden z klíčů. Pokud na některých místech a v dalších klíčích 2 použijete klíč 1, nebudete moct tyto klíče otočit, aniž by aplikace ztratila přístup.
 
-Aby uživatel mohl otočit přístupové klíče účtu, musí být buď správce služby, nebo musí mít přiřazenou roli Azure, která zahrnuje **Microsoft. Storage/storageAccounts/RegenerateKey/Action**. Některé předdefinované role Azure, které zahrnují tuto akci, jsou role **vlastníka**, **přispěvatele**a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích Azure pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
+Aby uživatel mohl otočit přístupové klíče účtu, musí být buď správce služby, nebo musí mít přiřazenou roli Azure, která zahrnuje **Microsoft. Storage/storageAccounts/RegenerateKey/Action**. Některé předdefinované role Azure, které zahrnují tuto akci, jsou role **vlastníka**, **přispěvatele** a **role služby operátora klíče účtu úložiště** . Další informace o roli správce služby najdete v tématu [role správců pro klasický odběr, role Azure a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md). Podrobné informace o předdefinovaných rolích Azure pro Azure Storage najdete v části **úložiště** v [předdefinovaných rolích Azure pro službu Azure RBAC](../../role-based-access-control/built-in-roles.md#storage).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,10 +9,10 @@ ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 5e84a679f0bc26b701dc1d51db3605c452675ea3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96545277"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>Řetězcové funkce (Azure Cosmos DB)
@@ -20,7 +20,7 @@ ms.locfileid: "96545277"
 
 Řetězcové funkce umožňují provádět operace s řetězci v Azure Cosmos DB.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Následující skalární funkce provede operaci na vstupní hodnotě řetězce a vrátí řetězec, číselnou hodnotu nebo logickou hodnotu:
   

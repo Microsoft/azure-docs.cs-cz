@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: rohink
 ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76937240"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Jak Azure DNS funguje s ostatními službami Azure
@@ -31,7 +31,7 @@ Azure DNS je hostovaná služba DNS pro správu a překlad názvů. Můžete ho 
 
 Následující tabulka popisuje podporované typy záznamů, které můžete použít pro různé služby Azure. Jak ukazuje tabulka, Azure DNS podporuje pouze záznamy DNS pro síťové prostředky internetové sítě. Azure DNS nelze použít k překladu názvů interních privátních adres.
 
-| Služba Azure | Síťové rozhraní | Popis |
+| Služba Azure | Síťové rozhraní | Description |
 | --- | --- | --- |
 | Azure Application Gateway |[Veřejná IP adresa front-endu](dns-custom-domain.md#public-ip-address) |Můžete vytvořit záznam DNS A nebo CNAME. |
 | Azure Load Balancer |[Veřejná IP adresa front-endu](dns-custom-domain.md#public-ip-address) |Můžete vytvořit záznam DNS A nebo CNAME. Load Balancer může mít dynamicky přiřazenou veřejnou IP adresu IPv6. Vytvoří záznam CNAME pro adresu IPv6. |

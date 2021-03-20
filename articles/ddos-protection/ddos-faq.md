@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98611113"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection standardní časté otázky
@@ -36,7 +36,7 @@ V rámci tenanta se dá jeden plán DDoS Protection použít pro několik předp
 Další podrobnosti najdete v článku o [cenách Azure DDoS Protection Standard](https://azure.microsoft.com/pricing/details/ddos-protection/) .
 
 ## <a name="is-the-service-zone-resilient"></a>Je zóna služeb odolná?
-Yes. Ve výchozím nastavení je Azure DDoS Protection odolný proti zóně.
+Ano. Ve výchozím nastavení je Azure DDoS Protection odolný proti zóně.
 
 ## <a name="how-do-i-configure-the-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu tak, aby byla odolná proti zóně?
 Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. V zóně – odolnost pro Azure DDoS Protection prostředky je ve výchozím nastavení dostupná a spravovaná samotnými službami.

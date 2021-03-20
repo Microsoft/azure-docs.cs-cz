@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak může správce účtu testovacího pr
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444195"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Umožňuje tvůrci testovacího prostředí vybrat umístění pro testovací prostředí v Azure Lab Services
@@ -16,7 +16,7 @@ V Azure Lab Services může vlastník účtu testovacího prostředí dovolit tv
 Jako vlastník účtu testovacího prostředí můžete při vytváření účtu testovacího prostředí a po vytvoření účtu testovacího prostředí (nebo existujícího účtu testovacího prostředí) vybrat možnost zvolit **umístění testovacího** prostředí. 
 
 ## <a name="at-the-time-of-lab-account-creation"></a>V době vytváření účtu testovacího prostředí
-Když vytvoříte účet testovacího prostředí, zobrazí se na první obrazovce (karta**základy** ) Tato možnost. 
+Když vytvoříte účet testovacího prostředí, zobrazí se na první obrazovce (karta **základy** ) Tato možnost. 
 
 ![Povolit možnost v době vytváření testovacího prostředí](./media/allow-lab-creator-pick-lab-location/create-lab-account.png)
 

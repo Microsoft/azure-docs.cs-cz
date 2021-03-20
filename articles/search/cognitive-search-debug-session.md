@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92057616"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Ladění relací v Azure Kognitivní hledání
@@ -51,13 +51,13 @@ Zobrazení **grafu dovedností** poskytuje hierarchickou a vizuální reprezenta
 
 Výběr dovednosti v grafu zvýrazní dovednosti, které jsou k ní připojené, uzly, které vytvářejí jeho vstupy, a uzly, které přijímají jeho výstupy. Každý uzel dovedností zobrazuje jeho typ, chyby, varování a počty spuštění. **Graf dovedností** je místo, kde vyberete, která dovednost se má ladit nebo vylepšit. Když vyberete dovednost, zobrazí se v podokně Podrobnosti dovednosti napravo od grafu.
 
-> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Vytvoření relace ladění":::
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Graf dovedností":::
 
 ## <a name="skill-details"></a>Podrobnosti dovednosti
 
-V podokně Podrobnosti o dovednostech se zobrazuje sada oblastí pro práci s konkrétní dovedností, pokud je tato dovednost v **grafu dovedností**zvýrazněna. Můžete zkontrolovat a upravit podrobnosti o nastavení dovednosti. Definice JSON dovednosti je k dispozici. Zobrazí se také podrobnosti o spuštění dovednosti a chyby a upozornění. Karta **Nastavení dovedností** & **Editor JSON pro dovednosti** umožňuje přímé úpravy dovedností. [`</>`](#expression-evaluator)Otevře se okno pro zobrazení a úpravy výrazů pro vstupy a výstupy dovedností.
+V podokně Podrobnosti o dovednostech se zobrazuje sada oblastí pro práci s konkrétní dovedností, pokud je tato dovednost v **grafu dovedností** zvýrazněna. Můžete zkontrolovat a upravit podrobnosti o nastavení dovednosti. Definice JSON dovednosti je k dispozici. Zobrazí se také podrobnosti o spuštění dovednosti a chyby a upozornění. Karta **Nastavení dovedností** & **Editor JSON pro dovednosti** umožňuje přímé úpravy dovedností. [`</>`](#expression-evaluator)Otevře se okno pro zobrazení a úpravy výrazů pro vstupy a výstupy dovedností.
 
-Vnořené ovládací prvky vstupu v okně nastavení dovedností lze použít k vytvoření složitých tvarů pro projekce, mapování výstupních polí pro pole komplexního typu nebo zadání dovednosti. Při použití s **vyhodnocovacím filtrem výrazů**poskytují vnořené vstupy jednoduchý test a ověřují Tvůrce výrazů.
+Vnořené ovládací prvky vstupu v okně nastavení dovedností lze použít k vytvoření složitých tvarů pro projekce, mapování výstupních polí pro pole komplexního typu nebo zadání dovednosti. Při použití s **vyhodnocovacím filtrem výrazů** poskytují vnořené vstupy jednoduchý test a ověřují Tvůrce výrazů.
 
 ## <a name="skill-execution-history"></a>Historie spouštění dovedností
 
@@ -73,7 +73,7 @@ Při sestavování vlastní dovednosti nebo ladění chyby s vlastní dovednost�
 
 Podokno **obohacení struktury dat** zobrazuje obohacení dokumentu prostřednictvím dovednosti, podrobně popisuje kontext pro každé rozšíření a původní dovednost. **Vyhodnocovací filtr výrazů** lze také použít k zobrazení obsahu pro každé obohacení.
 
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Vytvoření relace ladění":::
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Obohacená datová struktura":::
 
 ## <a name="expression-evaluator"></a>Vyhodnocení výrazu
 

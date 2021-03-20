@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043191"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Postupy: připojení dat metrik do poradce metrik
@@ -75,10 +75,10 @@ Pokud je časové razítko datového bodu vynecháno, poradce metriky použije �
 |Výběr  |Popis  |Poznámky  |
 |---------|---------|---------|
 | **Zobrazované jméno** | Název, který se má zobrazit v pracovním prostoru místo původního názvu sloupce | |
-|**Timestamp**     | Časové razítko datového bodu. Pokud tento parametr vynecháte, poradce metriky použije časové razítko, když se místo toho bude přijímat datový bod. U každého datového kanálu můžete zadat maximálně jeden sloupec jako časové razítko.        | Nepovinný parametr. By měl být zadaný s maximálně jedním sloupcem. Pokud získáte sloupec, který **nelze zadat jako chybu časového razítka** , ověřte, zda dotaz nebo zdroj dat má duplicitní časová razítka.      |
+|**Časové razítko**     | Časové razítko datového bodu. Pokud tento parametr vynecháte, poradce metriky použije časové razítko, když se místo toho bude přijímat datový bod. U každého datového kanálu můžete zadat maximálně jeden sloupec jako časové razítko.        | Nepovinný parametr. By měl být zadaný s maximálně jedním sloupcem. Pokud získáte sloupec, který **nelze zadat jako chybu časového razítka** , ověřte, zda dotaz nebo zdroj dat má duplicitní časová razítka.      |
 |**Measure**     |  Číselné hodnoty v datovém kanálu. U každého datového kanálu můžete zadat více měr, ale jako míru by měl být vybrán alespoň jeden sloupec.        | By měla být zadána alespoň v jednom sloupci.        |
 |**Rozměr**     | Kategorií hodnoty. Kombinace různých hodnot identifikuje konkrétní časovou řadu s jednou dimenzí, například: Country (země), Language (tenant). Jako rozměry můžete vybrat nula nebo více sloupců. Poznámka: při výběru sloupce bez řetězce jako dimenze buďte opatrní. | Nepovinný parametr.        |
-|**Ignorovat**     | Ignoruje vybraný sloupec.        | Nepovinný parametr. Podívejte se na následující text.       |
+|**Ohled**     | Ignoruje vybraný sloupec.        | Nepovinný parametr. Podívejte se na následující text.       |
 
 Pokud chcete sloupce ignorovat, doporučujeme, abyste aktualizovali dotaz nebo zdroj dat, aby tyto sloupce vyloučily. Můžete také ignorovat sloupce pomocí **Ignorovat sloupce** a potom je **Ignorovat** na konkrétní sloupce. Pokud by měl být sloupec dimenze a je omylem nastaven jako *ignorovaný*, Poradce pro metriky může ukončit ingestování částečných dat. Například Předpokládejme, že data z dotazu jsou uvedená níže:
 
@@ -130,7 +130,7 @@ Zvažte následující scénáře:
     | USA | Montana          | 100   |
 
 
-    Po povolení automatického shrnutí se *souhrnem*metriky Advisor vypočítá kombinace dimenzí a sečte metriky během příjmu dat. Výsledek může být následující:
+    Po povolení automatického shrnutí se *souhrnem* metriky Advisor vypočítá kombinace dimenzí a sečte metriky během příjmu dat. Výsledek může být následující:
 
     | Country (Země)       | Region (Oblast)           | Sales |
     | ------------ | --------------- | ---- |
@@ -188,7 +188,7 @@ Zjištění podrobností o selhání ingestování:
 2. Klikněte na **stav** a pak zvolte **neúspěšné** nebo **Chyba**.
 3. Najeďte myší na neúspěšnou příjem dat a podívejte se na zobrazenou zprávu s podrobnostmi.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Indikátor průběhu přijímání":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Kontrolovat ingestování při selhání":::
 
 Stav *selhání* znamená, že ingestování pro tento zdroj dat se bude opakovat později.
 *Chybový* stav označuje, že se pro zdroj dat neopakuje Poradce pro metriky. Chcete-li znovu načíst data, je třeba aktivovat ruční naplnění nebo znovu načíst.

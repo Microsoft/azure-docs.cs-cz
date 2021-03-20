@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92072403"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolovat události do Azure Event Hubs v Azure API Management
@@ -75,7 +75,7 @@ Kliknutím na **Uložit** uložte aktualizovanou konfiguraci zásad. Jakmile je 
 Můžete zobrazit náhled Event Hubs přihlášení pomocí [Azure Stream Analytics dotazů](../event-hubs/process-data-azure-stream-analytics.md). 
 
 1. V Azure Portal přejděte do centra událostí, do kterého protokolovací nástroj odesílá události. 
-2. V části **funkce**vyberte kartu **data procesu** .
+2. V části **funkce** vyberte kartu **data procesu** .
 3. Na kartě **Povolit přehledy v reálném čase z událostí** vyberte **prozkoumat**.
 4. Měli byste být schopni zobrazit náhled protokolu na kartě **Náhled vstupu** . Pokud zobrazená data nejsou aktuální, vyberte **aktualizovat** , aby se zobrazily nejnovější události.
 

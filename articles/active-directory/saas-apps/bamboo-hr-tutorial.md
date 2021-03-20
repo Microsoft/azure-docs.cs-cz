@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 3926e98cb55d1afd80caf4af5d67910b66c09cdd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Kurz: Azure Active Directory integrace s BambooHR
@@ -161,7 +161,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili k BambooHR, nast
 
 3. Vyberte **Přehled**.
 
-4. V levém podokně vyberte **Security**  >  **uživatele** zabezpečení.
+4. V levém podokně vyberte   >  **uživatele** zabezpečení.
 
 5. Zadejte uživatelské jméno, heslo a e-mailovou adresu platného účtu Azure AD, který chcete nastavit.
 

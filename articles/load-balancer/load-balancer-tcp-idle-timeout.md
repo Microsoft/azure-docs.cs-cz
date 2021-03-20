@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: allensu
 ms.openlocfilehash: 8a6be588544883b77c3ff115c9dba5e6ecd5fbd7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747180"
 ---
 # <a name="configure-tcp-reset-and-idle-timeout-for-azure-load-balancer"></a>Konfigurace resetování TCP a vypršení časového limitu nečinnosti pro Azure Load Balancer
@@ -37,27 +37,27 @@ Následující části popisují, jak změnit nastavení časového limitu neči
 
 Pokud chcete nastavit časový limit nečinnosti a resetování TCP pro nástroj pro vyrovnávání zatížení, upravte pravidlo s vyrovnáváním zatížení. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-2. V nabídce na levé straně vyberte **skupiny prostředků** .
+2. V nabídce na levé straně vyberte **skupiny prostředků**.
 
-3. Vyberte skupinu prostředků pro nástroj pro vyrovnávání zatížení. V tomto příkladu skupina prostředků má název **myResourceGroup** .
+3. Vyberte skupinu prostředků pro nástroj pro vyrovnávání zatížení. V tomto příkladu skupina prostředků má název **myResourceGroup**.
 
-4. Vyberte svůj Load Balancer. V tomto příkladu se nástroj pro vyrovnávání zatížení nazývá **myLoadBalancer** .
+4. Vyberte svůj Load Balancer. V tomto příkladu se nástroj pro vyrovnávání zatížení nazývá **myLoadBalancer**.
 
-5. V **Nastavení** vyberte **pravidla vyrovnávání zatížení** .
+5. V **Nastavení** vyberte **pravidla vyrovnávání zatížení**.
 
      :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules.png" alt-text="Upravit pravidla nástroje pro vyrovnávání zatížení." border="true":::
 
-6. Vyberte pravidlo vyrovnávání zatížení. V tomto příkladu se pravidlo vyrovnávání zatížení nazývá **myLBrule** .
+6. Vyberte pravidlo vyrovnávání zatížení. V tomto příkladu se pravidlo vyrovnávání zatížení nazývá **myLBrule**.
 
 7. V pravidle vyrovnávání zatížení přesuňte posuvník v poli **časový limit nečinnosti (minuty)** na hodnotu časového limitu.  
 
-8. V části **resetovat TCP** vyberte **povoleno** .
+8. V části **resetovat TCP** vyberte **povoleno**.
 
-   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="Upravit pravidla nástroje pro vyrovnávání zatížení." border="true":::
+   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="Nastavte časový limit nečinnosti a resetování TCP." border="true":::
 
-9. Vyberte **Uložit** .
+9. Vyberte **Uložit**.
 
 # <a name="powershell"></a>[**PowerShell**](#tab/tcp-reset-idle-powershell)
 

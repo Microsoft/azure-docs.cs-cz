@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742943"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Přiřazení role ke cloudové skupině v Azure Active Directory
@@ -32,7 +32,7 @@ Přiřazení skupiny k roli Azure AD se podobá přiřazení uživatelů a insta
 
 1. Vyberte **Azure Active Directory**  >  **role a správci** a vyberte roli, kterou chcete přiřadit.
 
-1. Na stránce **_název role_*_ vyberte > _* přidat přiřazení**.
+1. Na stránce ***název role** _ vyberte > _ * přidat přiřazení * *.
 
    ![Přidat přiřazení nové role](./media/groups-assign-role/add-assignment.png)
 

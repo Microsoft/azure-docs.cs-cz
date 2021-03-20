@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91320043"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Oprava změněných výchozích pravidel v Azure AD Connect
@@ -28,7 +28,7 @@ Služba Azure Active Directory (Azure AD) Connect používá výchozí pravidla 
 > Úprava stávajících výchozích pravidel pro splnění potřebného přizpůsobení není podporována. Pokud to uděláte, zabrání v budoucích verzích aktualizovat Tato pravidla na nejnovější verzi. Nebudete dostávat opravy chyb, které potřebujete, nebo nové funkce. Tento dokument vysvětluje, jak dosáhnout stejného výsledku, aniž byste museli měnit stávající výchozí pravidla. 
 
 ## <a name="how-to-identify-modified-default-rules"></a>Jak identifikovat upravená výchozí pravidla
-Počínaje verzí 1.3.7.0 Azure AD Connect je snadné identifikovat upravené výchozí pravidlo. **V nabídce aplikace na ploše**vyberte **Editor pravidel synchronizace**.
+Počínaje verzí 1.3.7.0 Azure AD Connect je snadné identifikovat upravené výchozí pravidlo. **V nabídce aplikace na ploše** vyberte **Editor pravidel synchronizace**.
 
 ![Azure AD Connect s zvýrazněným editorem synchronizačních pravidel](media/how-to-connect-fix-default-rules/default1.png)
 
@@ -81,9 +81,9 @@ Podle vlastního pravidla pojmenování pravidla pojmenujte. Zde používáme **
 
 Zadejte vlastní popis pravidla, aby bylo možné budoucí údržbu pravidla snadno. Popis může být například založený na tom, co je cílem pravidla, a proč je potřeba.
 
-Proveďte výběr pro pole **připojeného systému**, **typ připojeného systémového objektu**a **typ objektu úložiště metaverse** .
+Proveďte výběr pro pole **připojeného systému**, **typ připojeného systémového objektu** a **typ objektu úložiště metaverse** .
 
-Zadejte hodnotu priority od 0 do 99 (čím nižší je číslo, tím vyšší je priorita). Pro **značku**, **Povolit synchronizaci hesla**a **zakázaná** pole použijte výchozí výběr.
+Zadejte hodnotu priority od 0 do 99 (čím nižší je číslo, tím vyšší je priorita). Pro **značku**, **Povolit synchronizaci hesla** a **zakázaná** pole použijte výchozí výběr.
 
 Nechejte **Filtr oboru** prázdný. To znamená, že pravidlo se vztahuje na všechny objekty, které jsou spojeny mezi systémem připojené služby Active Directory a úložištěm Metaverse.
 
@@ -92,7 +92,7 @@ Nechejte **pravidla pro připojení** prázdná. To znamená, že toto pravidlo 
 Přidejte vhodné transformace pro svůj atribut. Můžete přiřadit konstantu pro vytvoření konstantní hodnoty do cílového atributu. Můžete použít přímé mapování mezi zdrojovým nebo cílovým atributem. Nebo můžete použít výraz pro atribut. Tady jsou různé [funkce výrazů](./reference-connect-sync-functions-reference.md) , které můžete použít.
 
 #### <a name="add-an-outbound-sync-rule"></a>Přidat pravidlo odchozí synchronizace
-Chcete-li propojit atribut s cílovým adresářem, je třeba vytvořit odchozí pravidlo. To znamená, že zdrojem je úložiště metaverse a cíl je připojený systém. Chcete-li vytvořit odchozí pravidlo, spusťte **Editor pravidel synchronizace**, změňte **směr** na **odchozí**a vyberte **Přidat nové pravidlo**. 
+Chcete-li propojit atribut s cílovým adresářem, je třeba vytvořit odchozí pravidlo. To znamená, že zdrojem je úložiště metaverse a cíl je připojený systém. Chcete-li vytvořit odchozí pravidlo, spusťte **Editor pravidel synchronizace**, změňte **směr** na **odchozí** a vyberte **Přidat nové pravidlo**. 
 
 ![Editor pravidel synchronizace](media/how-to-connect-fix-default-rules/default3c.png)
 
@@ -162,11 +162,11 @@ Nově přidané pravidlo synchronizace můžete ověřit pomocí funkce Preview,
 
 ![Azure AD Connect se zvýrazněnou synchronizační službou](media/how-to-connect-fix-default-rules/default10.png)
 
-Vyberte **vyhledávání v úložišti Metaverse**. Vyberte objekt oboru jako **osoba**, vyberte **Přidat klauzuli**a uveďte kritéria hledání. V dalším kroku vyberte **Hledat**a dvakrát klikněte na objekt ve výsledcích hledání. Ujistěte se, že jsou vaše data v Azure AD Connect pro daný objekt aktuální, spuštěním importu a synchronizace v doménové struktuře před spuštěním tohoto kroku.
+Vyberte **vyhledávání v úložišti Metaverse**. Vyberte objekt oboru jako **osoba**, vyberte **Přidat klauzuli** a uveďte kritéria hledání. V dalším kroku vyberte **Hledat** a dvakrát klikněte na objekt ve výsledcích hledání. Ujistěte se, že jsou vaše data v Azure AD Connect pro daný objekt aktuální, spuštěním importu a synchronizace v doménové struktuře před spuštěním tohoto kroku.
 
 ![Synchronization Service Manager](media/how-to-connect-fix-default-rules/default11.png)
 
-V části **vlastnosti objektu úložiště metaverse**vyberte **konektory**, vyberte objekt v odpovídajícím konektoru (doménové struktuře) a vyberte **Vlastnosti...**.
+V části **vlastnosti objektu úložiště metaverse** vyberte **konektory**, vyberte objekt v odpovídajícím konektoru (doménové struktuře) a vyberte **Vlastnosti...**.
 
 ![Vlastnosti objektu úložiště metaverse](media/how-to-connect-fix-default-rules/default12.png)
 

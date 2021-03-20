@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 29e19eea51b5ee55831bf1d694a9a6473a62d471
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504045"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s novým Relic
@@ -103,7 +103,7 @@ Zde je postup, jak vytvořit testovacího uživatele ve Azure Portal s názvem B
 1. Z Azure Portal vyberte možnost **Azure Active Directory**.
 1. Vyberte **Uživatelé**  >  **Nový uživatel**.
 1. Na stránce **Nový uživatel** :
-   1. Do pole **uživatelské jméno** zadejte `username@companydomain.extension` . Například `b.simon@contoso.com`. Tato adresa by měla odpovídat e-mailové adrese, kterou budete používat na nové straně Relic.
+   1. Do pole **uživatelské jméno** zadejte `username@companydomain.extension` . Například, `b.simon@contoso.com`. Tato adresa by měla odpovídat e-mailové adrese, kterou budete používat na nové straně Relic.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Vyberte možnost **Zobrazit heslo** a pak zobrazovanou hodnotu uložte.
    1. Vyberte **Vytvořit**.
@@ -171,7 +171,7 @@ Tady je postup testování konfigurace jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete **Nový Relic podle organizace** , měli byste být automaticky přihlášeni k nové Relic. Další informace o přístupovém panelu najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

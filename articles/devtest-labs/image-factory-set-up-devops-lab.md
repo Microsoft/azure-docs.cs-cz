@@ -4,10 +4,10 @@ description: Tento článek pojednává o všech přípravcích potřebných ke 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476134"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Spuštění objektu pro vytváření imagí z Azure DevOps
@@ -47,7 +47,7 @@ Všechny prostředí PowerShell, šablony a konfigurace pro objekt pro vytváře
 
     ![Importovat úložiště Git](./media/set-up-devops-lab/import-git-repo.png)
 
-Pokud se rozhodnete pouze přesně zjistit, co je potřeba (soubory pro vytváření imagí), naklonujte [here](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs) úložiště Git a nahrajte jenom soubory umístěné v adresáři **Scripts/ImageFactory** .
+Pokud se rozhodnete pouze přesně zjistit, co je potřeba (soubory pro vytváření imagí), naklonujte [](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs) úložiště Git a nahrajte jenom soubory umístěné v adresáři **Scripts/ImageFactory** .
 
 ## <a name="create-a-build-and-connect-to-azure"></a>Vytvoření sestavení a připojení k Azure
 V tomto okamžiku máte zdrojové soubory uložené v úložišti Git ve službě Azure DevOps. Teď je potřeba nastavit kanál pro spuštění Azure PowerShell. K dispozici je spousta možností, jak provést tyto kroky. V tomto článku použijete definici sestavení pro jednoduchost, ale spolupracuje s DevOps Build, DevOps vydáním (jedním nebo několika prostředími), jinými spouštěcími moduly, jako je Windows Plánovač úloh nebo jakýmkoli jiným způsobem, který může Azure PowerShell spustit.
@@ -94,7 +94,7 @@ Dalším krokem je nastavení instančního objektu. Jedná se o identitu v Azur
 Nejrychlejší způsob, jak nastavit instanční objekt, je umožnit službě Azure DevOps to pro nás.
 
 1. Vyberte **úlohu** , kterou jste právě přidali.
-2. Jako **Typ připojení Azure**vyberte **Azure Resource Manager**.
+2. Jako **Typ připojení Azure** vyberte **Azure Resource Manager**.
 3. Pro nastavení instančního objektu vyberte odkaz pro **správu** .
 
 Další informace najdete v tomto [příspěvku na blogu](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/). Když vyberete odkaz pro **správu** , budete mít na správném místě v DevOps (druhý snímek obrazovky v příspěvku blogu) a nastavíte připojení k Azure. Nezapomeňte při nastavování zvolit **Azure Resource Manager koncový bod služby** .
@@ -105,7 +105,7 @@ Pokud vyberete úlohu sestavení, zobrazí se všechny podrobnosti v pravém pod
 1. Nejprve pojmenujte úlohu sestavení: **vytvořit Virtual Machines**.
 2. Vyberte **objekt služby** , který jste vytvořili, volbou **Azure Resource Manager**
 3. Vyberte **koncový bod služby**.
-4. Jako **cestu ke skriptu**vyberte **... (tři tečky)** napravo.
+4. Jako **cestu ke skriptu** vyberte **... (tři tečky)** napravo.
 5. Přejděte na **MakeGoldenImageVMs.ps1** skript.
 6. Parametry skriptu by měly vypadat takto: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 

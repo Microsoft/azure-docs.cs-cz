@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: tomfitz
 ms.openlocfilehash: 05302d92f2304be35a7b88fac6fabfc17b13c63e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75651719"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Publikování aplikace katalogu služeb prostřednictvím Azure Portal
 
 K publikování [spravovaných aplikací](overview.md) , které jsou určené pro členy vaší organizace, můžete použít Azure Portal. Oddělení IT může například publikovat spravované aplikace, které zajišťují dodržování standardů organizace. Tyto spravované aplikace jsou k dispozici prostřednictvím katalogu služeb, ne prostřednictvím Azure Marketplace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Při publikování spravované aplikace zadáte identitu pro správu prostředků. Doporučujeme zadat Azure Active Directory skupinu uživatelů. Chcete-li vytvořit skupinu uživatelů Azure Active Directory, přečtěte si téma [Vytvoření skupiny a přidání členů v Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). 
 

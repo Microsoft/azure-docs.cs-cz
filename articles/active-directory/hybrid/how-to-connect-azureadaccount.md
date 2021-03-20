@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: e4f31c560fe3dd91689b361ed520e466fd52da1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85360006"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Změna hesla účtu konektoru služby Azure AD
@@ -31,7 +31,7 @@ ms.locfileid: "85360006"
 Pokud účet služby Azure AD Connector nemůže kontaktovat Azure AD kvůli problémům s ověřováním, můžete heslo resetovat.
 
 1. Přihlaste se k serveru Azure AD Connect Sync a spusťte PowerShell.
-2. Spusťte příkaz `Add-ADSyncAADServiceAccount`.
+2. Spusťte `Add-ADSyncAADServiceAccount`.
    ![Addadsyncaadserviceaccount rutiny PowerShellu](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
 3. Zadejte přihlašovací údaje globálního správce služby Azure AD.
 

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: 6783db6b9bb1c7d48b308234a179925d6f30e281
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89084545"
 ---
 # <a name="move-azure-event-grid-partner-namespaces-to-another-region"></a>Přesunout Azure Event Grid obory názvů partnerů do jiné oblasti
@@ -24,14 +24,14 @@ Tady je postup vysoké úrovně, který je popsaný v tomto článku:
     > - Export **témat pro partnery** do šablony Azure Resource Manager není podporován, protože zákazníci nemůžou vytvořit partnerské téma přímo. 
     > - **Registrace partnerů** jsou globální prostředky (nevázané na žádnou konkrétní oblast), takže jejich přesunutí z jedné oblasti do jiné oblasti není možné. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Ujistěte se, že je služba Event Grid v cílové oblasti dostupná. Zobrazit [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků pro obor názvů partnera. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Na panelu hledání v horní části zadejte **Event Grid obory názvů partnerů**a v seznamu výsledků vyberte **Event Grid obory názvů partnerů** . 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Na panelu hledání v horní části zadejte **Event Grid obory názvů partnerů** a v seznamu výsledků vyberte **Event Grid obory názvů partnerů** . 
 3. Vyberte **obor názvů partnera** , který chcete exportovat do šablony Správce prostředků. 
 4. Na stránce **obor názvů partnera Event Grid** v nabídce **Nastavení** v nabídce vlevo vyberte **Exportovat šablonu** a pak na panelu nástrojů vyberte **Stáhnout** . 
 
@@ -57,17 +57,17 @@ Začněte tím, že vyexportujete šablonu Správce prostředků pro obor názv�
 Nasaďte šablonu pro vytvoření oboru názvů partnera v cílové oblasti. 
 
 1. V Azure Portal vyberte **vytvořit prostředek**.
-2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
+2. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
 3. Vyberte **template Deployment**.
 4. Vyberte **Vytvořit**.
 5. **V editoru vyberte vytvořit vlastní šablonu**.
-6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
+6. Vyberte **načíst soubor** a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 7. Vyberte **Uložit** a šablonu uložte. 
 8. Na stránce **vlastní nasazení** proveďte tyto kroky: 
-    1. Vyberte **předplatné**Azure. 
+    1. Vyberte **předplatné** Azure. 
     1. Vyberte existující **skupinu prostředků** v cílové oblasti nebo ji vytvořte. 
-    1. V poli **umístění**vyberte cílovou oblast. Pokud jste vybrali existující skupinu prostředků, toto nastavení je jen pro čtení. 
-    1. Jako **název oboru názvů partnera**zadejte název nového oboru názvů partnera. 
+    1. V poli **umístění** vyberte cílovou oblast. Pokud jste vybrali existující skupinu prostředků, toto nastavení je jen pro čtení. 
+    1. Jako **název oboru názvů partnera** zadejte název nového oboru názvů partnera. 
     1. Pro externí ID registrace partnera zadejte ID prostředku registrace partnera v následujícím formátu: `/subscriptions/<Azure subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.EventGrid/partnerRegistrations/<Partner registration name>` .
     1. Zaškrtněte políčko Souhlasím **s podmínkami a ujednáními uvedenými nahoře** .     
     1. Vyberte **zkontrolovat + vytvořit** a spusťte proces nasazení. 
@@ -80,7 +80,7 @@ Pokud chcete začít znovu, odstraňte obor názvů partnera v cílové oblasti 
 
 Postup odstranění oboru názvů partnera pomocí Azure Portal:
 
-1. Do okna Hledat v horní části Azure Portal zadejte **Event Grid obory názvů partnerů**a z výsledků hledání vyberte **Event Grid obory názvů partnerů** . 
+1. Do okna Hledat v horní části Azure Portal zadejte **Event Grid obory názvů partnerů** a z výsledků hledání vyberte **Event Grid obory názvů partnerů** . 
 2. Vyberte obor názvů partnera, který chcete odstranit, a vyberte **Odstranit** z panelu nástrojů. 
 3. **Potvrďte** odstranění a odstraňte obor názvů partnera. 
 

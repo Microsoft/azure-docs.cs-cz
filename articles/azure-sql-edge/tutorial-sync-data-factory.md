@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: b83201ae864d1f1eb9124af5268360bb1748f6c8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97507604"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Kurz: synchronizace dat z Edge SQL do úložiště objektů BLOB v Azure pomocí Azure Data Factory
@@ -200,7 +200,7 @@ Pomocí pokynů v [tomto kurzu](../data-factory/quickstart-create-data-factory-p
 
     |Název|Typ|Hodnota|
     |-----|----|-----|
-    |LastModifiedtime|Datum a čas|@ {Activity (' NewWaterMark '). Output. firstRow. NewWatermarkvalue}|
+    |LastModifiedtime|DateTime|@ {Activity (' NewWaterMark '). Output. firstRow. NewWatermarkvalue}|
     |TableName|Řetězec|@ {Activity (' OldWaterMark '). Output. firstRow. TableName}|
 
 33. Pokud chcete ověřit nastavení kanálu, vyberte **ověřit** na panelu nástrojů. Ověřte, že se nezobrazí žádné chyby ověření. Chcete-li zavřít okno **Sestava ověření kanálu** , vyberte **>>** .

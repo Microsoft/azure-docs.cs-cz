@@ -7,10 +7,10 @@ ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 87bb2cc53ce056552e8f44aac4ade96e603a8787
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230037"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>Připojení k virtuálnímu počítači s Windows pomocí klienta iOS
@@ -39,8 +39,8 @@ Přihlášení k odběru informačního kanálu:
    - Pokud se chcete připojit prostřednictvím portálu US Gov, použijte <https://rdweb.wvd.azure.us/api/arm/feeddiscovery> .
 3. Klepněte na **Další**.
 4. Po zobrazení výzvy zadejte své přihlašovací údaje.
-   - V poli **uživatelské jméno**zadejte uživatelské jméno s oprávněním pro přístup k prostředkům.
-   - Pro **heslo**zadejte heslo přidružené k uživatelskému jménu.
+   - V poli **uživatelské jméno** zadejte uživatelské jméno s oprávněním pro přístup k prostředkům.
+   - Pro **heslo** zadejte heslo přidružené k uživatelskému jménu.
    - Může se také zobrazit výzva k poskytnutí dalších faktorů, pokud váš správce nakonfiguroval ověřování tímto způsobem.
 5. Klepněte na **Uložit**.
 

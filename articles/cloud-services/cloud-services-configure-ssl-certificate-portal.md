@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742637"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Konfigurace TLS pro aplikaci v Azure
@@ -79,7 +79,7 @@ Vaše aplikace musí být nakonfigurovaná tak, aby používala certifikát, a m
 
    Oprávnění ( `permissionLevel` atribut) lze nastavit na jednu z následujících hodnot:
 
-   | Hodnota oprávnění | Popis |
+   | Hodnota oprávnění | Description |
    | --- | --- |
    | limitedOrElevated |**(Výchozí)** K privátnímu klíči mají přístup všechny procesy rolí. |
    | úrovně |K privátnímu klíči mají přístup pouze procesy se zvýšenými oprávněními. |

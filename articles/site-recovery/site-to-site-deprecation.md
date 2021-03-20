@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: sharrai
 ms.openlocfilehash: 9ffe7a3158b1de6828350947dcf81ef41d08708d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87421837"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Vyřazení zotavení po havárii mezi zákaznickými weby spravovanými zákazníkem (s VMM) pomocí Azure Site Recovery
@@ -42,7 +42,7 @@ Níže jsou uvedené alternativy, ze kterých si zákazník může vybrat, aby s
 - Možnost 2: vyberte, pokud chcete pokračovat v replikaci mezi lokalitami pomocí základního [řešení repliky technologie Hyper-V](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), ale nebudete moct spravovat konfigurace DR pomocí Azure Site Recovery v Azure Portal. 
 
 
-## <a name="remediation-steps"></a>Postup odstranění problému
+## <a name="remediation-steps"></a>Postup nápravy
 
 Pokud se rozhodnete, že zvolíte možnost 1, proveďte následující kroky:
 
@@ -57,8 +57,8 @@ Pokud se rozhodnete, že zvolíte možnost 1, proveďte následující kroky:
 
 Pokud se rozhodnete použít možnost 2 z repliky technologie Hyper-V, proveďte následující kroky:
 
-1. V části **chráněné položky**  >  **replikované**položky klikněte pravým tlačítkem na počítač > **Zakázat replikaci**.
-2. V **Zakázat replikaci**vyberte **Odebrat**.
+1. V části **chráněné položky**  >  **replikované** položky klikněte pravým tlačítkem na počítač > **Zakázat replikaci**.
+2. V **Zakázat replikaci** vyberte **Odebrat**.
 
     Tím se odebere replikovaná položka z Azure Site Recovery (fakturace je zastavená). Konfigurace replikace na místním virtuálním počítači **se** nevyčistí. 
 

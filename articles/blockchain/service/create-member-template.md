@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
 ms.date: 09/16/2020
 ms.openlocfilehash: e9893336f2e6633519853aceecc945ee6bf0bf4b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91292757"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Rychlý Start: Vytvoření členu služby Azure blockchain pomocí šablony ARM
@@ -49,14 +49,14 @@ Prostředky Azure definované v šabloně:
     --------|------------
     Předplatné | Vyberte předplatné Azure, které chcete použít pro vaši službu. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | Vytvořte nový název skupiny prostředků nebo vyberte existující v rámci svého předplatného.
-    Oblast | Vyberte oblast, ve které chcete vytvořit skupinu prostředků. Všichni členové konsorcia musí být ve stejném umístění. Dostupná umístění pro nasazení jsou *westeurope, eastus, southeastasia, westeurope, northeurope, westus2*a *japaneast*. Funkce nemusí být k dispozici v některých oblastech. Azure blockchain Data Manager je k dispozici v následujících oblastech Azure: Východní USA a Západní Evropa.
+    Oblast | Vyberte oblast, ve které chcete vytvořit skupinu prostředků. Všichni členové konsorcia musí být ve stejném umístění. Dostupná umístění pro nasazení jsou *westeurope, eastus, southeastasia, westeurope, northeurope, westus2* a *japaneast*. Funkce nemusí být k dispozici v některých oblastech. Azure blockchain Data Manager je k dispozici v následujících oblastech Azure: Východní USA a Západní Evropa.
     BC – název člena | Vyberte jedinečný název členu služby Azure blockchain. Název členu blockchain může obsahovat jenom malá písmena a číslice. Prvním znakem musí být písmeno. Hodnota musí být dlouhá 2 až 20 znaků.
     Název konsorcia | Zadejte jedinečný název. Další informace o konsorciích najdete v článku [konsorcium služby Azure blockchain](consortium.md).
     Heslo člena | Heslo pro výchozí uzel transakce člena Při připojování k výchozímu koncovému bodu transakčního uzlu blockchain člena použijte heslo pro základní ověřování.
     Heslo účtu správy konsorcia | Heslo účtu konsorcia slouží k šifrování privátního klíče pro účet Ethereem, který je vytvořen pro vašeho člena. Používá se pro správu konsorcia.
     Úroveň SKU | Cenová úroveň nové služby. Vyberte si úrovně **Standard** a **Basic** . Využijte *základní* vrstvu pro vývoj, testování a kontrolu konceptů. Použijte úroveň *Standard* pro nasazení produkčních úrovní. Úroveň *Standard* použijte také v případě, že používáte blockchain data Manager nebo odesíláte velký objem privátních transakcí. Změna cenové úrovně mezi základními a standardními po vytvoření členů není podporována.
     Název SKU | Konfigurace uzlu a náklady na novou službu. Použijte **B0** pro Basic a **S0** pro standard.
-    Umístění | Vyberte umístění pro vytvoření člena. Ve výchozím nastavení se používá umístění skupiny prostředků `[resourceGroup().location]` . Všichni členové konsorcia musí být ve stejném umístění. Dostupná umístění pro nasazení jsou *westeurope, eastus, southeastasia, westeurope, northeurope, westus2*a *japaneast*. Funkce nemusí být k dispozici v některých oblastech. Azure blockchain Data Manager je k dispozici v následujících oblastech Azure: Východní USA a Západní Evropa.
+    Umístění | Vyberte umístění pro vytvoření člena. Ve výchozím nastavení se používá umístění skupiny prostředků `[resourceGroup().location]` . Všichni členové konsorcia musí být ve stejném umístění. Dostupná umístění pro nasazení jsou *westeurope, eastus, southeastasia, westeurope, northeurope, westus2* a *japaneast*. Funkce nemusí být k dispozici v některých oblastech. Azure blockchain Data Manager je k dispozici v následujících oblastech Azure: Východní USA a Západní Evropa.
 
 1. Vyberte **zkontrolovat + vytvořit** a ověřte a nasaďte šablonu.
 

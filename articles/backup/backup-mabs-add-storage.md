@@ -4,10 +4,10 @@ description: Seznamte se s novými funkcemi v Azure Backup Server. Tento článe
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91292893"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
@@ -36,7 +36,7 @@ Záložní server v2 nebo novější akceptuje svazky úložiště. Když přid�
 
 Používání služby Backup Server v2 nebo novější se svazky jako diskové úložiště vám může pomoci udržet si kontrolu nad úložištěm. Svazek může být jeden disk. Pokud ale chcete úložiště v budoucnu zvětšit, vytvořte svazek z disku vytvořeného pomocí prostorů úložiště. To může být užitečné, pokud chcete rozšířit svazek pro úložiště zálohování. Tato část nabízí osvědčené postupy pro vytvoření svazku s tímto nastavením.
 
-1. V správce serveru vyberte souborové fondy úložiště **souborové služby a služby úložiště**  >  **Volumes**  >  **Storage Pools**. V části **fyzické disky**vyberte **Nový fond úložiště**.
+1. V správce serveru vyberte souborové fondy úložiště **souborové služby a služby úložiště**  >    >  . V části **fyzické disky** vyberte **Nový fond úložiště**.
 
     ![Vytvořit nový fond úložiště](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -125,12 +125,12 @@ Přidání diskového úložiště:
 
 2. V dialogovém okně **přidat disk Storage** vyberte **Přidat disky**.
 
-3. V seznamu dostupných disků vyberte disky, které chcete přidat, vyberte **Přidat**a pak vyberte **OK**.
+3. V seznamu dostupných disků vyberte disky, které chcete přidat, vyberte **Přidat** a pak vyberte **OK**.
 
 ## <a name="next-steps"></a>Další kroky
 
 Po instalaci záložního serveru se dozvíte, jak připravit server nebo začít chránit úlohu.
 
 - [Příprava úloh záložního serveru](backup-azure-microsoft-azure-backup.md)
-- [Použití záložního serveru k zálohování serveru VMware](backup-azure-backup-server-vmware.md)
-- [Zálohování SQL Server pomocí záložního serveru](backup-azure-sql-mabs.md)
+- [Použití Backup Serveru k zálohování serveru VMware](backup-azure-backup-server-vmware.md)
+- [Použití Backup Serveru k zálohování SQL Serveru](backup-azure-sql-mabs.md)

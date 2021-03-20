@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 8ca4a6e78ab3c6ccf492869bb68c5296ae91de21
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99806066"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
@@ -20,7 +20,7 @@ V tomto rychlém startu vytvoříte ucelenou implementaci správy funkcí v apli
 
 Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET Core. Bez problémů se integrují s konfigurací aplikací prostřednictvím poskytovatele konfigurace .NET Core.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Přístup k tomuto tajnému kódu pomocí konfiguračního rozhraní API .NET Core. Dvojtečka ( `:` ) funguje v názvu konfigurace s rozhraním API konfigurace na všech podporovaných platformách. Další informace najdete v tématu [konfigurační klíče a hodnoty](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. V *program.cs* aktualizujte `CreateWebHostBuilder` metodu tak, aby používala konfiguraci aplikace, voláním `AddAzureAppConfiguration` metody.
+1. V *programu program. cs* aktualizujte `CreateWebHostBuilder` metodu tak, aby používala konfiguraci aplikace, voláním `AddAzureAppConfiguration` metody.
 
     > [!IMPORTANT]
     > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3. x. Vyberte správnou syntaxi na základě vašeho prostředí.
@@ -123,7 +123,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     V předchozí změně byl [Poskytovatel konfigurace pro konfiguraci aplikace](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) zaregistrován s rozhraním .NET Core Configuration API.
 
-1. Do *Startup.cs* přidejte odkaz na správce funkcí .NET Core:
+1. V části *Startup. cs* přidejte odkaz na správce funkcí .NET Core:
 
     ```csharp
     using Microsoft.FeatureManagement;
@@ -163,7 +163,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-1. Do kořenového adresáře projektu přidejte soubor *MyFeatureFlags.cs* s následujícím kódem:
+1. Do kořenového adresáře projektu přidejte soubor *MyFeatureFlags. cs* s následujícím kódem:
 
     ```csharp
     namespace TestFeatureFlags
@@ -175,7 +175,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     }
     ```
 
-1. Přidejte soubor *BetaController.cs* do adresáře *Controllers* pomocí následujícího kódu:
+1. Do adresáře *Controllers* přidejte soubor *BetaController. cs* s následujícím kódem:
 
     ```csharp
     using Microsoft.AspNetCore.Mvc;

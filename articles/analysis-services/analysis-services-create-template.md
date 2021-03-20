@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 08/31/2020
 ms.custom: subject-armqs, references_regions
 ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230768"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Rychlý Start: Vytvoření šablony serveru – ARM
@@ -49,7 +49,7 @@ V šabloně je definován jeden prostředek [Microsoft. AnalysisServices/Servers
     Pokud není uvedeno jinak, použijte výchozí hodnoty.
 
     * **Předplatné**: vyberte předplatné Azure.
-    * **Skupina prostředků**: klikněte na **vytvořit nový**a zadejte jedinečný název nové skupiny prostředků.
+    * **Skupina prostředků**: klikněte na **vytvořit nový** a zadejte jedinečný název nové skupiny prostředků.
     * **Umístění**: Vyberte výchozí umístění pro prostředky vytvořené ve skupině prostředků.
     * **Název serveru**: zadejte název prostředku serveru. 
     * **Location**: Ignore pro Analysis Services. Umístění je zadáno v umístění serveru.
@@ -106,4 +106,4 @@ Write-Host "Press [ENTER] to continue..."
 V tomto rychlém startu jste použili šablonu ARM k vytvoření nové skupiny prostředků a prostředku serveru Azure Analysis Services. Po vytvoření prostředku serveru pomocí šablony Vezměte v úvahu následující skutečnosti:
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   
+> [Rychlé zprovoznění: Konfigurace brány firewall serveru – portál](analysis-services-qs-firewall.md)   

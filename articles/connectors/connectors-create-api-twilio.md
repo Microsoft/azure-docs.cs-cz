@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: d144960972f5a1b45e88cc3a0ea015925cae3b91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87288148"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Správa zpráv v Twilio pomocí Azure Logic Apps
 
 Pomocí Azure Logic Apps a konektoru Twilio můžete vytvářet automatizované úlohy a pracovní postupy, které získávají, odesílají a vypisovat zprávy v Twilio, které zahrnují globální zprávy SMS, MMS a IP. Tyto akce můžete použít k provádění úloh s účtem Twilio. Můžete také použít jiné akce výstup z akcí Twilio. Například při doručení nové zprávy můžete odeslat obsah zprávy pomocí konektoru časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
@@ -67,7 +67,7 @@ Pomocí Azure Logic Apps a konektoru Twilio můžete vytvářet automatizované 
 
 Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/twilio/)konektoru.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).

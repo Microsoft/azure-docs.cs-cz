@@ -7,10 +7,10 @@ description: Naučte se používat tajné klíče Kubernetes při vývoji aplika
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 ms.custom: devx-track-js
 ms.openlocfilehash: 8791480f420dfd76d5291ce82e8ebf7412a41326
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91972964"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Správa tajných kódů při práci s vývojovým prostorem Azure
@@ -143,7 +143,7 @@ configurations:
 Ve výše uvedeném příkladu je *mynugetsecret* stávající tajný klíč a *pattoken* je existující klíč.
 
 >[!NOTE]
-> V názvech a klíčích tajných kódů může být `.` znak. `\` `.` Při předávání tajných kódů jako argumentů sestavení použijte k úniku. Například pro předání tajného kódu s názvem *foo. bar* pomocí klíče *tokenu*: `MYTOKEN: ${secret.foo\.bar.token}` . Kromě toho je možné tajné klíče vyhodnotit pomocí předpony a textu přípony. Například, `MYURL: eus-${secret.foo\.bar.token}-version1`. Tajné kódy, které jsou k dispozici v nadřazených a prarodičích, můžou být také předány jako argumenty sestavení.
+> V názvech a klíčích tajných kódů může být `.` znak. `\` `.` Při předávání tajných kódů jako argumentů sestavení použijte k úniku. Například pro předání tajného kódu s názvem *foo.bar* s klíčem *tokenu*: `MYTOKEN: ${secret.foo\.bar.token}` . Kromě toho je možné tajné klíče vyhodnotit pomocí předpony a textu přípony. Například, `MYURL: eus-${secret.foo\.bar.token}-version1`. Tajné kódy, které jsou k dispozici v nadřazených a prarodičích, můžou být také předány jako argumenty sestavení.
 
 Ve vašem souboru Dockerfile Použijte direktivu *arg* pro použití tajného klíče a pak použijte stejnou proměnnou později v souboru Dockerfile. Například:
 

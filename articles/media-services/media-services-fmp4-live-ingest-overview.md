@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019507"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services fragmentované specifikace ingestování MP4 v reálném čase 
@@ -44,7 +44,7 @@ Formát přenosu pro živé streamování, který je popsaný v tomto dokumentu,
 ### <a name="live-ingest-format-definitions"></a>Definice formátu živého příjmu
 Následující seznam popisuje speciální definice formátu, které se vztahují na živé ingestování do Azure Media Services:
 
-1. Pole **ftyp**, **živý manifest serveru**a **Moov** musí být odesílány spolu s každým požadavkem (http post). Tato pole musí být odeslána na začátku datového proudu a kdykoli se kodér musí znovu připojit, aby pokračoval v zpracování datového proudu. Další informace najdete v oddílu 6 v [1].
+1. Pole **ftyp**, **živý manifest serveru** a **Moov** musí být odesílány spolu s každým požadavkem (http post). Tato pole musí být odeslána na začátku datového proudu a kdykoli se kodér musí znovu připojit, aby pokračoval v zpracování datového proudu. Další informace najdete v oddílu 6 v [1].
 1. Oddíl 3.3.2 v [1] definuje volitelné pole s názvem **StreamManifestBox** pro živou příjem dat. Vzhledem k logice směrování Azure Load Balancer je použití tohoto pole zastaralé. Pole by nemělo být přítomno při ingestování do Media Services. Pokud je toto pole k dispozici, Media Services ho v tichém režimu ignoruje.
 1. **TrackFragmentExtendedHeaderBox** pole definované v 3.2.3.2 v [1] musí být k dispozici pro každý fragment.
 1. K vygenerování segmentů médií, které mají stejné adresy URL v několika datových centrech, by se měla použít verze 2 **TrackFragmentExtendedHeaderBox** box. Pole index fragmentu je nutné pro převzetí služeb při selhání mezi datovými dataproudy pomocí indexu, jako je například Apple HLS a MPEG-SPOJOVNÍK založený na indexu. Pokud chcete povolit převzetí služeb při selhání napříč datovými centry, musí být fragmentový index synchronizovaný napříč několika kodéry a pro každý následný fragment média se zvýší o 1, a to i v případě, že dojde k restartování nebo selhání.
@@ -54,7 +54,7 @@ Následující seznam popisuje speciální definice formátu, které se vztahuj�
 1. Časová razítka a indexy pro fragmenty MP4 (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` a `fragment_index` ) by měly dorazit ve vzestupném pořadí. I když Media Services je odolný vůči duplicitním fragmentům, má omezená schopnost změnit pořadí fragmentů podle časové osy médií.
 
 ## <a name="4-protocol-format--http"></a>4. formát protokolu – HTTP
-ISO fragmentované živé ingestování na bázi MP4 pro Media Services používá standardní dlouhodobou žádost HTTP POST k přenosu kódovaných mediálních dat, která jsou zabalená do služby ve formátu fragmentů MP4. Každý HTTP POST pošle kompletní fragment Bitstream MP4 ("Stream") od začátku do polí záhlaví (**ftyp**, **Live Server manifest**a **Moov** box) a pokračuje se sekvencí fragmentů (pole**Moof** a **mdat** ). Syntaxi URL požadavku HTTP POST najdete v části 9,2 v [1]. Příklad adresy URL příspěvku: 
+ISO fragmentované živé ingestování na bázi MP4 pro Media Services používá standardní dlouhodobou žádost HTTP POST k přenosu kódovaných mediálních dat, která jsou zabalená do služby ve formátu fragmentů MP4. Každý HTTP POST pošle kompletní fragment Bitstream MP4 ("Stream") od začátku do polí záhlaví (**ftyp**, **Live Server manifest** a **Moov** box) a pokračuje se sekvencí fragmentů (pole **Moof** a **mdat** ). Syntaxi URL požadavku HTTP POST najdete v části 9,2 v [1]. Příklad adresy URL příspěvku: 
 
 `http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
@@ -63,7 +63,7 @@ Zde jsou uvedené podrobné požadavky:
 
 1. Kodér by měl zahájit všesměrové vysílání odesláním požadavku HTTP POST s prázdným textem "tělo" (s nulovou délkou obsahu) pomocí stejné adresy URL pro příjem dat. Díky tomu může kodér rychle zjistit, zda je koncový bod živého příjmu platný, a pokud jsou vyžadovány jiné požadavky. Na protokol HTTP nemůže server odeslat zpět odpověď HTTP, dokud nebude přijata celá žádost, včetně těla zprávy POST. S ohledem na dlouhodobou podobu živé události, bez tohoto kroku, kodér nemusí být schopný detekovat žádnou chybu, dokud nedokončí odesílání všech dat.
 1. Kodér musí zpracovat všechny chyby nebo výzvy k ověření z těchto důvodů: (1). Pokud (1) uspěje s odpovědí 200, pokračujte.
-1. Kodér musí spustit novou žádost HTTP POST s fragmentovaným datovým proudem MP4. Datová část musí začínat poli záhlaví následovanými fragmenty. Všimněte si, že pole **ftyp**, **živý manifest serveru**a **Moov** (v tomto pořadí) musí být odesílány spolu s každým požadavkem, i když se kodér musí znovu připojit, protože předchozí požadavek byl ukončen před koncem datového proudu. 
+1. Kodér musí spustit novou žádost HTTP POST s fragmentovaným datovým proudem MP4. Datová část musí začínat poli záhlaví následovanými fragmenty. Všimněte si, že pole **ftyp**, **živý manifest serveru** a **Moov** (v tomto pořadí) musí být odesílány spolu s každým požadavkem, i když se kodér musí znovu připojit, protože předchozí požadavek byl ukončen před koncem datového proudu. 
 1. Kodér musí pro nahrávání použít kódování blokového přenosu, protože není možné předpovědět celou délku obsahu živé události.
 1. Pokud po odeslání posledního fragmentu dojde k překročení této události, kodér musí řádně ukončit sekvenci zpráv kódování s blokovým přenosem (většina zásobníků klienta protokolu HTTP ho automaticky zpracuje). Kodér musí počkat, až služba vrátí konečný kód odezvy, a pak připojení ukončí. 
 1. Kodér nesmí používat `Events()` podstatné jméno, jak je popsáno v 9,2 v [1] pro živou příjem dat do Media Services.
@@ -116,7 +116,7 @@ V této části probereme scénáře převzetí služeb při selhání. V takov�
 
     b. Nová adresa URL příspěvku HTTP musí být stejná jako počáteční adresa URL příspěvku.
   
-    c. Nový příspěvek HTTP musí zahrnovat hlavičky streamu (**ftyp**, **Live Server manifest**a **Moov** box), které jsou stejné jako HLAVIČKY streamu v počátečním příspěvku.
+    c. Nový příspěvek HTTP musí zahrnovat hlavičky streamu (**ftyp**, **Live Server manifest** a **Moov** box), které jsou stejné jako HLAVIČKY streamu v počátečním příspěvku.
   
     d. Poslední dva fragmenty odeslané pro každou stopu musí být znovu odeslány a streamování musí pokračovat bez zavedení výpadku na časové ose média. Časové razítko fragmentu MP4 se musí v případě požadavků HTTP POST průběžně zvyšovat.
 1. Kodér by měl ukončit požadavek HTTP POST, pokud se data neodesílají rychlostí odpovídajícím době trvání fragmentu MP4.  Požadavek HTTP POST, který neodesílá data, může zabránit Media Services v rychlém odpojení od kodéru v případě aktualizace služby. Z tohoto důvodu by se měly sledovat zprávy HTTP POST pro zhuštěné (signální signály), které se ukončí ihned po odeslání zhuštěného fragmentu.
@@ -159,7 +159,7 @@ Následující postup je doporučenou implementací pro ingestování zhuštěn�
 
 1. Vytvořte samostatný fragment Bitstream MP4, který obsahuje jenom zhuštěné stopy bez stop zvuk/video.
 1. V **poli manifest živého serveru** , jak je definováno v oddílu 6 v [1], použijte parametr *parentTrackName* k určení názvu nadřazené stopy. Další informace najdete v části 4.2.1.2.1.2 v [1].
-1. V **poli manifest živého serveru**musí být **manifestOutput** nastavené na **true**.
+1. V **poli manifest živého serveru** musí být **manifestOutput** nastavené na **true**.
 1. Pro zhuštěnou povahu události signalizace doporučujeme následující:
    
     a. Na začátku živé události kodér pošle pole počátečních hlaviček do služby, což umožňuje službě zaregistrovat zhuštěnou stopu v manifestu klienta.

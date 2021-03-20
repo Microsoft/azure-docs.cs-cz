@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 57598ea22874cfba772f6cf0e6b2ba779ef7c482
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92448363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Kurz: Azure Active Directory integrace s nástroji pro sady nástrojů
@@ -30,7 +30,7 @@ Pomocí této integrace můžete:
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD pomocí nástrojů pro nástroje pro vydanou sadu nástrojů potřebujete následující položky:
 
@@ -51,7 +51,7 @@ Pokud chcete nakonfigurovat integraci nástrojů pro sadu nástrojů do služby 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte text sady **nástrojů** .
 1. Ve výsledcích hledání vyberte možnost **Nástroje pro Tools Toolkit** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
@@ -90,7 +90,7 @@ V této části nakonfigurujete jednotné přihlašování služby Azure AD pomo
     > [!NOTE]
     > Hodnota **přihlašovací adresy URL** není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Chcete-li získat hodnotu, obraťte se na [tým podpory nástrojů](mailto:support@goodpractice.com) pro přístup k nástrojům.
 
-1. Na stránce **nastavit jeden Sign-On se** stránkou SAML přejdete do části **podpisový certifikát SAML** . Napravo od **XML federačních metadat**vyberte **Stáhnout** a stáhněte text XML a uložte ho do svého počítače. Obsah XML závisí na možnostech, které vyberete.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML přejdete do části **podpisový certifikát SAML** . Napravo od **XML federačních metadat** vyberte **Stáhnout** a stáhněte text XML a uložte ho do svého počítače. Obsah XML závisí na možnostech, které vyberete.
 
     ![Část podpisový certifikát SAML se zvýrazněnou možností stáhnout vedle metadat federačního kódu XML](common/metadataxml.png)
 
@@ -150,7 +150,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na portálu moje aplikace vyberete dlaždici sady nástrojů pro dodávání, budete automaticky přihlášeni k sadě nástrojů pro panel nástrojů, pro kterou jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [Úvod do portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

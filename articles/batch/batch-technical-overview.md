@@ -4,10 +4,10 @@ description: Další informace o používání služby Azure Batch pro rozsáhl�
 ms.topic: overview
 ms.date: 07/30/2020
 ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743096"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
@@ -62,7 +62,7 @@ Následující diagram znázorňuje kroky v běžném pracovním postupu služby
 
 ![Diagram kroků v řešení Batch.](./media/batch-technical-overview/tech_overview_03.png)
 
-|Krok  |Popis  |
+|Krok  |Description  |
 |---------|---------|
 |1. nahrání **vstupních souborů** a **aplikací** pro zpracování těchto souborů na účet Azure Storage.     |Vstupní soubory mohou být jakákoli data, která vaše aplikace zpracuje, třeba data finančního modelování nebo videosoubory k převodu. Soubory aplikací můžou zahrnovat skripty nebo aplikace zpracovávající data, třeba převaděč médií.|
 |2. na účtu Batch vytvořte **fond** výpočetních uzlů služby Batch, **úlohu** pro spuštění úlohy ve fondu a **úkoly** v úloze.     | [Výpočetní uzly](nodes-and-pools.md) jsou virtuální počítače, které spouštějí vaše [úkoly](jobs-and-tasks.md). Zadejte vlastnosti fondu, jako je počet a velikost uzlů, image virtuálního počítače s Windows nebo Linux, a aplikaci, která se má nainstalovat, když se uzly připojí k fondu. Spravujte náklady a velikost fondu pomocí [virtuálních počítačů s nízkou prioritou](batch-low-pri-vms.md) nebo pomocí [automatického škálování](batch-automatic-scaling.md) počtu uzlů při změně zatížení. <br/><br/>Když do úlohy přidáte úkoly, služba Batch automaticky naplánuje úkoly k provedení ve výpočetních uzlech ve fondu. Každý úkol používá aplikaci, kterou jste nahráli, ke zpracování vstupních souborů. |

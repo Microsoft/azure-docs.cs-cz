@@ -4,10 +4,10 @@ description: Naučte se publikovat interní příkaz podpory do testovacího pro
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1c9920e6fe7fbfe2a8d0aeacb896150b342981b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480469"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Přidání příkazu interní podpory do testovacího prostředí v Azure DevTest Labs
@@ -20,14 +20,14 @@ Příkaz podpory lze snadno zakázat nebo upravit poté, co již není platný.
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Postup přidání příkazu support do stávajícího testovacího prostředí
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. V případě potřeby vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** . (Vaše testovací prostředí se už možná zobrazuje na řídicím panelu v části **všechny prostředky**).
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. V případě potřeby vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** . (Vaše testovací prostředí se už možná zobrazuje na řídicím panelu v části **všechny prostředky**).
 1. V seznamu cvičení vyberte testovací prostředí, ve kterém chcete přidat příkaz podpory.  
 1. V oblasti **Přehled** testovacího prostředí vyberte **Konfigurace a zásady**.  
 
     ![Tlačítko Konfigurace a zásady](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
 
-1. Vlevo vyberte v části **Nastavení**možnost **interní podpora**.
+1. Vlevo vyberte v části **Nastavení** možnost **interní podpora**.
 
     ![Tlačítko interní podpora](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 

@@ -5,10 +5,10 @@ services: service-fabric
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 972700dded1841994de9252b4aa4bbc8eaefeaf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76024707"
 ---
 # <a name="service-fabric-architecture"></a>Architektura Service Fabric
@@ -36,7 +36,7 @@ Vzhledem k tomu, že se jedná o sadu uzlů v distribuovaném systému, je nutn�
 
 ## <a name="reliability-subsystem"></a>Subsystém spolehlivosti
 
-Subsystém pro spolehlivost poskytuje mechanismus pro zajištění vysoké dostupnosti stavu Service Fabric služby prostřednictvím použití *replikátoru*, *správce převzetí služeb při selhání*a *Nástroje pro vyrovnávání prostředků*.
+Subsystém pro spolehlivost poskytuje mechanismus pro zajištění vysoké dostupnosti stavu Service Fabric služby prostřednictvím použití *replikátoru*, *správce převzetí služeb při selhání* a *Nástroje pro vyrovnávání prostředků*.
 
 * Replikátor zajistí, že se změny stavu v primární replice služby automaticky replikují do sekundárních replik, což zachovává konzistenci mezi primárními a sekundárními replikami v sadě replik služby. Replikátor zodpovídá za správu kvora mezi replikami v sadě replik. Komunikuje s jednotkou převzetí služeb při selhání, aby získala seznam operací, které se mají replikovat, a Agent rekonfigurace ho poskytne konfiguraci sady replik. Tato konfigurace indikuje, které repliky se operace musí replikovat. Service Fabric poskytuje výchozí Replikátor nazvaný Replikátor Fabric, který může používat rozhraní API pro programování modelů k zajištění vysoké dostupnosti a spolehlivého stavu služby.
 * Správce převzetí služeb při selhání zajistí, že při přidání nebo odebrání uzlů z clusteru se zatížení automaticky rozšíří napříč dostupnými uzly. Pokud uzel v clusteru selže, cluster automaticky překonfiguruje repliky služby na zachování dostupnosti.

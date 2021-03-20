@@ -4,10 +4,10 @@ description: Přečtěte si, jak zadat povinné artefakty, které je potřeba na
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480299"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Zadejte pro testovací prostředí povinné artefakty v Azure DevTest Labs
@@ -20,8 +20,8 @@ Pouze artefakty bez parametrů nejsou podporovány jako povinné. Uživatel test
 ## <a name="specify-mandatory-artifacts"></a>Určení povinných artefaktů
 Můžete vybrat povinné artefakty pro počítače se systémem Windows a Linux samostatně. Tyto artefakty můžete změnit i v závislosti na pořadí, ve kterém je chcete použít. 
 
-1. Na domovské stránce testovacího prostředí vyberte v části **Nastavení**možnost **Konfigurace a zásady** . 
-3. V části **externí prostředky**vyberte **povinné artefakty** . 
+1. Na domovské stránce testovacího prostředí vyberte v části **Nastavení** možnost **Konfigurace a zásady** . 
+3. V části **externí prostředky** vyberte **povinné artefakty** . 
 4. V části **Windows** nebo **Linux** vyberte **Upravit** . V tomto příkladu se používá možnost **Windows** . 
 
     ![Stránka povinných artefaktů – tlačítko pro úpravy](media/devtest-lab-mandatory-artifacts/mandatory-artifacts-edit-button.png)
@@ -48,8 +48,8 @@ Můžete vybrat povinné artefakty pro počítače se systémem Windows a Linux 
 ## <a name="delete-a-mandatory-artifact"></a>Odstranění povinného artefaktu
 Pokud chcete odstranit povinný artefakt z testovacího prostředí, proveďte následující akce: 
 
-1. V části **Nastavení**vyberte **Konfigurace a zásady** . 
-2. V části **externí prostředky**vyberte **povinné artefakty** . 
+1. V části **Nastavení** vyberte **Konfigurace a zásady** . 
+2. V části **externí prostředky** vyberte **povinné artefakty** . 
 3. V části **Windows** nebo **Linux** vyberte **Upravit** . V tomto příkladu se používá možnost **Windows** . 
 4. Vyberte zprávu s počtem povinných artefaktů v horní části. 
 

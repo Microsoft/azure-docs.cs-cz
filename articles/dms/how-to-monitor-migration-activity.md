@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91297466"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Monitorování aktivity migrace pomocí Azure Database Migration Service
@@ -71,7 +71,7 @@ V následující tabulce jsou uvedena pole v okně na úrovni databáze a popisu
       <td>Migrace se nezdařila. Kliknutím na podrobnosti o migraci zobrazíte chyby migrace.</td>
     </tr>
     <tr>
-      <td rowspan="5" class="migration-details"><strong>Informace o migraci</strong></td>
+      <td rowspan="5" class="migration-details"><strong>Podrobnosti o migraci</strong></td>
       <td>Inicializuje se kanál migrace.</td>
       <td>DMS nastavuje kanál migrace.</td>
     </tr>
@@ -93,7 +93,7 @@ V následující tabulce jsou uvedena pole v okně na úrovni databáze a popisu
     </tr>
     <tr>
       <td rowspan="1" class="duration"><strong>Doba trvání</strong></td>
-      <td>Není k dispozici</td>
+      <td>–</td>
       <td>Celková doba z migrační aktivity migrace do migrace byla dokončena nebo došlo k chybě migrace.</td>
     </tr>
      </tbody>

@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87458216"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak sestavit dávkové řešení vytvořením dvou aplik
 
 Váš přijímač Batch a Batch odesilatel musí sdílet stejné předplatné Azure *a* oblast Azure. Pokud ne, nemůžete při vytváření odesílatele Batch vybrat přijímače Batch, protože nejsou navzájem viditelné.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/). Případně si [můžete zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
 
@@ -153,7 +153,7 @@ Nyní vytvořte jednu nebo více aplikací pro příjem z aplikace Batch, které
       > [!IMPORTANT]
       > Pokud používáte aplikaci Visual Studio a nevidíte žádné příjemce dávky, zkontrolujte, že jste předtím vytvořili a nasadili příjemce služby Batch do Azure. Pokud jste to ještě neudělali, přečtěte si, [Jak nasadit aplikaci logiky přijímače z Batch do Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure).
 
-   1. V seznamu akce vyberte tuto akci: **Batch_messages-<Your- *Logic-App-Name* > **
+   1. V seznamu akce vyberte tuto akci: **Batch_messages-<Your- *Logic-App-Name* >**
 
       ![Vyberte tuto akci: Batch_messages-<vaše logika-aplikace>](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 

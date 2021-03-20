@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87422636"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Přesunutí trezoru Recovery Services a konfigurace Azure Site Recovery do jiné oblasti Azure
@@ -33,7 +33,7 @@ V tomto dokumentu budete:
 > [!IMPORTANT]
 > V současné době neexistuje žádný první způsob, jak přesunout Recovery Services trezor a konfiguraci zotavení po havárii, protože se jedná o jinou oblast. Tento článek vás provede procesem zakázání replikace a její nastavení v nové oblasti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Před pokusem o přesunutí virtuálních počítačů Azure do jiné oblasti nezapomeňte odebrat a odstranit konfiguraci zotavení po havárii. 
 
@@ -45,7 +45,7 @@ V tomto dokumentu budete:
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>Identifikujte prostředky, které používal Azure Site Recovery
 Doporučujeme, abyste provedli tento krok předtím, než přejdete k dalšímu. Při replikaci virtuálních počítačů je snazší identifikovat relevantní prostředky.
 
-Pro každý virtuální počítač Azure, který se právě replikuje, můžete přejít na **chráněné položky**  >  vlastnosti**replikované položky**  >  **Properties** a určit následující prostředky:
+Pro každý virtuální počítač Azure, který se právě replikuje, můžete přejít na **chráněné položky**  >  vlastnosti **replikované položky**  >   a určit následující prostředky:
 
 - Cílová skupina prostředků
 - Účet úložiště mezipaměti
@@ -56,7 +56,7 @@ Pro každý virtuální počítač Azure, který se právě replikuje, můžete 
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>Zakázat existující konfiguraci zotavení po havárii
 
 1. Přejít do trezoru Recovery Services.
-2. V části **chráněné položky**  >  **replikované**položky klikněte pravým tlačítkem na počítač a vyberte **Zakázat replikaci**.
+2. V části **chráněné položky**  >  **replikované** položky klikněte pravým tlačítkem na počítač a vyberte **Zakázat replikaci**.
 3. Tento krok opakujte pro všechny virtuální počítače, které chcete přesunout.
 
 > [!NOTE]

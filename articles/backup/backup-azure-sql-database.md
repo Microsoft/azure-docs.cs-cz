@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak zálohovat SQL Server do Azure. Čl
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316833"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
@@ -62,7 +62,7 @@ U všech ostatních verzí opravte oprávnění pomocí následujících kroků:
 
       ![Otevřete složku zabezpečení/přihlášení a zobrazte si účty.](./media/backup-azure-sql-database/security-login-list.png)
 
-  3. Klikněte pravým tlačítkem na složku **přihlášení** a vyberte **nové přihlašovací údaje**. V **přihlašování – nové**vyberte **Hledat**.
+  3. Klikněte pravým tlačítkem na složku **přihlášení** a vyberte **nové přihlašovací údaje**. V **přihlašování – nové** vyberte **Hledat**.
 
       ![V dialogovém okně přihlášení – nové vyberte Hledat.](./media/backup-azure-sql-database/new-login-search.png)
 
@@ -70,7 +70,7 @@ U všech ostatních verzí opravte oprávnění pomocí následujících kroků:
 
       ![Pokud chcete přeložit neznámý název služby, vyberte možnost kontrolovat názvy.](./media/backup-azure-sql-database/check-name.png)
 
-  5. V části **role serveru**se ujistěte, že je vybraná role **sysadmin** . Vyberte **OK**. Nyní by měla existovat požadovaná oprávnění.
+  5. V části **role serveru** se ujistěte, že je vybraná role **sysadmin** . Vyberte **OK**. Nyní by měla existovat požadovaná oprávnění.
 
       ![Ujistěte se, že je vybraná role serveru sysadmin.](./media/backup-azure-sql-database/sysadmin-server-role.png)
 

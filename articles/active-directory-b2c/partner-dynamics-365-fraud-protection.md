@@ -12,10 +12,10 @@ ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646550"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Kurz: Konfigurace ochrany proti podvodům v Microsoft Dynamics 365 pomocí Azure Active Directory B2C
@@ -26,7 +26,7 @@ Microsoft DFP poskytuje klientům možnost posoudit, jestli riziko pokusů o vyt
 
 V této ukázce budeme integraci funkcí ochrany účtů Microsoft DFP s Azure AD B2Cým uživatelským tokem. Služba bude Přihlaste se k externímu otisku při každém přihlášení nebo při pokusu o přihlášení a sledujte jakékoli minulé nebo přítomné podezřelé chování. Azure AD B2C vyvolá rozhodovací koncový bod z Microsoft DFP, který vrátí výsledek založený na všech minulých a současných chování od identifikovaného uživatele a také vlastní pravidla zadaná v rámci služby Microsoft DFP. Azure AD B2C provede rozhodnutí o schválení na základě tohoto výsledku a předá ho zpět do Microsoft DFP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -56,7 +56,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek znázorňuje diagram architektury ochrany před podvody Microsoft dynamics365](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dostane přihlašovací stránku. Uživatelé si vyberou přihlášení a vytvoří nový účet a na stránce se zadají informace. Azure AD B2C shromažďuje atributy uživatele.
 | 2. | Azure AD B2C volá rozhraní API střední vrstvy a předá ho atributům uživatele.
