@@ -9,10 +9,10 @@ ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 2ddba95f9ccc25d536638dbc68c41027d26e71c7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341004"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
@@ -26,7 +26,7 @@ V Azure Cosmos DB můžete nastavit hodnotu TTL (Time to Live) na úrovni kontej
 
 Pomocí následujících kroků můžete povolit dobu provozu na kontejneru bez vypršení platnosti. Tuto možnost povolte, pokud chcete, aby hodnota TTL mohla být přepsána na úrovni položky. Hodnotu TTL můžete nastavit také zadáním nenulové hodnoty pro sekundy.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -206,11 +206,11 @@ Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete na
 
 * Pokud je hodnota TTL na úrovni kontejneru zakázaná, bude pole TTL u této položky ignorováno, dokud nebude hodnota TTL znovu povolena v kontejneru.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>portál Azure
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure Portal
 
 Chcete-li povolit dobu provozu na položce, použijte následující postup:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 

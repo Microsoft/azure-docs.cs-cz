@@ -1,6 +1,6 @@
 ---
 title: Správa sdílených složek StorSimple virtuálních polí | Microsoft Docs
-description: Popisuje StorSimple Device Manager a vysvětluje, jak ho použít ke správě sdílených složek ve virtuálním poli StorSimple.
+description: Popisuje StorSimple Správce zařízení a vysvětluje, jak ho použít ke správě sdílených složek ve virtuálním poli StorSimple.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994940"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Použití služby Správce zařízení StorSimple ke správě sdílených složek ve službě StorSimple Virtual Array
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu se dozvíte, jak pomocí služby StorSimple Device Manager vytvářet a spravovat sdílené složky ve vašem virtuálním poli StorSimple.
+V tomto kurzu se dozvíte, jak pomocí služby StorSimple Správce zařízení vytvářet a spravovat sdílené složky ve vašem virtuálním poli StorSimple.
 
-Služba StorSimple Device Manager je rozšíření v Azure Portal, které umožňuje spravovat řešení StorSimple z jediného webového rozhraní. Kromě správy sdílených složek a svazků můžete pomocí služby StorSimple Device Manager zobrazovat a spravovat zařízení, zobrazovat výstrahy, spravovat zásady zálohování a spravovat katalog záloh.
+Služba StorSimple Správce zařízení je rozšíření v Azure Portal, které umožňuje spravovat řešení StorSimple z jediného webového rozhraní. Kromě správy sdílených složek a svazků můžete pomocí služby StorSimple Správce zařízení zobrazovat a spravovat zařízení, zobrazovat výstrahy, spravovat zásady zálohování a spravovat katalog záloh.
 
 ## <a name="share-types"></a>Typy sdílení
 
@@ -40,7 +40,7 @@ Sdílené složky StorSimple můžou být:
 
 Pro maximální zřízenou kapacitu pro každý typ sdílené složky použijte následující tabulku.
 
-| **Identifikátor omezení** | **Omezení** |
+| **Identifikátor omezení** | **Počtu** |
 | --- | --- |
 | Minimální velikost vrstveného sdílení |500 GB |
 | Maximální velikost vrstvené sdílené složky |20 TB |

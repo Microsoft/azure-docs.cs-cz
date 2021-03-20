@@ -16,10 +16,10 @@ ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 541f76ad825f492679530902c571096ca4b01902
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98726227"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu 
@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure s automatick
 
 Tento článek poskytuje různé příklady kódu a skriptů pro získání tokenu a také pokyny k důležitým tématům, jako je zpracování vypršení platnosti tokenu a chyby protokolu HTTP. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -47,7 +47,7 @@ Pokud plánujete použít Azure PowerShell příklady v tomto článku, nainstal
 
 Klientská aplikace může pro přístup k danému prostředku požádat o spravované identity [jenom přístupového tokenu](../develop/developer-glossary.md#access-token) pro prostředky Azure. Token je [založený na spravovaných identitách pro objekt služby Azure Resources](overview.md#managed-identity-types). V takovém případě není nutné, aby se klient zaregistroval k získání přístupového tokenu v rámci vlastního instančního objektu. Token je vhodný k použití jako nosný token ve [voláních služby-služba vyžadujících pověření klienta](../develop/v2-oauth2-client-creds-grant-flow.md).
 
-| Odkaz | Popis |
+| Odkaz | Description |
 | -------------- | -------------------- |
 | [Získání tokenu pomocí protokolu HTTP](#get-a-token-using-http) | Podrobnosti protokolu pro spravované identity pro koncový bod tokenu prostředků Azure |
 | [Získání tokenu pomocí knihovny Microsoft. Azure. Services. AppAuthentication pro .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Příklad použití knihovny Microsoft. Azure. Services. AppAuthentication z klienta .NET

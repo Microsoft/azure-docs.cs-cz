@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
 ms.openlocfilehash: 8b391438d8d6605e7ef493a6552af634db840ad5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96553255"
 ---
 # <a name="understand-business-glossary-features-in-azure-purview"></a>Principy funkcí podnikového glosáře v Azure dosah
 
 Tento článek poskytuje přehled funkce obchodní Glosář v Azure dosah. 
 
-## <a name="business-glossary"></a>Obchodní Glosář
+## <a name="business-glossary"></a>Obchodní glosář
 
 Glosář poskytuje slovník pro obchodní uživatele.  Skládá se z obchodních podmínek, které mohou být vzájemně propojené a umožňují jejich kategorizaci do kategorií, aby je bylo možné chápat v různých kontextech. Tyto výrazy se pak dají namapovat na prostředky, jako je databáze, tabulky, sloupce atd. To pomáhá při abstrakci technických žargonu přidružených k úložištím dat a umožňuje firemnímu uživateli zjistit a pracovat s daty ve slovním, které jsou pro ně lépe obeznámené.
 
@@ -33,14 +33,14 @@ Stejný termín může také znamenat více obchodních objektů. Je důležité
 ## <a name="custom-attributes"></a>Vlastní atributy
 
 Azure dosah podporuje osm předem připravených atributů pro jakékoli obchodní glosáře:
-- Název
+- Name
 - Definice
 - Stewards dat
 - Odborníky na data
 - Akronym
 - Synonyma
 - Související výrazy
-- Zdroje a prostředky
+- Zdroje informací
 
 Tyto atributy nelze upravovat ani odstraňovat. Tyto atributy ale nestačí k úplnému definování termínu v organizaci. Pro vyřešení tohoto problému poskytuje dosah funkci, kde můžete definovat vlastní atributy pro Glosář.
 

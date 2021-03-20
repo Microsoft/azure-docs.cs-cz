@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72a28aebe71809f3e47f9cc6936366cd027a32bb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546671"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
@@ -28,7 +28,7 @@ Následující informace a příklady vám pomůžou získat pokročilejší pri
 
 ## <a name="usage-location"></a>Umístění použití
 
-Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost **umístění používání** u uživatele. V [Azure Portal](https://portal.azure.com)můžete určit umístění použití v **User** &gt; **Profile** &gt; **Nastavení** profilu uživatele.
+Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost **umístění používání** u uživatele. V [Azure Portal](https://portal.azure.com)můžete určit umístění použití v  &gt;  &gt; **Nastavení** profilu uživatele.
 
 Pro přiřazení licence skupiny budou mít všichni uživatelé bez zadaného umístění v adresáři k dispozici umístění adresáře. Pokud máte uživatele ve více umístěních, nezapomeňte se před přidáním uživatelů do skupin s licencemi správně projevit v svých uživatelských zdrojích.
 

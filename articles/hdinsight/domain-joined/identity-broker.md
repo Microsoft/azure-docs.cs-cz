@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/03/2020
 ms.openlocfilehash: 47ba11260c3b58566963e5a3ffac80ca461a8a23
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946827"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
@@ -135,7 +135,7 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 
 Pro použití Beeline a Livy můžete také použít kódy ukázek, které [tady](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) najdete, a nastavit tak klienta tak, aby používal OAuth a připojil se ke clusteru.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 ### <a name="what-app-is-created-by-hdinsight-in-aad"></a>Jakou aplikaci vytvoří HDInsight v AAD?
 Pro každý cluster bude aplikace třetí strany registrována v AAD s identifikátorem URI clusteru jako identifierUri (jako `https://clustername.azurehdinsight.net` ).
 

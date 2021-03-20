@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85554927"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hybridní zařízení připojená k Azure AD
@@ -31,7 +31,7 @@ Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, 
 
 | Připojení k hybridní službě Azure AD | Description |
 | --- | --- |
-| **Definice** | Připojeno k místní službě AD a službě Azure AD, která vyžaduje účet organizace pro přihlášení k zařízení |
+| **Definition** | Připojeno k místní službě AD a službě Azure AD, která vyžaduje účet organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Vhodné pro hybridní organizace se stávající místní infrastrukturou AD |
 |   | Platí pro všechny uživatele v organizaci. |
 | **Vlastnictví zařízení** | Organizace |

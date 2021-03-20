@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: a2e99440a7c8f33eee9d3c9fe2276ac3868ff4b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91331756"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Plánovaná údržba na flexibilním serveru Azure Database for MySQL
@@ -29,8 +29,8 @@ Oznámení o nadcházející plánované údržbě mohou být:
 * E-mail na konkrétní adresu
 * Odeslání e-mailu do role Azure Resource Manager
 * Odesílá se v textové zprávě (SMS) do mobilních zařízení.
-* Vložené jako oznámení do aplikace Azure
-* Doručení jako hlasová zpráva
+* Nabízené oznámení v aplikaci Azure
+* Hlasová zpráva
 
 Při zadávání předvoleb pro plán údržby můžete vybrat den v týdnu a časové okno. Pokud ho nezadáte, server vybere časový interval od 23:00 do 7:00 v oblasti vašeho serveru. Můžete definovat různé plány pro každý flexibilní Server v rámci vašeho předplatného Azure.
 

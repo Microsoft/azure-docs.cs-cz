@@ -4,10 +4,10 @@ description: Naučte se zálohovat stav systému počítačů s Windows serverem
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332881"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Zálohování stavu systému Windows do Azure
@@ -46,7 +46,7 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
 
 ## <a name="configure-the-vault"></a>Konfigurace trezoru
 
-1. V podokně Recovery Services trezoru (pro trezor, který jste právě vytvořili), v části Začínáme vyberte **zálohování**a pak v podokně **Začínáme s zálohováním** vyberte **cíl zálohování**.
+1. V podokně Recovery Services trezoru (pro trezor, který jste právě vytvořili), v části Začínáme vyberte **zálohování** a pak v podokně **Začínáme s zálohováním** vyberte **cíl zálohování**.
 
     ![Otevřít nastavení zálohování](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
@@ -58,11 +58,11 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
 
     Zvolíte možnost **místní** , protože počítač se systémem Windows Server nebo Windows je fyzický počítač, který není v Azure.
 
-3. V nabídce **co chcete zálohovat?** vyberte možnost **stav systému**a vyberte **OK**.
+3. V nabídce **co chcete zálohovat?** vyberte možnost **stav systému** a vyberte **OK**.
 
     ![Konfigurace souborů a složek](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Po výběru **OK**se vedle možnosti **cíl zálohování**zobrazí značka zaškrtnutí a otevře se podokno **Příprava infrastruktury** .
+    Po výběru **OK** se vedle možnosti **cíl zálohování** zobrazí značka zaškrtnutí a otevře se podokno **Příprava infrastruktury** .
 
     ![Cíl zálohování je nakonfigurovaný, teď se připraví infrastruktura](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 

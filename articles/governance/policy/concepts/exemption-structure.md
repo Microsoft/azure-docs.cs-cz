@@ -4,10 +4,10 @@ description: Popisuje definici výjimky zásad, kterou používá Azure Policy k
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950172"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy struktura výjimky
@@ -15,12 +15,12 @@ ms.locfileid: "91950172"
 Funkce výjimky Azure Policy (Preview) se používá k _vyloučení_ hierarchie prostředků nebo jednotlivých prostředků z vyhodnocení iniciativ nebo definic. Prostředky, jejichž _počet_ neplatí pro celkové dodržování předpisů, ale nelze je vyhodnotit nebo mít dočasnou výjimku. Další informace najdete v tématu [vysvětlení oboru v Azure Policy](./scope.md). Výjimky Azure Policy fungují pouze s [režimy správce prostředků](./definition-structure.md#resource-manager-modes) a nefungují s [režimy poskytovatele prostředků](./definition-structure.md#resource-provider-modes).
 
 > [!IMPORTANT]
-> Tato funkce je ve **verzi Preview**volná. Podrobnosti o cenách najdete v tématu [Azure Policy ceny](https://azure.microsoft.com/pricing/details/azure-policy/). Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+> Tato funkce je ve **verzi Preview** volná. Podrobnosti o cenách najdete v tématu [Azure Policy ceny](https://azure.microsoft.com/pricing/details/azure-policy/). Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Pomocí formátu JSON vytvoříte výjimku zásad. Výjimka zásad obsahuje prvky pro:
 
 - zobrazované jméno
-- Popis
+- description
 - zprostředkovatele identity
 - přiřazení zásad
 - definice zásad v rámci iniciativy
@@ -88,7 +88,7 @@ K identifikaci výjimky zásad a zadání kontextu pro jeho použití s konkrét
 
 ## <a name="metadata"></a>Metadata
 
-Vlastnost **metadata** umožňuje vytvořit jakoukoli podřízenou vlastnost nutnou k uložení relevantních informací. V příkladu výše vlastnosti **requestedBy**, **approvedBy**, **approvedOn**a **ticketRef** obsahují hodnoty zákazníků k poskytnutí informací o tom, kdo požadoval výjimku, kdo ji schválil a kdy a interní sledovací lístek pro požadavek. Tyto vlastnosti **metadat** jsou příklady, ale nejsou povinné a **metadata** nejsou omezena na tyto podřízené vlastnosti.
+Vlastnost **metadata** umožňuje vytvořit jakoukoli podřízenou vlastnost nutnou k uložení relevantních informací. V příkladu výše vlastnosti **requestedBy**, **approvedBy**, **approvedOn** a **ticketRef** obsahují hodnoty zákazníků k poskytnutí informací o tom, kdo požadoval výjimku, kdo ji schválil a kdy a interní sledovací lístek pro požadavek. Tyto vlastnosti **metadat** jsou příklady, ale nejsou povinné a **metadata** nejsou omezena na tyto podřízené vlastnosti.
 
 ## <a name="policy-assignment-id"></a>ID přiřazení zásady
 
@@ -104,7 +104,7 @@ Pokud `policyAssignmentId` je pro přiřazení iniciativy, dá se `policyDefinit
 Existují dvě kategorie výjimek a používají se k seskupení výjimek:
 
 - **Zmírnění**: výjimka je udělená, protože záměr zásad je splněn jinou metodou.
-- **Výjimka: výjimka**je udělená, protože stav prostředku, který nedodržuje předpisy, je dočasně přijatý. Dalším důvodem pro použití této kategorie je prostředek nebo hierarchie prostředků, které by měly být vyloučené z jedné nebo více definic v iniciativě, ale neměly by být vyloučeny z celé iniciativy.
+- **Výjimka: výjimka** je udělená, protože stav prostředku, který nedodržuje předpisy, je dočasně přijatý. Dalším důvodem pro použití této kategorie je prostředek nebo hierarchie prostředků, které by měly být vyloučené z jedné nebo více definic v iniciativě, ale neměly by být vyloučeny z celé iniciativy.
 
 ## <a name="expiration"></a>Konec platnosti
 

@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
 ms.openlocfilehash: d12a7d52562fe32126e12a844c2d36c14cf01431
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96553111"
 ---
 # <a name="apply-classifications-on-assets-in-azure-purview"></a>Použití klasifikací u prostředků v Azure dosah
@@ -29,7 +29,7 @@ Tento dokument vysvětluje, jak použít klasifikace pro vaše data.
 - Vytvářejte vlastní klasifikace podle potřeb.
 - Nastavte kontrolu zdrojů dat.
 
-## <a name="apply-classifications"></a>Použití klasifikací
+## <a name="apply-classifications"></a>Využití klasifikací
 Ve službě Azure dosah můžete použít systémové nebo vlastní klasifikace pro soubor, tabulku nebo prostředek sloupce. Tento článek popisuje postup ručního použití klasifikací na svých prostředcích.
 
 ### <a name="apply-classification-to-a-file-asset"></a>Použití klasifikace na prostředek souboru
@@ -43,7 +43,7 @@ Pomocí těchto kroků přidejte do sady prostředků oddílu vlastní nebo syst
 
     :::image type="content" source="./media/apply-classifications/asset-detail-page.png" alt-text="Snímek obrazovky zobrazující stránku s podrobnostmi o assetu":::
 
-1. Na kartě **Přehled** můžete zobrazit část **klasifikace** a zjistit, jestli existují nějaké existující klasifikace. Vyberte **Edit** (Upravit).
+1. Na kartě **Přehled** můžete zobrazit část **klasifikace** a zjistit, jestli existují nějaké existující klasifikace. Vyberte **Upravit**.
 
 1. V rozevíracím seznamu **klasifikace** vyberte konkrétní klasifikace, které vás zajímají. Například **číslo platební karty**, což je systémová klasifikace a **CustomerAccountID**, což je vlastní klasifikace.
 

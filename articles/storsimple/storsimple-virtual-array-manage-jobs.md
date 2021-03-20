@@ -1,6 +1,6 @@
 ---
 title: Zobrazení a správa úloh virtuálních polí StorSimple | Microsoft Docs
-description: Popisuje stránku úlohy služby StorSimple Device Manager a jejich použití ke sledování nejnovějších a aktuálních úloh pro virtuální pole StorSimple.
+description: Popisuje stránku úlohy služby StorSimple Správce zařízení a jejich použití ke sledování nejnovějších a aktuálních úloh pro virtuální pole StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: d806d8a04dc1bd8547808d20c77bfec310f7dd06
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95992984"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Použijte službu StorSimple Device Manager k zobrazení úloh pro virtuální pole StorSimple.
+# <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Použijte službu StorSimple Správce zařízení k zobrazení úloh pro virtuální pole StorSimple.
 ## <a name="overview"></a>Přehled
-Okno **úlohy** nabízí jeden centrální portál pro zobrazení a správu úloh, které jsou spuštěné ve virtuálních polích, která jsou připojená ke službě StorSimple Device Manager. Můžete zobrazit spuštěné, dokončené a neúspěšné úlohy pro více virtuálních zařízení. Výsledky jsou uvedeny v tabulkovém formátu.
+Okno **úlohy** nabízí jeden centrální portál pro zobrazení a správu úloh, které jsou spuštěné ve virtuálních polích, která jsou připojená ke službě StorSimple Správce zařízení. Můžete zobrazit spuštěné, dokončené a neúspěšné úlohy pro více virtuálních zařízení. Výsledky jsou uvedeny v tabulkovém formátu.
 
 ![Okno úlohy](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91324684"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrace na entitu pro vytváření obsahu V3
@@ -149,7 +149,7 @@ Tato změna byla provedena v květnu 2020 na konferenci Build a vztahuje se pouz
 
 #### <a name="automatic-migration"></a>Automatická migrace
 
-Od **června 19 2020**nebudete moci vytvářet omezení programově pomocí předchozího rozhraní API pro vytváření obsahu, které tuto funkci vystavilo.
+Od **června 19 2020** nebudete moci vytvářet omezení programově pomocí předchozího rozhraní API pro vytváření obsahu, které tuto funkci vystavilo.
 
 Všechny existující funkce omezení budou automaticky migrovány na příznak požadované funkce. Pro rozhraní API předpovědi nejsou nutné žádné programové změny a žádné výsledné změny kvality předpovědi.
 

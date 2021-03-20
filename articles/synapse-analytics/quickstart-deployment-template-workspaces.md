@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
 ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92740366"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse pomocí šablony ARM
@@ -21,7 +21,7 @@ Tato šablona Azure Resource Manager (šablona ARM) vytvoří pracovní prostor 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure 1](../media/template-deployments/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Můžete zkontrolovat šablonu výběrem odkazu **vizualizace** . Pak vyberte **Upravit šablonu** .
+Můžete zkontrolovat šablonu výběrem odkazu **vizualizace** . Pak vyberte **Upravit šablonu**.
 
 [![Vizualizace](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -48,15 +48,15 @@ Můžete zkontrolovat šablonu výběrem odkazu **vizualizace** . Pak vyberte **
 
 1. Zadejte nebo aktualizujte následující hodnoty:
 
-   - **Předplatné** : vyberte předplatné Azure.
-   - **Skupina prostředků** : vyberte **vytvořit novou** a zadejte jedinečný název pro skupinu prostředků a vyberte **OK** . Nová skupina prostředků vám usnadní vyčištění prostředků.
-   - **Oblast** : Vyberte oblast.  Například **USA – střed** .
-   - **Název** : zadejte název pracovního prostoru.
-   - **Přihlášení správce SQL** : zadejte uživatelské jméno správce pro SQL Server.
-   - **Heslo správce SQL** : zadejte heslo správce pro SQL Server.
-   - **Hodnoty značek** : přijměte výchozí hodnotu.
-   - **Zkontrolujte a vytvořte** : vybrat.
-   - **Vytvořit** : vyberte.
+   - **Předplatné**: vyberte předplatné Azure.
+   - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte jedinečný název pro skupinu prostředků a vyberte **OK**. Nová skupina prostředků vám usnadní vyčištění prostředků.
+   - **Oblast**: Vyberte oblast.  Například **USA – střed**.
+   - **Název**: zadejte název pracovního prostoru.
+   - **Přihlášení správce SQL**: zadejte uživatelské jméno správce pro SQL Server.
+   - **Heslo správce SQL**: zadejte heslo správce pro SQL Server.
+   - **Hodnoty značek**: přijměte výchozí hodnotu.
+   - **Zkontrolujte a vytvořte**: vybrat.
+   - **Vytvořit**: vyberte.
 
 ## <a name="next-steps"></a>Další kroky
 

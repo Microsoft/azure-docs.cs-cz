@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87760120"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akce v modulu Standard rules pro Azure CDN
@@ -85,7 +85,7 @@ Tuto akci použijte k přesměrování klientů na novou adresu URL.
 
 #### <a name="required-fields"></a>Povinná pole
 
-Pole | Description 
+Pole | Popis 
 ------|------------
 Typ | Vyberte typ odpovědi, který se má vrátit žadateli: Nalezeno (302), přesunuto (301), dočasné přesměrování (307) a trvalé přesměrování (308).
 Protokol | Požadavek shody, HTTP, HTTPS.

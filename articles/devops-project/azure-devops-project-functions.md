@@ -10,10 +10,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91355470"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Nasazení do Azure Functions s DevOps Starter
@@ -26,7 +26,7 @@ DevOps Starter také:
 
 * Vytvoří a nakonfiguruje kanál verze ve službě Azure DevOps pro CI/CD.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 >* Použití DevOps Starter k nasazení aplikace ASP.NET do funkce Azure Functions
@@ -49,11 +49,11 @@ DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novo
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
-1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
+1. Do vyhledávacího pole zadejte **DevOps Starter** a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
     ![Řídicí panel Starter DevOps](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Vyberte **.NET**a pak vyberte **Další**. V části **zvolte Aplikační architekturu**vyberte **ASP.NET** a klikněte na **Další**.
+1. Vyberte **.NET** a pak vyberte **Další**. V části **zvolte Aplikační architekturu** vyberte **ASP.NET** a klikněte na **Další**.
 
 1. Vyberte **Function App** a pak vyberte **Další**.
 
@@ -123,7 +123,7 @@ DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazen
 
 1. Na pravé straně vyberte **Zobrazit vydané verze** , aby se zobrazila Historie verzí.
 
-1. Klikněte na verzi, která zobrazí kanál. Kliknutím na libovolné prostředí zkontrolujete souhrn vydaných verzí **, potvrzení změn**a přidružené **pracovní položky**.
+1. Klikněte na verzi, která zobrazí kanál. Kliknutím na libovolné prostředí zkontrolujete souhrn vydaných verzí **, potvrzení změn** a přidružené **pracovní položky**.
 
 1. Vyberte **Potvrzení**. Toto zobrazení ukazuje potvrzení kódu, která jsou přidružena k tomuto nasazení. Porovnejte vydané verze a zobrazte rozdíly v potvrzeních jednotlivých nasazení.
 
@@ -136,17 +136,17 @@ DevOps Starter automaticky vytvoří a nakonfiguruje nezbytné kroky pro nasazen
 
 Nyní jste připraveni spolupracovat s týmem v aplikaci pomocí procesu CI/CD, který automaticky nasadí nejnovější práci do funkce Azure Functions. Každá změna úložiště Git spustí sestavení ve službě Azure DevOps a kanál CD provede nasazení do Azure. Postupujte podle pokynů v této části, nebo použijte jinou techniku, abyste potvrdili změny v úložišti. Úložiště Git můžete například klonovat v oblíbených nástrojích nebo v integrovaném vývojovém prostředí (IDE) a pak doručovat změny do tohoto úložiště.
 
-1. V nabídce Azure DevOps vyberte možnost **úložišť | Soubory**a pak přejít na své úložiště.
+1. V nabídce Azure DevOps vyberte možnost **úložišť | Soubory** a pak přejít na své úložiště.
 
 1. Úložiště již obsahuje kód s názvem **SampleFunctionApp** na základě jazyka aplikace, který jste zvolili v procesu vytváření. Otevřete soubor **Application/SampleFunctionApp/function1. cs** .
 
-1. Vyberte **Upravit**a pak proveďte změnu na **řádek číslo 31** . Můžete ho například aktualizovat na **Hello! Vítá vás Azure Functions s využitím DevOps Starter**
+1. Vyberte **Upravit** a pak proveďte změnu na **řádek číslo 31** . Můžete ho například aktualizovat na **Hello! Vítá vás Azure Functions s využitím DevOps Starter**
 
-1. V pravém horním rohu vyberte **Potvrdit**a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte.
+1. V pravém horním rohu vyberte **Potvrdit** a pak znovu vyberte **Potvrdit** , aby se vaše změna nahrajte.
 
 1. Otevřete soubor **Application/SampleFunctionApp. test/Function1TestRunner. cs** . 
 
-1. Vyberte **Upravit**a pak proveďte změnu na **řádek číslo 21**. Můžete ho například aktualizovat na **Hello! Vítá vás Azure Functions s využitím Azure DevOps Starter**.
+1. Vyberte **Upravit** a pak proveďte změnu na **řádek číslo 21**. Můžete ho například aktualizovat na **Hello! Vítá vás Azure Functions s využitím Azure DevOps Starter**.
 
      Po chvíli se Build spustí v Azure DevOps a k nasazení změn se spustí vydání. Monitorujte stav buildu na řídicím panelu Starter DevOps nebo v prohlížeči pomocí vaší organizace Azure DevOps.
 

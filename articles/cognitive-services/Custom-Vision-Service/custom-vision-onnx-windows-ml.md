@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
 ms.openlocfilehash: 58ced0c45d66223ac3e40112126e92a4539db32d
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94616072"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Použití modelu ONNX z Custom Vision s Windows ML (Preview)
@@ -23,7 +23,7 @@ Naučte se používat model ONNX exportovaný ze služby Custom Vision s Windows
 
 V této příručce se dozvíte, jak použít soubor ONNX exportovaný z Custom Vision Service s Windows ML. Ukázkovou aplikaci UWP použijete s vlastním vyškolenou klasifikátorovou imagí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Windows 10 verze 1809 nebo vyšší
 * Windows SDK pro Build 17763 nebo vyšší
@@ -55,7 +55,7 @@ Pokud chcete použít vlastní model klasifikátoru obrázků, postupujte takto:
 1. V Průzkumník řešení klikněte pravým tlačítkem na soubor ONNX a vyberte **vlastnosti**. Změňte následující vlastnosti souboru:
    * __Akce sestavení__  ->  __Obsah__
    * __Kopírovat do výstupního adresáře__  ->  __Kopírovat, pokud je novější__
-1. Pak otevřete _MainPage.XAML.cs_ a změňte hodnotu `_ourOnnxFileName` na název vašeho souboru ONNX.
+1. Pak otevřete soubor _MainPage. XAML. cs_ a změňte hodnotu `_ourOnnxFileName` na název vašeho souboru ONNX.
 1. Použijte `F5` k sestavení a spuštění projektu.
 1. Klikněte na tlačítko a vyberte obrázek k vyhodnocení.
 

@@ -14,10 +14,10 @@ ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97356952"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý Start: vytvoření SQL Server 2017 na virtuálním počítači s Windows v Azure Portal
@@ -107,7 +107,7 @@ Nasazení můžete monitorovat z webu Azure Portal. Tlačítko **Oznámení** v 
 1. Na jiném počítači připojeném k Internetu otevřete [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 
 
-1. V dialogovém okně **Připojit k serveru** nebo **Connect to Database Engine** (Připojit k databázovému stroji) upravte hodnotu **Název serveru**. Zadejte veřejnou IP adresu vašeho virtuálního počítače. Pak přidejte čárku a přidejte vlastní port (**1401**), který jste zadali při konfiguraci nového virtuálního počítače. Například `11.22.33.444,1401`.
+1. V dialogovém okně **Připojit k serveru** nebo **Connect to Database Engine** (Připojit k databázovému stroji) upravte hodnotu **Název serveru**. Zadejte veřejnou IP adresu vašeho virtuálního počítače. Pak přidejte čárku a přidejte vlastní port (**1401**), který jste zadali při konfiguraci nového virtuálního počítače. Například, `11.22.33.444,1401`.
 
 1. V poli **Ověřování** vyberte **Ověřování serveru SQL Server**.
 

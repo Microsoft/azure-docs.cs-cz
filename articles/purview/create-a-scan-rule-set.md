@@ -1,5 +1,5 @@
 ---
-title: Vytvoření sady pravidel skenování
+title: Vytvoření sady pravidel prohledávání
 description: Vytvořte sadu pravidel skenování ve službě Azure dosah a rychle prohledejte zdroje dat ve vaší organizaci.
 author: chandrakavya
 ms.author: kchandra
@@ -8,13 +8,13 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
 ms.openlocfilehash: 9662652a6a40285ad382857975ec0dd04b8ba8be
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96553048"
 ---
-# <a name="create-a-scan-rule-set"></a>Vytvoření sady pravidel skenování
+# <a name="create-a-scan-rule-set"></a>Vytvoření sady pravidel prohledávání
 
 V katalogu Azure dosah můžete vytvořit sady pravidel skenování, které vám umožní rychlou kontrolu zdrojů dat ve vaší organizaci.
 

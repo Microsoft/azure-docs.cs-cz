@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11102d95bc2aba65e6bc3cba71805a67f195947b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92681487"
 ---
 # <a name="how-to-use-microsoftazuresearch-in-a-c-net-application"></a>Jak používat Microsoft. Azure. Hledat v aplikaci C# .NET
@@ -572,7 +572,7 @@ Tato možnost použití vlastních tříd k interakci s dokumenty v indexu fungu
 
 **Proč byste měli používat datové typy s možnou hodnotou null**
 
-Při navrhování vlastních tříd modelů pro mapování k indexu služby Azure Kognitivní hledání doporučujeme deklarovat vlastnosti typů hodnot, například `bool` a `int` , aby byly možnou hodnotou null (například `bool?` místo `bool` ). Pokud použijete vlastnost se zakázanou hodnotou null, musíte **zajistit** , aby žádné dokumenty v indexu neobsahovaly pro odpovídající pole hodnotu null. Sada SDK ani služba Azure Kognitivní hledání vám ji nepomůže vyhovět.
+Při navrhování vlastních tříd modelů pro mapování k indexu služby Azure Kognitivní hledání doporučujeme deklarovat vlastnosti typů hodnot, například `bool` a `int` , aby byly možnou hodnotou null (například `bool?` místo `bool` ). Pokud použijete vlastnost se zakázanou hodnotou null, musíte **zajistit**, aby žádné dokumenty v indexu neobsahovaly pro odpovídající pole hodnotu null. Sada SDK ani služba Azure Kognitivní hledání vám ji nepomůže vyhovět.
 
 Nejedná se pouze o hypotetický problém: představte si situaci, kdy přidáte nové pole do stávajícího indexu typu `Edm.Int32`. Po aktualizaci definice indexu budou mít všechny dokumenty pro toto nové pole hodnotu null (vzhledem k tomu, že všechny typy jsou v Azure Kognitivní hledání s možnou hodnotou null). Pokud pak použijete třídu modelu s vlastností `int` se zakázanou hodnotou null, při pokusu o načtení dokumentů dojde k vyvolání podobné výjimky `JsonSerializationException`:
 

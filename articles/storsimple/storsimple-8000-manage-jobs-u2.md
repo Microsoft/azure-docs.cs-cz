@@ -1,6 +1,6 @@
 ---
 title: Zobrazení a správa úloh pro řady StorSimple 8000 | Microsoft Docs
-description: Popisuje okno úlohy služby StorSimple Device Manager a jeho použití ke sledování posledních, aktuálních a naplánovaných úloh zálohování.
+description: Popisuje okno úlohy služby StorSimple Správce zařízení a jeho použití ke sledování posledních, aktuálních a naplánovaných úloh zálohování.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91949424"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Použití služby StorSimple Device Manager k zobrazení a správě úloh (aktualizace 3 a novější)
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Použití služby StorSimple Správce zařízení k zobrazení a správě úloh (aktualizace 3 a novější)
 
-## <a name="overview"></a>Overview
-Okno **úlohy** nabízí jeden centrální portál pro zobrazení a správu úloh, které byly spuštěny na zařízeních připojených ke službě StorSimple Device Manager. Můžete zobrazit naplánované, spuštěné, dokončené, zrušené a neúspěšné úlohy pro více zařízení. Výsledky jsou uvedeny v tabulkovém formátu.
+## <a name="overview"></a>Přehled
+Okno **úlohy** nabízí jeden centrální portál pro zobrazení a správu úloh, které byly spuštěny na zařízeních připojených ke službě StorSimple Správce zařízení. Můžete zobrazit naplánované, spuštěné, dokončené, zrušené a neúspěšné úlohy pro více zařízení. Výsledky jsou uvedeny v tabulkovém formátu.
 
 ![Okno úlohy](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
@@ -55,7 +55,7 @@ Na této stránce můžete provádět následující akce související s úloho
 Chcete-li zobrazit podrobnosti o jakékoli úloze, proveďte následující kroky.
 
 #### <a name="to-view-job-details"></a>Zobrazení podrobností o úloze
-1. Přejděte do služby StorSimple Device Manager a klikněte na **úlohy**.
+1. Přejděte do služby StorSimple Správce zařízení a klikněte na **úlohy**.
 
 2. V okně **úlohy** Zobrazte úlohy, které vás zajímají, spuštěním dotazu s příslušnými filtry. Můžete hledat dokončené, spuštěné nebo zrušené úlohy.
 
@@ -87,5 +87,5 @@ Provedením následujících kroků zrušíte spuštěnou úlohu.
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [Spravovat zásady zálohování StorSimple](storsimple-8000-manage-backup-policies-u2.md).
-* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Naučte se [používat službu StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

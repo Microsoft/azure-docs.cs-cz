@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87309286"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Upozornění na problémy v Azure Cloud Services s využitím integrace diagnostiky Azure s Azure Application Insights
@@ -80,11 +80,11 @@ EventLogs
 
 ## <a name="create-an-alert"></a>Vytvoření upozornění
 
-V navigační nabídce v prostředku Application Insights přejděte na **výstrahy**a pak vyberte **nové pravidlo výstrahy**.
+V navigační nabídce v prostředku Application Insights přejděte na **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
 
 ![Snímek obrazovky s vytvořením pravidla](./media/proactive-cloud-services/001.png)
 
-V okně **vytvořit pravidlo** v části **definovat podmínku upozornění** klikněte na **Přidat kritéria**a pak vyberte **vlastní prohledávání protokolu**.
+V okně **vytvořit pravidlo** v části **definovat podmínku upozornění** klikněte na **Přidat kritéria** a pak vyberte **vlastní prohledávání protokolu**.
 
 ![Snímek obrazovky s definicí kritérií podmínky pro výstrahu](./media/proactive-cloud-services/002.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/06/2020
 ms.author: jeedes
 ms.openlocfilehash: f018cd51d1873a9f2fef5b0be2b4756d3c26f8b1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180825"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intsights"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s IntSights
@@ -95,7 +95,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace IntSights několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | -----| ---------------- |
     | firstName | User. křestní jméno |
     | lastName | User. příjmení |

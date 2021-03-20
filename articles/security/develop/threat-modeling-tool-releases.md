@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
 ms.openlocfilehash: e6f8ba54218f9b5b730ce3454c087d6072930edf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87825867"
 ---
 # <a name="threat-modeling-tool-releases"></a>Verze Threat Modeling Tool
@@ -36,7 +36,7 @@ Microsoft Threat Modeling Tool je aktuálně vydaný jako bezplatná aplikace [n
 - Další požadavky
   - K přijímání aktualizací nástroje a šablon je vyžadováno připojení k Internetu.
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 - [Verze Microsoft Threat MODELING Tool GA verze 7.3.00729.1](threat-modeling-tool-releases-73007291.md) – červenec 29 2020
 - [Verze Microsoft Threat MODELING Tool GA verze 7.3.00714.2](threat-modeling-tool-releases-73007142.md) – červenec 14 2020

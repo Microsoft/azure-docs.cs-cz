@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97807548"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Řešení potíží s připojením k privátnímu koncovému bodu Azure
@@ -45,7 +45,7 @@ Zkontrolujte tyto kroky, abyste se ujistili, že všechny běžné konfigurace j
 
     b. V levém podokně vyberte **soukromé koncové body**.
     
-      ![Soukromé koncové body](./media/private-endpoint-tsg/private-endpoints.png)
+      ![Privátní koncové body](./media/private-endpoint-tsg/private-endpoints.png)
 
     c. Vyfiltrujte a vyberte privátní koncový bod, který chcete diagnostikovat.
 

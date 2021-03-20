@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak nakonfigurovat Microsoft Azure Ba
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332810"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Zálohování SQL Server v Azure Stack
@@ -89,7 +89,7 @@ Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje
 
 7. Na obrazovce **Kontrola přidělení disku** ověřte, zda je k dispozici celkové místo v úložišti, a na možné místo na disku. Vyberte **Další**.
 
-8. V části **Vybrat způsob vytvoření repliky**vyberte, jak se má vytvořit první bod obnovení. Prvotní zálohu můžete přenést ručně (mimo síť), abyste se vyhnuli zahlcení šířky pásma nebo přes síť. Pokud se rozhodnete počkat na přenos prvního zálohování, můžete zadat čas počátečního přenosu. Vyberte **Další**.
+8. V části **Vybrat způsob vytvoření repliky** vyberte, jak se má vytvořit první bod obnovení. Prvotní zálohu můžete přenést ručně (mimo síť), abyste se vyhnuli zahlcení šířky pásma nebo přes síť. Pokud se rozhodnete počkat na přenos prvního zálohování, můžete zadat čas počátečního přenosu. Vyberte **Další**.
 
     ![Metoda počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
 

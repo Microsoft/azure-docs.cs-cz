@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962583"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurace App Service Environment v1
@@ -125,7 +125,7 @@ V pomocném mechanismu řízení jsou všechny plány App Service vyhrazené App
 ### <a name="settings"></a>Nastavení
 V okně pomocného mechanismu se nachází oddíl **Nastavení** , který obsahuje několik důležitých možností:
 
-**Nastavení**  >  **Vlastnosti**: okno **Nastavení** se automaticky otevře při otevření okna pomocného mechanismu. V horní části jsou **vlastnosti**. Tady je několik položek, které jsou redundantní na to, co vidíte v **Essentials**, ale to je velmi užitečné pro **virtuální IP adresu**i pro **odchozí IP adresy**.
+**Nastavení**  >  **Vlastnosti**: okno **Nastavení** se automaticky otevře při otevření okna pomocného mechanismu. V horní části jsou **vlastnosti**. Tady je několik položek, které jsou redundantní na to, co vidíte v **Essentials**, ale to je velmi užitečné pro **virtuální IP adresu** i pro **odchozí IP adresy**.
 
 ![Okno nastavení a vlastnosti][4]
 
@@ -154,7 +154,7 @@ Pokud chcete použít operaci škálování v okně pomocného mechanismu říze
 
 ![Škálování uživatelského rozhraní][6]
 
-Pokud chcete používat funkce ručního nebo automatického škálování v konkrétním fondu zdrojů, v případě potřeby použijte možnost **Nastavení**  >  **Front End Pool**  /  **fondy pracovních procesů** fondu front-endu. Pak otevřete fond, který chcete změnit. Přejít na **Nastavení**  >  **horizontální** **Settings**  >  **navýšení kapacity nebo navýšení kapacity**nastavení. Okno **horizontálního** navýšení kapacity umožňuje řídit množství instancí. **Horizontální navýšení kapacity** umožňuje řídit velikost prostředků.  
+Pokud chcete používat funkce ručního nebo automatického škálování v konkrétním fondu zdrojů, v případě potřeby použijte možnost **Nastavení**  >    /  **fondy pracovních procesů** fondu front-endu. Pak otevřete fond, který chcete změnit. Přejít na **Nastavení**  >  **horizontální**   >  **navýšení kapacity nebo navýšení kapacity** nastavení. Okno **horizontálního** navýšení kapacity umožňuje řídit množství instancí. **Horizontální navýšení kapacity** umožňuje řídit velikost prostředků.  
 
 ![Uživatelské rozhraní nastavení škálování][7]
 

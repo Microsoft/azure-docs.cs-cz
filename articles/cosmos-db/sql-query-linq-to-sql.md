@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: tisande
 ms.openlocfilehash: 122c95fe9ac017ad7a6957dcdb8323837be34f21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96545379"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL překlad
@@ -25,7 +25,7 @@ Zprostředkovatel dotazů podporuje následující skalární výrazy:
 
 - Konstantní hodnoty, včetně konstantních hodnot primitivních datových typů v době vyhodnocení dotazu.
   
-- Výrazy indexů vlastností nebo pole, které odkazují na vlastnost objektu nebo prvku pole. Příklad:
+- Výrazy indexů vlastností nebo pole, které odkazují na vlastnost objektu nebo prvku pole. Například:
   
   ```
     family.Id;

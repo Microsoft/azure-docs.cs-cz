@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: ae6c87c9eabea837ba9c43676d4ca712caa385cb
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94594160"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Přesunutí prostředků do nové oblasti – Azure SQL Database & spravované instance Azure SQL
@@ -68,7 +68,7 @@ Tento článek poskytuje obecný pracovní postup pro přesun prostředků do ji
 
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState** :
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**:
 
 - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání.
 - **ReplicationState = 0** (osazení) znamená, že databáze ještě není osazená, a pokus o převzetí služeb při selhání se nezdaří.
@@ -122,14 +122,14 @@ Až se přesun dokončí, odeberte prostředky ve zdrojové oblasti, abyste se v
 
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState** :
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**:
 
 - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání.
 - **ReplicationState = 0** (osazení) znamená, že databáze ještě není osazená, a pokus o převzetí služeb při selhání se nezdaří.
 
 ### <a name="test-synchronization"></a>Synchronizace testů
 
-Jakmile **ReplicationState** je ReplicationState `2` , připojte se ke každé databázi nebo podmnožině databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakýkoli dotaz na databáze, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat.
+Jakmile  je ReplicationState `2` , připojte se ke každé databázi nebo podmnožině databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakýkoli dotaz na databáze, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat.
 
 ### <a name="initiate-the-move"></a>Zahájit přesun
 
@@ -170,14 +170,14 @@ Replikace všech databází na každé instanci se iniciuje automaticky. Další
 
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
-Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState** :
+Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**:
 
 - **ReplicationState = 2** (CATCH_UP) znamená, že se databáze synchronizuje a že je možné provést její bezpečné převzetí služeb při selhání.
 - **ReplicationState = 0** (osazení) znamená, že databáze ještě není osazená, a pokus o převzetí služeb při selhání se nezdaří.
 
 ### <a name="test-synchronization"></a>Synchronizace testů
 
-Jakmile **ReplicationState** je ReplicationState `2` , připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakékoli dotazy k databázím, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat.
+Jakmile  je ReplicationState `2` , připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakékoli dotazy k databázím, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat.
 
 ### <a name="initiate-the-move"></a>Zahájit přesun
 

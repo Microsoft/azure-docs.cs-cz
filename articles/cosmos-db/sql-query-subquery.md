@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: f5f209229d17a2587258d21ee90e7560e629d082
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340851"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Příklady poddotazů SQL pro Azure Cosmos DB
@@ -25,16 +25,16 @@ Tento článek popisuje poddotazy SQL a jejich běžné případy použití v Az
 
 Existují dva hlavní typy poddotazů:
 
-* **Korelace** : poddotaz, který odkazuje na hodnoty z vnějšího dotazu. Poddotaz se vyhodnocuje jednou pro každý řádek, který zpracovává vnější dotaz.
-* **Bez korelace** : poddotaz, který je nezávislý na vnějším dotazu. Dá se spustit samostatně, aniž by se musel spoléhat na vnější dotaz.
+* **Korelace**: poddotaz, který odkazuje na hodnoty z vnějšího dotazu. Poddotaz se vyhodnocuje jednou pro každý řádek, který zpracovává vnější dotaz.
+* **Bez korelace**: poddotaz, který je nezávislý na vnějším dotazu. Dá se spustit samostatně, aniž by se musel spoléhat na vnější dotaz.
 
 > [!NOTE]
 > Azure Cosmos DB podporuje pouze korelační poddotazy.
 
 Poddotazy lze dále klasifikovat na základě počtu řádků a sloupců, které vrátí. Existují tři typy:
-* **Table** : vrátí více řádků a více sloupců.
-* **Multi-Value** : vrátí více řádků a jeden sloupec.
-* **Skalární** : vrátí jeden řádek a jeden sloupec.
+* **Table**: vrátí více řádků a více sloupců.
+* **Multi-Value**: vrátí více řádků a jeden sloupec.
+* **Skalární**: vrátí jeden řádek a jeden sloupec.
 
 Dotazy SQL v Azure Cosmos DB vždycky vracejí jeden sloupec (buď jednoduchou hodnotu, nebo složitý dokument). Proto se v Azure Cosmos DB použijí pouze vícehodnotové a skalární poddotazy. Poddotaz s více hodnotami lze použít pouze v klauzuli FROM jako relační výraz. Skalární poddotaz lze použít jako skalární výraz v klauzuli SELECT nebo WHERE nebo jako relační výraz v klauzuli FROM.
 

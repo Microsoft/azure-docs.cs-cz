@@ -15,24 +15,24 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 7b4b697b3d27b57212fc59396e1f8111e297d6cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514949"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>Použití okna s přehledem služby pro zařízení řady StorSimple 8000
 
 ## <a name="overview"></a>Přehled
 
-Okno StorSimple Device Manager Service Summary poskytuje souhrnné zobrazení všech zařízení, která jsou připojená ke službě StorSimple Device Manager, a zvýrazňují taková zařízení, která potřebují pozornost správce systému. V tomto kurzu se seznámíte s oknem Přehled služby, vysvětlujete obsah a funkci řídicího panelu a popisujete úkoly, které můžete z této stránky provádět.
+Okno StorSimple Správce zařízení Service Summary poskytuje souhrnné zobrazení všech zařízení, která jsou připojená ke službě StorSimple Správce zařízení, a zvýrazňují taková zařízení, která potřebují pozornost správce systému. V tomto kurzu se seznámíte s oknem Přehled služby, vysvětlujete obsah a funkci řídicího panelu a popisujete úkoly, které můžete z této stránky provádět.
 
 ![Souhrn služby](./media/storsimple-8000-service-dashboard/service-summary1.png)
 
 
 ## <a name="management-commands"></a>Příkazy pro správu
 
-V okně s přehledem služby StorSimple uvidíte možnosti správy služby StorSimple Device Manager a zařízení řady StorSimple 8000, která jsou zaregistrovaná v této službě. Zobrazí se příkazy pro správu v horní části okna a na levé straně.
+V okně s přehledem služby StorSimple uvidíte možnosti správy služby StorSimple Správce zařízení a zařízení řady StorSimple 8000, která jsou zaregistrovaná v této službě. Zobrazí se příkazy pro správu v horní části okna a na levé straně.
 
 ![Panel příkazů](./media/storsimple-8000-service-dashboard/service-summary2.png)
 
@@ -41,11 +41,11 @@ Pomocí těchto možností můžete provádět různé operace, například při
 
 ## <a name="essentials"></a>Základy
 
-V oblasti základy se zachycují některé důležité vlastnosti, jako je například skupina prostředků, umístění a předplatné, ve kterém byl vytvořen StorSimple Device Manager.
+V oblasti základy se zachycují některé důležité vlastnosti, jako je například skupina prostředků, umístění a předplatné, ve kterém byl vytvořen StorSimple Správce zařízení.
 
 ![Základy](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
-## <a name="storsimple-device-manager-service-summary"></a>Shrnutí služby StorSimple Device Manager
+## <a name="storsimple-device-manager-service-summary"></a>Shrnutí služby StorSimple Správce zařízení
 
 * Dlaždice **výstrahy** poskytuje snímek všech aktivních výstrah napříč všemi zařízeními seskupených podle závažnosti výstrahy.
 
@@ -72,7 +72,7 @@ V oblasti základy se zachycují některé důležité vlastnosti, jako je např
 
      ![Exportovat data grafu](./media/storsimple-8000-service-dashboard/service-summary11.png)
 
-* Dlaždice **zařízení** poskytuje souhrn počtu zařízení řady StorSimple 8000 ve vaší StorSimple Device Manager seskupených podle stavu zařízení. 
+* Dlaždice **zařízení** poskytuje souhrn počtu zařízení řady StorSimple 8000 ve vaší StorSimple Správce zařízení seskupených podle stavu zařízení. 
 
     ![Dlaždice zařízení](./media/storsimple-8000-service-dashboard/service-summary5.png)
 
@@ -82,10 +82,10 @@ V oblasti základy se zachycují některé důležité vlastnosti, jako je např
 
 ## <a name="view-the-activity-logs"></a>Zobrazení protokolů aktivit
 
-Pokud chcete zobrazit různé operace provedené v rámci StorSimple Device Manager, klikněte na odkaz **protokoly aktivit** na levé straně okna s přehledem služby StorSimple. Tím přejdete do okna **protokoly aktivit** , kde můžete zobrazit souhrn posledních operací, které se provedly.
+Pokud chcete zobrazit různé operace provedené v rámci StorSimple Správce zařízení, klikněte na odkaz **protokoly aktivit** na levé straně okna s přehledem služby StorSimple. Tím přejdete do okna **protokoly aktivit** , kde můžete zobrazit souhrn posledních operací, které se provedly.
 
 ![Protokoly aktivit](./media/storsimple-8000-service-dashboard/activity-logs1.png)
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o tom, jak [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o tom, jak [používat službu StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

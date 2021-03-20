@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
 ms.openlocfilehash: 3d24fa1ea046a860feb40d09a6d0a57c79371450
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99807593"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Připojení Azure Sentinel k AWS CloudTrail
@@ -28,7 +28,7 @@ Pomocí konektoru AWS můžete streamovat události správy AWS CloudTrail do Az
 > [!NOTE]
 > AWS CloudTrail má ve svém LookupEvents API [vestavěná omezení](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) . Nepovoluje více než dvě transakce za sekundu (TPS) na účet a každý dotaz může vracet maximálně 50 záznamů. Proto pokud jeden tenant v jedné oblasti neustále generuje více než 100 záznamů za sekundu, dojde k vytváření backlogů a ke zpoždění příjmu dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V pracovním prostoru Sentinel Azure musíte mít oprávnění k zápisu.
 

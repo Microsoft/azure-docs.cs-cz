@@ -8,16 +8,16 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 8b4bd9ece5f010f1294356ad4673543834e5076a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94626907"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytvoření a správa sdílené složky Azure pomocí Azure PowerShellu 
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB (Server Message Block), protokol NFS (Network File System) (verze Preview) a umožňuje sdílení souborů napříč několika počítači, aplikacemi a instancemi. 
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -37,7 +37,7 @@ New-AzResourceGroup `
     -Location $region | Out-Null
 ```
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 Účet úložiště je sdílený fond úložiště, který můžete použít k nasazení sdílených složek Azure. Účet úložiště může obsahovat neomezený počet sdílených složek a sdílená složka můžete obsahovat neomezený počet souborů až do omezení kapacity účtu úložiště. Tento příklad vytvoří obecné účely verze 2 (účet úložiště GPv2), který může Storage úrovně Standard nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty, na rotačním médiu pevného disku (HDD). Soubory Azure také podporují jednotky SSD (Solid-State disk Drive) (SSD). Služba Azure File Shares úrovně Premium se dá vytvořit v účtech úložiště úložiště.
 
 Tento příklad vytvoří účet úložiště pomocí rutiny [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) . Účet úložiště bude mít název *mystorageaccount\<random number>* a odkaz na tento účet úložiště se uloží do proměnné **$storageAcct**. Názvy účtů úložiště musí být jedinečné, proto k názvu pomocí rutiny `Get-Random` připojte číslo, aby byl jedinečný. 

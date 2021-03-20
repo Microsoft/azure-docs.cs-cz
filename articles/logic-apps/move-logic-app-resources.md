@@ -7,10 +7,10 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87826207"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Přesunutí prostředků aplikace logiky do jiných skupin prostředků Azure, oblastí nebo předplatných
@@ -27,7 +27,7 @@ K migraci aplikace logiky nebo souvisejících prostředků do jiné skupiny pro
 
 * [Prostředí ISE (Integration Service Environment)](connect-virtual-network-vnet-isolated-environment-overview.md) můžete přesunout jenom do jiné skupiny prostředků, která existuje ve stejné oblasti Azure nebo předplatném Azure. ISE nejde přesunout do skupiny prostředků, která existuje v jiné oblasti Azure nebo předplatném Azure. Po takovém přesunutí musíte také aktualizovat všechny odkazy na ISE v pracovních postupech aplikace logiky, účtů pro integraci, připojeních atd.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Stejné předplatné Azure, které se použilo k vytvoření aplikace logiky nebo účtu pro integraci, který chcete přesunout
 
@@ -41,7 +41,7 @@ Pokud chcete přesunout prostředek, jako je aplikace logiky nebo účet pro int
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte prostředek aplikace logiky, který chcete přesunout.
 
-1. Na stránce **Přehled** prostředku klikněte vedle položku **předplatné**na odkaz **změnit** .
+1. Na stránce **Přehled** prostředku klikněte vedle položku **předplatné** na odkaz **změnit** .
 
 1. Na stránce **Přesunutí prostředků** vyberte prostředek aplikace logiky a všechny související prostředky, které chcete přesunout.
 
@@ -61,7 +61,7 @@ Před skutečným přesunutím prostředků mezi skupinami můžete otestovat, j
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte prostředek aplikace logiky, který chcete přesunout.
 
-1. Na stránce **Přehled** prostředku vedle **skupiny prostředků**vyberte odkaz **změnit** .
+1. Na stránce **Přehled** prostředku vedle **skupiny prostředků** vyberte odkaz **změnit** .
 
 1. Na stránce **Přesunutí prostředků** vyberte prostředek aplikace logiky a všechny související prostředky, které chcete přesunout.
 
@@ -102,9 +102,9 @@ Vlastní konektory v Azure Logic Apps jsou viditelné pro autory konektorů a u�
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete účet pro integraci.
 
-1. V nabídce účtu pro integraci v části **Nastavení**vyberte **Exportovat šablonu**.
+1. V nabídce účtu pro integraci v části **Nastavení** vyberte **Exportovat šablonu**.
 
-1. Na panelu nástrojů vyberte **Stáhnout**a pak šablonu uložte.
+1. Na panelu nástrojů vyberte **Stáhnout** a pak šablonu uložte.
 
 1. Otevřením a úpravou šablony můžete parametrizovat nezbytné hodnoty pro nasazení.
 

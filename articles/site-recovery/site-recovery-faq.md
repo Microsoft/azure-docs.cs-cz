@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
 ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99820192"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné dotazy ke službě Azure Site Recovery
@@ -23,7 +23,7 @@ Tento článek shrnuje Nejčastější dotazy týkající se Azure Site Recovery
 
 ### <a name="what-does-site-recovery-do"></a>K čemu Site Recovery slouží?
 
-Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Přečtěte si další informace](site-recovery-overview.md).
+Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Další informace](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Můžu chránit virtuální počítač, který má disk Docker?
 
@@ -321,7 +321,7 @@ Ano, Pokud zvýšíte dobu uchovávání dat z 24 hodin na 72 hodin, Site Recove
 ## <a name="failover"></a>Převzetí služeb při selhání
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Pokud převezmem služby při selhání do Azure, jak mám přístup k virtuálním počítačům Azure po převzetí služeb při selhání?
 
-K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Přečtěte si další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Při převzetí služeb při selhání do Azure, jak Azure zajišťuje, aby moje data byla odolná?
