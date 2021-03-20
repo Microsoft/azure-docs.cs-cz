@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 9e8625724f67caac99ae799674f9db9399e11ad8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89294250"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer na spravovanou instanci SQL
@@ -25,7 +25,7 @@ Vytvořte spravovanou instanci SQL pomocí vybrané možnosti **Povolit veřejn�
    ![Povolit veřejný koncový bod](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Povolit veřejný koncový bod")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Povolit veřejný koncový bod spravované instance Azure SQL
-V existující spravované instanci SQL můžete povolit také veřejný koncový bod v části **zabezpečení**  >  **Virtual network**  >  **Povolit veřejný koncový bod**virtuální sítě  >  **Enable**.
+V existující spravované instanci SQL můžete povolit také veřejný koncový bod v části **zabezpečení**  >    >  **Povolit veřejný koncový bod** virtuální sítě  >  .
 
    ![Povolení veřejného koncového bodu pomocí virtuální sítě spravované instance](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Povolit veřejný koncový bod")
 

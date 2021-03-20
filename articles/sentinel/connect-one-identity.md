@@ -15,23 +15,23 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77588140"
 ---
 # <a name="connect-one-identity-safeguard"></a>Připojení jedné ochrany identity
 Jeden datový konektor pro ochranu identit vylepšuje standardní konektor CEF (Common Event Format) s ochranou pro privilegované konkrétní řídicí panely. Pomocí tohoto konektoru můžete snadno začít používat události, které vaše zařízení generuje, pro vizualizaci, výstrahy, vyšetřování a další.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 
 ## <a name="connect-azure-sentinel-to-one-identity-safeguard"></a>Připojení Azure Sentinel k jednomu bezpečí identity
 
-1. V Azure Portal přejděte na **Azure Sentinel**  >  **datové konektory** Azure Sentinel a pak vyberte jeden konektor pro **ochranu identit** .
+1. V Azure Portal přejděte na   >  **datové konektory** Azure Sentinel a pak vyberte jeden konektor pro **ochranu identit** .
 
 2. Vyberte **stránku otevřít konektor**.
 

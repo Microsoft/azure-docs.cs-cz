@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89320252"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Nakonfigurovat možnost zůstat přihlášeni? vyzvat k zadání účtů Azure AD
@@ -33,27 +33,27 @@ Následující diagram znázorňuje tok přihlašování uživatelů pro spravov
 ## <a name="configure-kmsi"></a>Konfigurace políčko zůstat přihlášeni
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
-1. Vyberte **Azure Active Directory**, vyberte **Branding společnosti**a pak vyberte **Konfigurovat**.
+1. Vyberte **Azure Active Directory**, vyberte **Branding společnosti** a pak vyberte **Konfigurovat**.
 1. V části **Upřesnit nastavení** vyhledejte **možnost zobrazit, která zůstane pro přihlášení** nastavená.
 
    Toto nastavení umožňuje zvolit, jestli uživatelé zůstanou přihlášení ke službě Azure AD, dokud se explicitně odhlásí.
    * Pokud zvolíte **ne**, možnost **zůstat přihlášená?** zůstane skrytá, až se uživatel úspěšně přihlásí a uživatel se musí přihlásit pokaždé, když se prohlížeč zavře a znovu otevře.
    * Pokud zvolíte **Ano**, zobrazí se uživateli možnost **zůstat přihlášeni?** .
 
-    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Diagram znázorňující tok přihlašování uživatelů pro spravovaného vs. federovaného tenanta":::
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Snímek obrazovky ukazuje možnost zobrazit, která zůstane pro přihlášení nastavená.":::
 
 ## <a name="troubleshoot-sign-in-issues"></a>Řešení potíží s přihlašováním
 
 Pokud uživatel nefunguje na příkazovém řádku **zůstat přihlášeni?** , jak je znázorněno v následujícím diagramu, ale nepřesouvá pokus o přihlášení, zobrazí se položka protokolu přihlášení, která indikuje přerušení.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Diagram znázorňující tok přihlašování uživatelů pro spravovaného vs. federovaného tenanta":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Zobrazuje zůstat přihlášený? výzv":::
 
 Podrobnosti o chybě při přihlašování jsou následující a v příkladu jsou zvýrazněné.
 
 * **Kód chyby přihlášení**: 50140
 * **Důvod selhání**: k této chybě došlo v důsledku přerušení přihlášení uživatele, když se uživatel přihlašuje.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Diagram znázorňující tok přihlašování uživatelů pro spravovaného vs. federovaného tenanta":::
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Příklad záznamu přihlašovacího protokolu s přerušením přihlášení":::
 
 Uživatelům můžete zabránit v zobrazení přerušení nastavením **možnosti zobrazit možnost zůstat přihlášeni** na hodnotu **ne** v nastavení Pokročilé značky. Tím se zakáže výzva políčko zůstat přihlášeni pro všechny uživatele ve vašem adresáři služby Azure AD.
 

@@ -9,10 +9,10 @@ ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880907"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
@@ -35,7 +35,7 @@ V tomto kurzu se používá aplikace logiky k tomu, abyste si ukázali, jak:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Abyste mohli začít, budete potřebovat účet Video Indexer společně s [přístupem k rozhraním API přes klíč rozhraní API](video-indexer-use-apis.md). 
 * Budete také potřebovat účet Azure Storage. Poznamenejte si přístupový klíč pro váš účet úložiště. Vytvořte dva kontejnery – jeden pro ukládání videí do a jeden pro uložení přehledů vygenerovaných Video Indexer v.  

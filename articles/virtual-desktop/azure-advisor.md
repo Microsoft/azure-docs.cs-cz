@@ -7,10 +7,10 @@ ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 76b7f97b6020a3a0d5571a3a105d15f7d7893485
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89147437"
 ---
 # <a name="use-azure-advisor-with-windows-virtual-desktop"></a>Použití Azure Advisor s virtuálním počítačem s Windows
@@ -25,7 +25,7 @@ Azure Advisor analyzuje vaše konfigurace a telemetrii a nabízí přizpůsoben�
 
 ## <a name="how-to-start-using-azure-advisor"></a>Jak začít používat Azure Advisor
 
-Vše, co potřebujete, můžete začít je účet Azure na Azure Portal. Nejdřív otevřete Azure Portal na <https://portal.azure.com/#home> , pak v části **služby Azure**vyberte **Poradce** , jak je znázorněno na následujícím obrázku. Do panelu hledání v Azure Portal můžete zadat také text "Azure Advisor".
+Vše, co potřebujete, můžete začít je účet Azure na Azure Portal. Nejdřív otevřete Azure Portal na <https://portal.azure.com/#home> , pak v části **služby Azure** vyberte **Poradce** , jak je znázorněno na následujícím obrázku. Do panelu hledání v Azure Portal můžete zadat také text "Azure Advisor".
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky Azure Portal. Uživatel přesune ukazatel myši na odkaz Azure Advisor, což způsobí zobrazení rozevírací nabídky.](media/azure-advisor.png)

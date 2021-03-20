@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: f54467c03a67797d52ac499ca9ba455c0f75e240
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92071451"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Bezpečně spusťte službu Správa certifikátů trezoru OPC.
@@ -194,7 +194,7 @@ Služba OPC trezor je online certifikační autorita, která zákazníkům dáv�
 ### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>Klíče a certifikáty certifikační autority musí splňovat minimální požadavky.
 
 - **Privátní klíče**: klíče RSA musí mít minimálně 2048 bitů. Pokud je datum vypršení platnosti certifikátu certifikační autority pozdější než 2030, musí být klíč certifikační autority 4096 bitů nebo větší.
-- **Doba**platnosti: maximální doba platnosti certifikátu pro certifikační autority, které jsou online a mají stav pouze certifikáty odběratele, nesmí překročit 6 let. U těchto certifikačních autorit se nesmí použít související privátní podpisový klíč delší než 3 roky k vydávání nových certifikátů.
+- **Doba** platnosti: maximální doba platnosti certifikátu pro certifikační autority, které jsou online a mají stav pouze certifikáty odběratele, nesmí překročit 6 let. U těchto certifikačních autorit se nesmí použít související privátní podpisový klíč delší než 3 roky k vydávání nových certifikátů.
 
 ### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>Klíče certifikační autority jsou chráněné pomocí modulů hardwarového zabezpečení.
 

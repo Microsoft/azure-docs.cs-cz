@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89279648"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: koncepty návrhu
@@ -62,7 +62,7 @@ Pokud máte více doménových struktur a nepřesouváte uživatele mezi doméno
 
 Pokud přesouváte uživatele mezi doménovými strukturami a doménami, je nutné najít atribut, který se nemění nebo může být během přesunu přesunut s uživateli. Doporučeným přístupem je zavedení syntetického atributu. Atribut, který může obsahovat něco, co vypadá jako identifikátor GUID, by byl vhodný. Při vytváření objektu se vytvoří nový GUID a na uživatele se vyřídí razítko. Na serveru synchronizace se dá vytvořit vlastní pravidlo synchronizace pro vytvoření této hodnoty na základě identifikátoru **GUID** a aktualizace vybraného atributu v nástroji Přidat. Při přesunu objektu Nezapomeňte také zkopírovat obsah této hodnoty.
 
-Dalším řešením je vybrat existující atribut, který víte, že se nemění. Běžně používané atributy zahrnují **ČísloZaměstnance**. Pokud se podíváte na atribut, který obsahuje písmena, ujistěte se, že se nejedná o případ (velká a malá písmena), která by se mohla změnit pro hodnotu atributu. Chybné atributy, které by neměly být použity, obsahují tyto atributy s názvem uživatele. V sňatku nebo rozvodu se očekává, že se změní název, který není pro tento atribut povolen. To je také jeden z důvodů, proč atributy, jako například **userPrincipalName**, **mail**a **targetAddress** , nejsou dokonce možné vybrat v Průvodci instalací Azure AD Connect. Tyto atributy také obsahují znak " \@ ", který není v sourceAnchor povolen.
+Dalším řešením je vybrat existující atribut, který víte, že se nemění. Běžně používané atributy zahrnují **ČísloZaměstnance**. Pokud se podíváte na atribut, který obsahuje písmena, ujistěte se, že se nejedná o případ (velká a malá písmena), která by se mohla změnit pro hodnotu atributu. Chybné atributy, které by neměly být použity, obsahují tyto atributy s názvem uživatele. V sňatku nebo rozvodu se očekává, že se změní název, který není pro tento atribut povolen. To je také jeden z důvodů, proč atributy, jako například **userPrincipalName**, **mail** a **targetAddress** , nejsou dokonce možné vybrat v Průvodci instalací Azure AD Connect. Tyto atributy také obsahují znak " \@ ", který není v sourceAnchor povolen.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Změna atributu sourceAnchor
 Hodnotu atributu sourceAnchor nelze změnit poté, co byl objekt vytvořen v rámci služby Azure AD a identita je synchronizována.

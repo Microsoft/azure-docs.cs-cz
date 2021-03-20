@@ -7,20 +7,20 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: c8251eb2a89a7481ebc981f2b89668c363651b39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91315010"
 ---
-# <a name="manage-scheduled-maintenance-settings-for-azure-database-for-mysql--flexible-server"></a>Spravovat nastavení naplánované údržby pro Azure Database for MySQL – flexibilní Server
+# <a name="manage-scheduled-maintenance-settings-for-azure-database-for-mysql--flexible-server"></a>Správa nastavení plánované údržby pro flexibilní server Azure Database for MySQL
  
 Můžete zadat možnosti údržby pro každý flexibilní Server v rámci vašeho předplatného Azure. Možnosti zahrnují plán údržby a nastavení oznámení pro nadcházející a dokončené události údržby.
 
 > [!IMPORTANT]
 > Azure Database for MySQL – flexibilní Server je ve verzi Preview.
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto průvodce budete potřebovat:
 - [Azure Database for MySQL – flexibilní Server](quickstart-create-server-portal.md)
  

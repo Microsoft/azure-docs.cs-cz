@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89291544"
 ---
 # <a name="filters"></a>Filtry
@@ -43,13 +43,13 @@ Existují dva typy filtrů:
 * [Filtry účtu](/rest/api/media/accountfilters) (globální) – dá se použít pro všechny prostředky v účtu Azure Media Services, které mají dobu života účtu.
 * [Filtry assetu](/rest/api/media/assetfilters) (místní) – lze použít pouze na prostředek, ke kterému byl filtr přidružen při vytváření, a má životnost assetu. 
 
-**Filtry účtu** a typy **filtrů prostředků** mají přesně stejné vlastnosti pro definování/popis filtru. Kromě při vytváření **filtru assetů**je třeba zadat název assetu, ke kterému chcete filtr přidružit.
+**Filtry účtu** a typy **filtrů prostředků** mají přesně stejné vlastnosti pro definování/popis filtru. Kromě při vytváření **filtru assetů** je třeba zadat název assetu, ke kterému chcete filtr přidružit.
 
 V závislosti na vašem scénáři se rozhodujete, jaký typ filtru je vhodnější (filtr prostředků nebo filtr účtu). Filtry účtu jsou vhodné pro profily zařízení (filtrování verzí), kde se dají filtry assetů použít k oříznutí konkrétního prostředku.
 
 Pomocí následujících vlastností popíšete filtry. 
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |firstQuality|První přenosová rychlost filtru.|
 |presentationTimeRange|Časový rozsah prezentace. Tato vlastnost se používá pro filtrování počátečních a koncových bodů, délky okna prezentace a živé počáteční pozice. <br/>Další informace najdete v tématu [PresentationTimeRange](#presentationtimerange).|
@@ -59,7 +59,7 @@ Pomocí následujících vlastností popíšete filtry.
 
 Tuto vlastnost použijte s **filtry assetů**. Nedoporučuje se nastavovat vlastnost s **filtry účtu**.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |**endTimestamp**|Platí pro video na vyžádání (VoD).<br/>V případě prezentace živého streamování se netichě ignoruje a použije se při ukončení prezentace a datový proud se VoD.<br/>Jedná se o dlouhou hodnotu, která představuje absolutní koncový bod prezentace, zaokrouhlený na nejbližší další skupinu GOP Start. Jednotka je časové měřítko, takže endTimestamp 1800000000 bude trvat 3 minuty.<br/>Pomocí startTimestamp a endTimestamp ořízněte fragmenty, které budou v seznamu testů (manifest).<br/>Například startTimestamp = 40000000 a endTimestamp = 100000000 pomocí výchozí časové osy vygeneruje seznam testů, který obsahuje fragmenty ze 4 sekund a 10 sekund z prezentace VoD. Pokud fragment přechází na hranici, bude v manifestu obsažen celý fragment.|
 |**forceEndTimestamp**|Platí jenom pro živé streamování.<br/>Určuje, zda musí být přítomna vlastnost endTimestamp. Pokud je nastaveno na true, musí se zadat endTimestamp nebo se vrátí špatný kód žádosti.<br/>Povolené hodnoty: false, true.|
@@ -74,7 +74,7 @@ V závislosti na tom, které stopy streamu (živé streamování nebo video na v
 
 Filtrovat podmínky vlastností sledování popisují typy sledování, hodnoty (popsané v následující tabulce) a operace (EQUAL, NotEqual). 
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |**Rychlostí**|Použijte přenosovou rychlost stopy pro filtrování.<br/><br/>Doporučená hodnota je rozsah přenosové rychlosti v bitech za sekundu. Například "0-2427000".<br/><br/>Poznámka: když můžete použít určitou hodnotu přenosové rychlosti, třeba 250000 (bity za sekundu), tento přístup se nedoporučuje, protože přesné přenosové rychlosti můžou kolísat od jednoho Assetu k druhému.|
 |**FourCC**|Použijte hodnotu FourCC stopy pro filtrování.<br/><br/>Hodnota je prvním prvkem formátu kodeků, jak je uvedeno v [dokumentu RFC 6381](https://tools.ietf.org/html/rfc6381). V současné době jsou podporovány následující kodeky: <br/>Video: "avc1", "hev1", "hvc1"<br/>Pro zvuk: "mp4a", "ES-3"<br/><br/>Chcete-li určit hodnoty FourCC pro stopy v Assetu, Získejte a prověřte soubor manifestu.|

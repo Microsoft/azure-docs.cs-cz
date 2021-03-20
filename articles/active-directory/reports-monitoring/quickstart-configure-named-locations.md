@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94f4d17596936dd9d0ebbdae3c351cac9ed2a570
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89299860"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rychlý start: Konfigurace pojmenovaných umístění ve službě Azure Active Directory
@@ -41,9 +41,9 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 
 ## <a name="configure-named-locations"></a>Konfigurace pojmenovaných umístění
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-2. V levém podokně vyberte **Azure Active Directory**a potom v části **zabezpečení** vyberte **podmíněný přístup** .
+2. V levém podokně vyberte **Azure Active Directory** a potom v části **zabezpečení** vyberte **podmíněný přístup** .
 
     ![Karta podmíněný přístup](./media/quickstart-configure-named-locations/entrypoint.png)
 
@@ -55,13 +55,13 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 
    * Do pole **Název** zadejte název pro pojmenované umístění.
    * Do pole **Rozsahy IP adres** zadejte rozsah IP adres ve formátu CIDR.  
-   * Klikněte na **Create** (Vytvořit).
+   * Klikněte na **Vytvořit**.
     
      ![Nové okno](./media/quickstart-configure-named-locations/61.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 - [Umístění jako podmínka v podmíněném přístupu](../conditional-access/concept-conditional-access-conditions.md#locations).
 - [Sestava rizikových přihlášení](../identity-protection/overview-identity-protection.md).

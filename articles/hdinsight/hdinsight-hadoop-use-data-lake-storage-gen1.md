@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 35941f585a0ae5c0d3915c769db5b18737b299f0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945418"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Použití Data Lake Storage Gen1 s clustery Azure HDInsight
@@ -105,13 +105,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>Použití Data Lake Storage Gen1 jako dalšího úložiště
 
-Data Lake Storage Gen1 můžete použít také jako další úložiště pro cluster. V takových případech může být výchozí úložiště clusteru Azure Blob Storage nebo účet Azure Data Lake Storage Gen1. Pokud spouštíte úlohy HDInsight s daty uloženými v Azure Data Lake Storage Gen1 jako další úložiště, použijte plně kvalifikovanou cestu. Příklad:
+Data Lake Storage Gen1 můžete použít také jako další úložiště pro cluster. V takových případech může být výchozí úložiště clusteru Azure Blob Storage nebo účet Azure Data Lake Storage Gen1. Pokud spouštíte úlohy HDInsight s daty uloženými v Azure Data Lake Storage Gen1 jako další úložiště, použijte plně kvalifikovanou cestu. Například:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
 V adrese URL teď není **cluster_root_path** . To je proto, že v tomto případě Data Lake Storage není výchozí úložiště. Stačí pouze zadat cestu k souborům.
 
-Pokud chcete použít Data Lake Storage Gen1 jako další úložiště, udělte instančnímu objektu přístup k cestám, kde jsou vaše soubory uložené.  Příklad:
+Pokud chcete použít Data Lake Storage Gen1 jako další úložiště, udělte instančnímu objektu přístup k cestám, kde jsou vaše soubory uložené.  Například:
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 

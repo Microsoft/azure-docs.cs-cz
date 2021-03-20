@@ -16,10 +16,10 @@ ms.date: 06/21/2018
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: e58c1177fb3c4d241a3efe1759b3900abbd04ca1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778389"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migrace profilu Azure CDN ze standardu Verizon na Premium Verizon
@@ -46,7 +46,7 @@ Pokud chcete upgradovat **Azure CDN Standard z profilu Verizon** , obraťte se n
 - Nástroje pro pokročilou analýzu:
    - [Podrobné analýzy HTTP](cdn-advanced-http-reports.md)
    - [Analýza výkonu Edge](cdn-edge-performance.md)
-   - [Analýzy v reálném čase](cdn-real-time-alerts.md)
+   - [Analýza v reálném čase](cdn-real-time-alerts.md)
 
 
 ## <a name="next-steps"></a>Další kroky

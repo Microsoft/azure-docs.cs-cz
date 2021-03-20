@@ -5,10 +5,10 @@ ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89180571"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
@@ -24,7 +24,7 @@ Když zálohujete data v Azure, ukládáte tato data do prostředku Azure označ
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -75,7 +75,7 @@ Po vytvoření trezoru služby Recovery Services je dalším krokem konfigurace 
 
 1. V nabídce řídicího panelu trezoru vyberte **zálohování** a otevřete nabídku zálohování.
 
-1. V nabídce Cíl zálohování v rozevírací nabídce **Kde je spuštěná vaše úloha?** zvolte *Azure*. Z rozevíracího seznamu **co chcete zálohovat** vyberte možnost *virtuální počítač*a vyberte možnost **zálohovat**.
+1. V nabídce Cíl zálohování v rozevírací nabídce **Kde je spuštěná vaše úloha?** zvolte *Azure*. Z rozevíracího seznamu **co chcete zálohovat** vyberte možnost *virtuální počítač* a vyberte možnost **zálohovat**.
 
     Tyto akce připraví trezor služby Recovery Services na práci s virtuálním počítačem. Trezory služby Recovery Services mají výchozí zásadu, která vytváří body obnovení každý den a uchovává je po dobu 30 dnů.
 
@@ -98,7 +98,7 @@ Po vytvoření trezoru služby Recovery Services je dalším krokem konfigurace 
 
      Po vytvoření zásady zálohování tuto zásadu přidružte k virtuálním počítačům.
 
-1. V části **Virtual Machines**vyberte **Přidat**.
+1. V části **Virtual Machines** vyberte **Přidat**.
 
      ![Přidat virtuální počítače](./media/tutorial-backup-vm-at-scale/add-virtual-machines.png)
 
@@ -118,7 +118,7 @@ Povolili jste zálohování pro Recovery Services trezory, ale nevytvořili jste
 
 Spuštění úlohy zálohování na vyžádání:
 
-1. Na řídicím panelu trezoru vyberte **3** v části **zálohované položky**a otevřete tak nabídku zálohované položky.
+1. Na řídicím panelu trezoru vyberte **3** v části **zálohované položky** a otevřete tak nabídku zálohované položky.
 
     ![Zálohované položky](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 

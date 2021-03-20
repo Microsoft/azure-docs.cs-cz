@@ -10,10 +10,10 @@ ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: ad6399a4713520ca0550d143cf3f19f87d55337c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87876797"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Python)
@@ -34,13 +34,13 @@ Další informace o zprávách z cloudu na zařízení najdete v [příručce pr
 
 Na konci tohoto kurzu spustíte dvě konzolové aplikace Pythonu:
 
-* **SimulatedDevice.py**upravenou verzi aplikace vytvořenou v části [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-python.md), která se připojí ke službě IoT Hub a přijímá zprávy typu cloud-zařízení.
+* **SimulatedDevice.py** upravenou verzi aplikace vytvořenou v části [odeslání telemetrie ze zařízení do služby IoT Hub](quickstart-send-telemetry-python.md), která se připojí ke službě IoT Hub a přijímá zprávy typu cloud-zařízení.
 
 * **SendCloudToDeviceMessage.py**, který odesílá zprávy ze cloudu na zařízení do aplikace simulovaného zařízení prostřednictvím IoT Hub.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 

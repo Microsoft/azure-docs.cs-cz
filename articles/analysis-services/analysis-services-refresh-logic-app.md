@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
 ms.openlocfilehash: 8a8d434fca7cab4432f38fc64093cf1fe060bd5f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019082"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
@@ -29,7 +29,7 @@ Všechna volání musí být ověřena pomocí platného tokenu Azure Active Dir
 > [!IMPORTANT]
 > V následujících příkladech se předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je povolená brána firewall, musí být do seznamu schválených v bráně Azure Analysis Services firewall přidána veřejná IP adresa iniciátoru žádosti. Další informace o Azure Logic Apps rozsahech IP adres na oblast najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#configuration).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 #### <a name="create-a-service-principal-spn"></a>Vytvoření instančního objektu (SPN)
 

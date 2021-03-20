@@ -12,10 +12,10 @@ ms.date: 12/16/2020
 ms.author: aahi
 keywords: místní, Docker, kontejner, Kubernetes
 ms.openlocfilehash: f5caac0a0da3595075dddd5a273a6883a0cca468
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97861821"
 ---
 # <a name="azure-cognitive-services-containers"></a>Kontejnery Azure Cognitive Services
@@ -41,13 +41,13 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 
 ### <a name="decision-containers"></a>Kontejnery pro rozhodování
 
-| Služba |  Kontejner | Popis | Dostupnost |
+| Služba |  Kontejner | Description | Dostupnost |
 |--|--|--|--|
 | [Detektor anomálií][ad-containers] | **Detektor anomálií** ([Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-decision-anomaly-detector))  | Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení. | Obecná dostupnost |
 
 ### <a name="language-containers"></a>Jazykové kontejnery
 
-| Služba |  Kontejner | Popis | Dostupnost |
+| Služba |  Kontejner | Description | Dostupnost |
 |--|--|--|--|
 | [LUIS][lu-containers] |  **Luis** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Načte vyškolený nebo publikovaný Language Understanding model, označovaný také jako aplikace LUIS, do kontejneru Docker a poskytuje přístup k předpovědi dotazů z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky na [portál Luis](https://www.luis.ai) , aby se zlepšila přesnost předpovědi aplikace. | Obecná dostupnost |
 | [Analýza textu][ta-containers-keyphrase] | **Extrakce klíčových frází** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahuje klíčové fráze k identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). | Preview |
@@ -60,7 +60,7 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 > [!NOTE]
 > Chcete-li používat kontejnery řeči, budete muset vyplnit [formulář žádosti online](https://aka.ms/csgate).
 
-| Služba |  Kontejner | Popis | Dostupnost |
+| Služba |  Kontejner | Description | Dostupnost |
 |--|--|--|
 | [Rozhraní API služby Speech][sp-containers-stt] |  **Převod řeči na text** ([Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-speechservices-custom-speech-to-text)) | Přepisuje plynulou řeč v reálném čase do textové podoby. | Obecná dostupnost |
 | [Rozhraní API služby Speech][sp-containers-cstt] | **Custom Speech k textu** ([Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-speechservices-custom-speech-to-text)) | Transcribes průběžné rozpoznávání řeči v reálném čase na text pomocí vlastního modelu. | Obecná dostupnost |
@@ -74,7 +74,7 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 > [!WARNING]
 > 11. června 2020 Microsoft oznámil, že nebude prodávat technologii rozpoznávání tváří policejním oddělením v USA, dokud nebude zavedena přísná regulace založená na lidských právech. Zákazníci tak nebudou moci používat funkce rozpoznávání obličeje nebo funkce, které jsou součástí služeb Azure, jako je například obličej nebo Video Indexer, pokud je zákazník nebo je povolen používání těchto služeb v rámci nebo pro, policejní oddělení v USA.
 
-| Služba |  Kontejner | Popis | Dostupnost |
+| Služba |  Kontejner | Description | Dostupnost |
 |--|--|--|--|
 | [Počítačové zpracování obrazu][cv-containers] | **Číst optické rozpoznávání znaků** ([Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Kontejner OCR pro čtení umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v [dokumentaci k rozhraní API pro čtení](./computer-vision/concept-recognizing-text.md). | Gated Preview. [Požádat o přístup][request-access] |
 | [Prostorová analýza][spa-containers] | **Prostorová analýza** ([Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | Analyzuje video streamování v reálném čase, které vám pomůže pochopit prostorové vztahy mezi lidmi, jejich pohybem a interakcemi s objekty ve fyzických prostředích. | Gated Preview. [Požádat o přístup][request-access] |
@@ -93,7 +93,7 @@ Kromě toho jsou v Cognitive Services nabídce [více služeb](cognitive-service
 * LUIS
 * Analýza textu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete používat kontejnery Cognitive Services Azure, musíte splnit následující předpoklady:
 

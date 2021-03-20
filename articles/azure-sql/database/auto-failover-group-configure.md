@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/14/2019
 ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94594279"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
@@ -28,7 +28,7 @@ V tomto tématu se naučíte, jak nakonfigurovat [skupinu automatického převze
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal nebo PowerShellu.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Vezměte v úvahu následující požadavky:
 
@@ -52,7 +52,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
 
 1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit**.
 
-   - **Databáze v rámci této skupiny** : Vyberte databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. Když přidáte databázi do skupiny převzetí služeb při selhání, automaticky se spustí proces geografické replikace.
+   - **Databáze v rámci této skupiny**: Vyberte databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. Když přidáte databázi do skupiny převzetí služeb při selhání, automaticky se spustí proces geografické replikace.
 
    ![Přidat SQL Database do skupiny převzetí služeb při selhání](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -196,7 +196,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal nebo PowerShellu.  
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Vezměte v úvahu následující požadavky:
 
@@ -350,7 +350,7 @@ Budete muset buď nakonfigurovat [ExpressRoute](../../expressroute/expressroute-
 
 Nasaďte spravované instance do [spárovaných oblastí](../../best-practices-availability-paired-regions.md) z důvodů výkonu. Spravované instance nacházející se v geograficky spárované oblasti mají mnohem lepší výkon v porovnání s nespárovanými oblastmi. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Vezměte v úvahu následující požadavky:
 
@@ -514,9 +514,9 @@ Vytvořte připojení mezi dvěma branami pomocí Azure Portal.
     1. Vyberte vaše předplatné z rozevíracího seznamu.
     1. V rozevíracím seznamu vyberte skupinu prostředků pro spravovanou instanci.
     1. Z rozevíracího seznamu vyberte umístění vaší primární spravované instance.
-1. Na kartě **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK** :
-    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě** , například `Primary-Gateway` .  
-    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě** , například `Secondary-Gateway` .
+1. Na kartě **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK**:
+    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě**, například `Primary-Gateway` .  
+    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě**, například `Secondary-Gateway` .
     1. Zaškrtněte políčko vedle možnosti **navázat obousměrné připojení**.
     1. Buď ponechte výchozí název primárního připojení, nebo ho přejmenujte na hodnotu podle vašeho výběru.
     1. Zadejte **sdílený klíč (PSK)** pro připojení, například `mi1m2psk` .

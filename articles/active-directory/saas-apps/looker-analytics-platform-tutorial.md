@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: jeedes
 ms.openlocfilehash: dbb6f6d278256730e77677e78f452615fe4b611e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180735"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-looker-analytics-platform"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s platformou Looker Analytics
@@ -124,7 +124,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Looker Analytics Platform jako správce.
 
-1. Přejít na protokol **Admin**  ->  **Authentication**  ->  **SAML** pro ověřování správců
+1. Přejít na protokol   ->    ->  **SAML** pro ověřování správců
 
     ![snímek obrazovky s možností SAML](./media/looker-analytics-platform-tutorial/admin.png)
 

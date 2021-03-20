@@ -17,17 +17,17 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 012eefe9140703a62d7bb1074ab763191a0976cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798507"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Vytvoření kontroly přístupu balíčku přístupu v Azure AD – Správa nároků
 
 Pokud chcete snížit riziko zastaralého přístupu, měli byste povolit pravidelné kontroly uživatelů, kteří mají aktivní přiřazení k balíčku přístupu ve správě nároků ve službě Azure AD. Můžete povolit recenze, když vytvoříte nový balíček pro přístup nebo upravíte existující balíček pro přístup. Tento článek popisuje, jak povolit kontroly přístupu pro balíčky přístupu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete povolit recenze balíčků pro přístup, musíte splnit požadavky pro vytvoření balíčku přístupu:
 - Azure AD Premium P2
@@ -53,7 +53,7 @@ Toto nastavení určuje, jak často budou kontroly přístupu provedeny.
 
 1. Nastavte **dobu trvání** , která definuje počet dní, po které se každá kontrola opakujících řad otevře pro vstup od revidujících. Můžete například naplánovat roční přezkum, který začíná 1. ledna a je otevřen ke kontrole po dobu 30 dnů, aby kontroloři měli až do konce měsíce.
 
-1. U **revidujících**vyberte **vlastní kontrolu** , pokud chcete, aby uživatelé prováděli vlastní kontrolu přístupu, nebo vyberte **konkrétní kontrolory** , pokud chcete určit kontrolora.
+1. U **revidujících** vyberte **vlastní kontrolu** , pokud chcete, aby uživatelé prováděli vlastní kontrolu přístupu, nebo vyberte **konkrétní kontrolory** , pokud chcete určit kontrolora.
 
     ![Vyberte Přidat kontrolory.](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
 
@@ -70,7 +70,7 @@ Toto nastavení určuje, jak často budou kontroly přístupu provedeny.
 
 Po počátečním datu bude v části **recenze přístupů** uvedená kontrola přístupu. Chcete-li zobrazit stav kontroly přístupu, postupujte podle těchto kroků:
 
-1. V části zásady **správného řízení identity**klikněte na **přístupové balíčky** a potom vyberte balíček pro přístup se stavem kontroly přístupu, který chcete zkontrolovat.   
+1. V části zásady **správného řízení identity** klikněte na **přístupové balíčky** a potom vyberte balíček pro přístup se stavem kontroly přístupu, který chcete zkontrolovat.   
 
 1. Po dokončení přehledu přístupového balíčku klikněte v levé nabídce na **recenze přístupu** .
     

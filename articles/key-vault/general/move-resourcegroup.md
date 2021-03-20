@@ -12,13 +12,13 @@ ms.date: 04/29/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another resource group.
 ms.openlocfilehash: ea152e1d78ab1ea610eee5420394c89524673993
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92042378"
 ---
-# <a name="moving-an-azure-key-vault-across-resource-groups"></a>Přesunutí Azure Key Vault mezi skupinami prostředků
+# <a name="moving-an-azure-key-vault-across-resource-groups"></a>Přesun služby Azure Key Vault mezi skupinami prostředků
 
 ## <a name="overview"></a>Přehled
 
@@ -49,6 +49,6 @@ Ujistěte se, že přejdete na stránku Azure Policy na Azure Portal a podívát
 5. Z možností rozevíracího seznamu vyberte přesunout do jiné skupiny prostředků.
 6. Vyberte skupinu prostředků, do které chcete přesunout Trezor klíčů.
 7. Potvrzení upozornění týkající se přesunu prostředků
-8. Vyberte OK.
+8. Vyberete OK.
 
 Key Vault teď vyhodnotí platnost přesunutí prostředku a upozorní vás na případné chyby. Pokud se nenaleznou žádné chyby, přesun prostředku se dokončí. 

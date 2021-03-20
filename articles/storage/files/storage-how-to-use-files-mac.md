@@ -8,10 +8,10 @@ ms.date: 09/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 119f4c0ea434bc431b40c905d9142e187b7d9474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326061"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Připojení sdílené složky Azure přes protokol SMB v systému macOS
@@ -37,7 +37,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
     ![Snímek připojené sdílené složky Azure](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>Připojení sdílené složky Azure přes Terminál
-1. Nahraďte  `<storage-account-name>` , `<storage-account-key>` a `<share-name>`   odpovídajícími hodnotami pro vaše prostředí.
+1. Nahraďte `<storage-account-name>` , `<storage-account-key>` a `<share-name>` odpovídajícími hodnotami pro vaše prostředí.
 
     ```
     open smb://<storage-account-name>:<storage-account-key>@<storage-account-name>.file.core.windows.net/<share-name>

@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-js
 ms.date: 04/30/2020
 ms.openlocfilehash: 621e3e1cef39e34656c094a39d218d5d5866fa26
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91309077"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí šablony ARM
@@ -83,7 +83,7 @@ Pomocí Azure Portal nebo nástroje, jako je [Azure CLI](container-instances-qui
 
 Prohlížení protokolů pro instanci kontejneru je užitečné při řešení problémů s kontejnerem nebo aplikací, která se v něm spouští.
 
-Chcete-li zobrazit protokoly kontejneru, v části **Nastavení**vyberte **protokoly kontejnerů**  >  **Logs**. Měl by se zobrazit požadavek HTTP GET, který se vygeneroval, když jste aplikaci zobrazili v prohlížeči.
+Chcete-li zobrazit protokoly kontejneru, v části **Nastavení** vyberte **protokoly kontejnerů**  >  . Měl by se zobrazit požadavek HTTP GET, který se vygeneroval, když jste aplikaci zobrazili v prohlížeči.
 
 ![Protokoly kontejneru na webu Azure Portal](media/container-instances-quickstart-template/aci-logs.png)
 

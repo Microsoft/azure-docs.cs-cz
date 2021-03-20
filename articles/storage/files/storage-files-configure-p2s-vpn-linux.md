@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 74422318718e318a00d7bd7ebaf8e4093ef75aa6
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629270"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure
@@ -19,7 +19,7 @@ Pomocí připojení VPN typu Point-to-Site (P2S) můžete připojit sdílené sl
 
 Důrazně doporučujeme, abyste si přečetli [Přehled sítě Azure Files](storage-files-networking-overview.md) , než budete pokračovat v tomto článku, abyste mohli získat úplnou diskusi o možnostech sítě dostupných pro soubory Azure.
 
-Tento článek podrobně popisuje postup konfigurace sítě VPN typu Point-to-site v systému Linux pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat Azure File Sync provoz přes síť VPN, přečtěte si téma [Konfigurace nastavení proxy serveru Azure File Sync a brány firewall](storage-sync-files-firewall-and-proxy.md).
+Tento článek podrobně popisuje postup konfigurace sítě VPN typu Point-to-site v systému Linux pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat Synchronizace souborů Azure provoz přes síť VPN, přečtěte si téma [Konfigurace nastavení proxy serveru synchronizace souborů Azure a brány firewall](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 - Nejnovější verze rozhraní příkazového řádku Azure CLI. Další informace o tom, jak nainstalovat rozhraní příkazového řádku Azure, najdete v tématu [instalace rozhraní příkazového řádku Azure PowerShell](/cli/azure/install-azure-cli) a výběr operačního systému. Pokud upřednostňujete použití modulu Azure PowerShell v systému Linux, může se stát, že následující pokyny jsou k dispozici pro rozhraní příkazového řádku Azure CLI.

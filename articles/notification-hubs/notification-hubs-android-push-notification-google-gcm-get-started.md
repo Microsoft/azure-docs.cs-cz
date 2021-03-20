@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 8c97710202a448c613ab685932cb335bbaed4953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87832650"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
@@ -51,7 +51,7 @@ V tomto kurzu provedete následující akce:
 > * Připojte aplikaci k centru oznámení
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
@@ -66,7 +66,7 @@ V tomto kurzu provedete následující akce:
 
 ### <a name="configure-gcm-setting-for-the-notification-hub"></a>Konfigurace nastavení GCM pro centrum oznámení
 
-1. V **Nastavení oznámení**vyberte **Google (GCM)** .
+1. V **Nastavení oznámení** vyberte **Google (GCM)** .
 2. Zadejte **klíč API**, který jste získali z Google Cloud Console.
 3. Na panelu nástrojů vyberte **Uložit**.
 
@@ -498,7 +498,7 @@ Příjem nabízených oznámení aplikací můžete otestovat, když je odešlet
 
 Pokud chcete testovat nabízená oznámení uvnitř emulátoru, ověřte, zda bitová kopie emulátoru podporuje úroveň rozhraní Google API, kterou jste zvolili pro vaši aplikaci. Pokud vaše image nepodporuje nativní rozhraní Google API, zobrazí se výjimka **SLUŽBA\_NENÍ\_K DISPOZICI**.
 
-Kromě toho se ujistěte, že jste do svého spuštěného emulátoru v části **Nastavení**  >  **účty**přidali účet Google. V opačném případě mohou vaše pokusy o registraci s GCM mít za následek výjimku **OVĚŘOVÁNÍ\_SE NEZDAŘILO**.
+Kromě toho se ujistěte, že jste do svého spuštěného emulátoru v části **Nastavení**  >  **účty** přidali účet Google. V opačném případě mohou vaše pokusy o registraci s GCM mít za následek výjimku **OVĚŘOVÁNÍ\_SE NEZDAŘILO**.
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(Volitelné) Zasílání nabízených oznámení přímo z aplikace
 

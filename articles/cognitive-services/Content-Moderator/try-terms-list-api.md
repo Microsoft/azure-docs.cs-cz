@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85800036"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Střední s vlastními seznamy podmínek v konzole API
@@ -44,11 +44,11 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
 Až provedete změny v seznamu termínů, je nutné aktualizovat index, aby se změny projevily v budoucích kontrolách. Tento krok je podobný tomu, jak vyhledávací modul na ploše (Pokud je povolen) nebo webový vyhledávací modul průběžně aktualizuje svůj index, aby zahrnoval nové soubory nebo stránky.
 
-1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů**a pak vyberte **Aktualizovat index vyhledávání**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů** a pak vyberte **Aktualizovat index vyhledávání**. 
 
    Otevře se stránka **termín seznamy-obnovit index vyhledávání** .
 
-2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+2. V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisuje vaše umístění. 
 
    ![Seznam termínů – aktualizovat výběr oblasti stránky indexu hledání](images/test-drive-region.png)
 
@@ -63,7 +63,7 @@ Až provedete změny v seznamu termínů, je nutné aktualizovat index, aby se z
 
    Otevře se stránka **termíny seznamy – vytvořit** .
 
-2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+2. V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisuje vaše umístění. 
 
    ![Seznamy podmínek – vytvoření výběru oblasti stránky](images/test-drive-region.png)
 
@@ -91,15 +91,15 @@ Až provedete změny v seznamu termínů, je nutné aktualizovat index, aby se z
 
    Přidejte metadata seznamu jako páry klíč-hodnota, nikoli skutečné výrazy.
  
-6. Vyberte **Poslat**. Vytvoří se Váš seznam. Poznamenejte si hodnotu **ID** , která je přidružená k novému seznamu. Toto ID budete potřebovat pro jiné funkce správy seznamu termínů.
+6. Vyberte **Odeslat**. Vytvoří se Váš seznam. Poznamenejte si hodnotu **ID** , která je přidružená k novému seznamu. Toto ID budete potřebovat pro jiné funkce správy seznamu termínů.
 
    ![Seznamy termínů – pole vytvořit obsah odpovědi konzoly zobrazuje ID seznamu](images/try-terms-list-create-2.png)
  
-7. Přidejte do MyList výrazy. V nabídce vlevo v části **termín**vyberte **Přidat termín**. 
+7. Přidejte do MyList výrazy. V nabídce vlevo v části **termín** vyberte **Přidat termín**. 
 
    Otevře se stránka s termínem **Přidat termín** . 
 
-8. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+8. V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisuje vaše umístění. 
 
    ![Přidat výběr oblasti termínu stránky](images/test-drive-region.png)
 
@@ -109,11 +109,11 @@ Až provedete změny v seznamu termínů, je nutné aktualizovat index, aby se z
 
    ![Přidat parametry dotazu konzoly pro termín](images/try-terms-list-create-3.png)
  
-10. Chcete-li ověřit, zda byl termín přidán do seznamu, vyberte v nabídce vlevo možnost **termín**a pak vyberte možnost **získat všechny podmínky**. 
+10. Chcete-li ověřit, zda byl termín přidán do seznamu, vyberte v nabídce vlevo možnost **termín** a pak vyberte možnost **získat všechny podmínky**. 
 
     Otevře se konzola rozhraní API **Term-get all terms** .
 
-11. Do pole **listId** zadejte ID seznamu a potom zadejte svůj klíč předplatného. Vyberte **Poslat**.
+11. Do pole **listId** zadejte ID seznamu a potom zadejte svůj klíč předplatného. Vyberte **Odeslat**.
 
 12. V poli **obsah odpovědi** Ověřte zadané výrazy.
 
@@ -131,11 +131,11 @@ Odstranění výrazu nebo seznamu je jednoduché. Pomocí tohoto rozhraní API p
 
 Tento příklad odstraní jeden výraz.
 
-1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **termín**a pak vyberte **Odstranit**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **termín** a pak vyberte **Odstranit**. 
 
    Otevře se **výraz – odstranění** .
 
-2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+2. V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisuje vaše umístění. 
 
    ![Vymažte výběr oblasti stránky s termínem odstranění](images/test-drive-region.png)
 
@@ -155,11 +155,11 @@ Tento příklad odstraní jeden výraz.
 
 Můžete upravit název a popis seznamu a přidat položky metadat.
 
-1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů**a pak vyberte **aktualizovat podrobnosti**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů** a pak vyberte **aktualizovat podrobnosti**. 
 
    Otevře se stránka **termín seznamy – podrobnosti aktualizace** .
 
-2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+2. V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisuje vaše umístění. 
 
    ![Seznamy termínů – výběr oblasti stránky s podrobnostmi aktualizace](images/test-drive-region.png)
 

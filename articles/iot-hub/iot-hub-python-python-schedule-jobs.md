@@ -10,10 +10,10 @@ ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
 ms.openlocfilehash: 733e3be21a1a1305b5c7947de1ae54ddce5e0d2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87876678"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Úlohy plánování a vysílání (Python)
@@ -54,11 +54,11 @@ Na konci tohoto kurzu máte dvě aplikace v Pythonu:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -155,7 +155,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která reaguje na př
 
 V tomto článku vytvoříte back-end službu, která vyvolá přímou metodu na zařízení a aktualizuje její dvojitou hodnotu. Služba potřebuje ke volání přímé metody na zařízení oprávnění **služby Connect** . Služba také potřebuje oprávnění **pro čtení** a **zápis** do registru ke čtení a zápisu registru identit. Nejsou k dispozici žádné výchozí zásady sdíleného přístupu, které obsahují pouze tato oprávnění, takže je třeba ji vytvořit.
 
-Chcete-li vytvořit zásadu sdíleného přístupu, která uděluje oprávnění **k zápisu služby**, **čtení registru**a **zápisu do registru** , a k získání připojovacího řetězce pro tuto zásadu, postupujte podle následujících kroků:
+Chcete-li vytvořit zásadu sdíleného přístupu, která uděluje oprávnění **k zápisu služby**, **čtení registru** a **zápisu do registru** , a k získání připojovacího řetězce pro tuto zásadu, postupujte podle následujících kroků:
 
 1. Otevřete Centrum IoT v [Azure Portal](https://portal.azure.com). Nejjednodušší způsob, jak se dostat do služby IoT Hub, je vybrat **skupiny prostředků**, vybrat skupinu prostředků, ve které se nachází vaše centrum IoT, a pak ze seznamu prostředků vybrat centrum IoT.
 
@@ -163,13 +163,13 @@ Chcete-li vytvořit zásadu sdíleného přístupu, která uděluje oprávnění
 
 3. V horní nabídce nad seznamem zásad vyberte **Přidat**.
 
-4. V podokně **Přidat zásady sdíleného přístupu** zadejte popisný název zásady. například: *serviceAndRegistryReadWrite*. V části **oprávnění**vyberte **Služba připojení** a **zápis do registru** (při výběru **zápisu do registru**se automaticky vybere možnost**čtení** z registru). Potom vyberte **Vytvořit**.
+4. V podokně **Přidat zásady sdíleného přístupu** zadejte popisný název zásady. například: *serviceAndRegistryReadWrite*. V části **oprávnění** vyberte **Služba připojení** a **zápis do registru** (při výběru **zápisu do registru** se automaticky vybere možnost **čtení** z registru). Potom vyberte **Vytvořit**.
 
     ![Ukázat, jak přidat nové zásady sdíleného přístupu](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
 5. Zpátky v podokně **zásady sdíleného přístupu** vyberte ze seznamu zásad novou zásadu.
 
-6. V části **sdílené přístupové klíče**vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
+6. V části **sdílené přístupové klíče** vyberte ikonu kopírování pro **připojovací řetězec – primární klíč** a uložte hodnotu.
 
     ![Zobrazit způsob načtení připojovacího řetězce](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89289167"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Připojit znalostní bázi Knowledge Store s Power BI
@@ -43,19 +43,19 @@ Kliknutím na **získat Power BI šablonu** na stránce **Přidat dovednosti pro
 
 1. Spusťte Power BI Desktop a klikněte na **získat data**.
 
-1. V okně **získat data** vyberte **Azure**a pak vyberte **Azure Table Storage**.
+1. V okně **získat data** vyberte **Azure** a pak vyberte **Azure Table Storage**.
 
 1. Klikněte na **Připojit**.
 
-1. V poli **název účtu nebo adresa URL**zadejte název účtu Azure Storage (bude vytvořena úplná adresa URL).
+1. V poli **název účtu nebo adresa URL** zadejte název účtu Azure Storage (bude vytvořena úplná adresa URL).
 
 1. Pokud se zobrazí výzva, zadejte klíč účtu úložiště.
 
 1. Vyberte tabulky obsahující data o recenzích hotelu vytvořená předchozími návody. 
 
-   + V návodu k portálu jsou názvy tabulek *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases*a *hotelReviewsSsPages*. 
+   + V návodu k portálu jsou názvy tabulek *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases* a *hotelReviewsSsPages*. 
    
-   + Pro návod REST jsou názvy tabulek *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases*a *hotelReviewsSentiment*.
+   + Pro návod REST jsou názvy tabulek *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases* a *hotelReviewsSentiment*.
 
 1. Klikněte na **načíst**.
 
@@ -63,7 +63,7 @@ Kliknutím na **získat Power BI šablonu** na stránce **Přidat dovednosti pro
 
    ![Otevřít Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Otevřít Power Query")
 
-1. Vyberte *hotelReviewsSsDocument*a pak odstraňte sloupce *PartitionKey*, *RowKey*a *timestamp* . 
+1. Vyberte *hotelReviewsSsDocument* a pak odstraňte sloupce *PartitionKey*, *RowKey* a *timestamp* . 
    ![Upravit tabulky](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Upravit tabulky")
 
 1. Kliknutím na ikonu s protilehlými šipkami v pravé horní části tabulky rozbalte *obsah*. Když se zobrazí seznam sloupců, vyberte všechny sloupce a pak zrušte výběr sloupců, které začínají na metadata. Kliknutím na tlačítko **OK** zobrazíte vybrané sloupce.
@@ -72,12 +72,12 @@ Kliknutím na **získat Power BI šablonu** na stránce **Přidat dovednosti pro
 
 1. Kliknutím na ikonu ABC-123 v levém horním rohu sloupce změňte datový typ pro následující sloupce.
 
-   + Pro položku *Content. Latitude* a *Content. Zeměpis*vyberte **desetinné číslo**.
-   + V případě *Content.reviews_date* a *Content.reviews_dateAdded*vyberte **Datum a čas**.
+   + Pro položku *Content. Latitude* a *Content. Zeměpis* vyberte **desetinné číslo**.
+   + V případě *Content.reviews_date* a *Content.reviews_dateAdded* vyberte **Datum a čas**.
 
    ![Změna datových typů](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Změna datových typů")
 
-1. Vyberte *hotelReviewsSsPages*a potom opakováním kroků 9 a 10 sloupce odstraňte a rozbalte *obsah*.
+1. Vyberte *hotelReviewsSsPages* a potom opakováním kroků 9 a 10 sloupce odstraňte a rozbalte *obsah*.
 1. Změňte datový typ *Content. SentimentScore* na **desetinné číslo**.
 1. Vyberte *hotelReviewsSsKeyPhrases* a opakováním kroků 9 a 10 sloupce odstraňte a rozbalte *obsah*. Pro tuto tabulku neexistují žádné úpravy datových typů.
 

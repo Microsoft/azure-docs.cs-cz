@@ -4,10 +4,10 @@ description: Popisuje úlohy, které se dají chránit pomocí zotavení po hav�
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80062840"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Informace o zotavení po havárii pro místní aplikace
@@ -40,17 +40,17 @@ Site Recovery dokáže replikovat jakoukoli aplikaci spuštěnou na podporované
 
 | **Úloha** |**Replikace virtuálních počítačů Azure do Azure** |**Replikace virtuálních počítačů Hyper-V do sekundární lokality** | **Replikace virtuálních počítačů Hyper-V do Azure** | **Replikace virtuálních počítačů VMware do sekundární lokality** | **Replikace virtuálních počítačů VMware do Azure** |
 | --- | --- | --- | --- | --- |---|
-| Active Directory, DNS |Ano |Ano |Ano |Ano |Ano|
-| Webové aplikace (IIS, SQL) |Ano |Ano |Ano |Ano |Ano|
-| System Center Operations Manager |Ano |Ano |Ano |Ano |Ano|
-| SharePoint |Ano |Ano |Ano |Ano |Ano|
+| Active Directory, DNS |Yes |Yes |Yes |Yes |Yes|
+| Webové aplikace (IIS, SQL) |Yes |Yes |Yes |Yes |Yes|
+| System Center Operations Manager |Yes |Yes |Yes |Yes |Yes|
+| SharePoint |Yes |Yes |Yes |Yes |Yes|
 | SAP<br/><br/>Replikace webu SAP do Azure k neclusterovému použití |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft)|
-| Exchange (ne DAG) |Ano |Ano |Ano |Ano |Ano|
-| Vzdálená plocha/VDI |Ano |Ano |Ano |Ano |Ano|
+| Exchange (ne DAG) |Yes |Yes |Yes |Yes |Yes|
+| Vzdálená plocha/VDI |Yes |Yes |Yes |Yes |Yes|
 | Linux (operační systém a aplikace) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft) |Ano (testováno společností Microsoft)|
-| Dynamics AX |Ano |Ano |Ano |Ano |Ano|
-| Souborový server systému Windows |Ano |Ano |Ano |Ano |Ano|
-| Citrix XenApp a XenDesktop |Ano|Není k dispozici |Ano |Není k dispozici |Ano |
+| Dynamics AX |Yes |Yes |Yes |Yes |Yes|
+| Souborový server systému Windows |Yes |Yes |Yes |Yes |Yes|
+| Citrix XenApp a XenDesktop |Yes|Není k dispozici |Ano |Není k dispozici |Ano |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replikace služby Active Directory a DNS
 
@@ -106,11 +106,11 @@ Pomocí Azure Site Recovery můžete replikovat následující služby:
 
 Možnosti replikace najdete v následující tabulce:
 
-| **Service** |**Replikace virtuálních počítačů Azure do Azure** | **Replikace virtuálních počítačů Hyper-V do sekundární lokality** | **Replikace virtuálních počítačů Hyper-V do Azure** | **Replikace virtuálních počítačů VMware do sekundární lokality** | **Replikace virtuálních počítačů VMware do Azure** | **Replikace fyzických serverů do sekundární lokality** | **Replikace fyzických serverů do Azure** |
+| **Vzdálená plocha** |**Replikace virtuálních počítačů Azure do Azure** | **Replikace virtuálních počítačů Hyper-V do sekundární lokality** | **Replikace virtuálních počítačů Hyper-V do Azure** | **Replikace virtuálních počítačů VMware do sekundární lokality** | **Replikace virtuálních počítačů VMware do Azure** | **Replikace fyzických serverů do sekundární lokality** | **Replikace fyzických serverů do Azure** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **Virtuální desktop ve fondu (nespravovaný)** |No|Ano |No |Ano |No |Ano |No |
-| **Virtuální desktop ve fondu (spravovaný a bez UPD)** |No|Ano |No |Ano |No |Ano |No |
-| **Vzdálené aplikace a desktopové relace (bez UPD)** |Ano|Ano |Ano |Ano |Ano |Ano |Ano |
+| **Virtuální desktop ve fondu (nespravovaný)** |No|Yes |No |Yes |No |Yes |No |
+| **Virtuální desktop ve fondu (spravovaný a bez UPD)** |No|Yes |No |Yes |No |Yes |No |
+| **Vzdálené aplikace a desktopové relace (bez UPD)** |Yes|Yes |Yes |Yes |Yes |Yes |Yes |
 
 [Přečtěte si další informace](/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) o zotavení po havárii pro RDS.
 

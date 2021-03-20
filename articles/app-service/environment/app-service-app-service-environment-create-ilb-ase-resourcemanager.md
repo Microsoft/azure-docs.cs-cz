@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 2a03b791f37868010e107214ddcb7cf42174e4e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85833549"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Vytvoření ILB ASE pomocí šablon Azure Resource Manageru
@@ -52,7 +52,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 Po odeslání šablony Azure Resource Manager může trvat několik hodin, než se vytvoří pomocného nástroje interního nástroje.  Až se vytváření dokončí, v uživatelském rozhraní portálu se zobrazí interního nástroje pomocnému programu portálu v seznamu App Service prostředí pro předplatné, které nasazení aktivovalo.
 
 ## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>Nahrává a konfiguruje se výchozí certifikát TLS/SSL.
-Po vytvoření pomocného programu interního nástroje se certifikát TLS/SSL musí přidružit k tomuto pomocnému programu jako výchozí certifikát TLS/SSL k vytvoření připojení TLS/SSL k aplikacím.  Pokud je výchozí přípona DNS *internal-contoso.com*v případě, že se používá hypotetický příklad společnosti Contoso Corporation, připojení k nástroji *`https://some-random-app.internal-contoso.com`* vyžaduje certifikát TLS/SSL, který je platný pro **. Internal-contoso.com*. 
+Po vytvoření pomocného programu interního nástroje se certifikát TLS/SSL musí přidružit k tomuto pomocnému programu jako výchozí certifikát TLS/SSL k vytvoření připojení TLS/SSL k aplikacím.  Pokud je výchozí přípona DNS *internal-contoso.com* v případě, že se používá hypotetický příklad společnosti Contoso Corporation, připojení k nástroji *`https://some-random-app.internal-contoso.com`* vyžaduje certifikát TLS/SSL, který je platný pro **. Internal-contoso.com*. 
 
 Existuje mnoho způsobů, jak získat platný certifikát TLS/SSL, včetně interních certifikačních autorit, koupit certifikát od externího vystavitele a použít certifikát podepsaný svým držitelem.  Bez ohledu na zdroj certifikátu TLS/SSL musí být správně nakonfigurovány následující atributy certifikátu:
 

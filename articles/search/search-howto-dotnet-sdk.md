@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97881629"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>Jak používat Azure.Search.Documents v aplikaci C# .NET
@@ -288,8 +288,8 @@ Právě jedno pole v indexu musí sloužit jako klíč dokumentu ( `IsKey = true
 | Typ pole | Popis a použití |
 |------------|-----------------------|
 | [`SearchField`](/dotnet/api/azure.search.documents.indexes.models.searchfield) | Základní třída s největší vlastností nastavenou na hodnotu null, s výjimkou toho `Name` , která je vyžadována a `AnalyzerName` která má výchozí nastavení standardní Lucene. |
-| [`SimpleField`](/dotnet/api/azure.search.documents.indexes.models.simplefield) | Pomocný model. Může se jednat o libovolný datový typ, je vždycky neprohledávatelné (pro fulltextové vyhledávací dotazy se ignoruje) a dá se získat (není skrytý). Ostatní atributy jsou ve výchozím nastavení vypnuté, ale dají se povolit. Můžete použít `SimpleField` pro ID dokumentů nebo pole, která se používají jenom v filtrech, omezujících objektech nebo profilech vyhodnocování. Pokud ano, nezapomeňte použít všechny atributy, které jsou nezbytné pro daný scénář, například `IsKey = true` pro ID dokumentu. Další informace naleznete v tématu [SimpleFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) ve zdrojovém kódu. |
-| [`SearchableField`](/dotnet/api/azure.search.documents.indexes.models.searchablefield) | Pomocný model. Musí to být řetězec, který je vždycky prohledávatelný a dá se získat. Ostatní atributy jsou ve výchozím nastavení vypnuté, ale dají se povolit. Vzhledem k tomu, že tento typ pole lze prohledávat, podporuje synonyma a úplný doplněk vlastností analyzátoru. Další informace naleznete v tématu [SearchableFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) ve zdrojovém kódu. |
+| [`SimpleField`](/dotnet/api/azure.search.documents.indexes.models.simplefield) | Pomocný model. Může se jednat o libovolný datový typ, je vždycky neprohledávatelné (pro fulltextové vyhledávací dotazy se ignoruje) a dá se získat (není skrytý). Ostatní atributy jsou ve výchozím nastavení vypnuté, ale dají se povolit. Můžete použít `SimpleField` pro ID dokumentů nebo pole, která se používají jenom v filtrech, omezujících objektech nebo profilech vyhodnocování. Pokud ano, nezapomeňte použít všechny atributy, které jsou nezbytné pro daný scénář, například `IsKey = true` pro ID dokumentu. Další informace naleznete v tématu [SimpleFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) ve zdrojovém kódu. |
+| [`SearchableField`](/dotnet/api/azure.search.documents.indexes.models.searchablefield) | Pomocný model. Musí to být řetězec, který je vždycky prohledávatelný a dá se získat. Ostatní atributy jsou ve výchozím nastavení vypnuté, ale dají se povolit. Vzhledem k tomu, že tento typ pole lze prohledávat, podporuje synonyma a úplný doplněk vlastností analyzátoru. Další informace naleznete v tématu [SearchableFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) ve zdrojovém kódu. |
 
 Bez ohledu na to, jestli používáte základní `SearchField` rozhraní API nebo některý z pomocných modelů, musíte explicitně povolit atributy Filter, Face a Sort. Například může být [nefiltrovaná](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [nesetříditelné](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)a vlastnost- [Face](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) , jak je znázorněno v ukázce výše.
 

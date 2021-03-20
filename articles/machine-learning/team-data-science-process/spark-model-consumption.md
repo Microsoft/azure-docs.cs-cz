@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86027439"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Modely strojového učení založené na zprovoznění Spark
@@ -32,7 +32,7 @@ Poznámkový blok [pySpark-Machine-Learning-data-věda-Spark-model-spotřebe. ip
 Pokud chcete upravit Poznámkový blok Jupyter pro Spark 1,6 pro použití s clusterem HDInsight Spark 2,0, nahraďte soubor kódu Pythonu [tímto souborem](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Tento kód ukazuje, jak spotřebovávat modely vytvořené ve Spark 2,0.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. K dokončení tohoto Názorného postupu potřebujete účet Azure a cluster HDInsight 1,6 (nebo Spark 2,0). Pokyny, jak tyto požadavky naplnit, najdete v tématu [Přehled vědeckého zpracování dat pomocí Sparku ve službě Azure HDInsight](spark-overview.md) . Toto téma také obsahuje popis zde používaných dat taxislužby NYC 2013 a pokyny, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark. 
 2. Vytvářejte modely strojového učení, které se tady mají vyhodnotit, pomocí tématu [zkoumání a modelování dat pomocí Sparku](spark-data-exploration-modeling.md) pro cluster Spark 1,6 nebo pro notebooky Spark 2,0. 
@@ -545,7 +545,7 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.
 Spark poskytuje mechanismus pro vzdálené odesílání dávkových úloh nebo interaktivních dotazů prostřednictvím rozhraní REST s komponentou s názvem Livy. Livy je ve výchozím nastavení povolená v clusteru HDInsight Spark. Další informace o Livy najdete v tématu [vzdálené odeslání úloh Sparku pomocí Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Livy můžete použít k vzdálenému odeslání úlohy, která dávkou vyhodnotí soubor uložený v objektu blob Azure a pak zapíše výsledky do jiného objektu BLOB. Pokud to chcete provést, nahrajte skript Pythonu z  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do objektu BLOB clusteru Spark. Ke zkopírování skriptu do objektu BLOB clusteru můžete použít nástroj, například **Průzkumník služby Microsoft Azure Storage** nebo **AzCopy** . V našem případě jsme nahráli skript na ***wasb:///example/Python/ConsumeGBNYCReg.py***.   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do objektu BLOB clusteru Spark. Ke zkopírování skriptu do objektu BLOB clusteru můžete použít nástroj, například **Průzkumník služby Microsoft Azure Storage** nebo **AzCopy** . V našem případě jsme nahráli skript na **_wasb:///example/Python/ConsumeGBNYCReg.py_**.   
 
 > [!NOTE]
 > Přístupové klávesy, které potřebujete, najdete na portálu pro účet úložiště, který je přidružený ke clusteru Spark. 
@@ -608,5 +608,5 @@ Pokud dáváte přednost kódu bez klienta, použijte [Azure Logic Apps](https:/
 ![Návrhář pro Logic Apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>Co dále?
-**Křížové ověřování a**nakládání s parametry: Přečtěte si článek [pokročilý průzkum a modelování dat pomocí Sparku](spark-advanced-data-exploration-modeling.md) , jak lze modely vyškolené pomocí křížového ověřování a s využitím úklidu Hyper-parametr.
+**Křížové ověřování a** nakládání s parametry: Přečtěte si článek [pokročilý průzkum a modelování dat pomocí Sparku](spark-advanced-data-exploration-modeling.md) , jak lze modely vyškolené pomocí křížového ověřování a s využitím úklidu Hyper-parametr.
 

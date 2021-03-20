@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 3b816ddc0eccf8c406cfed37d6bfc594e27d3629
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85850351"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>Vystavení služby AKS přes HTTP nebo HTTPS pomocí Application Gateway 
 
 Tyto kurzy vám pomůžou znázornit využití [prostředků Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/) příchozího přenosu dat a vystavit tak ukázkovou službu Kubernetes prostřednictvím [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) přes HTTP nebo HTTPS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Byl nainstalován `ingress-azure` Helm graf.
   - [**Nasazení bezserverová**](ingress-controller-install-new.md): Pokud začínáte od začátku, přečtěte si tyto pokyny k instalaci, které popisují postup nasazení clusteru AKS pomocí Application Gateway a instalace řadiče pro příchozí bránu Application Gateway do clusteru AKS.
@@ -31,7 +31,7 @@ Aplikace kniha návštěv je kanonická Kubernetes aplikace, která vytváří f
 
 Pomocí níže uvedených pokynů Nasaďte aplikaci pro knihu návštěv.
 
-1. Stáhnout `guestbook-all-in-one.yaml` odsud [here](https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml)
+1. Stáhnout `guestbook-all-in-one.yaml` odsud [](https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml)
 1. Nasaďte `guestbook-all-in-one.yaml` do clusteru AKS spuštěním
 
   ```bash

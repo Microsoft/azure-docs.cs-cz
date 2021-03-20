@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cbc7c82803115f71db233be94d62a857ba050b63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86050198"
 ---
 #### <a name="to-download-hotfixes"></a>Stažení oprav hotfix
@@ -26,7 +26,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
    
     ![Prohledávání katalogu](./media/storsimple-install-update5-hotfix/update-catalog-search.png)
 
-4. Klikněte na tlačítko **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Klikněte na soubory, které chcete stáhnout, do zadaného umístění a složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
+4. Klikněte na **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Klikněte na soubory, které chcete stáhnout, do zadaného umístění a složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
 5. Vyhledejte všechny další opravy hotfix uvedené v tabulce výše (**4037266**) a Stáhněte příslušné soubory do určitých složek, které jsou uvedeny v předchozí tabulce.
 
 > [!NOTE]
@@ -180,7 +180,7 @@ Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následuj
     ```
 
 3. Průběh instalace můžete sledovat pomocí příkazu `Get-HcsUpdateStatus`. Když se `RunInProgress` změní na `False`, aktualizace je dokončena.
-4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlaste se jako možnost 1, **Přihlaste se s úplným přístupem**a ověřte verzi firmwaru disku. Zadejte:
+4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlaste se jako možnost 1, **Přihlaste se s úplným přístupem** a ověřte verzi firmwaru disku. Zadejte:
    
    `Get-HcsFirmwareVersion`
    

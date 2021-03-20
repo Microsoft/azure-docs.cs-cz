@@ -7,10 +7,10 @@ ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87847920"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Kurz: vytvoření Runbooku v Pythonu
@@ -28,7 +28,7 @@ Tento kurz vás provede vytvořením [Runbooku v Pythonu](../automation-runbook-
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K dokončení tohoto kurzu potřebujete:
 
 - Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Účet Automation](../index.yml), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
@@ -48,7 +48,7 @@ Začnete vytvořením jednoduchého Runbooku, který vypíše text *Hello World*
 
 4. Dejte Runbooku název **MyFirstRunbook-Python**.
 
-5. Jako **typ Runbooku**vyberte **Python 2** .
+5. Jako **typ Runbooku** vyberte **Python 2** .
 
 6. Kliknutím na **Vytvořit** vytvoříte runbook a otevřete textový editor.
 

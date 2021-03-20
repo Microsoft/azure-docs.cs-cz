@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: tamram
 ms.openlocfilehash: 27617da97ced9ac775beae71e4c25202944b2aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78940956"
 ---
 Následující tabulka popisuje kapacitu, škálovatelnost a cíle výkonnosti pro úložiště tabulek.
@@ -20,7 +20,7 @@ Následující tabulka popisuje kapacitu, škálovatelnost a cíle výkonnosti p
 | Počet entit v oddílu | Omezené jenom na kapacitu účtu úložiště |
 | Maximální velikost jedné tabulky | 500 TiB |
 | Maximální velikost jedné entity, včetně všech hodnot vlastností | 1 MiB |
-| Maximální počet vlastností v entitě tabulky | 255 (včetně tří systémových vlastností, **PartitionKey**, **RowKey**a **časového razítka**) |
+| Maximální počet vlastností v entitě tabulky | 255 (včetně tří systémových vlastností, **PartitionKey**, **RowKey** a **časového razítka**) |
 | Maximální celková velikost jednotlivé vlastnosti v entitě | Liší se podle typu vlastnosti. Další informace najdete v tématu **typy vlastností** v tématu [Principy datového modelu služby Table Service](/rest/api/storageservices/understanding-the-table-service-data-model). |
 | Velikost **PartitionKey** | Řetězec o velikosti až 1 KiB |
 | Velikost **RowKey** | Řetězec o velikosti až 1 KiB |

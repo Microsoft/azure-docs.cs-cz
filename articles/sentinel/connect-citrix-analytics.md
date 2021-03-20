@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: bbc77340375b22f137045d68b7449dd1e8adc4b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77588378"
 ---
 # <a name="connect-citrix-analytics-security"></a>Připojení Citrix Analytics (zabezpečení) 
@@ -27,7 +27,7 @@ Integrace Citrix Analytics (zabezpečení) s Azure Sentinel vám pomůže export
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 
@@ -36,7 +36,7 @@ Integrace Citrix Analytics (zabezpečení) s Azure Sentinel vám pomůže export
 
 ## <a name="connect-azure-sentinel-to-citrix-analytics-security"></a>Připojení Azure Sentinel k Citrix Analytics (zabezpečení)
 
-1. V Azure Portal přejděte na **Azure Sentinel**  >  **datové konektory** Azure Sentinel a pak vyberte konektor **Citrix Analytics (Security)** .
+1. V Azure Portal přejděte na   >  **datové konektory** Azure Sentinel a pak vyberte konektor **Citrix Analytics (Security)** .
 
 2. Vyberte **stránku otevřít konektor**.
 

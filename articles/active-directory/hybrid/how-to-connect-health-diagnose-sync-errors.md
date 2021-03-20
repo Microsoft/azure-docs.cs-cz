@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fe6af43c9ca44095c328356e8171da10717875e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728233"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnostika a oprava chyb synchronizace kvůli duplicitním atributům
@@ -141,8 +141,8 @@ Cloudový uživatel ve službě Azure AD by neměl mít zdrojové ukotvení. Akt
 **Procesu opravy se nepodařilo aktualizovat hodnoty.**
 Konkrétní nastavení, jako je například [UserWriteback v Azure AD Connect](./how-to-connect-preview.md#user-writeback) , se nepodporuje. Zakažte prosím nastavení. 
 
-## <a name="faq"></a>Nejčastější dotazy
-**Č.** Co se stane, když dojde k chybě při **použití opravy** ?  
+## <a name="faq"></a>Časté otázky
+**Otázka:** Co se stane, když dojde k chybě při **použití opravy** ?  
 **Určitého.** Pokud je spuštění neúspěšné, je možné, že Azure AD Connect spouští chybu exportu. Aktualizujte stránku portálu a zkuste to znovu po další synchronizaci. Výchozí cyklus synchronizace je 30 minut. 
 
 

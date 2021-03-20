@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
 ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359451"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurace skupiny dostupnosti pracovní skupiny 
@@ -49,7 +49,7 @@ Pro referenci se v tomto článku používají následující parametry, které 
 
 ## <a name="set-a-dns-suffix"></a>Nastavit příponu DNS 
 
-V tomto kroku nakonfigurujte pro oba servery příponu DNS. Například `ag.wgcluster.example.com`. To vám umožní použít název objektu, ke kterému se chcete připojit, jako plně kvalifikovanou adresu v rámci vaší sítě, například `AGNode1.ag.wgcluster.example.com` . 
+V tomto kroku nakonfigurujte pro oba servery příponu DNS. Například, `ag.wgcluster.example.com`. To vám umožní použít název objektu, ke kterému se chcete připojit, jako plně kvalifikovanou adresu v rámci vaší sítě, například `AGNode1.ag.wgcluster.example.com` . 
 
 K nakonfigurování přípony DNS použijte následující postup:
 

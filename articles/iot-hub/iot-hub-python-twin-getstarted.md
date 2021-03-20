@@ -10,10 +10,10 @@ ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: 12b1d083ae1481f7c8b5fe60cac9156a56aeaa0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87875468"
 ---
 # <a name="get-started-with-device-twins-python"></a>Začínáme se zdvojením zařízení (Python)
@@ -28,13 +28,13 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace Python:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -114,7 +114,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která přidá metada
             print("IoT Hub Device Twin service sample stopped")
     ```
 
-    Objekt **IoTHubRegistryManager** zpřístupňuje všechny metody potřebné pro interakci se zařízeními ze služby. Kód nejprve inicializuje objekt **IoTHubRegistryManager** , pak aktualizuje dvojitou dobu zařízení pro **DEVICE_ID**a nakonec spustí dva dotazy. Nejdřív se vybere jenom zařízení, která se nacházejí v **Redmond43** , a druhá ho podrobná a vybere jenom zařízení, která jsou taky připojená přes mobilní síť.
+    Objekt **IoTHubRegistryManager** zpřístupňuje všechny metody potřebné pro interakci se zařízeními ze služby. Kód nejprve inicializuje objekt **IoTHubRegistryManager** , pak aktualizuje dvojitou dobu zařízení pro **DEVICE_ID** a nakonec spustí dva dotazy. Nejdřív se vybere jenom zařízení, která se nacházejí v **Redmond43** , a druhá ho podrobná a vybere jenom zařízení, která jsou taky připojená přes mobilní síť.
 
 6. Přidejte následující kód na konec  **AddTagsAndQuery.py** k implementaci funkce **iothub_service_sample_run** :
 

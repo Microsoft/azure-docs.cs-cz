@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak napsat kód v Pythonu pro zachyce
 ms.topic: quickstart
 ms.date: 01/04/2021
 ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97883193"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Zaznamenání dat Event Hubs v Azure Storage a jejich čtení pomocí Pythonu (Azure-eventhub)
@@ -25,7 +25,7 @@ V tomto rychlém startu:
 > * Odešlete data do centra událostí pomocí skriptu Pythonu.
 > * Čtení a zpracování souborů z Event Hubs zachytávání pomocí jiného skriptu Pythonu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Python s PIP a následující balíčky jsou nainstalované. Kód v tomto článku byl testován proti těmto verzím. 
     - Python 3.7
@@ -36,7 +36,7 @@ V tomto rychlém startu:
 - Aktivní Event Hubs obor názvů a centrum událostí.
 [Vytvořte obor názvů Event Hubs a centrum událostí v oboru názvů](event-hubs-create.md). Poznamenejte si název oboru názvů Event Hubs, název centra událostí a primární přístupový klíč pro obor názvů. Přístupovou klávesu získáte v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Výchozí název klíče je *RootManageSharedAccessKey*. V tomto rychlém startu potřebujete jenom primární klíč. Nepotřebujete připojovací řetězec.  
 - Účet úložiště Azure, kontejner objektů BLOB v účtu úložiště a připojovací řetězec k účtu úložiště. Pokud tyto položky nemáte, udělejte toto:  
-    1. [Vytvoření účtu úložiště Azure](../storage/common/storage-account-create.md?tabs=azure-portal)  
+    1. [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal)  
     1. [Vytvoření kontejneru objektů blob v účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
     1. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 

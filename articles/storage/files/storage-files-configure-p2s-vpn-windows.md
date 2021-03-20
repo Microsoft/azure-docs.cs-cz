@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6253deb53229172cd499a6aa14b8d8f19bc07b63
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629253"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure
@@ -19,7 +19,7 @@ Pomocí připojení VPN typu Point-to-Site (P2S) můžete připojit sdílené sl
 
 Důrazně doporučujeme, abyste si přečetli [požadavky na síť pro přímý přístup ke sdílené složce Azure](storage-files-networking-overview.md) , než budete pokračovat v tomto článku, kde najdete kompletní informace o možnostech sítě, které jsou dostupné pro soubory Azure.
 
-Tento článek podrobně popisuje postup konfigurace sítě VPN typu Point-to-site v systému Windows (klient Windows a Windows Server) pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat Azure File Sync provoz přes síť VPN, přečtěte si téma [Konfigurace nastavení proxy serveru Azure File Sync a brány firewall](storage-sync-files-firewall-and-proxy.md).
+Tento článek podrobně popisuje postup konfigurace sítě VPN typu Point-to-site v systému Windows (klient Windows a Windows Server) pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat Synchronizace souborů Azure provoz přes síť VPN, přečtěte si téma [Konfigurace nastavení proxy serveru synchronizace souborů Azure a brány firewall](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 - Nejnovější verze modulu Azure PowerShell. Další informace o tom, jak nainstalovat Azure PowerShell, najdete v tématu [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) a výběr operačního systému. Pokud dáváte přednost použití Azure CLI v systému Windows, může se stát, že následující pokyny jsou Azure PowerShell.

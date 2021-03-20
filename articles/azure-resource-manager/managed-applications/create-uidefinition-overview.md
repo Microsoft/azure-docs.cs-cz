@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89319559"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Soubor createUiDefinition.json pro prostředí pro vytváření spravovaných aplikací Azure
@@ -105,7 +105,7 @@ Pomocí editoru JSON můžete vytvořit createUiDefinition a potom ho otestovat 
 
 ### <a name="wizard"></a>Tip
 
-Tato `isWizard` vlastnost vám umožní před pokračováním na další krok vyžadovat úspěšné ověření každého kroku. Pokud `isWizard` vlastnost není zadána, výchozí hodnota je **false**a podrobné ověřování není vyžadováno.
+Tato `isWizard` vlastnost vám umožní před pokračováním na další krok vyžadovat úspěšné ověření každého kroku. Pokud `isWizard` vlastnost není zadána, výchozí hodnota je **false** a podrobné ověřování není vyžadováno.
 
 Pokud `isWizard` je povoleno, nastavte na **hodnotu true**, karta **základy** je k dispozici a všechny ostatní karty jsou zakázané. Když je vybráno tlačítko **Další** , ikona karty indikuje, zda bylo ověření karty úspěšné nebo selhalo. Po dokončení a ověření povinných polí karty můžete na další kartu povolit navigaci tlačítkem **Další** . Když všechny karty projdou ověřením, můžete přejít na stránku **Kontrola a vytvoření** a kliknutím na tlačítko **vytvořit** zahájit nasazení.
 
@@ -129,7 +129,7 @@ Pro `location` Zadejte vlastnosti ovládacího prvku umístění, který chcete 
 
 **Základní** krok je prvním krokem vygenerovaným při analýze souboru Azure Portal. Ve výchozím nastavení umožňuje krok základy uživatelům zvolit předplatné, skupinu prostředků a umístění pro nasazení.
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Průvodce kartami":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Základy – výchozí":::
 
 V této části můžete přidat další prvky. Pokud je to možné, přidejte prvky, které dotazují parametry pro nasazení na úrovni, jako je název clusteru nebo přihlašovací údaje správce.
 
@@ -195,7 +195,7 @@ Chcete-li filtrovat dostupná umístění pouze do těch umístění, která pod
           ...
 ```  
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 CreateUiDefinition poskytuje [funkce](create-uidefinition-functions.md) pro práci s vstupy a výstupy prvků a funkcemi, jako jsou podmíněné. Tyto funkce jsou podobné v syntaxi a funkcích pro Azure Resource Manager funkcí šablon.
 

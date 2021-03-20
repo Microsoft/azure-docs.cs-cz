@@ -8,10 +8,10 @@ ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 8c3fca6cf7782c3aaac91388a8f8395e288f5ea5
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558738"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service
@@ -353,7 +353,7 @@ Znovu se přihlaste k `https://<front-end-app-name>.azurewebsites.net`. Na strá
 
 Teď byste měli být schopni vytvářet, číst, aktualizovat a odstraňovat data z back-endové aplikace stejně jako dříve. Jediným rozdílem je, že obě aplikace jsou teď zabezpečené ověřováním a autorizací pomocí služby App Service, a to včetně volání mezi službami.
 
-Blahopřejeme! Váš kód serveru teď přistupuje k back-endovým datům jménem ověřeného uživatele.
+Gratulujeme! Váš kód serveru teď přistupuje k back-endovým datům jménem ověřeného uživatele.
 
 ## <a name="call-api-securely-from-browser-code"></a>Zabezpečené volání rozhraní API z kódu v prohlížeči
 
@@ -435,7 +435,7 @@ git push frontend master
 
 Znovu přejděte na adresu `https://<front-end-app-name>.azurewebsites.net`. Teď byste měli být schopni vytvářet, číst, aktualizovat a odstraňovat data z back-endové aplikace přímo v aplikaci Angular.js.
 
-Blahopřejeme! Váš klientský kód teď přistupuje k back-endovým datům jménem ověřeného uživatele.
+Gratulujeme! Váš klientský kód teď přistupuje k back-endovým datům jménem ověřeného uživatele.
 
 ## <a name="when-access-tokens-expire"></a>Vypršení platnosti přístupových tokenů
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/27/2019
 ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94593973"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání
@@ -30,7 +30,7 @@ Nakonfiguruje skupinu převzetí služeb při selhání pro elastický fond Azur
 > - Vytvořte [skupinu převzetí služeb při selhání](auto-failover-group-overview.md) pro dva elastické fondy mezi dvěma servery.
 > - Testovací převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
@@ -55,14 +55,14 @@ Vytvořte elastický fond pomocí Azure Portal.
     ![Vybrat elastický fond](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
 1. Nastavte elastický fond s následujícími hodnotami:
-   - **Název** : Zadejte jedinečný název elastického fondu, například `myElasticPool` .
-   - **Předplatné** : v rozevíracím seznamu vyberte své předplatné.
+   - **Název**: Zadejte jedinečný název elastického fondu, například `myElasticPool` .
+   - **Předplatné**: v rozevíracím seznamu vyberte své předplatné.
    - Skupina prostředků **: v** rozevíracím seznamu vyberte `myResourceGroup` skupinu prostředků, kterou jste vytvořili v části 1.
-   - **Server** : vyberte server, který jste vytvořili v části 1, z rozevíracího seznamu.  
+   - **Server**: vyberte server, který jste vytvořili v části 1, z rozevíracího seznamu.  
 
        ![Vytvořit nový server pro elastický fond](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **COMPUTE + úložiště** : vyberte **Konfigurovat elastický fond** pro konfiguraci výpočetních prostředků, úložiště a přidejte svoji databázi do elastického fondu. Na kartě **nastavení fondu** ponechte výchozí hodnotu Gen5 se 2 virtuální jádra a 32 GB.
+   - **COMPUTE + úložiště**: vyberte **Konfigurovat elastický fond** pro konfiguraci výpočetních prostředků, úložiště a přidejte svoji databázi do elastického fondu. Na kartě **nastavení fondu** ponechte výchozí hodnotu Gen5 se 2 virtuální jádra a 32 GB.
 
 1. Na stránce **Konfigurace** vyberte kartu **databáze** a pak zvolte možnost **Přidat databázi**. Zvolte databázi, kterou jste vytvořili v části 1, a pak vyberte **použít** pro přidání do elastického fondu. Pokud chcete použít nastavení elastického fondu a zavřít stránku **Konfigurace** , vyberte **použít** znovu.
 
@@ -143,13 +143,13 @@ Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal.
 
     ![Přidat novou skupinu převzetí služeb při selhání](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit** :
-    - **Název skupiny převzetí služeb při selhání** : Zadejte jedinečný název skupiny převzetí služeb při selhání, například `failovergrouptutorial` .
-    - **Sekundární server** : vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot pro nový sekundární server vyberte **Vybrat**.
-        - **Název serveru** : Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary` .
-        - **Přihlašovací jméno správce serveru** : typ `azureuser`
-        - **Heslo** : zadejte komplexní heslo, které splňuje požadavky na heslo.
-        - **Umístění** : vyberte umístění z rozevíracího seznamu, například `East US` . Toto umístění nemůže být stejné jako primární server.
+1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit**:
+    - **Název skupiny převzetí služeb při selhání**: Zadejte jedinečný název skupiny převzetí služeb při selhání, například `failovergrouptutorial` .
+    - **Sekundární server**: vyberte možnost *Konfigurace požadovaných nastavení* a pak zvolte **Vytvoření nového serveru**. Alternativně můžete zvolit již existující server jako sekundární server. Po zadání následujících hodnot pro nový sekundární server vyberte **Vybrat**.
+        - **Název serveru**: Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary` .
+        - **Přihlašovací jméno správce serveru**: typ `azureuser`
+        - **Heslo**: zadejte komplexní heslo, které splňuje požadavky na heslo.
+        - **Umístění**: vyberte umístění z rozevíracího seznamu, například `East US` . Toto umístění nemůže být stejné jako primární server.
 
        > [!NOTE]
        > Přihlašovací údaje serveru a firewall se musí shodovat s nastavením vašeho primárního serveru.

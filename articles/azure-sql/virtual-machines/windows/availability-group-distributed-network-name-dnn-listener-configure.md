@@ -16,10 +16,10 @@ ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 07ce01304f27ded4e0a566777fcf7027f7a15e4b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359434"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Konfigurace naslouchacího procesu DNN pro skupinu dostupnosti
@@ -111,7 +111,7 @@ Za předpokladu, že jako název skupiny dostupnosti `ag1` , název naslouchací
 
 1. Otevřete nástroj rozhraní příkazového řádku, jako je třeba příkazový řádek nebo PowerShell. 
 1. Přejděte do umístění, do kterého jste `.ps1` skript uložili, například c:\Documents. 
-1. Spusťte skript: ```add_dnn_listener.ps1 <ag name> <listener-name> <listener port>``` . Příklad: 
+1. Spusťte skript: ```add_dnn_listener.ps1 <ag name> <listener-name> <listener port>``` . Například: 
 
    ```console
    c:\Documents> add_dnn_listener.ps1 ag1 dnnlsnr 6789

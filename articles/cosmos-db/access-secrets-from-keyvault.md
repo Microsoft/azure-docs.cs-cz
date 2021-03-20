@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359315"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečení klíčů Azure Cosmos s využitím služby Azure Key Vault 
@@ -61,7 +61,7 @@ Pro ukládání a čtení Azure Cosmos DB přístupových klíčů z Key Vault j
 
 1. Vytvořte webovou aplikaci Azure nebo si aplikaci můžete stáhnout z [úložiště GitHub](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo). Jedná se o jednoduchou aplikaci MVC.  
 
-2. Rozbalte staženou aplikaci a otevřete soubor **HomeController.cs** . Aktualizujte tajné ID na následujícím řádku:
+2. Rozbalte staženou aplikaci a otevřete soubor **HomeController. cs** . Aktualizujte tajné ID na následujícím řádku:
 
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
