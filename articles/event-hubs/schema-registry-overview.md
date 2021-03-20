@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
 ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330491"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Registr schémat Azure v Event Hubs (Preview)
@@ -17,7 +17,7 @@ V mnoha scénářích pro streamování událostí a zasílání zpráv obsahuje
 **Registry schématu Azure** je funkce Event Hubs, která poskytuje centrální úložiště pro dokumenty schématu pro aplikace zaměřené na události a pro zasílání zpráv. Poskytuje flexibilitu pro vaše aplikace producenta a příjemce pro výměnu dat bez nutnosti spravovat a sdílet schéma mezi nimi a také vyvíjet různými sazbami. Registr schématu také poskytuje jednoduché rozhraní zásad správného řízení pro opakovaně použitelná schémata a definuje vztah mezi schématy prostřednictvím seskupovací konstrukce (skupiny schémat).
 
 > [!NOTE]
-> - Funkce **registru schématu** je momentálně ve **verzi Preview**a nedoporučuje se pro produkční úlohy.
+> - Funkce **registru schématu** je momentálně ve **verzi Preview** a nedoporučuje se pro produkční úlohy.
 > - Tato funkce je k dispozici pouze ve **standardních** a **vyhrazených** vrstvách, nikoli na úrovni **Basic** .
 
 Rozhraní serializace založená na schématu, jako je Apache Avro, přenesení metadata serializace do sdílených schémat, mohou také pomáhat s výrazným omezením režie za zprávy typu a názvy polí, které jsou zahrnuty v každé sadě dat, protože se jedná o případ s tagovanými formáty, jako je například JSON. Díky schématům uloženým společně s událostmi a uvnitř infrastruktury pro události je zajištěno, že metadata požadovaná pro serializaci/deserializaci jsou vždy ve dosahu a schémata nelze ukládat do nesprávného umístění. 

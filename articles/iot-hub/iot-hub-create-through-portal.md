@@ -10,10 +10,10 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536041"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření centra IoT pomocí Azure Portal
@@ -22,7 +22,7 @@ ms.locfileid: "92536041"
 
 Tento článek popisuje, jak vytvořit a spravovat centra IoT pomocí [Azure Portal](https://portal.azure.com).
 
-Pokud chcete použít kroky v tomto kurzu, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud chcete použít kroky v tomto kurzu, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -36,13 +36,13 @@ Nastavení stávajícího centra IoT Hub můžete změnit po jeho vytvoření z 
 
 Tady jsou některé z vlastností, které můžete nastavit pro Centrum IoT:
 
-**Ceny a škálování** : tuto vlastnost můžete použít k migraci na jinou úroveň nebo nastavení počtu IoT Hubch jednotek. 
+**Ceny a škálování**: tuto vlastnost můžete použít k migraci na jinou úroveň nebo nastavení počtu IoT Hubch jednotek. 
 
-**Monitorování operací** : Zapněte nebo vypněte různé kategorie monitorování, například protokolování událostí souvisejících se zprávami typu zařízení-Cloud nebo zpráv typu cloud-zařízení.
+**Monitorování operací**: Zapněte nebo vypněte různé kategorie monitorování, například protokolování událostí souvisejících se zprávami typu zařízení-Cloud nebo zpráv typu cloud-zařízení.
 
-**Filtr IP** : zadejte rozsah IP adres, které bude služba IoT Hub přijímat nebo odmítat.
+**Filtr IP**: zadejte rozsah IP adres, které bude služba IoT Hub přijímat nebo odmítat.
 
-**Vlastnosti** : poskytuje seznam vlastností, které můžete zkopírovat a použít jinde, například ID prostředku, skupinu prostředků, umístění atd.
+**Vlastnosti**: poskytuje seznam vlastností, které můžete zkopírovat a použít jinde, například ID prostředku, skupinu prostředků, umístění atd.
 
 ### <a name="shared-access-policies"></a>Zásady sdíleného přístupu
 
@@ -74,13 +74,13 @@ Kliknutím na **směrování zpráv** v části **zasílání zpráv** zobrazít
 
 ### <a name="routes"></a>Trasy
 
-Trasy jsou první kartou v podokně směrování zpráv. Pokud chcete přidat novou trasu, klikněte na + **Přidat** . Zobrazí se následující obrazovka. 
+Trasy jsou první kartou v podokně směrování zpráv. Pokud chcete přidat novou trasu, klikněte na +**Přidat**. Zobrazí se následující obrazovka. 
 
 ![Snímek obrazovky znázorňující přidání nové trasy](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
 Pojmenujte trasu. Název trasy musí být jedinečný v rámci seznamu tras pro toto centrum. 
 
-V případě **koncového bodu** můžete vybrat jeden z rozevíracího seznamu nebo přidat nový. V tomto příkladu je už dostupný účet úložiště a kontejner. Pokud je chcete přidat jako koncový bod, klikněte na + **Přidat** vedle rozevíracího seznamu koncových bodů a vyberte **BLOB Storage** . Na následující obrazovce vidíte, kde je zadaný účet úložiště a kontejner.
+V případě **koncového bodu** můžete vybrat jeden z rozevíracího seznamu nebo přidat nový. V tomto příkladu je už dostupný účet úložiště a kontejner. Pokud je chcete přidat jako koncový bod, klikněte na +**Přidat** vedle rozevíracího seznamu koncových bodů a vyberte **BLOB Storage**. Na následující obrazovce vidíte, kde je zadaný účet úložiště a kontejner.
 
 ![Snímek obrazovky znázorňující přidání koncového bodu úložiště pro pravidlo směrování](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
 
@@ -114,7 +114,7 @@ Tady jsou dva způsoby, jak v předplatném najít konkrétní centrum IoT:
 
 1. Pokud znáte skupinu prostředků, do které Centrum IoT patří, klikněte na **skupiny prostředků** a pak v seznamu vyberte skupinu prostředků. Na obrazovce skupina prostředků se zobrazí všechny prostředky v této skupině, včetně centra IoT. Klikněte na centrum, pro které hledáte.
 
-2. Klikněte na **Všechny prostředky** . V podokně **všechny prostředky** je rozevírací seznam, který je ve výchozím nastavení nastaven jako výchozí `All types` . Klikněte na rozevírací seznam a zrušte jeho kontrolu `Select all` . Vyhledejte `IoT Hub` ho a podívejte se na něj. Kliknutím na rozevírací seznam ho zavřete a položky se vyfiltrují, aby se zobrazily jenom vaše centra IoT.
+2. Klikněte na **Všechny prostředky**. V podokně **všechny prostředky** je rozevírací seznam, který je ve výchozím nastavení nastaven jako výchozí `All types` . Klikněte na rozevírací seznam a zrušte jeho kontrolu `Select all` . Vyhledejte `IoT Hub` ho a podívejte se na něj. Kliknutím na rozevírací seznam ho zavřete a položky se vyfiltrují, aby se zobrazily jenom vaše centra IoT.
 
 ## <a name="delete-the-iot-hub"></a>Odstranit centrum IoT
 

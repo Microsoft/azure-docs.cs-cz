@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: f5105c685de4b3ccdffe69eec8ee8eeb32976c1f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92325991"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>Migrace na nový portál pro vývojáře
@@ -57,7 +57,7 @@ Při migraci z zastaralého portálu mějte na paměti následující změny:
 - Pokud jste změnili výchozí šablonu e-mailových oznámení tak, aby zahrnovala explicitně definovanou zastaralou adresu URL portálu, změňte ji na buď pomocí parametru URL portálu, nebo přejděte na adresu URL nového portálu. Pokud šablony místo toho používají vestavěný parametr URL portálu, nejsou vyžadovány žádné změny.
 - *Problémy* a *aplikace* nejsou podporované na novém portálu pro vývojáře.
 - Na novém portálu pro vývojáře se nepodporuje přímá integrace s Facebookem, Microsoftem, Twitterem a Google jako zprostředkovatelé identity. S těmito poskytovateli se můžete integrovat prostřednictvím Azure AD B2C.
-- Pokud používáte delegování, změňte návratovou adresu URL ve vašich aplikacích a místo koncového bodu *URL pro vygenerování jednotného přihlašování* použijte [koncový bod rozhraní API pro *získání sdíleného přístupového tokenu* ](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken) .
+- Pokud používáte delegování, změňte návratovou adresu URL ve vašich aplikacích a místo koncového bodu *URL pro vygenerování jednotného přihlašování* použijte [koncový bod rozhraní API pro *získání sdíleného přístupového tokenu*](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken) .
 - Pokud používáte Azure AD jako zprostředkovatele identity:
 
     - Změňte návratovou adresu URL v aplikaci tak, aby odkazovala na novou doménu portálu pro vývojáře.
@@ -67,7 +67,7 @@ Při migraci z zastaralého portálu mějte na paměti následující změny:
 
     - Změňte návratovou adresu URL v aplikaci tak, aby odkazovala na novou doménu portálu pro vývojáře.
     - Upravte příponu návratové adresy URL v aplikaci z `/signin-aad` na `/signin` .
-    - V deklaracích aplikace uveďte *křestní jméno*, *příjmení*a *ID objektu uživatele* .
+    - V deklaracích aplikace uveďte *křestní jméno*, *příjmení* a *ID objektu uživatele* .
 
 - Pokud používáte OAuth 2,0 v interaktivní konzole test, změňte návratovou adresu URL v aplikaci tak, aby odkazovala na novou doménu portálu pro vývojáře a upravíte příponu:
 
@@ -82,5 +82,5 @@ Při migraci z zastaralého portálu mějte na paměti následující změny:
 
 Další informace o portálu pro vývojáře:
 
-- [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md)
+- [Přehled vývojářského portálu pro službu Azure API Management](api-management-howto-developer-portal.md)
 - [Přístup a přizpůsobení portálu pro vývojáře](api-management-howto-developer-portal-customize.md)

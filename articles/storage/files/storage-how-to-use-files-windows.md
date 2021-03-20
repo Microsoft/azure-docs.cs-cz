@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94626890"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
@@ -24,15 +24,15 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 | Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Místně připojit |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Ano | Ano |
-| Windows 10<sup>1</sup> | SMB 3.0 | Ano | Ano |
-| Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Ano | Ano |
-| Windows Server 2016 | SMB 3.0 | Ano | Ano |
-| Windows 8.1 | SMB 3.0 | Ano | Ano |
-| Windows Server 2012 R2 | SMB 3.0 | Ano | Ano |
-| Windows Server 2012 | SMB 3.0 | Ano | Ano |
-| Systém Windows 7<sup>3</sup> | SMB 2.1 | Ano | Ne |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ano | Ne |
+| Windows Server 2019 | SMB 3.0 | Yes | Yes |
+| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
+| Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Yes | Yes |
+| Windows Server 2016 | SMB 3.0 | Yes | Yes |
+| Windows 8.1 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
+| Windows Server 2012 | SMB 3.0 | Yes | Yes |
+| Systém Windows 7<sup>3</sup> | SMB 2.1 | Yes | No |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | No |
 
 <sup>1</sup> Windows 10, verze 1507, 1607, 1803, 1809, 1903, 1909 a 2004.  
 <sup>2</sup> . Windows Server, verze 1809, 1903, 1909, 2004.  
@@ -48,7 +48,7 @@ Zkontrolujte, že je otevřený port 445: Protokol SMB vyžaduje otevřený port
 ## <a name="using-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Pokud chcete používat sdílenou složku Azure s Windows, musíte ji buď připojit, což znamená přiřadit jí písmeno jednotky nebo cestu k přípojnému bodu, nebo k ní přistupovat přes její [cestu UNC](/windows/win32/fileio/naming-a-file). 
 
-Tento článek používá klíč účtu úložiště pro přístup ke sdílené složce souborů. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a ke všem sdíleným složkám a dalším prostředkům úložiště (objektům blob, frontám, tabulkám atd.) obsaženým v účtu úložiště. Pokud to pro vaše zatížení nestačí, můžete použít [Azure File Sync](storage-sync-files-planning.md) , nebo můžete použít [ověřování na základě identity přes protokol SMB](storage-files-active-directory-overview.md).
+Tento článek používá klíč účtu úložiště pro přístup ke sdílené složce souborů. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a ke všem sdíleným složkám a dalším prostředkům úložiště (objektům blob, frontám, tabulkám atd.) obsaženým v účtu úložiště. Pokud to pro vaše zatížení nestačí, můžete použít [synchronizace souborů Azure](storage-sync-files-planning.md) , nebo můžete použít [ověřování na základě identity přes protokol SMB](storage-files-active-directory-overview.md).
 
 Při migraci obchodních aplikací očekávajících sdílenou složku SMB metodou „lift and shift“ do Azure se jako alternativa k provozu vyhrazeného souborového serveru Windows na virtuálním počítači Azure běžně používá sdílená složka Azure. Jedním z důležitých aspektů úspěšné migrace obchodní aplikace, která má používat sdílenou složku Azure, je to, že řada obchodních aplikací se spouští v kontextu vyhrazeného účtu služby s omezenými systémovými oprávněními, a ne v kontextu účtu správce virtuálního počítače. Proto je potřeba zajistit připojení a uložení přihlašovacích údajů pro sdílenou složku Azure z kontextu účtu služby, a nikoli účtu správce.
 

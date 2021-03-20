@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879288"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Plánování nabídky aplikací Azure pro komerční tržiště
@@ -121,7 +121,7 @@ Když vytvoříte novou nabídku aplikace Azure v partnerském centru, zadáte t
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
 7. Souhrn
-8. Popis
+8. Description
 9. Snímky obrazovky a videa
 
 Následující snímek obrazovky ukazuje, jak se v Azure Portal zobrazí informace o nabídce:

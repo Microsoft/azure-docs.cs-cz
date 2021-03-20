@@ -4,17 +4,17 @@ description: Přečtěte si, jak převést Zásady skupiny ze směrného plánu 
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93348640"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Jak vytvořit definice zásad konfigurace hostů z Zásady skupinyho směrného plánu pro Windows
 
 Než začnete vytvářet vlastní definice zásad, je vhodné si přečíst informace o koncepčním přehledu v tématu [Azure Policy konfigurace hostů](../concepts/guest-configuration.md). Další informace o vytváření vlastních definic zásad konfigurace hostů pro Linux najdete v tématu [Postup vytvoření zásad konfigurace hostů pro Linux](./guest-configuration-create-linux.md). Další informace o vytváření vlastních definic zásad konfigurace hostů pro Windows najdete v tématu [Postup vytvoření zásad konfigurace hostů pro Windows](./guest-configuration-create.md).
 
-Při auditování Windows konfigurace hosta k vytvoření konfiguračního souboru využívá modul prostředků DSC ([Desired State Configuration](/powershell/scripting/dsc/overview/overview)). Konfigurace DSC definuje stav, ve kterém by počítač měl být. Pokud vyhodnocení konfigurace **nedodržuje předpisy** , aktivuje se *auditIfNotExists* účinek zásad.
+Při auditování Windows konfigurace hosta k vytvoření konfiguračního souboru využívá modul prostředků DSC ([Desired State Configuration](/powershell/scripting/dsc/overview/overview)). Konfigurace DSC definuje stav, ve kterém by počítač měl být. Pokud vyhodnocení konfigurace **nedodržuje předpisy**, aktivuje se *auditIfNotExists* účinek zásad.
 [Azure Policy konfigurace hostů](../concepts/guest-configuration.md) jenom auditují nastavení v počítačích.
 
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ V této příručce Vás provedeme procesem vytvoření Azure Policy konfigurač
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Stáhněte si základní hodnoty zabezpečení Windows serveru 2019 a nainstalujte související moduly PowerShellu.
 
-Instalace rozhraní **DSC** , **GuestConfiguration** , **správy standardních hodnot** a souvisejících modulů Azure v prostředí PowerShell:
+Instalace rozhraní **DSC**, **GuestConfiguration**, **správy standardních hodnot** a souvisejících modulů Azure v prostředí PowerShell:
 
 1. Z příkazového řádku PowerShellu spusťte následující příkaz:
 

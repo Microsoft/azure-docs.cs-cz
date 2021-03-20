@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: da28bfa31c74ff33a200967267500033dd6a9b1b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92535871"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurace nahrávání souborů s využitím služby IoT Hub pomocí webu Azure Portal
@@ -25,17 +25,17 @@ Pokud chcete používat [funkci nahrávání souborů v IoT Hub](iot-hub-devguid
 
 ![Zobrazit IoT Hub nastavení nahrávání souborů na portálu](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **Kontejner úložiště** : pomocí Azure Portal vyberte kontejner objektů BLOB v účtu Azure Storage v aktuálním předplatném Azure, který chcete přidružit k vašemu IoT Hub. V případě potřeby můžete vytvořit účet Azure Storage v okně s **účty úložiště** a kontejnerem objektů BLOB v okně **kontejnery** . IoT Hub automaticky generuje identifikátory URI SAS s oprávněním k zápisu do tohoto kontejneru objektů blob, aby bylo možné zařízení použít při nahrávání souborů.
+* **Kontejner úložiště**: pomocí Azure Portal vyberte kontejner objektů BLOB v účtu Azure Storage v aktuálním předplatném Azure, který chcete přidružit k vašemu IoT Hub. V případě potřeby můžete vytvořit účet Azure Storage v okně s **účty úložiště** a kontejnerem objektů BLOB v okně **kontejnery** . IoT Hub automaticky generuje identifikátory URI SAS s oprávněním k zápisu do tohoto kontejneru objektů blob, aby bylo možné zařízení použít při nahrávání souborů.
 
    ![Zobrazit kontejnery úložiště pro nahrání souboru na portálu](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-* **Dostávat oznámení pro nahrané soubory** : povolení nebo zakázání oznámení o nahrávání souborů prostřednictvím přepínače.
+* **Dostávat oznámení pro nahrané soubory**: povolení nebo zakázání oznámení o nahrávání souborů prostřednictvím přepínače.
 
-* **SAS TTL** : Toto nastavení představuje čas do živého vysílání identifikátorů URI SAS vrácených do zařízení IoT Hub. Nastavte na jednu hodinu ve výchozím nastavení, ale můžete ji přizpůsobit na jiné hodnoty pomocí posuvníku.
+* **SAS TTL**: Toto nastavení představuje čas do živého vysílání identifikátorů URI SAS vrácených do zařízení IoT Hub. Nastavte na jednu hodinu ve výchozím nastavení, ale můžete ji přizpůsobit na jiné hodnoty pomocí posuvníku.
 
-* **Nastavení oznámení o souboru výchozí hodnota TTL** : čas do živého oznámení o nahrání souboru před vypršením jeho platnosti. Nastaví se ve výchozím nastavení na jeden den, ale můžete je přizpůsobit na jiné hodnoty pomocí posuvníku.
+* **Nastavení oznámení o souboru výchozí hodnota TTL**: čas do živého oznámení o nahrání souboru před vypršením jeho platnosti. Nastaví se ve výchozím nastavení na jeden den, ale můžete je přizpůsobit na jiné hodnoty pomocí posuvníku.
 
-* **Maximální počet doručení oznámení souborů** : počet, kolikrát se IoT Hub pokusí doručovat oznámení o nahrání souboru. Ve výchozím nastavení nastavte na hodnotu 10, ale můžete je přizpůsobit na jiné hodnoty pomocí posuvníku.
+* **Maximální počet doručení oznámení souborů**: počet, kolikrát se IoT Hub pokusí doručovat oznámení o nahrání souboru. Ve výchozím nastavení nastavte na hodnotu 10, ale můžete je přizpůsobit na jiné hodnoty pomocí posuvníku.
 
    ![Konfigurace IoT Hubho nahrávání souborů na portálu](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 

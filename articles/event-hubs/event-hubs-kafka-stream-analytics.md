@@ -4,10 +4,10 @@ description: 'Kurz: v tomto článku se dozvíte, jak zpracovávat události Kaf
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319382"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Kurz: proces Apache Kafka pro události Event Hubs pomocí Stream Analytics 
@@ -63,7 +63,7 @@ Když vytvoříte obor názvů úrovně **standard** Event Hubs, je automaticky 
     ```
 
     Tento kód odesílá data události ve formátu **JSON** . Když nakonfigurujete vstup pro Stream Analytics úlohu, jako formát vstupních dat zadáte JSON. 
-7. **Spusťte producenta** a stream do Event Hubs. V počítači s Windows při použití ** příkazového řádkuNode.js**přepněte do `azure-event-hubs-for-kafka/quickstart/java/producer` složky před spuštěním těchto příkazů. 
+7. **Spusťte producenta** a stream do Event Hubs. V počítači s Windows při použití **příkazového řádkuNode.js** přepněte do `azure-event-hubs-for-kafka/quickstart/java/producer` složky před spuštěním těchto příkazů. 
    
     ```shell
     mvn clean package
@@ -72,7 +72,7 @@ Když vytvoříte obor názvů úrovně **standard** Event Hubs, je automaticky 
 
 ## <a name="verify-that-event-hub-receives-the-data"></a>Ověřte, že centrum událostí přijímá data.
 
-1. V části **entity**vyberte **Event Hubs** . Ověřte, že se zobrazuje centrum událostí s názvem **test**. 
+1. V části **entity** vyberte **Event Hubs** . Ověřte, že se zobrazuje centrum událostí s názvem **test**. 
 
     ![Centrum událostí – test](./media/event-hubs-kafka-stream-analytics/test-event-hub.png)
 2. Ověřte, že se zobrazují zprávy přicházející do centra událostí. 
@@ -80,7 +80,7 @@ Když vytvoříte obor názvů úrovně **standard** Event Hubs, je automaticky 
     ![Centrum událostí – zprávy](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
 ## <a name="process-event-data-using-a-stream-analytics-job"></a>Zpracování dat událostí pomocí Stream Analytics úlohy
-V této části vytvoříte úlohu Azure Stream Analytics. Klient Kafka odesílá události do centra událostí. Vytvoříte úlohu Stream Analytics, která jako vstup převezme data událostí, a zapíše ji do úložiště objektů BLOB v Azure. Pokud **účet Azure Storage**nemáte, [vytvořte ho](../storage/common/storage-account-create.md).
+V této části vytvoříte úlohu Azure Stream Analytics. Klient Kafka odesílá události do centra událostí. Vytvoříte úlohu Stream Analytics, která jako vstup převezme data událostí, a zapíše ji do úložiště objektů BLOB v Azure. Pokud **účet Azure Storage** nemáte, [vytvořte ho](../storage/common/storage-account-create.md).
 
 Dotaz v Stream Analytics úloze projde daty bez provedení jakýchkoli analýz. Můžete vytvořit dotaz, který transformuje vstupní data k vytvoření výstupních dat v jiném formátu nebo pomocí zkušeností s přehledem.  
 
@@ -101,7 +101,7 @@ Dotaz v Stream Analytics úloze projde daty bez provedení jakýchkoli analýz. 
 
 1. V oznamovací zprávě vyberte **Přejít k prostředku** a zobrazte stránku **Stream Analytics úlohy** . 
 2. V nabídce vlevo vyberte **vstupy** v části **topologie úloh** .
-3. Vyberte **Přidat vstup streamu**a pak vyberte **centrum událostí**. 
+3. Vyberte **Přidat vstup streamu** a pak vyberte **centrum událostí**. 
 
     ![Přidat centrum událostí jako vstup](./media/event-hubs-kafka-stream-analytics/select-event-hub-input.png)
 4. Na stránce konfigurace **vstupu centra událostí** proveďte následující akce: 
@@ -120,7 +120,7 @@ Dotaz v Stream Analytics úloze projde daty bez provedení jakýchkoli analýz. 
 2. Na panelu nástrojů vyberte **+ Přidat** a vyberte **úložiště objektů BLOB** .
 3. Na stránce nastavení výstupu služby Blob Storage proveďte následující akce: 
     1. Zadejte **alias** pro výstup. 
-    2. Vyberte své **předplatné**Azure. 
+    2. Vyberte své **předplatné** Azure. 
     3. Vyberte **účet Azure Storage**. 
     4. Zadejte **název kontejneru** , ve kterém jsou uložena výstupní data z Stream Analytics dotazu.
     5. Vyberte **Uložit**.
@@ -158,7 +158,7 @@ Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího dato
     ```shell
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
-1. Ověřte, že se v **úložišti objektů BLOB v Azure**vygenerovala **výstupní data** . V kontejneru se zobrazí soubor JSON s 100 řádky, které vypadají jako následující ukázkové řádky: 
+1. Ověřte, že se v **úložišti objektů BLOB v Azure** vygenerovala **výstupní data** . V kontejneru se zobrazí soubor JSON s 100 řádky, které vypadají jako následující ukázkové řádky: 
 
     ```
     {"eventData":"Test Data 0","EventProcessedUtcTime":"2018-08-30T03:27:23.1592910Z","PartitionId":0,"EventEnqueuedUtcTime":"2018-08-30T03:27:22.9220000Z"}

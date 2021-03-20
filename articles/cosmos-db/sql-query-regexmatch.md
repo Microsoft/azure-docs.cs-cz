@@ -9,10 +9,10 @@ ms.date: 10/13/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 7f5b2831f45e902b312636e4133557a16ee7ec95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341633"
 ---
 # <a name="regexmatch-azure-cosmos-db"></a>REGEXMATCH (Azure Cosmos DB)
@@ -41,7 +41,7 @@ Můžete se dozvědět o [syntaxi pro vytváření regulárních výrazů v jazy
 
 Azure Cosmos DB podporuje následující čtyři modifikátory:
 
-| Modifikátor | Popis |
+| Modifikátor | Description |
 | ------ | ----------- |
 | `m` | Zacházejte řetězcovým výrazem, který má být prohledán jako více řádků. Bez této možnosti se bude shodovat "^" a "$" na začátku nebo na konci řetězce, a ne na každém jednotlivém řádku. |
 | `s` | Povoluje, aby znak "." odpovídal jakémukoli znaku, včetně znaku nového řádku. | 

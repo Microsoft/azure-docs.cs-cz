@@ -7,10 +7,10 @@ ms.date: 10/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9bab2a11ff9e7907621087e5027929e3e42eaf29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91744796"
 ---
 # <a name="connect-with-the-microsoft-store-client"></a>Připojení s klientem Microsoft Storu
@@ -33,7 +33,7 @@ Přihlaste se k odběru pracovního prostoru poskytnutého správcem, abyste zí
 
 Přihlášení k odběru pracovního prostoru:
 
-1. Na obrazovce Centrum připojení klepněte na **+ Přidat**a pak klepněte na **pracovní prostory**.
+1. Na obrazovce Centrum připojení klepněte na **+ Přidat** a pak klepněte na **pracovní prostory**.
 2. Do pole Adresa URL pracovního prostoru, které vám poskytl správce, zadejte adresu URL pracovního prostoru. Adresa URL pracovního prostoru může být buď adresa URL, nebo e-mailová adresa.
    
    - Pokud používáte adresu URL pracovního prostoru, použijte adresu URL, kterou vám správce poskytl.

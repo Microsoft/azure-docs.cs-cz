@@ -7,10 +7,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944609"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Použití systému Apache prasete s Apache Hadoop v HDInsight
@@ -33,7 +33,7 @@ Jazyk latince pro vepřové písmo umožňuje popsat tok dat z nezpracovaného v
 
 * **Vypsat nebo uložit**: výstupní data na obrazovku nebo je uložit ke zpracování.
 
-### <a name="user-defined-functions"></a>Uživatelsky definované funkce
+### <a name="user-defined-functions"></a>Uživatelem definované funkce
 
 Prasečí Latin podporuje také uživatelsky definované funkce (UDF), které vám umožní vyvolat externí komponenty, které implementují logiku, která je obtížné modelovat v prasečí latince.
 

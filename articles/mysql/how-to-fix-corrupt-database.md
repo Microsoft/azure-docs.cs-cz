@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 21e4189e56f704129710da5b1d39613c4e1b1df5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91766886"
 ---
-# <a name="troubleshoot-database-corruption-in-azure-database-for-mysql"></a>Řešení potíží s poškozením databáze v Azure Database for MySQL
+# <a name="troubleshoot-database-corruption-in-azure-database-for-mysql"></a>Řešení potíží s poškozením databáze ve službě Azure Database for MySQL
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 Poškození databáze může způsobit výpadky vaší aplikace. Je také důležité vyřešit problémy poškození v čase, aby nedošlo ke ztrátě dat. Když dojde k poškození databáze, zobrazí se v protokolech serveru Tato chyba: `InnoDB: Database page corruption on disk or a failed.`

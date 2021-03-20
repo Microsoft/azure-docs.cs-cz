@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366648"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>Řešení potíží se selháním zjišťování vCenter Server
@@ -73,7 +73,7 @@ Pro konfiguraci proxy serveru DRA:
  
     **CD C:\Program Files\Microsoft Azure Site Recovery poskytovatel**
 
-3. Z příkazového řádku spusťte následující příkaz.
+3. Na příkazovém řádku spusťte následující příkaz.
    
    **DRCONFIGURATOR.EXE/Configure/AddBypassUrls [IP adresa/plně kvalifikovaný název domény vCenter Server poskytnutý v době přidání vCenter]**
 

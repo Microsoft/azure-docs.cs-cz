@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86258976"
 ---
 # <a name="initializer-codepackages"></a>Balíčky kódu inicializátoru
@@ -23,12 +23,12 @@ Než budete pokračovat v tomto článku, doporučujeme seznámit se s [Service 
  
 ## <a name="semantics"></a>Sémantika
 
-Očekává se spuštění inicializátoru CodePackage pro **úspěšné dokončení (ukončovací kód 0)**. Neúspěšný inicializátor CodePackage se restartuje, dokud se úspěšně nedokončí. Více inicializátorů CodePackages je povoleno a jsou spouštěny do **úspěšného dokončení**v **zadaném pořadí** před jiným CodePackages ve službě ServicePack. **sequentially**
+Očekává se spuštění inicializátoru CodePackage pro **úspěšné dokončení (ukončovací kód 0)**. Neúspěšný inicializátor CodePackage se restartuje, dokud se úspěšně nedokončí. Více inicializátorů CodePackages je povoleno a jsou spouštěny do **úspěšného dokončení** v **zadaném pořadí** před jiným CodePackages ve službě ServicePack. 
 
 ## <a name="specifying-initializer-codepackages"></a>Určení CodePackages inicializátoru
 Můžete označit CodePackage jako inicializátor nastavením atributu **inicializátoru** na **hodnotu true** v ServiceManifest. Pokud existuje více inicializátorů CodePackages, jejich pořadí spuštění lze zadat prostřednictvím atributu **ExecOrder** . **ExecOrder** musí být nezáporné celé číslo a je platné pouze pro inicializátor CodePackages. Nejprve se spustí inicializátor CodePackages s nižšími hodnotami **ExecOrder** . Pokud není **ExecOrder** pro inicializátor CodePackage zadán, je použita výchozí hodnota 0. Relativní pořadí provádění inicializátoru CodePackages se stejnou hodnotou **ExecOrder** není určeno.
 
-Následující fragment kódu ServiceManifest popisuje tři CodePackagesy, které jsou označeny jako Inicializátory. Když se aktivuje tato ServicePack, *InitCodePackage0* se spustí jako první, protože má nejnižší hodnotu **ExecOrder**. Po úspěšném dokončení (ukončovací kód 0) *InitCodePackage0*se spustí *InitCodePackage1* . Nakonec po úspěšném dokončení *InitCodePackage1*se spustí *WorkloadCodePackage* .
+Následující fragment kódu ServiceManifest popisuje tři CodePackagesy, které jsou označeny jako Inicializátory. Když se aktivuje tato ServicePack, *InitCodePackage0* se spustí jako první, protože má nejnižší hodnotu **ExecOrder**. Po úspěšném dokončení (ukončovací kód 0) *InitCodePackage0* se spustí *InitCodePackage1* . Nakonec po úspěšném dokončení *InitCodePackage1* se spustí *WorkloadCodePackage* .
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">

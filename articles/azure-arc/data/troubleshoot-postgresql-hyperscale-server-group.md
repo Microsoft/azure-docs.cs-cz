@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320218"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>Řešení potíží s PostgreSQL skupinami serverů s škálovatelným škálováním
@@ -31,7 +31,7 @@ nebo
 azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
 ```
 
-Kromě toho můžete pomocí parametru--Help na jakémkoli příkazu azdata zobrazit nápovědu, seznam parametrů pro konkrétní příkaz. Příklad:
+Kromě toho můžete pomocí parametru--Help na jakémkoli příkazu azdata zobrazit nápovědu, seznam parametrů pro konkrétní příkaz. Například:
 ```console
 azdata arc postgres server create --help
 ```
@@ -97,7 +97,7 @@ Implementujte kroky popsané v tématu  [033-Manage-Postgres-with-AzureDataStudi
 
 :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio – otevřít poznámkový blok pro řešení potíží s PostgreSQL":::
 
-TSG100 – Poznámkový **blok pro poradce při potížích s PostgreSQLem s podporou škálování na více koncových akcích ve službě Azure ARC** : :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – otevřít poznámkový blok pro řešení potíží s PostgreSQL":::
+TSG100 – Poznámkový **blok pro poradce při potížích s PostgreSQLem s podporou škálování na více koncových akcích ve službě Azure ARC** : :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – použití PostgreSQL":::
 
 #### <a name="run-the-scripts"></a>Spuštění skriptů
 Vyberte tlačítko spustit vše v horní části pro spuštění poznámkového bloku najednou, nebo můžete krokovat a provádět každou buňku kódu jednu po druhém.

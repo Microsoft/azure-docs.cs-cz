@@ -4,10 +4,10 @@ description: Nastavte privátní koncový bod v registru kontejneru a povolte p�
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93342296"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Připojení soukromě ke službě Azure Container Registry pomocí privátního odkazu Azure
@@ -50,7 +50,7 @@ VM_NAME=<virtual-machine-name>
 
 Pokud je ještě nemáte, budete k nastavení privátního odkazu potřebovat názvy virtuální sítě a podsítě. V tomto příkladu použijete stejnou podsíť pro virtuální počítač a privátní koncový bod registru. V mnoha scénářích ale byste koncový bod nastavili v samostatné podsíti. 
 
-Když vytvoříte virtuální počítač, Azure ve výchozím nastavení vytvoří virtuální síť ve stejné skupině prostředků. Název virtuální sítě je založený na názvu virtuálního počítače. Například pokud pojmenujete virtuální počítač *myDockerVM* , výchozí název virtuální sítě je *myDockerVMVNET* s podsítí s názvem *myDockerVMSubnet*. Nastavte tyto hodnoty v proměnných prostředí spuštěním příkazu [AZ Network VNet list][az-network-vnet-list] :
+Když vytvoříte virtuální počítač, Azure ve výchozím nastavení vytvoří virtuální síť ve stejné skupině prostředků. Název virtuální sítě je založený na názvu virtuálního počítače. Například pokud pojmenujete virtuální počítač *myDockerVM*, výchozí název virtuální sítě je *myDockerVMVNET* s podsítí s názvem *myDockerVMSubnet*. Nastavte tyto hodnoty v proměnných prostředí spuštěním příkazu [AZ Network VNet list][az-network-vnet-list] :
 
 ```azurecli
 NETWORK_NAME=$(az network vnet list \
@@ -205,7 +205,7 @@ Nastavte privátní odkaz při vytváření registru nebo přidejte privátní o
 ### <a name="create-a-private-endpoint---new-registry"></a>Vytvoření privátního koncového bodu – nový registr
 
 1. Při vytváření registru na portálu na kartě **základy** v části **SKU** vyberte **Premium**.
-1. Vyberte kartu **síť** .
+1. Vyberte kartu **Sítě**.
 1. V **Možnosti připojení k síti** vyberte **privátní koncový bod**  >  **a přidat**.
 1. Zadejte nebo vyberte následující informace:
 
@@ -213,7 +213,7 @@ Nastavte privátní odkaz při vytváření registru nebo přidejte privátní o
     | ------- | ----- |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Zadejte název existující skupiny nebo vytvořte novou.|
-    | Název | Zadejte jedinečný název. |
+    | Name | Zadejte jedinečný název. |
     | Vytváření |Vybrat **registr**|
     | **Sítě** | |
     | Virtuální síť| Vyberte virtuální síť, ve které je nasazený virtuální počítač, například *myDockerVMVNET*. |
@@ -266,8 +266,8 @@ Nastavte privátní odkaz při vytváření registru nebo přidejte privátní o
     |Zóna Privátního DNS |Vybrat *(nové) privatelink.azurecr.IO* |
     |||
 
-1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit** , kde Azure ověří konfiguraci. 
-2. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně** , vyberte **Vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci. 
+2. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 Po vytvoření privátního koncového bodu se nastavení DNS v privátní zóně zobrazí na stránce **privátní koncové body** na portálu:
 

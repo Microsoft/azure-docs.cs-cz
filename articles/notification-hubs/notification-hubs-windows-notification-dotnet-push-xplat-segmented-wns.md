@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 2c77eba69fd914e8ecc7d08a1b16f61ceefe101b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320572"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Kurz: odesílání oznámení na konkrétní zařízení s Univerzální platforma Windows aplikacemi
@@ -81,7 +81,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
     </Grid>
     ```
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt, vyberte **Přidat**  >  **třídu**. V okně **Přidat novou položku**pojmenujte *oznámení*třídy a vyberte **Přidat**. V případě potřeby přidejte `public` modifikátor do definice třídy.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt, vyberte **Přidat**  >  **třídu**. V okně **Přidat novou položku** pojmenujte *oznámení* třídy a vyberte **Přidat**. V případě potřeby přidejte `public` modifikátor do definice třídy.
 
 1. `using`Do nového souboru přidejte následující příkazy:
 
@@ -143,7 +143,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
 
     Další informace najdete v tématu [Šablony](notification-hubs-templates-cross-platform-push-messages.md).
 
-1. V souboru projektu *App.XAML.cs* přidejte do třídy následující vlastnost `App` :
+1. V souboru projektu *App. XAML. cs* přidejte do třídy následující vlastnost `App` :
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -156,13 +156,13 @@ První krok spočívá v přidání prvků uživatelského rozhraní na stávaj�
    > [!NOTE]
    > Přihlašovací údaje distribuované s klientskou aplikací obvykle nejsou zabezpečené, a proto s klientskou aplikací distribuujte jenom přístupový klíč pro *naslouchání*. Přístup pro naslouchání umožňuje aplikaci registrovat oznámení, ale neumožňuje měnit stávající registrace ani odesílat oznámení. Přístupový klíč pro úplný přístup se používá v zabezpečené službě back-end k posílání oznámení a změně stávajících registrací.
 
-1. Do souboru *MainPage.XAML.cs* přidejte následující řádek:
+1. V souboru *MainPage. XAML. cs* přidejte následující řádek:
 
     ```csharp
     using Windows.UI.Popups;
     ```
 
-1. Do souboru *MainPage.XAML.cs* přidejte následující metodu:
+1. V souboru *MainPage. XAML. cs* přidejte následující metodu:
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -194,7 +194,7 @@ V této části provedete registraci v centru oznámení při spuštění pomoc�
 > [!NOTE]
 > Identifikátor URI kanálu přiřazený Službou nabízených oznámení Windows se může kdykoli změnit, a proto byste měli oznámení často registrovat, abyste se vyhnuli chybám v oznámeních. V tomto příkladu se oznámení registrují při každém spuštění aplikace. Pro aplikace, které často spouštíte, například více než jednou denně, můžete pravděpodobně přeskočit registraci, abyste zachovali šířku pásma, pokud od předchozí registrace uplynul méně než jeden den.
 
-1. Chcete-li použít `notifications` třídu k přihlášení k odběru na základě kategorií, otevřete soubor *App.XAML.cs* a pak aktualizujte `InitNotificationsAsync` metodu.
+1. Chcete-li použít `notifications` třídu k přihlášení k odběru na základě kategorií, otevřete soubor *App. XAML. cs* a poté aktualizujte `InitNotificationsAsync` metodu.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -206,7 +206,7 @@ V této části provedete registraci v centru oznámení při spuštění pomoc�
     ```
 
     Tento proces zajistí, že se při spuštění aplikace načte kategorie z místního úložiště. Pak si vyžádá registraci těchto kategorií. Tuto metodu jste vytvořili `InitNotificationsAsync` jako součást [odesílání oznámení Univerzální platforma Windows aplikací pomocí Azure Notification Hubs][get-started] kurzu.
-2. Do souboru projektu *MainPage.XAML.cs* přidejte následující kód do `OnNavigatedTo` metody:
+2. Do souboru projektu *MainPage. XAML. cs* přidejte následující kód do `OnNavigatedTo` metody:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)

@@ -9,10 +9,10 @@ ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 4c87887f77d5f227fe4d4cdee220397289878d7f
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99574461"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Řešení potíží s sdílenými složkami Azure NFS
@@ -99,7 +99,7 @@ Následující diagram znázorňuje připojení pomocí veřejných koncových b
 
 :::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-public-endpoints.jpg" alt-text="Diagram připojení k veřejnému koncovému bodu" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-public-endpoints.jpg":::
 
-- [Privátní koncový bod](storage-files-networking-endpoints.md#create-a-private-endpoint)
+- [Soukromý koncový bod](storage-files-networking-endpoints.md#create-a-private-endpoint)
     - Přístup je bezpečnější než koncový bod služby.
     - Přístup ke sdílené složce systému souborů NFS prostřednictvím privátního propojení je dostupný z oblasti Azure účtu úložiště (mezi oblastmi, místní) a mimo ni.
     - Partnerský vztah virtuální sítě s virtuálními sítěmi hostovanými v privátním koncovém bodu uděluje přístup ke sdílení systému souborů NFS klientům v partnerských virtuálních sítích.

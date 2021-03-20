@@ -7,10 +7,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943259"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
@@ -110,7 +110,7 @@ V této části jsou uvedeny dotazníky šablon, které vám pomůžou shromáž
 |HDFS – Access Control|  Ruční, uživatelé SSH|
 |Ověřování podregistru & autorizaci|Sentry, LDAP, AD s protokolem Kerberos, Ranger|
 |Auditování|Ambari, Cloudera Navigator, Ranger|
-|Sledování|Grafit, Collect, statd, telegraf, InfluxDB|
+|Monitorování|Grafit, Collect, statd, telegraf, InfluxDB|
 |Zobrazení výstrah|Kapacitor, Prometheus, služby Datadog|
 |Doba uchovávání dat| 3 roky, 5 let|
 |Správci clusteru|Jeden správce, více správců|

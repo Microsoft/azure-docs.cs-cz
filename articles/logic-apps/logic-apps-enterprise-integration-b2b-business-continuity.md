@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
 ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565407"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Nastavení zotavení po havárii mezi oblastmi pro účty pro integraci v Azure Logic Apps
@@ -89,7 +89,7 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
 1. Vytvoření [Aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.    
 
-2. Vyhledejte **X12**a vyberte **X12 – když se změní číslo ovládacího prvku**.   
+2. Vyhledejte **X12** a vyberte **X12 – když se změní číslo ovládacího prvku**.   
 
    ![Hledat X12](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
@@ -100,7 +100,7 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
    ![Snímek obrazovky, který ukazuje, kde zadat název připojení a vybrat účet pro integraci primární oblasti ](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
-4. Nastavení **synchronizace hodnoty DateTime pro začátek** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu**nebo **sekundu** v intervalu.   
+4. Nastavení **synchronizace hodnoty DateTime pro začátek** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu** nebo **sekundu** v intervalu.   
 
    ![Snímek obrazovky, který zobrazuje nastavení synchronizace hodnoty DateTime ke spuštění.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
@@ -108,7 +108,7 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
    ![Snímek obrazovky zobrazující tlačítko pro nový krok a možnost přidat akci](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-6. Vyhledejte **X12**a vyberte **X12 – přidat nebo aktualizovat řídicí čísla**.   
+6. Vyhledejte **X12** a vyberte **X12 – přidat nebo aktualizovat řídicí čísla**.   
 
    ![Přidat nebo aktualizovat řídicí čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
@@ -144,7 +144,7 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
 1. Vytvoření [Aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.    
 
-2. Vyhledejte **EDIFACT**a vyberte **EDIFACT – když se změní číslo ovládacího prvku**.
+2. Vyhledejte **EDIFACT** a vyberte **EDIFACT – když se změní číslo ovládacího prvku**.
 
    ![Hledat EDIFACT](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
 
@@ -155,7 +155,7 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
    ![Název účtu pro integraci primární oblasti](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
 
-4. Nastavení **synchronizace hodnoty DateTime pro začátek** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu**nebo **sekundu** v intervalu.    
+4. Nastavení **synchronizace hodnoty DateTime pro začátek** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu** nebo **sekundu** v intervalu.    
 
    ![Snímek obrazovky zobrazující nastavení hodnoty DateTime a frekvence](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
@@ -163,7 +163,7 @@ Pokud chcete pro příchozí zprávy povolit zotavení po havárii, vyberte nast
 
    ![Snímek obrazovky, který ukazuje, kde vybrat přidat akci](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-7. Vyhledejte **EDIFACT**a vyberte **EDIFACT – přidat nebo aktualizovat řídicí čísla**.   
+7. Vyhledejte **EDIFACT** a vyberte **EDIFACT – přidat nebo aktualizovat řídicí čísla**.   
 
    ![Snímek obrazovky, který ukazuje, kde přidat nebo aktualizovat řídicí čísla](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
@@ -196,7 +196,7 @@ Provozní kontinuita pro dokumenty, které používají protokol AS2, je založe
 
 1. Vytvořte [aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) v sekundární oblasti.  
 
-2. Vyhledejte **AS2**a vyberte **AS2 – když se vytvoří hodnota mikrofonu**.   
+2. Vyhledejte **AS2** a vyberte **AS2 – když se vytvoří hodnota mikrofonu**.   
 
    ![Hledat AS2](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
@@ -207,7 +207,7 @@ Provozní kontinuita pro dokumenty, které používají protokol AS2, je založe
 
    ![Snímek obrazovky, který ukazuje, kde zadat název připojení, když je vytvořena hodnota MIKROFONu.](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
-4. Nastavení **hodnoty data a času pro spuštění synchronizace hodnot typu MIC** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu**nebo **sekundu** v intervalu.   
+4. Nastavení **hodnoty data a času pro spuštění synchronizace hodnot typu MIC** je volitelné. **Frekvence** se dá nastavit na **den**, **hodinu**, **minutu** nebo **sekundu** v intervalu.   
 
    ![DateTime a frekvence](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
@@ -215,7 +215,7 @@ Provozní kontinuita pro dokumenty, které používají protokol AS2, je založe
 
    ![Nový krok, přidání akce](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
-6. Vyhledejte **AS2**a vyberte **AS2-přidat nebo aktualizovat obsah MIC**.  
+6. Vyhledejte **AS2** a vyberte **AS2-přidat nebo aktualizovat obsah MIC**.  
 
    ![Přidání nebo aktualizace MIC](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
