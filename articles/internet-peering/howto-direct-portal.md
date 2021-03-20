@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
 ms.openlocfilehash: 1a89ce873c53e94036aa4f8ac2c2870365924187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537204"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Vytvoření nebo úprava přímého partnerského vztahu pomocí Azure Portal
@@ -79,6 +79,6 @@ Jako poskytovatel internetových služeb nebo poskytovatel internetového Exchan
 * [Vytvoření nebo úprava partnerského vztahu serveru Exchange pomocí portálu](howto-exchange-portal.md)
 * [Převedení staršího partnerského vztahu serveru Exchange na prostředek Azure pomocí portálu](howto-legacy-exchange-portal.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Další informace najdete v tématu [Nejčastější dotazy k internetovým partnerům](faqs.md).

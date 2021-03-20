@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336201"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení potíží s replikací fyzických serverů a virtuálních počítačů VMware
@@ -48,8 +48,8 @@ Když se pokusíte vybrat zdrojový počítač pro povolení replikace pomocí S
 * Je **už chráněný/převzetí služeb při selhání prostřednictvím služby Azure Site Recovery Services**: Pokud už je virtuální počítač chráněný nebo převzetí služeb při selhání prostřednictvím Site Recovery, virtuální počítač není k dispozici pro výběr ochrany na portálu. Ujistěte se, že virtuální počítač, který hledáte na portálu, už není chráněný žádným jiným uživatelem nebo v jiném předplatném.
 * **vCenter Nepřipojeno**: Ověřte, zda je vCenter v připojeném stavu. Pokud chcete ověřit, přejděte na Recovery Services trezor > Site Recovery > konfigurační servery infrastruktury > klikněte na příslušný konfigurační server > otevře se okno s podrobnostmi o přidružených serverech. Ověřte, zda je Server vCenter připojen. Pokud je ve stavu "Nepřipojeno", vyřešte problém a pak [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) na portálu. Potom se virtuální počítač zobrazí na portálu.
 * **ESXi vypnuto**: Pokud se hostitel ESXi, pod nímž se nachází virtuální počítač, nachází ve vypnutém stavu, pak virtuální počítač nebude uveden nebo nebude možné ho vybrat na Azure Portal. Zapněte na hostiteli ESXi a [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) na portálu. Potom se virtuální počítač zobrazí na portálu.
-* **Čeká**se na restartování: Pokud je na virtuálním počítači čeká na restartování, nebudete moct vybrat počítač na Azure Portal. Ujistěte se, že se nedokončené aktivity restartování dokončí, a [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Potom se virtuální počítač zobrazí na portálu.
-* **Nenašla se IP**adresa: Pokud virtuální počítač nemá přidruženou platnou IP adresu, nebudete moct vybrat počítač na Azure Portal. Ujistěte se, že virtuálnímu počítači přiřadíte platnou IP adresu a [aktualizujete konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Potom se virtuální počítač zobrazí na portálu.
+* **Čeká** se na restartování: Pokud je na virtuálním počítači čeká na restartování, nebudete moct vybrat počítač na Azure Portal. Ujistěte se, že se nedokončené aktivity restartování dokončí, a [Aktualizujte konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Potom se virtuální počítač zobrazí na portálu.
+* **Nenašla se IP** adresa: Pokud virtuální počítač nemá přidruženou platnou IP adresu, nebudete moct vybrat počítač na Azure Portal. Ujistěte se, že virtuálnímu počítači přiřadíte platnou IP adresu a [aktualizujete konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Potom se virtuální počítač zobrazí na portálu.
 
 ### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>Řešení potíží s chráněnými virtuálními počítači, které jsou na portálu šedé
 
@@ -118,7 +118,7 @@ Problém vyřešíte tak, že pomocí následujícího postupu ověříte stav s
     - Podrobnosti o chybě najdete v protokolech v umístění:
 
         *C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\svagents \* . log*
-3. Pokud chcete zaregistrovat hlavní cíl s konfiguračním serverem, přejděte do složky **%ProgramData%\ASR\Agent**a spusťte na příkazovém řádku následující příkaz:
+3. Pokud chcete zaregistrovat hlavní cíl s konfiguračním serverem, přejděte do složky **%ProgramData%\ASR\Agent** a spusťte na příkazovém řádku následující příkaz:
    ```
    cmd
    cdpcli.exe --registermt

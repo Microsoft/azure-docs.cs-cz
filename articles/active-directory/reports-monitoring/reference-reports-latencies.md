@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89231057"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latence generování sestav v Azure Active Directory
@@ -54,8 +54,8 @@ Pokud již máte data o aktivitách s bezplatnou licencí, můžete ji okamžit�
 
 Existují dva typy sestav zabezpečení:
 
-- [Riziková přihlášení](../identity-protection/overview-identity-protection.md) – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
-- [Uživatelé označení příznakem rizika](../identity-protection/overview-identity-protection.md) – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
+- [Riziková přihlášení](../identity-protection/overview-identity-protection.md) – rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+- [Uživatelé označení příznakem rizika](../identity-protection/overview-identity-protection.md) – rizikové uživatel je indikátorem uživatelského účtu, který mohl být ohrožen. 
 
 V následující tabulce jsou uvedeny informace o latenci pro sestavy zabezpečení.
 

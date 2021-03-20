@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
 ms.openlocfilehash: 5fad3e4862b0c40c9edd00a5b9d47b245e529396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536728"
 ---
 # <a name="convert-word-to-vector-module"></a>Převést Word na vektorový modul
@@ -51,37 +51,37 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu. Předzpracova
 
 2. Jako vstup pro modul zadejte datovou sadu, která obsahuje jeden nebo více textových sloupců.
 
-3. Pro **cílový sloupec**vyberte jenom jeden sloupec, který obsahuje text, který se má zpracovat.
+3. Pro **cílový sloupec** vyberte jenom jeden sloupec, který obsahuje text, který se má zpracovat.
 
     Vzhledem k tomu, že tento modul vytvoří slovník z textu, obsah sloupců se liší, což vede k různým obsahům slovníku. Proto modul přijímá pouze jeden cílový sloupec.
 
-4. V případě  **strategie Word2Vec**vyberte z **šetrnější předvlaked English model**, **Gensim Word2Vec**a **Gensim FastText**.
+4. V případě  **strategie Word2Vec** vyberte z **šetrnější předvlaked English model**, **Gensim Word2Vec** a **Gensim FastText**.
 
 5. Pokud je **Word2Vec strategie** **Gensim Word2Vec** nebo **Gensim FastText**:
 
-    + Pro **Word2Vec školicí algoritmus**vyberte z **Skip_gram** a **CBOW**. Rozdíl je představený v [původním dokumentu (PDF)](https://arxiv.org/pdf/1301.3781.pdf).
+    + Pro **Word2Vec školicí algoritmus** vyberte z **Skip_gram** a **CBOW**. Rozdíl je představený v [původním dokumentu (PDF)](https://arxiv.org/pdf/1301.3781.pdf).
 
         Výchozí metoda je **Skip_gram**.
 
-    + Pro **délku vkládání slov**zadejte dimenzionální vektory. Toto nastavení odpovídá `size` parametru v Gensim.
+    + Pro **délku vkládání slov** zadejte dimenzionální vektory. Toto nastavení odpovídá `size` parametru v Gensim.
 
         Výchozí velikost vložení je 100.
 
-    + V poli **Velikost kontextového okna**určete maximální vzdálenost mezi slovem, který je předpovězený, a aktuálním slovem. Toto nastavení odpovídá `window` parametru v Gensim.
+    + V poli **Velikost kontextového okna** určete maximální vzdálenost mezi slovem, který je předpovězený, a aktuálním slovem. Toto nastavení odpovídá `window` parametru v Gensim.
 
         Výchozí velikost okna je 5.
 
-    + V poli **počet epochs**určete počet epochs (iterací) na corpus. Odpovídá `iter` parametru v Gensim.
+    + V poli **počet epochs** určete počet epochs (iterací) na corpus. Odpovídá `iter` parametru v Gensim.
 
         Výchozí epocha číslo je 5.
 
-6. V poli **maximální velikost slovníku**určete maximální počet slov v generovaném slovníku.
+6. V poli **maximální velikost slovníku** určete maximální počet slov v generovaném slovníku.
 
     Pokud existuje více jedinečných slov, než je maximální velikost, vyřadí se zřídka.
 
     Výchozí velikost slovníku je 10 000.
 
-7. Pro **minimální počet slov**zadejte minimální počet slov. Modul bude ignorovat všechna slova, která mají četnost nižší než tato hodnota.
+7. Pro **minimální počet slov** zadejte minimální počet slov. Modul bude ignorovat všechna slova, která mají četnost nižší než tato hodnota.
 
     Výchozí hodnota je 5.
 
@@ -126,7 +126,7 @@ vysokoškolské|-0,281835|0,29312|0,106966|-0,031385|0,100777|-0,061452|...|0,05
 program|-0,263074|0,245753|0,07058|-0,164666|0,162857|-0,027345|...|-0,0525
 loop|-0,391421|0,52366|0,141503|-0,105423|0,084503|-0,018424|...|-0,0521
 
-V tomto příkladu jsme použili výchozí **Gensim Word2Vec** pro **strategii Word2Vec**a **školicí algoritmus** je **Skip-gram**. **Délka vkládání slov** je 100, proto máme 100 vkládání sloupců.
+V tomto příkladu jsme použili výchozí **Gensim Word2Vec** pro **strategii Word2Vec** a **školicí algoritmus** je **Skip-gram**. **Délka vkládání slov** je 100, proto máme 100 vkládání sloupců.
 
 ## <a name="technical-notes"></a>Technické poznámky
 

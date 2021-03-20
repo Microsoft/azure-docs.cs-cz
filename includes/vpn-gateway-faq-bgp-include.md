@@ -9,10 +9,10 @@ ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 649c5805c600b6282be6d05fefb59cecaf249f4f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92526085"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Je protokol BGP podporován ve všech SKU služby Azure VPN Gateway?
@@ -45,7 +45,7 @@ Tyto čísla ASN nejsou rezervovány organizací IANA nebo Azure pro použití, 
 
 ### <a name="what-address-does-vpn-gateway-use-for-bgp-peer-ip"></a>Jaká adresa VPN Gateway použít pro IP adresu partnerského uzlu protokolu BGP?
 
-Ve výchozím nastavení VPN Gateway přiděluje jednu IP adresu z rozsahu *GatewaySubnet* pro brány VPN typu aktivní-pohotovostní nebo dvě IP adresy pro brány VPN typu aktivní-aktivní. Tyto adresy se přiřazují automaticky, když vytvoříte bránu VPN. Můžete získat vlastní IP adresu protokolu BGP přidělenou pomocí prostředí PowerShell nebo umístěním do Azure Portal. V prostředí PowerShell použijte rutinu **Get-AzVirtualNetworkGateway**a vyhledejte vlastnost **bgpPeeringAddress** . V Azure Portal na stránce **Konfigurace brány** vyhledejte v části **Konfigurace vlastnosti ASN protokolu BGP** .
+Ve výchozím nastavení VPN Gateway přiděluje jednu IP adresu z rozsahu *GatewaySubnet* pro brány VPN typu aktivní-pohotovostní nebo dvě IP adresy pro brány VPN typu aktivní-aktivní. Tyto adresy se přiřazují automaticky, když vytvoříte bránu VPN. Můžete získat vlastní IP adresu protokolu BGP přidělenou pomocí prostředí PowerShell nebo umístěním do Azure Portal. V prostředí PowerShell použijte rutinu **Get-AzVirtualNetworkGateway** a vyhledejte vlastnost **bgpPeeringAddress** . V Azure Portal na stránce **Konfigurace brány** vyhledejte v části **Konfigurace vlastnosti ASN protokolu BGP** .
 
 Pokud místní směrovače VPN používají IP adresy **APIPA** (169.254. x. x) jako IP adresy protokolu BGP, musíte v bráně Azure VPN zadat další **IP adresu protokolu BGP pro službu Azure APIPA** . Azure VPN Gateway vybere adresu APIPa, která se má použít s místním partnerským vztahem APIPa protokolu APIPa zadaná v bráně místní sítě, nebo privátní IP adresa pro místní partnerský uzel BGP bez APIPa. Další informace najdete v tématu [Konfigurace protokolu BGP](../articles/vpn-gateway/bgp-howto.md).
 
@@ -105,6 +105,6 @@ Ano.
 Přidejte trasu hostitele IP adresy partnerského uzlu protokolu BGP Azure na zařízení VPN. Tato trasa odkazuje na tunelové připojení VPN S2S IPsec. Pokud je třeba IP adresa partnerského uzlu Azure VPN 10.12.255.30, přidáte trasu hostitele pro 10.12.255.30 s rozhraním Next Hop odpovídajícího rozhraní tunelového propojení IPsec na zařízení VPN.
 
 ### <a name="does-the-virtual-network-gateway-support-bfd-for-s2s-connections-with-bgp"></a>Podporuje Brána virtuální sítě BFD pro připojení S2S s protokolem BGP?
-Ne. Rozpoznávání obousměrného předávání (BFD) je protokol, který můžete použít s protokolem BGP ke zjištění rychlejšího výpadku sousedů, než můžete pomocí standardních nečinnosti protokolu BGP. BFD používá časovače s dalšími sekundami, které jsou navržené pro práci v prostředích LAN, ale ne přes veřejná připojení k Internetu nebo na celé síti.
+No. Rozpoznávání obousměrného předávání (BFD) je protokol, který můžete použít s protokolem BGP ke zjištění rychlejšího výpadku sousedů, než můžete pomocí standardních nečinnosti protokolu BGP. BFD používá časovače s dalšími sekundami, které jsou navržené pro práci v prostředích LAN, ale ne přes veřejná připojení k Internetu nebo na celé síti.
 
 U připojení přes veřejný Internet se určité pakety zpoždění nebo dokonce vyřazené nejsou neobvyklé, takže zavedení těchto agresivních časovačů může být nestabilní. Tato nestabilita může způsobit ztlumení tras pomocí protokolu BGP. Jako alternativu můžete nakonfigurovat místní zařízení s časovači nižšími, než je výchozí interval, 60 sekund "naživu" a 180 – sekundový časovač blokování. Výsledkem je rychlejší konvergence.

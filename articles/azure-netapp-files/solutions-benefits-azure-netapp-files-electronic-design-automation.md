@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82160149"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Výhody použití Azure NetApp Files pro automatizaci elektronických návrhů
@@ -29,7 +29,7 @@ Doba uvedení na trh (TTM) je zásadním aspektem pro odvětví návrhu polovodi
 
 Testy zahrnují tři scénáře s následujícími konfiguracemi. 
 
-|    Scénář    |    Svazky    |    Klienti<br> SLES15 D16s_v3  |
+|    Scenario    |    Svazky    |    Klienti<br> SLES15 D16s_v3  |
 |----------------|---------------|--------------------------------|
 |    Jednu         |    1          |    1                           |
 |    Dvě         |    6          |    24                          |
@@ -43,7 +43,7 @@ Druhý a třetí scénář vyhodnotí omezení jednoho Azure NetApp Filesho konc
 
 Následující tabulka shrnuje výsledky testovacích scénářů.
 
-|    Scénář       |    Rychlost v/v<br>  2 MS     |    Rychlost v/v<br>  na hraničních zařízeních     |    Propustnost<br>  2 MS     |    Propustnost<br>  na hraničních zařízeních     |
+|    Scenario       |    Rychlost v/v<br>  2 MS     |    Rychlost v/v<br>  na hraničních zařízeních     |    Propustnost<br>  2 MS     |    Propustnost<br>  na hraničních zařízeních     |
 |-------------------|---------------------------|--------------------------------|-----------------------------|----------------------------------|
 |    1 svazek       |    39 601                 |    49 502                      |    soubory MiB 692/s                 |    soubory MiB 866/s                      |
 |    6 svazků      |    255 613                |    317 000                     |    soubory MiB 4 577/s               |    soubory MiB 5 568/s                    |

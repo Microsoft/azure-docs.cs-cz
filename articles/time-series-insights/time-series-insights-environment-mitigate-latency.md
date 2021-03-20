@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91531645"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>Monitorování a zmírnění omezení pro snížení latence v Azure Time Series Insights Gen1
@@ -59,15 +59,15 @@ Výstrahy umožňují diagnostikovat a zmírnit problémy s latencí, ke kterým
 
    Odtud můžete nakonfigurovat výstrahy pomocí některých z těchto podmínek:
 
-   |Metrika  |Popis  |
+   |Metric  |Popis  |
    |---------|---------|
    |**Přijaté bajty příchozího přenosu dat**     | Počet nezpracovaných bajtů načtených ze zdrojů událostí. Nezpracovaný počet obvykle zahrnuje název vlastnosti a hodnotu.  |  
    |**Příchozí přenos dat přijal neplatné zprávy.**     | Počet neplatných zpráv přečtených ze všech zdrojů událostí Azure Event Hubs nebo Azure IoT Hub.      |
    |**Příchozí zprávy příchozího přenosu dat**   | Počet zpráv načtených ze všech Event Hubs nebo zdrojů událostí centra IoT.        |
    |**Uložené bajty příchozího přenosu dat**     | Celková velikost uložených událostí a dostupných pro dotaz Velikost je vypočítána pouze v hodnotě vlastnosti.        |
-   |**Uložené události** příchozího přenosu dat     |   Počet sloučených událostí uložených a dostupných pro dotaz      |
-   |**Prodleva při příjmu příchozího přenosu zpráv**   |  Rozdíl v sekundách mezi časem, kdy je zpráva zařazená do fronty ve zdroji událostí a čas zpracování v příchozím přenosu.      |
-   |**Prodleva počtu přijatých zpráv příchozího** přenosu dat    |  Rozdíl mezi pořadovým číslem poslední zprávy ve frontě ve zdrojovém oddílu události a pořadovým číslem zprávy zpracovávaných v příchozím přenosu.      |
+   |**Uložené události příchozího přenosu dat**     |   Počet sloučených událostí uložených a dostupných pro dotaz      |
+   |**Prodleva při příjmu příchozího přenosu zpráv**    |  Rozdíl v sekundách mezi časem, kdy je zpráva zařazená do fronty ve zdroji událostí a čas zpracování v příchozím přenosu.      |
+   |**Prodleva počtu přijatých zpráv příchozího přenosu dat**    |  Rozdíl mezi pořadovým číslem poslední zprávy ve frontě ve zdrojovém oddílu události a pořadovým číslem zprávy zpracovávaných v příchozím přenosu.      |
 
    Vyberte **Hotovo**.
 

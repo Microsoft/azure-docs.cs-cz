@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943915"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML Services ve službě Azure HDInsight
@@ -55,7 +55,7 @@ Služby ML ve službě HDInsight přináší následující výhody:
 
 Následující funkce jsou součástí ML Services v HDInsight.
 
-| Kategorie funkce | Popis |
+| Kategorie funkce | Description |
 |------------------|-------------|
 | R – povoleno | [Balíčky r](/machine-learning-server/r-reference/introducing-r-server-r-package-reference) pro řešení napsané v jazyce r s využitím open source distribuce R a běhové infrastruktury pro provádění skriptu. |
 | Python – povolený | [Moduly Pythonu](/machine-learning-server/python-reference/introducing-python-package-reference) pro řešení napsané v Pythonu, s využitím open source distribuce Pythonu a běhové infrastruktury pro provádění skriptu.

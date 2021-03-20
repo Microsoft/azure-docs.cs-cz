@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 62c8240a4d2e50aa3b584f322baf7d2ee217c6d3
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98127868"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Řešení potíží s nabízenou instalací služby mobility
@@ -241,7 +241,7 @@ Před verzí 9,20 byl kořenový oddíl nebo nastavení svazku na více discích
 
 Konfigurační soubory Grand Unified zaváděcího programu (GRUB) (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_ nebo _/etc/default/grub_) můžou obsahovat hodnotu pro **kořen** parametrů a **obnovit** je jako skutečné názvy zařízení místo univerzálně jedinečného identifikátoru (UUID). Site Recovery zmocňuje přístup k identifikátoru UUID, protože názvy zařízení se můžou v rámci restartování virtuálního počítače změnit. Například virtuální počítač nemusí být online se stejným názvem při převzetí služeb při selhání a bude mít za následek problémy.
 
-Příklad:
+Například:
 
 - Následující řádek je ze souboru GRUB _/boot/grub2/grub.cfg_:
 
@@ -260,7 +260,7 @@ Názvy zařízení je potřeba nahradit odpovídajícími identifikátory UUID.
 
 1. Vyhledá UUID zařízení provedením příkazu `blkid \<device name>` .
 
-   Příklad:
+   Například:
 
    ```shell
    blkid /dev/sda1

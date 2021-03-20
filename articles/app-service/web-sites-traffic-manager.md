@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
 ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80437898"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Řízení provozu Azure App Service s využitím Azure Traffic Manager
@@ -24,10 +24,10 @@ Pomocí služby Azure Traffic Manager můžete řídit způsob distribuce požad
 ## <a name="routing-methods"></a>Metody směrování
 Azure Traffic Manager používá čtyři různé metody směrování. Tyto metody jsou popsány v následujícím seznamu, protože se vztahují k Azure App Service.
 
-* ** [Priorita](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** použijte primární aplikaci pro veškerý provoz a poskytněte zálohy pro případ, že primární nebo záložní aplikace nejsou k dispozici.
-* ** [Vážená](../traffic-manager/traffic-manager-routing-methods.md#weighted):** distribuujte provoz napříč sadou aplikací, a to buď rovnoměrně, nebo podle vah, které definujete.
-* ** [Výkon](../traffic-manager/traffic-manager-routing-methods.md#performance):** Pokud máte aplikace v různých geografických umístěních, použijte "nejbližší" aplikaci z hlediska nejnižší latence sítě.
-* ** [Geografické](../traffic-manager/traffic-manager-routing-methods.md#geographic):** přímé uživatele na konkrétní aplikace na základě toho, ze kterého geografického umístění dotaz DNS pocházejí. 
+* **[Priorita](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** použijte primární aplikaci pro veškerý provoz a poskytněte zálohy pro případ, že primární nebo záložní aplikace nejsou k dispozici.
+* **[Vážená](../traffic-manager/traffic-manager-routing-methods.md#weighted):** distribuujte provoz napříč sadou aplikací, a to buď rovnoměrně, nebo podle vah, které definujete.
+* **[Výkon](../traffic-manager/traffic-manager-routing-methods.md#performance):** Pokud máte aplikace v různých geografických umístěních, použijte "nejbližší" aplikaci z hlediska nejnižší latence sítě.
+* **[Geografické](../traffic-manager/traffic-manager-routing-methods.md#geographic):** přímé uživatele na konkrétní aplikace na základě toho, ze kterého geografického umístění dotaz DNS pocházejí. 
 
 Další informace najdete v tématu [metody směrování Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md).
 

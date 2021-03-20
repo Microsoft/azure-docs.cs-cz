@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 10/26/2020
 ms.author: alkohli
 ms.openlocfilehash: f16f33e9aadcc01427602a1bd81f81cb0710e4dd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94578735"
 ---
 # <a name="iot-edge-role-management-changes-for-your-azure-stack-edge-device"></a>IoT Edge změny správy rolí pro zařízení Azure Stack Edge
@@ -323,11 +323,11 @@ Pokud aktuálně používáte `Get-AzStackEdgeRole` `New-AzStackEdgeRole` `Set-A
 
 **Používám Azure Stack Edge pro-FPGA. Ovlivňuje aktualizace z ledna 2021 model FPGA?**
 
-Ne. Aktualizace od ledna 2021 se vztahuje pouze na Azure Stack Edge pro-FPGA, Azure Stack Edge pro R a na Azure Stack hraničních Mini R. Tato aktualizace nemá vliv na Azure Stack Edge pro FPGA a nevyžaduje žádné změny IoT Edge správy rolí.
+No. Aktualizace od ledna 2021 se vztahuje pouze na Azure Stack Edge pro-FPGA, Azure Stack Edge pro R a na Azure Stack hraničních Mini R. Tato aktualizace nemá vliv na Azure Stack Edge pro FPGA a nevyžaduje žádné změny IoT Edge správy rolí.
 
 **Po aktualizaci Azure Stack Edge pro-GPU na nový software zařízení v lednu 2021 jsou nějaké stávající služby zasažené?**
 
-Ne. Vaše nakonfigurované služby nebudou ovlivněny po instalaci aktualizace zařízení z ledna 2021.
+No. Vaše nakonfigurované služby nebudou ovlivněny po instalaci aktualizace zařízení z ledna 2021.
 
 **Jaké jsou změny vysoké úrovně rozhraní API pro správu IoT Edge, sady SDK nebo rutiny?**
 

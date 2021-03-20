@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: d9f48de7ef5d9525a995af4ebbd12c5f14f40189
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93349133"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Nastavte verzi Redis pro Azure cache pro Redis (Preview).
 V tomto článku se dozvíte, jak nakonfigurovat verzi Redis softwaru, která se má použít s instancí mezipaměti. Azure cache for Redis nabízí nejnovější hlavní verzi Redis a alespoň jednu předchozí verzi. Tyto verze se pravidelně aktualizují, protože se uvolní novější software Redis. Můžete si vybrat mezi dvěma dostupnými verzemi. Mějte na paměti, že mezipaměť bude upgradována na další verzi automaticky v případě, že verze, kterou aktuálně používá, již není podporována.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
@@ -44,7 +44,7 @@ Mezipaměť vytvoříte pomocí následujících kroků:
 
 1. Klikněte na **Vytvořit**. 
    
-    Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno** , mezipaměť je připravena k použití.
+    Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno**, mezipaměť je připravena k použití.
 
     > [!NOTE]
     > V tuto chvíli není možné po vytvoření mezipaměti změnit verzi Redis.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: f6030e209b06dc7ae9acd8a13e6dcdf22b58f8c5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318883"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>Kurz: Azure Active Directory integrace s Allbound SSO
@@ -137,7 +137,7 @@ Ke konfiguraci jednotného přihlašování na straně **jednotného** přihlaš
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -162,7 +162,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Allbound SSO.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Allbound SSO**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Allbound SSO**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -189,7 +189,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 V této části se uživatel s názvem Britta Simon vytvoří v rámci Allbound SSO. Allbound SSO podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v Allbound SSO neexistuje, vytvoří se po ověření nový.
 
 > [!Note]
-> Pokud potřebujete ručně vytvořit uživatele, kontaktujte [tým podpory ALLBOUND SSO](mailto:engineering@allbound.com).
+> Pokud potřebujete ručně vytvořit uživatele, kontaktujte [tým podpory ALLBOUND SSO](mailto:engineering@allbound.com).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -197,7 +197,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Allbound SSO na přístupovém panelu, měli byste se automaticky přihlásit k Allbound SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

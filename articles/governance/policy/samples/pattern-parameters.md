@@ -4,10 +4,10 @@ description: Tento model Azure Policy poskytuje příklad použití parametrů �
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 7bb991c43a1deee39dd047aa7d814c124712fe69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89649946"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy – vzor: parametry
@@ -35,7 +35,7 @@ Parametr se pak použije v bloku **policyRule. if** , aby se zásada využívala
 
 ## <a name="sample-2-array-parameters"></a>Ukázka 2: parametry pole
 
-Tato definice zásady používá jeden parametr **listOfBandwidthinMbps**a kontroluje, jestli prostředek okruhu Express Route nakonfiguroval nastavení šířky pásma na jednu ze schválených hodnot. Pokud se neshoduje, je vytvoření nebo aktualizace prostředku [odepřena](../concepts/effects.md#deny).
+Tato definice zásady používá jeden parametr **listOfBandwidthinMbps** a kontroluje, jestli prostředek okruhu Express Route nakonfiguroval nastavení šířky pásma na jednu ze schválených hodnot. Pokud se neshoduje, je vytvoření nebo aktualizace prostředku [odepřena](../concepts/effects.md#deny).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json":::
 
@@ -43,10 +43,10 @@ Tato definice zásady používá jeden parametr **listOfBandwidthinMbps**a kontr
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="6-12":::
 
-V této části definice zásad je parametr **listOfBandwidthinMbps** definován jako _pole_ a popis je k dispozici pro jeho použití. Jako _pole_má více hodnot, které mají být shodné.
+V této části definice zásad je parametr **listOfBandwidthinMbps** definován jako _pole_ a popis je k dispozici pro jeho použití. Jako _pole_ má více hodnot, které mají být shodné.
 
-Parametr je pak použit v bloku **policyRule. if** . Jako parametr _pole_ _array_ 
- musí být použita[Podmínka](../concepts/definition-structure.md#conditions)pole **v** nebo **notIn** .
+Parametr je pak použit v bloku **policyRule. if** . Jako parametr _pole_  
+ musí být použita [Podmínka](../concepts/definition-structure.md#conditions)pole **v** nebo **notIn** .
 Tady se používá pro alias **serviceProvider. bandwidthInMbps** jako jedna z definovaných hodnot.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="21-24" highlight="3":::

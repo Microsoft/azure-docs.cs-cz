@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 8f329b6377915a3df6e3f3e212cbd8d41f9ed80d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90017656"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Analýza dat zařízení pomocí analýzy
@@ -35,7 +35,7 @@ Uživatelské rozhraní analýzy se skládá ze tří hlavních součástí:
 
 ## <a name="querying-your-data"></a>Dotazování na data
 
-Musíte začít volbou **skupiny zařízení**a telemetrie, kterou chcete analyzovat. Až budete hotovi, vyberte **analyzovat** a začněte vizualizovat data.
+Musíte začít volbou **skupiny zařízení** a telemetrie, kterou chcete analyzovat. Až budete hotovi, vyberte **analyzovat** a začněte vizualizovat data.
 
 - **Skupina zařízení:** [Skupina zařízení](tutorial-use-device-groups.md) je uživatelem definovaná skupina vašich zařízení. Například všechny chladničky v Oakland nebo všechny verze 2,0 větrné turbíny.
 

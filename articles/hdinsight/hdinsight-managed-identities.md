@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: f2b7f6e8421a735db131bc05605936e8cb2d87eb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944119"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Spravované identity ve službě Azure HDInsight
@@ -55,7 +55,7 @@ Pokud jste už vytvořili dlouhotrvající cluster s více různými spravovaný
 
 pak byste měli přiřadit požadované role a oprávnění pro výše uvedené scénáře všem spravovaným identitám používaným v clusteru. Pokud jste třeba pro clustery ADLS Gen2 a ESP používali různé spravované identity, musí mít obě tyto identity přiřazené role vlastník dat objektů BLOB úložiště a přispěvatele HDInsight Domain Services, aby se v těchto problémech nepoužívaly.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Co se stane, když po vytvoření clusteru odstraním spravovanou identitu?
 

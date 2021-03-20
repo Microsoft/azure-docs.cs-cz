@@ -7,10 +7,10 @@ ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90033026"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Jak vyřešit Azure Advisor doporučení
@@ -34,7 +34,7 @@ Postup při povolování ověřovacího prostředí:
 
 2. V dalším kroku vyberte fond hostitelů, který chcete změnit z provozního prostředí, na prostředí ověřování.
 
-3. Ve fondu hostitelů vyberte v levém sloupci položku **vlastnosti** . V dalším kroku se posuňte dolů, dokud se nezobrazí "prostředí pro ověřování". Vyberte **Ano**a pak vyberte **použít**.
+3. Ve fondu hostitelů vyberte v levém sloupci položku **vlastnosti** . V dalším kroku se posuňte dolů, dokud se nezobrazí "prostředí pro ověřování". Vyberte **Ano** a pak vyberte **použít**.
 
 >[!div class="mx-imgBorder"]
 >![Snímek obrazovky nabídky vlastností "Prostředí pro ověřování" je zvýrazněné červeně a je vybráno "Ano" bublinu.](media/validation-yes.png)
@@ -58,7 +58,7 @@ Doporučujeme, aby uživatelé měli v prostředí ověřování méně než pol
 
 2. Vyberte fondy hostitelů, které chcete změnit z ověřování na produkční prostředí.
 
-3. Ve fondu hostitelů vyberte kartu **vlastnosti** ve sloupci na pravé straně obrazovky. V dalším kroku se posuňte dolů, dokud se nezobrazí "prostředí pro ověřování". Vyberte **ne**a pak vyberte **použít**.
+3. Ve fondu hostitelů vyberte kartu **vlastnosti** ve sloupci na pravé straně obrazovky. V dalším kroku se posuňte dolů, dokud se nezobrazí "prostředí pro ověřování". Vyberte **ne** a pak vyberte **použít**.
 
 >[!div class="mx-imgBorder"]
 >![Snímek obrazovky nabídky vlastností "Prostředí pro ověřování" je zvýrazněné červeně a je vybráno "ne" bublinu.](media/validation-no.png)

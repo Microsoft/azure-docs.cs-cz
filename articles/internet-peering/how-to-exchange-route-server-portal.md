@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
 ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537187"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Vytvoření nebo úprava partnerského vztahu systému Exchange pomocí serveru Směrování v Azure Portal
@@ -69,9 +69,9 @@ Jako poskytovatel internetového Exchange můžete vytvořit partnerský vztah E
     * Vyberte SKU jako **základní zdarma**. Nevybírejte Premium zdarma, protože jsou vyhrazené pro speciální aplikace.
     * Vyberte umístění **Metro** , kde chcete nastavit partnerský vztah.
 
-1. V části **připojení partnerských vztahů**vyberte **vytvořit novou** .
+1. V části **připojení partnerských vztahů** vyberte **vytvořit novou** .
 
-1.  V části **přímé připojení partnerského vztahu**zadejte následující podrobnosti o relaci protokolu BGP:
+1.  V části **přímé připojení partnerského vztahu** zadejte následující podrobnosti o relaci protokolu BGP:
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky zobrazuje podokno přímého partnerského vztahu s přidanými podrobnostmi.](./media/setup-exchange-conf-tab-direct-route.png)
@@ -130,6 +130,6 @@ Jako poskytovatel internetového Exchange můžete vytvořit partnerský vztah E
 * [Vytvoření nebo úprava přímého partnerského vztahu pomocí portálu](howto-direct-portal.md)
 * [Převod starší verze přímého partnerského vztahu na prostředek Azure pomocí portálu](howto-legacy-direct-portal.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Další informace najdete v tématu [Nejčastější dotazy k internetovým partnerům](faqs.md).

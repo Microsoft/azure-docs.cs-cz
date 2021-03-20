@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to, automl
 ms.openlocfilehash: 4fb147dc5c57c3a98607a025f566fa583bf87460
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93358809"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>Vytvoření předpovědi s modelem ONNX AutoML v .NET
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak pomocí automatizovaného modelu AutoML (neuro
 
 ONNX je open source formát pro modely AI. ONNX podporuje interoperabilitu mezi platformami. To znamená, že můžete model vytvořit v jedné z mnoha oblíbených rozhraní pro strojové učení, jako je PyTorch, převést ho do formátu ONNX a spotřebovat model ONNX v jiném rozhraní jako ML.NET. Další informace najdete na [webu ONNX](https://onnx.ai/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [.NET Core SDK 3,1 nebo vyšší](https://dotnet.microsoft.com/download)
 - Textový editor nebo integrované vývojové prostředí (např. [Visual Studio](https://visualstudio.microsoft.com/vs/) nebo [Visual Studio Code](https://code.visualstudio.com/Download))
@@ -50,7 +50,7 @@ V této ukázce použijete .NET Core CLI k sestavení aplikace, ale můžete pro
 
 ## <a name="add-software-packages"></a>Přidat softwarové balíčky
 
-1. Pomocí .NET Core CLI nainstalujte balíčky NuGet **Microsoft.ml** , **Microsoft. ml. OnnxRuntime** a **Microsoft. ml. OnnxTransformer** .
+1. Pomocí .NET Core CLI nainstalujte balíčky NuGet **Microsoft.ml**, **Microsoft. ml. OnnxRuntime** a **Microsoft. ml. OnnxTransformer** .
 
     ```dotnetcli
     dotnet add package Microsoft.ML
@@ -60,7 +60,7 @@ V této ukázce použijete .NET Core CLI k sestavení aplikace, ale můžete pro
 
     Tyto balíčky obsahují závislosti potřebné k použití modelu ONNX v aplikaci .NET. ML.NET poskytuje rozhraní API, které používá [modul runtime ONNX](https://github.com/Microsoft/onnxruntime) pro předpovědi.
 
-1. Otevřete soubor *program.cs* a přidejte následující `using` příkazy v horní části, abyste odkazovali na příslušné balíčky.
+1. Otevřete soubor *program. cs* a přidejte v `using` horní části následující příkazy, které odkazují na příslušné balíčky.
 
     ```csharp
     using System.Linq;
@@ -88,7 +88,7 @@ Do vaší aplikace přidejte odkaz na soubor modelu ONNX.
 
     V tomto případě je název souboru modelu ONNX *automl-model. ONNX*.
 
-1. Otevřete soubor *program.cs* a přidejte do třídy následující řádek `Program` .
+1. Otevřete soubor *program. cs* a přidejte do třídy následující řádek `Program` .
 
     ```csharp
     static string ONNX_MODEL_PATH = "automl-model.onnx";
@@ -112,9 +112,9 @@ Model použitý v tomto příkladu používá data z datové sady NYC TLC taxisl
 
 |vendor_id|rate_code|passenger_count|trip_time_in_secs|trip_distance|payment_type|fare_amount|
 |---|---|---|---|---|---|---|
-|VTS|1|1|1140|3,75|CRD|15,5|
-|VTS|1|1|480|2,72|CRD|10,0|
-|VTS|1|1|1680|7,8|CSH|26,5|
+|VTS|1|1|1140|3,75|CRD|15.5|
+|VTS|1|1|480|2,72|CRD|10.0|
+|VTS|1|1|1680|7,8|CSH|26.5|
 
 ### <a name="inspect-the-onnx-model-optional"></a>Kontrola modelu ONNX (volitelné)
 
@@ -130,7 +130,7 @@ Pomocí nástroje, jako je Netron, zkontrolujte vstupy a výstupy modelu.
 
 ### <a name="define-model-input-schema"></a>Definovat schéma vstupu modelu
 
-V souboru Program.cs vytvořte novou třídu `OnnxInput` s názvem s následujícími vlastnostmi *Program.cs* .
+V `OnnxInput` souboru *program. cs* vytvořte novou třídu s názvem s následujícími vlastnostmi.
 
 ```csharp
 public class OnnxInput
@@ -165,7 +165,7 @@ Další informace o atributech dat naleznete v [příručce ml.NET Load data Gui
 
 ### <a name="define-model-output-schema"></a>Definování schématu výstupu modelu
 
-Po zpracování dat se vytvoří výstup určitého formátu. Definujte schéma výstup dat. V souboru Program.cs vytvořte novou třídu `OnnxOutput` s názvem s následujícími vlastnostmi *Program.cs* .
+Po zpracování dat se vytvoří výstup určitého formátu. Definujte schéma výstup dat. V `OnnxOutput` souboru *program. cs* vytvořte novou třídu s názvem s následujícími vlastnostmi.
 
 ```csharp
 public class OnnxOutput

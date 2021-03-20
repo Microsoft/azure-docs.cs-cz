@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: duau
 ms.openlocfilehash: 8ee7f42a4b05def7c2239c7a1e5bcef54f6f7e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89395770"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurace MACsec na portech ExpressRoute Direct
@@ -47,7 +47,7 @@ Pokud chcete spustit konfiguraci, přihlaste se ke svému účtu Azure a vyberte
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Pokud už máte Trezor klíčů nebo skupinu prostředků, můžete je znovu použít. Je ale důležité, abyste [funkci **obnovitelného odstranění** ](../key-vault/general/soft-delete-overview.md) povolili ve svém stávajícím trezoru klíčů. Pokud není povolené obnovitelné odstranění, můžete k tomu použít následující příkazy:
+    Pokud už máte Trezor klíčů nebo skupinu prostředků, můžete je znovu použít. Je ale důležité, abyste [funkci **obnovitelného odstranění**](../key-vault/general/soft-delete-overview.md) povolili ve svém stávajícím trezoru klíčů. Pokud není povolené obnovitelné odstranění, můžete k tomu použít následující příkazy:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

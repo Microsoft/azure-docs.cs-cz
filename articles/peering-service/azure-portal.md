@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 62210105ba4ba84cff4b246c5b7cf8cc794fb5e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91534943"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>Registrace služby partnerského vztahu pomocí Azure Portal
@@ -27,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte mít následující:
 
@@ -49,7 +49,7 @@ V prohlížeči přejdete na Azure Portal a přihlásíte se pomocí svého úč
 
 ## <a name="register-a-peering-service-connection"></a>Registrace připojení služby Peering Service
 
-1. Pokud chcete zaregistrovat připojení ke službě peering Service, vyberte **vytvořit službu pro vytváření**  >  **partnerských vztahů**k prostředkům.
+1. Pokud chcete zaregistrovat připojení ke službě peering Service, vyberte **vytvořit službu pro vytváření**  >  **partnerských vztahů** k prostředkům.
 
     ![Registrace služby Peering Service](./media/peering-service-portal/peering-servicecreate.png)
 1. Na kartě **základy** na stránce **vytvořit připojení ke službě peering Service** zadejte následující podrobnosti.

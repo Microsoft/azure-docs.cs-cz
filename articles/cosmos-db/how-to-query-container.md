@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93335887"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Dotazování kontejneru Azure Cosmos
@@ -59,7 +59,7 @@ Sady Azure Cosmos DB SDK 1.9.0 a novější podporují možnosti paralelního pr
 
 Paralelní provádění dotazů můžete spravovat laděním následujících parametrů:
 
-- **MaxConcurrency** : nastaví maximální počet současných síťových připojení k oddílům kontejneru. Pokud nastavíte tuto vlastnost na `-1` , sada SDK bude spravovat stupeň paralelismu. Pokud je  `MaxConcurrency` nastavena na `0` , je k oddílům kontejneru jediné síťové připojení.
+- **MaxConcurrency**: nastaví maximální počet současných síťových připojení k oddílům kontejneru. Pokud nastavíte tuto vlastnost na `-1` , sada SDK bude spravovat stupeň paralelismu. Pokud je  `MaxConcurrency` nastavena na `0` , je k oddílům kontejneru jediné síťové připojení.
 
 - **MaxBufferedItemCount:** Vyvažuje latenci dotazů a využití paměti na straně klienta. Pokud je tato možnost vynechána nebo chcete-li ji nastavit na hodnotu-1, sada SDK spravuje počet položek ukládaných do vyrovnávací paměti během paralelního provádění dotazů.
 

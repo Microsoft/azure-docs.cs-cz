@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92532641"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – flexibilní Server
@@ -71,9 +71,9 @@ Obnovení k bodu v čase je užitečné ve více scénářích. Například kdy�
 
 Můžete si vybrat mezi nejstarším bodem obnovení a vlastním bodem obnovení.
 
--   **Nejstarší bod obnovení** : v závislosti na době uchování bude to čas, kdy bude možné provést obnovení. Nejstarší čas zálohování se vybere automaticky a zobrazí se na portálu. To je užitečné v případě, že chcete prozkoumat nebo provést některé testování od tohoto bodu v čase.
+-   **Nejstarší bod obnovení**: v závislosti na době uchování bude to čas, kdy bude možné provést obnovení. Nejstarší čas zálohování se vybere automaticky a zobrazí se na portálu. To je užitečné v případě, že chcete prozkoumat nebo provést některé testování od tohoto bodu v čase.
 
--   **Vlastní bod obnovení** : Tato možnost umožňuje zvolit jakýkoli časový okamžik v rámci doby uchování definované pro tento flexibilní Server. Ve výchozím nastavení je automaticky vybrán poslední čas ve standardu UTC a užitečný, pokud chcete provést obnovení na poslední potvrzenou transakci pro účely testování. Volitelně můžete zvolit další dny a čas. 
+-   **Vlastní bod obnovení**: Tato možnost umožňuje zvolit jakýkoli časový okamžik v rámci doby uchování definované pro tento flexibilní Server. Ve výchozím nastavení je automaticky vybrán poslední čas ve standardu UTC a užitečný, pokud chcete provést obnovení na poslední potvrzenou transakci pro účely testování. Volitelně můžete zvolit další dny a čas. 
 
 Odhadovaná doba obnovení závisí na několika faktorech, včetně velikosti databáze, objemu protokolů transakcí ke zpracování, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Celková doba obnovení obvykle trvá několik minut až několik hodin.
 
