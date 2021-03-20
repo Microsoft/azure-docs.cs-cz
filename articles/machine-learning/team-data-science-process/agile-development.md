@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89440282"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agilní vývoj projektů pro datové vědy
@@ -35,7 +35,7 @@ Následující obrázek znázorňuje typické plánování sprintu, kódování 
 
 ##  <a name="work-item-types"></a><a name='Terminology-1'></a>Typy pracovních položek
 
-V architektuře plánování sprintu TDSP existují čtyři často používané typy *pracovních položek* : *funkce*, *uživatelské scénáře*, *úkoly*a *chyby*. Nevyřízené položky pro všechny pracovní položky jsou na úrovni projektu, nikoli na úrovni úložiště Git. 
+V architektuře plánování sprintu TDSP existují čtyři často používané typy *pracovních položek* : *funkce*, *uživatelské scénáře*, *úkoly* a *chyby*. Nevyřízené položky pro všechny pracovní položky jsou na úrovni projektu, nikoli na úrovni úložiště Git. 
 
 Tady jsou definice pro typy pracovních položek:
 
@@ -72,9 +72,9 @@ Další informace o plánování sprintu v Azure Boards naleznete v tématu [př
 
 Po vytvoření projektu a úložiště kódu projektu můžete přidat funkci do nevyřízených položek, které představují práci pro váš projekt.
 
-1. Na stránce **projektu vyberte**  >  v levém navigačním panelu položku**neprotokoly** . 
+1. Na stránce **projektu vyberte**  >  v levém navigačním panelu položku **neprotokoly** . 
    
-1. Pokud **je typ**pracovní položky na horním panelu na kartě **backlogu** , rozevírací seznam a výběr **funkcí**. Pak vyberte **nová pracovní položka.**
+1. Pokud **je typ** pracovní položky na horním panelu na kartě **backlogu** , rozevírací seznam a výběr **funkcí**. Pak vyberte **nová pracovní položka.**
    
    ![Vybrat novou pracovní položku](./media/agile-development/2-sprint-team-overview.png)
    
@@ -130,42 +130,42 @@ Odborníci na data můžou být pohodlnější pomocí agilní šablony, která 
 
 1. Na hlavní stránce vaší organizace Azure DevOps v levém navigačním panelu vyberte **Nastavení organizace** . 
    
-1. V levém navigačním panelu **Nastavení organizace** vyberte v **části panely**možnost **proces**. 
+1. V levém navigačním panelu **Nastavení organizace** vyberte v **části panely** možnost **proces**. 
    
-1. V podokně **všechny procesy** vyberte **...** vedle **agilního**a pak vyberte **vytvořit zděděný proces**.
+1. V podokně **všechny procesy** vyberte **...** vedle **agilního** a pak vyberte **vytvořit zděděný proces**.
    
    ![Vytvořit Zděděný proces z agilního řízení](./media/agile-development/10-settings.png) 
    
-1. V dialogu **vytvořit zděděný proces z agilního** projektu zadejte název *AgileDataScienceProcess*a vyberte **vytvořit proces**.
+1. V dialogu **vytvořit zděděný proces z agilního** projektu zadejte název *AgileDataScienceProcess* a vyberte **vytvořit proces**.
    
    ![Vytvořit proces AgileDataScienceProcess](./media/agile-development/11-agileds.png)
    
-1. V části **všechny procesy**vyberte nový **AgileDataScienceProcess**. 
+1. V části **všechny procesy** vyberte nový **AgileDataScienceProcess**. 
    
-1. Na kartě **typy pracovní položky** zakažte **námětu**, **funkce**, **uživatelský scénář**a **úkol** tak, že vyberete **...** vedle každé položky a pak vyberete **Zakázat**. 
+1. Na kartě **typy pracovní položky** zakažte **námětu**, **funkce**, **uživatelský scénář** a **úkol** tak, že vyberete **...** vedle každé položky a pak vyberete **Zakázat**. 
    
    ![Zakázat typy pracovních položek](./media/agile-development/12-disable.png)
    
-1. V části **všechny procesy**vyberte kartu **úrovně backlogu** . V části **portfolia**nevyřízené položky vyberte **...** vedle **námětu (zakázáno)** a pak vyberte **upravit/přejmenovat**. 
+1. V části **všechny procesy** vyberte kartu **úrovně backlogu** . V části **portfolia** nevyřízené položky vyberte **...** vedle **námětu (zakázáno)** a pak vyberte **upravit/přejmenovat**. 
    
 1. V dialogovém okně **Upravit úroveň backlogu** :
-   1. V části **název**nahraďte **námětu** *TDSP projekty*. 
-   1. V části **typy pracovních položek na této úrovni backlogu**vyberte **nový typ pracovní položky**, zadejte *projekt TDSP*a vyberte **Přidat**. 
+   1. V části **název** nahraďte **námětu** *TDSP projekty*. 
+   1. V části **typy pracovních položek na této úrovni backlogu** vyberte **nový typ pracovní položky**, zadejte *projekt TDSP* a vyberte **Přidat**. 
    1. V části **výchozí typ pracovní položky**, rozevírací seznam a vyberte **projekt TDSP**. 
    1. Vyberte **Uložit**.
    
    ![Nastavit úroveň nevyřízených položek portfolia](./media/agile-development/13-rename.png)  
    
-1. Použijte stejný postup k přejmenování **funkcí** do *TDSP fází*a přidejte následující typy pracovních položek:
+1. Použijte stejný postup k přejmenování **funkcí** do *TDSP fází* a přidejte následující typy pracovních položek:
    
    - *Obchodní porozumění*
    - *Získání dat*
    - *Modelování*
    - *Nasazení*
    
-1. V části **nevyřízené položky požadavků**přejmenujte **příběhy** na *dílčí fáze TDSP*, přidejte novou *dílčí fázi TDSP*typu pracovní položky a nastavte výchozí typ pracovní položky na **TDSP dílčí fáze**.
+1. V části **nevyřízené položky požadavků** přejmenujte **příběhy** na *dílčí fáze TDSP*, přidejte novou *dílčí fázi TDSP* typu pracovní položky a nastavte výchozí typ pracovní položky na **TDSP dílčí fáze**.
    
-1. V části **nevyřízené položky iterace**přidejte nový úkol typu pracovní položky *TDSP*a nastavte jej jako výchozí typ pracovní položky. 
+1. V části **nevyřízené položky iterace** přidejte nový úkol typu pracovní položky *TDSP* a nastavte jej jako výchozí typ pracovní položky. 
    
 Po dokončení tohoto postupu by úrovně backlogu měly vypadat takto:
    
@@ -179,11 +179,11 @@ Po dokončení tohoto postupu by úrovně backlogu měly vypadat takto:
    
 1. V dialogovém okně **vytvořit nový projekt** zadejte název projektu a pak vyberte **Upřesnit**. 
    
-1. V části **proces pracovní položky**rozbalte rozevírací seznam a vyberte **AgileDataScienceProcess**a pak vyberte **vytvořit**.
+1. V části **proces pracovní položky** rozbalte rozevírací seznam a vyberte **AgileDataScienceProcess** a pak vyberte **vytvořit**.
    
    ![Vytvoření projektu TDSP](./media/agile-development/15-newproject.png)
    
-1. V nově vytvořeném **projektu vyberte v**  >  levém navigačním panelu položku**neprotokoly** .
+1. V nově vytvořeném **projektu vyberte v**  >  levém navigačním panelu položku **neprotokoly** .
    
 1. Pokud chcete, aby se projekty TDSP zobrazovaly, vyberte ikonu **Konfigurovat nastavení týmu** . Na obrazovce **Nastavení** zaškrtněte políčko **projekty TDSP** a pak vyberte **Uložit a zavřít**.
    

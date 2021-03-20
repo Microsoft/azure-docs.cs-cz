@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
 ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376458"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním prostředím Integration Runtime
@@ -117,14 +117,14 @@ Když pracujete s případy, které souvisejí s metodou handshake SSL/TLS, mů�
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
         ```
 
-        Příklad:
+        Například:
 
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
     4. Vyhledejte chyby ve výstupním souboru TXT. Souhrn chyb najdete na konci souboru TXT.
 
-        Příklad: 
+        Například: 
 
         ![Snímek obrazovky s shrnutím chyb na konci souboru TXT](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 

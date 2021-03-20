@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454690"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s DocuSign
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat DocuSign s Microsoft Azure Active Dire
 * Povolte pro uživatele automatické přihlašování prostřednictvím svých účtů Azure AD a DocuSign je uživatelům.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -115,11 +115,11 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel**.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **název** zadejte **B. Simon**.  
-   1. Do pole **uživatelské jméno** zadejte `<username>@<companydomain>.<extension>` . Například: `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte `<username>@<companydomain>.<extension>` . Příklad: `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom si poznamenejte hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -127,10 +127,10 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 
 V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel mohl používat jednotné přihlašování Azure.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Docusign**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu **Uživatelé** možnost **B. Simon** a potom v dolní části obrazovky klikněte na tlačítko **Vybrat** .
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** vyberte tlačítko **přiřadit** .
@@ -177,7 +177,7 @@ V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel moh
 
     a. Do pole **název** zadejte jedinečný název pro vaši konfiguraci. Nepoužívejte mezery.
 
-    b. V **poli Vystavitel zprostředkovatele identity**vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
+    b. V **poli Vystavitel zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
     c. Do pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -187,7 +187,7 @@ V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel moh
 
     f. V případě, **že chcete odeslat žádost o odeslání Authn**, vyberte **post**.
 
-    například Pro **Odeslat žádost o odhlášení**vyberte **získat**.
+    například Pro **Odeslat žádost o odhlášení** vyberte **získat**.
 
     h. V oddílu **mapování vlastních atributů** vyberte možnost **Přidat nové mapování**.
 
@@ -204,7 +204,7 @@ V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel moh
 
        ![Certifikáty poskytovatele identity/přidat certifikát][58]
 
-    k. V části **Zprostředkovatelé identity** vyberte **Akce**a potom vyberte **koncové body**.
+    k. V části **Zprostředkovatelé identity** vyberte **Akce** a potom vyberte **koncové body**.
 
        ![Zprostředkovatelé identity/koncové body][59]
 
@@ -212,11 +212,11 @@ V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel moh
 
        ![Zobrazit koncové body SAML 2,0][60]
        
-       1. Zkopírujte **adresu URL vystavitele poskytovatele služby**a vložte ji do pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal.
+       1. Zkopírujte **adresu URL vystavitele poskytovatele služby** a vložte ji do pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal.
        
-       1. Zkopírujte **adresu URL služby vyhodnocení poskytovatele služby**a vložte ji do pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
+       1. Zkopírujte **adresu URL služby vyhodnocení poskytovatele služby** a vložte ji do pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
        
-       1. Zkopírujte **přihlašovací adresu URL poskytovatele služby**a pak ji vložte do pole **Adresa URL pro přihlášení** v základní části **Konfigurace SAML** v Azure Portal. Na konci **přihlašovací adresy URL poskytovatele služeb** se zobrazí hodnota IDPID.
+       1. Zkopírujte **přihlašovací adresu URL poskytovatele služby** a pak ji vložte do pole **Adresa URL pro přihlášení** v základní části **Konfigurace SAML** v Azure Portal. Na konci **přihlašovací adresy URL poskytovatele služeb** se zobrazí hodnota IDPID.
 
        1. Vyberte **Zavřít**.
 

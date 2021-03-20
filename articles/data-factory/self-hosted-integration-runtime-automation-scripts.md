@@ -8,16 +8,16 @@ ms.author: abnarain
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
 ms.openlocfilehash: 8cbe54a23cb1c8b55afd86a18b51c0e392c3f78a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376203"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Automatizace instalace místního prostředí Integration runtime pomocí místních skriptů PowerShellu
 Pokud chcete automatizovat instalaci Integration Runtime v místním prostředí na místních počítačích (kromě virtuálních počítačů Azure, kde můžeme místo toho použít šablonu Správce prostředků), můžete použít místní skripty PowerShellu. Tento článek obsahuje dva skripty, které můžete použít.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Na místním počítači spusťte PowerShell. Chcete-li spustit skripty, je třeba zvolit možnost **Spustit jako správce**.
 * [Stáhněte si](https://www.microsoft.com/download/details.aspx?id=39717) místně hostovaný software Integration runtime. Zkopírujte cestu k umístění staženého souboru. 

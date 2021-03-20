@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
 ms.openlocfilehash: d996a2e0732ad9b4da104265710970e04cdbd368
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98199766"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurace správy zájemců pro Dynamics 365 Customer Engagement
@@ -21,7 +21,7 @@ Tento článek popisuje, jak nastavit zákaznickou zapojení Dynamics 365 (dří
 >[!NOTE]
 >Tyto pokyny jsou specifické pro cloudové prostředí hostované Microsoftem pro zákaznickou zapojení Dynamics 365. Připojení přímo k místnímu prostředí Dynamics není v současné době podporováno. Existují i další možnosti, jak můžete přijímat zájemce, jako je například konfigurace [koncového bodu https](./commercial-marketplace-lead-management-instructions-https.md) nebo [tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku jsou nutná následující uživatelská oprávnění:
 
@@ -68,7 +68,7 @@ Tuto možnost doporučujeme, protože nikdy nebudete muset aktualizovat své už
 
 Konfigurace Azure Active Directory pro zákaznickou zapojení Dynamics 365:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**.
 
 1. Vyberte **vlastnosti** a ZKOPÍRUJTE hodnotu **ID adresáře** na stránce **vlastností adresáře** . Tuto hodnotu uložte, protože ji budete muset poskytnout na portálu pro publikování a získat tak potenciální zákazníky pro vaši nabídku na webu Marketplace.
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81259918"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Podmínky shody v modulu Standard rules pro Azure CDN
@@ -58,7 +58,7 @@ Identifikuje požadavky na základě informací o souborech cookie v příchozí
 
 Název souboru cookie | Operátor | Hodnota souboru cookie | Transformace případu
 ------------|----------|--------------|---------------
-String | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
+Řetězec | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
 #### <a name="key-information"></a>Informace o klíči
 
@@ -77,7 +77,7 @@ Identifikuje požadavky založené na argumentech definovaných pro metodu POST 
 
 Název argumentu | Operátor | Hodnota argumentu | Transformace případu
 --------------|----------|----------------|---------------
-String | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
+Řetězec | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
 ### <a name="query-string"></a>Řetězec dotazu
 
@@ -97,10 +97,10 @@ Identifikuje požadavky na základě umístění nebo IP adresy žadatele.
 
 Operátor | Podporované hodnoty
 ---------|-----------------
-Všechny | Není k dispozici
+Všechny | –
 Geografická shoda | Kód země
 Shoda IP adres | IP adresa (oddělená mezerami)
-Ne žádné | Není k dispozici
+Ne žádné | –
 Neshoda geografického umístění | Kód země
 Neshoda IP adres | IP adresa (oddělená mezerami)
 
@@ -132,7 +132,7 @@ Identifikuje požadavky, které v žádosti používají konkrétní hlavičku.
 
 Název hlavičky | Operátor | Hodnota hlavičky | Transformace případu
 ------------|----------|--------------|---------------
-String | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
+Řetězec | [Seznam standardních operátorů](#standard-operator-list) | Řetězec, int | Žádná transformace, pro velká a malá písmena
 
 ### <a name="request-method"></a>Request – metoda
 
@@ -170,7 +170,7 @@ Operátor | Adresa URL požadavku | Transformace případu
 
 #### <a name="key-information"></a>Informace o klíči
 
-- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: * https://www . \<yourdomain\> . model COM*.
+- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: *https://www . \<yourdomain\> . model COM*.
 
 ### <a name="url-file-extension"></a>Přípona souboru adresy URL
 
@@ -225,9 +225,9 @@ Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, 
 - Contains 
 - Začíná na 
 - Končí na 
-- Je menší než
+- Menší než
 - Je menší než nebo rovno
-- Je větší než
+- Větší než
 - Je větší než nebo rovno
 - Ne žádné
 - Neobsahuje

@@ -9,10 +9,10 @@ ms.date: 12/14/2020
 ms.author: abhishgu
 ms.reviewer: abhishgu
 ms.openlocfilehash: 25972ba2bb30c39838c4822a42af292e8d8b1dba
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97803625"
 ---
 # <a name="ingest-data-from-apache-kafka-into-azure-cosmos-db-cassandra-api-using-kafka-connect"></a>Ingestování dat z Apache Kafka do Azure Cosmos DB rozhraní API Cassandra pomocí Kafka Connect
@@ -30,7 +30,7 @@ Tady je rozpis komponent a jejich definic služeb – můžete se podívat na ko
 - Aby bylo možné spustit jako kontejner Docker, konektor DataStax Apache Kafka je vloženými nad existujícím rozhraním Docker image – [debezium/Connect-Base](https://github.com/debezium/docker-images/tree/master/connect-base/1.2). Tato bitová kopie zahrnuje instalaci Kafka a jeho knihoven Kafka Connect, takže by bylo vhodné přidat vlastní konektory. Můžete se podívat na [souboru Dockerfile](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/connector/Dockerfile).
 - `data-generator`Data o vygenerování semen služby (JSON) se náhodně generují do `weather-data` tématu Kafka. Můžete odkazovat na kód a `Dockerfile` v [úložišti GitHub](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/data-generator/) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Zřídit účet Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 

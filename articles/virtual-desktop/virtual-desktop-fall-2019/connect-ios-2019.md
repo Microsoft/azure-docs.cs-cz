@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c7efedadbba196223db2ad5700035e27d37fb414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008453"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-ios-client"></a>Připojení k virtuálnímu počítači s Windows (Classic) pomocí klienta iOS
@@ -38,8 +38,8 @@ Přihlášení k odběru informačního kanálu:
    - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nakonfiguroval server tímto způsobem.
 3. Klepněte na **Další**.
 4. Po zobrazení výzvy zadejte své přihlašovací údaje.
-   - V poli **uživatelské jméno**zadejte uživatelské jméno s oprávněním pro přístup k prostředkům.
-   - Pro **heslo**zadejte heslo přidružené k uživatelskému jménu.
+   - V poli **uživatelské jméno** zadejte uživatelské jméno s oprávněním pro přístup k prostředkům.
+   - Pro **heslo** zadejte heslo přidružené k uživatelskému jménu.
    - Může se také zobrazit výzva k poskytnutí dalších faktorů, pokud váš správce nakonfiguroval ověřování tímto způsobem.
 5. Klepněte na **Uložit**.
 

@@ -16,10 +16,10 @@ ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9eb5f1d81874c8303d095aec320f60cc9ae6a7dc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360560"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure se sadami SDK Azure 
@@ -27,7 +27,7 @@ ms.locfileid: "93360560"
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 Tento článek poskytuje seznam ukázek sady SDK, které ukazují použití příslušné podpory sady Azure SDK pro spravované identity prostředků Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 

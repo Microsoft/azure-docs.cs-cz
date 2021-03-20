@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80437772"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Co je Azure Data Box Heavy?
@@ -59,7 +59,7 @@ Data Box Heavy je navržená tak, aby se do Azure přesunula obrovský objem dat
 
 V této verzi Data Box Heavy zařízení obsahuje následující funkce.
 
-| Specifikace                                          | Popis              |
+| Specifikace                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Hmotnost                                                  | ~ 500 kg. <br>Zařízení pro uzamykání kol pro přenos|
 | Dimenze                                              | Šířka: 26 palců (výška: 28 palců): 48 palců |
@@ -118,7 +118,7 @@ Pokud se chcete zaregistrovat Data Box Heavy, proveďte následující kroky:
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com).
 2. Kliknutím na **+ vytvořit prostředek** vytvořte nový prostředek. Vyhledejte **Azure Data Box**. Službu **Azure Data Box** vyberte.
-3. Klikněte na **Create** (Vytvořit).
+3. Klikněte na **Vytvořit**.
 4. Vyberte předplatné, které chcete použít pro Data Box Heavy. Vyberte oblast, ve které chcete prostředek Data Box Heavy nasadit. U možnosti **Data Box Heavy** klikněte na **Zaregistrovat se**.
 5. Odpovězte na otázky týkající se země/oblasti pobytu dat, časového rámce, cílové služby Azure pro přenos dat, šířku pásma sítě a četnosti přenosu dat. Projděte si ochranu osobních údajů a podmínky a zaškrtněte políčko, že Microsoft může použít vaši e-mailovou adresu, aby vás kontaktoval.
 

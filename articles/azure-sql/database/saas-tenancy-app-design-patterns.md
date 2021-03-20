@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793224"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Modely tenantů SaaS Database pro více tenantů
@@ -186,7 +186,7 @@ Následující tabulka shrnuje rozdíly mezi hlavními modely tenantů.
 | Měření | Samostatná aplikace | Databáze – na tenanta | Horizontálně dělené více tenantů |
 | :---------- | :------------- | :------------------ | :------------------- |
 | Měřítko | Střední<br />1 – 100 | Velmi vysoké<br />1 – 100, tisících | Unlimited<br />1 – 1, 000, tisících |
-| Izolace tenanta | Velmi vysoké | Vysoké | Slab s výjimkou jednoho tenanta (který je samostatně v MT DB). |
+| Izolace tenanta | Velmi vysoké | Vysoká | Slab s výjimkou jednoho tenanta (který je samostatně v MT DB). |
 | Náklady na databázi na tenanta | Maximální má velikost pro špičky. | Slab používané fondy. | Nejnižší pro malé klienty v MT databáze. |
 | Sledování a Správa výkonu | Jenom pro tenanta | Agregovaná + pro každého tenanta | Souhrnné i když je jeden tenant jenom pro jednoduchou. |
 | Složitost vývoje | Nízká | Nízká | Úrovně kvůli horizontálního dělení. |

@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375268"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurace podpory virtuální sítě pro instanci Azure cache Premium pro Redis
@@ -185,7 +185,7 @@ Po nakonfigurování požadavků na porty, jak je popsáno v předchozí části
 
 - [Restartujte](cache-administration.md#reboot) všechny uzly mezipaměti. Pokud není dostupný žádný z požadovaných závislostí mezipaměti, jak je popsáno v části [požadavky na příchozí porty](cache-how-to-premium-vnet.md#inbound-port-requirements) a [požadavky na Odchozí porty](cache-how-to-premium-vnet.md#outbound-port-requirements), mezipaměť nebude možné úspěšně restartovat.
 - Po restartování uzlů mezipaměti, jak je uvedeno v Azure Portal stav mezipaměti, můžete provést následující testy:
-  - Otestujte koncový bod mezipaměti pomocí portu 6380 z počítače, který je ve stejné virtuální síti jako mezipaměť, pomocí [tcping](https://www.elifulkerson.com/projects/tcping.php). Příklad:
+  - Otestujte koncový bod mezipaměti pomocí portu 6380 z počítače, který je ve stejné virtuální síti jako mezipaměť, pomocí [tcping](https://www.elifulkerson.com/projects/tcping.php). Například:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -208,7 +208,7 @@ Vyhněte se použití IP adresy, která je podobná následujícímu připojovac
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Pokud nemůžete přeložit název DNS, některé klientské knihovny obsahují možnosti konfigurace `sslHost` , například, které poskytuje klient stackexchange. Redis. Tato možnost umožňuje přepsat název hostitele, který se používá k ověření certifikátu. Příklad:
+Pokud nemůžete přeložit název DNS, některé klientské knihovny obsahují možnosti konfigurace `sslHost` , například, které poskytuje klient stackexchange. Redis. Tato možnost umožňuje přepsat název hostitele, který se používá k ověření certifikátu. Například:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 

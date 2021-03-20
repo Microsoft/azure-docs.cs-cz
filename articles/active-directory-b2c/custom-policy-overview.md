@@ -12,17 +12,17 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 043cf83d804803e1b5b47d3ac51bbccaa06e4e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87116423"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Vlastní zásady v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Vlastní zásady jsou konfigurační soubory, které definují chování klienta Azure Active Directory B2C (Azure AD B2C). Uživatelské toky jsou předdefinované na portálu Azure AD B2C pro nejběžnější úlohy identity. Vlastní zásady mohou být plně upravovány vývojářem identity, aby bylo možné dokončit mnoho různých úloh.
+Vlastní zásady jsou konfigurační soubory, které definují chování tenanta Azure Active Directory B2C (Azure AD B2C). Na portálu Azure AD B2C jsou předdefinované toky uživatelů pro nejběžnější úlohy identit. Vývojář identit může plně upravit vlastní zásady pro provádění různých úloh.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Porovnání toků uživatelů a vlastních zásad
 

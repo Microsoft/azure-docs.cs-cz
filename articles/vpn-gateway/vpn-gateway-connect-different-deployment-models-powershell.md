@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.openlocfilehash: 7012a696684a4e7bc1d3b52943b11ba413c43037
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376484"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí PowerShellu
@@ -33,7 +33,7 @@ Pokud ještě nemáte bránu virtuální sítě a nechcete ji vytvořit, možná
 
 Následující kroky vás provedou nastavením potřebným ke konfiguraci dynamické brány nebo brány založené na trasách pro každou virtuální síť a vytvoření připojení VPN mezi bránami. Tato konfigurace nepodporuje statické brány ani brány založené na zásadách.
 
-### <a name="prerequisites"></a><a name="pre"></a>Požadavky
+### <a name="prerequisites"></a><a name="pre"></a>Předpoklady
 
 * Oba virtuální sítě již byly vytvořeny. Pokud potřebujete vytvořit virtuální síť Resource Manageru, přečtěte si téma [Vytvoření skupiny prostředků a virtuální sítě](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Pokud chcete vytvořit klasickou virtuální síť, přečtěte si téma vytvoření virtuální sítě [typu Classic](/previous-versions/azure/virtual-network/create-virtual-network-classic).
 * Rozsahy adres pro virtuální sítě se vzájemně nepřekrývají, nebo se překrývají s žádným z rozsahů pro další připojení, ke kterým je možné brány připojit.

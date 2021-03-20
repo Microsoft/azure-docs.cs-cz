@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87073741"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Přesunutí aplikace App Service do jiné oblasti
@@ -17,7 +17,7 @@ Tento článek popisuje, jak přenést prostředky App Service zpátky do online
 
 Prostředky App Service jsou specifické pro oblast a nelze je přesouvat mezi oblastmi. Aplikaci musíte obnovit do nové aplikace v jiné oblasti a pak vytvořit konfigurace zrcadlení nebo prostředky pro novou aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Žádné [Obnovení ze snímku](app-service-web-restore-snapshots.md) obvykle vyžaduje úroveň **Premium** , ale v režimu zotavení po havárii je automaticky povolen pro vaši ovlivněnou aplikaci, a to bez ohledu na to, ve které vrstvě se ovlivněná aplikace nachází.
 
@@ -27,7 +27,7 @@ Identifikujte všechny App Service prostředky, které aktuálně používá ovl
 
 - Aplikace služby App Service
 - [Plány služby App Service](overview-hosting-plans.md)
-- [Nasazovací sloty](deploy-staging-slots.md)
+- [Sloty nasazení](deploy-staging-slots.md)
 - [Vlastní domény zakoupené v Azure](manage-custom-dns-buy-domain.md)
 - [Certifikáty SSL](configure-ssl-certificate.md)
 - [Integrace se službou Azure Virtual Network](web-sites-integrate-with-vnet.md)

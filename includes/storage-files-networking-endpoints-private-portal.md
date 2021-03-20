@@ -9,10 +9,10 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 09723030f0da0252120f66f36347cad2e3a3546a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93376204"
 ---
 Přejděte do účtu úložiště, pro který chcete vytvořit privátní koncový bod. V obsahu pro účet úložiště vyberte **připojení privátního koncového bodu** a potom **+ privátní koncový bod** pro vytvoření nového privátního koncového bodu. 
@@ -25,7 +25,7 @@ V okně **základy** vyberte požadovanou skupinu prostředků, název a oblast 
 
 ![Snímek obrazovky s oddílem základy v části Vytvoření privátního koncového bodu](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-1.png)
 
-V okně **prostředek** vyberte přepínač pro **připojení k prostředku Azure ve složce Můj adresář**. V části **typ prostředku** vyberte pro typ prostředku možnost **Microsoft. Storage/storageAccounts** . Pole **prostředek** je účet úložiště se sdílenou složkou Azure, ke které se chcete připojit. Cílový dílčí prostředek je **soubor** , protože se jedná o soubory Azure.
+V okně **prostředek** vyberte přepínač pro **připojení k prostředku Azure ve složce Můj adresář**. V části **typ prostředku** vyberte pro typ prostředku možnost **Microsoft. Storage/storageAccounts** . Pole **prostředek** je účet úložiště se sdílenou složkou Azure, ke které se chcete připojit. Cílový dílčí prostředek je **soubor**, protože se jedná o soubory Azure.
 
 Okno **Konfigurace** umožňuje vybrat konkrétní virtuální síť a podsíť, do které chcete přidat privátní koncový bod. Musíte vybrat odlišnou podsíť z podsítě, do které jste přidali koncový bod služby. Okno konfigurace obsahuje také informace pro vytvoření nebo aktualizaci privátní zóny DNS. Doporučujeme používat výchozí `privatelink.file.core.windows.net` zónu.
 

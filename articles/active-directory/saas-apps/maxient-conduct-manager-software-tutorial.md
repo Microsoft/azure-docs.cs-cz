@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 4b57b3fbb338774eb8d66fc4d3c0c817e19aff4c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458196"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Kurz: Azure Active Directory integrace jednotného přihlašování pomocí softwaru správce Maxient
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat software správce Maxient pomocí slu�
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -94,13 +94,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části udělíte přístup pro všechny účty k ověřování pomocí systému Azure pro Maxient software Manager.  Je důležité si uvědomit, že tento krok je **nutný** , aby Maxient správně fungoval.  Maxient využívá váš systém Azure AD k *ověřování* uživatelů. *Autorizace* uživatelů se provádí v systému Maxient pro konkrétní funkci, kterou se pokouší provést. Maxient nepoužívá k provedení těchto rozhodnutí atributy z vašeho adresáře.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Maxient software správce**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -110,7 +110,7 @@ V této části udělíte přístup pro všechny účty k ověřování pomocí 
 
 Pokud se lístek podpory ještě neotevřel s Maxient implementací nebo pracovníkem podpory, pošlete e-mail na [support@maxient.com](mailto:support@maxient.com) téma "ověřování na základě areálu/nastavení Azure- \<\<School Name\> \> ". Do těla e-mailu zadejte **adresu URL federačních metadat aplikace**. Maxient zaměstnanci budou reagovat s odkazem na testování a ověřit, jestli jsou vydávány správné atributy.  
     
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

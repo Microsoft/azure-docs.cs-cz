@@ -11,10 +11,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791711"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostika řešení potíží s výkonem s škálovatelným škálováním SQL
@@ -28,7 +28,7 @@ Každá Azure SQL Database úroveň služby má omezení četnosti generování 
 
 Následující typy čekání (v [Sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) popisují důvody, proč je možné omezit rychlost protokolu u primární repliky Compute:
 
-|Typ čekání    |Popis                         |
+|Typ čekání    |Description                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | Vyvolá se v případě, že je míra generování protokolu primárního výpočetního uzlu databáze škálováním v důsledku omezené spotřeby protokolu na stránkách.         |
 |RBIO_RG_DESTAGE        | Vyvolá se v případě, že se omezuje rychlost generování protokolu databáze výpočetních uzlů v rámci škálování z důvodu opožděné spotřeby protokolu pomocí dlouhodobého úložiště protokolů.         |
@@ -58,7 +58,7 @@ Některá dynamická spravovaná zobrazení (zobrazení dynamické správy) a ro
   - scan_stopped
   - query_store_begin_persist_runtime_stat
   - dotaz – store_execution_runtime_info
-- ActualPageServerReads/ActualPageServerReadAheads se přidají do XML plánu dotazů pro skutečné plány. Příklad:
+- ActualPageServerReads/ActualPageServerReadAheads se přidají do XML plánu dotazů pro skutečné plány. Například:
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 
@@ -97,7 +97,7 @@ Poměr čtení provedených v RBPEX pro agregované čtení provedené u všech 
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Data v/v statistiky využití prostředků
 
-V Neškálovatelné databázi, kombinované čtení a zápis IOPS proti datovým souborům, které odpovídají limitu datových IOPS [zásad správného řízení prostředků](./resource-limits-logical-server.md#resource-governance) , se ve sloupci hlásí v [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) zobrazení `avg_data_io_percent` . Stejná hodnota je hlášena v Azure Portal jako _procento vstupně-výstupních dat_ .
+V Neškálovatelné databázi, kombinované čtení a zápis IOPS proti datovým souborům, které odpovídají limitu datových IOPS [zásad správného řízení prostředků](./resource-limits-logical-server.md#resource-governance) , se ve sloupci hlásí v [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) zobrazení `avg_data_io_percent` . Stejná hodnota je hlášena v Azure Portal jako _procento vstupně-výstupních dat_.
 
 V databázi s velkým měřítkem se v tomto sloupci zprávy týkají využití data IOPS vzhledem k limitu pro místní úložiště pouze v případě výpočetní repliky, konkrétně v/v na RBPEX a `tempdb` . Hodnota 100% v tomto sloupci udává, že zásady správného řízení prostředků omezují místní úložiště IOPS. Pokud se to koreluje s problémem s výkonem, vyladěním úlohy vygenerujte méně vstupně-výstupní operace nebo zvyšte cíl databázové služby, abyste zvýšili _maximální počet datových IOPS_ pro řízení [prostředků.](resource-limits-vcore-single-databases.md) V případě zásad správného řízení prostředků čtení a zápisu RBPEX systém počítá jednotlivé systémy 8 – KB a nikoli větší IOs, které může vydávat SQL Server databázový stroj.
 

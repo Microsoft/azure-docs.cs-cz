@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
 ms.openlocfilehash: 894a89126d1ee3ed909134f3e0dd914166568654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90606869"
 ---
 Tuto frontu můžete zobrazit v [Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) nebo v  [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/). Tuto frontu můžete také zobrazit v rozhraní příkazového řádku Azure CLI, jak je popsáno v následujících krocích:
 
-1. Otevřetelocal.setting.jsprojektu funkce * na* soubor a zkopírujte hodnotu připojovacího řetězce. V terminálu nebo okně příkazového řádku spusťte následující příkaz, který vytvoří proměnnou prostředí s názvem `AZURE_STORAGE_CONNECTION_STRING` a místo ní bude vkládat konkrétní připojovací řetězec  `<MY_CONNECTION_STRING>` . (Tato proměnná prostředí znamená, že nemusíte zadávat připojovací řetězec ke každému následujícímu příkazu pomocí `--connection-string` argumentu.)
+1. Otevřetelocal.setting.jsprojektu funkce *na* soubor a zkopírujte hodnotu připojovacího řetězce. V terminálu nebo okně příkazového řádku spusťte následující příkaz, který vytvoří proměnnou prostředí s názvem `AZURE_STORAGE_CONNECTION_STRING` a místo ní bude vkládat konkrétní připojovací řetězec  `<MY_CONNECTION_STRING>` . (Tato proměnná prostředí znamená, že nemusíte zadávat připojovací řetězec ke každému následujícímu příkazu pomocí `--connection-string` argumentu.)
 
     # <a name="bash"></a>[bash](#tab/bash)
     

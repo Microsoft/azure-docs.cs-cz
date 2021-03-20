@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 403576454615effeb53651b51679681422b08e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90890362"
 ---
 # <a name="neural-network-regression-module"></a>Neuronové Network regrese – modul
@@ -60,7 +60,7 @@ Neuronové sítě je možné výrazně přizpůsobit. Tato část popisuje, jak 
 
     -   **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.   
 
-3.  V případě **specifikace skryté vrstvy**vyberte možnost **plně připojené**. Tato možnost vytvoří model pomocí výchozí síťové architektury neuronové, která je pro model regrese sítě neuronové, má tyto atributy:  
+3.  V případě **specifikace skryté vrstvy** vyberte možnost **plně připojené**. Tato možnost vytvoří model pomocí výchozí síťové architektury neuronové, která je pro model regrese sítě neuronové, má tyto atributy:  
   
     + Síť obsahuje přesně jednu skrytou vrstvu.
     + Výstupní vrstva je plně připojená ke skryté vrstvě a skrytá vrstva je plně připojená ke vstupní vrstvě.
@@ -68,18 +68,18 @@ Neuronové sítě je možné výrazně přizpůsobit. Tato část popisuje, jak 
   
     Vzhledem k tomu, že počet uzlů ve vstupní vrstvě je určen počtem funkcí v školicích datech, v regresním modelu může být ve výstupní vrstvě pouze jeden uzel.  
   
-4. Pro **Počet skrytých uzlů**zadejte počet skrytých uzlů. Výchozím nastavením je jedna skrytá vrstva s 100 uzly. (Tato možnost není k dispozici, pokud definujete vlastní architekturu pomocí .NET #.)
+4. Pro **Počet skrytých uzlů** zadejte počet skrytých uzlů. Výchozím nastavením je jedna skrytá vrstva s 100 uzly. (Tato možnost není k dispozici, pokud definujete vlastní architekturu pomocí .NET #.)
   
-5.  Do pole **rychlost učení**zadejte hodnotu, která definuje krok prováděný v každé iteraci před opravou. Větší hodnota pro studijní kurzy může způsobit, že se model konverguje rychleji, ale může vyhodnotit místní minima.
+5.  Do pole **rychlost učení** zadejte hodnotu, která definuje krok prováděný v každé iteraci před opravou. Větší hodnota pro studijní kurzy může způsobit, že se model konverguje rychleji, ale může vyhodnotit místní minima.
 
-6.  Pro **počet iterací učení**určete maximální počet pokusů, kolikrát algoritmus zpracovává školicí případy.
+6.  Pro **počet iterací učení** určete maximální počet pokusů, kolikrát algoritmus zpracovává školicí případy.
 
 
-8.  Pro **potenciál**zadejte hodnotu, která se má použít během učení, jako váha na uzlech z předchozích iterací.
+8.  Pro **potenciál** zadejte hodnotu, která se má použít během učení, jako váha na uzlech z předchozích iterací.
 
 10. Pokud chcete změnit pořadí případů mezi iteracemi, vyberte možnost, která bude náhodně vymezit **Příklady**. Pokud zrušíte výběr této možnosti, jsou případy zpracovávány přesně stejným způsobem pokaždé, když spustíte kanál.
   
-11. V případě použití **náhodného čísla**můžete volitelně zadat hodnotu, která se má použít jako počáteční hodnota. Zadání počáteční hodnoty je užitečné, pokud chcete zajistit opakování v rámci spuštění stejného kanálu.
+11. V případě použití **náhodného čísla** můžete volitelně zadat hodnotu, která se má použít jako počáteční hodnota. Zadání počáteční hodnoty je užitečné, pokud chcete zajistit opakování v rámci spuštění stejného kanálu.
   
 13. Připojte školicí datovou sadu a výuku modelu:
 

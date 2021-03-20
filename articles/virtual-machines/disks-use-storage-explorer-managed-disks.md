@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88749377"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Použití Průzkumník služby Azure Storage ke správě Azure Managed disks
 
 Průzkumník služby Storage 1.10.0 umožňuje uživatelům nahrávat, stahovat a kopírovat spravované disky a také vytvářet snímky. Z důvodu těchto dalších možností můžete pomocí Průzkumník služby Storage migrovat data z místního prostředí do Azure a migrovat data mezi oblastmi Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku budete potřebovat následující:
 - Předplatné Azure
@@ -33,7 +33,7 @@ Pokud váš Průzkumník služby Storage není připojený k Azure, nebudete ho 
 
     ![Klikněte na ikonu modulu plug-in.](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
 
-1. Vyberte **Přidat účet Azure**a pak klikněte na **Další**.
+1. Vyberte **Přidat účet Azure** a pak klikněte na **Další**.
 
     ![Přidání účtu Azure](media/disks-upload-vhd-to-managed-disk-storage-explorer/connect-to-azure.png)
 
@@ -121,7 +121,7 @@ Pomocí Průzkumník služby Storage můžete kopírovat spravovaných disk v r�
 
     ![Vytvoření snímku](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. V části **vytvořit snímek**zadejte název snímku a skupinu prostředků, ve které chcete vytvořit. Potom vyberte **Vytvořit**.
+1. V části **vytvořit snímek** zadejte název snímku a skupinu prostředků, ve které chcete vytvořit. Potom vyberte **Vytvořit**.
 
     ![Dialog vytvořit snímek](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 

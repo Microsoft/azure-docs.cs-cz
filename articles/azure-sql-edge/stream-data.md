@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: f63ab040e750c0c642c9656a5482529b926e9295
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392108"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Streamování dat ve službě Azure SQL Edge
@@ -35,15 +35,15 @@ Streamování T-SQL funguje stejným způsobem jako [Azure Stream Analytics](../
 
 Úloha Stream Analytics se skládá z těchto:
 
-- **Vstup z datového proudu** : Tato definice definuje připojení ke zdroji dat, ze kterého se má datový proud číst. Azure SQL Edge aktuálně podporuje následující typy vstupů datového proudu:
+- **Vstup z datového proudu**: Tato definice definuje připojení ke zdroji dat, ze kterého se má datový proud číst. Azure SQL Edge aktuálně podporuje následující typy vstupů datového proudu:
     - Hraniční centrum
     - Kafka (podpora pro vstupy Kafka je v tuto chvíli dostupná jenom pro verze Intel/AMD64 Azure SQL Edge.)
 
-- **Výstup datového proudu** : definuje připojení ke zdroji dat, do kterého se má datový proud zapsat. Azure SQL Edge aktuálně podporuje následující typy výstupu streamu.
+- **Výstup datového proudu**: definuje připojení ke zdroji dat, do kterého se má datový proud zapsat. Azure SQL Edge aktuálně podporuje následující typy výstupu streamu.
     - Hraniční centrum
     - SQL (výstup SQL může být místní databáze v rámci instance Azure SQL Edge nebo vzdálené SQL Server nebo Azure SQL Database.) 
 
-- **Dotaz na datový proud** : definuje transformaci, agregace, filtrování, řazení a spojení, které mají být aplikovány na vstupní datový proud, před zápisem do výstupu datového proudu. Dotaz na datový proud vychází ze stejného dotazovacího jazyka, který používá Stream Analytics. Další informace najdete v tématu [Stream Analytics dotazovacího jazyka](/stream-analytics-query/stream-analytics-query-language-reference).
+- **Dotaz na datový proud**: definuje transformaci, agregace, filtrování, řazení a spojení, které mají být aplikovány na vstupní datový proud, před zápisem do výstupu datového proudu. Dotaz na datový proud vychází ze stejného dotazovacího jazyka, který používá Stream Analytics. Další informace najdete v tématu [Stream Analytics dotazovacího jazyka](/stream-analytics-query/stream-analytics-query-language-reference).
 
 > [!IMPORTANT]
 > Streamování T-SQL, na rozdíl od Stream Analytics, v současné době nepodporuje [použití referenčních dat pro vyhledávání](../stream-analytics/stream-analytics-use-reference-data.md) nebo [použití systému souborů UDF a Uda v úloze streamu](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c).

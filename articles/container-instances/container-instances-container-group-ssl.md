@@ -4,10 +4,10 @@ description: Vytvoření koncového bodu SSL nebo TLS pro skupinu kontejnerů b�
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558075"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Povolení koncového bodu TLS v kontejneru webvozík
@@ -40,7 +40,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 Podle pokynů přidejte identifikační informace. Do pole běžný název zadejte název hostitele přidružený k certifikátu. Po zobrazení výzvy k zadání hesla stiskněte klávesu ENTER bez psaní, abyste mohli přeskočit Přidání hesla.
 
-Spuštěním následujícího příkazu vytvořte certifikát podepsaný svým držitelem (soubor. CRT) z žádosti o certifikát. Příklad:
+Spuštěním následujícího příkazu vytvořte certifikát podepsaný svým držitelem (soubor. CRT) z žádosti o certifikát. Například:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt

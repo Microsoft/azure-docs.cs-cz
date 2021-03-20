@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97844931"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Dovednosti při rozpoznávání vlastního vyhledávání entit (Preview)
@@ -47,7 +47,7 @@ U parametrů se rozlišují malá a velká písmena.
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                   |
+| Název vstupu      | Description                   |
 |---------------|-------------------------------|
 | `text`          | Text, který se má analyzovat          |
 | `languageCode`    | Nepovinný parametr. Výchozí je `"en"`.  |
@@ -56,7 +56,7 @@ U parametrů se rozlišují malá a velká písmena.
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
 
-| Název výstupu      | Popis                   |
+| Název výstupu      | Description                   |
 |---------------|-------------------------------|
 | `entities` | Pole objektů, které obsahují informace o nalezených shodách a související metadata. Každá z identifikovaných entit může obsahovat následující pole:  <ul> <li> *Name*: identifikovaná entita nejvyšší úrovně. Entita představuje "normalizovaný" tvar. </li> <li> *ID*: jedinečný identifikátor entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *Popis*: Popis entity definovaný uživatelem ve formátu definice vlastní entity. </li> <li> *zadejte:* Typ entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *podtyp:* Podtyp entity definovaný uživatelem ve formátu definice vlastní entity</li>  <li> *shody*: kolekce, která popisuje všechny shody pro danou entitu ve zdrojovém textu. Každá shoda bude mít následující členy: </li> <ul> <li> *text*: nezpracovaný text se shoduje se zdrojovým dokumentem. </li> <li> *offset*: umístění, kde se shoda našla v textu. </li> <li> *Length*: délka spárovaného textu. </li> <li> *matchDistance*: počet znaků, které jsou v této shodě odlišné, byly z názvu původní entity nebo aliasu.  </li> </ul> </ul>
   |
@@ -145,7 +145,7 @@ Složitější příklad definice JSON může volitelně poskytnout ID, popis, t
 
 Následující tabulky popisují další podrobnosti o různých parametrech konfigurace, které můžete nastavit při definování entit tak, aby odpovídaly:
 
-|  Název pole  |        Popis  |
+|  Název pole  |        Description  |
 |--------------|----------------------|
 | `name` | Popisovač entity nejvyšší úrovně. Shody ve výstupu dovedností se budou seskupovat podle tohoto názvu a měly by představovat "normalizovaný" tvar textu, který se nachází.  |
 | `description`  | Volitelné Toto pole se dá použít jako průchozí pro vlastní metadata o odpovídajících textech. Hodnota tohoto pole se zobrazí s každou shodou své entity ve výstupu dovedností. |
@@ -160,7 +160,7 @@ Následující tabulky popisují další podrobnosti o různých parametrech kon
 | `defaultFuzzyEditDistance` | Volitelné Změní výchozí hodnotu přibližné úpravy hodnoty vzdálenosti pro tuto entitu. Dá se použít ke změně výchozí hodnoty všechny aliasy fuzzyEditDistance hodnoty. |
 | `aliases` | Volitelné Pole komplexních objektů, které lze použít k určení alternativních pravopisů nebo synonym pro název kořenové entity. |
 
-| Vlastnosti aliasu | Popis |
+| Vlastnosti aliasu | Description |
 |------------------|-------------|
 | `text`  | Alternativní pravopis nebo reprezentace některých názvů cílových entit  |
 | `caseSensitive` | Volitelné Funguje stejně jako parametr kořenové entity "caseSensitive" výše, ale vztahuje se pouze na tento alias. |

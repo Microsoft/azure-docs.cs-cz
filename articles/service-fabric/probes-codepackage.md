@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82137582"
 ---
 # <a name="liveness-probe"></a>Test živého provozu
@@ -40,7 +40,7 @@ Service Fabric navíc vyvolají následující [sestavy o stavu][health-introduc
 
 * `OK`: Sonda se úspěšně nastavila pro hodnotu nastavenou v **successThreshold**.
 
-* `Error`: Test **failureCount**  ==   **failureThreshold**před restartováním kontejneru.
+* `Error`: Test **failureCount**  ==   **failureThreshold** před restartováním kontejneru.
 
 * `Warning`: 
     * Sonda se nezdařila a **failureCount**  <  **failureThreshold**. Tato sestava stavu zůstane, dokud **failureCount** nedosáhne hodnoty nastavené v **failureThreshold** nebo **successThreshold**.

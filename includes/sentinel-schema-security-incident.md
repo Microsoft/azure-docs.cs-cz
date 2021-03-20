@@ -9,10 +9,10 @@ ms.date: 06/28/2020
 ms.author: yelevin
 ms.custom: include file
 ms.openlocfilehash: 63cb53dc60a718892d4bf86140e7fd51303bd61c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88761711"
 ---
 ### <a name="the-data-model-of-the-schema"></a>Datový model schématu
@@ -22,7 +22,7 @@ ms.locfileid: "88761711"
 | **AdditionalData** | dynamic | Počet výstrah, počet záložek, počet komentářů, názvy produktů s výstrahami a taktiku |
 | **AlertIds** | dynamic | Výstrahy, ze kterých byl vytvořen incident |
 | **BookmarkIds** | dynamic | Entity s záložkami |
-| **Classification** | řetězec | Klasifikace uzavření incidentu |
+| **Klasifikace** | řetězec | Klasifikace uzavření incidentu |
 | **ClassificationComment** | řetězec | Komentář k uzavření klasifikace incidentu |
 | **ClassificationReason** | řetězec | Důvod klasifikace uzavření incidentu |
 | **ClosedTime** | datetime | Časové razítko (UTC), kdy se incident naposledy zavřel |

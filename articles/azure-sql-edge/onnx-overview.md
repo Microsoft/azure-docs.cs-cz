@@ -10,10 +10,10 @@ author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
 ms.openlocfilehash: 5dc3d44ac4396897fd43831d51ee628bb06048cb
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392057"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>Machine Learning a AI s ONNX v SQL Edge
@@ -28,7 +28,7 @@ Pokud chcete odvodit modely strojového učení ve službě Azure SQL Edge, bude
 
 Postup získání modelu ve formátu ONNX:
 
-- **Služby pro vytváření modelů** : služby, jako je například [funkce automatizovaného Machine Learning v Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) a [Azure Custom Vision Service](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md) podporují přímý export výukového modelu ve formátu ONNX.
+- **Služby pro vytváření modelů**: služby, jako je například [funkce automatizovaného Machine Learning v Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) a [Azure Custom Vision Service](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md) podporují přímý export výukového modelu ve formátu ONNX.
 
 - [**Převod a export stávajících modelů**](https://github.com/onnx/tutorials#converting-to-onnx-format): několik platforem školení (např. [PyTorch](https://pytorch.org/docs/stable/onnx.html), chainer a Caffe2) podporují NATIVNÍ funkce exportu na ONNX, což vám umožní uložit vyškolený model do konkrétní verze formátu ONNX. Pro architektury, které nepodporují nativní export, jsou k dispozici samostatné balíčky ONNX Converter, které umožňují převod modelů vyškolených z různých architektur strojového učení do formátu ONNX.
 
@@ -43,7 +43,7 @@ Postup získání modelu ve formátu ONNX:
 
 ## <a name="limitations"></a>Omezení
 
-V současné době nejsou všechny modely ONNX podporovány serverem Azure SQL Edge. Podpora je omezená na modely s **číselnými datovými typy** :
+V současné době nejsou všechny modely ONNX podporovány serverem Azure SQL Edge. Podpora je omezená na modely s **číselnými datovými typy**:
 
 - [int a bigint](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
 - [reálné číslo a float](/sql/t-sql/data-types/float-and-real-transact-sql).

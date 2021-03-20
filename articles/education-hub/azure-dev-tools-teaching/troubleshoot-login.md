@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 276ab2cc1d79235c00ce1bb50ff9b648bb1de6ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87096650"
 ---
 # <a name="troubleshooting-student-login-issues"></a>Řešení potíží s přihlášením studentů
@@ -39,16 +39,16 @@ Pokud má student existující účet Microsoft (například Xbox), může tento
 
 1. Klikněte na **spravovat způsob přihlášení k Microsoftu**. Zobrazí se výzva k ověření vaší identity. Pošleme vám e-mail bezpečnostní kód.
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="Chybová zpráva přihlášení" border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="Spravovat přihlášení" border="false":::
 
 1. Zadejte e-mailový kód zabezpečení.
 
-    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="Chybová zpráva přihlášení" border="false":::!
+    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="Zadejte kód pro přihlášení." border="false":::!
 
 1. Klikněte na **Přidat e-maily** na svůj účet a zadejte svoji e-mailovou adresu školy.
 Až se příště přihlásíte, můžete použít vaši e-mailovou adresu vysoké školy pro přístup k vývojářským nástrojům Azure pro vývoj.
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="Chybová zpráva přihlášení" border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="Spravujte, jak se přihlašujete k Microsoftu." border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 - [Nejčastější dotazy](program-faq.md)

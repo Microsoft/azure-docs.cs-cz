@@ -6,10 +6,10 @@ ms.date: 04/21/2020
 ms.reviewer: sunayv
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
 ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88212904"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Vytvoření definice OpenAPI pro rozhraní API bez serveru s využitím Azure API Management
@@ -41,20 +41,20 @@ V tomto kurzu se používá funkce aktivované protokolem HTTP, která přijím�
 
 Funkce pak vypočítá, kolik se bude opravit, a kolik výnosů turbíny by mohlo vznášet za dobu 24 hodin. Postup vytvoření funkce aktivované protokolem HTTP v [Azure Portal](https://portal.azure.com):
 
-1. V levé nabídce aplikace Functions vyberte **funkce**a potom v horní nabídce vyberte **Přidat** .
+1. V levé nabídce aplikace Functions vyberte **funkce** a potom v horní nabídce vyberte **Přidat** .
 
 1. V okně **Nová funkce** vyberte **Trigger http**.
 
-1. V případě **nové funkce**zadejte `TurbineRepair` . 
+1. V případě **nové funkce** zadejte `TurbineRepair` . 
 
 1. V rozevíracím seznamu **[úroveň autorizace](functions-bindings-http-webhook-trigger.md#http-auth)** zvolte **funkce** a pak vyberte **vytvořit funkci**.
 
-    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI":::
 
-1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
+1. Vyberte **kód + test** a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
 
     ```csharp
-    #r &quot;Newtonsoft.Json"
+    #r "Newtonsoft.Json"
     
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
@@ -106,7 +106,7 @@ Funkce pak vypočítá, kolik se bude opravit, a kolik výnosů turbíny by mohl
 
     Tento kód funkce vrátí zprávu `Yes` nebo `No` , která označuje, jestli je Nouzová oprava nákladově efektivní. Vrátí také příležitost výnosů, kterou turbína představuje, a náklady na řešení turbíny.
 
-1. Chcete-li otestovat funkci, vyberte možnost **test**, vyberte kartu **vstup** , zadejte následující **text pro tělo**a potom vyberte možnost **Spustit**:
+1. Chcete-li otestovat funkci, vyberte možnost **test**, vyberte kartu **vstup** , zadejte následující **text pro tělo** a potom vyberte možnost **Spustit**:
 
     ```json
     {
@@ -115,12 +115,7 @@ Funkce pak vypočítá, kolik se bude opravit, a kolik výnosů turbíny by mohl
     }
     ```
 
-    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
-
-1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="Test funkce na webu Azure Portal":::
 
     Na kartě **výstup** se vrátí následující výstup:
 
@@ -134,14 +129,9 @@ Nyní máte funkci, která určuje nákladovou efektivitu nouzových oprav. Dál
 
 Generování definice OpenAPI:
 
-1. Vyberte aplikaci Function App, v levé nabídce vyberte **API Management** a potom v části **API Management**vyberte **vytvořit novou** .
+1. Vyberte aplikaci Function App, v levé nabídce vyberte **API Management** a potom v části **API Management** vyberte **vytvořit novou** .
 
-    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
-
-1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="Zvolit API Management":::
 
 
 1. Použijte nastavení API Management, jak je uvedeno v následující tabulce:
@@ -154,7 +144,7 @@ Generování definice OpenAPI:
     | **Umístění** | USA – západ | Vyberte umístění Západní USA. |
     | **Název organizace** | Contoso | Název organizace, který se používá na portálu pro vývojáře, a pro e-mailová oznámení. |
     | **E-mail správce** | Váš e-mail | E-mail, který přijal systémová oznámení z API Management. |
-    | **Cenová úroveň** | Consumption | Úroveň spotřeby není dostupná ve všech oblastech. Úplné podrobnosti o cenách najdete na [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) . |
+    | **Cenová úroveň** | Využití | Úroveň spotřeby není dostupná ve všech oblastech. Úplné podrobnosti o cenách najdete na [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) . |
 
     ![Vytvořit novou službu API Management](media/functions-openapi-definition/new-apim-service-openapi.png)
 
@@ -168,12 +158,7 @@ Generování definice OpenAPI:
 
 1. Na stránce **vytvořit z Function App** přijměte výchozí hodnoty a pak vyberte **vytvořit**.
 
-    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
-
-1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="Vytvořit z Function App":::
 
     Azure vytvoří rozhraní API pro funkci.
 
@@ -183,7 +168,7 @@ Před použitím definice OpenAPI byste měli ověřit, že rozhraní API funguj
 
 1. Na stránce Function App vyberte **API Management**, vyberte kartu **test** a pak vyberte **post TurbineRepair**. 
 
-1. Do **textu žádosti**zadejte následující kód:
+1. Do **textu žádosti** zadejte následující kód:
 
     ```json
     {
@@ -192,14 +177,9 @@ Před použitím definice OpenAPI byste měli ověřit, že rozhraní API funguj
     }
     ```
 
-1. Vyberte **Odeslat**a pak zobrazte **odpověď HTTP**.
+1. Vyberte **Odeslat** a pak zobrazte **odpověď HTTP**.
 
-    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
-
-1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="Rozhraní API pro testování funkcí":::
 
 ## <a name="download-the-openapi-definition"></a>Stažení definice OpenAPI
 

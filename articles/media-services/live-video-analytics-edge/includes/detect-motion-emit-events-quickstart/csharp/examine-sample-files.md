@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 1e3ba4b39baa045f35c232fa97c14bc78d8de5ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88690986"
 ---
 1. V Visual Studio Code, přejít na *Src/Edge*. Zobrazí se soubor *. env* a některé soubory šablon nasazení.
@@ -13,7 +13,7 @@ ms.locfileid: "88690986"
 
     * ***C2D-Console-App. csproj*** – soubor projektu pro Visual Studio Code.
     * ***operations.jsna*** seznam operací, které má program spustit.
-    * ***Program.cs*** – vzorový programový kód. Tento kód:
+    * ***Program. cs*** – ukázkový kód programu Tento kód:
     
       * Načte nastavení aplikace.
       * Vyvolá přímé metody, které jsou zpřístupněny v rámci analýzy živých videí v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](../../../direct-methods.md).

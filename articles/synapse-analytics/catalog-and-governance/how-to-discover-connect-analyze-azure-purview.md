@@ -9,17 +9,17 @@ ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: a3ed7979584787627c97cfec3bb2e19c147f7152
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98872654"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Zjišťování, připojení a zkoumání dat v synapse pomocí Azure dosah 
 
 V tomto dokumentu se naučíte typ interakcí, které můžete provést při registraci účtu Azure dosah do synapse. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - [Účet Azure dosah](../../purview/create-catalog-portal.md) 
 - [Pracovní prostor synapse](../quickstart-create-workspace.md) 

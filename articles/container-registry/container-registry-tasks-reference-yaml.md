@@ -4,10 +4,10 @@ description: Referenční informace k definování úkolů v YAML pro úlohy ACR
 ms.topic: article
 ms.date: 07/08/2020
 ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88067579"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Odkazy na úlohy ACR: YAML
@@ -20,7 +20,7 @@ Tento článek obsahuje referenční informace k vytváření YAML souborů úlo
 
 Úlohy ACR podporují deklaraci úlohy ve více krocích ve standardní syntaxi YAML. Kroky úkolu definujete v souboru YAML. Tuto úlohu pak můžete spustit ručně tak, že soubor předáte do příkazu [AZ ACR Run][az-acr-run] . Nebo pomocí souboru vytvořte úlohu s příkazem [AZ ACR Task Create][az-acr-task-create] , který se automaticky aktivuje na potvrzení Git, na základní aktualizaci Image nebo na plán. I když tento článek odkazuje na `acr-task.yaml` soubor, který obsahuje kroky, úlohy ACR podporují libovolný platný název souboru s [podporovanou příponou](#supported-task-filename-extensions).
 
-Primitivní prvky nejvyšší úrovně `acr-task.yaml` jsou **Vlastnosti úlohy**, **typy kroků**a **Vlastnosti kroku**:
+Primitivní prvky nejvyšší úrovně `acr-task.yaml` jsou **Vlastnosti úlohy**, **typy kroků** a **Vlastnosti kroku**:
 
 * [Vlastnosti úlohy](#task-properties) se vztahují na všechny kroky v průběhu provádění úlohy. Existuje několik globálních vlastností úlohy, včetně:
   * `version`

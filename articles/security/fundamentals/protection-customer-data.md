@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
 ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87543788"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrana zákaznických dat Azure   
@@ -38,7 +38,7 @@ Azure poskytuje zákazníkům se silným zabezpečením dat, a to jak ve výchoz
 
 **Oddělení dat**: Azure je víceklientská služba, což znamená, že více zákaznických nasazení a virtuálních počítačů je uloženo na stejném fyzickém hardwaru. Azure používá logickou izolaci k oddělení dat jednotlivých zákazníků od dat ostatních. Oddělení poskytuje škálu a ekonomické výhody pro víceklientské služby a současně zajišťuje přísnou prevenci zákazníkům přístup k datům jiného typu.
 
-**Ochrana dat v klidovém**stavu: zákazníci zodpovídají za zajištění, že data uložená v Azure jsou zašifrovaná v souladu s jejich standardy. Azure nabízí rozsáhlou škálu možností šifrování, která zákazníkům poskytuje flexibilitu při výběru řešení, které nejlépe vyhovuje jejich potřebám. Azure Key Vault pomáhá zákazníkům snadno udržovat kontrolu nad klíči, které používají cloudové aplikace a služby k šifrování dat. Azure Disk Encryption umožňuje zákazníkům šifrovat virtuální počítače. Šifrování služby Azure Storage umožňuje šifrovat všechna data umístěná do účtu úložiště zákazníka.
+**Ochrana dat v klidovém** stavu: zákazníci zodpovídají za zajištění, že data uložená v Azure jsou zašifrovaná v souladu s jejich standardy. Azure nabízí rozsáhlou škálu možností šifrování, která zákazníkům poskytuje flexibilitu při výběru řešení, které nejlépe vyhovuje jejich potřebám. Azure Key Vault pomáhá zákazníkům snadno udržovat kontrolu nad klíči, které používají cloudové aplikace a služby k šifrování dat. Azure Disk Encryption umožňuje zákazníkům šifrovat virtuální počítače. Šifrování služby Azure Storage umožňuje šifrovat všechna data umístěná do účtu úložiště zákazníka.
 
 **Ochrana před přenosem dat**: Společnost Microsoft nabízí celou řadu možností, které můžou zákazníci využívat k internímu přenosu dat v rámci sítě Azure a externě na celém internetu pro koncového uživatele.  Mezi ně patří komunikace prostřednictvím virtuálních privátních sítí (s využitím šifrování IPsec/IKE), TLS (Transport Layer Security) 1,2 nebo novější (prostřednictvím komponent Azure, jako jsou například Application Gateway nebo front-in Azure), protokolů přímo na virtuálních počítačích Azure (například Windows IPsec nebo SMB) a dalších. 
 

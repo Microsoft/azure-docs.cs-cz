@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: bf35d08128aa8a3e8f545ed7184866694219f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90905221"
 ---
 # <a name="remove-duplicate-rows-module"></a>Odebrat modul duplicitních řádků
@@ -55,7 +55,7 @@ Když spustíte modul, vytvoří se kandidátská datová sada a vrátí sadu ř
 
 2. Připojte datovou sadu, u které chcete kontrolovat duplicitní řádky.
 
-3. V podokně **vlastnosti** v části **výraz filtru výběru klíčového sloupce**klikněte na **Spustit selektor sloupců**a vyberte sloupce, které chcete použít při identifikaci duplicitních hodnot.
+3. V podokně **vlastnosti** v části **výraz filtru výběru klíčového sloupce** klikněte na **Spustit selektor sloupců** a vyberte sloupce, které chcete použít při identifikaci duplicitních hodnot.
 
     V tomto kontextu **klíč** neznamená jedinečný identifikátor. Všechny sloupce, které vyberete pomocí selektoru sloupců, jsou označeny jako **klíčové sloupce**. Všechny sloupce bez výběru jsou považovány za neklíčové sloupce. Jedinečnost záznamů závisí na kombinaci sloupců, které vyberete jako klíče. (Můžete si ho představit jako příkaz SQL, který používá vícenásobné spojení se rovností.)
 

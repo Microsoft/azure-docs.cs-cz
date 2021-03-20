@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.openlocfilehash: b5a893ee1923ba4b2bec53b20fb164337bd65902
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558109"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Dovednosti koncepty v Azure Kognitivní hledání
@@ -99,7 +99,7 @@ Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a 
 |---|---|---|
 |Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
 |SQL|/document/{column1}<br>/document/{column2}<br>…|– |
-|Databáze Cosmos|/document/{key1}<br>/document/{key2}<br>…|–|
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|–|
 
  Při provádění dovedností přidávají nové uzly do stromu obohacení. Tyto nové uzly pak mohou být použity jako vstupy pro dovednosti s využitím pro příjem dat, projekci do obchodu Knowledge Store nebo mapování na pole indexu. Rozšíření nejsou proměnlivá: po vytvoření se uzly nedají upravovat. Vzhledem k tomu, že vaše dovednostiy jsou složitější, takže se strom pro rozšíření, ale ne všechny uzly ve stromu pro rozšíření, nemusí dělat na index nebo na obchod znalostní báze. 
 

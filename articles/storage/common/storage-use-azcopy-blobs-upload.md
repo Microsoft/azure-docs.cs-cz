@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358754"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>Nahrání souborů do Azure Blob Storage pomocí AzCopy v10 za účelem
@@ -177,7 +177,7 @@ Následující příklady ukazují, jak použít `--blob-tags` možnost.
 
 Operaci nahrávání můžete upravit pomocí volitelných příznaků. Tady je několik příkladů.
 
-|Scénář|Příznak|
+|Scenario|Příznak|
 |---|---|
 |Nahrání souborů jako doplňovacích objektů blob nebo objektů blob stránky:|**--BLOB-typ** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
 |Nahrání do konkrétní úrovně přístupu (například do archivní úrovně):|**--Block-– úroveň** = \[ objektu BLOB Žádný \| horká \| studená \| archiv\]|

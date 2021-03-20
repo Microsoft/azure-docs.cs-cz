@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394726"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailová oznámení v PIM
@@ -48,7 +48,7 @@ Privileged Identity Management posílá e-maily, pokud dojde k následujícím u
 
 Kdo obdrží tyto e-maily pro role Azure AD, závisí na vaší roli, události a nastavení oznámení:
 
-| Uživatel | Aktivace role čeká na schválení. | Žádost o aktivaci role je dokončená. | PIM je povolený. |
+| User | Aktivace role čeká na schválení. | Žádost o aktivaci role je dokončená. | PIM je povolený. |
 | --- | --- | --- | --- |
 | Správce privilegovaných rolí</br>(Aktivováno/způsobilo) | Yes</br>(pouze pokud nejsou zadáni žádní explicitní schvalovatelé) | Ano* | Yes |
 | Správce zabezpečení</br>(Aktivováno/způsobilo) | No | Ano* | Yes |
@@ -68,7 +68,7 @@ Týdenní Privileged Identity Management souhrnný e-mail pro role Azure AD se p
 
 E-mail obsahuje čtyři dlaždice:
 
-| dlaždici | Popis |
+| dlaždici | Description |
 | --- | --- |
 | **Aktivované uživatelé** | Počet, kolikrát uživatelé aktivovali svou oprávněnou roli v rámci organizace. |
 | **Uživatelé, kteří udělali trvalé** | Počet, kolikrát se uživatelé s oprávněným přiřazením udělali jako trvalé |

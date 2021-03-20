@@ -8,15 +8,15 @@ ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019425"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování služby Azure Analysis Services na více instancí
 
-Díky škálování na více instancí je možné klientské dotazy distribuovat mezi několik *replik dotazů* ve *fondu dotazů*a zkrátit tak dobu odezvy během úloh s vysokým počtem dotazů. Můžete také oddělit zpracování z fondu dotazů a zajistit, aby dotazy klienta nepříznivě ovlivnily operace zpracování. Horizontální navýšení kapacity lze nakonfigurovat v Azure Portal nebo pomocí REST API Analysis Services.
+Díky škálování na více instancí je možné klientské dotazy distribuovat mezi několik *replik dotazů* ve *fondu dotazů* a zkrátit tak dobu odezvy během úloh s vysokým počtem dotazů. Můžete také oddělit zpracování z fondu dotazů a zajistit, aby dotazy klienta nepříznivě ovlivnily operace zpracování. Horizontální navýšení kapacity lze nakonfigurovat v Azure Portal nebo pomocí REST API Analysis Services.
 
 Horizontální navýšení kapacity je k dispozici pro servery v cenové úrovni Standard. Každá replika dotazu se účtuje stejnou sazbou jako váš server. Všechny repliky dotazů se vytvoří ve stejné oblasti jako váš server. Počet replik dotazů, které můžete nakonfigurovat, je omezený oblastí, ve které je váš server. Další informace najdete v tématu [dostupnost podle oblasti](analysis-services-overview.md#availability-by-region). Horizontální navýšení kapacity nezvyšuje velikost dostupné paměti pro váš server. Chcete-li zvýšit velikost paměti, je třeba upgradovat svůj plán. 
 
@@ -68,7 +68,7 @@ Pomocí SSMS můžete nastavit ReplicaSyncMode v upřesňujících vlastnostech.
 
 ![Nastavení RelicaSyncMode](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
 
-Při nastavení **ReplicaSyncMode = 2**v závislosti na tom, kolik mezipaměti je potřeba aktualizovat, můžou repliky dotazů spotřebovat další paměť. Aby databáze zůstala online a dostupná pro dotazy v závislosti na tom, kolik dat se změnilo, může operace vyžadovat až *dvojnásobek paměti* v replice, protože staré i nové segmenty jsou v paměti současně zachované. Uzly repliky mají stejné přidělení paměti jako primární uzel a v primárním uzlu je obvykle k dispozici další paměť pro operace obnovení, takže může být nepravděpodobné, že by repliky vyčerpaly paměť. Běžným scénářem je navíc přírůstkově aktualizovaný databáze na primárním uzlu, a proto by požadavek na zdvojnásobení paměti měl být neobvyklý. Pokud při operaci synchronizace dojde k chybě při nedostatku paměti, pokusí se znovu použít výchozí techniku (připojit nebo odpojit dvakrát). 
+Při nastavení **ReplicaSyncMode = 2** v závislosti na tom, kolik mezipaměti je potřeba aktualizovat, můžou repliky dotazů spotřebovat další paměť. Aby databáze zůstala online a dostupná pro dotazy v závislosti na tom, kolik dat se změnilo, může operace vyžadovat až *dvojnásobek paměti* v replice, protože staré i nové segmenty jsou v paměti současně zachované. Uzly repliky mají stejné přidělení paměti jako primární uzel a v primárním uzlu je obvykle k dispozici další paměť pro operace obnovení, takže může být nepravděpodobné, že by repliky vyčerpaly paměť. Běžným scénářem je navíc přírůstkově aktualizovaný databáze na primárním uzlu, a proto by požadavek na zdvojnásobení paměti měl být neobvyklý. Pokud při operaci synchronizace dojde k chybě při nedostatku paměti, pokusí se znovu použít výchozí techniku (připojit nebo odpojit dvakrát). 
 
 ### <a name="separate-processing-from-query-pool"></a>Samostatné zpracování z fondu dotazů
 
@@ -85,9 +85,9 @@ Další užitečnou metrikou ke sledování je průměrná QPUa podle ServerReso
 **Konfigurace QPU pomocí ServerResourceType**
 
 1. V spojnicovém grafu metriky klikněte na **Přidat metriku**. 
-2. V **prostředku**vyberte váš server, potom v **oboru názvů metriky**vyberte **Analysis Services standardní metriky**, potom v **Metrikě**vyberte **QPU**a potom v **agregaci**vyberte **AVG**. 
+2. V **prostředku** vyberte váš server, potom v **oboru názvů metriky** vyberte **Analysis Services standardní metriky**, potom v **Metrikě** vyberte **QPU** a potom v **agregaci** vyberte **AVG**. 
 3. Klikněte na **použít rozdělení**. 
-4. V **hodnoty**vyberte **ServerResourceType**.  
+4. V **hodnoty** vyberte **ServerResourceType**.  
 
 ### <a name="detailed-diagnostic-logging"></a>Podrobné protokolování diagnostiky
 
@@ -100,7 +100,7 @@ Podrobnější diagnostiku prostředků serveru s horizontálním navýšení ka
 
 1. Na portálu klikněte na horizontální navýšení **kapacity**. Pomocí posuvníku vyberte počet serverů repliky dotazů. Počet replik, které jste si zvolili, je navíc k vašemu stávajícímu serveru.  
 
-2. V **samostatném serveru pro zpracování z fondu dotazování**vyberte možnost Ano, pokud chcete server pro zpracování vyloučit ze serverů dotazů. [Připojení](#connections) klienta pomocí výchozího připojovacího řetězce (bez `:rw` ) se přesměrují na repliky ve fondu dotazů. 
+2. V **samostatném serveru pro zpracování z fondu dotazování** vyberte možnost Ano, pokud chcete server pro zpracování vyloučit ze serverů dotazů. [Připojení](#connections) klienta pomocí výchozího připojovacího řetězce (bez `:rw` ) se přesměrují na repliky ve fondu dotazů. 
 
    ![Posuvník horizontálního navýšení kapacity](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
@@ -174,7 +174,7 @@ Cenovou úroveň můžete na serveru změnit několika replikami. Stejná cenov�
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-**Problém:** Při načítání došlo ** \<Name of the server> k chybě. v režimu připojení se nepodařilo najít instanci serveru.**
+**Problém:** Při načítání došlo **\<Name of the server> k chybě. v režimu připojení se nepodařilo najít instanci serveru.**
 
 **Řešení:** Při výběru **samostatného serveru pro zpracování z možnosti fond dotazování** se připojení klienta pomocí výchozího připojovacího řetězce (bez `:rw` ) přesměrují na repliky fondu dotazů. Pokud repliky ve fondu dotazů ještě nejsou online, protože synchronizace ještě není dokončená, přesměrovaná připojení klienta můžou selhat. Aby nedocházelo k neúspěšným připojením, musí být ve fondu dotazů při provádění synchronizace k dispozici alespoň dva servery. Každý server se synchronizuje jednotlivě, zatímco ostatní zůstávají online. Pokud se rozhodnete, že během zpracování nebude mít server pro zpracování ve fondu dotazů, můžete jej odebrat z fondu ke zpracování a pak jej přidat zpátky do fondu po dokončení zpracování, ale před synchronizací. K monitorování stavu synchronizace použijte metriky paměti a QPU.
 
