@@ -6,10 +6,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9a47548fb1f94ac7fe9b561e798b010fa9176e9e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566295"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Rychlý start: Vytvoření centra událostí pomocí Azure CLI
@@ -58,7 +58,7 @@ Spuštěním následujícího příkazu vytvořte centrum událostí:
 az eventhubs eventhub create --name <event hub name> --resource-group <resource group name> --namespace-name <Event Hubs namespace>
 ```
 
-Blahopřejeme! Pomocí Azure CLI jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
+Gratulujeme! Pomocí Azure CLI jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 

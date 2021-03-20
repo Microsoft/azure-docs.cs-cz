@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745713"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Kurz: prohledávatelný obsah generovaný AI z objektů blob Azure pomocí sady .NET SDK
@@ -38,7 +38,7 @@ Indexer se připojí k kontejneru objektů blob, který je zadaný v objektu zdr
 
 Dovednosti je připojen k indexeru. Pomocí integrovaných dovedností Microsoftu vyhledá a extrahuje informace. Mezi kroky v kanálu patří optické rozpoznávání znaků (OCR) na obrázcích, rozpoznávání jazyka na textu, extrakce klíčových frází a rozpoznávání entit (organizace). Nové informace vytvořené kanálem se ukládají do nových polí v indexu. Po naplnění indexu můžete použít pole v dotazech, omezujících vlastnostech a filtrech.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * [ Balíček NuGetAzure.Search.Documents 11. x](https://www.nuget.org/packages/Azure.Search.Documents) 

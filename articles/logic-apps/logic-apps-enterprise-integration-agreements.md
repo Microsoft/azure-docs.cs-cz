@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95992942"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytvoření a správa smluv obchodních partnerů v Azure Logic Apps
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak vytvořit smlouvu AS2, EDIFACT nebo X12, ktero
 
 Pokud chcete vytvořit smlouvy pro výměnu zpráv RosettaNet, přečtěte si téma [zprávy Exchange RosettaNet](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

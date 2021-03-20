@@ -4,10 +4,10 @@ description: Tento článek poskytuje podrobné pokyny pro implementaci konkrét
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: 438964c228f060dede93abf582c9504b698db8b0
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934607"
 ---
 # <a name="event-replication-tasks-patterns"></a>Vzorce pro úlohy replikace událostí

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/18/2021
 ms.author: victorh
-ms.openlocfilehash: fba95214a6bbb0482166eab8f77f30911986fbb7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102525474"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590462"
 ---
 # <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>Nasazení a konfigurace certifikátů certifikační autority organizace pro Azure Firewall Preview
 
@@ -42,7 +42,7 @@ Pokud chcete použít certifikační autoritu organizace k vygenerování certif
 1. Přihlaste se k webu webového zápisu na kořenové certifikační autoritě, obvykle `https://<servername>/certsrv` a vyberte **požadovat certifikát**.
 1. Vyberte **Upřesnit žádost o certifikát**.
 1. Vyberte **vytvořit a odeslat žádost této certifikační autoritě**.
-1. Vyplňte formulář pomocí šablony podřízené certifikační autority, jak je znázorněno na následujícím obrázku:
+1. Vyplňte formulář pomocí šablony podřízené certifikační autority.
 1. Odešlete žádost a nainstalujte certifikát.
 1. Za předpokladu, že se tento požadavek provede z Windows serveru pomocí Internet Exploreru, otevřete **Možnosti Internetu**.
 1. Přejděte na kartu **obsah** a vyberte možnost **certifikáty**.

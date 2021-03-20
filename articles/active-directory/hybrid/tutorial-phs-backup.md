@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313089"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Kurz: nastavení KOSMETICE jako zálohy pro AD FS v Azure AD Connect
@@ -50,7 +50,7 @@ Postupujte následovně:
 ![Výběr](media/tutorial-phs-backup/backup1.png)</br>
 8.  Na obrazovce **připraveno ke konfiguraci** klikněte na **Konfigurovat**.
 9.  Po dokončení konfigurace klikněte na **ukončit**.
-10. A je to!  Jste hotovi.  Synchronizace hodnot hash hesel se teď projeví a dá se použít jako záloha, pokud AD FS nebude k dispozici.
+10. A to je vše!  Jste hotovi.  Synchronizace hodnot hash hesel se teď projeví a dá se použít jako záloha, pokud AD FS nebude k dispozici.
 
 ## <a name="switch-to-password-hash-synchronization"></a>Přepnout na synchronizaci hodnot hash hesel
 Teď vám ukážeme, jak přepnout na synchronizaci hodnot hash hesel. Než začnete, zvažte, za jakých podmínek byste měli přepínač udělat. Neprovádějte přepínač pro dočasné důvody, jako je výpadek sítě, menší problém AD FS, nebo problém, který má vliv na podmnožinu vašich uživatelů. Pokud se rozhodnete tento přepínač provést, protože oprava problému bude trvat moc dlouho, udělejte toto:

@@ -1,20 +1,20 @@
 ---
 title: Typy entit – LUIS
-description: Entita extrahuje data z utterance uživatele v předpokládaném modulu runtime. _Volitelným_a sekundárním účelem je zvýšit předpověď záměru nebo jiných entit pomocí entity jako funkce.
+description: Entita extrahuje data z utterance uživatele v předpokládaném modulu runtime. _Volitelným_ a sekundárním účelem je zvýšit předpověď záměru nebo jiných entit pomocí entity jako funkce.
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316558"
 ---
 # <a name="extract-data-with-entities"></a>Extrakce dat s entitami
 
-Entita extrahuje data z utterance uživatele v předpokládaném modulu runtime. _Volitelným_a sekundárním účelem je zvýšit předpověď záměru nebo jiných entit pomocí entity jako funkce.
+Entita extrahuje data z utterance uživatele v předpokládaném modulu runtime. _Volitelným_ a sekundárním účelem je zvýšit předpověď záměru nebo jiných entit pomocí entity jako funkce.
 
 Existuje několik typů entit:
 
@@ -32,7 +32,7 @@ Entity musí být označeny konzistentně ve všech školicích projevy pro kaž
 
  Můžete definovat vlastní entity nebo používat předem připravené entity k ukládání času pro běžné koncepty, jako je [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinální](luis-reference-prebuilt-ordinal.md)číslo, [e-mail](luis-reference-prebuilt-email.md)a [telefonní číslo](luis-reference-prebuilt-phonenumber.md).
 
-|Promluva|Entita|Data|
+|Výrok|Entita|Data|
 |--|--|--|
 |Koupit 3 lístky do Praha|Předem připravené číslo<br>Cíl|3<br>New York|
 
@@ -51,9 +51,9 @@ Entita představuje koncept dat _uvnitř utterance_. Záměr klasifikuje _celou 
 
 Vezměte v úvahu následující čtyři projevy:
 
-|Promluva|Předpokládané záměr|Extrahované entity|Vysvětlení|
+|Výrok|Předpokládané záměr|Extrahované entity|Vysvětlení|
 |--|--|--|--|
-|Nápověda|Nápověda|-|Nic k extrakci.|
+|Help|Nápověda|-|Nic k extrakci.|
 |Poslat něco|sendSomething|-|Nic k extrakci. Model nemá požadovanou funkci pro extrakci `something` v tomto kontextu a není uveden žádný příjemce.|
 |Poslat Bobovi a|sendSomething|`Bob`, `present`|Model se extrahuje `Bob` tak, že se přidá požadovaná funkce předem sestavené entity `personName` . Entita strojového učení se použila k extrakci `present` .|
 |Poslat Bobovi pole čokolády|sendSomething|`Bob`, `box of chocolates`|Tyto dvě důležité části dat a byly `Bob` `box of chocolates` extrahovány entitami strojového učení.|
@@ -102,7 +102,7 @@ Vyberte entitu na základě toho, jak by měla být data extrahována a jak by m
 |Typ entity|Účel|
 |--|--|
 |[**Strojové učení**](tutorial-machine-learned-entity.md)|Extrahujte vnořená a složitá data získaná z příkladů s popisky. |
-|[**Seznamu**](reference-entity-list.md)|Seznam položek a jejich synonym, které byly extrahovány s **přesnou shodou textu**|
+|[**Seznam**](reference-entity-list.md)|Seznam položek a jejich synonym, které byly extrahovány s **přesnou shodou textu**|
 |[**Vzor. any**](#patternany-entity)|Entita, kde najít konec entity, je obtížné určit, protože entita má volnou formu. K dispozici pouze ve [vzorcích](luis-concept-patterns.md).|
 |[**Předem připravených**](luis-reference-prebuilt-entities.md)|Vyškolený pro extrakci konkrétního druhu dat, jako je adresa URL nebo e-mail. Některé z těchto předem vytvořených entit jsou definované v otevřeném zdrojovém projektu pro [rozpoznávání – textový](https://github.com/Microsoft/Recognizers-Text) projekt. Pokud vaše konkrétní jazyková verze nebo entita není aktuálně podporována, přispívat k projektu.|
 |[**Regulární výraz**](reference-entity-regular-expression.md)|Používá regulární výraz pro **přesnější shodu textu**.|

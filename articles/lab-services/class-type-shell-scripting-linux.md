@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit testovací prostředí pro učení skripto
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444960"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Nastavení testovacího prostředí pro učení skriptování prostředí v systému Linux
@@ -16,7 +16,7 @@ V tomto článku se dozvíte, jak nastavit testovací prostředí pro učení sk
 Studenti, kteří přebírají tyto třídy skriptování, získají virtuální počítač se systémem Linux, aby se seznámili se základy systému Linux, a také se seznámili s skriptováním prostředí bash. Virtuální počítač se systémem Linux přichází s povoleným přístupem ke vzdálené ploše a s nainstalovanými [gedit](https://help.gnome.org/users/gedit/stable/) a [Visual Studio Codemi](https://code.visualstudio.com/) textovými editory.
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Jakmile budete mít předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services, nebo použít existující účet testovacího prostředí. V následujícím kurzu najdete postup vytvoření nového účtu testovacího prostředí: [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Jakmile budete mít předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services, nebo použít existující účet testovacího prostředí. V následujícím kurzu najdete postup vytvoření nového účtu testovacího prostředí: [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
 
 Po vytvoření účtu testovacího prostředí povolte v účtu testovacího prostředí následující nastavení: 
 
@@ -28,7 +28,7 @@ Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací
 
 | Nastavení testovacího prostředí | Hodnota/pokyny | 
 | ------------ | ------------------ |
-| Velikost virtuálního počítače (VM) | Malý  |
+| Velikost virtuálního počítače (VM) | Malá  |
 | Image virtuálního počítače | Ubuntu Server 18.04 LTS|
 | Povolit připojení ke vzdálené ploše | Aby. <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se ke svým virtuálním počítačům pomocí vzdálené plochy (RDP). Další informace najdete v tématu [Povolení služby Vzdálená plocha pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services](how-to-enable-remote-desktop-linux.md). </p>|
 

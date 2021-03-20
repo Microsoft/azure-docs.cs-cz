@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84710741"
 ---
 # <a name="replicas-and-instances"></a>Repliky a instance 
@@ -97,7 +97,7 @@ Pokud hostitel aplikace nebo uzel selže v pohotovostní replice, přejde do sta
 Role repliky není relevantní v pohotovostním stavu.
 
 > [!NOTE]
-> Všechny repliky, které nejsou vypnuté ani vyřazené, *se*považují za nefunkční.
+> Všechny repliky, které nejsou vypnuté ani vyřazené, *se* považují za nefunkční.
 >
 
 > [!NOTE]

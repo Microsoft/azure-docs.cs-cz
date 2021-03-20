@@ -7,17 +7,17 @@ ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.openlocfilehash: 9e400ee0bae2690a84f9cfd3f6a76359e08eabc2
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92018334"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Rychlý Start: sestavení a vložení imagí kontejnerů Java do Azure Container Registry
 
 V tomto rychlém startu se dozvíte, jak vytvořit kontejnerovou aplikaci Java a vložit ji do Azure Container Registry pomocí modulu plug-in Maven. Jedním z příkladů použití nástrojů pro vývojáře k interakci se službou Azure Container Registry je použití Maven a výložníku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud zatím předplatné Azure nemáte, můžete si aktivovat [výhody předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial).
 * Rozhraní příkazového [řádku Azure Command-Line (CLI)](/cli/azure/overview).

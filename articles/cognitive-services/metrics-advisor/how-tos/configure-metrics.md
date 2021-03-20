@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92048249"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Postupy: Konfigurace metrik a doladění konfigurace zjišťování
@@ -43,9 +43,9 @@ Metrika může použít jednu nebo více konfigurací detekce. Pro každou metri
 
 Tato konfigurace se použije na všechny řady v této metrikě, kromě těch, které mají samostatnou konfiguraci. Konfigurace úrovně metriky se ve výchozím nastavení aplikují, když jsou data připojená a zobrazují se na levém panelu. Uživatelé můžou na stránce metriky přímo upravovat konfiguraci na úrovni metrik. 
 
-Existují další parametry, jako je **směr**a **platná anomálie** , které lze použít k další optimalizaci konfigurace. Můžete kombinovat i různé metody detekce. 
+Existují další parametry, jako je **směr** a **platná anomálie** , které lze použít k další optimalizaci konfigurace. Můžete kombinovat i různé metody detekce. 
 
-:::image type="content" source="../media/configuration-combination.png" alt-text="Vyberte metriku" lightbox="../media/configuration-combination.png":::
+:::image type="content" source="../media/configuration-combination.png" alt-text="Kombinace konfigurace" lightbox="../media/configuration-combination.png":::
 
 ### <a name="tune-the-configuration-for-a-specific-series-or-group"></a>Vyladění konfigurace konkrétní řady nebo skupiny
 
@@ -53,7 +53,7 @@ Kliknutím na **Upřesnit konfiguraci** pod možností konfigurace úrovně metr
 
 Tato konfigurace se použije pro skupinu řad nebo konkrétní řady namísto konfigurace úrovně metriky. Po nastavení podmínek pro tuto skupinu ji uložte.
 
-:::image type="content" source="../media/advanced-configuration.png" alt-text="Vyberte metriku" lightbox="../media/advanced-configuration.png":::
+:::image type="content" source="../media/advanced-configuration.png" alt-text="Pokročilá konfigurace" lightbox="../media/advanced-configuration.png":::
 
 ### <a name="anomaly-detection-methods"></a>Metody detekce anomálií
 
@@ -68,11 +68,11 @@ V režimu Inteligentní detekce se pro vyladění výsledku detekce anomálií p
 
 Citlivost může ovlivnit šířku rozsahu očekávané hodnoty každého bodu. Při zvýšení bude očekávaný rozsah hodnot těsný a budou hlášeny další anomálie:
 
-:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Vyberte metriku":::
+:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Inteligentní zjišťování s vysokou citlivostí":::
 
 Když je citlivost vypnutá, očekávaný rozsah hodnoty bude širší a bude Hlášeno méně anomálií:
 
-:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Vyberte metriku":::
+:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Inteligentní zjišťování s nízkou citlivostí":::
 
 **Změnit prahovou hodnotu** 
 
@@ -85,23 +85,23 @@ Chcete-li použít tento režim, použijte následující postup:
 
 1. Vyberte možnost **změnit prahovou hodnotu** jako metodu detekce anomálií při nastavování konfigurací detekce anomálií pro vaše metriky nebo časové řady.
     
-    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="Vyberte metriku":::
+    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="změnit prahovou hodnotu":::
 
 2. Vyberte **mimo rozsah** nebo **v parametru rozsah** podle vašeho scénáře.
 
     Pokud chcete detekovat kolísání, vyberte **mimo rozsah**. Například s níže uvedeným nastavením se jako izolované zjistí všechny datové body, které se v porovnání s předchozími změnami rovnají 10%.
-    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="Vyberte metriku":::
+    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="parametr mimo rozsah":::
 
     Pokud chcete ve svých datech detekovat ploché řádky, vyberte **v tomto rozsahu**. Například s níže uvedeným nastavením se jako izolované detekuje jakýkoliv datový bod, který se mění v 0,01% oproti předchozímu. Vzhledem k tomu, že prahová hodnota je malá (0,01%), detekuje ploché řádky v datech jako odlehlé hodnoty.
 
-    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="Vyberte metriku":::
+    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="V parametru rozsahu":::
 
 3. Nastavte procentuální hodnotu změny, která se bude počítat jako anomálie a k porovnání budou použity dříve zachycené datové body. Toto porovnání je vždy mezi aktuálním datovým bodem a jedním datovým bodem N bodů před ním.
     
     **Směr** je platný pouze v případě, že používáte režim **Rozsah** :
     
     * **Up** nakonfiguruje detekci tak, aby detekuje anomálie jenom v případě, že (aktuální datový bod) – (datový bod porovnání) > **+** prahovou hodnotou.
-    * **Down** Nakonfiguruje detekci tak, aby detekuje anomálie jenom tehdy, když (aktuální datový bod) – (porovnávání datového bodu) < **-** prahovou hodnotou.
+    *  Nakonfiguruje detekci tak, aby detekuje anomálie jenom tehdy, když (aktuální datový bod) – (porovnávání datového bodu) < **-** prahovou hodnotou.
  
 **Tvrdý práh**
 
@@ -117,7 +117,7 @@ V některých případech se může stát, že očekávané události a výskyty
 
 Klikněte na tlačítko **Konfigurovat přednastavený událost** vedle rozevíracího seznamu metriky na každé stránce podrobností metriky.
  
-:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="Vyberte metriku":::
+:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="tlačítko pro přednastavení události":::
 
 V zobrazeném okně nakonfigurujte možnosti podle vašeho využití. Ujistěte se, že je vybrána možnost **Povolit volnou událost** pro použití konfigurace. 
 
@@ -136,7 +136,7 @@ Existuje několik dalších hodnot, které můžete nakonfigurovat:
 |**Dny k rozšíření**    |  Ovlivněné dny před a po svátek.        |
 
 
-Část **události cyklu** se dá v některých scénářích použít k omezení zbytečných upozornění pomocí cyklických vzorů v datech. Příklad: 
+Část **události cyklu** se dá v některých scénářích použít k omezení zbytečných upozornění pomocí cyklických vzorů v datech. Například: 
 
 - Metriky, které mají více vzorů nebo cyklů, jako je například týdenní i měsíční vzor. 
 - Metriky, které nemají jasný vzor, ale data jsou srovnatelné roky za rok (YoY), měsíc za měsíc (MoM), týden v týdnu (WoW) nebo den za den (DoD).
@@ -145,13 +145,13 @@ Ne všechny možnosti lze vybrat pro každou členitost. K dispozici jsou násle
 
 | Členitost | YoY | MoM | WoW | DoD |
 |:-|:-|:-|:-|:-|
-| Ročně | X | X | X | X |
-| Měsíčně | X | X | X | X |
-| Každý týden | ✔ | X | X | X |
+| Ročně | × | × | × | × |
+| Měsíčně | × | × | × | × |
+| Každý týden | ✔ | × | × | × |
 | Každý den | ✔ | ✔ | ✔ | × |
 | Hodinově | ✔ | ✔ | ✔ | ✔ |
-| Po minutách | X | X | X | X |
-| Za druhé | X | X | X | X |
+| Po minutách | × | × | × | × |
+| Za druhé | × | × | × | × |
 | Uživatelská | ✔ | ✔ | ✔ | ✔ |
 
 X – není k dispozici.  
@@ -161,7 +161,7 @@ X – není k dispozici.
 
 Událost cyklu se používá ke snížení anomálií, pokud následují cyklický vzor, ale vyhlásí anomálii, pokud více datových bodů nedodržuje vzor. **Striktní režim** slouží k povolení vytváření sestav anomálií, pokud ani jeden datový bod nedodržuje vzor. 
 
-:::image type="content" source="../media/metrics/preset-events.png" alt-text="Vyberte metriku":::
+:::image type="content" source="../media/metrics/preset-events.png" alt-text="přednastavení konfigurace události":::
 
 ## <a name="view-recent-incidents"></a>Zobrazit nedávné incidenty
 

@@ -8,10 +8,10 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98931102"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Průvodce nastavením velikosti clusterů Azure HDInsight Interactive Query (LLAPa registru)
@@ -26,10 +26,10 @@ Tento dokument popisuje určení velikosti clusteru HDInsight Interactive Query 
 | Zaměstnanec   | **D14 v2**        | **16 vCPU, 112 GB RAM, 800 GB SSD**       |
 | ZooKeeper   | A4 v2        | 4 vCPU, 8 GB RAM, 40 GB SSD       |
 
-**_Poznámka: všechny doporučené konfigurace jsou založené na D14 v2 typu pracovní uzel_* _  
+***Poznámka: všechny doporučené konfigurace jsou založené na pracovním uzlu typ D14 v2.***  
 
-### <a name="_configuration"></a>*Konfigurace _:**    
-| Konfigurační klíč      | Doporučená hodnota  | Popis |
+### <a name="configuration"></a>**Rozšířeného**    
+| Konfigurační klíč      | Doporučená hodnota  | Description |
 | :---        |    :----:   | :---     |
 | příz. NodeManager. Resource. paměť-MB | 102400 (MB) | Celková velikost paměti (v MB) pro všechny kontejnery PŘÍZe na uzlu | 
 | příze. Scheduler. maximum – přidělení-MB | 102400 (MB) | Maximální přidělení pro každou žádost kontejneru v RM v MB. Požadavky na paměť vyšší než tato hodnota se projeví |
@@ -52,59 +52,59 @@ Tento dokument popisuje určení velikosti clusteru HDInsight Interactive Query 
 ### <a name="llap-daemon-size-estimations"></a>**Odhad velikosti LLAP démona:** 
 
 #### <a name="1-determining-total-yarn-memory-allocation-for-all-containers-on-a-node"></a>**1. určení celkového přidělení paměti PŘÍZ pro všechny kontejnery na uzlu**    
-Konfigurace: **_nitě. NodeManager. Resource. Memory-MB_* _  
+Konfigurace: ***příze. NodeManager. Resource. Memory-MB***  
 
 Tato hodnota označuje maximální velikost paměti v MB, kterou lze použít kontejnery PŘÍZe na jednotlivých uzlech. Zadaná hodnota by měla být menší než celková velikost fyzické paměti v tomto uzlu.   
 Celková paměť pro všechny kontejnery PŘÍZe na uzlu = (celková fyzická paměť – paměť pro operační systém + další služby)  
 Nastavte tuto hodnotu na ~ 90% dostupné velikosti paměti RAM.  
-V případě D14 v2 je doporučená hodnota _ * 102400 MB * *. 
+V případě D14 v2 je doporučená hodnota **102400 MB**. 
 
 #### <a name="2-determining-maximum-amount-of-memory-per-yarn-container-request"></a>**2. určení maximálního množství paměti na žádost o PŘÍZi kontejneru**  
-Konfigurace: **_příz. Scheduler. maximum-Allocation-MB_* _
+Konfigurace: ***příze. Scheduler. maximum-Allocation-MB***
 
-Tato hodnota označuje maximální přidělení pro každou žádost kontejneru v Správce prostředků v MB. Požadavky na paměť vyšší, než je zadaná hodnota, se projeví. Správce prostředků může poskytnout paměť kontejnerům v přírůstcích po _yarn. Scheduler. minimum-Allocation-MB * a nemůže překročit velikost určenou parametrem *nitě. Scheduler. maximum-Allocation-MB*. Zadaná hodnota by neměla být větší než celková velikost dané paměti pro všechny kontejnery v uzlu určeném pomocí *příz. NodeManager. Resource. Memory-MB*.    
+Tato hodnota označuje maximální přidělení pro každou žádost kontejneru v Správce prostředků v MB. Požadavky na paměť vyšší, než je zadaná hodnota, se projeví. Správce prostředků může poskytnout paměť kontejnerům v přírůstcích po *přízi. Scheduler. minimum-Allocation-MB* a nemůže překročit velikost určenou parametrem *nitě. Scheduler. Max-Allocation-MB*. Zadaná hodnota by neměla být větší než celková velikost dané paměti pro všechny kontejnery v uzlu určeném pomocí *příz. NodeManager. Resource. Memory-MB*.    
 V případě pracovních uzlů D14 v2 je doporučená hodnota **102400 MB** .
 
 #### <a name="3-determining-maximum-amount-of-vcores-per-yarn-container-request"></a>**3. určení maximálního počtu virtuální jádra na požadavek kontejneru na PŘÍZi**  
-Konfigurace: **_příz. Scheduler. maximum-Allocation-virtuální jádra_* _  
+Konfigurace: ***příze. Scheduler. maximum-Allocation-virtuální jádra***  
 
 Tato hodnota označuje maximální počet jader virtuálního procesoru pro každou žádost kontejneru na Správce prostředků. Požaduje se vyšší počet virtuální jádra, než tato hodnota se projeví. Jedná se o globální vlastnost plánovače PŘÍZe. V případě kontejneru démona LLAP lze tuto hodnotu nastavit na 75% z celkového počtu dostupných virtuální jádra. Zbývající 25% by mělo být rezervované pro NodeManager, datanode a další služby spuštěné na pracovních uzlech.  
 Pro virtuální počítače D14 v2 je 16 virtuální jádra a 75% z celkového počtu 16 virtuální jádra může použít kontejner procesu LLAP.  
-V případě D14 v2 je doporučená hodnota _ * 12 * *.  
+V případě D14 v2 je doporučená hodnota **12**.  
 
 #### <a name="4-number-of-concurrent-queries"></a>**4. počet souběžných dotazů**  
-Konfigurace: **_podregistr. Server2. TEZ. Sessions. per. default. Queue_* _
+Konfigurace: ***podregistr. Server2. TEZ. Sessions. per. default. Queue***
 
 Tato hodnota konfigurace určuje počet tez relací, které lze spustit paralelně. Tyto relace tez se spustí pro každou frontu určenou v podregistru. Server2. TEZ. default. Queues. Odpovídá počtu tez AMs (koordinátory dotazů). Doporučuje se to být stejné jako počet pracovních uzlů. Počet tez AMs může být vyšší než počet uzlů LLAP démon. Primární zodpovědností tez je koordinovat provádění dotazů a přiřadit fragmenty plánu dotazů odpovídajícím démonům LLAP pro provedení. Tuto hodnotu nechte jako násobek několika uzlů LLAP démona, abyste dosáhli vyšší propustnosti.  
 
-Výchozí cluster HDInsight má čtyři procesy LLAP démony spuštěné na čtyřech pracovních uzlech, takže doporučená hodnota je _ * 4 * *.  
+Výchozí cluster HDInsight má čtyři procesy démony LLAP spuštěné na čtyřech pracovních uzlech, proto je doporučená hodnota **4**.  
 
 **Posuvník uživatelského rozhraní Ambari pro proměnnou konfigurace podregistru `hive.server2.tez.sessions.per.default.queue` :**
 
 ![Maximální počet souběžných dotazů LLAP](./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png "LLAP maximální počet souběžných dotazů")
 
 #### <a name="5-tez-container-and-tez-application-master-size"></a>**5. tez kontejner a velikost hlavní aplikace tez**    
-Konfigurace: **_TEZ. am. Resource. Memory. MB, podregistr. TEZ. Container. Size_* _  
+Konfigurace: ***TEZ. am. Resource. Memory. MB, podregistr. TEZ. Container. Size***  
 
-_tez. am. Resource. Memory. MB * – definuje velikost hlavní databáze aplikace TEZ.  
+*TEZ. am. Resource. Memory. MB* – definuje velikost hlavní databáze aplikace TEZ.  
 Doporučená hodnota je **4096 MB**.
    
 *podregistr. TEZ. Container. Size* – definuje množství paměti zadané pro kontejner TEZ. Tato hodnota musí být nastavena mezi minimální velikostí kontejneru PŘÍZe (*příz. Scheduler. minimum-Allocation-MB*) a maximální velikostí kontejneru nitě (*příz. Scheduler. Max-Allocation-MB*). Vykonavatel LLAP démon tuto hodnotu používá pro omezení využití paměti na vykonavatele.  
 Doporučená hodnota je **4096 MB**.  
 
 #### <a name="6-llap-queue-capacity-allocation"></a>**6. přidělení kapacity fronty LLAP**   
-Konfigurace: **_příze. Scheduler. Capacity. root. llap. Capacity_* _  
+Konfigurace: ***příze. Scheduler. Capacity. root. llap. Capacity***  
 
 Tato hodnota označuje procento kapacity přidělené frontě llap. Přidělení kapacity může mít různé hodnoty pro různé úlohy v závislosti na tom, jak jsou nakonfigurované fronty PŘÍZe. Pokud vaše úloha je operací jen pro čtení, pak ji nastavte tak vysoké, jako je 90% kapacity by měla fungovat. Pokud je ale vaše zatížení kombinací operací aktualizovat/odstranit/sloučit pomocí spravovaných tabulek, doporučujeme poskytnout 85% kapacitu llap fronty. Zbývajících 15% kapacity lze použít jinými úkoly, jako je například komprimace atd. pro přidělení kontejnerů z výchozí fronty. Díky úlohám ve výchozí frontě nebude možné prostředky PŘÍZe nezbavit.    
 
-Pro pracovní uzly D14v2 je doporučená hodnota pro llap Queue _ * 85 * *.     
+Pro pracovní uzly D14v2 je doporučená hodnota pro llap Queue **85**.     
 (Pro úlohy jen pro čtení se dá zvýšit až 90.)  
 
 #### <a name="7-llap-daemon-container-size"></a>**7. velikost kontejneru démona LLAP**    
-Konfigurace: **_podregistr. llap. démon. příze. Container. MB_* _  
+Konfigurace: ***podregistr. llap. démon. příze. Container. MB***  
    
 Démon LLAP je spuštěn jako kontejner PŘÍZe v každém pracovním uzlu. Celková velikost paměti pro kontejner démon LLAP závisí na následujících faktorech:    
-_ Konfigurace velikosti kontejneru PŘÍZe (příz. Scheduler. minima alokace-MB, příze. Scheduler. maximum-Allocation-MB, příze. NodeManager. Resource. Memory-MB)
+*  Konfigurace velikosti kontejneru PŘÍZe (příz. Scheduler. minimum-Allocation-MB, příz. Scheduler. maximum-Allocation-MB, příze. NodeManager. Resource. Memory-MB)
 *  Počet tez AMs na uzlu
 *  Celková paměť konfigurovaná pro všechny kontejnery na kapacitě uzlu a frontě LLAP  
 
@@ -112,11 +112,11 @@ Paměť, kterou vyžadují hlavní aplikační servery tez (tez), se dají vypo�
 Tez slouží jako koordinátor dotazů a počet tez AMs by měl být nakonfigurován na základě počtu souběžných dotazů, které mají být obsluhovány. Teoreticky můžeme vzít v úvahu jeden tez uzel v jednom pracovním uzlu. Je však možné, že se v pracovním uzlu zobrazí více než jedna TEZ. Pro účely výpočtu předpokládáme jednotnou distribuci tez AMs ve všech uzlech LLAP démon/pracovních uzlech.
 Doporučuje se mít 4 GB paměti na tez dop.  
 
-Počet tez AMS = hodnota zadaná v podregistru config ***podregistr. Server2. TEZ. Sessions. per. default. Queue** _.  
-Počet uzlů LLAP démona = určených proměnnou ENV _*_num_llap_nodes_for_llap_daemons_*_ v uživatelském rozhraní Ambari  
-Velikost kontejneru tez AM = hodnota zadaná tez config _*_TEZ. am. Resource. Memory. MB_*_.  
+Počet tez AMS = hodnota zadaná ***podregistrem konfigurace podregistru. Server2. TEZ. Sessions. per. default. Queue***.  
+Počet uzlů LLAP démona = určených proměnnou ENV ***num_llap_nodes_for_llap_daemons*** v uživatelském rozhraní Ambari  
+Velikost kontejneru tez AM = hodnota zadaná tez config ***TEZ. am. Resource. Memory. MB***.  
 
-Tez paměti na uzel = _ *(** ceil – **(** počet tez AMs pro **/** počet uzlů procesu démon LLAP **)** **×** tez velikost kontejneru **)**  
+Tez paměti na uzel = **(** ceil – **(** počet tez AMs pro **/** uzly procesu démon LLAP **)** **×** tez velikost kontejneru **)**  
 Pro D14 v2 má výchozí konfigurace čtyři tez AMs a čtyři uzly LLAP démon.  
 Tez paměti na uzel = (ceil – (4/4) × 4 GB) = 4 GB
 
@@ -133,22 +133,25 @@ Pro pracovní uzel D14 v2, HDI 4,0 – doporučená hodnota je (85 GB-4 GB-1 GB)
 (Pro HDI 3,6 je doporučená hodnota **79 GB** , protože byste měli vyhradit další ~ 2 GB pro posuvník.)  
 
 #### <a name="8-determining-number-of-executors-per-llap-daemon"></a>**8. určení počtu prováděcích modulů na démona LLAP**  
-Konfigurace: **_hive.llap.daemon.num.executors_* _, _*_podregistr. llap. IO. nevlákenná. Size_*_
+Konfigurace: ***hive.llap.daemon.num.executors** _, _ *_podregistr. llap. IO. nevlákenná velikost_**
 
-_*_hive.llap.daemon.num.executors_*_:   
+***hive.llap.daemon.num.executors***:   
 Tato konfigurace řídí počet prováděcích modulů, které mohou paralelně provádět úlohy na LLAP démon. Tato hodnota závisí na počtu virtuální jádra, velikosti paměti používané na vykonavateli a celkovém množství dostupné paměti pro kontejner démona LLAP.    Počet prováděcích modulů se dá přeodebírat 120% dostupné virtuální jádra na pracovní uzel. Měla by však být upravena, pokud nesplňuje požadavky na paměť na základě paměti potřebné na vykonavatele a velikosti kontejneru démona LLAP.
 
 Každý prováděcí modul je ekvivalentní tez kontejneru a může spotřebovávat 4GB (velikost kontejneru tez) paměti. Všechny prováděcí moduly v procesu démon LLAP sdílejí stejnou paměť haldy. S předpokladem, že ne všechny vykonavatelé spouštějí operace náročné na paměť ve stejnou dobu, můžete zvážit 75% velikosti kontejneru tez (4 GB) na jeden prováděcí modul. Tímto způsobem můžete zvýšit počet prováděcích modulů tím, že každému prováděcímu modulu udělíte méně paměti (například 3 GB) pro zvýšení paralelismu. Doporučuje se ale toto nastavení optimalizovat pro vaše cílové úlohy.
 
 Na virtuálních počítačích s D14 v2 je 16 virtuální jádra.
-V případě D14 v2 je doporučená hodnota pro počet prováděcích modulů (16 virtuální jádra x 120%) ~ = _ *19** na všech pracovních uzlech, který zvažuje povolenou na vykonavatele.
+Pro D14 v2 je doporučená hodnota pro počet prováděcích modulů (16 virtuální jádra x 120%) ~ = **19** na každém pracovním uzlu, který zvažuje povolenou na vykonavatele.
 
-**_podregistr. llap. IO. Apartment. Size_*_: Tato hodnota určuje velikost fondu vláken pro vykonavatele. Vzhledem k tomu, že vykonavatelé jsou pevně určení, bude stejný jako počet prováděcích modulů na démon LLAP. V případě D14 v2 je doporučená hodnota _* 19**.
+***podregistr. llap. IO. nevláken. Size***:   
+Tato hodnota určuje velikost fondu vláken pro vykonavatele. Vzhledem k tomu, že vykonavatelé jsou pevně určení, bude stejný jako počet prováděcích modulů na démon LLAP.    
+V případě D14 v2 je doporučená hodnota **19**.
 
 #### <a name="9-determining-llap-daemon-cache-size"></a>**9. určení velikosti mezipaměti démona LLAP**  
-Konfigurace: **_podregistr. llap. IO. Memory. Size_* _
+Konfigurace: ***podregistr. llap. IO. Memory. Size***
 
-Paměť kontejneru démona LLAP se skládá z následujících součástí: _ Hlavní místnost
+Paměť kontejneru démona LLAP se skládá z následujících součástí:
+*  Hlavní místnost
 *  Paměť haldy využívané prováděcími moduly (XMX)
 *  Mezipaměť v paměti na démon (jeho velikost paměti mimo haldu, která se nedá použít, když je povolená mezipaměť SSD)
 *  Velikost metadat mezipaměti v paměti (platí jenom v případě, že je povolená mezipaměť SSD)
@@ -181,18 +184,18 @@ Pro D14 v2 a HDI 4,0 se doporučuje velikost mezipaměti SSD = 19 GB/0,08 ~ = **
 Pro D14 v2 a HDI 3,6 se doporučuje velikost mezipaměti SSD = 18 GB/0,08 ~ = **225 GB** .
 
 #### <a name="10-adjusting-map-join-memory"></a>**10. Úprava paměti připojení mapy**   
-Konfigurace: **_podregistr. auto. Convert. Join. noconditionaltask. Size_* _
+Konfigurace: ***podregistr. auto. Convert. Join. noconditionaltask. Size***
 
-Ujistěte se, že máte _hive. auto. Convert. Join. noconditionaltask * Enabled, aby se tento parametr projevil.
+Ujistěte se, že máte *podregistr. auto. Convert. noconditionaltask* povolený, aby se tento parametr projevil.
 Tato konfigurace Určuje prahovou hodnotu pro MapJoin výběr podle Optimalizátoru podregistru, který má za následek, že se má více místa pro tabulky hash v paměti, aby bylo možné použít větší počet převodů spojení mapování. V rámci povolenou na vykonavatele se tato velikost dá přehlásit povolenou, ale některá paměť haldy se dá také použít pro řazení vyrovnávacích pamětí, náhodné vyrovnávací paměti atd. ostatní operace.   
 Takže pro D14 v2 se 3 GB paměti na vykonavatele doporučujeme nastavit tuto hodnotu na **2048 MB**.  
 
 (Poznámka: Tato hodnota může vyžadovat úpravy, které jsou vhodné pro vaše zatížení. Nastavení příliš nízké hodnoty nemusí používat funkci autoConvert. A nastavení příliš vysokého může způsobit výjimky z paměti nebo pozastavení GC, které mohou vést k negativnímu výkonu.)  
 
 #### <a name="11-number-of-llap-daemons"></a>**11. počet LLAP démonů**
-Proměnné prostředí Ambari: **_num_llap_nodes, num_llap_nodes_for_llap_daemons_* _  
+Proměnné prostředí Ambari: ***num_llap_nodes, num_llap_nodes_for_llap_daemons***  
 
-_ *num_llap_nodes** – určuje počet uzlů, které používá služba Llap podregistru, zahrnuje uzly se spuštěným llap démonem, hlavním serverem služby Llap a tez hlavní aplikační sadu (tez am).  
+**num_llap_nodes** – určuje počet uzlů, které používá služba Llap podregistru, zahrnuje uzly se spuštěným llap démonem, hlavním serverem služby Llap a tez hlavní aplikační sadu (tez am).  
 
 ![' Počet uzlů pro službu LLAP '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png "Počet uzlů pro službu LLAP")  
 

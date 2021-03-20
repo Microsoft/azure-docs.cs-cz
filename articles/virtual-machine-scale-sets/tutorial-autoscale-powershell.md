@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: 8ee124f866a5241620671ff84c24f3713f62efe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078465"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure PowerShellu
@@ -28,7 +28,7 @@ Při vytváření škálovací sady definujete počet instancí virtuálních po
 > * Zátěžový test instancí virtuálních počítačů a aktivace pravidel automatického škálování
 > * Opětovné automatické horizontální snížení kapacity po snížení požadavků
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Existuje známý problém, který má vliv na modul Azure PowerShell verze 6.8.1 nebo novější včetně aktuální verze služby Azure Cloud Shell. Tento kurz vyžaduje modul Azure PowerShell verze 6.0.0 až 6.8.0. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
@@ -190,7 +190,7 @@ mstsc /v 52.168.121.216:50001
 Po přihlášení z hlavního panelu otevřete aplikaci Internet Explorer.
 
 - Výběrem **OK** povolte příkazovému řádku *Použít doporučená nastavení zabezpečení, ochrany osobních údajů a kompatibility*.
-- *http://download.sysinternals.com/files/CPUSTRES.zip*Do adresního řádku zadejte.
+- *http://download.sysinternals.com/files/CPUSTRES.zip* Do adresního řádku zadejte.
 - Vzhledem k tomu, že je zapnutá konfigurace rozšířeného zabezpečení aplikace Internet Explorer, zvolte **Přidat** doménu *http://download.sysinternals.com* na seznam důvěryhodných webů.
 - Po zobrazení výzvy ke stažení souboru vyberte **Otevřít** a pak výběrem **Spustit** spusťte nástroj *CPUSTRES.EXE*.
 

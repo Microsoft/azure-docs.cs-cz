@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: e73a02c93807072e30c8ce2a1a7feb30e9d3c8c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91978964"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro"></a>Použití Azure Portal ke správě plánů šířky pásma na Azure Stack Edge pro  
@@ -40,7 +40,7 @@ Chcete-li přidat plán, proveďte následující kroky v Azure Portal.
 
 3. V části **Přidání plánu**: 
 
-   1. Zadejte **počáteční den**, **Koncový den**, **čas spuštění**a **čas ukončení** plánu.
+   1. Zadejte **počáteční den**, **Koncový den**, **čas spuštění** a **čas ukončení** plánu.
    2. Pokud má být tento plán běžet celý den, ověřte možnost **všechny dny** .
    3. **Rychlost šířky pásma** je šířka pásma v megabajtech za sekundu (MB/s), kterou vaše zařízení používá v operacích, které se týkají cloudu (odesílání a stahování). Do tohoto pole zadejte číslo od 20 do 1 000 000 007.
    4. Pokud nechcete omezit nahrávání a stahování dat, zaškrtněte možnost **Neomezená šířka pásma**.
@@ -75,7 +75,7 @@ Pomocí následujících kroků odstraňte plán šířky pásma přidružený k
 
 1. V Azure Portal přejít na prostředek Azure Stack Edge a pak přejít na **šířku pásma**.  
 
-2. V seznamu plánů služby Bandwidth vyberte a klikněte na plán, který chcete odstranit. V části **Upravit plán**vyberte **Odstranit**. Po zobrazení výzvy k potvrzení vyberte **Ano**.
+2. V seznamu plánů služby Bandwidth vyberte a klikněte na plán, který chcete odstranit. V části **Upravit plán** vyberte **Odstranit**. Po zobrazení výzvy k potvrzení vyberte **Ano**.
 
    ![Odstranění uživatele](media/azure-stack-edge-manage-bandwidth-schedules/delete-schedule-2.png)
 

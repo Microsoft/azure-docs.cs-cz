@@ -4,14 +4,14 @@ description: Naučte se, jak spustit aplikaci Service Fabric v části účty Sy
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75610113"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Spusťte službu jako místní uživatelský účet nebo účet místního systému.
-Pomocí Azure Service Fabric můžete zabezpečit aplikace spuštěné v clusteru v rámci různých uživatelských účtů. Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric.exe. Service Fabric taky nabízí možnost spouštět aplikace pod účtem místního uživatele nebo systému. Podporovány jsou typy místních systémových účtů **LocalUser**, **NetworkService**, **LocalService**a **LocalSystem**.  Pokud používáte Service Fabric v samostatném clusteru se systémem Windows, můžete spustit službu pod [účtem domény služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md) nebo [skupinovými účty spravované služby](service-fabric-run-service-as-gmsa.md).
+Pomocí Azure Service Fabric můžete zabezpečit aplikace spuštěné v clusteru v rámci různých uživatelských účtů. Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric.exe. Service Fabric taky nabízí možnost spouštět aplikace pod účtem místního uživatele nebo systému. Podporovány jsou typy místních systémových účtů **LocalUser**, **NetworkService**, **LocalService** a **LocalSystem**.  Pokud používáte Service Fabric v samostatném clusteru se systémem Windows, můžete spustit službu pod [účtem domény služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md) nebo [skupinovými účty spravované služby](service-fabric-run-service-as-gmsa.md).
 
 V manifestu aplikace definujete uživatelské účty potřebné ke spouštění služeb nebo zabezpečených prostředků v oddílu **objekty zabezpečení** . Můžete také definovat a vytvářet skupiny uživatelů, aby bylo možné spravovat jednoho nebo více uživatelů současně. To je užitečné v případě, že existuje více uživatelů pro různé vstupní body služby a potřebují společná oprávnění, která jsou k dispozici na úrovni skupiny.  Na tyto uživatele se pak odkazuje v zásadách RunAs, které se aplikují na konkrétní službu nebo všechny služby v aplikaci. 
 
@@ -24,7 +24,7 @@ Ve výchozím nastavení se zásada RunAs aplikuje na hlavní vstupní bod.  Mů
 ## <a name="run-a-service-as-a-local-user"></a>Spustit službu jako místní uživatel
 Můžete vytvořit místního uživatele, který lze použít k zabezpečení služby v rámci aplikace. Pokud je v oddílu objekty zabezpečení v manifestu aplikace zadán typ účtu **LocalUser** , Service Fabric vytvoří místní uživatelské účty na počítačích, kde je aplikace nasazena. Ve výchozím nastavení tyto účty nemají stejné názvy jako ty, které jsou zadány v manifestu aplikace (například *Customer3* v následujícím příkladu manifestu aplikace). Místo toho se generují dynamicky a mají náhodná hesla.
 
-V části **RunAsPolicy** pro **ServiceManifestImport**zadejte uživatelský účet z oddílu **objekty zabezpečení** a spusťte balíček kódu služby.  Následující příklad ukazuje, jak vytvořit místního uživatele a použít zásadu RunAs na hlavní vstupní bod:
+V části **RunAsPolicy** pro **ServiceManifestImport** zadejte uživatelský účet z oddílu **objekty zabezpečení** a spusťte balíček kódu služby.  Následující příklad ukazuje, jak vytvořit místního uživatele a použít zásadu RunAs na hlavní vstupní bod:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -55,7 +55,7 @@ V části **RunAsPolicy** pro **ServiceManifestImport**zadejte uživatelský ú�
 ```
 
 ## <a name="create-a-local-user-group"></a>Vytvořit místní skupinu uživatelů
-Skupiny uživatelů můžete vytvořit a přidat do ní jednoho nebo více uživatelů. To je užitečné v případě, že existuje více uživatelů pro různé vstupní body služby a potřebují určitá společná oprávnění, která jsou k dispozici na úrovni skupiny. Následující příklad manifestu aplikace ukazuje místní skupinu s názvem *LocalAdminGroup* , která má oprávnění správce. Dva uživatelé, *Customer1* a *Customer2*, jsou členy této místní skupiny. V části **ServiceManifestImport** se použije zásada RunAs pro spuštění balíčku kódu *Stateful1Pkg* jako *Customer2*.  Pro spuštění balíčku kódu *Web1Pkg* jako *Customer1*se použije další zásada runas.
+Skupiny uživatelů můžete vytvořit a přidat do ní jednoho nebo více uživatelů. To je užitečné v případě, že existuje více uživatelů pro různé vstupní body služby a potřebují určitá společná oprávnění, která jsou k dispozici na úrovni skupiny. Následující příklad manifestu aplikace ukazuje místní skupinu s názvem *LocalAdminGroup* , která má oprávnění správce. Dva uživatelé, *Customer1* a *Customer2*, jsou členy této místní skupiny. V části **ServiceManifestImport** se použije zásada RunAs pro spuštění balíčku kódu *Stateful1Pkg* jako *Customer2*.  Pro spuštění balíčku kódu *Web1Pkg* jako *Customer1* se použije další zásada runas.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

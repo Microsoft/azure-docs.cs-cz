@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
 ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610297"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Data featurization v automatizovaném strojovém učení
@@ -30,7 +30,7 @@ I když mnoho nezpracovaných datových polí lze použít přímo k vytvoření
 
 V Azure Machine Learning se pro usnadnění vývoje funkcí používají techniky pro škálování dat a normalizaci. Souhrnně tyto techniky a technické funkce se nazývají **featurization** v automatizovaných experimentech ml.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že už víte, jak nakonfigurovat automatizované experimenty ML. Informace o konfiguraci najdete v následujících článcích:
 
@@ -65,11 +65,11 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 
 |Featurization &nbsp; kroky| Description |
 | ------------- | ------------- |
-|**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky** _ |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
-|_*Imputace – chybějící hodnoty**_ |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
-|_*Generování dalších funkcí**_ |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br><br> _For prognózování úloh, * tyto další funkce DateTime jsou vytvořeny: ISO year, pololetí, kalendářní měsíc jako řetězec, týden, den v týdnu jako řetězec, den čtvrtletí, den v roce, AM/PM (0, pokud je hodina v hodnotě poledne (12 ODP), 1 jinak), AM/PM jako řetězec, hodina dne (12 – hr).<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
-|**Transformovat a kódovat** _|Transformujte číselné funkce, které mají v kategorií funkce několik jedinečných hodnot.<br/><br/>Pro funkce kategorií s nízkou mohutnou se používá kódování One-Hot. Kódování One-Hot-hash se používá pro funkce kategorií s vysokou mohutnosti.|
-|_ *Vkládání slov**|Text featurizer převede vektory textových tokenů na vektory vět pomocí předem připraveného modelu. Vektory vložení každého slova v dokumentu jsou agregovány s využitím zbytku pro vytvoření vektoru funkce dokumentu.|
+|**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky*** |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
+|**Imputace – chybějící hodnoty*** |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
+|**Generování dalších funkcí** _ |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br><br> _For prognózování úloh, * tyto další funkce DateTime jsou vytvořeny: ISO year, pololetí, kalendářní měsíc jako řetězec, týden, den v týdnu jako řetězec, den čtvrtletí, den v roce, AM/PM (0, pokud je hodina v hodnotě poledne (12 ODP), 1 jinak), AM/PM jako řetězec, hodina dne (12 – hr).<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
+|**Transformace a kódování***|Transformujte číselné funkce, které mají v kategorií funkce několik jedinečných hodnot.<br/><br/>Pro funkce kategorií s nízkou mohutnou se používá kódování One-Hot. Kódování One-Hot-hash se používá pro funkce kategorií s vysokou mohutnosti.|
+|**Vkládání slov**|Text featurizer převede vektory textových tokenů na vektory vět pomocí předem připraveného modelu. Vektory vložení každého slova v dokumentu jsou agregovány s využitím zbytku pro vytvoření vektoru funkce dokumentu.|
 |**Vzdálenost clusteru**|Vlaky a k – znamenají model clusteringu ve všech číselných sloupcích. Vytvoří nové funkce ( *jedna nová číselná* funkce na cluster), které obsahují vzdálenost jednotlivých vzorků k těžiště každého clusteru.|
 
 ## <a name="data-guardrails"></a>Guardrails dat

@@ -10,10 +10,10 @@ ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
 ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747745"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Oznámení o ukončení pro instance škálovací sady virtuálních počítačů Azure
@@ -24,15 +24,15 @@ Po zaregistrování do funkce nemusí instance sady škálování čekat na vypr
 ## <a name="enable-terminate-notifications"></a>Povolit ukončení oznámení
 Existuje několik způsobů, jak povolit koncová oznámení na instancích sady škálování, jak je popsáno v následujících příkladech.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Následující kroky umožňují ukončit oznámení při vytváření nové sady škálování. 
 
-1. Přejít na **Virtual Machine Scale Sets** .
+1. Přejít na **Virtual Machine Scale Sets**.
 1. Vyberte **+ Přidat** a vytvořte novou sadu škálování.
 1. Přejít na kartu **Správa** . 
 1. Vyhledejte část **ukončení instance** .
-1. V případě **oznámení o ukončení instance** vyberte **zapnuto** .
+1. V případě **oznámení o ukončení instance** vyberte **zapnuto**.
 1. Pro **zpoždění ukončení (minuty)** nastavte požadovaný výchozí časový limit.
 1. Až budete hotovi s vytvářením nové sady škálování, vyberte tlačítko **zkontrolovat + vytvořit** . 
 
@@ -63,7 +63,7 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 ```
 
-Výše uvedený blok Určuje prodlevu s časovým limitem 5 minut (jak je uvedeno v *PT5M* ) pro všechny operace ukončení u všech instancí ve vaší sadě škálování. Pole *notBeforeTimeout* může ve formátu ISO 8601 trvat od 5 do 15 minut libovolnou hodnotu. Výchozí časový limit pro operaci ukončení můžete změnit úpravou vlastnosti *notBeforeTimeout* v části *terminateNotificationProfile* popsané výše.
+Výše uvedený blok Určuje prodlevu s časovým limitem 5 minut (jak je uvedeno v *PT5M*) pro všechny operace ukončení u všech instancí ve vaší sadě škálování. Pole *notBeforeTimeout* může ve formátu ISO 8601 trvat od 5 do 15 minut libovolnou hodnotu. Výchozí časový limit pro operaci ukončení můžete změnit úpravou vlastnosti *notBeforeTimeout* v části *terminateNotificationProfile* popsané výše.
 
 Po povolení *scheduledEventsProfile* v modelu sady škálování a nastavení *notBeforeTimeout* aktualizujte jednotlivé instance na [nejnovější model](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , aby se změny projevily.
 

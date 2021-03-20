@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89084530"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Přesunout Azure Event Grid systémová témata do jiné oblasti
@@ -22,20 +22,35 @@ Tady je postup vysoké úrovně, který je popsaný v tomto článku:
 - **Ověřte nasazení**. Ověřte, jestli je Webhook vyvolaný při nahrávání souboru do úložiště objektů BLOB v cílové oblasti. 
 - Chcete-li **Dokončit přesunutí**, odstraňte prostředky (zdrojové události a systémové téma) ze zdrojové oblasti. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Dokončete [rychlé zprovoznění: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal](blob-event-quickstart-portal.md) ve zdrojové oblasti. Tento krok je **nepovinný**. Proveďte test kroků v tomto článku. Ponechte účet úložiště v samostatné skupině prostředků z plánu App Service a App Service. 
 - Ujistěte se, že je služba Event Grid v cílové oblasti dostupná. Zobrazit [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků pro skupinu prostředků, která obsahuje zdroj systémové události (Azure Storage účet) a její přidružené systémové téma. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků** . Pak vyberte skupinu prostředků, která obsahuje zdroj události, pro který se vytvořilo systémové téma. V následujícím příkladu je to účet **Azure Storage** . Skupina prostředků obsahuje účet úložiště a jeho přidružené systémové téma. 
 
     :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="Stránka skupiny prostředků":::        
-3. V nabídce vlevo vyberte v části **Nastavení**položku **Exportovat šablonu** a pak na panelu nástrojů vyberte **Stáhnout** . 
+3. V nabídce vlevo vyberte v části **Nastavení** položku **Exportovat šablonu** a pak na panelu nástrojů vyberte **Stáhnout** . 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Stránka skupiny prostředků"
+    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Nákladnost účet – exportovat stránku šablony":::        
+5. Vyhledejte soubor **. zip** , který jste stáhli z portálu, a rozbalte tento soubor do složky podle vašeho výběru. Tento soubor zip obsahuje šablony a parametry soubory JSON. 
+1. Otevřete **template.js** v editoru podle svého výběru. 
+1. Adresa URL Webhooku není exportována do šablony. Provedete to tak, že provedete následující kroky:
+    1. V souboru šablony vyhledejte **Webhook**. 
+    1. V části **Properties (vlastnosti** `,` ) na konci posledního řádku přidejte znak čárky (). V tomto příkladu je to `"preferredBatchSizeInKilobytes": 64` . 
+    1. Přidejte `endpointUrl` vlastnost s hodnotou nastavenou na adresu URL Webhooku, jak je znázorněno v následujícím příkladu. 
+
+        ```json
+        "destination": {
+            "properties": {
+                "maxEventsPerBatch": 1,
+                "preferredBatchSizeInKilobytes": 64,
+                "endpointUrl": "https://mysite.azurewebsites.net/api/updates"
+            },
+            "endpointType": "WebHook"
         }
         ```
 
@@ -63,20 +78,20 @@ Začněte tím, že vyexportujete šablonu Správce prostředků pro skupinu pro
 Nasaďte šablonu k vytvoření účtu úložiště a systémového tématu pro účet úložiště v cílové oblasti. 
 
 1. V Azure Portal vyberte **vytvořit prostředek**.
-2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
+2. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
 3. Vyberte **template Deployment**.
 4. Vyberte **Vytvořit**.
 5. **V editoru vyberte vytvořit vlastní šablonu**.
-6. Vyberte **načíst soubor**a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
+6. Vyberte **načíst soubor** a potom podle pokynů načtěte **template.js** do souboru, který jste stáhli v poslední části.
 7. Vyberte **Uložit** a šablonu uložte. 
 8. Na stránce **vlastní nasazení** postupujte podle těchto kroků. 
-    1. Vyberte **předplatné**Azure. 
+    1. Vyberte **předplatné** Azure. 
     1. Vyberte existující **skupinu prostředků** v cílové oblasti nebo ji vytvořte. 
-    1. V poli **oblast**vyberte cílovou oblast. Pokud jste vybrali existující skupinu prostředků, toto nastavení je jen pro čtení.
-    1. Do pole **Název systémového tématu**zadejte název systémového tématu, které bude přidruženo k účtu úložiště.  
-    1. Jako **název účtu úložiště**zadejte název účtu úložiště, který se má vytvořit v cílové oblasti. 
+    1. V poli **oblast** vyberte cílovou oblast. Pokud jste vybrali existující skupinu prostředků, toto nastavení je jen pro čtení.
+    1. Do pole **Název systémového tématu** zadejte název systémového tématu, které bude přidruženo k účtu úložiště.  
+    1. Jako **název účtu úložiště** zadejte název účtu úložiště, který se má vytvořit v cílové oblasti. 
 
-        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Stránka skupiny prostředků":::
+        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Nasazení šablony Správce prostředků":::
     5. V dolní části stránky vyberte **zkontrolovat + vytvořit** . 
     1. Na stránce **Revize + vytvořit** zkontrolujte nastavení a vyberte **vytvořit**. 
 
@@ -92,10 +107,10 @@ Pokud chcete začít znovu, odstraňte skupinu prostředků v cílové oblasti a
 
 Odstranění skupiny prostředků (zdroje nebo cíle) pomocí Azure Portal:
 
-1. V okně hledání v horní části Azure Portal zadejte **skupiny prostředků**a z výsledků hledání vyberte **skupiny prostředků** . 
+1. V okně hledání v horní části Azure Portal zadejte **skupiny prostředků** a z výsledků hledání vyberte **skupiny prostředků** . 
 2. Vyberte skupinu prostředků, kterou chcete odstranit, a vyberte **Odstranit** z panelu nástrojů. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Stránka skupiny prostředků":::
+    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Odstranění skupiny prostředků":::
 3. Na stránce potvrzení zadejte název skupiny prostředků a vyberte **Odstranit**.  
 
 ## <a name="next-steps"></a>Další kroky

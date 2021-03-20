@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98930395"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro Jupyter Notebook v clusterech Apache Spark ve službě Azure HDInsight
@@ -22,7 +22,7 @@ Clustery HDInsight Spark poskytují jádra, která můžete použít s Jupyter N
 
 V tomto článku se naučíte používat tyto jádra a výhody jejich používání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -67,7 +67,7 @@ Tady je několik výhod používání nových jader s Jupyter Notebook v cluster
 
     V následující tabulce jsou uvedeny různé Magic dostupné prostřednictvím jader.
 
-   | Paket | Příklad | Popis |
+   | Paket | Příklad | Description |
    | --- | --- | --- |
    | Nápověda |`%%help` |Vygeneruje tabulku všech dostupných MAGICS s příkladem a popisem. |
    | příjemce |`%%info` |Vytvoří výstup informací o relaci pro aktuální koncový bod Livy. |
@@ -75,7 +75,7 @@ Tady je několik výhod používání nových jader s Jupyter Notebook v cluster
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz na podregistr pro kontext SqlContext. Pokud `-o` je předán parametr, výsledek dotazu je trvalý v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. |
    | local |`%%local`<br>`a=1` |Veškerý kód v pozdějších řádcích se spustí místně. Kód musí být platný kód Python2 bez ohledu na to, kterou jádro používáte. Takže i když jste při vytváření poznámkového bloku vybrali jádro **PySpark3** nebo **Spark** , v případě, `%%local` že jste v buňce použili Magic, musí mít tato buňka platný Python2 kód. |
    | Protokoly |`%%logs` |Vytvoří výstup protokolů pro aktuální relaci Livy. |
-   | odstranění |`%%delete -f -s <session number>` |Odstraní konkrétní relaci aktuálního koncového bodu Livy. Nemůžete odstranit relaci, která je spuštěná pro samotný jádro. |
+   | delete |`%%delete -f -s <session number>` |Odstraní konkrétní relaci aktuálního koncového bodu Livy. Nemůžete odstranit relaci, která je spuštěná pro samotný jádro. |
    | Vyčištění |`%%cleanup -f` |Odstraní všechny relace pro aktuální koncový bod Livy, včetně relace tohoto poznámkového bloku. Příznak Force-f je povinný. |
 
    > [!NOTE]  
@@ -87,7 +87,7 @@ Tady je několik výhod používání nových jader s Jupyter Notebook v cluster
 
 `%%sql`Magic podporuje různé parametry, které lze použít k řízení typu výstupu, který se zobrazí při spouštění dotazů. V následující tabulce je uveden výstup.
 
-| Parametr | Příklad | Popis |
+| Parametr | Příklad | Description |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Tento parametr použijte k uchování výsledku dotazu v kontextu%% Local Python jako [PANDAS](https://pandas.pydata.org/) dataframe. Název proměnné datového rámce je název proměnné, kterou zadáte. |
 | -q |`-q` |Pomocí tohoto parametru můžete pro buňku vypnout vizualizace. Pokud nechcete, aby se obsah buňky využíval, a chcete ji pouze zachytit jako datový rámec, použijte `-q -o <VARIABLE>` . Pokud chcete vypnout vizualizace bez zachycení výsledků (například pro spuštění dotazu SQL, jako je například `CREATE TABLE` příkaz), použijte `-q` bez zadání `-o` argumentu. |

@@ -4,10 +4,10 @@ description: Nahrání souboru VHD do účtu úložiště testovacího prostřed
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91282523"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí Průzkumník služby Microsoft Azure Storage
@@ -24,9 +24,9 @@ Následující kroky vás provedou odesláním souboru VHD do DevTest Labs pomoc
 
 1. Získejte název účtu úložiště testovacího prostředí pomocí Azure Portal:
 
-    1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+    1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
     
-    1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+    1. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
     
     1. V seznamu cvičení vyberte požadované testovací prostředí.  
     
@@ -78,7 +78,7 @@ Následující kroky vás provedou odesláním souboru VHD do DevTest Labs pomoc
     
     1. V uzlu předplatného rozbalte položku **účty úložiště**.
 
-    1. Rozbalte uzel účtu úložiště testovacího prostředí, který odhalí uzly pro **kontejnery objektů BLOB**, **sdílené složky**, **fronty**a **tabulky**.
+    1. Rozbalte uzel účtu úložiště testovacího prostředí, který odhalí uzly pro **kontejnery objektů BLOB**, **sdílené složky**, **fronty** a **tabulky**.
     
     1. Rozbalte uzel **kontejnery objektů BLOB** .
     

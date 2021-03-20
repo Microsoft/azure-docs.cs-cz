@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 50d0119b08d2c76a5f6111e485408ebcdace83c6
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96549017"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Správa vyúčtování v aplikaci IoT Central
@@ -59,7 +59,7 @@ V části s cenami můžete kdykoli upgradovat nebo downgradovat cenové tarify 
 
 1. Vyberte **plán** a pak vyberte **Uložit** pro upgrade nebo downgrade.
 
-## <a name="view-your-bill"></a>Zobrazení vašeho vyúčtování
+## <a name="view-your-bill"></a>Zobrazit vyúčtování
 
 1. Vyberte odpovídající Azure Active Directory a pak předplatné Azure, které chcete použít pro vaši aplikaci, která používá placený plán.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 849b54e6d96b8f6f33f2a0925b9a1b9c3eebd56b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92449961"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>Kurz: Azure Active Directory integrace s Gigya
@@ -30,7 +30,7 @@ Integrace Gigya s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Gigya potřebujete následující položky:
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Gigya, p
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Gigya společnosti jako správce.
 
-2. Přejděte na **nastavení \> přihlášení SAML**a potom klikněte na tlačítko **Přidat** .
+2. Přejděte na **nastavení \> přihlášení SAML** a potom klikněte na tlačítko **Přidat** .
    
     ![Přihlášení SAML](./media/gigya-tutorial/ic789532.png "Přihlášení SAML")
 
@@ -150,7 +150,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Gigya, p
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -175,7 +175,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Gigya.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Gigya**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace** a pak vyberte **Gigya**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -205,7 +205,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Gigya, musí se zřídit v Gig
 
 1. Přihlaste se k webu **Gigya** společnosti jako správce.
 
-2. Přejděte na **správce \> Správa uživatelů**a pak klikněte na **pozvat uživatele**.
+2. Přejděte na **správce \> Správa uživatelů** a pak klikněte na **pozvat uživatele**.
    
     ![Správa uživatelů](./media/gigya-tutorial/ic789535.png "Správa uživatelů")
 
@@ -227,7 +227,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Gigya, měli byste se automaticky přihlásit k Gigya, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

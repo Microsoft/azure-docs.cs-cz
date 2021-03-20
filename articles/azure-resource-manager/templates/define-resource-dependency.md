@@ -4,13 +4,13 @@ description: Popisuje, jak nastavit jeden prostředek Azure jako závislý na ji
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934743"
 ---
-# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definování pořadí nasazení prostředků v šablonách ARM
+# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definování pořadí nasazování prostředků v šablonách ARM
 
 Při nasazování prostředků možná budete muset zajistit, aby existovaly některé prostředky před dalšími prostředky. Před nasazením databáze potřebujete například logický SQL Server. Tento vztah vytvoříte tak, že označíte jeden prostředek jako závislý na jiném prostředku. Použijte `dependsOn` element k definování explicitní závislosti. K definování implicitní závislosti použijte funkce **odkaz** nebo **list** .
 

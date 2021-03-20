@@ -9,13 +9,13 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 24dafd63de1a37140c6a56547c4701729df1c8fb
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566550"
 ---
-# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením TLS pomocí Azure CLI
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením šifrování TLS pomocí Azure CLI
 
 Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro [ukončení protokolu TLS](ssl-overview.md). U back-end serverů můžete použít [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/overview.md) . V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
 
@@ -63,7 +63,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet* , kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \

@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 05/01/2020
 ms.openlocfilehash: 57a03b107678f83200b11f408784f6455cbceffd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579287"
 ---
 # <a name="configure-the-personalizer-learning-behavior"></a>Konfigurace chování při učení přizpůsobení
@@ -43,7 +43,7 @@ Aby bylo možné přidat přizpůsobené aplikaci do aplikace, je nutné volat r
 
 1. Použijte stávající obchodní logiku pro výpočet **odměna** zobrazené akce. Hodnota musí být v rozsahu od 0 do 1. Tuto odměnu můžete přizpůsobovat pomocí [API pro odměnu](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward). Hodnota odměňování se neočekává hned a v závislosti na obchodní logice se dá zpozdit za časové období.
 
-1. Pokud nevrátíte svou odměnu v rámci nakonfigurované **doby čekání na odměnu** , použije se místo toho výchozí měna.
+1. Pokud nevrátíte svou odměnu v rámci nakonfigurované **doby čekání na odměnu**, použije se místo toho výchozí měna.
 
 ## <a name="evaluate-apprentice-mode"></a>Vyhodnotit režim učni
 
@@ -52,10 +52,10 @@ V Azure Portal na stránce **vyhodnocení** pro váš prostředek pro přizpůso
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s přehledem chování učení v režimu učni v Azure Portal](media/settings/evaluate-apprentice-mode.png)
 
-V režimu učni jsou k dispozici následující **metriky vyhodnocení** :
-* **Směrný plán – Průměrná odměna** : Průměrná doba využívání výchozích hodnot (standardní hodnoty) aplikace
-* **Přizpůsobování – Průměrná doba odměna** : průměr z celkového počtu nedokončených akcí by byl potenciálně dosažen.
-* **Poměr stran k úspěšnosti v posledních 1000 událostech** : poměr hodnot na účaří a přizpůsobování – normalizované na posledních 1000 událostech.
+V režimu učni jsou k dispozici následující **metriky vyhodnocení**:
+* **Směrný plán – Průměrná odměna**: Průměrná doba využívání výchozích hodnot (standardní hodnoty) aplikace
+* **Přizpůsobování – Průměrná doba odměna**: průměr z celkového počtu nedokončených akcí by byl potenciálně dosažen.
+* **Poměr stran k úspěšnosti v posledních 1000 událostech**: poměr hodnot na účaří a přizpůsobování – normalizované na posledních 1000 událostech.
 
 ## <a name="switch-behavior-to-online-mode"></a>Přepnout chování do online režimu
 

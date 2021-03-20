@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602468"
 ---
 # <a name="understand-azure-role-definitions"></a>Vysvětlení definic rolí Azure
@@ -80,7 +80,7 @@ Operace jsou zadány s řetězci, které mají následující formát:
 
 `{action}`Část řetězce operace určuje typ operací, které můžete provádět u typu prostředku. Například se zobrazí následující podřetězce v `{action}` :
 
-| Podřetězec akce    | Popis         |
+| Podřetězec akce    | Description         |
 | ------------------- | ------------------- |
 | `*` | Zástupný znak uděluje přístup ke všem operacím, které odpovídají řetězci. |
 | `read` | Povoluje operace čtení (GET). |
@@ -281,7 +281,7 @@ Chcete-li zobrazit a používat operace s daty v REST API, je nutné nastavit pa
 `Actions`Oprávnění určuje operace správy, které může role provést. Je to kolekce řetězců operací, které identifikují zabezpečitelné operace poskytovatelů prostředků Azure. Zde je několik příkladů operací správy, které lze použít v nástroji `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | Řetězec operace    | Popis         |
+> | Řetězec operace    | Description         |
 > | ------------------- | ------------------- |
 > | `*/read` | Uděluje přístup k operacím čtení pro všechny typy prostředků všech poskytovatelů prostředků Azure.|
 > | `Microsoft.Compute/*` | Uděluje přístup ke všem operacím pro všechny typy prostředků v poskytovateli prostředků Microsoft. Compute.|
@@ -318,7 +318,7 @@ Zrušení přiřazení zabrání uživatelům provádět konkrétní akce, a to 
 `DataActions`Oprávnění určuje operace s daty, které role umožňuje provádět na vašich datech v rámci daného objektu. Pokud má uživatel například oprávnění číst data objektů BLOB k účtu úložiště, může číst objekty BLOB v rámci tohoto účtu úložiště. Zde je několik příkladů operací s daty, které lze použít v nástroji `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | Řetězec operace    | Popis         |
+> | Řetězec operace    | Description         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Vrátí objekt BLOB nebo seznam objektů BLOB. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Vrátí výsledek zápisu objektu BLOB. |

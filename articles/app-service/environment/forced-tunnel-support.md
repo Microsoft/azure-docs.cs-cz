@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97510494"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurace vynuceného tunelového propojení ve službě App Service Environment
@@ -95,7 +95,7 @@ Pokud chcete tunelovat veškerý odchozí provoz ze služby ASE kromě provozu s
 
 3. Získejte adresy, které se použijí pro veškerý odchozí provoz z vaší služby App Service Environment do internetu. Pokud provoz směrujete do místní sítě, tyto adresy jsou vaše IP adresy překladu adres nebo brány. Pokud chcete směrovat odchozí přenosy služby App Service Environment přes virtuální síťové zařízení, výstupní adresou je veřejná IP adresa tohoto virtuálního síťového zařízení.
 
-4. _Nastavení odchozích adres v existujícím App Service Environment:_ Přejít na resources.azure.com a přejít na předplatné/ \<subscription id> /ResourceGroups/ \<ase resource group> /providers/Microsoft.Web/hostingEnvironments/ \<ase name> . Uvidíte zápis JSON, který popisuje vaši službu App Service Environment. Zkontrolujte, jestli se nahoře píše **Čtení/zápis**. Vyberte **Edit** (Upravit). Posuňte se do dolní části. U položky **userWhitelistedIpRanges** změňte hodnotu **null** na podobnou hodnotu jako v následujícímu příkladu. Použijte adresy, které chcete nastavit jako výstupní rozsah adres. 
+4. _Nastavení odchozích adres v existujícím App Service Environment:_ Přejít na resources.azure.com a přejít na předplatné/ \<subscription id> /ResourceGroups/ \<ase resource group> /providers/Microsoft.Web/hostingEnvironments/ \<ase name> . Uvidíte zápis JSON, který popisuje vaši službu App Service Environment. Zkontrolujte, jestli se nahoře píše **Čtení/zápis**. Vyberte **Upravit**. Posuňte se do dolní části. U položky **userWhitelistedIpRanges** změňte hodnotu **null** na podobnou hodnotu jako v následujícímu příkladu. Použijte adresy, které chcete nastavit jako výstupní rozsah adres. 
 
     ```json
     "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]

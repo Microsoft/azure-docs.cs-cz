@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 58148e3a20ba41ae9707543be290f2d632cb1185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9d11d17f90dcd6335fcaf6bd48a44037777a087e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375285"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601381"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurace Trvalost dat pro instanci Redis Premium Azure cache
 
@@ -19,7 +19,7 @@ ms.locfileid: "100375285"
 
 Azure cache pro Redis nabízí trvalost Redis pomocí následujících modelů:
 
-* **Trvalost RDB** – když je nakonfigurovaná trvalá databáze RDB (Redis Database), Azure cache pro Redis uchovává snímek mezipaměti Azure pro Redis v binárním formátu Redis na disk na základě konfigurovatelné četnosti zálohování. Pokud dojde k závažné události, která zakáže primární i mezipaměť repliky, mezipaměť se znovu vytvoří pomocí nejnovějšího snímku. Přečtěte si další informace o [výhodách](https://redis.io/topics/persistence#rdb-advantages) a [nevýhodách](https://redis.io/topics/persistence#rdb-disadvantages) trvalého chování RDB.
+* **Trvalost RDB** – když se nakonfiguruje trvalost databáze RDB (Redis Database), Azure cache pro Redis uchovává snímek mezipaměti Azure pro Redis v binárním formátu Redis na disk (v Azure Storagem účtu) na základě konfigurovatelné četnosti zálohování. Pokud dojde k závažné události, která zakáže primární i mezipaměť repliky, mezipaměť se znovu vytvoří pomocí nejnovějšího snímku. Přečtěte si další informace o [výhodách](https://redis.io/topics/persistence#rdb-advantages) a [nevýhodách](https://redis.io/topics/persistence#rdb-disadvantages) trvalého chování RDB.
 * **AOF Persistence** – Pokud je nakonfigurovaná trvalá stálost AOF (jenom soubor), mezipaměť Azure pro Redis ukládá každou operaci zápisu do protokolu, který se alespoň jednou uložil za sekundu do účtu Azure Storage. Pokud dojde k závažné události, která zakáže primární i mezipaměť repliky, mezipaměť se rekonstruovat pomocí uložených operací zápisu. Přečtěte si další informace o [výhodách](https://redis.io/topics/persistence#aof-advantages) a [nevýhodách](https://redis.io/topics/persistence#aof-disadvantages) AOF Persistence.
 
 Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravujete. Můžete nakonfigurovat z nového okna **Azure cache pro Redis** během vytváření mezipaměti a v **nabídce prostředků** pro existující mezipaměti úrovně Premium.

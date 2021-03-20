@@ -6,17 +6,17 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75649936"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Kurz: zprovoznění prostředků pomocí vlastních zprostředkovatelů Azure
 
 V tomto kurzu nasadíte do Azure vlastního poskytovatele prostředků, který rozšiřuje rozhraní Azure Resource Manager API o typ prostředku Microsoft. CustomProviders/Associations. V tomto kurzu se dozvíte, jak můžete roztáhnout stávající prostředky, které se nacházejí mimo skupinu prostředků, ve které se nachází instance vlastního zprostředkovatele. V tomto kurzu je vlastní poskytovatel prostředků napájený pomocí aplikace logiky Azure, ale můžete použít jakýkoli veřejný koncový bod rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete znát tyto informace:
 
@@ -209,7 +209,7 @@ První část šablony nasadí infrastrukturu vlastního poskytovatele. Tato inf
 
 Pojďme nasadit infrastrukturu vlastního poskytovatele. Můžete buď zkopírovat, Uložit a nasadit předchozí šablonu, nebo postupovat podle potřeby a nasadit infrastrukturu pomocí Azure Portal.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **šablony** ve **všech službách** nebo pomocí hlavního vyhledávacího pole:
 
@@ -217,9 +217,9 @@ Pojďme nasadit infrastrukturu vlastního poskytovatele. Můžete buď zkopírov
 
 3. V podokně **šablony** vyberte **Přidat** :
 
-   ![Vyberte Přidat](media/tutorial-resource-onboarding/templatesadd.png)
+   ![Vyberte Přidat.](media/tutorial-resource-onboarding/templatesadd.png)
 
-4. V části **Obecné**zadejte **název** a **Popis** nové šablony:
+4. V části **Obecné** zadejte **název** a **Popis** nové šablony:
 
    ![Název a popis šablony](media/tutorial-resource-onboarding/templatesdescription.png)
 
@@ -235,7 +235,7 @@ Pojďme nasadit infrastrukturu vlastního poskytovatele. Můžete buď zkopírov
 
 8. Zadejte nastavení pro požadovaná pole a pak vyberte předplatné a skupinu prostředků. Pole **ID vlastního poskytovatele prostředků** můžete nechat prázdné.
 
-   | Název nastavení | Povinné? | Popis |
+   | Název nastavení | Povinné? | Description |
    | ------------ | -------- | ----------- |
    | Umístění | Ano | Umístění prostředků v šabloně. |
    | Název aplikace logiky | No | Název aplikace logiky |

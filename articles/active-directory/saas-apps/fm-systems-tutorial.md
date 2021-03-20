@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.openlocfilehash: a43c1092cd916877b24fc145ed05c92f50127cca
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92452698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Kurz: Azure Active Directory integrace s FM: systémy
@@ -30,7 +30,7 @@ Integrace FM: systémy s Azure AD poskytují následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s FM: systémy, potřebujete tyto položky:
 
@@ -128,7 +128,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování v **FM:** na straně syst
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -152,7 +152,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k FM: Systems.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte položku **FM: systémy**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte položku **FM: systémy**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -178,7 +178,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V okně webového prohlížeče se přihlaste k webu FM: Systems společnosti jako správce.
 
-2. V ** \> seznamu Správa systému spravovat \> \> uživatele zabezpečení Uživatelé**.
+2. V **\> seznamu Správa systému spravovat \> \> uživatele zabezpečení Uživatelé**.
    
     ![Správa systémů](./media/fm-systems-tutorial/ic795905.png "Správa systémů")
 
@@ -188,7 +188,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 4. V části **vytvořit uživatele** proveďte následující kroky:
    
-    ![Vytvořit uživatele](./media/fm-systems-tutorial/ic795907.png "Vytvořit uživatele")
+    ![Vytvoření uživatele](./media/fm-systems-tutorial/ic795907.png "Vytvořit uživatele")
    
     a. Zadejte **uživatelské jméno**, **heslo**, **potvrzení hesla**, **E-mail** a **ID zaměstnance** platného Azure Active Directory účtu, který chcete zřídit v souvisejících textových polích.
    
@@ -200,7 +200,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici FM: Systems, měli byste být automaticky přihlášení do systémů FM: systémy, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91274229"
 ---
 # <a name="point-to-site-vpn-session-management"></a>Správa relací VPN typu Point-to-site
@@ -26,7 +26,7 @@ Brány virtuální sítě Azure poskytují snadný způsob, jak zobrazit a odpoj
 
 Zobrazení a odpojení relace na portálu:
 
-1. Přejděte na bránu VPN.
+1. Přejděte k bráně VPN Gateway.
 1. V části **monitorování** vyberte **relace Point-to-site**.
 
    :::image type="content" source="./media/p2s-session-management/portal.png" alt-text="Příklad portálu":::
@@ -44,7 +44,7 @@ Zobrazení a odpojení relace pomocí prostředí PowerShell:
    ```
 1. Zkopírujte **VpnConnectionId** relace, kterou chcete odpojit.
 
-   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="Příklad portálu":::
+   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="Příklad PowerShellu":::
 1. Chcete-li odpojit relaci, spusťte následující příkaz:
 
    ```azurepowershell-interactive

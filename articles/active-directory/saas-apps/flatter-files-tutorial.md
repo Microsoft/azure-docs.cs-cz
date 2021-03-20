@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: fae21c98c7340614a96b6e85aa79bdea7889a807
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Kurz: Azure Active Directory integrace se soubory plošší
@@ -30,7 +30,7 @@ Integrace souborů plošší do Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se soubory plošší potřebujete následující položky:
 
@@ -123,7 +123,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
    
     ![Snímek obrazovky, který zobrazuje řídicí panel vybraný v aplikaci plošší Files](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
-3. Klikněte na **Nastavení**a potom na kartě **Společnost** proveďte následující kroky: 
+3. Klikněte na **Nastavení** a potom na kartě **Společnost** proveďte následující kroky: 
    
     ![Snímek obrazovky, který zobrazuje kartu společnost s zaškrtnutým políčkem pro použití S A M L 2,0 pro ověřování a vybráním tlačítka konfigurovat S A M L.](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
@@ -150,7 +150,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -175,7 +175,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k souborům plošší.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **soubory plošší**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **soubory plošší**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -205,7 +205,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v souborech 
 
 1. Přihlaste se ke svému webu **plošší Files** jako správce.
 
-2. V navigačním podokně na levé straně klikněte na **Nastavení**a pak klikněte na kartu **Uživatelé** .
+2. V navigačním podokně na levé straně klikněte na **Nastavení** a pak klikněte na kartu **Uživatelé** .
    
     ![Snímek obrazovky zobrazující stránku nastavení s vybranou kartou uživatelé](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
@@ -230,7 +230,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici soubory plošší na přístupovém panelu, měli byste se automaticky přihlásit k plošší souborům, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

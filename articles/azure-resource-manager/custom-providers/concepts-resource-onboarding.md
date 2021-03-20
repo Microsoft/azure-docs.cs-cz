@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75650406"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Přehled registrace prostředků vlastních zprostředkovatelů Azure
@@ -54,16 +54,16 @@ Tady je ukázkový vlastní poskytovatel Azure:
 }
 ```
 
-Vlastnost | Povinné? | Popis
+Vlastnost | Povinné? | Description
 ---|---|---
-name | Ano | Název definice koncového bodu. Pro registraci prostředků musí být název "asociace".
-routingType | Ano | Určuje typ kontraktu s koncovým bodem. V případě připojování prostředků jsou platnými **routingTypes** "proxy, cache, Extension" a "Webhook, cache, Extension".
-endpoint | Ano | Koncový bod, do kterého mají být směrovány požadavky. Tím se zpracuje odpověď a jakékoli vedlejší účinky žádosti.
+name | Yes | Název definice koncového bodu. Pro registraci prostředků musí být název "asociace".
+routingType | Yes | Určuje typ kontraktu s koncovým bodem. V případě připojování prostředků jsou platnými **routingTypes** "proxy, cache, Extension" a "Webhook, cache, Extension".
+endpoint | Yes | Koncový bod, do kterého mají být směrovány požadavky. Tím se zpracuje odpověď a jakékoli vedlejší účinky žádosti.
 
 Po vytvoření vlastního poskytovatele s typem prostředku přidružení můžete cílit pomocí Microsoft. CustomProviders/Associations. Microsoft. CustomProviders/Associations je prostředek rozšíření, který může rozšířit jakýkoli jiný prostředek Azure. Když je vytvořena instance Microsoft. CustomProviders/Associations, převezme vlastnost **parametrem targetresourceid**, která by měla být platným ID prostředku Microsoft. CustomProviders/ResourceProviders nebo Microsoft. Solutions/Applications. V těchto případech se požadavek přesměruje na typ prostředku přidružení v instanci Microsoft. CustomProviders/resourceProviders, kterou jste vytvořili.
 
 > [!NOTE]
-> Pokud je jako **parametrem targetresourceid**k dispozici ID prostředku Microsoft. Solutions/Applications, musí být ve spravované skupině prostředků nasazená aplikace Microsoft. CustomProviders/resourceProviders s názvem Public.
+> Pokud je jako **parametrem targetresourceid** k dispozici ID prostředku Microsoft. Solutions/Applications, musí být ve spravované skupině prostředků nasazená aplikace Microsoft. CustomProviders/resourceProviders s názvem Public.
 
 Ukázka přidružení vlastních poskytovatelů Azure:
 
@@ -76,9 +76,9 @@ Ukázka přidružení vlastních poskytovatelů Azure:
 }
 ```
 
-Vlastnost | Povinné? | Popis
+Vlastnost | Povinné? | Description
 ---|---|---
-Parametrem targetresourceid | Ano | ID prostředku Microsoft. CustomProviders/resourceProviders nebo Microsoft. Solutions/Applications.
+Parametrem targetresourceid | Yes | ID prostředku Microsoft. CustomProviders/resourceProviders nebo Microsoft. Solutions/Applications.
 
 ## <a name="how-to-use-resource-onboarding"></a>Jak používat připojování zdrojů
 

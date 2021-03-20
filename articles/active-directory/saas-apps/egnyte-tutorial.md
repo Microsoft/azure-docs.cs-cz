@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 3d102b492326971ef186ba50a557ad8d1df5b6ec
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454189"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Egnyte
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Egnyte s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -111,7 +111,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -123,13 +123,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Egnyte.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Egnyte**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -157,9 +157,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Ověřování jednotného přihlašování](./media/egnyte-tutorial/ic787822.png "Ověřování jednotného přihlašování")   
     
-    a. Jako **ověřování pomocí jednotného přihlašování**vyberte **SAML 2,0**.
+    a. Jako **ověřování pomocí jednotného přihlašování** vyberte **SAML 2,0**.
    
-    b. Jako **zprostředkovatel identity**vyberte **AzureAD**.
+    b. Jako **zprostředkovatel identity** vyberte **AzureAD**.
    
     c. Vložte **přihlašovací adresu URL** zkopírovanou z Azure Portal do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** .
    
@@ -167,9 +167,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
       
     e. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64 stažený z Azure Portal, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát poskytovatele identity** .
    
-    f. Jako **výchozí mapování uživatelů**vyberte **e-mailová adresa**.
+    f. Jako **výchozí mapování uživatelů** vyberte **e-mailová adresa**.
    
-    například Jako **hodnotu vystavitele v doméně použijte**možnost **zakázáno**.
+    například Jako **hodnotu vystavitele v doméně použijte** možnost **zakázáno**.
    
     h. Klikněte na **Uložit**.
 
@@ -183,7 +183,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Egnyte, musí se zřídit v Eg
 
 2. Přejít na **nastavení \> Uživatelé & skupiny**.
 
-3. Klikněte na tlačítko **Přidat nového uživatele**a potom vyberte typ uživatele, který chcete přidat.
+3. Klikněte na tlačítko **Přidat nového uživatele** a potom vyberte typ uživatele, který chcete přidat.
    
     ![Uživatelé](./media/egnyte-tutorial/ic787824.png "Uživatelé")
 
@@ -195,7 +195,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Egnyte, musí se zřídit v Eg
 
     b. Do textového pole **uživatelské jméno** zadejte uživatelské jméno uživatele, jako je **Brittasimon**.
 
-    c. Jako **typ ověřování**vyberte **jednotné přihlašování** .
+    c. Jako **typ ověřování** vyberte **jednotné přihlašování** .
    
     d. Klikněte na **Uložit**.
     
@@ -213,7 +213,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Egnyte, měli byste se automaticky přihlásit k Egnyte, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

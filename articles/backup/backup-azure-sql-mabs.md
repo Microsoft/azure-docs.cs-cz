@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak nakonfigurovat zálohování SQL 
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 29813741e88ad5f2bc5109be87939abf7cc11502
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316915"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Zálohování SQL Server do Azure pomocí Azure Backup Server
@@ -92,7 +92,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 
     ![Výběr metody vytvoření repliky v MABS](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze). Data zálohy se přesunou z provozního serveru (SQL Server počítač) do MABS. Pokud je tato záloha velká, může přenos dat přes síť způsobit zahlcení šířky pásma. Z tohoto důvodu můžou správci zvolit použití vyměnitelných médií k **ručnímu**přenosu prvotní zálohy. Nebo můžou data přenést **automaticky přes síť** v zadaném čase.
+    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze). Data zálohy se přesunou z provozního serveru (SQL Server počítač) do MABS. Pokud je tato záloha velká, může přenos dat přes síť způsobit zahlcení šířky pásma. Z tohoto důvodu můžou správci zvolit použití vyměnitelných médií k **ručnímu** přenosu prvotní zálohy. Nebo můžou data přenést **automaticky přes síť** v zadaném čase.
 
     Po dokončení prvotního zálohování budou zálohy v počátečním záložním kopírování přírůstkově dokončeny. Přírůstkové zálohování je obvykle malé a snadno se přenáší přes síť.
 1. Vyberte, kdy se má spustit Kontrola konzistence. Pak vyberte **Další**.
@@ -130,7 +130,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 1. Vyberte způsob přenosu prvotní záložní kopie do Azure.
 
     * Možnost **automaticky přes síť** se řídí vaším plánem zálohování a převádí data do Azure.
-    * Další informace o **offline zálohování**najdete v tématu [Přehled zálohování offline](offline-backup-overview.md).
+    * Další informace o **offline zálohování** najdete v tématu [Přehled zálohování offline](offline-backup-overview.md).
 
     Po výběru mechanismu přenosu vyberte možnost **Další**.
 1. Na stránce **Souhrn** zkontrolujte podrobnosti zásady. Pak vyberte **vytvořit skupinu**. Můžete vybrat **Zavřít** a sledovat průběh úlohy v pracovním prostoru **monitorování** .

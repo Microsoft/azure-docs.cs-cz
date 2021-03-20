@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbullwin
 ms.openlocfilehash: bcedef4a1339dacaff3fe841e97f985c42320819
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043149"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>Postupy: sestavení grafu metrik pro analýzu souvisejících metrik
@@ -33,9 +33,9 @@ Na navigačním panelu klikněte na kartu **metriky grafu** . Prvním krokem př
 
 Dále potřebujete přidat další uzel a zadat relaci ke stávajícím uzlům. Vyberte existující uzel a klikněte na něj pravým tlačítkem. Místní nabídka se zobrazí s několika možnostmi. 
 
-Klikněte na **Přidat relaci**a budete moct vybrat jinou metriku a mezi těmito dvěma uzly zadat typ vztahu. Můžete použít také konkrétní filtry dimenzí. 
+Klikněte na **Přidat relaci** a budete moct vybrat jinou metriku a mezi těmito dvěma uzly zadat typ vztahu. Můžete použít také konkrétní filtry dimenzí. 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Vybrat metriku":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Přidání uzlu a vztahu":::
 
 Po zopakování výše uvedených kroků budete mít graf metrik popisující vztahy mezi všemi souvisejícími metrikami.
 **Pomocný parametr pro barvy uzlů**
@@ -48,9 +48,9 @@ Po zopakování výše uvedených kroků budete mít graf metrik popisující vz
 
 Když je graf metriky sestavený, kdykoli je u metrik v grafu zjištěna anomálie, budete moci zobrazit související stavy anomálií a získat podrobný pohled na incident. 
 
-Klikněte na incident v grafu a posuňte se dolů k **analýze mezi metrikami**pod diagnostické informace.
+Klikněte na incident v grafu a posuňte se dolů k **analýze mezi metrikami** pod diagnostické informace.
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Vybrat metriku":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Zobrazit související metriky a anomálie":::
 
 ## <a name="next-steps"></a>Další kroky
 

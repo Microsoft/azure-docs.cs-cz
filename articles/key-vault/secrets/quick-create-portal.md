@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 904c00c26171854a32234d7b6ba5cac81ac43e5c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936664"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webu Azure Portal
@@ -26,7 +26,7 @@ Další informace o najdete v tématu.
 - [Přehled Key Vault](../general/overview.md)
 - [Přehled tajných klíčů](about-secrets.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete získat přístup k Azure Key Vault, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

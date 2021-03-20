@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 37d31d753812924607c4d31df6d4f4d5e7b32d69
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 89ab25f45cd35a86d2ff4416ceb851ae6cd5e115
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890709"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657157"
 ---
 # <a name="what-is-custom-translator"></a>Co je Custom Translator?
 
@@ -24,13 +24,20 @@ Překladatelské systémy vytvořené pomocí [vlastního překladatele](https:/
 
 Vlastní Překladatel podporuje více než tři desítkové jazyky a mapuje se přímo na jazyky, které jsou k dispozici pro NMT. Úplný seznam najdete v tématu  [Microsoft Translator languages](../language-support.md#customization).
 
+Tato dokumentace obsahuje následující typy článků:
+
+* [**Rychlé starty**](quickstart-build-deploy-custom-model.md) jsou pokyny Začínáme, které vám pomohou při provádění požadavků na službu.  
+* Návody obsahují pokyny k použití této funkce v konkrétnějším nebo přizpůsobeném [**způsobu.**](how-to-create-project.md)  
+* [**Koncepty**](workspace-and-project.md) poskytují podrobné vysvětlení funkcí funkcí.  
+
+
 ## <a name="features"></a>Funkce
 
-Vlastní Překladatel poskytuje různé funkce pro sestavení vlastního systému překladu a následně k němu přistupuje.
+Vlastní Překladatel poskytuje různé funkce pro sestavování vlastního systému překladu a pozdější přístup k němu.
 
 |Funkce  |Popis  |
 |---------|---------|
-|[Využití technologie strojového překladu neuronové](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Vylepšete svůj překlad využitím neuronové strojového překladu (NMT) poskytovaného vlastním překladatelem.       |
+|[Použití technologie strojového překladu neuronové](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Vylepšete svůj překlad použitím neuronové strojového překladu (NMT) poskytovaného vlastním překladatelem.       |
 |[Systémy sestavování, které znají vaši podnikovou terminologii](what-are-parallel-documents.md)     |  Přizpůsobte a vytvářejte překladatelské systémy pomocí paralelních dokumentů, které pochopí terminologií používané ve vašem podniku a v průmyslu.       |
 |[Použití slovníku k sestavení modelů](what-is-dictionary.md)     |   Pokud nemáte datovou sadu školicích dat, můžete vytvořit model s pouze daty ze slovníku.       |
 |[Spolupráce s ostatními](how-to-manage-settings.md#share-your-workspace)     |   Spolupracujte se svým týmem sdílením práce s různými lidmi.     |
@@ -52,7 +59,7 @@ V případě [vlastního překladatele](https://portal.customtranslator.azure.ai
 
 Pomocí portálu zabezpečeného [vlastního překladatele](https://portal.customtranslator.azure.ai) můžou uživatelé nahrávat školicí data, naučit systémy, testovat systémy a nasazovat je do produkčního prostředí prostřednictvím intuitivního uživatelského rozhraní. Systém bude potom k dispozici pro použití ve velkém měřítku během několika hodin (skutečný čas závisí na velikosti školicích dat).
 
-K [vlastnímu překladateli](https://portal.customtranslator.azure.ai) se taky dá programově přistupovat prostřednictvím [vyhrazeného rozhraní API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (aktuálně ve verzi Preview). Rozhraní API umožňuje uživatelům pravidelně spravovat vytváření a aktualizaci průběžných školení prostřednictvím vlastní aplikace nebo webové služby.
+K [vlastnímu překladateli](https://portal.customtranslator.azure.ai) se taky dá programově přistupovat prostřednictvím [vyhrazeného rozhraní API](https://custom-api.cognitive.microsofttranslator.com/swagger/) (aktuálně ve verzi Preview). Rozhraní API umožňuje uživatelům spravovat vytváření a aktualizaci školení prostřednictvím vlastní aplikace nebo webové služby.
 
 Náklady na používání vlastního modelu k překladu obsahu jsou založené na cenové úrovni uživatele Translator Text API. Podrobnosti o cenové úrovni najdete na [webové stránce Cognitive Services Translator text API cenové](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) úrovně.
 

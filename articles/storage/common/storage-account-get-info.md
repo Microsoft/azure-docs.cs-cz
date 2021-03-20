@@ -11,10 +11,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579330"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Získání typu účtu úložiště a názvu SKU pomocí .NET
@@ -23,9 +23,9 @@ Tento článek ukazuje, jak získat Azure Storage typ účtu a název SKU pro ob
 
 ## <a name="about-account-type-and-sku-name"></a>Informace o typu účtu a názvu SKU
 
-**Typ účtu** : platné typy účtů zahrnují `BlobStorage` , `BlockBlobStorage` , `FileStorage` , `Storage` a `StorageV2` . [Přehled účtu Azure Storage](storage-account-overview.md) obsahuje další informace, včetně popisů různých účtů úložiště.
+**Typ účtu**: platné typy účtů zahrnují `BlobStorage` , `BlockBlobStorage` , `FileStorage` , `Storage` a `StorageV2` . [Přehled účtu Azure Storage](storage-account-overview.md) obsahuje další informace, včetně popisů různých účtů úložiště.
 
-**Název SKU** : platné názvy SKU zahrnují `Premium_LRS` , `Premium_ZRS` , `Standard_GRS` , `Standard_GZRS` , `Standard_LRS` , `Standard_RAGRS` , `Standard_RAGZRS` a `Standard_ZRS` . V názvech SKU jsou rozlišována velká a malá písmena a jsou řetězcová pole ve [třídě SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname).
+**Název SKU**: platné názvy SKU zahrnují `Premium_LRS` , `Premium_ZRS` , `Standard_GRS` , `Standard_GZRS` , `Standard_LRS` , `Standard_RAGRS` , `Standard_RAGZRS` a `Standard_ZRS` . V názvech SKU jsou rozlišována velká a malá písmena a jsou řetězcová pole ve [třídě SkuName](/dotnet/api/microsoft.azure.management.storage.models.skuname).
 
 ## <a name="retrieve-account-information"></a>Načíst informace o účtu
 

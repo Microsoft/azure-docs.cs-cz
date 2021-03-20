@@ -4,17 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se vytvářet a používat statickou veřejnou IP adresu pro odchozí přenosy v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 03/04/2019
-ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: e1f81bf4c4d35108557449a8bebd126bdf744191
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726542"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592366"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití statické veřejné IP adresy pro odchozí přenosy se *základní* službou pro vyrovnávání zatížení ve službě Azure Kubernetes Service (AKS)
 
-Ve výchozím nastavení je odchozí IP adresa z clusteru Azure Kubernetes Service (AKS) náhodně přiřazená. Tato konfigurace není ideální, pokud potřebujete identifikovat IP adresu pro přístup k externím službám, například. Místo toho možná budete muset přiřadit statickou IP adresu, kterou chcete přidat do seznamu povolených adres pro přístup k službě.
+Ve výchozím nastavení je odchozí IP adresa z clusteru Azure Kubernetes Service (AKS) náhodně přiřazená. Tato konfigurace není ideální, pokud potřebujete identifikovat IP adresu pro přístup k externím službám, například. Místo toho možná budete muset přiřadit statickou IP adresu, která se přidá do povolených pro přístup k této službě.
 
 V tomto článku se dozvíte, jak vytvořit a používat statickou veřejnou IP adresu pro použití s odchozími přenosy v clusteru AKS.
 
@@ -107,7 +107,7 @@ Pokud chcete ověřit, že se používá statická veřejná IP adresa, můžete
 Začněte a připojte se k základnímu *Debian* pod:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian
+kubectl run -it --rm aks-ip --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Chcete-li získat přístup k webu z kontejneru, použijte příkaz `apt-get` pro instalaci `curl` do kontejneru.

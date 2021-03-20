@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.openlocfilehash: e9a0b2fe883fa46010fda74c58908128d05919e6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92754378"
 ---
 # <a name="how-to-create-a-consulting-service-offer-in-the-commercial-marketplace"></a>Jak vytvořit nabídku konzultační služby na komerčním webu Marketplace
@@ -26,19 +26,19 @@ Pokud chcete publikovat konzultační nabídku služeb, musíte splnit určité 
 ## <a name="create-a-new-consulting-service-offer"></a>Vytvořit novou nabídku konzultační služby
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2.  V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled** .
-3.  Na kartě Přehled vyberte **+ Nová nabídka**  >  **konzultační služba** .
+2.  V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
+3.  Na kartě Přehled vyberte **+ Nová nabídka**  >  **konzultační služba**.
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-consulting-service.png)
 
-4. V dialogovém okně **Nová nabídka** zadejte **ID nabídky** . Toto ID se zobrazuje v adrese URL výpisu komerčního tržiště. Pokud například zadáte do tohoto pole test-nabídka-1, bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+4. V dialogovém okně **Nová nabídka** zadejte **ID nabídky**. Toto ID se zobrazuje v adrese URL výpisu komerčního tržiště. Pokud například zadáte do tohoto pole test-nabídka-1, bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 
     * Každá nabídka ve vašem účtu musí mít jedinečné ID nabídky.
     * Použijte při tom jenom malá písmena a číslice. ID nabídky může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezeno na 50 znaků.
-    * ID nabídky nelze změnit po výběru možnost **vytvořit** .
+    * ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
-5. Zadejte **alias nabídky** . Toto je název, který se používá pro nabídku v partnerském centru. Není viditelný v online obchodech a liší se od názvu nabídky zobrazeného pro zákazníky.
-6. Pokud chcete vygenerovat nabídku a pokračovat, vyberte **vytvořit** .
+5. Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru. Není viditelný v online obchodech a liší se od názvu nabídky zobrazeného pro zákazníky.
+6. Pokud chcete vygenerovat nabídku a pokračovat, vyberte **vytvořit**.
 
 ## <a name="configure-lead-management"></a>Konfigurace správy potenciálních zákazníků
 
@@ -57,9 +57,9 @@ Konfigurace správy zájemců v partnerském centru:
     * [Konfigurace nabídky pro odesílání zájemců do markety](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
     * [Konfigurace nabídky pro odesílání zájemců do Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
-5.  Pokud chcete ověřit zadanou konfiguraci, vyberte **odkaz ověřit** .
-6.  Po nakonfigurování podrobností připojení vyberte **připojit** .
-7.  Vyberte **Uložit koncept** .
+5.  Pokud chcete ověřit zadanou konfiguraci, vyberte **odkaz ověřit**.
+6.  Po nakonfigurování podrobností připojení vyberte **připojit**.
+7.  Vyberte **Uložit koncept**.
 
 Po odeslání nabídky pro publikování v partnerském centru ověříme připojení a pošleme vám testovacího vedoucího. Když si nabídku předcházíte, než začnete fungovat, otestujte své připojení k vašemu zájemce tím, že se pokusíte nabídku koupit v prostředí verze Preview.
 

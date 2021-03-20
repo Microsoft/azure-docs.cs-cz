@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: de1fcdc259de3f72e35feb411bcc836354352eb4
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98752594"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
@@ -172,7 +172,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 V následující tabulce jsou popsány chybové kódy, které lze vrátit v `error` parametru chybové odpovědi:
 
-| Kód chyby | Popis | Akce klienta |
+| Kód chyby | Description | Akce klienta |
 | --- | --- | --- |
 | `invalid_request` | Chyba protokolu, například chybějící, povinný parametr. |Opravte a odešlete požadavek znovu. Jedná se o chybu vývoje, která se obvykle zachycuje při počátečním testování. |
 | `unauthorized_client` | Klientská aplikace nemůže požádat o autorizační kód. |K tomu obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
@@ -292,7 +292,7 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| Parametr | Podmínka | Popis |
+| Parametr | Podmínka | Description |
 | ----------------------- | ------------------------------- | ------------ |
 | `post_logout_redirect_uri` | Doporučeno | Adresa URL, na kterou je uživatel přesměrován po úspěšném odhlášení. Pokud parametr není zahrnutý, zobrazí se uživateli obecná zpráva generovaná platformou Microsoft identity. Tato adresa URL se musí shodovat s jedním z identifikátorů URI přesměrování registrovaných pro vaši aplikaci na portálu pro registraci aplikací. |
 

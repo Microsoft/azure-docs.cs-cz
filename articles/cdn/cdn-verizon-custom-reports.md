@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84888706"
 ---
 # <a name="custom-reports-from-verizon"></a>Vlastní sestavy od Verizonu
@@ -87,6 +87,6 @@ Data ve formátu aplikace Excel můžete exportovat kliknutím na symbol aplikac
 | Neukládatelné do mezipaměti               | Označuje celkový počet požadavků nebo dat přenesených (MB) pro záznam CNAME hraničního zařízení, které má za následek neukládatelné kódy stavu mezipaměti.  |
 
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 Sestavy lze generovat pouze během posledních 18 měsíců.
 

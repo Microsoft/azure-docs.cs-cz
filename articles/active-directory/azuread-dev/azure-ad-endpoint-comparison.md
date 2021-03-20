@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92055286"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč aktualizovat na Microsoft Identity Platform (v2.0)?
@@ -56,7 +56,7 @@ Souhlas správce, který se provádí jménem organizace, pořád vyžaduje stat
 
 ## <a name="scopes-not-resources"></a>Obory, nikoli prostředky
 
-U aplikací využívajících koncový bod verze 1.0 se aplikace může chovat jako **prostředek**nebo příjemce tokenů. Prostředek může definovat počet **oborů** nebo **oAuth2Permissions** , které rozumí, a umožnit tak klientským aplikacím žádat o tokeny z daného prostředku na určitou sadu oborů. Jako příklad prostředku zvažte Microsoft Graph rozhraní API:
+U aplikací využívajících koncový bod verze 1.0 se aplikace může chovat jako **prostředek** nebo příjemce tokenů. Prostředek může definovat počet **oborů** nebo **oAuth2Permissions** , které rozumí, a umožnit tak klientským aplikacím žádat o tokeny z daného prostředku na určitou sadu oborů. Jako příklad prostředku zvažte Microsoft Graph rozhraní API:
 
 * Identifikátor prostředku nebo `AppID URI` : `https://graph.microsoft.com/`
 * Rozsahy nebo `oAuth2Permissions` : `Directory.Read` , `Directory.Write` a tak dále.
@@ -89,7 +89,7 @@ Tady je parametr **Scope (obor** ) indikuje, který prostředek a oprávnění a
 
 ### <a name="offline-access"></a>Offline přístup
 
-Aplikace, které používají koncový bod platformy Microsoft identity, můžou vyžadovat použití nového dobře známého oprávnění pro aplikace – `offline_access` rozsah. Všechny aplikace budou muset požádat o toto oprávnění, pokud potřebují přístup k prostředkům jménem uživatele za delší dobu, a to i v případě, že uživatel nemusí aplikaci aktivně používat. `offline_access`Obor se uživateli zobrazí v dialogových oknech pro vyjádření souhlasu s **přístupem k datům kdykoli**a uživatel musí souhlasit. Vyžádání `offline_access` oprávnění umožní vaší webové aplikaci přijímat OAuth 2,0 refresh_tokens z koncového bodu Microsoft Identity Platform. Aktualizační tokeny jsou dlouhodobé a dají se vyměňovat za nové přístupové tokeny OAuth 2,0 pro rozšířená období přístupu.
+Aplikace, které používají koncový bod platformy Microsoft identity, můžou vyžadovat použití nového dobře známého oprávnění pro aplikace – `offline_access` rozsah. Všechny aplikace budou muset požádat o toto oprávnění, pokud potřebují přístup k prostředkům jménem uživatele za delší dobu, a to i v případě, že uživatel nemusí aplikaci aktivně používat. `offline_access`Obor se uživateli zobrazí v dialogových oknech pro vyjádření souhlasu s **přístupem k datům kdykoli** a uživatel musí souhlasit. Vyžádání `offline_access` oprávnění umožní vaší webové aplikaci přijímat OAuth 2,0 refresh_tokens z koncového bodu Microsoft Identity Platform. Aktualizační tokeny jsou dlouhodobé a dají se vyměňovat za nové přístupové tokeny OAuth 2,0 pro rozšířená období přístupu.
 
 Pokud vaše aplikace nepožaduje `offline_access` rozsah, neobdrží aktualizační tokeny. To znamená, že při uplatnění autorizačního kódu v toku autorizačního kódu OAuth 2,0 obdržíte jenom přístupový token z `/token` koncového bodu. Přístupový token zůstane po krátkou dobu platný (obvykle jednou za hodinu), ale nakonec vyprší jeho platnost. V tomto okamžiku bude vaše aplikace muset přesměrovat uživatele zpátky na `/authorize` koncový bod a načíst nový autorizační kód. Během tohoto přesměrování může uživatel nebo nemusí později zadat svoje přihlašovací údaje nebo znovu vyjádřit souhlas s oprávněními v závislosti na typu aplikace.
 
@@ -128,7 +128,7 @@ Koncový bod platformy Microsoft identity se bude vyvíjet, aby se vyloučila n�
 
 ### <a name="restrictions-on-app-registrations"></a>Omezení registrace aplikací
 
-Pro každou aplikaci, kterou chcete integrovat s koncovým bodem Microsoft Identity Platform, můžete vytvořit registraci aplikace v novém [prostředí **Registrace aplikací** ](https://aka.ms/appregistrations) v Azure Portal. Stávající aplikace účet Microsoft nejsou kompatibilní s portálem, ale všechny aplikace Azure AD jsou bez ohledu na to, kde nebo kdy byly registrovány.
+Pro každou aplikaci, kterou chcete integrovat s koncovým bodem Microsoft Identity Platform, můžete vytvořit registraci aplikace v novém [prostředí **Registrace aplikací**](https://aka.ms/appregistrations) v Azure Portal. Stávající aplikace účet Microsoft nejsou kompatibilní s portálem, ale všechny aplikace Azure AD jsou bez ohledu na to, kde nebo kdy byly registrovány.
 
 Registrace aplikací, které podporují pracovní a školní účty a osobní účty, mají následující omezení:
 

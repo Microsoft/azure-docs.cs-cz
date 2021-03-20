@@ -1,5 +1,5 @@
 ---
-title: Plánování a Správa nákladů pro Azure Blob Storage
+title: Plánování a správa nákladů na službu Azure Blob Storage
 description: Naučte se plánovat a spravovat náklady na úložiště objektů BLOB v Azure pomocí analýzy nákladů v Azure Portal.
 services: storage
 author: normesta
@@ -10,13 +10,13 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
 ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98601311"
 ---
-# <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Plánování a Správa nákladů pro Azure Blob Storage
+# <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Plánování a správa nákladů na službu Azure Blob Storage
 
 Tento článek vám pomůže plánovat a spravovat náklady na službu Azure Blob Storage. Nejprve odhadujte náklady pomocí cenové kalkulačky Azure. Po vytvoření účtu úložiště Optimalizujte účet, abyste platíte jenom za to, co potřebujete. Pomocí funkcí pro správu nákladů můžete nastavit rozpočty a sledovat náklady. Můžete si také projít předpokládané náklady a monitorovat trendy útraty a identifikovat oblasti, kde byste mohli chtít působit.
 
@@ -88,7 +88,7 @@ Při použití analýzy nákladů můžete zobrazit Azure Storage náklady v gra
 
 Postup zobrazení Azure Storagech nákladů při analýze nákladů:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte **Analýza nákladů**. V rozevíracím seznamu **Rozsah** pak můžete změnit obor pro konkrétní předplatné.
 

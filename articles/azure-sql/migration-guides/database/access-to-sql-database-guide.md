@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 9b64dc95c6ee00a834c2741b30026df7350780c0
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: e323b1c15d78da4e8c1a82ae8848df7f59b0dd87
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564927"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657228"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Průvodce migrací: přístup k Azure SQL Database
 
@@ -22,7 +22,7 @@ Tato příručka k migraci vás seznámí s migrací databází z aplikace Micro
 
 Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K migraci databáze Access do Azure SQL Database potřebujete:
 
@@ -42,17 +42,58 @@ K vytvoření posouzení použijte následující postup:
 
 1. Otevřete Pomocník s migrací SQL Serveru pro přístup. 
 1. Vyberte **soubor** a pak zvolte **Nový projekt**. Zadejte název projektu migrace. 
-1. Vyberte **přidat databáze** a vyberte databáze, které chcete přidat do nového projektu.
+
+   ![Zvolit nový projekt](./media/access-to-sql-database-guide/new-project.png)
+
+1. Vyberte **přidat databáze** a vyberte databáze, které chcete přidat do nového projektu. 
+
+   ![Zvolit možnost přidat databáze](./media/access-to-sql-database-guide/add-databases.png)
+
 1. V **aplikaci Access metadata Explorer** klikněte pravým tlačítkem na databázi a pak zvolte **vytvořit sestavu**. 
+
+   ![Klikněte pravým tlačítkem na databázi a vyberte vytvořit sestavu.](./media/access-to-sql-database-guide/create-report.png)
+
 1. Přečtěte si ukázku posouzení. Například: 
+
+   ![Kontrola ukázkové sestavy vyhodnocení](./media/access-to-sql-database-guide/sample-assessment.png)
+
+### <a name="validate-data-types"></a>Ověřit datové typy
+
+Ověřte výchozí mapování datových typů a podle potřeby je změňte podle požadavků. To můžete provést pomocí těchto kroků:
+
+1. V nabídce vyberte **nástroje** . 
+1. Vyberte **nastavení projektu**. 
+1. Vyberte kartu **mapování typů** . 
+
+   ![Mapování typů](./media/access-to-sql-database-guide/type-mappings.png)
+
+1. Mapování typů pro každou tabulku můžete změnit tak, že ji vyberete v **Průzkumníku přístupových metadat**.
+
 
 ### <a name="convert-schema"></a>Převést schéma
 
 K převodu databázových objektů použijte následující postup: 
 
 1. Vyberte **připojit k Azure SQL Database** a zadejte podrobnosti o připojení.
-1. Klikněte pravým tlačítkem na databázi v **aplikaci Access metadata Explorer** a vyberte **převést schéma**.  
-1. Volitelné Chcete-li převést jednotlivý objekt, klikněte pravým tlačítkem myši na objekt a vyberte příkaz **převést schéma**. Převedený objekt se v **Průzkumníku přístupových metadat** zobrazí tučně: 
+
+   ![Připojení k Azure SQL Database](./media/access-to-sql-database-guide/connect-to-sqldb.png)
+
+1. Klikněte pravým tlačítkem na databázi v **aplikaci Access metadata Explorer** a vyberte **převést schéma**. Alternativně můžete zvolit **převést schéma** z horního navigačního panelu po výběru databáze.
+
+   ![Klikněte pravým tlačítkem na databázi a vyberte převést schéma.](./media/access-to-sql-database-guide/convert-schema.png)
+
+   Porovnat převedené dotazy s původními dotazy: 
+
+   ![Převedené dotazy se dají porovnat se zdrojovým kódem.](./media/access-to-sql-database-guide/query-comparison.png)
+
+   Porovnat převedené objekty s původními objekty: 
+
+   ![Převedené objekty se dají porovnat se zdrojem.](./media/access-to-sql-database-guide/table-comparison.png)
+
+1. Volitelné Chcete-li převést jednotlivý objekt, klikněte pravým tlačítkem myši na objekt a vyberte příkaz **převést schéma**. Převedené objekty vypadají tučně v **Průzkumníkovi přístupových metadat**: 
+
+   ![Byly převedeny tučné objekty v Průzkumníkovi metadat.](./media/access-to-sql-database-guide/converted-items.png)
+ 
 1. V podokně výstup vyberte možnost **Kontrola výsledků** a zkontrolujte chyby v podokně **Seznam chyb** . 
 
 
@@ -64,9 +105,28 @@ K migraci dat pomocí nástroje SSMA pro přístup použijte následující post
 
 1. Pokud jste to ještě neudělali, vyberte **připojit k Azure SQL Database** a zadejte podrobnosti o připojení. 
 1. Klikněte pravým tlačítkem na databázi z **Azure SQL Database Průzkumníku metadat** a vyberte **synchronizovat s databází**. Tato akce publikuje schéma MySQL pro Azure SQL Database.
+
+   ![Synchronizovat s databází](./media/access-to-sql-database-guide/synchronize-with-database.png)
+
+   Zkontrolujte mapování mezi zdrojovým projektem a vaším cílem:
+
+   ![Kontrola synchronizace s databází](./media/access-to-sql-database-guide/synchronize-with-database-review.png)
+
 1. Použijte **přístup k Průzkumníku metadat** pro zaškrtávací políčka vedle položek, které chcete migrovat. Pokud chcete migrovat celou databázi, zaškrtněte políčko vedle databáze. 
 1. Klikněte pravým tlačítkem na databázi nebo objekt, který chcete migrovat, a vyberte **migrovat data**. 
    Chcete-li migrovat data pro celou databázi, zaškrtněte políčko vedle názvu databáze. Chcete-li migrovat data z jednotlivých tabulek, rozbalte databázi, rozbalte položku tabulky a potom zaškrtněte políčko vedle této tabulky. Chcete-li vynechat data z jednotlivých tabulek, zrušte zaškrtnutí políčka.
+
+    ![Migrace dat](./media/access-to-sql-database-guide/migrate-data.png)
+
+    Zkontrolujte migrovaná data: 
+
+    ![Migrace revize dat](./media/access-to-sql-database-guide/migrate-data-review.png)
+
+1. Připojte se k Azure SQL Database pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a ověřte migraci kontrolou dat a schématu.
+
+   ![Ověřit v SSMA](./media/access-to-sql-database-guide/validate-data.png)
+
+
 
 ## <a name="post-migration"></a>Po migraci 
 

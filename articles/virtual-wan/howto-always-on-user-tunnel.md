@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: e83ca64d2b0e50ec02007a3cd878e6bf034d0961
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313582"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel-for-virtual-wan"></a>Konfigurace tunelového připojení VPN typu Always On pro virtuální síť WAN
 
 [!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte vytvořit konfiguraci Point-to-site a upravit přiřazení virtuálního rozbočovače. Pokyny najdete v následujících částech:
 

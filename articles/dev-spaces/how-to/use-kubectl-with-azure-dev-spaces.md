@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Naučte se používat kubectl příkazy v rámci vývojového prostoru v clusteru Azure Kubernetes Service s povoleným Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 ms.openlocfilehash: e6f79d98cf209d1bc19753f19c9b17b06017c2b7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91960152"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>Použití kubectl s prostorem pro vývoj v Azure

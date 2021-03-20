@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
 ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91275417"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Správa pravidel brány firewall pro Azure Database for PostgreSQL – Citus (škálování)
 Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k uzlu koordinátoru Citus () ze zadané IP adresy nebo rozsahu IP adres.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Skupina serverů [vytvoří skupinu serverů Azure Database for PostgreSQL – Citus (– škálovatelný rozsah)](quickstart-create-hyperscale-portal.md).
 
@@ -30,18 +30,18 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 
 1. Na stránce skupiny serverů PostgreSQL pod záhlavím zabezpečení kliknutím na **sítě** otevřete pravidla brány firewall.
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure Portal – karta síť":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure Portal – kliknutí na sítě":::
 
 2. Kliknutím na **Přidat aktuální IP adresu klienta** vytvoříte pravidlo brány firewall s veřejnou IP adresou vašeho počítače, jak je znázorněno v systému Azure.
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure Portal – karta síť":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure Portal klikněte na Přidat IP adresu klienta.":::
 
 Alternativně můžete kliknutím na **+ Přidat 0.0.0.0-255.255.255.255** (napravo od možnosti B) použít nejen vaši IP adresu, ale celý Internet pro přístup k portu 5432 pro uzel koordinátora. V takové situaci se klienti pořád musí přihlásit se správným uživatelským jménem a heslem, aby mohli cluster používat. Nicméně doporučujeme povolit celosvětový přístup jenom po krátkou dobu a jenom pro neprodukční databáze.
 
 3. Před uložením konfigurace ověřte svoji IP adresu. V některých situacích se IP adresa zjištěná Azure Portal liší od IP adresy používané při přístupu k Internetu a k serverům Azure. Proto může být nutné změnit počáteční IP adresu a koncovou IP adresu, aby funkce pravidla fungovala podle očekávání.
    Použijte vyhledávací modul nebo jiný online nástroj ke kontrole vlastní IP adresy. Vyhledejte například "Co je moje IP adresa".
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Azure Portal – karta síť":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Vyhledávání Bingu pro co je moje IP adresa":::
 
 4. Přidejte další rozsahy adres. V pravidlech brány firewall můžete zadat jednu IP adresu nebo rozsah adres. Pokud chcete pravidlo omezit na jednu IP adresu, zadejte do pole stejnou adresu jako počáteční IP adresa a koncová IP adresa. Otevření brány firewall umožňuje správcům, uživatelům a aplikacím přístup k uzlu koordinátora na portu 5432.
 
