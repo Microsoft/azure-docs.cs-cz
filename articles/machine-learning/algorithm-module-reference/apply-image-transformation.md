@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898917"
 ---
 # <a name="apply-image-transformation"></a>Použití transformace obrázku 
@@ -34,7 +34,7 @@ Aby bylo možné zadat transformaci, je nutné připojit modul pro [transformaci
 
 3. Připojte adresář imagí, který chcete transformovat.
 
-4. V nastavení **režim**určete, jaký účel použijete transformaci vstupu: pro školení nebo pro odvození. 
+4. V nastavení **režim** určete, jaký účel použijete transformaci vstupu: pro školení nebo pro odvození. 
 
    Vyberete-li možnost **pro školení**, bude použita veškerá transformace, kterou zadáte v nástroji init image Transform.
 
@@ -49,7 +49,7 @@ Aby bylo možné zadat transformaci, je nutné připojit modul pro [transformaci
 
 | Name | Rozsah | Typ | Výchozí                   | Description                              |
 | ---- | ----- | ---- | ------------------------- | ---------------------------------------- |
-| Mode | Všechny   | Mode | (Vyžadovat zadání uživatelem) | Pro jaký účel použijete transformaci vstupu. Měli byste vyloučit operace transformace Random v odvozeném objektu, ale zachovat jejich školení. |
+| Režim | Všechny   | Režim | (Vyžadovat zadání uživatelem) | Pro jaký účel použijete transformaci vstupu. Měli byste vyloučit operace transformace Random v odvozeném objektu, ale zachovat jejich školení. |
 
 ### <a name="expected-inputs"></a>Očekávané vstupy  
 

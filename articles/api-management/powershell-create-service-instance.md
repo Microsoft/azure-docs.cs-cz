@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 09/14/2020
 ms.author: apimpm
 ms.openlocfilehash: eb2c42d26a85a07518a018ba5b8817f13d3cd17f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90707064"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-powershell"></a>Rychlý Start: vytvoření nové instance služby Azure API Management Service pomocí prostředí PowerShell
@@ -56,7 +56,7 @@ New-AzApiManagement -Name "myapim" -ResourceGroupName "myResourceGroup" `
   -Location "West US" -Organization "Contoso" -AdminEmail "admin@contoso.com" 
 ```
 
-Po návratu příkazu spusťte příkaz [Get-AzApiManagement](/powershell/module/az.apimanagement/get-azapimanagement) , který zobrazí vlastnosti služby Azure API Management. Po aktivaci je stav zřizování úspěšný a instance služby má několik přidružených adres URL. Příklad:
+Po návratu příkazu spusťte příkaz [Get-AzApiManagement](/powershell/module/az.apimanagement/get-azapimanagement) , který zobrazí vlastnosti služby Azure API Management. Po aktivaci je stav zřizování úspěšný a instance služby má několik přidružených adres URL. Například:
 
 ```azurepowershell-interactive
 Get-AzApiManagement -Name "myapim" -ResourceGroupName "myResourceGroup" 

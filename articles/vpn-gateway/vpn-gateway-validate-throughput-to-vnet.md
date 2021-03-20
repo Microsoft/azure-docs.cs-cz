@@ -11,10 +11,10 @@ ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660929"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
@@ -265,4 +265,4 @@ Pokud se v rámci "msn.net" zaznamená velký špička latence, kontaktujte pros
 
 Chcete-li získat další informace nebo nápovědu, podívejte se na následující odkaz:
 
-* [podpora Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [Podpora společnosti Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

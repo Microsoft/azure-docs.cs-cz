@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a141177846def9c94216684c1083d0d336eeda1e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93333235"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelování dat v Azure Cosmos DB
@@ -118,7 +118,7 @@ Proveďte tento fragment kódu JSON.
 }
 ```
 
-Může to být tím, že entita příspěvku s vloženými komentáři by vypadala jako při vytváření modelů typického blogu nebo CMS, systému. Problém s tímto příkladem je, že pole komentáře je **neohraničené** , což znamená, že neexistuje (praktické) omezení na počet komentářů, který může mít každý příspěvek. Může se jednat o problém, protože velikost položky by mohla růst nekonečně velká.
+Může to být tím, že entita příspěvku s vloženými komentáři by vypadala jako při vytváření modelů typického blogu nebo CMS, systému. Problém s tímto příkladem je, že pole komentáře je **neohraničené**, což znamená, že neexistuje (praktické) omezení na počet komentářů, který může mít každý příspěvek. Může se jednat o problém, protože velikost položky by mohla růst nekonečně velká.
 
 Jak velikost položky zvětšuje schopnost přenášet data prostřednictvím sítě a také číst a aktualizovat položku ve velkém měřítku, bude to mít vliv na.
 
@@ -398,7 +398,7 @@ Book documents:
 
 Tady jsme (hlavně) následovali vložený model, ve kterém jsou data z jiných entit vložená v dokumentu nejvyšší úrovně, ale odkaz na další data.
 
-Pokud se podíváte na dokument knihy, uvidíme několik zajímavých polí, když se podíváme na pole autorů. K dispozici je `id` pole, které používáme k odkazování zpátky na vytvořený dokument, standardní postupy v normalizovaném modelu, ale také máme `name` a `thumbnailUrl` . Mohli jsme aplikaci zablokovat a pojmenovat `id` tak, aby z příslušného autorského dokumentu získali všechny další informace, které potřebuje, pomocí odkazu, ale vzhledem k tomu, že naše aplikace zobrazuje jméno autora a miniaturu, a to s každou otevřenou knihou, můžeme v seznamu odkázat na server na jednu knihu **some** tím, že se odnormalizují data od autora.
+Pokud se podíváte na dokument knihy, uvidíme několik zajímavých polí, když se podíváme na pole autorů. K dispozici je `id` pole, které používáme k odkazování zpátky na vytvořený dokument, standardní postupy v normalizovaném modelu, ale také máme `name` a `thumbnailUrl` . Mohli jsme aplikaci zablokovat a pojmenovat `id` tak, aby z příslušného autorského dokumentu získali všechny další informace, které potřebuje, pomocí odkazu, ale vzhledem k tomu, že naše aplikace zobrazuje jméno autora a miniaturu, a to s každou otevřenou knihou, můžeme v seznamu odkázat na server na jednu knihu  tím, že se odnormalizují data od autora.
 
 Ujistěte se, že pokud se změnil název autora nebo chce aktualizovat fotografii, musíme si projít a aktualizovat každou knihu, kterou předtím publikovali, ale pro naši aplikaci, a to na základě předpokladu, že autoři nezměnili jejich názvy často, jedná se o přijatelné rozhodnutí o návrhu.  
 

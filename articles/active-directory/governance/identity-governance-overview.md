@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92362446"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je Azure AD Identity Governance?
@@ -74,7 +74,7 @@ V minulosti byl privilegovaný přístup popsán jinými dodavateli jako samosta
 
 Kromě výše uvedených funkcí další funkce služby Azure AD, které se často používají k poskytování scénářů zásad správného řízení identit, patří:
 
-| Schopnost | Scénář |Funkce
+| Schopnost | Scenario |Funkce
 | ------- | --------------------- |-----|
 |Životní cyklus identity (zaměstnanci)|Správci můžou povolit zřizování uživatelských účtů z Workday nebo SuccessFactors cloudového HR nebo místního HR.|[cloudové zajištění pro zřizování uživatelů Azure AD](../app-provisioning/plan-cloud-hr-provision.md)|
 |Životní cyklus identity (hosty)|Správci můžou povolit registraci samoobslužného uživatele hosta z jiného tenanta Azure AD, přímé federace, jednorázového hesla nebo účtů Google.  Uživatelé typu Host se automaticky zřídí a odúčtují v souladu se zásadami životního cyklu.|[Správa nároků](entitlement-management-overview.md) pomocí [B2B](../external-identities/what-is-b2b.md)|

@@ -8,10 +8,10 @@ ms.custom:
 - mvc
 - devx-track-python
 ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88511010"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Rychlý Start: použití rozhraní Python API ke spuštění úlohy Azure Batch
@@ -52,7 +52,7 @@ Ve vývojovém prostředí Pythonu nainstalujte vyžadované balíčky pomocí `
 pip install -r requirements.txt
 ```
 
-Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s hodnotami získanými pro účty. Příklad:
+Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s hodnotami získanými pro účty. Například:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'

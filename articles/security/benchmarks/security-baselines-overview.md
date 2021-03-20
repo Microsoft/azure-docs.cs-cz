@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 43718e992349ff9bcb3635ab1b949c2b2f2c9ec0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82871997"
 ---
 # <a name="security-baselines-for-azure"></a>Standardní hodnoty zabezpečení pro Azure
@@ -25,7 +25,7 @@ Každé doporučení zahrnuje následující informace:
 
 - **Azure ID**: ID srovnávacího testu zabezpečení Azure, které odpovídá doporučení.
 - **Doporučení**: následující doporučení vám poskytne podrobný popis ovládacího prvku, který je přímo po Azure ID.
-- **Doprovodné**materiály: odůvodnění doporučení a odkazy na pokyny k jeho implementaci. Pokud Azure Security Center doporučení podporuje, budou tyto informace také uvedené.
+- **Doprovodné** materiály: odůvodnění doporučení a odkazy na pokyny k jeho implementaci. Pokud Azure Security Center doporučení podporuje, budou tyto informace také uvedené.
 - **Zodpovědnost**: kdo je zodpovědný za implementaci ovládacího prvku. Mezi možné scénáře patří odpovědnost zákazníka, odpovědnost Microsoftu nebo sdílená odpovědnost.
 - **Azure Security Center Monitoring**: Určuje, zda je ovládací prvek monitorován pomocí Azure Security Center s odkazem na odkaz.
 

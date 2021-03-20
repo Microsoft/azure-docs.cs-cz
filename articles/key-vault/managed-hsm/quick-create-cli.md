@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91756809"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Rychlý Start: zřízení a aktivace spravovaného modulu HSM pomocí Azure CLI
@@ -63,7 +63,7 @@ Pro vytvoření spravovaného prostředku HSM musíte zadat následující vstup
 - Umístění Azure.
 - Seznam počátečních správců.
 
-Následující příklad vytvoří modul HARDWAROVÉho zabezpečení s názvem **ContosoMHSM**ve skupině prostředků  **ContosoResourceGroup**umístěný v umístění **východní USA 2** s **aktuálně přihlášeným uživatelem** jako jediný správce.
+Následující příklad vytvoří modul HARDWAROVÉho zabezpečení s názvem **ContosoMHSM** ve skupině prostředků  **ContosoResourceGroup** umístěný v umístění **východní USA 2** s **aktuálně přihlášeným uživatelem** jako jediný správce.
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)

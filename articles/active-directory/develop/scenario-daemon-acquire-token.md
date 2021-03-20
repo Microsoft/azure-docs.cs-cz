@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 295897be03a7dd8e397e8202ff1cf10e6d59cdfb
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19ead7fe063992e95588641f7fd739081cf54a2f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753857"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578409"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikace démona, která volá webová rozhraní API – získá token.
 
@@ -33,6 +33,20 @@ ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```JavaScript
+const tokenRequest = {
+    scopes: [process.env.GRAPH_ENDPOINT + '.default'], // e.g. 'https://graph.microsoft.com/.default'
+};
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 V MSAL Pythonu vypadá konfigurační soubor jako tento fragment kódu:
@@ -41,12 +55,6 @@ V MSAL Pythonu vypadá konfigurační soubor jako tento fragment kódu:
 {
     "scope": ["https://graph.microsoft.com/.default"],
 }
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```Java
-final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
 ```
 
 ---
@@ -95,30 +103,6 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 ### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient používá mezipaměť tokenu aplikace.
 
 V MSAL.NET `AcquireTokenForClient` používá mezipaměť tokenů aplikace. (Všechny ostatní metody AcquireToken *XX* používají mezipaměť tokenu uživatele.) Nevolejte `AcquireTokenSilent` před voláním `AcquireTokenForClient` , protože `AcquireTokenSilent` používá mezipaměť tokenu *uživatele* . `AcquireTokenForClient` kontroluje samotný mezipaměť tokenu *aplikace* a aktualizuje ji.
-
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-# The pattern to acquire a token looks like this.
-result = None
-
-# First, the code looks up a token from the cache.
-# Because we're looking for a token for the current app, not for a user,
-# use None for the account parameter.
-result = app.acquire_token_silent(config["scope"], account=None)
-
-if not result:
-    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
-    result = app.acquire_token_for_client(scopes=config["scope"])
-
-if "access_token" in result:
-    # Call a protected API with the access token.
-    print(result["token_type"])
-else:
-    print(result.get("error"))
-    print(result.get("error_description"))
-    print(result.get("correlation_id"))  # You might need this when reporting a bug.
-```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -169,6 +153,43 @@ private static IAuthenticationResult acquireToken() throws Exception {
  }
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Následující fragment kódu ukazuje získání tokenu v důvěrné klientské aplikaci uzlu MSAL:
+
+```JavaScript
+try {
+    const authResponse = await cca.acquireTokenByClientCredential(tokenRequest);
+    console.log(authResponse.accessToken) // display access token
+} catch (error) {
+    console.log(error);
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+# The pattern to acquire a token looks like this.
+result = None
+
+# First, the code looks up a token from the cache.
+# Because we're looking for a token for the current app, not for a user,
+# use None for the account parameter.
+result = app.acquire_token_silent(config["scope"], account=None)
+
+if not result:
+    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
+    result = app.acquire_token_for_client(scopes=config["scope"])
+
+if "access_token" in result:
+    # Call a protected API with the access token.
+    print(result["token_type"])
+else:
+    print(result.get("error"))
+    print(result.get("error_description"))
+    print(result.get("correlation_id"))  # You might need this when reporting a bug.
+```
+
 ---
 
 ### <a name="protocol"></a>Protokol
@@ -204,7 +225,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Další informace najdete v dokumentaci k protokolu: [Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Použili jste prostředek/. výchozí obor?
 
@@ -241,12 +262,16 @@ Podrobnosti najdete v tématu vystavení [oprávnění aplikace (aplikační rol
 
 Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](./scenario-daemon-call-api.md?tabs=dotnet).
 
-# <a name="python"></a>[Python](#tab/python)
-
-Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](./scenario-daemon-call-api.md?tabs=python).
-
 # <a name="java"></a>[Java](#tab/java)
 
 Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](./scenario-daemon-call-api.md?tabs=java).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](./scenario-daemon-call-api.md?tabs=nodejs).
+
+# <a name="python"></a>[Python](#tab/python)
+
+Přejděte k dalšímu článku v tomto scénáři, který [volá webové rozhraní API](./scenario-daemon-call-api.md?tabs=python).
 
 ---

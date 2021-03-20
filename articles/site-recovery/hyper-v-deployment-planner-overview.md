@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
 ms.openlocfilehash: e4f1931aab056306ac5e9f9e9ef402ca26ec2d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86528940"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informace o Plánovač nasazení služby Azure Site Recovery zotavení po havárii technologie Hyper-V do Azure
@@ -73,13 +73,13 @@ Nástroj poskytuje následující podrobnosti:
 |**Kategorie** | **Z VMware do Azure** |**Z Hyper-V do Azure**|**Z Azure do Azure**|**Z Hyper-V do sekundární lokality**|**Z VMware do sekundární lokality**
 --|--|--|--|--|--
 Podporované scénáře |Yes|Yes|No|Ano*|No
-Podporovaná verze | vCenter 6,7, 6,5, 6,0 nebo 5,5| Windows Server 2016, Windows Server 2012 R2 | Není k dispozici |Windows Server 2016, Windows Server 2012 R2|Není k dispozici
-Podporovaná konfigurace|vCenter, ESXi| Cluster Hyper-V, hostitel Hyper-V|Není k dispozici|Cluster Hyper-V, hostitel Hyper-V|Není k dispozici|
-Počet serverů, které jde profilovat, na spuštěnou instanci Plánovače nasazení služby Azure Site Recovery |Jeden (virtuální počítače, které patří k jednomu vCenter Serveru nebo jednomu serveru ESXi, jde profilovat najednou)|Více (virtuální počítače napříč více hostiteli nebo hostitelskými clustery jde profilovt najednou)| Není k dispozici |Více (virtuální počítače napříč více hostiteli nebo hostitelskými clustery jde profilovt najednou)| Není k dispozici
+Podporovaná verze | vCenter 6,7, 6,5, 6,0 nebo 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
+Podporovaná konfigurace|vCenter, ESXi| Cluster Hyper-V, hostitel Hyper-V|NA|Cluster Hyper-V, hostitel Hyper-V|NA|
+Počet serverů, které jde profilovat, na spuštěnou instanci Plánovače nasazení služby Azure Site Recovery |Jeden (virtuální počítače, které patří k jednomu vCenter Serveru nebo jednomu serveru ESXi, jde profilovat najednou)|Více (virtuální počítače napříč více hostiteli nebo hostitelskými clustery jde profilovt najednou)| NA |Více (virtuální počítače napříč více hostiteli nebo hostitelskými clustery jde profilovt najednou)| NA
 
 *Nástroj je primárně určen pro scénář zotavení po havárii z Hyper-V do Azure. Pro zotavení po havárii z Hyper-V na sekundární server ho jde použít pouze k pochopení doporučení na straně zdroje, jako je požadovaná šířka pásma, požadovaný prázdný prostor úložiště na každém ze zdrojových serverů Hyper-V a počet dávek počáteční replikace a definice dávek.  Ignorujte doporučení Azure a náklady ze sestavy. Také pro zotavení po havárii z Hyper-V na sekundární server nejde použít operaci Zjištění propustnosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních počítačů, profilace a generování sestav. Existuje také čtvrtá možnost – výpočet pouze propustnosti. V následující tabulce jsou uvedeny požadavky na server, na kterém se musí provést jednotlivé fáze:
 
 | Požadavek na server | Description |

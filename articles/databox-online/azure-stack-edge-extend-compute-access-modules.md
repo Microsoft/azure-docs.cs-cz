@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90894124"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Povolit výpočetní síť na Azure Stack Edge pro
@@ -27,7 +27,7 @@ Chcete-li konfigurovat síť, proveďte následující kroky:
 
 V tomto kurzu použijete modul aplikace webserver k předvedení scénáře.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete potřebovat:
 
@@ -58,12 +58,12 @@ Proveďte následující kroky na svém místním webovém uživatelském rozhra
 Pokud chcete přidat modul aplikace webserver do zařízení Azure Stack Edge pro, proveďte následující kroky.
 
 1. Do IoT Hub prostředku, který je přidružený k vašemu zařízení Azure Stack Edge pro, vyberte **IoT Edge zařízení**.
-2. Vyberte zařízení IoT Edge přidružené k vašemu zařízení Azure Stack Edge pro. V části **Podrobnosti o zařízení**vyberte **nastavit moduly**. V nabídce **přidat moduly**vyberte **+ Přidat** a pak vyberte **IoT Edge modul**.
+2. Vyberte zařízení IoT Edge přidružené k vašemu zařízení Azure Stack Edge pro. V části **Podrobnosti o zařízení** vyberte **nastavit moduly**. V nabídce **přidat moduly** vyberte **+ Přidat** a pak vyberte **IoT Edge modul**.
 3. V okně **IoT Edge vlastní moduly** :
 
     1. Zadejte **název** modulu aplikace webserver, který chcete nasadit.
     2. Zadejte **identifikátor URI image** pro Image modulu. Načte se modul, který odpovídá zadanému názvu a značkám. V takovém případě `nginx:stable` načte stabilní image Nginx (označená jako stabilní) z veřejného [úložiště Docker](https://hub.docker.com/_/nginx/).
-    3. V **možnostech vytvoření kontejneru**vložte následující vzorový kód:  
+    3. V **možnostech vytvoření kontejneru** vložte následující vzorový kód:  
 
         ```
         {
@@ -87,7 +87,7 @@ Pokud chcete přidat modul aplikace webserver do zařízení Azure Stack Edge pr
 
 ## <a name="verify-module-access"></a>Ověřit přístup k modulu
 
-1. Ověřte, že je modul úspěšně nasazený a běží. Na stránce **Podrobnosti o zařízení** na kartě **moduly** by měl být **spuštěný**běhový stav modulu.  
+1. Ověřte, že je modul úspěšně nasazený a běží. Na stránce **Podrobnosti o zařízení** na kartě **moduly** by měl být **spuštěný** běhový stav modulu.  
 2. Připojte se k modulu Web Server App. Otevřete okno prohlížeče a zadejte:
 
     `http://<compute-network-IP-address>:8080`

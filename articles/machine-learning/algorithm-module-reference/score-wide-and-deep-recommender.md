@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/12/2020
 ms.openlocfilehash: 9a1a3892e6a47aabd9b5129ca551900494616bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90905163"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Určení skóre doporučovacího systému Wide and Deep
@@ -60,7 +60,7 @@ Při předpovědi hodnocení vyhodnotí tento model, jak bude daný uživatel re
 
     Datová sada uživatelských funkcí by měla obsahovat identifikátor uživatele v prvním sloupci. Zbývající sloupce by měly obsahovat hodnoty, které charakterizují uživatele, například jejich pohlaví, předvolby, umístění atd.
   
-    Funkce uživatelů, kteří mají hodnocené položky v datové sadě školení, se ignorují v **rámci širokého a podrobného doporučení**, protože se už dozvěděly během školení. Proto vyfiltrujte datovou sadu předem, aby zahrnovala pouze *studené uživatele*nebo uživatele, kteří nehodnotili žádné položky.
+    Funkce uživatelů, kteří mají hodnocené položky v datové sadě školení, se ignorují v **rámci širokého a podrobného doporučení**, protože se už dozvěděly během školení. Proto vyfiltrujte datovou sadu předem, aby zahrnovala pouze *studené uživatele* nebo uživatele, kteří nehodnotili žádné položky.
 
     > [!WARNING]
     > Pokud byl model vyškolený bez použití uživatelských funkcí, nelze během bodování začlenit uživatelské funkce.
@@ -69,7 +69,7 @@ Při předpovědi hodnocení vyhodnotí tento model, jak bude daný uživatel re
 
     Datová sada funkcí položky musí v prvním sloupci obsahovat identifikátor položky. Zbývající sloupce by měly obsahovat hodnoty, které charakterizují položky.
 
-    Funkce hodnocených položek v datové sadě školení se ignorují v **rámci široké škály a s hloubkovým doporučením** , protože už byly během školení zjištěny. Proto omezte datovou sadu bodování na *položky ze studeného*startu nebo na položky, které nebyly ohodnoceny žádnými uživateli.
+    Funkce hodnocených položek v datové sadě školení se ignorují v **rámci široké škály a s hloubkovým doporučením** , protože už byly během školení zjištěny. Proto omezte datovou sadu bodování na *položky ze studeného* startu nebo na položky, které nebyly ohodnoceny žádnými uživateli.
 
     > [!WARNING]
     > Pokud byl model vyškolený bez použití funkcí položky, nemůžete během bodování zavádět funkce položek.
@@ -95,12 +95,12 @@ Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a polo�
 
 3. **Doporučený výběr položky**: Určete, jestli používáte modul bodování v produkčním prostředí, nebo pro vyhodnocení modelu volbou jedné z těchto hodnot:
 
-    - **Z hodnocených položek (pro vyhodnocení modelu)**: tuto možnost vyberte, pokud vyvíjíte nebo testujete model. Tato možnost povolí **režim vyhodnocování**a modul vytváří doporučení pouze z těch položek ve vstupní datové sadě, které byly ohodnoceny.
-    - **Ze všech položek**: tuto možnost vyberte, Pokud nastavujete experiment pro použití v rámci webové služby nebo výroby.  Tato možnost umožňuje **režim produkčního**prostředí a modul dává doporučení ze všech položek, které se během školení zobrazily.
+    - **Z hodnocených položek (pro vyhodnocení modelu)**: tuto možnost vyberte, pokud vyvíjíte nebo testujete model. Tato možnost povolí **režim vyhodnocování** a modul vytváří doporučení pouze z těch položek ve vstupní datové sadě, které byly ohodnoceny.
+    - **Ze všech položek**: tuto možnost vyberte, Pokud nastavujete experiment pro použití v rámci webové služby nebo výroby.  Tato možnost umožňuje **režim produkčního** prostředí a modul dává doporučení ze všech položek, které se během školení zobrazily.
     - Z nezpracovaných **položek (pro návrh nových položek uživatelům)**: tuto možnost vyberte, pokud chcete, aby modul provedl doporučení jenom z těch položek v datové sadě školení, které nebyly ohodnocené. 
 4. Přidejte datovou sadu, pro kterou chcete vytvořit předpovědi, a připojte ji k **datové sadě ke skóre**.
 
-    - Zvolíte **-li možnost, musí**být vstupní datová sada tvořena jedním a pouze jedním sloupcem obsahujícím identifikátory uživatelů, pro které chcete doporučení vytvořit.
+    - Zvolíte **-li možnost, musí** být vstupní datová sada tvořena jedním a pouze jedním sloupcem obsahujícím identifikátory uživatelů, pro které chcete doporučení vytvořit.
 
         Datová sada může obsahovat další dva sloupce identifikátorů a hodnocení položek, ale tyto dva sloupce jsou ignorovány. 
 
@@ -116,7 +116,7 @@ Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a polo�
 
     První sloupec v datové sadě uživatelských funkcí by měl obsahovat identifikátor uživatele. Zbývající sloupce by měly obsahovat hodnoty, které charakterizují uživatele, například jejich pohlaví, předvolby, umístění atd.
 
-    Funkce uživatelů, kteří mají hodnocené položky, se ignorují v **rámci široké škály a podle hloubkového doporučení**, protože tyto funkce již byly během školení zjištěny. Proto můžete datovou sadu předem vyfiltrovat, aby zahrnovala pouze *studené uživatele*nebo uživatele, kteří nehodnotili žádné položky.
+    Funkce uživatelů, kteří mají hodnocené položky, se ignorují v **rámci široké škály a podle hloubkového doporučení**, protože tyto funkce již byly během školení zjištěny. Proto můžete datovou sadu předem vyfiltrovat, aby zahrnovala pouze *studené uživatele* nebo uživatele, kteří nehodnotili žádné položky.
 
     > [!WARNING]
     >  Pokud byl model vyškolený bez použití uživatelských funkcí, nelze při vyhodnocování použít funkci použít.
@@ -125,7 +125,7 @@ Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a polo�
 
     První sloupec v datové sadě funkcí položky musí obsahovat identifikátor položky. Zbývající sloupce by měly obsahovat hodnoty, které charakterizují položky.
 
-    Funkce hodnocených položek se ignorují v **rámci širokého a podrobného doporučení**, protože tyto funkce se už během školení dozvěděly. Proto můžete omezit datovou sadu bodování na *položky pro studený start*nebo položky, které nebyly ohodnoceny žádnými uživateli.
+    Funkce hodnocených položek se ignorují v **rámci širokého a podrobného doporučení**, protože tyto funkce se už během školení dozvěděly. Proto můžete omezit datovou sadu bodování na *položky pro studený start* nebo položky, které nebyly ohodnoceny žádnými uživateli.
 
     > [!WARNING]
     >  Pokud byl model vyškolený bez použití funkcí položky, při bodování nepoužívejte funkce položek.  
@@ -136,7 +136,7 @@ Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a polo�
 
     Tato možnost by se měla používat jenom v případě, že vyhodnocujete režim vyhodnocování. Možnost není k dispozici, pokud vyberete možnost **ze všech položek** nebo **z nehodnocených položek (pro návrh nových položek uživatelům)**.
 
-9. V případě z nezpracovaných **položek (pro návrh nových položek uživatelům)** použijte třetí vstupní port s názvem **školicí data**pro odebrání položek, které již byly ohodnoceny z výsledků předpovědi.
+9. V případě z nezpracovaných **položek (pro návrh nových položek uživatelům)** použijte třetí vstupní port s názvem **školicí data** pro odebrání položek, které již byly ohodnoceny z výsledků předpovědi.
 
     Chcete-li použít tento filtr, připojte původní datovou sadu školení ke vstupnímu portu.
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 6fb0b6f38869192e89bb849950e8822a157b23c8
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 1b272755652d018a0d5364e4d67c783774c68da8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241935"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655236"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Připojení SSL/TLS v Azure Database for MySQL
 
@@ -32,7 +32,7 @@ Ve výchozím nastavení by databázová služba měla být nakonfigurovaná tak
 
 Při zřizování nového serveru Azure Database for MySQL prostřednictvím Azure Portal a CLI je vynucování připojení SSL ve výchozím nastavení povolené. 
 
-V Azure Portal se zobrazují připojovací řetězce pro různé programovací jazyky. Tyto připojovací řetězce zahrnují požadované parametry SSL pro připojení k vaší databázi. V Azure Portal vyberte svůj server. V záhlaví **Nastavení** vyberte **připojovací řetězce** . Parametr SSL se liší v závislosti na konektoru, například "SSL = true" nebo "sslmode = vyžadovat" nebo "sslmode = Required" a další variace.
+V Azure Portal se zobrazují připojovací řetězce pro různé programovací jazyky. Tyto připojovací řetězce zahrnují požadované parametry SSL pro připojení k vaší databázi. V Azure Portal vyberte svůj server. V záhlaví **Nastavení** vyberte **připojovací řetězce**. Parametr SSL se liší v závislosti na konektoru, například "SSL = true" nebo "sslmode = vyžadovat" nebo "sslmode = Required" a další variace.
 
 V některých případech aplikace vyžadují k zabezpečenému připojení soubor místního certifikátu generovaný ze souboru certifikátu důvěryhodné certifikační autority (CA). V současné době můžou zákazníci **použít jenom** předdefinovaný certifikát pro připojení k serveru Azure Database for MySQL, který se nachází na adrese https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . 
 
@@ -63,7 +63,7 @@ Například nastavení hodnoty minimální verze nastavení TLS na TLS 1,0 zname
 >
 > Jakmile vynucujete minimální verzi protokolu TLS, nemůžete později zakázat vynucení minimální verze.
 
-Informace o nastavení nastavení TLS pro Azure Database for MySQL najdete v tématu [Konfigurace nastavení TLS](howto-tls-configurations.md).
+Minimální verze protokolu TLS nevyžaduje, aby bylo možné nastavit žádné restartování serveru, když je server online. Informace o nastavení nastavení TLS pro Azure Database for MySQL najdete v tématu [Konfigurace nastavení TLS](howto-tls-configurations.md).
 
 ## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Podpora šifry pomocí Azure Database for MySQL jednoho serveru
 

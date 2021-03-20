@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359811"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
@@ -42,9 +42,9 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
     - Ověřte, zda je role vývojář aplikace přiřazena uživateli. Pokud ne, použijte uživatele s tímto oprávněním nebo se obraťte na [správce, aby oprávnění povolil](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Pokud se role vývojáře aplikace nedá přiřadit, ujistěte se, že příznak **Uživatelé můžou registrovat aplikace** nastavené na **hodnotu true** , aby uživatel mohl vytvořit identitu. Povolení těchto oprávnění:
-    - Přihlaste se k portálu Azure.
+    - Přihlaste se k webu Azure Portal.
     - Přejít na **Azure Active Directory**  >  **nastavení uživatele**.
-    - V **App registrations**části registrace aplikací **můžou uživatelé registrovat aplikace**, vyberte **Ano**.
+    - V části registrace aplikací **můžou uživatelé registrovat aplikace**, vyberte **Ano**.
 
       ![AD_application_permission Azure](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
@@ -53,7 +53,7 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
 
 ## <a name="download-the-template"></a>Stažení šablony
 
-1. V trezoru pokračujte na **Příprava**  >  **zdroje**infrastruktury.
+1. V trezoru pokračujte na **Příprava**  >  **zdroje** infrastruktury.
 2. V části **Připravit zdroj** vyberte **+ Konfigurační server**.
 3. V části **Přidat server** zkontrolujte, jestli se v části **Typ serveru** zobrazí **Konfigurační server pro VMware**.
 4. Stáhněte si šablonu vajíček pro konfigurační server.
@@ -78,8 +78,8 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
 7. Na zbývajících stránkách průvodce přijměte výchozí nastavení.
 8. V části **Ready to complete** (Připraveno k dokončení):
 
-    * Pokud chcete nastavit virtuální počítač s výchozím nastavením, vyberte **po dokončení nasazení možnost zapnout**  >  **Finish**.
-    * Pokud chcete přidat další síťové rozhraní, zrušte **po nasazení možnost zapnout**a pak vyberte **Dokončit**. Ve výchozím nastavení se šablona konfiguračního serveru nasadí s jedním síťovým adaptérem. Po nasazení můžete přidat další síťové adaptéry.
+    * Pokud chcete nastavit virtuální počítač s výchozím nastavením, vyberte **po dokončení nasazení možnost zapnout**  >  .
+    * Pokud chcete přidat další síťové rozhraní, zrušte **po nasazení možnost zapnout** a pak vyberte **Dokončit**. Ve výchozím nastavení se šablona konfiguračního serveru nasadí s jedním síťovým adaptérem. Po nasazení můžete přidat další síťové adaptéry.
 
 > [!IMPORTANT]
 > Neměňte konfigurace prostředků, jako jsou paměť, jádra a omezení procesoru, nebo upravte nebo odstraňte nainstalované služby nebo soubory na konfiguračním serveru po nasazení. Tyto typy změn ovlivňují registraci konfiguračního serveru se službami Azure a výkonem konfiguračního serveru.
@@ -112,7 +112,7 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 ### <a name="configure-settings"></a>Konfigurace nastavení
 
 1. V Průvodci správou konfiguračního serveru vyberte **nastavení připojení**. V rozevíracích seznamech nejdřív Vyberte síťovou kartu, kterou používá integrovaný procesový Server pro zjišťování a nabízenou instalaci služby mobility na zdrojové počítače. Pak vyberte síťovou kartu, kterou konfigurační server používá pro připojení k Azure. Vyberte **Uložit**. Po dokončení konfigurace není možné toto nastavení změnit. Neměňte IP adresu konfiguračního serveru. Ujistěte se, že IP adresa přiřazená ke konfiguračnímu serveru je statická IP adresa a ne IP adresa DHCP.
-2. V části **vybrat Recovery Services trezor**se přihlaste k Microsoft Azure s přihlašovacími údaji použitými v kroku 6 [registrace konfiguračního serveru pomocí služeb Azure Site Recovery Services](#register-the-configuration-server-with-azure-site-recovery-services).
+2. V části **vybrat Recovery Services trezor** se přihlaste k Microsoft Azure s přihlašovacími údaji použitými v kroku 6 [registrace konfiguračního serveru pomocí služeb Azure Site Recovery Services](#register-the-configuration-server-with-azure-site-recovery-services).
 3. Po přihlášení vyberte své předplatné Azure a příslušnou skupinu prostředků a trezor.
 
     > [!NOTE]
@@ -121,18 +121,18 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 
 4. Při **instalaci softwaru třetí strany**:
 
-    |Scénář   |Jak postupovat  |
+    |Scenario   |Jak postupovat  |
     |---------|---------|
-    |Můžu si MySQL stáhnout a nainstalovat ručně?     |  Ano. Stáhněte si aplikaci MySQL, umístěte ji do složky **C:\Temp\ASRSetup**a pak ji nainstalujte ručně. Jakmile souhlasíte s podmínkami a vyberete **Stáhnout a nainstalovat**, portál už říká, že je *nainstalovaný*. Můžete přejít k dalšímu kroku.       |
-    |Můžu se vyhnout stažení MySQL online?     |   Ano. Uložte aplikaci pro instalaci MySQL do složky **C:\Temp\ASRSetup**. Přijměte podmínky, vyberte **Stáhnout a nainstalovat**a portál použije instalační program, který jste přidali k instalaci aplikace. Až se instalace dokončí, přejděte k dalšímu kroku.    |
+    |Můžu si MySQL stáhnout a nainstalovat ručně?     |  Ano. Stáhněte si aplikaci MySQL, umístěte ji do složky **C:\Temp\ASRSetup** a pak ji nainstalujte ručně. Jakmile souhlasíte s podmínkami a vyberete **Stáhnout a nainstalovat**, portál už říká, že je *nainstalovaný*. Můžete přejít k dalšímu kroku.       |
+    |Můžu se vyhnout stažení MySQL online?     |   Ano. Uložte aplikaci pro instalaci MySQL do složky **C:\Temp\ASRSetup**. Přijměte podmínky, vyberte **Stáhnout a nainstalovat** a portál použije instalační program, který jste přidali k instalaci aplikace. Až se instalace dokončí, přejděte k dalšímu kroku.    |
     |Chci stáhnout a nainstalovat MySQL prostřednictvím Azure Site Recovery.    |  Přijměte licenční smlouvu a vyberte **Stáhnout a nainstalovat**. Až se instalace dokončí, přejděte k dalšímu kroku.       |
 
-5. Před pokračováním ověřte, že je v **nastavení ověřit konfiguraci zařízení**nutné ověřit požadavky.
-6. V části **Konfigurace serveru vCenter Server/vSphere ESXi**zadejte plně kvalifikovaný název domény nebo IP adresu serveru vCenter nebo hostitele vSphere, kde se nacházejí virtuální počítače, které chcete replikovat. Zadejte port, na kterém server naslouchá. Zadejte popisný název, který se použije pro server VMware v trezoru.
+5. Před pokračováním ověřte, že je v **nastavení ověřit konfiguraci zařízení** nutné ověřit požadavky.
+6. V části **Konfigurace serveru vCenter Server/vSphere ESXi** zadejte plně kvalifikovaný název domény nebo IP adresu serveru vCenter nebo hostitele vSphere, kde se nacházejí virtuální počítače, které chcete replikovat. Zadejte port, na kterém server naslouchá. Zadejte popisný název, který se použije pro server VMware v trezoru.
 7. Zadejte přihlašovací údaje, které bude konfigurační server používat pro připojení k serveru VMware. Služba Site Recovery je použije k automatickému zjištění virtuálních počítačů VMware, které jsou dostupné pro replikaci. Vyberte **Přidat**  >  **pokračovat**. Přihlašovací údaje, které tady zadáte, se uloží místně.
-8. V části **Konfigurovat přihlašovací údaje virtuálního počítače**zadejte uživatelské jméno a heslo virtuálních počítačů, do kterých se během replikace automaticky nainstaluje služba mobility. Pro počítače s **Windows** vyžaduje účet oprávnění místního správce na počítačích, které chcete replikovat. Pro **Linux**zadejte podrobnosti kořenového účtu.
+8. V části **Konfigurovat přihlašovací údaje virtuálního počítače** zadejte uživatelské jméno a heslo virtuálních počítačů, do kterých se během replikace automaticky nainstaluje služba mobility. Pro počítače s **Windows** vyžaduje účet oprávnění místního správce na počítačích, které chcete replikovat. Pro **Linux** zadejte podrobnosti kořenového účtu.
 9. Vyberte **Dokončit konfiguraci** a dokončete registraci.
-10. Po dokončení registrace otevřete Azure Portal a ověřte, že je konfigurační server a server VMware uvedený v **Recovery Services trezoru**  >  **Správa**  >  **Site Recovery**  >  **konfiguračních serverů**infrastruktury.
+10. Po dokončení registrace otevřete Azure Portal a ověřte, že je konfigurační server a server VMware uvedený v **Recovery Services trezoru**  >  **Správa**  >  **Site Recovery**  >  **konfiguračních serverů** infrastruktury.
 
 ## <a name="upgrade-the-configuration-server"></a>Upgrade konfiguračního serveru
 
@@ -154,10 +154,10 @@ Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po regis
 
 * Můžu použít virtuální počítač, na kterém je konfigurační server nainstalovaný pro různé účely?
 
-    Ne. Virtuální počítač používejte výhradně pro účely konfiguračního serveru. Ujistěte se, že se budete řídit všemi specifikacemi uvedenými v [požadavcích](#prerequisites) pro efektivní správu zotavení po havárii.
+    No. Virtuální počítač používejte výhradně pro účely konfiguračního serveru. Ujistěte se, že se budete řídit všemi specifikacemi uvedenými v [požadavcích](#prerequisites) pro efektivní správu zotavení po havárii.
 * Můžu přepnout trezor, který je už zaregistrovaný na konfiguračním serveru pomocí nově vytvořeného trezoru?
 
-    Ne. Po zaregistrování trezoru na konfiguračním serveru ho nelze změnit.
+    No. Po zaregistrování trezoru na konfiguračním serveru ho nelze změnit.
 * Můžu použít stejný konfigurační server k ochraně fyzických i virtuálních počítačů?
 
     Ano. Stejný konfigurační server lze použít pro replikaci fyzických a virtuálních počítačů. Fyzický počítač se však může vrátit zpět pouze k VIRTUÁLNÍmu počítači VMware.
@@ -172,17 +172,17 @@ Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po regis
     Pokud chcete stáhnout heslo, přečtěte si téma [Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).
 * Můžu změnit heslo?
 
-    Ne. Neměňte heslo ke konfiguračnímu serveru. Změna hesla přerušuje replikaci chráněných počítačů a vede do kritického stavu.
+    No. Neměňte heslo ke konfiguračnímu serveru. Změna hesla přerušuje replikaci chráněných počítačů a vede do kritického stavu.
 * Kde můžu stahovat registrační klíče trezoru?
 
-    V **Recovery Services trezoru**vyberte **Spravovat**  >  **Site Recovery**  >  **konfigurační servery**infrastruktury. V části **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
+    V **Recovery Services trezoru** vyberte **Spravovat**  >  **Site Recovery**  >  **konfigurační servery** infrastruktury. V části **servery** vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
 * Můžu naklonovat existující konfigurační server a použít ho k orchestraci replikace?
 
-    Ne. Používání klonovaného konfiguračního serveru se nepodporuje. Naklonování procesového serveru se škálováním na více instancí je také nepodporovaný scénář. Klonování Site Recovery komponent má vliv na probíhající replikaci.
+    No. Používání klonovaného konfiguračního serveru se nepodporuje. Naklonování procesového serveru se škálováním na více instancí je také nepodporovaný scénář. Klonování Site Recovery komponent má vliv na probíhající replikaci.
 
 * Můžu změnit IP adresu konfiguračního serveru?
 
-    Ne. Neměňte IP adresu konfiguračního serveru. Ujistěte se, že všechny IP adresy přiřazené ke konfiguračnímu serveru jsou statické IP adresy a ne IP adresy DHCP.
+    No. Neměňte IP adresu konfiguračního serveru. Ujistěte se, že všechny IP adresy přiřazené ke konfiguračnímu serveru jsou statické IP adresy a ne IP adresy DHCP.
 * Můžu nastavit konfigurační server v Azure?
 
     Nastavte konfigurační server v místním prostředí s přímým dohledem v centru a pro minimalizaci latencí přenosu dat. Můžete provést naplánované zálohování konfiguračního serveru pro [účely navrácení služeb po obnovení](vmware-azure-manage-configuration-server.md#failback-requirements).

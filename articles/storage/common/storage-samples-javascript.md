@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-js
 ms.openlocfilehash: d21c92d6595d2db3f9fb01ee5ddc3669a0564bab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359743"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven V12 JavaScript
@@ -91,7 +91,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="blob"></a>Blob
+### <a name="blob"></a>Objekt blob
 
 :::row:::
    :::column span="":::
@@ -142,7 +142,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 :::row:::
    :::column span="2":::

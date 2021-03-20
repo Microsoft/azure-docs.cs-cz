@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
 ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93333575"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Nasazení Azure Cosmos DB a Azure App Service pomocí webové aplikace z GitHubu pomocí šablony Azure Resource Manager
@@ -116,7 +116,7 @@ Nakonec musíme nasadit webovou aplikaci z GitHubu do App Service. To se provád
 
 ## <a name="next-steps"></a>Další kroky
 
-Blahopřejeme vám. Nasadili jste Azure Cosmos DB, Azure App Service a ukázkovou webovou aplikaci, která má automaticky informace o připojení potřebné pro připojení k Cosmos DB, vše v jedné operaci a bez nutnosti vyjímat a vkládat citlivé informace. Když použijete tuto šablonu jako výchozí bod, můžete ji upravit tak, aby se stejně tak nasadila vaše vlastní webové aplikace.
+Gratulujeme! Nasadili jste Azure Cosmos DB, Azure App Service a ukázkovou webovou aplikaci, která má automaticky informace o připojení potřebné pro připojení k Cosmos DB, vše v jedné operaci a bez nutnosti vyjímat a vkládat citlivé informace. Když použijete tuto šablonu jako výchozí bod, můžete ji upravit tak, aby se stejně tak nasadila vaše vlastní webové aplikace.
 
 * Pro šablonu Azure Resource Manager pro tuto ukázku přejít na [galerii šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp)
 * Zdrojový kód pro ukázkovou aplikaci přejde na [Cosmos DB a provede aplikaci na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app).

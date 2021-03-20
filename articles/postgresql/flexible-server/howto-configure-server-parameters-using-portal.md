@@ -7,24 +7,24 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 4f945c2c7fffb143bdb8324a330775fb072b25c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90935871"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---flexible-server-via-the-azure-portal"></a>Konfigurace parametrů serveru v Azure Database for PostgreSQL-flexibilním serveru prostřednictvím Azure Portal 
 
 Pomocí Azure Portal můžete vypsat, zobrazit a aktualizovat parametry konfigurace Azure Database for PostgreSQL flexibilního serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup pro krokování tohoto postupu vám pomůže:
 - [Azure Database for PostgreSQL flexibilní Server](quickstart-create-server-portal.md)
 
 ## <a name="viewing-and-editing-parameters"></a>Zobrazení a úprava parametrů
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [Azure Portal](https://portal.azure.com).
 
 2. Vyberte flexibilní Server.
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 35d01fd60d0549a528a45013add48bd203b86d6e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727256"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654675"
 ---
 # <a name="create-a-video-indexer-account"></a>Vytvoření účtu Video Indexer
 
@@ -203,7 +203,7 @@ K automatizaci vytváření účtu se jedná o proces dvou kroků:
 
 -   Předplatné Azure v [Azure Government](../../azure-government/index.yml).
 - Účet Azure AD v Azure Government.
-- Všechny předběžné požadavky oprávnění a prostředků, jak je popsáno výše v části [požadavky pro připojení k Azure](#prerequisites-for-connecting-to-azure).
+- Všechny předběžné požadavky oprávnění a prostředků, jak je popsáno výše v části [požadavky pro připojení k Azure](#prerequisites-for-connecting-to-azure). Nezapomeňte zkontrolovat [Další předpoklady pro automatický tok](#additional-prerequisites-for-automatic-flow) a [Další požadavky na ruční tok](#additional-prerequisites-for-manual-flow).
 
 ### <a name="create-new-account-via-the-azure-government-portal"></a>Vytvoření nového účtu prostřednictvím portálu Azure Government
 

@@ -10,17 +10,17 @@ ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: f069f711ccf5672041ea6f3b15a52fa2b3ba2022
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90900026"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-pro-with-gpu"></a>Kurz: připojení k Azure Stack Edge pro pomocí GPU
 
 V tomto kurzu se dozvíte, jak se můžete připojit k zařízení Azure Stack Edge pro pomocí integrovaného GPU pomocí místního webového uživatelského rozhraní.
 
-Dokončení procesu připojení může trvat přibližně 5 minut.
+Dokončení procesu připojování může trvat přibližně 5 minut.
 
 V tomto kurzu získáte informace o těchto tématech:
 
@@ -41,7 +41,7 @@ Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým 
 
 1. Nakonfigurujte adaptér Ethernet v počítači pro připojení k zařízení Azure Stack Edge pro se statickou IP adresou 192.168.100.5 a podsítí 255.255.255.0.
 
-2. Připojte počítač k portu 1 na svém zařízení. Pokud počítač připojujete přímo k zařízení (bez přepínače), použijte křížený kabel nebo adaptér USB Ethernet. Pomocí následující ilustrace Identifikujte PORT 1 na vašem zařízení.
+2. Připojte počítač k portu 1 vašeho zařízení. Pokud připojujete počítač přímo k zařízení (bez přepínače), použijte křížený kabel nebo adaptér USB sítě Ethernet. Pomocí následujícího obrázku identifikujte port 1 na vašem zařízení.
 
     ![Propojovací rozhraní zařízení se zapojenou kabeláží](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
@@ -63,7 +63,7 @@ Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým 
     ![Přihlašovací stránka pro zařízení Azure Stack Edge pro](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. V příkazovém řádku změňte heslo správce zařízení.  
-    Nové heslo musí obsahovat 8 až 16 znaků. Musí obsahovat tři z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky.
+    Nové heslo musí mít 8 až 16 znaků. Musí obsahovat kombinaci tří z následujících čtyř typů znaků: velká písmena, malá písmena, číslice a speciální znaky.
 
 Teď jste na stránce **Přehled** svého zařízení. Dalším krokem je konfigurace nastavení sítě pro vaše zařízení.
 

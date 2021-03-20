@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92547703"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxe dotazu směrování zpráv IoT Hubu
@@ -53,7 +53,7 @@ IoT Hub definuje [společný formát](iot-hub-devguide-messages-construct.md) pr
 
 Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv. 
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | Třída | řetězec | Uživatel Určuje typ obsahu zprávy. Pokud chcete pro tělo zprávy zapnout dotaz, měla by být tato hodnota nastavená na Application/JSON. |
 | contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
@@ -62,7 +62,7 @@ Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv.
 | DT-DataSchema | řetězec |  Tuto hodnotu nastavuje služba IoT Hub pro zprávy ze zařízení do cloudu. Obsahuje ID modelu zařízení nastavené v připojení zařízení. K dotazování použijte `$dt-dataschema` . |
 | DT – předmět | řetězec | Název součásti odesílající zprávy typu zařízení-Cloud. K dotazování použijte `$dt-subject` . |
 
-Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě výše uvedených vlastností v předchozí tabulce můžete také zadat dotaz na **connectionDeviceId** , **connectionModuleId** .
+Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě výše uvedených vlastností v předchozí tabulce můžete také zadat dotaz na **connectionDeviceId**, **connectionModuleId**.
 
 ### <a name="application-properties"></a>Vlastnosti aplikace
 
@@ -70,7 +70,7 @@ Vlastnosti aplikace jsou uživatelsky definované řetězce, které lze přidat 
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na vlastnosti systému zpráv musí být s `$` symbolem předpony. Dotazy na vlastnosti aplikace jsou k dispozici s jejich názvem a neměly by obsahovat předponu `$` . Pokud název vlastnosti aplikace začíná `$` na, IoT Hub ho vyhledat ve vlastnostech systému a nebude nalezen, bude vypadat ve vlastnostech aplikace. Příklad: 
+Dotaz na vlastnosti systému zpráv musí být s `$` symbolem předpony. Dotazy na vlastnosti aplikace jsou k dispozici s jejich názvem a neměly by obsahovat předponu `$` . Pokud název vlastnosti aplikace začíná `$` na, IoT Hub ho vyhledat ve vlastnostech systému a nebude nalezen, bude vypadat ve vlastnostech aplikace. Například: 
 
 Dotaz na systémovou vlastnost contentEncoding 
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Ukazuje, jak zpracovat kódování těla v JavaScriptu. Pokud chcete vidět ukázku v jazyce C#, Stáhněte si ukázky pro [Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte soubor master.zip. Soubor Program.cs řešení sady Visual Studio *SimulatedDevice* ukazuje, jak zakódovat a odeslat zprávy do IoT Hub. Tato ukázka se používá pro testování směrování zpráv, jak je vysvětleno v [kurzu směrování zpráv](tutorial-routing.md). V dolní části Program.cs má také metodu, jak číst v jednom ze zakódovaných souborů, dekódovat ho a zapsat ho zpět jako ASCII, abyste ho mohli přečíst. 
+> Ukazuje, jak zpracovat kódování těla v JavaScriptu. Pokud chcete vidět ukázku v jazyce C#, Stáhněte si ukázky pro [Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte soubor master.zip. Soubor programu *SimulatedDevice* řešení sady Visual Studio ukazuje, jak zakódovat a odeslat zprávy do IoT Hub. Tato ukázka se používá pro testování směrování zpráv, jak je vysvětleno v [kurzu směrování zpráv](tutorial-routing.md). V dolní části programu. cs má také metodu, jak číst v jednom ze zakódovaných souborů, dekódovat ho a zapsat ho jako ASCII, abyste ho mohli přečíst. 
 
 
 ### <a name="query-expressions"></a>Výrazy dotazů

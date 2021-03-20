@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
 ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660215"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
@@ -305,7 +305,7 @@ Další informace najdete v tématu [Nastavení účtu výběr a daňového form
 
 Náhrady jsou zákazníkům k dispozici za určitých podmínek a za určité poplatky. Žádosti o refundaci za opakované poplatky účtované měsíčně se musí přijmout do 24 hodin od nákupu nebo obnovení. Podobně se požadavky na náhrady za periodické poplatky, které se účtují za rok, musí získat do 14 dnů od nákupu nebo obnovení. Tento typ náhrad se nevztahuje na poplatky vyplývající z využití (z nabídek virtuálních počítačů nebo účtované podle objemu).
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 

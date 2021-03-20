@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90561836"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: vytvoření infrastruktury virtuálních počítačů Azure pro hostování Service Fabricho clusteru
@@ -25,7 +25,7 @@ V první části tohoto kurzu se naučíte:
 > * Přihlášení k jedné z instancí
 > * Příprava instance pro Service Fabric
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud účet ještě nemáte, můžete ho vytvořit tak, že přejdete na [Azure Portal](https://portal.azure.com) .
 
@@ -41,7 +41,7 @@ K dokončení tohoto kurzu potřebujete předplatné Azure.  Pokud účet ješt�
 
 4. Změňte typ **obrázku** na **Windows Server 2016 Datacenter**. 
  
-5. Změňte **Velikost** instance na **Standard DS2 v2**. Nastavte **uživatelské jméno** a **heslo**správce, které označuje, co jsou.
+5. Změňte **Velikost** instance na **Standard DS2 v2**. Nastavte **uživatelské jméno** a **heslo** správce, které označuje, co jsou.
 
 6. Nechejte teď blokovaná **pravidla portů pro příchozí provoz** ; v další části je nakonfigurujeme.
 

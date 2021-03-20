@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703677"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587640"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak zálohovat SAP HANA databáze běžící na virtu
 >[!NOTE]
 >Od 1. srpna 2020 je SAP HANA zálohování pro RHEL (7,4, 7,6, 7,7 & 8,1) všeobecně dostupné.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před konfigurací zálohování se ujistěte, že jste provedli následující kroky:
 
@@ -167,6 +167,18 @@ Výstup příkazu by měl zobrazovat klíč {SID} {DBNAME} s uživatelem zobraze
 
 >[!NOTE]
 > Ujistěte se, že je v systému k dispozici jedinečná sada souborů SSFS `/usr/sap/{SID}/home/.hdb/` . V této cestě by měla být jenom jedna složka.
+
+Zde je souhrn kroků požadovaných k dokončení spuštění skriptu před registrací.
+
+|Kdo  |Z  |Co spustit  |Komentáře  |
+|---------|---------|---------|---------|
+|```<sid>```ADM (operační systém)     |  OPERAČNÍ SYSTÉM HANA       |   Přečtěte si kurz a Stáhněte si skript před registrací.      |   Přečtěte si [požadavky výše](#prerequisites) stáhnout předem registrační skript [](https://aka.ms/scriptforpermsonhana)  |
+|```<sid>```ADM (OS) a systémový uživatel (HANA)    |      OPERAČNÍ SYSTÉM HANA   |   Spustit příkaz hdbuserstore set      |   například hdbuserstore sada názvů systému>:3 ```<Instance#>``` 13 systémových ```<password>``` **poznámek:**  nezapomeňte místo IP adresy nebo plně kvalifikovaného názvu domény použít název hostitele.      |
+|```<sid>```ADM (operační systém)    |   OPERAČNÍ SYSTÉM HANA      |  Spustit příkaz hdbuserstore list       |   Podívejte se, jestli výsledek obsahuje výchozí úložiště, například níže: ```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
+|Kořen (operační systém)     |   OPERAČNÍ SYSTÉM HANA        |    Spustit skript předběžného registraci Azure Backup HANA      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
+|```<sid>```ADM (operační systém)    |  OPERAČNÍ SYSTÉM HANA       |   Spustit příkaz hdbuserstore list      |    Podívejte se, jestli výsledek zahrnuje nové řádky, jak je uvedeno níže:  ```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+
+Po úspěšném spuštění předregistračního skriptu a ověření můžete pokračovat a ověřit [požadavky na připojení](#set-up-network-connectivity) a potom [nakonfigurovat zálohování](#discover-the-databases) z trezoru služby Recovery Services.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 

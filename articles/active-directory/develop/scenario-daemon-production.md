@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: d903f04055d1607ee782bd502d99a8fd9cde87ca
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582837"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578443"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Aplikace démona, která volá webová rozhraní API – přesun do produkčního prostředí
 
@@ -54,18 +54,43 @@ Budete muset vysvětlit zákazníkům, jak tyto operace provést. Další inform
 
     ![topologie](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+# <a name="java"></a>[Java](#tab/java)
+
+Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Java pomocí identity aplikace](quickstart-v2-java-daemon.md).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+- Další informace naleznete v tématu:
+  - Principy [Konfigurace](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md)
+  - Vytváření instancí [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md)
+  - [Nejčastější dotazy](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/faq.md)
+- Další ukázky/kurzy:
+  - [Ukázka démona konzoly uzlu MSAL](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console)
+
+# <a name="python"></a>[Python](#tab/python)
+
+Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace](quickstart-v2-python-daemon.md).
+
 ---
 
 ## <a name="next-steps"></a>Další kroky
 
 Tady je několik odkazů, které vám pomohou získat další informace:
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace](./quickstart-v2-python-daemon.md).
+Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace .NET Core pomocí identity aplikace](quickstart-v2-netcore-daemon.md).
 
 # <a name="java"></a>[Java](#tab/java)
 
-Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Java pomocí identity aplikace](./quickstart-v2-java-daemon.md).
+Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Java pomocí identity aplikace](quickstart-v2-java-daemon.md).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Node.js pomocí identity aplikace](quickstart-v2-nodejs-console.md).
+
+# <a name="python"></a>[Python](#tab/python)
+
+Vyzkoušejte si rychlý Start, [Získejte token a zavolejte Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace](quickstart-v2-python-daemon.md).
 
 ---

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 1542bba53b51ffdf2129953a81e5d13975ade434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90936123"
 ---
 # <a name="scale-operations-in-flexible-server"></a>Škálování operací na flexibilním serveru
@@ -35,7 +35,7 @@ K dokončení tohoto průvodce budete potřebovat:
 
 Pomocí těchto kroků vyberte výpočetní vrstvu.
  
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
 
 2.  Klikněte na **výpočty + úložiště**.
 
@@ -43,18 +43,18 @@ Pomocí těchto kroků vyberte výpočetní vrstvu.
  :::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="zobrazení COMPUTE + úložiště":::
 
 4.  Můžete zvolit výpočetní třídu mezi úrovněmi, které jsou k disstupnému přenosu, pro obecné účely a paměťově optimalizované.
-   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="zobrazení COMPUTE + úložiště":::
+   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="výpis výpočetních úrovní":::
 
 
 5.  Pokud máte dobrý výchozí virtuální jádra a velikost paměti, můžete další krok přeskočit.
 
 6.  Pokud chcete změnit počet virtuální jádra, můžete kliknout na rozevírací seznam **Velikost výpočtu** a kliknout na požadovaný počet virtuální jádra/paměti ze seznamu.
     
-    - Zátěžová výpočetní vrstva: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="zobrazení COMPUTE + úložiště"::: přenosem
+    - Zátěžová výpočetní vrstva: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="COMPUTE s shlukovým"::: přenosem
 
-    - Výpočetní vrstva pro obecné účely: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="zobrazení COMPUTE + úložiště":::
+    - Výpočetní vrstva pro obecné účely: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="COMPUTE pro obecné účely":::
 
-    - Paměťově optimalizovaná výpočetní vrstva: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="zobrazení COMPUTE + úložiště":::
+    - Paměťově optimalizovaná výpočetní vrstva: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="paměťově optimalizovaná COMPUTE":::
 
 7.  Klikněte na **Uložit**. 
 8.  Zobrazí se potvrzovací zpráva. Pokud chcete pokračovat, klikněte na **OK** . 
@@ -65,17 +65,17 @@ Pomocí těchto kroků vyberte výpočetní vrstvu.
 
 Chcete-li zvětšit velikost úložiště, postupujte podle těchto kroků.
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, pro který chcete zvětšit velikost úložiště.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, pro který chcete zvětšit velikost úložiště.
 2.  Klikněte na **výpočty + úložiště**.
 
 3.  Zobrazí se stránka s aktuálním nastavením.
    
-:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="zobrazení COMPUTE + úložiště":::
+:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="klikněte na výpočty + úložiště.":::
 4.  **Velikost úložiště polí v GIB** se zobrazením panelu se zobrazí v aktuální velikosti.
 
 5.  Vysuňte pruh na požadovanou velikost. Zobrazí se odpovídající číslo IOPS. IOPS závisí na výpočetní úrovni a velikosti. Zobrazí se také informace o nákladech. 
 
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="zobrazení COMPUTE + úložiště":::
+ :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="horizontální navýšení kapacity úložiště":::
 
 6.  Pokud je velikost úložiště dobrá, klikněte na **Uložit**. 
 7.  Zobrazí se potvrzovací zpráva. Pokud chcete pokračovat, klikněte na **OK** . 

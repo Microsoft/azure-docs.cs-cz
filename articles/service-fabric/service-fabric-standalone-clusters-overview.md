@@ -4,10 +4,10 @@ description: Clustery Service Fabric běží na Windows serveru a Linux, což zn
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94683994"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Přehled samostatných clusterů Service Fabric
@@ -54,7 +54,7 @@ Aplikace vyžaduje změnu v průběhu času. Možná budete muset zvýšit prost
 
 Další informace najdete v článku [škálování samostatných clusterů](service-fabric-cluster-scaling-standalone.md).
 
-## <a name="upgrading"></a>Inovován
+## <a name="upgrading"></a>Upgrade
 
 Samostatný cluster je prostředek, který zcela vlastníte. Zodpovídáte za opravy základního operačního systému a zahájení upgradu prostředků infrastruktury. Cluster můžete nastavit tak, aby přijímal automatické upgrady za běhu, když společnost Microsoft vydává novou verzi, nebo vybrat podporovanou verzi modulu runtime, kterou požadujete. Kromě upgradů prostředků infrastruktury můžete také opravovat operační systém a aktualizovat konfiguraci clusteru, jako jsou certifikáty nebo porty aplikací. 
 

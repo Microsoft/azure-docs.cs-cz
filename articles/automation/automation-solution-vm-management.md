@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9a5427f7c3a057f291067ac83d3d9032d7e693d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b71e5b1a8ba5f3ee8f883c71a7221e01d4af4fb6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559354"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597704"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
 
@@ -38,7 +38,7 @@ U aktuální funkce platí následující omezení:
 > [!NOTE]
 > Před instalací této verze chceme, abyste věděli o [další verzi](https://github.com/microsoft/startstopv2-deployments), která je ve verzi Preview hned teď.  Tato nová verze (v2) nabízí stejné funkce jako tato, ale je navržená tak, aby využila výhod novější technologie v Azure. Přidává některé běžně požadované funkce od zákazníků, jako je podpora více předplatných z jedné instance spuštění/zastavení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Sady Runbook pro spouštění/zastavování virtuálních počítačů v době mimo špičku fungují s [účtem spustit jako pro Azure](./automation-security-overview.md#run-as-accounts). Účet Spustit jako je upřednostňovanou metodou ověřování, protože místo hesla, jehož platnost může vypršet nebo často se mění, používá ověřování certifikátů.
 
@@ -91,7 +91,8 @@ Virtuální počítače pro funkci Start/Stop VMs during off-hours můžete povo
 | Microsoft. Authorization/oprávnění/čtení |Předplatné|
 | Microsoft. Authorization/roleAssignments/Read | Předplatné |
 | Microsoft.Authorization/roleAssignments/write | Předplatné |
-| Microsoft. Authorization/roleAssignments/DELETE | Předplatné || Microsoft. Automation/automationAccounts/Connections/Read | Skupina prostředků |
+| Microsoft. Authorization/roleAssignments/DELETE | Předplatné |
+| Microsoft. Automation/automationAccounts/Connections/Read | Skupina prostředků |
 | Microsoft. Automation/automationAccounts/Certificates/Read | Skupina prostředků |
 | Microsoft. Automation/automationAccounts/Write | Skupina prostředků |
 | Microsoft. OperationalInsights/pracovní prostory/zápis | Skupina prostředků |
@@ -167,7 +168,7 @@ Nepovolujte všechny plány, protože se tak můžou vytvořit překrývající 
 |Scheduled_StopVM | Uživatelem definované, denní | Spustí **ScheduledStopStart_Parent** sadu Runbook s parametrem `Stop` každý den v zadaném čase. Automaticky zastaví všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků. Povolte související plán **naplánované – StartVM**.|
 |Scheduled_StartVM | Uživatelem definované, denní | Spustí sadu **ScheduledStopStart_Parent** Runbook s hodnotou parametru `Start` každý den v zadaném čase. Automaticky spustí všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků. Povolte související plán **naplánované – StopVM**.|
 |Sequenced-StopVM | 1:00 dop. (UTC), každý pátek | Spustí **Sequenced_StopStop_Parent** sadu Runbook s hodnotou parametru v `Stop` každém pátek v zadaném čase. Sekvenčně (vzestupně) zastaví všechny virtuální počítače s tagem **SequenceStop** definovanými příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks). Povolí související plán, **Sequenced-StartVM**.|
-|Sequenced-StartVM | 1:00 PM (UTC), každé pondělí | Spustí sadu **SequencedStopStart_Parent** Runbook s hodnotou parametru `Start` každé pondělí v zadanou dobu. Sekvenčně (sestupně) spustí všechny virtuální počítače se značkou **SequenceStart** definovanou příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks). Povolí související plán, **Sequenced-StopVM**.
+|Sequenced-StartVM | 1:00 PM (UTC), každé pondělí | Spustí sadu **SequencedStopStart_Parent** Runbook s hodnotou parametru `Start` každé pondělí v zadanou dobu. Sekvenčně (sestupně) spustí všechny virtuální počítače se značkou **SequenceStart** definovanou příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks). Povolí související plán, **Sequenced-StopVM**.|
 
 ## <a name="use-the-feature-with-classic-vms"></a>Použití funkce u klasických virtuálních počítačů
 

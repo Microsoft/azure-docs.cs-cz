@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898483"
 ---
 # <a name="partition-and-sample-module"></a>Oddíl a vzorový modul
@@ -85,7 +85,7 @@ Tato možnost podporuje jednoduché náhodné vzorkování nebo náhodné vzorko
 
 1. **Stratified rozdělení pro vzorkování**: tuto možnost vyberte, pokud je důležité, aby řádky v datové sadě byly před vzorkováním rovnoměrně rozděleny podle sloupce klíče.
 
-   Pro **sloupec Key rozvrstvení pro vzorkování**vyberte jeden *sloupec vrstvy* , který se použije při rozdělování datové sady. Řádky v datové sadě se pak rozdělí takto:
+   Pro **sloupec Key rozvrstvení pro vzorkování** vyberte jeden *sloupec vrstvy* , který se použije při rozdělování datové sady. Řádky v datové sadě se pak rozdělí takto:
 
    1. Všechny vstupní řádky jsou seskupené (stratified) podle hodnot v zadaném sloupci vrstvy.
 
@@ -104,7 +104,7 @@ Tuto možnost použijte, pokud chcete datovou sadu rozdělit na podmnožiny dat.
 
 1. Přidejte do svého kanálu **oddíl a vzorový** modul a připojte datovou sadu.
 
-1. Pro **oddíl nebo vzorový režim**vyberte **přiřadit k skládání**.
+1. Pro **oddíl nebo vzorový režim** vyberte **přiřadit k skládání**.
 
 1. **Použití náhrady při dělení**: tuto možnost vyberte, pokud chcete, aby byl vzorový řádek vrácen zpět do fondu řádků pro potenciální opakované použití. V důsledku toho může být stejný řádek přiřazen několika skládáními.
 
@@ -146,7 +146,7 @@ Tuto možnost použijte, pokud jste datovou sadu rozdělili do několika oddíl�
 
 1. **Oddíl nebo vzorový režim**: vyberte vybrat **skládání**.
 
-1. **Určete, ze kterého skládání**se mají vzorkovat: vyberte oddíl, který se má použít, zadáním jeho indexu. Indexy oddílů jsou založené na 1. Například pokud jste datovou sadu rozdělili na tři části, oddíly budou mít indexy 1, 2 a 3.
+1. **Určete, ze kterého skládání** se mají vzorkovat: vyberte oddíl, který se má použít, zadáním jeho indexu. Indexy oddílů jsou založené na 1. Například pokud jste datovou sadu rozdělili na tři části, oddíly budou mít indexy 1, 2 a 3.
 
    Pokud zadáte neplatnou hodnotu indexu, dojde k chybě v době návrhu: "Error 0018: DataSet obsahuje neplatná data."
 
@@ -154,7 +154,7 @@ Tuto možnost použijte, pokud jste datovou sadu rozdělili do několika oddíl�
 
 1. Pokud pracujete s více oddíly, je nutné přidat další instance **oddílu a vzorového** modulu pro zpracování jednotlivých oddílů.
 
-   Například **oddíl a vzorový** modul ve druhém řádku je nastaven na hodnotu **přiřadit k skládání**a modul ve třetím řádku je nastaven na **skládání výběru**.   
+   Například **oddíl a vzorový** modul ve druhém řádku je nastaven na hodnotu **přiřadit k skládání** a modul ve třetím řádku je nastaven na **skládání výběru**.   
 
    ![Oddíl a ukázka](./media/module/partition-and-sample.png)
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: 93b99aa624a21d9312297e4279b1dcf053c79ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272724"
 ---
 # <a name="enable-support-uploads"></a>Povolení nahrávání podpory
@@ -28,8 +28,8 @@ Chcete-li aktivovat podporu, postupujte podle těchto kroků v Ovládacích pane
 
 1. Na stránce Konfigurace podpory otevřete část **informace o zákazníkovi** kliknutím na trojúhelník vlevo.
 1. Klikněte na tlačítko znovu **ověřit informace o nahrání** .
-1. V **jedinečném názvu clusteru**nastavte název podpory clusteru. Ujistěte se, že tento název jednoznačně identifikuje váš cluster pro podporu pracovníků.
-1. Zaškrtněte políčka pro **monitorování statistiky**, **odesílání obecných informací**a **nahrávání informací o chybách**.
+1. V **jedinečném názvu clusteru** nastavte název podpory clusteru. Ujistěte se, že tento název jednoznačně identifikuje váš cluster pro podporu pracovníků.
+1. Zaškrtněte políčka pro **monitorování statistiky**, **odesílání obecných informací** a **nahrávání informací o chybách**.
 1. Klikněte na **Odeslat**.
 
    ![Snímek obrazovky s oddílem informace o dokončených zákaznících stránky nastavení podpory](media/avere-vfxt-support-info.png)

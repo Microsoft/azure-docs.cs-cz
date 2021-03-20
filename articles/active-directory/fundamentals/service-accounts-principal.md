@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f92625131a35dc91c860923ec6523c189830f65
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552146"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587844"
 ---
 # <a name="securing-service-principals"></a>Zabezpečení instančních objektů
 
-[Instanční objekt služby](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) Azure Active Directory (Azure AD) je místní reprezentace objektu aplikace v jednom tenantovi nebo adresáři.  Funguje jako identita instance aplikace. Instanční objekty definují, kdo má přístup k aplikaci a k jakým prostředkům může aplikace přistupovat. Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá, a odkazuje na globálně jedinečný objekt aplikace. Tenant zabezpečuje přihlašování a přístup k prostředkům objektu služby.  
+[Instanční objekt služby](../develop/app-objects-and-service-principals.md) Azure Active Directory (Azure AD) je místní reprezentace objektu aplikace v jednom tenantovi nebo adresáři.  Funguje jako identita instance aplikace. Instanční objekty definují, kdo má přístup k aplikaci a k jakým prostředkům může aplikace přistupovat. Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá, a odkazuje na globálně jedinečný objekt aplikace. Tenant zabezpečuje přihlašování a přístup k prostředkům objektu služby.  
 
 ### <a name="tenant-service-principal-relationships"></a>Vztahy instančního objektu klienta
 Jedna aplikace tenanta má v domovském tenantovi pouze jeden instanční objekt. Webová aplikace nebo rozhraní API pro více tenantů vyžadují instanční objekt v každém tenantovi. Instanční objekt se vytvoří, když uživatel z tohoto tenanta souhlasí s používáním aplikace nebo rozhraní API. Tento souhlas vytvoří vztah 1: n mezi aplikací víceklientské aplikace a přidruženými instančními objekty služby.
@@ -39,7 +39,7 @@ Daná instance aplikace má dvě odlišné vlastnosti: ApplicationID (označuje 
 
 ApplicationID představuje globální aplikaci a je stejná pro všechny instance aplikace napříč klienty. ObjectID je jedinečná hodnota pro objekt aplikace a představuje instanční objekt. Stejně jako u uživatelů, skupin a dalších prostředků identifikátor ObjectID Pomáhá jednoznačně identifikovat instanci aplikace ve službě Azure AD.
 
-Podrobnější informace o tomto tématu najdete v tématu [vztah aplikace a instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+Podrobnější informace o tomto tématu najdete v tématu [vztah aplikace a instančního objektu](../develop/app-objects-and-service-principals.md).
 
 Můžete také vytvořit aplikaci a její instanční objekt (ObjectID) v tenantovi pomocí Azure PowerShell, Azure CLI, Microsoft Graph, Azure Portal a dalších nástrojů. 
 
@@ -63,7 +63,7 @@ Certifikáty jsou bezpečnější: Pokud je to možné, používejte klientské 
 
 * hesel 
 
-Další informace o Azure Key Vault a o tom, jak se dá použít pro správu certifikátů a tajných kódů, najdete v tématu [o Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) a [přiřazení zásad Key Vault přístupu pomocí Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal). 
+Další informace o Azure Key Vault a o tom, jak se dá použít pro správu certifikátů a tajných kódů, najdete v tématu [o Azure Key Vault](../../key-vault/general/overview.md) a [přiřazení zásad Key Vault přístupu pomocí Azure Portal](../../key-vault/general/assign-access-policy-portal.md). 
 
  ### <a name="challenges-and-mitigations"></a>Výzvy a zmírnění rizik
 V následující tabulce jsou uvedeny zmírnění potíží s problémy, se kterými se můžete setkat při používání instančních objektů.
@@ -89,7 +89,7 @@ Pomocí prostředí PowerShell
 `Get-AzureADServicePrincipal -All:$true` 
 
 
-Další informace najdete v tématu [Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal) .
+Další informace najdete v tématu [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) .
 
 ## <a name="assess-service-principal-security"></a>Posouzení zabezpečení instančního objektu
 
@@ -105,7 +105,7 @@ Nejde spravovat instanční objekty pomocí podmíněného přístupu.| Monitoro
 | Výchozí role Azure RBAC je Přispěvatel. |Vyhodnoťte potřeby a použijte roli s nejmenšími možnými oprávněními, aby splňovaly potřeby.|
 
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>Přesun z uživatelského účtu na instanční objekt  
-Pokud jako instanční objekt používáte uživatelský účet Azure, vyhodnoťte, jestli se můžete přesunout do [spravované identity](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) nebo instančního objektu. Pokud nemůžete použít spravovanou identitu, zřiďte instanční objekt, který má pouze dostatečná oprávnění a rozsah ke spuštění požadovaných úloh. Instanční objekt můžete vytvořit tak, že [zaregistrujete aplikaci](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)nebo [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell).
+Pokud jako instanční objekt používáte uživatelský účet Azure, vyhodnoťte, jestli se můžete přesunout do [spravované identity](../../app-service/overview-managed-identity.md?tabs=dotnet) nebo instančního objektu. Pokud nemůžete použít spravovanou identitu, zřiďte instanční objekt, který má pouze dostatečná oprávnění a rozsah ke spuštění požadovaných úloh. Instanční objekt můžete vytvořit tak, že [zaregistrujete aplikaci](../develop/howto-create-service-principal-portal.md)nebo [PowerShell](../develop/howto-authenticate-service-principal-powershell.md).
 
 Pokud používáte Microsoft Graph, Projděte si dokumentaci konkrétního rozhraní API, [jako v tomto příkladu](/powershell/azure/create-azure-service-principal-azureps), a ujistěte se, že typ oprávnění pro aplikaci se zobrazuje jako podporovaný.
 
@@ -115,7 +115,7 @@ Pokud používáte Microsoft Graph, Projděte si dokumentaci konkrétního rozhr
 
 [Vytvoření instančního objektu](../develop/howto-create-service-principal-portal.md)
 
- [Monitorování přihlašovacích objektů instančního objektu](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
+ [Monitorování přihlašovacích objektů instančního objektu](../reports-monitoring/concept-sign-ins.md#sign-ins-report)
 
 **Další informace o zabezpečení účtů služeb:**
 

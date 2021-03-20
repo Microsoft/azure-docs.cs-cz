@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334052"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní databáze bez serveru s využitím Azure Cosmos DB a Azure Functions
@@ -124,7 +124,7 @@ Azure Functions poskytuje možnost vytvářet škálovatelné pracovní jednotky
 
 Azure Cosmos DB je doporučená databáze pro architekturu bez serveru z následujících důvodů:
 
-* **Okamžitý přístup ke všem datům** : máte podrobný přístup ke všem uloženým hodnotám, protože Azure Cosmos DB [automaticky indexuje](index-policy.md) všechna data ve výchozím nastavení a zpřístupňuje tyto indexy okamžitě. To znamená, že budete moct průběžně dotazovat, aktualizovat a přidávat nové položky do databáze a mít okamžitý přístup prostřednictvím Azure Functions.
+* **Okamžitý přístup ke všem datům**: máte podrobný přístup ke všem uloženým hodnotám, protože Azure Cosmos DB [automaticky indexuje](index-policy.md) všechna data ve výchozím nastavení a zpřístupňuje tyto indexy okamžitě. To znamená, že budete moct průběžně dotazovat, aktualizovat a přidávat nové položky do databáze a mít okamžitý přístup prostřednictvím Azure Functions.
 
 * Bez **schématu**. Azure Cosmos DB je bez schématu, takže je jednoznačně možné zpracovat jakýkoliv výstup z funkce Azure Functions. Tento "popisovač" cokoli usnadňuje vytvoření nejrůznějších funkcí, které mají všechny výstupy Azure Cosmos DB.
 

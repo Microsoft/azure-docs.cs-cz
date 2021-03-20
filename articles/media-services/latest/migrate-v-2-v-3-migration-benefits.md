@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698837"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598384"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Krok 1 – pochopení výhod migrace na rozhraní Media Services API V3
 
@@ -58,8 +58,8 @@ Byla zjištěna významná vylepšení Media Services se systémem v3.
 |**Ochrana obsahu** ||
 | [Ochrana obsahu](content-key-policy-concept.md)   podporuje víc klíčových funkcí. | Zákazníci teď můžou ve svých lokátorech streamování používat víc šifrovacích klíčů obsahu. |
 | **Monitorování** | |
-| Podpora oznámení [Azure EventGrid](reacting-to-media-services-events.md) | Oznámení EventGrid jsou ve větším množství funkcí. Existuje více typů oznámení, širší podpora SDK pro příjem oznámení ve vaší vlastní aplikaci a další stávající služby Azure, které mohou fungovat jako obslužné rutiny událostí. |
-| [Podpora a Integrace Azure Monitor v Azure Portal](monitor-events-portal-how-to.md) | To zákazníkům umožňuje vizualizovat Media Services využití kvót účtu, statistiky streamování v reálném čase a statistiky ingestování a archivace pro živé události. Zákazníci teď můžou nastavovat upozornění a provádět nezbytné akce na základě dat metrik v reálném čase. |
+| Podpora oznámení [Azure EventGrid](monitoring/reacting-to-media-services-events.md) | Oznámení EventGrid jsou ve větším množství funkcí. Existuje více typů oznámení, širší podpora SDK pro příjem oznámení ve vaší vlastní aplikaci a další stávající služby Azure, které mohou fungovat jako obslužné rutiny událostí. |
+| [Podpora a Integrace Azure Monitor v Azure Portal](monitoring/monitor-events-portal-how-to.md) | To zákazníkům umožňuje vizualizovat Media Services využití kvót účtu, statistiky streamování v reálném čase a statistiky ingestování a archivace pro živé události. Zákazníci teď můžou nastavovat upozornění a provádět nezbytné akce na základě dat metrik v reálném čase. |
 
 ## <a name="next-steps"></a>Další kroky
 

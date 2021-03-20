@@ -4,10 +4,10 @@ description: Oznámení o stavu služby umožňují zobrazit zprávy o stavu slu
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86529008"
 ---
 # <a name="use-the-azure-portal-to-view-service-health-notifications"></a>Použití Azure Portal k zobrazení oznámení o stavu služby
@@ -37,18 +37,18 @@ subStatus | Obvykle stavový kód HTTP odpovídajícího volání REST, ale mů�
 eventTimestamp | Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události
 submissionTimestamp | Časové razítko, kdy se událost stala k dispozici pro dotazování
 subscriptionId | Předplatné Azure, ve kterém se tato událost zaznamenala.
-status | Řetězec popisující stav operace. Mezi běžné hodnoty patří: **spuštěno**, **probíhá**, **úspěšné**, **neúspěšné**, **aktivní**a **vyřešené**.
+status | Řetězec popisující stav operace. Mezi běžné hodnoty patří: **spuštěno**, **probíhá**, **úspěšné**, **neúspěšné**, **aktivní** a **vyřešené**.
 operationName | Název operace.
 category | Tato vlastnost je vždy **ServiceHealth**.
 resourceId | ID prostředku ovlivněného prostředku.
 Properties. title | Lokalizovaný název této komunikace. Výchozím nastavením je angličtina.
 Vlastnosti. komunikace | Lokalizované podrobnosti komunikace s označením HTML. Výchozím nastavením je angličtina.
-Properties. incidentType | Jedna z následujících hodnot: **je vyžadována akce**, **informativní**, **incident**, **Údržba**nebo **zabezpečení**.
+Properties. incidentType | Jedna z následujících hodnot: **je vyžadována akce**, **informativní**, **incident**, **Údržba** nebo **zabezpečení**.
 Properties. trackingId | Incident, ke kterému je přidružena tato událost Tento postup použijte ke korelaci událostí souvisejících s incidentem.
 Properties. impactedServices | Řídicí objekt BLOB JSON, který popisuje služby a oblasti, na které se incidenty ovlivňují. Vlastnost obsahuje seznam služeb, z nichž každý má **ServiceName**, a seznam ovlivněných oblastí, z nichž každý má **RegionName**.
 Properties. defaultLanguageTitle | Komunikace v angličtině.
 Properties. defaultLanguageContent | Komunikace v angličtině buď jako kód HTML, nebo jako prostý text.
-Vlastnosti. Stage | Možné hodnoty pro **incidenty**a **zabezpečení** jsou **aktivní,** **vyřešené** nebo **RCA**. Pro **je vyžadována akce** nebo **informativní** je jedinou hodnotou **aktivní.** V případě **údržby** : **aktivní**, **plánovaná**, **Nedokončená**, **zrušená**, **přeplánovaná**, **vyřešená**nebo **Dokončená**.
+Vlastnosti. Stage | Možné hodnoty pro **incidenty** a **zabezpečení** jsou **aktivní,** **vyřešené** nebo **RCA**. Pro **je vyžadována akce** nebo **informativní** je jedinou hodnotou **aktivní.** V případě **údržby** : **aktivní**, **plánovaná**, **Nedokončená**, **zrušená**, **přeplánovaná**, **vyřešená** nebo **Dokončená**.
 Properties. communicationId | Komunikace, ke které je tato událost přidružena.
 
 ### <a name="details-on-service-health-level-information"></a>Podrobnosti o úrovni stavu služby

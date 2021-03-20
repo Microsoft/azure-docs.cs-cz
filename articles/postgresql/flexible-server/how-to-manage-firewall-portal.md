@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 8c107b88f964d8e657d6833fc3a2e8425d9053ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90934865"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Vytvoření a Správa pravidel brány firewall pro Azure Database for PostgreSQL flexibilní Server pomocí Azure Portal
@@ -32,7 +32,7 @@ V tomto článku se zaměříme na vytvoření serveru PostgreSQL s **veřejným
 3. Jako možnost nasazení vyberte **flexibilní Server** .
 4. Vyplňte formulář **základy** .
 5. Chcete-li nakonfigurovat, jak se chcete připojit k serveru, přejdete na kartu **sítě** .
-6. V části **metoda připojení**vyberte *veřejný přístup (povolené IP adresy)*. Chcete-li vytvořit **pravidla brány firewall**, zadejte název pravidla brány firewall a jednu IP adresu nebo rozsah adres. Pokud chcete pravidlo omezit na jednu IP adresu, zadejte v poli Počáteční IP adresa a koncovou IP adresu stejnou adresu. Otevření brány firewall umožňuje správcům, uživatelům a aplikacím přístup k libovolné databázi na serveru PostgreSQL, ke které mají platné přihlašovací údaje.
+6. V části **metoda připojení** vyberte *veřejný přístup (povolené IP adresy)*. Chcete-li vytvořit **pravidla brány firewall**, zadejte název pravidla brány firewall a jednu IP adresu nebo rozsah adres. Pokud chcete pravidlo omezit na jednu IP adresu, zadejte v poli Počáteční IP adresa a koncovou IP adresu stejnou adresu. Otevření brány firewall umožňuje správcům, uživatelům a aplikacím přístup k libovolné databázi na serveru PostgreSQL, ke které mají platné přihlašovací údaje.
    > [!Note]
    > Azure Database for PostgreSQL – flexibilní Server vytvoří bránu firewall na úrovni serveru. Ta brání externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru, pokud nevytvoříte pravidlo k otevření brány firewall pro konkrétní IP adresy.
 7. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte flexibilní konfiguraci serveru.

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90935069"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Správa Azure Database for MySQLho flexibilního serveru (ve verzi Preview) pomocí Azure Portal
@@ -22,11 +22,11 @@ ms.locfileid: "90935069"
 V tomto článku se dozvíte, jak spravovat Azure Database for MySQL flexibilní servery (Preview). Úlohy správy zahrnují škálování na výpočetní výkon a úložiště, heslo správce serveru Rest a odstranění serveru.
 
 ## <a name="sign-in"></a>Přihlásit se
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com). V Azure Portal přejít na prostředek flexibilního serveru.
+Přihlaste se na [Azure Portal](https://portal.azure.com). V Azure Portal přejít na prostředek flexibilního serveru.
 
 ## <a name="scale-compute-and-storage"></a>Škálování výpočetních prostředků a úložiště
 
-Po vytvoření serveru můžete škálovat mezi různými [cenovými úrovněmi](https://azure.microsoft.com/pricing/details/mysql/) , jak se vaše potřeby mění. Můžete také snížit nebo snížit kapacitu výpočetních prostředků a paměti tím, že zvýšíte nebo zmenšíte virtuální jádra.
+Po vytvoření serveru můžete škálovat mezi různými [cenovými úrovněmi](https://azure.microsoft.com/pricing/details/mysql/) , jak se vaše potřeby mění. Zvýšením nebo snížením počtu virtuálních jader můžete také vertikálně navýšit nebo snížit kapacitu výpočetního výkonu a paměti.
 
 1. V Azure Portal vyberte svůj server. Vyberte **COMPUTE + úložiště**, které najdete v části **Nastavení** .
 
@@ -50,7 +50,7 @@ Můžete změnit heslo role správce pomocí Azure Portal.
 2. Zadejte nové heslo a potvrďte ho. Textové pole vás vyzve k zadání požadavků na složitost hesla.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="škálování úložiště flexibilního serveru":::
+   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="resetování hesla pro flexibilní Server":::
 
 3. Kliknutím na **Uložit** uložte nové heslo.
 
@@ -63,7 +63,7 @@ Server můžete odstranit, pokud ho už nepotřebujete.
 2. Zadáním názvu serveru do vstupního pole potvrďte, že chcete odstranit server.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="škálování úložiště flexibilního serveru":::
+   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="odstranění flexibilního serveru":::
 
    > [!NOTE]
    > Odstranění serveru je nevratné.

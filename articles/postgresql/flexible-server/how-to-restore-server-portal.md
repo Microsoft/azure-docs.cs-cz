@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90935895"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>Obnovení flexibilního serveru v určitém časovém okamžiku
@@ -30,7 +30,7 @@ K dokončení tohoto průvodce budete potřebovat:
 
 Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší existující zálohy.
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
 
 2.  Klikněte na **Přehled** na levém panelu a pak klikněte na **obnovit** .
    
@@ -40,7 +40,7 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 
 4.  Vyberte **nejstarší bod obnovení** a v poli **obnovit do nového serveru** zadejte nový název serveru. Zobrazí se nejbližší časové razítko, které můžete obnovit. 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Přehled obnovení":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="Nejstarší čas obnovení":::
 
 5.  Klikněte na **OK**.
 
@@ -50,7 +50,7 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 
 Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší existující zálohy.
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
 
 2.  Na stránce Přehled klikněte na tlačítko **obnovit**.
  :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="Přehled obnovení":::
@@ -61,7 +61,7 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 
 5.  Vyberte datum a čas a zadejte nový název serveru v poli **obnovit na nový server** . 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Přehled obnovení":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Čas vlastního obnovení":::
  
 6.  Klikněte na **OK**.
 
@@ -70,5 +70,5 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 ## <a name="next-steps"></a>Další kroky
 
 -   Informace o [kontinuitě podnikových aplikací](./concepts-business-continuity.md)
--   Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .
+-   Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .
 -   Další informace o [zálohování a obnovení](./concepts-backup-restore.md)

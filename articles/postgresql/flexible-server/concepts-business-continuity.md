@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 341d3c6f0a2d84c2b7b725959db9f7e5dd80d3ff
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92542960"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-flexibilního serveru
@@ -50,7 +50,7 @@ Níže jsou uvedené některé plánované scénáře údržby. Tyto události o
 | <b>Nové nasazení softwaru (iniciované v Azure) | Nové opravy funkcí nebo opravy chyb se automaticky nastávají v rámci plánované údržby služby a můžete naplánovat, kdy se tyto aktivity budou provádět. Další informace najdete na [portálu](https://aka.ms/servicehealthpm). | 
 | <b>Inovace dílčí verze (iniciované v Azure) | Azure Database for PostgreSQL automaticky opraví databázové servery na podverzi určenou v Azure. K tomu dochází jako součást plánované údržby služby. Databázový server se automaticky restartuje s novou dílčí verzí. Další informace najdete v [dokumentaci](../concepts-monitoring.md#planned-maintenance-notification). Můžete také kontrolovat [portál](https://aka.ms/servicehealthpm).| 
 
- Pokud je flexibilní server nakonfigurovaný se **záložní vysokou dostupností zóny** , flexibilní Server provede nejprve škálování a operace údržby na pohotovostním serveru. Další informace najdete v tématu věnovaném [konceptům a vysoké dostupnosti](./concepts-high-availability.md).
+ Pokud je flexibilní server nakonfigurovaný se **záložní vysokou dostupností zóny**, flexibilní Server provede nejprve škálování a operace údržby na pohotovostním serveru. Další informace najdete v tématu věnovaném [konceptům a vysoké dostupnosti](./concepts-high-availability.md).
 
 ##  <a name="unplanned-downtime-mitigation"></a>Zmírnění neplánovaných výpadků
 

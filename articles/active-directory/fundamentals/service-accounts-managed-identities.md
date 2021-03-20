@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a7600239d6e960fa2e635c9e7d9049a7c02db3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032347"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587827"
 ---
 # <a name="securing-managed-identities"></a>Zabezpečení spravovaných identit
 
@@ -50,11 +50,11 @@ Azure má rovinu ovládacího prvku a rovinu dat. V řídicí rovině vytvořít
 
 Jakmile cílový systém přijme token pro ověřování, může podporovat různé mechanismy pro autorizaci své řídicí roviny a roviny dat.
 
-Všechny operace roviny ovládacího prvku Azure se spravují pomocí [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) a používají [Access Control na základě rolí Azure](https://docs.microsoft.com/azure/role-based-access-control/overview). V rovině dat má každý cílový systém vlastní mechanismus ověřování. Azure Storage podporuje službu Azure RBAC na rovině dat. Například aplikace používající Azure App Services můžou číst data z Azure Storage a aplikace, které používají službu Azure Kubernetes, můžou číst tajné kódy uložené v Azure Key Vault.
+Všechny operace roviny ovládacího prvku Azure se spravují pomocí [Azure Resource Manager](../../azure-resource-manager/management/overview.md) a používají [Access Control na základě rolí Azure](../../role-based-access-control/overview.md). V rovině dat má každý cílový systém vlastní mechanismus ověřování. Azure Storage podporuje službu Azure RBAC na rovině dat. Například aplikace používající Azure App Services můžou číst data z Azure Storage a aplikace, které používají službu Azure Kubernetes, můžou číst tajné kódy uložené v Azure Key Vault.
 
-Další informace o řídicích a datových rovinách najdete v tématech [Řídicí rovina a operace roviny dat – Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/control-plane-and-data-plane).
+Další informace o řídicích a datových rovinách najdete v tématech [Řídicí rovina a operace roviny dat – Azure Resource Manager](../../azure-resource-manager/management/control-plane-and-data-plane.md).
 
-Všechny služby Azure budou nakonec podporovat spravované identity. Další informace najdete v tématu [služby, které podporují spravované identity prostředků Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+Všechny služby Azure budou nakonec podporovat spravované identity. Další informace najdete v tématu [služby, které podporují spravované identity prostředků Azure](../managed-identities-azure-resources/services-support-managed-identities.md).
 
 ##  
 
@@ -116,7 +116,7 @@ To můžete provést vytvořením výčtu členů vysoce privilegovaných skupin
 
    `Get-AzureADGroupMember -ObjectId <String> [-All <Boolean>] [-Top <Int32>] [<CommonParameters>]`
 
-* [Ujistěte se, že víte, k jakým prostředkům má spravovaná identita přístup](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell).
+* [Ujistěte se, že víte, k jakým prostředkům má spravovaná identita přístup](../../role-based-access-control/role-assignments-list-powershell.md).
 
 ## <a name="move-to-managed-identities"></a>Přesunout na spravované identity
 
@@ -126,11 +126,11 @@ Pokud používáte instanční objekt nebo uživatelský účet služby Azure AD
 
 **Informace o vytváření spravovaných identit najdete v těchto tématech:** 
 
-[Vytvořte spravovanou identitu přiřazenou uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal). 
+[Vytvořte spravovanou identitu přiřazenou uživatelem](../managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
 
-[Povolení spravované identity přiřazené systémem během vytváření prostředků](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Povolení spravované identity přiřazené systémem během vytváření prostředků](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-[Povolit spravovanou identitu přiřazenou systémem u existujícího prostředku](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Povolit spravovanou identitu přiřazenou systémem u existujícího prostředku](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Další informace o účtech služeb najdete v těchto tématech:**
 
@@ -146,4 +146,3 @@ Pokud používáte instanční objekt nebo uživatelský účet služby Azure AD
 
  
 
- 

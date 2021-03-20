@@ -4,10 +4,10 @@ description: Tento vzor Azure Policy poskytuje příklady přidávání parametr
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 3016fc7889f68fd13e993c67ca645a4af055c651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88545552"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy – vzor: značky
@@ -32,7 +32,7 @@ V této ukázce je **režim** nastaven na _vše_ , protože cílí na skupinu pr
 :::code language="json" source="~/policy-templates/patterns/pattern-tags-1.json" range="26-36" highlight="7-8":::
 
 V této části definice zásady `concat` kombinuje parametr parametrů **TagName** a `tags['name']` **pole** formát to-řekněte, aby se vyhodnotila Tato značka pro parametr **tagValue**.
-Při použití **notEquals** se v případě, že **značky \[ TagName \] ** neshodují s **tagValue**, se aktivuje efekt **Úpravy** .
+Při použití **notEquals** se v případě, že **značky \[ TagName \]** neshodují s **tagValue**, se aktivuje efekt **Úpravy** .
 
 :::code language="json" source="~/policy-templates/patterns/pattern-tags-1.json" range="43-47" highlight="3-4":::
 

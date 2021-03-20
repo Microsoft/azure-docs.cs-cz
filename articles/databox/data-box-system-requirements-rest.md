@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/05/2020
 ms.author: alkohli
 ms.openlocfilehash: ac5f2de383066d6ee399dac3b0ad8c365b2e72bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91744086"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box požadavky na úložiště objektů BLOB
@@ -24,7 +24,7 @@ Doporučujeme, abyste pečlivě prostudovali informace, než se připojíte k ú
 
 ## <a name="storage-differences"></a>Rozdíly v úložišti
 
-|     Příznak                                             |     Azure Storage                                     |     Úložiště objektů blob Data Boxu |
+|     Funkce                                             |     Azure Storage                                     |     Úložiště objektů blob Data Boxu |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
 |    Azure File Storage                                   |    Podporované cloudové sdílené složky SMB              |    Nepodporováno      |
 |    Šifrování služby pro neaktivní neaktivní data                  |    256 šifrování AES                             |    256 šifrování AES |

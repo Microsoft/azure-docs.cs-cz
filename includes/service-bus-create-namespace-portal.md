@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90606165"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
@@ -21,7 +21,7 @@ Pokud chcete začít používat entity zasílání zpráv služby Service Bus v 
 Vytvoření oboru názvů:
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. V levém navigačním podokně portálu vyberte **+ vytvořit prostředek**, vyberte **integrace**a pak vyberte **Service Bus**.
+2. V levém navigačním podokně portálu vyberte **+ vytvořit prostředek**, vyberte **integrace** a pak vyberte **Service Bus**.
 
     ![Vytvoření > > integrací prostředků Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. V dialogovém okně **vytvořit obor názvů** proveďte následující kroky: 
@@ -30,9 +30,9 @@ Vytvoření oboru názvů:
     3. Pokud jste vybrali cenovou úroveň **Premium** , postupujte podle následujících kroků: 
         1. Zadejte počet **jednotek zasílání zpráv**. Úroveň Premium poskytuje izolaci prostředků na úrovni procesoru a paměti, aby se jednotlivé úlohy spouštěly izolovaně. Kontejner prostředků se nazývá jednotka zasílání zpráv. Obor názvů Premium má alespoň jednu jednotku zasílání zpráv. Pro každý obor názvů Service Bus Premium můžete vybrat 1, 2 nebo 4 jednotky zasílání zpráv. Další informace najdete v tématu [Service Bus zasílání zpráv](../articles/service-bus-messaging/service-bus-premium-messaging.md)na úrovni Premium.
         2. Určete, zda má být zóna oboru názvů **redundantní**. Redundance zóny poskytuje rozšířenou dostupnost tím, že šíří repliky napříč zónami dostupnosti v rámci jedné oblasti bez dalších nákladů. Další informace najdete v tématu [zóny dostupnosti v Azure](../articles/availability-zones/az-overview.md).
-    4. V části **předplatné**vyberte předplatné Azure, ve kterém chcete vytvořit obor názvů.
-    5. V poli **Skupina prostředků**vyberte existující skupinu prostředků, ve které bude obor názvů živý, nebo vytvořte novou.      
-    6. V poli **umístění**vyberte oblast, ve které by měl být hostovaný obor názvů.
+    4. V části **předplatné** vyberte předplatné Azure, ve kterém chcete vytvořit obor názvů.
+    5. V poli **Skupina prostředků** vyberte existující skupinu prostředků, ve které bude obor názvů živý, nebo vytvořte novou.      
+    6. V poli **umístění** vyberte oblast, ve které by měl být hostovaný obor názvů.
     7. Vyberte **Vytvořit**. Systém teď vytvoří obor názvů a povolí ho. Pravděpodobně budete muset několik minut počkat, než systém zřídí prostředky pro váš účet.
    
         ![Vytvoření oboru názvů](./media/service-bus-create-namespace-portal/create-namespace.png)

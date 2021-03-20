@@ -111,6 +111,8 @@
           href: speech-synthesis-markup.md
         - name: Syntéza řeči s využitím rozhraní API pro řeč dlouhého formátu
           href: long-audio-api.md
+        - name: Získat data viseme pro sadu LIP – synchronizace
+          href: how-to-speech-synthesis-viseme.md
     - name: Přizpůsobení
       items:
         - name: Portál služby Vlastní hlas

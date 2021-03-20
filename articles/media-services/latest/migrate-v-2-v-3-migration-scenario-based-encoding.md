@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: e093e22e2f1db3b432fdf328a077e56a8e56d92b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612489"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598401"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Pokyny k migraci na základě scénáře kódování
 
@@ -26,7 +26,7 @@ ms.locfileid: "102612489"
 
 Tento článek vám poskytne kódování na základě scénářů, které vám pomůže při migraci z Azure Media Services V2 na v3.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než se pustíte do změny svého pracovního postupu kódování, doporučujeme pochopit rozdíly v způsobu správy úložiště.  V AMS V3 se Azure Storage rozhraní API používá ke správě účtů úložiště přidružených k vašemu účtu Media Services.
 
@@ -76,7 +76,7 @@ Chcete-li zobrazit větší verzi, klikněte na obrázek níže.
         - Výstup assetů
         - Skupina prostředků
         - Název účtu AMS  
-1. Pomocí [Event Grid](monitor-events-portal-how-to.md) můžete monitorovat svoji úlohu.
+1. Pomocí [Event Grid](monitoring/monitor-events-portal-how-to.md) můžete monitorovat svoji úlohu.
 1. Odešlete úlohu.
 
 ## <a name="custom-presets-from-v2-to-v3-encoding"></a>Vlastní přednastavení z kódování v2 až V3

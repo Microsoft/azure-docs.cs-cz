@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e0801daa5bf83889be87987d440e377287b5ea
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366186"
 ---
 # <a name="conditional-access-block-access"></a>Podmíněný přístup: blokovat přístup
@@ -43,24 +43,24 @@ Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu,
 První zásada blokuje přístup ke všem aplikacím s výjimkou Microsoft 365ch aplikací, pokud nejsou v důvěryhodném umístění.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
-   1. V části **Zahrnout**vyberte **Všichni uživatelé**.
-   1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
+   1. V části **Zahrnout** vyberte **Všichni uživatelé**.
+   1. V části **vyloučit** vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**vyberte následující možnosti:
-   1. V části **Zahrnout**vyberte **všechny cloudové aplikace**.
-   1. V části **vyloučit**vyberte možnost **Office 365**, vyberte **možnost vybrat**a pak vyberte možnost **Hotovo**.
+1. V části **cloudové aplikace nebo akce** vyberte následující možnosti:
+   1. V části **Zahrnout** vyberte **všechny cloudové aplikace**.
+   1. V části **vyloučit** vyberte možnost **Office 365**, vyberte **možnost vybrat** a pak vyberte možnost **Hotovo**.
 1. V části **podmínky**:
-   1. V **Conditions**části  >  **umístění**podmínek.
+   1. V části  >  **umístění** podmínek.
       1. Nastavte **Konfigurovat** na **Ano** .
-      1. V části **Zahrnout**vyberte **libovolné umístění**.
-      1. V části **vyloučit**vyberte **všechna důvěryhodná umístění**.
+      1. V části **Zahrnout** vyberte **libovolné umístění**.
+      1. V části **vyloučit** vyberte **všechna důvěryhodná umístění**.
       1. Vyberte **Hotovo**.
-   1. V části **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**a **Hotovo**.
-1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **blokovat přístup**a pak vyberte **Vybrat**.
+   1. V části **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano** a vyberte **Hotovo** a **Hotovo**.
+1. V části **řízení přístupu**  >  **udělení** přístupu vyberte **blokovat přístup** a pak vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásady** na **pouze sestavy**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 
@@ -69,12 +69,12 @@ Níže je vytvořena druhá zásada, která vyžaduje vícefaktorové ověřová
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
-   1. V části **Zahrnout**vyberte **Všichni uživatelé**.
-   1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
+   1. V části **Zahrnout** vyberte **Všichni uživatelé**.
+   1. V části **vyloučit** vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Hotovo**.
-1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**, zvolte **Office 365**a pak vyberte **Vybrat**a pak **Hotovo**.
-1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**.
-   1. Vyberte možnost **požadovat vícefaktorové ověřování** a **vyžadovat, aby zařízení byla označena jako vyhovující** vyberte vybrat. **Select**
+1. V části **cloudové aplikace nebo akce**  >  vyberte **vybrat aplikace**, zvolte **Office 365** a pak vyberte **Vybrat** a pak **Hotovo**.
+1. V části **řízení přístupu**  >  **udělení** přístupu vyberte **udělit přístup**.
+   1. Vyberte možnost **požadovat vícefaktorové ověřování** a **vyžadovat, aby zařízení byla označena jako vyhovující** vyberte vybrat. 
    1. Ujistěte se, že je vybrána možnost **vyžadovat všechny vybrané ovládací prvky** .
    1. Vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásady** na **pouze sestavy**.

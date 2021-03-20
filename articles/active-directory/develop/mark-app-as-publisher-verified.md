@@ -13,17 +13,17 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92363449"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Označení aplikace jako ověřené vydavatelem
 
 Když registrace aplikace má ověřeného vydavatele, znamená to, že vydavatel aplikace [ověřil](/partner-center/verification-responses) svoji identitu pomocí svého účtu Microsoft Partner Network (MPN) a přidružil tento účet MPN k registraci aplikace. Tento článek popisuje, jak dokončit proces [ověření vydavatele](publisher-verification-overview.md) .
 
-## <a name="quickstart"></a>Rychlý start
+## <a name="quickstart"></a>Rychlé zprovoznění
 Pokud už jste zaregistrovaní v Microsoft Partner Network (MPN) a splnili jste [požadavky](publisher-verification-overview.md#requirements), můžete začít hned: 
 
 1. Přihlaste se k [portálu pro registraci aplikací](https://aka.ms/PublisherVerificationPreview) pomocí [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md)
@@ -66,7 +66,7 @@ Ujistěte se, že jste splnili [požadavky](publisher-verification-overview.md#r
 
 1. Počkejte na zpracování žádosti, což může trvat několik minut. 
 
-1. Pokud bylo ověření úspěšné, okno ověření vydavatele se zavře a vrátí se do okna branding. Vedle ověřeného **zobrazovaného názvu vydavatele**se zobrazí modrý ověřený znak. 
+1. Pokud bylo ověření úspěšné, okno ověření vydavatele se zavře a vrátí se do okna branding. Vedle ověřeného **zobrazovaného názvu vydavatele** se zobrazí modrý ověřený znak. 
 
 1. Uživatelům, kteří se zobrazí výzva k vyjádření souhlasu s vaší aplikací, začne brzy zobrazovat výzvu, i když se tento proces úspěšně dokončí, i když to může trvat delší dobu, než se replika dokončí v celém systému. 
 

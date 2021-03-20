@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/18/2020
 ms.openlocfilehash: 03f80ebeb7b30d8c0fe14060335541d77b7523b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898624"
 ---
 # <a name="create-python-model-module"></a>Vytvořit modul Python model
@@ -42,7 +42,7 @@ V tomto článku se dozvíte, jak pomocí jednoduchého kanálu **vytvořit mode
 
 ![Diagram vytvoření modelu Pythonu](./media/module/create-python-model.png)
 
-1. Vyberte **vytvořit model Python**a upravte skript pro implementaci modelování nebo procesu správy dat. Model můžete založit na jakémkoli učení, které je součástí balíčku Pythonu v prostředí Azure Machine Learning.
+1. Vyberte **vytvořit model Python** a upravte skript pro implementaci modelování nebo procesu správy dat. Model můžete založit na jakémkoli učení, které je součástí balíčku Pythonu v prostředí Azure Machine Learning.
 
 > [!NOTE]
 > Věnujte zvláštní pozornost komentářům v ukázkovém kódu skriptu a ujistěte se, že skript přesně dodržuje požadavky, včetně názvu třídy, metod a signatury metody. Porušení bude mít za následek výjimky. 

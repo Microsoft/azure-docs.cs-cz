@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90890298"
 ---
 # <a name="select-columns-in-dataset-module"></a>Výběr sloupců v modulu DataSet
 
 Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
-Pomocí tohoto modulu můžete zvolit podmnožinu sloupců, které se mají použít v rámci podřízených operací. Modul neodebere fyzické sloupce ze zdrojové datové sady. místo toho vytvoří podmnožinu sloupců, podobně jako *zobrazení* nebo *projekce*databáze.
+Pomocí tohoto modulu můžete zvolit podmnožinu sloupců, které se mají použít v rámci podřízených operací. Modul neodebere fyzické sloupce ze zdrojové datové sady. místo toho vytvoří podmnožinu sloupců, podobně jako *zobrazení* nebo *projekce* databáze.
 
 Tento modul je užitečný v případě, že potřebujete omezit sloupce dostupné pro operaci pro příjem dat, nebo pokud chcete zmenšit velikost datové sady odebráním nepotřebných sloupců.
 
@@ -62,7 +62,7 @@ V modulu je více možností pro výběr sloupců podle názvu:
     Pokud je vaše datová sada rozsáhlá, může být jednodušší použít indexy nebo vygenerované seznamy názvů místo výběru sloupců jednotlivě. Za předpokladu, že jste si seznam připravili předem:
 
     1. Klikněte na možnost **s pravidly** . 
-    2. Vyberte **žádné sloupce**, vyberte  **Zahrnout**a pak klikněte do textového pole s červeným vykřičníkem. 
+    2. Vyberte **žádné sloupce**, vyberte  **Zahrnout** a pak klikněte do textového pole s červeným vykřičníkem. 
     3. Vložte nebo zadejte čárkami oddělený seznam dříve ověřených názvů sloupců. Modul nemůžete uložit, pokud má nějaký sloupec neplatný název, proto nezapomeňte zkontrolovat názvy předem.
     
     Tuto metodu můžete také použít k určení seznamu sloupců pomocí jejich hodnot indexu. 

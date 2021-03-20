@@ -2,14 +2,14 @@
 title: 'Rychlý Start: monitorování webů pomocí Azure Monitor Application Insights'
 description: V tomto rychlém startu se dozvíte, jak nastavit monitorování webu na straně klienta nebo prohlížeče pomocí Azure Monitor Application Insights.
 ms.topic: quickstart
-ms.date: 08/19/2020
+ms.date: 03/19/2021
 ms.custom: mvc
-ms.openlocfilehash: 1773ebb9c490420451a119c8343fb613ff50f029
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0e10db39c8dbbf81087d696cfbb5b2ded1ae79ac
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488575"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654891"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rychlý Start: Začněte monitorovat web pomocí Azure Monitor Application Insights
 
@@ -17,7 +17,7 @@ V tomto rychlém startu se naučíte, jak na web přidat Open Source sadu Applic
 
 Azure Monitor Application Insights umožňuje snadné monitorování webu z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Application Insights poskytuje možnosti monitorování na straně serveru i klienta nebo prohlížeče.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Web, na který můžete přidat Application Insights JavaScript SDK.
@@ -60,9 +60,9 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
 ## <a name="configure-application-insights-sdk"></a>Konfigurace Application Insights SDK
 
-1. Vyberte **Přehled**  >  **základy** a pak zkopírujte **klíč instrumentace** vaší aplikace.
+1. Vyberte **Přehled** a zkopírujte **připojovací řetězec** aplikace. V tomto příkladu potřebujeme jenom část instrumentace připojovacího řetězce `InstrumentationKey=00000000-0000-0000-0000-000000000000;` .
 
-   ![Formulář Nový prostředek Application Insights](media/website-monitoring/instrumentation-key-001.png)
+    :::image type="content" source="media/website-monitoring/keys.png" alt-text="Snímek obrazovky se stránkou s přehledem a klíčem instrumentace a připojovacím řetězcem":::
 
 1. ``hello_world.html``Před uzavírací značku přidejte do souboru následující skript ``</head>`` :
 
@@ -76,7 +76,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
     crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
     // onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
     cfg: { // Application Insights Configuration
-        instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+        connectionString:"InstrumentationKey=YOUR_INSTRUMENTATION_KEY_GOES_HERE;" 
         /* ...Other Configuration Options... */
     }});
     </script>
@@ -84,7 +84,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
     > [!NOTE]
     > Aktuální fragment (uvedený výše) je verze "5", verze je ve fragmentu zakódována jako sv: "#" a [aktuální verze a podrobnosti konfigurace jsou k dispozici na GitHubu](https://go.microsoft.com/fwlink/?linkid=2156318).
-   
+
 1. Upravte soubor ``hello_world.html`` a přidejte svůj instrumentační klíč.
 
 1. Otevřete soubor ``hello_world.html`` v místní relaci prohlížeče. Tato akce vytvoří zobrazení na jednu stránku. Chcete-li generovat více zobrazení zkušební stránky, můžete aktualizovat prohlížeč.
@@ -95,7 +95,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
    Čtyři výchozí grafy na stránce Přehled mají nastavený obor na data aplikace na straně serveru. Vzhledem k tomu, že instrumentuje interakce klienta nebo prohlížeče se sadou JavaScript SDK, toto konkrétní zobrazení se nepoužije, pokud je v něm také nainstalovaná sada SDK na straně serveru.
 
-1. Vyberte  ![ ikonu mapa aplikace Analytics ](media/website-monitoring/006.png) .  Tato akce otevře **analýzu**, která poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. Chcete-li zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
+1. Vyberte **Protokoly**.  Tato akce otevře **protokol**, který poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. Chcete-li zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
 
     ```kusto
     // average pageView duration by name
@@ -112,19 +112,15 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
     | render timechart
     ```
 
-   ![Graf analýzy uživatelských požadavků za časové období](./media/website-monitoring/analytics-query.png)
+   :::image type="content" source="media/website-monitoring/log-query.png" alt-text="Snímek grafu Log Analytics s požadavky uživatelů v časovém intervalu":::
 
-1. Vraťte se na stránku **Přehled**. Pod hlavičkou **prozkoumat** vyberte možnost **prohlížeč** a pak vyberte možnost **výkon**.  Zobrazí se metriky související s výkonem vašeho webu. Existuje odpovídající zobrazení pro analýzu selhání a výjimek na vašem webu. Můžete vybrat **ukázky** pro přístup k [podrobnostem o koncových transakcích](./transaction-diagnostics.md).
+1. Vraťte se na stránku **Přehled**. Pod hlavičkou **prozkoumat** vyberte **výkon** a pak vyberte kartu **prohlížeč** .  Zobrazí se metriky související s výkonem vašeho webu. Existuje odpovídající zobrazení pro analýzu selhání a výjimek na vašem webu. Můžete vybrat **ukázky** pro přístup k [podrobnostem o koncových transakcích](./transaction-diagnostics.md).
 
-   ![Graf metrik serveru](./media/website-monitoring/browser-performance.png)
+     :::image type="content" source="media/website-monitoring/performance.png" alt-text="Obrazovka karty výkon s grafem metrik prohlížeče":::
 
-1. V hlavní nabídce Application Insights pod hlavičkou **použití** vyberte [**Uživatelé**](./usage-segmentation.md) a začněte prozkoumat [analytické nástroje chování uživatele](./usage-overview.md). Protože provádíme testování z jednoho počítače, zobrazí se pouze data pro jednoho uživatele. Pro živý web by distribuce uživatelů mohla vypadat takto:
-
-     ![Graf uživatelů](./media/website-monitoring/usage-users.png)
+1. V hlavní nabídce Application Insights pod hlavičkou **použití** vyberte [**Uživatelé**](./usage-segmentation.md) a začněte prozkoumat [analytické nástroje chování uživatele](./usage-overview.md). Protože provádíme testování z jednoho počítače, zobrazí se pouze data pro jednoho uživatele.
 
 1. Pro složitější web s více stránkami můžete použít nástroj [**toky uživatelů**](./usage-flows.md) ke sledování cest, které návštěvníci procházejí různými částmi vašeho webu.
-
-   ![Vizualizace nástroje Toky uživatelů](./media/website-monitoring/user-flows.png)
 
 Další informace o pokročilejších konfiguracích pro monitorování webů najdete v [referenčních informacích k rozhraní API sady JavaScript SDK](./javascript.md).
 

@@ -8,19 +8,19 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
 ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546547"
 ---
-# <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Připojení a přehled dotazů pro Azure Database for PostgreSQL – jeden server
+# <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Přehled připojení a dotazování Azure Database for PostgreSQL – jeden server
 
 Následující dokument obsahuje odkazy na příklady, které ukazují, jak se připojit a dotazovat se na Azure Database for PostgreSQL jednom serveru. Tato příručka také obsahuje doporučení a rozšíření TLS, pomocí kterých se můžete připojit k serveru v níže uvedených podporovaných jazycích.
 
 ## <a name="quickstarts"></a>Rychlé starty
 
-| Rychlý start | Popis |
+| Rychlé zprovoznění | Description |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|Pomocí pgAdmin se můžete připojit k serveru a zjednoduší se tím vytváření, údržba a používání databázových objektů.|
 |[psql v Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Tento článek ukazuje, jak spustit [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) v [Azure Cloud Shell](../cloud-shell/overview.md) pro připojení k vašemu serveru a následné spuštění příkazů pro dotazování, vkládání, aktualizaci a odstraňování dat v databázi. **Psql** můžete spustit, pokud je nainstalovaná ve vašem vývojovém prostředí.|
