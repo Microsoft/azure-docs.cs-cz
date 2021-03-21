@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 8300a7c120ce816c8068a88fa69f4f978fa664ca
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034502"
 ---
 # <a name="tutorial-load-geojson-data-into-azure-maps-android-sdk"></a>Kurz: načtení dat typu injson do Azure Maps Android SDK
@@ -25,7 +25,7 @@ Tento kurz vás provede procesem importu dat umístění geografického souboru 
 > * Vytvořte zdroj dat a načtěte ho v souboru. JSON z místního souboru nebo webu.
 > * Zobrazte data na mapě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Dokončete [rychlý Start: Vytvoření aplikace pro Android](quick-android-map.md). V tomto kurzu se rozšiřuje kód používaný v tomto rychlém startu.
 2. Stáhněte si [ukázkové body důležitého](https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/SamplePoiDataSet.json) souboru JSON.

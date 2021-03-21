@@ -7,17 +7,17 @@ ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
 ms.openlocfilehash: a0201882b74d2acf57c246d2dc63530ca8b1f010
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101692608"
 ---
-# <a name="device-update-for-iot-hub-resource-management"></a>Aktualizace zařízení pro správu prostředků IoT Hub
+# <a name="device-update-for-iot-hub-resource-management"></a>Aktualizace zařízení pro správu prostředků IoT Hubu
 
 Pokud chcete začít s aktualizací zařízení, budete muset vytvořit účet aktualizace zařízení, instanci a nastavit role řízení přístupu. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Přístup k IoT Hub. Doporučuje se použít úroveň S1 (Standard) nebo vyšší. 
 * Podporované prohlížeče:

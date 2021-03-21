@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102557008"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
@@ -49,7 +49,7 @@ Tento článek ukazuje, jak vytvořit aplikaci logiky a pracovní postup v Visua
 > [!NOTE]
 > Informace o aktuálních známých problémech najdete na [stránce Logic Apps Public Preview známé problémy v GitHubu](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="access-and-connectivity"></a>Přístup a připojení
 
@@ -103,7 +103,7 @@ Chcete-li při použití macOS nebo Linux místně sestavit a spustit Visual Stu
    > [!IMPORTANT]
    > Pokud plánujete nasazení do kontejneru Docker, budete také muset přidat tento připojovací řetězec do souboru Docker, který používáte pro nasazení.
 
-### <a name="tools"></a>nástroje
+### <a name="tools"></a>Nástroje
 
 * [Visual Studio Code 1.30.1 (leden 2019) nebo vyšší](https://code.visualstudio.com/), což je zdarma. Také si stáhněte a nainstalujte tyto nástroje pro Visual Studio Code, pokud je ještě nemáte:
 

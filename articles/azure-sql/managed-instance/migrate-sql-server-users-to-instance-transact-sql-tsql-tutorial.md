@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84708645"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: Migrace uživatelů a skupin systému Windows v instanci SQL Server do spravované instance Azure SQL pomocí syntaxe jazyka T-SQL DDL
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 > - Ruční migrace uživatelů na MI pomocí příkazu ALTER USER syntax
 > - Testování ověřování pomocí nových mapovaných uživatelů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu platí následující předpoklady:
 
@@ -84,7 +84,7 @@ Určuje název skupiny identifikované v rámci databáze.
 > Uživatelé: testUser1, testGroupUser </br>
 > Skupina: migrace – testGroupUser musí patřit do skupiny migrace ve službě AD.
 
-Následující příklad vytvoří přihlášení v SQL Server pro účet s názvem _testUser1_ v _aadsqlmi_domény.
+Následující příklad vytvoří přihlášení v SQL Server pro účet s názvem _testUser1_ v _aadsqlmi_ domény.
 
 ```sql
 -- Sign into SQL Server as a sysadmin or a user that can create logins and databases
@@ -317,7 +317,7 @@ Otestujte ověřování ve spravované instanci SQL pomocí dříve namapovanéh
 1. Přihlaste se k federovanému virtuálnímu počítači pomocí předplatného Azure SQL Managed instance jako `aadsqlmi\testUser1`
 1. Pomocí SQL Server Management Studio (SSMS) se přihlaste ke spravované instanci SQL pomocí **integrovaného ověřování služby Active Directory** a připojte se k databázi `migration` .
     1. Můžete se také přihlásit pomocí testUser1@aadsqlmi.net přihlašovacích údajů s možností SSMS **Active Directory – Universal s podporou vícefaktorového ověřování**. V tomto případě ale nemůžete použít mechanismus jednotného přihlašování a musíte zadat heslo. K přihlášení do spravované instance SQL nebudete muset použít federovaný virtuální počítač.
-1. V rámci **výběru**člena role můžete vybrat z `test` tabulky.
+1. V rámci **výběru** člena role můžete vybrat z `test` tabulky.
 
     ```sql
     Select * from test  --  and see one row (1,10)

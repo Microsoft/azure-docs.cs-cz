@@ -8,10 +8,10 @@ ms.date: 03/14/2021
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: ba68bc3eee94689236792f0270d779357dffde9f
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103465772"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Řešení potíží se senzory a místní konzolou pro správu
@@ -258,7 +258,7 @@ Export protokolů:
 
 1. Chcete-li definovat, jaká data chcete exportovat, vyberte kategorie dat:  
 
-    | Exportovat kategorii | Popis |
+    | Exportovat kategorii | Description |
     |--|--|
     | **Protokoly operačního systému** | Tuto možnost vyberte, pokud chcete získat informace o stavu operačního systému. |
     | **Protokoly instalace a upgradu** | Tuto možnost vyberte, pokud chcete prozkoumat parametry konfigurace instalace a upgradu. |

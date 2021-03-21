@@ -12,10 +12,10 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: devx-track-js
 ms.openlocfilehash: 5a0bef4fbfd4ee9aa720dab430a33bbfcd0b918b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91280347"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Kurz: simulace selhání při čtení dat z primární oblasti
@@ -33,7 +33,7 @@ Ve druhé části této série se naučíte:
 > * Simulace selhání s [neplatnou statickou trasou](#simulate-a-failure-with-an-invalid-static-route) nebo [Fiddler](#simulate-a-failure-with-fiddler)
 > * Simulovat obnovení primárního koncového bodu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, dokončete předchozí kurz: [zajištění vysoké dostupnosti dat aplikace v Azure Storage][previous-tutorial].
 
