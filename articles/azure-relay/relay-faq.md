@@ -4,10 +4,10 @@ description: Tento článek obsahuje odpovědi na některé z nejčastějších 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250043"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
@@ -92,7 +92,7 @@ Název oboru názvů přenosu musí mít délku 6 až 50 znaků.
 
 Pokud chcete přesunout obor názvů z jednoho předplatného Azure do jiného předplatného, můžete použít [Azure Portal](https://portal.azure.com) nebo použít příkazy PowerShellu. Chcete-li přesunout obor názvů do jiného předplatného, obor názvů již musí být aktivní. Uživatel, který spouští příkazy, musí být uživatel s oprávněním správce na zdrojovém i cílovém předplatném.
 
-#### <a name="azure-portal"></a>Portál Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete použít Azure Portal k migraci Azure Relay oborů názvů z jednoho předplatného do jiného předplatného, přečtěte si téma [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 
@@ -111,7 +111,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Jaké jsou některé výjimky generované rozhraními API Azure Relay a doporučené akce, které můžete provést?
 Popis běžných výjimek a navrhovaných akcí, které můžete provést, najdete v tématu [výjimky přenosu][Relay exceptions].
 
@@ -119,7 +119,7 @@ Popis běžných výjimek a navrhovaných akcí, které můžete provést, najde
 Sdílené přístupové podpisy (SAS) jsou mechanismy ověřování založené na zabezpečených hodnotách hash nebo identifikátorech URI SHA-256. Informace o tom, jak generovat vlastní signatury v Node.js, PHP, Pythonu, Java, C a C#, najdete v tématu [ověřování Service Bus pomocí sdílených přístupových podpisů][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>Je možné umožnit pouze některé koncové body přenosu?
-Yes. Předávací klient umožňuje připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci můžou přidat položku pro `*.servicebus.windows.net` na brány firewall, které podporují seznam schválení DNS.
+Ano. Předávací klient umožňuje připojení ke službě Azure Relay pomocí plně kvalifikovaných názvů domén. Zákazníci můžou přidat položku pro `*.servicebus.windows.net` na brány firewall, které podporují seznam schválení DNS.
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření oboru názvů](relay-create-namespace-portal.md)

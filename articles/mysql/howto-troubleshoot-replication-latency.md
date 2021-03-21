@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
 ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249767"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Řešení potíží s latencí replikace ve službě Azure Database for MySQL
@@ -95,7 +95,7 @@ Zde je typický výstup:
 
 Výstup obsahuje mnoho informací. Normálně se musíte zaměřit jenom na řádky, které jsou popsané v následující tabulce.
 
-|Metrika|Popis|
+|Metric|Popis|
 |---|---|
 |Slave_IO_State| Představuje aktuální stav vlákna v/v. V případě, že je zdrojový (hlavní) Server synchronizován, je obvykle stav "čeká na odeslání události". Stav, například "připojování k hlavní", označuje, že replika ztratila připojení ke zdrojovému serveru. Zajistěte, aby byl na zdrojovém serveru spuštěný, nebo zkontrolujte, jestli je připojení blokované bránou firewall.|
 |Master_Log_File| Představuje binární soubor protokolu, na který zdrojový Server zapisuje.|
@@ -177,7 +177,7 @@ Následující části popisují běžné příčiny tohoto typu latence.
 
 #### <a name="no-primary-key-or-unique-key-on-a-table"></a>V tabulce není žádný primární klíč ani jedinečný klíč.
 
-Azure Database for MySQL používá replikaci na základě řádků. Zdrojový Server zapisuje události do binárního protokolu a zaznamenává změny v jednotlivých řádcích tabulky. Vlákno SQL pak tyto změny replikuje do odpovídajících řádků tabulky na serveru repliky. Pokud tabulka neobsahuje primární klíč nebo jedinečný klíč, vlákno SQL zkontroluje všechny řádky v cílové tabulce, aby se změny projevily. Tato kontrola může způsobit latenci replikace.
+Azure Database for MySQL používá replikaci na základě řádků. Zdrojový Server zapisuje události do binárního protokolu a zaznamenává změny v jednotlivých řádcích tabulky. Vlákno SQL pak tyto změny replikuje do odpovídajících řádků tabulky na serveru repliky. Pokud tabulka neobsahuje primární klíč nebo jedinečný klíč, vlákno SQL zkontroluje všechny řádky v cílové tabulce, aby se změny projevily. Toto prohledávání může způsobit latenci replikace.
 
 V MySQL je primárním klíčem přidružený index, který zajišťuje rychlý výkon dotazů, protože nemůže obsahovat hodnoty NULL. Pokud používáte modul úložiště InnoDB, data tabulky jsou fyzicky organizována, aby bylo možné provádět extrémně rychlé vyhledávání a seřazení na základě primárního klíče.
 

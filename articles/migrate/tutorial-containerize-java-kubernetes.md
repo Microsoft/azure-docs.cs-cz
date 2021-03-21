@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
 ms.openlocfilehash: ecc31019ccedc21683eed1a3186cec91d4c5c567
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466588"
 ---
 # <a name="containerize-java-web-applications-and-migrate-to-azure-kubernetes-service"></a>Kontejnerizace webových aplikací Java a migrace do služby Azure Kubernetes
@@ -53,7 +53,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. V těchto kurzech se v rámci možností používají jen výchozí možnosti a neuvádějí se všechny varianty nastavení ani všechny cesty.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
@@ -95,7 +95,7 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 
       ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-vmware/register-apps.png)
 
-10.  Pokud je nastavení ' Registrace aplikací ' nastaveno na hodnotu ' ne ', požádejte tenanta/globálního správce, aby přiřadil požadované oprávnění. Alternativně může tenant nebo globální správce přiřadit roli **vývojářů aplikace** k účtu, který umožňuje registraci aplikace Azure Active Directory. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+10.  Pokud je nastavení ' Registrace aplikací ' nastaveno na hodnotu ' ne ', požádejte tenanta/globálního správce, aby přiřadil požadované oprávnění. Alternativně může tenant nebo globální správce přiřadit roli **vývojářů aplikace** k účtu, který umožňuje registraci aplikace Azure Active Directory. [Další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="download-and-install-azure-migrate-app-containerization-tool"></a>Stažení a instalace Azure Migrate: Nástroj pro zabalení aplikace
 

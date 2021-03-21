@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
 ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955616"
 ---
 # <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>Řešení potíží se stavem prostředků a problémy s příchozí dostupností 
@@ -26,9 +26,9 @@ K určení stavu nástroje pro vyrovnávání zatížení se používá Resource
 
 Následující tabulka popisuje logiku RHC, která slouží k určení stavu nástroje pro vyrovnávání zatížení.
 
-| Stav prostředku | Popis |
+| Stav prostředku | Description |
 | --- | --- |
-| K dispozici. | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
+| K dispozici | Váš prostředek standardního nástroje pro vyrovnávání zatížení je v pořádku a dostupný. |
 | Snížený výkon | Váš standardní nástroj pro vyrovnávání zatížení má platformy nebo uživatelem iniciované události, které mají vliv na výkon. Metrika dostupnosti cesty k datům hlásila stav mezi 25 % a 90 % po dobu alespoň dvou minut. Dosáhnete středně silného dopadu na výkon. 
 | Neaktivní | Váš prostředek standardního nástroje pro vyrovnávání zatížení není v pořádku. Metrika dostupnosti DataPath ohlásila méně než 25% stavu minimálně pro dvě minuty. Pro příchozí připojení budete mít výrazný dopad na výkon nebo nedostatečná dostupnost. Mohou existovat události uživatele nebo platformy, které způsobují nedostupnost. |
 | Neznámý | Stav prostředku pro prostředek standardního nástroje pro vyrovnávání zatížení se ještě neaktualizoval nebo nepřijal informace o dostupnosti cesty k datům za posledních 10 minut. Tento stav by měl být přechodný a jakmile se přijmou data, měl by odrážet správný stav. |

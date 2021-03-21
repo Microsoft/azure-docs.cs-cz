@@ -4,10 +4,10 @@ description: V tomto rychlém startu použijete Azure modrotisky k vytváření,
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98918275"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Rychlý Start: definování a přiřazení Azure Blueprint s využitím PowerShellu

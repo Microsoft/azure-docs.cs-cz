@@ -17,17 +17,17 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b5895d016e2d9d9b471218bc083ea7585254b45
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258677"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu k SharePointu s využitím Proxy aplikací služby Azure AD
 
 Tento podrobný průvodce vysvětluje, jak integrovat místní farmu služby SharePoint s proxy aplikací Azure Active Directory (Azure AD).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení konfigurace potřebujete tyto prostředky:
 - Farma SharePoint 2013 nebo novější.

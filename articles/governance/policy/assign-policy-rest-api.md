@@ -4,10 +4,10 @@ description: V tomto rychlém startu použijete REST API k vytvoření přiřaze
 ms.date: 01/29/2021
 ms.topic: quickstart
 ms.openlocfilehash: 438d8004cd50e6e2ef7586c51adc63257f37978b
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99219973"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí REST API
@@ -19,7 +19,7 @@ Na konci tohoto procesu úspěšně identifikujete virtuální počítače, kter
 
 REST API slouží k vytváření a správě prostředků Azure. Tato příručka používá REST API k vytvoření přiřazení zásady a identifikaci prostředků, které nedodržují předpisy, v prostředí Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

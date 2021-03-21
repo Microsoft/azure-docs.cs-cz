@@ -6,10 +6,10 @@ ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
 ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100593979"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Plánování a Správa nákladů na Azure App Service
@@ -51,7 +51,7 @@ Další nákladové prostředky pro App Service jsou (podrobnosti najdete v tém
 
 Když odstraníte všechny aplikace v plánu App Service, plán bude dál počítat poplatky na základě nakonfigurované cenové úrovně a počtu instancí. Abyste se vyhnuli nechtěným poplatkům, odstraňte plán nebo ho Škálujte dolů na úroveň **Free** .
 
-Po odstranění prostředků Azure App Service můžou dál existovat prostředky ze souvisejících služeb Azure. Nadále se účtují náklady, dokud je neodstraníte. Příklad:
+Po odstranění prostředků Azure App Service můžou dál existovat prostředky ze souvisejících služeb Azure. Nadále se účtují náklady, dokud je neodstraníte. Například:
 
 - Virtual Network, který jste vytvořili pro plán App Service **izolované** vrstvy
 - Účty úložiště, které jste vytvořili pro ukládání záloh nebo diagnostických protokolů
@@ -135,7 +135,7 @@ Když použijete analýzu nákladů, zobrazí se App Service náklady v grafech 
     
 Postup zobrazení App Servicech nákladů při analýze nákladů:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Otevřete obor v Azure Portal a v nabídce vyberte **Analýza nákladů** . Například přejděte na **odběry**, v seznamu vyberte předplatné a v nabídce vyberte  **Analýza nákladů** . Vyberte **obor** , který se má při analýze nákladů přepnout na jiný obor.
 3. Ve výchozím nastavení se náklady na služby zobrazují v prvním prstenovém grafu. Vyberte oblast v grafu označené App Service.
 

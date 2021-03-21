@@ -4,10 +4,10 @@ description: V tomto kurzu vytvoříte dotaz na diagram prostředku a nasdílít
 ms.date: 01/27/2021
 ms.topic: tutorial
 ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98916675"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
@@ -24,7 +24,7 @@ V tomto kurzu provedete následující úlohy:
 > - Zjistit sdílené dotazy
 > - Odstranit sdílený dotaz
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 

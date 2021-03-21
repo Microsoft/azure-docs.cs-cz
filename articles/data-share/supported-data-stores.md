@@ -7,10 +7,10 @@ ms.author: jife
 ms.topic: conceptual
 ms.date: 12/16/2020
 ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963675"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Podporovaná úložiště dat ve službě Azure Data Share
@@ -39,12 +39,12 @@ Azure Data Share umožňuje příjemcům dat zvolit úložiště dat pro příje
 
 Následující tabulka vysvětluje kombinace a možnosti, které mohou uživatelé dat vybrat při přijímání a konfiguraci sdílení dat. Další informace najdete v tématu [Konfigurace mapování datových sad](how-to-configure-mapping.md).
 
-| Úložiště dat | Blob Storage | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Databáze SQL | Synapse Analytics (dříve SQL Data Warehouse) | Vyhrazený fond SQL synapse Analytics (pracovní prostor) | Data Explorer
+| Úložiště dat | Blob Storage | Data Lake Storage Gen1 | Data Lake Storage Gen2 | SQL Database | Synapse Analytics (dříve SQL Data Warehouse) | Vyhrazený fond SQL synapse Analytics (pracovní prostor) | Data Explorer
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
 | Blob Storage | ✓ || ✓ |||
 | Data Lake Storage Gen1 | ✓ | | ✓ |||
 | Data Lake Storage Gen2 | ✓ | | ✓ |||
-| Databáze SQL | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| SQL Database | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Synapse Analytics (dříve SQL Data Warehouse) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Vyhrazený fond SQL synapse Analytics (pracovní prostor) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Data Explorer ||||||| ✓ |

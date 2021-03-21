@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: e56142dfc68767945cd0d08c87f14e19551a156e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101741459"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Kurz – použití MQTT ke zřízení klienta zařízení IoT technologie Plug and Play
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Upravte vzorový kód MQTT založený na jazyce C a zpřístupněte zařízení technologie Plug and Play IoT.
 > * Identifikujte témata MQTT, která používá zařízení IoT technologie Plug and Play.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 

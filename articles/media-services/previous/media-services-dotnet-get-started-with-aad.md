@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: fd19bce05d18eb8f9b8fd3806082caeebe98bdad
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103013988"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Použití ověřování Azure AD pro přístup k rozhraní API Azure Media Services pomocí .NET
@@ -30,7 +30,7 @@ ms.locfileid: "103013988"
 
 Počínaje windowsazure. MediaServices 4.0.0.4, Azure Media Services podporuje ověřování založené na Azure Active Directory (Azure AD). V tomto tématu se dozvíte, jak používat ověřování Azure AD pro přístup k rozhraní Azure Media Services API pomocí Microsoft .NET.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 - Účet Media Services. Další informace najdete v tématu [Vytvoření účtu Azure Media Services pomocí Azure Portal](media-services-portal-create-account.md).

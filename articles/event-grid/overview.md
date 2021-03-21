@@ -4,10 +4,10 @@ description: Odešle data události ze zdroje do obslužných rutin pomocí Azur
 ms.topic: overview
 ms.date: 01/28/2021
 ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99055126"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
@@ -56,7 +56,7 @@ V současné době následující služby Azure podporují odesílání událost
 * [Automatizace (dříve označované jako Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Service Bus](handler-service-bus.md)
 * [Queue Storage](handler-storage-queues.md)
-* [WebHooky](handler-webhooks.md)
+* [Webhooky](handler-webhooks.md)
 
 ## <a name="concepts"></a>Koncepty
 

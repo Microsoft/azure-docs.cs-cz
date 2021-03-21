@@ -8,10 +8,10 @@ ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: edf60a5c454d34a2424ef7981b02952ffbfd3bde
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097223"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Model prostředků pro funkci obnovení Azure Cosmos DBho bodu v čase (Preview)
@@ -43,7 +43,7 @@ Tato vlastnost indikuje, jak byl účet vytvořen. Možné hodnoty jsou *Default
 
 `RestoreParameters`Prostředek obsahuje podrobnosti o operaci obnovení, včetně ID účtu, času obnovení a prostředků, které je potřeba obnovit.
 
-|Název vlastnosti |Popis  |
+|Název vlastnosti |Description  |
 |---------|---------|
 |restoreMode  | Režim obnovení by měl být *PointInTime* |
 |restoreSource   |  ID instance zdrojového účtu, ze kterého se má obnovení iniciovat       |
@@ -52,7 +52,7 @@ Tato vlastnost indikuje, jak byl účet vytvořen. Možné hodnoty jsou *Default
 
 **DatabaseRestoreResource** – každý prostředek představuje jednu databázi a všechny kolekce v rámci této databáze.
 
-|Název vlastnosti |Popis  |
+|Název vlastnosti |Description  |
 |---------|---------|
 |Databáze | Název databáze |
 | collectionNames| Seznam kontejnerů v této databázi |
@@ -134,7 +134,7 @@ Pokud chcete získat seznam všech účtů obnovitelné, přečtěte si článek
 
 Každý prostředek obsahuje informace o události mutace, jako je vytváření a odstraňování, k nimž došlo na SQL Database. Tyto informace můžou pomáhat ve scénářích, kdy se databáze nedopatřením odstranila, a pokud potřebujete zjistit, kdy k této události došlo.
 
-|Název vlastnosti |Popis  |
+|Název vlastnosti |Description  |
 |---------|---------|
 | eventTimestamp | Čas ve standardu UTC, kdy se databáze vytvoří nebo odstraní. |
 | ownerId | Název databáze SQL. |
@@ -148,7 +148,7 @@ Seznam všech mutací databáze najdete v článku [databáze SQL obnovitelné �
 
 Každý prostředek obsahuje informace o události mutace, jako je vytváření a odstraňování, k nimž došlo na kontejneru SQL. Tyto informace můžou pomáhat ve scénářích, kdy se kontejner změnil nebo odstranil, a pokud potřebujete zjistit, kdy k této události došlo.
 
-|Název vlastnosti |Popis  |
+|Název vlastnosti |Description  |
 |---------|---------|
 | eventTimestamp    | Čas ve standardu UTC, kdy došlo k této události kontejneru|
 | ownerId| Název kontejneru SQL.|
@@ -162,7 +162,7 @@ Pokud chcete získat seznam všech mutací kontejnerů ve stejné databázi, př
 
 Každý prostředek představuje jednu databázi a všechny kontejnery v této databázi.
 
-|Název vlastnosti |Popis  |
+|Název vlastnosti |Description  |
 |---------|---------|
 | Databáze  | Název databáze SQL.
 | collectionNames   | Seznam kontejnerů SQL v této databázi.|
@@ -173,7 +173,7 @@ Seznam SQL Database a kontejneru, který v daném časovém razítku a umístěn
 
 Každý prostředek obsahuje informace o události mutace, jako je vytváření a odstraňování, k nimž došlo v databázi MongoDB. Tyto informace můžou pomáhat v situaci, kdy se databáze nedopatřením odstranila, a uživatel musí zjistit, kdy k této události došlo.
 
-|Název vlastnosti |Popis  |
+|Název vlastnosti |Description  |
 |---------|---------|
 |eventTimestamp| Čas ve standardu UTC, kdy se tato databázová událost stala.|
 | ownerId| Název databáze MongoDB. |
@@ -186,7 +186,7 @@ Seznam všech mutací databáze najdete v článku [databáze obnovitelné Mongo
 
 Každý prostředek obsahuje informace o události mutace, jako je vytváření a odstraňování, ke kterým došlo v kolekci MongoDB. Tyto informace můžou pomáhat ve scénářích, kdy se kolekce změnila nebo odstranila, a uživatel musí zjistit, kdy k této události došlo.
 
-|Název vlastnosti |Popis  |
+|Název vlastnosti |Description  |
 |---------|---------|
 | eventTimestamp |Čas ve standardu UTC, kdy došlo k této události kolekce. |
 | ownerId| Název kolekce MongoDB |
@@ -199,7 +199,7 @@ Pokud chcete získat seznam všech mutací kontejnerů ve stejné databázi, př
 
 Každý prostředek představuje jednu databázi a všechny kolekce v rámci této databáze.
 
-|Název vlastnosti |Popis  |
+|Název vlastnosti |Description  |
 |---------|---------|
 | Databáze  |Název databáze MongoDB. |
 | collectionNames | Seznam kolekcí MongoDB v rámci této databáze. |

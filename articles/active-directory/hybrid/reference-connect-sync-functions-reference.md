@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7454733233f1fd487d774d52a6f46187354ae05c
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98246702"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Reference k funkcím
@@ -625,7 +625,7 @@ Pokud je DN "CN = Jan, OU = Brno, OU = GA, OU = US, DC = contoso, DC = com", pak
 Jak nás vrátíme.
 
 ---
-### <a name="error"></a>Chybová
+### <a name="error"></a>Chyba
 **Popis:**  
 Funkce Error slouží k vrácení vlastní chyby.
 
@@ -904,7 +904,7 @@ Funkce ItemOrNull je užitečná společně s funkcí Contains, protože druhá 
 Pokud je index mimo rozsah, pak vrátí hodnotu null.
 
 ---
-### <a name="join"></a>Spojit
+### <a name="join"></a>Připojení
 **Popis:**  
 Funkce Join vezme řetězec s více hodnotami a vrátí řetězec s jednou hodnotou se zadaným oddělovačem vloženým mezi každou položkou.
 

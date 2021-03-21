@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7d416810f6a39fb36bfa3c5225301fe87fdd128c
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103013461"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Redigování ploch pomocí Azure Media Analytics
@@ -46,7 +46,7 @@ Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
 
 | Fáze | Název souboru | Poznámky |
 | --- | --- | --- |
-| Vstupní Asset |foo. bar |Video ve formátu WMV, MOV nebo MP4 |
+| Vstupní Asset |foo.bar |Video ve formátu WMV, MOV nebo MP4 |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' kombinované '}} |
 | Výstupní Asset |foo_redacted.mp4 |Video s použitím rozostření |
 
@@ -56,7 +56,7 @@ Tím se automaticky vytvoří objekt MP4 (MP4) bez ručního vstupu.
 
 | Fáze | Název souboru | Poznámky |
 | --- | --- | --- |
-| Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4 |
+| Vstupní Asset |foo.bar |Video ve formátu WMV, MPV nebo MP4 |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' Analyze '}} |
 | Výstupní Asset |foo_annotations.jsna |Data poznámek pro umístění obličeje ve formátu JSON. Tuto možnost může upravit uživatel, aby bylo možné upravovat rozmazaný ohraničovací rámečky. Viz ukázka níže. |
 | Výstupní Asset |foo_thumb% 06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Oříznutý jpg každé zjištěné plochy, kde číslo označuje labelId obličej |
@@ -122,7 +122,7 @@ Výstup z průchodu Analyze nezahrnuje původní video. Video se musí nahrát d
 
 | Fáze | Název souboru | Poznámky |
 | --- | --- | --- |
-| Vstupní Asset |foo. bar |Video ve formátu WMV, MPV nebo MP4. Stejné video jako v kroku 1. |
+| Vstupní Asset |foo.bar |Video ve formátu WMV, MPV nebo MP4. Stejné video jako v kroku 1. |
 | Vstupní Asset |foo_annotations.jsna |poznámky soubor metadat z fáze One, s volitelnými úpravami. |
 | Vstupní Asset |foo_IDList.txt (volitelné) |Nepovinný nový řádek oddělený seznam ID tváře k redigování Pokud pole necháte prázdné, rozostří všechny plošky. |
 | Vstup konfigurace |Přednastavení konfigurace úlohy |{' Version ': ' 1.0 ', ' Options ': {' Mode ': ' redigování}} |

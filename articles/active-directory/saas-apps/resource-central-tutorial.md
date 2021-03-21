@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jeedes
 ms.openlocfilehash: dbc148fcbcd9c3be86a29df1e08755611a347b07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100586624"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím prostředků Central
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat prostředky Central pomocí Azure Acti
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k prostředkům centrálně pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

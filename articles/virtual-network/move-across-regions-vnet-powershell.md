@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: fa89a458b23d18bc6fddfca9cf6d9f2a16f91669
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934925"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Přesuňte virtuální síť Azure do jiné oblasti pomocí Azure PowerShell
@@ -20,7 +20,7 @@ Existují různé scénáře pro přesun existující virtuální sítě Azure z
 K dokončení přesunu virtuální sítě do jiné oblasti můžete použít šablonu Azure Resource Manager. Provedete to tak, že virtuální síť vyexportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti. Další informace o šablonách Správce prostředků najdete v tématu [Export skupin prostředků do šablon](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že je vaše virtuální síť v oblasti Azure, ze které chcete přejít.
 

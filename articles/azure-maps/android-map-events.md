@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 86d1b9ec8a507a5cfaa5502efcb239bceabca665
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097342"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>Interakce s mapou (Android SDK)
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak používat Správce událostí map.
 
 Mapa spravuje všechny události prostřednictvím své `events` Vlastnosti. V následující tabulce jsou uvedeny všechny podporované události mapy.
 
-| Událost                  | Formát obslužné rutiny události | Popis |
+| Událost                  | Formát obslužné rutiny události | Description |
 |------------------------|----------------------|-------------|
 | `OnCameraIdle`         | `()`                 | <p>Je aktivována po posledním snímku vykresleném před tím, než mapování vstoupí do stavu "nečinné":<ul><li>Neprobíhá žádné přechody kamery.</li><li>Všechny aktuálně požadované dlaždice se načetly.</li><li>Všechny animace slábnutí/přechodu se dokončily.</li></ul></p> |
 | `OnCameraMove`         | `()`                 | Tato možnost se opakovaně vyvolala během animovaného přechodu z jednoho zobrazení na jiný, jako výsledek interakce uživatele nebo metody. |

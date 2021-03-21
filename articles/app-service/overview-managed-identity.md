@@ -8,10 +8,10 @@ ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 ms.openlocfilehash: 16cd4685f513eb628372802cc158195b81bce72a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736167"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
@@ -324,7 +324,7 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 **IDENTITY_ENDPOINT** je místní adresa URL, ze které vaše aplikace může žádat o tokeny. Pokud chcete získat token pro prostředek, udělejte požadavek HTTP GET na tento koncový bod, včetně následujících parametrů:
 
-> | Název parametru    | V     | Popis                                                                                                                                                                                                                                                                                                                                |
+> | Název parametru    | V     | Description                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | prostředek          | Dotaz  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
 > | verze-api       | Dotaz  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
@@ -338,7 +338,7 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 Úspěšná odpověď 200 OK zahrnuje tělo JSON s následujícími vlastnostmi:
 
-> | Název vlastnosti | Popis                                                                                                                                                                                                                                        |
+> | Název vlastnosti | Description                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | Požadovaný přístupový token Volající webová služba může tento token použít k ověření pro přijímající webovou službu.                                                                                                                               |
 > | client_id     | ID klienta použité identity.                                                                                                                                                                                                       |

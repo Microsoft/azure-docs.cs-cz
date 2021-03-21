@@ -4,10 +4,10 @@ description: Poskytuje přehled architektury, komponent a procesů, které použ
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: 1e5a61bd4e3287c1100ff1f54fda797c1add438b
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466407"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
@@ -43,8 +43,8 @@ Trezory mají následující funkce:
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](../storage/common/storage-redundancy.md#geo-redundant-storage).
   - **Zóna – redundantní úložiště (ZRS)**: replikuje vaše data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. [Další informace](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
@@ -98,10 +98,10 @@ Následující tabulka shrnuje podporované funkce pro různé typy zálohován�
 
 **Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
-Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
-Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
-Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green]
-Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green]
+Zálohování do trezoru | ![Yes][green] | ![Yes][green] | ![Yes][green]
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Yes][green]
+Komprimovat data odesílaná k zálohování | ![Yes][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Yes][green]
+Spustit přírůstkové zálohování |![Yes][green] |![Yes][green] |![Yes][green]
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 
 ![Klíč tabulky](./media/backup-architecture/table-key.png)

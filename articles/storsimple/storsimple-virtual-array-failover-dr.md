@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6a321b2eb79ea01bbf94e1a413c189ac7f4614ad
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99096419"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Zotavení po havárii a převzetí služeb při selhání zařízení StorSimple Virtual Array prostřednictvím webu Azure Portal
@@ -44,7 +44,7 @@ Zotavení po havárii probíhá prostřednictvím funkce převzetí služeb při
 
 ## <a name="prerequisites-for-device-failover"></a>Požadavky na převzetí služeb při selhání zařízení
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 V případě převzetí služeb při selhání zařízení se ujistěte, že jsou splněné následující předpoklady:
 

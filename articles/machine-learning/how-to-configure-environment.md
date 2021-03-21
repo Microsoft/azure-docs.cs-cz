@@ -12,10 +12,10 @@ ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
 ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102501613"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Nastavení vývojového prostředí v Pythonu pro Azure Machine Learning
@@ -37,7 +37,7 @@ Tento článek také nabízí další tipy k používání následujících nás
 
 * Visual Studio Code: Používáte-li Visual Studio Code, zahrnuje [rozšíření Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) rozsáhlou jazykovou podporu Pythonu a také funkce, které umožňují pracovat s Azure Machine Learning mnohem pohodlnější a produktivní.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure Machine Learning pracovní prostor. Pokud ho ještě nemáte, můžete vytvořit Azure Machine Learning pracovní prostor prostřednictvím šablon [Azure Portal](how-to-manage-workspace.md), [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)a [Azure Resource Manager](how-to-create-workspace-template.md).
 

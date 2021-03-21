@@ -13,10 +13,10 @@ ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
 ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349346"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurace deklarací identity skupin pro aplikace s Azure Active Directory
@@ -64,7 +64,7 @@ Pokud však existující aplikace očekává využívání informací o skupině
 
 ## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>Předpoklady pro používání atributů skupin synchronizovaných ze služby Active Directory
 
-Deklarace identity členství ve skupině se dají vygenerovat v tokenech pro libovolnou skupinu, pokud použijete formát ObjectId. Chcete-li použít deklarace skupin ve formátech jiných než ID objektu skupiny, je nutné skupiny synchronizovat ze služby Active Directory pomocí Azure AD Connect.
+Pokud používáte formát ObjectId, můžou se v tokenech generovat deklarace identit členství ve skupině pro libovolnou skupinu. Chcete-li použít deklarace skupin ve formátech jiných než ID objektu skupiny, je nutné skupiny synchronizovat ze služby Active Directory pomocí Azure AD Connect.
 
 Existují dva kroky ke konfiguraci Azure Active Directory k vygenerování názvů skupin pro skupiny služby Active Directory.
 
@@ -148,7 +148,7 @@ Platné hodnoty jsou:
 | **Proměnná** | Vygeneruje pouze skupiny, které jsou explicitně přiřazeny k aplikaci a uživatel je členem |
 | **NTato** | Nevrátí se žádné skupiny. (Nejedná se o případ – Sensetive, takže žádná funguje stejně a dá se nastavit přímo v manifestu aplikace.) |
 
-   Příklad:
+   Například:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"

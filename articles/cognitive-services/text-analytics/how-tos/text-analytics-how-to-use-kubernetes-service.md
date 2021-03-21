@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: fb33bd4fe70c51e1e2afffece10ba3b29dcb0450
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98932443"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Nasazení kontejneru Analýza textu do služby Azure Kubernetes
 
 Přečtěte si, jak nasadit image kontejneru Azure Cognitive Services [Analýza textu](./text-analytics-how-to-install-containers.md) do služby Azure Kubernetes Service (AKS). Tento postup ukazuje, jak vytvořit prostředek Analýza textu, jak vytvořit přidružený obrázek analýzy mínění a jak tuto orchestraci těchto dvou způsobů vykonat z prohlížeče. Pomocí kontejnerů můžete posouvat pozornost od správy infrastruktury a místo toho se zaměřit na vývoj aplikací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně. Nepoužívejte Azure Cloud Shell. Potřebujete následující:
 
@@ -55,9 +55,9 @@ Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spus
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-**_
+***
 
 ## <a name="next-steps"></a>Další kroky
 
-_ Použít více [Cognitive Servicesch kontejnerů](../../cognitive-services-container-support.md)
+* Použít více [Cognitive Servicesch kontejnerů](../../cognitive-services-container-support.md)
 * Použití [připojené služby analýza textu](../index.yml)

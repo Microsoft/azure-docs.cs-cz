@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
 ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589333"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Řešení potíží s Azure SQL Database a problémy s výkonem spravované instance Azure SQL pomocí Intelligent Insights
@@ -68,7 +68,7 @@ Počet omezení prostředku označuje počet dostupných souběžných přihlá�
 
 Dosažení limitů pracovních procesů je konkrétní případ dosahování omezení prostředků, protože dostupné pracovní procesy se nezapočítávají do DTU nebo vCore využití. Dosažení limitů pracovních procesů v databázi může způsobit dobu čekání specifickou pro prostředky, což vede ke snížení výkonu dotazů.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostický protokol obsahuje výstupy dotazů na hodnoty hash dotazů, které ovlivnily procentuální hodnoty výkonu a využití prostředků. Tyto informace můžete použít jako výchozí bod pro optimalizaci zatížení databáze. Konkrétně můžete optimalizovat dotazy, které ovlivňují snížení výkonu přidáním indexů. Nebo můžete optimalizovat aplikace s více než distribucí úloh. Pokud nemůžete snížit zatížení nebo provést optimalizace, zvažte zvýšení cenové úrovně předplatného vaší databáze, abyste zvýšili množství dostupných zdrojů.
 
@@ -86,7 +86,7 @@ Tato detekce se provádí kombinací několika metrik. Měření základní metr
 
 V nejpřísnější formě se může úloha průběžně rozpracovat z důvodu neschopnosti databáze zpracovávat úlohy. Výsledkem je průběžné zvětšování velikosti pracovního vytížení, což je podmínka pro sestavování zatížení. Z důvodu této podmínky je čas, kdy zatížení čeká na spuštění, růst. Tento stav představuje jeden z nejzávažnějších problémů s výkonem databáze. Tento problém se detekuje prostřednictvím monitorování zvýšení počtu přerušených pracovních vláken.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostický protokol vystaví počet dotazů, jejichž spuštění se zvýšilo, a hodnotu hash dotazu dotazu, který má největší podíl na zvýšení zatížení. Tyto informace můžete použít jako výchozí bod pro optimalizaci zatížení. Dotaz identifikovaný jako největší přispěvatel na zvýšení zatížení je zvláště užitečný jako výchozí bod.
 
@@ -102,7 +102,7 @@ Tlak paměti označuje stav výkonu, ve kterém je velký počet pracovních vl�
 
 Přísnější forma zatížení paměti je podmínka pro sestavování paměti. Tento stav označuje, že větší počet pracovních vláken požaduje žádosti o paměť, než kolik dotazů uvolňuje paměť. Tento počet pracovních vláken požadujících nároky na paměť se taky může průběžně zvyšovat (piling), protože databázový stroj nemůže dostatečně efektivně přidělit paměť, aby splnila požadavky. Podmínka rozstavování paměti představuje jeden z nejzávažnějších problémů s výkonem databáze.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostický protokol výstupuje informace o úložišti objektů paměti s údajem o pracovníkovi (tj. pracovní vlákno) označené jako nejvyšší důvod pro vysoké využití paměti a příslušná časová razítka. Tyto informace můžete použít jako základ pro řešení potíží.
 
@@ -122,7 +122,7 @@ V moderních RDBMS jsou zámky zásadní pro implementaci vícevláknových syst
 
 Pokud transakce prováděné nástrojem SQL Engine čekají na získání přístupu k prostředkům uzamčeným pro použití, tato čekací doba způsobí zpomalení výkonu při provádění úloh.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostický protokol výstupuje informace o zamykání, které můžete použít jako základ pro řešení potíží. Můžete analyzovat hlášené blokující dotazy, to znamená dotazy, které zavádějí snížení výkonu uzamykání, a odebrat je. V některých případech může být při optimalizaci blokujících dotazů úspěšný.
 
@@ -142,7 +142,7 @@ Systém expertů analyzuje aktuální výkon databáze v porovnání se směrný
 
 Možnost konfigurace serveru MAXDOP slouží k řízení toho, kolik PROCESORových jader lze použít k paralelnímu spuštění stejného dotazu.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostické protokoly výstupy dotazují hodnoty hash týkající se dotazů, u kterých se doba spuštění zvýšila, protože byla větší než v nich. Protokol také výstupy CXP čekací doby. Tento čas představuje čas jednoho nebo více vláken (vlákno 0) čekajících na dokončení všech ostatních vláken před sloučením výsledků a přesunutím dopředu. Kromě toho diagnostický protokol vypíše dobu čekání, kterou nekvalitní dotazy čekaly na celkovém spuštění. Tyto informace můžete použít jako základ pro řešení potíží.
 
@@ -162,7 +162,7 @@ K dispozici je celá řada typů zámků. V zájmu zjednodušení se k ochraně 
 
 Kolizí na západce stránky nastává, když se více vláken současně pokouší získat zámky ve stejné struktuře v paměti, což zavádí zvýšenou dobu čekání na provedení dotazu. V případě kolize PAGELATCH v/v, kdy se data musí dostat z úložiště, je tato čekací doba ještě větší. Může to značně ovlivnit výkon úloh. Kolize PAGELATCH je nejběžnější scénář, který se na sebe vzájemně čeká a který je konkurenční pro prostředky v několika systémech CPU.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostické protokoly výstupy PAGELATCH podrobnosti o sporech. Tyto informace můžete použít jako základ pro řešení potíží.
 
@@ -182,7 +182,7 @@ Index se používá ke zrychlení výkonu dotazů. Poskytuje rychlý přístup k
 
 Konkrétní dotazy, které způsobily snížení výkonu, jsou identifikovány prostřednictvím této detekce, pro které by vytváření indexů mohlo být přínosem výkonu.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostické protokoly výstupy dotazů pro dotazy, které byly identifikovány pro ovlivnění výkonu úloh. Můžete sestavit indexy pro tyto dotazy. Tyto dotazy můžete optimalizovat nebo odebrat i v případě, že se nevyžadují. Dobrým postupem výkonu je vyhnout se dotazování na data, která nepoužíváte.
 
@@ -200,7 +200,7 @@ Tento vzor výkonu indikuje, že se zjistil nový dotaz, který je špatně prov
 
 Psaní vhodného dotazu někdy může být náročný úkol. Další informace o zápisu dotazů naleznete v tématu [zápis SQL dotazů](/previous-versions/sql/sql-server-2005/express-administrator/bb264565(v=sql.90)). Pokud chcete optimalizovat stávající výkon dotazů, přečtěte si téma [ladění dotazů](/previous-versions/sql/sql-server-2008-r2/ms176005(v=sql.105)).
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostický protokol výstupuje informace až do dvou nových většiny dotazů využívajících procesor, včetně jejich hodnot hash dotazů. Vzhledem k tomu, že zjištěný dotaz má vliv na výkon úlohy, můžete optimalizovat svůj dotaz. Dobrým postupem je načíst jenom data, která potřebujete použít. Doporučujeme také používat dotazy s klauzulí WHERE. Doporučujeme také, abyste zjednodušili složité dotazy a rozdělují je na menší dotazy. Dalším osvědčeným postupem je rozdělení velkých dávkových dotazů na menší dávkové dotazy. Zavedení indexů pro nové dotazy je obvykle dobrým zvykem pro zmírnění tohoto problému s výkonem.
 
@@ -214,7 +214,7 @@ Tento zjistitelný vzor výkonu indikuje snížení výkonu úlohy, při kterém
 
 V takovém případě systém nemůže klasifikovat nekvalitní dotazy v rámci jakýchkoli jiných standardních kategorií výkonu, ale zjistil, že je statistika čekání zodpovědná za regresi. Proto je považuje za dotazy se *zvýšenými statistikami čekání*, kde je také zpřístupněna Statistika čekání zodpovědná za regresi.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostický protokol výstupuje informace o zvýšené době čekání a hodnotách hash dotazů příslušných dotazů.
 
@@ -228,7 +228,7 @@ Další informace o optimalizaci výkonu dotazů najdete v tématu [optimalizace
 
 Tento zjistitelný vzor výkonu indikuje stav výkonu databáze, ve kterém existuje kritické místo pro vlákna, které se pokoušejí získat přístup k prostředkům databáze tempDB. (Tato podmínka nesouvisí s v/v.) Typický scénář pro tento problém s výkonem je stovky souběžných dotazů, které při vytváření, používání a vyřazení malých tabulek tempDB využívají. Systém zjistil, že počet souběžných dotazů, které používají stejné tabulky tempDB, se zvýšil s dostatečným statistickým významem, který má vliv na výkon databáze v porovnání s minulými sedmi denními směrnými plány.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostické protokoly mají výstupy podrobností o kolize obsahu tempDB. Tyto informace můžete použít jako výchozí bod pro řešení potíží. Existují dvě věci, které můžete využít k zmírnění tohoto typu sporů a zvýšení propustnosti celkové zátěže: dočasné tabulky můžete přestat používat. Můžete také použít paměťově optimalizované tabulky.
 
@@ -242,7 +242,7 @@ Tento zjistitelný vzor výkonu indikuje snížení výkonu aktuální databázo
 
 [Prostředky elastického fondu Azure](elastic-pool-overview.md) se používají jako fond dostupných prostředků sdílených mezi více databázemi pro účely škálování. Pokud dostupné prostředky eDTU v elastickém fondu nejsou dostatečně velké, aby podporovaly všechny databáze ve fondu, systém nezjistí problém s výkonem elastického fondu DTU.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostické protokoly výstupy obsahují informace o elastickém fondu, uvádí nejvyšší DTU náročné databáze a poskytuje procentní podíl DTU fondu, který využívala nejvyšší databáze.
 
@@ -264,7 +264,7 @@ Podmínka nový plán regrese odkazuje na stav, ve kterém databázový stroj sp
 
 Další informace o plánování regresí najdete v tématu [co je plánování regresí v SQL Server?](/archive/blogs/sqlserverstorageengine/what-is-plan-regression-in-sql-server).
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostický protokol vypíše hodnoty hash dotazů, dobrý identifikátor ID, ID chybného plánu a ID dotazů. Tyto informace můžete použít jako základ pro řešení potíží.
 
@@ -285,7 +285,7 @@ Tento zjistitelný vzor výkonu indikuje stav, ve kterém Změna konfigurace v r
 
 Změny konfigurace v rámci databáze lze nastavit pro každou jednotlivou databázi. Tato konfigurace se používá na základě případu pro optimalizaci individuálního výkonu vaší databáze. Pro každou jednotlivou databázi je možné nakonfigurovat následující možnosti: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES a vymazat PROCEDURE_CACHE.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Diagnostický protokol má za následek změny konfigurace v rozsahu databáze, které byly nedávno způsobeny snížením výkonu v porovnání s předchozím 7 denním chováním úloh. Změny konfigurace můžete vrátit zpět na předchozí hodnoty. Můžete také ladit hodnotu podle hodnoty, dokud nebude dosaženo požadované úrovně výkonu. Hodnoty konfigurace pro rozsah databáze můžete kopírovat z podobné databáze s uspokojivým výkonem. Pokud se vám nedaří vyřešit výkon, vraťte se k výchozím hodnotám a pokuste se vyladit od tohoto směrného plánu.
 
@@ -299,7 +299,7 @@ Tento zjistitelný vzor výkonu indikuje stav, ve kterém klient používající
 
 Tato podmínka je vygenerována pouze v případě, že je v porovnání se zjištěným chováním pracovního vytížení databáze zjištěna výkonnost regrese. Tento problém s výkonem se zjistí jenom v případě, že se v porovnání s předchozím chováním výkonu vyskytne statisticky významné snížení výkonu.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Tento zjistitelný vzor výkonu indikuje stav na straně klienta. Řešení potíží je vyžadováno v aplikaci na straně klienta nebo v síti na straně klienta. Diagnostický protokol vypíše hodnoty hash dotazů a časy čekání, které zdánlivě čekají na jejich využití v posledních dvou hodinách. Tyto informace můžete použít jako základ pro řešení potíží.
 
@@ -313,7 +313,7 @@ Tento zjistitelný vzor výkonu indikuje stav, ve kterém byla cenová úroveň 
 
 Kromě toho by mohlo dojít k situaci, kdy byla cenová úroveň vašeho odběru databáze v krátkém časovém limitu downgradovaná a pak upgradována na vyšší úroveň. Detekce tohoto dočasného snížení výkonu je předvedená v části podrobností diagnostického protokolu jako downgrade a upgrade cenové úrovně.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud jste snížili vaši cenovou úroveň, a proto DTU k dispozici a jste spokojeni s výkonem, je potřeba nic dělat. Pokud jste snížili svou cenovou úroveň a nejste spokojeni s výkonem databáze, snižte zatížení vaší databáze nebo zvažte zvýšení cenové úrovně na vyšší úroveň.
 

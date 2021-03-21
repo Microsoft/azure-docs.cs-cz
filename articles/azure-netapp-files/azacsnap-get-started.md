@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
 ms.openlocfilehash: 25f555038c1ce0d960266eacc673a62a1ffd5ac0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736358"
 ---
 # <a name="get-started-with-azure-application-consistent-snapshot-tool-preview"></a>Začínáme s nástrojem pro vytváření snímků konzistentním s aplikacemi Azure (Preview)
