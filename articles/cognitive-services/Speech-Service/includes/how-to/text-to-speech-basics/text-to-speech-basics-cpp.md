@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: 78639386c9d836055d80566f4b84565c2c3b8e80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 41cf1646d75080bc5b5996504ce8711edfae89fa
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612063"
+ms.locfileid: "104719739"
 ---
 V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
@@ -115,7 +115,7 @@ Spusťte program a v `.wav` zadaném umístění se zapíše syntetizující sou
 
 ## <a name="synthesize-to-speaker-output"></a>Vysyntetizovat výstup mluvčího
 
-V některých případech můžete chtít přímo vyprogramovat výstup syntetizované řeči přímo na mluvčí. Pokud to chcete provést, jednoduše vynechejte `AudioConfig` PARAT při vytváření `SpeechSynthesizer` v předchozím příkladu. Tento výstup vypíše aktuální aktivní výstupní zařízení.
+V některých případech můžete chtít přímo vyprogramovat výstup syntetizované řeči přímo na mluvčí. Pokud to chcete provést, vynechejte `AudioConfig` parametr při vytváření `SpeechSynthesizer` v předchozím příkladu. Toto syntetizuje aktuální aktivní výstupní zařízení.
 
 ```cpp
 void synthesizeSpeech()
@@ -255,10 +255,10 @@ Pokud chcete přepnout na neuronové hlas, změňte na `name` jednu z [možnost�
 </speak>
 ```
 
-## <a name="visemes"></a>Visemes
+## <a name="get-facial-pose-events"></a>Získat události pozice obličeje
 
-Rozpoznávání řeči se obvykle považuje za dobrý způsob, jak vyřídit animaci výrazů obličeje.
-Často se [visemes](../../../how-to-speech-synthesis-viseme.md) používají k reprezentování klíčových pozic v pozorovaném řeči (tj. umístění sad LIP, vidlici a jazyka při vytváření konkrétního foném).
-Můžete se přihlásit k odběru události viseme v sadě Speech SDK a vygenerovat data animace obličeje.
-Pak můžete použít taková data na znak pro vytvoření animace obličeje.
-Přečtěte si, [Jak získat viseme výstupy](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).
+Řeč může být dobrým způsobem, jak řídit animaci výrazů obličeje.
+Často se [visemes](../../../how-to-speech-synthesis-viseme.md) používají k reprezentování klíčových pozic v pozorovaném řeči, jako je například pozice sad LIP, vidlice a jazyka při vytváření konkrétního foném.
+Můžete se přihlásit k odběru události viseme v sadě Speech SDK.
+Pak můžete použít události viseme k animaci plochy znaku při přehrávání zvukového řeči.
+Naučte [se, jak získat události viseme](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

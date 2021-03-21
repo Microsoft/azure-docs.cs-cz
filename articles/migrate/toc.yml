@@ -73,7 +73,7 @@
     - name: Kontejnerizace
       items:
         - name: Kontejnerizace ASP.NET aplikace a migrujte na AKS
-          href: tutorial-containerize-aspnet-kubernetes.md
+          href: tutorial-app-containerization-aspnet-kubernetes.md
         - name: Kontejnerizace webové aplikace Java a migrovat na AKS
           href: tutorial-containerize-java-kubernetes.md
 - name: Koncepty

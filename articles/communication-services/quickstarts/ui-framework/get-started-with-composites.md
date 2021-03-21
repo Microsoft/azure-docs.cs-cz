@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 7356fb90914e948b6a74a478ce1e19722b224346
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103488053"
 ---
 # <a name="quickstart-get-started-with-ui-framework-composite-components"></a>Rychlý Start: Začínáme s kombinovanými komponentami architektury uživatelského rozhraní
@@ -20,7 +20,7 @@ ms.locfileid: "103488053"
 
 Začněte s komunikačními službami Azure pomocí architektury uživatelského rozhraní, abyste mohli rychle integrovat komunikační prostředí do svých aplikací. V tomto rychlém startu se dozvíte, jak integrovat do vaší aplikace složené součásti uživatelského rozhraní, abyste mohli vytvářet komunikační prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Aktivní LTS a verze LTS údržby (doporučeno uzlem 12).
@@ -73,7 +73,7 @@ npm run start
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny uživatelského rozhraní služby Azure Communication Services:
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | GroupCall | Složená komponenta, která vykresluje možnosti volání skupiny s galerií a ovládacími prvky účastníka. |
 | GroupChat | Složená komponenta, která vykresluje prostředí pro konverzaci pomocí konverzačního vlákna a vstupu |

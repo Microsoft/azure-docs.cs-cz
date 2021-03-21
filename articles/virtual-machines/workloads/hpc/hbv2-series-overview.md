@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6648f77c5eacf40f848bc9b24aa6e257d8adf626
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 59dd953b2116bc1ec7bd0a581cc181df64fbf49e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674640"
+ms.locfileid: "104721159"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>Přehled virtuálního počítače řady HBv2 
 
@@ -53,14 +53,16 @@ Připnutí procesu bude fungovat na virtuálních počítačích s HBv2-Series, 
 |-----------------------------|-----------------------------------------------------------|
 | Maximální velikost úlohy MPI            | 36000 jader (300 virtuálních počítačů v jedné sadě škálování virtuálních počítačů s singlePlacementGroup = true) |
 | Podpora MPI                 | HPC-X, Intel MPI, OpenMPy, MVAPICH2, MPICH, Platform MPI  |
-| Další architektury       | Unified Communications X, libfabric, PGAS                  |
-| Podpora Azure Storage       | Disky úrovně Standard a Premium (maximální počet disků: 8)              |
-| Podpora operačního systému pro SRIOV RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +           |
-| Podpora nástroje Orchestrator        | CycleCloud, Batch                                         | 
+| Další architektury       | UCX, libfabric, PGAS |
+| Podpora Azure Storage       | Disky úrovně Standard a Premium (maximální počet disků: 8) |
+| Podpora operačního systému pro SRIOV RDMA   | CentOS/RHEL 7.6 +, Ubuntu 16.04 +, SLES 12 SP4 +, WinServer 2016 +  |
+| Podpora nástroje Orchestrator        | CycleCloud, Batch, AKS; [Možnosti konfigurace clusteru](../../sizes-hpc.md#cluster-configuration-options)  |
 
+> [!NOTE] 
+> Systém Windows Server 2012 R2 není podporován na HBv2 a dalších virtuálních počítačích s více než 64 (virtuálními nebo fyzickými) jádry. Další podrobnosti najdete [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [architektuře AMD EPYC](https://bit.ly/2Epv3kC) a architekturách [s více čipy](https://bit.ly/2GpQIMb). Podrobnější informace najdete v [Průvodci optimalizací HPC pro procesory AMD EPYC](https://bit.ly/2T3AWZ9).
-- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC na [blogu technické komunity Azure COMPUTE](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

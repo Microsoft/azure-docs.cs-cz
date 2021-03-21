@@ -6,10 +6,10 @@ ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 6efd9c230df49c83adc17361082af85b0ef9edc5
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102633134"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>Kurz: přidání modulů do souboru Azure Resource Manager bicep
@@ -18,7 +18,7 @@ V [předchozím kurzu](bicep-tutorial-use-parameter-file.md)jste zjistili, jak p
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz týkající se souboru parametrů](bicep-tutorial-use-parameter-file.md), ale není to nutné.
 

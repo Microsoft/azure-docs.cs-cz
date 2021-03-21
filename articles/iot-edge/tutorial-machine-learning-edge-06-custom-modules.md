@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5c096b26f31bdf92bb5ab91c8dad7876f228ff14
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103462792"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
@@ -63,7 +63,7 @@ V této části kurzu se dozvíte, jak:
 > * Překonfigurujte IoT Hub směrování, aby podporovalo vaše vlastní moduly.
 > * Sestavujte, publikujte a nasaďte vlastní moduly.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přejděte na [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 
@@ -183,7 +183,7 @@ Modul směrovače je důležitou součástí řešení, které zajišťuje zprac
     copy c:\source\IoTEdgeAndMlSample\EdgeModules\modules\turbofanRouter\*.cs c:\source\IoTEdgeAndMlSample\EdgeSolution\modules\turbofanRouter\
     ```
 
-1. Přijměte výzvu k přepsání souboru program.cs.
+1. Přijměte výzvu k přepsání souboru program. cs.
 
 ### <a name="build-router-module"></a>Modul směrovače sestavení
 
@@ -230,7 +230,7 @@ Jak je uvedeno výše, modul runtime IoT Edge používá trasy nakonfigurované 
 
 #### <a name="inputs"></a>Vstupy
 
-1. V metodě Init () pro Program.cs zaregistrujeme dvě zpětná volání pro modul:
+1. V metodě Init () programu program. cs zaregistrujeme dvě zpětná volání pro modul:
 
    ```csharp
    await ioTHubModuleClient.SetInputMessageHandlerAsync(EndpointNames.FromLeafDevice, LeafDeviceInputMessageHandler, ioTHubModuleClient);
@@ -253,7 +253,7 @@ Jak je uvedeno výše, modul runtime IoT Edge používá trasy nakonfigurované 
 
 Přidejte čtyři další trasy do parametru trasy $edgeHub, abyste mohli zpracovávat výstupy z modulu směrovače.
 
-1. Program.cs definuje metodu SendMessageToClassifier (), která používá klienta modulu k odeslání zprávy do třídění RUL pomocí trasy:
+1. Program. cs definuje metodu SendMessageToClassifier (), která používá klienta modulu k odeslání zprávy do klasifikátoru RUL pomocí trasy:
 
    ```json
    "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/turbofanRulClassifier/inputs/amlInput\")"

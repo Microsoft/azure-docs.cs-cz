@@ -105,7 +105,8 @@
     - name: Data a operace
       items:
         - name: Události služby (EventGrid)
-          href: concepts/event-handling.md
+          href: ../event-grid/event-schema-communication-services.md
+          maintainContext: true
         - name: Protokolování a diagnostika
           href: concepts/logging-and-diagnostics.md
         - name: Metriky

@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 79d908077d3bd66a3ed86759e37574383358881b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218846"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Kurz: Nastavení hardwarových hesel
@@ -71,7 +71,7 @@ Vytvoření hesla pro instalaci systému BIOS:
 
 1. Zapněte nebo restartujte uzel a ihned stiskněte klávesu F2 a otevřete nástroj pro nastavení systému.
 
-1. Na obrazovce **hlavní nabídka nastavení systému** vyberte zabezpečení systému **BIOS**  >  **System Security**.
+1. Na obrazovce **hlavní nabídka nastavení systému** vyberte zabezpečení systému **BIOS**  >  .
 
 1. Ujistěte se, že nastavení **stavu hesla** je **odemknuté**.
 
