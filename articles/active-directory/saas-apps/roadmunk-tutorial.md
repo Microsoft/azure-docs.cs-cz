@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
 ms.openlocfilehash: a7f4682be2f7fbf308aba32768efa932f27b7a87
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Roadmunk
@@ -135,7 +135,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Snímek obrazovky s informacemi o tom, kde vybrat nastavení uživatelského účtu](./media/roadmunk-tutorial/account.png)
 
-1. Přejít na **Company**  >  **nastavení ověřování** společnosti.
+1. Přejít na   >  **nastavení ověřování** společnosti.
 
 1. Na stránce **nastavení ověřování** proveďte tyto kroky:
 

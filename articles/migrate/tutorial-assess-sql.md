@@ -6,10 +6,10 @@ ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
 ms.openlocfilehash: 9b33890d53f67eee870b42462a65b4a0b7ba9981
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102055420"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>Kurz: vyhodnocení instancí SQL pro migraci do Azure SQL
@@ -18,7 +18,7 @@ Jako součást cesty k migraci do Azure vyhodnocujete vaše místní úlohy a m�
 V tomto článku se dozvíte, jak vyhodnotit zjištěné databáze instancí SQL Server v přípravě na migraci do Azure SQL pomocí nástroje Azure Migrate: Discovery and Assessment Tool.
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 V tomto kurzu se naučíte:
 
@@ -137,27 +137,27 @@ Odhad měsíčních nákladů zahrnuje náklady na výpočetní prostředky a ú
 
         **Připravenost Azure SQL DB** | **Připravenost Azure SQL MI** | **Doporučený typ nasazení** | **Počítá se konfigurace Azure SQL a odhad nákladů?**
          --- | --- | --- | --- |
-        Připraveno | Připraveno | Azure SQL DB nebo Azure SQL MI další [informace](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) | Ano
-        Připraveno | Nepřipraveno nebo neznámo | Azure SQL DB | Ano
-        Nepřipraveno nebo neznámo | Připraveno | Azure SQL MI | Ano
-        Nepřipraveno | Nepřipraveno | Možná připravené na virtuální počítač Azure další [informace](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | Ne
-        Nepřipraveno nebo neznámo | Nepřipraveno nebo neznámo | Neznámý | Ne
+        Připraveno | Připraveno | Azure SQL DB nebo Azure SQL MI další [informace](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) | Yes
+        Připraveno | Nepřipraveno nebo neznámo | Azure SQL DB | Yes
+        Nepřipraveno nebo neznámo | Připraveno | Azure SQL MI | Yes
+        Nepřipraveno | Nepřipraveno | Možná připravené na virtuální počítač Azure další [informace](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | No
+        Nepřipraveno nebo neznámo | Nepřipraveno nebo neznámo | Neznámý | No
     
     - **Cílový typ nasazení** (jak je vybraný ve vlastnostech posouzení): **Azure SQL DB**
     
         **Připravenost Azure SQL DB** | **Počítá se konfigurace Azure SQL a odhad nákladů?**
         --- | --- |
-        Připraveno | Ano
+        Připraveno | Yes
         Nepřipraveno | Ne
-        Není známo | Ne
+        Není známo | No
     
     - **Cílový typ nasazení** (jak je vybraný ve vlastnostech posouzení): **Azure SQL mi**
     
         **Připravenost Azure SQL MI** | **Počítá se konfigurace Azure SQL a odhad nákladů?**
          --- | --- |
-        Připraveno | Ano
+        Připraveno | Yes
         Nepřipraveno | Ne
-        Není známo | Ne
+        Není známo | No
 
 4. Kliknutím na název instance přejdete k podrobnostem o počtu uživatelských databází, podrobnostech instancí, včetně vlastností instance, výpočetním (vymezeném na instanci) a podrobnostech úložiště zdrojové databáze.
 5. Kliknutím na počet uživatelských databází zkontrolujte seznam databází a jejich podrobnosti. Příklad (odhad a náklady pouze pro příklad): :::image type="content" source="./media/tutorial-assess-sql/assessment-db.png" alt-text="Podrobnosti instance SQL":::

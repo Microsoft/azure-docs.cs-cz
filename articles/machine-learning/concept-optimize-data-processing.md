@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
 ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103472208"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Optimalizujte zpracování dat pomocí Azure Machine Learning
@@ -62,7 +62,7 @@ Specifikace paměti RAM najdete na odpovídajících stránkách řady virtuáln
 
 Pokud nemůžete přidat k počítači více paměti RAM, můžete použít následující postupy, které vám pomůžou minimalizovat zatížení procesoru a optimalizovat časy zpracování. Tato doporučení se vztahují k jednomu i distribuovaným systémům.
 
-Technika | Popis
+Technika | Description
 ----|----
 Komprese | Pro svá data použijte jiné reprezentace způsobem, který používá méně paměti a významně neovlivní výsledky vašeho výpočtu.<br><br>*Příklad:* Místo uložení položek jako řetězce s přibližně 10 bajtů nebo více za položku uložte je jako logická hodnota, true nebo false, kterou můžete uložit v 1 bajtu.
 Vytváření bloků | Načtení dat do paměti v podmnožinách (bloků), zpracování dat v jednom podmnožině v čase nebo paralelní více dílčích sad. Tato metoda funguje nejlépe, pokud potřebujete zpracovat všechna data, ale není nutné načítat všechna data do paměti najednou. <br><br>*Příklad:* Místo zpracování dat v plném roce v jednom okamžiku načtěte a zpracujte data po měsících.

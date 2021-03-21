@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467353"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Model předdefinovaného příjmového formuláře pro rozpoznávání formulářů
@@ -36,7 +36,7 @@ Předem vytvořená Příjemová služba extrahuje obsah prodejních příjmů &
 
 ### <a name="fields-extracted"></a>Extrahovaná pole
 
-|Název| Typ | Popis | Text | Hodnota (standardní výstup) |
+|Název| Typ | Description | Text | Hodnota (standardní výstup) |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | řetězec | Typ prodejní účtenky | Oddělené |  |
 | Obchodní | řetězec | Název obchodníka, který vystavil příjem | Contoso |  |
@@ -49,7 +49,7 @@ Předem vytvořená Příjemová služba extrahuje obsah prodejních příjmů &
 | Daň | číslo | Daň na účtence, často prodejní daň nebo ekvivalent | $2,00 | 2,00 |
 | Tip | číslo | Tip zahrnutý nákupčím | $1,00 | 1.00 |
 | Položky | pole objektů | Extrahované položky řádku, včetně názvu, množství, ceny za jednotku a celkové ceny extrahované | |
-| Název | řetězec | Název položky | Plocha pro 6 | |
+| Name | řetězec | Název položky | Plocha pro 6 | |
 | Množství | číslo | Množství jednotlivých položek | 1 | |
 | Cena | číslo | Jednotlivá cena za každou jednotku položky | $999,00 | 999,00 |
 | Celková cena | číslo | Celková cena položky řádku | $999,00 | 999,00 |

@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.openlocfilehash: 721563fa140dfddbfb5984db8465187fb90018e5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102049164"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schéma událostí protokolu aktivit Azure
@@ -140,7 +140,7 @@ Tato kategorie obsahuje záznam všech operací vytvoření, aktualizace, odstra
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Popis |
+| Název prvku | Description |
 | --- | --- |
 | autorizace |Objekt BLOB vlastností události Azure RBAC Obvykle zahrnuje vlastnosti "Action", "role" a "Scope". |
 | volající |E-mailová adresa uživatele, který provedl operaci, deklaraci hlavního názvu uživatele (UPN) nebo deklaraci identity SPN na základě dostupnosti. |
@@ -287,7 +287,7 @@ Tato kategorie obsahuje záznam o všech událostech stavu prostředku, ke kter�
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Popis |
+| Název prvku | Description |
 | --- | --- |
 | barev | Vždy "admin, operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
@@ -380,7 +380,7 @@ Tato kategorie obsahuje záznam všech aktivací klasických výstrah Azure. Př
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Popis |
+| Název prvku | Description |
 | --- | --- |
 | volající | Vždy Microsoft. Insights/alertRules |
 | barev | Vždy "admin, operace" |
@@ -406,7 +406,7 @@ Tato kategorie obsahuje záznam všech aktivací klasických výstrah Azure. Př
 Pole Properties (vlastnosti) bude obsahovat různé hodnoty v závislosti na zdroji události výstrahy. Dvěma běžnými zprostředkovateli událostí výstrah jsou výstrahy protokolu aktivit a upozornění na metriky.
 
 #### <a name="properties-for-activity-log-alerts"></a>Vlastnosti pro výstrahy protokolu aktivit
-| Název prvku | Popis |
+| Název prvku | Description |
 | --- | --- |
 | Properties. subscriptionId | ID předplatného z události protokolu aktivit, které způsobilo aktivaci tohoto pravidla upozornění protokolu aktivit. |
 | Properties. eventDataId | ID dat události z události protokolu aktivit, která způsobila aktivaci tohoto pravidla upozornění protokolu aktivit. |
@@ -417,7 +417,7 @@ Pole Properties (vlastnosti) bude obsahovat různé hodnoty v závislosti na zdr
 | vlastnosti. status | Stav z události protokolu aktivit, která způsobila aktivaci tohoto pravidla upozornění protokolu aktivit.|
 
 #### <a name="properties-for-metric-alerts"></a>Vlastnosti pro výstrahy metriky
-| Název prvku | Popis |
+| Název prvku | Description |
 | --- | --- |
 | vlastnosti. RuleUri | ID prostředku pro samotné pravidlo výstrahy metriky. |
 | vlastnosti. RuleName | Název pravidla výstrahy metriky. |
@@ -490,7 +490,7 @@ Tato kategorie obsahuje záznam všech událostí souvisejících s provozem mod
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Popis |
+| Název prvku | Description |
 | --- | --- |
 | volající | Vždy Microsoft. Insights/autoscaleSettings |
 | barev | Vždy "admin, operace" |
@@ -580,7 +580,7 @@ Tato kategorie obsahuje záznam výstrahy vygenerované Azure Security Center. P
 ```
 
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Popis |
+| Název prvku | Description |
 | --- | --- |
 | barev | Vždy "operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
@@ -661,7 +661,7 @@ Tato kategorie obsahuje záznam všech nových doporučení, která jsou vygener
 
 ```
 ### <a name="property-descriptions"></a>Popisy vlastností
-| Název prvku | Popis |
+| Název prvku | Description |
 | --- | --- |
 | barev | Vždy "operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
@@ -771,7 +771,7 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 
 ### <a name="policy-event-property-descriptions"></a>Popis vlastností události zásad
 
-| Název prvku | Popis |
+| Název prvku | Description |
 | --- | --- |
 | autorizace | Pole vlastností služby Azure RBAC události Pro nové prostředky se jedná o akci a rozsah žádosti, která aktivovala vyhodnocení. U existujících prostředků se jedná o akci "Microsoft. Resources/checkPolicyCompliance/Read". |
 | volající | Pro nové prostředky se jedná o identitu, která iniciovala nasazení. U stávajících prostředků se jedná o identifikátor GUID Microsoft Azure Insights RP. |

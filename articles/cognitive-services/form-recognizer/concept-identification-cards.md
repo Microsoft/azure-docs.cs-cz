@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 01a73e7940f88a3eb6e040f26d255448294cab18
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467792"
 ---
 # <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Model předem sestaveného identifikační karty (ID) pro rozpoznávání formulářů
@@ -31,7 +31,7 @@ Služba představěných ID extrahuje klíčové hodnoty z celosvětových cesto
 
 ### <a name="fields-extracted"></a>Extrahovaná pole
 
-|Název| Typ | Popis | Hodnota | 
+|Název| Typ | Description | Hodnota | 
 |:-----|:----|:----|:----|
 |  Země | country | Směrové číslo země kompatibilní se standardem ISO 3166 | UŽIVATELEM | 
 |  DateOfBirth | date | DOB ve formátu RRRR-MM-DD | "1980-01-01" | 

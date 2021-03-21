@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
 ms.openlocfilehash: d522d305c70214009b8aa2886d07d2d5403dd2b1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656304"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Správa a analýza protokolů toku skupiny zabezpečení sítě pomocí Network Watcher a Grafana
@@ -27,7 +27,7 @@ ms.locfileid: "97656304"
 
 V síti můžete mít mnoho skupin zabezpečení sítě s povoleným protokolováním toků. Toto množství dat protokolování umožňuje nenáročným analyzovat a získávat poznatky z protokolů. Tento článek poskytuje řešení centrální správy těchto protokolů toku NSG pomocí Grafana, open source nástroje pro vytváření grafů, ElasticSearch, distribuovaného vyhledávacího a analytického stroje a Logstash, což je open source kanál pro zpracování dat na straně serveru.  
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Protokoly toku NSG jsou povolené pomocí Network Watcher a jsou uložené v úložišti objektů BLOB v Azure. Modul plug-in Logstash se používá k připojení a zpracování protokolů toku ze služby Blob Storage a jejich posílání do ElasticSearch.  Jakmile se protokoly toků ukládají v ElasticSearch, dají se analyzovat a vizuálně přizpůsobovat do přizpůsobených řídicích panelů v Grafana.
 

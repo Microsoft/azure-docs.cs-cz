@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
 ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028076"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Virtuální síťové zařízení ve službě Azure Virtual WAN hub (Preview)
@@ -79,13 +79,13 @@ SÍŤOVÉ virtuální zařízení ve virtuálním rozbočovači je k dispozici p
 |Geopolitická oblast | Oblast Azure|
 |---|---|
 | Severní Amerika| Západní USA, Střed USA – jih Východní USA 2   |
-| Jižní Amerika | Brazil South |
+| Jižní Amerika | Brazílie – jih |
 | Evropa | Západní Evropa Velká Británie – jih|
 |  Střední východ | Spojené arabské emiráty sever |
-| Asie | Japan East |
+| Asie | Japonsko – východ |
 | Austrálie | Austrálie – východ |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="i-am-a-network-appliance-partner-and-want-to-get-our-nva-in-the-hub--can-i-join-this-partner-program"></a>Jsem partnerem síťového zařízení a chcete získat naše síťové virtuální ZAŘÍZENÍy v centru.  Můžu se připojit k tomuto partnerskému programu?
 
@@ -105,7 +105,7 @@ No. Pokud chcete nasadit síťové virtuální zařízení, musíte použít sta
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>Můžu síťové virtuální zařízení nasadit do zabezpečeného centra?
 
-Yes. Barracuda CloudGen WAN se dá nasadit do centra s Azure Firewall.
+Ano. Barracuda CloudGen WAN se dá nasadit do centra s Azure Firewall.
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Můžu na svém firemním pobočce připojit libovolné zařízení CPE, aby se Barracuda CloudGen WAN síťové virtuální zařízení v centru?
 

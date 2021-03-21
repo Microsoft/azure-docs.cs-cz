@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
 ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790982"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
@@ -36,8 +36,8 @@ Tento článek popisuje:
 
 Incident může zahrnovat více výstrah. Jedná se o agregaci všech relevantních důkazů pro konkrétní šetření. Incident se vytvoří na základě analytických pravidel, která jste vytvořili na stránce **Analytics** . Vlastnosti související s výstrahami, jako je závažnost a stav, se nastavují na úrovni incidentu. Až budete chtít, aby služba Azure Sentinel znala, jaké druhy hrozeb hledáte a jak se mají najít, můžete monitorovat zjištěné hrozby zkoumáním incidentů.
 
-## <a name="prerequisites"></a>Požadavky
-- Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
+## <a name="prerequisites"></a>Předpoklady
+- Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf prověřování vyžaduje, aby původní incident obsahoval entity.
 
 - Pokud máte uživatele typu Host, který potřebuje přiřadit incidenty, musí být uživateli přiřazena role [čtečky adresáře](../active-directory/roles/permissions-reference.md#directory-readers) v TENANTOVI Azure AD. Ve výchozím nastavení mají tuto roli přiřazený běžný uživatel (bez hosta).
 
@@ -80,7 +80,7 @@ Použití grafu šetření:
 1. Vyberte incident a pak vyberte **prozkoumat**. Tím přejdete do grafu šetření. Graf poskytuje ilustrativní mapu entit přímo připojených k výstraze a dalších prostředků, které jsou propojeny.
 
    > [!IMPORTANT] 
-   > - Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
+   > - Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla Analytics použili pole mapování entit. Graf prověřování vyžaduje, aby původní incident obsahoval entity.
    >
    > - Služba Azure Sentinel aktuálně podporuje vyšetřování **incidentů, které jsou staré až 30 dnů**.
 

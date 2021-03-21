@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 82f4d9028fa94d4df0ff089fda213d64e13d56ec
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103487866"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>Rychlý Start: Přidání videa 1:1 pro volání do vaší aplikace (JavaScript)
@@ -20,7 +20,7 @@ ms.locfileid: "103487866"
 
 Najděte finální kód pro tento rychlý Start na [GitHubu](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Získejte účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/) Aktivní LTS a verze LTS údržby (8.11.1 a 10.14.1)
 - Vytvořte aktivní prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp).
@@ -126,7 +126,7 @@ let rendererRemote;
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
 
-| Název      | Popis | 
+| Název      | Description | 
 | :---        |    :----   |
 | CallClient  | CallClient je hlavní vstupní bod pro volání klientské knihovny.      |
 | CallAgent  | CallAgent se používá ke spouštění a správě volání.        |

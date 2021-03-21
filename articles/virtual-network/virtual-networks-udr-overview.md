@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
 ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98221010"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
@@ -107,8 +107,8 @@ Zobrazené a odkazované názvy typů dalších segmentů směrování se liší
 |Internet                        |Internet                                        |Internet (není dostupné v Classic CLI v režimu asm)|
 |Virtuální zařízení               |VirtualAppliance                                |VirtualAppliance|
 |Žádné                            |Žádné                                            |Null (není dostupné v Classic CLI v režimu asm)|
-|Partnerský vztah virtuální sítě         |Partnerské vztahy virtuálních sítí                                    |Nelze použít|
-|Koncový bod služby pro virtuální síť|VirtualNetworkServiceEndpoint                   |Nelze použít|
+|Peering virtuálních sítí         |Partnerské vztahy virtuálních sítí                                    |Neuvedeno|
+|Koncový bod služby pro virtuální síť|VirtualNetworkServiceEndpoint                   |Neuvedeno|
 
 ### <a name="border-gateway-protocol"></a>Protokol BGP (Border Gateway Protocol)
 

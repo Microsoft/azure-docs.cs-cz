@@ -7,10 +7,10 @@ ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
 ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052156"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>Povolit stav hosta virtuálního počítače Insights (Preview)
@@ -84,7 +84,7 @@ Log Analytics pracovní prostor se musí nacházet v jedné z následujících o
 - USA – západ
 - Západní USA 2
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Virtuální počítač musí být připojen k virtuálnímu počítači Insights.
 - Uživatel, který spouští kroky připojování, musí mít minimální přístup na úrovni přispěvatele k předplatnému, kde se nachází pravidlo pro virtuální počítače a shromažďování dat.

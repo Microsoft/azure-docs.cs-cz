@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 6f4a8e8f26e88a73fc73c309ef336813282589f3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103488172"
 ---
 # <a name="quickstart-get-started-with-ui-framework-base-components"></a>Rychlý Start: Začínáme se základními komponentami uživatelského rozhraní
@@ -25,7 +25,7 @@ Komponenty rozhraní uživatelského rozhraní jsou dodávány ve dvou charakter
 - **Základní komponenty** reprezentují diskrétní možnosti komunikace; jsou to základní stavební kameny, které se dají použít k vytváření komplexních komunikačních prostředí. 
 - **Složené komponenty** jsou uživatelsky funkční prostředí pro běžné komunikační scénáře, které byly sestaveny pomocí **základních komponent** jako stavební bloky a zabalené, aby je bylo možné snadno integrovat do aplikací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Aktivní LTS a verze LTS údržby (doporučeno uzlem 12).
@@ -78,7 +78,7 @@ npm run start
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny uživatelského rozhraní služby Azure Communication Services:
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | Poskytovatel| Poskytovatel uživatelského rozhraní Fluent, který umožňuje vývojářům upravovat základní součásti uživatelského rozhraní Fluent|
 | CallingProvider| Volání poskytovatele pro vytvoření instance volání. Požadováno pro přidání dalších součástí|

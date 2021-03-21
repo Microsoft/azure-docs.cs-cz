@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
 ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97901228"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Konfigurace front-endové architektur a knihoven pomocí Azure static Web Apps Preview
@@ -33,30 +33,30 @@ Záměr sloupců tabulky je vysvětlen následujícími položkami:
 | [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | není k dispozici <sup>2</sup> |
 | [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --prod` |
 | [Úhlová světový](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
-| [Aurelia](https://aurelia.io/) | `dist` | neuvedeno |
-| [Backbone.js](https://backbonejs.org/) | `/` | neuvedeno |
-| [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | neuvedeno |
-| [Ember](https://emberjs.com/) | `dist` | neuvedeno |
+| [Aurelia](https://aurelia.io/) | `dist` | Není k dispozici |
+| [Backbone.js](https://backbonejs.org/) | `/` | Není k dispozici |
+| [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) | `wwwroot` | Není k dispozici |
+| [Ember](https://emberjs.com/) | `dist` | Není k dispozici |
 | [Flutter](https://flutter.dev/) | `build/web` | `flutter build web` |
 | [Framework7](https://framework7.io/) | `www` | `npm run build-prod` |
-| [Glimmer](https://glimmerjs.com/) | `dist` | neuvedeno |
-| [HTML](https://developer.mozilla.org/docs/Web/HTML) | `/` | neuvedeno |
-| [Hyperapp](https://hyperapp.dev/) | `/` | neuvedeno |
-| [JavaScript](https://developer.mozilla.org/docs/Web/javascript) | `/` | neuvedeno |
-| [jQuery](https://jquery.com/) | `/` | neuvedeno |
-| [KnockoutJS](https://knockoutjs.com/) | `dist` | neuvedeno |
-| [LitElement](https://lit-element.polymer-project.org/) | `dist` | neuvedeno |
-| [Marko](https://markojs.com/) | `public` | neuvedeno |
-| [Meteor](https://www.meteor.com/) | `bundle` | neuvedeno |
-| [Mithril](https://mithril.js.org/) | `dist` | neuvedeno |
-| [Polymer](https://www.polymer-project.org/) | `build/default` | neuvedeno |
-| [Preact](https://preactjs.com/) | `build` | neuvedeno |
-| [React](https://reactjs.org/) | `build` | neuvedeno |
-| [Kóty](https://stenciljs.com/) | `www` | neuvedeno |
-| [Svelte](https://svelte.dev/) | `public` | neuvedeno |
-| [Three.js](https://threejs.org/) | `/` | neuvedeno |
-| [TypeScript](https://www.typescriptlang.org/) | `dist` | neuvedeno |
-| [Vue.js](https://vuejs.org/) | `dist` | neuvedeno |
+| [Glimmer](https://glimmerjs.com/) | `dist` | Není k dispozici |
+| [HTML](https://developer.mozilla.org/docs/Web/HTML) | `/` | Není k dispozici |
+| [Hyperapp](https://hyperapp.dev/) | `/` | Není k dispozici |
+| [JavaScript](https://developer.mozilla.org/docs/Web/javascript) | `/` | Není k dispozici |
+| [jQuery](https://jquery.com/) | `/` | Není k dispozici |
+| [KnockoutJS](https://knockoutjs.com/) | `dist` | Není k dispozici |
+| [LitElement](https://lit-element.polymer-project.org/) | `dist` | Není k dispozici |
+| [Marko](https://markojs.com/) | `public` | Není k dispozici |
+| [Meteor](https://www.meteor.com/) | `bundle` | Není k dispozici |
+| [Mithril](https://mithril.js.org/) | `dist` | Není k dispozici |
+| [Polymer](https://www.polymer-project.org/) | `build/default` | Není k dispozici |
+| [Preact](https://preactjs.com/) | `build` | Není k dispozici |
+| [React](https://reactjs.org/) | `build` | Není k dispozici |
+| [Kóty](https://stenciljs.com/) | `www` | Není k dispozici |
+| [Svelte](https://svelte.dev/) | `public` | Není k dispozici |
+| [Three.js](https://threejs.org/) | `/` | Není k dispozici |
+| [TypeScript](https://www.typescriptlang.org/) | `dist` | Není k dispozici |
+| [Vue.js](https://vuejs.org/) | `dist` | Není k dispozici |
 
 <sup>1</sup> výše uvedená tabulka není vyčerpávajícím seznamem architektur a knihoven, které pracují se službou Azure static Web Apps.
 

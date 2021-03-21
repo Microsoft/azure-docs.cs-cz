@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: jlian
 ms.openlocfilehash: 864870c4392b12477c321c86afd9da848120490c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621701"
 ---
 # <a name="turn-on-preview-mode-for-iot-hub-to-try-select-new-features"></a>Zapněte režim náhledu pro IoT Hub a zkuste vybrat nové funkce.
@@ -38,7 +38,7 @@ Tyto funkce jsou vylepšením IoT Hub protokolů a ověřovacích vrstev, takže
 
 ## <a name="turn-on-preview-mode-for-a-new-iot-hub"></a>Zapnout režim náhledu pro nové centrum IoT
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Na domovské stránce Azure vyberte tlačítko **+ vytvořit prostředek** a potom do pole **Hledat na Marketplace** zadejte *IoT Hub* .
 
@@ -46,7 +46,7 @@ Tyto funkce jsou vylepšením IoT Hub protokolů a ověřovacích vrstev, takže
 
 1. Na kartě **základy** vyplňte pole [běžným](iot-hub-create-through-portal.md) způsobem, s výjimkou **oblasti**. Vyberte jednu z těchto oblastí:
     
-    - Střední USA
+    - USA – střed
     - West Europe
     - Jihovýchodní Asie
 

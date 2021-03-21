@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98704636"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Přenos dat rozsáhlých datových sad s malou nebo žádnou šířkou pásma sítě
@@ -51,8 +51,8 @@ Následující tabulka shrnuje rozdíly v klíčových funkcích.
 |    **Datový typ**                    |    Objekty blob Azure                  |    Objekty blob Azure<br>Azure Files                    |    Objekty blob Azure<br>Azure Files            |    Objekty blob Azure<br>Azure Files          |
 |    **Formulářový faktor**                  |    5 SSD na objednávku             |    1 X 50-kg zařízení velikosti stolního počítače na jednu objednávku    |    1 X ~ 500-kg velké zařízení na jednu objednávku    |    Až 10 HDD/SSD na objednávku        |
 |    **Čas prvotního nastavení**           |    Nízká <br>(15 minut)            |    Nízká až střední <br> (<30 minut)               |    Pokročilé<br>(1-2 hodin)               |    Střední až obtížné<br>variabilní |
-|    **Odesílání dat do Azure**           |    Ano                          |    Ano                                           |    Ano                                   |    Ano                                 |
-|    **Export dat z Azure**       |    No                           |    No                                            |    No                                    |    Ano                                 |
+|    **Odesílání dat do Azure**           |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
+|    **Export dat z Azure**       |    No                           |    No                                            |    No                                    |    Yes                                 |
 |    **Šifrování**                   |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
 |    **Hardware**                     |     Dodán Microsoft          |    Dodán Microsoft                            |    Dodán Microsoft                    |    Dodán zákazník                   |
 |    **Síťové rozhraní**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |

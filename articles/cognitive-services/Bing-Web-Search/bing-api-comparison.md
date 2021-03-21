@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 72b4755c6f01a10851e79cf274842f1599bc2c55
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349533"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Co je rozhraní API pro vyhledávání Bingu?
@@ -36,7 +36,7 @@ Zvažte použití rozhraní API Bingu pro vyhledávání na webu v aplikacích, 
 
 Následující rozhraní API pro vyhledávání Bingu vrátí konkrétní obsah z webu, jako jsou obrázky, novinky, místní firmy a videa.
 
-| Rozhraní API Bingu | Popis |
+| Rozhraní API Bingu | Description |
 | -- | -- |
 | [Vyhledávání entit](../Bing-Entities-Search/overview.md) | Rozhraní API Bingu pro vyhledávání entit vrátí výsledky hledání obsahující entity, které mohou být osoby, místa nebo věci. V závislosti na dotazu vrátí rozhraní API jednu nebo více entit, které budou vyhovovat vyhledávacímu dotazu. Vyhledávací dotaz může zahrnovat zajímavosti jednotlivce, místní firmy, orientačních bodů, cíle a další. |
 | [Vyhledávání obrázků](../Bing-Image-Search/overview.md) | Rozhraní API Bingu pro vyhledávání obrázků vám umožní vyhledat a najít vysoce kvalitní statické a animované obrázky podobné [Bing.com/images](https://www.Bing.com/images). Hledání můžete upřesnit tak, aby obsahovala nebo vyloučila obrázky podle atributu, včetně velikosti, barvy, licence a aktuálnosti. Můžete také Hledat vývojové obrázky, nahrávat obrázky, získat z nich přehledy a zobrazovat náhledy miniatur. |

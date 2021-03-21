@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98539554"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Jak odhadnout a spravovat náklady na službu Azure Kognitivní hledání
@@ -27,7 +27,7 @@ Množství prostředků používaných vaší vyhledávací službou vynásoben�
 
 Pro účely fakturace existují dva jednoduché vzorce, které je třeba znát:
 
-| Vzorec | Popis |
+| Vzorec | Description |
 |---------|-------------|
 | **R × P = SU** | Počet použitých replik vynásobený počtem použitých oddílů se rovná množství *jednotek hledání* (SU) používaných službou. SU je jednotka prostředku, která může být buď oddílem, nebo replikou. |
 | **SU * fakturační sazba = měsíční výdaje** | Počet služeb SUs vynásobený fakturační sazbou úrovně, ve které jste službu zřídili, je primárním rozhodujícím rozhodujícím z vašich celkových měsíčních faktur. Některé funkce nebo úlohy mají závislosti na dalších službách Azure, což může zvýšit náklady na vaše řešení na úrovni předplatného. V části Fakturovatelné události najdete funkce, které se dají přidat do faktury. |

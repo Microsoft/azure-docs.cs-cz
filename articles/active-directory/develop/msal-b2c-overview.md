@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
 ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98063718"
 ---
 # <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro JavaScript pro práci s Azure AD B2C
@@ -32,7 +32,7 @@ Následující části ukazují, jak:
 - Podpora přihlašování v aplikaci s jednou stránkou (SPA) *a volání* chráněného webového rozhraní API
 - Povolit podporu resetování hesel
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud jste to ještě neudělali, vytvořte [tenanta Azure AD B2C](../../active-directory-b2c/tutorial-create-tenant.md).
 
@@ -215,6 +215,6 @@ Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kter
 
 Přečtěte si další informace o těchto Azure AD B2C konceptech:
 
-- [Toky uživatelů](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Toky uživatele](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md)
 - [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/configure-user-input.md)

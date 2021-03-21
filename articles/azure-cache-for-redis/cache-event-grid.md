@@ -7,10 +7,10 @@ ms.date: 12/21/2020
 ms.topic: conceptual
 ms.service: cache
 ms.openlocfilehash: 0a0809076367356739dfeadcf8dd63f88866a987
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99055840"
 ---
 # <a name="azure-cache-for-redis-event-grid-overview"></a>Přehled Event Grid mezipaměti Azure pro Redis 
@@ -23,7 +23,7 @@ Pokud chcete vyzkoušet Azure cache pro události Redis, podívejte se na někte
 
 |Pokud chcete použít tento nástroj:    |Přečtěte si tento rychlý Start: |
 |--|-|
-|Portál Azure Portal    |[Rychlý Start: směrování mezipaměti Azure pro události Redis do webového koncového bodu pomocí Azure Portal](cache-event-grid-quickstart-portal.md)|
+|portál Azure    |[Rychlý Start: směrování mezipaměti Azure pro události Redis do webového koncového bodu pomocí Azure Portal](cache-event-grid-quickstart-portal.md)|
 |PowerShell    |[Rychlý Start: směrování mezipaměti Azure pro události Redis do webového koncového bodu pomocí PowerShellu](cache-event-grid-quickstart-powershell.md)|
 |Azure CLI    |[Rychlý Start: směrování mezipaměti Azure pro události Redis do webového koncového bodu pomocí Azure CLI](cache-event-grid-quickstart-cli.md)|
 

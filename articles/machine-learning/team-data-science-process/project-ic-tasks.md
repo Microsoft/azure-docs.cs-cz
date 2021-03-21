@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000993"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Úkoly pro jednotlivé přispěvatele v rámci vědeckého zpracování týmových dat
@@ -32,7 +32,7 @@ Následující diagram znázorňuje úkoly, které Project jednotliví přispěv
 > [!NOTE] 
 > Tento článek používá Azure Repos a Data Science Virtual Machine (DSVM) k nastavení prostředí TDSP, protože to znamená, jak implementovat TDSP v Microsoftu. Pokud váš tým používá jiné hostování kódu nebo vývojové platformy, jednotlivé úkoly přispěvatele jsou stejné, ale způsob jejich dokončení může být jiný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste [správcem skupiny](group-manager-tasks.md), vedoucím [týmu](team-lead-tasks.md)a [vedoucím projektu](project-lead-tasks.md)nastavili následující prostředky a oprávnění:
 

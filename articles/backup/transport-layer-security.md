@@ -4,10 +4,10 @@ description: Naučte se, jak povolit Azure Backup pro použití protokolu TLS (T
 ms.topic: conceptual
 ms.date: 11/01/2020
 ms.openlocfilehash: ba9c9d91f562f54695a0739908c8a409d14d5852
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96327113"
 ---
 # <a name="transport-layer-security-in-azure-backup"></a>Transport Layer Security v Azure Backup

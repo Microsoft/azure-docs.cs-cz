@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730883"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>Kurz pro Azure Active Directory integraci s jednotným přihlašováním pomocí F5 BIG-IP pro heslo bez hesla – bez VPN
@@ -41,7 +41,7 @@ V tomto scénáři bude instance BIG-IP APM služby SSL-VPN nakonfigurovaná jak
 >[!NOTE]
 >Všechny ukázkové řetězce nebo hodnoty, na které se odkazuje v rámci této příručky, by se měly nahradit hodnotami pro vaše skutečné prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Nemusíte ale mít k řadu nebo znalosti velkých IP adres F5, budete potřebovat:
 
@@ -88,7 +88,7 @@ Nastavení důvěryhodnosti federace SAML mezi velkou IP adresou umožňuje, aby
 
    - Udělejte to stejně jako v textovém poli **Adresa URL odpovědi** , včetně cesty koncového bodu SAML. Například `https://ssl-vpn.contoso.com/saml/sp/profile/post/acs`.
 
-   - V této konfiguraci se aplikace jenom v režimu iniciované IDP, kde Azure AD před přesměrováním na službu SAML ve velkém rozhraní SAML vystaví uživateli s kontrolním výrazem SAML. U aplikací, které nepodporují režim iniciované IDP, zadejte **přihlašovací adresu URL** pro službu Big-IP SAML. Například `https://ssl-vpn.contoso.com`.
+   - V této konfiguraci se aplikace jenom v režimu iniciované IDP, kde Azure AD před přesměrováním na službu SAML ve velkém rozhraní SAML vystaví uživateli s kontrolním výrazem SAML. U aplikací, které nepodporují režim iniciované IDP, zadejte **přihlašovací adresu URL** pro službu Big-IP SAML. Například, `https://ssl-vpn.contoso.com`.
 
    - V poli Adresa URL pro odhlášení Zadejte koncový bod služby Single-IP APM Single logout (SLO), který se předoznačené jako nedokončené pomocí hlavičky hostitele publikované služby. Například `https://ssl-vpn.contoso.com/saml/sp/profile/redirect/slr`.
 
@@ -165,7 +165,7 @@ Následující postup umožní uživatelům nabízení SSL-VPN nabídnout uživa
 
 1. Přejděte do části **přístup**  >  **k**  >  **seznamům webWebtop seznamů** a vyberte **vytvořit**.
 
-2. Dejte portálu název a nastavte typ na **úplný**. Například `Contoso_webtop`.
+2. Dejte portálu název a nastavte typ na **úplný**. Například, `Contoso_webtop`.
 
 3. Upravte zbývající předvolby a pak vyberte **dokončeno**.
 

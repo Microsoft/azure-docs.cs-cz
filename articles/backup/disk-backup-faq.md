@@ -4,10 +4,10 @@ description: Získejte odpovědi na nejčastější dotazy týkající se záloh
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98734558"
 ---
 # <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>Nejčastější dotazy týkající se služby Azure disk Backup (ve verzi Preview)
@@ -79,7 +79,7 @@ Ano, disk můžete obnovit do jiného předplatného, než na kterém je zdrojov
 
 Ne, snímky k určitému bodu v čase s více disky připojenými k virtuálnímu počítači se nepodporují. Další informace najdete v tématu [Konfigurace zálohování](backup-managed-disks.md#configure-backup) a další informace o omezeních najdete v části [support Matrix](disk-backup-support-matrix.md).
 
-### <a name="what-are-my-options-to-back-up-disks-across-multiple-subscriptions"></a>Jaké mám možnosti pro zálohování disků v rámci více předplatných?
+### <a name="what-are-my-options-to-back-up-disks-across-multiple-subscriptions"></a>Jaké mám možnosti zálohování disků napříč několika předplatnými?
 
 V současné době se pomocí Azure Portal ke konfiguraci zálohování disků omezí na maximálně 20 disků ze stejného předplatného.
 
