@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2ece9ed5cb6eb6ea706db1ed615a64d001f2b17c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102423947"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Kurz: Vytvoření aplikace konzoly .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
@@ -46,7 +46,7 @@ Nemáte čas? Ale žádný strach. Úplné řešení je k dispozici na [GitHubu]
 
 Můžeme začít!
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -79,7 +79,7 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dok
 
 ## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>Krok 3: Připojení k účtu služby Azure Cosmos DB
 
-1. Nahraďte odkazy na začátku aplikace v C# v souboru *program.cs* pomocí těchto odkazů:
+1. Nahraďte odkazy na začátku aplikace v C# v souboru *program. cs* pomocí těchto odkazů:
 
    ```csharp
    using System;
@@ -124,7 +124,7 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dok
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Získat Azure Cosmos DB klíče z Azure Portal":::
 
-1. V *program.cs* nahraďte `<your endpoint URL>` hodnotou **identifikátoru URI**. Nahraďte `<your primary key>` hodnotou **primárního klíče**.
+1. V *programu program. cs* nahraďte `<your endpoint URL>` hodnotu **identifikátoru URI**. Nahraďte `<your primary key>` hodnotou **primárního klíče**.
 
 1. Pod metodou **Main** přidejte novou asynchronní úlohu s názvem **GetStartedDemoAsync**, která vytvoří instanci našeho nového `CosmosClient` .
 
@@ -179,7 +179,7 @@ Databáze je logický kontejner položek rozdělených napříč kontejnery. Pom
     }
     ```
 
-    Váš *program.cs* by teď měl vypadat jako to s vyplněným koncovým bodem a primárním klíčem.
+    *Program. cs* by teď měl vypadat jako tento, a to s vyplněným koncovým bodem a primárním klíčem.
 
     ```csharp
     using System;
@@ -311,14 +311,14 @@ Nejprve vytvoříme `Family` třídu, která představuje objekty uložené v r�
 
 1. Kliknutím na Ctrl + Shift + A otevřete **Přidat novou položku**. Přidejte `Family.cs` do projektu novou třídu.
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Snímek obrazovky s přidáním nové třídy Family.cs do projektu":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Snímek obrazovky s přidáním nové třídy ' Family. cs ' do projektu":::
 
 1. Zkopírujte a vložte `Family` třídu, `Parent` ,, a `Child` `Pet` `Address` do `Family.cs` .
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
-1. Zpět v *program.cs* přidejte `AddItemsToContainerAsync` metodu za `CreateContainerAsync` metodu.
+1. Zpět v *programu program. cs* přidejte `AddItemsToContainerAsync` metodu za `CreateContainerAsync` metodu.
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 

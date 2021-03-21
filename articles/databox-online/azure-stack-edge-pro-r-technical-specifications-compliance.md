@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
 ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466599"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge pro R – technické specifikace
@@ -27,7 +27,7 @@ Zařízení Azure Stack Edge pro R má následující specifikace pro výpočetn
 | Specifikace       | Hodnota                  |
 |---------------------|------------------------|
 | Procesor    | PROCESOR 2 X 10 Core, Intel Xeon stříbrné 4114 |
-| Paměť              | 256 GB RAM (2666 MT/s)     |
+| Memory (Paměť)              | 256 GB RAM (2666 MT/s)     |
 
 
 ## <a name="compute-acceleration-specifications"></a>Specifikace zrychlení výpočtů
@@ -55,7 +55,7 @@ Zařízení Azure Stack Edge pro R má dvě jednotky napájení 100-240 V (PSUs)
 Zařízení Azure Stack Edge pro R má čtyři síťová rozhraní PORT1-PORT4. 
 
 
-|Specifikace  |Popis                              |
+|Specifikace  |Description                              |
 |----------------------|----------------------------------|
 |Síťová rozhraní    |**2 x 1 GbE RJ45** <br> PORT 1 se používá jako rozhraní pro správu pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí zpět na statickou IP adresu. <br>Druhý PORT rozhraní 2 je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP.     |
 |Síťová rozhraní    |**2 × 25 GbE SFP28** <br> Tato datová rozhraní PORT 3 a PORT 4 je možné nakonfigurovat jako DHCP (výchozí) nebo static.            |

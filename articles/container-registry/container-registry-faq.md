@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
 ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606279"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
@@ -33,11 +33,11 @@ Pokyny k odstraňování potíží registru najdete v těchto tématech:
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Můžu vytvořit Azure Container Registry pomocí šablony Správce prostředků?
 
-Yes. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
+Ano. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Kontroluje se u obrázků v ACR chyba zabezpečení?
 
-Yes. Přečtěte si dokumentaci od [Azure Security Center](../security-center/defender-for-container-registries-introduction.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Ano. Přečtěte si dokumentaci od [Azure Security Center](../security-center/defender-for-container-registries-introduction.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?
 
@@ -350,7 +350,7 @@ unauthorized: authentication required
 ```
 
 Řešení této chyby:
-1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Příklad:
+1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Například:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -537,10 +537,10 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 
 | Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Ano |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ne |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | Ne |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Yes |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Yes | Yes |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | No |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | No |
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 

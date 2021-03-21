@@ -12,10 +12,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 06/25/2019
 ms.openlocfilehash: 0a72bea08052e5cd17502a21a98b41cb5582a3b9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96493623"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Pomocí Azure CLI můžete monitorovat a škálovat izolovanou databázi v Azure SQL Database
@@ -57,7 +57,7 @@ az group delete --name $resource
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Skript | Popis |
+| Skript | Description |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Příkazy serveru. |
 | [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | Zobrazí informace o využití velikosti databáze. |

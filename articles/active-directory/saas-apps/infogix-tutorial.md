@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 7ca566c554c02d20d21bd7eba87dfbcbf1f746da
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606483"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Kurz: Azure Active Directory integrace se Infogix Data3Sixty se řídí
@@ -121,7 +121,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Infogix 
 
 7. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | -----------| -------------- |
     | FirstName  | User. křestní jméno |
     | polím | User. příjmení |

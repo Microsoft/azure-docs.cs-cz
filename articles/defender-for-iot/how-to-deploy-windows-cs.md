@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: e7c7fdd5874dbde5ca304309d0840724cb3872df
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103494525"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Nasazení programu Defender pro agenta zabezpečení na bázi IoT C# pro Windows
@@ -32,7 +32,7 @@ V této příručce se naučíte:
 - Odinstalace agenta
 - Řešení potíží
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Další typy platforem a agentů najdete v tématu [Volba správného agenta zabezpečení](how-to-deploy-agent.md).
 
@@ -96,7 +96,7 @@ Postup při odinstalaci agenta:
     .\InstallSecurityAgent.ps1 -Uninstall
     ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se agent nespustí, zapněte protokolování (protokolování je ve výchozím nastavení *vypnuté* ) a získejte další informace.
 

@@ -10,17 +10,17 @@ ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: a8626174e157e79d0250824e0a3cfa97141d50dc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695035"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Připojení k Azure Synapse Linku pro Azure Cosmos DB
 
 Tento článek popisuje, jak získat přístup k databázi Azure Cosmos DB z Azure synapse Analytics studia pomocí Azure synapse Link.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před připojením databáze Azure Cosmos DB k pracovnímu prostoru budete potřebovat:
 

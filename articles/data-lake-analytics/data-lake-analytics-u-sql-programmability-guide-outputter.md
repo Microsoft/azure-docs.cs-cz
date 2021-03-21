@@ -6,13 +6,13 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 56b104b5cc8f8923445455c71fe2418e39539b8e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96512534"
 ---
-# <a name="use-user-defined-outputter"></a>Použití uživatelsky definovaného výstupu
+# <a name="use-user-defined-outputter"></a>Použití uživatelsky definovaného objektu outputter
 
 ## <a name="u-sql-udo-user-defined-outputter"></a>U-SQL UDO: uživatelsky definovaného výstupu
 Uživatelem definovaný modul pro výstup je jiný UDO U-SQL, který umožňuje rozšířené integrované funkce U-SQL. Podobně jako u extraktoru existuje několik vestavěných výstupů.

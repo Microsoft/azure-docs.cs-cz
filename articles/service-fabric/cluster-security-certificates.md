@@ -4,10 +4,10 @@ description: Přečtěte si o ověřování pomocí certifikátů v Service Fabr
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 2d94e5cc78afbabde38eb38e0c4f89381bd67167
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101729687"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Ověřování pomocí certifikátu X. 509 v clusterech Service Fabric

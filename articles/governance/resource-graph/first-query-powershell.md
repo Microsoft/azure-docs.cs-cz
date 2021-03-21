@@ -4,10 +4,10 @@ description: V tomto rychlém startu budete postupovat podle pokynů pro povolen
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 131bed4fe60035682a317e186f11561bc005b298
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98917669"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell
@@ -16,7 +16,7 @@ Prvním krokem k použití služby Azure Resource Graph je zkontrolovat, že je 
 
 Na konci tohoto procesu budete mít za sebou přidání modulu k vybrané instalaci Azure PowerShellu a spuštění prvního dotazu na službu Resource Graph.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

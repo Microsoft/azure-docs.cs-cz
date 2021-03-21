@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96518664"
 ---
 # <a name="msix-app-attach-glossary"></a>Glosář připojení aplikace MSIX
@@ -112,15 +112,15 @@ Defázování upozorní operační systém, že balíček MSIX nebo aplikace, kt
 
 Soubor CIM je soubor s příponou. Rozšíření CIM obsahující metadata a alespoň šest dalších souborů, které obsahují skutečná data. Soubory v souboru CIM nemají rozšíření. V následující tabulce je seznam ukázkových souborů, které byste našli v modelu CIM:
 
-| Název souboru | Rozšíření | Velikost |
+| Název souboru | Linka | Velikost |
 |-----------|-----------|------|
 | VIRTUÁLNÍ čipové karty | CIM | 1 kB |
-| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | Není k dispozici | 27 KB |
-| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | Není k dispozici | 20 KB |
-| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | Není k dispozici | 42 KB |
-| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | Není k dispozici | 428 KB |
-| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | Není k dispozici | 217 KB |
-| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | Není k dispozici | 264 132 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | NA | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | NA | 264 132 KB |
 
 Následující tabulka představuje porovnání výkonu mezi VHD a CimFS. Tato čísla byla výsledkem testovacího běhu s 500 300 MB souborů v každém formátu spuštěném na DSv4 počítači.
 

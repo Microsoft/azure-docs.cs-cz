@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: alkohli
 ms.openlocfilehash: dfff3bdd716c54a6c83dbc9fec63c794c1fba85b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466767"
 ---
 # <a name="azure-stack-edge-pro-r-limits"></a>Omezení Azure Stack Edge pro R
@@ -27,10 +27,10 @@ Vezměte v úvahu tato omezení při nasazení a provozu řešení Azure Stack E
 
 Následující tabulka popisuje omezení pro zařízení Azure Stack Edge pro R.
 
-| Popis | Hodnota |
+| Description | Hodnota |
 |---|---|
-|Ne. souborů na zařízení |100 000 000 |
-|Ne. sdílených složek na kontejner |1 |
+|No. souborů na zařízení |100 000 000 |
+|No. sdílených složek na kontejner |1 |
 |Maximální počet. koncových bodů sdílení a koncových bodů REST na zařízení| 24 |
 |Maximální počet. účtů vrstveného úložiště na zařízení| 24|
 |Maximální velikost souboru zapsaná do sdílené složky| 5 TB |

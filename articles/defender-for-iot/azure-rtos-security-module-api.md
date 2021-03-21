@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
 ms.openlocfilehash: 9a285636ba10f7ca0668f597d0e9016cff73494a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103494287"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>Defender – IoT-Micro-Agent pro Azure RTO API (Preview)
@@ -34,19 +34,19 @@ Toto rozhraní API je určené pro použití s Defenderem-IoT-Micro-Agent pro Az
 UINT nx_azure_iot_security_module_enable(NX_AZURE_IOT *nx_azure_iot_ptr);
 ```
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 Tato rutina umožňuje subsystém Azure IoT Defender – IoT-Micro-agent. Interní Stavový počítač spravuje shromažďování událostí zabezpečení a odesílá je do Azure IoT Hub. Pro správu shromažďování dat je vyžadována pouze jedna instance NX_AZURE_IOT_SECURITY_MODULE.
 
 ### <a name="parameters"></a>Parametry
 
-| Název | Popis |
+| Název | Description |
 |---------|---------|
 | nx_azure_iot_ptr [in]    | Ukazatel na `NX_AZURE_IOT` .  |
 
 ### <a name="return-values"></a>Vrácené hodnoty
 
-|Vrácené hodnoty  |Popis |
+|Vrácené hodnoty  |Description |
 |---------|---------|
 |NX_AZURE_IOT_SUCCESS|   Modul zabezpečení Azure IoT se úspěšně povolil.     |
 |NX_AZURE_IOT_FAILURE   |  Kvůli vnitřní chybě se nepovedlo povolit modul zabezpečení Azure IoT.    |
@@ -67,19 +67,19 @@ Vlákna
 UINT nx_azure_iot_security_module_disable(NX_AZURE_IOT *nx_azure_iot_ptr);
 ```
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 Tato rutina zakáže podsystém Azure IoT Defender – IoT-Micro-agent.
 
 ### <a name="parameters"></a>Parametry
 
-| Název | Popis |
+| Název | Description |
 |---------|---------|
 | nx_azure_iot_ptr [in]    | Ukazatel na `NX_AZURE_IOT` . Pokud je hodnota NULL, je zakázaná instance singleton. |
 
 ### <a name="return-values"></a>Vrácené hodnoty
 
-|Vrácené hodnoty  |Popis |
+|Vrácené hodnoty  |Description |
 |---------|---------|
 |NX_AZURE_IOT_SUCCESS     |   Po úspěšném zakázání modulu zabezpečení Azure IoT došlo k úspěšnému vypnutí.      |
 |NX_AZURE_IOT_INVALID_PARAMETER   |  Instance Azure IoT Hub se liší od složené instance s jedním prvkem.       |

@@ -10,10 +10,10 @@ ms.date: 10/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
 ms.openlocfilehash: e5076888e692ad16e89f30d455e7f8c4e22a41b9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96468344"
 ---
 # <a name="tutorial-activate-azure-stack-edge-mini-r"></a>Kurz: Aktivace Azure Stack hraničního konektoru R
@@ -83,7 +83,7 @@ Předtím, než nakonfigurujete a nastavíte Azure Stack hraničních zařízen�
  
     Různé klíče jsou vysvětleny v následující tabulce:
     
-    |Pole  |Popis  |
+    |Pole  |Description  |
     |---------|---------|
     |`Id`    | Toto je ID zařízení.        |
     |`DataVolumeBitLockerExternalKeys`|Toto jsou klíče BitLockeru pro datové disky a slouží k obnovení místních dat v zařízení.|

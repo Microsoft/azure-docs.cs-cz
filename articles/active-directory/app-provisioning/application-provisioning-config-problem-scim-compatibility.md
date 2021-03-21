@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99256894"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů
@@ -39,11 +39,11 @@ V následující tabulce je jakákoli položka označená jako pevná, což znam
 
 | **Problém dodržování předpisů pro SCIM 2,0** |  **Určí?** | **Opravit datum**  |  **Zpětná kompatibilita** |
 |---|---|---|
-| Azure AD vyžaduje, aby "/SCIM" v kořenu adresy URL koncového bodu SCIM aplikace.  | Ano  |  18. prosince 2018 | downgrade na customappSSO |
-| Atributy rozšíření používají tečku "." před názvy atributů namísto dvojtečky ":" Notation. |  Ano  | 18. prosince 2018  | downgrade na customappSSO |
-| Žádosti o opravu atributů s více hodnotami obsahují neplatnou syntaxi filtru cesty. | Ano  |  18. prosince 2018  | downgrade na customappSSO |
-| Žádosti o vytvoření skupiny obsahují neplatný identifikátor URI schématu. | Ano  |  18. prosince 2018  |  downgrade na customappSSO |
-| Aktualizace chování opravy, aby se zajistilo dodržování předpisů (např. aktivní jako logická a správná odebrání členství ve skupině) | Ne | Bude doplněno| použít příznak náhledu |
+| Azure AD vyžaduje, aby "/SCIM" v kořenu adresy URL koncového bodu SCIM aplikace.  | Yes  |  18. prosince 2018 | downgrade na customappSSO |
+| Atributy rozšíření používají tečku "." před názvy atributů namísto dvojtečky ":" Notation. |  Yes  | 18. prosince 2018  | downgrade na customappSSO |
+| Žádosti o opravu atributů s více hodnotami obsahují neplatnou syntaxi filtru cesty. | Yes  |  18. prosince 2018  | downgrade na customappSSO |
+| Žádosti o vytvoření skupiny obsahují neplatný identifikátor URI schématu. | Yes  |  18. prosince 2018  |  downgrade na customappSSO |
+| Aktualizace chování opravy, aby se zajistilo dodržování předpisů (např. aktivní jako logická a správná odebrání členství ve skupině) | No | Bude doplněno| použít příznak náhledu |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>Příznaky pro změnu chování SCIM
 Pomocí příznaků níže v adrese URL klienta aplikace můžete změnit výchozí chování klienta SCIM.

@@ -12,10 +12,10 @@ ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 161266a69308175637f5967b2ded48621d4d9c53
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424066"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Použití tokenu Insights k získání přehledů pro Image
@@ -95,7 +95,7 @@ Příklady, které používají tokeny Insights, najdete v těchto tématech:
 Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
 1. Vytvořte v aplikaci Visual Studio řešení konzoly.
-2. Nahraďte obsah Program.cs kódem zobrazeným v tomto rychlém startu.
+2. Obsah programu program. cs nahraďte kódem zobrazeným v tomto rychlém startu.
 3. Hodnotu `accessKey` nahraďte klíčem předplatného.
 4. Nahraďte `insightsToken` hodnotu tokenem Insights z odpovědi/images/Search.
 5. Spustíte program.

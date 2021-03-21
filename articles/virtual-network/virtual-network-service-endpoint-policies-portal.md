@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004955"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Vytvoření, změna nebo odstranění zásad koncového bodu služby pomocí Azure Portal
@@ -31,7 +31,7 @@ Zásady koncového bodu služby umožňují filtrovat provoz virtuální sítě 
 > * Vytvoření virtuální sítě s podsítí
 > * Přidružení zásady koncového bodu služby k podsíti
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
@@ -71,7 +71,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
    - Klíč: Vyberte klíč pro zásadu. Ex: oddělení     
    - Hodnota: zadejte dvojici hodnot pro klíč. Např. finance
 
-6. Vyberte **zkontrolovat + vytvořit**. Ověřte informace a klikněte na **vytvořit**. Chcete-li provést další úpravy, klikněte na tlačítko **Předchozí**. 
+6. Vyberte **Zkontrolovat a vytvořit**. Ověřte informace a klikněte na **vytvořit**. Chcete-li provést další úpravy, klikněte na tlačítko **Předchozí**. 
 
    ![Vytvořit konečná ověření zásad koncového bodu služby](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   

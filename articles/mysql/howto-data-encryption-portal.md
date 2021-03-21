@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 00670746c1686bca354adc989ddce6c9dd336491
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96519055"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for MySQL pomocí Azure Portal
@@ -40,12 +40,12 @@ Naučte se používat Azure Portal k nastavení a správě šifrování dat pro 
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
     ```
 
-* Klíč musí obsahovat následující atributy, které se použijí jako klíč spravovaný zákazníkem:
-  * Žádné datum vypršení platnosti
-  * Nezakázáno
+* Aby bylo možné klíč použít jako klíč spravovaný zákazníkem, musí mít následující atributy:
+  * Nesmí mít žádné datum ukončení platnosti.
+  * Nesmí být zakázaný.
   * Provádění operací **získat**, **zalamovat** a **rozbalení**
   * atribut recoverylevel je nastavený na **obnovitelné** (vyžaduje se obnovitelné odstranění s dobou uchování nastavenou na 90 dní).
-  * Vymazání ochrany povoleno
+  * Musí mít povolenou ochranu před vymazáním.
 
 Výše uvedené atributy klíče můžete ověřit pomocí následujícího příkazu:
 
@@ -95,7 +95,7 @@ Když je Azure Database for MySQL zašifrovaný pomocí spravovaného klíče z�
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Snímek obrazovky Azure Database for MySQL s zvýrazněným stavem nepřístupu":::
 
-3. Aby byl server přístupný, znovu ověřte klíč na obnoveném serveru. Vyberte klíč znovu ověřit **šifrování dat**  >  **Revalidate key**.
+3. Aby byl server přístupný, znovu ověřte klíč na obnoveném serveru. Vyberte klíč znovu ověřit **šifrování dat**  >  .
 
    > [!NOTE]
    > První pokus o nové ověření se nezdaří, protože instanční objekt nového serveru musí mít přístup k trezoru klíčů. Chcete-li vygenerovat instanční objekt, vyberte znovu **Ověřit klíč**, čímž se zobrazí chyba, ale vygeneruje se instanční objekt. Potom si přečtěte tento [postup](#set-the-right-permissions-for-key-operations) výše v tomto článku.

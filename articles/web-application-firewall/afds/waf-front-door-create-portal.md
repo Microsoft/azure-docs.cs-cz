@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: victorh
 ms.openlocfilehash: 8b1d1007e817bafe3d75f0f0d7c3fc6eb5470854
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101729466"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Kurz: Vytvoření zásad brány firewall webových aplikací na frontách Azure pomocí Azure Portal
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Přidružit k hostiteli front-endu
 > * Konfigurace pravidel WAF
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vytvořte profil front-dveří podle pokynů popsaných v tématu [rychlý Start: vytvoření profilu front-dveří](../../frontdoor/quickstart-create-front-door.md). 
 

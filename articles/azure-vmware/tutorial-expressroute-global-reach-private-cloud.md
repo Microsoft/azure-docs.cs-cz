@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit partnerský vztah ExpressRoute Global Rea
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.openlocfilehash: ae92bf89a08c5fade8757e3ee596c4ed4a5e6389
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103494145"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Kurz: partnerských místních prostředí do privátního cloudu
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 
 Než povolíte připojení mezi dvěma okruhy ExpressRoute pomocí ExpressRoute Global Reach, přečtěte si dokumentaci, jak [Povolit připojení v různých předplatných Azure](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions).  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Navázalo se připojení k privátnímu cloudu řešení Azure VMware pomocí okruhu ExpressRoute s použitím brány ExpressRoute ve službě Azure Virtual Network (VNet) – což je okruh 2 od procedur partnerských vztahů.
 - Samostatný fungující okruh ExpressRoute, který slouží k připojení místních prostředí k Azure – což je okruh 1 z perspektivy postupy partnerských vztahů.

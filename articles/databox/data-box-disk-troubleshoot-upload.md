@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 4b53cf607bdf60c785c7324d9ede526a0983b7e6
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97605271"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Principy protokolů pro řešení potíží s nahráváním dat v Azure Data Box Disk
@@ -156,7 +156,7 @@ Stav na úrovni souboru je v `BlobStatus` této části popisuje všechny akce p
 
 Chyby generované při nahrávání dat do Azure jsou shrnuté v následující tabulce.
 
-| Kód chyby | Popis                   |
+| Kód chyby | Description                   |
 |-------------|------------------------------|
 |`None` |  Úspěšně dokončeno.           |
 |`Renamed` | Objekt BLOB se úspěšně přejmenoval.   |

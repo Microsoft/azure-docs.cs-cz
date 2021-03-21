@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
 ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005278"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Optimalizujte náklady díky automatizaci úrovní přístupu Azure Blob Storage.
@@ -48,12 +48,12 @@ Zásadu můžete přidat, upravit nebo odebrat pomocí kterékoli z následujíc
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](/cli/azure/install-azure-cli)
-* [REST API](/rest/api/storagerp/managementpolicies)
+* [Rozhraní REST API](/rest/api/storagerp/managementpolicies)
 
 Zásady je možné číst nebo zapisovat v plném rozsahu. Částečné aktualizace nejsou podporovány. 
 
 > [!NOTE]
-> Pokud pro svůj účet úložiště povolíte pravidla brány firewall, můžou být požadavky správy životního cyklu blokované. Tyto požadavky můžete odblokovat poskytováním výjimek pro důvěryhodné služby společnosti Microsoft. Další informace najdete v části výjimky v tématu [Konfigurace bran firewall a virtuálních sítí](../common/storage-network-security.md#exceptions).
+> Pokud pro svůj účet úložiště povolíte pravidla brány firewall, můžou být požadavky správy životního cyklu blokované. Tyto požadavky můžete odblokovat přidáním výjimek pro důvěryhodné služby Microsoftu. Další informace najdete v části výjimky v tématu [Konfigurace bran firewall a virtuálních sítí](../common/storage-network-security.md#exceptions).
 
 Tento článek popisuje, jak spravovat zásady pomocí portálu a metod PowerShellu.
 
@@ -596,4 +596,4 @@ Přečtěte si, jak obnovit data po náhodném odstranění:
 
 Naučte se spravovat a vyhledávat data pomocí indexu objektů BLOB:
 
-- [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB](storage-manage-find-blobs.md)
+- [Správa a vyhledávání dat ve službě Azure Blob Storage s využitím indexu objektů blob](storage-manage-find-blobs.md)

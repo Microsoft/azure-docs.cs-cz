@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96530931"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Indexování šifrovaných objektů BLOB pomocí indexerů objektů BLOB a dovednosti v Azure Kognitivní hledání
@@ -115,9 +115,9 @@ Nainstalujte a nastavte post.
 ### <a name="download-and-install-postman"></a>Stáhnout a nainstalovat post
 
 1. Stáhněte [zdrojový kód kolekce po](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json).
-1. Vyberte **File**  >  **importovat** soubor a importujte zdrojový kód do metody post.
+1. Vyberte   >  **importovat** soubor a importujte zdrojový kód do metody post.
 1. Vyberte kartu **kolekce** a pak klikněte na tlačítko **...** (tři tečky).
-1. Vyberte **Edit** (Upravit). 
+1. Vyberte **Upravit**. 
    
    ![Pozálohovací aplikace ukazující navigaci](media/indexing-encrypted-blob-files/postman-edit-menu.jpg "Přejít do nabídky upravit v poli post")
 1. V dialogovém okně **Upravit** vyberte kartu **proměnné** . 
@@ -132,7 +132,7 @@ Pokud chcete získat hodnotu pro `admin-key` , použijte klíč rozhraní API pr
 |-------------|-----------------|
 | `admin-key` | Na stránce **klíče** služby Azure kognitivní hledání.  |
 | `search-service-name` | Název služby Azure Kognitivní hledání. Adresa URL je `https://{{search-service-name}}.search.windows.net` . |
-| `storage-connection-string` | V účtu úložiště na kartě **přístupové klíče** vyberte **key1**  >  **připojovací řetězec** klíč1. |
+| `storage-connection-string` | V účtu úložiště na kartě **přístupové klíče** vyberte   >  **připojovací řetězec** klíč1. |
 | `storage-container-name` | Název kontejneru objektů blob, který obsahuje šifrované soubory, které mají být indexovány. |
 | `function-uri` |  Ve funkci Azure v části **základy** na hlavní stránce. |
 | `function-code` | V Azure Functions přejděte na **klíče aplikace**, kliknutím zobrazíte **výchozí** klíč a zkopírujete hodnotu. |

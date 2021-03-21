@@ -9,10 +9,10 @@ ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
 ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96601607"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>Principy cen pro Azure Application Gateway a firewall webových aplikací
@@ -82,7 +82,7 @@ V následující tabulce jsou uvedeny ukázkové ceny na základě snímku Vých
 
 |              Typ Application Gateway             |  Náklady ($/h)  |
 | ------------------------------------------------- | ---------------|
-|                     Malá                         |       Není k dispozici       |
+|                     Malá                         |       NA       |
 |                     Střední                        |     $0,126     |
 |                     Velká                         |     $0,448     |
 

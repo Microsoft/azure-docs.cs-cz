@@ -9,10 +9,10 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: 34f54bb30e959ecc2fa27fba5ab7392b9eddc68e
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103494508"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Kopírování dat z Amazon S3 do Azure Storage pomocí AzCopy
@@ -139,7 +139,7 @@ AWS S3 a Azure povolují v názvech klíčů objektů různé sady znaků. Můž
 
 Jako součást `copy` příkazu AzCopy můžete zadat hodnotu volitelného `s2s-handle-invalid-metadata` příznaku, který určuje, jak chcete zpracovat soubory, kde metadata souboru obsahují nekompatibilní názvy klíčů. V následující tabulce jsou popsány všechny hodnoty příznaků.
 
-| Hodnota příznaku | Popis  |
+| Hodnota příznaku | Description  |
 |--------|-----------|
 | **ExcludeIfInvalid** | (Výchozí možnost) Tato metadata nejsou obsažena v přenesených objektech. AzCopy zaznamená upozornění. |
 | **FailIfInvalid** | Objekty nejsou kopírovány. AzCopy zaznamená chybu a zahrne tuto chybu do neúspěšného počtu, který se zobrazí v souhrnu přenosu.  |

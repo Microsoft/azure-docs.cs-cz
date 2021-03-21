@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/18/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 08ed02c65db201e18ce710633b421edb5ecb2db0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365459"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655695"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti Azure Active Directoryho uživatele spolupráce B2B
 
@@ -106,7 +106,7 @@ Je možné vypnout výchozí omezení, aby uživatel typu Host v adresáři spol
 ![Snímek obrazovky s možností externích uživatelů v uživatelském nastavení](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Je možné uživatele typu Host zobrazit v globálním seznamu adres systému Exchange?
-Ano. Ve výchozím nastavení nejsou objekty hosta viditelné v globálním seznamu adres vaší organizace, ale pomocí Azure Active Directory PowerShellu je můžete zobrazit. Podrobnosti najdete v tématu zobrazení **objektů hosta v globálním seznamu adres?** v tématu [Správa přístupu hostů v Microsoft 365ch skupinách](/office365/admin/create-groups/manage-guest-access-in-groups).
+Ano. Ve výchozím nastavení nejsou objekty hosta viditelné v globálním seznamu adres vaší organizace, ale pomocí Azure Active Directory PowerShellu je můžete zobrazit. Podrobnosti najdete v článku "Přidání hostů do globálního seznamu adres" v [článku Microsoft 365 pro přístup hosta podle skupin](/microsoft-365/solutions/per-group-guest-access).
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Můžu aktualizovat e-mailovou adresu uživatele typu Host?
 

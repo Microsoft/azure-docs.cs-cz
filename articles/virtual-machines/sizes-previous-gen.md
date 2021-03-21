@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 11/01/2020
 ms.author: mimckitt
 ms.openlocfilehash: 90bc98d63b45e43c9325eed4fe019b18f52d0de8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500287"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
@@ -94,7 +94,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 
 Velikosti úrovně Basic jsou primárně určeny pro úlohy související s vývojem a další aplikace, pro které se nevyžaduje vyrovnávání zatížení, automatické škálování nebo používání virtuálních počítačů s vysokými nároky na paměť.
 
-| Velikost – Velikost\Název | Virtuální procesory | Paměť|Síťové karty (Max.)| Max. velikost dočasného disku | Max. datové disky (1023 GB)| Max. IOPS (300 na disk) |
+| Velikost – Velikost\Název | Virtuální procesory | Memory (Paměť)|Síťové karty (Max.)| Max. velikost dočasného disku | Max. datové disky (1023 GB)| Max. IOPS (300 na disk) |
 |---|---|---|---|---|---|---|
 | A0\Basic_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1×300  |
 | A1\Basic_A1 | 1 | 1,75 GB | 2 | 40 GB  | 2  | 2×300  |

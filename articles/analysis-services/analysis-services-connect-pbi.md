@@ -8,10 +8,10 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ed0f3d379ca961c610958c073c27c6fc9583252b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500916"
 ---
 # <a name="connect-with-power-bi"></a>Propojení s Power BI
@@ -25,7 +25,7 @@ Po vytvoření serveru v Azure a nasazení tabelárního modelu do něj budou u�
   
 ## <a name="connect-in-power-bi-desktop"></a>Připojení v Power BI Desktopu
 
-1. V Power BI Desktop klikněte na **získat data**  >  **Azure**  >  **databáze Azure Azure Analysis Services**.
+1. V Power BI Desktop klikněte na **získat data**  >    >  **databáze Azure Azure Analysis Services**.
 
 2. Do pole **Server** zadejte název serveru. Nezapomeňte uvést úplnou adresu URL. například asazure://westcentralus.asazure.windows.net/advworks.
 

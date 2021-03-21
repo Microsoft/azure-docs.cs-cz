@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97607979"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Použití jazyka Java k posílání událostí nebo přijímání událostí z Azure Event Hubs (Azure-eventhubs)
@@ -133,7 +133,7 @@ Pomocí transformace řetězce na jeho kódování UTF-8 Vytvořte událost v je
 
 Sestavte a spusťte program a ujistěte se, že nejsou k dispozici žádné chyby.
 
-Blahopřejeme vám. Nyní jste odeslali zprávy do centra událostí.
+Gratulujeme! Nyní jste odeslali zprávy do centra událostí.
 
 ### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Příloha: způsob směrování zpráv do oddílů EventHub
 
@@ -174,7 +174,7 @@ Kód v tomto kurzu vychází z [EventProcessorSample kódu na GitHubu](https://g
 Chcete-li použít EventProcessorHost, musíte mít účet [Azure Storage] [Azure Storage účet]:
 
 1. Přihlaste se [Azure Portal](https://portal.azure.com)a na levé straně obrazovky vyberte **vytvořit prostředek** .
-2. Vyberte **úložiště** a pak vyberte **účet úložiště**. V okně **vytvořit účet úložiště** zadejte název účtu úložiště. Dokončete zbývající pole, vyberte požadovanou oblast a pak vyberte **vytvořit**.
+2. Vyberte **Úložiště** a dále **Účet úložiště**. V okně **vytvořit účet úložiště** zadejte název účtu úložiště. Dokončete zbývající pole, vyberte požadovanou oblast a pak vyberte **vytvořit**.
 
     ![Vytvořte účet úložiště v Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 

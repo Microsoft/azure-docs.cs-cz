@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
 ms.openlocfilehash: 18956948a32a79c1435bf4fc1554b09480c9010c
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101100798"
 ---
 # <a name="quickstart-create-an-azure-front-door-standardpremium-profile---azure-portal"></a>Rychlý Start: vytvoření profilu služby Azure front-end Standard/Premium – Azure Portal
@@ -31,7 +31,7 @@ V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit profil f
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
