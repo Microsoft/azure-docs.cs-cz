@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 509e31919dd974da253cd0478a70f889cc060fae
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99831786"
 ---
 # <a name="tutorial-create-and-explore-the-solar-panel-monitoring-app-template"></a>Kurz: vytvoření a prozkoumání šablony aplikace pro monitorování v panelu slunečního příjímat 
@@ -28,7 +28,7 @@ V tomto kurzu Vás provedeme procesem vytvoření aplikace pro monitorování v 
 
 Pokud předplatné nemáte, [vytvořte bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro dokončení tohoto kurzu nejsou k dispozici žádné požadavky. Doporučuje se předplatné Azure, ale nevyžaduje se to.
 

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97589215"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Funkce a možnosti spravované instance SQL ARC Azure
@@ -33,25 +33,25 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 
 ###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS vysoká dostupnost  
   
-|Příznak|SQL Managed Instance s podporou služby Azure Arc|
+|Funkce|SQL Managed Instance s podporou služby Azure Arc|
 |-------------|----------------|
-|Přesouvání protokolu|Ano| 
-|Komprese záloh|Ano|
-|Snímek databáze|Ano|
+|Přesouvání protokolu|Yes| 
+|Komprese záloh|Yes|
+|Snímek databáze|Yes|
 |Vždy v instanci clusteru s podporou převzetí služeb při selhání<sup>1</sup>| Nelze použít. Podobné možnosti k dispozici |
 |Skupiny dostupnosti Always On<sup>2</sup>|Možnosti HA jsou plánovány.|
 |Základní skupiny dostupnosti <sup>2</sup>|Možnosti HA jsou plánovány.|
 |Minimální Skupina dostupnosti potvrzení repliky <sup>2</sup>|Možnosti HA jsou plánovány.|
-|Skupina dostupnosti bez clusteru|Ano|
-|Online stránka a obnovení souborů|Ano|
-|Online indexování|Ano|
-|Obnovitelné online opětovné sestavení indexu|Ano|
-|Změna schématu online|Ano|
-|Rychlé obnovení|Ano|
-|Zrcadlené zálohy|Ano|
-|Horké přidání paměti a procesoru|Ano|
-|Šifrované zálohování|Ano|
-|Hybridní zálohování do Azure (zálohování na adresu URL)|Ano|
+|Skupina dostupnosti bez clusteru|Yes|
+|Online stránka a obnovení souborů|Yes|
+|Online indexování|Yes|
+|Obnovitelné online opětovné sestavení indexu|Yes|
+|Změna schématu online|Yes|
+|Rychlé obnovení|Yes|
+|Zrcadlené zálohy|Yes|
+|Horké přidání paměti a procesoru|Yes|
+|Šifrované zálohování|Yes|
+|Hybridní zálohování do Azure (zálohování na adresu URL)|Yes|
 
 <sup>1</sup> v situaci, kdy dojde k selhání, se spustí nová spravovaná instance SQL a znovu se připojí k trvalému svazku obsahujícímu vaše data. [Další informace o trvalých svazcích Kubernetes najdete tady](https://kubernetes.io/docs/concepts/storage/persistent-volumes).
 
@@ -59,96 +59,96 @@ Spravovaná instance SQL ARC s podporou Azure sdílí společný základ kódu s
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS škálovatelnost a výkon  
 
-| Příznak | SQL Managed Instance s podporou služby Azure Arc |
+| Funkce | SQL Managed Instance s podporou služby Azure Arc |
 |--|--|
-| Clusterovaného | Ano |
-| Binární soubory velkých objektů v clusterovaných indexech columnstore | Ano |
-| Opětovné sestavení neclusterovaných indexů columnstore online | Ano |
-| OLTP v paměti | Ano |
-| Trvalá hlavní paměť | Ano |
-| Dělení tabulek a indexů | Ano |
-| Komprese dat | Ano |
-| Správce prostředků | Ano |
-| Paralelismus dělené tabulky | Ano |
-| Technologie NUMA a přidělování paměťových polí a vyrovnávací paměti pro velké stránky | Ano |
-| Zásady správného řízení prostředků v/v | Ano |
-| Opožděná trvanlivost | Ano |
-| Automatické ladění | Ano |
-| Adaptivní spojení v dávkovém režimu | Ano |
-| Váš názor na přidělení paměti v dávkovém režimu | Ano |
-| Prokládaný běh pro funkce vracející tabulku s více příkazy | Ano |
-| Vylepšení hromadného vkládání | Ano |
+| Clusterovaného | Yes |
+| Binární soubory velkých objektů v clusterovaných indexech columnstore | Yes |
+| Opětovné sestavení neclusterovaných indexů columnstore online | Yes |
+| OLTP v paměti | Yes |
+| Trvalá hlavní paměť | Yes |
+| Dělení tabulek a indexů | Yes |
+| Komprese dat | Yes |
+| Správce prostředků | Yes |
+| Paralelismus dělené tabulky | Yes |
+| Technologie NUMA a přidělování paměťových polí a vyrovnávací paměti pro velké stránky | Yes |
+| Zásady správného řízení prostředků v/v | Yes |
+| Opožděná trvanlivost | Yes |
+| Automatické ladění | Yes |
+| Adaptivní spojení v dávkovém režimu | Yes |
+| Váš názor na přidělení paměti v dávkovém režimu | Yes |
+| Prokládaný běh pro funkce vracející tabulku s více příkazy | Yes |
+| Vylepšení hromadného vkládání | Yes |
 
 ###  <a name="rdbms-security"></a><a name="RDBMSS"></a> Zabezpečení RDBMS
 
-| Příznak | SQL Managed Instance s podporou služby Azure Arc |
+| Funkce | SQL Managed Instance s podporou služby Azure Arc |
 |--|--|
-| Zabezpečení na úrovni řádků | Ano |
-| Funkce Always Encrypted | Ano |
-| Always Encrypted se zabezpečenými enklávami | Ne |
-| Dynamické maskování dat | Ano |
-| Základní auditování | Ano |
-| Podrobné auditování | Ano |
-| Transparentní šifrování databáze | Ano |
-| Uživatelsky definované role | Ano |
-| Databáze s omezením | Ano |
-| Šifrování pro zálohy | Ano |
+| Zabezpečení na úrovni řádků | Yes |
+| Always Encrypted | Yes |
+| Always Encrypted se zabezpečenými enklávami | No |
+| Dynamické maskování dat | Yes |
+| Základní auditování | Yes |
+| Podrobné auditování | Yes |
+| Transparentní šifrování databáze | Yes |
+| Uživatelsky definované role | Yes |
+| Databáze s omezením | Yes |
+| Šifrování pro zálohy | Yes |
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> Správa RDBMS  
 
-| Příznak | SQL Managed Instance s podporou služby Azure Arc |
+| Funkce | SQL Managed Instance s podporou služby Azure Arc |
 |--|--|
-| Vyhrazené připojení správce | Ano |
-| Podpora skriptování prostředí PowerShell | Ano |
-| Podpora operací komponenty aplikace na datové vrstvě – extrakce, nasazení, upgrade, odstranění | Ano |
-| Automatizace zásad (kontrolu plánu a změny) | Ano |
-| Kolektor dat výkonu | Ano |
-| Standardní sestavy výkonu | Ano |
-| Průvodce plánem a zamrznutí pro plány plánů | Ano |
-| Přímý dotaz na indexovaná zobrazení (pomocí příkazu Rozbalit nápovědu) | Ano |
-| Údržba automatických indexovaných zobrazení | Ano |
-| Distribuované zobrazení oddílů | Ano |
-| Paralelní indexované operace | Ano |
-| Automatické použití indexovaného zobrazení pomocí optimalizátoru dotazů | Ano |
-| Paralelní kontrola konzistence | Ano |
+| Vyhrazené připojení správce | Yes |
+| Podpora skriptování prostředí PowerShell | Yes |
+| Podpora operací komponenty aplikace na datové vrstvě – extrakce, nasazení, upgrade, odstranění | Yes |
+| Automatizace zásad (kontrolu plánu a změny) | Yes |
+| Kolektor dat výkonu | Yes |
+| Standardní sestavy výkonu | Yes |
+| Průvodce plánem a zamrznutí pro plány plánů | Yes |
+| Přímý dotaz na indexovaná zobrazení (pomocí příkazu Rozbalit nápovědu) | Yes |
+| Údržba automatických indexovaných zobrazení | Yes |
+| Distribuované zobrazení oddílů | Yes |
+| Paralelní indexované operace | Yes |
+| Automatické použití indexovaného zobrazení pomocí optimalizátoru dotazů | Yes |
+| Paralelní kontrola konzistence | Yes |
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programovatelnosti  
 
-| Příznak | SQL Managed Instance s podporou služby Azure Arc |
+| Funkce | SQL Managed Instance s podporou služby Azure Arc |
 |--|--|
-| JSON | Ano |
-| Úložiště dotazů | Ano |  |
-| Dočasné | Ano |  |
-| Nativní podpora jazyka XML | Ano |  |
-| Indexování XML | Ano |  |
-| UPSERT možnosti sloučení & | Ano |  |
-| Datové typy data a času | Ano |  |
-| Podpora pro mezinárodní využití | Ano |  |
-| Fulltextové a sémantické vyhledávání | Ne |
-| Specifikace jazyka v dotazu | Ano |  |
-| Service Broker (zasílání zpráv) | Ano |  |
-| Koncové body Transact-SQL | Ano |  |
-| Graph | Ano |  |
-| Machine Learning Services | Ne |  |
-| PolyBase | Ne |
+| JSON | Yes |
+| Úložiště dotazů | Yes |  |
+| Dočasné | Yes |  |
+| Nativní podpora jazyka XML | Yes |  |
+| Indexování XML | Yes |  |
+| UPSERT možnosti sloučení & | Yes |  |
+| Datové typy data a času | Yes |  |
+| Podpora pro mezinárodní využití | Yes |  |
+| Fulltextové a sémantické vyhledávání | No |
+| Specifikace jazyka v dotazu | Yes |  |
+| Service Broker (zasílání zpráv) | Yes |  |
+| Koncové body Transact-SQL | Yes |  |
+| Graph | Yes |  |
+| Machine Learning Services | No |  |
+| PolyBase | No |
 
 
-### <a name="tools"></a>nástroje
+### <a name="tools"></a>Nástroje
 
 Spravovaná instance SQL s podporou ARC Azure podporuje různé datové nástroje, které vám můžou pomoci při správě vašich dat.
 
 | **Nástroj** | SQL Managed Instance s podporou služby Azure Arc|
 | --- | --- | --- |
-| Azure Portal <sup>1</sup> | Ne |
-| Azure CLI | Ne |
-| [Azure Data Studio](/sql/azure-data-studio/what-is) | Ano |
-| Azure PowerShell | Ano |
-| [Soubor BACPAC (export)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ano |
-| [Soubor BACPAC (import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ano |
-| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Ano |
-| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Ano |
-| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Ano |
-| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Ano |
+| Azure Portal <sup>1</sup> | No |
+| Azure CLI | No |
+| [Azure Data Studio](/sql/azure-data-studio/what-is) | Yes |
+| Azure PowerShell | Yes |
+| [Soubor BACPAC (export)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Yes |
+| [Soubor BACPAC (import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Yes |
+| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes |
+| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Yes |
+| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Yes |
+| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Yes |
 
 <sup>1</sup> Azure Portal se v režimu jen pro čtení ve verzi Preview používá jenom k zobrazení spravovaných instancí SQL ARC s podporou Azure ARC.
 
@@ -157,7 +157,7 @@ Spravovaná instance SQL s podporou ARC Azure podporuje různé datové nástroj
 
 Pro spravovanou instanci SQL ARC s podporou Azure ARC nejsou k dispozici následující funkce a služby. Podpora těchto funkcí bude v průběhu času stále zapnutá.
 
-| Oblast | Nepodporovaná funkce nebo služba |
+| Plošný | Nepodporovaná funkce nebo služba |
 |-----|-----|
 | **Databázový stroj** | Sloučit replikaci |
 | &nbsp; | Stretch DB |

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97680051"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
@@ -41,7 +41,7 @@ Výrazy jsou reprezentovány jako pole JSON. Prvním prvkem výrazu v poli je ř
 
 Sada Azure Maps Web SDK podporuje mnoho typů výrazů. Výrazy lze použít na vlastní nebo v kombinaci s jinými výrazy.
 
-| Typ výrazů | Popis |
+| Typ výrazů | Description |
 |---------------------|-------------|
 | [Agregační výraz](#aggregate-expression) | Výraz definující výpočet, který je zpracován prostřednictvím sady dat a lze jej použít s `clusterProperties` možností `DataSource` . |
 | [Logické výrazy](#boolean-expressions) | Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocení logických porovnání. |
@@ -86,7 +86,7 @@ Všechny příklady v tomto dokumentu používají následující funkci k před
 
 Datové výrazy poskytují přístup k datům vlastností ve funkci. 
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `['at', number, array]` | hodnota | Načte položku z pole. |
 | `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
@@ -179,7 +179,7 @@ Tady jsou některé další příklady použití datových výrazů:
 
 Matematické výrazy poskytují matematické operátory pro provádění výpočtů řízených daty v rámci rozhraní Expression Framework.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | číslo | Vypočítá součet zadaných čísel. |
 | `['-', number]` | číslo | Odečte 0 zadaným číslem. |
@@ -244,7 +244,7 @@ Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocen�
 
 Při porovnávání hodnot je porovnání striktně typované. Hodnoty různých typů jsou vždy považovány za nerovné. Případy, kde se označují, že typy jsou odlišné v době analýzy, jsou považovány za neplatné a vytvoří chybu analýzy. 
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `['!', boolean]` | boolean | Logická negace. Vrátí `true` , zda je vstup `false` , a `false` Pokud je vstup `true` . |
 | `['!=', value, value]` | boolean | Vrátí `true` , zda vstupní hodnoty nejsou stejné, `false` jinak. |
@@ -426,7 +426,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Výrazy typu poskytují nástroje pro testování a převod různých typů dat, jako jsou řetězce, čísla a logické hodnoty.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `['array', value]` \| `['array', type: "string" | "number" | "boolean", value]` | Objekt [] | Vyhodnotí, že vstup je pole. |
 | `['boolean', value]` \| `["boolean", value, fallback: value, fallback: value, ...]` | boolean | Vyhodnotí, že vstupní hodnota je logická hodnota. Pokud je k dispozici více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získána logická hodnota. Pokud žádný ze vstupů není logických hodnot, je výraz chybou. |
@@ -468,7 +468,7 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 
 Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených*, *zelených* a *modrých* komponent, které musí být v rozsahu mezi `0` a `255` a komponentou alfa `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
 | `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené*, *zelené* a *modré* komponenty, která musí být v rozsahu od do `0` `255` a. alfa komponenta v rámci rozsahu `0` a `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
@@ -885,7 +885,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Výrazy vazeb proměnných ukládají výsledky výpočtu v proměnné. Takže je možné výsledky výpočtů odkazovat jinde ve výrazu vícekrát. Je užitečná optimalizace pro výrazy, které zahrnují mnoho výpočtů.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;let,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název1: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Hodnota1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název2: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Ukládá jednu nebo více hodnot jako proměnné pro použití `var` výrazem v podřízeném výrazu, který vrací výsledek. |
 | `['var', name: string]` | Libovolný | Odkazuje na proměnnou, která byla vytvořena pomocí `let` výrazu. |

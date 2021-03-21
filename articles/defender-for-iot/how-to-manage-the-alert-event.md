@@ -8,10 +8,10 @@ ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
 ms.openlocfilehash: 866ff4cad74b7092dda11a20f8f7bcadf91233ae
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100526897"
 ---
 # <a name="manage-alert-events"></a>Správa událostí výstrah
@@ -39,7 +39,7 @@ Zjištěné události se dají zjistit. Když senzor zjistí události, znovu ak
 
 ## <a name="about-acknowledging-and-unacknowledging-events"></a>O potvrzování a nepotvrzujících událostech
 
-V některých situacích možná nebudete chtít, aby se senzor dozvěděl o zjištěné události, nebo aby tato možnost nebyla k dispozici. Místo toho může incident vyžadovat zmírnění. Příklad:
+V některých situacích možná nebudete chtít, aby se senzor dozvěděl o zjištěné události, nebo aby tato možnost nebyla k dispozici. Místo toho může incident vyžadovat zmírnění. Například:
 
 - **Zmírnění síťové konfigurace nebo zařízení**: zobrazí se výstraha oznamující, že v síti bylo zjištěno nové zařízení. Při šetření zjistíte, že zařízení je neautorizované síťové zařízení. Incident můžete zpracovat odpojením zařízení od sítě.
 - **Aktualizace konfigurace senzoru**: zobrazí se výstraha oznamující, že server inicializoval nadměrné množství vzdálených připojení. Tato výstraha se aktivovala, protože prahové hodnoty anomálií snímače byly definované tak, aby během jedné minuty aktivovaly výstrahy nad určitým počtem relací. Incident můžete zpracovat tak, že aktualizujete prahové hodnoty.
@@ -58,7 +58,7 @@ Pokud je potřeba další šetření, Nepotvrzujte výstrahy.
 
 ## <a name="about-muting-and-unmuting-events"></a>O ztlumení a odztlumení událostí
 
-Za určitých okolností můžete chtít, aby váš senzor mohl ignorovat konkrétní scénář ve vaší síti. Příklad:
+Za určitých okolností můžete chtít, aby váš senzor mohl ignorovat konkrétní scénář ve vaší síti. Například:
 
   - Modul **anomálií** aktivuje výstrahu ve špičkě šířky pásma mezi dvěma zařízeními, ale špička je pro tato zařízení platná.
 

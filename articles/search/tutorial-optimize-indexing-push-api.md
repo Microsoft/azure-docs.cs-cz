@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 1/29/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f97a99bf2d055805ee665ab51aff8cff12dc5a69
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99094188"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Kurz: optimalizace indexování pomocí rozhraní API push
@@ -104,10 +104,10 @@ Tato jednoduchá aplikace konzoly C#/.NET provádí následující úlohy:
 
  Před spuštěním programu chvíli počkejte a prostudujte si kód a definice indexu pro tuto ukázku. Příslušný kód je v několika souborech:
 
-  + **Hotel.cs** a **Address.cs** obsahuje schéma, které definuje index.
-  + **DataGenerator.cs** obsahuje jednoduchou třídu, která usnadňuje vytváření velkých objemů dat hotelů.
-  + **ExponentialBackoff.cs** obsahuje kód pro optimalizaci procesu indexování, jak je popsáno níže.
-  + **Program.cs** obsahuje funkce, které vytvářejí a odstraňují index služby Azure kognitivní hledání, indexuje dávky dat a testuje různé velikosti dávek.
+  + **Hotel. cs** a **Address. cs** obsahuje schéma, které definuje index.
+  + **DataGenerator. cs** obsahuje jednoduchou třídu, která usnadňuje vytváření velkých objemů dat hotelu.
+  + **ExponentialBackoff. cs** obsahuje kód pro optimalizaci procesu indexování, jak je popsáno níže.
+  + **Program. cs** obsahuje funkce, které vytvářejí a odstraňují index služby Azure kognitivní hledání, indexuje dávky dat a testuje různé velikosti dávek.
 
 ### <a name="creating-the-index"></a>Vytvoření indexu
 
@@ -115,7 +115,7 @@ Tento ukázkový program používá sadu .NET SDK k definování a vytvoření i
 
 Datový model je definován třídou hotelu, která také obsahuje odkazy na třídu Address. FieldBuilder projde k podrobnostem v různých definicích tříd a vygeneruje složitou strukturu dat pro index. Značky metadat slouží k definování atributů každého pole, jako je například, zda je možné prohledávat nebo řadit.
 
-Následující fragmenty kódu ze souboru **Hotel.cs** ukazují, jak lze určit jedno pole a odkaz na jinou třídu datového modelu.
+Následující fragmenty kódu ze souboru **hotelu. cs** ukazují, jak lze určit jedno pole a odkaz na jinou třídu datového modelu.
 
 ```csharp
 . . .
@@ -126,7 +126,7 @@ public Address Address { get; set; }
 . . .
 ```
 
-V souboru **program.cs** je index definován s názvem a kolekcí polí generovaných `FieldBuilder.Build(typeof(Hotel))` metodou a pak vytvořen takto:
+V souboru **program. cs** je index definován s názvem a kolekcí polí generovanými `FieldBuilder.Build(typeof(Hotel))` metodou a poté vytvořen následujícím způsobem:
 
 ```csharp
 private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
@@ -143,7 +143,7 @@ private static async Task CreateIndexAsync(string indexName, SearchIndexClient i
 
 ### <a name="generating-data"></a>Generování dat
 
-V souboru **DataGenerator.cs** je implementována jednoduchá třída pro generování dat pro testování. Jediným účelem této třídy je, aby bylo snadné generovat velký počet dokumentů s jedinečným ID pro indexování.
+Jednoduchá třída je implementována v souboru **DataGenerator. cs** pro generování dat pro testování. Jediným účelem této třídy je, aby bylo snadné generovat velký počet dokumentů s jedinečným ID pro indexování.
 
 Chcete-li získat seznam 100 000 hotelů s jedinečnými identifikátory, spusťte následující řádky kódu:
 
@@ -345,7 +345,7 @@ do
 
 Odtud rozbalíme exponenciální kód omezení rychlosti do funkce, aby ho bylo možné snadno volat.
 
-Pro správu aktivních vláken se pak vytvoří další funkce. Pro zjednodušení Tato funkce není zde obsažena, ale je možné ji najít v [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs). Funkci lze volat pomocí následujícího příkazu `hotels` , kde jsou data, která chceme nahrát, `1000` je velikost dávky a `8` je počet souběžných vláken:
+Pro správu aktivních vláken se pak vytvoří další funkce. Tato funkce není pro jednoduchost uvedená, ale najdete ji v [ExponentialBackoff. cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs). Funkci lze volat pomocí následujícího příkazu `hotels` , kde jsou data, která chceme nahrát, `1000` je velikost dávky a `8` je počet souběžných vláken:
 
 ```csharp
 await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);
@@ -388,7 +388,7 @@ Operace získat statistiku indexu vrátí počet dokumentů pro aktuální index
 var indexStats = await indexClient.GetIndexStatisticsAsync(indexName);
 ```
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V Azure Portal otevřete stránku **Přehled** služby Search a v seznamu **indexy** najděte index **optimalizace a indexování** .
 

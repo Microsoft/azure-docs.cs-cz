@@ -14,17 +14,17 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6720a5ad963bc73e11ef7b46150e946521928c01
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258621"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikací služby Azure Active Directory a Tableau 
 
 Proxy aplikací služby Azure Active Directory a Tableau byly partnerem, aby bylo zajištěno, že budete moci snadno používat proxy aplikací k poskytování vzdáleného přístupu k nasazení Tableau. Tento článek vysvětluje, jak tento scénář nakonfigurovat.  
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Scénář v tomto článku předpokládá, že máte následující:
 
@@ -60,7 +60,7 @@ Pro:
 
 5. Vyplňte požadovaná pole informacemi o vaší nové aplikaci. Pro nastavení použijte následující pokyny: 
 
-    - **Interní adresa URL**: Tato aplikace by měla mít interní adresu URL, která je Tableau adresou URL. Například `https://adventure-works.tableau.com`. 
+    - **Interní adresa URL**: Tato aplikace by měla mít interní adresu URL, která je Tableau adresou URL. Například, `https://adventure-works.tableau.com`. 
 
     - **Metoda** předběžného ověřování: Azure Active Directory (doporučeno, ale není nutné). 
 

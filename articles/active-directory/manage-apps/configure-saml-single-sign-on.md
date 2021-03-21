@@ -12,10 +12,10 @@ ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: f6422c3f751a7aaa430b93ee68ca1a3520ac915f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99257688"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>Pochopení jednotného přihlašování založeného na SAML
@@ -44,7 +44,7 @@ Měli byste získat hodnoty od dodavatele aplikace. Můžete ručně zadat hodno
 > [!TIP]
 > Mnohé aplikace už jsou předem nakonfigurované pro práci s Azure AD. Tyto aplikace jsou uvedené v galerii aplikací, které můžete procházet při přidávání aplikace do tenanta Azure AD. [Série rychlý Start](add-application-portal-setup-sso.md) vás provede procesem. Pro aplikace v galerii najdete podrobné pokyny, podrobné pokyny. Pro přístup k jednotlivým krokům můžete kliknout na odkaz na stránce konfigurace SAML pro aplikaci, jak je popsáno v části rychlý Start, nebo můžete procházet seznam všech kurzů pro konfiguraci aplikací v tématu [kurzy konfigurace aplikací SaaS](../saas-apps/tutorial-list.md).
 
-| Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
+| Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Description |
 |:--|:--|:--|:--|
 | **Identifikátor (ID entity)** | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Aplikace jednoznačně identifikuje. Azure AD odešle identifikátor do aplikace jako parametr cílové skupiny tokenu SAML. Očekává se, že aplikace ověří tuto aplikaci. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací. Zadejte adresu URL, která používá následující vzor: ' https:// <subdomain> . contoso.com ' *tuto hodnotu můžete najít jako element **vystavitele** v **AuthnRequest** (žádost SAML) odeslanou aplikací.* |
 | **Adresa URL odpovědi** | Vyžadováno | Vyžadováno | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |

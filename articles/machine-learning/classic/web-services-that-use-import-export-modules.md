@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100520557"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webových služeb Azure Machine Learning Studio (Classic), které používají moduly importu a exportu dat
@@ -104,7 +104,7 @@ Nasazení jako klasické webové služby a vytvoření aplikace pro její využ�
 4. V tabulce **výchozích koncových bodů** klikněte na odkaz **spuštění dávky** a otevřete stránku s usnadněníem rozhraní API.
 5. V aplikaci Visual Studio vytvořte konzolovou aplikaci v jazyce c#: **Nový**  >  **projekt**  >  **Visual C#**  >  **Windows Classic Desktop**  >  **Konzolová aplikace (.NET Framework)**.
 6. Na stránce s nápovědě k rozhraní API vyhledejte část **vzorový kód** v dolní části stránky.
-7. Zkopírujte a vložte ukázkový kód C# do souboru Program.cs a odeberte všechny odkazy na úložiště objektů BLOB.
+7. Zkopírujte ukázkový kód C# a vložte ho do souboru program. cs a odeberte všechny odkazy na úložiště objektů BLOB.
 8. Aktualizujte hodnotu proměnné *apiKey* pomocí klíče rozhraní API, který jste uložili dříve.
 9. Vyhledejte deklaraci žádosti a aktualizujte hodnoty parametrů webové služby, které jsou předány do datových modulů *Import dat* a *Export* . V takovém případě použijete původní dotaz, ale nadefinujete nový název tabulky.
 
@@ -134,7 +134,7 @@ Nasazení jako nové webové služby a vytvoření aplikace pro její využívá
 4. Na stránce **rychlý Start** klikněte na možnost **spotřebovat**.
 5. V části **vzorový kód** klikněte na **Batch**.
 6. V aplikaci Visual Studio vytvořte konzolovou aplikaci v jazyce c#: **Nový**  >  **projekt**  >  **Visual C#**  >  **Windows Classic Desktop**  >  **Konzolová aplikace (.NET Framework)**.
-7. Zkopírujte ukázkový kód C# a vložte ho do souboru Program.cs.
+7. Zkopírujte ukázkový kód C# a vložte ho do souboru program. cs.
 8. Aktualizujte hodnotu proměnné *apiKey* pomocí **primárního klíče** , který je umístěný v části **informace o základní spotřebě** .
 9. Vyhledejte deklaraci *scoreRequest* a aktualizujte hodnoty parametrů webové služby, které jsou předány do datových modulů *Import dat* a *Export* . V takovém případě použijete původní dotaz, ale nadefinujete nový název tabulky.
 

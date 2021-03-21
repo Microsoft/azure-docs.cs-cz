@@ -11,10 +11,10 @@ ms.date: 02/04/2021
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1be8afb58b22435f4f43b2d6884332a38b7f1e11
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467472"
 ---
 # <a name="install-and-run-form-recognizer-containers-retiring"></a>Instalace a spuštění kontejnerů pro rozpoznávání formulářů (vyřazení z provozu)
@@ -274,7 +274,7 @@ Kontejner poskytuje rozhraní API koncového bodu REST, které můžete najít n
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud spouštíte kontejner s povoleným výstupním [připojením](form-recognizer-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 

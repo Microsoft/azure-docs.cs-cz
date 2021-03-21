@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: victorh
 ms.openlocfilehash: e63336b0e84d303b51eda56f90ca6fb453d8ae0d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99831837"
 ---
 # <a name="monitor-logs-using-azure-firewall-workbook"></a>Monitorování protokolů pomocí Azure Firewallho sešitu
@@ -20,7 +20,7 @@ Azure Firewall sešit nabízí flexibilní plátno pro Azure Firewall analýzu d
 
 Můžete získat přehled o Azure Firewallch událostech, informace o vašich aplikacích a síťových pravidlech a zobrazit statistiku pro aktivity brány firewall napříč adresami URL, porty a adresami. Azure Firewall sešitu vám umožní filtrovat brány firewall a skupiny prostředků a dynamicky filtrovat jednotlivé kategorie pomocí snadno čitelných datových sad při zkoumání problému v protokolech. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste [Povolit protokolování diagnostiky](firewall-diagnostics.md#enable-diagnostic-logging-through-the-azure-portal) prostřednictvím Azure Portal. Také si přečtěte [Azure firewall protokoly a metriky](logs-and-metrics.md) pro přehled diagnostických protokolů a metrik, které jsou k dispozici pro Azure firewall.
 

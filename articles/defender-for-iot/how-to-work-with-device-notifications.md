@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523562"
 ---
 # <a name="work-with-device-notifications"></a>Práce s oznámeními zařízení
@@ -48,7 +48,7 @@ Postup zobrazení oznámení:
 
 Pomocí vyhledávacích filtrů můžete zobrazit oznámení, která vás zajímají.
 
-| Filtrovat podle | Popis |
+| Filtrovat podle | Description |
 |--|--|
 | Filtrovat podle typu | Zobrazit oznámení, která pokrývají určitou oblast zájmu. Můžete například zobrazit pouze oznámení o neaktivních zařízeních. |
 | Filtrovat podle rozsahu kalendářních dat | Zobrazí oznámení, která pokrývají konkrétní časový rozsah. Můžete například zobrazit oznámení odesílaná pouze za poslední týden. |
@@ -58,7 +58,7 @@ Pomocí vyhledávacích filtrů můžete zobrazit oznámení, která vás zajím
 
 Následující tabulka popisuje typy oznámení, které můžete obdržet, spolu s možnostmi jejich zpracování. Informace o zařízení můžete aktualizovat pomocí Doporučené hodnoty nebo oznámení zavřít. Po zavření oznámení se informace o zařízení neaktualizují o Doporučené informace. Pokud se znovu zjistí provoz, oznámení se pošle znovu.
 
-| Typy událostí oznámení | Popis | Odpovědi |
+| Typy událostí oznámení | Description | Odpovědi |
 |--|--|--|
 | Zjistila se nová IP adresa. | K zařízení je přidružená nová IP adresa. Je možné zjistit pět scénářů: <br /><br /> K zařízení se přidružil další IP adresa. Toto zařízení je také přidruženo k existující adrese MAC.<br /><br /> Zjistila se nová IP adresa pro zařízení, které používá existující adresu MAC. V současné době zařízení nekomunikuje pomocí IP adresy.<br /> <br /> Zjistila se nová IP adresa pro zařízení, které používá název pro rozhraní NetBIOS. <br /><br /> Jako rozhraní pro správu zařízení přidruženého k adrese MAC byla zjištěna IP adresa. <br /><br /> Zjistila se nová IP adresa pro zařízení, které používá virtuální IP adresu. | **Nastavení další IP adresy na zařízení** (sloučení zařízení) <br /> <br />**Nahradit existující IP adresu** <br /> <br /> **Zrušit**<br /> Odeberte oznámení. |
 | Neaktivní zařízení | V zařízení se nezjistil provoz po dobu delší než 60 dní. | **Odstranit** <br /> Pokud toto zařízení není součástí vaší sítě, odeberte ho. <br /><br />**Zrušit** <br /> Pokud je zařízení součástí vaší sítě, odeberte oznámení. Pokud je zařízení neaktivní (například kvůli omylu odpojenému odpojení od sítě), zavřete oznámení a znovu připojte zařízení. |
@@ -70,7 +70,7 @@ Následující tabulka popisuje typy oznámení, které můžete obdržet, spolu
 
 ## <a name="respond-to-many-notifications-simultaneously"></a>Reakce na mnoho oznámení současně
 
-Možná budete muset zvládnout několik oznámení současně. Příklad:
+Možná budete muset zvládnout několik oznámení současně. Například:
 
 - Pokud došlo k upgradu operačního systému na velkou sadu síťových serverů, můžete dát senzorovi pokyn, aby se dozvěděl nové verze serveru pro všechny upgradované servery. 
 
@@ -98,6 +98,6 @@ Prozkoumejte doporučení, aby bylo možné rozšířit klasifikaci OS. Tyto inf
 
 Když přijmete doporučení, informace o typu operačního systému se ve snímači aktualizují.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 [Zobrazení upozornění](how-to-view-alerts.md)

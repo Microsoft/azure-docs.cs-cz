@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: yelevin
 ms.openlocfilehash: 00e634ec62d1fda4b1f2763a8c69b8e950d54beb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102505184"
 ---
 # <a name="connect-azure-key-vault-diagnostics-logs"></a>Připojit protokoly diagnostiky Azure Key Vault
@@ -23,7 +23,7 @@ Tento konektor vám umožní streamovat protokoly Azure Key Vault Diagnostics do
 
 Přečtěte si další informace o [monitorování Azure Key Vault](../azure-monitor/insights/key-vault-insights-overview.md) a o [Azure Key Vault telemetrie diagnostiky](../key-vault/general/logging.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup ingestování protokolů Azure Key Vault do Azure Sentinel:
 

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99831196"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Kurz: připojení modulu IoT technologie Plug and Play (C#)
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak implementovat modul IoT technologie Plug and Play
 > * Převeďte vzorek termostatu pro zařízení C# na obecný modul.
 > * Pomocí sady SDK služby můžete pracovat s modulem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -103,7 +103,7 @@ Otevření a příprava ukázkového projektu:
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | připojovací řetězec |
     | IOTHUB_MODULE_CONNECTION_STRING | Připojovací řetězec modulu, na který jste si poznamenali předchozí poznámku |
@@ -114,18 +114,18 @@ Otevření a příprava ukázkového projektu:
 
 Úprava kódu tak, aby fungoval jako modul místo zařízení:
 
-1. V sadě Visual Studio otevřete *Parameter.cs* a upravte řádek, který nastaví proměnnou **PrimaryConnectionString** , následovně:
+1. V sadě Visual Studio otevřete *parametr. cs* a upravte řádek, který nastaví proměnnou **PrimaryConnectionString** následujícím způsobem:
 
     ```csharp
     public string PrimaryConnectionString { get; set; } = Environment.GetEnvironmentVariable("IOTHUB_MODULE_CONNECTION_STRING");
     ```
 
-1. V aplikaci Visual Studio otevřete *program.cs* a nahraďte sedm instancí `DeviceClient` třídy `ModuleClient` třídou.
+1. V aplikaci Visual Studio otevřete *program. cs* a nahraďte sedm instancí `DeviceClient` třídy `ModuleClient` třídou.
 
     > [!TIP]
     > Použijte funkci hledání a nahrazení sady Visual Studio s **písmenem Match** a **Porovnejte celé slovo** s povolenou možností nahradit `DeviceClient` `ModuleClient` .
 
-1. V aplikaci Visual Studio otevřete *Thermostat.cs* a nahraďte obě instance třídy třídou následujícím `DeviceClient` `ModuleClient` způsobem.
+1. V aplikaci Visual Studio otevřete *termostat. cs* a nahraďte obě instance třídy třídou následujícím `DeviceClient` `ModuleClient` způsobem.
 
 1. Uložte změny v souborech, které jste změnili.
 
@@ -178,7 +178,7 @@ Sady SDK služby umožňují načíst ID modelu propojených technologie Plug an
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | můj modul – zařízení |
     | IOTHUB_CONNECTION_STRING | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |
@@ -186,13 +186,13 @@ Sady SDK služby umožňují načíst ID modelu propojených technologie Plug an
     > [!TIP]
     > Připojovací řetězec služby IoT Hub můžete najít také v nástroji Azure IoT Explorer.
 
-1. Otevřete soubor *program.cs* a upravte řádek, který volá příkaz, jak je znázorněno níže:
+1. Otevřete soubor *program. cs* a upravte řádek, který volá příkaz, jak je znázorněno níže:
 
     ```csharp
     CloudToDeviceMethodResult result = await s_serviceClient.InvokeDeviceMethodAsync(s_deviceId, "my-module", commandInvocation);
     ```
 
-1. V souboru *program.cs* upravte řádek, který načte zařízení, a to následujícím způsobem:
+1. V souboru *program. cs* upravte řádek, který načte zařízení jako dvojitou adresu:
 
     ```csharp
     Twin twin = await s_registryManager.GetTwinAsync(s_deviceId, "my-module");

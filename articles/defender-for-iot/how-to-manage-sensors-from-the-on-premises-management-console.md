@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 10051bfdf7a93a8d6c83d649a7b0ad008b5e2caf
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523953"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Správa senzorů z konzoly pro správu
@@ -144,7 +144,7 @@ Pomocí informací o odpojených senzorech můžete posílat upozornění třet�
 
 Senzory jsou chráněny pěti Defendery pro moduly IoT. Moduly pro připojené senzory můžete povolit nebo zakázat.
 
-| Modul | Popis | Ukázkový scénář |
+| Modul | Description | Ukázkový scénář |
 |--|--|--|
 | Modul porušení protokolu | K porušení protokolu dojde, pokud struktura paketu nebo hodnoty polí neodpovídají specifikaci protokolu. | Výstraha "Neplatná operace MODBUS (kód funkce nula)". Tato výstraha indikuje, že primární zařízení odeslalo do sekundárního zařízení požadavek s kódem funkce 0. Tato možnost není povolena podle specifikace protokolu a sekundární zařízení nemusí správně zpracovat vstup. |
 | Modul porušení zásad | Porušení zásad probíhá u odchylky od chování standardních hodnot definovaných ve zjištěné nebo nakonfigurované zásadě. | Výstraha "neautorizovaný agent uživatele protokolu HTTP". Tato výstraha indikuje, že se aplikace, kterou zásada nezískala nebo schválila, používá jako klient HTTP na zařízení. Může se jednat o nový webový prohlížeč nebo aplikaci v tomto zařízení. |
@@ -315,6 +315,6 @@ Pokud chcete nastavit server SMB, abyste mohli uložit zálohu senzorů na exter
 
 9. Nastavte `Backup.shared_location` na `<backup_folder_name_on_cyberx_server>` .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 [Správa individuálních senzorů](how-to-manage-individual-sensors.md)
