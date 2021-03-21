@@ -7,10 +7,10 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998239"
 ---
 # <a name="report-and-check-service-health"></a>Hlášení a kontrola stavu služeb
@@ -26,7 +26,7 @@ Existují tři způsoby, jak můžete hlásit stav ze služby:
 
 Tento článek vás provede příkladem, který hlásí stav z kódu služby. Tento příklad také ukazuje, jak lze použít nástroje poskytované Service Fabric ke kontrole stavu. Tento článek je určený jako rychlý Úvod k funkcím monitorování stavu Service Fabric. Podrobnější informace si můžete přečíst v podrobných článcích o stavu, který začíná odkazem na konci tohoto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Musíte mít nainstalované následující:
 
 * Visual Studio 2015 nebo Visual Studio 2019
@@ -57,10 +57,10 @@ Musíte mít nainstalované následující:
 Šablony projektu Service Fabric v aplikaci Visual Studio obsahují vzorový kód. Následující kroky ukazují, jak můžete hlásit vlastní události stavu z kódu vaší služby. Tyto sestavy se zobrazují automaticky ve standardních nástrojích pro monitorování stavu, které Service Fabric poskytuje, jako je Service Fabric Explorer, Azure Portal zobrazení stavu a prostředí PowerShell.
 
 1. Znovu otevřete aplikaci, kterou jste vytvořili dříve v aplikaci Visual Studio, nebo vytvořte novou aplikaci pomocí šablony **stavové služby** sady Visual Studio.
-1. Otevřete soubor Stateful1.cs a vyhledejte `myDictionary.TryGetValueAsync` volání v `RunAsync` metodě. Můžete vidět, že tato metoda vrátí hodnotu `result` , která obsahuje aktuální hodnotu čítače, protože klíčová logika v této aplikaci má zůstat spuštěný počet. Pokud byla tato aplikace skutečnou aplikací a chybějící výsledek představoval chybu, měli byste tuto událost označit příznakem.
+1. Otevřete soubor Stateful1. cs a vyhledejte `myDictionary.TryGetValueAsync` volání v `RunAsync` metodě. Můžete vidět, že tato metoda vrátí hodnotu `result` , která obsahuje aktuální hodnotu čítače, protože klíčová logika v této aplikaci má zůstat spuštěný počet. Pokud byla tato aplikace skutečnou aplikací a chybějící výsledek představoval chybu, měli byste tuto událost označit příznakem.
 1. Chcete-li ohlásit událost stavu, když chybějící výsledek představuje selhání, přidejte následující kroky.
    
-    a. Přidejte `System.Fabric.Health` obor názvů do souboru Stateful1.cs.
+    a. Přidejte `System.Fabric.Health` obor názvů do souboru Stateful1. cs.
    
     ```csharp
     using System.Fabric.Health;

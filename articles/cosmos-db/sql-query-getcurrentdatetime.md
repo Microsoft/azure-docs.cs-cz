@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: b48237b5a7eb836c495612758eeb9eaa45029b26
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 12ce8beab082674cd7672713325d4b3f4322aeae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526581"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587300"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,19 +28,19 @@ GetCurrentDateTime ()
 
 ## <a name="return-types"></a>Návratové typy
   
-  Vrátí aktuální hodnotu řetězce standardu UTC data a času 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
+Vrátí aktuální hodnotu řetězce standardu UTC data a času 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
-  |Formát|Description|
-  |-|-|
-  |RRRR|rok se čtyřmi číslicemi|
-  |MM|dvoumístný měsíc (01 = leden atd.)|
-  |DD|dvoumístné číslo dne v měsíci (01 až 31)|
-  |T|označuje, že se mají na začátku prvky času.|
-  |hh|dvoumístný čas (00 až 23)|
-  |mm|dvoumístné minuty (00 až 59)|
-  |ss|dvě číslice sekund (00 až 59)|
-  |. fffffff|dvoumístný zlomek v sekundách|
-  |Z|Označení UTC (koordinovaný světový čas)||
+|Formát|Description|
+|-|-|
+|RRRR|rok se čtyřmi číslicemi|
+|MM|dvoumístný měsíc (01 = leden atd.)|
+|DD|dvoumístné číslo dne v měsíci (01 až 31)|
+|T|označuje, že se mají na začátku prvky času.|
+|hh|dvoumístný čas (00 až 23)|
+|mm|dvoumístné minuty (00 až 59)|
+|ss|dvě číslice sekund (00 až 59)|
+|. fffffff|dvoumístný zlomek v sekundách|
+|Z|Označení UTC (koordinovaný světový čas)|
   
   Další informace o formátu ISO 8601 naleznete v tématu [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 

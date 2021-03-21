@@ -5,10 +5,10 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: b08516b35a864eae6d15c4c5c928f0550c64c239
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001148"
 ---
 Fluent je open source kolekce dat pro jednotné protokolování. `Fluentd`Nastavení spravují připojení kontejneru k serveru, na který se [hovoří](https://www.fluentd.org) . Kontejner obsahuje poskytovatele s mikroprotokolem, který umožňuje kontejneru zapisovat protokoly a volitelně také data metriky na server, který je na něj.

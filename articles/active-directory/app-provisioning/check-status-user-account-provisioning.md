@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5d93cec201feeb43700fe849f2fddc8eaf22488a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256673"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579480"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: vytváření sestav o automatickém zřizování uživatelských účtů
 
@@ -48,7 +48,7 @@ Odtud můžete přístup k řádku průběh zřizování i k protokolům zřizov
 
 ## <a name="provisioning-progress-bar"></a>Indikátor průběhu zřizování
 
-[Indikátor průběhu zřizování](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) se zobrazuje na kartě **zřizování** pro danou aplikaci. Je umístěný v části **aktuální stav** pod položkou **Nastavení** a zobrazuje stav aktuálního počátečního nebo přírůstkového cyklu. Tato část také obsahuje:
+[Indikátor průběhu zřizování](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) se zobrazuje na kartě **zřizování** pro danou aplikaci. Je umístěn v aktuálním oddílu **stav** a zobrazuje stav aktuálního počátečního nebo přírůstkového cyklu. Tato část také obsahuje:
 
 * Celkový počet uživatelů a skupin, které byly synchronizovány a které jsou aktuálně v rozsahu pro zřizování mezi zdrojovým systémem a cílovým systémem.
 * Čas posledního spuštění synchronizace. K synchronizaci obvykle dochází každých 20-40 minut po dokončení [počátečního cyklu](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) .

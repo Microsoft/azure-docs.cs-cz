@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c19f6f8c59ac38bf46999372497205e0c33ebac4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175103"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579735"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace ve službě Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ S jednotným přihlašováním se uživatelé přihlásí jedním účtem a zís
 
 Když se uživatel poprvé přihlásí k aplikaci, Azure AD B2C trvá relaci založenou na souborech cookie. Po následné žádosti o ověření Azure AD B2C přečte a ověří relaci založenou na souborech cookie a vydá přístupový token bez vyzvání uživatele k opětovnému přihlášení. Pokud platnost relace na základě souborů cookie vyprší nebo se stala neplatnou, zobrazí se uživateli výzva k opětovnému přihlášení.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -81,7 +81,7 @@ Můžete nakonfigurovat chování Azure AD B2C relace, včetně:
   - **Tenant** – toto nastavení je výchozí. Pomocí tohoto nastavení může více aplikací a uživatelských toků v tenantovi B2C sdílet stejnou relaci uživatele. Když se například uživatel přihlásí do aplikace, může se uživatel při přístupu k němu bez problémů přihlásit i k jinému.
   - **Aplikace** – toto nastavení umožňuje udržovat uživatelskou relaci exkluzivně pro aplikaci, nezávisle na jiných aplikacích. Toto nastavení můžete například použít, pokud chcete, aby se uživatel přihlásil ke společnosti Contoso farmacie bez ohledu na to, jestli je uživatel už přihlášený k nákupům společnosti Contoso.
   - **Zásady** – toto nastavení umožňuje udržovat relaci uživatele výhradně pro uživatelský tok, a to nezávisle na aplikacích, které ji používají. Pokud se například uživatel už přihlásil a dokončil krok vícefaktorového ověřování (MFA), může se uživateli udělit přístup k několika částem aplikace s vyšším zabezpečením, pokud relace vázaná na tok uživatele nevyprší.
-  - **Disabled** – toto nastavení vynutí, aby uživatel při každém spuštění zásady spouštěl celý tok uživatele.
+  - **Potlačené** – toto nastavení vynutí, aby uživatel při každém spuštění zásady spouštěl celý tok uživatele.
 - **Zůstat přihlášeni (políčko zůstat přihlášeni)** – rozšiřuje dobu života relace pomocí trvalého souboru cookie. Pokud je tato funkce povolená a uživatel ji vybere, zůstane relace aktivní, i když uživatel zavře a znovu otevře prohlížeč. Relace se odvolá jenom v případě, že se uživatel odhlásí. Funkce políčko zůstat přihlášeni se vztahuje pouze na přihlášení pomocí místních účtů. Funkce políčko zůstat přihlášeni má přednost před životností relace.
 
 ::: zone pivot="b2c-user-flow"
@@ -249,7 +249,7 @@ Po žádosti o odhlášení Azure AD B2C:
 ::: zone-end
 ::: zone pivot="b2c-custom-policy"
 3. Pokusy o odhlášení od federovaných zprostředkovatelů identity:
-   - OpenId Connect – Pokud se ve správném koncovém bodu konfigurace poskytovatele identity Určuje `end_session_endpoint` umístění.
+   - OpenId Connect – Pokud se ve správném koncovém bodu konfigurace poskytovatele identity Určuje `end_session_endpoint` umístění. Požadavek na odhlášení nepředává `id_token_hint` parametr. Pokud tento parametr vyžaduje federovaný zprostředkovatel identity, žádost o odhlášení se nezdaří.
    - OAuth2 – Pokud [metadata zprostředkovatele identity](oauth2-technical-profile.md#metadata) obsahují `end_session_endpoint` umístění.
    - SAML – Pokud [metadata zprostředkovatele identity](identity-provider-generic-saml.md) obsahují `SingleLogoutService` umístění.
 4. Volitelně můžete odhlásit z jiných aplikací. Další informace najdete v části věnované [jednotnému odhlašování](#single-sign-out) .

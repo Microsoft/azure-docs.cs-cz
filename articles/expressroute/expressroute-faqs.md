@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: duau
-ms.openlocfilehash: 417a6a55f0114ec35554e598b456f4fb67eb1c1b
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: da293f15ba070fc9a00ad37defd6a76175ded2f2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574454"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587275"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -204,7 +204,7 @@ Pokud váš poskytovatel služeb nabízí ExpressRoute na obou lokalitách, mů�
 
 Ano. Můžete mít více okruhů ExpressRoute se stejným nebo jiným poskytovatelem služeb. Pokud má Metro více umístění partnerských vztahů ExpressRoute a okruhy se vytvářejí v různých umístěních partnerského vztahu, můžete je propojit se stejnou virtuální sítí. Pokud jsou okruhy vytvořeny ve stejném umístění partnerského vztahu, můžete propojit až čtyři okruhy se stejnou virtuální sítí.
 
-### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Návody připojení svých virtuálních sítí k okruhu ExpressRoute
+### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Návody připojit své virtuální sítě k okruhu ExpressRoute?
 
 Základní kroky:
 
@@ -298,6 +298,15 @@ Bude také nutné dodržet poskytovatele připojení, aby bylo zajištěno, že 
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Návody změnit šířku pásma okruhu ExpressRoute?
 
 Šířku pásma okruhu ExpressRoute můžete aktualizovat pomocí rutiny REST API nebo PowerShellu.
+
+### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>Zobrazilo se mi oznámení o údržbě na mém okruhu ExpressRoute. Jaký je technický dopad této údržby?
+
+Pokud provozujete okruh v [režimu aktivní-aktivní](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute#active-active-connections), měli byste při údržbě docházet k minimálnímu vlivu. Provádíme údržbu primárního a sekundárního připojení vašeho okruhu zvlášť. Plánovaná údržba se obvykle provádí mimo pracovní dobu v časovém pásmu umístění partnerského vztahu a nemůžete vybrat dobu údržby.
+
+### <a name="i-received-a-notification-about-a-software-upgrade-or-maintenance-on-my-expressroute-gateway-what-is-the-technical-impact-of-this-maintenance"></a>Zobrazilo se mi oznámení o upgradu nebo údržbě softwaru na mém ExpressRoute bráně. Jaký je technický dopad této údržby?
+
+Při upgradu nebo údržbě softwaru na bráně byste měli mít minimální vliv na tento dopad. Brána ExpressRoute se skládá z několika instancí a během upgradů, instance se v jednom okamžiku převedou offline. I když to může způsobit, že brána dočasně podporuje nižší propustnost sítě pro virtuální síť, samotná brána nebude mít žádný výpadek.
+
 
 ## <a name="expressroute-premium"></a>ExpressRoute Premium
 

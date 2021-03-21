@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.openlocfilehash: 2359855ce3949eb022a03f6e8e2dbc05f98907db
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054595"
 ---
 # <a name="provide-server-credentials-to-discover-applications-dependencies-and-sql-server-instances-and-databases"></a>Zadání přihlašovacích údajů serveru pro zjišťování aplikací, závislostí a instancí SQL Server a databází
@@ -18,7 +18,7 @@ ms.locfileid: "102054595"
 V tomto článku se dozvíte, jak přidat více přihlašovacích údajů serveru do Správce konfigurace zařízení k provádění inventáře softwaru (zjišťování nainstalovaných aplikací), analýzy závislostí bez agentů a zjišťování SQL Server instancí a databází.
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 [Zařízení Azure Migrate](migrate-appliance.md) je jednoduché zařízení, které používá Azure Migrate: posouzení serveru pro zjišťování místních serverů běžících v prostředí VMware a posílání metadat konfigurace serveru a výkonu do Azure. Zařízení se taky dá použít k provádění inventáře softwaru, analýze závislostí bez agentů a zjišťování instancí SQL Server a databází.
 
@@ -32,7 +32,7 @@ Do Správce konfigurace zařízení můžete přidat několik přihlašovacích 
 
 Typy přihlašovacích údajů serveru, které jsou podporované, jsou uvedené v následující tabulce:
 
-Typ přihlašovacích údajů | Popis
+Typ přihlašovacích údajů | Description
 --- | ---
 **Přihlašovací údaje domény** | **Přihlašovací údaje domény** můžete přidat tak, že vyberete možnost z rozevírací nabídky v modálním seznamu **Přidat pověření** . <br/><br/> Pokud chcete zadat přihlašovací údaje k doméně, musíte zadat **název domény** , který musí být zadaný ve formátu plně kvalifikovaného názvu domény (např. prod.corp.contoso.com). <br/><br/> Také je nutné zadat popisný název pro přihlašovací údaje, uživatelské jméno a heslo. <br/><br/> Přidaná pověření domény budou automaticky ověřena pro pravost proti službě Active Directory domény. K tomu je potřeba zabránit jakémukoli uzamčení účtu, když se zařízení pokusí mapovat přihlašovací údaje domény proti zjištěným serverům. <br/><br/> Zařízení se nebude pokoušet mapovat přihlašovací údaje domény, jejichž ověření se nezdařilo. Aby bylo možné pokračovat v inventarizaci softwaru, musíte mít aspoň jedno úspěšně ověřené přihlašovací údaje do domény nebo aspoň jedno nedoménové přihlašovací údaje.<br/><br/>Přihlašovací údaje domény mapované na servery Windows se budou používat k provádění inventáře softwaru a dají se také použít ke zjišťování instancí a databází SQL Server _(Pokud jste v SQL serverech nakonfigurovali režim ověřování systému Windows)_.<br/> [Přečtěte si další informace](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authentication-in-sql-server) o typech režimů ověřování podporovaných na serverech SQL.
 **Přihlašovací údaje jiného typu než doména (Windows/Linux)** | Pokud chcete přidat **Windows (jiný systém než doménu)** nebo **Linux (nedoménová)** , vyberte v rozevíracím seznamu v modálním políčku **Přidat pověření** možnost požadovaná možnost. <br/><br/> Je nutné zadat popisný název pro přihlašovací údaje, uživatelské jméno a heslo.

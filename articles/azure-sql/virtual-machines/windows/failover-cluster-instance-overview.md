@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690919"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
@@ -52,8 +52,8 @@ SQL Server na virtuálních počítačích Azure nabízí různé možnosti jako
 |**Minimální verze operačního systému**| Vše |Windows Server 2012|Windows Server 2016|
 |**Minimální verze SQL Server**|Vše|SQL Server 2012|SQL Server 2016|
 |**Podporovaná dostupnost virtuálního počítače** |Skupiny dostupnosti se skupinami umístění blízkosti (pro SSD úrovně Premium) </br> Stejná zóna dostupnosti (pro SSD úrovně Ultra) |Skupiny dostupnosti a zóny dostupnosti|Skupiny dostupnosti |
-|**Podporuje FileStream**|Ano|Ne|Ano |
-|**Mezipaměť objektů BLOB v Azure**|Ne|Ne|Ano|
+|**Podporuje FileStream**|Yes|No|Yes |
+|**Mezipaměť objektů BLOB v Azure**|No|No|Yes|
 
 Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností úložiště, které jsou dostupné pro SQL Server na virtuálních počítačích Azure. 
 
@@ -96,7 +96,7 @@ Pokud chcete začít, přečtěte si téma [SQL Server instance clusteru s podpo
 - Podporuje mezipaměť objektů BLOB v Azure, takže je možné je zpracovat místně z mezipaměti. (Aktualizace se replikují současně do obou uzlů.) 
 - Podporuje FileStream. 
 
-**Omezení:**
+**Určitá**
 - Dostupné jenom pro Windows Server 2016 a novější. 
 - Zóny dostupnosti se nepodporují.
 - Vyžaduje stejnou diskovou kapacitu připojenou k oběma virtuálním počítačům. 
@@ -116,7 +116,7 @@ Chcete-li začít, přečtěte si téma [SQL Server prostory úložiště s př�
 - Jenom sdílené řešení úložiště pro virtuální počítače se šíří přes několik zón dostupnosti. 
 - Plně spravovaný systém souborů s latencí s jedním číslem a výkonem vstupně-výstupních operací. 
 
-**Omezení:**
+**Určitá**
 - Dostupné jenom pro Windows Server 2012 a novější. 
 - FileStream není podporován. 
 

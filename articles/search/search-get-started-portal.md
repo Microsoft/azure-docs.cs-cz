@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.openlocfilehash: 1be165bfe7cca44e8a928933c3c8fe926ad7d4c9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694831"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
@@ -21,7 +21,7 @@ Vytvořte svůj první index vyhledávání pomocí průvodce **importem dat** a
 
 I když nepoužijete možnosti v tomto rychlém startu, průvodce obsahuje stránku pro obohacení AI, takže můžete extrahovat text a strukturu z obrazových souborů a nestrukturovaného textu. Podobný návod, který zahrnuje obohacení AI, najdete v tématu [rychlý Start: vytvoření rozpoznávání dovednosti](cognitive-search-quickstart-blob.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 

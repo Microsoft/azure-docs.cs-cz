@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/01/2021
 ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101691242"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
@@ -170,7 +170,7 @@ Pokud chcete monitorovat stav databáze a povolit upozorňování na ztrátu př
 
 Jakmile je databáze zašifrovaná pomocí TDE s použitím klíče z Key Vault, všechny nově vygenerované zálohy se taky šifrují pomocí stejné ochrany TDE. Po změně ochrany TDE se starší zálohy databáze **neaktualizují** , aby používaly nejnovější ochranu TDE.
 
-Pokud chcete obnovit zálohu zašifrovanou pomocí ochrany TDE ochrany před Key Vault, ujistěte se, že je k dispozici klíčový materiál pro cílový server. Proto doporučujeme, abyste zachovali všechny staré verze ochrany TDE v trezoru klíčů, aby bylo možné obnovit zálohy databáze.
+Pokud chcete obnovit zálohu zašifrovanou pomocí ochrany TDE ochrany před Key Vault, ujistěte se, že je k dispozici klíčový materiál pro cílový server. Proto doporučujeme v trezoru klíčů uchovávat všechny starší verze ochrany transparentním šifrováním dat, aby bylo možné obnovit zálohy databáze.
 
 > [!IMPORTANT]
 > V každém okamžiku může být pro server nedostupná více než jedna sada ochrany TDE. Je to klíč označený jako "nastavit klíč jako výchozí TDE ochrana" v okně Azure Portal. Na server ale můžete propojit víc dalších klíčů, aniž byste je museli označit jako ochranu pomocí TDE. Tyto klíče se nepoužívají k ochraně klíč DEK, ale během obnovování se dají použít při obnovení ze zálohy, pokud je záložní soubor zašifrovaný s klíčem s odpovídajícím kryptografickým otiskem.

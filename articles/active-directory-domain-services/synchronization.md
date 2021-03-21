@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 41ba337765b4a0a93be52f08ae6656707cf7aa73
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618803"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Způsob synchronizace objektů a přihlašovacích údajů ve spravované doméně Azure Active Directory Domain Services
@@ -51,7 +51,7 @@ Následující tabulka uvádí některé běžné atributy a způsob jejich sync
 | Historie identifikátorů SID pro uživatele a skupiny | Identifikátor SID místního primárního uživatele a skupiny | Atribut *SIDHistory* pro uživatele a skupiny v Azure služba AD DS je nastavený tak, aby odpovídal PŘÍSLUŠNÉmu identifikátoru SID primárního uživatele nebo skupiny v místním prostředí služba AD DS. Tato funkce pomáhá zajistit přezvednutí místních aplikací do Azure služba AD DS, protože nemusíte znovu vytvářet prostředky ACL. |
 
 > [!TIP]
-> **Přihlaste se ke spravované doméně pomocí formátu UPN** . *SAMAccountName* `AADDSCONTOSO\driley` U některých uživatelských účtů ve spravované doméně se může automaticky generovat atribut sAMAccountName, například. Automaticky generovaná hodnota *sAMAccountName* uživatele se může lišit od PŘEDPONY názvu UPN, takže není vždy spolehlivým způsobem, jak se přihlásit.
+> **Přihlaste se ke spravované doméně pomocí formátu UPN** .  `AADDSCONTOSO\driley` U některých uživatelských účtů ve spravované doméně se může automaticky generovat atribut sAMAccountName, například. Automaticky generovaná hodnota *sAMAccountName* uživatele se může lišit od PŘEDPONY názvu UPN, takže není vždy spolehlivým způsobem, jak se přihlásit.
 >
 > Například pokud má více uživatelů stejný atribut *mailNickname* nebo mají více uživatelů delší předpony hlavního názvu uživatele (UPN), mohou být pro tyto uživatele automaticky vygenerovány hodnoty *sAMAccountName* pro tyto uživatele. K `driley@aaddscontoso.com` spolehlivému přihlášení ke spravované doméně použijte formát UPN, například.
 
@@ -79,7 +79,7 @@ Následující tabulka ukazuje, jak se konkrétní atributy pro uživatelské ob
 | onPremiseSecurityIdentifier |Čísel |
 | passwordPolicies |stav skupiny (nastavení nebo vymazání bitu DONT_EXPIRE_PASSWORD) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
-| Ovládacím |Ovládacím |
+| postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
 | proxyAddresses | proxyAddresses |
 | state |st |

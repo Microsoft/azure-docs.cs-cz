@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dd87b58c604b0bb2141c29d3b2227e9a81668a75
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: dfddc024255d90e8a89f49454e42eb5e94df083a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488818"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579973"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu LinkedIn pomocí Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ ms.locfileid: "103488818"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -62,6 +62,8 @@ Pokud chcete povolit přihlášení uživatelům s účtem LinkedIn v Azure Acti
 1. Vyberte **Uložit**.
 
 ## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity LinkedInu do toku uživatele 
+
+V tuto chvíli se poskytovatel identity LinkedInu nastavil, ale ještě není dostupný na žádném z přihlašovacích stránek. Přidání poskytovatele identity LinkedInu do toku uživatele:
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
 1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity LinkedIn.

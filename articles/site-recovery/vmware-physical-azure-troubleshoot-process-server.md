@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999178"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesovým serverem
@@ -32,7 +32,7 @@ Než začnete řešit potíže:
 
 Pro optimální výkon procesových serverů jsme shromáždili řadu obecných osvědčených postupů.
 
-**Osvědčené postupy** | **Podrobnosti**
+**Osvědčený postup** | **Podrobnosti**
 --- |---
 **Použití** | Ujistěte se, že se konfigurační server/samostatný procesový Server používá pouze k zamýšlenému účelu. Nespouštějte na počítači nic jiného.
 **IP adresa** | Ujistěte se, že procesový Server má statickou adresu IPv4 a nemá nakonfigurován překlad adres (NAT).

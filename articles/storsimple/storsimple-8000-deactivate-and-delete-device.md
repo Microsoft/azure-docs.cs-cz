@@ -1,6 +1,6 @@
 ---
 title: Deaktivace a odstranění zařízení řady StorSimple 8000 | Microsoft Docs
-description: Naučte se deaktivovat a odstranit zařízení StorSimple, které je připojené ke službě StorSimple Device Manager.
+description: Naučte se deaktivovat a odstranit zařízení StorSimple, které je připojené ke službě StorSimple Správce zařízení.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,24 +14,24 @@ ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 07d108306fdca9bfe8f793b61660550e43151d71
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017181"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Deaktivace a odstranění zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento článek popisuje, jak deaktivovat a odstranit zařízení StorSimple, které je připojené ke službě StorSimple Device Manager. Pokyny v tomto článku se vztahují jenom na zařízení řady StorSimple 8000, včetně cloudových zařízení StorSimple. Pokud používáte virtuální pole StorSimple, použijte příkaz [deaktivovat a odstranit virtuální pole StorSimple](storsimple-virtual-array-deactivate-and-delete-device.md).
+Tento článek popisuje, jak deaktivovat a odstranit zařízení StorSimple, které je připojené ke službě StorSimple Správce zařízení. Pokyny v tomto článku se vztahují jenom na zařízení řady StorSimple 8000, včetně cloudových zařízení StorSimple. Pokud používáte virtuální pole StorSimple, použijte příkaz [deaktivovat a odstranit virtuální pole StorSimple](storsimple-virtual-array-deactivate-and-delete-device.md).
 
-Deaktivace: naruší spojení mezi zařízením a odpovídající službou StorSimple Device Manager. Možná si budete chtít vzít zařízení StorSimple mimo službu (například Pokud nahrazujete nebo upgradujete vaše zařízení nebo pokud už nepoužíváte StorSimple). Pokud ano, musíte zařízení deaktivovat, aby ho bylo možné odstranit.
+Deaktivace: naruší spojení mezi zařízením a odpovídající službou StorSimple Správce zařízení. Možná si budete chtít vzít zařízení StorSimple mimo službu (například Pokud nahrazujete nebo upgradujete vaše zařízení nebo pokud už nepoužíváte StorSimple). Pokud ano, musíte zařízení deaktivovat, aby ho bylo možné odstranit.
 
 Když zařízení deaktivujete, všechna data uložená místně na zařízení už nebudou dostupná. Obnovit lze pouze data přidružená k zařízení, které bylo uloženo v cloudu.
 
 > [!WARNING]
-> Deaktivace je TRVALá operace a nelze ji vrátit zpět. Deaktivované zařízení se nedá zaregistrovat ve službě StorSimple Device Manager, pokud se neobnoví na výchozí tovární nastavení.
+> Deaktivace je TRVALá operace a nelze ji vrátit zpět. Deaktivované zařízení se nedá zaregistrovat ve službě StorSimple Správce zařízení, pokud se neobnoví na výchozí tovární nastavení.
 >
 > Proces obnovení továrního nastavení odstraní všechna data uložená místně na vašem zařízení. Proto musíte před deaktivací zařízení pořídit snímek všech vašich dat v cloudu. Tento snímek v cloudu umožňuje obnovit všechna data v pozdější fázi.
 
@@ -120,5 +120,5 @@ Po deaktivaci cloudového zařízení ho můžete ze seznamu zařízení odstran
 
 * Pokud chcete deaktivované zařízení obnovit do výchozího továrního nastavení, použijte možnost [resetovat zařízení do výchozího továrního nastavení](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 * Pokud potřebujete technickou pomoc, obraťte se na [Podpora Microsoftu](storsimple-8000-contact-microsoft-support.md).
-* Další informace o tom, jak používat službu StorSimple Device Manager, najdete v článku [použití služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Další informace o tom, jak používat službu StorSimple Správce zařízení, najdete v článku [použití služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

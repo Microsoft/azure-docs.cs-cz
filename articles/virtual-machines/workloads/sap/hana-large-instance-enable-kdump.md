@@ -14,10 +14,10 @@ ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e4b06cbcbef79e243116bddb33adbcf6476fac8a
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102213364"
 ---
 # <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>Kdump pro SAP HANA ve velkých instancích Azure (HLI)
@@ -61,7 +61,7 @@ Tento dokument popisuje podrobnosti o tom, jak povolit službu kdump ve velké i
 |   Typ II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
 |   Typ II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Služba kdump používá `/var/crash` adresář k zápisu výpisů paměti, ujistěte se, že oddíl odpovídající tomuto adresáři má dostatek místa pro ukládání výpisů paměti.
 
