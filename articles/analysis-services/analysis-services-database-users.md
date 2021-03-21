@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054089"
 ---
 # <a name="manage-database-roles-and-users"></a>Správa databázových rolí a uživatelů
@@ -141,7 +141,7 @@ Filtry řádků se použijí na zadané řádky a související řádky. Pokud m
   
 |Tabulka|Výraz DAX|  
 |-----------|--------------------|  
-|Region (Oblast)|= Region [Země] = "USA"|  
+|Oblast|= Region [Země] = "USA"|  
 |ProductCategory|= ProductCategory [název] = "jízdní kola"|  
 |Transakce|= Transakcí [rok] = 2016|  
   

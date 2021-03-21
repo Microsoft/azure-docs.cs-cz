@@ -4,10 +4,10 @@ description: Automatizuje konfiguraci Azure Diagnostics pro přenos dat do Appli
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: c7c385888d7322b212cdd62497c9bbbabb970d65
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100583845"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Použití PowerShellu k nastavení Application Insights pro Azure Cloud Services
@@ -40,7 +40,7 @@ Pokud je webová aplikace v Azure a vy vytvoříte své prostředky pomocí šab
 * `myWebAppName` – ID webové aplikace
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Povolit rozšíření diagnostiky jako součást nasazení cloudové služby
-Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Příklad:
+Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Například:
 
 ```azurepowershell
 $service_package = "CloudService.cspkg"

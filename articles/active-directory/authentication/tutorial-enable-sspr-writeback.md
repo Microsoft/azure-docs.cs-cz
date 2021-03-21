@@ -12,10 +12,10 @@ ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
 ms.openlocfilehash: 444ca19732921b336cae32a9b1eb5755a08e4bd3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97028049"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Kurz: povolení zpětného zápisu pro Samoobslužné resetování hesla Azure Active Directory do místního prostředí
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 > * Povolit možnost zpětného zápisu hesla v Azure AD Connect
 > * Povolení zpětného zápisu hesla ve službě Azure AD SSPR
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -131,7 +131,7 @@ Pokud chcete povolit zpětný zápis hesla v SSPR, proveďte následující krok
 
 Pokud už nechcete používat funkci zpětného zápisu SSPR, kterou jste nakonfigurovali v rámci tohoto kurzu, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory**, vyberte **resetování hesla** a pak zvolte místní **integrace**.
 1. Nastavte možnost pro **zápis hesel zpátky do místního adresáře?** na *ne*.
 1. Nastavte možnost *,* aby **Uživatelé odemkli účty bez resetování hesla?**

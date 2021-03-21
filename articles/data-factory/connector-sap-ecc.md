@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/28/2020
 ms.openlocfilehash: a3e701f3d433b5b52d8992035ac4ad75b78cb795
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386692"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
@@ -22,7 +22,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 >[!TIP]
 >Pokud chcete získat přehled o celkové podpoře pro integraci dat v programu, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobným úvodem na jednotlivé konektory SAP, comparsion a doprovodné materiály.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor SAP ECC se podporuje pro následující činnosti:
 
@@ -53,7 +53,7 @@ Verze 7,0 nebo novější odkazuje na verzi SAP NetWeaver namísto verze SAP ECC
 >[!TIP]
 >Pokud chcete kopírovat data z SAP ECC přes tabulku nebo zobrazení SAP, použijte konektor [SAP TABLE](connector-sap-table.md) Connector, který je rychlejší a škálovatelný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li použít tento konektor SAP ECC, je nutné vystavit entity SAP ECC prostřednictvím služby OData prostřednictvím brány SAP. A konkrétně:
 
@@ -148,7 +148,7 @@ V části aktivity kopírování jsou podporovány následující vlastnosti `so
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | `type` | `type`Vlastnost oddílu aktivity kopírování `source` musí být nastavena na hodnotu `SapEccSource` . | Yes |
-| `query` | Možnosti dotazu OData pro filtrování dat Příklad:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Konektor SAP ECC kopíruje data z kombinované adresy URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
+| `query` | Možnosti dotazu OData pro filtrování dat Například:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Konektor SAP ECC kopíruje data z kombinované adresy URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
 | `sapDataColumnDelimiter` | Jeden znak, který se používá jako oddělovač předaný do SAP RFC pro rozdělení výstupních dat. | No |
 | `httpRequestTimeout` | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | No |
 

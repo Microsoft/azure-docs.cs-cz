@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 03/02/2021
 ms.author: caya
 ms.openlocfilehash: e83834fd5f8ca95826118c952f7884a494c7abbb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102050830"
 ---
 # <a name="migrate-from-agic-helm-to-agic-add-on"></a>Migrace z AGIC Helm na AGIC doplněk 
 
 Pokud už máte AGIC nasazené prostřednictvím Helm, ale chcete migrovat na AGIC nasazenou jako doplněk AKS, následující kroky vám pomůžou s procesem migrace. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 Než zahájíte proces migrace, je třeba kontrolovat několik věcí. 
   - Používáte nějaké funkce s AGIC Helm, které [aktuálně nejsou podporované pomocí doplňku AGIC](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)?
   - Používáte pro každý cluster AKS více než jedno nasazení AGIC Helm? 

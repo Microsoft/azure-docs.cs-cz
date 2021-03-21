@@ -11,10 +11,10 @@ author: luisquintanilla
 ms.date: 01/26/2021
 ms.custom: responsible-ml
 ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101659677"
 ---
 # <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>Zmírnění nespravedlivosti v modelech Machine Learning (Preview)
@@ -100,7 +100,7 @@ Fairlearn Open Source balíček poskytuje postprocessing a redukční algoritmy 
 - Snížení: tyto algoritmy přijímají standardní černý krabicový Estimator strojového učení (např. model LightGBM) a generují sadu předaných modelů pomocí sekvence převážených datových sad. Například uchazeči určitého pohlaví můžou být vážené nebo nižší, aby mohli předávat modely a snižovat rozdíly mezi různými skupinami pohlaví. Uživatelé pak mohou vybrat model, který poskytuje nejlepší kompromis mezi přesností (nebo jinou metrikou výkonu) a neparitou, což obecně musí být založeno na obchodních pravidlech a výpočtech nákladů.  
 - Následné zpracování: tyto algoritmy přebírají existující klasifikátor a citlivou funkci jako vstup. Pak odvozují transformaci předpovědi klasifikátoru, aby vynutila zadaná omezení rovnosti. Největší výhodou optimalizace prahové hodnoty je jednoduchost a flexibilita, protože není potřeba přeškolit model. 
 
-| Algoritmus | Popis | Úloha strojového učení | Citlivé funkce | Podporovaná omezení parity | Typ algoritmu |
+| Algoritmus | Description | Úloha strojového učení | Citlivé funkce | Podporovaná omezení parity | Typ algoritmu |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | Přístup k černému poli, který je popsaný v [rámci snížení úrovně přístupu k korektní klasifikaci](https://arxiv.org/abs/1803.02453) | Binární klasifikace | Kategorické | [Demografická parita](#parity-constraints), [rovná se lichá](#parity-constraints) | Roztříštěn |
 | `GridSearch` | Přístup k černému poli, který je popsaný v tématu [snižování přístupu k korektní klasifikaci](https://arxiv.org/abs/1803.02453)| Binární klasifikace | Binární | [Demografická parita](#parity-constraints), [rovná se lichá](#parity-constraints) | Roztříštěn |

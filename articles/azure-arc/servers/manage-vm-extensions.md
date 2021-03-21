@@ -4,10 +4,10 @@ description: Servery s podporou ARC Azure můžou spravovat nasazení rozšíře
 ms.date: 03/01/2021
 ms.topic: conceptual
 ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101687902"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou Azure Arc
@@ -65,7 +65,7 @@ Další informace o balíčku agenta připojeného počítače Azure a podrobnos
 |Azure Key Vault synchronizace certifikátů | Microsoft. Azure. Key. trezor |KeyVaultForLinux | [Key Vault rozšíření virtuálního počítače pro Linux](../../virtual-machines/extensions/key-vault-linux.md) |
 |Agent Azure Monitoru |Microsoft. Azure. monitor |AzureMonitorLinuxAgent |[Instalace agenta Azure Monitor (Preview)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato funkce závisí na následujících poskytovatelích prostředků Azure v rámci vašeho předplatného:
 

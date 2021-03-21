@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
 ms.openlocfilehash: 5a0389b1074737728bd0ffa5d6db90d077a9f45f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101652162"
 ---
 # <a name="about-azure-cache-for-redis"></a>Informace o službě Azure Cache for Redis
@@ -23,7 +23,7 @@ Mezipaměť Azure pro Redis se dá použít jako distribuovaná data nebo mezipa
 ## <a name="key-scenarios"></a>Klíčové scénáře
 Azure cache pro Redis vylepšuje výkon aplikace tím, že podporuje běžné vzory architektury aplikací. Mezi nejběžnější případy použití patří:
 
-| Vzor      | Popis                                        |
+| Vzor      | Description                                        |
 | ------------ | -------------------------------------------------- |
 | [Mezipaměť dat](cache-web-app-cache-aside-leaderboard.md) | Databáze jsou často příliš velké, aby se načetly přímo do mezipaměti. Je běžné použít model doplňování [mezipaměti](/azure/architecture/patterns/cache-aside) k načtení dat do mezipaměti, jak je potřeba. Když systém provede změny dat, může systém aktualizovat také mezipaměť, která je poté distribuována jiným klientům. Kromě toho může systém nastavit vypršení platnosti dat nebo použít zásadu vyřazení k aktivaci aktualizací dat do mezipaměti.|
 | [Mezipaměť obsahu](cache-aspnet-output-cache-provider.md) | Mnoho webových stránek se generuje ze šablon, které používají statický obsah, jako jsou záhlaví, zápatí a bannery. Tyto statické položky by se neměly často měnit. Použití mezipaměti v paměti poskytuje rychlý přístup ke statickému obsahu v porovnání s úložištěm dat back-endu. Tento model zkracuje dobu zpracování a zatížení serveru, což umožňuje webovým serverům rychlejší odezvu. Umožňuje snížit počet serverů potřebných ke zpracování zatížení. Azure cache pro Redis poskytuje poskytovateli výstupní mezipaměti Redis pro podporu tohoto vzoru s ASP.NET.|
@@ -39,7 +39,7 @@ Azure cache pro Redis podporuje OSS Redis verze 4. x a jako verzi Preview 6,0. P
 ## <a name="service-tiers"></a>Úrovně služby
 Mezipaměť Azure pro Redis je k dispozici na následujících úrovních:
 
-| Úroveň | Popis |
+| Úroveň | Description |
 |---|---|
 | Basic | Mezipaměť OSS Redis spuštěná na jednom virtuálním počítači. Tato úroveň nemá smlouvu o úrovni služeb (SLA) a je ideální pro vývoj a testování a méně důležité úlohy. |
 | Standard | Mezipaměť OSS Redis spuštěná na dvou virtuálních počítačích v replikované konfiguraci. |

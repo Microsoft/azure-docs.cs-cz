@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
 ms.openlocfilehash: 8c90427e2dd4ecf23cb803c4f75dbee34c38f992
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98898575"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>O službě mobility pro virtuální počítače VMware a fyzické servery
@@ -33,7 +33,7 @@ Pokud počítače, které chcete replikovat, používají antivirový software, 
 
 Nabízená instalace je nedílnou součástí úlohy, která se spouští z Azure Portal pro [Povolení replikace](vmware-azure-enable-replication.md#enable-replication). Po výběru sady virtuálních počítačů, které chcete chránit a povolit replikaci, konfigurační server vloží agenta služby mobility na servery, nainstaluje agenta a dokončí registraci agenta s konfiguračním serverem.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že jsou splněné všechny [požadavky](vmware-azure-install-mobility-service.md) na nabízenou instalaci.
 - Zajistěte, aby všechny konfigurace serveru splňovaly kritéria [pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure na](vmware-physical-azure-support-matrix.md)základě kritérií v matici podpory.
@@ -69,7 +69,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 ## <a name="install-the-mobility-service-using-ui"></a>Instalace služby mobility pomocí uživatelského rozhraní
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Zajistěte, aby všechny konfigurace serveru splňovaly kritéria [pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure na](vmware-physical-azure-support-matrix.md)základě kritérií v matici podpory.
 - [Vyhledejte instalační program](#locate-installer-files) operačního systému serveru.
@@ -97,7 +97,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>Instalace služby mobility pomocí příkazového řádku
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Zajistěte, aby všechny konfigurace serveru splňovaly kritéria [pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure na](vmware-physical-azure-support-matrix.md)základě kritérií v matici podpory.
 - [Vyhledejte instalační program](#locate-installer-files) operačního systému serveru.

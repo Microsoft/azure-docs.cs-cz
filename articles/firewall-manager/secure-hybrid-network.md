@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: victorh
 ms.openlocfilehash: f631100003a4ea6e191a5bdc13a11eb9aa327268
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102212534"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>Kurz: zabezpečení služby hub Virtual Network pomocí správce Azure Firewall
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 > * Testování brány firewall
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Hybridní síť používá model architektury hvězdicové a hvězdicové ke směrování provozu mezi Azure virtuální sítě a místními sítěmi. Architektura centra a paprsků má následující požadavky:
 

@@ -8,10 +8,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
 ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103470890"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
@@ -348,7 +348,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="expressroute-not-required"></a>
 **Musím použít Azure ExpressRoute k připojení k souborům Azure nebo k používání Synchronizace souborů Azure v místním prostředí?**  
 
-    Ne. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Synchronizace souborů Azure, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
+    No. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Synchronizace souborů Azure, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
 
 * <a id="mount-locally"></a>
 **Jak můžu připojit sdílenou složku Azure na svém místním počítači?**  
@@ -452,7 +452,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="lfs-performance-impact"></a>
 **Má rozšíření kvóty sdílené složky vliv na moje úlohy nebo Synchronizace souborů Azure?**
     
-    Ne. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Synchronizace souborů Azure.
+    No. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Synchronizace souborů Azure.
 
 * <a id="open-handles-quota"></a>
 **Kolik klientů má přístup ke stejnému souboru současně?**   
@@ -481,7 +481,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="nested-shares"></a>
 **Můžu nastavit vnořené sdílené složky? Jinými slovy, sdílená složka ve sdílené složce?**  
-    Ne. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
+    No. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
 
 * <a id="ibm-mq"></a>
 **Návody používat soubory Azure s IBM MQ?**  

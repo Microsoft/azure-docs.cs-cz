@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: f1e84c838d310721cba604274388ae2767eb1502
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389667"
 ---
 # <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurace clusteringu Redis pro Azure cache úrovně Premium pro instanci Redis
@@ -82,7 +82,7 @@ Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na strá
 > 
 > 
 
-Vzorový kód při práci s Clustering s klientem StackExchange. Redis najdete v části [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) v ukázce [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) .
+Vzorový kód při práci s Clustering s klientem StackExchange. Redis najdete v části věnované [clusteringu. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) v ukázce [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) .
 
 <a name="cluster-size"></a>
 
@@ -135,7 +135,7 @@ Pro dosažení nejlepšího výkonu a propustnosti doporučujeme, aby byly klí�
 
 Další informace najdete v tématech [model distribuce klíčů](https://redis.io/topics/cluster-spec#keys-distribution-model), [Redis data horizontálního dělení clusteru](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)a [klíče hash klíčů](https://redis.io/topics/cluster-spec#keys-hash-tags).
 
-Vzorový kód pro práci s Clustering a hledání klíčů ve stejném horizontálních oddílů s klientem StackExchange. Redis najdete v části [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) ukázky [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) .
+Vzorový kód při práci s Clustering a vyhledávání klíčů ve stejném horizontálních oddílů s klientem StackExchange. Redis najdete v části věnované [clusteringu. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) v ukázce [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) .
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>Jaká je největší velikost mezipaměti, kterou můžu vytvořit?
 Největší velikost mezipaměti Premium je 120 GB. Můžete vytvořit až 10 horizontálních oddílů a poskytnout tak maximální velikost 1,2 TB GB. Pokud potřebujete větší velikost, můžete [požádat o další](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Další informace najdete v tématu [ceny služby Azure cache pro Redis](https://azure.microsoft.com/pricing/details/cache/).

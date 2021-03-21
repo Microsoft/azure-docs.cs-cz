@@ -7,10 +7,10 @@ author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
 ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389488"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místního prostředí Integration Runtime
@@ -19,7 +19,7 @@ ms.locfileid: "100389488"
 
 Prostředí Integration runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování funkcí pro integraci dat napříč různými síťovými prostředími. Podrobnosti o IR najdete v tématu [Přehled prostředí Integration runtime](concepts-integration-runtime.md).
 
-Místní prostředí Integration runtime může spouštět aktivity kopírování mezi cloudovým úložištěm dat a úložištěm dat v privátní síti. Můžou také odesílat transformační aktivity s výpočetními prostředky v místní síti nebo ve službě Azure Virtual Network. Instalace místního prostředí Integration runtime potřebuje místní počítač nebo virtuální počítač v privátní síti.  
+Místní prostředí Integration Runtime může spouštět aktivity kopírováním mezi cloudovým úložištěm dat a úložištěm dat v privátní sítí. Může také odesílat aktivity transformace výpočetních prostředků v místní síti nebo virtuální síti Azure. K instalaci místního prostředí Integration Runtime se vyžaduje místní počítač nebo virtuální počítač v rámci privátní sítě.  
 
 Tento článek popisuje, jak můžete vytvořit a nakonfigurovat prostředí IR v místním prostředí.
 
@@ -54,7 +54,7 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
 
 5. Místní prostředí Integration runtime kopíruje data mezi místním úložištěm a cloudovým úložištěm. Směr kopírování závisí na způsobu konfigurace aktivity kopírování v datovém kanálu. Pro tento krok se v místním prostředí Integration runtime přímo komunikuje s cloudovou službou úložiště, jako je Azure Blob Storage přes zabezpečený kanál HTTPS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Podporované verze Windows jsou:
   - Windows 8.1

@@ -8,10 +8,10 @@ ms.author: lle
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
 ms.openlocfilehash: 031e7ceee739ffd666ad367bd6778865a297a25d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386267"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Zjišťování a zkoumání dat v ADF pomocí dosah
@@ -25,7 +25,7 @@ V ADF můžete provádět následující úlohy:
 - Pochopení dat na základě metadat, řádků a poznámek 
 - Propojení těchto dat s datovou továrnou pomocí propojených služeb nebo datových sad 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 - [Účet Azure dosah](../purview/create-catalog-portal.md) 
 - [Data Factory](./quickstart-create-data-factory-portal.md) 
 - [Připojení účtu Azure dosah k Data Factory](./connect-data-factory-to-azure-purview.md) 

@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 484dd8313710332660bb20d55f3dac2aa21bbc61
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98232518"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS (Network Policy Server) se službou Azure AD Multi-Factor Authentication
@@ -70,7 +70,7 @@ Servery VPN směrují žádosti o ověření, takže potřebují vědět o nový
 
 Rozšíření serveru NPS je určeno pro práci s vaší stávající infrastrukturou. Než začnete, ujistěte se, že máte následující předpoklady.
 
-### <a name="licenses"></a>Licence
+### <a name="licenses"></a>Licenses
 
 Rozšíření serveru NPS pro Azure AD Multi-Factor Authentication je k dispozici pro zákazníky s [licencemi pro Multi-Factor Authentication Azure AD](./concept-mfa-howitworks.md). Licence založené na spotřebě pro Multi-Factor Authentication Azure AD, jako jsou licence vázané na uživatele nebo na ověřování, nejsou kompatibilní s rozšířením NPS.
 
@@ -319,7 +319,7 @@ Když je klíč nastavený na *false* a uživatel není zaregistrovaný, ověřo
 
 Můžete zvolit vytvoření tohoto klíče a jeho nastavení na *hodnotu false* při registraci vašich uživatelů a nemusí se zatím registrovat pro Azure AD Multi-Factor Authentication. Vzhledem k tomu, že nastavení klíče umožňuje uživatelům, kteří nejsou zaregistrovaní pro MFA, přihlásit se, měli byste tento klíč před zahájením provozu odebrat.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="nps-extension-health-check-script"></a>Skript kontroly stavu rozšíření serveru NPS
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61cefacc4147ab1eb105af9cb21365129dd1950e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742455"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
@@ -134,7 +134,7 @@ Volitelná konfigurace:
 
 Server Azure Multi-Factor Authentication poskytuje pro uživatelský portál několik možností. V následující tabulce je seznam těchto možností a vysvětlení, k čemu se používají.
 
-| Nastavení uživatelského portálu | Popis |
+| Nastavení uživatelského portálu | Description |
 |:--- |:--- |
 | Adresa URL portálu User Portal | Zadejte adresu URL, na které se portál hostuje. |
 | Primární ověření | Zadejte typ ověřování, které se má použít pro přihlašování k portálu. Ověření Windows, Radius nebo LDAP. |

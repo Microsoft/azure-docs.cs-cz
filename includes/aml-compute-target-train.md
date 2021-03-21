@@ -10,10 +10,10 @@ ms.custom: include file
 ms.topic: include
 ms.date: 09/17/2020
 ms.openlocfilehash: 081eea7842652884363603bc5ba742ba48539f85
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102503606"
 ---
 **Cíle výpočetní služby se dají znovu použít z jedné školicí úlohy do další.** Například po připojení vzdáleného virtuálního počítače k pracovnímu prostoru jej můžete znovu použít pro více úloh. Pro kanály strojového učení použijte odpovídající [Krok kanálu](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) pro každý cíl výpočtů.

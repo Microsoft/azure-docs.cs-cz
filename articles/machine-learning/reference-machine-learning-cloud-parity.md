@@ -12,10 +12,10 @@ author: Anurzeuii
 ms.date: 12/21/2020
 ms.custom: references_regions
 ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97725016"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Parita cloudu Azure Machine Learning svrchovan
@@ -56,7 +56,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | Notebook a sdílení souborů v pracovním prostoru                                        | GA                   | ANO                | ANO         |
 | Podpora R a Pythonu                                                       | GA                   | ANO                | ANO         |
 | Podpora virtuální sítě                                                    | Public Preview       | NO                 | NO          |
-| **Instance služby Compute** |   |  | | 
+| **Instance COMPUTE** |   |  | | 
 | Spravované výpočetní instance pro integrované poznámkové bloky                         | GA                   | ANO                | ANO         |
 | Integrace Jupyter, JupyterLab                                            | GA                   | ANO                | ANO         |
 | Podpora Virtual Network (VNet)                                             | Public Preview       | ANO                | ANO         |
@@ -112,7 +112,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 
 ### <a name="azure-government-scenarios"></a>Azure Government scénáře
 
-| Scénář                                                    | US-Virginia | US-Arizona| Omezení  |
+| Scenario                                                    | US-Virginia | US-Arizona| Omezení  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **Obecné nastavení zabezpečení** |   | | |
 | Komunikace privátní sítě mezi službami                                     | NO | NO | Momentálně není k dispozici žádný privátní odkaz. | 
@@ -169,7 +169,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | Notebook a sdílení souborů v pracovním prostoru                                        | GA               | ANO       | –        |
 | Podpora R a Pythonu                                                       | GA               | ANO       | –        |
 | Podpora virtuální sítě                                                    | Public Preview   | NO        | –        |
-| **Instance služby Compute** |    | | |
+| **Instance COMPUTE** |    | | |
 | Spravované výpočetní instance pro integrované poznámkové bloky                         | GA               | NO        | –        |
 | Integrace Jupyter, JupyterLab                                            | GA               | ANO       | –        |
 | Podpora Virtual Network (VNet)                                             | Public Preview   | ANO       | –        |

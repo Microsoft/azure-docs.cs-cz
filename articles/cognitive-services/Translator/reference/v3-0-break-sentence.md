@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: lajanuar
 ms.openlocfilehash: 2da614fe829d0aa82bfa57337baf44491993c68f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895539"
 ---
 # <a name="translator-30-breaksentence"></a>Překladatel 3,0: BreakSentence
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 Parametry žádosti předané řetězci dotazu jsou:
 
-| Parametr dotazu | Popis |
+| Parametr dotazu | Description |
 | -------| ----------- |
 | verze-api <img width=200/>   | **Požadovaný parametr dotazu**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0` . |
 | language | **Volitelný parametr dotazu**.<br/>Značka jazyka identifikující jazyk vstupního textu. Pokud není zadán kód, použije se automatické rozpoznávání jazyka. |
@@ -41,7 +41,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 
 Hlavičky požadavku zahrnují:
 
-| Hlavičky | Popis |
+| Hlavičky | Description |
 | ------- | ----------- |
 | Ověřovací hlavičky (y) <img width=200/>  | **Požadovaná hlavička žádosti**<br/>Podívejte se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>. |
 | Typ obsahu | **Požadovaná hlavička žádosti**<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json` . |
@@ -97,7 +97,7 @@ Příklad odpovědi JSON:
 
 <table width="100%">
   <th width="20%">Hlavičky</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>X-RequestId</td>
     <td>Hodnota, kterou služba vygenerovala k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
@@ -110,7 +110,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
 
 <table width="100%">
   <th width="20%">Stavový kód</th>
-  <th>Popis</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Úspěch.</td>

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: lizross
 ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99051105"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Jak zřídit zařízení pomocí skupin pro zápis symetrických klíčů
@@ -41,7 +41,7 @@ Kód zařízení, který je znázorněn v tomto článku, bude postupovat stejn�
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
 

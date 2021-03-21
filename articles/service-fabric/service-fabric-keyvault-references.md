@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak používat podporu KeyVaultReferenc
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: a0e4ef0decae8cc9ab4dc5f8c69dfef854af81f3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98898592"
 ---
 # <a name="keyvaultreference-support-for-azure-deployed-service-fabric-applications"></a>Podpora KeyVaultReference pro aplikace Service Fabric nasazené v Azure
@@ -20,7 +20,7 @@ Běžným problémem při sestavování cloudových aplikací je postup bezpečn
 > [!NOTE]
 > Podpora KeyVaultReference pro aplikace Service Fabric podporuje pouze tajné kódy s [verzemi](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) . Tajné kódy bez verzí nejsou podporovány. Key Vault musí být ve stejném předplatném jako cluster Service Fabric. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Spravovaná identita pro aplikace Service Fabric
 

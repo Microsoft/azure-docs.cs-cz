@@ -10,17 +10,17 @@ ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
 ms.openlocfilehash: d23df80a3f80ed96779297bac12ef0ed8d2927d5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101687919"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Vytvoření spravované instance Azure SQL pomocí nástrojů Kubernetes
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Měli byste už mít vytvořený [řadič dat ARC Azure](./create-data-controller.md).
 

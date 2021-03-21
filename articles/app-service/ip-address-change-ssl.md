@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020955"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Příprava na změnu IP adresy SSL
@@ -17,7 +17,7 @@ Pokud jste obdrželi oznámení o změně IP adresy SSL aplikace Azure App Servi
 
 ## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>Vydávat IP adresy SSL a přiřazovat nové
 
-1.  Otevřete web [Azure Portal](https://portal.azure.com).
+1.  Otevřete [Azure Portal](https://portal.azure.com).
 
 2.  V navigační nabídce na levé straně vyberte **App Services**.
 

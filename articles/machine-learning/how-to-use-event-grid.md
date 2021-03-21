@@ -12,10 +12,10 @@ author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
 ms.openlocfilehash: 9dc7c0a476f57048c7caefb6001918d314c991ee
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102209692"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
@@ -30,7 +30,7 @@ Kdy použít Event Grid pro akce řízené událostmi:
 * Streamování událostí z Azure Machine Learning do různých koncových bodů
 * Aktivace kanálu ML při zjištění posunu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Chcete-li použít Event Grid, potřebujete přístup přispěvatele nebo vlastníka k pracovnímu prostoru Azure Machine Learning, ve kterém vytvoříte události.
 
 ## <a name="the-event-model--types"></a>Typy & modelu událostí

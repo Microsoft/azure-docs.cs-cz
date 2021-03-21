@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023546"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Zachování IP adres během převzetí služeb při selhání
@@ -60,7 +60,7 @@ Tady je architektura před převzetím služeb při selhání.
 
 Pokud dojde k výpadku zdrojového regionu, společnost A může převzít služby při selhání všech svých prostředků do cílové oblasti.
 
-- S cílovými IP adresami, které už jsou v platnosti před převzetím služeb při selhání, může společnost A orchestrovat převzetí **Azure VNet** služeb při **selhání a automaticky** navazovat připojení po převzetí služeb při selhání To je znázorněno v následujícím diagramu...
+- S cílovými IP adresami, které už jsou v platnosti před převzetím služeb při selhání, může společnost A orchestrovat převzetí služeb při **selhání a automaticky** navazovat připojení po převzetí služeb při selhání To je znázorněno v následujícím diagramu...
 - V závislosti na požadavcích aplikace je možné v cílové oblasti navázat připojení mezi dvěma virtuální sítě (**virtuální síť pro obnovení** a **virtuální síť Azure**) v rámci (jako zprostředkující krok) nebo po převzetí služeb při selhání.
   - Společnost může pomocí [plánů obnovení](site-recovery-create-recovery-plans.md) určit, kdy se budou navázat připojení.
   - Můžou se připojit mezi virtuální sítě pomocí partnerského vztahu virtuálních sítí nebo sítě VPN typu Site-to-site.
@@ -147,7 +147,7 @@ V takovém případě bude architektura sítě vypadat ještě před převzetím
 
 Pokud dojde k výpadku zdrojového regionu, společnost B může převzít služby při selhání všech svých prostředků do cílové oblasti.
 
-- S cílovými IP adresami, které už jsou v platnosti před převzetím služeb při selhání, může společnost B orchestrovat převzetí **Azure VNet** služeb při **selhání a automaticky** navazovat připojení po převzetí služeb při selhání
+- S cílovými IP adresami, které už jsou v platnosti před převzetím služeb při selhání, může společnost B orchestrovat převzetí služeb při **selhání a automaticky** navazovat připojení po převzetí služeb při selhání
 - V závislosti na požadavcích aplikace je možné v cílové oblasti navázat připojení mezi dvěma virtuální sítě (**virtuální síť pro obnovení** a **virtuální síť Azure**) v rámci (jako zprostředkující krok) nebo po převzetí služeb při selhání. Společnost může pomocí [plánů obnovení](site-recovery-create-recovery-plans.md) určit, kdy se budou navázat připojení.
 - Původní připojení mezi službou Azure Východní Asie a místním datacentrem by mělo být před navázáním spojení mezi Azure jihovýchodní Asie a místním datacentrem odpojeno.
 - Místní směrování se překonfiguruje tak, aby odkazovalo na cílovou oblast a brány po převzetí služeb při selhání.

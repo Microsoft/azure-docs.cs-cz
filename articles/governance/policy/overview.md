@@ -4,10 +4,10 @@ description: Azure Policy je služba v Azure, pomocí které vytváříte, při�
 ms.date: 01/14/2021
 ms.topic: overview
 ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220724"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
@@ -107,7 +107,7 @@ Tady je několik ukazatelů a tipů, které byste měli mít na paměti:
 
 Postup vytváření a implementace zásady v Azure Policy začíná vytvořením definice zásady. Každá definice zásady se vynucuje za určitých podmínek. A má definovaný účinek, který se provede, pokud jsou splněny podmínky.
 
-V Azure Policy nabízíme několik předdefinovaných zásad, které jsou ve výchozím nastavení dostupné. Příklad:
+V Azure Policy nabízíme několik předdefinovaných zásad, které jsou ve výchozím nastavení dostupné. Například:
 
 - **Povolené skladové položky účtu úložiště** (odepřít): Určuje, jestli se nasazený účet úložiště nachází v rámci sady velikostí SKU. Jeho účinkem je odmítnutí všech účtů úložiště, které nedodržují sadu definovaných velikostí SKU.
 - **Povolený typ prostředku** (odepřít): definuje typy prostředků, které můžete nasadit. Jeho účelem je Odepřít všechny prostředky, které nejsou součástí tohoto definovaného seznamu.

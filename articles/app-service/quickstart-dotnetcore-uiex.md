@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102214231"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure
@@ -251,7 +251,7 @@ az login
     ```
     
     <details>
-    <summary>Řešení potíží</summary>
+    <summary>Poradce při potížích</summary>
     <ul>
     <li>Pokud <code>az</code> příkaz není rozpoznaný, ujistěte se, že máte nainstalované rozhraní příkazového řádku Azure, jak je popsané v tématu <a href="#1-prepare-your-environment">Příprava prostředí</a>.</li>
     <li>Nahraďte <code>&lt;app-name&gt;</code> názvem, který je jedinečný v rámci všech Azure ( <em> platné znaky jsou <code>a-z</code> , <code>0-9</code> a <code>-</code> </em> ). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.</li>
@@ -304,7 +304,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="7-update-and-redeploy-the-code"></a>7. aktualizujte a znovu nasaďte kód.
 
-1. **Otevřete soubor _Startup.cs_** v místním adresáři. 
+1. **Otevřete soubor _Startup. cs_** v místním adresáři. 
 
 1. **Udělejte malou změnu** textu ve volání metody `context.Response.WriteAsync` .
 

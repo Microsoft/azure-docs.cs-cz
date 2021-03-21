@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
 ms.openlocfilehash: 25025efe5254442c4862563ce329cfae69e7d033
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98898439"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Správa účtu Video Indexeru připojeného k Azure
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak spravovat účet Video Indexer, který je připojen�
 > [!NOTE]
 > Musíte být vlastníkem účtu Video Indexer, abyste mohli provádět úpravy konfigurace účtu popsané v tomto tématu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Připojte svůj účet Video Indexer k Azure, jak je popsáno v tématu [připojení k Azure](connect-to-azure.md).
 
