@@ -14,10 +14,10 @@ ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
 ms.openlocfilehash: fdaa2eeef58599cbff8dbf7daa34f9a30f31b9cb
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100548756"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio v aplikaci Java v Azure
@@ -182,7 +182,7 @@ Níže jsou uvedené kroky vysoké úrovně pro spuštění vaší aplikace. Pod
 Až budete připraveni na nasazení do Azure, rekompilovat pro nasazení do cloudu, nasadit do Azure a spustit http://*your_hosted_name*. cloudapp.NET/TwilioCloud/callform.jsp v prohlížeči (nahraďte hodnotu *your_hosted_name*).
 
 ## <a name="next-steps"></a>Další kroky
-Tento kód je k dispozici pro zobrazení základních funkcí pomocí Twilio v jazyce Java v systému Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Příklad:
+Tento kód je k dispozici pro zobrazení základních funkcí pomocí Twilio v jazyce Java v systému Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Například:
 
 * Místo používání webového formuláře můžete použít objekty blob služby Azure Storage nebo SQL Database k ukládání telefonních čísel a volání textu. Informace o použití objektů BLOB služby Azure Storage v jazyce Java najdete v tématu [How to use the BLOB Storage Service from Java][howto_blob_storage_java]. 
 * Pomocí **RoleEnvironment. getConfigurationSettings** můžete načíst ID účtu Twilio a ověřovací token z nastavení konfigurace nasazení, místo hardwarového kódování hodnot v makecall.jsp. Informace o třídě **RoleEnvironment** najdete [v tématu použití knihovny modulu runtime Azure Service v JSP][azure_runtime_jsp].

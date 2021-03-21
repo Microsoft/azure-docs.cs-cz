@@ -11,10 +11,10 @@ ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
 ms.openlocfilehash: 9787118b1912a5697c02e116be99b1f396748937
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100609294"
 ---
 # <a name="move-an-azure-workbook-template-to-another-region"></a>Přesunutí šablony sešitu Azure do jiné oblasti
@@ -23,7 +23,7 @@ Tento článek popisuje, jak přesunout prostředky šablony sešitu Azure do ji
 
 V současné době není k dispozici žádné uživatelské rozhraní portálu pro vytváření zdrojů šablon sešitu. jediným způsobem, jak je vytvořit, je [pomocí nasazení šablony Azure Resource Manager šablon (ARM)](../visualize/workbooks-automate.md). Nejjednodušší způsob, jak přesunout šablonu, je použít předchozí šablonu ARM a aktualizovat ji tak, aby se nasadila do nové oblasti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Zajistěte, aby byly šablony sešitu podporovány v cílové oblasti.
 

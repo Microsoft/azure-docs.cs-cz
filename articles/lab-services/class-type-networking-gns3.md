@@ -4,10 +4,10 @@ description: Naučte se, jak nastavit testovací prostředí pomocí Azure Lab S
 ms.topic: article
 ms.date: 01/19/2021
 ms.openlocfilehash: dec5dea13d5a89536a06da45fc57d33881a9b3ad
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99500510"
 ---
 # <a name="set-up-a-lab-to-teach-a-networking-class"></a>Nastavení testovacího prostředí pro výuku síťové třídy 

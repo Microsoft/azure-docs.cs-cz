@@ -154,14 +154,10 @@
           href: service-bus-to-event-grid-integration-concept.md
 - name: Návody
   items:
-    - name: Přesun mezi oblastmi
-      href: move-across-regions.md
-    - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
-      href: deprecate-service-bus-management.md
-    - name: Vytvoření oboru názvů
-      href: service-bus-create-namespace-portal.md
     - name: Vývoj
       items:
+        - name: Vytvoření oboru názvů
+          href: service-bus-create-namespace-portal.md
         - name: Nastavení filtrů a akcí předplatného
           href: service-bus-filter-examples.md
         - name: Zpracování zpráv
@@ -224,6 +220,8 @@
       items:
         - name: Migrace z ActiveMQ do služby Azure Service Bus
           href: migrate-jms-activemq-to-servicebus.md
+        - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
+          href: deprecate-service-bus-management.md
     - name: Monitor
       items:
         - name: Kompletní trasování a diagnostika
@@ -238,6 +236,8 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: Spravovat
       items:
+        - name: Přesun mezi oblastmi
+          href: move-across-regions.md
         - name: Automatická aktualizace jednotek zasílání zpráv
           href: automate-update-messaging-units.md
         - name: Použití Azure PowerShellu ke zřizování entit

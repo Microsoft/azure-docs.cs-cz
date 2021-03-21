@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
 ms.openlocfilehash: 3dabb6d5df0a74cc7ae2fb8b381ad9e0dfe04e63
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100370695"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse pomocí Azure Data Factory
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak pomocí Azure Data Factory kopírovat data z S
 > [!TIP]
 > Obecné informace o kopírování dat z SAP BW, včetně SAP BW otevřené integrace centra a postupu extrakce Delta, najdete v tématu [kopírování dat ze SAP Business Warehouse přes Open hub pomocí Azure Data Factory](connector-sap-business-warehouse-open-hub.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Azure Data Factory**: Pokud ho ještě nemáte, postupujte podle pokynů k [Vytvoření datové továrny](quickstart-create-data-factory-portal.md#create-a-data-factory).
 

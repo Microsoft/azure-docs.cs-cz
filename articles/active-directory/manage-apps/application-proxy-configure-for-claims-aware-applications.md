@@ -16,16 +16,16 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b90c2d47e70a4f7595ac535d5f8ba9506087eb72
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258520"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s aplikacemi pracujícími s deklaracemi v proxy aplikací
 [Aplikace pracující s deklaracemi](/previous-versions/windows/desktop/legacy/bb736227(v=vs.85)) provádějí přesměrování na službu tokenů zabezpečení (STS). Služba STS požaduje přihlašovací údaje od uživatele v Exchangi pro token a pak uživatele přesměruje na aplikaci. Existuje několik způsobů, jak povolit proxy aplikace pro práci s těmito přesměrování. V tomto článku můžete nakonfigurovat nasazení pro aplikace pracující s deklaracemi. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Ujistěte se, že služba STS, na kterou pracují deklarace, je k dispozici mimo místní síť. Službu STS můžete zpřístupnit tím, že ji vystavíte prostřednictvím proxy serveru nebo pokud povolíte vnější připojení. 
 
 ## <a name="publish-your-application"></a>Publikování aplikace

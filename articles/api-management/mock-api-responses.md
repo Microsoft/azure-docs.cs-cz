@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
 ms.openlocfilehash: 75727d139242e1b537505d2ed907ae20fc5479f8
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100547235"
 ---
 # <a name="tutorial-mock-api-responses"></a>Kurz: napodobení odpovědí rozhraní API
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/mock-api-responses/mock-api-responses01.png" alt-text="Napodobná odpověď rozhraní API":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
@@ -84,7 +84,7 @@ Rozhraní API zpřístupňuje jednu nebo více operací. V této části přidej
 I když se v tomto příkladu nevyžaduje, další nastavení pro operaci rozhraní API můžete nakonfigurovat na dalších kartách, včetně těchto:
 
 
-|Karta      |Popis  |
+|Karta      |Description  |
 |---------|---------|
 |**Dotaz**     |  Přidejte parametry dotazu. Kromě zadání názvu a popisu můžete zadat hodnoty, které jsou přiřazeny parametru dotazu. Jedna z hodnot může být označená jako výchozí (volitelné).        |
 |**Žádost**     |  Definujte typy obsahu, příklady a schémata požadavku.       |

@@ -1,6 +1,6 @@
 ---
 title: Přidání existujícího předplatného Azure do tenanta – Azure AD
-description: Pokyny k přidání existujícího předplatného Azure do tenanta Azure Active Directory.
+description: Pokyny k přidání existujícího předplatného Azure do tenanta Azure Active Directory (Azure AD).
 services: active-directory
 author: ajburnle
 manager: daveba
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 03/05/2021
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86395a91c1b2cbba6a93c7b1b7cad487129fff0a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b7ac9553660aace8242c81b41fa2cc9171d28219
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094281"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594627"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory
 
@@ -44,7 +44,7 @@ Než budete moct přidružit nebo přidat svoje předplatné, proveďte následu
 - Projděte si následující seznam změn, ke kterým dojde po přidružení nebo přidání předplatného a o tom, jak to může být ovlivněno:
 
   - Uživatelé s přiřazenými rolemi pomocí Azure RBAC ztratí přístup.
-  - Správce služeb a Co-Administrators ztratí přístup
+  - Správce služeb a Co-Administrators ztratí přístup.
   - Pokud máte nějaké trezory klíčů, nebudou k dispozici a budete je muset po přidružení opravit.
   - Pokud máte nějaké spravované identity pro prostředky, jako je Virtual Machines nebo Logic Apps, musíte je po přidružení znovu povolit nebo vytvořit znovu.
   - Pokud máte registrovanou Azure Stack, budete ji muset po přidružení znovu zaregistrovat.
@@ -55,7 +55,7 @@ Než budete moct přidružit nebo přidat svoje předplatné, proveďte následu
   - Má přiřazení role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) k předplatnému. Informace o tom, jak přiřadit roli vlastníka, najdete v tématu [přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
   - Existuje v aktuálním adresáři i v novém adresáři. Aktuální adresář je přidružený k předplatnému. Přiřadíte nový adresář k předplatnému. Další informace o získání přístupu k jinému adresáři najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](../external-identities/add-users-administrator.md).
 
-- Ujistěte se, že nepoužíváte předplatné Cloud Service Providers (CSP) pro Azure (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P), interní předplatné Microsoft (MS-AZR-0015P) nebo předplatné Microsoft Imagine (MS-AZR-0144P).
+- Ujistěte se, že nepoužíváte předplatné služby Azure Cloud Service Providers (CSP) (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P), interní předplatné od Microsoftu (MS-AZR-0015P) nebo předplatné Microsoft Azure for Students Starter (MS-AZR-0144P).
 
 ## <a name="associate-a-subscription-to-a-directory"></a>Přidružení předplatného k adresáři<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
 
@@ -65,17 +65,17 @@ Pokud chcete přidružit existující předplatné k adresáři služby Azure AD
 
 1. Vyberte **změnit adresář**.
 
-   ![Stránka předplatné se zvýrazněnou možností změnit adresář](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
+   :::image type="content" source="media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png" alt-text="Snímek obrazovky zobrazující stránku odběrů s zvýrazněnou možností adresář změn":::
 
 1. Zkontrolujte všechna zobrazená upozornění a pak vyberte **změnit**.
 
-   ![Změňte stránku adresáře, kde se zobrazí adresář, který se má změnit.](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
+   :::image type="content" source="media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png" alt-text="Snímek obrazovky, na kterém se zobrazuje stránka pro změnu adresáře s ukázkovým adresářem a zvýrazněným tlačítkem pro změnu":::
 
    Po změně adresáře pro předplatné se zobrazí zpráva o úspěchu.
 
 1. Vyberte **přepínač adresáře** na stránce odběr a přejděte k novému adresáři.
 
-   ![Stránka přepínač adresáře s ukázkovými informacemi](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+   :::image type="content" source="media/active-directory-how-subscriptions-associated-directory/directory-switcher.png" alt-text="Snímek obrazovky zobrazující stránku s přepínačem adresáře s ukázkovými informacemi":::
 
    Aby se všechno zobrazovalo správně, může trvat několik hodin. Pokud se zdá, že trvá příliš dlouho, podívejte se na **globální filtr předplatného**. Ujistěte se, že přesunuté předplatné není skryté. Možná se budete muset odhlásit z Azure Portal a znovu se přihlásit a zobrazit nový adresář.
 
@@ -87,9 +87,9 @@ Až přiřadíte předplatné k jinému adresáři, možná budete muset provés
 
 - Pokud máte nějaké trezory klíčů, musíte změnit ID tenanta trezoru klíčů. Další informace najdete v tématu [Změna ID tenanta trezoru klíčů po přesunu předplatného](../../key-vault/general/move-subscription.md).
 
-- Pokud jste pro prostředky použili spravované identity přiřazené systémem, musíte tyto identity znovu povolit. Pokud jste použili spravované identity přiřazené uživatelem, musíte tyto identity znovu vytvořit. Po opětovném povolení nebo opětovném vytvoření spravovaných identit musíte znovu zřídit oprávnění přiřazená těmto identitám. Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).
+- Pokud jste pro prostředky použili spravované identity přiřazené systémem, musíte tyto identity znovu povolit. Pokud jste použili spravované identity přiřazené uživatelem, musíte tyto identity znovu vytvořit. Po opětovném povolení nebo opětovném vytvoření spravovaných identit musíte znovu zřídit oprávnění přiřazená těmto identitám. Další informace najdete v tématu, které vysvětluje, [co jsou spravované identity pro prostředky Azure](../managed-identities-azure-resources/overview.md).
 
-- Pokud jste zaregistrovali Azure Stack pomocí tohoto předplatného, musíte se znovu zaregistrovat. Další informace najdete v tématu [registrace Azure Stack s Azure](/azure-stack/operator/azure-stack-registration).
+- Pokud jste zaregistrovali Azure Stack pomocí tohoto předplatného, musíte se znovu zaregistrovat. Další informace najdete v tématu [registrace centra Azure Stack s Azure](/azure-stack/operator/azure-stack-registration).
 
 - Další informace najdete v tématu věnovaném [převodu předplatných Azure do jiného adresáře Azure AD](../../role-based-access-control/transfer-subscription.md).
 

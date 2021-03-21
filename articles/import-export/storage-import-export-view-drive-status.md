@@ -10,10 +10,10 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: contperf-fy21q3
 ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176135"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazení stavu úloh služby Azure Import/Export
@@ -39,7 +39,7 @@ Stav úloh importu nebo exportu můžete sledovat na kartě **Import/export** v 
 
 V závislosti na tom, kde se jednotka právě nachází, se zobrazí jedna z následujících stavů úlohy.
 
-| Stav úlohy | Popis |
+| Stav úlohy | Description |
 |:--- |:--- |
 | Vytváření | Po vytvoření úlohy se její stav nastaví na **vytvořit**. Když je úloha ve stavu **vytváření** , služba import/export předpokládá, že se jednotky nedodaly do datového centra. Úloha může zůstat v tomto stavu po dobu až dvou týdnů, po jejímž uplynutí je služba automaticky odstranila. |
 | Expedice | Po odeslání balíčku byste měli aktualizovat informace o sledování v Azure Portal.  Tím se úloha zapíná do stavu **expedice** . Úloha zůstane ve stavu **expedice** po dobu až dvou týdnů. 
@@ -55,7 +55,7 @@ Následující tabulka popisuje životní cyklus jednotlivé jednotky při přec
 
 V následující tabulce jsou popsány všechny stavy, které mohou jednotlivé jednotky v úloze Procházet.
 
-| Stav jednotky | Popis |
+| Stav jednotky | Description |
 |:--- |:--- |
 | Dané | Při vytvoření úlohy z Azure Portal se pro úlohu importu **zadá** počáteční stav jednotky. V případě úlohy exportu, protože při vytvoření úlohy není zadána žádná jednotka, je **přijat** počáteční stav jednotky. |
 | Přijato | Pokud služba import/export zpracovává jednotky, které byly přijaty od společnosti pro expedici pro úlohu importu, přejde do stavu **přijato** . V případě úlohy exportu je počáteční stav jednotky stav **přijato** . |

@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b6e81fd090a625ec7ac86963cc9d5e66f5010e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 63054b18589cdcc2d950d70452b4f982c324a6c3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259215"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104603994"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory
 
@@ -89,6 +89,8 @@ Azure AD pošle e-mailové oznámení 60, 30 a 7 dní před vypršením platnost
 1. Opakujte předchozí krok pro každou e-mailovou adresu, kterou chcete přidat.
 1. Pro každou e-mailovou adresu, kterou chcete odstranit, vyberte ikonu **Odstranit** (může uvolnění paměti) vedle e-mailové adresy.
 1. Vyberte **Uložit**.
+
+Do seznamu oznámení můžete přidat až 5 e-mailových adres (včetně e-mailové adresy správce, který aplikaci přidal). Pokud potřebujete, aby byli uživatelé upozorněni, použijte distribuční seznam e-maily.
 
 Obdržíte e-mail s oznámením od aadnotification@microsoft.com . Pokud chcete e-mailem zabránit v umístění spamu, přidejte tento e-mail do kontaktů.
 

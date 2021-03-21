@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 6c0ea6664c7f86a2672cb22091970ef727969dc2
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103562514"
 ---
 # <a name="azure-storage-analytics-and-big-data-partners"></a>Azure Storage Analytics a partneři pro velké objemy dat
@@ -21,7 +21,7 @@ Tento článek popisuje partnerské společnosti Microsoftu, které jsou integro
 
 ## <a name="verified-partners"></a>Ověření partneři
 
-| Partner | Popis | Odkaz na web/produkt |
+| Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 |![Logo společnosti Dremio](./media/dremio-logo.png) |**Dremio**<br>Analytici a odborníci na data mohou zjišťovat, zkoumat a objímat data, zatímco vaše oddělení informačních technologií (IT) udržuje zásady správného řízení a zabezpečení. Dremio usnadňuje připojení Data Lake Storage s využitím Blob Storage, Azure SQL Database, Azure synapse SQL, HDInsight a dalších. Díky Dremio můžou analytikům Power BI hledat nové datové sady uložené v Data Lake Storage a hned k nim přistupovat v Power BI, vytvářet vizualizace a iterativním zdokonalovat sestavy v reálném čase. Analytici mohou také vytvářet nové sestavy, které kombinují data mezi Data Lake Storage a dalšími databázemi.|[Stránka partnerského serveru](https://www.dremio.com/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br>|
 ![Logo společnosti Informatica](./media/informatica-logo.png) |**Informatica**<br>Cloudová platforma pro správu dat v Informatica podniku se automatizuje a zrychluje zjišťování, doručování, kvalitu a řízení podnikových dat v Azure. Integrace dat založených na metadatech a kvality dat a možnosti zásad správného řízení vám umožní modernizovat analýzy a zrychlit přesun dat do datového skladu nebo data Lake v Azure.|[Stránka partnerského serveru](https://www.informatica.com/azure)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.annualiics?tab=Overview)|

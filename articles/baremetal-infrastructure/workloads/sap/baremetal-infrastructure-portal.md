@@ -4,10 +4,10 @@ description: Naučte se identifikovat a interagovat s jednotkami instancí BareM
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.openlocfilehash: 076e84473a7d067712625dd12a2d5cae42bfa91a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100548161"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Správa instancí BareMetal pomocí webu Azure Portal
