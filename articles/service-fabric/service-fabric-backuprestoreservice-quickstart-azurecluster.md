@@ -4,10 +4,10 @@ description: Použijte funkci periodického zálohování a obnovení Service Fa
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.openlocfilehash: 42097b50277e78b3f0e8f5e61a2bf70cc08dbc02
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103198716"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Periodické zálohování a obnovení v clusteru Azure Service Fabric
@@ -43,7 +43,7 @@ Service Fabric poskytuje sadu rozhraní API pro zajištění následujících fu
 - Dočasné pozastavení zálohování
 - Správa uchovávání záloh (nadcházející)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Service Fabric cluster se službou Fabric verze 6,4 nebo vyšší. Postup vytvoření Service Fabricho clusteru pomocí šablony prostředků Azure najdete v tomto [článku](service-fabric-cluster-creation-via-arm.md) .
 * X. 509 certifikát pro šifrování tajných kódů potřebných pro připojení k úložišti pro ukládání záloh. V [článku](service-fabric-cluster-creation-via-arm.md) najdete informace o tom, jak získat nebo vytvořit certifikát X. 509.
 * Service Fabric Reliable stavová aplikace vytvořená pomocí sady Service Fabric SDK verze 3,0 nebo vyšší. Pro aplikace cílené na .NET Core 2,0 by měla být aplikace sestavená pomocí sady SDK Service Fabric verze 3,1 nebo vyšší.

@@ -4,10 +4,10 @@ description: V tomto kurzu se dozvíte, jak pomocí živé analýzy videí spole
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101698752"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analýza živého videa pomocí Počítačové zpracování obrazu pro prostorovou analýzu (Preview)
@@ -36,7 +36,7 @@ Než začnete, přečtěte si tyto články:
 * [Kurz: vývoj modulu IoT Edge](../../iot-edge/tutorial-develop-for-linux.md)
 * [Nasazení Live video Analytics na Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky pro připojení modulu pro prostorovou analýzu do nástroje Live video Analytics.
 
@@ -221,7 +221,7 @@ Chcete-li zobrazit tyto události, postupujte podle následujících kroků:
      
 ## <a name="run-the-program"></a>Spuštění programu
 
-K dispozici je program.cs, který vyvolá přímé metody v src/Cloud-to-Device-Console-App/operations.jsna. Musíme nastavit operations.jsna a poskytnout topologii pro použití pomocí Media graphu.  
+Existuje program. cs, který vyvolá přímé metody v src/Cloud-to-Device-Console-App/operations.jsna. Musíme nastavit operations.jsna a poskytnout topologii pro použití pomocí Media graphu.  
 
 V operations.js:
 

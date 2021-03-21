@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: jlian
 ms.openlocfilehash: fb2cc0b81083936a67bcd465e0408b9f4b53996b
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96603329"
 ---
 # <a name="iot-hub-mqtt-5-support-overview-preview"></a>Přehled podpory IoT Hub MQTT 5 (Preview)
@@ -20,7 +20,7 @@ ms.locfileid: "96603329"
 
 Tento dokument definuje rozhraní API roviny dat IoT Hub přes protokol MQTT verze 5,0. Kompletní definice v tomto rozhraní API najdete v tématu [Reference k rozhraní API](iot-hub-mqtt-5-reference.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Povolit režim náhledu](iot-hub-preview-mode.md) na značce nové IoT Hub a vyzkoušet MQTT 5.
 - Vyžaduje se předchozí znalost [specifikace MQTT 5](https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html) .
@@ -95,7 +95,7 @@ IoT Hub odpoví s `CONNACK` paketem, jakmile se dokončí s ověřováním a na�
 
 Tyto `CONNACK` vlastnosti paketů následují po [specifikaci MQTT 5](https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901080). Odrážejí možnosti IoT Hub.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 `Authentication Method`Vlastnost v `CONNECT` klientovi definuje druh ověřování, které používá pro toto připojení:
 

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
 ms.openlocfilehash: a5050958f01743ff3c6fdcdecfee3067b1d2073e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934257"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Přesuňte službu Azure Kognitivní hledání do jiné oblasti Azure.
@@ -23,7 +23,7 @@ Zákazníci si občas vyžádají o přesunutí vyhledávací služby do jiné o
 > [!NOTE]
 > V Azure Portal všechny služby obsahují příkaz **Exportovat šablonu** . V případě Azure Kognitivní hledání tento příkaz vytvoří základní definici služby (název, umístění, úroveň, repliku a počet oddílů), ale nerozpozná obsah vaší služby, ani nepřenáší klíče, role nebo protokoly. I když tento příkaz existuje, nedoporučujeme ho používat pro přesun vyhledávací služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Ujistěte se, že cílová oblast podporuje služby a funkce, které váš účet využívá.
 

@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99257976"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikace Azure Active Directory
@@ -51,7 +51,7 @@ I když interní a externí adresy URL můžou používat jiné domény, doporu�
 
 Vytvoření aplikace se zástupnými znaky je založené na stejném [toku publikování aplikace](application-proxy-add-on-premises-application.md) , který je k dispozici pro všechny ostatní aplikace. Jediným rozdílem je, že v adresách URL zahrnete zástupný znak a případně konfiguraci jednotného přihlašování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, ujistěte se, že jste splnili tyto požadavky.
 
@@ -156,7 +156,7 @@ Konfigurace implementuje následující strukturu:
 
 ![Zobrazuje strukturu implementovanou ukázkovou konfigurací.](./media/application-proxy-wildcard/05.png)
 
-| Barva | Popis |
+| Barva | Description |
 | ---   | ---         |
 | Blue  | Aplikace jsou explicitně publikované a viditelné v Azure Portal. |
 | Les  | Aplikace, ke kterým můžete přistupovat přes nadřazenou aplikaci. |

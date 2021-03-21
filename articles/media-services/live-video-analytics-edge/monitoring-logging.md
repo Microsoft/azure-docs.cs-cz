@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled monitorování a protokolování 
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730234"
 ---
 # <a name="monitoring-and-logging"></a>Monitorování a protokolování
@@ -208,7 +208,7 @@ Typy událostí jsou přiřazeny k oboru názvů podle tohoto schématu:
 
 #### <a name="event-classes"></a>Třídy událostí
 
-|Název třídy|Popis|
+|Název třídy|Description|
 |---|---|
 |Analýzy  |Události generované jako součást analýzy obsahu|
 |Diagnostika    |Události, které vám pomůžou diagnostikovat problémy a výkon.|
@@ -230,7 +230,7 @@ Příklady:
 
 Tyto metriky se budou nahlásit z videa Live video Analytics v modulu IoT Edge:  
 
-|Název metriky|Typ|Popisek|Popis|
+|Název metriky|Typ|Popisek|Description|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Měřidlo|iothub, edge_device module_name, graph_topology|Celkový počet aktivních grafů na topologii.|
 |lva_received_bytes_total|Čítač|iothub, edge_device, module_name, graph_topology, graph_instance graph_node|Celkový počet bajtů přijatých uzlem Podporováno pouze pro zdroje RTSP.|

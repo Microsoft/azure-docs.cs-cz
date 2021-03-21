@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
 ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98932638"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Průvodce programováním SCP pro Apache Storm ve službě Azure HDInsight
@@ -431,19 +431,19 @@ Specifikace topologie můžete odesílat přímo do clusteru s více podsystému
 
 SCP.NET přidal následující funkce pro definování transakčních topologií:
 
-| Nová funkce | Parametry | Popis |
+| Nová funkce | Parametry | Description |
 | --- | --- | --- |
 | **TX – topolopy** |*název topologie*<br />*Spout – mapa*<br />*Mapa šroubů* |Definuje transakční topologii s názvem topologie, mapou definice spoutů a mapou definice šrouby. |
-| **SCP – TX-Spout** |*Exec – název*<br />*argumentů*<br />*fields* |Definuje transakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout. |
-| **SCP – TX-Batch-šroub** |*Exec – název*<br />*argumentů*<br />*fields* |Definuje transakčního dávkovacího šroubu. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args.*<br /><br />Parametr *Fields* určuje výstupní pole pro šroub. |
-| **SCP – TX-Commit-šroub** |*Exec – název*<br />*argumentů*<br />*fields* |Definuje hodnotu transakčního potvrzení. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro šroub. |
+| **SCP – TX-Spout** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje transakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout. |
+| **SCP – TX-Batch-šroub** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje transakčního dávkovacího šroubu. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args.*<br /><br />Parametr *Fields* určuje výstupní pole pro šroub. |
+| **SCP – TX-Commit-šroub** |*Exec – název*<br />*argumentů*<br />*pole* |Definuje hodnotu transakčního potvrzení. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro šroub. |
 | **nontx – topologie** |*název topologie*<br />*Spout – mapa*<br />*Mapa šroubů* |Definuje netransakční topologii s názvem topologie, mapou definice spoutů a mapou definice šrouby. |
-| **SCP – Spout** |*Exec – název*<br />*argumentů*<br />*fields*<br />*ukazatelů* |Definuje netransakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout.<br /><br />Parametr *Parameters* je nepovinný. Použijte ji k zadání parametrů jako "netransakční. ACK. Enabled". |
-| **SCP – šroub** |*Exec – název*<br />*argumentů*<br />*fields*<br />*ukazatelů* |Definuje netransakční šroub. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro šroub<br /><br />Parametr *Parameters* je nepovinný. Použijte ji k zadání parametrů jako "netransakční. ACK. Enabled". |
+| **SCP – Spout** |*Exec – název*<br />*argumentů*<br />*pole*<br />*ukazatelů* |Definuje netransakční Spout. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro Spout.<br /><br />Parametr *Parameters* je nepovinný. Použijte ji k zadání parametrů jako "netransakční. ACK. Enabled". |
+| **SCP – šroub** |*Exec – název*<br />*argumentů*<br />*pole*<br />*ukazatelů* |Definuje netransakční šroub. Funkce spustí aplikaci, která je určena pomocí *exec-Name* a používá *args*.<br /><br />Parametr *Fields* určuje výstupní pole pro šroub<br /><br />Parametr *Parameters* je nepovinný. Použijte ji k zadání parametrů jako "netransakční. ACK. Enabled". |
 
 SCP.NET definuje následující klíčová slova:
 
-| Klíčové slovo | Popis |
+| Klíčové slovo | Description |
 | --- | --- |
 | **: název** |Název topologie |
 | **: topologie** |Topologie pomocí funkcí v předchozí tabulce a integrovaných funkcích |

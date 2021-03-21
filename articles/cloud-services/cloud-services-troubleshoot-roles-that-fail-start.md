@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743215"
 ---
 # <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>Řešení potíží s rolemi Azure Cloud Service (Classic), které se nedaří spustit
@@ -67,7 +67,7 @@ Pomocí vzdálené plochy můžete získat přístup k roli a vzdáleně zobrazi
 7. Zadejte `IPconfig`.
 8. Poznamenejte si hodnotu adresy IPV4.
 9. Otevřete Internet Explorer.
-10. Zadejte adresu a název webové aplikace. Například `http://<IPV4 Address>/default.aspx`.
+10. Zadejte adresu a název webové aplikace. Například, `http://<IPV4 Address>/default.aspx`.
 
 Když přejdete na web, budou se teď vracet explicitní chybové zprávy:
 

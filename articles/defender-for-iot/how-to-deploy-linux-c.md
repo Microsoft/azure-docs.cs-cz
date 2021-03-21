@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: f7f6b28070600ae53242181934ea903a486c25b4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103494559"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Nasazení programu Defender pro agenta zabezpečení založeného na IoT C pro Linux
@@ -29,7 +29,7 @@ V této příručce se dozvíte, jak nainstalovat a nasadit agenta zabezpečení
 - Odinstalace agenta
 - Řešení potíží
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Další typy platforem a agentů najdete v tématu [Volba správného agenta zabezpečení](how-to-deploy-agent.md).
 
@@ -79,7 +79,7 @@ Chcete-li odinstalovat agenta, spusťte skript s parametrem –-Uninstall:
 
 ```./InstallSecurityAgent.sh -–uninstall```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Stav nasazení ověřte spuštěním:
 

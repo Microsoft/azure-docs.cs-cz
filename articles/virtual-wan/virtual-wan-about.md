@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 641ed73f507d35d7af548d0164ef8e80979be217
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96530472"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
@@ -116,7 +116,7 @@ Globální VNet peering poskytuje mechanismus pro propojení dvou virtuální s�
 
 Azure Virtual WAN poskytuje možnost šifrovat ExpressRoute provoz. Technika poskytuje zašifrovaný přenos mezi místními sítěmi a virtuálními sítěmi Azure přes ExpressRoute, a to bez toho, aby prochází veřejným internetem nebo pomocí veřejných IP adres. Další informace najdete v tématu [protokol IPSec přes ExpressRoute pro virtuální síť WAN](vpn-over-expressroute.md).
 
-## <a name="locations"></a><a name="locations"></a>Umístění
+## <a name="locations"></a><a name="locations"></a>Polohy
 
 Informace o umístění naleznete v článku [virtuální partneři a umístění sítě WAN](virtual-wan-locations-partners.md) .
 
@@ -128,11 +128,11 @@ Směrovací tabulky teď mají funkce pro přidružení a šíření. Již exist
 
 * **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standardní virtuální síť WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md). Důrazně doporučujeme udělat krok odstranění pro všechna centra ve virtuální síti WAN.
 
-## <a name="faq"></a><a name="faq"></a>DOTAZ
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="whats-new"></a><a name="new"></a>Co je nového
+## <a name="whats-new"></a><a name="new"></a>Co je nového?
 
 Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější aktualizace funkcí Virtual WAN na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) .
 

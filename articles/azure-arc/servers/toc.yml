@@ -27,11 +27,11 @@
           href: security-overview.md
 - name: Návody
   items:
-    - name: Připojení ke službě Azure Arc
+    - name: Nasazení
       items:
         - name: Přehled agenta připojeného počítače
           href: agent-overview.md
-        - name: Plánování nasazení v měřítku
+        - name: Plánování nasazení
           href: plan-at-scale-deployment.md
         - name: Připojení počítačů ke službě Azure Arc z webu Azure Portal
           href: onboard-portal.md

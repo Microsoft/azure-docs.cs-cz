@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: 914acfab3935bc81e7d8382163ca9283c7f71a53
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934046"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Vytvoření a konfigurace clusterů Balíček zabezpečení podniku ve službě Azure HDInsight
@@ -115,7 +115,7 @@ Uživatelé budou synchronizováni se službou Azure AD.
 
 ### <a name="create-an-azure-ad-directory"></a>Vytvoření adresáře Azure AD
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Vyberte **vytvořit prostředek** a typ `directory` . Vyberte **Azure Active Directory**  >  **vytvořit**.
 1. Do **pole název organizace** zadejte `HDIFabrikam` .
 1. V části **počáteční název domény** zadejte `HDIFabrikamoutlook` .
@@ -205,14 +205,14 @@ Vytvořte správce tenanta služby Active Directory.
    ![Stránka "konfigurace dokončena"](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. Po dokončení synchronizace potvrďte, že uživatelé, které jste vytvořili v adresáři IaaS, se synchronizují do Azure AD.
-   1. Přihlaste se k portálu Azure.
+   1. Přihlaste se k webu Azure Portal.
    1. Vyberte **Azure Active Directory**  >    >  **Uživatelé** HDIFabrikam.
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
 Vytvořte spravovanou identitu přiřazenou uživatelem, kterou můžete použít ke konfiguraci Azure AD Domain Services (Azure služba AD DS). Další informace najdete v tématu [Vytvoření, vypsání, odstranění nebo přiřazení role k spravované identitě přiřazené uživatelem pomocí Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Vyberte **vytvořit prostředek** a typ `managed identity` . Vyberte možnost vytvořit **spravovanou identitu přiřazenou uživatelem**  >  .
 1. Jako **název prostředku** zadejte `HDIFabrikamManagedIdentity` .
 1. Vyberte své předplatné.
@@ -244,7 +244,7 @@ Pomocí následujícího postupu povolíte Azure služba AD DS. Další informac
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Vyberte **vytvořit prostředek**, zadejte `Domain services` a vyberte **Azure AD Domain Services**  >  **vytvořit**.
 1. Na stránce **základy** :
     1. V části **název adresáře** vyberte adresář služby Azure AD, který jste vytvořili: **HDIFabrikam**.
@@ -355,7 +355,7 @@ Ověřte, zda je certifikát nainstalován v **osobním** úložišti počítač
         | Protokol | Libovolný |
         | Akce | Povolit |
         | Priorita | \<Desired number> |
-        | Name | Port_LDAP_636 |
+        | Název | Port_LDAP_636 |
 
     ![Dialogové okno Přidat příchozí pravidlo zabezpečení](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 

@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 11/19/2020
 ms.author: jlian
 ms.openlocfilehash: 5f0af7d6bf16a05fad1ca9df5db1729abd088010
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96603330"
 ---
 # <a name="iot-hub-data-plane-mqtt-5-api-reference"></a>Referenční informace k rozhraní API pro IoT Hub roviny dat MQTT 5
@@ -40,7 +40,7 @@ Získat dvojitou stav
 
 #### <a name="alternative-responses"></a>Alternativní odpovědi
 
-| Stav | Název | Description |
+| Status | Název | Description |
 | :----- | :--- | :---------- |
 | 0100 |  Chybný požadavek | Zpráva operace je poškozená a nelze ji zpracovat. |
 | 0101 |  Neautorizováno | Klient nemá autorizaci k provedení této operace. |
@@ -92,7 +92,7 @@ Chybně nahlášený stav opravy
 
 #### <a name="alternative-responses"></a>Alternativní odpovědi
 
-| Stav | Název | Description |
+| Status | Název | Description |
 | :----- | :--- | :---------- |
 | 0104 |  Předběžná podmínka se nezdařila. | Předběžná podmínka nebyla splněna, výsledkem je zrušení žádosti. |
 | 0100 |  Chybný požadavek | Zpráva operace je poškozená a nelze ji zpracovat. |
@@ -152,7 +152,7 @@ Indikuje, že byl přijat příkaz pro zpracování klientem.
 
 #### <a name="alternative-acknowledgments"></a>Alternativní potvrzování
 
-| Kód příčiny | Stav | Název | Description |
+| Kód příčiny | Status | Název | Description |
 | :---------- | :----- | :--- | :---------- |
 | 131 | 0603 | Opustit | Indikuje, že příkaz nebude zpracován v tuto chvíli a měl by být znovu dodán v budoucnu. |
 | 131 | 0100 | Odmítnout | Indikuje, že klient odmítl příkaz a neměl by se opakovat. |
@@ -198,7 +198,7 @@ Příjem a zpracování volání přímých metod
 
 #### <a name="alternative-responses"></a>Alternativní odpovědi
 
-| Stav | Název | Description |
+| Status | Název | Description |
 | :----- | :--- | :---------- |
 | 06A0 |  Neaktivní | Indikuje, že klient není přes toto připojení dosažitelný. |
 
@@ -281,7 +281,7 @@ Zpráva se úspěšně publikovala do kanálu telemetrie.
 
 #### <a name="alternative-acknowledgments"></a>Alternativní potvrzování
 
-| Kód příčiny | Stav | Název | Description |
+| Kód příčiny | Status | Název | Description |
 | :---------- | :----- | :--- | :---------- |
 | 131 | 0100 | Chybný požadavek | Zpráva operace je poškozená a nelze ji zpracovat. |
 | 135 | 0101 | Neautorizováno | Klient nemá autorizaci k provedení této operace. |

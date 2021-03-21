@@ -4,10 +4,10 @@ description: Použijte funkci periodického zálohování a obnovení samostatn�
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.openlocfilehash: d78a627c0c50a3e2ec57138e40cb5bc97486d6f7
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103198695"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Pravidelné zálohování a obnovování v samostatné Service Fabric
@@ -42,7 +42,7 @@ Service Fabric poskytuje sadu rozhraní API pro zajištění následujících fu
 - Dočasné pozastavení zálohování
 - Správa uchovávání záloh (nadcházející)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Service Fabric cluster se službou Fabric verze 6,4 nebo novější. Postup stažení požadovaného balíčku najdete v tomto [článku](service-fabric-cluster-creation-for-windows-server.md) .
 * X. 509 certifikát pro šifrování tajných kódů potřebných pro připojení k úložišti pro ukládání záloh. V [článku](service-fabric-windows-cluster-x509-security.md) najdete informace o tom, jak získat nebo vytvořit certifikát X. 509 podepsaný svým držitelem.
 

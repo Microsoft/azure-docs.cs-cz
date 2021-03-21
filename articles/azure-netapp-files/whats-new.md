@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2020
+ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 84213832e59c50c85d9731ced39bbce6264df47e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571025"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590904"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
 Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn nejnovějších nových funkcí a vylepšení. 
+
+## <a name="march-2021"></a>Březen 2021 
+
+* [Automatická změna velikosti cílového svazku replikace mezi oblastmi](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
+
+    V relaci replikace mezi oblastmi se automaticky změní velikost cílového svazku na základě velikosti zdrojového svazku. V takovém případě nemusíte velikost cílového svazku samostatně měnit. Toto chování automatické změny velikosti se použije v případě, že jsou svazky v aktivním vztahu replikace nebo když je partnerský vztah replikace přerušený pomocí operace opětovné synchronizace. Aby tato funkce fungovala, musíte zajistit dostatečnou rezervu v fondech kapacit pro zdrojový i cílový svazek.
 
 ## <a name="december-2020"></a>Prosinec 2020
 

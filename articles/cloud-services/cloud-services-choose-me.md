@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: cbb9aae57b952c05aa722f81309158a11aef826b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742807"
 ---
 # <a name="overview-of-azure-cloud-services-classic"></a>Přehled služby Azure Cloud Services (Classic)
@@ -43,7 +43,7 @@ S Azure Cloud Services nevytváříte virtuální počítače. Místo toho zadá
 
 Aplikace Azure Cloud Services je obvykle k dispozici uživatelům prostřednictvím procesu se dvěma kroky. Vývojář nejdřív [nahraje aplikaci](cloud-services-how-to-create-deploy-portal.md) do pracovní oblasti platformy. Když je vývojář připravený k zajištění provozu aplikace, používá Azure Portal k prohození pracovní části s produkčním prostředím. Tento [přepínač mezi příchodem a výrobou](cloud-services-how-to-manage-portal.md#swap-deployments-to-promote-a-staged-deployment-to-production) se dá udělat bez výpadků, což umožňuje upgradování běžící aplikace na novou verzi bez narušení jejich uživatelů.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 Azure Cloud Services také nabízí monitorování. Stejně jako Virtual Machines detekuje neúspěšný fyzický server a restartuje virtuální počítače, které na tomto serveru běžely na novém počítači. Ale Azure Cloud Services také detekuje neúspěšné virtuální počítače a aplikace, nikoli jenom selhání hardwaru. Na rozdíl od Virtual Machines má agent uvnitř každé webové a pracovní role, takže při selhání může začít nové virtuální počítače a instance aplikace.
 
 PaaS povaha Azure Cloud Services má i jiné důsledky. Jedním z nejdůležitějších z nich je, že aplikace postavené na této technologii by se měly zapsat ke správnému spuštění, když dojde k chybě jakékoli instance webové nebo pracovní role. Aby to bylo možné dosáhnout, aplikace Cloud Services Azure by neměla udržovat stav v systému souborů svých vlastních virtuálních počítačů. Na rozdíl od virtuálních počítačů vytvořených pomocí Virtual Machines nejsou zápisy do virtuálních počítačů Azure Cloud Services trvalé. K dispozici není žádný podobný Virtual Machines datový disk. Místo toho by měla aplikace Cloud Services v Azure explicitně zapisovat všechny stavy do Azure SQL Database, objektů blob, tabulek nebo některých jiných externích úložišť. Sestavování aplikací tímto způsobem usnadňuje škálování a odolnější selhání, což jsou důležité cíle Azure Cloud Services.

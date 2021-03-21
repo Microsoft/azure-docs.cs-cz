@@ -8,10 +8,10 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: bd3ba88650161bd11a24697b4ff8575d307120e9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424457"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
@@ -25,7 +25,7 @@ Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžn
 > * Vyčištění prostředků
 > * Další kroky
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se používá příkazový řádek pro nastavení a práci v projektu. Proto můžete použít libovolný editor kódu k procházení cvičení.
 
@@ -53,7 +53,7 @@ Jednou v adresáři projektu **vytvořte prázdný projekt konzolové aplikace .
 dotnet new console
 ```
 
-Tím se vytvoří několik souborů v adresáři, včetně jednoho s názvem *program.cs* , kde budete psát většinu kódu.
+Tím se vytvoří několik souborů v adresáři, včetně jednoho s názvem *program. cs* , kde budete psát většinu kódu.
 
 Nechejte příkazové okno otevřené, jak ho budete dál používat v průběhu tohoto kurzu.
 
@@ -76,7 +76,7 @@ V této části začnete psát kód pro nový projekt aplikace, abyste mohli pra
 
 K dispozici je také část zobrazující kompletní kód na konci tohoto kurzu. Tuto možnost můžete použít jako referenci ke kontrole vašeho programu.
 
-Začněte tím, že otevřete soubor *program.cs* v editoru kódu. Zobrazí se minimální šablona kódu, která vypadá přibližně takto:
+Začněte tím, že v libovolném editoru kódu otevřete soubor *program. cs* . Zobrazí se minimální šablona kódu, která vypadá přibližně takto:
 
 :::row:::
     :::column:::
@@ -98,7 +98,7 @@ První věc, kterou bude vaše aplikace muset udělat, je ověřování vůči s
 
 Aby bylo možné ověřit, potřebujete *název hostitele* instance digitálního vlákna Azure.
 
-Do *program.cs* vložte následující kód pod text "Hello, World!". čára tisku v `Main` metodě Nastavte hodnotu `adtInstanceUrl` na *název hostitele* instance digitálního vlákna Azure.
+V *programu program. cs* vložte následující kód pod text "Hello, World!". čára tisku v `Main` metodě Nastavte hodnotu `adtInstanceUrl` na *název hostitele* instance digitálního vlákna Azure.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
@@ -130,7 +130,7 @@ V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON
 > [!TIP] 
 > Je k dispozici [Ukázka validátoru](/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md).
 
-Dále přidejte další kód do *program.cs* , abyste nahráli model, který jste právě vytvořili, do instance digitálního vlákna Azure.
+Potom do *programu program. cs* přidejte nějaký další kód, který nahraje model, který jste právě vytvořili, do instance digitálního vlákna Azure.
 
 Nejprve přidejte `using` do horní části souboru několik příkazů:
 
@@ -248,7 +248,7 @@ V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Ve výst
 
 ## <a name="complete-code-example"></a>Příklad kompletního kódu
 
-V tomto okamžiku v tomto kurzu máte úplnou klientskou aplikaci, která umožňuje provádět základní akce proti digitálním vazbám Azure. Pro referenci je úplný kód programu v *program.cs* uveden níže:
+V tomto okamžiku v tomto kurzu máte úplnou klientskou aplikaci, která umožňuje provádět základní akce proti digitálním vazbám Azure. Pro referenci se zobrazí úplný kód programu v *programu program. cs* :
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 

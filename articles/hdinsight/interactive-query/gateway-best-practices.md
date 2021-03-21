@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933116"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Podrobně a osvědčené postupy brány pro Apache Hive ve službě Azure HDInsight
@@ -53,9 +53,9 @@ Existuje několik míst pro zmírnění rizik a porozumění problémům s výko
 
 * Při provádění velkých dotazů **Select** použijte klauzuli **limit** . Klauzule **limit** omezuje celkové řádky hlášené na hostitele klienta. Klauzule **limit** ovlivňuje pouze generování výsledků a nemění plán dotazu. Chcete-li použít klauzuli **limit** pro plán dotazu, použijte konfiguraci `hive.limit.optimize.enable` . **Limit** lze kombinovat s posunem pomocí omezení formuláře argumentu **x, y**.
 
-* Pojmenujte sloupce důležité při spouštění dotazů **Select** namísto použití **Select \** _. Výběr méně sloupců sníží množství čtených dat.
+* Pojmenujte sloupce důležité při spuštění dotazů **Select** namísto použití **Select \***. Výběr méně sloupců sníží množství čtených dat.
 
-_ Zkuste spustit dotaz, který vás zajímá prostřednictvím Apache Beeline. Pokud načítání výsledků prostřednictvím Apache Beeline trvá delší dobu, očekávat prodlevy při načítání stejných výsledků prostřednictvím externích nástrojů.
+* Zkuste spustit dotaz, který vás zajímá prostřednictvím Apache Beeline. Pokud načítání výsledků prostřednictvím Apache Beeline trvá delší dobu, očekávat prodlevy při načítání stejných výsledků prostřednictvím externích nástrojů.
 
 * Otestujte základní dotaz na podregistr, abyste měli jistotu, že je možné navázat připojení k bráně HDInsight. Zkuste spustit základní dotaz ze dvou nebo více externích nástrojů, abyste se ujistili, že žádný z těchto nástrojů neběží.
 

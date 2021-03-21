@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 52f0151fd4be7505cf7beea0eeb54f8e34404997
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1120db685c54ff062f03aca9002bf77af549bc26
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577647"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582115"
 ---
 # <a name="built-in-roles-for-windows-virtual-desktop"></a>Předdefinované role pro virtuální počítače s Windows
 
@@ -146,7 +146,7 @@ Následující seznam popisuje oprávnění, ke kterým má tato role přístup:
 
 ## <a name="session-host-operator"></a>Operátor hostitele relace
 
-Role Přispěvatel hostitele relace umožňuje zobrazit a odebrat hostitele relací a také změnit režim vyprázdnění. Nemůžou přidávat hostitele relací pomocí Azure Portal, protože nemají oprávnění k zápisu pro objekty fondu hostitelů. Pokud je registrační token platný (vygenerovaný a neprošlý), můžete tuto roli použít k přidání hostitelů relací do fondu hostitelů mimo Azure Portal, pokud má správce výpočetní oprávnění prostřednictvím role Přispěvatel virtuálních počítačů.
+Role operátor hostitele relace umožňuje zobrazit a odebrat hostitele relací a také změnit režim vyprázdnění. Nemůžou přidávat hostitele relací pomocí Azure Portal, protože nemají oprávnění k zápisu pro objekty fondu hostitelů. Pokud je registrační token platný (vygenerovaný a neprošlý), můžete tuto roli použít k přidání hostitelů relací do fondu hostitelů mimo Azure Portal, pokud má správce výpočetní oprávnění prostřednictvím role Přispěvatel virtuálních počítačů.
 
 Následující seznam popisuje oprávnění, ke kterým má tato role přístup:
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98247348"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží se synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
@@ -235,7 +235,7 @@ Pomocí `Invoke-ADSyncDiagnostics` rutiny můžete určit, proč jeden objekt ne
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
 
-   Příklad:
+   Například:
 
    ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
@@ -362,7 +362,7 @@ Sloupec status (stav) může obsahovat následující hodnoty:
 | SourceConnectorNotPresent |V prostoru konektoru služby Active Directory nebyl nalezen žádný objekt. |
 | TargetNotExportedToDirectory |Objekt v prostoru konektoru služby Azure AD ještě není exportovaný. |
 | MigratedCheckDetailsForMoreInfo |Záznam v protokolu byl vytvořen před sestavením 1.0.9125.0 a je zobrazen ve starším stavu. |
-| Chybová |Služba vrátila neznámou chybu. |
+| Chyba |Služba vrátila neznámou chybu. |
 | Neznámý |Při pokusu o zpracování dávky hodnot hash hesel došlo k chybě.  |
 | MissingAttribute |Konkrétní atributy (například hash protokolu Kerberos) vyžadované Azure AD Domain Services nejsou k dispozici. |
 | RetryRequestedByTarget |Konkrétní atributy (například hash protokolu Kerberos) vyžadované Azure AD Domain Services nebyly dříve k dispozici. Pokus o opětovnou synchronizaci hodnoty hash hesla uživatele je proveden. |

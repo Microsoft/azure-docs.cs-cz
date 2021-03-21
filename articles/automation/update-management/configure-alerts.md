@@ -3,14 +3,14 @@ title: Jak vytvořit výstrahy pro Azure Automation Update Management
 description: Tento článek obsahuje informace o tom, jak nakonfigurovat výstrahy Azure, aby upozornily na stav posouzení aktualizací nebo nasazení.
 services: automation
 ms.subservice: update-management
-ms.date: 10/19/2020
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 74207fe088034ff8d102fb2254d8ab78a6d57671
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 224a7b5457a099fd763ac657349fc5497824ab76
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579703"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601408"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Jak vytvořit výstrahy pro Update Management
 
@@ -38,51 +38,37 @@ Pomocí následujících kroků nastavte výstrahy, které vám pomůžou zjisti
 
 1. Ve svém účtu Automation v části **monitorování** vyberte **výstrahy** a pak vyberte **nové pravidlo výstrahy**.
 
-2. Na stránce **vytvořit pravidlo výstrahy** už je váš účet Automation vybraný jako prostředek. Pokud ho chcete změnit, vyberte **Upravit prostředek**.
+1. Na stránce **vytvořit pravidlo výstrahy** už je váš účet Automation vybraný jako prostředek. Pokud ho chcete změnit, vyberte **Upravit prostředek**.
 
-3. Na stránce Vybrat prostředek zvolte **účty Automation** v rozevíracím seznamu **filtrovat podle typu prostředku** .
+1. Na stránce Vybrat prostředek zvolte **účty Automation** v rozevíracím seznamu **filtrovat podle typu prostředku** .
 
-4. Vyberte účet Automation, který chcete použít, a potom vyberte **Hotovo**.
+1. Vyberte účet Automation, který chcete použít, a potom vyberte **Hotovo**.
 
-5. Vyberte **Přidat podmínku** a zvolte signál, který je vhodný pro váš požadavek.
+1. Vyberte **Přidat podmínku** a zvolte signál, který je vhodný pro váš požadavek.
 
-6. V poli dimenze vyberte platnou hodnotu ze seznamu. Pokud hodnota, kterou chcete, není v seznamu, vyberte možnost **\+** vedle dimenze a zadejte vlastní název. Pak vyberte hodnotu, kterou chcete vyhledat. Pokud chcete vybrat všechny hodnoty pro dimenzi, vyberte tlačítko **vybrat \*** . Pokud nevyberete hodnotu dimenze, Update Management tuto dimenzi ignoruje.
+1. V poli dimenze vyberte platnou hodnotu ze seznamu. Pokud hodnota, kterou chcete, není v seznamu, vyberte možnost **\+** vedle dimenze a zadejte vlastní název. Pak vyberte hodnotu, kterou chcete vyhledat. Pokud chcete vybrat všechny hodnoty pro dimenzi, vyberte tlačítko **vybrat \*** . Pokud nevyberete hodnotu dimenze, Update Management tuto dimenzi ignoruje.
 
     ![Konfigurace logiky signálů](./media/manage-updates-for-vm/signal-logic.png)
 
-7. V části **logika výstrahy** zadejte hodnoty do polí **Časová agregace** a **prahová hodnota** a potom vyberte **Hotovo**.
+1. V části **logika výstrahy** zadejte hodnoty do polí **Časová agregace** a **prahová hodnota** a potom vyberte **Hotovo**.
 
-8. Na další stránce zadejte název a popis výstrahy.
+1. Na další stránce zadejte název a popis výstrahy.
 
-9. Nastavte pole **závažnost** na **informativní (závažnost 2)** pro úspěšné spuštění nebo **informativní (závažnost 1)** pro neúspěšné spuštění.
+1. Nastavte pole **závažnost** na **informativní (závažnost 2)** pro úspěšné spuštění nebo **informativní (závažnost 1)** pro neúspěšné spuštění.
 
     ![Snímek obrazovky se zvýrazněnou částí definovat podrobnosti výstrahy s názvem, popisem a poli závažnost pravidla výstrahy.](./media/manage-updates-for-vm/define-alert-details.png)
 
-10. Vyberte **Ano** , pokud chcete pravidlo výstrahy povolit.
+1. Vyberte **Ano** , pokud chcete pravidlo výstrahy povolit.
 
 ## <a name="configure-action-groups-for-your-alerts"></a>Konfigurace skupin akcí pro vaše výstrahy
 
 Jakmile budete mít nakonfigurovaná upozornění, můžete nastavit skupinu akcí, která je skupinou akcí pro použití v rámci více výstrah. Akce můžou zahrnovat e-mailová oznámení, Runbooky, Webhooky a spoustu dalších. Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../../azure-monitor/alerts/action-groups.md).
 
-1. Vyberte výstrahu a potom v části **skupiny akcí** vyberte **vytvořit novou** .
+1. Vyberte výstrahu a potom v části **Akce** vyberte **Přidat skupiny akcí** . Zobrazí se okno **Vyberte skupinu akcí, která se má připojit k tomuto pravidlu upozornění** .
 
-2. Zadejte celé jméno a krátký název skupiny akcí. Při odesílání oznámení pomocí zadané skupiny používá Update Management krátký název.
+   :::image type="content" source="./media/manage-updates-for-vm/select-an-action-group.png" alt-text="Využití a odhadované náklady.":::
 
-3. V části **Akce** zadejte název, který určuje akci, například **e-mailové oznámení**.
-
-4. Jako **typ akce** vyberte vhodný typ, například **e-mail/SMS/Push/Voice**.
-
-5. Vyberte **Upravit podrobnosti**.
-
-6. Vyplňte podokno pro typ akce. Pokud například používáte **e-mail/SMS/Push/Voice**, zadejte název akce, zaškrtněte políčko **e-mail** , zadejte platnou e-mailovou adresu a pak vyberte **OK**.
-
-    ![Konfigurace e-mailové skupiny akcí](./media/manage-updates-for-vm/configure-email-action-group.png)
-
-7. V podokně Přidat skupinu akcí vyberte **OK**.
-
-8. U e-mailu s výstrahou můžete přizpůsobit předmět e-mailu. V části **vytvořit pravidlo** vyberte **přizpůsobit akce** a pak vyberte **Předmět e-mailu**.
-
-9. Jakmile budete hotovi, vyberte **Vytvořit pravidlo upozornění**.
+1. Zaškrtněte políčko pro skupinu akcí, která se má připojit, a stiskněte tlačítko vybrat.
 
 ## <a name="next-steps"></a>Další kroky
 

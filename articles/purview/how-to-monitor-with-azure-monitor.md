@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101667743"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Metriky Azure dosah v Azure Monitor
@@ -62,7 +62,7 @@ Chcete-li se seznámit s tím, jak používat část metriky v Azure Portal Pře
 
 Následující tabulka obsahuje seznam metrik, které lze prozkoumat v Azure Portal:
 
-| Název metriky | Obor názvů metriky | Typ agregace | Popis |
+| Název metriky | Obor názvů metriky | Typ agregace | Description |
 | ------------------- | ------------------- | ------------------- | ----------------- |
 | Kontrola zrušena | Automatizovaná kontrola | Sum <br> Počet | Agregovat zrušené kontroly zdrojů dat za časové období |
 | Kontrola dokončena | Automatizovaná kontrola | Sum <br> Počet | Agregovat dokončené kontroly zdrojů dat za časové období |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 449eb1d65e0104e6c5c74a78901cf29c5aeb3e57
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 01c5d4aaa3896e05bc743be309df050471ece5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609086"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582047"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Důvěryhodné spuštění virtuálních počítačů Azure (Preview)
 
@@ -73,7 +73,7 @@ Azure nabízí možnost důvěryhodného spuštění jako bezproblémového způ
 
 ## <a name="secure-boot"></a>Zabezpečené spuštění
 
-V kořenovém adresáři důvěryhodného spuštění je zabezpečené spouštění virtuálního počítače. Tento režim, který je implementován v firmwaru platformy, chrání před instalací sad rootkit a spouštěcích sad založených na malwaru. Zabezpečené spouštění systému funguje, aby bylo zajištěno, že mohou spustit pouze podepsané operační systémy a ovladače. Pro softwarový zásobník na vašem VIRTUÁLNÍm počítači vytvoří kořen vztahu důvěryhodnosti. Pokud je povolené zabezpečené spouštění, musí být všechny součásti spouštění operačního systému (zaváděcí zavaděč, jádro, ovladače jádra) podepsané důvěryhodnými vydavateli. Jak Windows, tak výběr distribuce pro Linux podporují zabezpečené spouštění. Pokud zabezpečené spuštění nedokáže ověřit, jestli je image podepsaná důvěryhodným vydavatelem, virtuální počítač se nebude moct spustit. Další informace najdete v tématu [Zabezpečené spouštění](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot).
+V kořenovém adresáři důvěryhodného spuštění je zabezpečené spouštění virtuálního počítače. Tento režim, který je implementován v firmwaru platformy, chrání před instalací sad rootkit a spouštěcích sad založených na malwaru. Zabezpečené spouštění systému funguje, aby bylo zajištěno, že mohou spustit pouze podepsané operační systémy a ovladače. Pro softwarový zásobník na vašem VIRTUÁLNÍm počítači vytvoří kořen vztahu důvěryhodnosti. Pokud je povolené zabezpečené spouštění, musí být všechny součásti spouštění operačního systému (zaváděcí zavaděč, jádro, ovladače jádra) podepsané důvěryhodnými vydavateli. Jak Windows, tak výběr distribuce pro Linux podporují zabezpečené spouštění. Pokud zabezpečené spuštění nedokáže ověřit, jestli je image podepsaná důvěryhodným vydavatelem, virtuální počítač se nebude moct spustit. Další informace najdete v tématu [Zabezpečené spouštění](/windows-hardware/design/device-experiences/oem-secure-boot).
 
 ## <a name="vtpm"></a>vTPM
 
@@ -87,7 +87,7 @@ Důvěryhodné spuštění používá vTPM k provádění vzdáleného ověřov�
 
 HYPERVISOREM HVCI je výkonné řešení, které chrání procesy Windows v režimu jádra proti vkládání a spouštění škodlivého nebo neověřeného kódu. Před spuštěním kontroluje ovladače režimu jádra a binární soubory a zabraňuje načtení nepodepsaných souborů do paměti. To zajistí, že takový spustitelný kód nelze změnit, jakmile je povoleno načtení. Další informace o příkazech VBS a HYPERVISOREM HVCI naleznete v tématu [Security Based Security (VBS) and hypervisored Code integrity (hypervisorem hvci)](https://techcommunity.microsoft.com/t5/windows-insider-program/virtualization-based-security-vbs-and-hypervisor-enforced-code/m-p/240571).
 
-Pomocí důvěryhodných spuštění a VBS můžete povolit ochranu Credential Guard v programu Windows Defender. Tato funkce izoluje a chrání tajné kódy, aby k nim měli přístup jenom privilegovaný systémový software. Pomáhá zabránit neoprávněnému přístupu k tajným klíčům a útokům na krádeži přihlašovacích údajů, jako jsou útoky pass-the-hash (PtH). Další informace najdete v tématu [Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard).
+Pomocí důvěryhodných spuštění a VBS můžete povolit ochranu Credential Guard v programu Windows Defender. Tato funkce izoluje a chrání tajné kódy, aby k nim měli přístup jenom privilegovaný systémový software. Pomáhá zabránit neoprávněnému přístupu k tajným klíčům a útokům na krádeži přihlašovacích údajů, jako jsou útoky pass-the-hash (PtH). Další informace najdete v tématu [Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard).
 
 
 ## <a name="security-center-integration"></a>Integrace Security Center
@@ -134,7 +134,7 @@ V řetězci zabezpečeného spouštění zkontroluje každý krok spouštěcího
 
 ### <a name="what-happens-when-an-integrity-fault-is-detected"></a>Co se stane, když se zjistí chyba integrity?
 
-Pro pokročilé hrozby se monitoruje důvěryhodné spuštění virtuálních počítačů Azure. Pokud jsou tyto hrozby zjištěny, aktivuje se výstraha. Výstrahy jsou k dispozici pouze na [úrovni Standard](/azure/security-center/security-center-pricing) Azure Security Center.
+Pro pokročilé hrozby se monitoruje důvěryhodné spuštění virtuálních počítačů Azure. Pokud jsou tyto hrozby zjištěny, aktivuje se výstraha. Výstrahy jsou k dispozici pouze na [úrovni Standard](../security-center/security-center-pricing.md) Azure Security Center.
 Azure Security Center pravidelně provádí ověření identity. Pokud se ověření identity nezdaří, aktivuje se upozornění střední závažnosti. Ověření důvěryhodného spuštění se může zdařit z následujících důvodů: 
 - Ověřené informace, které obsahují protokol TCB (Trusted Computing Base), se odchylují od důvěryhodného směrného plánu (například při povolení zabezpečeného spouštění). To může znamenat, že byly načteny nedůvěryhodné moduly a operační systém může být ohrožen.
 - Nepovedlo se ověřit nabídku ověření identity, aby vznikla z vTPM ověřeného virtuálního počítače. To může znamenat, že je k dispozici malware a že může zachytit provoz do čipu TPM. 

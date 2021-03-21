@@ -4,10 +4,10 @@ description: Přímá telemetrie na různé prostředky pro vývoj, testování 
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424661"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kolik prostředků Application Insights mám nasadit
@@ -46,7 +46,7 @@ Každý Application Insights prostředek obsahuje metriky, které jsou k dispozi
 
 Aby bylo snazší změnit ikey při pohybu kódu mezi fázemi výroby, místo použití pevně zakódované/statické hodnoty se na klíč dynamicky odkazovat v kódu.
 
-Nastavte klíč v inicializační metodě, jako je například global.aspx.cs ve službě ASP.NET:
+Nastavte klíč v inicializační metodě, jako je Global. aspx. cs ve službě ASP.NET:
 
 ```csharp
 protected void Application_Start()
@@ -123,7 +123,7 @@ Vlastnost verze aplikace se nastavuje několika různými způsoby.
 
     Popisek sestavení obsahuje zástupný symbol (AutoGen_...) při sestavování pomocí sady Visual Studio. Ale při sestavení pomocí nástroje MSBuild se naplní správným číslem verze.
 
-    Pokud chcete, aby nástroj MSBuild vygeneroval čísla verzí, nastavte verzi jako `1.0.*` v AssemblyReference.cs.
+    Pokud chcete, aby nástroj MSBuild vygeneroval čísla verzí, nastavte verzi jako `1.0.*` v AssemblyReference. cs.
 
 ## <a name="version-and-release-tracking"></a>Sledování verzí a vydání
 Pokud chcete sledovat verzi aplikace, ujistěte se, že proces Microsoft Build Engine vygeneroval soubor `buildinfo.config`. Do `.csproj` souboru přidejte:  

@@ -9,17 +9,17 @@ ms.author: magoedte
 ms.collection: linux
 ms.date: 03/29/2019
 ms.openlocfilehash: d28f0a34f47942bba8776a0acd0bfe3aaf25df12
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102566293"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače závislosti Azure Monitor pro Linux
 
 Funkce mapa Azure Monitor pro virtuální počítače získá data od agenta závislostí společnosti Microsoft. Rozšíření virtuálního počítače Azure VM Dependency Agent pro Linux se zveřejňuje a podporuje Microsoft. Rozšíření nainstaluje agenta závislostí na virtuální počítače Azure. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače služby Azure VM Dependency Agent pro Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 

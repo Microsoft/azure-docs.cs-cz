@@ -4,10 +4,10 @@ description: Popisuje vlastnosti, které jsou k dispozici pro události služby 
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 321dc4d21485af23a9cca0d42d74da0a3e121b7c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363685"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid schéma událostí pro službu Signal

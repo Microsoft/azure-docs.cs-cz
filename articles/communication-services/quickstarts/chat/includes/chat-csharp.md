@@ -11,13 +11,13 @@ ms.topic: include
 ms.custom: include file
 ms.author: mikben
 ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495383"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete, nezapomeňte:
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Nainstalovat [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -28,7 +28,7 @@ Než začnete, nezapomeňte:
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
-V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `ChatQuickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program.cs**.
+V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `ChatQuickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program. cs**.
 
 ```console
 dotnet new console -o ChatQuickstart
@@ -53,7 +53,7 @@ dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
 
 Následující třídy zpracovávají některé z hlavních funkcí služby Azure Communications chat Client Library pro C#.
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
 | ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání účastníků, odesílání oznámení o přečtení a čtení. |
@@ -66,7 +66,7 @@ Přečtěte si další informace o [tokenech přístupu uživatele](../../access
 
 V tomto rychlém startu se nezabývá vytvořením vrstvy služby pro správu tokenů pro aplikaci Chat, i když se doporučuje. Další informace o [architektuře chatu](../../../concepts/chat/concepts.md)
 
-Zkopírujte následující fragmenty kódu a vložte je do zdrojového souboru: **program.cs**
+Zkopírujte následující fragmenty kódu a vložte je do zdrojového souboru: **program. cs**
 ```csharp
 using Azure;
 using Azure.Communication;

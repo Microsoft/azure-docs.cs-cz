@@ -13,18 +13,18 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/09/2020
 ms.openlocfilehash: 8bd1e312463cf89ae30d54bc4a32a497fc7a9a78
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249648"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database Glosář pojmů
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
 
-## <a name="azure-sql-database"></a>Databáze Azure SQL
+## <a name="azure-sql-database"></a>Azure SQL Database
 
-|Kontext|Pojem|Další informace|
+|Kontext|Označení|Další informace|
 |:---|:---|:---|
 |Služba Azure|Azure SQL Database nebo SQL Database|[Azure SQL Database](database/sql-database-paas-overview.md)|
 |Nákupní model|Nákupní model založený na DTU|[Nákupní model založený na DTU](database/service-tiers-dtu.md)|
@@ -41,7 +41,7 @@ ms.locfileid: "98249648"
 
 ## <a name="azure-sql-managed-instance"></a>Spravovaná instance Azure SQL
 
-|Kontext|Pojem|Další informace|
+|Kontext|Označení|Další informace|
 |:---|:---|:---|
 |Služba Azure|Spravovaná instance Azure SQL|[Spravovaná instance SQL](managed-instance/sql-managed-instance-paas-overview.md)|
 |Nákupní model|Nákupní model založený na virtuálních jádrech|[Nákupní model založený na virtuálních jádrech](database/service-tiers-vcore.md)|

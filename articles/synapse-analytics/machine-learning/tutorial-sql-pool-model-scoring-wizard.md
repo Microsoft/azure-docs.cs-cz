@@ -10,10 +10,10 @@ ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: d8db9257ad6eed98b39cd2c9a52351f013453365
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98935224"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>Kurz: Průvodce bodování modelu Machine Learning (Preview) pro vyhrazené fondy SQL
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Pracovní prostor Azure synapse Analytics](../get-started-create-workspace.md) s účtem úložiště Azure Data Lake Storage Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být *přispěvatelem dat objektů BLOB úložiště* Data Lake Storage Gen2 systému souborů, se kterým pracujete.
 - Vyhrazený fond SQL ve vašem pracovním prostoru Azure synapse Analytics. Podrobnosti najdete v tématu [vytvoření vyhrazeného fondu SQL](../quickstart-create-sql-pool-studio.md).
@@ -151,4 +151,4 @@ Než spustíte všechny buňky v poznámkovém bloku, ověřte, že je spuštěn
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý Start: vytvoření nové propojené služby Azure Machine Learning v Azure synapse](quickstart-integrate-azure-machine-learning.md)
-- [Funkce Machine Learning ve službě Azure synapse Analytics](what-is-machine-learning.md)
+- [Možnosti strojového učení ve službě Azure Synapse Analytics](what-is-machine-learning.md)

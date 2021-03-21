@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 01/14/2021
 ms.topic: how-to
 ms.openlocfilehash: 1cd07f9322837c03e15aaeabec993820deb3170a
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98232110"
 ---
 # <a name="rendering-using-azure"></a>Vykreslování s využitím Azure
@@ -43,7 +43,7 @@ Z mnoha důvodů je vykreslování pro Azure naprosto uzpůsobené jako zatíže
 
 Nejběžnějším případem je, že by existovala existující místní farma vykreslování, kterou spravuje aplikace pro správu vykreslování, jako je PipelineFX Qube, Královská Render, Thinkbox konečný termín nebo vlastní aplikace.  Požadavek slouží k prodloužení kapacity místní vykreslovací farmy pomocí virtuálních počítačů Azure.
 
-Infrastruktura a služby Azure slouží k vytvoření hybridního prostředí, ve kterém se Azure používá k doplnění místní kapacity. Příklad:
+Infrastruktura a služby Azure slouží k vytvoření hybridního prostředí, ve kterém se Azure používá k doplnění místní kapacity. Například:
 
 * Použijte [Virtual Network](../virtual-network/virtual-networks-overview.md) k umístění prostředků Azure ve stejné síti jako místní farma vykreslování.
 * Pomocí [avere vFXT pro Azure](../avere-vfxt/avere-vfxt-overview.md) nebo [Azure HPC cache](../hpc-cache/hpc-cache-overview.md) můžete ukládat zdrojové soubory do mezipaměti v Azure, abyste snížili využití šířky pásma a latenci a maximalizujete výkon.

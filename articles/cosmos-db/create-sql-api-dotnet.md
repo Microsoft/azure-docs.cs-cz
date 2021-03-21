@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 10/21/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 4c552e6ac195555990cdbbab44f16be32b7930c8
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102425307"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Rychlý Start: Vytvoření konzolové aplikace .NET pro správu Azure Cosmos DBch prostředků rozhraní SQL API
@@ -39,7 +39,7 @@ Azure Cosmos DB je databáze Microsoftu pro rychlé NoSQL s otevřenými rozhran
 
 [Referenční dokumentace k](/dotnet/api/microsoft.azure.cosmos)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-cosmos-dotnet-v3)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) nebo si můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. 
 * [.NET Core 2,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/2.1).
@@ -249,7 +249,7 @@ using System.Net;
 using Microsoft.Azure.Cosmos;
 ```
 
-Do souboru **program.cs** přidejte kód pro čtení proměnných prostředí, které jste nastavili v předchozím kroku. Definujte `CosmosClient` objekty, `Database` a `Container` . Dále přidejte kód do metody Main, která volá `GetStartedDemoAsync` metodu, ve které budete spravovat prostředky účtu Azure Cosmos. 
+Do souboru **program. cs** přidejte kód pro čtení proměnných prostředí, které jste nastavili v předchozím kroku. Definujte `CosmosClient` objekty, `Database` a `Container` . Dále přidejte kód do metody Main, která volá `GetStartedDemoAsync` metodu, ve které budete spravovat prostředky účtu Azure Cosmos. 
 
 ```csharp
 namespace todo

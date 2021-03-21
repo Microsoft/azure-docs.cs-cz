@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8319885de26bf79f5e402c4d06b29e9dd94894de
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734617"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655840"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>Vizualizace pro analýzu změn aplikace (Preview)
 
@@ -22,11 +22,11 @@ Pokud chcete spustit prostředí, vyhledejte na panelu hledání možnost analý
 
 ![Snímek obrazovky s vyhledáváním analýzy změn v Azure Portal](./media/change-analysis/search-change-analysis.png)
 
-Všechny prostředky v rámci vybraného předplatného se zobrazí se změnami za posledních 24 hodin. Za účelem optimalizace výkonu načítání stránek služba zobrazuje 10 prostředků najednou. Kliknutím na další stránku zobrazíte další prostředky. Pracujeme na odebrání tohoto omezení.
+Všechny prostředky v rámci vybraného předplatného se zobrazí se změnami za posledních 24 hodin. Všechny změny se zobrazí se starou hodnotou a novou hodnotou, která poskytuje přehledy na první pohled.
 
 ![Snímek obrazovky okna pro změnu analýzy v Azure Portal](./media/change-analysis/change-analysis-standalone-blade.png)
 
-Kliknutím na prostředek zobrazíte všechny jeho změny. V případě potřeby přejděte k podrobnostem o změně a zobrazte si podrobnosti o změně formátu JSON a přehledy.
+Kliknutím na změnu zobrazíte úplný fragment Správce prostředků a další vlastnosti.
 
 ![Snímek obrazovky s podrobnostmi o změně](./media/change-analysis/change-details.png)
 
@@ -40,11 +40,6 @@ Uživatelské rozhraní podporuje výběr více předplatných pro zobrazení zm
 
 ![Snímek obrazovky s filtrem předplatným, který podporuje výběr více předplatných](./media/change-analysis/multiple-subscriptions-support.png)
 
-### <a name="web-app-diagnose-and-solve-problems"></a>Diagnostika a řešení problémů webové aplikace
-
-V Azure Monitor je analýza změn integrovaná i v prostředí pro samoobslužnou **diagnostiku a řešení problémů** . K tomuto prostředí se dostanete ze stránky **Přehled** vaší aplikace App Service.
-
-![Snímek obrazovky s tlačítkem "Přehled" a "diagnostikovat a řešit problémy"](./media/change-analysis/change-analysis.png)
 
 ## <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Analýza změn aplikace v nástroji Diagnostika a řešení problémů
 
@@ -69,6 +64,13 @@ Analýza změn aplikace je samostatný detektor ve webové aplikaci diagnostikuj
 5. Možnost změnit data je také k dispozici v rozevíracích selektorech pro výběr **webové aplikace** a při **selhání aplikace** . Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách. Ve výchozím nastavení se zobrazí změny za posledních 24 hodin, které vám pomůžou s okamžitými problémy.
 
      ![Snímek obrazovky se zobrazením rozdílů změn](./media/change-analysis/change-view.png)
+
+## <a name="diagnose-and-solve-problems-tool"></a>Diagnostika a řešení problémů – nástroj
+Analýza změn je k dispozici jako karta Přehled v nástroji Diagnostika a řešení problémů. Pokud dojde k problémům s prostředky a v posledních 72 hodinách byly zjištěny změny, karta Insights zobrazí počet změn. Kliknutím na odkaz Zobrazit podrobnosti změn povedete k filtrovanému zobrazení ze samostatného uživatelského rozhraní pro změnu analýzy.
+
+![Snímek obrazovky zobrazující přehled o změnách v nástroji Diagnostika a řešení problémů](./media/change-analysis/change-insight-diagnose-and-solve.png)
+
+
 
 ## <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnostika a řešení problémů s virtuálním počítačem
 

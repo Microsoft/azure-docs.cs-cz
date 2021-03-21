@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
 ms.openlocfilehash: 0665cbd7aa21575337999fb5c59478955c764048
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934187"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Zrušení přidružení veřejné IP adresy z virtuálního počítače Azure 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak zrušit přidružení veřejné IP adresy z vi
 
 Pomocí [Azure Portal](#azure-portal), [rozhraní příkazového řádku](#azure-cli) Azure (CLI) nebo [PowerShellu](#powershell) můžete oddělit veřejnou IP adresu z virtuálního počítače.
 
-## <a name="azure-portal"></a>Portál Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyhledejte virtuální počítač, ze kterého chcete zrušit přidružení veřejné IP adresy, nebo jej vyhledejte.

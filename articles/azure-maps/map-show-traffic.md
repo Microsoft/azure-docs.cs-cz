@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98599558"
 ---
 # <a name="show-traffic-on-the-map"></a>Zobrazit provoz na mapě
@@ -23,7 +23,7 @@ V Azure Maps jsou k dispozici dva typy dat přenosů:
 - Data o incidentech – skládají se z bodů a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody.
 - Data toku – poskytuje metriky toku provozu na cestách. Data toku provozu se často používají k obarvení cest. Barvy jsou založené na tom, kolik přenosů zpomaluje tok, relativně k limitu rychlosti nebo jiné metriky. Existují čtyři hodnoty, které lze předat do `flow` Možnosti provozu mapy.
 
-    |Hodnota toku | Popis|
+    |Hodnota toku | Description|
     | :-- | :-- |
     | `none` | Nezobrazuje data o přenosech na mapě. |
     | `relative` | Zobrazuje přenosová data, která se vztahují k rychlosti volného toku provozu. |

@@ -8,10 +8,10 @@ ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 81a44d4d0025c841cf56e19d6afee5e95bd44a55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730503"
 ---
 # <a name="secure-azure-digital-twins"></a>Zabezpečení digitálních vláken Azure
@@ -127,7 +127,7 @@ Níže jsou uvedeny podrobnosti o značce služby **AzureDigitalTwins** .
 
 | Značka | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | --- | --- | --- | --- |
-| AzureDigitalTwins | Azure Digital Twins<br>Poznámka: Tato značka nebo IP adresy, na které se vztahuje tato značka, se dají použít k omezení přístupu k koncovým bodům nakonfigurovaným pro [trasy událostí](concepts-route-events.md). | Příchozí | Ne | Ano |
+| AzureDigitalTwins | Azure Digital Twins<br>Poznámka: Tato značka nebo IP adresy, na které se vztahuje tato značka, se dají použít k omezení přístupu k koncovým bodům nakonfigurovaným pro [trasy událostí](concepts-route-events.md). | Příchozí | No | Yes |
 
 ### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Použití značek služby pro přístup k koncovým bodům směrování událostí 
 
