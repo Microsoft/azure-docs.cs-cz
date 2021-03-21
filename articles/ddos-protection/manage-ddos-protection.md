@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100535228"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard
@@ -83,7 +83,7 @@ Tato [zásada](https://aka.ms/ddosvnetpolicy) vyhledá všechny virtuální sít
 
 Nejdřív si Projděte podrobnosti svého plánu DDoS Protection:
 
-1. Vyberte **všechny služby** nahoře, vlevo na portálu.
+1. V levé horní části portálu vyberte **Všechny služby**.
 2. Do pole **filtru** zadejte *DDoS* . Pokud se ve výsledcích zobrazí **plány ochrany DDoS Protection** , vyberte ji.
 3. Ze seznamu vyberte svůj plán DDoS Protection.
 

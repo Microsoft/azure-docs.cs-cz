@@ -9,10 +9,10 @@ ms.date: 1/18/2021
 ms.topic: quickstart
 ms.service: azure
 ms.openlocfilehash: 29cac544c858b030cff8e9101737b30e96b863bf
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102506595"
 ---
 # <a name="build-the-defender-micro-agent-from-source-code-preview"></a>Sestavení agenta Defender Micro ze zdrojového kódu (Preview)
@@ -47,7 +47,7 @@ Nedoporučujeme vypínat kontrolu podpisů pro produkční prostředí.
 
 Pokud pro produkční scénáře potřebujete jinou konfiguraci, obraťte se na tým Defender for IoT. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 1. Obraťte se na svého správce účtu, aby požádal o přístup k programu Defender pro zdrojový kód IoT.
  

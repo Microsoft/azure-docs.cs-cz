@@ -11,10 +11,10 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
 ms.openlocfilehash: a7d1212d1106f0883d05a860b498b90e4e5f8e00
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102517510"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Nasazení modelů vyškolených pomocí Azure Machine Learning na místních počítačích 
@@ -27,7 +27,7 @@ Mezi scénáře pro místní nasazení patří:
 * Ladění a řešení potíží v pozdějších fázích.
 * Konečné nasazení na hardware spravovaný uživatelem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 - Model a prostředí. Pokud nemáte školený model, můžete použít soubory modelů a závislostí, které jsou k dispozici v [tomto kurzu](tutorial-train-models-with-aml.md).

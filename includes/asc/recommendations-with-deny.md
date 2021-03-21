@@ -6,10 +6,10 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: c142f6a00275b4b21b6bbc64e51a5c4d7d957258
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467987"
 ---
 - Přístup k účtům úložiště s bránou firewall a konfigurací virtuální sítě by měl být omezený, protože účty úložiště by měly omezovat přístup k síti.

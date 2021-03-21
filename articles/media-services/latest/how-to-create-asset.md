@@ -16,10 +16,10 @@ ms.date: 02/16/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3923394e76d5ce4001d3652ae9cbc263df08e4e2
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100545611"
 ---
 # <a name="create-an-asset"></a>Vytvoření prostředku
@@ -28,7 +28,7 @@ ms.locfileid: "100545611"
 
 Tento článek ukazuje, jak vytvořit prostředek Media Services.  K uchování mediálního obsahu pro kódování a streamování použijete Asset.  Další informace o Media Services assety najdete [v článku Azure Media Services V3](assets-concept.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postupujte podle kroků v části [Vytvoření účtu Media Services](./create-account-howto.md) a vytvořte potřebný Media Services účet a skupinu prostředků pro vytvoření assetu.
 

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
 ms.openlocfilehash: e7a8fd53e78e1aeab9db5af0432d0c3f1d786823
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100526948"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>Migrace ze zásad přístupu k trezoru na model oprávnění řízení přístupu na základě role Azure
@@ -114,7 +114,7 @@ Existuje mnoho rozdílů mezi modelem oprávnění zásad přístupu k Azure RBA
 > [!NOTE]
 > Když je povolený model oprávnění Azure RBAC, všechny skripty, které se pokusí aktualizovat zásady přístupu, selžou. Je důležité tyto skripty aktualizovat, aby používaly Azure RBAC.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 -  Přiřazení role nefunguje po několika minutách – existují situace, kdy přiřazení rolí může trvat delší dobu. Je důležité napsat logiku opakování v kódu pro pokrytí těchto případů.
 - Přiřazení rolí zmizelo, když se Key Vault odstranila (obnovitelné odstranění) a obnovila se – v současné době se jedná o omezení funkce obnovitelného odstranění napříč všemi službami Azure. Po obnovení je nutné znovu vytvořit všechna přiřazení rolí.    
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: references_regions
 ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250260"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
@@ -209,7 +209,7 @@ GTID je ve výchozím nastavení VYPNUTá. Po povolení GTID ho nemůžete znovu
 
 Pokud je na zdrojovém serveru povolená možnost GTID, budou mít nově vytvořené repliky taky povolený GTID a budou používat replikaci GTID. Pokud chcete zachovat konzistenci replikace, nemůžete aktualizovat `gtid_mode` na zdrojovém nebo replikačním serveru.
 
-### <a name="other"></a>Další
+### <a name="other"></a>Jiné
 
 * Vytvoření repliky repliky se nepodporuje.
 * Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .

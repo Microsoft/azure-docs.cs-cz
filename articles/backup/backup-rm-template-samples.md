@@ -5,17 +5,17 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: a4c2f444cb821f7979571b9d777895a59450e7c2
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96309575"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Šablony Azure Resource Manageru pro službu Azure Backup
 
 Následující tabulka obsahuje odkazy na šablony Azure Resource Manageru pro použití s trezory služby Recovery Services a funkcemi služby Azure Backup. Další informace o syntaxi a vlastnostech JSON najdete v tématu [typy prostředků Microsoft. RecoveryServices](/azure/templates/microsoft.recoveryservices/allversions).
 
-| Template (Šablona) | Popis |
+| Template (Šablona) | Description |
 |---|---|
 |**Trezor služby Recovery Services** | |
 | [Vytvoření trezoru Recovery Services](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| Vytvořte trezor služby Recovery Services. Trezor je možné použít pro služby Azure Backup a Azure Site Recovery. |

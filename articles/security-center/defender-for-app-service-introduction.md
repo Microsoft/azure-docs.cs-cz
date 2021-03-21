@@ -8,15 +8,15 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: ec4ac5d355266a46b33d89fd25c2665493773f5d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100810"
 ---
 # <a name="protect-your-web-apps-and-apis"></a>Ochrana webových aplikací a rozhraní API
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Security Center je nativně integrovaná s App Service a odstraňuje nutnost nasazení a registraci – integrace je transparentní.
 
@@ -36,7 +36,7 @@ K ochraně Azure App Service plánu pomocí Azure Defenderu pro App Service bude
 | Stav vydaných verzí:               | Obecná dostupnost (GA)                                                                                                                                                                      |
 | Stanov                     | [Azure Defender pro App Service](azure-defender.md) se účtuje tak, jak je znázorněno na [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/) .<br>Fakturace se provádí na základě celkových výpočetních instancí ve všech plánech.       |
 | Podporované plány App Service: | [Všechny plány App Service](https://azure.microsoft.com/pricing/details/app-service/plans/) jsou podporovány s výjimkou [Azure Functions v plánu spotřeby](../azure-functions/functions-scale.md). |
-| Cloud                      | ![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)                                                     |
+| Cloud                      | ![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)                                                     |
 |                              |                                                                                                                                                                                                |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Jaké jsou výhody Azure Defenderu pro App Service?

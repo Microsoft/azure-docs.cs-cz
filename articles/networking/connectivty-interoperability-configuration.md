@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 50fd5641c61d08939eca1f2cbafb1d077254e37d
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98233266"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabilita funkcí back-end připojení Azure: podrobnosti konfigurace testu
@@ -25,7 +25,7 @@ Tento článek popisuje konfigurační podrobnosti [nastavení testu][Setup]. Na
 
 Následující obrázek ukazuje podrobnosti partnerského vztahu Azure Virtual Network pro virtuální síť rozbočovače (VNet). Další informace o tom, jak nastavit partnerský vztah mezi dvěma virtuální sítě, najdete v tématu [Správa partnerského vztahu virtuální][VNet-Config]sítě. Pokud chcete, aby virtuální síť rozbočovače používala brány, které jsou připojené k virtuální síti centra, vyberte **použít vzdálené brány**.
 
-[![1]][1]
+[![první]][1]
 
 Následující obrázek ukazuje podrobnosti partnerského vztahu virtuální sítě pro virtuální síť centra. Pokud chcete, aby virtuální síť rozbočovače povolovala použití bran rozbočovače, vyberte možnost **Povolit přenos brány**.
 

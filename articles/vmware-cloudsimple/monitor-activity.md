@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899299"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Monitorování aktivity řešení VMware podle CloudSimple
@@ -82,7 +82,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 ------------ | ------------- |
 | ID úlohy | Jedinečný identifikátor úkolu |
 | Operace | Akce, kterou úkol provede. |
-| Uživatel | Uživatel přiřazený k dokončení úlohy. |
+| User | Uživatel přiřazený k dokončení úlohy. |
 | Název prostředku | Název přiřazený k prostředku |
 | Typ prostředku | Kategorie prostředku: privátní cloud, cloudový stojan. |
 | ID prostředku | Identifikátor prostředku |
@@ -102,7 +102,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 ------------ | ------------- |
 | Čas | Čas položky auditu |
 | Operace | Akce, kterou úkol provede. |
-| Uživatel | Uživatel přiřazený k úkolu |
+| User | Uživatel přiřazený k úkolu |
 | Název prostředku | Název přiřazený k prostředku |
 | Typ prostředku | Kategorie prostředku: privátní cloud, cloudový stojan. |
 | ID prostředku | Identifikátor prostředku |

@@ -14,10 +14,10 @@ ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 1035f43642f3884e7cc0f6ab47e9c9afd1f29170
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102107385"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
@@ -45,7 +45,7 @@ Organizace, které používají Azure AD B2C jako řešení pro správu identit 
 3. Pokud se uživatel přihlásí pomocí federovaného poskytovatele identity, pošle se Azure AD B2C odpověď tokenu.
 4. Azure AD B2C generuje kontrolní výraz SAML a odešle ho do aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu SAML a znalost implementace SAML aplikace
@@ -71,14 +71,14 @@ Aby bylo možné vytvořit vztah důvěryhodnosti mezi vaší aplikací a Azure 
 
 | Využití | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Podepisování požadavku SAML  | Ne | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci, který aplikace používá k podepisování požadavků SAML odeslaných do Azure AD B2C. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C ověří podpis požadavku SAML pomocí veřejného klíče z metadat aplikace.|
-| Šifrování kontrolního výrazu SAML  | Ne | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C může šifrovat kontrolní výrazy ve vaší aplikaci pomocí veřejného klíče. Aplikace používá privátní klíč k dešifrování kontrolního výrazu.|
+| Podepisování požadavku SAML  | No | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci, který aplikace používá k podepisování požadavků SAML odeslaných do Azure AD B2C. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C ověří podpis požadavku SAML pomocí veřejného klíče z metadat aplikace.|
+| Šifrování kontrolního výrazu SAML  | No | Certifikát s privátním klíčem uloženým ve vaší webové aplikaci. Webová aplikace musí zveřejnit veřejný klíč prostřednictvím koncového bodu metadat SAML. Azure AD B2C může šifrovat kontrolní výrazy ve vaší aplikaci pomocí veřejného klíče. Aplikace používá privátní klíč k dešifrování kontrolního výrazu.|
 
 **Azure AD B2C certifikátů**
 
 | Využití | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Podepisování odpovědí SAML | Ano | Certifikát s privátním klíčem uloženým v Azure AD B2C. Tento certifikát používá Azure AD B2C k podepsání odpovědi SAML odeslané do vaší aplikace. Vaše aplikace přečte veřejný klíč Azure AD B2C metadata a ověří podpis odpovědi SAML. |
+| Podepisování odpovědí SAML | Yes | Certifikát s privátním klíčem uloženým v Azure AD B2C. Tento certifikát používá Azure AD B2C k podepsání odpovědi SAML odeslané do vaší aplikace. Vaše aplikace přečte veřejný klíč Azure AD B2C metadata a ověří podpis odpovědi SAML. |
 
 V produkčním prostředí doporučujeme používat certifikáty vydané veřejnou certifikační autoritou. Tento postup však můžete provést i u certifikátů podepsaných svým držitelem.
 

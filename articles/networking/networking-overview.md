@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
 ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234184"
 ---
 # <a name="azure-networking-services-overview"></a>Přehled síťových služeb Azure
@@ -53,7 +53,7 @@ Následující diagram znázorňuje více připojení VPN typu Site-to-site ke s
 
 Další informace o různých typech připojení k síti VPN najdete v tématu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtual WAN
+### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtuální síť WAN
 Azure Virtual WAN je síťová služba, která poskytuje optimalizované a automatizované připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím. Můžete využít páteřní síť Azure a taky připojit větve a využít připojení k virtuální síti. Služba Azure Virtual WAN přináší dohromady mnoho služeb cloudového připojení Azure, jako je VPN typu Site-to-site, ExpressRoute, User VPN typu Point-to-site, do jediného provozního rozhraní. Připojení ke službě Azure virtuální sítě se vytváří pomocí připojení k virtuální síti. Další informace najdete v tématu [co je Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
 
 :::image type="content" source="./media/networking-overview/virtualwan1.png" alt-text="Diagram virtuální sítě WAN":::
@@ -99,7 +99,7 @@ Provoz mezi vaší virtuální sítí a službou přenáší páteřní síť Mi
 
 :::image type="content" source="./media/networking-overview/private-endpoint.png" alt-text="Přehled privátního koncového bodu":::
 
-### <a name="azure-firewall"></a><a name="firewall"></a>Brána Azure Firewall
+### <a name="azure-firewall"></a><a name="firewall"></a>Azure Firewall
 Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Pomocí Azure Firewall můžete centrálně vytvářet, vysazovat a protokolovat zásady pro připojení aplikací a sítí napříč předplatnými a virtuálními sítěmi. Brána Azure Firewall používá statickou veřejnou IP adresu pro prostředky virtuální sítě a díky tomu umožňuje venkovním bránám firewall identifikovat provoz pocházející z vaší virtuální sítě. 
 
 Další informace o Azure Firewall najdete v dokumentaci k [Azure firewall](../firewall/overview.md).
@@ -113,7 +113,7 @@ Zákazníci se můžou rozhodnout nasadit [Azure WAF s Application Gateway](../w
 
 :::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Firewall webových aplikací":::
 
-### <a name="network-security-groups"></a><a name="nsg"></a>skupiny zabezpečení sítě,
+### <a name="network-security-groups"></a><a name="nsg"></a>Skupiny zabezpečení sítě
 Pomocí skupiny zabezpečení sítě můžete filtrovat síťový provoz do a z prostředků Azure ve virtuální síti Azure. Další informace najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 
 ### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Koncové body služby

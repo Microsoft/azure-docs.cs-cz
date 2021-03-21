@@ -5,13 +5,13 @@ ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: 38306b2fb3c0a51aeedbf1ebd9079dd787783093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 9c843ededd1fa863cc5eb4dc0db3a6da3478466d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364286"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597517"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopírování a transformace dat ve službě Azure synapse Analytics pomocí Azure Data Factory
 
@@ -24,7 +24,7 @@ ms.locfileid: "100364286"
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z a do Azure synapse Analytics a jak transformovat data v Azure Data Lake Storage Gen2 pomocí toku dat. Pokud se chcete dozvědět o Azure Data Factory, přečtěte si [úvodní článek](introduction.md).
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor Azure synapse Analytics se podporuje pro následující činnosti:
 
@@ -390,6 +390,7 @@ Pokud chcete kopírovat data do služby Azure synapse Analytics, nastavte typ j�
 | preCopyScript     | Zadejte dotaz SQL pro aktivitu kopírování, která se spustí před zápisem dat do služby Azure synapse Analytics v každém spuštění. Tato vlastnost slouží k vyčištění předem načtených dat. | No                                            |
 | tableOption | Určuje, jestli se má [automaticky vytvořit tabulka jímky](copy-activity-overview.md#auto-create-sink-tables) , pokud na základě schématu zdroje neexistuje. Povolené hodnoty jsou: `none` (výchozí), `autoCreate` . |No |
 | disableMetricsCollection | Data Factory shromažďuje metriky, jako je Azure synapse Analytics DWU, pro optimalizaci výkonu a doporučení, které zavádějí další přístup k hlavní databázi. Pokud se s tímto chováním obáváte, určete, jestli `true` ho chcete vypnout. | Ne (výchozí nastavení je `false` ) |
+| maxConcurrentConnections |Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení.| No |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Příklad jímky Azure synapse Analytics
 
@@ -520,7 +521,7 @@ Pokud požadavky nejsou splněné, Azure Data Factory zkontroluje nastavení a a
    4. `nullValue` je ponechán jako výchozí nebo nastaven na **prázdný řetězec** ("") a `treatEmptyAsNull` je ponechán jako výchozí nebo nastaven na hodnotu true.
    5. `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8**.
    6. `quoteChar`, `escapeChar` a `skipLineCount` nejsou zadány. Základní podpora – přeskočit řádek záhlaví, který se dá nakonfigurovat jako `firstRowAsHeader` v ADF.
-   7. `compression` nemůže být **žádná komprese**, **gzip** nebo **Deflate**.
+   7. `compression` nemůže být **žádná komprese**, **``GZip``** nebo **zúžení**.
 
 3. Pokud je zdrojem složka, `recursive` musí být v aktivitě kopírování nastavena hodnota true (pravda).
 
@@ -615,7 +616,7 @@ Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Stor
 
 ### <a name="best-practices-for-using-polybase"></a>Osvědčené postupy pro použití základu
 
-Následující části obsahují osvědčené postupy Kromě těchto postupů uvedených v článku [osvědčené postupy pro Azure synapse Analytics](../synapse-analytics/sql/best-practices-sql-pool.md).
+Následující části obsahují osvědčené postupy Kromě těchto postupů uvedených v článku [osvědčené postupy pro Azure synapse Analytics](../synapse-analytics/sql/best-practices-dedicated-sql-pool.md).
 
 #### <a name="required-database-permission"></a>Požadovaná oprávnění databáze
 
@@ -709,7 +710,7 @@ Použití příkazu COPY podporuje následující konfiguraci:
 
 2. Nastavení formátu jsou následující:
 
-   1. Pro **Parquet**: `compression` nemůže být **žádná komprese**, **přichycení** nebo **gzip**.
+   1. Pro **Parquet**: `compression` nemůže být **žádná komprese**, **přichycení** nebo **``GZip``** .
    2. Pro **ORC**: `compression` nemůže být **žádná komprese**, **```zlib```** nebo **přichycení**.
    3. Pro **text s oddělovačem**:
       1. `rowDelimiter` je explicitně nastaveno jako **jeden znak** nebo "**\r\n**", výchozí hodnota není podporována.
@@ -717,7 +718,7 @@ Použití příkazu COPY podporuje následující konfiguraci:
       3. `encodingName` je ponechán jako výchozí nebo nastavený na **UTF-8 nebo UTF-16**.
       4. `escapeChar` musí být stejný jako `quoteChar` a není prázdný.
       5. `skipLineCount` je ponechán jako výchozí nebo nastavený na 0.
-      6. `compression` nemůže být **žádná komprese** ani **gzip**.
+      6. `compression` nemůže být **žádná komprese** nebo **``GZip``** .
 
 3. Je-li zdrojem složka, `recursive` musí být v aktivitě kopírování nastavena hodnota true a musí `wildcardFilename` být `*` . 
 
@@ -821,7 +822,7 @@ Nastavení specifická pro Azure synapse Analytics jsou k dispozici na kartě **
 - Znovu vytvořit: tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.
 - Zkrátit: všechny řádky z cílové tabulky se odeberou.
 
-**Povolit přípravu:** Určuje, jestli se má při zápisu do Azure synapse Analytics použít [základ](/sql/relational-databases/polybase/polybase-guide) . Pracovní úložiště je nakonfigurované v [aktivitě spustit tok dat](control-flow-execute-data-flow-activity.md). 
+**Povolit přípravu:** To umožňuje načítat do fondů SQL Azure synapse Analytics pomocí příkazu copy a doporučuje se pro většinu Synpasech umyvadel. Pracovní úložiště je nakonfigurované v [aktivitě spustit tok dat](control-flow-execute-data-flow-activity.md). 
 
 - Pokud pro propojenou službu úložiště používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
 - Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
 ms.openlocfilehash: ebc71ea2d354caf0c8f31b1231ecc1487237dd29
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101741884"
 ---
 # <a name="set-up-an-azure-front-door-standardpremium-preview-origin"></a>Nastavit počátek služby Azure front – Standard/Premium (Preview)
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit počátek služby Azure front-end ú
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct vytvořit Azure front-end úrovně Standard/Premium, musíte mít vytvořenou aspoň jednu skupinu zdrojů.
 

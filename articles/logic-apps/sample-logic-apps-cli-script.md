@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
 ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102218039"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Ukázkový skript Azure CLI – vytvoření aplikace logiky
@@ -21,7 +21,7 @@ Tento skript vytvoří ukázkovou aplikaci logiky prostřednictvím [rozšířen
 > [!WARNING]
 > Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou*. Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nainstalované na místním počítači.

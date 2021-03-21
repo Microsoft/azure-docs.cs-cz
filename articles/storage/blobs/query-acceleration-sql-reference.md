@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95908774"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Referenční dokumentace jazyka SQL pro zrychlení dotazů
@@ -60,7 +60,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |INT      |64 – celé číslo se znaménkem.                     |
 |Plovák    |64-bit ("dvojitá přesnost") plovoucí desetinná čárka.|
 |ŘETEZCE   |Řetězec Unicode s proměnlivou délkou.            |
-|ČASOVÉ razítko|Bod v čase.                           |
+|ČASOVÉ RAZÍTKO|Bod v čase.                           |
 |DATOVÉHO  |True nebo false                             |
 
 Při čtení hodnot z dat ve formátu CSV jsou všechny hodnoty čteny jako řetězce.  Řetězcové hodnoty lze převést na jiné typy pomocí výrazů přetypování.  Hodnoty mohou být implicitně přetypování na jiné typy v závislosti na kontextu. Další informace naleznete v tématu [Priorita datového typu (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
@@ -186,9 +186,9 @@ Tato tabulka popisuje řetězce, které lze použít k určení výstupního for
 
 |Formátovací řetězec    |Výstup                               |
 |-----------------|-------------------------------------|
-|yy               |Rok ve formátu 2 číslice – 1999 jako "99"|
+|RR               |Rok ve formátu 2 číslice – 1999 jako "99"|
 |y                |Rok ve formátu 4 číslice               |
-|yyyy             |Rok ve formátu 4 číslice               |
+|rrrr             |Rok ve formátu 4 číslice               |
 |M                |Měsíc roku – 1                    |
 |MM               |Nula čalouněný měsíc – 01               |
 |MMM              |Abbr. měsíc roku – LED            |
@@ -207,7 +207,7 @@ Tato tabulka popisuje řetězce, které lze použít k určení výstupního for
 |S                |Zlomek sekund (0,1 – 0.9)        |
 |SS               |Zlomek sekund (0,01 – 0,99)      |
 |POVĚŘENÍ              |Zlomek sekund (0,001 – 0.999)    |
-|X                |Posun v hodinách                      |
+|×                |Posun v hodinách                      |
 |XX nebo XXXX       |Posun v hodinách a minutách (+ 0430)  |
 |XXX nebo XXXXX     |Posun v hodinách a minutách (-07:00) |
 |x                |Posun v hodinách (7)                  |

@@ -7,10 +7,10 @@ ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 53f09dd042543ebc433e9d9cbbd65db332e8fb6d
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518207"
 ---
 # <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
@@ -28,7 +28,7 @@ Vzdálené vykreslování Azure poskytuje následující dvě rozhraní REST API
 > [!CAUTION]
 > Příliš časté volání funkcí REST API způsobí, že server bude omezovat a vracet chybu nakonec. ID kódu chyby HTTP v tomto případě je 429 (příliš mnoho požadavků). Jako pravidlo pro palec by se měla **mezi následnými voláními čekat 5-10 sekund**.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azure PowerShell](/powershell/azure/).
 

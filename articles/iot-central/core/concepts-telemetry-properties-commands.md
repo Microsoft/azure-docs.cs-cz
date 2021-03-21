@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100535310"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Datové části telemetrie, vlastností a příkazů
@@ -723,7 +723,7 @@ IoT Central očekává odpověď ze zařízení do zapisovatelných aktualizací
 
 `ac` je číselné pole, které používá hodnoty v následující tabulce:
 
-| Hodnota | Popisek | Popis |
+| Hodnota | Popisek | Description |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Dokončeno | Operace změny vlastnosti byla úspěšně dokončena. |
 | `'ac': 202`  ani `'ac': 201` | Čekající | Operace změny vlastnosti čeká na vyřízení nebo probíhá. |

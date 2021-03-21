@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: aahi
 ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955038"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Nejčastější dotazy týkající se rozhraní API pro analýzu textu
@@ -51,7 +51,7 @@ Vylepšení modelů a algoritmů se oznamují, pokud je změna hlavní, nebo v t
 
 ### <a name="is-text-analytics-service-zone-resilient"></a>Je Analýza textu zóny služby odolné?
 
-Yes. Služba Analýza textu je ve výchozím nastavení odolná proti zónám.
+Ano. Služba Analýza textu je ve výchozím nastavení odolná proti zónám.
 
 ### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu Analýza textu, aby byla odolná proti zóně?
 

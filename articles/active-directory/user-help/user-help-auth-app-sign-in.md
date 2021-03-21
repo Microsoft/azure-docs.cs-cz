@@ -12,10 +12,10 @@ ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 0fd0aa19d52adb4bf06c9d21d4182e27497a531b
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103471762"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se ke svým účtům pomocí aplikace Microsoft Authenticator.
@@ -31,7 +31,7 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
   >[!Important]
   >Tato metoda přihlašování k telefonu funguje jenom u vašich pracovních nebo školních a osobních účtů Microsoft. Vaše účty jiných společností než Microsoft vyžadují, abyste používali standardní proces ověřování dvou faktorů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct použít aplikaci Microsoft Authenticator, musíte:
 
@@ -112,7 +112,7 @@ Kroky nezbytné pro přihlášení k pracovnímu nebo školnímu účtu nebo k v
 | -------- | -------- |
 | Jak se přihlašujem pomocí mého telefonu bezpečnější než zadání hesla? | Dnešní uživatelé se přihlásí k webům nebo aplikacím pomocí uživatelského jména a hesla. Bohužel můžou být hesla ztracená, odcizená nebo považovat za hackeři.<br><br>Po nastavení Microsoft Authenticator aplikace se na telefonu vytvoří klíč, který odemkne váš účet chráněný PIN kódem nebo biometrickým zámkem. Tento klíč se pak použije k prokázání vaší identity během přihlašování.<br><br>**Důležité upozornění**<br>Vaše data se používají jenom k místní ochraně klíče. Nikdy se neposílá ani neukládá do cloudu. |
 | Nahrazuje se telefonický ověřením dva kroky? Mám ho vypnout? | Přihlášení telefonem je typ dvou ověření kroku, kdy se oba kroky vyskytují v mobilním zařízení. Měli byste zajistit, aby bylo zapnuté dvoustupňové ověřování, které vám pomůžou zajistit další zabezpečení vašeho účtu. |
-| Pokud je u svého účtu zapnuté dvoustupňové ověřování, musím ke schválení dvou oznámení? | Ne. Přihlášení k vašemu účet Microsoft pomocí telefonu se také počítá jako dvoustupňové ověřování, takže není nutné žádné druhé schválení. |
+| Pokud je u svého účtu zapnuté dvoustupňové ověřování, musím ke schválení dvou oznámení? | No. Přihlášení k vašemu účet Microsoft pomocí telefonu se také počítá jako dvoustupňové ověřování, takže není nutné žádné druhé schválení. |
 | Co když mi přijdem telefon nebo ho už nemáte? Návody přistupovat k mému účtu? | Na přihlašovací stránce můžete vždycky vybrat odkaz použít heslo místo toho a přejít zpátky k používání hesla. Pokud ale používáte dvoustupňové ověřování, budete k ověření vaší identity pořád potřebovat druhou metodu.<br><br>**Důležité upozornění**<br>Důrazně doporučujeme, abyste se ujistili, že máte k vašemu účtu přiřazenou více než jednu, aktuální metodu ověřování.<br><br>Metody ověřování pro osobní účty můžete spravovat ze stránky [nastavení zabezpečení](https://account.live.com/proofs/manage) . Pro pracovní nebo školní účty můžete přejít na stránku [Další ověření zabezpečení](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) vaší organizace nebo na stránku **zachovat zabezpečený účet** , pokud správce zapnul bezpečnostní údaje. Další informace o bezpečnostních informacích najdete v tématu [Přehled informací o zabezpečení (Preview)](./security-info-setup-signin.md).<br><br>Pokud nemůžete spravovat metody ověřování, musíte se obrátit na správce. |
 | Návody ukončit používání této funkce a vrátit se k používání mého hesla? | U osobních účtů zaškrtněte políčko **použít místo toho heslo** odkaz při přihlášení. Vaše nejnovější volba se pamatuje a při příštím přihlášení se nabídne ve výchozím nastavení. Pokud se budete chtít kdykoli vrátit k používání telefonického přihlášení, vyberte při přihlášení odkaz **použít aplikaci** .<br><br>Pro pracovní nebo školní účty musíte buď zrušit registraci zařízení na stránce **Nastavení** aplikace Microsoft Authenticator, nebo zařízení zakázat v oblasti **aktivity & zařízení** vašeho profilu. Další informace o zakázání zařízení z vašeho profilu najdete v tématu [aktualizace informací o profilu a účtu na portálu moje aplikace](./my-account-portal-devices-page.md#disable-a-device). |
 | Proč pro přihlašování telefonem nemůžem použít více než jeden pracovní nebo školní účet? | Telefon musí být zaregistrovaný do jednoho pracovního nebo školního účtu. Pokud chcete zapnout přihlášení k telefonu pro jiný pracovní nebo školní účet, musíte zrušit registraci účtu na tomto zařízení prostřednictvím stránky **Nastavení** . |
