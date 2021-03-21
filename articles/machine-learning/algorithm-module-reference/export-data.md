@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/28/2020
-ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 03/19/2021
+ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421307"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656902"
 ---
 # <a name="export-data-module"></a>Exportovat datový modul
 
@@ -51,7 +51,10 @@ Před exportem dat je třeba nejprve zaregistrovat úložiště dat v pracovním
 
     Pokud je vybraná, systém znovu spustí modul a obnoví výstup.
 
-1. Definujte cestu v úložišti dat, kde jsou data. Cesta je relativní cesta. Prázdné cesty nebo cesty URL nejsou povoleny.
+1. Definujte cestu v úložišti dat, kde jsou data. Cesta je relativní cesta. `data/testoutput` Jako příklad, což znamená, že vstupní data **exportovaná data** budou exportována do úložiště dat, `data/testoutput` které jste nastavili v **Nastavení výstupu** modulu.
+
+    > [!NOTE]
+    > Prázdné cesty nebo **cesty URL** nejsou povoleny.
 
 
 1. V poli **Formát souboru** vyberte formát, ve kterém mají být data uložena.

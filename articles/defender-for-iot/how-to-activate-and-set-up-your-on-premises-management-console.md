@@ -1,18 +1,18 @@
 ---
 title: Aktivace a nastavení místní konzoly pro správu
-description: Aktivace a nastavení konzoly pro správu zajišťuje registraci senzorů v Azure a odesílání informací do místní konzole pro správu a místní Konzola pro správu provádí úlohy správy na připojených senzorech.
+description: Aktivace konzoly pro správu zajišťuje, aby se senzory zaregistrovaly v Azure a odesílaly informace do místní konzoly pro správu a aby místní Konzola pro správu prováděla úlohy správy na připojených senzorech.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 3/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: d326a90ffb957604dba74982d8983acedc6ab85d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.service: defender-for-iot
+ms.openlocfilehash: f659b25abbbad5f2150ed44766d30dc1f64dd3bb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522576"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602727"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivace a nastavení místní konzoly pro správu 
 
@@ -30,24 +30,32 @@ Aktivace a nastavení místní konzoly pro správu zajišťuje:
 
 Přihlášení do konzoly pro správu:
 
-- Otevřete webový prohlížeč a zadejte IP adresu a heslo, které jste obdrželi pro místní konzolu pro správu během instalace systému. Pokud jste zapomněli heslo, vyberte možnost **obnovit heslo** a pak se podívejte na [obnovení hesla](how-to-manage-the-on-premises-management-console.md#password-recovery).
+1. V průběhu instalace systému přejděte na IP adresu, kterou jste dostali pro místní konzolu pro správu.
+ 
+1. Zadejte uživatelské jméno a heslo, které jste obdrželi pro místní konzolu pro správu během instalace systému. 
 
-## <a name="upload-an-activation-file"></a>Nahrát aktivační soubor
 
-Po prvním přihlášení aktivujte místní konzolu pro správu stažením aktivačního souboru na stránce s **cenami** na portálu Azure Defender pro IoT Portal. Tento soubor obsahuje agregovaná potvrzená zařízení definovaná během procesu připojování. **Potvrzená zařízení** označují počet zařízení, která bude Defender pro IoT monitorovat podle předplatného.
+Pokud jste zapomněli heslo, vyberte možnost **obnovit heslo**  a pokyny, jak obnovit heslo, najdete v tématu [obnovení hesla](how-to-manage-the-on-premises-management-console.md#password-recovery) .
 
-Postup nahrání aktivačního souboru:
+## <a name="get-and-upload-an-activation-file"></a>Získání a nahrání aktivačního souboru
 
-1. Přejít na stránku s **cenami** v programu Defender for IoT.
+Po prvním přihlášení budete muset aktivovat místní konzolu pro správu, a to tak, že získáte a nahrajete aktivační soubor. 
+
+Získání aktivačního souboru:
+
+1. Přejděte na stránku s **cenami** na portálu Azure Defender pro IoT Portal. 
+1. Vyberte předplatné, ke kterému chcete přidružit místní konzolu pro správu.
 1. Vyberte možnost **Stáhnout aktivační soubor pro kartu Konzola pro správu** . Aktivační soubor se stáhne.
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Stáhněte si aktivační soubor.":::
 
-1. V konzole pro správu vyberte **nastavení systému** .
-1. Vyberte **Aktivace**.
-1. Vyberte možnost **zvolit soubor** a vyberte soubor, který jste uložili.
+Postup nahrání aktivačního souboru:
 
-Po počáteční aktivaci může počet monitorovaných zařízení překročit počet potvrzených zařízení, která jsou definovaná během připojování. K tomu může dojít například v případě, že k konzoli pro správu připojíte více senzorů. Pokud dojde k nesouladu mezi počtem monitorovaných zařízení a počtem potvrzených zařízení, zobrazí se v konzole pro správu upozornění. Pokud k tomu dojde, měli byste nahrát nový soubor aktivace.
+1. V místní konzole pro správu přejděte na stránku **nastavení systému** .
+1. Vyberte ikonu **Aktivace** :::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/activation-icon.png" border="false"::: .
+1. Vyberte možnost **zvolit soubor** a vyberte soubor, který se stáhl.
+
+Po počáteční aktivaci může počet monitorovaných zařízení překročit počet potvrzených zařízení, která jsou definovaná během připojování. K tomu dochází, pokud k konzole pro správu připojíte více senzorů. Pokud dojde k nesouladu mezi počtem monitorovaných zařízení a počtem potvrzených zařízení, zobrazí se v konzole pro správu upozornění. V takovém případě Nahrajte nový aktivační soubor.
 
 ## <a name="set-up-a-certificate"></a>Nastavení certifikátu
 
@@ -316,6 +324,6 @@ Zrušení přiřazení a odstranění snímače:
 
 3. Pokud chcete odstranit nepřiřazený senzor z webu, vyberte snímač ze seznamu nepřiřazených senzorů a vyberte :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
 [Řešení potíží se senzory a místní konzolou pro správu](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

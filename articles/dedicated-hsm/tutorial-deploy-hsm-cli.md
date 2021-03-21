@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 1ca8bc5c82540b0dc02959d26b452554ef294368
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102200525"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Kurz: nasazení HSM do existující virtuální sítě pomocí Azure CLI
@@ -36,7 +36,7 @@ Typická, vysoká dostupnost, architektura nasazení ve více oblastech, může 
 
 Tento kurz se zaměřuje na pár HSM a požadovanou bránu ExpressRoute (viz podsíť 1 výše), která se integruje do existující virtuální sítě (viz virtuální síť 1 výše).  Všechny ostatní prostředky jsou standardní prostředky Azure. Stejný proces integrace lze použít pro HSM v podsíti 4 ve virtuální síti 3 výše.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vyhrazený modul HARDWAROVÉho zabezpečení Azure není v současnosti dostupný v Azure Portal. Veškerá interakce se službou bude prostřednictvím příkazového řádku nebo pomocí PowerShellu. V tomto kurzu použijete rozhraní příkazového řádku (CLI) v Azure Cloud Shell. Pokud začínáte s rozhraním příkazového řádku Azure CLI, postupujte podle pokynů v části Začínáme: [Azure CLI 2,0](/cli/azure/get-started-with-azure-cli)Začínáme.
 

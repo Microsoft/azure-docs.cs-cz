@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
 ms.openlocfilehash: d3ba937abcc7bbfd9bb2afe7b15aec28ebb57446
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99508479"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>Rychlý Start: Analýza živého videa pomocí vlastního modelu HTTP
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT 
 [!INCLUDE [header](includes/analyze-live-video-your-http-model-quickstart/python/header.md)]
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/analyze-live-video-your-http-model-quickstart/csharp/prerequisites.md)]

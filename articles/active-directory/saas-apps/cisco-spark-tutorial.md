@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c2b55fd56677a15f444e1b568517bdf1c32c99
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ad6d5308638b112afe2b51c4e149f876651e429d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200797"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592519"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Cisco Webex
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Cisco Webex s Azure Active Directory (
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Cisco Webex pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -38,7 +38,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Cisco Webex podporuje jednotné přihlašování iniciované v **SP** .
-* Cisco Webex podporuje [**automatizované zřizování uživatelů**](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial).
+* Cisco Webex podporuje [**automatizované zřizování uživatelů**](./cisco-webex-provisioning-tutorial.md).
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Přidání Cisco Webex z Galerie
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho aplikace Cisco Webex očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
   
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ---------------|--------- |
     | UID | User. userPrincipalName |
 
@@ -159,7 +159,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-cisco-webex-test-user"></a>Vytvořit uživatele Cisco Webex Test User
 
-V této části se v Cisco Webex vytvoří uživatel nazvaný B. Simon. Tato aplikace podporuje automatické zřizování uživatelů, které umožňuje automatické zřizování a rušení zřizování na základě vašich obchodních pravidel.  Microsoft doporučuje používat Automatické zřizování, kdykoli to bude možné. Podívejte se, jak povolit Automatické zřizování pro [Cisco Webex](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial).
+V této části se v Cisco Webex vytvoří uživatel nazvaný B. Simon. Tato aplikace podporuje automatické zřizování uživatelů, které umožňuje automatické zřizování a rušení zřizování na základě vašich obchodních pravidel.  Microsoft doporučuje používat Automatické zřizování, kdykoli to bude možné. Podívejte se, jak povolit Automatické zřizování pro [Cisco Webex](./cisco-webex-provisioning-tutorial.md).
 
 Pokud potřebujete ručně vytvořit uživatele, proveďte následující kroky:
 
@@ -195,7 +195,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejít na adresu URL pro přihlášení k Cisco Webex přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Cisco Webex v části Moje aplikace, přesměruje se na adresu URL pro přihlášení Cisco Webex. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Cisco Webex v části Moje aplikace, přesměruje se na adresu URL pro přihlášení Cisco Webex. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky

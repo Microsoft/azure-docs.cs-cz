@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
 ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101710783"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Kurz: zpřístupnění místní služby WCF REST externímu klientovi pomocí Azure WCF Relay
@@ -33,7 +33,7 @@ V tomto kurzu provedete následující úlohy:
 > * Implementujte klienta WCF.
 > * Spusťte aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -66,7 +66,7 @@ Kontrakt služby určuje, které operace služba podporuje. Operace jsou metody 
 
    Tento balíček automaticky přidá odkazy na knihovny Service Bus a WCF `System.ServiceModel` . [System.ServiceModel](/dotnet/api/system.servicemodel) je obor názvů, který vám umožňuje programový přístup k základním funkcím WCF. Service Bus používá mnoho objektů a atributů WCF k definování kontraktů služby.
 
-1. Do horní části `using` *program.cs* přidejte následující příkazy:
+1. Přidejte následující `using` příkazy do horní části *programu. cs*:
 
     ```csharp
     using System.ServiceModel;
@@ -304,7 +304,7 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
     Hostitel služby je objekt WCF, který instancuje službu. Zde předáte typ služby, kterou chcete vytvořit, `EchoService` typ a také adresu, na které chcete službu zveřejnit.
 
-1. V horní části souboru *program.cs* přidejte odkazy na [System. ServiceModel. Description](/dotnet/api/system.servicemodel.description) a [Microsoft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description).
+1. V horní části souboru *program. cs* přidejte odkazy na [System. ServiceModel. Description](/dotnet/api/system.servicemodel.description) a [Microsoft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description).
 
     ```csharp
     using System.ServiceModel.Description;
@@ -443,7 +443,7 @@ Další úlohou je vytvoření klientské aplikace a definování kontraktu slu�
    1. V poli **Přidat nový projekt** vyberte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
    1. Název projektu *EchoClient* a vyberte **vytvořit**.
 
-1. V **Průzkumník řešení** v projektu **EchoClient** poklikejte na **program.cs** , aby se soubor otevřel v editoru, pokud už není otevřený.
+1. V **Průzkumník řešení** v projektu **EchoClient** dvakrát klikněte na **program. cs** , aby se soubor otevřel v editoru, pokud už není otevřený.
 1. Změňte název oboru názvů z výchozího názvu `EchoClient` na `Microsoft.ServiceBus.Samples`.
 1. Instalace [balíčku Service Bus NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus):
 
@@ -452,7 +452,7 @@ Další úlohou je vytvoření klientské aplikace a definování kontraktu slu�
 
       ![Nainstalovat balíček služby Service Bus][4]
 
-1. `using`Do souboru *program.cs* přidejte příkaz pro obor názvů [System. ServiceModel](/dotnet/api/system.servicemodel) .
+1. `using`Do souboru *program. cs* přidejte příkaz pro obor názvů [System. ServiceModel](/dotnet/api/system.servicemodel) .
 
     ```csharp
     using System.ServiceModel;
@@ -475,7 +475,7 @@ Další úlohou je vytvoření klientské aplikace a definování kontraktu slu�
 
 ### <a name="example-of-the-echoclient-project"></a>Příklad projektu EchoClient
 
-Následující kód ukazuje aktuální stav souboru *program.cs* v projektu **EchoClient** .
+Následující kód ukazuje aktuální stav souboru *program. cs* v projektu **EchoClient** .
 
 ```csharp
 using System;

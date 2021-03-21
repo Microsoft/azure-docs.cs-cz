@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
 ms.openlocfilehash: e9c889dcffe42fde244f8a35ce42032e84d78fff
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103488084"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -71,7 +71,7 @@ import AVFoundation
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientské knihovny pro iOS.
 
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient | CallClient je hlavní vstupní bod pro volání klientské knihovny.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |

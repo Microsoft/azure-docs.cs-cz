@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100547396"
 ---
 # <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Kurz: Správa přístupu k prostředkům v Azure AD – Správa nároků
@@ -42,7 +42,7 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 
@@ -65,7 +65,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 1. Vytvořte nebo nakonfigurujte následující dva uživatele. Můžete použít tyto názvy nebo jiné názvy. **Admin1** může být uživatel, ke kterému jste aktuálně přihlášení.
 
-    | Název | Role adresáře |
+    | Name | Role adresáře |
     | --- | --- |
     | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatelů |
     | **Requestor1** | User |

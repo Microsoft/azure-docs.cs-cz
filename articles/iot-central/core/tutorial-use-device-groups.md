@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: a7d26eebb24662a448d8ccb44d037e7706fe776b
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99832840"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Kurz: použití skupin zařízení k analýze telemetrie zařízení
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření skupiny zařízení
 > * Použití skupiny zařízení k analýze telemetrie zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste dokončit [Vytvoření aplikace IoT Central Azure](./quick-deploy-iot-central.md) a [Přidat simulované zařízení do](./quick-create-simulated-device.md) rychlých startů aplikací IoT Central a vytvořit tak šablonu zařízení **kontroleru senzorů** , se kterou chcete pracovat.
 

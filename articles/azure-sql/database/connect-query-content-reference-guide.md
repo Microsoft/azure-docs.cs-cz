@@ -11,13 +11,13 @@ ms.topic: guide
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: a9f9e03227bfb75d94ed79cdf858278e2efe4f31
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.date: 03/17/2021
+ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440390"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594168"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Články Azure SQL Database a Azure SQL Managed instance Connect a dotazy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ Následující dokument obsahuje odkazy na příklady Azure, které ukazují, ja
 
 ## <a name="quickstarts"></a>Rychlé starty
 
-| Rychlé zprovoznění | Popis |
+| Rychlé zprovoznění | Description |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|Tento rychlý Start ukazuje použití SSMS pro připojení k databázi a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
 |[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)|Tento rychlý Start ukazuje, jak použít Azure Data Studio pro připojení k databázi a následné použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření databáze tutorialdb používaného v Azure Data Studioch kurzech.|
@@ -118,6 +118,7 @@ V následující tabulce jsou uvedeny příklady rozhraní a webové architektur
   - [Připojení a dotazování pomocí jazyka Java](connect-query-java.md)
   - [Připojení a dotazování pomocí Pythonu](connect-query-python.md)
   - [Připojení a dotazování pomocí Ruby](connect-query-ruby.md)
+  - [Nainstalujte Sqlcmd a bcp SQL Server nástroje příkazového řádku](/sql/linux/sql-server-linux-setup-tools) pro uživatele se systémem Linux – pro uživatele se systémem Linux se pokuste připojit k Azure SQL Database nebo spravované instanci Azure SQL pomocí nástroje [Sqlcmd](/sql/ssms/scripting/sqlcmd-use-the-utility).
 - Příklady kódu logiky opakování:
   - [Odolné připojení pomocí ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
   - [Odolné připojení pomocí PHP][step-4-connect-resiliently-to-sql-with-php-p42h]

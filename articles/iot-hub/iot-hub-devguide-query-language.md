@@ -9,10 +9,10 @@ ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102218362"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modulů, úlohy a směrování zpráv
@@ -458,13 +458,13 @@ Podporovány jsou následující operátory:
 
 Při dotazování na vlákna a úlohy je jedinou podporovanou funkcí:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | IS_DEFINED (vlastnost) | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota (včetně `null` ). |
 
 V podmínkách směrování jsou podporovány následující matematické funkce:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | ABS (x) | Vrátí absolutní (kladnou) hodnotu zadaného číselného výrazu. |
 | EXP (x) | Vrátí exponenciální hodnotu zadaného číselného výrazu (e ^ x). |
@@ -477,7 +477,7 @@ V podmínkách směrování jsou podporovány následující matematické funkce
 
 V podmínkách směrování jsou podporovány následující funkce kontroly a přetypování typů:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | AS_NUMBER | Převede vstupní řetězec na číslo. `noop` Pokud je vstup číslo, `Undefined` Pokud řetězec nepředstavuje číslo.|
 | IS_ARRAY | Vrací logickou hodnotu označující, zda je typ zadaného výrazu pole Array. |
@@ -491,7 +491,7 @@ V podmínkách směrování jsou podporovány následující funkce kontroly a p
 
 V podmínkách směrování jsou podporovány následující řetězcové funkce:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | CONCAT (x, y,...) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot. |
 | Délka (x) | Vrátí počet znaků zadaného řetězcového výrazu.|

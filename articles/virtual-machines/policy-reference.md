@@ -1,19 +1,19 @@
 ---
 title: Předdefinované definice zásad pro Azure Virtual Machines
 description: Seznam Azure Policy integrovaných definic zásad pro Azure Virtual Machines. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: reference
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a8f1689deb50809a4462fc6a8fe3df4a7a46da28
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: cae1f792c41af611c40e2f477ef01542dc3b6ed6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102616167"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601694"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Azure Policy předdefinované definice pro Azure Virtual Machines
 

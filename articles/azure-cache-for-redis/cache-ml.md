@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: ec8943bc73cac2020350dd4916f040f031cd842b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102499692"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Nasazení modelu Machine Learning pro Azure Functions s využitím Azure cache pro Redis 
@@ -23,7 +23,7 @@ Mezipaměť Azure pro Redis je mimořádně výkonná a škálovatelná – při
 > I když jsou všeobecně k dispozici Azure Machine Learning i Azure Functions, možnost zabalit model ze služby Machine Learning for Functions je ve verzi Preview.  
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](../machine-learning/how-to-manage-workspace.md) .
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)

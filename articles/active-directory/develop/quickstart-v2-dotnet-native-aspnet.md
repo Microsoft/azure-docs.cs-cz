@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 0e8565615cdbac63b0526b5cd87dd9d92d5aa4f1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7d802aa83e2d48e7b66980b5c06aece10a93f37f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216679"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658522"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Rychlý Start: volání webového rozhraní API ASP.NET, které je chráněné technologií Microsoft Identity Platform
 
@@ -25,7 +25,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 
 Článek také používá aplikaci Windows Presentation Foundation (WPF) k předvedení toho, jak můžete požádat o přístupový token pro přístup k webovému rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Visual Studio 2017 nebo 2019. Stáhněte si [Visual Studio zdarma](https://www.visualstudio.com/downloads/).
@@ -39,6 +39,8 @@ Ukázku můžete získat jedním ze dvou způsobů:
    git clone https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
    ```
 * [Stáhněte si ho jako soubor zip](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip).
+
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
 ## <a name="register-your-web-api"></a>Registrace webového rozhraní API
 

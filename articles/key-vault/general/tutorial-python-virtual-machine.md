@@ -10,10 +10,10 @@ ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
 ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102203534"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Kurz: použití Azure Key Vault s virtuálním počítačem v Pythonu
@@ -34,7 +34,7 @@ Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)

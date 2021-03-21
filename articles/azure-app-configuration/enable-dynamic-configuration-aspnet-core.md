@@ -15,10 +15,10 @@ ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 083bd56b2b211d11206a277bf31eea797b37cdb9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979925"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci ASP.NET Core
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 > * Nastavte svoji aplikaci tak, aby aktualizovala svou konfiguraci v reakci na změny v úložišti konfigurace aplikace.
 > * Vloží nejnovější konfiguraci do řadičů vaší aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
@@ -66,7 +66,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Otevřete *program.cs* a aktualizujte `CreateWebHostBuilder` metodu pro přidání `config.AddAzureAppConfiguration()` metody.
+1. Otevřete *program. cs* a aktualizujte `CreateWebHostBuilder` metodu pro přidání `config.AddAzureAppConfiguration()` metody.
 
    #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
@@ -142,7 +142,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
     Chcete-li ve skutečnosti aktivovat operaci aktualizace, bude nutné nakonfigurovat middleware aktualizace, aby aplikace aktualizovala konfigurační data, když dojde ke změně. V pozdějším kroku se dozvíte, jak to udělat.
 
-2. Přidejte soubor *Settings.cs* do adresáře Controllers, který definuje a implementuje novou `Settings` třídu. Nahraďte obor názvů názvem vašeho projektu. 
+2. Přidejte soubor *Settings. cs* do adresáře Controllers, který definuje a implementuje novou `Settings` třídu. Nahraďte obor názvů názvem vašeho projektu. 
 
     ```csharp
     namespace TestAppConfig
@@ -157,7 +157,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
     }
     ```
 
-3. Otevřete *Startup.cs* a pomocí `IServiceCollection.Configure<T>` `ConfigureServices` metody navažte konfigurační data ke `Settings` třídě.
+3. Otevřete *Startup. cs* a použijte `IServiceCollection.Configure<T>` v `ConfigureServices` metodě ke svázání dat konfigurace s `Settings` třídou.
 
     #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
@@ -291,7 +291,7 @@ Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s
 
 ## <a name="use-the-latest-configuration-data"></a>Použít nejnovější konfigurační data
 
-1. Otevřete *HomeController.cs* v adresáři Controllers a přidejte odkaz na `Microsoft.Extensions.Options` balíček.
+1. Otevřete *HomeController. cs* v adresáři Controllers a přidejte odkaz na `Microsoft.Extensions.Options` balíček.
 
     ```csharp
     using Microsoft.Extensions.Options;

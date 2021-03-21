@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0686a4dafae17bafc65a03c985a65aecba70e60c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98017013"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Používání služby Azure AD Connect Health se službou AD DS
@@ -49,10 +49,10 @@ Tento řídicí panel zobrazuje stav replikace a topologii replikace pro řadič
 
 ![Stav replikace](./media/how-to-connect-health-adds/aadconnect-health-adds-replication.png)
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 Tato funkce zajišťuje grafické zobrazení trendů různých čítačů výkonu, které se průběžně shromažďují ze všech monitorovaných řadičů domény. Výkon řadiče domény můžete snadno porovnat se všemi ostatními monitorovanými řadiči domény v doménové struktuře. Kromě toho můžete různé čítače výkonu zobrazit vedle sebe, což je užitečné při řešení problémů ve vašem prostředí.
 
-![Sledování](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
+![Monitorování](./media/how-to-connect-health-adds/aadconnect-health-adds-monitoring.png)
 
 Ve výchozím nastavení jsme předem vybrali čtyři čítače výkonu. Kliknutím na příkaz filtru a výběrem nebo zrušením výběru libovolných požadovaných čítačů, můžete přidat nebo odebrat další čítače. Můžete také dvakrát kliknout na graf čítače výkonu. Tím otevřete nové okno, které obsahuje datové body každého monitorovaného řadiče domény.
 

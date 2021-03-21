@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 786e9b472d1f900e94e5d0cfa6a00e0f85547704
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037689"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
@@ -24,7 +24,7 @@ Výstrahy protokolu jsou jedním z typů výstrah, které jsou podporovány v [u
 > [!NOTE]
 > Pro verzi rozhraní API `2020-05-01-preview` a výstrahy protokolu orientované na prostředky se momentálně neúčtují žádné další poplatky.  Ceny pro funkce, které jsou ve verzi Preview, budou v budoucnu ohlášeny a oznámení poskytované před zahájením fakturace. Pokud se rozhodnete dál používat novou verzi rozhraní API a výstrahy protokolu orientované na prostředky po období oznámení, bude se vám účtovat příslušná sazba.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Výstrahy protokolu spouštějí dotazy na Log Analytics data. Nejdřív byste měli začít [shromažďovat data protokolu](../essentials/resource-logs.md) a dotazovat se na data protokolu. Pomocí [tématu Příklady dotazů na výstrahy](../logs/example-queries.md) v Log Analytics můžete pochopit, co můžete zjistit nebo začít [psát vlastní dotaz](../logs/log-analytics-tutorial.md).
 
@@ -82,7 +82,7 @@ U pracovních prostorů a Application Insights se říká na **základě** výb�
 
 Chcete zjistit, kdy vaše aplikace odpověděla s kódem chyby 500 (interní chyba serveru). Vytvořili byste pravidlo výstrahy s následujícími podrobnostmi:
 
-- **Zadávání** 
+- **Dotaz:** 
 
 ```Kusto
 requests
@@ -128,7 +128,7 @@ V pracovních prostorech a Application Insights je podporováno pouze v typu mí
 
 Například chcete monitorovat chyby pro více virtuálních počítačů, na kterých běží web nebo aplikace v konkrétní skupině prostředků. Pomocí pravidla výstrahy protokolu můžete postupovat takto:
 
-- **Zadávání** 
+- **Dotaz:** 
 
     ```Kusto
     // Reported errors

@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: fe65a9528e35416d537f3aecd3a44f8b4e568afe
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.date: 03/18/2021
+ms.openlocfilehash: 8617c32eac86d8e47678c06e3b028a475b4a5efb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467727"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593845"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Řešení potíží s mapováním toků dat v Azure Data Factory
 
@@ -26,12 +26,6 @@ Tento článek popisuje běžné metody řešení potíží pro mapování toků
 - **Zpráva**: spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
 - **Příčina**: datová sada obsahuje kontejner, který neexistuje v úložišti.
 - **Doporučení**: Ujistěte se, že kontejner odkazovaný ve vaší datové sadě existuje a je k němu k dispozici.
-
-### <a name="error-code-df-executor-systemimplicitcartesian"></a>Kód chyby: DF-exekutor-SystemImplicitCartesian
-
-- **Zpráva**: implicitní kartézském produkt pro vnitřní spojení není podporován, místo toho použijte vzájemné spojení. Sloupce používané ve spojení by měly vytvořit jedinečný klíč pro řádky.
-- **Příčina**: implicitní kartézském produkty pro vnitřní spojení mezi logickými plány nejsou podporovány. Pokud ve spojení používáte sloupce, vytvořte jedinečný klíč s alespoň jedním sloupcem na obou stranách relace.
-- **Doporučení**: u spojení, která nejsou založená na rovnosti, použijte vlastní křížové spojení.
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>Kód chyby: DF-exekutor-SystemInvalidJson
 
@@ -82,11 +76,6 @@ Tento článek popisuje běžné metody řešení potíží pro mapování toků
 - **Příčina**: datový typ pro deklarovaný typ není kompatibilní se skutečnou hodnotou parametru.
 - **Doporučení**: Ověřte, zda hodnoty parametrů předané do toku dat odpovídají deklarovanému typu.
 
-### <a name="error-code-df-executor-columnunavailable"></a>Kód chyby: DF-exekutor-ColumnUnavailable
-- **Zpráva**: název sloupce použitý ve výrazu není k dispozici nebo je neplatný.
-- **Příčina**: ve výrazu je použit neplatný nebo nedostupný název sloupce.
-- **Doporučení**: ve výrazech ověřte názvy sloupců.
-
 ### <a name="error-code-df-executor-parseerror"></a>Kód chyby: DF-exekutor-ParseError
 - **Zpráva**: výraz nejde analyzovat.
 - **Příčina**: výraz vygeneroval chyby při analýze z důvodu nesprávného formátování.
@@ -96,29 +85,6 @@ Tento článek popisuje běžné metody řešení potíží pro mapování toků
 - **Zpráva**: implicitní kartézském produkt pro vnitřní spojení není podporován, místo toho použijte vzájemné spojení. Sloupce používané ve spojení by měly vytvořit jedinečný klíč pro řádky.
 - **Příčina**: implicitní kartézském produkty pro vnitřní spojení mezi logickými plány nejsou podporovány. Pokud ve spojení používáte sloupce, vytvořte jedinečný klíč.
 - **Doporučení**: u spojení, která nejsou založená na rovnosti, použijte vzájemné spojení.
-
-### <a name="error-code-df-executor-systeminvalidjson"></a>Kód chyby: DF-exekutor-SystemInvalidJson
-- **Zpráva**: Chyba analýzy JSON, nepodporované kódování nebo víceřádkové
-- **Příčina**: možné problémy se souborem JSON: nepodporované kódování, poškozené bajty nebo použití zdroje JSON jako jednoho dokumentu na mnoha vnořených řádcích.
-- **Doporučení**: Ověřte, zda je kódování souboru JSON podporováno. Ve zdrojové transformaci, která používá datovou sadu JSON, rozbalte **Nastavení JSON** a zapněte **jeden dokument**.
-
-
-
-### <a name="error-code-df-executor-conversion"></a>Kód chyby: DF-prováděcí-převod
-- **Zpráva**: převod na datum nebo čas se nezdařil z důvodu neplatného znaku.
-- **Příčina**: data nejsou v očekávaném formátu.
-- **Doporučení**: Použijte správný datový typ.
-
-
-### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>Kód chyby: DF-exekutor-BlockCountExceedsLimitError
-- **Zpráva**: počet nepotvrzených bloků nemůže překročit maximální limit 100 000 bloků. Ověřte konfiguraci objektu BLOB.
-- **Příčina**: maximální počet nepotvrzených bloků v objektu blob je 100 000.
-- **Doporučení**: Další informace o tomto problému získáte od Microsoft Product Team.
-
-### <a name="error-code-df-executor-partitiondirectoryerror"></a>Kód chyby: DF-exekutor-PartitionDirectoryError
-- **Zpráva**: Zadaná cesta ke zdroji má buď více adresářů s oddíly (například *<Source Path> /<kořenový adresář 1>/a = 10/b = 20, <Source Path> /<kořenového adresáře oddílu 2>/c = 10/d = 30*) nebo adresář s děleným jiným souborem nebo nerozděleným adresářem (například *<Source Path> kořenový adresář oddílu 1 <oddíl:/a = 10/b = 20,/Directory <Source Path> 2/Soubor1)*, odeberte kořenový adresář oddílu ze zdrojové cesty a přečtěte>ho pomocí samostatné transformace zdroje.
-- **Příčina**: zdrojová cesta má buď více oddílů rozdělených na oddíly, nebo oddílů s oddíly, které mají jiný soubor nebo adresář bez oddílů. 
-- **Doporučení**: Odeberte kořenový adresář oddílů ze zdrojové cesty a přečtěte ho pomocí samostatné transformace zdroje.
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>Kód chyby: GetCommand OutputAsync se nezdařilo.
 - **Zpráva**: během ladění a náhledu dat toku dat došlo k chybě příkazu GetCommand OutputAsync...
@@ -137,22 +103,10 @@ Tento článek popisuje běžné metody řešení potíží pro mapování toků
 - **Příčina**: název účtu nebo přístupový klíč nejsou správné.
 - **Doporučení**: Ujistěte se, že název účtu nebo přístupový klíč zadaný v propojené službě jsou správné. 
 
-### <a name="error-code-df-executor-invalidtype"></a>Kód chyby: DF-exekutor-InvalidType
-- **Zpráva**: Ujistěte se prosím, že typ parametrů odpovídá typu předané hodnoty. Předávání parametrů float z kanálů není aktuálně podporováno.
-- **Příčina**: datový typ pro deklarovaný typ není kompatibilní se skutečnou hodnotou parametru. 
-- **Doporučení**: zadejte správné datové typy.
-
 ### <a name="error-code-df-executor-columnunavailable"></a>Kód chyby: DF-exekutor-ColumnUnavailable
 - **Zpráva**: název sloupce použitý ve výrazu není k dispozici nebo je neplatný.
 - **Příčina**: ve výrazu je použit neplatný nebo nedostupný název sloupce.
 - **Doporučení**: Ověřte názvy sloupců používané ve výrazech.
-
-
-### <a name="error-code-df-executor-parseerror"></a>Kód chyby: DF-exekutor-ParseError
-- **Zpráva**: výraz nelze analyzovat.
-- **Příčina**: výraz vygeneroval chyby při analýze z důvodu nesprávného formátování. 
-- **Doporučení**: ve výrazu ověřte formátování.
-
 
  ### <a name="error-code-df-executor-outofdiskspaceerror"></a>Kód chyby: DF-exekutor-OutOfDiskSpaceError
 - **Zpráva**: interní chyba serveru

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
 ms.openlocfilehash: 0388520903e208b3225375d5cee81e8321740a1b
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103487730"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Připojení zařízení Modbus TCP přes bránu IoT Edge zařízení
@@ -27,7 +27,7 @@ Tento článek popisuje vytvoření vlastní bitové kopie kontejneru pro modul 
 
 V tomto článku se předpokládá, že používáte protokol Modbus TCP. Další informace o tom, jak nakonfigurovat modul pro podporu Modbus RTU, najdete v projektu [modulu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Zařízení Azure IoT Edge. Návod, jak ho nastavit, najdete v tématu [nasazení Azure IoT Edge v systému Windows](quickstart.md) nebo [Linux](quickstart-linux.md).
 * Primární připojovací řetězec klíče pro zařízení IoT Edge.

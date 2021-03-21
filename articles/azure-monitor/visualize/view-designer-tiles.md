@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: d1d0da70dc1e47d0a1ddb90abbed2eaea83919cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040171"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Referenční příručka pro zobrazení dlaždic návrháře v Azure Monitor
@@ -23,7 +23,7 @@ Další informace o návrháři zobrazení najdete v těchto tématech:
 
 K dispozici jsou dlaždice návrháře zobrazení, které jsou popsány v následující tabulce:  
 
-| dlaždici | Popis |
+| dlaždici | Description |
 |:--- |:--- |
 | [Číselná](#number-tile) |Počet záznamů z dotazu. |
 | [Dvě čísla](#two-numbers-tile) |Počty záznamů ze dvou různých dotazů. |
@@ -45,7 +45,7 @@ Dlaždice **číslo** zobrazuje počet záznamů z dotazu protokolu a popisku.
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Popis |Text zobrazený pod názvem dlaždice |
+| Description |Text zobrazený pod názvem dlaždice |
 | **dlaždici** | |
 | Legenda |Text zobrazený pod hodnotou |
 | Dotaz |Dotaz, který je spuštěn. Zobrazí se počet záznamů vrácených dotazem. |
@@ -63,7 +63,7 @@ Tato dlaždice zobrazuje počet záznamů ze dvou různých dotazů protokolu a 
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Popis |Text zobrazený pod názvem dlaždice |
+| Description |Text zobrazený pod názvem dlaždice |
 | **První dlaždice** | |
 | Legenda |Text zobrazený pod hodnotou |
 | Dotaz |Dotaz, který je spuštěn. Zobrazí se počet záznamů vrácených dotazem. |
@@ -84,7 +84,7 @@ Na dlaždici **prstenec** se zobrazí jedno číslo, které shrnuje sloupec hodn
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Popis |Text zobrazený pod názvem dlaždice |
+| Description |Text zobrazený pod názvem dlaždice |
 | **Prstencový graf** | |
 | Dotaz |Dotaz, který je spuštěn pro prstenec. První vlastností je textová hodnota a druhá vlastnost je číselná hodnota. Tento dotaz obvykle používá klíčové slovo *Measure* k sumarizaci výsledků. |
 | **Prstencový graf** |**Centrum>** |
@@ -108,7 +108,7 @@ Tato dlaždice je spojnicový graf, který v průběhu času zobrazuje více řa
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Popis |Text zobrazený pod názvem dlaždice |
+| Description |Text zobrazený pod názvem dlaždice |
 | **Spojnicový graf** | |
 | Dotaz |Dotaz, který se spouští pro spojnicový graf. První vlastností je textová hodnota a druhá vlastnost je číselná hodnota. Tento dotaz obvykle používá klíčové slovo *Measure* k sumarizaci výsledků. Pokud dotaz používá klíčové slovo *interval* , osa x použije tento časový interval. Pokud dotaz nepoužije klíčové slovo *interval* , osa x použije hodinové intervaly. |
 | **Spojnicový graf** |**> osa Y** |
@@ -129,7 +129,7 @@ Tato dlaždice má spojnicový graf, který zobrazuje více řad z dotazu protok
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Popis |Text zobrazený pod názvem dlaždice |
+| Description |Text zobrazený pod názvem dlaždice |
 | **Spojnicový graf** | |
 | Dotaz |Dotaz, který se spouští pro spojnicový graf. První vlastností je textová hodnota a druhá vlastnost je číselná hodnota. Tento dotaz obvykle používá klíčové slovo *Measure* k sumarizaci výsledků. Pokud dotaz používá klíčové slovo *interval* , osa x použije tento časový interval. Pokud dotaz nepoužije klíčové slovo *interval* , osa x použije hodinové intervaly. |
 | **Spojnicový graf** |**Popisek>** |
@@ -154,7 +154,7 @@ Dlaždice **dvě časové osy** zobrazuje výsledky dvou dotazů protokolu v pr�
 | Nastavení | Popis |
 |:--- |:--- |
 | Název |Text zobrazený v horní části dlaždice |
-| Popis |Text zobrazený pod názvem dlaždice |
+| Description |Text zobrazený pod názvem dlaždice |
 | První graf | |
 | Legenda |Text zobrazený pod popiskem prvního seriálu |
 | Barva |Barva, která se používá pro sloupce v první řadě |

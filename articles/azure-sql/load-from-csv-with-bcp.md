@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103472238"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>Načtení dat z CSV do Azure SQL Database nebo spravované instance SQL (ploché soubory)
@@ -25,7 +25,7 @@ K importu dat ze souboru CSV do Azure SQL Database nebo spravované instance Azu
 
 ## <a name="before-you-begin"></a>Než začnete
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku potřebujete:
 

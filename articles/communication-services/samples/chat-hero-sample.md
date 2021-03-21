@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103487819"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
@@ -59,7 +59,7 @@ Součásti hlavní obrazovky chatu:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 a vyšší)](https://nodejs.org/en/download/)
@@ -87,7 +87,7 @@ Ukázku můžete otestovat místně tak, že otevřete několik relací prohlí�
 1. Přejít do složky chat a otevřít `Chat.csproj` řešení v aplikaci Visual Studio
 2. Spusťte projekt. Prohlížeč se otevře v localhost: 5000.
 
-#### <a name="troubleshooting"></a>Řešení potíží
+#### <a name="troubleshooting"></a>Poradce při potížích
 
 - Řešení se nevytvoří, vyvolá chyby během instalace/buildu NPM.
 

@@ -7,15 +7,15 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 82e64af5cec8641abacf5afa323fc38382a124c4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103487979"
 ---
 V tomto rychlém startu se dozvíte, jak se připojit k týmům pomocí komunikačních služeb Azure s voláním klientské knihovny pro Android.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Funkční [komunikační služby, které volají aplikaci pro Android](../getting-started-with-calling.md)
 - [Nasazení týmů](/deployoffice/teams-install).

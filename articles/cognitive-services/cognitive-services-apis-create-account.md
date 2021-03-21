@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 69c83e9172a8369b7ff31116ee4db74fc33d86bb
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 115457180efab719b406c4e1e021234fa99736ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472125"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670496"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí Azure Portal
 
@@ -25,7 +25,7 @@ Azure Cognitive Services jsou cloudové služby s rozhraními REST API a sady SD
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/).
 
@@ -39,12 +39,10 @@ Prostředek s více službami se jmenuje **Cognitive Services** na portálu. [Vy
 
 Prostředek s více službami v současnosti umožňuje přístup k následujícím Cognitive Services:
 
-* Počítačové zpracování obrazu
-* Content Moderator
-* Rozpoznávání tváře
-* Language Understanding (LUIS)
-* Analýza textu
-* Překladač
+* **Vision** – Počítačové zpracování obrazu, Custom Vision, rozpoznávání formulářů, tvář
+* **Řeč** – řeč
+* **Language** -Language UNDERSTANDING (Luis), analýza textu, Translator
+* **Rozhodnutí** – přizpůsobení Content moderator
 
 ### <a name="single-service-resource"></a>[Prostředek s jednou službou](#tab/singleservice)
 
@@ -52,10 +50,11 @@ K vytvoření prostředku pro dostupné Cognitive Services použijte odkazy ní�
 
 | Obraz                      | Řeč                  | Jazyk                          | Rozhodnutí             |
 |-----------------------------|-------------------------|-----------------------------------|----------------------|
-| [Počítačové zpracování obrazu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Hlasové služby](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Moderní čtečka](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Detektor anomálií](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | 
-| [Služba Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Rozpoznávání mluvčího](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
+| [Počítačové zpracování obrazu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Služby Speech](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Moderní čtečka](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Detektor anomálií](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | 
+| [Služba Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) |  | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
 | [Rozpoznávání tváře](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizace](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     |
-| [Rozpoznávání rukopisu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Analýza textu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+| [Rozpoznávání formulářů](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)        |                         | [Analýza textu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+| | | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) | |
 
 ---
 
@@ -72,9 +71,10 @@ K vytvoření prostředku pro dostupné Cognitive Services použijte odkazy ní�
 | **Název** | Popisný název prostředku služby pro rozpoznávání. Například *MyCognitiveServicesResource*. |
 | **Cenová úroveň** | Náklady na účet Cognitive Services závisí na možnostech, které zvolíte, a na vašem využití. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/)rozhraní API.
 
-![Obrazovka pro vytvoření prostředku s více službami](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+<!--![Multi-service resource creation screen](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)-->
+:::image type="content" source="media/cognitive-services-apis-create-account/resource_create_screen-multi.png" alt-text="Obrazovka pro vytváření prostředků s více službami":::
 
-Vyberte **Vytvořit**.
+Přečtěte si a přijměte podmínky (podle potřeby) a pak vyberte **zkontrolovat + vytvořit**.
 
 ### <a name="single-service-resource"></a>[Prostředek s jednou službou](#tab/singleservice)
 
@@ -86,9 +86,10 @@ Vyberte **Vytvořit**.
 | **Název** | Popisný název prostředku služby pro rozpoznávání. Například *MyCognitiveServicesResource*. |
 | **Cenová úroveň** | Náklady na účet Cognitive Services závisí na možnostech, které zvolíte, a na vašem využití. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/)rozhraní API.
 
-![Obrazovka pro vytváření prostředků s jednou službou](media/cognitive-services-apis-create-account/resource_create_screen.png)
+<!--![Single-service resource creation screen](media/cognitive-services-apis-create-account/resource_create_screen.png)-->
+:::image type="content" source="media/cognitive-services-apis-create-account/resource_create_screen.png" alt-text="Obrazovka pro vytváření prostředků s jednou službou":::
 
-Vyberte **Vytvořit**.
+Vyberte **Další: Virtual Network** a zvolte typ síťového přístupu, který chcete pro svůj prostředek použít, a pak vyberte **zkontrolovat + vytvořit**.
 
 ---
 

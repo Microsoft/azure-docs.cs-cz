@@ -7,10 +7,10 @@ ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 6295a56abbf3466c68b968c935936dbc10e22fb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101711412"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Řešení potíží s načtením sady SDK pro webové aplikace v jazyce JavaScript
@@ -30,7 +30,7 @@ Výjimka selhání načtení sady SDK je vytvořena a hlášena fragmentem kódu
 
 Podrobnosti zásobníku zahrnují základní informace o adresách URL používaných koncovým uživatelem.
 
-| Název                      | Popis                                                                                                  |
+| Název                      | Description                                                                                                  |
 |---------------------------|--------------------------------------------------------------------------------------------------------------|
 | &lt;&nbsp;Koncový bod CDN&gt; | Adresa URL, která byla použita (a nebyla úspěšná) pro stažení sady SDK.                                                      |
 | &lt;Odkaz na Help &nbsp;&gt;    | Adresa URL, která odkazuje na dokumentaci k řešení potíží (Tato stránka).                                              |

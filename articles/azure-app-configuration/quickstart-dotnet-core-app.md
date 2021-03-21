@@ -9,17 +9,17 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 0ff80287971365b1477be319dc7a04760687f6a9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98663396"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Core s konfigurací aplikace
 
 V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové aplikace .NET Core, která umožňuje centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 - [.NET Core SDK](https://dotnet.microsoft.com/download) – k dispozici také [Azure Cloud Shell](https://shell.azure.com).
@@ -64,7 +64,7 @@ K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhran
     dotnet restore
     ```
 
-3. Otevřete *program.cs* a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
+3. Otevřete *program. cs* a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration;

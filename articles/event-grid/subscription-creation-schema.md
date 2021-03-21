@@ -4,10 +4,10 @@ description: Tento článek popisuje vlastnosti pro přihlášení k odběru ud�
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199947"
 ---
 # <a name="event-grid-subscription-schema"></a>Schéma předplatného Event Grid
@@ -28,21 +28,21 @@ Název odběru události musí mít délku 3-64 znaků a může obsahovat jenom 
  
 ## <a name="event-subscription-properties"></a>Vlastnosti odběru událostí
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | destination | object | Objekt, který definuje koncový bod. |
 | filter | object | Volitelné pole pro filtrování typů událostí. |
 
 ### <a name="destination-object"></a>cílový objekt
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | endpointType | řetězec | Typ koncového bodu pro předplatné (Webhook/HTTP, centrum událostí nebo fronta). | 
 | endpointUrl | řetězec | Cílová adresa URL pro události v tomto předplatném události | 
 
 ### <a name="filter-object"></a>Filter – objekt
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | Odpovídá, pokud typ události ve zprávě události přesně odpovídá jednomu z těchto názvů typu události. Vyvolá chybu, pokud název události neodpovídá registrovaným názvům typů události pro daný zdroj události. Výchozí hodnota odpovídá všem typům událostí. |
 | subjectBeginsWith | řetězec | Filtr se shodou předpony do pole předmětu ve zprávě události. Výchozí nebo prázdný řetězec odpovídá všem. | 

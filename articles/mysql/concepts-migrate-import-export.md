@@ -7,20 +7,19 @@ ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 391a38cd3d1e2ffb790587b6c60ed54992d14d2d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 721939ee55976f9eb0c4dff24067036a9d0f4164
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561987"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591856"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrace databáze MySQL pomocí importu a exportu
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 Tento článek vysvětluje dva běžné přístupy k importu a exportu dat na server Azure Database for MySQL pomocí MySQL Workbench.
 
-Podrobný a komplexní průvodce migrací najdete v tématu [Průvodce migrací databáze MySQL do Azure](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide). 
+Podrobné a komplexní pokyny k migraci najdete v [příručce k migraci prostředků](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide). Další scénáře migrace najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/). 
 
-Podrobné informace a případy použití migrace databází do Azure Database for MySQL najdete také v [Průvodci migrací databáze](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) . Tato příručka poskytuje pokyny, které povedou k úspěšnému plánování a provádění migrace MySQL do Azure.
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud chcete projít tento průvodce, budete potřebovat:

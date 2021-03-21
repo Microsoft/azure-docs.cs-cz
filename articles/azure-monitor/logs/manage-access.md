@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
 ms.openlocfilehash: 79bcca688146b2c2382876b6a61bc0eee34382a1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040953"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor
@@ -161,7 +161,7 @@ Role čtecího modulu Log Analytics zahrnuje následující akce Azure:
 
 Role Přispěvatel Log Analytics zahrnuje následující akce Azure:
 
-| Oprávnění | Popis |
+| Oprávnění | Description |
 | ---------- | ----------- |
 | `*/read`     | Možnost zobrazit všechny prostředky a jejich konfiguraci. To zahrnuje zobrazení: <br> Stavu rozšíření virtuálního počítače <br> Konfigurace diagnostiky Azure pro prostředky <br> Všechny vlastnosti a nastavení všech prostředků. <br> U pracovních prostorů umožňuje úplná neomezená oprávnění číst nastavení pracovního prostoru a provádět dotaz na data. Podívejte se na podrobnější možnosti výše. |
 | `Microsoft.Automation/automationAccounts/*` | Možnost vytvořit a konfigurovat účty služby Azure Automation, včetně přidávání a úprav runbooků |
@@ -188,7 +188,7 @@ Pro zajištění přesného řízení přístupu doporučujeme provést přiřaz
 
 Když se uživatelé dotazují v protokolech z pracovního prostoru pomocí přístupu kontextu prostředků, budou mít pro tento prostředek následující oprávnění:
 
-| Oprávnění | Popis |
+| Oprávnění | Description |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Příklady:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Možnost Zobrazit všechna data protokolu pro daný prostředek.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Možnost konfigurace nastavení diagnostiky tak, aby povolovala nastavování protokolů pro tento prostředek. |

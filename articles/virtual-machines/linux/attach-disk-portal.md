@@ -8,12 +8,12 @@ ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.collection: linux
-ms.openlocfilehash: a6ef2cd62fc14958e8505a03e69e4b20cf6ce49f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0fe584ea8559c285ee7e25caca958ff56aa9454d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556821"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601822"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu 
 V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md). 
@@ -81,7 +81,7 @@ V tomto příkladu je disk, který jsem přidal, `sdc` . Je to logická jednotka
 
 V případě složitějšího příkladu je třeba, aby na portálu vypadalo více datových disků:
 
-:::image type="content" source="./media/attach-disk-portal/create-new-md.png" alt-text="Zkontrolujte nastavení disku.":::
+:::image type="content" source="./media/attach-disk-portal/find-disk.png" alt-text="Snímek obrazovky s více disky zobrazenými na portálu":::
 
 V imagi vidíte, že je k dispozici 3 datové disky: 4 GB na logických jednotkách 0, 16GB na logické jednotce (LUN) 1 a 32G na logické jednotce (LUN) 2.
 
@@ -227,6 +227,6 @@ Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace, které vám pomůžou při řešení problémů s disky, najdete v tématu věnovaném [řešení potíží se změnami názvu zařízení virtuálních počítačů Linux](../troubleshooting/troubleshoot-device-names-problems.md).
+Další informace, které vám pomůžou při řešení problémů s disky, najdete v tématu věnovaném [řešení potíží se změnami názvu zařízení virtuálních počítačů Linux](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
 
 [Datový disk](add-disk.md) můžete také připojit pomocí rozhraní příkazového řádku Azure CLI.

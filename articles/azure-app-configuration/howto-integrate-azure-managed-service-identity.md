@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.openlocfilehash: 2f446df95c795eaac378340ed0d5de7b31dfcfee
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102219029"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Použití spravovaných identit pro přístup ke službě App Configuration
@@ -37,7 +37,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Nakonfigurujte svou aplikaci tak, aby používala spravovanou identitu, když se připojíte ke konfiguraci aplikace.
 > * Volitelně můžete aplikaci nakonfigurovat tak, aby používala spravovanou identitu, když se k Key Vault připojíte prostřednictvím konfigurace aplikace Key Vault odkazem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -96,7 +96,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     }
     ```
 
-1. Otevřete *program.cs* a přidejte odkaz na `Azure.Identity` `Microsoft.Azure.Services.AppAuthentication` obory názvů a:
+1. Otevřete *program. cs* a přidejte odkaz na `Azure.Identity` `Microsoft.Azure.Services.AppAuthentication` obory názvů a:
 
     ```csharp-interactive
     using Azure.Identity;
@@ -148,7 +148,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     >Jak je vysvětleno v tématu [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), existuje výchozí způsob, jak vyřešit, která spravovaná identita se používá. V takovém případě vám knihovna identit Azure vynutila určení požadované identity, aby nedocházelo k problémům s překročila povolený runtime v budoucnosti (například pokud je přidána nová spravovaná identita přiřazená uživatelem nebo pokud je povolená spravovaná identita přiřazená systémem). Proto budete muset zadat clientId i v případě, že je definovaná jenom jedna spravovaná identita přiřazená uživatelem a neexistuje žádná spravovaná identita přiřazená systémem.
 
 
-1. Pokud chcete použít konfigurační hodnoty aplikace i odkazy na Key Vault, aktualizujte *program.cs* , jak je znázorněno níže. Tento kód volá `SetCredential` jako součást `ConfigureKeyVault` k tomu, aby poskytovatel konfigurace informoval, jaké přihlašovací údaje se mají použít při ověřování Key Vault.
+1. Pokud chcete použít konfigurační hodnoty aplikace i odkazy na Key Vault, aktualizujte *program. cs* , jak vidíte níže. Tento kód volá `SetCredential` jako součást `ConfigureKeyVault` k tomu, aby poskytovatel konfigurace informoval, jaké přihlašovací údaje se mají použít při ověřování Key Vault.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 

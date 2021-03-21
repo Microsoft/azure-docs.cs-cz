@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b58280a7a1a49bdc8fc81900a32ee4edc115c71f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102216152"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>Ukázka CLI: Vytvoření a odeslání úlohy
@@ -28,7 +28,7 @@ ms.locfileid: "102216152"
 
 Pokud ve službě Media Services v3 odešlete úlohy pro zpracování videí, musíte službu Media Services informovat, kde najde vstupní video. Jednou z možností je určit adresu URL HTTPS jako vstup úlohy (jak je znázorněno v tomto článku). 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 [Vytvořte účet Media Services](./create-account-howto.md).
 

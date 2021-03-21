@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/08/2019
 ms.openlocfilehash: 82cad7fc68d650e5f525a8722d3e2f3e9865f456
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98936742"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Scénář: výjimka úložiště po resetování připojení ve službě Azure HDInsight
@@ -29,7 +29,7 @@ I když se v úložišti nevolal žádný objekt BLOB složky `/hbase/data/defau
 
 1. V uživatelském rozhraní Apache Ambari restartujte aktivní HMaster. To umožní, aby se jeden ze dvou úspor v pohotovostním HMaster stal aktivním a nový aktivní HMaster znovu nasadí informace o tabulce metadat. Proto se `already-deleted` tabulka v uživatelském rozhraní HMaster nezobrazí.
 
-1. Osamocený soubor blob můžete najít z nástrojů uživatelského rozhraní, jako je Průzkumník cloudu nebo spuštění příkazu `hdfs dfs -ls /xxxxxx/yyyyy` . Spuštěním `hdfs dfs -rmr /xxxxx/yyyy` odstraňte tento objekt BLOB. Například `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
+1. Osamocený soubor blob můžete najít z nástrojů uživatelského rozhraní, jako je Průzkumník cloudu nebo spuštění příkazu `hdfs dfs -ls /xxxxxx/yyyyy` . Spuštěním `hdfs dfs -rmr /xxxxx/yyyy` odstraňte tento objekt BLOB. Například, `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`.
 
 Nyní můžete vytvořit novou tabulku se stejným názvem v okně HBA.
 

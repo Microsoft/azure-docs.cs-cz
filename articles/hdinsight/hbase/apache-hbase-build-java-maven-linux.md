@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
 ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942956"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Java pro Apache HBA
@@ -18,7 +18,7 @@ Naučte se vytvořit aplikaci [Apache HBA](https://hbase.apache.org/) v jazyce J
 
 Kroky v tomto dokumentu používají [Apache Maven](https://maven.apache.org/) k vytvoření a sestavení projektu. Maven je nástroj pro správu a porozumění projektů softwaru, který umožňuje sestavovat software, dokumentaci a sestavy pro projekty v jazyce Java.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache HBA v HDInsight. Přečtěte si téma Začínáme [s Apache HBA](./apache-hbase-tutorial-get-started-linux.md).
 
