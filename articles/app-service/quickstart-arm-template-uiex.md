@@ -10,10 +10,10 @@ ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179081"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rychlý Start: Vytvoření aplikace App Service pomocí šablony ARM
@@ -55,7 +55,7 @@ V šabloně jsou definované dva prostředky Azure:
 
 Následující tabulka popisuje parametry výchozích hodnot a jejich popis:
 
-| Parametry | Typ    | Výchozí hodnota                | Popis |
+| Parametry | Typ    | Výchozí hodnota                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
 | location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
@@ -85,7 +85,7 @@ V šabloně jsou definované dva prostředky Azure:
 
 Následující tabulka popisuje parametry výchozích hodnot a jejich popis:
 
-| Parametry | Typ    | Výchozí hodnota                | Popis |
+| Parametry | Typ    | Výchozí hodnota                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
 | location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
@@ -142,7 +142,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <summary>Návody nasadit jinou sadu jazyků?</summary>
 Pokud chcete nasadit jiný jazykový zásobník, aktualizujte <abbr title="Tato šablona je kompatibilní s aplikacemi .NET Core, .NET Framework, PHP, Node.js a statickými HTML. "> parametr jazyka</abbr> s příslušnými hodnotami. Informace pro Java najdete v tématu <a href="/azure/app-service/quickstart-java-uiex">Vytvoření aplikace Java</a>.
 
-| Parametry | Typ    | Výchozí hodnota                | Popis |
+| Parametry | Typ    | Výchozí hodnota                | Description |
 |------------|---------|------------------------------|-------------|
 | language   | řetězec  | platformy                       | Sada programovacích jazyků (.NET, php, Node, HTML) |
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
 ms.openlocfilehash: 22e48239631850d82cbb3e3208748416087da87c
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103422149"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>Efektivní horizontální navýšení kapacity vlastní dovednosti
@@ -22,7 +22,7 @@ Vlastní dovednosti jsou webová rozhraní API, která implementují konkrétní
 * Azure webapps pro jednoduché s kontejnerem AI – dovednosti
 * Služba Azure Kubernetes pro složitější nebo větší dovednosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Projděte si [vlastní dovednostní rozhraní](cognitive-search-custom-skill-interface.md) , kde se seznámíte se vstupním a výstupním rozhraním, které by měla vlastní dovednost implementovat.
 

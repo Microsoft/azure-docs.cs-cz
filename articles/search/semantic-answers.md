@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: e467affd3ba1b839ce3323e3689d7f5134a0686f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9bb62544887e0bc0269b98cd98fbf97fc477352f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604300"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722425"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Vrácení sémantické odpovědi v Azure Kognitivní hledání
 
 > [!IMPORTANT]
-> Funkce sémantického vyhledávání jsou ve verzi Public Preview dostupné jenom v rámci verze Preview REST API. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)a nemají zaručenou stejnou implementaci při obecné dostupnosti. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
+> Sémantické vyhledávání je ve verzi Public Preview, dostupné jenom v rámci verze Preview REST API. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)a nemají zaručenou stejnou implementaci při obecné dostupnosti. Tyto funkce jsou Fakturovatelné. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
 
 Když vytváříte [sémantický dotaz](semantic-how-to-query-request.md), můžete volitelně extrahovat obsah z horních dokumentů, které dotaz přímo odpovídá. Odpověď může obsahovat jednu nebo více odpovědí, které pak můžete vykreslit na stránce pro hledání, a tím zlepšit uživatelské prostředí aplikace.
 
@@ -28,27 +28,27 @@ V tomto článku se dozvíte, jak vyžádat sémantickou odpověď, rozbalit odp
 
 Všechny požadavky, které platí pro [sémantické dotazy](semantic-how-to-query-request.md) , se vztahují také na odpovědi, včetně úrovně služeb a oblasti.
 
-+ Dotazy jsou formulovány pomocí parametrů sémantického dotazu a obsahují parametr odpovědi. Požadované parametry jsou popsány v tomto článku.
++ Logika dotazu musí zahrnovat parametry sémantického dotazu a navíc parametr odpovědi. Požadované parametry jsou popsány v tomto článku.
 
-+ Řetězce dotazů musí být formulovány v jazyce, který má charakteristiky otázky (co, kde, kdy a jak).
++ Řetězce dotazu zadané uživatelem musí být formulovány v jazyce, který má charakteristiky otázky (co, kde, kdy, jak).
 
-+ Hledání dokumentů musí obsahovat text, který má vlastnosti odpovědi, a tento text musí existovat v jednom z polí uvedených v "searchFields".
++ Hledání dokumentů musí obsahovat text, který má vlastnosti odpovědi, a tento text musí existovat v jednom z polí uvedených v "searchFields". Například při zadání dotazu "Co je zatřiďovací tabulka", pokud žádný z searchFields neobsahuje pasáže, které zahrnují "zatřiďovací tabulku je...", pak odpověď není pravděpodobně vrácena.
 
 ## <a name="what-is-a-semantic-answer"></a>Co je sémantická odpověď?
 
-Sémantická odpověď je artefaktem [sémantického dotazu](semantic-how-to-query-request.md). Skládá se z jednoho nebo více doslovnéch pasáží z dokumentu pro hledání, které se formulují jako odpověď na dotaz, který vypadá jako otázka. Odpověď, která se má vrátit, musí existovat ve vyhledávacím dokumentu, který má jazykové charakteristiky odpovědi, a samotný dotaz musí být považován za otázku.
+Sémantická odpověď je podstrukturou odpovědi na [sémantický dotaz](semantic-how-to-query-request.md). Skládá se z jednoho nebo více doslovnéch pasáží z dokumentu pro hledání, které se formulují jako odpověď na dotaz, který vypadá jako otázka. Odpověď, která se má vrátit, musí existovat ve vyhledávacím dokumentu, který má jazykové charakteristiky odpovědi, a samotný dotaz musí být považován za otázku.
 
-Kognitivní hledání pro formulaci odpovědí používá model porozumění pro čtení počítačů. Model vytvoří sadu možných odpovědí z dostupných dokumentů a když dosáhne vysoké úrovně spolehlivosti, navrhne odpověď.
+Kognitivní hledání používá model porozumění pro čtení počítače k výběru nejlepší odpovědi. Model vytvoří sadu možných odpovědí z dostupného obsahu a když dosáhne dostatečně vysoké úrovně spolehlivosti, navrhne odpověď.
 
-Odpovědi se vrátí jako nezávislá objekt nejvyšší úrovně v datové části odpovědi na dotaz, který můžete zvolit pro vykreslování na stránkách vyhledávání společně s výsledky hledání na straně. Strukturální, jedná se o prvek pole odpovědi, která obsahuje text, klíč dokumentu a hodnocení spolehlivosti.
+Odpovědi se vrátí jako nezávislá objekt nejvyšší úrovně v datové části odpovědi na dotaz, který můžete zvolit pro vykreslování na stránkách vyhledávání společně s výsledky hledání na straně. Strukturální, jedná se o prvek pole v odpovědi sestávající z textu, klíč dokumentu a hodnocení spolehlivosti.
 
 <a name="query-params"></a>
 
 ## <a name="how-to-request-semantic-answers-in-a-query"></a>Požadavek na sémantické odpovědi v dotazu
 
-Pokud chcete vrátit sémantickou odpověď, musí mít dotaz typ sémantického dotazu, jazyk, vyhledávací pole a parametr odpovědi. Zadáním parametru reanswers nezaručujete, že dostanete odpověď, ale požadavek musí zahrnovat tento parametr, pokud se má vyvolávat zpracování odpovědí.
+Chcete-li vrátit sémantickou odpověď, dotaz musí mít sémantický "queryType", "queryLanguage", "searchFields" a parametr "odpovědi". Zadáním parametru reanswers nezaručujete, že dostanete odpověď, ale požadavek musí zahrnovat tento parametr, pokud se má vyvolávat zpracování odpovědí.
 
-Parametr "searchFields" je velmi důležitý pro vrácení vysoce kvalitní odpovědi, a to jak z hlediska obsahu, tak z hlediska pořadí. 
+Parametr "searchFields" je rozhodující pro vrácení vysoce kvalitní odpovědi, a to jak v závislosti na obsahu, tak v pořadí (viz níže). 
 
 ```json
 {
@@ -63,9 +63,9 @@ Parametr "searchFields" je velmi důležitý pro vrácení vysoce kvalitní odpo
 
 + Řetězec dotazu nesmí mít hodnotu null a měl by být formulován jako otázka. V této verzi Preview musí být "queryType" a "queryLanguage" nastavené přesně tak, jak je znázorněno v příkladu.
 
-+ Parametr "searchFields" Určuje, která pole poskytují tokeny modelu extrakce. Nezapomeňte nastavit tento parametr. Musíte mít alespoň jedno pole řetězce, ale zahrňte jakékoli pole řetězce, které považujete za užitečné při poskytování odpovědi. Souhrnně napříč všemi poli v searchFields se do modelu předávají jenom informace o tokenech 8 000 v jednom dokumentu. Zahajte seznam polí s stručnými poli a pak průběh do polí s textem v textu. Podrobné pokyny k nastavení tohoto pole naleznete v tématu [set searchFields](semantic-how-to-query-request.md#searchfields).
++ Parametr "searchFields" Určuje, která pole řetězce poskytují tokeny modelu extrakce. Stejné pole, která vytváří popisy, také poskytují odpovědi. Podrobné pokyny, jak nastavit toto pole tak, aby fungovalo pro titulky i odpovědi, najdete v tématu [set searchFields](semantic-how-to-query-request.md#searchfields). 
 
-+ Pro "odpovědi" je základní konstrukce parametrů `"answers": "extractive"` , kde je výchozí počet vrácených odpovědí jedna. Počet odpovědí můžete zvýšit přidáním počtu, maximálně po pěti.  Bez ohledu na to, jestli potřebujete víc než jednu odpověď, závisí na uživatelském prostředí vaší aplikace a na tom, jak se mají vykreslovat výsledky.
++ Pro "odpovědi" je konstrukce parametrů `"answers": "extractive"` , kde je výchozí počet vrácených odpovědí jedna. Počet odpovědí můžete zvýšit tak, že přidáte počet, jak je znázorněno v předchozím příkladu, maximálně na pět.  Bez ohledu na to, jestli potřebujete víc než jednu odpověď, závisí na uživatelském prostředí vaší aplikace a na tom, jak se mají vykreslovat výsledky.
 
 ## <a name="deconstruct-an-answer-from-the-response"></a>Dekonstruovat odpověď z odpovědi
 

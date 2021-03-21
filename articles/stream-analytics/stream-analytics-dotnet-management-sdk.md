@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/12/2021
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9adc4c92e3e637b9d3e18249b5de00782a94baab
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103232881"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: nastavení a spuštění analytických úloh pomocí rozhraní Azure Stream Analytics API pro .NET
@@ -24,7 +24,7 @@ Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dos
 > [!NOTE]
 > Aktualizovali jsme ukázkový kód v tomto článku se sadou Azure Stream Analytics Management .NET SDK V2 verze 2. x. Ukázku kódu pomocí sady SDK používá lagecy (1. x), viz [použití sady Management .NET SDK v1. x pro Stream Analytics]().
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete tento článek, musíte mít následující požadavky:
 
 * Nainstalujte Visual Studio 2019 nebo 2015.
@@ -81,7 +81,7 @@ Pokud chcete vytvořit úlohu analýzy, použijte rozhraní API Stream Analytics
    <Reference Include="System.Configuration" />
    ```
 
-5. Do zdrojového souboru (Program.cs) v projektu přidejte následující příkazy **using** :
+5. Do zdrojového souboru (program. cs) v projektu přidejte následující příkazy **using** :
    
    ```csharp
    using System;

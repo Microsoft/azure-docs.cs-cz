@@ -7,10 +7,10 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
 ms.openlocfilehash: 9b66fa6cd688cf0680e742ffa9fbe4d61a444ab2
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102632974"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Rychlý Start: nahrání, kódování a streamování obsahu pomocí portálu
@@ -47,7 +47,7 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
     * [Filtry](filters-concept.md)
 * Svůj obsah můžete chránit šifrováním pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo/a kteréhokoliv ze tří hlavních systémů DRM: Microsoft PlayReady, Google Widevine a Apple FairPlay. [Šifrování obsahu pomocí Azure Portal](encrypt-content-quickstart.md) rychlý Start ukazuje, jak nakonfigurovat ochranu obsahu.
         
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

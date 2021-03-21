@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 3d28946aad263af635a0139e68d424a77a1eab25
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103417820"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení u více konfigurací protokolu IP pomocí Azure Portal
@@ -41,7 +41,7 @@ V našem scénáři používáme následující konfiguraci:
 - Azure Load Balancer slouží k vystavení dvou front-endové IP adresy, jednu pro každý web. Adresy front-endu slouží k distribuci provozu do příslušné konfigurace protokolu IP pro každý web.
 - Stejné číslo portu se používá pro IP adresy front-endu i pro IP adresy fondu back-endu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Příklad našeho scénáře předpokládá, že máte skupinu prostředků s názvem **contosofabrikam** , která je nakonfigurována následujícím způsobem:
 

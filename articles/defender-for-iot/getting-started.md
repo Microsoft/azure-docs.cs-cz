@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 2/18/2021
 ms.author: shhazam
 ms.openlocfilehash: 487f9be432c908bf8ee1da858a9e45a18adffb8c
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102447703"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Rychlý Start: Začínáme s Defenderem pro IoT
@@ -28,7 +28,7 @@ Tento článek poskytuje přehled kroků, které budete provádět při nastavov
 - Nainstalujte software senzoru a místní konzolu pro správu.
 - Proveďte počáteční aktivaci senzoru a konzoly pro správu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Žádné
 

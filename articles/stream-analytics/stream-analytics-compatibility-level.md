@@ -5,29 +5,30 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 03/18/2021
+ms.openlocfilehash: a040aecbdee40832bd21256e26a140a986b65e39
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094075"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606238"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
-Tento článek popisuje možnost úrovně kompatibility v Azure Stream Analytics. Stream Analytics je spravovaná služba s pravidelnými aktualizacemi funkcí a vylepšení výkonu. Většina aktualizací za běhu služby je automaticky dostupná pro koncové uživatele. 
+Tento článek popisuje možnost úrovně kompatibility v Azure Stream Analytics.
 
-Některé nové funkce ve službě však mohou způsobit zásadní změnu, například změnu chování existující úlohy nebo změnu způsobu, jakým se data ve spuštěných úlohách spotřebovávají. Stávající úlohy Stream Analytics běží bez podstatných změn, protože nastavení úrovně kompatibility zůstane nižší. Až budete připraveni na nejnovější chování modulu runtime, můžete se rozhodnout, že vyvyvoláváte úroveň kompatibility. 
+Stream Analytics je spravovaná služba s [pravidelnými aktualizacemi funkcí a vylepšení výkonu s konstantním výkonem](https://azure.microsoft.com/updates/?product=stream-analytics). Většina aktualizací za běhu služby je automaticky dostupná koncovým uživatelům, nezávisle na úrovni kompatibility. Pokud ale nové funkce zavádí změnu v chování stávajících úloh nebo změníte způsob, jakým se data ve spuštěných úlohách spotřebovávají, zavádíme tuto změnu v rámci nové úrovně kompatibility. Stávající úlohy Stream Analytics běží bez podstatných změn, protože nastavení úrovně kompatibility zůstane nižší. Až budete připraveni na nejnovější chování modulu runtime, můžete se rozhodnout, že vyvyvoláváte úroveň kompatibility.
+
 
 ## <a name="choose-a-compatibility-level"></a>Zvolit úroveň kompatibility
 
-Úroveň kompatibility řídí chování za běhu úlohy Stream Analytics. 
+Úroveň kompatibility řídí chování za běhu úlohy Stream Analytics.
 
 Azure Stream Analytics aktuálně podporuje tři úrovně kompatibility:
 
-* 1,0 – původní úroveň kompatibility zavedená během obecné dostupnosti Azure Stream Analytics před několika lety.
-* 1,1 – předchozí chování
 * 1,2 – nejnovější chování s nejnovějšími vylepšeními
+* 1,1 – předchozí chování
+* 1,0 – původní úroveň kompatibility zavedená během obecné dostupnosti Azure Stream Analytics před několika lety. 
 
 Když vytváříte novou Stream Analytics úlohu, je osvědčeným postupem, jak ji vytvořit pomocí nejnovější úrovně kompatibility. Zahajte návrh úlohy, který se spoléhá na nejnovější chování, abyste se později vyhnuli přidané změně a složitosti.
 
@@ -121,7 +122,7 @@ V úrovni kompatibility 1,1 jsou představeny tyto hlavní změny:
 
 ### <a name="service-bus-xml-format"></a>Service Bus formát XML
 
-**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Příklad:
+**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Například:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

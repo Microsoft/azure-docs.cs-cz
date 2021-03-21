@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
 ms.openlocfilehash: a37501498a9222025860702a7f29dccc9abfc8f7
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102450058"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>Běžně používané sešity Sentinel Azure
@@ -28,7 +28,7 @@ Následující tabulka uvádí nejčastěji používané a integrované sešity 
 
 V sešitech pro **správu hrozeb**  >  na levé straně a vyhledejte sešit, který chcete použít, můžete v části Azure Sentinel v **sešitech** pro správu hrozeb přistupovat k sešitům. Další informace najdete v tématu [kurz: vizualizace a monitorování dat](tutorial-monitor-your-data.md).
 
-|Název sešitu  |Popis  |
+|Název sešitu  |Description  |
 |---------|---------|
 |**Efektivita analýzy**     |  Poskytuje přehled o účinnosti vašich analytických pravidel, která vám pomůžou dosáhnout lepšího SOC výkonu. <br><br>Další informace najdete v tématu [Sada nástrojů pro Data-Driven SOC](https://techcommunity.microsoft.com/t5/azure-sentinel/the-toolkit-for-data-driven-socs/ba-p/2143152).|
 |**Aktivita Azure**     |     Poskytuje podrobný přehled o aktivitě Azure vaší organizace díky analýze a korelaci všech uživatelských operací a událostí. <br><br>Další informace najdete v tématu [auditování pomocí protokolů aktivit Azure](audit-sentinel-data.md#auditing-with-azure-activity-logs).    |

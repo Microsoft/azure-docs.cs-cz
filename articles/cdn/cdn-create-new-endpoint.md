@@ -9,17 +9,17 @@ ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: e8b3b5c28d00b4d7c81fa3e245113119ae3134ad
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102555699"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Rychlý start: Vytvoření profilu a koncového bodu Azure CDN
 
 V tomto rychlém startu povolíte službu Azure Content Delivery Network (CDN) vytvořením nového profilu CDN, který je kolekcí jednoho nebo více koncových bodů CDN. Po vytvoření profilu a koncového bodu můžete začít doručovat obsah svým zákazníkům.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet Azure Storage s názvem *cdnstorageacct123*, který použijete pro zdroj hostitele. Pokud chcete tento požadavek dokončit, přečtěte si téma [integrace účtu Azure Storage s Azure CDN](cdn-create-a-storage-account-with-cdn.md).

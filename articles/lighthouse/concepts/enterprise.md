@@ -4,10 +4,10 @@ description: Funkce Azure Lighthouse se dají použít ke zjednodušení správy
 ms.date: 03/12/2021
 ms.topic: conceptual
 ms.openlocfilehash: 97b44f71750bdb533e889546f370a9b36ea5d3b4
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103419350"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse v podnikových scénářích

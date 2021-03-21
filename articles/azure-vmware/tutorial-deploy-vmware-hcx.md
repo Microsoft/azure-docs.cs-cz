@@ -4,10 +4,10 @@ description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX p
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: d1b0792ab9b9975edf45ab8addb81410e1da4107
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103462285"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
@@ -47,7 +47,7 @@ Při přípravě nasazení doporučujeme Přečtěte si následující dokumenta
 * [Síťové porty vyžadované pro VMware HCX](https://ports.vmware.com/home/VMware-HCX)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud plánujete použít VMware HCX Enterprise, ujistěte se, že jste požádali o aktivaci pomocí kanálů podpory řešení Azure VMware.
 

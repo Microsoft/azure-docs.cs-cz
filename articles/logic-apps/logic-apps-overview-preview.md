@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102636331"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Přehled: Azure Logic Apps Preview
@@ -69,7 +69,7 @@ Stále můžete v Azure Portal a v Visual Studio Code vytvořit typ aplikace log
 
 Pomocí typu aplikace logiky pro jeden tenant můžete vytvořit tyto typy pracovních postupů v rámci stejné aplikace logiky:
 
-* *Stavové*
+* *Uzlů*
 
   Vytváření stavových pracovních postupů, když potřebujete zachovat, zkontrolovat nebo odkazovat data z předchozích událostí. Tyto pracovní postupy ukládají vstupy a výstupy pro každou akci a jejich stavy v externím úložišti, což umožňuje po dokončení každého spuštění zkontrolovat podrobnosti a historii spuštění. Stavové pracovní postupy poskytují vysokou odolnost, pokud dojde k výpadkům. Po obnovení služeb a systémů můžete znovu vytvořit přerušené běhy z uloženého stavu a znovu spustit pracovní postupy k dokončení. Stavové pracovní postupy můžou běžet až do roku.
 

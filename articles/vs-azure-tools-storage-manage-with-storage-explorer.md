@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 3a8fe3ded6608059cc6ad50901ffe6df5dcf1b08
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102441550"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme s Průzkumníkem služby Storage
@@ -25,7 +25,7 @@ V tomto článku se dozvíte několik způsobů, jak se připojit k účtům Azu
 
 :::image type="content" alt-text="Microsoft Azure Storage Explorer" source="./vs-storage-explorer-overview.png":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -117,13 +117,13 @@ Průzkumník služby Storage umožňuje připojit se k jednotlivým prostředků
 
 | Typ prostředku    | Azure AD | Název účtu a klíč | Sdílený přístupový podpis (SAS)  | Veřejné (anonymní) |
 |------------------|----------|----------------------|--------------------------------|--------------------|
-| Účty úložiště | Ano      | Ano                  | Ano (připojovací řetězec nebo adresa URL) | Ne                 |
-| Kontejnery objektů blob  | Ano      | Ne                   | Ano (URL)                      | Ano                |
-| Kontejnery Gen2  | Ano      | Ne                   | Ano (URL)                      | Ano                |
-| Gen2 adresáře | Ano      | Ne                   | Ano (URL)                      | Ano                |
-| Sdílené složky      | Ne       | Ne                   | Ano (URL)                      | Ne                 |
-| Fronty           | Ano      | Ne                   | Ano (URL)                      | Ne                 |
-| Tabulky           | Ne       | Ne                   | Ano (URL)                      | Ne                 |
+| Účty úložiště | Yes      | Yes                  | Ano (připojovací řetězec nebo adresa URL) | No                 |
+| Kontejnery objektů blob  | Yes      | No                   | Ano (URL)                      | Yes                |
+| Kontejnery Gen2  | Yes      | No                   | Ano (URL)                      | Yes                |
+| Gen2 adresáře | Yes      | No                   | Ano (URL)                      | Yes                |
+| Sdílené složky      | No       | No                   | Ano (URL)                      | No                 |
+| Fronty           | Yes      | No                   | Ano (URL)                      | No                 |
+| Tabulky           | No       | No                   | Ano (URL)                      | No                 |
  
 Průzkumník služby Storage se taky může připojit k [emulátoru místního úložiště](#local-storage-emulator) pomocí nakonfigurovaných portů emulátoru.
 

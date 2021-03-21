@@ -8,10 +8,10 @@ ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 3223a1c8e20d8b0caced5d940132c32fa0aba97c
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103149079"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
@@ -22,7 +22,7 @@ Proces pro ingestování dat do digitálních vláken Azure je nastavení extern
 
 Tento postup popisuje, jak dokumentovat pomocí procesu vytváření funkce, která může ingestovat telemetrie z IoT Hub.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v tomto příkladu, budete muset nastavit následující prostředky jako požadavky:
 * **Centrum IoT**. Pokyny najdete v části *vytvoření IoT Hub* [tohoto IoT Hub rychlé](../iot-hub/quickstart-send-telemetry-cli.md)spuštění.
@@ -109,7 +109,7 @@ Přidejte do projektu následující balíčky:
 * [Azure. identity](https://www.nuget.org/packages/Azure.Identity/)
 * [Microsoft. Azure. WebJobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/)
 
-Přejmenujte ukázkovou funkci *function1.cs* , kterou Visual Studio vygenerovalo s novým projektem na *IoTHubtoTwins.cs*. Nahraďte kód v souboru následujícím kódem:
+Přejmenujte ukázkovou funkci *function1. cs* , kterou Visual Studio vygenerovalo s novým projektem na *IoTHubtoTwins. cs*. Nahraďte kód v souboru následujícím kódem:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 

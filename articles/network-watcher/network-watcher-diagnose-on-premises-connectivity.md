@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a5db1ac9c70429d4b6a0b690de1b29c3656b3cc8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3b8b53446799eec3473d63c89672393a35f9787a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016707"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670951"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
 
@@ -29,16 +29,16 @@ Funkce řešení potíží s Azure Network Watcher vám umožní diagnostikovat 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Chcete nakonfigurovat připojení typu Site-to-site mezi Azure a místním prostředím pomocí FortiGate jako místní VPN Gateway. Chcete-li dosáhnout tohoto scénáře, budete potřebovat následující nastavení:
 
 1. Brána Virtual Network – VPN Gateway v Azure
-1. Brána místní sítě – místní [(Fortigate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) reprezentaci v cloudu Azure
-1. Připojení Site-to-Site (založené na směrování) – [připojení mezi VPN Gateway a místním směrovačem](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
+1. Brána místní sítě – místní [(Fortigate) VPN Gateway](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway) reprezentaci v cloudu Azure
+1. Připojení Site-to-Site (založené na směrování) – [připojení mezi VPN Gateway a místním směrovačem](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)
 1. [Konfigurace FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Podrobný návod pro konfiguraci konfigurace site-to-site najdete v tématu [vytvoření virtuální sítě s připojením typu Site-to-site pomocí Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Podrobný návod pro konfiguraci konfigurace site-to-site najdete v tématu [vytvoření virtuální sítě s připojením typu Site-to-site pomocí Azure Portal](../vpn-gateway/tutorial-site-to-site-portal.md).
 
 Jedním z důležitých kroků konfigurace je konfigurace komunikačních parametrů protokolu IPsec, jakákoli Chybná konfigurace vede ke ztrátě připojení mezi místní sítí a Azure. V současné době jsou brány VPN Azure nakonfigurované tak, aby podporovaly následující parametry protokolu IPsec pro fázi 1. Jak vidíte v následující tabulce, šifrovací algoritmy podporované službou Azure VPN Gateway jsou AES256, AES128 a 3DES.
 
@@ -90,8 +90,8 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 | PlatformInActive | Došlo k problému s platformou. | No|
 | ServiceNotRunning | Podkladová služba není spuštěná. | No|
 | NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| No|
-| ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Ano|
-| GatewayCPUUsageExceeded | Aktuální využití procesoru využití brány je > 95%. | Ano |
+| ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Yes|
+| GatewayCPUUsageExceeded | Aktuální využití procesoru využití brány je > 95%. | Yes |
 
 ### <a name="connection"></a>Připojení
 
@@ -104,11 +104,11 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 | VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | No |
 | ConnectionEntityNotFound | Chybí konfigurace připojení. | No |
 | ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |No|
-| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
-| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Ověřování | Neshoda s předsdíleným klíčem. | Ano|
-| PeerReachability | Partnerská brána není dostupná. | Ano|
-| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
+| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Yes |
+| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Yes|
+| Authentication | Neshoda s předsdíleným klíčem. | Yes|
+| PeerReachability | Partnerská brána není dostupná. | Yes|
+| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Yes|
 | Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
 
 ## <a name="next-steps"></a>Další kroky

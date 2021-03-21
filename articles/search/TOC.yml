@@ -44,6 +44,16 @@
       href: search-get-started-arm.md
 - name: Kurzy
   items:
+    - name: Přidat hledání na web
+      items:
+        - name: 1 – Přehled webové stránky
+          href: tutorial-javascript-overview.md
+        - name: 2 – Vytvoření indexu hledání
+          href: tutorial-javascript-create-load-index.md
+        - name: 3. nasazení statické webové aplikace
+          href: tutorial-javascript-deploy-static-web-app.md
+        - name: 4. pochopení integrace vyhledávání
+          href: tutorial-javascript-search-query-integration.md
     - name: Vytvoření aplikace v C#
       items:
         - name: 1. Základní vyhledávací stránka

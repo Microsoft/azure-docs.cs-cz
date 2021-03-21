@@ -10,17 +10,17 @@ ms.date: 06/15/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 296a51edf024551a03330f4843690e97c6abd47d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102564879"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Kurz: Přístup k objektům blob úložiště pomocí vlastní domény Azure CDN přes HTTPS
 
 Po integraci účtu úložiště Azure se službou Azure CDN (Content Delivery Network) můžete přidat vlastní doménu a povolit u ní protokol HTTPS pro vlastní koncový bod úložiště objektů blob. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct dokončit postup uvedený v tomto kurzu, musíte nejprve integrovat účet úložiště Azure se službou Azure CDN. Další informace najdete v článku [Rychlý start: Integrace účtu úložiště Azure s Azure CDN](cdn-create-a-storage-account-with-cdn.md).
 

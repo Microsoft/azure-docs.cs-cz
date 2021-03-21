@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98854a4588b59cf0c19877da870e6124fa7c3b9a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151954"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674678"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog nejčastějších dotazech
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Data Catalog.
 
 ## <a name="what-is-azure-data-catalog"></a>Co je Azure Data Catalog?
@@ -87,7 +90,7 @@ Konkrétní vlastnosti se liší od zdroje dat až po zdroj dat, ale obecně pla
 >
 
 > [!NOTE]
-> Pro zdroje dat, jako je například SQL Server Analysis Services, které mají vlastnost **Popis** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu této vlastnosti. U *místních* SQL Server relačních databází, které neobsahují vlastnost **popisu** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu z **MS_Description** rozšířené vlastnosti pro objekty a sloupce. Tato vlastnost není podporována pro SQL Azure. Další informace najdete v tématu [použití rozšířených vlastností u databázových objektů](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)).
+> Pro zdroje dat, jako je například Služba Analysis Services serveru SQL, které mají vlastnost **Popis** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu této vlastnosti. U *místních* SQL Server relačních databází, které neobsahují vlastnost **popisu** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu z **MS_Description** rozšířené vlastnosti pro objekty a sloupce. Tato vlastnost není podporována pro SQL Azure. Další informace najdete v tématu [použití rozšířených vlastností u databázových objektů](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)).
 >
 >
 

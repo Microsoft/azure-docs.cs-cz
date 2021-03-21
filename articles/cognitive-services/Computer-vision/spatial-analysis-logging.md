@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98186018"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722697"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie a řešení potíží
 
@@ -60,7 +60,7 @@ Po nastavení Azure Monitor budete muset vytvořit přihlašovací údaje, kter�
 
 ```bash
 # Find your Azure IoT Hub resource ID by running this command. The resource ID  should start with something like 
-# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/...”
+# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/..."
 az iot hub list
 
 # Create a Service Principal with `Monitoring Metrics Publisher` role in the IoTHub resource:
@@ -105,16 +105,16 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 | Název události | Description|
 |------|---------|
-|archon_exit    |Odesílá se, když uživatel změní stav modulu prostorové analýzy ze *spuštěno* na *Zastaveno*.  |
-|archon_error   |Odesílá se v případě, že dojde k chybě kontejneru v případě jakéhokoli procesu. Toto je kritická chyba.  |
-|InputRate  |Rychlost, s jakou graf zpracovává vstup videa Nahlášeno každých 5 minut. | 
+|archon_exit     |Odesílá se, když uživatel změní stav modulu prostorové analýzy ze *spuštěno* na *Zastaveno*.  |
+|archon_error     |Odesílá se v případě, že dojde k chybě kontejneru v případě jakéhokoli procesu. Toto je kritická chyba.  |
+|InputRate     |Rychlost, s jakou graf zpracovává vstup videa Nahlášeno každých 5 minut. | 
 |OutputRate     |Rychlost, s jakou má graf výstup AI Insights Nahlášeno každých 5 minut. |
 |archon_allGraphsStarted | Odesílá se, když se spustí všechny grafy. |
-|archon_configchange    | Odesílá se, když se změní konfigurace grafu. |
+|archon_configchange     | Odesílá se, když se změní konfigurace grafu. |
 |archon_graphCreationFailed     |Odesílá se, když se nepovede spustit graf s nahlášeným řetězcem `graphId` . |
-|archon_graphCreationSuccess    |Odesílá se, když se graf s nahlášeným `graphId` spuštěním úspěšně spustí. |
-|archon_graphCleanup    | Odesílá se, když se graf s nahlášeným `graphId` čištěním vyčistí a ukončí. |
-|archon_graphHeartbeat  |Prezenční signál se odesílá každou minutu každého grafu dovednosti. |
+|archon_graphCreationSuccess     |Odesílá se, když se graf s nahlášeným `graphId` spuštěním úspěšně spustí. |
+|archon_graphCleanup     | Odesílá se, když se graf s nahlášeným `graphId` čištěním vyčistí a ukončí. |
+|archon_graphHeartbeat     |Prezenční signál se odesílá každou minutu každého grafu dovednosti. |
 |archon_apiKeyAuthFail |Odesílá se, když klíč prostředku Počítačové zpracování obrazu nedokáže ověřit kontejner po dobu delší než 24 hodin z následujících důvodů: mimo kvótu, neplatné, offline. |
 |VideoIngesterHeartbeat     |Odesílá se každou hodinu, která indikuje, že video se streamuje ze zdroje videa, a to s počtem chyb v této hodině. Oznamuje se pro každý graf. |
 |VideoIngesterState | Sestavy se *zastavily* nebo se *spustily* pro streamování videa. Oznamuje se pro každý graf. |
@@ -363,7 +363,7 @@ Po vytvoření clusteru Kubernetes můžete použít `kubectl` Nástroj příkaz
     New-HcsKubernetesUser -UserName
     ```
 
-3. Přidejte *konfigurační* soubor do složky *. Kube* v profilu uživatele na místním počítači.   
+3. Přidejte *konfigurační* soubor do složky *. Kube* v profilu uživatele na místním počítači.    
 
 4. Přidružte obor názvů k uživateli, který jste vytvořili.
 
@@ -400,6 +400,34 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 |`Get-HcsKubernetesUserConfig -AseUser`     | Vygeneruje konfigurační soubor Kubernetes. Při použití příkazu zkopírujte informace do souboru s názvem *config*. Neukládat soubor s příponou souboru.        |
 | `Get-HcsApplianceInfo` | Vrátí informace o zařízení. |
 | `Enable-HcsSupportAccess` | Generuje přístup k přihlašovacím údajům, aby bylo možné spustit relaci podpory. |
+
+
+## <a name="how-to-file-a-support-ticket-for-spatial-analysis"></a>Postup vytvoření lístku podpory pro prostorovou analýzu 
+
+Pokud potřebujete další podporu při hledání řešení problému s kontejnerem prostorové analýzy, postupujte podle těchto kroků a vyplňte a odešlete lístek podpory. Náš tým se vám vrátí s dalšími pokyny. 
+
+### <a name="fill-out-the-basics"></a>Vyplňte základní základy. 
+Na [nové stránce žádosti o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) vytvořte nový lístek podpory. Podle zobrazených výzev vyplňte následující parametry:
+
+![Základní informace o podpoře](./media/support-ticket-page-1-final.png)
+
+1. Nastavte **typ problému** na `Technical` .
+2. Vyberte předplatné, které využíváte k nasazení kontejneru prostorových analýz.
+3. `My services`Jako službu vyberte a vyberte `Cognitive Services` .
+4. Vyberte prostředek, který využíváte k nasazení kontejneru prostorových analýz.
+5. Napište stručný popis s podrobnostmi o problému, na který se chystáte. 
+6. `Spatial Analysis`Jako typ problému vyberte.
+7. V rozevíracím seznamu vyberte příslušný podtyp.
+8. Vyberte **Další: řešení** , která chcete přejít na další stránku.
+
+### <a name="recommended-solutions"></a>Doporučená řešení
+V další fázi se pro vybraný typ problému nabídnou doporučená řešení. Tato řešení vyřeší nejběžnější problémy, ale pokud to není vhodné pro vaše řešení, vyberte **Další: podrobnosti** , abyste přešli k dalšímu kroku.
+
+### <a name="details"></a>Podrobnosti
+Na této stránce přidejte další podrobnosti o problému, na který jste se přihlásili. Nezapomeňte zahrnout co nejvíc podrobností, protože to pomůže vývojářům lépe zúžit problém. Zahrňte preferovanou metodu kontaktu a závažnost problému, abychom vás mohli kontaktovat správně a vybrat **Další: zkontrolovat + vytvořit** a přejít k dalšímu kroku. 
+
+### <a name="review-and-create"></a>Zkontrolovat a vytvořit 
+Projděte si podrobnosti žádosti o podporu, abyste zajistili, že vše je přesné a představuje problém efektivně. Až budete připraveni, vyberte **vytvořit** a odešlete lístek do našeho týmu. Jakmile se dokončí lístek, obdržíte e-mailové potvrzení a náš tým se vám bude moct vrátit hned, jakmile to bude možné. Stav lístku můžete zobrazit v Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 

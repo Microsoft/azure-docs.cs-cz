@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b1d18982a4f2a9ee8ba585af56a5e9ded7c1c62
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036822"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
@@ -78,7 +78,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Zúčastněné strany: Privileged Identity Management pro role Azure AD
 
-| Název | Role | Akce |
+| Name | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Architekt identity nebo globální správce Azure**<br/>Zástupce z týmu pro správu identit, který je pověřený definováním způsobu, jakým se tato změna zarovnává s hlavní infrastrukturou správy identit ve vaší organizaci. | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník služby/manažer line**<br/>Zástupce od vlastníků IT služby nebo skupiny služeb. Jsou v rámci rozhodování a pomáhají při zavádění Privileged Identity Management pro svůj tým. | TAKŽE/R/I |
@@ -88,7 +88,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-roles"></a>Zúčastněné strany: Privileged Identity Management pro role Azure
 
-| Název | Role | Akce |
+| Name | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Předplatné/vlastník prostředku**<br/>Zástupce od vlastníků IT každého předplatného nebo prostředku, který chcete nasadit Privileged Identity Management pro | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník zabezpečení**<br/>Zástupce bezpečnostního týmu, který se může odhlásit, že plán splňuje požadavky vaší organizace na zabezpečení. | SO/R |

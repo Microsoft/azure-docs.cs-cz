@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 73f7ab83ea15d223b76b9f71fde2f8a6a37bdacf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2a91062a701ca1b07f47f381a04cdf06c57c5746
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586365"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721524"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurace shromažďování dat pro agenta Azure Monitorho (Preview)
 
@@ -72,6 +72,8 @@ Klikněte na **Přidat zdroj dat** a pak **Zkontrolujte + vytvořit** a zkontrol
 Vzhledem k tomu, že se vám účtují data shromážděná v pracovním prostoru Log Analytics, měli byste shromažďovat jenom data, která potřebujete. Při použití základní konfigurace v Azure Portal máte jenom omezené možnosti filtrovat události, které se mají shromažďovat. Pro protokoly aplikací a systému se jedná o všechny protokoly s určitou závažností. V protokolech zabezpečení se jedná o všechny úspěšné audity nebo všechny protokoly neúspěšných auditů.
 
 Chcete-li zadat další filtry, je nutné použít vlastní konfiguraci a zadat výraz XPath, který odfiltruje události, které ne. Položky XPath jsou zapsány ve formuláři `LogName!XPathQuery` . Například můžete chtít vracet pouze události z protokolu událostí aplikace s ID události 1035. Dotaz xpathquery pro tyto události by byl `*[System[EventID=1035]]` . Vzhledem k tomu, že chcete načíst události z protokolu událostí aplikace, bude cesta XPath `Application!*[System[EventID=1035]]`
+
+Seznam omezení, která podporuje protokol událostí systému Windows, naleznete v tématu [omezení xpath 1,0](/windows/win32/wes/consuming-events#xpath-10-limitations) .
 
 > [!TIP]
 > `Get-WinEvent`K otestování platnosti dotaz xpathquery použijte rutinu PowerShellu s `FilterXPath` parametrem. Příklad ukazuje následující skript.

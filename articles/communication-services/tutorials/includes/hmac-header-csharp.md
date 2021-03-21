@@ -9,13 +9,13 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: 34c7df2b0e61536c0b5f0bc1e4a97d58d0d9c6a4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490500"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -45,7 +45,7 @@ Následující postup popisuje, jak vytvořit autorizační hlavičku.
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
-V okně konzoly, jako je například cmd, PowerShell nebo bash, `dotnet new` vytvořte pomocí příkazu novou konzolovou aplikaci s názvem `SignHmacTutorial` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program.cs**.
+V okně konzoly, jako je například cmd, PowerShell nebo bash, `dotnet new` vytvořte pomocí příkazu novou konzolovou aplikaci s názvem `SignHmacTutorial` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program. cs**.
 
 ```console
 dotnet new console -o SignHmacTutorial

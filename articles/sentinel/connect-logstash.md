@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
 ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035416"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Použití Logstash k připojení zdrojů dat k Sentinel Azure
@@ -65,7 +65,7 @@ Modul plug-in Azure Sentinel Output je k dispozici v kolekci Logstash.
 
 Použijte informace ze struktury Logstash dokumentu [konfiguračního souboru](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) a přidejte do konfigurace modul plug-in Azure Sentinel Output s následujícími klíči a hodnotami. (Správná syntaxe konfiguračního souboru se zobrazí za tabulkou.)
 
-| Název pole | Datový typ | Popis |
+| Název pole | Datový typ | Description |
 |----------------|---------------|-----------------|
 | `workspace_id` | řetězec | Zadejte identifikátor GUID ID vašeho pracovního prostoru. * |
 | `workspace_key` | řetězec | Zadejte identifikátor GUID primárního klíče pracovního prostoru. * |
