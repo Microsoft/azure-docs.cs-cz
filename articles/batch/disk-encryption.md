@@ -7,10 +7,10 @@ ms.date: 01/27/2021
 ms.author: peshultz
 ms.custom: references_regions
 ms.openlocfilehash: 41fc827459b454e2bcb120a925cdab8fcd46e310
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99055310"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Vytvoření fondu s povoleným šifrováním disků
@@ -39,7 +39,7 @@ Nebudete moci určit, která metoda šifrování bude použita pro uzly ve vaše
 > [!IMPORTANT]
 > Pokud vytváříte fond s [vlastní imagí](batch-sig-images.md), můžete povolit šifrování disku pouze v případě, že používáte virtuální počítače s Windows.
 
-## <a name="azure-portal"></a>Portál Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
 Při vytváření fondu Batch v Azure Portal vyberte v části **Konfigurace šifrování disku** buď **TemporaryDisk** nebo **OsAndTemporaryDisk** .
 

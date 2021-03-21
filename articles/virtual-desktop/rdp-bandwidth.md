@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
 ms.openlocfilehash: c9ef72241ac62efd8555de59bb52949321364035
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96325175"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>Požadavky na šířku pásma protokol RDP (Remote Desktop Protocol) (RDP)
@@ -73,7 +73,7 @@ Mějte na paměti, že zátěže, která je umístěna v síti, závisí na čet
 
 Tabulka níže vysvětluje, jak vyodhaduje data používaná v různých grafických scénářích. Tato čísla se vztahují na jednu konfiguraci monitorování s rozlišením 1080 a s výchozím grafickým režimem a s grafickým režimem H. 264/AVC 444.
 
-| Scénář | Výchozí režim | H. 264/režim AVC 444 | Miniatuře | Popis scénáře |
+| Scenario | Výchozí režim | H. 264/režim AVC 444 | Miniatuře | Popis scénáře |
 |:---|---:|---:|---|---|
 | Období | 0,3 KB/s | 0,3 KB/s |:::image type="content" source="media/idle.png" alt-text="Snímek obrazovky nečinného připojení":::| Uživatel je pozastavený a není k dispozici žádné aktivní aktualizace obrazovky. |
 | Microsoft Word | 100-150 kb/s | 200-300 KB/s |:::image type="content" source="media/word.gif" alt-text="Animace Microsoft Wordu":::| Uživatel aktivně pracuje s Microsoft Wordem, psaním a vkládáním grafiky a přepínáním mezi dokumenty. |

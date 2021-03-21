@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/22/2020
 ms.author: tyao
 ms.openlocfilehash: 65e378c0380804c13e4b42d855aede7781b93592
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102211664"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurace pravidla omezení IP adres pomocí brány firewall webových aplikací pro přední dveře Azure
@@ -24,7 +24,7 @@ Ve výchozím nastavení je webová aplikace přístupná z Internetu. Chcete-li
 
 ## <a name="configure-a-waf-policy-with-the-azure-portal"></a>Konfigurace zásady WAF pomocí Azure Portal
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveří Azure [: vytvoření předních dveří pro globální webovou aplikaci s vysokou dostupností](../../frontdoor/quickstart-create-front-door.md).
 
@@ -83,7 +83,7 @@ Pomocí pokynů popsaných v tématu rychlý Start vytvořte profil front-dveř�
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>Konfigurace zásady WAF pomocí Azure CLI
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Než začnete konfigurovat zásady omezení IP adres, nastavte prostředí rozhraní příkazového řádku a vytvořte profil front-dveří Azure.
 
 #### <a name="set-up-the-azure-cli-environment"></a>Nastavení prostředí Azure CLI
@@ -162,7 +162,7 @@ V tomto příkladu se zásada WAF aplikuje na **FrontendEndpoints [0]**. Zásady
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>Konfigurace zásady WAF pomocí Azure PowerShell
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Než začnete konfigurovat zásady omezení IP adres, nastavte prostředí PowerShell a vytvořte profil front-dveří Azure.
 
 #### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell

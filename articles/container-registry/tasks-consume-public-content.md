@@ -7,10 +7,10 @@ ms.author: stevelas
 ms.date: 10/29/2020
 ms.custom: ''
 ms.openlocfilehash: 4fba6290b4973e797c13943fc9be4fadb19f3274
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349278"
 ---
 # <a name="how-to-consume-and-maintain-public-content-with-azure-container-registry-tasks"></a>Jak využívat a spravovat veřejný obsah pomocí Azure Container Registrych úloh
@@ -54,7 +54,7 @@ Tento návod nastaví:
 1. **Trezor klíčů Azure** pro zabezpečení všech tajných kódů
 1. **Instance kontejneru Azure**, která je hostitelem `hello-world` sestavovací aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Následující kroky nakonfigurují hodnoty pro prostředky vytvořené a používané v tomto návodu.
 

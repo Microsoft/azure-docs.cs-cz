@@ -14,16 +14,16 @@ ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
 ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690800"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Klasifikace & Discovery dat je integrovaná do Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics. Poskytuje základní možnosti pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat ve vašich databázích.
+Řešení zjišťování a klasifikace dat je integrované ve službách Azure SQL Database, Azure SQL Managed Instance a Azure Synapse Analytics. Nabízí základní možnosti zjišťování, klasifikace, označování a generování sestav citlivých dat v databázích.
 
 Vaše nejvíc citlivá data můžou zahrnovat obchodní, finanční, zdravotní péče nebo osobní údaje. Zjišťování a klasifikace těchto dat může hrát kontingenční roli v přístupu k ochraně informací ve vaší organizaci. Může sloužit jako infrastruktura na:
 
@@ -134,11 +134,11 @@ Tyto předdefinované role mohou změnit klasifikaci dat databáze:
 
 Další informace o oprávněních založených na rolích najdete v [Azure RBAC](../../role-based-access-control/overview.md).
 
-## <a name="manage-classifications"></a><a id="manage-classification"></a>Spravovat klasifikace
+## <a name="manage-classifications"></a><a id="manage-classification"></a>Správa klasifikací
 
 Ke správě klasifikací můžete použít T-SQL, REST API nebo PowerShell.
 
-### <a name="use-t-sql"></a>Použití T-SQL
+### <a name="use-t-sql"></a>Pomocí T-SQL
 
 K přidání nebo odebrání klasifikací sloupců a k načtení všech klasifikací pro celou databázi můžete použít T-SQL.
 
@@ -188,7 +188,7 @@ Pomocí REST API můžete programově spravovat klasifikace a doporučení. Publ
 ## <a name="faq---advanced-classification-capabilities"></a>Nejčastější dotazy – pokročilé možnosti klasifikace
 
 **Otázka**: bude [Azure dosah](../../purview/overview.md) nahrazovat klasifikaci & Discovery data ve službě SQL nebo bude brzy vytříděna klasifikace dat SQL pro zjišťování &?
-**Odpověď**: dál podporujeme klasifikaci & Discovery data SQL a pomůžeme vám zajistit, abyste přijali [Azure dosah](../../purview/overview.md) , která nabízí bohatší možnosti pro zajištění pokročilých možností klasifikace a zásad správného řízení dat. Pokud se rozhodnete vyřadit jakékoli služby, funkce, rozhraní API nebo SKU, obdržíte oznámení s předstihem, včetně cesty migrace nebo přechodu. Další informace o zásadách životního cyklu Microsoftu najdete tady.
+**Odpověď**: dál podporujeme klasifikaci & Discovery data SQL a pomůžeme vám zajistit, abyste přijali [Azure dosah](../../purview/overview.md) , která nabízí bohatší možnosti pro zajištění pokročilých možností klasifikace a zásad správného řízení dat. Pokud se rozhodneme jakoukoli službu, funkci, rozhraní API nebo skladovou položku vyřadit z provozu, obdržíte předem oznámení společně s pokyny k migraci nebo přechodu. Další informace o zásadách životního cyklu produktů Microsoftu najdete tady.
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Další kroky

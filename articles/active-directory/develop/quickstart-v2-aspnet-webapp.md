@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: eb57be94e460241e3cacbe2dd20c071504a9222a
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 87948ed04f7b50820d94993d4c4fbcf2dfd94b31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209760"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104578681"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rychlý Start: přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET
 
@@ -28,7 +28,7 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 >
 > ![Diagram interakce mezi webovým prohlížečem, webovou aplikací a platformou Microsoft identity v ukázkové aplikaci.](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 >
-> ## <a name="prerequisites"></a>Požadavky
+> ## <a name="prerequisites"></a>Předpoklady
 >
 > * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
@@ -78,6 +78,8 @@ V tomto rychlém startu si stáhnete a spustíte ukázku kódu, která ukazuje, 
 > Spusťte projekt pomocí sady Visual Studio 2019.
 > [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
@@ -135,7 +137,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>Třída OWIN Startup
 
-Middleware OWIN používá *spouštěcí třídu* , která se spouští při spuštění hostitelského procesu. V tomto rychlém startu se soubor *Startup.cs* nachází v kořenové složce. Následující kód ukazuje parametry, které tento rychlý Start používá:
+Middleware OWIN používá *spouštěcí třídu* , která se spouští při spuštění hostitelského procesu. V tomto rychlém startu se soubor *Startup. cs* nachází v kořenové složce. Následující kód ukazuje parametry, které tento rychlý Start používá:
 
 ```csharp
 public void Configuration(IAppBuilder app)
@@ -172,7 +174,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Kde  | Popis |
+> |Kde  | Description |
 > |---------|---------|
 > | `ClientId`     | ID aplikace z aplikace zaregistrované v Azure Portal. |
 > | `Authority`    | Koncový bod služby tokenu zabezpečení (STS) pro uživatele, který se má ověřit Obvykle je `https://login.microsoftonline.com/{tenant}/v2.0` pro veřejný cloud. V této adrese URL *{tenant}* je název vašeho TENANTA, ID tenanta nebo `common` odkaz na společný koncový bod. (Společný koncový bod se používá pro víceklientské aplikace.) |

@@ -7,17 +7,17 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96302464"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Vytvoření kontejneru profilu se službou Azure Files a Azure služba AD DS
 
 Tento článek vám ukáže, jak vytvořit kontejner profilu FSLogix pomocí souborů Azure a Azure Active Directory Domain Services (služba AD DS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už nastavili instanci služby Azure služba AD DS. Pokud ho ještě nemáte, postupujte podle pokynů v části [Vytvoření základní spravované domény](../active-directory-domain-services/tutorial-create-instance.md) a potom se vraťte sem.
 
@@ -107,7 +107,7 @@ Získání přístupového klíče účtu úložiště:
     - Nahraďte `<share-name>` názvem sdílené složky, kterou jste vytvořili dříve.
     - Nahraďte `<storage-account-key>` klíčem účtu úložiště z Azure.
 
-    Příklad:
+    Například:
 
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
@@ -125,7 +125,7 @@ Získání přístupového klíče účtu úložiště:
     - Nahraďte `<mounted-drive-letter>` písmenem jednotky, kterou jste použili k namapování jednotky.
     - Nahraďte `<user-email>` hlavní název uživatele nebo skupiny Active Directory, který obsahuje uživatele, kteří budou potřebovat přístup ke sdílené složce.
 
-    Příklad:
+    Například:
 
      ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
@@ -142,13 +142,13 @@ Postup konfigurace kontejneru profilu FSLogix:
 
 1. Přihlaste se k virtuálnímu počítači hostitele relace, který jste nakonfigurovali na začátku tohoto článku, [a pak stáhněte a nainstalujte agenta FSLogix](/fslogix/install-ht/).
 
-2. Rozbalte stažený soubor agenta FSLogix, klikněte na verze **x64** a  >  **Releases** pak otevřete **FSLogixAppsSetup.exe**.
+2. Rozbalte stažený soubor agenta FSLogix, klikněte na verze **x64** a  >  pak otevřete **FSLogixAppsSetup.exe**.
 
 3. Jakmile se instalační program spustí, vyberte Souhlasím **s licenčními podmínkami a ujednáními.** V případě potřeby zadejte nový klíč.
 
-4. Vyberte **Install** (Nainstalovat).
+4. Vyberte **Nainstalovat**.
 
-5. Otevřete **jednotku C** a pak vyhledejte **soubory Program Files**  >  **FSLogix**  >  **Apps** a ujistěte se, že je agent FSLogix správně nainstalovaný.
+5. Otevřete **jednotku C** a pak vyhledejte **soubory Program Files**  >  **FSLogix**  >   a ujistěte se, že je agent FSLogix správně nainstalovaný.
 
      >[!NOTE]
      > Pokud je ve fondu hostitelů víc virtuálních počítačů, budete muset pro každý virtuální počítač zopakovat kroky 1 až 5.
@@ -206,7 +206,7 @@ Přiřazení uživatelů:
 
     Stejně jako v předchozích rutinách Nezapomeňte nahradit `<your-wvd-tenant>` , `<wvd-pool>` a `<user-principal>` s odpovídajícími hodnotami.
 
-    Příklad:
+    Například:
 
      ```powershell
      $pool1 = "contoso"

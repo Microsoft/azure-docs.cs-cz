@@ -12,10 +12,10 @@ ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
 ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222747"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
@@ -242,7 +242,7 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
     ```bash
     pip install azureml-interpret
     ```
-1. Vytvořte školicí skript v místním Jupyter Notebook. Například `train_explain.py`.
+1. Vytvořte školicí skript v místním Jupyter Notebook. Například, `train_explain.py`.
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -340,7 +340,7 @@ Prozkoumejte důležité funkce, které mají vliv na celkový předpovědi mode
 
 Čtvrtá karta na kartě vysvětlení vám umožní přejít na jednotlivé DataPoint a jejich jednotlivé důležité funkce. Můžete načíst vykreslení důležitosti jednotlivých funkcí pro libovolný datový bod tak, že kliknete na kterýkoli z jednotlivých datových bodů v hlavním bodovém grafu nebo v průvodci panelem kliknete na konkrétní DataPoint.
 
-|Znázorněte|Popis|
+|Znázorněte|Description|
 |----|-----------|
 |Důležitost jednotlivých funkcí|Zobrazuje důležité funkce, které jsou k dishlavnímu okraji pro jednotlivé předpovědi. Pomáhá ilustrovat místní chování základního modelu v konkrétním datovém bodě.|
 |Analýza What-If|Umožňuje změnit hodnoty funkcí vybraného reálného datového bodu a sledovat výsledné změny hodnoty předpovědi tím, že generuje hypotetické DataPoint s novými hodnotami funkcí.|
@@ -561,7 +561,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
 
    Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()` .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 * **Zhuštěná data nejsou podporovaná**: model, který porušuje řídicí panely nebo se v podstatě zpomaluje s velkým počtem funkcí, proto Momentálně nepodporujeme formát zhuštěných dat. Kromě toho vznikají Obecné problémy s pamětí s velkými datovými sadami a velkým počtem funkcí. 
 

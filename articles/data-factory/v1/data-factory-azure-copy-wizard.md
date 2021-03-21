@@ -8,10 +8,10 @@ ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0f95b0d62bc81a8dddc72239491a05ca78945490
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393373"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Průvodce kopírováním Azure Data Factory
@@ -83,7 +83,7 @@ Jednorázová operace kopírování umožňuje přesun dat ze zdroje do cíle po
 
 ![Vlastnosti plánování](./media/data-factory-copy-wizard/scheduling-properties.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 V této části se prozkoumá běžné metody řešení potíží pro Průvodce kopírováním v Azure Data Factory.
 

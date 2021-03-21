@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 8e860bf47420f2b58c44df695da7761bcc2aa0ce
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100521777"
 ---
 # <a name="azure-ddos-rapid-response"></a>Rychlá odezva Azure DDoS
 
 Během aktivního přístupu mají zákazníci Azure DDoS Protection Standard přístup ke týmu DDoS Rapid Response (DRR), který může pomáhat s vyšetřováním útoků během útoku a analýz po útoku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit [Plán Standard Protection pro Azure DDoS](manage-ddos-protection.md).
 
@@ -31,8 +31,8 @@ Během aktivního přístupu mají zákazníci Azure DDoS Protection Standard p�
 DRR byste měli zapojit jenom v těchto případech: 
 
 - Při útoku DDoS zjistíte, že výkon chráněného prostředku je vážně snížený, nebo že prostředek není k dispozici. 
-- Myslíte si, že je prostředek pod útokem DDoS, ale služba DDoS Protection neomezuje útok efektivně.
-- Plánujete virovou událost, která významně zvýší síťový provoz.
+- Domníváte se, že je váš prostředek terčem útoku DDoS, ale služba DDoS Protection útok efektivně nezmírňuje.
+- Plánujete virální událost, která výrazně zvýší váš síťový provoz.
 - Pro útoky, které mají zásadní dopad na chod firmy.
 
 ## <a name="engage-drr-during-an-active-attack"></a>Zapojit DRR během aktivního útoku

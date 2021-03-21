@@ -6,10 +6,10 @@ ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
 ms.openlocfilehash: d1ea328575cf07a22ce39549c34d5cd21e916427
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054589"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Přehled posouzení (migrace do Azure SQL)
@@ -17,7 +17,7 @@ ms.locfileid: "102054589"
 Tento článek poskytuje přehled posouzení pro migraci místních SQL Server instancí z prostředí VMware do databází Azure SQL nebo spravovaných instancí pomocí [nástroje Azure Migrate: Discovery and Assessment Tool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool).
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 ## <a name="whats-an-assessment"></a>Co je posouzení?
 Posouzení pomocí nástroje pro zjišťování a hodnocení je časovým snímkem dat a měří připravenost a odhadne dopad migrace místních serverů do Azure.
@@ -93,7 +93,7 @@ Co je je součástí vlastností posouzení Azure SQL:
 ## <a name="calculate-readiness"></a>Vypočítat připravenost
 
 > [!NOTE]
-> Posouzení zahrnuje pouze databáze, které jsou ve stavu online. V případě, že se databáze nachází v jakémkoli jiném stavu, posouzení bude ignorovat připravenost, změnu velikosti a kalkulace nákladů pro tyto databáze. Pokud si přejete, abyste tyto databáze vyhodnotili, změňte prosím stav databáze a pokaždé přepočítejte vyhodnocení.
+> Posouzení zahrnuje pouze databáze, které jsou ve stavu online. V případě, že je databáze v jiném stavu, bude hodnocení ignorovat její míru připravenosti a velikost i výpočet nákladů na takovou databázi. Pokud chcete takové databáze hodnotit, změňte jejich stav a po nějaké době hodnocení přepočítejte.
 
 ### <a name="azure-sql-readiness"></a>Připravenost Azure SQL
 
@@ -113,11 +113,11 @@ Pokud ve vlastnostech posouzení SQL Azure vyberete cílový typ nasazení podle
 
  **Připravenost Azure SQL DB** | **Připravenost Azure SQL MI** | **Doporučený typ nasazení** | **Počítá se konfigurace Azure SQL a odhad nákladů?**
  --- | --- | --- | --- |
- Připraveno | Připraveno | Azure SQL DB nebo Azure SQL MI | Ano
- Připraveno | Nepřipraveno nebo neznámo | Azure SQL DB | Ano
- Nepřipraveno nebo neznámo | Připraveno | Azure SQL MI | Ano
- Nepřipraveno | Nepřipraveno | Potenciálně připravený pro virtuální počítač Azure | Ne
- Nepřipraveno nebo neznámo | Nepřipraveno nebo neznámo | Neznámý | Ne
+ Připraveno | Připraveno | Azure SQL DB nebo Azure SQL MI | Yes
+ Připraveno | Nepřipraveno nebo neznámo | Azure SQL DB | Yes
+ Nepřipraveno nebo neznámo | Připraveno | Azure SQL MI | Yes
+ Nepřipraveno | Nepřipraveno | Potenciálně připravený pro virtuální počítač Azure | No
+ Nepřipraveno nebo neznámo | Nepřipraveno nebo neznámo | Neznámý | No
 
 > [!NOTE]
 > Pokud je doporučený typ nasazení vybraný jako **doporučený** ve vlastnostech posouzení, a pokud je zdroj SQL Server dobrý pro Azure SQL DB Single Database i pro SPRAVOVANOU instanci SQL Azure, vyhodnocování doporučuje konkrétní možnost, která optimalizuje vaše náklady a vejde se do hranic velikosti a výkonu.
@@ -127,7 +127,7 @@ Pokud ve vlastnostech posouzení SQL Azure vyberete cílový typ nasazení podle
 Pokud instance SQL není připravená na Azure SQL Database a Azure SQL Managed instance, doporučuje se typ nasazení označený jako *potenciálně připravený pro virtuální počítač Azure*.
 - Uživatel se doporučuje vytvořit posouzení v Azure Migrate s typem posouzení jako "virtuální počítač Azure" a zjistit, jestli Server, na kterém je instance spuštěná, je připravený k migraci na virtuální počítač Azure. Poznámky:
     - Posouzení virtuálních počítačů Azure ve Azure Migrate aktuálně nasazuje a posouvá a nebere v úvahu konkrétní metriky výkonu pro provoz SQL instancí a databází na virtuálním počítači Azure. 
-    - Když spustíte posouzení virtuálního počítače Azure na serveru, doporučí se Doporučené velikosti a odhad nákladů pro všechny instance běžící na serveru a můžou být migrovány na virtuální počítač Azure pomocí nástroje pro migraci serveru. Před migrací [si přečtěte pokyny pro výkon](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) SQL Server na virtuálních počítačích Azure.
+    - Když spustíte hodnocení virtuálních počítačů Azure na serveru, doporučená velikost a odhady nákladů se budou vztahovat na všechny instance spuštěné na serveru, které je možné migrovat na virtuální počítač Azure pomocí nástroje Migrace serverů. Před migrací si [projděte pokyny k výkonu](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) pro SQL Server na virtuálních počítačích Azure.
 
 
 ## <a name="calculate-sizing"></a>Vypočítat velikost
@@ -172,11 +172,11 @@ Tato tabulka ukazuje hodnocení spolehlivosti, které závisí na procentu dostu
 #### <a name="low-confidence-ratings"></a>Hodnocení nízké důvěry
 Tady je několik důvodů, proč hodnocení může získat nízkou spolehlivost:
 - Nevytvořili jste profil svého prostředí po dobu, po kterou vytváříte posouzení. Pokud například vytvoříte hodnocení s trváním výkonu nastaveným na jeden den, musíte počkat alespoň den po zahájení zjišťování všech datových bodů, které se mají shromáždit.
-- Posouzení nemůže shromáždit údaje o výkonu pro některé nebo všechny servery v období posouzení. Pro hodnocení s vysokou mírou jistoty Prosím zajistěte:
+- Hodnocení nemůže shromáždit údaje o výkonu některých nebo všech serverů v daném období hodnocení. Pro hodnocení s vysokou mírou jistoty Prosím zajistěte:
     - Servery jsou napájené po dobu trvání posouzení.
     - Odchozí připojení na portech 443 jsou povolená.
     - Pokud Azure Migrate stav připojení agenta SQL v Azure Migrate je připojená a podívejte se na poslední prezenční signál 
-    - Pokud je v okně zjištěná instance SQL Azure Migrate stav připojení pro všechny instance SQL "připojeno".
+    - Je služba Azure Migrate v okně Zjištěné instance SQL pro všechny instance SQL v připojeném stavu?
 
     Přepočítejte posouzení, aby se projevily poslední změny míry spolehlivosti.
 - Některé databáze nebo instance byly vytvořeny během doby, pro kterou bylo hodnocení vypočítáno. Předpokládejme například, že jste vytvořili posouzení historie výkonu za poslední měsíc, ale některé databáze nebo instance byly vytvořeny pouze před týdnem. V takovém případě nebudou údaje o výkonu pro nové servery k dispozici po celou dobu trvání a hodnocení spolehlivosti bude nízké.

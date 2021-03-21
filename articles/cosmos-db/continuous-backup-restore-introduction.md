@@ -9,10 +9,10 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
 ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393135"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Průběžné zálohování s funkcí obnovení k časovému okamžiku (Preview) v Azure Cosmos DB
@@ -37,21 +37,21 @@ Dostupný časový interval pro obnovení (označuje se také jako doba uchován
 
 Ve verzi Public Preview můžete účet Azure Cosmos DB pro rozhraní SQL API nebo obsah bodu MongoDB v čase obnovit do jiného účtu pomocí [Azure Portal](continuous-backup-restore-portal.md), [rozhraní příkazového řádku Azure](continuous-backup-restore-command-line.md) (az CLI), [Azure PowerShell](continuous-backup-restore-powershell.md)nebo [Azure Resource Manager](continuous-backup-restore-template.md).
 
-## <a name="what-is-restored"></a>Co se obnovilo?
+## <a name="what-is-restored"></a>Co se obnoví?
 
 V ustálených stavech se všechny mutace provedené na zdrojovém účtu (včetně databází, kontejnerů a položek) zálohují asynchronně během 100 sekund. Pokud zálohovací médium (které je úložiště Azure) je mimo provoz nebo není k dispozici, jsou mutace místně trvalé, dokud nebude médium k dispozici zpátky a pak se vyprázdní, aby nedošlo ke ztrátě přesnosti operací, které je možné obnovit.
 
-Můžete se rozhodnout pro obnovení jakékoli kombinace zřízených kontejnerů propustnosti, sdílené databáze propustnosti nebo celého účtu. Akce obnovit obnoví všechna data a vlastnosti indexu do nového účtu. Proces obnovení zajišťuje, aby byla všechna data obnovená v účtu, databázi nebo kontejneru zaručená tak, aby byla konzistentní až do zadané doby obnovení. Doba obnovení bude záviset na množství dat, která je třeba obnovit.
+Můžete obnovit jakoukoli kombinaci kontejnerů se zřízenou propustností a databází se sdílenou propustností nebo celý účet. Akce obnovení provede obnovení všech dat a vlastností indexu do nového účtu. Proces obnovení zajišťuje konzistenci všech obnovených dat v účtu, databázi nebo kontejneru až do zadané doby obnovení. Doba potřebná k obnovení závisí na objemu dat, která je potřeba obnovit.
 
 > [!NOTE]
 > V režimu průběžného zálohování se zálohují v každé oblasti, kde je dostupný účet Azure Cosmos DB. Zálohy provedené pro každý účet oblasti jsou místně redundantní a zóny redundantní, pokud má váš účet povolenou funkci [zóny dostupnosti](high-availability.md#availability-zone-support) pro tuto oblast. Akce obnovit vždy obnoví data do nového účtu.
 
-## <a name="what-is-not-restored"></a>Co se neobnovilo?
+## <a name="what-is-not-restored"></a>Co se neobnoví?
 
 Následující konfigurace nejsou obnoveny po obnovení k bodu v čase:
 
 * Nastavení brány firewall, virtuální sítě a privátního koncového bodu.
-* Nastavení konzistence. Ve výchozím nastavení se účet obnoví s konzistencí relace.  
+* Nastavení konzistence Ve výchozím nastavení se účet obnoví s konzistencí typu Relace.  
 * Regionu.
 * Uložené procedury, triggery, UDF.
 
@@ -104,7 +104,7 @@ Pokud máte například 1 TB dat ve dvou oblastech, pak:
 
 Funkce obnovení v daném časovém bodě je ve verzi Public Preview a má následující omezení:
 
-* Pro průběžné zálohování se podporují jenom Azure Cosmos DB rozhraní API pro SQL a MongoDB. Rozhraní API pro Cassandra, tabulky a Gremlin se zatím nepodporují.
+* Průběžné zálohování se podporuje pouze pro rozhraní API služby Azure Cosmos DB pro SQL a MongoDB. Rozhraní API Cassandra, Table API a Gremlin API se zatím nepodporují.
 
 * Existující účet s výchozími zásadami pravidelného zálohování nejde převést na použití režimu průběžné zálohování.
 
@@ -116,23 +116,23 @@ Funkce obnovení v daném časovém bodě je ve verzi Public Preview a má násl
 
 * Účty s povoleným odkazem na synapse se nepodporují.
 
-* Obnovený účet se vytvoří ve stejné oblasti, ve které se nachází váš zdrojový účet. Účet nemůžete obnovit do oblasti, ve které neexistuje zdrojový účet.
+* Obnovený účet se vytvoří ve stejné oblasti, ve které se nacházel zdrojový účet. Účet není možné obnovit v oblasti, ve které se nenacházel zdrojový účet.
 
 * Okno obnovit je pouze 30 dnů a nelze je změnit.
 
-* Zálohy nejsou automaticky odolné proti havárii. Abyste měli k dispozici odolnost účtu a zálohy, musíte explicitně přidat další oblast.
+* Zálohy nejsou automaticky odolné vůči geografickým haváriím. Pokud chcete zajistit odolnost účtu a záloh, musíte explicitně přidat další oblast.
 
 * I když probíhá obnovení, neupravujte ani neodstraňujte zásady správy identit a přístupu (IAM), které udělují oprávnění pro účet, nebo změňte konfiguraci virtuální sítě, brány firewall.
 
-* Azure Cosmos DB rozhraní API pro účty SQL nebo MongoDB, které po vytvoření kontejneru vytvářejí jedinečný index, se nepodporují pro průběžné zálohování. Podporují se jenom kontejnery, které vytvářejí jedinečný index jako součást počátečního vytváření kontejneru. Pro účty MongoDB vytvoříte jedinečný index pomocí [příkazů rozšíření](mongodb-custom-commands.md).
+* Účty rozhraní API služby Azure Cosmos DB pro SQL nebo MongoDB, které po vytvoření kontejneru vytváří jedinečný index, průběžné zálohování nepodporují. Podporují se pouze kontejnery, které vytváří jedinečné indexy v rámci počátečního vytváření kontejneru. Pro účty MongoDB vytvoříte jedinečný index pomocí [příkazů rozšíření](mongodb-custom-commands.md).
 
-* Funkce obnovení k určitému bodu v čase se vždycky obnoví na nový účet Azure Cosmos. Obnovení na existující účet se v tuto chvíli nepodporuje. Pokud vás zajímá poskytování zpětné vazby k místnímu obnovení, obraťte se na tým Azure Cosmos DB prostřednictvím zástupce vašeho účtu nebo [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+* Funkce obnovení k určitému bodu v čase vždy provádí obnovení do nového účtu Azure Cosmos. Obnovení do existujícího účtu se v současné době nepodporuje. Pokud vás zajímá poskytování zpětné vazby k místnímu obnovení, obraťte se na tým Azure Cosmos DB prostřednictvím zástupce vašeho účtu nebo [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 * Všechna nová rozhraní API vystavená pro výpis `RestorableDatabaseAccount` ,,, se `RestorableSqlDatabases` `RestorableSqlContainer` `RestorableMongodbDatabase` `RestorableMongodbCollection` vztahují na změny, i když je funkce ve verzi Preview.
 
 * Po obnovení je možné, že pro určité kolekce se může znovu sestavit konzistentní index. Stav operace opětovného sestavení můžete kontrolovat prostřednictvím vlastnosti [IndexTransformationProgress](how-to-manage-indexing-policy.md) .
 
-* Proces obnovení obnoví všechny vlastnosti kontejneru včetně jeho konfigurace TTL. V důsledku toho je možné, že obnovená data se okamžitě odstraní, pokud jste nakonfigurovali tento způsob. Aby se zabránilo této situaci, časové razítko obnovení musí být před přidáním vlastností TTL do kontejneru.
+* V rámci procesu obnovení se obnoví všechny vlastnosti kontejneru, včetně jeho konfigurace hodnoty TTL. Proto se v závislosti na vaší konfiguraci můžou obnovená data okamžitě odstranit. Pokud chcete této situaci zabránit, časové razítko obnovení musí předcházet přidání vlastností TTL do kontejneru.
 
 ## <a name="next-steps"></a>Další kroky
 

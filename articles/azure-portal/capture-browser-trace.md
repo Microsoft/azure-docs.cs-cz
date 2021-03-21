@@ -4,10 +4,10 @@ description: Zachyťte informace o síti z trasování v prohlížeči, abyste p
 ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745991"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Zachycení trasování prohlížeče pro řešení potíží
@@ -18,7 +18,7 @@ Pokud řešíte problém s Azure Portal a potřebujete kontaktovat podporu Micro
 
 Google Chrome a Microsoft Edge (chrom) jsou založené na [projektu chrom Open Source](https://www.chromium.org/Home). Následující kroky ukazují, jak používat vývojářské nástroje, které jsou ve dvou prohlížečích velmi podobné. Další informace najdete v tématu [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) a [Microsoft Edge (chrom) vývojářské nástroje](/microsoft-edge/devtools-guide-chromium).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu, pomocí [záznamu postupu](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
@@ -64,7 +64,7 @@ Google Chrome a Microsoft Edge (chrom) jsou založené na [projektu chrom Open S
 
 Následující kroky ukazují, jak používat vývojářské nástroje v Microsoft Edge (EdgeHTML). Další informace najdete v tématu [Microsoft Edge (EdgeHTML) vývojářské nástroje](/microsoft-edge/devtools-guide).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu, pomocí [záznamu postupu](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
@@ -120,7 +120,7 @@ Následující kroky ukazují, jak používat vývojářské nástroje v Apple S
 
         ![Snímek obrazovky s pokročilými preferencemi Safari](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu. Další informace najdete v tématu [Jak nahrávat obrazovku na Macu](https://support.apple.com/HT208721).
 
@@ -164,7 +164,7 @@ Následující kroky ukazují, jak používat vývojářské nástroje v Apple S
 
 Následující kroky ukazují, jak používat vývojářské nástroje v prohlížeči Firefox. Další informace najdete v tématu [Firefox vývojářské nástroje](https://developer.mozilla.org/docs/Tools).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu. Použijte nástroj pro [zaznamenávání kroků](https://support.microsoft.com/help/22878/windows-10-record-steps) ve Windows nebo si přečtěte, [jak si můžete na Mac nahrát obrazovku](https://support.apple.com/HT208721).
 

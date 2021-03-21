@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
 ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052292"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Přehled Log Analytics v Azure Monitor
@@ -54,7 +54,7 @@ Ovládací prvky pro práci s dotazem v okně dotazu.
 ### <a name="2-sidebar"></a>2. postranní panel
 Seznam tabulek v pracovním prostoru, Ukázkové dotazy a možnosti filtrování pro aktuální dotaz.
 
-| Karta | Popis |
+| Karta | Description |
 |:---|:---|
 | Tabulky | Vypíše tabulky, které jsou součástí vybraného oboru. Vyberte možnost **Seskupit podle** a změňte seskupení tabulek. Najeďte myší na název tabulky, aby se zobrazilo dialogové okno s popisem tabulky a možností, jak zobrazit jeho dokumentaci a zobrazit náhled jeho dat. Rozbalením tabulky zobrazíte její sloupce. Poklikejte na název tabulky nebo sloupce a přidejte ho do dotazu. |
 | Dotazy | Seznam ukázkových dotazů, které můžete otevřít v okně dotazu. Toto je stejný seznam, který se zobrazí, když otevřete Log Analytics. Vyberte možnost **Seskupit podle** a změňte seskupení dotazů. Poklikejte na dotaz a přidejte ho do okna dotazu, nebo na něj najeďte myší pro další možnosti. |

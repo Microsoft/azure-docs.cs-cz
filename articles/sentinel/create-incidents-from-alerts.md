@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: 5c7c3d69bb26773171e9e0afc9f79ff25909a12a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99807288"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatické vytváření incidentů z výstrah zabezpečení společnosti Microsoft
@@ -28,7 +28,7 @@ Výstrahy aktivované v řešeních zabezpečení Microsoftu, která jsou připo
 
 Pomocí pokynů v tomto článku můžete snadno nakonfigurovat službu Azure Sentinel tak, aby automaticky vytvářela incidenty pokaždé, když se aktivuje výstraha v rámci připojeného řešení zabezpečení Microsoftu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Aby bylo možné vytvářet incidenty z výstrah služby zabezpečení, je nutné [připojit řešení zabezpečení společnosti Microsoft](connect-data-sources.md#data-connection-methods) .
 
 ## <a name="using-microsoft-security-incident-creation-analytics-rules"></a>Pomocí pravidel analýzy vytváření incidentů Microsoft Security

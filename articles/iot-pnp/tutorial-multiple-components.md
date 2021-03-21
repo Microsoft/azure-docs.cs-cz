@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
 ms.openlocfilehash: a217ee82ee2394fbb18eef42b853fbf72aceb7df
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99834130"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub"></a>Kurz: připojení aplikace IoT technologie Plug and Play více aplikací zařízení, které jsou spuštěné v systému Linux nebo Windows, IoT Hub

@@ -8,10 +8,10 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
 ms.openlocfilehash: af110a66bc7ef5737f3d2d97a85ca07525b1d9e7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96744699"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Kódy zemí a oblastí pro spoluprodej
@@ -123,7 +123,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé k
 | Guinea-Bissau                       | GW        |
 | Guyana                              | GY        |
 | Haiti                               | HT        |
-| Heardův ostrov a MacDonaldovy ostrovy   | HM        |
+| Heardův ostrov a McDonaldovy ostrovy   | HM        |
 | Honduras                            | HN        |
 | Hongkong – zvláštní administrativní oblast                       | HK        |
 | Maďarsko                             | HU        |
@@ -177,7 +177,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé k
 | Maroko                             | MA        |
 | Mosambik                          | MZ        |
 | Myanmar                             | MM        |
-| Namibie                             | Není k dispozici        |
+| Namibie                             | NA        |
 | Nauru                               | NR        |
 | Nepál                               | NP        |
 | Nizozemsko                         | NL        |
@@ -214,7 +214,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé k
 | Svatý Kryštof a Nevis               | KN        |
 | Svatá Lucie                         | LC        |
 | Svatý Martin (Francie)                        | MF        |
-| Saint-Pierre a Miquelon           | PM        |
+| Saint Pierre a Miquelon           | PM        |
 | Svatý Vincenc a Grenadiny    | VC        |
 | Samoa                               | WS        |
 | San Marino                          | SM        |
@@ -238,7 +238,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé k
 | Svatá Helena, Ascension a Tristan da Cunha | SH     |
 | Súdán                               | Směrodatná odchylka        |
 | Surinam                            | SR        |
-| Svalbard                            | SJ        |
+| Špicberky                            | SJ        |
 | Švédsko                              | SE        |
 | Švýcarsko                         | CH        |
 | Sýrie                               | SY        |
@@ -249,7 +249,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé k
 | Timor Leste                         | TL        |
 | Togo                                | TG        |
 | Tokelau                             | TK        |
-| Tonga                               | SCHOPN        |
+| Tonga                               | TO        |
 | Trinidad a Tobago                 | TT        |
 | Tunisko                             | TN        |
 | Turecko                              | TR        |
@@ -262,7 +262,7 @@ Pokud kontakt pokrývá více než jednu zemi nebo oblast, zadejte jednotlivé k
 | Spojené království                      | GB        |
 | USA                       | USA        |
 | Uruguay                             | UY        |
-| Menší odlehlé ostrovy USA               | UM        |
+| Odlehlé ostrovy USA               | UM        |
 | Americké Panenské ostrovy                 | VI        |
 | Uzbekistán                          | UZ        |
 | Vanuatu                             | VU        |

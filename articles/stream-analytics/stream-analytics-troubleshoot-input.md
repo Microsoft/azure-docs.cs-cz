@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2d7171c9ec1e60447fb3342caa72098fb2eb9337
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019903"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
@@ -44,7 +44,7 @@ Povolte protokoly prostředků, abyste zobrazili podrobnosti o chybě a zprávě
 
 ![Upozornění na zadání podrobností o vstupu](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
-V případech, kdy je datová část zprávy větší než 32 KB nebo v binárním formátu, spusťte kód CheckMalformedEvents.cs, který je k dispozici v [úložišti ukázek GitHubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód přečte ID oddílu, posun a vytiskne data, která jsou umístěna v tomto posunu. 
+V případech, kdy je datová část zprávy větší než 32 KB nebo v binárním formátu, spusťte kód CheckMalformedEvents. cs dostupný v [úložišti ukázek GitHubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód přečte ID oddílu, posun a vytiskne data, která jsou umístěna v tomto posunu. 
 
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>Úloha překročila maximální počet přijímačů centra událostí.
 
@@ -70,7 +70,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Pokud chcete do instance Event Hubs přidat novou skupinu příjemců, postupujte takto:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyhledejte centrum událostí.
 
@@ -164,7 +164,7 @@ SELECT foo FROM DataTwo
 
 Úlohy Stream Analytics používají integrovaný [koncový bod kompatibilní](../iot-hub/iot-hub-devguide-messages-read-builtin.md) s centrem událostí IoT Hub k připojení a čtení událostí z IoT Hub. Pokud vaše čtení na oddíl překročí limity IoT Hub, můžete ho vyřešit pomocí [řešení pro centrum událostí](#readers-per-partition-exceeds-event-hubs-limit) . Můžete vytvořit skupinu příjemců pro integrovaný koncový bod prostřednictvím relace koncového bodu portálu IoT Hub nebo prostřednictvím [sady IoT Hub SDK](/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup).
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 

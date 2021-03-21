@@ -16,10 +16,10 @@ ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: add4b54adb02db09536f4e56a7f039c46245c182
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963552"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Kurz: použití dynamické konfigurace v aplikaci Azure Functions
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Nastavte si aplikaci Azure Functions pro aktualizaci konfigurace v reakci na změny v úložišti konfigurace aplikace.
 > * Vloží nejnovější konfiguraci do vašich Azure Functions volání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou **vývoj pro Azure**
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
 
-1. Otevřete *Startup.cs* a aktualizujte `ConfigureAppConfiguration` metodu. 
+1. Otevřete *Startup. cs* a aktualizujte `ConfigureAppConfiguration` metodu. 
 
    `ConfigureRefresh`Metoda registruje nastavení, které bude kontrolovat změny vždy, když se aktivuje aktualizace v rámci aplikace, kterou provedete v pozdějším kroku při přidávání `_configurationRefresher.TryRefreshAsync()` . `refreshAll`Parametr nastaví poskytovatele konfigurace aplikace tak, aby znovu znovu nahlásil celou konfiguraci při zjištění změny v registrovaném nastavení.
 
@@ -74,7 +74,7 @@ V tomto kurzu se naučíte:
     }
     ```
 
-3. Otevřete *function1.cs* a přidejte následující obory názvů.
+3. Otevřete *function1. cs* a přidejte následující obory názvů.
 
     ```csharp
     using System.Linq;
@@ -143,7 +143,7 @@ V tomto kurzu se naučíte:
 
     ![Rychlé spuštění funkce spustit místně](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte úložiště konfigurace aplikace, které jste vytvořili v rychlém startu.
+5. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte úložiště konfigurace aplikace, které jste vytvořili v rychlém startu.
 
 6. Vyberte **Průzkumník konfigurace** a aktualizujte hodnotu následujícího klíče:
 

@@ -5,10 +5,10 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97655811"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj služby Azure Functions pomocí sady Visual Studio  
@@ -27,7 +27,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat Visual Studio
 
 Pokud není uvedeno jinak, postupy a příklady jsou uvedeny pro Visual Studio 2019. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Functions nástroje. Pokud chcete přidat nástroje Azure Function Tools, zahrňte do instalace sady Visual Studio úlohu **vývoj pro Azure** . Azure Functions nástroje jsou k dispozici v rámci úlohy vývoje Azure počínaje sadou Visual Studio 2017.
 

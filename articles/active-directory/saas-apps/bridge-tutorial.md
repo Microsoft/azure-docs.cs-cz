@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 0b337225c5909563ef4aeb49cf0754e11075a6fb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99090032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Kurz: Azure Active Directory integrace s mostem
@@ -30,7 +30,7 @@ Integrace mostu se službou Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s mostem potřebujete následující položky:
 

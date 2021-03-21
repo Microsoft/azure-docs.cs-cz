@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.openlocfilehash: 60d7d4888c17ffe46340aa85b8d2a1cc4fa7ed34
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792428"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581826"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory předávací ověřování: rychlý Start
 
@@ -65,14 +65,15 @@ Ujistěte se, že jsou splněné následující požadavky.
 4. Pokud je mezi vašimi servery a službou Azure AD brána firewall, nakonfigurujte následující položky:
    - Zajistěte, aby ověřovací agenti mohli vytvářet *odchozí* požadavky na službu Azure AD prostřednictvím následujících portů:
 
-     | Číslo portu | Jak se používá |
+     | Číslo portu | K čemu slouží |
      | --- | --- |
      | **80** | Stahuje seznamy odvolaných certifikátů (CRL) při ověřování certifikátu TLS/SSL. |
-     | **443** | Zpracovává veškerou odchozí komunikaci se službou. |
+     | **443** | Přes tento port se zpracovává veškerá odchozí komunikace se službou. |
      | **8080** (volitelné) | Agenti ověřování hlásí svůj stav každých deset minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. Port _8080 se nepoužívá pro_ přihlášení uživatelů. |
      
-     Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
+     Pokud vaše brána firewall vynucuje pravidla v závislosti na zdroji uživatelů, otevřete tyto porty pro přenos ze služeb pro Windows, které běží jako síťové služby.
    - Pokud vaše brána firewall nebo proxy server umožňuje přidat záznamy DNS do povolených, přidejte připojení do souborů **\* . msappproxy.NET** a **\* . ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
+   - Pokud máte odchozí proxy server HTTP, ujistěte se, že je tato adresa URL autologon.microsoftazuread-sso.com povolená. Tuto adresu URL byste měli explicitně zadat, protože zástupný znak nelze přijmout. 
    - Vaše agenti ověřování potřebují pro počáteční registraci přístup k **Login.Windows.NET** a **Login.microsoftonline.com** . Otevřete taky bránu firewall pro tyto adresy URL.
     - Pro ověření certifikátu Odblokujte následující adresy URL: **crl3.DigiCert.com:80**, **crl4.DigiCert.com:80**, **ocsp.digicert.com:80**, **www \. d-trust.net:80**, **root-C3-CA2-2009.OCSP.d-Trust.NET:80**, **CRL.Microsoft.com:80**, **oneocsp.Microsoft.com:80** a **OCSP.msocsp.com:80**. Vzhledem k tomu, že se tyto adresy URL používají pro ověřování certifikátů s jinými produkty Microsoftu, tyto adresy URL už možná máte odblokované.
 
