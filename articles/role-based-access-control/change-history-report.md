@@ -11,10 +11,10 @@ ms.date: 03/01/2021
 ms.author: rolyon
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042115"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Zobrazení protokolů aktivit pro změny v Azure RBAC
@@ -55,7 +55,7 @@ Další informace o protokolech aktivit najdete v tématu [zobrazení protokolů
 Výstup protokolu z karty JSON, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI může obsahovat spoustu informací. Tady jsou některé z klíčových vlastností, které se mají najít při pokusu o interpretaci položky protokolu. Způsoby, jak filtrovat výstup protokolu pomocí Azure PowerShell nebo Azure CLI, najdete v následujících částech.
 
 > [!div class="mx-tableFixed"]
-> | Vlastnost | Příklady hodnot | Popis |
+> | Vlastnost | Příklady hodnot | Description |
 > | --- | --- | --- |
 > | autorizace: akce | Microsoft.Authorization/roleAssignments/write | Vytvořit přiřazení role |
 > |  | Microsoft. Authorization/roleAssignments/DELETE | Odstranit přiřazení role |

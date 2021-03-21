@@ -11,10 +11,10 @@ ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a19d1f26616697e15ae4c39a63c44bdaf83f78f9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101675763"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse s využitím Azure PowerShell
@@ -25,7 +25,7 @@ V tomto rychlém startu se naučíte vytvořit pracovní prostor synapse pomocí
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Účet úložiště Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md)
 
@@ -53,7 +53,7 @@ Install-Module -Name Az.Synapse
 
 1. Definujte potřebné proměnné prostředí pro vytváření prostředků pro pracovní prostor Azure synapse.
 
-   |        Název proměnné        |                                                 Popis                                                 |
+   |        Název proměnné        |                                                 Description                                                 |
    | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
    | název_účtu_úložiště          | Název existujícího účtu úložiště ADLS Gen2.                                                           |
    | StorageAccountResourceGroup | Název existující skupiny prostředků účtu úložiště ADLS Gen2                                             |

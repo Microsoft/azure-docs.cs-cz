@@ -4,10 +4,10 @@ description: Procházení a prohlížení zpráv Service Bus umožňuje klientov
 ms.topic: article
 ms.date: 11/11/2020
 ms.openlocfilehash: c52c9c967d4eada1a931e188ed4d25f7691cfb91
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553637"
 ---
 # <a name="message-browsing"></a>Procházení zpráv
@@ -22,7 +22,7 @@ Prohlížení také vrátí zprávy, které byly uzamčeny a aktuálně jsou zpr
 
 ## <a name="peek-apis"></a>Náhled rozhraní API
 
-Metody [prohlížet/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) existují v klientských knihovnách .NET a Java a na objektech přijímače: **MessageReceiver** , **MessageSession**. Náhled funguje na frontách, předplatných a jejich příslušných frontách nedoručených zpráv.
+Metody [prohlížet/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) existují v klientských knihovnách .NET a Java a na objektech přijímače: **MessageReceiver**, **MessageSession**. Náhled funguje na frontách, předplatných a jejich příslušných frontách nedoručených zpráv.
 
 Při opakovaném pokusu je **Náhled** vyčísluje všechny zprávy ve frontě nebo v protokolu předplatného, od nejnižšího počtu dostupných pořadových čísel až po nejvyšší. Je to pořadí, ve kterém byly zprávy zařazeny do fronty, nikoli pořadí, ve kterém mohou být zprávy nakonec načteny.
 

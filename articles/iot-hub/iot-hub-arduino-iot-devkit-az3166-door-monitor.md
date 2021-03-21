@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148801"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitorování dvířek – používání Azure Functions a SendGrid, odesílání e-mailů, když se otevřou dvířka           
@@ -130,11 +130,11 @@ Dále načtěte ukázkový kód v VS Code a zřiďte nezbytné služby Azure.
 
 ### <a name="open-arduino-examples-folder"></a>Otevřít složku příkladů Arduino
 
-Rozbalte část s **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > AzureIoT**a vyberte **DoorMonitor**. Tato akce otevře nové okno VS Code se složkou projektu v něm.
+Rozbalte část s **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > AzureIoT** a vyberte **DoorMonitor**. Tato akce otevře nové okno VS Code se složkou projektu v něm.
 
 ![zkrácené řešení – příklady](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Ukázkovou aplikaci můžete otevřít také z palety příkazů. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
+Ukázkovou aplikaci můžete otevřít také z palety příkazů. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) k otevření palety příkazů, zadejte **Arduino** a pak vyhledejte a vyberte **Arduino: příklady**.
 
 ### <a name="provision-azure-services"></a>Zřizování služeb Azure
 
@@ -157,7 +157,7 @@ V dalším kroku nahrajte kód pro zařízení.
 
 1. Použijte `Ctrl+P` ke spuštění `task device-upload` .
 
-2. Terminál vás vyzve k zadání režimu konfigurace. Provedete to tak, že stisknete tlačítko a, nahrajete a uvolníte tlačítko obnovit. Na obrazovce se zobrazí identifikační číslo DevKit a *Konfigurace*aplikace Word.
+2. Terminál vás vyzve k zadání režimu konfigurace. Provedete to tak, že stisknete tlačítko a, nahrajete a uvolníte tlačítko obnovit. Na obrazovce se zobrazí identifikační číslo DevKit a *Konfigurace* aplikace Word.
 
 #### <a name="macos"></a>macOS
 

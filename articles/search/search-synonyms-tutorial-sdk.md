@@ -1,5 +1,5 @@
 ---
-title: Příklad synonym jazyka C#
+title: Příklad synonym v C#
 titleSuffix: Azure Cognitive Search
 description: V tomto příkladu v jazyce C# se dozvíte, jak přidat funkci synonym do indexu v Azure Kognitivní hledání. Mapa synonym je seznam ekvivalentních termínů. Pole, která podporují synonymum, rozšiřují dotazy tak, aby zahrnovaly uživatelsky zadaný termín a všechna související synonyma.
 manager: nitinme
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 50d5d73e71b8129f061ec49b363a0ebb13d22bdf
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97704652"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Příklad: Přidání synonym pro Azure Kognitivní hledání v jazyce C #
@@ -35,7 +35,7 @@ Můžete vytvořit několik map synonym, zveřejnit je jako prostředky na úrov
 > [!NOTE]
 > Synonyma lze vytvořit programově, ale ne na portálu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky kurzu zahrnují tyto položky:
 

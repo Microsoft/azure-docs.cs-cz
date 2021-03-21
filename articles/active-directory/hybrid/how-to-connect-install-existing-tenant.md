@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420525"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: když máte existujícího tenanta
@@ -34,7 +34,7 @@ Můžete spravovat některé uživatele místně i v cloudu. Běžným scénář
 Pokud jste začali spravovat uživatele ve službě Azure AD, které jsou také v místní službě AD a později chcete použít možnost připojit, je potřeba vzít v úvahu ještě nějaké další aspekty.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchronizace se stávajícími uživateli v Azure AD
-Když nainstalujete Azure AD Connect a začnete synchronizovat, služba synchronizace Azure AD (v Azure AD) provede kontrolu každého nového objektu a pokusí se najít existující objekt, který se má shodovat. Pro tento proces se používají tři atributy: **userPrincipalName** , **proxyAddresses** a **sourceAnchor** / **immutableID**. Shoda v atributech **userPrincipalName** a **proxyAddresses** se označuje jako **příčasná shoda**. Shoda na **sourceAnchor** se označuje jako **těžká shoda**. Pro atribut **proxyAddresses** se pro vyhodnocení používá jenom hodnota s **SMTP:** , která je primární e-mailová adresa.
+Když nainstalujete Azure AD Connect a začnete synchronizovat, služba synchronizace Azure AD (v Azure AD) provede kontrolu každého nového objektu a pokusí se najít existující objekt, který se má shodovat. Pro tento proces se používají tři atributy: **userPrincipalName**, **proxyAddresses** a **sourceAnchor** / **immutableID**. Shoda v atributech **userPrincipalName** a **proxyAddresses** se označuje jako **příčasná shoda**. Shoda na **sourceAnchor** se označuje jako **těžká shoda**. Pro atribut **proxyAddresses** se pro vyhodnocení používá jenom hodnota s **SMTP:**, která je primární e-mailová adresa.
 
 Shoda se vyhodnocuje jenom pro nové objekty, které pocházejí z připojení. Pokud změníte existující objekt tak, aby odpovídal jakémukoli z těchto atributů, zobrazí se místo toho chyba.
 

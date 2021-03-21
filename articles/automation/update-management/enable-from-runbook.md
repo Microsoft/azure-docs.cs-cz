@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: mvc
 ms.openlocfilehash: 5377a3ff7ef7033b57f8785baa615a717ef7fa0f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575876"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Povolení Update Managementu z runbooku
@@ -25,7 +25,7 @@ Tato metoda používá dva Runbooky:
 * **Enable-MultipleSolution** – primární sada Runbook, která vyzve k zadání informací o konfiguraci, zadá dotaz na zadaný virtuální počítač a provede další kontroly ověřování a potom vyvolá sadu Runbook **Enable-AutomationSolution** pro konfiguraci Update Management pro každý virtuální počítač v zadané skupině prostředků.
 * **Enable-AutomationSolution** – povolí Update Management pro jeden nebo více virtuálních počítačů zadaných v cílové skupině prostředků. Ověří splnění požadavků, ověří, že je nainstalované rozšíření virtuálního počítače Log Analytics a když se nenalezne, nainstaluje a přidá virtuální počítače do konfigurace oboru v zadaném Log Analytics pracovním prostoru, který je propojený s účtem Automation.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../automation-security-overview.md) pro správu počítačů.

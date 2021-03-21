@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak pomocí relací povolit společné 
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98680749"
 ---
 # <a name="message-sessions"></a>Relace zpráv
@@ -34,9 +34,9 @@ Na portálu nastavte příznak následujícím zaškrtávacím políčkem:
 ![Snímek obrazovky dialogového okna vytvořit front s vybranou možností povolit relace a popsaný červeně][2]
 
 > [!NOTE]
-> Když jsou povoleny relace ve frontě nebo v předplatném, klientské aplikace mohou ***již** ne_ odesílat a přijímat pravidelné zprávy. Všechny zprávy musí být odesílány v rámci relace (nastavením ID relace) a přijaty přijetím relace.
+> Když jsou povoleny relace ve frontě nebo v předplatném, klientské aplikace ***již*** nemohou odesílat a přijímat pravidelné zprávy. Všechny zprávy musí být odesílány v rámci relace (nastavením ID relace) a přijaty přijetím relace.
 
-Rozhraní API pro relace existují na klientech front a předplatných. Existuje imperativní model, který řídí, kdy jsou přijímány relace a zprávy, a model založený na obslužných rutinách podobný _OnMessage *, který skrývá složitost správy přijímací smyčky.
+Rozhraní API pro relace existují na klientech front a předplatných. Existuje imperativní model, který řídí, kdy jsou přijímány relace a zprávy, a model založený na obslužných rutinách, podobně jako- *Message*, který skrývá složitost správy přijímací smyčky.
 
 ### <a name="session-features"></a>Funkce relace
 

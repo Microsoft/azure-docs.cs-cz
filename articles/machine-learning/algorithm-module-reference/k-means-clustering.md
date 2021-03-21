@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/04/2020
 ms.openlocfilehash: 7e0b61c1ca6ae30044e4c9d4705bdce01eac1942
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93323684"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-znamená clustering
@@ -58,7 +58,7 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
   
 2.  Chcete-li určit, jakým způsobem chcete model vyškolet, vyberte možnost **vytvořit režim Trainer** .  
   
-    -   **Jediný parametr** : Pokud znáte přesné parametry, které chcete použít v modelu clusteringu, můžete zadat konkrétní sadu hodnot jako argumenty.  
+    -   **Jediný parametr**: Pokud znáte přesné parametry, které chcete použít v modelu clusteringu, můžete zadat konkrétní sadu hodnot jako argumenty.  
   
 3.  Do pole **počet centroids** zadejte počet clusterů, se kterými má algoritmus začínat.  
   
@@ -66,15 +66,15 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
   
 4.  **Inicializace** vlastností slouží k určení algoritmu, který se používá k definování počáteční konfigurace clusteru.  
   
-    -   **First N** : z datové sady se vybere nějaký počáteční počet datových bodů, který se používá jako počáteční prostředky. 
+    -   **First N**: z datové sady se vybere nějaký počáteční počet datových bodů, který se používá jako počáteční prostředky. 
     
          Tato metoda se označuje také jako *Metoda padělání*.  
   
-    -   **Náhodný** : algoritmus náhodně umístí datový bod do clusteru a pak vypočítá počáteční střední hodnotu jako těžištěy náhodně přiřazených bodů clusteru. 
+    -   **Náhodný**: algoritmus náhodně umístí datový bod do clusteru a pak vypočítá počáteční střední hodnotu jako těžištěy náhodně přiřazených bodů clusteru. 
 
          Tato metoda se označuje také jako metoda *náhodného dělení* .  
   
-    -   **K-znamená + +** : Toto je výchozí metoda pro inicializaci clusterů.  
+    -   **K-znamená + +**: Toto je výchozí metoda pro inicializaci clusterů.  
   
          Algoritmus **k** byl navržený v 2007. David Arthur a Sergei Vassilvitskii, aby nedocházelo ke špatnému clusteringu pomocí standardu k. **K-znamená + +** se zlepšuje na standardu k – znamená použití jiné metody pro výběr počátečních Center clusterů.  
   
@@ -83,7 +83,7 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
   
 6.  V části **metrika** vyberte funkci, která se má použít pro měření vzdálenosti mezi vektory clusteru nebo mezi novými datovými body a náhodně zvoleným těžiště. Azure Machine Learning podporuje následující metriky na dálku clusteru:  
   
-    -   **Euclidean** : Euclideaná vzdálenost se běžně používá jako míra bodových clusterů pro k, znamená clusteringu. Tato metrika je preferována, protože minimalizuje střední vzdálenost mezi body a centroids.
+    -   **Euclidean**: Euclideaná vzdálenost se běžně používá jako míra bodových clusterů pro k, znamená clusteringu. Tato metrika je preferována, protože minimalizuje střední vzdálenost mezi body a centroids.
   
 7.  Pro **iterace** zadejte počet, kolikrát se má algoritmus iterovat přes školicí data před tím, než dokončí výběr centroids.  
   
@@ -93,11 +93,11 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
   
      Vzhledem K tomu, že clustering je nekontrolovaný způsob strojového učení, popisky jsou volitelné. Pokud však vaše datová sada již obsahuje sloupec popisku, můžete tyto hodnoty použít k nastavení služby pro výběr clusterů nebo můžete určit, že se mají hodnoty ignorovat.  
   
-    -   **Ignorovat popisek sloupce** : hodnoty ve sloupci popisek jsou ignorovány a nejsou použity při sestavování modelu.
+    -   **Ignorovat popisek sloupce**: hodnoty ve sloupci popisek jsou ignorovány a nejsou použity při sestavování modelu.
   
-    -   **Vyplnit chybějící hodnoty** : hodnoty sloupců popisku se používají jako funkce, které vám pomůžou sestavení clusterů. Pokud v některých řádcích chybí popisek, hodnota se připravuje pomocí dalších funkcí.  
+    -   **Vyplnit chybějící hodnoty**: hodnoty sloupců popisku se používají jako funkce, které vám pomůžou sestavení clusterů. Pokud v některých řádcích chybí popisek, hodnota se připravuje pomocí dalších funkcí.  
   
-    -   **Přepsat z nejbližšího středu** : hodnoty sloupce Label jsou nahrazeny hodnotami předpokládaných popisků, které používají popisek bodu, který je nejblíže aktuálnímu těžiště.  
+    -   **Přepsat z nejbližšího středu**: hodnoty sloupce Label jsou nahrazeny hodnotami předpokládaných popisků, které používají popisek bodu, který je nejblíže aktuálnímu těžiště.  
 
 8.  Vyberte možnost **normalizovat funkce** , pokud chcete před školením normalizovat funkce.
   
@@ -105,7 +105,7 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
 
 10. Proveďte výuku modelu.  
   
-    -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , přidáte s příznakovou datovou sadu a pomocí modulu [model clusteringu](train-clustering-model.md) provedete model.  
+    -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, přidáte s příznakovou datovou sadu a pomocí modulu [model clusteringu](train-clustering-model.md) provedete model.  
   
 ## <a name="results"></a>Výsledky
 

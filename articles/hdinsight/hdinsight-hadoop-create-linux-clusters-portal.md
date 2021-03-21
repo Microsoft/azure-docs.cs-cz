@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
 ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945820"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal
@@ -47,7 +47,7 @@ Na kartě **základy** zadejte následující informace:
 |Předplatné|V rozevíracím seznamu vyberte předplatné Azure, které se používá pro cluster.|
 |Skupina prostředků|V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**.|
 |Název clusteru|Zadejte globálně jedinečný název.|
-|Region (Oblast)|V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.|
+|Oblast|V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.|
 |Typ clusteru|Kliknutím na **Vybrat typ clusteru** otevřete seznam. V seznamu vyberte požadovaný typ clusteru. Clustery HDInsight přicházejí v různých typech. Odpovídají zátěži nebo technologii, pro kterou je cluster laděn. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů.|
 |Verze|V rozevíracím seznamu vyberte **verzi**. Pokud si nejste jisti, co si můžete vybrat, použijte výchozí verzi. Další informace najdete v článku [Verze clusterů HDInsight](hdinsight-component-versioning.md).|
 |Uživatelské jméno přihlášení clusteru|Zadejte uživatelské jméno, výchozí nastavení je **admin**.|

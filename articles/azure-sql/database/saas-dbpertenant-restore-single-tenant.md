@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 88496a39b0186cefb7c64e227530b5d73e693094
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780474"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Obnovení jednoho tenanta s aplikací SaaS Database na tenanta
@@ -29,7 +29,7 @@ V tomto kurzu se seznámíte se dvěma vzory obnovení dat:
 > * Obnovení databáze do paralelní databáze (vedle sebe).
 > * Obnovte databázi na místě a nahraďte stávající databázi.
 
-| Vzor | Popis |
+| Vzor | Description |
 |:--|:--|
 | Obnovení do paralelní databáze | Tento model se dá použít pro úlohy, jako je například kontrola, auditování a dodržování předpisů, aby mohl tenant prozkoumat data z dřívějšího bodu. Aktuální databáze tenanta zůstane online a nezměněná. |
 | Obnovení na místě | Tento model se obvykle používá k obnovení tenanta do dřívějšího bodu, poté, co tenant omylem odstraní nebo poškodí data. Původní databáze je mimo řádek a nahrazuje obnovenou databází. |
@@ -44,9 +44,9 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 Existují dva jednoduché vzory pro obnovení dat jednotlivých klientů. Vzhledem k tomu, že databáze tenantů jsou od sebe vzájemně izolované, obnovení jednoho tenanta nemá žádný vliv na data ostatních klientů. V obou vzorcích se používá funkce Azure SQL Databaseho bodu v čase obnovení (PITR). PITR vždy vytvoří novou databázi.
 
-* **Paralelní obnovení** : v prvním vzoru se vytvoří nová paralelní databáze společně s aktuální databází klienta. Tenant pak bude mít k obnovené databázi přístup jen pro čtení. Obnovená data lze zkontrolovat a potenciálně použít k přepsání aktuálních hodnot dat. K určení toho, jak tenant přistupuje k obnovené databázi a jaké možnosti pro obnovení, je k dispozici návrhář aplikace. V některých scénářích může být vše, co je potřeba, jenom v případě, že je možné, aby tenant zkontroloval svá data ve starším bodě.
+* **Paralelní obnovení**: v prvním vzoru se vytvoří nová paralelní databáze společně s aktuální databází klienta. Tenant pak bude mít k obnovené databázi přístup jen pro čtení. Obnovená data lze zkontrolovat a potenciálně použít k přepsání aktuálních hodnot dat. K určení toho, jak tenant přistupuje k obnovené databázi a jaké možnosti pro obnovení, je k dispozici návrhář aplikace. V některých scénářích může být vše, co je potřeba, jenom v případě, že je možné, aby tenant zkontroloval svá data ve starším bodě.
 
-* **Obnovení na místě** : Druhý vzor je užitečný, pokud došlo ke ztrátě nebo poškození dat a tenant se chce vrátit k dřívějšímu bodu. Klient je při obnovení databáze mimo řádek vypnut. Původní databáze je odstraněna a obnovená databáze je přejmenována. Řetězec zálohy původní databáze zůstane po odstranění přístupný, takže v případě potřeby můžete databázi obnovit do dřívějšího bodu v čase.
+* **Obnovení na místě**: Druhý vzor je užitečný, pokud došlo ke ztrátě nebo poškození dat a tenant se chce vrátit k dřívějšímu bodu. Klient je při obnovení databáze mimo řádek vypnut. Původní databáze je odstraněna a obnovená databáze je přejmenována. Řetězec zálohy původní databáze zůstane po odstranění přístupný, takže v případě potřeby můžete databázi obnovit do dřívějšího bodu v čase.
 
 Pokud databáze používá [aktivní geografickou replikaci](active-geo-replication-overview.md) a souběžné obnovování, doporučujeme zkopírovat požadovaná data z obnovené kopie do původní databáze. Pokud nahradíte původní databázi obnovenou databází, je nutné překonfigurovat a znovu synchronizovat geografickou replikaci.
 
@@ -64,7 +64,7 @@ Chcete-li předvést tyto scénáře obnovení, nejprve "omylem" odstraňte udá
 
 ### <a name="open-the-events-app-to-review-the-current-events"></a>Otevřete aplikaci události a zkontrolujte aktuální události.
 
-1. Otevřete centrum událostí ( http://events.wtp.&lt ; User &gt; . trafficmanager.NET) a vyberte Contoso IoT **hala** .
+1. Otevřete centrum událostí ( http://events.wtp.&lt ; User &gt; . trafficmanager.NET) a vyberte Contoso IoT **hala**.
 
    ![Centrum událostí](./media/saas-dbpertenant-restore-single-tenant/events-hub.png)
 
@@ -76,7 +76,7 @@ Chcete-li předvést tyto scénáře obnovení, nejprve "omylem" odstraňte udá
 
 1. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ pro provozní kontinuitu a zotavení po havárii \\ RestoreTenant \\ *Demo-RestoreTenant.ps1* a nastavte následující hodnotu:
 
-   * **$DemoScenario**  =  **1** , *odstranit poslední událost (bez prodeje lístku)* .
+   * **$DemoScenario**  =  **1**, *odstranit poslední událost (bez prodeje lístku)*.
 2. Stisknutím klávesy F5 spusťte skript a odstraňte poslední událost. Zobrazí se následující potvrzovací zpráva:
 
    ```Console
@@ -94,11 +94,11 @@ Toto cvičení obnoví databázi společnosti Contoso v rámci databáze Contoso
  Skript *Restore-TenantInParallel.ps1* vytvoří paralelní databázi tenanta s názvem *ContosoConcertHall \_ Old* s položkou paralelního katalogu. Tento vzor obnovení se nejlépe hodí pro obnovu z menší ztráty dat. Tento model můžete použít také v případě, že potřebujete zkontrolovat data pro účely dodržování předpisů nebo auditování. Je to doporučený postup, pokud používáte [aktivní geografickou replikaci](active-geo-replication-overview.md).
 
 1. Dokončete [simulaci oddílu data neúmyslně odstranit klienta](#simulate-a-tenant-accidentally-deleting-data) .
-2. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ pro provozní kontinuitu a zotavení po havárii \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_ .
-3. Nastavte **$DemoScenario**  =  **2** , *paralelně obnovte tenanta* .
+2. V prostředí PowerShell ISE otevřete... \\ Výukové moduly \\ pro provozní kontinuitu a zotavení po havárii \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_.
+3. Nastavte **$DemoScenario**  =  **2**, *paralelně obnovte tenanta*.
 4. Pokud chcete skript spustit, stiskněte klávesu F5.
 
-Skript obnoví databázi tenanta k určitému bodu v čase před odstraněním události. Databáze je obnovena do nové databáze s názvem _ContosoConcertHall \_ Old_ . Metadata katalogu, která existují v této obnovené databázi, se odstraní a pak se do katalogu přidá databáze pomocí klíče vytvořeného z *ContosoConcertHall \_ starého* názvu.
+Skript obnoví databázi tenanta k určitému bodu v čase před odstraněním události. Databáze je obnovena do nové databáze s názvem _ContosoConcertHall \_ Old_. Metadata katalogu, která existují v této obnovené databázi, se odstraní a pak se do katalogu přidá databáze pomocí klíče vytvořeného z *ContosoConcertHall \_ starého* názvu.
 
 Ukázkový skript otevře stránku události pro tuto novou databázi tenanta v prohlížeči. Poznámka z adresy URL ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` , kterou tato stránka zobrazuje data z obnovené databáze, do které se přidají *_old* do názvu.
 
@@ -106,7 +106,7 @@ Posuňte události uvedené v prohlížeči, abyste potvrdili, že se událost O
 
 Vystavení obnoveného tenanta jako dalšího tenanta s vlastní aplikací pro události nezpůsobí, že poskytnete tenantovi přístup k obnoveným datům. Slouží k ilustraci vzoru obnovení. Většinou udělíte původní data přístup jen pro čtení a uložíte obnovenou databázi za definované období. V ukázce můžete odstranit obnovenou položku tenanta, až budete hotovi, spuštěním scénáře _Odebrat obnoveného tenanta_ .
 
-1. Nastavte **$DemoScenario**  =  **4** , *odeberte obnoveného tenanta* .
+1. Nastavte **$DemoScenario**  =  **4**, *odeberte obnoveného tenanta*.
 2. Pokud chcete skript spustit, stiskněte klávesu F5.
 3. *\_ Stará položka ContosoConcertHall* je nyní odstraněna z katalogu. Zavřete stránku události pro tohoto tenanta v prohlížeči.
 
@@ -115,7 +115,7 @@ Vystavení obnoveného tenanta jako dalšího tenanta s vlastní aplikací pro u
 Toto cvičení obnoví tenanta společnosti Contoso v inhalaes do bodu před odstraněním události. Skript *Restore-TenantInPlace* obnoví databázi tenanta do nové databáze a odstraní původní. Tento vzor obnovení se nejlépe hodí pro obnovení ze závažných poškození dat a klient bude muset vyhovět významné ztrátě dat.
 
 1. V prostředí PowerShell ISE otevřete soubor **Demo-RestoreTenant.ps1** .
-2. Nastavte **$DemoScenario**  =  **5** a *obnovte klienta na místě* .
+2. Nastavte **$DemoScenario**  =  **5** a *obnovte klienta na místě*.
 3. Pokud chcete skript spustit, stiskněte klávesu F5.
 
 Skript obnoví databázi tenanta do bodu před odstraněním události. Před tím, než se dovede k dalším aktualizacím, nejprve vezme klienta contoso v rámci tenanta ve firmě contoso. Pak se vytvoří paralelní databáze obnovením z bodu obnovení. Obnovená databáze má název s časovým razítkem, aby se zajistilo, že název databáze není v konfliktu s názvem existující databáze klienta. V dalším kroku se stará databáze tenanta odstraní a obnovená databáze se přejmenuje na původní název databáze. Nakonec se do online režimu dovede online, aby aplikace mohla přistupovat k obnovené databázi.

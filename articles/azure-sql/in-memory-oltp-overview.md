@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
 ms.openlocfilehash: 48b74a5507eb4a1d48b7bf70133e476a30fe8169
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779947"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimalizujte výkon pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL.
@@ -101,7 +101,7 @@ Existuje programový způsob, jak pochopit, zda daná databáze podporuje In-Mem
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
-Pokud dotaz vrátí hodnotu **1** , In-Memory OLTP je v této databázi podporován. Následující dotazy identifikují všechny objekty, které je třeba odebrat předtím, než může být databáze downgrade na Pro obecné účely, Standard nebo Basic:
+Pokud dotaz vrátí hodnotu **1**, In-Memory OLTP je v této databázi podporován. Následující dotazy identifikují všechny objekty, které je třeba odebrat předtím, než může být databáze downgrade na Pro obecné účely, Standard nebo Basic:
 
 ```sql
 SELECT * FROM sys.tables WHERE is_memory_optimized=1
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Velikost dat a limit úložiště pro In-Memory OLTP
 
-In-Memory OLTP zahrnuje paměťově optimalizované tabulky, které se používají k ukládání uživatelských dat. Tyto tabulky jsou nutné pro přizpůsobení paměti. Vzhledem k tomu, že přímo v SQL Database spravujete paměť, máme koncept kvóty pro uživatelská data. Tento nápad se označuje jako *úložiště OLTP v paměti* .
+In-Memory OLTP zahrnuje paměťově optimalizované tabulky, které se používají k ukládání uživatelských dat. Tyto tabulky jsou nutné pro přizpůsobení paměti. Vzhledem k tomu, že přímo v SQL Database spravujete paměť, máme koncept kvóty pro uživatelská data. Tento nápad se označuje jako *úložiště OLTP v paměti*.
 
 Každá podporovaná cenová úroveň jedné databáze a každá cenová úroveň elastického fondu zahrnuje určité množství In-Memory OLTP úložiště.
 
@@ -149,7 +149,7 @@ Ale downgrade úrovně může mít negativní vliv na vaši databázi. Pokud va�
 
 Před downgradem databáze na Pro obecné účely, Standard nebo Basic odeberte všechny paměťově optimalizované tabulky a typy tabulek a také všechny nativně zkompilované moduly T-SQL.
 
-*Škálování prostředků na úrovni pro důležité obchodní informace* : data v paměťově optimalizovaných tabulkách se musí vejít do úložiště In-Memory OLTP, které je přidružené k vrstvě databáze nebo spravované instanci, nebo je dostupná v elastickém fondu. Pokud se pokusíte škálovat vrstvu dolů nebo přesunout databázi do fondu, který nemá dostatek dostupné In-Memory úložiště OLTP, operace se nepovede.
+*Škálování prostředků na úrovni pro důležité obchodní informace*: data v paměťově optimalizovaných tabulkách se musí vejít do úložiště In-Memory OLTP, které je přidružené k vrstvě databáze nebo spravované instanci, nebo je dostupná v elastickém fondu. Pokud se pokusíte škálovat vrstvu dolů nebo přesunout databázi do fondu, který nemá dostatek dostupné In-Memory úložiště OLTP, operace se nepovede.
 
 ## <a name="in-memory-columnstore"></a>Columnstore v paměti
 
@@ -210,7 +210,7 @@ Pokud máte **clusterovaný** index columnstore, celá tabulka po downgradu nebu
 - [OLTP v paměti (optimalizace v paměti)](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 - [Použití In-Memory OLTP v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
-### <a name="tools"></a>nástroje
+### <a name="tools"></a>Nástroje
 
 - [Azure Portal](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)

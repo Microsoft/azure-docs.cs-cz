@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99580842"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>Rozdíly mezi MSAL.js a ADAL.js
@@ -73,7 +73,7 @@ V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní u�
 
 * Dynamické obory pro přírůstkový souhlas.
 
-    Při sestavování aplikací pomocí verze 1.0 je nutné zaregistrovat úplnou sadu oprávnění (statické obory), které aplikace požaduje, aby uživatel mohl udělit souhlas v době přihlášení. V verze 2.0 můžete použít parametr scope k vyžádání oprávnění v době, kdy chcete. Tyto jsou označovány jako dynamické obory. To umožňuje uživateli poskytnout k oboru přírůstkové vyjádření souhlasu. Takže když na začátku budete chtít, aby se uživatel přihlásil ke svojí aplikaci a nepotřebujete žádný přístup, můžete tak učinit. Pokud budete později potřebovat možnost číst kalendář uživatele, můžete požádat o obor kalendáře v metodách acquireToken a získat souhlas uživatele. Příklad:
+    Při sestavování aplikací pomocí verze 1.0 je nutné zaregistrovat úplnou sadu oprávnění (statické obory), které aplikace požaduje, aby uživatel mohl udělit souhlas v době přihlášení. V verze 2.0 můžete použít parametr scope k vyžádání oprávnění v době, kdy chcete. Tyto jsou označovány jako dynamické obory. To umožňuje uživateli poskytnout k oboru přírůstkové vyjádření souhlasu. Takže když na začátku budete chtít, aby se uživatel přihlásil ke svojí aplikaci a nepotřebujete žádný přístup, můžete tak učinit. Pokud budete později potřebovat možnost číst kalendář uživatele, můžete požádat o obor kalendáře v metodách acquireToken a získat souhlas uživatele. Například:
 
     ```javascript
     var request = {
@@ -85,7 +85,7 @@ V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní u�
 
 * Obory pro rozhraní API V 1.0
 
-    Při získávání tokenů pro rozhraní API V 1.0 pomocí MSAL.js můžete požádat o všechny statické obory registrované v rozhraní API připojením `.default` k identifikátoru URI ID aplikace rozhraní API jako oboru. Příklad:
+    Při získávání tokenů pro rozhraní API V 1.0 pomocí MSAL.js můžete požádat o všechny statické obory registrované v rozhraní API připojením `.default` k identifikátoru URI ID aplikace rozhraní API jako oboru. Například:
 
     ```javascript
     var request = {

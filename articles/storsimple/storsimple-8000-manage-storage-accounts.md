@@ -1,6 +1,6 @@
 ---
 title: Správa přihlašovacích údajů účtu úložiště, zařízení StorSimple 8000 series
-description: Vysvětluje, jak můžete pomocí stránky StorSimple Device Manager nakonfigurovat přidat, upravit, odstranit nebo otočit klíče zabezpečení pro účet úložiště.
+description: Vysvětluje, jak můžete pomocí stránky StorSimple Správce zařízení nakonfigurovat přidat, upravit, odstranit nebo otočit klíče zabezpečení pro účet úložiště.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,17 +15,17 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 0df0c12d5942179e2492bfdc932fa25d126a2426
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016862"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použijte službu StorSimple Device Manager ke správě přihlašovacích údajů účtu úložiště.
+# <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Použijte službu StorSimple Správce zařízení ke správě přihlašovacích údajů účtu úložiště.
 
 ## <a name="overview"></a>Přehled
 
-**Konfigurační** oddíl v okně StorSimple Device Manager Service obsahuje všechny parametry globálních služeb, které se dají vytvořit ve službě StorSimple Device Manager. Tyto parametry se dají použít pro všechna zařízení připojená ke službě a zahrnují:
+**Konfigurační** oddíl v okně StorSimple Správce zařízení Service obsahuje všechny parametry globálních služeb, které se dají vytvořit ve službě StorSimple Správce zařízení. Tyto parametry se dají použít pro všechna zařízení připojená ke službě a zahrnují:
 
 * Přihlašovací údaje účtu úložiště
 * Šablony šířky pásma 
@@ -68,15 +68,15 @@ Při ukládání účtu úložiště se služba pokusí o komunikaci s vaším p
 
 K přidání přihlašovacích údajů k účtu úložiště Azure použijte následující postupy:
 
-* Přidání přihlašovacích údajů účtu úložiště, které mají stejné předplatné Azure jako služba Device Manager
-* Přidání přihlašovacích údajů účtu Azure Storage mimo předplatné služby Device Manager
+* Přidání přihlašovacích údajů účtu úložiště, které mají stejné předplatné Azure jako služba Správce zařízení
+* Přidání přihlašovacích údajů účtu Azure Storage mimo předplatné služby Správce zařízení
 
 [!INCLUDE [add-a-storage-account-update2](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
-#### <a name="to-add-an-azure-storage-account-credential-outside-of-the-storsimple-device-manager-service-subscription"></a>Přidání přihlašovacích údajů účtu Azure Storage mimo předplatné služby StorSimple Device Manager
+#### <a name="to-add-an-azure-storage-account-credential-outside-of-the-storsimple-device-manager-service-subscription"></a>Přidání přihlašovacích údajů účtu Azure Storage mimo předplatné služby StorSimple Správce zařízení
 
-1. Přejděte ke službě StorSimple Device Manager, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
-2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** . Tato seznam obsahuje všechna existující pověření účtu úložiště přidružená ke službě StorSimple Device Manager.
+1. Přejděte ke službě StorSimple Správce zařízení, vyberte ji a dvakrát na ni klikněte. Tím se otevře okno **Přehled** .
+2. V části **Konfigurace** vyberte **přihlašovací údaje účtu úložiště** . Tato seznam obsahuje všechna existující pověření účtu úložiště přidružená ke službě StorSimple Správce zařízení.
 3. Klikněte na **Přidat**.
 4. V okně **Přidat přihlašovací údaje účtu úložiště** udělejte toto:
    
@@ -86,11 +86,11 @@ K přidání přihlašovacích údajů k účtu úložiště Azure použijte ná
    
     3. Do textového pole **přístupový klíč účtu úložiště** zadejte primární přístupový klíč pro přihlašovací údaje k účtu úložiště Azure. Tento klíč získáte tak, že přejdete do služby Azure Storage, vyberete přihlašovací údaje účtu úložiště a kliknete na **spravovat klíče účtu**. Nyní můžete zkopírovat primární přístupový klíč.
    
-    4. Pokud chcete povolit protokol TLS, klikněte na tlačítko **Povolit** a vytvořte zabezpečený kanál pro síťovou komunikaci mezi službou StorSimple Device Manager a cloudem. Klikněte na tlačítko **Zakázat** jenom v případě, že pracujete v privátním cloudu.
+    4. Pokud chcete povolit protokol TLS, klikněte na tlačítko **Povolit** a vytvořte zabezpečený kanál pro síťovou komunikaci mezi službou StorSimple Správce zařízení a cloudem. Klikněte na tlačítko **Zakázat** jenom v případě, že pracujete v privátním cloudu.
    
     5. Klikněte na **Přidat**. Po úspěšném vytvoření přihlašovacích údajů účtu úložiště se zobrazí oznámení.
 
-5. Nově vytvořené přihlašovací údaje účtu úložiště se zobrazí v okně StorSimple konfigurace služby Device Manager v části **přihlašovací údaje účtu úložiště**.
+5. Nově vytvořené přihlašovací údaje účtu úložiště se zobrazí v okně StorSimple konfigurace služby Správce zařízení v části **přihlašovací údaje účtu úložiště**.
    
 
 
@@ -143,13 +143,13 @@ Když vytváříte účet úložiště, Microsoft Azure generuje 2 512 klíče p
 
 Aplikace obvykle používají pro přístup k datům pouze jeden z klíčů. Po určité době můžete své aplikace přepnout na použití druhého klíče. Po přepnutí aplikací na sekundární klíč můžete vyřadit první klíč a potom vygenerovat nový klíč. Pomocí těchto dvou klíčů tímto způsobem umožníte aplikacím přístup k datům, aniž by docházelo k výpadkům.
 
-Klíče účtu úložiště se ve službě vždycky ukládají v zašifrované podobě. Můžete je ale resetovat prostřednictvím služby StorSimple Device Manager. Služba může získat primární klíč a sekundární klíč pro všechny účty úložiště ve stejném předplatném, včetně účtů vytvořených ve službě úložiště a výchozích účtů úložiště generovaných při prvním vytvoření služby StorSimple Device Manager. Služba StorSimple Device Manager bude tyto klíče vždycky získávat z portálu Azure Classic a pak je ukládat šifrovaným způsobem.
+Klíče účtu úložiště se ve službě vždycky ukládají v zašifrované podobě. Můžete je ale resetovat prostřednictvím služby StorSimple Správce zařízení. Služba může získat primární klíč a sekundární klíč pro všechny účty úložiště ve stejném předplatném, včetně účtů vytvořených ve službě úložiště a výchozích účtů úložiště generovaných při prvním vytvoření služby StorSimple Správce zařízení. Služba StorSimple Správce zařízení bude tyto klíče vždycky získávat z portálu Azure Classic a pak je ukládat šifrovaným způsobem.
 
 ## <a name="rotation-workflow"></a>Pracovní postup rotace
 
-Správce Microsoft Azure může znovu vygenerovat nebo změnit primární nebo sekundární klíč přímým přístupem k účtu úložiště (prostřednictvím služby Microsoft Azure Storage). Služba StorSimple Device Manager nevidí tuto změnu automaticky.
+Správce Microsoft Azure může znovu vygenerovat nebo změnit primární nebo sekundární klíč přímým přístupem k účtu úložiště (prostřednictvím služby Microsoft Azure Storage). Služba StorSimple Správce zařízení nevidí tuto změnu automaticky.
 
-Abyste informovali službu StorSimple Device Manager o změně, budete potřebovat přístup ke službě StorSimple Device Manager, přístupu k účtu úložiště a pak primárnímu nebo sekundárnímu klíči synchronizovat (podle toho, která z nich se změnila). Služba pak získá nejnovější klíč, zašifruje klíče a odešle šifrovaný klíč do zařízení.
+Abyste informovali službu StorSimple Správce zařízení o změně, budete potřebovat přístup ke službě StorSimple Správce zařízení, přístupu k účtu úložiště a pak primárnímu nebo sekundárnímu klíči synchronizovat (podle toho, která z nich se změnila). Služba pak získá nejnovější klíč, zašifruje klíče a odešle šifrovaný klíč do zařízení.
 
 #### <a name="to-synchronize-keys-for-storage-accounts-in-the-same-subscription-as-the-service"></a>Synchronizace klíčů pro účty úložiště ve stejném předplatném jako služba 
 1. Přejděte do služby Správce zařízení StorSimple. V části **Konfigurace** klikněte na **Přihlašovací údaje účtu úložiště**.
@@ -161,7 +161,7 @@ Abyste informovali službu StorSimple Device Manager o změně, budete potřebov
 
     ![synchronizovat klíče 2](./media/storsimple-8000-manage-storage-accounts/syncaccesskey2.png)
 
-4. Ve službě StorSimple Device Manager musíte aktualizovat klíč, který se dříve změnil ve službě Microsoft Azure Storage. Pokud se primární přístupový klíč změnil (znovu vygeneroval), vyberte **primární** klíč. Pokud se sekundární klíč změnil, vyberte **sekundární** klíč. Klikněte na **synchronizovat klíč**.
+4. Ve službě StorSimple Správce zařízení musíte aktualizovat klíč, který se dříve změnil ve službě Microsoft Azure Storage. Pokud se primární přístupový klíč změnil (znovu vygeneroval), vyberte **primární** klíč. Pokud se sekundární klíč změnil, vyberte **sekundární** klíč. Klikněte na **synchronizovat klíč**.
       
       ![synchronizace klíčů 3](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
@@ -173,9 +173,9 @@ Po úspěšné synchronizaci klíče budete upozorněni.
 3. V dialogovém okně udělejte toto:
    
    1. Vyberte účet úložiště s přístupovým klíčem, který chcete aktualizovat.
-   2. Je potřeba aktualizovat přístupový klíč úložiště ve službě StorSimple Device Manager. V takovém případě můžete zobrazit přístupový klíč k úložišti. Do pole **přístupový klíč účtu úložiště** zadejte nový klíč. 
+   2. Je potřeba aktualizovat přístupový klíč úložiště ve službě StorSimple Správce zařízení. V takovém případě můžete zobrazit přístupový klíč k úložišti. Do pole **přístupový klíč účtu úložiště** zadejte nový klíč. 
    3. Uložte provedené změny. Váš přístupový klíč účtu úložiště by se teď měl aktualizovat.
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [zabezpečení StorSimple](storsimple-8000-security.md).
-* Přečtěte si další informace o [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Přečtěte si další informace o [používání služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

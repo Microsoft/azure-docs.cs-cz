@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
 ms.openlocfilehash: b95d4b0a082e8eac191d610c9516e5ce72180b4c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219169"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Řešení potíží s neobvykle se opakující úlohou
@@ -29,7 +29,7 @@ Chcete-li použít související zobrazení úlohy k řešení problému opakova
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>Případ 1: máte adresu URL pro opakovanou úlohu.
 
-Pomocí **nástrojů**  >  **Data Lake**  >  **zobrazení úloh**můžete vložit adresu URL úlohy pro otevření zobrazení úlohy v aplikaci Visual Studio. Vyberte **Zobrazit související úlohy** a otevřete zobrazení související úlohy.
+Pomocí **nástrojů**  >  **Data Lake**  >  **zobrazení úloh** můžete vložit adresu URL úlohy pro otevření zobrazení úlohy v aplikaci Visual Studio. Vyberte **Zobrazit související úlohy** a otevřete zobrazení související úlohy.
 
 ![Zobrazit odkaz související úlohy v Data Lake Analyticsch nástrojích](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  

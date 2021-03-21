@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 497e714289c834e026c6b9b767ed2b7af5442783
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780831"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Nasaďte a prozkoumejte aplikaci víceklientské SaaS, která používá model databáze na tenanta s Azure SQL Database
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte:
 > - Jak nasadit aplikaci Wingtip SaaS
 > - Kde získám zdrojový kód aplikace a skripty pro správu.
 > - O serverech, fondech a databázích, které tvoří aplikaci.
-> - Jak jsou klienti mapováni na svá data pomocí *katalogu* .
+> - Jak jsou klienti mapováni na svá data pomocí *katalogu*.
 > - Jak zřídit nového tenanta.
 > - Jak monitorovat aktivitu klienta v aplikaci.
 
@@ -48,14 +48,14 @@ Pro dokončení tohoto kurzu se ujistěte, že je nainstalovaná Azure PowerShel
 
 V krocích v této části zadáte hodnotu uživatele, která se používá k ujištění, že názvy prostředků jsou globálně jedinečné. Také zadáte název skupiny prostředků, která obsahuje všechny prostředky vytvořené nasazením aplikace. Pro fiktivní osobu s názvem Ann Finley doporučujeme:
 
-- **Uživatel** : *AF1* se skládá z iniciál Ann Finley a číslice. Pokud aplikaci nasadíte podruhé, použijte jinou hodnotu. Příkladem je AF2.
-- **Skupina prostředků** : *Wingtip-DPT-AF1* označuje, že se jedná o aplikaci databáze na tenanta. Připojíte uživatelské jméno AF1 a prokorelujte název skupiny prostředků s názvy prostředků, které obsahuje.
+- **Uživatel**: *AF1* se skládá z iniciál Ann Finley a číslice. Pokud aplikaci nasadíte podruhé, použijte jinou hodnotu. Příkladem je AF2.
+- **Skupina prostředků**: *Wingtip-DPT-AF1* označuje, že se jedná o aplikaci databáze na tenanta. Připojíte uživatelské jméno AF1 a prokorelujte název skupiny prostředků s názvy prostředků, které obsahuje.
 
 Vyberte si své názvy a napište je.
 
 ### <a name="steps"></a>Postup
 
-1. Pokud chcete v Azure Portal otevřít šablonu nasazení Database – SaaS pro jednotlivé klienty, vyberte **nasadit do Azure** .
+1. Pokud chcete v Azure Portal otevřít šablonu nasazení Database – SaaS pro jednotlivé klienty, vyberte **nasadit do Azure**.
 
    [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
@@ -64,15 +64,15 @@ Vyberte si své názvy a napište je.
     > [!IMPORTANT]
     > Některá ověřování a brány firewall serveru jsou pro demonstrační účely záměrně nezabezpečené. Doporučujeme vytvořit novou skupinu prostředků. Nepoužívejte existující skupiny prostředků, servery nebo fondy. Nepoužívejte tuto aplikaci, skripty ani žádné nasazené prostředky pro produkční prostředí. Odstraňte tuto skupinu prostředků, až budete hotovi s aplikací, abyste zastavili související fakturaci.
 
-    - **Skupina prostředků** : vyberte **vytvořit novou** a zadejte jedinečný název, který jste zvolili dříve pro skupinu prostředků.
-    - **Umístění** : v rozevíracím seznamu vyberte umístění.
-    - **Uživatel** : použijte hodnotu uživatelského jména, kterou jste zvolili dříve.
+    - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte jedinečný název, který jste zvolili dříve pro skupinu prostředků.
+    - **Umístění**: v rozevíracím seznamu vyberte umístění.
+    - **Uživatel**: použijte hodnotu uživatelského jména, kterou jste zvolili dříve.
 
 1. Nasaďte aplikaci.
 
     a. Vyberte, chcete-li souhlasit s podmínkami a ujednáními.
 
-    b. Vyberte **Koupit** .
+    b. Vyberte **Koupit**.
 
 1. Pokud chcete monitorovat stav nasazení, vyberte **oznámení** (ikona zvonku napravo od pole hledání). Nasazení aplikace SaaS lístky Wingtip se zabere přibližně pět minut.
 
@@ -88,8 +88,8 @@ Při nasazení aplikace Stáhněte zdrojový kód a skripty pro správu.
 1. Přejděte do [úložiště GitHub WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt].
 1. Vyberte **Clone or download** (Naklonovat nebo stáhnout).
 1. Vyberte **Stáhnout ZIP** a pak soubor uložte.
-1. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-DbPerTenant-master.zip** a pak vyberte **vlastnosti** .
-1. Na kartě **Obecné** vyberte **odblokovat**  >  **použít** .
+1. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-DbPerTenant-master.zip** a pak vyberte **vlastnosti**.
+1. Na kartě **Obecné** vyberte **odblokovat**  >  **použít**.
 1. Vyberte **OK** a extrahujte soubory.
 
 Skripty se nacházejí v... \\ WingtipTicketsSaaS-DbPerTenant – hlavní \\ Složka výukových modulů
@@ -128,9 +128,9 @@ Aplikace Wingtip používá k řízení distribuce příchozích žádostí slu�
 
     Části předchozího formátu jsou vysvětleny v následující tabulce.
 
-    | Část adresy URL        | Popis       |
+    | Část adresy URL        | Description       |
     | :-------------- | :---------------- |
-    | události. Wingtip-DPT | Části události aplikace Wingtip.<br /><br /> *– DPT* rozlišuje implementaci lístků Wingtip *na základě databáze* z jiných implementací. Příklady jsou implementace s *jedním* z aplikací na tenanta ( *-SA* ) nebo *víceklientské databáze* ( *-Mt* ). |
+    | události. Wingtip-DPT | Části události aplikace Wingtip.<br /><br /> *– DPT* rozlišuje implementaci lístků Wingtip *na základě databáze* z jiných implementací. Příklady jsou implementace s *jedním* z aplikací na tenanta (*-SA*) nebo *víceklientské databáze* (*-Mt*). |
     | . *&lt; Uživatel &gt;* | *AF1* v příkladu. |
     | . trafficmanager.net/ | Traffic Manager základní adresa URL. |
     | fabrikamjazzclub | Identifikuje tenanta s názvem Fabrikam nápadný klub. |
@@ -139,7 +139,7 @@ Aplikace Wingtip používá k řízení distribuce příchozích žádostí slu�
 - Název tenanta se analyzuje z adresy URL aplikace Events.
 - Název tenanta se používá k vytvoření klíče.
 - Klíč se používá pro přístup ke katalogu, aby bylo možné získat umístění databáze klienta.
-  - Katalog je implementován pomocí *správy mapování horizontálních oddílů* .
+  - Katalog je implementován pomocí *správy mapování horizontálních oddílů*.
 - Centrum událostí používá rozšířená metadata v katalogu k vytvoření adres URL stránky seznam událostí pro každého tenanta.
 
 V produkčním prostředí obvykle vytvoříte záznam DNS CNAME k [*nasměrování internetové domény společnosti*](../../traffic-manager/traffic-manager-point-internet-domain.md) na název služby Traffic Manager DNS.
@@ -181,9 +181,9 @@ Pokud chcete řídit a monitorovat úlohy na pozadí, použijte následující r
 3. *LoadGenerator.ps1* spustí úlohu PowerShellu na pozadí pro každou databázi tenanta:
 
     - Ve výchozím nastavení se úlohy na pozadí spouštějí po 120 minut.
-    - Každá úloha způsobuje zatížení na základě procesoru v jedné databázi tenanta spuštěním *sp_CpuLoadGenerator* . Intenzita a doba trvání zatížení se liší v závislosti na `$DemoScenario` .
+    - Každá úloha způsobuje zatížení na základě procesoru v jedné databázi tenanta spuštěním *sp_CpuLoadGenerator*. Intenzita a doba trvání zatížení se liší v závislosti na `$DemoScenario` .
     - *sp_CpuLoadGenerator* cykly kolem příkazu SQL SELECT, který způsobuje vysoké zatížení procesoru. Časový interval mezi chybami výběru se liší podle hodnot parametrů, aby bylo možné vytvořit ověřitelné zatížení procesoru. Úrovně zatížení a intervaly jsou náhodné pro simulaci realističtějších zátěží.
-    - Tento soubor. SQL je uložený *v \\ WingtipTenantDB \\ dbo \\ StoredProcedures* .
+    - Tento soubor. SQL je uložený *v \\ WingtipTenantDB \\ dbo \\ StoredProcedures*.
 
 4. Pokud `$OneTime = $false` , generátor zatížení spustí úlohy na pozadí a pak pokračuje v běhu. Každých 10 sekund monitoruje všechny nově zřízené klienty. Pokud nastavíte `$OneTime = $true` , LoadGenerator spustí úlohy na pozadí a pak zastaví běh v popředí. Pro tento kurz ponechejte `$OneTime = $false` .
 
@@ -200,7 +200,7 @@ Než budete pokračovat v další části, ponechte generátor zatížení spuš
 Počáteční nasazení vytvoří tři ukázkové klienty. Nyní vytvoříte dalšího tenanta, abyste viděli dopad na nasazenou aplikaci. Pracovní postup pro zřízení nových tenantů v aplikaci Wingtip je vysvětlen v [kurzu zřízení a katalog](saas-dbpertenant-provision-and-catalog.md). V této fázi vytvoříte nového tenanta, který trvá méně než jednu minutu.
 
 1. Otevřete nový PowerShellový ISE.
-2. Otevřít... \\ Výukové Modules\Provision a katalogové \\ *Demo-ProvisionAndCatalog.ps1* .
+2. Otevřít... \\ Výukové Modules\Provision a katalogové \\ *Demo-ProvisionAndCatalog.ps1*.
 3. Pokud chcete skript spustit, stiskněte klávesu F5. Pro nyní ponechte výchozí hodnoty.
 
    > [!NOTE]
@@ -246,7 +246,7 @@ Přejděte na server **tenants1-DPT- &lt; User &gt;** a vyberte **Pool1** pro zo
 
    ![Monitorovat fond](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
-- První graf, označený **využití prostředků** , zobrazuje využití eDTU fondu.
+- První graf, označený **využití prostředků**, zobrazuje využití eDTU fondu.
 - Druhý graf znázorňuje využití eDTU v pěti nejvíce aktivních databázích ve fondu.
 
 Tyto dva grafy znázorňují, že elastické fondy a SQL Database jsou vhodné pro nepředvídatelné úlohy aplikací SaaS. V grafech se zobrazí, že každý z nich bude mít každý nárůst velikosti až 40 eDTU a všechny databáze jsou ale ve fondu 50-eDTU pohodlně podporované. Fond 50-eDTU může podporovat i těžší úlohy. Pokud jsou databáze zřízené jako samostatné databáze, každá z nich musí být S2 (50 DTU), aby podporovala shluky. Cena za čtyři jednotlivé databáze S2 je téměř třikrát cena fondu. V reálných situacích SQL Database zákazníkům spouštět až 500 databází ve fondech 200 eDTU. Další informace najdete v [kurzu monitorování výkonu](saas-dbpertenant-performance-monitoring.md).
@@ -265,7 +265,7 @@ V tomto kurzu jste se dozvěděli:
 > [!div class="checklist"]
 > - Jak nasadit aplikaci SaaS lístky Wingtip.
 > - O serverech, fondech a databázích, které tvoří aplikaci.
-> - Jak jsou klienti mapováni na svá data pomocí *katalogu* .
+> - Jak jsou klienti mapováni na svá data pomocí *katalogu*.
 > - Jak zřídit nové klienty.
 > - Jak zobrazit využití fondu pro monitorování aktivity tenanta
 > - Jak odstranit ukázkové prostředky pro zastavení související fakturace

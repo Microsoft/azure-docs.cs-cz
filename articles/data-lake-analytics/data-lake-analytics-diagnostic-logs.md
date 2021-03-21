@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.openlocfilehash: cd339729f2300ff7e13e7422bf73373b4ce4658e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221005"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Analytics
@@ -27,7 +27,7 @@ Protokolování diagnostiky umožňuje shromažďovat záznamy pro audit příst
 
     ![Snímek obrazovky zobrazující zvolenou akci diagnostické protokoly a možnost zapnout diagnostiku pro shromažďování následujících protokolů](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. Z __nastavení diagnostiky__zadejte __název__ této konfigurace protokolování a pak vyberte možnosti protokolování.
+3. Z __nastavení diagnostiky__ zadejte __název__ této konfigurace protokolování a pak vyberte možnosti protokolování.
 
     ![Zapnout diagnostiku pro shromažďování protokolů auditu a žádostí](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Povolení diagnostických protokolů")
 
@@ -40,7 +40,7 @@ Protokolování diagnostiky umožňuje shromažďovat záznamy pro audit příst
      * Vyberte __Odeslat pro Log Analytics__ pro odeslání dat do služby Azure monitor. Tuto možnost použijte, pokud chcete protokoly Azure Monitor použít ke shromažďování a analýze protokolů.
    * Určete, zda chcete získat protokoly auditu nebo protokoly žádostí nebo obojí.  Protokol žádostí zachycuje všechny požadavky rozhraní API. Protokol auditu zaznamenává všechny operace, které jsou aktivovány touto žádostí rozhraní API.
 
-   * Pro __archivaci do účtu úložiště__zadejte počet dní, po které se mají data uchovávat.
+   * Pro __archivaci do účtu úložiště__ zadejte počet dní, po které se mají data uchovávat.
 
    * Klikněte na __Uložit__.
 
@@ -125,7 +125,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 
 #### <a name="request-log-schema"></a>Schéma protokolu žádostí
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |Identifikátor prostředku, na kterém byla operace provedena |
@@ -139,7 +139,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 
 #### <a name="request-log-properties-schema"></a>Vlastnosti protokolu žádosti – schéma
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | HttpMethod |Řetězec |Metoda HTTP použitá pro operaci Například GET. |
 | Cesta |Řetězec |Cesta, na které byla operace provedena |
@@ -175,7 +175,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |Identifikátor prostředku, na kterém byla operace provedena |
@@ -193,7 +193,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditu
 
-| Název | Typ | Popis |
+| Název | Typ | Description |
 | --- | --- | --- |
 | JobId |Řetězec |ID přiřazené k úloze |
 | JobName |Řetězec |Název, který byl zadán pro úlohu |
@@ -204,7 +204,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 | Paralelismu |Řetězec |Počet jednotek Data Lake Analytics požadovaných pro tuto úlohu při odeslání |
 
 > [!NOTE]
-> **SubmitTime**, **čas_spuštění**, **čas_ukončení**a **paralelismus** poskytují informace o operaci. Tyto položky obsahují hodnotu pouze v případě, že operace byla spuštěna nebo dokončena. Například **SubmitTime** obsahuje hodnotu **JobSubmitted**pouze po hodnotě **OperationName** .
+> **SubmitTime**, **čas_spuštění**, **čas_ukončení** a **paralelismus** poskytují informace o operaci. Tyto položky obsahují hodnotu pouze v případě, že operace byla spuštěna nebo dokončena. Například **SubmitTime** obsahuje hodnotu **JobSubmitted** pouze po hodnotě **OperationName** .
 
 ## <a name="process-the-log-data"></a>Zpracování dat protokolu
 

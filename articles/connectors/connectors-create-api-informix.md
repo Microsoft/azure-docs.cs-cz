@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: 4995a91783c2302f3bda5cc9409f017248ca29fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88761640"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Správa prostředků databáze IBM Informix pomocí Azure Logic Apps
@@ -25,7 +25,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru In
 
 V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat operace databáze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -107,15 +107,15 @@ V tomto tématu se dozvíte, jak pomocí konektoru v aplikaci logiky zpracovat o
 
 1. Na panelu nástrojů návrháře aplikace logiky vyberte **Spustit**. Po spuštění aplikace logiky můžete zobrazit výstupy z tohoto spuštění.
 
-1. V nabídce vaší aplikace logiky vyberte **Přehled**. V podokně Přehled v části **Souhrnná**  >  **historie spuštění**vyberte poslední spuštění.
+1. V nabídce vaší aplikace logiky vyberte **Přehled**. V podokně Přehled v části **Souhrnná**  >  **historie spuštění** vyberte poslední spuštění.
 
-1. V části **spuštění aplikace logiky**vyberte **Spustit podrobnosti**.
+1. V části **spuštění aplikace logiky** vyberte **Spustit podrobnosti**.
 
 1. V seznamu akce vyberte akci s výstupy, které chcete zobrazit, například **Get_tables**.
 
    Pokud byla akce úspěšná, jejich vlastnost **status** je označena jako **úspěšná**.
 
-1. Chcete-li zobrazit vstupy, klikněte v části **vstupy na odkaz**odkaz na adresu URL. Chcete-li zobrazit výstupy, klikněte v části odkaz na **výstup** odkazy na odkaz adresa URL. Tady je několik ukázkových výstupů:
+1. Chcete-li zobrazit vstupy, klikněte v části **vstupy na odkaz** odkaz na adresu URL. Chcete-li zobrazit výstupy, klikněte v části odkaz na **výstup** odkazy na odkaz adresa URL. Tady je několik ukázkových výstupů:
 
    * **Get_tables** zobrazuje seznam tabulek:
 

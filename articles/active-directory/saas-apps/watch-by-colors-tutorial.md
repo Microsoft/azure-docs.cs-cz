@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.openlocfilehash: fae276049ec3ff6c4bf96be38ff0d2a952731a15
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636778"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) ke sledování pomocí barev
@@ -47,14 +47,14 @@ Pokud chcete nakonfigurovat integraci sledování podle barev do služby Azure A
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **sledování podle barev** .
 1. Vyberte možnost **sledovat podle barev** z panelu výsledků a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Konfigurace a testování jednotného přihlašování Azure AD pro sledování pomocí barev
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD s využitím barev pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v kukátku pomocí barev.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s využitím barev pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v kukátku pomocí barev.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí sledování pomocí barev, dokončete následující stavební bloky:
 
@@ -69,8 +69,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce **sledování podle barev** aplikace, najděte část **Správa** a vyberte **jednotné přihlašování** .
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce **sledování podle barev** aplikace, najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -89,21 +89,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup ke sledování barevně.
 
-1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
-1. V seznamu aplikace vyberte možnost **sledovat podle barev** .
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **sledovat podle barev**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -117,7 +117,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-watch-by-colors-sso"></a>Konfigurace sledování pomocí jednotného přihlašování barev
 
-1. Chcete-li automatizovat konfiguraci v rámci sledování pomocí barev, je nutné nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na tlačítko **nainstalovat rozšíření** .
+1. Chcete-li automatizovat konfiguraci v rámci sledování pomocí barev, je nutné nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na tlačítko **nainstalovat rozšíření**.
 
     ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
@@ -127,7 +127,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 3. Pokud chcete nastavit sledování pomocí barev ručně, otevřete nové okno webového prohlížeče a přihlaste se ke svému kukátku pomocí barev webu společnosti jako správce a proveďte následující kroky:
 
-4. V pravém horním rohu stránky klikněte na **profil**  >  **Nastavení účtu**  >  **SSO (jednotné přihlašování)** .
+4. V pravém horním rohu stránky klikněte na **profil**  >  **Nastavení účtu**  >  **SSO (jednotné přihlašování)**.
 
     ![Snímek obrazovky se zobrazí stránka nastavení účtu, kde jsou zakázané S S.](./media/watch-by-colors-tutorial/config01.png)
 
@@ -135,13 +135,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Snímek obrazovky se zobrazí na kartě nastavení SAML, kde můžete povolit SAML.](./media/watch-by-colors-tutorial/config02.png)
 
-    a. Přepněte **možnost povolit protokol SAML** na **zapnuto** .
+    a. Přepněte **možnost povolit protokol SAML** na **zapnuto**.
 
-    b. Do textového pole **Adresa URL** vložte **adresu URL federačních metadat** , kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **Adresa URL** vložte **adresu URL federačních metadat**, kterou jste zkopírovali z Azure Portal.
 
     c. Klikněte na **importovat** a na stránce se automaticky vyplní následující pole.
 
-    d. Klikněte na **Uložit** .
+    d. Klikněte na **Uložit**.
 
 ### <a name="create-watch-by-colors-test-user"></a>Vytvořit kukátko pomocí barev test uživatele
 
@@ -151,7 +151,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se k nim přihlásili, aby se mo
 
 1. Přihlaste se a sledujte barvy jako správce zabezpečení.
 
-1. V pravém horním rohu stránky klikněte na **profily**  >  **Uživatelé**  >  **Přidat uživatele** .
+1. V pravém horním rohu stránky klikněte na **profily**  >  **Uživatelé**  >  **Přidat uživatele**.
 
     ![Snímek obrazovky se zobrazí stránka uživatelé.](./media/watch-by-colors-tutorial/config03.png)
 
@@ -159,9 +159,9 @@ Pokud chcete uživatelům Azure AD povolit, aby se k nim přihlásili, aby se mo
 
     ![Snímek obrazovky se zobrazí podrobnosti o uživateli, kde můžete zadat hodnoty, které jsou popsány.](./media/watch-by-colors-tutorial/config04.png)
 
-    a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako **B** .
+    a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako **B**.
 
-    b. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon** .
+    b. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
     c. Do textového pole **e-mailu** zadejte e-maily uživatele jako `B.Simon@contoso.com` .
 
@@ -169,7 +169,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se k nim přihlásili, aby se mo
 
     e. V rámci vaší organizace vyberte **oprávnění účtu** .
 
-    f. Klikněte na **Uložit** .
+    f. Klikněte na **Uložit**.
 
 ## <a name="test-sso"></a>Test SSO 
 

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: aahi
 ms.openlocfilehash: 003b4411ac791898f4a7467b9b03f29aadba2fc7
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97704828"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Nasazení a spuštění kontejneru v instanci kontejneru Azure
 
 Pomocí následujících kroků můžete snadno škálovat aplikace Cognitive Services Azure v cloudu s využitím Azure [Container Instances](../../container-instances/index.yml). Containering vám pomůže soustředit se na vytváření aplikací namísto správy infrastruktury. Další informace o používání kontejnerů najdete v tématu [funkce a výhody](../cognitive-services-container-support.md#features-and-benefits).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento recept funguje s libovolným kontejnerem Cognitive Services. Před použitím tohoto receptu musí být vytvořen prostředek služby vnímání. Každá služba pro rozpoznávání, která podporuje kontejnery, má článek Jak nainstalovat produkt pro instalaci a konfiguraci služby pro kontejner. Některé služby vyžadují jako vstup pro kontejner soubor nebo sadu souborů, je důležité, abyste před použitím tohoto řešení porozuměli a úspěšně použili kontejner.
 

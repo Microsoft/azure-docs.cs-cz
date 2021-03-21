@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
 ms.openlocfilehash: a7fad0af26d15bc77a52d55309c594937ba3be13
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518615"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s NS1 SSO pro Azure
@@ -49,7 +49,7 @@ Pokud chcete nakonfigurovat integraci NS1 jednotného přihlašování pro Azure
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **ns1 SSO pro Azure** .
 1. Z panelu výsledků vyberte **ns1 SSO pro Azure** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor: `https://api.nsone.net/saml/sso/<ssoid>`
 
-1. Vyberte **nastavit další adresy URL**a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
+1. Vyberte **nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
 
     Do textového pole **Adresa URL pro přihlášení** zadejte následující adresu URL:  `https://my.nsone.net/#/login/sso`
 
@@ -110,9 +110,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Snímek obrazovky oddílu spravovat transformaci se zvýrazněnými různými poli](./media/ns1-sso-for-azure-tutorial/prefix-added.png)
 
-    1. Jako **transformaci**vyberte **ExactMailPrefix ()** .
+    1. Jako **transformaci** vyberte **ExactMailPrefix ()** .
 
-    1. Jako **parametr 1**vyberte **User. userPrincipalName** .
+    1. Jako **parametr 1** vyberte **User. userPrincipalName** .
 
     1. Vyberte **Přidat**.
 
@@ -167,7 +167,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když vyberete dlaždici NS1 SSO pro Azure na přístupovém panelu, měli byste se automaticky přihlásit k NS1 SSO pro Azure, pro které jste nastavili jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

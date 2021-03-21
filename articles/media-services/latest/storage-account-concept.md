@@ -32,7 +32,7 @@ V Media Services V3 se k nahrávání souborů do assetů používají rozhraní
 
 Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by měly být šifrovány šifrováním na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště v Media Services V3:
 
-|Možnost šifrování|Popis|Media Services v3|
+|Možnost šifrování|Description|Media Services v3|
 |---|---|---|
 |Media Services šifrování úložiště| Šifrování AES-256, klíč spravovaný pomocí Media Services. |Nepodporováno. <sup>1</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](../../storage/common/storage-service-encryption.md)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporuje se.|

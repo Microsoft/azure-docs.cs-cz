@@ -8,10 +8,10 @@ ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98065435"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Export dat IoT do cílů cloudu pomocí exportu dat (starší verze)
@@ -30,7 +30,7 @@ Tento článek popisuje, jak používat funkci exportu dat v Azure IoT Central. 
 > [!Note]
 > Když zapnete export dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte nejdříve export dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte být správce aplikace IoT Central, nebo mít oprávnění k exportu dat.
 
@@ -67,9 +67,9 @@ Pokud nemáte existující účet úložiště Azure pro export do, postupujte t
 
     |Úroveň výkonu|Typ účtu|
     |-|-|
-    |Standardní|Pro obecné účely v2|
-    |Standardní|Pro obecné účely v1|
-    |Standardní|Blob Storage|
+    |Standard|Pro obecné účely v2|
+    |Standard|Pro obecné účely v1|
+    |Standard|Blob Storage|
     |Premium|Úložiště objektů blob bloku|
 
 2. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service** vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.

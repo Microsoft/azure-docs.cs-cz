@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
 ms.openlocfilehash: 09264f9f20411e7536eb4a1dbf12ac297e7e3ef9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101675705"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého vzájemného propojení mezi cloudovou infrastrukturou Azure a Oracle  
@@ -31,7 +31,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
 
 ![Připojení k síti mezi cloudy](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * K navázání připojení mezi Azure a OCI musíte mít aktivní předplatné Azure a aktivní nájem architektury OCI.
 
@@ -83,7 +83,7 @@ Společnost Microsoft vytvořila skripty Terraformu, které umožňují automati
 
 V tomto [úložišti GitHubu](https://aka.ms/azureociinterconnecttf)najdete skripty terraformu a související dokumentace k nasazení připojení mezi lokalitami.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Instalace agentů v cloudech vám umožní využít Azure [Network Performance Monitor (npm)](../../../expressroute/how-to-npm.md) a monitorovat výkon komplexní sítě. NPM pomáhá snadno identifikovat problémy se sítí a pomáhá je eliminovat.
 

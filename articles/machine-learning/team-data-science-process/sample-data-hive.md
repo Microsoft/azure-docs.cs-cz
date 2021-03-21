@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321879"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Ukázková data v tabulkách Azure HDInsight Hive
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 Zde `<sample rate, 0-1>` Určuje poměr záznamů, které uživatelé chtějí vzorkovat.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> Náhodné vzorkování podle skupin
-Při vzorkování dat kategorií můžete chtít zahrnout nebo vyloučit všechny instance pro určitou hodnotu proměnné kategorií. Tento druh vzorkování se nazývá "vzorkování podle skupin". Například pokud máte kategorií proměnnou "State" ( *stav* ), která má hodnoty jako NY, MA, CA, NEWARKU a PA, budete chtít záznamy z každého stavu společně bez ohledu na to, zda jsou vzorky nebo nikoli.
+Při vzorkování dat kategorií můžete chtít zahrnout nebo vyloučit všechny instance pro určitou hodnotu proměnné kategorií. Tento druh vzorkování se nazývá "vzorkování podle skupin". Například pokud máte kategorií proměnnou "State" (*stav*), která má hodnoty jako NY, MA, CA, NEWARKU a PA, budete chtít záznamy z každého stavu společně bez ohledu na to, zda jsou vzorky nebo nikoli.
 
 Tady je příklad dotazu, který ukázky seskupují:
 
