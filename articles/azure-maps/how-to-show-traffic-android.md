@@ -10,17 +10,17 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102098532"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Zobrazit data o přenosech na mapě (Android SDK)
 
 Data toku a data incidentů jsou dva typy dat přenosů, které lze zobrazit na mapě. V této příručce se dozvíte, jak zobrazit oba typy dat přenosů. Data incidentů se skládají z bodových a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody. Data toku zobrazují metriky týkající se toku provozu na cestách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jste dokončili kroky v [rychlém startu: vytvoření dokumentu aplikace pro Android](quick-android-map.md) . Bloky kódu v tomto článku lze vložit do `onReady` obslužné rutiny události Maps.
 
@@ -31,7 +31,7 @@ V Azure Maps jsou k dispozici dva typy dat přenosů:
 - Data o incidentech – skládají se z bodů a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody.
 - Data toku – poskytuje metriky toku provozu na cestách. Data toku provozu se často používají k obarvení cest. Barvy jsou založené na tom, kolik přenosů zpomaluje tok, relativně k limitu rychlosti nebo jiné metriky. Existují čtyři hodnoty, které lze předat do `flow` Možnosti provozu mapy.
 
-    |Hodnota toku | Popis|
+    |Hodnota toku | Description|
     | :-- | :-- |
     | TrafficFlow. NONE | Nezobrazuje data o přenosech na mapě. |
     | TrafficFlow. relativní | Zobrazuje přenosová data, která se vztahují k rychlosti volného toku provozu. |

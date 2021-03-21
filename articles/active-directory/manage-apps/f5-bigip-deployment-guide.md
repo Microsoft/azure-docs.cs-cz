@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730652"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Kurz nasazení virtuálního počítače F5 BIG-IP Virtual Edition ve službě Azure IaaS pro zajištění zabezpečeného hybridního přístupu
@@ -26,7 +26,7 @@ Tento kurz vás provede koncovým procesem nasazení verze BIG-IP vitural Editio
 
 - Pracovní instance, která se má použít k testování nových aktualizací systému BIG-IP a oprav hotfix
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předchozí prostředí BIG-IP s velkým objemem adres nebo znalostí se ale nedoporučuje, ale doporučujeme, abyste familiarizingi pomocí [terminologie F5 Big-IP](https://www.f5.com/services/resources/glossary). Nasazení služby BIG-IP v Azure pro službu SHA vyžaduje:
 
@@ -83,7 +83,7 @@ Provedením následujících kroků nasaďte ve službě BIG-IP z [Azure Marketp
  |Skupina prostředků | Existující skupina prostředků Azure: virtuální počítač BIG-IP se nasadí do služby nebo ho vytvoří. Musí se jednat o stejnou skupinu prostředků pro virtuální počítače DC a IIS.|
  | **Podrobnosti o instancích**|  |
  |Název virtuálního počítače| Příklad BIG-IP-VM |
- |Region (Oblast) | Cílová geografická platforma Azure pro virtuální počítače s velkým objemem IP adres |
+ |Oblast | Cílová geografická platforma Azure pro virtuální počítače s velkým objemem IP adres |
  |Možnosti dostupnosti| Povolit jenom při použití virtuálního počítače v produkčním prostředí|
  |Image| BIG-IP. F5 – vše (BYOL, 2 spouštěcí umístění)|
  |Instance Azure Spot| Ne, ale pokud je to vhodné, můžete to povolit |
@@ -111,7 +111,7 @@ Provedením následujících kroků nasaďte ve službě BIG-IP z [Azure Marketp
 
 10. Vyberte **Další: Správa** a dokončete tato nastavení.
 
- |Sledování|    Hodnota |
+ |Monitorování|    Hodnota |
  |:---------|:-----|
  |Podrobné sledování| Vypnout|
  |Diagnostika spouštění|Povolte s vlastním účtem úložiště. Pomocí možnosti sériového prostředí v Azure Portal umožňuje připojení k rozhraní Secure Shell pro velké IP adresy (SSH). Vyberte libovolný dostupný účet Azure Storage.|
@@ -270,7 +270,7 @@ Abyste mohli pokračovat ve zbývajících konfiguracích, budete se muset rozho
 
 Až budete připraveni, potvrďte, že se můžete připojit k webové konfiguraci virtuálního počítače BIG-IP a přihlásit se pomocí přihlašovacích údajů zadaných během nasazování virtuálního počítače:
 
-- Pokud se připojujete z virtuálního počítače v jeho interní síti nebo přes VPN, připojte se přímo k BIG-IPs primární IP adresa a port konfigurace webu. Například `https://<BIG-IP-VM_Primary_IP:8443`. V prohlížeči se zobrazí výzva k zadání nezabezpečeného připojení, ale můžete ho ignorovat, dokud nebude nakonfigurovaná Velká IP adresa. Pokud prohlížeč zabrání v blokování přístupu, vymažte jeho mezipaměť a akci opakujte.
+- Pokud se připojujete z virtuálního počítače v jeho interní síti nebo přes VPN, připojte se přímo k BIG-IPs primární IP adresa a port konfigurace webu. Například, `https://<BIG-IP-VM_Primary_IP:8443`. V prohlížeči se zobrazí výzva k zadání nezabezpečeného připojení, ale můžete ho ignorovat, dokud nebude nakonfigurovaná Velká IP adresa. Pokud prohlížeč zabrání v blokování přístupu, vymažte jeho mezipaměť a akci opakujte.
 
 - Pokud jste publikovali webovou konfiguraci prostřednictvím proxy aplikace, pak použijte adresu URL definovanou pro přístup k webové konfiguraci externě, bez připojení portu, například `https://big-ip-vm.contoso.com` . Interní adresa URL musí být definována pomocí portu webové konfigurace, například `https://big-ip-vm.contoso.com:8443` 
 

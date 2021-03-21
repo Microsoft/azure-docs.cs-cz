@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3766db0d5070f15216ac612353e2c25737ad092a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96741622"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Přizpůsobení uživatelského prostředí pro Azure Active Directory Samoobslužné resetování hesla
@@ -56,8 +56,8 @@ Další informace o různých rolích správce a jejich přiřazení najdete v t
 
 Pokud vaše organizace nechce upozornit správce na žádosti o resetování hesla, můžete použít následující možnosti konfigurace:
 
-* Přizpůsobte odkaz na helpdesk, který poskytuje adresu URL webu nebo adresu mailto: adresy, které mohou uživatelé použít k získání pomoci. Tato možnost je v části **resetování hesla**  >  **Customization**  >  **vlastní e-mail helpdesku nebo adresa URL**.
-* Povolit Samoobslužné resetování hesla pro všechny uživatele. Tato možnost je v části vlastnosti **resetování hesla**  >  **Properties**. Pokud nechcete, aby uživatelé obnovili vlastní hesla, můžete nastavit rozsah přístupu do prázdné skupiny. *Tuto možnost nedoporučujeme.*
+* Přizpůsobte odkaz na helpdesk, který poskytuje adresu URL webu nebo adresu mailto: adresy, které mohou uživatelé použít k získání pomoci. Tato možnost je v části **resetování hesla**  >    >  **vlastní e-mail helpdesku nebo adresa URL**.
+* Povolit Samoobslužné resetování hesla pro všechny uživatele. Tato možnost je v části vlastnosti **resetování hesla**  >  . Pokud nechcete, aby uživatelé obnovili vlastní hesla, můžete nastavit rozsah přístupu do prázdné skupiny. *Tuto možnost nedoporučujeme.*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>Přizpůsobení přihlašovací stránky a přístupového panelu
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/22/2021
 ms.author: Zhchia
 ms.openlocfilehash: c7290f6a2a5c66005a8c58df5801449282ddfd7f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101662237"
 ---
 # <a name="tutorial-configure-securelogin-for-automatic-user-provisioning"></a>Kurz: Konfigurace SecureLogin pro Automatické zřizování uživatelů
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v SecureLogin i Azure Activ
 > * Zřizování skupin a členství ve skupinách v SecureLogin
 > * Jednotné přihlašování k SecureLogin (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

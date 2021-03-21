@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899231"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Připojení z místního prostředí k CloudSimple pomocí ExpressRoute
@@ -25,7 +25,7 @@ Pokud už máte připojení Azure ExpressRoute z externího umístění (třeba 
 
 Pro navázání Global Reachho připojení z místního prostředí se vyžaduje blok adres sítě a **/29** .  Adresní prostor/29 se používá pro tranzitní síť mezi okruhy ExpressRoute.  Tranzitní síť by se neměla překrývat s žádnou z vašich virtuálních sítí Azure, místními sítěmi ani CloudSimple privátních cloudových sítí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aby bylo možné navázat spojení mezi okruhem a sítěmi privátního cloudu CloudSimple, je vyžadován okruh Azure ExpressRoute.
 * Uživatel musí mít oprávnění k vytváření autorizačních klíčů na okruhu ExpressRoute.
@@ -47,7 +47,7 @@ K navázání připojení ExpressRoute musíte vytvořit autorizaci na okruhu Ex
 
 ### <a name="create-expressroute-authorization"></a>Vytvořit autorizaci ExpressRoute
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Na horním panelu hledání vyhledejte **okruh ExpressRoute** a klikněte na **okruhy ExpressRoute** pod položkou **služby**.
     [![Okruhy ExpressRoute](media/azure-expressroute-transit-search.png)](media/azure-expressroute-transit-search.png)

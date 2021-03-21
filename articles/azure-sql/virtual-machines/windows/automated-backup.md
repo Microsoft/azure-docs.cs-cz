@@ -15,10 +15,10 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: f41614d54dc4320f683f406b2882a7b388bb4c3d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358414"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro virtuální počítače Azure (Správce prostředků)
@@ -57,7 +57,7 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 
 ### <a name="basic-settings"></a>Základní nastavení
 
-| Nastavení | Rozsah (výchozí) | Popis |
+| Nastavení | Rozsah (výchozí) | Description |
 | --- | --- | --- |
 | **Automatizované zálohování** | Povolit/zakázat (zakázáno) | Povolí nebo zakáže automatizované zálohování pro virtuální počítač Azure se systémem SQL Server 2016/2017 Developer, Standard nebo Enterprise. |
 | **Doba uchování** | 1-30 dní (30 dní) | Počet dní uchovávání záloh. |
@@ -67,7 +67,7 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 
 ### <a name="advanced-settings"></a>Upřesnit nastavení
 
-| Nastavení | Rozsah (výchozí) | Popis |
+| Nastavení | Rozsah (výchozí) | Description |
 | --- | --- | --- |
 | **Zálohy systémových databází** | Povolit/zakázat (zakázáno) | Když je tato funkce povolená, zálohuje taky systémové databáze: Master, MSDB a model. Pro databáze MSDB a model ověřte, zda jsou v režimu úplného obnovení, pokud chcete provádět zálohy protokolu. Zálohy protokolů se nikdy neprovádí pro hlavní server. A pro databázi TempDB nejsou vyřízeny žádné zálohy. |
 | **Plán zálohování** | Ruční/automatizovaná (automatizovaná) | Ve výchozím nastavení se plán zálohování automaticky určí na základě nárůstu protokolu. Plán ručního zálohování umožňuje uživateli zadat časový interval pro zálohování. V takovém případě zálohy probíhají pouze v zadaném intervalu a v určeném časovém intervalu daného dne. |

@@ -7,10 +7,10 @@ ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: ba43889b885252f68bb3b4b158b5626411aac3d5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101662667"
 ---
 # <a name="device-update-resources"></a>Prostředky aktualizace zařízení
@@ -33,7 +33,7 @@ Aby aktualizace zařízení přijímala oznámení o změnách z IoT Hub, aktual
 
 Pro aktualizace zařízení jsou nakonfigurované následující trasy zpráv:
 
-|   Název trasy    | Dotaz směrování  | Popis  |
+|   Název trasy    | Dotaz směrování  | Description  |
 | :--------- | :---- |:---- |
 |  DeviceUpdate.DigitalTwinChanges | true |Naslouchá událostem digitálního nevlákenných změn.  |
 |  DeviceUpdate.DeviceLifeCycle | opType = ' deleteDeviceIdentity '  | Naslouchá u zařízení, která byla odstraněna. |

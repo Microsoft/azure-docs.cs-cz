@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 07abbc5f5e85c75b73774d11b6b81dd2085735b7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095319"
 ---
 # <a name="view-your-azure-percept-dks-model-inference-telemetry"></a>Prohlédněte si telemetrii k odvození modelu Azure Percept DK
 
 Podle tohoto průvodce si můžete v [Azure IoT Exploreru](https://github.com/Azure/azure-iot-explorer/releases)zobrazit telemetrii k odvození modelu vize Azure Percept DK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Percept DK (DevKit)
 - [Předplatné Azure](https://azure.microsoft.com/free/)

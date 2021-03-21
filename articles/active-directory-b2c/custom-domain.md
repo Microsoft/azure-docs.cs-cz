@@ -8,20 +8,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869bd7b02186873f490d324cec863c7f26ee8469
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 2de419885938b27ebce4a934db5ef966965b3dbd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103555243"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580160"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>Povolení vlastních domén pro Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 Tento článek popisuje, jak povolit vlastní domény v adresách URL pro přesměrování pro Azure Active Directory B2C (Azure AD B2C). Používání vlastní domény s vaší aplikací nabízí ucelenější uživatelské prostředí. Z perspektivy uživatele zůstanou v doméně během procesu přihlašování místo přesměrování na Azure AD B2C výchozí doménu *<název tenanta>. b2clogin.com*.
 
@@ -48,11 +50,11 @@ Při používání vlastních domén Vezměte v úvahu následující skutečnos
 
 - Můžete nastavit několik vlastních domén. Maximální počet podporovaných vlastních domén najdete v tématu [limity a omezení služby Azure AD](../active-directory/enterprise-users/directory-service-limits-restrictions.md) pro Azure AD B2C a [limity, kvóty a omezení předplatného a služby](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits) Azure pro přední dveře Azure.
 - Přední dvířka Azure jsou samostatná služba Azure, takže se účtují další poplatky. Další informace najdete v tématu [ceny za přední dveře](https://azure.microsoft.com/pricing/details/frontdoor).
-- V současné době není podporována funkce [firewallu webových aplikací](../web-application-firewall/afds/afds-overview.md) služby Azure pro front-dveří.
+- Pokud chcete používat [Firewall webových aplikací](../web-application-firewall/afds/afds-overview.md)přes Azure, musíte potvrdit, že konfigurace a pravidla brány firewall fungují správně s vašimi uživatelskými Azure AD B2C toky.
 - Po nakonfigurování vlastních domén budou uživatelé i nadále mít přístup k Azure AD B2C výchozímu názvu domény *<název tenanta>. b2clogin.com* (Pokud nepoužíváte vlastní zásadu a [zablokujete přístup](#block-access-to-the-default-domain-name).
 - Pokud máte více aplikací, proveďte jejich migraci do vlastní domény, protože prohlížeč ukládá relaci Azure AD B2C pod aktuálně používaný název domény.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -193,7 +195,7 @@ Nahraďte:
 - **název zásady** s názvem zásady. [Přečtěte si další informace o Azure AD B2Cch zásadách](technical-overview.md#identity-experiences-user-flows-or-custom-policies). 
 
 
-Metadata [poskytovatele služby SAML](connect-with-saml-service-providers.md) můžou vypadat takto: 
+Metadata [poskytovatele služby SAML](./saml-service-provider.md) můžou vypadat takto: 
 
 ```html
 https://custom-domain-name/tenant-name/policy-name/Samlp/metadata
@@ -258,12 +260,10 @@ Zkopírujte adresu URL, změňte název domény ručně a pak ji vložte zpět d
 
 Přední dvířka Azure přecházejí do původní IP adresy uživatele. Tato IP adresa se zobrazí v části vytváření sestav auditu nebo ve vašich vlastních zásadách.
 
-### <a name="can-i-use-a-third-party-wab-application-firewall-waf-with-b2c"></a>Můžu použít bránu firewall pro aplikace WAB jiného výrobce (WAF) s B2C?
+### <a name="can-i-use-a-third-party-web-application-firewall-waf-with-b2c"></a>Můžu použít Firewall webových aplikací třetích stran (WAF) s B2C?
 
-V současné době Azure AD B2C podporuje vlastní doménu jenom v případě, že se používá jenom přední dvířka Azure. Nepřidávejte další WAF před předními dvířky Azure.
-
+Pokud chcete používat vlastní bránu firewall webových aplikací před předními dvířky Azure, musíte nakonfigurovat a ověřit, že vše funguje správně s Azure AD B2Cmi toky uživatelů.
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o [autorizačních žádostech OAuth](protocols-overview.md).
-

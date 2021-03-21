@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 02/02/2021
 ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101691225"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Omezení prostředků pro Azure SQL Database a Azure synapse Analytics Server
@@ -97,7 +97,7 @@ Při zjištění chyb při nedostatku paměti patří mezi ně i tyto možnosti:
 - Zvýšení úrovně služby nebo výpočetní velikosti databáze nebo elastického fondu. Viz téma [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).
 - Optimalizace dotazů a konfigurací za účelem snížení využití paměti. Společná řešení jsou popsaná v následující tabulce.
 
-|Řešení|Popis|
+|Řešení|Description|
 | :----- | :----- |
 |Snížení velikosti paměti pro udělení|Další informace o grantech paměti najdete v příspěvku na blogu [principy SQL Server paměti pro přidělení](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) . Běžným řešením pro zamezení nadměrného množství paměti je udržování [statistik](/sql/relational-databases/statistics/statistics) v aktuálním stavu. Výsledkem je přesnější odhad spotřeby paměti modulem dotazu, což vyloučí nenutně náročné nároky na paměť.</br></br>V databázích využívajících úroveň kompatibility 140 a novější může databázový stroj automaticky upravovat velikost přidělené paměti pomocí [zpětné vazby přidělení paměti v režimu dávky](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback). Databázový stroj v databázích využívajících úroveň kompatibility 150 a novější používá [zpětnou vazbu přidělení paměti v režimu řádků](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)pro další běžné dotazy v režimu řádků. Tato vestavěná funkce pomáhá předejít chybám způsobeným nedostatkem paměti z důvodu zbytečného udělení vysoké velikosti paměti.|
 |Zmenšení velikosti mezipaměti plánu dotazů|Databázový stroj ukládá do mezipaměti plány dotazů v paměti, aby nedocházelo k kompilování plánu dotazů pro každé spuštění dotazu. Aby nedocházelo k dispozici determinističtější mezipaměti plánů dotazů, které jsou způsobené plány ukládání do mezipaměti, které se používají jenom jednou, povolte konfiguraci OPTIMIZE_FOR_AD_HOC_WORKLOADS v [oboru databáze](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).|

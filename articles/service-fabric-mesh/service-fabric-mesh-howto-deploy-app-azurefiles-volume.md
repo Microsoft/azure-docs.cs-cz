@@ -7,10 +7,10 @@ ms.date: 11/21/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter , devx-track-azurecli
 ms.openlocfilehash: 40d10568e13ad455bc5178821da80e89f4132e93
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99625833"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Připojení svazku založeného na souborech Azure v aplikaci Service Fabric sítě 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak připojit svazek založený na souborech Azure ve s
 
 Pokud chcete připojit svazek ve službě, vytvořte v aplikaci Service Fabric sítě prostředek svazku a pak na tento svazek odkázat v rámci služby.  Deklarace prostředku svazku a odkazování na něj v prostředku služby se dá provést buď v [souborech prostředků založených na YAML](#declare-a-volume-resource-and-update-the-service-resource-yaml) , nebo v [šabloně nasazení založené na JSON](#declare-a-volume-resource-and-update-the-service-resource-json). Před připojením svazku nejdřív vytvořte účet úložiště Azure a [sdílenou složku ve službě soubory Azure](../storage/files/storage-how-to-create-file-share.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 > [!NOTE]
 > **Známý problém s nasazením na vývojovém počítači s Windows RS5:** K dispozici je otevřená chyba rutiny PowerShellu New-SmbGlobalMapping na počítačích s RS5 Windows, které brání připojení svazků Azurefile. Níže je uvedená ukázková chyba, ke které došlo při připojení svazku založeného na AzureFile do místního vývojového počítače.
 ```

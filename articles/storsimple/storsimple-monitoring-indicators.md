@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015396"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Použití indikátorů monitorování StorSimple ke správě zařízení
@@ -55,13 +55,13 @@ Pomocí následující tabulky Identifikujte stav vyznačený diodami LED na př
 
 | Výkon systému | Chyba modulu | Logická chyba | Požární | Status |
 | --- | --- | --- | --- | --- |
-| Červená – oranžová |OFF |OFF |Není k dispozici |Napájení ze sítě se ztratilo, pracuje na napájení ze zálohy nebo napájení a moduly kontroleru se odebraly. |
-| Green |ON |ON |Není k dispozici |Stav testu na panelu Ops (5) |
-| Green |OFF |OFF |Není k dispozici |Zapnutí, všechny funkce dobré |
-| Green |ON |Není k dispozici |Diody chyb PCM, diody chyb ventilátoru |Jakákoli chyba PCM, Chyba ventilátoru, nad nebo pod teplotou |
-| Green |ON |Není k dispozici |Vstupně-výstupní diody v modulu |Jakákoli chyba modulu Controller |
+| Červená – oranžová |OFF |OFF |– |Napájení ze sítě se ztratilo, pracuje na napájení ze zálohy nebo napájení a moduly kontroleru se odebraly. |
+| Green |ON |ON |– |Stav testu na panelu Ops (5) |
+| Green |OFF |OFF |– |Zapnutí, všechny funkce dobré |
+| Green |ON |– |Diody chyb PCM, diody chyb ventilátoru |Jakákoli chyba PCM, Chyba ventilátoru, nad nebo pod teplotou |
+| Green |ON |– |Vstupně-výstupní diody v modulu |Jakákoli chyba modulu Controller |
 | Green |ON |N/A |N/A |Chyba logiky skříně |
-| Green |Blikající |Není k dispozici |Indikátor stavu modulu v modulu kontroleru. Diody chyb PCM, diody chyb ventilátoru |Je nainstalovaný neznámý typ modulu kontroleru, chyba sběrnice I2C, chyba konfigurace dat modulu kontroleru |
+| Green |Blikající |– |Indikátor stavu modulu v modulu kontroleru. Diody chyb PCM, diody chyb ventilátoru |Je nainstalovaný neznámý typ modulu kontroleru, chyba sběrnice I2C, chyba konfigurace dat modulu kontroleru |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>Indikátory LED pro modul Power chlazení (PCM)
 Indikátory LED na zadní straně primární skříně nebo skříně EBOD se v každém modulu PCM dají najít. Toto téma popisuje, jak pomocí následujících diod LED monitorovat stav zařízení StorSimple.  
@@ -91,7 +91,7 @@ Stav PCM je uveden na panelu indikátoru LED. Panel INDIKÁTORu PCM pro zaříze
 | Bez napájení z AC (do skříně) |OFF |OFF |OFF |OFF |
 | Žádný výkon střídavého napětí (jenom tento PCM) |OFF |ON |OFF |ON |
 | Vypněte modul PCM v systému – OK |ON |OFF |OFF |OFF |
-| Chyba PCM (ventilátor selže) |OFF |OFF |ON |Není k dispozici |
+| Chyba PCM (ventilátor selže) |OFF |OFF |ON |– |
 | Chyba PCM (přes amp, nad napětím, nad aktuální) |OFF |ON |ON |ON |
 | PCM (ventilátor je mimo toleranci) |ON |OFF |OFF |ON |
 | Pohotovostní režim |Blikající |OFF |OFF |OFF |
@@ -119,7 +119,7 @@ Pomocí následující tabulky můžete určit stav PCM.
 | Bez napájení z AC (do skříně) |OFF |OFF |OFF |OFF |
 | Žádný výkon střídavého napětí (jenom tento PCM) |OFF |ON |OFF |ON |
 | Zapnout modul PCM pro střídavý proud – OK |ON |OFF |OFF |OFF |
-| Chyba PCM (ventilátor selže) |OFF |OFF |ON |X |
+| Chyba PCM (ventilátor selže) |OFF |OFF |ON |× |
 | Chyba PCM (přes amp, nad napětím, nad aktuálním |OFF |ON |ON |ON |
 | PCM (ventilátor je mimo toleranci) |ON |OFF |OFF |ON |
 | Pohotovostní model |Blikající |OFF |OFF |OFF |
@@ -180,7 +180,7 @@ Pomocí následující tabulky můžete určit stav jednotlivých diskových jed
 | Status | Indikátor aktivity v pořádku (zelený) | INDIKÁTOR chyby (červená – oranžová) | Indikátor LED přidruženého panelu OPS |
 | --- | --- | --- | --- |
 | Není nainstalovaná žádná jednotka. |OFF |OFF |Žádné |
-| Jednotka je nainstalovaná a funkční. |Zapnutí nebo vypnutí blikání aktivity |X |Žádné |
+| Jednotka je nainstalovaná a funkční. |Zapnutí nebo vypnutí blikání aktivity |× |Žádné |
 | Sada identit zařízení služby skříně SCSI (SES) |ON |Blikání 1 sekundy na/1 sekundu vypnuto |Žádné |
 | Sada bitů SES-bit pro selhání zařízení |ON |ON |Logická chyba (červená) |
 | Selhání okruhu řízení spotřeby |OFF |ON |Chyba modulu (červená) |

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017215"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurace webového proxy serveru pro zařízení StorSimple
@@ -34,7 +34,7 @@ Webový proxy server je _volitelná_ konfigurace pro zařízení StorSimple. Web
 1. Nakonfigurujete nastavení webového proxy serveru pomocí Průvodce instalací nebo rutin Windows PowerShell pro StorSimple.
 2. Pak můžete pomocí rutin Windows PowerShell pro StorSimple povolit nakonfigurovaná nastavení webového proxy serveru.
 
-Po dokončení konfigurace webového proxy serveru můžete zobrazit nakonfigurovaná nastavení webového proxy serveru jak ve službě Microsoft Azure StorSimple Device Manager, tak i v Windows PowerShell pro StorSimple.
+Po dokončení konfigurace webového proxy serveru můžete zobrazit nakonfigurovaná nastavení webového proxy serveru jak ve službě Microsoft Azure StorSimple Správce zařízení, tak i v Windows PowerShell pro StorSimple.
 
 Po přečtení tohoto kurzu budete moct:
 
@@ -71,7 +71,7 @@ Pomocí Průvodce instalací vás provede kroky pro konfiguraci webového proxy 
 4. Jako typ ověřování vyberte **NTLM**, **Basic** nebo None ( **žádný**). Základní je nejméně zabezpečené ověřování pro konfiguraci proxy server. NT LAN Manager (NTLM) je vysoce zabezpečený a složitý ověřovací protokol, který používá třícestný systém zasílání zpráv (někdy čtyři, pokud je potřeba další integrita) k ověření uživatele. Výchozí ověřování je NTLM. Další informace najdete v tématu ověřování [Basic](https://hc.apache.org/httpclient-3.x/authentication.html) a [NTLM](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
-   > **V StorSimple Device Manager služba nefungují grafy monitorování zařízení v případě, že je v konfiguraci proxy server pro zařízení povolené základní ověřování nebo ověřování NTLM. Aby grafy monitorování fungovaly, je nutné zajistit, aby bylo ověřování nastaveno na možnost žádné.**
+   > **V StorSimple Správce zařízení služba nefungují grafy monitorování zařízení v případě, že je v konfiguraci proxy server pro zařízení povolené základní ověřování nebo ověřování NTLM. Aby grafy monitorování fungovaly, je nutné zajistit, aby bylo ověřování nastaveno na možnost žádné.**
   
 5. Pokud jste povolili ověřování, zadejte **uživatelské jméno webového proxy serveru** a **heslo webového proxy serveru**. Také je nutné potvrdit heslo.
    
@@ -122,7 +122,7 @@ Pokud chcete na svém zařízení povolit webový proxy server, proveďte násle
 Nastavení webového proxy serveru se konfiguruje přes rozhraní Windows PowerShell a nedá se změnit v rámci portálu. Tato nakonfigurovaná nastavení můžete ale zobrazit na portálu. Chcete-li zobrazit webový proxy server, proveďte následující kroky.
 
 #### <a name="to-view-web-proxy-settings"></a>Zobrazení nastavení webového proxy serveru
-1. Přejděte na **StorSimple Device Manager služby > zařízení**. Vyberte zařízení a klikněte na něj a potom přejděte na **nastavení zařízení > síť**.
+1. Přejděte na **StorSimple Správce zařízení služby > zařízení**. Vyberte zařízení a klikněte na něj a potom přejděte na **nastavení zařízení > síť**.
 
     ![Kliknout na síť](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
@@ -151,8 +151,8 @@ Pokud je nastavení webového proxy serveru nesprávně nakonfigurované, zobraz
 
 > [!NOTE]
 > * Výše uvedený seznam chybových zpráv není vyčerpávající.
-> * Chyby související s nastavením webového proxy serveru se nebudou zobrazovat v Azure Portal ve službě StorSimple Device Manager. Pokud dojde k potížím s webovým proxy serverem po dokončení konfigurace, stav zařízení se změní na **offline** na portálu Classic. |
+> * Chyby související s nastavením webového proxy serveru se nebudou zobrazovat v Azure Portal ve službě StorSimple Správce zařízení. Pokud dojde k potížím s webovým proxy serverem po dokončení konfigurace, stav zařízení se změní na **offline** na portálu Classic. |
 
 ## <a name="next-steps"></a>Další kroky
 * Pokud dojde k problémům při nasazování zařízení nebo konfiguraci nastavení webového proxy serveru, přečtěte si téma [řešení potíží s nasazením zařízení StorSimple](./storsimple-8000-troubleshoot-deployment.md).
-* Pokud se chcete dozvědět, jak používat službu StorSimple Device Manager, přečtěte si [použití služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Pokud se chcete dozvědět, jak používat službu StorSimple Správce zařízení, přečtěte si [použití služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

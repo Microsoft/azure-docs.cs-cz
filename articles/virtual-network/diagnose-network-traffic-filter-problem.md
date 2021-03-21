@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223665"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostika problému s filtrováním síťového provozu virtuálního počítače
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak diagnostikovat problém s filtrováním síťo
 
 Skupin zabezpečení sítě vám umožní řídit typy provozu, které se budou směrovat do virtuálního počítače a z něj. NSG můžete přidružit k podsíti ve službě Azure Virtual Network, síťovém rozhraní připojenému k virtuálnímu počítači nebo obojímu. Platná pravidla zabezpečení používaná pro síťové rozhraní jsou agregace pravidel, která existují v NSG přidružených k síťovému rozhraní, a v podsíti, ve které se síťové rozhraní nachází. Pravidla v různých skupin zabezpečení sítě můžou někdy kolidovat a ovlivnit připojení k síti virtuálního počítače. Můžete zobrazit všechna platná pravidla zabezpečení z skupin zabezpečení sítě, která se aplikují na síťová rozhraní vašeho virtuálního počítače. Pokud nejste obeznámeni s koncepty virtuální sítě, síťového rozhraní nebo NSG, přečtěte si téma Přehled [virtuální sítě](virtual-networks-overview.md), [síťové rozhraní](virtual-network-network-interface.md)a [skupiny zabezpečení sítě](./network-security-groups-overview.md).
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Pokusíte se připojit k virtuálnímu počítači přes port 80 z Internetu, ale připojení se nezdaří. Pokud chcete zjistit, proč nemůžete získat přístup k portu 80 z Internetu, můžete zobrazit platná pravidla zabezpečení pro síťové rozhraní pomocí webu Azure [Portal](#diagnose-using-azure-portal), [PowerShellu](#diagnose-using-powershell)nebo rozhraní příkazového [řádku Azure CLI](#diagnose-using-azure-cli).
 
@@ -171,7 +171,7 @@ Ať už pomocí webu Azure [Portal](#diagnose-using-azure-portal), [PowerShellu]
 | Vlastnost                | Hodnota                                                                              |
 |---------                |---------                                                                           |
 | Zdroj                  | Libovolný                                                                                |
-| Rozsahy zdrojových portů      | Libovolný                                                                                |
+| Rozsahy zdrojových portů      | Všechny                                                                                |
 | Cíl             | IP adresa virtuálního počítače, rozsah IP adres nebo všechny adresy v podsíti. |
 | Rozsahy cílových portů | 80                                                                                 |
 | Protokol                | TCP                                                                                |

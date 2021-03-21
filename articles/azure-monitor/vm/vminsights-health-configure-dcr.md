@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
 ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052139"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurace monitorování ve stavu hosta virtuálních počítačů Insights pomocí pravidel shromažďování dat (Preview)
@@ -19,7 +19,7 @@ ms.locfileid: "102052139"
 ## <a name="monitors"></a>Monitory
 Stav virtuálního počítače je určen [souhrnem stavu](vminsights-health-overview.md#health-rollup-policy) z každého z jeho monitorování. Existují dva typy monitorování ve stavu hosta virtuálních počítačů Insights, jak je znázorněno v následující tabulce.
 
-| Monitor | Popis |
+| Monitor | Description |
 |:---|:---|
 | Monitorování jednotky | Měří určitý aspekt prostředku nebo aplikace. Může se jednat o kontrolu čítače výkonu za účelem zjištění výkonu nebo dostupnosti prostředku. |
 | Souhrnné monitorování | Seskupuje více monitorování a poskytuje jeden souhrnný stav. Souhrnné monitorování může obsahovat jedno nebo více monitorování jednotky a další souhrnná monitorování. |
@@ -29,7 +29,7 @@ Sada monitorování používaných stavem hosta virtuálních počítačů Insig
 ## <a name="monitor-properties"></a>Vlastnosti monitorování
 Následující tabulka popisuje vlastnosti, které lze konfigurovat na jednotlivých monitorech.
 
-| Vlastnost | Monitory | Popis |
+| Vlastnost | Monitory | Description |
 |:---|:---|:---|
 | Povoleno | Agregace<br>Jednotka | Pokud je nastaveno na true, vypočítá se monitorování stavu a přispívá se do stavu virtuálního počítače. Může aktivovat výstrahu, že je povolené upozornění. |
 | Zobrazení výstrah | Agregace<br>Jednotka | Pokud je nastaveno na true, pro monitorování se aktivuje výstraha, když se přesune do stavu není v pořádku. Pokud je hodnota false, bude stav monitorování stále přispívat k stavu virtuálního počítače, který by mohl aktivovat výstrahu. |
@@ -102,9 +102,9 @@ Stav hosta se implementuje jako rozšíření agenta Azure Monitor, takže přep
 | Prvek | Povinné | Popis |
 |:---|:---|:---|
 | `name` | Ano | Uživatelem definovaný řetězec pro rozšíření |
-| `streams` | Ano | Seznam datových proudů, na které se budou posílat data o stavu hosta To musí zahrnovat **Microsoft-HealthStateChange**.  |
-| `extensionName` | Ano | Název rozšíření Toto musí být **HealthExtension**. |
-| `extensionSettings` | Ano | Pole `healthRuleOverride` prvků, které se má použít pro výchozí konfiguraci. |
+| `streams` | Yes | Seznam datových proudů, na které se budou posílat data o stavu hosta To musí zahrnovat **Microsoft-HealthStateChange**.  |
+| `extensionName` | Yes | Název rozšíření Toto musí být **HealthExtension**. |
+| `extensionSettings` | Yes | Pole `healthRuleOverride` prvků, které se má použít pro výchozí konfiguraci. |
 
 
 ## <a name="extensionsettings-element"></a>element platný ExtensionSettings
@@ -121,8 +121,8 @@ Obsahuje nastavení pro rozšíření.
 | Prvek | Povinné | Popis |
 |:---|:---|:---|
 | `schemaVersion` | Ano | Řetězec definovaný společností Microsoft pro reprezentaci očekávaného schématu elementu. V současné době musí být nastavené na 1,0. |
-| `contentVersion` | Ne | Řetězec definovaný uživatelem pro sledování různých verzí konfigurace stavu (v případě potřeby). |
-| `healthRuleOverrides` | Ano | Pole `healthRuleOverride` prvků, které se má použít pro výchozí konfiguraci. |
+| `contentVersion` | No | Řetězec definovaný uživatelem pro sledování různých verzí konfigurace stavu (v případě potřeby). |
+| `healthRuleOverrides` | Yes | Pole `healthRuleOverride` prvků, které se má použít pro výchozí konfiguraci. |
 
 ## <a name="healthrulesoverrides-element"></a>element healthRulesOverrides
 Obsahuje jeden nebo více `healthRuleOverride` prvků, které definují přepsání.
@@ -142,10 +142,10 @@ Obsahuje jeden nebo více `healthRuleOverride` prvků, které definují přepsá
 | Prvek | Povinné | Popis |
 |:---|:---|:---|
 | `scopes` | Ano | Seznam jednoho nebo více oborů, které určují virtuální počítače, na které se toto přepsání vztahuje. I když je DCR přidružená k virtuálnímu počítači, musí virtuální počítač spadat do oboru, aby bylo přepsání použito. |
-| `monitors` | Ano | Seznam jednoho nebo více řetězců, které definují, které monitory budou toto přepsání přijímat.  |
-| `monitorConfiguration` | Ne | Konfigurace monitorování včetně stavů a způsobu jejich výpočtu. |
-| `alertConfiguration` | Ne | Konfigurace výstrah pro monitorování. |
-| `isEnabled` | Ne | Určuje, zda je monitorování povoleno nebo nikoli. Zakázané přepínače monitoru pro speciální *zakázaný* stav a stav zakázáno, pokud nejsou znovu povoleny. Pokud tento parametr vynecháte, bude monitorování dědit jeho stav z nadřazeného monitorování v hierarchii. |
+| `monitors` | Yes | Seznam jednoho nebo více řetězců, které definují, které monitory budou toto přepsání přijímat.  |
+| `monitorConfiguration` | No | Konfigurace monitorování včetně stavů a způsobu jejich výpočtu. |
+| `alertConfiguration` | No | Konfigurace výstrah pro monitorování. |
+| `isEnabled` | No | Určuje, zda je monitorování povoleno nebo nikoli. Zakázané přepínače monitoru pro speciální *zakázaný* stav a stav zakázáno, pokud nejsou znovu povoleny. Pokud tento parametr vynecháte, bude monitorování dědit jeho stav z nadřazeného monitorování v hierarchii. |
 
 
 ## <a name="scopes-element"></a>Scope – element
@@ -174,7 +174,7 @@ Seznam jednoho nebo více řetězců, které definují, které monitory v hierar
 
 Následující tabulka uvádí aktuální dostupné názvy monitorování.
 
-| Název typu | Název | Popis |
+| Název typu | Název | Description |
 |:---|:---|:---|
 | kořen | kořen | Monitor nejvyšší úrovně představující stav virtuálního počítače | |
 | využití CPU | využití CPU | Monitorování využití procesoru. | |
@@ -226,12 +226,12 @@ V případě, že je v intervalu lookback méně vzorků než `minSamples` , mon
 | Prvek | Povinné | Popis | 
 |:---|:---|:---|
 | `evaluationFrequencySecs` | No | Definuje četnost pro vyhodnocení stavu. Každé monitorování je vyhodnoceno v době spuštění agenta a v pravidelných intervalech, které jsou definovány tímto parametrem poté. |
-| `lookbackSecs`   | Ne | Velikost okna lookback v sekundách |
-| `evaluationType` | Ne | `min` – převzít minimální hodnotu z celé sady vzorků<br>`max` -přijmout maximální hodnotu z celé sady vzorků<br>`avg` – přebírat průměr hodnot sady ukázek<br>`all` – Porovná každou jednotlivou hodnotu v množině prahových hodnot. Monitoruje stav přepínačů, pokud a pouze v případě, že všechny ukázky v sadě nastavují mezní podmínku. |
-| `minSamples`     | Ne | Minimální počet hodnot, které se mají použít k výpočtu hodnoty. |
-| `maxSamples`     | Ne | Maximální počet hodnot, které se mají použít pro výpočet hodnoty. |
-| `warningCondition`  | Ne | Prahová a srovnávací logika pro podmínku upozornění |
-| `criticalCondition` | Ne | Prahová a srovnávací logika pro kritickou podmínku. |
+| `lookbackSecs`   | No | Velikost okna lookback v sekundách |
+| `evaluationType` | No | `min` – převzít minimální hodnotu z celé sady vzorků<br>`max` -přijmout maximální hodnotu z celé sady vzorků<br>`avg` – přebírat průměr hodnot sady ukázek<br>`all` – Porovná každou jednotlivou hodnotu v množině prahových hodnot. Monitoruje stav přepínačů, pokud a pouze v případě, že všechny ukázky v sadě nastavují mezní podmínku. |
+| `minSamples`     | No | Minimální počet hodnot, které se mají použít k výpočtu hodnoty. |
+| `maxSamples`     | No | Maximální počet hodnot, které se mají použít pro výpočet hodnoty. |
+| `warningCondition`  | No | Prahová a srovnávací logika pro podmínku upozornění |
+| `criticalCondition` | No | Prahová a srovnávací logika pro kritickou podmínku. |
 
 
 ## <a name="warningcondition-element"></a>element warningCondition
@@ -248,8 +248,8 @@ Definuje logiku prahové hodnoty a porovnání pro podmínku upozornění. Pokud
 | Vlastnost | Povinné | Popis | 
 |:---|:---|:---|
 | `isEnabled` | No | Určuje, zda je povolena podmínka. Pokud je nastavená **hodnota false**, je podmínka zakázaná, i když je možné nastavit mezní hodnoty a vlastnosti operátoru. |
-| `threshold` | Ne | Definuje prahovou hodnotu pro porovnání vyhodnocené hodnoty. |
-| `operator`  | Ne | Definuje relační operátor pro použití ve výrazu prahové hodnoty. Možné hodnoty: >, <, >=, <=, = =. |
+| `threshold` | No | Definuje prahovou hodnotu pro porovnání vyhodnocené hodnoty. |
+| `operator`  | No | Definuje relační operátor pro použití ve výrazu prahové hodnoty. Možné hodnoty: >, <, >=, <=, = =. |
 
 
 ## <a name="criticalcondition-element"></a>element criticalCondition
@@ -266,8 +266,8 @@ Definuje logiku prahové hodnoty a porovnání pro kritickou podmínku. Pokud te
 | Vlastnost | Povinné | Popis | 
 |:---|:---|:---|
 | `isEnabled` | No | Určuje, zda je povolena podmínka. Pokud je nastavená **hodnota false**, je podmínka zakázaná, i když je možné nastavit mezní hodnoty a vlastnosti operátoru. |
-| `threshold` | Ne | Definuje prahovou hodnotu pro porovnání vyhodnocené hodnoty. |
-| `operator`  | Ne | Definuje relační operátor pro použití ve výrazu prahové hodnoty. Možné hodnoty: >, <, >=, <=, = =. |
+| `threshold` | No | Definuje prahovou hodnotu pro porovnání vyhodnocené hodnoty. |
+| `operator`  | No | Definuje relační operátor pro použití ve výrazu prahové hodnoty. Možné hodnoty: >, <, >=, <=, = =. |
 
 ## <a name="sample-data-collection-rule"></a>Pravidlo shromažďování ukázkových dat
 Pravidlo shromažďování ukázkových dat, které povoluje monitorování hostů, najdete v tématu [Povolení virtuálního počítače pomocí šablony Správce prostředků](vminsights-health-enable.md#enable-a-virtual-machine-using-resource-manager-template).

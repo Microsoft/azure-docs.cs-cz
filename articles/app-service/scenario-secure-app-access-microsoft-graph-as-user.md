@@ -12,10 +12,10 @@ ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
 ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99063379"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Kurz: přístup k Microsoft Graph z zabezpečené aplikace jako uživatel
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Webová aplikace spuštěná v Azure App Service s [povoleným App Servicem ověřováním/autorizačním modulem](scenario-secure-app-authentication-app-service.md).
 
@@ -114,7 +114,7 @@ Install-Package Microsoft.Identity.Web
 
 ### <a name="startupcs"></a>Startup.cs
 
-V souboru *Startup.cs* ```AddMicrosoftIdentityWebApp``` přidá metoda do vaší webové aplikace Microsoft. identity. Web. ```AddMicrosoftGraph```Metoda přidá podporu Microsoft Graph.
+V souboru *Startup. cs* ```AddMicrosoftIdentityWebApp``` přidá metoda do vaší webové aplikace Microsoft. identity. Web. ```AddMicrosoftGraph```Metoda přidá podporu Microsoft Graph.
 
 ```csharp
 using Microsoft.AspNetCore.Builder;

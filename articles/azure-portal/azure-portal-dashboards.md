@@ -5,10 +5,10 @@ ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745821"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytváření a sdílení řídicích panelů na webu Azure Portal
@@ -21,7 +21,7 @@ Azure Portal jako výchozí bod poskytuje výchozí řídicí panel. Můžete up
 
 V tomto příkladu vytvoříme nový privátní řídicí panel a přiřadíme mu název. Začněte těmito kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V nabídce Azure Portal vyberte možnost **řídicí panel**. Výchozí zobrazení již může být nastaveno na řídicí panel.
 
@@ -127,7 +127,7 @@ Pokud chcete použít existující řídicí panel jako šablonu pro nový říd
 
 1. Ujistěte se, že se v zobrazení řídicího panelu zobrazuje řídicí panel, který chcete zkopírovat.
 
-1. V záhlaví stránky vyberte klonovat ![ ikonu klonu ](./media/azure-portal-dashboards/dashboard-clone.png) **Clone**.
+1. V záhlaví stránky vyberte klonovat ![ ikonu klonu ](./media/azure-portal-dashboards/dashboard-clone.png) .
 
 1. Kopie řídicího panelu, pojmenovaný **klon** *názvu řídicího panelu* , se otevře v režimu úprav. Pomocí předchozích kroků v tomto článku přejmenujete a přizpůsobíte řídicí panel.
 

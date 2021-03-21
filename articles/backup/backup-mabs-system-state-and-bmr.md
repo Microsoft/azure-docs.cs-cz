@@ -4,10 +4,10 @@ description: Použijte Azure Backup Server k zálohování stavu systému a zaji
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021618"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Zálohování stavu systému a obnovení do holého počítače pomocí Azure Backup Server
@@ -109,7 +109,7 @@ Po dokončení zálohování se soubor přenese na počítač se záložním ser
 
 Zálohování stavu systému a holé součásti:
 
-1. Chcete-li spustit příkaz Create Průvodce vytvořením nové skupiny ochrany, vyberte v konzole správce záložního serveru možnost Akce **ochrany**  >  **Actions**  >  **vytvořit skupinu ochrany**.
+1. Chcete-li spustit příkaz Create Průvodce vytvořením nové skupiny ochrany, vyberte v konzole správce záložního serveru možnost Akce **ochrany**  >    >  **vytvořit skupinu ochrany**.
 
 1. Na stránce **Vybrat typ skupiny ochrany** vyberte **servery** a pak vyberte **Další**.
 

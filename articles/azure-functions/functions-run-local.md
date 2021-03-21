@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
 ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100521437"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
@@ -39,7 +39,7 @@ Existují tři verze Azure Functions Core Tools. Použitá verze závisí na va�
 
 V daném počítači můžete nainstalovat jenom jednu verzi základních nástrojů. Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Azure Functions Core Tools v současné době závisí na rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShell](/powershell/azure/install-az-ps) k ověřování pomocí účtu Azure. To znamená, že musíte nainstalovat jeden z těchto nástrojů, abyste mohli [publikovat do Azure](#publish) z Azure Functions Core Tools. 
 
@@ -309,7 +309,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Tyto možnosti můžete zadat také v příkazu pomocí následujících argumentů:
 
-| Argument     | Popis                            |
+| Argument     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Verze 2. x a novější verze) Vygeneruje stejné šablony skriptu C# (. csx), které se používají ve verzi 1. x a na portálu. |
 | **`--language`**, **`-l`**| Programovací jazyk šablony, například C#, F # nebo JavaScript. Tato možnost je vyžadována ve verzi 1. x. Ve verzi 2. x a novějších verzích tuto možnost nepoužívejte nebo vyberte jazyk, který se shoduje s modulem runtime pracovního procesu. |

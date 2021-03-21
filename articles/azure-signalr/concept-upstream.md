@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
 ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724052"
 ---
 # <a name="upstream-settings"></a>Nastavení pro upstream
@@ -34,7 +34,7 @@ V případě, že dojde k zadané události, jsou kontrolována pravidla položk
 
 Můžete parametrizovat adresu URL pro podporu různých vzorů. Existují tři předdefinované parametry:
 
-|Předdefinovaný parametr|Popis|
+|Předdefinovaný parametr|Description|
 |---------|---------|
 |zdroj| Centrum je koncept služby Azure Signal. Centrum je jednotka izolace. Rozsah uživatelů a doručování zpráv je omezen na centrum.|
 |kategorií| Kategorie může být jedna z následujících hodnot: <ul><li>**připojení**: události doby života připojení. Je aktivována, když je připojení klienta připojeno nebo odpojeno. Zahrnuje připojené a odpojené události.</li><li>**zprávy**: aktivuje se, když klienti vyvolají metodu rozbočovače. Zahrnuje všechny ostatní události kromě těch v kategorii **připojení** .</li></ul>|
@@ -136,7 +136,7 @@ POST
 
 ### <a name="request-header"></a>Hlavička požadavku
 
-|Název |Popis|
+|Název |Description|
 |---------|---------|
 |X-ASRS-ID připojení |ID připojení pro připojení klienta.|
 |X – ASRS – rozbočovač |Centrum, do kterého patří klientské připojení.|
@@ -158,7 +158,7 @@ Content-Type: Application/JSON
 
 Typ obsahu: `application/json`
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |Chyba |řetězec |Chybová zpráva uzavřeného připojení. Prázdné při zavření připojení bez chyby.|
 
@@ -166,7 +166,7 @@ Typ obsahu: `application/json`
 
 Typ obsahu: `application/json` nebo `application/x-msgpack`
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |InvocationId |řetězec | Volitelný řetězec, který představuje zprávu o vyvolání. Hledání podrobností ve [voláních](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations).|
 |Cíl |řetězec | Totéž jako u události a stejné jako cíl ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding). |

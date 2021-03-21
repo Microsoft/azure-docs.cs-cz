@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: bd009ae4909c8cb016a31323294df3a359eb7c51
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033659"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Async Java SDK v2
@@ -64,7 +64,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
     DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
 ```
 
-* **Společné umístění klientů ve stejné oblasti Azure pro výkon**
+* **Pro zajištění lepšího výkonu umisťujte klienty společně do stejné oblasti Azure.**
 
   Pokud je to možné, umístěte všechny aplikace, které volají Azure Cosmos DB ve stejné oblasti jako databáze Azure Cosmos. V případě přibližného porovnání se volání Azure Cosmos DB v rámci stejné oblasti dokončí v 1-2 MS, ale latence mezi západním a východním pobřežím USA je >50 ms. Tato latence se může lišit od požadavku na vyžádání v závislosti na trasách, kterou požadavek prochází z klienta na hranici datacentra Azure. Nejnižší možná latence se dosahuje tím, že se zaručí, že se volající aplikace nachází ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
@@ -86,17 +86,17 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
   V Azure Cosmos DB Async Java SDK v2 je přímým režimem nejlepší volbou pro zlepšení výkonu databáze s většinou úloh. 
 
-  * ***Přehled přímého režimu** _
+  * ***Přehled přímého režimu***
 
   :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Ilustrace architektury přímého režimu" border="false":::
   
-  Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 _ *kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby** repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
+  Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 **kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby** repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
 
-  * ***Možnosti konfigurace ConnectionPolicy pro přímý režim** _
+  * ***Možnosti konfigurace ConnectionPolicy pro přímý režim***
 
     V prvním kroku použijte následující doporučené konfigurační nastavení. Pokud v tomto konkrétním tématu narazíte na problémy, obraťte se prosím na [tým Azure Cosmos DB](mailto:CosmosDBPerformanceSupport@service.microsoft.com) .
 
-    Pokud používáte Azure Cosmos DB jako referenční databázi (to znamená, že databáze se používá v mnoha operacích čtení a několika operací zápisu), může být přijatelné nastavit _idleEndpointTimeout * na 0 (tj. bez časového limitu).
+    Pokud používáte Azure Cosmos DB jako referenční databázi (to znamená, že databáze se používá v mnoha operacích čtení a několika operací zápisu), může být přijatelné nastavit *idleEndpointTimeout* na hodnotu 0 (tj. bez časového limitu).
 
 
     | Možnost konfigurace       | Výchozí    |
@@ -115,13 +115,13 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
     | sendHangDetectionTime      | "PT10S"    |
     | shutdownTimeout            | "PT15S"    |
 
-* ***Tipy pro programování pro přímý režim** _
+* ***Tipy pro programování pro přímý režim***
 
   Přečtěte si článek [řešení potíží s nástrojem](troubleshoot-java-async-sdk.md) Azure Cosmos DB ASYNC Java SDK v2 jako standardní hodnotu pro řešení problémů sady SDK.
   
   Některé důležité tipy pro programování při použití přímého režimu:
   
-  _ **V aplikaci používat multithreading pro efektivní přenos dat TCP** – po vytvoření žádosti by se vaše aplikace měla přihlásit k odběru dat v jiném vlákně. Nedělá se to tak, že vynutí neúmyslnou operaci "poloduplexní" a následné požadavky se zablokují čekáním na odpověď předchozí žádosti.
+  * **Použití multithreading ve vaší aplikaci pro efektivní přenos dat TCP** – po vytvoření žádosti by se vaše aplikace měla přihlásit k odběru dat v jiném vlákně. Nedělá se to tak, že vynutí neúmyslnou operaci "poloduplexní" a následné požadavky se zablokují čekáním na odpověď předchozí žádosti.
   
   * **Provádění úloh náročných na výpočetní výkon na vyhrazeném vlákně** – z podobných důvodů na předchozí Tip jsou operace, jako je složité zpracování dat, nejlépe umístěny v samostatném vlákně. Požadavek, který přebírá data z jiného úložiště dat (například pokud vlákno využívá Azure Cosmos DB a datové úložiště Spark současně) se může zvýšit latence a doporučuje se vytvořit další vlákno, které čeká na odpověď z jiného úložiště dat.
   
@@ -133,19 +133,19 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
   Azure Cosmos DB Async Java SDK v2 podporuje paralelní dotazy, které umožňují paralelní dotazování rozdělené kolekce. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) týkající se práce se sadami SDK. Paralelní dotazy jsou navržené tak, aby se zlepšila latence a propustnost dotazů v rámci svého sériového protějšku.
 
-  * ***Vyladění \: setMaxDegreeOfParallelism** _
+  * ***Vyladění setMaxDegreeOfParallelism\:***
     
     Paralelní dotazy fungují paralelně dotazování na více oddílů. Data z jednotlivých dělených kolekcí se ale v souvislosti s dotazem načítají sériově. Proto použijte setMaxDegreeOfParallelism k nastavení počtu oddílů, které mají maximální šanci dosáhnout nejvíce výkonného dotazu. za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. Pokud neznáte počet oddílů, můžete použít setMaxDegreeOfParallelism k nastavení vysokého čísla a systém zvolí minimální (počet oddílů, uživatelem zadaný vstup) jako maximální stupeň paralelismu.
 
     Je důležité si uvědomit, že paralelní dotazy poskytují nejlepší výhody, pokud jsou data rovnoměrně rozložena napříč všemi oddíly v souvislosti s dotazem. Pokud je dělená kolekce rozdělena takovým způsobem, že všechna nebo většina dat vrácených dotazem je soustředěna v několika oddílech (jeden oddíl v nejhorším případě), výkon dotazu by tyto oddíly měl být kritický.
 
-  _ ***Vyladění \: setMaxBufferedItemCount** _
+  * ***Vyladění setMaxBufferedItemCount\:***
     
     Paralelní dotaz je navržený tak, aby byly výsledky předem načteny, zatímco aktuální dávka výsledků je zpracovávána klientem. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. setMaxBufferedItemCount omezuje počet předběžně načtených výsledků. Nastavení setMaxBufferedItemCount na očekávaný počet vrácených výsledků (nebo vyšší číslo) umožňuje, aby dotaz získal maximální přínos před načtením.
 
     Předběžné načítání funguje stejným způsobem bez ohledu na Z MaxDegreeOfParallelism a existuje jedna vyrovnávací paměť pro data ze všech oddílů.
 
-_ **Implementovat omezení rychlosti v intervalech getRetryAfterInMilliseconds**
+* **Implementace omezení rychlosti v intervalech getRetryAfterInMilliseconds**
 
   Během testování výkonu byste měli zvýšit zatížení až do omezení malých sazeb požadavků. V případě omezení by se klientská aplikace měla omezení rychlosti pro interval opakování zadaný serverem. Respektování omezení rychlosti zajistí, že strávíte minimální dobu čekání mezi opakovanými pokusy.
 
@@ -262,7 +262,7 @@ _ **Implementovat omezení rychlosti v intervalech getRetryAfterInMilliseconds**
 
     Další informace najdete v tématu [Azure Cosmos DB zásady indexování](./index-policy.md).
 
-## <a name="throughput"></a><a id="measure-rus"></a>Zvyšují
+## <a name="throughput"></a><a id="measure-rus"></a>Propustnost
 
 * **Měření a optimalizace pro nižší jednotky žádostí za sekundu použití**
 
@@ -300,7 +300,7 @@ _ **Implementovat omezení rychlosti v intervalech getRetryAfterInMilliseconds**
 
     I když automatizované chování při opakování pomáhá zlepšit odolnost a použitelnost většiny aplikací, může při měření latence docházet k lichá při provádění srovnávacích testů, zejména při měření latence. Latence zjištěná klientem bude špička, pokud experiment narazí na omezení serveru a způsobí, že se klientská sada SDK tiše znovu pokusí. Aby se zabránilo špičkám latence během experimentů s výkonem, změřte poplatky vracené jednotlivými operacemi a zajistěte, aby požadavky byly v provozu pod rezervovanými sazbami požadavků. Další informace najdete v tématu [jednotky žádostí](request-units.md).
 
-* **Návrh pro menší dokumenty pro vyšší propustnost**
+* **Pro zajištění vyšší propustnosti navrhujte menší dokumenty.**
 
     Poplatek za požadavek (náklady na zpracování požadavku) dané operace se přímo koreluje s velikostí dokumentu. Operace s velkým objemem dokumentů se při používání malých dokumentů dotýkají více než operací.
 

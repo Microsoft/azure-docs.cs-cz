@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 11cce223a0802c20c5fc144eed681327f989a949
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103488376"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>Rychlý Start: odesílání zpráv SMS v Azure Logic Apps s využitím komunikačních služeb Azure
@@ -27,7 +27,7 @@ I když se tento rychlý Start zaměřuje na použití konektoru k reakci na Tri
 > [!NOTE]
 > Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným nebo si [vytvořte účet Azure zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

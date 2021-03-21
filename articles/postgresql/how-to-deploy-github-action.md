@@ -8,10 +8,10 @@ ms.author: sumuth
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
 ms.openlocfilehash: 2e546801f95d9d884bdfb3f09a18b3fa6e2d78a1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97365113"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-postgresql"></a>Rychlý Start: použití akcí GitHubu pro připojení k Azure PostgreSQL
@@ -88,7 +88,7 @@ Připojovací řetězec použijete jako tajný klíč GitHubu.
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
-    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
+    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
 
     ```yaml
     - uses: azure/login@v1

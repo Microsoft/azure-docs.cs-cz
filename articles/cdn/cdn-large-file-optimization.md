@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020717"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalizace stahování velkých souborů pomocí Azure CDN
@@ -122,7 +122,7 @@ Když se připojení vyprší, služba CDN se pokusy opakuje několikrát, než 
 
 Následující tabulka uvádí sadu kritérií, která se mají splnit pro optimalizaci velkých souborů:
 
-Stav | Hodnoty 
+Podmínka | Hodnoty 
 --- | --- 
 Podporované typy souborů | 3g2, 3GP, ASF, AVI, bz2, dmg, exe, F4V, FLV, <br> GZ, HDP, ISO, jxr, M4V, MKV, MOV, MP4, <br> MPEG, MPG, MTS, pkg, QT, RM, SWF, tar, <br> TGZ, WDP, webm, WEBP, WMA, WMV, zip  
 Minimální velikost souboru | 10 MB 

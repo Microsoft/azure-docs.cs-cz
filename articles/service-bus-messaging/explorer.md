@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak používat Azure Serv
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: 0b5274c492a1dfb2523c52d7aea2b7ebf8eae675
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101738952"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Použití Průzkumníka Service Bus k provádění operací s daty v Service Bus (Preview)
@@ -28,7 +28,7 @@ Průzkumník Azure Service Bus rozšiřuje funkce portálu nad rámec operací s
 > Nástroj Azure Service Bus Explorer ***není ve vlastnictví*** komunity OSS [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer).
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li použít nástroj Service Bus Explorer, budete muset provést následující úlohy: 
 

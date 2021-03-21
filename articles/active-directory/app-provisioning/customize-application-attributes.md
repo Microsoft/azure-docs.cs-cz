@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/08/2021
+ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 100f66d6217533ff6eba7881f938e877b98c735e
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 738b89ee9347a25e2d24369a48e966f0bec6daf0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091104"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579463"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kurz – přizpůsobení atributů zřizování uživatelů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -113,13 +113,13 @@ Mezi aplikace a systémy, které podporují přizpůsobení seznamu atributů, p
 - ServiceNow
 - Pracovní den do Azure Active Directory služby Active Directory/pracovní den
 - SuccessFactors se ke službě Active Directory/SuccessFactors pro Azure Active Directory
-- Azure Active Directory (podporují se[výchozí atributy služby Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) a vlastní rozšíření adresáře)
+- Azure Active Directory (podporují se[výchozí atributy služby Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) a vlastní rozšíření adresáře). Přečtěte si další informace o [vytváření rozšíření](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-on-a-cloud-only-user) a [známých omezení](https://docs.microsoft.com/azure/active-directory/app-provisioning/known-issues). 
 - Aplikace, které podporují [SCIM 2,0](https://tools.ietf.org/html/rfc7643)
 - Pro Azure Active Directory zpětný zápis do Workday nebo SuccessFactors se podporuje aktualizace relevantních metadat pro podporované atributy (XPATH a JSONPath), ale nepodporují se přidávání nových atributů Workday nebo SuccessFactors nad rámec těch, které jsou zahrnuté ve výchozím schématu.
 
 
 > [!NOTE]
-> Úpravy seznamu podporovaných atributů se doporučují jenom správcům, kteří přizpůsobili schéma svých aplikací a systémů, a mají první znalosti o tom, jak jsou vlastní atributy definované. To někdy vyžaduje znalost rozhraní API a vývojářských nástrojů poskytovaných aplikací nebo systémem. Možnost Upravit seznam podporovaných atributů je ve výchozím nastavení zamčená, ale zákazníci můžou povolit funkci tak, že přejde na následující adresu URL: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Potom můžete přejít do aplikace a zobrazit seznam atributů, jak je popsáno [výše](#editing-the-list-of-supported-attributes). 
+> Úpravy seznamu podporovaných atributů se doporučují jenom správcům, kteří přizpůsobili schéma svých aplikací a systémů, a mají první znalosti o tom, jak jsou vlastní atributy definované, nebo jestli se zdrojový atribut nezobrazuje automaticky v uživatelském rozhraní webu Azure Portal. To někdy vyžaduje znalost rozhraní API a vývojářských nástrojů poskytovaných aplikací nebo systémem. Možnost Upravit seznam podporovaných atributů je ve výchozím nastavení zamčená, ale zákazníci můžou povolit funkci tak, že přejde na následující adresu URL: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Potom můžete přejít do aplikace a zobrazit seznam atributů, jak je popsáno [výše](#editing-the-list-of-supported-attributes). 
 
 Při úpravách seznamu podporovaných atributů jsou k dispozici následující vlastnosti:
 

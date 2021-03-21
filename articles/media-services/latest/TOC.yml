@@ -86,7 +86,7 @@
           href: stream-files-nodejs-quickstart.md
     - name: Python
       items:
-        - name: Základní rychlé zprovoznění kódování Pythonu
+        - name: Základní kódování Pythonu
           href: quickstart-basic-encoding-python.md
     - name: portál Azure
       items:
@@ -223,9 +223,9 @@
         - name: Monitorování pomocí Event Grid
           items:
             - name: Události s využitím Event Gridu
-              href: reacting-to-media-services-events.md
+              href: monitoring/reacting-to-media-services-events.md
             - name: Schémata Event Gridu
-              href: media-services-event-schemas.md
+              href: monitoring/media-services-event-schemas.md
     - name: Kompatibilní přehrávače
       items:
         - name: Přehrávače médií pro Media Services
@@ -394,15 +394,15 @@
     - name: Použití služby Event Grid
       items:
         - name: Monitorování událostí – portál
-          href: monitor-events-portal-how-to.md
+          href: monitoring/monitor-events-portal-how-to.md
         - name: Monitorování událostí – rozhraní příkazového řádku
-          href: job-state-events-cli-how-to.md
+          href: monitoring/job-state-events-cli-how-to.md
     - name: Použití Azure Monitoru
       items:
         - name: Monitorování metrik
-          href: media-services-metrics-howto.md
+          href: monitoring/media-services-metrics-howto.md
         - name: Monitorování diagnostických protokolů
-          href: media-services-diagnostic-logs-howto.md
+          href: monitoring/media-services-diagnostic-logs-howto.md
     - name: Ochrana obsahu
       items:
         - name: Získání zásad symetrických klíčů

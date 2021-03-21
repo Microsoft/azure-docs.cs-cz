@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
 ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101666518"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Přehledy klasifikace vašich dat z Azure dosah
@@ -27,7 +27,7 @@ V této příručce se dozvíte, jak:
 > - Zobrazit přehledy o klasifikacích pro vaše data
 > - Přejít k podrobnostem o dalších podrobnostech klasifikace vašich dat
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s dosah přehledy, ujistěte se, že jste dokončili následující kroky:
 
@@ -62,7 +62,7 @@ Dosah používá stejné typy citlivých informací jako Microsoft 365, což vá
 
    Hlavní stránka **Přehled klasifikace** zobrazuje následující oblasti:
 
-   |Plošný  |Popis  |
+   |Plošný  |Description  |
    |---------|---------|
    |**Přehled zdrojů s klasifikací**     |Zobrazí dlaždice, které poskytují: <br>– Počet odběrů nalezených ve vašich datech <br>– Počet jedinečných klasifikací nalezených ve vašich datech <br>– Počet nalezených klasifikovaných zdrojů <br>– Počet nalezených klasifikovaných souborů <br>– Počet nalezených klasifikovaných tabulek         |
    |**Hlavní zdroje s utajovanými daty (posledních 30 dní)**     |Zobrazuje trend, za posledních 30 dní, počtu zdrojů nalezených s utajovanými daty.            |

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
 ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498927"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – navrhování odolných řešení
@@ -135,13 +135,13 @@ Je dobrým zvykem otestovat vaše předpoklady, jak budou vaše služby reagovat
 
 Spolupracujeme s [cloudem BreakingPoint](https://www.ixiacom.com/products/breakingpoint-cloud) a vytvoříte rozhraní, ve kterém můžou zákazníci Azure vygenerovat provoz z veřejných koncových bodů s povoleným DDoS Protection pro simulace. Simulaci [cloudu BreakingPoint](https://www.ixiacom.com/products/breakingpoint-cloud) můžete použít k těmto akcím:
 
-- Ověřte, jak Azure DDoS Protection pomáhá chránit vaše prostředky Azure před útoky DDoS.
+- Ověření, jak Azure DDoS Protection pomáhá chránit vaše prostředky Azure před útoky DDoS
 
-- Optimalizujte proces reakce na incidenty při útoku DDoS.
+- Optimalizaci procesu reakce na incidenty v případě probíhajícího útoku DDoS
 
-- DDoS dodržování předpisů v dokumentu.
+- Dokumentaci dodržování předpisů v rámci ochrany před útoky DDoS
 
-- Vyškolte své týmy zabezpečení sítě.
+- Trénování týmů starajících se o zabezpečení sítě
 
 Kyberbezpečnosti vyžaduje stálé inovace v případě obrany. Azure DDoS Standard Protection je špičková nabídka s efektivním řešením pro zmírnění stále se složitých útoků DDoS.
 
@@ -189,7 +189,7 @@ Azure DDoS Protection Standard identifikuje a zmírnit útoky DDoS bez zásahu u
 
   Služba DDoS Protection zahájí zmírnění rizik pouze v případě, že zásada hodnoty metriky **, která má aktivovat zmírnění rizik DDoS (TCP/TCP syn/UDP)** , je nižší než přenos přijatý na chráněném prostředku veřejné IP adresy.
 
-- Plánujete virovou událost, která významně zvýší síťový provoz.
+- Plánujete virální událost, která výrazně zvýší váš síťový provoz.
 
 - Objekt actor způsobil útok na spuštění DDoS útoku na vaše prostředky.
 

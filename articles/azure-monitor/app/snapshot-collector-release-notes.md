@@ -6,10 +6,10 @@ author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
 ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97093256"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Poznámky k verzi pro Microsoft. ApplicationInsights. SnapshotCollector
@@ -70,7 +70,7 @@ Bod vydání, který řeší několik problémů s vysokým dopadem.
 - Přidávání kolekce snímků bylo snazší pomocí AddSnapshotCollector (). Další informace najdete [tady](./snapshot-debugger-appservice.md).
 - Pro ověřování bloků objektů BLOB použijte nastavení FISMA MD5. Tím se vyhnete výchozímu šifrovacímu algoritmu MD5 .NET, který není k dispozici, když je operační systém nastaven na režim kompatibilní se standardem FIPS.
 - Při deoptimalizaci volání funkcí ignorovat .NET Framework snímky. Toto chování může být řízeno nastavením konfigurace DeoptimizeIgnoredModules.
-- Přidejte `DeoptimizeMethodCount` nastavení konfigurace, které umožňuje deoptimalizaci více než jednoho volání funkce. Další informace najdete tady.
+- Přidejte `DeoptimizeMethodCount` nastavení konfigurace, které umožňuje deoptimalizaci více než jednoho volání funkce. Další informace
 
 ## <a name="134"></a>[1.3.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.4)
 - Povolí strukturované klíče instrumentace.
