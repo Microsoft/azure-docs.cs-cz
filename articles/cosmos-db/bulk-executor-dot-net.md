@@ -11,10 +11,10 @@ ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 34aef5bd880e3ef080676fb9e90e62796d499e7b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102429812"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Použití knihovny hromadného prováděcího modulu .NET k provádění hromadných operací v Azure Cosmos DB
@@ -29,7 +29,7 @@ Tento kurz obsahuje pokyny k importu a aktualizaci dokumentů v kontejneru Azure
 
 V současné době je knihovna hromadných prováděcích modulů podporována pouze pomocí Azure Cosmos DB rozhraní API SQL a účtů rozhraní API Gremlin. Tento článek popisuje použití knihovny hromadného prováděcího modulu .NET s účty rozhraní SQL API. Další informace o použití knihovny hromadného prováděcího modulu .NET s účty rozhraní Gremlin API najdete v tématu [provádění hromadných operací v rozhraní API pro Azure Cosmos DB Gremlin](bulk-executor-graph-dotnet.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte nainstalovanou aktualizaci Visual Studio 2019, můžete si stáhnout a použít [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit "vývoj pro Azure".
 

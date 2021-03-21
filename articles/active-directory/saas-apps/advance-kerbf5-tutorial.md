@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
 ms.openlocfilehash: db8977e484e8d1f2cf4b30427d47ba45969f2147
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101654455"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure Active Directory (AD) s F5
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte integrovat F5 s Azure Active Directory (Azure AD). P�
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -204,7 +204,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
  
     * Session. Logon. Last. usernameUPN expr {[mcget {Session. SAML. Last. identity}]}
 
-    * Session. AD. lastactualdomain TEXT demo. Live
+    * Session. AD. lastactualdomain TEXT superdemo.live
 
     ![Snímek obrazovky, který zobrazuje vlastnosti dotazu AD.](./media/advance-kerbf5-tutorial/configure17.png)
 
@@ -262,7 +262,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 * **Krok 3: delegování hlavního názvu služby (pro účet App Service)**
 
     * Nastavte příslušné delegování pro účet delegování F5.
-    * V následujícím příkladu je účet delegování APM nakonfigurovaný pro KCD pro FRP-app1. demo App. Live.
+    * V následujícím příkladu se pro aplikaci FRP-App1.superdemo.live konfiguruje účet delegování APM pro KCD.
 
         ![Snímek obrazovky, který zobrazuje vlastnosti účtu APM Delegatio > kartu delegování](./media/advance-kerbf5-tutorial/configure25.png)
 

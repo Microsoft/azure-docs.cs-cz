@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
 ms.openlocfilehash: 499e0aa1ee451969923dbdf5f84be1c844a9aab4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101659320"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
@@ -119,7 +119,7 @@ Aby bylo možné získat přístup k řadiči domény, musí být odběr placen�
 ### <a name="compute-and-memory-specifications"></a>Specifikace výpočtů a paměti
 
 
-|Generování hardwaru  |Výpočetní prostředky  |Memory (Paměť)  |
+|Generování hardwaru  |Compute  |Memory (Paměť)  |
 |:---------|:---------|:---------|
 |COMPUTE GEN4 –     |– Procesory Intel® E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
 |Gen5     |**Zřízené výpočetní prostředky**<br>– Intel® E5-2673 v4 (Broadwell) 2,3-GHz, Intel® SP-8160 (Skylake) \* a intel® 8272CL (Cascade Lake) 2,5 GHz \*<br>-Zřídit až 80 virtuální jádra (1 vCore = 1 Hyper-thread)<br><br>**Bezserverové výpočetní prostředí**<br>-Intel® E5-2673 v4 (Broadwell) 2,3-GHz a Intel® SP-8160 (Skylake) * procesory<br>– Automatické škálování až do 40 virtuální jádra (1 vCore = 1 Hyper-thread)|**Zřízené výpočetní prostředky**<br>-5,1 GB na vCore<br>– Zřídit až 408 GB<br><br>**Bezserverové výpočetní prostředí**<br>– Automatické škálování až na 24 GB na vCore<br>– Automatické škálování až do 120 GB max.|

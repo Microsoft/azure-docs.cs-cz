@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 87cb19daa23c9fcca601771a9fe168b98be02627
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050728"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586263"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Shromažďovat protokoly IIS pomocí agenta Log Analytics v Azure Monitor
 Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které může shromažďovat agent Log Analytics a které jsou uložené v [protokolech Azure monitor](../data-platform.md).
@@ -60,11 +60,13 @@ Záznamy protokolu služby IIS mají typ **W3CIISLog** a mají vlastnosti v nás
 | sSiteName |Název webu služby IIS. |
 | TimeGenerated |Datum a čas, kdy byla položka zaznamenána. |
 | TimeTaken |Doba zpracování žádosti v milisekundách |
+| csHost | Název hostitele. |
+| csBytes | Počet bajtů, které server přijal. |
 
 ## <a name="log-queries-with-iis-logs"></a>Protokolování dotazů s protokoly služby IIS
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy protokolu služby IIS.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:--- |:--- |
 | W3CIISLog |Všechny záznamy protokolu služby IIS. |
 | W3CIISLog &#124; WHERE scStatus = = 500 |Všechny záznamy protokolu služby IIS se stavem vrácenými na 500. |

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 9d2ff583b032ff1f9aa5dbc9706ea6c981fc7265
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009972"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Upgrade aplikace IPv4 na IPv6 ve službě Azure Virtual Network – PowerShell
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak přidat připojení IPv6 do existující aplik
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek verzi modulu Azure PowerShell 6.9.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste nasadili Standard Load Balancer, jak je popsáno v tématu [rychlý Start: vytvoření Standard Load Balancer-Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md).
 

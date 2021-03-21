@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96938745"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dropboxu pro firmy pro Automatické zřizování uživatelů
@@ -153,7 +153,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
  
 * Dropbox nepodporuje pozastavení pozvaných uživatelů. Pokud je pozastavený uživatel pozastaven, tento uživatel se odstraní.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122863"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Jak provést samočinnou diagnostiku a řešení problémů v Azure jaře cloudu
@@ -20,7 +20,7 @@ ms.locfileid: "102122863"
 
 Diagnostika Azure jaře Cloud je interaktivní prostředí pro řešení potíží s aplikací bez konfigurace. Diagnostika Azure jaře cloudu identifikuje problémy a provede vás s informacemi, které pomáhají řešit problémy a řešit problémy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -28,7 +28,7 @@ Pro absolvování tohoto kurzu potřebujete:
 * V instanci služby už je vytvořená aspoň jedna aplikace.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Přejít na stránku Diagnostika
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Přejít na stránku s **přehledem** jarního cloudu Azure.
 3. V levém navigačním podokně vyberte **diagnostikovat a vyřešit problémy** .
 

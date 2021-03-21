@@ -9,17 +9,17 @@ ms.date: 3/9/2021
 ms.topic: quickstart
 ms.service: azure
 ms.openlocfilehash: 8984b1dbcb9a6aca6d313d8195a75093ae421bbd
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102611662"
 ---
 # <a name="install-defender-for-iot-micro-agent-preview"></a>Instalace programu Defender pro IoT Micro Agent (Preview)
 
 Tento článek poskytuje vysvětlení, jak nainstalovat a ověřit agenta Defender Micro.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před instalací modulu Defender for IoT je nutné vytvořit identitu modulu v IoT Hub. Další informace o tom, jak vytvořit identitu modulu, najdete v tématu [Vytvoření aplikace Defender IoT Micro agent Module (Preview)](quickstart-create-micro-agent-module-twin.md).
 

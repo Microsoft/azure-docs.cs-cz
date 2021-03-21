@@ -10,24 +10,32 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5f0a7477df2e281748c053ea8c7e7d3e79626296
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209402"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588014"
 ---
-# <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Analýza dat pomocí neserverového fondu SQL ve službě Azure synapse Analytics
+# <a name="analyze-data-with-a-serverless-sql-pool"></a>Analýza dat pomocí neserverového fondu SQL
 
 V tomto kurzu se naučíte analyzovat data pomocí neserverového fondu SQL pomocí dat umístěných v databázích Spark. 
 
+## <a name="the-built-in-serverless-sql-pool"></a>Integrovaný fond SQL bez serveru
+
+Neserverové fondy SQL umožňují používat SQL bez nutnosti rezervovat kapacitu. Faktura za fond SQL bez serveru je založena na množství zpracovaných dat pro spuštění dotazu a nikoli na počtu uzlů použitých ke spuštění dotazu.
+
+Každý pracovní prostor obsahuje předem nakonfigurovaný fond SQL bez serveru s názvem **integrovaný**. 
+
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>Analýza dat NYC taxislužby v BLOB Storage s využitím fondu SQL bez serveru
 
-1. V **datovém** centru pod **odkazem** klikněte pravým tlačítkem na **Azure Blob Storage > ukázkové datové sady > nyc_tlc_yellow**, **New SQL Script** a vyberte **100 prvních řádků** .
-1. Tím se vytvoří nový skript SQL s následujícím kódem:
+V této části použijete fond SQL bez serveru k analýze dat NYC taxislužby v účtu Azure Blob Storage.
+
+1. V synapse studiu přejdete do centra pro **vývoj** .
+1. Vytvořte nový skript SQL.
+1. Do skriptu vložte následující kód.
 
     ```
-    -- This is auto-generated code
     SELECT
         TOP 100 *
     FROM
@@ -38,25 +46,7 @@ V tomto kurzu se naučíte analyzovat data pomocí neserverového fondu SQL pomo
     ```
 1. Klikněte na **Spustit** .
 
-## <a name="analyze-nyc-taxi-data-in-spark-databases-using-serverless-sql-pool"></a>Analýza dat NYC taxislužby v databázích Sparku pomocí SQL fondu bez serveru
-
-Tabulky v databázích Spark jsou automaticky viditelné a mohou být dotazovány fondem SQL bez serveru.
-
-1. V synapse studiu přejdete do centra pro **vývoj** a vytvoříte nový skript SQL.
-1. Nastavte **připojení na** integrovaný fond SQL **bez** serveru.
-1. Vložte do skriptu následující text a spusťte skript.
-
-    ```sql
-    SELECT *
-    FROM nyctaxi.dbo.passengercountstats
-    ```
-
-    > [!NOTE]
-    > Při prvním spuštění dotazu, který používá fond SQL bez serveru, trvá přibližně 10 sekund pro shromažďování prostředků SQL bez serveru potřebných ke spuštění vašich dotazů. Následné dotazy budou mnohem rychlejší.
-  
-
-
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Analýza dat v úložišti](get-started-analyze-storage.md)
+> [Analýza dat s využitím fondu Spark bez serveru](get-started-analyze-spark.md)

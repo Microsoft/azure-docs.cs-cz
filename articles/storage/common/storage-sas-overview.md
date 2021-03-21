@@ -10,12 +10,12 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 51e73222233602491b0c8ed3835d032610c68e0d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802503"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722782"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
@@ -181,6 +181,9 @@ Následující doporučení pro použití sdílených přístupových podpisů p
 - **Zjistěte, kdy nepoužívat SAS.** Někdy se může stát, že rizika spojená s určitou operací s vaším účtem úložiště převažují nad výhodami používání SAS. U takových operací vytvořte službu střední vrstvy, která po ověření obchodního pravidla, ověřování a auditování zapíše do účtu úložiště. Někdy je také jednodušší spravovat přístup jiným způsobem. Například pokud chcete, aby všechny objekty BLOB v kontejneru byly veřejně čitelné, můžete místo poskytování SAS každému klientovi pro přístup vytvořit kontejner jako veřejný.
 
 - **K monitorování aplikace použijte protokoly Azure Monitor a Azure Storage.** Selhání autorizace může vzniknout z důvodu výpadku ve službě poskytovatele SAS. Můžou se taky vyskytnout z neúmyslného odebrání uložené zásady přístupu. Pomocí Azure Monitor a protokolování služby Storage Analytics můžete sledovat jakékoli špičky v těchto typech selhání autorizace. Další informace najdete v tématu [Azure Storage metriky v Azure monitor](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) a [protokolování analýza úložiště Azure](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+> [!NOTE]
+> Úložiště nesleduje počet podpisů sdíleného přístupu, které byly vygenerovány pro účet úložiště, a toto podrobnosti nemůže poskytnout žádné rozhraní API. Pokud potřebujete znát počet podpisů sdíleného přístupu, které byly vygenerovány pro účet úložiště, je třeba číslo sledovat ručně.
 
 ## <a name="get-started-with-sas"></a>Začínáme s SAS
 

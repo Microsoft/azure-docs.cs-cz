@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: raynew
 ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99980486"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Podpora pro přesun virtuálních počítačů Azure mezi oblastmi Azure
@@ -122,7 +122,7 @@ Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/managed-disks-overview.md) o discích virtuálních počítačů.
-Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučený z procesu přípravy.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Přečtěte si další informace](../virtual-machines/managed-disks-overview.md#temporary-disk).
+Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučený z procesu přípravy.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/managed-disks-overview.md#temporary-disk).
 Maximální velikost datového disku | 8192 GB pro Managed disks
 Minimální velikost datového disku |  2 GB pro spravované disky |
 Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/sizes.md) o velikostech virtuálních počítačů.

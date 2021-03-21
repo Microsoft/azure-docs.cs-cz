@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.openlocfilehash: 42b33a5b96de7334f8310b040052c633342f5e05
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101712381"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Nastavení protokolování pro monitorování aplikací logiky v Azure Security Center
@@ -20,7 +20,7 @@ Když monitorete Logic Apps prostředky v [Microsoft Azure Security Center](../s
 > [!TIP]
 > Chcete-li zjistit aktuální stav služby Logic Apps, přečtěte si [stránku stavu Azure](https://status.azure.com/), která obsahuje seznam stavů různých produktů a služeb v každé oblasti, kterou máte k dispozici.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Stávající aplikace logiky s [povolenou diagnostikou protokolování](#enable-diagnostic-logging)

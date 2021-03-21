@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
 ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518717"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
@@ -24,7 +24,7 @@ Přečtěte si, jak spustit poznámkové bloky Jupyter přímo ve vašem pracovn
 
 Informace o tom, jak vytvářet a spravovat soubory, včetně poznámkových bloků, najdete v tématu [Vytvoření a Správa souborů ve vašem pracovním prostoru](how-to-manage-files.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
@@ -269,7 +269,7 @@ Pomocí následujících klávesových zkratek můžete snáze procházet a spou
 | Control/Command + Delete      | Odstranit slovo za |                              
 | Ovládací prvek/příkaz +/           | Přepnout komentář na buňku
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 * Pokud se nemůžete připojit k poznámkovému bloku, ujistěte se, že komunikace webového soketu **není zakázaná** . Aby funkce COMPUTE instance Jupyter fungovala, musí být povolená komunikace webového soketu. Ujistěte se prosím, že vaše síť povoluje připojení pomocí protokolu WebSocket k *. instances.azureml.net a *. instances.azureml.ms. 
 

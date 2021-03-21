@@ -12,10 +12,10 @@ ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
 ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103563483"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
@@ -37,7 +37,7 @@ Možnosti konfigurace dostupné v automatizovaném strojovém učení:
 
 Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure Machine Learning Studiu vytvářet i automatizované experimenty strojového učení](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento článek potřebujete, 
 * Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md).
@@ -257,7 +257,7 @@ U každého automatizovaného experimentu strojového učení se vaše data auto
 
 Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization v [objektu AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Konfigurace Featurization | Popis |
+|Konfigurace Featurization | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**.|
 |`"featurization": 'off'`| Indikuje, že krok featurization se neprovádí automaticky.|

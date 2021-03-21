@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.author: jeedes
 ms.openlocfilehash: 9f5c40465c9878f76ea84060f200cdd442a44046
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520570"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spintr-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Spintr SSO
@@ -92,7 +92,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -104,13 +104,13 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Spintr SSO.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **SPINTR SSO**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -132,7 +132,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Spintr SSO na přístupovém panelu, měli byste se automaticky přihlásit k Spintr SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

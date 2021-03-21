@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 1ab45868afd8d1b7ba1f61f5eaacca283817e6d6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100367006"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopírování dat z webové tabulky pomocí Azure Data Factory
@@ -27,7 +27,7 @@ Rozdíl mezi tímto konektorem webové tabulky, [konektorem REST](connector-rest
 - **Konektor REST** podporuje zejména kopírování dat z rozhraní API RESTful.
 - **Konektor http** je obecný k načtení dat z libovolného koncového bodu http, třeba ke stažení souboru. 
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor webové tabulky se podporuje pro následující činnosti:
 
@@ -38,7 +38,7 @@ Data z databáze webové tabulky můžete kopírovat do libovolného podporovan�
 
 Konkrétně tento konektor webové tabulky podporuje **extrakci obsahu tabulky ze stránky HTML**.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li použít tento konektor webové tabulky, je třeba nastavit Integration Runtime v místním prostředí. Podrobnosti najdete v článku [Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
 

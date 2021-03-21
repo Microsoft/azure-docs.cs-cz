@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0d164c19da1ed2cbf6930a92686b35690fb0afb5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 177a58090303a70491d9a9226eca40d0bb371764
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666931"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722255"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady HC-Series
 
@@ -58,5 +58,5 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC (High Performance Computing) a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Podrobné zobrazení architektury prostředí HPC, které běží na vyšší úrovni, najdete v tématu věnovaném technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

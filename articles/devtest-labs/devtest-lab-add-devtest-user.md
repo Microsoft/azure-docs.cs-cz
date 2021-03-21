@@ -4,10 +4,10 @@ description: Přidání vlastníků a uživatelů v Azure DevTest Labs pomocí A
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511973"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníky a uživatele v Azure DevTest Labs
@@ -29,20 +29,20 @@ Následující tabulka ilustruje akce, které mohou provádět uživatelé v ka�
 | **Akce, které mohou uživatelé v této roli provádět** | **Uživatel DevTest Labs** | **Vlastník** | **Přispěvatel** |
 | --- | --- | --- | --- |
 | **Úlohy testovacího prostředí** | | | |
-| Přidání uživatelů do testovacího prostředí |Ne |Ano |Ne |
-| Aktualizovat nastavení nákladů |Ne |Ano |Ano |
+| Přidání uživatelů do testovacího prostředí |No |Yes |No |
+| Aktualizovat nastavení nákladů |No |Yes |Yes |
 | **Základní úlohy virtuálních počítačů** | | | |
-| Přidání a odebrání vlastních imagí |Ne |Ano |Ano |
-| Přidávání, aktualizace a odstraňování vzorců |Ano |Ano |Ano |
-| Povolit image Marketplace |Ne |Ano |Ano |
+| Přidání a odebrání vlastních imagí |No |Yes |Yes |
+| Přidávání, aktualizace a odstraňování vzorců |Yes |Yes |Yes |
+| Povolit image Marketplace |No |Yes |Yes |
 | **Úlohy virtuálních počítačů** | | | |
-| Vytvoření virtuálních počítačů |Ano |Ano |Ano |
-| Spuštění, zastavení a odstranění virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Ano |Ano |
-| Aktualizace zásad virtuálních počítačů |Ne |Ano |Ano |
-| Přidání/odebrání datových disků do/z virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Ano |Ano |
+| Vytvoření virtuálních počítačů |Yes |Yes |Yes |
+| Spuštění, zastavení a odstranění virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Yes |Yes |
+| Aktualizace zásad virtuálních počítačů |No |Yes |Yes |
+| Přidání/odebrání datových disků do/z virtuálních počítačů |Jenom virtuální počítače vytvořené uživatelem |Yes |Yes |
 | **Úlohy artefaktů** | | | |
-| Přidání a odebrání úložišť artefaktů |Ne |Ano |Ano |
-| Použít artefakty |Ano |Ano |Ano |
+| Přidání a odebrání úložišť artefaktů |No |Yes |Yes |
+| Použít artefakty |Yes |Yes |Yes |
 
 > [!NOTE]
 > Když uživatel vytvoří virtuální počítač, tento uživatel se automaticky přiřadí do role **vlastníka** vytvořeného virtuálního počítače.

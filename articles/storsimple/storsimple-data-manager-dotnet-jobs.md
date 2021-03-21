@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: b18627d2806662d6d966af95d51873d5623b2393
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015532"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Zahájení transformace dat s využitím sady .NET SDK
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak můžete pomocí funkce transformace dat v rámc
  
   Tento článek podrobně popisuje, jak vytvořit ukázkovou konzolovou aplikaci .NET pro zahájení úlohy transformace dat a pak ji sledovat pro dokončení. Další informace o tom, jak iniciovat transformaci dat pomocí automatizace, najdete v tématu [použití Azure Automation Runbook k aktivaci úloh transformace dat](storsimple-data-manager-job-using-automation.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 *   Počítač se systémem:

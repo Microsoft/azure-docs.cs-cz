@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/29/2021
-ms.openlocfilehash: 4807d1d5e97f7f95521df054d1a71f8925ac4ebb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bca2158f448f74ba596114fce5d1631249124a92
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367601"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606731"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory v Azure Portal
 
@@ -98,7 +98,7 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi v 
 
 1. Na stránce propojené služby vyberte **+ Nová** a vytvořte novou propojenou službu.
 
-   ![Nová propojená služba](./media/doc-common-process/new-linked-service.png)
+   :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="Nová propojená služba.":::
 1. V okně **Nová propojená služba** vyberte **Azure SQL Database** a klikněte na **Pokračovat**. 
 1. V okně **Nová propojená služba (Azure SQL Database)** proveďte následující kroky: 
 

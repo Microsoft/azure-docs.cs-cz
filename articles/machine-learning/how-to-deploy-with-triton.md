@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
 ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102519193"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
@@ -32,7 +32,7 @@ Triton je rozhraní *optimalizované pro odvození*. Poskytuje lepší využití
 > [!TIP]
 > Fragmenty kódu v tomto dokumentu jsou pro ilustrativní účely a nemusí zobrazovat kompletní řešení. Pro pracovní příklad kódu si přečtěte [kompletní ukázky Triton v tématu Azure Machine Learning](https://aka.ms/triton-aml-sample).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 * Znalost [toho, jak a kde nasadit model](how-to-deploy-and-where.md) s Azure Machine Learning.

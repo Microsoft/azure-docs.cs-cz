@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3f92bfe98a45117264c957481a75493de652abc9
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97508097"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování Azure Active Directory technického profilu ve vlastních zásadách Azure Active Directory B2C
@@ -248,12 +248,12 @@ Následující technický profil odstraní účet uživatele sociální sítě p
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Ano | Operace, která má být provedena. Možné hodnoty: `Read` , `Write` , `DeleteClaims` , nebo `DeleteClaimsPrincipal` . |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Ne | Vyvolá chybu, pokud objekt uživatele v adresáři neexistuje. Možné hodnoty: `true` nebo `false` . |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Ne | Vyvolá chybu, pokud objekt uživatele již existuje. Možné hodnoty: `true` nebo `false` .|
-| ApplicationObjectId | Ne | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId objektu aplikace. Další informace najdete v tématu [použití vlastních atributů](user-flow-custom-attributes.md?pivots=b2c-custom-policy). |
-| ClientId | Ne | Identifikátor klienta pro přístup k tenantovi jako třetí strana. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](user-flow-custom-attributes.md?pivots=b2c-custom-policy) . |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| Operace | Yes | Operace, která má být provedena. Možné hodnoty: `Read` , `Write` , `DeleteClaims` , nebo `DeleteClaimsPrincipal` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | No | Vyvolá chybu, pokud objekt uživatele v adresáři neexistuje. Možné hodnoty: `true` nebo `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | No | Vyvolá chybu, pokud objekt uživatele již existuje. Možné hodnoty: `true` nebo `false` .|
+| ApplicationObjectId | No | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId objektu aplikace. Další informace najdete v tématu [použití vlastních atributů](user-flow-custom-attributes.md?pivots=b2c-custom-policy). |
+| ClientId | No | Identifikátor klienta pro přístup k tenantovi jako třetí strana. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](user-flow-custom-attributes.md?pivots=b2c-custom-policy) . |
+| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
  
@@ -261,8 +261,8 @@ Následující nastavení lze použít ke konfiguraci chybové zprávy, která s
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | Ne | Pokud má být vyvolána chyba (viz popis atributu RaiseErrorIfClaimsPrincipalAlreadyExists), zadejte zprávu, která se zobrazí uživateli, pokud již objekt uživatele existuje. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Ne | Pokud se má vykazovat chyba (viz popis atributu RaiseErrorIfClaimsPrincipalDoesNotExist), zadejte zprávu, která se zobrazí uživateli, pokud objekt uživatele neexistuje. |
+| UserMessageIfClaimsPrincipalAlreadyExists | No | Pokud má být vyvolána chyba (viz popis atributu RaiseErrorIfClaimsPrincipalAlreadyExists), zadejte zprávu, která se zobrazí uživateli, pokud již objekt uživatele existuje. |
+| UserMessageIfClaimsPrincipalDoesNotExist | No | Pokud se má vykazovat chyba (viz popis atributu RaiseErrorIfClaimsPrincipalDoesNotExist), zadejte zprávu, která se zobrazí uživateli, pokud objekt uživatele neexistuje. |
 
 
 ## <a name="next-steps"></a>Další kroky

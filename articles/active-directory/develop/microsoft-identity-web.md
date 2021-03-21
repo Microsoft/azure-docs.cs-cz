@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 8bc9773fa7e1b3db2e249e803f4d2a3cf39edb48
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102542"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity web Authentication Library
@@ -68,7 +68,7 @@ Tento ukázkový příkaz rozhraní .NET CLI, který je pořízený z našeho [k
 dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-0000-0000-0000-000000000000" --tenant-id "11111111-1111-1111-1111-111111111111" --output my-blazor-app
 ```
 
-#### <a name="github"></a>GitHubu
+#### <a name="github"></a>GitHub
 
 Microsoft Identity web je open source projekt hostovaný na GitHubu: <a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/Microsoft-Identity-web</a>
 
@@ -82,14 +82,14 @@ Microsoft Identity web obsahuje několik funkcí, které nejsou k dispozici, pok
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | [Přihlášení uživatelů](scenario-web-app-sign-user-app-configuration.md) ve službě Web Apps             | <li>Pracovní nebo školní účty<li>Sociální identity (s Azure AD B2C) | <li>Pracovní nebo školní účty<li>Osobní účty Microsoft<li>Sociální identity (s Azure AD B2C)     |
 | [Ochrana webových rozhraní API](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>Pracovní nebo školní účty<li>Sociální identity (s Azure AD B2C) | <li>Pracovní nebo školní účty<li>Osobní účty Microsoft<li>Sociální identity (s Azure AD B2C)     |
-| Ověření vystavitele ve více tenantů aplikacích                                                   | Ne                                                                   | Ano, pro [všechny cloudy](authentication-national-cloud.md) a [Azure AD B2C](../../active-directory-b2c/index.yml) |
-| Webová aplikace/rozhraní API [volání Microsoft Graph] [scénář-API-Call-Graph]                             | Ne                                                                   | Ano                                                                                                     |
-| Webová aplikace/rozhraní API [volání webového rozhraní API] [scénář-API-Call-API]                                       | Ne                                                                   | Ano                                                                                                     |
-| Podporuje přihlašovací údaje certifikátu                                                         | Ne                                                                   | Ano, včetně Azure Key Vault                                                                          |
-| Přírůstkové vyjádření souhlasu a podpora podmíněného přístupu ve webových aplikacích                           | Ne                                                                   | Ano, na stránkách MVC, Razor a Blazor                                                                    |
-| Certifikáty pro šifrování tokenů ve webových rozhraních API                                                | Ne                                                                   | Ano                                                                                                     |
-| [Obory/ověřování role aplikace] [scénář – ověřování rozhraní API] ve webových rozhraních API                        | Ne                                                                   | Ano                                                                                                     |
-| `WWW-Authenticate` generování hlaviček ve webových rozhraních API                                         | Ne                                                                   | Ano                                                                                                     |
+| Ověření vystavitele ve více tenantů aplikacích                                                   | No                                                                   | Ano, pro [všechny cloudy](authentication-national-cloud.md) a [Azure AD B2C](../../active-directory-b2c/index.yml) |
+| Webová aplikace/rozhraní API [volání Microsoft Graph] [scénář-API-Call-Graph]                             | No                                                                   | Yes                                                                                                     |
+| Webová aplikace/rozhraní API [volání webového rozhraní API] [scénář-API-Call-API]                                       | No                                                                   | Yes                                                                                                     |
+| Podporuje přihlašovací údaje certifikátu                                                         | No                                                                   | Ano, včetně Azure Key Vault                                                                          |
+| Přírůstkové vyjádření souhlasu a podpora podmíněného přístupu ve webových aplikacích                           | No                                                                   | Ano, na stránkách MVC, Razor a Blazor                                                                    |
+| Certifikáty pro šifrování tokenů ve webových rozhraních API                                                | No                                                                   | Yes                                                                                                     |
+| [Obory/ověřování role aplikace] [scénář – ověřování rozhraní API] ve webových rozhraních API                        | No                                                                   | Yes                                                                                                     |
+| `WWW-Authenticate` generování hlaviček ve webových rozhraních API                                         | No                                                                   | Ano                                                                                                     |
 
 ## <a name="next-steps"></a>Další kroky
 

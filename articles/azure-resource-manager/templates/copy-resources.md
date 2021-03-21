@@ -4,10 +4,10 @@ description: Pomocí operace kopírování a polí v šabloně Azure Resource Ma
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.openlocfilehash: c9bcb22ec53129520fd9574d0eb58b1e5777531e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97724489"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Iterace prostředků v šablonách ARM
@@ -244,7 +244,7 @@ Následující příklad ukazuje implementaci:
 
 Následující příklady znázorňují běžné scénáře pro vytvoření více než jedné instance prostředku nebo vlastnosti.
 
-|Template (Šablona)  |Popis  |
+|Template (Šablona)  |Description  |
 |---------|---------|
 |[Kopírovat úložiště](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Nasadí více než jeden účet úložiště s číslem indexu v názvu. |
 |[Úložiště sériového kopírování](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Nasadí několik účtů úložiště v jednom okamžiku. Název zahrnuje číslo indexu. |

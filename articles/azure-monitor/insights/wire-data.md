@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
 ms.openlocfilehash: 5981a5f136d613ffcedda86797d807d2eecfab0d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101713622"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) v Azure Monitor
@@ -55,10 +55,10 @@ Protože si ale prohlížíte metadata, nemusí být užitečná při řešení 
 
 | **Připojený zdroj** | **Podporováno** | **Popis** |
 | --- | --- | --- |
-| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro systém Windows](../agents/agent-windows.md)vyžadují agenti systému Windows agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../vm/vminsights-enable-overview.md#supported-operating-systems). |
-| Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě agentů [Log Analytics pro Linux](../vm/quick-collect-linux-computer.md)musí mít agenti pro Linux od společnosti Microsoft agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../vm/vminsights-enable-overview.md#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../agents/om-agents.md). <br><br> Je požadováno přímé připojení z System Center Operations Manager počítače agenta k Azure Monitor. |
-| Účet služby Azure Storage | Ne | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
+| Agenti systému Windows | Yes | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro systém Windows](../agents/agent-windows.md)vyžadují agenti systému Windows agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../vm/vminsights-enable-overview.md#supported-operating-systems). |
+| Agenti systému Linux | Yes | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě agentů [Log Analytics pro Linux](../vm/quick-collect-linux-computer.md)musí mít agenti pro Linux od společnosti Microsoft agenta závislostí od Microsoftu. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../vm/vminsights-enable-overview.md#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Yes | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](../agents/om-agents.md). <br><br> Je požadováno přímé připojení z System Center Operations Manager počítače agenta k Azure Monitor. |
+| Účet služby Azure Storage | No | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
 
 V systému Windows se Microsoft Monitoring Agent (MMA) používá v System Center Operations Manager a Azure Monitor ke shromažďování a posílání dat. V závislosti na kontextu se agent nazývá Agent System Center Operations Manager, Log Analytics agent, MMA nebo Direct agent. System Center Operations Manager a Azure Monitor poskytují mírně odlišnou verzi MMA. Tyto verze mohou jednotlivé sestavy System Center Operations Manager, Azure Monitor nebo obojí.
 
@@ -75,7 +75,7 @@ Pokud jste System Center Operations Manager uživatel se skupinou pro správu p�
 
 Pokud se počítače se systémem Windows nebo Linux nemohou přímo připojit ke službě, je nutné nakonfigurovat agenta Log Analytics pro připojení k Azure Monitor pomocí brány Log Analytics. Bránu Log Analytics můžete stáhnout z webu [služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=52666).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vyžaduje se nabídka řešení [Přehledy a analýzy](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing).
 - Pokud používáte předchozí verzi řešení Wire Data, musíte ho nejprve odebrat. Všechna data zachycená původním řešením Wire Data jsou ale pořád dostupná ve verzi Wire Data 2.0 a při prohledávání protokolu.

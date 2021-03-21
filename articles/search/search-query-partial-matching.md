@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/03/2020
-ms.openlocfilehash: 79ba186351cc145e012658abc30572e99b123dbb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e2625fff802e71f797bf6970e763f2bf11c393e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573982"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584172"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-hyphens-wildcard-regex-patterns"></a>Částečné vyhledávání a vzory s použitím speciálních znaků (spojovníky, zástupné znaky, regulární výrazy, vzory)
 
@@ -85,7 +85,7 @@ Při výběru analyzátoru, který vytváří úplné tokeny, jsou běžné mož
 | [analyzátory jazyka](index-add-language-analyzers.md) | Zachovává spojovníky ve složených slovech nebo řetězcích, v samohláskách a na formulářích operací. Pokud schémata dotazů obsahují pomlčky, může být použití analyzátoru jazyka dostatečné. |
 | [klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Obsah celého pole je považován za jeden výraz. |
 | [typy](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Odděluje pouze prázdné znaky. Výrazy, které obsahují pomlčky nebo jiné znaky, jsou považovány za jeden token. |
-| [vlastní analyzátor](index-add-custom-analyzers.md) | doporučil Vytvoření vlastního analyzátoru vám umožní zadat provádějících tokenizaci i filtr tokenů. Předchozí analyzátory se musí používat tak, jak jsou. Vlastní analyzátor vám umožní vybrat, které tokenizátory musíte nejdřív a filtry tokenů se mají použít. <br><br>Doporučenou kombinací je [klíčové slovo provádějících tokenizaci](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) s [filtrem malých případových tokenů](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Předem definovaný [analyzátor klíčových slov](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) nerozlišuje malá a velká písmena, což může způsobit selhání dotazů. Vlastní analyzátor poskytuje mechanismus pro přidání filtru s nižším případem tokenu. |
+| [vlastní analyzátor](index-add-custom-analyzers.md) | doporučil Vytvoření vlastního analyzátoru vám umožní zadat provádějících tokenizaci i filtr tokenů. Předchozí analyzátory se musí používat tak, jak jsou. Vlastní analyzátor vám umožní vybrat, které tokenizátory musíte nejdřív a filtry tokenů se mají použít. <br><br>Doporučenou kombinací je [klíčové slovo provádějících tokenizaci](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) s [filtrem malých případových tokenů](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Integrovaná [analyzátor klíčových slov](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) sám o sobě nerozlišuje malá a velká písmena, což může způsobit selhání dotazů. Vlastní analyzátor poskytuje mechanismus pro přidání filtru s nižším případem tokenu. |
 
 Pokud používáte nástroj pro testování webového rozhraní API, jako je například post, můžete přidat [volání nástroje Test Analyzer REST](/rest/api/searchservice/test-analyzer) pro kontrolu výstupu s vydanými tokeny.
 
@@ -160,9 +160,9 @@ Bez ohledu na to, jestli vyhodnocujete analyzátory nebo přesouváte do konkré
 
 ### <a name="use-built-in-analyzers"></a>Použití integrovaných analyzátorů
 
-Předdefinované nebo předdefinované analyzátory lze zadat podle názvu u `analyzer` vlastnosti definice pole, přičemž v indexu není vyžadována žádná další konfigurace. Následující příklad ukazuje, jak byste měli nastavit `whitespace` analyzátor v poli. 
+Předdefinované analyzátory lze zadat podle názvu u `analyzer` vlastnosti definice pole, přičemž v indexu není vyžadována žádná další konfigurace. Následující příklad ukazuje, jak byste měli nastavit `whitespace` analyzátor v poli. 
 
-Další scénáře a další informace o dalších integrovaných analyzátorech najdete v [seznamu předdefinovaných analyzátorů](./index-add-custom-analyzers.md#predefined-analyzers-reference). 
+Další scénáře a další informace o dalších integrovaných analyzátorech najdete v tématu [integrované analyzátory](./index-add-custom-analyzers.md#built-in-analyzers). 
 
 ```json
     {

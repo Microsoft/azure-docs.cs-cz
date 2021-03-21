@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
 ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102428265"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>Sestavení registrační aplikace pro Android s použitím reakce
@@ -24,7 +24,7 @@ Když se spustí aplikace, zobrazí se uživatelům podrobná obrazovka pro vyj�
 
 Ukázková registrační aplikace je napsaná pomocí JavaScriptu a nativního rozhraní reakce. Teď se dá nasadit na zařízení s Androidem; Další možnosti nasazení přicházejí v budoucnu.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/).  
 * Jakmile budete mít předplatné Azure, vytvořte na Azure Portal [prostředek pro vytváření obličeje](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) a Získejte svůj klíč a koncový bod. Po nasazení vyberte **Přejít k prostředku**.  

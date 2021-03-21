@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
 ms.openlocfilehash: 06498a27b95a72148497efd2d1e600d802414359
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359553"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor
@@ -21,7 +21,7 @@ Můžete spouštět úlohy [Spark](https://spark.apache.org/) s daty uloženými
 
 Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/services/databricks) nebo [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), který poskytuje spravované Clustery Spark v Azure. V následující tabulce jsou uvedeny podporované verze Sparku.
 
-| Komponenta | Verze |
+| Součást | Verze |
 |---------|-------|
 | Apache Spark | 2.4. x, 2.3. x, 2.2. x a 2.1. x |
 | Scala | 2,11 |
@@ -296,7 +296,7 @@ Na wikiwebu máme další informace, `azure-cosmosdb-spark` [](https://github.co
 * [Nastavení konektoru Spark to Cosmos DB](https://github.com/Azure/azure-documentdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup) (probíhá)
 * [Konfigurace Power BI přímý dotaz na Azure Cosmos DB prostřednictvím Apache Spark (HDI)](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuring-Power-BI-Direct-Query-to-Azure-Cosmos-DB-via-Apache-Spark-(HDI))
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 * [Použití agregací Cosmos DB](https://github.com/Azure/azure-documentdb-spark/wiki/Troubleshooting:-Using-Cosmos-DB-Aggregates)
 * [Známé problémy](https://github.com/Azure/azure-cosmosdb-spark/wiki/Known-Issues)

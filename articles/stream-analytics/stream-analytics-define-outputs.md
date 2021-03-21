@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 12/9/2020
 ms.openlocfilehash: 3ce4f673657561e196520466b569d0cf83d75a8a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019342"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Výstupy z Azure Stream Analytics
@@ -22,21 +22,21 @@ Chcete-li vytvářet, upravovat a testovat Stream Analytics výstupy úlohy, mů
 
 Některé typy výstupů podporují [dělení](#partitioning)a [velikosti výstupních dávek](#output-batch-size) se liší při optimalizaci propustnosti. V následující tabulce jsou uvedeny funkce, které jsou podporovány pro každý typ výstupu:
 
-| Typ výstupu | Dělení na oddíly | Zabezpečení | 
+| Typ výstupu | Dělení | Zabezpečení | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Ano|Azure Active Directory uživatel </br> , Spravovaná identita|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory uživatel </br> , Spravovaná identita|
 |[Azure SQL Database](sql-database-output.md)|Ano, volitelné.|Ověření uživatele SQL, </br> Spravovaná identita (Preview)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Ano|Ověření uživatele SQL, </br> Spravovaná identita (Preview)|
-|[Úložiště objektů BLOB a Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Ano|Přístupový klíč, </br> Spravovaná identita (Preview)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|Ověření uživatele SQL, </br> Spravovaná identita (Preview)|
+|[Úložiště objektů BLOB a Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|Přístupový klíč, </br> Spravovaná identita (Preview)|
 |[Azure Event Hubs](event-hubs-output.md)|Ano, je potřeba nastavit sloupec klíče oddílu ve výstupní konfiguraci.|Přístupový klíč, </br> Spravovaná identita (Preview)|
 |[Power BI](power-bi-output.md)|No|Azure Active Directory uživatel, </br> Spravovaná identita|
-|[Azure Table storage](table-storage-output.md)|Ano|Klíč účtu|
-|[Fronty Azure Service Bus](service-bus-queues-output.md)|Ano|Přístupový klíč|
-|[Azure Service Bus témata](service-bus-topics-output.md)|Ano|Přístupový klíč|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Ano|Přístupový klíč|
-|[Azure Functions](azure-functions-output.md)|Ano|Přístupový klíč|
+|[Azure Table storage](table-storage-output.md)|Yes|Klíč účtu|
+|[Fronty Azure Service Bus](service-bus-queues-output.md)|Yes|Přístupový klíč|
+|[Azure Service Bus témata](service-bus-topics-output.md)|Yes|Přístupový klíč|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Přístupový klíč|
+|[Azure Functions](azure-functions-output.md)|Yes|Přístupový klíč|
 
-## <a name="partitioning"></a>Dělení na oddíly
+## <a name="partitioning"></a>Dělení
 
 Stream Analytics podporuje oddíly pro všechny výstupy s výjimkou Power BI. Další informace o klíčích oddílů a počtu modulů pro zápis výstupu najdete v článku konkrétního typu výstupu, který vás zajímá. Všechny články v produkci jsou propojeny v předchozí části.  
 
