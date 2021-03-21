@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000653"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
@@ -139,7 +139,7 @@ System. hosting hlásí upozornění, pokud jsou definované kapacity uzlů v ma
 ## <a name="application-system-health-reports"></a>Sestavy o stavu systému aplikace
 System.CM, která představuje službu Správce clusterů, je autoritou, která spravuje informace o aplikaci.
 
-### <a name="state"></a>State
+### <a name="state"></a>Stav
 System.CM sestavy jako OK, když byla aplikace vytvořena nebo aktualizována. Informuje Health Store při odstranění aplikace, aby ji bylo možné odebrat z úložiště.
 
 * **SourceId**: System.cm
@@ -172,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Sestavy stavu systému služby
 System.FM, která představuje službu Správce převzetí služeb při selhání, je autoritou, která spravuje informace o službách.
 
-### <a name="state"></a>State
+### <a name="state"></a>Stav
 System.FM sestavy jako OK po vytvoření služby. Odstraní entitu z Health Store při odstranění služby.
 
 * **SourceId**: System.FM
@@ -214,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>Vytváření oddílů sestav stavu systému
 System.FM, která představuje službu Správce převzetí služeb při selhání, je autoritou, která spravuje informace o oddílech služeb.
 
-### <a name="state"></a>State
+### <a name="state"></a>Stav
 System.FM sestavy jako OK, když byl oddíl vytvořen a je v pořádku. Odstraní entitu z Health Store, když se oddíl odstraní.
 
 Pokud je oddíl pod minimálním počtem replik, ohlásí chybu. Pokud oddíl není pod minimálním počtem replik, ale je pod počtem cílových replik, ohlásí upozornění. Pokud je oddíl ve ztrátě kvora, System.FM hlásí chybu.
@@ -391,7 +391,7 @@ V případě příkladu je potřeba další šetření. Prozkoumejte stav každ�
 ## <a name="replica-system-health-reports"></a>Sestavy stavu systému repliky
 **System. ra**, který představuje součást agenta rekonfigurace, je autoritou pro stav repliky.
 
-### <a name="state"></a>State
+### <a name="state"></a>Stav
 Sestavy System. RA po vytvoření repliky jsou v pořádku.
 
 * **SourceId**: System. ra

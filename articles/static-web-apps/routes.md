@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
 ms.openlocfilehash: 5cbcbcf8914a663a6d039abecd6a4488eaf677b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739640"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Trasy ve službě Azure static Web Apps Preview
@@ -59,10 +59,10 @@ Trasy jsou definovány v _routes.jsv_ souboru jako pole pravidel směrování pr
 
 | Vlastnost pravidla  | Vyžadováno | Výchozí hodnota | Komentář                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ano      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \*_ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
-| `serve`        | Ne       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve` hodnoty musí ukazovat na skutečné soubory.  |
-| `allowedRoles` | Ne       | Anonymous     | Pole názvů rolí <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Předdefinovaná role `anonymous` platí pro všechny neověřené uživatele.<li>Předdefinovaná role `authenticated` se vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi. Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.<li>Jednotliví uživatelé jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
-| `statusCode`   | Ne       | 200           | Odpověď [kódu stavu HTTP](https://wikipedia.org/wiki/List_of_HTTP_status_codes) pro požadavek. |
+| `route`        | Yes      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \*_ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
+| `serve`        | No       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve` hodnoty musí ukazovat na skutečné soubory.  |
+| `allowedRoles` | No       | Anonymous     | Pole názvů rolí <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Předdefinovaná role `anonymous` platí pro všechny neověřené uživatele.<li>Předdefinovaná role `authenticated` se vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi. Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.<li>Jednotliví uživatelé jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
+| `statusCode`   | No       | 200           | Odpověď [kódu stavu HTTP](https://wikipedia.org/wiki/List_of_HTTP_status_codes) pro požadavek. |
 
 ## <a name="securing-routes-with-roles"></a>Zabezpečení tras s rolemi
 

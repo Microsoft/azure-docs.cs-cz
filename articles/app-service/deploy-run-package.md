@@ -3,12 +3,12 @@ title: Spuštění aplikace z balíčku ZIP
 description: Nasaďte balíček ZIP vaší aplikace s nedělitelnost. Zlepšení předvídatelnosti a spolehlivosti chování vaší aplikace během procesu nasazování ZIP.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 036dd8c86251af2ed5553939e74a0d85fc303ecb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008125"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577542"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Spuštění aplikace v Azure App Service přímo z balíčku ZIP
 
@@ -41,7 +41,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## <a name="run-the-package"></a>Spustit balíček
 
-Nejjednodušší způsob, jak balíček v App Service spustit, je pomocí příkazu Azure CLI [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) . Příklad:
+Nejjednodušší způsob, jak balíček v App Service spustit, je pomocí příkazu Azure CLI [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) . Například:
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
@@ -67,6 +67,7 @@ Pokud publikujete aktualizovaný balíček se stejným názvem pro úložiště 
 
 - Spuštění přímo z balíčku zpřístupňuje jen `wwwroot` pro čtení. Pokud se aplikace pokusí zapisovat soubory do tohoto adresáře, dojde k chybě.
 - Formáty TAR a GZIP se nepodporují.
+- Soubor ZIP může být nejvýše 1 GB.
 - Tato funkce není kompatibilní s [místní mezipamětí](overview-local-cache.md).
 - Pro zlepšení výkonu pro studený start použijte místní možnost zip ( `WEBSITE_RUN_FROM_PACKAGE` = 1).
 

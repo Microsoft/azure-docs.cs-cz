@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/09/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.openlocfilehash: 8b0d6ffc00a140073c2dfb5789fbf9760e1767c9
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 22f6e1c8049acd5dbe548bc49955881e05f0ef0e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462758"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579038"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
@@ -44,17 +44,17 @@ Získejte odpovědi na otázky týkající se vývoje vaší aplikace identity p
 
 [Microsoft Q&A](/answers/products/) je doporučeným zdrojem podpory komunity Azure.
 
-Pokud nemůžete najít odpověď na váš problém hledáním v Microsoft Q&A, odešlete novou otázku. Použijte jednu z následujících značek, když požádáte o [vysokou kvalitu otázky](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html):
+Pokud nemůžete najít odpověď na váš problém hledáním v Microsoft Q&A, odešlete novou otázku. Použijte jednu z následujících značek, když požádáte o [vysokou kvalitu otázky](/answers/articles/24951/how-to-write-a-quality-question.html):
 
 | Součást/oblast| Značky  |
 |------------|---------------------------|
-| Active Directory Authentication Library (ADAL)                              | [modulu](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html)                |
-| Microsoft Authentication Library (MSAL)                                     | [msal](https://docs.microsoft.com/answers/topics/azure-ad-msal.html)                            |
-| OWIN (Open Web Interface for .NET) middleware                               | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
-| [Azure AD B2B/externí identity](../external-identities/what-is-b2b.md) | [[Azure-AD-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html)                     |
-| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html)                     |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-AD-Graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html)                 |
-| Všechny ostatní oblasti ověřování a autorizace                            | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| Active Directory Authentication Library (ADAL)                              | [modulu](/answers/topics/azure-ad-adal-deprecation.html)                |
+| Microsoft Authentication Library (MSAL)                                     | [msal](/answers/topics/azure-ad-msal.html)                            |
+| OWIN (Open Web Interface for .NET) middleware                               | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
+| [Azure AD B2B/externí identity](../external-identities/what-is-b2b.md) | [[Azure-AD-B2B]](/answers/topics/azure-ad-b2b.html)                     |
+| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](/answers/topics/azure-ad-b2c.html)                     |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-AD-Graph]](/answers/topics/azure-ad-graph.html)                 |
+| Všechny ostatní oblasti ověřování a autorizace                            | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
 
 ## <a name="create-a-github-issue"></a>Vytvoření problému GitHubu
 
@@ -98,10 +98,8 @@ Pokud chcete požádat o nové funkce, publikujte je na základě zpětné vazby
 
 - [Aktualizace Azure](https://azure.microsoft.com/updates/?category=identity): Přečtěte si o důležitých aktualizacích produktů, plánech a oznámeních.
 
-- [Novinky v](https://docs.microsoft.com/azure/active-directory/develop/whats-new-docs)dokumentaci: získáte informace o tom, co je nového v dokumentaci k platformě Microsoft Identity Platform.
+- [Novinky v](./whats-new-docs.md)dokumentaci: získáte informace o tom, co je nového v dokumentaci k platformě Microsoft Identity Platform.
 
 - [Azure Active Directory blog o identitě](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity): Získejte novinky a informace o Azure AD.
 
 - [Technická komunita](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity/): Sdílejte své prostředí, zapojte se od expertů a Naučte se od nich.
-
-

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.openlocfilehash: b13f5bfffced9afd80663d606e30e028e52643ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94563831"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Správa prostředků rozhraní API pro Azure Cosmos Core (SQL) pomocí Azure CLI
@@ -43,7 +43,7 @@ Následující části demonstrují, jak spravovat účet Azure Cosmos, včetně
 * [Vypsat připojovací řetězce](#list-connection-strings)
 * [Znovu vygenerovat klíč účtu](#regenerate-account-key)
 
-### <a name="create-an-azure-cosmos-db-account"></a>Vytvořit účet služby Azure Cosmos DB
+### <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
 Vytvoření účtu Azure Cosmos DB pomocí rozhraní SQL API, konzistence relace v Západní USA 2 a Východní USA 2 oblastech:
 

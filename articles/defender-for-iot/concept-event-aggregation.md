@@ -1,5 +1,5 @@
 ---
-title: Agregace událostí
+title: Agregace událostí (Preview)
 titleSuffix: Azure Defender for IoT
 description: Defender pro agenty zabezpečení IoT shromažďuje data a systémové události z místního zařízení a odesílá data do cloudu Azure pro zpracování a analýzu.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: azure
-ms.openlocfilehash: 53811c20330d96b279eeb24e1aa90248b60fcb32
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9ce24a44e48f090a0dc7d355952b3cf50dd4318c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120041"
 ---
-# <a name="event-aggregation"></a>Agregace událostí 
+# <a name="event-aggregation-preview"></a>Agregace událostí (Preview)
 
 Defender pro agenty zabezpečení IoT shromažďuje data a systémové události z místního zařízení a odesílá data do cloudu Azure pro zpracování a analýzu. Defender pro IoT Micro agent shromažďuje mnoho typů událostí zařízení, včetně nových procesů a všech nových událostí připojení. Nový proces a nové události připojení se můžou na zařízení nacházet často v rámci druhé. Tato možnost je důležitá pro komplexní zabezpečení, ale počet agentů zabezpečení, které odesílají, můžou rychle splnit nebo překročit vaši kvótu IoT Hub a limity nákladů. Tyto události však obsahují vysoce cenné informace o zabezpečení, které jsou zásadní pro ochranu zařízení. 
 

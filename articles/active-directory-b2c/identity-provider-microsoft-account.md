@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: db6793389df0df169745ddd50551f836d06cf08c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 12e8222ad59aae31baa7a549519c97550b711703
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488750"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579939"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účet Microsoft s využitím Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ ms.locfileid: "103488750"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -68,6 +68,8 @@ Pokud chcete povolit přihlášení pro uživatele s účet Microsoft v Azure Ac
 1. Vyberte **Uložit**.
 
 ## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Microsoftu do toku uživatele 
+
+V tuto chvíli je nastavený poskytovatel identity Microsoftu, ale ještě není dostupný na žádném z přihlašovacích stránek. Přidání poskytovatele identity Microsoftu do toku uživatele:
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
 1. Klikněte na tok uživatele, kterému chcete přidat poskytovatele identity Microsoftu.

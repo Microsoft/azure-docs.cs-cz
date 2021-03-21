@@ -4,10 +4,10 @@ description: Přehled ukázky podrobného plánu srovnávacího testu zabezpeče
 ms.date: 01/27/2021
 ms.topic: sample
 ms.openlocfilehash: 38a50970999965b6a86b8ce8882006c169f2dc5a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919235"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Ukázka Azure Security test details
@@ -18,7 +18,7 @@ Ukázka Azure Security test Details poskytuje bezpečnostní zábradlí pomocí 
 
 [Mapování ovládacího prvku Azure Policy](../../policy/samples/azure-security-benchmark.md) poskytuje podrobné informace o definicích zásad zahrnutých v tomto podrobném plánu a o tom, jak se tyto definice zásad mapují k doménám a **ovládacím prvkům** **dodržování předpisů** v testu zabezpečení Azure. Při přiřazení k architektuře jsou prostředky vyhodnocovány Azure Policym při nedodržení předpisů s přiřazenými definicemi zásad. Další informace najdete v tématu [Azure Policy](../../policy/overview.md).
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 
 Pokud chcete nasadit ukázku Azure Security test Testal na Azure, musíte provést tyto kroky:
 

@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak používat spravované identity pro p�
 ms.topic: article
 ms.date: 01/21/2021
 ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954306"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
@@ -125,7 +125,7 @@ Chcete-li přiřadit roli k oboru názvů Service Bus, přejděte na obor názv�
 ### <a name="run-the-app"></a>Spuštění aplikace
 Nyní upravte výchozí stránku aplikace ASP.NET, kterou jste vytvořili. Můžete použít kód webové aplikace z [tohoto úložiště GitHub](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  
 
-Stránka default. aspx je cílovou stránkou. Kód najdete v souboru Default.aspx.cs. Výsledkem je minimální webová aplikace s několika vstupními poli a tlačítky **Odeslat** a **přijmout** , která se připojují k Service Bus k odeslání nebo přijetí zpráv.
+Stránka default. aspx je cílovou stránkou. Kód najdete ve výchozím souboru. aspx. cs. Výsledkem je minimální webová aplikace s několika vstupními poli a tlačítky **Odeslat** a **přijmout** , která se připojují k Service Bus k odeslání nebo přijetí zpráv.
 
 Všimněte si, jak se inicializuje objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) . Namísto použití poskytovatele tokenu sdíleného přístupového tokenu (SAS) vytvoří kód pro spravovanou identitu poskytovatele tokenu s `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` voláním. V takovém případě nejsou k dispozici žádné tajné kódy k uchování a používání. Tok spravované identity, který se má Service Bus, a ověřovací metodou handshake automaticky zpracovává Poskytovatel tokenů. Je to jednodušší model než použití SAS.
 

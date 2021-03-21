@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467379"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Předdefinovaný model faktury pro rozpoznávání formulářů
@@ -73,7 +73,7 @@ Výstup JSON má 3 části:
 
 Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uvedená pole extrahovaná z faktury v odpovědi na výstup JSON (výstup níže používá tuto [ukázkovou fakturu](media/sample-invoice.jpg)).
 
-|Název| Typ | Popis | Text | Hodnota (standardní výstup) |
+|Název| Typ | Description | Text | Hodnota (standardní výstup) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | řetězec | Fakturovaná zákazník | Společnost Microsoft Corp |  |
 | CustomerId | řetězec | Referenční ID pro zákazníka | CID – 12345 |  |
@@ -104,7 +104,7 @@ Služba faktura bude extrahovat pole text, tabulky a 26 faktur. Níže jsou uved
 
 Níže jsou uvedené položky řádku extrahované z faktury v odpovědi na výstup JSON (výstup níže používá tuto [ukázkovou fakturu](./media/sample-invoice.jpg)).  
 
-|Název| Typ | Popis | Text (položka řádku #1) | Hodnota (standardní výstup) |
+|Název| Typ | Description | Text (položka řádku #1) | Hodnota (standardní výstup) |
 |:-----|:----|:----|:----| :----|
 | Položky | řetězec | Text řádku s úplným řetězcem pro položku řádku | 3/4/2021 A123 konzultační služby 2 hodiny $30,00 10% $60,00 | |
 | Částka | číslo | Množství položky řádku | $60,00 | 100 |

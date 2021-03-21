@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94651308"
 ---
-# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Udržujte si přehled o datech během přilovu k Azure Sentinel
+# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Sledování dat během proaktivního vyhledávání s využitím služby Azure Sentinel
 
 Lovecké hrozby obvykle vyžadují kontrolu Mountains dat protokolu a hledání důkazů o škodlivém chování. Během tohoto procesu prověřování vyhledá události, které chtějí pamatovat, znovu navštívit a analyzovat, jako součást ověřování potenciální hypotézy a porozumění celému příběhu ohrožení.
 
-Rozkládání záložek v Azure Sentinel vám to uděláte tak, že zachováte dotazy, které jste spustili v **protokolech Azure Sentinel**, společně s výsledky dotazu, které považujete za relevantní. Můžete také zaznamenat kontextová pozorování a odkazovat na své závěry přidáním poznámek a značek. Data s záložkami jsou viditelná pro vás a vaše ostatními týmu pro jednoduchou spolupráci.
+Rozkládání záložek v Azure Sentinel vám to uděláte tak, že zachováte dotazy, které jste spustili v **protokolech Azure Sentinel**, společně s výsledky dotazu, které považujete za relevantní. Můžete také zaznamenat svá kontextová pozorování a odkazovat na svá zjištění přidáváním poznámek a značek. Data v záložkách můžete vidět vy a ostatní členové vašeho týmu, což usnadňuje spolupráci.
 
-Data v záložkách můžete kdykoli znovu navštívit na kartě **záložky** v podokně pro **lov** . Pomocí možností filtrování a hledání můžete rychle najít konkrétní data pro vaše aktuální šetření. Případně můžete data z vaší záložky zobrazit přímo v tabulce **HuntingBookmark** v pracovním prostoru Log Analytics. Například:
+Data v záložkách můžete kdykoli znovu navštívit na kartě **záložky** v podokně pro **lov** . Pomocí možností filtrování a hledání můžete rychle najít konkrétní data pro vaše aktuální prověřování. Případně můžete data z vaší záložky zobrazit přímo v tabulce **HuntingBookmark** v pracovním prostoru Log Analytics. Například:
 
 > [!div class="mx-imgBorder"]
 > ![Zobrazit tabulku HuntingBookmark](./media/bookmarks/bookmark-table.png)
@@ -110,12 +110,12 @@ Pokyny k používání grafu šetření najdete v tématu [použití grafu šet�
     > [!div class="mx-imgBorder"]
     > ![Přidat záložky k incidentu](./media/bookmarks/incident-actions.png)
 
-3. V případě potřeby vyberte možnost **vytvořit nový incident** nebo **Přidat k existujícímu incidentu**. Pak:
+3. V případě potřeby vyberte možnost **vytvořit nový incident** nebo **Přidat k existujícímu incidentu**. Potom:
     
     - Pro nový incident: volitelně aktualizujte podrobnosti incidentu a potom vyberte **vytvořit**.
     - Přidání záložky do existujícího incidentu: vyberte jeden incident a pak vyberte **Přidat**. 
 
-Zobrazení záložky v rámci incidentu: přejděte na incidenty se správou hrozeb s **ověřovacími**  >  **hrozbami**  >  **Incidents** a vyberte incident s vaší záložkou. Vyberte **Zobrazit úplné podrobnosti** a potom vyberte kartu **záložky** .
+Zobrazení záložky v rámci incidentu: přejděte na incidenty se správou hrozeb s **ověřovacími**  >  **hrozbami**  >   a vyberte incident s vaší záložkou. Vyberte **Zobrazit úplné podrobnosti** a potom vyberte kartu **záložky** .
 
 > [!TIP]
 > Jako alternativu k možnosti **Akce incidentu (Preview)** na panelu příkazů můžete použít kontextovou nabídku (**...**) pro jednu nebo více záložek a vybrat možnosti pro **Vytvoření nového incidentu**, **přidání do existujícího incidentu** a **Odebrat z incidentu**. 
@@ -128,7 +128,7 @@ Pokud chcete zobrazit záložky, výsledky nebo jejich historii, vyberte zálož
 
 - **Zobrazením protokolů záložky** zobrazíte všechna metadata záložky, včetně toho, kdo provedl aktualizaci, aktualizované hodnoty a čas, kdy k aktualizaci došlo.
 
-Nezpracované data záložky pro všechny záložky můžete zobrazit také tak, že na panelu příkazů na kartě **lovecké** záložky vyberete možnost **protokoly záložek**  >  **Bookmarks** :
+Nezpracované data záložky pro všechny záložky můžete zobrazit také tak, že na panelu příkazů na kartě **lovecké** záložky vyberete možnost **protokoly záložek**  >   :
 
 > [!div class="mx-imgBorder"]
 > ![Protokoly záložek](./media/bookmarks/bookmark-logs.png)

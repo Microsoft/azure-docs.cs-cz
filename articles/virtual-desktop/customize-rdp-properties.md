@@ -7,10 +7,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95018303"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) pro fond hostitelů
@@ -32,7 +32,7 @@ Soubory RDP mají ve výchozím nastavení následující vlastnosti:
 |Přesměrování jednotky povolena|Jednotky, schránka, tiskárny, porty COM a čipové karty|Jednotky, schránka a tiskárny|
 |Režim vzdáleného zvuku|Přehrát místně|Přehrát místně|
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, postupujte podle pokynů v části [nastavení modulu Azure Virtual Desktop PowerShell](powershell-module.md) a nastavte modul prostředí PowerShell a přihlaste se k Azure.
 

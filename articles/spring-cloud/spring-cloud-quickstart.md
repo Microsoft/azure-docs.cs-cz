@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102214469"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak:
 
 Kód aplikace použitý v tomto rychlém startu je jednoduchá aplikace vytvořená pomocí šablony projektu webového rozhraní API .NET Core. Po dokončení tohoto příkladu bude aplikace dostupná online a bude ji možné spravovat prostřednictvím Azure Portal a Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Služba pružinového cloudu Azure podporuje .NET Core 3,1 a novější verze.
@@ -154,7 +154,7 @@ V aplikaci Visual Studio vytvořte ASP.NET Core webové aplikace s názvem "Hell
 
    Balíčky jsou pro zjišťování služby Steeltoe a klientskou knihovnu pro Azure jaře Cloud. `Zip`Úloha je určena k nasazení do Azure. Když `dotnet publish` příkaz spustíte, vygeneruje binární soubory ve složce pro *publikování* a tato úloha zips složku pro *publikování* do souboru *. zip* , který nahrajete do Azure.
 
-3. V souboru *program.cs* přidejte `using` direktivu a kód, který používá knihovnu klienta Azure pro jarní Cloud:
+3. V souboru *program. cs* přidejte `using` direktivu a kód, který používá knihovnu klienta Azure pro jarní Cloud:
 
    ```csharp
    using Microsoft.Azure.SpringCloud.Client;
@@ -170,7 +170,7 @@ V aplikaci Visual Studio vytvořte ASP.NET Core webové aplikace s názvem "Hell
                    });
    ```
 
-4. V souboru *Startup.cs* přidejte `using` direktivu a kód, který používá zjišťování služby Steeltoe na konci `ConfigureServices` `Configure` metody a:
+4. V souboru *Startup. cs* přidejte `using` direktivu a kód, který používá zjišťování služby Steeltoe na konci `ConfigureServices` `Configure` metody a:
 
    ```csharp
    using Steeltoe.Discovery.Client;
@@ -334,7 +334,7 @@ V tomto rychlém startu se dozvíte, jak:
 > * Sestavení a nasazení aplikace s veřejným koncovým bodem
 > * Streamování protokolů v reálném čase
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 

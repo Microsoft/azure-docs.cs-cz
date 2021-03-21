@@ -4,10 +4,10 @@ description: Naučte se pracovat s definicemi podrobného plánu jako s kódem. 
 ms.date: 01/27/2021
 ms.topic: how-to
 ms.openlocfilehash: a5b1adda0b02e2e2490441c5958ca9334febc24c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919982"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import a export definic podrobných plánů pomocí PowerShellu
@@ -23,7 +23,7 @@ Plány Azure je možné plně spravovat prostřednictvím Azure Portal. Protože
 
 Bez ohledu na vaše důvody a Správa definic podrobných plánů jako kód přináší výhody. V tomto článku se dozvíte, jak používat `Import-AzBlueprintWithArtifact` `Export-AzBlueprintWithArtifact` příkazy a v modulu [AZ. detail](https://powershellgallery.com/packages/Az.Blueprint/) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jsou v Azure modrotisky mírné znalosti. Pokud jste to ještě neudělali, Projděte si následující články:
 

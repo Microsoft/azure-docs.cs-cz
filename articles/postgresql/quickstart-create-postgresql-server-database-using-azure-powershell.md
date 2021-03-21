@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 91351c0b2982c6ee0e96cc1433c0fadf67e3bcc0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010652"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL-Single pomocí prostředí PowerShell
 
 V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for PostgreSQL Server ve skupině prostředků Azure. PowerShell můžete použít k interaktivnímu vytváření a správě prostředků Azure nebo ve skriptech.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -69,7 +69,7 @@ Následující tabulka obsahuje seznam běžně používaných parametrů a uká
 | Umístění                   | westus           | Oblast Azure pro server.                                                                                                                                                                                                                                                                                                         |
 | SslEnforcement             | Povoleno          | Zda má být pro tento server povolen nebo nikoli protokol SSL. Povolené hodnoty: Enabled, Disabled.                                                                                                                                                                                                                                                 |
 | StorageInMb                | 51200            | Kapacita úložiště serveru (jednotkou jsou megabajty). Platný StorageInMb je minimálně 5120 MB a zvyšuje se o 1024 MB. Další informace o limitech velikosti úložiště najdete v tématu [Azure Database for PostgreSQL cenové úrovně](./concepts-pricing-tiers.md).                                                                               |
-| Verze                    | 9,6              | Hlavní verze PostgreSQL.                                                                                                                                                                                                                                                                                                                 |
+| Verze                    | 9.6              | Hlavní verze PostgreSQL.                                                                                                                                                                                                                                                                                                                 |
 | AdministratorUserName      | myadmin          | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser**, **admin**, **administrátor**, **root**, **host** nebo **public**.                                                                                                                                                                                            |
 | AdministratorLoginPassword | `<securestring>` | Heslo správce uživatele ve formě zabezpečeného řetězce. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.                                       |
 
@@ -178,7 +178,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
     Databáze údržby | *postgres* | Výchozí systémem vygenerovaný název databáze.
     Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *UserName \@ servername*.
     Heslo | Vaše heslo správce | Heslo, které jste si zvolili při vytváření serveru dříve v tomto rychlém startu.
-    Role | Ponechte prázdné. | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
+    Role | Ponechte prázdné | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
     Režim SSL | *Vyžadovat* | Režim TLS/SSL můžete nastavit na kartě SSL v pgAdmin. Ve výchozím nastavení se všechny Azure Database for PostgreSQL servery vytvoří se zapnutým vynucováním TLS. Pokud chcete zapnout vynucování TLS, přečtěte si téma [Konfigurace vynucení TLS](./concepts-ssl-connection-security.md#configure-enforcement-of-tls).
 
 1. Vyberte **Uložit**.

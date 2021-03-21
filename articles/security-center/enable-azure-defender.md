@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 02/24/2021
 ms.openlocfilehash: 6496b18c8c22cbbd4fd3344736a4b38b7a998890
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102108844"
 ---
 # <a name="quickstart-enable-azure-defender"></a>Rychlý Start: povolení Azure Defenderu
 
 Další informace o výhodách Azure Defenderu najdete v tématu [Security Center bezplatné vs Azure Defender](security-center-pricing.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro účely Security Center rychlých startů a kurzů musíte povolit Azure Defender. 
 

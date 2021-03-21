@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
 ms.openlocfilehash: 9e2898fdeda6e72f09d4127561249906569affb0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101648981"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blackboard-learn"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu Tabule
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat informace o tabuli s Azure Active Dire
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k tabuli s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

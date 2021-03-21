@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460292"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Technické specifikace Azure Stack Edge pro
@@ -26,7 +26,7 @@ Zařízení Azure Stack Edge pro má následující specifikace pro výpočetní
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
 | Procesor    | 2 X 10 jader procesor Intel Xeon stříbrné 4114 2.2 G                    |
-| Paměť              | 128 GB RAM (8rychlostní 16GB RDIMM)                 |
+| Memory (Paměť)              | 128 GB RAM (8rychlostní 16GB RDIMM)                 |
 
 ## <a name="fpga-specifications"></a>Specifikace FPGA
 
@@ -60,13 +60,13 @@ The following table lists the typical power consumption data (actual values may 
 
 Vaše zařízení Azure Stack Edge pro má 6 síťových rozhraní PORT1-PORT6.
 
-| Specifikace           | Popis                 |
+| Specifikace           | Description                 |
 |-------------------------|----------------------------|
 |  Síťová rozhraní    | 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé rozhraní je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.                  |
 
 Používají se síťové adaptéry: 
 
-| Specifikace           | Popis                 |
+| Specifikace           | Description                 |
 |-------------------------|----------------------------|
 |Karta dceřiné sítě (rNDC) |Adaptér QLogic FastLinQ 41264 Dual Port 25GbE SFP +, Dual Port 10 GbE LOM, rNDC|
 |Síťový adaptér PCI |Adaptér 41262 FastLinQ Zwei porty 25Gbit/s SFP28|

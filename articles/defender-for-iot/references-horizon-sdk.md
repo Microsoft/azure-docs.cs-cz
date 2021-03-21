@@ -8,11 +8,11 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523358"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Nesektorový speciální protokol pro Horizont
@@ -326,7 +326,7 @@ Tato část popisuje základní parametry.
 
 Tato část popisuje další pole.
 
-| Popisek parametru | Popis |
+| Popisek parametru | Description |
 |-----------------|--------|
 | **seznamy povolených** | Hodnoty protokolu můžete indexovat a zobrazovat v sestavách dolování dat. Tyto sestavy odrážejí vaše standardní hodnoty v síti. :::image type="content" source="media/references-horizon-sdk/data-mining.png" alt-text="Ukázka zobrazení dolování dat."::: <br /> Další informace najdete v tématu věnovaném [připojení ke službě indexování (směrný plán)](#connect-to-an-indexing-service-baseline) k podrobnostem. |
 | **Firmwar** | Můžete extrahovat informace o firmwaru, definovat hodnoty indexu a aktivovat výstrahy firmwaru pro protokol plug-in. Další informace najdete v tématu o [extrakci dat firmwaru](#extract-firmware-data) . |
@@ -396,7 +396,7 @@ Tím se ověří, že přenášený paket odpovídá parametrům ověření prot
 
 Například použijte prvních 8 bajtů jako *Magic Number*. Pokud správnosti selže, vrátí se odpověď na chybu správnosti.
 
-Příklad:
+Například:
 
 ```C++
   horizon::protocol::ParserResult 
@@ -817,10 +817,10 @@ Přidejte parametr **výstrahy** do modulu `config.json` Plug-in.
 
 Tato část popisuje pole konfigurace JSON. 
 
-| Název pole | Popis | Možné hodnoty |
+| Název pole | Description | Možné hodnoty |
 |--|--|--|
 | **ID** | Představuje jedno ID výstrahy. V tomto kontextu musí být jedinečný. | Číselná hodnota 0-10000 |
-| **Zpráva** | Informace zobrazené uživateli Toto pole umožňuje používat různá pole. | Použijte libovolné pole z vašeho protokolu nebo jakýkoli protokol nižší vrstvy. |
+| **zpráva** | Informace zobrazené uživateli Toto pole umožňuje používat různá pole. | Použijte libovolné pole z vašeho protokolu nebo jakýkoli protokol nižší vrstvy. |
 | **hlava** | Název výstrahy |  |
 | **expression** | Když chcete, aby se toto upozornění zobrazovalo. | Použijte libovolné číselné pole, které bylo nalezeno v nižších vrstvách, nebo aktuální vrstva.</br></br> Každé pole by mělo mít obálku `{}` , aby ho sada SDK rozpoznala jako pole, podporované logické operátory jsou</br> = = – Rovná se</br> <=-menší než nebo rovno</br> >=-větší než nebo rovno</br> > – více než</br> < – menší než</br> ~ = – Nerovná se |
 
@@ -1146,7 +1146,7 @@ V tomto souboru můžete nakonfigurovat tyto vlastnosti:
 
 ### <a name="fields"></a>Pole
 
-| Pole | Popis |
+| Pole | Description |
 |--|--|
 | key | Určuje klíč. |
 | hodnota | Určuje pole implementace, které se má použít, aby se daly zadat data. |
@@ -1618,7 +1618,7 @@ Okno **Přehled** konzoly Horizontal poskytuje informace o modulu plug-in, kter�
 
 :::image type="content" source="media/references-horizon-sdk/overview.png" alt-text="Přehled konzole horizontu":::
 
-| Pole | Popis |
+| Pole | Description |
 |--|--|
 | Aplikace | Název modulu plug-in, který jste nahráli. |
 | :::image type="content" source="media/references-horizon-sdk/switch.png" alt-text="Přepínač Zapnuto a vypnuto."::: | Zapne **nebo** **vypne** modul plug-in. Defender pro IoT nebude při přepínání mimo modul plug-in zpracovávat provoz protokolu definovaný v modulu plug-in. |
@@ -1640,6 +1640,6 @@ Monitorování:
 
 Vyberte tlačítko monitor pro modul plug-in z přehledu.
 
-## <a name="next-steps"></a>Další kroky
+Další kroky
 
 Nastavení [rozhraní API pro horizont](references-horizon-api.md)

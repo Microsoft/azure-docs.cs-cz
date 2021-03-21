@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831546"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
@@ -134,8 +134,8 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 Krok 3: Pokud kroky 1 a 2 nevyřešily problém, může být selhání způsobeno vypršením časového limitu zapisovače VSS z důvodu omezeného IOPS.<br>
 
-Chcete-li ověřit, přejděte do části ***systémové a prohlížeč událostí protokoly aplikací** _ a zkontrolujte následující chybovou zprávu:<br>
-Vypršel časový limit poskytovatele stínové kopie _The při ukládání zápisů do svazku, ve kterém se stín kopíruje. To je pravděpodobně způsobeno nadměrnými činnostmi na svazku aplikace nebo systémovou službou. Zkuste to znovu později, až bude snížena aktivita na svazku. *<br>
+Chcete-li ověřit, přejděte do části ***systémové a prohlížeč událostí protokoly aplikací*** a zkontrolujte následující chybovou zprávu:<br>
+*Vypršel časový limit poskytovatele stínové kopie při ukládání zápisů do svazku, ve kterém je stín kopírovaný. To je pravděpodobně způsobeno nadměrnými činnostmi na svazku aplikace nebo systémovou službou. Zkuste to znovu později, až bude snížena aktivita na svazku.*<br>
 
 Řešení:
 
@@ -321,7 +321,7 @@ Pokud máte Azure Policy, který [řídí značky v rámci vašeho prostředí](
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |
 | Zrušení není pro tento typ úlohy podporováno: <br>Počkejte, až se úloha dokončí. |Žádné |
-| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**ani**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
+| Úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. <br>**nebo**<br> Vybraná úloha není ve stavu, který je možné zrušit: <br>Počkejte, až se úloha dokončí. |Je pravděpodobnější, že úloha je skoro dokončená. Počkejte, než se úloha dokončí.|
 | Zálohování nemůže úlohu zrušit, protože neprobíhá: <br>Zrušení je podporováno pouze pro probíhající úlohy. Zkuste zrušit probíhající úlohu. |K této chybě dochází z důvodu přechodného stavu. Počkejte minutu a zkuste operaci zrušit. |
 | Zálohování se nepodařilo zrušit úlohu: <br>Počkejte, až se úloha dokončí. |Žádné |
 
@@ -331,7 +331,7 @@ Pokud máte Azure Policy, který [řídí značky v rámci vašeho prostředí](
 
 Po obnovení si všimněte, že jsou disky v režimu offline:
 
-* Ověřte, zda počítač, ve kterém je spuštěn skript, splňuje požadavky na operační systém. [Přečtěte si další informace](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).  
+* Ověřte, zda počítač, ve kterém je spuštěn skript, splňuje požadavky na operační systém. [Další informace](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).  
 * Ujistěte se, že neprovádíte obnovení do stejného zdroje. další [informace](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)najdete v části.
 
 ### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound – obnovení se nepovedlo, protože se nenašel snímek virtuálního počítače.

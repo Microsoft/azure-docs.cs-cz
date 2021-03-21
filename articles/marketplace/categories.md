@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 11/16/2020
 ms.openlocfilehash: 5042c6801678f94c749454dac28eec56fdcb7559
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94810988"
 ---
 # <a name="categories-and-subcategories-in-the-commercial-marketplace"></a>Kategorie a podkategorie na komerčním webu Marketplace
@@ -32,12 +32,12 @@ Tato tabulka zobrazuje primární kategorie a podkategorie, které jsou namapov�
 | Primární kategorie | Subcategory |
 | ------------ | ------------- |
 | AI a strojové učení | Automatizované strojové učení<br>Služby robota<br>Automatizace obchodních procesů<br>Cognitive Services<br>Popisky dat<br>Příprava dat<br>Dolování znalostí<br>Operace ML<br>Služba ML |
-| Analýzy | Velký objem dat<br>Analýza dat<br>Přehledy dat<br>Prediktivní analýza<br>Analýzy v reálném čase/streamování |
-| Blockchain | Akcelerátory aplikací<br>Hlavní kniha s více uzly<br>Hlavní kniha s jedním uzlem<br>nástroje |
+| Analýzy | Velký objem dat<br>Datové analýzy<br>Přehledy dat<br>Prediktivní analýza<br>Analýzy v reálném čase/streamování |
+| Blockchain | Akcelerátory aplikací<br>Hlavní kniha s více uzly<br>Hlavní kniha s jedním uzlem<br>Nástroje |
 | Compute | Aplikační infrastruktura<br>Mezipaměť<br>Operační systémy |
 | Kontejnery | Aplikace kontejneru<br>Image kontejneru<br>Začínáme s kontejnery |
 | databáze | Datová jezera<br>Datový sklad<br>Hlavní kniha a databáze blockchain<br>Databáze NoSQL<br>Relační databáze |
-| Vývojářské nástroje | Služba pro vývojáře<br>Skripty<br>nástroje |
+| Vývojářské nástroje | Služba pro vývojáře<br>Skripty<br>Nástroje |
 | DevOps | – |
 | Služba pro vývojáře | Zasílání zpráv |
 | Identita | Správa přístupu |

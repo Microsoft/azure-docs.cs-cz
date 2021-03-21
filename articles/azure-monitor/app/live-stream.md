@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98679462"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: monitorování & diagnostiky s 1 sekundou latencí
@@ -115,7 +115,7 @@ I když je výše uvedená ukázka pro konzolovou aplikaci, je možné použít 
 |**Latence**|Data zobrazená během jedné sekundy|Agregované v průběhu minut|
 |**Bez uchování**|Data se v grafu přetrvají a pak se zahodí.|[Data zachovaná po 90 dnech](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**Na vyžádání**|Data se streamují jenom v případě, že je otevřené podokno aktivní metriky. |Data se odesílají pokaždé, když je SDK nainstalovaná a povolená.|
-|Zadejte možnost pro **bezplatnou** SKU.|Za Live Stream data se neúčtují žádné poplatky.|V souladu s [cenami](./pricing.md)
+|**Free**|Za Live Stream data se neúčtují žádné poplatky.|V souladu s [cenami](./pricing.md)
 |**Vzorkování**|Přenáší se všechny vybrané metriky a čítače. Navzorkují se chyby a trasování zásobníku. |Události se dají [vzorkovat](./api-filtering-sampling.md) .|
 |**Řídicí kanál**|Řídicí signály filtru se odesílají do sady SDK. Doporučujeme tento kanál zabezpečit.|Komunikace je jedním ze způsobů, jak na portál|
 
@@ -185,7 +185,7 @@ Do souboru applicationinsights.config přidejte AuthenticationApiKey do QuickPul
 
 Pro [ASP.NET Core](./asp-net-core.md) aplikace postupujte podle následujících pokynů.
 
-Upravte `ConfigureServices` soubor Startup.cs následujícím způsobem:
+Upravte `ConfigureServices` soubor Startup. cs následujícím způsobem:
 
 Přidejte následující obor názvů.
 
@@ -256,7 +256,7 @@ Základní metriky zahrnují četnost požadavků, závislostí a výjimek. Metr
 - PerfCounters se podporují, když je aplikace spuštěná na LIBOVOLNÝch počítačích s Windows (virtuální počítač nebo cloudová služba nebo na Prem atd.). (AspNetCore SDK verze 2.7.1 nebo vyšší), ale pro aplikace cílené na .NET Core 2,0 nebo vyšší.
 - PerfCounters se podporují, pokud je aplikace spuštěná kdekoli (Linux, Windows, App Service pro Linux, kontejnery atd.) v nejnovějších verzích (tj. AspNetCore SDK verze 2.8.0 nebo vyšší), ale jenom pro aplikace cílené na .NET Core 2,0 nebo vyšší.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Live Metrics Stream používá jiné IP adresy než jiné telemetrie Application Insights. Ujistěte se, že jsou [tyto IP adresy](./ip-addresses.md) v bráně firewall otevřené. Také ověřte, zda jsou v bráně firewall serverů otevřeny [Odchozí porty pro Live Metrics Stream](./ip-addresses.md#outgoing-ports) .
 

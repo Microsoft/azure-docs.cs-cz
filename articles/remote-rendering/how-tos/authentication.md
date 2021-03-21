@@ -1,15 +1,15 @@
 ---
-title: Ověřování
+title: Authentication
 description: Vysvětluje, jak ověřování funguje.
 author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
 ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97724869"
 ---
 # <a name="configure-authentication"></a>Konfigurace ověřování

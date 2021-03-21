@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d00b6aa09ef19b1e6892e0e90536e45dd3bce79
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718518"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588252"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Client-Side šifrování a Azure Key Vault pro Microsoft Azure Storage
 
@@ -132,7 +132,7 @@ Existují dva potřebné balíčky pro integraci Key Vault:
 * Azure. Core obsahuje `IKeyEncryptionKey` rozhraní a `IKeyEncryptionKeyResolver` . Klientská knihovna pro úložiště pro .NET už ji definuje jako závislost.
 * Azure. Security. Key trezor. Keys (v4. x) obsahuje klienta Key Vault REST a také kryptografické klienty používané při šifrování na straně klienta.
 
-Key Vault je navržená pro hlavní klíče s vysokou hodnotou a omezení omezování na Key Vault jsou navržená s ohledem na to. Od služby Azure. Security. Keys trezor. Keys 4.1.0, ale není k dispozici `IKeyEncryptionKeyResolver` implementace, která podporuje ukládání klíčů do mezipaměti. Aby bylo možné ukládání do mezipaměti provést z důvodu omezování, může být [Tato ukázka](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) následována vložením vrstvy do mezipaměti do `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` instance.
+Key Vault je navržená pro hlavní klíče s vysokou hodnotou a omezení omezování na Key Vault jsou navržená s ohledem na to. Od služby Azure. Security. Keys trezor. Keys 4.1.0, ale není k dispozici `IKeyEncryptionKeyResolver` implementace, která podporuje ukládání klíčů do mezipaměti. Aby bylo možné ukládání do mezipaměti provést z důvodu omezování, může být [Tato ukázka](/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/) následována vložením vrstvy do mezipaměti do `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` instance.
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 

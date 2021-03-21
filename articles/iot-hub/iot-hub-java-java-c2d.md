@@ -14,10 +14,10 @@ ms.custom:
 - mqtt
 - devx-track-java
 ms.openlocfilehash: 5ae1850add94d83278b0fe1905dfa6e53c71fc8e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102217886"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Java)
@@ -47,7 +47,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 > [!NOTE]
 > IoT Hub podporuje sadu SDK pro mnoho platforem a jazyků zařízení (včetně C, Java, Pythonu a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny, jak připojit zařízení k kódu tohoto kurzu a obecně k Azure IoT Hub, najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní pracovní verze z zařízení k rychlému zprovoznění služby [IoT Hub](quickstart-send-telemetry-java.md) nebo ke [konfiguraci směrování zpráv pomocí IoT Hub](tutorial-routing.md) kurzu.
 

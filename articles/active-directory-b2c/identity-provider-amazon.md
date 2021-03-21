@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3e1eaf4f97b9b04ed02aeb3c6de65b90bf4947e1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: e152d9c242a44fe869eb7bfe7a16fbd7dfc8049d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489147"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580109"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Amazon pomocí Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ ms.locfileid: "103489147"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -64,6 +64,8 @@ Pokud chcete povolit přihlášení uživatelům s účtem Amazon v Azure Active
 1. Vyberte **Uložit**.
 
 ## <a name="add-amazon-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Amazon do toku uživatele 
+
+V tuto chvíli je poskytovatel identity Amazon nastavený, ale ještě není dostupný na žádném z přihlašovacích stránek. Přidání poskytovatele identity Amazon do toku uživatele:
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
 1. Klikněte na tok uživatele, který chcete přidat poskytovatele identity Amazon.

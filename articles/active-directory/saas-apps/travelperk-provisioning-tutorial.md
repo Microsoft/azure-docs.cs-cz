@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/22/2021
 ms.author: Zhchia
 ms.openlocfilehash: 7e3e119c81f6417110d34b7b9b97af9fa1738d35
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054645"
 ---
 # <a name="tutorial-configure-travelperk-for-automatic-user-provisioning"></a>Kurz: Konfigurace TravelPerk pro Automatické zřizování uživatelů
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v TravelPerk i Azure Active
 > - Udržování uživatelských atributů synchronizovaných mezi Azure AD a TravelPerk
 > - [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/travelperk-tutorial) k TravelPerk (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

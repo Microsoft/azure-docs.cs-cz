@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
 ms.openlocfilehash: f3a19d3c3bf3e4340bb36fd683453541fa15eb6c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101650823"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Kurz: Konfigurace Clarizen jednoho pro Automatické zřizování uživatelů
@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v Clarizen a Azure Active D
 > * Zřizování skupin a členství ve skupinách v Clarizen jednom.
 > * Pro Clarizen se doporučuje [jednotné přihlašování (SSO)](./clarizen-tutorial.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

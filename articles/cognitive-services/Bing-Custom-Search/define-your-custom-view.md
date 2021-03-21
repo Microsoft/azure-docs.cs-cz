@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96338635"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí Vlastní vyhledávání Bingu
@@ -30,7 +30,7 @@ Portál umožňuje vytvořit instanci hledání, která určuje řezy webu: dom�
 
 Při definování řezů webu použijte následující:
 
-| Název řezu | Popis                                                                                                                                                                                                                                                                                                |
+| Název řezu | Description                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Doména     | Řez domény zahrnuje veškerý obsah nacházející se v doméně Internet. Například, `www.microsoft.com`. Vynechání `www.` způsobí, že Bing bude prohledávat i subdomény domény. Pokud například zadáte `microsoft.com` , Bing také vrátí výsledky z `support.microsoft.com` nebo `technet.microsoft.com` . |
 | Podstránku    | Řez podstránky obsahuje veškerý obsah nacházející se na podstránce a v cestách pod ním. V cestě můžete zadat maximálně dvě podstránky. Například `www.microsoft.com/en-us/windows/`.                                                                                                                       |
@@ -97,7 +97,7 @@ Můžete testovat instanci hledání pomocí podokna náhledu na pravé straně 
 
 Portál umožňuje upravit pořadí hledání obsahu z konkrétních domén, podstránek a webových stránek. Po odeslání vyhledávacího dotazu v podokně náhledu obsahuje každý výsledek hledání seznam úprav, které můžete pro něj provést:  
 
-| Úpravu | Popis |
+| Úpravu | Description |
 |------------|-------------|
 | Blok      | Přesune doménu, podstránku nebo webovou stránku do seznamu blokovaných. Bing bude při zobrazení výsledků hledání vyloučit obsah z vybrané lokality.                    |
 | Boost      | Zvyšuje obsah z domény nebo podstránky tak, aby byl ve výsledcích hledání vyšší.                                                                                        |

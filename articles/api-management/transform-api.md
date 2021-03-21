@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010227"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Kurz: transformace a ochrana rozhraní API
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/transform-api/api-management-management-console.png" alt-text="Zásady na portálu":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -   Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 -   Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
@@ -64,7 +64,7 @@ Jak vidíte, odpověď obsahuje hlavičky **x-ASPNET-Version** a **x-Power-by** 
 
 ### <a name="set-the-transformation-policy"></a>Nastavení zásady transformací
 
-1. Vyberte **ukázková konferenční rozhraní API** pro  >  **Design**  >  **všechny operace**.
+1. Vyberte **ukázková konferenční rozhraní API** pro  >    >  **všechny operace**.
 4. V části **odchozí zpracování** vyberte ikonu Editor kódu ( **</>** ).
 
    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Přejít na odchozí zásady" border="false":::
@@ -93,7 +93,7 @@ V této části se dozvíte, jak skrýt původní adresy URL, které se zobrazí
 
 Původní odpověď zobrazíte následovně:
 
-1. Vyberte **Test rozhraní API pro ukázkovou konferenci**  >  **Test**.
+1. Vyberte **Test rozhraní API pro ukázkovou konferenci**  >  .
 1. Vyberte operaci **Getspeakers** a vyberte **Odeslat**.
 
     Jak vidíte, odpověď obsahuje původní adresy URL back-endu:
@@ -155,7 +155,7 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
 ### <a name="test-the-stripped-response-headers"></a>Test odebraných hlaviček odpovědi
 
-1. Vyberte **Test rozhraní API pro ukázkovou konferenci**  >  **Test**.
+1. Vyberte **Test rozhraní API pro ukázkovou konferenci**  >  .
 1. Vyberte operaci **Getspeakers** a vyberte **Odeslat**.
 
     Jak vidíte, hlavičky byly odstraněny:
@@ -164,7 +164,7 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
 ### <a name="test-the-replaced-url"></a>Test nahrazené adresy URL
 
-1. Vyberte **Test rozhraní API pro ukázkovou konferenci**  >  **Test**.
+1. Vyberte **Test rozhraní API pro ukázkovou konferenci**  >  .
 1. Vyberte operaci **Getspeakers** a vyberte **Odeslat**.
 
     Jak vidíte, adresa URL byla nahrazena.
@@ -173,7 +173,7 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
 ### <a name="test-the-rate-limit-throttling"></a>Test omezování četnosti (omezení využití sítě)
 
-1. Vyberte **Test rozhraní API pro ukázkovou konferenci**  >  **Test**.
+1. Vyberte **Test rozhraní API pro ukázkovou konferenci**  >  .
 1. Vyberte operaci **GetSpeakers**. V řádku vyberte **Odeslat** třikrát.
 
     Po odeslání žádosti třikrát obdržíte **429 příliš mnoho** odpovědí na požadavky.

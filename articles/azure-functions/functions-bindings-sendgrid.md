@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94991226"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions vazby SendGrid
@@ -357,15 +357,15 @@ Python nepodporuje atributy.
 
 V následující tabulce jsou uvedeny vlastnosti konfigurace vazby, které jsou k dispozici v  *function.jspro* soubor a `SendGrid` atribut nebo anotaci.
 
-| *function.js* vlastnost | Atribut nebo vlastnost anotace | Popis | Volitelné |
+| *function.js* vlastnost | Atribut nebo vlastnost anotace | Description | Volitelné |
 |--------------------------|-------------------------------|-------------|----------|
-| typ |neuvedeno| Musí být nastaven na hodnotu `sendGrid` .| Ne |
-| směr |neuvedeno| Musí být nastaven na hodnotu `out` .| Ne |
-| name |neuvedeno| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return` , pokud je k dispozici pouze jedna návratová hodnota. | Ne |
-| apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| Ne |
+| typ |Není k dispozici| Musí být nastaven na hodnotu `sendGrid` .| No |
+| směr |Není k dispozici| Musí být nastaven na hodnotu `out` .| No |
+| name |Není k dispozici| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return` , pokud je k dispozici pouze jedna návratová hodnota. | No |
+| apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| No |
 | na| Záměr | E-mailová adresa příjemce | Yes |
 | Výsledkem| Z | E-mailová adresa odesílatele |  Yes |
-| závislosti| Předmět | Předmět e-mailu. | Yes |
+| subject| Předmět | Předmět e-mailu. | Yes |
 | text| Text | Obsah e-mailu | Yes |
 
 Volitelné vlastnosti mohou mít ve vazbě definovány výchozí hodnoty a buď přidány nebo přepsány programově.
@@ -392,9 +392,9 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 }
 ```  
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
-|Výsledkem|neuvedeno|E-mailová adresa odesílatele napříč všemi funkcemi.| 
+|Výsledkem|Není k dispozici|E-mailová adresa odesílatele napříč všemi funkcemi.| 
 
 
 ## <a name="next-steps"></a>Další kroky
