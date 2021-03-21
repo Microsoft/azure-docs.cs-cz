@@ -4,10 +4,10 @@ description: Service Fabric stavové služby poskytují spolehlivé kolekce, kte
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 7d705f81b4ad31559886e43226febcd4cf1d345d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784372"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Úvod do spolehlivých kolekcí ve stavových službách Azure Service Fabric

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: memildin
 ms.openlocfilehash: 14523e814c85469aa02a860e87b86defd7823c16
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439591"
 ---
 # <a name="improve-your-network-security-posture-with-adaptive-network-hardening"></a>Vylepšení stav zabezpečení sítě díky adaptivnímu posílení sítě
@@ -23,7 +23,7 @@ Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v 
 |Stav vydaných verzí:|Obecná dostupnost (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|Oprávnění k zápisu do skupin zabezpečení sítě počítače|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Co je adaptivní posílení zabezpečení sítě?

@@ -1,22 +1,22 @@
 ---
 title: Požadavky na systém pro sadu Kinect senzor sady Azure
 description: Seznamte se s požadavky na systém pro sadu Azure Kinect senzor SDK v systému Windows a Linux.
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.custom:
 - CI 115266
 - CSSTroubleshooting
 manager: dcscontentpm
 ms.prod: kinect-dk
-ms.date: 03/12/2020
+ms.date: 03/05/2021
 ms.topic: article
 keywords: Azure, Kinect, požadavky na systém, procesor, GPU, USB, nastavení, nastavení, minimální požadavky, požadavky
-ms.openlocfilehash: 5cf313114b62532ee3f2b3d7a5142f79218954c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 558c1b9ca264874fa808aeba5f1e8a809a8f722d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277224"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656970"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Požadavky na systém pro sadu Kinect senzor sady Azure
 
@@ -52,7 +52,7 @@ Požadavek na hostitele počítače sledování těla je přísnější než po�
 
 - Sedmý &reg; CoreTM procesor Intel i5 (Quad Core 2,4 GHz nebo rychlejší)
 - 4 GB paměti
-- NVIDIA GEFORCE GTX 1070 nebo lepší
+- NVIDIA GEFORCE GTX 1050 nebo ekvivalentní
 - Vyhrazený port USB3
 
 Doporučená minimální konfigurace předpokládá K4A_DEPTH_MODE_NFOV_UNBINNED režim hloubky na 30fps sledování 5 lidí. Nižší nebo starší procesory a grafické procesory NVIDIA můžou fungovat i v závislosti na vašem případu použití.

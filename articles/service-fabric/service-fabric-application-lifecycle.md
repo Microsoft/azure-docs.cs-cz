@@ -4,10 +4,10 @@ description: Popisuje vývoj, nasazení, testování, upgrade, údržbu a odebí
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: ae0c79cdaafc8fc016d463a01046f0a02121330a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785731"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Životní cyklus aplikace Service Fabric
@@ -31,7 +31,7 @@ Role modelu služby jsou:
 
 Příklady najdete v tématu Začínáme [se Reliable Actors](service-fabric-reliable-actors-get-started.md) a [Začínáme s Reliable Services](service-fabric-reliable-services-quick-start.md) .
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 1. *Správce aplikace* vysadí typ aplikace na konkrétní aplikaci, která se má nasadit do clusteru Service Fabric, zadáním příslušných parametrů elementu **typu ApplicationType** v manifestu aplikace.
 2. *Operátor* nahraje balíček aplikace do úložiště imagí clusteru pomocí [metody **CopyApplicationPackage**](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient) nebo [rutiny **copy-ServiceFabricApplicationPackage**](/powershell/module/servicefabric/copy-servicefabricapplicationpackage). Balíček aplikace obsahuje manifest aplikace a kolekci balíčků služeb. Service Fabric nasadí aplikace z balíčku aplikace uloženého v úložišti imagí, což může být úložiště objektů BLOB v Azure nebo služba Service Fabric System.
 3. *Operátor* pak zřídí typ aplikace v cílovém clusteru z nahraného balíčku aplikace pomocí [metody **ProvisionApplicationAsync**](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rutiny **Register-ServiceFabricApplicationType**](/powershell/module/servicefabric/register-servicefabricapplicationtype)nebo [ **zřízení** operace REST aplikace](/rest/api/servicefabric/provision-an-application).
@@ -48,7 +48,7 @@ Příklady najdete v tématu [nasazení aplikace](service-fabric-deploy-remove-a
 
 Další informace najdete v [úvodu ke službě analýzy chyb](service-fabric-testability-overview.md) .
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Upgradovat
 1. *Vývojář služby* aktualizuje prvky služeb instance aplikace nebo opravuje chyby a poskytuje novou verzi manifestu služby.
 2. *Vývojář aplikace* Přepisuje a parameterizes nastavení konfigurace a nasazení konzistentních služeb a poskytuje novou verzi manifestu aplikace. Vývojář aplikace potom v rámci aplikace zahrnuje nové verze manifestů služby a v aktualizovaném balíčku aplikace poskytuje novou verzi typu aplikace.
 3. *Správce aplikace* zahrnuje novou verzi typu aplikace do cílové aplikace tím, že aktualizuje příslušné parametry.

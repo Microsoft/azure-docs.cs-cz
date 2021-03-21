@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371392"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>ID adresy modulu Azure Integration Runtime
@@ -27,7 +27,7 @@ IP adresy, které Azure Integration Runtime používá, závisí na oblasti, ve 
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime IP adresy: konkrétní oblasti
 
-Povolte provoz z IP adres uvedených pro Azure Integration runtime v konkrétní oblasti Azure, ve které se vaše prostředky nacházejí. Z [odkazu na stažení rozsahu IP adres značek služby](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)můžete získat seznam ROZSAHŮ IP adres. Pokud je například oblast Azure **AustraliaEast**, můžete získat seznam ROZSAHŮ IP adres z objektu **DataFactory. AustraliaEast**.
+Povolte provoz z IP adres uvedených pro Azure Integration runtime v konkrétní oblasti Azure, ve které se vaše prostředky nacházejí. Seznam rozsahů IP adres značek služeb můžete získat na [odkazu na stažení rozsahů IP adres značek služeb](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). Pokud je například oblast Azure **AustraliaEast**, můžete získat seznam ROZSAHŮ IP adres z objektu **DataFactory. AustraliaEast**.
 
 
 ## <a name="known-issue-with-azure-storage"></a>Známý problém s Azure Storage

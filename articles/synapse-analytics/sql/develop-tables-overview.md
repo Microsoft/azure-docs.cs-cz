@@ -10,44 +10,44 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c5595dc64b46e1c30f3c36866e0efbbd8d3c7f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674136"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585430"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Návrh tabulek pomocí SQL synapse ve službě Azure synapse Analytics
 
 Tento dokument obsahuje klíčové koncepty pro navrhování tabulek s vyhrazeným fondem SQL a bez serveru SQL.  
 
-[Neserverový fond SQL](on-demand-workspace-overview.md) je dotazovací služba nad daty ve službě Data Lake. Nemá místní úložiště pro přijímání dat. [Vyhrazený fond SQL](best-practices-sql-pool.md) představuje kolekci analytických prostředků, které se zřídí při používání synapse SQL. Velikost vyhrazeného fondu SQL je určena jednotkami datového skladu (DWU).
+[Neserverový fond SQL](on-demand-workspace-overview.md) je dotazovací služba nad daty ve službě Data Lake. Nemá místní úložiště pro přijímání dat. [Vyhrazený fond SQL](best-practices-dedicated-sql-pool.md) představuje kolekci analytických prostředků, které se zřídí při používání synapse SQL. Velikost vyhrazeného fondu SQL je určena jednotkami datového skladu (DWU).
 
 V následující tabulce jsou uvedena témata týkající se vyhrazeného fondu SQL a SQL Server bez serveru:
 
 | Téma                                                        | vyhrazený fond SQL | Bezserverový fond SQL |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
-| [Určení kategorie tabulky](#determine-table-category)        | Ano                | Ne                      |
-| [Názvy schémat](#schema-names)                                | Ano                | Ano                     |
-| [Názvy tabulek](#table-names)                                  | Ano                | Ne                      |
-| [Trvalost tabulek](#table-persistence)                      | Ano                | Ne                      |
-| [Běžná tabulka](#regular-table)                              | Ano                | Ne                      |
-| [Dočasná tabulka](#temporary-table)                          | Ano                | Ano                     |
-| [Externí tabulka](#external-table)                            | Ano                | Ano                     |
-| [Datové typy](#data-types)                                    | Ano                | Ano                     |
-| [Distribuované tabulky](#distributed-tables)                    | Ano                | Ne                      |
-| [Distribuované zatřiďovací tabulky (distribuce hodnot hash)](#hash-distributed-tables)          | Ano                | Ne                      |
-| [Replikované tabulky](#replicated-tables)                      | Ano                | Ne                      |
-| [Tabulky kruhového dotazování](#round-robin-tables)                    | Ano                | Ne                      |
-| [Běžné metody distribuce pro tabulky](#common-distribution-methods-for-tables) | Ano                | Ne                      |
-| [Disk](#partitions)                                    | Ano                | Ano                     |
-| [Indexy Columnstore](#columnstore-indexes)                  | Ano                | Ne                      |
-| [Statistika](#statistics)                                    | Ano                | Ano                     |
-| [Primární klíč a jedinečný klíč](#primary-key-and-unique-key)    | Ano                | Ne                      |
-| [Příkazy pro vytváření tabulek](#commands-for-creating-tables) | Ano                | Ne                      |
-| [Zarovnávání zdrojových dat s datovým skladem](#align-source-data-with-the-data-warehouse) | Ano                | Ne                      |
-| [Nepodporované funkce tabulky](#unsupported-table-features)    | Ano                | Ne                      |
-| [Dotazy na velikost tabulky](#table-size-queries)                    | Ano                | Ne                      |
+| [Určení kategorie tabulky](#determine-table-category)        | Yes                | No                      |
+| [Názvy schémat](#schema-names)                                | Yes                | Yes                     |
+| [Názvy tabulek](#table-names)                                  | Yes                | No                      |
+| [Trvalost tabulek](#table-persistence)                      | Yes                | No                      |
+| [Běžná tabulka](#regular-table)                              | Yes                | No                      |
+| [Dočasná tabulka](#temporary-table)                          | Yes                | Yes                     |
+| [Externí tabulka](#external-table)                            | Yes                | Yes                     |
+| [Datové typy](#data-types)                                    | Yes                | Yes                     |
+| [Distribuované tabulky](#distributed-tables)                    | Yes                | No                      |
+| [Distribuované zatřiďovací tabulky (distribuce hodnot hash)](#hash-distributed-tables)          | Yes                | No                      |
+| [Replikované tabulky](#replicated-tables)                      | Yes                | No                      |
+| [Tabulky kruhového dotazování](#round-robin-tables)                    | Yes                | No                      |
+| [Běžné metody distribuce pro tabulky](#common-distribution-methods-for-tables) | Yes                | No                      |
+| [Disk](#partitions)                                    | Yes                | Yes                     |
+| [Indexy Columnstore](#columnstore-indexes)                  | Yes                | No                      |
+| [Statistika](#statistics)                                    | Yes                | Yes                     |
+| [Primární klíč a jedinečný klíč](#primary-key-and-unique-key)    | Yes                | No                      |
+| [Příkazy pro vytváření tabulek](#commands-for-creating-tables) | Yes                | No                      |
+| [Zarovnávání zdrojových dat s datovým skladem](#align-source-data-with-the-data-warehouse) | Yes                | No                      |
+| [Nepodporované funkce tabulky](#unsupported-table-features)    | Yes                | No                      |
+| [Dotazy na velikost tabulky](#table-size-queries)                    | Yes                | No                      |
 
 ## <a name="determine-table-category"></a>Určení kategorie tabulky
 
@@ -206,7 +206,7 @@ V případě vyhrazeného fondu SQL se primární klíč podporuje jenom v pří
 
 Pro vyhrazený fond SQL můžete vytvořit tabulku jako novou prázdnou tabulku. Můžete také vytvořit a naplnit tabulku pomocí výsledků příkazu SELECT. Níže jsou uvedené příkazy T-SQL pro vytvoření tabulky.
 
-| Příkaz T-SQL | Popis |
+| Příkaz T-SQL | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
 | [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Vytvoří externí tabulku. Definice tabulky je uložená ve vyhrazeném fondu SQL. Data tabulky se ukládají do služby Azure Blob Storage nebo Azure Data Lake Storage. |

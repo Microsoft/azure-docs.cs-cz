@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: ede650ae072ef53ed40a9372a292ab69fe8cc1af
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492723"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>Požadavky na infrastrukturu rozhraní SIP 
@@ -47,8 +47,8 @@ V následující tabulce jsou uvedeny příklady názvů DNS zaregistrovaných p
 
 |Název DNS|Dá se použít pro mezipaměť softwarové sběrnice plně kvalifikovaný název domény.|Příklady názvů plně kvalifikovaného názvu domény|
 |:--- |:--- |:--- |
-contoso.com|Ano|**Platné názvy:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
-|contoso.onmicrosoft.com|Ne|Použití domén *. onmicrosoft.com se u názvů mezipaměť softwarové sběrnice nepodporuje.
+contoso.com|Yes|**Platné názvy:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
+|contoso.onmicrosoft.com|No|Použití domén *. onmicrosoft.com se u názvů mezipaměť softwarové sběrnice nepodporuje.
 
 Pokud jste zákazníkem se sadou Office 365, název domény mezipaměť softwarové sběrnice nesmí souhlasit s registrací v doménách klienta sady Office 365. Níže je uveden příklad koexistence služeb Office 365 a Azure Communication Service:
 

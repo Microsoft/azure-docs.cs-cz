@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 578f0d1ca742fe4445b8aeed6876d1a73fd3f79e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0c72eda59f375c70274b17796ca53614ef95505b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376207"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669504"
 ---
 # <a name="upload-usage-data-to-azure-monitor"></a>Odeslat data o využití do Azure Monitor
 
@@ -36,7 +36,7 @@ Než budete pokračovat, ujistěte se, že jste vytvořili požadovaný instanč
 * [Vytvoření instančního objektu](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)
 * [Přiřazení rolí k instančnímu objektu](upload-metrics-and-logs-to-azure-monitor.md#assign-roles-to-the-service-principal)
 
-## <a name="upload-usage-data"></a>Odeslat data o využití
+## <a name="upload-usage-data"></a>Odesílání údajů o využití
 
 Informace o využití, jako jsou inventarizace a využití prostředků, se dají do Azure nahrát v následujícím dvoufázovém postupu:
 
@@ -64,7 +64,7 @@ Informace o využití, jako jsou inventarizace a využití prostředků, se daj�
 
 Pokud chcete nahrávat metriky a protokoly na základě plánu, můžete vytvořit skript a spustit ho v časovači každých pár minut. Níže je příklad automatizace nahrávání pomocí skriptu prostředí systému Linux.
 
-V oblíbeném editoru textu nebo kódu přidejte do souboru následující skript a uložte ho jako spustitelný soubor skriptu, jako je například. sh (Linux/Mac) nebo. cmd,. bat,. ps1.
+V oblíbeném editoru textu nebo kódu přidejte do souboru následující skript a uložte ho jako spustitelný soubor skriptu `.sh` (Linux/Mac) `.cmd` , nebo `.bat` `.ps1` .
 
 ```console
 azdata arc dc export --type metrics --path metrics.json --force

@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102174967"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
@@ -114,16 +114,16 @@ Technický profil také vrací deklarace identity, které nejsou vraceny zprost�
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ServiceUrl | Ano | Adresa URL koncového bodu REST API. |
-| AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None` , `Basic` , `Bearer` ,  `ClientCertificate` , nebo `ApiKeyHeader` . <br /><ul><li>`None`Hodnota označuje, že REST API je anonymní. </li><li>`Basic`Hodnota označuje, že REST API je zabezpečeno pomocí ověřování HTTP Basic. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. </li><li>`ClientCertificate`Hodnota (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vašemu rozhraní API můžou mít přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. </li><li>`Bearer`Hodnota označuje, že REST API omezí přístup pomocí tokenu nosiče klienta OAuth2. </li><li>`ApiKeyHeader`Hodnota označuje, že REST API je zabezpečená pomocí HLAVIČKY http klíče rozhraní API, jako je například *x-Functions-Key*. </li></ul> |
-| AllowInsecureAuthInProduction| Ne| Určuje, zda `AuthenticationType` lze nastavit na hodnotu `none` v produkčním prostředí ( `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) je nastaven na `Production` nebo není určen). Možné hodnoty: true nebo false (výchozí). |
-| SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form` , `Header` `Url` nebo `QueryString` . `Body`Hodnota je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. `Form`Hodnota je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty oddělovače & znaku. `Header`Hodnota je vstupní deklarace, která je odeslána v hlavičce požadavku. `Url`Hodnota je vstupní deklarace, která se pošle v adrese URL, třeba https://{claim1}. example. com/{claim2}/{claim3}? { claim4} = {claim5}. `QueryString`Hodnota je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. Příkazy HTTP, které jsou vyvolány pomocí obou, jsou následující:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`Url`: GET</li><li>`QueryString`: GET</li></ul> |
-| ClaimsFormat | Ne | Aktuálně se nepoužívá, může být ignorováno. |
-| ClaimUsedForRequestPayload| Ne | Název deklarace identity řetězce, která obsahuje datovou část, která se má odeslat do REST API. |
-| DebugMode | Ne | Spustí technický profil v režimu ladění. Možné hodnoty: `true` , nebo `false` (výchozí). V režimu ladění může REST API vrátit více informací. Přečtěte si část [vracení chybové zprávy](#returning-validation-error-message) . |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
-| ResolveJsonPathsInJsonTokens  | Ne | Určuje, zda technický profil řeší cesty JSON. Možné hodnoty: `true` , nebo `false` (výchozí). Tato metadata slouží ke čtení dat z vnořeného prvku JSON. V [OutputClaim](technicalprofiles.md#output-claims)nastavte na `PartnerClaimType` element cesty JSON, který chcete výstup. Například: `firstName.localized` nebo `data.0.to.0.email` .|
-| UseClaimAsBearerToken| Ne| Název deklarace identity, která obsahuje nosný token.|
+| ServiceUrl | Yes | Adresa URL koncového bodu REST API. |
+| AuthenticationType | Yes | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None` , `Basic` , `Bearer` ,  `ClientCertificate` , nebo `ApiKeyHeader` . <br /><ul><li>`None`Hodnota označuje, že REST API je anonymní. </li><li>`Basic`Hodnota označuje, že REST API je zabezpečeno pomocí ověřování HTTP Basic. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. </li><li>`ClientCertificate`Hodnota (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vašemu rozhraní API můžou mít přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. </li><li>`Bearer`Hodnota označuje, že REST API omezí přístup pomocí tokenu nosiče klienta OAuth2. </li><li>`ApiKeyHeader`Hodnota označuje, že REST API je zabezpečená pomocí HLAVIČKY http klíče rozhraní API, jako je například *x-Functions-Key*. </li></ul> |
+| AllowInsecureAuthInProduction| No| Určuje, zda `AuthenticationType` lze nastavit na hodnotu `none` v produkčním prostředí ( `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) je nastaven na `Production` nebo není určen). Možné hodnoty: true nebo false (výchozí). |
+| SendClaimsIn | No | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form` , `Header` `Url` nebo `QueryString` . `Body`Hodnota je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. `Form`Hodnota je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty oddělovače & znaku. `Header`Hodnota je vstupní deklarace, která je odeslána v hlavičce požadavku. `Url`Hodnota je vstupní deklarace, která se pošle v adrese URL, třeba https://{claim1}. example. com/{claim2}/{claim3}? { claim4} = {claim5}. `QueryString`Hodnota je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. Příkazy HTTP, které jsou vyvolány pomocí obou, jsou následující:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`Url`: GET</li><li>`QueryString`: GET</li></ul> |
+| ClaimsFormat | No | Aktuálně se nepoužívá, může být ignorováno. |
+| ClaimUsedForRequestPayload| No | Název deklarace identity řetězce, která obsahuje datovou část, která se má odeslat do REST API. |
+| DebugMode | No | Spustí technický profil v režimu ladění. Možné hodnoty: `true` , nebo `false` (výchozí). V režimu ladění může REST API vrátit více informací. Přečtěte si část [vracení chybové zprávy](#returning-validation-error-message) . |
+| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| ResolveJsonPathsInJsonTokens  | No | Určuje, zda technický profil řeší cesty JSON. Možné hodnoty: `true` , nebo `false` (výchozí). Tato metadata slouží ke čtení dat z vnořeného prvku JSON. V [OutputClaim](technicalprofiles.md#output-claims)nastavte na `PartnerClaimType` element cesty JSON, který chcete výstup. Například: `firstName.localized` nebo `data.0.to.0.email` .|
+| UseClaimAsBearerToken| No| Název deklarace identity, která obsahuje nosný token.|
 
 ## <a name="error-handling"></a>Zpracování chyb
 
@@ -131,10 +131,10 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| DefaultUserMessageIfRequestFailed | Ne | Výchozí přizpůsobená chybová zpráva pro všechny výjimky REST API.|
-| UserMessageIfCircuitOpen | Ne | Chybová zpráva, když REST API není dostupná. Pokud není zadaný, DefaultUserMessageIfRequestFailed se vrátí. |
-| UserMessageIfDnsResolutionFailed | Ne | Chybová zpráva pro výjimku překladu DNS Pokud není zadaný, DefaultUserMessageIfRequestFailed se vrátí. | 
-| UserMessageIfRequestTimeout | Ne | Chybová zpráva, když vypršel časový limit připojení Pokud není zadaný, DefaultUserMessageIfRequestFailed se vrátí. | 
+| DefaultUserMessageIfRequestFailed | No | Výchozí přizpůsobená chybová zpráva pro všechny výjimky REST API.|
+| UserMessageIfCircuitOpen | No | Chybová zpráva, když REST API není dostupná. Pokud není zadaný, DefaultUserMessageIfRequestFailed se vrátí. |
+| UserMessageIfDnsResolutionFailed | No | Chybová zpráva pro výjimku překladu DNS Pokud není zadaný, DefaultUserMessageIfRequestFailed se vrátí. | 
+| UserMessageIfRequestTimeout | No | Chybová zpráva, když vypršel časový limit připojení Pokud není zadaný, DefaultUserMessageIfRequestFailed se vrátí. | 
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -156,8 +156,8 @@ Pokud je typ ověřování nastaven na `Basic` , element **CryptographicKeys** o
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Ano | Uživatelské jméno, které se používá k ověření. |
-| BasicAuthenticationPassword | Ano | Heslo, které se používá k ověření. |
+| BasicAuthenticationUsername | Yes | Uživatelské jméno, které se používá k ověření. |
+| BasicAuthenticationPassword | Yes | Heslo, které se používá k ověření. |
 
 Následující příklad ukazuje technický profil se základním ověřováním:
 
@@ -181,7 +181,7 @@ Pokud je typ ověřování nastaven na `ClientCertificate` , element **Cryptogra
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ClientCertificate | Ano | Certifikát x509 (sada klíčů RSA), která se má použít k ověření. |
+| ClientCertificate | Yes | Certifikát x509 (sada klíčů RSA), která se má použít k ověření. |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -202,7 +202,7 @@ Pokud je typ ověřování nastaven na `Bearer` , element **CryptographicKeys** 
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| BearerAuthenticationToken | Ne | Nosný token OAuth 2,0. |
+| BearerAuthenticationToken | No | Nosný token OAuth 2,0. |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -223,7 +223,7 @@ Pokud je typ ověřování nastaven na `ApiKeyHeader` , element **CryptographicK
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Název hlavičky protokolu HTTP, například `x-functions-key` nebo `x-api-key` . | Ano | Klíč, který se používá k ověření. |
+| Název hlavičky protokolu HTTP, například `x-functions-key` nebo `x-api-key` . | Yes | Klíč, který se používá k ověření. |
 
 > [!NOTE]
 > V tuto chvíli Azure AD B2C pro ověřování podporuje jenom jednu hlavičku HTTP. Pokud vaše volání RESTful vyžaduje více hlaviček, jako je ID klienta a tajný kód klienta, budete muset požadavek proxy nějakým způsobem vyzvat.
@@ -261,13 +261,13 @@ Vaše REST API může potřebovat vrátit chybovou zprávu, například ' uživa
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| verze | Ano | Vaše verze REST API. Příklad: 1.0.1 |
-| status | Ano | Musí být 409 |
-| kód | Ne | Kód chyby od poskytovatele koncového bodu RESTful, který se zobrazí, když `DebugMode` je povolený. |
-| Identifikátor | Ne | Identifikátor požadavku od poskytovatele koncového bodu RESTful, který se zobrazí, když `DebugMode` je povolený. |
-| userMessage | Ano | Chybová zpráva, která se zobrazí uživateli. |
-| developerMessage | Ne | Podrobný popis problému a jak ho opravit, který se zobrazí, když `DebugMode` je povolený. |
-| moreInfo | Ne | Identifikátor URI, který odkazuje na Další informace, které se zobrazí, když `DebugMode` je povolený. |
+| verze | Yes | Vaše verze REST API. Příklad: 1.0.1 |
+| status | Yes | Musí být 409 |
+| kód | No | Kód chyby od poskytovatele koncového bodu RESTful, který se zobrazí, když `DebugMode` je povolený. |
+| Identifikátor | No | Identifikátor požadavku od poskytovatele koncového bodu RESTful, který se zobrazí, když `DebugMode` je povolený. |
+| userMessage | Yes | Chybová zpráva, která se zobrazí uživateli. |
+| developerMessage | No | Podrobný popis problému a jak ho opravit, který se zobrazí, když `DebugMode` je povolený. |
+| moreInfo | No | Identifikátor URI, který odkazuje na Další informace, které se zobrazí, když `DebugMode` je povolený. |
 
 
 Následující příklad ukazuje třídu jazyka C#, která vrací chybovou zprávu:

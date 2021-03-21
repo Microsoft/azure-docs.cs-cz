@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 2ff07995cab2da6e53600be9bf60b30d1896cc9d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 40fa1bc776c5cd457e57cf170f629b6cf92800fe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102664498"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585991"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Co je Azure Stack Edge pro R?
 
@@ -78,6 +78,8 @@ U fyzického zařízení Azure Stack Edge pro R, prostředku Azure a cílového 
 - **Dostupnost zařízení** – seznam všech zemí, kde je k dispozici zařízení Azure Stack Edge pro r, najdete v části **dostupnost** na kartě **Azure Stack Edge** pro r pro [Azure Stack ceny pro r Edge](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeProR).
 
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých jsou uloženy účty úložiště Azure Stack Edge pro R, by měly být umístěny blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon.
+
+Služba Azure Stack Edge je neoblastní služba. Další informace najdete v tématu [oblasti a zóny dostupnosti v Azure](https://docs.microsoft.com/azure/availability-zones/az-overview). Služba Azure Stack Edge nemá závislost na konkrétní oblasti Azure, takže je odolná vůči výpadkům v rámci zóny a výpadkům v rámci oblastí.
 
 ## <a name="next-steps"></a>Další kroky
 

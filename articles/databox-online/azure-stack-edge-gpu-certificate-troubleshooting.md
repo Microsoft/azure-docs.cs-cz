@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: 67dd2b35229c15ae4df5ec8acb357aa35621d67c
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102436630"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Řešení chyb certifikátů
@@ -28,7 +28,7 @@ V následující tabulce jsou uvedeny běžné chyby certifikátů a podrobné i
 > [!NOTE]
 > Výskyty &#8220;{0} , {1} ,..., {n} &#8221; označují poziční parametry. Poziční parametry převezmou hodnoty v závislosti na certifikátech, které používáte.
 
-| Kód chyby | Popis |
+| Kód chyby | Description |
 |---|---|
 | CertificateManagement_UntrustedCertificate | Certifikát s názvem subjektu {0} má Porušený řetěz certifikátů. Před nahráním tohoto certifikátu Nahrajte certifikát podpisového řetězce.|
 | CertificateManagement_DeviceNotRegistered| Vaše zařízení není aktivované. Certifikát podpory můžete nahrát až po aktivaci.|

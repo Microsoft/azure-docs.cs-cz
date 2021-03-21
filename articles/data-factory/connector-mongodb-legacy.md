@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: e13a1a5a939d314bdf4500c0827fa13201505016
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100368842"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Kopírování dat z MongoDB pomocí Azure Data Factory (starší verze)
@@ -26,7 +26,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 >[!IMPORTANT]
 >Vydání ADF nový konektor MongoDB, který poskytuje lepší nativní podporu MongoDB, porovnává s touto implementací založenou na rozhraní ODBC, najdete v článku o [konektoru](connector-mongodb.md) . Tato starší verze konektoru MongoDB je podporovaná tak, jak je kvůli zpětné shodě, ale u jakékoli nové úlohy prosím použijte nový konektor.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Data z databáze MongoDB můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
@@ -35,7 +35,7 @@ Konkrétně tento konektor MongoDB podporuje:
 - MongoDB **verze 2,4, 2,6, 3,0, 3,2, 3,4 a 3,6**.
 - Kopírování dat pomocí **základního** nebo **anonymního** ověřování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

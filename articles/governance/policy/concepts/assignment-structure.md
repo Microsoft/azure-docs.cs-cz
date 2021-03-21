@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
-ms.date: 01/29/2021
+ms.date: 03/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581956"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604861"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -88,7 +88,10 @@ Toto pole musí být úplný název cesty buď definice zásady, nebo definice i
 
 ## <a name="non-compliance-messages"></a>Zprávy o neshodě
 
-Chcete-li nastavit vlastní zprávu s popisem příčin, proč prostředek není kompatibilní s definicí zásady nebo iniciativou, nastavte `nonComplianceMessages` v definici přiřazení. Tento uzel je pole `message` záznamů. Tato vlastní zpráva je kromě výchozí chybové zprávy při nedodržení předpisů a volitelná.
+Chcete-li nastavit vlastní zprávu, která popisuje, proč prostředek není kompatibilní s definicí zásady nebo iniciativou, nastavte `nonComplianceMessages` v definici přiřazení. Tento uzel je pole `message` záznamů. Tato vlastní zpráva je kromě výchozí chybové zprávy při nedodržení předpisů a volitelná.
+
+> [!IMPORTANT]
+> Vlastní zprávy o nedodržení předpisů se podporují jenom v definicích nebo iniciativách s definicemi [Správce prostředků režimů](./definition-structure.md#resource-manager-modes) .
 
 ```json
 "nonComplianceMessages": [

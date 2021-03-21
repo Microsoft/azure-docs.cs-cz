@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492604"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>Kurz: podepsání a vytvoření požadavků pomocí metody post
@@ -24,7 +24,7 @@ V tomto kurzu budeme:
 > * Nastavení metody post pro podepisování požadavků HTTP
 > * Vytvoření požadavku na službu ACS rozhraní API služby ACS pro odeslání zprávy
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Bezplatný účet vám poskytne $200 kreditů Azure k vyzkoušení libovolné kombinace služeb.
 - Aktivní prostředek komunikační služby a připojovací řetězec. [Naučte se vytvořit prostředek komunikačních služeb](../quickstarts/create-communication-resource.md).
