@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 75580931b2df33b02b9759b6faaa5bec548daaae
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103496166"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>Rychlý Start: připojení aplikace chat k týmu schůzky
@@ -21,7 +21,7 @@ ms.locfileid: "103496166"
 
 Začněte s komunikačními službami Azure připojením vašeho řešení chatu k Microsoft Teams pomocí klientské knihovny JavaScriptu. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 1.  [Nasazení týmů](/deployoffice/teams-install). 
 2. Pracovní [chatovací aplikace](./get-started.md). 

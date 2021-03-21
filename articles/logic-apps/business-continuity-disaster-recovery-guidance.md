@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89658197"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Provozní kontinuita a zotavení po havárii pro Azure Logic Apps
@@ -103,7 +103,7 @@ Můžete nastavit primární a sekundární umístění, aby instance aplikace l
 | Role primárního-sekundárního | Description |
 |------------------------|-------------|
 | *Aktivní – aktivní* | Primární a sekundární instance aplikace logiky v obou umístěních aktivně zpracovávají požadavky následujícími způsoby: <p><p>- *Vyrovnávání zatížení*: obě instance můžou na každou instanci naslouchat i vyrovnávání zatížení, a to v případě potřeby. <p>- *Konkurenční spotřebitelé*: obě instance můžou fungovat jako konkurenční spotřebitelé, takže instance budou soutěžit na zprávy z fronty. Pokud dojde k selhání jedné instance, převezme další instance úlohu. |
-| *Aktivní-pasivní* | Primární instance aplikace logiky aktivně zpracovává celou úlohu, zatímco sekundární instance je pasivní (zakázaná nebo neaktivní). Sekundární čeká na signál, že primární je nedostupný nebo nefunguje kvůli přerušení nebo selhání a přebírá úlohu jako aktivní instanci. |
+| *Aktivní – pasivní* | Primární instance aplikace logiky aktivně zpracovává celou úlohu, zatímco sekundární instance je pasivní (zakázaná nebo neaktivní). Sekundární čeká na signál, že primární je nedostupný nebo nefunguje kvůli přerušení nebo selhání a přebírá úlohu jako aktivní instanci. |
 | Vrchní | Některé Logic Apps hrají roli aktivní-aktivní, zatímco jiné aplikace logiky hrají roli aktivní-pasivní. |
 |||
 
@@ -314,7 +314,7 @@ Pro tuto úlohu vytvořte základní aplikaci logiky pro kontrolu stavu, která 
 
 ### <a name="create-a-watchdog-logic-app"></a>Vytvoření aplikace logiky sledovacích aplikací
 
-Pokud chcete monitorovat stav primární instance a volat aplikaci logiky kontroly stavu, vytvořte v *alternativním umístění*aplikaci logiky pro "sledovací". Můžete například nastavit sledovací logiku aplikace, takže pokud volání logiky kontroly stavu selže, sledovací zařízení může Odeslat výstrahu vašemu týmu provozu, aby mohla prozkoumat selhání a proč primární instance nereaguje.
+Pokud chcete monitorovat stav primární instance a volat aplikaci logiky kontroly stavu, vytvořte v *alternativním umístění* aplikaci logiky pro "sledovací". Můžete například nastavit sledovací logiku aplikace, takže pokud volání logiky kontroly stavu selže, sledovací zařízení může Odeslat výstrahu vašemu týmu provozu, aby mohla prozkoumat selhání a proč primární instance nereaguje.
 
 > [!IMPORTANT]
 > Ujistěte se, že je vaše aplikace logiky sledovacích aplikací v *umístění, které se liší od primárního umístění*. Pokud služba Logic Apps v primárním umístění dochází k problémům, vaše aplikace sledovací logiky možná není spuštěná.

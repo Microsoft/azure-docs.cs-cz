@@ -7,17 +7,17 @@ author: dcstwh
 ms.author: weetok
 ms.date: 09/08/2020
 ms.openlocfilehash: 704360ac37e016de9efe2248181f7db358f5a7cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371477"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vytváření vizuálů v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Prostředí uživatelského rozhraní Azure Data Factory (UX) umožňuje vizuálně vytvářet a nasazovat prostředky pro datovou továrnu bez nutnosti psát jakýkoli kód. Aktivity můžete přetáhnout na plátno kanálu, provádět testovací běhy, ladit je iterativní a nasazovat a monitorovat spuštění kanálu.
+Prostředí uživatelského rozhraní Azure Data Factory (UX) umožňuje vizuálně vytvářet a nasazovat prostředky pro datovou továrnu bez nutnosti psát jakýkoli kód. Můžete přetahovat aktivity na plátno kanálu, provádět testovací běhy, iterativně ladit a nasazovat a monitorovat spuštění kanálu.
 
 V současné době je Azure Data Factory UX podporován pouze v Microsoft Edge a Google Chrome.
 

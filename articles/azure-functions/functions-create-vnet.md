@@ -4,10 +4,10 @@ description: V tomto kurzu se dozvíte, jak připojit funkci ke službě Azure V
 ms.topic: article
 ms.date: 2/22/2021
 ms.openlocfilehash: 3dd5e700b3081f1c1ef8e4601385c707a5738321
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102630465"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Kurz: Integrace Azure Functions s virtuální sítí Azure pomocí privátních koncových bodů
@@ -314,7 +314,7 @@ Pokud chcete používat aplikaci Function App s virtuálními sítěmi, musíte 
 
     | Nastavení      | Navrhovaná hodnota  | Popis      |
     | ------------ | ---------------- | ---------------- |
-    | **Zdroj** | GitHubu | Měli byste mít vytvořené úložiště GitHub pro ukázkový kód v kroku 2. | 
+    | **Zdroj** | GitHub | Měli byste mít vytvořené úložiště GitHub pro ukázkový kód v kroku 2. | 
     | **Organizace**  | myOrganization | Organizace, na kterou je vaše úložiště vráceno. Obvykle je to váš účet. |
     | **Úložiště** | myRepo | Úložiště, které jste vytvořili pro ukázkový kód. |
     | **Větev** | main | Hlavní větev úložiště, kterou jste vytvořili. |

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: a69ce0592b79be0868dd7c15ac054910eee75fc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89393594"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Postup konfigurace protokolu BGP v bráně Azure VPN pomocí rozhraní příkazového řádku
@@ -70,13 +70,13 @@ Následující příklad vytvoří virtuální síť s názvem virtuální sít�
 První příkaz vytvoří front-end adresní prostor a podsíť front-endu. Druhý příkaz vytvoří další adresní prostor pro podsíť back-endu. Třetí a čtvrtý příkaz vytvoří podsíť back-end a GatewaySubnet.
 
 ```azurecli
-az network vnet create -n TestVNet1 -g TestBGPRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24 
- 
-az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestBGPRG1 
- 
-az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestBGPRG1 --address-prefix 10.12.0.0/24 
- 
-az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPRG1 --address-prefix 10.12.255.0/27 
+az network vnet create -n TestVNet1 -g TestBGPRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24 
+ 
+az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestBGPRG1 
+ 
+az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestBGPRG1 --address-prefix 10.12.0.0/24 
+ 
+az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPRG1 --address-prefix 10.12.255.0/27 
 ```
 
 ### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Krok 2: Vytvoření brány VPN Gateway pro virtuální sítě testvnet1 s parametry BGP
@@ -86,7 +86,7 @@ az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPR
 Vyžádejte si veřejnou IP adresu. Veřejná IP adresa se přidělí k bráně VPN, kterou vytvoříte pro virtuální síť.
 
 ```azurecli
-az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic 
+az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic 
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Vytvořte bránu VPN s číslem AS
@@ -106,14 +106,14 @@ Po vytvoření brány je potřeba získat IP adresu partnerského uzlu BGP v br�
 Spusťte následující příkaz a podívejte se na `bgpSettings` oddíl v horní části výstupu:
 
 ```azurecli
-az network vnet-gateway list -g TestBGPRG1 
- 
-  
-"bgpSettings": { 
-      "asn": 65010, 
-      "bgpPeeringAddress": "10.12.255.30", 
-      "peerWeight": 0 
-    }
+az network vnet-gateway list -g TestBGPRG1 
+ 
+  
+"bgpSettings": { 
+      "asn": 65010, 
+      "bgpPeeringAddress": "10.12.255.30", 
+      "peerWeight": 0 
+    }
 ```
 
 Po vytvoření brány můžete tuto bránu použít k navázání připojení mezi různými místy nebo připojení typu VNet-to-VNet s protokolem BGP.
@@ -136,8 +136,8 @@ Toto cvičení pokračuje v sestavování konfigurace zobrazené v diagramu. Nez
 Než budete pokračovat, ujistěte se, že jste pro toto cvičení dokončili část [Povolení protokolu BGP pro vaši bránu VPN](#enablebgp) a že jste stále připojeni k předplatnému 1. Všimněte si, že v tomto příkladu vytvoříte novou skupinu prostředků. Všimněte si také dvou dalších parametrů pro bránu místní sítě: `Asn` a `BgpPeerAddress` .
 
 ```azurecli
-az group create -n TestBGPRG5 -l eastus2 
- 
+az group create -n TestBGPRG5 -l eastus2 
+ 
 az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site5 -g TestBGPRG5 --local-address-prefixes 10.51.255.254/32 --asn 65050 --bgp-peering-address 10.51.255.254
 ```
 
@@ -160,18 +160,18 @@ Ve výstupu vyhledejte `"id":` řádek. K vytvoření připojení v další čá
 Příklad výstupu:
 
 ```
-{ 
-  "activeActive": false, 
-  "bgpSettings": { 
-    "asn": 65010, 
-    "bgpPeeringAddress": "10.12.255.30", 
-    "peerWeight": 0 
-  }, 
-  "enableBgp": true, 
-  "etag": "W/\"<your etag number>\"", 
-  "gatewayDefaultSite": null, 
-  "gatewayType": "Vpn", 
-  "id": "/subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW",
+{ 
+  "activeActive": false, 
+  "bgpSettings": { 
+    "asn": 65010, 
+    "bgpPeeringAddress": "10.12.255.30", 
+    "peerWeight": 0 
+  }, 
+  "enableBgp": true, 
+  "etag": "W/\"<your etag number>\"", 
+  "gatewayDefaultSite": null, 
+  "gatewayType": "Vpn", 
+  "id": "/subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW",
 ```
 
 Zkopírujte hodnoty za `"id":` textový editor, například do poznámkového bloku, abyste je mohli snadno vložit při vytváření připojení. 
@@ -235,12 +235,12 @@ az group create -n TestBGPRG2 -l westus
 První příkaz vytvoří front-end adresní prostor a podsíť front-endu. Druhý příkaz vytvoří další adresní prostor pro podsíť back-endu. Třetí a čtvrtý příkaz vytvoří podsíť back-end a GatewaySubnet.
 
 ```azurecli
-az network vnet create -n TestVNet2 -g TestBGPRG2 --address-prefix 10.21.0.0/16 -l westus --subnet-name FrontEnd --subnet-prefix 10.21.0.0/24 
- 
-az network vnet update -n TestVNet2 --address-prefixes 10.21.0.0/16 10.22.0.0/16 -g TestBGPRG2 
- 
-az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --address-prefix 10.22.0.0/24 
- 
+az network vnet create -n TestVNet2 -g TestBGPRG2 --address-prefix 10.21.0.0/16 -l westus --subnet-name FrontEnd --subnet-prefix 10.21.0.0/24 
+ 
+az network vnet update -n TestVNet2 --address-prefixes 10.21.0.0/16 10.22.0.0/16 -g TestBGPRG2 
+ 
+az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --address-prefix 10.22.0.0/24 
+ 
 az network vnet subnet create --vnet-name TestVNet2 -n GatewaySubnet -g TestBGPRG2 --address-prefix 10.22.255.0/27
 ```
 
@@ -255,7 +255,7 @@ az network public-ip create -n GWPubIP2 -g TestBGPRG2 --allocation-method Dynami
 #### <a name="4-create-the-vpn-gateway-with-the-as-number"></a>4. Vytvořte bránu VPN s číslem AS.
 
 Vytvořte bránu virtuální sítě pro TestVNet2. Musíte přepsat výchozí číslo ASN na vašich branách Azure VPN Gateway. Čísla ASN pro připojené virtuální sítě musí být odlišné, aby bylo možné povolit směrování protokolu BGP a přenosu.
- 
+ 
 ```azurecli
 az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2 -g TestBGPRG2 --vnet TestVNet2 --gateway-type Vpn --sku Standard --vpn-type RouteBased --asn 65020 --no-wait
 ```
@@ -264,7 +264,7 @@ az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2
 
 V tomto kroku vytvoříte připojení z virtuální sítě testvnet1 k site5. Chcete-li pro toto připojení povolit protokol BGP, je nutné zadat `--enable-bgp` parametr.
 
-V následujícím příkladu jsou brány virtuální sítě a brána místní sítě v různých skupinách prostředků. Když jsou brány v různých skupinách prostředků, musíte zadat celé ID prostředku dvou bran, aby se nastavilo připojení mezi virtuálními sítěmi. 
+V následujícím příkladu jsou brány virtuální sítě a brána místní sítě v různých skupinách prostředků. Když jsou brány v různých skupinách prostředků, musíte zadat celé ID prostředku dvou bran, aby se nastavilo připojení mezi virtuálními sítěmi. 
 
 #### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. Získejte ID prostředku VNet1GW. 
 

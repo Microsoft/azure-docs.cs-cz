@@ -4,10 +4,10 @@ description: V tomto kurzu použijete možnosti zámků prostředků Azure modro
 ms.date: 03/08/2021
 ms.topic: tutorial
 ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102485737"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
@@ -159,7 +159,7 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
 
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Název|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Name|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západní USA 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 

@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
 ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206947"
 ---
 # <a name="what-is-azure-expressroute"></a>Co je Azure ExpressRoute?
-ExpressRoute umožňuje rozmístit vaše místní sítě do cloudu Microsoftu přes soukromé připojení k poskytovateli připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Microsoft 365.
+ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes privátní připojení za pomoci poskytovatele připojení. Pomocí ExpressRoute můžete vytvořit připojení ke cloudovým službám Microsoftu, například Microsoft Azure a Microsoft 365.
 
-Připojení může být ze sítě typu any-to-Any (IP VPN), sítě Ethernet typu Point-to-Point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení v zařízení, ve kterém se nachází. Připojení ExpressRoute nejdou přes veřejný Internet. To umožňuje připojením ExpressRoute nabídnout spolehlivější, rychlejší rychlost, konzistentní latenci a vyšší zabezpečení než typická připojení přes Internet. Informace o připojení sítě k Microsoftu pomocí ExpressRoute najdete v tématu o [modelech připojení ExpressRoute](expressroute-connectivity-models.md).
+Připojení může být ze sítě mezi libovolnými body (IP VPN), Ethernetové sítě mezi dvěma body nebo virtuálního křížového připojení přes poskytovatele připojení v kolokačním zařízení. Připojení ExpressRoute neprocházejí přes veřejný internet. Díky tomu mohou připojení ExpressRoute nabídnout větší spolehlivost, vyšší rychlost, konzistentní latenci a silnější zabezpečení než typická připojení přes internet. Informace o tom, jak připojit síť k Microsoftu pomocí ExpressRoute, najdete v tématu [modely připojení ExpressRoute](expressroute-connectivity-models.md).
 
 ![Přehled připojení ExpressRoute](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -28,7 +28,7 @@ Připojení může být ze sítě typu any-to-Any (IP VPN), sítě Ethernet typu
 * Globální připojení ke službám Microsoftu ve všech oblastech s doplňkem ExpressRoute Premium.
 * Dynamické směrování mezi vaší sítí a Microsoftem přes protokol BGP.
 * Vestavěná redundance v každém umístění partnerského vztahu z důvodu vyšší spolehlivosti.
-* Smlouva [SLA](https://azure.microsoft.com/support/legal/sla/) pro provoz připojení.
+* [Smlouvy SLA](https://azure.microsoft.com/support/legal/sla/)pro dobu připojení
 * Podpora technologie QoS pro Skype pro firmy.
 
 Další informace najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

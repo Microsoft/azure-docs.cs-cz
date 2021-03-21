@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94738046"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití REST a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
@@ -183,7 +183,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
 
 1. Do **textu** žádosti ZKOPÍRUJTE definici JSON níže. Tento dovednosti se skládá z následujících integrovaných dovedností.
 
-   | Tuhle                 | Popis    |
+   | Tuhle                 | Description    |
    |-----------------------|----------------|
    | [Rozpoznávání entit](cognitive-search-skill-entity-recognition.md) | Extrahuje jména lidí, organizací a umístění z obsahu v kontejneru objektů BLOB. |
    | [Rozpoznávání jazyka](cognitive-search-skill-language-detection.md) | Zjistí jazyk obsahu. |

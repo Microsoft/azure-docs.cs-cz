@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.openlocfilehash: 281da27ce95649e85dae5d0795bb743f21fdb578
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102631740"
 ---
 # <a name="use-source-control-integration"></a>Použití integrace správy zdrojového kódu
@@ -22,11 +22,11 @@ ms.locfileid: "102631740"
 
 Azure Automation podporuje tři typy správy zdrojového kódu:
 
-* GitHubu
+* GitHub
 * Azure Repos (Git)
 * Azure Repos (TFVC)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Úložiště správy zdrojového kódu (GitHub nebo Azure Repos)
 * [Účet Spustit jako](automation-security-overview.md#run-as-accounts)

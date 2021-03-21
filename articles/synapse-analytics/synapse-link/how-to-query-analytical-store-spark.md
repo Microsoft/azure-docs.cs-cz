@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 32e8ad5028920cefd717cdaa5429786c83367f6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 615998de45c4a9993899065a4aef7a15332a59c8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671269"
+ms.locfileid: "104720402"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Interakce s Azure Cosmos DB pomocí Apache Spark v propojení Azure synapse
 
@@ -28,6 +28,10 @@ Při interakci s Azure Cosmos DB jsou podporovány následující funkce:
 * Synapse Apache Spark také podporuje strukturované streamování Sparku s Azure Cosmos DB jako zdroj a jímku. 
 
 Následující části vás provedou syntaxí výše uvedených možností. Gesta v pracovním prostoru Azure synapse Analytics jsou navržená tak, aby poskytovala snadné prostředí, které vám umožní začít. Gesta se zobrazí po kliknutí pravým tlačítkem na kontejner Azure Cosmos DB na kartě **data** v pracovním prostoru synapse. Pomocí gest můžete rychle vygenerovat kód a přizpůsobit ho vašim potřebám. Gesta jsou také ideální ke zjišťování dat jedním kliknutím.
+
+> [!IMPORTANT]
+> Měli byste si uvědomit některá omezení v analytickém schématu, která by mohla vést k neočekávanému chování při operacích načítání dat.
+> Jako příklad jsou v analytickém schématu k dispozici pouze první 1000 vlastnosti z transakčního schématu, nejsou k dispozici vlastnosti s mezerami atd. Pokud máte nějaké neočekávané výsledky, podívejte se na další podrobnosti v části [omezení schématu analytického úložiště](../../cosmos-db/analytical-store-introduction.md#schema-constraints) .
 
 ## <a name="query-azure-cosmos-db-analytical-store"></a>Dotaz Azure Cosmos DB analytického úložiště
 

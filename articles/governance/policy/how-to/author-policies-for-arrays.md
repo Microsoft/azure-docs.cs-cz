@@ -3,12 +3,12 @@ title: Vytváření zásad pro vlastnosti polí u prostředků
 description: Naučte se pracovat s parametry pole a výrazy jazyka pole, vyhodnotit alias [*] a přidat prvky pomocí pravidel Definice Azure Policy.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f4fcfb88bd4cb1ac0c8bfeac236b452479b8c6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98220741"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721609"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
 
@@ -448,7 +448,8 @@ Skutečnost, že `where` výraz je vyhodnocen proti **celému** obsahu žádosti
       "field": "tags.env",
       "equals": "prod"
     }
-  }
+  },
+  "equals": 0
 }
 ```
 
@@ -457,40 +458,60 @@ Skutečnost, že `where` výraz je vyhodnocen proti **celému** obsahu žádosti
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-Jsou povolené taky vnořené výrazy Count:
+Vnořené výrazy Count lze použít pro použití podmínek pro vnořená pole polí. Například následující podmínka kontroluje, zda `objectArray[*]` má pole přesně 2 členy `nestedArray[*]` , které obsahují 1 nebo více členů:
 
 ```json
 {
   "count": {
     "field": "Microsoft.Test/resourceType/objectArray[*]",
     "where": {
-      "allOf": [
-        {
-          "field": "Microsoft.Test/resourceType/objectArray[*].property",
-          "equals": "value2"
-        },
-        {
-          "count": {
-            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-            "where": {
-              "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-              "equals": 3
-            },
-            "greater": 0
-          }
-        }
-      ]
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]"
+      },
+      "greaterOrEquals": 1
     }
-  }
+  },
+  "equals": 2
 }
 ```
- 
-| Iterace vnější smyčky | Vybrané hodnoty | Iterace vnitřních smyček | Vybrané hodnoty |
-|:---|:---|:---|:---|
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1` |
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `2` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
+
+| Iterace | Vybrané hodnoty | Výsledek vyhodnocení vnořeného počtu |
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` má 2 členy => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` má 2 členy => `true` |
+
+Vzhledem k tomu, že oba členové `objectArray[*]` mají podřízené pole `nestedArray[*]` se dvěma členy, výraz vnějšího počtu vrátí `2` .
+
+Složitější příklad: Ověřte, zda `objectArray[*]` má pole přesně 2 členy s `nestedArray[*]` libovolnými členy, které se rovnají `2` nebo `3` :
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+        "where": {
+            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+            "in": [ 2, 3 ]
+        }
+      },
+      "greaterOrEquals": 1
+    }
+  },
+  "equals": 2
+}
+```
+
+| Iterace | Vybrané hodnoty | Výsledek vyhodnocení vnořeného počtu
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` zobrazí `2` => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` zobrazí `3` => `true` |
+
+Vzhledem k tomu, že oba členové `objectArray[*]` mají podřízené pole obsahující `nestedArray[*]` buď `2` nebo `3` , vrátí výraz vnějšího počtu `2` .
+
+> [!NOTE]
+> Vnořené výrazy počtu polí mohou odkazovat pouze na vnořená pole. Například výraz Count, který odkazuje na, `Microsoft.Test/resourceType/objectArray[*]` může mít vnořený počet cílící na vnořené pole `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` , ale nemůže mít cílený výraz vnořeného počtu `Microsoft.Test/resourceType/stringArray[*]` .
 
 #### <a name="accessing-current-array-member-with-template-functions"></a>Přístup k aktuálnímu členu pole pomocí funkcí šablony
 

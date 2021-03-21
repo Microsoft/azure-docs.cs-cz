@@ -11,13 +11,13 @@ ms.topic: include
 ms.custom: include file
 ms.author: tchladek
 ms.openlocfilehash: a0f8744061853e8bd81d3435c1f007e96a7d5783
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495291"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Nejnovější verze [klientské knihovny .NET Core](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
@@ -27,7 +27,7 @@ ms.locfileid: "103495291"
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
-V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `AccessTokensQuickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program.cs**.
+V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `AccessTokensQuickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program. cs**.
 
 ```console
 dotnet new console -o AccessTokensQuickstart
@@ -52,7 +52,7 @@ dotnet add package Azure.Communication.Identity --version 1.0.0-beta.5
 
 Z adresáře projektu:
 
-1. Otevřít soubor **program.cs** v textovém editoru
+1. Otevřít soubor **program. cs** v textovém editoru
 1. Přidat `using` direktivu, která zahrnuje `Azure.Communication.Identity` obor názvů
 1. Aktualizujte `Main` deklaraci metody pro podporu asynchronního kódu.
 

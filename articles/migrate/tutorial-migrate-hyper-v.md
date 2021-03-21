@@ -5,16 +5,16 @@ author: bsiva
 ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878168"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604572"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů Hyper-V do Azure 
 
@@ -135,12 +135,7 @@ Po dokončení zjišťování můžete zahájit replikaci virtuálních počíta
 ## <a name="provision-for-the-first-time"></a>Poprvé zřídit
 
 Pokud se jedná o první virtuální počítač, který budete replikovat v projektu Azure Migrate, Azure Migrate: Migrace serveru automaticky zřídí tyto prostředky ve stejné skupině prostředků jako projekt.
-
-- **Service Bus**: Azure Migrate: Migrace serveru používá Service Bus k posílání zpráv orchestrace replikace do zařízení.
-- **Účet úložiště brány**: Azure Migrate: Migrace serveru používá účet úložiště brány k ukládání informací o stavu virtuálních počítačů, které se replikují.
-- **Účet úložiště protokolu**: zařízení Azure Migrate nahrává protokoly replikace pro virtuální počítače do účtu úložiště protokolu. Azure Migrate použije informace o replikaci na disky spravované replikou.
-- **Trezor klíčů**: zařízení Azure Migrate používá Trezor klíčů ke správě připojovacích řetězců pro Service Bus a přístup k klíčům pro účty úložiště používané v replikaci. Měli byste nastavit oprávnění, která musí Trezor klíčů mít přístup k účtu úložiště, když jste [připravili Azure](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) pro vyhodnocení a migraci virtuálních počítačů Hyper-V. 
-
+- **Účet úložiště mezipaměti**: software poskytovatele Azure Site Recovery, který je nainstalovaný na Hyper-V, nahrává data replikace pro virtuální počítače nakonfigurované pro replikaci do účtu úložiště (v rámci vašeho předplatného se označuje jako účet úložiště mezipaměti nebo účet úložiště protokolů). Služba Azure Migrate pak zkopíruje nahraná replikační data z účtu úložiště na disky spravované replikami, které odpovídají příslušnému virtuálnímu počítači. Při konfiguraci replikace pro virtuální počítač je potřeba zadat účet úložiště mezipaměti a Azure Migrate portál automaticky vytvoří jeden pro Azure Migrate projekt, když je replikace poprvé nakonfigurovaná v projektu.
 
 ## <a name="track-and-monitor"></a>Sledování a sledování
 
@@ -216,8 +211,8 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).

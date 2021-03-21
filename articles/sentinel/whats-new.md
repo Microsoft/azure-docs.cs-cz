@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: 88ac8bb1bc804604b96d5c90025b8325a6ce4962
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/11/2021
+ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503112"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604249"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Co je nového v Azure Sentinel
 
@@ -32,10 +32,54 @@ Vyznačené funkce jsou aktuálně ve verzi PREVIEW. [Doplňkové podmínky Azur
 
 ## <a name="march-2021"></a>Březen 2021
 
-- [Integrace incidentů v programu Microsoft 365 Defender](#microsoft-365-defender-incident-integration) (Public Preview)
+- [Pravidla automatizace a playbooky aktivované incidentem](#automation-rules-and-incident-triggered-playbooks) (včetně všech nových dokumentace PlayBook)
+- [Nové obohacení výstrah: vylepšené mapování entit a vlastní podrobnosti](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
+- [Tisk sešitů Sentinel Azure nebo uložení ve formátu PDF](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
+- [Filtry incidentů a předvolby řazení jsou nyní uloženy ve vaší relaci (Public Preview).](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
+- [Integrace incidentů v programu Microsoft 365 Defender (Public Preview)](#microsoft-365-defender-incident-integration-public-preview)
 - [Nové konektory Microsoft Service Connector pomocí Azure Policy](#new-microsoft-service-connectors-using-azure-policy)
+ 
+### <a name="automation-rules-and-incident-triggered-playbooks"></a>Pravidla automatizace a playbooky aktivované incidenty
 
-### <a name="microsoft-365-defender-incident-integration"></a>Integrace incidentů v programu Microsoft 365 Defender
+Pravidla automatizace představují nový koncept ve službě Azure Sentinel, který umožňuje centrálně spravovat automatizaci zpracování incidentů. Kromě toho, že vám umožní přiřazovat playbooky incidentům (ne jen k výstrahám jako dřív), pravidla automatizace také umožňují automatizovat odpovědi na více pravidel analýzy najednou, automaticky označovat, přiřazovat nebo uzavřít incidenty bez nutnosti playbooky a řídit pořadí akcí, které se spustí. Pravidla automatizace zjednodušují použití automatizace v Azure Sentinel a umožní vám zjednodušit složité pracovní postupy pro procesy orchestrace incidentů.
+
+Seznamte se s [úplnými vysvětlení pravidel automatizace](automate-incident-handling-with-automation-rules.md).
+
+Jak je uvedeno výše, playbooky se teď dá aktivovat pomocí triggeru incidentu vedle triggeru výstrahy. Trigger incidentu poskytuje playbooky větší sadu vstupů, se kterými se pracuje (protože incident zahrnuje všechna upozornění a data entit) a poskytuje ještě větší výkon a flexibilitu v pracovních postupech reakcí. Playbooky aktivované incidentem se aktivují z pravidel automatizace.
+
+Přečtěte si další informace o [playbooky "Enhanced možnosti](automate-responses-with-playbooks.md)a o tom, jak [vytvořit pracovní postup odpovědi](tutorial-respond-threats-playbook.md) pomocí playbooky spolu s pravidly pro automatizaci.
+
+### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Nové obohacení výstrah: vylepšené mapování entit a vlastní podrobnosti
+
+Rozšiřte své výstrahy dvěma novými způsoby, abyste je mohli snadněji použít a podrobnější.
+
+Začněte tím, že převezmete mapování entit na další úroveň. Nyní můžete namapovat skoro 20 druhů entit, uživatelů, hostitelů a IP adres, souborů a procesů, poštovních schránek, prostředků Azure a zařízení IoT. Pro každou entitu můžete také použít více identifikátorů, abyste posílili jejich jedinečnou identifikaci. Díky tomu máte ve svých incidentech mnohem rozsáhlejší datovou sadu, která poskytuje širší korelaci a výkonnější šetření. [Naučte se nový způsob mapování entit](map-data-fields-to-entities.md) v upozorněních.
+
+[Přečtěte si další informace o entitách](entities-in-azure-sentinel.md) a podívejte se na [úplný seznam dostupných entit a jejich identifikátorů](entities-reference.md).
+
+Poskytněte možnosti pro zkoumání a odpovědi ještě většímu zvýšení úrovně přizpůsobením vašich upozornění na podrobnosti o povrchu z nezpracovaných událostí. Přeneste obsah události do svých incidentů, abyste měli stále větší výkon a flexibilitu v reakci na hrozby zabezpečení a šetření. [Naučte se, jak v výstrahách surfovat vlastní podrobnosti](surface-custom-details-in-alerts.md) .
+
+
+
+### <a name="print-your-azure-sentinel-workbooks-or-save-as-pdf"></a>Tisk sešitů Sentinel Azure nebo uložení ve formátu PDF
+
+Nyní můžete tisknout sešity Sentinel Azure, které vám také umožní exportovat je do souborů PDF a ukládat místně nebo sdílet.
+
+V sešitu vyberte nabídku Možnosti > :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **Tisk obsahu**. Pak vyberte svoji tiskárnu nebo v případě potřeby vyberte **Uložit jako PDF** .
+
+:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Vytiskněte sešit nebo ho uložte jako PDF.":::
+
+Další informace najdete v tématu [kurz: vizualizace a monitorování dat](tutorial-monitor-your-data.md).
+
+### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>Filtry incidentů a předvolby řazení jsou nyní uloženy ve vaší relaci (Public Preview).
+
+Filtry incidentů a řazení se teď ukládají v rámci relace Sentinel Azure, a to i při přechodu na jiné oblasti produktu.
+Pokud stále pracujete ve stejné relaci, můžete přejít zpátky do oblasti [incidenty](tutorial-investigate-cases.md) v Azure Sentinel a zobrazit tak filtry a řazení, stejně jako jste to opustili.
+
+> [!NOTE]
+> Filtry incidentů a řazení se po ukončení služby Azure Sentinel nebo obnovení prohlížeče neuloží.
+
+### <a name="microsoft-365-defender-incident-integration-public-preview"></a>Integrace incidentů v programu Microsoft 365 Defender (Public Preview)
 
 Integrace incidentů služby [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) v Azure Sentinel umožňuje streamování všech M365D incidentů do Azure Sentinel a jejich synchronizaci mezi oběma portály. Incidenty od M365D (dříve označované jako Microsoft Threat Protection nebo MTP) obsahují všechny přidružené výstrahy, entity a relevantní informace, které vám poskytnou dostatečný kontext pro provádění třídění a předběžné šetření v kontextu Azure Sentinel. Jednou v Sentinele budou incidenty stále synchronizované s M365D, což vám umožní využít výhody obou portálů při vyšetřování incidentů.
 
@@ -60,8 +104,8 @@ Zákazníci pořád budou moct protokoly odesílat ručně pro konkrétní insta
 
 - [Sešit certifikace kyberbezpečnosti (CMMC) modelu splatnosti](#cybersecurity-maturity-model-certification-cmmc-workbook)
 - [Datové konektory třetích stran](#third-party-data-connectors)
-- [UEBA Insights na stránce entity](#ueba-insights-in-the-entity-page)
-- [Vylepšené vyhledávání incidentů](#improved-incident-search)
+- [UEBA Insights na stránce entity (Public Preview)](#ueba-insights-in-the-entity-page-public-preview)
+- [Vylepšené vyhledávání incidentů (verze Public Preview)](#improved-incident-search-public-preview)
 
 ### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Sešit certifikace kyberbezpečnosti (CMMC) modelu splatnosti
 
@@ -117,7 +161,7 @@ Naše kolekce integrace třetích stran se pořád zvětšuje, ale během posled
 - [Trend Micro XDR](connect-data-sources.md)
 - [VMware ESXi](connect-vmware-esxi.md)
 
-### <a name="ueba-insights-in-the-entity-page"></a>UEBA Insights na stránce entity
+### <a name="ueba-insights-in-the-entity-page-public-preview"></a>UEBA Insights na stránce entity (Public Preview)
 
 Stránky s podrobnostmi o entitě Azure Sentinel poskytují [podokno přehledy](identify-threats-with-entity-behavior-analytics.md#entity-insights), ve kterém se zobrazují přehledy chování pro entitu a umožňují rychle identifikovat anomálie a bezpečnostní hrozby.
 
@@ -131,7 +175,7 @@ Pokud jste [povolili UEBA](ueba-enrichments.md)a vybrali jste časový rámec al
 |**Indikátory hrozeb vztahující se k uživateli**     |  Obsahuje seznam známých hrozeb souvisejících s IP adresami, které se zobrazují v činnostech uživatele. Hrozby jsou uvedené podle typu a rodiny hrozeb a jsou obohaceny službou Microsoft Threat Intelligence.       |
 |     |         |
 
-### <a name="improved-incident-search"></a>Vylepšené vyhledávání incidentů
+### <a name="improved-incident-search-public-preview"></a>Vylepšené vyhledávání incidentů (verze Public Preview)
 
 Vylepšili jsme možnosti vyhledávání incidentu v Azure Sentinel, což vám umožní rychleji procházet incidenty při zkoumání konkrétní hrozby.
 
@@ -148,7 +192,7 @@ Při hledání incidentů ve službě Azure Sentinel teď můžete vyhledávat p
 - [Průvodce analytickým pravidlem: vylepšené možnosti úprav dotazů (verze Public Preview)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [AZ. SecurityInsights PowerShell Module (Public Preview)](#azsecurityinsights-powershell-module-public-preview)
 - [Konektor SQL Database](#sql-database-connector)
-- [Konektor Dynamics 365](#dynamics-365-connector)
+- [Konektor Dynamics 365 (Public Preview)](#dynamics-365-connector-public-preview)
 - [Vylepšené komentáře k incidentům](#improved-incident-comments)
 - [Vyhrazené Log Analytics clustery](#dedicated-log-analytics-clusters)
 - [Spravované identity Logic Apps](#logic-apps-managed-identities)
@@ -183,7 +227,7 @@ Azure SQL je plně spravovaný databázový stroj PaaS (platforma jako služba),
 
 Další informace najdete v tématu [připojení protokolů diagnostiky a auditu služby Azure SQL Database](connect-azure-sql-logs.md).
 
-### <a name="dynamics-365-connector"></a>Konektor Dynamics 365
+### <a name="dynamics-365-connector-public-preview"></a>Konektor Dynamics 365 (Public Preview)
 
 Azure Sentinel teď poskytuje konektor pro Microsoft Dynamics 365, který umožňuje shromažďovat protokoly aktivit uživatelů, správců a podpory aplikace Dynamics 365 do Azure Sentinel. Tato data můžete použít k tomu, abyste vám pomohli auditovat celé akce zpracování dat a analyzovat je, aby mohlo dojít k narušení zabezpečení.
 

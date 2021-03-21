@@ -6,17 +6,17 @@ ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
 ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101704408"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
 Azure Monitor podporuje distribuované trasování, shromažďování metrik a protokolování aplikací Pythonu prostřednictvím integrace s [OpenCensus](https://opencensus.io). Tento článek vás provede procesem nastavení OpenCensus pro Python a odeslání dat monitorování do Azure Monitor.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 - Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/release/python-370/), i když jiné verze budou nejspíš fungovat s menšími změnami. Sada SDK podporuje pouze Python v 2.7 a v 3.4-v 3.7.

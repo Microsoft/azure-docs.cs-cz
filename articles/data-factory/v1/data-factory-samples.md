@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 82c871e8914d70dde7f2586b7dbf6556ebd2621f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100387032"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – ukázky
@@ -71,7 +71,7 @@ Dlaždici **ukázkové kanály** na domovské stránce vaší datové továrny m
     ![Okno Objekt pro vytváření dat](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="samples-in-visual-studio"></a>Ukázky v aplikaci Visual Studio
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Na počítači musíte mít nainstalované tyto položky:
 
 * Visual Studio 2013 nebo Visual Studio 2015.

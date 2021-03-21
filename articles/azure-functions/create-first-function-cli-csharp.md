@@ -11,10 +11,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-csharp-ieux
 ms.openlocfilehash: 08b1f2b112542a4b4772744d122ce1260b0edffd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101704765"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure z příkazového řádku
@@ -93,15 +93,15 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
     ``` 
 
-    `func new` Vytvoří soubor kódu HttpExample.cs.
+    `func new` Vytvoří soubor kódu HttpExample. cs.
 
 ### <a name="optional-examine-the-file-contents"></a>Volitelné Kontrola obsahu souboru
 
 V případě potřeby můžete přeskočit, aby se [funkce spouštěla místně](#run-the-function-locally) , a prohlédnout si obsah souboru později.
 
-#### <a name="httpexamplecs"></a>HttpExample.cs
+#### <a name="httpexamplecs"></a>HttpExample. cs
 
-*HttpExample.cs* obsahuje `Run` metodu, která přijímá data požadavku v `req` proměnné, je [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , který je upraven pomocí **HttpTriggerAttribute**, který definuje chování triggeru.
+*HttpExample. cs* obsahuje `Run` metodu, která přijímá data žádosti v `req` proměnné je [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , který je upravený pomocí **HttpTriggerAttribute**, který definuje chování triggeru.
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 

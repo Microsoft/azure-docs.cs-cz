@@ -4,10 +4,10 @@ description: Nastavení příkazového řádku pro přepsání vstupního bodu v
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169625"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Nastavení příkazového řádku v instanci kontejneru pro přepsání výchozí operace příkazového řádku
@@ -52,14 +52,14 @@ Syntaxe příkazového řádku se liší v závislosti na rozhraní API nebo ná
 
 ### <a name="examples"></a>Příklady
 
-|    |  Azure CLI   | Portál | Šablona | 
+|    |  Azure CLI   | Portál | Template (Šablona) | 
 | ---- | ---- | --- | --- |
 | **Jeden příkaz** | `--command-line "python myscript.py arg1 arg2"` | **Přepsání příkazu**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
 | **Více příkazů** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Přepsání příkazu**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Příklad rozhraní příkazového řádku Azure
 
-Jako příklad můžete změnit chování image kontejneru [Microsoft/ACI-WORDCOUNT][aci-wordcount] , která analyzuje text v Shakespeare *Hamlet* , aby našli nejčastěji se vyskytující slova. Místo analýzy *Hamlet*můžete nastavit příkazový řádek, který odkazuje na jiný zdroj textu.
+Jako příklad můžete změnit chování image kontejneru [Microsoft/ACI-WORDCOUNT][aci-wordcount] , která analyzuje text v Shakespeare *Hamlet* , aby našli nejčastěji se vyskytující slova. Místo analýzy *Hamlet* můžete nastavit příkazový řádek, který odkazuje na jiný zdroj textu.
 
 Chcete-li zobrazit výstup kontejneru [Microsoft/ACI-WORDCOUNT][aci-wordcount] při analýze výchozího textu, spusťte jej pomocí následujícího příkazu [AZ Container Create][az-container-create] . Není zadán žádný příkazový řádek pro spuštění, takže se spustí výchozí příkaz kontejneru. Pro ilustraci tento příklad nastaví [proměnné prostředí](container-instances-environment-variables.md) tak, aby našli první 3 slova, která jsou aspoň pět písmen dlouhá:
 

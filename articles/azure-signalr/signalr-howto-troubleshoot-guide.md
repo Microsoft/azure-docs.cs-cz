@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201650"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589157"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Průvodce odstraňováním potíží pro běžné problémy služby signalizace Azure
 
@@ -19,14 +19,14 @@ V těchto pokynech je vhodné použít Průvodce odstraňováním potíží na z
 
 ## <a name="access-token-too-long"></a>Přístupový token je moc dlouhý.
 
-### <a name="possible-errors"></a>Možné chyby:
+### <a name="possible-errors"></a>Možné chyby
 
 * Na straně klienta `ERR_CONNECTION_`
 * identifikátor URI 414 je příliš dlouhý.
 * datová část 413 je moc velká.
 * Přístupový token nesmí být delší než 4K. Entita požadavku 413 je moc velká.
 
-### <a name="root-cause"></a>Hlavní příčina:
+### <a name="root-cause"></a>Původní příčina
 
 Pro HTTP/2 je maximální délka pro jednu hlavičku **4 KB**, takže pokud používáte prohlížeč pro přístup ke službě Azure, dojde `ERR_CONNECTION_` k chybě tohoto omezení.
 
@@ -34,18 +34,19 @@ Pro klienty HTTP/1.1 nebo C# je maximální délka identifikátoru URI **12 k**,
 
 Pomocí sady SDK verze **1.0.6** nebo vyšší `/negotiate` Vyvolá příkaz, `413 Payload Too Large` když je vygenerovaný přístupový token větší než **4 KB**.
 
-### <a name="solution"></a>Řešení:
+### <a name="solution"></a>Řešení
 
 Ve výchozím nastavení jsou deklarace identity `context.User.Claims` zahrnuté při generování přístupového tokenu JWTdo **ASRS**(zure **s** Ignal **R** **S** lužby), aby deklarace identity byly zachované a dají se předávat z **ASRS** do rozhraní, `Hub` když se klient připojí k `Hub` .
 
-V některých případech `context.User.Claims` se využívá k ukládání velkého množství informací o aplikačním serveru. většina z nich se nepoužívá v `Hub` s, ale jinými komponentami.
+V některých případech `context.User.Claims` se používají k ukládání velkého množství informací o aplikačním serveru. většina z nich se nepoužívá v `Hub` s, ale jinými komponentami.
 
 Vygenerovaný přístupový token se předává přes síť a pro připojení pomocí protokolu WebSocket/SSE se přístupové tokeny předávají prostřednictvím řetězců dotazů. Proto doporučujeme, abyste před tím, než se v centru vycházejí, od klienta až po **ASRS** do vašeho aplikačního serveru předali jenom **nezbytné** deklarace identity.
 
 Je k dispozici, `ClaimsProvider` abyste mohli přizpůsobit deklarace identity předávání do **ASRS** v rámci přístupového tokenu.
 
 Pro ASP.NET Core:
-```cs
+
+```csharp
 services.AddSignalR()
         .AddAzureSignalR(options =>
             {
@@ -55,7 +56,8 @@ services.AddSignalR()
 ```
 
 Pro ASP.NET:
-```cs
+
+```csharp
 services.MapAzureSignalR(GetType().FullName, options =>
             {
                 // pick up necessary claims
@@ -67,13 +69,13 @@ services.MapAzureSignalR(GetType().FullName, options =>
 
 ## <a name="tls-12-required"></a>Je vyžadován protokol TLS 1,2
 
-### <a name="possible-errors"></a>Možné chyby:
+### <a name="possible-errors"></a>Možné chyby
 
 * ASP.NET [#279](https://github.com/Azure/azure-signalr/issues/279) není k dispozici žádný server.
 * ASP.NET "připojení není aktivní, data nelze odeslat službě." Chyba [#324](https://github.com/Azure/azure-signalr/issues/324)
-* "Při vytváření požadavku HTTP na https://došlo k chybě <API endpoint> . Tato chyba může být způsobena tím, že certifikát serveru není správně nakonfigurován s HTTP.SYS v případě protokolu HTTPS. Tato chyba může být také způsobena neshodou vazby zabezpečení mezi klientem a serverem. "
+* "Při vytváření požadavku HTTP na https://došlo k chybě <API endpoint> . Tato chyba může být způsobena tím, že certifikát serveru není správně nakonfigurovaný s HTTP.SYS v případě protokolu HTTPS. Tato chyba může být také způsobena neshodou vazby zabezpečení mezi klientem a serverem. "
 
-### <a name="root-cause"></a>Hlavní příčina:
+### <a name="root-cause"></a>Původní příčina
 
 Služba Azure podporuje pouze TLS 1.2 z bezpečnostních důvodů. V případě rozhraní .NET Framework je možné, že TLS 1.2 není výchozím protokolem. V důsledku toho nelze úspěšně vytvořit připojení serveru k ASRS.
 
@@ -93,16 +95,18 @@ Služba Azure podporuje pouze TLS 1.2 z bezpečnostních důvodů. V případě 
         :::image type="content" source="./media/signalr-howto-troubleshoot-guide/tls-throws.png" alt-text="Výjimka vyvolá výjimku":::
 
 2. Pro ASP.NET můžete také přidat následující kód pro `Startup.cs` povolení podrobného trasování a zobrazit chyby z protokolu.
-```cs
-app.MapAzureSignalR(this.GetType().FullName);
-// Make sure this switch is called after MapAzureSignalR
-GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
-```
 
-### <a name="solution"></a>Řešení:
+    ```cs
+    app.MapAzureSignalR(this.GetType().FullName);
+    // Make sure this switch is called after MapAzureSignalR
+    GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
+    ```
+
+### <a name="solution"></a>Řešení
 
 Přidejte do svého spuštění následující kód:
-```cs
+
+```csharp
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
@@ -164,9 +168,9 @@ U **bezplatných** instancí je limit počtu **souběžných** připojení 20 u 
 
 Připojení zahrnují připojení klienta i serveru. [tady](./signalr-concept-messages-and-connections.md#how-connections-are-counted) najdete informace o tom, jak se započítávají připojení.
 
-### <a name="too-many-negotiate-requests-at-the-same-time"></a>Současně existuje příliš mnoho požadavků na vyjednávání.
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>Příliš mnoho žádostí o vyjednávání ve stejnou dobu
 
-Doporučujeme, abyste před opětovným připojením měli náhodné zpoždění, a to [prosím pro ukázky](#restart_connection) opakování.
+Doporučujeme, abyste před opětovným připojením měli náhodné zpoždění, pro ukázky opakování se podívejte [sem](#restart_connection) .
 
 [Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 
@@ -180,18 +184,21 @@ Tato chyba se zobrazí, když není připojeno žádné připojení k serveru ke
 
 Pokud se server pokusí připojit ke službě signalizace Azure, povolte trasování na straně serveru a zjistěte podrobnosti o chybě.
 
-#### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Povolit protokolování ASP.NET Coreového signálu na straně serveru
+### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Povolit protokolování ASP.NET Coreového signálu na straně serveru
 
-Protokolování na straně serveru pro signalizaci ASP.NET Core se integruje s `ILogger` [protokolováním](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) založeným na ASP.NET Core Framework. Protokolování na straně serveru můžete povolit pomocí `ConfigureLogging` , ukázkového použití následujícím způsobem:
-```cs
+Protokolování na straně serveru pro signalizaci ASP.NET Core se integruje s `ILogger` [protokolováním](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1&preserve-view=true) založeným na ASP.NET Core Framework. Protokolování na straně serveru můžete povolit pomocí `ConfigureLogging` , ukázkového použití následujícím způsobem:
+
+```csharp
 .ConfigureLogging((hostingContext, logging) =>
         {
             logging.AddConsole();
             logging.AddDebug();
         })
 ```
+
 Kategorie protokolovacích nástrojů pro službu Azure Signaler vždy zahájí `Microsoft.Azure.SignalR` . Pokud chcete povolit podrobné protokoly z nástroje Azure Signal, nakonfigurujte předchozí předpony na `Debug` úroveň v **appsettings.js** souboru, jak je uvedeno níže:
-```JSON
+
+```json
 {
     "Logging": {
         "LogLevel": {
@@ -206,6 +213,7 @@ Kategorie protokolovacích nástrojů pro službu Azure Signaler vždy zahájí 
 #### <a name="enable-server-side-traces-for-aspnet-signalr"></a>Povolit trasování na straně serveru pro ASP.NET signál
 
 Při použití sady SDK verze >= `1.0.0` můžete povolit trasování přidáním následujícího do `web.config` : ([Podrobnosti](https://github.com/Azure/azure-signalr/issues/452#issuecomment-478858102))
+
 ```xml
 <system.diagnostics>
     <sources>
@@ -242,7 +250,7 @@ Když je klient připojen ke službě Azure Signal, trvalé připojení mezi kli
 * `{"type":7,"error":"Connection closed with an error."}`
 * `{"type":7,"error":"Internal server error."}`
 
-### <a name="root-cause"></a>Hlavní příčina:
+### <a name="root-cause"></a>Původní příčina
 
 Připojení klientů můžete vyřadit za různé okolnosti:
 * `Hub`Vyvolá výjimku s příchozím požadavkem.
@@ -268,21 +276,21 @@ V metrikách služby Azure Signal je nepřetržitý nárůst připojení klient�
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-guide/client-connection-increasing-constantly.jpg" alt-text="Nepřetržité zvyšování připojení klienta":::
 
-### <a name="root-cause"></a>Hlavní příčina:
+### <a name="root-cause"></a>Původní příčina
 
 Připojení klienta k signalizaci `DisposeAsync` není nikdy voláno, připojení zůstane otevřené.
 
 ### <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
-1. Zkontroluje, jestli se klient nástroje pro signalizaci **nikdy** nezavřel.
+Ověřte, zda se klient nástroje pro signalizaci **nikdy** neukončí.
 
 ### <a name="solution"></a>Řešení
 
 Ověřte, zda je ukončeno připojení. `HubConnection.DisposeAsync()`Po použití volání zastavte ručně.
 
-Příklad:
+Například:
 
-```C#
+```csharp
 var connection = new HubConnectionBuilder()
     .WithUrl(...)
     .Build();
@@ -324,21 +332,95 @@ V pravidelných intervalech jsou k dispozici nové verze pro službu signalizace
 
 Tato část popisuje několik možností, které vedou k odkládání připojení k serveru, a poskytuje některé pokyny k identifikaci hlavní příčiny.
 
-### <a name="possible-errors-seen-from-server-side"></a>Možné chyby zjištěné na straně serveru:
+### <a name="possible-errors-seen-from-the-server-side"></a>Možné chyby zjištěné na straně serveru
 
 * `[Error]Connection "..." to the service was dropped`
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 
-### <a name="root-cause"></a>Hlavní příčina:
+### <a name="root-cause"></a>Původní příčina
 
 Připojení služby serveru je uzavřeno pomocí **ASRS**(**Zure** **s** Ignal **R** **S** lužby).
 
+V případě vypršení časového limitu nástroje test může být na straně serveru vysoké využití procesoru nebo fond vláken vyčerpání.
+
+Pro signál ASP.NET byl známý problém opraven v sadě SDK 1.6.0. Upgradujte sadu SDK na nejnovější verzi.
+
+## <a name="thread-pool-starvation"></a>Vyčerpání fondu vláken
+
+Pokud je váš server omezují, znamená to, že při zpracování zpráv nepracuje žádná vlákna. Všechna vlákna jsou před určitou metodou zavěšena.
+
+Obvykle je tento scénář způsoben asynchronní metodou Sync nebo `Task.Result` / `Task.Wait()` v asynchronních metodách.
+
+Viz [ASP.NET Core osvědčené postupy pro výkon](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls).
+
+Další informace o [fondu vláken vyčerpání](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall).
+
+### <a name="how-to-detect-thread-pool-starvation"></a>Jak detekovat vyčerpání fondu vláken
+
+Ověřte počet vláken. Pokud v tuto chvíli neexistují špičky, proveďte tyto kroky:
+* Pokud používáte Azure App Service, podívejte se na počet vláken v metrikách. Podívejte se na `Max` agregaci:
+    
+  :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Snímek obrazovky s podoknem maximální počet vláken v Azure App Service.":::
+
+* Pokud používáte .NET Framework, můžete najít [metriky](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters) v monitorování výkonu na vašem SERVERovém virtuálním počítači.
+* Pokud používáte .NET Core v kontejneru, přečtěte si téma [shromažďování diagnostiky v kontejnerech](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers).
+
+Můžete také použít kód pro detekci fondu vláken vyčerpání:
+
+```csharp
+public class ThreadPoolStarvationDetector : EventListener
+{
+    private const int EventIdForThreadPoolWorkerThreadAdjustmentAdjustment = 55;
+    private const uint ReasonForStarvation = 6;
+
+    private readonly ILogger<ThreadPoolStarvationDetector> _logger;
+
+    public ThreadPoolStarvationDetector(ILogger<ThreadPoolStarvationDetector> logger)
+    {
+        _logger = logger;
+    }
+
+    protected override void OnEventSourceCreated(EventSource eventSource)
+    {
+        if (eventSource.Name == "Microsoft-Windows-DotNETRuntime")
+        {
+            EnableEvents(eventSource, EventLevel.Informational, EventKeywords.All);
+        }
+    }
+
+    protected override void OnEventWritten(EventWrittenEventArgs eventData)
+    {
+        // See: https://docs.microsoft.com/en-us/dotnet/framework/performance/thread-pool-etw-events#threadpoolworkerthreadadjustmentadjustment
+        if (eventData.EventId == EventIdForThreadPoolWorkerThreadAdjustmentAdjustment &&
+            eventData.Payload[3] as uint? == ReasonForStarvation)
+        {
+            _logger.LogWarning("Thread pool starvation detected!");
+        }
+    }
+}
+```
+    
+Přidejte ho do služby:
+    
+```csharp
+service.AddSingleton<ThreadPoolStarvationDetector>();
+```
+
+Pak zkontrolujte protokol, pokud je připojení k serveru odpojené časovým limitem nástroje test.
+
+### <a name="how-to-find-the-root-cause-of-thread-pool-starvation"></a>Jak najít hlavní příčinu fondu vláken vyčerpání
+
+Vyhledání hlavní příčiny vyčerpání fondu vláken:
+
+* Vypsat paměť a pak analyzovat zásobník volání. Další informace najdete v tématu [shromažďování a analýza výpisů paměti](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/).
+* Pomocí [clrmd](https://github.com/microsoft/clrmd) vypíšete paměť, když se zjistí vyčerpání fondu vláken. Pak Zaprotokolujte zásobník volání.
+
 ### <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
-1. Otevřete protokol na straně serveru aplikace a zjistěte, jestli došlo k nějakému abnormálnímu výskytu.
+1. Otevřete protokol na straně serveru aplikace a zjistěte, jestli nedošlo k nějakému abnormálnímu výskytu.
 2. Zkontrolujte protokol událostí na straně aplikačního serveru a zjistěte, jestli se App Server restartoval.
-3. Vytvořte problém, abychom vám poskytli časový rámec, a pošlete nám e-mail s názvem prostředku.
+3. Vytvořte problém. Zadejte časový rámec a pošlete nám e-mail s názvem prostředku.
 
 [Máte problémy nebo připomínky k řešení problémů? Dejte nám prosím jistotu.](https://aka.ms/asrs/survey/troubleshooting)
 

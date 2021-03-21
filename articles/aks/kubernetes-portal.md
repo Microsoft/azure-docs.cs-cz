@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/16/2020
 ms.openlocfilehash: ce5dc74dc3625b2b1fed447c4e6480308267d32a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100578683"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal"></a>Přístup k prostředkům Kubernetes z Azure Portal
@@ -17,7 +17,7 @@ Azure Portal obsahuje zobrazení prostředků Kubernetes pro snadný přístup k
 
 Zobrazení prostředků Kubernetes z Azure Portal nahrazuje [doplněk řídicího panelu AKS][kubernetes-dashboard], který je zastaralý.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K zobrazení prostředků Kubernetes v Azure Portal potřebujete cluster AKS. Podporuje se libovolný cluster, ale pokud používáte integraci Azure Active Directory (Azure AD), musí cluster používat [integraci Azure AD spravovanou pomocí AKS][aks-managed-aad]. Pokud váš cluster používá starší verzi služby Azure AD, můžete cluster upgradovat na portálu nebo pomocí rozhraní příkazového [řádku Azure CLI][cli-aad-upgrade]. K vytvoření nového clusteru AKS můžete [použít taky Azure Portal][portal-cluster] .
 
@@ -62,7 +62,7 @@ Po úpravě YAML se změny aplikují tak, že vyberete **zkontrolovat + Uložit*
 >[!WARNING]
 > Provádění přímých změn v produkčním prostředí prostřednictvím uživatelského rozhraní nebo CLI se nedoporučuje, měli byste využít [osvědčené postupy průběžné integrace (CI) a průběžného nasazování (CD)](kubernetes-action.md). Možnosti správy Kubernetes a YAML v portálu Azure jsou vytvořené pro učení a získávání nových nasazení v nastavení pro vývoj a testování.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Tato část řeší běžné problémy a postup řešení potíží.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 6b73eb51831238f23400ef60d0a6162bca38ea85
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 2fc703e0532c86bfc0874c8dccbb17c6142aeed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033149"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590207"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Odchozí pravidla Azure Load Balancer
 
@@ -36,11 +36,11 @@ U odchozích pravidel můžete explicitně definovat odchozí chování **SNAT**
 Odchozí pravidla umožňují řídit:
 
 * **Které virtuální počítače jsou přeložené na které veřejné IP adresy.**
-     * Dvě pravidla byla back-end fondu A používá IP adresu a a B, back-end fond B používá IP adresu C a D.
+     * Dvě pravidla byla back-end fond 1 používá modrou IP adresu 1 a 2, back-end fond 2 používá žlutou předponu IP adresy.
 * **Jak jsou přidělovány Odchozí porty SNAT.**
-     * Back-end fond B je jediným fondem, který umožňuje odchozí připojení, přidělte všem portům SNAT back-end fondu B a žádnému do fondu back-endu a.
+     * Pokud je fondem back-endu jediným fondem, který vytváří odchozí připojení, poskytněte všechny porty SNAT back-endu fondu 2 a žádné do back-endu fondu 1.
 * **Které protokoly pro zajištění odchozího překladu pro.**
-     * Back-end fond B potřebuje porty UDP pro odchozí připojení. Fond back-endu potřebuje protokol TCP. Udělte porty TCP portům a a UDP do B.
+     * Pokud fond back-endu 2 potřebuje porty UDP pro odchozí a back-end fond vyžaduje TCP, poskytněte portům TCP porty 1 a UDP na 2.
 * **Jaká doba se má použít pro časový limit nečinnosti odchozího připojení (4-120 minut).**
      * Pokud máte dlouho běžící připojení s udržením naživu, vyhradte nečinné porty pro dlouhotrvající připojení po dobu až 120 minut. Pro nová připojení se předpokládá, že se zastaralá připojení přebírají a vydávají porty za 4 minuty. 
 * **Určuje, zda má být pro časový limit nečinnosti odesláno resetování protokolu TCP.**
