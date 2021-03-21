@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/03/2021
 ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102430151"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Šifrování založené na hostiteli ve službě Azure Kubernetes (AKS) (Preview)
@@ -23,7 +23,7 @@ Tato funkce se dá nastavit jenom při vytváření clusteru nebo při vytváře
 > [!NOTE]
 > Šifrování založené na hostiteli je dostupné v [oblastech Azure][supported-regions] , které podporují šifrování na straně serveru Azure Managed disks a jenom s konkrétními [podporovanými velikostmi virtuálních počítačů][supported-sizes].
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že máte `aks-preview` nainstalovanou verzi rozhraní příkazového řádku CLI verze 0.4.73 nebo novější.
 - Ujistěte se, že je `EnableEncryptionAtHostPreview` v části `Microsoft.ContainerService` povoleno příznak funkce.

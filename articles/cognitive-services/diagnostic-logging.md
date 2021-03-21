@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
 ms.openlocfilehash: a2005ca7b32136ff0032d27e04035c46b2e4e904
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100595356"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Povolení protokolování diagnostiky pro Azure Cognitive Services
 
 Tato příručka poskytuje podrobné pokyny, jak povolit diagnostické protokolování pro službu rozpoznávání Azure. Tyto protokoly poskytují bohatá a často používaná data o provozu prostředku, který se používá k identifikaci a ladění problémů. Než budete pokračovat, musíte mít účet Azure s předplatným alespoň pro jednu službu pro rozpoznávání, například [vyhledávání na webu Bingu](./bing-web-search/overview.md), [Speech Services](./speech-service/overview.md)nebo [Luis](./luis/what-is-luis.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete povolit protokolování diagnostiky, budete muset někam ukládat data protokolu. V tomto kurzu se používá Azure Storage a Log Analytics.
 

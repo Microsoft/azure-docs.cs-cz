@@ -8,10 +8,10 @@ author: tfitzmac
 ms.author: tomfitz
 ms.custom: references_regions
 ms.openlocfilehash: 7af8b82c5da6c60527b45b6e8e292b9f067016ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101748394"
 ---
 # <a name="quickstart-get-started-with-datadog"></a>Rychlý Start: Začínáme s služby Datadog
@@ -83,7 +83,7 @@ Zadejte následující hodnoty.
 
 Pokud odkazujete na stávající organizaci služby Datadog, přečtěte si další část. V opačném případě vyberte **Další: metriky a protokoly** a přeskočte další oddíl.
 
-## <a name="link-to-existing-datadog-organization"></a>Odkaz na existující organizaci služby Datadog
+## <a name="link-to-existing-datadog-organization"></a>Propojení s existující organizací Datadog
 
 Nový prostředek služby Datadog v Azure můžete propojit s existující organizací služby Datadog.
 

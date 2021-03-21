@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121605"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Kurz: implementace CI/CD pomocí GitOps s využitím clusterů Kubernetes s podporou ARC Azure
@@ -119,7 +119,7 @@ Teď, když jste prosynchronizoval připojení GitOps, budete muset importovat k
 
 Úložiště aplikace obsahuje `.pipeline` složku s kanály, které budete používat pro PR, CI a CD. Importujte a přejmenujte tři kanály poskytované v ukázkovém úložišti:
 
-| Název souboru kanálu | Popis |
+| Název souboru kanálu | Description |
 | ------------- | ------------- |
 | [`.pipelines/az-vote-pr-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-pr-pipeline.yaml)  | Kanál PR aplikace s názvem **oblouk-cicd-demo-src PR** |
 | [`.pipelines/az-vote-ci-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-ci-pipeline.yaml) | Kanál CI aplikace s názvem **oblouk-cicd-demo-src CI** |

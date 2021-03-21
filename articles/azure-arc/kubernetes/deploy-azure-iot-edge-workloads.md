@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Nasazení Azure IoT Edgech úloh
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.openlocfilehash: e77446170e5a6adac995394d66640fd183f453b8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121724"
 ---
 # <a name="deploy-azure-iot-edge-workloads"></a>Nasazení Azure IoT Edgech úloh

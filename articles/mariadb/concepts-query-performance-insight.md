@@ -3,14 +3,14 @@ title: Query Performance Insight – Azure Database for MariaDB
 description: Tento článek popisuje funkci Query Performance Insight v Azure Database for MariaDB
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 9e8e4527ba1717b4d152f501a38c3c8f65faf70e
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: b643ba3305736480e06d7c10d594b2271839038f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664227"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Query Performance Insight ve službě Azure Database for MariaDB
@@ -35,7 +35,7 @@ Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dota
 
 K zobrazení textu dotazů v Query Performance Insight jsou nutná oprávnění **vlastníka** nebo **přispěvatele**. **Čtenář** může zobrazit grafy a tabulky, ale ne text dotazu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby Query Performance Insight fungoval, musí existovat data v [úložišti dotazů](concepts-query-store.md).
 

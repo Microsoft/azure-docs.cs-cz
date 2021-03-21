@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/02/2021
 ms.author: yelevin
 ms.openlocfilehash: 7f89780f2ed440898f5a28d78ec541c48a958b90
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101700826"
 ---
 # <a name="connect-your-broadcom-symantec-data-loss-prevention-dlp-to-azure-sentinel"></a>Připojení ochrany před únikem informací ze služby Broadcom Symantec k Azure Sentinel
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak připojit zařízení s ochranou před únikem i
 > [!NOTE]
 > Data budou uložená v geografickém umístění pracovního prostoru, na kterém běží Azure Sentinel.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít oprávnění ke čtení a zápisu v pracovním prostoru Sentinel Azure.
 

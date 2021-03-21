@@ -4,12 +4,12 @@ description: Tento článek popisuje návod pro vytvoření aplikace JavaScriptu
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 2e5f297d5edb9a271843db060f948209dd076074
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: c418c13346fb1ec8ba16965fa1020c676ddf3ac6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106083"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602549"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>Odesílání událostí do a příjem událostí z Center událostí pomocí JavaScriptu (Azure/Event-hub)
 V tomto rychlém startu se dozvíte, jak odesílat události do a přijímat události z centra událostí pomocí balíčku JavaScriptu pro **Azure/Event-Center** . 
@@ -98,7 +98,7 @@ V této části vytvoříte aplikaci JavaScriptu, která odesílá události do 
     > [!NOTE]
     > Úplný zdrojový kód včetně dalších informativních komentářů najdete na [stránce sendEvents.js GitHubu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js).
 
-Blahopřejeme! Nyní jste odeslali události do centra událostí.
+Gratulujeme! Nyní jste odeslali události do centra událostí.
 
 
 ## <a name="receive-events"></a>Příjem událostí
@@ -113,7 +113,7 @@ V této části obdržíte události z centra událostí pomocí úložiště ko
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu služby Azure Storage a kontejneru objektů BLOB
 Pokud chcete vytvořit účet úložiště Azure a kontejner objektů BLOB v něm, proveďte následující akce:
 
-1. [Vytvoření účtu úložiště Azure](../storage/common/storage-account-create.md?tabs=azure-portal)  
+1. [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal)  
 2. [Vytvoření kontejneru objektů blob v účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
 3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 
@@ -146,6 +146,11 @@ Nezapomeňte si poznamenejte připojovací řetězec a název kontejneru pro poz
       // Subscribe to the events, and specify handlers for processing the events and errors.
       const subscription = consumerClient.subscribe({
           processEvents: async (events, context) => {
+            if (events.length === 0) {
+              console.log(`No events received within wait time. Waiting for next interval`);
+              return;
+            }
+          
             for (const event of events) {
               console.log(`Received event: '${event.body}' from partition: '${context.partitionId}' and consumer group: '${context.consumerGroup}'`);
             }
@@ -183,7 +188,7 @@ Nezapomeňte si poznamenejte připojovací řetězec a název kontejneru pro poz
     > [!NOTE]
     > Úplný zdrojový kód včetně dalších informativních komentářů najdete na [stránce receiveEventsUsingCheckpointStore.js GitHubu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js).
 
-Blahopřejeme! Nyní jste dostali události z centra událostí. Program přijímače dostane události ze všech oddílů výchozí skupiny příjemců v centru událostí.
+Gratulujeme! Nyní jste dostali události z centra událostí. Program přijímače dostane události ze všech oddílů výchozí skupiny příjemců v centru událostí.
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na tyto ukázky na GitHubu:

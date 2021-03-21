@@ -216,8 +216,6 @@
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
             - name: Programové vytváření předplatných MPA
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: Vytváření předplatných – šablona ARM
-              href: manage/create-subscription-template.md
             - name: Programové vytváření předplatných – rozhraní API verze Preview
               href: manage/programmatically-create-subscription-preview.md
         - name: Správa předplatných smlouvy Enterprise

@@ -12,10 +12,10 @@ ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: b1cb14e07f6c0e402510abad6f1cb160f5215c63
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518377"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch se škálováním modelů pomocí Azure Machine Learning
@@ -26,7 +26,7 @@ Ukázkové skripty v tomto článku se používají ke klasifikaci kuřecích a 
 
 Bez ohledu na to, jestli školicíte model PyTorch pro obsáhlý Learning od základu nebo přenášíte stávající model do cloudu, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pomocí elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat a monitorovat modely produkčního prostředí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Spusťte tento kód v jednom z těchto prostředí:
 
@@ -370,7 +370,7 @@ run = Experiment(ws, 'experiment_name').submit(src)
 
 Úplný kurz pro spouštění distribuovaných PyTorch v Azure ML najdete v tématu [Distributed PyTorch with DistributedDataParallel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-distributeddataparallel).
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 * **Horovod byla vypnuta**: ve většině případů, pokud narazíte na "AbortedError: Horovod byl vypnut", existovala základní výjimka v jednom z procesů, které způsobily vypnutí Horovod. V Azure ML má každá vrstva v úloze MPI vlastní vyhrazený soubor protokolu. Tyto protokoly mají název `70_driver_logs`. V případě distribuovaného trénování se k názvům těchto protokolů přidává přípona `_rank`, aby bylo snadnější tyto protokoly odlišit. Pokud chcete najít přesnou chybu, která způsobila vypnutí Horovod, Projděte všechny soubory protokolů a hledejte na `Traceback` konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
 

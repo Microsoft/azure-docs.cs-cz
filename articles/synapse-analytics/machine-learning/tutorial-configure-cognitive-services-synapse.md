@@ -10,10 +10,10 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: 3ab861caca0ef6f58c2c1bc722412774deb725ce
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98936689"
 ---
 # <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Kurz: předpoklady pro použití Cognitive Services ve službě Azure synapse Analytics
@@ -28,7 +28,7 @@ Tento kurz zahrnuje:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Pracovní prostor Azure synapse Analytics](../get-started-create-workspace.md) s účtem úložiště Azure Data Lake Storage Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být *přispěvatelem dat objektů BLOB úložiště* Azure Data Lake Storage Gen2 systému souborů, se kterým pracujete.
 
@@ -82,4 +82,4 @@ Teď můžete pokračovat v jednom z kurzů pro používání prostředí Azure 
 - [Kurz: analýza mínění s využitím Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)
 - [Kurz: detekce anomálií s využitím Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)
 - [Kurz: bodování modelu Machine Learning ve vyhrazených fondech SQL ve službě Azure synapse](tutorial-sql-pool-model-scoring-wizard.md).
-- [Funkce Machine Learning ve službě Azure synapse Analytics](what-is-machine-learning.md)
+- [Možnosti strojového učení ve službě Azure Synapse Analytics](what-is-machine-learning.md)

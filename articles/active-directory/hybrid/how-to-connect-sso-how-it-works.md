@@ -16,11 +16,11 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: addb90ed3929847612fd423e3af01c1b3982c2d6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100369641"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: technický hluboký podrobně
@@ -67,10 +67,6 @@ Tok přihlášení ve webovém prohlížeči je následující:
 6. Služba Active Directory vyhledá účet počítače a vrátí lístek protokolu Kerberos do prohlížeče šifrovaného pomocí tajného klíče účtu počítače.
 7. Prohlížeč přepošle lístek protokolu Kerberos, který získal ze služby Active Directory do Azure AD.
 8. Azure AD dešifruje lístek protokolu Kerberos, který zahrnuje identitu uživatele přihlášeného k firemnímu zařízení pomocí dříve sdíleného klíče.
-
-   >[!NOTE]
-   >Služba Azure AD se pokusí spárovat hlavní název uživatele (UPN) od lístku protokolu Kerberos s objektem uživatele služby Azure AD, který má odpovídající hodnotu v atributu userPrincipalName. Pokud to neproběhne úspěšně, Azure AD se vrátí k odpovídajícímu účtu samAccountName z lístku Kerberos k objektu uživatele Azure AD, který má odpovídající hodnotu v atributu onPremisesSamAccountName.
-   
 9. Po vyhodnocení služba Azure AD vrátí token zpátky do aplikace nebo požádá uživatele o provedení dalších důkazů, jako je například Multi-Factor Authentication.
 10. Pokud je přihlášení uživatele úspěšné, uživatel bude moci získat přístup k aplikaci.
 
