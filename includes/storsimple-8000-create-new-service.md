@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 746198f87e23cd7aca2a3177c23974917cb4b12a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96027408"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
@@ -21,7 +21,7 @@ ms.locfileid: "96027408"
 
     Vyhledejte _Fyzické zařízení StorSimple_. Vyberte a klikněte na **Řada fyzických zařízení StorSimple** a pak klikněte na **Vytvořit**. Případně klikněte na Azure Portal **+** a potom v části **úložiště** klikněte na **řada fyzických zařízení StorSimple**.
 
-    ![Vytvoření StorSimple Device Manager 2](./media/storsimple-8000-create-new-service/createssdevman11.png)
+    ![Vytvoření StorSimple Správce zařízení 2](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
 3. V okně **Správce zařízení StorSimple** proveďte následující kroky:
 
@@ -42,8 +42,8 @@ ms.locfileid: "96027408"
 
    7. Kliknutím na **Vytvořit** vytvořte Správce zařízení StorSimple.
 
-       ![Vytvoření StorSimple Device Manager 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
+       ![Vytvoření StorSimple Správce zařízení 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
 
 Vytvoření služby trvá několik minut. Po úspěšném vytvoření služby se zobrazí oznámení a otevře se okno nové služby.
 
-![Vytvoření StorSimple Device Manager 4](./media/storsimple-8000-create-new-service/createssdevman5.png)
+![Vytvoření StorSimple Správce zařízení 4](./media/storsimple-8000-create-new-service/createssdevman5.png)

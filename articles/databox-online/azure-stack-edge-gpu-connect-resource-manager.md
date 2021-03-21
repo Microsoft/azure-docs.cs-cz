@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/01/2021
 ms.author: alkohli
 ms.openlocfilehash: 27c0c211b9844a34b0cb43dcd05037ba4a548f3e
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102637916"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Připojení k Azure Resource Manager na zařízení Azure Stack Edge pro
@@ -57,7 +57,7 @@ Proces připojení k místním rozhraním API zařízení pomocí Azure Resource
 
 V následujících částech najdete podrobné informace o každém z výše uvedených kroků v části připojení k Azure Resource Manager.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že klient, který se používá pro připojení k zařízení přes Azure Resource Manager, používá protokol TLS 1,2. Další informace najdete [v konfiguraci TLS 1,2 na klientském počítači se systémem Windows přístup k zařízení Azure Stack Edge pro](azure-stack-edge-gpu-configure-tls-settings.md).
 

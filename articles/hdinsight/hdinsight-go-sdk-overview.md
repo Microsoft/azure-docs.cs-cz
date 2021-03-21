@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
 ms.openlocfilehash: 09564bd149488d956586c8a0e349cd79eec358a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100582759"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for (Preview)
@@ -22,7 +22,7 @@ Sada HDInsight SDK for přejít poskytuje třídy a funkce, které umožňují s
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [ `go get` Nástroj](https://github.com/golang/go/wiki/GoGetTools).
 * [Přejít](https://golang.org/dl/).

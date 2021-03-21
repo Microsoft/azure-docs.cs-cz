@@ -8,10 +8,10 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 272a642f70849b85be00d2507109eb97935c0dde
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202497"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
@@ -42,7 +42,7 @@ Metriky pro Synchronizace souborů Azure jsou ve výchozím nastavení povolené
 
 V Azure Monitor jsou k dispozici následující metriky pro Synchronizace souborů Azure:
 
-| Název metriky | Popis |
+| Název metriky | Description |
 |-|-|
 | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování).<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Použitelné dimenze: název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
 | Stažení vrstvení cloudu | Velikost vrácených dat.<br><br>**Poznámka**: Tato metrika bude v budoucnu odebrána. K monitorování velikosti vrácených dat použijte metriku velikosti volání ve vrstvách cloudu.<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Platná dimenze: název serveru |
@@ -118,7 +118,7 @@ Pokud chcete zobrazit stav **koncového bodu serveru** na portálu, přejděte d
 
 - Na portálu služby synchronizace úložiště se mohou zobrazit následující grafy metrik:
 
-  | Název metriky | Popis | Název okna |
+  | Název metriky | Description | Název okna |
   |-|-|-|
   | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
   | Stažení vrstvení cloudu | Velikost vrácených dat | Registrované servery |
@@ -178,7 +178,7 @@ Chcete-li zobrazit Synchronizace souborů Azure čítače výkonu na serveru, sp
 
 V nástroji Sledování výkonu jsou k dispozici následující čítače výkonu pro Synchronizace souborů Azure:
 
-| Název Object\Counter výkonu | Popis |
+| Název Object\Counter výkonu | Description |
 |-|-|
 | Bajty AFS Transferred\Downloaded bajty/s | Počet stažených bajtů za sekundu |
 | Bajty AFS Transferred\Uploaded bajty/s | Počet odeslaných bajtů za sekundu |

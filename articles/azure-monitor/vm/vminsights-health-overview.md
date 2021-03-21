@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
 ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052122"
 ---
 # <a name="vm-insights-guest-health-preview"></a>Stav hosta pro virtuální počítače Insights (Preview)
@@ -34,7 +34,7 @@ Kliknutím na stav virtuálního počítače zobrazíte podrobný stav každého
 
 V následující tabulce jsou uvedeny agregované a monitorované monitorování jednotek pro jednotlivé virtuální počítače. 
 
-| Monitor | Typ | Popis |
+| Monitor | Typ | Description |
 |:---|:---|:---|
 | Využití procesoru | Jednotka | Procento využití procesoru. |
 | Systémy souborů | Agregace | Agregovat stav všech systémů souborů na virtuálním počítači se systémem Linux. |
@@ -52,7 +52,7 @@ Každé monitorování má lookback okno a analyzuje všechny vzorky shromážd�
 
 Monitory mají v následující tabulce možné stavové stavy, které budou v jednom okamžiku pouze v jednom. Po inicializaci monitorování se spustí v dobrém stavu.
 
-| Stav | Popis |
+| Stav | Description |
 |:---|:---|
 | V pořádku  | Monitor aktuálně nepřekračuje varovnou nebo kritickou prahovou hodnotu. |
 | Upozornění  | Monitorování překročilo prahovou hodnotu upozornění (Pokud je definována). |
@@ -65,7 +65,7 @@ Monitory mají v následující tabulce možné stavové stavy, které budou v j
 
 Existují dva typy monitorování, jak je znázorněno v následující tabulce.
 
-| Monitor | Popis |
+| Monitor | Description |
 |:---|:---|
 | Monitorování jednotky | Měří určitý aspekt prostředku nebo aplikace. Může se jednat o kontrolu čítače výkonu za účelem zjištění výkonu nebo dostupnosti prostředku. |
 | Souhrnné monitorování | Seskupuje více monitorování a poskytuje jeden souhrnný stav. Souhrnné monitorování může obsahovat jedno nebo více monitorování jednotky a další souhrnná monitorování. |

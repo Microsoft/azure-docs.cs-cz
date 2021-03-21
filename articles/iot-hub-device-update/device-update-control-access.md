@@ -7,10 +7,10 @@ ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 07310a5b6f275d4a35a3649c22aeea68045dde8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101662278"
 ---
 # <a name="azure-role-based-access-control-rbac-and-device-update"></a>Řízení přístupu na základě role (RBAC) v Azure a aktualizace zařízení
@@ -21,7 +21,7 @@ Aktualizace zařízení pomocí služby Azure RBAC zajišťuje ověřování a a
 
 Aby mohli ostatní uživatelé a aplikace mít přístup k aktualizaci zařízení, musí být uživatelům nebo aplikacím udělen přístup k tomuto prostředku. Tady jsou role, které podporuje aktualizace zařízení.
 
-|   Název role   | Popis  |
+|   Název role   | Description  |
 | :--------- | :---- |
 |  Správce aktualizace zařízení | Má přístup ke všem prostředkům aktualizace zařízení.  |
 |  Čtenář aktualizace zařízení| Může zobrazit všechny aktualizace a nasazení. |

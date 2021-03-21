@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: f16db3f55ebd0f09e4d7b75750fa319daf03977e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99053563"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Konfigurace počítačů do požadovaného stavu
@@ -25,7 +25,7 @@ Konfigurace stavu Azure Automation umožňuje zadat konfigurace pro vaše server
 
 Pro tento kurz používáme jednoduchou [konfiguraci DSC](/powershell/scripting/dsc/configurations/configurations) , která zajišťuje, že se na virtuálním počítači nainstaluje služba IIS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure Automation. Další informace o účtu Automation a jeho požadavcích najdete v tématu [Přehled ověřování účtu Automation](./automation-security-overview.md).
 - Azure Resource Manager virtuální počítač (ne Classic) se systémem Windows Server 2008 R2 nebo novějším. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření prvního virtuálního počítače s Windows v Azure Portal](../virtual-machines/windows/quick-create-portal.md).
@@ -147,7 +147,7 @@ Pokud se rozhodnete odebrat uzel ze služby, můžete tak učinit buď pomocí A
 > To neplatí pro konfiguraci, která je aktuálně použita pro uzel.
 > Pokud chcete odebrat aktuální konfiguraci, použijte [PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument) nebo odstraňte místní konfigurační soubor (Toto je jediná možnost pro uzly Linux).
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V Azure Automation klikněte v obsahu na **Konfigurace stavu (DSC)** .
 Dalším kliknutím na **uzly** zobrazíte seznam uzlů, které jsou zaregistrované ve službě.

@@ -7,10 +7,10 @@ ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 227488f165aaad2f204c647eed17467a4ef561a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101662557"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Aktualizace zařízení pro IoT Hub a IoT technologie Plug and Play
@@ -27,7 +27,7 @@ Při implementaci tohoto rozhraní je očekávaný název součásti v modelu **
 
 Metadata agenta obsahují pole, která agent aktualizace zařízení nebo zařízení používá k odesílání informací a stavu do služby aktualizace zařízení.
 
-|Název|Schéma|Směr|Popis|Příklad|
+|Name|Schéma|Směr|Popis|Příklad|
 |----|------|---------|-----------|-----------|
 |resultCode|integer|zařízení do cloudu|Kód, který obsahuje informace o výsledku poslední akce aktualizace. Může být naplněna buď pro úspěch, nebo selhání a měla by následovat po [specifikaci stavového kódu http](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).|500|
 |extendedResultCode|integer|zařízení do cloudu|Kód, který obsahuje další informace o výsledku. Lze naplnit buď pro úspěch, nebo při selhání.|0x80004005|
@@ -35,11 +35,11 @@ Metadata agenta obsahují pole, která agent aktualizace zařízení nebo zaří
 |installedUpdateId|řetězec|zařízení do cloudu|ID aktualizace, která je aktuálně nainstalovaná (prostřednictvím aktualizace zařízení). Tato hodnota bude null u zařízení, které nikdy netrvalo aktualizaci prostřednictvím aktualizace zařízení.|Null|
 |`deviceProperties`|Mapa|zařízení do cloudu|Sada vlastností, které obsahují výrobce a model.|Podrobnosti najdete níže.
 
-#### <a name="state"></a>State
+#### <a name="state"></a>Stav
 
 Po přijetí akce ze služby aktualizace zařízení je stav hlášený agentem aktualizace zařízení. `State` je hlášena v reakci na `Action` (viz `Actions` níže), která je odeslána agentovi aktualizace zařízení ze služby aktualizace zařízení. Přečtěte si [pracovní postup](understand-device-update.md#device-update-agent) pro požadavky, které se procházejí službou aktualizace zařízení a agentem aktualizace zařízení.
 
-|Název|Hodnota|Popis|
+|Name|Hodnota|Popis|
 |---------|-----|-----------|
 |Období|0|Zařízení je připravené přijmout akci ze služby aktualizace zařízení. Po úspěšné aktualizaci se stav vrátí do `Idle` stavu.|
 |DownloadSucceeded|2|Úspěšné stažení.|
@@ -50,7 +50,7 @@ Po přijetí akce ze služby aktualizace zařízení je stav hlášený agentem 
 
 Jedná se o sadu vlastností, které obsahují výrobce a model.
 
-|Název|Schéma|Směr|Popis|
+|Name|Schéma|Směr|Description|
 |----|------|---------|-----------|
 |manufacturer|řetězec|zařízení do cloudu|Výrobce zařízení, který nahlásil `deviceProperties` . Tato vlastnost je čtena z jednoho ze dvou míst – rozhraní ' AzureDeviceUpdateCore ' se nejprve pokusí přečíst hodnotu ' aduc_manufacturer ' ze souboru [konfiguračního souboru](device-update-configuration-file.md) .  Pokud hodnota není naplněna v konfiguračním souboru, bude ve výchozím nastavení ohlášena definice doby kompilace pro ADUC_DEVICEPROPERTIES_MANUFACTURER. Tato vlastnost bude uvedena pouze v době spuštění.|
 |model|řetězec|zařízení do cloudu|Model zařízení, který se nahlásil `deviceProperties` . Tato vlastnost je čtena z jednoho ze dvou míst – rozhraní AzureDeviceUpdateCore se nejprve pokusí načíst hodnotu ' aduc_model ' ze souboru [konfiguračního souboru](device-update-configuration-file.md) .  Pokud hodnota není naplněna v konfiguračním souboru, bude ve výchozím nastavení ohlášena definice doby kompilace pro ADUC_DEVICEPROPERTIES_MODEL. Tato vlastnost bude uvedena pouze v době spuštění.|
@@ -61,7 +61,7 @@ Jedná se o sadu vlastností, které obsahují výrobce a model.
 
 Metadata služby obsahují pole, která služba aktualizace zařízení používá ke komunikaci akcí a dat s agentem aktualizace zařízení.
 
-|Název|Schéma|Směr|Popis|
+|Name|Schéma|Směr|Description|
 |----|------|---------|-----------|
 |akce|integer|Cloud do zařízení|Jedná se o celé číslo, které odpovídá akci, kterou má agent provádět. Níže uvedené hodnoty.|
 |UpdateManifest –|řetězec|Cloud do zařízení|Slouží k popisu obsahu aktualizace. Vygenerováno z [manifestu importu](import-update.md#create-device-update-import-manifest)|
@@ -72,7 +72,7 @@ Metadata služby obsahují pole, která služba aktualizace zařízení použív
 
 `Actions` Níže jsou uvedeny akce podniknuté agentem aktualizace zařízení podle pokynů v rámci služby aktualizace zařízení. Agent aktualizace zařízení ohlásí a `State` (viz `State` část výše), ve kterém se zpracovává `Action` přijaté informace. Přečtěte si [pracovní postup](understand-device-update.md#device-update-agent) pro požadavky, které se procházejí službou aktualizace zařízení a agentem aktualizace zařízení.
 
-|Název|Hodnota|Popis|
+|Name|Hodnota|Popis|
 |---------|-----|-----------|
 |Stáhnout|0|Stažení publikovaného obsahu nebo aktualizace a veškerého potřebného obsahu|
 |Instalace|1|Nainstalujte obsah nebo aktualizaci. Obvykle to znamená volání instalačního programu pro obsah nebo aktualizaci.|

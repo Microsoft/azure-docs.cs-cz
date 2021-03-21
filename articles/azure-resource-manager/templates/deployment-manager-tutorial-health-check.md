@@ -6,10 +6,10 @@ ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 12d246a493ff9ee9e20868da32d633d51939e66c
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99626623"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: použití kontroly stavu v Azure Správce nasazení (Public Preview)
@@ -38,7 +38,7 @@ Další prostředky:
 * [Reference k Azure Správce nasazení REST API](/rest/api/deploymentmanager/).
 * [Ukázka Azure Správce nasazení](https://github.com/Azure-Samples/adm-quickstart).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -84,7 +84,7 @@ Ověření a otestování funkce Azure Functions:
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Nahraďte `{healthStatus}` v adrese URL stavovým kódem. V tomto kurzu pomocí není v *pořádku* otestujete scénář, ve kterém není v pořádku, a vyzkoušíte dobrý scénář pomocí *pořádku* nebo *Upozornění* . Vytvořte dvě adresy URL, jeden se *stavem* není v pořádku a druhý s *dobrým* stavem. Příklad:
+    Nahraďte `{healthStatus}` v adrese URL stavovým kódem. V tomto kurzu pomocí není v *pořádku* otestujete scénář, ve kterém není v pořádku, a vyzkoušíte dobrý scénář pomocí *pořádku* nebo *Upozornění* . Vytvořte dvě adresy URL, jeden se *stavem* není v pořádku a druhý s *dobrým* stavem. Například:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==

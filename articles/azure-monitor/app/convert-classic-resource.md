@@ -4,10 +4,10 @@ description: Seznamte se s kroky potřebnými k upgradu Azure Monitorch klasick�
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100584257"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrace na prostředky Application Insights na základě pracovního prostoru
@@ -203,7 +203,7 @@ Po vytvoření prostředku Application Insights založeném na pracovním prosto
 
 V podokně Application Insights prostředku vyberte **vlastnosti**  >  **změnit pracovní prostor**  >  **Log Analytics pracovní prostory**.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="access-mode"></a>Režim přístupu
 

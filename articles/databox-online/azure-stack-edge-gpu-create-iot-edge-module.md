@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
 ms.openlocfilehash: d2ab96fcfa33301f0bd1212b23f9418fa39d0134
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102637936"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Vývoj modulu C# IoT Edge pro přesun souborů v Azure Stack Edge pro
@@ -42,7 +42,7 @@ Vaše zařízení Azure Stack Edge pro může nasazovat a spouštět IoT Edge mo
 
 Jakmile se soubor nachází ve sdílené složce cloudu, automaticky se nahraje na váš Azure Storage účet.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -125,7 +125,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-1. V Průzkumníku VS Code otevřete **moduly > FileCopyModule > program.cs**.
+1. V Průzkumníku VS Code otevřete **moduly > FileCopyModule > program. cs**.
 2. V horní části **oboru názvů FileCopyModule** přidejte následující příkazy using pro typy, které se používají později. **Microsoft. Azure. Devices. Client. Transport. MQTT** je protokol, který slouží k odesílání zpráv do centra IoT Edge.
 
     ```
@@ -240,7 +240,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
     ```
 
 7. Soubor uložte.
-8. Můžete si také [Stáhnout existující ukázku kódu](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) pro tento projekt. Pak můžete ověřit soubor, který jste uložili proti souboru **program.cs** v této ukázce.
+8. Můžete si také [Stáhnout existující ukázku kódu](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) pro tento projekt. Pak můžete ověřit soubor, který jste uložili proti souboru **program. cs** v této ukázce.
 
 ## <a name="build-your-iot-edge-solution"></a>Vytvoření řešení IoT Edge
 

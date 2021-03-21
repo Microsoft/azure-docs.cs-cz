@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001520"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
@@ -119,7 +119,7 @@ Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupu
 
    ![Azure Portal grafické uživatelské rozhraní pro kopírování klíče](media/avere-vfxt-copy-storage-key.png)
 
-1. Otevřete ovládací panel avere pro váš cluster. Klikněte na **Nastavení** a pak **Cluster** otevřete  >  **přihlašovací údaje cloudového** clusteru v levém navigačním podokně. Na stránce přihlašovací údaje cloudu klikněte na **Přidat přihlašovací údaje**.
+1. Otevřete ovládací panel avere pro váš cluster. Klikněte na **Nastavení** a pak otevřete  >  **přihlašovací údaje cloudového** clusteru v levém navigačním podokně. Na stránce přihlašovací údaje cloudu klikněte na **Přidat přihlašovací údaje**.
 
    ![Klikněte na tlačítko Přidat pověření na stránce konfigurace přihlašovacích údajů cloudu.](media/avere-vfxt-new-credential-button.png)
 
@@ -172,7 +172,7 @@ Další informace o spojeních najdete v [části obor názvů Průvodce konfigu
 
 V rozhraní ovládacího panelu avere postupujte podle těchto kroků:
 
-* **VServer**  >  V levém horním rohu klikněte na VServer **obor názvů** .
+*   >  V levém horním rohu klikněte na VServer **obor názvů** .
 * Zadejte cestu k oboru názvů začínající znakem/(lomítko), například ``/vfxt/data`` .
 * Vyberte si základní souborového.
 * Vyberte základní export souborového.

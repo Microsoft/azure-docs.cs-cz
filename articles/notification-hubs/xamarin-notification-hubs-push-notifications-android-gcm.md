@@ -18,10 +18,10 @@ ms.author: matthewp
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
 ms.openlocfilehash: e7d4206de1e097c30e9f5e96bbd935e94892ce0e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98221030"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. Android pomocí Notification Hubs
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoříte aplikaci pro Xamarin.Android a připojíte ji k centru oznámení
 > * Odešlete z webu Azure Portal zkušební oznámení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 * [Visual Studio s Xamarinem] ve Windows nebo [Visual Studio pro Mac] v systému OS X.
@@ -91,7 +91,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     1. V okně se zprávou vyberte **Ano** , pokud chcete pokračovat se změnou cílové architektury.
 1. Pomocí následujících kroků přidejte do projektu požadované balíčky NuGet:
     1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
-    1. Přepněte na kartu **Installed (instalovat** ), vyberte **Xamarin. Android. support. Design** a v pravém podokně vyberte **aktualizovat** , aby se balíček aktualizoval na nejnovější verzi.
+    1. Přepněte na kartu **Installed** , vyberte **Xamarin.Android.support.Design** a v pravém podokně vyberte **aktualizovat** , aby se balíček aktualizoval na nejnovější verzi.
     1. Přepněte na kartu **Procházet** . Vyhledejte **Xamarin. GooglePlayServices. Base**. V seznamu výsledků vyberte **Xamarin.GooglePlayServices.Base**. Pak vyberte **Nainstalovat**.
 
         ![Balíček NuGet služeb Google Play](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)

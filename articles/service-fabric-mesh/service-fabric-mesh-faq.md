@@ -5,10 +5,10 @@ ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 8e53ab0ae4cc463bea8a6a8cb6d339f94fdcac6d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99626032"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy týkající se Service Fabric sítě
@@ -49,7 +49,7 @@ V současné době jsme omezili životnost aplikace na dva dny. Je to kvůli max
 
 Pokud se to zobrazí, můžete ověřit, že systém ukončí činnost spuštěním `az mesh app show` příkazu v rozhraní příkazového řádku Azure CLI. Zkontrolujte, jestli se vrátí. `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-Příklad: 
+Například: 
 
 ```azurecli
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -112,7 +112,7 @@ Odchozí dotazy DNS z kontejneru do služby Service Fabric DNS za určitých oko
 
 - Použijte Windows Update Creators Update (verze 1709) nebo vyšší jako základní image kontejneru.
 - Pokud název služby samotný nefunguje, zkuste plně kvalifikovaný název: ServiceName. ApplicationName.
-- V souboru Docker pro vaši službu přidejte port, `EXPOSE <port>` na kterém je port, na kterém službu zveřejňujete. Příklad:
+- V souboru Docker pro vaši službu přidejte port, `EXPOSE <port>` na kterém je port, na kterém službu zveřejňujete. Například:
 
 ```Dockerfile
 EXPOSE 80

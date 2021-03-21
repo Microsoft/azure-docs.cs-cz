@@ -8,10 +8,10 @@ ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6ef52e946edb5db8074a9b4e3ce5e4a81ae0bde5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97561048"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core webové aplikace Azure Linux pomocí Application Insights Profiler
@@ -48,7 +48,7 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
    ```
 
-1. Povolit Application Insights v Program.cs:
+1. Povolit Application Insights v programu. cs:
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -57,7 +57,7 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
             .UseStartup<Startup>();
     ```
 
-1. Povolit Profiler v Startup.cs:
+1. Povolit Profiler při spuštění. cs:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -67,7 +67,7 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
     }
     ```
 
-1. Do části **HomeController.cs** přidejte řádek kódu pro náhodné zpoždění několika sekund:
+1. Přidejte do oddílu **HomeController. cs** řádek kódu pro náhodné zpoždění několika sekund:
 
     ```csharp
     using System.Threading;

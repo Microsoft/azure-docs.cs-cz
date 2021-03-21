@@ -12,16 +12,16 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 2/22/2021
 ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101658584"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bez serveru je výpočetní vrstva pro izolované databáze v Azure SQL Database, která automaticky škáluje výpočetní výkon na základě požadavků na zatížení a faktur na množství výpočetního využití za sekundu. Výpočetní vrstva bez serveru taky automaticky pozastaví databáze během neaktivních období, kdy se účtují jenom úložiště, a automaticky obnoví databáze při návratu aktivity.
+Bezserverová výpočetní úroveň pro jednoúčelové databáze ve službě Azure SQL Database automaticky škáluje výpočetní prostředky na základě požadavků úloh a účtuje se podle množství využitých výpočetních prostředků za sekundu. Bezserverová výpočetní úroveň také automaticky pozastavuje databáze v období neaktivity, kdy se účtuje pouze úložiště, a při vrácení aktivity databáze automaticky obnovuje.
 
 ## <a name="serverless-compute-tier"></a>Bezserverová výpočetní úroveň
 
@@ -258,7 +258,7 @@ Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlev
 Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí `capacity` `min-capacity` argumentů, a `auto-pause-delay` .
 
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 ### <a name="resources-used-and-billed"></a>Využité a fakturované prostředky
 

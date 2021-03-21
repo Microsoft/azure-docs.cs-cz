@@ -11,17 +11,17 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2020
 ms.author: duau
 ms.openlocfilehash: bac1df020bf2a683fc04a4d05ae73311e149f70c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511769"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Šablony modelu nasazení Azure Resource Manager pro službu Front Door
 
 Následující tabulka obsahuje odkazy na šablony modelů nasazení Azure Resource Manager pro přední dveře Azure. 
 
-| Template (Šablona) | Popis |
+| Template (Šablona) | Description |
 | ---| ---|
 | [Vytvoření základní služby Front Door](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-basic)| Vytvoří základní konfiguraci služby Front Door s jedním back-endem. |
 | [Vytvoření služby Front Door s více back-endy a back-endovými fondy a směrováním na základě adresy URL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-multiple-backends)| Vytvoří službu Front Door s nakonfigurovaným vyrovnáváním zatížení pro více back-endů v back-endovém fondu i v různých back-endových fondech na základě cesty URL. |

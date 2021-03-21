@@ -4,10 +4,10 @@ description: Pomocí Azure Portal připojit Azure Event Gridho partnera.
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98050948"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Připojení jako Azure Event Grid partner používající Azure Portal
@@ -37,7 +37,7 @@ V tomto článku se dozvíte, jak připojit jako partnera Azure Event Grid pomoc
 ## <a name="communicate-your-interest-in-becoming-a-partner"></a>Informujte svůj zájem o tom, jak se stát partnerem
 Vyplňte [Tento formulář](https://aka.ms/gridpartnerform) a obraťte se na Event Grid týmu na adrese [GridPartner@microsoft.com](mailto:GridPartner@microsoft.com) . Budeme mít konverzaci, která poskytuje podrobné informace o případech použití, osoby, procesu připojování, funkcích, cenách a dalších.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení zbývajících kroků se ujistěte, že máte:
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.

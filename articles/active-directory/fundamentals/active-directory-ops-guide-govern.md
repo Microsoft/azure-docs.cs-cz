@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935746"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Referenční příručka Azure Active Directory operací zásad správného řízení
@@ -56,7 +56,7 @@ Při revizi seznamu se můžete setkat s tím, že budete muset buď přiřadit 
 
 Existují změny, které vyžadují zvláštní okolnosti při testování, od jednoduchých technik, jako je například zavedení cílové podmnožiny uživatelů pro nasazení změny v rámci paralelního testovacího tenanta. Pokud jste neimplementovali testovací strategii, měli byste definovat testovací přístup na základě pokynů v následující tabulce:
 
-| Scénář| Doporučení |
+| Scenario| Doporučení |
 |-|-|
 |Změna typu ověřování z federovaných na KOSMETICE/PTA nebo naopak| Pomocí [připraveného zavedení](../hybrid/how-to-connect-staged-rollout.md) otestujte dopad změny typu ověřování.|
 |Zavedení nové zásady podmíněného přístupu (CA) nebo zásady ochrany identit|Vytvořte nové zásady podmíněného přístupu a přiřaďte je testovacím uživatelům.|
@@ -128,7 +128,7 @@ Aby bylo jasné, že úroveň autorizace portálu EA je aktuálně nastavená na
 > [!NOTE]
 > Správa nároků Azure AD vyžaduje Azure AD Premium licence P2.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Existuje osm aspektů zabezpečení správného řízení identity. Tento seznam vám pomůže identifikovat akce, které byste měli provést při posuzování a ověřování přístupu k neprivilegovaným a privilegovaným identitám, auditům a řízení změn v prostředí.
 

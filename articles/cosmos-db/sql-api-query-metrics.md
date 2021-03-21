@@ -9,10 +9,10 @@ ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102488082"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů pomocí služby Azure Cosmos DB
@@ -238,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metric | Jednotka | Popis | 
+| Metric | Jednotka | Description | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milisekundy | Čas provedení dotazu | 
 | `queryCompileTimeInMs` | milisekundy | Čas kompilace dotazu  | 
@@ -260,7 +260,7 @@ Klientské sady SDK mohou interně provádět dotazy v rámci jednotlivých odd�
 
 Tady je několik ukázkových dotazů a postup interpretace některých metrik vrácených spuštěním dotazu: 
 
-| Dotaz | Ukázková metrika | Popis | 
+| Dotaz | Ukázková metrika | Description | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Počet načtených dokumentů je 100 + 1, aby se shodovala s horní klauzulí. Čas dotazu se většinou stráví v `WriteOutputTime` a `DocumentLoadTime` vzhledem k tomu, že se jedná o kontrolu. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount je teď vyšší (500 + 1 tak, aby odpovídalo horní klauzuli). | 

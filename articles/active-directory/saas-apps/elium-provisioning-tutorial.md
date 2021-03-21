@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005499"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Kurz: Konfigurace Elium pro Automatické zřizování uživatelů
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak nakonfigurovat Elium a Azure Active Directory (Az
 >
 > Tento konektor je momentálně ve verzi Preview. Obecné informace o použití funkcí Azure ve verzi Preview najdete v tématu [dodatečné licenční podmínkami použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že už máte následující předpoklady:
 
@@ -51,7 +51,7 @@ Když přiřadíte uživatele k Elium, musíte vybrat platnou roli specifickou p
 
 Před konfigurací Elium pro Automatické zřizování uživatelů se službou Azure AD musíte povolit systém pro zřizování SCIM (Domain Identity Management) na Elium. Postupujte takto:
 
-1. Přihlaste se k Elium a **My Profile** pokračujte na  >  **Nastavení** profilu.
+1. Přihlaste se k Elium a pokračujte na  >  **Nastavení** profilu.
 
     ![Položka nabídky nastavení v Elium](media/Elium-provisioning-tutorial/setting.png)
 

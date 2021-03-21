@@ -9,10 +9,10 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
 ms.openlocfilehash: 7d1e4018382d26e4df289838ffbb03f1c87505e6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935015"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro Azure Key Vault klíče pro Python
@@ -21,7 +21,7 @@ Začněte s knihovnou klienta Azure Key Vault pro Python. Postupujte podle násl
 
 [Referenční dokumentace k](/python/api/overview/azure/keyvault-keys-readme)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-keys)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault-keys/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + nebo 3.5.3 +](/azure/developer/python/configure-local-development-environment)
@@ -209,7 +209,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled Azure Key Vault](../general/overview.md)
-- [Zabezpečený přístup k trezoru klíčů](../general/secure-your-key-vault.md)
+- [Zabezpečení přístupu k trezoru klíčů](../general/secure-your-key-vault.md)
 - [Azure Key Vault příručka pro vývojáře](../general/developers-guide.md)
 - [Přehled zabezpečení Key Vault](../general/security-overview.md)
 - [Ověřování pomocí Key Vault](../general/authentication.md)

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96519038"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
@@ -51,12 +51,12 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
     ```
 
-* Klíč musí obsahovat následující atributy, které se použijí jako klíč spravovaný zákazníkem:
-  * Žádné datum vypršení platnosti
-  * Nezakázáno
+* Aby bylo možné klíč použít jako klíč spravovaný zákazníkem, musí mít následující atributy:
+  * Nesmí mít žádné datum ukončení platnosti.
+  * Nesmí být zakázaný.
   * Provádění operací **získat**, **zalamovat** a **rozbalení**
   * atribut recoverylevel je nastavený na **obnovitelné** (vyžaduje se obnovitelné odstranění s dobou uchování nastavenou na 90 dní).
-  * Vymazání ochrany povoleno
+  * Musí mít povolenou ochranu před vymazáním.
 
 Výše uvedené atributy klíče můžete ověřit pomocí následujícího příkazu:
 

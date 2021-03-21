@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
 ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389174"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link pro Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Pomocí privátního odkazu Azure se můžete připojit k různým nasazením platforem jako služby (PaaS) v Azure prostřednictvím privátního koncového bodu. Privátní koncový bod je privátní IP adresa v konkrétní virtuální síti a podsíti. Seznam nasazení PaaS, která podporují funkce privátního propojení, najdete v tématu [dokumentace k privátním odkazům](../private-link/index.yml). 
+Pomocí privátního odkazu Azure se můžete připojit k různým nasazením platforem jako služby (PaaS) v Azure prostřednictvím privátního koncového bodu. Privátní koncový bod je privátní IP adresa v rámci konkrétní virtuální sítě a podsítě. Seznam nasazení PaaS, která podporují funkce privátního propojení, najdete v tématu [dokumentace k privátním odkazům](../private-link/index.yml). 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Zabezpečená komunikace mezi zákaznickými sítěmi a Azure Data Factory 
-Virtuální síť Azure můžete nastavit jako logickou reprezentaci vaší sítě v cloudu. Díky tomu jsou k dispozici následující výhody:
-* Ochranu prostředků Azure můžete zvýšit před útoky ve veřejných sítích.
-* Sítě a Data Factory mezi sebou umožní zabezpečenou komunikaci. 
+Virtuální síť Azure můžete nastavit jako logickou reprezentaci vaší sítě v cloudu. Získáte tím následující výhody:
+* Pomoc s ochranou vašich prostředků Azure před útoky ve veřejných sítích
+* Možnost zabezpečené vzájemné komunikace mezi sítěmi a službou Data Factory 
 
-Můžete taky připojit místní síť k virtuální síti tím, že nastavíte připojení k síti VPN (Internet Protocol Security-to-site) s protokolem IPsec (pro připojení typu Site-to-site) nebo Azure ExpressRoute (privátní partnerské vztahy). 
+Ke své virtuální síti můžete připojit také místní síť, a to nastavením připojení IPsec (Internet Protocol security) VPN (site-to-site) nebo připojení Azure ExpressRoute (privátní partnerský vztah). 
 
-Místní prostředí Integration runtime můžete také nainstalovat do místního počítače nebo virtuálního počítače ve virtuální síti. Díky tomu máte tyto možnosti:
-* Spouštějte aktivity kopírování mezi cloudovým úložištěm dat a úložištěm dat v privátní síti.
-* Odeslání transformačních aktivit na výpočetní prostředky v místní síti nebo ve službě Azure Virtual Network. 
+Místní prostředí Integration runtime můžete také nainstalovat do místního počítače nebo virtuálního počítače ve virtuální síti. Získáte tím následující možnosti:
+* Spouštění aktivit kopírování mezi úložištěm dat v cloudu a úložištěm dat v privátní síti
+* Odesílání aktivit transformace do výpočetních prostředků v místní síti nebo virtuální síti Azure 
 
 Mezi Azure Data Factory a zákaznickou virtuální sítí se vyžaduje několik komunikačních kanálů, jak je znázorněno v následující tabulce:
 
