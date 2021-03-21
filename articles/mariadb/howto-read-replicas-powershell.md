@@ -3,15 +3,15 @@ title: Spravovat repliky čtení-Azure PowerShell-Azure Database for MariaDB
 description: Naučte se, jak nastavit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí PowerShellu.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 43f0de153a19c0ee7ef44539407c0af4fda61c72
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 713f99f67706caded0694d88ece220373920e555
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664983"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for MariaDB pomocí prostředí PowerShell
@@ -22,7 +22,7 @@ V tomto článku se naučíte vytvářet a spravovat repliky pro čtení ve slu�
 
 Pomocí PowerShellu můžete vytvářet a spravovat repliky pro čtení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce budete potřebovat:
 

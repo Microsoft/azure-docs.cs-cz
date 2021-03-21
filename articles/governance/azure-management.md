@@ -4,10 +4,10 @@ description: Přehled oblastí správy pro aplikace a prostředky Azure s odkazy
 ms.date: 02/05/2021
 ms.topic: overview
 ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99593921"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Co jsou oblasti správy Azure?
@@ -42,7 +42,7 @@ Zásady správného řízení v Azure jsou primárně implementované pomocí dv
 Tato funkce udržuje tyto prostředky v souladu s vašimi podnikovými standardy.
 [Azure cost management](../cost-management-billing/cost-management-billing-overview.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další cloudové poskytovatele.
 
-## <a name="secure"></a>Zabezpečení
+## <a name="secure"></a>Zabezpečit
 
 Spravujte zabezpečení svých prostředků a dat. Bezpečnostní program zahrnuje hodnocení hrozeb, shromažďování a analýzy dat a kompatibilitu vašich aplikací a prostředků. Monitorování zabezpečení a analýza hrozeb poskytuje [Azure Security Center](../security-center/security-center-introduction.md), což zahrnuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudy. Podrobné informace a pokyny k zabezpečení prostředků Azure najdete v tématu [Úvod do zabezpečení Azure](../security/fundamentals/overview.md) .
 

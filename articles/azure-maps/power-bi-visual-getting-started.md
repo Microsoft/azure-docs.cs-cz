@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96904699"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Začínáme s Azure Maps Power BI vizuál
 
-<Token>**platí pro:** ![ Zelená značka zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro **_spotřebitelé_* _ ![ zelenou značku zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro návrháře & vývojářům ![ zelený symbol zaškrtnutí. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X značí ne. ](media/power-bi-visual/no.png) Vyžaduje licenci pro nebo Premium.</Token>
+<Token>**platí pro:** ![ Zelená značka zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro **_uživatele_** ![ zelený symbol zaškrtnutí. ](media/power-bi-visual/yes.png) Služba Power BI pro návrháře & vývojářům ![ zelený symbol zaškrtnutí. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X značí ne. ](media/power-bi-visual/no.png) Vyžaduje licenci pro nebo Premium.</Token>
 
 Tento článek ukazuje, jak použít vizuál Microsoft Azure Maps pro Power BI.
 
@@ -47,7 +47,7 @@ Další informace o ochraně osobních údajů a podmínek použití týkající
 
 ## <a name="azure-maps-visual-preview-behavior-and-requirements"></a>Azure Maps chování a požadavky Visual (Preview)
 
-K dispozici je několik důležitých informací a požadavků pro _ *Azure Maps** Visual. :
+Pro **Azure Maps** vizuál existuje několik důležitých otázek a požadavků. :
 
 -   V Power BI Desktop musí být povolený **Azure Maps** vizuál (Preview). Pokud chcete povolit **Azure Maps** vizuál, zvolte možnosti **souboru** &gt; **a** &gt; **Možnosti** nastavení &gt; ve **verzi Preview** a pak zaškrtněte políčko **Azure Maps vizuálu** . Pokud Azure Maps vizuál není po tomto postupu k dispozici, je možné, že je nutné povolit přepínač správce tenanta na portálu pro správu.
 -   Datová sada musí obsahovat pole, která obsahují informace o **zeměpisné šířce** a **délce** . Geografické kódování polí umístění bude přidáno v budoucí aktualizaci.
@@ -135,7 +135,7 @@ Azure Maps vizuál je k dispozici v následujících službách a aplikacích:
 | Mobilní aplikace Power BI             | Ano          |
 | Publikování na web z Power BI                  | No           |
 | Power BI Embedded                        | No           |
-| Vkládání ve službě Power BI (PowerBI.com) | Ano          |
+| Vkládání ve službě Power BI (PowerBI.com) | Yes          |
 
 Podpora dalších Power BI služeb nebo aplikací se přidá v budoucích aktualizacích.
 

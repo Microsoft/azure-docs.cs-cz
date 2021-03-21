@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/01/2021
 ms.author: apimpm
 ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688412"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
@@ -53,7 +53,7 @@ Použijte `cross-domain` zásady, aby rozhraní API bylo dostupné z klientů za
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|mezi doménami|Kořenový element. Podřízené elementy musí odpovídat [specifikaci souboru zásad pro Adobe více domén](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ano|
+|mezi doménami|Kořenový element. Podřízené elementy musí odpovídat [specifikaci souboru zásad pro Adobe více domén](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Yes|
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -127,22 +127,22 @@ Tento příklad ukazuje, jak podporovat žádosti o předběžné lety, jako jso
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|CORS|Kořenový element.|Ano|–|
-|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins` může obsahovat jeden `origin` prvek, který určuje, že `*` má být povolen libovolný původ, nebo jeden či více `origin` prvků, které obsahují identifikátor URI.|Ano|–|
-|origin (zdroj)|Hodnota může být buď `*` tak, aby povolovala všechny zdroje, nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a port.|Ano|Pokud je port v identifikátoru URI vynechán, použije se port 80 pro protokol HTTP a port 443 pro protokol HTTPS.|
-|povolené – metody|Tento prvek je vyžadován, pokud jsou povoleny jiné metody než GET nebo POST. Obsahuje `method` prvky, které určují podporované příkazy HTTP. Hodnota `*` označuje všechny metody.|Ne|Pokud tato část není k dispozici, jsou podporovány GET a POST.|
+|CORS|Kořenový element.|Yes|–|
+|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins` může obsahovat jeden `origin` prvek, který určuje, že `*` má být povolen libovolný původ, nebo jeden či více `origin` prvků, které obsahují identifikátor URI.|Yes|–|
+|origin (zdroj)|Hodnota může být buď `*` tak, aby povolovala všechny zdroje, nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a port.|Yes|Pokud je port v identifikátoru URI vynechán, použije se port 80 pro protokol HTTP a port 443 pro protokol HTTPS.|
+|povolené – metody|Tento prvek je vyžadován, pokud jsou povoleny jiné metody než GET nebo POST. Obsahuje `method` prvky, které určují podporované příkazy HTTP. Hodnota `*` označuje všechny metody.|No|Pokud tato část není k dispozici, jsou podporovány GET a POST.|
 |method|Určuje příkaz HTTP.|`method`Pokud je oddíl přítomen, je vyžadován alespoň jeden prvek `allowed-methods` .|–|
-|povoleno – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které mohou být zahrnuty v žádosti.|Ne|–|
-|vystavení – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které budou přístupné pro klienta.|Ne|Není k dispozici|
+|povoleno – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které mohou být zahrnuty v žádosti.|No|–|
+|vystavení – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které budou přístupné pro klienta.|No|Není k dispozici|
 |header|Určuje název záhlaví.|`header`V nebo je- `allowed-headers` li oddíl přítomen, je požadován alespoň jeden prvek `expose-headers` .|–|
 
 ### <a name="attributes"></a>Atributy
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|povolení – pověření|`Access-Control-Allow-Credentials`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost klienta odesílat přihlašovací údaje v rámci požadavků mezi doménami.|Ne|false (nepravda)|
-|ukončené – nespárované – požadavek|Tento atribut řídí zpracování žádostí mezi zdroji, které neodpovídají nastavení zásad CORS. Pokud je žádost o možnosti zpracována jako požadavek před letem a neshoduje se s nastavením zásad CORS: Pokud je atribut nastaven na hodnotu `true` , okamžitě ukončí požadavek s prázdnou odpovědí 200 OK; Pokud je atribut nastavený na `false` , podívejte se na příchozí pro jiné zásady CORS v oboru, které jsou přímé podřízené elementu příchozího a použijte je.  Pokud se nenaleznou žádné zásady CORS, ukončete žádost s prázdnou odpovědí 200 OK. Když požadavek GET nebo HEAD zahrnuje hlavičku Origin (a proto se zpracovává jako požadavek na více zdrojů) a neshoduje se s nastavením zásad CORS: Pokud je atribut nastavený na hodnotu `true` , okamžitě ukončete požadavek s prázdnou odpovědí 200 OK. Pokud je atribut nastavený na `false` , umožněte, aby požadavek pokračoval normálně a nepřidal do odpovědi HLAVIČKY CORS.|Ne|true|
-|Kontrola před výstupem – výsledek – maximum – stáří|`Access-Control-Max-Age`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost uživatelského agenta ukládat do mezipaměti před letem.|Ne|0|
+|povolení – pověření|`Access-Control-Allow-Credentials`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost klienta odesílat přihlašovací údaje v rámci požadavků mezi doménami.|No|false (nepravda)|
+|ukončené – nespárované – požadavek|Tento atribut řídí zpracování žádostí mezi zdroji, které neodpovídají nastavení zásad CORS. Pokud je žádost o možnosti zpracována jako požadavek před letem a neshoduje se s nastavením zásad CORS: Pokud je atribut nastaven na hodnotu `true` , okamžitě ukončí požadavek s prázdnou odpovědí 200 OK; Pokud je atribut nastavený na `false` , podívejte se na příchozí pro jiné zásady CORS v oboru, které jsou přímé podřízené elementu příchozího a použijte je.  Pokud se nenaleznou žádné zásady CORS, ukončete žádost s prázdnou odpovědí 200 OK. Když požadavek GET nebo HEAD zahrnuje hlavičku Origin (a proto se zpracovává jako požadavek na více zdrojů) a neshoduje se s nastavením zásad CORS: Pokud je atribut nastavený na hodnotu `true` , okamžitě ukončete požadavek s prázdnou odpovědí 200 OK. Pokud je atribut nastavený na `false` , umožněte, aby požadavek pokračoval normálně a nepřidal do odpovědi HLAVIČKY CORS.|No|true|
+|Kontrola před výstupem – výsledek – maximum – stáří|`Access-Control-Max-Age`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost uživatelského agenta ukládat do mezipaměti před letem.|No|0|
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -173,13 +173,13 @@ Pokud přidáte parametr zpětného volání, `?cb=XXX` vrátí výsledek JSONP 
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|JSONP|Kořenový element.|Ano|
+|JSONP|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|zpětné volání – parametr-Name|Funkce jazyka JavaScript mezi doménami začíná předponou s plně kvalifikovaným názvem domény, kde se nachází funkce.|Ano|–|
+|zpětné volání – parametr-Name|Funkce jazyka JavaScript mezi doménami začíná předponou s plně kvalifikovaným názvem domény, kde se nachází funkce.|Yes|–|
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.

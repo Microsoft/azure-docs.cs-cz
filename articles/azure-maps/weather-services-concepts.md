@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96904733"
 ---
 # <a name="weather-services-preview-in-azure-maps"></a>Počasí Services (Preview) v Azure Maps
@@ -60,46 +60,46 @@ Některá rozhraní API služby počasí (Preview) vrací `iconCode` odpověď v
 
 | Číslo ikony |Ikona| Den | Veletrh | Text |
 |-------------|:----:|-----|-------|------|
-| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Ano |  No    | Slunečné|
-| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Ano |  No    | Hlavně Slunečné|
-| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Ano |  No    | Částečně Slunečné|
-| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Ano |  No    | Přerušované cloudy|
-| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Ano |  No    | Hazy slunečno |
-| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Ano |  No    | Hlavně cloudová|
-| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Ano |  Ano   | Cloudové |
-| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Ano |  Ano   | Dreary (Overcast)|
-| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Ano |  Ano   | Mlhy|
-| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Ano |  Ano   | Sprchování|
-| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Ano |  No    | Hlavně cloudová s sprchami|
-| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Ano |  No    | Částečně Slunečné se sprchami|
-| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Ano |  Ano   | Thunderstorms|
-| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Ano |  No    | Hlavně cloudy s thunderstorms|
-| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Ano |  No    | Částečně Slunečné s thunderstorms|
-| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Ano |  Ano   | Zástěr|
-| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Ano |  Ano   | Flurries|
-| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Ano |  No    | Hlavně cloudy s Flurries|
-| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Ano |  No    | Částečně Slunečné s Flurries|
-| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Ano |  Ano   | Pohádk|
-| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Ano |  No    | Hlavně cloudy s Sněhou|     
-| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Ano |  Ano   | Ice |
-| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Ano |  Ano   | Sleet|
-| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Ano |  Ano   | Zamrznutí deště|
-| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Ano |  Ano   | Deště a sněhu|
-| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Ano |  Ano   | Horká|
-| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Ano |  Ano   | Bez zájmu|
-| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Ano |  Ano   | Vítr|
-| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | No  |  Ano   | Vymazat|
-| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | No  |  Ano   | Hlavně jasné|
-| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | No  |  Ano   | Částečně cloudová|
-| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | No  |  Ano   | Přerušované cloudy|
-| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | No  |  Ano   | Hazy Moonlight|
-| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | No  |  Ano   | Hlavně cloudová|
-| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | No  |  Ano   | Částečná cloudová a sprchová|
-| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | No  |  Ano   | Hlavně cloudová s sprchami|
-| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | No  |  Ano   | Částečná cloudová aplikace s thunderstorms|
-| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | No  |  Ano   | Hlavně cloudy s thunderstorms|
-| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | No  |  Ano   | Hlavně cloudy s Flurries|
-| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | No  |  Ano   | Hlavně cloudy s Sněhou|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Yes |  No    | Slunečné|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Yes |  No    | Hlavně Slunečné|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Yes |  No    | Částečně Slunečné|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Yes |  No    | Přerušované cloudy|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Yes |  No    | Hazy slunečno |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Yes |  No    | Hlavně cloudová|
+| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Yes |  Yes   | Cloudové |
+| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Yes |  Yes   | Dreary (Overcast)|
+| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Yes |  Yes   | Mlhy|
+| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Yes |  Yes   | Sprchování|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Yes |  No    | Hlavně cloudová s sprchami|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Yes |  No    | Částečně Slunečné se sprchami|
+| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Yes |  Yes   | Thunderstorms|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Yes |  No    | Hlavně cloudy s thunderstorms|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Yes |  No    | Částečně Slunečné s thunderstorms|
+| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Yes |  Yes   | Zástěr|
+| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Yes |  Yes   | Flurries|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Yes |  No    | Hlavně cloudy s Flurries|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Yes |  No    | Částečně Slunečné s Flurries|
+| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Yes |  Yes   | Pohádk|
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Yes |  No    | Hlavně cloudy s Sněhou|     
+| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Yes |  Yes   | Ice |
+| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Yes |  Yes   | Sleet|
+| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Yes |  Yes   | Zamrznutí deště|
+| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Yes |  Yes   | Deště a sněhu|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Yes |  Yes   | Horká|
+| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Yes |  Yes   | Bez zájmu|
+| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Yes |  Yes   | Vítr|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | No  |  Yes   | Vymazat|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | No  |  Yes   | Hlavně jasné|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | No  |  Yes   | Částečně cloudová|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | No  |  Yes   | Přerušované cloudy|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | No  |  Yes   | Hazy Moonlight|
+| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | No  |  Yes   | Hlavně cloudová|
+| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | No  |  Yes   | Částečná cloudová a sprchová|
+| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | No  |  Yes   | Hlavně cloudová s sprchami|
+| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | No  |  Yes   | Částečná cloudová aplikace s thunderstorms|
+| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | No  |  Yes   | Hlavně cloudy s thunderstorms|
+| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | No  |  Yes   | Hlavně cloudy s Flurries|
+| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | No  |  Yes   | Hlavně cloudy s Sněhou|
 
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Barevná škála paprskových a satelitních snímků
@@ -589,7 +589,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   ----------------|--------------|------------
   Nízká                |  0         |        1,99
   Pokročilé           |  2         |        3,99
-  Vysoké               |  4         |        5.99
+  Vysoká               |  4         |        5.99
   Velmi vysoké          |  6         |        7,99
   Extreme            |  8         |        10
 
@@ -599,7 +599,7 @@ Níže je uveden seznam dostupných skupin indexů (indexGroupId):
   ----------------|--------------|------------
   Nízká                |  0            |      2,99
   Pokročilé           |  3            |      4,99
-  Vysoké               |  5            |      6,99
+  Vysoká               |  5            |      6,99
   Velmi vysoké          |  7            |      8,99
   Extreme            |  9            |      10
 

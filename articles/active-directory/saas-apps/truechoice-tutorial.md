@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: jeedes
 ms.openlocfilehash: 7d9ae4e92c81e7a4aff2ae14c3775c18637c5b8b
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103202652"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-truechoice"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TrueChoice
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat TrueChoice s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TrueChoice svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

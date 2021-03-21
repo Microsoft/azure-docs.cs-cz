@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: justinha
 ms.openlocfilehash: ebfc2476b7955b926f86094de03973155386eb8f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619963"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Vytvoření doménové struktury prostředků Azure Active Directory Domain Services a odchozího vztahu důvěryhodnosti doménové struktury do místní domény pomocí Azure PowerShell
@@ -102,7 +102,7 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
 1. Zkontrolujte následující parametry potřebné pro tento `New-AzureAaddsForest` skript. Ujistěte se, že máte také požadované **Azure PowerShell** a moduly **Azure AD PowerShellu** . Ujistěte se, že jste naplánovali požadavky virtuální sítě, aby poskytovaly aplikace a místní připojení.
 
-    | Název                         | Parametr skriptu          | Popis |
+    | Name                         | Parametr skriptu          | Popis |
     |:-----------------------------|---------------------------|:------------|
     | Předplatné                 | *– azureSubscriptionId*    | ID předplatného, které se používá pro fakturaci Azure služba AD DS Seznam předplatných můžete získat pomocí rutiny [Get-AzureRMSubscription][Get-AzureRMSubscription] . |
     | Skupina prostředků               | *-aaddsResourceGroupName* | Název skupiny prostředků pro spravovanou doménu a přidružené prostředky. |
@@ -112,7 +112,7 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
     `New-AzureAaddsForest`Skript může vytvořit virtuální síť Azure a podsíť azure služba AD DS, pokud tyto prostředky ještě neexistují. Skript může volitelně vytvořit podsítě úloh, pokud jsou zadané:
 
-    | Název                              | Parametr skriptu                  | Popis |
+    | Name                              | Parametr skriptu                  | Description |
     |:----------------------------------|:----------------------------------|:------------|
     | Název virtuální sítě              | *-aaddsVnetName*                  | Název virtuální sítě pro spravovanou doménu.|
     | Adresní prostor                     | *-aaddsVnetCIDRAddressSpace*      | Rozsah adres virtuální sítě v zápisu CIDR (při vytváření virtuální sítě).|
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Nyní zadejte skript následující informace:
 
-| Název                               | Parametr skriptu     | Popis |
+| Name                               | Parametr skriptu     | Description |
 |:-----------------------------------|:---------------------|:------------|
 | Název domény pro Azure služba AD DS            | *-ManagedDomainFqdn* | Plně kvalifikovaný název domény spravované domény, například *aaddscontoso.com* |
 | Název domény v místním služba AD DS      | *-TrustFqdn*         | Plně kvalifikovaný název domény důvěryhodné doménové struktury, například *OnPrem.contoso.com* |

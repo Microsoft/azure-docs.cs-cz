@@ -10,10 +10,10 @@ ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: b4840b36d5dadc14bbd664b844e3bcce6f6fec4d
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103201677"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Nasazení Azure IoT Edgech modulů z Visual Studio Code
@@ -24,7 +24,7 @@ Jakmile vytvoříte IoT Edge moduly s obchodní logikou, chcete je nasadit do sv
 
 Tento článek ukazuje, jak vytvořit manifest nasazení JSON a pak ho použít k nahrání nasazení do zařízení IoT Edge. Informace o vytvoření nasazení, které cílí na více zařízení na základě jejich sdílených značek, najdete v tématu [nasazení IoT Edgech modulů ve velkém měřítku pomocí Visual Studio Code](how-to-deploy-vscode-at-scale.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
 * Zařízení IoT Edge

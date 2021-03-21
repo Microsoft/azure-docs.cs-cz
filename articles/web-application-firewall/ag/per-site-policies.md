@@ -9,10 +9,10 @@ ms.date: 12/09/2020
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: ef4337b187500695d9ef1c0b896d6ae8b5663ca6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96938847"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Konfigurace zásad WAF pro jednotlivé lokality pomocí Azure PowerShell
@@ -35,7 +35,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ![Příklad firewallu webových aplikací](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

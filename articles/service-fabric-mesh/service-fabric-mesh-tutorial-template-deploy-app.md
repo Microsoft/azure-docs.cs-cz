@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
 ms.openlocfilehash: 589e881eb48daf7da9cd2a934b14acfcc76dc5f9
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99625412"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
@@ -39,7 +39,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -352,8 +352,8 @@ V souboru parametrů aktualizujte hodnoty následujících parametrů:
 |registryPassword|Heslo, které jste získali dříve v části [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry). Tento parametr je v šabloně zabezpečeným řetězcem a nezobrazí se ve stavu nasazení ani v příkazech `az mesh service show`.|
 |registryUserName|Uživatelské jméno, které jste získali v části [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry).|
 |registryServer|Název serveru registru, který jste získali v části [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry).|
-|frontEndImage|Image kontejneru pro front-endovou službu.  Například `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`.|
-|serviceImage|Image kontejneru pro back-endovou službu.  Například `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`.|
+|frontEndImage|Image kontejneru pro front-endovou službu.  Například, `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`.|
+|serviceImage|Image kontejneru pro back-endovou službu.  Například, `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`.|
 
 Aplikaci nasadíte spuštěním následujícího příkazu:
 

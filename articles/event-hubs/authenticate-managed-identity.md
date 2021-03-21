@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98805301"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs
@@ -57,8 +57,8 @@ Chcete-li přiřadit roli k Event Hubs prostředkům, přejděte k tomuto prost�
 1. V Azure Portal přejděte na svůj obor názvů Event Hubs a zobrazte **Přehled** oboru názvů. 
 1. V nabídce vlevo vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro centrum událostí.
 1.  Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
-3.  Vyberte **Přidat** a pak vyberte **Přidat přiřazení role** _.
-4.  Na stránce _ *Přidat přiřazení role** použijte následující postup:
+3.  Vyberte **Přidat** a pak vybrat * * přidat přiřazení role * * *.
+4.  Na stránce **Přidat přiřazení role** použijte následující postup:
     1. Jako **role** vyberte roli Event Hubs, kterou chcete přiřadit. V tomto příkladu se jedná o **vlastníka dat Event Hubs Azure**.
     1. V poli **přiřadit přístup k** vyberte **App Service** v části **spravovaná identita přiřazená systémem**. 
     1. Vyberte **předplatné** , ve kterém se vytvořila spravovaná identita pro webovou aplikaci.

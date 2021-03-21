@@ -5,10 +5,10 @@ ms.date: 03/10/2021
 ms.topic: reference
 ms.custom: generated
 ms.openlocfilehash: d7b4be0b35fdfebd2f680a299bc7b90375e36afc
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102633763"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
@@ -91,7 +91,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Podregistr. streamování/služby (streamování podregistru)
 - incapsula. WAF/účty
 - LiveArena. Broadcast/Services (všesměrové vysílání LiveArena)
-- Mailjet. E-mail/služby (Mailjet e-mailová služba)
+- Mailjet.Email/services (e-mailová služba Mailjet)
 - Microsoft. AAD/domainServices (Azure AD Domain Services)
 - Microsoft. aadiam/azureadmetrics
 - Microsoft. aadiam/privateLinkForAzureAD (privátní odkaz pro Azure AD)
@@ -639,7 +639,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - zprostředkovatelé. test/statelessresources
 - RavenHq. DB/databáze (RavenHQ)
 - Raygun. CrashReporting/Apps (Raygun)
-- SendGrid. E-mail/účty (účty SendGrid)
+- Sendgrid.Email/accounts (účty SendGrid)
 - Sparkpost. Basic/Services (SparkPost)
 - Stackify. Retrace/Services (Stackify)
 - test. Shoebox/testresources

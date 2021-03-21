@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
 ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348615"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky
@@ -23,7 +23,7 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 
 ## <a name="supported-authentication-types"></a>Podporované typy ověřování
 
-| Typy ověřování | Popis |
+| Typy ověřování | Description |
 | ---------------------|-------------|
 |**Basic** | Budete muset být schopni zadat základní parametry pro přístup ke zdrojům dat. Například připojovací řetězec nebo klíč. Správci datového kanálu můžou tyto přihlašovací údaje zobrazit. |
 | **AzureManagedIdentity** | [Spravované identity](../../active-directory/managed-identities-azure-resources/overview.md) prostředků Azure je funkce Azure Active Directory. Poskytuje služby Azure s automaticky spravovanou identitou ve službě Azure AD. Identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD.|
@@ -37,23 +37,23 @@ V tomto článku najdete nastavení a požadavky pro propojení různých typů 
 
 | Zdroje dat | Typy ověřování |
 |-------------| ---------------------|
-|[**Azure Application Insights**](#appinsights)|  Základní |
-|[**Azure Blob Storage (JSON)**](#blob) | Základní<br>Spravovaná identita|
-|[**Azure Cosmos DB (SQL)**](#cosmosdb) | Základní |
-|[**Azure Data Explorer (Kusto)**](#kusto) | Základní<br>Spravovaná identita|
-|[**Azure Data Lake Storage Gen2**](#adl) | Základní<br>DataLakeGen2SharedKey<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br> |
-|[**Azure SQL Database/SQL Server**](#sql) | Základní<br>Spravovaná identita<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br>AzureSQLConnectionString
-|[**Table Storage Azure**](#table) | Základní | 
-|[**ElasticSearch**](#es) | Základní |
-|[**Požadavek http**](#http) | Základní | 
-|[**InfluxDB (InfluxQL)**](#influxdb) | Základní |
-|[**MongoDB**](#mongodb) | Základní |
-|[**MySQL**](#mysql) | Základní |
-|[**PostgreSQL**](#pgsql)| Základní|
+|[**Application Insights Azure**](#appinsights)|  Basic |
+|[**Azure Blob Storage (JSON)**](#blob) | Basic<br>Spravovaná identita|
+|[**Azure Cosmos DB (SQL)**](#cosmosdb) | Basic |
+|[**Azure Data Explorer (Kusto)**](#kusto) | Basic<br>Spravovaná identita|
+|[**Azure Data Lake Storage Gen2**](#adl) | Basic<br>DataLakeGen2SharedKey<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br> |
+|[**Azure SQL Database/SQL Server**](#sql) | Basic<br>Spravovaná identita<br>Instanční objekt<br>Instanční objekt z trezoru klíčů<br>AzureSQLConnectionString
+|[**Table Storage Azure**](#table) | Basic | 
+|[**ElasticSearch**](#es) | Basic |
+|[**Požadavek http**](#http) | Basic | 
+|[**InfluxDB (InfluxQL)**](#influxdb) | Basic |
+|[**MongoDB**](#mongodb) | Basic |
+|[**MySQL**](#mysql) | Basic |
+|[**PostgreSQL**](#pgsql)| Basic|
 
 Vytvořte **entitu přihlašovacích údajů** a použijte ji k ověřování vašich zdrojů dat. Následující oddíly určují parametry požadované pro *základní* ověřování. 
 
-## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
+## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Application Insights Azure</span>
 
 * **ID aplikace**: používá se k identifikaci této aplikace při použití rozhraní Application Insights API. Chcete-li získat ID aplikace, postupujte následovně:
 
@@ -93,7 +93,7 @@ Vytvořte **entitu přihlašovacích údajů** a použijte ji k ověřování va
   
   * V1 (výchozí hodnota)
 
-      Akceptují se jenom *hodnoty* a *název* metriky. Příklad:
+      Akceptují se jenom *hodnoty* a *název* metriky. Například:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Vytvořte **entitu přihlašovacích údajů** a použijte ji k ověřování va
 
   * v2
 
-      Jsou také přijaty *dimenze* metriky a *časové razítko* . Příklad:
+      Jsou také přijaty *dimenze* metriky a *časové razítko* . Například:
       
       ``` JSON
       [
@@ -159,7 +159,7 @@ Pro každý soubor JSON je povoleno pouze jedno časové razítko.
   * `%h` je hodina formátovaná jako `HH`
   * `%M` je minuta formátovaná jako `mm`
 
-V současné době metrika podporuje schéma dat v souborech JSON následujícím způsobem. Příklad:
+V současné době metrika podporuje schéma dat v souborech JSON následujícím způsobem. Například:
 
 ``` JSON
 [
@@ -210,7 +210,7 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Table Storage Azure</span>
 
 * **Připojovací řetězec**: Přečtěte si téma [zobrazení a zkopírování připojovacího řetězce](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys) , kde najdete informace o tom, jak načíst připojovací řetězec z Azure Table Storage.
 

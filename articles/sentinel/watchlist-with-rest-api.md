@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/11/2021
 ms.author: yelevin
 ms.openlocfilehash: ea571f9b033ba82709a13c6d32649f3228ee04b1
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98798406"
 ---
 # <a name="manage-watchlists-in-azure-sentinel-using-rest-api"></a>Správa watchlists ve službě Azure Sentinel pomocí REST API
@@ -33,7 +33,7 @@ Pomocí služby Azure Sentinel, která je součástí služby Azure Monitor Log 
 
 Níže jsou uvedené společné parametry identifikátoru URI pro všechny příkazy rozhraní seznamu ke zhlédnutí API:
 
-| Name | V | Požaduje se | Typ | Popis |
+| Name | V | Požaduje se | Typ | Description |
 |-|-|-|-|-|
 | **SubscriptionId** | program | ano | Identifikátor GUID | ID předplatného Azure |
 | **ResourceGroupName** | program | ano | řetězec | název skupiny prostředků v rámci předplatného |
@@ -58,7 +58,7 @@ Tento příkaz načte všechny watchlists přidružené k pracovnímu prostoru b
 
 ### <a name="responses"></a>Odpovědi
 
-| Stavový kód | Text odpovědi | Popis |
+| Stavový kód | Text odpovědi | Description |
 |-|-|-|
 | 200/OK | Seznam existujících watchlists nebo prázdné, pokud se nenašly žádné seznamu ke zhlédnutíy |  |
 | 400/Chybný požadavek |  | Chybná syntaxe žádosti, neplatný parametr požadavku... |
@@ -78,7 +78,7 @@ Tento příkaz načte konkrétní seznamu ke zhlédnutí přidružený k pracovn
 
 ### <a name="responses"></a>Odpovědi
 
-| Stavový kód | Text odpovědi | Popis |
+| Stavový kód | Text odpovědi | Description |
 |-|-|-|
 | 200/OK | Požadovaný seznamu ke zhlédnutí |  |
 | 400/Chybný požadavek |  | Chybná syntaxe žádosti, neplatný parametr požadavku... |
@@ -116,7 +116,7 @@ Zde je ukázka těla žádosti žádosti o vytvoření seznamu ke zhlédnutí:
 
 ### <a name="responses"></a>Odpovědi
 
-| Stavový kód | Text odpovědi | Popis |
+| Stavový kód | Text odpovědi | Description |
 |-|-|-|
 | 200/OK | Seznamu ke zhlédnutí vytvořený požadavkem, bez položek |  |
 | 400/Chybný požadavek |  | Chybná syntaxe žádosti, neplatný parametr požadavku... |
@@ -137,7 +137,7 @@ Tento příkaz odstraní seznamu ke zhlédnutí a jeho položky.
 
 ### <a name="responses"></a>Odpovědi
 
-| Stavový kód | Text odpovědi | Popis |
+| Stavový kód | Text odpovědi | Description |
 |-|-|-|
 | 200/OK | Prázdné tělo odpovědi |  |
 | 204/žádný obsah | Prázdné tělo odpovědi | Nic neodstraněno |
@@ -176,7 +176,7 @@ Tady je ukázka textu žádosti o žádost o přidání/aktualizaci seznamu ke z
 
 ### <a name="responses"></a>Odpovědi
 
-| Stavový kód | Text odpovědi | Popis |
+| Stavový kód | Text odpovědi | Description |
 |-|-|-|
 | 200/OK | Položka seznamu ke zhlédnutí vytvořena nebo aktualizována žádostí |  |
 | 400/Chybný požadavek |  | Chybná syntaxe žádosti, neplatný parametr požadavku... |
@@ -197,7 +197,7 @@ Tento příkaz odstraní existující položku seznamu ke zhlédnutí.
 
 ### <a name="responses"></a>Odpovědi
 
-| Stavový kód | Text odpovědi | Popis |
+| Stavový kód | Text odpovědi | Description |
 |-|-|-|
 | 200/OK | Prázdné tělo odpovědi |  |
 | 204/žádný obsah | Prázdné tělo odpovědi | Nic neodstraněno |

@@ -4,10 +4,10 @@ description: Tento článek poskytuje pokyny k vytvoření vlastní role Azure R
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.openlocfilehash: 80974c111dd451314635d06334766322bc68e437
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210440"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Vytvoření vlastní role Azure Resource Manager a přiřazení k instančnímu objektu
@@ -16,7 +16,7 @@ Live video Analytics v instanci modulu IoT Edge potřebuje pro správné fungov�
 
 V tomto článku se dozvíte, jak vytvořit vlastní roli Azure Resource Manager s Azure Cloud Shell, která pak slouží k vytvoření instančního objektu.
 
-## <a name="prerequisites"></a>Požadavky  
+## <a name="prerequisites"></a>Předpoklady  
 
 Požadavky pro tento článek jsou následující:
 
@@ -179,7 +179,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 Parametry:
 
-|Parametry|Popis| 
+|Parametry|Description| 
 |---|---|
 |--role |Název nebo ID vlastní role V našem případě: "LVAEdge uživatel".|
 |--nabyvatel-objektu-ID|ID objektu instančního objektu, který budete používat.|

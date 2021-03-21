@@ -12,10 +12,10 @@ ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
 ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98797774"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení Video Indexer widgetů do aplikací
@@ -291,7 +291,7 @@ Ve výchozím nastavení se přehrávač začne přehrávat ve videu. Můžete s
 
 Podívejte se na úložiště [ukázek kódu](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) , které obsahuje ukázky pro video indexer rozhraní API a widgety:
 
-| Soubor nebo složka                       | Popis                                |
+| Soubor nebo složka                       | Description                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | Načíst video indexerer ve vlastním Azure Media Player.                        |
 | `azure-media-player-vi-insights`  | Vložte VI přehledů s vlastní Azure Media Player.                             |

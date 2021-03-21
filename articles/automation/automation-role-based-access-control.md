@@ -7,10 +7,10 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895913"
 ---
 # <a name="manage-role-permissions-and-security"></a>Správa oprávnění rolí a zabezpečení
@@ -176,7 +176,7 @@ Přispěvatel monitorování může číst všechna data monitorování a aktual
 |Microsoft. AlertsManagement/alertsSummary/*|Spravujte řídicí panel výstrah.|
 |Microsoft. Insights/AlertRules/*|Spravujte pravidla výstrah.|
 |Microsoft. Insights/Components/*|Spravovat součásti Application Insights.|
-|Microsoft. Insights/DiagnosticSettings/*|Spravovat nastavení diagnostiky.|
+|Microsoft.Insights/DiagnosticSettings/*|Spravovat nastavení diagnostiky.|
 |Microsoft. Insights/EventTypes/*|Vypíše události protokolu aktivit (události správy) v předplatném. Toto oprávnění platí pro programový i portálový přístup k protokolu aktivit.|
 |Microsoft. Insights/LogDefinitions/*|Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit prostřednictvím portálu. Vypíše kategorie protokolů v protokolu aktivit.|
 |Microsoft. Insights/MetricDefinitions/*|Čtení definic metriky (seznam dostupných typů metrik pro prostředek).|

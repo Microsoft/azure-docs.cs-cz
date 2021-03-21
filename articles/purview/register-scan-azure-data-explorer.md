@@ -8,21 +8,21 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/9/2020
 ms.openlocfilehash: 7adc7f568fb82692f2c96f610575076e397bd99c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896098"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>Registrace a kontrola Průzkumník dat v Azure
 
 Tento článek popisuje, jak zaregistrovat účet Azure Průzkumník dat v Azure dosah a nastavit kontrolu.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Azure Průzkumník dat podporuje úplné a přírůstkové kontroly pro zachycení metadat a schématu. Kontroly také automaticky klasifikují data na základě systémových a vlastních pravidel klasifikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 - Musíte být správcem zdroje dat služby Azure dosah.

@@ -9,16 +9,16 @@ ms.date: 07/08/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b26d4af29a92fb0f14c52e76a7eae1d0073a3aa0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005304"
 ---
 K této chybě může dojít v případě, že server nemá přístup ke službě Synchronizace souborů Azure. Při řešení této chyby můžete použít následující postup:
 
 1. Ověřte, že `FileSyncSvc.exe` Brána firewall neblokuje službu systému Windows.
-2. Ověřte, že je port 443 otevřený pro odchozí připojení ke službě Azure File Sync. Můžete to provést pomocí `Test-NetConnection` rutiny. Adresu URL místo zástupného textu `<azure-file-sync-endpoint>` najdete v dokumentu [Nastavení proxy a brány firewall Synchronizace souborů Azure](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall). 
+2. Ověřte, že je port 443 otevřený pro odchozí připojení ke službě Synchronizace souborů Azure. Můžete to provést pomocí `Test-NetConnection` rutiny. Adresu URL místo zástupného textu `<azure-file-sync-endpoint>` najdete v dokumentu [Nastavení proxy a brány firewall Synchronizace souborů Azure](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall). 
 
     ```powershell
     Test-NetConnection -ComputerName <azure-file-sync-endpoint> -Port 443

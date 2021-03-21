@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.openlocfilehash: f33c5f0fdf69737df0d8bd83499ded1e0e0f4f88
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898109"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Řešení potíží s připojením k Azure Network Watcher pomocí Azure Portal
@@ -49,7 +49,7 @@ Po kliknutí na **zkontrolovat** se zkontroluje připojení mezi virtuálními p
 
 ![Podívejte se na výsledky připojení pro virtuální počítač.][1]
 
-## <a name="check-remote-endpoint-connectivity"></a>Kontrolovat připojení vzdáleného koncového bodu
+## <a name="check-remote-endpoint-connectivity"></a>Kontrola připojení ke vzdálenému koncovému bodu
 
 Pokud chcete zjistit konektivitu a latenci pro vzdálený koncový bod, zvolte v části **cíl** možnost **zadat ručně** přepínací tlačítko, zadejte adresu URL a port a klikněte na tlačítko **ověřit**.  Používá se pro vzdálené koncové body, jako jsou weby a koncové body úložiště.
 

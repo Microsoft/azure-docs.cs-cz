@@ -16,10 +16,10 @@ ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732060"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>Přiřazení spravované identity přístup k roli aplikace pomocí PowerShellu
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak přiřadit spravovanou identitu k aplikační 
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.

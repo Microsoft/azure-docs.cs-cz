@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e69a97a86a357fb36dde572f292b5cac7963d14a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95912480"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2
@@ -21,7 +21,7 @@ Pomocí [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html
 
 DistCp poskytuje nejrůznější parametry příkazového řádku a důrazně doporučujeme, abyste si tento článek přečetli, abyste mohli optimalizovat jeho využití. Tento článek ukazuje základní funkce a zaměřuje se na její použití ke kopírování dat na účet s povoleným hierarchickým oborem názvů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Existující účet Azure Storage bez povolených možností Data Lake Storage Gen2 (hierarchický obor názvů).

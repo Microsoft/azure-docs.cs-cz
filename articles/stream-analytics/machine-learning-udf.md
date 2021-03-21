@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: c35d5d2f63f4a7abe80a0ff19e5994013355c386
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020515"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
 Modely strojového učení můžete implementovat jako uživatelsky definovanou funkci (UDF) ve svých úlohách Azure Stream Analytics, abyste v reálném čase provedli bodování a předpovědi se na vašich vstupních datech streamování. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) vám umožňuje používat libovolný oblíbený open source nástroj, jako je Tensorflow, scikit-učení nebo PyTorch, pro přípravu, výuku a nasazení modelů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy proveďte následující kroky:
 
