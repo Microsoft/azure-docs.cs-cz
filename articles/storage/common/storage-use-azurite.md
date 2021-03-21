@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490777"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Použití emulátoru Azurite pro vývoj místních Azure Storage
@@ -136,7 +136,7 @@ Po instalaci a sestavování Azurite najdete informace v tématu [spuštění Az
 > [!NOTE]
 > Azurite nelze spustit z příkazového řádku, pokud jste nainstalovali pouze rozšíření Visual Studio Code. Místo toho použijte Visual Studio Code paletu příkazů. Další informace najdete v tématu [instalace a spuštění rozšíření Azurite Visual Studio Code](#install-and-run-the-azurite-visual-studio-code-extension).
 
-Pokud chcete začít hned s příkazovým řádkem, vytvořte adresář s názvem *c:\azurite*a potom spusťte Azurite spuštěním následujícího příkazu:
+Pokud chcete začít hned s příkazovým řádkem, vytvořte adresář s názvem *c:\azurite* a potom spusťte Azurite spuštěním následujícího příkazu:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
@@ -148,7 +148,7 @@ Tento příkaz oznamuje Azurite, aby ukládal všechna data do konkrétního adr
 
 Tato část podrobně popisuje přepínače příkazového řádku, které jsou k dispozici při spuštění Azurite.
 
-### <a name="help"></a>Nápověda
+### <a name="help"></a>Help
 
 **Volitelné** – získat nápovědu příkazového řádku pomocí `-h` `--help` přepínače nebo.
 
@@ -480,7 +480,7 @@ V Průzkumník služby Storage se připojte k Azurite pomocí následujících k
 
 #### <a name="connect-to-azurite-using-https"></a>Připojení k Azurite pomocí protokolu HTTPS
 
-Ve výchozím nastavení Průzkumník služby Storage neotevře koncový bod HTTPS, který používá certifikát podepsaný svým držitelem. Pokud používáte Azurite s protokolem HTTPS, pravděpodobně budete používat certifikát podepsaný svým držitelem. V Průzkumník služby Storage importujte certifikáty SSL přes dialogové okno **Upravit**certifikáty  ->  **SSL**  ->  **importovat certifikáty** .
+Ve výchozím nastavení Průzkumník služby Storage neotevře koncový bod HTTPS, který používá certifikát podepsaný svým držitelem. Pokud používáte Azurite s protokolem HTTPS, pravděpodobně budete používat certifikát podepsaný svým držitelem. V Průzkumník služby Storage importujte certifikáty SSL přes dialogové okno **Upravit** certifikáty  ->  **SSL**  ->  **importovat certifikáty** .
 
 ##### <a name="import-certificate-to-storage-explorer"></a>Importovat certifikát do Průzkumník služby Storage
 

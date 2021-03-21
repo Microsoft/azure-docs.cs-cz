@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak dočasně pozastavit a znovu aktivo
 ms.topic: article
 ms.date: 09/29/2020
 ms.openlocfilehash: ea1acab3d0a86b0064f8b3eef7bfd1496bd17041
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94543047"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Pozastavení a opětovná aktivace entit zasílání zpráv (zakázat)
@@ -21,10 +21,10 @@ Přerušení nebo opětovnou aktivaci může provést buď uživatel, nebo syst�
 ## <a name="queue-status"></a>Stav fronty 
 Stavy, které lze nastavit pro **frontu** , jsou:
 
--   **Aktivní** : fronta je aktivní. Můžete odesílat zprávy a přijímat zprávy z fronty. 
--   **Zakázáno** : fronta je pozastavena. Je ekvivalentní nastavení **SendDisabled** i **ReceiveDisabled**. 
--   **SendDisabled** : nemůžete odesílat zprávy do fronty, ale můžete z ní přijímat zprávy. Pokud se pokusíte odeslat zprávy do fronty, získáte výjimku. 
--   **ReceiveDisabled** : můžete odesílat zprávy do fronty, ale nemůžete z ní přijímat zprávy. Pokud se pokusíte přijímat zprávy do fronty, získáte výjimku.
+-   **Aktivní**: fronta je aktivní. Můžete odesílat zprávy a přijímat zprávy z fronty. 
+-   **Zakázáno**: fronta je pozastavena. Je ekvivalentní nastavení **SendDisabled** i **ReceiveDisabled**. 
+-   **SendDisabled**: nemůžete odesílat zprávy do fronty, ale můžete z ní přijímat zprávy. Pokud se pokusíte odeslat zprávy do fronty, získáte výjimku. 
+-   **ReceiveDisabled**: můžete odesílat zprávy do fronty, ale nemůžete z ní přijímat zprávy. Pokud se pokusíte přijímat zprávy do fronty, získáte výjimku.
 
 
 ### <a name="change-the-queue-status-in-the-azure-portal"></a>Změňte stav fronty v Azure Portal: 
@@ -57,9 +57,9 @@ Stav tématu můžete změnit v Azure Portal. Výběrem aktuálního stavu téma
 :::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Změnit stav tématu":::
 
 Stavy, které lze nastavit pro **téma** :
-- **Aktivní** : téma je aktivní. Můžete odeslat zprávy do tématu. 
-- **Zakázáno** : téma je pozastaveno. Nemůžete odeslat zprávy do tématu. 
-- **SendDisabled** : stejný efekt jako **zakázaný**. Nemůžete odeslat zprávy do tématu. Pokud se pokusíte odeslat zprávy do tématu, získáte výjimku. 
+- **Aktivní**: téma je aktivní. Můžete odeslat zprávy do tématu. 
+- **Zakázáno**: téma je pozastaveno. Nemůžete odeslat zprávy do tématu. 
+- **SendDisabled**: stejný efekt jako **zakázaný**. Nemůžete odeslat zprávy do tématu. Pokud se pokusíte odeslat zprávy do tématu, získáte výjimku. 
 
 ## <a name="subscription-status"></a>Stav předplatného
 V Azure Portal můžete změnit stav předplatného. Výběrem aktuálního stavu předplatného zobrazíte následující stránku, která umožňuje změnit stav. 
@@ -67,9 +67,9 @@ V Azure Portal můžete změnit stav předplatného. Výběrem aktuálního stav
 :::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Změnit stav předplatného":::
 
 Stavy, které je možné nastavit pro **předplatné** , jsou:
-- **Aktivní** : předplatné je aktivní. Můžete přijímat zprávy FRM předplatného.
-- **Zakázáno** : předplatné je pozastaveno. Z předplatného nemůžete přijímat zprávy. 
-- **ReceiveDisabled** : stejný efekt jako **zakázaný**. Z předplatného nemůžete přijímat zprávy. Pokud se pokusíte dostávat zprávy do předplatného, dostanete výjimku.
+- **Aktivní**: předplatné je aktivní. Můžete přijímat zprávy FRM předplatného.
+- **Zakázáno**: předplatné je pozastaveno. Z předplatného nemůžete přijímat zprávy. 
+- **ReceiveDisabled**: stejný efekt jako **zakázaný**. Z předplatného nemůžete přijímat zprávy. Pokud se pokusíte dostávat zprávy do předplatného, dostanete výjimku.
 
 | Stav tématu | Stav předplatného | Chování | 
 | ------------ | ------------------- | -------- | 

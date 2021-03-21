@@ -4,10 +4,10 @@ description: Naučte se používat funkce zabezpečení v Azure Backup k zajišt
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: da473b1d886ec2fe95a7baae76b09aff38fb3cd7
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95254021"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Obnovitelné odstranění pro Azure Backup
@@ -35,8 +35,8 @@ Je důležité si uvědomit, že jakmile je obnovitelné odstranění zakázané
 
 Chcete-li zakázat obnovitelné odstranění, použijte následující postup:
 
-1. V Azure Portal přejdete do svého trezoru a pak přejdete na **Settings**  ->  **vlastnosti** nastavení.
-2. V podokně Vlastnosti vyberte možnost aktualizace **nastavení zabezpečení**  ->  **Update**.  
+1. V Azure Portal přejdete do svého trezoru a pak přejdete na   ->  **vlastnosti** nastavení.
+2. V podokně Vlastnosti vyberte možnost aktualizace **nastavení zabezpečení**  ->  .  
 3. V podokně nastavení zabezpečení v části **obnovitelné odstranění** vyberte **Zakázat**.
 
 ![Zakázat obnovitelné odstranění](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
@@ -172,7 +172,7 @@ Trezor Recovery Services nelze odstranit, pokud jsou v trezoru nějaké zálohov
 
 ### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Můžu odstranit data starší než 14 dní, po jejichž uplynutí bude období obnovitelného odstranění?
 
-Ne. Odstranit neodstraněné položky nelze vynutit. Automaticky se odstraní po 14 dnech. Tato funkce zabezpečení má povolenou ochranu zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Před provedením jakékoli jiné akce s položkou byste měli počkat na 14 dní.  Odstraněné položky se nebudou účtovat.  Pokud potřebujete znovu nastavit ochranu položek označených pro obnovitelné odstranění do 14 dní v novém trezoru, obraťte se na podporu Microsoftu.
+No. Odstranit neodstraněné položky nelze vynutit. Automaticky se odstraní po 14 dnech. Tato funkce zabezpečení má povolenou ochranu zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Před provedením jakékoli jiné akce s položkou byste měli počkat na 14 dní.  Odstraněné položky se nebudou účtovat.  Pokud potřebujete znovu nastavit ochranu položek označených pro obnovitelné odstranění do 14 dní v novém trezoru, obraťte se na podporu Microsoftu.
 
 ### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>Může dojít k obnovitelnému odstranění operací v PowerShellu nebo rozhraní příkazového řádku?
 

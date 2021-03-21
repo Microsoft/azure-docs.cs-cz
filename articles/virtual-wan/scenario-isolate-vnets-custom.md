@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92461817"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Scénář: vlastní izolace pro virtuální sítě
@@ -55,7 +55,7 @@ Další informace o směrování virtuálních rozbočovačů najdete v tématu 
 
 ## <a name="workflow"></a><a name="architecture"></a>Pracovní postup
 
-Na **obrázku 1**jsou modrá a červená připojení k virtuální síti.
+Na **obrázku 1** jsou modrá a červená připojení k virtuální síti.
 
 * Modrou připojená virtuální sítě se může vzájemně navázat a získat přístup ke všem větvím připojení (VPN/ER/P2S).
 * Červené virtuální sítě se může vzájemně navázat a získat přístup ke všem větvím připojení (VPN/ER/P2S).
@@ -63,7 +63,7 @@ Na **obrázku 1**jsou modrá a červená připojení k virtuální síti.
 Při nastavování směrování Vezměte v úvahu následující kroky.
 
 1. Vytvořte dvě vlastní směrovací tabulky v Azure Portal **RT_BLUE** a **RT_RED**.
-2. Pro **RT_BLUE**směrovací tabulky pro následující nastavení:
+2. Pro **RT_BLUE** směrovací tabulky pro následující nastavení:
    * **Asociace**: vyberte všechny modré virtuální sítě.
    * **Šíření**: pro větve vyberte možnost pro větvení, což znamená, že připojení k síti (VPN/ER/P2S) šíří trasy do této směrovací tabulky.
 3. Opakujte stejný postup u **RT_RED** směrovací tabulky pro Red virtuální sítě a větví (VPN/ER/P2S).

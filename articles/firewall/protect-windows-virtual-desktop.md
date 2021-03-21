@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
 ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94654979"
 ---
-# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Ochrana nasazení virtuálních ploch s Windows pomocí Azure Firewallu
+# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Zajištění ochrany nasazení služby Windows Virtual Desktop s využitím služby Azure Firewall
 
 Virtuální plocha Windows je služba virtualizace plochy a aplikací, která běží v Azure. Když se koncový uživatel připojí k prostředí virtuálních počítačů s Windows, jejich relace se spustí fondem hostitelů. Fond hostitelů je kolekce virtuálních počítačů Azure, které se jako hostitelé relací registrují na virtuální plochu Windows. Tyto virtuální počítače běží ve vaší virtuální síti a podléhají ovládacím prvkům zabezpečení virtuální sítě. Potřebují odchozí internetový přístup ke službě Virtual Desktop systému Windows, aby fungovaly správně a mohly by pro koncové uživatele vyžadovat odchozí přístup k Internetu. Azure Firewall vám může pomáhat uzamknout prostředí a filtrovat odchozí provoz.
 
@@ -22,7 +22,7 @@ Virtuální plocha Windows je služba virtualizace plochy a aplikací, která b�
 
 Postupujte podle pokynů v tomto článku a poskytněte další ochranu fondu hostitelů virtuálních počítačů s Windows pomocí Azure Firewall.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 
  - Nasazené prostředí virtuálních počítačů s Windows a fond hostitelů.

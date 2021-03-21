@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.openlocfilehash: ee122727100ec0abad0dfe93b9e5f1be0276cb8e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519495"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Nastavení rolí Azure pro přístup pro správu k Azure Kognitivní hledání
@@ -26,7 +26,7 @@ Azure poskytuje [globální autorizační model založený na rolích](../role-b
 
 Pro Azure Kognitivní hledání role jsou přidružené k úrovním oprávnění, které podporují následující úlohy správy:
 
-| Role | Úloha |
+| Role | Úkol |
 | --- | --- |
 | Vlastník |Vytvořte nebo odstraňte službu nebo libovolný objekt ve službě, včetně klíčů rozhraní API, indexů, indexerů, zdrojů dat indexeru a plánů indexerů.<p>Zobrazení stavu služby, včetně počtu a velikosti úložiště<p>Přidat nebo odstranit členství v rolích (pouze vlastník může spravovat členství v rolích).<p>Správci předplatného a vlastníci služeb mají automatické členství v roli vlastníci. |
 | Přispěvatel | Stejná úroveň přístupu jako vlastník a minus Správa rolí Azure. Přispěvatel může například vytvořit nebo odstranit objekty nebo zobrazit a znovu vygenerovat [klíče rozhraní API](search-security-api-keys.md), ale nemůže změnit členství v rolích.<br><br>[Přispěvatel Search Service](../role-based-access-control/built-in-roles.md#search-service-contributor) je ekvivalentní k předdefinované roli obecného přispěvatele. |

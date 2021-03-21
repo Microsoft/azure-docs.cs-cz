@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 68bb846ebb0199691161bc501441df908eb8ad87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101643605"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi
@@ -81,7 +81,7 @@ Pokud chcete povolit souhlas s uživatelem, vyberte, které zásady souhlasu apl
 
 Nahraďte `{consent-policy-id}` ID zásady, kterou chcete použít. Můžete zvolit [vlastní zásadu souhlasu s aplikací](manage-app-consent-policies.md#create-a-custom-app-consent-policy) , kterou jste vytvořili, nebo si můžete vybrat z následujících předdefinovaných zásad:
 
-| ID | Popis |
+| ID | Description |
 |:---|:------------|
 | Microsoft – uživatel – výchozí – nízká | **Povoluje uživateli souhlas s vybranými oprávněními pro aplikace od ověřených vydavatelů.**<br /> Povoluje omezený souhlas s uživatelem jenom pro aplikace od ověřených vydavatelů a aplikací registrovaných ve vašem tenantovi a jenom pro oprávnění, která klasifikujete jako "nízký dopad". (Nezapomeňte [klasifikovat oprávnění](configure-permission-classifications.md) a vybrat, která oprávnění uživatelé můžou udělit souhlas.) |
 | Microsoft – uživatel – výchozí – starší verze | **Povolení souhlasu uživatele pro aplikace**<br /> Tato možnost umožňuje všem uživatelům udělit souhlas s jakýmkoli oprávněním, které nevyžaduje souhlas správce, pro žádnou aplikaci. |
@@ -145,7 +145,7 @@ Můžete použít modul Azure AD PowerShell Preview [AzureADPreview](/powershell
 
 1. Pochopení hodnoty nastavení:
 
-    | Nastavení       | Typ         | Popis  |
+    | Nastavení       | Typ         | Description  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logická hodnota |  Příznak označující, zda bude při zjištění rizikové žádosti zablokován souhlas uživatele |
 

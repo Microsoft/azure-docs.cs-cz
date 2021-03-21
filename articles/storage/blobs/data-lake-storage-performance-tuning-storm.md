@@ -9,17 +9,17 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 4db85357ee970d13d6b4fcce195cae66932bed18
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95912786"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: zaplavení, HDInsight & Azure Data Lake Storage Gen2
 
 Seznamte se s faktory, které byste měli vzít v úvahu při ladění výkonu topologie Azure. Je například důležité pochopit charakteristiky práce prováděné spoutů a šrouby (zda je práce v/v nebo v paměti). Tento článek obsahuje řadu pokynů pro ladění výkonu, včetně řešení běžných potíží.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření účtu úložiště pro analýzu](../common/storage-account-create.md).
@@ -110,7 +110,7 @@ Pokud jste dosáhli limitu šířky pásma poskytovaného Data Lake Storage Gen2
 
 Pokud chcete zjistit, jestli se vám omezilo omezení, povolte protokolování ladění na straně klienta:
 
-1. V **Ambari**.  >  **Storm**  >  **Config**  >  **log4j konfigurace Advanced**, změňte **&lt; kořenovou úroveň = "informace" &gt;** na **&lt; kořenovou úroveň = "ladění" &gt;**. Restartujte všechny uzly/služby, aby se konfigurace projevila.
+1. V **Ambari**.  >    >    >  **log4j konfigurace Advanced**, změňte **&lt; kořenovou úroveň = "informace" &gt;** na **&lt; kořenovou úroveň = "ladění" &gt;**. Restartujte všechny uzly/služby, aby se konfigurace projevila.
 2. Sledujte protokoly rozplavení v uzlech pracovních procesů (pod/var/log/Storm/Worker-artifacts/em &lt; &gt; / &lt; &gt; /Worker.log portu) pro výjimky omezování Data Lake Storage Gen2.
 
 ## <a name="next-steps"></a>Další kroky

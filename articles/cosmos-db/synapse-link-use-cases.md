@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
 ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96463111"
 ---
-# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link pro Azure Cosmos DB: Případy použití pro analýzu téměř v reálném čase
+# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link pro Azure Cosmos DB: Případy použití analýz téměř v reálném čase
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Odkaz na Azure synapse](synapse-link.md) pro Azure Cosmos DB je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy prakticky v reálném čase nad provozními daty. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
@@ -133,7 +133,7 @@ Podíváme se na příklad společnosti elektronického obchodování CompanyXYZ
 
 Další informace najdete v následujících dokumentech:
 
-* [Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md) 
+* [Azure Synapse Link pro Azure Cosmos DB](synapse-link.md) 
 
 * [Analytické úložiště Azure Cosmos DB](analytical-store-introduction.md)
 
@@ -141,6 +141,6 @@ Další informace najdete v následujících dokumentech:
 
 * [Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 
-* [Apache Spark ve službě Azure synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)
+* [Apache Spark v Azure Synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)
 
 * [Podpora běhového fondu SQL bez serveru ve službě Azure synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)

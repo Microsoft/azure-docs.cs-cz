@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059717"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služby Application Gateway v2 
@@ -27,7 +27,7 @@ Nová SKU v2 obsahuje následující vylepšení:
   Redundance zóny je dostupná jenom v případě, že jsou dostupné zóny Azure. V ostatních oblastech jsou všechny ostatní funkce podporované. Další informace najdete v tématech [oblasti a zóny dostupnosti v Azure](../availability-zones/az-overview.md) .
 - **Statická virtuální IP adresa**: Application Gateway v2 SKU podporuje výhradně typ VIP typu static. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění pro životní cyklus nasazení, ani po restartování.  V v1 není statická virtuální IP adresa, proto musíte místo IP adresy pro směrování názvu domény použít adresu URL služby Application Gateway, aby bylo možné App Services prostřednictvím aplikační brány.
 - **Přepisování hlaviček**: Application Gateway umožňuje přidávat, odebírat nebo aktualizovat žádosti HTTP a hlavičky odpovědí s SKU v2. Další informace najdete v tématu [přepis hlaviček protokolu HTTP pomocí Application Gateway](rewrite-http-headers.md)
-- **Key Vault Integration**: Application Gateway v2 podporuje integraci s Key Vault pro serverové certifikáty, které jsou připojené k naslouchacím procesům s POVOLENým protokolem HTTPS. Další informace najdete v tématu [ukončení protokolu TLS s certifikáty Key Vault](key-vault-certs.md).
+- **Key Vault Integration**: Application Gateway v2 podporuje integraci s Key Vault pro serverové certifikáty, které jsou připojené k naslouchacím procesům s POVOLENým protokolem HTTPS. Další informace najdete v tématu [Ukončení šifrování TLS s využitím certifikátů služby Key Vault](key-vault-certs.md).
 - Kontroler příchozího přenosu dat **služby Azure Kubernetes**: kontroler příchozího přenosu Application Gateway v2 umožňuje použití Application Gateway Azure jako příchozího přenosu pro službu Azure KUBERNETES (AKS), která se označuje jako cluster AKS. Další informace najdete v tématu [co je Application Gateway kontroler](ingress-controller-overview.md)příchozího přenosu dat?.
 - **Vylepšení výkonu**: SKU v2 nabízí až pětinásobné vyšší výkon při snižování zátěže TLS ve srovnání s SKU Standard/WAF.
 - **Rychlejší nasazení a čas aktualizace** SKU verze 2 poskytuje rychlejší nasazení a dobu aktualizace ve srovnání s SKU Standard/WAF. To zahrnuje také změny konfigurace WAF.
@@ -68,7 +68,7 @@ Vytvoření nové instance může ale nějakou dobu trvat (přibližně po šest
 
 Následující tabulka porovnává funkce, které jsou k dispozici u jednotlivých SKU.
 
-| Příznak                                           | SKU v1   | V2 SKU   |
+| Funkce                                           | SKU v1   | V2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatické škálování                                       |          | &#x2713; |
 | Zónová redundance                                   |          | &#x2713; |

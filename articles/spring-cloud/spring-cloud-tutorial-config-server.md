@@ -8,10 +8,10 @@ author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 3033be3a793c318135f8150b86114b6fee55fac7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94655192"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Nastavení instance jarního cloudového konfiguračního serveru pro vaši službu
@@ -22,8 +22,8 @@ V tomto článku se dozvíte, jak připojit instanci jarního cloudového konfig
 
 Jarní cloudová konfigurace poskytuje podporu na straně serveru a klienta pro externou konfiguraci v distribuovaném systému. V případě instance konfiguračního serveru máte centrální místo pro správu externích vlastností pro aplikace ve všech prostředích. Další informace najdete v tématu [Reference k serveru pro konfiguraci jarního cloudu](https://spring.io/projects/spring-cloud-config).
 
-## <a name="prerequisites"></a>Požadavky
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+## <a name="prerequisites"></a>Předpoklady
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 * Již zřízené a běžící cloudová služba Azure. Pokud chcete nastavit a spustit službu jarních cloudů Azure, přečtěte si [rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure](spring-cloud-quickstart.md).
 
 ## <a name="restriction"></a>Omezení
@@ -57,9 +57,9 @@ Všechny konfigurovatelné vlastnosti, které se používají k nastavení veře
 > [!NOTE]
 > Použití spojovníku (-) k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Můžete například použít *Default-Label*, ale ne *defaultLabel*.
 
-| Vlastnost        | Požaduje se | Příznak                                                      |
+| Vlastnost        | Požaduje se | Funkce                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Ano    | Identifikátor URI úložiště Git, který se používá jako back-end konfiguračního serveru, začíná na *http://*, *https://*, *Git@* nebo *SSH://*. |
+| `uri`           | Yes    | Identifikátor URI úložiště Git, který se používá jako back-end konfiguračního serveru, začíná na *http://*, *https://*, *Git@* nebo *SSH://*. |
 | `default-label` | No     | Výchozí popisek úložiště Git by měl být *název větve*, *název značky* nebo *potvrzení-ID* úložiště. |
 | `search-paths`  | No     | Pole řetězců, které se používá k prohledání podadresářů úložiště Git. |
 
@@ -72,9 +72,9 @@ Všechny konfigurovatelné vlastnosti používané k nastavení privátního úl
 > [!NOTE]
 > Použití spojovníku (-) k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Můžete například použít *Default-Label*, ale ne *defaultLabel*.
 
-| Vlastnost                   | Požaduje se | Příznak                                                      |
+| Vlastnost                   | Požaduje se | Funkce                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
-| `uri`                      | Ano    | Identifikátor URI úložiště Git použitého jako back-end konfiguračního serveru by měl být spuštěný s *http://*, *https://*, *Git@* nebo *SSH://*. |
+| `uri`                      | Yes    | Identifikátor URI úložiště Git použitého jako back-end konfiguračního serveru by měl být spuštěný s *http://*, *https://*, *Git@* nebo *SSH://*. |
 | `default-label`            | No     | Výchozí popisek úložiště Git by měl být *název větve*, *název značky* nebo *potvrzení-ID* úložiště. |
 | `search-paths`             | No     | Pole řetězců, které slouží k prohledání podadresářů úložiště Git. |
 | `private-key`              | No     | Privátní klíč SSH pro přístup k úložišti Git, který je _vyžadován_ v případě, že identifikátor URI začíná na *Git@* nebo *SSH://*. |
@@ -94,9 +94,9 @@ Všechny konfigurovatelné vlastnosti používané k nastavení privátního úl
 > [!NOTE]
 > Použití spojovníku (-) k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Například použijte *výchozí-Label*, nikoli *defaultLabel*.
 
-| Vlastnost        | Požaduje se | Příznak                                                      |
+| Vlastnost        | Požaduje se | Funkce                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
-| `uri`           | Ano    | Identifikátor URI úložiště Git, který se používá jako back-end konfiguračního serveru, by měl být spuštěný pomocí *http://*, *https://*, *Git@* nebo *SSH://*. |
+| `uri`           | Yes    | Identifikátor URI úložiště Git, který se používá jako back-end konfiguračního serveru, by měl být spuštěný pomocí *http://*, *https://*, *Git@* nebo *SSH://*. |
 | `default-label` | No     | Výchozí popisek úložiště Git by měl být *název větve*, *název značky* nebo *potvrzení-ID* úložiště. |
 | `search-paths`  | No     | Pole řetězců, které slouží k prohledání podadresářů úložiště Git. |
 | `username`      | No     | Uživatelské jméno, které se používá pro přístup k serveru úložiště Git, se _vyžaduje_ v případě, že server úložiště Git podporuje `Http Basic Authentication` . |
@@ -112,7 +112,7 @@ Všechny konfigurovatelné vlastnosti používané k nastavení úložišť Git 
 > [!NOTE]
 > Použití spojovníku (-) k oddělení slov je jediná konvence pojmenování, která je aktuálně podporována. Například použijte *výchozí-Label*, nikoli *defaultLabel*.
 
-| Vlastnost                           | Požaduje se         | Příznak                                                      |
+| Vlastnost                           | Požaduje se         | Funkce                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | No             | Mapa skládající se z nastavení úložiště Git se zadaným názvem. |
 | `repos."uri"`                      | Ano v `repos` | Identifikátor URI úložiště Git, který se používá jako back-end konfiguračního serveru, by měl být spuštěný pomocí *http://*, *https://*, *Git@* nebo *SSH://*. |
@@ -131,7 +131,7 @@ Všechny konfigurovatelné vlastnosti používané k nastavení úložišť Git 
 
 Teď, když jsou konfigurační soubory uložené v úložišti, musíte k ní připojit jarní cloud Azure.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Přejít na stránku s **přehledem** jarního cloudu Azure.
 
@@ -201,7 +201,7 @@ Informace ze souboru YAML by měly být zobrazeny v Azure Portal. Vyberte **pou�
 
 ## <a name="using-azure-repos-for-azure-spring-cloud-configuration"></a>Použití Azure Repos pro konfiguraci jarního cloudu Azure
 
-Azure jaře Cloud má přístup k úložištím Git, které jsou veřejné, zabezpečené pomocí SSH, nebo zabezpečené pomocí ověřování HTTP Basic. Použijeme tuto poslední možnost, protože je snazší vytvořit a spravovat pomocí Azure Repos.
+Azure Spring Cloud má přístup k úložištím Git, která jsou veřejná nebo jsou zabezpečená protokolem SSH, případně k zabezpečení používají základní ověřování HTTP. Použijeme tuto poslední možnost, protože je snazší vytvořit a spravovat pomocí Azure Repos.
 
 ### <a name="get-repo-url-and-credentials"></a>Získat adresu URL a přihlašovací údaje úložiště
 1. Na portálu Azure Repos pro váš projekt klikněte na tlačítko klonovat:
@@ -227,7 +227,7 @@ Azure jaře Cloud má přístup k úložištím Git, které jsou veřejné, zabe
 
 ### <a name="configure-azure-spring-cloud-to-access-the-git-repository"></a>Konfigurace přístupu Azure Spring Cloudu k úložišti Git
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Přejít na stránku s **přehledem** jarního cloudu Azure.
 

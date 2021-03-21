@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 5773691852ddc723ec84503edee37c678bbbcfd9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98677500"
 ---
 # <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rychlý Start: Konfigurace vyhrazené úlohy fondu SQL pomocí skupiny úloh v Azure Portal
@@ -33,7 +33,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com/).
 > [!NOTE]
 > Vytvoření vyhrazené instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu se předpokládá, že v synapse SQL už máte vyhrazenou instanci fondu SQL a že máte oprávnění k řízení databáze. Pokud ho potřebujete vytvořit, použijte [rychlý Start: vytvoření vyhrazeného fondu SQL – portál](../quickstart-create-sql-pool-portal.md) pro vytvoření datového skladu s názvem **mySampleDataWarehouse**.
 

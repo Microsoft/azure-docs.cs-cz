@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
 ms.openlocfilehash: 30457b950e6400c799f35924e7b2ee90d868a465
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94535176"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight ve službě Azure Database for MySQL
@@ -35,7 +35,7 @@ Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dota
 
 K zobrazení textu dotazů v Query Performance Insight jsou nutná oprávnění **vlastníka** nebo **přispěvatele**. **Čtenář** může zobrazit grafy a tabulky, ale ne text dotazu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby Query Performance Insight fungoval, musí existovat data v [úložišti dotazů](concepts-query-store.md).
 
@@ -56,7 +56,7 @@ Můžete kliknout a přetáhnout v grafu, abyste zmenšili konkrétní časové 
 ### <a name="wait-statistics"></a>Statistiky čekání
 
 > [!NOTE]
-> Pro řešení potíží s výkonem dotazů je určena Statistika čekání. Doporučuje se zapnout jenom pro účely řešení potíží. <br>Pokud se zobrazí chybová zpráva v Azure Portal " *problém byl zjištěn pro ' Microsoft. DBforMySQL '; požadavek nelze splnit. Pokud tento problém přetrvává nebo je neočekávaný, obraťte se prosím na podporu s těmito informacemi.* " Při prohlížení statistik čekání použijte kratší časové období.
+> Pro řešení potíží s výkonem dotazů je určena Statistika čekání. Doporučuje se zapnout jenom pro účely řešení potíží. <br>Pokud se zobrazí chybová zpráva v Azure Portal "*problém byl zjištěn pro ' Microsoft. DBforMySQL '; požadavek nelze splnit. Pokud tento problém přetrvává nebo je neočekávaný, obraťte se prosím na podporu s těmito informacemi.*" Při prohlížení statistik čekání použijte kratší časové období.
 
 Statistika čekání poskytuje zobrazení událostí čekání, ke kterým dojde během provádění konkrétního dotazu. Přečtěte si další informace o typech událostí čekání v [dokumentaci k modulu MySQL](https://go.microsoft.com/fwlink/?linkid=2098206).
 

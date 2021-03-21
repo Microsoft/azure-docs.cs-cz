@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
 ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97707652"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Řešení potíží s připojením a doručováním zpráv
@@ -197,7 +197,7 @@ Rozhraní API pro stav služby můžete kontrolovat.
 
 * Stavový kód odpovědi:
   * 200: v pořádku.
-  * 503: vaše služba není v pořádku. Můžete:
+  * 503: vaše služba není v pořádku. Další možnosti:
     * Počkejte několik minut na automatické obnovení.
     * Ověřte, že je IP adresa shodná s IP adresou z portálu.
     * Nebo restartujte instanci.

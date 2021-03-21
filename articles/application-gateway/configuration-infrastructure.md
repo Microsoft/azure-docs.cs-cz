@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397616"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Konfigurace infrastruktury Application Gateway
@@ -69,7 +69,7 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
 
    V případě SKU v1 jsou uživatelsky definované trasy (udr) podporované v Application Gateway podsíti, pokud se nezmění na koncovou komunikaci mezi požadavky a odpověďmi. V Application Gateway podsíti můžete například nastavit UDR, aby odkazoval na zařízení brány firewall pro kontrolu paketů. Je ale nutné se ujistit, že paket se po kontrole může dostat k zamýšlenému cíli. V takovém případě může dojít k nesprávnému chování při testování stavu nebo směrování provozu. To zahrnuje naučené trasy nebo výchozí trasy 0.0.0.0/0, které šíří služby Azure ExpressRoute nebo VPN Gateway ve virtuální síti. Pro V1 se nepodporuje jakýkoli scénář, ve kterém musí být adresa 0.0.0.0/0 přesměrována místně (vynucené tunelování).
 
-- **v2**
+- **2**
 
    Pro SKU v2 existují podporované a nepodporované scénáře:
 
@@ -78,7 +78,7 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
    > Nesprávná konfigurace směrovací tabulky by mohla vést k asymetrickému směrování ve Application Gateway v2. Zajistěte, aby se veškerý provoz na rovině správy a řízení odesílal přímo na Internet, a ne přes virtuální zařízení. Protokolování a metriky by taky mohly ovlivnit.
 
 
-  **Scénář 1** : udr pro zákaz šíření tras Border Gateway Protocol (BGP) do Application Gateway podsítě
+  **Scénář 1**: udr pro zákaz šíření tras Border Gateway Protocol (BGP) do Application Gateway podsítě
 
    Někdy je výchozí trasa brány (0.0.0.0/0) inzerována prostřednictvím bran ExpressRoute nebo VPN, které jsou přidružené k virtuální síti Application Gateway. Tím dojde k přerušení provozu roviny správy, což vyžaduje přímou cestu k Internetu. V takových scénářích se dá UDR použít k zakázání šíření tras protokolu BGP. 
 
@@ -90,11 +90,11 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
 
    Povolení UDR pro tento scénář by nemělo přerušit existující nastavení.
 
-  **Scénář 2** : udr k přímému nasměrování 0.0.0.0/0 na Internet
+  **Scénář 2**: udr k přímému nasměrování 0.0.0.0/0 na Internet
 
    Můžete vytvořit UDR pro odeslání provozu 0.0.0.0/0 přímo na Internet. 
 
-  **Scénář 3** : udr pro Azure Kubernetes Service s kubenet
+  **Scénář 3**: udr pro Azure Kubernetes Service s kubenet
 
   Pokud používáte kubenet se službou Azure Kubernetes Service (AKS) a Application Gateway řadič příchozího přenosu dat (AGIC), budete potřebovat směrovací tabulku, aby bylo možné provoz odeslaný do lusků z Application Gateway směrovat do správného uzlu. To nebude nutné v případě, že použijete Azure CNI. 
 
@@ -109,7 +109,7 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
     
   **V2 – nepodporované scénáře**
 
-  **Scénář 1** : udr pro virtuální zařízení
+  **Scénář 1**: udr pro virtuální zařízení
 
   Všechny scénáře, kdy musí být adresa 0.0.0.0/0 přesměrována prostřednictvím libovolného virtuálního zařízení, virtuální sítě typu hub/paprsek nebo místní (vynucené tunelové propojení), není pro v2 podporována.
 

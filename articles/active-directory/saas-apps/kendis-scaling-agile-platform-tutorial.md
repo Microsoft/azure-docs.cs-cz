@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: jeedes
 ms.openlocfilehash: 8409a4d897ea9b20528a5b30273819e6962774cb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102184487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis---azure-ad-integration"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s integrací Kendis-Azure AD
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat integraci Kendis-Azure AD s Azure Acti
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k integraci Kendis-Azure AD s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

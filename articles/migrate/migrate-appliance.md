@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 08cd0e9d33dd88b9bdc418f3d1bbd382b2d80632
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038760"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
@@ -44,7 +44,7 @@ Zařízení je možné nasadit pomocí několika metod:
 Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMware.
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 **Požadavek** | **VMware** 
 --- | ---
@@ -178,7 +178,7 @@ IPv6 adresy | vm.Guest.Net
 Propustnost čtení (MB za sekundu) | NET. Received. Average
 Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
 **Podrobnosti o cestě inventáře** | 
-Název | vnitřního. GetType (). Jméno
+Name | vnitřního. GetType (). Jméno
 Typ podřízeného objektu | vnitřního. ChildType
 Referenční informace | vnitřního. MoRef
 Podrobnosti nadřazené položky | Kontejner. Parent
@@ -225,7 +225,7 @@ Tady jsou funkce data, která zařízení shromažďuje z každého zjištěnéh
 
 **Data**  | **Rutina PowerShellu** | **Vlastnost**
 --- | --- | ---
-Název  | Get-WindowsFeature  | Název
+Name  | Get-WindowsFeature  | Name
 Typ funkce | Get-WindowsFeature  | FeatureType
 Nadřazený  | Get-WindowsFeature  | Nadřazený
 
@@ -235,7 +235,7 @@ Zde jsou SQL Serverá data, která zařízení shromažďuje z každého zjišt�
 
 **Data**  | **Umístění registru**  | **Klíč**
 --- | --- | ---
-Název  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Edice  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Edice 
 Aktualizace Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verze  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verze 
@@ -246,7 +246,7 @@ Zde jsou data operačního systému, která zařízení shromažďuje z každéh
 
 **Data**  | **Třída WMI**  | **Vlastnost třídy WMI**
 --- | --- | ---
-Název  | Win32_operatingsystem  | Titulek
+Name  | Win32_operatingsystem  | Titulek
 Verze  | Win32_operatingsystem  | Verze
 Architektura  | Win32_operatingsystem  | OSArchitecture
 
@@ -256,7 +256,7 @@ Tady jsou data aplikací, která zařízení shromažďuje z každého serveru L
 
 **Data**  | **Příkazy**
 --- | --- 
-Název | ot./min., bázi dpkg – dotaz, přichycení
+Name | ot./min., bázi dpkg – dotaz, přichycení
 Verze | ot./min., bázi dpkg – dotaz, přichycení
 Poskytovatel | ot./min., bázi dpkg – dotaz, přichycení
 
@@ -266,7 +266,7 @@ Zde jsou data operačního systému, která zařízení shromažďuje z každéh
 
 **Data**  | **Příkazy**
 --- | --- 
-Název <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektura | uname
 
 ### <a name="sql-server-instances-and-databases-data"></a>Data SQL Server instance a databází
@@ -274,7 +274,7 @@ Architektura | uname
 Zařízení shromažďuje data o SQL Server instancích a databázích.
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 #### <a name="sql-database-metadata"></a>Metadata SQL Database
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017113"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Převzetí služeb při selhání a zotavení po havárii pro zařízení StorSimple řady 8000
@@ -27,7 +27,7 @@ ms.locfileid: "96017113"
 
 Tento článek popisuje funkci převzetí služeb při selhání zařízení pro zařízení řady StorSimple 8000 a způsob, jak se tato funkce dá použít k obnovení zařízení StorSimple, pokud dojde k havárii. StorSimple používá převzetí služeb při selhání zařízení k migraci dat ze zdrojového zařízení v datacentru do jiného cílového zařízení. Pokyny v tomto článku se vztahují na fyzická zařízení řady StorSimple 8000 a cloudová zařízení s verzemi softwaru Update 3 a novější.
 
-StorSimple pomocí okna **zařízení** spustí funkci převzetí služeb při selhání zařízení v případě havárie. Toto okno obsahuje seznam všech zařízení StorSimple připojených ke službě StorSimple Device Manager.
+StorSimple pomocí okna **zařízení** spustí funkci převzetí služeb při selhání zařízení v případě havárie. Toto okno obsahuje seznam všech zařízení StorSimple připojených ke službě StorSimple Správce zařízení.
 
 ![Okno zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
@@ -44,7 +44,7 @@ Během převzetí služeb při selhání můžete vybrat kontejnery svazků pro 
 
 ### <a name="cloud-snapshot-used-during-device-failover"></a>Snímek cloudu použitý při převzetí služeb při selhání zařízení
 
-Po zotavení po havárii se nejnovější cloudové zálohování používá k obnovení dat na cílovém zařízení. Další informace o cloudových snímcích najdete v tématu [použití služby StorSimple Device Manager k provedení ručního zálohování](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup).
+Po zotavení po havárii se nejnovější cloudové zálohování používá k obnovení dat na cílovém zařízení. Další informace o cloudových snímcích najdete v tématu [použití služby StorSimple Správce zařízení k provedení ručního zálohování](storsimple-8000-manage-backup-policies-u2.md#take-a-manual-backup).
 
 V řadě StorSimple 8000 jsou zásady zálohování přidružené k zálohování. Pokud je pro stejný svazek k dispozici více zásad zálohování, pak StorSimple vybere zásadu zálohování s největším počtem svazků. StorSimple pak pomocí nejaktuálnějšího zálohování z vybraných zásad zálohování obnoví data na cílovém zařízení.
 
@@ -53,7 +53,7 @@ Předpokládejme, že existují dvě zásady zálohování, *defaultPol* a *cust
 * *defaultPol*: jeden svazek, *vol1*, běží denně od 10:30. odp.
 * *customPol*: čtyři svazky, *vol1*, *VOL2*, *vol3*, *VOL4*, běží denně od 10:00./odp..
 
-V takovém případě StorSimple priorit pro konzistenci havárií a používá *customPol* , protože má více svazků. Poslední záloha z těchto zásad slouží k obnovení dat. Další informace o tom, jak vytvářet a spravovat zásady zálohování, najdete v tématu [použití služby StorSimple Device Manager ke správě zásad zálohování](storsimple-8000-manage-backup-policies-u2.md).
+V takovém případě StorSimple priorit pro konzistenci havárií a používá *customPol* , protože má více svazků. Poslední záloha z těchto zásad slouží k obnovení dat. Další informace o tom, jak vytvářet a spravovat zásady zálohování, najdete v tématu [použití služby StorSimple Správce zařízení ke správě zásad zálohování](storsimple-8000-manage-backup-policies-u2.md).
 
 ## <a name="common-considerations-for-device-failover"></a>Běžné důležité informace o převzetí služeb při selhání zařízení
 
@@ -67,7 +67,7 @@ Před převzetím služeb při selhání zařízení si přečtěte následujíc
 
 #### <a name="device-failover-across-software-versions"></a>Převzetí služeb při selhání u zařízení v různých verzích softwaru
 
-Služba StorSimple Device Manager v nasazení může mít více zařízení (fyzických i cloudových), ve kterých běží různé verze softwaru.
+Služba StorSimple Správce zařízení v nasazení může mít více zařízení (fyzických i cloudových), ve kterých běží různé verze softwaru.
 
 Pomocí následující tabulky zjistíte, jestli můžete převzít služby při selhání nebo navrácení služeb po obnovení do jiného zařízení s jinou verzí softwaru a jak se typy svazků chovají během zotavení po havárii.
 
@@ -124,7 +124,7 @@ A.  Pokud úloha odstranění selhává, můžete kontejnery svazků odstranit r
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>Zotavení po havárii pro provozní kontinuitu (BCDR)
 
-Když celé datacentrum Azure přestane fungovat, nastane Scénář zotavení po havárii (BCDR) pro provozní kontinuitu. Tento scénář může ovlivnit službu StorSimple Device Manager a přidružená zařízení StorSimple.
+Když celé datacentrum Azure přestane fungovat, nastane Scénář zotavení po havárii (BCDR) pro provozní kontinuitu. Tento scénář může ovlivnit službu StorSimple Správce zařízení a přidružená zařízení StorSimple.
 
 Pokud se zařízení StorSimple zaregistrovalo těsně před haváriem, může být potřeba, aby se toto zařízení nacházelo s resetováním továrního nastavení. Po havárii se zařízení StorSimple zobrazí v Azure Portal jako offline. Toto zařízení se musí odstranit z portálu. Resetujte zařízení do výchozího továrního nastavení a zaregistrujte ho u služby.
 
@@ -139,5 +139,5 @@ Pokud jste připraveni provést převzetí služeb při selhání, pro podrobné
 Pokud jste se zařízením převzali služby při selhání, vyberte jednu z následujících možností:
 
 * [Deaktivujte nebo odstraňte zařízení StorSimple](storsimple-8000-deactivate-and-delete-device.md).
-* [Ke správě zařízení StorSimple použijte službu StorSimple Device Manager](storsimple-8000-manager-service-administration.md).
+* [Ke správě zařízení StorSimple použijte službu StorSimple Správce zařízení](storsimple-8000-manager-service-administration.md).
 

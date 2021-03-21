@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/22/2021
 ms.author: jeedes
 ms.openlocfilehash: a5a6d93ed683b8ff851123cb5c2abf11cab6d792
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102185386"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tradeshift"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TradeShift
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat TradeShift s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TradeShift svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -90,7 +90,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace TradeShift několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | --------------- | --------- |
     | urn: OID: 2.5.4.42 | User. křestní jméno |
     | urn: OID: 2.5.4.4 | User. příjmení |

@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
 ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942653"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikování aplikace HDInsight v Azure Marketplace
@@ -22,7 +22,7 @@ Další informace najdete v těchto článcích souvisejících s aplikacemi HDI
 * [Nainstalujte aplikace HDInsight](hdinsight-apps-install-applications.md). Přečtěte si, jak nainstalovat aplikaci HDInsight do svých clusterů.
 * [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md). Naučte se instalovat a testovat vlastní aplikace HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete svou vlastní aplikaci odeslat na webu Marketplace, nejdřív [vytvořte a otestujte svoji vlastní aplikaci](hdinsight-apps-install-custom-applications.md).
 
 Musíte taky zaregistrovat svůj vývojářský účet. Další informace najdete v tématu [publikování nabídky v Azure Marketplace](../marketplace/overview.md) a [Vytvoření účtu Microsoft Developer](../marketplace/overview.md).
@@ -41,7 +41,7 @@ V rámci publikování aplikací na webu Marketplace jsou zapojené dva kroky. N
 }
 ```
 
-| Pole | Popis | Možné hodnoty |
+| Pole | Description | Možné hodnoty |
 | --- | --- | --- |
 | typy |Typy clusterů, se kterými je aplikace kompatibilní. |Hadoop, HBA, proplavení, Spark (nebo libovolná kombinace těchto) |
 | verze |Typy clusterů HDInsight, se kterými je aplikace kompatibilní. |3.4 |

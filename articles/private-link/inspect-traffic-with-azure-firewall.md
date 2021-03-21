@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
 ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575128"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Použití Azure Firewall ke kontrole provozu určeného pro soukromý koncový bod
@@ -101,7 +101,7 @@ Platí stejné požadavky jako ve scénáři 2 výše. V tomto scénáři se ne�
 >[!NOTE]
 > Pokud chcete tento scénář implementovat pomocí síťové virtuální zařízení nebo Azure Firewall třetí strany, musí se pravidla sítě místo pravidel aplikací vyžadovat pro přenos dat z provozu do privátních koncových bodů. Jinak komunikace mezi virtuálními počítači a soukromými koncovými body selže.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure.
 * Pracovní prostor služby Log Analytics.  

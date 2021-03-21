@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016824"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Vytvoření kontejneru profilu pomocí Azure NetApp Files a služba AD DS
@@ -31,7 +31,7 @@ Pokyny v této příručce jsou určené konkrétně pro uživatele s virtuáln�
 >[!NOTE]
 >Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct vytvořit kontejner profilu FSLogix pro fond hostitelů, musíte:
 
@@ -160,13 +160,13 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
 2. Extrahování staženého souboru.
 
-3. V souboru, přejdete na **verze x64**  >  **Releases** a spusťte **FSLogixAppsSetup.exe**. Otevře se nabídka instalace.
+3. V souboru, přejdete na **verze x64**  >   a spusťte **FSLogixAppsSetup.exe**. Otevře se nabídka instalace.
 
 4.  Pokud máte kód Product Key, zadejte ho do textového pole kód Product Key.
 
 5. Zaškrtněte políčko vedle Souhlasím **s licenčními podmínkami a ujednáními**.
 
-6. Vyberte **Install** (Nainstalovat).
+6. Vyberte **Nainstalovat**.
 
 7. Přejděte do **C: \\ Program Files \\ FSLogix \\ Apps** a potvrďte, že je agent nainstalovaný.
 

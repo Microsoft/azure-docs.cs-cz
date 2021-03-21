@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: 479b1d8ed1f4238486bb78e33a6139463578dbba
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94563303"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Nastavení geografického filtrování zásad WAF pro vaše přední dveře
@@ -21,7 +21,7 @@ V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu vytvořit ukázkovou z�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s nastavením zásad geografického filtru, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 ### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell

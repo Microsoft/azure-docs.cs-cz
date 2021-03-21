@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678125"
 ---
 # <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Nejčastější dotazy Azure Maps počasí Services (Preview)
@@ -91,7 +91,7 @@ Plánujeme vytvořit modul služeb pro Java/Android podobně jako modul Web SDK.
 
 **Azure Maps Power BI vizuální podporu Azure Maps počasí?**
 
-Yes. Pokud se chcete dozvědět, jak migrovat paprskové a infračervené satelitní dlaždice na vizuál Microsoft Power BI, přečtěte si téma [Přidání vrstvy dlaždic do Power BI vizuálu](./power-bi-visual-add-tile-layer.md). 
+Ano. Pokud se chcete dozvědět, jak migrovat paprskové a infračervené satelitní dlaždice na vizuál Microsoft Power BI, přečtěte si téma [Přidání vrstvy dlaždic do Power BI vizuálu](./power-bi-visual-add-tile-layer.md). 
 
 **Návody interpretovat barvy používané pro paprskové a satelitní dlaždice?**
 
@@ -99,11 +99,11 @@ Yes. Pokud se chcete dozvědět, jak migrovat paprskové a infračervené sateli
  
 **Můžu vytvářet paprskové a satelitní animace dlaždic?**
 
-Yes. Kromě paprskových a satelitních Azure Maps dlaždic v reálném čase si zákazníci můžou vyžádat předchozí a budoucí dlaždice a vylepšit vizualizace dat pomocí překryvů map. To lze provést přímo voláním metody [Get map v2 API](/rest/api/maps/renderv2/getmaptilepreview) nebo vyžádáním dlaždic prostřednictvím Azure Maps Web SDK. Paprskové dlaždice jsou k dispozici po dobu až 1,5 hodin v minulosti a až 2 hodiny v budoucnosti. Dlaždice a jsou k dispozici v intervalech 5 minut. Infračervené dlaždice jsou k dispozici po dobu až 3 hodin v minulosti a jsou dostupné v intervalu 10 minut. Další informace najdete v [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)animace Open Source dlaždice s počasí.  
+Ano. Kromě paprskových a satelitních Azure Maps dlaždic v reálném čase si zákazníci můžou vyžádat předchozí a budoucí dlaždice a vylepšit vizualizace dat pomocí překryvů map. To lze provést přímo voláním metody [Get map v2 API](/rest/api/maps/renderv2/getmaptilepreview) nebo vyžádáním dlaždic prostřednictvím Azure Maps Web SDK. Paprskové dlaždice jsou k dispozici po dobu až 1,5 hodin v minulosti a až 2 hodiny v budoucnosti. Dlaždice a jsou k dispozici v intervalech 5 minut. Infračervené dlaždice jsou k dispozici po dobu až 3 hodin v minulosti a jsou dostupné v intervalu 10 minut. Další informace najdete v [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)animace Open Source dlaždice s počasí.  
 
 **Nabízíte ikony pro různé povětrnostní podmínky?**
 
-Yes. [Tady](./weather-services-concepts.md#weather-icons)můžete najít ikony a jejich příslušné kódy. Všimněte si, že pouze některá rozhraní API služby počasí (verze Preview), jako je například  [načíst aktuální podmínky rozhraní API](/rest/api/maps/weather/getcurrentconditionspreview), vrátí *iconCode* v odpovědi. Další informace naleznete v aktuální ukázce WeatherConditions open source [Code](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
+Ano. [Tady](./weather-services-concepts.md#weather-icons)můžete najít ikony a jejich příslušné kódy. Všimněte si, že pouze některá rozhraní API služby počasí (verze Preview), jako je například  [načíst aktuální podmínky rozhraní API](/rest/api/maps/weather/getcurrentconditionspreview), vrátí *iconCode* v odpovědi. Další informace naleznete v aktuální ukázce WeatherConditions open source [Code](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location).
 
 ## <a name="next-steps"></a>Další kroky
 

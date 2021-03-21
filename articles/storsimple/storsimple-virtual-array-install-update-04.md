@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
 ms.openlocfilehash: cc458f91a9b67ddd54e706575d29b8fc8618a2f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94534292"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0,4 ve virtuálním poli StorSimple
@@ -62,7 +62,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
 
 5. Klikněte na **Zobrazit košík**.
 
-6. Klikněte na tlačítko **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Aktualizace se stáhnou do zadaného umístění do podsložky se stejným názvem, jako má aktualizace. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
+6. Klikněte na **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Aktualizace se stáhnou do zadaného umístění do podsložky se stejným názvem, jako má aktualizace. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
 
 7. Otevřete zkopírovanou složku, měl by se zobrazit soubor samostatného balíčku Microsoft Update `WindowsTH-KB3011067-x64` . Tento soubor se používá k instalaci aktualizace nebo opravy hotfix.
 
@@ -90,7 +90,7 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
    
     ![Snímek obrazovky ukazuje zprávu o úspěchu aktualizace.](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance** navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10289.0** pro aktualizaci 0,4.
+5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10289.0** pro aktualizaci 0,4.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10289** a sestavy Azure Portal **10.0.10289.0** pro stejnou verzi.
@@ -103,7 +103,7 @@ Pokud používáte aktualizaci 0,2 a novější, doporučujeme nainstalovat aktu
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-Až se instalace dokončí (podle stavu úlohy v 100%), přejdete do služby StorSimple Device Manager. Vyberte **zařízení** a potom v seznamu zařízení připojených k této službě klikněte na zařízení, které chcete aktualizovat. V okně **Nastavení** vyberte Přejít do části **Spravovat** a vyberte **aktualizace zařízení**. Zobrazená verze softwaru by měla být **10.0.10289.0**.
+Až se instalace dokončí (podle stavu úlohy v 100%), přejdete do služby StorSimple Správce zařízení. Vyberte **zařízení** a potom v seznamu zařízení připojených k této službě klikněte na zařízení, které chcete aktualizovat. V okně **Nastavení** vyberte Přejít do části **Spravovat** a vyberte **aktualizace zařízení**. Zobrazená verze softwaru by měla být **10.0.10289.0**.
 
 
 ## <a name="next-steps"></a>Další kroky

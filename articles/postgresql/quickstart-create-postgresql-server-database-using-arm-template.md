@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 02/11/2021
 ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382187"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for PostgreSQL-Single
@@ -24,7 +24,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

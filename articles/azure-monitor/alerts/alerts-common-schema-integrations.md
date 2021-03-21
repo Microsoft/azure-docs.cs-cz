@@ -4,10 +4,10 @@ description: Naučte se, jak vytvořit aplikaci logiky, která využívá spole�
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.openlocfilehash: 459ac43a6260e046befbe58d3531bac494903d51
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038335"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak integrovat společné schéma výstrah s Logic Apps
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak vytvořit aplikaci logiky, která využívá s
 [Běžné schéma výstrah](./alerts-common-schema.md) poskytuje standardizované a rozšiřitelné schéma JSON napříč všemi různými typy výstrah. Běžné schéma výstrah je nejužitečnější, když se využívají programově – prostřednictvím webhooků, runbooků a Logic Apps. V tomto článku ukážeme, jak může být jediná aplikace logiky vytvořená pro zpracování všech výstrah. Stejné zásady je možné použít i pro další programové metody. Aplikace logiky popsané v tomto článku vytvoří dobře definované proměnné pro [pole "Essential"](alerts-common-schema-definitions.md#essentials)a také popisuje, jak můžete zpracovat logiku specifickou pro [Typ výstrahy](alerts-common-schema-definitions.md#alert-context) .
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 V tomto článku se předpokládá, že čtenář je známý 
 * Nastavení pravidel upozornění ([metrika](../alerts/alerts-metric.md), [protokol](./alerts-log.md), [Protokol aktivit](./alerts-activity-log.md))

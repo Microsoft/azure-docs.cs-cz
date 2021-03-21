@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
 ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337589"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Kurz: použití rozhraní REST API ke kopírování dat do Azure Data Boxho úložiště objektů BLOB  
@@ -85,7 +85,7 @@ K stažení certifikátu použijte Azure Portal.
 
 1. Přihlaste se k portálu Azure Portal.
 2. Přejděte do objednávky Data Box a přejděte na **obecné > informace o zařízení**.
-3. V části **přihlašovací údaje pro zařízení** přejděte na **rozhraní API přístup** k zařízení. Klikněte na tlačítko **Stáhnout**. Tato akce stáhne soubor certifikátu **\<your order name> . cer** . **Uložte** tento soubor. Tento certifikát nainstalujete na klienta nebo na hostitelský počítač, který budete používat pro připojení k zařízení.
+3. V části **přihlašovací údaje pro zařízení** přejděte na **rozhraní API přístup** k zařízení. Klikněte na **Stáhnout**. Tato akce stáhne soubor certifikátu **\<your order name> . cer** . **Uložte** tento soubor. Tento certifikát nainstalujete na klienta nebo na hostitelský počítač, který budete používat pro připojení k zařízení.
 
     ![Stáhnout certifikát v Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
 
@@ -133,7 +133,7 @@ Několik, například Ubuntu a Debian, použijte `update-ca-certificates` přík
 Poslední verze RHEL, Fedora a CentOS používají `update-ca-trust` příkaz.
 
 * Zkopírujte soubor certifikátu do `/etc/pki/ca-trust/source/anchors` adresáře.
-* Spusťte příkaz `update-ca-trust`.
+* Spusťte `update-ca-trust`.
 
 Podrobnosti najdete v dokumentaci specifické pro vaši distribuci.
 
@@ -200,7 +200,7 @@ azcopy \
 AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 ```
 
-Nahraďte `<key>` klíčem účtu. Klíč účtu získáte tak, že v Azure Portal přejdete do svého účtu úložiště. Přejděte na **nastavení > přístupové klíče** , vyberte klíč a vložte ho do příkazu AzCopy.
+Nahraďte `<key>` klíčem účtu. Klíč účtu získáte tak, že v Azure Portal přejdete do svého účtu úložiště. Přejděte na **nastavení > přístupové klíče**, vyberte klíč a vložte ho do příkazu AzCopy.
 
 Pokud zadaný cílový kontejner neexistuje, AzCopy ho vytvoří a soubor do něj nahraje. Aktualizujte zdrojovou cestu k adresáři dat a `data-box-storage-account-name` v cílové adrese URL nahraďte názvem účtu úložiště, který je přidružený k vašemu data box.
 
@@ -239,7 +239,7 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 
 > [!div class="checklist"]
 >
-> * Požadavky
+> * Předpoklady
 > * Připojení k Data Box BLOB Storage přes *http* nebo *https*
 > * Kopírování dat do Data Boxu
 

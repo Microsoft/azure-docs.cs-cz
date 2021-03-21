@@ -8,22 +8,22 @@ services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: 23b893bad591af5f1e923b68e8d30453f859792b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94563473"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurace pravidla omezení četnosti brány firewall webových aplikací pomocí Azure PowerShell
 Pravidlo omezení četnosti brány firewall webových aplikací (WAF) pro službu Azure front-dveře řídí počet požadavků povolených od klientů během minutového trvání.
 V tomto článku se dozvíte, jak nakonfigurovat pravidlo omezení četnosti WAF, které řídí počet požadavků povolených klienty na webovou aplikaci, která obsahuje */promo* v adrese URL pomocí Azure PowerShell.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Pro každou IP adresu klienta se aplikují omezení přenosové rychlosti. Pokud máte několik klientů, kteří přistupují k vašim předním dveřím z různých IP adres, budou se použít vlastní omezení přenosové rychlosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete s nastavením zásady omezení četnosti, nastavte prostředí PowerShell a vytvořte profil front-dveří.
 ### <a name="set-up-your-powershell-environment"></a>Nastavení prostředí PowerShell
 Prostředí Azure PowerShell poskytuje sadu rutin, které ke správě vašich prostředků Azure využívají model [Azure Resource Manager](../../azure-resource-manager/management/overview.md). 

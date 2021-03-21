@@ -4,10 +4,10 @@ description: Naučte se používat Azure CLI k obnovení zálohovaných sdílen�
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: a025de7bfb9db037b2008d69be7782feabb482f3
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94562317"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Obnovení sdílených složek Azure pomocí Azure CLI
@@ -23,7 +23,7 @@ Na konci tohoto článku se dozvíte, jak pomocí Azure CLI provádět následuj
 >[!NOTE]
 > Azure Backup teď podporuje obnovení více souborů nebo složek do původního nebo alternativního umístění pomocí Azure CLI. Další informace najdete v části [obnovení více souborů nebo složek do původního nebo alternativního umístění](#restore-multiple-files-or-folders-to-original-or-alternate-location) v tomto dokumentu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že už máte sdílenou složku Azure, která je zálohovaná pomocí Azure Backup. Pokud ho nemáte, přečtěte si téma [Zálohování sdílených složek Azure pomocí rozhraní](backup-afs-cli.md) příkazového řádku pro konfiguraci zálohování sdílené složky. V tomto článku použijete následující prostředky:
 
@@ -50,8 +50,8 @@ az backup recoverypoint list --vault-name azurefilesvault --resource-group azure
 
 Předchozí rutinu můžete také spustit pomocí popisného názvu kontejneru a položky zadáním následujících dvou dalších parametrů:
 
-* **--zálohování-Správa-typ** : *azurestorage*
-* **--úlohu-typ** : *azurefileshare*
+* **--zálohování-Správa-typ**: *azurestorage*
+* **--úlohu-typ**: *azurefileshare*
 
 ```azurecli-interactive
 az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --item-name azurefiles --workload-type azurefileshare --out table
@@ -75,8 +75,8 @@ Pomocí této možnosti obnovení můžete obnovit úplnou sdílenou složku v p
 
 Zadejte následující parametry pro provedení operací obnovení:
 
-* **--Container-Name** : název účtu úložiště, který hostuje zálohovanou původní sdílenou složku. Pokud chcete načíst název nebo popisný název svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
-* **--Item-Name** : název zálohované původní sdílené složky, kterou chcete použít pro operaci obnovení. Pokud chcete načíst název nebo popisný název zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
+* **--Container-Name**: název účtu úložiště, který hostuje zálohovanou původní sdílenou složku. Pokud chcete načíst název nebo popisný název svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
+* **--Item-Name**: název zálohované původní sdílené složky, kterou chcete použít pro operaci obnovení. Pokud chcete načíst název nebo popisný název zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
 
 ### <a name="restore-a-full-share-to-the-original-location"></a>Obnovení úplné sdílené složky do původního umístění
 
@@ -100,10 +100,10 @@ Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba
 
 Tuto možnost můžete použít k obnovení sdílené složky do alternativního umístění a zachování původní sdílené složky tak, jak je. Zadejte následující parametry pro obnovení do alternativního umístění:
 
-* **--target-Storage-Account** : účet úložiště, na který se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
-* **--target-File-Share** : sdílená složka v rámci cílového účtu úložiště, do kterého se obnovil zálohovaný obsah.
-* **--target-Folder** : složka ve sdílené složce, do které se mají obnovit data. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnoty cílové složky jako prázdný řetězec.
-* **--Resolve-konflikt** : instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
+* **--target-Storage-Account**: účet úložiště, na který se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
+* **--target-File-Share**: sdílená složka v rámci cílového účtu úložiště, do kterého se obnovil zálohovaný obsah.
+* **--target-Folder**: složka ve sdílené složce, do které se mají obnovit data. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnoty cílové složky jako prázdný řetězec.
+* **--Resolve-konflikt**: instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
 
 Následující příklad používá příkaz [AZ Backup Restore-azurefileshare](/cli/azure/backup/restore#az-backup-restore-restore-azurefileshare) with Restore Mode *jako alternatelocation* pro obnovení sdílené složky *azurefiles* v účtu úložiště *afsaccount* do sdílené složky *azurefiles1* v účtu úložiště *afaccount1* .
 
@@ -125,14 +125,14 @@ Tuto možnost obnovení můžete použít k obnovení jednotlivých souborů neb
 
 Zadejte následující parametry pro provedení operací obnovení:
 
-* **--Container-Name** : název účtu úložiště, který hostuje zálohovanou původní sdílenou složku. Pokud chcete načíst název nebo popisný název svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
-* **--Item-Name** : název zálohované původní sdílené složky, kterou chcete použít pro operaci obnovení. Pokud chcete načíst název nebo popisný název zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
+* **--Container-Name**: název účtu úložiště, který hostuje zálohovanou původní sdílenou složku. Pokud chcete načíst název nebo popisný název svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container#az-backup-container-list) .
+* **--Item-Name**: název zálohované původní sdílené složky, kterou chcete použít pro operaci obnovení. Pokud chcete načíst název nebo popisný název zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item#az-backup-item-list) .
 
 Zadejte následující parametry pro položky, které chcete obnovit:
 
-* **SourceFilePath** : absolutní cesta k souboru, která se má obnovit v rámci sdílené složky jako řetězec. Tato cesta se shoduje s použitím příkazu [AZ Storage File Download](/cli/azure/storage/file#az-storage-file-download) nebo [AZ Storage File show](/cli/azure/storage/file#az-storage-file-show) CLI.
-* **SourceFileType** : vyberte, zda je vybrán adresář nebo soubor. Přijímá **adresář** nebo **soubor**.
-* **ResolveConflict selhalo** : instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
+* **SourceFilePath**: absolutní cesta k souboru, která se má obnovit v rámci sdílené složky jako řetězec. Tato cesta se shoduje s použitím příkazu [AZ Storage File Download](/cli/azure/storage/file#az-storage-file-download) nebo [AZ Storage File show](/cli/azure/storage/file#az-storage-file-show) CLI.
+* **SourceFileType**: vyberte, zda je vybrán adresář nebo soubor. Přijímá **adresář** nebo **soubor**.
+* **ResolveConflict selhalo**: instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
 
 ### <a name="restore-individual-files-or-folders-to-the-original-location"></a>Obnovte jednotlivé soubory nebo složky do původního umístění.
 
@@ -156,9 +156,9 @@ Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba
 
 Chcete-li obnovit konkrétní soubory nebo složky do alternativního umístění, použijte rutinu [AZ Backup Restore-azurefiles](/cli/azure/backup/restore#az-backup-restore-restore-azurefiles) s režimem obnovení nastavenou na *alternatelocation* a zadejte následující parametry související s cíli:
 
-* **--target-Storage-Account** : účet úložiště, na který se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
-* **--target-File-Share** : sdílená složka v rámci cílového účtu úložiště, do kterého se obnovil zálohovaný obsah.
-* **--target-Folder** : složka ve sdílené složce, do které se mají obnovit data. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnotu cílové složky jako prázdný řetězec.
+* **--target-Storage-Account**: účet úložiště, na který se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
+* **--target-File-Share**: sdílená složka v rámci cílového účtu úložiště, do kterého se obnovil zálohovaný obsah.
+* **--target-Folder**: složka ve sdílené složce, do které se mají obnovit data. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnotu cílové složky jako prázdný řetězec.
 
 Následující příklad obnoví *RestoreTest.txt* soubor původně přítomný ve sdílené složce *azurefiles* do alternativního umístění: složka *restoredata* ve sdílené složce *azurefiles1* hostovaná v účtu úložiště *afaccount1* .
 

@@ -13,17 +13,17 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
 ms.openlocfilehash: 76a154d3a137017f374247308a3980d598698246
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678655"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
 
 V tomto kurzu se používá [Azure Machine Learning Designer](../../machine-learning/concept-designer.md) k sestavení prediktivního modelu strojového učení. Model je založený na datech uložených v Azure synapse. Scénářem tohoto kurzu je předpovědět, jestli si zákazník může koupit kolo, nebo ne, aby to Adventure Works, prodejna kol mohl vytvořit cílovou marketingovou kampaň.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 

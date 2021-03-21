@@ -4,10 +4,10 @@ description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101718926"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
@@ -18,7 +18,7 @@ V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video A
 > Podpora pro zařízení ARM64 je k dispozici v Live video Analytics na IoT Edge sestaveních `1.0.4` a novějších.
 > Podpora spouštění Azure IoT Edge runtime na zařízeních ARM64 je ve [verzi Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Zařízení s platformou X86-64 nebo ARM64, které používá některý z [podporovaných operačních systémů Linux](../../iot-edge/support.md#operating-systems) .
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner)
