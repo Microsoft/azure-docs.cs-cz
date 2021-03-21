@@ -12,10 +12,10 @@ ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98939863"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Implementace hlasových asistentů ve Windows
@@ -78,7 +78,7 @@ Pro použití aktivace hlasu musí uživatel povolit aktivaci hlasu pro svůj sy
 
 ### <a name="listen-to-the-two-activation-signals-the-onbackgroundactivated-and-onsignaldetected"></a>Naslouchat dvěma aktivačním signálům: OnBackgroundActivated a OnSignalDetected
 
-Systém Windows zavolá vaši aplikaci, když zjistí klíčové slovo jedním ze dvou způsobů. Pokud aplikace není aktivní (to znamená, že nemáte odkaz na neuvolněnou instanci `ConversationalAgentSession` ), pak spustí vaši aplikaci a zavolá metodu OnBackgroundActivated v souboru App.XAML.cs vaší aplikace. Pokud se pole argumenty události `BackgroundActivatedEventArgs.TaskInstance.Task.Name` shoduje s řetězcem "AgentBackgroundTrigger", pak bylo spuštění aplikace aktivované aktivací hlasu. Aplikace musí tuto metodu přepsat a načíst instanci ConversationalAgentSession k signalizaci systému Windows, který je nyní aktivní. Když je aplikace aktivní, bude systém Windows signalizovat výskyt aktivace hlasu pomocí `ConversationalAgentSession.OnSignalDetected` události. Přidejte k této události obslužnou rutinu události hned po načtení `ConversationalAgentSession` .
+Systém Windows zavolá vaši aplikaci, když zjistí klíčové slovo jedním ze dvou způsobů. Pokud aplikace není aktivní (to znamená, že nemáte odkaz na neuvolněnou instanci `ConversationalAgentSession` ), pak spustí vaši aplikaci a zavolá metodu OnBackgroundActivated v souboru App. XAML. cs vaší aplikace. Pokud se pole argumenty události `BackgroundActivatedEventArgs.TaskInstance.Task.Name` shoduje s řetězcem "AgentBackgroundTrigger", pak bylo spuštění aplikace aktivované aktivací hlasu. Aplikace musí tuto metodu přepsat a načíst instanci ConversationalAgentSession k signalizaci systému Windows, který je nyní aktivní. Když je aplikace aktivní, bude systém Windows signalizovat výskyt aktivace hlasu pomocí `ConversationalAgentSession.OnSignalDetected` události. Přidejte k této události obslužnou rutinu události hned po načtení `ConversationalAgentSession` .
 
 ## <a name="keyword-verification"></a>Ověření klíčového slova
 
@@ -122,9 +122,9 @@ Když aplikace zobrazuje zámek výše, považuje se za "Celoobrazovkový režim
 
 ### <a name="transitioning-above-lock"></a>Přechod nad zámkem
 
-Aktivace přes zámek je podobná aktivaci nižší než zámek. Pokud neexistují žádné aktivní instance aplikace, bude spuštěna nová instance na pozadí a `OnBackgroundActivated` v App.XAML.cs bude volána. Pokud existuje instance aplikace, tato instance obdrží oznámení prostřednictvím `ConversationalAgentSession.SignalDetected` události.
+Aktivace přes zámek je podobná aktivaci nižší než zámek. Pokud neexistují žádné aktivní instance aplikace, bude spuštěna nová instance na pozadí a `OnBackgroundActivated` v App. XAML. cs bude volána. Pokud existuje instance aplikace, tato instance obdrží oznámení prostřednictvím `ConversationalAgentSession.SignalDetected` události.
 
-Pokud aplikace ještě není zobrazená nad zámkem, musí volat `ConversationalAgentSession.RequestForegroundActivationAsync` . Tím se aktivuje `OnLaunched` metoda v App.XAML.cs, která by měla přejít k zobrazení, které se zobrazí nad zámkem.
+Pokud aplikace ještě není zobrazená nad zámkem, musí volat `ConversationalAgentSession.RequestForegroundActivationAsync` . Tím se spustí `OnLaunched` metoda v souboru App. XAML. cs, která by měla přejít k zobrazení, které se zobrazí nad zámkem.
 
 ### <a name="detecting-lock-screen-transitions"></a>Zjišťování přechodů na zamykací obrazovce
 

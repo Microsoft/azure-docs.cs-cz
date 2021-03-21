@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: e90dc2c7220caf5bd72b7086adc275934652e150
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98939687"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spouštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí REST
@@ -19,7 +19,7 @@ Naučte se používat REST API Apache Hive WebHCat ke spouštění úloh MapRedu
 > [!NOTE]  
 > Pokud jste již obeznámeni s používáním serverů Hadoop se systémem Linux, ale jste novinkou ke službě HDInsight, Projděte si informace [o tom, co potřebujete vědět o Apache Hadoop pro Linux v dokumentu HDInsight](../hdinsight-hadoop-linux-information.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Hadoop v HDInsight. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 

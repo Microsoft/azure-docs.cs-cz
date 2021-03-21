@@ -1,19 +1,19 @@
 ---
 title: Připojení k synapse studiu pomocí privátních odkazů
 description: Tento článek vás seznámí s tím, jak se připojit k Azure synapse studiu pomocí privátních odkazů.
-author: NanditaV
+author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: d39beca60264023c8eb7c1bc78cd1ac15c3b45dc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97586971"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586620"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Připojení k Azure synapse studiu pomocí Center privátních odkazů Azure 
 
@@ -37,7 +37,9 @@ Virtuální síť Azure se musí připojit k prostředku rozbočovače privátn�
 
 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Snímek obrazovky zobrazující stránku připojení privátního koncového bodu":::
 
-Ujistěte se, že na kartě prostředek zvolíte typ prostředku Microsoft. synapse/privateLinkHubs. :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="snímek obrazovky, který ukazuje stránku vytvořit privátní koncový bod se zvýrazněným typem prostředku.":::
+Ujistěte se, že na kartě prostředek zvolíte typ prostředku Microsoft. synapse/privateLinkHubs.
+
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="Snímek obrazovky zobrazující stránku vytvořit privátní koncový bod se zvýrazněným typem prostředku":::
 
 Na kartě Konfigurace vyberte privatelink.azuresynapse.net pro zóny Privátní DNS při integraci s vaší virtuální sítí a privátní zónou DNS.
 

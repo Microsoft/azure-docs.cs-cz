@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6ac21d67f32fbc61db19b348fc29cdf3ee9fd7
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418177"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587895"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Řízení účtů služby Azure AD
 
@@ -53,7 +53,7 @@ Pro oprávnění účtu služby doporučujeme použít následující postupy.
 
 * Nepřiřazujte k účtům služeb předdefinované role. Místo toho použijte [pro Microsoft Graph model udělení oprávnění OAuth2](/graph/api/resources/oauth2permissiongrant),
 
-* Pokud musí být instančnímu objektu přiřazena privilegovaná role, zvažte možnost přiřazení [vlastní role](https://docs.microsoft.com/azure/active-directory/roles/custom-create) se specifickými a požadovanými privilegovanými daty v čase.
+* Pokud musí být instančnímu objektu přiřazena privilegovaná role, zvažte možnost přiřazení [vlastní role](../roles/custom-create.md) se specifickými a požadovanými privilegovanými daty v čase.
 
 * Nezahrnovat účty služeb jako členy žádné skupiny se zvýšenými oprávněními. 
 
@@ -63,10 +63,10 @@ Pro oprávnění účtu služby doporučujeme použít následující postupy.
    nebo použijte  
 `Get-AzureADServicePrincipal | % { Get-AzureADServiceAppRoleAssignment -ObjectId $_ }`
 
-* [Použijte rozsahy OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) k omezení funkčnosti, ke kterým má účet služby přístup, k prostředku.
+* [Použijte rozsahy OAuth 2,0](../develop/v2-permissions-and-consent.md) k omezení funkčnosti, ke kterým má účet služby přístup, k prostředku.
 * Instanční objekty a spravované identity můžou používat rozsahy OAuth 2,0 v delegovaném kontextu, který zosobňuje přihlášeného uživatele, nebo jako účet služby v kontextu aplikace. V kontextu aplikace není k dispozici přihlášení.
 
-* Zkontrolujte, jestli účty služeb oborů požadují prostředky, abyste měli jistotu, že jsou vhodné. Pokud třeba účet vyžaduje soubor. Readme. All, vyhodnoťte, jestli ve skutečnosti potřebuje jenom File. Read. All. Další informace o oprávněních najdete v tématu [Microsoft Graph odkaz na oprávnění](https://docs.microsoft.com/graph/permissions-reference).
+* Zkontrolujte, jestli účty služeb oborů požadují prostředky, abyste měli jistotu, že jsou vhodné. Pokud třeba účet vyžaduje soubor. Readme. All, vyhodnoťte, jestli ve skutečnosti potřebuje jenom File. Read. All. Další informace o oprávněních najdete v tématu [Microsoft Graph odkaz na oprávnění](/graph/permissions-reference).
 
 * Ujistěte se, že vývojářům aplikace nebo rozhraní API důvěřujete s přístupem požadovaným pro vaše prostředky.
 
@@ -78,9 +78,9 @@ Pro oprávnění účtu služby doporučujeme použít následující postupy.
 
 Jakmile budete mít jasné porozumění účelu, rozsahu a potřebných oprávnění, vytvořte účet služby. 
 
-[Vytváření a používání spravovaných identit](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[Vytváření a používání spravovaných identit](../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-[Vytváření a používání instančních objektů](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
+[Vytváření a používání instančních objektů](../develop/howto-create-service-principal-portal.md)
 
 Pokud je to možné, použijte spravovanou identitu. Pokud nemůžete použít spravovanou identitu, použijte instanční objekt. Pokud nemůžete použít instanční objekt, pak a jenom pak použijte uživatelský účet služby Azure AD.
 
@@ -100,7 +100,7 @@ Proaktivně monitorujte účty služeb a ujistěte se, že vzory využití účt
 
 * Použití protokolů Sign-In služby Azure AD na portálu Azure AD.
 
-* Export protokolů Sign-In služby Azure AD do [Azure Storage](https://docs.microsoft.com/azure/storage/), [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)nebo [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/logs/data-platform-logs).
+* Export protokolů Sign-In služby Azure AD do [Azure Storage](../../storage/index.yml), [Azure Event Hubs](../../event-hubs/index.yml)nebo [Azure monitor](../../azure-monitor/logs/data-platform-logs.md).
 
 
 ![Snímek obrazovky znázorňující obrazovku pro přihlášení k objektu služby](./media/securing-service-accounts/service-accounts-govern-azure-1.png)
@@ -172,7 +172,7 @@ Zřízení procesu revize za účelem zajištění pravidelného přezkoumání 
 
 **Procesy zrušení zřízení by měly zahrnovat následující úkoly.**
 
-1. Po zrušení zřízení přidružené aplikace nebo skriptu [monitorujte přihlášení](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report) a přístup k prostředkům pomocí účtu služby.
+1. Po zrušení zřízení přidružené aplikace nebo skriptu [monitorujte přihlášení](../reports-monitoring/concept-sign-ins.md#sign-ins-report) a přístup k prostředkům pomocí účtu služby.
 
    * Pokud je účet stále aktivní, před provedením následujících kroků určete, jak se používá.
  
@@ -196,4 +196,3 @@ Další informace o zabezpečení účtů služeb Azure najdete v těchto témat
 
  
 
- 

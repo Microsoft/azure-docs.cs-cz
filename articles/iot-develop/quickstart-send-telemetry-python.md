@@ -8,10 +8,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
 ms.openlocfilehash: d0dcca0c4be801f385a48afcd41b6a547bab3fbe
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100654846"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central-python"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby Azure IoT Central (Python)
@@ -20,7 +20,7 @@ ms.locfileid: "100654846"
 
 V tomto rychlém startu se naučíte základní pracovní postup vývoje aplikací pro zařízení IoT. Nejprve použijte Azure IoT Central k vytvoření cloudové aplikace. Pak použijete sadu SDK Azure IoT Python k sestavení simulovaného zařízení, připojení k IoT Central a odeslání telemetrie typu zařízení-Cloud. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - [Python 3.7 +](https://www.python.org/downloads/). Další podporované verze Pythonu najdete v tématu [funkce zařízení Azure IoT](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
     
     Pokud chcete zajistit aktuálnost verze Pythonu, spusťte příkaz `python --version` . Pokud máte nainstalované Python 2 i Python 3 a používáte prostředí Python 3, nainstalujte všechny knihovny pomocí nástroje `pip3` . Spuštění `pip3` zajistí, že se knihovny nainstalují do modulu runtime Python 3.

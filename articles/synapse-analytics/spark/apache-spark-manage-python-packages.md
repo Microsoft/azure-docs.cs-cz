@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 2d6ac02402414f096a46fec0340c3074d8e1784a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098770"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586637"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven Pythonu pro Apache Spark ve službě Azure synapse Analytics
 
@@ -68,13 +68,13 @@ Tento příklad určuje kanály a závislosti conda/PyPI.
 ```
 name: stats2
 channels:
-  - defaults
+- defaults
 dependencies:
-  - bokeh=0.9.2
-  - numpy=1.9.*
-  - flask
-  - pip:
-    - matplotlib
+- bokeh
+- numpy
+- pip:
+  - matplotlib
+  - koalas==1.7.0
 ```
 Podrobnosti o vytvoření prostředí z tohoto souboru prostředí. yml najdete v tématu [vytvoření prostředí ze souboru prostředí. yml](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually).
 
@@ -140,6 +140,11 @@ Přidání balíčků pracovního prostoru:
 
 ![Snímek obrazovky, který zvýrazní balíčky pracovních prostorů.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Zobrazit balíčky pracovních prostorů")
 
+>[!WARNING]
+>- V rámci Azure synapse může fond Apache Spark využívat vlastní knihovny, které jsou buď nahrané jako balíčky pracovních prostorů, nebo nahrané v dobře známé Azure Data Lake Storage cestě. Obě tyto možnosti se ale nedají použít současně v rámci stejného Apache Spark fondu. Pokud jsou balíčky k dispozici pomocí obou metod, budou nainstalovány pouze soubory kolečka zadané v seznamu balíčky pracovních prostorů. 
+>
+>- Po použití balíčků pracovních prostorů (ve verzi Preview) k instalaci balíčků na daném fondu Apache Spark existuje omezení, že už nemůžete určit balíčky pomocí cesty k účtu úložiště ve stejném fondu.  
+
 ### <a name="storage-account"></a>Účet úložiště
 Vlastní balíčky kol lze nainstalovat do fondu Apache Spark tím, že všechny soubory kol nahrajete do účtu Azure Data Lake Storage (Gen2), který je propojený s pracovním prostorem synapse. 
 
@@ -149,13 +154,12 @@ Soubory by měly být nahrány do následující cesty ve výchozím kontejneru 
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
-Je možné, že budete muset přidat ```python``` složku do ```libraries``` složky, pokud ještě neexistuje.
+>[!WARNING]
+> V některých případech může být nutné vytvořit cestu k souboru na základě struktury uvedené výše, pokud ještě neexistuje. Například může být nutné přidat ```python``` složku ve ```libraries``` složce, pokud ještě neexistuje.
 
 > [!IMPORTANT]
 > Pokud chcete nainstalovat vlastní knihovny pomocí metody úložiště Azure datalake, musíte mít oprávnění správce **dat objektu BLOB úložiště** nebo **vlastníka dat objektu BLOB úložiště** v primárním účtu úložiště Gen2, který je propojený s pracovním prostorem Azure synapse Analytics.
 
->[!WARNING]
-> Když uživatelé zadávají vlastní soubory, nemůžou v účtu úložiště i v rozhraní knihovny pracovních prostorů poskytovat soubory kolečka. Pokud jsou zadány obě, nainstalují se jenom soubory kolečka zadané v seznamu balíčky pracovních prostorů. 
 
 ## <a name="session-scoped-packages-preview"></a>Balíčky s rozsahem relace (Preview)
 Kromě balíčků na úrovni fondu můžete také na začátku relace poznámkového bloku zadat knihovny s rozsahem relace.  Knihovny s rozsahem relace umožňují zadat a používat vlastní prostředí Pythonu v rámci relace poznámkového bloku. 

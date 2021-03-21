@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98940471"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights s využitím Apache Spark ve službě HDInsight
@@ -18,7 +18,7 @@ Naučte se, jak pomocí [Apache Spark](https://spark.apache.org/) v HDInsight an
 
 [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) je analytická služba, která monitoruje vaše webové aplikace. Data telemetrie generovaná pomocí Application Insights lze exportovat do Azure Storage. Jakmile jsou data v Azure Storage, HDInsight je možné použít k její analýze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aplikace, která je nakonfigurována pro použití Application Insights.
 

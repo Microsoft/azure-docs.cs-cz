@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
 ms.openlocfilehash: bb944cb034fdd7cc51648314154a654bc1265533
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103564966"
 ---
 # <a name="rebuild-a-studio-classic-experiment-in-azure-machine-learning"></a>Opětovné sestavení experimentu studia (Classic) v Azure Machine Learning
@@ -24,7 +24,7 @@ V tomto článku se naučíte, jak znovu sestavit experiment v rámci studia (Cl
 Další informace o vytváření kanálů pomocí sady SDK najdete v tématu [co jsou Azure Machine Learning kanály](../concept-ml-pipelines.md#building-pipelines-with-the-python-sdk).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Pracovní prostor služby Azure Machine Learning. [Vytvořte pracovní prostor Azure Machine Learning](../how-to-manage-workspace.md#create-a-workspace).

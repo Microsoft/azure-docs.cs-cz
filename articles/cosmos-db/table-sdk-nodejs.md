@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 414b7107d02f78676970ecda6ca9373ac3b8db4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7a8880512fa2f22208ad98aa4c53d3a5c568e840
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101166"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595664"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky pro Node.js: poznámky k verzi a prostředky
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "93101166"
 > * [Python](table-sdk-python.md)
  
 
-|   |   |
+|   | Odkazy  |
 |---|---|
 |**Stažení sady SDK**|[NPM](https://www.npmjs.com/package/azure-storage)|
 |**Dokumentace k rozhraní API**|[ Referenční dokumentace k rozhraníNode.js API](https://azure.github.io/azure-storage-node/)|
@@ -42,7 +42,7 @@ ms.locfileid: "93101166"
 * Verze pro obecné dostupnosti
 
 ## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení
-Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců** , aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi.
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců**, aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi.
 
 Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
 

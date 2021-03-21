@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4ba5efe66e033966705072bfdf96422731fab082
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101091869"
 ---
 # <a name="cli-example-publish-an-asset"></a>Ukázka CLI: Publikování assetu
@@ -28,7 +28,7 @@ ms.locfileid: "101091869"
 
 Skript Azure CLI v tomto článku znázorňuje, jak vytvořit streamovací lokátor a získat zpět adresy URL pro streamování. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 [Vytvořte účet Media Services](./create-account-howto.md).
 

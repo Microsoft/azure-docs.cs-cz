@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 09b801c48bf2998a2d8926009cae76287c1ac9b6
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: aeea2905b6bae094c92bd8b5d46523225c745494
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342262"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595630"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,17 +45,17 @@ DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 *StartDate*  
     Hodnota řetězce data a času STANDARDu ISO 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
-  |Formát|Popis|
-  |-|-|
-  |RRRR|rok se čtyřmi číslicemi|
-  |MM|dvoumístný měsíc (01 = leden atd.)|
-  |DD|dvoumístné číslo dne v měsíci (01 až 31)|
-  |T|označuje, že se mají na začátku prvky času.|
-  |hh|dvoumístný čas (00 až 23)|
-  |mm|dvoumístné minuty (00 až 59)|
-  |ss|dvě číslice sekund (00 až 59)|
-  |. fffffff|dvoumístný zlomek v sekundách|
-  |Z|Označení UTC (koordinovaný světový čas)||
+|Formát|Description|
+|-|-|
+|RRRR|rok se čtyřmi číslicemi|
+|MM|dvoumístný měsíc (01 = leden atd.)|
+|DD|dvoumístné číslo dne v měsíci (01 až 31)|
+|T|označuje, že se mají na začátku prvky času.|
+|hh|dvoumístný čas (00 až 23)|
+|mm|dvoumístné minuty (00 až 59)|
+|ss|dvě číslice sekund (00 až 59)|
+|. fffffff|dvoumístný zlomek v sekundách|
+|Z|Označení UTC (koordinovaný světový čas)|
   
   Další informace o formátu ISO 8601 naleznete v tématu [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 

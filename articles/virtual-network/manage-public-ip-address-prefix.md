@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
 ms.openlocfilehash: 2e32faad698fbf316d51123cc8b7845a3b262c7f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98938654"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předpony veřejné IP adresy
@@ -51,7 +51,7 @@ Předpony veřejných IP adres mají poplatek. Podrobnosti najdete v tématu [ce
    |Předplatné|Yes|Musí existovat ve stejném [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
    |Skupina prostředků|Yes|Může existovat ve stejné nebo jiné [skupině prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) jako prostředek, ke kterému chcete přidružit veřejnou IP adresu.|
    |Name|Yes|Název musí být jedinečný v rámci vybrané skupiny prostředků.|
-   |Region (Oblast)|Yes|Musí existovat ve stejné [oblasti](https://azure.microsoft.com/regions)jako veřejné IP adresy, které přiřadíte adresám z rozsahu.|
+   |Oblast|Yes|Musí existovat ve stejné [oblasti](https://azure.microsoft.com/regions)jako veřejné IP adresy, které přiřadíte adresám z rozsahu.|
    |Velikost předpony|Yes| Velikost potřebné předpony. Výchozí hodnota je/28 nebo 16 IP adres.
 
 **Příkazy**

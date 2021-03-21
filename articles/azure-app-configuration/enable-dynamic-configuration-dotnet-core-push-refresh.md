@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 07/25/2020
 ms.author: abarora
 ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701514"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>Kurz: použití dynamické konfigurace pomocí aktualizace Push v aplikaci .NET Core
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 > * Nastavte si aplikaci .NET Core, abyste aktualizovali její konfiguraci v reakci na změny v konfiguraci aplikace.
 > * Využijte ve své aplikaci nejnovější konfiguraci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
@@ -85,7 +85,7 @@ Po vytvoření prostředků přidejte následující proměnné prostředí. Bud
 
 ## <a name="register-event-handler-to-reload-data-from-app-configuration"></a>Registrovat obslužnou rutinu události pro opětovné načtení dat z konfigurace aplikace
 
-Otevřete *program.cs* a aktualizujte soubor pomocí následujícího kódu.
+Otevřete *program. cs* a aktualizujte soubor pomocí následujícího kódu.
 
 ```csharp
 using Microsoft.Azure.ServiceBus;

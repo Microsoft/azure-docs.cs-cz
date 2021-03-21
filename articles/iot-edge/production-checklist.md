@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1fc229b04ac317578e9e90686496cd081b279afd
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: fda69d582f26b0c9189898bb5c8b0004a1e47360
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489751"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722765"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -178,7 +178,13 @@ Značka je koncept Docker, který můžete použít k rozlišení mezi verzemi k
 
 Značky vám také pomůžou vymáhat aktualizace vašich IoT Edgech zařízení. Když nahrajete aktualizovanou verzi modulu do registru kontejneru, zvyšte značku. Pak na zařízení Nahrajte nové nasazení se zvýšenými značkami. Kontejnerový modul rozpozná zvětšenou značku jako novou verzi a stáhne nejnovější verzi modulu dolů na vaše zařízení.
 
-Příklad konvence značek najdete v tématu [aktualizace modulu runtime IoT Edge](how-to-update-iot-edge.md#understand-iot-edge-tags) , kde zjistíte, jak IoT Edge používá ke sledování verzí značky válcování a specifické značky.
+#### <a name="tags-for-the-iot-edge-runtime"></a>Značky pro modul runtime IoT Edge
+
+IoT Edge agent a image centra IoT Edge jsou označené verzí IoT Edge, ke které jsou přidružené. Existují dva různé způsoby použití značek s imagemi za běhu:
+
+* **Válcování značek** – použijte pouze první dvě hodnoty čísla verze, abyste získali nejnovější obrázek, který se shoduje s těmito číslicemi. Například 1,1 se aktualizuje vždy, když je k dispozici nová verze, která odkazuje na nejnovější verzi 1.1. x. Pokud se znovu načte modul runtime kontejneru v zařízení IoT Edge, modul runtime se aktualizuje na nejnovější verzi. Nasazení z Azure Portal výchozí pro vracení značek. *Tento přístup je navržený pro účely vývoje.*
+
+* **Konkrétní značky** – k explicitnímu nastavení verze image použijte všechny tři hodnoty čísla verze. Například 1.1.0 se po počáteční verzi nemění. Až budete připraveni na aktualizaci, můžete deklarovat nové číslo verze v manifestu nasazení. *Tento přístup je navržený pro produkční účely.*
 
 ### <a name="store-runtime-containers-in-your-private-registry"></a>Ukládání kontejnerů za běhu do privátního registru
 
