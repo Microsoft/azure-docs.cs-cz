@@ -12,10 +12,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96501205"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Rozšířené události v Azure SQL Database 
@@ -73,7 +73,7 @@ Související témata poskytují dva ukázky kódu:
 
 Funkce Rozšířené události je podporována v několika [zobrazeních katalogu](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql). Zobrazení katalogu informují o *metadatech a definicích* relací událostí vytvořených uživatelem v aktuální databázi. Zobrazení nevrací informace o instancích aktivních relací událostí.
 
-| Název<br/>zobrazení katalogu | Popis |
+| Název<br/>zobrazení katalogu | Description |
 |:--- |:--- |
 | **sys.database_event_session_actions** |Vrátí řádek pro každou akci každé události relace události. |
 | **sys.database_event_session_events** |Vrátí řádek pro každou událost v relaci události. |
@@ -87,7 +87,7 @@ V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahuj�
 
 Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické správy)](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) , které podporují rozšířené události. Zobrazení dynamické správy vás informuje o *aktivních* relacích událostí.
 
-| Název DMV | Popis |
+| Název DMV | Description |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
 | **sys.dm_xe_database_session_events** |Vrátí informace o událostech relace. |

@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak používat funkci veřejné IP adre
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99581376"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Jak používat funkci veřejné IP adresy v řešení Azure VMware
@@ -29,7 +29,7 @@ V rámci nasazení privátního cloudu řešení Azure VMware se po povolení fu
 
 Tento článek podrobně popisuje, jak můžete používat funkci veřejné IP adresy ve virtuální síti WAN.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Prostředí řešení Azure VMware
 - WebServer běžící v prostředí řešení Azure VMware.

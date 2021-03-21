@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
 ms.openlocfilehash: 1d8859f4790610e72ad517f74bbbbf0cf77d9316
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97705196"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>Rychlý Start: použití .NET a C# v aplikaci Visual Studio k připojení a dotazování databáze
@@ -24,7 +24,7 @@ ms.locfileid: "97705196"
 
 V tomto rychlém startu se dozvíte, jak používat kód [.NET Framework](https://www.microsoft.com/net/) a C# v aplikaci Visual Studio k dotazování databáze v Azure SQL nebo synapse SQL pomocí příkazů jazyka Transact-SQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
@@ -52,7 +52,7 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
    
 1. Po dokončení instalace můžete zavřít **Správce balíčků NuGet**. 
    
-1. V editoru kódu nahraďte obsah **program.cs** následujícím kódem. Nahraďte své hodnoty pro `<your_server>` , `<your_username>` , a `<your_password>` `<your_database>` .
+1. V editoru kódu nahraďte obsah **program. cs** následujícím kódem. Nahraďte své hodnoty pro `<your_server>` , `<your_username>` , a `<your_password>` `<your_database>` .
    
    ```csharp
    using System;

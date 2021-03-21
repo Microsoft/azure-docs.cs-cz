@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 7098f23e9b5b6f56fbbe761335afc65375aea680
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96509345"
 ---
 **Azure Data Lake Storage Gen2** není vyhrazený typ služby nebo účtu úložiště. Je to nejnovější verze schopností, které jsou vyhrazeny pro analýzy velkých objemů dat.  Tyto možnosti jsou dostupné v účtu úložiště pro obecné účely v2 nebo BlockBlobStorage a můžete je získat tím, že v účtu povolíte funkci **hierarchického oboru názvů** . Cílení na škálování najdete v těchto článcích. 
@@ -22,7 +22,7 @@ ms.locfileid: "96509345"
 
 **Azure Data Lake Storage Gen1** je vyhrazená služba. Pro úlohy analýzy velkých objemů dat je to škálovatelné úložiště na úrovni podniku. Můžete použít Data Lake Storage Gen1 k zachycení dat libovolné velikosti, typu a rychlosti příjmu na jednom místě pro provozní a průzkumné analýzy. Množství dat, která můžete ukládat v účtu Data Lake Storage Gen1, není nijak omezené.
 
-| **Prostředek** | **Omezení** | **Komentáře** |
+| **Prostředek** | **Počtu** | **Komentáře** |
 | --- | --- | --- |
 | Maximální počet Data Lake Storage Gen1 účtů na předplatné v jednotlivých oblastech |10 | Pokud chcete požádat o zvýšení tohoto limitu, obraťte se na podporu. |
 | Maximální počet přístupových seznamů ACL na jeden soubor nebo složku |32 | Toto je pevný limit. Skupiny můžete použít ke správě přístupu s menším počtem položek. |

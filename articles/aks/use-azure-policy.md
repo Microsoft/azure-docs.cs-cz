@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 46e92e6842204cd323992a2561e71302bb9cc722
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102193408"
 ---
 # <a name="secure-your-cluster-with-azure-policy"></a>Zabezpečte svůj cluster pomocí Azure Policy
@@ -18,7 +18,7 @@ Pro zlepšení zabezpečení clusteru Azure Kubernetes Service (AKS) můžete po
 
 V tomto článku se dozvíte, jak ve svém clusteru použít definice zásad a ověřit, jestli se tato přiřazení uplatňují.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 - Doplněk Azure Policy pro AKS nainstalovaný v clusteru AKS. Pomocí těchto [kroků nainstalujte doplněk Azure Policy][azure-policy-addon].

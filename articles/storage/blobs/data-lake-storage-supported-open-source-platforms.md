@@ -9,10 +9,10 @@ ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 30c33f6ec497fd5766dc541b50f341cb30946051
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95912565"
 ---
 # <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>Open Source platformy, které podporují Azure Data Lake Storage Gen2
@@ -37,6 +37,6 @@ V této tabulce jsou uvedené otevřené zdrojové platformy, které podporují 
 ## <a name="see-also"></a>Viz také
 
 - [Známé problémy s Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
-- [Funkce BLOB Storage dostupné v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
+- [Dostupné funkce úložiště objektů blob v Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
 - [Služby Azure, které podporují Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md)
 - [Přístup k více protokolům na Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)

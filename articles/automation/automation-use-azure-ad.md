@@ -5,10 +5,10 @@ services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 336c0387ac9febcc517c2ce358d0b04c80d10678
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99576799"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Použití Azure AD k ověření v Azure

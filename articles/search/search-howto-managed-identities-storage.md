@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358367"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Nastavení připojení k účtu služby Azure Storage s využitím spravované identity
@@ -77,7 +77,7 @@ Při indexování z účtu úložiště musí mít zdroj dat následující pož
 * **přihlašovací údaje**
     * Při ověřování pomocí spravované identity se formát **přihlašovacích údajů** liší od použití spravované identity. Tady poskytnete ResourceId, které nemá klíč účtu ani heslo. ResourceId musí zahrnovat ID předplatného účtu úložiště, skupinu prostředků účtu úložiště a název účtu úložiště.
     * Spravovaný formát identity: 
-        * *ResourceId =/Subscriptions/ **ID vašeho předplatného** /resourceGroups/název vaší **skupiny prostředků** /Providers/Microsoft.Storage/storageAccounts/ **název vašeho účtu úložiště** /;*
+        * *ResourceId =/Subscriptions/**ID vašeho předplatného**/resourceGroups/název vaší **skupiny prostředků**/Providers/Microsoft.Storage/storageAccounts/**název vašeho účtu úložiště**/;*
 * **kontejner** Určuje název kontejneru nebo tabulky v účtu úložiště. Ve výchozím nastavení jsou všechny objekty BLOB v kontejneru navýšené. Pokud chcete indexovat objekty blob pouze v konkrétním virtuálním adresáři, můžete tento adresář zadat pomocí volitelného parametru **dotazu** .
 
 Příklad vytvoření objektu zdroje dat objektů BLOB pomocí [REST API](/rest/api/searchservice/create-data-source):

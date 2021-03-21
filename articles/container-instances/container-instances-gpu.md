@@ -4,15 +4,15 @@ description: Naučte se nasazovat služby Azure Container Instances pro spoušt�
 ms.topic: article
 ms.date: 07/22/2020
 ms.openlocfilehash: 0d645d1fce24d1324e485d74e20bcf492d4444a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93127004"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instancí kontejnerů, které používají prostředky GPU
 
-Pokud chcete spouštět určité úlohy náročné na výpočetní výkon na Azure Container Instances, nasaďte [skupiny kontejnerů](container-instances-container-groups.md) pomocí *prostředků GPU* . Instance kontejnerů ve skupině mají přístup k jednomu nebo více GPU NVIDIA Tesla při spouštění úloh kontejneru, jako jsou CUDA a aplikace s hloubkovým učením.
+Pokud chcete spouštět určité úlohy náročné na výpočetní výkon na Azure Container Instances, nasaďte [skupiny kontejnerů](container-instances-container-groups.md) pomocí *prostředků GPU*. Instance kontejnerů ve skupině mají přístup k jednomu nebo více GPU NVIDIA Tesla při spouštění úloh kontejneru, jako jsou CUDA a aplikace s hloubkovým učením.
 
 Tento článek popisuje, jak přidat prostředky GPU při nasazení skupiny kontejnerů pomocí [souboru YAML](container-instances-multi-container-yaml.md) nebo [šablony Správce prostředků](container-instances-multi-container-group.md). Prostředky GPU můžete zadat také při nasazení instance kontejneru pomocí Azure Portal.
 
@@ -27,9 +27,9 @@ V rámci verze Preview platí při používání prostředků GPU ve skupinách 
 
 Podpora bude v průběhu času přidána pro další oblasti.
 
-**Podporované typy operačních systémů** : jenom Linux
+**Podporované typy operačních systémů**: jenom Linux
 
-**Další omezení** : prostředky GPU nelze použít při nasazování skupiny kontejnerů do [virtuální sítě](container-instances-vnet.md).
+**Další omezení**: prostředky GPU nelze použít při nasazování skupiny kontejnerů do [virtuální sítě](container-instances-vnet.md).
 
 ## <a name="about-gpu-resources"></a>O prostředcích GPU
 
@@ -37,8 +37,8 @@ Podpora bude v průběhu času přidána pro další oblasti.
 
 Chcete-li použít GPU v instanci kontejneru, zadejte *prostředek GPU* s následujícími informacemi:
 
-* **Count** – počet GPU: **1** , **2** nebo **4** .
-* **SKU** – SKU GPU: **K80** , **P100** nebo **V100** . Každá SKU se mapuje na grafický procesor NVIDIA Tesla v jedné z následujících rodin virtuálních počítačů s podporou GPU Azure:
+* **Count** – počet GPU: **1**, **2** nebo **4**.
+* **SKU** – SKU GPU: **K80**, **P100** nebo **V100**. Každá SKU se mapuje na grafický procesor NVIDIA Tesla v jedné z následujících rodin virtuálních počítačů s podporou GPU Azure:
 
   | SKU | Řada virtuálních počítačů |
   | --- | --- |
@@ -55,7 +55,7 @@ Při nasazování prostředků GPU nastavte prostředky procesoru a paměti, kte
 
 ### <a name="things-to-know"></a>Co je potřeba vědět
 
-* **Čas nasazení** – vytvoření skupiny kontejnerů obsahující prostředky GPU trvá až **8-10 minut** . Důvodem je další čas při zřizování a konfiguraci virtuálního počítače GPU v Azure. 
+* **Čas nasazení** – vytvoření skupiny kontejnerů obsahující prostředky GPU trvá až **8-10 minut**. Důvodem je další čas při zřizování a konfiguraci virtuálního počítače GPU v Azure. 
 
 * **Ceny** – podobně jako u skupin kontejnerů bez prostředků GPU, Azure účtuje prostředky spotřebované po *dobu trvání* skupiny kontejnerů pomocí prostředků GPU. Doba trvání se vypočítává z doby, kdy se má načíst první obrázek kontejneru, dokud se neukončí skupina kontejnerů. Nezahrnuje čas k nasazení skupiny kontejnerů.
 

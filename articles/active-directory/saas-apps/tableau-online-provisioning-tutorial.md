@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: a42790e079985b003776b381c74f837b0ba619b1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359200"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Kurz: Konfigurace Tableau online pro Automatické zřizování uživatelů
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak provést Tableau online a Azure Active Directory 
 > [!NOTE]
 > Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Informace o tom, jak tato služba funguje, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace typu software jako služba (SaaS) s Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že máte následující:
 
@@ -78,7 +78,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
 ### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Tableau online ve službě Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**  >  **Tableau online**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**  >  **Tableau online**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 

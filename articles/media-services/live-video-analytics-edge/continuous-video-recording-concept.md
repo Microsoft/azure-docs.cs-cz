@@ -4,10 +4,10 @@ description: Záznam průběžného nahrávání videa (CVR) označuje proces pr
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: f8b25d74db279f8cfff68f08efeab2975484a0c5
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102453746"
 ---
 # <a name="continuous-video-recording"></a>Nepřetržité nahrávání videa  

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
 ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94363319"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověřování požadavků do Azure Cognitive Services
@@ -24,7 +24,7 @@ Každý požadavek na službu rozpoznávání Azure musí obsahovat hlavičku ov
 * Ověřování pomocí [tokenu](#authenticate-with-an-authentication-token)
 * Ověřování pomocí [Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před vytvořením žádosti potřebujete účet Azure a předplatné Azure Cognitive Services. Pokud již účet máte, přejděte k další části a přejděte k dalšímu oddílu. Pokud účet nemáte, máme v něm průvodce, který vám pomůže nastavit [účet Cognitive Services pro Azure](cognitive-services-apis-create-account.md).
 
@@ -34,7 +34,7 @@ Klíč předplatného můžete získat z [Azure Portal](cognitive-services-apis-
 
 Pojďme rychle zkontrolovat hlavičky ověřování, které jsou k dispozici pro použití s Azure Cognitive Services.
 
-| Záhlaví | Popis |
+| Hlavička | Description |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Tuto hlavičku použijte k ověření pomocí klíče předplatného pro konkrétní službu nebo klíč předplatného s více službami. |
 | OCP – APIM – předplatné – oblast | Tato hlavička se vyžaduje jenom v případě, že se ke [službě Translator](./Translator/reference/v3-0-reference.md)používá klíč předplatného s více službami. Pomocí této hlavičky můžete zadat oblast předplatného. |

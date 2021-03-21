@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4fc14083b0912cf18f98c229adcb297b89bc8971
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95559273"
 ---
 Vytvořte Připojení ke vzdálené ploše pro připojení k virtuálnímu počítači, který je nasazený do vaší virtuální sítě. Nejlepším způsobem, jak ověřit, že se můžete připojit k VIRTUÁLNÍmu počítači, je připojit se ke svému privátní IP adrese, a ne jeho název počítače. Tímto způsobem otestujete, jestli se můžete připojit a jestli je správně nakonfigurovaný překlad názvů. 

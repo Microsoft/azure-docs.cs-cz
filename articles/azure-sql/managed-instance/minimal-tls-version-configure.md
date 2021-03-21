@@ -11,16 +11,16 @@ ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
 ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788396"
 ---
-# <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Konfigurace minimální verze protokolu TLS ve spravované instanci Azure SQL
+# <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Konfigurace minimální verze protokolu TLS ve službě Azure SQL Managed Instance
 Nastavení verze [protokolu TLS (minimální přenosná vrstva zabezpečení)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) umožňuje zákazníkům řídit verzi TLS, kterou používá jejich spravovaná instance SQL Azure.
 
-V současnosti podporujeme TLS 1,0, 1,1 a 1,2. Nastavení minimální verze protokolu TLS zajistí, že budou podporovány následné novější verze TLS. Například vyberte verzi TLS vyšší než 1,1. znamená, že jsou přijímána pouze připojení k TLS 1,1 a 1,2 a TLS 1,0 je odmítnuta. Po otestování, jestli je vaše aplikace podporuje, doporučujeme nastavit minimální verzi TLS na 1,2, protože zahrnuje opravy chyb zabezpečení nalezené v předchozích verzích a je nejvyšší verzí TLS podporovaná ve spravované instanci Azure SQL.
+V současné době podporujeme protokoly TLS 1.0, 1.1 a 1.2. Nastavení minimální verze protokolu TLS zajišťuje podporu následných novějších verzí TLS. Například vyberte verzi TLS vyšší než 1,1. se zajistí, že se budou přijímat pouze připojení přes protokol TLS 1.1 a 1.2 a připojení přes protokol TLS 1.0 se budou zamítat. Po otestování, že vaše aplikace podporují protokol TLS 1.2, doporučujeme nastavit minimální verzi protokolu TLS na tuto verzi, která obsahuje opravy ohrožení zabezpečení zjištěných v předchozích verzích a představuje nejvyšší podporovanou verzi protokolu TLS ve službě Azure SQL Managed Instance.
 
 Pro zákazníky s aplikacemi, které spoléhají na starší verze TLS, doporučujeme nastavit minimální verzi TLS podle požadavků vašich aplikací. Pro zákazníky, kteří spoléhají na aplikace, aby se připojili pomocí nešifrovaného připojení, doporučujeme nenastavit žádnou minimální verzi TLS. 
 

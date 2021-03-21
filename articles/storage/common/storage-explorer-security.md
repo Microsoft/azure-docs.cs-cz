@@ -8,10 +8,10 @@ ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
 ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783755"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Průzkumník služby Azure Storage Průvodce zabezpečením
@@ -81,7 +81,7 @@ Klíče účtu úložiště udělují neomezený přístup ke službám a prost�
 
 Některé role Azure udělují oprávnění k načtení klíčů účtu úložiště. Uživatelé s těmito rolemi můžou efektivně obejít oprávnění udělená nebo zakázaná službou Azure RBAC. Toto oprávnění nedoporučujeme udělit, pokud není nutné.
 
-Průzkumník služby Storage se pokusí použít klíče účtu úložiště, pokud jsou k dispozici, k ověření požadavků. Tuto funkci můžete zakázat v nastavení ( **služby > účty úložiště > zakázání použití klíčů** ). Některé funkce nepodporují službu Azure RBAC, jako je práce s klasickými účty úložiště. Tyto funkce stále vyžadují klíče a nejsou tímto nastavením ovlivněny.
+Průzkumník služby Storage se pokusí použít klíče účtu úložiště, pokud jsou k dispozici, k ověření požadavků. Tuto funkci můžete zakázat v nastavení (**služby > účty úložiště > zakázání použití klíčů**). Některé funkce nepodporují službu Azure RBAC, jako je práce s klasickými účty úložiště. Tyto funkce stále vyžadují klíče a nejsou tímto nastavením ovlivněny.
 
 Pokud pro přístup k prostředkům úložiště potřebujete použít klíče, doporučujeme následující pokyny:
 

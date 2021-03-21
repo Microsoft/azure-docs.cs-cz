@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
 ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462957"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Podrobná konfigurace pro hostované testovací jednotky
@@ -37,7 +37,7 @@ Tento článek popisuje, jak nakonfigurovat hostovaný testovací disk pro Dynam
     - **Maximální počet souběžných testovacích jednotek** – počet souběžných uživatelů, kteří můžou mít spuštěnou aktivní testovací jednotku ve stejnou dobu. Každý uživatel bude používat licenci Dynamics v době, kdy je jejich testovací jednotka aktivní, takže musíte mít k dispozici alespoň tento počet licencí Dynamics pro uživatele testovacích jednotek. Doporučili jsme 3 až 5.
     - **Doba trvání testovacích jednotek** – počet hodin, po které bude testovací jednotka uživatele aktivní. Po vypršení časového limitu bude uživatel ve vašem tenantovi zrušeno. V závislosti na složitosti vaší aplikace doporučujeme 2-24 hodin. Uživatel si může vždycky vyžádat jinou testovací jednotku, pokud k nim dojde nevčas a chcete znovu získat přístup k testovací jednotce.
     - **Adresa URL instance** – adresa URL, na kterou se uživatel testovací jednotky pošle při spuštění testovací jednotky. Obvykle se jedná o adresu URL vaší instance Dynamics 365, na které je nainstalována vaše aplikace a ukázková data. Příklad hodnoty: `https://testdrive.crm.dynamics.com` .
-    - **Instance URL webového rozhraní API** – adresa URL webového rozhraní API vaší Instance Dynamics 365 Načtěte tuto hodnotu tak, že se přihlásíte ke své instanci Microsoft Dynamics 365 a přejdete na **Nastavení**  >  **přizpůsobení**  >  **Developer Resources**  >  **instance zdrojů webové rozhraní API** a zkopírujete adresu (URL). Ukázková hodnota:
+    - **Instance URL webového rozhraní API** – adresa URL webového rozhraní API vaší Instance Dynamics 365 Načtěte tuto hodnotu tak, že se přihlásíte ke své instanci Microsoft Dynamics 365 a přejdete na **Nastavení**  >  **přizpůsobení**  >    >  **instance zdrojů webové rozhraní API** a zkopírujete adresu (URL). Ukázková hodnota:
 
         :::image type="content" source="./media/test-drive/sample-web-api-url.png" alt-text="Příklad instance webového rozhraní API":::
 

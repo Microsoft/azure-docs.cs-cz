@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 0c0b3bd81e0f73a7879382e28516378bd722bc17
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498638"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Jak používat oprávnění v Azure jaře cloudu
@@ -54,7 +54,7 @@ Pomocí těchto kroků můžete začít s definováním role.
    ![Začátek přidávání oprávnění](media/spring-cloud-permissions/add-permissions.png)
 
 ### <a name="search-for-azure-spring-cloud-permissions"></a>Vyhledat oprávnění pro jarní Cloud v Azure:
-7. Do vyhledávacího pole vyhledejte *Microsoft. app*.
+7. Do vyhledávacího pole vyhledejte *Microsoft.app*.
 Vyberte *Microsoft Azure jarní Cloud*.
 
    ![Vybrat jarní cloud Azure](media/spring-cloud-permissions/spring-cloud-permissions.png)

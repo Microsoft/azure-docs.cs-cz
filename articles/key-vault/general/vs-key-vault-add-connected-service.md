@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792391"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
@@ -24,7 +24,7 @@ Podrobnosti o změnách, které připojené služby vytvoří v projektu, aby um
 
 ## <a name="prerequisites"></a>Předpoklady
 
-- **Předplatné Azure** . Pokud předplatné nemáte, zaregistrujte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+- **Předplatné Azure**. Pokud předplatné nemáte, zaregistrujte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 - **Visual Studio 2019 verze 16,3** nebo novější [Stáhnout nyní](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 
@@ -32,21 +32,21 @@ Podrobnosti o změnách, které připojené služby vytvoří v projektu, aby um
 
 Než začnete, ujistěte se, že jste se přihlásili do sady Visual Studio. Přihlaste se pomocí stejného účtu, který používáte pro předplatné Azure. Pak otevřete webový projekt ASP.NET 4.7.1 nebo novější verze nebo ASP.NET Core 2,0 a postupujte podle následujících kroků:
 
-1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt, do kterého chcete přidat podporu Key Vault a vyberte **Přidat**  >  **připojenou službu**  >  **Přidat** .
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt, do kterého chcete přidat podporu Key Vault a vyberte **Přidat**  >  **připojenou službu**  >  **Přidat**.
    Zobrazí se stránka Připojená služba se službami, které můžete přidat do projektu.
-1. V nabídce dostupných služeb vyberte možnost **Azure Key Vault** a klikněte na tlačítko **Další** .
+1. V nabídce dostupných služeb vyberte možnost **Azure Key Vault** a klikněte na tlačítko **Další**.
 
    ![Vyberte "Azure Key Vault"](../media/vs-key-vault-add-connected-service/key-vault-connected-service.png)
 
-1. Vyberte předplatné, které chcete použít, a pak zvolte existující Key Vault a klikněte na **Dokončit** . 
+1. Vyberte předplatné, které chcete použít, a pak zvolte existující Key Vault a klikněte na **Dokončit**. 
 
-   ![Výběr předplatného](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
+   ![Vyberte své předplatné.](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
 Nyní je připojení k Key Vault navázáno a přístup k tajným klíčům můžete získat v kódu. Další postup se liší v závislosti na tom, zda používáte ASP.NET 4.7.1 nebo ASP.NET Core.
 
 ## <a name="access-your-secrets-in-code-aspnet-core"></a>Přístup k tajným klíčům v kódu (ASP.NET Core)
 
-1. Otevřete jeden ze souborů stránky, například *index.cshtml.cs* , a napište následující kód:
+1. Otevřete jeden ze souborů stránky, například *index. cshtml. cs* a napište následující kód:
    1. Zahrnout odkaz na `Microsoft.Extensions.Configuration` tuto direktivu using:
 
        ```csharp
@@ -115,7 +115,7 @@ Konfiguraci můžete nastavit tak, aby soubor web.config měl v prvku zástupnou
          <add key="<secretNameInYourKeyVault>" value="dummy"/>
         ```
 
-1. Upravte `About` metodu v *HomeController.cs* , aby se zobrazila hodnota pro potvrzení.
+1. Upravte `About` metodu v *HomeController. cs*, aby se zobrazila hodnota pro potvrzení.
 
    ```csharp
    public ActionResult About()
@@ -125,18 +125,18 @@ Konfiguraci můžete nastavit tak, aby soubor web.config měl v prvku zástupnou
    ```
 1. Spusťte aplikaci místně v rámci ladicího programu, přepněte na kartu **o** a ověřte, zda se zobrazí hodnota z Key Vault.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
-Pokud vaše Key Vault běží na jiném účet Microsoft než na tom, co jste přihlásili k aplikaci Visual Studio (například Key Vault je spuštěná v pracovním účtu, ale Visual Studio používá váš privátní účet), zobrazí se v souboru Program.cs chyba, že Visual Studio nemůže získat přístup k Key Vault. Pokud chcete tento problém vyřešit:
+Pokud je váš Key Vault spuštěný na jiném účet Microsoft než jste přihlášeni k Visual Studiu (například Key Vault je spuštěný ve vašem pracovním účtu, ale Visual Studio používá váš privátní účet), zobrazí se chyba v souboru program. cs, který Visual Studio nemůže získat přístup k Key Vault. Pokud chcete tento problém vyřešit:
 
 1. Přejít na [Azure Portal](https://portal.azure.com) a otevřete Key Vault.
 
-1. Zvolte **zásady přístupu** , pak **Přidat zásady přístupu** a zvolte účet, ke kterému jste přihlášeni jako objekt zabezpečení.
+1. Zvolte **zásady přístupu**, pak **Přidat zásady přístupu** a zvolte účet, ke kterému jste přihlášeni jako objekt zabezpečení.
 
-1. V aplikaci Visual Studio vyberte **File**  >  **Nastavení účtu** souboru.
+1. V aplikaci Visual Studio vyberte   >  **Nastavení účtu** souboru.
 V části **všechny účty** vyberte **Přidat účet** . Přihlaste se pomocí účtu, který jste zvolili jako objekt zabezpečení vašich zásad přístupu.
 
-1. Vyberte **Tools**  >  **Možnosti** nástroje a vyhledejte **ověřování služby Azure** . Pak vyberte účet, který jste právě přidali do sady Visual Studio.
+1. Vyberte   >  **Možnosti** nástroje a vyhledejte **ověřování služby Azure**. Pak vyberte účet, který jste právě přidali do sady Visual Studio.
 
 Když teď ladíte aplikaci, Visual Studio se připojí k účtu, na kterém se nachází Key Vault.
 
@@ -148,7 +148,7 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a odkazy na balíček NuGet.
 
-| Typ | Referenční informace |
+| Typ | Reference |
 | --- | --- |
 | NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
 
@@ -184,7 +184,7 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 
-| Typ | Referenční informace |
+| Typ | Reference |
 | --- | --- |
 | Pohyby NuGet | Azure. identity |
 | Pohyby NuGet | Azure. Security. Keys – trezory. Keys |

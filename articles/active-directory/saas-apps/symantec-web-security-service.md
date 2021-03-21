@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: d7e0db1b0bc1e7aef68ee06f3bdd5e5e0f83b73e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94354695"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby WSS (Symantec Web Security Service) pro Automatické zřizování uživatelů
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést ve službě Syma
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -52,11 +52,11 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 Než začnete konfigurovat službu Symantec Web Security Service (WSS) pro Automatické zřizování uživatelů s Azure AD, budete muset povolit zřizování SCIM na službě Symantec Web Security Service (WSS).
 
-1. Přihlaste se ke [konzole pro správu služby zabezpečení webu Symantec](https://portal.threatpulse.com/login.jsp). Přejděte do **Solutions**  >  **služby** řešení.
+1. Přihlaste se ke [konzole pro správu služby zabezpečení webu Symantec](https://portal.threatpulse.com/login.jsp). Přejděte do   >  **služby** řešení.
 
     ![WSS (Symantec Web Security Service)](media/symantec-web-security-service/service.png)
 
-2. Přejděte k **integraci údržby účtů**  >  **Integrations**  >  **Nová integrace**.
+2. Přejděte k **integraci údržby účtů**  >    >  **Nová integrace**.
 
     ![Symantec Web Security Service (WSS)](media/symantec-web-security-service/acount.png)
 
@@ -86,7 +86,7 @@ Pokud chcete nakonfigurovat službu WSS Web Security Service (WSS) pro Automatic
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **společnost Symantec Web Security** , na panelu výsledků vyberte možnost **Symantec Web Security** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **společnost Symantec Web Security**, na panelu výsledků vyberte možnost **Symantec Web Security** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Symantec Web Security Service (WSS) v seznamu výsledků](common/search-new-app.png)
 

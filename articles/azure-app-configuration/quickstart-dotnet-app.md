@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932086"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Framework s využitím konfigurace aplikace Azure
@@ -80,7 +80,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
    Připojovací řetězec úložiště konfigurace aplikace je načtený z proměnné prostředí `ConnectionString` . Přidejte nástroj `Environment` Configuration Builder před do `MyConfigStore` `configBuilders` vlastnosti `appSettings` oddílu.
 
-1. Otevřete *program.cs* a aktualizujte `Main` metodu na použití konfigurace aplikace voláním `ConfigurationManager` .
+1. Otevřete *program. cs* a aktualizujte `Main` metodu tak, aby používala konfiguraci aplikace voláním `ConfigurationManager` .
 
     ```csharp
     static void Main(string[] args)

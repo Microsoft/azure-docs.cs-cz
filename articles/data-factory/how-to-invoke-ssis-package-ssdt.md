@@ -8,10 +8,10 @@ author: swinarko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
 ms.openlocfilehash: f11a3845e8644f3f60425538b2ef32cff668d88d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100384924"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>Spouštění balíčků SSIS v Azure z SSDT
@@ -22,7 +22,7 @@ Tento článek popisuje funkci projektů služba SSIS (SQL Server Integration Se
 
 Pomocí této funkce můžete připojit nově vytvořenou nebo existující Azure-SSIS IR k projektům SSIS a pak na něm spustit balíčky.  Podporujeme spouštění balíčků, které se mají nasadit do katalogu SSIS (SSISDB), který je hostovaný vaším Azure SQL Database serverem nebo spravovanou instancí v modelu nasazení projektu. Podporujeme taky spouštění balíčků, které se nasadí do systému souborů/Azure Files/SQL Server Database (MSDB) hostované vaší spravovanou instancí Azure SQL v modelu nasazení balíčku. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete tuto funkci použít, Stáhněte si a nainstalujte nejnovější SSDT s SSIS projekty rozšíření pro Visual Studio (VS) z [tohoto místa](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects). Alternativně můžete také stáhnout a nainstalovat nejnovější SSDT jako samostatný instalační [program.](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)
 

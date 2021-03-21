@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 646c2216c3d71aa441d33dde0ab3e2ef7bb4fd89
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101643554"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
@@ -25,7 +25,7 @@ ms.locfileid: "101643554"
 
 Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azure Active Directory souhlasu Framework](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili jako uživatel, který je oprávněn k souhlasu jménem organizace. To zahrnuje správce [globálních správců](../roles/permissions-reference.md#global-administrator) a [privilegovaných rolí](../roles/permissions-reference.md#privileged-role-administrator)a pro některé aplikace, správce [aplikací](../roles/permissions-reference.md#application-administrator) a [správce cloudových aplikací](../roles/permissions-reference.md#cloud-application-administrator). Uživatel může být také autorizován pro udělení souhlasu v rámci tenanta, pokud se jim přiřadí [role vlastního adresáře](../roles/custom-create.md) , která zahrnuje [oprávnění pro udělení oprávnění aplikacím](../roles/custom-consent-permissions.md).
 

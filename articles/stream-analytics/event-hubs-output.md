@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 02abdd752528ce28642b6228648062ed961d5ae3
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452386"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Event Hubs výstup z Azure Stream Analytics
@@ -21,7 +21,7 @@ Služba [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) je 
 
 Následující tabulka obsahuje parametry potřebné ke konfiguraci datových proudů z Center událostí jako výstupu.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup | Popisný název, který se používá v dotazech k nasměrování výstupu dotazu do tohoto centra událostí. |
 | Obor názvů centra událostí | Kontejner pro sadu entit zasílání zpráv. Při vytváření nového centra událostí jste taky vytvořili obor názvů centra událostí. |

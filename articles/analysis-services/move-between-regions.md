@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 049ff6d14c3967481eb73037814082fa261154e3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96497924"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Přesunout Analysis Services do jiné oblasti
@@ -71,7 +71,7 @@ Pokud jsou nakonfigurovaná nastavení úložiště, pomocí kroků v části [z
 
 Export šablony pomocí webu Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a potom vyberte Server Analysis Services.
 

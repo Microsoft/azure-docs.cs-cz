@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: afc0a5bf9b83363d1f4baab955b55148fe3a8498
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95819398"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>Kurz: reakce na události Azure Service Bus přijatých prostřednictvím Azure Event Grid pomocí Azure Functions
@@ -37,8 +37,8 @@ Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs) a přidejte �
 >[!NOTE]
 > Další informace o vytváření a nasazování aplikace Azure Functions najdete v tématu [vývoj Azure Functions pomocí sady Visual Studio](../azure-functions/functions-develop-vs.md) .
 
-1. Otevřete soubor **ReceiveMessagesOnEvent.cs** z projektu **FunctionApp1** řešení **SBEventGridIntegration. sln** . 
-1. Nahraďte `<SERCICE BUS NAMESPACE - CONNECTION STRING>` připojovacím řetězcem k vašemu oboru názvů Service Bus. Měl by být stejný jako ten, který jste použili v souboru **program.cs** projektu **MessageSender** ve stejném řešení. 
+1. Otevřete soubor **ReceiveMessagesOnEvent. cs** z projektu **FunctionApp1** řešení **SBEventGridIntegration. sln** . 
+1. Nahraďte `<SERCICE BUS NAMESPACE - CONNECTION STRING>` připojovacím řetězcem k vašemu oboru názvů Service Bus. Měl by být stejný jako ten, který jste použili v souboru **program. cs** projektu **MessageSender** ve stejném řešení. 
 1. Klikněte pravým tlačítkem na **FunctionApp1** a vyberte **publikovat**. 
 1. Na stránce **publikovat** vyberte možnost **Spustit**. Tyto kroky se můžou lišit od toho, co vidíte, ale proces publikování by měl být podobný. 
 1. V průvodci **publikování** na stránce **cíl** vyberte **Azure** pro **cíl**. 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
 ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101724349"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Prostředky pro vytváření vlastních konektorů Sentinel Azure
@@ -36,12 +36,12 @@ Následující tabulka porovnává základní podrobnosti o jednotlivých metod�
 
 |Popis metody  |Schopnost | Bez serveru    |Složitost  |
 |---------|---------|---------|---------|
-|**[Agent Log Analytics](#connect-with-the-log-analytics-agent)** <br>Nejlepší pro shromažďování souborů z místních a IaaS zdrojů   | Pouze kolekce souborů  |   Ne      |Nízká         |
+|**[Agent Log Analytics](#connect-with-the-log-analytics-agent)** <br>Nejlepší pro shromažďování souborů z místních a IaaS zdrojů   | Pouze kolekce souborů  |   No      |Nízká         |
 |**[Logstash](#connect-with-logstash)** <br>Nejlepší pro místní a IaaS zdroje, jakýkoli zdroj, pro který je k dispozici modul plug-in a organizace, které jsou už obeznámené s Logstash  | Dostupné moduly plug-in a vlastní modul plug-in poskytují značnou flexibilitu.   |   Žádné vyžaduje spuštění virtuálního počítače nebo clusteru virtuálních počítačů.           |   Slab podporuje mnoho scénářů s moduly plug-in      |
-|**[Logic Apps](#connect-with-logic-apps)** <br>Vysoké náklady; Nepoužívejte pro data s vysokým objemem dat <br>Nejlepší pro cloudové zdroje s nízkým objemem  | Programování bez kódu umožňuje omezená flexibilitu bez podpory implementace algoritmů.<br><br> Pokud vaše požadavky už žádné dostupné akce nepodporují, může vytvoření vlastní akce přidat složitost.    |    Ano         |   Slab jednoduchý a bezkódový vývoj      |
-|**[PowerShell](#connect-with-powershell)** <br>Nejlepší pro vytváření prototypů a periodické nahrávání souborů | Přímá podpora pro kolekci souborů. <br><br>PowerShell se dá použít ke shromažďování dalších zdrojů, ale vyžaduje kódování a konfiguraci skriptu jako služby.      |Ne               |  Nízká       |
+|**[Logic Apps](#connect-with-logic-apps)** <br>Vysoké náklady; Nepoužívejte pro data s vysokým objemem dat <br>Nejlepší pro cloudové zdroje s nízkým objemem  | Programování bez kódu umožňuje omezená flexibilitu bez podpory implementace algoritmů.<br><br> Pokud vaše požadavky už žádné dostupné akce nepodporují, může vytvoření vlastní akce přidat složitost.    |    Yes         |   Slab jednoduchý a bezkódový vývoj      |
+|**[PowerShell](#connect-with-powershell)** <br>Nejlepší pro vytváření prototypů a periodické nahrávání souborů | Přímá podpora pro kolekci souborů. <br><br>PowerShell se dá použít ke shromažďování dalších zdrojů, ale vyžaduje kódování a konfiguraci skriptu jako služby.      |No               |  Nízká       |
 |**[Rozhraní API pro Log Analytics](#connect-with-the-log-analytics-api)** <br>Nejlepší pro implementaci integrace nezávislého výrobce softwaru a pro jedinečné požadavky na kolekci   | Podporuje všechny možnosti, které jsou k dispozici v kódu.  | Závisí na implementaci           |     Vysoká    |
-|**[Azure Functions](#connect-with-azure-functions)** Nejvhodnější pro zdroje cloudu s vysokým objemem a pro jedinečné požadavky na kolekci  | Podporuje všechny možnosti, které jsou k dispozici v kódu.  |  Ano             |     Maximální vyžaduje znalosti programování.    |
+|**[Azure Functions](#connect-with-azure-functions)** Nejvhodnější pro zdroje cloudu s vysokým objemem a pro jedinečné požadavky na kolekci  | Podporuje všechny možnosti, které jsou k dispozici v kódu.  |  Yes             |     Maximální vyžaduje znalosti programování.    |
 |     |         |                |
 
 > [!TIP]
@@ -93,7 +93,7 @@ Pomocí [Aplikace logiky Azure](../logic-apps/index.yml) můžete vytvořit vlas
 
 1. **Pomocí jedné z následujících triggerů spusťte Logic Apps**:
 
-    |Trigger  |Popis  |
+    |Trigger  |Description  |
     |---------|---------|
     |**Opakovaný úkol**     |   Můžete například naplánovat, aby aplikace logiky načetla data pravidelně ze specifických souborů, databází nebo externích rozhraní API. <br>Další informace najdete v tématu [vytváření, plánování a spouštění opakujících se úloh a pracovních postupů v Azure Logic Apps](../connectors/connectors-native-recurrence.md).      |
     |**Aktivace na vyžádání**     | Spusťte aplikaci logiky na vyžádání pro ruční shromažďování a testování dat. <br>Další informace najdete v tématu  [volání, triggery nebo vnořené aplikace logiky pomocí koncových bodů https](../logic-apps/logic-apps-http-endpoint.md).        |

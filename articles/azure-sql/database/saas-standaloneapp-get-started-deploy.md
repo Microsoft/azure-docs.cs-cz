@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
 ms.openlocfilehash: 896f4edb1e94c1eca06b046382727a5042375e3b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793275"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a prozkoumání samostatné aplikace pro jednoho tenanta, která používá Azure SQL Database
@@ -60,16 +60,16 @@ Nasazení aplikace pro tři poskytnuté klienty:
     > Některá ověřování a brány firewall serveru jsou pro demonstrační účely záměrně nezabezpečené. **Vytvořte novou skupinu prostředků** pro každé nasazení aplikace.  Nepoužívejte existující skupinu prostředků. Nepoužívejte tuto aplikaci ani žádné prostředky, které vytvoří, pro produkční prostředí. Odstraňte všechny skupiny prostředků, až skončíte s aplikacemi, aby se zastavily související fakturace.
 
     Doporučuje se v názvech prostředků používat jenom malá písmena, číslice a spojovníky.
-    * V poli **Skupina prostředků** vyberte vytvořit novou a zadejte pro skupinu prostředků malý název. **Wingtip-SA- \<venueName\> - \<user\>** je doporučený vzor.  V případě \<venueName\> nahraďte název místa bez mezer. V případě \<user\> nahraďte hodnotu uživatele níže.  V tomto vzoru můžou být názvy skupin prostředků *Wingtip-SA-contosoconcerthall-AF1* , *Wingtip-SA-dogwooddojo-AF1* , *Wingtip-SA-fabrikamjazzclub-AF1* .
+    * V poli **Skupina prostředků** vyberte vytvořit novou a zadejte pro skupinu prostředků malý název. **Wingtip-SA- \<venueName\> - \<user\>** je doporučený vzor.  V případě \<venueName\> nahraďte název místa bez mezer. V případě \<user\> nahraďte hodnotu uživatele níže.  V tomto vzoru můžou být názvy skupin prostředků *Wingtip-SA-contosoconcerthall-AF1*, *Wingtip-SA-dogwooddojo-AF1*, *Wingtip-SA-fabrikamjazzclub-AF1*.
     * Z rozevíracího seznamu vyberte **umístění** .
 
-    * Pro **uživatele** – doporučujeme krátkou hodnotu uživatele, jako je například vaše iniciály a číslice: například *AF1* .
+    * Pro **uživatele** – doporučujeme krátkou hodnotu uživatele, jako je například vaše iniciály a číslice: například *AF1*.
 
 
-3. **Nasaďte aplikaci** .
+3. **Nasaďte aplikaci**.
 
     * Kliknutím souhlasíte s podmínkami a ujednáními.
-    * Klikněte na **Koupit** .
+    * Klikněte na **Koupit**.
 
 4. Kliknutím na **oznámení** (ikona zvonku napravo od vyhledávacího pole) Sledujte stav všech tří nasazení. Nasazení aplikací trvá přibližně pět minut.
 

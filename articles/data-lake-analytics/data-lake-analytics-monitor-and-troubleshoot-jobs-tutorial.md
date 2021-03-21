@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 12/05/2016
 ms.openlocfilehash: ddcf41a333d261bd9c5f669fde724a25eeba670e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220274"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Monitorování úloh v Azure Data Lake Analytics pomocí webu Azure Portal
@@ -23,7 +23,7 @@ ms.locfileid: "92220274"
    ![Správa úloh Azure Data Lake Analytics](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
     Správa úloh vám poskytne přehled o stavu úlohy. Všimněte si, že úloha není úspěšná.
-3. Kliknutím na dlaždici **Správa úloh** Zobrazte úlohy. Úlohy jsou zařazené do kategorií **spuštěno**, **zařazeno do fronty**a **skončilo**. Vaše úloha, která selhala, se zobrazí v části **ukončeno** . První z nich je v seznamu. Když máte spoustu úloh, můžete kliknout na **Filtr** a pomůžou vám najít úlohy.
+3. Kliknutím na dlaždici **Správa úloh** Zobrazte úlohy. Úlohy jsou zařazené do kategorií **spuštěno**, **zařazeno do fronty** a **skončilo**. Vaše úloha, která selhala, se zobrazí v části **ukončeno** . První z nich je v seznamu. Když máte spoustu úloh, můžete kliknout na **Filtr** a pomůžou vám najít úlohy.
 
    ![Azure Data Lake Analytics filtrovat úlohy](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
 

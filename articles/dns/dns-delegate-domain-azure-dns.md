@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282161"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Kurz: Hostování vaší domény v Azure DNS
@@ -65,7 +65,7 @@ Předtím, než budete moci svoji zónu DNS delegovat do Azure DNS, musíte zná
 
 1. Když máte vytvořenou zónu DNS, na webu Azure Portal v podokně **Oblíbené** vyberte **Všechny prostředky**. Na stránce **Všechny prostředky** vyberte svoji zónu DNS. Pokud předplatné, které jste vybrali, již obsahuje několik prostředků, můžete zadat název domény do pole **filtrovat podle názvu** , abyste mohli snadno získat přístup k aplikační bráně. 
 
-1. Načtěte názvové servery ze stránky zóny DNS. V tomto příkladu se k zóně contoso.net přiřadily názvové servery *ns1-01.Azure-DNS.com*, *NS2-01.Azure-DNS.NET*, *NS3-01.Azure-DNS.org*a *NS4-01.Azure-DNS.info*:
+1. Načtěte názvové servery ze stránky zóny DNS. V tomto příkladu se k zóně contoso.net přiřadily názvové servery *ns1-01.Azure-DNS.com*, *NS2-01.Azure-DNS.NET*, *NS3-01.Azure-DNS.org* a *NS4-01.Azure-DNS.info*:
 
    ![Seznam názvových serverů](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 
