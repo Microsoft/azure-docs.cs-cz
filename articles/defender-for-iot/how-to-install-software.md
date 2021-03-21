@@ -8,10 +8,10 @@ ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
 ms.openlocfilehash: 175f006adbc18d21e0f0c5d859737aedb00bc457
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103574658"
 ---
 # <a name="defender-for-iot-installation"></a>Instalace Defenderu pro IoT
@@ -586,7 +586,7 @@ Můžete nasadit virtuální počítač pro nástroj Defender pro IoT snímač v
 | **Malý podnik** | PROCESOR: 4 <br/>Paměť: 8G RAM<br/>PEVNÝ DISK: 500 GB | Testovací nebo malé produkční prostředí | -  |
 | **Office** | PROCESOR: 4<br/>Paměť: 8G RAM<br/>PEVNÝ DISK: 100 GB | Malá testovací prostředí | -  |
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Místní Konzola pro správu podporuje možnosti nasazení VMware a Hyper-V. Než začnete s instalací, ujistěte se, že máte následující položky:
 
@@ -717,7 +717,7 @@ Místní virtuální počítač konzoly pro správu podporuje následující arc
 | Enterprise | PROCESOR: 4 <br/> Paměť: 8G RAM<br/> PEVNÝ DISK: 500 GB | Velká produkční prostředí |
 | Enterprise | PROCESOR: 4 <br/>Paměť: 8G RAM <br/> PEVNÝ DISK: 100 GB | Malá testovací prostředí | 
    
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Místní Konzola pro správu podporuje možnosti nasazení VMware a Hyper-V. Než začnete s instalací, ověřte následující:
 
@@ -986,7 +986,7 @@ Ověřte, zda máte přístup k webovému uživatelskému rozhraní konzoly:
 
    :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Snímek obrazovky zobrazující přístup ke konzole pro správu":::
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="you-cant-connect-by-using-a-web-interface"></a>Nemůžete se připojit pomocí webového rozhraní.
 

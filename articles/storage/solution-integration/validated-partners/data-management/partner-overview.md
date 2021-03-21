@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 82ba49beb74fbc7b6f9d976d123fd9465d585d88
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561613"
 ---
 # <a name="azure-storage-data-governance-management-and-migration-partners"></a>Azure Storage partneři pro zásady správného řízení, správy a migrace dat
@@ -21,7 +21,7 @@ V tomto článku se zvýrazňují partnerské společnosti Microsoftu integrovan
 
 ## <a name="verified-partners"></a>Ověření partneři
 
-| Partner | Popis | Odkaz na web/produkt |
+| Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 |![Logo společnosti CommVault](./media/commvault-logo.jpg) |***CommVault**<br>Optimalizujte, zabezpečte, migrujte a Indexujte data pomocí infrastruktury Microsoftu pomocí CommVault. Pořiďte si kontrolu nad daty pomocí CommVault kompletní ochrany dat, řešení pro správu dat zaměřeného na Microsoft a Azure. CommVault poskytuje nástroje, které potřebujete ke správě, migraci, přístupu a obnovení dat bez ohledu na to, kde se nacházejí, a současně snižuje náklady a riziko.|[Stránka partnerského serveru](https://www.commvault.com/complete-data-protection)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault)|
 |![Logo společnosti pro data Dynamics](./media/datadyn-logo.png) |**Data Dynamics**<br>Data Dynamics nabízí podniková řešení pro správu nestrukturovaných dat pro hybridní prostředí a prostředí s více cloudy. Jejich sjednocená nestrukturovaná Správa dat platforma používá analýzy a automatizaci, které vám pomůžou inteligentně a efektivně přesouvat data z heterogenních prostředí úložiště (SMB, NFS nebo S3) do Azure. Platforma poskytuje bezproblémovou integraci, škálování na podnikové úrovni a výkon, který umožňuje efektivní správu dat pro hybridní prostředí a více cloudových prostředí. Mezi případy použití patří: inteligentní migrace do cloudu, zotavení po havárii, archivace, zálohování a optimalizace infrastruktury a správa dat. |[Stránka partnerského serveru](https://www.datadynamicsinc.com/ms-azure-partner/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_2-preview?tab=Overview&flightCodes=18994ad6-20dc-4bdb-ae27-e7ef3263fa9e)|

@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů Azure v trezoru Recovery Service
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5c3bc66c2111c347f8ed0e32c9e597a52ed404ed
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "92172751"
+ms.locfileid: "104670422"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -117,6 +117,8 @@ Pokud jste vybrali vytvoření nové zásady zálohování, vyplňte nastavení 
 4. V **oblasti uchovávání** zadejte, jak dlouho chcete zachovat denní nebo týdenní body zálohování.
 5. V části **uchování měsíčního bodu zálohy** a **uchování ročního bodu zálohy** určete, jestli chcete uchovávat měsíční nebo roční zálohu denních nebo týdenních záloh.
 6. Kliknutím na **OK** zásadu uložte.
+    > [!NOTE]
+    > Pro uložení kolekce bodů obnovení (RPC) vytvoří služba zálohování samostatnou skupinu prostředků (RG). Tento RG se liší od RG virtuálního počítače. [Další informace](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
     ![Nové zásady zálohování](./media/backup-azure-arm-vms-prepare/new-policy.png)
 

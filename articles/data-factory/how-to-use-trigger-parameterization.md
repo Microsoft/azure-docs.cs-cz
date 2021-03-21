@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: ''
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 57024d6cb23ab273aa69bf59f4ec436a6f873a05
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 50a9f9cd59ebeecae89580c878442eb20788f462
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193436"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593641"
 ---
 # <a name="reference-trigger-metadata-in-pipeline-runs"></a>Metadata triggeru reference v spuštěních kanálu
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak lze v běhu kanálu použít metadata triggeru, jak
 
 Kanál někdy potřebuje pochopit a číst metadata z triggeru, která je vyvolá. Například při spuštění aktivační události pro bubny v závislosti na počátečním a koncovém čase okna kanál zpracuje různé datové řezy nebo složky. V Azure Data Factory používáme Parametrizace a [systémová proměnná](control-flow-system-variables.md) k předání metadat z triggeru do kanálu.
 
-Tento model je zvláště užitečný pro [aktivační událost bubnového okna](how-to-create-tumbling-window-trigger.md), kde Trigger poskytuje počáteční a koncový čas okna.
+Tento model je zvláště užitečný pro [aktivační událost bubnu](how-to-create-tumbling-window-trigger.md), kde Trigger poskytuje počáteční a koncový čas okna a [vlastní Trigger události](how-to-create-custom-event-trigger.md), kde Trigger aktivuje a zpracovává hodnoty ve [vlastním definovaném _datovém_ poli](../event-grid/event-schema.md).
 
 > [!NOTE]
 > Jiný typ triggeru poskytuje různé informace o metadatech. Další informace najdete v tématu [systémová proměnná](control-flow-system-variables.md) .

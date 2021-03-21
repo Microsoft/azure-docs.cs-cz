@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de7d23689ae984ea0abece5edb03cf8a0c3a9be1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331008"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670337"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Získání koncových bodů připojení a připojovacích řetězců formuláře pro PostgreSQL skupinu serverů s podporou ARC
 
@@ -43,22 +43,23 @@ Spusťte následující příkaz:
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
-Vrátí výstup podobný tomuto:
+Například:
 ```console
-[
-  {
-    "Description": "PostgreSQL Instance",
-    "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
-  },
-  {
-    "Description": "Log Search Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:\"postgres01\"'))"
-  },
-  {
-    "Description": "Metrics Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
-  }
-]
+azdata arc postgres endpoint list -n postgres01
+```
+
+Zobrazuje seznam koncových bodů: koncový bod PostgreSQL, který slouží k připojení aplikace a použití koncových bodů Database, Kibana a Grafana pro Log Analytics a monitoring. Například: 
+```console
+Arc
+ ===================================================================================================================
+ Postgres01 Instance
+ -------------------------------------------------------------------------------------------------------------------
+ Description           Endpoint
+
+ PostgreSQL Instance   postgresql://postgres:<replace with password>@12.345.567.89:5432
+ Log Search Dashboard  https://89.345.712.81:30777/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:postgres01'))
+ Metrics Dashboard     https://89.345.712.81:30777/grafana/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01
+
 ```
 Pomocí těchto koncových bodů můžete:
 - Vytvoření připojovacích řetězců a připojení k vašim klientským nástrojům nebo aplikacím
@@ -66,7 +67,7 @@ Pomocí těchto koncových bodů můžete:
 
 Například můžete použít koncový bod s názvem _PostgreSQL instance_ pro připojení s psql ke skupině serverů. Například:
 ```console
-psql postgresql://postgres:MyPassworkd@12.345.123.456:1234
+psql postgresql://postgres:MyPassworkd@12.345.567.89:5432
 psql (10.14 (Ubuntu 10.14-0ubuntu0.18.04.1), server 12.4 (Ubuntu 12.4-1.pgdg16.04+1))
 WARNING: psql major version 10, server major version 12.
          Some psql features might not work.
@@ -86,11 +87,11 @@ postgres=#
 ## <a name="from-cli-with-kubectl"></a>Z CLI pomocí kubectl
 - Pokud má skupina serverů Postgres verze 12 (výchozí), pak následující příkaz:
 ```console
-kubectl get postgresql-12/<server group name>
+kubectl get postgresql-12/<server group name> -n <namespace name>
 ```
 - Pokud má skupina serverů Postgres verze 11, pak následující příkaz:
 ```console
-kubectl get postgresql-11/<server group name>
+kubectl get postgresql-11/<server group name> -n <namespace name>
 ```
 
 Tyto příkazy vytvoří výstup podobný následujícímu. Tyto informace můžete použít k vytvoření připojovacích řetězců:
@@ -149,12 +150,6 @@ dbname='postgres' user='postgres' host='192.168.1.121' password='{your_password_
 
 ```ruby
 host=192.168.1.121; dbname=postgres user=postgres password={your_password_here} port=24276 sslmode=require
-```
-
-### <a name="web-app"></a>Webová aplikace
-
-```webapp
-Database=postgres; Data Source=192.168.1.121; User Id=postgres; Password={your_password_here}
 ```
 
 ## <a name="next-steps"></a>Další kroky

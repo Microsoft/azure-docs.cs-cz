@@ -4,10 +4,10 @@ description: Jak odebrat sadu Application Insights SDK pro ASP.NET a ASP.NET Cor
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101704306"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Jak odebrat Application Insights v aplikaci Visual Studio
@@ -72,7 +72,7 @@ Chcete-li odebrat Application Insights, bude nutné odebrat balíčky NuGet a od
     
     ![Snímek obrazovky se zobrazí dialogové okno se závislostmi, které mají být odebrány.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Po odinstalaci všeho se v *Průzkumník řešení* pořád zobrazují "ApplicationInsights.config" a "AiHandleErrorAttribute.cs". Tyto dva soubory můžete odstranit ručně.
+1.  Po odinstalaci všeho se v *Průzkumník řešení* pořád zobrazují "ApplicationInsights.config" a "AiHandleErrorAttribute. cs". Tyto dva soubory můžete odstranit ručně.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
@@ -97,7 +97,7 @@ Když do projektu přidáte Application Insights, vytvoří soubory a přidá k�
 Když přidáte Telemetrie Application Insights do projektu aplikace Visual Studio ASP.NET, přidá následující soubory:
 
 - ApplicationInsights.config
-- AiHandleErrorAttribute.cs
+- AiHandleErrorAttribute. cs
 
 Jsou přidány následující části kódu:
 
@@ -167,7 +167,7 @@ Jsou přidány následující části kódu:
     }
     ```
 
-- FilterConfig.cs
+- FilterConfig. cs
 
     ```csharp
             public static void RegisterGlobalFilters(GlobalFilterCollection filters)

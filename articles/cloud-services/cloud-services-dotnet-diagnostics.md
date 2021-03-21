@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 97e68d338580132b6927c4cc8b206db60fe93ba2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101703503"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Povolení Azure Diagnostics v Azure Cloud Services (Classic)
@@ -25,7 +25,7 @@ Další informace najdete v tématu [přehled Azure Diagnostics](../azure-monito
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Postup povolení diagnostiky v roli pracovního procesu
 Tento návod popisuje, jak implementovat roli pracovního procesu Azure, která generuje data telemetrie pomocí třídy EventSource .NET. Azure Diagnostics se používá ke shromažďování dat telemetrie a jejich uložení v účtu úložiště Azure. Při vytváření role pracovního procesu Visual Studio automaticky povolí diagnostiku 1,0 jako součást řešení v sadách Azure SDK pro .NET 2,4 a starší. Následující pokyny popisují proces vytvoření role pracovního procesu, zakázání diagnostiky 1,0 z řešení a nasazení diagnostiky 1,2 nebo 1,3 do role pracovního procesu.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že máte předplatné Azure a používáte sadu Visual Studio se sadou Azure SDK. Pokud předplatné Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi][Free Trial]. Nezapomeňte [nainstalovat a nakonfigurovat Azure PowerShell verze 0.8.7 nebo novější][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Krok 1: vytvoření role pracovního procesu
@@ -37,7 +37,7 @@ V tomto článku se předpokládá, že máte předplatné Azure a používáte 
 6. Sestavte řešení, abyste ověřili, že nedošlo k chybám.
 
 ### <a name="step-2-instrument-your-code"></a>Krok 2: instrumentace kódu
-Obsah WorkerRole.cs nahraďte následujícím kódem. Třída SampleEventSourceWriter zděděná z [třídy EventSource][EventSource Class]implementuje čtyři metody protokolování: **SendEnums**, **MessageMethod**, **SetOther** a **HighFreq**. První parametr metody **WriteEvent** definuje ID příslušné události. Metoda Run implementuje nekonečnou smyčku, která volá každou metodu protokolování implementovanou do třídy **SampleEventSourceWriter** každých 10 sekund.
+Nahraďte obsah role pracovního procesu. cs následujícím kódem. Třída SampleEventSourceWriter zděděná z [třídy EventSource][EventSource Class]implementuje čtyři metody protokolování: **SendEnums**, **MessageMethod**, **SetOther** a **HighFreq**. První parametr metody **WriteEvent** definuje ID příslušné události. Metoda Run implementuje nekonečnou smyčku, která volá každou metodu protokolování implementovanou do třídy **SampleEventSourceWriter** každých 10 sekund.
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -191,7 +191,7 @@ V **Průzkumník serveru** sady Visual Studio přejděte do účtu úložiště 
 ## <a name="configuration-file-schema"></a>Schéma konfiguračního souboru
 Konfigurační soubor diagnostiky definuje hodnoty, které se použijí k inicializaci nastavení konfigurace diagnostiky při spuštění agenta diagnostiky. Platné hodnoty a příklady najdete v [nejnovějším referenčním schématu](../azure-monitor/agents/diagnostics-extension-versions.md) .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Pokud máte problémy, přečtěte si téma [řešení potíží s Azure Diagnostics](../azure-monitor/agents/diagnostics-extension-troubleshooting.md) , kde najdete nápovědu k běžným problémům.
 
 ## <a name="next-steps"></a>Další kroky

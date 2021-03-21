@@ -11,10 +11,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: b61050db29ff960b7923f2211b2f09649608b37e
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102520315"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Použití požadavků DELETE k vyčištění prostředků 
 > * Použití autorizace na základě klíčů k určení skóre nasazených modelů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure** , pro které máte práva správce. Pokud nemáte takové předplatné, vyzkoušejte [bezplatné nebo placené osobní předplatné](https://aka.ms/AMLFree) .
 - [Pracovní prostor Azure Machine Learning](./how-to-manage-workspace.md)
@@ -403,7 +403,7 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 
 Měli byste obdržet `202 Accepted` odpověď a v vrácených hlavičkách `Location` identifikátor URI. Tento identifikátor URI můžete získat pro informace o nasazení, včetně užitečných ladicích informací, pokud dojde k potížím s některým závislými prostředky (například pokud jste zapomněli povolit přístup správce k vašemu registru kontejneru). 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

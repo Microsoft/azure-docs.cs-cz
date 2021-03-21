@@ -3,14 +3,14 @@ title: Postup vytvoření nasazení aktualizací pro Azure Automation Update Man
 description: Tento článek popisuje, jak naplánovat nasazení aktualizací a zkontrolovat jejich stav.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6d35d6b49ab72d8aa7b25506011147ab624273fd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575898"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669674"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Jak nasadit aktualizace a zkontrolovat výsledky
 
@@ -21,6 +21,9 @@ V každém scénáři je nasazení, které jste vytvořili, cíleno na vybraný 
 * Operační systém se automaticky vybere v závislosti na operačním systému počítače.
 * Cílový počítač, který chcete aktualizovat, je nastaven na automatické zacílení.
 * Při konfiguraci plánu můžete zadat **Update now**, nastane jednou nebo používá opakovaný plán.
+
+> [!IMPORTANT]
+> Vytvořením nasazení aktualizace souhlasíte s podmínkami licenčních podmínek pro software (EULA) poskytovaných společností, které nabízí aktualizace pro svůj operační systém.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

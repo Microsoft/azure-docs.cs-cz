@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak nakonfigurovat nastavení brány firew
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: 178b9d84ea8b2e0f764f7584526db8dbcf5284f3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031833"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Konfigurace brány firewall protokolu IP pro Azure Event Grid témata nebo domény 
@@ -149,7 +149,7 @@ az eventgrid topic update \
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
 V této části se dozvíte, jak pomocí Azure PowerShellch příkazů vytvářet Azure Event Grid témata s pravidly brány firewall pro příchozí IP adresy. Postup uvedený v této části najdete v tématu. Pomocí podobných kroků můžete vytvořit pravidla příchozího přenosu IP adres pro **domény**. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Postupujte podle pokynů v tématu [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md) k vytvoření aplikace Azure Active Directory a poznamenejte si následující hodnoty:
 
 - ID adresáře (tenanta)

@@ -1,20 +1,20 @@
 ---
 title: Programové vytváření předplatných Azure se smlouvou Enterprise s využitím nejnovějších rozhraní API
-description: Naučte se programově vytvářet předplatná Azure se smlouvou Enterprise s využitím nejnovějších verzí rozhraní REST API, Azure CLI a Azure PowerShellu.
+description: Naučte se vytvářet předplatná Azure smlouva Enterprise programově pomocí nejnovějších verzí REST API, Azure CLI, Azure PowerShell a šablon Azure Resource Manager.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 4de89892d27bb811be6670c1a14ca85859342ecc
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3f07d18ccdca87f6395b24e4e3f9e6ee91cfaee3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218906"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593964"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Programové vytváření předplatných Azure se smlouvou Enterprise s využitím nejnovějších rozhraní API
 
@@ -41,7 +41,7 @@ Jakmile jste přidáni k registračnímu účtu přidruženému k vlastníkovi �
 
 Abyste mohli spustit následující příkazy, musíte být přihlášeni k *domovskému adresáři* vlastníka účtu. V tomto adresáři se ve výchozím nastavení vytvářejí předplatná.
 
-### <a name="rest"></a>[REST](#tab/rest-getEnrollments)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Vyžádejte si výpis všech registračních účtů, ke kterým máte přístup:
 
@@ -91,17 +91,13 @@ V odpovědi rozhraní API se zobrazí všechny registrační účty, ke kterým 
 
 ```
 
-Hodnota pro rozsah fakturace a `id` je stejná. Parametrem `id` pro váš registrační účet je rozsah fakturace, v jehož rámci byla žádost pro předplatné iniciována. Je důležité toto ID znát, protože se jedná o povinný parametr, který použijete později v tomto článku k vytvoření předplatného.
+Hodnoty pro obor fakturace a `id` mají stejnou věc. Parametrem `id` pro váš registrační účet je rozsah fakturace, v jehož rámci byla žádost pro předplatné iniciována. Je důležité toto ID znát, protože se jedná o povinný parametr, který použijete později v tomto článku k vytvoření předplatného.
 
-<!-- 
-### [PowerShell](#tab/azure-powershell-getEnrollments)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+K získání této hodnoty použijte prosím rozhraní příkazového řádku Azure nebo REST API.
 
--->
-
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getEnrollments)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Požádejte o výpis všech registračních účtů, ke kterým máte přístup:
 
@@ -159,7 +155,8 @@ Odpověď obsahuje seznam všech registračních účtů, ke kterým máte pří
     "type": "Microsoft.Billing/billingAccounts"
   },
 ```
-Hodnota pro rozsah fakturace a `id` je stejná. Parametrem `id` pro váš registrační účet je rozsah fakturace, v jehož rámci byla žádost pro předplatné iniciována. Je důležité toto ID znát, protože se jedná o povinný parametr, který použijete později v tomto článku k vytvoření předplatného.
+
+Hodnoty pro obor fakturace a `id` mají stejnou věc. Parametrem `id` pro váš registrační účet je rozsah fakturace, v jehož rámci byla žádost pro předplatné iniciována. Je důležité toto ID znát, protože se jedná o povinný parametr, který použijete později v tomto článku k vytvoření předplatného.
 
 ---
 
@@ -167,7 +164,7 @@ Hodnota pro rozsah fakturace a `id` je stejná. Parametrem `id` pro váš regist
 
 Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* v registračním účtu, který jste vybrali v předchozím kroku. 
 
-### <a name="rest"></a>[REST](#tab/rest-EA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Volejte rozhraní API PUT za účelem vytvoření požadavku/aliasu pro vytvoření předplatného.
 
@@ -227,7 +224,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 Probíhající stav se vrátí jako stav `Accepted` u položky `provisioningState`.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-EA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-AzSubscriptionAlias`, spusťte `Install-Module Az.Subscription`. Pokud chcete nainstalovat novější modulu PowerShellGet, projděte si téma [Získání modulu PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
@@ -251,7 +248,7 @@ V rámci odpovědi příkazu se vrátí údaj subscriptionId.
 }
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-EA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Nejdřív spuštěním příkazů `az extension add --name account` a `az extension add --name alias` nainstalujte rozšíření.
 
@@ -277,6 +274,113 @@ V rámci odpovědi příkazu se vrátí údaj subscriptionId.
 
 ---
 
+## <a name="use-arm-template"></a>Použití šablony ARM
+
+Předchozí část ukázala, jak vytvořit předplatné pomocí PowerShellu, rozhraní příkazového řádku nebo REST API. Pokud potřebujete automatizovat vytváření předplatných, zvažte použití šablony Azure Resource Manager (šablona ARM).
+
+Následující šablona vytvoří předplatné. V případě `billingScope` Zadejte ID registračního účtu. Pro `targetManagementGroup` Zadejte skupinu pro správu, ve které chcete vytvořit odběr.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        },
+        "targetManagementGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the target management group to place the subscription."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]",
+                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Nasaďte šablonu na [úrovni skupiny pro správu](../../azure-resource-manager/templates/deploy-to-management-group.md).
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+S textem žádosti:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"
+      },
+      "targetManagementGroup": {
+        "value": "mg2"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" `
+  -targetManagementGroup mg2
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321' targetManagementGroup=mg2
+```
+
+---
+
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Omezení rozhraní API pro vytváření předplatných Azure Enterprise
 
 - Pomocí rozhraní API se dají vytvářet jenom předplatná Azure Enterprise.
@@ -289,3 +393,4 @@ V rámci odpovědi příkazu se vrátí údaj subscriptionId.
 
 * Teď když jste vytvořili předplatné, můžete tuto možnost poskytnout dalším uživatelům a instančním objektům. Další informace najdete v tématu [Udělení přístupu pro vytváření předplatných Azure Enterprise (Preview)](grant-access-to-create-subscription.md).
 * Další informace o správě velkého počtu předplatných pomocí skupin pro správu najdete v tématu věnovaném [uspořádání prostředků pomocí skupin pro správu v Azure](../../governance/management-groups/overview.md).
+* Pokud chcete změnit skupinu pro správu předplatného, přečtěte si téma [Přesun předplatných](../../governance/management-groups/manage.md#move-subscriptions).

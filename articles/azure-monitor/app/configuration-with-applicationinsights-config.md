@@ -6,10 +6,10 @@ ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
 ms.openlocfilehash: c6d51210867e83c6acc74ca890ab65b195dc64fc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176667"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
@@ -173,7 +173,7 @@ Tím se určuje prostředek Application Insights, ve kterém se budou zobrazovat
 
 Pokud chcete klíč dynamicky nastavit, například pokud chcete odeslat výsledky z aplikace do různých prostředků – můžete z konfiguračního souboru klíč vynechat a místo toho ho nastavit v kódu.
 
-Pro nastavení klíče pro všechny instance TelemetryClient, včetně standardních modulů telemetrie. Udělejte to v inicializační metodě, jako je například global.aspx.cs ve službě ASP.NET:
+Pro nastavení klíče pro všechny instance TelemetryClient, včetně standardních modulů telemetrie. Proveďte tuto chybu v inicializační metodě, jako je Global. aspx. cs ve službě ASP.NET:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

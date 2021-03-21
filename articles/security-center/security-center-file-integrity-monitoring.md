@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: b858903b87dc6c4cc1f7c40338c09bf5b8204b3d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176531"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů v Azure Security Center
@@ -56,7 +56,7 @@ V tomto kurzu se naučíte:
 
 Když porovnáte aktuální stav těchto položek se stavem během předchozí kontroly, FIM upozorní na to, že byly provedeny podezřelé změny.
 
-FIM používá řešení Azure Change Tracking ke sledování a identifikaci změn ve vašem prostředí. Když je povolené monitorování integrity souborů, máte **Change Tracking** prostředek typu **řešení**. Podrobnosti o četnosti shromažďování dat najdete v tématu [Change Tracking podrobností o shromažďování dat](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection).
+Monitorování integrity souborů využívá ke sledování a identifikaci změn ve vašem prostředí řešení Azure Change Tracking. Když je povolené monitorování integrity souborů, máte **Change Tracking** prostředek typu **řešení**. Podrobnosti o četnosti shromažďování dat najdete v tématu [Change Tracking podrobností o shromažďování dat](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection).
 
 > [!NOTE]
 > Pokud odeberete prostředek **Change Tracking** , zakážete tím také funkci monitorování integrity souborů v Security Center.
@@ -247,7 +247,7 @@ Pomocí zástupných znaků můžete zjednodušit sledování v adresářích. P
 -   Při nastavení cesty Vyhněte obecným cestám, jako je například c: \* . *, což bude mít za následek příliš mnoho procházených složek.
 
 ## <a name="disable-fim"></a>Zakázat FIM
-Můžete zakázat produkt FIM. FIM používá řešení Azure Change Tracking ke sledování a identifikaci změn ve vašem prostředí. Zakázáním produktu FIM odeberete Change Tracking řešení z vybraného pracovního prostoru.
+Můžete zakázat produkt FIM. Monitorování integrity souborů využívá ke sledování a identifikaci změn ve vašem prostředí řešení Azure Change Tracking. Zakázáním produktu FIM odeberete Change Tracking řešení z vybraného pracovního prostoru.
 
 1. Pokud chcete produkt FIM zakázat, vraťte se na řídicí panel **monitorování integrity souborů** .
 2. Vyberte pracovní prostor.

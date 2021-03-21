@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.author: thvankra
 ms.reviewer: thvankra
 ms.openlocfilehash: caf9cbb0ca017ee00c5061d94e0d37703194943d
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103573356"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Migrace dat z Cassandra do Azure Cosmos DB rozhraní API Cassandra účtu pomocí Azure Databricks
@@ -28,7 +28,7 @@ Rozhraní API Cassandra v Azure Cosmos DB se stal skvělou volbou pro podniková
 
 Existují různé způsoby, jak migrovat databázové úlohy z jedné platformy do jiné. [Azure Databricks](https://azure.microsoft.com/services/databricks/) je platforma jako nabídka služeb pro [Apache Spark](https://spark.apache.org/) , která nabízí způsob, jak provádět offline migrace ve velkém měřítku. Tento článek popisuje kroky, které jsou potřebné k migraci dat z nativních Cassandra a tabulek pro Apache, do Azure Cosmos DB rozhraní API Cassandra pomocí Azure Databricks.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Zřídit účet Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -114,7 +114,7 @@ DFfromNativeCassandra
 > [!NOTE]
 > Hodnoty pro `spark.cassandra.output.batch.size.rows` a a `spark.cassandra.output.concurrent.writes` také počet pracovních procesů v clusteru Spark jsou důležité konfigurace, které je třeba ladit, aby nedocházelo k [omezením rychlosti](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/), ke kterým dochází, když požadavky na Azure Cosmos DB překračují zřízenou propustnost/([jednotky žádostí](./request-units.md)). Tato nastavení může být nutné upravit v závislosti na počtu prováděcích modulů v clusteru Spark a potenciálně velikosti (a tedy i nákladů na RU) každého záznamu zapsaného do cílových tabulek.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="rate-limiting-429-error"></a>Omezení rychlosti (Chyba 429)
 Může se zobrazit chybový kód 429 nebo `request rate is large` text chyby, navzdory omezení výše uvedených nastavení na minimální hodnoty. Tady jsou některé z těchto scénářů:

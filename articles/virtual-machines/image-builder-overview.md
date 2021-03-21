@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 0e72c35af1f1990527b0154d2ba47a45d3f8b8c9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 20bb6925f859d497046eb42bbafb5264826b77b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425616"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604062"
 ---
 # <a name="preview-azure-image-builder-overview"></a>Preview: Přehled nástroje Azure image Builder
 
@@ -70,7 +70,7 @@ Azure VM Image Builder je plně spravovaná služba Azure, která je přístupn�
 
 Konfigurace šablon se dají předávat pomocí PowerShellu, AZ CLI, šablon ARM a pomocí úlohy DevOps pro tvůrce imagí virtuálních počítačů Azure. když ji odešlete do služby, vytvoříme prostředek šablony obrázku. Po vytvoření prostředku šablony image se zobrazí pracovní skupina prostředků vytvořená ve vašem předplatném ve formátu: IT_ \<DestinationResourceGroup> _\<TemplateName>_ \( GUID). Pracovní skupina prostředků obsahuje soubory a skripty, na které se odkazuje v souboru, prostředí, přizpůsobení PowerShellu ve vlastnosti ScriptURI.
 
-Chcete-li spustit sestavení, které použijete `Run` v prostředku šablony bitové kopie, služba pak nasadí další prostředky pro sestavení, jako je například virtuální počítač, síť, disk, síťový adaptér atd. Pokud sestavíte image bez použití existujícího nástroje VM Image Builder, nasadí se taky veřejná IP adresa a NSG, služba se připojí k virtuálnímu počítači sestavení pomocí SSH nebo WinRM. Pokud vyberete existující virtuální síť, služba se nasadí pomocí privátního odkazu Azure a veřejná IP adresa se nevyžaduje. Další podrobnosti o sítích tvůrce imagí si můžete prohlédnout v [podrobnostech](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking).
+Chcete-li spustit sestavení, které použijete `Run` v prostředku šablony bitové kopie, služba pak nasadí další prostředky pro sestavení, jako je například virtuální počítač, síť, disk, síťový adaptér atd. Pokud sestavíte image bez použití existujícího nástroje VM Image Builder, nasadí se taky veřejná IP adresa a NSG, služba se připojí k virtuálnímu počítači sestavení pomocí SSH nebo WinRM. Pokud vyberete existující virtuální síť, služba se nasadí pomocí privátního odkazu Azure a veřejná IP adresa se nevyžaduje. Další podrobnosti o sítích tvůrce imagí si můžete prohlédnout v [podrobnostech](./linux/image-builder-networking.md).
 
 Po dokončení sestavení budou všechny prostředky odstraněny, s výjimkou pracovní skupiny prostředků a účtu úložiště, abyste je odebrali, odstraníte prostředek šablony obrázku, nebo můžete nechat sestavení spustit znovu.
 
@@ -84,7 +84,7 @@ Při registraci pro (AIB) udělí služba AIB oprávnění vytvořit, spravovat 
 
 Pokud chcete, aby tvůrce imagí virtuálních počítačů Azure mohl distribuovat image do spravovaných imagí nebo do sdílené Galerie imagí, budete muset vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění ke čtení a zápisu imagí. Pokud přistupujete k Azure Storage, budete potřebovat oprávnění ke čtení privátních a veřejných kontejnerů.
 
-Oprávnění jsou vysvětlena podrobněji pro [PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-powershell)a [AZ CLI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-cli).
+Oprávnění jsou vysvětlena podrobněji pro [PowerShell](./linux/image-builder-permissions-powershell.md)a [AZ CLI](./linux/image-builder-permissions-cli.md).
 
 ## <a name="costs"></a>Náklady
 Při vytváření, sestavování a ukládání imagí pomocí Azure image Builder budete mít za následek několik výpočetních, síťových a úložných nákladů. Tyto náklady jsou podobné nákladům, které vznikly ručním vytvářením vlastních imagí. U prostředků se vám budou účtovat sazby za Azure. 
@@ -101,4 +101,3 @@ Nástroj image Builder aktuálně nativně podporuje vytváření imagí technol
 ## <a name="next-steps"></a>Další kroky 
  
 Pokud si chcete vyzkoušet Azure image Builder, přečtěte si články pro vytváření imagí pro [Linux](./linux/image-builder.md) nebo [Windows](./windows/image-builder.md) .
-

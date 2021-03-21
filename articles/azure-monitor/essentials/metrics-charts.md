@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.openlocfilehash: d728dfb364cb0f82326a472196cb28d79b85b1e9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031437"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Rozšířené funkce Průzkumníka metrik Azure
@@ -265,7 +265,7 @@ Kliknutím na možnost selhání přejdete k vlastnímu oknu selhání, které v
 * Jsou k dispozici pouze protokoly aktivit – funkce přejít k protokolům je k dispozici pouze pro vybrané poskytovatele prostředků. Ve výchozím nastavení jsou k dispozici protokoly aktivit. 
 
  
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud v grafu nevidíte žádná data, přečtěte si následující informace pro řešení potíží:
 

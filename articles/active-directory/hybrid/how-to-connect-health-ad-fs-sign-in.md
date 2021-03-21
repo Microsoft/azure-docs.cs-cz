@@ -15,10 +15,10 @@ ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74769feba1d717a2f1a72d311f85bdfbeac7b7db
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103574786"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>AD FS přihlášení ve službě Azure AD s připojením Health – Preview
@@ -27,7 +27,7 @@ Přihlašovací AD FS se teď dají integrovat do sestavy Azure Active Directory
 
 Agent Connect Health pro AD FS koreluje více ID událostí z AD FS, závislých na verzi serveru, aby poskytoval informace o požadavku a podrobnostech o chybě, pokud požadavek selhává. Tyto informace se přihlásily ke schématu sestav přihlášení k Azure AD a zobrazují se v uživatelském rozhraní sestav Sign-In služby Azure AD. Vedle sestavy je k dispozici nový datový proud Log Analytics s daty AD FS a novou šablonou sešitu Azure Monitor. Šablonu lze použít a upravit pro podrobnou analýzu scénářů, jako jsou například uzamčení účtů AD FS, špatné pokusy o zadání hesla a špičky neočekávaných pokusů o přihlášení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Azure AD Connect Health pro AD FS nainstalované a upgradované na nejnovější verzi.
 * Role globálního správce nebo čtenáře sestav pro zobrazení přihlášení k Azure AD
 

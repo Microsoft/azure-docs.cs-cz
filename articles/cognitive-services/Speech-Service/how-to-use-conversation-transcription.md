@@ -12,10 +12,10 @@ ms.date: 10/20/2020
 ms.author: trbye
 zone_pivot_groups: acs-js-csharp
 ms.openlocfilehash: 48cd4c7996eabad7293aa2429c76b8943e0ab3da
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100368468"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>Začínáme s přepisem konverzací v reálném čase
@@ -28,7 +28,7 @@ Rozhraní **ConversationTranscriber** API sady Speech SDK umožňuje přepisovat
 * Vyžaduje, aby bylo pole s více mikrofony s více mikrofony v podobě mikrofonu. Pole mikrofonu by mělo splňovat [naše specifikace](./speech-devices-sdk-microphone.md).
 * [Sada Speech Devices SDK](speech-devices-sdk.md) nabízí vhodná zařízení a ukázkovou aplikaci, která demonstruje přepis konverzace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free).
 

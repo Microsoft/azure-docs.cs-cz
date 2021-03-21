@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-ummehabiba
 ms.custom: has-adal-ref
 ms.openlocfilehash: e4182f3718422be3a0aa99c980d33026df4ce9af
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102173745"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
@@ -107,8 +107,8 @@ Postupujte takto:
 | Manufacturer | Název výrobce |
 | ProductCode | Kód produktu nebo číslo modelu zařízení Například EnviroMonitor # 6800. |
 | Porty | Název portu a typ, který je digitální nebo analogový. |
-| Název | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
-| Popis | Poskytněte smysluplný popis modelu. |
+| Name | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
+| Description | Poskytněte smysluplný popis modelu. |
 | Vlastnosti | Další vlastnosti od výrobce. |
 | **Zařízení** |  |
 | DeviceModelId | ID přidruženého modelu zařízení |
@@ -116,8 +116,8 @@ Postupujte takto:
 | ReportingInterval | Interval generování sestav v sekundách. |
 | Umístění | Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech). |
 | ParentDeviceId | ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například uzel, který je připojen k bráně. Uzel má jako bránu parentDeviceId. |
-| Název | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats. |
-| Popis | Zadejte smysluplný popis. |
+| Name | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats. |
+| Description | Zadejte smysluplný popis. |
 | Vlastnosti | Další vlastnosti od výrobce. |
 | **SensorModel** |  |
 | Typ (analogové, digitální) | Typ snímače bez ohledu na to, zda je analogový nebo digitální. |
@@ -128,8 +128,8 @@ Postupujte takto:
 | Typ > SensorMeasures | Typ měření dat telemetrie senzorů. Systémem definované typy jsou AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, přítlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, TimeDuration, UVRadiation, UVIndex, WindDirection, WindRun, WindSpeed, evapotranspiration,,, nominální hodnota. Pokud chcete přidat další informace, podívejte se na rozhraní/ExtendedType API. |
 | Jednotka > SensorMeasures | Jednotka dat telemetrie snímačů. Jednotky definované systémem jsou jednotky jednotek, Celsia, Fahrenheita, Kelviny, Rankine, Pascal, rtuť, PSI, milimetr, centimetry, měřič, palce, nohy, kilometry, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, MilliLiter, litr, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour,/ExtendedType,,, |
 | SensorMeasures > AggregationType | Hodnoty mohou být None, Average, maximum, minima nebo StandardDeviation. |
-| Název | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
-| Popis | Poskytněte smysluplný popis modelu. |
+| Name | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
+| Description | Poskytněte smysluplný popis modelu. |
 | Vlastnosti | Další vlastnosti od výrobce. |
 | **Elektrické** |  |
 | HardwareId | Jedinečné ID pro senzory nastavené výrobcem. |
@@ -137,8 +137,8 @@ Postupujte takto:
 | Umístění | Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech). |
 | Název > portu | Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení. |
 | DeviceID | ID zařízení, ke kterému je senzor připojen. |
-| Název | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu. |
-| Popis | Zadejte smysluplný popis. |
+| Name | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu. |
+| Description | Zadejte smysluplný popis. |
 | Vlastnosti | Další vlastnosti od výrobce. |
 
 Další informace o objektech naleznete v [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
@@ -426,7 +426,7 @@ Tady je příklad zprávy telemetrie:
 }
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Po ingestování historických/streamových dat ze senzorů nejde zobrazit data telemetrie.
 

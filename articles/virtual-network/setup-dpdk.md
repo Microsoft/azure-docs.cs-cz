@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
 ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102124665"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavení DPDK na virtuálním počítači se systémem Linux
@@ -56,7 +56,7 @@ Informace o všech neuvedených verzích jádra pro Linux najdete v tématu [opr
 
 Všechny oblasti Azure podporují DPDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Na virtuálním počítači se systémem Linux musí být povoleny akcelerované síťové služby. Virtuální počítač by měl mít alespoň dvě síťová rozhraní s jedním rozhraním pro správu. Povolení akcelerovaných síťových rozhraní u rozhraní pro správu se nedoporučuje. Naučte se, jak [vytvořit virtuální počítač se systémem Linux s povolenými akcelerovanými síťovými](create-vm-accelerated-networking-cli.md)službami.
 
