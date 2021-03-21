@@ -8,10 +8,10 @@ ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: ae2be8dbcb4839c7d16b864c484c3360fdcfe324
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102425579"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus výstupní vazba pro Azure Functions
@@ -317,7 +317,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `ServiceBus` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr** | Není k dispozici | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
@@ -425,7 +425,7 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 
 Pokud jste `isSessionsEnabled` nastavili na `true` , `sessionHandlerOptions` bude dodržena.  Pokud jste `isSessionsEnabled` nastavili na `false` , `messageHandlerOptions` bude dodržena.
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |prefetchCount|0|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat.|
 |maxAutoRenewDuration|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|

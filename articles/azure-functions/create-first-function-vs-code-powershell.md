@@ -4,10 +4,10 @@ description: Naučte se vytvořit funkci PowerShellu a pak publikovat místní p
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.openlocfilehash: 9833b154cdba24f8760e7e8d9040bfc72bbcd271
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99493583"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce PowerShellu v Azure pomocí Visual Studio Code

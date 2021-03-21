@@ -41,6 +41,12 @@
           href: tutorial-cross-region-powershell.md
         - name: Vytvoření nástroje pro vyrovnávání zatížení mezi oblastmi – Azure CLI
           href: tutorial-cross-region-cli.md
+    - name: NAT Gateway
+      items:
+        - name: Integrace veřejného nástroje pro vyrovnávání zatížení brány NAT
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+        - name: Integrace interního nástroje pro vyrovnávání zatížení brány NAT
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
 - name: ukázky
   items:
     - name: Azure CLI
@@ -49,6 +55,8 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
+    - name: Nastavení portálu
+      href: manage.md
     - name: Nástroj pro vyrovnávání zatížení mezi oblastmi
       href: cross-region-overview.md
     - name: Co je nového?
@@ -99,8 +107,6 @@
       href: instance-metadata-service-load-balancer.md
 - name: Postupy
   items:
-    - name: Nastavení portálu
-      href: manage.md
     - name: Škálovací sady virtuálních počítačů
       items:
         - name: Aktualizace nebo odstranění stávajícího Azure Load Balanceru využívaného škálovací sadou virtuálních počítačů

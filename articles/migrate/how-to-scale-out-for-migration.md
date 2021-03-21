@@ -6,28 +6,28 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 1c93002a6dd97aadbf407713ab25091436bd85e0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 1425eafd92737e08596499e395dc62af3d967207
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612061"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607649"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Škálování migrace virtuálních počítačů VMware bez agenta do Azure
 
-Tento článek vám pomůže pochopit, jak používat zařízení se škálováním na více instancí k migraci velkého počtu virtuálních počítačů VMware do Azure pomocí možnosti migrace bez agenta Azure Migrate serveru pro migraci. 
+Tento článek vám pomůže pochopit, jak používat zařízení se škálováním na více instancí k migraci velkého počtu virtuálních počítačů VMware do Azure s využitím metody bez agentů nástroje pro migraci Azure Migrate serveru pro migraci virtuálních počítačů VMware.
 
-Díky migraci virtuálních počítačů VMware bez agentů na nástroj pro migraci serveru můžete tyto možnosti:
+Pomocí metody migrace bez agenta pro virtuální počítače VMware můžete:
 
 - Replikace až 300 virtuálních počítačů z jednoho serveru vCenter současně pomocí jednoho zařízení Azure Migrate.
 - Replikaci až 500 virtuálních počítačů z jednoho serveru vCenter současně nasazením druhého zařízení se škálováním na více instancí pro migraci.
 
 V tomto článku se dozvíte, jak:
 
-- Nasazení zařízení se škálováním na více instancí pro migraci VMware
+- Přidání zařízení se škálováním na více instancí pro migraci virtuálních počítačů VMware bez agenta
 - Migrujte až 500 virtuálních počítačů současně pomocí zařízení se škálováním na více instancí.
 
-##  <a name="prerequisites"></a>Požadavky
+##  <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte provést následující kroky:
 
@@ -37,8 +37,9 @@ Než začnete, musíte provést následující kroky:
 > [!IMPORTANT]
 > Předtím, než budete moct přidat zařízení se škálováním na více instancí pro migraci, budete muset mít aspoň jeden virtuální počítač replikování v projektu.
 
-## <a name="deploy-a-scale-out-appliance"></a>Nasazení zařízení se škálováním na více instancí
+Informace o tom, jak postupovat výše, najdete v kurzu migrace [virtuálních počítačů VMware do Azure s metodou migrace bez agenta](./tutorial-migrate-vmware.md).
 
+## <a name="deploy-a-scale-out-appliance"></a>Nasazení zařízení se škálováním na více instancí
 
 Pokud chcete přidat zařízení se škálováním na více instancí, postupujte podle níže uvedených kroků:
 

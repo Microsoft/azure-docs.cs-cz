@@ -3,15 +3,15 @@ title: 'Kurz: návrh Azure Database for MariaDB-Azure Portal'
 description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MariaDB pomocí webu Azure Portal.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 9df151be99ba81af28f6b7b0cc012eae7db3ea1b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: fe503d0e579e30b0c355d3be3e8d02b2bd7a44a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664465"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB pomocí webu Azure Portal

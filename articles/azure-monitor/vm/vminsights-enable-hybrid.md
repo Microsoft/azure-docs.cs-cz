@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: c3c8495b7355ee5d9ee8c28b4e0097a0080964d4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046633"
 ---
 # <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>Povolit pro hybridní virtuální počítač přehledy virtuálních počítačů
@@ -18,7 +18,7 @@ Tento článek popisuje, jak povolit přehledy virtuálních počítačů pro vi
 > [!IMPORTANT]
 > Doporučeným způsobem povolení hybridních virtuálních počítačů je nejprve povolit [pro servery Azure ARC](../../azure-arc/servers/overview.md) , aby bylo možné virtuální počítače povolit pro službu VM Insights pomocí procesů podobných virtuálním počítačům Azure. Tento článek popisuje, jak připojit hybridní virtuální počítače, pokud se rozhodnete nepoužívat ARC Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](./vminsights-configure-workspace.md).
 - V části [podporované operační systémy](./vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
@@ -145,7 +145,7 @@ configuration VMInsights {
 
 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="vm-doesnt-appear-on-the-map"></a>Virtuální počítač se na mapě nezobrazí.
 

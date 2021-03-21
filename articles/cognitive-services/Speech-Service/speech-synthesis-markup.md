@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0a0f48a311e5adf0dd7c70c43317d99cc94fca86
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 124e3ef734e03606372dc07059841b77c3a548de
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470519"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584563"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -250,7 +250,7 @@ Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se 
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
-| Hlas                   | Styl                     | Popis                                                 |
+| Hlas                   | Styl                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Vyjadřuje formální, jistý a autoritativní tón pro doručování zpráv. |
 |                         | `style="newscast-casual"` | Vyjadřuje všestranný a příležitostný tón pro obecné doručování zpráv.        |
@@ -398,7 +398,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Volitelné |
 | `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách, tato hodnota by měla být nastavena na hodnotu menší než 5000ms. Příklady platných hodnot jsou `2s` a. `500ms` | Volitelné |
 
-| Obsahem                      | Popis |
+| Obsahem                      | Description |
 |-------------------------------|-------------|
 | Žádná, nebo pokud není zadána žádná hodnota | 0 MS        |
 | x – slabý                        | 250 ms      |
@@ -868,6 +868,117 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete vš
     </voice>
 </speak>
 ```
+
+## <a name="bookmark-element"></a>Element Bookmark
+
+`bookmark`Element umožňuje vložit záložky do SSML a získat posunutí zvuku každé záložky zvukového datového proudu pro asynchronní oznámení.
+
+**Syntax**
+
+```xml
+<bookmark mark="string"/>
+```
+
+**Atributy**
+
+| Atribut | Popis                                   | Požadováno/volitelné                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `mark`     | Určuje text záložky `bookmark` prvku. | Povinná hodnota. |
+
+**Příklad**
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-GuyNeural">
+        <bookmark mark='bookmark_one'/> one.
+        <bookmark mark='bookmark_two'/> two. three. four.
+    </voice>
+</speak>
+```
+
+### <a name="get-bookmark-using-speech-sdk"></a>Získání záložky pomocí sady Speech SDK
+
+Můžete se přihlásit k odběru `BookmarkReached` události v sadě Speech SDK a získat tak posunutí záložky.
+
+> [!NOTE]
+> `BookmarkReached` událost je k dispozici pouze od verze sady Speech SDK 1.16.0.
+
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+Další informace najdete v tématu <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a>.
+
+```csharp
+synthesizer.BookmarkReached += (s, e) =>
+{
+    // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+    Console.WriteLine($"Bookmark reached. Audio offset: " +
+        $"{e.AudioOffset / 10000}ms, bookmark text: {e.Text}.");
+};
+```
+
+# <a name="c"></a>[C++](#tab/cpp)
+
+Další informace najdete v tématu <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>.
+
+```cpp
+synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
+{
+    cout << "bookmark reached. "
+        // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+        << "Audio offset: " << e.AudioOffset / 10000 << "ms, "
+        << "Bookmark text: " << e.Text << "." << endl;
+};
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+Další informace najdete v tématu <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a>.
+
+```java
+synthesizer.BookmarkReached.addEventListener((o, e) -> {
+    // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+    System.out.print("Bookmark reached. Audio offset: " + e.getAudioOffset() / 10000 + "ms, ");
+    System.out.println("bookmark text: " + e.getText() + ".");
+});
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Další informace najdete v tématu <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>.
+
+```python
+# The unit of evt.audio_offset is tick (1 tick = 100 nanoseconds), divide it by 10,000 to convert to milliseconds.
+speech_synthesizer.bookmark_reached.connect(lambda evt: print(
+    "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Další informace najdete v tématu <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached` </a>.
+
+```javascript
+synthesizer.bookmarkReached = function (s, e) {
+    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms. Bookmark text: " + e.text);
+}
+```
+
+# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
+
+Další informace najdete v tématu <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+
+```objectivec
+[synthesizer addBookmarkReachedEventHandler: ^ (SPXSpeechSynthesizer *synthesizer, SPXSpeechSynthesisBookmarkEventArgs *eventArgs) {
+    // The unit of AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to converted to milliseconds.
+    NSLog(@"Bookmark reached. Audio offset: %fms, bookmark text: %@.", eventArgs.audioOffset/10000., eventArgs.text);
+}];
+```
+
+# <a name="swift"></a>[Swift](#tab/swift)
+
+Další informace najdete v tématu <a href="https://docs.microsoft.com/swift/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

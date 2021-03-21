@@ -12,10 +12,10 @@ ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: c45b819f9fc02fae40c2bf7fc5c2247c8c0a6147
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102517476"
 ---
 # <a name="deploy-mlflow-models-as-azure-web-services-preview"></a>Nasazení modelů MLflow jako webových služeb Azure (Preview)
@@ -39,7 +39,7 @@ Následující diagram znázorňuje, že s rozhraním API a Azure Machine Learni
 >[!NOTE]
 > Jako open source knihovna se MLflow změny často. Funkce, které jsou dostupné prostřednictvím Azure Machine Learning a integrace MLflow, by se měly považovat za verzi Preview, a není plně podporovaná Microsoftem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Model strojového učení. Pokud nemáte školený model, Najděte si příklad poznámkového bloku, který nejlépe vyhovuje vašemu výpočetnímu scénáři v [tomto úložišti](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) , a postupujte podle pokynů. 
 * [Pro připojení Azure Machine Learning nastavte identifikátor URI pro sledování MLflow](how-to-use-mlflow.md#track-local-runs).

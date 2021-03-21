@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: ac67e3cf8f057738b76b0de7cbcb821ef290e0cb
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98757572"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality
@@ -68,14 +68,14 @@ Replikovat se dají jenom počítače se systémem Linux s následujícím úlo�
 
 **Konfigurace** | **Podporováno**  
 --- | --- 
-Seskupování síťových adaptérů hosta | Ano 
-Hostitel-síť VLAN | Ano 
-Hostitel – IPv4 | Ano 
+Seskupování síťových adaptérů hosta | Yes 
+Hostitel-síť VLAN | Yes 
+Hostitel – IPv4 | Yes 
 Hostitel – IPv6 | No 
 Virtuální počítač hosta – seskupování síťových adaptérů | No
-Virtuální počítač hosta – IPv4 | Ano
+Virtuální počítač hosta – IPv4 | Yes
 Virtuální počítač hosta – IPv6 | No
-Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
+Virtuální počítač hosta – Windows/Linux – statická IP adresa | Yes
 Virtuální počítač hosta – více síťových karet | Ano
 
 
@@ -85,29 +85,29 @@ Virtuální počítač hosta – více síťových karet | Ano
 
 **Úložiště (hostitel)** | **Podporováno** 
 --- | --- 
-NFS | Ano 
+NFS | Yes 
 SMB 3.0 | – 
-SÍŤ SAN (ISCSI) | Ano 
-Multipath (multi-Path) | Ano 
+SÍŤ SAN (ISCSI) | Yes 
+Multipath (multi-Path) | Yes 
 
 ### <a name="guest-or-physical-server-storage"></a>Úložiště hostů nebo fyzických serverů
 
 **Konfigurace** | **Podporováno** 
 --- | --- 
-FORMÁTU | Ano 
+FORMÁTU | Yes 
 VHD/VHDX | – 
 Virtuální počítač 2. generace | – 
-Disk sdíleného clusteru | Ano 
+Disk sdíleného clusteru | Yes 
 Zašifrovaný disk | No 
-UEFI| Ano 
+UEFI| Yes 
 NFS | No 
 SMB 3.0 | No 
-RDM | Ano 
-Disk > 1 TB | Ano 
-Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano 
+RDM | Yes 
+Disk > 1 TB | Yes 
+Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Yes 
 Prostory úložiště | No 
-Hot Add/Remove disk | Ano 
-Vyloučení disku | Ano 
+Hot Add/Remove disk | Yes 
+Vyloučení disku | Yes 
 Multipath (multi-Path) | – 
 
 ## <a name="vaults"></a>Trezory
@@ -124,7 +124,7 @@ Služba mobility koordinuje replikaci mezi místními servery VMware nebo fyzick
 | **Aktualizace** | **Podrobnosti** |
 | --- | --- |
 |Aktualizace Scout | Aktualizace Scout jsou kumulativní. <br/><br/> [Seznamte se s](vmware-physical-secondary-disaster-recovery.md#updates) nejnovějšími aktualizacemi Scout a Stáhněte si je |
-|Aktualizace součástí | Aktualizace Scout obsahují aktualizace pro všechny součásti, včetně serveru pro příjem dat, konfiguračního serveru, procesu a hlavních cílových serverů, serverů vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Přečtěte si další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
+|Aktualizace součástí | Aktualizace Scout obsahují aktualizace pro všechny součásti, včetně serveru pro příjem dat, konfiguračního serveru, procesu a hlavních cílových serverů, serverů vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
 ## <a name="next-steps"></a>Další kroky

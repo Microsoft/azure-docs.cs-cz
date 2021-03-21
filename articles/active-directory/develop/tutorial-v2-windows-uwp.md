@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
 ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102644"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Kurz: volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (UWP)
@@ -34,7 +34,7 @@ V tomto kurzu:
 > * Přidat kód pro volání rozhraní API Microsoft Graph
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) s nainstalovanou úlohou [vývoj Univerzální platforma Windows](/windows/uwp/get-started/get-set-up)
 
@@ -105,9 +105,9 @@ Visual Studio vytvoří jako součást šablony projektu *MainPage. XAML* . Otev
 
 ### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Získání tokenu pro rozhraní Microsoft Graph API pomocí knihovny Microsoft Authentication Library
 
-V této části se dozvíte, jak pomocí knihovny Microsoft Authentication Library získat token pro rozhraní Microsoft Graph API. Proveďte změny v souboru *MainPage.XAML.cs* .
+V této části se dozvíte, jak pomocí knihovny Microsoft Authentication Library získat token pro rozhraní Microsoft Graph API. Proveďte změny v souboru *MainPage. XAML. cs* .
 
-1. Do *MainPage.XAML.cs* přidejte následující odkazy:
+1. V souboru *MainPage. XAML. cs* přidejte následující odkazy:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -239,7 +239,7 @@ Nakonec se `AcquireTokenSilent` Metoda nezdařila. Důvody k selhání zahrnují
 
 ### <a name="instantiate-the-microsoft-graph-service-client-by-obtaining-the-token-from-the-signinuserandgettokenusingmsal-method"></a>Vytvoření instance klienta služby Microsoft Graph získáním tokenu z metody SignInUserAndGetTokenUsingMSAL
 
-Do *MainPage.XAML.cs* přidejte následující novou metodu:
+Do souboru *MainPage. XAML. cs* přidejte následující novou metodu:
 
 ```csharp
       /// <summary>
@@ -264,7 +264,7 @@ V této ukázkové aplikaci je `GetGraphServiceClient` Metoda vytvořena `GraphS
 
 ### <a name="add-a-method-to-sign-out-the-user"></a>Přidejte metodu pro odhlášení uživatele.
 
-Pokud chcete uživatele odhlásit, přidejte následující metodu do *MainPage.XAML.cs*:
+Pokud chcete uživatele odhlásit, přidejte do souboru *MainPage. XAML. cs* následující metodu:
 
 ```csharp
 /// <summary>
@@ -302,7 +302,7 @@ Aplikace v této ukázce podporuje jednoho uživatele. Knihovna Microsoft Authen
 
 ### <a name="display-basic-token-information"></a>Zobrazit základní informace o tokenu
 
-Přidejte následující metodu do *MainPage.XAML.cs* k zobrazení základních informací o tokenu:
+Přidejte následující metodu do souboru *MainPage. XAML. cs* a zobrazte základní informace o tokenu:
 
 ```csharp
 /// <summary>
@@ -325,7 +325,7 @@ Tokeny ID získané pomocí **OpenID Connect** také obsahují malou podmnožinu
 
 ### <a name="display-message"></a>Zobrazit zprávu
 
-Do *MainPage.XAML.cs* přidejte následující novou metodu:
+Do souboru *MainPage. XAML. cs* přidejte následující novou metodu:
 
 ```csharp
 /// <summary>
@@ -352,7 +352,7 @@ Nyní Zaregistrujte svou aplikaci:
 1. Zadejte **název** vaší aplikace, například `UWP-App-calling-MSGraph` . Uživatel vaší aplikace může tento název zobrazit a později ho můžete změnit.
 1. V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (např. Skype, Xbox)**. 
 1. Vyberte **Zaregistrovat**.
-1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady Visual Studio, otevřete *MainPage.XAML.cs* a nahraďte hodnotu `ClientId` touto hodnotou.
+1. Na stránce Přehled vyhledejte hodnotu **ID aplikace (klienta)** a zkopírujte ji. Vraťte se do sady Visual Studio, otevřete *MainPage. XAML. cs* a nahraďte hodnotu `ClientId` touto hodnotou.
 
 Konfigurace ověřování pro vaši aplikaci:
 
@@ -385,7 +385,7 @@ Pokud chcete povolit integrované ověřování systému Windows, když se použ
 
 V aktuální ukázce `WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")` je použita metoda. Chcete-li použít `WithDefaultRedirectURI()` , proveďte tyto kroky:
 
-1. V *MainPage.XAML.cs* nahraďte `WithRedirectUri` `WithDefaultRedirectUri` :
+1. V souboru *MainPage. XAML. cs* nahraďte `WithRedirectUri` `WithDefaultRedirectUri` :
 
    **Aktuální kód**
 
@@ -418,7 +418,7 @@ V aktuální ukázce `WithRedirectUri("https://login.microsoftonline.com/common/
        .Build();
    ```
 
-2.  Vyhledejte identifikátor URI zpětného volání pro vaši aplikaci přidáním `redirectURI` pole v *MainPage.XAML.cs* a nastavením zarážky:
+2.  Vyhledejte identifikátor URI zpětného volání pro vaši aplikaci přidáním `redirectURI` pole v souboru *MainPage. XAML. cs* a nastavením zarážky:
 
     ```csharp
 

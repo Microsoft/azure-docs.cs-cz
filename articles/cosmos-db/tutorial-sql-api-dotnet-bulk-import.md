@@ -10,10 +10,10 @@ ms.date: 03/15/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103563602"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Hromadné importy dat do Azure Cosmos DB účtu rozhraní SQL API pomocí sady .NET SDK
@@ -30,7 +30,7 @@ Tento kurz zahrnuje:
 > * Připojení k účtu Azure Cosmos s povolenou hromadnou podporou
 > * Provést import dat prostřednictvím souběžných operací vytvoření
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
@@ -172,7 +172,7 @@ Chcete-li spustit ukázku, můžete to provést jednoduše pomocí `dotnet` př�
 
 Pokud jste neměli dostatek času k dokončení kroků v tomto kurzu nebo si jen chcete stáhnout ukázky kódu, můžete je získat z [GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer).
 
-Po klonování projektu nezapomeňte aktualizovat požadované přihlašovací údaje v [program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25).
+Po klonování projektu nezapomeňte aktualizovat požadované přihlašovací údaje v [programu. cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25).
 
 Ukázku můžete spustit tak, že změníte adresář úložiště a použijete `dotnet` :
 

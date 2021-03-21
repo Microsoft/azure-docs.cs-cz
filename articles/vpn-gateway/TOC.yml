@@ -262,6 +262,8 @@
     - name: Řešení potíží
       href: vpn-gateway-troubleshoot.md
       items:
+        - name: Řešení potíží s Azure VPN Gateway pomocí diagnostických protokolů
+          href: troubleshoot-vpn-with-azure-diagnostics.md
         - name: Nastavení zařízení brány firewall nebo VPN navrhované komunitou
           href: vpn-gateway-third-party-settings.md
         - name: Konfigurace a ověření připojení VPN nebo virtuální sítě

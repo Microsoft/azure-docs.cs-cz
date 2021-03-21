@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102427177"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
@@ -52,7 +52,7 @@ Viz [licenční požadavky na podmíněný přístup](overview.md).
 
 Pokud potřebujete další funkce, budete možná potřebovat i související licence. Další informace najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Funkční tenant Azure AD s povoleným Azure AD Premium nebo zkušební licencí. V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

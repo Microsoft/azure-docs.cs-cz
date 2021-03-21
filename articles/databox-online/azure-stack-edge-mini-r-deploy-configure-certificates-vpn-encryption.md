@@ -10,10 +10,10 @@ ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
 ms.openlocfilehash: c3a09242b895234c96c64d9e23449d980e47e387
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100546733"
 ---
 # <a name="tutorial-configure-certificates-vpn-encryption-for-your-azure-stack-edge-mini-r"></a>Kurz: Konfigurace certifikátů, sítě VPN, šifrování pro Azure Stack hraničních Mini R
@@ -26,12 +26,12 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Požadavky
+> * Předpoklady
 > * Konfigurace certifikátů pro fyzické zařízení
 > * Konfigurace sítě VPN
 > * Konfigurace šifrování v klidovém umístění
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než nakonfigurujete a nastavíte Azure Stack hraničních zařízení v jazyce R, ujistěte se, že:
 
@@ -163,7 +163,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 >
-> * Požadavky
+> * Předpoklady
 > * Konfigurace certifikátů pro fyzické zařízení
 > * Konfigurace sítě VPN
 > * Konfigurace šifrování v klidovém umístění

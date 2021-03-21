@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90a4ad068f332b198696d96bddbb794c820f42f5
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 76b4a749bff94cbf218d3cd3c7d132eef119b7ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564384"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606901"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -51,7 +51,8 @@ Pokud používáte převod řeči na text REST API v 2.0, přečtěte si téma j
 
 ## <a name="speech-to-text-rest-api-for-short-audio"></a>REST API řeči na text pro krátký zvuk
 
-Jako alternativu k [sadě Speech SDK](speech-sdk.md)vám služba rozpoznávání řeči umožňuje převod řeči na text pomocí REST API. Každý přístupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který plánujete použít. REST API pro krátký zvuk je velmi omezené a měl by se použít jenom v případě, že [sada Speech SDK](speech-sdk.md) není.
+Jako alternativu k [sadě Speech SDK](speech-sdk.md)vám služba rozpoznávání řeči umožňuje převod řeči na text pomocí REST API.
+REST API pro krátký zvuk je velmi omezené a měl by se použít jenom v případě, že [sada Speech SDK](speech-sdk.md) není.
 
 Před použitím REST API řeči na text pro krátký zvuk zvažte následující:
 
@@ -95,7 +96,7 @@ Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádosti o převod řeči na text.
 
-|Hlavička| Popis | Požadováno/volitelné |
+|Hlavička| Description | Požadováno/volitelné |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
@@ -341,3 +342,4 @@ Typická odpověď pro rozpoznávání s hodnocením výslovnosti:
 - [Přizpůsobení akustických modelů](./how-to-custom-speech-train-model.md)
 - [Přizpůsobení jazykových modelů](./how-to-custom-speech-train-model.md)
 - [Seznámení se službou Batch – přepis](batch-transcription.md)
+

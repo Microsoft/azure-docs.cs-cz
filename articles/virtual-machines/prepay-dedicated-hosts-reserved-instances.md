@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 1450f03ae72e79daca5a5ae2c04506e6bee5180b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672277"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607411"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Úspora nákladů pomocí rezervací vyhrazených hostitelů Azure
 
@@ -29,7 +29,7 @@ Začněte tím, že překročíte podporované velikosti pro [virtuální počí
 
 Pak ověřte, jestli je ve vyhrazených hostitelích Azure podporovaná. Stránka s [cenami vyhrazené hostitele Azure](https://aka.ms/ADHPricing) obsahuje úplný seznam vyhrazených SKU pro vyhrazené hostitele, informace o procesoru a různé cenové možnosti (včetně rezervovaných instancí).
 
-Může se stát, že několik SKU podporuje řadu virtuálních počítačů (s různými typy). Identifikujte nejlepší SKU tím, že porovnáte kapacitu hostitele (počet vCPU). Všimněte si, že budete moci použít rezervaci na několik vyhrazených hostitelů, které podporují stejné řady virtuálních počítačů (například DSv3_Type1 a DSv3_Type2), ale ne napříč různými řadami virtuálních počítačů (jako je DSv3 a ESv3).
+Můžete najít několik SKU podporujících vaši vybranou řadu virtuálních počítačů (s různými typy). Identifikujte nejlepší SKU tím, že porovnáte kapacitu hostitele (počet vCPU). Všimněte si, že budete moci uplatnit vaši rezervaci na více vyhrazených hostitelských skladů, které podporují stejné řady virtuálních počítačů (například DSv3_Type1 a DSv3_Type2), ale ne napříč různými řadami virtuálních počítačů (jako je DSv3 a ESv3).
 
 
 

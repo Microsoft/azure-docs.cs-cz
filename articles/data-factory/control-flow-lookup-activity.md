@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.openlocfilehash: 4b2fb49899b6a676520fe0912dd122dd72cce023
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101712908"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
@@ -21,7 +21,7 @@ Aktivita vyhledávání může načíst datovou sadu z libovolného zdroje dat p
 
 Aktivita vyhledávání načte a vrátí obsah konfiguračního souboru nebo tabulky. Vrátí také výsledek provedení dotazu nebo uložené procedury. Výstupem může být hodnota singleton nebo pole atributů, které lze spotřebovat v následných aktivitách kopírování, transformace nebo toku řízení jako aktivita ForEach.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Všimněte si, že:
 
@@ -57,8 +57,8 @@ Pro aktivitu vyhledávání jsou podporovány následující zdroje dat.
 
 Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
-integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
-source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
+integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
+source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
 firstRowOnly | Označuje, zda má být vrácen pouze první řádek nebo všechny řádky. | Logická hodnota | No. Výchozí formát je `true`.
 
 > [!NOTE]

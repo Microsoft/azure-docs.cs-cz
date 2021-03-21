@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
 ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102428639"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)
@@ -97,7 +97,7 @@ Můžete přijmout výchozí hodnoty pro všechna ostatní nastavení.
 
 Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů nebo sad SDK:
 
-|nástroje|Sady SDK|
+|Nástroje|Sady SDK|
 |---|---|
 |[Azure Portal](https://portal.azure.com)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-v10.md#transfer-data)|[Java](data-lake-storage-directory-file-acl-java.md)|

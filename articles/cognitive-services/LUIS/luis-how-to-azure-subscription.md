@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 168833ea0a451913f4ed019cba832a16207e0d9c
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99988162"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
@@ -125,7 +125,7 @@ Vlastník a všichni přispěvatelé mají přístup k vytváření aplikací.
 
 Přístup pro dotazování koncového bodu předpovědi je řízen nastavením na stránce **informace o aplikaci** v části **Spravovat** .
 
-|[Privátní koncový bod](#runtime-security-for-private-apps)|[Veřejný koncový bod](#runtime-security-for-public-apps)|
+|[Soukromý koncový bod](#runtime-security-for-private-apps)|[Veřejný koncový bod](#runtime-security-for-public-apps)|
 |:--|:--|
 |K dispozici pro vlastníka a přispěvatele|Dostupné pro vlastníka, přispěvatele a někoho jiného, kdo ví, že ID aplikace|
 

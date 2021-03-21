@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/09/2021
 ms.author: apimpm
 ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100545815"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Použití pojmenovaných hodnot v zásadách Azure API Management
@@ -25,7 +25,7 @@ ms.locfileid: "100545815"
 
 ## <a name="value-types"></a>Typy hodnot
 
-|Typ  |Popis  |
+|Typ  |Description  |
 |---------|---------|
 |Podobě     |  Řetězcový literál nebo výraz zásady     |
 |Tajný kód     |   Řetězcový literál nebo výraz zásad, který je zašifrovaný pomocí API Management      |
@@ -146,7 +146,7 @@ az apim nv delete --resource-group apim-hello-word-resource-group \
 
 Příklady v této části používají pojmenované hodnoty uvedené v následující tabulce.
 
-| Název               | Hodnota                      | Tajný kód | 
+| Name               | Hodnota                      | Tajný kód | 
 |--------------------|----------------------------|--------|---------|
 | ContosoHeader      | `TrackingId`                 | Ne  | 
 | ContosoHeaderValue | ••••••••••••••••••••••     | Ano   | 

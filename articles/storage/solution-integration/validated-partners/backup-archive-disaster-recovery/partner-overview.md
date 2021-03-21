@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 9e7f407ecda1fec8d8ae02e21f3b5a5ea4b0befb
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561494"
 ---
 # <a name="azure-storage-archive-backup-and-disaster-recovery-partners"></a>Azure Storage archivů, zálohování a partnerů pro zotavení po havárii
@@ -21,7 +21,7 @@ V tomto článku se zvýrazňují partneři Microsoftu, kteří jsou integraci s
 
 ## <a name="verified-partners"></a>Ověření partneři
 
-| Partner | Popis | Odkaz na web/produkt |
+| Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 |![Logo společnosti CommVault](./media/commvault-logo.jpg) |**CommVault**<br>Optimalizujte, zabezpečte, migrujte a Indexujte data pomocí infrastruktury Microsoftu pomocí CommVault. Pořiďte si kontrolu nad daty pomocí CommVault kompletní ochrany dat, řešení pro správu dat zaměřeného na Microsoft a Azure. CommVault poskytuje nástroje, které potřebujete ke správě, migraci, přístupu a obnovení dat bez ohledu na to, kde se nacházejí, a současně snižuje náklady a riziko.|[Stránka partnerského serveru](https://www.commvault.com/complete-data-protection)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault)<br>[Příručka Začínáme](./commvault/commvault-solution-guide.md)|
 |![Logo společnosti Datadobi](./media/datadob-logo.png) |**Datadobi**<br> Datadobi může optimalizovat vaše nestrukturovaná úložná prostředí. DobiProtect pomáhá udržet "zlatý kopii" nejdůležitějších dat síťového připojení k síti (NAS) v Azure. To pomáhá chránit před týká kybernetických hrozeb, ransomwarem, náhodným odstraněním a ohrožením zabezpečení softwaru. Chcete-li zachovat minimální náklady na úložiště, vyberte pouze data, která budete potřebovat, když dojde k havárii. Když dojde k havárii, obnovte úplně data a obnovte pouze podmnožinu dat nebo převezmete služby při selhání do zlaté kopie. |[Stránka partnerského serveru](https://datadobi.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobiprotect?tab=Overview)|

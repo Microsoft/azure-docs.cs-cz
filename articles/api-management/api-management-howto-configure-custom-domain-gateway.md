@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: d52bf87b74ae9b1770ed5092738fd05eb9f54fde
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99490992"
 ---
 # <a name="configure-a-custom-domain-name-for-a-self-hosted-gateway"></a>Konfigurace vlastního názvu domény pro bránu s vlastním hostováním
 
 Když zřídíte místní službu [Azure API Management Gateway](self-hosted-gateway-overview.md), není jí přiřazen název hostitele, na kterou bude odkazovat jeho IP adresa. V tomto článku se dozvíte, jak namapovat existující vlastní název DNS (označovaný také jako název hostitele) na samoobslužnou bránu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků popsaných v tomto článku musíte mít:
 

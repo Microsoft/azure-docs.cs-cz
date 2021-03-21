@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
 ms.openlocfilehash: 6f0616df885a7f8fcd76337c810bc368aa02f3c8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100650438"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu VuePress ve službě Azure static Web Apps Preview
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > - Nastavení statického Web Apps Azure
 > - Nasazení aplikace VuePress do Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/).
 - Účet GitHub. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://github.com/join).

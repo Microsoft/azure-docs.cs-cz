@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 02/10/2021
 ms.openlocfilehash: da85308e7d214f198b29b40bc380a4d33947c865
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100364558"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
@@ -799,7 +799,7 @@ Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro ko
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Příklad:
+Například:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` je správné, není `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` správné.
 

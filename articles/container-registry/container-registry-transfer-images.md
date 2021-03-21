@@ -4,12 +4,12 @@ description: Přenos kolekcí imagí nebo jiných artefaktů z jednoho registru 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 30e6c0fa7a33c7a83543fee297c582b15bce4c8b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935343"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606765"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
 
@@ -30,7 +30,7 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Registry kontejnerů** – potřebujete existující zdrojový registr s artefakty pro přenos a cílový registr. Přenos ACR je určený pro pohyb mezi fyzicky odpojenými cloudy. Pro účely testování můžou být zdrojové a cílové Registry ve stejném nebo jiném předplatném Azure, tenantovi služby Active Directory nebo cloudu. 
 
@@ -188,7 +188,7 @@ az deployment group create \
   --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
+Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Například:
 
 ```azurecli
 EXPORT_RES_ID=$(az deployment group show \
@@ -253,7 +253,7 @@ az deployment group create \
   --parameters userAssignedIdentity="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním příkazu [AZ Deployment Group show][az-deployment-group-show] . Příklad:
+Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním příkazu [AZ Deployment Group show][az-deployment-group-show] . Například:
 
 ```azurecli
 IMPORT_RES_ID=$(az deployment group show \
@@ -426,7 +426,8 @@ az resource delete \
   * Ne všechny artefakty nebo žádné, jsou přeneseny. Potvrďte kontrolu pravopisu artefaktů při spuštění exportu a název objektu BLOB v běhůch exportu a importu. Potvrďte, že přenášíte maximálně 50 artefaktů.
   * Běh kanálu možná není dokončený. Spuštění exportu nebo importu může nějakou dobu trvat. 
   * Pro jiné problémy s kanály zadejte [ID korelace](../azure-resource-manager/templates/deployment-history.md) nasazení pro spuštění exportu nebo spusťte import do týmu Azure Container Registry.
-
+* **Problémy při přijímání image v fyzicky izolovaném prostředí**
+  * Pokud se zobrazí chyby týkající se cizích vrstev nebo se pokusí vyřešit mcr.microsoft.com při pokusu o načtení image do fyzicky izolovaného prostředí, manifest image pravděpodobně obsahuje nedistribuovatelné vrstvy. Z důvodu povahy fyzicky izolovaného prostředí se tyto image často nedaří načíst. To, jestli se jedná o tento případ, můžete ověřit tak, že zkontrolujete manifest bitové kopie pro všechny odkazy na externí Registry. Pokud se jedná o tento případ, budete muset před nasazením tohoto obrázku do veřejného cloudu ACR odeslat nedistribuovatelný vrstvy. Pokyny k tomu, jak to provést, najdete v tématu [návody nabízení nedistribuovatelných vrstev do registru?](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ## <a name="next-steps"></a>Další kroky
 

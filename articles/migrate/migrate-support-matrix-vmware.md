@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: 7e0bc21fde2c030de7a836d82384c09c78d993ad
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047821"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
@@ -80,7 +80,7 @@ Kromě zjišťování serverů může posouzení serveru zjišťovat aplikace, r
 ## <a name="requirements-for-discovery-of-sql-server-instances-and-databases"></a>Požadavky na zjišťování instancí SQL Server a databází
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 [Zjišťování aplikací](how-to-discover-applications.md) identifikuje instance SQL Server. Pomocí těchto informací se zařízení pokusí připojit k příslušným instancím SQL Server prostřednictvím přihlašovacích údajů pro ověřování systému Windows nebo přihlašovacích údajů SQL Serverch ověřování uvedených na zařízení. Po připojení zařízení shromáždí údaje o konfiguraci a výkonu SQL Server instance a databáze. Konfigurační data SQL Server se aktualizují jednou za 24 hodin a data o výkonu se zaznamenávají každých 30 sekund.
 

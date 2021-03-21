@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100548246"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs zabezpečení
@@ -48,7 +48,7 @@ Klíč s přístupem k **naslouchání** umožňuje klientské aplikaci zaregist
 
 Podobně jako u jiných entit jsou operace centra oznámení povoleny pro tři deklarace zabezpečení: **naslouchat**, **odesílat** a **Spravovat**.
 
-| Deklarovat   | Popis                                          | Povolené operace |
+| Deklarovat   | Description                                          | Povolené operace |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Naslouchat  | Vytváření, aktualizace, čtení a odstraňování jednotlivých registrací | Vytvořit nebo aktualizovat registraci<br><br>Čtení registrace<br><br>Čtení všech registrací pro popisovač<br><br>Odstranit registraci |
 | Odeslat    | Odesílání zpráv do centra oznámení                | Odeslat zprávu |
@@ -64,7 +64,7 @@ Použijte zásady přístupu na úrovni oboru názvů (přihlašovací údaje) p
 
 Pokud chcete vytvořit novou deklaraci zabezpečení nebo zobrazit existující klíče SAS, udělejte toto:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Vyberte **Všechny prostředky**.
 3. Vyberte název centra oznámení, pro který chcete vytvořit deklaraci identity, nebo se podívejte na klíč SAS.
 4. V nabídce na levé straně vyberte **zásady přístupu**.

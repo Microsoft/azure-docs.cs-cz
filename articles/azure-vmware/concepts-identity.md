@@ -2,23 +2,23 @@
 title: Koncepty – identita a přístup
 description: Seznamte se s principy identit a přístupu k řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 68f4ce9136cca1cf9bf0824395e31704d8ed1a17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/18/2021
+ms.openlocfilehash: 07a7ac8093524ef4240b8f7607d649520b9439e1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364881"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586246"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Koncepty identity řešení Azure VMware
 
-Privátní cloudy řešení Azure VMware jsou zřízené pomocí serveru vCenter a správce NSX-T. Pomocí vCenter můžete spravovat úlohy virtuálních počítačů. Pro rozšiřování privátního cloudu použijete Správce NSX-T.
+Privátní cloudy řešení Azure VMware jsou zřízené pomocí serveru vCenter a správce NSX-T. Pomocí vCenter můžete spravovat úlohy virtuálních počítačů. Ke správě a rozšiřování sítě privátního cloudu slouží správce NSX-T.
 
-Přístup a Správa identit používají pro správce NSX-T oprávnění skupin CloudAdmin pro vCenter a omezená práva správce. Zajišťuje automatickou inovaci vaší privátní cloudové platformy pomocí nejnovějších funkcí a oprav.  Další informace najdete v [článku koncepty pro upgrade privátního cloudu][concepts-upgrades].
+Správa identit a přístupu vCenter používá Buildin oprávnění skupiny CloudAdmin. Správce NSX-T používá omezená oprávnění správce. To je podle povahy spravované služby a zajišťuje, aby se vaše privátní cloudová platforma Upgradoval s nejnovějšími funkcemi a opravami, které se mají očekávat.  Další informace najdete v [článku koncepty pro upgrade privátního cloudu][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>přístup k vCenter a identita
 
-Skupina CloudAdmin poskytuje oprávnění v vCenter. Skupinu můžete spravovat místně v vCenter. Další možností je integrace jednotného přihlašování přes vCenter LDAP s Azure Active Directory. Tuto integraci povolíte po nasazení privátního cloudu. 
+Skupina vCenter CloudAdmin definuje a poskytuje oprávnění v vCenter. Další možností je poskytnout přístup a identitu prostřednictvím integrace jednotného přihlašování vCenter protokolu vCenter s Azure Active Directory. Tuto integraci povolíte po nasazení privátního cloudu. 
 
 V tabulce jsou uvedena oprávnění **CloudAdmin** a **CloudGlobalAdmin** .
 
@@ -49,7 +49,7 @@ V tabulce jsou uvedena oprávnění **CloudAdmin** a **CloudGlobalAdmin** .
 
 ## <a name="nsx-t-manager-access-and-identity"></a>Přístup a identita správce NSX – T
 
-Pro přístup ke Správci NSX-T použijte účet *správce* . Má úplná oprávnění a umožňuje vytvářet a spravovat brány (T1) vrstvy 1 (T1), segmenty (logické přepínače) a všechny služby. Oprávnění poskytují přístup k bráně NSX-T úrovně 0 (T0). Změna v bráně T0 by mohla způsobit snížení výkonu sítě nebo přístupu k privátnímu cloudu. Otevřete žádost o podporu v Azure Portal, abyste požádali o změny v bráně NSX-T T0.
+Pro přístup ke Správci NSX-T použijte účet *správce* . Má úplná oprávnění a umožňuje vytvářet a spravovat brány (T1) vrstvy 1 (T1), segmenty (logické přepínače) a všechny služby. Tento účet také poskytuje přístup k bráně NSX-T úrovně 0 (T0). Při provádění takových změn byste měli být vědomi, protože by mohlo dojít ke snížení výkonu sítě nebo přístupu k privátnímu cloudu. Otevřete žádost o podporu v Azure Portal, abyste požádali o změny v bráně NSX-T T0.
   
 ## <a name="next-steps"></a>Další kroky
 

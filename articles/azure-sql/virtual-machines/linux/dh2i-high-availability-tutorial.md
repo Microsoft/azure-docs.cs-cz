@@ -8,10 +8,10 @@ author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
 ms.openlocfilehash: 0500f4143ad7cbdaaa8406af2b242e0d40b1caa2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102227394"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>Kurz – nastavení skupiny dostupnosti AlwaysOn pro tři uzly s DH2i DxEnterprise běžící na platformě Linux Azure Virtual Machines
@@ -37,7 +37,7 @@ Tento kurz se skládá z následujících kroků:
 
 V tomto kurzu nastavíme cluster DxEnterprise pomocí [uživatelského rozhraní klienta DxAdmin](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-dxadmin-client-ui-quick-start-guide/). Volitelně můžete také nastavit cluster pomocí rozhraní příkazového řádku [DxCLI](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-software-dxcli-guide/) . V tomto příkladu jsme použili čtyři virtuální počítače. Tři z těchto virtuálních počítačů používají Ubuntu 18,04 a jsou součástí clusteru se třemi uzly. Na čtvrtém virtuálním počítači běží Windows 10 s nástrojem DxAdmin ke správě a konfiguraci clusteru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vytvořte v Azure čtyři virtuální počítače. Postupujte podle pokynů v tématu [rychlý Start: Vytvoření virtuálního počítače se systémem Linux v Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) článku pro vytvoření virtuálních počítačů založených na systému Linux. Podobně pro vytváření virtuálních počítačů založených na Windows použijte [rychlý Start: Vytvoření virtuálního počítače s Windows v článku Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) .
 - Nainstalujte .NET 3,1 na všechny virtuální počítače se systémem Linux, které budou součástí clusteru. Postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/dotnet/core/install/linux) na základě operačního systému Linux, který zvolíte.

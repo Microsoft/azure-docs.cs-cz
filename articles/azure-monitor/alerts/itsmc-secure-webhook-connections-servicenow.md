@@ -6,17 +6,17 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/31/2020
 ms.openlocfilehash: cf19911bd8126bfb73f848c086aa817a7d7adb00
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103563687"
 ---
 # <a name="connect-servicenow-to-azure-monitor"></a>Připojení ServiceNow k Azure Monitor
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow a zabezpečený export v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jste splnili následující požadavky:
 

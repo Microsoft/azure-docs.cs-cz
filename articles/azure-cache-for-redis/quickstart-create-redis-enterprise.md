@@ -7,25 +7,25 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 63daa7cda2f10448e9a0f8e250412137dc2af892
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8b450ddff0952777652a957ba2ed554a4bc6497d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563893"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584818"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache"></a>Rychlý Start: vytvoření mezipaměti Redis Enterprise
 
-Azure cache pro podnikové úrovně Redis poskytuje plně integrovaný a spravovaný [Redis podnik](https://redislabs.com/redis-enterprise/) v Azure. Jsou aktuálně k dispozici ve verzi Preview. V této verzi Preview jsou dvě nové úrovně:
+Azure cache pro podnikové úrovně Redis poskytuje plně integrovaný a spravovaný [Redis podnik](https://redislabs.com/redis-enterprise/) v Azure. Tyto nové úrovně jsou:
 * Enterprise, který používá pro ukládání dat nestálou paměť (DRAM) na virtuálním počítači
 * Enterprise Flash, který pro ukládání dat používá nestálou i nestálou paměť (NVMe nebo SSD).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte [účet](https://azure.microsoft.com/). Další informace najdete v tématu [zvláštní požadavky na podnikové úrovně](cache-overview.md#special-considerations-for-enterprise-tiers).
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
-1. Pokud chcete vytvořit mezipaměť, přihlaste se k Azure Portal pomocí odkazu v rámci pozvánky ve verzi Preview a vyberte **vytvořit prostředek**.
+1. Pokud chcete vytvořit mezipaměť, přihlaste se k Azure Portal a vyberte **vytvořit prostředek**.
 
 1. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis**.
    
@@ -38,7 +38,7 @@ Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, 
    | **Předplatné** | Rozevírací seznam a vyberte své předplatné. | Předplatné, ve kterém se má vytvořit Tato nová mezipaměť Azure pro instanci Redis | 
    | **Skupina prostředků** | Rozevírací seznam a vyberte skupinu prostředků nebo vyberte **vytvořit novou** a zadejte nový název skupiny prostředků. | Název skupiny prostředků, ve které se má vytvořit mezipaměť a další prostředky Po uložení všech prostředků vaší aplikace do jedné skupiny prostředků je můžete snadno spravovat nebo odstraňovat společně. | 
    | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude *\<DNS name> . <Azure region> . redisenterprise.cache.azure.net*. | 
-   | **Umístění** | Rozevírací seznam a vyberte umístění. | Úrovně Enterprise jsou dostupné v omezených oblastech Azure ve verzi Preview. |
+   | **Umístění** | Rozevírací seznam a vyberte umístění. | Úrovně Enterprise jsou dostupné ve vybraných oblastech Azure. |
    | **Typ mezipaměti** | Rozevírací seznam a vyberte úroveň *podnikového* a podnikového *Flash* a velikost. |  Úroveň určuje velikost, výkon a funkce, které jsou k dispozici pro mezipaměť. |
    
    :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Karta základy na podnikové úrovni":::

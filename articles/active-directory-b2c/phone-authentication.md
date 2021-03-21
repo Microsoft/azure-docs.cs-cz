@@ -12,10 +12,10 @@ ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2600ea3488c643bcf215b058425de42cd439dcff
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98660263"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Nastavte si registraci a přihlašování telefonem pomocí vlastních zásad v Azure AD B2C
@@ -88,7 +88,7 @@ V některých případech může být nutné odstranit uživatele a přidružen�
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před nastavením jednorázového hesla budete potřebovat následující prostředky.
 

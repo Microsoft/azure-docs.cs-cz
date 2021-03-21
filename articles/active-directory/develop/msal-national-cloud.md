@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 09c4dadd7a6560bd5163d623dd8a7f247b57860e
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102491"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Použití MSAL v národním cloudovém prostředí
@@ -34,7 +34,7 @@ Zahrnutí globálního cloudu Azure Active Directory (Azure AD) je nasazeno v n�
 
 Tato příručka ukazuje, jak se přihlásit k pracovním a školním účtům, získat přístupový token a volat rozhraní API Microsoft Graph v [cloudovém prostředí Azure Government](https://azure.microsoft.com/global-infrastructure/government/) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že splňujete tyto požadavky.
 

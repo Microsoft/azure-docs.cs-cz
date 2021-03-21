@@ -2,13 +2,13 @@
 title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: f1895f14361b7121ae0d78950cdf8eca3cf7eb52
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 03/17/2021
+ms.openlocfilehash: 2ded5d706ab71b3880633cd324fb366d0a1bccbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462418"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584631"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
@@ -18,7 +18,6 @@ Kroky popsané v tomto rychlém startu poskytují prostředí připravené pro v
 
 >[!IMPORTANT]
 >Před vytvořením prostředku řešení Azure VMware použijte článek [Povolení prostředku řešení Azure VMware](enable-azure-vmware-solution.md) k odeslání lístku podpory, který má přidělené hostitele. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělila své hostitele. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více hostitelů, Projděte si stejný postup. 
-
 
 ## <a name="subscription"></a>Předplatné
 
@@ -48,46 +47,42 @@ Identifikujte hostitele velikostí, které chcete použít při nasazení řeše
 
 ## <a name="number-of-clusters-and-hosts"></a>Počet clusterů a hostitelů
 
-V řešení Azure VMware nasadíte privátní cloud a vytvoříte víc clusterů. Pro vaše nasazení budete muset definovat počet clusterů a hostitele f, které chcete nasadit v každém clusteru. Minimální počet hostitelů na cluster je tři a maximum je 16. Maximální počet clusterů na jeden privátní cloud je čtyři. Maximální počet uzlů na jeden privátní cloud je 64.
+První nasazení řešení Azure VMware se skládá z privátního cloudu, který obsahuje jeden cluster. Pro nasazení budete muset definovat počet hostitelů, které chcete nasadit do prvního clusteru.
+
+>[!NOTE]
+>Minimální počet hostitelů na cluster je tři a maximum je 16. Maximální počet clusterů na jeden privátní cloud je čtyři. 
 
 Další informace najdete v dokumentaci k [privátnímu cloudu řešení Azure VMware a clusterům](concepts-private-clouds-clusters.md#clusters) .
 
 >[!TIP]
->Cluster můžete kdykoli později roztáhnout, pokud potřebujete přejít nad rámec počátečního čísla nasazení.
-
-## <a name="vcenter-admin-password"></a>heslo správce vCenter
-Zadejte heslo správce vCenter. Během nasazení vytvoříte heslo správce vCenter. Heslo je přiřazeno k cloudadmin@vsphere.local účtu správce během sestavení vCenter. Pomocí těchto přihlašovacích údajů se přihlásíte k vCenter.
-
-## <a name="nsx-t-admin-password"></a>Heslo správce NSX-T
-Zadejte heslo správce NSX-T. Během nasazení vytvoříte heslo správce NSX-T. Heslo je přiřazeno k uživateli s oprávněními správce v účtu NSX během sestavení NSX. Pomocí těchto přihlašovacích údajů se přihlásíte ke Správci NSX-T.
+>Cluster můžete kdykoli roztáhnout a později přidat další clustery, pokud potřebujete přejít nad rámec počátečního čísla nasazení.
 
 ## <a name="ip-address-segment-for-private-cloud-management"></a>Segment IP adres pro správu privátního cloudu
 
-Prvním krokem při plánování nasazení je naplánování segmentace IP. Řešení Azure VMware vyžaduje síť typu CIDR/22. Tento adresní prostor Carves do menších segmentů sítě (podsítí) a používá se pro funkce vCenter, VMware HCX, NSX-T a vMotion.
+Prvním krokem při plánování nasazení je naplánování segmentace IP. Řešení Azure VMware vyžaduje síť typu CIDR/22. Tento adresní prostor je Carved na menší segmenty sítě (podsítě) a používá se pro segmenty správy řešení Azure VMware, včetně vCenter, VMware HCX, NSX-T a vMotion funkcí. Vizualizace níže zvýrazní, kde bude tento segment použit.
 
-Tento blok síťových adres CIDR/22 se nesmí překrývat s jakýmkoli existujícím segmentem sítě, který už máte v místním prostředí nebo v Azure.
+Tento blok síťových adres směrování/22 se nesmí překrývat s žádným existujícím segmentem sítě, který už máte místně nebo v Azure.
 
 **Příklad:** 10.0.0.0/22
 
-Řešení Azure VMware se připojuje k vašemu Microsoft Azure Virtual Network prostřednictvím interního okruhu Global Reach ExpressRoute (D-MSEE in a vizualizace). Tato funkce je součástí služby řešení Azure VMware a nebude se vám účtovat.
-
-Další informace najdete v tématu [Kontrolní seznam pro plánování sítě](tutorial-network-checklist.md#routing-and-subnet-considerations).
+Podrobné informace o tom, jak je síť CIDR/22 rozdělená dolů na [Kontrolní seznam plánování sítě](tutorial-network-checklist.md#routing-and-subnet-considerations)privátního cloudu.
 
 :::image type="content" source="media/pre-deployment/management-vmotion-vsan-network-ip-diagram.png" alt-text="Identifikace – segment IP adres" border="false":::  
 
 ## <a name="ip-address-segment-for-virtual-machine-workloads"></a>Segment IP adres pro úlohy virtuálních počítačů
 
-Identifikujte segment IP adres pro vytvoření první sítě pro úlohy (segment NSX) ve vašem privátním cloudu. Jinými slovy, budete muset vytvořit segment sítě v řešení Azure VMware, abyste mohli nasadit virtuální počítače v řešení Azure VMware.
+Podobně jako u jakéhokoli prostředí VMware se musí virtuální počítače připojit k segmentu sítě. V řešení Azure VMware existují dva typy segmentů: rozšířené segmenty L2 (popsané dále) a segmenty sítě NSX-T. V případě rozšíření produkčního nasazení řešení Azure VMware se často používá kombinace rozšířených segmentů L2 z místních i místních segmentů sítě NSX-T. K naplánování počátečního nasazení v řešení Azure VMware Identifikujte jeden segment sítě (síť IP). Tato síť se nesmí překrývat s žádnými segmenty sítě v místním prostředí nebo ve zbývající části Azure a nesmí být v rámci výše definovaného síťového segmentu/22.
 
-I v případě, že plánujete rozšiřování sítí z místního prostředí do řešení Azure VMware (L2), je stále nutné vytvořit segment sítě, který ověřuje prostředí.
+Tento segment sítě se používá primárně pro účely testování během počátečního nasazení.
 
-Nezapomeňte, že všechny vytvořené segmenty IP adres musí být jedinečné napříč vašimi Azure a místními nároky.
+>[!NOTE]
+>Tato síť nebo sítě nebudou během nasazení potřeba. Vytvoří se jako krok po nasazení.
   
 **Příklad:** 10.0.4.0/24
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifikace – segment IP adres pro úlohy virtuálních počítačů" border="false":::     
 
-## <a name="optional-extend-networks"></a>Volitelné Rozšiřování sítí
+## <a name="optional-extend-your-networks"></a>Volitelné Rozšiřování sítí
 
 Segmenty sítě můžete roztáhnout z místního prostředí do řešení Azure VMware a pokud to uděláte, identifikujte tyto sítě hned teď.  
 
@@ -96,9 +91,12 @@ Pamatujte na to, že:
 - Pokud hodláte rozšiřovat sítě z místního prostředí, musí se tyto sítě připojit k [vSphere distribuovanému přepínači (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) v místním prostředí VMware.  
 - Pokud sítě, které chcete rozšířit na [vSphere standardním přepínači](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html), se nedají rozšířit.
 
+>[!NOTE]
+>Tyto sítě se rozšiřují jako poslední krok konfigurace, nikoli během nasazení.
+
 ## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Připojení Azure Virtual Network k řešení VMware Azure
 
-V tomto kroku identifikujete bránu virtuální sítě ExpressRoute a podporu Virtual Network Azure, která se používá k připojení okruhu ExpressRoute Azure VMware Solution.  Okruh ExpressRoute usnadňuje připojení k privátnímu cloudu řešení Azure VMware a z něj do dalších služeb Azure, prostředků Azure a místních prostředí.
+K zajištění připojení k řešení Azure VMware je ExpressRoute sestaven z privátního cloudu řešení Azure VMware do brány virtuální sítě ExpressRoute.
 
 Můžete použít *existující* nebo *novou* bránu virtuální sítě ExpressRoute.
 
@@ -106,17 +104,17 @@ Můžete použít *existující* nebo *novou* bránu virtuální sítě ExpressR
 
 ### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>Použít existující bránu virtuální sítě ExpressRoute
 
-Pokud použijete *existující* bránu virtuální sítě ExpressRoute, po nasazení privátního cloudu se vytvoří okruh ExpressRoute řešení Azure VMware. V takovém případě ponechte pole **Virtual Network** prázdné.  
+Pokud máte v úmyslu použít *stávající* bránu virtuální sítě ExpressRoute, je okruh Azure VMware Solution ExpressRoute vytvořen jako krok po nasazení. V takovém případě ponechte pole **Virtual Network** prázdné.
 
-Poznamenejte si, kterou bránu virtuální sítě ExpressRoute použijete a pokračujte k dalšímu kroku.
+Jako obecné doporučení je přijatelné použít stávající bránu virtuální sítě ExpressRoute. V případě plánování si poznamenejte, kterou bránu virtuální sítě ExpressRoute použijete, a potom pokračujte dalším krokem.
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Vytvořit novou bránu virtuální sítě ExpressRoute
 
 Když vytváříte *novou* bránu virtuální sítě ExpressRoute, můžete použít existující Virtual Network Azure nebo vytvořit novou.  
 
 - Pro existující virtuální síť Azure:
-   1. Ověřte, že ve virtuální síti nejsou žádné již existující brány virtuální sítě ExpressRoute. 
-   1. Vyberte existující Virtual Network Azure ze seznamu **Virtual Network** .
+   1. Identifikujte virtuální síť Azure, ve které neexistují žádné již existující brány virtuální sítě ExpressRoute.
+   2. Před nasazením vytvořte [GatewaySubnet](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet) v Azure Virtual Network.
 
 - Novou Virtual Network Azure můžete vytvořit předem nebo během nasazování. V seznamu **Virtual Network** vyberte odkaz **vytvořit nový** .
 
