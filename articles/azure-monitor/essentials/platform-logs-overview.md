@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033295"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Přehled protokolů platformy Azure
@@ -43,7 +43,7 @@ K dispozici jsou různé možnosti pro zobrazení a analýzu různých protokol�
 ## <a name="destinations"></a>Cíle
 Protokoly platforem můžete odesílat do jednoho nebo více cílů v následující tabulce v závislosti na požadavcích na monitorování. Nakonfigurujte cíle pro protokoly platforem [vytvořením nastavení diagnostiky](../essentials/diagnostic-settings.md).
 
-| Cíl | Popis |
+| Cíl | Description |
 |:---|:---|
 | Pracovní prostor služby Log Analytics | Analyzujte protokoly všech vašich prostředků Azure společně a využijte výhod všech funkcí, které jsou k dispozici pro [Azure monitor protokolů](../logs/data-platform-logs.md) , včetně [dotazů protokolu](../logs/log-query-overview.md) a [výstrah protokolů](../alerts/alerts-log.md). Připněte výsledky dotazu protokolu na řídicí panel Azure nebo ho do sešitu zahrňte jako součást interaktivní sestavy. |  |
 | Centrum událostí | Odesílat data protokolu platformy mimo Azure, například pro SIEM nebo vlastní platformu telemetrie třetích stran.

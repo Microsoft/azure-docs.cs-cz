@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/07/2021
 ms.custom: references_regions
 ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102438724"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Konektor Azure dosah pro Amazon S3
@@ -72,7 +72,7 @@ V následující tabulce jsou namapovány oblasti, ve kterých se data ukládaj�
 | Střední východ (Bahrajn)           | Evropa (Frankfurt)                    |
 | Jižní Amerika (Svatý Paulo)       | USA – východ (Ohio)                        |
 | | |
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před přidáním vašich bloků Amazon S3 jako zdrojů dat dosah a kontrolou dat S3 ověřte, že jste provedli následující požadavky.
 
@@ -120,7 +120,7 @@ Další informace o přihlašovacích údajích dosah najdete v [dokumentaci ke 
 
 1. Vyberte **jiný účet AWS** a zadejte následující hodnoty:
 
-    |Pole  |Popis  |
+    |Pole  |Description  |
     |---------|---------|
     |**Account ID**     |    Zadejte ID účtu Microsoft. Příklad: `615019938638`     |
     |**Externí ID**     |   V části Možnosti vyberte **vyžadovat externí ID...** a potom do určeného pole zadejte své externí ID. <br>Příklad: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`    <br><br>Externí ID můžete najít při.  |
@@ -187,7 +187,7 @@ AWS intervaly podporují více typů šifrování. U kontejnerů, které použí
 
 1. Na kartě **vytvořit**  >  **vizuální Editor** zásad Definujte zásadu s následujícími hodnotami:
 
-    |Pole  |Popis  |
+    |Pole  |Description  |
     |---------|---------|
     |**Služba**     |  Zadejte a vyberte službu **správy klíčů**.       |
     |**Akce**     | V části **úroveň přístupu** vyberte možnost **zapsat** . tím se rozbalí oddíl **Write** .<br>Po rozbalení vyberte jenom možnost **dešifrování** .        |
@@ -351,7 +351,7 @@ Po přidání sad jako zdrojů dat dosah můžete nakonfigurovat kontrolu tak, a
 
     Pokud se rozhodnete vytvořit novou sadu pravidel pro vlastní skenování, pomocí Průvodce definujte následující nastavení:
 
-    |Podokno  |Popis  |
+    |Podokno  |Description  |
     |---------|---------|
     |**Sada pravidel nové kontroly** /<br>**Popis pravidla skenování**    |   Zadejte smysluplný název a volitelný popis pro sadu pravidel.      |
     |**Vybrat typy souborů**     | Vyberte všechny typy souborů, které chcete zahrnout do kontroly, a pak vyberte **pokračovat**.<br><br>Chcete-li přidat nový typ souboru, vyberte možnost **nový typ souboru** a definujte následující: <br>– Přípona souboru, kterou chcete přidat <br>– Volitelný popis  <br>– Zda má obsah souboru vlastní oddělovač, nebo se jedná o typ systémového souboru. Pak zadejte vlastní oddělovač nebo vyberte typ systémového souboru. <br><br>Vyberte **vytvořit** a vytvořte vlastní typ souboru.     |

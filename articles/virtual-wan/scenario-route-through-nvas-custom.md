@@ -10,10 +10,10 @@ ms.date: 02/25/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036851"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Scénář: směrování provozu prostřednictvím síťová virtuální zařízení pomocí vlastního nastavení
@@ -64,14 +64,14 @@ Existují tři rozdílné vzory připojení, které se převádějí do tří sm
 
 Tyto statické trasy zajišťují, aby přenosy dat do a z virtuální sítě a větve procházely přes síťové virtuální zařízení ve virtuální síti služby (virtuální síť 4):
 
-| Popis | Tabulka směrování | Statická trasa              |
+| Description | Tabulka směrování | Statická trasa              |
 | ----------- | ----------- | ------------------------- |
 | Větve    | RT_V2B      | 10.2.0.0/16 – > vnet4conn  |
 | SÍŤOVÉ virtuální zařízení paprsky  | Výchozí     | 10.1.0.0/16 – > vnet4conn  |
 
 Nyní můžete virtuální síť WAN použít k výběru správného připojení pro odesílání paketů. K výběru správné akce, která se má provést při přijímání těchto paketů, je také nutné použít virtuální síť WAN. Pro tento postup použijete tabulky směrování připojení následujícím způsobem:
 
-| Popis | Připojení | Statická trasa            |
+| Description | Připojení | Statická trasa            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16 – > 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16 – > 10.4.0.5 |
