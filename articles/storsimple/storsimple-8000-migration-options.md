@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 316b513f761aa422f87c83658e6c50efec25efb4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961137"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti migrace dat ze zařízení StorSimple řady 5000–7000 
@@ -41,9 +41,9 @@ Další informace o tom, jak migrovat data pomocí řady StorSimple 8000, najdet
 
 #### <a name="migrate-to-azure-file-sync"></a>Migrace do Synchronizace souborů Azure
 
-Tato značka nové možnosti migrace umožňuje zákazníkům ukládat sdílené složky ve své organizaci do souborů Azure. Tyto sdílené soubory jsou potom centralizované pro místní přístup pomocí Azure File Sync (AFS). AFS se dá nasadit na hostitele Windows serveru. Skutečná migrace dat se pak provede jako kopie hostitele nebo pomocí nástroje pro migraci.
+Tato značka nové možnosti migrace umožňuje zákazníkům ukládat sdílené složky ve své organizaci do souborů Azure. Tyto sdílené soubory jsou potom centralizované pro místní přístup pomocí Synchronizace souborů Azure (AFS). AFS se dá nasadit na hostitele Windows serveru. Skutečná migrace dat se pak provede jako kopie hostitele nebo pomocí nástroje pro migraci.
 
-Další informace o tom, jak migrovat data na Azure File Sync, najdete v článku [migrace dat z řady StorSimple 5000-7000 na Azure File Sync](../storage/files/storage-files-migration-storsimple-8000.md).
+Další informace o tom, jak migrovat data na Synchronizace souborů Azure, najdete v článku [migrace dat z řady StorSimple 5000-7000 na synchronizace souborů Azure](../storage/files/storage-files-migration-storsimple-8000.md).
 
 ### <a name="third-party-options"></a>Možnosti třetích stran
 
@@ -96,7 +96,7 @@ A. I když mohou služby fungovat i nadále, společnost Microsoft již nebude m
 A. V závislosti na jejich scénáři mají uživatelé řady StorSimple 5000-7000 následující možnosti migrace. 
 
  - **Upgrade na 8000 series**: tuto možnost použijte, když chcete pokračovat na platformě StorSimple. 
- - **Migrace na Azure File Sync**: tuto možnost použijte, pokud chcete přepnout do nativního formátu Azure. Azure File Sync můžete použít pro centralizovanou správu sdílených složek. 
+ - **Migrace na synchronizace souborů Azure**: tuto možnost použijte, pokud chcete přepnout do nativního formátu Azure. Synchronizace souborů Azure můžete použít pro centralizovanou správu sdílených složek. 
 
 Můžete kontaktovat podpora Microsoftu a diskutovat na možnosti migrace, které tady nejsou uvedené.
 
@@ -112,7 +112,7 @@ A. Migrace z řady 5000 nebo 7000 je plně podporovaná operace. Společnost Mic
 
 A. Náklady na migraci se liší v závislosti na zvolené možnosti. I když je migrace sama o sobě, pokud se rozhodnete upgradovat na řadu StorSimple 8000, bude se jednat o náklady na hardwarové zařízení. 
 
-Obdobně platí, že při použití Azure File Sync mohou platit poplatky za předplatné služby. V každém případě budou muset zákazníci platit i průběžné náklady na úložiště. Pro odhad použijte následující informace: 
+Obdobně platí, že při použití Synchronizace souborů Azure mohou platit poplatky za předplatné služby. V každém případě budou muset zákazníci platit i průběžné náklady na úložiště. Pro odhad použijte následující informace: 
 - [Ceny StorSimple](https://azure.microsoft.com/pricing/details/storsimple/)  
 - [Ceny pro AFS]( https://azure.microsoft.com/pricing/details/storage/files/)
 
@@ -127,4 +127,4 @@ A. [Tady](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimpl
 
 ## <a name="next-steps"></a>Další kroky
  - [Migrujte data z řady StorSimple 5000-7000 na zařízení řady 8000](storsimple-8000-migrate-from-5000-7000.md).
- - [Migrace dat z řady StorSimple 5000-7000 na Azure File Sync](../storage/files/storage-files-migration-storsimple-8000.md)
+ - [Migrace dat z řady StorSimple 5000-7000 na Synchronizace souborů Azure](../storage/files/storage-files-migration-storsimple-8000.md)

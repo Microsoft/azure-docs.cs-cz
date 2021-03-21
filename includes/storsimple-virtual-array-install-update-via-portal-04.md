@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 48ce594fa5f4b736e69b5b4ef7a10011fe8031fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96025630"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Instalace aktualizací prostřednictvím webu Azure Portal
 
 1. Přejděte do Správce zařízení StorSimple a vyberte **Zařízení**. Ze seznamu zařízení připojených k vaší službě vyberte a klikněte na zařízení, které chcete aktualizovat. 
 
-    ![V nedávné době se Device Manager MySSDevManager zvýrazní a vybere, zařízení se zvýrazní a vybere a zařízení MYSSIS1103 se zvýrazní a vybere.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
+    ![V nedávné době se Správce zařízení MySSDevManager zvýrazní a vybere, zařízení se zvýrazní a vybere a zařízení MYSSIS1103 se zvýrazní a vybere.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
 
 2. V okně **Nastavení** klikněte na **Aktualizace zařízení**. 
 

@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Řešení běžných problémů s Kubernetes clustery s podporou ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.openlocfilehash: e1f4e84f16c6b584f1ffbd918a86c251f47efcca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101653996"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Kubernetes řešení potíží s podporou ARC Azure
@@ -185,7 +185,7 @@ metadata:
   resourceVersion: ""
   selfLink: ""
 ```
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Azure Monitor pro kontejnery vyžaduje spuštění DaemonSet v privilegovaném režimu. Chcete-li úspěšně vytvořit kanonický cluster Charmed Kubernetes pro monitorování, spusťte následující příkaz:
 

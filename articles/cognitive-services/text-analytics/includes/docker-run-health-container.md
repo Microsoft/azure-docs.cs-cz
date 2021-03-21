@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
 ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98947204"
 ---
 ## <a name="install-the-container"></a>Instalace kontejneru
@@ -62,7 +62,7 @@ Tento příkaz:
 > [!NOTE]
 > Tato ukázka je k dispozici pouze u Analýza textu pro kontejner Health.
 
-Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST.  K dispozici jsme také nástroj pro vizualizaci v kontejneru, který je přístupný připojením `/demo` ke koncovému bodu kontejneru. Příklad:
+Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST.  K dispozici jsme také nástroj pro vizualizaci v kontejneru, který je přístupný připojením `/demo` ke koncovému bodu kontejneru. Například:
 
 ```
 http://<serverURL>:5000/demo

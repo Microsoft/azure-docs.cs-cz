@@ -9,10 +9,10 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a662598efdca05769c7da9fbeecdf692dccdacb5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96025643"
 ---
 ## <a name="overview"></a>Přehled
@@ -74,7 +74,7 @@ Přírůstkovou kopii snímku můžete implementovat následujícím způsobem:
 
 V další části popíšeme podrobněji, jak můžete uchovávat zálohy disků pomocí přírůstkové kopie snímků.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 V této části popíšeme scénář, který zahrnuje vlastní strategii zálohování disků virtuálních počítačů pomocí snímků.
 
 Vezměte virtuální počítač Azure řady DS-Series s připojeným diskem úložiště Premium Storage P30. Disk P30 s názvem *mypremiumdisk* je uložený v účtu Premium Storage s názvem *mypremiumaccount*. Pro uložení zálohy *mypremiumdisk* se používá účet standardního úložiště s názvem *mybackupstdaccount* . Chtěli bychom uchovávat snímek *mypremiumdisku* každých 12 hodin.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/20/2021
 ms.author: jeedes
 ms.openlocfilehash: a39371e7a22334b11be1d1a0a9d28557efe177c6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101654438"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Kurz: integrace programu Aha! s Azure Active Directory
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat program Aha! s Azure Active Directory 
 * Umožněte uživatelům, aby se automaticky přihlásili do Aha! se svými účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -136,7 +136,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 5. Klikněte na **účet**.
 
-    ![Profil](./media/aha-tutorial/account.png "Profil")
+    ![Profilu](./media/aha-tutorial/account.png "Profil")
 
 6. Klikněte na **zabezpečení a jednotné přihlašování**.
 

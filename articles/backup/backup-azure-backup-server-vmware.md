@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálo
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002949"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
@@ -143,11 +143,11 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 
     ![Správa](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. V části role **pro správu**  >  **Roles** vyberte ikonu Přidat roli (symbol +).
+3. V části role **pro správu**  >  vyberte ikonu Přidat roli (symbol +).
 
     ![Přidat roli](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-4. Do **Create Role**  >  **název role** vytvoření role zadejte *BackupAdminRole*. Název role může být libovolný, ale měl by být rozpoznatelný pro účel role.
+4. Do   >  **název role** vytvoření role zadejte *BackupAdminRole*. Název role může být libovolný, ale měl by být rozpoznatelný pro účel role.
 
 5. Vyberte níže uvedená oprávnění, která jsou shrnutá v následující tabulce, a pak vyberte **OK**.  Nová role se zobrazí v seznamu na panelu **role** .
    - Vyberte ikonu vedle nadřazeného popisku a rozbalte tak nadřazenou položku a zobrazte podřízená oprávnění.
@@ -213,7 +213,7 @@ Následující tabulka zachycuje oprávnění, která je třeba přiřadit k vyt
 | Globální. Správa vlastních atributů | Úložiště dat. AllocateSpace |
 | Global. set – vlastní atribut | VirtualMachine.Config. Sledování změn ve |
 | Host. Local – operace. Vytvořit virtuální počítač | VirtualMachine. State. RemoveSnapshot |
-| Sítě. Přiřadit síť | VirtualMachine. State. CreateSnapshot |
+| Síť: Přiřadit síť | VirtualMachine. State. CreateSnapshot |
 | Partner. Přiřadit virtuální počítač k fondu zdrojů | VirtualMachine. Provisioning. DiskRandomRead |
 | Virtuální machine.Configuration. Přidat nový disk | VirtualMachine. interaktivně. stavu poweroff |
 | Virtuální machine.Configuration. Upřesnit | VirtualMachine. Inventory. Create |

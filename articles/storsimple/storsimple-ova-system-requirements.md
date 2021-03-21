@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966169"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Požadavky systému virtuálních polí StorSimple
@@ -91,13 +91,13 @@ Následující tabulka uvádí porty, které je třeba v bráně firewall otevř
 
 | **Číslo portu.<sup>1</sup>** | **V nebo ven** | **Rozsah portů** | **Povinné** | **Poznámky** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Out |Síť WAN |Ne |Odchozí port se používá pro přístup k Internetu k načtení aktualizací. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
+| TCP 80 (HTTP) |Out |Síť WAN |No |Odchozí port se používá pro přístup k Internetu k načtení aktualizací. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
 | TCP 443 (HTTPS) |Out |Síť WAN |Yes |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je uživatelsky konfigurovatelné. |
 | UDP 53 (DNS) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server DNS. <br></br> Upozorňujeme, že pokud nasazujete souborový server, doporučujeme použít místní server DNS. |
 | UDP 123 (NTP) |Out |Síť WAN |V některých případech; viz poznámky. |Tento port je vyžadován pouze v případě, že používáte internetový server NTP.<br></br> Počítejte s tím, že pokud nasazujete souborový server, doporučujeme synchronizovat čas s řadiči domény služby Active Directory. |
 | TCP 80 (HTTP) |V |Síť LAN |Yes |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místnímu uživatelskému rozhraní přes HTTP se automaticky přesměruje na HTTPS. |
 | TCP 443 (HTTPS) |V |Síť LAN |Yes |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. |
-| TCP 3260 (iSCSI) |V |Síť LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
+| TCP 3260 (iSCSI) |V |Síť LAN |No |Tento port se používá pro přístup k datům přes iSCSI. |
 
 <sup>1</sup> na veřejném Internetu není třeba otevřít žádné příchozí porty.
 
@@ -107,7 +107,7 @@ Následující tabulka uvádí porty, které je třeba v bráně firewall otevř
 > 
 
 ### <a name="url-patterns-for-firewall-rules"></a>Vzory adres URL pro pravidla brány firewall
-Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše virtuální pole a Služba StorSimple Device Manager závisí na dalších aplikacích společnosti Microsoft, jako jsou Azure Service Bus, Azure Active Directory Access Control, účtech úložiště a Microsoft Updatech serverech. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. To zase vyžaduje, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro StorSimple jako a v případě potřeby. 
+Správci sítě mohou často konfigurovat Rozšířená pravidla brány firewall na základě vzorů adres URL pro filtrování příchozího a odchozího provozu. Vaše virtuální pole a Služba StorSimple Správce zařízení závisí na dalších aplikacích společnosti Microsoft, jako jsou Azure Service Bus, Azure Active Directory Access Control, účtech úložiště a Microsoft Updatech serverech. Ke konfiguraci pravidel brány firewall lze použít vzory adres URL přidružené k těmto aplikacím. Je důležité pochopit, že se vzory adres URL přidružené k těmto aplikacím můžou změnit. To zase vyžaduje, aby správce sítě sledoval a aktualizoval pravidla brány firewall pro StorSimple jako a v případě potřeby. 
 
 Doporučujeme, abyste nastavili pravidla brány firewall pro odchozí přenosy na základě pevných IP adres StorSimple, a to ve většině případů. Pomocí níže uvedených informací ale můžete nastavit Rozšířená pravidla brány firewall, která jsou potřeba k vytváření zabezpečených prostředí.
 

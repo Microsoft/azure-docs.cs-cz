@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/07/2020
 ms.author: allensu
 ms.openlocfilehash: 8ab4f698c7149d8d57f790e221ccbe35ec090fe6
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370130"
 ---
 # <a name="onboard-a-root-or-apex-domain-to-an-existing-azure-cdn-endpoint"></a>Připojení kořenové nebo vrcholné domény ke stávajícímu koncovému bodu Azure CDN
@@ -77,7 +77,7 @@ Po zaregistrování vlastní domény ji můžete přidat do svého koncového bo
 
     :::image type="content" source="media/onboard-apex-domain/cdn-add-custom-domain.png" alt-text="Přidat vlastní doménu" border="true":::
 
-6. Vyberte **Add** (Přidat).
+6. Vyberte **Přidat**.
 
    Azure ověří, že pro zadaný název vlastní domény existuje záznam CNAME. Pokud je záznam CNAME správný, vaše vlastní doména se ověří. 
 

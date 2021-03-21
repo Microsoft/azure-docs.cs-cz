@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
 ms.openlocfilehash: 28dfac7de8e73adf577b0a13e5fbd8740b1e3b06
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047413"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Auditovat dotazy v protokolech Azure Monitor (Preview)
@@ -36,7 +36,7 @@ Můžete získat příklad Správce prostředků šablonu z [nastavení diagnost
 ## <a name="audit-data"></a>Data auditu
 Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešlete do pracovního prostoru Log Analytics, uloží se do tabulky s názvem *LAQueryLogs*. Následující tabulka popisuje vlastnosti v jednotlivých záznamech dat auditu.
 
-| Pole | Popis |
+| Pole | Description |
 |:---|:---|
 | TimeGenerated         | Čas UTC při odeslání dotazu. |
 | CorrelationId         | Jedinečné ID pro identifikaci dotazu. Dá se použít při řešení potíží při kontaktování Microsoftu o pomoc. |

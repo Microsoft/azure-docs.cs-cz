@@ -12,10 +12,10 @@ ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
 ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841644"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Připojení k Azure SQL Database s využitím Azure AD Multi-Factor Authentication
@@ -62,7 +62,7 @@ Registrace a nastavení potřebných oprávnění pro vaši aplikaci:
 
 1. V Azure Portal vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **nové registrace**.
 
-    ![Registrace aplikací](./media/active-directory-interactive-connect-azure-sql-db/image1.png)
+    ![Registrace aplikace](./media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
     Po vytvoření registrace aplikace se vygeneruje a zobrazí hodnota **ID aplikace** .
 
