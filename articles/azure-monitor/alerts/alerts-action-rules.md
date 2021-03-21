@@ -4,10 +4,10 @@ description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak 
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103471673"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
@@ -116,9 +116,9 @@ Pokud vyberete možnost **Skupina akcí** v přepínači, buď přidejte existuj
 ### <a name="action-rule-details"></a>Podrobnosti pravidla akce
 
 Nakonec pro pravidlo akce nakonfigurujte následující podrobnosti:
-* Název
+* Name
 * Skupina prostředků, ve které je uložená
-* Popis
+* Description
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -274,7 +274,7 @@ Chcete-li nejlépe používat výstrahy protokolu s pravidly akcí, vytvořte v�
 
 ![Pravidla akcí a výstrahy protokolu (počet výsledků)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>I když konfigurujem pravidlo akce, chci zobrazit všechna možná překrývající se pravidla akcí, aby se zamezilo duplicitním oznámením. Je to možné?
 

@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 02/10/2021
 ms.author: yelevin
 ms.openlocfilehash: 17a4df3037f9922d92fca924de0d246458cfa08e
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102456251"
 ---
 # <a name="azure-sentinel-entity-types-reference"></a>Reference k typům entit Azure Sentinel
@@ -34,18 +34,18 @@ Nejlepší výsledky – pro zaručenou jedinečnou identifikaci – Pokud je to
 
 | Typ entity | Identifikátory | Požadované identifikátory | Nejsilnější identifikátory |
 | - | - | - | - |
-| [**Uživatelský účet**](#user-account)<br>*Zohledňují* | Název<br>FullName<br>NTDomain<br>DnsDomain<br>UPNSuffix<br>ID<br>AadTenantId<br>AadUserId<br>PUID<br>IsDomainJoined<br>DisplayName<br>ObjectGuid | FullName<br>ID<br>Název<br>AadUserId<br>PUID<br>ObjectGuid | Název + NTDomain<br>Název + UPNSuffix<br>AADUserId<br>ID |
+| [**Uživatelský účet**](#user-account)<br>*Zohledňují* | Name<br>FullName<br>NTDomain<br>DnsDomain<br>UPNSuffix<br>ID<br>AadTenantId<br>AadUserId<br>PUID<br>IsDomainJoined<br>DisplayName<br>ObjectGuid | FullName<br>ID<br>Name<br>AadUserId<br>PUID<br>ObjectGuid | Název + NTDomain<br>Název + UPNSuffix<br>AADUserId<br>ID |
 | [**Hostitel**](#host) | DnsDomain<br>NTDomain<br>Název hostitele<br>FullName<br>NetBiosName<br>AzureID<br>OMSAgentID<br>OSFamily<br>OSVersion<br>IsDomainJoined | FullName<br>Název hostitele<br>NetBiosName<br>AzureID<br>OMSAgentID | Název hostitele + NTDomain<br>Název hostitele + DnsDomain<br>Název NetBios + NTDomain<br>Název NetBios + DnsDomain<br>AzureID<br>OMSAgentID |
 | [**IP adresa**](#ip-address)<br>*IP* | Adresa | Adresa | |
-| [**Malware**](#malware) | Název<br>Kategorie | Název | |
+| [**Malware**](#malware) | Name<br>Kategorie | Name | |
 | [**Soubor**](#file) | Adresář<br>Název | Název | |
 | [**Proces**](#process) | ID<br>CommandLine<br>ElevationToken<br>CreationTimeUtc | CommandLine<br>ID | |
-| [**Cloudová aplikace**](#cloud-application)<br>*(CloudApplication)* | AppId<br>Název<br>InstanceName | AppId<br>Název | |
+| [**Cloudová aplikace**](#cloud-application)<br>*(CloudApplication)* | AppId<br>Name<br>InstanceName | AppId<br>Name | |
 | [**Název domény**](#domain-name)<br>*NÁZV* | DomainName | DomainName | |
 | [**Prostředek Azure**](#azure-resource) | ResourceId | ResourceId | |
 | [**Hodnota hash souboru**](#file-hash)<br>*(Hash)* | Algoritmus<br>Hodnota | Algoritmus + hodnota | |
 | [**Klíč registru**](#registry-key) | Hive<br>Klíč | Hive<br>Klíč | Podregistr + – klíč |
-| [**Hodnota registru**](#registry-value) | Název<br>Hodnota<br>ValueType | Název | |
+| [**Hodnota registru**](#registry-value) | Name<br>Hodnota<br>ValueType | Name | |
 | [**Skupina zabezpečení**](#security-group) | DistinguishedName<br>SID<br>ObjectGuid | DistinguishedName<br>SID<br>ObjectGuid | |
 | [**URL**](#url) | URL | URL | |
 | [**Zařízení IoT**](#iot-device) | IoTHub<br>DeviceId<br>DeviceName<br>IoTSecurityAgentId<br>DeviceType<br>Zdroj<br>SourceRef<br>Manufacturer<br>Modelování<br>OperatingSystem<br>Adresa<br>MacAddress<br>Protokoly<br>SerialNumber | IoTHub<br>DeviceId | IoTHub + DeviceId |
@@ -69,7 +69,7 @@ Níže najdete podrobné informace o všech schématech jednotlivých typů enti
 | Pole | Typ | Popis |
 | ----- | ---- | ----------- |
 | Typ | Řetězec | zohledňují |
-| Název | Řetězec | Název účtu. V tomto poli by se měl ukládat jenom název bez přidané domény. |
+| Name | Řetězec | Název účtu. V tomto poli by se měl ukládat jenom název bez přidané domény. |
 | *Úplný název* | *NENÍ K DISPOZICI* | *Nejedná se o součást schématu, která je součástí zpětné kompatibility se starou verzí mapování entit.*
 | NTDomain | Řetězec | Název domény pro rozhraní NETBIOS, jak se zobrazuje ve formátu výstrahy – doména \ uživatelské_jméno Příklady: finance, NT AUTHORITY |
 | DnsDomain | Řetězec | Plně kvalifikovaný název DNS domény. Příklady: finance.contoso.com |
@@ -98,7 +98,7 @@ Silné identifikátory entity účtu:
 
 Slabé identifikátory entity účtu:
 
-- Název
+- Name
 
 ## <a name="host"></a>Hostitel
 
@@ -150,7 +150,7 @@ Silné identifikátory entity IP:
 | Pole | Typ | Popis |
 | ----- | ---- | ----------- |
 | Typ | Řetězec | jiný |
-| Název | Řetězec | Název malwaru dodavatelem, například `Win32/Toga!rfn` . |
+| Name | Řetězec | Název malwaru dodavatelem, například `Win32/Toga!rfn` . |
 | Kategorie | Řetězec | Kategorie malwaru dodavatelem, třeba trojský kůň. |
 | Soubory | Seznam\<Entity> | Seznam entit propojených souborů, na kterých byl malware nalezen Může obsahovat soubor entity inline nebo as reference.<br>Další podrobnosti o struktuře najdete v entitě souboru. |
 | Procesy | Seznam\<Entity> | Seznam entit propojených procesů, na kterých byl malware nalezen Tato možnost se často používá, když se aktivuje výstraha u aktivity s neaktivními soubory.<br>Další podrobnosti o struktuře najdete v entitě [procesu](#process) . |
@@ -166,7 +166,7 @@ Silné identifikátory entity malwaru:
 | ----- | ---- | ----------- |
 | Typ | Řetězec | souborů |
 | Adresář | Řetězec | Úplná cesta k souboru. |
-| Název | Řetězec | Název souboru bez cesty (některé výstrahy nemusí obsahovat cestu). |
+| Name | Řetězec | Název souboru bez cesty (některé výstrahy nemusí obsahovat cestu). |
 | Hostitel | Entita | Hostitel, na kterém byl soubor uložen. |
 | Hodnoty hash | Seznam &lt; entit&gt; | Hodnoty hash souborů přidružené k tomuto souboru. |
 |
@@ -212,7 +212,7 @@ Slabé identifikátory entity procesu:
 | ----- | ---- | ----------- |
 | Typ | Řetězec | Cloud-aplikace |
 | AppId | Int | Technický identifikátor aplikace Mělo by se jednat o jednu z hodnot definovaných v seznamu [identifikátorů cloudových aplikací](#cloud-application-identifiers). Hodnota pole AppId je nepovinná. |
-| Název | Řetězec | Název související cloudové aplikace. Hodnota názvu aplikace je volitelná. |
+| Name | Řetězec | Název související cloudové aplikace. Hodnota názvu aplikace je volitelná. |
 | InstanceName | Řetězec | Uživatelsky definovaný název instance cloudové aplikace. Často se používá k rozlišení mezi několika aplikacemi stejného typu, které má zákazník. |
 |
 
@@ -292,7 +292,7 @@ Silné identifikátory entity klíče registru:
 | ----- | ---- | ----------- |
 | Typ | Řetězec | ' Registry-value ' |
 | Klíč | Entita (RegistryKey) | Entita klíče registru |
-| Název | Řetězec | Název hodnoty registru. |
+| Name | Řetězec | Název hodnoty registru. |
 | Hodnota | Řetězec | Reprezentace dat hodnot ve formátu řetězce |
 | ValueType | Vytváření? | Jedna z následujících hodnot:<li>Řetězec<li>Binární<li>Hodnoty<li>Hodnota<li>Víceřetězcová řetězcová<li>ExpandString<li>Žádné<li>Neznámý<br>Hodnoty by měly odpovídat výčtu Microsoft. Win32. hodnota RegistryValueKind. |
 |
@@ -468,7 +468,7 @@ Silné identifikátory entity SubmissionMail:
 
 Následující seznam definuje identifikátory pro známé cloudové aplikace. Hodnota ID aplikace se používá jako identifikátor entity [cloudové aplikace](#cloud-application) .
 
-|ID aplikace|Název|
+|ID aplikace|Name|
 |------|----|
 |10026|DocuSign|
 |10395|Anaplan|

@@ -4,19 +4,19 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 578c43c62fe28d33072b50b52d1691943954e229
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: a9f4ce6fb008c47f81c6838188f53fec604c2122
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242534"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612746"
 ---
 <!--Feature availability in region-->
 ## <a name="canada"></a>Kanada
 
-| Příznak | Střední Kanada | Kanada – východ |
+| Funkce | Střední Kanada | Kanada – východ |
 | --- | :---: | :---: |
-| [EventGrid Azure](../reacting-to-media-services-events.md) |![Obecná dostupnost služby Azure EventGrid Kanada Central](../media/azure-clouds-regions/ga.svg)  |![Obecná dostupnost pro Azure EventGrid Kanada – východ](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) |![Obecná dostupnost služby Azure EventGrid Kanada Central](../media/azure-clouds-regions/ga.svg)  |![Obecná dostupnost pro Azure EventGrid Kanada – východ](../media/azure-clouds-regions/ga.svg) |
 | [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![Obecná dostupnost centrálního VideoAnalyzerPreset Kanady](../media/azure-clouds-regions/ga.svg)  | ![VideoAnalyzerPreset Kanada – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
 | [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![Obecná dostupnost centrálního AudioAnalyzerPreset Kanady](../media/azure-clouds-regions/ga.svg)  | ![AudioAnalyzerPreset Kanada – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
 | [StandardEncoderPreset](../encoding-concept.md) |![Obecná dostupnost centrálního StandardEncoderPreset Kanady](../media/azure-clouds-regions/ga.svg)  | ![StandardEncoderPreset Kanada – Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |

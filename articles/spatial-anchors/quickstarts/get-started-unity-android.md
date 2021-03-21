@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3c17eadfad71f58b4557f8115a0d1d3de392b4b9
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e1554b1728b120145a06124e4703065a98a4e466
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96015124"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670087"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Unity pro Android pomocí prostorových kotev Azure
 
@@ -30,11 +30,11 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- Počítač s Windows nebo macOS s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a>, včetně **podpory buildu Androidu** s využitím **nástrojů Android SDK & NDK** a modulů **OpenJDK** .
+- Počítač s Windows nebo macOS s využitím <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a>, včetně **podpory buildu pro Android** , **Android SDK se &mi NDK nástroji** a moduly **OpenJDK** . Použijte **unity 2020 LTS** se systémem ASA sdk verze 2,9 nebo novější (který používá [modul plug-in Unity XR](https://docs.unity3d.com/Manual/XRPluginArchitecture.html)) nebo **Unity 2019 LTS** se službou ASA SDK verze 2,8 nebo starší.
   - Pokud používáte systém Windows, budete také potřebovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> a <a href="https://git-lfs.github.com/">Git LFS</a>.
   - Pokud používáte macOS, načtěte Git prostřednictvím HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Pak spusťte příkaz `brew install git` a `brew install git-lfs` .
 - Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
@@ -66,7 +66,7 @@ V aplikaci vyberte **BasicDemo** pomocí šipek a pak stiskněte tlačítko **P�
 
 Podle pokynů v aplikaci založte a odvoláte kotvu.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="rendering-issues"></a>Problémy vykreslování
 

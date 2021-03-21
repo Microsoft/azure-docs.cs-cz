@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8488325613b05d54b352a19a06860e08f1779877
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 1d52b017f94785f5fb25a25f127ae52d96e97d8b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063110"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578749"
 ---
 # <a name="logging-in-msal-for-python"></a>Protokolování v MSAL pro Python
 
@@ -26,22 +26,51 @@ ms.locfileid: "99063110"
 
 ## <a name="msal-for-python-logging"></a>MSAL pro protokolování v Pythonu
 
-Přihlášení v MSAL Pythonu používá standardní mechanismus protokolování Pythonu, například `logging.info("msg")` můžete nakonfigurovat protokolování MSAL následujícím způsobem (a zobrazit ho v akci v [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
+Přihlášení MSAL pro Python využívá [modul protokolování ve standardní knihovně Pythonu](https://docs.python.org/3/library/logging.html). Protokolování MSAL můžete nakonfigurovat následujícím způsobem (a zobrazit ho v akci v [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)):
 
 ### <a name="enable-debug-logging-for-all-modules"></a>Povolit protokolování ladění pro všechny moduly
 
-Ve výchozím nastavení je protokolování v jakémkoli skriptu Pythonu vypnuté. Pokud chcete povolit protokolování ladění pro všechny moduly v celém skriptu Pythonu, použijte:
+Ve výchozím nastavení je protokolování v jakémkoli skriptu Pythonu vypnuté. Pokud chcete povolit podrobné protokolování pro **všechny** moduly Pythonu ve skriptu, použijte `logging.basicConfig` s úrovní `logging.DEBUG` :
 
 ```python
+import logging
+
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-### <a name="silence-only-msal-logging"></a>Protokolování pouze tichého MSAL
+Tím se vytisknou všechny zprávy protokolu dané protokolovacímu modulu na standardní výstup.
 
-Chcete-li pouze tiché protokolování MSAL knihovny a povolit protokolování ladění ve všech ostatních modulech skriptu Python, vypněte protokolovací nástroj používaný MSAL Pythonem:
+### <a name="configure-msal-logging-level"></a>Konfigurace úrovně protokolování MSAL
 
-```Python
+Úroveň protokolování MSAL pro poskytovatele protokolu Pythonu můžete nakonfigurovat pomocí `logging.getLogger()` metody s názvem protokolovacího nástroje `"msal"` :
+
+```python
+import logging
+
 logging.getLogger("msal").setLevel(logging.WARN)
+```
+
+### <a name="configure-msal-logging-with-azure-app-insights"></a>Konfigurace protokolování MSAL pomocí Azure App Insights
+
+Protokoly Pythonu jsou předány obslužné rutině protokolu, která je ve výchozím nastavení `StreamHandler` . Pokud chcete odesílat protokoly MSAL do Application Insights pomocí klíče instrumentace, použijte `AzureLogHandler` poskytnutou `opencensus-ext-azure` knihovnu.
+
+Pokud ho chcete nainstalovat, `opencensus-ext-azure` přidejte `opencensus-ext-azure` balíček ze PyPI do instalace závislostí nebo PIP:
+
+```console
+pip install opencensus-ext-azure
+```
+
+Pak změňte výchozí obslužnou rutinu `"msal"` poskytovatele protokolu na instanci `AzureLogHandler` s klíčem instrumentace nastaveným v `APP_INSIGHTS_KEY` proměnné prostředí:
+
+```python
+import logging
+import os
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+APP_INSIGHTS_KEY = os.getenv('APP_INSIGHTS_KEY')
+
+logging.getLogger("msal").addHandler(AzureLogHandler(connection_string='InstrumentationKey={0}'.format(APP_INSIGHTS_KEY))
 ```
 
 ### <a name="personal-and-organizational-data-in-python"></a>Osobní a organizační data v Pythonu

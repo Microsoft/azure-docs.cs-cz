@@ -10,13 +10,13 @@ ms.topic: overview
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: 81d4527817d637e7b764cc83160153d974ced5c0
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.date: 01/14/2021
+ms.openlocfilehash: dca4d699ac1253753c82949cb480d95a1dde26e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103600937"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594100"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,7 @@ Následující diagram popisuje klíčové funkce spravované instance SQL:
 Spravovaná instance Azure SQL je navržená pro zákazníky, kteří chtějí migrovat velký počet aplikací z místního prostředí nebo prostředí IaaS, samostatného nebo nezávislého výrobce softwaru (ISV) do plně spravovaného cloudového prostředí PaaS s co nejmenším možným úsilím migrovat. Díky plně automatizované [službě Azure Data Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)můžou zákazníci vyzvednutím a posunutím stávající instance SQL Server do spravované instance SQL, což nabízí kompatibilitu s SQL Server a úplnou izolaci zákaznických instancí s nativní podporou virtuální sítě. Další informace o možnostech a nástrojích migrace najdete v tématu [Přehled migrace: SQL Server na spravovanou instanci Azure SQL](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md).</br> Se Software Assurance vám umožní vyměňovat si stávající licence pro zvýhodněné sazby SQL spravované instance pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Spravovaná instance SQL je nejlepší cíl migrace v cloudu pro SQL Server instance, které vyžadují vysoké zabezpečení a bohatou programovatelné plochu.
 
 > [!TIP]
-> Jak můžeme Azure SQL lépe využít? [Proveďte průzkum](https://aka.ms/AzureSQLSurvey).
+> Jak můžeme Azure SQL lépe využít? [Proveďte průzkum](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456).
 
 ## <a name="key-features-and-capabilities"></a>Klíčové funkce a možnosti
 
@@ -79,8 +79,8 @@ Klíčové funkce spravované instance SQL jsou uvedené v následující tabulc
 
 V modelu vCore si můžete vybrat mezi generacemi hardwaru.
 
-- Logické procesory **COMPUTE GEN4 –** jsou založené na procesorech Intel® E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD, fyzické jádra, 7 GB RAM na jádro a výpočetních velikostí mezi 8 a 24 virtuální jádra.
-- **Gen5** logické procesory jsou založené na Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) a Intel® 8272CL (Cascade Lake) 2,5 GHz, rychlé NVMe SSD, logické jádro a výpočetní velikosti mezi 4 a 80 jádry.
+- Logické procesory **COMPUTE GEN4 –** jsou založené na &reg; procesorech Intel E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD, fyzické jádra, 7 GB RAM na jádro a výpočetních velikostí mezi 8 a 24 virtuální jádra.
+- Logické procesory **Gen5** jsou založené na procesorech Intel &reg; E5-2673 v4 (Broadwell) 2,3 GHz, intel &reg; SP-8160 (Skylake) a Intel &reg; 8272CL (Cascade Lake) 2,5 GHz, rychlé NVMe SSD, logické jádro s vlákny a velikosti výpočtů mezi 4 a 80 jádry.
 
 Přečtěte si další informace o rozdílech mezi generacemi hardwaru v [omezeních prostředků spravované instance SQL](resource-limits.md#hardware-generation-characteristics).
 

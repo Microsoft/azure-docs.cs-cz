@@ -11,10 +11,10 @@ ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 083077b2b29bc415e83d6f5a76941fa83fa853e3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101674144"
 ---
 # <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>Uložené procedury využívající synapse SQL ve službě Azure synapse Analytics
@@ -193,18 +193,18 @@ Existují některé aspekty uložených procedur v jazyce Transact-SQL, které n
 
 | Funkce/možnosti | Zřízené | Bez serveru |
 | --- | --- |
-| Dočasné uložené procedury | Ne | Ano |
-| Číslované uložené procedury | Ne | Ne |
-| Rozšířené uložené procedury | Ne | Ne |
-| Uložené procedury CLR | Ne | Ne |
-| Možnost šifrování | Ne | Ano |
-| Možnost replikace | Ne | Ne |
-| Parametry vracející tabulku | Ne | Ne |
-| Parametry jen pro čtení | Ne | Ne |
-| Výchozí parametry | Ne | Ano |
-| Kontexty spuštění | Ne | Ne |
-| Return – příkaz | Ne | Ano |
-| VLOŽIT DO... Průměrná | Ne | Ano |
+| Dočasné uložené procedury | No | Yes |
+| Číslované uložené procedury | No | No |
+| Rozšířené uložené procedury | No | No |
+| Uložené procedury CLR | No | No |
+| Možnost šifrování | No | Yes |
+| Možnost replikace | No | No |
+| Parametry vracející tabulku | No | No |
+| Parametry jen pro čtení | No | No |
+| Výchozí parametry | No | Yes |
+| Kontexty spuštění | No | No |
+| Return – příkaz | No | Yes |
+| VLOŽIT DO... Průměrná | No | Ano |
 
 ## <a name="next-steps"></a>Další kroky
 

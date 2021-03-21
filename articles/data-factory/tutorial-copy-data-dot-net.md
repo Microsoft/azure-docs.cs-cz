@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: jingwang
 ms.openlocfilehash: 2a9e19f24c4889a194c85e33317860db1d3a68d2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101736555"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
@@ -33,7 +33,7 @@ Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použ�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * *Účet Azure Storage*. Úložiště objektů blob použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště pro obecné účely](../storage/common/storage-account-create.md).
 * *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
@@ -112,7 +112,7 @@ Dále nainstalujte požadované balíčky knihovny pomocí Správce balíčků N
 
 Pomocí těchto kroků vytvořte klienta datové továrny.
 
-1. Otevřete *program.cs* a pak přepište existující `using` příkazy pomocí následujícího kódu, abyste mohli přidat odkazy na obory názvů.
+1. Otevřete *program. cs* a pak přepište existující `using` příkazy pomocí následujícího kódu, abyste mohli přidat odkazy na obory názvů.
 
     ```csharp
     using System;

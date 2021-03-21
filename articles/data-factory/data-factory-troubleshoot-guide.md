@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
 ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382799"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Řešení potíží se službou Azure Data Factory
@@ -584,7 +584,7 @@ Následující tabulka se vztahuje na Azure Batch.
     1. Připojte se k aktivnímu hlavnímu uzlu jako server Ambari umístěný na aktivním hlavním uzlu pomocí SSH. 
     1. Restartujte aktivní hlavní uzel.
 
-       Další informace najdete v dokumentaci k řešení problémů Azure HDInsight. Příklad:
+       Další informace najdete v dokumentaci k řešení problémů Azure HDInsight. Například:
 
        * [Chyba 502 uživatelského rozhraní Ambari](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)
        * [RpcTimeoutException pro server služby Apache Spark Thrift](../hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception.md)
@@ -614,7 +614,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Příčina**: úloha byla odeslána do clusteru HDI a v ní došlo k chybě.
 
-- **Doporučení**: 
+- **Doporučení:** 
 
  1. Ověřte uživatelské rozhraní Ambari:
     1. Ujistěte se, že všechny služby jsou pořád spuštěné.
@@ -636,7 +636,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Příčina**: úloha byla odeslána do clusteru HDI a v ní došlo k chybě.
 
-- **Doporučení**: 
+- **Doporučení:** 
 
  1. Ověřte uživatelské rozhraní Ambari:
     1. Ujistěte se, že všechny služby jsou pořád spuštěné.
@@ -754,7 +754,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Příčina**: buď jsou zadané přihlašovací údaje pro cluster chybné, nebo došlo k potížím s konfigurací sítě nebo se jedná o problém s připojením, nebo má IR problémy s připojením ke clusteru.
 
-- **Doporučení**: 
+- **Doporučení:** 
     1. Otevřete uživatelské rozhraní Ambari clusteru HDInsight v prohlížeči a ověřte, jestli jsou přihlašovací údaje správné.
     1. Pokud je cluster v Virtual Network (VNet) a používá se místní prostředí IR, adresa URL HDI musí být privátní adresa URL v virtuální sítě a měla by obsahovat znak-int, který je uvedený za názvem clusteru.
     
@@ -788,7 +788,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Příčina**: služba ADF se pokusila o navázání připojení rozhraní ODBC (Open Database Connectivity) ke clusteru HDI a selhala s chybou.
 
-- **Doporučení**: 
+- **Doporučení:** 
 
    1. Ověřte, že jste správně nastavili připojení JDBC (ODBC/Java Database Connectivity).
       1. Pokud pro JDBC používáte stejnou virtuální síť, můžete toto připojení získat z těchto důvodů:<br>
@@ -808,7 +808,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Příčina**: ADF odeslal skript podregistru pro provedení do clusteru HDI prostřednictvím připojení ODBC a skript se nezdařil na HDI.
 
-- **Doporučení**: 
+- **Doporučení:** 
 
    1. Ověřte, že jste správně nastavili připojení JDBC (ODBC/Java Database Connectivity).
       1. Pokud pro JDBC používáte stejnou virtuální síť, můžete toto připojení získat z těchto důvodů:<br>

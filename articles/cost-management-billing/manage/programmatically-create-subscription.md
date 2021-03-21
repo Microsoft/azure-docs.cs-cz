@@ -1,20 +1,20 @@
 ---
-title: Programové vytváření předplatných Azure
+title: Vytvoření předplatných Azure prostřednictvím kódu programu
 description: Tento článek vám pomůže pochopit dostupné možnosti programového vytváření předplatných Azure.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/11/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 546ed24b5f9e7892f40c9d425b668f60ad705f8f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 9ec0ffeb930fd9285f34ad9ba9e6aa606b15b5a2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493884"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593884"
 ---
 # <a name="create-azure-subscriptions-programmatically"></a>Vytvoření předplatných Azure prostřednictvím kódu programu
 
@@ -26,7 +26,7 @@ Pomocí různých rozhraní REST API můžete vytvořit předplatné pro tyto ty
 - Smlouva se zákazníkem Microsoftu (MCA)
 - Smlouva s partnerem Microsoftu
 
-Pomocí rozhraní REST API nemůžete vytvořit další p pro jiné typy smluv.
+Pro jiné typy smluv s rozhraními REST API nelze programově vytvořit další odběry.
 
 Požadavky a podrobnosti pro vytváření předplatných se pro různé smlouvy a verze rozhraní API liší. Projděte si následující články, které odpovídají vaší situaci:
 
@@ -36,9 +36,9 @@ Nejnovější rozhraní API:
 - [Vytváření předplatných MCA](programmatically-create-subscription-microsoft-customer-agreement.md)
 - [Vytváření předplatných MPA](programmatically-create-subscription-microsoft-partner-agreement.md)
 
-Pokud stále používáte [rozhraní API verze Preview](programmatically-create-subscription-preview.md), můžete dál pokračovat ve vytváření předplatných s těmito rozhraními. 
+Tyto články také ukazují, jak vytvořit odběry pomocí šablony Azure Resource Manager (šablona ARM). Šablona ARM pomáhá automatizovat proces vytváření předplatného.
 
-A můžete [vytvářet předplatná s využitím šablony ARM](create-subscription-template.md). Šablona ARM pomáhá automatizovat proces vytváření předplatných s využitím rozhraní REST API. 
+Pokud stále používáte [rozhraní API verze Preview](programmatically-create-subscription-preview.md), můžete s nimi pokračovat v vytváření předplatných. 
 
 ## <a name="next-steps"></a>Další kroky
 

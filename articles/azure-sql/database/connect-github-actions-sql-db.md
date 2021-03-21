@@ -9,17 +9,17 @@ ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
 ms.openlocfilehash: 335879af93834665985fe2c14ce3cbd827387920
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102172135"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>Použití akcí GitHubu pro připojení k Azure SQL Database
 
 Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat: 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

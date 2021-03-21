@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461109"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
@@ -107,7 +107,7 @@ Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kont
 
 3. Uložte soubor **sqlFunction. csproj** .
 
-4. Otevřete soubor **sqlFunction.cs** .
+4. Otevřete soubor **sqlFunction. cs** .
 
 5. Celý obsah souboru nahraďte následujícím kódem:
 
@@ -204,7 +204,7 @@ Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kont
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
    ```
 
-7. Uložte soubor **sqlFunction.cs** .
+7. Uložte soubor **sqlFunction. cs** .
 
 ## <a name="add-the-sql-server-container"></a>Přidat kontejner SQL Server
 
@@ -221,7 +221,7 @@ Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kont
 
 3. V tržišti Azure IoT Edge modulu vyhledejte a vyberte **SQL Server modul**.
 
-4. Změňte název modulu na **SQL**, malými písmeny. Tento název odpovídá názvu kontejneru deklarovanému v připojovacím řetězci v souboru sqlFunction.cs.
+4. Změňte název modulu na **SQL**, malými písmeny. Tento název odpovídá názvu kontejneru deklarovanému v připojovacím řetězci v souboru sqlFunction. cs.
 
 5. Vyberte **importovat** a přidejte modul do svého řešení.
 
