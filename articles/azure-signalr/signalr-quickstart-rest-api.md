@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94874521"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
@@ -139,7 +139,7 @@ Verze | Stav rozhraní API | Dveře | Specifikace
 
 Dostupná rozhraní API pro jednotlivé verze najdete v následujícím seznamu.
 
-Rozhraní API | 1,0 – Preview | 1,0
+Rozhraní API | 1,0 – Preview | 1.0
 --- | --- | ---
 [Všesměrové vysílání pro všechny](#broadcast) | **&#x2713;** | **&#x2713;**
 [Všesměrové vysílání do skupiny](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -202,7 +202,7 @@ Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
 
-Stavový kód odpovědi | Popis
+Stavový kód odpovědi | Description
 ---|---
 `200` | Uživatel existuje
 `404` | Uživatel neexistuje.
@@ -252,7 +252,7 @@ Verze rozhraní API | Metoda HTTP v rozhraní API | Adresa URL požadavku
 ---|---|---                             
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
 
-Stavový kód odpovědi | Popis
+Stavový kód odpovědi | Description
 ---|---
 `200` | Služba je dobrá
 `5xx` | Chyba služby

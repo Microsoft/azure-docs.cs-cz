@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
 ms.openlocfilehash: 568c738284a3d1b54ba907a973139fbced11f139
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222692"
 ---
 # <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>Rychlý Start: načtení dat do vyhrazeného fondu SQL pomocí aktivity kopírování
@@ -23,7 +23,7 @@ Azure synapse Analytics nabízí různé analytické moduly, které vám pomůž
 
 V tomto rychlém startu se dozvíte, jak *načíst data z Azure SQL Database do služby Azure synapse Analytics*. Můžete postupovat podle podobných kroků a kopírovat data z jiných typů úložišť dat. Tento podobný tok se vztahuje také na kopírování dat pro jiné zdroje a jímky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * Pracovní prostor Azure synapse: Vytvořte pracovní prostor synapse pomocí Azure Portal podle pokynů v tématu [rychlý Start: vytvoření pracovního prostoru synapse](quickstart-create-workspace.md).

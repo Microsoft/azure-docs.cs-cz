@@ -7,13 +7,13 @@ ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: e932238849baf267983fb3ca1ebb082db169d9fd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101679285"
 ---
-# <a name="device-update-for-iot-hub-agent-overview"></a>Aktualizace zařízení – přehled agenta IoT Hub
+# <a name="device-update-for-iot-hub-agent-overview"></a>Přehled agenta služby Device Update pro službu IoT Hub
 
 Agent aktualizace zařízení se skládá ze dvou koncepčních vrstev:
 

@@ -7,10 +7,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.openlocfilehash: fd08dc98fa47617bbc7c8d1fff895377837a7327
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736730"
 ---
 # <a name="time-series-model-variables"></a>Proměnné modelu časové řady
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny vlastnosti, které jsou relevantní pro je
 
 ## <a name="numeric-variables"></a>Číselné proměnné
 
-| Proměnná – vlastnost | Popis |
+| Proměnná – vlastnost | Description |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů nebo transformované pomocí výrazů Time Series. Proměnné číselného typu musí být typu *Double*.|
@@ -59,7 +59,7 @@ Proměnné odpovídají následujícímu příkladu JSON:
 
 ## <a name="categorical-variables"></a>Proměnné kategorií
 
-| Proměnná – vlastnost | Popis |
+| Proměnná – vlastnost | Description |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů. Proměnné kategorií druhu musí být buď *Long* , nebo *String*. |
@@ -99,7 +99,7 @@ Proměnné odpovídají následujícímu příkladu JSON:
 
 ## <a name="aggregate-variables"></a>Agregační proměnné
 
-| Proměnná – vlastnost | Popis |
+| Proměnná – vlastnost | Description |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Agregace proměnných | Provádět výpočty prostřednictvím podporovaných [agregačních funkcí pro agregované typy proměnných](/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |

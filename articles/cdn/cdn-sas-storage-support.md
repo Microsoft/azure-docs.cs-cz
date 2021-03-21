@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.openlocfilehash: ccf55e0e3986de8afe23cb646d4df743b576900c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101725318"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Použití Azure CDN s SAS
@@ -32,7 +32,7 @@ Pomocí SAS můžete definovat různé parametry přístupu k objektu blob, jako
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>Nastavení Azure CDN pro práci s SAS úložiště
 Pro použití SAS s Azure CDN se doporučuje použít následující tři možnosti. U všech možností se předpokládá, že jste už vytvořili pracovní SAS (viz požadavky). 
  
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Začněte tím, že vytvoříte účet úložiště a potom pro svůj Asset vygenerujete SAS. Můžete vygenerovat dva typy uložených přístupových podpisů: SAS služby nebo SAS účtu. Další informace najdete v tématu [typy podpisů sdíleného přístupu](../storage/common/storage-sas-overview.md#types-of-shared-access-signatures).
 
 Po vygenerování tokenu SAS můžete k souboru BLOB Storage získat přístup připojením `?sv=<SAS token>` k adrese URL. Tato adresa URL má následující formát: 
@@ -134,7 +134,7 @@ Pokud chcete použít Azure CDN ověřování pomocí tokenu zabezpečení, mus�
 
 Vzhledem k tomu, že parametry SAS nejsou Azure CDN k dispozici, Azure CDN nemohou změnit jejich chování při doručování na základě nich. Omezení definovaných parametrů se vztahují pouze na požadavky, které Azure CDN provede na zdrojovém serveru, a ne pro žádosti od klienta do Azure CDN. Toto rozlišení je důležité vzít v úvahu při nastavování parametrů SAS. Pokud jsou tyto rozšířené možnosti požadovány a používáte [možnost 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule), nastavte příslušná omezení pro Azure CDN token zabezpečení.
 
-| Název parametru SAS | Popis |
+| Název parametru SAS | Description |
 | --- | --- |
 | Spustit | Čas, kdy Azure CDN může začít přistupovat k souboru objektu BLOB. Pokud chcete, aby byl Asset k dispozici okamžitě, vyberte čas od času naklonění (když se hodinový signál dorazí v různou dobu pro různé komponenty). |
 | End | Čas, po jehož uplynutí Azure CDN nemůže získat přístup k souboru objektu BLOB. Soubory dříve uložených v mezipaměti v Azure CDN jsou stále přístupné. Chcete-li řídit čas vypršení platnosti souboru, buď nastavte vhodný čas vypršení platnosti v Azure CDN tokenu zabezpečení, nebo vyprázdnte Asset. |

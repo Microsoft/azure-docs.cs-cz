@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
 ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94409565"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Konfigurace klienta NFS pro Azure NetApp Files
@@ -46,7 +46,7 @@ Příklady v této části používají následující název domény a IP adres
 
 1. Nakonfigurujte `/etc/resolv.conf` pomocí správného serveru DNS.  
 
-    Zde je příklad:  
+    Například:  
 
     `[root@reddoc cbs]# cat /etc/resolv.conf`   
     `search contoso.com`   
@@ -72,7 +72,7 @@ Příklady v této části používají následující název domény a IP adres
 
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
 
-    Zde je příklad: 
+    Například: 
 
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
     
@@ -91,7 +91,7 @@ Příklady v této části používají následující název domény a IP adres
  
     `sudo kinit $SERVICEACCOUNT@DOMAIN`  
 
-    Zde je příklad:   
+    Například:   
 
     `sudo kinit ad_admin@CONTOSO.COM`
 
@@ -206,14 +206,14 @@ Příklady v této části používají následující název domény a IP adres
  
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou="OU=$YOUROU"`
  
-    Zde je příklad:    
+    Například:    
     `sudo realm join CONTOSO.COM -U ad_admin --computer-ou="CN=Computers"`
 
 7. `kinit`K získání lístků s uživatelem postupujte takto: 
  
     `sudo kinit $SERVICEACCOUNT`   
  
-    Zde je příklad:    
+    Například:    
     `sudo kinit ad_admin`  
 
 ### <a name="ubuntu-configuration-if-you-are-using-dual-protocol"></a>Konfigurace Ubuntu, pokud používáte duální protokol  

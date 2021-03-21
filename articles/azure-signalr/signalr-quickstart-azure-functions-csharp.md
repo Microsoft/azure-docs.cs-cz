@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/25/2020
 ms.author: zhshang
 ms.openlocfilehash: 1f28058a766144ada3326b3ee4ce09ca503d1896
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94873875"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Rychlý Start: vytvoření chatovací místnosti pomocí Azure Functions a služby signalizace pomocí jazyka C\#
@@ -57,7 +57,7 @@ Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](sig
 
 1. Zpět v aplikaci Visual Studio – **Průzkumník řešení** přejmenovat *local.settings.sample.jsna* na *local.settings.jszapnuto*.
 
-1. V souboru *local.settings.json* vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
+1. V souboru *local.settings.json* vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Soubor uložte.
 
 1. Otevřete *Functions.cs*. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
 

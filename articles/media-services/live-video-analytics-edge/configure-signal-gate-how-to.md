@@ -4,10 +4,10 @@ description: Tento článek poskytuje pokyny ke konfiguraci brány signálu v me
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94410789"
 ---
 # <a name="configure-a-signal-gate-for-event-based-video-recording"></a>Konfigurace brány signálu pro nahrávání videa založeného na událostech
@@ -58,35 +58,35 @@ ID korelace jsou nastavena pro každou událost. Tato ID se nastavují z počát
 
 ### <a name="parameters-based-on-the-physical-time-that-events-arrive-at-the-signal-gate"></a>Parametry na základě fyzického času, který události dorazí do brány signálu
 
-* **minimumActivationTime (nejkratší možná doba nahrávání)** : minimální počet sekund, po který procesor brány signálu zůstane otevřený, když se aktivuje pro příjem nových událostí, pokud není přerušený maximumActivationTime.
-* **maximumActivationTime (nejdelší možná doba pro nahrávání)** : maximální počet sekund od počáteční události, po které se procesor brány signálu otevře po aktivaci pro příjem nových událostí bez ohledu na to, jaké události se přijímají.
-* **activationSignalOffset** : počet sekund mezi aktivací procesoru brány signálu a zahájením záznamu videa. Obvykle je tato hodnota záporná, protože začíná záznam před aktivací události.
-* **activationEvaluationWindow** : počínaje počáteční událostí aktivace se počet sekund, ve kterých událost, ke které došlo před počáteční událostí, v čase média, musí dorazit na procesor brány signálu, než se zabere v úvahu a bude považován za pozdní doručení.
+* **minimumActivationTime (nejkratší možná doba nahrávání)**: minimální počet sekund, po který procesor brány signálu zůstane otevřený, když se aktivuje pro příjem nových událostí, pokud není přerušený maximumActivationTime.
+* **maximumActivationTime (nejdelší možná doba pro nahrávání)**: maximální počet sekund od počáteční události, po které se procesor brány signálu otevře po aktivaci pro příjem nových událostí bez ohledu na to, jaké události se přijímají.
+* **activationSignalOffset**: počet sekund mezi aktivací procesoru brány signálu a zahájením záznamu videa. Obvykle je tato hodnota záporná, protože začíná záznam před aktivací události.
+* **activationEvaluationWindow**: počínaje počáteční událostí aktivace se počet sekund, ve kterých událost, ke které došlo před počáteční událostí, v čase média, musí dorazit na procesor brány signálu, než se zabere v úvahu a bude považován za pozdní doručení.
 
 > [!NOTE]
 > *Pozdní doručení* je jakákoli událost, která přijde po úspěšném dokončení okna pro vyhodnocení aktivace, ale ta dorazí do počáteční události v čase média.
 
 ### <a name="limits-of-parameters"></a>Limity parametrů
 
-* **activationEvaluationWindow** : 0 sekund až 10 sekund
-* **activationSignalOffset** :-1 minuta až 1 minuta
-* **minimumActivationTime** : 1 sekunda až 1 hodina
-* **maximumActivationTime** : 1 sekunda až 1 hodina
+* **activationEvaluationWindow**: 0 sekund až 10 sekund
+* **activationSignalOffset**:-1 minuta až 1 minuta
+* **minimumActivationTime**: 1 sekunda až 1 hodina
+* **maximumActivationTime**: 1 sekunda až 1 hodina
 
 
 V případě použití byste nastavili parametry následujícím způsobem:
 
-* **activationEvaluationWindow** : *KB* /s
-* **activationSignalOffset** : *-X* sekund
-* **minimumActivationWindow** : *Y* sekund
-* **maximumActivationWindow** : *Z* sekund
+* **activationEvaluationWindow**: *KB* /s
+* **activationSignalOffset**: *-X* sekund
+* **minimumActivationWindow**: *Y* sekund
+* **maximumActivationWindow**: *Z* sekund
 
 
 Tady je příklad toho, jak by oddíl uzlu **procesoru pro bránu signálu** vypadal v topologii mediálního grafu pro následující hodnoty parametrů:
-* **activationEvaluationWindow** : 1 sekunda
-* **activationSignalOffset** :-5 sekund
-* **minimumActivationTime** : 20 sekund
-* **maximumActivationTime** : 40 sekund
+* **activationEvaluationWindow**: 1 sekunda
+* **activationSignalOffset**:-5 sekund
+* **minimumActivationTime**: 20 sekund
+* **maximumActivationTime**: 40 sekund
 
 > [!IMPORTANT]
 > Pro každou hodnotu parametru se očekává [Formát trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations
@@ -120,7 +120,7 @@ Nyní zvažte, jak se tato konfigurace procesoru signálu signálu bude chovat v
 
 ### <a name="recording-scenarios"></a>Scénáře záznamu
 
-**Jedna událost z jednoho zdroje ( *normální aktivace* )**
+**Jedna událost z jednoho zdroje (*normální aktivace*)**
 
 Procesor brány signálu, který přijímá jednu událost, má za následek záznam, který před přijetím události do brány spustí 5 sekund (aktivační signál = 5 sekund). Zbytek záznamu je 20 sekund (minimální doba aktivace = 20 sekund), protože žádné jiné události nepřicházejí před koncem minimální doby aktivace pro opětovné spuštění brány.
 
@@ -131,7 +131,7 @@ Příklad diagramu:
 * Trvání záznamu =-offset + minimumActivationTime = [E1 + offset, E1 + minimumActivationTime]
 
 
-**Dvě události z jednoho zdroje (znovu *aktivované aktivace* )**
+**Dvě události z jednoho zdroje (znovu *aktivované aktivace*)**
 
 Procesor brány signálu, který obdrží dvě události, má za následek záznam, který spustí 5 sekund (posun aktivačního signálu = 5 sekund) předtím, než událost dorazí do brány. Událost 2 také dorazí 5 sekund po události 1. Vzhledem k tomu, že událost 2 dorazí do konce minimální doby aktivace události 1 (20 sekund), brána se znovu aktivuje. Zbytek záznamu je 20 sekund (minimální doba aktivace = 20 sekund), protože žádné další události nepřicházejí před koncem minimální doby aktivace z události 2 pro opětovné spuštění brány.
 
@@ -142,7 +142,7 @@ Příklad diagramu:
 * Trvání záznamu =-offset + (přijetí události 2-doručení události 1) + minimumActivationTime
 
 
-***N* událostí z jednoho zdroje ( *maximální aktivace* )**
+***N* událostí z jednoho zdroje (*maximální aktivace*)**
 
 Procesor brány signálu, který obdrží *N* událostí, má za následek záznam, který spustí 5 sekund (posun aktivačního signálu = 5 sekund) před doručením první události do brány. Vzhledem k tomu, že každá událost dorazí před koncem minimální aktivace 20 sekund od předchozí události, je brána neustále znovu aktivována. Zůstane otevřený až do maximální doby aktivace 40 sekund od první události. Pak se brána zavře a už nebude přijímat žádné nové události.
 

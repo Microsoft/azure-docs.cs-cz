@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 76fd09b5e2c2540cbc1608558800e7897a6cf839
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375352"
 ---
 # <a name="decision-forest-regression-module"></a>Modul pro regresi rozhodovací doménové struktury
@@ -42,7 +42,7 @@ Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci 
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Jak nakonfigurovat regresní model doménové struktury
 
-1. Přidejte do kanálu modul **regrese rozhodovací doménové struktury** . Modul můžete najít v návrháři v části **Machine Learning** , **inicializovat model** a **regresi**.
+1. Přidejte do kanálu modul **regrese rozhodovací doménové struktury** . Modul můžete najít v návrháři v části **Machine Learning**, **inicializovat model** a **regresi**.
 
 2. Otevřete vlastnosti modulu a pro **metodu převzorkování** vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z **zavazadla** nebo **replikace**.
 
@@ -60,7 +60,7 @@ Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci 
 
       Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty. Tyto hodnoty jste pravděpodobně dozvěděli experimentováním nebo je přijali jako doprovodné materiály.
 
-    - **Rozsah parametrů** : tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků. 
+    - **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků. 
 
 
 
@@ -80,9 +80,9 @@ Další informace o teoretickém rozhraní tohoto algoritmu a jeho implementaci 
 
 9. Výukové modely:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 

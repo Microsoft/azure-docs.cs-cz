@@ -4,10 +4,10 @@ description: Naučte se pracovat s parametry pole a výrazy jazyka pole, vyhodno
 ms.date: 10/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220741"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
@@ -101,7 +101,7 @@ Chcete-li použít tento řetězec pro každou sadu SDK, použijte následujíc�
 
 ### <a name="in-and-notin"></a>`In` a `notIn`
 
-`in`Podmínky a `notIn` fungují pouze s hodnotami pole. Kontrolují existenci hodnoty v poli. Pole může být literální pole JSON nebo odkaz na parametr array. Příklad:
+`in`Podmínky a `notIn` fungují pouze s hodnotami pole. Kontrolují existenci hodnoty v poli. Pole může být literální pole JSON nebo odkaz na parametr array. Například:
 
 ```json
 {
@@ -243,7 +243,7 @@ Vlastnosti prostředků pole jsou obvykle reprezentovány dvěma různými typy 
 
 #### <a name="referencing-the-array"></a>Odkazování na pole
 
-První alias představuje jednu hodnotu, hodnotu `stringArray` vlastnosti z obsahu žádosti. Vzhledem k tomu, že hodnota této vlastnosti je pole, není velmi užitečné v podmínkách zásad. Příklad:
+První alias představuje jednu hodnotu, hodnotu `stringArray` vlastnosti z obsahu žádosti. Vzhledem k tomu, že hodnota této vlastnosti je pole, není velmi užitečné v podmínkách zásad. Například:
 
 ```json
 {
@@ -494,7 +494,7 @@ Jsou povolené taky vnořené výrazy Count:
 
 #### <a name="accessing-current-array-member-with-template-functions"></a>Přístup k aktuálnímu členu pole pomocí funkcí šablony
 
-Při použití funkcí šablony použijte `current()` funkci pro přístup k hodnotě aktuálního člena pole nebo k hodnotám kterékoli z jeho vlastností. Chcete-li získat přístup k hodnotě aktuálního člena pole, předejte alias definovaný v rámci `count.field` nebo jako kterýkoli z jeho podřízených aliasů jako argument `current()` funkce. Příklad:
+Při použití funkcí šablony použijte `current()` funkci pro přístup k hodnotě aktuálního člena pole nebo k hodnotám kterékoli z jeho vlastností. Chcete-li získat přístup k hodnotě aktuálního člena pole, předejte alias definovaný v rámci `count.field` nebo jako kterýkoli z jeho podřízených aliasů jako argument `current()` funkce. Například:
 
 ```json
 {
@@ -629,7 +629,7 @@ Pro každý příklad podmínky Nahraďte parametr `<field>` `"field": "Microsof
 
 Následující výsledky jsou výsledkem kombinace podmínky a ukázkového pravidla zásad a pole stávajících hodnot výše:
 
-|Podmínka |Výsledek | Scénář |Vysvětlení |
+|Podmínka |Výsledek | Scenario |Vysvětlení |
 |-|-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Nothing |Žádná shoda |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _nepravdivá_ a efekt se neaktivuje. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Vliv na zásady |Žádná shoda |Obě prvky pole se vyhodnocují jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_ a výsledek se aktivuje. |

@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: f441a1cf97c069c4755b436bbb8cb9268b469eb3
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199743"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: část 2 – zobrazení směrovaných zpráv
@@ -190,7 +190,7 @@ Tato aplikace odesílá zprávy pro každou z různých metod směrování zprá
 
 Pokud jste soubory nestáhli z úložiště v části 1 tohoto kurzu, pokračujte a Stáhněte si je hned z [simulace zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Výběr tohoto odkazu stáhne úložiště s několika aplikacemi. řešení, které hledáte, je IoT-Hub/kurzy/Routing/IoT_SimulatedDevice. sln. 
 
-Dvojím kliknutím na soubor řešení (IoT_SimulatedDevice. sln) otevřete kód v aplikaci Visual Studio a pak otevřete Program.cs. Nahraďte `{your hub name}` názvem hostitele centra IoT. Formát názvu hostitele centra IoT je **{iot-hub-name}.azure-devices.net**. V tomto kurzu je název hostitele centra **ContosoTestHub.azure-devices.net**. Dále nahraďte `{your device key}` klíčem zařízení, který jste si předtím uložili při vytváření simulovaného zařízení. 
+Dvojím kliknutím na soubor řešení (IoT_SimulatedDevice. sln) otevřete kód v aplikaci Visual Studio a pak otevřete program. cs. Nahraďte `{your hub name}` názvem hostitele centra IoT. Formát názvu hostitele centra IoT je **{iot-hub-name}.azure-devices.net**. V tomto kurzu je název hostitele centra **ContosoTestHub.azure-devices.net**. Dále nahraďte `{your device key}` klíčem zařízení, který jste si předtím uložili při vytváření simulovaného zařízení. 
 
    ```csharp
         static string s_myDeviceId = "Contoso-Test-Device";

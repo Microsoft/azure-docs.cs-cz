@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
 ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001282"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Přehled ukončení protokolu TLS a koncového a koncového protokolu TLS s Application Gateway
@@ -124,7 +124,7 @@ V následujících tabulkách jsou vysvětlované rozdíly v SNI mezi SKU V1 a V
 ### <a name="frontend-tls-connection-client-to-application-gateway"></a>Připojení front-endu TLS (klient ke aplikační bráně)
 
 ---
-Scénář | V1 | v2 |
+Scenario | V1 | v2 |
 | --- | --- | --- |
 | Pokud klient Určuje hlavičku SNI a všechny naslouchací procesy pro více lokalit jsou povolené pomocí příznaku "vyžadovat SNI". | Vrátí příslušný certifikát, a pokud web neexistuje (podle server_name), připojení se resetuje. | Vrátí odpovídající certifikát, pokud je k dispozici, v opačném případě vrátí certifikát prvního nakonfigurovaného naslouchacího procesu HTTPS (v uvedeném pořadí).|
 | Pokud klient nezadá hlavičku SNI a pokud jsou všechna záhlaví více lokalit povolená pomocí příkazu "vyžadovat SNI". | Obnoví připojení. | Vrátí certifikát prvního nakonfigurovaného naslouchacího procesu HTTPS (v uvedeném pořadí).
@@ -135,7 +135,7 @@ Scénář | V1 | v2 |
 #### <a name="for-probe-traffic"></a>Pro přenos sondy
 
 ---
-Scénář | V1 | v2 |
+Scenario | V1 | v2 |
 | --- | --- | --- |
 | SNI (server_name) záhlaví během metody handshake TLS jako plně kvalifikovaný název domény | Nastavte jako plně kvalifikovaný název domény z back-endu fondu. Podle [specifikace RFC 6066](https://tools.ietf.org/html/rfc6066)nejsou v názvu hostitele sni povoleny literály IPv4 a IPv6 adresy. <br> **Poznámka:** Plně kvalifikovaný název domény ve fondu back-end by měl DNS přeložit na IP adresu back-end serveru (veřejná nebo privátní). | SNI Header (server_name) je nastavená jako název hostitele z vlastní sondy připojené k nastavení HTTP (Pokud je nakonfigurovaná), jinak z názvu hostitele uvedeného v nastavení HTTP, jinak od plně kvalifikovaného názvu domény zmíněného ve fondu back-endu. Pořadí priorit je vlastní test > nastavení HTTP > back-end fondu. <br> **Poznámka:** Pokud se názvy hostitelů nakonfigurované v nastavení HTTP a vlastní sondy liší, pak se SNI podle priority nastaví jako název hostitele z vlastního testu.
 | Je-li adresa fondu back-endu IP adresa (V1) nebo pokud je vlastní název hostitele testu paměti nakonfigurován jako IP adresa (v2) | SNI (server_name) nebude nastavena. <br> **Poznámka:** V takovém případě by back-end server měl být schopný vrátit výchozí nebo záložní certifikát, který by měl být povolený v nastavení HTTP v části ověřovací certifikát. Pokud na back-end serveru není nakonfigurovaný žádný výchozí/záložní certifikát a očekává se SNI, server může připojení resetovat a bude mít za následek selhání sondy. | V pořadí výše zmíněné výše platí, že pokud mají IP adresu jako název hostitele, SNI nebude nastavené na základě [RFC 6066](https://tools.ietf.org/html/rfc6066). <br> **Poznámka:** Pokud není nakonfigurovaný žádný vlastní test paměti a v nastavení HTTP nebo ve fondu back-endu není nastavený žádný název hostitele, SNI se taky nenastaví v sondách v2. |
@@ -146,7 +146,7 @@ Scénář | V1 | v2 |
 #### <a name="for-live-traffic"></a>Pro živý provoz
 
 ---
-Scénář | V1 | v2 |
+Scenario | V1 | v2 |
 | --- | --- | --- |
 | SNI (server_name) záhlaví během metody handshake TLS jako plně kvalifikovaný název domény | Nastavte jako plně kvalifikovaný název domény z back-endu fondu. Podle [specifikace RFC 6066](https://tools.ietf.org/html/rfc6066)nejsou v názvu hostitele sni povoleny literály IPv4 a IPv6 adresy. <br> **Poznámka:** Plně kvalifikovaný název domény ve fondu back-end by měl DNS přeložit na IP adresu back-end serveru (veřejná nebo privátní). | SNI Header (server_name) je nastavená jako název hostitele z nastavení HTTP, jinak, pokud je zvolená možnost *PickHostnameFromBackendAddress* , nebo pokud se nezmiňuje žádný název hostitele, pak se nastaví jako plně kvalifikovaný název domény v konfiguraci fondu back-endu.
 | Pokud adresa fondu back-endu není IP adresa nebo název hostitele není nastavený v nastavení HTTP | SNI nebude nastavená na základě [RFC 6066](https://tools.ietf.org/html/rfc6066) , pokud položka fondu back-endu není plně kvalifikovaný název domény. | SNI se nastaví jako název hostitele ze vstupního plně kvalifikovaného názvu domény z klienta a CN certifikátu back-end se musí shodovat s tímto názvem hostitele.

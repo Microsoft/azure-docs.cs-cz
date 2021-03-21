@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: b49e780714bd5e0662c6cb7ef208c473a8b45ccc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498145"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Seznámení se základními Azure Storage službami
@@ -43,7 +43,7 @@ Následující tabulka porovnává soubory, objekty blob, disky, fronty a tabulk
 
 | Funkce | Popis | Kdy je použít |
 |--------------|-------------|-------------|
-| **Soubory Azure** |Nabízí plně spravované cloudové sdílené složky, ke kterým můžete přistupovat odkudkoli prostřednictvím standardního standardního protokolu SMB (Server Message Block).<br><br>Sdílené složky Azure můžete připojit z cloudových nebo místních nasazení systémů Windows, Linux a macOS. | Chcete "nazvednutí a posunutí" aplikace do cloudu, který už používá nativní rozhraní API systému souborů ke sdílení dat mezi IT a dalšími aplikacemi běžícími v Azure.<br/><br/>Chcete nahradit nebo doplnit místní souborové servery nebo zařízení NAS.<br><br> Chcete uložit nástroje pro vývoj a ladění, které potřebují být dostupné z mnoha virtuálních počítačů. |
+| **Azure Files** |Nabízí plně spravované cloudové sdílené složky, ke kterým můžete přistupovat odkudkoli prostřednictvím standardního standardního protokolu SMB (Server Message Block).<br><br>Sdílené složky Azure můžete připojit z cloudových nebo místních nasazení systémů Windows, Linux a macOS. | Chcete "nazvednutí a posunutí" aplikace do cloudu, který už používá nativní rozhraní API systému souborů ke sdílení dat mezi IT a dalšími aplikacemi běžícími v Azure.<br/><br/>Chcete nahradit nebo doplnit místní souborové servery nebo zařízení NAS.<br><br> Chcete uložit nástroje pro vývoj a ladění, které potřebují být dostupné z mnoha virtuálních počítačů. |
 | **Objekty blob Azure** | Umožňuje ukládání nestrukturovaných dat a jejich použití v obrovských škálováních objektů blob bloku.<br/><br/>Také podporuje [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) pro řešení pro analýzy velkých objemů dat v podniku. | Chcete, aby vaše aplikace podporovala scénáře streamování a náhodného přístupu.<br/><br/>Chcete mít přístup k datům aplikací odkudkoli.<br/><br/>Chcete vytvořit službu data Lake pro podniky v Azure a provádět analýzy velkých objemů dat. |
 | **Disky Azure** | Umožňuje, aby se data trvale ukládala a získala z připojeného virtuálního pevného disku. | Chcete použít aplikace "zvedá a Shift", které používají rozhraní API nativního systému souborů ke čtení a zápisu dat na trvalé disky.<br/><br/>Chcete ukládat data, která se nevyžadují pro použití mimo virtuální počítač, ke kterému je disk připojený. |
 | **Fronty Azure** | Umožňuje asynchronní řízení front zpráv mezi součástmi aplikace. | Chcete oddělit součásti aplikace a použít asynchronní zasílání zpráv ke komunikaci mezi nimi.<br><br>Pokyny týkající se použití úložiště front a Service Bus front najdete v tématu [fronty úložiště a Service Bus fronty – porovnání a kontrast](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md). |
@@ -65,7 +65,7 @@ Přístup k objektům ve službě Blob Storage je prostřednictvím protokolů H
 
 Další informace o službě BLOB Storage najdete v tématu [Úvod do úložiště objektů BLOB](../blobs/storage-blobs-introduction.md).
 
-## <a name="azure-files"></a>Soubory Azure
+## <a name="azure-files"></a>Azure Files
 
 Služba [soubory Azure](../files/storage-files-introduction.md) umožňuje nastavit vysoce dostupné sdílené síťové složky, ke kterým lze získat přístup pomocí standardního protokolu SMB (Server Message Block). To znamená, že několik virtuálních počítačů může sdílet stejné soubory s oprávněním ke čtení i zápisu. Soubory můžete číst také pomocí rozhraní REST nebo klientských knihoven pro úložiště.
 
@@ -91,7 +91,7 @@ Služba front Azure se využívá k ukládání a načítání zpráv. Fronty zp
 
 Další informace o službě Fronty Azure najdete v tématu o [seznámení s Frontami](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Úložiště Table
+## <a name="table-storage"></a>Table Storage
 
 Azure Table Storage je teď součástí služby Azure Cosmos DB. Dokumentaci ke službě Azure Table Storage najdete v tématu [Přehled služby Azure Table Storage](../tables/table-storage-overview.md). Kromě existující služby Azure Table Storage je k dispozici také nabídka nového rozhraní API tabulky Azure Cosmos DB, které poskytuje tabulky s optimalizovanou propustností, globální distribuci a automatické sekundární indexy. Pokud se chcete dozvědět víc a vyzkoušet nové prostředí Premium, přečtěte si téma [Azure Cosmos DB rozhraní API pro tabulky](../../cosmos-db/table-introduction.md).
 
@@ -147,7 +147,7 @@ K prostředkům v účtu úložiště můžete přistupovat pomocí libovolného
 
 ### <a name="azure-storage-data-api-and-library-references"></a>API pro data služby Azure Storage a odkazy na knihovny
 
-- [Rozhraní REST API pro službu Azure Storage](/rest/api/storageservices/)
+- [Azure Storage REST API](/rest/api/storageservices/)
 - [Klientská knihovna Azure Storage pro .NET](/dotnet/api/overview/azure/storage)
 - [Klientská knihovna Azure Storage pro Java/Android](/java/api/overview/azure/storage)
 - [Klientská knihovna Azure Storage pro Node.js](/javascript/api/overview/azure/storage-overview)
