@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: caf46850b3d8d6946225575b8a9a732a90847482
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574144"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services

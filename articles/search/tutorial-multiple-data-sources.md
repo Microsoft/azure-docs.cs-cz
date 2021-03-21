@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df7dcf9859b6942662ae447af836f59985e2d11a
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99509499"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Kurz: indexování z více zdrojů dat pomocí sady .NET SDK
@@ -43,7 +43,7 @@ Hotovou verzi kódu v tomto kurzu najdete v následujícím projektu:
 
 Tento kurz byl aktualizován tak, aby používal balíček Azure.Search.Documents (verze 11). Starší verzi sady .NET SDK najdete v tématu [Ukázka kódu Microsoft. Azure. Search (verze 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources/v10) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
 + [Azure Storage](../storage/common/storage-account-create.md)
@@ -174,8 +174,8 @@ Tato jednoduchá aplikace konzoly C#/.NET provádí následující úlohy:
 
  Před spuštěním programu si prostudujte kód a definice indexu a indexeru pro tuto ukázku. Důležitý kód je ve dvou souborech:
 
-  + **Hotel.cs** obsahuje schéma, které definuje index.
-  + **Program.cs** obsahuje funkce, které vytvářejí index služby Azure kognitivní hledání, zdroje dat a indexery a načítají kombinované výsledky do indexu.
+  + **Hotel. cs** obsahuje schéma, které definuje index.
+  + **Program. cs** obsahuje funkce, které vytvářejí index služby Azure kognitivní hledání, zdroje dat a indexery a načítají kombinované výsledky do indexu.
 
 ### <a name="create-an-index"></a>Vytvoření indexu
 
@@ -185,7 +185,7 @@ Datový model je definován třídou hotelu, která také obsahuje odkazy na tř
 
 Program odstraní všechny existující indexy stejného názvu před vytvořením nového, pro případ, že chcete spustit tento příklad více než jednou.
 
-Následující fragmenty kódu ze souboru **Hotel.cs** zobrazují jednotlivá pole, za kterými následuje odkaz na jinou třídu datového modelu, místnost [], která je v souboru **Room.cs** definována (není zobrazená).
+Následující fragmenty kódu ze souboru **hotelu. cs** zobrazují jednotlivá pole, za kterými následuje odkaz na jinou třídu datového modelu, místnost [], která je zase definovaná v souboru s **příponou. cs** (nezobrazuje se).
 
 ```csharp
 . . .
@@ -199,7 +199,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-V souboru **program.cs** je [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) definován s názvem a kolekcí pole generovanou `FieldBuilder.Build` metodou a pak vytvořen takto:
+V souboru **program. cs** je [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) definován s názvem a kolekcí polí generovanými `FieldBuilder.Build` metodou a pak vytvořen následujícím způsobem:
 
 ```csharp
 private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)

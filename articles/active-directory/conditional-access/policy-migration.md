@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90601650"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Migrace klasických zásad podmíněného přístupu
@@ -33,7 +33,7 @@ Tento článek vysvětluje, co potřebujete znát, abyste mohli migrovat stávaj
 
 ## <a name="classic-policies"></a>Klasické zásady
 
-V [Azure Portal](https://portal.azure.com)se zásady podmíněného přístupu dají najít v části **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení. Vaše organizace může mít také starší zásady podmíněného přístupu, které nejsou vytvořeny pomocí této stránky. Tyto zásady se označují jako *klasické zásady*. Klasické zásady jsou zásady podmíněného přístupu, které jste vytvořili v:
+V [Azure Portal](https://portal.azure.com)se zásady podmíněného přístupu dají najít v části **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení. Vaše organizace může mít také starší zásady podmíněného přístupu, které nejsou vytvořeny pomocí této stránky. Tyto zásady se označují jako *klasické zásady*. Klasické zásady jsou zásady podmíněného přístupu, které jste vytvořili v:
 
 - Portál Azure Classic
 - Klasický portál Intune
@@ -62,7 +62,7 @@ Změnou vybraných skupin nebo vyloučením konkrétních skupin můžete otesto
  
 ## <a name="migration-considerations"></a>Posouzení migrace
 
-V tomto článku se jako *nové zásady*označují taky zásady podmíněného přístupu Azure AD.
+V tomto článku se jako *nové zásady* označují taky zásady podmíněného přístupu Azure AD.
 Vaše klasické zásady budou dál fungovat s novými zásadami, dokud je nezakážete nebo neodstraníte. 
 
 V souvislosti s konsolidací zásad jsou důležité tyto aspekty:

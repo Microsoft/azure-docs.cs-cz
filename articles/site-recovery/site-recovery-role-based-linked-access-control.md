@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: d3e1334f513e8ac587d639758d83ce080c5b4ab9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516898"
 ---
 # <a name="manage-site-recovery-access-with-azure-role-based-access-control-azure-rbac"></a>Správa přístupu k Site Recovery pomocí řízení přístupu na základě role Azure (RBAC)
@@ -43,7 +43,7 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 
 | **Typ prostředku** | **Model nasazení** | **Oprávnění** |
 | --- | --- | --- |
-| Výpočetní prostředky | Resource Manager | Microsoft. COMPUTE/availabilitySets/Read |
+| Compute | Resource Manager | Microsoft. COMPUTE/availabilitySets/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Write |
 |  |  | Microsoft. COMPUTE/virtualMachines/DELETE |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.openlocfilehash: a674f5f653ad420ab8f28ff73c6b86f9c18b154e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517748"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Trelica
@@ -51,7 +51,7 @@ Pokud chcete nakonfigurovat integraci Trelica do služby Azure AD, musíte přid
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Trelica** .
 1. Ve výsledcích hledání vyberte **Trelica** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
@@ -140,7 +140,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když vyberete dlaždici Trelica na portálu moje aplikace, automaticky jste přihlášeni k Trelica, pro které jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [Úvod do portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

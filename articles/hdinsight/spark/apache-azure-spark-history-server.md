@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
 ms.openlocfilehash: 1d53d9e9ee2a7fa6588ea0993b3bebdb2a287351
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98941042"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Použití rozšířených funkcí serveru historie Apache Spark k ladění a diagnostice aplikací Spark
@@ -94,7 +94,7 @@ Vyberte ID úlohy a potom v nabídce Nástroje vyberte **data** , aby se zobrazi
    ![Heat mapa na stránce grafu úlohy aplikace Spark &.](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Barva |Popis |
+    |Barva |Description |
     |---|---|
     |Green|Úloha se úspěšně dokončila.|
     |Oranžový|Úloha se nezdařila, ale nemá vliv na konečný výsledek úlohy. Tyto úlohy mají duplicitní nebo opakované instance, které mohou být později úspěšné.|
@@ -198,7 +198,7 @@ Vyberte ikonu barvy a vyberte nebo zrušte výběr odpovídajícího obsahu ve v
 
  ![Vyberte graf na kartě analýza využití prováděcího modulu.](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="how-do-i-revert-to-the-community-version"></a>Návody se vrátit k verzi komunity?
 

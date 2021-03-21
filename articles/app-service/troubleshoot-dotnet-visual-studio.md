@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101095720"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
@@ -28,7 +28,7 @@ Naučíte se:
 
 Pokud máte Visual Studio Ultimate, můžete použít také [IntelliTrace](/visualstudio/debugger/intellitrace) pro ladění. IntelliTrace se v tomto kurzu nezabývá.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
 Tento kurz spolupracuje s vývojovým prostředím, webovým projektem a App Service aplikaci, kterou jste nastavili v části [Vytvoření aplikace v ASP.NET v Azure App Service](quickstart-dotnet-framework.md). V sekcích WebJobs budete potřebovat aplikaci, kterou vytvoříte v části [Začínáme s Azure WEBJOBS SDK][GetStartedWJ].
 
 Ukázky kódu zobrazené v tomto kurzu jsou pro webovou aplikaci v jazyce C# MVC, ale postupy řešení potíží jsou stejné pro aplikace Visual Basic a webových formulářů.
@@ -174,7 +174,7 @@ Vzdálené ladění funguje jenom se souvislými WebJobs. Naplánované a na vy�
 
 1. Otevřete webový projekt, který jste vytvořili v [části Začínáme s Azure WEBJOBS SDK][GetStartedWJ].
 
-2. V projektu ContosoAdsWebJob otevřete *Functions.cs*.
+2. V projektu ContosoAdsWebJob otevřete *Functions. cs*.
 
 3. [Nastavte zarážku](/visualstudio/debugger/) na prvním příkazu v `GnerateThumbnail` metodě.
 

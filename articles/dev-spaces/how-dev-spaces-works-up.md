@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Popisuje procesy spuštění kódu ve službě Azure Kubernetes pomocí Azure Dev Spaces
 keywords: azds. yaml, Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
 ms.openlocfilehash: 1cace325f9415d46210636e5c04cc2d75589cc11
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96014427"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Způsob spuštění kódu s Azure Dev Spaces funguje

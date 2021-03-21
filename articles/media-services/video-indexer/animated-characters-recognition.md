@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: f1b19f178a60671108ec32ef6fbed1afe73a0cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96854746"
 ---
 # <a name="animated-character-detection-preview"></a>Detekce animovaných postav (Preview)
@@ -40,7 +40,7 @@ V závislosti na typu Video Indexer účtu jsou k dispozici různé sady funkcí
 
 ### <a name="trial-vs-paid"></a>Zkušební verze vs. placená
 
-|Funkce|Zkušební verze|Hrazen|
+|Funkce|Zkušební verze|Placené|
 |---|---|---|
 |Účet Custom Vision|Spravováno na pozadí Video Indexer. |Váš účet Custom Vision je připojen k Video Indexer.|
 |Počet modelů animace|Jednu|Až 100 modelů na účet (omezení Custom Vision).|

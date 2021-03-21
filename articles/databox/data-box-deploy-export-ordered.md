@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
 ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789191"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box
@@ -28,7 +28,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Sledovat objednávku exportu
 > * Zrušit export objednávky
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před objednáním zařízení dokončete následující požadavky na konfiguraci pro Data Box službu a zařízení.
 
@@ -330,7 +330,7 @@ Mezi důležité body v souvislosti se soubory XML:
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Popis |
+   | Volič | Cesta objektu BLOB | Description |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |

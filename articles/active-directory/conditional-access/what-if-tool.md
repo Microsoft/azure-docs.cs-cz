@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077638"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Řešení potíží pomocí nástroje What If v podmíněném přístupu
 
-[Podmíněný přístup](./overview.md) je schopností Azure Active Directory (Azure AD), která vám umožní řídit, jak autorizovaným uživatelům přistupují k vašim cloudovým aplikacím. Jak se dozvíte, co očekávat od zásad podmíněného přístupu ve vašem prostředí? K zodpovězení této otázky můžete použít nástroj pro **What If podmíněného přístupu** .
+[Podmíněný přístup](./overview.md) je schopností Azure Active Directory (Azure AD), která vám umožní řídit, jak autorizovaným uživatelům přistupují k vašim cloudovým aplikacím. Jak se dozvíte, co očekávat od zásad podmíněného přístupu ve vašem prostředí? K zodpovězení této otázky můžete použít nástroj pro **What If podmíněného přístupu**.
 
 Tento článek vysvětluje, jak můžete pomocí tohoto nástroje testovat zásady podmíněného přístupu.
 
@@ -46,7 +46,7 @@ Po dokončení vyhodnocení nástroj vygeneruje sestavu ovlivněných zásad. Po
 
 Nástroj **What If** můžete najít na stránce **[zásady podmíněného přístupu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** v Azure Portal.
 
-Chcete-li spustit nástroj, klikněte na panelu nástrojů v seznamu zásad na položku **What If** .
+Chcete-li spustit nástroj, klikněte na panelu nástrojů v seznamu zásad na položku **What If**.
 
 :::image type="content" source="./media/what-if-tool/01.png" alt-text="Snímek obrazovky se stránkou podmíněného přístupu – zásady v Azure Portal. Na panelu nástrojů je zvýrazněna položka co když je zvýrazněna." border="false":::
 
@@ -56,15 +56,15 @@ Předtím, než můžete spustit vyhodnocení, je nutné nakonfigurovat nastaven
 
 V této části najdete informace o nastavení spuštění simulace.
 
-:::image type="content" source="./media/what-if-tool/02.png" alt-text="Snímek obrazovky se stránkou podmíněného přístupu – zásady v Azure Portal. Na panelu nástrojů je zvýrazněna položka co když je zvýrazněna." border="false":::
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Snímek obrazovky stránky Azure Portal What If s poli pro uživatele, cloudové aplikace, adresu I P, platformu zařízení, klientskou aplikací a riziko pro přihlášení." border="false":::
 
-### <a name="user"></a>Uživatel
+### <a name="user"></a>User
 
 Můžete vybrat jenom jednoho uživatele. Toto je jediné povinné pole.
 
 ### <a name="cloud-apps"></a>Cloudové aplikace
 
-Výchozí hodnota pro toto nastavení je **všechny cloudové aplikace** . Výchozí nastavení provádí vyhodnocení všech dostupných zásad ve vašem prostředí. Rozsah můžete zúžit na zásady ovlivňující konkrétní cloudové aplikace.
+Výchozí hodnota pro toto nastavení je **všechny cloudové aplikace**. Výchozí nastavení provádí vyhodnocení všech dostupných zásad ve vašem prostředí. Rozsah můžete zúžit na zásady ovlivňující konkrétní cloudové aplikace.
 
 ### <a name="ip-address"></a>IP adresa
 
@@ -72,12 +72,12 @@ IP adresa je jedna adresa IPv4 pro napodobení [podmínky umístění](location-
 
 ### <a name="device-platforms"></a>Platformy zařízení
 
-Toto nastavení napodobuje [stav platforem zařízení](concept-conditional-access-conditions.md#device-platforms) a představuje ekvivalent **všech platforem (včetně nepodporovaných)** . 
+Toto nastavení napodobuje [stav platforem zařízení](concept-conditional-access-conditions.md#device-platforms) a představuje ekvivalent **všech platforem (včetně nepodporovaných)**. 
 
 ### <a name="client-apps"></a>Klientské aplikace
 
 Toto nastavení napodobuje [stav klientských aplikací](concept-conditional-access-conditions.md#client-apps).
-Ve výchozím nastavení toto nastavení způsobí vyhodnocení všech zásad s **prohlížečem** nebo **mobilními aplikacemi a desktopových klientů** buď jednotlivě, nebo podle obou vybraných. Také detekuje zásady, které vynutily **protokol Exchange ActiveSync (EAS)** . Toto nastavení můžete zúžit výběrem možnosti:
+Ve výchozím nastavení toto nastavení způsobí vyhodnocení všech zásad s **prohlížečem** nebo **mobilními aplikacemi a desktopových klientů** buď jednotlivě, nebo podle obou vybraných. Také detekuje zásady, které vynutily **protokol Exchange ActiveSync (EAS)**. Toto nastavení můžete zúžit výběrem možnosti:
 
 - **Prohlížeč** pro vyhodnocení všech zásad s aspoň vybraným **prohlížečem** . 
 - **Mobilní aplikace a klienti klasické pracovní plochy** pro vyhodnocení všech zásad, které mají vybrané aspoň **mobilní aplikace a klientské počítače** . 
@@ -90,7 +90,7 @@ Toto nastavení napodobuje [rizikové podmínky přihlášení](concept-conditio
 
 Kliknutím na **What If** spustíte vyhodnocení. Výsledek vyhodnocení obsahuje sestavu, která se skládá z těchto součástí: 
 
-:::image type="content" source="./media/what-if-tool/03.png" alt-text="Snímek obrazovky se stránkou podmíněného přístupu – zásady v Azure Portal. Na panelu nástrojů je zvýrazněna položka co když je zvýrazněna." border="false":::
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="Snímek obrazovky se zkušební sestavou. Text označuje, že je nakonfigurovaná aspoň jedna klasická zásada. Karty jsou k dispozici pro zobrazení zásad." border="false":::
 
 - Indikátor, jestli ve vašem prostředí existují klasické zásady
 - Zásady, které se vztahují na uživatele

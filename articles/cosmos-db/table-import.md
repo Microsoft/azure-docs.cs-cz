@@ -9,10 +9,10 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: e876ca028532bb3721146e90a91d68c4c12bf79f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096072"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
@@ -67,13 +67,13 @@ Při definování služby Azure Table Storage nebo rozhraní Table API Preview j
 * **/s.Filter:** Volitelné. Řetězec filtru, který se má použít
 * **/s.projection:** Volitelné. Seznam sloupců k výběru
 
-Pokud chcete načíst zdrojový připojovací řetězec při importu z Azure Table Storage, otevřete Azure Portal a klikněte na **Storage accounts**  >  **Account**  >  **přístupové klíče** účtu úložiště a pak pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec** .
+Pokud chcete načíst zdrojový připojovací řetězec při importu z Azure Table Storage, otevřete Azure Portal a klikněte na   >    >  **přístupové klíče** účtu úložiště a pak pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
 
 :::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="Snímek obrazovky, který zobrazuje účty úložiště > účtu > možnosti přístupových klíčů a zvýrazní tlačítko Kopírovat.":::
 
-Pokud chcete při importu z účtu Azure Cosmos DB rozhraní API pro tabulky (Preview) načíst zdrojový připojovací řetězec, otevřete Azure Portal, klikněte na **Azure Cosmos DB**  >  **Account**  >  **připojovací řetězec** účtu a pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec** .
+Pokud chcete při importu z účtu Azure Cosmos DB rozhraní API pro tabulky (Preview) načíst zdrojový připojovací řetězec, otevřete Azure Portal, klikněte na **Azure Cosmos DB**  >    >  **připojovací řetězec** účtu a pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
 
-:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Snímek obrazovky, který zobrazuje účty úložiště > účtu > možnosti přístupových klíčů a zvýrazní tlačítko Kopírovat.":::
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="Snímek obrazovky s možnostmi zdroje HBase":::
 
 [Ukázkový příkaz pro Azure Table Storage](#azure-table-storage)
 

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c80a90b07e25942e751d52cafa47f6e3e94852ab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93320328"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
@@ -209,7 +209,7 @@ Snímek obrazovky možností zálohování a obnovení databáze z SQL Server Ma
 
 ![Nástroj pro import SQL Server][1]
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 [Migrace databáze na SQL Server na virtuálním počítači Azure](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
 [SQL Server na Azure Virtual Machines – přehled](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)

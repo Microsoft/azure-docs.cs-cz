@@ -12,10 +12,10 @@ ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
 ms.openlocfilehash: 27b18fdc2dda40f8361483e6ecce28d0ccbd0310
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93308230"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Jak vybrat algoritmy pro Azure Machine Learning
@@ -30,7 +30,7 @@ Běžným dotazem je "který algoritmus strojového učení mám použít?" Vybr
 
 ## <a name="business-scenarios-and-the-machine-learning-algorithm-cheat-sheet"></a>Obchodní scénáře a Tahákový list s algoritmem Machine Learning
 
-[List tahák Algorithm](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri) vám pomůže s prvními aspekty: **co chcete s daty dělat** ? Azure Machine Learning Na listu Machine Learning tahák Algorithm vyhledejte úkol, který chcete provést, a pak vyhledejte algoritmus [Azure Machine Learning Designer](./concept-designer.md?WT.mc_id=docs-article-lazzeri) pro řešení prediktivní analýzy. 
+[List tahák Algorithm](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri) vám pomůže s prvními aspekty: **co chcete s daty dělat**? Azure Machine Learning Na listu Machine Learning tahák Algorithm vyhledejte úkol, který chcete provést, a pak vyhledejte algoritmus [Azure Machine Learning Designer](./concept-designer.md?WT.mc_id=docs-article-lazzeri) pro řešení prediktivní analýzy. 
 
 Machine Learning Designer poskytuje komplexní portfolio algoritmů, jako je například více [tříd rozhodovací doménové struktury](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri), [systémy doporučení](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri), [regrese sítě neuronové](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri), [neuronové síť s více třídami](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri)a [K – znamená clustering](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri). Každý algoritmus je navržený tak, aby vyřešil jiný typ problému strojového učení. Úplný seznam spolu s dokumentací o tom, jak každý algoritmus funguje a jak vyladit parametry pro optimalizaci algoritmu, najdete v části [algoritmus návrháře Machine Learning a příručka k modulům](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri) .
 
@@ -50,24 +50,24 @@ Následující tabulka shrnuje některé nejdůležitější charakteristiky alg
 | **Algoritmus** | **Údajů** | **Doba trénování** | **Linearita** | **Parametry** | **Poznámky** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Rodina klasifikace** | | | | | |
-| [Logistická regrese dvou tříd](./algorithm-module-reference/two-class-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré  |Rychlý |Ano |4 | |
-| [Rozhodovací doménová struktura se dvěma třídami](./algorithm-module-reference/two-class-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |5 |Zobrazuje pomalejší časy vyhodnocování. Navrhněte, že nepracuje s 1-versus-all Multiclass z důvodu pomalejších časů bodování způsobených uzamykáním běhounů při hromadění předpovědi stromu. |
-| [Zvýšení rozhodovacího stromu se dvěma třídami](./algorithm-module-reference/two-class-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 |Velké nároky na paměť |
-| [Neuronové síť se dvěma třídami](./algorithm-module-reference/two-class-neural-network.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
-| [Průměrná hodnota Perceptron se dvěma třídami](./algorithm-module-reference/two-class-averaged-perceptron.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ano |4 | |
-| [Vektorový počítač podpory dvou tříd](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |5 |Vhodné pro velké sady funkcí |
-| [Mikrotřída logistické regrese](./algorithm-module-reference/multiclass-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |4 | |
-| [Více tříd – rozhodovací doménová struktura](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |5 |Zobrazuje pomalejší časy vyhodnocování. |
-| [Více tříd pro rozhodovací strom s více třídami](./algorithm-module-reference/multiclass-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 | Má za následek zlepšení přesnosti s malým rizikem méně pokrytí |
-| [Neuronové síť pro více tříd](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
+| [Logistická regrese dvou tříd](./algorithm-module-reference/two-class-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré  |Rychlý |Yes |4 | |
+| [Rozhodovací doménová struktura se dvěma třídami](./algorithm-module-reference/two-class-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |5 |Zobrazuje pomalejší časy vyhodnocování. Navrhněte, že nepracuje s 1-versus-all Multiclass z důvodu pomalejších časů bodování způsobených uzamykáním běhounů při hromadění předpovědi stromu. |
+| [Zvýšení rozhodovacího stromu se dvěma třídami](./algorithm-module-reference/two-class-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |6 |Velké nároky na paměť |
+| [Neuronové síť se dvěma třídami](./algorithm-module-reference/two-class-neural-network.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |No |8 | |
+| [Průměrná hodnota Perceptron se dvěma třídami](./algorithm-module-reference/two-class-averaged-perceptron.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Yes |4 | |
+| [Vektorový počítač podpory dvou tříd](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Yes |5 |Vhodné pro velké sady funkcí |
+| [Mikrotřída logistické regrese](./algorithm-module-reference/multiclass-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Yes |4 | |
+| [Více tříd – rozhodovací doménová struktura](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |5 |Zobrazuje pomalejší časy vyhodnocování. |
+| [Více tříd pro rozhodovací strom s více třídami](./algorithm-module-reference/multiclass-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |6 | Má za následek zlepšení přesnosti s malým rizikem méně pokrytí |
+| [Neuronové síť pro více tříd](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |No |8 | |
 | [Jedna a více tříd – All](./algorithm-module-reference/one-vs-all-multiclass.md?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Zobrazí vlastnosti vybrané metody dvě třídy. |
 | **Řada regrese** | | | | | |
-| [Lineární regrese](./algorithm-module-reference/linear-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Ano |4 | |
-| [Regrese rozhodovací doménové struktury](./algorithm-module-reference/decision-forest-regression.md?WT.mc_id=docs-article-lazzeri)|Vynikající |Pokročilé |Ne |5 | |
-| [Zvýšila se regrese rozhodovacího stromu.](./algorithm-module-reference/boosted-decision-tree-regression.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ne |6 |Velké nároky na paměť |
-| [Regrese sítě neuronové](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |Ne |8 | |
+| [lineární regrese](./algorithm-module-reference/linear-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré |Rychlý |Yes |4 | |
+| [Regrese rozhodovací doménové struktury](./algorithm-module-reference/decision-forest-regression.md?WT.mc_id=docs-article-lazzeri)|Vynikající |Pokročilé |No |5 | |
+| [Zvýšila se regrese rozhodovacího stromu.](./algorithm-module-reference/boosted-decision-tree-regression.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |No |6 |Velké nároky na paměť |
+| [Regrese sítě neuronové](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri) |Dobré |Pokročilé |No |8 | |
 | **Řada clusteringu** | | | | | |
-| [K-znamená clustering](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Ano |8 |Algoritmus clusteringu |
+| [K-znamená clustering](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri) |Vynikající |Pokročilé |Yes |8 |Algoritmus clusteringu |
 
 ## <a name="requirements-for-a-data-science-scenario"></a>Požadavky na scénář pro datové vědy
 
@@ -123,7 +123,7 @@ Algoritmy lineární regrese předpokládají, že trendy dat následují rovnou
 
 ![Nelineární hranice třídy](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
 
-**_Nelineární hranice třídy_* _: _Relying v algoritmu lineární klasifikace by výsledkem byla nízká přesnost. *
+***Nelineární hranice třídy** _: _Relying v algoritmu lineární klasifikace by výsledkem byla nízká přesnost. *
 
 ![Data s nelineárním trendem](./media/how-to-select-algorithms/nonlinear-trend.png)
 

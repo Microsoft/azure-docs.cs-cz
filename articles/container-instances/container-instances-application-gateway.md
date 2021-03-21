@@ -4,10 +4,10 @@ description: Vytvoření skupiny kontejnerů ve virtuální síti a použití sl
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035049"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Zveřejňuje statickou IP adresu pro skupinu kontejnerů.
@@ -29,7 +29,7 @@ Pokud je Aplikační brána spuštěná a skupina kontejnerů zpřístupňuje st
 
 V typickém případě už můžete mít virtuální síť Azure. Pokud ho ještě nemáte, vytvořte ho tak, jak je znázorněno v následujících ukázkových příkazech. Virtuální síť potřebuje samostatné podsítě pro aplikační bránu a skupinu kontejnerů.
 
-Pokud ho potřebujete, vytvořte skupinu prostředků Azure. Příklad:
+Pokud ho potřebujete, vytvořte skupinu prostředků Azure. Například:
 
 ```azureci
 az group create --name myResourceGroup --location eastus

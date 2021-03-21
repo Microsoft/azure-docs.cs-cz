@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c3bf8e5f81ae7bf35ff34039fa1e81c9fd4a406b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324547"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Fáze nasazení životního cyklu procesu vědeckého zpracování dat týmu
@@ -39,7 +39,7 @@ Nasaďte modely s datovým kanálem do produkčního nebo produkčního prostře
 ## <a name="how-to-do-it"></a>Jak to provést
 Hlavní úkol řešený v této fázi:
 
-**Zprovoznění model** : nasazení modelu a kanálu do výrobního nebo produkčního prostředí pro spotřebu aplikací.
+**Zprovoznění model**: nasazení modelu a kanálu do výrobního nebo produkčního prostředí pro spotřebu aplikací.
 
 ### <a name="operationalize-a-model"></a>Zprovoznění modelu
 Až budete mít k dispozici sadu modelů, které budou dobře fungovat, můžete je zprovozněníovat pro jiné aplikace, které chcete spotřebovat. V závislosti na podnikových požadavcích se předpovědi provádí buď v reálném čase, nebo na základě dávky. Chcete-li nasadit modely, vystavte je pomocí rozhraní API Open. Rozhraní umožňuje, aby byl model snadno spotřebovaný z různých aplikací, jako například:

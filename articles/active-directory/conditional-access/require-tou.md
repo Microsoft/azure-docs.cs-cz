@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ab484e8caaffaf57f19f1fcd1e65f4b8e723f86
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077893"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rychlý Start: vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly podmínkami použití
@@ -29,9 +29,9 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat [zásadu podmíněného 
 
 :::image type="content" source="./media/require-tou/5555.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení scénáře v tomto rychlém startu budete potřebovat:
 
@@ -80,7 +80,7 @@ V této části najdete postup vytvoření ukázkové podmínky použití. Při 
    1. Do textového pole **Zobrazovaný název** zadejte **My podmínky použití**.
    1. Nahrajte vaše požadavky na použití souboru PDF.
    1. Jako **jazyk** vyberte **angličtinu**.
-   1. Jak **vyžadují, aby uživatelé rozšířili podmínek použití** , vyberte **zapnuto**.
+   1. Jak **vyžadují, aby uživatelé rozšířili podmínek použití**, vyberte **zapnuto**.
    1. Jako **Vynutilit šablony zásad podmíněného přístupu** vyberte **vlastní zásady**.
    1. Klikněte na **Vytvořit**.
 
@@ -170,9 +170,9 @@ Kliknutím na **What If** se vytvoří sestava simulace, která zobrazuje:
 
    ![Citlivostní analýza](./media/require-tou/14.png)
 
-1. Klikněte na **Uživatelé** , vyberte **Isabella Simonsen** a pak klikněte na **Vybrat**.
+1. Klikněte na **Uživatelé**, vyberte **Isabella Simonsen** a pak klikněte na **Vybrat**.
 
-   ![Uživatel](./media/require-tou/15.png)
+   ![User](./media/require-tou/15.png)
 
 1. Výběr cloudové aplikace:
 

@@ -10,10 +10,10 @@ ms.author: cgronlun
 author: cjgronlund
 ms.date: 11/12/2019
 ms.openlocfilehash: 37cb70bdbd1e3c87eeb994e0959c6214822d22ad
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93322980"
 ---
 # <a name="secure-code-best-practices-with-azure-machine-learning"></a>Bezpečné osvědčené postupy pro kód pomocí Azure Machine Learning
@@ -29,8 +29,8 @@ Vývoj s Azure Machine Learning často zahrnuje webová vývojová prostředí (
 
 * [Skriptování mezi weby (XSS)](https://owasp.org/www-community/attacks/xss/)
 
-    * __Vkládání DOM__ : Tento typ útoku může změnit uživatelské rozhraní zobrazené v prohlížeči. Například změnou způsobu, jakým se v Jupyter Notebook chová tlačítko Spustit.
-    * __Přístup k tokenům a souborům cookie__ : útoky XSS mají přístup také k souborům cookie místního úložiště a prohlížeče. Ověřovací token služby Azure Active Directory (AAD) je uložený v místním úložišti. Útok XSS by mohl tento token použít k tomu, aby vaším jménem volal rozhraní API, a pak data pošle do externího systému nebo rozhraní API.
+    * __Vkládání DOM__: Tento typ útoku může změnit uživatelské rozhraní zobrazené v prohlížeči. Například změnou způsobu, jakým se v Jupyter Notebook chová tlačítko Spustit.
+    * __Přístup k tokenům a souborům cookie__: útoky XSS mají přístup také k souborům cookie místního úložiště a prohlížeče. Ověřovací token služby Azure Active Directory (AAD) je uložený v místním úložišti. Útok XSS by mohl tento token použít k tomu, aby vaším jménem volal rozhraní API, a pak data pošle do externího systému nebo rozhraní API.
 
 * [Padělání žádostí mezi weby (CSRF)](https://owasp.org/www-community/attacks/csrf): Tento útok může nahradit adresu URL obrázku nebo odkazem na adresu URL škodlivého skriptu nebo rozhraní API. Při načtení obrázku nebo kliknutí na odkaz se na adresu URL přivede volání.
 
@@ -38,16 +38,16 @@ Vývoj s Azure Machine Learning často zahrnuje webová vývojová prostředí (
 
 Azure Machine Learning Studio poskytuje v prohlížeči hostované prostředí poznámkového bloku. Buňky v poznámkovém bloku můžou vymezit výstup dokumentů nebo fragmentů kódu HTML, které obsahují škodlivý kód.  Když je výstup vykreslen, lze spustit kód.
 
-__Možné hrozby__ :
+__Možné hrozby__:
 * Skriptování mezi weby (XSS)
 * Padělání žádostí mezi weby (CSRF)
 
-__Omezení rizik, která poskytuje Azure Machine Learning__ :
+__Omezení rizik, která poskytuje Azure Machine Learning__:
 * __Výstup buňky kódu__ je v izolovaném prostoru (sandbox) v objektu IFRAME. Element IFrame zabrání skriptu v přístupu k nadřazenému modelu DOM, souborům cookie a relaci úložiště.
 * Obsah __buňky Markdownu__ se čistí pomocí knihovny dompurify. Tím se zablokuje spouštění škodlivých skriptů s Markdownu buňkami.
 * __Adresa URL obrázku__ a __odkazy Markdownu__ se odesílají na koncový bod vlastněný společností Microsoft, který kontroluje škodlivé hodnoty. Pokud je zjištěna škodlivá hodnota, koncový bod požadavek odmítne.
 
-__Doporučené akce__ :
+__Doporučené akce__:
 * Před nahráním do studia ověřte, že obsah souborů důvěřujete. Při nahrávání musíte potvrdit, že odesíláte důvěryhodné soubory.
 * Když vyberete odkaz pro otevření externí aplikace, zobrazí se výzva k důvěřování aplikace.
 
@@ -55,14 +55,14 @@ __Doporučené akce__ :
 
 Azure Machine Learning výpočetní instance hostuje __testovací prostředí__ __Jupyter__ a Jupyter. Při použití obou buněk v poznámkovém bloku nebo kódu v aplikaci mohou výstupy dokumentů HTML nebo fragmentů, které obsahují škodlivý kód. Když je výstup vykreslen, lze spustit kód. Stejné hrozby platí i při použití __RStudio__ hostovaného na výpočetní instanci.
 
-__Možné hrozby__ :
+__Možné hrozby__:
 * Skriptování mezi weby (XSS)
 * Padělání žádostí mezi weby (CSRF)
 
-__Omezení rizik, která poskytuje Azure Machine Learning__ :
+__Omezení rizik, která poskytuje Azure Machine Learning__:
 * Žádné Jupyter a Jupyter Lab jsou Open Source aplikace hostované na Azure Machine Learning výpočetní instanci.
 
-__Doporučené akce__ :
+__Doporučené akce__:
 * Před nahráním do studia ověřte, že obsah souborů důvěřujete. Při nahrávání musíte potvrdit, že odesíláte důvěryhodné soubory.
 
 ## <a name="report-security-issues-or-concerns"></a>Nahlásit problémy se zabezpečením nebo obavy 

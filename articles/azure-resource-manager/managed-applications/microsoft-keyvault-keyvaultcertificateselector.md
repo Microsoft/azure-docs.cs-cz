@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: tomfitz
 ms.openlocfilehash: 1ac6fd5a3f1e581fc9a676fe7f8f27b9742e1581
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101217"
 ---
 # <a name="microsoftkeyvaultkeyvaultcertificateselector-ui-element"></a>Microsoft. klíčů trezor. KeyVaultCertificateSelector – element uživatelského rozhraní
@@ -24,11 +24,11 @@ Uživatel se zobrazí s možností vybrat dostupný certifikát.
 
 Po výběru **Vybrat certifikát** může uživatel zadat Trezor klíčů a certifikát z trezoru klíčů.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-certificate.png" alt-text="Microsoft. klíčů trezor. KeyVaultCertificateSelector":::
+:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-certificate.png" alt-text="Microsoft. klíčů trezor. KeyVaultCertificateSelector vybrat certifikát":::
 
 Ovládací prvek se aktualizuje tak, aby zobrazoval vybraný Trezor klíčů a název certifikátu.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-result.png" alt-text="Microsoft. klíčů trezor. KeyVaultCertificateSelector":::
+:::image type="content" source="./media/managed-application-elements/microsoft-keyvault-keyvaultcertificateselector-result.png" alt-text="Microsoft. klíčů trezor. KeyVaultCertificateSelector zobrazit vybraný certifikát":::
 
 ## <a name="schema"></a>Schéma
 

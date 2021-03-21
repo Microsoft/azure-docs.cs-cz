@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/07/2021
 ms.author: alkohli
 ms.openlocfilehash: c51577882e75facb1d8eb03c7cfab82467c5ec51
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99524803"
 ---
 Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoříte prostředek IoT Hub prostřednictvím Azure Portal.
@@ -27,7 +27,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack Edge pro, vytvoř
     |---------|---------|
     |Předplatné     |Vyberte předplatné pro prostředek IoT Hub. Můžete použít stejné předplatné, jako používá prostředek Azure Stack Edge.         |
     |Skupina prostředků     |Vyberte skupinu prostředků pro prostředek IoT Hub. Můžete použít stejnou skupinu prostředků, jako kterou používá prostředek Azure Stack Edge.         |
-    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
+    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> Prostředek služby IoT Hub v každém případě používá stejné předplatné a stejnou skupinu prostředků jako prostředek Azure Stack Edge.     |
     |Name     |Přijměte výchozí název nebo zadejte název prostředku IoT Hub.         |
 
    ![Začínáme s výpočetním využitím 2](./media/azure-stack-edge-gateway-configure-compute/configure-compute-3.png)

@@ -9,10 +9,10 @@ ms.date: 12/18/2020
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: a749de57a1c57c828332957def27d68a121318b1
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97691938"
 ---
 | Kategorie | Úložiště dat |
@@ -26,7 +26,7 @@ ms.locfileid: "97691938"
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure Databricks Delta Lake](../articles/data-factory/connector-azure-databricks-delta-lake.md) |
-| &nbsp; |[Soubory Azure](../articles/data-factory/connector-azure-file-storage.md) |
+| &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Spravovaná instance Azure SQL](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |
 | &nbsp; |[Azure Synapse Analytics](../articles/data-factory/connector-azure-sql-data-warehouse.md) |

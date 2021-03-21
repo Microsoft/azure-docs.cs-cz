@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/30/2017
 ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218013"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Ladit uživatelsky definovaný kód C# pro nezdařené úlohy U-SQL
@@ -76,7 +76,7 @@ Pokud kód uživatele není zahrnutý v souboru kódu na pozadí nebo jste nezar
 
 2. Získejte cestu ke složce projektu pro projekt **FailedVertexDebugHost** . 
 
-3. Right-Click **přidaných projektů zdrojového kódu sestavení > vlastnosti**vyberte kartu **sestavení** vlevo a vložte zkopírovanou cestu končící na \bin\debug jako výstupní **cestu > výstupní cesta**. Poslední výstupní cesta je jako `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
+3. Right-Click **přidaných projektů zdrojového kódu sestavení > vlastnosti** vyberte kartu **sestavení** vlevo a vložte zkopírovanou cestu končící na \bin\debug jako výstupní **cestu > výstupní cesta**. Poslední výstupní cesta je jako `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
 
     ![Azure Data Lake Analytics nastavení ladění U-SQL nastavte cestu PDB](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

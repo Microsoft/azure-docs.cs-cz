@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d33b419e0f24201d661ad0f5f1373022ea6e9e9f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861744"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect synchronizace: zpracování chyb LargeObject způsobených atributem userCertificate
@@ -107,8 +107,8 @@ Mělo by existovat existující synchronizační pravidlo, které je povolené a
 
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
-    | sourceObjectType | VÝŠI | Uživatel |
-    | cloudMastered | NOTEQUAL | Pravda |
+    | sourceObjectType | VÝŠI | User |
+    | cloudMastered | NOTEQUAL | Ano |
 
 ### <a name="step-3-create-the-outbound-sync-rule-required"></a>Krok 3. Vytvořit požadované pravidlo pro odchozí synchronizaci
 Nové pravidlo synchronizace musí mít stejný **Filtr oboru** a **vyšší prioritu** než stávající pravidlo synchronizace. Tím se zajistí, že se nové pravidlo synchronizace bude vztahovat na stejnou sadu objektů jako stávající pravidlo synchronizace a přepíše stávající pravidlo synchronizace pro atribut userCertificate. Postup vytvoření pravidla synchronizace:
@@ -117,8 +117,8 @@ Nové pravidlo synchronizace musí mít stejný **Filtr oboru** a **vyšší pri
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadat název* | Například *"odchozí AAD – vlastní přepsání pro userCertificate"* |
-    | Popis | *Zadejte popis.* | Například *"Pokud má atribut userCertificate více než 15 hodnot, exportujte hodnotu null."* |
+    | Name | *Zadat název* | Například *"odchozí AAD – vlastní přepsání pro userCertificate"* |
+    | Description | *Zadejte popis.* | Například *"Pokud má atribut userCertificate více než 15 hodnot, exportujte hodnotu null."* |
     | Připojený systém | *Vyberte konektor Azure AD.* |
     | Typ připojeného systémového objektu | **uživatelský** | |
     | Typ objektu úložiště metaverse | **uživateli** | |

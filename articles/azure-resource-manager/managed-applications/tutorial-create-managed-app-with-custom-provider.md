@@ -7,10 +7,10 @@ author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96437044"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky
@@ -27,7 +27,7 @@ Tento kurz obsahuje následující kroky:
 > * Nasazení instance spravované aplikace
 > * Provádění vlastních akcí a vytváření vlastních prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete znát tyto informace:
 

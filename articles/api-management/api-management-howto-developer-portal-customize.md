@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/16/2020
 ms.author: apimpm
 ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012969"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>Kurz: přístup a přizpůsobení portálu pro vývojáře
@@ -31,7 +31,7 @@ Další podrobnosti najdete na portálu pro vývojáře v článku [Přehled por
 
 :::image type="content" source="media/api-management-howto-developer-portal-customize/cover.png" alt-text="Portál pro vývojáře API Management – režim správce" border="false":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 - Import a publikování instance služby Azure API Management. Další informace najdete v tématu [Import a publikování](import-and-publish.md) .
@@ -144,5 +144,5 @@ Pokud chcete návštěvníkům portálu umožnit otestovat rozhraní API prostř
 
 Další informace o portálu pro vývojáře:
 
-- [Přehled portálu pro vývojáře Azure API Management](api-management-howto-developer-portal.md)
+- [Přehled vývojářského portálu pro službu Azure API Management](api-management-howto-developer-portal.md)
 - [Migrujte na nový portál pro vývojáře](developer-portal-deprecated-migration.md) z zastaralého staršího portálu.

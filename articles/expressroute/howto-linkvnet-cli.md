@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.openlocfilehash: b9dda384e2ef30808559d10012dea2909b2af0fd
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206930"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Kurz: připojení virtuální sítě k okruhu ExpressRoute pomocí rozhraní příkazového řádku
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > - Úprava připojení k virtuální síti
 > - Konfigurace ExpressRoute FastPath
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Potřebujete nejnovější verzi rozhraní příkazového řádku (CLI). Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 * Než začnete s konfigurací, Projděte si [požadavky,](expressroute-prerequisites.md) [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .

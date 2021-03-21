@@ -4,10 +4,10 @@ description: Pochopte, jak se dají používat Azure Lighthouse a spravované ap
 ms.date: 12/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693971"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse a spravované aplikace Azure
@@ -25,9 +25,9 @@ Tato tabulka znázorňuje některé rozdíly vysoké úrovně, které mohou mít
 |---------|---------|---------|
 |Typický uživatel     |Poskytovatelé služeb nebo podniky spravující víc tenantů         |Nezávislí výrobci softwaru (ISV)         |
 |Rozsah přístupu mezi klienty     |Počet předplatných nebo skupin prostředků:         |Skupina prostředků (vymezená pro jednu aplikaci)         |
-|K nákupu v Azure Marketplace     |Ne (nabídky se dají publikovat do Azure Marketplace, ale zákazníci se účtují samostatně)        |Ano         |
+|K nákupu v Azure Marketplace     |Ne (nabídky se dají publikovat do Azure Marketplace, ale zákazníci se účtují samostatně)        |Yes         |
 |Ochrana protokolu IP     |Ano (IP může zůstat v tenantovi poskytovatele služeb)        |Ano (podle návrhu, skupina prostředků je zamčená zákazníkům)         |
-|Přiřazení zamítnutí     |Ne         |Ano        |
+|Přiřazení zamítnutí     |No         |Yes        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 

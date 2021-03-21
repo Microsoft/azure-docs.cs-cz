@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: cdbddfc84b3f71576cfd0299f2babec859b4ef1f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92311049"
 ---
 # <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Nastavení databázového stroje PostgreSQL Hyperscale s podporou služby Azure Arc
@@ -37,7 +37,7 @@ Tento dokument popisuje postup nastavení databázového stroje skupiny serverů
 > - `ssl`
 > - `wal_level`
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Obecný formát příkazu pro konfiguraci nastavení databázového stroje je:
 
@@ -53,7 +53,7 @@ azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}
 azdata arc postgres server show -n <server group name>
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server show -n postgres01
@@ -86,7 +86,7 @@ Postupujte podle následujících kroků.
    azdata arc postgres server show -n <server group name>
    ```
 
-   Příklad:
+   Například:
 
    ```console
    azdata arc postgres server show -n postgres01
@@ -115,13 +115,13 @@ Postupujte podle následujících kroků.
    kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
    ```
 
-   Příklad:
+   Například:
 
    ```console
    kubectl describe postgresql-12 postgres01
    ```
 
-   Pokud jsou pro nastavení modulu nastaveny vlastní hodnoty, vrátí se. Příklad:
+   Pokud jsou pro nastavení modulu nastaveny vlastní hodnoty, vrátí se. Například:
 
    ```output
    Engine:
@@ -150,7 +150,7 @@ Níže uvedené příkazy nastaví parametry uzlu koordinátora a pracovní uzly
 azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
@@ -162,7 +162,7 @@ azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
 azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
@@ -172,7 +172,7 @@ azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connec
 
 Chcete-li obnovit výchozí hodnotu parametru, nastavte jej bez označení hodnoty. 
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=
@@ -184,7 +184,7 @@ azdata arc postgres server edit -n postgres01 -e shared_buffers=
 azdata arc postgres server edit -n <server group name> -e '' -re
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e '' -re
@@ -198,7 +198,7 @@ azdata arc postgres server edit -n postgres01 -e '' -re
 azdata arc postgres server edit -n <server group name> -e '<parameter name>="<parameter value>"'
 ```
 
-Příklad:
+Například:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plpgsql,plperl"'
@@ -208,7 +208,7 @@ azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plp
 
 Proměnná prostředí by měla být zabalená v rámci "" "", aby se nevyřešila před nastavením.
 
-Příklad: 
+Například: 
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'

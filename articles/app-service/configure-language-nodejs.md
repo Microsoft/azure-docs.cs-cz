@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101095199"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace Node.js pro Azure App Service
@@ -161,7 +161,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>Spustit npm Start
 
-Pokud chcete aplikaci spustit pomocí `npm start` , stačí, když zajistěte, aby `start` byl skript v *package.js* souboru. Příklad:
+Pokud chcete aplikaci spustit pomocí `npm start` , stačí, když zajistěte, aby `start` byl skript v *package.js* souboru. Například:
 
 ```json
 {
@@ -209,7 +209,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Aplikaci Node.js můžete vzdáleně ladit v [Visual Studio Code](https://code.visualstudio.com/) Pokud ji nakonfigurujete tak, aby [běžela s konfiguračního PM2](#run-with-pm2), s výjimkou případů, kdy ji spustíte pomocí * .config.js, *. yml nebo *. yaml*.
 
-Ve většině případů není pro vaši aplikaci nutná žádná další konfigurace. Pokud je vaše aplikace spuštěná s *process.jsv* souboru (výchozí nebo vlastní), musí mít `script` v kořenu JSON vlastnost. Příklad:
+Ve většině případů není pro vaši aplikaci nutná žádná další konfigurace. Pokud je vaše aplikace spuštěná s *process.jsv* souboru (výchozí nebo vlastní), musí mít `script` v kořenu JSON vlastnost. Například:
 
 ```json
 {
@@ -239,7 +239,7 @@ process.env.NODE_ENV
 
 Ve výchozím nastavení se App Service Automation Build spustí, `npm install --production` když rozpozná Node.js aplikace nasazené prostřednictvím nasazení Git nebo zip s povolenou automatizací sestavení. Pokud vaše aplikace vyžaduje některé z oblíbených nástrojů pro automatizaci, jako je grunt, Bower nebo Gulp, je potřeba pro její spuštění zadáním [vlastního skriptu nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) .
 
-Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Příklad:
+Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Například:
 
 ```json
 "dependencies": {
@@ -355,12 +355,12 @@ Další informace najdete v [poznámkách k verzi rozšíření Application Insi
 
 ::: zone-end
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se pracovní Node.js aplikace chová jinak v App Service nebo obsahuje chyby, zkuste následující:
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
-- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace Node.js v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v produkčním režimu v místním prostředí. Příklad:
+- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace Node.js v produkčním režimu, takže je potřeba zajistit, aby váš projekt fungoval v produkčním režimu v místním prostředí. Například:
     - V závislosti na vaší *package.js* se můžou v produkčním režimu ( `dependencies` vs.) nainstalovat různé balíčky `devDependencies` .
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.

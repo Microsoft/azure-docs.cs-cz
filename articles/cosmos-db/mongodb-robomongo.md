@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
 ms.openlocfilehash: e096de5eea9bf5bbd47b976976192e62eb6aa33e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096406"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Použití Robo 3T s rozhraním API služby Azure Cosmos DB pro MongoDB
@@ -36,17 +36,17 @@ Pokud chcete přidat účet Cosmos do Správce připojení Robo 3T, proveďte n�
 
 3. Pokud chcete spravovat připojení, klikněte na tlačítko připojení v části **soubor** . Pak v okně **připojení MongoDB** klikněte na **vytvořit** a otevře se okno **nastavení připojení** .
 
-4. V okně **nastavení připojení** vyberte název. Pak vyhledejte **hostitele** a **port** z informací o připojení v kroku 1 a zadejte je do pole **adresa** a **port** (v uvedeném pořadí).
+4. V okně **nastavení připojení** vyberte název. Pak vyhledejte **hostitele** a **port** z informací o připojení v kroku 1 a zadejte je do pole **adresa** a **port**(v uvedeném pořadí).
 
-    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Snímek obrazovky okna připojovací řetězec":::
-5. Na kartě **ověřování** klikněte na **provést ověřování** . Pak zadejte svou databázi (výchozí nastavení je *správce* ), **uživatelské jméno** a **heslo** .
+    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Snímek obrazovky Robomongo správy připojení":::
+5. Na kartě **ověřování** klikněte na **provést ověřování**. Pak zadejte svou databázi (výchozí nastavení je *správce*), **uživatelské jméno** a **heslo**.
 **Uživatelské jméno** a **heslo** najdete v informacích o připojení v kroku 1.
 
-    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Snímek obrazovky okna připojovací řetězec":::
-6. Na kartě **SSL** zaškrtněte **použít protokol SSL** a pak změňte **metodu ověřování** na **certifikát podepsaný svým držitelem** .
+    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Snímek obrazovky s kartou ověřování Robomongo":::
+6. Na kartě **SSL** zaškrtněte **použít protokol SSL** a pak změňte **metodu ověřování** na **certifikát podepsaný svým držitelem**.
 
-    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Snímek obrazovky okna připojovací řetězec":::
-7. Nakonec klikněte na **test** , abyste ověřili, že se můžete připojit a pak **Uložit** .
+    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Snímek obrazovky s kartou Robomongo SSL":::
+7. Nakonec klikněte na **test** , abyste ověřili, že se můžete připojit a pak **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 

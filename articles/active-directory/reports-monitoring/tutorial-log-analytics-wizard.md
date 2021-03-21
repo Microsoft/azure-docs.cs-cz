@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca84fa57cb3a26337038275d1b7491154915c90e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574383"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Kurz: Konfigurace Průvodce Log Analytics
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření vlastního sešitu pomocí šablony pro rychlý Start
 > * Přidat dotaz do existující šablony sešitu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure s alespoň jedním správcem licencované licence P1. Pokud nemáte předplatné Azure, můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 

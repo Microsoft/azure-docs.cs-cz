@@ -9,10 +9,10 @@ ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
 ms.openlocfilehash: 378bb891c8539a6cf3d61f6511a0f58377d2bfd2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93091136"
 ---
 # <a name="azure-cosmos-db-sql-api-spring-data-azure-cosmos-db-v3-examples"></a>Azure Cosmos DB SQL API: jarní data Azure Cosmos DB V3 – příklady
@@ -104,7 +104,7 @@ mvn spring-boot:run
 ## <a name="document-crud-examples"></a>Příklady dokumentu CRUD
 V souboru [ukázek](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java) se dozvíte, jak provádět následující úlohy. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu.
 
-| Úloha | API – referenční informace |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření dokumentu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java#L46-L47) | CosmosRepository. Save |
 | [Čtení dokumentu podle ID](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java#L56-L58) | CosmosRepository.derivedQueryMethod |
@@ -119,7 +119,7 @@ V souboru [ukázek](https://github.com/Azure-Samples/azure-spring-data-cosmos-ja
 V souboru [ukázek](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/SampleApplication.java) se dozvíte, jak provádět následující úlohy pomocí gramatiky dotazů SQL. Další informace o odkazech na dotaz SQL v Azure Cosmos DB před spuštěním následujících ukázek najdete v tématu [příklady dotazů SQL pro Azure Cosmos DB](./sql-query-getting-started.md). 
 
 
-| Úloha | API – referenční informace |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Dotazování na všechny dokumenty](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/UserRepository.java#L20-L22) | @Query poznámky |
 | [Dotaz na rovnost s využitím ==](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/springexamples/quickstart/sync/UserRepository.java#L24-L26) | @Query poznámky |

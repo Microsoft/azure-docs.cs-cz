@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
 ms.openlocfilehash: fcb8090427530271600a6699fafa5c488c426784
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97680871"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>Kurz: migrace webové aplikace z Map Google
@@ -51,9 +51,9 @@ Při vývoji pomocí JavaScriptu rozhraní může být užitečné jeden z násl
 * [Azure Maps reagující na komponentu](https://github.com/WiredSolutions/react-azure-maps) – reakce na reakci ovládacího prvku Azure Maps.
 * [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – komponenta Azure Maps pro aplikaci Vue.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -75,7 +75,7 @@ V tabulce jsou uvedeny klíčové funkce rozhraní API v sadě Google Maps V3 Ja
 | Služba pro INCODE        | ✓                          |
 | Služba itinerář      | ✓                          |
 | Služba matice Distance | ✓                          |
-| Služba zvýšení oprávnění       | ✓                          |
+| Služba Elevation       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Významné rozdíly v sadách web SDK
 
@@ -1030,7 +1030,7 @@ Přidejte a spravujte data ve zdroji dat. Připojte zdroje dat a vrstvy a potom 
 
 Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskupené datové body do vrstev pro vykreslování. Zdroj dat je schopný clusterovat stovky tisíc datových bodů. Datový bod v clusteru má následující vlastnosti:
 
-| Název vlastnosti             | Typ    | Popis   |
+| Název vlastnosti             | Typ    | Description   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Indikuje, že funkce představuje cluster. |
 | `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s `getClusterExpansionZoom` `getClusterChildren` metodami DataSource, a `getClusterLeaves` . |
@@ -1039,7 +1039,7 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 
 `DataSource`Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id` .
 
-| Metoda | Návratový typ | Popis |
+| Metoda | Návratový typ | Description |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | &lt;Geometrie funkce pole promise &lt; &lt; , libovolný &gt; \| tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
 | `getClusterExpansionZoom(clusterId: number)` | Číslo promise &lt;&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |

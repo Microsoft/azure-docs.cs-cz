@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: f49abd4ca1cc1ccdcb7ba2b0fab3bad953dede5d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100380538"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
@@ -155,7 +155,7 @@ Umělá logika a Cognitive Services připravená ke spuštění můžou být vel
 
 Díky předzpracování vašich položek pomocí umělých analytických služeb můžete automaticky extrahovat informace, které jsou pravděpodobně relevantní pro přizpůsobení.
 
-Příklad:
+Například:
 
 * Můžete spustit filmový soubor prostřednictvím [video indexer](https://azure.microsoft.com/services/media-services/video-indexer/) k extrakci elementů scény, text, mínění a mnoha dalších atributů. Tyto atributy je pak možné odrážet tak, aby odrážely vlastnosti, které původní metadata položky neobsahovaly. 
 * Image je možné spouštět pomocí detekce objektů, plošek až po mínění atd.

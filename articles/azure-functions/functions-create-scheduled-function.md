@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 14d918cc41f49b954f5cabf48572db5df829fd10
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035185"
 ---
 # <a name="create-a-function-in-the-azure-portal-that-runs-on-a-schedule"></a>Vytvoření funkce v Azure Portal, která se spouští podle plánu
 
 Naučte se, jak pomocí Azure Portal vytvořit funkci, která na Azure běží bez [serveru](https://azure.microsoft.com/solutions/serverless/) na základě vámi definovaného plánu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 

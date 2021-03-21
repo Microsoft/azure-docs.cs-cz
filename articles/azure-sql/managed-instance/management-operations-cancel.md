@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861540"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Ruší se operace správy spravované instance Azure SQL.
@@ -38,12 +38,12 @@ Následující tabulka shrnuje operace správy bez ohledu na to, jestli je můž
 
 Kategorie  |Operace  |Zrušitelný  |Odhadovaná doba trvání zrušení  |
 |---------|---------|---------|---------|
-|Nasazení |Vytvoření instance |Ano |90% dokončených operací za 5 minut. |
+|Nasazení |Vytvoření instance |Yes |90% dokončených operací za 5 minut. |
 |Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |No |  |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Ano |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Ano |90% dokončených operací za 5 minut. |
+|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Yes |90% dokončených operací za 5 minut. |
+|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Yes |90% dokončených operací za 5 minut. |
+|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Yes |90% dokončených operací za 5 minut. |
+|Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Yes |90% dokončených operací za 5 minut. |
 |Odstranit |Odstranění instance |No |  |
 |Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |No |  |
 
