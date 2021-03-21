@@ -8,10 +8,10 @@ ms.date: 11/16/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732530"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>Povolení funkce SMB vícekanálový na účtu úložiště účtů (Preview) 
@@ -26,7 +26,7 @@ ms.locfileid: "101732530"
 
 [!INCLUDE [storage-files-smb-multi-channel-regions](../../../includes/storage-files-smb-multi-channel-regions.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte účet úložiště](./storage-how-to-create-file-share.md).
 - Pokud máte v úmyslu použít modul Azure PowerShell, [nainstalujte si verzi 3.0.1-Preview modulu](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview).

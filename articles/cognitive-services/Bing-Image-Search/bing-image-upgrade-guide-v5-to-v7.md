@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: d10db37934bb0d6571eb0191d5f1be47dae000ed
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96342171"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Průvodce upgradem rozhraní API Bingu pro vyhledávání obrázků v7
@@ -44,7 +44,7 @@ Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní 
 
 - Kódy chyb 5 nahradily následujícími možnými `code` hodnotami a `subCode` .
 
-|Kód|Podřízeného kódu|Popis
+|Kód|Podřízeného kódu|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError vždy, když dojde ke kterékoli z podmínek dílčího kódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud je chyba HttpNotAllowed, kód stavu HTTP 410.
@@ -88,7 +88,7 @@ Blokované|InvalidRequest. Block
 
 ### <a name="image-insights-changes"></a>Změny v přehledech imagí
 
-- Pole ImagesInsights bylo přejmenováno `annotations` [ImagesInsights](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) na `imageTags` .  
+- Pole ImagesInsights bylo přejmenováno `annotations` [](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) na `imageTags` .  
 
 - Objekt byl přejmenován `AnnotationModule` na [ImageTagsModule](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule).  
 
@@ -137,7 +137,7 @@ Blokované|InvalidRequest. Block
 
 -   Z [obrázků](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images)byla odebrána pole DisplayShoppingSourcesBadges a displayRecipeSourcesBadges.  
 
--   Pole obrázků bylo přejmenováno `nextOffsetAddCount` [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) na `nextOffset` . Způsob, jakým používáte posun, se také změnil. Dříve jste nastavili parametr [posunutí](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) dotazu na `nextOffsetAddCount` hodnotu plus hodnotu předchozí posunutí a počet obrázků ve výsledku. Nyní nastavíte `offset` `nextOffset` hodnotu.  
+-   Pole obrázků bylo přejmenováno `nextOffsetAddCount` [](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) na `nextOffset` . Způsob, jakým používáte posun, se také změnil. Dříve jste nastavili parametr [posunutí](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) dotazu na `nextOffsetAddCount` hodnotu plus hodnotu předchozí posunutí a počet obrázků ve výsledku. Nyní nastavíte `offset` `nextOffset` hodnotu.  
 
 
 ## <a name="non-breaking-changes"></a>Neprůlomové změny

@@ -8,10 +8,10 @@ ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102203891"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure do [služ
 
 Řešení popsané v tomto článku vám umožní doručovat data digitální neplnící se na připojené klienty, jako je například jedna webová stránka nebo mobilní aplikace. V důsledku toho se klienti aktualizují pomocí metrik a stavu v reálném čase ze zařízení IoT, a to bez nutnosti dotazování serveru nebo odeslání nových požadavků HTTP na aktualizace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady jsou požadavky, které byste měli provést, než budete pokračovat:
 
@@ -65,7 +65,7 @@ V této části vytvoříte dvě služby Azure Functions:
 
 Spusťte sadu Visual Studio (nebo jiný Editor kódu dle vašeho výběru) a otevřete řešení Code v ADTSampleApp složce *Digital-zdvojené-Samples-Samples-Samples-> Master* . Potom postupujte podle následujících kroků a vytvořte funkce:
 
-1. V projektu *SampleFunctionsApp* vytvořte novou třídu jazyka C# s názvem **SignalRFunctions.cs**.
+1. V projektu *SampleFunctionsApp* vytvořte novou třídu jazyka C# s názvem **SignalRFunctions. cs**.
 
 1. Obsah souboru třídy nahraďte následujícím kódem:
     

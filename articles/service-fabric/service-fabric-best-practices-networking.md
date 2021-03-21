@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
 ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732560"
 ---
 # <a name="networking"></a>Sítě
@@ -101,7 +101,7 @@ Další informace o příchozích pravidlech zabezpečení:
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Síť            |Všechny         |TCP       |VirtualNetwork     |VirtualNetwork    |Povolit
 |3910       |Poskytovatel prostředků  |443         |TCP       |VirtualNetwork     |ServiceFabric     |Povolit
-|3920       |Upgrade            |443         |TCP       |VirtualNetwork     |Internet          |Povolit
+|3920       |Upgradovat            |443         |TCP       |VirtualNetwork     |Internet          |Povolit
 |3950       |Blokovat odchozí     |Všechny         |Všechny       |Všechny                |Všechny               |Odepřít
 
 Další informace o odchozích pravidlech zabezpečení:

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
 ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791523"
 ---
 # <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
@@ -47,7 +47,7 @@ Vaše řešení teď obsahuje dva projekty:
 
 ## <a name="implement-the-service"></a>Implementace služby
 
-Otevřete soubor **HelloWorldStateless.cs** v projektu služby. V Service Fabric může služba spustit libovolnou obchodní logiku. Rozhraní API služby poskytuje dva vstupní body pro váš kód:
+V projektu služby otevřete soubor **HelloWorldStateless. cs** . V Service Fabric může služba spustit libovolnou obchodní logiku. Rozhraní API služby poskytuje dva vstupní body pro váš kód:
 
 * Otevřená metoda vstupního bodu s názvem *RunAsync*, kde můžete začít spouštět jakékoli úlohy, včetně dlouhotrvajících výpočetních úloh.
 
@@ -127,7 +127,7 @@ Vaše aplikace by teď měla mít dvě služby: bezstavovou službu *HelloWorldS
 
 Stavová služba má stejné vstupní body jako Bezstavová služba. Hlavním rozdílem je dostupnost *zprostředkovatele stavu* , který může spolehlivě ukládat stav. Service Fabric obsahuje implementaci poskytovatele stavu nazvanou [Reliable Collections](service-fabric-reliable-services-reliable-collections.md), která umožňuje vytvářet replikované datové struktury prostřednictvím Správce spolehlivého stavu. Stavová služba Reliable využívá tohoto poskytovatele stavu ve výchozím nastavení.
 
-Otevřete **HelloWorldStateful.cs** v *HelloWorldStateful*, které obsahuje následující RunAsync metodu:
+Otevřete **HelloWorldStateful. cs** v *HelloWorldStateful*, který obsahuje následující RunAsync metodu:
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)

@@ -17,10 +17,10 @@ ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 1ff9fcbb693f7e606c07985f9bce9acd60c5591a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222968"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení, stejné předplatné
@@ -43,7 +43,7 @@ K vytvoření partnerského vztahu virtuálních sítí můžete použít Azure 
 
 ## <a name="create-peering---azure-portal"></a>Vytvoření partnerských vztahů – Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Účet, pomocí kterého se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Účet, pomocí kterého se přihlašujete, musí mít potřebná oprávnění k vytvoření partnerského vztahu virtuální sítě. Seznam oprávnění najdete v tématu [oprávnění partnerského vztahu virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints).
 2. Klikněte na **+ Nový**, pak na **sítě** a pak na **virtuální síť**.
 3. V okně **vytvořit virtuální síť** zadejte nebo vyberte hodnoty pro následující nastavení a pak klikněte na **vytvořit**:
     - **Název**: *myVnet1*

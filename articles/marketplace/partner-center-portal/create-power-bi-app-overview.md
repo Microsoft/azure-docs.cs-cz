@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 04/02/2020
 ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97679136"
 ---
 # <a name="power-bi-app-creation-overview"></a>Přehled vytváření aplikací Power BI
@@ -42,7 +42,7 @@ Toto jsou klíčové kroky pro publikování:
 7. Po certifikaci si aplikaci přečtěte v testovacím prostředí a uvolněte ji. Tato možnost zobrazí seznam na AppSource (bude to živě).
 8. V Power BI odešlete balíček do produkčního prostředí. Podrobnosti najdete v tématu [Správa verze aplikace Power BI](/power-bi/service-template-apps-create#manage-the-template-app-release).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Přečtěte si níže uvedené odkazy, které poskytují šablony, tipy a ukázky.
 

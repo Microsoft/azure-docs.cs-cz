@@ -12,10 +12,10 @@ ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
 ms.openlocfilehash: b8562f3bdd82b5b0c2c1340f511f87ad90dfbe3b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102487946"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s konfiguracemi omezeného delegování Kerberos pro proxy aplikací
@@ -33,7 +33,7 @@ Tento článek přináší následující předpoklady:
 - Hostitelé serveru a aplikace se nacházejí v jedné Azure Active Directory doméně. Podrobné informace o scénářích mezi doménami a doménovými strukturami najdete v [dokumentu White Paper KCD](https://aka.ms/KCDPaper).
 - Předmět aplikace je publikovaný v tenantovi Azure s povoleným předběžným ověřením. Při ověřování pomocí formulářů se očekává, že se uživatelé ověřují v Azure. V tomto článku se nevztahují na rozsáhlé scénáře ověřování klientů. Můžou být přidané v nějakém okamžiku v budoucnu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Azure Proxy aplikací služby AD můžete nasadit do mnoha typů infrastruktur nebo prostředí. Architektury se liší od organizace až po organizaci. Nejběžnější příčiny problémů souvisejících s KCD nejsou prostředí. Jednoduché nesprávné konfigurace nebo obecné chyby způsobují většinu problémů.
 
@@ -57,7 +57,7 @@ Co zobrazuje KCD problém? Existuje několik běžných indikací, které KCD SS
 
 Oba tyto obrázky zobrazují stejný příznak: selhání jednotného přihlašování. Přístup uživatele k aplikaci byl odepřen.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Způsob řešení potíží závisí na problému a symptomech, které sledujete. Než začnete, Projděte si následující články. Poskytují užitečné informace pro řešení potíží:
 

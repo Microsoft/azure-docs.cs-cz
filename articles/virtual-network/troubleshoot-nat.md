@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
 ms.openlocfilehash: 70410e58acb30c7694e6fe4a6dcaff57bee98607
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223427"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Řešení potíží s připojením služby Azure Virtual Network NAT
@@ -51,7 +51,7 @@ Hlavní příčinou vyčerpání SNAT je i anti-vzor pro způsob, jakým se u od
 4. Vyhodnotí, zda jsou následovány příslušné vzory.
 5. Vyhodnoťte, jestli se má vyčerpání portů SNAT zmírnit pomocí dalších IP adres přiřazených k prostředku brány NAT.
 
-#### <a name="design-patterns"></a>Způsoby návrhu
+#### <a name="design-patterns"></a>Vzory návrhu
 
 Kdykoli je to možné, využijte výhod opětovného použití připojení a sdružování připojení.  Tyto vzory se vyhne problémům s vyčerpáním prostředků a mají za následek předvídatelné chování. Primitivní prvky pro tyto vzory se dají najít v řadě vývojových knihoven a architektur.
 
@@ -77,7 +77,7 @@ Vytvoření nového připojení TCP pro každou operaci HTTP (označované také
 
 _**Řešení:**_ Škálování odchozího připojení je následující:
 
-| Scénář | Kazování |Omezení rizik |
+| Scenario | Kazování |Omezení rizik |
 |---|---|---|
 | U portů SNAT a vyčerpání portů SNAT během období vysokého využití dochází ke sporu. | Kategorie "neúspěšné" v případě [metrik](nat-metrics.md) připojení SNAT v Azure monitor zobrazuje přechodné nebo trvalé chyby v čase a vysokém objemu připojení.  | Určete, jestli můžete přidat další prostředky veřejné IP adresy nebo prostředky předpony veřejných IP adres. Díky tomu bude pro vaši bránu NAT možné celkem až 16 IP adres. Toto přidání vám poskytne více inventářů pro dostupné porty SNAT (64 000 na IP adresu) a umožní vám ještě víc škálovat scénář.|
 | Už jste zadali 16 IP adres a pořád dochází k vyčerpání portů SNAT. | Pokus o přidání další IP adresy se nezdařil. Celkový počet IP adres z prostředků veřejných IP adres nebo prostředků předpony veřejné IP adresy překračuje celkový počet 16. | Distribuujte aplikační prostředí napříč více podsítěmi a poskytněte prostředek brány NAT pro každou podsíť.  Přehodnoťte vzory návrhu pro optimalizaci na základě předchozích [pokynů](#design-patterns). |

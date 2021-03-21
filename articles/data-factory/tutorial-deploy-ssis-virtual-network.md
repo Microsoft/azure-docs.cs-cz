@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 1/10/2020
 ms.openlocfilehash: 3dbbce4adc44696fdd12f6ce948b48b34caaed75
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100391231"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurace prostředí Azure-služba SSIS (SQL Server Integration Services) (SSIS) Integration runtime (IR) pro připojení k virtuální síti
@@ -24,7 +24,7 @@ Postup je následující:
 - Nakonfigurujte virtuální síť.
 - Připojte Azure-SSIS IR k virtuální síti z portálu Azure Data Factory.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Prostředí Azure-SSIS Integration runtime**. Pokud nemáte prostředí Azure-SSIS Integration runtime, před zahájením [zajistěte Azure-SSIS Integration runtime v Azure Data Factory](tutorial-deploy-ssis-packages-azure.md) .
 

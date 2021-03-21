@@ -3,15 +3,15 @@ title: Restart serveru – Azure CLI – Azure Database for MariaDB
 description: Tento článek popisuje, jak můžete restartovat server Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure CLI.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50389c7c4e1f497e63c5221181713649a7b068c5
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 8ae69adfe83b871eb29c85fc4d03e817026ec006
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664915"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Restartování serveru Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
@@ -23,7 +23,7 @@ Pokud je služba zaneprázdněná, restart serveru se zablokuje. Například slu
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup dokončení této příručky:
 

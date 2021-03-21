@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: references_regions
 ms.openlocfilehash: 5277f5051e291e9058255d8920ac0be950389704
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102203194"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase
@@ -104,7 +104,7 @@ Po úspěšném ověření se pod datovou mřížkou výkonu zobrazí podokno ko
 ## <a name="using-live-data-views"></a>Používání zobrazení dynamických dat
 Následující části popisují funkčnost, kterou můžete použít v různých zobrazeních dynamických dat.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 Funkce živého data zahrnuje funkce hledání. V poli **hledání** můžete výsledky filtrovat zadáním klíčového slova nebo termínu. všechny vyhovující výsledky jsou zvýrazněny, aby umožňovaly rychlou kontrolu. Při prohlížení událostí můžete kromě toho omezit výsledky pomocí **filtru** , který se nachází na pravé straně panelu hledání. V závislosti na tom, jaký prostředek jste vybrali, zobrazuje funkce pilla seznam pod, oborem názvů nebo clusteru, ze kterého se má vybrat.
 
 ![Příklad filtru podokna konzoly živé dat](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)

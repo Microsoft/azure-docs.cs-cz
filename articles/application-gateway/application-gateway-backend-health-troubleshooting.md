@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99592751"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu ve službě Application Gateway
@@ -157,7 +157,7 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
     a.  Otevřete příkazový řádek (Win + R- \> cmd), zadejte `netstat` a vyberte Enter.
 
-    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Příklad:
+    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Například:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -257,7 +257,7 @@ Další informace o extrakci a nahrání důvěryhodných kořenových certifik�
 > [!NOTE]
 > K této chybě může dojít také v případě, že back-end Server nemění úplný řetěz certifikátu, včetně kořenového > zprostředkujícího (Pokud je k dispozici) > list během metody handshake TLS. K ověření můžete použít příkazy OpenSSL z libovolného klienta a připojit se k back-end serveru pomocí nakonfigurovaných nastavení v Application Gateway PROBE.
 
-Příklad:
+Například:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```

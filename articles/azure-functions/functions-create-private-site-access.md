@@ -7,10 +7,10 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97937038"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Kurz: vytvoření přístupu k privátnímu webu Azure Functions
@@ -39,13 +39,13 @@ Následující diagram znázorňuje architekturu řešení, které se má vytvo�
 
 ![Diagram architektury vysoké úrovně pro řešení přístupu k soukromému webu](./media/functions-create-private-site-access/topology.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro účely tohoto kurzu je důležité pochopit IP adresy a podsítě. Můžete začít s [tímto článkem, který se zabývá základy adresování a podsítí](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Mnoho dalších článků a videí je k dispozici online.
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -151,7 +151,7 @@ Dalším krokem je vytvoření aplikace Function App v Azure s využitím [plán
     | ------------ | ---------------- | ---------------- |
     | _Účet úložiště_ | Globálně jedinečný název | Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](storage-considerations.md#storage-account-requirements). |
     | _Operační systém_ | Preferovaný operační systém | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. |
-    | _Plán_ | Consumption | [Plán hostování](./functions-scale.md) určuje, jak se aplikace funkcí škáluje, a prostředky dostupné pro jednotlivé instance. |
+    | _Plán_ | Využití | [Plán hostování](./functions-scale.md) určuje, jak se aplikace funkcí škáluje, a prostředky dostupné pro jednotlivé instance. |
 1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte výběry konfigurace aplikace.
 1. Klikněte na možnost **Vytvořit** a zřiďte a nasaďte aplikaci funkcí.
 

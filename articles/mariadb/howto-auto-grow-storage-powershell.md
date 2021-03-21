@@ -3,15 +3,15 @@ title: Automatické zvětšování úložiště – Azure PowerShell-Azure Datab
 description: Tento článek popisuje, jak můžete povolit automatické zvětšování úložiště pomocí prostředí PowerShell v Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ef495fc884b1930f8510b6b2443bde40e269a8f1
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 87438c406ea2b31942003d9211cf5e285628f15d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98665153"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>Automatické zvětšení úložiště na serveru Azure Database for MariaDB pomocí prostředí PowerShell
@@ -23,7 +23,7 @@ Automatické zvětšení úložiště zabrání vašemu serveru [dosáhnout limi
 > [!IMPORTANT]
 > Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce budete potřebovat:
 

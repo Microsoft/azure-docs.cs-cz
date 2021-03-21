@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
 ms.openlocfilehash: 6d20454515088ccca87665d9b3b27c0d82c3cdf9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020396"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Ladění založené na datech s využitím diagramu úloh
@@ -77,7 +77,7 @@ Pokud je předchozí krok dotazu vstupní procesor, použijte vstupní metriky, 
 *   **Nevyřízené události vstupu (celkem)** oznamuje, kolik dalších zpráv je potřeba přečíst pro Event Hubs a Azure IoT Hub vstupy. Pokud je toto číslo větší než 0, znamená to, že vaše úloha nemůže zpracovat data jako rychlou, jak je připravujeme v. V takovém případě možná budete muset zvýšit počet jednotek streamování a/nebo zajistit, aby se vaše úloha mohla paralelně rozrůstat. Další informace najdete na  [stránce věnované paralelnímu dotazování](./stream-analytics-parallelization.md). 
 
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html). 
 
 ## <a name="next-steps"></a>Další kroky

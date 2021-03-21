@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95021010"
 ---
 # <a name="securing-azure-sql-edge"></a>Zabezpečení Edge Azure SQL
@@ -72,7 +72,7 @@ Objekty zabezpečení jsou jednotlivci, skupiny a procesy s uděleným přístup
 |Implementace zabezpečených připojení|[Šifrování připojení](/sql/linux/sql-server-linux-encrypted-connections)|  
 |Funkce šifrování|[Kryptografické funkce &#40;Transact-SQL&#41;](/sql/t-sql/functions/cryptographic-functions-transact-sql)|
 |Šifrování dat v klidovém umístění|[Transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption)|
-|Funkce Always Encrypted|[Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|
+|Always Encrypted|[Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|
 | &nbsp; | &nbsp; |
 
 > [!NOTE]

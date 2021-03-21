@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 09151ea0fe3d419401d576149f6655b8cdc09f8e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019954"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Vývoj úloh Stream Analytics Edge pomocí nástrojů sady Visual Studio
 
 V tomto kurzu se naučíte používat nástroje pro Stream Analytics pro Visual Studio. Naučíte se, jak vytvářet, ladit a vytvářet úlohy Stream Analytics Edge. Až úlohu vytvoříte a otestujete, můžete přejít na Azure Portal a nasadit ji do svých zařízení. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující předpoklady:
 

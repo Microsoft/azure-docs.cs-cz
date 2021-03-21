@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98680328"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Kurz: směrování elektrických vozidel pomocí Azure Notebooks (Python)
@@ -35,7 +35,7 @@ V tomto kurzu:
 > * Najděte a vizualizujte trasu k nejbližší elektrické stanici zpoplatnění elektrického vozidla na základě času na disku.
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Abyste mohli tento kurz dokončit, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). 
 

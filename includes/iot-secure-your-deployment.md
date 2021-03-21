@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010690"
 ---
 Tento článek poskytuje další úroveň podrobností pro zabezpečení infrastruktury Internet věcí založené na službě Azure IoT (IoT). Odkazuje na podrobnosti úrovně implementace pro konfiguraci a nasazení jednotlivých komponent. Nabízí také porovnání a volby mezi různými konkurenčními metodami.

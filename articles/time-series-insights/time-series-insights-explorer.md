@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 639f2ef12d190a56e04a9b48d96ea0a6537d243c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020108"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Průzkumník Gen1
@@ -40,7 +40,7 @@ Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládán�
 >[!NOTE]
 >Přehrajte si předchozí video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Začínáme s Azure Time Series Insights pomocí akcelerátoru řešení Azure IoT".</a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct použít Azure Time Series Insights Explorer, musíte:
 
@@ -111,7 +111,7 @@ Během několika minut od připojení zdroje událostí k vašemu Azure Time Ser
 
 1. Pomocí **heatmapu** můžete v daném dotazu rychle vymezit jedinečné nebo neobvyklé datové řady. Pouze jeden hledaný termín lze vizuálně rozčlenit jako heatmapu.
 
-    Vytváření [grafů v průzkumníkovi Time Series Insights heatmapu](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (Media/Time-Series-Insights-Explorer/tsi-ga-example-heatmap-charting.png # Lightbox)
+    Vytváření [grafů v průzkumníkovi Time Series Insights heatmapu](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (Media/Time-Series-Insights-Explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. Když prozkoumáte události tak, že vyberete nebo kliknete pravým tlačítkem myši, zpřístupní se panel **události** . Tady můžete zkontrolovat všechny nezpracované události a vyexportovat události jako soubory JSON nebo CSV. Azure Time Series Insights ukládá všechna nezpracovaná data.
 

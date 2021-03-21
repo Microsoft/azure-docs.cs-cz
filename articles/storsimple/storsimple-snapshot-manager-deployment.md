@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003867"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>Nasazení modulu snap-in StorSimple Snapshot Manager MMC
@@ -173,7 +173,7 @@ Pomocí následujících kroků můžete vytvořit a uložit kopii databáze Sto
    3. Na stránce **služby** vyberte **Služba Microsoft StorSimple Management Service**.
    4. V pravém podokně v části **Služba správy Microsoft StorSimple** klikněte na **Zastavit službu**.
       
-        ![Zastavení služby StorSimple Device Manager](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
+        ![Zastavení služby StorSimple Správce zařízení](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 2. Přejít na C:\ProgramData\Microsoft\StorSimple\BACatalog. 
    
    > [!NOTE]

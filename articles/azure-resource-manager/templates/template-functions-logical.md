@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920465"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logické funkce pro šablony ARM
@@ -19,7 +19,7 @@ Správce prostředků poskytuje několik funkcí pro porovnávání v šabloně 
 * [chybné](#false)
 * [if](#if)
 * [mění](#not)
-* [ani](#or)
+* [nebo](#or)
 * [podmínka](#true)
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
@@ -32,11 +32,11 @@ Kontroluje, zda jsou všechny hodnoty parametrů pravdivé. `and`Funkce není v 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Yes |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Yes |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |No |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -96,9 +96,9 @@ Převede parametr na logickou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
+| arg1 |Yes |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -215,11 +215,11 @@ Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false. `if`F
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| pomocné |Ano |boolean |Hodnota, která ověří, zda je true nebo false. |
-| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
-| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
+| pomocné |Yes |boolean |Hodnota, která ověří, zda je true nebo false. |
+| trueValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
+| falseValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -341,9 +341,9 @@ Převede logickou hodnotu na její opačnou hodnotu. `not`Funkce není v bicep p
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |boolean |Hodnota, kterou chcete převést. |
+| arg1 |Yes |boolean |Hodnota, kterou chcete převést. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -436,11 +436,11 @@ Kontroluje, zda je hodnota parametru pravdivá. `or`Funkce není v bicep podporo
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Yes |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Yes |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |No |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: jingwang
 ms.openlocfilehash: 90cc4e3f9915db424cec89cfc764771b5be785e9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389718"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopírování dat ze zdroje OData pomocí Azure Data Factory
@@ -22,7 +22,7 @@ ms.locfileid: "100389718"
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data ze zdroje OData. Článek se vytvoří na [aktivitě kopírování v Azure Data Factory](copy-activity-overview.md), která představuje obecný přehled aktivity kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor OData se podporuje pro následující činnosti:
 
@@ -36,7 +36,7 @@ Konkrétně tento konektor OData podporuje:
 - OData verze 3,0 a 4,0.
 - Kopírování dat pomocí jednoho z následujících ověřování: **anonymní**, **základní**, **Windows** a **instanční objekt AAD**.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

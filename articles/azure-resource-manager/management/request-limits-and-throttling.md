@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97563122"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
@@ -87,7 +87,7 @@ Někteří poskytovatelé prostředků vrátí 429, aby nahlásily dočasný pro
 
 Počet zbývajících požadavků můžete určit vyzkoumáním hlaviček odpovědi. Žádosti o čtení vrátí hodnotu v hlavičce pro počet zbývajících požadavků na čtení. Požadavky na zápis obsahují hodnotu pro počet zbývajících požadavků na zápis. Následující tabulka popisuje hlavičky odpovědí, které můžete u těchto hodnot ověřit:
 
-| Hlavička odpovědi | Popis |
+| Hlavička odpovědi | Description |
 | --- | --- |
 | x-MS-ratelimit-zbývající předplatné – čtení |Zbývající čtení v oboru předplatného. Tato hodnota je vrácena při operacích čtení. |
 | x-MS-ratelimit-zbývající předplatné-zápisy |Zbývající zápisy v oboru předplatného Tato hodnota je vrácena při operacích zápisu. |

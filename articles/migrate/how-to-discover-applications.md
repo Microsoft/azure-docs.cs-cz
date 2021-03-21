@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: 8266b585881546b37bbb21b82780ab26d85dada7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048076"
 ---
 # <a name="discover-installed-applications-roles-and-features-software-inventory-and-sql-server-instances-and-databases"></a>Zjišťování nainstalovaných aplikací, rolí a funkcí (inventář softwaru) a instancí SQL Server a databází
@@ -20,7 +20,7 @@ Tento článek popisuje, jak zjišťovat nainstalované aplikace, role a funkce 
 Provádění inventáře softwaru pomáhá identifikovat a přizpůsobit cestu migrace do Azure pro vaše úlohy. Inventář softwaru používá zařízení Azure Migrate k provádění zjišťování pomocí přihlašovacích údajů serveru. Je to zcela bez agenta – na servery nejsou nainstalované žádné agenty, aby bylo možné tato data shromažďovat.
 
 > [!NOTE]
-> Inventář softwaru je momentálně ve verzi Preview pro servery, na kterých běží jenom prostředí VMware, a je omezený jenom na zjišťování. V současné době nenabízíme posuzování na základě aplikací.<br/> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+> Inventář softwaru je momentálně ve verzi Preview pro servery, na kterých běží jenom prostředí VMware, a je omezený jenom na zjišťování. V současné době nenabízíme posuzování na základě aplikací.<br/> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 ## <a name="before-you-start"></a>Než začnete
 

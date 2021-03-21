@@ -6,10 +6,10 @@ ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 3bc7ed4ada4f7810e9864778c7f76a0573c9dc89
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102632504"
 ---
 # <a name="tutorial-use-exported-json-template-from-the-azure-portal"></a>Kurz: použití exportované šablony JSON z Azure Portal
@@ -18,7 +18,7 @@ V této sérii kurzů jste vytvořili soubor bicep pro nasazení účtu úloži�
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Doporučujeme, abyste dokončili [kurz týkající se výstupů](bicep-tutorial-add-outputs.md), ale není to nutné.
 

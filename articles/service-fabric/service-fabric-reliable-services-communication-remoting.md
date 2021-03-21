@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791573"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Vzdálená komunikace služby v jazyce C# s Reliable Services
@@ -267,7 +267,7 @@ Sestavte sestavení klienta se sestavením rozhraní, abyste se ujistili, že se
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>Použití explicitních tříd vzdálené komunikace k vytvoření naslouchacího procesu/továrny klienta pro verzi v2 (kompatibilní s rozhraním)
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Přidejte prostředek koncového bodu s názvem "ServiceEndpointV2_1" v manifestu služby.
 
@@ -356,7 +356,7 @@ Tento krok zajistí, že služba naslouchá jenom na naslouchací službě v2.
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Použití vlastní serializace se zprávou zabalené vzdálené komunikace
 
 U zprávy zabalené vzdálené komunikace vytvoříme jeden zabalený objekt se všemi parametry jako pole v něm.
-Postupujte následovně:
+Postupujte takto:
 
 1. Implementujte `IServiceRemotingMessageSerializationProvider` rozhraní k poskytnutí implementace pro vlastní serializaci.
     Tento fragment kódu ukazuje, jak implementace vypadá jako.

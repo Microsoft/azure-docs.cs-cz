@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 1eeb291c7a058efd8905e95ebf1ea14fed046691
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98680514"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Streamování protokolů aplikace Azure Spring Cloudu v reálném čase
@@ -20,7 +20,7 @@ ms.locfileid: "98680514"
 
 Azure jaře Cloud umožňuje streamování protokolů v Azure CLI a získat tak řešení potíží v protokolech konzoly aplikací v reálném čase. Můžete také [analyzovat protokoly a metriky pomocí nastavení diagnostiky](./diagnostic-services.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [rozšíření Azure CLI](/cli/azure/install-azure-cli) pro jarní Cloud a minimální verzi 0.2.0.
 * Instance **jarního cloudu Azure** se spuštěnou aplikací, například [jarní cloudová aplikace](./spring-cloud-quickstart.md).

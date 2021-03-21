@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
 ms.openlocfilehash: ed397e9f8db721a6baa641fc958af0dda570ce57
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561936"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Nasazení modelů strojového učení do Azure
@@ -316,13 +316,13 @@ Během nasazování modelu se může zobrazit Změna stavu služby během plnéh
 
 Následující tabulka popisuje různé stavy služby:
 
-| Stav WebService | Popis | Konečný stav?
+| Stav WebService | Description | Konečný stav?
 | ----- | ----- | ----- |
-| Přechod | Služba je v procesu nasazení. | Ne |
-| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
-| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
-| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
-| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
+| Přechod | Služba je v procesu nasazení. | No |
+| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
+| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | No |
+| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Yes |
+| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Yes |
 
 > [!TIP]
 > Při nasazování jsou image Docker pro cíle výpočtů sestavené a načtené z Azure Container Registry (ACR). Ve výchozím nastavení Azure Machine Learning vytvoří ACR, který používá *základní* úroveň služby. Změna ACR pro váš pracovní prostor na úroveň Standard nebo Premium může zkrátit dobu potřebnou k sestavování a nasazování imagí do vašich výpočetních cílů. Další informace najdete v tématu [Azure Container Registry úrovně služeb](../container-registry/container-registry-skus.md).

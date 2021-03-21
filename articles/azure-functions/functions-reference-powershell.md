@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
 ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936783"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Níže jsou uvedené platné parametry pro volání `Push-OutputBinding` :
 
-| Název | Typ | Pozice | Popis |
+| Název | Typ | Pozice | Description |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
@@ -227,7 +227,7 @@ MyQueue                        myData
 
 Zástupné znaky (*) jsou podporovány v `Get-OutputBinding` .
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Protokolování funkcí prostředí PowerShell funguje jako běžné protokolování do PowerShellu. K zápisu do každého výstupního datového proudu můžete použít rutiny protokolování. Každá rutina se mapuje na úroveň protokolu využívané funkcemi.
 
@@ -386,7 +386,7 @@ Když vytvoříte aplikaci funkcí pomocí nástrojů, jako je například Visua
 
 V následující tabulce jsou uvedeny verze prostředí PowerShell, které jsou k dispozici pro každou hlavní verzi modulu runtime functions a požadovaná verze rozhraní .NET:
 
-| Verze funkcí | Verze prostředí PowerShell                               | Verze .NET  | 
+| Verze funkcí | Verze Powershellu                               | Verze .NET  | 
 |-------------------|--------------------------------------------------|---------------|
 | 3. x (doporučeno) | PowerShell 7 (doporučeno)<br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
 | 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
@@ -470,7 +470,7 @@ Když aktualizujete soubor requirements.psd1, po restartování se nainstalují 
 
 Pomocí následujících nastavení aplikace můžete změnit způsob stažení a instalace spravovaných závislostí. Upgrade vaší aplikace se spouští v rámci nástroje `MDMaxBackgroundUpgradePeriod` a proces upgradu se dokončí přibližně v `MDNewSnapshotCheckPeriod` .
 
-| Nastavení Function App              | Výchozí hodnota             | Popis                                         |
+| Nastavení Function App              | Výchozí hodnota             | Description                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 dnů)     | Každý pracovní proces PowerShellu inicializuje kontrolu upgradů modulů na Galerie prostředí PowerShell spuštění procesu a každé z nich `MDMaxBackgroundUpgradePeriod` . Když je v Galerie prostředí PowerShell k dispozici nová verze modulu, nainstaluje se do systému souborů a zpřístupní se pro pracovní procesy prostředí PowerShell. Snížením této hodnoty umožníte, aby aplikace Function App získala novější verze modulu, ale také zvyšuje využití prostředků aplikace (v/v sítě, CPU, úložiště). Zvýšením této hodnoty se sníží využití prostředků aplikace, ale může také dojít k zpoždění doručení nových verzí modulu do aplikace. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 hodina)       | Až se v systému souborů nainstalují nové verze modulů, musí se všechny pracovní procesy PowerShellu restartovat. Restartování pracovních procesů PowerShell ovlivní dostupnost vaší aplikace, protože může přerušit aktuální spuštění funkce. Dokud nebudou všechny pracovní procesy prostředí PowerShell restartovány, mohou být vyvolány funkce buď staré, nebo nové verze modulu. Restart všech pracovních procesů PowerShellu se dokončil v rámci `MDNewSnapshotCheckPeriod` . Zvýšením této hodnoty se zkrátí frekvence přerušení, ale může se prodloužit i čas, kdy volání funkcí používají buď starou, nebo nové verze modulu, které nejsou deterministické. |

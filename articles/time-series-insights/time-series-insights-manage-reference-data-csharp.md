@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: d6f0e5230fb3c59cab690620e837f476f3392a48
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020074"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Správa referenčních dat pro prostředí Azure Time Series Insights Gen 1 pomocí jazyka C Sharp
@@ -61,10 +61,10 @@ Před kompilací a spuštěním ukázkového kódu proveďte následující krok
 
 ## <a name="project-dependencies"></a>Závislosti projektu
 
-Doporučuje se použít nejnovější verzi sady Visual Studio a **NETCore. app**:
+Doporučuje se používat nejnovější verzi sady Visual Studio a **NETCore.app**:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) – verze 16.4.2 +
-* [NETCore. app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) – verze 2.2.8
+* [NETCore.app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) – verze 2.2.8
 
 Vzorový kód má dvě požadované závislosti:
 

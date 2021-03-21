@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 8b46ad7a34be99aefeb067591fa1b029dba2361e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561885"
 ---
 # <a name="azure-storage-container-management-partners"></a>Azure Storage partneři pro správu kontejnerů
@@ -21,7 +21,7 @@ V tomto článku jsou zajímavá Partnerská řešení Microsoftu, která umož�
 
 ## <a name="verified-partners"></a>Ověření partneři
 
-| Partner | Popis | Odkaz na web/produkt |
+| Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Logo společnosti Kasten](./media/kasten-logo.png) |**Kasten**<br>Kasten by Veeam poskytuje řešení pro zálohování Kubernetes a zotavení po havárii. Kasten pomáhá podnikům překonat den 2 výzvy ke správě dat, aby mohli bez obav spouštět aplikace v Kubernetes.<br><br>Softwarová platforma pro správu dat Kasten K10 poskytuje podnikovým provozním týmům škálovatelný a zabezpečený systém pro BCDR a mobilitu aplikací Kubernetes.|[Stránka partnerského serveru](https://docs.kasten.io/latest/install/azure/azure.html)|
 | ![Logo společnosti Portworx](./media/portworx-logo.png) |**Portworx**<br>Portworx čistým úložištěm poskytuje řešení pro trvalé úložiště, BCDR, zabezpečení dat, propojení mezi cloudy a migrace dat pro aplikace běžící na Kubernetes.|[Stránka partnerského serveru](https://portworx.com/azure/)|

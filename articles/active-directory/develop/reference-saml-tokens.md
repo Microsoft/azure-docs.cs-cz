@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
 ms.openlocfilehash: 9c3132985866a4c245984ef632107c05ca1b3350
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348378"
 ---
 # <a name="saml-token-claims-reference"></a>Odkaz na deklarace identity tokenu SAML
@@ -27,7 +27,7 @@ Platforma Microsoft Identity Platform generuje při zpracování každého toku 
 ## <a name="claims-in-saml-tokens"></a>Deklarace identity v tokenech SAML
 
 > [!div class="mx-codeBreakAll"]
-> | Název | Ekvivalentní deklarace JWT | Popis | Příklad |
+> | Name | Ekvivalentní deklarace JWT | Popis | Příklad |
 > | --- | --- | --- | ------------|
 > |Cílová skupina | `aud` |Zamýšlený příjemce tokenu. Aplikace, která obdrží token, musí ověřit, zda je hodnota cílové skupiny správná a zamítnuta všechny tokeny určené pro jinou cílovou skupinu. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Okamžik ověření | |Zaznamenává datum a čas, kdy došlo k ověření. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
@@ -39,7 +39,7 @@ Platforma Microsoft Identity Platform generuje při zpracování každého toku 
 > |IssuedAt | `iat` |Ukládá čas, kdy byl token vydán. Často se používá k měření aktuálnosti tokenů. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Vystavitel | `iss` |Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token. V tokenech, které Azure AD vrací, je Vystavitel sts.windows.net. Identifikátor GUID v hodnotě deklarace vystavitele je ID tenanta adresáře služby Azure AD. ID tenanta je neměnný a spolehlivý identifikátor adresáře. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |Příjmení | `family_name` |Poskytuje příjmení, příjmení nebo rodinné jméno uživatele, jak je definováno v objektu uživatele Azure AD. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Název | `unique_name` |Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota není zaručena jako jedinečná v rámci tenanta a je navržena tak, aby se používala pouze pro účely zobrazení. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |Name | `unique_name` |Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota není zaručena jako jedinečná v rámci tenanta a je navržena tak, aby se používala pouze pro účely zobrazení. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |ID objektu | `oid` |Obsahuje jedinečný identifikátor objektu ve službě Azure AD. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Pomocí ID objektu Identifikujte objekt v dotazech do služby Azure AD. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Role | `roles` |Představuje všechny aplikační role, na které byl subjekt udělen přímo i nepřímo prostřednictvím členství ve skupině a lze jej použít k vyřízení přístupu na základě rolí. Aplikační role jsou definovány na základě jednotlivých aplikací prostřednictvím `appRoles` vlastnosti manifestu aplikace. `value`Vlastnost každé aplikační role je hodnota, která se zobrazí v deklaraci identity rolí. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |Předmět | `sub` |Určuje objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nedá se znovu přiřadit ani použít znovu, takže ji můžete použít k bezpečnému provádění kontrol autorizace. Protože předmět je vždy přítomen v tokenech, které jsou v Azure AD problémy, doporučujeme tuto hodnotu použít v systému autorizace pro obecné účely. <br> `SubjectConfirmation` není deklarací identity. Popisuje, jak je ověřen předmět tokenu. `Bearer` indikuje, že subjekt je potvrzený jeho držitelem. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
