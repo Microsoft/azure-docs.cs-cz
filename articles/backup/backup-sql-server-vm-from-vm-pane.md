@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze n
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88891653"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>Zálohování SQL Server v podokně virtuálního počítače

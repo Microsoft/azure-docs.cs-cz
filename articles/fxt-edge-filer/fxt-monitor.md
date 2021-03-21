@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 86e1d74d5e4ab9f6e799c73bcf0d807d0d874f21
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219713"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Monitorovat stav hardwaru Azure FXT Edge souborového
@@ -60,7 +60,7 @@ Indikátory stavu na levé straně zobrazují plnou žlutou žlutou světlo, pok
 
 Pokud k této chybě došlo i po vyzkoušení těchto řešení, [požádejte](fxt-support-ticket.md) o pomoc podporu.
 
-| Ikona | Popis | Chybový stav | Možná řešení |
+| Ikona | Description | Chybový stav | Možná řešení |
 |----------------|---------------|--------------------|----------------------|
 | ![ikona jednotky](media/fxt-monitor/fxt-hd-icon.jpg) | Stav jednotky | Chyba jednotky | Zkontrolujte protokol událostí systému, abyste zjistili, jestli má jednotka chybu, nebo <br>Spusťte příslušný test online diagnostiky. Restartujte systém a spusťte Embedded Diagnostics (ePSA), nebo <br>Pokud jsou jednotky nakonfigurované v poli RAID, restartujte systém a zadejte program pro konfiguraci hostitelského adaptéru. |
 |![ikona teploty](media/fxt-monitor/fxt-temp-icon.jpg) | Stav teploty | Tepelná chyba – například ventilátor se nezdařil nebo je okolní teplota mimo rozsah | Podívejte se na následující adresovatelné podmínky: <br>Chladicí ventilátor chybí nebo se nezdařil. <br>V systému se odeberou titulní stranu systému, modul Air Shroud, modul pro vyplňování paměti nebo zálomená závorka. <br>Okolní teplota je příliš vysoká. <br>Externí tok v toku je zablokován. |
@@ -74,7 +74,7 @@ Velké tlačítko rozsvícené na pravé straně levého ovládacího panelu ind
 
 Stisknutím tlačítka stav systému a ID přepnete mezi režimem ID systému a režimem stavu systému.
 
-|Stav systému stav | Stav |
+|Stav systému stav | Podmínka |
 |-------------------------------------------|-----------------------------------------------|
 | Plná modrá | Normální operace: systém je zapnutý, pracuje normálně a režim ID systému není aktivní. <br/>Pokud chcete přepnout do režimu ID systému, stiskněte tlačítko Stav systému a ID. |
 | Modré blikání | Režim ID systému je aktivní. Pokud chcete přepnout do režimu stavu systému, stiskněte tlačítko Stav systému a systémové ID. |

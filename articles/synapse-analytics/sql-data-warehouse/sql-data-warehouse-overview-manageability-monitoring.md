@@ -2,21 +2,21 @@
 title: Správa a monitorování – přehled
 description: Přehled monitorování a správy pro využití prostředků, aktivity protokolů, doporučení a ochrany dat (zálohování a obnovení) s vyhrazeným fondem SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 08/27/2018
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4792842eddac3e8082be2d3a67736824a02dfebd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 56ec38140d53788de7cc94f3cb6046177ad2bed4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317501"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585464"
 ---
 # <a name="manageability-and-monitoring-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Správa a monitorování pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 

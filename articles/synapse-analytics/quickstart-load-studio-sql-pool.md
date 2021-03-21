@@ -2,19 +2,19 @@
 title: 'Rychlý Start: hromadné načtení dat pomocí vyhrazeného fondu SQL'
 description: Pomocí synapse studia můžete hromadně načítat data do vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
 ms.date: 12/11/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53b6810b0042df382fd1f553bc4bd0fae61793b3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: be15a37a9a2965da36f7e8f884a0a3112106b9ba
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672793"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586722"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-studio"></a>Rychlý Start: hromadné načítání pomocí synapse studia
 
@@ -26,7 +26,7 @@ Data můžete hromadně načíst kliknutím pravým tlačítkem myši na násled
 
 ![Snímek obrazovky, který ukazuje kliknutí pravým tlačítkem myši na soubor nebo složku z účtu úložiště.](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Průvodce vygeneruje příkaz COPY, který používá předávací předávání Azure Active Directory (Azure AD) pro ověřování. Váš [uživatel Azure AD musí mít přístup](./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) k pracovnímu prostoru, který má aspoň roli Azure data BLOB úložiště pro účet Azure Data Lake Storage Gen2. 
 

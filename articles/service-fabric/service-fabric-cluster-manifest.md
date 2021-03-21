@@ -4,10 +4,10 @@ description: Přečtěte si, jak nakonfigurovat samostatný nebo místní cluste
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: fd93263b38340ce080cca1aecb98f3a599ff1861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91843154"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace samostatného clusteru Windows
@@ -197,7 +197,7 @@ Všechny dostupné funkce doplňku se dají zobrazit v [odkazu Service Fabric RE
 Pokud chcete povolit podporu kontejnerů pro kontejnery Windows serveru i pro kontejnery Hyper-V pro samostatné clustery, musí být povolená funkce doplňku služba DNSservice.
 
 ## <a name="next-steps"></a>Další kroky
-PoClusterConfig.jsdokončení nastavení souboru * na* základě samostatné instalace clusteru můžete nasadit svůj cluster. Postupujte podle kroků v části [vytvoření samostatného Service Fabricho clusteru](service-fabric-cluster-creation-for-windows-server.md). 
+PoClusterConfig.jsdokončení nastavení souboru *na* základě samostatné instalace clusteru můžete nasadit svůj cluster. Postupujte podle kroků v části [vytvoření samostatného Service Fabricho clusteru](service-fabric-cluster-creation-for-windows-server.md). 
 
 Pokud máte nasazen samostatný cluster, můžete také [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md). 
 

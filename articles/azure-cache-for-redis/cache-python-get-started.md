@@ -12,10 +12,10 @@ ms.custom:
 - devx-track-python
 ms.date: 11/05/2019
 ms.openlocfilehash: 048c31bedb56bdb66dc3b80d12c3014652e34625
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121146"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Rychlý Start: použití mezipaměti Azure pro Redis v Pythonu
@@ -26,7 +26,7 @@ V tomto článku zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste m�
 
 Pokud chcete přeskočit přímo na kód, přečtěte si [rychlý Start Pythonu](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/python) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Python 2 nebo 3](https://www.python.org/downloads/)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8592b679fcfbb860962bf75b882dc1a0543412c0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: ffea2d84f1a5149670976beef3b9af847ae31a35
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613965"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582132"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – nejčastější dotazy
 
@@ -110,7 +110,7 @@ Po vytvoření fondu hostitelů nemůžete změnit jeho typ. Můžete ale přesu
 
 Omezení nebo kvóty v FSLogix závisí na prostředcích infrastruktury úložiště, které se používají k ukládání souborů VHD (X) profilů uživatele.
 
-Následující tabulka obsahuje příklad toho, jak všechny prostředky, které profil FSLogix potřebuje k podpoře jednotlivých uživatelů. Požadavky se můžou výrazně lišit v závislosti na uživateli, aplikacích a aktivitě na jednotlivých profilech.
+V následující tabulce je uveden příklad toho, kolik vstupně-výstupních operací vyžaduje, aby profil FSLogix podporoval každého uživatele. Požadavky se můžou výrazně lišit v závislosti na uživateli, aplikacích a aktivitě na jednotlivých profilech.
 
 | Prostředek | Požadavek |
 |---|---|

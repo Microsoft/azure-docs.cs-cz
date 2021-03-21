@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: allensu
 ms.openlocfilehash: 9ec217cefb05929ed6f5c7395df5e68891e823ac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739776"
 ---
 # <a name="retrieve-load-balancer-metadata-using-the-azure-instance-metadata-service-imds"></a>Načtení metadat služby Vyrovnávání zatížení pomocí Instance Metadata Service Azure (IMDS)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pro svůj požadavek použijte [nejnovější verzi rozhraní API](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#supported-api-versions) .
 

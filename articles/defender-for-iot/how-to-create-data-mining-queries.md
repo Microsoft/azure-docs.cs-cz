@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0738dc7f2b7012002fc6ddf5cc68dd0c8e42b04d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522475"
 ---
 # <a name="sensor-data-mining-queries"></a>Dotazy dolování dat ze senzorů
@@ -45,7 +45,7 @@ K dispozici jsou různé nástroje pro správu dotazů. Například můžete exp
 
 ### <a name="dynamic-updates"></a>Dynamické aktualizace
 
-Dotazy dolování dat, které vytvoříte, se dynamicky aktualizují pokaždé, když je otevřete. Příklad:
+Dotazy dolování dat, které vytvoříte, se dynamicky aktualizují pokaždé, když je otevřete. Například:
 
 - Pokud vytvoříte sestavu pro verze firmwaru na zařízeních v 1. června a znovu otevřete sestavu od 10. června, Tato sestava se aktualizuje o informace, které jsou přesné pro 10. června.
 
@@ -138,7 +138,7 @@ Vytvoření sestavy dolování dat:
 
 Následující tabulka popisuje možnosti správy pro dolování dat:
 
-| Obrázek ikony | Popis |
+| Obrázek ikony | Description |
 |--|--|
 | :::image type="icon" source="media/how-to-generate-reports/edit-a-simulation-icon.png" border="false"::: | Upravte parametry sestavy. |
 | :::image type="icon" source="media/how-to-generate-reports/export-as-pdf-icon.png" border="false"::: | Exportovat jako PDF |
@@ -285,7 +285,3 @@ Vygenerování sestavy:
 3. V pravém rozevíracím seznamu vyberte sestavu, kterou chcete vygenerovat.
 
 4. Pokud chcete vytvořit PDF výsledků sestavy, vyberte :::image type="icon" source="media/how-to-generate-reports/pdf-report-icon.png" border="false"::: .
-
-## <a name="next-steps"></a>Další kroky
-
-[Trendy senzorů a statistické sestavy](how-to-create-trends-and-statistics-reports.md).

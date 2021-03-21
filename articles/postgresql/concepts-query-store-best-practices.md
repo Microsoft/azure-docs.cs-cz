@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708828"
 ---
 # <a name="best-practices-for-query-store"></a>Osvědčené postupy pro úložiště dotazů
@@ -25,7 +25,7 @@ Umožněte, aby úložiště dotazů zachytává data, která vás zajímá.
 |**pg_qs pg_qs.query_capture_mode** | **Scénář**|
 |---|---|
 |_Vše_  |Důkladně Analyzujte své úlohy z pohledu všech dotazů a jejich frekvencí spuštění a dalších statistik. Identifikujte nové dotazy v úlohách. Zjišťuje, jestli se k identifikaci příležitostí pro uživatele nebo automatické Parametrizace používají ad hoc dotazy. _Vše_ přináší zvýšené náklady na spotřebu prostředků. |
-|_Nahoře_  |Zaměřte pozornost na nejčastější dotazy, které vystavili klienti.
+|_Vrchol_  |Zaměřte pozornost na nejčastější dotazy, které vystavili klienti.
 |_Žádný_ |Již jste zaznamenali sadu dotazů a časové okno, které chcete prozkoumat, a chcete eliminovat, že by mohly zavádět další dotazy. _Žádná_ je vhodná pro testování a označování prostředí. _Žádné_ by se měly používat opatrně, protože byste mohli přijít o příležitost sledovat a optimalizovat důležité nové dotazy. Nemůžete obnovit data v předchozích časových oknech. |
 
 Úložiště dotazů zahrnuje i úložiště pro statistiku čekání. K dispozici je další dotaz na režim sběru dat, který řídí statistiku čekání: **pgms_wait_sampling. query_capture_mode** lze nastavit na _hodnotu None_ nebo _All_. 

@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80519945"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro používání přihlášení Google
@@ -25,8 +25,8 @@ Chcete-li dokončit postup v tomto tématu, musíte mít účet Google, který m
 ## <a name="register-your-application-with-google"></a><a name="register"> </a>Registrace aplikace pomocí Google
 
 1. Pokud chcete vytvořit ID klienta a tajný klíč klienta, postupujte podle dokumentace Google na webu [google Sign-In pro aplikace na straně serveru](https://developers.google.com/identity/sign-in/web/server-side-flow) . Není nutné dělat žádné změny kódu. Stačí použít následující informace:
-    - U **autorizovaných zdrojů JavaScriptu**použijte `https://<app-name>.azurewebsites.net` s názvem vaší aplikace v *\<app-name>* .
-    - Pro **autorizovaný identifikátor URI přesměrování**použijte `https://<app-name>.azurewebsites.net/.auth/login/google/callback` .
+    - U **autorizovaných zdrojů JavaScriptu** použijte `https://<app-name>.azurewebsites.net` s názvem vaší aplikace v *\<app-name>* .
+    - Pro **autorizovaný identifikátor URI přesměrování** použijte `https://<app-name>.azurewebsites.net/.auth/login/google/callback` .
 1. Zkopírujte ID aplikace a hodnoty tajného klíče aplikace.
 
     > [!IMPORTANT]
@@ -35,8 +35,8 @@ Chcete-li dokončit postup v tomto tématu, musíte mít účet Google, který m
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Přidání informací Google do aplikace
 
 1. V [Azure Portal]přejdete do aplikace App Service.
-1. Vyberte **Nastavení**  >  **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
-1. Vyberte **Google**a potom vložte ID aplikace a hodnoty tajného klíče aplikace, které jste získali dříve. Povolte všechny rozsahy, které vaše aplikace vyžaduje.
+1. Vyberte **Nastavení**  >  **ověřování/autorizace** a ujistěte se, že je **zapnuté** **ověřování App Service** .
+1. Vyberte **Google** a potom vložte ID aplikace a hodnoty tajného klíče aplikace, které jste získali dříve. Povolte všechny rozsahy, které vaše aplikace vyžaduje.
 1. Vyberte **OK**.
 
    App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Další informace najdete v tématu [autorizace a zamítnutí uživatelů](app-service-authentication-how-to.md#authorize-or-deny-users).

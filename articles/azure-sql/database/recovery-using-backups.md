@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
 ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98795323"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Obnovení pomocí automatických záloh databáze – Azure SQL Database & spravované instance SQL
@@ -82,7 +82,7 @@ Obecně obnovuje databázi do dřívějšího bodu pro účely obnovení. Obnove
 
 V okně Přehled databáze, kterou chcete obnovit v Azure Portal, můžete obnovit jednu databázi nebo instanci databáze k určitému bodu v čase.
 
-#### <a name="sql-database"></a>Databáze SQL
+#### <a name="sql-database"></a>SQL Database
 
 Chcete-li obnovit databázi k určitému bodu v čase pomocí Azure Portal, otevřete stránku Přehled databáze a na panelu nástrojů vyberte možnost **obnovit** . Zvolte zdroj zálohy a vyberte bod zálohování bodu v čase, ze kterého bude vytvořena nová databáze.
 
@@ -111,7 +111,7 @@ Odstraněné databáze ze serveru nebo prostředku spravované instance obnovít
 > [!TIP]
 > Může trvat několik minut, než se nedávno odstraněné databáze zobrazí na stránce **odstraněné databáze** v Azure Portal, nebo při [programovém](#programmatic-recovery-using-automated-backups)zobrazení odstraněných databází.
 
-#### <a name="sql-database"></a>Databáze SQL
+#### <a name="sql-database"></a>SQL Database
 
 Chcete-li obnovit odstraněnou databázi na čas odstranění pomocí Azure Portal, otevřete stránku Přehled serveru a vyberte **odstraněné databáze**. Vyberte odstraněnou databázi, kterou chcete obnovit, a zadejte název nové databáze, která bude vytvořena s daty obnovenými ze zálohy.
 
@@ -127,7 +127,7 @@ Chcete-li obnovit spravovanou databázi pomocí Azure Portal, otevřete stránku
 
 Pomocí následujících ukázkových skriptů můžete obnovit odstraněnou databázi pro SQL Database nebo SQL spravovanou instanci pomocí prostředí PowerShell.
 
-#### <a name="sql-database"></a>Databáze SQL
+#### <a name="sql-database"></a>SQL Database
 
 Vzorový skript PowerShellu, který ukazuje, jak obnovit odstraněnou databázi v Azure SQL Database, najdete v tématu [obnovení databáze pomocí PowerShellu](scripts/restore-database-powershell.md).
 
@@ -153,7 +153,7 @@ Geografické obnovení je výchozí možností obnovení v případě, že datab
 
 Z Azure Portal vytvoříte novou databázi jedné nebo spravované instance a vyberete dostupnou zálohu geografického obnovení. Nově vytvořená databáze obsahuje geograficky obnovená data zálohy.
 
-#### <a name="sql-database"></a>Databáze SQL
+#### <a name="sql-database"></a>SQL Database
 
 Chcete-li geograficky obnovit izolovanou databázi z Azure Portal v oblasti a na serveru podle vašeho výběru, postupujte podle následujících kroků:
 
@@ -168,7 +168,7 @@ Dokončete proces vytváření nové databáze ze zálohy. Když v Azure SQL Dat
 
 #### <a name="sql-managed-instance"></a>Spravovaná instance SQL
 
-Chcete-li geograficky obnovit databázi spravované instance z Azure Portal do existující spravované instance v oblasti podle vašeho výběru, vyberte spravovanou instanci, na které chcete databázi obnovit. Postupujte následovně:
+Chcete-li geograficky obnovit databázi spravované instance z Azure Portal do existující spravované instance v oblasti podle vašeho výběru, vyberte spravovanou instanci, na které chcete databázi obnovit. Postupujte takto:
 
 1. Vyberte **Nová databáze**.
 2. Zadejte požadovaný název databáze.
@@ -181,7 +181,7 @@ Dokončete proces vytváření nové databáze. Při vytváření databáze inst
 
 ### <a name="geo-restore-by-using-powershell"></a>Geografické obnovení pomocí PowerShellu
 
-#### <a name="sql-database"></a>Databáze SQL
+#### <a name="sql-database"></a>SQL Database
 
 Skript PowerShellu, který ukazuje, jak provést geografickou obnovu pro izolovanou databázi, najdete v tématu [použití PowerShellu k obnovení izolované databáze k dřívějšímu bodu v čase](scripts/restore-database-powershell.md).
 
@@ -210,7 +210,7 @@ Pro obnovení můžete použít také Azure PowerShell nebo REST API. V následu
 > [!IMPORTANT]
 > Modul PowerShell Azure Resource Manager je stále podporován SQL Database a spravovanou instancí SQL, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a in Azure Resource Manager jsou v dobrém rozsahu stejné.
 
-#### <a name="sql-database"></a>Databáze SQL
+#### <a name="sql-database"></a>SQL Database
 
 Informace o obnovení samostatné databáze nebo databáze ve fondu najdete v tématu [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
@@ -245,7 +245,7 @@ Postup obnovení databáze pomocí REST API:
 
 ### <a name="azure-cli"></a>Azure CLI
 
-#### <a name="sql-database"></a>Databáze SQL
+#### <a name="sql-database"></a>SQL Database
 
 Chcete-li obnovit databázi pomocí rozhraní příkazového řádku Azure, přečtěte si téma [AZ SQL DB Restore](/cli/azure/sql/db#az-sql-db-restore).
 

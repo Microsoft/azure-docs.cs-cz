@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 049025a5d871f1dd26e5dab498756aa44d2ebfe2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 27353e6086085aadae622e007a38f97e15cbcb7f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693071"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587861"
 ---
 # <a name="introduction-to-securing-azure-service-accounts"></a>Úvod k zabezpečení účtů služeb Azure
 
@@ -38,13 +38,13 @@ Pro služby hostované v Azure doporučujeme používat spravovanou identitu, po
 
 ## <a name="managed-identities"></a>Spravované identity
 
-Spravované identity jsou identity zabezpečené Azure Active Directory (Azure AD) vytvořené za účelem poskytování identit pro prostředky Azure. Existují [dva typy spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types): 
+Spravované identity jsou identity zabezpečené Azure Active Directory (Azure AD) vytvořené za účelem poskytování identit pro prostředky Azure. Existují [dva typy spravovaných identit](../managed-identities-azure-resources/overview.md#managed-identity-types): 
  
 * Spravované identity přiřazené systémem se dají přiřadit přímo k instanci služby. 
 
 * Spravované identity přiřazené uživatelem je možné vytvořit jako samostatný prostředek. 
 
-Další informace najdete v tématu [zabezpečení spravovaných identit](service-accounts-managed-identities.md). Obecné informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Další informace najdete v tématu [zabezpečení spravovaných identit](service-accounts-managed-identities.md). Obecné informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md)
 
 ## <a name="service-principals"></a>Instanční objekty
 
@@ -67,6 +67,3 @@ Další informace o zabezpečení účtů služeb Azure najdete v těchto témat
 [Zabezpečení instančních objektů](service-accounts-principal.md)
 
 [Řízení účtů služeb Azure](service-accounts-governing-azure.md)
-
-
-

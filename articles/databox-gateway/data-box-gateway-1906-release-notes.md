@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/11/2020
 ms.author: alkohli
 ms.openlocfilehash: 51f4995ffd6a86022d95df15ae0eb7694d878c60
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96581828"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Poznámky k verzi pro Azure Data Box Edge a Azure Data Box Gateway 1906
@@ -29,7 +29,7 @@ Tato verze odpovídá verzím softwaru:
 > [!NOTE]
 > Aktualizace 1906 se dá použít jenom pro Data Box Edge zařízení, na kterých běží Obecná dostupnost (GA) nebo 1905 verze softwaru.
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 - **Oprava chyb v pracovním postupu správy klíčů pro obnovení** – v předchozí verzi došlo k chybě, vzhledem k tomu, že obnovovací klíč nebyl použit. Tato chyba je opravena v této verzi. Důrazně doporučujeme použít tuto aktualizaci, protože obnovovací klíč vám umožní obnovit data v zařízení v případě, že se zařízení nespustí. Další informace najdete v tématu Jak [Uložit obnovovací klíč při nasazení data box Edge nebo data box Gateway](../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device).
 - **Vylepšení protokolování v poli programovatelné brány pole (FPGA)** – bylo provedeno spouštění 1905 vydání, protokolování a upozornění souvisejících s FPGA. Tato možnost bude i nadále požadovaná aktualizace pro Data Box Edge, pokud používáte funkci Edge COMPUTE s FPGA. Další informace najdete v tématu Jak [transformovat data pomocí hraničních výpočtů na data box Edge](../databox-online/azure-stack-edge-deploy-configure-compute-advanced.md).

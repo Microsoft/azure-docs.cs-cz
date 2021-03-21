@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621327"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurace koncových bodů sítě služby soubory Azure
@@ -23,7 +23,7 @@ Soubory Azure poskytují dva hlavní typy koncových bodů pro přístup ke sdí
 
 V účtu služby Azure Storage existují veřejné a privátní koncové body. Účet úložiště je konstrukce správy, která představuje sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB.
 
-Tento článek se zaměřuje na konfiguraci koncových bodů účtu úložiště pro přímý přístup ke sdílené složce Azure. Většina podrobností uvedených v tomto dokumentu se vztahuje také na to, jak Azure File Sync spolupracují s veřejnými a soukromými koncovými body pro účet úložiště. Další informace o požadavcích na síť pro Azure File Sync nasazení najdete v tématu [konfigurace Azure File Sync proxy serveru a nastavení brány firewall](storage-sync-files-firewall-and-proxy.md).
+Tento článek se zaměřuje na konfiguraci koncových bodů účtu úložiště pro přímý přístup ke sdílené složce Azure. Většina podrobností uvedených v tomto dokumentu se vztahuje také na to, jak Synchronizace souborů Azure spolupracují s veřejnými a soukromými koncovými body pro účet úložiště. Další informace o požadavcích na síť pro Synchronizace souborů Azure nasazení najdete v tématu [konfigurace synchronizace souborů Azure proxy serveru a nastavení brány firewall](storage-sync-files-firewall-and-proxy.md).
 
 Před načtením tohoto průvodce doporučujeme přečíst si [informace o sítích Azure Files](storage-files-networking-overview.md) .
 

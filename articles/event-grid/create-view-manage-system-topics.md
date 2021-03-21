@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak zobrazit existující systémové
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86115107"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Vytváření, zobrazování a Správa systémových témat Event Grid v Azure Portal
@@ -20,7 +20,7 @@ Můžete vytvořit systémové téma pro prostředek Azure (účet úložiště,
 - Použití stránky **témata Event Grid systému** . Následující postup slouží pro vytváření systémových témat pomocí stránky **Event Grid systému** . 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
-2. Do vyhledávacího pole v horní části zadejte **Event Grid systémová témata**a potom stiskněte klávesu **ENTER**. 
+2. Do vyhledávacího pole v horní části zadejte **Event Grid systémová témata** a potom stiskněte klávesu **ENTER**. 
 
     ![Vyhledat systémová témata](./media/create-view-manage-system-topics/search-system-topics.png)
 3. Na stránce **Event Grid systémová témata** vyberte **+ Přidat** na panelu nástrojů.
@@ -50,7 +50,7 @@ Můžete vytvořit systémové téma pro prostředek Azure (účet úložiště,
 Pomocí těchto kroků zobrazíte všechna existující Event Grid systémová témata. 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
-2. Do vyhledávacího pole v horní části zadejte **Event Grid systémová témata**a potom stiskněte klávesu **ENTER**. 
+2. Do vyhledávacího pole v horní části zadejte **Event Grid systémová témata** a potom stiskněte klávesu **ENTER**. 
 
     ![Vyhledat systémová témata](./media/create-view-manage-system-topics/search-system-topics.png)
 3. Na stránce **témata týkající se Event Grid systému** uvidíte všechna systémová témata. 
@@ -83,7 +83,7 @@ Pomocí těchto kroků zobrazíte všechna existující Event Grid systémová t
 2. Na stránce **Event Grid systémové téma** vyberte **+ odběr události** z panelu nástrojů. 
 
     ![Téma systému – tlačítko Přidat odběr události](./media/create-view-manage-system-topics/add-event-subscription-button.png)
-3. Potvrďte, že se automaticky vyplní **typ tématu**, **zdrojový prostředek**a **název tématu** . Zadejte název, vyberte **Typ koncového bodu**a zadejte **koncový bod**. Pak vyberte **vytvořit** a vytvořte odběr události. 
+3. Potvrďte, že se automaticky vyplní **typ tématu**, **zdrojový prostředek** a **název tématu** . Zadejte název, vyberte **Typ koncového bodu** a zadejte **koncový bod**. Pak vyberte **vytvořit** a vytvořte odběr události. 
 
     ![Systémové téma – Vytvoření odběru událostí](./media/create-view-manage-system-topics/create-event-subscription.png)
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
 ms.openlocfilehash: 7fda10310a4bac085b248248d80d708dfa7f3ff7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96581804"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>Aktualizace Azure Data Box Gateway
@@ -63,7 +63,7 @@ Doporučujeme nainstalovat aktualizace prostřednictvím Azure Portal. Zařízen
 
     ![Snímek obrazovky domovské stránky Azure Data Box Gateway s možností přehled a staženým nápisem oznámení o aktualizacích.](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
-    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Install** (Nainstalovat).
+    Pokud se rozhodnete stahovat pouze aktualizace, vyberte oznámení a otevřete okno **aktualizace zařízení** . Vyberte **Nainstalovat**.
   
     ![Snímek obrazovky dialogového okna aktualizace zařízení s možností instalovat s názvem.](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
@@ -149,7 +149,7 @@ Dokončení tohoto postupu trvá přibližně 20 minut. Provedením následujíc
 
 5. Spustí se aktualizace. Po úspěšné aktualizaci zařízení se restartuje. Místní uživatelské rozhraní není v tuto dobu k dispozici.
 
-6. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance** navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru v tomto příkladu je **1.6.1049.786**.
+6. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru v tomto příkladu je **1.6.1049.786**.
 
    ![Snímek obrazovky Data Box Gateway místní web U I s možností aktualizace softwaru a aktualizovanou aktuální zprávu o verzi softwaru vyvolanou.](./media/data-box-gateway-apply-updates/local-ui-update-6.png)
 

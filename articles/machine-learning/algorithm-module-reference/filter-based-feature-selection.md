@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
 ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91945698"
 ---
 # <a name="filter-based-feature-selection"></a>Výběr funkcí na základě filtrů
@@ -66,7 +66,7 @@ Zvolíte standardní statistickou metriku. Modul vypočítá korelaci mezi dvoji
     > Ujistěte se, že sloupce, které poskytujete jako vstup, jsou potenciální funkce. Například sloupec, který obsahuje jednu hodnotu, nemá žádnou hodnotu informace.
     >
     > Pokud víte, že některé sloupce by měly špatné funkce, můžete je z výběru sloupce odebrat. Můžete také použít modul [Upravit metadata](edit-metadata.md) a označit ho jako **kategorií**. 
-3.  V případě **metody bodování funkcí**vyberte jednu z následujících vytvořených statistických metod, které se použijí při výpočtu skóre.  
+3.  V případě **metody bodování funkcí** vyberte jednu z následujících vytvořených statistických metod, které se použijí při výpočtu skóre.  
 
     | Metoda              | Požadavky                             |
     | ------------------- | ---------------------------------------- |
@@ -79,10 +79,10 @@ Zvolíte standardní statistickou metriku. Modul vypočítá korelaci mezi dvoji
 
     Pokud zrušíte zaškrtnutí tohoto políčka, modul vytvoří skóre pro libovolný sloupec, který jinak splňuje kritéria, až do počtu sloupců zadaných v **počtu požadovaných funkcí**.  
 
-5.  V poli **cílový sloupec**vyberte možnost **Spustit selektor sloupců** a vyberte sloupec popisku buď podle názvu, nebo podle jeho indexu. (Indexy jsou založené na jednom.)  
+5.  V poli **cílový sloupec** vyberte možnost **Spustit selektor sloupců** a vyberte sloupec popisku buď podle názvu, nebo podle jeho indexu. (Indexy jsou založené na jednom.)  
     Pro všechny metody, které zahrnují statistickou korelaci, je vyžadován sloupec popisku. Modul vrátí chybu v době návrhu, pokud jste zvolili možnost žádný sloupec popisku nebo více sloupců popisku. 
 
-6.  V poli **počet požadovaných funkcí**zadejte počet sloupců funkce, které chcete vrátit, jako výsledek:  
+6.  V poli **počet požadovaných funkcí** zadejte počet sloupců funkce, které chcete vrátit, jako výsledek:  
 
     - Minimální počet funkcí, které můžete zadat, je jeden, ale doporučujeme tuto hodnotu zvýšit.  
 
@@ -112,7 +112,7 @@ Pokud datová sada obsahuje méně sloupců, než jste očekávali, podívejte s
 
 ##  <a name="technical-notes"></a>Technické poznámky  
 
-### <a name="implementation-details"></a>Podrobnosti implementace
+### <a name="implementation-details"></a>Podrobnosti o implementaci
 
 Pokud používáte korelaci Pearsonova s numerickou funkcí a popiskem kategorií, skóre funkce se vypočítá takto:  
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b7883d6c541558e26793f94e37014a20b14d761e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102634970"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577247"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -48,7 +48,7 @@ Pokud chcete pracovat v tomto scénáři, budete pracovat s komponentami předem
 
 Tady jsou komponenty implementované ukázkovou aplikací *AdtSampleApp* scénář vytváření:
 * Ověřování zařízení 
-* Příklady použití [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) (najdete v *CommandLoop.cs*)
+* Příklady použití [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) (najdete v *CommandLoop. cs*)
 * Rozhraní konzoly pro volání rozhraní API digitálních vláken Azure
 * *SampleClientApp* – ukázkové řešení digitálních vláken Azure
 * *SampleFunctionsApp* – aplikace Azure Functions, která aktualizuje graf digitálních vláken Azure v důsledku telemetrie z IoT Hub a událostí digitálních vláken Azure
@@ -121,35 +121,51 @@ Zpět v okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
-Aby aplikace Function App mohla získat přístup k digitálním funkcím Azure, bude potřebovat identitu spravovanou systémem s oprávněními pro přístup k instanci digitálních vláken Azure. Nastavíte tuto hodnotu jako další.
+Aby aplikace Function App mohla přistupovat k digitálním funkcím Azure, bude muset mít oprávnění pro přístup k instanci digitálních vláken Azure a názvu hostitele instance. Nakonfigurujete tyto další.
 
-### <a name="assign-permissions-to-the-function-app"></a>Přiřazení oprávnění k aplikaci Function App
+### <a name="configure-permissions-for-the-function-app"></a>Konfigurace oprávnění pro aplikaci Function App
 
-Pokud chcete povolit aplikaci Function App přístup k digitálním úlohám Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení této aplikace identitě spravované systémem Azure AD a udělení této identity roli *vlastníka dat v Azure Digital* realiass v instanci digitálních vláken Azure. Tato role se vyžaduje pro libovolného uživatele nebo funkci, která chce v instanci provést mnoho aktivit roviny dat. Další informace o zabezpečení a přiřazování rolí si můžete přečíst v tématu [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md).
+Existují dvě nastavení, která je potřeba nastavit, aby aplikace Function App měla přístup k instanci digitálních vláken Azure. Tyto příkazy lze provádět prostřednictvím příkazů v [Azure Cloud Shell](https://shell.azure.com). 
 
-V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na instanci digitálních vláken Azure. Zadejte zástupné symboly s podrobnostmi o vašich prostředcích (Nezapomeňte, že adresa URL instance digitálního vlákna Azure představuje název hostitele, kterému předchází *https://*).
+#### <a name="assign-access-role"></a>Přiřadit roli přístupu
+
+Prvním nastavením je aplikace Function App role **vlastníka dat s digitálním výsledkem Azure** v instanci digitálních vláken Azure. Tato role se vyžaduje pro libovolného uživatele nebo funkci, která chce v instanci provést mnoho aktivit roviny dat. Další informace o zabezpečení a přiřazování rolí si můžete přečíst v tématu [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md). 
+
+1. Chcete-li zobrazit podrobnosti o identitě spravované systémem pro funkci, použijte následující příkaz. Poznamenejte si pole **principalId** ve výstupu.
+
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > Pokud je výsledek prázdný místo zobrazení podrobností identity, vytvořte novou systémově spravovanou identitu pro funkci pomocí tohoto příkazu:
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > Ve výstupu se pak zobrazí podrobnosti o identitě, včetně **principalId** hodnoty požadované pro další krok. 
+
+1. Pomocí hodnoty **principalId** v následujícím příkazu přiřaďte identitu aplikace funkcí roli **Vlastník dat služby Azure Digital Twins** pro vaši instanci Azure Digital Twins.
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+Výsledkem tohoto příkazu jsou informace o přiřazení role, kterou jste vytvořili. Aplikace Function App má teď oprávnění k přístupu k datům v instanci digitálních vláken Azure.
+
+#### <a name="configure-application-settings"></a>Konfigurace nastavení aplikace
+
+Druhé nastavení vytvoří **proměnnou prostředí** pro funkci s adresou URL instance digitálního vlákna Azure. Kód funkce bude používat k odkazování na vaši instanci. Další informace o proměnných prostředí najdete v tématu [*Správa aplikace Function App*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
+
+Spusťte následující příkaz, který vyplní zástupné symboly podrobnostmi o vašich prostředcích.
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 
 Výstupem je seznam nastavení funkce Azure Functions, která by teď měla obsahovat položku s názvem **ADT_SERVICE_URL**.
 
-Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Ve výstupu vyhledejte pole **principalId** .
-
-```azurecli-interactive
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
-```
-
-Pomocí hodnoty **principalId** z výstupu v následujícím příkazu přiřaďte identitu aplikace funkcí k roli *vlastníka dat digitálních vláken Azure* pro vaši instanci digitálních vláken Azure.
-
-[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
-
-```azurecli-interactive
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-
-Výsledkem tohoto příkazu jsou informace o přiřazení role, kterou jste vytvořili. Aplikace Function App má teď oprávnění pro přístup k instanci digitálních vláken Azure.
 
 ## <a name="process-simulated-telemetry-from-an-iot-hub-device"></a>Zpracovat simulovanou telemetrii z IoT Hubho zařízení
 
@@ -242,7 +258,7 @@ V novém okně sady Visual Studio otevřete (ze stažené složky řešení) _si
 >[!NOTE]
 > Nyní byste měli mít dvě okna sady Visual Studio, jednu s _**DeviceSimulator. sln**_ a jednu z předchozích verzí _**AdtE2ESample. sln**_.
 
-V podokně *Průzkumník řešení* v tomto novém okně sady Visual Studio vyberte možnost _DeviceSimulator/**AzureIoTHub.cs**_ a otevřete ji v okně pro úpravy. Změňte následující hodnoty připojovacího řetězce na hodnoty, které jste shromáždili výše:
+V podokně *Průzkumník řešení* v tomto novém okně sady Visual Studio vyberte možnost _DeviceSimulator/**AzureIoTHub. cs**_ a otevřete ji v okně pro úpravy. Změňte následující hodnoty připojovacího řetězce na hodnoty, které jste shromáždili výše:
 
 ```csharp
 iotHubConnectionString = <your-hub-connection-string>

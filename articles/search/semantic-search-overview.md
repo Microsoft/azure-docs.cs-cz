@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 443d6349aab68fd05edfe4c4007fd043c932f4f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d4b0a4107b3894d65dd8e168cd58566d4a4b5090
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604266"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720487"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Sémantické vyhledávání v Azure Kognitivní hledání
 
@@ -50,7 +50,9 @@ Komponenty sémantického hledání rozšíří existující kanál spuštění 
 
 Provádění dotazů bude v obvyklých případech pokračovat s analýzou, analýzou a prověřováním obrácených indexů. Modul načítá dokumenty pomocí odpovídajícího tokenu a skóre výsledků používá [výchozí algoritmus bodování podobnosti](index-similarity-and-scoring.md#similarity-ranking-algorithms). Skóre se počítají na základě stupně jazykové podobnosti mezi výrazy dotazu a odpovídajícími podmínkami v indexu. Pokud jste je definovali, budou se v této fázi také použít profily bodování. Výsledky se pak předávají do subsystému sémantického vyhledávání.
 
-V kroku přípravy se dokument corpus vrácený z počáteční sady výsledků analyzuje na úrovni věty a odstavce, kde najdete pasáže shrnující jednotlivé dokumenty. Na rozdíl od hledání klíčových slov tento krok vyhodnocuje obsah pomocí čtení a porozumění počítače. V rámci složení výsledků sémantický dotaz vrací titulky a odpovědi. Sémantické vyhledávání používá k extrakci a zvýraznění klíčových pasáží, které nejlépe shrnují výsledek, použití jazykové reprezentace. Pokud je vyhledávací dotaz požadován a jsou požadovány odpovědi, bude odpověď zahrnovat také text pasáž, který nejlépe odpovídá otázce, jak je vyjádřen vyhledávacím dotazem. U titulků a odpovědí se v formulaci používá existující text. Sémantické modely nevytvářejí nové věty nebo fráze z dostupného obsahu ani nepoužívají logiku pro doručení nových závěrů. V krátkém případě systém nikdy nevrátí obsah, který ještě neexistuje.
+V kroku přípravy se dokument corpus vrácený z počáteční sady výsledků analyzuje na úrovni věty a odstavce, kde najdete pasáže shrnující jednotlivé dokumenty. Na rozdíl od hledání klíčových slov tento krok vyhodnocuje obsah pomocí čtení a porozumění počítače. V této fázi zpracování obsahu vrátí sémantický dotaz [titulky](semantic-how-to-query-request.md) a [odpovědi](semantic-answers.md). Sémantické vyhledávání používá k extrakci a zvýraznění klíčových pasáží, které nejlépe shrnují výsledek, použití jazykové reprezentace. Pokud je vyhledávací dotaz požadován a jsou požadovány odpovědi, bude odpověď zahrnovat také text pasáž, který nejlépe odpovídá otázce, jak je vyjádřen vyhledávacím dotazem. 
+
+U titulků a odpovědí se v formulaci používá existující text. Sémantické modely nevytvářejí nové věty nebo fráze z dostupného obsahu ani nepoužívají logiku pro doručení nových závěrů. V krátkém případě systém nikdy nevrátí obsah, který ještě neexistuje.
 
 Výsledky se pak převrátí na základě [rámcové podobnosti](semantic-ranking.md) podmínek dotazu.
 

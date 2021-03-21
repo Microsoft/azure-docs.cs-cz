@@ -2,14 +2,14 @@
 title: Odstranit skupinu prostředků a prostředky
 description: Popisuje, jak odstranit skupiny prostředků a prostředky. Popisuje, jak Azure Resource Manager při odstraňování skupiny prostředků vyřadí odstranění prostředků. Popisuje kódy odpovědí a způsob, jakým Správce prostředků je zpracovává, aby bylo možné určit, zda bylo odstranění úspěšné.
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6c38169916cc6c47d6f05c88645fa435bbdb146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 244d59ffc096b5e219e27fd376b07baecde3670e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614406"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587657"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager skupiny prostředků a odstraňování prostředků
 
@@ -119,6 +119,13 @@ az resource delete \
 
 ---
 
+## <a name="required-access"></a>Požadovaný přístup
+
+Pokud chcete odstranit skupinu prostředků, potřebujete přístup k akci odstranění pro prostředek **Microsoft. Resources/Subscriptions/resourceGroups** . Také potřebujete odstranit pro všechny prostředky ve skupině prostředků.
+
+Seznam operací najdete v tématu [operace poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md). Seznam předdefinovaných rolí najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
+
+Pokud máte požadovaný přístup, ale žádost o odstranění se nepovede, může to být tím, že existuje [Zámek](lock-resources.md) skupiny prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 

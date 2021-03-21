@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 339ae9a0a799a0a03f1fcf37dadf2e1ffa724243
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0cca47269e632e1fcba1f8f9eb1c835f27e63059
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028678"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582799"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>Příručka pro vývojáře pro IoT technologie Plug and Play zařízení
 
@@ -26,7 +26,7 @@ Tato příručka popisuje základní kroky potřebné k vytvoření zařízení,
 Pokud chcete vytvořit technologie Plug and Play zařízení, modul nebo modul IoT Edge IoT, postupujte podle těchto kroků:
 
 1. Ujistěte se, že zařízení používá protokol WebSockets MQTT nebo MQTT pro připojení k Azure IoT Hub.
-1. Vytvořte model [DTDL (Digital s definicemi jazyků)](https://github.com/Azure/opendigitaltwins-dtdl) pro popis zařízení. Další informace najdete v tématu [pochopení komponent v modelech IoT technologie Plug and Play](concepts-components.md).
+1. Vytvořte model [DTDL (Digital s definicemi jazyků)](https://github.com/Azure/opendigitaltwins-dtdl) pro popis zařízení. Další informace najdete v tématu [pochopení komponent v modelech IoT technologie Plug and Play](concepts-modeling-guide.md).
 1. Aktualizujte zařízení nebo modul, aby informoval `model-id` jako součást připojení zařízení.
 1. Implementace telemetrie, vlastností a příkazů pomocí [konvencí technologie Plug and Play IoT](concepts-convention.md)
 
@@ -66,9 +66,9 @@ Po dokončení implementace zařízení nebo modulu použijte [Azure IoT Explore
 
 Teď, když jste se naučili o službě IoT technologie Plug and Play pro vývoj zařízení, tady je několik dalších prostředků:
 
-- [Jazyk DTDL (Digital autodefinition Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl)
+- [Jazyk DTDL (Digital Twins Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [Sada SDK pro zařízení jazyka C](/azure/iot-hub/iot-c-sdk-ref/)
 - [REST API IoT](/rest/api/iothub/device)
-- [Komponenty modelu](concepts-components.md)
+- [Pochopení komponent v modelech IoT technologie Plug and Play](concepts-modeling-guide.md)
 - [Instalace a použití nástrojů pro tvorbu DTDL](howto-use-dtdl-authoring-tools.md)
 - [Příručka pro vývojáře služby IoT technologie Plug and Play](concepts-developer-guide-service.md)

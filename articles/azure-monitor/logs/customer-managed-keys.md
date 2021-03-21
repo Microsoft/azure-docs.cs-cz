@@ -6,10 +6,10 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
 ms.openlocfilehash: 9fdaf42f18c320bf841e710b7066451fca24eaae
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030983"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
@@ -423,7 +423,7 @@ Customer-Managed klíč je k dispozici na vyhrazeném clusteru a tyto operace js
 
   - Pokud je vaše Key Vault v Private-Link (vNet), nemůžete použít klíč spravovaný zákazníkem s uživatelem přiřazenou spravovanou identitou. V tomto scénáři můžete použít spravovanou identitu přiřazenou systémem.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135673"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure 
@@ -46,7 +46,7 @@ Pokud používáte verzi služby Site Recovery mobility starší než 9.7.0.0 ne
 Chcete-li ověřit, zda je agent nainstalován:
 
 1. Na virtuálním počítači Azure ve složce C:\WindowsAzure\Packages by se měl zobrazit soubor WaAppAgent.exe.
-2. Klikněte na soubor pravým tlačítkem a v okně **vlastnosti**vyberte kartu **Podrobnosti** .
+2. Klikněte na soubor pravým tlačítkem a v okně **vlastnosti** vyberte kartu **Podrobnosti** .
 3. Ověřte, že se v poli **verze produktu** zobrazuje 2.6.1198.718 nebo vyšší.
 
 [Přečtěte si další informace](../virtual-machines/extensions/agent-windows.md) o instalaci agenta pro Windows.
@@ -76,7 +76,7 @@ Nainstalujte agenta [virtuálního počítače Azure Linux](../virtual-machines/
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Pro Linux se přihlaste jako uživatel root. V terminálu přejděte na **/User/Local/ASR**a spusťte následující příkaz:
+    - Pro Linux se přihlaste jako uživatel root. V terminálu přejděte na **/User/Local/ASR** a spusťte následující příkaz:
         ```
         ./uninstall.sh -Y
         ```

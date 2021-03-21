@@ -4,10 +4,10 @@ description: Tento článek poskytuje návod k použití nástroje příkazovéh
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1d8ede0f78726b04ac862a00b559b8d42c3ed1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88650770"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>Nahrání souboru VHD do účtu úložiště testovacího prostředí pomocí AzCopy
@@ -26,9 +26,9 @@ Následující kroky vás provedou odesláním souboru VHD do Azure DevTest Labs
 
 1. Získejte název účtu úložiště testovacího prostředí pomocí Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. Vyberte **všechny služby** a v seznamu vyberte **DevTest Labs** .
 
 1. V seznamu cvičení vyberte požadované testovací prostředí.  
 

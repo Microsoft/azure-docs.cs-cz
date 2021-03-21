@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
 ms.openlocfilehash: b79a63d16229c761b29776667c771e940d8f69d7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100527118"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Kurz: Konfigurace CybSafe pro Automatické zřizování uživatelů
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v CybSafe i Azure Active Di
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a CybSafe
 > * Zřizování skupin a členství ve skupinách v CybSafe
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

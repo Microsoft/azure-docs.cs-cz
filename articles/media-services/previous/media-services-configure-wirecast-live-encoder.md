@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.reviewer: cenkdin;anilmur
 ms.openlocfilehash: a736270919f36cb7d4bbd4e686a98ddc57f402fa
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103016827"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru Wirecast k odeslání živého streamu s jednou přenosovou rychlostí
@@ -37,7 +37,7 @@ V tomto kurzu se dozvíte, jak spravovat Azure Media Services (AMS) pomocí nás
 > [!NOTE]
 > Kodéry musí podporovat protokol TLS 1,2 při použití protokolů RTMP. Použijte Wirecast verze 13.0.2 nebo vyšší z důvodu požadavku TLS 1,2.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * [Vytvoření účtu Azure Media Services](media-services-portal-create-account.md)
 * Ujistěte se, že je spuštěný koncový bod streamování. Další informace najdete v tématu [Správa koncových bodů streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md) .
 * Nainstalujte nejnovější verzi nástroje [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) .
@@ -172,7 +172,7 @@ Pokud dojde k chybě, kanál se musí resetovat a nastavení kodéru se upraví.
 
 Stream je teď připravený k vložení do přehrávače nebo k distribuci do cílové skupiny pro živé prohlížení.  
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Pokyny najdete v článku [věnovaném řešení potíží](media-services-troubleshooting-live-streaming.md) .
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services

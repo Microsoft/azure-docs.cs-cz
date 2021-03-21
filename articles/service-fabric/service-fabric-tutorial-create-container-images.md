@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 31b5f870465bc1dff9d6ff7827a4efed084bcf62
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92739063"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Kurz: Vytváření imagí kontejneru v clusteru Service Fabric s Linuxem
@@ -90,7 +90,7 @@ az account set --subscription <subscription_id>
 
 Pokud chcete nasadit službu Azure Container Registry, nejprve potřebujete skupinu prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu **az group create** . V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *westus* .
+Vytvořte skupinu prostředků pomocí příkazu **az group create**. V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *westus*.
 
 ```azurecli
 az group create --name <myResourceGroup> --location westus
@@ -106,7 +106,7 @@ V celé zbývající části tohoto kurzu používáme položku „acrName“ ja
 
 ## <a name="sign-in-to-your-container-registry"></a>Přihlaste se ke svému registru kontejneru.
 
-Před nahráním imagí do instance ACR se přihlaste. Dokončete operaci pomocí příkazu **az acr login** . Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
+Před nahráním imagí do instance ACR se přihlaste. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
 ```azurecli
 az acr login --name <acrName>

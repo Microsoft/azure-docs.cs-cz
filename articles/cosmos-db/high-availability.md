@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: f22d97f8a4ab5e5b6e275c405cce523e8a7b8e72
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fd704d45aa7dc10835a205f12ce26fc01a7ea44f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656546"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584495"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Jak Azure Cosmos DB poskytovat vysokou dostupnost
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -69,12 +69,14 @@ Ve výjimečných případech regionálního výpadku Azure Cosmos DB zajišťuj
 
 * Při výpadku oblasti zápisu bude účet Azure Cosmos automaticky propagovat sekundární oblast jako novou primární oblast pro zápis, když je v účtu Azure Cosmos nakonfigurovaná **možnost povolit automatické převzetí služeb při selhání** . Pokud je tato možnost povolená, dojde k převzetí služeb při selhání do jiné oblasti v pořadí podle priority oblasti, kterou jste zadali.
 
+* Mějte na paměti, že ruční převzetí služeb při selhání by se nemělo aktivovat a nebude úspěšné v případě výpadku zdrojové nebo cílové oblasti. Důvodem je kontrola konzistence, kterou vyžaduje postup převzetí služeb při selhání, které vyžaduje připojení mezi oblastmi.
+
 * Když je dříve ovlivněná oblast zpět online, všechna data zápisu, která nebyla replikována v případě selhání oblasti, jsou zpřístupněna prostřednictvím [kanálu konfliktů](how-to-manage-conflicts.md#read-from-conflict-feed). Aplikace mohou číst kanál konfliktů, řešit konflikty na základě logiky specifické pro aplikaci a podle potřeby zapisovat aktualizovaná data zpátky do kontejneru Azure Cosmos.
 
 * Jakmile se výše ovlivněné oblasti zápisu napřed mění, bude automaticky dostupná jako oblast pro čtení. Můžete přejít zpátky do obnovené oblasti jako oblast zápisu. Oblasti můžete přepínat pomocí [PowerShellu, rozhraní příkazového řádku Azure nebo Azure Portal](how-to-manage-database-account.md#manual-failover). Neexistují **žádná data ani ztráta dostupnosti** před, během nebo po přepnutí oblasti zápisu a aplikace bude dál vysoce dostupná.
 
 > [!IMPORTANT]
-> Důrazně doporučujeme, abyste nakonfigurovali účty Azure Cosmos používané pro produkční úlohy, aby se **povolilo automatické převzetí služeb při selhání**. Ruční převzetí služeb při selhání vyžaduje připojení mezi sekundární a primární oblastí pro zápis k dokončení kontroly konzistence, aby při převzetí služeb při selhání nedošlo ke ztrátě dat. Pokud není primární oblast k dispozici, tato kontrola konzistence nemůže být dokončena a ruční převzetí služeb při selhání nebude úspěšné, což vede ke ztrátě dostupnosti zápisu po dobu trvání regionu v oblasti výpadku.
+> Důrazně doporučujeme, abyste nakonfigurovali účty Azure Cosmos používané pro produkční úlohy, aby se **povolilo automatické převzetí služeb při selhání**. To umožňuje Cosmos DB převzetí služeb při selhání databáze účtů, aby se automaticky dostupná oblasti. Pokud tato konfigurace není k dispozici, účet bude mít za následek ztrátu dostupnosti zápisu pro celou dobu výpadku oblasti zápisu, protože ruční převzetí služeb při selhání nebude úspěšné kvůli nedostatku možnosti připojení k oblasti.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Účty s více oblastmi s jednou oblastí zápisu (nevýpadek oblasti čtení)
 
@@ -138,7 +140,22 @@ Zóny dostupnosti lze povolit prostřednictvím:
 
 * I když je váš účet Azure Cosmos vysoce dostupný, vaše aplikace nemusí být správně navržená tak, aby zůstala vysoce dostupná. K otestování komplexní vysoké dostupnosti vaší aplikace, jako součást testování aplikací nebo zotavení po havárii (DR), můžete dočasně zakázat automatické převzetí služeb při selhání pro účet, vyvolat [ruční převzetí služeb při selhání pomocí PowerShellu, rozhraní příkazového řádku Azure nebo Azure Portal](how-to-manage-database-account.md#manual-failover)a potom monitorovat převzetí služeb při selhání vaší aplikace. Po dokončení můžete navrátit služby po obnovení do primární oblasti a obnovit automatické převzetí služeb při selhání pro tento účet.
 
+> [!IMPORTANT]
+> Nevolejte ruční převzetí služeb při selhání při Cosmos DB ve zdrojové nebo cílové oblasti, protože vyžaduje, aby připojení oblastí udržovalo konzistenci dat a nebude úspěšné.
+
 * V rámci globálně distribuovaného databázového prostředí existuje přímý vztah mezi úrovní konzistence a odolností dat při výpadku v rámci oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než se aplikace kompletně obnoví po přerušení události. Čas potřebný k úplnému obnovení aplikace je známý jako cíl doby obnovení (RTO). Také je potřeba porozumět maximálnímu intervalu nedávných aktualizací dat, které může aplikace tolerovat při obnovování po přerušení události. Časový interval aktualizací, které si můžete dovolit ztratit, se označuje jako cíl bodu obnovení (RPO). Pokud chcete zobrazit RPO a RTO pro Azure Cosmos DB, přečtěte si část [úrovně konzistence a odolnost dat](./consistency-levels.md#rto) .
+
+## <a name="what-to-expect-during-a-region-outage"></a>Co očekávat při výpadku oblasti
+
+U účtů s jednou oblastí budou klienti zacházet s ztrátou dostupnosti čtení a zápisu.
+
+Účty s více oblastmi budou mít různá chování v závislosti na následující tabulce.
+
+| Oblasti zápisu | Automatické převzetí služeb při selhání | Co očekávat | Co dělat |
+| -- | -- | -- | -- |
+| Jedna oblast zápisu | Není povoleno | V případě výpadku v oblasti čtení budou všichni klienti přesměrováni do jiných oblastí. Žádná ztráta dostupnosti čtení nebo zápisu. Nedochází ke ztrátě dat. <p/> V případě výpadku v oblasti zápisu budou klienti zacházet ze ztráty dostupnosti zápisu. Ztráta dat bude závislá na vybrané úrovni constistency. <p/> Cosmos DB obnoví dostupnost zápisu automaticky, když výpadek skončí. | Během výpadku zajistěte, aby ve zbývajících oblastech byla zajištěna dostatečná kapacita pro podporu čtení provozu. <p/> Nespouštějte *během* výpadku ruční převzetí služeb při selhání, protože to nebude úspěšné. <p/> Když je výpadek, podle potřeby znovu upravte zřízenou kapacitu. |
+| Jedna oblast zápisu | Povoleno | V případě výpadku v oblasti čtení budou všichni klienti přesměrováni do jiných oblastí. Žádná ztráta dostupnosti čtení nebo zápisu. Nedochází ke ztrátě dat. <p/> V případě výpadku v oblasti zápisu budou klienti zacházet ze ztráty dostupnosti, dokud Cosmos DB automaticky nevybere novou oblast jako novou oblast zápisu podle vašich požadavků. Ztráta dat bude závislá na vybrané úrovni constistency. | Během výpadku zajistěte, aby ve zbývajících oblastech byla zajištěna dostatečná kapacita pro podporu čtení provozu. <p/> Nespouštějte *během* výpadku ruční převzetí služeb při selhání, protože to nebude úspěšné. <p/> V případě výpadku můžete obnovit nereplikovaná data v neúspěšné oblasti z [kanálu konfliktů](how-to-manage-conflicts.md#read-from-conflict-feed), přesunout oblast pro zápis zpátky do původní oblasti a podle potřeby znovu upravit zřízenou kapacitu. |
+| Více oblastí zápisu | Neuvedeno | Žádná ztráta dostupnosti čtení nebo zápisu. <p/> Ztráta dat podle vybrané úrovně konzistence. | Během výpadku zajistěte, aby ve zbývajících oblastech byla zajištěna dostatečná kapacita pro podporu dalšího provozu. <p/> V případě výpadku můžete obnovit nereplikovaná data v neúspěšné oblasti z [kanálu konfliktů](how-to-manage-conflicts.md#read-from-conflict-feed) a podle potřeby znovu upravit zřízenou kapacitu. |
 
 ## <a name="next-steps"></a>Další kroky
 

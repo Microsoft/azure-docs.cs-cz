@@ -8,10 +8,10 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 20926988d554d562f36587734bd99c34b4731e69
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92088716"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Vytvoření vazby databáze Azure Cosmos DB k aplikaci Azure jaře Cloud
@@ -87,7 +87,7 @@ Azure Cosmos DB má pět různých typů rozhraní API, které podporují vazby.
 
 1. V Azure Portal přejdete na stránku služby jarní cloud Azure. Přejít na **řídicí panel aplikace** a vybrat aplikaci, pro kterou chcete vytvořit vazby Azure Cosmos DB. Tato aplikace je stejná jako ta, kterou jste aktualizovali nebo nasadili v předchozím kroku.
 
-1. Vyberte možnost **vazba služby**a vyberte možnost **vytvořit vazbu služby**. Chcete-li vyplnit formulář, vyberte:
+1. Vyberte možnost **vazba služby** a vyberte možnost **vytvořit vazbu služby**. Chcete-li vyplnit formulář, vyberte:
    * Hodnota **typu vazby** **Azure Cosmos DB**.
    * Typ rozhraní API.
    * Název databáze.

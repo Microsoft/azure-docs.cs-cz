@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102119871"
 ---
 # <a name="json-claims-transformations"></a>Transformace deklarací JSON
@@ -58,11 +58,11 @@ Následující příklad generuje řetězec JSON na základě hodnoty deklarace 
 Následující transformace deklarací identity vypíše deklaraci identity řetězce JSON, která bude textem žádosti odeslanou SendGrid (poskytovatel e-mailu třetí strany). Struktura objektu JSON je definována ID v desítkovém zápisu vstupními parametry a TransformationClaimTypesem InputClaims. Čísla v zápisu teček implikují pole. Hodnoty pocházejí z hodnot InputClaims a vstupní hodnoty vlastností value.
 
 - Vstupní deklarace identity:
-  - **e-mail** a přizpůsobení typu deklarace transformace **. 0. na. 0. e-mail**: someone@example.com
+  - **e-mail**, typ deklarace transformace  **personalizations.0.to.0.email**: " someone@example.com "
   - **jednorázové heslo**, typ deklarace transformace **personalizations.0.dynamic_template_data. jednorázové heslo** "346349"
 - Vstupní parametr:
   - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
-  - **z. e-mail**: " service@contoso.com "
+  - **from.email**: " service@contoso.com "
   - **přizpůsobení. 0. Subject** "kód pro ověření e-mailu účtu contoso"
 - Výstupní deklarace identity:
   - **částmi**: hodnota JSON
@@ -115,7 +115,7 @@ Následující příklad generuje řetězec JSON na základě hodnot deklarace i
 Následující transformace deklarací identity vypíše deklaraci identity řetězce JSON, která bude textem žádosti odeslanou REST API. Struktura objektu JSON je definována ID v desítkovém zápisu vstupními parametry a TransformationClaimTypesem InputClaims. Hodnoty pocházejí z hodnot InputClaims a vstupní hodnoty vlastností value.
 
 - Vstupní deklarace identity:
-  - **e-mail**, typ deklarace transformace  **customerEntity. email**: " john.s@contoso.com "
+  - **e-mail**, typ deklarace transformace  **customerEntity.email**: " john.s@contoso.com "
   - **objectID**, transformovat typ deklarace identity **customerEntity. userObjectId** "01234567-89AB-CDEF-0123-456789ABCDEF"
   - **zadaný** argument, transformace typu **customerEntity. FirstName** "Jan"
   - **příjmení**, typ deklarace transformace **customerEntity. LastName** "Smith"

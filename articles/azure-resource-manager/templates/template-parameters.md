@@ -4,10 +4,10 @@ description: Popisuje definování parametrů v šabloně Azure Resource Manager
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123390"
 ---
 # <a name="parameters-in-arm-templates"></a>Parametry v šablonách ARM
@@ -281,7 +281,7 @@ param month int
 
 ---
 
-## <a name="description"></a>Popis
+## <a name="description"></a>Description
 
 Můžete přidat popis k parametru, který uživatelům vaší šablony pomůže pochopit hodnotu, která má být k dispozici. Při nasazování šablony prostřednictvím portálu se text, který zadáte v popisu, automaticky použije jako Tip pro tento parametr. Pokud text poskytne více informací, než lze odvodit z názvu parametru, přidejte pouze popis.
 
@@ -473,7 +473,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2020-06-01' = {
 
 Následující příklady ukazují scénáře použití parametrů.
 
-|Template (Šablona)  |Popis  |
+|Template (Šablona)  |Description  |
 |---------|---------|
 |[parametry s funkcemi pro výchozí hodnoty](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Ukazuje, jak používat funkce šablon při definování výchozích hodnot pro parametry. Šablona neimplementuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
 |[objekt parametru](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Ukazuje použití objektu pro parametr. Šablona neimplementuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
