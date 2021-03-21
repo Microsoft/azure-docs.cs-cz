@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879254"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581299"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
-Tento článek popisuje různé možnosti a požadavky pro publikování nabídky software jako služby (SaaS) na komerčním webu Microsoft Marketplace. SaaS nabízí zákazníkům řešení a licencování softwaru prostřednictvím online předplatného místo místní instalace na jednotlivé počítače. Tento článek vám pomůže připravit vaši nabídku publikování na komerční tržišti s partnerským centrem.
+Tento článek popisuje různé možnosti a požadavky pro publikování nabídek SaaS (software jako služba) na komerčním webu Microsoft Marketplace. SaaS nabízí vašim zákazníkům doručovat a licencovat softwarová řešení prostřednictvím online předplatných. Jako vydavatel SaaS spravujete a platíte za infrastrukturu potřebnou k podpoře používání vaší nabídky vašimi zákazníky. Tento článek vám pomůže připravit vaši nabídku publikování na komerční tržišti s partnerským centrem.
 
 ## <a name="listing-options"></a>Možnosti zápisu
 
@@ -79,7 +79,7 @@ Pokud vytváříte nabídku s podporou transakcí, bude nutné shromáždit nás
   Webhook, který zadáte, by měl být v provozu a musí běžet 24/7. Toto je jediný způsob, jakým budete dostávat oznámení o aktualizacích předplatných SaaS vašich zákazníků prostřednictvím komerčního tržiště.
 
   > [!NOTE]
-  > V rámci Azure Portal vyžadujeme, abyste vytvořili aplikaci Azure Active Directory s jedním klientem [(Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md) , která umožňuje použít jedno ID aplikace Azure k ověření připojení mezi našimi dvěma službami. [ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti** a vyhledáte uvedené číslo ID adresáře. Například `50c464d3-4930-494c-963c-1e951d15360e`.
+  > V rámci Azure Portal vyžadujeme, abyste vytvořili aplikaci Azure Active Directory s jedním klientem [(Azure AD)](../active-directory/develop/howto-create-service-principal-portal.md) , která umožňuje použít jedno ID aplikace Azure k ověření připojení mezi našimi dvěma službami. [ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti** a vyhledáte uvedené číslo ID adresáře. Například, `50c464d3-4930-494c-963c-1e951d15360e`.
 
 - **ID tenanta Azure Active Directory**: (označuje se taky jako ID adresáře). V Azure Portal vyžadujeme [registraci aplikace Azure Active Directory (AD)](../active-directory/develop/howto-create-service-principal-portal.md) , abychom ji mohli přidat do seznamu řízení přístupu (ACL) rozhraní API, abyste měli jistotu, že máte oprávnění k volání. Pokud chcete najít ID tenanta pro vaši aplikaci Azure Active Directory (AD), v Azure Active Directory klikněte na okno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . Ve sloupci **Zobrazovaný název** vyberte aplikaci. Pak vyhledejte číslo **ID adresáře (tenant)** v seznamu (například `50c464d3-4930-494c-963c-1e951d15360e` ).
 
@@ -150,7 +150,7 @@ Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském
 6. Zásady ochrany osobních údajů
 7. Název nabídky
 8. Souhrn
-9. Popis
+9. Description
 10. Snímky obrazovky a videa
 11. dokumenty.
 

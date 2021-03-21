@@ -6,10 +6,10 @@ ms.subservice: ''
 ms.date: 04/16/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: e6caf3fed708e89b55a88719ca5358f6174c2ac8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896524"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Řešení potíží s konfigurací Azure Automation stavů
@@ -107,7 +107,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 Příčinou tohoto problému je chybný nebo prošlý certifikát. Viz [opětovné registrace uzlu](../automation-dsc-onboarding.md#re-register-a-node).
 
-Tento problém může být taky způsoben konfigurací proxy serveru, který neumožňuje přístup k **_. Azure-Automation.NET_*. Další informace najdete v tématu [Konfigurace privátních sítí](../automation-dsc-overview.md#network-planning). 
+Tento problém může být taky způsoben konfigurací proxy serveru, který neumožňuje přístup k ***. Azure-Automation.NET**. Další informace najdete v tématu [Konfigurace privátních sítí](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Řešení
 

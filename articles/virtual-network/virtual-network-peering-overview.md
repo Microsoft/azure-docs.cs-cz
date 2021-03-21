@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
 ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98216746"
 ---
-# <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
+# <a name="virtual-network-peering"></a>Peering virtuálních sítí
 
 Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení dvou nebo více [virtuálních sítí](virtual-networks-overview.md) v Azure. Virtuální sítě se zobrazí jako jedna pro účely připojení. Přenos dat mezi virtuálními počítači ve virtuálních sítích s navázaným partnerským vztahem používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti se provoz směruje jenom přes *privátní* síť Microsoftu.
 

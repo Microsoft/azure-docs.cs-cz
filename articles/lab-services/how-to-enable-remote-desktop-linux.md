@@ -4,10 +4,10 @@ description: Přečtěte si, jak povolit vzdálenou plochu pro virtuální poč�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94647949"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Povolení grafické vzdálené plochy pro virtuální počítače se systémem Linux v Azure Lab Services
@@ -106,5 +106,5 @@ Klient X2Go se používá pro připojení k virtuálnímu počítači šablony s
 ## <a name="next-steps"></a>Další kroky
 Jakmile instruktor nastaví RDP nebo X2Go na svém virtuálním počítači šablony a publikuje, studenti se můžou připojit ke svým virtuálním počítačům přes vzdálenou plochu GUI nebo SSH.
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
  - [Připojení k virtuálnímu počítači s Linuxem](how-to-use-remote-desktop-linux-student.md)

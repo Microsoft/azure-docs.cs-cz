@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: e9eabc73c244526f0ea15b9c72b5377545f662b2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94844859"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
@@ -118,7 +118,7 @@ Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách
 ## <a name="security-guidelines"></a>Pokyny pro zabezpečení
 Obecně platí, že zabezpečení pracovních stanic správce používaných s cloudem je podobné postupům používaným pro všechny místní pracovní stanice – například minimalizovaná oprávnění k sestavení a omezující oprávnění. Některé jedinečné aspekty správy cloudu se více podobají vzdálené nebo podnikové správě mimo IP síť. Patří sem používání a auditování přihlašovacích údajů, vzdálený přístup s rozšířeným zabezpečením a detekce a reakce na ohrožení.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 K omezení zdrojových IP adres pro přístup k nástrojům pro správu a požadavkům na audit přístupu můžete použít přihlašovací omezení Azure. Aby bylo možné Azure identifikovat klienty pro správu (pracovní stanice nebo aplikace), můžete nakonfigurovat rozhraní SMAPI (prostřednictvím zákaznických nástrojů, jako jsou rutiny prostředí Windows PowerShell) a Azure Portal, aby vyžadovaly instalaci certifikátů pro správu na straně klienta, kromě certifikátů TLS/SSL. V případě přístupu pro správce doporučujeme vyžadovat vícefaktorové ověřování.
 
 Některé aplikace nebo služby, které nasadíte do Azure, můžou mít vlastní mechanismy ověřování pro přístup koncových uživatelů i správce, zatímco ostatní plně využívají výhody Azure AD. V závislosti na tom, jestli federujete přihlašovací údaje prostřednictvím služby Active Directory Federation Services (AD FS), vám synchronizace adresářů nebo správa uživatelských účtů výhradně v cloudu a pomocí [Microsoft Identity Manager](/microsoft-identity-manager/) (část Azure AD Premium) pomůže se správou životních cyklů identit mezi prostředky.
@@ -206,7 +206,7 @@ Minimalizace počtu úloh, které můžou správci provádět na posílené prac
 * Šifrování Zajistěte, aby pracovní stanice pro správu byly vybaveny čipy TPM pro bezpečnější povolování [systému souborů EFS](/previous-versions/tn-archive/cc700811(v=technet.10)) (Encrypting File System) a BitLockeru.
 * Řízení. K řízení všech rozhraní Windows pro správce, například sdílení souborů, používejte GPO v AD DS. Zahrňte pracovní stanice pro správu do procesů auditování, sledování a protokolování. Sledujte všechny přístupy a chování správců a vývojářů.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Používání konfigurace posílené pracovní stanice ke správě cloudových služeb Azure, služby Virtual Machines a aplikací vám může pomoct s omezením řady rizik a hrozeb, které vyplývají ze vzdálené správy kritické infrastruktury IT. Azure i Windows poskytují mechanismy, které můžete použít k ochraně a řízení komunikace, ověřování a chování klienta.
 
 ## <a name="next-steps"></a>Další kroky

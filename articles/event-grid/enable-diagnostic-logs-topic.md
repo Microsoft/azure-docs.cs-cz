@@ -4,10 +4,10 @@ description: Tento článek poskytuje podrobné pokyny k povolení diagnostický
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576447"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Povolení diagnostických protokolů pro témata nebo domény služby Azure Event Grid
@@ -26,7 +26,7 @@ Tento článek poskytuje podrobné pokyny, jak povolit nastavení diagnostiky pr
 > [!NOTE]
 > Následující postup poskytuje podrobné pokyny pro povolení diagnostických protokolů pro téma. Postup povolení diagnostických protokolů pro doménu je velmi podobný. V kroku 2 Přejděte do **domény** Event grid v Azure Portal.  
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Přejděte do tématu Event gridu, pro které chcete povolit nastavení diagnostického protokolu. 
     1. Na panelu hledání v horní části vyhledejte **Event Grid témata**. 
     
@@ -55,7 +55,7 @@ Tento článek poskytuje podrobné pokyny, jak povolit nastavení diagnostiky pr
 
 ## <a name="enable-diagnostic-logs-for-a-system-topic"></a>Povolení diagnostických protokolů pro systémové téma
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Přejděte do tématu Event gridu, pro které chcete povolit nastavení diagnostického protokolu. 
     1. Na panelu hledání v horní části vyhledejte **Event Grid systémová témata**. 
     

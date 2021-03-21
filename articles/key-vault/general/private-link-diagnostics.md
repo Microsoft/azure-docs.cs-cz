@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: 03abe4e4e098d46060e33ba114872905e54a443f
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96317057"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostika potíží s konfigurací služeb Private Link ve službě Azure Key Vault
@@ -76,7 +76,7 @@ Je vhodné odstranit neúčinná připojení, aby se zajistilo, že bude něco v
 >[!IMPORTANT]
 > Změna nastavení brány firewall může odebrat přístup z legitimních klientů, kteří stále nepoužívají privátní odkazy. Ujistěte se, že jste si vědomi dopadů každé změny v konfiguraci brány firewall.
 
-Důležitým pojmem je, že funkce privátních odkazů *poskytuje* přístup k trezoru klíčů pouze v Virtual Network, který je uzavřený, aby nedocházelo k exfiltraceí dat. Neodebere žádný *remove* existující přístup. Aby bylo možné efektivně blokovat přístup z veřejného Internetu, je nutné povolit bránu firewall trezoru klíčů explicitně:
+Důležitým pojmem je, že funkce privátních odkazů *poskytuje* přístup k trezoru klíčů pouze v Virtual Network, který je uzavřený, aby nedocházelo k exfiltraceí dat. Neodebere žádný  existující přístup. Aby bylo možné efektivně blokovat přístup z veřejného Internetu, je nutné povolit bránu firewall trezoru klíčů explicitně:
 
 1. Otevřete Azure Portal a otevřete prostředek trezoru klíčů.
 2. V nabídce vlevo vyberte **síť**.

@@ -7,17 +7,17 @@ ms.date: 02/11/2020
 ms.topic: reference
 ms.custom: references_regions
 ms.openlocfilehash: 1b20f7134f1b39853a78ee5b709e732ccf35acac
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96571109"
 ---
 # <a name="regions"></a>Oblasti
 
 Tato stránka obsahuje seznam aktuálně dostupných oblastí pro použití se vzdáleným vykreslováním Azure. Pro dosažení nejlepších výsledků vždy použijte oblast, která je nejblíže vašemu fyzickému umístění.
 
-| Název | Oblast | URL |
+| Name | Oblast | URL |
 |-----------|:-----------|:-----------|
 | Austrálie – východ | australiaeast | `https://remoterendering.australiaeast.mixedreality.azure.com` |
 | East US | eastus | `https://remoterendering.eastus.mixedreality.azure.com` |

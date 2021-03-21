@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001503"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému na Azure App Service
@@ -65,7 +65,7 @@ Jedním z jedinečných aspektů App Service, které usnadňuje nasazení a údr
 
 V rámci App Service je v každém datovém centru vytvořeno několik sdílených složek UNC. Procentuální podíl obsahu uživatele pro všechny zákazníky v každém datovém centru je přidělen všem sdíleným složkám UNC. Kromě toho všechen obsah souborů pro předplatné jednoho zákazníka je vždycky umístěný ve stejné sdílené složce UNC. 
 
-V důsledku toho, jak služby Azure fungují, se konkrétní virtuální počítač zodpovědný za hostování sdílené složky UNC v průběhu času změní. Je zaručeno, že sdílené složky UNC budou připojeny k různým virtuálním počítačům při jejich zapínání a vystavování během normálního provozu v rámci Azure. Z tohoto důvodu by aplikace nikdy nevedly pevně zakódované předpoklady, že informace o počítači v cestě k souboru ve formátu UNC zůstanou v průběhu času stabilní. Místo toho by měli používat pohodlný D:\home\site *umělé* absolutní cesty **D:\home\site** , který App Service poskytuje. Tato umělá absolutní cesta poskytuje přenosnou, aplikační a uživatelsky nezávislá metodu pro odkazování na vlastní aplikaci. Pomocí **D:\home\site** může jeden přenést sdílené soubory z aplikace do aplikace, aniž by bylo nutné konfigurovat novou absolutní cestu pro každý přenos.
+V důsledku toho, jak služby Azure fungují, se konkrétní virtuální počítač zodpovědný za hostování sdílené složky UNC v průběhu času změní. Je zaručeno, že sdílené složky UNC budou připojeny k různým virtuálním počítačům při jejich zapínání a vystavování během normálního provozu v rámci Azure. Z tohoto důvodu by aplikace nikdy nevedly pevně zakódované předpoklady, že informace o počítači v cestě k souboru ve formátu UNC zůstanou v průběhu času stabilní. Místo toho by měli používat pohodlný D:\home\site *umělé* absolutní cesty  , který App Service poskytuje. Tato umělá absolutní cesta poskytuje přenosnou, aplikační a uživatelsky nezávislá metodu pro odkazování na vlastní aplikaci. Pomocí **D:\home\site** může jeden přenést sdílené soubory z aplikace do aplikace, aniž by bylo nutné konfigurovat novou absolutní cestu pro každý přenos.
 
 <a id="TypesOfFileAccess"></a>
 

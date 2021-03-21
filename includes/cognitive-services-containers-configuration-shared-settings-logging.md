@@ -5,10 +5,10 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 2bfb700ac5c220b780c05c8d415a4506c7a2f871
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001149"
 ---
 `Logging`Nastavení spravovat ASP.NET Core podporu protokolování pro váš kontejner. Můžete použít stejné nastavení konfigurace a hodnoty pro váš kontejner, který používáte pro aplikaci ASP.NET Core. 
@@ -18,7 +18,7 @@ Kontejner podporuje následující zprostředkovatele protokolování:
 |Poskytovatel|Účel|
 |--|--|
 |[Konzola](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|`Console`Zprostředkovatel protokolování ASP.NET Core. Všechna nastavení konfigurace ASP.NET Core a výchozí hodnoty pro tohoto zprostředkovatele protokolování jsou podporovány.|
-|[Ladí](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|`Debug`Zprostředkovatel protokolování ASP.NET Core. Všechna nastavení konfigurace ASP.NET Core a výchozí hodnoty pro tohoto zprostředkovatele protokolování jsou podporovány.|
+|[Ladění](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|`Debug`Zprostředkovatel protokolování ASP.NET Core. Všechna nastavení konfigurace ASP.NET Core a výchozí hodnoty pro tohoto zprostředkovatele protokolování jsou podporovány.|
 |[Disk](#disk-logging)|Zprostředkovatel protokolování JSON. Tento zprostředkovatel protokolování zapisuje data protokolu do výstupního připojení.|
 
 Tento příkaz kontejneru ukládá do výstupního připojení informace o protokolování ve formátu JSON:

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: eed0ea075c5e9eb39810259be2aa6781a59f2f22
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Kurz: Azure Active Directory integrace s Rackspace SSO
@@ -135,7 +135,7 @@ Tím se správně nakonfigurují základní nastavení jednotného přihlašová
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -159,7 +159,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Rackspace SSO.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Rackspace SSO**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Rackspace SSO**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -195,7 +195,7 @@ Rackspace používá **zásadu mapování atributů** k přiřazení rolí a sku
 
 Následující příklad **zásad mapování atributů** ukazuje:
 1. Nastavení názvu uživatele Rackspace na `user.name` deklaraci SAML. Můžete použít jakoukoli deklaraci identity, ale je nejběžnější ji nastavit na pole, které obsahuje e-mailovou adresu uživatele.
-1. Nastavení rolí Rackspace `admin` a `billing:admin` na uživatele porovnáním skupiny Azure AD podle názvu skupiny nebo UID skupiny. Použije *substitution* se náhrada `"{0}"` v `roles` poli a bude nahrazena výsledky `remote` výrazů pro pravidla.
+1. Nastavení rolí Rackspace `admin` a `billing:admin` na uživatele porovnáním skupiny Azure AD podle názvu skupiny nebo UID skupiny. Použije  se náhrada `"{0}"` v `roles` poli a bude nahrazena výsledky `remote` výrazů pro pravidla.
 1. Pomocí `"{D}"` *výchozí substituce* umožníte Rackspace načíst další pole SAML hledáním standardních a dobře známých deklarací SAML v výměny SAML.
 
 ```yaml
@@ -234,7 +234,7 @@ Můžete také použít tlačítko **ověřit** v nastavení jednotného přihla
 
    ![Tlačítko ověření jednotného přihlašování](common/sso-validate-sign-on.png)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
