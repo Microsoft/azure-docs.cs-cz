@@ -4,10 +4,10 @@ description: Nakonfigurujte Azure Load Balancer pro otevření portů pro cluste
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 7e09c7b0b3e2bfa5a5ff834e243f5098cbbd947b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319889"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevření portů pro cluster Service Fabric
@@ -35,7 +35,7 @@ Chcete-li vytvořit pravidlo Load Balancer, je nutné shromáždit následujíc�
 - Interní port.
 
 ## <a name="azure-cli"></a>Azure CLI
-K vytvoření pravidla nástroje pro vyrovnávání zatížení pomocí **Azure CLI**se používá jenom jeden příkaz. Jenom potřebujete znát název nástroje pro vyrovnávání zatížení a skupinu prostředků, abyste mohli vytvořit nové pravidlo.
+K vytvoření pravidla nástroje pro vyrovnávání zatížení pomocí **Azure CLI** se používá jenom jeden příkaz. Jenom potřebujete znát název nástroje pro vyrovnávání zatížení a skupinu prostředků, abyste mohli vytvořit nové pravidlo.
 
 >[!NOTE]
 >Pokud potřebujete určit název nástroje pro vyrovnávání zatížení, použijte tento příkaz k rychlému získání seznamu všech nástrojů pro vyrovnávání zatížení a přidružených skupin prostředků.

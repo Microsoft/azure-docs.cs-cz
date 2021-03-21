@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: b0a521ddeee6d93ce809e5e6e85eefa1f01a3f12
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98953967"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Konfigurace metody post pro Media Services V3 REST API volání
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak nakonfigurovat **metodu post** , aby ji bylo m
 
 Než začnete s vývojem, přečtěte si téma [vývoj s rozhraními api Media Services V3](media-services-apis-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte účet Media Services](./create-account-howto.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
 - Získání informací potřebných pro [přístup k rozhraním API](./access-api-howto.md)
@@ -94,7 +94,7 @@ Než začnete pracovat s prostředky AMS v3, potřebujete získat a nastavit tok
 
     ![Získání tokenu AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="troubleshooting"></a>Řešení potíží 
+## <a name="troubleshooting"></a>Poradce při potížích 
 
 * Pokud se vaše aplikace nezdařila s protokolem HTTP 504: časový limit brány, ujistěte se, že proměnná umístění nebyla explicitně nastavena na jinou hodnotu než očekávané umístění účtu Media Services. 
 * Pokud se zobrazí chyba "účet nebyl nalezen", zkontrolujte také, zda je vlastnost umístění v těle zprávy JSON nastavena na umístění, ve kterém je účet Media Services. 

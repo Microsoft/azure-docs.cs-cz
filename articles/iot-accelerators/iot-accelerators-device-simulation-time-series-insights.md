@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: e1409b43f0ce1fc0d8c622dda79e857ac6abdd33
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96854559"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení
@@ -21,7 +21,7 @@ Akcelerátor řešení pro simulaci zařízení umožňuje generovat telemetrii 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Postup v tomto průvodci předpokládá, že jste do svého předplatného Azure nasadili akcelerátor řešení pro simulaci zařízení. Pokud jste ještě nasadili simulaci zařízení, přečtěte si téma [nasazení simulace zařízení](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) na GitHubu.
 
@@ -55,7 +55,7 @@ Následující kroky používají rozhraní příkazového řádku Azure CLI v A
 
 [Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) je plně spravovaná služba pro analýzy, ukládání a vizualizace, která slouží ke správě dat časových řad ve službě IoT-Scale v cloudu. Vytvoření nového prostředí Time Series Insights:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Time Series Insights**:
 
@@ -106,7 +106,7 @@ Vytvořte nový zdroj událostí pro připojení ke službě IoT Hub. Použijte 
     | Klíč zásad centra IoT Hub | Toto pole je vyplněno automaticky. |
     | Skupina uživatelů centra IoT Hub | **devicesimulationtsi** |
     | Formát serializace události | **JSON** |
-    | Název vlastnosti časového razítka | Ponechte prázdné. |
+    | Název vlastnosti časového razítka | Ponechte prázdné |
 
     ![Vytvořit zdroj události](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 

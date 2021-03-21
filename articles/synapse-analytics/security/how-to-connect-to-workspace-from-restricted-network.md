@@ -9,17 +9,17 @@ ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
 ms.openlocfilehash: de7c5dba5a4868b7a8fdb390f974134cfaef7395
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100384516"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Připojení k prostředkům pracovního prostoru z omezené sítě
 
 Předpokládejme, že jste správcem IT, který spravuje omezenou síť vaší organizace. Chcete povolit síťové připojení mezi Azure synapse Analytics Studio a pracovní stanicí v rámci této omezené sítě. V tomto článku se dozvíte, jak.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Pracovní prostor analýzy Azure synapse**: můžete si ho vytvořit z Azure synapse Analytics. V kroku 4 budete potřebovat název pracovního prostoru.

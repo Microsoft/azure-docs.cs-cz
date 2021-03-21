@@ -13,10 +13,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 60a29efc4d2daa9d1bc90f00e71094da382a83b9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686882"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Kurz: volání rozhraní Microsoft Graph API z desktopové aplikace pro Windows
@@ -57,7 +57,7 @@ MSAL spravuje ukládání do mezipaměti a aktualizace přístupových tokenů z
 
 Tato příručka používá následující balíčky NuGet:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL.NET)|
 
@@ -115,7 +115,7 @@ Postup při registraci aplikace a přidání informací o registraci aplikace k 
 1. Vyberte **mobilní a desktopové aplikace**.
 1. V části **identifikátory URI pro přesměrování** vyberte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Vyberte **Konfigurovat**.
-1. Do sady Visual Studio otevřete soubor *App.XAML.cs* a potom `Enter_the_Application_Id_here` v následujícím fragmentu kódu nahraďte ID aplikace, které jste právě zaregistrovali a zkopírovali.
+1. Přejít na Visual Studio, otevřete soubor *App. XAML. cs* a potom `Enter_the_Application_Id_here` v následujícím fragmentu kódu nahraďte ID aplikace, které jste právě zaregistrovali a zkopírovali.
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
@@ -125,7 +125,7 @@ Postup při registraci aplikace a přidání informací o registraci aplikace k 
 
 V tomto kroku vytvoříte třídu pro zpracování interakce s MSAL, jako je například manipulace s tokeny.
 
-1. Otevřete soubor *App.XAML.cs* a přidejte odkaz pro MSAL do třídy:
+1. Otevřete soubor *App. XAML. cs* a přidejte odkaz pro MSAL do třídy:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -188,7 +188,7 @@ Soubor *MainWindow. XAML* by měl být automaticky vytvořen jako součást šab
 
 V této části použijete MSAL k získání tokenu pro rozhraní Microsoft Graph API.
 
-1. Do souboru *MainWindow.XAML.cs* přidejte odkaz pro MSAL do třídy:
+1. V souboru *MainWindow. XAML. cs* přidejte odkaz pro MSAL do třídy:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -355,7 +355,7 @@ I když aplikace v této ukázce podporuje jednotlivé uživatele, MSAL podporuj
 
 ## <a name="display-basic-token-information"></a>Zobrazit základní informace o tokenu
 
-Chcete-li zobrazit základní informace o tokenu, přidejte do souboru *MainWindow.XAML.cs* následující metodu:
+Chcete-li zobrazit základní informace o tokenu, přidejte následující metodu do souboru *MainWindow. XAML. cs* :
 
 ```csharp
 /// <summary>

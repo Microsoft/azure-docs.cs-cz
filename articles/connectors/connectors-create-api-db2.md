@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
 ms.openlocfilehash: 765bb66b572f0c046222cfb617fe4caa80925256
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967397"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Přístup k prostředkům IBM DB2 a jejich správa pomocí Azure Logic Apps
@@ -47,7 +47,7 @@ Konektor IBM DB2 podporuje tyto databázové operace, které se mapují na odpov
 | Odebrání jednoho řádku pomocí odstranění | Odstranit řádek |
 |||
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -82,7 +82,7 @@ Pokud chcete nastavit připojení, zadejte tyto podrobnosti o připojení po zob
 
 | Vlastnost | Povinné | Popis |
 |----------|----------|-------------|
-| **Připojit přes místní bránu** | Ne | Platí jenom pro místní připojení. |
+| **Připojit přes místní bránu** | No | Platí jenom pro místní připojení. |
 | **Název připojení** | Yes | Název připojení, například "MyLogicApp-DB2-připojení" |
 | **Server** | Yes | Číslo portu nebo dvojtečku, které má adresa nebo alias pro server DB2, například "myDB2server.cloudapp.net:50000". <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje adresu TCP/IP nebo alias, buď ve formátu IPv4 nebo IPv6 následovaný dvojtečkou a číslem portu TCP/IP. |
 | **Databáze** | Yes | Název databáze <p><p>**Poznámka**: Tato hodnota je řetězec, který představuje název RELAČNÍ databáze DRDA (RDBNAM): <p>– DB2 pro z/OS akceptuje 16bajtový řetězec, ve kterém je databáze známá jako umístění IBM DB2 pro z/OS. <br>– DB2 pro Přijímám 18 bajtů, kde je databáze známá jako relační databáze IBM DB2 for i. <br>– DB2 pro LUW akceptuje řetězec o velikosti 8 bajtů. |
@@ -109,7 +109,7 @@ Před vytvořením připojení musíte mít už nainstalovanou místní bránu d
 | **Authentication** | Yes | Typ ověřování pro připojení, například "základní" <p><p>**Poznámka**: v seznamu vyberte tuto hodnotu, která zahrnuje základní nebo Windows (Kerberos). |
 | **Uživatelské jméno** | Yes | Vaše uživatelské jméno pro databázi <p><p>**Poznámka**: Tato hodnota je řetězec, jehož délka je založena na konkrétní databázi: <p><p>– DB2 pro z/OS akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Přijímám řetězec 10 bajtů. <br>– DB2 pro Linux nebo UNIX akceptuje řetězec o velikosti 8 bajtů. <br>– DB2 pro Windows přijímá 30 bajtů řetězce. |
 | **Heslo** | Yes | Heslo pro databázi |
-| **Brány** | Yes | Název nainstalované místní brány dat <p><p>**Poznámka**: v seznamu vyberte tuto hodnotu, která zahrnuje všechny nainstalované brány dat v rámci předplatného Azure a skupiny prostředků. |
+| **brána** | Yes | Název nainstalované místní brány dat <p><p>**Poznámka**: v seznamu vyberte tuto hodnotu, která zahrnuje všechny nainstalované brány dat v rámci předplatného Azure a skupiny prostředků. |
 ||||
 
 Například:

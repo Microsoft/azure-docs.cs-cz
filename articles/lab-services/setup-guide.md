@@ -4,10 +4,10 @@ description: Pokud jste autor testovacího prostředí, tento průvodce vám pom
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 07f0d92ebd926616f1318b430bec2de32f753f7c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95021724"
 ---
 # <a name="lab-setup-guide"></a>Průvodce nastavením testovacího prostředí
@@ -136,7 +136,7 @@ Až pochopíte požadavky na testovací prostředí vaší třídy, jste připra
 1. **Použijte řídicí panel**. Pokyny najdete v tématu [Použití řídicího panelu prostředí učebny](./use-dashboard.md).
 
     > [!NOTE]
-    > Odhadované náklady zobrazené na řídicím panelu jsou maximální náklady, které můžete očekávat pro použití v testovacím prostředí studenta. Nebudete se například *not* účtovat za nevyužité pracovní doby vaší studenty. Odhadované náklady *neodráží žádné* poplatky za použití virtuálního počítače šablony, Galerie sdílených imagí nebo když tvůrce testovacího prostředí spustí uživatelský počítač.
+    > Odhadované náklady zobrazené na řídicím panelu jsou maximální náklady, které můžete očekávat pro použití v testovacím prostředí studenta. Nebudete se například  účtovat za nevyužité pracovní doby vaší studenty. Odhadované náklady *neodráží žádné* poplatky za použití virtuálního počítače šablony, Galerie sdílených imagí nebo když tvůrce testovacího prostředí spustí uživatelský počítač.
 
 ## <a name="next-steps"></a>Další kroky
 

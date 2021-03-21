@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946132"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
@@ -18,7 +18,7 @@ Naučte se používat nástroje Apache Spark & podregistr pro Visual Studio Code
 
 Nástroje Spark & podregistr je možné nainstalovat na platformy, které Visual Studio Code podporuje. Všimněte si následujících požadavků pro různé platformy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
@@ -298,13 +298,13 @@ Nástroj také podporuje dotaz **Spark SQL** :
 
 4. [Připojte](#connect-to-an-azure-account) se k účtu Azure nebo propojte cluster, pokud jste to ještě neudělali.
 
-5. Klikněte pravým tlačítkem myši na editor skriptů a pak vyberte **Spark: PySpark Batch** nebo **synapse: PySpark Batch** _.
+5. Klikněte pravým tlačítkem myši na editor skriptů a pak vyberte **Spark: PySpark Batch** nebo * * synapse: PySpark Batch * * *.
 
 6. Vyberte cluster nebo fond Spark pro odeslání úlohy PySpark do:
 
    ![Odeslat výstup výsledku úlohy Pythonu](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-Po odeslání úlohy Pythonu se protokoly odeslání zobrazí v okně ve *výstupu* _ * v Visual Studio Code. Zobrazí se také adresa URL uživatelského rozhraní Spark a adresa URL uživatelského rozhraní příze. Pokud odešlete úlohu Batch do fondu Apache Spark, zobrazí se také adresa URL uživatelského rozhraní historie Sparku a adresa URL uživatelského rozhraní aplikace Spark. Pro sledování stavu úlohy můžete otevřít adresu URL ve webovém prohlížeči.
+Po odeslání úlohy Pythonu se protokoly odeslání zobrazí v okně **výstup** v Visual Studio Code. Zobrazí se také adresa URL uživatelského rozhraní Spark a adresa URL uživatelského rozhraní příze. Pokud odešlete úlohu Batch do fondu Apache Spark, zobrazí se také adresa URL uživatelského rozhraní historie Sparku a adresa URL uživatelského rozhraní aplikace Spark. Pro sledování stavu úlohy můžete otevřít adresu URL ve webovém prohlížeči.
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integrace se službou HDInsight identity broker (HIB)
 

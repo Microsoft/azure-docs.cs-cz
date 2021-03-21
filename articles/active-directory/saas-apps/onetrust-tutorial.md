@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jeedes
 ms.openlocfilehash: f0a145b0eb9dd9dbed0927ce825a21d8f47c48ab
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101648420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Kurz: Azure Active Directory integrace se softwarem pro správu ochrany osobních údajů v OneTrust
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat software pro správu ochrany osobních
 * Umožněte uživatelům, aby se automaticky přihlásili k OneTrust softwaru pro správu ochrany osobních údajů pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se softwarem OneTrust Privacy Management potřebujete následující položky:
 

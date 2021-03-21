@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: 6642e59c2957b298d54bc587853752b9fce74686
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95019139"
 ---
 # <a name="prebuilt-models"></a>Předem připravené modely
@@ -42,7 +42,7 @@ Předem připravené domény jsou trained a připravené k přidání do aplikac
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Změna chování předem vytvořeného záměru domény
 
-Může se stát, že předem sestavená doména obsahuje záměr podobný záměru, který chcete mít v aplikaci LUIS, ale chcete, aby se chovala jinak. Například předem sestavená **Places** doména poskytuje `MakeReservation` záměr vytvořit rezervaci restaurace, ale chcete, aby aplikace použila tento záměr k použití rezervací hotelu. V takovém případě můžete chování tohoto záměru upravit přidáním příkladu projevy do záměru o provedení rezervací hotelu a pak aplikaci znovu naučit. 
+Může se stát, že předem sestavená doména obsahuje záměr podobný záměru, který chcete mít v aplikaci LUIS, ale chcete, aby se chovala jinak. Například předem sestavená  doména poskytuje `MakeReservation` záměr vytvořit rezervaci restaurace, ale chcete, aby aplikace použila tento záměr k použití rezervací hotelu. V takovém případě můžete chování tohoto záměru upravit přidáním příkladu projevy do záměru o provedení rezervací hotelu a pak aplikaci znovu naučit. 
 
 Úplný seznam předdefinovaných domén najdete v [odkazech předem sestavené domény](./luis-reference-prebuilt-domains.md).
 

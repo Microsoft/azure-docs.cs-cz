@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: duau
 ms.openlocfilehash: 1835377f4690097c8390957bf7d897242ba7aace
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92208052"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Kurz: Konfigurace metody směrování provozu priority v Traffic Manager
@@ -53,24 +53,24 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Vyberte **vytvořit** a nasaďte profil Traffic Manager.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/create-traffic-manager-profile-priority.png" alt-text="Vytvořit profil priority Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/create-traffic-manager-profile-priority.png" alt-text="Vytvoření priority profilu Traffic Manager":::
 
 ## <a name="add-endpoints"></a>Přidat koncové body
 
 1. V seznamu vyberte profil Traffic Manager.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-list.png" alt-text="Vytvořit profil priority Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-list.png" alt-text="Seznam profilů Traffic Manager":::
 
 1. V části *Nastavení* vyberte **koncové body** a vyberte **+ Přidat** pro přidání nového koncového bodu.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-add-endpoints.png" alt-text="Vytvořit profil priority Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-add-endpoints.png" alt-text="Traffic Manager přidání koncových bodů":::
 
 1. Vyberte nebo zadejte následující nastavení: 
 
     | Nastavení                | Hodnota                                              |
     | ---                    | ---                                                |
     | Typ                   | Vyberte typ koncového bodu. |    
-    | Název                   | Zadejte název pro identifikaci tohoto koncového bodu. |
+    | Name                   | Zadejte název pro identifikaci tohoto koncového bodu. |
     | Typ cílového prostředku   | Vyberte typ prostředku pro cíl. |
     | Cílový prostředek        | Vyberte prostředek ze seznamu. |
     | Priorita               | Zadejte číslo priority pro tento koncový bod. 1 je nejvyšší priorita. |
@@ -78,11 +78,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Vyberte **Přidat** a přidejte koncový bod. Opakujte kroky 2 a 3 pro přidání dalších koncových bodů. Nezapomeňte nastavit příslušné číslo priority.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/add-endpoint.png" alt-text="Vytvořit profil priority Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/add-endpoint.png" alt-text="Přidat koncový bod priority 1":::
 
 1. Na stránce **koncové body** Zkontrolujte pořadí priority pro koncové body. Když vyberete metodu směrování přenosů **priority** , pořadí vybraných koncových bodů. Ověřte pořadí priorit koncových bodů.  Primární koncový bod je nahoře. Dvakrát ověřte pořadí, ve kterém je zobrazeno. Všechny požadavky budou směrovány do prvního koncového bodu a pokud Traffic Manager zjistí, že není v pořádku, přenos dat automaticky převezme další koncový bod. 
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/endpoints-list.png" alt-text="Vytvořit profil priority Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/endpoints-list.png" alt-text="Seznam koncových bodů priority":::
 
 1. Chcete-li změnit pořadí priority koncového bodu, vyberte koncový bod, změňte hodnotu priority a **výběrem možnosti Uložit uložte** nastavení koncového bodu.
 
@@ -90,11 +90,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1.  Na panelu hledání na portálu vyhledejte název **profilu Traffic Manager** , který jste vytvořili v předchozí části, a v zobrazených výsledcích vyberte profil Traffic Manageru.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/search-traffic-manager-profile.png" alt-text="Vytvořit profil priority Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/search-traffic-manager-profile.png" alt-text="Traffic Manager profil hledání":::
 
 1.  Na stránce Přehled **profilu Traffic Manager** se zobrazuje název DNS nově vytvořeného profilu Traffic Manager. Můžete je použít u všech klientů (například tak, že na ně přejdete pomocí webového prohlížeče), abyste se dostali ke správnému koncovému bodu, který určuje typ směrování. V tomto případě se všechny požadavky nasměrují do prvního koncového bodu a pokud Traffic Manager zjistí, že není v pořádku, přenos dat automaticky převezme další koncový bod.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-dns-name.png" alt-text="Vytvořit profil priority Traffic Manager":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-dns-name.png" alt-text="Název DNS služby Traffic Manager":::
 
 1. Jakmile profil Traffic Manager funguje, upravte záznam DNS na autoritativním serveru DNS tak, aby odkazoval na název domény vaší společnosti na název domény Traffic Manager.
 
@@ -102,7 +102,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud nepotřebujete profil Traffic Manager, najděte profil a vyberte **Odstranit profil**.
 
-:::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-delete-priority-profile.png" alt-text="Vytvořit profil priority Traffic Manager":::
+:::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-delete-priority-profile.png" alt-text="Odstranit profil priority Traffic Manager":::
 
 ## <a name="next-steps"></a>Další kroky
 

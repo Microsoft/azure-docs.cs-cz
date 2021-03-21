@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330457"
 ---
 # <a name="elastic-database-tools-glossary"></a>Glosář nástrojů pro Elastic Database
@@ -57,7 +57,7 @@ Tady je reprezentace **horizontálně dělené** jedné a víceklientské datab�
 
 **Tabulky horizontálně dělené**: tabulky, které jsou horizontálně dělené, tj., jejichž data jsou distribuována napříč horizontálních oddílů na základě jejich hodnot horizontálního dělení klíče. 
 
-**Horizontálního dělení klíč**: hodnota sloupce, která určuje, jak jsou data distribuována napříč horizontálních oddílů. Typ hodnoty může být jedna z následujících hodnot: **int**, **bigint**, **varbinary**nebo **uniqueidentifier**. 
+**Horizontálního dělení klíč**: hodnota sloupce, která určuje, jak jsou data distribuována napříč horizontálních oddílů. Typ hodnoty může být jedna z následujících hodnot: **int**, **bigint**, **varbinary** nebo **uniqueidentifier**. 
 
 **Horizontálních oddílů sada**: kolekce horizontálních oddílů, která je přiřazená stejné mapě horizontálních oddílů ve Správci map horizontálních oddílů.  
 

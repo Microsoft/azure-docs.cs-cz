@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686865"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Prodloužit platnost federačních certifikátů pro Microsoft 365 a Azure Active Directory
@@ -106,9 +106,9 @@ Ve výstupu Get-MsolFederationProperty nebo Get-AdfsCertificate ověřte, že da
 
 | AutoCertificateRollover | Synchronizace certifikátů s Azure AD | Federační metadata jsou veřejně přístupná. | Obou | Akce |
 |:---:|:---:|:---:|:---:|:---:|
-| Ano |Ano |Ano |- |Není vyžadována žádná akce. Přečtěte si téma [Automatické obnovení podpisového certifikátu tokenu](#autorenew). |
-| Ano |Ne |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
-| Ne |- |- |Méně než 30 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| Yes |Yes |Yes |- |Není vyžadována žádná akce. Přečtěte si téma [Automatické obnovení podpisového certifikátu tokenu](#autorenew). |
+| Yes |No |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| No |- |- |Méně než 30 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
 
 \[-] Nezáleží
 

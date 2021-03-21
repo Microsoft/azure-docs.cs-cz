@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
 ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397718"
 ---
-# <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Vytvoření certifikátů pro povolení back-endu s Azure Application Gateway
+# <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Vytváření certifikátů pro povolení back-endu ve službě Azure Application Gateway
 
 Aby se to stalo, Application Gateway vyžaduje, aby se back-end instance povolily odesláním ověřování/důvěryhodných kořenových certifikátů. V případě SKU v1 jsou vyžadovány ověřovací certifikáty, ale pro povolení certifikátů jsou vyžadovány důvěryhodné kořenové certifikáty SKU v2.
 

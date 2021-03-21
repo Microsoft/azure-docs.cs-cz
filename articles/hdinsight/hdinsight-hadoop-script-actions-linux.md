@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
 ms.openlocfilehash: b6705728fddc9a5a3c9cb8eb2f1811412fb3a290
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945482"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů pomocí HDInsight
@@ -23,7 +23,7 @@ Akce skriptu lze použít prostřednictvím následujících metod:
 
 | Tuto metodu použijte, chcete-li použít skript... | Během vytváření clusteru... | Ve spuštěném clusteru... |
 | --- |:---:|:---:|
-| Portál Azure Portal |✓ |✓ |
+| portál Azure |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure Classic CLI |&nbsp; |✓ |
 | Sada HDInsight .NET SDK |✓ |✓ |
@@ -158,13 +158,13 @@ HDInsight protokoluje výstup skriptu, který je zapsaný do STDOUT a STDERR. Ty
 > [!NOTE]  
 > Apache Ambari je k dispozici pouze v případě, že byl cluster úspěšně vytvořen. Použijete-li během vytváření clusteru akci skriptu a vytváření se nepovede, přečtěte si téma [řešení potíží se skripty](./troubleshoot-script-action.md) v případě jiných způsobů přístupu k protokolovaným informacím.
 
-Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT, použijte `echo` . Příklad:
+Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT, použijte `echo` . Například:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte ho do `>&2` `echo` . Příklad:
+Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte ho do `>&2` `echo` . Například:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -232,7 +232,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 Následující pomocníky jsou k dispozici pro použití ve skriptu:
 
-| Použití pomocníka | Popis |
+| Použití pomocníka | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Stáhne soubor ze zdrojového identifikátoru URI do zadané cesty k souboru. Ve výchozím nastavení nedojde k přepsání stávajícího souboru. |
 | `untar_file TARFILE DESTDIR` |Extrahuje soubor tar (using `-xf` ) do cílového adresáře. |
@@ -325,7 +325,7 @@ Další informace o použití jednotlivých metod naleznete v tématu [How to us
 
 Společnost Microsoft poskytuje ukázkové skripty pro instalaci komponent do clusteru HDInsight. Podívejte se [na téma Instalace a použití odstínu v clusterech HDInsight](hdinsight-hadoop-hue-linux.md) jako příklad akce skriptu.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 V následujícím seznamu jsou chyby, které se můžou při používání skriptů, které jste vyvinuli, nacházet:
 

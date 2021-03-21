@@ -17,10 +17,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f8f9357fff4773467dd93046ece8533514eb444
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313887"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Odesílání oznámení pro různé platformy pomocí Azure Notification Hubs
@@ -41,7 +41,7 @@ V této části se používá vzorový kód, který jste vytvořili v tématu [p
 
 Pokud chcete odesílat oznámení pro různé platformy pomocí šablon, udělejte toto:
 
-1. V aplikaci Visual Studio v **Průzkumník řešení**rozbalte složku **řadiče** a pak otevřete soubor *RegisterController.cs* .
+1. V aplikaci Visual Studio v **Průzkumník řešení** rozbalte složku **řadiče** a pak otevřete soubor *RegisterController. cs* .
 
 1. Vyhledejte blok kódu v `Put` metodě, která vytvoří novou registraci, a poté nahraďte `switch` obsah následujícím kódem:
 
@@ -76,7 +76,7 @@ Pokud chcete odesílat oznámení pro různé platformy pomocí šablon, udělej
 
     Tento kód volá metodu specifickou pro platformu pro vytvoření registrace šablony namísto nativní registrace. Vzhledem k tomu, že registrace šablon jsou odvozeny z nativních registrací, nemusíte měnit existující registrace.
 
-1. V **Průzkumník řešení**ve složce **Controllers** otevřete soubor **NotificationsController.cs** . Nahraďte metodu `Post` následujícím kódem:
+1. V **Průzkumník řešení** ve složce **Controllers** otevřete soubor **NotificationsController. cs** . Nahraďte metodu `Post` následujícím kódem:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

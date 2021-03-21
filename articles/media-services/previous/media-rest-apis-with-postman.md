@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: ef92e772085b1b89388c3f85fb3fdb91df0f6a75
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103012203"
 ---
 # <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Nakonfigurovat metodu post pro volání REST API Media Services V2
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak nakonfigurovat **metodu post** , aby ji bylo mož
 
 Toto prostředí a kolekce se používají v článcích, které ukazují, jak dosáhnout různých úloh pomocí Azure Media Services rozhraní REST API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Nainstalujte klienta [Postman](https://www.getpostman.com/) rozhraní REST, ve kterém můžete spouštět rozhraní REST API používaná v některých kurzech ke službě AMS REST. 
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 69898e64934c363a18a3ce2fa5e678116624bd24
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026365"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Získání sady Cognitive Services Speech pro zařízení s Androidem
@@ -23,7 +23,7 @@ Sada Speech Devices SDK je předpřipravená knihovna navržená tak, aby fungov
 
 ## <a name="choose-a-development-kit"></a>Zvolit vývojovou sadu
 
-|Zařízení|Specifikace|Popis|Scénáře|
+|Zařízení|Specifikace|Description|Scénáře|
 |--|--|--|--|
 |[Urbetter dev Kit](http://www.urbetter.com/products_56/278.html) ![ URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7 pole Mic, ARM SOC, WIFI, Ethernet, HDMI, USB kamera. <br>Linux|Sada SDK zařízení pro rozpoznávání řeči v oboru, která upravuje Microsoft MIC Array a podporuje rozšířené vstupně-výstupní operace, jako je například HDMI/Ethernet a větší množství periferních zařízení USB <br> [Kontaktujte Urbetter](http://www.urbetter.com/products_56/278.html)|Přepis konverzace, vzdělávání, nemocnice, roboty, OTT box, hlasový agent, jednotka s|
 |[Sada Roobo Smart audio dev Kit](http://ddk.roobo.com)<br>[Nastavení](speech-devices-sdk-roobo-v1.md)  /  [Rychlý Start](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android) ![ Sada Roobo Smart audio dev Kit](media/speech-devices-sdk/device-roobo-v1.jpg)|7 pole Mic, ARM SOC, Wi-Fi, audio výstup, IO. <br>[Android](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android)|První sada Speech Devices SDK pro přizpůsobení služby Microsoft MIC Array a front-Processing SDK pro vývoj vysoce kvalitních scénářů a řeči|Přepis konverzace, inteligentní mluvčí, hlasový agent, přenosném|

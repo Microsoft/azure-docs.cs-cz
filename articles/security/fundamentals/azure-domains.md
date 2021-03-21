@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/07/2020
 ms.author: memildin
 ms.openlocfilehash: 372d03945c194ad4e34bc654f0b2dd5271b02d96
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94409395"
 ---
 # <a name="reference-list-of-azure-domains-not-comprehensive"></a>Odkaz na seznam domén Azure (není vyčerpávající)
@@ -37,7 +37,7 @@ Tato stránka je částečný seznam domén Azure, které se používají. Někt
 |[Azure Container Registry](https://azure.microsoft.com/services/container-registry/)|*. azurecr.io|
 |Azure Container Service (ACS) (zastaralé)|*. azurecontainer.io|
 |[Azure Content Delivery Network (CDN)](https://azure.microsoft.com/services/cdn/)|*. vo.msecnd.net|
-|[Soubory Azure](../../storage/files/storage-files-introduction.md)|*. file.core.windows.net|
+|[Azure Files](../../storage/files/storage-files-introduction.md)|*. file.core.windows.net|
 |[Azure Front Door](https://azure.microsoft.com/services/frontdoor/)|*. azurefd.net|
 |Služby správy Azure|*. management.core.windows.net|
 |[Azure Media Services](https://azure.microsoft.com/services/media-services/)|*. origin.mediaservices.windows.net|
@@ -46,7 +46,7 @@ Tato stránka je částečný seznam domén Azure, které se používají. Někt
 |[Azure Service Bus](../../service-bus-messaging/service-bus-messaging-overview.md)|*.servicebus.windows.net|
 |[Azure SQL Database](https://azure.microsoft.com/services/sql-database/)|*. database.windows.net|
 |[Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)|*.azureedge.net|
-|[Azure Table Storage](../../storage/tables/table-storage-overview.md)|*. table.core.windows.net|
+|[Table Storage Azure](../../storage/tables/table-storage-overview.md)|*. table.core.windows.net|
 |[Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)|*. trafficmanager.net|
 |Azure websites|*. azurewebsites.net|
 |[Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)|*.visualstudio.com|

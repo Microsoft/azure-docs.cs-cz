@@ -7,10 +7,10 @@ ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422956"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Místní ladění Azure Functions PowerShellu
@@ -111,7 +111,7 @@ PowerShell Core se nainstaluje souběžně s Windows PowerShellem. Nastavte Powe
 
 1. Vyberte **PowerShell: Zobrazit nabídku relace**.
 
-1. Pokud **aktuální relace** není **PowerShell Core 6** , vyberte **Přepnout na: PowerShell Core 6**.
+1. Pokud **aktuální relace** není **PowerShell Core 6**, vyberte **Přepnout na: PowerShell Core 6**.
 
 Když máte otevřený soubor PowerShellu, zobrazí se verze zobrazená zeleně v pravém dolním rohu okna. Výběrem tohoto textu se zobrazí také nabídka relace. Další informace najdete v tématu [Výběr verze prostředí PowerShell, která se má použít s příponou](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
 
@@ -246,7 +246,7 @@ Modul runtime Azure Functions spouští několik příkazů před samotným vyvo
 
 Pokud má dojít k tomuto přerušení, `continue` Spusťte `c` příkaz nebo, který přeskočí tuto zarážku. Pak se zastaví na očekávané zarážce.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud máte během ladění problémy, měli byste ověřit následující:
 

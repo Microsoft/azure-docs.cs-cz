@@ -12,10 +12,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
 ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96454288"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Použití ověřování Azure Active Directory
@@ -49,7 +49,7 @@ Prostřednictvím ověřování služby Azure AD můžete centrálně spravovat 
 - Azure AD podporuje podobná připojení z nástrojů SQL Server Data Tools (SSDT) využívající interaktivní ověřování Active Directory. Další informace najdete v tématu [podpora Azure Active Directory v nástrojích pro SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory) .
 
 > [!NOTE]  
-> Připojení k instanci SQL Server, která běží na virtuálním počítači Azure (VM), se pomocí účtu Azure Active Directory nepodporuje. Použijte místo toho doménový účet Active Directory.  
+> Připojení k instanci SQL Serveru spuštěné na virtuálním počítači Azure pomocí účtu Azure Active Directory se nepodporuje. Použijte místo toho doménový účet Active Directory.  
 
 Kroky konfigurace obsahují následující postupy pro konfiguraci a použití ověřování Azure Active Directory.
 

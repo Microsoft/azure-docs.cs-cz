@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95544645"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
@@ -149,9 +149,9 @@ handleErrors(err)
 
 Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: Upload (PutBlob), StageBlock nebo CommitBlockList (PutBlock nebo PutBlockList). 
 
-Sada SDK případně nabízí [rozhraní API vysoké úrovně](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) založená na rozhraních REST API nízké úrovně. Například funkce **_UploadFileToBlockBlob_* _ používá operace StageBlock (PutBlock) pro souběžné nahrání souboru do bloků dat pro optimalizaci propustnosti. Pokud je soubor menší než 256 MB, použije místo toho operaci Upload (PutBlob) k dokončení přenosu v rámci jediné transakce.
+Sada SDK případně nabízí [rozhraní API vysoké úrovně](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) založená na rozhraních REST API nízké úrovně. Příkladem je funkce ***UploadFileToBlockBlob***, která používá operace StageBlock (PutBlock) k souběžnému nahrání souboru po částech za účelem optimalizace propustnosti. Pokud je soubor menší než 256 MB, použije místo toho operaci Upload (PutBlob) k dokončení přenosu v rámci jediné transakce.
 
-Následující příklad nahraje soubor do vašeho kontejneru s názvem _ * quickstartblobs-[randomstring] * *.
+Následující příklad nahraje soubor do kontejneru **quickstartblobs-[náhodný_řetězec]**.
 
 ```go
 // Create a file to test the upload and download.

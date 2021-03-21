@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 51e15a8dc5e9f918c630397d6d6593f5bf561755
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786900"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Nejčastější dotazy k nástrojům elastické databáze (FAQ)
@@ -55,6 +55,6 @@ Ano, horizontálních oddílů je samostatná databáze a proto jedna horizontá
 
 ## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>Poskytuje nástroj rozdělit sloučení (nebo odstraní) databázi během operace rozdělení nebo sloučení.
 
-Ne. Pro **rozdělené** operace musí cílová databáze existovat s příslušným schématem a musí být zaregistrovaná ve Správci map horizontálních oddílů.  Pro operace **sloučení** je nutné odstranit horizontálních oddílů ze Správce map horizontálních oddílů a pak odstranit databázi.
+No. Pro **rozdělené** operace musí cílová databáze existovat s příslušným schématem a musí být zaregistrovaná ve Správci map horizontálních oddílů.  Pro operace **sloučení** je nutné odstranit horizontálních oddílů ze Správce map horizontálních oddílů a pak odstranit databázi.
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

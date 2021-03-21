@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
 ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98070911"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu s využitím vlastního kontejneru
@@ -24,7 +24,7 @@ Nasazení kódu funkce ve vlastním kontejneru Linux vyžaduje [Plán Premium](f
 
 Můžete také použít výchozí kontejner Azure App Service, jak je popsáno v tématu [Vytvoření první funkce hostované v systému Linux](./create-first-function-cli-csharp.md?pivots=programming-language-python). Podporované základní image pro Azure Functions najdete v [úložišti Azure Functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base).
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 > [!div class="checklist"]
@@ -112,7 +112,7 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-`-DjavaVersion`Parametr oznamuje modulu runtime Functions, kterou verzi Java má použít. Použijte, `-DjavaVersion=11` Pokud chcete, aby se vaše funkce spouštěly na Java 11. Pokud nezadáte `-DjavaVersion` , Maven se výchozí hodnota Java 8. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions).
+`-DjavaVersion`Parametr oznamuje modulu runtime Functions, kterou verzi Java má použít. Pokud chcete funkce spouštět ve verzi Java 11, použijte `-DjavaVersion=11`. Pokud nezadáte `-DjavaVersion` , Maven se výchozí hodnota Java 8. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions).
 
 > [!IMPORTANT]
 > `JAVA_HOME`Aby bylo možné tento článek dokončit, musí být proměnná prostředí nastavena na umístění instalace správné verze JDK.

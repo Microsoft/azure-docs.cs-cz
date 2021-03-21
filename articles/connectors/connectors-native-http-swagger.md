@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: 810aaae9634a7de8d07b6d49edd0c6c2eda96754
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730877"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů REST pomocí Azure Logic Apps
 
 Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému konektoru http + Swagger můžete automatizovat pracovní postupy, které pravidelně volají libovolný koncový bod REST prostřednictvím [souboru Swagger](https://swagger.io) vytvořením Logic Apps. Aktivační událost HTTP + Swagger a akce fungují stejně jako [Trigger http a akci](connectors-native-http.md) , ale poskytují lepší zkušenosti v návrháři aplikace logiky tím, že zpřístupňují strukturu rozhraní API a výstupy popsané v souboru Swagger. K implementaci triggeru cyklického dotazování použijte vzor cyklického dotazování, který je popsaný v tématu [Vytvoření vlastních rozhraní API a volání dalších rozhraní API, služeb a systémů z Logic Apps](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -147,7 +147,7 @@ Můžete odkazovat na soubor Swagger, který není hostovaný nebo který nespl�
 
 Zde jsou další informace o výstupech z triggeru HTTP + Swagger nebo akce. Volání HTTP + Swagger vrátí tyto informace:
 
-| Název vlastnosti | Typ | Popis |
+| Název vlastnosti | Typ | Description |
 |---------------|------|-------------|
 | záhlaví | object | Hlavičky z požadavku |
 | text | object | Objekt JSON | Objekt s obsahem textu z požadavku |

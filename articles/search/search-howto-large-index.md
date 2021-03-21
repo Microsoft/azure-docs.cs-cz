@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358388"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indexování velkých datových sad v Azure Kognitivní hledání
@@ -45,7 +45,7 @@ Až budete s vrstvou spokojeni, může vám další krok zvýšit počet oddíl�
 
 ### <a name="review-index-schema"></a>Kontrola schématu indexu
 
-Schéma indexu hraje důležitou roli při indexování dat. Další pole, která máte, a další vlastnosti, které jste nastavili (například *prohledávatelné* , *plošky* nebo *filtrovatelné* ), přispívají ke zvýšení času indexování. Obecně platí, že byste měli vytvořit a zadat jenom pole, která skutečně potřebujete ve vyhledávacím indexu.
+Schéma indexu hraje důležitou roli při indexování dat. Další pole, která máte, a další vlastnosti, které jste nastavili (například *prohledávatelné*, *plošky* nebo *filtrovatelné*), přispívají ke zvýšení času indexování. Obecně platí, že byste měli vytvořit a zadat jenom pole, která skutečně potřebujete ve vyhledávacím indexu.
 
 > [!NOTE]
 > Aby se zachovala velikost dokumentu, vyhněte se přidávání nequeryablech dat do indexu. Image a další binární data se nedají přímo prohledávat a v indexu by se neměly ukládat. Pro integraci nequeryablech dat do výsledků hledání byste měli definovat pole bez možností vyhledávání, které ukládá odkaz na adresu URL do daného prostředku.

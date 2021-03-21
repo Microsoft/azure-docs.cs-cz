@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: 3bfbf56b6e5f2be33b407945490531e6e2e8ac47
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781256"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Vytváření čítačů výkonu pro sledování výkonu správce map horizontálních oddílů
@@ -42,12 +42,12 @@ Chcete-li vytvořit čítače, zavolejte metodu CreatePerformanceCategoryAndCoun
 K provedení metody můžete použít také [Tento](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) skript prostředí PowerShell.
 Metoda vytvoří následující čítače výkonu:  
 
-* **Mapování v mezipaměti** : počet mapování ukládaných do mezipaměti pro mapu horizontálních oddílů.
-* **Operace DDR za sekundu** : rychlost operací směrování závislých na datech pro mapu horizontálních oddílů. Tento čítač se aktualizuje, když volání [OpenConnectionForKey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) vede k úspěšnému připojení k cílovému horizontálních oddílů.
-* **Počet přístupů do mezipaměti mapování vyhledávání/s** : frekvence úspěšných operací vyhledávání mezipaměti pro mapování v mapě horizontálních oddílů
-* Mapování neúspěšných **přístupů do mezipaměti vyhledávání/s** : frekvence operací vyhledávání v mezipaměti pro mapování v mapě horizontálních oddílů.
-* **Mapování přidáno nebo aktualizováno v mezipaměti/s** : rychlost přidávání nebo aktualizace mapování v mezipaměti pro mapu horizontálních oddílů.
-* **Mapování odebraných z mezipaměti/s** : rychlost odebírání mapování z mezipaměti pro mapu horizontálních oddílů.
+* **Mapování v mezipaměti**: počet mapování ukládaných do mezipaměti pro mapu horizontálních oddílů.
+* **Operace DDR za sekundu**: rychlost operací směrování závislých na datech pro mapu horizontálních oddílů. Tento čítač se aktualizuje, když volání [OpenConnectionForKey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) vede k úspěšnému připojení k cílovému horizontálních oddílů.
+* **Počet přístupů do mezipaměti mapování vyhledávání/s**: frekvence úspěšných operací vyhledávání mezipaměti pro mapování v mapě horizontálních oddílů
+* Mapování neúspěšných **přístupů do mezipaměti vyhledávání/s**: frekvence operací vyhledávání v mezipaměti pro mapování v mapě horizontálních oddílů.
+* **Mapování přidáno nebo aktualizováno v mezipaměti/s**: rychlost přidávání nebo aktualizace mapování v mezipaměti pro mapu horizontálních oddílů.
+* **Mapování odebraných z mezipaměti/s**: rychlost odebírání mapování z mezipaměti pro mapu horizontálních oddílů.
 
 Čítače výkonu jsou vytvářeny pro každou horizontálních oddílů mapu v mezipaměti na proces.  
 

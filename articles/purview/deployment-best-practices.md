@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695849"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Osvědčené postupy pro nasazení Azure dosah
@@ -24,7 +24,7 @@ Dobře plánované nasazení platformy pro řízení dat (například Azure dosa
 - Vylepšená analytická spolupráce
 - Maximalizace návratnosti investic.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Přístup k Microsoft Azure pomocí vývojového nebo produkčního předplatného
 * Možnost vytvářet prostředky Azure, včetně dosah
@@ -53,10 +53,10 @@ Obecným přístupem je rozdělení těchto cílů do různých kategorií a cí
 |---------|---------|
 |Zjišťování|Uživatelé s oprávněním správce by měli být schopni kontrolovat zdroje dat v Azure a mimo Azure (včetně místních zdrojů) a automaticky tak shromažďovat informace o datových prostředcích.|
 |Klasifikace|Platforma by měla automaticky klasifikovat data na základě vzorkování dat a umožnit ruční přepsání pomocí vlastních klasifikací.|
-|Consumption|Obchodní uživatelé by měli být schopni najít informace o jednotlivých prostředcích pro obchodní i technická metadata.|
+|Využití|Obchodní uživatelé by měli být schopni najít informace o jednotlivých prostředcích pro obchodní i technická metadata.|
 |Lineage|Každý Asset musí zobrazit grafické zobrazení podkladových datových sad, aby uživatelé pochopili původní zdroje a jaké změny byly provedeny.|
 |Spolupráce|Platforma musí uživatelům umožňovat spolupráci tím, že poskytuje další informace o jednotlivých datových prostředcích.|
-|Generování sestav|Uživatelé musí být schopni zobrazit vykazování na datovém majetku, včetně citlivých dat a dat, která vyžadují další obohacení.|
+|Vytváření sestav|Uživatelé musí být schopni zobrazit vykazování na datovém majetku, včetně citlivých dat a dat, která vyžadují další obohacení.|
 |Zásady správného řízení dat|Platforma musí správci umožňovat definovat zásady pro řízení přístupu a automaticky vymáhat přístup k datům na základě jednotlivých uživatelů.|
 |Pracovní postup|Platforma musí mít možnost vytvářet a upravovat pracovní postup, aby bylo možné snadno škálovat a automatizovat různé úlohy v rámci platformy.|
 |Integrace|Další technologie jiných výrobců, jako je vytváření lístků nebo orchestrace, musí být schopné integrovat do platformy prostřednictvím skriptu nebo rozhraní REST API.|
@@ -90,7 +90,7 @@ Mezi klíčové zúčastněné strany, které byste mohli chtít zahrnout:
 |**Vlastník domény/podniku**|Obchodní osoba, která ovlivňuje využití nástrojů a má kontrolu rozpočtu|
 |**Datový analytik**|Umožňuje vytvořit snímek podnikového problému a analyzovat data, abychom mohli dělat podniková rozhodnutí.|
 |**Architekt dat**|Navrhněte databáze pro klíčové podnikové aplikace společně s návrhem a implementací zabezpečení dat.|
-|**Datový inženýr**|Provoz a údržba datových zásobníků, vyžádání dat z různých zdrojů, integrace a Příprava dat, nastavení datových kanálů|
+|**Odborník na data**|Provoz a údržba datových zásobníků, vyžádání dat z různých zdrojů, integrace a Příprava dat, nastavení datových kanálů|
 |**Datový vědec**|Sestavování analytických modelů a nastavení datových produktů, pro které budou mít k dispozici rozhraní API|
 |**Správce databáze**|Vlastní, sledovat a řešit incidenty a požadavky související s databází v rámci smluv o úrovni služeb (SLA); Může nastavit datové kanály|
 |**DevOps**|Vývoj a implementace obchodních aplikací; může zahrnovat psaní skriptů a možností orchestrace.|
@@ -110,7 +110,7 @@ Tyto scénáře lze zapsat různými způsoby, ale měli byste zahrnout alespoň
 
 Scénáře musí být specifické, napadnutelné a spustitelné soubory s měřitelnými výsledky. Příklady scénářů, které můžete použít:
 
-|Scénář|Podrobnosti|Nežádoucí|
+|Scenario|Podrobnosti|Nežádoucí|
 |---------|---------|---------|
 |Klíčové materiály pro obchodní účely katalogu|Potřebuji mít informace o každé sadě dat, abyste měli dobré znalosti o tom, co je. Tento scénář zahrnuje data z obchodních i technických metadat o datových sad v katalogu. Zdroje dat zahrnují Azure Data Lake Storage Gen2, Azure synapse DW a/nebo Power BI. Tento scénář zahrnuje i místní prostředky, jako je SQL Server.|Obchodní analytik, datový vědecký Specialist, data inženýr|
 |Zjištění důležitých podnikových prostředků|Potřebuji vyhledávací modul, který může prohledávat všechna metadata v katalogu. Mělo by být schopné hledat pomocí jednoduchého nebo složitého zástupného termínu použití zástupných znaků.|Obchodní analytik, datový vědecký Specialist, data inženýr, správce dat|
@@ -165,7 +165,7 @@ V této fázi je třeba vytvořit dosah a nakonfigurovat pro velmi malou skupinu
 
 ### <a name="tasks-to-complete"></a>Úkoly k dokončení
 
-|Úloha|Podrobnosti|Doba trvání|
+|Úkol|Podrobnosti|Doba trvání|
 |---------|---------|---------|
 |Shromáždění & souhlasit s požadavky|Diskuze se všemi zúčastněnými stranami a Shromážděte kompletní sadu požadavků. Různé osoby se musí účastnit souhlasu s podmnožinou požadavků, které je potřeba dokončit pro každou fázi projektu.|1 týden|
 |Nastavení startovní sady|Projděte si [dosah rychlé zprovoznění](create-catalog-portal.md) a nastavte [dosah Starter Kit](tutorial-scan-data.md) pro demo dosah všem zúčastněným stranám.|1 den|
@@ -192,7 +192,7 @@ Až budete mít dohodnuté požadavky a podílované obchodní jednotky na dosah
 
 ### <a name="tasks-to-complete"></a>Úkoly k dokončení
 
-|Úloha|Podrobnosti|Doba trvání|
+|Úkol|Podrobnosti|Doba trvání|
 |---------|---------|---------|
 |[Kontrola Azure synapse Analytics](register-scan-azure-synapse-analytics.md)|Zprovoznění zdrojů databáze a jejich kontrola, aby bylo možné naplnit klíčové prostředky|2 dny|
 |[Vytváření vlastních klasifikací a pravidel](create-a-custom-classification-and-classification-rule.md)|Po prohledání vašich prostředků si uživatelé můžou uvědomit, že další případy použití pro další klasifikaci vedle výchozích klasifikací z dosah jsou další.|2-4 týdnů|
@@ -217,7 +217,7 @@ Po úspěšné fázi MVP je čas naplánovat předprodukční milník. Vaše org
 
 ### <a name="tasks-to-complete"></a>Úkoly k dokončení
 
-|Úloha|Podrobnosti|Doba trvání|
+|Úkol|Podrobnosti|Doba trvání|
 |---------|---------|---------|
 |Zpřesnit kontrolu pomocí sady pravidel skenování|Vaše organizace bude mít spoustu zdrojů dat pro předprodukční prostředí. Je důležité předem definovat klíčová kritéria pro kontrolu, aby se klasifikace a přípony souborů mohly použít konzistentně napříč panelem.|1-2 dní|
 |Vyhodnotit dostupnost oblasti pro kontrolu|V závislosti na oblasti zdrojů dat a požadavcích organizace na dodržování předpisů a zabezpečení je vhodné zvážit, jaké oblasti musí být k dispozici ke skenování.|1 den|
@@ -243,7 +243,7 @@ Výše uvedené fáze by měly následovat za účelem vytvoření efektivního 
 
 ### <a name="tasks-to-complete"></a>Úkoly k dokončení
 
-|Úloha|Podrobnosti|Doba trvání|
+|Úkol|Podrobnosti|Doba trvání|
 |---------|---------|---------|
 |Kontrola zdrojů produkčních dat s povolenou bránou firewall|Pokud je to volitelné, pokud je brána firewall zavedena, ale je důležité prozkoumat možnosti pro posílení vaší infrastruktury.|1-5 dní|
 |Povolit privátní propojení|Pokud je to volitelné při použití privátního odkazu. V opačném případě můžete tuto hodnotu přeskočit, protože je to kritérium typu "musí být", pokud je povoleno soukromé.|1-5 dní|

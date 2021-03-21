@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
 ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946488"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Generování doporučení pomocí Apache Mahout ve službě Azure HDInsight
@@ -20,7 +20,7 @@ Mahout je knihovna [strojového učení](https://en.wikipedia.org/wiki/Machine_l
 
 Další informace o verzi Mahout ve službě HDInsight najdete v tématu [verze a Apache Hadoop komponenty služby HDInsight](../hdinsight-component-versioning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 

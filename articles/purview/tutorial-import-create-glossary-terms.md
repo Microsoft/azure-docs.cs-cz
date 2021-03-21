@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
 ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97696075"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Kurz: vytvoření a import podmínek glosáře v Azure dosah (Preview)
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Přidejte do assetu výrazy glosáře.
 > * Importujte pojem Glosář.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Úplný [kurz: Prozkoumejte sady prostředků, podrobnosti, schémata a klasifikace v Azure dosah (Preview)](tutorial-schemas-and-classifications.md).
 
@@ -184,4 +184,4 @@ V tomto kurzu jste se naučili:
 V dalším článku se dozvíte o různých přehledech katalogu.
 
 > [!div class="nextstepaction"]
-> [Vysvětlení přehledů ve službě Azure dosah](concept-insights.md)
+> [Principy přehledů v Azure Purview](concept-insights.md)
