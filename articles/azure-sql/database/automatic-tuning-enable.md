@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/03/2021
 ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042517"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Povolit automatické ladění v Azure Portal pro monitorování dotazů a zlepšení výkonu úloh
@@ -110,7 +110,7 @@ Nastavení jednotlivé možnosti optimalizace na ZAPNUTo přepíše všechna nas
 
 Další možnosti sousedit s T-SQL pro konfiguraci automatického ladění najdete v tématu věnovaném [možnostem ALTER DATABASE set (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="automated-recommendation-management-is-disabled"></a>Automatizovaná správa doporučení je zakázaná.
 

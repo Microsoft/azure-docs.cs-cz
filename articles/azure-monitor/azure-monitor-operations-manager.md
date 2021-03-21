@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
 ms.openlocfilehash: 6d92b7c2f01a7e9ef12bc2bb422cfb6ed0076f73
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102039372"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor pro stávající zákazníky Operations Manager
@@ -20,7 +20,7 @@ Konkrétní doporučení učiněná v tomto článku se změní jako Azure Monit
 > [!IMPORTANT]
 > K implementaci několika Azure Monitor funkcí popsaných tady se účtují náklady, takže byste měli vyhodnotit jejich hodnotu před nasazením v celém prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že už používáte [Operations Manager](/system-center/scom) a máte minimálně základní znalost [Azure monitor](overview.md). Úplné porovnání dvou najdete v tématu [Průvodce monitorováním cloudu: Přehled monitorovacích platforem](/azure/cloud-adoption-framework/manage/monitor/platform-overview). Tento článek podrobně popisuje určité rozdíly mezi funkcemi, které vám pomůžou pochopit některá doporučení, která tady provedete. 
 
 

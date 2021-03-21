@@ -9,10 +9,10 @@ ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
 ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324219"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Úroveň Premium pro Azure Data Lake Storage
@@ -79,7 +79,7 @@ Toto nastavení se zobrazuje na stránce **vytvořit účet úložiště** na n�
 |--|--|
 |East US|LRS, ZRS|
 |USA – východ 2|LRS, ZRS|
-|Střední USA|LRS|
+|USA – střed|LRS|
 |USA – západ|LRS|
 |Západní USA 2|LRS, ZRS|
 |USA – středozápad|LRS|
@@ -97,12 +97,12 @@ Toto nastavení se zobrazuje na stránce **vytvořit účet úložiště** na n�
 |Indie – střed|LRS|
 |Západní Indie|LRS|
 |Spojené arabské emiráty sever|LRS|
-|Japan East|LRS|
+|Japonsko – východ|LRS|
 |Japonsko – západ|LRS|
 |Jihovýchodní Asie|LRS, ZRS|
 |Austrálie – východ|LRS, ZRS|
 |Austrálie – jihovýchod|LRS|
-|Brazil South|LRS|
+|Brazílie – jih|LRS|
 
 ## <a name="next-steps"></a>Další kroky
 

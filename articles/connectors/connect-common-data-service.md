@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 tags: connectors
 ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382343"
 ---
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Vytváření a Správa záznamů v Common Data Service (Microsoft dataRecord) pomocí Azure Logic Apps
@@ -23,7 +23,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Co
 
 Tento článek ukazuje, jak můžete vytvořit aplikaci logiky, která při každém vytvoření záznamu nového zájemce vytvoří záznam úkolu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

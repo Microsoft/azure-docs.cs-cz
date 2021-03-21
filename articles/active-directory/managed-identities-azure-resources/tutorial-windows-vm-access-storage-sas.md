@@ -16,10 +16,10 @@ ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45b4a6f7915f931e2eff24b56b178957a039e1ff
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101096585"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: použití spravované identity přiřazené systémem Windows VM pro přístup k Azure Storage prostřednictvím přihlašovacích údajů SAS
@@ -35,7 +35,7 @@ SAS služby poskytuje možnost udělit omezený přístup k objektům v účtu �
 > * Udělení přístupu k SAS účtu úložiště v Resource Manageru pro virtuální počítač 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k načtení SAS z Resource Manageru 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Porozumění spravovaným identitám. Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](overview.md). 
 - Účet Azure, [Zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/).

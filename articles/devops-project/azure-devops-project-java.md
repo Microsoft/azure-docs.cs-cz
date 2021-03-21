@@ -14,17 +14,17 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: d76c4206ca39518c3a09d27ee470c05db108ae6d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102551877"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Nastavení kanálu CI/CD pro aplikaci Java pomocí Azure DevOps Starter
 
 V tomto rychlém startu použijete zjednodušené prostředí Azure DevOps Starter k nastavení kanálu průběžné integrace (CI) a průběžného doručování (CD) pro vaši aplikaci Java v Azure Pipelines. K nastavení všeho, co potřebujete pro vývoj, nasazení a monitorování vaší aplikace, můžete použít Azure DevOps Starter. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Účet [Azure DevOps](https://azure.microsoft.com/services/devops/) a organizace.

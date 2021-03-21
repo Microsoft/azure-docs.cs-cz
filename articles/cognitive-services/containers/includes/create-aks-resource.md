@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017840"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Vytvoření prostředku clusteru služby Azure Kubernetes
@@ -40,7 +40,7 @@ ms.locfileid: "96017840"
     |Nastavení|Hodnota|
     |--|--|
     |Směrování aplikace HTTP|No|
-    |Konfigurace sítě|Základní|
+    |Konfigurace sítě|Basic|
 
 1. Na kartě **integrace** se ujistěte, že je **monitorování kontejneru** nastaveno na **povoleno**, a jako výchozí hodnotu ponechte **Log Analytics pracovní prostor** .
 1. Na kartě **značky** ponechte páry název/hodnota prázdné pro nyní.

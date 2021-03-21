@@ -4,10 +4,10 @@ description: Mapování ovládacího prvku ukázka zabezpečení dat v odvětví
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 9b1cf7702b627ae073f0172dde4694060004cb3f
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98045151"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Mapování ovládacích prvků pro ukázka PCI-DSS v 3.2.1 podrobný plán

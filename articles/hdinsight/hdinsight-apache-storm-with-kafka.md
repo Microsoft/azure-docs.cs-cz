@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942731"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu se systémem Apache Kafka ve službě HDInsight
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Zastavení topologií
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Znalost vytváření témat Kafka. Další informace najdete v dokumentu [Rychlý start k systému Kafka ve službě HDInsight](./kafka/apache-kafka-get-started.md).
 
@@ -363,7 +363,7 @@ streams:
 
 Projekt obsahuje soubor s názvem `dev.properties`, který se používá pro předávání parametrů využívaných topologiemi. Definuje následující vlastnosti:
 
-| Soubor dev.properties | Popis |
+| Soubor dev.properties | Description |
 | --- | --- |
 | `kafka.zookeeper.hosts` | [Apache Zookeeper](https://zookeeper.apache.org/) hostitelé pro cluster Kafka. |
 | `kafka.broker.hosts` | Hostitelé zprostředkovatelů Kafka (pracovní uzly). |

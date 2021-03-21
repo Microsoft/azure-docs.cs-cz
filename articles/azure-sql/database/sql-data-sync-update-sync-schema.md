@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/14/2018
 ms.openlocfilehash: f9997ea737b96185b31a7f51996a396fb5fc46c4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790181"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu v Azure Synchronizace dat SQL
@@ -84,7 +84,7 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
     VALUES (EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)'), 'From DDL trigger')
 ```
 
-Aktivační událost vloží záznam do tabulky sledování změn schématu pro každý příkaz ALTER TABLE. Tento příklad přidá filtr, aby se zabránilo replikaci změn schématu provedených v rámci schématu data **Sync** , protože tyto změny jsou pravděpodobně provedeny službou synchronizace dat. Pokud chcete replikovat pouze určité typy změn schématu, přidejte další filtry.
+Aktivační událost vloží záznam do tabulky sledování změn schématu pro každý příkaz ALTER TABLE. Tento příklad přidá filtr, aby se zabránilo replikaci změn schématu provedených v rámci schématu data **Sync**, protože tyto změny jsou pravděpodobně provedeny službou synchronizace dat. Pokud chcete replikovat pouze určité typy změn schématu, přidejte další filtry.
 
 Můžete také přidat další aktivační události pro replikaci jiných typů změn schématu. Můžete například vytvořit CREATE_PROCEDURE, ALTER_PROCEDURE a DROP_PROCEDURE triggery pro replikaci změn uložených procedur.
 

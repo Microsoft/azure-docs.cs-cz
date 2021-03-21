@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
 ms.openlocfilehash: 9c3fa0d8ac4540495e8580fd208507a2c1aaa7ce
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102180635"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>Kurz: migrace SQL Server pro Azure SQL Database pomocí DMS
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > - Monitorujte migraci.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -146,7 +146,7 @@ Chcete-li migrovat schéma **Adventureworks2016** do izolované databáze nebo A
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
 
-1. Přihlaste se k portálu Azure. Vyhledejte a vyberte **odběry**.
+1. Přihlaste se k webu Azure Portal. Vyhledejte a vyberte **odběry**.
 
    ![Zobrazení předplatných na portálu](media/tutorial-sql-server-to-azure-sql/portal-select-subscription-1.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
 ms.openlocfilehash: 70afa0a02f4e303105aec1884b966796854c6f49
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102449310"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Kurz: Azure Active Directory integrace s Zscaler Internet Access Administrator
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Zscaler Internet Access Administrator 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Zscalerí správce internetového přístupu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -106,7 +106,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Název  | Zdrojový atribut  |
+    | Name  | Zdrojový atribut  |
     | ---------| ------------ |
     | Role | User. assignedroles |
 

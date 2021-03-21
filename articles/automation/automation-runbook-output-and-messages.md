@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: beed3ec50d0c7990168ee75976c732796cdbe246
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324419"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Konfigurace výstupu Runbooku a datových proudů zpráv
@@ -18,7 +18,7 @@ Většina sad Runbook Azure Automation má nějaký formu výstupu. Tento výstu
 
 Následující tabulka stručně popisuje každý datový proud s chováním v Azure Portal publikovaných runbooků a při [testování sady Runbook](./manage-runbooks.md). Výstupní datový proud je hlavní datový proud, který se používá pro komunikaci mezi sadami Runbook. Ostatní datové proudy jsou klasifikovány jako datové proudy zpráv určené k sdělování informací uživateli.
 
-| Datový proud | Popis | Publikováno | Test |
+| Stream | Description | Publikováno | Test |
 |:--- |:--- |:--- |:--- |
 | Chyba |Chybová zpráva určená pro uživatele. Na rozdíl od s výjimkou, sada Runbook ve výchozím nastavení pokračuje i po chybové zprávě. |Zapsáno do historie úlohy |Zobrazuje se v podokně výstup testu. |
 | Ladění |Zprávy určené pro interaktivního uživatele. Neměl by se používat v sadách Runbook. |Nepíše se do historie úlohy. |Nezobrazuje se v podokně výstup testu. |
@@ -119,7 +119,7 @@ I když je tato sada Runbook jednoduchá, existuje jedna položka konfigurace, k
 
 Druhá sada Runbook v tomto příkladu s názvem **test-ChildOutputType** jednoduše definuje dvě aktivity.<br> ![Příklad podřízeného typu výstupu Runbooku](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
-První aktivita volá Runbook **AuthenticateTo-Azure** . Druhá aktivita spustí `Write-Verbose` rutinu se **zdrojem dat** nastaveným na **výstup aktivity**. Také **cesta k poli** je nastavená na **Context. Subscription. Subscription** , výstup kontextu z Runbooku **AuthenticateTo-Azure** .<br> ![Zdroj dat parametru rutiny Write-verbose](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+První aktivita volá Runbook **AuthenticateTo-Azure** . Druhá aktivita spustí `Write-Verbose` rutinu se **zdrojem dat** nastaveným na **výstup aktivity**. Také **cesta k poli** je nastavená na **Context. Subscription. Subscription**, výstup kontextu z Runbooku **AuthenticateTo-Azure** .<br> ![Zdroj dat parametru rutiny Write-verbose](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
 Výsledný výstup je název předplatného.<br> ![Výsledky Test-ChildOutputType sady Runbook](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 

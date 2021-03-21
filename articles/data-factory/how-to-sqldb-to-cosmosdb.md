@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100383938"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Migrace normalizovaného schématu databáze z Azure SQL Database do denormalizovaného kontejneru Azure CosmosDB
@@ -68,7 +68,7 @@ Výsledný kontejner CosmosDB vloží vnitřní dotaz do jediného dokumentu a b
 
 10. V novém připojení, které jste přidali, klikněte na kartu náhled dat, abyste viděli výsledky až do tohoto okamžiku. Měli byste vidět všechny řádky záhlaví spojené s řádky podrobností. Jedná se o výsledek připojení, které je vytvořeno z ```SalesOrderID``` . Dále zkombinujeme podrobnosti z běžných řádků do struktury Details a agreguje společné řádky.
 
-![Spojit](media/data-flow/cosmosb4.png)
+![Připojení](media/data-flow/cosmosb4.png)
 
 11. Předtím, než můžeme vytvořit pole pro odnormalizování těchto řádků, musíme nejdřív odebrat nechtěné sloupce a ujistit se, že hodnoty dat budou odpovídat datovým typům CosmosDB.
 

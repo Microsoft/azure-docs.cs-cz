@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: 10ad06041e8136b5661b1b1ff487cd4d3b0f5153
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358384"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Kurz: Konfigurace Signagelive pro Automatické zřizování uživatelů
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Signagelive
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -72,7 +72,7 @@ Pokud chcete nakonfigurovat Signagelive pro Automatické zřizování uživatel�
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Signagelive** , na panelu výsledků vyberte **Signagelive** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Signagelive**, na panelu výsledků vyberte **Signagelive** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Signagelive v seznamu výsledků](common/search-new-app.png)
 

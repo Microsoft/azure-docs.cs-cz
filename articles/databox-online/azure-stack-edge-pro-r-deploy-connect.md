@@ -10,17 +10,17 @@ ms.date: 10/15/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro R so I can use it to transfer data to Azure.
 ms.openlocfilehash: ce97c22cf4bfbe5cca01183574597706a8c239e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96468162"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-pro-r"></a>Kurz: připojení k Azure Stack Edge pro R
 
 V tomto kurzu se dozvíte, jak se můžete připojit k zařízení Azure Stack Edge pro R pomocí místního webového uživatelského rozhraní.
 
-Dokončení procesu připojení může trvat přibližně 5 minut.
+Dokončení procesu připojování může trvat přibližně 5 minut.
 
 V tomto kurzu získáte informace o těchto tématech:
 
@@ -39,9 +39,9 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení pro R se u
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Připojení k místnímu nastavení webového uživatelského rozhraní
 
-1. Nakonfigurujte adaptér Ethernet v počítači pro připojení k zařízení Azure Stack Edge pro R se statickou IP adresou 192.168.100.5 a podsítí 255.255.255.0.
+1. Na adaptéru sítě Ethernet na počítači, pomocí kterého se připojujete k zařízení Azure Stack Edge Pro R, nakonfigurujte statickou IP adresu 192.168.100.5 a podsíť 255.255.255.0.
 
-2. Připojte počítač k portu 1 na svém zařízení. Pokud počítač připojujete přímo k zařízení (bez přepínače), použijte křížený kabel nebo adaptér USB Ethernet. Pomocí následující ilustrace Identifikujte PORT 1 na vašem zařízení.
+2. Připojte počítač k portu 1 vašeho zařízení. Pokud připojujete počítač přímo k zařízení (bez přepínače), použijte křížený kabel nebo adaptér USB sítě Ethernet. Pomocí následujícího obrázku identifikujte port 1 na vašem zařízení.
 
     ![Propojovací rozhraní zařízení se zapojenou kabeláží](./media/azure-stack-edge-pro-r-deploy-install/backplane-cabled.png)
 
@@ -62,7 +62,7 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení pro R se u
     ![Přihlašovací stránka zařízení Azure Stack Edge](media/azure-stack-edge-pro-r-deploy-connect/connect-web-ui-3.png)
 
 6. V příkazovém řádku změňte heslo správce zařízení.  
-    Nové heslo musí obsahovat 8 až 16 znaků. Musí obsahovat tři z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky.
+    Nové heslo musí mít 8 až 16 znaků. Musí obsahovat kombinaci tří z následujících čtyř typů znaků: velká písmena, malá písmena, číslice a speciální znaky.
 
 Teď jste na stránce **Přehled** svého zařízení. Dalším krokem je konfigurace nastavení sítě pro vaše zařízení.
 

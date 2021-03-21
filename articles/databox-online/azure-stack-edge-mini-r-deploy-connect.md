@@ -10,17 +10,17 @@ ms.date: 10/20/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
 ms.openlocfilehash: fe76391a5cfce8d7d39e47131db108ab87e5aed5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96468230"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-mini-r"></a>Kurz: připojení k Azure Stackmu hraničnímu minimu R
 
 V tomto kurzu se dozvíte, jak se pomocí místního webového uživatelského rozhraní připojovat k vašemu Azure Stackho minimu zařízení R.
 
-Dokončení procesu připojení může trvat přibližně 5 minut.
+Dokončení procesu připojování může trvat přibližně 5 minut.
 
 V tomto kurzu získáte informace o těchto tématech:
 
@@ -42,7 +42,7 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení se ujistě
 
 1. Nakonfigurujte adaptér Ethernet v počítači pro připojení k zařízení Azure Stack Edge pro se statickou IP adresou 192.168.100.5 a podsítí 255.255.255.0.
 
-2. Připojte počítač k portu 1 na svém zařízení. Pokud počítač připojujete přímo k zařízení (bez přepínače), použijte křížený kabel nebo adaptér USB Ethernet. Pomocí následující ilustrace Identifikujte PORT 1 na vašem zařízení.
+2. Připojte počítač k portu 1 vašeho zařízení. Pokud připojujete počítač přímo k zařízení (bez přepínače), použijte křížený kabel nebo adaptér USB sítě Ethernet. Pomocí následujícího obrázku identifikujte port 1 na vašem zařízení.
 
     ![Kabeláž pro Wi-Fi](./media/azure-stack-edge-mini-r-deploy-install/wireless-cabled.png)
 

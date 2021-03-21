@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 44e18be9d66131ad5f4a3ebcc039621ec9e9dbe6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452250"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
@@ -23,7 +23,7 @@ Tento článek používá [Azure Portal](https://portal.azure.com) a Azure CLI p
 >
 >
 
-|Typ|Platforma|Umístění|Popis|
+|Typ|Platforma|Umístění|Description|
 |-|-|-|-|
 | Protokolování aplikací | Windows, Linux | App Service objekty blob systému souborů nebo Azure Storage | Protokoluje zprávy vygenerované kódem vaší aplikace. Zprávy mohou být generovány webovým rozhraním, které si zvolíte, nebo z kódu vaší aplikace přímo pomocí standardního vzoru protokolování vašeho jazyka. Každé zprávě je přiřazena jedna z následujících kategorií: **kritická**, **Chyba**, **Upozornění**, **informace**, **ladění** a **trasování**. Pokud povolíte protokolování aplikací, můžete vybrat, jak chcete, aby protokolování bylo, nastavením úrovně závažnosti.|
 | Protokolování webového serveru| Windows | App Service nebo objekty blob Azure Storage systému souborů| Nezpracovaná data požadavku HTTP ve [formátu W3C Extended](/windows/desktop/Http/w3c-logging). Každá zpráva protokolu obsahuje data, jako je například metoda HTTP, identifikátor URI prostředku, IP adresa klienta, port klienta, uživatelský agent, kód odpovědi atd. |
@@ -164,7 +164,7 @@ Pro aplikace Linux/kontejner obsahuje soubor ZIP protokoly výstupu konzoly host
 
 V případě aplikací pro Windows soubor ZIP obsahuje obsah adresáře *D:\Home\LogFiles* v systému souborů App Service. Má následující strukturu:
 
-| Typ protokolu | Adresář | Popis |
+| Typ protokolu | Adresář | Description |
 |-|-|-|
 | **Protokoly aplikací** |*/LogFiles/Application/* | Obsahuje jeden nebo více textových souborů. Formát zpráv protokolu závisí na poskytovateli protokolování, který používáte. |
 | **Trasování chybných žádostí** | */LogFiles/W3SVC#########/* | Obsahuje soubory XML a soubor XSL. Formátované soubory XML můžete zobrazit v prohlížeči. |
@@ -183,17 +183,17 @@ S novou [integrací Azure monitor](https://aka.ms/appsvcblog-azmon)můžete [vyt
 
 Následující tabulka uvádí podporované typy a popisy protokolů: 
 
-| Typ protokolu | Windows | Kontejner Windows | Linux | Kontejner pro Linux | Popis |
+| Typ protokolu | Windows | Kontejner Windows | Linux | Kontejner pro Linux | Description |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | Java SE & Tomcat | Ano | Ano | Ano | Standardní výstup a standardní chyba |
-| AppServiceHTTPLogs | Ano | Ano | Ano | Ano | Protokoly webového serveru |
-| AppServiceEnvironmentPlatformLogs | Ano | Není k dispozici | Ano | Ano | App Service Environment: škálování, změny konfigurace a protokoly stavu|
-| AppServiceAuditLogs | Ano | Ano | Ano | Ano | Přihlašovací aktivita prostřednictvím FTP a Kudu |
-| AppServiceFileAuditLogs | Ano | Ano | TBA | TBA | Změny souborů provedené v obsahu webu; **dostupné jenom pro úroveň Premium a vyšší** |
+| AppServiceConsoleLogs | Java SE & Tomcat | Yes | Yes | Yes | Standardní výstup a standardní chyba |
+| AppServiceHTTPLogs | Yes | Yes | Yes | Yes | Protokoly webového serveru |
+| AppServiceEnvironmentPlatformLogs | Yes | Není k dispozici | Ano | Yes | App Service Environment: škálování, změny konfigurace a protokoly stavu|
+| AppServiceAuditLogs | Yes | Yes | Yes | Yes | Přihlašovací aktivita prostřednictvím FTP a Kudu |
+| AppServiceFileAuditLogs | Yes | Yes | TBA | TBA | Změny souborů provedené v obsahu webu; **dostupné jenom pro úroveň Premium a vyšší** |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & obrázky s Tomcat, na kterých se nachází <sup>1</sup> | Java SE & obrázky s Tomcat, na kterých se nachází <sup>1</sup> | Protokoly aplikací |
-| AppServiceIPSecAuditLogs  | Ano | Ano | Ano | Ano | Žádosti z pravidel IP adres |
-| AppServicePlatformLogs  | TBA | Ano | Ano | Ano | Protokoly operací kontejneru |
-| AppServiceAntivirusScanAuditLogs | Ano | Ano | Ano | Ano | [Protokoly kontroly](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) antivirového programu pomocí programu Microsoft Defender; **dostupné jenom pro úroveň Premium** | 
+| AppServiceIPSecAuditLogs  | Yes | Yes | Yes | Yes | Žádosti z pravidel IP adres |
+| AppServicePlatformLogs  | TBA | Yes | Yes | Yes | Protokoly operací kontejneru |
+| AppServiceAntivirusScanAuditLogs | Yes | Yes | Yes | Yes | [Protokoly kontroly](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) antivirového programu pomocí programu Microsoft Defender; **dostupné jenom pro úroveň Premium** | 
 
 <sup>1</sup> pro aplikace Java se do nastavení aplikace přidejte $website _AZMON_PREVIEW_ENABLED a nastavte ji na 1 nebo true.
 

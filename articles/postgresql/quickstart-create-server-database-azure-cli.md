@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d174e410aaef876dfe97af62750322641de95fd3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659450"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure
@@ -118,7 +118,7 @@ Výsledek je ve formátu JSON. Poznamenejte si hodnoty **administratorLogin** a 
 ```
 
 ## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>Připojení k Azure Database for PostgreSQL serveru pomocí psql
-Klient [psql](https://www.postgresql.org/docs/current/static/app-psql.html) je oblíbená volba pro připojení k serverům PostgreSQL. K serveru se můžete připojit pomocí psql s [Azure Cloud Shell](../cloud-shell/overview.md). Pokud máte k dispozici psql, můžete použít i v místním prostředí. Prázdná databáze **Postgres** se automaticky vytvoří pomocí nového serveru PostgreSQL. Tuto databázi můžete použít pro připojení k psql, jak je znázorněno v následujícím kódu. 
+Klient [psql](https://www.postgresql.org/docs/current/static/app-psql.html) je oblíbená volba pro připojení k serverům PostgreSQL. K serveru se můžete připojit pomocí psql s [Azure Cloud Shell](../cloud-shell/overview.md). Klienta psql můžete použít také v místním prostředí, pokud je k dispozici. Prázdná databáze **Postgres** se automaticky vytvoří pomocí nového serveru PostgreSQL. Tuto databázi můžete použít pro připojení k psql, jak je znázorněno v následujícím kódu. 
 
    ```bash
  psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres

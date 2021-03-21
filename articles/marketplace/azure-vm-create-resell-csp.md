@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 11/05/2020
 ms.openlocfilehash: 4f243ca5be0878cde3b28f5b7a7c3eea0cf9b8d0
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94631569"
 ---
 # <a name="how-to-resell-your-offer-through-csp"></a>Jak dál prodávat vaši nabídku prostřednictvím CSP
@@ -22,9 +22,9 @@ Na stránce **proprodávat** na webu CPS (vyberte z nabídky vlevo v partnerské
 
 Vyberte, kteří partneři by měli mít možnost znovu prodávat vaši nabídku:
 
-- Libovolný partner v programu CSP
+- Všechny partnery v programu CSP
 - Konkrétní partneři v programu CSP, který jsem vybral
-- Žádní partneři v programu CSP
+- Žádné partnery v programu CSP
 
 Než budete pokračovat na další kartu v nabídce vlevo, vyberte možnost **Uložit koncept** **.**
 

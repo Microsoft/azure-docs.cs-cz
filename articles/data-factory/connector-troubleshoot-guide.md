@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s konektory služby Azure Data Factory
+title: Řešení potíží s konektory Azure Data Factory
 description: Naučte se řešit potíže s konektorem v Azure Data Factory.
 author: linda33wj
 ms.service: data-factory
@@ -8,13 +8,13 @@ ms.date: 02/08/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
 ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042428"
 ---
-# <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
+# <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -175,7 +175,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: problém je způsoben chybou vypršení časového limitu jímky Azure Data Lake Storage Gen2, ke kterému obvykle dochází v počítači s místním hostováním Integration runtime (IR).
 
-- **Doporučení**: 
+- **Doporučení:** 
 
     - Pokud je to možné, umístěte svůj místně hostovaný počítač IR a cílový účet Azure Data Lake Storage Gen2 ve stejné oblasti. To může zabránit náhodnému vypršení časového limitu a dosažení lepšího výkonu.
 
@@ -525,7 +525,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: cílový sloupec neexistuje ve zdroji nebo v mapování sloupce.
 
-- **Doporučení**:  
+- **Doporučení:**  
   1. Ujistěte se, že zdroj obsahuje cílový sloupec. 
   2. Přidejte cílový sloupec do mapování sloupce. Zajistěte, aby byl sloupec jímky ve formátu *{FieldName @EntityReference }*.
 
@@ -587,7 +587,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: v Data Factory jsou hodnoty DateTime podporovány v rozsahu od 0001-01-01 00:00:00 do 9999-12-31 23:59:59. Oracle ale podporuje širší rozsah hodnot DateTime, jako je BC století nebo min/s>59, což vede k selhání v Data Factory.
 
-- **Doporučení**: 
+- **Doporučení:** 
 
     Pokud chcete zjistit, jestli je hodnota v Oracle v rozsahu Data Factory, spusťte `select dump(<column name>)` . 
 
@@ -827,7 +827,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: obsah privátního klíče je načtený z trezoru klíčů Azure nebo sady SDK, ale není správně kódovaný.
 
-- **Doporučení**:  
+- **Doporučení:**  
 
     Pokud je obsah privátního klíče z vašeho trezoru klíčů, může soubor originálního klíče fungovat, když ho nahrajete přímo do propojené služby SFTP.
 
@@ -858,7 +858,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: byl vybrán špatný formát obsahu klíče.
 
-- **Doporučení**:  
+- **Doporučení:**  
 
     Privátní klíč SSH formátu PKCS # 8 (začíná na-----začínat ŠIFROVANÝm PRIVÁTNÍm klíčem-----) se v současné době nepodporuje pro přístup k serveru SFTP v Data Factory. 
 
@@ -895,7 +895,7 @@ Tento článek popisuje běžné způsoby řešení potíží s Azure Data Facto
 
 - **Příčina**: Pokud chybová zpráva obsahuje řetězec "odpověď serveru neobsahuje identifikaci protokolu SSH", může to být způsobeno tím, že server SFTP omezení připojení omezil. Data Factory vytvoří Paralelní stažení více připojení ze serveru SFTP a v některých případech dojde k omezení serveru SFTP. V případě, že různé servery nastanou omezení, jsou obvykle jiné chyby.
 
-- **Doporučení**:  
+- **Doporučení:**  
 
     Zadejte maximální počet souběžných připojení datové sady SFTP jako 1 a znovu spusťte aktivitu kopírování. Pokud je aktivita úspěšná, můžete si být jisti, že je to příčina omezování.
 

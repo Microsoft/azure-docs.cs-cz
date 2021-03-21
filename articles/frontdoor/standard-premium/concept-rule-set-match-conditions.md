@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: yuajia
 ms.openlocfilehash: 4c65d0e7f80fab59ca7df4849df7117d482352c1
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101099191"
 ---
 # <a name="azure-front-door-standardpremium-preview-rule-set-match-conditions"></a>Podmínky shody sady pravidel služby Azure front-Premium Standard/Premium (Preview)
@@ -87,7 +87,7 @@ Neshoda IP adres | IP adresa (oddělená mezerami)
 * Pro více IP adres a bloků IP adres se používá logika "nebo".
     * **Příklad protokolu IPv4**: Pokud PŘIDÁTE dvě IP adresy *1.2.3.4* a *10.20.30.40*, je podmínka shodná, pokud všechny požadavky přicházejí z adresy 1.2.3.4 nebo 10.20.30.40.
     * **Příklad IPv6**: Pokud PŘIDÁTE dvě IP adresy *1:2:3:4:5:6:7:8* a *10:20:30:40:50:60:70:80*, bude se tato podmínka shodovat, pokud všechny žádosti, které přicházejí z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
-* Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Příklad:
+* Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Například:
     * **Příklad IPv4**: *5.5.5.64/26* odpovídá všem žádostem, které přicházejí z adres 5.5.5.64 prostřednictvím 5.5.5.127.
     * **Příklad IPv6**: *1:2:3:/48* odpovídá všem žádostem, které přicházejí z adres 1:2:3:0:0:0:0:0 až 1:2:3: ffff: ffff: ffff: ffff: FFFF.
 
@@ -187,7 +187,7 @@ Operátor | Hodnota | Transformace případu
 
 Pro pravidla, která přijímají hodnoty ze seznamu standardních operátorů, platí následující operátory:
 
-* Libovolný
+* Všechny
 * Je rovno
 * Contains
 * Začíná na

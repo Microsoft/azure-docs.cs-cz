@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
 ms.openlocfilehash: 94c22ffd423c32ba5f489298267464ca36abaecd
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101098921"
 ---
 # <a name="configure-an-azure-front-door-standardpremium-route"></a>Konfigurace trasy služby Azure front-end Standard/Premium
@@ -26,7 +26,7 @@ Tento článek vysvětluje každé nastavení používané při vytváření tra
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct nakonfigurovat trasu pro frontu Azure, musíte v rámci aktuálního koncového bodu vytvořit alespoň jednu skupinu zdrojů a jednu vlastní doménu. 
 

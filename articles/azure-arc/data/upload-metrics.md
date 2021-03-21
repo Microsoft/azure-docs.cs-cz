@@ -11,10 +11,10 @@ ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
 ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575696"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Nahrát metriky do Azure Monitor
@@ -26,7 +26,7 @@ Pravidelně můžete exportovat metriky monitorování a pak je nahrát do Azure
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že jste vytvořili požadovaný instanční objekt a přiřadili ho příslušné roli. Podrobnosti najdete tady:
 * [Vytvoření instančního objektu](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)
@@ -126,7 +126,7 @@ Pokud chcete nahrát metriky pro spravované instance Azure s podporou ARC a Azu
    >[!NOTE]
    >Po prvním odeslání vyčkejte aspoň 30 minut, než se vytvoří instance dat s povoleným ARC Azure.
    >
-   >Ujistěte `upload` se, že metriky hned po `export` Azure monitor akceptují jenom metriky za posledních 30 minut. [Přečtěte si další informace](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting).
+   >Ujistěte `upload` se, že metriky hned po `export` Azure monitor akceptují jenom metriky za posledních 30 minut. [Další informace](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting).
 
 
 Pokud se při exportu zobrazí nějaké chyby znamenající "selhání získání metrik", zkontrolujte, jestli je shromažďování dat nastavené `true` spuštěním tohoto příkazu:

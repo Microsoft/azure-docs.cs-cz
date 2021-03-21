@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: alkohli
 ms.openlocfilehash: 6f01d62d1d11f5ff90661482ffd2db112657eee5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466879"
 ---
 # <a name="azure-stack-edge-mini-r-limits"></a>Omezení Azure Stackch Mini R na hraničních zařízeních
@@ -28,10 +28,10 @@ Vezměte v úvahu tato omezení při nasazování a provozování Azure Stackch 
 
 V následující tabulce jsou popsány limity Azure Stackho konektoru R pro zařízení v hraničním prostředí.
 
-| Popis | Omezení|
+| Description | Omezení|
 |---|---:|
-|Ne. souborů na zařízení | 100 000 000 <!--check with devs-->|
-|Ne. sdílených složek na kontejner | 1|
+|No. souborů na zařízení | 100 000 000 <!--check with devs-->|
+|No. sdílených složek na kontejner | 1|
 |Maximální počet. koncových bodů sdílení a koncových bodů REST na zařízení| 24 |
 |Maximální počet. účtů vrstveného úložiště na zařízení| 24|
 |Maximální velikost souboru zapsaná do sdílené složky| 500 GB|

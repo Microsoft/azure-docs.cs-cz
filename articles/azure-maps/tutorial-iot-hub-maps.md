@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678268"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
@@ -30,7 +30,7 @@ V tomto kurzu provedete tyto kroky:
 > * Přihlaste se k odběru událostí telemetrie zařízení IoT pomocí služby Azure Functions prostřednictvím Azure Event Grid.
 > * Vyfiltrujte události telemetrie pomocí IoT Hub směrování zpráv.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 

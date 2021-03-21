@@ -4,10 +4,10 @@ description: Pomocí Azure NetApp Files s virtuálními počítači řešení VM
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.openlocfilehash: 2f2e8fdeb777e7e4b2b4e89c1bb36b51c3083257
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575437"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files s využitím řešení Azure VMware
@@ -37,7 +37,7 @@ Následující diagram znázorňuje připojení prostřednictvím Azure ExpressR
 
 Tento článek obsahuje pokyny pro nastavení, testování a ověření Azure NetApp Filesho svazku jako sdílené složky pro virtuální počítače řešení Azure VMware. V tomto scénáři jsme použili protokol NFS. Řešení Azure NetApp Files a Azure VMware se vytvářejí ve stejné oblasti Azure.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 > [!div class="checklist"]
 > * Předplatné Azure s povoleným Azure NetApp Files

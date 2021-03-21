@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
 ms.openlocfilehash: cf7e389fc4a8a8dfa88691dc034611cae3471731
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94655336"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Připojení brány firewall v programu Windows Defender s pokročilým zabezpečením do Azure Sentinel
@@ -33,7 +33,7 @@ ms.locfileid: "94655336"
 >
 > - Pokud jsou výstrahy v programu Azure Defender z Azure Security Center již shromážděny do pracovního prostoru služby Azure Sentinel, není nutné povolit řešení brány Windows Firewall prostřednictvím tohoto konektoru. Pokud jste to ale povolili, nezpůsobí duplikovaná data. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít oprávnění ke čtení a zápisu v pracovním prostoru, ke kterému jsou připojené počítače, které chcete monitorovat.
 

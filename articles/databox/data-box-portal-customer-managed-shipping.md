@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
 ms.openlocfilehash: 07529b18191c71776a9a36edbfa4cfd8ded5af4f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99524545"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Použití samoobslužného expedice pro Azure Data Box v Azure Portal
 
 Tento článek popisuje samostatné spravované úkoly, které je možné objednat, vybrat a vyřadit z Azure Data Boxho zařízení. Zařízení Data Box můžete spravovat pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Samostatně spravovaná dodávka je k dispozici jako možnost při [objednání Azure Data box](data-box-deploy-ordered.md). Samostatně spravovaná dodávka je k dispozici pouze v následujících oblastech:
 

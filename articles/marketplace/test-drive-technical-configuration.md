@@ -8,10 +8,10 @@ ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
 ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462904"
 ---
 # <a name="test-drive-technical-configuration"></a>Technická konfigurace testovací verze
@@ -34,7 +34,7 @@ Společnost Microsoft může odebrat složitost nastavení testovacích jednotek
 
 - **Adresa URL instance** (požadováno) – adresa URL, na které zákazník zahájí svoji zkušební verzi. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (například `https://testdrive.crm.dynamics.com` ).
 
-- **Instance URL webového rozhraní API** (požadováno) – načtení adresy URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení**  >  **přizpůsobení**  >  **Developer Resources**  >  **instance prostředků Web API (kořenová adresa URL služby)**, zkopírujte adresu URL, kterou tady najdete (například `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
+- **Instance URL webového rozhraní API** (požadováno) – načtení adresy URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení**  >  **přizpůsobení**  >    >  **instance prostředků Web API (kořenová adresa URL služby)**, zkopírujte adresu URL, kterou tady najdete (například `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Název role** (povinné) – zadejte název role zabezpečení, kterou jste definovali ve vlastní testovací jednotce Dynamics 365, která se uživateli přiřadí během zkušební jednotky (například Test-Drive-role).
 

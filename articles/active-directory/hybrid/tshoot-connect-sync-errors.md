@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d976cd924644828f5861e4c54460a8b4e4f81444
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101643860"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Řešení chyb při synchronizaci
@@ -41,7 +41,7 @@ Chyby při exportu do služby Azure AD znamenají, že operace \( Přidání, ak
 
 ## <a name="data-mismatch-errors"></a>Chyby neshody dat
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 * Když Azure AD Connect \( synchronizačního modulu \) instruuje Azure Active Directory, aby přidal nebo aktualizoval objekty, služba Azure AD odpovídá příchozímu objektu pomocí atributu **SourceAnchor** pro atribut **immutableId** objektů v Azure AD. Tato shoda se nazývá **těžká shoda**.
 * Když Azure AD **nenajde** žádný objekt, který by odpovídal atributu **immutableId** s atributem **sourceAnchor** příchozího objektu, před zřízením nového objektu se vrátí k použití atributů proxyAddresses a userPrincipalName k nalezení shody. Tato shoda se nazývá **měkká shoda**. Měkké porovnávání je navrženo tak, aby odpovídalo objektům, které již existují ve službě Azure AD (které jsou ve službě Azure AD), s novými přidanými a aktualizovanými objekty během synchronizace, které představují stejnou entitu (uživatele, skupiny) místně.
 * K chybě **InvalidSoftMatch** dojde v případě, že se při neshodě nenalezne žádný odpovídající objekt **a** měkké porovnávání najde odpovídající objekt, ale tento objekt má jinou hodnotu *immutableId* než *SourceAnchor* příchozích objektů, což naznačuje, že odpovídající objekt byl synchronizován s jiným objektem z místní služby Active Directory.
@@ -109,7 +109,7 @@ Zprávy o chybách synchronizace v rámci Azure AD Connect Health pro synchroniz
 * [Duplicitní a neplatné atributy zabraňují synchronizaci adresářů v Microsoft 365](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 Když se služba Azure AD pokusí dočasná shoda dvou objektů, je možné, že dva objekty různého typu objektu (například uživatel, skupina, kontakt atd.) mají stejné hodnoty pro atributy používané k provedení měkké shody. Vzhledem k tomu, že duplikace těchto atributů není ve službě Azure AD povolená, může operace způsobit chybu synchronizace "ObjectTypeMismatch".
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>Příklady scénářů pro chybu ObjectTypeMismatch
@@ -130,7 +130,7 @@ Nejběžnějším důvodem pro chybu ObjectTypeMismatch jsou dva objekty různý
 
 ## <a name="duplicate-attributes"></a>Duplicitní atributy
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 Azure Active Directory schéma neumožňuje, aby dva nebo více objektů mělo stejnou hodnotu následujících atributů. To znamená, že každý objekt ve službě Azure AD má v dané instanci jedinečnou hodnotu těchto atributů.
 
 * ProxyAddresses
@@ -168,7 +168,7 @@ Nejběžnějším důvodem pro chybu AttributeValueMustBeUnique je, že dva obje
 
 ## <a name="data-validation-failures"></a>Selhání ověřování dat
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 Azure Active Directory před tím, než povolí zápis těchto dat do adresáře, vynutila různá omezení nad samotnými daty. Tato omezení slouží k zajištění toho, aby koncoví uživatelé získali nejlepší možné prostředí při používání aplikací, které jsou na těchto datech závislé.
 
 #### <a name="scenarios"></a>Scénáře
@@ -182,7 +182,7 @@ a. Ujistěte se, že atribut userPrincipalName má podporované znaky a požadov
 * [Příprava na zřízení uživatelů prostřednictvím synchronizace adresářů na Microsoft 365](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 V takovém případě dojde k chybě synchronizace **"FederatedDomainChangeError"** , pokud je přípona názvu userPrincipalName uživatele změněna z jedné federované domény na jinou federované domény.
 
 #### <a name="scenarios"></a>Scénáře
@@ -204,7 +204,7 @@ Pokud byla přípona UserPrincipalName uživatele aktualizována z bob@**contoso
 * [Po změně hlavního názvu uživatele (UPN) uživatelského účtu na používání jiné federované domény nejsou změny synchronizované nástrojem Azure Active Directory Sync.](./howto-troubleshoot-upn-changes.md)
 
 ## <a name="largeobject"></a>LargeObject
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 Pokud atribut překročí povolený limit velikosti, omezení délky nebo omezení počtu, který je nastaven Azure Active Directory schématem, výsledkem operace synchronizace je chyba synchronizace **LargeObject** nebo **ExceededAllowedLength** . K této chybě obvykle dochází pro následující atributy.
 
 * userCertificate
@@ -223,7 +223,7 @@ Pokud atribut překročí povolený limit velikosti, omezení délky nebo omezen
 
 ## <a name="existing-admin-role-conflict"></a>Konflikt stávající role správce
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 **Ke konfliktu role správce** dojde v uživatelském objektu během synchronizace, pokud má tento objekt uživatele:
 
 - oprávnění správce a

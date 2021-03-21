@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
 ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459671"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
@@ -241,7 +241,7 @@ Přiřaďte pouze potřebná [oprávnění](/sql/relational-databases/security/p
 
 - V Azure Resource Manager:
   - Pokud jsou k dispozici nebo vlastní role Azure a přiřadíte potřebná oprávnění, použijte předdefinované role.
-    - [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)
+    - [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md)
     - [Vlastní role Azure](../../role-based-access-control/custom-roles.md)
 
 **Osvědčené postupy**:
@@ -342,7 +342,7 @@ Pro čtenáře, kteří chtějí podrobně hlouběji do SoD, doporučujeme násl
   - [Podepisování uložených procedur](/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Pro správu prostředků Azure:
-  - [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)
+  - [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md)
   - [Vlastní role Azure](../../role-based-access-control/custom-roles.md)
   - [Použití Azure AD Privileged Identity Management pro zvýšení úrovně přístupu](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 

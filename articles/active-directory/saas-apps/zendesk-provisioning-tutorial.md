@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 620dd8fd586352ebeaf097a8f870a606f8e06c01
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359710"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zendesk pro Automatické zřizování uživatelů
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak pomocí Zendesk a Azure Active Directory (Azure A
 > [!NOTE]
 > Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Informace o tom, jak tato služba funguje, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro aplikace typu software jako služba (SaaS) s Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že máte následující:
 
@@ -78,7 +78,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Zendesk ve službě Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **Zendesk**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **Zendesk**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -102,7 +102,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
    * V poli **doména** vyplňte subdoménu klienta Zendesk. Například pro účet s adresou URL klienta `https://my-tenant.zendesk.com` je vaše subdoména **můj tenant**.
 
-6. Tajný token pro účet Zendesk se nachází v **Admin**  >  **nastavení rozhraní API** pro správu  >  **Settings**. Ujistěte se, že je **přístup k tokenu** nastavený na **povoleno**.
+6. Tajný token pro účet Zendesk se nachází v   >  **nastavení rozhraní API** pro správu  >  . Ujistěte se, že je **přístup k tokenu** nastavený na **povoleno**.
 
     ![Nastavení správce Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 

@@ -13,10 +13,10 @@ ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
 ms.openlocfilehash: 02cfd839ed1b75fd85553f2e5a5150cadc29ff8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790453"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell pro Azure SQL Database aliasu DNS
@@ -59,7 +59,7 @@ Používají se následující rutiny:
 
 Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
-`Get-Module -ListAvailable Az`K nalezení verze použijte *\_ise.exePowerShellu* .
+`Get-Module -ListAvailable Az`K nalezení verze použijte *\_ise.exePowerShellu*.
 
 ```powershell
 $subscriptionName = '<subscriptionName>';

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2021
 ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101719372"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
@@ -23,7 +23,7 @@ Ve výchozím nastavení Azure Data Factory autoři uživatelského rozhraní (U
 - Služba Data Factory není optimalizovaná pro spolupráci a správu verzí.
 - Šablona Azure Resource Manager nutná k nasazení Data Factory sama o sobě není zahrnutá.
 
-Aby se zajistilo lepší prostředí pro vytváření, Azure Data Factory vám umožní nakonfigurovat úložiště Git buď pomocí Azure Repos, nebo GitHubu. Git je systém správy verzí, který umožňuje snazší sledování změn a spolupráci. V tomto článku se dozvíte, jak nakonfigurovat a pracovat v úložišti Git společně s důrazem na osvědčené postupy a Průvodce odstraňováním potíží.
+Aby se zajistilo lepší prostředí pro vytváření, Azure Data Factory vám umožní nakonfigurovat úložiště Git buď pomocí Azure Repos, nebo GitHubu. Git je systém správy verzí, který zjednodušuje sledování změn a spolupráci. V tomto článku se dozvíte, jak nakonfigurovat a pracovat v úložišti Git společně s důrazem na osvědčené postupy a Průvodce odstraňováním potíží.
 
 > [!NOTE]
 > V případě Azure Governmentho cloudu je k dispozici pouze GitHub Enterprise.
@@ -145,7 +145,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 
 | **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
+| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
 | **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Příklad: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https: \/ /GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |

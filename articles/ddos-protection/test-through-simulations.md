@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
 ms.openlocfilehash: 3be8682b3a12f06aa83db1791cb0ed125bbcee7e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101719232"
 ---
 # <a name="test-through-simulations"></a>Testování prostřednictvím simulací
@@ -32,7 +32,7 @@ Ve spolupráci se samoobslužným generátorem provozu [BreakingPoint Cloud](htt
 > [!NOTE]
 > BreakingPoint Cloud je dostupný jenom pro veřejný cloud.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit [Plán Standard Protection pro Azure DDoS](manage-ddos-protection.md) s chráněnými veřejnými IP adresami.
 - Nejprve musíte vytvořit účet s [BreakingPoint cloudem](http://breakingpoint.cloud/). 
