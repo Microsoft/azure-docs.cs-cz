@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 1f8100dd6340383eadec5d10b7f23db59ba0ebdf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786381"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Kurz: seřazení výsledků hledání pomocí sady .NET SDK
@@ -34,7 +34,7 @@ Hotovou verzi kódu v tomto kurzu najdete v následujícím projektu:
 
 * [5-Order-Results (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/5-order-results)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [2b – přidat – nenekonečné – Scroll (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll) – řešení. Tento projekt může být vlastní verze sestavená z předchozího kurzu nebo kopie z GitHubu.
 
@@ -50,7 +50,7 @@ Není nutné upravovat žádné modely, aby bylo možné řazení povolit. Jenom
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>Přidání vlastnosti OrderBy do parametrů hledání
 
-1. V HomeController.cs přidejte možnost **OrderBy** a zahrňte vlastnost hodnocení s sestupným pořadím řazení. V metodě **index (model SearchData)** přidejte do parametrů hledání následující řádek.
+1. V HomeController. cs přidejte možnost **OrderBy** a zahrňte vlastnost hodnocení s sestupným pořadím řazení. V metodě **index (model SearchData)** přidejte do parametrů hledání následující řádek.
 
     ```cs
     options.OrderBy.Add("Rating desc");
@@ -213,7 +213,7 @@ Není nutné upravovat žádné modely, aby bylo možné řazení povolit. Jenom
 
 ### <a name="add-the-range-of-room-rates-to-the-view"></a>Přidat rozsah místnostních sazeb do zobrazení
 
-1. Přidejte vlastnosti obsahující nejlevnější a nejdražší pokojovou sazbu do modelu Hotel.cs.
+1. Přidejte do modelu hotelu. cs vlastnosti obsahující nejlevnější a nejdražší pokojovou sazbu.
 
     ```cs
     // Room rate range
@@ -631,7 +631,7 @@ Profily vyhodnocování se definují v indexu vyhledávání v době návrhu. In
     </body>
     ```
 
-1. Otevřete soubor SearchData.cs a nahraďte třídu **SearchData** následujícím kódem.
+1. Otevřete soubor SearchData. cs a nahraďte třídu **SearchData** následujícím kódem.
 
     ```cs
     public class SearchData
@@ -930,7 +930,7 @@ Profily vyhodnocování se definují v indexu vyhledávání v době návrhu. In
 
 1. Vyzkoušejte si profil "podle renovated data/hodnocení", abyste viděli, jestli se vám neočekáváte. Pouze nedávno renovated hotely by měli zvýšit zvýšení _aktuálnosti_ .
 
-### <a name="resources"></a>Zdroje
+### <a name="resources"></a>Zdroje informací
 
 Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu služby Azure kognitivní hledání](./index-add-scoring-profiles.md).
 

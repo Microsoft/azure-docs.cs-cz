@@ -4,10 +4,10 @@ description: Shrnuje podporu pro zotavení po havárii virtuálních počítač�
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.openlocfilehash: c7f2d6ecd01959e239a1ab048018452b2ae5fc20
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495211"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
@@ -195,10 +195,10 @@ Přidat disk na replikovaný virtuální počítač | Nepodporováno<br/> Zakaž
 Seskupování síťových adaptérů hostitele | Podporováno pro virtuální počítače VMware. <br/><br/>Není podporováno pro replikaci fyzického počítače.
 Síť VLAN sítě hostitele | Ano.
 Síť IPv4 hostitele | Ano.
-Síť IPv6 hostitele | Ne.
-Seskupování síťových adaptérů hosta/serveru | Ne.
+Síť IPv6 hostitele | No.
+Seskupování síťových adaptérů hosta/serveru | No.
 Síť IPv4 hosta/serveru | Ano.
-Síť s protokolem IPv6 Host/Server | Ne.
+Síť s protokolem IPv6 Host/Server | No.
 Statická IP adresa sítě hosta/serveru (Windows) | Ano.
 Statická IP adresa sítě hosta nebo serveru (Linux) | Ano. <br/><br/>Virtuální počítače jsou nakonfigurovány na používání protokolu DHCP při navrácení služeb po obnovení.
 Síť s více síťovými kartami Host/Server | Ano.
@@ -209,73 +209,73 @@ Přístup k Site Recovery službě přes soukromé odkazy | Ano. [Další inform
 
 **Komponenta** | **Podporováno**
 --- | ---
-Azure ExpressRoute | Ano
-INTERNÍHO nástroje | Ano
-ELB | Ano
-Azure Traffic Manager | Ano
-Více síťových karet | Ano
-Adresa Vyhrazená IP adresa | Ano
-IPv4 | Ano
-Zachovat zdrojovou IP adresu | Ano
-Koncové body služby virtuální sítě Azure<br/> | Ano
-Urychlení sítě | Ne
+Azure ExpressRoute | Yes
+INTERNÍHO nástroje | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Více síťových karet | Yes
+Adresa Vyhrazená IP adresa | Yes
+IPv4 | Yes
+Zachovat zdrojovou IP adresu | Yes
+Koncové body služby virtuální sítě Azure<br/> | Yes
+Urychlení sítě | No
 
 ## <a name="storage"></a>Storage
 **Komponenta** | **Podporováno**
 --- | ---
 Dynamický disk | Disk s operačním systémem musí být základní disk. <br/><br/>Datové disky můžou být dynamické disky.
-Konfigurace disku Docker | Ne
+Konfigurace disku Docker | No
 Hostitelský systém souborů NFS | Ano pro VMware<br/><br/> Ne pro fyzické servery
-SÍŤ SAN hostitele (iSCSI/FC) | Ano
+SÍŤ SAN hostitele (iSCSI/FC) | Yes
 Síti vSAN hostitele | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Funkce Multipath (MPIO) hostitele | Ano, Testováno pomocí Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM pro CLARiiON
 Virtuální svazky hostitele (VVols) | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
-VMDK nebo server typu Host | Ano
-Disk sdíleného clusteru Host/Server | Ne
-Zašifrovaný disk hosta/Server | Ne
-Host/Server NFS NFS | Ne
+VMDK nebo server typu Host | Yes
+Disk sdíleného clusteru Host/Server | No
+Zašifrovaný disk hosta/Server | No
+Host/Server NFS NFS | No
 ISCSI Host/Server | Migrace – Ano<br/>V případě zotavení po havárii – technologie iSCSI navrácení služeb po obnovení jako připojeného disku k virtuálnímu počítači.
-Host/server SMB 3,0 | Ne
-Host/Server – RDM | Ano<br/><br/> Není k dispozici pro fyzické servery
+Host/server SMB 3,0 | No
+Host/Server – RDM | Yes<br/><br/> Není k dispozici pro fyzické servery
 Disk hosta/Server > 1 TB | Ano, disk musí být větší než 1024 MB.<br/><br/>Až 8 192 GB při replikaci do spravovaných disků (9,26 verze a vyšší)<br></br> Až 4 095 GB při replikaci do účtů úložiště
-Disk hosta/Server s velikostí logického sektoru 4K a 4k | Ne
-Disk hosta/serveru s velikostí logického sektoru 4K a 512-byte | Ne
-Svazek typu Host/Server s prokládaným diskem >4 TB | Ano
+Disk hosta/Server s velikostí logického sektoru 4K a 4k | No
+Disk hosta/serveru s velikostí logického sektoru 4K a 512-byte | No
+Svazek typu Host/Server s prokládaným diskem >4 TB | Yes
 Správa logických svazků (LVM)| Silné zřizování – Ano <br></br> Dynamické zajišťování – ne
-Host/Server – prostory úložiště | Ne
-Host/Server – rozhraní NVMe | Ne
-Host/Server – Hot přidat/odebrat disk | Ne
-Host/Server – vyloučit disk | Ano
-Funkce Multipath Host/Server (MPIO) | Ne
+Host/Server – prostory úložiště | No
+Host/Server – rozhraní NVMe | No
+Host/Server – Hot přidat/odebrat disk | No
+Host/Server – vyloučit disk | Yes
+Funkce Multipath Host/Server (MPIO) | No
 Oddíly GPT/Server GPT | Z [kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) (verze 9,25 služby mobility) (verze) a vyšší je podporované pět oddílů. Dříve byly podporovány předchozí čtyři.
 ReFS | Odolný systém souborů je podporován se službou mobility verze 9,23 nebo vyšší.
 Spuštění hosta/serveru EFI/UEFI | – Podporováno pro všechny [Azure Marketplace operační systémy UEFI](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) s agentem Site Recovery mobility verze 9,30 a vyšší. <br/> -Typ spouštění zabezpečeného rozhraní UEFI není podporován. [Další informace](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
-Disk RAID| Ne
+Disk RAID| No
 
 ## <a name="replication-channels"></a>Kanály replikace
 
 |**Typ replikace**   |**Podporováno**  |
 |---------|---------|
-|Přenosy dat se sníženou zátěží (ODX)    |       Ne  |
-|Offline osazení        |   Ne      |
-| Azure Data Box | Ne
+|Přenosy dat se sníženou zátěží (ODX)    |       No  |
+|Offline osazení        |   No      |
+| Azure Data Box | No
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **Komponenta** | **Podporováno**
 --- | ---
-(Locally redundant storage) Místně redundantní úložiště | Ano
-Geograficky redundantní úložiště | Ano
-Geograficky redundantní úložiště s přístupem pro čtení | Ano
-Studené úložiště | Ne
-Horké úložiště| Ne
-Objekty blob bloku | Ne
-Šifrování v Rest (SSE)| Ano
+(Locally redundant storage) Místně redundantní úložiště | Yes
+Geograficky redundantní úložiště | Yes
+Geograficky redundantní úložiště s přístupem pro čtení | Yes
+Studené úložiště | No
+Horké úložiště| No
+Objekty blob bloku | No
+Šifrování v Rest (SSE)| Yes
 Šifrování v klidovém případě (CMK)| Ano (přes PowerShell AZ 3.3.0 Module a vyšší)
 Dvojité šifrování v klidovém umístění | Ano (přes PowerShell AZ 3.3.0 Module a vyšší). Další informace najdete v podporovaných oblastech pro [systémy Windows](../virtual-machines/disk-encryption.md) a [Linux](../virtual-machines/disk-encryption.md).
-Premium Storage | Ano
-Možnost zabezpečeného přenosu | Ano
-Služba import/export | Ne
+Premium Storage | Yes
+Možnost zabezpečeného přenosu | Yes
+Služba import/export | No
 Azure Storage brány firewall pro virtuální sítě | Ano.<br/> Nakonfigurováno na cílovém účtu úložiště nebo úložiště mezipaměti (používá se k ukládání dat replikace).
 Účty úložiště pro obecné účely v2 (horká a studená úroveň) | Ano (cena za transakce je podstatně vyšší pro V2 v porovnání s V1)
 
@@ -283,10 +283,10 @@ Azure Storage brány firewall pro virtuální sítě | Ano.<br/> Nakonfigurován
 
 **Funkce** | **Podporováno**
 --- | ---
-Skupiny dostupnosti | Ano
-Zóny dostupnosti | Ne
-ZDROJ | Ano
-Spravované disky | Ano
+Skupiny dostupnosti | Yes
+Zóny dostupnosti | No
+ZDROJ | Yes
+Spravované disky | Yes
 
 ## <a name="azure-vm-requirements"></a>Požadavky na virtuální počítač Azure
 
@@ -351,10 +351,10 @@ Počítejte s tím, že výše uvedená omezení platí jenom pro hybridní scé
 
 **Akce** | **Podporováno**
 --- | ---
-Přesunout trezor mezi skupinami prostředků | Ne
-Přesun trezoru v rámci předplatných a mezi nimi | Ne
-Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků | Ne
-Přesuňte úložiště, síť, virtuální počítače Azure v rámci i napříč předplatnými. | Ne
+Přesunout trezor mezi skupinami prostředků | No
+Přesun trezoru v rámci předplatných a mezi nimi | No
+Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků | No
+Přesuňte úložiště, síť, virtuální počítače Azure v rámci i napříč předplatnými. | No
 
 
 ## <a name="obtain-latest-components"></a>Získat nejnovější součásti

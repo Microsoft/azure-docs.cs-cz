@@ -10,10 +10,10 @@ ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536075"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Hromadný import a export identit zařízení služby IoT Hub
@@ -21,7 +21,7 @@ ms.locfileid: "92536075"
 Každé centrum IoT má registr identit, který můžete použít k vytvoření prostředků pro jednotlivé zařízení ve službě. Registr identit také umožňuje řídit přístup k koncovým bodům orientovaným na zařízení. Tento článek popisuje, jak hromadně importovat a exportovat identity zařízení do registru identit a z něj. Pokud chcete zobrazit pracovní ukázku v jazyce C# a zjistit, jak můžete tuto schopnost využít při klonování rozbočovače do jiné oblasti, přečtěte si téma [postup klonování IoT Hub](iot-hub-how-to-clone.md).
 
 > [!NOTE]
-> IoT Hub se nedávno přidala podpora virtuální sítě v omezeném počtu oblastí. Tato funkce zabezpečuje operace importu a exportu a eliminuje nutnost předávání klíčů pro ověřování.  Zpočátku je podpora virtuální sítě dostupná jenom v těchto oblastech: *WestUS2* , *EastUS* a *SouthCentralUS* . Další informace o podpoře virtuálních sítí a voláních rozhraní API k implementaci najdete v tématu [Podpora pro virtuální sítě IoT Hub](virtual-network-support.md).
+> IoT Hub se nedávno přidala podpora virtuální sítě v omezeném počtu oblastí. Tato funkce zabezpečuje operace importu a exportu a eliminuje nutnost předávání klíčů pro ověřování.  Zpočátku je podpora virtuální sítě dostupná jenom v těchto oblastech: *WestUS2*, *EastUS* a *SouthCentralUS*. Další informace o podpoře virtuálních sítí a voláních rozhraní API k implementaci najdete v tématu [Podpora pro virtuální sítě IoT Hub](virtual-network-support.md).
 
 Operace importu a exportu se provádějí v kontextu *úloh* , které umožňují provádět operace hromadné služby ve službě IoT Hub.
 
@@ -61,7 +61,7 @@ Pokud chcete najít připojovací řetězec pro Centrum IoT, v Azure Portal:
 
 - Přejděte do svého centra IoT.
 
-- Vyberte **zásady sdíleného přístupu** .
+- Vyberte **zásady sdíleného přístupu**.
 
 - Vyberte zásadu, která vezme v úvahu potřebná oprávnění.
 
@@ -109,7 +109,7 @@ Metoda **ExportDevicesAsync** vyžaduje dva parametry:
      | SharedAccessBlobPermissions.Delete
    ```
 
-* *Logická hodnota* , která označuje, zda chcete vyloučit ověřovací klíče z dat exportu. Pokud je **hodnota false** , jsou ve výstupu exportu zahrnuty ověřovací klíče. V opačném případě jsou klíče exportovány jako **hodnota null** .
+* *Logická hodnota* , která označuje, zda chcete vyloučit ověřovací klíče z dat exportu. Pokud je **hodnota false**, jsou ve výstupu exportu zahrnuty ověřovací klíče. V opačném případě jsou klíče exportovány jako **hodnota null**.
 
 Následující fragment kódu jazyka C# ukazuje, jak zahájit úlohu exportu, která zahrnuje klíče pro ověřování zařízení v datech exportu a pak dotaz na dokončení:
 
@@ -134,7 +134,7 @@ while(true)
 }
 ```
 
-Úloha ukládá svůj výstup do poskytnutého kontejneru objektů BLOB jako objekt blob bloku s názvem **devices.txt** . Výstupní data obsahují data serializovaných zařízení JSON s jedním zařízením na jeden řádek.
+Úloha ukládá svůj výstup do poskytnutého kontejneru objektů BLOB jako objekt blob bloku s názvem **devices.txt**. Výstupní data obsahují data serializovaných zařízení JSON s jedním zařízením na jeden řádek.
 
 Následující příklad ukazuje výstupní data:
 
@@ -262,7 +262,7 @@ Pokud soubor importu obsahuje dvojitá metadata, tato metadata přepisují exist
 
 Použijte volitelnou vlastnost **importMode** v části Import dat serializace pro každé zařízení a řízení procesu importu pro jednotlivá zařízení. Vlastnost **importMode** má následující možnosti:
 
-| importMode | Popis |
+| importMode | Description |
 | --- | --- |
 | **createOrUpdate** |Pokud zařízení se zadaným **ID** neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, stávající informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
 | **vytvořeny** |Pokud zařízení se zadaným **ID** neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, zapíše se do souboru protokolu chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
@@ -432,7 +432,7 @@ V tomto článku jste zjistili, jak provádět hromadné operace s registrem ide
 
 Další informace o správě IoT Hub Azure najdete v následujících článcích:
 
-* [IoT Hub monitorování](monitor-iot-hub.md)
+* [Monitorování IoT Hubu](monitor-iot-hub.md)
 
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 

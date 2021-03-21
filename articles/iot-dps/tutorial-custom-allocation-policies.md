@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258537"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Kurz: použití vlastních zásad přidělování se službou Device Provisioning Service (DPS)
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * V tomto článku se předpokládá, že jste dokončili kroky v části [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md) k vytvoření instance IoT Hub a DPS.
 

@@ -3,42 +3,78 @@ title: Posílání zpráv do Azure Service Bus témat pomocí Azure-zasílání 
 description: V tomto rychlém startu se dozvíte, jak odesílat zprávy pro Azure Service Bus témata pomocí balíčku Azure-Messaging-ServiceBus.
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 11/13/2020
+ms.date: 03/16/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 60504bcf9e2c3f9460eee9a2e72d18767c0cfa71
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 7b313caf6709429de9e0dcac219a4180c7391cf7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631670"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607576"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-net"></a>Odeslání zpráv do Azure Service Bus tématu a příjem zpráv z předplatných do tématu (.NET)
-V tomto kurzu se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která odesílá zprávy do Service Busho tématu a přijímá zprávy z předplatného tématu. 
+V tomto kurzu vytvoříte aplikaci v jazyce C#, která provede následující úlohy:
 
-> [!Important]
-> V tomto rychlém startu se používá nový balíček **Azure. Messaging. ServiceBus** . Rychlý Start, který používá starý balíček Microsoft. Azure. ServiceBus, najdete v tématu [posílání a přijímání zpráv pomocí balíčku Microsoft. Azure. ServiceBus](service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md).
+1. Odeslání zprávy do tématu Service Bus. 
 
-## <a name="prerequisites"></a>Požadavky
+    Téma Service Bus poskytuje koncový bod pro posílání zpráv pro aplikace odesílatele. Téma může mít jeden nebo více předplatných. Každé předplatné tématu získá kopii zprávy odeslané do tématu. Další informace o Service Bus témata najdete v tématu [co je Azure Service Bus?](service-bus-messaging-overview.md). 
+1. Přijímání zpráv z předplatného tématu. 
 
-- [Visual Studio 2019](https://www.visualstudio.com/vs)
+    :::image type="content" source="./media/service-bus-messaging-overview/about-service-bus-topic.png" alt-text="Témata a odběry služby Service Bus":::
+
+    > [!Important]
+    > V tomto rychlém startu se používá nový balíček **Azure. Messaging. ServiceBus** . Pokud používáte starý balíček Microsoft. Azure. ServiceBus, přečtěte si téma [posílání a přijímání zpráv pomocí balíčku Microsoft. Azure. ServiceBus](service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md).
+
+## <a name="prerequisites"></a>Předpoklady
+
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md). Poznamenejte si připojovací řetězec, název tématu a název předplatného. Pro tento rychlý Start budete používat jenom jedno předplatné. 
+- Postupujte podle kroků v tomto [rychlém](service-bus-quickstart-topics-subscriptions-portal.md) startu a vytvořte Service Bus téma a odběry tématu. 
 
+    > [!NOTE]
+    > Použijete připojovací řetězec k oboru názvů, názvu tématu a názvu jednoho z odběrů k tématu v tomto kurzu.  
+- [Visual Studio 2019](https://www.visualstudio.com/vs). 
+ 
 ## <a name="send-messages-to-a-topic"></a>Odeslání zprávy do tématu
-V této části vytvoříte konzolovou aplikaci .NET Core v aplikaci Visual Studio, přidáte kód pro odesílání zpráv do tématu, které jste vytvořili. 
+V této části vytvoříte konzolovou aplikaci .NET Core v aplikaci Visual Studio, přidáte kód pro posílání zpráv do Service Busho tématu, které jste vytvořili. 
 
 ### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
-Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Core)** pro C#. 
+Vytvořte konzolovou aplikaci .NET Core pomocí sady Visual Studio. 
+
+1. Spusťte Visual Studio.  
+1. Pokud **se zobrazí stránka Začínáme** , vyberte možnost **vytvořit nový projekt**. 
+1. Na stránce **vytvořit nový projekt** použijte následující postup: 
+    1. Pro programovací jazyk vyberte **C#**. 
+    1. Jako typ projektu vyberte **Konzola**. 
+    1. V seznamu šablon vyberte **Konzolová aplikace (.NET Core)** . 
+    1. Pak vyberte **Další**. 
+    
+        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-console-project.png" alt-text="Vytvoření projektu konzolové aplikace":::
+1. Na stránce **Konfigurovat nový projekt** proveďte následující kroky: 
+    1. Jako **název projektu** zadejte název projektu. 
+    1. V poli **umístění** vyberte umístění pro soubory projektu a řešení. 
+    1. Do pole **název řešení** zadejte název řešení. Řešení sady Visual Studio může mít jeden nebo více projektů. V tomto rychlém startu bude mít řešení pouze jeden projekt. 
+    1. Vyberte **Vytvořit** a vytvořte projekt. 
+            
+        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-console-project-2.png" alt-text="Zadejte název projektu a řešení a jeho umístění.":::    
+
 
 ### <a name="add-the-service-bus-nuget-package"></a>Přidání balíčku Service Bus NuGet
-
 1. Klikněte pravým tlačítkem na nově vytvořený projekt a vyberte možnost **Spravovat balíčky NuGet**.
-1. Vyberte **Procházet**. Vyhledejte a vyberte **[Azure. Messaging. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)**.
-1. Vyberte **instalovat** a dokončete instalaci a potom zavřete Správce balíčků NuGet.
+
+    :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/manage-nuget-packages-menu.png" alt-text="Nabídka spravovat balíčky NuGet":::        
+1. Přepněte na kartu **Procházet** .
+1. Vyhledejte a vyberte **[Azure. Messaging. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)**.
+1. Vyberte **Nainstalovat** a dokončete instalaci.
+
+    :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/select-service-bus-package.png" alt-text="Vyberte Service Bus balíček NuGet.":::
+5. Pokud se zobrazí dialogové okno **Náhled změn** , pokračujte výběrem **OK** . 
+1. Pokud se zobrazí stránka **přijetí licence** **, vyberte možnost Souhlasím s** pokračováním. 
+    
 
 ### <a name="add-code-to-send-messages-to-the-topic"></a>Přidání kódu pro odesílání zpráv do tématu 
 
-1. V souboru Program.cs přidejte následující příkazy `using` do horní části definice oboru názvů před deklaraci třídy:
+1. V okně **Průzkumník řešení** dvakrát klikněte na **program. cs** a otevřete soubor v editoru. 
+1. Přidejte následující `using` příkazy v horní části definice oboru názvů před deklaraci třídy:
    
     ```csharp
     using System;
@@ -46,34 +82,43 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
     using System.Threading.Tasks;
     using Azure.Messaging.ServiceBus;
     ```
-1. Ve `Program` třídě deklarujte následující proměnné:
+1. Ve `Program` třídě nad `Main` funkcí deklarujte následující proměnné:
 
     ```csharp
         static string connectionString = "<NAMESPACE CONNECTION STRING>";
-        static string topicName = "<TOPIC NAME>";
-        static string subscriptionName = "<SUBSCRIPTION NAME>";
+        static string topicName = "<SERVICE BUS TOPIC NAME>";
+        static string subscriptionName = "<SERVICE BUS - TOPIC SUBSCRIPTION NAME>";
     ```
 
     Nahraďte následující hodnoty:
     - `<NAMESPACE CONNECTION STRING>` s připojovacím řetězcem k vašemu Service Bus oboru názvů
     - `<TOPIC NAME>` s názvem tématu
     - `<SUBSCRIPTION NAME>` s názvem předplatného
-2. Přidejte metodu s názvem `SendMessageToTopicAsync` , která pošle jednu zprávu do tématu. 
 
-    ```csharp
-        static async Task SendMessageToTopicAsync()
+### <a name="send-a-single-message-to-the-topic"></a>Odeslat jednu zprávu do tématu
+Přidejte metodu s názvem `SendMessageToTopicAsync` do `Program` třídy nad nebo pod `Main` metodou. Tato metoda pošle jednu zprávu do tématu.
+
+```csharp
+    static async Task SendMessageToTopicAsync()
+    {
+        // create a Service Bus client 
+        await using (ServiceBusClient client = new ServiceBusClient(connectionString))
         {
-            // create a Service Bus client 
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-            {
-                // create a sender for the topic
-                ServiceBusSender sender = client.CreateSender(topicName);
-                await sender.SendMessageAsync(new ServiceBusMessage("Hello, World!"));
-                Console.WriteLine($"Sent a single message to the topic: {topicName}");
-            }
+            // create a sender for the topic
+            ServiceBusSender sender = client.CreateSender(topicName);
+            await sender.SendMessageAsync(new ServiceBusMessage("Hello, World!"));
+            Console.WriteLine($"Sent a single message to the topic: {topicName}");
         }
-    ```
-1. Přidejte metodu nazvanou `CreateMessages` pro vytvoření fronty (ve frontě .NET) zpráv do `Program` třídy. Obvykle tyto zprávy získáte z různých částí aplikace. Tady vytvoříme frontu ukázkových zpráv.
+    }
+```
+
+Tato metoda provádí následující kroky: 
+1. Vytvoří objekt [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) pomocí připojovacího řetězce k oboru názvů. 
+1. Používá `ServiceBusClient` objekt k vytvoření objektu [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) pro zadané téma Service Bus. Tento krok používá metodu [ServiceBusClient. CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) .
+1. Pak metoda pošle jednu zkušební zprávu do tématu Service Bus pomocí metody [ServiceBusSender. SendMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessageasync) . 
+
+### <a name="send-a-batch-of-messages-to-the-topic"></a>Odeslání dávky zpráv do tématu
+1. Přidejte metodu nazvanou `CreateMessages` pro vytvoření fronty (do fronty .NET, nikoli Service Bus fronty) zpráv do `Program` třídy. Obvykle tyto zprávy získáte z různých částí aplikace. Tady vytvoříme frontu ukázkových zpráv. Pokud nejste obeznámeni s frontami .NET, přečtěte si téma [Queue. Queue](/dotnet/api/system.collections.queue.enqueue).
 
     ```csharp
         static Queue<ServiceBusMessage> CreateMessages()
@@ -86,7 +131,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
             return messages;
         }
     ```
-1. Přidejte do třídy metodu s názvem `SendMessageBatchAsync` `Program` a přidejte následující kód. Tato metoda přijímá frontu zpráv a připraví jednu nebo více dávek k odeslání do Service Bus tématu. 
+1. Přidejte metodu s názvem `SendMessageBatchAsync` `Program` Class a přidejte následující kód. Tato metoda přijímá frontu zpráv a připraví jednu nebo více dávek k odeslání do Service Bus tématu. 
 
     ```csharp
         static async Task SendMessageBatchToTopicAsync()
@@ -138,20 +183,32 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
                 Console.WriteLine($"Sent a batch of {messageCount} messages to the topic: {topicName}");
             }
         }
-    ```
-1. Nahraďte `Main()` metodu následující **asynchronní** `Main` metodou. Volá jak metody Send, tak odesílají jednu zprávu a dávku zpráv do tématu.  
+    ```    
 
-    ```csharp
-        static async Task Main()
-        {
-            // send a message to the topic
-            await SendMessageToTopicAsync();
+    Tady jsou důležité kroky z kódu:
+    1. Vytvoří objekt [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) pomocí připojovacího řetězce k oboru názvů. 
+    1. Vyvolá metodu [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) `ServiceBusClient` objektu pro vytvoření objektu [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) pro zadané téma Service Bus. 
+    1. Vyvolá pomocnou metodu `GetMessages` pro získání fronty zpráv, které se mají odeslat do tématu Service Bus. 
+    1. Vytvoří [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) pomocí [ServiceBusSender. CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync).
+    1. Přidejte zprávy do dávky pomocí [ServiceBusMessageBatch. TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage). Když se zprávy přidají do dávky, odeberou se z fronty .NET. 
+    1. Pošle dávku zpráv do tématu Service Bus pomocí metody [ServiceBusSender. SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync) .
 
-            // send a batch of messages to the topic
-            await SendMessageBatchToTopicAsync();
-        }
-    ```
-5. Spusťte aplikaci. Měl by se zobrazit následující výstup:
+### <a name="update-the-main-method"></a>Aktualizace metody Main
+Nahraďte `Main()` metodu následující **asynchronní** `Main` metodou. Volá jak metody Send, tak odesílají jednu zprávu a dávku zpráv do tématu.  
+
+```csharp
+    static async Task Main()
+    {
+        // send a single message to the topic
+        await SendMessageToTopicAsync();
+
+        // send a batch of messages to the topic
+        await SendMessageBatchToTopicAsync();
+    }
+```
+
+### <a name="test-the-app-to-send-messages-to-the-topic"></a>Otestování aplikace pro odesílání zpráv do tématu
+1. Spusťte aplikaci. Měl by se zobrazit následující výstup:
 
     ```console
     Sent a single message to the topic: mytopic
@@ -219,6 +276,13 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
             }
         }
     ```
+
+    Tady jsou důležité kroky z kódu:
+    1. Vytvoří objekt [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) pomocí připojovacího řetězce k oboru názvů. 
+    1. Vyvolá metodu [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) `ServiceBusClient` objektu pro vytvoření objektu [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) pro zadané téma Service Bus a kombinaci předplatného. 
+    1. Určuje obslužné rutiny pro události [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) a [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) `ServiceBusProcessor` objektu. 
+    1. Spustí zpracování zpráv vyvoláním [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) na `ServiceBusProcessor` objektu. 
+    1. Když uživatel stiskne klávesu pro ukončení zpracování, vyvolá [StopProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync) na `ServiceBusProcessor` objektu. 
 1. Přidejte do metody volání `ReceiveMessagesFromSubscriptionAsync` metody `Main` . `SendMessagesToTopicAsync`Pokud chcete testovat pouze příjem zpráv, přidejte komentář k metodě. Pokud to neuděláte, zobrazí se další čtyři zprávy odeslané do tématu. 
 
     ```csharp
@@ -269,5 +333,5 @@ Znovu ověřte portál.
 Podívejte se na následující dokumentaci a ukázky:
 
 - [Klientská knihovna Azure Service Bus pro .NET – soubor Readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
-- [Ukázky na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
+- [Ukázky .NET pro Azure Service Bus na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
 - [Referenční dokumentace k rozhraní .NET API](/dotnet/api/azure.messaging.servicebus?preserve-view=true)

@@ -13,17 +13,17 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 1fdbdada54320ef28f6a4b04a7f415c835acc9dd
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98756292"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Scénář: webová aplikace, která volá webová rozhraní API.
 
 Naučte se, jak vytvořit webovou aplikaci, která uživatele podepisuje na platformě Microsoft identity, a pak zavolá webová rozhraní API jménem přihlášeného uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto scénáři se předpokládá, že jste už dokončili [scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md).
 

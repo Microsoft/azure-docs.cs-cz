@@ -13,10 +13,10 @@ ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: b294a56a523adaa2629a5d1e72a7ccef532956e0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98753279"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webová aplikace, která volá webová rozhraní API: volá webové rozhraní API.
@@ -37,7 +37,7 @@ Pokud používáte *Microsoft. identity. Web*, máte tři možnosti použití pr
 
 #### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Možnost 1: volání Microsoft Graph se sadou SDK
 
-Chcete volat Microsoft Graph. V tomto scénáři jste přidali `AddMicrosoftGraph` v *Startup.cs* , jak je uvedeno v části [Konfigurace kódu](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph), a můžete přímo vložit `GraphServiceClient` do svého kontroleru nebo konstruktoru stránky pro použití v akcích. Následující příklad stránky Razor zobrazuje fotografii přihlášeného uživatele.
+Chcete volat Microsoft Graph. V tomto scénáři jste přidali `AddMicrosoftGraph` do *Startup. cs* , jak je uvedeno v části [Konfigurace kódu](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph), a můžete přímo vložit `GraphServiceClient` do svého kontroleru nebo konstruktoru stránky pro použití v akcích. Následující příklad stránky Razor zobrazuje fotografii přihlášeného uživatele.
 
 ```CSharp
 [Authorize]
@@ -73,7 +73,7 @@ public class IndexModel : PageModel
 
 #### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou
 
-Chcete zavolat webové rozhraní API jiné než Microsoft Graph. V takovém případě jste přidali `AddDownstreamWebApi` v *Startup.cs* , jak je uvedeno v části [Konfigurace kódu](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), a můžete přímo vložit `IDownstreamWebApi` službu do vašeho kontroleru nebo konstruktoru stránky a použít ji v akcích:
+Chcete zavolat webové rozhraní API jiné než Microsoft Graph. V takovém případě jste přidali `AddDownstreamWebApi` do *Startup. cs* , jak je uvedeno v části [Konfigurace kódu](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), a můžete přímo vložit `IDownstreamWebApi` službu do vašeho kontroleru nebo konstruktoru stránky a použít ji v akcích:
 
 ```CSharp
 [Authorize]
