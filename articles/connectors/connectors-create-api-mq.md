@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/10/2021
 tags: connectors
 ms.openlocfilehash: a07eb6e592c68794f0e4038a7cf9a42bd396b47a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495228"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Připojení k serveru IBM MQ z Azure Logic Apps
@@ -35,7 +35,7 @@ Tady jsou oficiálně podporované verze IBM WebSphere MQ:
   * MQ 9,0
   * MQ 9,1
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud používáte místní server MQ, musíte [nainstalovat místní bránu dat](../logic-apps/logic-apps-gateway-install.md) na server v rámci vaší sítě.
 

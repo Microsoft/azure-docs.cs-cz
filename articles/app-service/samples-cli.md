@@ -7,17 +7,17 @@ ms.topic: sample
 ms.date: 07/07/2020
 ms.custom: mvc
 ms.openlocfilehash: 61ce290f8ed5e8ad919a253d426d3278233caa3f
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98747286"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Ukázky rozhraní příkazového řádku pro Azure App Service
 
 Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure CLI.
 
-| Skript | Popis |
+| Skript | Description |
 |-|-|
 |**Vytvoření aplikace**||
 | [Vytvoření aplikace a nasazení souborů s využitím protokolu FTP](./scripts/cli-deploy-ftp.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří aplikaci App Service a nasadí do ní soubor pomocí protokolu FTP. |

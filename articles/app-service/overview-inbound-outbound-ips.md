@@ -3,13 +3,13 @@ title: Příchozí/odchozí IP adresy
 description: Přečtěte si, jak se příchozí a odchozí IP adresy používají v Azure App Service, když se mění a jak najít adresy pro vaši aplikaci.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: seodec18
+ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746144"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591363"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy v Azure App Service
 
@@ -19,7 +19,7 @@ ms.locfileid: "92746144"
 
 ## <a name="how-ip-addresses-work-in-app-service"></a>Jak IP adresy fungují v App Service
 
-App Service aplikace běží v plánu App Service a App Service plány se nasazují do jedné z jednotek nasazení v infrastruktuře Azure (interně označované jako webspace). Každé jednotce nasazení je přiřazena až pět virtuálních IP adres, což zahrnuje jednu veřejnou příchozí IP adresu a čtyři odchozí IP adresy. Všechny plány App Service ve stejné jednotce nasazení a spuštěné instance aplikace sdílejí stejnou sadu virtuálních IP adres. V případě App Service Environment (plán App Service na [izolovanou úroveň](https://azure.microsoft.com/pricing/details/app-service/)) je plán App Service sám se samotnou jednotkou nasazení, takže virtuální IP adresy jsou ve výsledku vyhrazené.
+App Service aplikace běží v plánu App Service a App Service plány se nasazují do jedné z jednotek nasazení v infrastruktuře Azure (interně označované jako webspace). Každé jednotce nasazení je přiřazena sada virtuálních IP adres, která zahrnuje jednu veřejnou příchozí IP adresu a sadu [odchozích IP adres](#find-outbound-ips). Všechny plány App Service ve stejné jednotce nasazení a spuštěné instance aplikace sdílejí stejnou sadu virtuálních IP adres. V případě App Service Environment (plán App Service na [izolovanou úroveň](https://azure.microsoft.com/pricing/details/app-service/)) je plán App Service sám se samotnou jednotkou nasazení, takže virtuální IP adresy jsou ve výsledku vyhrazené.
 
 Vzhledem k tomu, že nepovolujete přesun plánu App Service mezi jednotkami nasazení, virtuální IP adresy přiřazené k vaší aplikaci obvykle zůstanou stejné, ale existují výjimky.
 
@@ -51,7 +51,7 @@ Sada odchozích IP adres vaší aplikace se změní, když provedete jednu z ná
 
 - Odstraňte aplikaci a znovu ji vytvořte v jiné skupině prostředků (jednotka nasazení se může změnit).
 - Odstraní poslední aplikaci v kombinaci skupiny prostředků _a_ oblasti a znovu ji vytvoří (jednotka nasazení se může změnit).
-- Škálujte svoji aplikaci mezi nižšími úrovněmi ( **Basic** , **Standard** a **Premium** ) a úrovní **Premium v2** (IP adresy se můžou přičíst nebo odvolávat ze sady).
+- Škálujte svoji aplikaci mezi nižšími úrovněmi (**Basic**, **Standard** a **Premium**) a úrovní **Premium v2** (IP adresy se můžou přičíst nebo odvolávat ze sady).
 
 Můžete najít sadu všech možných odchozích IP adres, které vaše aplikace může používat, a to bez ohledu na cenové úrovně, a to tak, že vyhledáte `possibleOutboundIpAddresses` vlastnost nebo v poli **Další odchozí IP adresy** v okně **vlastnosti** Azure Portal. Viz [Najít odchozí IP adresy](#find-outbound-ips).
 

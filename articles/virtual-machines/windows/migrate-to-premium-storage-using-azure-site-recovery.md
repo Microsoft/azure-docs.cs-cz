@@ -9,10 +9,10 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: aeb8028468a1e1944a4fd39275f134bfae00dfa3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102555342"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
@@ -63,7 +63,7 @@ Toto jsou požadavky Azure pro tento scénář migrace:
 * Virtuální síť Azure, ke které se virtuální počítače připojí při jejich vytvoření při převzetí služeb při selhání. Virtuální síť Azure musí být ve stejné oblasti jako ta, ve které Site Recovery běží.
 * Účet úložiště Azure standard pro ukládání protokolů replikace. Může to být stejný účet úložiště pro disky virtuálních počítačů, které se migrují.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pochopení relevantních součástí scénáře migrace v předchozí části.
 * Naplánujte prostoje o [převzetí služeb při selhání v Site Recovery](../../site-recovery/site-recovery-failover.md).
@@ -203,7 +203,7 @@ Site Recovery vytvoří instanci virtuálního počítače, jejíž typ je stejn
 
 3. **Vyčistěte infrastrukturu Azure Site Recovery**. Pokud už Site Recovery nepotřebujete, můžete svou infrastrukturu vyčistit. Odstraňte replikované položky, konfigurační server a zásady obnovení a pak odstraňte trezor Azure Site Recovery.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 * [Monitorování a odstraňování potíží s ochranou pro virtuální počítače a fyzické servery](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [Microsoft Q&stránku s otázkou pro Microsoft Azure Site Recovery](/answers/topics/azure-site-recovery.html)

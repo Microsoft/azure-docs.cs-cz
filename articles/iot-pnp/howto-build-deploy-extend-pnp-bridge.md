@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: c89427f83600d3b8091d5293b1757fa6f1a15ef1
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202480"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>Sestavení a nasazení mostu IoT technologie Plug and Play
@@ -81,10 +81,10 @@ Když je most spuštěn jako modul IoT Edge v modulu IoT Edge runtime, je konfig
 
 | Platforma | Podporováno |
 | :-----------: | :-----------: |
-| Windows |  Ano |
-| Linux | Ano |
+| Windows |  Yes |
+| Linux | Yes |
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 K dokončení této části je potřeba na váš místní počítač nainstalovat následující software:
 
@@ -203,10 +203,10 @@ Debug\pnpbridge_bin.exe
 
 | Platforma | Podporováno |
 | :-----------: | :-----------: |
-| Windows |  Ne |
-| Linux | Ano |
+| Windows |  No |
+| Linux | Yes |
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 K dokončení této části potřebujete službu Azure IoT Hub úrovně Free nebo Standard. Informace o tom, jak vytvořit centrum IoT, najdete v tématu [vytvoření centra IoT](../iot-hub/iot-hub-create-through-portal.md).
 

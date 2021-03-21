@@ -2,7 +2,7 @@
 title: 'Rychlý Start: vytvoření a dotazování vyhrazeného fondu SQL (dřív SQL DW) (Azure Portal)'
 description: Vytvoření a dotazování vyhrazeného fondu SQL (dřív SQL DW) pomocí Azure Portal
 services: synapse-analytics
-author: kevinvngo
+author: pimorano
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
@@ -11,25 +11,25 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a14aa2d73e35008675819c07fa96f34b088f26a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: dd9d66683d5f2349807915651c50bf9eedd285c1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672836"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602226"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí Azure Portal
 
 K rychlému vytvoření a dotazování vyhrazeného fondu SQL (dřív SQL DW) ve službě Azure synapse Analytics pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
    > [!NOTE]
    > Vytvoření vyhrazeného fondu SQL (dříve SQL DW) ve službě Azure synapse může vést k nové Fakturovatelné službě. Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-2. Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS). Poznámka: SSMS je k dispozici pouze na platformách založených na systému Windows, další informace najdete v [úplném seznamu podporovaných platforem](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15#supported-operating-systems-ssms-185).
+2. Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS). Poznámka: SSMS je k dispozici pouze na platformách založených na systému Windows, další informace najdete v [úplném seznamu podporovaných platforem](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15&preserve-view=true#supported-operating-systems-ssms-185t).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

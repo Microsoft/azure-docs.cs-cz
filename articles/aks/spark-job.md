@@ -7,17 +7,17 @@ ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 74a3fe79291f3a5c7f5bbd664bf6d55a5fb77eae
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181189"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spouštění úloh Apache Spark v AKS
 
 [Apache Spark][apache-spark] je rychlý modul pro zpracování velkých objemů dat. Od [verze Spark 2.3.0][spark-kubernetes-earliest-version]Apache Spark podporuje nativní integraci s clustery Kubernetes. Služba Azure Kubernetes Service (AKS) je spravované prostředí Kubernetes běžící v Azure. Tento dokument popisuje přípravu a spouštění úloh Apache Spark v clusteru služby Azure Kubernetes (AKS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto článku budete potřebovat následující.
 

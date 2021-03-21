@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: a9a073284c62efac4e77f8f9b35e8730c350e5f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101722717"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Funkce nasazení pro šablony ARM
@@ -321,9 +321,9 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v odd�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -470,7 +470,7 @@ Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v od
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
 

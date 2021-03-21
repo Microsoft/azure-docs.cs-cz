@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 8759a539005a38892498c9450d31f97884547db7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033703"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
@@ -111,7 +111,7 @@ Tady je postup, jak začít psát dotazy na výstrahy:
 
 1. Na [portálu](https://portal.azure.com/)vyberte **monitorování** a pak zvolte **výstrahy**.
 
-    ![Sledování](media/alerts-log/AlertsPreviewMenu.png)
+    ![Monitorování](media/alerts-log/AlertsPreviewMenu.png)
 
 1. Vyberte **nové pravidlo výstrahy**. 
 

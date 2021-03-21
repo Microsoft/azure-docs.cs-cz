@@ -7,10 +7,10 @@ ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
 ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101707995"
 ---
 # <a name="azure-monitor-logs-overview"></a>Přehled protokolů Azure Monitoru
@@ -25,7 +25,7 @@ Následující tabulka popisuje některé z různých způsobů, jak můžete po
 
 |  |  |
 |:---|:---|
-| **Analýza** | Použití [Log Analytics](./log-analytics-tutorial.md) v Azure Portal k zápisu [dotazů protokolu](./log-query-overview.md) a interaktivní analýze dat protokolu pomocí výkonného analytického modulu |
+| **Analyzovat** | Použití [Log Analytics](./log-analytics-tutorial.md) v Azure Portal k zápisu [dotazů protokolu](./log-query-overview.md) a interaktivní analýze dat protokolu pomocí výkonného analytického modulu |
 | **Výstraha** | Nakonfigurujte [pravidlo upozornění protokolu](../alerts/alerts-log.md) , které pošle oznámení, nebo provede [automatizovanou akci](../alerts/action-groups.md) , když výsledky dotazu odpovídají konkrétnímu výsledku. |
 | **Vizualizace** | Připněte výsledky dotazu vykreslené jako tabulky nebo grafy na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoří [sešit](../visualize/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. <br>Exportujte výsledky dotazu do [Power BI](../visualize/powerbi.md) , abyste mohli používat různé vizualizace a sdílet s uživateli mimo Azure.<br>Exportujte výsledky dotazu do [Grafana](../visualize/grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat.|
 | **Přehledy** | Podpora [přehledů](../monitor-reference.md#insights-and-core-solutions) , které poskytují přizpůsobené možnosti monitorování pro konkrétní aplikace a služby.  |

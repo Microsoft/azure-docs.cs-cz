@@ -3,12 +3,12 @@ title: Geografické zotavení po havárii – Azure Event Hubs | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Event Hubs
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: eb6ef1a7536b819d1bc973740a0da6fdf3d756d5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f3b74b89f47582fbb3f1640f315f413ab86b26b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042364"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602634"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
 
@@ -52,10 +52,10 @@ Podporovány jsou následující kombinace primárních a sekundárních oborů 
 
 | Primární obor názvů | Sekundární obor názvů | Podporováno | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Ano | 
-| Standard | Vyhrazená | Ano | 
-| Vyhrazená | Vyhrazená | Ano | 
-| Vyhrazená | Standard | Ne | 
+| Standard | Standard | Yes | 
+| Standard | Vyhrazená | Yes | 
+| Vyhrazená | Vyhrazená | Yes | 
+| Vyhrazená | Standard | No | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 
@@ -204,7 +204,7 @@ Další informace o službě Event Hubs naleznete pod těmito odkazy:
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 * [Ukázkové aplikace, které používají službu Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

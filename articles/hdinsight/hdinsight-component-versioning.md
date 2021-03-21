@@ -7,10 +7,10 @@ author: deshriva
 ms.author: deshriva
 ms.date: 02/08/2021
 ms.openlocfilehash: 53ca2ac73fdec9d3b39ffc04cbb24aca707a72eb
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490445"
 ---
 # <a name="azure-hdinsight-versions"></a>Verze Azure HDInsight
@@ -23,8 +23,8 @@ Tato tabulka obsahuje seznam verzí HDInsight, které jsou k dispozici v Azure P
 
 | Verze HDInsight | Operační systém virtuálního počítače | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |
 | --- | --- | --- | --- | --- | --- |
-| [HDInsight 4.0](hdinsight-40-component-versioning.md) |Ubuntu 16.0.4 LTS |Září 24, 2018 | | |Ano |
-| [HDInsight 3,6](hdinsight-36-component-versioning.md) |Ubuntu 16.0.4 LTS |4. dubna 2017      | * 30. června 2021 |30. června 2021 |Ano |
+| [HDInsight 4.0](hdinsight-40-component-versioning.md) |Ubuntu 16.0.4 LTS |Září 24, 2018 | | |Yes |
+| [HDInsight 3,6](hdinsight-36-component-versioning.md) |Ubuntu 16.0.4 LTS |4. dubna 2017      | * 30. června 2021 |30. června 2021 |Yes |
 
 * Rozšiřujeme časový rámec podpory pro určité typy clusterů HDInsight 3,6. Viz [verze komponent HDInsight 3,6](hdinsight-36-component-versioning.md).
 

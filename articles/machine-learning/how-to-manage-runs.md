@@ -13,10 +13,10 @@ ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
 ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102634759"
 ---
 # <a name="start-monitor-and-track-runs"></a>Spustit, monitorovat a sledovat spuštění 
@@ -38,7 +38,7 @@ Tento článek ukazuje příklady následujících úloh:
 > Pokud hledáte informace o monitorování služby Azure Machine Learning a přidružených služeb Azure, přečtěte si téma [jak monitorovat Azure Machine Learning](monitor-azure-machine-learning.md).
 > Pokud hledáte informace o modelech monitorování nasazených jako webové služby nebo IoT Edgech modulech, přečtěte si téma [shromáždění dat modelu](how-to-enable-data-collection.md) a [monitorování pomocí Application Insights](how-to-enable-app-insights.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat následující položky:
 

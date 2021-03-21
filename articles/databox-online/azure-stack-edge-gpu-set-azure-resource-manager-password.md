@@ -8,29 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 62417b575e142d044e599249a529328a41c9b8d7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: a2167d573871481c99b755fc713e18543d74c5bf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102638136"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602671"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Nastavení Azure Resource Manager hesla na zařízení s grafickým procesorem Azure Stack Edge pro
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Tento článek popisuje, jak nastavit heslo pro Azure Resource Manager. Toto heslo musíte nastavit při připojování k místním rozhraním API zařízení prostřednictvím Azure Resource Manager.
+Tento článek popisuje, jak nastavit heslo pro Azure Resource Manager. Toto heslo musíte nastavit při [připojování k místním rozhraním API zařízení prostřednictvím Azure Resource Manager](azure-stack-edge-gpu-connect-resource-manager.md). 
 
 <!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Resetování hesla pomocí Azure Portal
 
-1. V Azure Portal pro správu zařízení přejít na prostředek Azure Stack Edge, který jste vytvořili. Přejít na **Edge services > brány cloudového úložiště**.
+1. V Azure Portal pro správu zařízení přejít na prostředek Azure Stack Edge, který jste vytvořili. 
 
-    ![Resetování hesla uživatele EdgeARM 1](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-1.png)
-
-2. Na panelu příkazů v pravém podokně vyberte **Resetovat heslo Edge ARM**. 
+2. Přejít na **vlastnosti**. Na panelu příkazů v pravém podokně vyberte **Resetovat heslo Edge ARM**. 
 
     ![Resetování hesla uživatele EdgeARM 2](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-2.png)
 

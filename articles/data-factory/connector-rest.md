@@ -4,14 +4,14 @@ description: Naučte se kopírovat data z cloudu nebo místního zdroje REST do 
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 45e71b636d43633d5b157db2815ddd19c31395b3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369879"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608125"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z a do koncového bodu REST pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,7 +24,7 @@ Rozdíl mezi tímto konektorem REST, [konektorem http](connector-http.md)a [kone
 - **Konektor http** je obecný k načtení dat z libovolného koncového bodu http, například ke stažení souboru. Než začnete s tímto konektorem REST, můžete k tomu použít konektor HTTP ke kopírování dat z rozhraní RESTful API, které je podporované, ale míň funkční porovnávání s konektorem REST.
 - **Konektor webové tabulky** extrahuje obsah tabulky z webové stránky HTML.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Data ze zdroje REST můžete kopírovat do libovolného podporovaného úložiště dat jímky. Data můžete také kopírovat z libovolného podporovaného zdrojového úložiště dat do jímky REST. Seznam úložišť dat, která aktivita kopírování podporuje jako zdroje a jímky, najdete v tématu [podporované úložiště a formáty dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -38,7 +38,7 @@ Konkrétně tento obecný konektor REST podporuje:
 > [!TIP]
 > Chcete-li otestovat požadavek na načtení dat před konfigurací konektoru REST v Data Factory, přečtěte si informace o specifikaci rozhraní API pro požadavky hlaviček a textu. K ověření můžete použít nástroje, jako je například nástroj pro odeslání nebo webový prohlížeč.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -57,7 +57,8 @@ Pro propojenou službu REST jsou podporovány následující vlastnosti:
 | typ | Vlastnost **Type** musí být nastavená na **RestService**. | Yes |
 | url | Základní adresa URL služby REST. | Yes |
 | enableServerCertificateValidation | Zda se má při připojování ke koncovému bodu ověřit certifikát TLS/SSL na straně serveru. | No<br /> (výchozí hodnota je **true**) |
-| authenticationType | Typ ověřování, který se používá pro připojení ke službě REST Povolené hodnoty jsou **anonymní**, **základní**, **AadServicePrincipal** a **ManagedServiceIdentity**. Další informace a příklady najdete v odpovídajících částech. | Yes |
+| authenticationType | Typ ověřování, který se používá pro připojení ke službě REST Povolené hodnoty jsou **anonymní**, **základní**, **AadServicePrincipal** a **ManagedServiceIdentity**. Uživatel s podporou OAuth není podporován. Ve vlastnosti můžete také nakonfigurovat ověřovací hlavičky `authHeader` . Další informace a příklady najdete v odpovídajících částech.| Yes |
+| authHeaders | Další hlavičky požadavků HTTP pro ověřování.<br/> Pokud například chcete použít ověřování pomocí klíče rozhraní API, můžete jako typ ověřování vybrat "anonymní" a v hlavičce zadat klíč rozhraní API. | No |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud tento parametr nezadáte, použije tato vlastnost výchozí Azure Integration Runtime. |No |
 
 ### <a name="use-basic-authentication"></a>Použít základní ověřování
@@ -150,6 +151,35 @@ Nastavte vlastnost **AuthenticationType** na **ManagedServiceIdentity**. Kromě 
             "url": "<REST endpoint e.g. https://www.example.com/>",
             "authenticationType": "ManagedServiceIdentity",
             "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-authentication-headers"></a>Použití ověřovacích hlaviček
+
+Kromě toho můžete nakonfigurovat hlavičky požadavků pro ověřování spolu s vestavěnými typy ověřování.
+
+**Příklad: použití ověřování pomocí klíče rozhraní API**
+
+```json
+{
+    "name": "RESTLinkedService",
+    "properties": {
+        "type": "RestService",
+        "typeProperties": {
+            "url": "<REST endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

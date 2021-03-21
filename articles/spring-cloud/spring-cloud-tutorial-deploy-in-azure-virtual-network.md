@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031799"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Nasazení jarního cloudu Azure ve virtuální síti
@@ -29,7 +29,7 @@ Nasazení umožňuje:
 > [!Note]
 > Virtuální síť Azure si můžete vybrat jenom v případě, že vytvoříte novou instanci služby Azure jaře Cloud Service. Po vytvoření Azure jarního cloudu se nedá změnit na použití jiné virtuální sítě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Podle pokynů v části [registrace poskytovatele prostředků v Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) nebo spuštěním následujícího příkazu rozhraní příkazového řádku Azure Zaregistrujte poskytovatele prostředků jarních cloudů Azure **Microsoft. AppPlatform** a **Microsoft. ContainerService** :
 
@@ -66,7 +66,7 @@ Pokud už máte virtuální síť, která je hostitelem instance jarního cloudu
     |-----------------|--------------------------------------------------|
     |Předplatné     |Vyberte své předplatné.                         |
     |Skupina prostředků   |Vyberte skupinu prostředků nebo vytvořte novou.  |
-    |Název             |Zadejte **Azure-jaře-Cloud-VNet**.                 |
+    |Name             |Zadejte **Azure-jaře-Cloud-VNet**.                 |
     |Umístění         |Vyberte **USA – východ**.                               |
 
 1. Vyberte **Další: IP adresy**.

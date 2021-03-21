@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
 ms.openlocfilehash: 7dcb6dbc62513535c562a430f5958a62dae9d005
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102554509"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V této části se předpokládá, že jste už nainstalovali operační systém Debian Linux ze souboru. ISO staženého z [webu Debian](https://www.debian.org/distrib/) na virtuální pevný disk. Pro vytváření souborů. VHD existuje víc nástrojů. Hyper-V je jenom jeden příklad. Pokyny k používání technologie Hyper-V najdete v tématu [instalace role Hyper-v a konfigurace virtuálního počítače](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 ## <a name="installation-notes"></a>Poznámky k instalaci

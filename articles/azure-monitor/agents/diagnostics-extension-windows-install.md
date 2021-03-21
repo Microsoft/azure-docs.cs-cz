@@ -8,10 +8,10 @@ ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 174f372f9dbe8dc0449c7f9b9f5b34c6206f92de
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708556"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)
@@ -191,7 +191,7 @@ Další informace najdete [v tématu použití PowerShellu k povolení Azure Dia
 V následující tabulce jsou uvedeny různé typy dat shromážděných z rozšíření pro diagnostiku a zda jsou uloženy jako tabulka nebo objekt BLOB. Data uložená v tabulkách je také možné ukládat do objektů BLOB v závislosti na [Nastavení StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) ve vaší veřejné konfiguraci.
 
 
-| Data | Typ úložiště | Popis |
+| Data | Typ úložiště | Description |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabulka | Diagnostické monitorování a změny konfigurace. |
 | WADDirectoriesTable | Tabulka | Adresáře, které monitoruje monitorování diagnostiky.  Patří sem protokoly IIS, protokoly neúspěšných požadavků služby IIS a vlastní adresáře.  Umístění souboru protokolu objektu BLOB je zadáno v poli kontejneru a název objektu BLOB je uveden v poli RelativePath.  Pole AbsolutePath označuje umístění a název souboru, který se nachází na virtuálním počítači Azure. |

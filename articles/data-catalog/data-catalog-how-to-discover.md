@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 52aaa11278e5bb523594936c75d6810c1638fa7e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009411"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674933"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Postup zjišťování zdrojů dat v Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>Úvod
 
@@ -39,7 +41,7 @@ I když je výchozí volné vyhledávání jednoduché a intuitivní, můžete t
 | Rozsah vlastností |Vrátí pouze zdroje dat, ve kterých je hledaný termín shodný se zadanou vlastností. |`name:finance` |
 | Logické operátory |Rozrozšiřte nebo zužte hledání pomocí logických operací. |`finance NOT corporate` |
 | Seskupení s kulatými závorkami |Použijte kulaté závorky k seskupení částí dotazu k dosažení logické izolace, zejména ve spojení s logickými operátory. |`name:finance AND (tags:Q1 OR tags:Q2)` |
-| Operátory porovnání |Použijte porovnání jiné než rovnost pro vlastnosti, které mají číselné a datové datové typy. |`modifiedTime > "11/05/2014"` |
+| Relační operátory |Použijte porovnání jiné než rovnost pro vlastnosti, které mají číselné a datové datové typy. |`modifiedTime > "11/05/2014"` |
 
 Další informace o Data Catalog hledání naleznete v článku [Azure Data Catalog](/rest/api/datacatalog/#search-syntax-reference) .
 

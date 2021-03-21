@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: e5ea7a1abbbd6ab4be32955179227fbd539cf641
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019614"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Functions výstup z Azure Stream Analytics
@@ -21,7 +21,7 @@ Azure Functions výstup z Stream Analytics není k dispozici v oblastech Azure �
 
 Azure Stream Analytics vyvolá Azure Functions prostřednictvím triggerů HTTP. Azure Functions výstupní adaptér je k dispozici s následujícími konfigurovatelnými vlastnostmi:
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Aplikace funkcí |Název vaší aplikace Azure Functions. |
 | Funkce |Název funkce v aplikaci Azure Functions. |
@@ -38,7 +38,7 @@ Když Azure Stream Analytics obdrží výjimku ("413 je příliš velká entita 
 
 V situaci, kdy není žádné přistání události v časovém intervalu, není vygenerován žádný výstup. V důsledku toho není volána funkce **computeResult** . Toto chování je konzistentní s předdefinovanými agregačními funkcemi v okně.
 
-## <a name="partitioning"></a>Dělení na oddíly
+## <a name="partitioning"></a>Dělení
 
 Klíč oddílu je založen na klauzuli PARTITION BY v dotazu. Počet zapisovačů výstupu následuje za vstupními oddíly pro [plně paralelní dotazy](stream-analytics-scale-jobs.md).
 

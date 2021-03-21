@@ -6,32 +6,30 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 10/28/2020
+ms.date: 03/27/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 37768b994d4b61ee728e04352f027a6f5a478341
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 316a78f4725aa3c33a78b00c6de3b8419aea717e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031612"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600203"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Co je Azure Synapse Analytics?
 
-Podniková analýza musí fungovat na velkém rozsahu libovolného druhu dat bez ohledu na to, jestli jsou hrubá, rafinovaná nebo vysoce popracovaná. To obvykle vyžaduje, aby podniky spolupracovaly s velkými objemy dat a technologie datových skladů do složitých datových kanálů, které pracují s daty v relačních úložištích a v datových lakůch. Tyto druhy řešení se obtížně sestavují, udržují a zabezpečují. Jejich složitost se doručí na to, co potřebují.
+**Azure synapse** je podniková analytická služba, která zrychluje přehled napříč datovými sklady a systémy velkých objemů dat. Azure synapse spojuje nejlepší technologie **SQL** , které se používají v podnikových datových skladech, technologie **Sparku** používané pro velké objemy dat, **kanály** pro integraci dat a ETL/ELT a rozsáhlou integraci s dalšími službami Azure, jako jsou **Power BI**, **CosmosDB** a **AzureML**.
 
-**Azure synapse** je integrovaná analytická služba, která zrychluje přehled napříč datovými sklady a systémy velkých objemů dat. Azure synapse spojuje nejlepší technologie **SQL** , které se používají v podnikových datových skladech, technologie **Sparku** používané pro velké objemy dat, **kanály** pro integraci dat a ETL/ELT a rozsáhlou integraci s dalšími službami Azure, jako jsou **Power BI**, **CosmosDB** a **AzureML**.
 
-## <a name="key-features--benefits"></a>Klíčové funkce & výhody
+## <a name="industry-leading-sql"></a>Špičkový SQL v oboru
 
-### <a name="industry-leading-sql"></a>Špičkový SQL v oboru
+**Synapse SQL** je systém distribuovaných dotazů pro T-SQL, který umožňuje scénáře datových skladů a virtualizace dat a rozšiřuje T-SQL na řešení scénářů streamování a strojového učení.
 
-* **Synapse SQL** je systém distribuovaných dotazů pro T-SQL, který umožňuje scénáře datových skladů a virtualizace dat a rozšiřuje T-SQL na řešení scénářů streamování a strojového učení.
-* Synapse SQL nabízí jak **servery bez serveru** , tak i **vyhrazené** modely prostředků, které nabízejí možnosti spotřeby a fakturace podle vašich potřeb. Pokud potřebujete předvídatelný výkon a náklady, vytvoříte vyhrazené fondy SQL, kterými si rezervujete výkon pro data uložená v tabulkách SQL. Pro neplánované nebo rozstupné úlohy použijte vždy dostupný koncový bod SQL bez serveru.
+* Synapse SQL nabízí jak **servery bez serveru** , tak i **vyhrazené** modely prostředků. Pokud potřebujete předvídatelný výkon a náklady, vytvoříte vyhrazené fondy SQL, kterými si rezervujete výkon pro data uložená v tabulkách SQL. Pro neplánované nebo rozstupné úlohy použijte vždy dostupný koncový bod SQL bez serveru.
 * Použití integrovaných funkcí **streamování** k obstání dat z cloudových zdrojů dat do tabulek SQL
 * Integrujte AI s SQL pomocí modelů **strojového učení** pro stanovení skóre dat pomocí [funkce prediktivního jazyka T-SQL](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true) .
 
-### <a name="industry-standard-apache-spark"></a>Oborová standardní Apache Spark
+## <a name="industry-standard-apache-spark"></a>Oborová standardní Apache Spark
 
 **Apache Spark pro Azure synapse** hluboko a hladce integruje Apache Spark – nejoblíbenější Open Source velký stroj dat, který se používá pro přípravu dat, inženýry dat, ETL a strojové učení.
 
@@ -40,7 +38,7 @@ Podniková analýza musí fungovat na velkém rozsahu libovolného druhu dat bez
 * Rychlé spuštění Sparku a agresivní automatické škálování.
 * Integrovaná podpora rozhraní .NET pro Spark umožňuje znovu použít vaše odbornosti v jazyce C# a stávající kód .NET v rámci aplikace Spark.
 
-### <a name="interop-of-sql-and-apache-spark-on-your-data-lake"></a>Spolupráce SQL a Apache Spark v Data Lake
+## <a name="working-with-your-data-lake"></a>Práce s Data Lake
 
 Azure synapse odstraňuje tradiční technologické bariéry mezi použitím SQL a Spark společně. V závislosti na vašich potřebách a odborných znalostech můžete bezproblémově kombinovat a rozlišovat.
 
@@ -48,15 +46,15 @@ Azure synapse odstraňuje tradiční technologické bariéry mezi použitím SQL
 * SQL a Spark můžou přímo prozkoumat a analyzovat soubory Parquet, CSV, TSV a JSON, které jsou uložené v Data Lake.
 * Rychlé škálovatelné načítání a uvolňování dat mezi databázemi SQL a Spark
 
-### <a name="built-in-data-integration-via-pipelines"></a>Integrovaná integrace dat prostřednictvím kanálů
+## <a name="built-in-data-integration-via-pipelines"></a>Integrovaná integrace dat prostřednictvím kanálů
 
-Azure synapse přináší integrovaný nástroj se stejným modulem pro integraci dat a prostředí jako Azure Data Factory, což vám umožní vytvářet bohatě škálovatelné kanály ETL bez nutnosti opustit Azure synapse Analytics.
+Azure synapse obsahuje stejný modul pro integraci dat a prostředí jako Azure Data Factory, což vám umožní vytvářet bohatě škálovatelné kanály ETL bez nutnosti opustit Azure synapse Analytics.
 
 * Ingestování dat z devadesáti zdrojů dat
 * Code-Free ETL s aktivitami toku dat
 * Orchestrace poznámkových bloků, úloh Sparku, uložených procedur, skriptů SQL a dalších
 
-### <a name="unified-management-monitoring-and-security"></a>Sjednocená Správa, monitorování a zabezpečení
+## <a name="unified-management-monitoring-and-security"></a>Sjednocená Správa, monitorování a zabezpečení
 
 Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické prostředky, monitorovat využití a aktivity a vysazovat zabezpečení.
 
@@ -64,7 +62,7 @@ Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické pr
 * Jemně odstupňované řízení přístupu k datům a kódu
 * Jeden řídicí panel pro monitorování prostředků, využití a uživatelů napříč SQL a Spark
 
-### <a name="unified-experience"></a>Jednotné prostředí
+## <a name="unified-experience"></a>Jednotné prostředí
 
 **Synapse Studio** je uživatelské prostředí, které spojuje všechno dohromady s datovými inženýry. Umožňuje jim provádět všechny úlohy, které potřebují k vytvoření kompletního analytického řešení.
 

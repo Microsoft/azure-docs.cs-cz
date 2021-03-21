@@ -4,10 +4,10 @@ description: REST API výstrahy Log Analytics umožňuje vytvářet a spravovat 
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 33f5ce86a21a9aad110db162849ff3e3c7bbb2b4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037485"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytváření a Správa pravidel výstrah v Log Analytics s využitím REST API 
@@ -19,7 +19,7 @@ REST API výstrahy Log Analytics umožňuje vytvářet a spravovat výstrahy v L
 
 Log Analytics vyhledávání REST API je RESTful a lze k němu přistupovat prostřednictvím REST API Azure Resource Manager. V tomto dokumentu najdete příklady, ve kterých je k rozhraní API přistup z příkazového řádku PowerShellu pomocí  [ARMClient](https://github.com/projectkudu/ARMClient), open source nástroje příkazového řádku, který zjednodušuje vyvolání rozhraní Azure Resource Manager API. Použití ARMClient a PowerShellu je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful Azure Resource Manager API k volání Log Analytics pracovních prostorů a provádění příkazů hledání v nich. Rozhraní API bude výstupem výsledků hledání ve formátu JSON, což vám umožní používat výsledky hledání mnoha různými způsoby prostřednictvím kódu programu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V současné době je možné výstrahy vytvořit pouze s uloženým hledáním v Log Analytics.  Další informace najdete v [REST API prohledávání protokolu](../logs/log-query-overview.md) .
 
 ## <a name="schedules"></a>Plány
@@ -135,7 +135,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Akce výstrah
 Plán by měl mít jednu a jenom jednu akci výstrahy.  Akce výstrahy mají jednu nebo více částí v následující tabulce.  Každá je podrobněji popsána níže.
 
-| Sekce | Popis | Využití |
+| Sekce | Description | Využití |
 |:--- |:--- |:--- |
 | Prahová hodnota |Kritéria pro spuštění akce.| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
 | Závažnost |Popisek, který se používá k klasifikaci výstrahy, když se aktivuje| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |

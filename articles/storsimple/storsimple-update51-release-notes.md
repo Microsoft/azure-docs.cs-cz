@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/18/2021
 ms.author: alkohli
-ms.openlocfilehash: a6a359888e782751892f2a034a8d92a014fd3a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdb971851ba678ce18f5a1c7954e5620740f3a4c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055839"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657565"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 5,1
 
@@ -34,7 +34,11 @@ Před nasazením aktualizace v řešení StorSimple si projděte informace obsa�
 
 V aktualizaci 5,1 byly provedeny následující hlavní vylepšení a opravy chyb:
 
-* **TLS 1,2** – Tato aktualizace StorSimple vynutila TLS 1,2 na všech klientech. Toto je povinná aktualizace pro všechna zařízení řady StorSimple 8000.
+* **TLS 1,2** – Tato aktualizace StorSimple vynutila TLS 1,2 na všech klientech. Tato aktualizace je povinná pro všechna zařízení StorSimple řady 8000.
+
+   Pokud se zobrazí následující upozornění, musíte software v zařízení aktualizovat, než budete pokračovat:
+
+   Minimálně u jednoho zařízení StorSimple je spuštěná starší verze softwaru. Nejnovější dostupná aktualizace pro TLS 1,2 je povinná aktualizace a měla by být na těchto zařízeních nainstalovaná hned. Pro veškerou komunikaci Azure Portal a bez této aktualizace se používá TLS 1,2, zařízení nebude moct komunikovat se službou StorSimple.
 
 ## <a name="known-issues-in-update-51-from-previous-releases"></a>Známé problémy v aktualizaci 5,1 z předchozích verzí
 

@@ -13,10 +13,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 96f7d7c94ce908d953a6941bfa237fe8da1dc482
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98752656"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0
@@ -261,7 +261,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph
 
 Přečtěte si [dokumentaci přehled přihlašovacích údajů klienta](https://aka.ms/msal-net-client-credentials) z knihovny Microsoft Authentication Library.
 
-| Ukázka | Platforma |Popis |
+| Ukázka | Platforma |Description |
 |--------|----------|------------|
 |[Active-Directory-dotnetcore-démon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | Konzola .NET Core 2,1 | Jednoduchá aplikace .NET Core, která zobrazuje uživatele tenanta, který dotazuje Microsoft Graph pomocí identity aplikace, a ne jménem uživatele. Ukázka také znázorňuje variaci pomocí certifikátů pro ověřování. |
 |[Active-Directory-dotnet-démon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Webová aplikace, která synchronizuje data z Microsoft Graph pomocí identity aplikace, nikoli jménem uživatele. |

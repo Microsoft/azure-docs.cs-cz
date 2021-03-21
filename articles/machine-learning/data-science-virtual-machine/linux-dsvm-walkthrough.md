@@ -9,10 +9,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.openlocfilehash: 42136d0d58dbc318aab0e111fcef46f80751ca88
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100517667"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Datové vědy s Ubuntu Data Science Virtual Machine v Azure
@@ -21,7 +21,7 @@ V tomto návodu se dozvíte, jak dokončit několik běžných úloh pro datové
 
 V tomto návodu analyzujeme datovou sadu [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase je sada e-mailů, které jsou označené buď spam, nebo HAM (nikoli spam). Spambase také obsahuje statistiku o obsahu e-mailů. V tomto návodu budeme mluvit o statistice později.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct použít DSVM pro Linux, musíte mít následující požadavky:
 
@@ -29,7 +29,7 @@ Než budete moct použít DSVM pro Linux, musíte mít následující požadavky
 
 * [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Informace o zřizování virtuálního počítače najdete v tématu [zřízení Data Science Virtual Machine Ubuntu](./release-notes.md).
 * V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](dsvm-ubuntu-intro.md#x2go).
-* Chcete-li plynulejší posouvání, přepněte ve webovém prohlížeči DSVM na prohlížeč Firefox `gfx.xrender.enabled` příznaku `about:config` . [Přečtěte si další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False` . [Přečtěte si další informace](https://support.mozilla.org/questions/981140).
+* Chcete-li plynulejší posouvání, přepněte ve webovém prohlížeči DSVM na prohlížeč Firefox `gfx.xrender.enabled` příznaku `about:config` . [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False` . [Další informace](https://support.mozilla.org/questions/981140).
 
 ## <a name="download-the-spambase-dataset"></a>Stáhnout datovou sadu spambase
 

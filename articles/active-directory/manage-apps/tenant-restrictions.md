@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdcdd387575faec87656430860e24fee56387775
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050898"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589323"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -59,7 +59,7 @@ Aby bylo možné použít omezení tenanta, klienti musí být schopni se připo
 
 K povolení omezení klientů prostřednictvím vaší proxy infrastruktury se vyžaduje následující konfigurace. Tyto doprovodné materiály jsou obecné, takže byste měli v dokumentaci dodavatele proxy serveru vyhledat konkrétní kroky implementace.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Proxy musí být schopné provádět zachycení protokolu TLS, vkládání hlaviček HTTP a filtrovat cíle pomocí plně kvalifikovaného názvu domény nebo adresy URL.
 
@@ -178,9 +178,9 @@ Fiddler je bezplatný proxy server pro ladění, který se dá použít k zachyc
       }
    ```
 
-Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Například:
+   Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Například:
 
-      `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
+   `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. Uložte a zavřete soubor CustomRules.
 
@@ -197,13 +197,13 @@ Konkrétní podrobnosti najdete v dokumentaci k proxy server.
 
 ## <a name="blocking-consumer-applications-public-preview"></a>Blokování aplikací příjemce (Public Preview)
 
-Aplikace od Microsoftu, které podporují účty uživatelů a účty organizace, jako je [OneDrive](https://onedrive.live.com/) nebo [Microsoft Learn](https://docs.microsoft.com/learn/), můžou být někdy hostované na stejné adrese URL.  To znamená, že uživatelé, kteří musí mít přístup k této adrese URL pro účely práce, mají také přístup k osobnímu použití, což nemusí být povoleno v souladu s pokyny pro váš operační systém.
+Aplikace od Microsoftu, které podporují účty uživatelů a účty organizace, jako je [OneDrive](https://onedrive.live.com/) nebo [Microsoft Learn](/learn/), můžou být někdy hostované na stejné adrese URL.  To znamená, že uživatelé, kteří musí mít přístup k této adrese URL pro účely práce, mají také přístup k osobnímu použití, což nemusí být povoleno v souladu s pokyny pro váš operační systém.
 
 Některé organizace se pokoušejí tuto chybu opravit tak, že blokují `login.live.com` pro blokování ověřování osobních účtů.  Má několik downsides:
 
 1. Blok blokuje `login.live.com` použití osobních účtů ve scénářích hostů v B2B, které se můžou intrude na návštěvníky a spolupráci.
-1. [Autopilot vyžaduje použití `login.live.com` ](https://docs.microsoft.com/mem/autopilot/networking-requirements) aby bylo možné nasadit nástroj. Scénáře Intune a autopilotu můžou selhat `login.live.com` , když je blokované.
-1. Pracovní telemetrie a aktualizace Windows, které spoléhají na službu login.live.com pro ID zařízení, [budou přestat fungovat](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+1. [Autopilot vyžaduje použití `login.live.com` ](/mem/autopilot/networking-requirements) aby bylo možné nasadit nástroj. Scénáře Intune a autopilotu můžou selhat `login.live.com` , když je blokované.
+1. Pracovní telemetrie a aktualizace Windows, které spoléhají na službu login.live.com pro ID zařízení, [budou přestat fungovat](/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
 
 ### <a name="configuration-for-consumer-apps"></a>Konfigurace pro spotřebitelské aplikace
 
@@ -216,7 +216,7 @@ V tuto chvíli se ověřování u uživatelských aplikací nezobrazuje v [proto
 `restrict-msa`Zásady blokují použití uživatelských aplikací, ale umožňují prostřednictvím několika dalších typů provozu a ověřování:
 
 1. Přenos bez uživatele pro zařízení.  To zahrnuje přenos dat pro autopilot, web Windows Update a telemetrie organizace.
-1. Ověřování B2B u uživatelských účtů Uživatelé s účty Microsoft, kteří jsou [pozváni, aby mohli spolupracovat s klientem](https://docs.microsoft.com/azure/active-directory/external-identities/redemption-experience#invitation-redemption-flow) ověřit Login.Live.com pro přístup k tenantovi prostředků.
+1. Ověřování B2B u uživatelských účtů Uživatelé s účty Microsoft, kteří jsou [pozváni, aby mohli spolupracovat s klientem](../external-identities/redemption-experience.md#invitation-redemption-flow) ověřit Login.Live.com pro přístup k tenantovi prostředků.
     1. Tento přístup je řízený pomocí `Restrict-Access-To-Tenants` hlavičky pro povolení nebo odepření přístupu k tomuto tenantovi prostředků.
 1. "Průchozí" ověřování používané mnoha aplikacemi Azure i Office.com, kde aplikace používají Azure AD k podepisování uživatelů spotřebitelů v kontextu příjemce.
     1. Tento přístup je také řízen pomocí `Restrict-Access-To-Tenants` záhlaví, aby bylo možné povolit nebo odepřít přístup ke speciálnímu tenantovi ( `f8cdef31-a31e-4b4a-93e4-5f571e91255a` ).  Pokud se tento tenant neobjeví ve vašem `Restrict-Access-To-Tenants` seznamu povolených domén, budou se v rámci přihlášení k těmto aplikacím službě Azure AD blokovat uživatelské účty.

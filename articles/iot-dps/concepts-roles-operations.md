@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: 322d6b590863d8065454c0439c5d899107a6abe7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784961"
 ---
 # <a name="roles-and-operations"></a>Role a operace
@@ -23,7 +23,7 @@ Zřizování také umístí požadavky na výrobce zařízení, které jsou spec
 
 Řada rychlých startů je k dispozici v obsahu vlevo, což vám umožní vysvětlit Automatické zřizování prostřednictvím praktických zkušeností. Aby bylo možné zjednodušit a zjednodušit proces učení, používá se software k simulaci fyzického zařízení pro registraci a registraci. Některé rychlé starty vyžadují, abyste splnili operace pro více rolí, včetně operací pro neexistující role, a to kvůli simulované povaze rychlých startů.
 
-| Role | Operace | Popis |
+| Role | Operace | Description |
 |------| --------- | ------------|
 | Manufacturer | Adresa URL pro kódování identity a registrace | Na základě použitého mechanismu ověřování je výrobce zodpovědný za kódování informací o identitě zařízení a adresu URL pro registraci služby Device Provisioning.<br><br>**Rychlé starty**: vzhledem k tomu, že zařízení je simulované, není k dispozici žádná role výrobce. Podrobnosti o tom, jak získáte tyto informace, které se používají při kódování ukázkové registrační aplikace, najdete v tématu role vývojáře. |
 | | Zadejte identitu zařízení. | Jako původce informace o identitě zařízení je výrobce zodpovědný za jeho komunikaci s operátorem (nebo určeným agentem) nebo jeho přímým zápisem do služby Device Provisioning prostřednictvím rozhraní API.<br><br>**Rychlé starty**: vzhledem k tomu, že zařízení je simulované, není k dispozici žádná role výrobce. Podrobnosti o tom, jak získat identitu zařízení, která se používá k registraci simulovaného zařízení v instanci služby Device Provisioning, najdete v tématu role operátora. |

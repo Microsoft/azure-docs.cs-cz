@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 09/30/2020
-ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 03/17/2021
+ms.openlocfilehash: 4c9edaea75215bc4b471cd2e0ac50c4e69546bb0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592697"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592128"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorování a ladění výkonu ve službách Azure SQL Database a Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,6 +35,10 @@ V Azure Portal Azure SQL Database a Azure SQL Managed instance poskytují monito
 
 > [!NOTE]
 > Databáze s extrémně nízkým využitím se můžou zobrazovat na portálu s méně než skutečným využitím. Z důvodu způsobu, jakým se telemetrie vyvolá při převodu hodnoty Double na nejbližší celé 0,5 číslo, je zaokrouhleno na 0, což způsobí ztrátu v členitosti vyvolané telemetrie. Podrobnosti najdete v tématu [Zaokrouhlení metriky databáze a elastického fondu na hodnotu nula](#low-database-and-elastic-pool-metrics-rounding-to-zero).
+
+### <a name="monitor-with-sql-insights"></a>Monitorování pomocí SQL Insights
+
+[Azure monitor SQL Insights](../../azure-monitor/insights/sql-insights-overview.md) je nástroj pro monitorování spravovaných instancí Azure SQL, databází SQL Azure a instancí SQL Server na virtuálních počítačích Azure SQL. Tato služba používá vzdáleného agenta k zachycení dat ze zobrazení dynamické správy (zobrazení dynamické správy) a směruje data do Azure Log Analytics, kde je lze monitorovat a analyzovat. Tato data můžete zobrazit z [Azure monitor](../../azure-monitor/overview.md) v zobrazených zobrazeních nebo získat přímý přístup k datům protokolu ke spouštění dotazů a analýze trendů. Pokud chcete začít používat Azure Monitor SQL Insights, přečtěte si téma [Povolení SQL Insights](../../azure-monitor/insights/sql-insights-enable.md).
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL Database a monitorování prostředků spravované instance Azure SQL
 

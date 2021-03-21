@@ -6,21 +6,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 03/11/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 6fc7b347dfc12f1dd7758ccc2a2d1c58f11debad
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2a43042fb1caeee7c652d7c38111ccb2fa9bb359
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444729"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599054"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-[Referenční dokumentace](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  verze 3.1 [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  knihovny v 3.1 [balíček verze 3.1 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3)  |  [ukázky v 3.1](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[Referenční dokumentace](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  verze 3.1 [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  knihovny v 3.1 [balíček verze 3.1 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.5)  |  [ukázky v 3.1](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
@@ -28,7 +28,7 @@ ms.locfileid: "102444729"
 
 ---
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/)
@@ -41,11 +41,11 @@ ms.locfileid: "102444729"
 
 ### <a name="create-a-new-net-core-application"></a>Vytvoření nové aplikace .NET Core
 
-Pomocí integrovaného vývojového prostředí (IDE) sady Visual Studio vytvořte novou konzolovou aplikaci .NET Core. Tím se vytvoří projekt "Hello World" s jedním zdrojovým souborem C#: *program.cs*.
+Pomocí integrovaného vývojového prostředí (IDE) sady Visual Studio vytvořte novou konzolovou aplikaci .NET Core. Tím se vytvoří projekt "Hello World" s jedním zdrojovým souborem C#: *program. cs*.
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-Nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Vyhledat** a vyhledat `Azure.AI.TextAnalytics` . Zaškrtněte políčko **Zahrnout prerelase** , vyberte možnost verze `5.1.0-beta.3` a pak **nainstalujte**. Můžete také použít [konzolu Správce balíčků](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
+Nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Vyhledat** a vyhledat `Azure.AI.TextAnalytics` . Zaškrtněte políčko **Zahrnout prerelase** , vyberte možnost verze `5.1.0-beta.5` a pak **nainstalujte**. Můžete také použít [konzolu Správce balíčků](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
@@ -59,7 +59,7 @@ Nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-Otevřete soubor *program.cs* a přidejte následující `using` direktivy:
+Otevřete soubor *program. cs* a přidejte následující `using` direktivy:
 
 ```csharp
 using Azure;
@@ -99,7 +99,7 @@ static void Main(string[] args)
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-Otevřete soubor *program.cs* a přidejte následující `using` direktivy:
+Otevřete soubor *program. cs* a přidejte následující `using` direktivy:
 
 ```csharp
 using Azure;
@@ -216,7 +216,7 @@ Document sentiment: Positive
 
 ### <a name="opinion-mining"></a>Dolování názoru
 
-Vytvořte novou funkci s názvem `SentimentAnalysisWithOpinionMiningExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `AnalyzeSentimentBatch()` funkci s `AdditionalSentimentAnalyses.OpinionMining` možností. Vrácený `AnalyzeSentimentResultCollection` objekt bude obsahovat kolekci, `AnalyzeSentimentResult` ve které představuje `Response<DocumentSentiment>` . Rozdíl mezi `SentimentAnalysis()` a `SentimentAnalysisWithOpinionMiningExample()` je v tom, že se `MinedOpinion` v každé větě bude zobrazovat analyzovaný aspekt a související názory. Pokud došlo k chybě, vyvolá se `RequestFailedException` .
+Vytvořte novou funkci s názvem `SentimentAnalysisWithOpinionMiningExample()` , která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho `AnalyzeSentimentBatch()` funkci s `IncludeOpinionMining` možností v `AnalyzeSentimentOptions` kontejneru. Vrácený `AnalyzeSentimentResultCollection` objekt bude obsahovat kolekci, `AnalyzeSentimentResult` ve které představuje `Response<DocumentSentiment>` . Rozdíl mezi `SentimentAnalysis()` a `SentimentAnalysisWithOpinionMiningExample()` je v tom, že `SentenceOpinion` v každé větě bude v každé větě zobrazen analyzovaný cíl a související posouzení. Pokud došlo k chybě, vyvolá se `RequestFailedException` .
 
 ```csharp
 static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
@@ -245,16 +245,16 @@ static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
             Console.WriteLine($"\tSentence negative score: {sentence.ConfidenceScores.Negative:0.00}");
             Console.WriteLine($"\tSentence neutral score: {sentence.ConfidenceScores.Neutral:0.00}\n");
 
-            foreach (MinedOpinion minedOpinion in sentence.MinedOpinions)
+            foreach (SentenceOpinion sentenceOpinion in sentence.Opinions)
             {
-                Console.WriteLine($"\tAspect: {minedOpinion.Aspect.Text}, Value: {minedOpinion.Aspect.Sentiment}");
-                Console.WriteLine($"\tAspect positive score: {minedOpinion.Aspect.ConfidenceScores.Positive:0.00}");
-                Console.WriteLine($"\tAspect negative score: {minedOpinion.Aspect.ConfidenceScores.Negative:0.00}");
-                foreach (OpinionSentiment opinion in minedOpinion.Opinions)
+                Console.WriteLine($"\tTarget: {sentenceOpinion.Target.Text}, Value: {sentenceOpinion.Target.Sentiment}");
+                Console.WriteLine($"\tTarget positive score: {sentenceOpinion.Target.ConfidenceScores.Positive:0.00}");
+                Console.WriteLine($"\tTarget negative score: {sentenceOpinion.Target.ConfidenceScores.Negative:0.00}");
+                foreach (AssessmentSentiment assessment in sentenceOpinion.Assessments)
                 {
-                    Console.WriteLine($"\t\tRelated Opinion: {opinion.Text}, Value: {opinion.Sentiment}");
-                    Console.WriteLine($"\t\tRelated Opinion positive score: {opinion.ConfidenceScores.Positive:0.00}");
-                    Console.WriteLine($"\t\tRelated Opinion negative score: {opinion.ConfidenceScores.Negative:0.00}");
+                    Console.WriteLine($"\t\tRelated Assessment: {assessment.Text}, Value: {assessment.Sentiment}");
+                    Console.WriteLine($"\t\tRelated Assessment positive score: {assessment.ConfidenceScores.Positive:0.00}");
+                    Console.WriteLine($"\t\tRelated Assessment negative score: {assessment.ConfidenceScores.Negative:0.00}");
                 }
             }
         }
@@ -278,25 +278,24 @@ Document sentiment: Positive
         Sentence negative score: 0.16
         Sentence neutral score: 0.00
 
-        Aspect: food, Value: Negative
-        Aspect positive score: 0.01
-        Aspect negative score: 0.99
-                Related Opinion: unacceptable, Value: Negative
-                Related Opinion positive score: 0.01
-                Related Opinion negative score: 0.99
-        Aspect: service, Value: Negative
-        Aspect positive score: 0.01
-        Aspect negative score: 0.99
-                Related Opinion: unacceptable, Value: Negative
-                Related Opinion positive score: 0.01
-                Related Opinion negative score: 0.99
-        Aspect: concierge, Value: Positive
-        Aspect positive score: 1.00
-        Aspect negative score: 0.00
-                Related Opinion: nice, Value: Positive
-                Related Opinion positive score: 1.00
-                Related Opinion negative score: 0.00
-
+        Target: food, Value: Negative
+        Target positive score: 0.01
+        Target negative score: 0.99
+                Related Assessment: unacceptable, Value: Negative
+                Related Assessment positive score: 0.01
+                Related Assessment negative score: 0.99
+        Target: service, Value: Negative
+        Target positive score: 0.01
+        Target negative score: 0.99
+                Related Assessment: unacceptable, Value: Negative
+                Related Assessment positive score: 0.01
+                Related Assessment negative score: 0.99
+        Target: concierge, Value: Positive
+        Target positive score: 1.00
+        Target negative score: 0.00
+                Related Assessment: nice, Value: Positive
+                Related Assessment positive score: 1.00
+                Related Assessment negative score: 0.00
 
 Press any key to exit.
 ```
@@ -724,7 +723,7 @@ Key phrases:
 
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-Vytvořte novou funkci s názvem `AnalyzeOperationExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `StartAnalyzeOperationBatch()` funkci. Vrácený `AnalyzeOperation` objekt bude obsahovat `Operation` objekt rozhraní pro `AnalyzeOperationResult` . Vzhledem k tomu, že se jedná o dlouhodobou provozní operaci, `await` `operation.WaitForCompletionAsync()` pro hodnotu, která se má aktualizovat. Jakmile `WaitForCompletionAsync()` je dokončeno, kolekce by měla být aktualizována v `operation.Value` . Pokud došlo k chybě, vyvolá se `RequestFailedException` .
+Vytvořte novou funkci s názvem `AnalyzeOperationExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `StartAnalyzeBatchActionsAsync()` funkci. Vrácený `AnalyzeBatchActionsOperation` objekt bude obsahovat `Operation` objekt rozhraní. Vzhledem k tomu, že se jedná o dlouhodobou provozní operaci, `await` `operation.WaitForCompletionAsync()` pro hodnotu, která se má aktualizovat. Jakmile `WaitForCompletionAsync()` je dokončeno, kolekce by měla být aktualizována v `operation.Value` . Pokud došlo k chybě, vyvolá se `RequestFailedException` .
 
 
 ```csharp
@@ -734,40 +733,49 @@ static async Task AnalyzeOperationExample(TextAnalyticsClient client)
 
     var batchDocuments = new List<string> { inputText };
 
-    AnalyzeOperationOptions operationOptions = new AnalyzeOperationOptions()
+
+    TextAnalyticsActions actions = new TextAnalyticsActions()
     {
-        EntitiesTaskParameters = new EntitiesTaskParameters(),
+        RecognizeEntitiesOptions = new List<RecognizeEntitiesOptions>() { new RecognizeEntitiesOptions() },
         DisplayName = "Analyze Operation Quick Start Example"
     };
 
-    AnalyzeOperation operation = client.StartAnalyzeOperationBatch(batchDocuments, operationOptions, "en");
+    AnalyzeBatchActionsOperation operation = await client.StartAnalyzeBatchActionsAsync(batchDocuments, actions);
 
     await operation.WaitForCompletionAsync();
 
-    AnalyzeOperationResult resultCollection = operation.Value;
+    Console.WriteLine($"Status: {operation.Status}");
+    Console.WriteLine($"Created On: {operation.CreatedOn}");
+    Console.WriteLine($"Expires On: {operation.ExpiresOn}");
+    Console.WriteLine($"Last modified: {operation.LastModified}");
+    if (!string.IsNullOrEmpty(operation.DisplayName))
+        Console.WriteLine($"Display name: {operation.DisplayName}");
+    Console.WriteLine($"Total actions: {operation.TotalActions}");
+    Console.WriteLine($"  Succeeded actions: {operation.ActionsSucceeded}");
+    Console.WriteLine($"  Failed actions: {operation.ActionsFailed}");
+    Console.WriteLine($"  In progress actions: {operation.ActionsInProgress}");
 
-    RecognizeEntitiesResultCollection entitiesResult = resultCollection.Tasks.EntityRecognitionTasks[0].Results;
-
-    Console.WriteLine("Analyze Operation Request Details");
-    Console.WriteLine($"    Status: {resultCollection.Status}");
-    Console.WriteLine($"    DisplayName: {resultCollection.DisplayName}");
-    Console.WriteLine("");
-
-    Console.WriteLine("Recognized Entities");
-
-    foreach (RecognizeEntitiesResult result in entitiesResult)
+    await foreach (AnalyzeBatchActionsResult documentsInPage in operation.Value)
     {
-        Console.WriteLine($"    Recognized the following {result.Entities.Count} entities:");
+        RecognizeEntitiesResultCollection entitiesResult = documentsInPage.RecognizeEntitiesActionsResults.FirstOrDefault().Result;
 
-        foreach (CategorizedEntity entity in result.Entities)
+        Console.WriteLine("Recognized Entities");
+
+        foreach (RecognizeEntitiesResult result in entitiesResult)
         {
-            Console.WriteLine($"    Entity: {entity.Text}");
-            Console.WriteLine($"    Category: {entity.Category}");
-            Console.WriteLine($"    Offset: {entity.Offset}");
-            Console.WriteLine($"    ConfidenceScore: {entity.ConfidenceScore}");
-            Console.WriteLine($"    SubCategory: {entity.SubCategory}");
+            Console.WriteLine($"  Recognized the following {result.Entities.Count} entities:");
+
+            foreach (CategorizedEntity entity in result.Entities)
+            {
+                Console.WriteLine($"  Entity: {entity.Text}");
+                Console.WriteLine($"  Category: {entity.Category}");
+                Console.WriteLine($"  Offset: {entity.Offset}");
+                Console.WriteLine($"  Length: {entity.Length}");
+                Console.WriteLine($"  ConfidenceScore: {entity.ConfidenceScore}");
+                Console.WriteLine($"  SubCategory: {entity.SubCategory}");
+            }
+            Console.WriteLine("");
         }
-        Console.WriteLine("");
     }
 }
 ```
@@ -780,30 +788,38 @@ await AnalyzeOperationExample(client).ConfigureAwait(false);
 ### <a name="output"></a>Výstup
 
 ```console
-Analyze Operation Request Details
-    Status: succeeded
-    DisplayName: Analyze Operation Quick Start Example
-
+Status: succeeded
+Created On: 3/10/2021 2:25:01 AM +00:00
+Expires On: 3/11/2021 2:25:01 AM +00:00
+Last modified: 3/10/2021 2:25:05 AM +00:00
+Display name: Analyze Operation Quick Start Example
+Total actions: 1
+  Succeeded actions: 1
+  Failed actions: 0
+  In progress actions: 0
 Recognized Entities
-    Recognized the following 3 entities:
-    Entity: Microsoft
-    Category: Organization
-    Offset: 0
-    ConfidenceScore: 0.83
-    SubCategory: 
-    Entity: Bill Gates
-    Category: Person
-    Offset: 25
-    ConfidenceScore: 0.85
-    SubCategory: 
-    Entity: Paul Allen
-    Category: Person
-    Offset: 40
-    ConfidenceScore: 0.9
-    SubCategory: 
+  Recognized the following 3 entities:
+  Entity: Microsoft
+  Category: Organization
+  Offset: 0
+  Length: 9
+  ConfidenceScore: 0.97
+  SubCategory:
+  Entity: Bill Gates
+  Category: Person
+  Offset: 25
+  Length: 10
+  ConfidenceScore: 1
+  SubCategory:
+  Entity: Paul Allen
+  Category: Person
+  Offset: 40
+  Length: 10
+  ConfidenceScore: 0.99
+  SubCategory:
 ```
 
-Můžete také použít operaci analyzovat ke zjištění kódu PII a extrakce klíčových frází. Podívejte se na téma [Analýza ukázky](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeOperation.md) na GitHubu.
+Můžete také použít operaci analyzovat ke zjištění PII, rozpoznávání propojených entit a extrakci klíčových frází. Podívejte se na téma [Analýza ukázky](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeOperation.md) na GitHubu.
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 

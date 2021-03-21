@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6ee6af8726dbd0a7b564b442242572afec670f4d
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103016742"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopírování existujících objektů blob do prostředku Media Services
@@ -45,7 +45,7 @@ V tomto článku jsou uvedeny dva ukázky kódu:
 
 ## <a name="copy-blobs-between-two-ams-accounts"></a>Kopírování objektů BLOB mezi dvěma účty AMS  
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Dva účty Media Services. Přečtěte si článek [jak vytvořit účet Media Services](media-services-portal-create-account.md).
 
@@ -163,7 +163,7 @@ namespace CopyExistingBlobsIntoAsset
 
 ## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Kopírování objektů BLOB z účtu úložiště do účtu AMS 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Jeden účet úložiště, ze kterého chcete zkopírovat objekty blob.
 - Jeden účet AMS, do kterého chcete zkopírovat objekty blob.

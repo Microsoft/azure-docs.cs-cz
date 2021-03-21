@@ -10,10 +10,10 @@ ms.date: 03/15/2021
 ms.author: kuthapar
 ms.custom: devx-track-java
 ms.openlocfilehash: 3c740aa00b158c7ddbca3e4f61d79e37978223c2
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103493607"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v3 pro Core (SQL) API: poznámky k verzi a prostředky
@@ -97,7 +97,7 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 * Jarní data Azure Cosmos DB podporují jazyky Java JDK 8 a Java JDK 11.
 * Jarní data 2,3 se momentálně podporují, v současné době se nepodporují jarní data 2,4.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

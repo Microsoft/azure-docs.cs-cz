@@ -13,10 +13,10 @@ ms.date: 03/02/2021
 ms.author: aahi
 keywords: místní, Docker, kontejner, analýza mínění, zpracování přirozeného jazyka
 ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102432056"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 > [!IMPORTANT]
 > Bezplatný účet je omezený na 5 000 transakcí za měsíc a pro kontejnery jsou platné jenom  <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">cenové úrovně</a> **Free** a Standard. Další informace o sazbách požadavků na transakce najdete v tématu [omezení pro data](../overview.md#data-limits).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li spustit některý z Analýza textu kontejnerů, je nutné mít prostředí hostitelského počítače a kontejneru.
 
@@ -141,7 +141,7 @@ Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`.
 
 [!INCLUDE [How to stop the container](../../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud spouštíte kontejner s povoleným výstupním [připojením](../text-analytics-resource-container-config.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 

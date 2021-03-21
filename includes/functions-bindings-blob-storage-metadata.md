@@ -10,15 +10,15 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: c6b038297945ca900508a822460e1358a2524d23
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102455906"
 ---
 Trigger objektu BLOB poskytuje několik vlastností metadat. Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Tyto hodnoty mají stejnou sémantiku jako typ [CloudBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblob) .
 
-|Vlastnost  |Typ  |Popis  |
+|Vlastnost  |Typ  |Description  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Cesta k aktivovanému objektu BLOB.|
 |`Uri`|`System.Uri`|Identifikátor URI objektu BLOB pro primární umístění|

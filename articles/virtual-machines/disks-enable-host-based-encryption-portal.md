@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ba7d6d8deb2034f8b2a853cf74635687561c41ea
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cdb22805e2e68893d3883272b66c2cfac13c807e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573598"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721864"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Použití Azure Portal k povolení kompletního šifrování pomocí šifrování na hostiteli
 
@@ -27,17 +27,31 @@ Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuáln
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>Podporované oblasti
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
 ### <a name="supported-vm-sizes"></a>Podporované velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Odesláním e-mailu encryptionAtHost@microsoft.com s ID předplatného získáte funkci povolenou pro vaše předplatná.
+Než pro svůj virtuální počítač nebo VMSS použijete vlastnost EncryptionAtHost, musíte povolit funkci pro vaše předplatné. Pokud chcete povolit funkci pro vaše předplatné, postupujte prosím podle následujících kroků:
+
+1. **Azure Portal**: vyberte ikonu Cloud Shell na [Azure Portal](https://portal.azure.com):
+
+    ![Ikona pro spuštění Cloud Shell z Azure Portal](../Cloud-Shell/media/overview/portal-launch-icon.png)
+    
+2.  Spusťte následující příkaz, který zaregistruje funkci pro vaše předplatné.
+
+    ```powershell
+     Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
+    ```
+
+3.  Před vyzkoušením této funkce zkontrolujte, zda je stav registrace zaregistrován (několik minut trvá) pomocí příkazu níže.
+
+    ```powershell
+     Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
+    ```
+
 
 Přihlaste se k Azure Portal pomocí [poskytnutého odkazu](https://aka.ms/diskencryptionupdates).
 

@@ -7,10 +7,10 @@ ms.date: 01/07/2021
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 089c5fea6ac4a6fc4fb25af2d631335ef51cf4cc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054902"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Povolení Update Managementu z webu Azure Portal
@@ -22,7 +22,7 @@ Počet skupin prostředků, které můžete použít pro správu virtuálních p
 > [!NOTE]
 > Při povolování Update Management jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../automation-security-overview.md) pro správu počítačů.

@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101707315"
 ---
 # <a name="arm-template-functions"></a>Funkce šablon ARM
@@ -111,7 +111,7 @@ Správce prostředků poskytuje následující funkce pro práci s logickými po
 * [chybné](template-functions-logical.md#false)
 * [if](template-functions-logical.md#if)
 * [mění](template-functions-logical.md#not)
-* [ani](template-functions-logical.md#or)
+* [nebo](template-functions-logical.md#or)
 * [podmínka](template-functions-logical.md#true)
 
 <a id="add" aria-hidden="true"></a>

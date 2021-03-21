@@ -6,18 +6,19 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 080f444d50dcdf17be15d940002b745624b2f6a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f1824a1e4754dddea26484c836df79e95246d5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708522"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580976"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migrace databáze PostgreSQL pomocí exportu a importu
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
+
 K extrakci databáze PostgreSQL do souboru skriptu a [psql](https://www.postgresql.org/docs/current/static/app-psql.html) pro import dat do cílové databáze z tohoto souboru můžete použít [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md) s pravidly brány firewall pro povolení přístupu a databáze pod ní.
 - nainstalovaný nástroj příkazového řádku [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html)
@@ -44,12 +45,12 @@ psql --file=<database>.sql --host=<server name> --port=5432 --username=<user> --
 ```
 Tento příklad používá nástroj psql a soubor skriptu s názvem **TestDB. SQL** z předchozího kroku k importu dat do databáze **mypgsqldb** cílového serveru **mydemoserver.Postgres.Database.Azure.com**.
 
-V případě **jednoho serveru**použijte tento příkaz. 
+V případě **jednoho serveru** použijte tento příkaz. 
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
-V případě **flexibilního serveru**použijte tento příkaz.  
+V případě **flexibilního serveru** použijte tento příkaz.  
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin --dbname=mypgsqldb
 ```

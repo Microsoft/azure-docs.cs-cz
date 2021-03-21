@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 9822dfe50fa50fdd70f4e09e188188cad0f9b8f0
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102438212"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
@@ -80,7 +80,7 @@ Existují dva scénáře instalace, které mohou při instalaci agenta Log Analy
 
 **Stav monitorování** indikuje důvod, proč se službě Security Center nepodařilo úspěšně monitorovat virtuální počítače a počítače inicializované pro automatické zřizování. Seznam hodnot, popisů a postupů řešení pro hodnoty **stavu monitorování** najdete v následující tabulce.
 
-| Stav monitorování | Popis | Postup řešení |
+| Stav monitorování | Description | Postup řešení |
 |---|---|---|
 | Čeká se na instalaci agenta | Instalace agenta Log Analytics stále běží.  Instalace může trvat i několik hodin. | Počkejte na dokončení automatické instalace. |
 | Stav napájení je vypnuto | Virtuální počítač je zastavený.  Agent Log Analytics může být nainstalovaný jenom na virtuálním počítači, na kterém běží. | Restartujte virtuální počítač. |
@@ -104,10 +104,10 @@ V následující tabulce najdete přehled prostředků potřebných pro komunika
 
 | Prostředek agenta | Porty | Obejít kontrolu protokolu HTTPS |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Ano |
-| *.oms.opinsights.azure.com | 443 | Ano |
-| *.blob.core.windows.net | 443 | Ano |
-| *.azure-automation.net | 443 | Ano |
+| *.ods.opinsights.azure.com | 443 | Yes |
+| *.oms.opinsights.azure.com | 443 | Yes |
+| *.blob.core.windows.net | 443 | Yes |
+| *.azure-automation.net | 443 | Yes |
 
 Pokud narazíte na problémy s registrací agenta, přečtěte si článek [Řešení potíží s registrací v Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 

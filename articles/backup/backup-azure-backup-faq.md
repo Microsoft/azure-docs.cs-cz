@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ac58cee66aa2a89efb7194a051801b068628d3bc
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 79ff404192de481965f3971f00328c49a591dd41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467625"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583373"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -72,6 +72,13 @@ Ano. Pokud chcete přesunout předplatné (které obsahuje trezor) do jiné Azur
 
 >[!IMPORTANT]
 >Po přesunu předplatného se ujistěte, že provedete následující akce:<ul><li>Oprávnění řízení přístupu na základě rolí a vlastní role nejsou voditelné. V nové službě Azure AD musíte znovu vytvořit oprávnění a role.</li><li>Spravovanou identitu trezoru musíte znovu vytvořit tak, že ji zakážete a znovu povolíte. Také je nutné vyhodnotit a znovu vytvořit oprávnění MI.</li><li>Pokud trezor používá funkce, které využívají MI, například [soukromé koncové body](private-endpoints.md#before-you-start) a [spravované klíče zákazníka](encryption-at-rest-with-cmk.md#before-you-start), je nutné tyto funkce překonfigurovat.</li></ul>
+
+### <a name="can-i-move-a-subscription-that-contains-a-recovery-services-vault-to-a-different-tenant"></a>Můžu přesunout předplatné, které obsahuje Recovery Services trezor, do jiného tenanta?
+
+Ano. Ujistěte se, že provedete následující akce: 
+
+>[!IMPORTANT]
+>Po přesunu předplatného se ujistěte, že provedete následující akce:<ul><li>Pokud trezor používá CMK (spravované klíče zákazníka), musíte aktualizovat trezor. Díky tomu může trezor znovu vytvořit a znovu nakonfigurovat spravovanou identitu úložiště a CMK (která se bude nacházet v novém tenantovi), jinak se operace zálohování a obnovení nezdaří.</li><li>V předplatném musíte překonfigurovat oprávnění RBAC, protože existující oprávnění nejde přesunout.</li></ul>
 
 ## <a name="azure-backup-agent"></a>Agent Azure Backup
 

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 03/06/2021
 ms.author: kumud
 ms.openlocfilehash: 746e44c85d4dd9a662556a73f1e4ab0701d31400
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102435886"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Kurz: filtrování síťového provozu pomocí skupiny zabezpečení sítě pomocí Azure Portal
@@ -165,7 +165,7 @@ V této části přidružíme skupinu zabezpečení sítě k podsíti virtuáln�
     | Protokol | Vyberte **TCP**. |
     | Akce | Ponechte výchozí hodnotu **Allow**. |
     | Priorita | Ponechte výchozí hodnotu **100**. |
-    | Název | Zadejte možnost **Allow-web-All**. |
+    | Name | Zadejte možnost **Allow-web-All**. |
 
     :::image type="content" source="./media/tutorial-filter-network-traffic/inbound-security-rule.png" alt-text="Příchozí pravidlo zabezpečení" border="true":::
 
@@ -182,7 +182,7 @@ V této části přidružíme skupinu zabezpečení sítě k podsíti virtuáln�
     | Protokol | Vyberte **TCP**. |
     | Akce | Ponechte výchozí hodnotu **Allow**. |
     | Priorita | Ponechte výchozí hodnotu **110**. |
-    | Název | Zadejte **Allow-RDP-All**. |
+    | Name | Zadejte **Allow-RDP-All**. |
 
     > [!CAUTION]
     > V tomto článku je protokol RDP (port 3389) zpřístupněný pro Internet pro virtuální počítač, který je přiřazený ke skupině zabezpečení aplikací **myAsgMgmtServers** . 

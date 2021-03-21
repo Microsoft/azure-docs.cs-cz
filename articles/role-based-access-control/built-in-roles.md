@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/25/2021
+ms.date: 03/15/2021
 ms.custom: generated
-ms.openlocfilehash: baa783d0dfb54e0e606e3f6c6d5397941ae7b7bc
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: ba5340fdc12bf3141c5e3f24b6b9d178a5db600d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103011625"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602515"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -140,6 +140,13 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Editor QnA Maker Cognitive Services](#cognitive-services-qna-maker-editor) | Umožňuje vytvářet, upravovat, importovat a exportovat KB. Znalostní báze nelze publikovat ani odstranit. | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
 > | [Čtecí modul Cognitive Services QnA Maker](#cognitive-services-qna-maker-reader) | Pojďme číst a testovat jenom znalostní báze. | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [Cognitive Services uživatel](#cognitive-services-user) | Umožňuje číst a zobrazit seznam klíčů Cognitive Services. | a97b65f3-24c7-4388-baec-2e87135dc908 |
+> | **Internet věcí** |  |  |
+> | [Správce aktualizace zařízení](#device-update-administrator) | Poskytuje úplný přístup k operacím správy a obsahu. | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
+> | [Správce obsahu aktualizace zařízení](#device-update-content-administrator) | Poskytuje úplný přístup k operacím s obsahem. | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
+> | [Čtenář obsahu aktualizace zařízení](#device-update-content-reader) | Poskytuje přístup pro čtení k operacím s obsahem, ale neumožňuje provádět změny. | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
+> | [Správce nasazení aktualizací zařízení](#device-update-deployments-administrator) | Poskytuje úplný přístup k operacím správy. | e4237640-0e3d-4a46-8fda-70bc94856432 |
+> | [Čtečka nasazení aktualizací zařízení](#device-update-deployments-reader) | Poskytuje přístup pro čtení k operacím správy, ale neumožňuje provádět změny. | 49e2f5d2-7741-4835-8efa-19e1fe35e47f |
+> | [Čtenář aktualizace zařízení](#device-update-reader) | Poskytuje přístup pro čtení k operacím správy a obsahu, ale neumožňuje provádět změny. | e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f |
 > | **Mixed realita** |  |  |
 > | [Správce vzdáleného vykreslování](#remote-rendering-administrator) | Poskytuje uživatele s možností převodu, správy relace, vykreslování a diagnostiky pro vzdálené vykreslování Azure. | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Klient vzdáleného vykreslování](#remote-rendering-client) | Poskytuje uživatele s možností spravovat relaci, vykreslování a diagnostiku pro vzdálené vykreslování Azure. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
@@ -156,6 +163,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Azure Service Bus přijímač dat](#azure-service-bus-data-receiver) | Umožňuje získat přístup k prostředkům Azure Service Bus. | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
 > | [Azure Service Bus odesílatel dat](#azure-service-bus-data-sender) | Umožňuje odeslat přístup k prostředkům Azure Service Bus. | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
 > | [Vlastník registrace Azure Stack](#azure-stack-registration-owner) | Umožňuje spravovat Azure Stack registrace. | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
+> | [Přispěvatel EventGrid](#eventgrid-contributor) | Umožňuje správu operací EventGrid. | 1e241071-0855-49ea-94dc-649edcd759de |
 > | [EventGrid EventSubscription Přispěvatel](#eventgrid-eventsubscription-contributor) | Umožňuje spravovat operace odběru událostí EventGrid. | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | [Čtecí modul EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Umožňuje číst odběry událostí EventGrid. | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | [Přispěvatel dat FHIR](#fhir-data-contributor) | Role umožňuje, aby měl uživatel nebo hlavní přístup k datům FHIR oprávnění. | 5a1fc7df-4bf1-4951-a576-89034ee01acd |
@@ -222,6 +230,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Čtenář skupiny pro správu](#management-group-reader) | Role čtenář skupiny pro správu | ac63b705-f282-497d-ac71-919bf39d939d |
 > | [Přispěvatel nového účtu Relic APM](#new-relic-apm-account-contributor) | Umožňuje správu účtů a aplikací New Relic Application Performance Management, ale ne přístup k nim. | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | [Zapisovač dat zásad pro zásady (Preview)](#policy-insights-data-writer-preview) | Povolí přístup pro čtení k zásadám prostředků a k zápisu do událostí zásad součástí prostředků. | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
+> | [Role operátora žádosti o kvótu](#quota-request-operator-role) | Umožňuje číst a vytvářet žádosti o kvóty, získat stav žádosti o kvótu a vytvořit lístky podpory. | 0e5f05e5-9ab9-446b-b98d-1e2157c94125 |
 > | [Nákupčí rezervace](#reservation-purchaser) | Umožňuje zakoupit rezervace. | f7b75c60-3036-4b75-91c3-6b41c27c1689 |
 > | [Přispěvatel zásad prostředků](#resource-policy-contributor) | Uživatelé s právy k vytváření a úpravám zásad prostředků, vytváření lístků podpory a čtení prostředků/hierarchie. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Přispěvatel Site Recovery](#site-recovery-contributor) | Umožňuje správu Site Recovery služby s výjimkou vytvoření trezoru a přiřazení role. | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
@@ -4400,6 +4409,7 @@ Umožňuje spravovat zásady týkající se zabezpečení serverů a databází 
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessments/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentScans/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/devOpsAuditingSettings/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/firewallRules/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Read | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityAlertPolicies/* | Vytváření a Správa zásad výstrah zabezpečení systému SQL Server |
@@ -4465,6 +4475,7 @@ Umožňuje spravovat zásady týkající se zabezpečení serverů a databází 
         "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
+        "Microsoft.Sql/servers/devOpsAuditingSettings/*",
         "Microsoft.Sql/servers/firewallRules/*",
         "Microsoft.Sql/servers/read",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
@@ -4528,6 +4539,7 @@ Umožňuje spravovat servery a databáze SQL, ale ne přístup k nim, a ne jejic
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessments/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentScans/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/devOpsAuditingSettings/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/extendedAuditingSettings/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityAlertPolicies/* | Upravit zásady výstrah zabezpečení systému SQL Server |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/vulnerabilityAssessments/* |  |
@@ -4583,6 +4595,7 @@ Umožňuje spravovat servery a databáze SQL, ale ne přístup k nim, a ne jejic
         "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
+        "Microsoft.Sql/servers/devOpsAuditingSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/*",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
@@ -5724,6 +5737,19 @@ Umožňuje vytvářet, upravovat, importovat a exportovat KB. Znalostní báze n
 > | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/QnAMaker.v2/endpointsettings/Read | Získá nastavení koncového bodu pro koncový bod. |
 > | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/QnAMaker.v2/endpointsettings/Write | Aktualizujte koncový bod seettings pro koncový bod. |
 > | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/QnAMaker.v2/Operations/Read | Získá podrobnosti o konkrétní dlouhodobé operaci s dlouhou dobou provozu. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/knowledgebases/Read | Získá seznam Knowledgebases nebo podrobností konkrétního knowledgebaser. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/knowledgebases/Download/Read | Stáhněte si znalostní báze. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/knowledgebases/Create/Write | Asynchronní operace pro vytvoření nové znalostní báze |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/knowledgebases/Write | Asynchronní operace pro úpravu znalostní báze nebo nahrazení obsahu v rámci znalostní báze |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/Action | GenerateAnswer volání pro dotaz na znalostní báze. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/knowledgebases/Train/Action | Zavolejte na vlak a přidejte návrhy do znalostní báze. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/alterations/Read | Stažení změn z modulu runtime. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/alterations/Write | Nahraďte data změn. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/endpointkeys/Read | Získá klíče koncového bodu pro koncový bod. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/endpointkeys/refreshkeys/Action | Znovu vygeneruje klíč koncového bodu. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/endpointsettings/Read | Získá nastavení koncového bodu pro koncový bod. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/endpointsettings/Write | Aktualizujte koncový bod seettings pro koncový bod. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/Operations/Read | Získá podrobnosti o konkrétní dlouhodobé operaci s dlouhou dobou provozu. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -5769,7 +5795,20 @@ Umožňuje vytvářet, upravovat, importovat a exportovat KB. Znalostní báze n
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointkeys/refreshkeys/action",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/write",
-        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/operations/read"
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/operations/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/create/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/train/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/alterations/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/alterations/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointkeys/refreshkeys/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointsettings/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointsettings/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/operations/read"
       ],
       "notDataActions": []
     }
@@ -5805,6 +5844,12 @@ Pojďme číst a testovat jenom znalostní báze. [Další informace](../cogniti
 > | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/QnAMaker.v2/alterations/Read | Stažení změn z modulu runtime. |
 > | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/QnAMaker.v2/endpointkeys/Read | Získá klíče koncového bodu pro koncový bod. |
 > | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/QnAMaker.v2/endpointsettings/Read | Získá nastavení koncového bodu pro koncový bod. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/knowledgebases/Read | Získá seznam Knowledgebases nebo podrobností konkrétního knowledgebaser. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/knowledgebases/Download/Read | Stáhněte si znalostní báze. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/Action | GenerateAnswer volání pro dotaz na znalostní báze. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/alterations/Read | Stažení změn z modulu runtime. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/endpointkeys/Read | Získá klíče koncového bodu pro koncový bod. |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/TextAnalytics/QnAMaker/endpointsettings/Read | Získá nastavení koncového bodu pro koncový bod. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -5836,7 +5881,13 @@ Pojďme číst a testovat jenom znalostní báze. [Další informace](../cogniti
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/generateanswer/action",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/alterations/read",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointkeys/read",
-        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read"
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/alterations/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointsettings/read"
       ],
       "notDataActions": []
     }
@@ -5907,6 +5958,323 @@ Umožňuje číst a zobrazit seznam klíčů Cognitive Services. [Další inform
     }
   ],
   "roleName": "Cognitive Services User",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+## <a name="internet-of-things"></a>Internet věcí
+
+
+### <a name="device-update-administrator"></a>Správce aktualizace zařízení
+
+Poskytuje úplný přístup k operacím správy a obsahu. [Další informace](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Updates/Read | Provede operaci čtení související s aktualizacemi. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Updates/Write | Provede operaci zápisu související s aktualizacemi. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Updates/DELETE | Provede operaci odstranění související s aktualizacemi. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Management/Read | Provede operaci čtení související se správou. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Management/Write | Provede operaci zápisu související se správou. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Management/DELETE | Provede operaci odstranění související se správou. |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you full access to management and content operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/02ca0879-e8e4-47a5-a61e-5c618b76e64a",
+  "name": "02ca0879-e8e4-47a5-a61e-5c618b76e64a",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/write",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/delete",
+        "Microsoft.DeviceUpdate/accounts/instances/management/read",
+        "Microsoft.DeviceUpdate/accounts/instances/management/write",
+        "Microsoft.DeviceUpdate/accounts/instances/management/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-content-administrator"></a>Správce obsahu aktualizace zařízení
+
+Poskytuje úplný přístup k operacím s obsahem. [Další informace](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Updates/Read | Provede operaci čtení související s aktualizacemi. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Updates/Write | Provede operaci zápisu související s aktualizacemi. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Updates/DELETE | Provede operaci odstranění související s aktualizacemi. |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you full access to content operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0378884a-3af5-44ab-8323-f5b22f9f3c98",
+  "name": "0378884a-3af5-44ab-8323-f5b22f9f3c98",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/write",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Content Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-content-reader"></a>Čtenář obsahu aktualizace zařízení
+
+Poskytuje přístup pro čtení k operacím s obsahem, ale neumožňuje provádět změny. další [informace](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Updates/Read | Provede operaci čtení související s aktualizacemi. |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you read access to content operations, but does not allow making changes",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d1ee9a80-8b14-47f0-bdc2-f4a351625a7b",
+  "name": "d1ee9a80-8b14-47f0-bdc2-f4a351625a7b",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Content Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-deployments-administrator"></a>Správce nasazení aktualizací zařízení
+
+Poskytuje úplný přístup k operacím správy. [Další informace](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Management/Read | Provede operaci čtení související se správou. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Management/Write | Provede operaci zápisu související se správou. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Management/DELETE | Provede operaci odstranění související se správou. |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you full access to management operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e4237640-0e3d-4a46-8fda-70bc94856432",
+  "name": "e4237640-0e3d-4a46-8fda-70bc94856432",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/management/read",
+        "Microsoft.DeviceUpdate/accounts/instances/management/write",
+        "Microsoft.DeviceUpdate/accounts/instances/management/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Deployments Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-deployments-reader"></a>Čtečka nasazení aktualizací zařízení
+
+Poskytuje přístup pro čtení k operacím správy, ale neumožňuje provádět změny. další [informace](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Management/Read | Provede operaci čtení související se správou. |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you read access to management operations, but does not allow making changes",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/49e2f5d2-7741-4835-8efa-19e1fe35e47f",
+  "name": "49e2f5d2-7741-4835-8efa-19e1fe35e47f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/management/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Deployments Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-reader"></a>Čtenář aktualizace zařízení
+
+Poskytuje přístup pro čtení k operacím správy a obsahu, ale neumožňuje provádět změny. další [informace](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Updates/Read | Provede operaci čtení související s aktualizacemi. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/Accounts/Instances/Management/Read | Provede operaci čtení související se správou. |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you read access to management and content operations, but does not allow making changes",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f",
+  "name": "e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read",
+        "Microsoft.DeviceUpdate/accounts/instances/management/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -6596,6 +6964,55 @@ Umožňuje spravovat Azure Stack registrace.
 }
 ```
 
+### <a name="eventgrid-contributor"></a>Přispěvatel EventGrid
+
+Umožňuje správu operací EventGrid.
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/* | Vytváření a Správa prostředků Event Grid |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | *žádný* |  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage EventGrid operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/1e241071-0855-49ea-94dc-649edcd759de",
+  "name": "1e241071-0855-49ea-94dc-649edcd759de",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.EventGrid/*",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "EventGrid Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription Přispěvatel
 
 Umožňuje spravovat operace odběru událostí EventGrid. [Další informace](../event-grid/security-authorization.md)
@@ -6604,7 +7021,7 @@ Umožňuje spravovat operace odběru událostí EventGrid. [Další informace](.
 > | Akce | Popis |
 > | --- | --- |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
-> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* | Vytváření a Správa odběrů místních událostí |
 > | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/Read | Vypsat globální odběry událostí podle typu tématu |
 > | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/eventSubscriptions/Read | Výpis odběrů místních událostí |
 > | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/topicTypes/eventSubscriptions/Read | Výpis odběrů místních událostí podle TopicType |
@@ -8618,7 +9035,7 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Vytváření a Správa komponent Insights |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRules/* |  |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRuleAssociations/* |  |
-> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/EventTypes/* | Vypíše události protokolu aktivit (události správy) v předplatném. Toto oprávnění platí pro programový i portálový přístup k protokolu aktivit. |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/LogDefinitions/* | Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit prostřednictvím portálu. Vypíše kategorie protokolů v protokolu aktivit. |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricalerts/* |  |
@@ -9875,6 +10292,61 @@ Povolí přístup pro čtení k zásadám prostředků a k zápisu do událostí
     }
   ],
   "roleName": "Policy Insights Data Writer (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="quota-request-operator-role"></a>Role operátora žádosti o kvótu
+
+Umožňuje číst a vytvářet žádosti o kvóty, získat stav žádosti o kvótu a vytvořit lístky podpory. [Další informace](/rest/api/reserved-vm-instances/quotaapi)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/resourceProviders/Locations/serviceLimits/Read | Získá aktuální limit služby nebo kvótu zadaného prostředku a umístění. |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/resourceProviders/Locations/serviceLimits/Write | Vytvořit limit služby nebo kvótu pro zadaný prostředek a umístění |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/resourceProviders/Locations/serviceLimitsRequests/Read | Získat žádost o omezení služby pro zadaný prostředek a umístění |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/Register/Action | Zaregistruje poskytovatele prostředků kapacity a povolí vytváření prostředků kapacity. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | *žádný* |  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role to read and create Quota Requests and get Quota Request Status.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0e5f05e5-9ab9-446b-b98d-1e2157c94125",
+  "name": "0e5f05e5-9ab9-446b-b98d-1e2157c94125",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Capacity/resourceProviders/locations/serviceLimits/read",
+        "Microsoft.Capacity/resourceProviders/locations/serviceLimits/write",
+        "Microsoft.Capacity/resourceProviders/locations/serviceLimitsRequests/read",
+        "Microsoft.Capacity/register/action",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Quota Request Operator Role",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

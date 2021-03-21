@@ -9,10 +9,10 @@ ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038913"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Kurz: Konfigurace brány virtuální sítě pro ExpressRoute pomocí Azure Portal
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > - Vytvořte podsíť brány.
 > - Vytvořte bránu Virtual Network.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup pro tuto úlohu používá virtuální síť na základě hodnot v následujícím seznamu odkazů konfigurace. Tento seznam používáme v našem ukázkovém postupu. Seznam můžete zkopírovat pro použití jako odkaz a nahradit hodnoty vlastními.
 
@@ -80,7 +80,7 @@ Před zahájením konfigurace si můžete zobrazit [video](https://azure.microso
     | --------| ----- |
     | Předplatné | Ověřte, zda je vybráno správné předplatné. |
     | Skupina prostředků | Skupina prostředků se automaticky vybere po výběru virtuální sítě. | 
-    | Název | Pojmenujte bránu. To není totéž jako pojmenování podsítě brány. Jedná se o název objektu brány, který vytváříte.|
+    | Name | Pojmenujte bránu. To není totéž jako pojmenování podsítě brány. Jedná se o název objektu brány, který vytváříte.|
     | Oblast | Změňte pole **region** tak, aby odkazovalo na umístění, kde se nachází vaše virtuální síť. Pokud umístění neukazuje na oblast, ve které je vaše virtuální síť, tato virtuální síť se nezobrazí v rozevírací nabídce zvolit virtuální síť. |
     | Typ brány | Vybrat **ExpressRoute**|
     | SKU | Z rozevíracího seznamu vyberte SKU brány. |
