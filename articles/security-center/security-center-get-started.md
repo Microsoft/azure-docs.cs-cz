@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: memildin
 ms.openlocfilehash: 2f37a59d5db3883754b602b2b2525e07b57206b7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102099348"
 ---
 # <a name="quickstart-set-up-azure-security-center"></a>Rychlý Start: nastavení Azure Security Center
@@ -27,7 +27,7 @@ V této části se seznámíte se všemi doporučenými kroky pro povolení Azur
 > * Nastavení e-mailových oznámení pro výstrahy zabezpečení
 > * Vaše hybridní a multi-cloudové počítače připojené k Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 Pokud chcete povolit Azure Defender v rámci předplatného, musíte mít přiřazenou roli Vlastník předplatného, přispěvatele předplatného nebo správce zabezpečení.

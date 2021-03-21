@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
 ms.openlocfilehash: b0bdb3c09aead812e1c16f4d0d17aae58e141809
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99626789"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Kurz: Vytvoření, ladění, nasazení a upgrade aplikace Service Fabric Mesh s více službami
@@ -46,7 +46,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -309,7 +309,7 @@ Nahraďte obsah celého souboru následujícím kódem HTML, který definuje jed
 </div>
 ```
 
-Klikněte na ikonu rozevíracího seznamu v souboru **index. cshtml** v **Průzkumník řešení** a pak otevřete **index.cshtml.cs**.
+Klikněte na ikonu rozevíracího seznamu v souboru **index. cshtml** v **Průzkumník řešení** a pak otevřete **index. cshtml. cs**.
 
 Do horní části **Index.cshtml.cs** přidejte `using System.Net.Http;`
 

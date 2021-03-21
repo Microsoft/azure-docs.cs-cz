@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.openlocfilehash: 88a1524875f168b49f50f1684c650d5bc178bf38
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542656"
 ---
 # <a name="restart-azure-database-for-mysql-flexible-server-using-azure-portal"></a>Restartování Azure Database for MySQL flexibilního serveru pomocí Azure Portal
@@ -20,7 +20,7 @@ Pokud je služba zaneprázdněná, restart serveru se zablokuje. Například slu
 
 Čas potřebný k dokončení restartování závisí na procesu obnovení MySQL. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto průvodce budete potřebovat:
 - [Azure Database for MySQL flexibilní Server](quickstart-create-server-portal.md)
 

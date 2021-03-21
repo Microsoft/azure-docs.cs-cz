@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
 ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97763505"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Aktivační událost služby signalizace pro Azure Functions
@@ -171,11 +171,11 @@ def main(invocation) -> None:
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `SignalRTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový**| neuvedeno | Musí být nastaven na hodnotu `SignalRTrigger` .|
-|**směr**| neuvedeno | Musí být nastaven na hodnotu `in` .|
-|**Jméno**| neuvedeno | Název proměnné použitý v kódu funkce pro objekt kontextu vyvolání triggeru |
+|**textový**| Není k dispozici | Musí být nastaven na hodnotu `SignalRTrigger` .|
+|**směr**| Není k dispozici | Musí být nastaven na hodnotu `in` .|
+|**Jméno**| Není k dispozici | Název proměnné použitý v kódu funkce pro objekt kontextu vyvolání triggeru |
 |**hubName**|**HubName**| Tato hodnota musí být nastavená na název centra signalizace pro funkci, která se má aktivovat.|
 |**kategorií**|**Kategorie**| Tato hodnota musí být nastavena jako kategorie zpráv pro funkci, která má být aktivována. Kategorie může být jedna z následujících hodnot: <ul><li>**připojení**: včetně *připojených* a *odpojených* událostí</li><li>**zprávy**: včetně všech ostatních událostí kromě těch v kategorii *připojení*</li></ul> |
 |**událostí**|**Událost**| Tato hodnota musí být nastavena jako událost zpráv pro funkci, která má být aktivována. Pro kategorii *zprávy* je událost *cílem* ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) , kterou klienti odesílají. Pro kategorii *připojení* se používá pouze *připojeno* a *Odpojeno* . |
@@ -190,10 +190,10 @@ Vstupní typ triggeru je deklarován jako `InvocationContext` nebo vlastní typ.
 
 InvocationContext obsahuje veškerý obsah ve zprávě odesílané ze služby signalizace.
 
-|Vlastnost v InvocationContext | Popis|
+|Vlastnost v InvocationContext | Description|
 |------------------------------|------------|
-|Arguments| K dispozici pro kategorii *zpráv* . Obsahuje *argumenty* ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) .|
-|Chybová| K dispozici pro *odpojenou* událost. Může být prázdné, pokud připojení bylo ukončeno bez chyby nebo obsahuje chybové zprávy.|
+|Argumenty| K dispozici pro kategorii *zpráv* . Obsahuje *argumenty* ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) .|
+|Chyba| K dispozici pro *odpojenou* událost. Může být prázdné, pokud připojení bylo ukončeno bez chyby nebo obsahuje chybové zprávy.|
 |Rozbočovač| Název centra, do kterého zpráva patří|
 |Kategorie| Kategorie zprávy|
 |Událost| Událost zprávy|

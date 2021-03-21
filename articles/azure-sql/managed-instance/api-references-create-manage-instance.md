@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: cf100861705bf1654b7206445c884b5fe315b06d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792629"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Referenční informace ke spravovanému rozhraní API pro službu Azure SQL Managed Instance
@@ -85,7 +85,7 @@ Chcete-li vytvořit a konfigurovat databáze instancí po vytvoření spravovan�
 
 | Příkaz | Popis |
 | --- | --- |
-|[VYTVOŘIT DATABÁZI](/sql/t-sql/statements/create-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current)|Vytvoří novou instanci databáze ve spravované instanci SQL. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
+|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current)|Vytvoří novou instanci databáze ve spravované instanci SQL. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current) |Upraví databázi instance ve spravované instanci SQL.|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: vytváření a konfigurace spravovaných instancí

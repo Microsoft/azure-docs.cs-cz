@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
 ms.openlocfilehash: 3cfcf57f455a5c3b17b794acf2ded66ed2285eff
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94873501"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby Signal
@@ -107,7 +107,7 @@ Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](sig
     K tomuto tajnému kódu se dostanete pomocí konfiguračního rozhraní API. Dvojtečka (:) funguje v názvu konfigurace s rozhraním API konfigurace na všech podporovaných platformách. Viz [Konfigurace podle prostředí](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. Otevřete *Startup.cs* a aktualizujte `ConfigureServices` metodu pro použití služby signalizace Azure voláním `AddSignalR()` metod a `AddAzureSignalR()` :
+4. Otevřete *Startup. cs* a aktualizujte `ConfigureServices` metodu, aby používala službu Azure Signal Service, voláním `AddSignalR()` `AddAzureSignalR()` metod a:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -119,7 +119,7 @@ Máte problémy? Vyzkoušejte si [příručku pro odstraňování potíží](sig
 
     Když nepředá parametr do `AddAzureSignalR()` , tento kód použije výchozí konfigurační klíč pro připojovací řetězec prostředků služby Signal. Výchozí konfigurační klíč je *Azure: signaler: ConnectionString*.
 
-5. V *Startup.cs* aktualizujte `Configure` metodu tak, že ji nahradíte následujícím kódem.
+5. V části *Startup. cs* aktualizujte `Configure` metodu tak, že ji nahradíte následujícím kódem.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -142,9 +142,9 @@ V nástroji Signal je rozbočovač základní komponentou, která zveřejňuje s
 
 Obě metody používají `Clients` rozhraní, které poskytuje sada SDK signalizace ASP.NET Core. Toto rozhraní vám umožní přístup ke všem připojeným klientům, takže můžete nabízet obsah vašim klientům.
 
-1. Do adresáře vašeho projektu přidejte novou složku *Hub*. Do nové složky přidejte nový soubor s kódem centra s názvem *ChatHub.cs* .
+1. Do adresáře vašeho projektu přidejte novou složku *Hub*. Přidejte nový soubor s kódem centra s názvem *ChatHub. cs* do nové složky.
 
-2. Přidáním následujícího kódu do *ChatHub.cs* Definujte třídu centra a uložte soubor.
+2. Přidejte následující kód do souboru *ChatHub. cs* a Definujte třídu centra a uložte soubor.
 
     Aktualizujte obor názvů pro tuto třídu, pokud jste použili název projektu, který se liší od *signalizace. Mvc*.
 

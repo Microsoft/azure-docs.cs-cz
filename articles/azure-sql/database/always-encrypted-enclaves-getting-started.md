@@ -12,10 +12,10 @@ ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
 ms.openlocfilehash: 809ac72977b670faff984ad39effb1c70767e141
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120942"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Kurz: Začínáme s Always Encrypted s využitím zabezpečených enclaves v Azure SQL Database
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte, jak začít s [Always Encrypted s využitím zabezpe
 > - Postup vytvoření prostředí pro testování a vyhodnocení Always Encrypted pomocí zabezpečeného enclavesu.
 > - Jak šifrovat data na místě a vydávat bohatě důvěrné dotazy proti šifrovaným sloupcům pomocí SQL Server Management Studio (SSMS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz vyžaduje Azure PowerShell a [SSMS](/sql/ssms/download-sql-server-management-studio-ssms).
 

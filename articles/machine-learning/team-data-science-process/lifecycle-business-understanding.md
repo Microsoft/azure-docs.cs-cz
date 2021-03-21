@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76710329"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Fáze životního cyklu pracovního procesu vědeckého zpracování dat týmu
@@ -44,7 +44,7 @@ V této fázi jsou řešeny dva hlavní úkoly:
    * **Identifikace zdrojů dat**: Najděte relevantní data, která vám pomohou zodpovědět otázky definující cíle projektu.
 
 ### <a name="define-objectives"></a>Definování cílů
-1. Hlavním cílem tohoto kroku je určit klíčové obchodní proměnné, které analýza potřebuje k předpovědi. Tyto proměnné odkazujeme jako *cíle modelu*a k určení úspěchu projektu používáme metriky, které jsou k nim přidružené. Dva příklady takových cílů jsou předpovědi prodeje nebo pravděpodobnost, že je objednávka falešná.
+1. Hlavním cílem tohoto kroku je určit klíčové obchodní proměnné, které analýza potřebuje k předpovědi. Tyto proměnné odkazujeme jako *cíle modelu* a k určení úspěchu projektu používáme metriky, které jsou k nim přidružené. Dva příklady takových cílů jsou předpovědi prodeje nebo pravděpodobnost, že je objednávka falešná.
 
 2. Definujte cíle projektu tak, že si vyžádáte a Projasněte "ostré" otázky, které jsou relevantní, specifické a jednoznačné. Data vědu je proces, který používá názvy a čísla k zodpovězení těchto otázek. K zodpovězení pěti typů otázek obvykle používáte datové vědy nebo strojové učení:
  
@@ -60,7 +60,7 @@ V této fázi jsou řešeny dva hlavní úkoly:
 
 4. Definujte metriky úspěchu. Můžete například chtít dosáhnout předpovědi změn zákazníků. Na konci tohoto měsíčního projektu budete potřebovat míru přesnosti "x" procent. Pomocí těchto dat můžete nabídnout propagační akce zákazníků a snížit tak případné změny. Metriky musí být **inteligentní**: 
 
-   * **S**určitá 
+   * **S** určitá 
    * Easurable **M**
    * **Chievable** 
    * Elevant jazyka **R** 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Kurz: Azure Active Directory integrace s TOPdesk – Public
@@ -97,7 +97,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4.  Pokud máte **soubor metadat poskytovatele služeb**v **základní části Konfigurace SAML** , proveďte následující kroky:
+4.  Pokud máte **soubor metadat poskytovatele služeb** v **základní části Konfigurace SAML** , proveďte následující kroky:
 
     >[!NOTE]
     >**Soubor metadat poskytovatele služeb** získáte z oddílu **Konfigurace jednotného přihlašování TopDesk** , který se vysvětluje později v tomto kurzu.
@@ -185,11 +185,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-
     
     ![Pomocník pro konfiguraci SAML](./media/topdesk-public-tutorial/ic790608.png "Pomocník pro konfiguraci SAML")
     
-    a. Pokud chcete nahrát stažený soubor metadat z Azure Portal, klikněte v části **federační metadata**na **Procházet**.
+    a. Pokud chcete nahrát stažený soubor metadat z Azure Portal, klikněte v části **federační metadata** na **Procházet**.
 
     b. Pokud chcete nahrát soubor certifikátu, klikněte v části **certifikát (RSA)** na **Procházet**.
 
-    c. Pokud chcete nahrát soubor loga, který jste dostali z týmu podpory TOPdesk, klikněte v části **ikona loga**na **Procházet**.
+    c. Pokud chcete nahrát soubor loga, který jste dostali z týmu podpory TOPdesk, klikněte v části **ikona loga** na **Procházet**.
 
     d. Do textového pole **atributu uživatelského jména** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
@@ -201,7 +201,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -225,7 +225,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k TOPdesk veřejnému.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **TopDesk-Public**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **TopDesk-Public**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -257,7 +257,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k TOPdesk veřejnému, musí se 
 
 2. V nabídce v horní části klikněte na **TopDesk \> nové \> soubory podpory \> osoba**.
    
-    ![Osoba](./media/topdesk-public-tutorial/ic790628.png "Osoba")
+    ![Person (Osoba)](./media/topdesk-public-tutorial/ic790628.png "Person (Osoba)")
 
 3. V dialogovém okně Nová osoba proveďte následující kroky:
    
@@ -280,7 +280,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici TOPdesk-Public na přístupovém panelu, měli byste se automaticky přihlásit k TOPdesk – veřejnému, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
