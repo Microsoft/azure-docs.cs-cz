@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88117732"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Volání služeb pro službu, která používají delegovanou identitu uživatele v toku za jménem
@@ -51,12 +51,12 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 
 ### <a name="register-the-middle-tier-service"></a>Registrace služby střední vrstvy
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a v seznamu **adresář** vyberte klienta Active Directory pro vaši aplikaci.
 1. V levém podokně vyberte **Další služby** a zvolte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací** a pak **novou registraci**.
 1. Zadejte popisný název aplikace a vyberte typ aplikace.
-1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 1. Nastavte identifikátor URI přesměrování na základní adresu URL.
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. V Azure Portal zvolte aplikaci a vyberte **certifikáty & tajné klíče**.
@@ -69,15 +69,15 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 
 ### <a name="register-the-client-application"></a>Registrace klientské aplikace
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a v seznamu **adresář** vyberte klienta Active Directory pro vaši aplikaci.
 1. V levém podokně vyberte **Další služby** a zvolte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací** a pak **novou registraci**.
 1. Zadejte popisný název aplikace a vyberte typ aplikace.
-1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
+1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 1. Nastavte identifikátor URI přesměrování na základní adresu URL.
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
-1. Nakonfigurujte oprávnění pro vaši aplikaci. V okně **oprávnění rozhraní API**vyberte **Přidat oprávnění** a pak **Moje rozhraní API**.
+1. Nakonfigurujte oprávnění pro vaši aplikaci. V okně **oprávnění rozhraní API** vyberte **Přidat oprávnění** a pak **Moje rozhraní API**.
 1. Do textového pole zadejte název služby střední vrstvy.
 1. Zvolte **vybrat oprávnění** a pak vyberte rozsah, který jste vytvořili v posledním kroku registrace střední vrstvy.
 
@@ -111,7 +111,7 @@ Při použití sdíleného tajného klíče obsahuje požadavek na přístupový
 | Neplatný |vyžadováno | Hodnota přístupového tokenu použitého v žádosti |
 | client_id |vyžadováno | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
 | client_secret |vyžadováno | Klíč zaregistrovaný pro volající službu ve službě Azure AD. Tato hodnota by se měla poznamenat v době registrace. |
-| prostředek |vyžadováno | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
+| prostředek |vyžadováno | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení** a pak vyberte **vlastnosti**. |
 | requested_token_use |vyžadováno | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
 | scope |vyžadováno | Mezerou oddělený seznam oborů pro požadavek na token. Pro OpenID Connect se musí zadat obor **OpenID** .|
 
@@ -146,7 +146,7 @@ Požadavek na přístupový token služby na službu s certifikátem obsahuje n�
 | client_id |vyžadováno | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
 | client_assertion_type |vyžadováno |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |vyžadováno | JSON Web Token, kterou vytvoříte a podepíšete pomocí certifikátu, který jste zaregistrovali jako přihlašovací údaje pro vaši aplikaci. Informace o formátu kontrolního výrazu a o tom, jak svůj certifikát zaregistrovat, najdete v tématu  [přihlašovací údaje k certifikátu](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .|
-| prostředek |vyžadováno | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
+| prostředek |vyžadováno | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení** a pak vyberte **vlastnosti**. |
 | requested_token_use |vyžadováno | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
 | scope |vyžadováno | Mezerou oddělený seznam oborů pro požadavek na token. Pro OpenID Connect se musí zadat obor **OpenID** .|
 
@@ -255,7 +255,7 @@ Požadavek služby na službu pro kontrolní výraz SAML obsahuje následující
 | Neplatný |vyžadováno | Hodnota přístupového tokenu použitého v žádosti|
 | client_id |vyžadováno | ID aplikace přiřazené volající službě během registrace ve službě Azure AD. Chcete-li najít ID aplikace v Azure Portal, vyberte možnost **Active Directory**, zvolte adresář a pak vyberte název aplikace. |
 | client_secret |vyžadováno | Klíč zaregistrovaný pro volající službu ve službě Azure AD. Tato hodnota by se měla poznamenat v době registrace. |
-| prostředek |vyžadováno | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Toto je prostředek, který bude cílovou skupinou tokenu SAML. Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
+| prostředek |vyžadováno | Identifikátor URI ID aplikace přijímající služby (zabezpečeného prostředku) Toto je prostředek, který bude cílovou skupinou tokenu SAML. Identifikátor URI ID aplikace v Azure Portal najdete tak, že vyberete **Active Directory** a zvolíte adresář. Vyberte název aplikace, zvolte **všechna nastavení** a pak vyberte **vlastnosti**. |
 | requested_token_use |vyžadováno | Určuje, jak se má požadavek zpracovat. V toku musí být hodnota **on_behalf_of**. |
 | requested_token_type | vyžadováno | Určuje typ požadovaného tokenu. Hodnota může být **urn: IETF: params: OAuth: token-Type: typu Saml2** nebo **urn: IETF: parametr: OAuth: token-Type: saml1** v závislosti na požadavcích na prostředek, který je k dispozici. |
 

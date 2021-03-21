@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ab613c251bc43a025e0381046805ec998a04227
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77019549"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>Rychlý Start – využívání virtuálních počítačů VMware v Azure
@@ -41,8 +41,8 @@ Vytvořte virtuální počítač v privátním cloudu z uživatelského rozhran�
     | Pole | Popis |
     | ------------ | ------------- |
     | Předplatné | Předplatné Azure přidružené k vašemu privátnímu cloudu.  |
-    | Resource Group | Skupina prostředků, ke které se virtuální počítač přiřadí. Můžete vybrat existující skupinu nebo vytvořit novou. |
-    | Název | Název, který identifikuje virtuální počítač.  |
+    | Skupina prostředků | Skupina prostředků, ke které se virtuální počítač přiřadí. Můžete vybrat existující skupinu nebo vytvořit novou. |
+    | Name | Název, který identifikuje virtuální počítač.  |
     | Umístění | Oblast Azure, ve které je tento virtuální počítač hostovaný.  |
     | Privátní cloud | CloudSimple privátní cloud, ve kterém chcete vytvořit virtuální počítač. |
     | Fond zdrojů | Namapovaný fond zdrojů pro virtuální počítač. Vyberte z dostupných fondů zdrojů. |
@@ -75,7 +75,7 @@ Vytvořte virtuální počítač v privátním cloudu z uživatelského rozhran�
     | Název | Zadejte název pro identifikaci disku.  |
     | Velikost | Vyberte jednu z dostupných velikostí.  |
     | Řadič SCSI | Vyberte řadič SCSI pro disk.  |
-    | Mode | Určuje, jak se disk podílí na snímcích. Vyberte jednu z těchto možností: <br> -Nezávislá trvalá: všechna data zapsaná na disk se napíší trvale.<br> Nezávislé na netrvalé: změny zapsané na disk se zahodí při vypnutí nebo resetování virtuálního počítače.  Nezávislý režim bez trvalého režimu umožňuje vždy restartovat virtuální počítač ve stejném stavu. Další informace najdete v <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">dokumentaci k VMware</a>.
+    | Režim | Určuje, jak se disk podílí na snímcích. Vyberte jednu z těchto možností: <br> -Nezávislá trvalá: všechna data zapsaná na disk se napíší trvale.<br> Nezávislé na netrvalé: změny zapsané na disk se zahodí při vypnutí nebo resetování virtuálního počítače.  Nezávislý režim bez trvalého režimu umožňuje vždy restartovat virtuální počítač ve stejném stavu. Další informace najdete v <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">dokumentaci k VMware</a>.
 
 7. Po dokončení ověření zkontrolujte nastavení a klikněte na **vytvořit**. Chcete-li provést změny, klikněte na karty v horní části nebo na tlačítko.
 

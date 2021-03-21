@@ -15,21 +15,21 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021856"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Nasazení StorSimple Virtual Array pro program poskytovatele Cloud Solution Provider
 
 ## <a name="overview"></a>Přehled
 
-StorSimple Virtual Array může být nasazeno partnery poskytovatele Cloud Solution Provider (CSP) pro své zákazníky. Partner CSP může vytvořit službu StorSimple Device Manager. Tato služba se pak dá použít k nasazení a správě virtuálního pole StorSimple a přidružených sdílených složek, svazků a záloh.
+StorSimple Virtual Array může být nasazeno partnery poskytovatele Cloud Solution Provider (CSP) pro své zákazníky. Partner CSP může vytvořit službu StorSimple Správce zařízení. Tato služba se pak dá použít k nasazení a správě virtuálního pole StorSimple a přidružených sdílených složek, svazků a záloh.
 
 Tento článek popisuje, jak může partner CSP přidat zákazníka nebo nové předplatné stávajícímu zákazníkovi a pak vytvořit službu pro nasazení StorSimple virtuálního pole v CSP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že:
 
@@ -68,9 +68,9 @@ Pokud přidáte zákazníka, vytvoří se předplatné automaticky. Chcete-li p�
 
     ![Přihlášení k webu Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple Device Manager vytvoříte tak, že kliknete na **+ Nový** a vyhledáte nebo přejdete na **řady virtuálních zařízení StorSimple**. Další informace najdete v [nasazení služby StorSimple Device Manager](storsimple-virtual-array-manage-service.md).
+8. StorSimple Správce zařízení vytvoříte tak, že kliknete na **+ Nový** a vyhledáte nebo přejdete na **řady virtuálních zařízení StorSimple**. Další informace najdete v [nasazení služby StorSimple Správce zařízení](storsimple-virtual-array-manage-service.md).
 
-    ![Vytvořit službu StorSimple Device Manager](./media/storsimple-partner-csp-deploy/image8.png)
+    ![Vytvořit službu StorSimple Správce zařízení](./media/storsimple-partner-csp-deploy/image8.png)
 
 
 ## <a name="add-a-subscription"></a>Přidání předplatného
@@ -97,9 +97,9 @@ V některých případech je možné, že máte existujícího zákazníka a pot
 
     ![Přihlášení k webu Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple Device Manager vytvoříte tak, že kliknete na **+ Nový** a vyhledáte nebo přejdete na **řady virtuálních zařízení StorSimple**. Další informace najdete v [nasazení služby StorSimple Device Manager](storsimple-virtual-array-manage-service.md).
+8. StorSimple Správce zařízení vytvoříte tak, že kliknete na **+ Nový** a vyhledáte nebo přejdete na **řady virtuálních zařízení StorSimple**. Další informace najdete v [nasazení služby StorSimple Správce zařízení](storsimple-virtual-array-manage-service.md).
 
-    ![Vytvořit službu StorSimple Device Manager](./media/storsimple-partner-csp-deploy/image8.png)
+    ![Vytvořit službu StorSimple Správce zařízení](./media/storsimple-partner-csp-deploy/image8.png)
 
 ## <a name="next-steps"></a>Další kroky
 

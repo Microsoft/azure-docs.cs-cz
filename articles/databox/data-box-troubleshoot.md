@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
 ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92124670"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Řešení potíží souvisejících se Azure Data Box a Azure Data Box Heavy
@@ -25,7 +25,7 @@ Informace v tomto článku se nevztahují na objednávky exportu vytvořené pro
 
 Chyby v Data Box a Data Box Heavy jsou shrnuty takto:
 
-| Kategorie chyby *        | Popis        | Doporučená akce    |
+| Kategorie chyby *        | Description        | Doporučená akce    |
 |----------------------------------------------|---------|--------------------------------------|
 | Názvy kontejnerů nebo sdílených složek | Názvy kontejnerů nebo sdílených složek nedodržují pravidla pro pojmenování Azure.  |Stažení seznamů chyb. <br> Přejmenujte kontejnery nebo sdílené složky. [Další informace](#container-or-share-name-errors).  |
 | Omezení velikosti kontejneru nebo sdílení | Celkový objem dat v kontejnerech nebo sdílených složkách překračuje limit Azure.   |Stažení seznamů chyb. <br> Snižte celkový objem dat v kontejneru nebo sdílené složce. [Další informace](#container-or-share-size-limit-errors).|
@@ -104,7 +104,7 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
 - Na stránce připojit a kopírovat místního webového uživatelského rozhraní si stáhněte a zkontrolujte soubory s chybami a Identifikujte názvy složek s problémy. 
 - Přejmenujte adresář nebo kontejnery, abyste měli jistotu, že jsou kompatibilní se zásadami vytváření názvů Azure.
 
-Další informace najdete v tématu Zásady vytváření názvů Azure pro [adresáře](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   a [kontejnery](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
+Další informace najdete v tématu Zásady vytváření názvů Azure pro [adresáře](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) a [kontejnery](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
 
 ## <a name="container-or-share-size-limit-errors"></a>Počet chyb omezení velikosti kontejneru nebo sdílení
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: e7e63edb1e91f07504154cacfcf3d43d3bb310a2
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: c54ec2cc6e17d9693e25f1471922da8c7c023e36
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564918"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602822"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-managed-instance"></a>Průvodce migrací: spravovaná instance Oracle do Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ V této příručce se naučíte migrovat schémata Oracle do spravované instan
 
 Další scénáře najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K migraci schématu Oracle do spravované instance SQL potřebujete: 
 
@@ -50,11 +50,26 @@ K vytvoření posouzení použijte následující postup:
 1. Otevřete [Pomocník s migrací SQL serveru pro Oracle](https://www.microsoft.com/en-us/download/details.aspx?id=54258). 
 1. Vyberte **soubor** a pak zvolte **Nový projekt**. 
 1. Zadejte název projektu, umístění pro uložení projektu a potom z rozevíracího seznamu vyberte Azure SQL Managed instance jako cíl migrace. Vyberte **OK**.
-1. Do dialogového okna připojit k **připojení k systému Oracle** zadejte hodnoty pro podrobnosti o připojení Oracle.
+
+   ![Nový projekt](./media/oracle-to-managed-instance-guide/new-project.png)
+
+1. Vyberte **připojit se k Oracle**. V dialogovém okně **připojit k systému Oracle** zadejte v části hodnoty pro informace o připojení Oracle.
+
+   ![Připojení k Oracle](./media/oracle-to-managed-instance-guide/connect-to-oracle.png)
+
+   Vyberte schéma Oracle, které chcete migrovat: 
+
+   ![Výběr schématu Oracle](./media/oracle-to-managed-instance-guide/select-schema.png)
+
 1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle, které chcete migrovat, a pak zvolte **vytvořit sestavu**. Tím se vygeneruje sestava HTML. Alternativně můžete zvolit možnost **vytvořit sestavu** z navigačního panelu po výběru databáze.
+
+   ![Vytvořit sestavu](./media/oracle-to-managed-instance-guide/create-report.png)
+
 1. Projděte si zprávu HTML, abyste pochopili statistiku převodu a případné chyby nebo upozornění. Sestavu můžete také otevřít v aplikaci Excel a získat tak inventarizaci objektů Oracle a úsilí potřebného k provádění převodů schématu. Výchozí umístění sestavy je ve složce sestavy v rámci SSMAProjects.
 
    Příklad: `drive:\<username>\Documents\SSMAProjects\MyOracleMigration\report\report_2020_11_12T02_47_55\`
+
+   ![Sestava posouzení](./media/oracle-to-managed-instance-guide/assessment-report.png)
 
 
 ### <a name="validate-data-types"></a>Ověřit datové typy
@@ -64,6 +79,9 @@ Ověřte výchozí mapování datových typů a podle potřeby je změňte podle
 1. V nabídce vyberte **nástroje** . 
 1. Vyberte **nastavení projektu**. 
 1. Vyberte kartu **mapování typů** . 
+
+   ![Mapování typů](./media/oracle-to-managed-instance-guide/type-mappings.png)
+
 1. Mapování typů pro každou tabulku můžete změnit tak, že vyberete tabulku v **Průzkumníku metadat Oracle**.
 
 ### <a name="convert-schema"></a>Převést schéma
@@ -75,8 +93,21 @@ K převedení schématu použijte následující postup:
     1. Zadejte podrobnosti připojení pro připojení databáze ve spravované instanci Azure SQL.
     1. Z rozevíracího seznamu vyberte cílovou databázi.
     1. Vyberte **Connect** (Připojit).
-1. Klikněte pravým tlačítkem na schéma a pak zvolte **převést schéma**. Alternativně můžete po výběru schématu vybrat možnost **převést schéma** z horního navigačního panelu.
+
+    ![Připojení ke spravované instanci SQL](./media/oracle-to-managed-instance-guide/connect-to-sql-managed-instance.png)
+
+1. V **Průzkumníku metadat Oracle** klikněte pravým tlačítkem na schéma Oracle a pak zvolte **převést schéma**. Alternativně můžete po výběru schématu vybrat možnost **převést schéma** z horního navigačního panelu.
+
+   ![Převést schéma](./media/oracle-to-managed-instance-guide/convert-schema.png)
+
 1. Po dokončení převodu Porovnejte a zkontrolujte převedené objekty s původními objekty k identifikaci potenciálních problémů a jejich řešení na základě doporučení.
+
+   ![Porovnat doporučení pro tabulku](./media/oracle-to-managed-instance-guide/table-comparison.png)
+
+   Porovnejte převedený text Transact-SQL s původními uloženými procedurami a Projděte si doporučení: 
+
+   ![Porovnání doporučení k procedurám](./media/oracle-to-managed-instance-guide/procedure-comparison.png)
+
 1. Uložte projekt místně pro práci offline schématu pro nápravu. V nabídce **soubor** vyberte **Uložit projekt** .
 
 ## <a name="migrate"></a>Migrate
@@ -86,10 +117,26 @@ Po dokončení vyhodnocení databází a vyřešení případných rozporů je d
 K publikování schématu a migraci dat použijte následující postup:
 
 1. Publikování schématu: klikněte pravým tlačítkem na databázi z uzlu **databáze** v **Průzkumníku metadat spravované instance Azure SQL** a vyberte **synchronizovat s databází**.
+
+   ![Synchronizovat s databází](./media/oracle-to-managed-instance-guide/synchronize-with-database.png)
+
+   Zkontrolujte mapování mezi zdrojovým projektem a vaším cílem:
+
+   ![Synchronizace s kontrolou databáze](./media/oracle-to-managed-instance-guide/synchronize-with-database-review.png)
+
 1. Migrace dat: klikněte pravým tlačítkem na schéma v **Průzkumníku metadat Oracle** a vyberte **migrovat data**. 
+
+   ![Migrace dat](./media/oracle-to-managed-instance-guide/migrate-data.png)
+
 1. Zadejte podrobnosti o připojení pro Oracle i pro spravovanou instanci SQL Azure.
 1. Zobrazit **sestavu migrace dat**
+
+   ![Sestava migrace dat](./media/oracle-to-managed-instance-guide/data-migration-report.png)
+
 1. Připojte se ke spravované instanci SQL Azure pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a ověřte migraci kontrolou dat a schématu.
+
+   ![Ověřit v SSMA](./media/oracle-to-managed-instance-guide/validate-data.png)
+
 
 Případně můžete k provedení migrace použít taky služba SSIS (SQL Server Integration Services) (SSIS). Další informace najdete v následujících tématech: 
 

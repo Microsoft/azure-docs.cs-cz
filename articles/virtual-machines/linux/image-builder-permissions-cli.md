@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: eb4fe102407bf519c9253ac7da39178ad8cacb0c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201477"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607513"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurace oprávnění služby Azure image Builder pomocí Azure CLI
 
@@ -239,7 +239,7 @@ Nahraďte následující zástupné nastavení:
 | \<Storage account container\> | Název kontejneru účtu úložiště |
 | \<Subscription ID\> | Předplatné Azure |
 
-Další informace o uživatelsky přiřazené spravované identitě najdete v tématu [Vytvoření vlastní image, která bude používat spravovanou identitu Azure User-Assigned k bezproblémové přístupu k souborům Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity). Tento rychlý Start vás provede vytvořením a konfigurací spravované identity přiřazené uživatelem pro přístup k účtu úložiště.
+Další informace o uživatelsky přiřazené spravované identitě najdete v tématu [Vytvoření vlastní image, která bude používat spravovanou identitu Azure User-Assigned k bezproblémové přístupu k souborům Azure Storage](./image-builder-user-assigned-identity.md). Tento rychlý Start vás provede vytvořením a konfigurací spravované identity přiřazené uživatelem pro přístup k účtu úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 

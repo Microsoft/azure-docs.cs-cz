@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
 ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100530735"
 ---
 # <a name="examine-the-video-indexer-output"></a>Kontrola výstupu Video Indexer
@@ -53,7 +53,7 @@ Další informace najdete v tématu [zobrazení a Úprava videí s přehledem](v
 
 ## <a name="root-elements-of-the-insights"></a>Kořenové prvky přehledů
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |accountId|ID účtu v seznamu testů|
 |id|ID seznamu testů.|
@@ -113,7 +113,7 @@ V této části se zobrazuje souhrn přehledů.
 
 ## <a name="videos"></a>videa
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |accountId|ID účtu videa VI|
 |id|ID videa|
@@ -219,7 +219,7 @@ instance|Seznam časových rozsahů tohoto bloku|
 
 #### <a name="transcript"></a>záznamy
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID řádku|
 |text|Samotný přepis.|
@@ -266,7 +266,7 @@ Příklad:
 
 #### <a name="ocr"></a>OCR
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID řádku OCR|
 |text|Text OCR|
@@ -301,7 +301,7 @@ Příklad:
 
 #### <a name="keywords"></a>klíčová slova
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID klíčového slova.|
 |text|Text klíčového slova|
@@ -336,7 +336,7 @@ Příklad:
 
 Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá rozhraní API pro rozpoznávání tváře na všech snímcích videa k detekci plošek a celebrit.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID obličeje|
 |name|Název obličeje. Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
@@ -381,7 +381,7 @@ Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá r
 
 #### <a name="labels"></a>popisky
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID popisku|
 |name|Název popisku (například "Computer", "TV").|
@@ -440,7 +440,7 @@ Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá r
 
 #### <a name="scenes"></a>pozadí
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID scény|
 |instance|Seznam časových rozsahů této scény (scéna může mít jenom 1 instanci).|
@@ -473,7 +473,7 @@ Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá r
 
 #### <a name="shots"></a>řizování
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID snímku|
 |Klíčové snímky|Seznam klíčových snímků v rámci snímku (každý má ID a seznam časových rozsahů instancí). Každá instance klíčového snímku má pole thumbnailId, které obsahuje ID miniatury klíčového snímku.|
@@ -523,7 +523,7 @@ Pokud jsou k dispozici plošky (ne animované znaky), Video Indexer používá r
 
 Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo video optického rozpoznávání. Nezahrnuje vizuální rozpoznávání značek nebo rozpoznávání loga.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID značky|
 |name|Název značek.|
@@ -582,7 +582,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 
 #### <a name="statistics"></a>týkají
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |CorrespondenceCount|Počet korespondencí ve videu.|
 |SpeakerWordCount|Počet slov na mluvčí.|
@@ -592,7 +592,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 
 #### <a name="audioeffects-public-preview"></a>audioEffects (Public Preview)
 
-|Název|Popis
+|Název|Description
 |---|---|
 |id|ID zvukového efektu|
 |typ|Typ zvukového efektu|
@@ -623,7 +623,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 
 Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální/záporné). Například 0-0,1, 0,1-0,2.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID mínění|
 |averageScore |Průměr všech skóre všech instancí tohoto typu mínění-kladný/neutrální/záporný|
@@ -662,7 +662,7 @@ Blok visualContentModeration obsahuje časové rozsahy, které Video Indexer nal
 
 K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikantní, a to pouze pro privátní zobrazení. Uživatelé mají možnost Odeslat žádost o revizi obsahu. v takovém případě bude atribut pro dospělé obsahovat výsledek lidské recenze.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID moderování vizuálního obsahu.|
 |adultScore|Skóre dospělého (od moderátora obsahu).|
@@ -698,7 +698,7 @@ K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikant
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID moderování textového obsahu|
 |bannedWordsCount |Počet zakázaných slov.|
@@ -708,7 +708,7 @@ K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikant
 
 Video Indexer identifikuje emoce na základě hlasových a zvukových pomůcek. Identifikující emoce můžou být: radost, smutek, hněv nebo strach.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID emoce|
 |typ|Moment, který byl identifikován v závislosti na řeči a zvukové pomůcky. Emoce můžou být: radost, smutek, hněv nebo strach.|
@@ -798,7 +798,7 @@ Video Indexer identifikuje emoce na základě hlasových a zvukových pomůcek. 
 
 Video Indexer vytváří odvození hlavních témat z přepisů. Pokud je to možné, je zahrnutá taxonomie [IPTC](https://iptc.org/standards/media-topics/) na druhé úrovni. 
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID tématu|
 |name|Název tématu, například: "farmaceutické".|
@@ -841,7 +841,7 @@ Video Indexer vytváří odvození hlavních témat z přepisů. Pokud je to mo�
 
 #### <a name="speakers"></a>mluvčích
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |id|ID mluvčího.|
 |name|Název mluvčího ve formě "mluvčího", *<number>* například: "mluvčí #1".|

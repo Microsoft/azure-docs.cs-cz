@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2020
 ms.openlocfilehash: b766ce248a3543ef3323e026d760e550a0e3dd75
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386675"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
@@ -23,7 +23,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory
 >[!TIP]
 >Pokud chcete získat přehled o celkové podpoře pro integraci dat v programu, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobným úvodem na jednotlivé konektory SAP, comparsion a doprovodné materiály.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento SAP Business Warehouse prostřednictvím konektoru open hub se podporuje pro následující činnosti:
 
@@ -71,7 +71,7 @@ V pracovním úložišti dat (jako je Azure Blob ve výše uvedeném diagramu) o
 
 Pro správné zpracování rozdílů není povoleno mít ID žádosti z různých DTPs ve stejné otevřené tabulce hub. Proto nesmíte pro každé místo v otevřeném centru (OHD) vytvořit více než jednu DTP. Pokud budete potřebovat úplnou a rozdílovou extrakci ze stejného InfoProvider, měli byste vytvořit dvě OHDs pro stejné InfoProvider. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít tento konektor pro SAP Business Warehouse, musíte:
 

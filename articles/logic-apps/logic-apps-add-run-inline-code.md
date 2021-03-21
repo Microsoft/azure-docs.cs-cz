@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98179601"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Přidat a spustit fragmenty kódu pomocí vloženého kódu v Azure Logic Apps
@@ -37,7 +37,7 @@ V tomto článku se ukázková aplikace logiky aktivuje při přijetí nového e
 
 ![Snímek obrazovky, který ukazuje ukázkovou aplikaci logiky](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -279,7 +279,7 @@ Pokud vyberete možnost **Akce**, budete vyzváni k zadání akcí, které chcet
 
 1. Chcete-li přidat další akci, vyberte možnost **Přidat novou položku**.
 
-## <a name="reference"></a>Referenční informace
+## <a name="reference"></a>Reference
 
 Další informace o struktuře a syntaxi akce **Spustit kód JavaScriptu** v základní definici pracovního postupu aplikace logiky pomocí jazyka definice pracovního postupu najdete v [referenční části](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code)této akce.
 

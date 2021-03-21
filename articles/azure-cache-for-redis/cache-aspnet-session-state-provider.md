@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
 ms.openlocfilehash: ce77f5074d707da5cfb251a103653b96e4644b5f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92544524"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Zprostředkovatel stavu relací ASP.NET pro Azure Cache for Redis
@@ -22,7 +22,7 @@ V reálné cloudové aplikaci není často praktické, aby se zabránilo uklád�
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>Uložení stavu relace ASP.NET v mezipaměti
 
-Chcete-li konfigurovat klientskou aplikaci v aplikaci Visual Studio pomocí balíčku NuGet pro stav relace Azure cache for Redis, klikněte na **Správce balíčků NuGet** , **Konzola správce balíčků** v nabídce **nástroje** .
+Chcete-li konfigurovat klientskou aplikaci v aplikaci Visual Studio pomocí balíčku NuGet pro stav relace Azure cache for Redis, klikněte na **Správce balíčků NuGet**, **Konzola správce balíčků** v nabídce **nástroje** .
 
 V okně `Package Manager Console` spusťte následující příkaz.
     

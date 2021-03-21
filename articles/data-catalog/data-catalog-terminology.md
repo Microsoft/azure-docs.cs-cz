@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 008d0f106b07d61f0989a479457b12398000b5d9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151459"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674563"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminologie
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Tento článek poskytuje Úvod k konceptům a pojmům, které se používají v dokumentaci Azure Data Catalog.
 
@@ -23,11 +25,11 @@ Azure Data Catalog je cloudové úložiště metadat, ve kterém se dají regist
 
 ## <a name="data-source"></a>Zdroj dat
 
-Zdroj dat je systém nebo kontejner, který spravuje datové assety. Mezi příklady patří databáze SQL Server, databáze Oracle, databáze SQL Server Analysis Services (tabulkové nebo multidimenzionální) a servery SQL Server Reporting Services.
+Zdroj dat je systém nebo kontejner, který spravuje datové assety. Mezi příklady patří databáze SQL Server, databáze Oracle, databáze Služba Analysis Services serveru SQL (tabulkové nebo multidimenzionální) a servery SQL Server Reporting Services.
 
 ## <a name="data-asset"></a>Datový Asset
 
-Datové assety jsou objekty obsažené ve zdrojích dat, které je možné zaregistrovat v katalogu. Mezi příklady patří SQL Server tabulky a zobrazení, tabulky a zobrazení Oracle, SQL Server Analysis Services míry, dimenze a klíčové ukazatele výkonu a sestavy SQL Server Reporting Services.
+Datové assety jsou objekty obsažené ve zdrojích dat, které je možné zaregistrovat v katalogu. Mezi příklady patří SQL Server tabulky a zobrazení, tabulky a zobrazení Oracle, Služba Analysis Services serveru SQL míry, dimenze a klíčové ukazatele výkonu a sestavy SQL Server Reporting Services.
 
 ## <a name="data-asset-location"></a>Umístění datového assetu
 
@@ -39,7 +41,7 @@ Strukturální metadata jsou metadata extrahovaná ze zdroje dat, který popisuj
 
 ## <a name="descriptive-metadata"></a>Popisná metadata
 
-Popisná metadata jsou metadata, která popisují účel nebo záměr datového assetu. Uživatelé katalogu obvykle přidávají popisné metadata pomocí portálu Azure Data Catalog, ale je možné je také extrahovat ze zdroje dat během registrace. Například nástroj pro registraci Azure Data Catalog extrahuje popisy z vlastnosti Description v SQL Server Analysis Services a SQL Server Reporting Services a v [MS_Description rozšířené vlastnosti](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)) v SQL Server databázích, pokud byly tyto vlastnosti naplněny hodnotami.
+Popisná metadata jsou metadata, která popisují účel nebo záměr datového assetu. Uživatelé katalogu obvykle přidávají popisné metadata pomocí portálu Azure Data Catalog, ale je možné je také extrahovat ze zdroje dat během registrace. Například nástroj pro registraci Azure Data Catalog extrahuje popisy z vlastnosti Description v Služba Analysis Services serveru SQL a SQL Server Reporting Services a v [MS_Description rozšířené vlastnosti](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)) v SQL Server databázích, pokud byly tyto vlastnosti naplněny hodnotami.
 
 ## <a name="request-access"></a>Vyžádání přístup
 

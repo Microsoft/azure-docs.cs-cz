@@ -9,10 +9,10 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: ad9e6b99b396465c2cff95bd6ab340ef9d668085
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99575953"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelsky definované funkce
@@ -93,7 +93,7 @@ Podobně jako předběžné triggery jsou po triggerech přidružené k operaci 
 > [!NOTE]
 > Zaregistrované triggery se nespustí automaticky, když dojde k odpovídajícím operacím (vytvořit/odstranit/nahradit/aktualizovat). Při provádění těchto operací se musí explicitně zavolat. Další informace najdete v článku [Jak spustit triggery](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) .
 
-## <a name="user-defined-functions"></a><a id="udfs"></a>Uživatelsky definované funkce
+## <a name="user-defined-functions"></a><a id="udfs"></a>Uživatelem definované funkce
 
 [Uživatelsky definované funkce](sql-query-udfs.md) (UDF) slouží k rozšiřování syntaxe jazyka dotazů rozhraní SQL API a snadné implementaci vlastní obchodní logiky. Mohou být volány pouze v rámci dotazů. UDF nemají přístup k objektu kontextu a jsou určeny pro použití pouze COMPUTE JavaScript. Proto je možné spustit UDF na sekundárních replikách. Příklady najdete v článku [Postup zápisu uživatelem definovaných funkcí](how-to-write-stored-procedures-triggers-udfs.md#udfs) .
 

@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 01/12/2020
 ms.author: mbaldwin
 ms.openlocfilehash: ef2c42ae76dc5e1511494635904228a8b574d483
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98132184"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Co je nového pro Azure Key Vault
@@ -80,7 +80,7 @@ Nové funkce vydané tento rok:
 ## <a name="2015"></a>2015
 
 Nové funkce vydané tento rok:
-- Správa certifikátů: Přidáno do 26. září 2016 jako funkce pro GA verze 2015-06-01.
+- Správa certifikátů. Přidáno do 26. září 2016 jako funkce pro GA verze 2015-06-01.
 
 Obecná dostupnost (verze 2015-06-01) byla oznámena 24. června 2015. V této verzi byly provedeny následující změny:
 - Odstranění klíče – pole použít se odebralo.

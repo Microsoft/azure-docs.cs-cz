@@ -4,10 +4,10 @@ description: Pomocí operace kopírování v šabloně Azure Resource Manager (�
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: b8acd85659b843cb482e1ccc61e28da03431db1b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905889"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Iterace proměnných v šablonách ARM
@@ -16,7 +16,7 @@ V tomto článku se dozvíte, jak vytvořit více než jednu hodnotu pro proměn
 
 Můžete také použít kopírování s [prostředky](copy-resources.md), [vlastnosti v prostředku](copy-properties.md)a [výstupy](copy-outputs.md).
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Element Copy má následující obecný formát:
 

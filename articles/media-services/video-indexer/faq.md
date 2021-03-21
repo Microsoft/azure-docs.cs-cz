@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
 ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028790"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer nejčastějších dotazech
@@ -88,7 +88,7 @@ Můžete vidět, které oblasti Azure Video Indexer k dispozici na stránce [obl
 
 ### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Můžu přizpůsobit Video Indexer modely pro můj konkrétní případ použití? 
 
-Yes. V Video Indexer můžete přizpůsobit některé z dostupných modelů, aby lépe vyhovovaly vašim potřebám. 
+Ano. V Video Indexer můžete přizpůsobit některé z dostupných modelů, aby lépe vyhovovaly vašim potřebám. 
 
 Například náš model person podporuje dopředné 1 000 000i rozpoznávání celebrit, ale můžete ho také naučit, aby rozpoznal jiné plošky, které nejsou v této databázi. 
 
@@ -96,7 +96,7 @@ Podrobnosti najdete v článcích o přizpůsobení [osob](customize-person-mode
 
 ###  <a name="can-i-edit-the-videos-in-my-library"></a>Můžu upravit videa v knihovně?
 
-Yes. Kliknutím na tlačítko **Upravit video** v zobrazení knihovny nebo kliknutím na tlačítko **otevřít v editoru** na displeji přehrávače se dostanete na kartu **projekty** . Můžete vytvořit nový projekt a přidat další videa z knihovny, abyste je mohli společně upravovat. až budete hotovi, můžete si video vykreslit a stáhnout. 
+Ano. Kliknutím na tlačítko **Upravit video** v zobrazení knihovny nebo kliknutím na tlačítko **otevřít v editoru** na displeji přehrávače se dostanete na kartu **projekty** . Můžete vytvořit nový projekt a přidat další videa z knihovny, abyste je mohli společně upravovat. až budete hotovi, můžete si video vykreslit a stáhnout. 
 
 Pokud chcete získat přehled o novém videu, Indexujte ho pomocí Video Indexer a zobrazí se ve vaší knihovně se svými přehledy.
 

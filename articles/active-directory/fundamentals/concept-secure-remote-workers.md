@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94836678"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Rychlá reakce na zabezpečení identit pomocí Azure AD
@@ -38,7 +38,7 @@ Tento kontrolní seznam vám pomůže rychle nasadit kritické doporučené akce
 
 V tomto průvodci se předpokládá, že už jste v Azure AD navázali jenom cloudové nebo hybridní identity. Nápovědu k výběru typu identity najdete v článku. [Zvolte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity](../hybrid/choose-ad-authn.md) . 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Existuje mnoho aspektů zabezpečené infrastruktury identity, ale tento kontrolní seznam se zaměřuje na bezpečnou a zabezpečenou infrastrukturu identity, která umožňuje uživatelům pracovat vzdáleně. Zabezpečení vaší identity je jenom součástí vašeho bezpečnostního scénáře, měli byste taky zvážit ochranu dat, aplikací a zařízení.
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
 ms.openlocfilehash: 4b379bb76eaf7587c53ec55972ccee3f54a55f22
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94534241"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0,6 ve virtuálním poli StorSimple
@@ -43,7 +43,7 @@ Pokud používáte aktualizaci 0,2 a novější, doporučujeme nainstalovat aktu
 
 [!INCLUDE [storsimple-virtual-array-install-update-via-portal](../../includes/storsimple-virtual-array-install-update-via-portal-04.md)]
 
-Po dokončení instalace přejdete do služby StorSimple Device Manager. Vyberte **zařízení** a pak vyberte a klikněte na zařízení, které jste právě aktualizovali. Přejít na **nastavení > spravovat > aktualizace zařízení**. Zobrazená verze softwaru by měla být **10.0.10293.0**.
+Po dokončení instalace přejdete do služby StorSimple Správce zařízení. Vyberte **zařízení** a pak vyberte a klikněte na zařízení, které jste právě aktualizovali. Přejít na **nastavení > spravovat > aktualizace zařízení**. Zobrazená verze softwaru by měla být **10.0.10293.0**.
 
 ## <a name="use-the-local-web-ui"></a>Použití místního webového uživatelského rozhraní
 
@@ -68,7 +68,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
    
     ![Prohledávání katalogu](./media/storsimple-virtual-array-install-update-06/download1.png)
 
-4. Klikněte na tlačítko **Stáhnout**.
+4. Klikněte na **Stáhnout**.
 
 5. Mělo by se zobrazit pět souborů ke stažení. Každý z těchto souborů si stáhněte do složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
 
@@ -95,7 +95,7 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
-1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**. Poznamenejte si verzi softwaru, kterou používáte. Pokud používáte **10.0.10290.0** , nemusíte v kroku 6 aktualizovat agenta služby MDS.
+1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**. Poznamenejte si verzi softwaru, kterou používáte. Pokud používáte **10.0.10290.0**, nemusíte v kroku 6 aktualizovat agenta služby MDS.
    
     ![Snímek obrazovky se zobrazí aktualizace softwaru vybrané z nabídky Údržba.](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
@@ -111,14 +111,14 @@ Tuto metodu použijte, chcete-li nainstalovat aktualizace na zařízení s verz�
    
     ![Snímek obrazovky ukazuje zprávu o úspěchu aktualizace.](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance** navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10293** pro aktualizaci 0,6.
+5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, navštivte web  >  **aktualizace softwaru** údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10293** pro aktualizaci 0,6.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10293** a sestavy Azure Portal **10.0.10293.0** pro stejnou verzi.
    
     ![Snímek obrazovky s aktuální verzí softwaru zobrazí stránku aktualizace softwaru.](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
-6. Tento krok přeskočte, pokud jste před instalací této aktualizace spustili StorSimple Virtual Array Update 0,5 ( **10.0.10290.0** ). Verzi softwaru jste si poznamenali v kroku 1 před zahájením aktualizace. Pokud jste spustili aktualizaci 0,5, Váš agent služby MDS už je aktuální.
+6. Tento krok přeskočte, pokud jste před instalací této aktualizace spustili StorSimple Virtual Array Update 0,5 (**10.0.10290.0**). Verzi softwaru jste si poznamenali v kroku 1 před zahájením aktualizace. Pokud jste spustili aktualizaci 0,5, Váš agent služby MDS už je aktuální.
 
     Pokud používáte verzi softwaru před aktualizací 0,5, je dalším krokem pro aktualizaci agenta služby MDS. Na stránce **aktualizace softwaru** přejděte na **cestu k souboru aktualizace** a přejděte k `GenevaMonitoringAgentPackageInstaller.msi` souboru. Opakujte kroky 2-4. Po restartování virtuálního pole se přihlaste k místnímu webovému uživatelskému rozhraní.
 

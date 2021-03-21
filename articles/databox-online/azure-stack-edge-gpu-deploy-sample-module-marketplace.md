@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: e6a58a1f404228564e4e1ac6d77051a747debaa7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102438148"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>Nasazení modulu IoT s povoleným grafickým procesorem z Azure Marketplace na zařízení GPU pro Azure Stack Edge pro
@@ -30,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Vzorový modul GPU v tomto článku zahrnuje vzorový kód PyTorch a TensorFlow srovnávacího testu pro procesor s grafickým procesorem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 

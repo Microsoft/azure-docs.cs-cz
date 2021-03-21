@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: aahi
 ms.openlocfilehash: 91e10c25d2c3bef9c1ca20e3e5737a326d45997c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654774"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Příklad: jak extrahovat klíčové fráze pomocí Analýza textu
@@ -110,7 +110,7 @@ Informace o definici požadavku naleznete v tématu [způsob volání rozhraní 
 
 + Vytvořte žádost **POST**. Přečtěte si dokumentaci k rozhraní API pro tento požadavek: [klíčové rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases).
 
-+ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Pokud rozhraní API používáte synchronně, musíte zahrnout `/text/analytics/v3.0/keyPhrases` do adresy URL. Například: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
++ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Pokud rozhraní API používáte synchronně, musíte zahrnout `/text/analytics/v3.0/keyPhrases` do adresy URL. Příklad: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 
@@ -250,7 +250,7 @@ Použijete-li `/analyze` koncový bod pro asynchronní operaci, dostanete odpov�
 ```
 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postup pro extrakci klíčových frází pomocí Analýza textu v Cognitive Services. Souhrn:
 

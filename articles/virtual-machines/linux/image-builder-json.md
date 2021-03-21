@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: aaaabe758b036335062907c8e5549ae876c63997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519703"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594729"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -249,7 +249,7 @@ Při použití `customize` :
 - Pokud jeden z úprav selže, celá komponenta přizpůsobení selže a ohlásí chybu.
 - Důrazně doporučujeme skript před jeho použitím v šabloně důkladně otestovat. Ladění skriptu na vlastním VIRTUÁLNÍm počítači bude snazší.
 - Do skriptů neumísťujte citlivá data. 
-- Pokud nepoužíváte [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity), musí být umístění skriptu veřejně přístupná.
+- Pokud nepoužíváte [MSI](./image-builder-user-assigned-identity.md), musí být umístění skriptu veřejně přístupná.
 
 ```json
         "customize": [
@@ -417,7 +417,7 @@ Vlastnosti úprav souborů:
 - **SourceUri** – dostupný koncový bod úložiště, může to být GitHub nebo Azure Storage. Můžete stáhnout pouze jeden soubor, nikoli celý adresář. Pokud potřebujete stáhnout adresář, použijte komprimovaný soubor a pak ho dekomprimujte pomocí úprav prostředí nebo úprav prostředí PowerShell. 
 
 > [!NOTE]
-> Pokud sourceUri je účet Azure Storage, nezávisle na tom, jestli je objekt BLOB označený jako Public, udělíte oprávnění identitě spravovaného uživatele pro přístup pro čtení objektu BLOB. Pokud chcete nastavit oprávnění úložiště, podívejte se prosím na tento [příklad](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) .
+> Pokud sourceUri je účet Azure Storage, nezávisle na tom, jestli je objekt BLOB označený jako Public, udělíte oprávnění identitě spravovaného uživatele pro přístup pro čtení objektu BLOB. Pokud chcete nastavit oprávnění úložiště, podívejte se prosím na tento [příklad](./image-builder-user-assigned-identity.md#create-a-resource-group) .
 
 - **cíl** – jedná se o úplnou cestu k cíli a název souboru. Musí existovat všechny odkazované cesty a podadresáře, pomocí prostředí PowerShell nebo úprav prostředí PowerShell je nastavit předem. Pomocí úprav skriptů můžete vytvořit cestu. 
 
@@ -456,7 +456,7 @@ Přizpůsobení vlastností:
 - **updateLimit** – volitelné, definuje, kolik aktualizací se dá nainstalovat, výchozí 1000.
  
 > [!NOTE]
-> V případě, že se vyskytnou nějaké nedokončené restarty Windows nebo jsou pořád spuštěné instalace aplikací, může se stát, web Windows Update že se vám tato chyba obvykle zobrazí v části přizpůsobení. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Důrazně doporučujeme zvážit přidání do restartování systému Windows a/nebo povolit aplikacím dostatek času k dokončení instalací pomocí příkazů [režimu spánku](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) nebo čekání ve vložených příkazech nebo skriptech před spuštěním web Windows Update.
+> V případě, že se vyskytnou nějaké nedokončené restarty Windows nebo jsou pořád spuštěné instalace aplikací, může se stát, web Windows Update že se vám tato chyba obvykle zobrazí v části přizpůsobení. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Důrazně doporučujeme zvážit přidání do restartování systému Windows a/nebo povolit aplikacím dostatek času k dokončení instalací pomocí příkazů [režimu spánku](/powershell/module/microsoft.powershell.utility/start-sleep) nebo čekání ve vložených příkazech nebo skriptech před spuštěním web Windows Update.
 
 ### <a name="generalize"></a>Generalizovat 
 Ve výchozím nastavení bude Azure image Builder na konci každé fáze přizpůsobení image taky spouštět kód zrušení zřízení, aby se image generalizoval. Generalizace je proces, ve kterém je image nastavená tak, aby se mohla znovu použít k vytvoření více virtuálních počítačů. Pro virtuální počítače s Windows používá Azure image Builder nástroj Sysprep. Pro Linux spustí Azure image Builder "waagent-disvision". 

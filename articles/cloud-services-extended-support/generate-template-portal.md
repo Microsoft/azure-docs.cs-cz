@@ -8,16 +8,16 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 03/07/2021
 ms.custom: ''
-ms.openlocfilehash: 215abb1ce8d65b5ecdd25aeb78c17c70e801a9d2
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 9d40bbd7e08d8d3869166827a22f3f08536532bb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103555398"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590700"
 ---
 # <a name="generate-arm-template-for-cloud-services-extended-support-using-the-azure-portal"></a>Vygenerovat šablonu ARM pro Cloud Services (Rozšířená podpora) pomocí Azure Portal
 
-Tento článek vysvětluje, jak získat šablonu a soubor parametrů ARM z [Azure Portal](https://portal.azure.com) po nasazení cloudové služby (Rozšířená podpora). Šablona a soubor parametrů ARM se dají použít v budoucích nasazeních k upgradu nebo aktualizaci cloudové služby (Rozšířená podpora).
+Tento článek vysvětluje, jak stáhnout šablonu a soubor parametrů ARM z [Azure Portal](https://portal.azure.com) po nasazení cloudové služby (Rozšířená podpora). Šablona a soubor parametrů ARM se dají použít v budoucích nasazeních k upgradu nebo aktualizaci cloudové služby (Rozšířená podpora).
 
 ## <a name="get-arm-template-via-portal"></a>Získat šablonu ARM prostřednictvím portálu
 

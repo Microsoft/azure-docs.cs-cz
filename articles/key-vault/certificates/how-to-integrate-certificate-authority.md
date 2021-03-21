@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
 ms.openlocfilehash: c36353448c140450044f352062c3349939e3f7b5
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789006"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrace služby Key Vault s certifikační autoritou DigiCert
@@ -48,7 +48,7 @@ Ujistěte se, že máte následující informace užitečné z účtu DigiCert C
 ## <a name="adding-certificate-authority-in-key-vault"></a>Přidání certifikační autority v Key Vault 
 Po shromáždění výše uvedených informací z účtu DigiCert CertCentral teď můžete přidat DigiCert do seznamu certifikačních autorit v trezoru klíčů.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1.  Pokud chcete přidat certifikační autoritu DigiCert, přejděte do trezoru klíčů, do kterého chcete přidat DigiCert. 
 2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
@@ -147,7 +147,7 @@ Příklad
     ```
    
 - Je při vytváření certifikátu DigiCert prostřednictvím integrace, která přímo získává certifikát prostřednictvím DigiCert, k dispozici časová prodleva?
-   Ne. Při vytváření certifikátu se jedná o proces ověřování, který může chvíli trvat a toto ověření závisí na procesu, který DigiCert sleduje.
+   No. Při vytváření certifikátu se jedná o proces ověřování, který může chvíli trvat a toto ověření závisí na procesu, který DigiCert sleduje.
 
 
 ## <a name="next-steps"></a>Další kroky

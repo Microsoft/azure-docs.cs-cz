@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: sudbalas
 ms.openlocfilehash: b96f2ca4f925846bd252e5cfd35088d832f5c216
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98572863"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Obnovitelné odstranění bude povolené u všech trezorů klíčů.
@@ -64,7 +64,7 @@ Pokud vaše organizace podléhá zákonným požadavkům na dodržování předp
 
 ### <a name="audit-your-key-vaults-to-check-if-soft-delete-is-enabled"></a>Auditujte trezory klíčů a zkontrolujte, jestli je povolené obnovitelné odstranění.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Vyhledejte **Azure Policy**.
 1. Vyberte **definice**.
 1. V části **kategorie** vyberte ve filtru **Key Vault** .
@@ -80,7 +80,7 @@ Teď můžete filtrovat a zjistit, které trezory klíčů mají povolené obnov
 
 ### <a name="turn-on-soft-delete-for-an-existing-key-vault"></a>Zapnutí obnovitelného odstranění pro existující Trezor klíčů
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Vyhledejte svůj Trezor klíčů.
 1. V části **Nastavení** vyberte **vlastnosti** .
 1. V části **obnovitelné odstranění** vyberte možnost **Povolit obnovení tohoto trezoru a jeho objektů** .
@@ -89,7 +89,7 @@ Teď můžete filtrovat a zjistit, které trezory klíčů mají povolené obnov
 
 ### <a name="grant-purge-access-policy-permissions-to-a-security-principal"></a>Udělení oprávnění k vyprázdnění zásad přístupu k objektu zabezpečení
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Vyhledejte svůj Trezor klíčů.
 1. V části **Nastavení** vyberte **zásady přístupu** .
 1. Vyberte instanční objekt, ke kterému chcete udělit přístup.

@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99833996"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Funkce porovnání pro šablony ARM
@@ -33,8 +33,8 @@ Vrátí první hodnotu, která není null, z parametrů. Prázdné řetězce, pr
 
 | Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int, String, Array nebo Object |První hodnota, která má být testována na hodnotu null. |
-| Další argumenty |Ne |int, String, Array nebo Object |Další hodnoty, které mají být testovány na hodnotu null. |
+| arg1 |Yes |int, String, Array nebo Object |První hodnota, která má být testována na hodnotu null. |
+| Další argumenty |No |int, String, Array nebo Object |Další hodnoty, které mají být testovány na hodnotu null. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -135,8 +135,8 @@ Kontroluje, zda jsou dvě hodnoty vzájemně stejné. `equals`Funkce není v bic
 
 | Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int, String, Array nebo Object |První hodnota pro kontrolu rovnosti. |
-| arg2 |Ano |int, String, Array nebo Object |Druhá hodnota pro kontrolu rovnosti. |
+| arg1 |Yes |int, String, Array nebo Object |První hodnota pro kontrolu rovnosti. |
+| arg2 |Yes |int, String, Array nebo Object |Druhá hodnota pro kontrolu rovnosti. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -319,8 +319,8 @@ Kontroluje, zda je první hodnota větší než druhá hodnota. `greater`Funkce 
 
 | Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo String |První hodnota pro lepší porovnání. |
-| arg2 |Ano |int nebo String |Druhá hodnota pro lepší porovnání. |
+| arg1 |Yes |int nebo String |První hodnota pro lepší porovnání. |
+| arg2 |Yes |int nebo String |Druhá hodnota pro lepší porovnání. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -400,8 +400,8 @@ Kontroluje, zda je první hodnota větší než nebo rovna druhé hodnotě. `gre
 
 | Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo String |První hodnota pro porovnání větší nebo rovno. |
-| arg2 |Ano |int nebo String |Druhá hodnota pro vyšší nebo stejné porovnání. |
+| arg1 |Yes |int nebo String |První hodnota pro porovnání větší nebo rovno. |
+| arg2 |Yes |int nebo String |Druhá hodnota pro vyšší nebo stejné porovnání. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -481,8 +481,8 @@ Kontroluje, zda je první hodnota menší než druhá hodnota. `less`Funkce nen�
 
 | Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo String |První hodnota pro méně porovnání. |
-| arg2 |Ano |int nebo String |Druhá hodnota pro méně porovnání. |
+| arg1 |Yes |int nebo String |První hodnota pro méně porovnání. |
+| arg2 |Yes |int nebo String |Druhá hodnota pro méně porovnání. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -562,8 +562,8 @@ Kontroluje, zda je první hodnota menší nebo rovna druhé hodnotě. `lessOrEqu
 
 | Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo String |První hodnota pro porovnání menší nebo rovno. |
-| arg2 |Ano |int nebo String |Druhá hodnota pro porovnání menší nebo rovno. |
+| arg1 |Yes |int nebo String |První hodnota pro porovnání menší nebo rovno. |
+| arg2 |Yes |int nebo String |Druhá hodnota pro porovnání menší nebo rovno. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

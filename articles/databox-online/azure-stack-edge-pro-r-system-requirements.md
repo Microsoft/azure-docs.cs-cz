@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
 ms.openlocfilehash: ef81494b6c93f2941cc41b367e566332d6bc7cc9
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99831330"
 ---
 # <a name="azure-stack-edge-pro-r-system-requirements"></a>Požadavky na systém Azure Stack Edge pro R
@@ -73,7 +73,7 @@ Použijte následující tabulku pro konfiguraci portů pro servery hostující 
 
 | Číslo portu | V nebo ven | Rozsah portů | Vyžadováno | Pokyny |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Out       | Síť WAN        | Ano      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
+| TCP 443 (HTTPS)| Out       | Síť WAN        | Yes      | Odchozí otevření pro IoT Edge zřizování. Tato konfigurace se vyžaduje při použití ručních skriptů nebo služby Azure IoT Device Provisioning (DPS).|
 
 Pokud chcete získat úplné informace, přečtěte si [pravidla brány firewall a konfigurace portů pro nasazení IoT Edge](../iot-edge/troubleshoot.md).
 

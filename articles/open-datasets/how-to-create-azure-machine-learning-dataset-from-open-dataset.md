@@ -9,10 +9,10 @@ author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
 ms.openlocfilehash: dd1440cd7bda8d40a81290cd9f633264b9641dc5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102502548"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Vytváření Azure Machine Learning datových sad z Azure Open DataSets
@@ -37,7 +37,7 @@ Otevřené datové sady Azure jsou podmnožinou veřejných datových sad, kter�
 Otevřené datové sady jsou v cloudu na Microsoft Azure a jsou zahrnuté v sadě [SDK pro Azure Machine Learning Python](#create-datasets-with-the-sdk) i v sadě [Azure Machine Learning Studio](#create-datasets-with-the-studio).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento článek potřebujete:
 

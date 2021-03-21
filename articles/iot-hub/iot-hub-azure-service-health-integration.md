@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Technical Support'
 - devx-track-csharp
 ms.openlocfilehash: 27fca7b76ab148fc355eb7d52ee0cbcbd3540458
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92548485"
 ---
 # <a name="check-iot-hub-service-and-resource-health"></a>Ověřit stav služby IoT Hub Service a prostředku
@@ -33,7 +33,7 @@ Pokud chcete zobrazit historii stavu a stavu vašeho centra IoT pomocí portálu
 
 1. V [Azure Portal](https://portal.azure.com)v Azure Portal přejít do služby IoT Hub.
 
-1. V levém podokně v části **Podpora a řešení potíží** vyberte **Resource Health** .
+1. V levém podokně v části **Podpora a řešení potíží** vyberte **Resource Health**.
 
     :::image type="content" source="./media/iot-hub-azure-service-health-integration/iot-hub-resource-health.png" alt-text="Stránka stavu prostředků pro Centrum IoT":::
 
@@ -47,9 +47,9 @@ Pomocí Azure Service Health můžete ve svém předplatném kontrolovat stav v�
 
 Pokud chcete zjistit stav vašich Center IoT, postupujte takto:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-2. Přejděte na **Service Health**  >  **Resource Health** .
+2. Přejděte na **Service Health**  >  **Resource Health**.
 
 3. V rozevíracích seznamech vyberte své předplatné a pak jako typ prostředku vyberte **IoT Hub** .
 

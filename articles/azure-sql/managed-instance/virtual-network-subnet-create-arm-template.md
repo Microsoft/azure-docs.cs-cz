@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 09/12/2019
 ms.openlocfilehash: 2a23fc0b769727cab5a28d3d313a7791bcfa6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91617702"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Vytvoření virtuální sítě pro službu Azure SQL Managed Instance
@@ -43,7 +43,7 @@ Spravovaná instance Azure SQL musí být nasazená v rámci [virtuální sítě
 
 Nejjednodušší způsob, jak vytvořit a nakonfigurovat virtuální síť, je použít šablonu nasazení Azure Resource Manager.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyberte tlačítko **nasadit do Azure** :
 
@@ -52,7 +52,7 @@ Nejjednodušší způsob, jak vytvořit a nakonfigurovat virtuální síť, je p
    Toto tlačítko otevře formulář, který můžete použít ke konfiguraci síťového prostředí, ve kterém můžete nasadit spravovanou instanci SQL.
 
    > [!Note]
-   > Tato šablona Azure Resource Manager nasadí virtuální síť se dvěma podsítěmi. Jedna podsíť s názvem **ManagedInstances**je vyhrazena pro SPRAVOVANOU instanci SQL a má předem nakonfigurovanou směrovací tabulku. Druhá podsíť označovaná jako **výchozí**se používá pro další prostředky, které by měly přistupovat ke spravované instanci SQL (například Azure Virtual Machines).
+   > Tato šablona Azure Resource Manager nasadí virtuální síť se dvěma podsítěmi. Jedna podsíť s názvem **ManagedInstances** je vyhrazena pro SPRAVOVANOU instanci SQL a má předem nakonfigurovanou směrovací tabulku. Druhá podsíť označovaná jako **výchozí** se používá pro další prostředky, které by měly přistupovat ke spravované instanci SQL (například Azure Virtual Machines).
 
 3. Nakonfigurujte síťové prostředí. V následujícím formuláři můžete nakonfigurovat parametry síťového prostředí:
 

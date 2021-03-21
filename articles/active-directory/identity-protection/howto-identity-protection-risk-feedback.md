@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 939ffc9e2a8fb8ce3a25dc212e3df34dc6bb2ec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88950353"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Postupy: poskytnutí zpětné vazby o riziku v Azure AD Identity Protection
@@ -45,7 +45,7 @@ Azure AD používá vaši zpětnou vazbu k aktualizaci rizika podkladového uži
 
 Tady jsou scénáře a mechanismy, které vám poskytnou zpětnou vazbu na rizika pro Azure AD.
 
-| Scénář | Jak můžete sdělit svůj názor? | Co se stane pod digestoří? | Poznámky |
+| Scenario | Jak můžete sdělit svůj názor? | Co se stane pod digestoří? | Poznámky |
 | --- | --- | --- | --- |
 | **Neohrožené přihlášení (falešně pozitivní)** <br> Sestava rizikových přihlášení zobrazuje nerizikové přihlašování [rizikový stav = ohroženo], ale toto přihlášení nebylo ohroženo. | Vyberte přihlášení a klikněte na potvrdit bezpečné přihlášení. | Azure AD přesune agregované riziko přihlášení do žádného [stav rizika = potvrzené zabezpečení; Úroveň rizika (agregace) =-] a vrátí dopad na riziko uživatele. | V současné době je možnost potvrdit přihlášení bezpečně dostupná jenom v sestavě rizikové přihlašovacích. |
 | **Narušeno přihlášení (true pozitivní)** <br> Sestava rizikové přihlašovací údaje zobrazuje nerizikové přihlašování [rizikový stav = ohroženo] s nízkým rizikem [úroveň rizika (agregace) = nízká] a toto přihlášení bylo skutečně ohroženo. | Vyberte přihlášení a klikněte na potvrdit narušené přihlášení. | Azure AD přesune agregované riziko přihlášení a riziko pro uživatele do vysoké úrovně [rizikový stav = potvrzené ohrožení zabezpečení; Úroveň rizika = vysoká]. | V současné době je možnost potvrdit narušení přihlášení dostupná jenom v sestavě rizikové přihlašovacích. |

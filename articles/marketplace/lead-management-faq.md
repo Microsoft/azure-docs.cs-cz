@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 10/01/2020
 ms.openlocfilehash: 681498073a5f111e3babd50443623589ffeec02f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330916"
 ---
 # <a name="common-questions-and-troubleshooting-for-lead-configuration"></a>Běžné dotazy a řešení potíží s konfigurací potenciálních zákazníků
@@ -22,7 +22,7 @@ Tento článek obsahuje odpovědi na některé běžné dotazy týkající se sp
 
 #### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Kde můžu získat pomoc při nastavování cíle realizace?
 
-Přehled o tom, jak připojit váš systém CRM k vašim komerčním nabídkám, najdete v tématu o [zákaznících z komerční nabídky na webu Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md) . Pokud máte chybu, přečtěte si pokyny k řešení potíží níže. Pokud chcete získat další podporu, odešlete lístek podpory prostřednictvím [centra pro nápovědu a podporu pro partnerský server](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit**  >  **váš typ**pro  >  **správu správy potenciálních zákazníků**.
+Přehled o tom, jak připojit váš systém CRM k vašim komerčním nabídkám, najdete v tématu o [zákaznících z komerční nabídky na webu Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md) . Pokud máte chybu, přečtěte si pokyny k řešení potíží níže. Pokud chcete získat další podporu, odešlete lístek podpory prostřednictvím [centra pro nápovědu a podporu pro partnerský server](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit**  >  **váš typ** pro  >  **správu správy potenciálních zákazníků**.
 
 #### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Je nutné nakonfigurovat cíl zájemce, aby bylo možné publikovat nabídku na komerčním webu Marketplace?
 
@@ -52,7 +52,7 @@ Vyhledejte `"MSFT_TEST"` v cíli zájemce. Níže je ukázkový vedoucí testu o
 
 #### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Mám živou nabídku, ale proč mi nevidím nějaké potenciální zákazníky?
 
-Ujistěte se, že je připojení k cíli realizace platné. Po výběru **publikovat** na vaší nabídce v partnerském centru vám pošleme vedoucího testu. Pokud se zobrazí vedoucí testu, připojení je platné. Můžete také otestovat své zájemce tím, že se v kroku Preview pokusíte získat náhled nabídky. Vyberte **získat hned**, **kontaktujte mě**nebo **bezplatnou zkušební verzi** na výpisu na komerčním webu Marketplace.
+Ujistěte se, že je připojení k cíli realizace platné. Po výběru **publikovat** na vaší nabídce v partnerském centru vám pošleme vedoucího testu. Pokud se zobrazí vedoucí testu, připojení je platné. Můžete také otestovat své zájemce tím, že se v kroku Preview pokusíte získat náhled nabídky. Vyberte **získat hned**, **kontaktujte mě** nebo **bezplatnou zkušební verzi** na výpisu na komerčním webu Marketplace.
 
 Ujistěte se také, že hledáte správná data. Přečtěte si informace o [potenciálních](partner-center-portal/commercial-marketplace-get-customer-leads.md) datech pro vysvětlení údajů o zájemcích, které odesíláme do vašeho cíle potenciálního zákazníka.
 
@@ -84,7 +84,7 @@ V důsledku zásad osobních informací nemůžeme sdílet informace o potenciá
 
 Data generování zájemců jsou nízká. Téměř všem vydavatelům je méně než 1 GB. Náklady závisí na počtu přijatých zájemců. Například pokud 1 000 potenciální zákazníci obdrží za měsíc, náklady jsou přibližně 50 centů. Další informace o cenách služby Storage najdete v tématu [Azure Storage přehledu cen](https://azure.microsoft.com/pricing/details/storage/).
 
-Pokud na vaši otázku neodpovíte, kontaktujte podpora Microsoftu prostřednictvím [centra pro partnery a pomoc a podporu](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit**  >  **váš typ**pro  >  **správu správy potenciálních zákazníků**.
+Pokud na vaši otázku neodpovíte, kontaktujte podpora Microsoftu prostřednictvím [centra pro partnery a pomoc a podporu](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit**  >  **váš typ** pro  >  **správu správy potenciálních zákazníků**.
 
 #### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Přijímám e-mailová oznámení, když se přijímají Noví zájemci zákazníků. Jak můžu nakonfigurovat někoho jiného, aby přijímal tyto e-maily?
 

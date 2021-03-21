@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
 ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631988"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Sada Batch Processing Kit pro kontejnery řeči
@@ -151,7 +151,7 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 
 ---
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 > [!NOTE]
 > Klient Batch může soubor *Run. log* pravidelně přepsat, pokud je příliš velký.

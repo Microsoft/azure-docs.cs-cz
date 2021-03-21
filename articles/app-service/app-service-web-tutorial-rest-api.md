@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
 ms.openlocfilehash: 9481b6d2740d27b8c3d1309e205edda6017868fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005741"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Kurz: Hostování rozhraní RESTful API s CORS v Azure App Service
@@ -28,7 +28,7 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 

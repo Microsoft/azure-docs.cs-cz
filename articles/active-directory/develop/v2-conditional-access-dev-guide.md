@@ -15,10 +15,10 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.openlocfilehash: e4021f0ca2c1c9ca9434744a4aebb4b7938315f0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99584226"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
@@ -91,7 +91,7 @@ Vývojáři můžou tuto výzvu přijmout a připojit ji k nové žádosti do Az
 
 ## <a name="scenarios"></a>Scénáře
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Podmíněný přístup Azure AD je funkce, která je součástí [Azure AD Premium](../fundamentals/active-directory-whatis.md). Zákazníci s [licencemi Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) mají taky přístup k funkcím podmíněného přístupu.
 

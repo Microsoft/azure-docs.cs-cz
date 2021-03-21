@@ -6,10 +6,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 12/18/2020
 ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695869"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Zpracování velkých zpráv pomocí bloků dat v Azure Logic Apps
@@ -160,7 +160,7 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
 
 1. Vaše aplikace logiky pošle počáteční příspěvek HTTP nebo žádost o vložení s prázdným textem zprávy. Hlavička žádosti obsahuje tyto informace o obsahu, který vaše aplikace logiky chce nahrát do bloků:
 
-   | Logic Apps pole s hlavičkou žádosti | Hodnota | Typ | Popis |
+   | Logic Apps pole s hlavičkou žádosti | Hodnota | Typ | Description |
    |---------------------------------|-------|------|-------------|
    | **x-MS-Transfer-Mode** | blokové | Řetězec | Indikuje, že se obsah nahrává do bloků dat. |
    | **x-MS-Content-Length** | <*Content-Length*> | Integer | Celá velikost obsahu v bajtech před vytvořením bloku dat |
@@ -168,10 +168,10 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
 
 2. Koncový bod odpoví kódem stavu úspěch "200" a tyto volitelné informace:
 
-   | Pole hlavičky odpovědi koncového bodu | Typ | Povinné | Popis |
+   | Pole hlavičky odpovědi koncového bodu | Typ | Vyžadováno | Popis |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-bloková velikost** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
-   | **Umístění** | Řetězec | Ano | Umístění adresy URL, kam se mají odeslat zprávy opravy HTTP |
+   | **x-MS-bloková velikost** | Integer | No | Navrhovaná velikost bloku v bajtech |
+   | **Umístění** | Řetězec | Yes | Umístění adresy URL, kam se mají odeslat zprávy opravy HTTP |
    ||||
 
 3. Vaše aplikace logiky vytvoří a pošle následné zprávy opravy HTTP – každou s těmito informacemi:
@@ -180,7 +180,7 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
 
    * Tato hlavička podrobně popisuje blok obsahu odeslaný v každé zprávě opravy:
 
-     | Logic Apps pole s hlavičkou žádosti | Hodnota | Typ | Popis |
+     | Logic Apps pole s hlavičkou žádosti | Hodnota | Typ | Description |
      |---------------------------------|-------|------|-------------|
      | **Rozsah obsahu** | <*oblasti*> | Řetězec | Rozsah bajtů pro aktuální blok obsahu, včetně počáteční hodnoty, koncové hodnoty a celkové velikosti obsahu, například: "bajty = 0-1023/10100" |
      | **Typ obsahu** | <*typ obsahu*> | Řetězec | Typ obsahu v bloku |
@@ -189,10 +189,10 @@ Tyto kroky popisují podrobný Logic Apps procesu, který se používá pro nahr
 
 4. Po každé žádosti o opravu koncový bod potvrdí příjem pro jednotlivé bloky, a to tak, že odpoví na stavový kód "200" a následující hlavičky odpovědí:
 
-   | Pole hlavičky odpovědi koncového bodu | Typ | Povinné | Popis |
+   | Pole hlavičky odpovědi koncového bodu | Typ | Vyžadováno | Popis |
    |--------------------------------|------|----------|-------------|
-   | **Rozsah** | Řetězec | Ano | Rozsah bajtů pro obsah, který byl přijat koncovým bodem, například: "bytes = 0-1023" |   
-   | **x-MS-bloková velikost** | Integer | Ne | Navrhovaná velikost bloku v bajtech |
+   | **Rozsah** | Řetězec | Yes | Rozsah bajtů pro obsah, který byl přijat koncovým bodem, například: "bytes = 0-1023" |   
+   | **x-MS-bloková velikost** | Integer | No | Navrhovaná velikost bloku v bajtech |
    ||||
 
 Například tato definice akce zobrazuje požadavek HTTP POST pro nahrání obsahu v bloku do koncového bodu. Ve `runTimeConfiguration` Vlastnosti akce `contentTransfer` sada vlastností nastaví `transferMode` na `chunked` :

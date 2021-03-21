@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
 ms.openlocfilehash: df53062c7c897493a47d88ea2873f9710b9825bf
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99806252"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>Správa plánů DDoS Protection: oprávnění a omezení
 
 Plán DDoS Protection funguje napříč oblastmi a předplatnými. Stejný plán může být propojený s virtuálními sítěmi z jiných předplatných v různých oblastech v rámci vašeho tenanta. K předplatnému, ke kterému je přiřazen plán, se účtují měsíční periodická faktura za plán, jakož i poplatky za překročení limitu pro případ, že počet chráněných veřejných IP adres překračuje 100. Další informace o cenách DDoS najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Než budete moct dokončit kroky v tomto kurzu, musíte nejdřív vytvořit [Plán Standard Protection pro Azure DDoS](manage-ddos-protection.md).
 

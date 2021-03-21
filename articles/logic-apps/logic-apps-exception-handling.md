@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm, azla
 ms.date: 02/18/2021
 ms.topic: article
 ms.openlocfilehash: fbe797937021763bb97ca09e1da792d9a7010f9a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702500"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
@@ -27,7 +27,7 @@ U většiny základních výjimek a zpracování chyb můžete použít *zásady
 
 Tady jsou typy zásad opakování:
 
-| Typ | Popis |
+| Typ | Description |
 |------|-------------|
 | **Výchozí** | Tato zásada odesílá až čtyři opakované pokusy ve *exponenciálně rostoucích* intervalech, které se škálují po 7,5 sekund, ale jsou omezené mezi 5 a 45 sekundami. |
 | **Exponenciální interval**  | Tato zásada počká náhodný interval vybraný z exponenciálně rostoucího rozsahu před odesláním dalšího požadavku. |
@@ -69,7 +69,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 *Povinné*
 
-| Hodnota | Typ | Popis |
+| Hodnota | Typ | Description |
 |-------|------|-------------|
 | <*opakování – typ zásad*> | Řetězec | Typ zásady opakování, který chcete použít: `default` , `none` , `fixed` nebo `exponential` |
 | <*interval opakování*> | Řetězec | Interval opakování, ve kterém hodnota musí používat [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval je `PT5S` a maximální interval je `PT1D` . Když použijete exponenciální zásadu intervalu, můžete zadat jiné minimální a maximální hodnoty. |
@@ -78,7 +78,7 @@ Případně můžete zásady opakování zadat ručně v `inputs` části pro ak
 
 *Volitelné*
 
-| Hodnota | Typ | Popis |
+| Hodnota | Typ | Description |
 |-------|------|-------------|
 | <*minimální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejmenší interval náhodně vybraného intervalu ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |
 | <*maximální interval*> | Řetězec | Pro pravidlo exponenciálního intervalu, nejdelší interval pro náhodně vybraný interval ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) |

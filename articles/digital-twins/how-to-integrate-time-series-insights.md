@@ -8,10 +8,10 @@ ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199896"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure pomocí [
 
 Řešení popsané v tomto článku vám umožní shromáždit a analyzovat historické údaje o řešení IoT. Azure Digital Twins se výborně hodí k zasílání dat do Time Series Insights, protože umožňuje korelovat více streamů dat a standardizovat informace, než je pošle do Time Series Insights. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct nastavit relaci s Time Series Insights, musíte mít **instanci digitálního vlákna Azure**. Tato instance by měla být nastavená na možnost aktualizovat digitální informace na základě dat, protože je potřeba aktualizovat zdvojené informace několikrát, aby se zobrazila data sledovaná v Time Series Insights. 
 

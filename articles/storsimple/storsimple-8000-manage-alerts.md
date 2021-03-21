@@ -1,23 +1,23 @@
 ---
 title: Zobrazení a správa výstrah pro zařízení řady StorSimple 8000
-description: Popisuje podmínky upozornění StorSimple a závažnost, způsob konfigurace oznámení o výstrahách a způsob používání služby StorSimple Device Manager pro správu výstrah.
+description: Popisuje podmínky upozornění StorSimple a závažnost, způsob konfigurace oznámení o výstrahách a způsob používání služby StorSimple Správce zařízení pro správu výstrah.
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016841"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Použití služby StorSimple Device Manager k zobrazení a správě upozornění StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Použití služby StorSimple Správce zařízení k zobrazení a správě upozornění StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Okno **výstrahy** ve službě StorSimple Device Manager poskytuje způsob, jak zkontrolovat a vymazat výstrahy týkající se zařízení StorSimple na základě v reálném čase. Z tohoto okna můžete centrálně monitorovat problémy se stavem zařízení StorSimple a celkovému řešení Microsoft Azure StorSimple.
+Okno **výstrahy** ve službě StorSimple Správce zařízení poskytuje způsob, jak zkontrolovat a vymazat výstrahy týkající se zařízení StorSimple na základě v reálném čase. Z tohoto okna můžete centrálně monitorovat problémy se stavem zařízení StorSimple a celkovému řešení Microsoft Azure StorSimple.
 
 Tento kurz popisuje běžné podmínky upozornění, úrovně závažnosti výstrah a postup konfigurace oznámení výstrah. Kromě toho zahrnuje rychlé referenční tabulky výstrah, které umožňují rychle vyhledat konkrétní výstrahu a vhodně reagovat.
 
@@ -28,7 +28,7 @@ Tento kurz popisuje běžné podmínky upozornění, úrovně závažnosti výst
 Vaše zařízení StorSimple generuje výstrahy v reakci na nejrůznější podmínky. Níže jsou uvedené nejběžnější typy podmínek upozornění:
 
 * **Problémy s hardwarem** – tyto výstrahy vás informují o stavu hardwaru. Poskytují informace o tom, jestli jsou potřeba upgrady firmwaru, pokud má síťové rozhraní nějaké problémy, nebo pokud dojde k potížím s jednou z vašich datových jednotek.
-* **Problémy s připojením** – tyto výstrahy se objevují v případě problémů s přenosem dat. Problémy s komunikací mohou nastat během přenosu dat do účtu služby Azure Storage a z důvodu nedostatku připojení mezi zařízeními a službou StorSimple Device Manager. Problémy s komunikací jsou závažné, aby je bylo možné opravit, protože došlo k mnoha bodům selhání. Předtím, než budete pokračovat na pokročilejší řešení potíží, byste měli nejdřív ověřit, že je k dispozici připojení k síti a přístup k Internetu. Pomoc s řešením potíží najdete v tématu [řešení potíží pomocí rutiny Test-Connection](storsimple-8000-troubleshoot-deployment.md).
+* **Problémy s připojením** – tyto výstrahy se objevují v případě problémů s přenosem dat. Problémy s komunikací mohou nastat během přenosu dat do účtu služby Azure Storage a z důvodu nedostatku připojení mezi zařízeními a službou StorSimple Správce zařízení. Problémy s komunikací jsou závažné, aby je bylo možné opravit, protože došlo k mnoha bodům selhání. Předtím, než budete pokračovat na pokročilejší řešení potíží, byste měli nejdřív ověřit, že je k dispozici připojení k síti a přístup k Internetu. Pomoc s řešením potíží najdete v tématu [řešení potíží pomocí rutiny Test-Connection](storsimple-8000-troubleshoot-deployment.md).
 * **Problémy s výkonem** – tyto výstrahy jsou způsobeny tím, že systém nepracuje optimálně, například když se nachází v případě vysoké zátěže.
 
 Kromě toho se můžou zobrazovat výstrahy související se zabezpečením, aktualizacemi nebo selháními úloh.
@@ -62,7 +62,7 @@ Po povolení e-mailových oznámení pro zařízení budou členové seznamu ozn
    2. V poli **Správci e-mailové služby** vyberte **Ano** , pokud chcete, aby správce služby a všichni spolusprávci dostávali oznámení o výstrahách.
    3. V poli **ostatní příjemci e-mailu** zadejte e-mailové adresy všech dalších příjemců, kteří by měli dostávat oznámení o výstrahách. Zadejte jména ve formátu *někdo \@ Somewhere.com*. Oddělte e-mailové adresy pomocí středníků. Pro každé zařízení můžete nakonfigurovat maximálně 20 e-mailových adres. 
       
-3. Pokud chcete poslat testovací e-mailové oznámení, klikněte na **Odeslat zkušební e-mail**. Služba StorSimple Device Manager zobrazí stavové zprávy, když přepošle oznámení o testu.
+3. Pokud chcete poslat testovací e-mailové oznámení, klikněte na **Odeslat zkušební e-mail**. Služba StorSimple Správce zařízení zobrazí stavové zprávy, když přepošle oznámení o testu.
 
     ![Nastavení výstrah](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
@@ -71,7 +71,7 @@ Po povolení e-mailových oznámení pro zařízení budou členové seznamu ozn
     ![E-mail s testovacím oznámením výstrah odeslán](./media/storsimple-8000-manage-alerts/configure-alerts-email4.png)
    
    > [!NOTE]
-   > Pokud zprávu o testovacím oznámení nelze odeslat, Služba StorSimple Device Manager zobrazí příslušnou chybovou zprávu. Počkejte pár minut a pak zkuste poslat zprávu testovacího oznámení znovu. 
+   > Pokud zprávu o testovacím oznámení nelze odeslat, Služba StorSimple Správce zařízení zobrazí příslušnou chybovou zprávu. Počkejte pár minut a pak zkuste poslat zprávu testovacího oznámení znovu. 
 
 5. Po dokončení konfigurace klikněte na **Uložit**. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
@@ -79,7 +79,7 @@ Po povolení e-mailových oznámení pro zařízení budou členové seznamu ozn
 
 ## <a name="view-and-track-alerts"></a>Zobrazení a sledování výstrah
 
-Okno StorSimple Device Manager Service Summary vám poskytne rychlý přehled o počtu upozornění na vašich zařízeních uspořádaných podle úrovně závažnosti.
+Okno StorSimple Správce zařízení Service Summary vám poskytne rychlý přehled o počtu upozornění na vašich zařízeních uspořádaných podle úrovně závažnosti.
 
 ![Řídicí panel výstrah](./media/storsimple-8000-manage-alerts/device-summary4.png)
 
@@ -159,7 +159,7 @@ Pokud v produkčním zařízení StorSimple dojde k chybě cloudového připojen
 
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
-| Operace obnovení nemohly obnovit všechna nastavení této služby. Data konfigurace zařízení jsou pro některá zařízení v nekonzistentním stavu. |Po zotavení po havárii se zjistila nekonzistence dat. |Šifrovaná data ve službě nejsou synchronizovaná s tímto zařízením na zařízení. Pokud chcete spustit proces synchronizace, autorizujte zařízení <*název zařízení*> z StorSimple Device Manager. Použijte rozhraní Windows PowerShell pro StorSimple ke spuštění `Restore-HcsmEncryptedServiceData` rutiny device <*název zařízení*> a zadáním starého hesla jako vstupu do této rutiny obnovíte profil zabezpečení. Pak spusťte `Invoke-HcsmServiceDataEncryptionKeyChange` rutinu, která aktualizuje šifrovací klíč dat služby. Až provedete příslušnou akci, vymažte tuto výstrahu ze stránky s upozorněními. |
+| Operace obnovení nemohly obnovit všechna nastavení této služby. Data konfigurace zařízení jsou pro některá zařízení v nekonzistentním stavu. |Po zotavení po havárii se zjistila nekonzistence dat. |Šifrovaná data ve službě nejsou synchronizovaná s tímto zařízením na zařízení. Pokud chcete spustit proces synchronizace, autorizujte zařízení <*název zařízení*> z StorSimple Správce zařízení. Použijte rozhraní Windows PowerShell pro StorSimple ke spuštění `Restore-HcsmEncryptedServiceData` rutiny device <*název zařízení*> a zadáním starého hesla jako vstupu do této rutiny obnovíte profil zabezpečení. Pak spusťte `Invoke-HcsmServiceDataEncryptionKeyChange` rutinu, která aktualizuje šifrovací klíč dat služby. Až provedete příslušnou akci, vymažte tuto výstrahu ze stránky s upozorněními. |
 
 ### <a name="hardware-alerts"></a>Hardwarové výstrahy
 

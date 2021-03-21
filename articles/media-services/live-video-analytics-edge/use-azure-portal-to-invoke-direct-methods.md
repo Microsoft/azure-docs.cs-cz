@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
 ms.openlocfilehash: ddd6a94015829a0b5dd4053f4d3a2fd6d2650d32
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492650"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Použití Azure Portal k vyvolání přímých metod
@@ -26,7 +26,7 @@ IoT Hub poskytuje možnost vyvolat [přímé metody](../../iot-hub/iot-hub-devgu
 
 V tomto článku se dozvíte, jak volat přímé volání metod na živé analýzy videí pro IoT Edge modul přes Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Máte živé video analýzy na IoT Edge modulu běžícím na hraničním zařízení, a to pomocí metod popsaných v tématu [rychlý Start: Live video Analytics na IoT Edge](./get-started-detect-motion-emit-events-quickstart.md) nebo pomocí [portálu.](./deploy-iot-edge-device.md)
 

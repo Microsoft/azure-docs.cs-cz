@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dbd4923dd2843ab2c043da69f1b72efd8e1eb701
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 0bbc799f946d318c305a96d9cb8c6831d9242ff6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573043"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578290"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Scénář: webová aplikace, která se přihlásí uživatelům
 
@@ -43,6 +43,12 @@ Pokud jste vývojářem Java, zkuste následující rychlý Start:
 
 [Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu](quickstart-v2-java-webapp.md)
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Pokud jste vývojář Node.js, zkuste následující rychlý Start:
+
+[Rychlý Start: přidání přihlášení pomocí Microsoftu do Node.js webové aplikace](quickstart-v2-nodejs-webapp-msal.md)
+
 # <a name="python"></a>[Python](#tab/python)
 
 Pokud vyvíjíte pomocí Pythonu, zkuste následující rychlý Start:
@@ -62,7 +68,7 @@ Webové aplikace ověřují uživatele ve webovém prohlížeči. V tomto scén�
 V druhé fázi můžete aplikaci povolit, aby vyvolala webová rozhraní API jménem přihlášeného uživatele. Tato další fáze je jiný scénář, který najdete ve [webové aplikaci, která volá webová rozhraní API](scenario-web-app-call-api-overview.md).
 
 > [!NOTE]
-> Přidání přihlašování do webové aplikace se týká ochrany webové aplikace a ověření tokenu uživatele, který se nachází v knihovnách  **middlewaru** . V případě .NET tento scénář ještě nevyžaduje knihovnu Microsoft Authentication Library (MSAL), která má za následek získání tokenu pro volání chráněných rozhraní API. Knihovny pro ověřování budou zavedeny do následného scénáře, pokud webová aplikace potřebuje volat webová rozhraní API.
+> Přidání přihlašování do webové aplikace se týká ochrany webové aplikace a ověření tokenu uživatele, který se nachází v knihovnách  **middlewaru** . V případě .NET tento scénář ještě nevyžaduje knihovnu Microsoft Authentication Library (MSAL), která má za následek získání tokenu pro volání chráněných rozhraní API. Knihovny ověřování pro .NET budou zavedeny do následného scénáře, pokud webová aplikace potřebuje volat webová rozhraní API.
 
 ## <a name="specifics"></a>Specifika
 
@@ -87,6 +93,10 @@ Přejděte k dalšímu článku v tomto scénáři [Registrace aplikace](./scena
 # <a name="java"></a>[Java](#tab/java)
 
 Přejděte k dalšímu článku v tomto scénáři [Registrace aplikace](./scenario-web-app-sign-user-app-registration.md?tabs=java).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Přejděte k dalšímu článku v tomto scénáři [Registrace aplikace](./scenario-web-app-sign-user-app-registration.md?tabs=nodejs).
 
 # <a name="python"></a>[Python](#tab/python)
 

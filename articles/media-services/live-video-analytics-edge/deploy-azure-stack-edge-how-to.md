@@ -4,10 +4,10 @@ description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730265"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Nasazení Live video Analytics na Azure Stack Edge
@@ -19,7 +19,7 @@ Pro Live video Analytics nasadíme prostřednictvím IoT Hub, ale prostředky Az
 > [!TIP]
 > Použití rozhraní API Kubernetes (K8s) pro vlastní nasazení je pokročilý případ. Doporučuje se, aby zákazník vytvořil hraniční moduly a nasadil prostřednictvím IoT Hub do každého prostředku Azure Stack Edge místo používání rozhraní Kubernetes API. V tomto článku vám ukážeme, jak nasadit modul Live video Analytics pomocí IoT Hub.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner).
 * Prostředek [Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)
@@ -232,7 +232,7 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
     
    Pokud je připojení úspěšné, zobrazí se seznam hraničních zařízení. Měl by se zobrazit Azure Stack Edge. Pomocí místní nabídky teď můžete spravovat zařízení IoT Edge a pracovat s Azure IoT Hub. Chcete-li zobrazit moduly nasazené na hraničním zařízení, v části zařízení Azure Stack rozbalte uzel moduly.
     
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 * **Přístup k rozhraní Kubernetes API (kubectl)**
 

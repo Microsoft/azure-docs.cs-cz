@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.reviewer: sdash
 ms.openlocfilehash: d7c610e374dcb7b97850d815ba8bb927cdebacfc
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103012560"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
@@ -160,7 +160,7 @@ Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metrik
 * [Automatické nastavení testu dostupnosti pomocí skriptů PowerShell](./powershell.md#add-an-availability-test).
 * Nastavení [webhook](../alerts/alerts-webhooks.md), který je volán při vydání výstrahy.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 

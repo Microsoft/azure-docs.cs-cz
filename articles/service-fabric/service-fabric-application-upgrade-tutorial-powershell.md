@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4b038f4a41ee02960a02c4445b65eb2360a75761
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98792027"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric upgrade aplikace pomocí PowerShellu
@@ -56,7 +56,7 @@ Nyní můžete použít [Service Fabric Explorer k zobrazení clusteru a aplikac
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: aktualizace ukázky vizuálních objektů
 Můžete si všimnout, že ve verzi, která byla nasazena v kroku 1, se neotáčí vizuální objekty. Pojďme tuto aplikaci upgradovat na jednu, kde se také otočí vizuální objekty.
 
-V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor StatefulVisualObjectActor.cs. V tomto souboru přejděte do metody `MoveObject` , odkomentujte `this.State.Move()` a odkomentujte `this.State.Move(true)` . Tato změna po upgradu služby tyto objekty otočí.
+V řešení VisualObjects vyberte projekt VisualObjects. ActorService a otevřete soubor StatefulVisualObjectActor. cs. V tomto souboru přejděte do metody `MoveObject` , odkomentujte `this.State.Move()` a odkomentujte `this.State.Move(true)` . Tato změna po upgradu služby tyto objekty otočí.
 
 Musíme také aktualizovat soubor *ServiceManifest.xml* (pod PackageRoot) projektu **VisualObjects. ActorService**. Aktualizujte *CodePackage* a verzi služby na 2,0 a odpovídající řádky v souboru *ServiceManifest.xml* .
 Po kliknutí pravým tlačítkem na řešení můžete použít možnost *upravit soubory manifestu* aplikace Visual Studio, aby se soubor manifestu změnil.

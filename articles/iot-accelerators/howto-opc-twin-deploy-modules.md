@@ -10,10 +10,10 @@ ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 38235f9b01b321e27664ee837763732971f0b85c
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102201494"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Nasazení OPC vyzdvojeného modulu a závislostí od začátku
@@ -113,7 +113,7 @@ Všechny moduly jsou nasazeny pomocí manifestu nasazení.  Příklad manifestu 
 
 Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brány, je prostřednictvím Azure Portal.  
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. Nasaďte zdvojené [závislosti](howto-opc-twin-deploy-dependencies.md) OPC a získá výsledný `.env` soubor. Poznamenejte si nasazenou `hub name` `PCS_IOTHUBREACT_HUB_NAME` proměnnou ve výsledném `.env` souboru.
 
@@ -180,7 +180,7 @@ Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brán
 
 ## <a name="deploying-using-azure-cli"></a>Nasazení pomocí Azure CLI
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. Nainstalujte nejnovější verzi [rozhraní příkazového řádku Azure (AZ)](/cli/azure/) z [tohoto místa](/cli/azure/install-azure-cli).
 

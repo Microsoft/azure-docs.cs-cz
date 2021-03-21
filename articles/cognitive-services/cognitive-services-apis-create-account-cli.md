@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: c1e8b260f6c06d8f26f5ba99b4fb02edfa5e8656
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103472105"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure Command-Line (CLI)
@@ -29,7 +29,7 @@ V tomto rychlém startu se dozvíte, jak se zaregistrovat k Azure Cognitive Serv
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Platné předplatné Azure – [Vytvořte si ho](https://azure.microsoft.com/free/cognitive-services) zdarma.
 * [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/install-azure-cli)
@@ -103,7 +103,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 | Služba            | Druh                 |
 |--------------------|----------------------|
-| Hlasové služby    | `SpeechServices`     |
+| Služby Speech    | `SpeechServices`     |
 | Rozpoznávání řeči | `SpeakerRecognition` |
 
 ### <a name="language"></a>Jazyk

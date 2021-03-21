@@ -3,12 +3,12 @@ title: 'Chyba řešení potíží: Modul runtime služby Azure Functions je nedo
 description: Přečtěte si, jak řešit potíže s neplatným účtem úložiště.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: a62001cedd695badc72eb76c93ea9c3cb4507403
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 392882fc2f0394e61aee973a20479d8f1fa9bc92
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499624"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606969"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Chyba řešení potíží: "Modul runtime služby Azure Functions je nedosažitelný"
 
@@ -59,6 +59,7 @@ Vaše aplikace Function App musí být schopna získat přístup k účtu úlož
 * Aplikace Function App se nasadí do vašeho App Service Environment (pomocného mechanismu) bez správných síťových pravidel, která umožňují provoz do a z účtu úložiště.
 
 * Brána firewall účtu úložiště je povolená a není nakonfigurovaná tak, aby umožňovala provoz do a z funkcí. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* Ověřte, že `allowSharedKeyAccess` nastavení je nastaveno na `true` výchozí hodnotu. Další informace najdete v tématu [zabránění autorizaci sdíleného klíče pro účet Azure Storage](https://docs.microsoft.com/azure/storage/common/shared-key-authorization-prevent?tabs=portal#verify-that-shared-key-access-is-not-allowed). 
 
 ## <a name="daily-execution-quota-is-full"></a>Kvóta denního spuštění je plná.
 

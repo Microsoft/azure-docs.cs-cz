@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 9166125fac28f43a93cbee2875b91bee986b1400
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d2055bf812c3dc986a907d4358fa0e74e8af20fa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397463"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599659"
 ---
 # <a name="how-an-application-gateway-works"></a>Jak funguje Aplikační brána
 
@@ -30,7 +30,7 @@ Tento článek vysvětluje, jak Aplikační brána přijímá příchozí požad
 
 4. Pokud je brána firewall webových aplikací (WAF) používána, brána Application Gateway kontroluje hlavičky požadavků a text, pokud jsou k dispozici, proti pravidlům WAF. Tato akce určuje, jestli je požadavek platným požadavkem nebo bezpečnostní hrozbou. Pokud je požadavek platný, bude směrován do back-endu. Pokud je požadavek neplatný a WAF je v režimu prevence, je zablokovaná jako bezpečnostní hrozba. Pokud je v režimu detekce, požadavek se vyhodnocuje a protokoluje, ale pořád se přepošle na back-end Server.
 
-Službu Azure Application Gateway lze použít jako interní nástroj pro vyrovnávání zatížení aplikace nebo jako internetový nástroj pro vyrovnávání zatížení. Internetová služba brány používá veřejné IP adresy. Název DNS internetové brány s přístupem k Internetu je veřejně přístupný k veřejné IP adrese. V důsledku toho mohou internetové brány s přístupem k Internetu směrovat požadavky klientů na Internet.
+Službu Azure Application Gateway lze použít jako interní nástroj pro vyrovnávání zatížení aplikace nebo jako internetový nástroj pro vyrovnávání zatížení. Internetová služba brány používá veřejné IP adresy. Název DNS internetové brány s přístupem k Internetu je veřejně přístupný k veřejné IP adrese. V důsledku toho mohou internetové brány s přístupem k Internetu směrovat požadavky klientů z Internetu.
 
 Interní aplikační brány používají jenom soukromé IP adresy. Pokud používáte vlastní [zónu nebo privátní DNS](../dns/private-dns-overview.md), měl by být název domény interně přeložitelný na soukromou IP adresu Application Gateway. Interní nástroje pro vyrovnávání zatížení proto můžou směrovat požadavky od klientů jenom na přístup k virtuální síti pro službu Application Gateway.
 
@@ -52,9 +52,9 @@ Když Aplikační brána pošle původní požadavek na back-end Server, dodrž�
 
  >[!NOTE]
 >Pokud back-end fond:
-> - **Je veřejný koncový bod** , používá služba Application Gateway svou veřejnou IP adresu front-end k dosažení serveru. Pokud není k dispozici veřejná IP adresa front-endu, je pro odchozí externí připojení přiřazena jedna.
-> - **Obsahuje interně přeložitelný plně kvalifikovaný název domény nebo soukromou IP adresu** , služba Application Gateway směruje požadavek na back-end Server pomocí privátních IP adres instance.
-> - **Obsahuje externí koncový bod nebo externě přeložitelný plně kvalifikovaný název domény** , protože služba Application Gateway směruje požadavek na back-end Server pomocí veřejné IP adresy front-endu. Překlad DNS je založený na soukromé zóně DNS nebo na vlastním serveru DNS, pokud je nakonfigurovaný, nebo používá výchozí DNS poskytovanou systémem Azure. Pokud není k dispozici veřejná IP adresa front-endu, je pro odchozí externí připojení přiřazena jedna.
+> - **Je veřejný koncový bod**, používá služba Application Gateway svou veřejnou IP adresu front-end k dosažení serveru. Pokud není k dispozici veřejná IP adresa front-endu, je pro odchozí externí připojení přiřazena jedna.
+> - **Obsahuje interně přeložitelný plně kvalifikovaný název domény nebo soukromou IP adresu**, služba Application Gateway směruje požadavek na back-end Server pomocí privátních IP adres instance.
+> - **Obsahuje externí koncový bod nebo externě přeložitelný plně kvalifikovaný název domény**, protože služba Application Gateway směruje požadavek na back-end Server pomocí veřejné IP adresy front-endu. Překlad DNS je založený na soukromé zóně DNS nebo na vlastním serveru DNS, pokud je nakonfigurovaný, nebo používá výchozí DNS poskytovanou systémem Azure. Pokud není k dispozici veřejná IP adresa front-endu, je pro odchozí externí připojení přiřazena jedna.
 
 ### <a name="modifications-to-the-request"></a>Úpravy žádosti
 

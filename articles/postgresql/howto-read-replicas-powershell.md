@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b0a5547928bd7d19343c50e40ab9fcb2c335e893
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97674527"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for PostgreSQL pomocí prostředí PowerShell
@@ -22,7 +22,7 @@ V tomto článku se naučíte vytvářet a spravovat repliky pro čtení ve slu�
 
 Pomocí PowerShellu můžete vytvářet a spravovat repliky pro čtení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce budete potřebovat:
 
@@ -51,10 +51,10 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzPostgreSqlServerReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
-| Název | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
+| Name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
 
 Pokud chcete vytvořit repliku čtení ve více oblastech, použijte parametr **Location (umístění** ). V následujícím příkladu se vytvoří replika v oblasti **západní USA** .
 
@@ -80,7 +80,7 @@ Get-AzPostgreSQLReplica -ResourceGroupName myresourcegroup -ServerName mydemoser
 
 `Get-AzPostgreSQLReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | ServerName | mydemoserver | Název nebo ID primárního serveru. |

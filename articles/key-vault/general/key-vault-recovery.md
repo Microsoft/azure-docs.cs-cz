@@ -9,10 +9,10 @@ author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
 ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790380"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault správu obnovení s ochranou pomocí obnovitelného odstranění a mazání
@@ -23,7 +23,7 @@ Další informace o Key Vault najdete v tématu.
 - [Přehled služby Key Vault](overview.md)
 - [Přehled Azure Key Vault klíčů, tajných kódů a certifikátů](about-keys-secrets-certificates.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/dotnet) .
 * [Modul PowerShellu](/powershell/azure/install-az-ps).
@@ -31,7 +31,7 @@ Další informace o Key Vault najdete v tématu.
 * Key Vault – můžete ho vytvořit pomocí [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)nebo [Azure PowerShell](../general/quick-create-powershell.md)
 * Uživatel bude potřebovat následující oprávnění (na úrovni předplatného), aby mohl provádět operace s odstraněnými trezory:
 
-  | Oprávnění | Popis |
+  | Oprávnění | Description |
   |---|---|
   |Microsoft. webdeletedVaults trezor/Locations//Read|Zobrazit vlastnosti neodstraněného trezoru klíčů|
   |Microsoft. webdeletedVaults trezor/Locations//vyprázdnění/Action|Vymazání tichého odstraněného trezoru klíčů|

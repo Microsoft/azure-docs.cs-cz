@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2021
 ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98611028"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
@@ -62,15 +62,15 @@ Příklad: Předpokládejme, že máte zřízen kontejner s 400 RU/s a úložiš
 
 **Poznámka:** minimální propustnost 10 ru/s za GB úložiště se dá snížit, pokud je váš účet způsobilý pro náš [program vysokého úložiště/nízké propustnosti](set-throughput.md#high-storage-low-throughput-program).
 
-#### <a name="minimum-throughput-on-shared-throughput-database"></a>Minimální propustnost u sdílené databáze propustnosti 
-Pokud chcete odhadnout minimální propustnost vyžadovanou pro sdílenou databázi propustnosti s ruční propustností, najděte maximum z těchto hodnot:
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>Minimální propustnost databáze se sdílenou propustností 
+Pokud chcete odhadnout minimální požadovanou propustnost databáze se sdílenou a ručně nastavenou propustností, zjistěte, která z následujících hodnot je nejvyšší:
 
 * 400 RU/s 
 * Aktuální úložiště v GB × 10 RU/s
 * Nejvyšší RU/s zřízené v databázi/100
 * 400 + MAX (počet kontejnerů: 25, 0) × 100 RU/s
 
-Příklad: Předpokládejme, že máte zřízenou databázi s 400 RU/s, 15 GB úložiště a 10 kontejnery. Minimální RU/s je `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Pokud v databázi existovalo 30 kontejnerů, minimální RU/s by byla `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
+Příklad: Předpokládejme, že máte databázi zřízenou s 400 RU/s, 15 GB úložiště a 10 kontejnery. Minimální RU/s je `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Pokud v databázi existovalo 30 kontejnerů, minimální RU/s by byla `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
 
 **Poznámka:** minimální propustnost 10 ru/s za GB úložiště se dá snížit, pokud je váš účet způsobilý pro náš [program vysokého úložiště/nízké propustnosti](set-throughput.md#high-storage-low-throughput-program).
 

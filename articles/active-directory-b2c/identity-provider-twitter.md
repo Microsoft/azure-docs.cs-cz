@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 397fff3fafad52b3b989049096fb2d3e1fa2cba1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 3699743c5d1b3330715984d2b6116cfebafe74f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488512"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579820"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Twitteru pomocí Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ ms.locfileid: "103488512"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -69,6 +69,8 @@ Pokud chcete povolit přihlášení pro uživatele s účtem Twitteru v Azure AD
 1. Vyberte **Uložit**.
 
 ## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Přidání poskytovatele identity Twitteru do toku uživatele 
+
+V tuto chvíli je poskytovatel identity Twitteru nastavený, ale ještě není dostupný na žádném z přihlašovacích stránek. Přidání poskytovatele identity Twitteru do toku uživatele:
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
 1. Vyberte tok uživatele, který chcete přidat poskytovatele identity Twitteru.

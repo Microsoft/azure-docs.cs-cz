@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c6bf296b5173a662b1e9dd7b025648e3f16d23c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88556239"
 ---
 # <a name="what-is-msix-app-attach"></a>Co je připojení aplikace MSIX?
@@ -45,7 +45,7 @@ Připojení aplikace MSIX se musí použít mimo VDI nebo mezipaměť softwarov�
 
 Následující tabulka porovnává klíčové funkce připojení aplikace MSIX a vrstvení aplikací.
 
-| Příznak | Tradiční vrstvení aplikací  | Připojení aplikace MSIX  |
+| Funkce | Tradiční vrstvení aplikací  | Připojení aplikace MSIX  |
 |-----|-----------------------------|--------------------|
 | Formát               | Různé technologie vrstev aplikací vyžadují různé speciální formáty. | Funguje s nativním formátem balíčku MSIX.        |
 | Opětovné sbalení režie | Speciální formáty vyžadují sekvencování a opětovné sbalení na aktualizaci.         | Aplikace publikované jako MSIX nevyžadují opětovné sbalení. Pokud však není balíček MSIX k dispozici, stále platí další režie. |

@@ -12,10 +12,10 @@ author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 8919285f31e04a51ce10afe3313b28cf86b64ee0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102055693"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>Prozkoumejte riziko pomocí Identity Protection v Azure AD B2C
@@ -38,7 +38,7 @@ Při používání Identity Protection Vezměte v úvahu následující skutečn
 - Identity Protection je k dispozici pro místní i sociální identity, jako je Google nebo Facebook. Pro sociální identity musí být podmíněný přístup aktivovaný. Zjišťování je omezené, protože přihlašovací údaje účtu sociální sítě spravuje externí zprostředkovatel identity.
 - V Azure AD B2C tenantech je k dispozici pouze podmnožina [Azure AD identity Protectionch detekcí rizik](../active-directory/identity-protection/overview-identity-protection.md) . Azure AD B2C podporuje následující detekce rizik:  
 
-|Typ detekce rizika  |Popis  |
+|Typ detekce rizika  |Description  |
 |---------|---------|
 | Neobvyklá cesta     | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele.        |
 |Anonymní IP adresa     | Přihlaste se z anonymní IP adresy (například: Browser, Anonymizer VPN).        |
@@ -62,7 +62,7 @@ U některých funkcí ochrany identit se vyžaduje Azure AD B2C Premium P2. V p�
 |Stažení sestavy |  &#x2713;| &#x2713;|
 |Přístup k MS Graph API |  &#x2713;| &#x2713;|
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

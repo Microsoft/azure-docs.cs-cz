@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 9b8402e5ae4d0358d17342d30ddf36f5e1228f65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 19b32bed15a4d292a7427d8401e777c7761e45a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393458"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592026"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Kopírování dat z a do serveru SFTP pomocí Azure Data Factory
 
@@ -23,7 +23,7 @@ ms.locfileid: "100393458"
 
 Tento článek popisuje, jak kopírovat data z a na server zabezpečeného FTP (SFTP). Pokud se chcete dozvědět o Azure Data Factory, přečtěte si [úvodní článek](introduction.md).
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Konektor SFTP se podporuje pro následující činnosti:
 
@@ -34,10 +34,10 @@ Konektor SFTP se podporuje pro následující činnosti:
 
 Konkrétně konektor SFTP podporuje:
 
-- Kopírování souborů z a do serveru SFTP pomocí *základního* nebo *SshPublicKey* ověřování.
+- Kopírování souborů z a na server SFTP pomocí služby **Basic**, **veřejného klíče SSH** nebo služby **Multi-Factor** Authentication.
 - Kopírování souborů tak, jak jsou, nebo analýzou nebo generováním souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -58,7 +58,7 @@ Pro propojenou službu SFTP jsou podporovány následující vlastnosti:
 | port | Port, na kterém naslouchá server SFTP.<br/>Povolená hodnota je celé číslo a výchozí hodnota je *22*. |No |
 | skipHostKeyValidation | Určete, zda se má přeskočit ověření klíče hostitele.<br/>Povolené hodnoty jsou *true* a *false* (výchozí).  | No |
 | hostKeyFingerprint | Zadejte otisk prstu hostitelského klíče. | Ano, pokud je hodnota "skipHostKeyValidation" nastavená na false.  |
-| authenticationType | Zadejte typ ověřování.<br/>Povolené hodnoty jsou *Basic* a *SshPublicKey*. Další vlastnosti najdete v části [použití základního ověřování](#use-basic-authentication) . Příklady JSON najdete v části [použití ověření veřejného klíče SSH](#use-ssh-public-key-authentication) . |Yes |
+| authenticationType | Zadejte typ ověřování.<br/>Povolené hodnoty jsou *Basic*, *SshPublicKey* a *vícefaktorového*. Další vlastnosti najdete v části [použití základního ověřování](#use-basic-authentication) . Příklady JSON najdete v části [použití ověření veřejného klíče SSH](#use-ssh-public-key-authentication) . |Yes |
 | connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud modul runtime integrace neurčíte, služba použije výchozí Azure Integration Runtime. |No |
 
 ### <a name="use-basic-authentication"></a>Použít základní ověřování
@@ -75,7 +75,6 @@ Chcete-li použít základní ověřování, nastavte vlastnost *AuthenticationT
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -117,7 +116,6 @@ Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte vlast
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "Linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -161,6 +159,43 @@ Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte vlast
             "passPhrase": {
                 "type": "SecureString",
                 "value": "<pass phrase>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of integration runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-multi-factor-authentication"></a>Použití Multi-Factor Authentication
+
+Pokud chcete použít vícefaktorové ověřování, které je kombinací základních ověřování pomocí veřejného klíče SSH a SSH, zadejte uživatelské jméno, heslo a informace o privátních klíčích popsané v předchozích částech.
+
+**Příklad: Multi-Factor Authentication**
+
+```json
+{
+    "name": "SftpLinkedService",
+    "properties": {
+        "type": "Sftp",
+        "typeProperties": {
+            "host": "<host>",
+            "port": 22,
+            "authenticationType": "MultiFactor",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            },
+            "privateKeyContent": {
+                "type": "SecureString",
+                "value": "<base64 encoded private key content>"
+            },
+            "passPhrase": {
+                "type": "SecureString",
+                "value": "<passphrase for private key>"
             }
         },
         "connectVia": {
@@ -236,7 +271,7 @@ V `storeSettings` nastaveních ve zdroji kopírování založeném na formátu j
 | modifiedDatetimeEnd      | Platí to samé jako výše.                                               | No                                            |
 | enablePartitionDiscovery | U souborů, které jsou rozdělené na oddíly, určete, jestli se mají analyzovat oddíly z cesty k souboru, a přidejte je jako další zdrojové sloupce.<br/>Povolené hodnoty jsou **false** (výchozí) a **true**. | No                                            |
 | partitionRootPath | Pokud je povoleno zjišťování oddílů, zadejte absolutní kořenovou cestu, aby bylo možné číst rozdělené složky jako sloupce dat.<br/><br/>Pokud není zadaný, ve výchozím nastavení<br/>– Pokud použijete cestu k souboru v datové sadě nebo v seznamu souborů na zdroji, je kořenová cesta oddílu cestou nakonfigurovanou v datové sadě.<br/>– Když použijete filtr složky se zástupnými znaky, kořenová cesta oddílu je dílčí cesta před prvním zástupným znakem.<br/><br/>Předpokládejme například, že nakonfigurujete cestu v datové sadě jako kořen/složka/rok = 2020/měsíc = 08/Day = 27:<br/>– Pokud zadáte kořenovou cestu oddílu jako "root/složka/Year = 2020", aktivita kopírování vygeneruje další dva sloupce `month` a `day` hodnoty "08" a "27" společně se sloupci uvnitř souborů.<br/>-Pokud není zadána kořenová cesta oddílu, nebude vygenerován žádný sloupec navíc. | No                                            |
-| maxConcurrentConnections | Počet připojení, která se můžou souběžně připojit k úložišti úložiště. Zadejte hodnotu pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No                                            |
+| maxConcurrentConnections | Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení.| No                                            |
 
 **Příklad:**
 
@@ -289,7 +324,7 @@ Následující vlastnosti jsou podporovány pro SFTP v `storeSettings` nastaven�
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | typ                     | Vlastnost *Type* v poli `storeSettings` musí být nastavená na *SftpWriteSettings*. | Yes      |
 | copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Je-li zadán název souboru, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | No       |
-| maxConcurrentConnections | Počet připojení, která se můžou souběžně připojit k úložišti úložiště. Zadejte hodnotu pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No       |
+| maxConcurrentConnections | Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení. | No       |
 | useTempFileRename | Určete, zda se mají nahrávat do dočasných souborů a přejmenovat je, nebo přímo zapisovat do cílové složky nebo umístění souboru. Ve výchozím nastavení Azure Data Factory nejprve zapisovat do dočasných souborů a po dokončení nahrávání je přejmenuje. Tato sekvence pomáhá (1) vyhnout se konfliktům, které by mohly vést k poškození souboru, pokud máte jiné procesy zapsané do stejného souboru a (2) zajistěte, aby během přenosu existovala původní verze souboru. Pokud váš server SFTP nepodporuje operaci přejmenování, zakažte tuto možnost a ujistěte se, že nemáte souběžný zápis do cílového souboru. Další informace najdete v tipu Poradce při potížích na konci této tabulky. | No. Výchozí hodnota je *true*. |
 | operationTimeout | Doba čekání před vypršením časového limitu každého požadavku na zápis na server SFTP Výchozí hodnota je 60 min (01:00:00).|No |
 
@@ -422,7 +457,7 @@ Informace o vlastnostech aktivity odstranění najdete v tématu [Odstranění a
 |:--- |:--- |:--- |
 | typ | Vlastnost *Type* zdroje aktivity kopírování musí být nastavená na *FileSystemSource* . |Yes |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Pokud je rekurzivní nastavení nastaveno na *hodnotu true* a jímka je úložiště založené na souborech, prázdné složky a podsložky se nebudou kopírovat ani vytvářet v jímky.<br/>Povolené hodnoty jsou *true* (výchozí) a *false* . | No |
-| maxConcurrentConnections | Počet připojení, která se můžou souběžně připojit k úložišti úložiště. Zadejte číslo pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No |
+| maxConcurrentConnections |Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení.| No |
 
 **Příklad:**
 

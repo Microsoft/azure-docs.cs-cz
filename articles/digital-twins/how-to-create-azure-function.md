@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7bb9b6d4a6ca006952d709244e6526345d44431e
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: f1ed4b9beda9848bba8fb12783f49dcf8016d3dd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630253"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590615"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Připojení aplikací Function App v Azure pro zpracování dat
 
@@ -48,7 +48,7 @@ Vyberte typ Function App *Event Grid Trigger* a vyberte _vytvořit_.
 
 :::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Snímek obrazovky sady Visual Studio zobrazující dialogové okno pro vytvoření nové aplikace Azure Functions. Je zvýrazněna možnost Trigger Event Grid.":::
 
-Po vytvoření aplikace Function App vytvoří Visual Studio ukázku kódu v souboru **function1.cs** ve složce projektu. Tato krátká funkce se používá k protokolování událostí.
+Po vytvoření aplikace Function App bude Visual Studio generovat ukázku kódu v souboru **function1. cs** ve složce projektu. Tato krátká funkce se používá k protokolování událostí.
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Snímek obrazovky sady Visual Studio v okně projektu pro nový projekt, který byl vytvořen. Pro ukázkovou funkci s názvem Function1 je k dispozici kód." lightbox="media/how-to-create-azure-function/visual-studio-sample-code.png":::
 
@@ -63,13 +63,13 @@ Aby bylo možné použít sadu SDK, budete muset do svého projektu zahrnout ná
 * [System .NET. http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
 
-Potom ve Visual Studiu Průzkumník řešení otevřete soubor _function1.cs_ , kde máte vzorový kód a přidejte následující `using` příkazy pro tyto balíčky do funkce.
+Potom ve Visual Studiu Průzkumník řešení otevřete soubor _function1. cs_ , kde máte vzorový kód a přidejte následující `using` příkazy pro tyto balíčky do funkce.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
 ## <a name="add-authentication-code-to-the-function"></a>Přidání ověřovacího kódu do funkce
 
-Nyní deklarujete proměnné na úrovni třídy a přidáte ověřovací kód, který umožní funkci přístup k digitálním Vlákenám Azure. Do souboru _function1.cs_ přidáte následující funkce.
+Nyní deklarujete proměnné na úrovni třídy a přidáte ověřovací kód, který umožní funkci přístup k digitálním Vlákenám Azure. Do souboru _function1. cs_ přidáte následující funkce.
 
 * Kód pro čtení adresy URL služby Azure Digital jako **proměnné prostředí** Je dobrým zvykem přečíst si adresu URL služby z proměnné prostředí, ale nemusíte ji pevně zakódovat do funkce. [Později v tomto článku](#set-up-security-access-for-the-function-app)nastavíte hodnotu této proměnné prostředí. Další informace o proměnných prostředí najdete v tématu [*Správa aplikace Function App*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
 
@@ -118,12 +118,14 @@ Přístup k zabezpečení pro aplikaci Function App můžete nastavit buď pomoc
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
 
 Tyto příkazy můžete spustit v [Azure Cloud Shell](https://shell.azure.com) nebo v [místní instalaci Azure CLI](/cli/azure/install-azure-cli).
+Pomocí spravované systémové identity aplikace Function App můžete dát IT roli _**vlastníka dat**_ k digitálnímu vynechání dat Azure pro instanci digitálních vláken Azure. Tím se v instanci poskytne oprávnění aplikace Function App, aby se prováděly aktivity roviny dat. Pak zajistěte, aby byla adresa URL instance digitálního vlákna Azure dostupná pro vaši funkci nastavením proměnné prostředí.
 
 ### <a name="assign-access-role"></a>Přiřadit roli přístupu
 
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
+
 Funkce kostry z předchozích příkladů vyžaduje předání nosných tokenů, aby bylo možné provést ověření pomocí digitálních vláken Azure. Abyste se ujistili, že je tento nosný token předán, budete muset nastavit oprávnění [Identita spravované služby (MSI)](../active-directory/managed-identities-azure-resources/overview.md) pro aplikaci Function App pro přístup k digitálnímu vlákna Azure. Tento postup je nutné provést pouze jednou pro každou aplikaci Function App.
 
-Pomocí spravované systémové identity aplikace Function App můžete dát IT roli _**vlastníka dat**_ k digitálnímu vynechání dat Azure pro instanci digitálních vláken Azure. Tím se v instanci poskytne oprávnění aplikace Function App, aby se prováděly aktivity roviny dat. Pak zajistěte, aby byla adresa URL instance digitálního vlákna Azure dostupná pro vaši funkci nastavením proměnné prostředí.
 
 1. Chcete-li zobrazit podrobnosti o identitě spravované systémem pro funkci, použijte následující příkaz. Poznamenejte si pole _principalId_ ve výstupu.
 
@@ -162,6 +164,8 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 Proveďte následující kroky v [Azure Portal](https://portal.azure.com/).
 
 ### <a name="assign-access-role"></a>Přiřadit roli přístupu
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 Spravovaná identita přiřazená systémem umožňuje prostředkům Azure ověřování v cloudových službách (například Azure Key Vault) bez uložení přihlašovacích údajů do kódu. Po povolení se všechna potřebná oprávnění dají udělit prostřednictvím řízení přístupu na základě role v Azure. Životní cyklus tohoto typu spravované identity je vázaný na životní cyklus tohoto prostředku. Každý prostředek navíc může mít pouze jednu spravovanou identitu přiřazenou systémem.
 

@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 3b73d528802a8aa33c6122eaf5edfa9d046b6753
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962073"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrace služby App Service Environment s interním nástrojem pro vyrovnávání zatížení se službou Azure Application Gateway #
@@ -33,7 +33,7 @@ Tento návod vám ukáže, jak:
 * Nakonfigurujte svou aplikaci tak, aby dodržovala vlastní název domény.
 * Upravte název veřejného hostitele DNS, který odkazuje na vaši Aplikační bránu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K integraci svého Application Gateway s App Service Environment interního nástroje potřebujete:
 
@@ -60,31 +60,31 @@ Bránu nemůžete umístit ani do podsítě, kterou používá interního nástr
 
 2. V oblasti **základy** :
 
-   a. Do pole **název**zadejte název Application Gateway.
+   a. Do pole **název** zadejte název Application Gateway.
 
-   b. Jako **úroveň**vyberte **WAF**.
+   b. Jako **úroveň** vyberte **WAF**.
 
-   c. V poli **předplatné**vyberte stejné předplatné, které používá App Service Environment virtuální síť.
+   c. V poli **předplatné** vyberte stejné předplatné, které používá App Service Environment virtuální síť.
 
-   d. V části **Skupina prostředků**vytvořte nebo vyberte skupinu prostředků.
+   d. V části **Skupina prostředků** vytvořte nebo vyberte skupinu prostředků.
 
-   e. V poli **umístění**vyberte umístění virtuální sítě App Service Environment.
+   e. V poli **umístění** vyberte umístění virtuální sítě App Service Environment.
 
    ![Základy vytváření nových Application Gateway][2]
 
 3. V oblasti **Nastavení** :
 
-   a. Pro **virtuální síť**vyberte App Service Environment virtuální síť.
+   a. Pro **virtuální síť** vyberte App Service Environment virtuální síť.
 
-   b. V poli **podsíť**vyberte podsíť, ve které musí být nasazen Application Gateway. Nepoužívejte GatewaySubnet, protože tím zabráníte vytváření bran VPN.
+   b. V poli **podsíť** vyberte podsíť, ve které musí být nasazen Application Gateway. Nepoužívejte GatewaySubnet, protože tím zabráníte vytváření bran VPN.
 
-   c. Jako **typ IP adresy**vyberte **veřejné**.
+   c. Jako **typ IP adresy** vyberte **veřejné**.
 
-   d. V případě **veřejné IP adresy**vyberte veřejnou IP adresu. Pokud ho ještě nemáte, vytvořte ho hned teď.
+   d. V případě **veřejné IP adresy** vyberte veřejnou IP adresu. Pokud ho ještě nemáte, vytvořte ho hned teď.
 
-   e. V případě **protokolu**vyberte **http** nebo **https**. Pokud konfigurujete pro protokol HTTPS, je nutné zadat certifikát PFX.
+   e. V případě **protokolu** vyberte **http** nebo **https**. Pokud konfigurujete pro protokol HTTPS, je nutné zadat certifikát PFX.
 
-   f. V případě **brány firewall webových aplikací**můžete bránu firewall povolit a také ji nastavit pro **detekci** nebo **prevenci** , jak se to hodí.
+   f. V případě **brány firewall webových aplikací** můžete bránu firewall povolit a také ji nastavit pro **detekci** nebo **prevenci** , jak se to hodí.
 
    ![Nové nastavení vytváření Application Gateway][3]
     
@@ -98,7 +98,7 @@ Bránu nemůžete umístit ani do podsítě, kterou používá interního nástr
 
    ![Konfigurace sond stavu][5]
     
-7. Po dokončení procesu konfigurace sond stavu vyberte **Nastavení http**. Upravte stávající nastavení, vyberte **použít vlastní test paměti**a vyberte test, který jste nakonfigurovali.
+7. Po dokončení procesu konfigurace sond stavu vyberte **Nastavení http**. Upravte stávající nastavení, vyberte **použít vlastní test paměti** a vyberte test, který jste nakonfigurovali.
 
    ![Konfigurace nastavení HTTP][6]
     
@@ -106,7 +106,7 @@ Bránu nemůžete umístit ani do podsítě, kterou používá interního nástr
 
    ![Portál Application Gateway][7]
 
-9. Nastavte název vlastní domény vaší aplikace ve vašem interního nástroje App Service Environment. Na portálu přejdete na aplikaci a v části **Nastavení**vyberte **vlastní domény**.
+9. Nastavte název vlastní domény vaší aplikace ve vašem interního nástroje App Service Environment. Na portálu přejdete na aplikaci a v části **Nastavení** vyberte **vlastní domény**.
 
    ![Nastavení vlastního názvu domény v aplikaci][8]
 

@@ -7,10 +7,10 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/25/2021
 ms.openlocfilehash: c6e946d5aedb06899a44851b79581dbc518f41b0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052309"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
@@ -74,7 +74,7 @@ Každý datový bod odeslaný do Azure Monitor musí být označený pomocí ča
 ### <a name="namespace"></a>Obor názvů
 Obory názvů představují způsob kategorizace nebo seskupení podobných metrik dohromady. Pomocí oborů názvů můžete dosáhnout izolace mezi skupinami metrik, které mohou shromažďovat různé přehledy nebo ukazatele výkonu. Například můžete mít obor názvů s názvem **contosomemorymetrics** , který sleduje metriky využití paměti, které profilují vaši aplikaci. Jiný obor názvů s názvem **contosoapptransaction** může sledovat všechny metriky o transakcích uživatelů ve vaší aplikaci.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 **Název** je název metriky, která je hlášena. Obvykle je název dostatečně popisný, aby mohl lépe identifikovat, co je měřené. Příkladem je metrika, která měří počet bajtů paměti použitých na daném virtuálním počítači. Může mít název metriky, například **používané paměťové bajty**.
 
 ### <a name="dimension-keys"></a>Klíče dimenzí

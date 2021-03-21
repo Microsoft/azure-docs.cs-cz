@@ -7,10 +7,10 @@ author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
 ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734566"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Procesory telemetrie (Preview) – Azure Monitor Application Insights pro Java
@@ -36,7 +36,7 @@ Než se dozvíte o procesorech telemetrie, měli byste pochopit *Rozsah* období
 
 Pro procesory telemetrie jsou tyto komponenty s rozsahem důležité:
 
-* Název
+* Name
 * Atributy
 
 Název rozsahu je primární zobrazení pro požadavky a závislosti v Azure Portal. Rozsah atributů představuje standardní i vlastní vlastnosti daného požadavku nebo závislosti.

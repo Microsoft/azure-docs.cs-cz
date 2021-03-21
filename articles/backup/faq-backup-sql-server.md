@@ -5,10 +5,10 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98787616"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
@@ -39,7 +39,7 @@ Automatické zaretušování je ve výchozím nastavení povolené pro všechny 
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Můžu rozhodnout o tom, kolik souběžných procesů zálohování poběží na SQL Serveru?
 
-Ano. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
+Ano. Pokud chcete minimalizovat dopad na instanci SQL Serveru, můžete omezit rychlost, s jakou se spouští zásady zálohování. Postup změny nastavení:
 
 1. V SQL Server instanci v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte *ExtensionSettingsOverrides.jsv* souboru.
 2. V *ExtensionSettingsOverrides.jsv* souboru změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
@@ -60,7 +60,7 @@ Podle omezení SQL můžete spustit příkaz Kopírovat pouze úplné zálohová
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>Můžu chránit skupiny dostupnosti místně?
 
-Ne. Azure Backup chrání SQL Server databáze běžící v Azure. Pokud je skupina dostupnosti (AG) rozložená mezi Azure a místními počítači, může být AG chráněná jenom v případě, že je primární replika spuštěná v Azure. Azure Backup také chrání pouze uzly, které jsou spuštěny ve stejné oblasti Azure jako trezor Recovery Services.
+No. Azure Backup chrání SQL Server databáze běžící v Azure. Pokud je skupina dostupnosti (AG) rozložená mezi Azure a místními počítači, může být AG chráněná jenom v případě, že je primární replika spuštěná v Azure. Azure Backup také chrání pouze uzly, které jsou spuštěny ve stejné oblasti Azure jako trezor Recovery Services.
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>Můžu chránit skupiny dostupnosti napříč různými oblastmi?
 
@@ -68,7 +68,7 @@ Trezor Recovery Services Azure Backup může detekovat a chránit všechny uzly,
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování upozornění?
 
-Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](backup-azure-monitoring-built-in-monitor.md). Pokud vás ale zajímá, že máte výstrahy i pro úspěšné úlohy, můžete použít [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
+No. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](backup-azure-monitoring-built-in-monitor.md). Pokud vás ale zajímá, že máte výstrahy i pro úspěšné úlohy, můžete použít [monitorování pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
 

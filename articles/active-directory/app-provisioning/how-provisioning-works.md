@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988970"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579446"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -138,7 +138,7 @@ Po úvodním cyklu budou všechny ostatní cykly:
 Zřizovací služba pokračuje v provádění přírůstkových cyklů back-to-back v intervalech definovaných v tomto [kurzu, které jsou specifické pro jednotlivé aplikace](../saas-apps/tutorial-list.md). Přírůstkové cykly pokračují, dokud nedojde k jedné z následujících událostí:
 
 - Služba se ručně zastavila pomocí Azure Portal nebo pomocí příslušného příkazu Microsoft Graph API.
-- Nový počáteční cyklus se aktivuje pomocí možnosti **Vymazat stav a restartovat** v Azure Portal nebo pomocí příslušného příkazu Microsoft Graph API. Tato akce vymaže libovolný uložený vodoznak a způsobí, že všechny zdrojové objekty budou znovu vyhodnoceny.
+- Nový počáteční cyklus se aktivuje pomocí možnosti **Restarting** v Azure Portal nebo pomocí příslušného příkazu Microsoft Graph API. Tato akce vymaže libovolný uložený vodoznak a způsobí, že všechny zdrojové objekty budou znovu vyhodnoceny.
 - Spustí se nový počáteční cyklus, protože se změní mapování atributů nebo filtry oborů. Tato akce také vymaže všechny uložené meze a způsobí, že všechny zdrojové objekty budou znovu vyhodnoceny.
 - Proces zřizování přejde do karantény (viz níže) z důvodu vysoké míry chyb a zůstane v karanténě po dobu více než čtyř týdnů. V takovém případě se služba automaticky zakáže.
 

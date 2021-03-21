@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91619742"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Použití In-Memory OLTP ke zlepšení výkonu aplikace v Azure SQL Database a spravované instanci Azure SQL
@@ -43,7 +43,7 @@ SSMS zahrnuje sestavu s **přehledem analýzy výkonu transakcí** , kterou mů�
 
 V SSMS vygenerujte sestavu:
 
-* V **Průzkumník objektů**klikněte pravým tlačítkem myši na uzel databáze.
+* V **Průzkumník objektů** klikněte pravým tlačítkem myši na uzel databáze.
 * Klikněte na **sestavy**  >  **standardní**  >  **Přehled analýzy výkonu transakce**.
 
 Další informace najdete v tématu [určení, zda by měla být tabulka nebo uložená procedura In-Memory OLTP](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
@@ -77,10 +77,10 @@ Musíte vytvořit a naplnit paměťově optimalizovanou kopii tabulky, kterou ch
 Postup použití této možnosti migrace:
 
 1. Připojte se k testovací databázi pomocí SSMS.
-2. V **Průzkumník objektů**klikněte pravým tlačítkem myši na tabulku a potom klikněte na možnost **Poradce optimalizace paměti**.
+2. V **Průzkumník objektů** klikněte pravým tlačítkem myši na tabulku a potom klikněte na možnost **Poradce optimalizace paměti**.
 
    Zobrazí se průvodce **poradcem pro optimalizaci paměti tabulky** .
-3. V průvodci klikněte na **Ověření migrace** (nebo na tlačítko **Další** ) a zjistěte, jestli má tabulka nějaké nepodporované funkce, které nejsou podporované v paměťově optimalizovaných tabulkách. Další informace naleznete v tématech:
+3. V průvodci klikněte na **Ověření migrace** (nebo na tlačítko **Další** ) a zjistěte, jestli má tabulka nějaké nepodporované funkce, které nejsou podporované v paměťově optimalizovaných tabulkách. Další informace naleznete v tématu:
 
    * *Kontrolní seznam optimalizace paměti* v [poradci optimalizace paměti](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor).
    * [In-Memory OLTP nepodporuje konstrukce Transact-SQL](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).

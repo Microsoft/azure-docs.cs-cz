@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/14/2021
 ms.topic: conceptual
 ms.openlocfilehash: 0483b171ee65ac55d65261140738bc5c1838873f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732288"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Aktivace sady Runbook Azure Automation pomocí výstrahy
@@ -29,7 +29,7 @@ Runbooky Automation můžete používat se třemi typy výstrah:
 
 Když výstraha zavolá Runbook, samotné volání je požadavek HTTP POST Webhooku. Tělo žádosti POST obsahuje objekt ve formátu JSON, který obsahuje užitečné vlastnosti, které se vztahují k výstraze. V následující tabulce jsou uvedeny odkazy na schéma datové části pro každý typ výstrahy:
 
-|Výstrahy  |Popis|Schéma datové části  |
+|Výstrahy  |Description|Schéma datové části  |
 |---------|---------|---------|
 |[Běžná výstraha](../azure-monitor/alerts/alerts-common-schema.md)|Běžné schéma výstrah, které spojuje prostředí spotřeby pro oznamování výstrah v Azure ještě dnes.|Společné schéma datové části výstrahy|
 |[Upozornění protokolu aktivit](../azure-monitor/alerts/activity-log-alerts.md)    |Pošle oznámení, pokud jakákoli nová událost v protokolu aktivit Azure odpovídá specifickým podmínkám. Například při `Delete VM` výskytu operace v **myProductionResourceGroup** nebo při zobrazení nové události Azure Service Health s aktivním stavem.| [Schéma datové části upozornění protokolu aktivit](../azure-monitor/alerts/activity-log-alerts-webhook.md)        |

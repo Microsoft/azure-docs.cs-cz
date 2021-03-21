@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 43a8600a288a9797edcd326a1cb5dbcc8688d61f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 1d54429d901ca6caeadabfa7580e7270ceabcf45
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834131"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612797"
 ---
 V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení pomocí komponent, připojit ji k centru IoT a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná pro Node.js a je obsažená v sadě SDK pro zařízení Azure IoT Hub pro Node.js. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
@@ -20,7 +20,7 @@ V tomto kurzu jste:
 > * Spusťte ukázkovou aplikaci zařízení a ověřte, že se připojí ke službě IoT Hub.
 > * Zkontrolujte zdrojový kód.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](iot-pnp-prerequisites.md)]
 
@@ -60,7 +60,7 @@ Přejděte do složky *Azure-IoT-SDK-node\device\samples\pnp* .
 
 Složka *Azure-IoT-SDK-node\device\samples\pnp* obsahuje vzorový kód pro zařízení adaptéru pro řízení teploty IoT technologie Plug and Play.
 
-Kód v souboru *pnpTemperatureController.js* implementuje zařízení adaptéru IoT technologie Plug and Play. Model, který tato ukázka implementuje, používá [více komponent](../articles/iot-pnp/concepts-components.md). [Soubor modelu DTDL (Digital Real Definition Language) pro zařízení s teplotou](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) definuje telemetrii, vlastnosti a příkazy, které zařízení implementuje.
+Kód v souboru *pnpTemperatureController.js* implementuje zařízení adaptéru IoT technologie Plug and Play. Model, který tato ukázka implementuje, používá [více komponent](../articles/iot-pnp/concepts-modeling-guide.md). [Soubor modelu DTDL (Digital Real Definition Language) pro zařízení s teplotou](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) definuje telemetrii, vlastnosti a příkazy, které zařízení implementuje.
 
 Otevřete soubor *pnpTemperatureController.js* v editoru kódu dle vašeho výběru. Vzorový kód ukazuje, jak:
 

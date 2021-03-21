@@ -10,17 +10,17 @@ ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: a02abff712fc26f653307108fcc3bb284444d0c7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676643"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>Ingestování dat do vyhrazeného fondu SQL
 
 V tomto článku se dozvíte, jak ingestovat data z Azure Data Lake účtu úložiště Gen 2 do vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet úložiště Azure**: Azure Data Lake Storage Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/common/storage-account-create.md) , kde najdete kroky pro jeho vytvoření.

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: a02bd5519b776a063646c11be2a34366fe429f99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89392387"
 ---
-# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Inzerovat vlastní trasy pro klienty VPN P2S
+# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Inzerce vlastních tras pro klienty P2S VPN
 
 Je možné, že budete chtít inzerovat vlastní trasy všem klientům VPN typu Point-to-site. Například pokud jste ve virtuální síti povolili koncové body úložiště a chcete, aby vzdálení uživatelé měli přístup k těmto účtům úložiště přes připojení VPN. IP adresu koncového bodu úložiště můžete inzerovat všem vzdáleným uživatelům, aby přenosy dat do účtu úložiště procházely přes tunelové připojení VPN, nikoli z veřejného Internetu.
 

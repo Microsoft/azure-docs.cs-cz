@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f72ea6ed5f0eec076d181ef56c99c4f1308a7741
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75864158"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Návody pro datové vědy HDInsight Hadoop s využitím podregistru v Azure 
@@ -36,7 +36,7 @@ Scénář je implementován pomocí podregistru s [Azure HDInsight Hadoopm clust
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Předpověď inzerce kliknutím na použití podregistru v HDInsight Hadoop
 
-Criteo [clustery s Azure HDInsight Hadoop využitím návodu pro datovou sadu s 1 TB](hive-criteo-walkthrough.md) používá veřejně dostupnou datovou sadu [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) a předpovídá, jestli je Tip placená, a očekávané částky. Scénář je implementován pomocí podregistru s [Azure HDInsight Hadoopm clusterem](https://azure.microsoft.com/services/hdinsight/) pro ukládání, zkoumání, inženýry funkcí a vypínání ukázkových dat. Používá Azure Machine Learning k sestavení, školení a stanovení skóre binárního klasifikačního modelu, který předpovídá, jestli uživatel klikne na reklamu. V tomto návodu se dokončí zobrazení způsobu publikování jednoho z těchto modelů jako webové služby.
+Criteo [clustery s Azure HDInsight Hadoop využitím návodu pro datovou sadu s 1 TB](hive-criteo-walkthrough.md) používá veřejně dostupnou datovou sadu [](https://labs.criteo.com/downloads/download-terabyte-click-logs/) a předpovídá, jestli je Tip placená, a očekávané částky. Scénář je implementován pomocí podregistru s [Azure HDInsight Hadoopm clusterem](https://azure.microsoft.com/services/hdinsight/) pro ukládání, zkoumání, inženýry funkcí a vypínání ukázkových dat. Používá Azure Machine Learning k sestavení, školení a stanovení skóre binárního klasifikačního modelu, který předpovídá, jestli uživatel klikne na reklamu. V tomto návodu se dokončí zobrazení způsobu publikování jednoho z těchto modelů jako webové služby.
 
 
 ## <a name="next-steps"></a>Další kroky

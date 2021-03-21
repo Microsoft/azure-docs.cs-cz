@@ -7,10 +7,10 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter, devx-track-azurecli
 ms.openlocfilehash: ac65693f2513338695e07cd8a19acb13333e7281
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99625782"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Připojení vysoce dostupného Service Fabric spolehlivého svazku založeného na disku v aplikaci Service Fabric sítě 
@@ -29,7 +29,7 @@ V tomto příkladu má aplikace čítače ASP.NET Core službu s webovou stránk
 
 `counterService`Pravidelně čte hodnotu čítače ze souboru, zvětšuje ho a zapisuje ho zpátky do souboru. Soubor je uložený ve složce, která je připojená na svazek, který je zálohovaný Service Fabric spolehlivým diskem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení této úlohy můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure CLI. Pokud chcete používat Azure CLI s tímto článkem, ujistěte se, že se `az --version` vrátí aspoň `azure-cli (2.0.43)` .  Pomocí těchto [pokynů](service-fabric-mesh-howto-setup-cli.md)nainstalujte (nebo aktualizujte) modul rozšíření CLI pro Azure Service Fabric.
 

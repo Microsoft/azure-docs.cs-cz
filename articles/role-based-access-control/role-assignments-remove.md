@@ -10,17 +10,17 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.openlocfilehash: 7a3e4853d6dffa7eb2c5cf80846f6f1bd6beba03
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100561378"
 ---
 # <a name="remove-azure-role-assignments"></a>Odebrání přiřazení rolí Azure
 
 [Řízení přístupu na základě role Azure (Azure RBAC)](../../articles/role-based-access-control/overview.md) je autorizační systém, který používáte ke správě přístupu k prostředkům Azure. Pokud chcete odebrat přístup z prostředku Azure, odeberete přiřazení role. Tento článek popisuje, jak odebrat přiřazení rolí pomocí Azure Portal, Azure PowerShell, Azure CLI a REST API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete odebrat přiřazení rolí, musíte mít:
 

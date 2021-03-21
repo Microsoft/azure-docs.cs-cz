@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: linux
 ms.date: 02/14/2017
 ms.openlocfilehash: bc252e560df782625d795b30c6688a34f5c2bd79
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102563587"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače o agenta Network Watcher pro Linux
@@ -23,7 +23,7 @@ ms.locfileid: "102563587"
 
 Tento článek podrobně popisuje podporované platformy a možnosti nasazení pro rozšíření virtuálního počítače Network Watcher agenta pro Linux. Instalace agenta neruší nebo vyžaduje restart virtuálního počítače. Rozšíření můžete nasadit do virtuálních počítačů, které nasadíte. Pokud je virtuální počítač nasazený službou Azure, Projděte si dokumentaci ke službě, kde zjistíte, jestli umožňuje nainstalovat rozšíření na virtuálním počítači.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -101,7 +101,7 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 ## <a name="troubleshooting-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Data o stavu nasazení rozšíření můžete načíst pomocí Azure Portal nebo prostřednictvím rozhraní příkazového řádku Azure.
 

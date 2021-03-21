@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: radeltch
-ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c5f94329920f8c850c0a47dd607ade8e83658b29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671562"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599914"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA škálování s využitím Azure NetApp Files na Red Hat Enterprise Linux
 
@@ -599,6 +599,15 @@ V tomto příkladu mají každý uzel clusteru vlastní systémy souborů NFS sy
     nc_HN1_03  (ocf::heartbeat:azure-lb):  Started hanadb1
     vip_HN1_03 (ocf::heartbeat:IPaddr2):   Started hanadb1
     ```
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Konfigurace replikace systému s povoleným aktivním/čtením v clusteru Pacemaker
+
+Od SAP HANA 2,0 SPS 01 podporuje nastavení aktivní/čtení pro replikaci systému SAP HANA, kde je možné sekundární systémy SAP HANA replikace systému aktivně použít pro úlohy náročné na čtení. Aby bylo možné podporovat takové nastavení v clusteru, je vyžadována druhá virtuální IP adresa, která klientům umožňuje přístup k sekundární databázi SAP HANA s povoleným čtením. Aby bylo zajištěno, že k lokalitě sekundární replikace dojde i po převzetí, musí být virtuální IP adresa přesunuta se sekundárním prostředkem SAPHana.
+
+Další konfigurace, která se vyžaduje pro správu replikace systému s povoleným aktivním/čtením v clusteru s vysokou dostupností v rámci Red Hat s druhou virtuální IP adresou, je popsaná v tématu [Konfigurace replikace systému Hana s povolenou možností aktivní/čtení v clusteru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster)  
+
+Než budete pokračovat, ujistěte se, že máte plně nakonfigurovaný cluster s vysokou dostupností Red Hat, který spravuje SAP HANA databázi, jak je popsáno v části výše v dokumentaci.    
+
 
 ## <a name="test-the-cluster-setup"></a>Otestování instalace clusteru
 

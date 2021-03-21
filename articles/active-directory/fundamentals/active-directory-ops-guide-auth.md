@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 90e215ea445c8c700e351149e9c7a91d9a595252
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96859517"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
@@ -31,7 +31,7 @@ Tato část [Referenční příručka k operacím Azure AD](active-directory-ops
 
 Správa Azure Active Directory vyžaduje průběžné provádění klíčových provozních úloh a procesů, které nemusí být součástí projektu zavedení. Stále je důležité, abyste nastavili tyto úlohy pro optimalizaci prostředí. Mezi klíčové úlohy a jejich Doporučené vlastníky patří:
 
-| Úloha | Vlastník |
+| Úkol | Vlastník |
 | :- | :- |
 | Správa životního cyklu konfigurace jednotného přihlašování (SSO) ve službě Azure AD | Provozní tým IAM |
 | Návrh zásad podmíněného přístupu pro aplikace Azure AD | Tým architektury InfoSec |
@@ -372,7 +372,7 @@ Přístup k aktivitě přihlašování, auditům a rizikovým událostem pro Azu
 - [Reference k rozhraní API aktivity správy Office 365](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Jak používat balíček obsahu Azure Active Directory Power BI Content Pack](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Zabezpečená infrastruktura identity má 12 aspektů. Tento seznam vám pomůže lépe zabezpečit a spravovat přihlašovací údaje, definovat možnosti ověřování, přiřazení delegáta, využití měr a definovat zásady přístupu na základě podnikového zabezpečení stav.
 

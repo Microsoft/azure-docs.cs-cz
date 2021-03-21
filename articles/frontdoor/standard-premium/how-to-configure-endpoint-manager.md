@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
 ms.openlocfilehash: 241f4a61e8d8c8de7a5573e8de534cb927a71b30
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101098987"
 ---
 # <a name="configure-an-azure-front-door-standardpremium-preview-endpoint-with-endpoint-manager"></a>Konfigurace koncového bodu služby Azure front-end Standard/Premium (Preview) pomocí Správce koncových bodů
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit koncový bod pro existující profil
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct vytvořit koncový bod služby Azure front-end Standard/Premium pomocí Správce koncových bodů, musíte vytvořit aspoň jeden profil front-dveří Azure. Profil musí mít alespoň jeden nebo více koncových bodů služby Azure front-Premium Standard/Premium. K organizování koncových bodů služby Azure front-end Standard/Premium pomocí internetové domény, webové aplikace nebo jiných kritérií můžete použít více profilů. 
 

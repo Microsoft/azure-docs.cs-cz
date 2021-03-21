@@ -4,10 +4,10 @@ description: Přečtěte si, jak Azure Policy používá klienta konfigurace hos
 ms.date: 01/14/2021
 ms.topic: conceptual
 ms.openlocfilehash: 33a492eb3c8c175bfcdc6a13cb467ed2f180c1e1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702874"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
@@ -63,7 +63,7 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 
 Definice zásad konfigurace hostů jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není klient konfigurace hosta kompatibilní. Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Název|Verze|
+|Publisher|Name|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 20,04|
 |Credativ|Debian|8 - 10|

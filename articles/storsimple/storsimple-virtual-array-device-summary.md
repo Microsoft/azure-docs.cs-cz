@@ -1,6 +1,6 @@
 ---
 title: Okno souhrnu zařízení StorSimple Virtual Array | Microsoft Docs
-description: Popisuje okno Souhrn zařízení StorSimple Device Manager a vysvětluje, jak ho používat k monitorování stavu virtuálních polí StorSimple.
+description: Popisuje okno Souhrn zařízení StorSimple Správce zařízení a vysvětluje, jak ho používat k monitorování stavu virtuálních polí StorSimple.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 1ab72788c768568366f2627055015c74028330b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005873"
 ---
-# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Pro StorSimple Device Manager připojená k virtuálnímu poli StorSimple použít okno Souhrn zařízení
+# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Pro StorSimple Správce zařízení připojená k virtuálnímu poli StorSimple použít okno Souhrn zařízení
 
 ## <a name="overview"></a>Přehled
 
-Okno StorSimple Device Manager zařízení nabízí souhrnný pohled na virtuální pole StorSimple, které je zaregistrované s daným StorSimple Device Manager, což zvýrazní problémy zařízení, které potřebují pozornost správce systému. V tomto kurzu se seznámíte s oknem souhrn zařízení, vysvětlujete obsah a funkci a popisujete úlohy, které můžete z tohoto okna provádět.
+Okno StorSimple Správce zařízení zařízení nabízí souhrnný pohled na virtuální pole StorSimple, které je zaregistrované s daným StorSimple Správce zařízení, což zvýrazní problémy zařízení, které potřebují pozornost správce systému. V tomto kurzu se seznámíte s oknem souhrn zařízení, vysvětlujete obsah a funkci a popisujete úlohy, které můžete z tohoto okna provádět.
 
 Okno Souhrn zařízení zobrazuje následující informace:
 

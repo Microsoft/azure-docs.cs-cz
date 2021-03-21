@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d3570a22fdd935237e673ea3e43ab5e463b66456
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034757"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590530"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy modelů dvojčat v Azure Digital Twins
 
@@ -24,9 +24,13 @@ Modely digitálních vláken Azure jsou reprezentovány ve formátu **digitáln�
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>DTDL (Digital redefinition Language) pro modely
 
-K definování modelů služby Azure Digital Twins se používá jazyk DTDL (Digital Twins Definition Language). DTDL vychází z jazyka JSON-LD a je nezávislý na programovacích jazycích. DTDL není výhradně pro digitální vlákna Azure, ale používá se také k reprezentaci dat zařízení v jiných službách IoT, jako je [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md). 
+Modely pro digitální vlákna Azure jsou definovány pomocí jazyka DTDL (Digital nedefinovaný jazyk). 
 
-Digitální vlákna Azure používá **DTDL _verze 2_**. Další informace o této verzi DTDL najdete v dokumentaci k jejímu specifikaci v GitHubu: [*Digital DTDLing Definition Language () – verze 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Použití DTDL _verze 1_ u digitálních vláken Azure je teď zastaralé.
+Můžete si prohlédnout úplné jazykové specifikace pro DTDL v GitHubu: [**Digital DTDLing Definition Language () – verze 2**](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+
+DTDL vychází z jazyka JSON-LD a je nezávislý na programovacích jazycích. DTDL není výhradně pro digitální vlákna Azure, ale používá se také k reprezentaci dat zařízení v jiných službách IoT, jako je [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md). Digitální vlákna Azure používá DTDL **verze 2** (použití DTDL verze 1 se službou Azure Digital vlákens je teď zastaralé). 
+
+Zbývající část tohoto článku shrnuje, jak se jazyk používá v digitálních Vlákenách Azure.
 
 > [!NOTE] 
 > Ne všechny služby, které používají DTDL, implementují přesně stejné funkce DTDL. Například IoT technologie Plug and Play nepoužívá funkce DTDL, které jsou pro grafy, zatímco digitální vlákna Azure v současné době neimplementují příkazy DTDL.
@@ -92,7 +96,7 @@ Vezměte v úvahu, že Planet může také interagovat s **Moons** , které jsou
 
 Pole modelu jsou:
 
-| Pole | Popis |
+| Pole | Description |
 | --- | --- |
 | `@id` | Identifikátor modelu. Musí být ve formátu `dtmi:<domain>:<unique model identifier>;<model version number>` . |
 | `@type` | Určuje druh informací, které jsou popsány. Pro rozhraní je typ *rozhraní*. |

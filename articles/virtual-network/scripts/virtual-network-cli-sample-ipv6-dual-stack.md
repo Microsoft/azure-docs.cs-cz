@@ -14,10 +14,10 @@ ms.date: 04/23/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9058fb4b9b92719f7abcc534632f983cafe2aae8
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99550806"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample"></a>Ukázka konfigurace koncových bodů IPv6 v ukázce skriptu virtuální sítě
@@ -28,7 +28,7 @@ Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete použít funkci IPv6 pro virtuální síť Azure, musíte si nakonfigurovat předplatné jenom jednou, a to takto:
 
 ```azurecli

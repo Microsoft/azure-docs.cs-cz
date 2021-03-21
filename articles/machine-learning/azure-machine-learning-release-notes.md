@@ -10,10 +10,10 @@ ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
 ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103471753"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
@@ -1052,7 +1052,7 @@ Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém 
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
     
-| Webový nástroj  |     Popis  |
+| Webový nástroj  |     Description  |
 |---|---|
 | Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | 
 
@@ -1564,7 +1564,7 @@ Z studia můžete provádět výukové, testovací, nasazování a správu Azure
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Popis | 
+| Webový nástroj | Description | 
 |-|-|-|
 | Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | 
 | [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | 

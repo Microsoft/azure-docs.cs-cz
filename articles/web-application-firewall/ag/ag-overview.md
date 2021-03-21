@@ -9,10 +9,10 @@ ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: fb7d49459b4eae8c3c7b3b1e6ad5bc5d44a089d3
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102183348"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Co je firewall webových aplikací Azure v Azure Application Gateway?
@@ -43,7 +43,7 @@ Tato část popisuje základní výhody, které WAF Application Gateway poskytuj
 
 * Chraňte své webové aplikace před škodlivými robotyy pomocí IP reputace RuleSet (Preview).
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 * Sledujte útoky na webové aplikace pomocí protokolu WAF v reálném čase. Protokol je integrovaný do [Azure monitor](../../azure-monitor/overview.md) a umožňuje sledovat výstrahy WAF a snadno sledovat trendy.
 

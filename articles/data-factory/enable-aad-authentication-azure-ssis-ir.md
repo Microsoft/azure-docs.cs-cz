@@ -9,10 +9,10 @@ ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
 ms.openlocfilehash: cd3f590e1869b28f0ac08ce98da32a98160e4e86
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100392727"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolení ověřování Azure Active Directory pro Azure-SSIS Integration Runtime
@@ -198,7 +198,7 @@ Pokud chcete zřídit Azure-SSIS IR pomocí PowerShellu, udělejte tyto věci:
 
 1.  Nainstalujte modul [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) .
 
-2.  Ve vašem skriptu nenastavte `CatalogAdminCredential` parametr. Příklad:
+2.  Ve vašem skriptu nenastavte `CatalogAdminCredential` parametr. Například:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

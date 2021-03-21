@@ -1,7 +1,7 @@
 ---
 title: Přehled režimu sdíleného zařízení
 titleSuffix: Microsoft identity platform | Azure
-description: Přečtěte si o režimu sdílených zařízení, který umožňuje sdílení zařízení pro Firstline pracovníky.
+description: Přečtěte si o režimu sdílených zařízení, který umožňuje sdílení zařízení pro prvotní pracovníky.
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,27 +13,27 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9e48d8f55efa8bc4c82eaa973a6feaeb42390064
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562079"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578770"
 ---
 # <a name="overview-of-shared-device-mode"></a>Přehled režimu sdíleného zařízení
 
-Režim sdíleného zařízení je funkce Azure Active Directory, která umožňuje sestavovat aplikace, které podporují Firstline pracovní procesy, a povolit režim sdíleného zařízení na zařízeních, která jsou do nich nasazená.
+Režim sdíleného zařízení je funkce Azure Active Directory, která umožňuje sestavovat aplikace, které podporují prvotní pracovní procesy, a povolit režim sdíleného zařízení na zařízeních, která jsou do nich nasazená.
 
 >[!IMPORTANT]
-> Tato funkce [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+> Režim sdíleného zařízení pro iOS [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="what-are-firstline-workers"></a>Co jsou Firstline pracovní procesy?
+## <a name="what-are-frontline-workers"></a>Co jsou prvotní pracovní procesy?
 
-Firstline pracovní zaměstnanci představují maloobchodníky, údržbu a agenty terénů, lékařské pracovníky a další uživatele, kteří nesedí před počítačem, nebo nepoužívají firemní e-mail ke spolupráci. V následujících částech jsou uvedeny aspekty a výzvy pro podporu Firstlinech pracovních procesů, za kterými následuje Úvod k funkcím poskytovaným společností Microsoft, které umožňují vaší aplikaci využívat pracovní procesy Firstline organizace.
+Prvotní pracovní zaměstnanci představují maloobchodníky, údržbu a agenty terénů, lékařské pracovníky a další uživatele, kteří nesedí před počítačem, nebo nepoužívají firemní e-mail ke spolupráci. V následujících částech jsou uvedeny aspekty a výzvy pro podporu prvotních pracovních procesů, za kterými následuje Úvod k funkcím poskytovaným společností Microsoft, které umožňují vaší aplikaci využívat pracovní procesy prvotní organizace.
 
-### <a name="challenges-of-supporting-firstline-workers"></a>Výzvy k podpoře Firstline pracovníků
+### <a name="challenges-of-supporting-frontline-workers"></a>Výzvy k podpoře prvotní pracovníků
 
-Povolení pracovních postupů pracovních procesů Firstline zahrnuje výzvy, které obvykle neprezentují běžní pracovníci s informacemi. Takové výzvy můžou zahrnovat míru vysokého obratu a méně znalostí s nástroji pro zvýšení produktivity v rámci organizace. Organizace přijímají různé strategie, aby Firstline své pracovní procesy. Někteří si přijali strategii BYOD (Přineste si vlastní zařízení), ve které jejich zaměstnanci používají obchodní aplikace na svém osobním telefonu, zatímco jiní jejich zaměstnanci poskytují sdílená zařízení, jako jsou iPady nebo Android tablety.
+Povolení pracovních postupů pracovních procesů prvotní zahrnuje výzvy, které obvykle neprezentují běžní pracovníci s informacemi. Takové výzvy můžou zahrnovat míru vysokého obratu a méně znalostí s nástroji pro zvýšení produktivity v rámci organizace. Organizace přijímají různé strategie, aby prvotní své pracovní procesy. Někteří si přijali strategii BYOD (Přineste si vlastní zařízení), ve které jejich zaměstnanci používají obchodní aplikace na svém osobním telefonu, zatímco jiní jejich zaměstnanci poskytují sdílená zařízení, jako jsou iPady nebo Android tablety.
 
 ### <a name="supporting-multiple-users-on-devices-designed-for-one-user"></a>Podpora více uživatelů na zařízeních určených pro jednoho uživatele
 
@@ -49,12 +49,12 @@ Azure Active Directory tyto scénáře povoluje s funkcí nazvanou **režim sdí
 
 Jak už bylo zmíněno, režim sdíleného zařízení je funkce Azure Active Directory, která vám umožní:
 
-* Sestavování aplikací, které podporují Firstline pracovní procesy
-* Nasazení zařízení do Firstline pracovníků a zapnutí režimu sdíleného zařízení
+* Sestavování aplikací, které podporují prvotní pracovní procesy
+* Nasazení zařízení do prvotní pracovníků a zapnutí režimu sdíleného zařízení
 
-### <a name="build-applications-that-support-firstline-workers"></a>Sestavování aplikací, které podporují Firstline pracovní procesy
+### <a name="build-applications-that-support-frontline-workers"></a>Sestavování aplikací, které podporují prvotní pracovní procesy
 
-V aplikacích můžete podporovat Firstline pracovní procesy pomocí knihovny Microsoft Authentication Library (MSAL) a [aplikace Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a povolit tak stav zařízení s názvem *režim sdíleného zařízení*. Když je zařízení v režimu sdíleného zařízení, Microsoft poskytuje vaší aplikaci informace, které jim umožní změnit její chování na základě stavu uživatele v zařízení a chránit data uživatelů.
+V aplikacích můžete podporovat prvotní pracovní procesy pomocí knihovny Microsoft Authentication Library (MSAL) a [aplikace Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a povolit tak stav zařízení s názvem *režim sdíleného zařízení*. Když je zařízení v režimu sdíleného zařízení, Microsoft poskytuje vaší aplikaci informace, které jim umožní změnit její chování na základě stavu uživatele v zařízení a chránit data uživatelů.
 
 Podporované funkce:
 
@@ -69,15 +69,15 @@ Vaši uživatelé závisí na tom, abyste zajistili, že jejich data nebudou nev
 
 Podrobnosti o tom, jak upravit aplikace pro podporu režimu sdíleného zařízení, najdete v části [Další kroky](#next-steps) na konci tohoto článku.
 
-### <a name="deploy-devices-to-firstline-workers-and-turn-on-shared-device-mode"></a>Nasazení zařízení do Firstline pracovníků a zapnutí režimu sdíleného zařízení
+### <a name="deploy-devices-to-frontline-workers-and-turn-on-shared-device-mode"></a>Nasazení zařízení do prvotní pracovníků a zapnutí režimu sdíleného zařízení
 
-Jakmile vaše aplikace podporují režim sdíleného zařízení a budou zahrnovat požadovaná data a změny zabezpečení, můžete je inzerovat tak, aby je mohli používat Firstline pracovníci.
+Jakmile vaše aplikace podporují režim sdíleného zařízení a budou zahrnovat požadovaná data a změny zabezpečení, můžete je inzerovat tak, aby je mohli používat prvotní pracovníci.
 
 Správci zařízení organizace můžou svoje zařízení a své aplikace nasadit do úložišť a na pracoviště prostřednictvím řešení pro správu mobilních zařízení (MDM), jako je Microsoft Intune. Součástí procesu zřizování je označení zařízení jako *sdíleného zařízení*. Správci konfigurují režim sdíleného zařízení nasazením [aplikace Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a nastavením režimu sdíleného zařízení prostřednictvím parametrů konfigurace. Po provedení těchto kroků budou všechny aplikace, které podporují režim sdíleného zařízení, používat aplikaci Microsoft Authenticator ke správě stavu uživatele a poskytování funkcí zabezpečení pro zařízení a organizaci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podporujeme platformy iOS a Android pro režim sdíleného zařízení. Projděte si dokumentaci níže pro vaši platformu, abyste mohli začít podporovat Firstline pracovní procesy ve vašich aplikacích.
+Podporujeme platformy iOS a Android pro režim sdíleného zařízení. Projděte si dokumentaci níže pro vaši platformu, abyste mohli začít podporovat prvotní pracovní procesy ve vašich aplikacích.
 
 * [Podpora režimu sdíleného zařízení pro iOS](msal-ios-shared-devices.md)
 * [Podpora režimu sdíleného zařízení pro Android](msal-android-shared-devices.md)

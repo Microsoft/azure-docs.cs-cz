@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se, jak nainstalovat a nakonfigurovat NGINX příchozího řadiče pro interní privátní síť v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 976c5581ad217064da37b0b092d2d634d30cb7e5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: 3201f510db9970b7db548ee6a3348fa68d278248
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729157"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601461"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat do interní virtuální sítě ve službě Azure Kubernetes (AKS)
 
@@ -232,7 +232,7 @@ ingress.extensions/hello-world-ingress created
 Pokud chcete testovat trasy pro kontroler příchozího přenosu dat, vyhledejte tyto dvě aplikace pomocí webového klienta. V případě potřeby můžete tuto interní funkci jenom rychle otestovat z části pod v clusteru AKS. Vytvořte test pod a připojte k němu relaci terminálu:
 
 ```console
-kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
+kubectl run -it --rm aks-ingress-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --namespace ingress-basic
 ```
 
 Nainstalujte `curl` v části pod pomocí `apt-get` :

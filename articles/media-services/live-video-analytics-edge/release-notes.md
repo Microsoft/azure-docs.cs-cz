@@ -4,10 +4,10 @@ description: Toto téma obsahuje poznámky k verzi Live video Analytics o IoT Ed
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: f130b93b8d799c371a640f2b29c22c0d77834cba
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954391"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Poznámky k verzi pro Live video Analytics na IoT Edge

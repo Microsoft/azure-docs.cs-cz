@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
 ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91367848"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Příprava Azure Active Directory tenanta pro připojení VPN OpenVPN protokolu uživatelů
@@ -46,7 +46,7 @@ Pomocí kroků v [tomto článku](../active-directory/fundamentals/add-users-azu
 
 2. Potom pro vaši organizaci udělte souhlas správce, což umožňuje aplikacím Azure VPN přihlašovat se a číst profily uživatelů. Zkopírujte a vložte adresu URL, která se vztahuje k umístění vašeho nasazení, do adresního řádku v prohlížeči:
 
-    Public
+    Veřejná
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -78,7 +78,7 @@ Pomocí kroků v [tomto článku](../active-directory/fundamentals/add-users-azu
 
     ![Snímek obrazovky s dialogovým oknem s požadovaným oprávněním pro zprávu přijmout pro vaši organizaci a další informace](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
-5. V rámci Azure AD by se teď v **podnikových aplikacích**měla zobrazit uvedená služba **Azure VPN** .
+5. V rámci Azure AD by se teď v **podnikových aplikacích** měla zobrazit uvedená služba **Azure VPN** .
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
 

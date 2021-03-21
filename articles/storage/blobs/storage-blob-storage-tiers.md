@@ -3,17 +3,17 @@ title: Úrovně přístupu pro Azure Blob Storage – horká, studená a archivn
 description: Přečtěte si o horké, studené a archivní úrovni přístupu pro Azure Blob Storage. Zkontrolujte účty úložiště, které podporují vrstvení.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/11/2021
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1a1cb8e1676405cbfbb3f4f61c86d8136b688b88
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928807"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656834"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Úrovně přístupu pro Azure Blob Storage – horká, studená a archivní
 
@@ -100,7 +100,9 @@ Pouze horké a studené úrovně přístupu lze nastavit jako výchozí úroveň
 
 Vrstvení na úrovni objektů BLOB umožňuje odeslat data do úrovně přístupu podle vašeho výběru pomocí operací [Put BLOB](/rest/api/storageservices/put-blob) nebo [Put list](/rest/api/storageservices/put-block-list) a změnit úroveň dat na úrovni objektu pomocí funkce [Nastavení](/rest/api/storageservices/set-blob-tier) operace nebo [správy životního cyklu](#blob-lifecycle-management) . Data můžete nahrát do požadované úrovně přístupu a potom snadno změnit úroveň přístupu objektu BLOB na horkou, studenou nebo archivní úroveň, protože se mění vzorce použití, aniž byste museli přesouvat data mezi účty. Okamžitě se dostanou všechny žádosti o změnu vrstvy a mezi horkou a studenou úrovní jsou okamžité změny vrstev. Dehydratované objekt BLOB z archivní úrovně může trvat několik hodin.
 
-Čas poslední změny úrovně objektu blob je zveřejněný prostřednictvím vlastnosti **Access Tier Change Time** objektu blob. Při přepisování objektu BLOB na horkou nebo studenou úroveň zdědí nově vytvořený objekt BLOB vrstvu objektu blob, který se přepsal, pokud při vytváření není explicitně nastavená nová vrstva přístupu k objektu BLOB. Pokud je objekt BLOB v archivní úrovni, nejde ho přepsat, takže odeslání stejného objektu BLOB není v tomto scénáři povolené.
+Čas poslední změny úrovně objektu blob je zveřejněný prostřednictvím vlastnosti **Access Tier Change Time** objektu blob. **Doba změny úrovně přístupu** je vlastnost na úrovni objektů BLOB a při změně výchozí úrovně účtu se neaktualizuje. Vlastnosti účtu a vlastnosti objektu BLOB jsou oddělené. V případě změny výchozí úrovně přístupu k účtu by se v každém objektu BLOB v účtu úložiště měla denáročná aktualizace **času změny úrovně přístupu** .
+
+Při přepisování objektu BLOB na horkou nebo studenou úroveň zdědí nově vytvořený objekt BLOB vrstvu objektu blob, který se přepsal, pokud při vytváření není explicitně nastavená nová vrstva přístupu k objektu BLOB. Pokud je objekt BLOB v archivní úrovni, nejde ho přepsat, takže odeslání stejného objektu BLOB není v tomto scénáři povolené.
 
 > [!NOTE]
 > Úložiště archivu a ovládání datových vrstev na úrovni objektů blob podporují jenom objekty blob bloku.

@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: e823acc07ce0618c064f30e103ec52b7133cea18
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101731115"
 ---
 # <a name="string-functions-for-arm-templates"></a>Řetězcové funkce pro šablony ARM
@@ -58,9 +58,9 @@ Vrátí reprezentaci se vstupním řetězcem ve formátu base64.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| inputString |Ano |řetězec |Hodnota, která se má vrátit jako reprezentace v kódování Base64. |
+| inputString |Yes |řetězec |Hodnota, která se má vrátit jako reprezentace v kódování Base64. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -141,9 +141,9 @@ Převede reprezentaci Base64 na objekt JSON.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ano |řetězec |Reprezentace Base64 pro převod na objekt JSON. |
+| base64Value |Yes |řetězec |Reprezentace Base64 pro převod na objekt JSON. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -225,9 +225,9 @@ Převede reprezentaci Base64 na řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ano |řetězec |Reprezentace Base64 pro převod na řetězec. |
+| base64Value |Yes |řetězec |Reprezentace Base64 pro převod na řetězec. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -310,10 +310,10 @@ Pro zjednodušení zřetězení řetězců podporuje bicep syntaxi [řetězcové
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo pole |První řetězec nebo pole pro zřetězení. |
-| Další argumenty |Ne |řetězec nebo pole |Další řetězce nebo pole v sekvenčním pořadí pro zřetězení. |
+| arg1 |Yes |řetězec nebo pole |První řetězec nebo pole pro zřetězení. |
+| Další argumenty |No |řetězec nebo pole |Další řetězce nebo pole v sekvenčním pořadí pro zřetězení. |
 
 Tato funkce může mít libovolný počet argumentů a může přijmout buď řetězce nebo pole pro parametry. Pro parametry však nelze zadat obě pole a řetězce. Řetězce jsou zřetězeny pouze s jinými řetězci.
 
@@ -441,10 +441,10 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč, nebo řetězec ob
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| kontejner |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
-| itemToFind |Ano |řetězec nebo int |Hodnota, která se má najít |
+| kontejner |Yes |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
+| itemToFind |Yes |řetězec nebo int |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -553,9 +553,9 @@ Převede hodnotu na identifikátor URI dat.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Ano |řetězec |Hodnota, která má být převedena na identifikátor URI dat. |
+| stringToConvert |Yes |řetězec |Hodnota, která má být převedena na identifikátor URI dat. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -622,9 +622,9 @@ Převede hodnotu v identifikátoru URI dat na řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Ano |řetězec |Hodnota identifikátoru URI dat, která se má převést. |
+| dataUriToConvert |Yes |řetězec |Hodnota identifikátoru URI dat, která se má převést. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -691,9 +691,9 @@ Určuje, zda je pole, objekt nebo řetězec prázdný.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ano |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
+| itemToTest |Yes |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -772,10 +772,10 @@ Určuje, zda řetězec končí hodnotou. V porovnání se nerozlišují malá a 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |řetězec |Hodnota, která se má najít |
+| stringToSearch |Yes |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
+| stringToFind |Yes |řetězec |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -853,9 +853,9 @@ Vrátí první znak řetězce nebo první prvek pole.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Hodnota pro načtení prvního prvku nebo znaku. |
+| arg1 |Yes |pole nebo řetězec |Hodnota pro načtení prvního prvku nebo znaku. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -922,11 +922,11 @@ Vytvoří formátovaný řetězec ze vstupních hodnot.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| formatString | Ano | řetězec | Složený řetězec formátu. |
-| arg1 | Ano | řetězec, celé číslo nebo logická hodnota | Hodnota, která má být zahrnuta do formátovaného řetězce. |
-| Další argumenty | Ne | řetězec, celé číslo nebo logická hodnota | Další hodnoty, které mají být zahrnuty do formátovaného řetězce. |
+| formatString | Yes | řetězec | Složený řetězec formátu. |
+| arg1 | Yes | řetězec, celé číslo nebo logická hodnota | Hodnota, která má být zahrnuta do formátovaného řetězce. |
+| Další argumenty | No | řetězec, celé číslo nebo logická hodnota | Další hodnoty, které mají být zahrnuty do formátovaného řetězce. |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -993,10 +993,10 @@ Vytvoří hodnotu ve formátu globálně jedinečného identifikátoru na zákla
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| baseString |Ano |řetězec |Hodnota použitá ve funkci hash k vytvoření GUID. |
-| Další parametry podle potřeby |Ne |řetězec |Můžete přidat tolik řetězců, kolik jich je potřeba, a vytvořit tak hodnotu, která určuje úroveň jedinečnosti. |
+| baseString |Yes |řetězec |Hodnota použitá ve funkci hash k vytvoření GUID. |
+| Další parametry podle potřeby |No |řetězec |Můžete přidat tolik řetězců, kolik jich je potřeba, a vytvořit tak hodnotu, která určuje úroveň jedinečnosti. |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -1106,10 +1106,10 @@ Vrátí první pozici hodnoty v rámci řetězce. V porovnání se nerozlišují
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |řetězec |Hodnota, která se má najít |
+| stringToSearch |Yes |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
+| stringToFind |Yes |řetězec |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1189,9 +1189,9 @@ Vrátí poslední znak řetězce nebo poslední prvek pole.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo řetězec |Hodnota, která načte poslední prvek nebo znak. |
+| arg1 |Yes |pole nebo řetězec |Hodnota, která načte poslední prvek nebo znak. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1258,10 +1258,10 @@ Vrátí poslední pozici hodnoty v rámci řetězce. V porovnání se nerozlišu
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |řetězec |Hodnota, která se má najít |
+| stringToSearch |Yes |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
+| stringToFind |Yes |řetězec |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1333,9 +1333,9 @@ Vrátí počet znaků v řetězci, prvky v poli nebo vlastnosti na úrovni root 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
+| arg1 |Yes |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1571,11 +1571,11 @@ Vrátí řetězec zarovnaný doprava přidáním znaků vlevo, dokud nedosáhnet
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Ano |řetězec nebo int |Hodnota, která se má zarovnat vpravo |
-| totalLength |Ano |int |Celkový počet znaků ve vráceném řetězci. |
-| paddingCharacter |Ne |jeden znak |Znak, který se má použít pro levé odsazení, dokud se nedosáhne celkové délky Výchozí hodnota je mezera. |
+| valueToPad |Yes |řetězec nebo int |Hodnota, která se má zarovnat vpravo |
+| totalLength |Yes |int |Celkový počet znaků ve vráceném řetězci. |
+| paddingCharacter |No |jeden znak |Znak, který se má použít pro levé odsazení, dokud se nedosáhne celkové délky Výchozí hodnota je mezera. |
 
 Pokud je původní řetězec delší než počet znaků, které mají být vloženy, nejsou přidány žádné znaky.
 
@@ -1633,11 +1633,11 @@ Vrátí nový řetězec se všemi instancemi jednoho řetězce nahrazeného jin�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| originalString |Ano |řetězec |Hodnota, která má všechny instance jednoho řetězce nahrazena jiným řetězcem. |
-| Starý řetězec |Ano |řetězec |Řetězec, který má být odebrán z původního řetězce. |
-| Nový řetězec |Ano |řetězec |Řetězec, který má být přidán místo odebraného řetězce. |
+| originalString |Yes |řetězec |Hodnota, která má všechny instance jednoho řetězce nahrazena jiným řetězcem. |
+| Starý řetězec |Yes |řetězec |Řetězec, který má být odebrán z původního řetězce. |
+| Nový řetězec |Yes |řetězec |Řetězec, který má být přidán místo odebraného řetězce. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1699,10 +1699,10 @@ Vrátí řetězec se všemi znaky po zadaném počtu znaků nebo pole se všemi 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| Původní |Ano |pole nebo řetězec |Pole nebo řetězec, který se má použít pro přeskočení. |
-| numberToSkip |Ano |int |Počet prvků nebo znaků, které mají být přeskočeny. Pokud je tato hodnota 0 nebo méně, vrátí se všechny prvky nebo znaky v hodnotě. Pokud je větší než délka pole nebo řetězce, je vráceno prázdné pole nebo řetězec. |
+| Původní |Yes |pole nebo řetězec |Pole nebo řetězec, který se má použít pro přeskočení. |
+| numberToSkip |Yes |int |Počet prvků nebo znaků, které mají být přeskočeny. Pokud je tato hodnota 0 nebo méně, vrátí se všechny prvky nebo znaky v hodnotě. Pokud je větší než délka pole nebo řetězce, je vráceno prázdné pole nebo řetězec. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1787,10 +1787,10 @@ Vrátí pole řetězců, které obsahují podřetězce vstupního řetězce, kte
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| inputString |Ano |řetězec |Řetězec, který má být rozdělen. |
-| Oddělovač |Ano |řetězec nebo pole řetězců |Oddělovač, který se má použít pro rozdělení řetězce. |
+| inputString |Yes |řetězec |Řetězec, který má být rozdělen. |
+| Oddělovač |Yes |řetězec nebo pole řetězců |Oddělovač, který se má použít pro rozdělení řetězce. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1865,10 +1865,10 @@ Určuje, zda řetězec začíná hodnotou. V porovnání se nerozlišují malá 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ano |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
-| stringToFind |Ano |řetězec |Hodnota, která se má najít |
+| stringToSearch |Yes |řetězec |Hodnota, která obsahuje položku, kterou chcete najít. |
+| stringToFind |Yes |řetězec |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1946,9 +1946,9 @@ Převede zadanou hodnotu na řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ano | Všechny |Hodnota, která má být převedena na řetězec. Jakýkoli typ hodnoty lze převést, včetně objektů a polí. |
+| valueToConvert |Yes | Všechny |Hodnota, která má být převedena na řetězec. Jakýkoli typ hodnoty lze převést, včetně objektů a polí. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2040,11 +2040,11 @@ Vrátí podřetězec, který začíná na zadané pozici znaku a obsahuje zadan�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Ano |řetězec |Původní řetězec, ze kterého je dílčí řetězec extrahován. |
-| Indexu |Ne |int |Počáteční pozice znaku na základě nuly pro podřetězec. |
-| length |Ne |int |Počet znaků podřetězce. Musí odkazovat na umístění v rámci řetězce. Musí být nula nebo větší. |
+| stringToParse |Yes |řetězec |Původní řetězec, ze kterého je dílčí řetězec extrahován. |
+| Indexu |No |int |Počáteční pozice znaku na základě nuly pro podřetězec. |
+| length |No |int |Počet znaků podřetězce. Musí odkazovat na umístění v rámci řetězce. Musí být nula nebo větší. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2126,10 +2126,10 @@ Vrátí řetězec, který má zadaný počet znaků od začátku řetězce, nebo
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| Původní |Ano |pole nebo řetězec |Pole nebo řetězec, ze kterého mají být přebírat prvky. |
-| numberToTake |Ano |int |Počet prvků nebo znaků, které mají být přebírat. Pokud je tato hodnota 0 nebo méně, vrátí se prázdné pole nebo řetězec. Pokud je větší než délka daného pole nebo řetězce, vrátí se všechny prvky v poli nebo řetězci. |
+| Původní |Yes |pole nebo řetězec |Pole nebo řetězec, ze kterého mají být přebírat prvky. |
+| numberToTake |Yes |int |Počet prvků nebo znaků, které mají být přebírat. Pokud je tato hodnota 0 nebo méně, vrátí se prázdné pole nebo řetězec. Pokud je větší než délka daného pole nebo řetězce, vrátí se všechny prvky v poli nebo řetězci. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2214,9 +2214,9 @@ Převede zadaný řetězec na malá písmena.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ano |řetězec |Hodnota, která se má převést na malá písmena. |
+| stringToChange |Yes |řetězec |Hodnota, která se má převést na malá písmena. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2278,9 +2278,9 @@ Převede zadaný řetězec na velká písmena.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ano |řetězec |Hodnota, která má být převedena na velká písmena. |
+| stringToChange |Yes |řetězec |Hodnota, která má být převedena na velká písmena. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2342,9 +2342,9 @@ Odebere všechny úvodní a koncové prázdné znaky ze zadaného řetězce.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Ano |řetězec |Hodnota, která má být oříznuta. |
+| stringToTrim |Yes |řetězec |Hodnota, která má být oříznuta. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2400,10 +2400,10 @@ Vytvoří deterministický řetězec hash založený na hodnotách poskytnutých
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| baseString |Ano |řetězec |Hodnota použitá ve funkci hash k vytvoření jedinečného řetězce. |
-| Další parametry podle potřeby |Ne |řetězec |Můžete přidat tolik řetězců, kolik jich je potřeba, a vytvořit tak hodnotu, která určuje úroveň jedinečnosti. |
+| baseString |Yes |řetězec |Hodnota použitá ve funkci hash k vytvoření jedinečného řetězce. |
+| Další parametry podle potřeby |No |řetězec |Můžete přidat tolik řetězců, kolik jich je potřeba, a vytvořit tak hodnotu, která určuje úroveň jedinečnosti. |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -2532,10 +2532,10 @@ Vytvoří absolutní identifikátor URI kombinováním řetězce baseUri a relat
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| Identifikátor |Ano |řetězec |Základní řetězec identifikátoru URI. Pečlivě Sledujte chování týkající se zpracování koncového lomítka ('/'), jak je popsáno v následující tabulce.  |
-| relativeUri |Ano |řetězec |Relativní řetězec identifikátoru URI, který se má přidat do základního řetězce identifikátoru URI. |
+| Identifikátor |Yes |řetězec |Základní řetězec identifikátoru URI. Pečlivě Sledujte chování týkající se zpracování koncového lomítka ('/'), jak je popsáno v následující tabulce.  |
+| relativeUri |Yes |řetězec |Relativní řetězec identifikátoru URI, který se má přidat do základního řetězce identifikátoru URI. |
 
 * Pokud **BaseUri** končí na koncovém lomítku, výsledek je jednoduše **BaseUri** následovaný **relativeUri**.
 
@@ -2637,9 +2637,9 @@ Zakóduje identifikátor URI.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Ano |řetězec |Hodnota, která se má zakódovat |
+| stringToEncode |Yes |řetězec |Hodnota, která se má zakódovat |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2707,9 +2707,9 @@ Vrátí řetězec hodnoty kódované identifikátorem URI.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Ano |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. |
+| uriEncodedString |Yes |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

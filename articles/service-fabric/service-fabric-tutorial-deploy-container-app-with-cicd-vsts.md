@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018847"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
@@ -23,7 +23,7 @@ Ve druhé části této série se naučíte:
 > * Vytvoření definice verze v aplikaci Visual Studio Team Explorer
 > * Automatické nasazení a upgrade aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -42,7 +42,7 @@ Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracov
 
 Sdílejte zdrojové soubory aplikace do týmového projektu v Azure DevOps, abyste mohli generovat sestavení.
 
-Pro svůj projekt vytvořte nové místní úložiště Git, a to **Add to Source Control** tak, že  ->  na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete Přidat do správy zdrojového kódu **Git** .
+Pro svůj projekt vytvořte nové místní úložiště Git, a to tak, že  ->  na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete Přidat do správy zdrojového kódu **Git** .
 
 V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps** tlačítko **Publikovat úložiště Git**.
 

@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 244fdbf7cb723fe85e0987d176a13242f0bff064
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005924"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako souborového serveru prostřednictvím Azure Portal
@@ -37,8 +37,8 @@ Dokončení procesu instalace a konfigurace může trvat přibližně 10 minut. 
 Před konfigurací a nastavením StorSimple virtuálního pole se ujistěte, že:
 
 * Zřídili jste virtuální pole a připojili se k němu, jak je popsáno v části [zřízení virtuálního pole StorSimple v Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [zřízení virtuálního pole StorSimple ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
-* Máte registrační klíč služby ze služby StorSimple Device Manager, kterou jste vytvořili pro správu virtuálních polí StorSimple. Další informace najdete v části [Krok 2: získání registračního klíče služby](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) pro virtuální pole StorSimple.
-* Pokud se jedná o druhé nebo následné virtuální pole, které zaregistrujete pomocí existující služby StorSimple Device Manager, měli byste mít šifrovací klíč dat služby. Tento klíč byl vygenerován při úspěšné registraci prvního zařízení s touto službou. Pokud jste tento klíč ztratili, přečtěte si téma [získání šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) pro virtuální pole StorSimple.
+* Máte registrační klíč služby ze služby StorSimple Správce zařízení, kterou jste vytvořili pro správu virtuálních polí StorSimple. Další informace najdete v části [Krok 2: získání registračního klíče služby](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) pro virtuální pole StorSimple.
+* Pokud se jedná o druhé nebo následné virtuální pole, které zaregistrujete pomocí existující služby StorSimple Správce zařízení, měli byste mít šifrovací klíč dat služby. Tento klíč byl vygenerován při úspěšné registraci prvního zařízení s touto službou. Pokud jste tento klíč ztratili, přečtěte si téma [získání šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) pro virtuální pole StorSimple.
 
 ## <a name="step-by-step-setup"></a>Podrobný postup instalace
 Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuální pole StorSimple.
@@ -55,7 +55,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuáln
 2. Přihlaste se k webovému uživatelskému rozhraní vašeho virtuálního pole jako **StorSimpleAdmin**. Zadejte heslo správce zařízení, které jste změnili v kroku 3: spuštění virtuálního pole v části [zřízení virtuálního pole StorSimple v technologii Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) nebo [zřízení virtuálního pole StorSimple ve VMware](storsimple-virtual-array-deploy2-provision-vmware.md).
    
    ![Snímek obrazovky s přihlašovací stránkou StorSimple Uživatelské jméno StorSimpleAdmin je viditelné a pole pro heslo je vyplněno neurčitými znaky.](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
-3. Přejdete na **domovskou** stránku. Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního pole pomocí služby StorSimple Device Manager. Nastavení **sítě**, **nastavení webového proxy serveru** a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **nastavení zařízení** a **Nastavení cloudu**.
+3. Přejdete na **domovskou** stránku. Tato stránka popisuje různá nastavení potřebná ke konfiguraci a registraci virtuálního pole pomocí služby StorSimple Správce zařízení. Nastavení **sítě**, **nastavení webového proxy serveru** a **Nastavení času** jsou volitelné. Jediná požadovaná nastavení jsou **nastavení zařízení** a **Nastavení cloudu**.
    
    ![Snímek obrazovky domovské stránky Text uvádí, že zařízení není nakonfigurované. Odkazy na několik různých typů nastavení jsou viditelné.](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
 4. Na stránce **nastavení sítě** v části **Síťová rozhraní** se pro vás automaticky nakonfigurují data 0. Každé síťové rozhraní je standardně nastavené tak, aby se automaticky získala IP adresa (DHCP). IP adresa, podsíť a brána se proto automaticky přiřazují (pro IPv4 a IPv6).
@@ -104,19 +104,19 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuáln
     2. Zadejte **primární server NTP** pro vaše zařízení nebo přijměte výchozí hodnotu Time.Windows.com. Ujistěte se, že vaše síť umožňuje přenos dat NTP z vašeho datového centra na internet.
     3. Volitelně můžete zadat **sekundární server NTP** pro vaše zařízení.
     4. Klikněte na **Použít**. Tím se ověří a použije nakonfigurovaná nastavení času.
-11. Nakonfigurujte nastavení cloudu pro vaše zařízení. V tomto kroku dokončíte konfiguraci místních zařízení a pak zaregistrujete zařízení ve službě StorSimple Device Manager.
+11. Nakonfigurujte nastavení cloudu pro vaše zařízení. V tomto kroku dokončíte konfiguraci místních zařízení a pak zaregistrujete zařízení ve službě StorSimple Správce zařízení.
     
     1. Zadejte **registrační klíč služby** , který jste získali v [kroku 2: získání registračního klíče služby](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) pro virtuální pole StorSimple.
-    2. Pokud se jedná o první zařízení, které s touto službou zaregistrujete, zobrazí se vám **šifrovací klíč dat služby**. Klíč zkopírujte a uložte na bezpečném místě. Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Device Manager. 
+    2. Pokud se jedná o první zařízení, které s touto službou zaregistrujete, zobrazí se vám **šifrovací klíč dat služby**. Klíč zkopírujte a uložte na bezpečném místě. Tento klíč je vyžadován s registračním klíčem služby k registraci dalších zařízení ve službě StorSimple Správce zařízení. 
        
        Pokud se nejedná o první zařízení, které zaregistrujete v rámci této služby, budete muset zadat šifrovací klíč dat služby. Další informace najdete v tématu Získání [šifrovacího klíče dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) v místním webovém uživatelském rozhraní.
     3. Klikněte na **Zaregistrovat**. Tím se zařízení restartuje. Možná budete muset počkat na 2-3 minut, než se zařízení úspěšně zaregistruje. Jakmile se zařízení restartuje, přejdete na přihlašovací stránku.
        
        ![Snímek obrazovky se stránkou nastavení cloudu Pole registračního klíče a šifrovacího klíče jsou vyplněna, ale hodnoty jsou redigovány.](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
-12. Vraťte se na Azure Portal. Přejít na **všechny prostředky**, vyhledejte službu StorSimple Device Manager.
+12. Vraťte se na Azure Portal. Přejít na **všechny prostředky**, vyhledejte službu StorSimple Správce zařízení.
     
-    ![Snímek obrazovky se stránkou všechny prostředky v Azure Portal. Služba Device Manager je zvýrazněna.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
-13. V seznamu filtrovaný vyberte službu StorSimple Device Manager a potom přejděte na **> Správa zařízení**. V okně **zařízení** ověřte, že se zařízení úspěšně připojilo ke službě a má stav **připraveno k nastavení**.
+    ![Snímek obrazovky se stránkou všechny prostředky v Azure Portal. Služba Správce zařízení je zvýrazněna.](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
+13. V seznamu filtrovaný vyberte službu StorSimple Správce zařízení a potom přejděte na **> Správa zařízení**. V okně **zařízení** ověřte, že se zařízení úspěšně připojilo ke službě a má stav **připraveno k nastavení**.
     
     ![Nasadit](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
@@ -124,7 +124,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte virtuáln
 Provedením následujících kroků v [Azure Portal](https://portal.azure.com/) dokončete požadované nastavení zařízení.
 
 #### <a name="to-configure-the-device-as-file-server"></a>Konfigurace zařízení jako souborového serveru
-1. Přejít do služby StorSimple Device Manager a pak přejít na  **> zařízení pro správu**. V okně **zařízení** vyberte zařízení, které jste právě vytvořili. Toto zařízení se zobrazí jako **připravené k nastavení**.
+1. Přejít do služby StorSimple Správce zařízení a pak přejít na  **> zařízení pro správu**. V okně **zařízení** vyberte zařízení, které jste právě vytvořili. Toto zařízení se zobrazí jako **připravené k nastavení**.
    
    ![Konfigurace souborového serveru](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Klikněte na zařízení a zobrazí se informační zpráva oznamující, že zařízení je připravené k instalaci.

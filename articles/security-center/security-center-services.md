@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/16/2021
 ms.author: memildin
 ms.openlocfilehash: 070f35dc3efea4a3f05ec36cc3860fa589aa87e3
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102437906"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
@@ -24,24 +24,24 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 
 |**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače s podporou ARC Azure**|**Vyžaduje se Azure Defender.**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender pro integraci koncových bodů](security-center-wdatp.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Ano|
-|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](alerts-reference.md)|✔|✔|✔|Ano|
-|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|✔|✔|✔|Ano|
-|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Ano|
-|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Ano|
-|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Ano|
-|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ano|
-|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Ano|
-|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Ano|
-|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Ano|
-|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Ano|
-|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|-|-|-|Ano|
+|[Microsoft Defender pro integraci koncových bodů](security-center-wdatp.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Yes|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](alerts-reference.md)|✔|✔|✔|Yes|
+|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
+|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Yes|
+|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Yes|
+|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|-|-|-|Yes|
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
 |[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
-|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Ne|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|✔|Ne|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Ne|
+|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|No|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|✔|No|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|No|
 
 
 ### <a name="linux-machines"></a>[**Počítače se systémem Linux**](#tab/features-linux)
@@ -49,23 +49,23 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače s podporou ARC Azure**|**Vyžaduje se Azure Defender.**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender pro integraci koncových bodů](security-center-wdatp.md)|-|-|-|-|
-|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](./azure-defender.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Ano|
-|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Ano|
-|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Ano|
-|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Ano|
-|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Ano|
-|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ano|
-|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Ano|
-|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Ano|
-|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Ano|
-|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Ano|
-|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Ano|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](./azure-defender.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Yes|
+|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Yes|
+|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
+|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Yes|
+|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|Yes|
+|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
+|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Yes|
+|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
+|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
+|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
+|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Yes|
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
-|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ne|
-|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Ne|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|✔|Ne|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Ne|
+|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
+|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|No|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|✔|No|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|No|
 
 --- 
 
@@ -85,13 +85,13 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 | Funkce Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
-| Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Ano |
-| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
-| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | Ne | Ano |
-| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Linux serverů  | Ne | Ano |
-| Sophos v9 +| Řada Linux serverů  | Ne | Ano |
+| Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Yes |
+| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Yes |
+| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | No | Yes |
+| Symantec v12.1.1100+| Řada Windows Serverů  | No | Yes |
+| McAfee v10+ | Řada Windows Serverů  | No | Yes |
+| McAfee v10+ | Řada Linux serverů  | No | Yes |
+| Sophos v9 +| Řada Linux serverů  | No | Yes |
 
 > [!NOTE]
 > Rozpoznání nástroje System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows Serverem 2008 R2 vyžaduje, aby se protokol SCEP nainstaloval po PowerShellu (verze 3.0 nebo novější).
@@ -112,7 +112,7 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 |[Připojit účet AWS](quickstart-onboard-aws.md) (1)|-|-|
 |[Připojit účet GCP](quickstart-onboard-gcp.md) (1)|-|-|
 |[Průběžný export](continuous-export.md)|✔|✔|
-|[Automatizace pracovního postupu](workflow-automation.md)|✔|✔|
+|[Automatizace pracovních postupů](workflow-automation.md)|✔|✔|
 |[Pravidla výjimky pro doporučení](exempt-resource.md)|-|-|
 |[Pravidla potlačení výstrah](alerts-suppression-rules.md)|✔|✔|
 |[E-mailová oznámení pro výstrahy zabezpečení](security-center-provide-security-contact-details.md)|✔|✔|

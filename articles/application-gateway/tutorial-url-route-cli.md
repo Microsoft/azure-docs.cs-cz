@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8e8fed99fe0b1de52d2e2d0018dfd8867b54b63b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566516"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Směrování webového provozu na základě adresy URL pomocí Azure CLI
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Pomocí příkazu `az network vnet create` vytvořte virtuální síť *myVNet* a podsíť *myAGSubnet*. Potom pomocí příkazu `az network vnet subnet create` přidejte podsíť *myBackendSubnet* , kterou potřebují back-endové servery. Pomocí příkazu `az network public-ip create` vytvořte veřejnou IP adresu *myAGPublicIPAddress*.
+Pomocí příkazu `az network vnet create` vytvořte virtuální síť *myVNet* a podsíť *myAGSubnet*. Potom pomocí příkazu `az network vnet subnet create` přidejte podsíť *myBackendSubnet*, kterou potřebují back-endové servery. Pomocí příkazu `az network public-ip create` vytvořte veřejnou IP adresu *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -129,7 +129,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-a-backend-listener"></a>Přidání back-endového naslouchacího procesu
 
-Pomocí příkazu `az network application-gateway http-listener create` přidejte back-endový naslouchací proces *backendListener* , který je potřeba ke směrování provozu.
+Pomocí příkazu `az network application-gateway http-listener create` přidejte back-endový naslouchací proces *backendListener*, který je potřeba ke směrování provozu.
 
 
 ```azurecli-interactive
@@ -183,7 +183,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto článku vytvoříte tři sady škálování virtuálních počítačů, které podporují tři back-end fondy, které jste vytvořili. Vytvořené škálovací sady se jmenují *myvmss1* , *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
+V tomto článku vytvoříte tři sady škálování virtuálních počítačů, které podporují tři back-end fondy, které jste vytvořili. Vytvořené škálovací sady se jmenují *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

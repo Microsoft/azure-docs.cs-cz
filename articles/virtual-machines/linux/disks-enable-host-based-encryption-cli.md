@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 94a691badf056c8e93f47ae8d052fc1388b34e4c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3eecb584f468bc170f0325da8d734a1890691483
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737468"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601767"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Použití rozhraní příkazového řádku Azure k povolení kompletního šifrování pomocí šifrování na hostiteli
 
@@ -23,19 +23,28 @@ Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuáln
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>Podporované oblasti
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
-
 ### <a name="supported-vm-sizes"></a>Podporované velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
 Velikosti virtuálních počítačů můžete zjistit také programově. Informace o tom, jak je načíst programově, najdete v části [hledání podporovaných velikostí virtuálních počítačů](#finding-supported-vm-sizes) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Odesláním e-mailu encryptionAtHost@microsoft.com s ID předplatného získáte funkci povolenou pro vaše předplatná.
+Než pro svůj virtuální počítač nebo VMSS použijete vlastnost EncryptionAtHost, musíte povolit funkci pro vaše předplatné. Pokud chcete povolit funkci pro vaše předplatné, postupujte prosím podle následujících kroků:
+
+1.  Spusťte následující příkaz, který zaregistruje funkci pro vaše předplatné.
+
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name EncryptionAtHost
+    ```
+ 
+2.  Před vyzkoušením této funkce zkontrolujte, zda je stav registrace zaregistrován (několik minut trvá) pomocí příkazu níže.
+
+    ```azurecli
+    az feature show --namespace Microsoft.Compute --name EncryptionAtHost
+    ```
+
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Vytvoření Azure Key Vault a DiskEncryptionSet
 
