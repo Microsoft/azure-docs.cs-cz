@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c816fbad05831c83c891c70849986b38cb7fdbeb
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97589538"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Rámec zabezpečení: ověření vstupu | Hrozeb 
@@ -28,7 +28,7 @@ ms.locfileid: "97589538"
 | --------------- | ------- |
 | **Webová aplikace** | <ul><li>[Zakázat skriptování XSLT pro všechny transformace pomocí nedůvěryhodných šablon stylů](#disable-xslt)</li><li>[Zajistěte, aby každá stránka, která by mohla obsahovat uživatelsky ovladatelného obsahu, výslovný z automatického sledování MIME.](#out-sniffing)</li><li>[Posílení nebo zakázání rozlišení entit XML](#xml-resolution)</li><li>[Aplikace, které využívají http.sys provádění ověřování pomocí kanonického zpracování adresy URL](#app-verification)</li><li>[Zajistěte, aby byly při přijímání souborů od uživatelů k dismístě správné ovládací prvky.](#controls-users)</li><li>[Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webové aplikaci.](#typesafe)</li><li>[Použití samostatných tříd vazeb modelů nebo seznamů filtru vazeb k zamezení ohrožení zabezpečení pro hromadné přiřazení MVC](#binding-mvc)</li><li>[Kódování nedůvěryhodného webového výstupu před vykreslením](#rendering)</li><li>[Provede ověřování vstupu a filtrování u všech vlastností modelu řetězcového typu.](#typemodel)</li><li>[Pro pole formuláře, která přijímají všechny znaky, například Editor formátovaného textu, by měla být použita upravená část.](#richtext)</li><li>[Nepřiřazujte elementy modelu DOM k jímky, které nemají sestavené kódování.](#inbuilt-encode)</li><li>[Ověření všech přesměrování v rámci aplikace je uzavřeno nebo provedeno bezpečně.](#redirect-safe)</li><li>[Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami řadiče](#string-method)</li><li>[Nastavte časový limit horní meze pro zpracování regulárního výrazu, aby se zabránilo DoS v důsledku chybných regulárních výrazů.](#dos-expression)</li><li>[Nepoužívejte HTML. Raw v zobrazeních Razor](#html-razor)</li></ul> | 
 | **Databáze** | <ul><li>[Nepoužívejte dynamické dotazy v uložených procedurách](#stored-proc)</li></ul> |
-| **Web API** | <ul><li>[Ujistěte se, že se ověřování modelu provádí na metodách webového rozhraní API.](#validation-api)</li><li>[Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami webového rozhraní API](#string-api)</li><li>[Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webovém rozhraní API.](#typesafe-api)</li></ul> | 
+| **Webové rozhraní API** | <ul><li>[Ujistěte se, že se ověřování modelu provádí na metodách webového rozhraní API.](#validation-api)</li><li>[Implementovat ověřování vstupu pro všechny parametry řetězcového typu akceptované metodami webového rozhraní API](#string-api)</li><li>[Zajistěte, aby se pro přístup k datům používaly parametry bezpečné pro typ ve webovém rozhraní API.](#typesafe-api)</li></ul> | 
 | **Azure Document DB** | <ul><li>[Použití parametrizovaných dotazů SQL pro Azure Cosmos DB](#sql-docdb)</li></ul> | 
 | **WCF** | <ul><li>[Ověřování vstupu WCF prostřednictvím vazby schématu](#schema-binding)</li><li>[WCF – ověřování vstupu prostřednictvím inspektorů parametrů](#parameters)</li></ul> |
 
@@ -184,7 +184,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>Příklad
-Pokud potřebujete vyřešit vložené entity, ale nepotřebujete přeložit externí entity, nastavte vlastnost překladače XmlReaderSettings.Xmlna hodnotu null. Příklad: 
+Pokud potřebujete vyřešit vložené entity, ale nepotřebujete přeložit externí entity, nastavte vlastnost překladače XmlReaderSettings.Xmlna hodnotu null. Například: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -501,7 +501,7 @@ Nepoužívejte, `Html.Raw()` Pokud není nutné zobrazit značky. Tato metoda ne
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Database | 
+| **Komponenta**               | databáze | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
@@ -561,7 +561,7 @@ AS
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | MVC5, MVC6 |
 | **Atributy**              | –  |
@@ -618,7 +618,7 @@ namespace MyApi.Controllers
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné, MVC 5, MVC 6 |
 | **Atributy**              | –  |
@@ -629,7 +629,7 @@ namespace MyApi.Controllers
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Web API | 
+| **Komponenta**               | Webové rozhraní API | 
 | **Fáze SDL**               | Sestavení |  
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |

@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100557521"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Pomocí REST API vytvořit nebo aktualizovat vlastní role Azure
@@ -44,7 +44,7 @@ K vypsání všech vlastních rolí v adresáři použijte REST API [Definice ro
 1. Nahraďte *{Filter}* typem role.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Popis |
+    > | Filtrovat | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filtrovat podle typu CustomRole |
 
@@ -71,7 +71,7 @@ K vypsání vlastních rolí v oboru použijte REST API [Definice rolí – sezn
 1. Nahraďte *{Filter}* typem role.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Popis |
+    > | Filtrovat | Description |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Filtrovat podle typu CustomRole |
 
@@ -98,7 +98,7 @@ Pokud chcete získat informace o vlastní roli pomocí jejího zobrazovaného n�
 1. Nahraďte *{Filter}* zobrazovaným názvem role.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Popis |
+    > | Filtrovat | Description |
     > | --- | --- |
     > | `$filter=roleName+eq+'{roleDisplayName}'` | Použijte kódovaný formát URL s přesným zobrazovaným názvem role. Například `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 

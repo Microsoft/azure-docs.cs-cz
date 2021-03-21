@@ -4,10 +4,10 @@ description: Popisuje vlastnosti, které jsou k dispozici pro pracovní prostor 
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: e47c2137840e21eab73906d42b1e1536422f872d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363385"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning jako zdroj Event Grid

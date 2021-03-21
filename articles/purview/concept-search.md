@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: af8ec9e0aac38240c7da92edd614892ff65712e2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96552698"
 ---
 # <a name="understand-search-features-in-azure-purview"></a>Vysvětlení funkcí vyhledávání v Azure dosah
 
 Tento článek poskytuje přehled možností vyhledávání v Azure dosah. Hledání je základní funkcí platformy dosah, která slouží ke zjišťování dat a používání funkcí zásad správného řízení v organizaci.
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
 Dosah vyhledávání používá spravovaný index vyhledávání. Po zaregistrování zdroje dat ve službě dosah je jeho metadata indexována službou vyhledávání, aby bylo možné snadné zjišťování. Index poskytuje možnosti pro vyhledávání a dokončuje požadavky na hledání prostřednictvím dotazů na miliony assetů metadat. Hledání vám pomůže zjistit, pochopit a používat data a získat z nich co nejvíc hodnot.
 

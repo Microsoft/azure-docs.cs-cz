@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 7f5e5e4da9fea671fc85a55fc8cc191fa14b720f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101662375"
 ---
 # <a name="how-to-update-azure-percept-dk-over-a-usb-connection"></a>Postup aktualizace služby Azure Percept DK přes připojení USB
 
 V této příručce se dozvíte, jak provést aktualizaci USB pro nosnou desku vaší služby Azure Percept DK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Hostitelský počítač s dostupným portem USB-C nebo USB-A.
 - Nosná deska pro Azure Percept DK (dev Kit) a dodaná USB-C kabel USB-C. Pokud má hostitelský počítač port USB-A, ale ne port USB-C, můžete použít USB-C kabel USB (samostatně prodávaný).
 - Instalace [výstupu](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) (vyžaduje se přístup správce).

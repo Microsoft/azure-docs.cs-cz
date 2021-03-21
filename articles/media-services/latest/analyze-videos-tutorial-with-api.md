@@ -2,31 +2,24 @@
 title: Analýza videí pomocí Media Services V3
 description: Naučte se analyzovat videa pomocí Azure Media Services.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: ''
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: 4a050d838bae9b394f5f292698781a9a824af0bf
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: a083fbbf54d6f03316a2e647d47e76cdb5db7c2c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454120"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581222"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Kurz: analýza videí pomocí Media Services V3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-> [!NOTE]
-> I když tento kurz používá příklady [sady .NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) , jsou obecné kroky stejné pro [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)nebo jiné podporované sady [SDK](media-services-apis-overview.md#sdks).
-
-Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojenosti zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely. Pak můžou získat přehled o svých firmách. Tyto přehledy obsahují seznam běžných stížností, zdroje těchto stížností a další užitečné informace.
+Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojenosti zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely.
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -41,9 +34,9 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="compliance-privacy-and-security"></a>Dodržování předpisů, ochrana osobních údajů a zabezpečení
  
-Důležitou připomínkou je, že je nutné dodržovat všechny použitelné zákony v používání Video Indexer a nesmíte používat Video Indexer ani žádnou jinou službu Azure způsobem, který porušuje práva jiných nebo může být škodlivá jiným osobám. Před nahráním videí, včetně jakýchkoli biometrických dat, do služby Video Indexer pro zpracování a ukládání, musíte mít všechna patřičná práva, včetně příslušných souhlasů, od jednotlivých jednotlivců ve videu. Pokud se chcete dozvědět o dodržování předpisů, ochraně osobních údajů a zabezpečení v Video Indexer, [podmínky Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)Microsoftu. Pro závazky ochrany osobních údajů Microsoftu a jejich zpracování si přečtěte [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, [podmínky online služeb](https://www.microsoft.com/licensing/product-licensing/products) ("OST") a [doplněk pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Další informace o ochraně osobních údajů, včetně uchovávání, odstranění nebo zničení dat, jsou k dispozici v OST a [zde](../video-indexer/faq.md). Když použijete Video Indexer, souhlasíte s tím, že jste vázáni na Cognitive Services podmínky, OST, DPA a prohlášení o zásadách ochrany osobních údajů.
+Jako důležité připomenutí musíte dodržovat všechny použitelné zákony při používání Video Indexer. Nemusíte používat Video Indexer ani žádnou jinou službu Azure způsobem, který porušuje práva ostatních. Před nahráním videí, včetně jakýchkoli biometrických dat, do služby Video Indexer pro zpracování a ukládání, musíte mít všechna patřičná práva, včetně všech příslušných souhlasů, od jednotlivců ve videu. Pokud se chcete dozvědět o dodržování předpisů, ochraně osobních údajů a zabezpečení v Video Indexer, [podmínky Azure Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Zásady ochrany osobních údajů od Microsoftu a jejich zpracování najdete v [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, na základě [podmínek pro online služby](https://www.microsoft.com/licensing/product-licensing/products) (OST) a v [dodatku pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Další informace o ochraně osobních údajů, včetně uchovávání, odstranění nebo zničení dat, jsou k dispozici v OST a [zde](../video-indexer/faq.md). Pomocí Video Indexer souhlasíte s tím, že jste vázáni Cognitive Services podmínky, OST, DPA a prohlášení o zásadách ochrany osobních údajů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud nemáte nainstalovanou aplikaci Visual Studio, Získejte [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
 - [Vytvořte účet Media Services](./create-account-howto.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
@@ -131,7 +124,7 @@ Dokončení úlohy trvá déle. V takovém případě chcete být upozorněni. E
 
 Cyklické dotazování není doporučeným osvědčeným postupem pro produkční aplikace kvůli možné latenci. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid.
 
-Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí. Další informace najdete v tématu [Směrování událostí do vlastního webového koncového bodu](job-state-events-cli-how-to.md).
+Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí. Další informace najdete v tématu [Směrování událostí do vlastního webového koncového bodu](monitoring/job-state-events-cli-how-to.md).
 
 **Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud se úloha dokončí v rámci chyby, zobrazí se **chybový** stav. Pokud se úloha právě ruší, vrátíte se **a po dokončení** se **zruší** .
 
@@ -147,11 +140,19 @@ Následující funkce stáhne výsledky z výstupního [prostředku](/rest/api/m
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
-### <a name="clean-up-resource-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
+### <a name="clean-up-resources-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
+
+[!INCLUDE [clean-up-warning](includes/clean-up-warning.md)]
 
 Obecně byste měli vyčistit vše kromě objektů, které plánujete použít (obvykle budete znovu používat transformaci a trvalé StreamingLocators). Pokud chcete, aby se Váš účet vyčistil po experimentování, odstraňte prostředky, které nechcete znovu použít. Například následující kód odstraní úlohu a výstupní prostředek:
 
+### <a name="delete-resources-with-code"></a>Odstranění prostředků s kódem
+
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
+
+Můžete použít také rozhraní příkazového řádku.
+
+[!INCLUDE [clean-up-resources-cli](includes/clean-up-resources-cli.md)]
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
@@ -163,23 +164,10 @@ Když program spustíte, úloha vytvoří miniatury každého obličeje, který 
 
 Výstupní soubor analyzování videa se nazývá insights.json. Tento soubor obsahuje přehledy o vašem videu. Popis jednotlivých elementů nalezených v souboru JSON získáte v článku [Inteligentní funkce médií](./analyzing-video-audio-files-concept.md).
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte.
-
-Spusťte následující příkaz rozhraní příkazového řádku:
-
-```azurecli
-az group delete --name amsResourceGroup
-```
-
 ## <a name="multithreading"></a>Multithreading
 
-Sady SDK Azure Media Services V3 nejsou bezpečné pro přístup z více vláken. Při práci s aplikacemi s více vlákny byste měli vytvořit nový objekt AzureMediaServicesClient pro každé vlákno.
-
-## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
-
-Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
+> [!WARNING]
+> Sady SDK Azure Media Services V3 nejsou bezpečné pro přístup z více vláken. Při práci s aplikacemi s více vlákny byste měli vytvořit nový objekt AzureMediaServicesClient pro každé vlákno.
 
 ## <a name="next-steps"></a>Další kroky
 

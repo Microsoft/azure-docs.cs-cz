@@ -4,10 +4,10 @@ description: Tento článek popisuje doporučené výstrahy metriky dostupné ze
 ms.topic: conceptual
 ms.date: 10/28/2020
 ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101728888"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Doporučené výstrahy metriky (Preview) z kontejneru Insights
@@ -18,7 +18,7 @@ Tento článek popisuje prostředí a poskytuje pokyny ke konfiguraci a správě
 
 Pokud nejste obeznámeni s výstrahami Azure Monitor, přečtěte si téma [Přehled výstrah v Microsoft Azure](../alerts/alerts-overview.md) před tím, než začnete. Další informace o výstrahách metrik najdete [v tématu výstrahy metrik v Azure monitor](../alerts/alerts-metric-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, zkontrolujte následující:
 
@@ -39,7 +39,7 @@ Než začnete, zkontrolujte následující:
 
 V případě, že jsou součástí služby Container Insights informace o tom, jaké jsou výstrahy pro AKS a clustery Kubernetes s podporou ARC Azure, zahrnují následující výstrahy metriky:
 
-|Název| Popis |Výchozí prahová hodnota |
+|Název| Description |Výchozí prahová hodnota |
 |----|-------------|------------------|
 |Průměrný procesor kontejneru% |Vypočítá průměrný procesor využívaný na jeden kontejner.|V případě, že průměrné využití procesoru na kontejner je větší než 95%.| 
 |Průměrná paměť pracovní sady v kontejneru% |Vypočítá průměrnou paměť pracovní sady použitou na kontejner.|V případě, že průměrná spotřeba paměti pracovní sady na kontejner je větší než 95%. |

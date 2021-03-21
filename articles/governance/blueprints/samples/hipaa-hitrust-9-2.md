@@ -4,10 +4,10 @@ description: Přehled ukázky podrobného plánu HIPAA HITRUST 9,2 Tento ukázko
 ms.date: 01/27/2021
 ms.topic: sample
 ms.openlocfilehash: bd65b6113f291457096bacc02bdbcfd92d6e0f84
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98915539"
 ---
 # <a name="hipaa-hitrust-92-blueprint-sample"></a>Ukázka HIPAA HITRUST 9,2 podrobný plán
@@ -18,7 +18,7 @@ Ukázka HIPAA HITRUST 9,2 podrobného plánu poskytuje mechanismy správného ř
 
 [Mapování ovládacího prvku Azure Policy](../../policy/samples/hipaa-hitrust-9-2.md) poskytuje podrobné informace o definicích zásad zahrnutých v tomto podrobném plánu a o tom, jak se tyto definice zásad mapují k **doménám** a **ovládacím prvkům** kompatibility v HIPAA HiTRUST 9,2. Při přiřazení k architektuře jsou prostředky vyhodnocovány Azure Policym při nedodržení předpisů s přiřazenými definicemi zásad. Další informace najdete v tématu [Azure Policy](../../policy/overview.md).
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 
 K nasazení ukázky Azure modrotisky HIPAA HITRUST 9,2 podrobného plánu je potřeba provést tyto kroky:
 

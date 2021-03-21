@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 1babf1feb550109486089c45469ab4ce32f72cb3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097410"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Výrazy stylu řízené daty (Android SDK)
@@ -24,7 +24,7 @@ Styly řízené daty omezují množství kódu potřebného k implementaci obcho
 
 Azure Maps Android SDK podporuje téměř všechny stejné výrazy stylu jako rozhraní Azure Maps Web SDK, takže všechny stejné koncepty, které jsou uvedeny ve [výrazech stylu na základě dat (Web SDK)](data-driven-style-expressions-web-sdk.md) , lze přenášet do aplikace pro Android. Všechny výrazy stylu v Azure Maps Android SDK jsou k dispozici v rámci `com.microsoft.azure.maps.mapcontrol.options.Expression` oboru názvů. Existuje mnoho různých typů výrazů stylu.
 
-| Typ výrazů | Popis |
+| Typ výrazů | Description |
 |---------------------|-------------|
 | [Logické výrazy](#boolean-expressions) | Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocení logických porovnání. |
 | [Výrazy barev](#color-expressions) | Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev. |
@@ -219,7 +219,7 @@ Toto video poskytuje přehled stylů založených na datech v Azure Maps.
 
 Datové výrazy poskytují přístup k datům vlastností ve funkci.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `accumulated()` | číslo | Získá hodnotu zatím shromážděné hodnoty vlastnosti clusteru. |
 | `at(number | Expression, Expression)` | hodnota | Načte položku z pole. |
@@ -380,7 +380,7 @@ has("fillColor", get("_style"))
 
 Matematické výrazy poskytují matematické operátory pro provádění výpočtů řízených daty v rámci rozhraní Expression Framework.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `abs(number | Expression)` | číslo | Vypočítá absolutní hodnotu zadaného čísla. |
 | `acos(number | Expression)` | číslo | Vypočítá Arkus kosinus zadaného čísla. |
@@ -415,7 +415,7 @@ Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocen�
 
 Při porovnávání hodnot je porovnání striktně typované. Hodnoty různých typů jsou vždy považovány za nerovné. Případy, kde se označují, že typy jsou odlišné v době analýzy, jsou považovány za neplatné a vytvoří chybu analýzy.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `all(Expression...)` | boolean | Vrátí `true` , zda jsou všechny vstupy `true` , `false` jinak. |
 | `any(Expression...)` | boolean | Vrátí `true` , zda je některý ze vstupů `true` , `false` jinak. |
@@ -680,7 +680,7 @@ val layer = SymbolLayer(source,
 
 Výrazy typu poskytují nástroje pro testování a převod různých typů dat, jako jsou řetězce, čísla a logické hodnoty.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `array(Expression)` | Objekt [] | Vyhodnotí, že vstup je pole. |
 | `bool(Expression)` | boolean | Vyhodnotí, že vstupní hodnota je logická hodnota. |
@@ -699,7 +699,7 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 
 Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `color(int)` | color | Převede celočíselnou hodnotu barvy na výraz barvy. |
 | `rgb(Expression red, Expression green, Expression blue)` \| `rgb(number red, number green, number blue)` | color | Vytvoří hodnotu barvy z *červených*, *zelených* a *modrých* komponent, které musí být v rozsahu mezi `0` a `255` a komponentou alfa `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
@@ -806,7 +806,7 @@ val layer = BubbleLayer(source,
 
 Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako je zřetězení a převod případu.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `concat(string...)` \| `concat(Expression...)` | řetězec | Zřetězí více řetězců dohromady. Každá hodnota musí být řetězec. Použijte `toString` výraz Type pro převod ostatních typů hodnot na řetězec v případě potřeby. |
 | `downcase(string)` \| `downcase(Expression)` | řetězec | Převede zadaný řetězec na malá písmena. |
@@ -874,7 +874,7 @@ interpolate(Expression.Interpolator interpolation, Expression number, Expression
 
 Existují tři typy metod interpolace, které lze použít ve `interpolate` výrazu:
 
-| Název | Popis |
+| Název | Description |
 |------|-------------|
 | `linear()` | Interpoluje linearitu mezi dvojicí zastávky.  |
 | `exponential(number)` \| `exponential(Expression)` | Interpoluje exponenciálně mezi zastávkami. Je určena "základní" a určuje rychlost, s jakou se výstup zvyšuje. Vyšší hodnoty zvyšují objem výstupu směrem k hornímu konci rozsahu. "Základní" hodnota blížící se 1 vytvoří výstup, který se zvýší lineárně.|
@@ -1286,7 +1286,7 @@ val layer = HeatMapLayer(source,
 
 Výrazy vazeb proměnných ukládají výsledky výpočtu v proměnné. Takže je možné výsledky výpočtů odkazovat jinde ve výrazu vícekrát. Je užitečná optimalizace pro výrazy, které zahrnují mnoho výpočtů.
 
-| Výraz | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |--------------|---------------|--------------|
 | `let(Expression... input)` | | Ukládá jednu nebo více hodnot jako proměnné pro použití `var` výrazem v podřízeném výrazu, který vrací výsledek. |
 | `var(Expression expression)` \| `var(string variableName)` | Objekt | Odkazuje na proměnnou, která byla vytvořena pomocí `let` výrazu. |

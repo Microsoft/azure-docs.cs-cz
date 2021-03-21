@@ -4,10 +4,10 @@ description: Popisuje vlastnosti, které jsou k dispozici pro události předpla
 ms.topic: reference
 ms.date: 02/12/2021
 ms.openlocfilehash: b9753ecfb46f5ac5f383f19e3d409e703c144d48
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363181"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Předplatné Azure jako zdroj Event Grid

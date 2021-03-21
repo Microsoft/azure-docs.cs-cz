@@ -265,22 +265,8 @@
           href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
-        - name: Události
-          href: /rest/api/policy-insights/policyevents
-        - name: Stavy
-          href: /rest/api/policy-insights/policystates
-        - name: Přiřazení
-          href: /rest/api/resources/policyassignments
-        - name: Definice zásad
-          href: /rest/api/resources/policydefinitions
-        - name: Výjimky ze zásad
-          href: /rest/api/resources/policyexemptions
-        - name: Definice iniciativ
-          href: /rest/api/resources/policysetdefinitions
-        - name: Prostředky sledované zásadami
-          href: /rest/api/policy-insights/policytrackedresources
-        - name: Nápravy
-          href: /rest/api/policy-insights/remediations
+        - name: Zásady
+          href: /rest/api/policy/
         - name: Konfigurace hosta
           href: /rest/api/guestconfiguration/
     - name: Šablony Resource Manageru

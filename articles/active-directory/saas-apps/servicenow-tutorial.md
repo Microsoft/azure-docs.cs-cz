@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: c90234249f3cf7eb6ed4793110d61e1f8190ed60
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99092597"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat ServiceNow s Azure Active Directory (A
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Jao6]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -131,7 +131,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Jako **název** zadejte `B.Simon` .  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -248,7 +248,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     1. Přihlaste se k aplikaci ServiceNow jako správce.
 
-       * V rámci automatické konfigurace jsou všechna potřebná nastavení nakonfigurovaná na straně **ServiceNow** , ale **certifikát X. 509** není ve výchozím nastavení povolený a jako **MultiSSOv2_SAML2_custom** zadejte **jednu Sign-On hodnotu skriptu** . Musíte ho ručně namapovat na svého poskytovatele identity v ServiceNow. Postupujte následovně:
+       * V rámci automatické konfigurace jsou všechna potřebná nastavení nakonfigurovaná na straně **ServiceNow** , ale **certifikát X. 509** není ve výchozím nastavení povolený a jako **MultiSSOv2_SAML2_custom** zadejte **jednu Sign-On hodnotu skriptu** . Musíte ho ručně namapovat na svého poskytovatele identity v ServiceNow. Postupujte takto:
 
          1. V levém podokně vyhledejte v poli hledání oddíl **jednotného přihlašování k více poskytovatelům** a vyberte **Zprostředkovatelé identity**.
 

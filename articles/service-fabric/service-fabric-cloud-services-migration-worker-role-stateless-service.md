@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cf593f793aabf2a0650684ed8d02fe02d756ec2b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575733"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Průvodce převodem webových rolí a rolí pracovních procesů na Service Fabric bezstavových služeb
@@ -31,10 +31,10 @@ Podobně jako role pracovního procesu představuje webová role také nestavov�
 
 | **Aplikace** | **Podporováno** | **Cesta migrace** |
 | --- | --- | --- |
-| ASP.NET – webové formuláře |Ne |Převést na ASP.NET Core 1 MVC |
+| ASP.NET – webové formuláře |No |Převést na ASP.NET Core 1 MVC |
 | ASP.NET MVC |S migrací |Upgrade na ASP.NET Core 1 MVC |
 | Rozhraní API pro ASP.NET Web |S migrací |Použití samoobslužného serveru nebo ASP.NET Core 1 |
-| ASP.NET Core 1 |Ano |– |
+| ASP.NET Core 1 |Yes |– |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Rozhraní API a životní cyklus vstupního bodu
 Role pracovního procesu a rozhraní API služby Service Fabric nabízejí podobné vstupní body: 

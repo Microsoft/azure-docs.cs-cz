@@ -10,10 +10,10 @@ ms.date: 02/23/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro R device so I can use it to transfer data to Azure.
 ms.openlocfilehash: bae12b5ad7ce6c079161f42e1d6fe3e6c08e3f4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101727528"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-r-device"></a>Kurz: aktivace zařízení Azure Stack Edge pro R
@@ -25,10 +25,10 @@ Dokončení procesu aktivace může trvat přibližně 5 minut.
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Aktivace fyzického zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před konfigurací a nastavením Azure Stack hraničního zařízení pro R se ujistěte, že:
 
@@ -82,7 +82,7 @@ Před konfigurací a nastavením Azure Stack hraničního zařízení pro R se u
  
     Různé klíče jsou vysvětleny v následující tabulce:
     
-    |Pole  |Popis  |
+    |Pole  |Description  |
     |---------|---------|
     |`Id`    | Toto je ID zařízení.        |
     |`DataVolumeBitLockerExternalKeys`|Jedná se o klíče BitLockeru pro datové disky a používají se k obnovení místních dat v zařízení.|
@@ -102,7 +102,7 @@ Pokud narazíte na nějaké problémy při aktivaci, přečtěte si [řešení p
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Požadavky
+> * Předpoklady
 > * Aktivace fyzického zařízení
 
 Informace o tom, jak přenést data pomocí Azure Stack hraničního zařízení pro R, najdete v těchto tématech:

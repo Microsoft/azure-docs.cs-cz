@@ -4,10 +4,10 @@ description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který u
 ms.date: 02/16/2021
 ms.topic: how-to
 ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556110"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
@@ -117,7 +117,7 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manager
 
-K připojení zákazníka budete muset vytvořit šablonu [Azure Resource Manager](../../azure-resource-manager/index.yml) pro vaši nabídku s následujícími informacemi. Hodnoty **mspOfferName** a **mspOfferDescription** se zákazníkům zobrazí na [stránce poskytovatelé služeb](view-manage-service-providers.md) Azure Portal.
+Pokud chcete připojit zákazníka, je potřeba vytvořit pro danou nabídku šablonu [Azure Resource Manageru](../../azure-resource-manager/index.yml) s následujícími informacemi. Hodnoty **mspOfferName** a **mspOfferDescription** se zákazníkům zobrazí na [stránce poskytovatelé služeb](view-manage-service-providers.md) Azure Portal.
 
 |Pole  |Definice  |
 |---------|---------|
@@ -306,7 +306,7 @@ az account list
 
 Pokud po zprovoznění zákazníka potřebujete provést změny, můžete [delegování aktualizovat](update-delegation.md). [Přístup k delegování](remove-delegation.md) můžete také odebrat úplně.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se vám nepodaří úspěšně připojit zákazníka nebo pokud vaši uživatelé mají potíže s přístupem k delegovaným prostředkům, Projděte si následující tipy a požadavky a zkuste to znovu.
 

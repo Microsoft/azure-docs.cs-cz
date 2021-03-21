@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 04/24/2019
 ms.author: lajanuar
 ms.openlocfilehash: fb31388647fc6022a2e6670baf7b3e73f345c36a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98898066"
 ---
 # <a name="unsupported-language-deployments"></a>Nasazení nepodporovaného jazyka
@@ -25,7 +25,7 @@ Díky nadcházejícímu vyřazení centra Microsoft Translator bude Microsoft od
 
 Nyní máme proces, který umožňuje nasadit nepodporované modely prostřednictvím vlastního překladatele.  Tento proces vám umožní pokračovat v překladu obsahu pomocí nejnovějšího rozhraní API v3.  Tyto modely budou hostovány, dokud se nerozhodnete je zrušit nebo že se dvojice jazyků bude k dispozici ve vlastním překladateli.  Tento článek vysvětluje proces nasazení modelů s nepodporovanými páry jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby byly vaše modely kandidátem na nasazení, musí splňovat následující kritéria:
 * Projekt obsahující model musí být z centra migrován do vlastního překladatele pomocí nástroje pro migraci.  Proces migrace projektů a pracovních prostorů najdete [tady](how-to-migrate.md).

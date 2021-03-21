@@ -8,10 +8,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
 ms.openlocfilehash: 533f5c9e38818a8e37482cbbb3a90602366eca6f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97587209"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
@@ -531,7 +531,7 @@ Chcete-li přidat roli, spusťte následující příkaz:
 az role definition create --role-definition "<filename>.json"
 ```
 
-Měli byste vidět následující výstup:
+Měl by se zobrazit následující výstup:
 
 ```output
 {
@@ -668,7 +668,7 @@ Po dokončení konfigurace můžete zkontrolovat stav SQL Server a ověřit, jes
 systemctl status mssql-server --no-pager
 ```
 
-Měli byste vidět následující výstup:
+Měl by se zobrazit následující výstup:
 
 ```output
 ● mssql-server.service - Microsoft SQL Server Database Engine
@@ -971,7 +971,7 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     sudo pcs resource
     ```
 
-    Měli byste vidět následující výstup:
+    Měl by se zobrazit následující výstup:
     
     **RHEL 7** 
     
@@ -1053,7 +1053,7 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
     sudo pcs constraint list --full
     ```
 
-    Měli byste vidět následující výstup:
+    Měl by se zobrazit následující výstup:
     
     **RHEL 7**
 

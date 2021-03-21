@@ -5,10 +5,10 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
 ms.openlocfilehash: 543f20af270769dd16e4a1ecf6ee93e9259cdfd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022268"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Použití PowerShellu k přidání image Marketplace do testovacího prostředí v Azure DevTest Labs
@@ -19,7 +19,7 @@ Tento ukázkový skript PowerShellu přidá image Marketplace do testovacího pr
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Testovací prostředí**. Tento skript vyžaduje, abyste měli existující testovací prostředí. 
 
 ## <a name="sample-script"></a>Ukázkový skript

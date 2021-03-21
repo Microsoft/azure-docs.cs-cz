@@ -13,12 +13,12 @@ metadata:
   ms.date: 03/03/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 323172092a6530e97de36c1cf50fea855f38da28
-  ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+  ms.openlocfilehash: b7dceb243f0a85166cd1d7180198c6aac95fab7d
+  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/11/2021
-  ms.locfileid: "103011166"
+  ms.lasthandoff: 03/19/2021
+  ms.locfileid: "104601053"
 highlightedContent:
   items:
   - title: Úvodní příručka pro vývojáře v Azure
@@ -1384,3 +1384,11 @@ additionalContent:
     - title: Azure China 21Vianet
       summary: Vyhrazený cloud umístěný v Číně a provozovaný společností 21Vianet
       url: /azure/china/
+  - title: Partnerská řešení
+    items:
+    - title: Partnerská řešení Azure
+      summary: Integrovaná Partnerská řešení, která můžete využít v Azure k rozšíření cloudové infrastruktury.
+      url: ./partner-solutions/overview.md
+    - title: Komerční marketplace
+      summary: Online tržiště aplikací a služeb od partnerů nezávislého výrobce softwaru (ISV).
+      url: ./marketplace/index.yml

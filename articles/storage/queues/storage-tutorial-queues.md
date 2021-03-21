@@ -10,10 +10,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3c41b218ac0d347b2e58931421493755346b13d7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97591969"
 ---
 # <a name="tutorial-work-with-azure-queue-storage-queues-in-net"></a>Kurz: práce s frontami Azure Queue Storage v .NET
@@ -182,7 +182,7 @@ Přidejte připojovací řetězec do aplikace, aby mohl získat přístup k úč
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 ## <a name="insert-messages-into-the-queue"></a>Vložit zprávy do fronty
 
@@ -216,7 +216,7 @@ Vytvořte novou metodu pro odeslání zprávy do fronty.
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 Zpráva fronty musí být ve formátu kompatibilním s požadavkem XML pomocí kódování UTF-8. Zpráva může mít velikost až 64 KB. Pokud zpráva obsahuje binární data, zpráva se [zakóduje ve formátu base64](/dotnet/api/system.convert.tobase64string) .
 
@@ -240,7 +240,7 @@ Vytvořte novou metodu pro načtení zprávy z fronty. Po úspěšném přijetí
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 ## <a name="delete-an-empty-queue"></a>Odstraní prázdnou frontu.
 
@@ -256,7 +256,7 @@ Je to osvědčený postup na konci projektu k určení, zda stále potřebujete 
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 ## <a name="check-for-command-line-arguments"></a>Vyhledat argumenty příkazového řádku
 
@@ -276,7 +276,7 @@ Nakonec před ukončením volání počkejte na vstup uživatele `Console.ReadLi
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_Main":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 ## <a name="complete-code"></a>Celý kód
 

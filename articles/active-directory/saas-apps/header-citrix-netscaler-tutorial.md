@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 9cab0597aeb3bc28f391de558240e5d894f5a49c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735227"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-header-based-authentication"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Citrix ADC (ověřování na základě hlaviček)
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat konektor Citrix ADC s Azure Active Dir
 * Umožněte uživatelům, aby se automaticky přihlásili k Citrix ADC pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -149,7 +149,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
    1. Jako **název** zadejte `B.Simon` .  
 
-   1. Jako **uživatelské jméno** zadejte _username@companydomain.extension_ . Například `B.Simon@contoso.com`.
+   1. Jako **uživatelské jméno** zadejte _username@companydomain.extension_ . Například, `B.Simon@contoso.com`.
 
    1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište nebo zkopírujte hodnotu zobrazenou v **hesle**.
 

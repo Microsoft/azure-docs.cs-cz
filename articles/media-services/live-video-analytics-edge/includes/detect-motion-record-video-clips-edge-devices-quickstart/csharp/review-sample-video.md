@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: df6137e4e00ebd089ef7fb5efa163a513fb30728
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98061121"
 ---
 Při nastavování prostředků Azure pro účely tohoto rychlého startu se do virtuálního počítače se systémem Linux ve službě Azure, který se používá jako zařízení IoT Edge, zkopíruje krátké video dávky. Tento videosoubor se použije k simulaci živého datového proudu pro tento kurz.

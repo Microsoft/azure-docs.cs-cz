@@ -9,10 +9,10 @@ ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 5712448c8c5248d3c84ce43f8a41c669355f1d43
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102565729"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Kurz: přesunutí virtuálních počítačů Azure napříč oblastmi
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 **Požadavek** | **Popis**
 --- | ---
 **Podpora Resource stěhovací** | [Zkontrolujte](common-questions.md) podporované oblasti a další časté otázky.

@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: e3e2aa055baf3dfb4bee0629040fc7c140844637
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101094013"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>Migrace balíčků služba SSIS (SQL Server Integration Services) do spravované instance Azure SQL
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Vyhodnoťte zdrojové SSIS projekty/balíčky.
 > * Migrujte projekty a balíčky SSIS do Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení těchto kroků potřebujete:
 

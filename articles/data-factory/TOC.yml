@@ -30,6 +30,8 @@
       href: data-flow-create.md
 - name: Kurzy
   items:
+    - name: Seznam kurzů
+      href: data-factory-tutorials.md
     - name: Kopírování a příjem dat
       items:
         - name: Z Azure Blob Storage do Azure SQL Database
@@ -694,14 +696,16 @@
           href: azure-ssis-integration-runtime-package-store.md
     - name: Vytvoření aktivačních událostí
       items:
-        - name: Vytvoření triggeru události úložiště
-          href: how-to-create-event-trigger.md
         - name: Vytvoření aktivační události plánu
           href: how-to-create-schedule-trigger.md
         - name: Vytvoření aktivační události pro přeskakující okno
           href: how-to-create-tumbling-window-trigger.md
         - name: Vytvoření závislosti aktivační události pro přeskakující okno
           href: tumbling-window-trigger-dependency.md
+        - name: Vytvoření triggeru události úložiště
+          href: how-to-create-event-trigger.md
+        - name: Vytvoření vlastní aktivační procedury událostí
+          href: how-to-create-custom-event-trigger.md
         - name: Metadata triggeru reference v kanálu
           href: how-to-use-trigger-parameterization.md
     - name: Data Catalog a zásady správného řízení

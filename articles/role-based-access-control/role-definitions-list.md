@@ -15,10 +15,10 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555949"
 ---
 # <a name="list-azure-role-definitions"></a>Vypsat definice rolí Azure
@@ -356,7 +356,7 @@ K vypsání definic rolí použijte REST API [seznam definice rolí](/rest/api/a
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu definic rolí.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Popis |
+    > | Filtrovat | Description |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Vypisuje definice rolí pro zadaný obor a všechny podobory. |
     > | `$filter=type+eq+'{type}'` | Vypisuje definice rolí zadaného typu. Typ role může být `CustomRole` nebo `BuiltInRole` . |

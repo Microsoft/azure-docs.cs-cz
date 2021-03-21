@@ -4,10 +4,10 @@ description: Přečtěte si, jak pomocí rozšíření Azure Policy Visual Studi
 ms.date: 01/11/2021
 ms.topic: how-to
 ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98107935"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použít rozšíření Azure Policy pro Visual Studio Code
@@ -18,11 +18,11 @@ Naučte se používat Azure Policy rozšíření pro Visual Studio Code k hledá
 
 Azure Policy rozšíření pro Visual Studio Code lze nainstalovat do systému Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-and-configure-the-azure-policy-extension"></a>Instalace a konfigurace rozšíření Azure Policy

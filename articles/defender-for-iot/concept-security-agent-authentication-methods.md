@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
 ms.openlocfilehash: 4aeaa703b5e3203eeb7bc355051e0e8f48f898ac
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103494117"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody ověřování agenta zabezpečení
@@ -54,7 +54,7 @@ Informace o tom, jak nakonfigurovat, najdete v tématu [parametry instalace agen
 Při [nasazování agenta zabezpečení](how-to-deploy-agent.md)musí být jako argumenty zadány podrobnosti ověřování.
 Tyto argumenty jsou popsány v následující tabulce.
 
-|Název parametru pro Linux | Název parametru Windows | Parametr zkrácený |Popis|Možnosti|
+|Název parametru pro Linux | Název parametru Windows | Parametr zkrácený |Description|Možnosti|
 |---------------------|---------------|---------|---------------|---------------|
 |ověřování-identita|AuthenticationIdentity|aui|Identita ověřování| **SecurityModule** nebo **zařízení**|
 |ověřování – metoda|Parametr|aum|Metoda ověřování|**SymmetricKey** nebo **SelfSignedCertificate**|

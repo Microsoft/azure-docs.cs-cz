@@ -1,18 +1,18 @@
 ---
 title: Známé problémy s Azure Kinect a řešení potíží
 description: Přečtěte si o některých známých problémech a tipůch k odstraňování potíží při používání sady snímač SDK se službou Azure Kinect DK.
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.prod: kinect-dk
-ms.date: 06/26/2019
+ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: řešení potíží, aktualizace, chyba, Kinect, zpětná vazba, obnovení, protokolování, tipy
-ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 32a86deb0b6ab70e42ae3d659504256baae76202
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038816"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654760"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Známé problémy s Azure Kinect a řešení potíží
 
@@ -172,18 +172,54 @@ Modul pro hloubku Azure Kinect v systému Linux používá OpenGL. OpenGL vyžad
 
 1. Povolte automatické přihlašování pro uživatelský účet, který plánujete použít. Pokyny, jak povolit automatické přihlašování, najdete v [tomto](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) článku.
 2. Vypněte systém, odpojte monitor a zapněte systém. Automatické přihlašování vynutí vytvoření relace x-serveru.
-2. Připojení přes SSH a nastavení proměnné pro zobrazení ENV `export DISPLAY=:0`
-3. Spusťte aplikaci Azure Kinect.
+3. Připojení přes SSH a nastavení proměnné pro zobrazení ENV `export DISPLAY=:0`
+4. Spusťte aplikaci Azure Kinect.
 
 Nástroj [xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) se dá použít k okamžitému uzamknutí obrazovky po automatickém přihlášení. Do spouštěcí aplikace nebo do systémové služby přidejte následující příkaz:
 
-`bash -c “xtrlock -b”` 
+`bash -c “xtrlock -b”`
 
 ## <a name="missing-c-documentation"></a>Chybějící dokumentace jazyka C#
 
 Dokumentace k sadě senzor SDK jazyka C# se nachází [zde](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html).
 
 Dokumentace pro sledování těla sady SDK jazyka C# se nachází [zde](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html).
+
+## <a name="specifying-onnx-runtime-execution-environment"></a>Určení prostředí pro spuštění ONNX runtime
+
+Sada SDK pro sledování textu podporuje PROCESORy, CUDA, DirectML (pouze Windows) a prostředí pro provádění TensorRT pro odvození modelu odhadu pozice. Ve `K4ABT_TRACKER_PROCESSING_MODE_GPU` výchozím nastavení CUDA spouštění na platformě Linux a DirectML spouštění ve Windows. Přidali jsme tři další režimy pro výběr specifických prostředí pro spuštění: `K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA` , a `K4ABT_TRACKER_PROCESSING_MODE_GPU_DIRECTML` `K4ABT_TRACKER_PROCESSING_MODE_GPU_TENSORRT` .
+
+ONNX runtime zahrnuje proměnné prostředí pro řízení ukládání do mezipaměti modelu TensorRT. Doporučené hodnoty jsou:
+- ORT_TENSORRT_ENGINE_CACHE_ENABLE = 1 
+- ORT_TENSORRT_ENGINE_CACHE_PATH = "cesta"
+
+Složku je třeba vytvořit před zahájením sledování textu.
+
+Prostředí pro spouštění TensorRT podporuje FP32 (výchozí) i FP16. FP16 obchody o dvojnásobku zvýšení výkonu při minimálním snížení přesnosti. Zadání FP16:
+- ORT_TENSORRT_FP16_ENABLE = 1
+
+## <a name="required-dlls-for-onnx-runtime-execution-environments"></a>Požadované knihovny DLL pro prostředí pro spuštění ONNX runtime
+
+|Režim      | CUDA 11,1            | CUDNN 8.0.5          | TensorRT 7.2.1       |
+|----------|----------------------|----------------------|----------------------|
+| Procesor      | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublasLt64_11        |                      |                      |
+| CUDA     | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           | cudnn_ops_infer64_8  |                      |
+|          | cublas64_11          | cudnn_cnn_infer64_8  |                      |
+|          | cublasLt64_11        |                      |                      |
+| DirectML | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublasLt64_11        |                      |                      |
+| TensorRT | cudart64_110         | cudnn64_8            | nvinfer              |
+|          | cufft64_10           | cudnn_ops_infer64_8  | nvinfer_plugin       |
+|          | cublas64_11          | cudnn_cnn_infer64_8  | myelin64_1           |
+|          | cublasLt64_11        |                      |                      |
+|          | nvrtc64_111_0        |                      |                      |
+|          | nvrtc – builtins64_111 |                      |                      |
 
 ## <a name="next-steps"></a>Další kroky
 

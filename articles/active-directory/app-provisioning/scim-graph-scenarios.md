@@ -12,10 +12,10 @@ ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
 ms.openlocfilehash: 0a5d84585f28f6d13cbceb1fec41d6cdabf6d08c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99255623"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Použití SCIM a Microsoft Graph společně ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty
@@ -38,7 +38,7 @@ Azure AD poskytuje od služby Box službu pro zřizování a rozšiřitelnou pla
 ## <a name="scenario-1-automatically-create-users-in-my-app"></a>Scénář 1: automatické vytváření uživatelů v mojí aplikaci
 V dnešní době správci IT zřídí uživatele ručním vytvářením uživatelských účtů nebo pravidelným nahráváním souborů CSV do své aplikace. Proces je časově náročný pro zákazníky a zpomaluje přijetí naší aplikace. Vše Potřebuji jenom základní uživatelské informace, jako je jméno, e-mail a userPrincipalName, abyste mohli vytvořit uživatele. 
 
-**Doporučení**: 
+**Doporučení:** 
 * Pokud vaši zákazníci používají různé zprostředkovatelů identity a nechcete spravovat synchronizační modul pro integraci s každým, podporují koncový bod SCIM splňující požadavky [/Users](https://aka.ms/scimreferencecode) . Vaši zákazníci budou moct tento koncový bod snadno použít k integraci se službou zřizování Azure AD a automaticky vytvářet uživatelské účty, když potřebují přístup. Koncový bod můžete vytvořit jednou a bude kompatibilní se všemi zprostředkovatelů identity. Další informace o tom, jak se uživatel vytvoří pomocí SCIM, najdete v níže uvedeném příkladu.
 * Pokud vyžadujete, aby byla uživatelská data v objektu uživatele v Azure AD a dalších datech od Microsoftu, zvažte vytvoření koncového bodu SCIM pro zřizování uživatelů a volání do Microsoft Graph k získání zbytku dat. 
 

@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103196941"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
@@ -30,7 +30,7 @@ Nástroje pro Azure IoT Edge pro Visual Studio přináší následující výhod
 
 V tomto článku se dozvíte, jak pomocí nástrojů pro Azure IoT Edge pro Visual Studio 2019 vyvíjet moduly IoT Edge. Naučíte se také, jak nasadit projekt do zařízení Azure IoT Edge. V současné době poskytuje Visual Studio 2019 podporu pro moduly napsané v jazyce C a C#. Podporované architektury zařízení jsou Windows x64 a Linux x64 nebo ARM32. Další informace o podporovaných operačních systémech, jazycích a architekturách najdete v tématu [Podpora jazyků a architektur](module-development.md#language-and-architecture-support).
   
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že používáte počítač nebo virtuální počítač s Windows jako vývojový počítač. V počítačích s Windows můžete vyvíjet moduly pro Windows nebo Linux. Pro vývoj modulů Windows použijte počítač s Windows, na kterém běží verze 1809/Build 17763 nebo novější. Pokud chcete vyvíjet moduly pro Linux, použijte počítač s Windows, který splňuje [požadavky pro Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
 
@@ -114,7 +114,7 @@ Projekt **IotEdgeModule1** je Konzolová aplikace .net Core 2,1, pokud se jedná
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
-Výchozí kód modulu, který je součástí řešení, je umístěn v **IotEdgeModule1**  >  **program.cs** (pro C#) nebo **Main. c** (c). Modul a `deployment.template.json` soubor jsou nastavené tak, aby bylo možné sestavit řešení, nasdílet ho do registru kontejnerů a nasazovat ho do zařízení, aby se spouštělo testování bez zásahu jakéhokoli kódu. Modul je sestavený tak, aby převzal vstup ze zdroje (v tomto případě modul **SimulatedTemperatureSensor** , který simuluje data) a přesměruje ho do Azure IoT Hub.
+Výchozí kód modulu, který je součástí řešení, je umístěn v **IotEdgeModule1**  >  **program. cs** (pro jazyk C#) nebo **Main. c** (c). Modul a `deployment.template.json` soubor jsou nastavené tak, aby bylo možné sestavit řešení, nasdílet ho do registru kontejnerů a nasazovat ho do zařízení, aby se spouštělo testování bez zásahu jakéhokoli kódu. Modul je sestavený tak, aby převzal vstup ze zdroje (v tomto případě modul **SimulatedTemperatureSensor** , který simuluje data) a přesměruje ho do Azure IoT Hub.
 
 Až budete připraveni přizpůsobit šablonu modulu vlastním kódem, použijte sady [SDK pro Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) k sestavování modulů, které řeší klíčová úložiště pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost.
 
@@ -149,7 +149,7 @@ Obvykle budete chtít otestovat a ladit každý modul před jeho spuštěním v 
 
    ![Spuštěný modul](./media/how-to-visual-studio-develop-csharp-module/single-module-run.png)
 
-1. Při vývoji v jazyce C# nastavte zarážku ve `PipeMessage()` funkci v **program.cs**; Pokud používáte jazyk C, nastavte zarážku ve `InputQueue1Callback()` funkci v **Main. C**. Pak ji můžete otestovat odesláním zprávy spuštěním následujícího příkazu v prostředí **Git bash** nebo **WSL bash** Shell. (Nemůžete spustit `curl` příkaz z PowerShellu nebo příkazového řádku.)
+1. Při vývoji v jazyce C# nastavte zarážku ve `PipeMessage()` funkci v **programu program. cs**; při použití jazyka C nastavte zarážku ve `InputQueue1Callback()` funkci v **Main. C**. Pak ji můžete otestovat odesláním zprávy spuštěním následujícího příkazu v prostředí **Git bash** nebo **WSL bash** Shell. (Nemůžete spustit `curl` příkaz z PowerShellu nebo příkazového řádku.)
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
