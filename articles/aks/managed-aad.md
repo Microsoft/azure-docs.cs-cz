@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
 ms.openlocfilehash: 2cf72da8f7ca82c37088cd6456f094ada2580982
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103418959"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Integrace Azure Active Directory spravovaná v AKS
@@ -29,7 +29,7 @@ Přečtěte si další informace o službě Azure AD Integration flow v [dokumen
 * clustery s povolenými neKubernetesmi RBAC se nepodporují pro integraci Azure AD spravovaná AKS.
 * Změna tenanta Azure AD přidruženého k integraci Azure AD spravované v AKS se nepodporuje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure CLI verze 2.11.0 nebo novější
 * Kubectl s minimální verzí [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) nebo [kubelogin](https://github.com/Azure/kubelogin)
@@ -286,7 +286,7 @@ aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
 aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
 ```
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud `kubectl get nodes` vrátí chybu podobný následujícímu:
 

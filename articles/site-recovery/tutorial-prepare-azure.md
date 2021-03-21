@@ -9,10 +9,10 @@ ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88653813"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Příprava Azure na zotavení po havárii místního prostředí do Azure
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 - Projděte si architekturu pro zotavení po havárii [VMware](vmware-azure-architecture.md), [Hyper-V](hyper-v-azure-architecture.md)a [fyzického serveru](physical-azure-architecture.md) .
 - Čtení běžných otázek pro [VMware](vmware-azure-common-questions.md) a [Hyper-V](hyper-v-azure-common-questions.md)
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
 
 ## <a name="verify-account-permissions"></a>Ověření oprávnění k účtu
@@ -54,17 +54,17 @@ K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovan
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-1. V nabídce Azure Portal vyberte **vytvořit prostředek**a vyhledejte **obnovení**na Marketplace.
+1. V nabídce Azure Portal vyberte **vytvořit prostředek** a vyhledejte **obnovení** na Marketplace.
 2. Ve výsledcích hledání vyberte **Backup a Site Recovery** a na stránce zálohování a Site Recovery klikněte na **vytvořit**. 
 3. Na stránce **vytvořit trezor Recovery Services** vyberte **předplatné**. Používáme **předplatné contoso**.
-4. V **skupiny prostředků**vyberte existující skupinu prostředků nebo vytvořte novou. Pro tento kurz používáme **contosoRG**.
-5. Do pole **název trezoru**zadejte popisný název pro identifikaci trezoru. Pro tuto sadu kurzů používáme název **ContosoVMVault**.
-6. V části **oblast**vyberte oblast, ve které se má Trezor umístit. používáme oblast **Západní Evropa**.
+4. V **skupiny prostředků** vyberte existující skupinu prostředků nebo vytvořte novou. Pro tento kurz používáme **contosoRG**.
+5. Do pole **název trezoru** zadejte popisný název pro identifikaci trezoru. Pro tuto sadu kurzů používáme název **ContosoVMVault**.
+6. V části **oblast** vyberte oblast, ve které se má Trezor umístit. používáme oblast **Západní Evropa**.
 7. Vyberte **Zkontrolovat a vytvořit**.
 
    ![Snímek obrazovky s stránkou vytvořit Recovery Services trezor](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Nový trezor se teď zobrazí v části **řídicí panel**  >  **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .
+   Nový trezor se teď zobrazí v části **řídicí panel**  >  **všechny prostředky** a na hlavní stránce **Recovery Services trezory** .
 
 ## <a name="set-up-an-azure-network"></a>Nastavení sítě Azure
 
@@ -73,11 +73,11 @@ Místní počítače se replikují do Azure Managed disks. Když dojde k převze
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**.
 2. Jako model nasazení nechte **Správce prostředků** vybrané.
 3. V části **Název** zadejte název sítě. Název musí být v rámci skupiny prostředků Azure jedinečný. V tomto kurzu používáme **ContosoASRnet**.
-4. Do pole **adresní prostor**zadejte rozsah adres virtuální sítě v notaci CdR. Používáme **10.1.0.0/24**.
+4. Do pole **adresní prostor** zadejte rozsah adres virtuální sítě v notaci CdR. Používáme **10.1.0.0/24**.
 5. V části **Předplatné** vyberte předplatné, ve kterém chcete síť vytvořit.
 6. Zadejte **skupinu prostředků** , ve které bude síť vytvořena. V tomto kurzu používáme existující skupinu prostředků **contosoRG**.
-7. V části **umístění**vyberte stejnou oblast, ve které byl vytvořen Recovery Services trezor. V našem kurzu je to **západní Evropa**. Síť musí být ve stejné oblasti jako trezor.
-8. Do pole **Rozsah adres**zadejte rozsah sítě. Používáme **10.1.0.0/24**a nepoužívám podsíť.
+7. V části **umístění** vyberte stejnou oblast, ve které byl vytvořen Recovery Services trezor. V našem kurzu je to **západní Evropa**. Síť musí být ve stejné oblasti jako trezor.
+8. Do pole **Rozsah adres** zadejte rozsah sítě. Používáme **10.1.0.0/24** a nepoužívám podsíť.
 9. Ponecháváme výchozí možnosti základní ochrany DDoS Protection bez koncového bodu služby nebo brány firewall v síti.
 9. Vyberte **Vytvořit**.
 

@@ -6,10 +6,10 @@ ms.author: chredd
 ms.date: 03/04/2021
 ms.topic: how-to
 ms.openlocfilehash: 7170044af58a508ff5a43751cc376f8b8d498444
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102435541"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Použití Azure Pipelines k sestavení a nasazení řešení HPC
@@ -18,7 +18,7 @@ Nástroje poskytované službou Azure DevOps se můžou překládat na automatiz
 
 Tento článek vysvětluje, jak nastavit procesy CI/CD pomocí [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) pro řešení HPC nasazená v Azure Batch.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle kroků v tomto článku, potřebujete [organizaci Azure DevOps](/azure/devops/organizations/accounts/create-organization). Budete také muset [vytvořit projekt v Azure DevOps](/azure/devops/organizations/projects/create-project).
 

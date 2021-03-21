@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 0a1878268beb135151a23b87d03839f3a51f4a96
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102432583"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Ukázka: zkoumání aplikace pro zpracování obrázků pomocí jazyka C #
@@ -28,7 +28,7 @@ Prozkoumejte základní aplikaci pro Windows, která používá Počítačové z
 > * Spusťte ukázkovou aplikaci a pracujte s ní, abyste mohli provádět různé scénáře.
 > * Prozkoumejte různé scénáře, které jsou součástí ukázkové aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zkoumáním ukázkové aplikace se ujistěte, že jste splnili následující požadavky:
 
@@ -124,13 +124,13 @@ Ukázkovou aplikaci můžete spustit, abyste viděli, jak komunikuje s vámi a s
     Stránka scénáře pro scénář analýza obrázku
   * DescribePage. XAML  
     Stránka scénáře pro scénář popis obrázku
-  * ImageScenarioPage.cs  
+  * ImageScenarioPage. cs  
     Třída ImageScenarioPage, ze které jsou odvozeny všechny stránky scénáře v ukázkové aplikaci. Tato třída spravuje funkce, jako je například poskytování přihlašovacích údajů a formátování výstupu, sdílené všemi stránkami scénáře.
   * MainWindow.xaml  
     Hlavní okno pro ukázkovou aplikaci používá ovládací prvek SampleScenarios, který prezentuje stránky SubscriptionKeyPage a scénářů.
   * OCRPage. XAML  
     Stránka scénáře pro scénář Rozpoznávání textu (OCR).
-  * RecognizeLanguage.cs  
+  * RecognizeLanguage. cs  
     Třída RecognizeLanguage, která poskytuje informace o jazycích podporovaných různými metodami v ukázkové aplikaci.
   * TagsPage. XAML  
     Stránka scénáře pro scénář generovat značky
