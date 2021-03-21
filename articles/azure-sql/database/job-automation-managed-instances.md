@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3be01c304a40317e0d21baf6789ef1376cd89b80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691888"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608062"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Automatizace úloh správy pomocí úloh agenta SQL ve spravované instanci SQL Azure
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -81,7 +81,7 @@ Kroky úlohy agenta SQL jsou sekvence akcí, které by měl Agent SQL spustit. K
 Agent SQL vám umožňuje vytvořit různé typy kroků úlohy, jako jsou třeba kroky úlohy Transact-SQL, které provádějí jednu dávku Transact-SQL v databázi, nebo kroky příkazu/PowerShellu pro operační systém, které mohou spouštět vlastní skript operačního systému, [kroky úlohy SSIS](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) , které umožňují načíst data pomocí modulu runtime SSIS, nebo kroky [replikace](../managed-instance/replication-transactional-overview.md) , které mohou publikovat změny z databáze do jiných databází.
 
 > [!Note]
-> Další informace o využití Integration Runtime Azure SSIS s SSISDB hostovaným pomocí spravované instance Azure SQL najdete v tématu [použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).
+> Další informace o využití Integration Runtime Azure SSIS s SSISDB hostovaným pomocí spravované instance Azure SQL najdete v tématu [použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory](../../data-factory/how-to-use-sql-managed-instance-with-ir.md).
 
 [Transakční replikace](../managed-instance/replication-transactional-overview.md) může replikovat změny z vašich tabulek do jiných databází ve spravované instanci Azure SQL, Azure SQL Database nebo SQL Server. Informace najdete v tématu [Konfigurace replikace ve spravované instanci Azure SQL](../../azure-sql/managed-instance/replication-between-two-instances-configure-tutorial.md). 
 

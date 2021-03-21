@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: e661dbbe31e7624cba0a3d5421b81de16d0a5363
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097903"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608193"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Vytvoření řešení pro vize bez kódu v Azure Percept studiu
 
@@ -27,7 +27,7 @@ Azure Percept Studio umožňuje vytvářet a nasazovat vlastní řešení pro po
 
 Tento kurz je vhodný pro vývojáře s malým množstvím bez použití AI a stejně jako Začínáme se službou Azure Percept.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Percept DK (DevKit)
 - [Předplatné Azure](https://azure.microsoft.com/free/)
@@ -161,6 +161,16 @@ Pokud jste pro tento kurz vytvořili nový prostředek Azure a už nechcete vyv�
 1. Klikněte na **všechny prostředky**.
 1. Klikněte na zaškrtávací políčko vedle prostředku vytvořeného v tomto kurzu. Typ prostředku bude uveden jako **Cognitive Services**.
 1. Klikněte na ikonu **Odstranit** v horní části obrazovky.
+
+## <a name="video-walkthrough"></a>Video s návodem
+
+Pro vizuální návod kroků popsaných výše si prosím přečtěte následující video:
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/9LvafyazlJM]
+
+</br>
 
 ## <a name="next-steps"></a>Další kroky
 

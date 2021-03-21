@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 4a03a36f098035db1a91b4516dedb6a303aa41d2
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466162"
 ---
 V této kategorii je **24** doporučení.
 
-|Doporučení |Popis |Závažnost |
+|Doporučení |Description |Závažnost |
 |---|---|---|
 |V Azure Defenderu by se měly povolit Registry kontejnerů. |K vytváření zabezpečených kontejnerových úloh zajistěte, aby obrázky, na kterých jsou založené, nejsou známými chybami zabezpečení.<br>Azure Defender pro Registry kontejneru vyhledá v registru chyby zabezpečení u jednotlivých nabízených imagí kontejneru a zpřístupňuje podrobné nálezy na bitovou kopii.<br>Pokud chcete zlepšit stav zabezpečení vašich kontejnerů a chránit je před útoky, povolte v Azure Defenderu Registry kontejnerů.<br><br>Důležité: Oprava toto doporučení bude mít za následek poplatky za ochranu registrů kontejnerů. Pokud v tomto předplatném nemáte žádné Registry kontejnerů, neúčtují se žádné poplatky.<br>Pokud v budoucnu vytvoříte v tomto předplatném nějaké Registry kontejnerů, budou automaticky chráněny a v této době začnou platit poplatky.<br> <a href='https://docs.microsoft.com/azure/security-center/azure-container-registry-integration'>Přečtěte si další informace o Azure Defenderu pro Registry kontejnerů.</a><br />(Související zásady: [měly by být povolené Azure Defender pro Registry kontejnerů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4).) |Vysoká |
 |Je potřeba povolit Azure Defender pro Kubernetes. |Azure Defender pro Kubernetes poskytuje ochranu před hrozbami v reálném čase pro vaše kontejnerová prostředí a generuje výstrahy pro podezřelé aktivity.<br>Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.<br><br>Důležité: Oprava toto doporučení bude mít za následek poplatky za ochranu vašich clusterů Kubernetes. Pokud v tomto předplatném nemáte žádné clustery Kubernetes, neúčtují se žádné poplatky.<br>Pokud v budoucnu vytvoříte v tomto předplatném všechny clustery Kubernetes, budou automaticky chráněny a v tomto čase začnou platit poplatky.<br> <a href='https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration'>Přečtěte si další informace o Azure Defenderu pro Kubernetes.</a><br />(Související zásady: [měl by být povolený Azure Defender pro Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a).) |Vysoká |

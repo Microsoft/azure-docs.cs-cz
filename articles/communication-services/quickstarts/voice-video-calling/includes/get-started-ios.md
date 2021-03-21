@@ -1,24 +1,24 @@
 ---
 title: Rychlý Start – přidání volání do aplikace pro iOS pomocí komunikačních služeb Azure
 description: V tomto rychlém startu se dozvíte, jak používat komunikační služby Azure, které volají klientské knihovny pro iOS.
-author: matthewrobertson
-ms.author: marobert
-ms.date: 07/24/2020
+author: chpalm
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 36ec27f3a0e69126a91b52bed26dc645ec89e46e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6cdd38f1e849efc416d62f22bd85ed7efb2e6349
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656609"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719852"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure s voláním klientské knihovny pro iOS.
 
 > [!NOTE]
 > Tento dokument používá verzi 1.0.0-beta. 8 volání klientské knihovny.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu budete potřebovat následující požadavky:
 
@@ -37,7 +37,8 @@ V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobr
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Instalace balíčku a závislostí pomocí CocoaPods
 
-1. Vytvořte souboru podfile pro vaši aplikaci takto:
+1. Chcete-li vytvořit souboru podfile pro vaši aplikaci, otevřete terminál a přejděte do složky projektu a spusťte příkaz ```pod init```
+3. Do souboru podfile přidejte následující kód a uložte:
 
    ```
    platform :ios, '13.0'
@@ -50,7 +51,7 @@ V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobr
    end
    ```
 
-2. Spusťte `pod install`.
+3. Spusťte `pod install`.
 3. Otevřete `.xcworkspace` s Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Požádat o přístup k mikrofonu
@@ -120,7 +121,7 @@ struct ContentView: View {
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu:
 
-| Název                                  | Popis                                                  |
+| Název                                  | Description                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient | CallClient je hlavní vstupní bod pro volání klientské knihovny.|
 | CallAgent | CallAgent se používá ke spouštění a správě volání. |

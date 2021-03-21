@@ -10,14 +10,14 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 9f62f262e1baa70982e667379a9bf4357197ecb4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0805537fe0791a622eb1814cc233c04d914dbecd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495388"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612761"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete, nezapomeňte:
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -66,6 +66,27 @@ V tomto rychlém startu se k vytvoření sady prostředků aplikace používá W
 npm install webpack webpack-cli webpack-dev-server --save-dev
 ```
 
+`webpack.config.js`V kořenovém adresáři vytvořte soubor. Zkopírujte do tohoto souboru následující konfiguraci:
+
+```
+module.exports = {
+  entry: "./client.js",
+  output: {
+    filename: "bundle.js"
+  },
+  devtool: "inline-source-map",
+  mode: "development"
+}
+```
+
+Přidejte `start` skript na, který `package.json` použijeme pro spuštění aplikace. V `scripts` části `package.json` přidejte následující:
+
+```
+"scripts": {
+  "start": "webpack serve --config ./webpack.config.js"
+}
+```
+
 Vytvořte soubor **index.html** v kořenovém adresáři projektu. Tento soubor použijeme jako šablonu k přidání možnosti chatu pomocí klientské knihovny služby Azure Communications chat pro JavaScript.
 
 ```html
@@ -111,9 +132,9 @@ console.log('Azure Communication Chat client created!');
 
 ### <a name="run-the-code"></a>Spuštění kódu
 
-Použijte `webpack-dev-server` k sestavení a spuštění vaší aplikace. Spusťte následující příkaz pro vytvoření balíčku aplikace Host na místním serveru:
+Spusťte následující příkaz pro vytvoření balíčku aplikace Host na místním serveru:
 ```console
-npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
+npm run start
 ```
 Otevřete prohlížeč a přejděte na http://localhost:8080/ .
 V konzole nástroje pro vývojáře v prohlížeči byste měli vidět následující informace:
@@ -125,7 +146,7 @@ Azure Communication Chat client created!
 ## <a name="object-model"></a>Objektový model
 Následující třídy a rozhraní zpracovávají některé hlavní funkce služby Azure Communications Library chat pro JavaScript.
 
-| Název                                   | Popis                                                                                                                                                                           |
+| Název                                   | Description                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ChatClient | Tato třída je potřebná pro funkci chatu. Vytvoří se jeho instance s informacemi o předplatném a použije se k vytváření, získávání a odstraňování vláken. |
 | ChatThreadClient | Tato třída je potřebná pro funkci konverzačního vlákna. Získáte instanci prostřednictvím ChatClient a použijete ji k posílání, přijímání, aktualizaci a odstraňování zpráv, přidávání, odebírání a získávání uživatelů, odesílání oznámení o přečtení a čtení a čtení a k odběru událostí chatu. |

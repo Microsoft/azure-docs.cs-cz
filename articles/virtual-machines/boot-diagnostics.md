@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738114"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607518"
 ---
 # <a name="azure-boot-diagnostics"></a>Diagnostika spouštění Azure
 
@@ -106,9 +106,9 @@ Vše, co rozhraní API verze 2020-06-01 podporuje diagnostiku spravovaného spou
 - Spravovaná Diagnostika spouštění nepodporuje virtuální počítače, které používají nespravované disky s operačním systémem.
 - Diagnostika spouštění nepodporuje účty úložiště úrovně Premium. Pokud se pro uživatele diagnostiky spouštění používá účet Premium Storage, `StorageAccountTypeNotSupported` při spuštění virtuálního počítače dojde k chybě. 
 - Spravované účty úložiště jsou podporované v Správce prostředků rozhraní API verze 2020-06-01 a novější.
-- Služba Azure Serial Console je aktuálně nekompatibilní se spravovaným účtem úložiště pro diagnostiku spouštění. Přečtěte si další informace o [službě Azure Serial Console](./troubleshooting/serial-console-overview.md).
+- Služba Azure Serial Console je aktuálně nekompatibilní se spravovaným účtem úložiště pro diagnostiku spouštění. Přečtěte si další informace o [službě Azure Serial Console](/troubleshoot/azure/virtual-machines/serial-console-overview).
 - Portál podporuje jenom použití diagnostiky spouštění se spravovaným účtem úložiště pro virtuální počítače s jednou instancí.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [konzole sériového rozhraní Azure](./troubleshooting/serial-console-overview.md) a o použití diagnostiky spouštění k [řešení potíží s virtuálními počítači v Azure](./troubleshooting/boot-diagnostics.md).
+Přečtěte si další informace o [konzole sériového rozhraní Azure](/troubleshoot/azure/virtual-machines/serial-console-overview) a o použití diagnostiky spouštění k [řešení potíží s virtuálními počítači v Azure](/troubleshoot/azure/virtual-machines/boot-diagnostics).

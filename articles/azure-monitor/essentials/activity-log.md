@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
-ms.openlocfilehash: 557fc6e358f371b47c1df314508e3565d843a28c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7583b4037d350b9190d6eae30c28b907b1d41d86
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049181"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722850"
 ---
 # <a name="azure-activity-log"></a>Protokol aktivit Azure
 Protokol aktivit je [protokol platformy](./platform-logs-overview.md) v Azure, který poskytuje přehled o událostech na úrovni předplatného. Obsahuje například informace o úpravách prostředků nebo spouštění virtuálních počítačů. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. Pro další funkce byste měli vytvořit nastavení diagnostiky, které odešle protokol aktivit do [Azure monitor protokolů](../logs/data-platform-logs.md), do Azure Event Hubs předat mimo Azure nebo do Azure Storage k archivaci. Tento článek poskytuje podrobné informace o zobrazení protokolu aktivit a jeho odeslání do různých cílů.
@@ -27,6 +27,11 @@ K protokolu aktivit můžete získat přístup z většiny nabídek na webu Azur
 ![Zobrazit protokol aktivit](./media/activity-log/view-activity-log.png)
 
 Popis kategorií protokolů aktivit najdete v tématu [schéma událostí protokolu aktivit Azure](activity-log-schema.md#categories).
+
+## <a name="download-the-activity-log"></a>Stáhnout protokol aktivit
+Vyberte **Stáhnout jako sdílený svazek clusteru** a stáhněte události v aktuálním zobrazení.
+
+![Stáhnout protokol aktivit](media/activity-log/download-activity-log.png)
 
 ### <a name="view-change-history"></a>Zobrazit historii změn
 
@@ -201,12 +206,12 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
     | Vlastnost | Povinné | Popis |
     | --- | --- | --- |
-    | Název |Ano |Název vašeho profilu protokolu. |
-    | StorageAccountId |Ne |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
-    | serviceBusRuleId |Ne |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}` . |
+    | Název |Yes |Název vašeho profilu protokolu. |
+    | StorageAccountId |No |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
+    | serviceBusRuleId |No |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Umístění |Ano |Čárkami oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. |
-    | RetentionInDays |Ano |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
-    | Kategorie |Ne |Čárkami oddělený seznam kategorií událostí, které se mají shromáždit. Možné hodnoty jsou _Write_, _Delete_ a _Action_. |
+    | RetentionInDays |Yes |Počet dní, po které se mají události uchovávat v účtu úložiště v rozmezí od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
+    | Kategorie |No |Čárkami oddělený seznam kategorií událostí, které se mají shromáždit. Možné hodnoty jsou _Write_, _Delete_ a _Action_. |
 
 ### <a name="example-script"></a>Ukázkový skript
 Následuje ukázkový skript prostředí PowerShell pro vytvoření profilu protokolu aktivit, který zapisuje protokol aktivit do účtu úložiště i centra událostí.
@@ -244,12 +249,12 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
 
     | Vlastnost | Povinné | Popis |
     | --- | --- | --- |
-    | name |Ano |Název vašeho profilu protokolu. |
-    | úložiště – ID účtu |Ano |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
-    | polohy |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name` . |
-    | denní |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
-    |enabled | Ano |Ano nebo ne:  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
-    | categories |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
+    | name |Yes |Název vašeho profilu protokolu. |
+    | úložiště – ID účtu |Yes |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
+    | polohy |Yes |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name` . |
+    | denní |Yes |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
+    |enabled | Yes |Ano nebo ne:  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
+    | categories |Yes |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
 
 
 ### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics

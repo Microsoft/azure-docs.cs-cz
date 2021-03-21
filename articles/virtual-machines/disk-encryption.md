@@ -2,26 +2,26 @@
 title: Šifrování na straně serveru Azure Managed disks
 description: Azure Storage chrání vaše data tím, že je před tím, než je zachová v clusterech úložiště, v klidovém prostředí. Pomocí klíčů spravovaných zákazníkem můžete spravovat šifrování pomocí vlastních klíčů, nebo můžete spoléhat na klíče spravované Microsoftem pro šifrování svých spravovaných disků.
 author: roygara
-ms.date: 03/02/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ee4dd539119457086c9b109579b7e6ab195fea96
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103014379"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721847"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Šifrování na straně serveru Azure Disk Storage
 
-Šifrování na straně serveru (SSE) chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. SSE automaticky šifruje vaše data uložená na spravovaných discích Azure (s operačním systémem a datových discích) ve výchozím nastavení při uchování do cloudu. 
+Většina Azure Managed disks je zašifrovaná pomocí šifrování Azure Storage, které používá šifrování na straně serveru (SSE) k ochraně vašich dat a k tomu, aby vám pomohly splnit závazky zabezpečení a dodržování předpisů v organizaci. Azure Storage šifrování automaticky šifruje vaše data uložená ve službě Azure Managed Disks (operační systém a datové disky) ve výchozím nastavení při uchování do cloudu. Disky se zapnutým šifrováním na hostiteli se ale nešifrují prostřednictvím Azure Storage. U disků s povoleným šifrováním u hostitele poskytuje server hostující váš virtuální počítač šifrování vašich dat a zašifrované datové toky se Azure Storage.
 
 Data ve službě Azure Managed disks jsou transparentně šifrovaná pomocí 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), což je jedna z nejúčinnějších šifrovacích šifr, která jsou kompatibilní se standardem FIPS 140-2. Další informace o kryptografických modulech založených na službě Azure Managed disks najdete v tématu [kryptografie API: Next Generation.](/windows/desktop/seccng/cng-portal)
 
-Šifrování na straně serveru nemá vliv na výkon spravovaných disků a neplatí žádné další náklady. 
+Azure Storage šifrování nemá vliv na výkon spravovaných disků a neplatí žádné další náklady. Další informace o šifrování Azure Storage najdete v tématu [šifrování Azure Storage](/azure/storage/common/storage-service-encryption).
 
 > [!NOTE]
 > Dočasné disky nejsou spravované disky a nešifrují SSE, pokud na hostiteli nepovolíte šifrování.

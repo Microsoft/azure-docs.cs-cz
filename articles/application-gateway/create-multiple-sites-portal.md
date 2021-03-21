@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 02/23/2021
+ms.date: 03/19/2021
 ms.author: victorh
-ms.openlocfilehash: 208bd0fe7f3869cbe15dd27e0b883c467e41c765
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfbd5301bc2b24c4d5614e5f88c6ae18d4affc66
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735062"
+ms.locfileid: "104721626"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Kurz: vytvoření a konfigurace aplikační brány pro hostování více webů pomocí Azure Portal
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Vytváření back-end fondů se servery back-end
 > * Vytvořit back-endové naslouchací procesy
 > * Vytvořit pravidla směrování
-> * Vytvoření záznamu CNAME v doméně
+> * Upravit soubor hostitelů pro překlad názvů
 
 :::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="Application Gateway více lokalit":::
 
@@ -212,9 +212,9 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
 Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 
-## <a name="edit-your-hosts-file"></a>Upravit soubor hostitelů
+## <a name="edit-your-hosts-file-for-name-resolution"></a>Úprava souboru hostitelů pro překlad názvů
 
-Po vytvoření služby Application Gateway s veřejnou IP adresou můžete získat IP adresu a použít ji k úpravám souboru hostitelů pro řešení `www.contoso.com` a `www.fabrikam.com` 
+Po vytvoření služby Application Gateway s veřejnou IP adresou můžete získat IP adresu a použít ji k úpravám souboru hostitelů pro řešení `www.contoso.com` a `www.fabrikam.com` . V produkčním prostředí můžete `CNAME` pro překlad názvů vytvořit v DNS.
 
 1. Klikněte na **všechny prostředky** a pak klikněte na **myAGPublicIPAddress**.
 

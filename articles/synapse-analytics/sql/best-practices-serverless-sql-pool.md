@@ -10,18 +10,26 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 75e187369eccefb255ae2bbd88de79afbc4fd4dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669470"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720385"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Osvědčené postupy pro fond SQL bez serveru ve službě Azure synapse Analytics
 
 V tomto článku najdete kolekci osvědčených postupů pro použití fondu SQL bez serveru. Fond SQL bez serveru je prostředkem ve službě Azure synapse Analytics.
 
 Fond SQL bez serveru umožňuje dotazování souborů ve vašich účtech úložiště Azure. Nemá místní úložiště ani možnosti ingestování. Všechny soubory, které dotaz cílí, jsou externí pro fond SQL bez serveru. Všechno, co souvisí s čtením souborů ze služby Storage, může mít dopad na výkon dotazů.
+
+## <a name="client-applications-and-network-connections"></a>Klientské aplikace a síťová připojení
+
+Ujistěte se, že je klientská aplikace připojená k nejbližšímu možnému pracovnímu prostoru synapse s optimálním připojením.
+- Společně vyhledejte klientskou aplikaci v pracovním prostoru synapse. Pokud používáte aplikace, jako je Power BI nebo Azure Analysis Service, ujistěte se, že jsou ve stejné oblasti, do které jste umístili pracovní prostor synapse. V případě potřeby vytvořte samostatné pracovní prostory, které jsou spárovány s vašimi klientskými aplikacemi. Umístění klientské aplikace a pracovního prostoru synapse v jiné oblasti může způsobit větší latenci a zpomalit streamování výsledků.
+- Pokud čtete data z místní aplikace, ujistěte se, že je pracovní prostor synapse v oblasti, která je blízko vašeho umístění.
+- Ujistěte se, že nemáte k dispozici některé problémy se šířkou pásma sítě při čtení velkého množství dat.
+- Nepoužívejte synapse Studio k vrácení velkého množství dat. Synapse Studio je webový nástroj, který používá protokol HTTPS k přenosu dat. Pomocí Azure Data Studio nebo SQL Server Management Studio si můžete přečíst velké množství dat.
 
 ## <a name="storage-and-content-layout"></a>Úložiště a rozložení obsahu
 
@@ -55,6 +63,10 @@ Pokud je to možné, můžete připravit soubory pro lepší výkon:
 - Snažte se zachovat velikost souboru CSV mezi 100 MB a 10 GB.
 - Je lepší mít soubory stejné velikosti pro jednu cestu OPENROWSET nebo externí umístění tabulky.
 - Vytvořte oddíly dat uložením oddílů do různých složek nebo názvů souborů. V tématu [použití funkcí filename a FilePath pro cílení na konkrétní oddíly](#use-filename-and-filepath-functions-to-target-specific-partitions).
+
+### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>Vyhledání CosmosDB analytického úložiště a neserverového fondu SQL
+
+Ujistěte se, že je vaše CosmosDB analytické úložiště umístěno ve stejné oblasti jako pracovní prostor synapse. Dotazy na různé oblasti můžou způsobit obrovský latenci.
 
 ## <a name="csv-optimizations"></a>Optimalizace sdílených svazků clusteru
 

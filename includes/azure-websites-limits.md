@@ -2,14 +2,14 @@
 author: rothja
 ms.service: app-service
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 80d295d017b11d86df7a3fe4c14afc7a5665cd96
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102532614"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612131"
 ---
 | Prostředek | Free | Shared | Basic | Standard | Premium (v1-V3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,18 +45,28 @@ ms.locfileid: "102532614"
 | Kudu | × | × | × | × | × | × |
 | [Ověřování a autorizace](../articles/app-service/overview-authentication-authorization.md) | × | × | × | × | × | × |
 | [App Service spravované certifikáty (Public Preview)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | × | × | × | × |
-| SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
+| SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|
 
-<sup>1</sup> Pokud není uvedeno jinak, jsou aplikace a kvóty úložiště podle App Serviceho plánu.  
-<sup>2</sup> . Skutečný počet aplikací, které můžete hostovat na těchto počítačích, závisí na aktivitách aplikací, velikosti instancí počítačů a na odpovídajícím využití prostředků.  
-<sup>3</sup> . Vyhrazené instance mohou mít různé velikosti. Další informace najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).  
-<sup>4</sup> . Další jsou povolená na vyžádání.  
-<sup>5</sup> . Limit úložiště je celková velikost obsahu napříč všemi aplikacemi ve stejném plánu služby App Service. Celková velikost obsahu všech aplikací napříč všemi plány služby App Service v jedné skupině prostředků a oblastí nemůže překročit 500 GB.  
-<sup>6</sup> Tyto prostředky jsou omezené na fyzických prostředcích na vyhrazených instancích (velikost instance a počet instancí).  
-<sup>7</sup> Při škálování aplikace na úrovni Basic na dvě instance máte 350 souběžných připojení pro každou z těchto dvou instancí. Pro úroveň Standard a vyšší nejsou k dispozici žádná teoretická omezení pro webové sokety, ale jiné faktory můžou omezit počet webových soketů. Například maximální počet souběžných požadavků, které jsou povoleny (definované `maxConcurrentRequestsPerCpu` ), jsou: 7 500 na malý virtuální počítač, 15 000 na střední virtuální počítač (7 500 × 2 jádra) a 75 000 na velký virtuální počítač (18 750 × 4 jádra).  
-<sup>8</sup> Maximální počet připojení IP je na jednu instanci a závisí na velikosti instance: 1 920 na instanci B1/S1/P1V3, 3 968 na instanci B2/S2/P2V3, 8 064 na instanci B3/S3/P3V3.  
-<sup>9</sup> Limit kvóty App Service Certificate pro každé předplatné se dá zvýšit prostřednictvím žádosti o podporu na maximální limit 200.  
-<sup>10</sup> Služba App Service v izolovaném prostředí SKU se dá pomocí Azure Load Balancer interně vyrovnávat zatížení (interního nástroje), takže není k dispozici žádné veřejné připojení z Internetu. V důsledku toho musí být některé funkce interního nástroje izolované App Service používány z počítačů, které mají přímý přístup ke koncovému bodu sítě interního nástroje.  
-<sup>11</sup> Spouštějte vlastní spustitelné soubory nebo skripty na vyžádání, podle plánu nebo nepřetržitě jako úlohu na pozadí v rámci instance App Service. U nepřetržitého provádění úloh WebJobs se vyžaduje Always On. Není k dispozici žádný předdefinovaný limit počtu webových úloh, které mohou být spuštěny v instanci App Service. Existují praktická omezení, která závisí na tom, co se snaží kód aplikace provést.
+<sup>1</sup> aplikace a kvóty úložiště jsou podle App Serviceho plánu, pokud není uvedeno jinak.
 
-<sup>12</sup> . Holé domény nejsou podporovány. Pouze vydávají se standardní certifikáty (certifikáty se zástupnými znaky nejsou k dispozici). Omezeno pouze na jeden bezplatný certifikát na vlastní doménu.
+<sup>2</sup> skutečný počet aplikací, které můžete hostovat na těchto počítačích, závisí na aktivitách aplikací, velikosti instancí počítačů a na odpovídajícím využití prostředků.
+
+<sup>3</sup> vyhrazené instance můžou mít různé velikosti. Další informace najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).
+
+<sup>4</sup> další jsou povolené na vyžádání.
+
+<sup>5</sup> limit úložiště je celková velikost obsahu napříč všemi aplikacemi ve stejném plánu služby App Service. Celková velikost obsahu všech aplikací napříč všemi plány služby App Service v jedné skupině prostředků a oblastí nemůže překročit 500 GB. Kvóta systému souborů pro App Service hostovaných aplikací se určuje podle agregovaných plánů App Service vytvořených v oblasti a skupině prostředků.
+
+<sup>6</sup> tyto prostředky jsou omezené na fyzických prostředcích na vyhrazených instancích (velikost instance a počet instancí).
+
+<sup>7</sup> při škálování aplikace na úrovni Basic na dvě instance máte 350 souběžných připojení pro každou ze dvou instancí. Pro úroveň Standard a vyšší nejsou k dispozici žádná teoretická omezení pro webové sokety, ale jiné faktory můžou omezit počet webových soketů. Například maximální počet souběžných požadavků, které jsou povoleny (definované `maxConcurrentRequestsPerCpu` ), jsou: 7 500 na malý virtuální počítač, 15 000 na střední virtuální počítač (7 500 × 2 jádra) a 75 000 na velký virtuální počítač (18 750 × 4 jádra).
+
+<sup>8</sup> maximální počet připojení IP je na jednu instanci a závisí na velikosti instance: 1 920 na instanci B1/S1/P1V3, 3 968 na instanci B2/S2/P2V3, 8 064 na instanci B3/S3/P3V3.
+
+<sup>9</sup> limit kvóty App Service Certificate na předplatné se dá zvýšit prostřednictvím žádosti o podporu na maximální limit 200.
+
+<sup>10</sup> služba App Service v izolovaném prostředí SKU se dá pomocí Azure Load Balancer interně vyrovnávat zatížení (interního nástroje), takže není k dispozici žádné veřejné připojení z Internetu. V důsledku toho musí být některé funkce interního nástroje izolované App Service používány z počítačů, které mají přímý přístup ke koncovému bodu sítě interního nástroje.
+
+<sup>11</sup> spouštějte vlastní spustitelné soubory a skripty na vyžádání, podle plánu nebo nepřetržitě jako úlohu na pozadí v rámci instance App Service. U nepřetržitého provádění úloh WebJobs se vyžaduje Always On. Není k dispozici žádný předdefinovaný limit počtu webových úloh, které mohou být spuštěny v instanci App Service. Existují praktická omezení, která závisí na tom, co se snaží kód aplikace provést.
+
+<sup>12</sup> holé domény se nepodporují. Pouze vystavení standardních certifikátů (certifikáty se zástupnými znaky nejsou k dispozici) Omezeno pouze na jeden bezplatný certifikát na vlastní doménu.

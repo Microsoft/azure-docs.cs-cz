@@ -308,6 +308,8 @@
           href: whatis-aadc-admin-agent.md
         - name: Co je powershellový modul ADConnectivityTools?
           href: how-to-connect-adconnectivitytools.md
+        - name: Synchronizace jednoho objektu Azure AD Connect
+          href: how-to-connect-single-object-sync.md
         - name: Připojení
           href: tshoot-connect-connectivity.md
         - name: Chyby při synchronizaci
@@ -336,6 +338,8 @@
           href: tshoot-connect-install-issues.md
         - name: Změny hlavního názvu uživatele (UPN)
           href: howto-troubleshoot-upn-changes.md
+        - name: Komplexní řešení potíží s objekty a atributy
+          href: 'https://docs.microsoft.com/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes'
 - name: Referenční informace
   items:
     - name: 'Porty a protokoly, které vyžaduje hybridní identita'

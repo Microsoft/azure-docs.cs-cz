@@ -3,18 +3,21 @@ title: Scénáře použití virtuální sítě
 description: Scénáře, prostředky a omezení pro nasazení skupin kontejnerů do služby Azure Virtual Network.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 20c2b4fe2f19402d6647f398a9696b7e16550d8e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033825"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606884"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scénáře a prostředky virtuální sítě
 
 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) poskytuje zabezpečenou privátní síť pro vaše Azure a místní prostředky. Když nasadíte skupiny kontejnerů do služby Azure Virtual Network, můžou vaše kontejnery bezpečně komunikovat s ostatními prostředky ve virtuální síti. 
 
 Tento článek poskytuje základní informace o scénářích, omezeních a prostředcích virtuální sítě. Příklady nasazení pomocí rozhraní příkazového řádku Azure najdete v tématu [nasazení instancí kontejnerů do služby Azure Virtual Network](container-instances-vnet.md).
+
+> [!IMPORTANT]
+> Nasazení skupiny kontejnerů do virtuální sítě je všeobecně dostupné pro kontejnery Linux ve většině oblastí, kde je Azure Container Instances k dispozici. Podrobnosti najdete v tématu věnovaném [oblastem a dostupnosti prostředků](container-instances-region-availability.md). 
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -45,12 +48,6 @@ Skupiny kontejnerů nasazené do služby Azure Virtual Network povolují scéná
 * Pokud připojujete skupinu kontejnerů k účtu Azure Storage, musíte do tohoto prostředku přidat [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) .
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
-
-## <a name="where-to-deploy"></a>Místo nasazení
-
-Následující oblasti a maximální prostředky jsou k dispozici pro nasazení skupiny kontejnerů ve službě Azure Virtual Network.
-
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="required-network-resources"></a>Požadované síťové prostředky
 

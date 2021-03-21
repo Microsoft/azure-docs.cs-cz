@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 80384662789e9dad979566715672c15a8648ea9a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7dd84b8f2f0834a03b41179531245ebdff35b7ff
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104612102"
+ms.locfileid: "104719864"
 ---
 V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
@@ -255,9 +255,9 @@ Pokud chcete přepnout na neuronové hlas, změňte na `name` jednu z [možnost�
 </speak>
 ```
 
-## <a name="visemes"></a>Visemes
+## <a name="get-facial-pose-events"></a>Získat události pozice obličeje
 
-Rozpoznávání řeči se obvykle považuje za dobrý způsob, jak vyřídit animaci výrazů obličeje.
-Často se [visemes](../../../how-to-speech-synthesis-viseme.md) používají k reprezentování klíčových pozic v pozorovaném řeči (tj. umístění sad LIP, vidlici a jazyka při vytváření konkrétního foném).
-Můžete se přihlásit k odběru události viseme v sadě Speech SDK a vygenerovat data animace obličeje. Pak můžete použít taková data na znak pro vytvoření animace obličeje.
-Přečtěte si, [Jak získat viseme výstupy](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).
+Řeč může být dobrým způsobem, jak řídit animaci výrazů obličeje.
+Často se [visemes](../../../how-to-speech-synthesis-viseme.md) používají k reprezentování klíčových pozic v pozorovaném řeči, jako je například pozice sad LIP, vidlice a jazyka při vytváření konkrétního foném.
+Můžete se přihlásit k odběru událostí viseme v sadě Speech SDK, abyste získali data animace obličeje, a pak data použít na znak během animace obličeje.
+Naučte [se, jak získat události viseme](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

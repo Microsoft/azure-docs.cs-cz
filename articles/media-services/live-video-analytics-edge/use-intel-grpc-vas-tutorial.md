@@ -7,10 +7,10 @@ ms.service: media-services
 ms.author: faneerde
 author: fvneerden
 ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103465755"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Kurz: Analýza živého videa pomocí rozšíření Intel OpenVINO™ DL načtení proudu ImageList – Edge AI 
@@ -22,7 +22,7 @@ Tento kurz používá virtuální počítač Azure jako zařízení IoT Edge a p
 > [!NOTE]
 > Tento kurz vyžaduje použití počítače s platformou X86-64 jako hraničního zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure, který zahrnuje aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
   > [!NOTE]
@@ -98,7 +98,7 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 
     * ***C2D-Console-App. csproj*** – soubor projektu pro Visual Studio Code.
     * ***operations.jsna*** seznam operací, které má program spustit.
-    * ***Program.cs*** – vzorový programový kód. Tento kód:
+    * ***Program. cs*** – ukázkový kód programu Tento kód:
 
         * Načte nastavení aplikace.
         * Vyvolá přímé metody, které zveřejňuje živá analýza videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](direct-methods.md).

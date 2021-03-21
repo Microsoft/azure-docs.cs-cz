@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6d4840dcbe67a0bd94c74b43164c24e0c45e9daf
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: feb77339c9c7f36eb17b43dfe2c220dfb54efa25
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200640"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720521"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
 
@@ -150,9 +150,9 @@ Pomocí příkazů nebo proveďte kontrolu verze IoT Edge agenta a IoT Edge modu
 
 IoT Edge agent a image centra IoT Edge jsou označené verzí IoT Edge, ke které jsou přidružené. Existují dva různé způsoby použití značek s imagemi za běhu:
 
-* **Válcování značek** – použijte pouze první dvě hodnoty čísla verze, abyste získali nejnovější obrázek, který se shoduje s těmito číslicemi. Například 1,0 se aktualizuje vždy, když existuje nová verze, která odkazuje na nejnovější verzi 1.0. x. Pokud se znovu načte modul runtime kontejneru v zařízení IoT Edge, modul runtime se aktualizuje na nejnovější verzi. Tento přístup je navržený pro účely vývoje. Nasazení z Azure Portal výchozí pro vracení značek.
+* **Válcování značek** – použijte pouze první dvě hodnoty čísla verze, abyste získali nejnovější obrázek, který se shoduje s těmito číslicemi. Například 1,1 se aktualizuje vždy, když je k dispozici nová verze, která odkazuje na nejnovější verzi 1.1. x. Pokud se znovu načte modul runtime kontejneru v zařízení IoT Edge, modul runtime se aktualizuje na nejnovější verzi. Nasazení z Azure Portal výchozí pro vracení značek. *Tento přístup je navržený pro účely vývoje.*
 
-* **Konkrétní značky** – k explicitnímu nastavení verze image použijte všechny tři hodnoty čísla verze. Například 1.0.7 se po počáteční verzi nemění. Až budete připraveni na aktualizaci, můžete deklarovat nové číslo verze v manifestu nasazení. Tento přístup je navržený pro produkční účely.
+* **Konkrétní značky** – k explicitnímu nastavení verze image použijte všechny tři hodnoty čísla verze. Například 1.1.0 se po počáteční verzi nemění. Až budete připraveni na aktualizaci, můžete deklarovat nové číslo verze v manifestu nasazení. *Tento přístup je navržený pro produkční účely.*
 
 ### <a name="update-a-rolling-tag-image"></a>Aktualizace bitové kopie valení značky
 

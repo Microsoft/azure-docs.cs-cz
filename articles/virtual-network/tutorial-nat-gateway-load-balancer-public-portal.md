@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 345ccb68ebb31460f4a75b31a7d3a946160da6e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8382dd10536a8c0475444d0cdff30340ad124e9c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657955"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722799"
 ---
 # <a name="tutorial-integrate-a-nat-gateway-with-a-public-load-balancer-using-the-azure-portal"></a>Kurz: Integrace brány NAT s veřejným nástrojem pro vyrovnávání zatížení pomocí Azure Portal
 
@@ -48,14 +48,17 @@ V této části vytvoříte standardní Azure Load Balancer.
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
+    | **Podrobnosti o projektu** |   |
     | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **vytvořit novou** a do textového pole zadejte **TutorPubLBNAT-RG** .|
+    | Skupina prostředků         | Vyberte **vytvořit novou** a do textového pole zadejte **TutorPubLBNAT-RG** . </br> Vyberte **OK**.|
+    | **Podrobnosti o instancích** |   |
     | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **(US) východní USA**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Ponechte výchozí **Standard**. |
     | Úroveň          | Ponechte výchozí **oblast**. |
-    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
+    | **Veřejná IP adresa** |   |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
     | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP-9,1** .|
     | Zóna dostupnosti | Chcete-li vytvořit odolný Nástroj pro vyrovnávání zatížení, vyberte **zónu – redundantní** . Pokud chcete vytvořit nástroj pro vyrovnávání zatížení, vyberte konkrétní zónu z 1, 2 nebo 3. |
     | Přidat veřejnou IPv6 adresu | Vyberte **Ne**. </br> Další informace o adresách IPv6 a nástroji pro vyrovnávání zatížení najdete v tématu [co je protokol IPv6 pro Azure Virtual Network?](../virtual-network/ipv6-overview.md)  |
@@ -135,7 +138,7 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
     | Back-endový port | Zadejte **80**. |
     | Back-endový fond | Vyberte **myBackendPool**.|
     | Sonda stavu | Vyberte **myHealthProbe**. |
-    | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15** minut. |
+    | Časový limit nečinnosti (minuty) | Zadejte **15** minut. |
     | Resetování protokolu TCP | Vyberte **Povoleno**. |
     | Překlad odchozích adres zdrojové sítě (SNAT) | Vybrat **(doporučeno) použít odchozí pravidla pro poskytování back-end členů fondu pro přístup k Internetu.** |
 
@@ -237,7 +240,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina zabezpečení sítě NIC | Výběr **Možnosti Upřesnit**|
     | Konfigurovat skupinu zabezpečení sítě | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V části **vytvořit skupinu zabezpečení sítě** zadejte **MyNSG** do **pole název**. </br> V části **příchozí pravidla** vyberte **+ Přidat příchozí pravidlo**. </br> V části  **rozsahy cílových portů** zadejte **80**. </br> V části **Priorita** zadejte **100**. </br> Do **název** zadejte **myHTTPRule** </br> Vyberte **Přidat**. </br> Vyberte **OK**. |
     | **Vyrovnávání zatížení**  |
-    | Umístit tento virtuální počítač za stávající řešení vyrovnávání zatížení? | Vyberte **Ano**. |
+    | Umístit tento virtuální počítač za stávající řešení vyrovnávání zatížení? | Zaškrtněte toto políčko.|
     | **Nastavení vyrovnávání zatížení** |
     | Možnosti vyrovnávání zatížení | Výběr **služby Azure Load Balancer** |
     | Vyberte nástroj pro vyrovnávání zatížení. | Vybrat **myLoadBalancer**  |
@@ -302,7 +305,7 @@ V této části otestujeme bránu NAT. Nejdříve zjistíme veřejnou IP adresu 
 
 2. Poznamenejte si veřejnou IP adresu:
 
-    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/find-public-ip.png" alt-text="Zjistit veřejnou IP adresu brány NAT" border="true":::
+    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/find-public-ip.png" alt-text="Snímek obrazovky se zjišťováním veřejné IP adresy brány NAT." border="true":::
 
 3. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a potom ze seznamu prostředky vyberte **myVM1** , která je umístěná ve skupině prostředků **TutorPubLBNAT-RG** .
 
@@ -318,7 +321,7 @@ V této části otestujeme bránu NAT. Nejdříve zjistíme veřejnou IP adresu 
 
 9. Ověřte, že zobrazená IP adresa odpovídá adrese brány NAT, kterou jste si poznamenali v předchozím kroku:
 
-    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/my-ip.png" alt-text="Internet Explorer zobrazující externí odchozí IP adresy" border="true":::
+    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/my-ip.png" alt-text="Snímek obrazovky s Internet Explorerem, na kterém se zobrazuje externí odchozí IP adresa" border="true":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

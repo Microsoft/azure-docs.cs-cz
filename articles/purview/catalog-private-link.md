@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: d9088e5c6302c41c64f2a2e9034e7c3d659e37eb
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 09fa10e7f7751321601c5c4871b2cf36ccf6f01f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102615631"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720908"
 ---
 # <a name="use-private-endpoints-for-your-purview-account"></a>Použití privátních koncových bodů pro účet dosah
 
@@ -24,13 +24,16 @@ Pro účty dosah můžete použít privátní koncové body, které umožní kli
 
 1. Vyplňte základní informace a nastavte metodu připojení na privátní koncový bod na kartě **sítě** . Nastavte soukromé koncové body ingestování tím, že poskytnete podrobnosti **předplatného, virtuální sítě a podsítě** , které chcete spárovat s vaším soukromým koncovým bodem.
 
+    > [!NOTE]
+    > Privátní koncový bod pro ingestování se vytvoří jenom v případě, že máte v úmyslu povolit izolaci sítě pro kompletní scénáře kontroly pro Azure i místní zdroje. V současné době nepodporujeme privátní koncové body ingestování s vašimi AWS zdroji.
+
     :::image type="content" source="media/catalog-private-link/create-pe-azure-portal.png" alt-text="Vytvoření privátního koncového bodu v Azure Portal":::
 
 1. Volitelně můžete také zvolit, že se má pro každý privátní koncový bod příjmu nastavit **zóna privátní DNS** .
 
 1. Kliknutím na Přidat přidejte privátní koncový bod pro svůj účet dosah.
 
-1. Na stránce vytvoření privátního koncového bodu nastavte dosah dílčí prostředek na **účet**, zvolte virtuální síť a podsíť a vyberte zónu privátní DNS, do které se DNS zaregistruje (můžete také využít své vyhrané servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích).
+1. Na stránce vytvoření privátního koncového bodu nastavte dosah dílčí prostředek na **účet**, zvolte virtuální síť a podsíť a vyberte zónu privátní DNS, do které se DNS zaregistruje (můžete také využít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích).
 
     :::image type="content" source="media/catalog-private-link/create-pe-account.png" alt-text="Výběry pro vytváření privátních koncových bodů":::
 
@@ -89,6 +92,20 @@ Níže uvedené pokyny slouží k zabezpečenému přístupu k dosah z virtuáln
 6. Po vytvoření nového pravidla přejděte zpátky na virtuální počítač a zkuste se znovu přihlásit pomocí přihlašovacích údajů k AAD. Pokud je přihlášení úspěšné, portál dosah je připravený k použití. V některých případech se však AAD přesměruje na jiné domény na přihlášení na základě typu účtu zákazníka. V případě účtu live.com se AAD přesměruje na live.com na přihlašovací údaje, pak se tyto požadavky zablokují znovu. Pro účty zaměstnanců Microsoftu bude AAD k msft.sts.microsoft.com přistupovat pro přihlašovací informace. Podívejte se na kartu síťové žádosti na kartě sítě prohlížeče, kde zjistíte, které požadavky na doménu se mají zablokovat, opakujte předchozí krok, abyste získali jeho IP adresu a přidali odchozí pravidla portů ve skupině zabezpečení sítě, aby se povolily požadavky na tuto IP adresu (Pokud je to možné, přidejte do hostitelského souboru virtuálního počítače adresu URL a IP adresu pro opravu překladu DNS). Pokud znáte rozsahy IP adres v doméně přihlášení, můžete je také přímo přidat do síťových pravidel.
 
 7. Přihlášení k AAD by teď mělo být úspěšné. Portál dosah se úspěšně načte, ale výpis všech účtů dosah nebude fungovat, protože může přistupovat jenom ke konkrétnímu účtu dosah. Pokud chcete přímo navštívit účet dosah, pro který jste úspěšně nastavili privátní koncový bod, zadejte *Web. dosah. Azure. com/Resource/{PurviewAccountName}* .
+ 
+## <a name="ingestion-private-endpoints-and-scanning-sources-in-private-networks-vnets-and-behind-private-endpoints"></a>Ingestování soukromých koncových bodů a skenování zdrojů v privátních sítích, virtuální sítě a za privátních koncových bodech
+
+Pokud chcete zajistit izolaci sítě pro vaše metadata ze zdroje, který se kontroluje na dosah DataMap, musíte postupovat podle těchto kroků:
+1. Pomocí následujících kroků v [této](#creating-an-ingestion-private-endpoint) části povolte **soukromý koncový bod** ingestování.
+1. Naskenujte zdroj pomocí prostředí IR pro místní **hostování**.
+ 
+    1. Všechny místní typy zdrojů, jako je SQL Server, Oracle, SAP a další, se aktuálně podporují jenom prostřednictvím vysoce hostovaných kontrol založených na technologii IR. Prostředí IR v místním prostředí je nutné spustit v rámci vaší privátní sítě a potom v Azure vytvořit partnerský vztah s vaší virtuální sítí. Vaše virtuální síť Azure musí být pak povolená na privátním koncovém bodu ingestování pomocí [následujících kroků.](#creating-an-ingestion-private-endpoint) 
+    1. Pro všechny zdrojové typy **Azure** , jako je Azure Blob storage, Azure SQL Database a další, musíte explicitně zvolit spuštění kontroly pomocí prostředí IR v místním prostředí, abyste zajistili izolaci sítě. Pokud chcete nastavit technologii IR v místním [prostředí, postupujte](manage-integration-runtimes.md) podle následujících kroků. Pokud chcete zajistit izolaci sítě, nastavte kontrolu na zdroj Azure tak, že v rozevíracím seznamu **připojit přes integrační modul runtime** zvolíte možnost v místním prostředí IR. 
+    
+    :::image type="content" source="media/catalog-private-link/shir-for-azure.png" alt-text="Spuštění služby Azure Scan pomocí prostředí IR pro místní hostování":::
+
+> [!NOTE]
+> V tuto chvíli nepodporujeme metodu přihlašovacích údajů MSI, pokud procházíte ve svých zdrojích Azure pomocí prostředí IR s vlastním hostováním. Pro tento zdroj Azure je nutné použít jednu z dalších podporovaných metod přihlašovacích údajů.
 
 ## <a name="enable-private-endpoint-on-existing-purview-accounts"></a>Povolení privátního koncového bodu u stávajících účtů dosah
 
@@ -101,7 +118,7 @@ Existují dva způsoby, jak můžete přidat dosah privátní koncové body po v
 
 1. V Azure Portal přejděte na účet služby dosah, v části **síť** v části **Nastavení** vyberte připojení privátního koncového bodu.
 
-:::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Vytvoření privátního koncového bodu portálu":::
+    :::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Vytvoření privátního koncového bodu účtu":::
 
 1. Kliknutím na + soukromý koncový bod vytvořte nový privátní koncový bod.
 
@@ -115,6 +132,20 @@ Existují dva způsoby, jak můžete přidat dosah privátní koncové body po v
 
 > [!NOTE]
 > U cílového dílčího prostředku vybraného jako **portál** bude taky nutné postupovat podle výše uvedených kroků.
+
+#### <a name="creating-an-ingestion-private-endpoint"></a>Vytváření privátního koncového bodu pro přijímání
+
+1. V Azure Portal přejděte na účet služby dosah, v části **síť** v části **Nastavení** vyberte připojení privátního koncového bodu.
+1. Přejděte na kartu **připojení privátního koncového bodu pro přijímání** a kliknutím na **+ Nový** vytvořte nový privátní koncový bod pro příjem dat.
+
+1. Vyplňte základní informace a podrobnosti virtuální sítě.
+ 
+    :::image type="content" source="media/catalog-private-link/ingestion-pe-fill-details.png" alt-text="Vyplnit podrobnosti privátního koncového bodu":::
+
+1. Nastavení dokončíte kliknutím na **vytvořit** .
+
+> [!NOTE]
+> Privátní koncové body ingestování se dají vytvořit jenom přes Dosahé prostředí Azure Portal popsané výše. Nedá se vytvořit z centra privátních odkazů.
 
 ### <a name="using-the-private-link-center"></a>Používání centra privátních odkazů
 
@@ -132,6 +163,15 @@ Existují dva způsoby, jak můžete přidat dosah privátní koncové body po v
 
 > [!NOTE]
 > U cílového dílčího prostředku vybraného jako **portál** bude taky nutné postupovat podle výše uvedených kroků.
+
+## <a name="firewalls-to-restrict-public-access"></a>Brány firewall pro omezení přístupu veřejnosti
+
+Pokud chcete úplně získat přístup k účtu dosah z veřejného Internetu, postupujte podle následujících kroků. Toto nastavení bude platit pro připojení privátního koncového bodu i pro příjem privátních koncových bodů.
+
+1. V Azure Portal přejděte na účet služby dosah, v části **síť** v části **Nastavení** vyberte připojení privátního koncového bodu.
+1. Přejděte na kartu Brána firewall a ujistěte se, že přepínač je nastaven na **Odepřít**.
+
+    :::image type="content" source="media/catalog-private-link/private-endpoint-firewall.png" alt-text="Nastavení brány firewall privátního koncového bodu":::
 
 ## <a name="next-steps"></a>Další kroky
 

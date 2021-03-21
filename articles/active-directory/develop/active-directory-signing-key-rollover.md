@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: ce4917f968ef1664a1d41f4eaff162df116bda4f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035080"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Výměna podpisových klíčů na platformě Microsoft identity
@@ -68,7 +68,7 @@ Funkce ověřování/autorizace v Azure App Services (EasyAuth) již má potřeb
 ### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webové aplikace/rozhraní API chrání prostředky pomocí .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication middlewaru
 Pokud vaše aplikace používá middleware rozhraní .NET OWIN OpenID Connect, WS-Fed nebo WindowsAzureActiveDirectoryBearerAuthentication, již má potřebnou logiku pro automatické zpracování výměny klíčů.
 
-Můžete potvrdit, že aplikace používá některé z následujících fragmentů kódu v souborech Startup.cs nebo Startup.Auth.cs vaší aplikace.
+Můžete potvrdit, že aplikace používá některé z následujících fragmentů kódu, a to tak, že vyhledáte všechny následující fragmenty kódu v souborech Startup. cs nebo Startup.. cs vaší aplikace.
 
 ```csharp
 app.UseOpenIdConnectAuthentication(
@@ -97,7 +97,7 @@ app.UseWindowsAzureActiveDirectoryBearerAuthentication(
 ### <a name="web-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>Webové aplikace/rozhraní API chrání prostředky pomocí middlewaru .NET Core OpenID Connect nebo JwtBearerAuthentication middleware
 Pokud vaše aplikace používá middleware OWIN OpenID Connect nebo JwtBearerAuthentication pro .NET Core, má již potřebnou logiku pro automatické zpracování výměny klíčů.
 
-Můžete potvrdit, že aplikace používá některé z následujících fragmentů kódu v Startup.cs nebo Startup.Auth.cs vaší aplikace.
+Můžete potvrdit, že aplikace používá některé z následujících fragmentů kódu, a to tak, že vyhledáte všechny následující fragmenty kódu v spuštění aplikace. cs nebo Startup. auth. cs.
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -248,12 +248,12 @@ Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobn
 Pokud jste aplikaci vytvořili pomocí některého z ukázek kódu nebo pokynů v dokumentaci od Microsoftu, je logika přecházení mezi klíči již obsažena v projektu. Všimněte si, že níže uvedený kód již v projektu existuje. Pokud vaše aplikace ještě tuto logiku nemá, postupujte podle následujících kroků a ověřte, zda správně funguje.
 
 1. V **Průzkumník řešení** přidejte odkaz na sestavení **System. IdentityModel** pro příslušný projekt.
-2. Otevřete soubor **Global.asax.cs** a přidejte následující direktivy using:
+2. Otevřete soubor **Global. asax. cs** a přidejte následující direktivy using:
    ```
    using System.Configuration;
    using System.IdentityModel.Tokens;
    ```
-3. Do souboru **Global.asax.cs** přidejte následující metodu:
+3. Do souboru **Global. asax. cs** přidejte následující metodu:
    ```
    protected void RefreshValidationSettings()
    {
@@ -263,7 +263,7 @@ Pokud jste aplikaci vytvořili pomocí některého z ukázek kódu nebo pokynů 
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. Vyvolejte metodu **RefreshValidationSettings ()** v metodě **Application_Start ()** v **Global.asax.cs** , jak je znázorněno níže:
+4. V **Global. asax. cs** volejte **Application_Start** metodu **RefreshValidationSettings ()** , jak je znázorněno níže:
    ```
    protected void Application_Start()
    {

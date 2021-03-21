@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5c668783232533098822cca982f1af9008f13640
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 5e220759a46ad9098f81a9534fa64145adade2b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761732"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613120"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Kurz: Příprava na nasazení Azure Stack Edge pro R
 
@@ -55,7 +55,7 @@ Teď můžete začít nastavovat Azure Portal.
 
 Před nasazením zařízení je potřeba shromáždit informace ke konfiguraci softwaru na zařízení Azure Stack Edge pro. Když se některé z těchto informací předem připravují, pomůže vám to zjednodušit proces nasazení zařízení ve vašem prostředí. Pomocí [kontrolního seznamu konfigurace nasazení Azure Stack Edge pro R](azure-stack-edge-pro-r-deploy-checklist.md) si poznamenejte podrobnosti konfigurace při nasazování zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční zdroj, vaše zařízení Azure Stack Edge a síť datacenter.
 
@@ -87,6 +87,8 @@ Než začnete, ujistěte se, že:
 
 Pokud máte existující Azure Stack hraniční prostředek pro správu fyzického zařízení, přeskočte tento krok a přejděte na [získat aktivační klíč](#get-the-activation-key).
 
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal následující kroky.
 
 1. Pomocí přihlašovacích údajů pro Microsoft Azure se přihlaste k Azure Portal na této adrese URL: [https://portal.azure.com](https://portal.azure.com) .
@@ -117,7 +119,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
     |Nastavení  |Hodnota  |
     |---------|---------|
     |Název   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
-    |Region (Oblast)     |Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pokud používáte Azure Government, jsou dostupné všechny oblasti státní správy, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
+    |Oblast     |Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pokud používáte Azure Government, jsou dostupné všechny oblasti státní správy, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
 
     ![Vytvoření prostředku 4](media/azure-stack-edge-pro-r-deploy-prep/create-resource-4.png)
 
@@ -148,7 +150,7 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
     ![Přejít na prostředek Azure Stack Edge pro](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-1.png)
 
-Po uvedení objednávky Microsoft zkontroluje pořadí a zavede vám (prostřednictvím e-mailu) informace o expedici.
+Po uvedení objednávky Microsoft zkontroluje pořadí a kontaktuje vás prostřednictvím e-mailu s podrobnostmi o expedici.
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
@@ -156,6 +158,51 @@ Po uvedení objednávky Microsoft zkontroluje pořadí a zavede vám (prostředn
 > Pokud chcete vytvořit více objednávek najednou nebo naklonovat stávající objednávku, můžete použít [skripty v ukázkách Azure](https://github.com/Azure-Samples/azure-stack-edge-order). Další informace najdete v souboru READme.
 
 Pokud narazíte na problémy v průběhu procesu objednávky, přečtěte si téma [řešení potíží s pořadím](azure-stack-edge-troubleshoot-ordering.md).
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+V případě potřeby připravte prostředí pro rozhraní příkazového řádku Azure CLI.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Pokud chcete vytvořit prostředek Azure Stack Edge, spusťte v Azure CLI následující příkazy.
+
+1. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group#az_group_create) nebo použijte existující skupinu prostředků:
+
+   ```azurecli
+   az group create --name myasepgpu1 --location eastus
+   ```
+
+1. Zařízení vytvoříte pomocí příkazu [AZ databoxedge Device Create](/cli/azure/databoxedge/device#az_databoxedge_device_create) :
+
+   ```azurecli
+   az databoxedge device create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --location eastus --sku EdgePR_Base
+   ```
+
+   Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V oblasti jsou uložena pouze metadata pro správu zařízení. Skutečná data můžou být uložená v jakémkoli účtu úložiště.
+
+   Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Pokud používáte Azure Government, jsou dostupné všechny oblasti státní správy, jak je znázorněno v [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+
+1. Chcete-li vytvořit objednávku, spusťte příkaz [AZ databoxedge Order Create](/cli/azure/databoxedge/order#az_databoxedge_order_create) :
+
+   ```azurecli
+   az databoxedge order create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --company-name "Contoso" \
+      --address-line1 "1020 Enterprise Way" --city "Sunnyvale" \
+      --state "California" --country "United States" --postal-code 94089 \
+      --contact-person "Gus Poland" --email-list gus@contoso.com --phone 4085555555
+   ```
+
+Vytvoření prostředku trvá několik minut. Chcete-li zobrazit pořadí, spusťte příkaz [AZ databoxedge Order show](/cli/azure/databoxedge/order#az_databoxedge_order_show) :
+
+```azurecli
+az databoxedge order show --resource-group myasepgpu1 --device-name myasegpu1 
+```
+
+Po umístění objednávky Microsoft zkontroluje pořadí a kontaktuje e-mail s podrobnostmi o expedici.
+
+---
 
 ## <a name="get-the-activation-key"></a>Získání aktivačního klíče
 

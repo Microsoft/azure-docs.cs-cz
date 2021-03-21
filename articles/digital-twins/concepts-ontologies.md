@@ -8,10 +8,10 @@ ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034689"
 ---
 # <a name="what-is-an-ontology"></a>Co je Ontology? 
@@ -40,7 +40,7 @@ Vzhledem k tomu, že modely v digitálních proskutečnostech Azure jsou repreze
 
 Existují tři možné strategie pro integraci oboru standardních ontologie s DTDL. Můžete si vybrat ten, který vám nejlépe vyhovuje v závislosti na vašich potřebách:
 
-| Strategie | Popis | Zdroje informací |
+| Strategie | Description | Zdroje informací |
 | --- | --- | --- |
 | **Přijetí** | Své řešení můžete začít s open source DTDL Ontology, který je založený na široce přijímaných oborových standardech. Můžete buď použít tyto sady modelů předem, nebo je roztáhnout s vlastními dodatky pro vlastní řešení. | [*Koncepty: &nbsp; přijetí &nbsp; oboru &nbsp; standardních ontologie*](concepts-ontologies-adopt.md)<br><br>[*Koncepty: &nbsp; rozšíření &nbsp; ontologie*](concepts-ontologies-extend.md) |
 | **Převést** | Pokud už máte stávající modely reprezentované v jiném standardním formátu, můžete je převést na DTDL, aby je bylo možné použít u digitálních vláken Azure. | [*Koncepty: &nbsp; převod &nbsp; ontologie*](concepts-ontologies-convert.md)<br><br>[*Koncepty: &nbsp; rozšíření &nbsp; ontologie*](concepts-ontologies-extend.md) |

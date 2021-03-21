@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a176a30a1e21ec03c2da329785ab895ec67a4faf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596412"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722561"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure spot Virtual Machines pro Virtual Machine Scale Sets 
 
@@ -44,8 +44,8 @@ Virtuální počítač se službou Azure se dá nasadit do libovolné oblasti, s
 V současné době jsou podporovány následující [typy nabídek](https://azure.microsoft.com/support/legal/offer-details/) :
 
 -   Smlouva Enterprise
--   003P kódu nabídky s průběžnými platbami
--   Financovan
+-   Kód nabídky s průběžnými platbami (003P)
+-   Sponzorované (0036P a 0136P)
 - Pro poskytovatele cloudových služeb (CSP) si přečtěte téma [Partnerské centrum](/partner-center/azure-plan-get-started) nebo se obraťte přímo na svého partnera.
 
 ## <a name="eviction-policy"></a>Zásady vyřazení
@@ -168,7 +168,7 @@ $vmssConfig = New-AzVmssConfig `
     -SkuName "Standard_DS2" `
     -UpgradePolicyMode Automatic `
     -Priority "Spot" `
-    --max-price -1
+    -max-price -1
 ```
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru

@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466187"
 ---
 V této kategorii jsou uvedená doporučení **64** .
 
-|Doporučení |Popis |Závažnost |
+|Doporučení |Description |Závažnost |
 |---|---|---|
 |V rozšířených nastaveních zabezpečení dat spravované instance SQL by se měly povolit všechny rozšířené typy ochrany před hrozbami. |Doporučuje se povolit všechny rozšířené typy ochrany před internetovými útoky na spravovaných instancích SQL. Povolení všech typů chrání proti injektáže SQL, ohrožením zabezpečení databáze a dalším aktivitám neobvyklé.<br />(Žádné související zásady) |Střední |
 |V rozšířených nastaveních zabezpečení dat SQL serveru by se měly povolit všechny rozšířené typy ochrany před hrozbami. |Doporučuje se na vašich serverech SQL povolit všechny rozšířené typy ochrany před internetovými útoky. Povolení všech typů chrání proti injektáže SQL, ohrožením zabezpečení databáze a dalším aktivitám neobvyklé.<br />(Žádné související zásady) |Střední |

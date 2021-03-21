@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 93812cf2b0db7fc3557e31c8d9e8053831c7b90f
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 826759907bfe5ec3359bf5c9125909466372c68f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103010996"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608142"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Řešení potíží s Azure Percept DK (dev Kit)
 
@@ -29,6 +29,12 @@ K přesměrování libovolného výstupu do souboru. txt k další analýze pou�
 
 ```console
 sudo [command] > [file name].txt
+```
+
+Změňte oprávnění souboru. txt tak, aby bylo možné ho zkopírovat:
+
+```console
+sudo chmod 666 [file name].txt
 ```
 
 Po přesměrování výstupu do souboru. txt zkopírujte soubor do hostitelského počítače přes bod připojení služby (SCP):

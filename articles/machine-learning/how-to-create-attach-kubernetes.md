@@ -12,17 +12,17 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/11/2021
 ms.openlocfilehash: bc8f7aa6827ce251799acd0673d43344c0833c3a
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103149320"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
 Azure Machine Learning můžou nasazovat školicí modely strojového učení do služby Azure Kubernetes. Musíte ale nejdřív __vytvořit__ cluster Azure Kubernetes Service (AKS) z pracovního prostoru Azure ml nebo __připojit__ existující cluster AKS. Tento článek poskytuje informace o tom, jak vytvořit a připojit cluster.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -382,7 +382,7 @@ V Azure Machine Learning Studiu vyberte __výpočetní__ prostředí, __odvozen�
 
 ---
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 ### <a name="update-the-cluster"></a>Aktualizace clusteru
 
 Aktualizace komponent Azure Machine Learning nainstalovaných v clusteru služby Azure Kubernetes se musí použít ručně. 

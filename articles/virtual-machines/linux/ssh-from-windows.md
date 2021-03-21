@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 167ce63931155f5142ed34b41f857505699bc0a6
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aeecdcddaeba385c6dc0773356bcd0e36231e1e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552775"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607462"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Použití klíčů SSH s Windows v Azure
 
@@ -97,4 +97,4 @@ Pokud virtuální počítač používá zásady přístupu za běhu, musíte po�
 
 - PowerShell můžete také použít v Azure Cloud Shell k vygenerování klíčů SSH a k vytvoření připojení SSH k virtuálním počítačům se systémem Linux. Další informace najdete v tématu [rychlý Start prostředí PowerShell](../../cloud-shell/quickstart-powershell.md#ssh).
 
-- Pokud máte potíže s použitím protokolu SSH pro připojení k virtuálním počítačům se systémem Linux, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).
+- Pokud máte potíže s použitím protokolu SSH pro připojení k virtuálním počítačům se systémem Linux, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

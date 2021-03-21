@@ -4,10 +4,10 @@ description: Naučte se, jak odstranit privátní cloud řešení Azure VMware, 
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: 453e7a3316c342cd724a951eafea0ae9fa045506
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103462095"
 ---
 # <a name="tutorial-delete-an-azure-vmware-solution-private-cloud"></a>Kurz: odstranění privátního cloudu řešení Azure VMware
@@ -17,7 +17,7 @@ Pokud máte privátní cloud řešení Azure VMware, který už nepotřebujete, 
 > [!CAUTION]
 > Odstranění privátního cloudu je nevratná operace. Po odstranění privátního cloudu se data nedají obnovit, protože ukončí všechny spuštěné úlohy a komponenty a zničí všechna data privátního cloudu a nastavení konfigurace, včetně veřejných IP adres.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud budete vyžadovat virtuální počítače a jejich data později, nezapomeňte před odstraněním privátního cloudu zálohovat data.  Neexistuje žádný způsob, jak obnovit virtuální počítače a jejich data.
 

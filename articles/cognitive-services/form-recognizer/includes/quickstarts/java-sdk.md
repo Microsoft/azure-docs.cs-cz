@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/19/2021
 ms.custom: devx-track-java
 ms.author: lajanuar
-ms.openlocfilehash: 2e52bc8e6e41165da2f274d3613337fe603ccc39
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a709f82b04ed5c1fe70f6927b33605cfff20ed6b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444685"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104761249"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -26,7 +26,7 @@ ms.locfileid: "102444685"
 
 [Referenční dokumentace](/java/api/overview/azure/ai-formrecognizer-readme)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -79,7 +79,7 @@ dependencies {
 ```
 
 > [!NOTE]
-> 3.1.0 SDK pro rozpoznávání formulářů zobrazuje rozhraní API verze 2,1 Preview
+> 3.1.0 SDK pro rozpoznávání formulářů zobrazuje _rozhraní API verze 2,1 Preview. 2_. Použijte prosím [**REST API**](../../quickstarts/client-library.md) pro _rozhraní API verze 2,1 Preview. 3_.
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -510,7 +510,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Od klientů pro rozpoznávání vyvolat `ErrorResponseException` výjimky. Pokud se například pokusíte zadat neplatnou adresu URL zdroje souboru, bude `ErrorResponseException` vyvolána chyba, která signalizuje chybu. V následujícím fragmentu kódu je chyba zpracována řádným zachycením výjimky a zobrazením dalších informací o chybě.
 

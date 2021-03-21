@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: d35fbc6f16b018f55e4ec7bcd6257884c3f10186
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466148"
 ---
 V této kategorii je **21** doporučení.
 
-|Doporučení |Popis |Závažnost |
+|Doporučení |Description |Závažnost |
 |---|---|---|
 |Pro vaše předplatné by se mělo určit maximálně 3 vlastníci. |Aby se snížila pravděpodobnost porušení narušením účtů vlastníka, doporučujeme omezit počet účtů vlastníka na maximálně 3.<br />(Související zásady: [pro vaše předplatné by se měly určit maximálně 3 vlastníci](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f11b553-d42e-4e3a-89be-32ca364cad4c)) |Vysoká |
 |Je potřeba povolit Azure Defender pro Key Vault. |Azure Security Center zahrnuje Azure Defender pro Key Vault a poskytuje další vrstvu funkcí Security Intelligence.<br>Azure Defender pro Key Vault detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům Key Vault nebo jejich zneužití.<br><br>Důležité: Oprava toto doporučení bude mít za následek poplatky za ochranu vašich trezorů klíčů. Pokud v tomto předplatném nemáte žádné trezory klíčů, nebudou vám účtovány žádné poplatky.<br>Pokud v budoucnu vytvoříte v tomto předplatném nějaké trezory klíčů, budou automaticky chráněny a v této době začnou platit poplatky.<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>Přečtěte si další informace o Azure Defenderu pro Key Vault.</a><br />(Související zásady: [mělo by se povolit Azure Defender pro Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)) |Vysoká |

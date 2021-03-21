@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466248"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
@@ -151,7 +151,7 @@ Požadovaná oprávnění závisí na volitelných funkcích, které povolíte. 
 | Zpětný zápis zařízení |Oprávnění udělená pomocí skriptu prostředí PowerShell, jak je popsáno v tématu [zpětný zápis zařízení](how-to-connect-device-writeback.md). |
 | Zpětný zápis skupin |Umožňuje zpětný zápis **skupin Microsoft 365** do doménové struktury s nainstalovaným systémem Exchange.|
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Upgradovat
 Při upgradu z jedné verze Azure AD Connect na novou verzi budete potřebovat následující oprávnění:
 
 >[!IMPORTANT]
@@ -175,7 +175,7 @@ Pokud používáte vlastní nastavení, zodpovídáte za vytvoření účtu pře
 ### <a name="adsync-service-account"></a>Účet služby ADSync
 Synchronizační služba může běžet pod různými účty. Může běžet pod **účtem virtuální služby** (VSA), **skupinový účet spravované služby** (gMSA/SMSA) nebo běžný uživatelský účet. Podporované možnosti se změnily s 2017. dubna Connect při nové instalaci. Pokud upgradujete ze starší verze Azure AD Connect, tyto další možnosti nejsou k dispozici.
 
-| Typ účtu | Možnost instalace | Popis |
+| Typ účtu | Možnost instalace | Description |
 | --- | --- | --- |
 | [Účet virtuální služby](#virtual-service-account) | Express a Custom, 2017. dubna a novější | Tato možnost se používá pro všechny Expresní instalace, s výjimkou instalací na řadič domény. Pro vlastní je výchozí možnost, pokud nepoužijete jinou možnost. |
 | [Účet spravované služby skupiny](#group-managed-service-account) | Vlastní, 2017. dubna a novější | Pokud používáte vzdálený SQL Server, doporučujeme použít skupinový účet spravované služby. |

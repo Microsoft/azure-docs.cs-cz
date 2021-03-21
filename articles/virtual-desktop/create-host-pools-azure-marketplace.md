@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 60566b95447c1b69fb257435f45a11524ac5d8b2
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102617335"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
@@ -23,7 +23,7 @@ Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních poč
 
 Tento článek vás provede procesem instalace pro vytvoření fondu hostitelů pro prostředí virtuálních ploch Windows prostřednictvím Azure Portal. Tato metoda poskytuje uživatelské rozhraní založené na prohlížeči k vytvoření fondu hostitelů na virtuálním počítači s Windows, vytvoření skupiny prostředků s virtuálními počítači v rámci předplatného Azure, připojení těchto virtuálních počítačů k doméně Azure Active Directory (AD) a registraci virtuálních počítačů pomocí virtuálního počítače s Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro vytvoření fondu hostitelů musíte zadat následující parametry:
 

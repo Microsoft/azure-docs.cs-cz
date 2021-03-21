@@ -16,17 +16,17 @@ ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 634f09c7862f6e3e2f147094503f5a574476ef91
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034383"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -58,7 +58,7 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit novou** a do textového pole zadejte **CreatePubLBQS-RG** .|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **(Evropa) západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Ponechte výchozí **Standard**. |
@@ -276,7 +276,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2| VIRTUÁLNÍ POČÍTAČ 3|
     | ------- | ----- |---|
-    | Název |  **myVM2** |**myVM3**|
+    | Name |  **myVM2** |**myVM3**|
     | Zóna dostupnosti | **2** |**3**|
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
 
@@ -346,7 +346,7 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nové** a do textového pole zadejte **CreatePubLBQS-RG** .|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vybrat **základní** |
@@ -562,7 +562,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2| VIRTUÁLNÍ POČÍTAČ 3|
     | ------- | ----- |---|
-    | Název |  **myVM2** |**myVM3**|
+    | Name |  **myVM2** |**myVM3**|
     | Skupina dostupnosti| Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet**|
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
 
