@@ -4,10 +4,10 @@ description: Naučte se, jak pomocí webhooků aktivovat události, když se akc
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101722241"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Používání Azure Container Registry webhooků
@@ -18,7 +18,7 @@ Koncový bod Webhooku musí být z registru veřejně přístupný. Žádosti We
 
 Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry Reference k schématu Webhooku](container-registry-webhook-reference.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Registr kontejnerů Azure – Vytvořte registr kontejnerů ve svém předplatném Azure. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md). [Úrovně služby Azure Container Registry](container-registry-skus.md) mají různé kvóty webhooků.
 * Rozhraní příkazového řádku Dockeru – Chcete-li nastavit místní počítač jako hostitele Dockeru a získat přístup k příkazům rozhraní příkazového řádku Dockeru, nainstalujte si modul runtime [Docker Engine](https://docs.docker.com/engine/installation/).

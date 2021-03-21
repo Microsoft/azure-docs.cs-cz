@@ -9,10 +9,10 @@ ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
 ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98796956"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Správa zdrojového kódu v Azure synapse studiu
@@ -122,7 +122,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 
 Připojení k organizaci GitHubu vyžaduje, aby organizace udělila oprávnění k synapse studiu. Uživatel s oprávněními správce v organizaci musí provádět níže uvedené kroky.
 
-#### <a name="connecting-to-github-for-the-first-time"></a>Připojení k GitHubu poprvé
+#### <a name="connecting-to-github-for-the-first-time"></a>První připojení ke GitHubu
 
 Pokud se připojujete k GitHubu z synapse studia poprvé, postupujte podle těchto kroků a připojte se k organizaci GitHubu.
 

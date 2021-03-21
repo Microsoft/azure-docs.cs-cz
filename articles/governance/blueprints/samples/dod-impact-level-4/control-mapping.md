@@ -4,10 +4,10 @@ description: Mapování ovládacího prvku pro ukázku plánu dopadu DoD. 4. Ka�
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 4345cd67cda5b00d89d9eae1f8abaedb40228759
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035100"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Mapování ovládacího prvku pro ukázku plánu dopadu na 3. plán na úrovni.

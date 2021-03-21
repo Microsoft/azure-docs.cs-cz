@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791757"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Monitorování diagnostiky a výkonu pro vzdálenou komunikaci spolehlivé služby
@@ -74,7 +74,7 @@ V předchozím příkladu `ivoicemailboxservice.leavemessageasync` je název met
 
 Služba Reliable Service runtime zveřejňuje následující čítače výkonu související s prováděním metod služeb.
 
-| Název kategorie | Název čítače | Popis |
+| Název kategorie | Název čítače | Description |
 | --- | --- | --- |
 | Metoda služby Service Fabric |Volání za sekundu |Počet, kolikrát se metoda služby vyvolala za sekundu |
 | Metoda služby Service Fabric |Průměrný počet milisekund na vyvolání |Čas potřebný k provedení metody služby v milisekundách |
@@ -83,7 +83,7 @@ Služba Reliable Service runtime zveřejňuje následující čítače výkonu s
 ### <a name="service-request-processing-performance-counters"></a>Čítače výkonu zpracování žádostí o služby
 Když klient vyvolá metodu prostřednictvím objektu proxy služby, má za následek odeslání zprávy požadavku prostřednictvím sítě do služby vzdálené komunikace. Služba zpracuje zprávu požadavku a pošle odpověď zpět klientovi. Reliable ServiceRemoting runtime zveřejňuje následující čítače výkonu související se zpracováním žádostí o služby.
 
-| Název kategorie | Název čítače | Popis |
+| Název kategorie | Název čítače | Description |
 | --- | --- | --- |
 | Služba Service Fabric |počet nezpracovaných žádostí |Počet požadavků zpracovávaných ve službě |
 | Služba Service Fabric |Průměrný počet milisekund na požadavek |Doba trvání (v milisekundách), po kterou služba zpracovává požadavek |
@@ -91,5 +91,5 @@ Když klient vyvolá metodu prostřednictvím objektu proxy služby, má za nás
 | Služba Service Fabric |Průměrný počet milisekund serializace odpovědi |Doba trvání (v milisekundách) k serializaci zprávy s odpovědí služby ve službě před odesláním odpovědi klientovi |
 
 ## <a name="next-steps"></a>Další kroky
-* [Ukázka kódu](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
+* [Vzorový kód](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [Zprostředkovatelé EventSource v PerfView](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

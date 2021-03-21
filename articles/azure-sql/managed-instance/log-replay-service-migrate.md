@@ -10,10 +10,10 @@ ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/01/2021
 ms.openlocfilehash: 0bc00aea67fa2f71599ee62e657e1ca1b0627681
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199845"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrace databází z SQL Server do spravované instance SQL pomocí služby log Replay (Preview)
@@ -394,7 +394,7 @@ Funkční omezení LRS jsou:
 - LRS se musí spustit samostatně pro každou databázi, která odkazuje na samostatné složky se soubory zálohy na Blob Storage.
 - LRS může podporovat až 100 simultánních procesů obnovení na jednu spravovanou instanci.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Po spuštění LRS se podívejte na stav operace pomocí rutiny Monitoring ( `get-azsqlinstancedatabaselogreplay` nebo `az_sql_midb_log_replay_show` ). Pokud se LRS po nějaké době nepovede spustit a zobrazí se chyba, podívejte se na nejčastější problémy:
 

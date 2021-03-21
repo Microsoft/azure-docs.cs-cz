@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.openlocfilehash: d33734dc7404e49aed94dffae8644b2bc4386925
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492824"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MySQL flexibilním serveru pomocí Azure Portal
@@ -34,7 +34,7 @@ V tomto článku se naučíte, jak vytvářet a spravovat repliky pro čtení v 
 
 Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte existující Azure Database for MySQL flexibilní Server, který chcete použít jako zdroj. Tato akce otevře stránku s **přehledem** .
 

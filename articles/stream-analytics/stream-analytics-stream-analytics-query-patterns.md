@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 8fcda77858b3feb78a04971a7ad1f20c0ea51fa1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019988"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Běžné vzory dotazů v Azure Stream Analytics
@@ -414,14 +414,14 @@ Dobu trvání události lze vypočítat vyhledáním poslední události spušt�
 
 **Vstup**:  
 
-| Uživatel | Příznak | Událost | Čas |
+| User | Funkce | Událost | Čas |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Spustit |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000 Z |
 
 **Výstup**:  
 
-| Uživatel | Příznak | Doba trvání |
+| User | Funkce | Doba trvání |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -463,7 +463,7 @@ WHERE
 | 2 |2015-01-01T00:00:02.000 Z |
 | 1 |2015-01-01T00:00:04.000 Z |
 
-**Zadávání**
+**Dotaz:**
 
 ```SQL
 SELECT
@@ -929,7 +929,7 @@ Dotaz umožňuje výrobci automaticky monitorovat umístění počítačů a zí
 
 Další informace najdete v článku [scénáře použití geografických zón a geoprostorové agregace s Azure Stream Analytics](geospatial-scenarios.md) článkem.
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 

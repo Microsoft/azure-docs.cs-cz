@@ -4,10 +4,10 @@ description: Informace o tom, jak služba Azure Backup spravuje body obnovení p
 ms.topic: conceptual
 ms.date: 11/08/2020
 ms.openlocfilehash: 256df693aba0f799c24bcba6defe846e5c37ccaa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94428628"
 ---
 # <a name="manage-recovery-points"></a>Správa bodů obnovení
@@ -75,14 +75,14 @@ Po vypršení počátečního bodu obnovení se sloučí s dalším přírůstko
 
 ### <a name="case-2-in-between-incremental-recovery-point-expires"></a>Případ 2: konec platnosti mezi přírůstkovým bodem obnovení
 
-- Pokud *bod obnovení 2* vyprší před *bodem obnovení 1* , data z *bodu obnovení 2* se sloučí s dalším dostupným bodem obnovení: *bod obnovení 3*. Proto je zablokování D3 sloučeno s *bodem obnovení 3*.
+- Pokud *bod obnovení 2* vyprší před *bodem obnovení 1*, data z *bodu obnovení 2* se sloučí s dalším dostupným bodem obnovení: *bod obnovení 3*. Proto je zablokování D3 sloučeno s *bodem obnovení 3*.
 - *Bod obnovení 1* je stále úplným zálohováním s Block D1 a D2.
 
 ![Druhý případ](./media/manage-recovery-points/second-case.png)
 
 ### <a name="case-3-on-demand-recovery-point-expires"></a>Případ 3: konec platnosti bodu obnovení na vyžádání
 
-V tomto příkladu je naplánované spuštění zásady plánu (denního zálohování) s dobou uchování *n* dnů.  Pokud se před dalším naplánovaným zálohováním spustí zálohování na vyžádání a jeho doba uchování se zadává jako 10 dní, pak bude stále přírůstkovou zálohou. Bod obnovení ( *RP1 na vyžádání* ) bude vytvořen za *bodem obnovení 3* a před *bodem obnovení 4*.  Na konci dne 14 vypršela platnost bodu obnovení na vyžádání ( *RP1 na vyžádání* ) a bude sloučena s dalším dostupným bodem obnovení. Bloky dat, které jsou stále k dispozici na serveru, jsou sloučeny, zatímco bloky dat, které se změnily (přepsané nebo odstraněné), jsou odstraněny z bodu obnovení s prošlou platností.
+V tomto příkladu je naplánované spuštění zásady plánu (denního zálohování) s dobou uchování *n* dnů.  Pokud se před dalším naplánovaným zálohováním spustí zálohování na vyžádání a jeho doba uchování se zadává jako 10 dní, pak bude stále přírůstkovou zálohou. Bod obnovení (*RP1 na vyžádání*) bude vytvořen za *bodem obnovení 3* a před *bodem obnovení 4*.  Na konci dne 14 vypršela platnost bodu obnovení na vyžádání (*RP1 na vyžádání*) a bude sloučena s dalším dostupným bodem obnovení. Bloky dat, které jsou stále k dispozici na serveru, jsou sloučeny, zatímco bloky dat, které se změnily (přepsané nebo odstraněné), jsou odstraněny z bodu obnovení s prošlou platností.
 
 ![Třetí případ](./media/manage-recovery-points/third-case.png)
 

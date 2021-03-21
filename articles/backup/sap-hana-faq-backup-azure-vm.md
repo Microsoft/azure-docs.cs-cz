@@ -4,10 +4,10 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: bf662600bafcd18b00c8f8d3b673fc3f9c110aca
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95400203"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
@@ -22,7 +22,7 @@ Podporujeme jenom jednu úplnou zálohu za den. Nemůžete mít ke stejnému dni
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování upozornění?
 
-Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](./backup-azure-monitoring-built-in-monitor.md). Pokud ale máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
+No. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](./backup-azure-monitoring-built-in-monitor.md). Pokud ale máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
 
@@ -129,7 +129,7 @@ Informace o tom, jaké typy obnovení se aktuálně podporují, najdete v SAP HA
 
 Ano, zálohy streamování aktivované v databázi HANA běžící na SLES můžete použít k obnovení do systému RHEL HANA a naopak. To znamená, že při zálohování přes streamování je možné provést obnovení mezi různými operačními systémy. Budete ale muset zajistit, aby systém HANA, do kterého chcete obnovit, a systém HANA, který se používá k obnovení, byly kompatibilní pro obnovení podle SAP. Chcete-li zjistit, které typy obnovení jsou kompatibilní, přečtěte si SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) .
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 ### <a name="different-options-available-during-creation-of-a-new-policy-for-sap-hana-backup"></a>Během vytváření nové zásady pro SAP HANA Backup jsou dostupné různé možnosti.
 
@@ -139,7 +139,7 @@ RPO (bod obnovení-cíl) indikuje, kolik dat je pro uživatele/zákazníka přij
 
 RTO (doba obnovení-cíl) indikuje, jak rychle mají být data obnovena do posledního dostupného bodu v čase po skončení ztráty dat. To závisí na strategii obnovení používané v HANA, která je obvykle závislá na tom, kolik souborů je potřeba k obnovení. To má vliv na náklady i na následující tabulku, která by měla pomáhat při porozumění všem scénářům a jejich dopadům.
 
-|Zásady zálohování  |RTO  |Cost  |
+|Zásady zálohování  |RTO  |Náklady  |
 |---------|---------|---------|
 |Denní plný + protokol     |   Nejrychlejší, vzhledem k tomu, že potřebujeme jenom jednu úplnou kopii + požadované protokoly pro obnovení k bodu v čase      |    Možnost Costliest, protože úplné kopírování se provádí denně, takže se v back-endu nashromáždí více a další data, dokud doba uchování nedosáhne   |
 |Týdenní úplná + denní rozdílová + protokoly     |   Pomalejší než výše uvedená možnost, ale rychlejší než další možnost, protože pro obnovení k časovému okamžiku vyžadujeme jednu úplnou kopii a jednu rozdílnou kopii + protokoly.      |    Levnější možnost, protože denní rozdíl je obvykle menší než úplný a úplné kopírování je prováděno pouze jednou za týden.      |

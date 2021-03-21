@@ -3,21 +3,21 @@ title: Spravovat repliky čtení-Azure Portal-Azure Database for MariaDB
 description: Tento článek popisuje, jak nastavit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí portálu.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: fa2afdccf9c8bd6ec7f5808674e6eec968838d10
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 3ca6ef3c368a5f578cc90fae3923caa89f3b076a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98665000"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí Azure Portal
 
 V tomto článku se naučíte, jak vytvořit a spravovat repliky pro čtení ve službě Azure Database for MariaDB pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md) , který se bude používat jako zdrojový server.
 
@@ -31,7 +31,7 @@ V tomto článku se naučíte, jak vytvořit a spravovat repliky pro čtení ve 
 
 Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte existující server Azure Database for MariaDB, který chcete použít jako hlavní server. Tato akce otevře stránku s **přehledem** .
 

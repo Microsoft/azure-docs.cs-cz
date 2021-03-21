@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 3f7d6f8ca285fdc024db9ba952af9f7d169e7188
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678470"
 ---
 # <a name="optimizing-transactions-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Optimalizace transakcí ve vyhrazeném fondu SQL ve službě Azure synapse Analytics
@@ -69,7 +69,7 @@ CTAS a vložit... VYBRAT jsou operace hromadného načtení. Obě jsou však ovl
 
 | Primární index | Scénář načtení | Režim protokolování |
 | --- | --- | --- |
-| Halda |Libovolný |**Minimální** |
+| Halda |Všechny |**Minimální** |
 | Clusterovaný index |Prázdná cílová tabulka |**Minimální** |
 | Clusterovaný index |Načtené řádky se nepřesahují s existujícími stránkami v cíli. |**Minimální** |
 | Clusterovaný index |Načtené řádky se překrývají s existujícími stránkami v cíli. |Do bloku |

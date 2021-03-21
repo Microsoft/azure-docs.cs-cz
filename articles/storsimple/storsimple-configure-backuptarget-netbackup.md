@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 4f71cf82b675222836a73eec12d68bd8f62a5538
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967274"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
@@ -265,7 +265,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 
 ### <a name="to-set-up-netbackup-storage"></a>Nastavení úložiště NetBackup
 
-1.  V konzole pro správu NetBackup vyberte **média a zařízení Správa zařízení**  >  **Devices**  >  **fondy disků**. V Průvodci konfigurací fondu disků vyberte typ serveru úložiště **AdvancedDisk** a pak vyberte **Další**.
+1.  V konzole pro správu NetBackup vyberte **média a zařízení Správa zařízení**  >    >  **fondy disků**. V Průvodci konfigurací fondu disků vyberte typ serveru úložiště **AdvancedDisk** a pak vyberte **Další**.
 
     ![Konzola pro správu NetBackup, Průvodce konfigurací fondu disků](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
@@ -304,7 +304,7 @@ Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Monday-Friday |
 | Měsíčně  | Sobota  |   |
-| Roční | Sobota  |   |
+| Ročně | Sobota  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování NetBackup
 
@@ -415,7 +415,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Měsíčně | StorSimple měsíčně |   |   |   |   |   |
-| Roční | StorSimple ročně  |   |   |   |   |   |
+| Ročně | StorSimple ročně  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivace a duplikování NetBackup
@@ -430,7 +430,7 @@ Po definování počátečních fondů disků musíte definovat tři další zá
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Přiřazení svazků StorSimple k úloze archivace a duplikování NetBackup
 
-1. V konzole pro správu NetBackup vyberte **Storage**  >  **Zásady životního cyklu** úložiště úložiště  >  **nové zásady životního cyklu úložiště**.
+1. V konzole pro správu NetBackup vyberte   >  **Zásady životního cyklu** úložiště úložiště  >  **nové zásady životního cyklu úložiště**.
 
    ![Konzola pro správu NetBackup, nová zásada životního cyklu úložiště](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
@@ -529,13 +529,13 @@ Obnovení ze zařízení StorSimple funguje jako obnovení ze všech zařízení
 
 Havárie může být způsobeno nejrůznějšími faktory. V následující tabulce je uveden seznam běžných scénářů zotavení po havárii.
 
-| Scénář | Dopad | Postup obnovení | Poznámky |
+| Scenario | Dopad | Postup obnovení | Poznámky |
 |---|---|---|---|
 | Selhání zařízení StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nahraďte neúspěšné zařízení a proveďte [převzetí služeb při selhání StorSimple a zotavení po havárii](./storsimple-8000-device-failover-disaster-recovery.md). | Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se načítají z cloudu do nového zařízení. Všechny operace jsou v cloudových rychlostech. Proces opakovaného prohledání indexu a katalogu může způsobit, že se všechny zálohovací sklady kontrolují a nastavují z vrstvy cloudu na úroveň místního zařízení, což může být časově náročný proces. |
 | Selhání serveru NetBackup | Operace zálohování a obnovení jsou přerušeny. | Znovu sestavte záložní server a proveďte obnovení databáze. | Server NetBackup je nutné znovu sestavit nebo obnovit na webu pro zotavení po havárii. Obnovte databázi do nejnovějšího bodu. Pokud obnovená databáze NetBackup není synchronizovaná s nejnovějšími úlohami zálohování, je nutné indexování a vytváření katalogu. Tento index a proces opětovného prohledání katalogu může způsobit, že se všechny zálohovací sklady prohledají a nastavují z vrstvy cloudu na úroveň místního zařízení. Díky tomu je tato operace časově náročná. |
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte NetBackup. | Nejprve obnovte StorSimple a pak obnovte NetBackup. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 Následující dokumenty byly odkazovány na tento článek:
 

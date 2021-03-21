@@ -8,10 +8,10 @@ ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: cb984ca1a74d8b3838b857f2f5679264d1445187
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99508604"
 ---
 # <a name="basic-concepts"></a>Základní koncepty 
@@ -83,7 +83,7 @@ Než začnete pracovat s místní konzolou pro správu, doporučujeme vám sezn�
 
 Můžete rozšířit možnosti programu Defender pro IoT sdílením informací o zařízení i výstrahách s partnerskými systémy. Integrace pomůžou podnikům přemostění dřív dodaných řešení zabezpečení a významně tak vylepšit viditelnost zařízení a analýzu hrozeb. Integrace také pomáhají podnikům zrychlit reakce na systém a urychlit rizika. 
 
-Díky integraci do stávajících pracovních postupů SOC a sady zabezpečení se jejich integrace omezují na složitost a eliminují se siloy. Příklad:
+Díky integraci do stávajících pracovních postupů SOC a sady zabezpečení se jejich integrace omezují na složitost a eliminují se siloy. Například:
 
 - Systémů Siem jako IBM QRadar, Splunk, ArcSight, LogRhythm a RSA NetWitness
 

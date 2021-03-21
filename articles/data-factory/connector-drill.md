@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
 ms.openlocfilehash: 1bdd8df45d9e63898b3d08542aa0370d3c430651
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100381031"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>Kopírování dat z procházení pomocí Azure Data Factory
@@ -19,7 +19,7 @@ ms.locfileid: "100381031"
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z přechodu. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor pro procházení se podporuje pro následující činnosti:
 
@@ -30,7 +30,7 @@ Data můžete kopírovat z podrobností do libovolného podporovaného úložiš
 
 Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

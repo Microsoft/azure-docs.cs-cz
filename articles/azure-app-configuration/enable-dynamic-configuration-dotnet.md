@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: alkemper
 ms.openlocfilehash: 03940a86176d0bc93c5066977fdc87de5c456060
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932757"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Kurz: použití dynamické konfigurace v aplikaci .NET Framework
@@ -60,7 +60,7 @@ V tomto kurzu se naučíte:
 ## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
 1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte *Microsoft.Extensions.Configuration. AzureAppConfiguration* balíček NuGet do vašeho projektu. Pokud nemůžete najít, zaškrtněte políčko **zahrnout předběžné verze** .
 
-1. Otevřete *program.cs* a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
+1. Otevřete *program. cs* a přidejte odkaz na poskytovatele konfigurace aplikace .NET Core.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -136,7 +136,7 @@ V tomto kurzu se naučíte:
 
     ![Místní spuštění aplikace](./media/dotnet-app-run.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace** a aktualizujte hodnoty následujících klíčů:
 

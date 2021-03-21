@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
 ms.openlocfilehash: 0b82c11dcd615dfbdcfd70f5f90edd7ba41b4562
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102201613"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rychlý Start: vytvoření přední dveře pro globální webovou aplikaci s vysokou dostupností pomocí Azure CLI
@@ -26,7 +26,7 @@ Začínáme s předními dveřmi Azure pomocí rozhraní příkazového řádku 
 
 Přední dveře přesměrují webový provoz na konkrétní prostředky v back-end fondu. Definovali jste doménu front-end, přidáte prostředky do back-endu fondu a vytvoříte pravidlo směrování. Tento článek používá jednoduchou konfiguraci jednoho back-end fondu se dvěma prostředky webové aplikace a jedno pravidlo směrování s použitím výchozí cesty, která odpovídá "/*".
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Rozhraní příkazového řádku Azure je nainstalované místně nebo Azure Cloud Shell

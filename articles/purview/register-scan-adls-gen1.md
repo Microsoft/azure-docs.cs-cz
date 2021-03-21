@@ -8,10 +8,10 @@ ms.subservice: data-catalog-gen2
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.openlocfilehash: a831681f892de9f6aae50fa9a2fcf71e883fe6ba
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693709"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>Registrovat a kontrolovat Azure Data Lake Storage Gen1
@@ -21,7 +21,7 @@ Tento článek popisuje, jak zaregistrovat Azure Data Lake Storage Gen1 jako zdr
 > [!Note]
 > Platforma Azure Data Lake Storage Gen2 je teď obecně dostupná. Doporučujeme začít ji používat ještě dnes. Další informace najdete na [stránce produktu](https://azure.microsoft.com/services/storage/data-lake-storage/).
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Zdroj dat Azure Data Lake Storage Gen1 podporuje následující funkce:
 
@@ -29,7 +29,7 @@ Zdroj dat Azure Data Lake Storage Gen1 podporuje následující funkce:
 
 - Počet **řádků** mezi datovými prostředky pro aktivity kopírování a toku dat ADF
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Před registrací zdrojů dat vytvořte účet Azure dosah. Další informace o vytvoření účtu dosah najdete v tématu [rychlý Start: vytvoření účtu Azure dosah](create-catalog-portal.md).
 - Musíte být správcem zdroje dat služby Azure dosah.

@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
 ms.openlocfilehash: 5ce7a591acd8203775808457219b0ec392cd696e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95249885"
 ---
-# <a name="delete-volume-replications-or-volumes"></a>Odstranit replikace svazků nebo svazky
+# <a name="delete-volume-replications-or-volumes"></a>Odstranění svazků nebo replikací svazků
 
 Tento článek popisuje, jak odstranit replikaci svazků. Také popisuje, jak odstranit zdrojový nebo cílový svazek.
 
@@ -34,10 +34,10 @@ Odstraněním replikace svazku můžete ukončit připojení replikace mezi zdro
     1. Vyberte *cílový* svazek. Klikněte na **replikace** v části služba úložiště.  
 
     2.  Než budete pokračovat, ověřte následující pole:  
-        * Ujistěte se, že stav zrcadlení znázorňuje ***zrcadlené** _.   
-            Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje _Uninitialized *.
-        * Ujistěte se, že stav vztahu zobrazuje ***nečinné** _.   
-            Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje _Transferring *.   
+        * Ujistěte se, že stav zrcadlení zobrazuje ***zrcadlený svazek***.   
+            Nepokoušejte se přerušit partnerský vztah replikace, pokud stav zrcadlení ukazuje *uninicializovaný*.
+        * Ujistěte se, že stav vztahu zobrazuje ***nečinné***.   
+            Neprovádějte pokus o přerušení replikace partnerských vztahů, pokud stav relace zobrazuje *přenos*.   
 
         Podívejte se [na téma zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md). 
 

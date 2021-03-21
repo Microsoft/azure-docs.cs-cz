@@ -4,10 +4,10 @@ description: Diagnostické funkce pro stavové Reliable Services v Azure Service
 ms.topic: conceptual
 ms.date: 8/24/2018
 ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789326"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnostické funkce pro stavové služby Reliable Services
@@ -93,7 +93,7 @@ V předchozím příkladu `00d0126d-3e36-4d68-98da-cc4f7195d85e` je řetězcové
 
 Modul runtime Reliable Services emituje následující události pod kategorií. `Service Fabric Transactional Replicator`
 
- Název čítače | Popis |
+ Název čítače | Description |
 | --- | --- |
 | Zahájit operace TXN za sekundu | Počet nových transakcí zápisu vytvořených za sekundu.|
 | Operace TXN/s | Počet operací přidání/aktualizace/odstranění provedených na spolehlivých kolekcích za sekundu.|
@@ -106,7 +106,7 @@ Modul runtime Reliable Services emituje následující události pod kategorií.
 
 Modul runtime Reliable Services emituje následující události pod kategorií. `Service Fabric TStore`
 
- Název čítače | Popis |
+ Název čítače | Description |
 | --- | --- |
 | Počet položek | Počet položek v úložišti.|
 | Velikost disku | Celková velikost disku (v bajtech) souborů kontrolních bodů pro úložiště.|

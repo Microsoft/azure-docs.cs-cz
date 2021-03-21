@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be72c2152bdb8e1155d2dd29547f93ba3605d462
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95251089"
 ---
 # <a name="how-to-investigate-risk"></a>Postup: Šetření rizik
@@ -26,7 +26,7 @@ Všechny tři sestavy umožňují stažení událostí v nástroji. Formát CSV 
 
 Organizace můžou využít výhod Microsoft Graph integrace rozhraní API k agregaci dat s jinými zdroji, ke kterým můžou mít přístup jako organizace.
 
-Tři sestavy se nacházejí v zabezpečení **Azure Portal**  >  **Azure Active Directory**  >  **Security**.
+Tři sestavy se nacházejí v zabezpečení **Azure Portal**  >  **Azure Active Directory**  >  .
 
 ## <a name="navigating-the-reports"></a>Navigace v sestavách
 

@@ -6,13 +6,13 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 0842a2cfa021ef8ea45c19ec885c7dec371730de
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96512537"
 ---
-# <a name="use-user-defined-applier"></a>Použít uživatelsky definované Applier 
+# <a name="use-user-defined-applier"></a>Použití uživatelsky definovaného objektu applier 
 
 ## <a name="u-sql-udo-user-defined-applier"></a>U-SQL UDO: uživatelsky definované Applier
 Uživatelsky definované Applier U-SQL vám umožní vyvolat vlastní funkci jazyka C# pro každý řádek, který je vrácený výrazem vnější tabulky dotazu. Správný vstup je vyhodnocen pro každý řádek od levého vstupu a řádky, které jsou vytvořeny, jsou zkombinovány pro konečný výstup. Seznam sloupců, které jsou vytvořeny pomocí operátoru APPLy, je kombinací sady sloupců vlevo a správného vstupu.

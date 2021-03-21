@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
 ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100381422"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
@@ -218,7 +218,7 @@ Při definování vzorce automatického škálování můžete použít tyto př
 | čas (String dateTime = "") |časové razítko |Vrátí časové razítko aktuálního času, pokud nejsou předány žádné parametry, nebo časové razítko řetězce dateTime, pokud je předáno. Podporované formáty data a času jsou W3C-DTF a RFC 1123. |
 | Val (doubleVec v, Double i) |double |Vrátí hodnotu elementu, který je v umístění i ve vektoru v, s počátečním indexem nula. |
 
-Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Příklad:
+Některé z funkcí, které jsou popsány v předchozí tabulce, mohou seznam přijmout jako argument. Seznam oddělený čárkami je libovolná kombinace typu *Double* a *doubleVec*. Například:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -313,7 +313,7 @@ K tomu použijte `GetSample(interval look-back start, interval look-back end)` k
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Příklad:
+Když je výše uvedený řádek vyhodnocován pomocí Batch, vrátí rozsah ukázek jako vektor hodnot. Například:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -477,7 +477,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Povolit automatické škálování u existujícího fondu
 
-Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Příklad:
+Každá sada Batch SDK nabízí způsob, jak povolit automatické škálování. Například:
 
 - [BatchClient. PoolOperations. EnableAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync) (Batch .NET)
 - [Povolit automatické škálování ve fondu](/rest/api/batchservice/enable-automatic-scaling-on-a-pool) (REST API)

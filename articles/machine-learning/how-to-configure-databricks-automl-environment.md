@@ -12,10 +12,10 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 9bf167f5be9aeb65f0d7c1d69e6687589ebea8a4
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102498876"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Nastavení vývojového prostředí pomocí Azure Databricks a AutoML v Azure Machine Learning 
@@ -121,7 +121,7 @@ Vyzkoušet:
 
 + Naučte se [vytvářet kanály s datacihlami jako výpočetní](./how-to-create-machine-learning-pipelines.md)prostředí.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 * **Datacihly ruší automatizované spuštění strojového učení**: když v Azure Databricks používáte automatizované funkce machine learningu, ke zrušení spuštění a spuštění nového experimentu restartujte cluster Azure Databricks.
 

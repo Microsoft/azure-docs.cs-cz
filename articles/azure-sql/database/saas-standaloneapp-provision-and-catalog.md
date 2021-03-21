@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793241"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřízení a zařazení nových tenantů pomocí aplikace na SaaS vzor pro každého tenanta
@@ -56,7 +56,7 @@ Funkce EDCL se dají volat z aplikací nebo skriptů PowerShellu pro vytvářen�
 
 Každý tenant vyžaduje novou skupinu prostředků Azure, která se musí vytvořit předtím, než bude možné v ní zřídit prostředky. Jakmile skupina prostředků existuje, můžete použít šablonu Azure Resource Management k nasazení součástí aplikace a databáze a pak nakonfigurovat připojení k databázi. Pro inicializaci schématu databáze může šablona importovat soubor BacPac.  Případně je možné databázi vytvořit jako kopii databáze šablony.  Databáze se pak dále aktualizuje s počátečními daty místa a zaregistrovanými v katalogu.
 
-## <a name="tutorial"></a>Tutoriál
+## <a name="tutorial"></a>Kurz
 
 Co se v tomto kurzu naučíte:
 
@@ -82,14 +82,14 @@ V této úloze se dozvíte, jak zřídit katalog používaný k registraci všec
 * **Zřízení databáze katalogu** pomocí šablony Azure Resource Management. Databáze je inicializovaná importem souboru BacPac.
 * **Zaregistrujte ukázkové klientské aplikace** , které jste nasadili dříve.  Každý tenant je zaregistrován pomocí klíče vytvořeného z hodnoty hash názvu tenanta.  Název tenanta je také uložen v tabulce rozšíření v katalogu.
 
-1. V PowerShellu ISE otevřete *. ..\Learning Modules\UserConfig.PSM* a aktualizujte **\<user\>** hodnotu na hodnotu, kterou jste použili při nasazování tří ukázkových aplikací.  **Uložte soubor** .
-1. V PowerShellu ISE otevřete *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 1** . Nasaďte katalog tenanta a zaregistrujte předem definované klienty.
+1. V PowerShellu ISE otevřete *. ..\Learning Modules\UserConfig.PSM* a aktualizujte **\<user\>** hodnotu na hodnotu, kterou jste použili při nasazování tří ukázkových aplikací.  **Uložte soubor**.
+1. V PowerShellu ISE otevřete *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 1**. Nasaďte katalog tenanta a zaregistrujte předem definované klienty.
 
-1. Přidejte zarážku tak, že umístíte kurzor na libovolné místo na řádku, který říká, `& $PSScriptRoot\New-Catalog.ps1` a pak stiskněte **F9** .
+1. Přidejte zarážku tak, že umístíte kurzor na libovolné místo na řádku, který říká, `& $PSScriptRoot\New-Catalog.ps1` a pak stiskněte **F9**.
 
     ![Nastavení zarážky pro trasování](./media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
-1. Spusťte skript stisknutím klávesy **F5** .
+1. Spusťte skript stisknutím klávesy **F5**.
 1.  Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do skriptu New-Catalog.ps1.
 1.  Sledujte provádění skriptu pomocí možností nabídky ladění, F10 a F11, abyste mohli přenášet nebo nazývat na volané funkce.
     *   Další informace o ladění skriptů PowerShellu najdete v tématu [o práci se skripty PowerShellu a jejich ladění](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
@@ -99,7 +99,7 @@ Po dokončení skriptu bude katalog existovat a budou zaregistrováni všichni u
 Teď se podívejte na prostředky, které jste vytvořili.
 
 1. Otevřete [Azure Portal](https://portal.azure.com/) a procházejte skupinami prostředků.  Otevřete skupinu **Wingtip-SA-Catalog- \<user\>** Resource a poznamenejte si Server katalogu a databázi.
-1. Otevřete databázi na portálu a v nabídce na levé straně vyberte *Průzkumník dat* .  Klikněte na příkaz Login (přihlášení) a zadejte heslo = **P \@ ssword1** .
+1. Otevřete databázi na portálu a v nabídce na levé straně vyberte *Průzkumník dat* .  Klikněte na příkaz Login (přihlášení) a zadejte heslo = **P \@ ssword1**.
 
 
 1. Prozkoumejte schéma databáze *tenantcatalog* .
@@ -120,13 +120,13 @@ V této úloze se dozvíte, jak zřídit jednu klientskou aplikaci. V této lekc
 
 * **Vytvořte pro tenanta novou skupinu prostředků** .
 * **Aplikaci a databázi zřiďte** do nové skupiny prostředků pomocí šablony Azure Resource Management.  Tato akce zahrnuje inicializaci databáze pomocí společného schématu a referenčních dat importováním souboru BacPac.
-* **Inicializujte databázi se základními informacemi o tenantovi** . Tato akce zahrnuje určení typu místa, který určuje fotografii použitou jako pozadí na webu s událostmi.
-* **Zaregistrujte databázi v databázi katalogu** .
+* **Inicializujte databázi se základními informacemi o tenantovi**. Tato akce zahrnuje určení typu místa, který určuje fotografii použitou jako pozadí na webu s událostmi.
+* **Zaregistrujte databázi v databázi katalogu**.
 
-1. V PowerShellu ISE otevřete *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 2** . Nasazení katalogu tenanta a registrace předem definovaných tenantů
+1. V PowerShellu ISE otevřete *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 2**. Nasazení katalogu tenanta a registrace předem definovaných tenantů
 
-1. Vložte zarážku do skriptu tak, že umístíte kurzor na libovolné místo na řádku 49, který uvádí, `& $PSScriptRoot\New-TenantApp.ps1` a pak stiskněte **F9** .
-1. Spusťte skript stisknutím klávesy **F5** .
+1. Vložte zarážku do skriptu tak, že umístíte kurzor na libovolné místo na řádku 49, který uvádí, `& $PSScriptRoot\New-TenantApp.ps1` a pak stiskněte **F9**.
+1. Spusťte skript stisknutím klávesy **F5**.
 1.  Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do skriptu New-Catalog.ps1.
 1.  Sledujte provádění skriptu pomocí možností nabídky ladění, F10 a F11, abyste mohli přenášet nebo nazývat na volané funkce.
 

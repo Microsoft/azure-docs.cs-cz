@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 1a9b9481d0b4086505bbfd3c2cd654ce228d1ae2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688871"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Použití MSAL pro Android s B2C
@@ -88,7 +88,7 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(
 );
 ```
 
-## <a name="interactively-acquire-a-token"></a>Interaktivně získat token
+## <a name="interactively-acquire-a-token"></a>Interaktivní získání tokenu
 
 Chcete-li získat token interaktivně pomocí MSAL, sestavte `AcquireTokenParameters` instanci a poskytněte ji `acquireToken` metodě. Níže uvedený požadavek na token používá `default` autoritu.
 
@@ -119,7 +119,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 pca.acquireToken(parameters);
 ```
 
-## <a name="silently-renew-a-token"></a>Bezobslužné obnovení tokenu
+## <a name="silently-renew-a-token"></a>Prodloužení platnosti tokenu bez upozornění
 
 Chcete-li získat token tiše pomocí MSAL, sestavte `AcquireTokenSilentParameters` instanci a poskytněte ji `acquireTokenSilentAsync` metodě. Na rozdíl od `acquireToken` metody je `authority` nutné zadat pro tichou získání tokenu.
 

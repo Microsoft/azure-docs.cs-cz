@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
 ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726508"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Přepsat hlavičky a adresu URL protokolu HTTP pomocí Application Gateway
@@ -104,7 +104,7 @@ Application Gateway používá serverové proměnné k ukládání užitečných
 
 Application Gateway podporuje následující proměnné serveru:
 
-|   Název proměnné    |                   Popis                                           |
+|   Název proměnné    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
 | add_x_forwarded_for_proxy | Pole hlavičky žádosti klienta s přesměrováním do `client_ip` proměnné (viz vysvětlení později v této tabulce), ke kterému se připojuje ve formátu IP1, IP2, IP3 a tak dále. Pokud pole s přesměrováním X není v hlavičce žádosti klienta, `add_x_forwarded_for_proxy` proměnná je rovna `$client_ip` proměnné.   Tato proměnná je užitečná hlavně v případě, že chcete přepsat hlavičku, kterou předáváte X-pro nastavenou Application Gateway tak, aby hlavička obsahovala jenom IP adresu bez informací o portu. |
 | ciphers_supported         | Seznam šifr podporovaných klientem.               |
