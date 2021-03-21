@@ -1,5 +1,5 @@
 - name: Azure Storage ověřená Partnerská řešení
-  href: /azure/storage/solution-integration
+  href: ./index.yml
 - name: Analýzy a partneři pro velké objemy dat
   items:
     - name: Přehled ověřených partnerů

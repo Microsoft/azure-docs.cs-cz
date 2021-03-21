@@ -14,10 +14,10 @@ ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726423"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
@@ -99,7 +99,7 @@ Místo hardwarového kódování příznaků vaší aplikace doporučujeme zacho
 
 Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core ke konfiguraci aplikace, je prostřednictvím poskytovatele konfigurace, který je součástí `Microsoft.Azure.AppConfiguration.AspNetCore` balíčku NuGet. Po zahrnutí odkazu na balíček použijte následující postup k použití tohoto balíčku NuGet.
 
-1. Otevřete soubor *program.cs* a přidejte následující kód.
+1. Otevřete soubor *program. cs* a přidejte následující kód.
     > [!IMPORTANT]
     > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3. x. Vyberte správnou syntaxi na základě vašeho prostředí.
 
@@ -151,7 +151,7 @@ Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core ke konfiguraci apl
     ```
     ---
 
-2. Otevřete *Startup.cs* a aktualizujte `Configure` metodu a, `ConfigureServices` abyste přidali vestavěný middleware s názvem `UseAzureAppConfiguration` . Tento middleware umožňuje aktualizovat hodnoty příznaků funkcí v opakovaném intervalu, zatímco ASP.NET Core webová aplikace nadále přijímá požadavky.
+2. Otevřete *Startup. cs* a aktualizujte `Configure` metodu a, `ConfigureServices` aby se přidal vestavěný middleware s názvem `UseAzureAppConfiguration` . Tento middleware umožňuje aktualizovat hodnoty příznaků funkcí v opakovaném intervalu, zatímco ASP.NET Core webová aplikace nadále přijímá požadavky.
 
 
 

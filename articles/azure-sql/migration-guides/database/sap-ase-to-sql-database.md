@@ -10,10 +10,10 @@ author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
 ms.openlocfilehash: 81956a16142f314f54afd9d5a1b9055a559e906c
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103564922"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Příručka k migraci: pomocnému programu SAP pro Azure SQL Database
@@ -23,7 +23,7 @@ V této příručce se dozvíte, jak migrovat databáze SAP pomocného programu 
 
 Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 K migraci databáze SAP SE do Azure SQL Database potřebujete:
 

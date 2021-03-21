@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a56e5a4cae7c5a8e931b074f08a7152e53a8eb31
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152001"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674729"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Rychlý Start: vytvoření Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém pro registraci a zjišťování podnikových datových assetů. Podrobný přehled naleznete v části [Co je Azure Data Catalog?](overview.md).
 
@@ -47,7 +49,7 @@ Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Di
 
    ![Azure Data Catalog – tlačítko Publikovat data](media/data-catalog-get-started/data-catalog-publish-data.png)
 
-   Můžete se **také dostat na**domovskou stránku Data Catalog na [stránce služby Data Catalog](https://azure.microsoft.com/services/data-catalog) výběrem možnosti Začínáme.
+   Můžete se **také dostat na** domovskou stránku Data Catalog na [stránce služby Data Catalog](https://azure.microsoft.com/services/data-catalog) výběrem možnosti Začínáme.
 
    ![Azure Data Catalog – marketingová cílová stránka](media/data-catalog-get-started/data-catalog-marketing-landing-page.png)
 
@@ -71,7 +73,7 @@ Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Di
 
     ![Správci glosáře Azure Data Catalog](media/data-catalog-get-started/data-catalog-standard-glossary-admin.png)
 
-9. Rozbalte položku **Správci katalogu** a kliknutím na tlačítko**Přidat**přidejte pro katalog dat další správce. Do této skupiny se automaticky přidávají.
+9. Rozbalte položku **Správci katalogu** a kliknutím na tlačítko **Přidat** přidejte pro katalog dat další správce. Do této skupiny se automaticky přidávají.
 
     ![Azure Data Catalog – správci](media/data-catalog-get-started/data-catalog-add-catalog-admins.png)
 

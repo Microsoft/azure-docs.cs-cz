@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/20/2020
-ms.openlocfilehash: 1448bb3ebf541af047759bc886b2c174d89c1c50
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 5674d656385d356f596f96cd7851d2cc05839761
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383768"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597398"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat do a z Azure Table Storage pomocí služby Azure Data Factory
 
@@ -26,7 +26,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor Azure Table Storage se podporuje pro následující činnosti:
 
@@ -267,6 +267,7 @@ Pokud chcete kopírovat data do tabulky Azure, nastavte typ jímky v aktivitě k
 | azureTableInsertType |Režim pro vložení dat do tabulky Azure. Tato vlastnost určuje, zda mají být existující řádky ve výstupní tabulce se shodnými klíči oddílů a řádky nahrazeny nebo sloučeny. <br/><br/>Povolené hodnoty jsou **Sloučit** (výchozí) a **nahradit**. <br/><br> Toto nastavení platí na úrovni řádku, nikoli na úrovni tabulky. Možnost ani neodstraní řádky ve výstupní tabulce, které neexistují ve vstupu. Další informace o tom, jak nastavení sloučit a nahradit funguje, najdete v tématu věnovaném [vložení nebo sloučení entit](/rest/api/storageservices/Insert-Or-Merge-Entity) a [vložení nebo nahrazení entity](/rest/api/storageservices/Insert-Or-Replace-Entity). |No |
 | writeBatchSize |Když se writeBatchSize nebo writeBatchTimeout, vloží data do tabulky Azure.<br/>Povolené hodnoty jsou celé číslo (počet řádků). |Ne (výchozí hodnota je 10 000) |
 | writeBatchTimeout |Když se writeBatchSize nebo writeBatchTimeout, vloží data do tabulky Azure.<br/>Povolené hodnoty jsou TimeSpan. Příkladem je "00:20:00" (20 minut). |Ne (výchozí hodnota je 90 sekund, výchozí časový limit klienta úložiště) |
+| maxConcurrentConnections |Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení.| No |
 
 **Příklad:**
 

@@ -12,10 +12,10 @@ ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491549"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>Migrace webového rozhraní API založeného na OWIN do b2clogin.com nebo vlastní domény
@@ -26,7 +26,7 @@ Přidáním podpory do svého rozhraní API pro příjem tokenů vydaných b2clo
 
 V následujících částech najdete příklad povolení více vystavitelů ve webovém rozhraní API, které používá součásti middlewaru [Microsoft Owin][katana] (Katana). I když jsou příklady kódu specifické pro middleware Microsoft OWIN, měla by být obecná technika platná pro jiné knihovny OWIN.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v krocích v tomto článku, budete potřebovat následující Azure AD B2C prostředky:
 
@@ -85,7 +85,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 V této části aktualizujete kód a určíte, že oba koncové body vystavitele tokenu jsou platné.
 
 1. Otevřete řešení **B2C-WebApi-dotnet. sln** v aplikaci Visual Studio
-1. V projektu **TaskService** otevřete soubor *TaskService \\ app_start \\ * * Startup.auth.cs** * v editoru.
+1. V projektu **TaskService** otevřete soubor *TaskService \\ app_start \\ * * Startup. auth. cs** * v editoru.
 1. `using`Do horní části souboru přidejte následující direktivu:
 
     `using System.Collections.Generic;`
@@ -105,7 +105,7 @@ V této části aktualizujete kód a určíte, že oba koncové body vystavitele
     };
     ```
 
-`TokenValidationParameters` je poskytována nástrojem MSAL.NET a je využíván middlewarem OWIN v další části kódu v *Startup.auth.cs*. Je-li zadáno více platných vystavitelů, kanál aplikace OWIN ví, že jsou oba koncové body tokenu platnými vystaviteli.
+`TokenValidationParameters` je poskytována nástrojem MSAL.NET a je využíván middlewarem OWIN v další části kódu při *spuštění. auth. cs*. Je-li zadáno více platných vystavitelů, kanál aplikace OWIN ví, že jsou oba koncové body tokenu platnými vystaviteli.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions

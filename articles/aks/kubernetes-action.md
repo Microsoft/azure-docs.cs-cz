@@ -8,17 +8,17 @@ ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
 ms.openlocfilehash: 94134360de49a066f825cbb0c85712995d90b37f
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98761451"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Akce GitHubu pro nasazení do služby Kubernetes
 
 [Akce GitHubu](https://docs.github.com/en/actions) vám nabízí flexibilitu při vytváření automatizovaného pracovního postupu životního cyklu vývoje softwaru. K nasazení do kontejnerů z Azure Container Registry do služby Azure Kubernetes pomocí akcí GitHubu můžete použít několik akcí Kubernetes. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
@@ -68,7 +68,7 @@ Použijte postup konfigurace tajných kódů:
 
     ![Snímek obrazovky se zobrazí odkaz Přidat nový tajný kód pro úložiště.](media/kubernetes-action/secrets.png)
 
-2. Vložte obsah výše uvedeného `az cli` příkazu jako hodnotu tajné proměnné. Například `AZURE_CREDENTIALS`.
+2. Vložte obsah výše uvedeného `az cli` příkazu jako hodnotu tajné proměnné. Například, `AZURE_CREDENTIALS`.
 
 3. Podobně definujte následující další tajné kódy pro přihlašovací údaje registru kontejneru a nastavte je v akci přihlášení k Docker. 
 

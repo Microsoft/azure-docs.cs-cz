@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: ad83ef0f3f4c0717a3cb669c34145572d44be09a
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d215da660929c66514f9d0cf5f3161c83a1c330c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616483"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582774"
 ---
 ## <a name="model-id-announcement"></a>Oznámení ID modelu
 
@@ -41,7 +41,7 @@ Zařízení, která používají [službu Device Provisioning (DPS)](../articles
 
 ## <a name="implement-telemetry-properties-and-commands"></a>Implementace telemetrie, vlastností a příkazů
 
-Jak je popsáno v tématu [pochopení komponent v modelech IoT technologie Plug and Play](../articles/iot-pnp/concepts-components.md), musí tvůrci zařízení rozhodnout, jestli chtějí používat komponenty k popisu jejich zařízení. Při používání komponent musí zařízení splňovat pravidla popsaná v této části.
+Jak je popsáno v tématu [pochopení komponent v modelech IoT technologie Plug and Play](../articles/iot-pnp/concepts-modeling-guide.md), musí tvůrci zařízení rozhodnout, jestli chtějí používat komponenty k popisu jejich zařízení. Při používání komponent musí zařízení splňovat pravidla popsaná v této části.
 
 ### <a name="telemetry"></a>Telemetrie
 

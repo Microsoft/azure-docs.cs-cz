@@ -4,19 +4,19 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 00523d557afaf23ba2de0d33165efe6beb11cba2
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 8f69eacac3f3ed60ed09d431455eb9e3c54b96ad
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242533"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104611868"
 ---
 <!--Feature availability in region-->
 ## <a name="europe"></a>Evropa
 
-| Příznak | Severní Evropa | West Europe |
+| Funkce | Severní Evropa | West Europe |
 | --- | :---: | :---: |
-| [EventGrid Azure](../reacting-to-media-services-events.md) |![Azure EventGrid Severní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  |![Azure EventGrid Západní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) |![Azure EventGrid Severní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  |![Azure EventGrid Západní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
 | [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![VideoAnalyzerPreset Severní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![VideoAnalyzerPreset Západní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
 | [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![AudioAnalyzerPreset Severní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![AudioAnalyzerPreset Západní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
 | [StandardEncoderPreset](../encoding-concept.md) |![StandardEncoderPreset Severní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg)  | ![StandardEncoderPreset Západní Evropa Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |

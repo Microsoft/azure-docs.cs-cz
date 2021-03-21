@@ -4,20 +4,20 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8dd84a0c4eb1fd74ef850cb6de4530f50b3bb409
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 54eead8daa6367f9e4869d0d6a19d96c32a2fe3a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331077"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612515"
 ---
 <!--Feature availability in region-->
 
 ## <a name="united-states"></a>USA
 
-| Příznak | Střední USA | East US | USA – východ 2 | USA – středosever | Středojižní USA | USA – západ | USA – západ 2 | USA – středozápad|
+| Funkce | Střední USA | East US | USA – východ 2 | USA – středosever | Středojižní USA | USA – západ | USA – západ 2 | USA – středozápad|
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [EventGrid Azure](../reacting-to-media-services-events.md) | ![Azure EventGrid Střed USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Východní USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Východní USA 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Střed USA – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Střed USA – jih Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid USA – západ Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid USA – západ 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |  ![Azure EventGrid – střední Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) | ![Azure EventGrid Střed USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Východní USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Východní USA 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Střed USA – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid Střed USA – jih Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid USA – západ Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid USA – západ 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |  ![Azure EventGrid – střední Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
 | [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![VideoAnalyzerPreset Střed USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset Východní USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset Východní USA 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset Střed USA – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset Střed USA – jih Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset USA – západ Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset USA – západ 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |  ![VideoAnalyzerPreset západní Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
 | [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![AudioAnalyzerPreset Střed USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset Východní USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset Východní USA 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset Střed USA – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset Střed USA – jih Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |  ![AudioAnalyzerPreset USA – západ Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset USA – západ 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |  ![AudioAnalyzerPreset západní Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |
 | [StandardEncoderPreset](../encoding-concept.md) | ![StandardEncoderPreset Střed USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset Východní USA Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset Východní USA 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset Střed USA – sever Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset Střed USA – jih Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |  ![StandardEncoderPreset USA – západ Obecná dostupnost](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset USA – západ 2 Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |  ![StandardEncoderPreset západní Obecná dostupnost](../media/azure-clouds-regions/ga.svg) |

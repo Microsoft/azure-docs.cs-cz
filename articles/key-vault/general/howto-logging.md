@@ -9,18 +9,28 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7b71fc2f3afb67d766bfe267888674b55af6a3a5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 62035b2fe6c3db71e392a05946ea3f230dfa030e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503909"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604618"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Postup povolení protokolování Key Vault
 
 Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtít sledovat, jak a kdy jsou k vašim trezorům klíčů přistupované a kým. Úplné informace o této funkci najdete v tématu [protokolování Key Vault](logging.md).
 
-## <a name="prerequisites"></a>Požadavky
+Co je protokolováno:
+
+* Všechny požadavky ověřených REST API, včetně neúspěšných žádostí v důsledku oprávnění přístupu, systémových chyb nebo chybných požadavků.
+* Operace samotného trezoru klíčů, včetně vytvoření, odstranění, nastavení zásad přístupu trezoru klíčů a aktualizace atributů trezoru klíčů, například značek.
+* Operace s klíči a tajnými klíči v trezoru klíčů, včetně:
+  * Vytváření, úpravy nebo odstraňování těchto klíčů nebo tajných kódů.
+  * Podepisování, ověřování, šifrování, dešifrování, zabalení a rozbalení klíčů, získávání tajných klíčů a zobrazování klíčů a tajných kódů (a jejich verzí).
+* Neověřené požadavky, které skončí odpovědí 401 – Neoprávněno. Příklady jsou požadavky, které nemají nosný token, které jsou poškozené nebo jejichž platnost vypršela, nebo které mají neplatný token.  
+* Události oznámení Event Grid pro blížící se vypršení platnosti a zásady přístupu do trezoru se změnily (událost nové verze se neprotokoluje). Události jsou protokolovány bez ohledu na to, zda je v trezoru klíčů vytvořeno předplatné událostí. Další informace najdete v tématu [Event Grid schéma událostí pro Key Vault](../../event-grid/event-schema-key-vault.md)
+
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -58,7 +68,7 @@ Pro další snadné řízení používáme také stejnou skupinu prostředků ja
 
 Bude také potřeba zadat název účtu úložiště. Názvy účtů úložiště musí být jedinečné, musí být dlouhé 3 až 24 znaků a obsahovat jenom číslice a malá písmena.  Nakonec vytvoříme účet úložiště pro SKU "Standard_LRS".
 
-Pomocí Azure CLI použijte příkaz [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) .
+Pomocí Azure CLI použijte příkaz [AZ Storage Account Create](/cli/azure/storage/account#az_storage_account_create) . 
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -100,44 +110,67 @@ Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
 
 ID prostředku vašeho trezoru klíčů bude ve formátu "/Subscriptions/<your-subscription-ID>/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/<je to jedinečné úložiště klíčů – název>". Poznamenejte si ho pro další krok.
 
-## <a name="enable-logging-using-azure-powershell"></a>Povolit protokolování pomocí Azure PowerShell
+## <a name="enable-logging"></a>Povolit protokolování
 
-Pokud chcete povolit protokolování pro Key Vault, použijeme příkaz Azure CLI [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) nebo rutinu [set-AZDIAGNOSTICSETTING](/powershell/module/az.monitor/set-azdiagnosticsetting) spolu s ID účtu úložiště a ID prostředku trezoru klíčů.
+Protokolování pro Key Vault můžete povolit pomocí rozhraní příkazového řádku Azure, Azure PowerShell nebo Azure Portal.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="azure-cli"></a>Azure CLI
+
+Použijte rozhraní příkazového řádku Azure CLI [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings) spolu s ID účtu úložiště a ID prostředku trezoru klíčů.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-V Azure PowerShell použijeme rutinu [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) s příznakem **-Enabled** nastaveným na **$true** a kategorií nastavenou na `AuditEvent` (jediná kategorie pro Key Vault protokolování):
+Volitelně můžete nastavit zásady uchovávání informací pro vaše protokoly, aby se starší protokoly automaticky odstranily po uplynutí určité doby. Můžete například nastavit zásady uchovávání informací, které automaticky odstraní protokoly starší než 90 dní.
+
+Pomocí Azure CLI použijte příkaz [AZ monitor Diagnostic-Settings Update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) . 
+
+```azurecli-interactive
+az monitor diagnostic-settings update --name "Key vault retention policy" --resource "<key-vault-resource-id>" --set retentionPolicy.days=90
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Použijte rutinu [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) s příznakem **-Enabled** nastaveným na **$true** a kategorii nastavenou na `AuditEvent` (jediná kategorie pro Key Vault protokolování):
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
 ```
 
-Volitelně můžete nastavit zásady uchovávání informací pro vaše protokoly, aby se starší protokoly automaticky odstranily po uplynutí určité doby. Například můžete nastavit zásady uchovávání informací, které automaticky odstraní protokoly starší než 90 dní.
+Volitelně můžete nastavit zásady uchovávání informací pro vaše protokoly, aby se starší protokoly automaticky odstranily po uplynutí určité doby. Můžete například nastavit zásady uchovávání informací, které automaticky odstraní protokoly starší než 90 dní.
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
-
-```azurecli-interactive
-az monitor diagnostic-settings update 
-```
--->
-
-Pomocí Azure PowerShell použijte rutinu [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) . 
+Pomocí Azure PowerShell použijte rutinu [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) .
 
 ```powershell-interactive
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
-Co je protokolováno:
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-* Všechny požadavky ověřených REST API, včetně neúspěšných žádostí v důsledku oprávnění přístupu, systémových chyb nebo chybných požadavků.
-* Operace samotného trezoru klíčů, včetně vytvoření, odstranění, nastavení zásad přístupu trezoru klíčů a aktualizace atributů trezoru klíčů, například značek.
-* Operace s klíči a tajnými klíči v trezoru klíčů, včetně:
-  * Vytváření, úpravy nebo odstraňování těchto klíčů nebo tajných kódů.
-  * Podepisování, ověřování, šifrování, dešifrování, zabalení a rozbalení klíčů, získávání tajných klíčů a zobrazování klíčů a tajných kódů (a jejich verzí).
-* Neověřené požadavky, které skončí odpovědí 401 – Neoprávněno. Příklady jsou požadavky, které nemají nosný token, které jsou poškozené nebo jejichž platnost vypršela, nebo které mají neplatný token.  
-* Události oznámení Event Grid pro blížící se vypršení platnosti a zásady přístupu do trezoru se změnily (událost nové verze se neprotokoluje). Události jsou protokolovány bez ohledu na to, zda je v trezoru klíčů vytvořeno předplatné událostí. Další informace najdete v tématu [Event Grid schéma událostí pro Key Vault](../../event-grid/event-schema-key-vault.md)
+Chcete-li konfigurovat nastavení diagnostiky na portálu, postupujte podle těchto kroků.
+
+1. V nabídce okna prostředků vyberte nastavení diagnostiky.
+
+    :::image type="content" source="../media/diagnostics-portal-1.png" alt-text="Portál pro diagnostiku 1":::
+
+1. Klikněte na + Přidat nastavení diagnostiky.
+
+    :::image type="content" source="../media/diagnostics-portal-2.png" alt-text="Portál pro diagnostiku 2":::
+ 
+1. Vyberte název pro volání nastavení diagnostiky. Pokud chcete nakonfigurovat protokolování pro Azure Monitor pro Key Vault, vyberte možnost "AuditEvent" a "Odeslat do Log Analytics pracovní prostor". Pak zvolte předplatné a Log Analytics pracovní prostor, do kterého chcete protokoly odeslat.
+
+    :::image type="content" source="../media/diagnostics-portal-3.png" alt-text="Diagnostický portál 3":::
+
+    V opačném případě vyberte možnosti, které se vztahují k protokolům, které chcete vybrat.
+
+1. Jakmile vyberete požadované možnosti, vyberte Uložit.
+
+    :::image type="content" source="../media/diagnostics-portal-4.png" alt-text="Portál pro diagnostiku 4":::
+
+---
 
 ## <a name="access-your-logs"></a>Přístup k vašim protokolům
 

@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e08d016ab85587d451ad2a1e296e7f494ba283e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714472"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596021"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Monitorování instancí App Service pomocí kontroly stavu
 
@@ -48,7 +48,7 @@ V tomto článku se pomocí Azure Portal ke sledování instancí App Service po
 
 Kromě konfigurace možností kontroly stavu můžete také nakonfigurovat následující [nastavení aplikace](configure-common.md):
 
-| Název nastavení aplikace | Povolené hodnoty | Popis |
+| Název nastavení aplikace | Povolené hodnoty | Description |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | Maximální počet selhání nástroje test. Například pokud je nastavena na `2` , vaše instance budou odebrány po `2` neúspěšných příkazech otestuje. Při vertikálním navýšení nebo zmenšování App Service nástroj příkazového řádku otestuje cestu kontroly stavu, aby bylo zajištěno, že budou nové instance připravené. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Aby nedocházelo k nenáročným instancím v pořádku, nebudou vyloučeny žádné více než polovinu instancí. Pokud je například plán App Service škálovat na čtyři instance a tři nejsou v pořádku, bude vyloučeno nejvíce dvou. Ostatní dvě instance (v pořádku a jedna není v pořádku) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné. Chcete-li toto chování přepsat, nastavte nastavení aplikace na hodnotu mezi `0` a `100` . Vyšší hodnota znamená, že se odeberou víc instancí, které nejsou v pořádku (výchozí hodnota je 50). |
@@ -59,9 +59,13 @@ Kontroly stavu se integrují s funkcemi ověřování a autorizace App Service. 
 
 Velké podniky pro vývoj v podniku často potřebují splňovat požadavky na zabezpečení pro vystavená rozhraní API. K zabezpečení koncového bodu kontroly stavu byste nejdřív měli používat funkce, jako jsou [omezení IP adresy](app-service-ip-restrictions.md#set-an-ip-address-based-rule), [klientské certifikáty](app-service-ip-restrictions.md#set-an-ip-address-based-rule)nebo Virtual Network, které omezují přístup k aplikacím. Koncový bod kontroly stavu můžete zabezpečit tím, že budete vyžadovat, aby `User-Agent` odpovídaly příchozímu požadavku `ReadyForRequest/1.0` . User-Agent nemůže být zfalšovaný, protože žádost již byla zabezpečena předchozími funkcemi zabezpečení.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Po poskytnutí cesty pro kontrolu stavu vaší aplikace můžete monitorovat stav svého webu pomocí Azure Monitor. V okně pro **kontrolu stavu** na portálu klikněte na **metriky** na horním panelu nástrojů. Otevře se nové okno, kde můžete zobrazit historický stav webu a vytvořit nové pravidlo výstrahy. Další informace o monitorování vašich lokalit najdete v [příručce k Azure monitor](web-sites-monitor.md).
+
+## <a name="limitations"></a>Omezení
+
+Na webech funkcí úrovně Premium by neměla být povolena kontrolu stavu. Kvůli rychlému škálování prémiových funkcí můžou žádosti o kontrolu stavu způsobit zbytečné výkyvy v provozu HTTP. Prémiové funkce mají své vlastní interní sondy stavu, které slouží k informování o škálování rozhodnutí.
 
 ## <a name="next-steps"></a>Další kroky
 - [Vytvoření upozornění protokolu aktivit pro monitorování všech operací modulu automatického škálování v předplatném](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

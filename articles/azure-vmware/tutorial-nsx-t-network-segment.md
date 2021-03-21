@@ -4,10 +4,10 @@ description: Naučte se vytvářet segment sítě NSX-T, který se má používa
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: 9125e552f9641a2d26b9584b66a4447f9c152161
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103462115"
 ---
 # <a name="tutorial-add-a-network-segment-in-azure-vmware-solution"></a>Kurz: přidání segmentu sítě v řešení Azure VMware 
@@ -21,7 +21,7 @@ V tomto kurzu se naučíte:
 > * Přidat nový segment sítě
 > * Sledovat nový segment sítě v vCenter
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Privátní cloud řešení Azure VMware s přístupem k rozhraním vCenter a NSX-T Manageru. Další informace najdete v kurzu [Konfigurace sítě](tutorial-configure-networking.md) .
 
