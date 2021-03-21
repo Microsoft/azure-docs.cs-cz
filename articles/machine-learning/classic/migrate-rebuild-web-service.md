@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
 ms.openlocfilehash: 5e467d22cc3230bd9945fb276dc16cf1fa765bb6
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103565006"
 ---
 # <a name="rebuild-a-studio-classic-web-service-in-azure-machine-learning"></a>Opětovné sestavení webové služby studia (Classic) v Azure Machine Learning
@@ -26,7 +26,7 @@ Tento článek je součástí studia (Classic) pro Azure Machine Learning řady 
 > [!NOTE]
 > Tato řada migrace se zaměřuje na návrháře přetahování. Další informace o tom, jak programově nasazovat modely, najdete v tématu [nasazení modelů strojového učení v Azure](../how-to-deploy-and-where.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Pracovní prostor služby Azure Machine Learning. [Vytvořte pracovní prostor Azure Machine Learning](../how-to-manage-workspace.md#create-a-workspace).
@@ -66,7 +66,7 @@ Existuje několik způsobů, jak nasadit model v Azure Machine Learning. Jedním
 
     Následující tabulka popisuje možnosti COMPUTE nasazení v Návrháři:
 
-    | Cílový výpočetní objekt | Použití | Popis | Vytvoření |
+    | Cílový výpočetní objekt | Použití | Description | Vytvoření |
     | ----- |  ----- | ----- | -----  |
     |[Azure Kubernetes Service (AKS)](../how-to-deploy-azure-kubernetes-service.md) |Odvození v reálném čase|Nasazení ve velkém měřítku v produkčním prostředí. Rychlá doba odezvy a automatické škálování služby.| Uživatel byl vytvořen. Další informace najdete v tématu [vytváření výpočetních cílů](../how-to-create-attach-compute-studio.md#inference-clusters). |
     |[Azure Container Instances ](../how-to-deploy-azure-container-instance.md)|Testování a vývoj | Menší nároky na zatížení procesoru, které vyžadují méně než 48 GB paměti RAM.| Automaticky vytvořeno pomocí Azure Machine Learning.

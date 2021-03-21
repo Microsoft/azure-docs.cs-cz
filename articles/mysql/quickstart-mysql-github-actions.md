@@ -8,10 +8,10 @@ ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
 ms.openlocfilehash: c4e21267c5eee9d86c05c51bc57bebfee699ef2c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200595"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Rychlý Start: použití akcí GitHubu pro připojení k Azure MySQL
@@ -21,7 +21,7 @@ ms.locfileid: "103200595"
 Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat: 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).

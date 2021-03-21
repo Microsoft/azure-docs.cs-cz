@@ -3,12 +3,12 @@ title: Řešení potíží s Event Grid
 description: Tento článek popisuje různé způsoby řešení potíží s Azure Event Grid.
 ms.topic: conceptual
 ms.date: 02/11/2021
-ms.openlocfilehash: 9c52ba8561c10dd94ec6ef51c78b8534c6c58e96
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d30b8464de90474ad74853cc423de700b41226a4
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100417239"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720555"
 ---
 # <a name="troubleshoot-azure-event-grid-issues"></a>Řešení potíží s Azure Event Grid
 Tento článek poskytuje informace, které vám pomůžou při řešení potíží s Azure Event Grid problémy. 
@@ -32,7 +32,7 @@ K dispozici jsou různé důvody pro klientské aplikace, které se nemohou při
 Pokud se zobrazí chybové zprávy s kódy chyb, například 400, 409 a 403, přečtěte si téma [řešení potíží s Event Gridmi](troubleshoot-errors.md)chybami. 
 
 ## <a name="distributed-tracing-net"></a>Distribuované trasování (.NET)
-Knihovna Event Grid .NET podporuje trasování distribuce. Aby bylo možné dodržovat [pokyny specifikace CloudEvents](https://github.com/cloudevents/spec/blob/master/extensions/distributed-tracing.md) pro distribuci trasování, knihovna nastaví `traceparent` a `tracestate` na [ExtensionAttributes](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid/src/Customization/CloudEvent.cs#L126) v případě, že `CloudEvent` je povoleno distribuované trasování. Další informace o tom, jak povolit distribuované trasování ve vaší aplikaci, najdete v [dokumentaci k distribuovanému trasování](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/samples/Diagnostics.md#Distributed-tracing)sady Azure SDK.
+Knihovna Event Grid .NET podporuje trasování distribuce. Aby bylo možné dodržovat [pokyny specifikace CloudEvents](https://github.com/cloudevents/spec/blob/master/extensions/distributed-tracing.md) pro distribuci trasování, knihovna nastaví `traceparent` a `tracestate` na [ExtensionAttributes](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventgrid/Azure.Messaging.EventGrid/src/Customization#L126) v případě, že `CloudEvent` je povoleno distribuované trasování. Další informace o tom, jak povolit distribuované trasování ve vaší aplikaci, najdete v [dokumentaci k distribuovanému trasování](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/samples/Diagnostics.md#Distributed-tracing)sady Azure SDK.
 
 ### <a name="sample"></a>Ukázka
 Podívejte se na [ukázku čítače řádku](/samples/azure/azure-sdk-for-net/line-counter/). Tato ukázková aplikace znázorňuje použití klientů úložiště, Event Hubs a Event Grid spolu s ASP.NET Core integrací, distribuovaným trasováním a hostovanými službami. Umožňuje uživatelům odeslat soubor do objektu blob, který spustí událost Event Hubs obsahující název souboru. Procesor Event Hubs přijme událost a aplikace stáhne objekt BLOB a spočítá počet řádků v souboru. Aplikace zobrazí odkaz na stránku, která obsahuje počet řádků. Po kliknutí na odkaz bude CloudEvent obsahující název souboru publikován pomocí Event Grid.

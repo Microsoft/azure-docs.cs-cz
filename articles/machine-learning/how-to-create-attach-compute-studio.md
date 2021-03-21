@@ -12,10 +12,10 @@ ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
 ms.openlocfilehash: 4194c71823e1affde1dcae47fd7e64668b57c0cf
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103149354"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Vytváření výpočetních cílů pro školení a nasazení modelů v Azure Machine Learning Studiu
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak vytvářet a spravovat výpočetní cíle v Az
 * [Vs Code rozšíření](how-to-manage-resources-vscode.md#compute-clusters) pro Azure Machine Learning.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)

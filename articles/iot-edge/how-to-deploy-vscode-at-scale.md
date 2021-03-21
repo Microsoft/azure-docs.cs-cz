@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: a20992ef26b74bcc37a7403e4ee77cacc0f8f66e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200294"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Nasazení IoT Edgech modulů ve velkém měřítku pomocí Visual Studio Code
@@ -26,7 +26,7 @@ Další informace najdete v tématu [vysvětlení IoT Edge automatického nasaze
 
 V tomto článku jste nastavili Visual Studio Code a rozšíření IoT. Pak se dozvíte, jak nasadit moduly do sady IoT Edgech zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) ve vašem předplatném Azure.
 * Nejméně jedno IoT Edge zařízení.

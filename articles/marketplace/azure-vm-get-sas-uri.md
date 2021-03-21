@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 03/10/2021
 ms.openlocfilehash: 976d1dd4044649c9ef5307431c744ff3c2068bca
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103233561"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Jak vygenerovat identifikátor URI SAS pro image virtuálního počítače
@@ -35,7 +35,7 @@ K extrakci virtuálního pevného disku z virtuálního počítače je potřeba 
 
 Začněte pořizováním snímku disku virtuálního počítače:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. V levém horním rohu vyberte vytvořit prostředek, vyhledejte a vyberte snímek.
 3. V okně snímek vyberte vytvořit.
 4. Zadejte název snímku.

@@ -4,10 +4,10 @@ description: Nastavte cluster systému Windows Server s podporou převzetí slu�
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518989"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Cluster s podporou převzetí služeb při selhání Windows serveru v Azure VMware Solution síti vSAN s nativními sdílenými disky
@@ -32,7 +32,7 @@ Tento článek se zaměřuje na služby WSFC v systému Windows Server 2016 a Wi
 
 Musíte nejdřív [vytvořit WSFC](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster). Další informace o WSFC najdete v tématu věnovaném [clusteringu s podporou převzetí služeb při selhání ve Windows serveru](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview). Informace, které poskytujeme v tomto článku, najdete v tématu nasazení služby WSFC v řešení Azure VMware.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Prostředí řešení Azure VMware
 - Instalační médium operačního systému Microsoft Windows Server

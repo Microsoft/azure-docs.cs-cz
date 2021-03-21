@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102449607"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Jak připojit Azure Data Factory a Azure dosah
@@ -109,27 +109,27 @@ Integrace mezi Data Factory a dosah podporuje pouze podmnožinu datových systé
 
 | Úložiště dat | Podporováno | 
 | ------------------- | ------------------- | 
-| Azure Blob Storage | Ano |
-| Azure Cognitive Search | Ano | 
-| Azure Cosmos DB (SQL API) \* | Ano | 
-| Rozhraní API pro MongoDB Azure Cosmos DB \* | Ano |
+| Azure Blob Storage | Yes |
+| Azure Cognitive Search | Yes | 
+| Azure Cosmos DB (SQL API) \* | Yes | 
+| Rozhraní API pro MongoDB Azure Cosmos DB \* | Yes |
 | Průzkumník dat Azure \* | Yes | 
 | Azure Data Lake Storage Gen1 | Ano | 
 | Azure Data Lake Storage Gen2 | Ano | 
-| Databáze Azure Database for Marie DB \* | Ano | 
-| Azure Database for MySQL \* | Ano | 
-| Azure Database for PostgreSQL \* | Ano |
-| Azure File Storage | Ano | 
-| Azure SQL Database \* | Ano | 
-| Spravovaná instance Azure SQL \* | Ano | 
+| Databáze Azure Database for Marie DB \* | Yes | 
+| Azure Database for MySQL \* | Yes | 
+| Azure Database for PostgreSQL \* | Yes |
+| Azure File Storage | Yes | 
+| Azure SQL Database \* | Yes | 
+| Spravovaná instance Azure SQL \* | Yes | 
 | Azure synapse Analytics \* | Ano | 
-| Azure Table Storage | Ano |
-| Amazon S3 | Ano | 
-| Úlů \* | Ano | 
-| SAP ECC \* | Ano |
-| Tabulka SAP | Ano |
-| SQL Server \* | Ano | 
-| Teradata \* | Ano |
+| Azure Table Storage | Yes |
+| Amazon S3 | Yes | 
+| Úlů \* | Yes | 
+| SAP ECC \* | Yes |
+| Tabulka SAP | Yes |
+| SQL Server \* | Yes | 
+| Teradata \* | Yes |
 
 *\* Azure dosah momentálně nepodporuje dotazy ani uloženou proceduru pro vystavování nebo skenování. U pořadu je omezené jenom na tabulky a zobrazení zdrojů.*
 
@@ -155,8 +155,8 @@ V současné době platí, že pokud použijete následující funkce kopírová
 | Azure Blob Storage | Yes |
 | Azure Data Lake Storage Gen1 | Ano |
 | Azure Data Lake Storage Gen2 | Ano |
-| Azure SQL Database \* | Ano |
-| Azure synapse Analytics \* | Ano |
+| Azure SQL Database \* | Yes |
+| Azure synapse Analytics \* | Yes |
 
 *\* Azure dosah momentálně nepodporuje dotazy ani uloženou proceduru pro vystavování nebo skenování. U pořadu je omezené jenom na tabulky a zobrazení zdrojů.*
 
@@ -167,11 +167,11 @@ V současné době platí, že pokud použijete následující funkce kopírová
 | Azure Blob Storage | Yes |
 | Azure Data Lake Storage Gen1 | Ano |
 | Azure Data Lake Storage Gen2 | Ano |
-| Azure File Storage | Ano |
-| Azure SQL Database \* | Ano |
-| Spravovaná instance Azure SQL \*| Ano |
-| Azure synapse Analytics \* | Ano |
-| SQL Server \* | Ano |
+| Azure File Storage | Yes |
+| Azure SQL Database \* | Yes |
+| Spravovaná instance Azure SQL \*| Yes |
+| Azure synapse Analytics \* | Yes |
+| SQL Server \* | Yes |
 
 *\* Azure dosah momentálně nepodporuje dotazy ani uloženou proceduru pro vystavování nebo skenování. U pořadu je omezené jenom na tabulky a zobrazení zdrojů.*
 

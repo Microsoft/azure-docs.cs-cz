@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102448779"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Replikace dat přes ExpressRoute pomocí Azure Migrate: Migrace serveru
@@ -57,7 +57,7 @@ Uživatel Azure, který vytváří privátní koncový bod, by měl mít násled
 |Připojte privátní koncový bod k virtuální síti nebo podsíti.<br/>To je vyžadováno ve virtuální síti, ve které se vytvoří privátní koncový bod.| Microsoft. Network/virtualNetworks/podsíť/spojení/akce Microsoft. Network/virtualNetworks/JOIN/Action
 |Propojit soukromý koncový bod s účtem úložiště. <br/>| Microsoft. Microsoft. Storage/storageAccounts/privateEndpointConnectionApproval/Action <br/> Microsoft. Microsoft. Storage/storageAccounts/privateEndpointConnections/Read
 |Vytvořte síťové rozhraní a připojte ho ke skupině zabezpečení sítě. | Microsoft. Network/networkInterfaces/Read <br/> Microsoft. Network/networkInterfaces/podsítí/Write <br/> Microsoft. Network/networkInterfaces/podsítí/čtení<br/> Microsoft. Network/networkSecurityGroups/JOIN/Action (volitelné)
-Vytváření a Správa privátních zón DNS.| Role Přispěvatel Privátní DNS zóny <br/> _Ani_ <br/> Microsoft. Network/privateDnsZones/A/* <br/>  Microsoft. Network/privateDnsZones/Write Microsoft. Network/privateDnsZones/Read <br/> Microsoft. Network/privateEndpoints/privateDnsZoneGroups/Write <br/> Microsoft. Network/privateEndpoints/privateDnsZoneGroups/Read <br/> Microsoft. Network/privateDnsZones/virtualNetworkLinks/Write <br/>  Microsoft. Network/privateDnsZones/virtualNetworkLinks/Read <br/> Microsoft. Network/virtualNetworks/JOIN/Action 
+Vytváření a Správa privátních zón DNS.| Role Přispěvatel Privátní DNS zóny <br/> _Nebo_ <br/> Microsoft. Network/privateDnsZones/A/* <br/>  Microsoft. Network/privateDnsZones/Write Microsoft. Network/privateDnsZones/Read <br/> Microsoft. Network/privateEndpoints/privateDnsZoneGroups/Write <br/> Microsoft. Network/privateEndpoints/privateDnsZoneGroups/Read <br/> Microsoft. Network/privateDnsZones/virtualNetworkLinks/Write <br/>  Microsoft. Network/privateDnsZones/virtualNetworkLinks/Read <br/> Microsoft. Network/virtualNetworks/JOIN/Action 
 
 ### <a name="2-identify-the-cache-storage-account"></a>2. identifikace účtu úložiště mezipaměti 
  

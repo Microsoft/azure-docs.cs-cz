@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: f4bddc1666d1165d6a1e4c749fdbc96ede37747a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036761"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Shromažďování zdrojů dat výkonu pro Windows a Linux pomocí agenta Log Analytics
@@ -27,7 +27,7 @@ Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový
 
 V případě čítačů výkonu systému Windows můžete zvolit konkrétní instanci pro každý čítač výkonu. Pro čítače výkonu Linux se instance každého čítače, kterou zvolíte, vztahuje na všechny podřízené čítače nadřazeného čítače. V následující tabulce jsou uvedeny běžné instance dostupné pro čítače výkonu pro systémy Linux a Windows.
 
-| Název instance | Popis |
+| Název instance | Description |
 | --- | --- |
 | \_Celkem |Celkem všech instancí |
 | \* |Všechny instance |
@@ -76,7 +76,7 @@ Každý objekt nebo kategorie metriky výkonu ke shromáždění by měly být d
 
 Parametry v tomto elementu jsou popsány v následující tabulce.
 
-| Parametry | Popis |
+| Parametry | Description |
 |:--|:--|
 | \_název objektu | Název objektu pro kolekci |
 | \_regulární výraz instance |  *Regulární výraz* definující, které instance se mají shromažďovat Hodnota: `.*` Určuje všechny instance. Pokud chcete shromáždit metriky procesoru jenom pro \_ celkovou instanci, můžete zadat `_Total` . Pokud chcete shromáždit metriky procesu jenom pro instance crond nebo sshd, můžete zadat: `(crond\|sshd)` . |
@@ -204,7 +204,7 @@ Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tab
 ## <a name="log-queries-with-performance-records"></a>Dotazy protokolu se záznamy o výkonu
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy o výkonu.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:--- |:--- |
 | Výkon |Všechna data o výkonu |
 | &#124; výkonu, kde Computer = = "MyComputer" |Všechna data o výkonu z konkrétního počítače |

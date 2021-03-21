@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2021
 ms.author: raynew
 ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102564267"
 ---
 # <a name="common-questions"></a>Časté dotazy
@@ -97,7 +97,7 @@ Pokud přidáte prostředky v centru Resource Mover na portálu, oprávnění se
 
 Je možné, že nemáte k dispozici několik důvodů, proč máte oprávnění.
 
-**Možná příčina** | **Základě**
+**Možná příčina** | **Doporučení**
 --- | ---
 Nejste *přispěvatelem* a *správcem přístupu uživatele* (nebo *vlastníkem*), když přidáte prostředek poprvé. | Použijte účet s oprávněním *Přispěvatel* a *Správce přístupu uživatele* (nebo *vlastníka*) pro předplatné.
 Spravovaná identita pro prostředek stěhovací společnosti nemá požadovanou roli. | Přidejte role přispěvatel a správce přístupu uživatele.

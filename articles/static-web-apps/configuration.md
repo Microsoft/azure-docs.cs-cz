@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
 ms.openlocfilehash: 324a8e75488d74fc6aa52e499b8dde616cd9beb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034043"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurace statického Web Apps Azure
@@ -54,13 +54,13 @@ Každé pravidlo se skládá ze vzoru směrování spolu s jednou nebo více vol
 
 | Vlastnost pravidla  | Vyžadováno | Výchozí hodnota | Komentář                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ano      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování.<ul><li>Například _správce tras/ \*_ odpovídá libovolné trase v cestě _správce_ .</ul></ul>|
-| `rewrite`        | Ne       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku.<ul><li>Se vzájemně vylučují pro `redirect` pravidlo<li>Pravidla přepsání nemění umístění prohlížeče.<li>Hodnoty musí být relativní vzhledem ke kořenu aplikace.</ul>  |
-| `redirect`        | Ne       | Není k dispozici          | Definuje cíl přesměrování souboru nebo cesty pro požadavek.<ul><li>Se vzájemně vylučují pro `rewrite` pravidlo.<li>Pravidla přesměrování mění umístění prohlížeče.<li>Výchozí kód odpovědi je [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (dočasné přesměrování), ale můžete přepsat pomocí [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (trvalé přesměrování).</ul> |
-| `allowedRoles` | Ne       | Anonymous     | Definuje seznam názvů rolí vyžadovaných pro přístup k trase. <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Integrovaná role [`anonymous`](./authentication-authorization.md) platí pro všechny neověřené uživatele.<li>Integrovaná role se [`authenticated`](./authentication-authorization.md) vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi.<ul><li>Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.</ul><li>Jednotliví uživatelé jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
-| `headers`<a id="route-headers"></a> | Ne | Není k dispozici | Sada [hlaviček http](https://developer.mozilla.org/docs/Web/HTTP/Headers) přidaných k odpovědi <ul><li>Hlavičky specifické pro trasu, [`globalHeaders`](#global-headers) Pokud je hlavička specifická pro trasu shodná s globální hlavičkou, která je v odpovědi.<li>Chcete-li odebrat záhlaví, nastavte hodnotu na prázdný řetězec.</ul> |
-| `statusCode`   | Ne       | `200`, `301` nebo `302` pro přesměrování | [Stavový kód protokolu HTTP](https://developer.mozilla.org/docs/Web/HTTP/Status) odpovědi. |
-| `methods` | Ne | Všechny metody | Seznam metod požadavků, které odpovídají trase. K dispozici jsou tyto metody: `GET` , `HEAD` , `POST` , `PUT` , `DELETE` , `CONNECT` , `OPTIONS` , `TRACE` a `PATCH` . |
+| `route`        | Yes      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování.<ul><li>Například _správce tras/ \*_ odpovídá libovolné trase v cestě _správce_ .</ul></ul>|
+| `rewrite`        | No       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku.<ul><li>Se vzájemně vylučují pro `redirect` pravidlo<li>Pravidla přepsání nemění umístění prohlížeče.<li>Hodnoty musí být relativní vzhledem ke kořenu aplikace.</ul>  |
+| `redirect`        | No       | Není k dispozici          | Definuje cíl přesměrování souboru nebo cesty pro požadavek.<ul><li>Se vzájemně vylučují pro `rewrite` pravidlo.<li>Pravidla přesměrování mění umístění prohlížeče.<li>Výchozí kód odpovědi je [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (dočasné přesměrování), ale můžete přepsat pomocí [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (trvalé přesměrování).</ul> |
+| `allowedRoles` | No       | Anonymous     | Definuje seznam názvů rolí vyžadovaných pro přístup k trase. <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Integrovaná role [`anonymous`](./authentication-authorization.md) platí pro všechny neověřené uživatele.<li>Integrovaná role se [`authenticated`](./authentication-authorization.md) vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi.<ul><li>Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.</ul><li>Jednotliví uživatelé jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
+| `headers`<a id="route-headers"></a> | No | Není k dispozici | Sada [hlaviček http](https://developer.mozilla.org/docs/Web/HTTP/Headers) přidaných k odpovědi <ul><li>Hlavičky specifické pro trasu, [`globalHeaders`](#global-headers) Pokud je hlavička specifická pro trasu shodná s globální hlavičkou, která je v odpovědi.<li>Chcete-li odebrat záhlaví, nastavte hodnotu na prázdný řetězec.</ul> |
+| `statusCode`   | No       | `200`, `301` nebo `302` pro přesměrování | [Stavový kód protokolu HTTP](https://developer.mozilla.org/docs/Web/HTTP/Status) odpovědi. |
+| `methods` | No | Všechny metody | Seznam metod požadavků, které odpovídají trase. K dispozici jsou tyto metody: `GET` , `HEAD` , `POST` , `PUT` , `DELETE` , `CONNECT` , `OPTIONS` , `TRACE` a `PATCH` . |
 
 Každá vlastnost má v kanálu požadavků a odpovědí určitý účel.
 

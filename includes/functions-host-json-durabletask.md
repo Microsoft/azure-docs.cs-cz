@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 54ce9438f768e347e306432a1874ab1816a1ae95
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013716"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719730"
 ---
 Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md).
 
@@ -100,15 +100,15 @@ Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durab
 Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud není zadaný, použije se výchozí název centra úloh pro aplikaci Function App **DurableFunctionsHub**. Další informace najdete v tématu [centra úloh](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
 |Vlastnost  |Výchozí | Description |
-|---------|---------|---------|
+|---------|---------|----------|
 |hubName|DurableFunctionsHub|Alternativní názvy [centra úloh](../articles/azure-functions/durable/durable-functions-task-hubs.md) se dají použít k izolaci více Durable Functionsch aplikací od sebe, i když používají stejný back-end úložiště.|
 |controlQueueBatchSize|32|Počet zpráv, které mají být vyžádané z fronty ovládacích prvků v čase.|
-|controlQueueBufferThreshold|256|Počet zpráv fronty řízení, které mohou být uloženy do vyrovnávací paměti v paměti v okamžiku, kdy bude dispečer čekat před vyřazením dalších zpráv do fronty.|
+|controlQueueBufferThreshold| **Plán spotřeby**: 32 <br> **Plán pro vyhrazený/Premium**: 256 |Počet zpráv fronty řízení, které mohou být uloženy do vyrovnávací paměti v paměti v okamžiku, kdy bude dispečer čekat před vyřazením dalších zpráv do fronty.|
 |partitionCount |4|Počet oddílů pro frontu řízení. Může být kladné celé číslo mezi 1 a 16.|
 |controlQueueVisibilityTimeout |5 minut|Časový limit viditelnosti vyřazení zpráv fronty řízení ve frontě.|
 |workItemQueueVisibilityTimeout |5 minut|Časový limit viditelnosti zpráv fronty pracovních položek ve frontě|
-|maxConcurrentActivityFunctions |10X počet procesorů v aktuálním počítači|Maximální počet funkcí aktivity, které mohou být zpracovány současně na jedné instanci hostitele.|
-|maxConcurrentOrchestratorFunctions |10X počet procesorů v aktuálním počítači|Maximální počet funkcí nástroje Orchestrator, které mohou být zpracovány současně na jedné instanci hostitele.|
+|maxConcurrentActivityFunctions | **Plán spotřeby**: 10 <br> **Plán vyhrazený pro Premium**: 10x počet procesorů v aktuálním počítači|Maximální počet funkcí aktivity, které mohou být zpracovány současně na jedné instanci hostitele.|
+|maxConcurrentOrchestratorFunctions | **Plán spotřeby**: 5 <br> **Plán vyhrazený pro Premium**: 10x počet procesorů v aktuálním počítači |Maximální počet funkcí nástroje Orchestrator, které mohou být zpracovány současně na jedné instanci hostitele.|
 |maxQueuePollingInterval|30 sekund|Maximální interval dotazování fronty řízení a pracovní položky ve formátu *HH: mm: SS* . Vyšší hodnoty můžou mít za následek vyšší latence při zpracování zpráv. Nižší hodnoty můžou mít za následek vyšší náklady na úložiště kvůli zvýšeným transakcím úložiště.|
 |azureStorageConnectionStringName |AzureWebJobsStorage|Název nastavení aplikace, které obsahuje připojovací řetězec Azure Storage, který se používá ke správě základních prostředků Azure Storage.|
 |trackingStoreConnectionStringName||Název připojovacího řetězce, který se má použít pro tabulky historie a instance. Pokud není zadaný, `connectionStringName` použije se připojení (odolné 2. x) nebo `azureStorageConnectionStringName` (trvanlivé 1. x).|

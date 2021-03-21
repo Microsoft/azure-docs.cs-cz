@@ -13,10 +13,10 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
 ms.openlocfilehash: 38def2b5af3a5f0f9a32c2b681bd0ee95ca44086
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102174678"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Kurz: přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
@@ -34,7 +34,7 @@ V tomto kurzu:
 > * Registrace aplikace v Azure Portal
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) s nainstalovanou úlohou **vývoj pro ASP.NET a web**
 
@@ -48,7 +48,7 @@ Ukázková aplikace, kterou vytvoříte, je založená na scénáři, ve kterém
 
 Tato příručka používá následující knihovny:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Middleware, který aplikaci umožňuje použít OpenIdConnect pro ověřování|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, který umožňuje aplikaci udržovat relaci uživatelů pomocí souborů cookie|
@@ -88,11 +88,11 @@ Následující kroky slouží k vytvoření třídy OWIN middleware pro konfigur
 > [!TIP]
 > Pokud projekt nemá soubor `Startup.cs` v kořenové složce:
 > 1. Klikněte pravým tlačítkem na kořenovou složku projektu a pak vyberte **Přidat**  >  **novou položku**  >  **Owin po spuštění třídy**.<br/>
-> 2. Pojmenujte ho **Startup.cs**.
+> 2. Pojmenujte ho **Startup. cs**.
 >
 >> Ujistěte se, že vybraná třída je třída OWIN Startup a ne standardní třída jazyka C#. Potvrďte to tak, že ověříte, že jste viděli [assembly: OwinStartup (typeof ({NameSpace}. Po spuštění))] nad oborem názvů.
 
-1. Přidejte odkazy *Owin* a *Microsoft. IdentityModel* na Startup.cs:
+1. Přidejte odkazy *Owin* a *Microsoft. IdentityModel* na Startup. cs:
 
     ```csharp
     using Microsoft.Owin;

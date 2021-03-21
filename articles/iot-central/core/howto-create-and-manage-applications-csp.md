@@ -5,19 +5,21 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f3293ada549351cc7273847cde48c0531f06f028
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123109"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675803"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a Správa aplikace Azure IoT Central z portálu CSP
 
 Program poskytovatele řešení Microsoft Cloud (CSP) je program pro prodej v Microsoftu. Jejím záměrem je poskytnout našim partnerům pro partnery, kteří budou moci znovu prodávat všechny komerční online služby Microsoftu. Přečtěte si další informace o [programu Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider).
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 Jako CSP můžete pomocí [partnerského centra Microsoftu](https://partnercenter.microsoft.com/partner/home)vytvářet a spravovat Microsoft Azure IoT Central aplikací jménem zákazníky. Když poskytovatelé cloudu vytvoří aplikace IoT Central Azure jménem zákazníky, stejně jako u jiných služeb Azure spravovaných CSP, můžou CSP spravovat fakturace pro zákazníky. Poplatky za Azure IoT Central se zobrazí v celkovém vyúčtování v partnerském centru Microsoftu.
 
@@ -75,7 +77,7 @@ Další informace najdete v tématu [předplatná Azure](../../guides/developer/
 
 ## <a name="location"></a>Umístění
 
-**Umístění** je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde chcete vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. V současné době můžete vytvořit aplikaci IoT Central v oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království**a **Japonsko** . Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
+**Umístění** je [geografická](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, kde chcete vytvořit aplikaci. Obvykle byste měli zvolit umístění, které je fyzicky nejbližší pro vaše zařízení, aby se dosáhlo optimálního výkonu. V současné době můžete vytvořit aplikaci IoT Central v oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království** a **Japonsko** . Jakmile zvolíte umístění, nemůžete později přesunout aplikaci do jiného umístění.
 
 ## <a name="application-template"></a>Šablona aplikace
 

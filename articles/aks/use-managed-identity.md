@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/16/2020
 ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176089"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
@@ -33,20 +33,20 @@ Musíte mít nainstalované následující prostředky:
 
 AKS používá několik spravovaných identit pro předdefinované služby a doplňky.
 
-| Identita                       | Název    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
+| Identita                       | Name    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
 |----------------------------|-----------|----------|
 | Řídicí rovina | neviditelné | Používá se součástmi ovládacího prvku AKS ke správě prostředků clusteru, včetně nástrojů pro vyrovnávání zatížení vstupu a AKS spravovaných veřejných IP adres a operací automatického škálování clusteru. | Role přispěvatele pro skupinu prostředků uzlu | Podporuje se
 | Kubelet | Název clusteru AKS – neznámá | Ověřování pomocí Azure Container Registry (ACR) | NEDEF (pro Kubernetes v 1.15 +) | Aktuálně se nepodporuje.
-| Doplněk | AzureNPM | Není nutná žádná identita. | NA | Ne
-| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | NA | Ne
-| Doplněk | zásady Azure (gatekeeper) | Není nutná žádná identita. | NA | Ne
-| Doplněk | Azure – zásada | Není nutná žádná identita. | NA | Ne
-| Doplněk | Calico | Není nutná žádná identita. | NA | Ne
-| Doplněk | Řídicí panel | Není nutná žádná identita. | NA | Ne
-| Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | Ne
-| Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | Ne
-| Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | Ne
-| Doplněk | Virtual-Node (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | Ne
+| Doplněk | AzureNPM | Není nutná žádná identita. | NA | No
+| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | NA | No
+| Doplněk | zásady Azure (gatekeeper) | Není nutná žádná identita. | NA | No
+| Doplněk | Azure – zásada | Není nutná žádná identita. | NA | No
+| Doplněk | Calico | Není nutná žádná identita. | NA | No
+| Doplněk | Řídicí panel | Není nutná žádná identita. | NA | No
+| Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | No
+| Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | No
+| Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | No
+| Doplněk | Virtual-Node (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | No
 | Projekt OSS | AAD-pod-identity | Umožňuje aplikacím zabezpečeně přistupovat k prostředkům cloudu pomocí Azure Active Directory (AAD). | NA | Kroky pro udělení oprávnění v https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Vytvoření clusteru AKS se spravovanými identitami

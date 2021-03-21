@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 5e7f38e4bbc95e04bf54f8f7a2dd80e21891e8df
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102215489"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Kurz: vyhledání a zobrazení tras pro různé režimy cestování pomocí Azure Maps
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak pomocí [služby Azure Maps Route Service](/rest/
 > * Vykreslování dat o přenosech dat v reálném čase na mapě
 > * Vyžádat a zobrazit trasy privátních a komerčních vozidel na mapě
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
