@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 75a7da41e4f0d5356ca135eb3cb4cbe5f29e8116
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92891444"
 ---
 # <a name="connect-to-a-wfs-service"></a>Připojení ke službě WFS
@@ -27,7 +27,7 @@ Třída podporuje následující funkce `WfsClient` :
 - Žádosti se provádějí `HTTP GET` jenom pomocí.
 - Podporované operace:
 
-    | Operace | Popis |
+    | Operace | Description |
     | :-- | :-- |
     | GetCapabilities | Vygeneruje dokument metadat s platnými operacemi a parametry WFS. |
     | Getfeature | Vrátí výběr funkcí ze zdroje dat. |
@@ -66,7 +66,7 @@ Specifikace pro WFS Standard využívá filtry OGC. Níže uvedené filtry jsou 
 - `Mul`
 - `Div`
 
-**Operátory porovnání**
+**Relační operátory**
 
 - `PropertyIsEqualTo`
 - `PropertyIsNotEqualTo`
@@ -83,7 +83,7 @@ Následující kód demonstruje použití různých filtrů s klientem WFS.
 
 <br/>
 
-<iframe height='500' scrolling='no' title= 'Příklady filtru WFS' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V tématu Azure Maps () na CodePen se podívejte na <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>Příklady filtru per WFS</a> ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title= 'Příklady filtru WFS' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V tématu Azure Maps () na CodePen se podívejte na <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>Příklady filtru per WFS</a> ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) <a href='https://codepen.io'></a>.
 </iframe>
 
 ## <a name="wfs-service-explorer"></a>Průzkumník služby WFS

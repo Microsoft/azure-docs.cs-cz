@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
 ms.openlocfilehash: f2b9f79f0914e645c736f8a577c46baa42587332
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94874606"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Řešení běžných otázek nebo potíží s řadičem příchozího přenosu dat
@@ -150,7 +150,7 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. **Ingress** Příchozí s poznámkami s `kubernetes.io/ingress.class: azure/application-gateway` odkazem na výše uvedenou službu ověřte tuto [Cloud Shell](https://shell.azure.com/) s`kubectl get ingress -o wide --show-labels`
+  3. Příchozí s poznámkami s `kubernetes.io/ingress.class: azure/application-gateway` odkazem na výše uvedenou službu ověřte tuto [Cloud Shell](https://shell.azure.com/) s`kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -236,7 +236,7 @@ AGIC má 3 úrovně protokolování. První úroveň je výchozí a zobrazuje mi
 Komunita Kubernetes zřídila 9 úrovní protokolování pro nástroj [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) . V tomto úložišti využíváme 3 z těchto verzí s podobnou sémantikou:
 
 
-| Podrobnosti | Popis |
+| Podrobnosti | Description |
 |-----------|-------------|
 |  1        | Výchozí úroveň protokolu; zobrazuje podrobnosti o spuštění, upozornění a chyby. |
 |  3        | Rozšířené informace o událostech a změnách; seznamy vytvořených objektů |

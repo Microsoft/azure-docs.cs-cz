@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020275"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Kurz: nastavení fyzicky založených materiálů pro vykreslování v 3ds Max
@@ -50,7 +50,7 @@ Chcete-li začít, vytvoříme počet objektů box, z nichž každá představuj
 
 Následující snímek obrazovky ukazuje postup nastavení jednotek systému na měřiče v nástroji 3ds Max. 
 
-1. V hlavní nabídce přejděte na vlastní nastavení **Customize**  >  **jednotek nastavení**  >  **systémové jednotky**. V **systémové jednotce škále** vyberte **měřiče**: ![ snímek obrazovky, který ukazuje, jak nastavit jednotky systému.](media/3dsmax/system-units.jpg)
+1. V hlavní nabídce přejděte na vlastní nastavení   >  **jednotek nastavení**  >  **systémové jednotky**. V **systémové jednotce škále** vyberte **měřiče**: ![ snímek obrazovky, který ukazuje, jak nastavit jednotky systému.](media/3dsmax/system-units.jpg)
 
 1. Nyní můžeme začít vytvářet modely. V ukázce scény vytvoříme několik objektů box, z nichž každá představuje jiný typ materiálu. Například kov, pryžový a plast. 
 
@@ -161,7 +161,7 @@ Tato akce vytvoří instanci objektu, kterou lze přesunout, otočit nebo škál
 
 Jedna poslední věc, kterou je třeba zvážit před tím, než se přesunete k procesu exportu, je způsob, jakým můžete chtít zabalit svou scénu nebo prostředek ke sdílení. V ideálním případě, Pokud předáte Asset pro klienty nebo členy týmu, budete chtít, aby mohli prostředek otevřít a zobrazit, protože by měl být zobrazený s minimálním množstvím Fuss. Proto je důležité zachovat cesty textury assetu relativně k souboru scény. Pokud cesty textury pro váš prostředek ukazují na místní disk nebo absolutní cestu nebo umístění, nebudou načteny do scény, pokud se otevřou na jiném počítači, a to i v případě, že soubor. Max je ve stejné složce jako textury. Vytváření cest k texturám relativně v 3ds Max tento problém řeší a je poměrně jednoduché.
 
-1. Na hlavním panelu nástrojů **File**  >  **Reference**  >  **přepněte přepínač sledování assetu** odkazů na soubor. 
+1. Na hlavním panelu nástrojů   >    >  **přepněte přepínač sledování assetu** odkazů na soubor. 
 
 1. V okně sledování assetů uvidíte všechny nebo většinu textur, které jste použili pro materiály PBR uvedené ve sloupci **mapy/shadery** .
 
@@ -196,7 +196,7 @@ Teď, když jsme vytvořili relativní cesty k texturám, můžeme přejít k FB
 >
 >Pokud jste použili modifikátory, jako je Turbosmooth nebo Open SubDiv, je vhodné je před exportem sbalit, protože můžou během exportu způsobit problémy. Před sbalením si nezapomeňte svoji scénu Uložit. 
 
-1. Ve scéně vyberte prostředky, které chcete exportovat. Na hlavním panelu nástrojů přejdete na **File** možnost  >  **Export**  >  **Export** exportu souborů.
+1. Ve scéně vyberte prostředky, které chcete exportovat. Na hlavním panelu nástrojů přejdete na možnost  >    >  **Export** exportu souborů.
 
 1. V dialogovém okně **Vybrat soubor pro export** zadejte nebo vyberte název výstupního souboru. V seznamu **Uložit jako typ** vyberte **Autodesk (*. FBX)**. Tato akce otevře okno Export FBX.
 

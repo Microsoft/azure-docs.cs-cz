@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
 ms.openlocfilehash: 56b9a98eb72b375aacfeb7cb147997028d3d9ba7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98116802"
 ---
-# <a name="train-machine-learning-models"></a>Výuka modelů strojového učení
+# <a name="train-machine-learning-models"></a>Trénování modelů strojového učení
 Apache Spark ve službě Azure synapse Analytics umožňuje strojové učení s velkými objemy dat a poskytuje možnost získat hodnotný přehled z velkých objemů strukturovaných, nestrukturovaných a rychlých přesunů dat. K dispozici je několik možností pro školení modelů strojového učení pomocí Azure Spark ve službě Azure synapse Analytics: Apache Spark MLlib, Azure Machine Learning a různých dalších open source knihoven. 
 
 ## <a name="apache-sparkml-and-mllib"></a>Apache SparkML a MLlib

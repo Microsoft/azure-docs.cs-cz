@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
 ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119001"
 ---
 # <a name="execute-r-script-module"></a>Spustit modul skriptu R
@@ -351,7 +351,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 
 | Balíček      | Verze    | 
 |--------------|------------| 
-| askpass      | 1,1        | 
+| askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
 | base         | 3.5.1      | 
@@ -366,7 +366,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 | stříška        | 6.0 – 84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| třída        | 7.3 – 15     | 
+| class        | 7.3 – 15     | 
 | cli          | 1.1.0      | 
 | Galerie        | 0.6.0      | 
 | cluster      | 2.0.7-1    | 
@@ -401,7 +401,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | haven        | 2.1.0      | 
-| highr        | 0,8        | 
+| highr        | 0.8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
@@ -421,7 +421,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 | Matice       | 1,2 – 17     | 
 | methods      | 3.5.1      | 
 | mgcv         | 1.8 – 28     | 
-| mime         | 0,7        | 
+| mime         | 0.7        | 
 | ModelMetrics | 1.2.2      | 
 | modelr       | 0.1.4      | 
 | munsell      | 0.5.0      | 
@@ -458,7 +458,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 | rmarkdown    | 1.13       | 
 | ROCR         | 1.0-7      | 
 | rpart        | 4.1 – 15     | 
-| rstudioapi   | 0,1        | 
+| rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
 | scales       | 1.0.0      | 
 | selectr      | 0.4-1      | 
@@ -487,7 +487,7 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 | viridisLite  | 0.3.0      | 
 | whisker      | 0.3-2      | 
 | withr        | 2.1.2      | 
-| xfun         | 0,8        | 
+| xfun         | 0.8        | 
 | xml2         | 1.2.0      | 
 | xts          | 0,11 – 2     | 
 | yaml         | 2.2.0      | 

@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97095351"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Přesunout sálové úložiště do Azure
@@ -51,10 +51,10 @@ Služba Azure Storage je dostupná jako [disky Azure](../../../managed-disks-ove
 
 <table>
 <thead>
-    <tr><th>Typ</th><th>Popis</th><th>Použijte v případě, že chcete:</th></tr>
+    <tr><th>Typ</th><th>Description</th><th>Použijte v případě, že chcete:</th></tr>
 </thead>
 <tbody>
-<tr><td>Soubory Azure
+<tr><td>Azure Files
 </td>
 <td>
 Poskytuje rozhraní protokolu SMB, klientské knihovny a rozhraní <a href="/rest/api/storageservices/file-service-rest-api">REST</a> , které umožňuje přístup odkudkoli do uložených souborů.

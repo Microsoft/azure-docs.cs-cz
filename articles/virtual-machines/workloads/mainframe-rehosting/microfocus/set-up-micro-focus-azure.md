@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: 0d0a7d9060d751dbf05d39545b332c13010cbfae
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102553574"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Instalace Micro Micro Enterprise Server 5,0 a Enterprise Developer 5,0 v Azure
@@ -29,7 +29,7 @@ Tento instalační program používá virtuální počítače Azure s Windows se
 
 Odpovídající vývojové prostředí pro podnikový server je podnikovým vývojářem, který běží na Microsoft Visual Studio 2017 nebo novějším, v rámci sady Visual Studio Community (zdarma ke stažení) nebo na zatmění. Tento článek ukazuje, jak ho nasadit pomocí virtuálního počítače s Windows serverem 2016, který je součástí sady Visual Studio 2017 nebo novější.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, podívejte se na tyto požadavky:
 

@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/18/2021
 ms.openlocfilehash: a00ec8698b188b8fa87935e498e8cfab3aeab5aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101724978"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Přírůstkové načtení dat ze spravované instance Azure SQL do Azure Storage pomocí Change Data Capture (CDC)
@@ -48,7 +48,7 @@ V tomto kurzu vytvoříte kanál, který provede následující operace:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Azure SQL Database spravovaná instance**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud nemáte Azure SQL Database spravovanou instanci, přečtěte si článek [vytvoření Azure SQL Database spravované instance](../azure-sql/managed-instance/instance-create-quickstart.md) , kde najdete kroky pro jeho vytvoření.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit. Vytvořte kontejner s názvem **raw**. 
 
@@ -366,7 +366,7 @@ V tomto kroku vytvoříte aktivační událost bubnového okna pro spuštění �
 
    2. Zadejte název triggeru a zadejte čas spuštění, který je stejný jako čas ukončení okna ladění výše.
 
-   ![Aktivační událost pro bubnový interval](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png)
+   ![Aktivační událost pro přeskakující okno](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png)
 
    3. Na další obrazovce zadejte následující hodnoty pro počáteční a koncové parametry v uvedeném pořadí.
     ```sql

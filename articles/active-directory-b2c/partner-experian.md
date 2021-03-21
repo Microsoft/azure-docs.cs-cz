@@ -12,10 +12,10 @@ ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928694"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Experian s využitím Azure Active Directory B2C
@@ -58,7 +58,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![snímek obrazovky pro Experian – architektura – diagram](media/partner-experian/experian-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na přihlašovací stránku. Uživatel vybere registraci a vytvoří nový účet a zadá informace na stránku. Azure AD B2C shromažďuje atributy uživatele.
 | 2. | Azure AD B2C volá rozhraní API střední vrstvy a předá ho atributům uživatele.

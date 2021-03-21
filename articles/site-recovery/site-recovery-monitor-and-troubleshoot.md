@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023563"
 ---
 # <a name="monitor-site-recovery"></a>Monitorování Site Recovery
@@ -46,7 +46,7 @@ Než začnete, můžete si projít [běžné otázky týkající se monitorován
 
 V části **replikované položky** Monitorujte stav všech počítačů v trezoru, které mají povolenou replikaci.
 
-**State** | **Podrobnosti**
+**Stav** | **Podrobnosti**
 --- | ---
 V pořádku | Replikace probíhá normálně. Nezjistily se žádné chybové příznaky ani upozornění.
 Upozornění | Zjistil se jeden nebo víc příznaků upozornění, které by mohly mít vliv na replikaci.
@@ -60,7 +60,7 @@ V případě **úspěchu testu převzetí služeb při selhání** Sledujte stav
 - Doporučujeme spustit testovací převzetí služeb při selhání na replikovaných počítačích nejméně jednou za šest měsíců. Je to způsob, jak ověřit, že převzetí služeb při selhání funguje podle očekávání, aniž by došlo k přerušení produkčního prostředí. 
 - Testovací převzetí služeb při selhání se považuje za úspěšné až po úspěšném dokončení a vyčištění po převzetí služeb při selhání.
 
-**State** | **Podrobnosti**
+**Stav** | **Podrobnosti**
 --- | ---
 Doporučuje se test | Počítače, u kterých došlo k testovacímu převzetí služeb při selhání, protože byla povolena ochrana.
 Úspěšně provedeno | Počítače s nebo více úspěšnými testovacími převzetím služeb při selhání.
@@ -73,7 +73,7 @@ V případě **problémů s konfigurací** monitorujte všechny problémy, kter�
 - Problémy s konfigurací (s výjimkou dostupnosti aktualizace softwaru) se zjišťují pomocí pravidelné operace ověřování, která se ve výchozím nastavení spouští každých 12 hodin. Můžete vynutit, aby operace ověřování běžela okamžitě kliknutím na ikonu aktualizace vedle záhlaví oddílu **problémy s konfigurací** .
 - Kliknutím na odkazy zobrazíte další podrobnosti. U problémů, které mají vliv na konkrétní počítače, klikněte ve sloupci **cílové konfigurace** na možnost **vyžaduje pozornost** . Podrobnosti zahrnují doporučení pro nápravu.
 
-**State** | **Podrobnosti**
+**Stav** | **Podrobnosti**
 --- | ---
 Chybějící konfigurace | Chybí nezbytné nastavení, například síť pro obnovení nebo skupina prostředků.
 Chybějící prostředky | Zadaný prostředek se nepovedlo najít nebo není v předplatném dostupný. Prostředek se například odstranil nebo migrovali. Monitorované prostředky zahrnovaly cílovou skupinu prostředků, cílovou virtuální síť, podsíť, protokol/cílový účet úložiště, cílovou skupinu dostupnosti, cílovou IP adresu.
@@ -107,7 +107,7 @@ V **zobrazení infrastruktura** Sledujte komponenty infrastruktury zapojené do 
 - Pokud chcete používat všechny funkce v zobrazení infrastruktury, měli byste pro tyto součásti používat [kumulativní aktualizaci 22](https://support.microsoft.com/help/4072852) .
 - Chcete-li použít zobrazení infrastruktury, vyberte příslušný scénář replikace ve vašem prostředí. Další podrobnosti najdete v zobrazení podrobností. V následující tabulce jsou uvedeny scénáře, které jsou zastoupeny.
 
-    **Scénář** | **State**  | **Zobrazit dostupné?**
+    **Scénář** | **Stav**  | **Zobrazit dostupné?**
     --- |--- | ---
     **Replikace mezi místními lokalitami** | Všechny státy | No 
     **Replikace virtuálních počítačů Azure mezi oblastmi Azure**  | Replikace je povolená/počáteční replikace probíhá. | Yes

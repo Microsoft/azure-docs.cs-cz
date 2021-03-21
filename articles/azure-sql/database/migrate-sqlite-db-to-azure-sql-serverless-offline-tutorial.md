@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
 ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790402"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Postup migrace databáze SQLite na Azure SQL Database bez serveru
@@ -21,7 +21,7 @@ ms.locfileid: "92790402"
 
 Pro mnoho lidí poskytuje program SQLite své první zkušenosti s databázemi a programováním SQL. Zahrnutím do mnoha operačních systémů a oblíbených aplikací se bude posazovat jedna z nejoblíbenějších nasazených a využitých databázových strojů na světě. A vzhledem k tomu, že je pravděpodobný, že první databázový stroj používá mnoho lidí, může často končit jako centrální součást projektů nebo aplikací. V takových případech, kdy projekt nebo aplikace přesáhne počáteční implementaci SQLite, mohou vývojáři potřebovat migrovat svá data do spolehlivého a centralizovaného úložiště dat.
 
-Azure SQL Database bez serveru je výpočetní vrstva pro izolované databáze, která automaticky škáluje výpočetní výkon na základě požadavků na zatížení a účtuje množství výpočetních operací za sekundu. Výpočetní vrstva bez serveru taky automaticky pozastaví databáze během neaktivních období, kdy se účtují jenom úložiště, a automaticky obnoví databáze při návratu aktivity.
+Azure SQL Database bez serveru je výpočetní vrstva pro izolované databáze, která automaticky škáluje výpočetní výkon na základě požadavků na zatížení a účtuje množství výpočetních operací za sekundu. Bezserverová výpočetní úroveň také automaticky pozastavuje databáze v období neaktivity, kdy se účtuje pouze úložiště, a při vrácení aktivity databáze automaticky obnovuje.
 
 Až budete postupovat podle následujících kroků, vaše databáze se migruje na Azure SQL Database bez serveru a umožní vám zpřístupnit databázi ostatním uživatelům nebo aplikacím v cloudu a platit jenom za to, co používáte, s minimálními změnami kódu aplikace.
 
@@ -53,13 +53,13 @@ Až budete postupovat podle následujících kroků, vaše databáze se migruje 
     - Spouští se ADF (vytváření a monitorování ze služby v Azure Portal).
     - Klikněte na kartu Autor (modrá tužka) vlevo.
     - Klikněte na připojení (vlevo dole) a potom na modul runtime integrace.
-    - Přidejte novou Self-Hosted Integration Runtime, zadejte název, vyberte *možnost 2* .
+    - Přidejte novou Self-Hosted Integration Runtime, zadejte název, vyberte *možnost 2*.
 
 5. Vytvořte novou propojenou službu pro zdrojovou databázi SQLite ve vašem Data Factory.
 
     ![Snímek obrazovky znázorňující okno prázdné propojené služby v Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
 
-6. V části **připojení** klikněte v části **propojená služba** na **Nový** .
+6. V části **připojení** klikněte v části **propojená služba** na **Nový**.
 
 7. Vyhledejte a vyberte konektor "ODBC".
 

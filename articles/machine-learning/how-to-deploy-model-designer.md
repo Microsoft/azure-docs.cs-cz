@@ -12,10 +12,10 @@ ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio, designer
 ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97722619"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Použití studia k nasazení modelů vyškolených v Návrháři
@@ -35,7 +35,7 @@ Modely můžete nasadit přímo v návrháři, aby bylo možné přeskočit regi
 
 Modely, které jsou vyškolené v návrháři, se dají nasadit taky prostřednictvím sady SDK nebo rozhraní příkazového řádku (CLI). Další informace najdete v tématu [nasazení stávajícího modelu pomocí Azure Machine Learning](how-to-deploy-existing-model.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
 

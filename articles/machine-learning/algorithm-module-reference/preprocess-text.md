@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/16/2020
 ms.openlocfilehash: 366b30df677a5b74bc7d70e1aea60e05b4df0152
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659279"
 ---
 # <a name="preprocess-text"></a>Předzpracování textu
@@ -93,8 +93,8 @@ Následuje několik příkladů:
 
 | Konfigurace | Výsledek výstupu |
 | --- | --- |
-|Všechny vybrané možnosti </br> Požadované </br> Pro případy, jako je například ' 3test ' v ' WC-3 3test 4test ', Návrhář odstraní celé slovo ' 3test ', protože v tomto kontextu tento token ' Autor značky ' určí jako číslo a podle části řeči modul ho odstraní.| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="Všechny vybrané možnosti" border="True"::: |
-|Jenom `Removing number` vybrané </br> Požadované </br> V případech, jako jsou "3test", "4-ES", není dávka návrháře provádějících tokenizaci tyto případy rozdělena a považuje se za celé tokeny. Neodstraní proto čísla těchto slov.| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="Je vybrané jenom &quot;odebrat číslo&quot;." border="True"::: |
+|Všechny vybrané možnosti </br> Vysvětlení: </br> Pro případy, jako je například ' 3test ' v ' WC-3 3test 4test ', Návrhář odstraní celé slovo ' 3test ', protože v tomto kontextu tento token ' Autor značky ' určí jako číslo a podle části řeči modul ho odstraní.| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="Všechny vybrané možnosti" border="True"::: |
+|Jenom `Removing number` vybrané </br> Vysvětlení: </br> V případech, jako jsou "3test", "4-ES", není dávka návrháře provádějících tokenizaci tyto případy rozdělena a považuje se za celé tokeny. Neodstraní proto čísla těchto slov.| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="Je vybrané jenom &quot;odebrat číslo&quot;." border="True"::: |
 
 Můžete také použít regulární výraz pro výstup vlastních výsledků:
 

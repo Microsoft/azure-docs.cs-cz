@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100576378"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí Azure Portal a PowerShellu
@@ -83,7 +83,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu** můžete zobrazit vš
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">Podstav</th><th align="left">Description</th>
+    <th align="left">Stav</th><th align="left">Podstav</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Čekající</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>
@@ -174,7 +174,7 @@ Kanály můžete pozastavit nebo pozastavit pomocí rutiny **Suspend-AzDataFacto
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Příklad:
+Například:
 
 ```powershell
 Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -185,7 +185,7 @@ Po vyřešení problému s kanálem můžete pozastavený kanál obnovit spušt�
 ```powershell
 Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Příklad:
+Například:
 
 ```powershell
 Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -218,7 +218,7 @@ Pokud se spuštění aktivity v kanálu nezdaří, datová sada vytvořená kan�
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   Příklad:
+   Například:
 
     ```powershell   
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
@@ -232,7 +232,7 @@ Pokud se spuštění aktivity v kanálu nezdaří, datová sada vytvořená kan�
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
-    Příklad:
+    Například:
 
     ```powershell   
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"

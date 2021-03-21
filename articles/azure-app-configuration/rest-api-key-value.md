@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 95081d6f8c2770d01f7836e08b6851860bf47ba8
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932553"
 ---
 # <a name="key-values"></a>Páry klíč-hodnota
@@ -30,7 +30,7 @@ Tento článek se týká rozhraní API verze 1,0.
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -178,13 +178,13 @@ GET /kv?key={key}&label={label}&api-version={api-version}
 |`label=prod*`|Odpovídá popiskům, které začínají na **prod**|
 |`label=prod,test`|Odpovídá popisku **na** oddělení nebo **test** (omezeno na 5 CSV)|
 
-**_Rezervované znaky_* _
+***Vyhrazené znaky***
 
-`_`, `\`, `,`
+`*`, `\`, `,`
 
 Pokud je vyhrazený znak součástí hodnoty, musí být uvozen pomocí `\{Reserved Character}` . Nerezervované znaky mohou být také uvozeny řídicími znaky.
 
-***Ověření filtru** _
+***Ověření filtru***
 
 V případě chyby ověření filtru je odpověď HTTP `400` s podrobnostmi o chybě:
 
@@ -203,7 +203,7 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-_ –*Příklady**
+**Příklady**
 
 - Vše
 

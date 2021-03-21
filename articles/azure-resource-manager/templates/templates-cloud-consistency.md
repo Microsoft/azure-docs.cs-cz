@@ -7,10 +7,10 @@ ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928354"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Vývoj šablon ARM pro cloudovou konzistenci
@@ -487,7 +487,7 @@ Pokud chcete načíst seznam dostupných imagí virtuálních počítačů v ně
 az vm image list -all
 ```
 
-Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Příklad:
+Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Například:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -590,7 +590,7 @@ Pokud chcete načíst seznam rozšíření virtuálních počítačů, které js
 az vm extension image list --location myLocation
 ```
 
-Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Příklad:
+Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Například:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version

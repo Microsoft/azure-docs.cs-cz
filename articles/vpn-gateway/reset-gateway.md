@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
 ms.openlocfilehash: adc2ffd63d73baaddce00324787df61061ea69dc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726631"
 ---
 # <a name="reset-a-vpn-gateway-or-a-connection"></a>Resetování brány VPN nebo připojení
@@ -60,7 +60,7 @@ Správce prostředků VPN Gateway můžete resetovat pomocí Azure Portal. Pokud
 
 [!INCLUDE [portal steps](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
-### <a name="powershell"></a><a name="ps"></a>Prostředí
+### <a name="powershell"></a><a name="ps"></a>PowerShell
 
 #### <a name="resource-manager-deployment-model"></a>Model nasazení Resource Manager
 
@@ -98,7 +98,7 @@ RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
 StatusCode     : OK
 ```
 
-### <a name="azure-cli"></a><a name="cli"></a>Rozhraní příkazového řádku Azure
+### <a name="azure-cli"></a><a name="cli"></a>Azure CLI
 
 Bránu resetujete tak, že použijete příkaz [AZ Network VNet-Gateway Reset](/cli/azure/network/vnet-gateway) . Následující příklad obnoví bránu virtuální sítě s názvem VNet5GW ve skupině prostředků TestRG5:
 

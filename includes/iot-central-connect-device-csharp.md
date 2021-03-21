@@ -5,13 +5,13 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/25/2020
 ms.openlocfilehash: f4536beae18a50d3e1d42fc1593cf826c94418f8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033829"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
@@ -21,11 +21,11 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-V kopii Microsoft Azurech ukázek IoT pro úložiště jazyka C#, které jste stáhli dříve, otevřete soubor projektu *Azure-IoT-Samples-CSharp-master\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* v aplikaci Visual Studio. V projektu **termostatu** otevřete soubory *program.cs* a *ThermostatSample.cs* pro zobrazení kódu této ukázky.
+V kopii Microsoft Azurech ukázek IoT pro úložiště jazyka C#, které jste stáhli dříve, otevřete soubor projektu *Azure-IoT-Samples-CSharp-master\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* v aplikaci Visual Studio. V projektu **termostatu** otevřete soubory *program. cs* a *ThermostatSample. cs* , abyste zobrazili kód pro tuto ukázku.
 
 Když spustíte ukázku pro připojení k IoT Central, používá službu Device Provisioning (DPS) k registraci zařízení a vygenerování připojovacího řetězce. Ukázka načte informace o připojení DPS, které potřebuje z prostředí.
 
-V *program.cs* `main` metoda volá `SetupDeviceClientAsync` :
+V *programu program. cs* `main` metoda volá `SetupDeviceClientAsync` :
 
 * ID modelu použijte, `dtmi:com:example:Thermostat;1` když zřídí zařízení s DPS. IoT Central používá ID modelu k identifikaci nebo generování šablony zařízení pro toto zařízení. Další informace najdete v tématu [přidružení zařízení k šabloně zařízení](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Vytvořte instanci **DeviceClient** pro připojení k IoT Central.
@@ -57,7 +57,7 @@ private static async Task<DeviceClient> SetupDeviceClientAsync(Parameters parame
 
 Metoda Main potom vytvoří instanci **ThermostatSample** a zavolá `PerformOperationsAsync` metodu pro zpracování interakcí s IoT Central.
 
-V *ThermostatSample.cs* `PerformOperationsAsync` metoda:
+V *ThermostatSample. cs* `PerformOperationsAsync` metoda:
 
 * Nastaví obslužnou rutinu pro příjem aktualizací požadovaných vlastností na cílovou teplotu.
 * Nastaví obslužnou rutinu pro příkaz **getMaxMinReport** .
@@ -202,7 +202,7 @@ Spuštění ukázkové aplikace:
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |

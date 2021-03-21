@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895267"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
@@ -24,7 +24,7 @@ ms.locfileid: "98895267"
 
 Nahrané balíčky výkresu můžete převést na data mapy pomocí [služby Azure Maps Conversion Service](/rest/api/maps/conversion). Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Balíček pro kreslení obsahuje kresby uložené ve formátu DWG, což je formát nativního souboru pro software Autodesk pro® pro AutoCAD.
 
@@ -198,7 +198,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `directoryInfo`
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Vyžadováno | Description |
 |-----------|------|----------|-------------|
 | `name`      | řetězec | true   |  Název budovy |
 | `streetAddress`|    řetězec |    false (nepravda)    | Adresa sestavení. |
@@ -219,7 +219,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `buildingLevels`Objekt obsahuje pole s JSON úrovněmi budov.
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Vyžadováno | Description |
 |-----------|------|----------|-------------|
 |`levelName`    |řetězec    |true |    Název popisné úrovně Například: Floor 1, předsálí, Blue parkování nebo Basement.|
 |`ordinal` | integer |    true | Určuje svislé pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
@@ -251,7 +251,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `unitProperties`Objekt obsahuje pole s vlastnostmi jednotky ve formátu JSON.
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Vyžadováno | Description |
 |-----------|------|----------|-------------|
 |`unitName`    |řetězec    |true    |Název jednotky, která se má přidružit k tomuto `unitProperty` záznamu. Tento záznam je platný pouze v případě, že `unitName` se v vrstvách nachází shodný popisek `unitLabel` . |
 |`categoryName`|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |

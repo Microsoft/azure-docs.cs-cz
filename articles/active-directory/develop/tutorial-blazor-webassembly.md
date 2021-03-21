@@ -9,10 +9,10 @@ ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
 ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102552112"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Kurz: přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly
@@ -30,7 +30,7 @@ V tomto kurzu se používá .NET Core 3,1. Dokumentace .NET obsahuje pokyny [k z
 
 K dispozici je také [kurz pro server Blazor](tutorial-blazor-server.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 * Tenant služby Azure AD, kde můžete zaregistrovat aplikaci. Pokud nemáte přístup k tenantovi služby Azure AD, můžete si ho zaregistrovat pomocí [vývojářského programu Microsoft 365](https://developer.microsoft.com/microsoft-365/dev-program) nebo vytvořením [bezplatného účtu Azure](https://azure.microsoft.com/free).
@@ -102,7 +102,7 @@ Dále do souboru *. csproj* projektu ve skupině **položek** netstandard 2.1 p�
 
 Pak upravte kód tak, jak je uvedeno v následujících několika krocích. Tyto změny budou přidávat [přístupové tokeny](access-tokens.md) do odchozích požadavků odeslaných do rozhraní Microsoft Graph API. Tento model je podrobněji popsán v tématu [ASP.NET Core Blazor a další scénáře zabezpečení pro WebAssembly](/aspnet/core/blazor/security/webassembly/additional-scenarios).
 
-Nejprve vytvořte nový soubor s názvem *GraphAPIAuthorizationMessageHandler.cs* s následujícím kódem. Tato obslužná rutina bude uživateli přidat přístupový token pro `User.Read` `Mail.Read` obory a pro odchozí požadavky na rozhraní Microsoft Graph API.
+Nejprve vytvořte nový soubor s názvem *GraphAPIAuthorizationMessageHandler. cs* s následujícím kódem. Tato obslužná rutina bude uživateli přidat přístupový token pro `User.Read` `Mail.Read` obory a pro odchozí požadavky na rozhraní Microsoft Graph API.
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -121,7 +121,7 @@ public class GraphAPIAuthorizationMessageHandler : AuthorizationMessageHandler
 }
 ```
 
-Potom nahraďte obsah `Main` metody v *program.cs* následujícím kódem. Tento kód využívá nové `GraphAPIAuthorizationMessageHandler` a přidané `User.Read` a `Mail.Read` jako výchozí obory, které bude aplikace požadovat při prvním přihlášení uživatele.
+Potom nahraďte obsah `Main` metody v *programu program. cs* následujícím kódem. Tento kód využívá nové `GraphAPIAuthorizationMessageHandler` a přidané `User.Read` a `Mail.Read` jako výchozí obory, které bude aplikace požadovat při prvním přihlášení uživatele.
 
 ```csharp
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

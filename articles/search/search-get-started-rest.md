@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 11/17/2020
 ms.openlocfilehash: b701a80c3c3b7e5a558d875aca2fb34aea89edff
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119624"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání pomocí rozhraní REST API
@@ -25,7 +25,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 V tomto článku se používá aplikace po pracovní ploše. Můžete [Stáhnout a importovat kolekci post](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) , pokud chcete použít předdefinované požadavky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 

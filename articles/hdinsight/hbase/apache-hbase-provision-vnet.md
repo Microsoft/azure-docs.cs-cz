@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946123"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Vytváření clusterů Apache HBA v HDInsight v Azure Virtual Network
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 V této části vytvoříte cluster Apache HBA založený na systému Linux s závislým Azure Storage účtem ve službě Azure Virtual Network pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/deploy-powershell.md). Další metody vytváření clusterů a porozumění nastavením najdete v tématu [Vytvoření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o použití šablony k vytvoření Apache Hadoop clusterů ve službě HDInsight najdete v tématu [vytvoření Apache Hadoop clusterů ve službě HDInsight pomocí šablon Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md) .
 
 > [!NOTE]  
-> Některé vlastnosti jsou pevně zakódované do šablony. Příklad:
+> Některé vlastnosti jsou pevně zakódované do šablony. Například:
 >
 > * **Umístění**: východní USA 2
 > * **Verze clusteru**: 3.6
@@ -102,13 +102,13 @@ Pokud se k připojení k adaptérům HBA vzdáleně připojujete pomocí aplikac
     curl -u <username>:<password> -k https://CLUSTERNAME.azurehdinsight.net/ambari/api/v1/clusters/CLUSTERNAME.azurehdinsight.net/services/hbase/components/hbrest
     ```
 
-V vrácených datech JavaScript Object Notation (JSON) vyhledejte položku "host_name". Obsahuje plně kvalifikovaný název domény pro uzly v clusteru. Příklad:
+V vrácených datech JavaScript Object Notation (JSON) vyhledejte položku "host_name". Obsahuje plně kvalifikovaný název domény pro uzly v clusteru. Například:
 
 ```
 "host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
 ```
 
-Část názvu domény začínající názvem clusteru je přípona DNS. Například `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Část názvu domény začínající názvem clusteru je přípona DNS. Například, `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
 <!--
 3.    Change the primary DNS suffix configuration of the virtual machine. This enables the virtual machine to automatically resolve the host name of the HBase cluster without explicit specification of the suffix. For example, the *workernode0* host name will be correctly resolved to workernode0 of the HBase cluster.
@@ -127,9 +127,9 @@ V vrácených datech JavaScript Object Notation (JSON) vyhledejte položku "host
 
 ### <a name="verify-communication-inside-virtual-network"></a>Ověření komunikace uvnitř virtuální sítě
 
-Pokud chcete ověřit, jestli virtuální počítač může komunikovat s clusterem HBA, použijte příkaz `ping headnode0.<dns suffix>` z virtuálního počítače. Například `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Pokud chcete ověřit, jestli virtuální počítač může komunikovat s clusterem HBA, použijte příkaz `ping headnode0.<dns suffix>` z virtuálního počítače. Například, `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
-Pokud chcete tyto informace použít v aplikaci Java, můžete postupovat podle kroků v části [použití Apache Maven k vytváření aplikací v jazyce Java, které používají Apache HBA s HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) k vytvoření aplikace. Chcete-li aplikaci připojit ke vzdálenému serveru HBA, upravte soubor **hbase-site.xml** v tomto příkladu tak, aby používal plně kvalifikovaný název domény pro Zookeeper. Příklad:
+Pokud chcete tyto informace použít v aplikaci Java, můžete postupovat podle kroků v části [použití Apache Maven k vytváření aplikací v jazyce Java, které používají Apache HBA s HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) k vytvoření aplikace. Chcete-li aplikaci připojit ke vzdálenému serveru HBA, upravte soubor **hbase-site.xml** v tomto příkladu tak, aby používal plně kvalifikovaný název domény pro Zookeeper. Například:
 
 ```xml
 <property>

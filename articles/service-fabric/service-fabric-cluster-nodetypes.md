@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.openlocfilehash: 9e30c02de54806006a1881448bcb9f788a57310c
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97095249"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric Azure a Virtual Machine Scale Sets
@@ -84,7 +84,7 @@ Níže jsou uvedeny popisy vlastností:
 | nicPrefixOverride | řetězec | Předpona podsítě jako 10.0.0.0/24 |
 | commonNames | řetězec [] | Běžné názvy instalovaných certifikátů clusteru |
 | x509StoreName | řetězec | Název úložiště, ve kterém je umístěný nainstalovaný certifikát clusteru |
-| typeHandlerVersion | 1,1 | Verze rozšíření pro upgrade na 1,1 se doporučuje používat klasickou verzi 1,0. |
+| typeHandlerVersion | 1.1 | Verze rozšíření pro upgrade na 1,1 se doporučuje používat klasickou verzi 1,0. |
 | Cesta k DataPath | řetězec | Cesta k jednotce, která slouží k uložení stavu pro Service Fabric systémových služeb a dat aplikací.
 
 ## <a name="next-steps"></a>Další kroky

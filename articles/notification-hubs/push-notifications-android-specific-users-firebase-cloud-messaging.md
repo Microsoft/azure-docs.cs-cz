@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: 870842074bb4a0012a48115586a8ad571275d470
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022407"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do konkrétních aplikací pro Android pomocí Azure Notification Hubs
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující kroky:
 > * Aktualizace aplikace pro Android
 > * Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před provedením tohoto kurzu dokončete [kurz: nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md) .
 

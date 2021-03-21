@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97094672"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid výstupní vazba pro Azure Functions
@@ -324,11 +324,11 @@ Vazba Event Grid Output není pro Python k dispozici.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `EventGrid` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastavené na "eventGrid". |
-|**směr** | neuvedeno | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje událost. |
+|**textový** | Není k dispozici | Musí být nastavené na "eventGrid". |
+|**směr** | Není k dispozici | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
+|**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje událost. |
 |**topicEndpointUri** |**TopicEndpointUri** | Název nastavení aplikace, které obsahuje identifikátor URI vlastního tématu, například `MyTopicEndpointUri` . |
 |**topicKeySetting** |**TopicKeySetting** | Název nastavení aplikace, které obsahuje přístupový klíč pro vlastní téma. |
 

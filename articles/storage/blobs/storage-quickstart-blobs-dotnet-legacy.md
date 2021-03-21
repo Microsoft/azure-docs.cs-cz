@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: effb193e54be7331c9dc2874a4a34ef55442ed30
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021737"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V11 pro .NET
@@ -40,7 +40,7 @@ Další prostředky:
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet Azure Storage – [Vytvoření účtu úložiště](../common/storage-account-create.md)
@@ -54,7 +54,7 @@ Tato část vás provede přípravou projektu pro práci s klientskou knihovnou 
 
 Nejdřív vytvořte aplikaci .NET Core s názvem *BLOB-Started*.
 
-1. V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem *BLOB – rychlý Start*. Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*.
+1. V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem *BLOB – rychlý Start*. Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program. cs*.
 
    ```console
    dotnet new console -n blob-quickstart
@@ -99,7 +99,7 @@ dotnet add package Microsoft.Azure.Storage.Blob
 
 Z adresáře projektu:
 
-1. V editoru otevřete soubor *program.cs*
+1. Otevřete soubor *program. cs* v editoru.
 2. Odebrat `Console.WriteLine` příkaz
 3. Přidat `using` direktivy
 4. Vytvořte `ProcessAsync` metodu, kde bude umístěn hlavní kód pro příklad.

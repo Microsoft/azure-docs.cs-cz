@@ -11,10 +11,10 @@ ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97708462"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Použití parametrů kanálu k reučení modelů v Návrháři
@@ -30,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Publikujte svůj školicí kanál.
 > * Přeškolení modelu o nové parametry.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor Azure Machine Learning
 * Dokončete část 1 této série, [Transformujte data v Návrháři](how-to-designer-transform-data.md) .

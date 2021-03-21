@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 10/19/2020
 ms.author: alkemper
 ms.openlocfilehash: 513c826e11ff9dfe6ea94349c67620da9d1bba48
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932043"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace .NET Framework
@@ -62,7 +62,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
     Microsoft.FeatureManagement
     ```
 
-1. Otevřete *program.cs* a přidejte následující příkazy:
+1. Otevřete *program. cs* a přidejte následující příkazy:
 
     ```csharp
     using Microsoft.Extensions.DependencyInjection;

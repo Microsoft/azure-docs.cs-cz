@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8dd3edd25d21bfcd0fde1bc8b5f103877d968c8a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119981"
 ---
 # <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Kurz: použití fondu SQL bez serveru s Power BI Desktop & vytvoření sestavy
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > - Připojit Power BI Desktop k fondu SQL bez serveru
 > - Vytvořit sestavu na základě zobrazení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 

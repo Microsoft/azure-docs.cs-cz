@@ -10,10 +10,10 @@ ms.date: 08/27/2020
 ms.author: cherylmc
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: c19e1156f897873defaba4cebaabb904d034ead3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97032741"
 ---
 # <a name="what-is-vpn-gateway"></a>Co je VPN Gateway?
@@ -71,7 +71,7 @@ Brány VPN se dají nasadit v Zóny dostupnosti Azure. To přináší odolnost p
 
 Další informace o skladových jednotkách (SKU) brány pro službu VPN Gateway najdete v tématu [Skladové jednotky (SKU) brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 Nejčastější dotazy týkající se služby VPN Gateway najdete v tématu [Nejčastější dotazy ke službě VPN Gateway](vpn-gateway-vpn-faq.md).
 

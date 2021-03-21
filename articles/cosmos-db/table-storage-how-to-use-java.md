@@ -10,10 +10,10 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.custom: devx-track-java
 ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97093685"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Javy
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak vytvářet tabulky, ukládat data a provádět
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-**Vytvoření účtu úložiště Azure**
+**Vytvoření účtu služby Azure Storage**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
@@ -626,7 +626,7 @@ catch (Exception e)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * [Sada SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]
 * [Referenční informace ke klientské sadě SDK služby Azure Storage][Azure Storage Client SDK Reference]
-* [Rozhraní REST API pro službu Azure Storage][Azure Storage REST API]
+* [Azure Storage REST API][Azure Storage REST API]
 * [Blog týmu Azure Storage][Azure Storage Team Blog]
 
 Další informace najdete na webu [Azure pro vývojáře v Javě](/java/azure).

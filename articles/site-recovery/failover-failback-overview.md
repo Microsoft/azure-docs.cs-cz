@@ -4,10 +4,10 @@ description: Přečtěte si o převzetí služeb při selhání a selhání v Az
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: b900655d6fdf1143d430ac842bfd84eb1dfdf34c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98070736"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Místní převzetí služeb při selhání a zotavení po havárii
@@ -45,7 +45,7 @@ Pokud se chcete připojit k virtuálním počítačům Azure vytvořeným po př
 
 **Převzetí služeb při selhání** | **Umístění** | **Akce**
 --- | --- | ---
-**Virtuální počítač Azure s Windows** | Na místním počítači před převzetím služeb při selhání | **Přístup přes Internet**: Povolit protokol RDP. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné** a že protokol RDP je povolený pro všechny profily v povolených aplikacích **brány Windows Firewall**  >  .<br/><br/> **Přístup přes síť VPN typu Site-to-site**: na počítači povolte RDP. Ověřte, že je protokol RDP povolený v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.<br/><br/>  Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Web Windows Update se může spustit při převzetí služeb při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se nedokončí aktualizace.
+**Virtuální počítač Azure s Windows** | Na místním počítači před převzetím služeb při selhání | **Přístup přes Internet**: Povolit protokol RDP. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné** a že protokol RDP je povolený pro všechny profily v povolených aplikacích **brány Windows Firewall**  >  .<br/><br/> **Přístup přes síť VPN typu Site-to-site**: na počítači povolte RDP. Ověřte, že je protokol RDP povolený v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.<br/><br/>  Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Web Windows Update se může spustit při převzetí služeb při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se nedokončí aktualizace.
 **Virtuální počítač Azure s Windows** | Na virtuálním počítači Azure po převzetí služeb při selhání |  [Přidejte veřejnou IP adresu](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) pro tento virtuální počítač.<br/><br/> Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojeno), musí umožňovat příchozí připojení k portu RDP.<br/><br/> Zkontrolujte **diagnostiku spouštění** a ověřte snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si [tipy k odstraňování potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Virtuální počítač Azure se systémem Linux** | Na místním počítači před převzetím služeb při selhání | Ujistěte se, že je služba Secure Shell na virtuálním počítači nastavená tak, aby se automaticky spouštěla při spuštění systému.<br/><br/> Zkontrolujte, jestli pravidla brány firewall umožňují službě SSH připojit se k ní.
 **Virtuální počítač Azure se systémem Linux** | Na virtuálním počítači Azure po převzetí služeb při selhání | Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojené), musí umožňovat příchozí připojení k portu SSH.<br/><br/> [Přidejte veřejnou IP adresu](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) pro tento virtuální počítač.<br/><br/> Podívejte se na **diagnostiku spouštění** pro snímek obrazovky virtuálního počítače.<br/><br/>

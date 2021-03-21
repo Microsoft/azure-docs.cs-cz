@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
 ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724243"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace Azure Functions
@@ -21,7 +21,7 @@ V tomto rychlém startu vytvoříte aplikaci Azure Functions a v ní použijete 
 
 Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET. Integrují s konfigurací aplikace prostřednictvím poskytovatele konfigurace .NET.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou **vývoje Azure** .
@@ -53,7 +53,7 @@ Tento projekt bude používat [vkládání závislostí v rozhraní .net Azure F
    - [Microsoft. FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) verze 2.2.0 nebo novější
    - [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) verze 1.1.0 nebo novější 
 
-2. Přidejte nový soubor *Startup.cs* s následujícím kódem. Definuje třídu s názvem `Startup` , která implementuje `FunctionsStartup` abstraktní třídu. Atribut assembly slouží k zadání názvu typu používaného během Azure Functionsho spuštění.
+2. Přidejte nový soubor *Startup. cs* s následujícím kódem. Definuje třídu s názvem `Startup` , která implementuje `FunctionsStartup` abstraktní třídu. Atribut assembly slouží k zadání názvu typu používaného během Azure Functionsho spuštění.
 
     ```csharp
     using System;
@@ -107,7 +107,7 @@ Tento projekt bude používat [vkládání závislostí v rozhraní .net Azure F
     }
     ```
 
-5. Otevřete *function1.cs* a přidejte následující obory názvů.
+5. Otevřete *function1. cs* a přidejte následující obory názvů.
 
     ```csharp
     using System.Linq;

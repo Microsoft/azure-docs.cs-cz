@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021040"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 5
@@ -33,7 +33,7 @@ Před nasazením aktualizace v řešení StorSimple si projděte informace obsa�
 
 V Update 5 byly provedeny následující hlavní vylepšení a opravy chyb.
 
-* **Použití Azure Active Directory (AAD) k ověření ve službě StorSimple Device Manager Service** – od aktualizace 5 a vyšší, Azure Active Directory slouží k ověření pomocí služby StorSimple Device Manager. Starý ověřovací mechanismus bude od prosince 2017 zastaralý. Všichni uživatelé musí ve svých pravidlech firewallu zahrnovat nové adresy URL pro ověřování. Další informace najdete na adrese [URL pro ověřování uvedené v článku požadavky na síť pro vaše zařízení StorSimple](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal).
+* **Použití Azure Active Directory (AAD) k ověření ve službě StorSimple Správce zařízení Service** – od aktualizace 5 a vyšší, Azure Active Directory slouží k ověření pomocí služby StorSimple Správce zařízení. Starý ověřovací mechanismus bude od prosince 2017 zastaralý. Všichni uživatelé musí ve svých pravidlech firewallu zahrnovat nové adresy URL pro ověřování. Další informace najdete na adrese [URL pro ověřování uvedené v článku požadavky na síť pro vaše zařízení StorSimple](storsimple-8000-system-requirements.md#url-patterns-for-azure-portal).
 
     Pokud adresa URL pro ověření není v pravidlech brány firewall zahrnutá, zobrazí se uživatelům kritická výstraha, že jejich zařízení StorSimple nebylo možné ověřit pomocí služby. Pokud se uživatelům zobrazí tato výstraha, musí zahrnovat novou adresu URL pro ověření. Další informace najdete na webu výstrahy týkající se [StorSimple sítě](storsimple-8000-manage-alerts.md#networking-alerts).
 

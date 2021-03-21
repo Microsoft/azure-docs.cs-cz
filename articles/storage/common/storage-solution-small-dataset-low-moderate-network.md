@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023223"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Přenos dat malých datových sad s malou až střední šířkou pásma sítě
@@ -49,7 +49,7 @@ V tomto scénáři jsou doporučené tyto možnosti:
 
 Následující tabulka shrnuje rozdíly v klíčových funkcích.
 
-| Funkce | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
+| Funkce | Průzkumník služby Azure Storage | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Dostupnost | Stažení a instalace <br>Samostatný nástroj | Webové nástroje pro průzkum v Azure Portal | Nástroj příkazového řádku |Programovatelné rozhraní v jazycích .NET, Java, Python, JavaScript, C++, přejít, Ruby a PHP |
 | Grafické rozhraní | Yes | Yes | No | No |

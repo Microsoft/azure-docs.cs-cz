@@ -7,10 +7,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100576151"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Použití Log Analytics pro diagnostickou funkci
@@ -29,7 +29,7 @@ Virtuální plocha Windows používá [Azure monitor](../azure-monitor/overview.
     - Když uživatelé zahájí a dokončí připojení ke službě.
 - Registrace hostitele:
     - Byl hostitel relace úspěšně zaregistrován u služby při připojení?
-- Vyskytl
+- Chyby:
     - Narazí uživatelé na nějaké problémy s konkrétními aktivitami? Tato funkce může vygenerovat tabulku, která sleduje data aktivity za vás, dokud jsou informace spojeny s aktivitami.
 - Kontrolní body
     - Konkrétní kroky při životním cyklu aktivity, která byla dosažena. Během relace se například uživatel vyrovnává jako vyrovnaný k určitému hostiteli, potom byl během připojení přihlášen a tak dále.
@@ -91,7 +91,7 @@ K Log Analytics pracovním prostorům můžete přistupovat Azure Portal nebo Az
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Přístup k Log Analytics v pracovním prostoru Log Analytics
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyhledejte **Log Analytics pracovní prostor**.
 

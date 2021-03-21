@@ -9,20 +9,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: fd5ee9085cf716128c5b3ae073f963c76d2bd17a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370089"
 ---
 # <a name="how-to-create-plans-for-your-azure-application-offer"></a>Jak vytvořit plány pro nabídku aplikací Azure
 
-Nabídky prodávané prostřednictvím komerčního tržiště Microsoftu musí mít aspoň jeden plán, aby se vaše nabídka dala zobrazit na komerčním webu Marketplace. V rámci jedné nabídky můžete vytvořit nejrůznější plány s různými možnostmi. Tyto plány (někdy označované jako SKU) se mohou lišit v souvislosti s typem plánu ( _Šablona řešení_ nebo _spravovaná aplikace_ ), finanční zhodnocení nebo cílová skupina. Obecné pokyny k plánům najdete v tématu [plány a ceny pro komerční nabídky na webu Marketplace](plans-pricing.md).
+Nabídky prodávané prostřednictvím komerčního tržiště Microsoftu musí mít aspoň jeden plán, aby se vaše nabídka dala zobrazit na komerčním webu Marketplace. V rámci jedné nabídky můžete vytvořit nejrůznější plány s různými možnostmi. Tyto plány (někdy označované jako SKU) se mohou lišit v souvislosti s typem plánu (_Šablona řešení_ nebo _spravovaná aplikace_), finanční zhodnocení nebo cílová skupina. Obecné pokyny k plánům najdete v tématu [plány a ceny pro komerční nabídky na webu Marketplace](plans-pricing.md).
 
 ## <a name="create-a-plan"></a>Vytvoření plánu
 
 1. V horní části karty **Přehled plánu** vyberte **+ vytvořit nový plán**.
-1. V dialogovém okně, které se zobrazí, zadejte do pole **ID plánu** jedinečný identifikátor ID plánu. Toto ID se bude zobrazovat zákazníkům v adrese URL produktu. Použijte až 50 malých alfanumerických znaků, pomlčky nebo podtržítka. Po zvolení **Create (vytvořit** ) nemůžete změnit ID plánu.
+1. V dialogovém okně, které se zobrazí, zadejte do pole **ID plánu** jedinečný identifikátor ID plánu. Toto ID se bude zobrazovat zákazníkům v adrese URL produktu. Použijte až 50 malých alfanumerických znaků, pomlčky nebo podtržítka. Po zvolení **Create (vytvořit**) nemůžete změnit ID plánu.
 1. Do pole **název plánu** zadejte jedinečný název pro tento plán. Zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky. Použijte maximálně 50 znaků.
 1. Vyberte **Vytvořit**.
 

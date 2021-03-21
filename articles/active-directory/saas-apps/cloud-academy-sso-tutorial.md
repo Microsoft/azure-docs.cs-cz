@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/15/2020
 ms.author: jeedes
 ms.openlocfilehash: fa46d6e5c7f1007e3a90e22eb9d4f46e18251a28
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98729825"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí cloudu Academy-SSO
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Cloud Academy-SSO pomocí Azure Active
 * Umožněte, aby se vaši uživatelé automaticky přihlásili ke cloudu Academy-SSO pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -104,7 +104,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. V části vlastnosti **uživatele** proveďte tyto kroky:
    1. Do pole **název** zadejte **B. Simon**.  
-   1. Do pole **uživatelské jméno** zadejte \<username> @ \<companydomain> . \<extension> . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte \<username> @ \<companydomain> . \<extension> . Například, `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Vyberte **Vytvořit**.
 

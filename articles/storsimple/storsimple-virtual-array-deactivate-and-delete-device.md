@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023019"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivace a odstranění služby StorSimple Virtual Array
 
 ## <a name="overview"></a>Přehled
 
-Když deaktivujete virtuální pole StorSimple, přerušíte připojení mezi zařízením a odpovídající službou StorSimple Device Manager. Tento kurz vysvětluje následující postupy:
+Když deaktivujete virtuální pole StorSimple, přerušíte připojení mezi zařízením a odpovídající službou StorSimple Správce zařízení. Tento kurz vysvětluje následující postupy:
 
 * Deaktivace zařízení 
 * Odstranění deaktivovaného zařízení
@@ -34,7 +34,7 @@ Informace v tomto článku se týkají pouze virtuálních polí StorSimple. Inf
 
 ## <a name="when-to-deactivate"></a>Kdy se má deaktivovat?
 
-Deaktivace je TRVALá operace a nelze ji vrátit zpět. Nemůžete znovu zaregistrovat deaktivované zařízení ve službě StorSimple Device Manager. Může být nutné deaktivovat a odstranit virtuální pole StorSimple v následujících scénářích:
+Deaktivace je TRVALá operace a nelze ji vrátit zpět. Nemůžete znovu zaregistrovat deaktivované zařízení ve službě StorSimple Správce zařízení. Může být nutné deaktivovat a odstranit virtuální pole StorSimple v následujících scénářích:
 
 * **Plánované převzetí služeb při selhání** : vaše zařízení je online a vy plánujete převzít služby při selhání zařízení. Pokud plánujete upgradovat na větší zařízení, možná bude nutné provést převzetí služeb při selhání zařízení. Po přenosu vlastnictví dat a dokončení převzetí služeb při selhání se zdrojové zařízení automaticky odstraní.
 * **Neplánované převzetí služeb při selhání** : vaše zařízení je offline a v zařízení je potřeba převzít služby při selhání. K tomuto scénáři může dojít během havárie, když dojde k výpadku v datovém centru a primární zařízení je mimo provoz. Plánujete převzít služby zařízení při selhání do sekundárního zařízení. Po přenosu vlastnictví dat a dokončení převzetí služeb při selhání se zdrojové zařízení automaticky odstraní.
@@ -73,7 +73,7 @@ Pokud chcete zařízení odstranit, proveďte následující kroky.
 
 #### <a name="to-delete-the-device"></a>Postup odstranění zařízení
 
-1. V Device Manager StorSimple, navštivte **> Správa zařízení**. V okně **zařízení** vyberte deaktivované zařízení, které chcete odstranit.
+1. V Správce zařízení StorSimple, navštivte **> Správa zařízení**. V okně **zařízení** vyberte deaktivované zařízení, které chcete odstranit.
 2. V okně **řídicí panel zařízení** klikněte na **... A pak** klikněte na **Odstranit**.
    
    ![Vyberte zařízení, které chcete odstranit.](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
@@ -90,4 +90,4 @@ Pokud chcete zařízení odstranit, proveďte následující kroky.
 
 * Informace o tom, jak převzít služby při selhání, najdete v tématu [převzetí služeb při selhání a zotavení po havárii ve virtuálním poli StorSimple](storsimple-virtual-array-failover-dr.md).
 
-* Další informace o tom, jak používat službu StorSimple Device Manager, najdete v článku [použití služby StorSimple Device Manager ke správě vašeho virtuálního pole StorSimple](storsimple-virtual-array-manager-service-administration.md).
+* Další informace o tom, jak používat službu StorSimple Správce zařízení, najdete v článku [použití služby StorSimple Správce zařízení ke správě vašeho virtuálního pole StorSimple](storsimple-virtual-array-manager-service-administration.md).
