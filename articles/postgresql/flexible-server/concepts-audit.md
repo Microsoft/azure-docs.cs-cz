@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: b344e2a845a9da8333860599bd4ff9041108202f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100588260"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---flexible-server"></a>Protokolování auditu Azure Database for PostgreSQL – flexibilní Server
@@ -45,7 +45,7 @@ Jakmile [povolíte pgAudit](#enabling-pgaudit), můžete nakonfigurovat jeho par
 
 > [!NOTE]
 > Nastavení na `pgaudit.log_client` zapnuto bude přesměrovat protokoly do klientského procesu (například psql) místo zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané. <br> <br>
-> `pgaudit.log_level` je povoleno pouze `pgaudit.log_client` v případě, že je zapnuto.
+> Nastavení `pgaudit.log_level` je povolené pouze v případě, že je povolené nastavení `pgaudit.log_client`.
 
 > [!NOTE]
 > V Azure Database for PostgreSQL-flexibilní server `pgaudit.log` nelze nastavit pomocí `-` zástupce znaménka (minus), jak je popsáno v dokumentaci k pgAudit. Všechny požadované třídy příkazů (čtení, zápis atd.) by měly být jednotlivě určeny.

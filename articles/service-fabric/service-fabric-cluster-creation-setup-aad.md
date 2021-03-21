@@ -4,10 +4,10 @@ description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro 
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: a1f89e144f9cef12c5bff87befb00a88bad8d7d9
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102215965"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavit Azure Active Directory pro ověřování klientů
@@ -26,7 +26,7 @@ Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím spr�
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku předpokládáme, že jste už tenanta vytvořili. Pokud ne, začněte tím, že si přečtete, [Jak získat klienta Azure Active Directory][active-directory-howto-tenant].
 
 Abychom zjednodušili některé kroky týkající se konfigurace služby Azure AD pomocí Service Fabricho clusteru, vytvořili jsme sadu skriptů prostředí Windows PowerShell.

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
 ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98541186"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Přizpůsobení síťových konfigurací cílového virtuálního počítače Azure
@@ -55,7 +55,7 @@ Site Recovery teď budou dodržovat tato nastavení a zajistěte, aby se virtuá
 
 Při aktivaci testovacího převzetí služeb při selhání prostřednictvím plánu obnovení se vždy požádá o virtuální síť Azure. Tato virtuální síť se použije pro testovací převzetí služeb při selhání pro počítače, které nemají předem nakonfigurovaná nastavení testovacího převzetí služeb při selhání.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="unable-to-view-or-select-a-resource"></a>Nepovedlo se zobrazit nebo vybrat prostředek.
 

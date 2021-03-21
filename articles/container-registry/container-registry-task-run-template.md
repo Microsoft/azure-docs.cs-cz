@@ -4,10 +4,10 @@ description: Zařazení spuštění úlohy ACR do fronty pro sestavení Image po
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98916061"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Spouštění úloh ACR pomocí šablon Správce prostředků
@@ -16,7 +16,7 @@ ms.locfileid: "98916061"
 
 V tomto článku se dozvíte, Azure Resource Manager příklady šablon pro zařazení rychlého spuštění úlohy do fronty, podobně jako v tématu, který můžete vytvořit ručně pomocí příkazu [AZ ACR Build][az-acr-build] .
 
-Správce prostředků šablona pro zařazení spuštění úlohy do fronty je užitečná ve scénářích automatizace a rozšiřuje funkce nástroje `az acr build` . Příklad:
+Správce prostředků šablona pro zařazení spuštění úlohy do fronty je užitečná ve scénářích automatizace a rozšiřuje funkce nástroje `az acr build` . Například:
 
 * Použití šablony k vytvoření registru kontejneru a okamžitému zařazování spuštění úlohy do fronty pro sestavení a vložení image kontejneru
 * Umožňuje vytvořit nebo povolit další prostředky, které můžete použít v rychlém spuštění úlohy, jako je spravovaná identita pro prostředky Azure.
@@ -26,7 +26,7 @@ Správce prostředků šablona pro zařazení spuštění úlohy do fronty je u�
 * Je nutné zadat vzdálený kontext, jako je například úložiště GitHub, jako [zdrojové umístění](container-registry-tasks-overview.md#context-locations) pro spuštění úlohy. Nemůžete použít místní zdrojový kontext.
 * Pro úlohy spouštěné pomocí spravované identity je povolená jenom spravovaná identita *přiřazená uživatelem* .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Účet GitHub** – vytvořte účet https://github.com , pokud ho ještě nemáte. 
 * **Rozvětvení ukázkové úložiště** – pro příklady úloh, které jsou tady uvedené, použijte uživatelské rozhraní GitHubu k rozvětvení následujícího ukázkového úložiště do svého účtu GitHubu: https://github.com/Azure-Samples/acr-build-helloworld-node . Toto úložiště obsahuje vzorový fázemi a zdrojový kód pro vytváření malých imagí kontejneru.

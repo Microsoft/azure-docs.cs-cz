@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
 ms.openlocfilehash: 0346b467bc299b4eb6125df04a4449e94c035e47
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101666469"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Rychlý Start: vytvoření účtu Azure dosah v Azure Portal
@@ -21,7 +21,7 @@ ms.locfileid: "101666469"
 
 V tomto rychlém startu vytvoříte účet Azure dosah.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

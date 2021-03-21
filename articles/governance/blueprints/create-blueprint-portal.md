@@ -4,10 +4,10 @@ description: V tomto rychlém startu použijete Azure modrotisky k vytváření,
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 75a4e9deca4859ac8b9f302fcb62ecc1d12dd8c9
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98918326"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
@@ -206,7 +206,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
 
 1. Na stránce **přiřadit podrobný plán** vyberte v rozevíracím seznamu **odběr** odběry, do kterých chcete nasadit tento plán.
 
-   Pokud jsou v rámci [fakturace Azure](../../cost-management-billing/index.yml)dostupné podporované nabídky Enterprise, v poli **předplatné** se aktivuje odkaz **vytvořit nový** . Postupujte následovně:
+   Pokud jsou v rámci [fakturace Azure](../../cost-management-billing/index.yml)dostupné podporované nabídky Enterprise, v poli **předplatné** se aktivuje odkaz **vytvořit nový** . Postupujte takto:
 
    1. Vyberte odkaz **vytvořit nový** pro vytvoření nového předplatného místo výběru stávajících.
 

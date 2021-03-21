@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, devx-track-azurecli
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 910e68e5b8933875f252faf65fb58e514dee8254
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96326586"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>Jak najít ID tenanta Azure Active Directory
@@ -26,7 +26,7 @@ Předplatná Azure mají vztah důvěryhodnosti s Azure Active Directory (Azure 
 
 ## <a name="find-tenant-id-through-the-azure-portal"></a>Najít ID tenanta prostřednictvím Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
  
 1. Vyberte **Azure Active Directory**.
 

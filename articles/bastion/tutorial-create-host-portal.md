@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/12/2021
 ms.author: cherylmc
 ms.openlocfilehash: 60b49e5b6e103a85d79cf8495f2743b22e434c96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100586804"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Kurz: Konfigurace bastionu a připojení k virtuálnímu počítači s Windows pomocí prohlížeče
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Virtuální síť.
 * Virtuální počítač s Windows ve virtuální síti.

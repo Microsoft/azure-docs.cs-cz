@@ -11,10 +11,10 @@ ms.date: 03/31/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 21fc7e6de38a98e4f0853cf513f9f3441c7e2106
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735348"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí PowerShellu
@@ -23,7 +23,7 @@ Pomocí modulu Azure PowerShell můžete vytvářet a spravovat prostředky Azur
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

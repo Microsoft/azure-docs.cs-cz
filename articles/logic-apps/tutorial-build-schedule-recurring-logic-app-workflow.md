@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
 ms.openlocfilehash: 95275e68d0c7674caf4dd2b20f5586db5193fd03
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054056"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Kurz: vytvoření pracovních postupů založených na plánech a opakovaných automatizacích pomocí Azure Logic Apps
@@ -32,7 +32,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Snímek obrazovky, který zobrazuje přehled vysoké úrovně pro příklad pracovního postupu aplikace logiky.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -151,7 +151,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
 1. V akci otevřete **seznam přidat nový parametr** a vyberte tyto vlastnosti.
 
-   * **Optimalizace**
+   * **Zvýšit**
    * **Jednotka vzdálenosti**
    * **Způsob cestování**
 
@@ -165,7 +165,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
    |----------|----------|-------|-------------|
    | **Bod na trase 1** | Yes | <*Začátek – umístění*> | Počátek vaší trasy. Tento příklad určuje ukázkovou počáteční adresu. |
    | **Bod na trase 2** | Yes | <*koncové umístění*> | Cíl vaší trasy. Tento příklad určuje ukázkovou cílovou adresu. |
-   | **Optimalizace** | No | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte hodnotu parametru **timeWithTraffic**. |
+   | **Zvýšit** | No | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte hodnotu parametru **timeWithTraffic**. |
    | **Jednotka vzdálenosti** | No | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá **míle** . |
    | **Způsob cestování** | No | Autem | Způsob cestování pro danou trasu. Vyberte režim **řízení** . |
    |||||

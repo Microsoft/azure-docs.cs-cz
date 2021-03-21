@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102098022"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Vytvoření hlasového asistenta pomocí Azure Percept DK a Azure Percept audio
@@ -20,7 +20,7 @@ V tomto kurzu vytvoříte hlasového asistenta ze šablony, která se bude použ
 
 Tato příručka vás provede procesem nastavení vašich zařízení, vytváření hlasového asistenta a nezbytných prostředků [služby Speech Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview) , testování hlasového asistenta, konfigurace klíčového slova a vytváření vlastních klíčových slov.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Percept DK (DevKit)
 - Zvuk Azure Percept
@@ -174,7 +174,7 @@ Když vytvoříte vlastní příkaz, musíte přejít na [řeč Studio](https://
 
 Další informace o vývoji vlastních příkazů najdete v [dokumentaci ke službě Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="voice-assistant-was-created-but-does-not-respond-to-commands"></a>Hlasový asistent se vytvořil, ale nereaguje na příkazy.
 

@@ -7,10 +7,10 @@ ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: bafebcc54e4cbde87e8deb776eff227fc99035cc
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98623851"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Kurz: Vytvoření aplikace ASP.NET Core a Azure SQL Database v Azure App Service
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -462,7 +462,7 @@ I když je aplikace ASP.NET Core spuštěná v Azure App Service, můžete získ
 Vzorový projekt již postupuje podle pokynů [ASP.NET Core protokolování v Azure](/aspnet/core/fundamentals/logging#azure-app-service-provider) se dvěma změnami konfigurace:
 
 - Obsahuje odkaz na `Microsoft.Extensions.Logging.AzureAppServices` v *DotNetCoreSqlDb. csproj*.
-- Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *program.cs*.
+- Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *programu program. cs*.
 
 Chcete-li nastavit [úroveň protokolu](/aspnet/core/fundamentals/logging#log-level) ASP.NET Core v App Service na `Information` z výchozí úrovně `Error` , použijte [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) příkaz v Cloud Shell.
 

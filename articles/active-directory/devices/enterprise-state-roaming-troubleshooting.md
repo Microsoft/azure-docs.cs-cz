@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: df70891ef090d44769aadbc235273e3193bc780e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94837205"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s nastavením Enterprise State Roaming v Azure Active Directory
@@ -156,7 +156,7 @@ Připojte zařízení k podnikové síti, aby synchronizace mohla pokračovat.
 Pokud má uživatel smíšený hlavní název uživatele (například uživatelské jméno namísto uživatelského jména) a uživatel se nachází na zařízení připojeném k Azure AD, které se upgraduje z Windows 10 build 10586 na 14393, může se stát, že se zařízení uživatele nepodaří synchronizovat. 
 
 **Doporučená akce**  
-Uživatel bude muset zařízení odpojovat a znovu připojit ke cloudu. Provedete to tak, že se přihlásíte jako uživatel místního správce a odpojíte zařízení tak, že v části **Nastavení**  >  **systému**  >  **About** zvolíte možnost spravovat nebo odpojit od práce nebo školy. Níže tyto soubory vyčistěte a pak Azure AD připojte zařízení znovu v systému **Nastavení**  >  **System**  >  **About** a vyberte připojit k práci nebo školu. Pokračujte tím, že se připojíte k zařízení Azure Active Directory a dokončíte tok.
+Uživatel bude muset zařízení odpojovat a znovu připojit ke cloudu. Provedete to tak, že se přihlásíte jako uživatel místního správce a odpojíte zařízení tak, že v části **Nastavení**  >  **systému**  >   zvolíte možnost spravovat nebo odpojit od práce nebo školy. Níže tyto soubory vyčistěte a pak Azure AD připojte zařízení znovu v systému **Nastavení**  >    >   a vyberte připojit k práci nebo školu. Pokračujte tím, že se připojíte k zařízení Azure Active Directory a dokončíte tok.
 
 V kroku vyčištění vyčistěte následující soubory:
 - Settings. dat v `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`

@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100587942"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
@@ -656,7 +656,7 @@ Požadované ID pracovního prostoru a workspaceKey najdete v pracovním prostor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>Návody zapnout diagnostiku spouštění?
 

@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc
 ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250651"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
@@ -85,7 +85,7 @@ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azur
 Teď pomocí příkazu [docker push][docker-push] nahrajte image do registru. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru ACR.
 
 > [!NOTE]
-> Pokud máte potíže s vložením do registru ACR, ujistěte se, že jste stále přihlášeni. Spusťte příkaz [AZ ACR Login][az-acr-login] s použitím názvu vašeho Azure Container Registry, který jste vytvořili v kroku [Vytvoření Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Například `az acr login --name <azure container registry name>`.
+> Pokud máte potíže s vložením do registru ACR, ujistěte se, že jste stále přihlášeni. Spusťte příkaz [AZ ACR Login][az-acr-login] s použitím názvu vašeho Azure Container Registry, který jste vytvořili v kroku [Vytvoření Azure Container Registry](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Například, `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2

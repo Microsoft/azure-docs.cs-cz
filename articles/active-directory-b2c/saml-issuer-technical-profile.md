@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 54869c14cf7c5a7e43f34102f5c95e37689dfee8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095336"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu pro vystavitele tokenů SAML v Azure Active Directory B2C vlastní zásady
@@ -57,10 +57,10 @@ Prvky **InputClaims**, **OutputClaims** a **PersistClaims** jsou prázdné nebo 
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| IssuerUri | Ne | Název vystavitele, který se zobrazí v odpovědi SAML. Hodnota by měla být stejný název jako nakonfigurovaný v aplikaci předávající strany. |
-| XmlSignatureAlgorithm | Ne | Metoda, kterou Azure AD B2C používá k podepsání kontrolního výrazu SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` , nebo `Sha1` . Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. Postup konfigurace odpovědi SAML najdete v tématu [Možnosti registrace aplikace SAML](saml-service-provider.md) .|
-|TokenNotBeforeSkewInSeconds| Ne| Určuje zešikmení jako celé číslo pro časové razítko, které označuje začátek období platnosti. Čím vyšší je toto číslo, tím dále v čase začíná doba platnosti v souvislosti s časem, kdy jsou deklarace identity vystaveny předávající straně. Pokud je například TokenNotBeforeSkewInSeconds nastaveno na 60 sekund, je-li token vydán v 13:05:10 UTC, token je platný z 13:04:10 UTC. Výchozí hodnota je 0. Maximální hodnota je 3600 (jedna hodina). |
-|TokenLifeTimeInSeconds| Ne| Určuje životnost kontrolního výrazu SAML. Tato hodnota je v sekundách od hodnoty NotBefore odkazované výše. Výchozí hodnota je 300 sekund (5 minut). |
+| IssuerUri | No | Název vystavitele, který se zobrazí v odpovědi SAML. Hodnota by měla být stejný název jako nakonfigurovaný v aplikaci předávající strany. |
+| XmlSignatureAlgorithm | No | Metoda, kterou Azure AD B2C používá k podepsání kontrolního výrazu SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` , nebo `Sha1` . Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. Postup konfigurace odpovědi SAML najdete v tématu [Možnosti registrace aplikace SAML](saml-service-provider.md) .|
+|TokenNotBeforeSkewInSeconds| No| Určuje zešikmení jako celé číslo pro časové razítko, které označuje začátek období platnosti. Čím vyšší je toto číslo, tím dále v čase začíná doba platnosti v souvislosti s časem, kdy jsou deklarace identity vystaveny předávající straně. Pokud je například TokenNotBeforeSkewInSeconds nastaveno na 60 sekund, je-li token vydán v 13:05:10 UTC, token je platný z 13:04:10 UTC. Výchozí hodnota je 0. Maximální hodnota je 3600 (jedna hodina). |
+|TokenLifeTimeInSeconds| No| Určuje životnost kontrolního výrazu SAML. Tato hodnota je v sekundách od hodnoty NotBefore odkazované výše. Výchozí hodnota je 300 sekund (5 minut). |
 
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
@@ -69,8 +69,8 @@ Element CryptographicKeys obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MetadataSigning | Ano | Certifikát x509 (sada klíčů RSA), který se použije k podepisování metadat SAML. Azure AD B2C používá tento klíč k podepsání metadat. |
-| SamlMessageSigning| Ano| Zadejte certifikát x509 (sadu klíčů RSA), který se použije k podepisování zpráv SAML. Azure AD B2C používá tento klíč k podepsání `<samlp:Response>` odeslání odpovědi předávající straně.|
+| MetadataSigning | Yes | Certifikát x509 (sada klíčů RSA), který se použije k podepisování metadat SAML. Azure AD B2C používá tento klíč k podepsání metadat. |
+| SamlMessageSigning| Yes| Zadejte certifikát x509 (sadu klíčů RSA), který se použije k podepisování zpráv SAML. Azure AD B2C používá tento klíč k podepsání `<samlp:Response>` odeslání odpovědi předávající straně.|
 
 ## <a name="session-management"></a>Správa relací
 

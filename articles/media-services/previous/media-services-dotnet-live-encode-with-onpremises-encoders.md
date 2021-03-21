@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a763bed0ed31d80ec094fde3c68c5c84537fec46
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103013835"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak provádět živé streamování s místními kodéry pomocí .NET
@@ -37,7 +37,7 @@ ms.locfileid: "103013835"
 
 Tento kurz vás provede jednotlivými kroky použití sady Azure Media Services .NET SDK k vytvoření **kanálu** , který je nakonfigurovaný pro předávací doručování. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení kurzu potřebujete následující:
 
 * Účet Azure:

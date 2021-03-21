@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
 ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841457"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Konfigurace Always Encrypted pomocí Azure Key Vault 
@@ -179,7 +179,7 @@ V tomto kurzu se dozvíte, jak ukládat klíče v Azure Key Vault.
 
 Nyní můžete šifrovat sloupce nebo uložit skript prostředí PowerShell pro pozdější spuštění. Pro tento kurz vyberte **pokračovat** a klikněte na **Další**.
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
 Ověřte správnost nastavení a kliknutím na **Dokončit** dokončete instalaci pro Always Encrypted.
 
@@ -266,7 +266,7 @@ Tato ukázka předvádí, jak:
 - Vloží data do šifrovaných sloupců.
 - Vyberte záznam filtrováním konkrétní hodnoty v zašifrovaném sloupci.
 
-Obsah *program.cs* nahraďte následujícím kódem. Nahraďte připojovací řetězec pro globální proměnnou connectionString v řádku, který přímo předchází metodě Main, s platným připojovacím řetězcem z Azure Portal. Toto je jediná změna, kterou je třeba provést v tomto kódu.
+Obsah *programu program. cs* nahraďte následujícím kódem. Nahraďte připojovací řetězec pro globální proměnnou connectionString v řádku, který přímo předchází metodě Main, s platným připojovacím řetězcem z Azure Portal. Toto je jediná změna, kterou je třeba provést v tomto kódu.
 
 Spusťte aplikaci, abyste viděli Always Encrypted v akci.
 

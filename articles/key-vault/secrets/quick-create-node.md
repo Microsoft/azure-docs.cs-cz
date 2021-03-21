@@ -9,10 +9,10 @@ ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 769a63819925caa50ff364869b8d9a14c3258a2e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102214537"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Rychlý Start: Klientská knihovna Azure Key Vault tajných klíčů pro JavaScript (verze 4)
@@ -27,7 +27,7 @@ Další informace o Key Vault a tajných klíčích najdete v tématech:
 - [Přehled Key Vault](../general/overview.md)
 - [Přehled tajných klíčů](about-secrets.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Aktuální [Node.js](https://nodejs.org) pro váš operační systém.

@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a8d98485b180d999fb0762551e05ea5e3ef365b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101661473"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace Cassandra pomocí sady .NET SDK a Azure Cosmos DB
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak pomocí .NET a Azure Cosmos DB [rozhran
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, párů klíč-hodnota a grafů, které tak můžou využívat výhody možnosti globální distribuce a horizontálního škálování v jádru služby Azure Cosmos DB. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
 
@@ -126,7 +126,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal, stránka Připojovací řetězec":::
 
-1. V aplikaci Visual Studio otevřete soubor Program.cs. 
+1. V aplikaci Visual Studio otevřete soubor program. cs. 
 
 1. Vložte hodnotu UŽIVATELSKÉ JMÉNO z portálu místo `<FILLME>` na řádku 13.
 

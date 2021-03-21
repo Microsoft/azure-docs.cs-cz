@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002710"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple místně připnuté svazky: nejčastější dotazy
@@ -52,9 +52,9 @@ Vzhledem k tomu, že se k hostování pracovní sady vrstvených svazků použí
 | 1 TB |176,5 TB |477,8 TB |
 | 4 TB |105,9 TB |411,1 TB |
 | 8,5 TB |0 TB |311,1 TB |
-| 10 TB |Není k dispozici |277,8 TB |
-| 15 TB |Není k dispozici |166,7 TB |
-| 22,5 TB |Není k dispozici |0 TB |
+| 10 TB |NA |277,8 TB |
+| 15 TB |NA |166,7 TB |
+| 22,5 TB |NA |0 TB |
 
 **Č.** Proč je místně připnuté vytvoření svazku dlouhodobě běžící operace?
 
@@ -83,11 +83,11 @@ Místně připnuté svazky jsou silné a to vyžaduje vytvoření místního pro
 
 Podobně platí, že pokud se rozbalí existující místní svazek nebo se vrstvený svazek převede na místně připojený svazek, vytvoří se nový místně připojený svazek do fronty, dokud se nedokončí předchozí úloha. Rozšiřování velikosti místně připnutého svazku zahrnuje rozšíření stávajícího místního prostoru pro daný svazek. Převod z vrstveného na místně připnutý svazek zahrnuje také vytvoření místního prostoru pro výsledný místně připojený svazek. V obou těchto operacích je vytvoření nebo rozšíření místního prostoru dlouhodobě spuštěná úloha.
 
-Tyto úlohy můžete zobrazit v okně **úlohy** služby StorSimple Device Manager. Úloha, která se aktivně zpracovává, se průběžně aktualizuje, aby odrážela průběh zřizování prostorů. Zbývající místně připojené svazky jsou označeny jako spuštěné, ale jejich průběh je zastavený a vybírají se v pořadí, ve kterém byly zařazeny do fronty.
+Tyto úlohy můžete zobrazit v okně **úlohy** služby StorSimple Správce zařízení. Úloha, která se aktivně zpracovává, se průběžně aktualizuje, aby odrážela průběh zřizování prostorů. Zbývající místně připojené svazky jsou označeny jako spuštěné, ale jejich průběh je zastavený a vybírají se v pořadí, ve kterém byly zařazeny do fronty.
 
 **Č.** Odstranil (a) jsem místně připojený svazek. Proč se mi při pokusu o vytvoření nového svazku nezobrazuje volné místo, které se odráží v dostupném prostoru?
 
-**Určitého.** Odstraníte-li místně připojený svazek, nebude možné okamžitě aktualizovat místo dostupné pro nové svazky. Služba StorSimple Device Manager aktualizuje místní prostor, který je k dispozici přibližně každou hodinu. Doporučujeme počkat na hodinu, než se pokusíte vytvořit nový svazek.
+**Určitého.** Odstraníte-li místně připojený svazek, nebude možné okamžitě aktualizovat místo dostupné pro nové svazky. Služba StorSimple Správce zařízení aktualizuje místní prostor, který je k dispozici přibližně každou hodinu. Doporučujeme počkat na hodinu, než se pokusíte vytvořit nový svazek.
 
 **Č.** Jsou místně připojené svazky podporované na cloudovém zařízení?
 

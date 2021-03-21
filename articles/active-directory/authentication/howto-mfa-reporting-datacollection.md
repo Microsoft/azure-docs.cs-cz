@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2124ca9fae76d87a695a2c453f7b222e7a08794
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742789"
 ---
 # <a name="azure-ad-multi-factor-authentication-user-data-collection"></a>Shromažďování uživatelských dat Multi-Factor Authentication Azure AD
@@ -58,14 +58,14 @@ Pokusy o ověření (používané pro vytváření sestav a řešení potíží)
 - Celkový výsledek
 - Výsledky
 - Ověřuje
-- Result
+- Výsledek
 - Zahajuje se IP adresa.
 - Zařízení
 - Token zařízení
 - Typ zařízení
 - Verze mobilní aplikace
 - Verze operačního systému
-- Result
+- Výsledek
 - Použití kontroly oznámení
 
 Aktivace (pokusí se aktivovat účet v mobilní aplikaci Microsoft Authenticator):
@@ -89,7 +89,7 @@ Bloky (slouží k určení blokovaného stavu a pro vytváření sestav):
 - Kód země
 - Telefonní číslo
 - Formát telefonního čísla
-- Rozšíření
+- Linka
 - Vyčistit rozšíření
 - Blokované
 - Důvod blokování
@@ -109,7 +109,7 @@ Vynechané funkce (používané pro vytváření sestav):
 - Kód země
 - Telefonní číslo
 - Formát telefonního čísla
-- Rozšíření
+- Linka
 - Vyčistit rozšíření
 - Důvod pro obejití
 - Časové razítko dokončení

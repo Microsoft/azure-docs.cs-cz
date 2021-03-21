@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
 ms.openlocfilehash: bbad7dcaa1d92df4969c88e4ba86a62987509e39
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98632795"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
@@ -86,7 +86,7 @@ V tomto scénáři jsou osvědčené postupy určeny podle vašich potřeb a pro
 
 *Můžu používat kombinaci pravidel brány firewall na úrovni serveru i databáze?*
 
-Yes. Někteří uživatelé, třeba správci, můžou potřebovat pravidla brány firewall IP na úrovni serveru. Jiní uživatelé, například uživatelé databázové aplikace, můžou potřebovat pravidla brány firewall IP na úrovni databáze.
+Ano. Někteří uživatelé, třeba správci, můžou potřebovat pravidla brány firewall IP na úrovni serveru. Jiní uživatelé, například uživatelé databázové aplikace, můžou potřebovat pravidla brány firewall IP na úrovni databáze.
 
 ### <a name="connections-from-the-internet"></a>Připojení z Internetu
 

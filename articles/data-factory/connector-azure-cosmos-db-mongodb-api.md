@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
 ms.openlocfilehash: 6f1e865daf9ba42126c0f8a341a54d87ac7f374a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393084"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopírování dat do a z rozhraní API služby Azure Cosmos DB pro MongoDB pomocí služby Azure Data Factory
@@ -23,7 +23,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 >[!NOTE]
 >Tento konektor podporuje pouze kopírování dat do a z rozhraní API Azure Cosmos DB pro MongoDB. Informace o rozhraní SQL API najdete v tématu [Cosmos DB SQL API Connector](connector-azure-cosmos-db.md). Jiné typy rozhraní API se teď nepodporují.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Data z rozhraní API Azure Cosmos DB pro MongoDB můžete kopírovat do libovolného podporovaného úložiště dat jímky nebo zkopírovat data z libovolného podporovaného zdrojového úložiště dat do rozhraní API Azure Cosmos DB pro MongoDB. Seznam úložišť dat, která aktivita kopírování podporuje jako zdroje a jímky, najdete v tématu [podporované úložiště a formáty dat](copy-activity-overview.md#supported-data-stores-and-formats).
 

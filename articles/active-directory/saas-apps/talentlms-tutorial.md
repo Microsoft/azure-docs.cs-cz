@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
 ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101689347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Kurz: Azure Active Directory integrace s TalentLMS
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat TalentLMS s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TalentLMS svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s TalentLMS potřebujete následující položky:
 

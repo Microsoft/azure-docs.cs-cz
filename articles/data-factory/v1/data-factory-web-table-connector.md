@@ -8,10 +8,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7663848bd06244de7efb169a576e11a5c78204c1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100392897"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Přesunutí dat ze zdroje webové tabulky pomocí Azure Data Factory
@@ -29,7 +29,7 @@ Data Factory aktuálně podporuje pouze přesun dat z webové tabulky do jiných
 > [!IMPORTANT]
 > Tento webový konektor aktuálně podporuje pouze extrakci obsahu tabulky ze stránky HTML. K načtení dat z koncového bodu HTTP/s použijte místo toho [konektor http](data-factory-http-connector.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li použít tento konektor webové tabulky, je nutné nastavit Integration Runtime v místním prostředí (neboli Správa dat bránu) a nakonfigurovat `gatewayName` vlastnost v propojené službě jímky. Pokud například chcete kopírovat z webové tabulky do úložiště objektů BLOB v Azure, nakonfigurujte Azure Storage propojenou službu následujícím způsobem:
 

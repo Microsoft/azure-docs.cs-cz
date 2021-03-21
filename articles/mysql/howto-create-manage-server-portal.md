@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 1/26/2021
 ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98897981"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Správa serveru Azure Database for MySQL pomocí Azure Portal
@@ -90,7 +90,7 @@ Můžete změnit heslo role správce pomocí Azure Portal.
  
 
 > [!IMPORTANT]
-> Při obnovení hesla správce serveru se automaticky resetují oprávnění správce serveru na výchozí. Pokud jste omylem odvolali jedno nebo více oprávnění správce serveru, zvažte možnost resetování hesla správce serveru.
+> Resetováním hesla správce serveru se automaticky resetují oprávnění správce serveru na výchozí nastavení. Pokud jste omylem odvolali jedno nebo více oprávnění správce serveru, zvažte možnost resetování hesla správce serveru.
    
 > [!NOTE]
 > Uživatel správce serveru má ve výchozím nastavení následující oprávnění: vybrat, vložit, aktualizovat, odstranit, vytvořit, vyřadit, znovu načíst, zpracovat, odkazy, INDEXovat, změnit, Zobrazit databáze, vytvořit dočasné tabulky, zamknout tabulky, spustit, PODŘÍZENou položku, klient replikace, vytvořit zobrazení, zobrazit, vytvořit RUTINu, změnit RUTINu, vytvořit uživatele, událost, aktivační událost.

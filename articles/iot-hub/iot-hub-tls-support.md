@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: jlian
 ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234014"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Podpora protokolu TLS (Transport Layer Security) v IoT Hub
@@ -117,7 +117,7 @@ Klient může navrhnout seznam vyšších šifrovacích sad, které budou použi
 
 Pomocí níže uvedených odkazů nakonfigurujte TLS 1,2 a povolená šifra v IoT Hub klientských sadách SDK.
 
-| Language (Jazyk) | Verze podporující TLS 1,2 | Dokumentace |
+| Jazyk | Verze podporující TLS 1,2 | Dokumentace |
 |----------|------------------------------------|---------------|
 | C        | Tag 2019-12-11 nebo novější            | [Odkaz](https://aka.ms/Tls_C_SDK_IoT) |
 | Python   | Verze 2.0.0 nebo novější             | [Odkaz](https://aka.ms/Tls_Python_SDK_IoT) |

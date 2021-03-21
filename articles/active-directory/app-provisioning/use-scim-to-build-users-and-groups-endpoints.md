@@ -12,10 +12,10 @@ ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101689330"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Kurz: vývoj ukázkového koncového bodu SCIM
@@ -104,7 +104,7 @@ Výchozí kód pro ověření tokenu je nakonfigurovaný tak, aby používal tok
 
 Po nasazení koncového bodu SCIM můžete otestovat a ujistit se, že je kompatibilní s dokumentem RFC SCIM. Tento příklad poskytuje sadu testů v členovi, který ověřuje operace CRUD (vytváření, čtení, aktualizace a odstraňování) u uživatelů a skupin, filtrování, aktualizace členství ve skupinách a zakázání uživatelů.
 
-Koncové body jsou v `{host}/scim/` adresáři a můžete k jejich interakci použít standardní požadavky HTTP. Postup změny `/scim/` trasy naleznete v tématu *ControllerConstant.cs* in **AzureADProvisioningSCIMreference**  >  **ScimReferenceApi**  >  **Controllers**.
+Koncové body jsou v `{host}/scim/` adresáři a můžete k jejich interakci použít standardní požadavky HTTP. Postup změny `/scim/` trasy najdete v tématu *ControllerConstant. cs* v   >    >  **řadičích** ScimReferenceApi AzureADProvisioningSCIMreference.
 
 > [!NOTE]
 > Koncové body HTTP můžete použít pouze pro místní testy. Služba zřizování Azure AD vyžaduje, aby koncový bod podporoval protokol HTTPS.
