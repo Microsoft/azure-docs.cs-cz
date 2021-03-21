@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92340508"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Kurz: připojení clusteru
@@ -94,14 +94,14 @@ Chcete-li zajistit bezproblémové připojení klienta, předejte tato nastaven�
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Požadovaná nastavení | Popis |
+| Požadovaná nastavení | Description |
 --- | ---
 ``hard`` | Do clusteru Azure FXT Edge souborového se dočasná připojení pojí s chybami aplikací a možnou ztrátou dat.
 ``proto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě systému souborů NFS.
 ``mountproto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě pro operace připojení.
 ``retry=n`` | Nastavte ``retry=30`` , aby nedocházelo k přechodným chybám připojení. (V připojeních na popředí se doporučuje jiná hodnota.)
 
-| Preferované nastavení  | Popis |
+| Preferované nastavení  | Description |
 --- | ---
 ``nointr``            | Pokud klienti používají starší jádra operačního systému (do 15. dubna 2008), které podporují tuto možnost, použijte ji. Výchozím nastavením je možnost "intr".
 

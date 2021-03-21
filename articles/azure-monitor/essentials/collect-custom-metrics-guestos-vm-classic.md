@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.openlocfilehash: dcb2c0ceb3092bb6905ac1eb9fc58093da935f2f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048977"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Odeslání metriky hostovaného operačního systému do databáze Azure Monitor metriky pro virtuální počítač s Windows (Classic)
@@ -25,7 +25,7 @@ Ukládání do tohoto umístění vám umožní přístup ke stejným akcím, ja
 
 Proces, který je popsaný v tomto článku, funguje jenom na klasických virtuálních počítačích, na kterých běží operační systém Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte být [správcem služeb nebo spolusprávcem](../../cost-management-billing/manage/add-change-subscription-administrator.md) svého předplatného Azure. 
 

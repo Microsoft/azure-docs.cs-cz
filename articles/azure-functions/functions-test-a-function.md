@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
 ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98674146"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie testování kódu ve službě Azure Functions
@@ -51,7 +51,7 @@ Každá funkce převezme instanci [ILogger](/dotnet/api/microsoft.extensions.log
 
 Vytvoříte novou třídu s názvem `ListLogger` , která obsahuje interní seznam zpráv k vyhodnocení během testování. Chcete-li implementovat požadované `ILogger` rozhraní, třída potřebuje obor. Následující třída napodobá oboru pro testovací případy, které se mají předat `ListLogger` třídě.
 
-Vytvořte novou třídu v projektu *Functions. Tests* s názvem **NullScope.cs** a zadejte následující kód:
+Vytvořte novou třídu v projektu *Functions. Tests* s názvem **NullScope. cs** a zadejte následující kód:
 
 ```csharp
 using System;
@@ -69,7 +69,7 @@ namespace Functions.Tests
 }
 ```
 
-Dále vytvořte novou třídu v projektu *Functions. Tests* s názvem **ListLogger.cs** a zadejte následující kód:
+Dále vytvořte novou třídu v projektu *Functions. Tests* s názvem **ListLogger. cs** a zadejte následující kód:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -115,7 +115,7 @@ namespace Functions.Tests
 
 `Logs`Kolekce je instancí `List<string>` a je inicializována v konstruktoru.
 
-Dále vytvořte nový soubor v projektu *Functions. Tests* s názvem **LoggerTypes.cs** a zadejte následující kód:
+Dále vytvořte nový soubor v projektu *Functions. Tests* s názvem **LoggerTypes. cs** a zadejte následující kód:
 
 ```csharp
 namespace Functions.Tests
@@ -130,7 +130,7 @@ namespace Functions.Tests
 
 Tento výčet Určuje typ protokolovacího nástroje používaného testy.
 
-Nyní vytvořte novou třídu v projektu *Functions. Tests* s názvem **TestFactory.cs** a zadejte následující kód:
+Nyní vytvořte novou třídu v projektu *Functions. Tests* s názvem **TestFactory. cs** a zadejte následující kód:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -201,7 +201,7 @@ namespace Functions.Tests
 
 - **CreateLogger**: v závislosti na typu protokolovacího nástroje Tato metoda vrátí třídu protokolovacího nástroje použitou pro testování. `ListLogger`Uchovává záznam protokolovaných zpráv, které jsou k dispozici pro vyhodnocení v testech.
 
-Nakonec vytvořte novou třídu v projektu *Functions. Tests* s názvem **FunctionsTests.cs** a zadejte následující kód:
+Nakonec vytvořte novou třídu v projektu *Functions. Tests* s názvem **FunctionsTests. cs** a zadejte následující kód:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;

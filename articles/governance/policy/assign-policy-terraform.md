@@ -4,10 +4,10 @@ description: V tomto rychlém startu použijete syntaxi Terraformu a HCL k vytvo
 ms.date: 10/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93106391"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Terraformu
@@ -58,7 +58,7 @@ Nejdřív nakonfigurujte konfiguraci, proměnnou a výstupní soubory Terraformu
 
    Obor určuje, pro které prostředky nebo seskupení prostředků se toto přiřazení zásady bude vynucovat. Může být v rozsahu od skupiny pro správu k individuálnímu prostředku. Nezapomeňte nahradit `{scope}` jedním z následujících způsobů:
 
-   - Formě `/subscriptions/{subscriptionId}`
+   - Předplatné: `/subscriptions/{subscriptionId}`
    - Skupina prostředků: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
    - Partner `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 
@@ -94,7 +94,7 @@ Dále inicializujte Terraformu, abyste stáhli potřebné poskytovatele a pak vy
    terraform plan -out assignment.tfplan
    ```
 
-   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="Snímek obrazovky s příkazem terraformu init, který ukazuje stažení modulu azurerm a zprávy o úspěchu":::
+   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="Snímek obrazovky s parametrem příkazového řádku terraformu a out a s ním se zobrazí prostředek Azure, který se vytvoří.":::
 
    > [!NOTE]
    > Informace o zachování plánů provádění a zabezpečení najdete v tématu [plán terraformu: upozornění zabezpečení](https://www.terraform.io/docs/commands/plan.html#security-warning).
@@ -109,7 +109,7 @@ Spusťte příkaz [terraformu Apply](https://www.terraform.io/docs/commands/appl
 terraform apply assignment.tfplan
 ```
 
-:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="Snímek obrazovky s příkazem terraformu init, který ukazuje stažení modulu azurerm a zprávy o úspěchu":::
+:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="Snímek obrazovky s příkazem terraformu Applu a výsledným vytvořením prostředku":::
 
 Při použití možnosti použít Hotovo Prostředky: 1 Přidání, 0 změněno, 0 zničeno. zpráva: přiřazení zásad je nyní vytvořeno. Vzhledem k tomu `outputs.tf` , že jsme soubor definovali, je vráceno také _\_ ID přiřazení_ .
 

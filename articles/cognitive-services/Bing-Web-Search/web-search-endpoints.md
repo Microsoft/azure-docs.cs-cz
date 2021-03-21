@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: c882e3e4d0cd6ba594a700f4fd53c14103a8d1d1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94381248"
 ---
 # <a name="web-search-endpoint"></a>Vyhledávání na webu koncový bod
@@ -30,7 +30,7 @@ ms.locfileid: "94381248"
 
 Chcete-li získat výsledky hledání na webu pomocí rozhraní API Bingu, odešlete `GET` požadavek do následujícího koncového bodu. Parametry hlaviček a adres URL definují další specifikace.
 
-**Koncový bod** : vrátí výsledky webu, které jsou relevantní pro vyhledávací dotaz uživatele definovaný v `?q=""` .
+**Koncový bod**: vrátí výsledky webu, které jsou relevantní pro vyhledávací dotaz uživatele definovaný v `?q=""` .
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search

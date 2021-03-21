@@ -14,10 +14,10 @@ ms.date: 04/02/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: abcaff5979aed38ce47df08cc953829f3003f7b0
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102561547"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalace IBM zD&T dev/test Environment v Azure
@@ -40,7 +40,7 @@ Další informace najdete v [přehledu zD&T](https://www.ibm.com/support/knowled
 
 V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prostředí Z verze (zD&T) Enterprise Edition. Pak můžete použít webový server zD&T Enterprise Edition k vytváření a správě prostředí Z na platformě Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!NOTE]
 > IBM umožňuje instalovat zD&T Enterprise Edition pouze do prostředí pro vývoj a testování,*nikoli* v produkčních prostředích.

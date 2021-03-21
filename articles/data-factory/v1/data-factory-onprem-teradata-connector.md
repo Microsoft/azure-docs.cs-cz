@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100387202"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesun dat z Teradata pomocí Azure Data Factory
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat Teradata můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje pouze přesouvání dat z úložiště dat Teradata do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat Teradata.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Data Factory podporuje připojení k místním zdrojům Teradata prostřednictvím brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
 Brána je vyžadována i v případě, že se Teradata hostuje na virtuálním počítači Azure IaaS. Bránu můžete nainstalovat na stejný virtuální počítač s IaaS jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.

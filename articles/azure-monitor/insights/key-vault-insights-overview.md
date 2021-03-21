@@ -7,10 +7,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
 ms.openlocfilehash: 91aed191e3bb165d6690759426a596df39f8c10f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100582300"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault
@@ -131,7 +131,7 @@ Pomocí následujících kroků můžete nakonfigurovat předplatné s více př
 4. V rozevíracím seznamu **trezory klíčů** vyberte jeden nebo více účtů, které chcete použít jako výchozí. Nezapomeňte, že sešit podporuje výběr až na celkem 200 účtů úložiště.
 5. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
 

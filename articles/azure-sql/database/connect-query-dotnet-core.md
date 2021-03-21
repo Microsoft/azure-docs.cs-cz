@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 1d25f43ef5a694d8b94710055bf1be72a7fcb45c
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97705207"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database"></a>Rychlý Start: použití .NET Core (C#) k dotazování databáze
@@ -27,7 +27,7 @@ V tomto rychlém startu použijete k připojení k databázi kód [.NET Core](ht
 > [!TIP]
 > Následující Microsoft Learn modul vám pomůže naučit se zdarma [, jak vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje databáze v Azure SQL Database](/learn/modules/develop-app-that-queries-azure-sql/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
@@ -45,7 +45,7 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
     dotnet new console
     ```
 
-    Tento příkaz vytvoří nové soubory projektu aplikace, včetně počátečního souboru kódu jazyka C# (**program.cs**), konfiguračního souboru XML (**sqltest. csproj**) a potřebných binárních souborů.
+    Tento příkaz vytvoří nové soubory projektu aplikace, včetně počátečního souboru kódu jazyka C# (**program. cs**), konfiguračního souboru XML (**sqltest. csproj**) a potřebných binárních souborů.
 
 2. V textovém editoru otevřete soubor **sqltest. csproj** a vložte mezi značky následující kód XML `<Project>` . Tento kód XML `System.Data.SqlClient` se přidá jako závislost.
 
@@ -57,7 +57,7 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 
 ## <a name="insert-code-to-query-the-database-in-azure-sql-database"></a>Vložení kódu pro dotazování databáze v Azure SQL Database
 
-1. V textovém editoru otevřete **program.cs**.
+1. V textovém editoru otevřete **program. cs**.
 
 2. Nahraďte obsah následujícím kódem a přidejte odpovídající hodnoty pro váš server, databázi, uživatelské jméno a heslo.
 

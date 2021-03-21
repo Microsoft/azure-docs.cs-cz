@@ -1,5 +1,5 @@
 ---
-title: Optimalizace nákladů na úložiště v Azure Cosmos DB
+title: Optimalizace nákladů na úložiště ve službě Azure Cosmos DB
 description: Tento článek vysvětluje, jak spravovat náklady na úložiště pro data uložená v Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 92bd3ff925080def4b2f074d07e662dfdbdbee01
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93080846"
 ---
-# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na úložiště v Azure Cosmos DB
+# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na úložiště ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB nabízí neomezené úložiště a propustnost. Na rozdíl od propustnosti, kterou musíte zřídit a konfigurovat v kontejnerech nebo databázích Azure Cosmos, se úložiště účtuje na základě spotřeby. Účtují se vám jenom logické úložiště, které spotřebováváte, a nemusíte nic rezervovat. Úložiště se automaticky škáluje nahoru a dolů na základě dat, která přidáte nebo odeberete do kontejneru Azure Cosmos.

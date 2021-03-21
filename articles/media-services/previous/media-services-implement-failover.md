@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103011931"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Implementace streamování převzetí služeb při selhání s Media Services V2
@@ -53,7 +53,7 @@ Platí následující důležité informace:
 * Prostředky šifrované pro úložiště (AssetCreationOptions. StorageEncrypted) nejsou pro replikaci podporované (protože šifrovací klíč se v obou Media Services účtech liší). 
 * Pokud chcete využít výhod dynamického balení, ujistěte se, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **spuštěno** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dva účty Media Services v novém nebo existujícím předplatném Azure. Podívejte [se, jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Operační systém: Windows 7, Windows 2008 R2 nebo Windows 8.
@@ -68,7 +68,7 @@ V této části vytvoříte a nastavíte projekt konzolové aplikace v jazyce C#
 2. Vytvořte složku **SupportFiles** na stejné úrovni jako soubor projektu **HandleRedundancyForOnDemandStreaming. csproj** . Ve složce **SupportFiles** vytvořte složky **OutputFiles** a **MP4Files** . Zkopírujte soubor. mp4 do složky **MP4Files** . (V tomto příkladu se používá soubor **ignite.mp4** .) 
 3. Pomocí **NuGet** přidejte odkazy na knihovny DLL týkající se Media Services. V **hlavní nabídce aplikace Visual Studio** vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure. MediaServices** a stiskněte klávesu ENTER.
 4. Přidejte další odkazy, které jsou požadovány pro tento projekt: System. Runtime. Serialization a System. Web.
-5. Nahraďte **pomocí** příkazy, které byly přidány do souboru **Programs.cs** ve výchozím nastavení, následující:
+5. Nahraďte příkazy **pomocí** příkazů, které byly přidány do souboru **Programs. cs** ve výchozím nastavení, s následujícími těmi:
 
 ```csharp
 using System;

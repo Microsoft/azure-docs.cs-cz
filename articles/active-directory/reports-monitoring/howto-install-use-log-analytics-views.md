@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86ad698793d562f93f9972903ca21e50c209c79c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100580010"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalace a použití zobrazení Log Analytics pro Azure Active Directory
@@ -31,7 +31,7 @@ Azure Active Directory zobrazení Log Analytics pomáhá analyzovat a hledat pro
 * Protokoly auditu: [Sestava aktivity protokoly auditu](concept-audit-logs.md) vám poskytne přístup k historii všech úloh, které provedete ve vašem tenantovi.
 * Protokoly přihlašování: pomocí [sestavy aktivita přihlášení](concept-sign-ins.md)můžete určit, kdo provedl úkoly hlášené v protokolech auditu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat zobrazení Log Analytics, potřebujete:
 

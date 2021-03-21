@@ -8,10 +8,10 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
 ms.openlocfilehash: 06586b5bf20619f57b2ad1c3d5de84dd61952261
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102561241"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Plánování a Správa nákladů pro Azure synapse Analytics
@@ -20,7 +20,7 @@ Tento článek popisuje, jak naplánovat a spravovat náklady na Azure synapse A
 
 Po zahájení práce s prostředky Azure synapse použijte funkce Cost Management k nastavení rozpočtů a monitorování nákladů. Můžete si také projít předpokládané náklady a identifikovat trendy útraty, které identifikují oblasti, kde můžete chtít pracovat. Náklady na Azure synapse jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak naplánovat a spravovat náklady na Azure synapse, budou se vám účtovat všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně služeb třetích stran.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Analýza nákladů v Cost Management podporuje většinu typů účtů Azure, ale ne všechny. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). K zobrazení dat o nákladech potřebujete alespoň oprávnění ke čtení pro účet Azure. Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -76,7 +76,7 @@ Když použijete analýzu nákladů, zobrazí se vám náklady na Azure synapse 
 
 Zobrazení nákladů na Azure synapse při analýze nákladů:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Otevřete obor, buď předplatné nebo skupinu prostředků, v Azure Portal a v nabídce vyberte **Analýza nákladů** . Například přejděte na **odběry**, v seznamu vyberte předplatné a v nabídce vyberte  **Analýza nákladů** . Vyberte **obor** , který se má při analýze nákladů přepnout na jiný obor.
 3. Ve výchozím nastavení se náklady na služby zobrazují v prvním prstenovém grafu. Vyberte oblast v grafu s názvem Azure synapse.
 

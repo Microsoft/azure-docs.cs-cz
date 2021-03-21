@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358418"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Nastavení připojení indexeru k Azure SQL Database pomocí spravované identity
@@ -103,7 +103,7 @@ Při vytváření zdroje dat pomocí [REST API](/rest/api/searchservice/create-d
 * **přihlašovací údaje**
     * Při ověřování pomocí spravované identity se formát **přihlašovacích údajů** liší od použití identity spravovaných. Tady poskytnete počáteční katalog nebo název databáze a ResourceId, které nemají klíč nebo heslo účtu. ResourceId musí zahrnovat ID předplatného Azure SQL Database, skupinu prostředků SQL Database a název databáze SQL. 
     * Formát připojovacího řetězce spravované identity:
-        * *Počáteční katalog | Databáze = **název databáze** ; ResourceId =/Subscriptions/ **ID vašeho předplatného** /resourceGroups/ **název vaší skupiny prostředků** /Providers/Microsoft.SQL/Servers/ **vaše SQL Server jméno** /; Časový limit připojení = **časový limit připojení** ;*
+        * *Počáteční katalog | Databáze =**název databáze**; ResourceId =/Subscriptions/**ID vašeho předplatného**/resourceGroups/**název vaší skupiny prostředků**/Providers/Microsoft.SQL/Servers/**vaše SQL Server jméno**/; Časový limit připojení =**časový limit připojení**;*
 * **Container** Určuje název tabulky nebo zobrazení, které chcete indexovat.
 
 Příklad vytvoření objektu zdroje dat SQL Azure pomocí [REST API](/rest/api/searchservice/create-data-source):
@@ -170,7 +170,7 @@ Další informace o rozhraní API Create indexeru najdete v části [Vytvoření
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se při pokusu indexeru o připojení ke zdroji dat zobrazí chybová zpráva s informacemi o tom, že klient nemá povolený přístup k serveru, podívejte se na [běžné chyby indexeru](./search-indexer-troubleshooting.md).
 

@@ -17,10 +17,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5c84e7c753e6d1eb1d357320857e4c159cc13cfc
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103013750"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>Správa koncových bodů streamování pomocí sady .NET SDK
@@ -57,7 +57,7 @@ Nastavte své vývojové prostředí a v souboru app.config vyplňte informace o
 
 ## <a name="add-code-that-manages-streaming-endpoints"></a>Přidat kód, který spravuje koncové body streamování
     
-Nahraďte kód v Program.cs následujícím kódem:
+Kód v programu program. cs nahraďte následujícím kódem:
 
 ```csharp
 using System;

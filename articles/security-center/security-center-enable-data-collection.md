@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
 ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102561258"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Konfigurace automatického zřizování pro agenty a rozšíření z Azure Security Center
 
 Azure Security Center shromažďuje data z vašich prostředků pomocí příslušného agenta nebo rozšíření pro daný prostředek a typu kolekce dat, kterou jste povolili. Pomocí níže uvedených postupů zajistěte, aby vaše prostředky měly potřebné agenty a rozšíření, které používá Security Center.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="availability"></a>Dostupnost
@@ -124,7 +124,7 @@ Povolení automatického zřizování agenta Log Analytics:
 
         |Linka  |Zásady  |
         |---------|---------|
-        |Doplněk zásad pro Kubernetes|[Nasazení Azure Policy doplňku do clusterů služby Azure Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
+        |Doplněk služby Policy pro Kubernetes|[Nasazení Azure Policy doplňku do clusterů služby Azure Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
         |Microsoft Dependency Agent (Preview) (virtuální počítače s Windows)|[Nasazení agenta závislostí pro virtuální počítače s Windows](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
         |Microsoft Dependency Agent (Preview) (virtuální počítače se systémem Linux)|[Nasazení agenta závislostí pro virtuální počítače se systémem Linux](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
         |||
@@ -275,7 +275,7 @@ Vypnutí automatického zřizování agenta:
 >
 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 -   Informace o tom, jak identifikovat problémy s instalací automatického zřizování, najdete v tématu [monitorování stavů agenta](security-center-troubleshooting-guide.md#mon-agent).
 -  Informace o tom, jak identifikovat požadavky na síť agenta monitorování, najdete v tématu [řešení potíží s požadavky na síť agenta](security-center-troubleshooting-guide.md#mon-network-req)

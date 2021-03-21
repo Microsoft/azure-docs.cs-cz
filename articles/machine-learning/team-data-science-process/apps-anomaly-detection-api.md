@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305702"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning rozhraní API pro detekci anomálií
@@ -28,8 +28,8 @@ ms.locfileid: "93305702"
 
 Toto rozhraní API dokáže detekovat následující typy neobvyklé vzorů v datech časových řad:
 
-* **Pozitivní a negativní trendy** : například při monitorování využití paměti při výpočtu stoupajících trendů může být důležité, aby bylo možné vyhodnotit nevracení paměti.
-* **Změny v dynamickém rozsahu hodnot** : například při monitorování výjimek vyvolaných cloudovou službou mohou všechny změny v dynamickém rozsahu hodnot indikovat nestabilitu ve stavu služby a
+* **Pozitivní a negativní trendy**: například při monitorování využití paměti při výpočtu stoupajících trendů může být důležité, aby bylo možné vyhodnotit nevracení paměti.
+* **Změny v dynamickém rozsahu hodnot**: například při monitorování výjimek vyvolaných cloudovou službou mohou všechny změny v dynamickém rozsahu hodnot indikovat nestabilitu ve stavu služby a
 * **Špičky a** nedodržení: například při monitorování počtu selhání přihlášení ve službě nebo počtu rezervací na webu elektronického obchodování může špičky nebo DIP znamenat neobvyklé chování.
 
 Tyto detektory strojového učení sledují takové změny v hodnotách v průběhu času a oznamují průběžné změny v jejich hodnotách jako skóre anomálií. Nevyžadují optimalizaci prahové hodnoty ad hoc a jejich skóre se dá použít k řízení kladné míry. Rozhraní API pro detekci anomálií je užitečné v několika scénářích, jako je monitorování služby, sledováním klíčových ukazatelů výkonu v průběhu času, monitorování využití prostřednictvím metrik, jako je třeba počet hledání, počet kliknutí, sledování výkonu prostřednictvím čítačů, jako je například paměť, procesor, čtení souborů atd. v průběhu času.
@@ -115,7 +115,7 @@ Následující obrázek ukazuje příklad anomálií, které může rozhraní AP
 ### <a name="detectors"></a>Detektory
 Rozhraní API pro detekci anomálií podporuje detektory ve třech hlavních kategoriích. Podrobnosti o specifických vstupních parametrech a výstupech pro jednotlivé detektory najdete v následující tabulce.
 
-| Kategorie detektoru | Detectoru | Popis | Vstupní parametry | Výstupy |
+| Kategorie detektoru | Detectoru | Description | Vstupní parametry | Výstupy |
 | --- | --- | --- | --- | --- |
 | Detektory špičky |Detektor TSpike |Detekovat špičky a neshodné hodnoty na základě toho, co se týče hodnot od první a třetího Kvartily |*tspikedetector. Citlivost:* přebírá celočíselnou hodnotu v rozsahu 1-10, výchozí hodnota: 3; Vyšší hodnoty zachytí více extrémních hodnot tím, že budou méně citlivé. |TSpike: binární hodnoty – ' 1 ', pokud je detekována špička/DIP, ' 0 ' jinak |
 | Detektory špičky | Detektor ZSpike |Detekovat špičky a nezávisle na tom, jak daleko jsou v databodech ze střední hodnoty |*zspikedetector. Citlivost:* přebírat celočíselnou hodnotu v rozsahu 1-10, výchozí hodnota: 3; Vyšší hodnoty zachytí více extrémních hodnot, takže jsou méně citlivé. |ZSpike: binární hodnoty – ' 1 ', pokud je detekována špička/DIP, ' 0 ' jinak |
@@ -125,7 +125,7 @@ Rozhraní API pro detekci anomálií podporuje detektory ve třech hlavních kat
 ### <a name="parameters"></a>Parametry
 Podrobnější informace o těchto vstupních parametrech jsou uvedeny v následující tabulce:
 
-| Vstupní parametry | Popis | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
+| Vstupní parametry | Description | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
 | --- | --- | --- | --- | --- | --- |
 | detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |integer |10-2000 |Závislá na časové řadě |
 | detektory. spikesdips | Určuje, jestli se mají detekovat jenom špičky, jenom vyhrazené nebo obojí. |Obojí |Výčtový |Obě, špičky, DIP |Obojí |
@@ -138,7 +138,7 @@ Podrobnější informace o těchto vstupních parametrech jsou uvedeny v násled
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory dat časových řad a vrátí skóre anomálií a binární indikátory špičky pro každý bod v čase. V tabulce níže jsou uvedeny výstupy z rozhraní API.
 
-| Výstupy | Popis |
+| Výstupy | Description |
 | --- | --- |
 | Čas |Časová razítka z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
 | Data |Hodnoty z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
@@ -161,7 +161,7 @@ Detektory v koncovém bodu sezónnost jsou podobné těm, které jsou v nesezón
 
 Podrobnější informace o těchto vstupních parametrech jsou uvedeny v následující tabulce:
 
-| Vstupní parametry | Popis | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
+| Vstupní parametry | Description | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
 | --- | --- | --- | --- | --- | --- |
 | předzpracování. aggregationInterval |Interval agregace v sekundách pro agregaci vstupních časových řad |0 (není provedena žádná agregace) |integer |0: přeskočit agregaci > 0 jinak |5 minut až 1 den, časová řada závislá |
 | předzpracování. aggregationFunc |Funkce používaná pro agregaci dat do zadaného AggregationInterval |mean |Výčtový |střední hodnota, suma, délka |– |
@@ -181,7 +181,7 @@ Podrobnější informace o těchto vstupních parametrech jsou uvedeny v násled
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory dat časových řad a vrátí skóre anomálií a binární indikátory špičky pro každý bod v čase. V tabulce níže jsou uvedeny výstupy z rozhraní API.
 
-| Výstupy | Popis |
+| Výstupy | Description |
 | --- | --- |
 | Čas |Časová razítka z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
 | OriginalData |Hodnoty z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |

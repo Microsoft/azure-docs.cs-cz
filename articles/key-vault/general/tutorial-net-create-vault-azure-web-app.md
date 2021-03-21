@@ -11,10 +11,10 @@ ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788733"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure v .NET
@@ -28,7 +28,7 @@ Další informace o webových aplikacích a nasazení služby Azure App Service 
 - [Vytvoření webové aplikace v ASP.NET Core v Azure App Service](../../app-service/quickstart-dotnetcore.md)
 - [Místní nasazení Gitu pro Azure App Service](../../app-service/deploy-local-git.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -277,7 +277,7 @@ dotnet add package Azure.Security.KeyVault.Secrets
 
 #### <a name="update-the-code"></a>Aktualizace kódu
 
-Vyhledejte a otevřete soubor Startup.cs v projektu akvwebapp. 
+Vyhledejte a otevřete soubor Startup. cs v projektu akvwebapp. 
 
 Přidejte tyto řádky do záhlaví:
 

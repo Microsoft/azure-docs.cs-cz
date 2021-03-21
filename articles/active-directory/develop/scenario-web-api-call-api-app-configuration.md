@@ -13,10 +13,10 @@ ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5072ae58d3a9412237e70a9bc98970296ce1e1fa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686576"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu
@@ -88,7 +88,7 @@ Microsoft. identity. Web nabízí několik způsobů, jak popsat certifikáty, j
 
 ## <a name="startupcs"></a>Startup.cs
 
-Vaše webové rozhraní API bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zveřejňuje `ITokenAcquisition` službu, kterou můžete použít v akcích kontroleru nebo stránek. Jak vidíte v následujících dvou odrážekch, můžete dokonce dělat jednodušší. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs*:
+Vaše webové rozhraní API bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zveřejňuje `ITokenAcquisition` službu, kterou můžete použít v akcích kontroleru nebo stránek. Jak vidíte v následujících dvou odrážekch, můžete dokonce dělat jednodušší. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` při *spuštění. cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -116,7 +116,7 @@ Pokud nechcete získat token sami, *Microsoft. identity. Web* poskytuje dva mech
 Pokud chcete volat Microsoft Graph, Microsoft. identity. Web vám umožní přímo použít `GraphServiceClient` (zveřejněné v sadě Microsoft Graph SDK) ve svých akcích rozhraní API. Postup vystavení Microsoft Graph:
 
 1. Do projektu přidejte balíček NuGet [Microsoft. identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) .
-1. Přidejte `.AddMicrosoftGraph()` po `.EnableTokenAcquisitionToCallDownstreamApi()` v souboru *Startup.cs* . `.AddMicrosoftGraph()` má několik přepsání. Pomocí přepsání, které přebírá konfigurační oddíl jako parametr, se kód změní na:
+1. Přidejte `.AddMicrosoftGraph()` za `.EnableTokenAcquisitionToCallDownstreamApi()` soubor *Startup. cs* . `.AddMicrosoftGraph()` má několik přepsání. Pomocí přepsání, které přebírá konfigurační oddíl jako parametr, se kód změní na:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -164,7 +164,7 @@ public class Startup
 
 Stejně jako u Web Apps můžete zvolit různé implementace mezipaměti tokenů. Podrobnosti najdete v tématu [serializace mezipaměti webového tokenu Microsoft Identity](https://aka.ms/ms-id-web/token-cache-serialization) na GitHubu.
 
-Následující obrázek znázorňuje různé možnosti *Microsoft. identity. Web* a jejich dopad na soubor *Startup.cs* :
+Následující obrázek znázorňuje různé možnosti *Microsoft. identity. Web* a jejich dopad na *spouštěcí soubor. cs* :
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Blokový diagram znázorňující možnosti konfigurace služby ve spouštěcí tečkě C S pro volání webového rozhraní API a určení implementace mezipaměti tokenů":::
 

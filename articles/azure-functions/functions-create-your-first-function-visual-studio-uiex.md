@@ -7,10 +7,10 @@ ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102050116"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Studio
@@ -57,7 +57,7 @@ Pokud chcete vytvořit <abbr title="Logický kontejner pro jednu nebo více jedn
 
 `FunctionName`Atribut Method nastaví název funkce, která je ve výchozím nastavení generována jako `Function1` . Vzhledem k tomu, že nástroje neumožňují při vytváření projektu přepsat výchozí název funkce, vytvoření lepšího názvu pro třídu funkce, soubor a metadata vydejte za minutu.
 
-1. V **Průzkumníku souborů** klikněte pravým tlačítkem na soubor function1.cs a přejmenujte ho na *HttpExample.cs*.
+1. V **Průzkumníku souborů** klikněte pravým tlačítkem na soubor function1. cs a přejmenujte ho na *HttpExample. cs*.
 
 1. V kódu přejmenujte třídu Function1 na ' HttpExample '.
 

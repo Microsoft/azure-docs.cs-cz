@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/05/2020
 ms.author: russellcooks
 ms.openlocfilehash: 359c5f93516ea6f0561865bd86e4f51dedb4c3a5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358234"
 ---
 1. V Visual Studio Code přejděte na src/Edge. Zobrazí se soubor. ENV, který jste vytvořili společně s několika soubory šablon nasazení.
@@ -18,7 +18,7 @@ ms.locfileid: "94358234"
 
     * C2D-Console-App. csproj: Toto je soubor projektu pro Visual Studio Code.
     * operations.js: Tento soubor obsahuje seznam různých operací, které má program spustit.
-    * Program.cs: Tento ukázkový kód programu:
+    * Program. cs: Tento ukázkový kód programu:
 
         * Načte nastavení aplikace.
         * Vyvolá živou analýzu videa v přímých metodách modulu IoT Edge k vytvoření topologie, vytvoření instance grafu a aktivaci grafu.

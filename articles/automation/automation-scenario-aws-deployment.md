@@ -6,17 +6,17 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 03f1f1659d120a2aa1b827063cb2bc84138f3655
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896066"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Nasazení virtuálního počítače s Amazon Web Services pomocí Runbooku
 
 V tomto článku se dozvíte, jak můžete pomocí Azure Automation zřídit virtuální počítač v předplatném Amazon Web Service (AWS) a dát tomuto VIRTUÁLNÍmu počítači konkrétní název, který AWS odkazuje na označení virtuálního počítače jako "označování".
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte mít účet Azure Automation a předplatné Amazon Web Services (AWS). Další informace o nastavení účtu Azure Automation a jeho konfiguraci s přihlašovacími údaji pro předplatné AWS najdete v [konfiguraci ověřování pomocí Amazon Web Services](automation-config-aws-account.md). Tento účet by se měl před pokračováním vytvořit nebo aktualizovat pomocí přihlašovacích údajů předplatného AWS, jak odkazujete na tento účet v níže uvedených částech.
 

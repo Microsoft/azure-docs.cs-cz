@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995280"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL pro jeden server pomocí portálu
 
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení.  V tomto článku se naučíte, jak použít Azure Portal k vytvoření virtuálního počítače v Azure Virtual Network a Azure Database for PostgreSQL jednom serveru s privátním koncovým bodem Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for PostgreSQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
@@ -49,7 +49,7 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
 
 ### <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač** Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >    >  **virtuální počítač** Compute.
 
 2. V nástroji **vytvořit virtuální počítač základy** zadejte nebo vyberte tyto informace:
 

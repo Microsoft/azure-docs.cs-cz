@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
 ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94363710"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnerů Detektoru anomálií
@@ -59,7 +59,7 @@ Toto nastavení najdete na následujícím místě:
 
 * Azure Portal: Přehled **detektoru anomálií** , označený `Endpoint`
 
-|Vyžadováno| Název | Datový typ | Popis |
+|Vyžadováno| Name | Datový typ | Popis |
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](anomaly-detector-container-howto.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
@@ -88,7 +88,7 @@ Kontejnery detektoru anomálií nepoužívají vstupní ani výstupní připojen
 
 Přesná syntaxe umístění hostitelského připojení se liší v závislosti na hostitelském operačním systému. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](anomaly-detector-container-howto.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
 
-|Volitelné| Název | Datový typ | Popis |
+|Volitelné| Name | Datový typ | Popis |
 |-------|------|-----------|-------------|
 |Nepovolené| `Input` | Řetězec | Kontejnery detektoru anomálií toto nepoužívají.|
 |Volitelné| `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -97,8 +97,8 @@ Přesná syntaxe umístění hostitelského připojení se liší v závislosti 
 
 Následující příklady používají konfigurační nastavení k ilustraci, jak psát a používat `docker run` příkazy.  Po spuštění bude kontejner dál běžet, dokud ho [nezastavíte](anomaly-detector-container-howto.md#stop-the-container) .
 
-* **Znak pro pokračování řádku** : příkazy Docker v následujících částech používají zpětné lomítko, `\` jako znak pro pokračování řádku pro prostředí bash shell. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. Například znak pro pokračování řádku pro systém Windows je stříška, `^` . Nahraďte zpětné lomítko znakem stříšky. 
-* **Pořadí argumentů** : Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
+* **Znak pro pokračování řádku**: příkazy Docker v následujících částech používají zpětné lomítko, `\` jako znak pro pokračování řádku pro prostředí bash shell. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. Například znak pro pokračování řádku pro systém Windows je stříška, `^` . Nahraďte zpětné lomítko znakem stříšky. 
+* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
 
 Hodnotu v závorkách nahraďte `{}` vlastními hodnotami:
 

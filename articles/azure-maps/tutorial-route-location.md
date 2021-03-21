@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 1f1647766eeae917f7a2266ebb8f00fdfab3452e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210573"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Kurz: jak zobrazit směry tras pomocí služby Azure Maps Route Service a mapového ovládacího prvku
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak pomocí [rozhraní Azure Maps Route Service API](
 
 Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.

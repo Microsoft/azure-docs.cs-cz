@@ -10,10 +10,10 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: ea9353ed8c1938fa9b33585a0650b4507c671451
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92125026"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
@@ -36,7 +36,7 @@ Poskytovatelé Azure a poskytovatelé jiných výrobců Azure mohou ingestovat d
 
 - **SharePoint Online** – k migraci obsahu sdílené složky do SharePointu online použijte Azure Data box a nástroj pro migraci služby SharePoint (SPMT). Pomocí Data Box odeberete závislost na síti WAN pro přenos dat. Další informace najdete v tématu [použití Azure Data box Heavy k migraci obsahu sdílené složky do SharePointu Online](data-box-heavy-migrate-spo.md).
 
-- **Azure File Sync** – replikuje soubory z vaší data box do sdílené složky Azure a umožní vám centralizovat vaše souborové služby v Azure a přitom zachovat místní přístup k vašim datům. Další informace najdete v tématu [nasazení Azure File Sync](../storage/files/storage-sync-files-deployment-guide.md).
+- **Synchronizace souborů Azure** – replikuje soubory z vaší data box do sdílené složky Azure a umožní vám centralizovat vaše souborové služby v Azure a přitom zachovat místní přístup k vašim datům. Další informace najdete v tématu [nasazení synchronizace souborů Azure](../storage/files/storage-sync-files-deployment-guide.md).
 
 - **HDFS ukládá** – migruje data z místního úložiště Hadoop systém souborů DFS (DISTRIBUTED File System) (HDFS) vašeho clusteru hadoop do Azure Storage pomocí data box. Další informace najdete v tématu [migrace z úložiště Prem HDFS do Azure Storage s Azure Data box](../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
 
@@ -90,7 +90,7 @@ Další informace najdete v článku, který se věnuje [zabezpečení a ochran�
 
 ## <a name="features-and-specifications"></a>Funkce a specifikace
 
-| Specifikace                                          | Popis              |
+| Specifikace                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Hmotnost                                                  | < 1 kg na krabici. Až 5 disků v poli                |
 | Dimenze                                              | Disk – 2,5“ SSD |

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: lajanuar
 ms.openlocfilehash: e7f0e106c1ca154dcd54990395430b3e0f6c536f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895505"
 ---
 # <a name="translator-30-dictionary-examples"></a>Translator 3,0: příklady slovníku
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 Parametry žádosti předané řetězci dotazu jsou:
 
-| Parametr dotazu | Popis |
+| Parametr dotazu | Description |
 | --------- | ----------- |
 | verze-api <img width=200/> | **Povinný parametr**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0` . |
 | Výsledkem | **Povinný parametr**.<br/>Určuje jazyk vstupního textu. Zdrojový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) zahrnutých v `dictionary` oboru. |
@@ -41,7 +41,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 
 Hlavičky požadavku zahrnují:
 
-| Hlavičky  | Popis |
+| Hlavičky  | Description |
 | ------ | ----------- |
 | Ověřovací hlavičky (y) <img width=200/>  | **Požadovaná hlavička žádosti**<br/>Podívejte se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>. |
 | Typ obsahu | **Požadovaná hlavička žádosti**<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json` . |

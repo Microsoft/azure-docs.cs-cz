@@ -11,10 +11,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-nodejs-uiex
 ms.openlocfilehash: 6c6f0543dcfbecd16ba4176272f928ffd0eb54de
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735110"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure
@@ -23,7 +23,7 @@ ms.locfileid: "101735110"
 
 Začněte s Azure App Service vytvořením aplikace Node.js/Express místně pomocí Visual Studio Code a pak nasazením aplikace do cloudu. Vzhledem k tomu, že používáte bezplatnou App Service úroveň, nebudete mít k dokončení tohoto rychlého startu žádné náklady.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
 - <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
@@ -181,7 +181,7 @@ Nebo si je můžete stáhnout instalací sady [Node Pack pro rozšíření Azure
 ::: zone-end
 
 ::: zone pivot="platform-linux"  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud nemáte účet Azure, [Zaregistrujte si ještě dnes](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension) bezplatný účet s $200 v kreditech Azure, abyste si vyzkoušeli libovolnou kombinaci služeb.
 
@@ -195,7 +195,7 @@ Po instalaci rozšíření se přihlaste ke svému účtu Azure. V řádku aktiv
 
 ![Přihlaste se k Azure](./media/quickstart-nodejs/sign-in.png)
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"**, může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. `HTTP_PROXY` `HTTPS_PROXY` Pomocí použijte konfiguraci a proměnné prostředí s informacemi o proxy serveru v terminálu `export` .
 
@@ -298,7 +298,7 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
 
 Až se nasazení dokončí, vyberte **Procházet web** v příkazovém řádku a zobrazte svou čerstvou nasazenou webovou aplikaci.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se zobrazí chyba **"nemáte oprávnění k zobrazení tohoto adresáře nebo stránky."**, aplikace se pravděpodobně nespustila správně. Přejděte k další části a podívejte se na výstup protokolu, který vyhledá a opraví chybu. Pokud ji nemůžete opravit, kontaktujte nás tak, že vyberete níže uvedené tlačítko **problému** . Rádi vám pomůžeme!
 

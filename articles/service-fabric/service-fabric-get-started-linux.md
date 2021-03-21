@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086886"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
@@ -300,11 +300,11 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 
 1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujete tak, že vyberete **nápovědu**  >  **o**  >  **podrobnostech instalace** na zatmění. Buildship můžete aktualizovat pomocí pokynů v článku [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Moduly plug-in Eclipse pro Gradle).
 
-2. Pokud chcete nainstalovat modul plug-in Service Fabric, vyberte **help**  >  **instalovat nový software** .
+2. Pokud chcete nainstalovat modul plug-in Service Fabric, vyberte **help**  >  **instalovat nový software**.
 
-3. Do pole **work with (pracovat s** ) zadejte **https: \/ /dl.Microsoft.com/Eclipse** .
+3. Do pole **work with (pracovat s** ) zadejte **https: \/ /dl.Microsoft.com/Eclipse**.
 
-4. Vyberte **Přidat** .
+4. Vyberte **Přidat**.
 
     ![Stránka Available Software (Dostupný software)][sf-eclipse-plugin]
 

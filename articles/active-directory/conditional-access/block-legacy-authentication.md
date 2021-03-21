@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 09f98e3d6c7997d9cae2737b25f4323021e29bfb
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98892435"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postup: Blokování starší verze ověřování v Azure AD pomocí podmíněného přístupu   
 
 Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure Active Directory (Azure AD) podporuje širokou škálu ověřovacích protokolů, včetně starších verzí ověřování. Starší protokoly ale nepodporují službu Multi-Factor Authentication (MFA). Vícefaktorové ověřování je v mnoha prostředích běžným požadavkem na krádež identity. 
 
@@ -35,7 +35,7 @@ Alex Weinert, ředitel pro zabezpečení identity v Microsoftu, v jeho 12. břez
 
 Pokud je vaše prostředí připravené k blokování starší verze ověřování, aby se zlepšila ochrana vašeho tenanta, můžete tento cíl dosáhnout pomocí podmíněného přístupu. Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které blokují ověřování starší verze pro vašeho tenanta.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte zkušenosti se [základními koncepty](overview.md) podmíněného přístupu Azure AD.
 

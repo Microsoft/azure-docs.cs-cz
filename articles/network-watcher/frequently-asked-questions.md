@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: e7585880b98f62f819ff344c82846c2cfb1fd620
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019818"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Nejčastější dotazy týkající se Azure Network Watcher
@@ -30,7 +30,7 @@ Network Watcher je navržený tak, aby sledoval a opravil stav sítě pro souč�
 
 ### <a name="what-tools-does-network-watcher-provide"></a>Jaké nástroje Network Watcher poskytují?
 Network Watcher poskytuje tři hlavní sady funkcí
-* Sledování
+* Monitorování
   * [Zobrazení topologie](./view-network-topology.md) zobrazuje prostředky ve virtuální síti a vztahy mezi nimi.
   * [Monitor připojení](./connection-monitor.md) umožňuje monitorovat připojení a latenci mezi virtuálním počítačem a jiným síťovým prostředkem.
   * [Nástroj Sledování výkonu sítě](../azure-monitor/insights/network-performance-monitor.md) umožňuje monitorovat připojení a latence napříč hybridními síťovými architekturami, okruhy ExpressRoute a koncovými body služby nebo aplikace.  
@@ -84,7 +84,7 @@ Prostředek Network Watcher představuje back-end službu pro Network Watcher a 
 ## <a name="service-availability-and-redundancy"></a>Dostupnost služby a redundance 
 
 ### <a name="is-the-network-watcher-service-zone-resilient"></a>Je zóna služby Network Watcher odolná proti chybám? 
-Yes. Služba Network Watcher je ve výchozím nastavení odolná proti zónám. 
+Ano. Služba Network Watcher je ve výchozím nastavení odolná proti zónám. 
 
 ### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu Network Watcher, aby byla odolná proti zóně? 
 Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. V zóně – odolnost pro Network Watcher prostředky je ve výchozím nastavení dostupná a spravovaná samotnými službami. 
