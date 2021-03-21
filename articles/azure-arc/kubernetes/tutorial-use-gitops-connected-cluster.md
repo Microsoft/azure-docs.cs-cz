@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 64299bd05e82cf6f5452cde3f3da5622eff25e56
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121469"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Kurz: nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC Azure 
@@ -24,7 +24,7 @@ V tomto kurzu použijete konfigurace pomocí GitOps v clusteru Kubernetes s povo
 > * Použijte formulář pro konfiguraci privátního úložiště Git.
 > * Ověřte konfiguraci Kubernetes.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Existující Kubernetes připojený cluster s podporou Azure ARC.
@@ -235,7 +235,7 @@ Při vytvoření nebo aktualizaci konfigurace se stane několik věcí:
 
 Během procesu zřizování se prostředek konfigurace přesune po několika změnách stavu. Sledujte průběh pomocí `az k8s-configuration show ...` příkazu výše:
 
-| Změna fáze | Popis |
+| Změna fáze | Description |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | Představuje počáteční a průběžné stavy. |
 | `complianceStatus` -> `Installed`  | `config-agent` cluster byl úspěšně nakonfigurován a nasazen `flux` bez chyby. |

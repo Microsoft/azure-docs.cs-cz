@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
 ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98936276"
 ---
 # <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>Nasazení modulu pro detekci anomálií pro IoT Edge
 
 Přečtěte si, jak nasadit modul Cognitive Services [anomálií](../anomaly-detector-container-howto.md) do IoT Edge zařízení. Po nasazení do IoT Edge se modul spouští v IoT Edge společně s jinými moduly jako instance kontejnerů. Zpřístupňuje stejné rozhraní API jako instance kontejneru detektoru anomálií běžící ve standardním prostředí kontejneru Docker. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Použijte předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
 * Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).

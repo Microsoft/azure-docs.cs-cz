@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý Start: použití nástroje URL k získání odpovědi z znalostní báze Knowledge Base – QnA Maker'
+title: Pomocí nástroje URL získáte odpověď ze znalostní báze Knowledge Base – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak získat odpověď ze znalostní báze pomocí nástroje pro testování adresy URL, jako je například kudrlinkou nebo post.
+description: Tento článek vás provede vytvořením odpovědi z vaší znalostní báze pomocí nástroje pro testování adresy URL, jako je například kudrlinkou nebo post.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: eddae69c0946ab135540b77d3cc89937079e6293
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 46657cfaf513cdd2dd0ecfd284602d2277781626
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103016249"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583067"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Rychlý Start: získání odpovědi od znalostní báze Knowledge Base
+# <a name="get-an-answer-from-a-knowledge-base"></a>Získat odpověď od znalostní báze Knowledge Base
 
 
 ::: zone pivot="url-test-tool-curl"

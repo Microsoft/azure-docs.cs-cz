@@ -4,10 +4,10 @@ description: Podívejte se, jak kontejnerizovat existující aplikaci .NET pomoc
 ms.topic: tutorial
 ms.date: 07/08/2019
 ms.openlocfilehash: 7930651a0faa5f37336c15557e2a0f068d613011
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98936712"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 2. Povolte funkce Windows **Hyper-V** a **kontejnery**.
@@ -266,7 +266,7 @@ Aplikace je teď připravená a můžete ji nasadit do clusteru v Azure přímo 
 
 ![Publikování aplikace][publish-app]
 
-Postupujte podle pokynů k nasazení v okně výstupu. Po nasazení aplikace otevřete prohlížeč a zadejte adresu clusteru a port aplikace. Například `http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
+Postupujte podle pokynů k nasazení v okně výstupu. Po nasazení aplikace otevřete prohlížeč a zadejte adresu clusteru a port aplikace. Například, `http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
 
 ![Snímek obrazovky domovské stránky aplikace Fabrikam Fiber CallCenter běžící na azure.com Stránka zobrazuje řídicí panel se seznamem volání podpory.][fabrikam-web-page-deployed]
 

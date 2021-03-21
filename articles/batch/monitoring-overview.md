@@ -4,10 +4,10 @@ description: Přečtěte si o službě Azure Monitoring Services, metrikách, di
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.openlocfilehash: b926f9c6d173cd0b8d886047eae490e4a151988f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100595433"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorování řešení Batch
@@ -33,7 +33,7 @@ Monitorujte každý účet Batch pomocí funkcí [Azure monitor](../azure-monito
 
 ## <a name="batch-resource-monitoring"></a>Sledování prostředků Batch
 
-V aplikacích Batch pomocí rozhraní API služby Batch můžete monitorovat stav svých prostředků, včetně úloh, úkolů, uzlů a fondů, a dotazovat se na ně. Příklad:
+V aplikacích Batch pomocí rozhraní API služby Batch můžete monitorovat stav svých prostředků, včetně úloh, úkolů, uzlů a fondů, a dotazovat se na ně. Například:
 
 * [Počet úloh a výpočetních uzlů podle stavu](batch-get-resource-counts.md)
 * [Efektivní vytváření dotazů k vypsání prostředků Batch](batch-efficient-list-queries.md)

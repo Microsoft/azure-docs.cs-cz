@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
 ms.openlocfilehash: 2e4a398ab71878134887fb8fba025cd8aa6122ad
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492814"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Zabezpečení back-end služeb pomocí ověřování klientských certifikátů v Azure API Management
@@ -35,7 +35,7 @@ Doporučuje se použít certifikáty trezoru klíčů, protože pomáhá vylepš
 * V certifikátech uložených v trezorech klíčů se dají použít podrobné [zásady přístupu](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) .
 * Certifikáty, které jsou v trezoru klíčů aktualizované, se automaticky otočí v API Management. Po aktualizaci v trezoru klíčů se certifikát v API Management aktualizoval do 4 hodin. Certifikát můžete také aktualizovat ručně pomocí Azure Portal nebo prostřednictvím REST API pro správu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/08/2019
 ms.openlocfilehash: cbe4231bbecdf279c637cd334336437a020188d4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98936988"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Scénář: `hbase hbck` příkaz vrátí nekonzistence ve službě Azure HDInsight.
@@ -64,7 +64,7 @@ Se liší.
 
 ### <a name="resolution"></a>Řešení
 
-Ručně sloučí tyto překryté oblasti. V části přejít na HMaster web UI tabulka webové uživatelské rozhraní vyberte odkaz tabulka, který má problém. Zobrazí se počáteční klíč/koncový klíč každé oblasti patřící do této tabulky. Pak tyto překryté oblasti slučte. V prostředí HBA Shell `merge_region 'xxxxxxxx','yyyyyyy', true` . Příklad:
+Ručně sloučí tyto překryté oblasti. V části přejít na HMaster web UI tabulka webové uživatelské rozhraní vyberte odkaz tabulka, který má problém. Zobrazí se počáteční klíč/koncový klíč každé oblasti patřící do této tabulky. Pak tyto překryté oblasti slučte. V prostředí HBA Shell `merge_region 'xxxxxxxx','yyyyyyy', true` . Například:
 
 ```
 RegionA, startkey:001, endkey:010,

@@ -1,5 +1,5 @@
 ---
-title: Přehled samostatného agenta Micro
+title: Přehled nástroje Standalone Micro Agent (Preview)
 titleSuffix: Azure Defender for IoT
 description: Agenti zabezpečení Azure Defender pro IoT umožňují vytvářet zabezpečení přímo na vašich nových zařízeních IoT a projektech Azure IoT.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/19/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a3f71860801c7f611a10acd4ec4e8f8ed03ab20a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 84afa4205b57481efc3ed9df805cfa7a3657a6c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120075"
 ---
-# <a name="standalone-micro-agent-overview"></a>Přehled samostatného agenta Micro 
+# <a name="standalone-micro-agent-overview-preview"></a>Přehled nástroje Standalone Micro Agent (Preview)
 
 Zabezpečení je téměř univerzálním problémem pro implementátory IoT. Zařízení IoT mají jedinečné potřeby pro monitorování koncového bodu, správu stav zabezpečení a detekci hrozeb – to vše s vysokými nároky na výkon. 
 
@@ -47,4 +47,4 @@ Agent Azure Defender pro IoT Micro se snadno nasazuje a má minimální dopad na
 
 ## <a name="next-steps"></a>Další kroky
 
-Ověřte [metody ověřování mikroagentů ](concept-security-agent-authentication.md).
+Ověřte [metody ověřování mikroagentů (Preview)](concept-security-agent-authentication.md).

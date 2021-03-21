@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/11/2020
 ms.openlocfilehash: 0d62bebddb7751c168ba2e487b2391a40bbc6e67
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101745084"
 ---
 # <a name="hive-workload-migration-to-new-account-in-azure-storage"></a>Migrace zatížení v podregistru do nového účtu v Azure Storage
@@ -20,7 +20,7 @@ Naučte se používat akce skriptů ke kopírování tabulek podregistru mezi ú
 
 Postup ručního kopírování jednotlivých tabulek podregistru v HDInsight 4,0 najdete v tématu [Export/Import podregistru](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nový cluster HDInsight s následujícími konfiguracemi:
   * Výchozí systém souborů je v cílovém účtu úložiště. Viz [použití Azure Storage s clustery Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md).

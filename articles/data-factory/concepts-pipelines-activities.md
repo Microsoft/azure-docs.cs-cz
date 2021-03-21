@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 870c812a68f765f987cfd3d1b953e0afeb3e9055
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100364503"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
@@ -58,8 +58,8 @@ Aktivita transformace dat | Výpočetní prostředí
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Vlastní aktivita](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Poznámkový blok Databricks](transform-data-databricks-notebook.md) | Azure Databricks
-[Aktivita Databricks Jar](transform-data-databricks-jar.md) | Azure Databricks
-[Aktivita Databricks Python](transform-data-databricks-python.md) | Azure Databricks
+[Aktivita JAR pro datacihly](transform-data-databricks-jar.md) | Azure Databricks
+[Aktivita v Pythonu datacihly](transform-data-databricks-python.md) | Azure Databricks
 
 Další informace najdete v článku [Aktivity transformace dat](transform-data.md).
 
@@ -75,7 +75,7 @@ Aktivita řízení | Description
 [Získat metadata](control-flow-get-metadata-activity.md) | Aktivita GetMetadata slouží k načtení metadat jakýchkoli dat ve službě Azure Data Factory.
 [Aktivita podmínky Když](control-flow-if-condition-activity.md) | Podmínka If se dá použít k vytvoření větve na základě podmínky, která provádí vyhodnocení na hodnotu True nebo False. Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Vyhodnocuje sadu aktivit, když se podmínka vyhodnotí jako `true` a jiná sada aktivit, když se podmínka vyhodnotí jako. `false.`
 [Aktivita vyhledávání](control-flow-lookup-activity.md) | Aktivita vyhledávání slouží ke čtení nebo vyhledání záznamu / názvu tabulky / hodnoty z jakéhokoli externího zdroje. Na tento výstup mohou dále odkazovat následující aktivity.
-[Nastavit proměnnou](control-flow-set-variable-activity.md) | Nastaví hodnotu existující proměnné.
+[Set Variable](control-flow-set-variable-activity.md) | Nastaví hodnotu existující proměnné.
 [Aktivita Until](control-flow-until-activity.md) | Implementuje smyčku Do-Until, která se podobá struktuře smyčky Do-Until v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu.
 [Aktivita ověřování](control-flow-validation-activity.md) | Zajistěte, aby kanál pokračoval pouze v provádění, pokud existuje referenční datová sada, splňuje zadaná kritéria nebo byl dosažen časový limit.
 [Aktivita Wait](control-flow-wait-activity.md) | Když v kanálu použijete aktivitu čekání, kanál počká zadanou dobu, než bude pokračovat v provádění následných aktivit.

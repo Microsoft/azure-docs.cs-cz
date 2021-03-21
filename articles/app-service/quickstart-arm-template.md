@@ -13,10 +13,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-arm-template-uiex
 ms.openlocfilehash: 8b048127c8a5581a34a62cfb67c19ba7aa50f2d7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701582"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rychlý Start: Vytvoření aplikace App Service pomocí šablony ARM
@@ -53,7 +53,7 @@ V šabloně jsou definované dva prostředky Azure:
 
 Tato šablona obsahuje několik parametrů, které jsou předdefinované pro vaše pohodlí. V následující tabulce najdete výchozí hodnoty parametrů a jejich popis:
 
-| Parametry | Typ    | Výchozí hodnota                | Popis |
+| Parametry | Typ    | Výchozí hodnota                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
 | location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
@@ -74,7 +74,7 @@ V šabloně jsou definované dva prostředky Azure:
 
 Tato šablona obsahuje několik parametrů, které jsou předdefinované pro vaše pohodlí. V následující tabulce najdete výchozí hodnoty parametrů a jejich popis:
 
-| Parametry | Typ    | Výchozí hodnota                | Popis |
+| Parametry | Typ    | Výchozí hodnota                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
 | location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |

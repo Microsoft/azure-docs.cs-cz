@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 8ecfd74a4d486a83add490501c2f7af4a4003b85
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101700970"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Přehled metrik Azure Monitor
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny různé způsoby, jak můžete použít me
 
 |  |  |
 |:---|:---|
-| **Analýza** | Pomocí [Průzkumníka metrik](metrics-charts.md) můžete analyzovat shromážděné metriky v grafu a porovnat metriky z různých prostředků. |
+| **Analyzovat** | Pomocí [Průzkumníka metrik](metrics-charts.md) můžete analyzovat shromážděné metriky v grafu a porovnat metriky z různých prostředků. |
 | **Výstraha** | Nakonfigurujte [pravidlo upozornění metriky](../alerts/alerts-metric.md) , které pošle oznámení nebo provede [automatizovanou akci](../alerts/action-groups.md) , když hodnota metriky přechází ze prahové hodnoty. |
 | **Vizualizace** | Připněte graf z Průzkumníka metrik na [řídicí panel Azure](../app/tutorial-app-dashboards.md).<br>Vytvoří [sešit](../visualize/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. Exportujte výsledky dotazu do [Grafana](../visualize/grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat. |
 | **Automatizace** |  Pomocí [automatického škálování](../autoscale/autoscale-overview.md) můžete zvýšit nebo snížit prostředky na základě hodnoty metriky, která překračuje prahovou hodnotu. |

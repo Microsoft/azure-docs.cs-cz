@@ -7,18 +7,21 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 435cad4d1ef002261b194431dbdb787e072808f5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 59aa395db27c26a7c94eebdc0e3b34d7776ee75f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361481"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591992"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Aktivita Webhooku v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita Webhooku může řídit provádění kanálů pomocí vlastního kódu. V případě aktivity Webhooku může kód zákazníka zavolat koncovému bodu a předat mu adresu URL zpětného volání. Běh kanálu počká na vyvolání zpětného volání, než pokračuje na další aktivitu.
+
+> [!IMPORTANT]
+> Aktivita Webhooku teď umožňuje surfovat stav chyb a vlastní zprávy zpátky do aktivity a kanálu. Nastavte _reportStatusOnCallBack_ na true a do datové části zpětného volání zahrňte _StatusCode_ a _Error_ . Další informace najdete v části [Další poznámky](#additional-notes) .
 
 ## <a name="syntax"></a>Syntax
 
@@ -37,6 +40,7 @@ Aktivita Webhooku může řídit provádění kanálů pomocí vlastního kódu.
             "key": "value"
         },
         "timeout": "00:03:00",
+        "reportStatusOnCallBack": false,
         "authentication": {
             "type": "ClientCertificate",
             "pfx": "****",

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: e35e3dd0bacc0b1e3a44d9338f612a70ca4b52bf
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103496520"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Výběr a nasazení agenta zabezpečení na zařízení IoT
@@ -42,16 +42,16 @@ Agent zabezpečení založený na jazyce C má nižší nároky na paměť a je 
 | --- | ----------- | --------- |
 | **Open source** | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-c) | K dispozici v rámci [licence MIT](https://en.wikipedia.org/wiki/MIT_License) na [GitHubu](https://aka.ms/iot-security-github-cs) |
 | **Vývojový jazyk**    | C | C# |
-| **Podporované platformy Windows?** | Ne | Ano |
+| **Podporované platformy Windows?** | No | Yes |
 | **Požadavky Windows** | --- | [Rozhraní WMI](/windows/desktop/wmisdk/) |
 | **Podporované platformy Linux?** | Ano, x64 a x86 | Ano, pouze x64 |
 | **Předpoklady pro Linux** | libunwind8, libcurl3, UUID – modul runtime, audit, audispd – moduly plug-in | libunwind8, libcurl3, UUID-runtime, audited, audispd-plugins, sudo, netstat, softwaru iptables |
 | **Nároky na disk** | 10,5 MB | 90 MB |
 | **Nároky na paměť (v průměru)** | 5,5 MB | 33 MB |
-| **[Ověřování](concept-security-agent-authentication-methods.md) pro IoT Hub** | Ano | Ano |
-| **[Shromažďování](how-to-agent-configuration.md#supported-security-events) dat zabezpečení** | Ano | Ano |
-| **Agregace událostí** | Ano | Ano |
-| **Vzdálená konfigurace prostřednictvím programu [Defender – IoT-Micro-Agent je dvojitá](concept-security-module.md) .** | Ano | Ano |
+| **[Ověřování](concept-security-agent-authentication-methods.md) pro IoT Hub** | Yes | Yes |
+| **[Shromažďování](how-to-agent-configuration.md#supported-security-events) dat zabezpečení** | Yes | Yes |
+| **Agregace událostí** | Yes | Yes |
+| **Vzdálená konfigurace prostřednictvím programu [Defender – IoT-Micro-Agent je dvojitá](concept-security-module.md) .** | Yes | Yes |
 
 ## <a name="security-agent-installation-guidelines"></a>Pokyny k instalaci agenta zabezpečení
 

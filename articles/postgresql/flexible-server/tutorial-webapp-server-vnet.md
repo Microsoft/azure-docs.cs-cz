@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff9af90ca0b6b80ffece5ccd7d919c1d93e210c4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546564"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657582"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Kurz: vytvoření Azure Database for PostgreSQL flexibilního serveru s webovou aplikací App Services ve virtuální síti
 
@@ -22,9 +22,10 @@ ms.locfileid: "92546564"
 
 V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci v Azure App Service s Azure Database for PostgreSQLm flexibilním serverem (ve verzi Preview) ve [virtuální síti](../../virtual-network/virtual-networks-overview.md).
 
-V tomto kurzu budete
+V tomto kurzu se naučíte, jak:
 >[!div class="checklist"]
 > * Vytvoření PostgreSQL flexibilního serveru ve virtuální síti
+> * Vytvořte podsíť, která bude delegována na App Service
 > * Vytvoření webové aplikace
 > * Přidání webové aplikace do virtuální sítě
 > * Připojení k Postgres z webové aplikace 
@@ -44,7 +45,7 @@ az login
 Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Ve svém účtu vyberte pomocí příkazu [az account set](/cli/azure/account) konkrétní ID předplatného. Nahraďte vlastnost **ID předplatného** z výstupu **AZ Login** pro vaše předplatné na zástupný symbol ID předplatného.
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-a-postgresql-flexible-server-in-a-new-virtual-network"></a>Vytvoření PostgreSQL flexibilního serveru v nové virtuální síti
@@ -68,14 +69,21 @@ Tento příkaz provede následující akce, což může trvat několik minut:
 >  az postgres flexible-server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 >  ```
 
+## <a name="create-subnet-for-app-service-endpoint"></a>Vytvoření podsítě pro App Service koncový bod
+Teď je potřeba mít podsíť, která je delegovaná na App Service koncový bod webové aplikace. Spuštěním následujícího příkazu vytvořte novou podsíť ve stejné virtuální síti, jakou vytvořil databázový server. 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+Poznamenejte si název virtuální sítě a název podsítě za tímto příkazem, protože by ho musel přidat pravidlo integrace virtuální sítě pro webovou aplikaci po jeho vytvoření. 
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
-V této části vytvoříte hostitele aplikací v aplikaci App Service, připojíte tuto aplikaci k databázi Postgres a potom do tohoto hostitele nasadíte svůj kód. Ujistěte se, že jste v terminálu kořenový adresář úložiště kódu vaší aplikace.
+V této části vytvoříte hostitele aplikací v aplikaci App Service, připojíte tuto aplikaci k databázi Postgres a potom do tohoto hostitele nasadíte svůj kód. Ujistěte se, že jste v terminálu kořenový adresář úložiště kódu vaší aplikace. Poznámka: základní plán nepodporuje integraci virtuální sítě. Použijte prosím Standard nebo Premium. 
 
 Vytvoření aplikace App Service (hostitelský proces) pomocí příkazu AZ WebApp up
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
@@ -85,7 +93,6 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 Tento příkaz provede následující akce, což může trvat několik minut:
 
 - Vytvořte skupinu prostředků, pokud ještě neexistuje. (V tomto příkazu použijete stejnou skupinu prostředků, ve které jste databázi vytvořili dříve.)
-- ```testappserviceplan```Pokud neexistuje, vytvořte plán App Service v cenové úrovni Basic (B1). --plán a--SKU jsou volitelné.
 - Pokud neexistuje, vytvořte aplikaci App Service.
 - Povolí výchozí protokolování pro aplikaci, pokud ještě není povolené.
 - Nahrajte úložiště pomocí nasazení ZIP s povoleným automatizací buildu.
@@ -94,7 +101,7 @@ Tento příkaz provede následující akce, což může trvat několik minut:
 Pomocí příkazu **AZ WebApp VNet-Integration** přidejte integraci místní virtuální sítě do WebApp. Nahraďte <název sítě VNet> a <název podsítě> s virtuální sítí a názvem podsítě, kterou flexibilní Server používá.
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>Konfigurace proměnných prostředí pro připojení databáze

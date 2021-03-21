@@ -13,10 +13,10 @@ ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5206c2295ee7c01b4a2908e59da1cfdd8782bccd
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102517714"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
@@ -123,7 +123,7 @@ Můžete vytvořit webové rozhraní API od nuly pomocí šablon Microsoft. iden
 
 #### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Počínaje existující aplikací ASP.NET Core 3,1
 
-Dnes ASP.NET Core 3,1 používá knihovnu Microsoft. AspNetCore. AzureAD. UI. Middleware se inicializuje v souboru Startup.cs.
+Dnes ASP.NET Core 3,1 používá knihovnu Microsoft. AspNetCore. AzureAD. UI. Middleware je inicializována v souboru Startup. cs.
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- V současné době šablony ASP.NET Core vytvářejí webová rozhraní API Azure Active Directory (Azure AD), která přihlásí uživatele v rámci vaší organizace nebo v jakékoli organizaci. Nepodepisují uživatele pomocí osobních účtů. Šablony však můžete změnit tak, aby používaly platformu Microsoft Identity Platform pomocí [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) nahrazující kód v *Startup.cs*:
+ V současné době šablony ASP.NET Core vytvářejí webová rozhraní API Azure Active Directory (Azure AD), která přihlásí uživatele v rámci vaší organizace nebo v jakékoli organizaci. Nepodepisují uživatele pomocí osobních účtů. Šablony však můžete změnit tak, aby používaly platformu Microsoft Identity Platform pomocí [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) nahrazující kód při *spuštění. cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -210,7 +210,7 @@ Validátory jsou přidruženy k vlastnostem třídy **TokenValidationParameters*
 
 Ve většině případů nemusíte měnit parametry. Mezi aplikace, které nejsou jedenmi klienty, patří výjimka. Tyto webové aplikace přijímají uživatele z libovolné organizace nebo z osobních účtů Microsoft. Vystavitelé v tomto případě musí být ověřeni. Microsoft. identity. Web se zajímá také o ověření vystavitele. Podrobnosti najdete v článku Microsoft. identity. Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
 
-Pokud chcete přizpůsobit parametry ověření tokenu, v ASP.NET Core použijte následující fragment kódu v *Startup.cs*:
+Pokud v ASP.NET Core chcete přizpůsobit parametry ověření tokenu, použijte následující fragment kódu při *spuštění. cs*:
 
 ```c#
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

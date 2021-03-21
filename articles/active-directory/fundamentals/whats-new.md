@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df90857bf30b6fff3c18faf126efabe8c959c0c6
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 0d9769a2cfdbd5f552e97a6cd665263cbd488325
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633423"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592960"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -79,7 +79,7 @@ Dočasný přístupový průchod je časově omezený přístupový kód, který
 **Kategorie služby:** B2C – Správa identit uživatelů  
 **Schopnost produktu:** B2B/B2C
 
-Další generace uživatelských toků B2C nyní podporuje funkce [Keep jsem přihlášená (políčko zůstat přihlášeni)](https://docs.microsoft.com/azure/active-directory-b2c/session-behavior?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) , která zákazníkům umožňuje prodloužení životnosti relace pro uživatele svých webových a nativních aplikací pomocí trvalého souboru cookie.  funkce udržuje aktivní relaci i v případě, že uživatel zavře a znovu otevře prohlížeč a při odhlášení uživatele se odvolá.
+Další generace uživatelských toků B2C nyní podporuje funkce [Keep jsem přihlášená (políčko zůstat přihlášeni)](../../active-directory-b2c/session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) , která zákazníkům umožňuje prodloužení životnosti relace pro uživatele svých webových a nativních aplikací pomocí trvalého souboru cookie.  funkce udržuje aktivní relaci i v případě, že uživatel zavře a znovu otevře prohlížeč a při odhlášení uživatele se odvolá.
 
 ---
 
@@ -109,7 +109,7 @@ Zákazníci teď můžou znovu pozvat stávající externí uživatele typu Host
 **Kategorie služby:** Zřizování aplikací  
 **Schopnost produktu:** Správa životního cyklu identit
  
-Zákazníci teď můžou používat Application. ownedby jako oprávnění aplikace pro volání synchronizačních rozhraní API. Poznámka: Tato možnost se podporuje jenom pro zřizování z Azure AD na aplikace třetích stran (například AWS, datové cihly atd.). V současné době není podporována pro zřizování lidských zdrojů (Workday/SuccessFactors) ani pro cloudovou synchronizaci (AD do Azure AD). [Další informace](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta).
+Zákazníci teď můžou používat Application. ownedby jako oprávnění aplikace pro volání synchronizačních rozhraní API. Poznámka: Tato možnost se podporuje jenom pro zřizování z Azure AD na aplikace třetích stran (například AWS, datové cihly atd.). V současné době není podporována pro zřizování lidských zdrojů (Workday/SuccessFactors) ani pro cloudovou synchronizaci (AD do Azure AD). [Další informace](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta).
  
 ---
 
@@ -199,7 +199,7 @@ Nyní můžete automatizovat vytváření, aktualizaci a odstraňování uživat
 - [Iris Intranet](../saas-apps/iris-intranet-provisioning-tutorial.md)
 - [Preciate](../saas-apps/preciate-provisioning-tutorial.md)
 
-Další informace najdete v tématu [Automatizace zřizování uživatelů při SaaS aplikací pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+Další informace najdete v tématu [Automatizace zřizování uživatelů při SaaS aplikací pomocí Azure AD](../app-provisioning/user-provisioning.md).
 
 ---
 
@@ -209,7 +209,7 @@ Další informace najdete v tématu [Automatizace zřizování uživatelů při 
 **Kategorie služby:** RBAC  
 **Schopnost produktu:** Access Control
  
-10 integrovaných rolí Azure AD se přejmenovaly tak, aby byly zarovnané v [centru pro správu Microsoft 365](https://docs.microsoft.com/microsoft-365/admin/microsoft-365-admin-center-preview), na [portálu Azure AD](https://portal.azure.com/)a na [Microsoft Graph](https://developer.microsoft.com/graph/). Další informace o nových rolích najdete [v tématu oprávnění role správce v Azure Active Directory](../roles/permissions-reference.md#all-roles).
+10 integrovaných rolí Azure AD se přejmenovaly tak, aby byly zarovnané v [centru pro správu Microsoft 365](/microsoft-365/admin/microsoft-365-admin-center-preview), na [portálu Azure AD](https://portal.azure.com/)a na [Microsoft Graph](https://developer.microsoft.com/graph/). Další informace o nových rolích najdete [v tématu oprávnění role správce v Azure Active Directory](../roles/permissions-reference.md#all-roles).
 
 ![Tabulka znázorňující názvy rolí v MS Graph API a Azure Portal a navrhovaný konečný název napříč rozhraním API, Azure Portal a Mac.](media/whats-new/roles-table-rbac.png)
 
@@ -270,20 +270,20 @@ Zákazníci můžou tento požadavek pro účely testování obejít pomocí př
  
 ---
 
-### <a name="public-preview---customize-and-configure-android-shared-devices-for-firstline-workers-at-scale"></a>Public Preview – přizpůsobení a konfigurace sdílených zařízení s Androidem pro pracovní procesy Firstline ve velkém měřítku
+### <a name="public-preview---customize-and-configure-android-shared-devices-for-frontline-workers-at-scale"></a>Public Preview – přizpůsobení a konfigurace sdílených zařízení s Androidem pro pracovní procesy prvotní ve velkém měřítku
 
 **Zadejte:** Nová funkce  
 **Kategorie služby:** Registrace a Správa zařízení  
 **Schopnost produktu:** Zabezpečení identity & ochrana
  
-Týmy služby Azure AD a Microsoft Endpoint Manager se kombinují, aby bylo možné přizpůsobit, škálovat a zabezpečit vaše pracovní zařízení Firstline.
+Týmy služby Azure AD a Microsoft Endpoint Manager se kombinují, aby bylo možné přizpůsobit, škálovat a zabezpečit vaše pracovní zařízení prvotní.
 
 Následující možnosti verze Preview vám umožní:
 - Zřizování sdílených zařízení s Androidem ve velkém měřítku pomocí Microsoft Endpoint Manageru
 - Zabezpečení přístupu pro pracovníky služby Shift pomocí podmíněného přístupu na základě zařízení
 - Přizpůsobení přihlašovacích prostředí pro pracovníky posunutí pomocí spravované domovské obrazovky
 
-Další informace najdete [v tématu přizpůsobení a konfigurace sdílených zařízení pro pracovní procesy Firstline ve velkém měřítku](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-and-configure-shared-devices-for-firstline-workers-at/ba-p/1751708).
+Další informace najdete [v tématu přizpůsobení a konfigurace sdílených zařízení pro pracovní procesy prvotní ve velkém měřítku](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-and-configure-shared-devices-for-firstline-workers-at/ba-p/1751708).
 
 ---
 

@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
-ms.openlocfilehash: eb1b05afbaa57fb86033c568142da32443adc1f9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b9b10e2ed58a41cee99e7e6ef1c3994035460407
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559771"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601856"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
 
@@ -35,7 +35,7 @@ K dispozici je několik různých rozšíření virtuálních počítačů Azure
 
 Kromě rozšíření specifických pro procesy je k dispozici rozšíření vlastních skriptů pro virtuální počítače s Windows i Linux. Rozšíření vlastních skriptů pro Windows umožňuje spuštění libovolného skriptu PowerShellu na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, která vyžadují konfiguraci, a to nad rámec toho, co můžou využít nativní nástroje Azure. Další informace najdete v tématu [rozšíření vlastních skriptů pro virtuální počítače s Windows](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro zpracování rozšíření na virtuálním počítači potřebujete nainstalovaného agenta Azure Windows. Některá jednotlivá rozšíření mají požadavky, jako je například přístup k prostředkům nebo závislostem.
 
@@ -120,7 +120,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-V následujícím příkladu se rozšíření přístupu virtuálních počítačů používá k resetování hesla pro správu virtuálního počítače s Windows na dočasné heslo. Další informace o rozšíření přístupu virtuálních počítačů najdete v tématu [resetování služby Vzdálená plocha na virtuálním počítači s Windows](../troubleshooting/reset-rdp.md). Po spuštění tohoto nastavení byste měli resetovat heslo při prvním přihlášení:
+V následujícím příkladu se rozšíření přístupu virtuálních počítačů používá k resetování hesla pro správu virtuálního počítače s Windows na dočasné heslo. Další informace o rozšíření přístupu virtuálních počítačů najdete v tématu [resetování služby Vzdálená plocha na virtuálním počítači s Windows](/troubleshoot/azure/virtual-machines/reset-rdp). Po spuštění tohoto nastavení byste měli resetovat heslo při prvním přihlášení:
 
 ```powershell
 $cred=Get-Credential

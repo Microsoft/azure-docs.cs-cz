@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 70d0fc456b3697e3c74a5ec45cc936a02b77e591
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210201"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657650"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Trénování modelu Vowpal Wabbit
 Tento článek popisuje, jak pomocí modulu **pro (Learning dostupné model** ) v Návrháři Azure Machine Learning vytvořit model strojového učení pomocí pro dostupné.  
@@ -91,6 +91,13 @@ Pro dostupné podporuje přírůstkové školení přidáním nových dat do exi
 
 6. Odešlete kanál.  
 7. Vyberte modul a v pravém podokně vyberte **Registrovat datovou sadu** na kartě **výstupy a protokoly** , abyste zachovali aktualizovaný model v pracovním prostoru Azure Machine Learning.  Pokud nezadáte nový název, aktualizovaný model přepíše existující uložený model.
+
+## <a name="results"></a>Výsledky
+
++ K vygenerování skóre z modelu použijte [model skóre pro dostupné](score-vowpal-wabbit-model.md).
+
+> [!NOTE]
+> Pokud potřebujete nasadit model vyškolený v návrháři, ujistěte se, že je místo **modelu skóre** připojen ke vstupu [výstupního modulu webové služby](web-service-input-output.md) v kanálu odvození [pro model dostupné](score-vowpal-wabbit-model.md) .
 
 ## <a name="technical-notes"></a>Technické poznámky
 

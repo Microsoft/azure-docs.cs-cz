@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
 ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786001"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky, které mají dvě sady ověřovacích přihlašovacích údajů
@@ -37,7 +37,7 @@ V tomto řešení Azure Key Vault ukládá jednotlivé přístupové klíče ú�
 1. Aplikace Function App identifikuje alternativní klíč (ne poslední) a volá účet úložiště, který ho má znovu vygenerovat.
 1. Aplikace Function App přidá nový znovu vygenerovaný klíč, který se Azure Key Vault jako nová verze tajného kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure. [Vytvořte si ho zdarma.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Cloud Shell](https://shell.azure.com/)Azure. Tento kurz používá Cloud Shell portálu s prostředím PowerShell env.
 * Azure Key Vault
