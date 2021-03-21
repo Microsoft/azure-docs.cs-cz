@@ -6,10 +6,10 @@ ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5efe6e9cf3227857300d649a8c2ecb4973627335
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102444582"
 ---
 Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské rozpoznávání a překládat ho do jiných jazyků. V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního překladu řeči. Tento rychlý Start popisuje témata, včetně:
@@ -22,7 +22,7 @@ Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské 
 
 Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky pro rychlý Start v C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/translate-speech-to-text) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -32,7 +32,7 @@ Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V
 
 ## <a name="import-dependencies"></a>Importovat závislosti
 
-Chcete-li spustit příklady v tomto článku, zahrňte do `using` horní části souboru *program.cs* následující příkazy.
+Chcete-li spustit příklady v tomto článku, zahrňte do `using` horní části souboru *program. cs* následující příkazy.
 
 ```csharp
 using System;

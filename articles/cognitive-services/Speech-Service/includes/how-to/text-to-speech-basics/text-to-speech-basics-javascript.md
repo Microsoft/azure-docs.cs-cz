@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/10/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 3fa47935721ccfccdfe18d60a66d5cc480582e7d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: bfaa9f649fd4d44e45b6d4a513e74e12e169c4f8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428183"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719877"
 ---
 V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
@@ -23,14 +23,14 @@ V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syn
 
 Pokud chcete přeskočit přímý na vzorový kód, přečtěte si [ukázky rychlý Start JavaScriptu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte účet Azure a prostředek služby Speech. Pokud nemáte účet a prostředek, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
 Předtím, než můžete cokoli udělat, musíte nainstalovat <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">sadu Speech SDK pro JavaScript </a>. V závislosti na vaší platformě postupujte podle následujících pokynů:
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webový prohlížeč </a>
 
@@ -162,14 +162,14 @@ Pro mnoho scénářů ve vývoji aplikací pro rozpoznávání řeči pravděpod
 * Integrujte výsledek s jinými službami nebo rozhraními API.
 * Úprava zvukových dat, psaní vlastních `.wav` hlaviček atd.
 
-Tuto změnu je jednoduché provést v předchozím příkladu. Nejprve odeberte `AudioConfig` blok, protože budete spravovat chování výstupu ručně z tohoto bodu dále pro zvýšené řízení. Pak předejte `undefined` `AudioConfig` v `SpeechSynthesizer` konstruktoru. 
+Tuto změnu je jednoduché provést v předchozím příkladu. Nejprve odeberte `AudioConfig` blok, protože budete spravovat chování výstupu ručně z tohoto bodu dále pro zvýšené řízení. Pak předejte `undefined` `AudioConfig` v `SpeechSynthesizer` konstruktoru.
 
 > [!NOTE]
 > Předání `undefined` pro `AudioConfig` místo toho, aby ho nemuseli vynechat jako v příkladu výstupu mluvčího, ve výchozím nastavení nebude přehrávat zvuk na aktuálním aktivním výstupním zařízení.
 
-Tentokrát výsledek uložíte do [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) proměnné. `SpeechSynthesisResult.audioData`Vlastnost vrací `ArrayBuffer` výstupní data, výchozí typ streamu prohlížeče. Pro kód serveru převeďte arrayBuffer na datový proud vyrovnávací paměti. 
+Tentokrát výsledek uložíte do [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) proměnné. `SpeechSynthesisResult.audioData`Vlastnost vrací `ArrayBuffer` výstupní data, výchozí typ streamu prohlížeče. Pro kód serveru převeďte arrayBuffer na datový proud vyrovnávací paměti.
 
-Následující kód funguje pro kód na straně klienta. 
+Následující kód funguje pro kód na straně klienta.
 
 ```javascript
 function synthesizeSpeech() {
@@ -189,9 +189,9 @@ function synthesizeSpeech() {
 }
 ```
 
-Odsud můžete implementovat jakékoli vlastní chování pomocí výsledného `ArrayBuffer` objektu. ArrayBuffer je běžný typ pro příjem v prohlížeči a přehrávání z tohoto formátu. 
+Odsud můžete implementovat jakékoli vlastní chování pomocí výsledného `ArrayBuffer` objektu. ArrayBuffer je běžný typ pro příjem v prohlížeči a přehrávání z tohoto formátu.
 
-Pro jakýkoliv kód založený na serveru, pokud potřebujete pracovat s daty jako datovým proudem namísto ArrayBuffer, je nutné převést objekt na datový proud. 
+Pro jakýkoliv kód založený na serveru, pokud potřebujete pracovat s daty jako datovým proudem namísto ArrayBuffer, je nutné převést objekt na datový proud.
 
 ```javascript
 function synthesizeSpeech() {
@@ -342,3 +342,11 @@ Pokud chcete přepnout na neuronové hlas, změňte na `name` jednu z [možnost�
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>Získat události pozice obličeje
+
+Řeč může být dobrým způsobem, jak řídit animaci výrazů obličeje.
+Často se [visemes](../../../how-to-speech-synthesis-viseme.md) používají k reprezentování klíčových pozic v pozorovaném řeči, jako je například pozice sad LIP, vidlice a jazyka při vytváření konkrétního foném.
+Můžete se přihlásit k odběru události viseme v sadě Speech SDK.
+Pak můžete použít události viseme k animaci plochy znaku při přehrávání zvukového řeči.
+Naučte [se, jak získat události viseme](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

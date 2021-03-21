@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b0e8e2e0ee7ce730f6bf00d7e5ef4bd4eae65ce7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfaab3f095dbf2f1657f5ebb587a3de958d11cda
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666942"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721183"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>Přehled virtuálních počítačů s více než jednou řadou
 
@@ -51,13 +51,13 @@ Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hy
 |-----------------------------|-----------------------|
 | Maximální velikost úlohy MPI            | 18000 jader (300 virtuálních počítačů v jedné sadě škálování virtuálních počítačů s singlePlacementGroup = true)  |
 | Podpora MPI                 | HPC-X, Intel MPI, OpenMPy, MVAPICH2, MPICH, Platform MPI  |
-| Další architektury       | Unified Communications X, libfabric, PGAS |
+| Další architektury       | UCX, libfabric, PGAS |
 | Podpora Azure Storage       | Disky úrovně Standard a Premium (maximální počet 4 disků) |
-| Podpora operačního systému pro SRIOV RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
-| Podpora nástroje Orchestrator        | CycleCloud, Batch  |
+| Podpora operačního systému pro SRIOV RDMA   | CentOS/RHEL 7.6 +, Ubuntu 16.04 +, SLES 12 SP4 +, WinServer 2016 +  |
+| Podpora nástroje Orchestrator        | CycleCloud, Batch, AKS; [Možnosti konfigurace clusteru](../../sizes-hpc.md#cluster-configuration-options) |
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [architektuře AMD EPYC](https://bit.ly/2Epv3kC) a architekturách [s více čipy](https://bit.ly/2GpQIMb). Podrobnější informace najdete v [Průvodci optimalizací HPC pro procesory AMD EPYC](https://bit.ly/2T3AWZ9).
-- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

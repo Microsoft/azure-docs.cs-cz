@@ -11,10 +11,10 @@ ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
 ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102488269"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Přehled migrace: SQL Server pro SQL Database
@@ -195,7 +195,7 @@ Kromě pokročilých funkcí správy a zabezpečení SQL Database poskytuje sadu
 
 Další pomoc najdete v následujících materiálech, které byly vyvinuty pro projekty z reálného světa migrace.
 
-|Prostředek  |Popis  |
+|Prostředek  |Description  |
 |---------|---------|
 |[Model a nástroj pro vyhodnocení datových úloh](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Tento nástroj poskytuje navrženou cílovou platformu "nejlépe vyhovující", připravenost na Cloud a úroveň nápravy aplikace nebo databáze pro danou úlohu. Nabízí jednoduché výpočetní operace s jedním kliknutím a generování sestav, které pomáhají zrychlit vyhodnocení velkých majetku poskytnutím automatizovaného a sjednoceného rozhodovacího procesu platformy.|
 |[Nástroj DBLoader](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader lze použít k načtení dat z textových souborů s oddělovači do SQL Server. Tento nástroj konzoly Windows používá rozhraní SQL Server nativního BulkLoad klienta, které funguje na všech verzích SQL Server, včetně Azure SQL Database.|

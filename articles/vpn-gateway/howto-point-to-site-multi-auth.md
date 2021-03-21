@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
 ms.openlocfilehash: d405f4b10808b7d39c0d116f2c9006c85532b4f9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101744876"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím více typů ověřování: Azure Portal
@@ -23,7 +23,7 @@ Tento článek vám pomůže bezpečně připojit jednotlivé klienty se systém
 
 Další informace o síti VPN typu Point-to-site najdete v tématu věnovaném [síti VPN typu Point-to-site](point-to-site-about.md). Pokud chcete tuto konfiguraci vytvořit pomocí Azure PowerShell, přečtěte si téma [Konfigurace sítě VPN typu Point-to-site pomocí Azure PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial).
 

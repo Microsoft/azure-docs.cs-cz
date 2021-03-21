@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52a8d8fcd0b9b9ee1ff918ead250c88b83f86cb7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523702"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674831"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Uložení hledání a připnutí datových assetů v Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>Úvod
 Azure Data Catalog poskytuje možnosti pro zjišťování zdrojů dat. Katalog můžete rychle vyhledat a vyfiltrovat, abyste našli zdroje dat a pochopili zamýšlený účel, což usnadňuje vyhledání správných dat pro danou úlohu.
 
@@ -49,7 +52,7 @@ Proveďte jednu z následujících akcí:
 
 * Pokud chcete zadat nový název pro uložené hledání, vyberte **Přejmenovat**. Definice hledání se nemění.
 
-* Pokud chcete uložené hledání odebrat ze seznamu, vyberte **Odstranit**a potvrďte odstranění.
+* Pokud chcete uložené hledání odebrat ze seznamu, vyberte **Odstranit** a potvrďte odstranění.
 
 * Pokud chcete uložené hledání označit jako výchozí hledání, vyberte **Uložit jako výchozí**. Pokud provedete hledání "prázdného" na domovské stránce Azure Data Catalog, spustí se výchozí hledání. Kromě toho se v horní části seznamu **uložených hledání** zobrazí hledání, které je označeno jako výchozí hledání.
 
@@ -74,5 +77,5 @@ Na domovské stránce portálu Data Catalog se nachází oddíl **Moje assety** 
 
 ![Část moje aktiva na domovské stránce](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Azure Data Catalog poskytuje funkce, které usnadňují zjišťování zdrojů dat, které potřebujete, takže vy a ostatní členové organizace můžete strávit méně času hledáním dat a více času s tím, jak s ní pracujete. Uložená hledání a připnuté datové prostředky se vytvářejí na těchto základních funkcích, aby uživatelé mohli snadno identifikovat zdroje dat, se kterými pracují opakovaně.

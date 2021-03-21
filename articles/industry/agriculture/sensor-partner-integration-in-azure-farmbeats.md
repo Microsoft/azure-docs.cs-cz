@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-ummehabiba
 ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179744"
 ---
 # <a name="sensor-partner-integration"></a>Integrace partnerských řešení pro senzory
@@ -131,14 +131,14 @@ FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům
 - /**SensorModel**: SensorModel odpovídá metadatům snímače, jako je výrobce, typ snímače, který je buď analogový, nebo digitální, a míru snímače, například okolní teplotu a tlak.
 - /**Senzor**: senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
 
-  DeviceModel | Popis |
+  DeviceModel | Description |
   --- | ---
   Typ (uzel, brána)  | Typ zařízení – uzel nebo brána |
   Manufacturer  | Název výrobce |
   ProductCode  | Kód produktu nebo číslo modelu zařízení Například EnviroMonitor # 6800. |
   Porty  | Název portu a typ, který je digitální nebo analogový.  |
-  Název  | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
-  Popis  | Poskytněte smysluplný popis modelu. |
+  Name  | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
+  Description  | Poskytněte smysluplný popis modelu. |
   Vlastnosti  | Další vlastnosti od výrobce. |
   **Zařízení** | **Popis** |
   DeviceModelId  |ID přidruženého modelu zařízení |
@@ -146,8 +146,8 @@ FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům
   ReportingInterval |Interval generování sestav v sekundách. |
   Umístění    |Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech). |
   ParentDeviceId | ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například pokud je uzel připojen k bráně, uzel má jako bránu parentDeviceID. |
-  Název  | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen do FarmBeats.  |
-  Popis  | Zadejte smysluplný popis.  |
+  Name  | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen do FarmBeats.  |
+  Description  | Zadejte smysluplný popis.  |
   Vlastnosti  |Další vlastnosti od výrobce.  |
   **SensorModel** | **Popis** |
   Typ (analogové, digitální)  |Zmiňující analogový nebo digitální senzor.|
@@ -160,8 +160,8 @@ FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům
   SensorMeasures > AggregationType  | Buď None, Average, Max, minima nebo StandardDeviation.
   Hloubka > SensorMeasures  | Hloubka senzoru v centimetrech Například měření vlhkosti 10 cm pod vozovkou.
   Popis > SensorMeasures  | Poskytněte smysluplný popis měření.
-  Název  | Název, který identifikuje prostředek. Například název modelu nebo název produktu.
-  Popis  | Poskytněte smysluplný popis modelu.
+  Name  | Název, který identifikuje prostředek. Například název modelu nebo název produktu.
+  Description  | Poskytněte smysluplný popis modelu.
   Vlastnosti  | Další vlastnosti od výrobce.
   **Elektrické**  | **Popis** |
   HardwareId  | Jedinečné ID pro senzory nastavené výrobcem.
@@ -169,8 +169,8 @@ FarmBeats DataHub má následující rozhraní API, které umožňuje partnerům
   Umístění  | Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).
   Název > portu  |Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení.
   DeviceId  | ID zařízení, ke kterému je senzor připojen.
-  Název  | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.
-  Popis  | Zadejte smysluplný popis.
+  Name  | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.
+  Description  | Zadejte smysluplný popis.
   Vlastnosti  | Další vlastnosti od výrobce.
 
  Informace o jednotlivých objektech a jejich vlastnostech naleznete v [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).

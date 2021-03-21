@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d68a9539420c77cc23722e1b7b7175d08459e9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439080"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674627"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Podporované zdroje dat v Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Metadata můžete publikovat pomocí veřejného rozhraní API nebo nástroje pro registraci jedním kliknutím nebo ručním zadáním informací přímo na Azure Data Catalog webový portál. Následující tabulka shrnuje všechny zdroje dat, které katalog podporuje ještě dnes, a možnosti publikování pro každou z nich. V seznamu jsou uvedené také nástroje externích dat, které každý zdroj dat může spouštět z našeho prostředí "Open-in". Druhá tabulka obsahuje podrobnější specifikaci jednotlivých vlastností připojení ke zdroji dat.
 
@@ -87,7 +89,7 @@ Metadata můžete publikovat pomocí veřejného rozhraní API nebo nástroje pr
       <td></td>
     </tr>
     <tr>
-      <td>Tabulka podregistru</td>
+      <td>Tabulka Hive</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -159,7 +161,7 @@ Metadata můžete publikovat pomocí veřejného rozhraní API nebo nástroje pr
       <td></td>
     </tr>
     <tr>
-      <td>Dimenze SQL Server Analysis Services</td>
+      <td>Dimenze Služba Analysis Services serveru SQL</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -167,7 +169,7 @@ Metadata můžete publikovat pomocí veřejného rozhraní API nebo nástroje pr
       <td>SQL Server 2008 a novějších verzích.</td>
     </tr>
     <tr>
-      <td>Klíčový ukazatel výkonu SQL Server Analysis Services</td>
+      <td>Klíčový ukazatel výkonu Služba Analysis Services serveru SQL</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -175,7 +177,7 @@ Metadata můžete publikovat pomocí veřejného rozhraní API nebo nástroje pr
       <td>SQL Server 2008 a novějších verzích.</td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services měření</td>
+      <td>Služba Analysis Services serveru SQL měření</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -183,7 +185,7 @@ Metadata můžete publikovat pomocí veřejného rozhraní API nebo nástroje pr
       <td>SQL Server 2008 a novějších verzích.</td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services tabulka</td>
+      <td>Služba Analysis Services serveru SQL tabulka</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>

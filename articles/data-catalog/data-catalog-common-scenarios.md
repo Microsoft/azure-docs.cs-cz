@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: aeae505b510f563a6640726c384ea358983eb24f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f76a9696d613a4a974c9ae7c7b2578e56f2fcfa
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68736462"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674610"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Běžné scénáře služby Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 Tento článek představuje běžné scénáře, kdy Azure Data Catalog může vaší organizaci pomáhat získat větší hodnotu z existujících zdrojů dat.
 
 ## <a name="scenario-1-registration-of-central-data-sources"></a>Scénář 1: registrace centrálních zdrojů dat

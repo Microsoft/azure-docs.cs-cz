@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 20f61ad92307a16515156151b816494e9aa289f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db94a376112b3d715da9095acb05c0b4fd4ea02f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717464"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605796"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor pro sítě
 
@@ -108,10 +108,12 @@ Diagnostická sada poskytuje přístup ke všem diagnostickým funkcím dostupn�
 
 ![Snímek obrazovky zobrazující kartu diagnostická sada](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="onboarded-resources"></a>Připojené prostředky 
+
+Připojené prostředky mají předdefinované sešity a zobrazení závislostí. Aktuálně připojené prostředky jsou virtuální sítě WAN, Application Gateway, Load Balancer a ExpressRoute.
+
 ## <a name="troubleshooting"></a>Řešení potíží 
-
 Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení potíží](troubleshoot-workbooks.md)s vyhrazenými sešity na základě článků.
-
 Tato část vám pomůže diagnostikovat a řešit některé běžné problémy, se kterými se můžete setkat při použití Azure Monitor pro sítě. 
 
 ### <a name="how-do-i-resolve-performance-problems-or-failures"></a>Návody vyřešit problémy s výkonem nebo chyby?

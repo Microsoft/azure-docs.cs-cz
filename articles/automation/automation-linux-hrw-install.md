@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.openlocfilehash: d4d9bcd16e36e76808f19f7fbd43dd0d3e7550c3
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102182328"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
@@ -20,7 +20,7 @@ Linux Hybrid Runbook Worker spouští Runbooky jako speciálního uživatele, kt
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující.
 
@@ -93,9 +93,9 @@ Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené s
 |Python 3 (Preview)|Ano, požadováno jenom pro tyto distribuce: SUSE LES 15, RHEL 8 a CentOS 8|
 |Python 2 |Ano, pro všechny distribuce, které nevyžadují Python 3<sup>1</sup> |
 |PowerShell |Ano<sup>2</sup> |
-|Pracovní postup PowerShellu |Ne |
-|Grafický |Ne |
-|Grafický pracovní postup PowerShellu |Ne |
+|Pracovní postup PowerShellu |No |
+|Grafický |No |
+|Grafický pracovní postup PowerShellu |No |
 
 <sup>1</sup> Viz [podporované operační systémy Linux](#supported-linux-operating-systems).
 

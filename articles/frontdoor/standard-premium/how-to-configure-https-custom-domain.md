@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
 ms.openlocfilehash: c2edf11939996156c2b589b0b7876ae1b01466e5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740813"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>Konfigurace HTTPS pro vlastní doménu front-SKU Standard/Premium (Preview) pomocí Azure Portal
@@ -29,7 +29,7 @@ Přední dveře Azure (Standard/Premium) podporují certifikát spravovaný slu�
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v tématu [**doplňujících podmínek použití pro Microsoft Azure**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Než budete moct nakonfigurovat HTTPS pro vlastní doménu, musíte nejdřív vytvořit profil služby Azure front-Premium Standard/Premium. Další informace najdete v tématu [rychlý Start: vytvoření profilu služby Azure front-end Standard/Premium](create-front-door-portal.md).
 

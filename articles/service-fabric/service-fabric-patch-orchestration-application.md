@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102614407"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
@@ -120,7 +120,7 @@ POA se skládá z následujících podsoučástí:
 > [!NOTE]
 > POA používá službu Service Fabric Repair Manager k zakázání nebo povolení uzlu a provádění kontrol stavu. Úloha opravy vytvořená v POA sleduje průběh web Windows Update pro každý uzel.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!NOTE]
 > Požadovaná minimální verze .NET Framework je 4,6.
@@ -500,7 +500,7 @@ A: POA používá Service Fabric Repair Manager k vytvoření úloh opravy pro u
 
 - POA shromažďuje telemetrii pro sledování využití a výkonu. Telemetrie aplikace sleduje nastavení nastavení telemetrie Service Fabric runtime (což je ve výchozím nastavení zapnuté).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Tato část poskytuje možná řešení pro řešení potíží s chybami při opravách uzlů.
 

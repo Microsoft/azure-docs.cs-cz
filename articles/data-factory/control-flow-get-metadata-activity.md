@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
 ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178537"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získat aktivitu metadat v Azure Data Factory
@@ -19,7 +19,7 @@ ms.locfileid: "102178537"
 
 Můžete použít aktivitu získat metadata k načtení metadat všech dat v Azure Data Factory. Můžete použít výstup z aktivity získat metadata v podmíněných výrazech k provedení ověření nebo využít metadata v následných aktivitách.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace o metadatech jako výstup. V současné době jsou podporovány následující konektory a odpovídající metadata k dispozici. Maximální velikost vrácených metadat je **4 MB**.
 
@@ -70,7 +70,7 @@ Všimněte si, že:
 
 Můžete zadat následující typy metadat v seznamu pole získat aktivitu metadat pro načtení odpovídajících informací:
 
-| Typ metadat | Popis |
+| Typ metadat | Description |
 |:--- |:--- |
 | itemName | Název souboru nebo složky |
 | itemType | Typ souboru nebo složky Vrácená hodnota je `File` nebo `Folder` . |
@@ -165,10 +165,10 @@ V současné době aktivita získat metadata může vracet následující typy i
 
 Vlastnost | Popis | Povinné
 -------- | ----------- | --------
-fieldList | Typy informací o metadatech, které jsou požadovány. Podrobnosti o podporovaných metadatech najdete v části [Možnosti metadat](#metadata-options) v tomto článku. | Ano 
-integrován | Referenční datová sada, jejíž metadata mají být načtena aktivitou získání metadat. Informace o podporovaných konektorech najdete v části [Možnosti](#supported-capabilities) . Podrobnosti o syntaxi datové sady najdete v tématech konkrétního konektoru. | Ano
-formatSettings | Použijte při použití typu DataSet typu Format. | Ne
-storeSettings | Použijte při použití typu DataSet typu Format. | Ne
+fieldList | Typy informací o metadatech, které jsou požadovány. Podrobnosti o podporovaných metadatech najdete v části [Možnosti metadat](#metadata-options) v tomto článku. | Yes 
+integrován | Referenční datová sada, jejíž metadata mají být načtena aktivitou získání metadat. Informace o podporovaných konektorech najdete v části [Možnosti](#supported-capabilities) . Podrobnosti o syntaxi datové sady najdete v tématech konkrétního konektoru. | Yes
+formatSettings | Použijte při použití typu DataSet typu Format. | No
+storeSettings | Použijte při použití typu DataSet typu Format. | No
 
 ## <a name="sample-output"></a>Ukázkový výstup
 

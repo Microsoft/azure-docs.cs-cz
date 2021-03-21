@@ -8,12 +8,12 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a3656d6dd81132a7fd10103fc0199d55d9288df3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: f1a2b821c5fd127f8b7bcda7b3a219be34cb8abb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489605"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598520"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
@@ -136,7 +136,7 @@ Součásti IoT Edge lze instalovat nebo aktualizovat jednotlivě a jsou zpětně
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-<sup>1</sup> IoT Edge 1,1 je první kanál pro vydávání dlouhodobých podpor (LTS). Tato verze zavedla žádné nové funkce, ale opravy chyb a opravy zabezpečení se dostanou. IoT Edge 1,1 LTS používá .NET Core 3,1 a bude podporovaný až do 3. prosince 2022, aby odpovídaly [životnímu cyklu vydávání verzí .NET Core a .NET 5](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+<sup>1</sup> IoT Edge 1,1 je první kanál pro vydávání dlouhodobých podpor (LTS). Tato verze zavedla žádné nové funkce, ale bude dostávat aktualizace zabezpečení a opravy pro regrese. IoT Edge 1,1 LTS používá .NET Core 3,1 a bude podporovaný až do 3. prosince 2022, aby odpovídaly [životnímu cyklu vydávání verzí .NET Core a .NET 5](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 >[!IMPORTANT]
 >S vydáním dlouhodobě podporovaného kanálu doporučujeme, aby všichni aktuální zákazníci, kteří používají 1.0. x, upgradovali svoje zařízení na verzi 1.1. x, aby získali průběžnou podporu.

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 11279c552cb599c24b72473d6574175450ca7ab0
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200848"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Vytvoření a zřízení simulovaného IoT Edge zařízení s virtuálním čipem TPM ve Windows
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak otestovat Automatické zřizování na simulov
 > [!TIP]
 > Tento článek popisuje testování automatického zřizování pomocí ověření identity čipem TPM na virtuálních zařízeních, ale většina z nich se používá i při použití fyzického hardwaru TPM.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vývojový počítač s Windows. Tento článek používá Windows 10.
 * Aktivní IoT Hub.

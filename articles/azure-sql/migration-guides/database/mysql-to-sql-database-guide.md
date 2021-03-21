@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: d59a4fc2cbf52d95e6b5a5100b5ffe06c5dbed7e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ff7b2115b396bf42cdeffa9c58bffb1802e980d1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564923"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721881"
 ---
 # <a name="migration-guide--mysql-to-azure-sql-database"></a>Průvodce migrací: MySQL pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -23,7 +23,7 @@ V této příručce se naučíte migrovat databázi MySQL do Azure SQL Database 
 
 Další příručky k migraci najdete v tématu [migrace databáze](https://datamigration.microsoft.com/). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K migraci databáze MySQL na Azure SQL Database potřebujete:
 
@@ -42,10 +42,18 @@ Pomocí [Pomocník s migrací SQL serveru pro MySQL](https://www.microsoft.com/d
 Chcete-li vytvořit posouzení, proveďte následující kroky.
 
 1. Otevřete Pomocník s migrací SQL Serveru pro MySQL. 
-1. V nabídce vyberte **soubor** a pak zvolte **Nový projekt**. Zadejte název projektu, umístění, kam chcete projekt uložit.
-1. Jako cíl migrace vyberte **Azure SQL Database** . 
+1. V nabídce vyberte **soubor** a pak zvolte **Nový projekt**. Zadejte název projektu, umístění, kam chcete projekt uložit. Jako cíl migrace vyberte **Azure SQL Database** . 
+
+   ![Nový projekt](./media/mysql-to-sql-database-guide/new-project.png)
+
 1. Vyberte **připojit k MySQL** a zadejte podrobnosti o připojení pro připojení serveru MySQL. 
+
+   ![Připojení k MySQL](./media/mysql-to-sql-database-guide/connect-to-mysql.png)
+
 1. Klikněte pravým tlačítkem na schéma MySQL v **Průzkumníkovi metadat MySQL** a vyberte **vytvořit sestavu**. Alternativně můžete v horním navigačním panelu vybrat možnost **vytvořit sestavu** . 
+
+   ![Vytvořit sestavu](./media/mysql-to-sql-database-guide/create-report.png)
+
 1. Podívejte se na sestavu ve formátu HTML pro statistiku převodu a také chyby a upozornění. Analyzujte je, abyste pochopili problémy s konverzí a jejich řešení. 
 
    K této sestavě se dá také dostat ze složky projekty SSMA, která je vybraná na první obrazovce. Z výše uvedeného příkladu vyhledejte soubor report.xml z:
@@ -54,9 +62,19 @@ Chcete-li vytvořit posouzení, proveďte následující kroky.
  
    a otevřete ho v Excelu, abyste získali inventář objektů MySQL a úsilí potřebného k provádění převodů schématu.
 
+    ![Sestava převodu](./media/mysql-to-sql-database-guide/conversion-report.png)
+
 ### <a name="validate-data-types"></a>Ověřit datové typy
 
-Před provedením převodu schématu ověřte výchozí mapování DataType nebo je změňte na základě požadavků. Můžete to udělat buď tak, že přejdete do nabídky nástroje a vyberete nastavení projektu, nebo můžete změnit mapování typů pro každou tabulku tak, že vyberete tabulku v Průzkumníkovi metadat MySQL.
+Ověřte výchozí mapování datových typů a podle potřeby je změňte podle požadavků. To můžete provést pomocí těchto kroků: 
+
+1. V nabídce vyberte **nástroje** . 
+1. Vyberte **nastavení projektu**. 
+1. Vyberte kartu **mapování typů** . 
+
+   ![Mapování typů](./media/mysql-to-sql-database-guide/type-mappings.png)
+
+1. Mapování typů pro každou tabulku můžete změnit tak, že vyberete tabulku v **Průzkumníkovi metadat MySQL**. 
 
 ### <a name="convert-schema"></a>Převést schéma 
 
@@ -64,9 +82,22 @@ K převedení schématu použijte následující postup:
 
 1. Volitelné Chcete-li převést dynamické nebo ad hoc dotazy, klikněte pravým tlačítkem myši na uzel a vyberte **příkaz Přidat příkaz**. 
 1. V horním navigačním panelu vyberte **připojit k Azure SQL Database** a zadejte podrobnosti o připojení. Můžete se rozhodnout připojit se k existující databázi nebo zadat nový název. v takovém případě se databáze vytvoří na cílovém serveru.
+
+   ![Připojit k SQL](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
+ 
 1. Klikněte pravým tlačítkem na schéma a vyberte **převést schéma**. 
+
+   ![Převést schéma](./media/mysql-to-sql-database-guide/convert-schema.png)
+
 1. Po dokončení převodu schématu Porovnejte převedený kód s původním kódem a Identifikujte možné problémy. 
 
+   Porovnat převedené objekty s původními objekty: 
+
+   ![ Porovnat a zkontrolovat objekt ](./media/mysql-to-sql-database-guide/table-comparison.png)
+
+   Porovnat převedené procedury s původními postupy: 
+
+   ![Porovnat a zkontrolovat kód objektu](./media/mysql-to-sql-database-guide/procedure-comparison.png)
 
 
 ## <a name="migrate"></a>Migrate 
@@ -76,9 +107,25 @@ Po dokončení vyhodnocení databází a vyřešení případných rozporů je d
 K publikování schématu a migraci dat použijte následující postup: 
 
 1. Klikněte pravým tlačítkem na databázi z **Azure SQL Database Průzkumníku metadat** a vyberte **synchronizovat s databází**. Tato akce publikuje schéma MySQL pro Azure SQL Database.
+
+   ![Synchronizovat s databází](./media/mysql-to-sql-database-guide/synchronize-database.png)
+
+   Zkontrolujte mapování mezi zdrojovým projektem a vaším cílem:
+
+   ![Synchronizace s kontrolou databáze](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
+
 1. Klikněte pravým tlačítkem na schéma MySQL z **Průzkumníka metadat MySQL** a vyberte **migrovat data**. Alternativně můžete vybrat možnost **migrovat data** z navigace na horním řádku. 
+
+   ![Migrace dat](./media/mysql-to-sql-database-guide/migrate-data.png)
+
 1. Po dokončení migrace si prohlédněte sestavu **migrace dat** : 
+
+   ![Sestava migrace dat](./media/mysql-to-sql-database-guide/data-migration-report.png)
+
 1.  Ověřte migraci tak, že zkontrolujete data a schéma v Azure SQL Database pomocí SQL Server Management Studio (SSMS).
+
+    ![Ověřit v SSMA](./media/mysql-to-sql-database-guide/validate-in-ssms.png)
+
 
 
 ## <a name="post-migration"></a>Po migraci 
@@ -111,7 +158,7 @@ Další podrobnosti o těchto problémech a konkrétních krocích, jak je zmír
 
 Další pomoc s dokončením tohoto scénáře migrace najdete v následujících materiálech, které byly vyvinuty v rámci podpory zapojení projektu z reálného světa.
 
-| Název/odkaz     | Popis    |
+| Název/odkaz     | Description    |
 | ---------------------------------------------- | ---------------------------------------------------- |
 | [Model a nástroj pro vyhodnocení datových úloh](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Tento nástroj poskytuje navrženou cílovou platformu "nejlépe vyhovující", připravenost na Cloud a úroveň nápravy aplikace nebo databáze pro danou úlohu. Nabízí jednoduché výpočetní operace s jedním kliknutím a generování sestav, které výrazně pomáhají zrychlit hodnocení rozsáhlých nemovitostí tím, že zajišťují a automatizují a automatizují rozhodovací procesy platforem. |
 

@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da3302ac25aaac6202f42cee400b307fc701fe50
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021924"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674967"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak se připojit ke zdrojům dat
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>Úvod
 **Microsoft Azure Data Catalog** je plně spravovaná cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy **Azure Data Catalog** je vše, co je potřeba k tomu, aby lidé mohli zjišťovat, pochopit a používat zdroje dat a pomáhat organizacím získat větší hodnotu z jejich stávajících dat. Klíčový aspekt tohoto scénáře používá data – Jakmile uživatel zjistí zdroj dat a porozumí jeho účelu, dalším krokem je připojit se ke zdroji dat a umístit jeho data na použití.
 

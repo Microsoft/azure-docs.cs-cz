@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043095"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585855"
 ---
 # <a name="iot-central-device-development-guide"></a>Průvodce vývojem zařízení IoT Central
 
@@ -105,7 +105,7 @@ Model DTDL může být modelem _No-Component_ nebo model _více komponent_ :
 - Model bez součásti: jednoduchý model nepoužívá vložené nebo kaskádované komponenty. Všechny telemetrie, vlastnosti a příkazy jsou definovány jednou _výchozí komponentou_. Příklad najdete v modelu [termostatu](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) .
 - Model více komponent. Složitější model, který obsahuje dvě nebo více komponent. Tyto komponenty zahrnují jednu výchozí komponentu a jednu nebo více dalších vnořených komponent. Příklad najdete v článku model [řadiče teploty](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) .
 
-Další informace najdete v tématu [komponenty IoT technologie Plug and Play v modelech](../../iot-pnp/concepts-components.md) .
+Další informace najdete v tématu [Příručka pro modelování IoT technologie Plug and Play](../../iot-pnp/concepts-modeling-guide.md) .
 
 ### <a name="conventions"></a>Konvence
 

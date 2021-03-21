@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ce7c97abfb879e9298edac5f38540bbc026274da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387678"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584396"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Řešení potíží s výkonem aktivity kopírování
 
@@ -137,7 +137,7 @@ Pokud výkon kopírování nevyhovuje vaší očekávání, při odstraňování
 
   - Projděte si trend využití procesoru a paměti v místním prostředí IR v Azure Portal-> vaší datové továrny – přehled >. Pokud je využití procesoru vysoké nebo málo dostupné paměti, zvažte možnost [horizontálního navýšení nebo navýšení kapacity](create-self-hosted-integration-runtime.md#high-availability-and-scalability) .
 
-  - V případě, že platí, přijmout osvědčené postupy načítání dat pro jednotlivé konektory. Příklad:
+  - V případě, že platí, přijmout osvědčené postupy načítání dat pro jednotlivé konektory. Například:
 
     - Při kopírování dat z [databází Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP](connector-sap-table.md#sap-table-as-source)a [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)povolte možnosti datového oddílu, aby se data kopírovala paralelně.
 
@@ -168,7 +168,7 @@ Pokud výkon kopírování nevyhovuje vaší očekávání, při odstraňování
   - Zvažte možnost postupného vyladění [paralelních kopií](copy-activity-performance-features.md), Všimněte si, že příliš mnoho paralelních kopií může dokonce snížit výkon.
 
 
-## <a name="connector-and-ir-performance"></a>Výkon konektoru a IR
+## <a name="connector-and-ir-performance"></a>Výkon konektoru a IR 
 
 V této části se seznámíte s některými Průvodci odstraňováním potíží s výkonem pro konkrétní typ konektoru nebo modul runtime integrace.
 
@@ -176,9 +176,11 @@ V této části se seznámíte s některými Průvodci odstraňováním potíž�
 
 Doba provádění aktivity se liší v případě, že je datová sada založená na různých Integration Runtime.
 
-- **Příznaky**: jednoduše přepínat rozevírací seznam propojených služeb v datové sadě provádí stejné aktivity kanálu, ale má drasticky různou dobu běhu. Pokud je datová sada založená na spravovaném Virtual Network Integration Runtime, trvá v průměru více než 2 minuty, aby se dokončilo spuštění, ale dokončení trvá přibližně 20 sekund, než se dokončí na základě výchozího Integration Runtime.
+- **Příznaky**: jednoduše přepínat rozevírací seznam propojených služeb v datové sadě provádí stejné aktivity kanálu, ale má drasticky různou dobu běhu. Pokud je datová sada založená na spravované Virtual Network Integration Runtime, trvá průměrnou dobu, než je běh, pokud je založena na výchozí Integration Runtime.  
 
-- **Příčina**: Kontrola podrobností o spuštěních kanálu, vidíte, že pomalé kanály běží na spravované virtuální síti (Virtual Network) IR, zatímco je normální provoz spuštěný v Azure IR. V rámci návrhu se spravovaná virtuální síť VNet přestane časem zařadit do fronty, než Azure IR, protože nerezervujete jeden výpočetní uzel na datovou továrnu, takže se každá aktivita kopírování může zahřívá přibližně 2 minuty a k tomu dochází hlavně v rámci připojení VNet místo Azure IR.
+- **Příčina**: Kontrola podrobností o spuštěních kanálu, vidíte, že pomalé kanály běží na spravované virtuální síti (Virtual Network) IR, zatímco je normální provoz spuštěný v Azure IR. V rámci návrhu netrvá spravovaná síť VNet čas ve frontě, než Azure IR, protože nerezervujete jeden výpočetní uzel na každou datovou továrnu, takže se zahájí všechny aktivity kopírování a k tomu dochází hlavně v případě připojení VNet místo Azure IR. 
+
+
 
     
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Nízký výkon při načítání dat do Azure SQL Database

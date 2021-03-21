@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: eaf40bafb68820b56fc9bf00dd4c11fbb337406f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102613455"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics Windows
@@ -26,7 +26,7 @@ Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít roz�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se používají následující nástroje:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
@@ -282,7 +282,7 @@ Aby bylo možné **základní provozní kanál** povolit pro komplexní protokol
 
 Chcete-li aktualizovat diagnostiku pro shromažďování protokolů z nových kanálů EventSource, které reprezentují novou aplikaci, kterou se chystáte nasadit, proveďte stejný postup, jak je popsáno výše v tématu nastavení diagnostiky pro existující cluster.
 
-Aktualizujte `EtwEventSourceProviderConfiguration` část template.jsv souboru, abyste mohli přidat položky pro nové kanály EventSource předtím, než použijete aktualizaci konfigurace pomocí `New-AzResourceGroupDeployment` příkazu PowerShellu. Název zdroje události je definován jako součást kódu v souboru ServiceEventSource.cs generovaném systémem Visual Studio.
+Aktualizujte `EtwEventSourceProviderConfiguration` část template.jsv souboru, abyste mohli přidat položky pro nové kanály EventSource předtím, než použijete aktualizaci konfigurace pomocí `New-AzResourceGroupDeployment` příkazu PowerShellu. Název zdroje události je definován jako součást kódu v souboru ServiceEventSource. cs generovaného v rámci sady Visual Studio.
 
 Pokud se například váš zdroj události jmenuje my-EventSource, přidejte následující kód, který umístí události z My-Eventsource do tabulky s názvem MyDestinationTableName.
 

@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 40dacdf243505447e9831239ef1252602a3e0f99
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491686"
 ---
 # <a name="what-is-azure-communication-services"></a>Co je služba Azure Communication Services?
@@ -61,7 +61,7 @@ Následující zdroje jsou skvělým místem, kde se můžete začít, pokud za�
 Následující ukázky ukazují ucelené využití klientských knihoven služby Azure Communications. Využijte tyto ukázky k zavedení vlastních řešení komunikačních služeb.
 <br>
 
-| Název vzorku                               | Popis                           |
+| Název vzorku                               | Description                           |
 |---                                    |---                                   |
 |**[Ukázka volání Hero skupiny](./samples/calling-hero-sample.md)**|Podívejte se, jak lze pomocí klientských knihoven komunikačních služeb vytvořit skupinu volání.|
 |**[Ukázka Hero ve skupině chat](./samples/chat-hero-sample.md)**|Podívejte se, jak lze pomocí klientských knihoven komunikačních služeb vytvořit prostředí pro konverzaci ve skupině.|

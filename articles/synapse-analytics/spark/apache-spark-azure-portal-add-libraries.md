@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e8ad6d072af6979eb8509068c1dcd239e7840950
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176412"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598010"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. 
@@ -60,10 +60,6 @@ Další informace o těchto možnostech najdete v dokumentaci ke [správě fond�
 Při provádění interaktivní analýzy dat nebo strojového učení často zjistíte, že chcete vyzkoušet novější balíčky, nebo budete možná potřebovat balíčky, které ještě nejsou ve vašem Apache Spark fondu dostupné. Místo aktualizace konfigurace fondu můžou teď uživatelé používat balíčky s rozsahem relace k přidávání, správě a aktualizaci závislostí relací.
 
 Balíčky s rozsahem relace umožňují uživatelům definovat závislosti balíčků na začátku relace. Při instalaci balíčku s rozsahem relace má přístup k určeným balíčkům pouze aktuální relace. V důsledku toho tyto balíčky s rozsahem relace nebudou mít vliv na ostatní relace nebo úlohy pomocí stejného fondu Apache Spark. Kromě toho jsou tyto knihovny nainstalovány nad základními balíčky modulu runtime a na úrovni fondu. 
-
-Tyto balíčky se automaticky přidají do vašeho prostředí Pythonu. Balíčky nesmí být zmíněné v souboru *requirements.txt* .
-
-Všimněte si, že tato metoda aktuálně suports jenom `*.whl` soubory. Do kontejneru nepřidávejte žádné `*.tar.gz` soubory.
 
 Další informace o tom, jak spravovat balíčky s rozsahem relace, najdete v následujících průvodcích:
 

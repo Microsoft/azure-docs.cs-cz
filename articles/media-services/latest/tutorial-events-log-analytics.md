@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8e3b9636dfb900fa0e22bfea8bcd2d0c7edf0241
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571860"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596701"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Kurz: ukládání Azure Media Servicesch událostí v Azure Log Analytics
 
 ## <a name="azure-media-services-events"></a>Události Azure Media Services
 
-Azure Media Services V3 generuje události na [Azure Event Grid](media-services-event-schemas.md). Můžete se přihlásit k odběru událostí mnoha způsoby a ukládat je do úložišť dat. V tomto kurzu se přihlásíte k odběru Media Servicesch událostí pomocí [toku aplikace protokolu](https://azure.microsoft.com/services/logic-apps/). Aplikace logiky se spustí pro každou událost a uloží tělo události do Azure Log Analytics. Jakmile se události nacházejí v Azure Log Analytics, můžete pomocí dalších služeb Azure vytvořit řídicí panel, monitorování a upozornění na těchto událostech, i když v tomto kurzu to nebudeme.
+Azure Media Services V3 generuje události na [Azure Event Grid](monitoring/media-services-event-schemas.md). Můžete se přihlásit k odběru událostí mnoha způsoby a ukládat je do úložišť dat. V tomto kurzu se přihlásíte k odběru Media Servicesch událostí pomocí [toku aplikace protokolu](https://azure.microsoft.com/services/logic-apps/). Aplikace logiky se spustí pro každou událost a uloží tělo události do Azure Log Analytics. Jakmile se události nacházejí v Azure Log Analytics, můžete pomocí dalších služeb Azure vytvořit řídicí panel, monitorování a upozornění na těchto událostech, i když v tomto kurzu to nebudeme.
 
 > [!NOTE]
 > To je užitečné, pokud už jste obeznámeni s používáním FFmpeg jako místního kodéru.  Pokud ne, je to v pořádku. Níže je uveden příkazový řádek a pokyny pro streamování videa.

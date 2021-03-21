@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 5954c3083afc73fb25c796086f8fb8809af03ec1
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200666"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Ukládání dat na hraničních zařízeních s využitím služby Azure Blob Storage ve službě IoT Edge
@@ -55,7 +55,7 @@ Pokud během nahrávání objektu BLOB dojde k neočekávanému ukončení proce
 * Zadejte dobu v minutách (deleteAfterMinutes), po jejímž uplynutí budou objekty blob automaticky odstraněny.
 * Vyberte možnost zachovat objekt BLOB při jeho nahrávání, pokud hodnota deleteAfterMinutes vyprší.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Zařízení Azure IoT Edge:
 

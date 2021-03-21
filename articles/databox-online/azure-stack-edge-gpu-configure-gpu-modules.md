@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: alkohli
 ms.openlocfilehash: 348ddff56ed61cd608d6b9f28417e7cd4c4e6b13
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103563959"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Konfigurace a spuštění modulu na GPU na zařízení Azure Stack Edge pro
@@ -51,7 +51,7 @@ Pokud chcete nakonfigurovat modul pro použití GPU na zařízení Azure Stack E
    |Předplatné      | Předplatné používané zdrojem Azure Stack Edge. |
    |Skupina prostředků    | Skupina prostředků, kterou používá prostředek Azure Stack Edge. |
    |IoT Hub           | Vyberte možnost **vytvořit novou** nebo **použít existující**. <br> Ve výchozím nastavení se k vytváření prostředků IoT používá úroveň Standard (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> Prostředek služby IoT Hub v každém případě používá stejné předplatné a stejnou skupinu prostředků jako prostředek Azure Stack Edge.     |
-   |Název              | Pokud nechcete použít výchozí název, který je k dispozici pro nový prostředek IoT Hub, zadejte jiný název. |
+   |Name              | Pokud nechcete použít výchozí název, který je k dispozici pro nový prostředek IoT Hub, zadejte jiný název. |
 
    Po dokončení nastavení vyberte **zkontrolovat + vytvořit**. Zkontrolujte nastavení prostředku IoT Hub a vyberte **vytvořit**.
 

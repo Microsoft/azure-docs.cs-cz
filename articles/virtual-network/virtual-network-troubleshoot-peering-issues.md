@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: 608f3d72aecb0c6d53325c0d082b1779822e9c80
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200534"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
@@ -212,7 +212,7 @@ Další informace najdete v [požadavcích a omezeních](./virtual-network-peeri
 
 Řešení tohoto problému:
 
-1. Přihlaste se k portálu Azure. 
+1. Přihlaste se k webu Azure Portal. 
 1. Ve webové aplikaci vyberte síť a potom vyberte **Integrace virtuální** **sítě**.
 1. Zkontrolujte, jestli se vám zobrazí vzdálená virtuální síť. Zadejte ručně adresní prostor vzdálené virtuální sítě (**synchronizovat síť** a **Přidat trasy**).
 

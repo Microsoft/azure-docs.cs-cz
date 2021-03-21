@@ -11,10 +11,10 @@ services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.openlocfilehash: 92f5c900238fc5d40e22870e2f00f8adeb5d335f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102032190"
 ---
 # <a name="azure-arc-enabled-managed-instance-high-availability"></a>Vysoká dostupnost spravované instance s podporou ARC Azure
@@ -29,7 +29,7 @@ Vestavěnou vysokou dostupnost poskytuje Kubernetes při konfiguraci vzdálenéh
 
 V této části ověříte vestavěnou vysokou dostupnost poskytovanou službou Kubernetes. Pokud budete postupovat podle kroků pro otestování této funkce, odstraníte z existující spravované instance a ověříte, že se Kubernetes obnoví z této akce. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Cluster Kubernetes musí mít [sdílené, vzdálené úložiště](storage-configuration.md#factors-to-consider-when-choosing-your-storage-configuration) . 
 - Spravovaná instance s povoleným ARC Azure nasazená s jednou replikou (výchozí)

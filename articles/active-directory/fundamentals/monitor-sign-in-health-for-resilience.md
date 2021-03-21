@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/10/2021
+ms.date: 03/17/2021
 ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad99c8d319a22f8b5388838b9d537de2f610478a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f2092c3f6402d5c6e7a0bc8c93015d3a900b9e38
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650987"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587984"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>Monitorování stavu přihlašování aplikací pro odolnost
 
@@ -43,7 +43,7 @@ Během události se může vyskytnout dvě věci:
 
 Tento článek vás provede nastavením sešitu stavu přihlášení, který monitoruje přerušení přihlášení vašich uživatelů.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady
 
 * Tenanta Azure AD.
 
@@ -56,8 +56,6 @@ Tento článek vás provede nastavením sešitu stavu přihlášení, který mon
 * Protokoly služby Azure AD integrované s protokoly Azure Monitor
 
    * Naučte se [integrovat protokoly přihlášení do služby Azure AD pomocí Azure monitorového streamu.](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-
- 
 
 ## <a name="configure-the-app-sign-in-health-workbook"></a>Konfigurace sešitu pro přihlášení ke stavu aplikace 
 
@@ -78,11 +76,11 @@ Ve výchozím nastavení sešit nabízí dva grafy. Tyto grafy porovnávají, co
 
 **První graf je hodinové použití (počet úspěšných uživatelů)**. Porovnání aktuálního počtu úspěšných uživatelů až po typickou dobu použití vám pomůže umístit odložení na místo, které může vyžadovat šetření. Míra úspěšnosti vyřazení může přispět k detekci problémů s výkonem a využitím, které nezpůsobí selhání. Například pokud uživatelé nebudou mít přístup k vaší aplikaci, aby se pokusili o přihlášení, nedošlo k žádným chybám, a to jenom při použití. Ukázkový dotaz pro tato data najdete v následující části.
 
-Druhý graf je hodinová míra selhání. Špička v míře selhání může znamenat problém s ověřovacími mechanismy. Frekvence selhání se dá změřit jenom v případě, že se uživatelé můžou pokusit ověřit. Pokud uživatelé nemůžou získat přístup k pokusu, neobjeví se chyba.
+**Druhý graf je hodinová míra selhání**. Špička v míře selhání může znamenat problém s ověřovacími mechanismy. Frekvence selhání se dá změřit jenom v případě, že se uživatelé můžou pokusit ověřit. Pokud uživatelé nemůžou získat přístup k pokusu, neobjeví se chyba.
 
 Můžete nakonfigurovat výstrahu, která upozorní konkrétní skupinu, když míra využití nebo selhání překročí zadanou prahovou hodnotu. Ukázkový dotaz pro tato data najdete v následující části.
 
- ## <a name="configure-the-query-and-alerts"></a>Konfigurace dotazů a upozornění
+## <a name="configure-the-query-and-alerts"></a>Konfigurace dotazů a upozornění
 
 Vytvoříte pravidla upozornění v Azure Monitor a v pravidelných intervalech můžete automaticky spouštět uložené dotazy nebo vlastní prohledávání protokolů.
 
@@ -96,116 +94,18 @@ Pomocí následujících pokynů můžete vytvořit e-mailová upozornění zalo
 
 Další informace o tom, jak vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure Monitor najdete v tématu [Správa výstrah protokolu](../../azure-monitor/alerts/alerts-log.md).
 
- 
 1. V sešitu vyberte **Upravit** a pak vyberte **ikonu dotazu** hned nad pravou stranu grafu.   
 
    [![Snímek obrazovky s upraveným sešitem](./media/monitor-sign-in-health-for-resilience/edit-workbook.png)](./media/monitor-sign-in-health-for-resilience/edit-workbook.png)
 
    Otevře se protokol dotazu.
 
-  [![Snímek obrazovky se zobrazeným protokolem dotazů](./media/monitor-sign-in-health-for-resilience/query-log.png)](/media/monitor-sign-in-health-for-resilience/query-log.png)
+   [![Snímek obrazovky se zobrazeným protokolem dotazů](./media/monitor-sign-in-health-for-resilience/query-log.png)](/media/monitor-sign-in-health-for-resilience/query-log.png)
 ‎
 
-2. Zkopírujte jeden z následujících ukázkových skriptů pro nový dotaz Kusto.
-
-**Dotaz Kusto pro použití při odtažení**
-
-```Kusto
-
-let thisWeek = SigninLogs
-
-| where TimeGenerated > ago(1h)
-
-| project TimeGenerated, AppDisplayName, UserPrincipalName
-
-//| where AppDisplayName contains "Office 365 Exchange Online"
-
-| summarize users = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-let lastWeek = SigninLogs
-
-| where TimeGenerated between((ago(1h) - totimespan(2d))..(now() - totimespan(2d)))
-
-| project TimeGenerated, AppDisplayName, UserPrincipalName
-
-//| where AppDisplayName contains "Office 365 Exchange Online"
-
-| summarize usersPriorWeek = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-thisWeek
-
-| join
-
-(
-
- lastWeek
-
-)
-
-on rn
-
-| project TimeGenerated, users, usersPriorWeek, difference = abs(users - usersPriorWeek), max = max_of(users, usersPriorWeek)
-
-| where (difference * 2.0) / max > 0.9
-
-```
-
- 
-
-**Dotaz Kusto na zvýšení míry selhání**
-
-
-```kusto
-
-let thisWeek = SigninLogs
-
-| where TimeGenerated > ago(1 h)
-
-| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
-
-| where AppDisplayName == **APP NAME**
-
-| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h)
-
-| project TimeGenerated, failureRate = (failure * 1.0) / ((failure + success) * 1.0)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-let lastWeek = SigninLogs
-
-| where TimeGenerated between((ago(1 h) - totimespan(2d))..(ago(1h) - totimespan(2d)))
-
-| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
-
-| where AppDisplayName == **APP NAME**
-
-| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h)
-
-| project TimeGenerated, failureRatePriorWeek = (failure * 1.0) / ((failure + success) * 1.0)
-
-| sort by TimeGenerated desc
-
-| serialize rn = row_number();
-
-thisWeek
-
-| join (lastWeek) on rn
-
-| project TimeGenerated, failureRate, failureRatePriorWeek
-
-| where abs(failureRate – failureRatePriorWeek) > **THRESHOLD VALUE**
-
-```
+2. Zkopírujte jeden z ukázkových skriptů pro nový dotaz Kusto.  
+   * [Dotaz Kusto na zvýšení míry selhání](#kusto-query-for-increase-in-failure-rate)
+   * [Dotaz Kusto pro použití při odtažení](#kusto-query-for-drop-in-usage)
 
 3. Vložte dotaz do okna a vyberte **Spustit**. Ujistěte se, že je na obrázku níže zobrazená dokončená zpráva a že se zobrazí zpráva s výsledky pod ní.
 
@@ -222,7 +122,7 @@ thisWeek
  
    * **Prahová hodnota**: 0. Tato hodnota bude upozorňovat na jakékoli výsledky.
 
-   * **Zkušební období (v minutách)**: 60. Tato hodnota vypadá po hodinách.
+   * **Zkušební období (v minutách)**: 2880. Tato hodnota vypadá po hodinách.
 
    * **Frekvence (v minutách)**: 60. Tato hodnota nastaví zkušební období na jednu hodinu pro předchozí hodinu.
 
@@ -254,9 +154,8 @@ thisWeek
 
    [![Snímek obrazovky se zobrazeným tlačítkem uložit dotaz](./media/monitor-sign-in-health-for-resilience/save-query.png)](./media/monitor-sign-in-health-for-resilience/save-query.png)
 
-
-
 ### <a name="refine-your-queries-and-alerts"></a>Upřesnění dotazů a upozornění
+
 Upravte dotazy a výstrahy pro maximální efektivitu.
 
 * Nezapomeňte otestovat výstrahy.
@@ -267,11 +166,135 @@ Upravte dotazy a výstrahy pro maximální efektivitu.
 
 * Dotaz na výstrahy v Azure Monitor může zahrnout jenom výsledky z posledních 48 hodin. [Toto je aktuální omezení podle návrhu](https://github.com/MicrosoftDocs/azure-docs/issues/22637).
 
+## <a name="sample-scripts"></a>Ukázkové skripty
+
+### <a name="kusto-query-for-increase-in-failure-rate"></a>Dotaz Kusto na zvýšení míry selhání
+
+   Poměr v dolní části lze podle potřeby upravit a představuje procentuální změnu v provozu za poslední hodinu ve srovnání se stejným časem včera. 0,5 znamená, že v provozu je 50% rozdíl.
+
+```kusto
+
+let today = SigninLogs
+
+| where TimeGenerated > ago(1h) // Query failure rate in the last hour
+ 
+| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
+
+// Optionally filter by a specific application
+
+//| where AppDisplayName == **APP NAME**
+
+| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h) // hourly failure rate
+
+| project TimeGenerated, failureRate = (failure * 1.0) / ((failure + success) * 1.0)
+
+| sort by TimeGenerated desc
+
+| serialize rowNumber = row_number();
+
+let yesterday = SigninLogs
+
+| where TimeGenerated between((ago(1h) - totimespan(1d))..(now() - totimespan(1d))) // Query failure rate at the same time yesterday
+
+| project TimeGenerated, UserPrincipalName, AppDisplayName, status = case(Status.errorCode == "0", "success", "failure")
+
+// Optionally filter by a specific application
+
+//| where AppDisplayName == **APP NAME**
+
+| summarize success = countif(status == "success"), failure = countif(status == "failure") by bin(TimeGenerated, 1h) // hourly failure rate at same time yesterday
+
+| project TimeGenerated, failureRateYesterday = (failure * 1.0) / ((failure + success) * 1.0)
+
+| sort by TimeGenerated desc
+
+| serialize rowNumber = row_number();
+today
+| join (yesterday) on rowNumber // join data from same time today and yesterday
+
+| project TimeGenerated, failureRate, failureRateYesterday
+
+// Set threshold to be the percent difference in failure rate in the last hour as compared to the same time yesterday
+
+| where abs(failureRate - failureRateYesterday) > 0.5
+
+```
+
+### <a name="kusto-query-for-drop-in-usage"></a>Dotaz Kusto pro použití při odtažení
+
+V následujícím dotazu porovnáváme provoz za poslední hodinu do stejné doby včera.
+Vylučujeme sobotu, neděli a pondělí, protože se očekává v těchto dnech, kdy by existovala velká variabilita provozu ve stejnou dobu jako předchozí den. 
+
+Poměr v dolní části lze podle potřeby upravit a představuje procentuální změnu v provozu za poslední hodinu ve srovnání se stejným časem včera. 0,5 znamená, že v provozu je 50% rozdíl.
+
+*Tyto hodnoty byste měli upravit tak, aby vyhovovaly vašemu modelu obchodní operace*.
+
+```Kusto
+ let today = SigninLogs // Query traffic in the last hour
+
+| where TimeGenerated > ago(1h)
+
+| project TimeGenerated, AppDisplayName, UserPrincipalName
+
+// Optionally filter by AppDisplayName to scope query to a single application
+
+//| where AppDisplayName contains "Office 365 Exchange Online"
+
+| summarize users = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr) // Count distinct users in the last hour
+
+| sort by TimeGenerated desc
+
+| serialize rn = row_number();
+
+let yesterday = SigninLogs // Query traffic at the same hour yesterday
+
+| where TimeGenerated between((ago(1h) - totimespan(1d))..(now() - totimespan(1d))) // Count distinct users in the same hour yesterday
+
+| project TimeGenerated, AppDisplayName, UserPrincipalName
+
+// Optionally filter by AppDisplayName to scope query to a single application
+
+//| where AppDisplayName contains "Office 365 Exchange Online"
+
+| summarize usersYesterday = dcount(UserPrincipalName) by bin(TimeGenerated, 1hr)
+
+| sort by TimeGenerated desc
+
+| serialize rn = row_number();
+
+today
+| join // Join data from today and yesterday together
+(
+yesterday
+)
+on rn
+
+// Calculate the difference in number of users in the last hour compared to the same time yesterday
+
+| project TimeGenerated, users, usersYesterday, difference = abs(users - usersYesterday), max = max_of(users, usersYesterday)
+
+ extend ratio = (difference * 1.0) / max // Ratio is the percent difference in traffic in the last hour as compared to the same time yesterday
+
+// Day variable is the number of days since the previous Sunday. Optionally ignore results on Sat, Sun, and Mon because large variability in traffic is expected.
+
+| extend day = dayofweek(now())
+
+| where day != time(6.00:00:00) // exclude Sat
+
+| where day != time(0.00:00:00) // exclude Sun
+
+| where day != time(1.00:00:00) // exclude Mon
+
+| where ratio > 0.7 // Threshold percent difference in sign-in traffic as compared to same hour yesterday
+
+```
+
 ## <a name="create-processes-to-manage-alerts"></a>Vytváření procesů pro správu výstrah
 
 Po nastavení dotazu a výstrah vytvořte obchodní procesy pro správu výstrah.
 
 * Kdo bude monitorovat sešit a kdy?
+
 * Když se vygeneruje výstraha, která se prošetří?
 
 * Jaké jsou požadavky na komunikaci? Kdo bude tuto komunikaci vytvářet a kdo je obdrží?
@@ -281,8 +304,3 @@ Po nastavení dotazu a výstrah vytvořte obchodní procesy pro správu výstrah
 ## <a name="next-steps"></a>Další kroky
 
 [Další informace o sešitech](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
-
- 
-
- 
-

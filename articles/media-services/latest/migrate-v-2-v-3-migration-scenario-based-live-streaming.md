@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 327673d0765fa807f782494562c995278be4782f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6a2c6495ca3685aec1bc132ec7f8a88809ad2d87
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955288"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598277"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Průvodce migrací na základě scénáře živého streamování
 
@@ -42,7 +42,7 @@ Před přesunutím obsahu z verze V2 na V3 otestujte nový způsob doručování
 - Pokud budete vyžadovat rychlé spuštění živých událostí, prozkoumejte nové funkce v [pohotovostním režimu](live-events-outputs-concept.md#standby-mode) .
 - Pokud chcete svou živou událost přepisovat, když se děje, prozkoumejte novou funkci pro [živý přepis](live-transcription.md) .
 - Pokud potřebujete delší dobu trvání streamování, vytvořte v zcela nepřetržitou živé události v hodnotě v3.
-- Pomocí [Event Grid](monitor-events-portal-how-to.md) můžete monitorovat živé události.
+- Pomocí [Event Grid](monitoring/monitor-events-portal-how-to.md) můžete monitorovat živé události.
 
 Konkrétní kroky najdete v tématu Koncepty, kurzy a návody k dynamickým událostem.
 

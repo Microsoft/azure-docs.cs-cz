@@ -131,6 +131,8 @@
           href: how-to-update-iot-edge.md
         - name: Správa certifikátů zařízení
           href: how-to-manage-device-certificates.md
+        - name: Konfigurace vnořené virtualizace pro virtuální počítače s Windows
+          href: nested-virtualization.md
     - name: Alternativní scénáře zařízení
       items:
         - name: Spuštění IoT Edge s kontejnery Windows

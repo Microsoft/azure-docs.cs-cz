@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
 ms.openlocfilehash: d30a03aa7b7715a8792e7b70a0571270c6ad7b37
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102449675"
 ---
 # <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>Rychlý Start: připojení Defenderu pro IoT do řešení založeného na agentovi
@@ -35,7 +35,7 @@ Zabezpečení IoT můžete spravovat prostřednictvím IoT Hub v programu Defend
 > [!NOTE]
 > Defender pro IoT aktuálně podporuje jenom centra IoT úrovně Standard.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Žádné
 

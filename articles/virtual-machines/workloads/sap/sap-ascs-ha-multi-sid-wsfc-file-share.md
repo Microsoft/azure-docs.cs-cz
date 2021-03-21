@@ -17,10 +17,10 @@ ms.date: 03/15/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8b1a29b0f94c5009d0535ca92363c25ad5c6c884
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103493488"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Vysoká dostupnost ASCS/SCS instance SAP s Clustering s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure
@@ -47,7 +47,7 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 
 Další informace o limitech pro vyrovnávání zatížení najdete v části "privátní front-end IP adresa na nástroj pro vyrovnávání zatížení" v části [omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager]. Zvažte také použití [SKU azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) místo základní SKU nástroje pro vyrovnávání zatížení Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster služby WSFC jste už nakonfigurovali pro použití pro jednu instanci SAP ASCS/SCS pomocí **sdílené složky**, jak je znázorněno v tomto diagramu.
 
