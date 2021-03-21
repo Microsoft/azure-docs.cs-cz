@@ -4,10 +4,10 @@ description: K nasazení prostředků do Azure použijte Azure Resource Manager 
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102521624"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon ARM a Azure PowerShell
@@ -16,7 +16,7 @@ Tento článek vysvětluje, jak použít Azure PowerShell se šablonami Azure Re
 
 K nasazení souborů bicep potřebujete [Azure PowerShell verze 5.6.0 nebo novější](/powershell/azure/install-az-ps).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nasazení budete potřebovat šablonu. Pokud ho ještě nemáte, Stáhněte si a uložte [ukázkovou šablonu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Azure pro rychlý Start. Místní název souboru použitý v tomto článku je _C:\MyTemplates\azuredeploy.js_.
 

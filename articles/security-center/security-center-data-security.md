@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
 ms.openlocfilehash: 0c21c916d152188031212b47704dfb41d3f64a82
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596284"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat Azure Security Center
@@ -80,7 +80,7 @@ Můžete zadat pracovní prostor a oblast, kde se ukládají data shromážděn�
 Zákazníci mohou získat přístup k Security Center související data z následujících datových proudů:
 
 
-| Datový proud                                                                                | Typy dat                                                                                                                                                                                                          |
+| Stream                                                                                | Typy dat                                                                                                                                                                                                          |
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)                       | Všechny výstrahy zabezpečení, schválené Security Center požadavky na přístup [za běhu](security-center-just-in-time.md) a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](security-center-adaptive-application.md).|
 | [Protokoly Azure Monitoru](../azure-monitor/data-platform.md)                      | Všechny výstrahy zabezpečení                                                                                                                                                                                                |

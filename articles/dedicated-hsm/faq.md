@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: keithp
 ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97369034"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
@@ -97,7 +97,7 @@ Od 13. března 2019 je vyhrazený modul HSM dostupný ve 14 oblastech uvedených
 * USA (Gov) – Virginia
 * USA (Gov) – Texas
 
-## <a name="interoperability"></a>Interoperabilita
+## <a name="interoperability"></a>Vzájemná funkční spolupráce
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>Otázka: jak se moje aplikace připojí k vyhrazené HSM?
 
@@ -113,7 +113,7 @@ Ano, místní HSM můžete synchronizovat s vyhrazeným HSM. Připojení [typu P
 
 ### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>Otázka: můžu šifrovat data používaná jinými službami Azure pomocí klíčů uložených v vyhrazeném modulu HSM?
 
-Ne. Vyhrazené HSM Azure jsou dostupné jenom v rámci vaší virtuální sítě.
+No. Vyhrazené HSM Azure jsou dostupné jenom v rámci vaší virtuální sítě.
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Otázka: mohu importovat klíče z existujícího místního modulu HARDWAROVÉho zabezpečení do vyhrazeného modulu HSM?
 
@@ -159,7 +159,7 @@ Vyhrazený modul HARDWAROVÉho zabezpečení Azure je vhodný pro scénáře mig
 
 ### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>Otázka: je možné použít vyhrazený modul HARDWAROVÉho zabezpečení s klíčem zákazníka Office 365, Azure Information Protection, Azure Data Lake Store, šifrování disku, Azure Storage šifrování, Azure SQL TDE?
 
-Ne. Vyhrazený modul HARDWAROVÉho zabezpečení se zřizuje přímo v adresním prostoru privátních IP adres zákazníka, takže není přístupný pro jiné služby Azure nebo Microsoft.
+No. Vyhrazený modul HARDWAROVÉho zabezpečení se zřizuje přímo v adresním prostoru privátních IP adres zákazníka, takže není přístupný pro jiné služby Azure nebo Microsoft.
 
 ## <a name="administration-access-and-control"></a>Správa, přístup a řízení
 
@@ -177,7 +177,7 @@ Zařízení HSM se dodává s výchozím uživatelem správce s obvyklým výcho
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Otázka: v mém vyhrazeném modulu HSM může společnost Microsoft nebo kdokoli na klíčích Microsoft Access.
 
-Ne. Společnost Microsoft nemá žádný přístup k klíčům uloženým ve vyhrazeném modulu HARDWAROVÉho zabezpečení přiděleného zákazníky.
+No. Společnost Microsoft nemá žádný přístup k klíčům uloženým ve vyhrazeném modulu HARDWAROVÉho zabezpečení přiděleného zákazníky.
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>Otázka: můžu upgradovat software/firmware na HSM přidělený mně?
 
@@ -211,7 +211,7 @@ Ano. Musí splňovat požadavky vysoké dostupnosti pro SafeNet Luna Network HSM
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Otázka: mohu přidat Luna 5/6 HSM z místních sítí do skupiny vysoké dostupnosti pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure?
 
-Ne.
+No.
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>Otázka: kolik HSM můžu přidat ke stejné konfiguraci vysoké dostupnosti z jedné aplikace?
 

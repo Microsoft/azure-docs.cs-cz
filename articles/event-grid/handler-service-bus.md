@@ -4,10 +4,10 @@ description: Popisuje, jak můžete použít Service Bus fronty a témata jako o
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97399855"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus fronty a témata jako obslužné rutiny událostí pro Azure Event Grid události
@@ -58,7 +58,7 @@ Interní ID systému pro zprávu bude udržováno v průběhu předoručení ud�
 
 ## <a name="rest-examples-for-put"></a>Příklady REST (pro PUT)
 
-### <a name="service-bus-queue"></a>Fronta služby Service Bus
+### <a name="service-bus-queue"></a>Fronta Service Bus
 
 ```json
 {
@@ -102,7 +102,7 @@ Interní ID systému pro zprávu bude udržováno v průběhu předoručení ud�
 }
 ```
 
-### <a name="service-bus-topic"></a>Téma služby Service Bus
+### <a name="service-bus-topic"></a>Service Bus téma
 
 ```json
 {

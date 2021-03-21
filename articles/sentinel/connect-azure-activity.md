@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
 ms.openlocfilehash: 8f0bac363e020826e34df3cb0b4e3d3582990302
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100595452"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Připojit data z protokolu aktivit Azure
 
 Pomocí jediného kliknutí můžete streamovat protokoly z [Azure Activity log](../azure-monitor/essentials/platform-logs-overview.md) do Azure Sentinel. Protokol aktivit je protokol předplatného, který zaznamenává a zobrazuje události na úrovni předplatného v rámci Azure, od Azure Resource Manager provozních dat až po aktualizace Service Healthch událostí. Pomocí protokolu aktivit můžete určit, kdo a kdy se má u prostředků ve vašem předplatném provést operace zápisu (PUT, POST, DELETE). Můžete si také přečíst stav operace a dalších relevantních vlastností. Protokol aktivit nezahrnuje operace čtení (GET) nebo operací pro prostředky, které používají model Classic/"RDFE". 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Uživatel musí mít oprávnění přispěvatele k pracovnímu prostoru Log Analytics.
 - Váš uživatel musí mít oprávnění čtenářů pro jakékoli předplatné, jehož protokoly chcete streamovat do služby Azure Sentinel.

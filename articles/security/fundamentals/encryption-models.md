@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102051374"
 ---
 # <a name="data-encryption-models"></a>Modely šifrování dat
@@ -146,97 +146,97 @@ Služby Azure, které podporují jednotlivé modely šifrování:
 | Produkt, funkce nebo služba | Server-Side pomocí klíče Service-Managed   | Server-Side pomocí klíče Customer-Managed | Client-Side pomocí klíče Client-Managed  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **AI a strojové učení**      |                    |                    |                    |
-| Azure Cognitive Search           | Ano                | Ano                | -                  |
-| Azure Cognitive Services         | Ano                | Ano                | -                  |
-| Azure Machine Learning           | Ano                | Ano                | -                  |
-| Azure Machine Learning Studio (klasický) | Ano         | Verze Preview, RSA 2048-bit | -               |
-| Content Moderator                | Ano                | Ano                | -                  |
-| Rozpoznávání tváře                             | Ano                | Ano                | -                  |
-| Language Understanding           | Ano                | Ano                | -                  |
-| Personalizace                     | Ano                | Ano                | -                  |
-| QnA Maker                        | Ano                | Ano                | -                  |
-| Hlasové služby                  | Ano                | Ano                | -                  |
-| Translator Text                  | Ano                | Ano                | -                  |
-| Power BI                         | Ano                | Ano, RSA 4096-bit  | -                  |
+| Azure Cognitive Search           | Yes                | Yes                | -                  |
+| Azure Cognitive Services         | Yes                | Yes                | -                  |
+| Azure Machine Learning           | Yes                | Yes                | -                  |
+| Azure Machine Learning Studio (klasický) | Yes         | Verze Preview, RSA 2048-bit | -               |
+| Content Moderator                | Yes                | Yes                | -                  |
+| Rozpoznávání tváře                             | Yes                | Yes                | -                  |
+| Language Understanding           | Yes                | Yes                | -                  |
+| Personalizace                     | Yes                | Yes                | -                  |
+| QnA Maker                        | Yes                | Yes                | -                  |
+| Služby Speech                  | Yes                | Yes                | -                  |
+| Translator Text                  | Yes                | Yes                | -                  |
+| Power BI                         | Yes                | Ano, RSA 4096-bit  | -                  |
 | **Analýzy**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ano                | Ano\*\*            | -                  |
-| Event Hubs                       | Ano                | Ano                | -                  |
-| Functions                        | Ano                | Ano                | -                  |
+| Azure Stream Analytics           | Yes                | Ano\*\*            | -                  |
+| Event Hubs                       | Yes                | Yes                | -                  |
+| Functions                        | Yes                | Yes                | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
-| Azure Data Catalog               | Ano                | -                  | -                  |
-| Azure HDInsight                  | Ano                | Vše                | -                  |
-| Azure Monitor Application Insights | Ano                | Ano                | -                  |
-| Azure Monitor Log Analytics      | Ano                | Ano                | -                  |
-| Průzkumník dat Azure              | Ano                | Ano                | -                  |
-| Azure Data Factory               | Ano                | Ano                | -                  |
+| Azure Data Catalog               | Yes                | -                  | -                  |
+| Azure HDInsight                  | Yes                | Vše                | -                  |
+| Azure Monitor Application Insights | Yes                | Yes                | -                  |
+| Azure Monitor Log Analytics      | Yes                | Yes                | -                  |
+| Průzkumník dat Azure              | Yes                | Yes                | -                  |
+| Azure Data Factory               | Yes                | Yes                | -                  |
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048-bit  | -                  |
 | **Containers**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Ano                | Ano                | -                  |
-| Container Instances              | Ano                | Ano                | -                  |
-| Container Registry               | Ano                | Ano                | -                  |
+| Azure Kubernetes Service         | Yes                | Yes                | -                  |
+| Container Instances              | Yes                | Yes                | -                  |
+| Container Registry               | Yes                | Yes                | -                  |
 | **Výpočetní služby**                      |                    |                    |                    |
-| Virtual Machines                 | Ano                | Ano                | -                  |
-| Sada škálování virtuálních počítačů        | Ano                | Ano                | -                  |
-| SAP HANA                         | Ano                | Ano                | -                  |
-| App Service                      | Ano                | Ano\*\*            | -                  |
-| Automation                       | Ano                | Ano\*\*            | -                  |
-| Azure Functions                  | Ano                | Ano\*\*            | -                  |
-| portál Azure                     | Ano                | Ano\*\*            | -                  |
-| Logic Apps                       | Ano                | Ano                | -                  |
-| Aplikace spravované v Azure       | Ano                | Ano\*\*            | -                  |
-| Service Bus                      | Ano                | Ano                | -                  |
-| Site Recovery                    | Ano                | Ano                | -                  |
+| Virtual Machines                 | Yes                | Yes                | -                  |
+| Sada škálování virtuálních počítačů        | Yes                | Yes                | -                  |
+| SAP HANA                         | Yes                | Yes                | -                  |
+| App Service                      | Yes                | Ano\*\*            | -                  |
+| Automation                       | Yes                | Ano\*\*            | -                  |
+| Azure Functions                  | Yes                | Ano\*\*            | -                  |
+| portál Azure                     | Yes                | Ano\*\*            | -                  |
+| Logic Apps                       | Yes                | Yes                | -                  |
+| Aplikace spravované v Azure       | Yes                | Ano\*\*            | -                  |
+| Service Bus                      | Yes                | Yes                | -                  |
+| Site Recovery                    | Yes                | Yes                | -                  |
 | **Databáze**                    |                    |                    |                    |
-| SQL Server na virtuálních počítačích   | Ano                | Ano                | Ano                |
-| Azure SQL Database               | Ano                | Ano, RSA 3072-bit  | Ano                |
-| Azure SQL Database pro MariaDB   | Ano                | -                  | -                  |
-| Azure SQL Database pro MySQL     | Ano                | Ano                | -                  |
-| Azure SQL Database pro PostgreSQL | Ano               | Ano                | -                  |
-| Azure Synapse Analytics          | Ano                | Ano, RSA 3072-bit  | -                  |
-| SQL Server Stretch Database      | Ano                | Ano, RSA 3072-bit  | Ano                |
-| Table Storage                    | Ano                | Ano                | Ano                |
-| Azure Cosmos DB                  | Ano                | Ano                | -                  |
-| Azure Databricks                 | Ano                | Ano                | -                  |
-| Azure Database Migration Service | Ano                | NENÍ K DISPOZICI\*              | -                  |
+| SQL Server na virtuálních počítačích   | Yes                | Yes                | Yes                |
+| Azure SQL Database               | Yes                | Ano, RSA 3072-bit  | Yes                |
+| Azure SQL Database pro MariaDB   | Yes                | -                  | -                  |
+| Azure SQL Database pro MySQL     | Yes                | Yes                | -                  |
+| Azure SQL Database pro PostgreSQL | Yes               | Yes                | -                  |
+| Azure Synapse Analytics          | Yes                | Ano, RSA 3072-bit  | -                  |
+| SQL Server Stretch Database      | Yes                | Ano, RSA 3072-bit  | Yes                |
+| Table Storage                    | Yes                | Yes                | Ano                |
+| Azure Cosmos DB                  | Ano                | Yes                | -                  |
+| Azure Databricks                 | Yes                | Yes                | -                  |
+| Azure Database Migration Service | Yes                | NENÍ K DISPOZICI\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Ano                | -                  | -                  |
-| Azure Repos                      | Ano                | -                  | -                  |
+| Azure DevOps Services            | Yes                | -                  | -                  |
+| Azure Repos                      | Yes                | -                  | -                  |
 | **Identita**                     |                    |                    |                    |
-| Azure Active Directory           | Ano                | -                  | -                  |
-| Azure Active Directory Domain Services | Ano          | Ano                | -                  |
+| Azure Active Directory           | Yes                | -                  | -                  |
+| Azure Active Directory Domain Services | Yes          | Yes                | -                  |
 | **Integrace**                  |                    |                    |                    |
-| Service Bus                      | Ano                | Ano                | Ano                |
-| Event Grid                       | Ano                | -                  | -                  |
-| API Management                   | Ano                | -                  | -                  |
+| Service Bus                      | Yes                | Yes                | Yes                |
+| Event Grid                       | Yes                | -                  | -                  |
+| API Management                   | Yes                | -                  | -                  |
 | **Služby IoT**                 |                    |                    |                    |
-| IoT Hub                          | Ano                | Ano                | Ano                |
-| IoT Hub Device Provisioning      | Ano                | Ano                | -                  |
+| IoT Hub                          | Yes                | Yes                | Yes                |
+| IoT Hub Device Provisioning      | Yes                | Yes                | -                  |
 | **Správa a zásady správného řízení**    |                    |                    |                    |
-| Azure Site Recovery              | Ano                | -                  | -                  |
-| Azure Migrate                    | Ano                | Ano                | -                  |
+| Azure Site Recovery              | Yes                | -                  | -                  |
+| Azure Migrate                    | Yes                | Yes                | -                  |
 | **Média**                        |                    |                    |                    |
-| Media Services                   | Ano                | Ano                | Ano                |
+| Media Services                   | Yes                | Yes                | Yes                |
 | **Zabezpečení**                     |                    |                    |                    |
-| Azure Security Center for IoT    | Ano                | Ano                | -                  |
-| Azure Sentinel                   | Ano                | Ano                | -                  |
+| Azure Security Center for IoT    | Yes                | Yes                | -                  |
+| Azure Sentinel                   | Yes                | Yes                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | Ano                | Ano                | Ano                |
-| Blob Storage úrovně Premium             | Ano                | Ano                | Ano                |
-| Disk Storage                     | Ano                | Ano                | -                  |
-| Ultra Disk Storage               | Ano                | Ano                | -                  |
-| Spravované Disk Storage             | Ano                | Ano                | -                  |
-| File Storage                     | Ano                | Ano                | -                  |
-| Premium Storage souboru             | Ano                | Ano                | -                  |
-| Synchronizace souborů                        | Ano                | Ano                | -                  |
-| Queue Storage                    | Ano                | Ano                | Ano                |
-| Avere vFXT                       | Ano                | -                  | -                  |
-| Azure Cache for Redis            | Ano                | NENÍ K DISPOZICI\*              | -                  |
-| Azure NetApp Files               | Ano                | Ano                | -                  |
-| Archiv služby Storage                  | Ano                | Ano                | -                  |
-| StorSimple                       | Ano                | Ano                | Ano                |
-| Azure Backup                     | Ano                | Ano                | Ano                |
-| Data Box                         | Ano                | -                  | Ano                |
-| Data Box Edge                    | Ano                | Ano                | -                  |
+| Blob Storage                     | Ano                | Yes                | Yes                |
+| Blob Storage úrovně Premium             | Yes                | Yes                | Yes                |
+| Disk Storage                     | Yes                | Yes                | -                  |
+| Ultra Disk Storage               | Yes                | Yes                | -                  |
+| Spravované Disk Storage             | Yes                | Yes                | -                  |
+| File Storage                     | Ano                | Yes                | -                  |
+| Premium Storage souboru             | Yes                | Yes                | -                  |
+| Synchronizace souborů                        | Yes                | Yes                | -                  |
+| Queue Storage                    | Yes                | Yes                | Yes                |
+| Avere vFXT                       | Yes                | -                  | -                  |
+| Azure Cache for Redis            | Yes                | NENÍ K DISPOZICI\*              | -                  |
+| Azure NetApp Files               | Yes                | Yes                | -                  |
+| Archiv služby Storage                  | Yes                | Yes                | -                  |
+| StorSimple                       | Yes                | Yes                | Yes                |
+| Azure Backup                     | Yes                | Yes                | Yes                |
+| Data Box                         | Yes                | -                  | Yes                |
+| Data Box Edge                    | Yes                | Yes                | -                  |
 
 \* Tato služba neuchovává data. Přechodné mezipaměti, pokud jsou nějaké, se šifrují pomocí klíče Microsoftu.
 

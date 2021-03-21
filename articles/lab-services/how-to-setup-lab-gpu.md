@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452378"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Nastavení testovacího prostředí s virtuálními počítači GPU
@@ -28,13 +28,13 @@ V tomto procesu máte možnost vybrat buď **vizualizaci** , nebo **výpočetní
 
 Jak je popsáno v následující tabulce, *Výpočet* velikosti GPU procesorů je určený pro aplikace náročné na výpočetní výkon.  Například [obsáhlý Learning v typu třídy zpracování přirozeného jazyka](./class-type-deep-learning-natural-language-processing.md) používá velikost **malého GPU (COMPUTE)** .  Výpočetní procesor je vhodný pro tento typ třídy, protože studenti využívají architektury hloubkového učení a nástroje, které jsou k dispozici v [Data Science Virtual Machine image](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) , k výuce modelů pro obsáhlý Learning s velkými sadami dat.
 
-| Velikost | Cores | Paměť RAM | Popis | 
+| Velikost | Cores | Paměť RAM | Description | 
 | ---- | ----- | --- | ----------- | 
 | Malý grafický procesor (COMPUTE) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](../virtual-machines/nc-series.md) |Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon, jako je například umělá logika (AI) a obsáhlý Learning. |
 
 Velikosti GPU pro *vizualizaci* jsou určené pro aplikace náročné na grafiku.  Například [typ třídy SolidWorks Engineering](./class-type-solidworks.md) ukazuje použití velikosti **malého GPU (vizualizace)** .  Grafický procesor vizualizace je vhodný pro tento typ třídy, protože studenti pracují s prostředím SOLIDWORKS 3D Computer-to design (CAD) pro modelování a vizualizaci tuhých objektů.
 
-| Velikost | Cores | Paměť RAM | Popis | 
+| Velikost | Cores | Paměť RAM | Description | 
 | ---- | ----- | --- | ----------- | 
 | Malý grafický procesor (vizualizace) | -&nbsp;6 &nbsp; jader<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
 | Střední GPU (vizualizace) | -&nbsp;12 &nbsp; jader<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Tato velikost je nejvhodnější pro vzdálenou vizualizaci, streamování, hraní a kódování využívající architektury, jako je OpenGL a DirectX. |
@@ -115,6 +115,6 @@ Postupujte podle pokynů v části "ověřit instalaci ovladače" v tématu [ins
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Vytváření a Správa cvičení](how-to-manage-classroom-labs.md)
+- [Vytváření a správa testovacích prostředí](how-to-manage-classroom-labs.md)
 - [Typ třídy SOLIDWORKS počítačového návrhu (CAD)](class-type-solidworks.md)
 - [Typ třídy MATLAB (maticová laboratoř)](class-type-matlab.md)

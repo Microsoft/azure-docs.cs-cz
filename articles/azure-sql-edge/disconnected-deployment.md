@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392074"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Nasazení Azure SQL Edge s Docker
@@ -83,7 +83,7 @@ Předchozí příkaz vyžádá nejnovější image kontejneru Azure SQL Edge. Po
     sudo docker ps -a
    ```
 
-4. Pokud se ve sloupci **stav** zobrazuje stav **zapnuto** , pak je v kontejneru spuštěno Azure SQL Edge a naslouchá na portu zadaném ve sloupci **porty** . Pokud se ve sloupci **stav** pro váš kontejner Azure SQL Edge zobrazuje jako **ukončené** , přečtěte si část věnované řešení potíží v dokumentaci k Azure SQL Edge.
+4. Pokud se ve sloupci **stav** zobrazuje stav **zapnuto**, pak je v kontejneru spuštěno Azure SQL Edge a naslouchá na portu zadaném ve sloupci **porty** . Pokud se ve sloupci **stav** pro váš kontejner Azure SQL Edge zobrazuje jako **ukončené**, přečtěte si část věnované řešení potíží v dokumentaci k Azure SQL Edge.
 
     `-h`Parametr (název hostitele) je také užitečný, ale v tomto kurzu se pro jednoduchost nepoužívá. Tím se změní interní název kontejneru na vlastní hodnotu. Název, který se zobrazí, se vrátí v následujícím dotazu Transact-SQL:
 

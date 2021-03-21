@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
 ms.openlocfilehash: a85c5b2333418367742678a529b69c95164eda53
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350479"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>Změna velikosti a oříznutí obrázků miniatur
@@ -25,7 +25,7 @@ ms.locfileid: "96350479"
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
 > Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Mezi odpovědi z rozhraní API pro vyhledávání Bingu patří adresy URL k obrázkům miniatur poskytovaných bingem, které můžete měnit velikosti a oříznutí a můžou obsahovat parametry dotazu. Příklad:
+Mezi odpovědi z rozhraní API pro vyhledávání Bingu patří adresy URL k obrázkům miniatur poskytovaných bingem, které můžete měnit velikosti a oříznutí a můžou obsahovat parametry dotazu. Například:
 
 `https://<host>/th?id=AMMS_92772df988...&w=110&h=73&rs=1&qlt=80&cdv=1&pid=16.1`
 

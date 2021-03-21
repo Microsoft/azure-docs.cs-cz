@@ -13,10 +13,10 @@ ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653758"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Kurz: sestavení démona s více klienty, který používá platformu Microsoft identity
@@ -33,7 +33,7 @@ V tomto kurzu:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2017 nebo 2019](https://visualstudio.microsoft.com/downloads/).
 - Tenanta Azure AD. Další informace najdete v tématu [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md).
@@ -178,15 +178,15 @@ Příslušný kód pro tuto ukázku je v následujících souborech:
    - Microsoft.Owin.Security.OpenIdConnect
    - Microsoft. identity. Client
 1. Ve složce **app_start** :
-   1. Vytvořte třídu s názvem **Startup.auth.cs**.
+   1. Vytvořte třídu s názvem **Startup. auth. cs**.
    1. Odebrat **. App_Start** z názvu oboru názvů.
    1. Nahraďte kód pro **spouštěcí** třídu kódem ze stejného souboru ukázkové aplikace.
    Nezapomeňte vzít v úvahu definici celé třídy. Definice se změní z **spuštění veřejné třídy** na **veřejnou částečnou třídu.**
-1. V **Startup.auth.cs** vyřešte chybějící odkazy přidáním příkazů, které jsou **navrženy pomocí technologie** IntelliSense sady Visual Studio.
+1. Při **spuštění. auth. cs** vyřešte chybějící odkazy přidáním příkazů, které jsou navrženy **pomocí** technologie IntelliSense sady Visual Studio.
 1. Klikněte pravým tlačítkem na projekt, vyberte **Přidat** a pak vyberte **Třída**.
-1. Do vyhledávacího pole zadejte **Owin**. **Spouštěcí třída Owin** se zobrazuje jako výběr. Vyberte ji a pojmenujte třídu **Startup.cs**.
-1. V **Startup.cs** nahraďte kód pro **spouštěcí** třídu kódem ze stejného souboru ukázkové aplikace. Znovu si všimněte, že se změní definice z **spuštění veřejné třídy** na **veřejnou částečnou třídu**.
-1. Ve složce **modely** přidejte novou třídu s názvem **MsGraphUser.cs**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
+1. Do vyhledávacího pole zadejte **Owin**. **Spouštěcí třída Owin** se zobrazuje jako výběr. Vyberte ji a pojmenujte třídu **Startup. cs**.
+1. V souboru **Startup. cs** nahraďte kód pro **spouštěcí** třídu kódem ze stejného souboru ukázkové aplikace. Znovu si všimněte, že se změní definice z **spuštění veřejné třídy** na **veřejnou částečnou třídu**.
+1. Ve složce **modely** přidejte novou třídu s názvem **MsGraphUser. cs**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler MVC 5 – prázdná instance s** názvem **AccountController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler MVC 5 – prázdná instance s** názvem **UserController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler webového rozhraní API 2 – prázdná instance s** názvem **SyncController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.

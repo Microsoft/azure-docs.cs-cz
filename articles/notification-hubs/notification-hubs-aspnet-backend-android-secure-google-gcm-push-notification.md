@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: f2d5d618fabbe7400ce825f984ace1622a524f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88004016"
 ---
 # <a name="send-secure-push-notifications-with-azure-notification-hubs"></a>Posílání zabezpečených nabízených oznámení pomocí Azure Notification Hubs
@@ -146,4 +146,4 @@ Chcete-li spustit aplikaci, proveďte následující akce:
 1. Ujistěte se, že **projekt appbackend** je nasazený v Azure. Pokud používáte Visual Studio, spusťte aplikaci webového rozhraní API **projekt appbackend** . Zobrazí se webová stránka ASP.NET.
 2. V části zatmění spusťte aplikaci na fyzickém zařízení s Androidem nebo v emulátoru.
 3. V uživatelském rozhraní aplikace pro Android zadejte uživatelské jméno a heslo. Může se jednat o libovolný řetězec, ale musí se jednat o stejnou hodnotu.
-4. V uživatelském rozhraní aplikace pro Android klikněte na **Přihlásit**se. Pak klikněte na **Odeslat nabízení**.
+4. V uživatelském rozhraní aplikace pro Android klikněte na **Přihlásit** se. Pak klikněte na **Odeslat nabízení**.

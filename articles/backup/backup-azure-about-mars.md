@@ -4,10 +4,10 @@ description: Zjistěte, jak agent MARS podporuje scénáře zálohování.
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87562595"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>O agentovi Microsoft Azure Recovery Services (MARS)
@@ -28,7 +28,7 @@ Agent MARS podporuje následující scénáře zálohování:
 
 - **Zálohování konkrétních souborů a složek v rámci virtuálních počítačů Azure**: primární metodou pro zálohování virtuálních počítačů Azure je použití rozšíření Azure Backup na virtuálním počítači. Rozšíření zálohuje celý virtuální počítač. Pokud chcete zálohovat konkrétní soubory a složky v rámci virtuálního počítače, můžete agenta MARS nainstalovat na virtuální počítače Azure. Další informace najdete v tématu [Architektura: Integrovaná záloha virtuálních počítačů Azure](./backup-architecture.md#architecture-built-in-azure-vm-backup).
 
-- **Offline osazení**: počáteční úplné zálohování dat do Azure obvykle přenáší velké objemy dat a vyžadují větší šířku pásma sítě. Následující zálohy přenesou jenom rozdílové nebo přírůstkové množství dat. Azure Backup zkomprimuje počáteční zálohy. Díky procesu *offline osazení*může Azure Backup použít disky k nahrání komprimovaných počátečních zálohovaných dat offline do Azure. Další informace najdete v tématu [Azure Backup offline zálohování pomocí Azure Data box](offline-backup-azure-data-box.md).
+- **Offline osazení**: počáteční úplné zálohování dat do Azure obvykle přenáší velké objemy dat a vyžadují větší šířku pásma sítě. Následující zálohy přenesou jenom rozdílové nebo přírůstkové množství dat. Azure Backup zkomprimuje počáteční zálohy. Díky procesu *offline osazení* může Azure Backup použít disky k nahrání komprimovaných počátečních zálohovaných dat offline do Azure. Další informace najdete v tématu [Azure Backup offline zálohování pomocí Azure Data box](offline-backup-azure-data-box.md).
 
 ## <a name="restore-scenarios"></a>Scénáře obnovení
 
@@ -48,7 +48,7 @@ Agent MARS podporuje následující scénáře obnovení:
 
 ## <a name="backup-process"></a>Proces zálohování
 
-1. Z Azure Portal vytvořte [trezor Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)a v části **cíle zálohování**vyberte soubory, složky a stav systému.
+1. Z Azure Portal vytvořte [trezor Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)a v části **cíle zálohování** vyberte soubory, složky a stav systému.
 2. [Stáhněte si přihlašovací údaje úložiště Recovery Services a instalátor agenta](./install-mars-agent.md#download-the-mars-agent) do místního počítače.
 
 3. [Nainstalujte agenta](./install-mars-agent.md#install-and-register-the-agent) a použijte stažené přihlašovací údaje trezoru k registraci počítače do trezoru Recovery Services.

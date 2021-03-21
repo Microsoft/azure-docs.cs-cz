@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
 ms.openlocfilehash: b4a63f76cbcd9e98295f5edcf7ff2d06979e6556
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102244661"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Rychlý Start: Klientská knihovna pro tvář pro JavaScript
@@ -29,7 +29,7 @@ Pomocí klientské knihovny obličeje pro JavaScript:
 
 [Referenční dokumentace](/javascript/api/@azure/cognitiveservices-face/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Ukázky](/samples/browse/?products=azure&term=face&languages=javascript)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Nejnovější verze [Node.js](https://nodejs.org/en/)
@@ -90,7 +90,7 @@ endpoint = "<paste-your-face-endpoint-here>"
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny rozhraní .NET pro obličej:
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |[FaceClient](/javascript/api/@azure/cognitiveservices-face/faceclient) | Tato třída reprezentuje vaši autorizaci používat službu obličeje a potřebujete ji pro všechny funkce obličeje. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. |
 |[Rozpoznávání tváře](/javascript/api/@azure/cognitiveservices-face/face)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |

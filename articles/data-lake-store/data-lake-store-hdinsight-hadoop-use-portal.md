@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 666b39e2a600fe6ca004798ed4f8371cdd1dfe5f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96340250"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytváření clusterů HDInsight pomocí Azure Data Lake Storage Gen1 pomocí Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Použití webu Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Použití Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Použití PowerShellu (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Použití PowerShellu (pro další úložiště)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Použít Správce prostředků](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -25,7 +25,7 @@ ms.locfileid: "96340250"
 
 Naučte se, jak pomocí Azure Portal vytvořit cluster HDInsight s Azure Data Lake Storage Gen1 jako výchozí úložiště nebo další úložiště. I když je pro cluster HDInsight volitelné další úložiště, doporučuje se ukládat obchodní data do dalších účtů úložiště.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 
@@ -45,7 +45,7 @@ V této části vytvoříte cluster HDInsight s Data Lake Storage Gen1 jako výc
 
 Pokud chcete vytvořit cluster HDInsight s Data Lake Storage Gen1 jako výchozí účet úložiště:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Pro obecné informace o vytváření clusterů HDInsight postupujte podle pokynů v části [Vytvoření clusterů](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. V okně **úložiště** v části **typ primárního úložiště** vyberte **Azure Data Lake Storage Gen1** a potom zadejte následující informace:
 
@@ -64,7 +64,7 @@ Následující pokyny Vytvoří cluster HDInsight s účtem služby Azure Blob S
 
 Pokud chcete vytvořit cluster HDInsight s Data Lake Storage Gen1 jako další účet úložiště:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Pro obecné informace o vytváření clusterů HDInsight postupujte podle pokynů v části [Vytvoření clusterů](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. V okně **úložiště** v části **typ primárního úložiště** vyberte **Azure Storage** a potom zadejte následující informace:
 

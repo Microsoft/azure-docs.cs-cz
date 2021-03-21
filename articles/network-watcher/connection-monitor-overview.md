@@ -16,10 +16,10 @@ ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
 ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101712313"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Monitorování připojení k síti pomocí monitorování připojení
@@ -287,7 +287,7 @@ V monitorováních připojení vytvořených před prostředím monitorování p
 
 Když použijete metriky, nastavte typ prostředku jako Microsoft. Network/networkWatchers/connectionMonitors.
 
-| Metric | Zobrazované jméno | Jednotka | Typ agregace | Popis | Dimenze |
+| Metric | Zobrazované jméno | Jednotka | Typ agregace | Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent (klasický) | % PROBE selhalo (klasické) | Procento | Průměr | Procento sond monitorování připojení selhalo. | Žádné dimenze |
 | AverageRoundtripMs (klasický) | Průměrná doba odezvy (MS) (klasická) | Milisekund | Průměr | Průměrná doba odezvy sítě pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |

@@ -7,10 +7,10 @@ ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97092376"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Povolení vícefaktorového ověřování Azure pro virtuální počítače s Windows
@@ -24,7 +24,7 @@ Při prvním přihlášení si klient vyžádá vaše uživatelské jméno, hesl
 
 I když je zapamatování přihlašovacích údajů pohodlné, může také provádět nasazení v podnikových scénářích nebo na osobních zařízeních méně zabezpečená. Pokud chcete chránit své uživatele, můžete se ujistit, že klient bude dál podávat dotazy na přihlašovací údaje vícefaktorového ověřování Azure. V tomto článku se dozvíte, jak nakonfigurovat zásady podmíněného přístupu pro virtuální plochu Windows, aby toto nastavení bylo povolené.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je přehled toho, co budete potřebovat k zahájení práce:
 

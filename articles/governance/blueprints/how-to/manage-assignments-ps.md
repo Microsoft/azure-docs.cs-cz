@@ -4,10 +4,10 @@ description: Naučte se spravovat přiřazení podrobných plánů pomocí ofici
 ms.date: 01/27/2021
 ms.topic: how-to
 ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919372"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Správa přiřazení pomocí PowerShellu

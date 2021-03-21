@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98929160"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj topologií v jazyce C# pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
@@ -132,11 +132,11 @@ Vytvoření projektu topologie v jazyce C# v aplikaci Visual Studio:
 
 Po vytvoření projektu byste měli mít následující soubory:
 
-* *Program.cs*: definice topologie pro váš projekt. Ve výchozím nastavení se vytvoří výchozí topologie, která se skládá z jednoho Spout a jednoho šroubu.
+* *Program. cs*: definice topologie pro váš projekt. Ve výchozím nastavení se vytvoří výchozí topologie, která se skládá z jednoho Spout a jednoho šroubu.
 
-* *Spout.cs*: příklad Spout, který generuje náhodná čísla.
+* *Spout. cs*: příklad Spout, který generuje náhodná čísla.
 
-* *Bolt.cs*: příklad typu, který udržuje počet čísel generovaných Spout.
+* *Šroub. cs*: příklad typu, který udržuje počet čísel emitovaných Spout.
 
 Při vytváření projektu NuGet stáhne nejnovější [balíček SCP.NET](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
 
@@ -144,7 +144,7 @@ Při vytváření projektu NuGet stáhne nejnovější [balíček SCP.NET](https
 
 Dále přidejte kód pro Spout, který se používá ke čtení dat v topologii z externího zdroje. Tento Spout náhodně generuje větu do topologie.
 
-1. Otevřete *Spout.cs*. Hlavní součásti pro Spout jsou:
+1. Otevřete *Spout. cs*. Hlavní součásti pro Spout jsou:
 
    * `NextTuple`: Voláno pomocí metody], když má Spout povoleno generovat nové řazené kolekce členů.
 
@@ -216,18 +216,18 @@ Dále přidejte kód pro Spout, který se používá ke čtení dat v topologii 
 
 Nyní v tomto příkladu vytvořte dvě šrouby:
 
-1. Odstraňte existující soubor *Bolt.cs* z projektu.
+1. Odstraňte ze projektu existující soubor *šroub. cs* .
 
-2. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. V seznamu vyberte možnost **přešroubování** a jako název zadejte *Splitter.cs* . V kódu nového souboru změňte název oboru názvů na `WordCount` . Pak tento postup opakujte, abyste vytvořili druhý šroub s názvem *Counter.cs*.
+2. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. V seznamu vyberte možnost **přešroubování** a jako název zadejte *rozdělovač. cs* . V kódu nového souboru změňte název oboru názvů na `WordCount` . Pak tento postup opakujte, abyste vytvořili druhý šroub s názvem *Counter. cs*.
 
-   * *Splitter.cs*: implementuje šroub, který rozdělí věty na jednotlivá slova a vygeneruje nový proud slov.
+   * *Rozdělovač. cs*: implementuje šroub, který rozdělí věty na jednotlivá slova, a vygeneruje nový proud slov.
 
-   * *Counter.cs*: implementuje šroub, který počítá každé slovo, a vygeneruje nový proud slov a počet pro každé slovo.
+   * *Counter. cs*: implementuje šroub, který počítá jednotlivá slova, a vygeneruje nový proud slov a počet pro každé slovo.
 
      > [!NOTE]  
      > Tyto šrouby čtou a zapisují do datových proudů, ale můžete také použít šroub ke komunikaci se zdroji, jako je databáze nebo služba.
 
-3. Otevřete *Splitter.cs*. Ve výchozím nastavení má pouze jednu metodu: `Execute` . `Execute`Metoda je volána, když šroub obdrží řazenou kolekci členů ke zpracování. Tady můžete číst a zpracovávat příchozí řazené kolekce členů a generovat odchozí řazené kolekce členů.
+3. Otevřete *rozdělovač. cs*. Ve výchozím nastavení má pouze jednu metodu: `Execute` . `Execute`Metoda je volána, když šroub obdrží řazenou kolekci členů ke zpracování. Tady můžete číst a zpracovávat příchozí řazené kolekce členů a generovat odchozí řazené kolekce členů.
 
 4. Obsah třídy nahraďte `Splitter` následujícím kódem:
 
@@ -275,7 +275,7 @@ Nyní v tomto příkladu vytvořte dvě šrouby:
     }
     ```
 
-5. Otevřete *Counter.cs* a nahraďte obsah třídy následujícím kódem:
+5. Otevřete *čítač Counter. cs* a nahraďte obsah třídy následujícím kódem:
 
     ```csharp
     private Context ctx;
@@ -572,9 +572,9 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
    > [!NOTE]
    > Nezapomeňte změnit **Typ výstupu** zpátky do **knihovny tříd** před nasazením topologie do clusteru.
 
-1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. Vyberte **Třída** a jako název třídy zadejte *LocalTest.cs* . Nakonec vyberte **Přidat**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**  >  **novou položku**. Vyberte **Třída** a jako název třídy zadejte *LocalTest. cs* . Nakonec vyberte **Přidat**.
 
-1. Otevřete *LocalTest.cs* a přidejte následující `using` příkaz v horní části:
+1. Otevřete *LocalTest. cs* a přidejte následující `using` příkaz v horní části:
 
     ```csharp
     using Microsoft.SCP;
@@ -661,7 +661,7 @@ I když je možné topologii nasadit do clusteru, může být v některých př�
 
     Věnujte si chvilku, abyste si přečetli komentáře ke kódu. Tento kód používá `LocalContext` ke spuštění komponent ve vývojovém prostředí. Ukládá datový proud mezi součástmi do textových souborů na místním disku.
 
-1. Otevřete *program.cs* a do metody přidejte následující kód `Main` :
+1. Otevřete *program. cs* a do metody přidejte následující kód `Main` :
 
     ```csharp
     Console.WriteLine("Starting tests");

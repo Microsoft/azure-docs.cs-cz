@@ -10,10 +10,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
 ms.openlocfilehash: 13e049d3e7e0c87bd0a214a92491e10d652a3619
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100380606"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 > - Vytvoření uživatele instančního objektu ve službě Azure SQL Database
 > - Vytvoření jiného uživatele Azure AD v SQL Database pomocí uživatele instančního objektu služby Azure AD
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Existující [Azure SQL Database](single-database-create-quickstart.md) nebo nasazení služby [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) . Předpokládáme, že pro účely tohoto kurzu máte pracovní SQL Database.
 - Přístup k již existujícímu Azure Active Directory.

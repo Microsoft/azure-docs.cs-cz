@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: 30d8fdf99da7a4854db0985bed6256ecd6f7a366
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420916"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Postupy: Konfigurace výstrah a získání oznámení pomocí zavěšení
@@ -59,7 +59,7 @@ Chcete-li vytvořit Webhook, budete muset přidat následující informace:
 |---------|---------|
 |Koncový bod     | Adresa rozhraní API, která se má volat při aktivaci výstrahy.        |
 |Uživatelské jméno a heslo | Pro ověřování na adresu rozhraní API. Tuto černou položku nechte v případě, že není vyžadováno ověřování.         |
-|Záhlaví     | Vlastní hlavičky v volání rozhraní API.        |
+|Hlavička     | Vlastní hlavičky v volání rozhraní API.        |
 
 :::image type="content" source="../media/alerts/create-web-hook.png" alt-text="okno pro vytvoření webového zavěšení.":::
 
@@ -86,7 +86,7 @@ Pokud chcete vytvořit službu Azure DevOps Hook, budete muset přidat následuj
 ## <a name="add-or-edit-alert-settings"></a>Přidat nebo upravit nastavení výstrah
 
 Přejít na stránku podrobností metriky, kde najdete část **Nastavení výstrah** v levém dolním rohu stránky s podrobnostmi metrik. Obsahuje seznam všech nastavení výstrah, která se vztahují na vybranou konfiguraci zjišťování. Při vytvoření nové konfigurace detekce není k dispozici žádné nastavení výstrahy a nebudou odeslány žádné výstrahy.  
-K úpravě nastavení výstrah můžete použít ikony **Přidat** , **Upravit** a **Odstranit** .
+K úpravě nastavení výstrah můžete použít ikony **Přidat**, **Upravit** a **Odstranit** .
 
 :::image type="content" source="../media/alerts/alert-setting.png" alt-text="Položka nabídky nastavení výstrah":::
 
@@ -94,9 +94,9 @@ Kliknutím na tlačítka **Přidat** nebo **Upravit** zobrazíte okno pro přid�
 
 :::image type="content" source="../media/alerts/edit-alert.png" alt-text="Přidat nebo upravit nastavení výstrah":::
 
-**Název nastavení výstrahy** : název tohoto nastavení výstrahy. Zobrazí se v nadpisu e-mailu s výstrahou.
+**Název nastavení výstrahy**: název tohoto nastavení výstrahy. Zobrazí se v nadpisu e-mailu s výstrahou.
 
-**Zavěšení** : seznam háčků, na které se mají odesílat výstrahy.
+**Zavěšení**: seznam háčků, na které se mají odesílat výstrahy.
 
 Oddíl označený na snímku obrazovky výše je nastavení pro zjišťování konfigurace. Můžete nastavit různá nastavení výstrah pro různé konfigurace detekce. Vyberte cílovou konfiguraci pomocí třetího rozevíracího seznamu v tomto okně. 
 
@@ -106,16 +106,16 @@ Níže jsou uvedené nastavení filtru pro jednu konfiguraci detekce.
 
 **Výstraha pro** má 4 možnosti pro filtrování anomálií:
 
-* **Anomálie ve všech řadách** : všechny anomálie budou zahrnuty do výstrahy.         
-* **Anomálie ve skupině řad** : filtrovat řady podle hodnot dimenzí. Nastavte konkrétní hodnoty pro některé dimenze. Anomálie budou zahrnuty do výstrahy pouze v případě, že řada odpovídá zadané hodnotě.       
-* **Anomálie v oblíbených řadách** : v této výstraze bude obsažena pouze řada označená jako oblíbená.        |
-* **Anomálie v horní části N všech řad** : Tento filtr je určen pro případ, že se o řadě, jejichž hodnota je v horní části n, zajímá. Podíváme se na některá časová razítka a zkontrolujeme, jestli je hodnota řady v tomto časovém razítku v horní části N. Pokud je počet "v horním n" větší než zadané číslo, bude tato anomálie obsažena v upozornění.        |
+* **Anomálie ve všech řadách**: všechny anomálie budou zahrnuty do výstrahy.         
+* **Anomálie ve skupině řad**: filtrovat řady podle hodnot dimenzí. Nastavte konkrétní hodnoty pro některé dimenze. Anomálie budou zahrnuty do výstrahy pouze v případě, že řada odpovídá zadané hodnotě.       
+* **Anomálie v oblíbených řadách**: v této výstraze bude obsažena pouze řada označená jako oblíbená.        |
+* **Anomálie v horní části N všech řad**: Tento filtr je určen pro případ, že se o řadě, jejichž hodnota je v horní části n, zajímá. Podíváme se na některá časová razítka a zkontrolujeme, jestli je hodnota řady v tomto časovém razítku v horní části N. Pokud je počet "v horním n" větší než zadané číslo, bude tato anomálie obsažena v upozornění.        |
 
 **Možnost filtrovat anomálie** je dalším filtrem s následujícími možnostmi:
 
 - **závažnost** : anomálie bude zahrnutá jenom v případě, že závažnost anomálií spadá do zadaného rozsahu.
 - **Připomenout** : dočasně zastavit výstrahy pro anomálie v dalších N bodech (tečka), když se aktivuje v rámci výstrahy.
-    - **typ odložení** : když se nastaví na **řady** , aktivovaná anomálie odsadí jenom svou řadu. V případě **metriky** bude jedna aktivovaná anomálií odložit všechny řady v této metrikě.
+    - **typ odložení** : když se nastaví na **řady**, aktivovaná anomálie odsadí jenom svou řadu. V případě **metriky** bude jedna aktivovaná anomálií odložit všechny řady v této metrikě.
     - **číslo odložení** : počet bodů (period), které se mají znovu připomenout.
     - **resetovat po neúspěšné** : Pokud je vybraná, aktivovaná anomálie se odsadí jenom u dalších n úspěšných anomálií. Pokud jeden z následujících datových bodů není anomálií, odložení bude od tohoto bodu resetováno. Pokud není vybraná, jedna z aktivovaných anomálií bude připomenout další n bodů (tečka), a to i v případě, že po sobě jdoucí datové body neanomálií.
 - **hodnota** (volitelné): filtrovat podle hodnoty. Budou zahrnuty pouze hodnoty bodů, které splňují podmínku, anomálie. Pokud použijete odpovídající hodnotu jiné metriky, názvy dimenzí obou metrik by měly být konzistentní.

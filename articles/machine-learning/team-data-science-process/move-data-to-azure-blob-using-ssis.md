@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9572d612e7ee8e2fd72850ba14447e8449f0f371
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93322007"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do a z Azure Blob Storage pomocí konektorů SSIS
@@ -37,13 +37,13 @@ Diskuzi o normativních scénářích, které používají SSIS k tomu, aby se v
 ## <a name="prerequisites"></a>Předpoklady
 Abyste mohli provádět úkoly popsané v tomto článku, musíte mít předplatné Azure a nastavený účet Azure Storage. Pro nahrání nebo stažení dat budete potřebovat název účtu Azure Storage a klíč účtu.
 
-* Pokud chcete nastavit **předplatné Azure** , přečtěte si [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Pokud chcete nastavit **předplatné Azure**, přečtěte si [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * Pokyny k vytvoření **účtu úložiště** a získání informací o účtu a klíči najdete v tématu [informace o Azure Storagech účtech](../../storage/common/storage-account-create.md).
 
-Pokud chcete používat **konektory SSIS** , musíte si stáhnout:
+Pokud chcete používat **konektory SSIS**, musíte si stáhnout:
 
-* **SQL Server 2014 nebo 2016 Standard (nebo vyšší)** : Install zahrnuje služba SSIS (SQL Server Integration Services).
-* **Balíček funkcí integračních služeb Microsoft SQL Server 2014 nebo 2016 pro Azure** : tyto konektory si můžete stáhnout na stránkách [SQL Server 2014 integrační služby](https://www.microsoft.com/download/details.aspx?id=47366) a [SQL Server služby 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) .
+* **SQL Server 2014 nebo 2016 Standard (nebo vyšší)**: Install zahrnuje služba SSIS (SQL Server Integration Services).
+* **Balíček funkcí integračních služeb Microsoft SQL Server 2014 nebo 2016 pro Azure**: tyto konektory si můžete stáhnout na stránkách [SQL Server 2014 integrační služby](https://www.microsoft.com/download/details.aspx?id=47366) a [SQL Server služby 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) .
 
 > [!NOTE]
 > SSIS se instaluje s SQL Server, ale není součástí verze Express. Informace o tom, jaké aplikace jsou zahrnuté v různých edicích SQL Server, najdete v tématu [SQL Server Editions](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/) .
@@ -64,7 +64,7 @@ K přesunu dat pomocí balíčku funkcí SSIS z místního prostředí do úlož
 
 Parametry, které používá úkol, jsou popsány zde:
 
-| Pole | Popis |
+| Pole | Description |
 | --- | --- |
 | **AzureStorageConnection** |Určuje existujícího Správce připojení Azure Storage nebo vytvoří nový, který odkazuje na účet Azure Storage, který odkazuje na místo, kde jsou hostované soubory objektů BLOB. |
 | **BlobContainer** |Určuje název kontejneru objektů blob, který obsahuje nahrané soubory jako objekty blob. |

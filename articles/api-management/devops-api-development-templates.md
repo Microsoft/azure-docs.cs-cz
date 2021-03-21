@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
 ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96183154"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>CI/CD pro API Management používání šablon Azure Resource Manager
@@ -43,7 +43,7 @@ V tomto příkladu jsou k dispozici dvě prostředí nasazení: *vývoj* a *prod
 
 Klíčem k tomuto navrhovanému přístupu je udržování všech konfigurací API Management v [šablonách Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Organizace by tyto šablony měly uchovat v systému správy zdrojového kódu, jako je třeba Git. Jak je znázorněno na obrázku, obsahuje úložiště vydavatele všechny konfigurace produkčního API Management instance v kolekci šablon:
 
-|Template (Šablona)  |Popis  |
+|Template (Šablona)  |Description  |
 |---------|---------|
 |Šablona služby     | Konfigurace na úrovni služby API Management instance, jako je například cenová úroveň a vlastní domény.         |
 |Sdílené šablony     |  Sdílené prostředky v rámci instance API Management, jako jsou skupiny, produkty a protokolovací nástroje.    |

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
 ms.openlocfilehash: 1e26159c07ca551a78ee2f83a0ca64779c60f7b4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018866"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Kurz: analýza podvodných dat volání pomocí Stream Analytics a vizualizace výsledků v Power BI řídicím panelu
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Otestujte a spusťte úlohu.
 > * Vizualizujte výsledky v Power BI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že jste dokončili následující kroky:
 
@@ -54,7 +54,7 @@ Pomocí následujícího postupu vytvořte centrum událostí a odešlete do ně
 
    |**Nastavení**  |**Navrhovaná hodnota** |**Popis**  |
    |---------|---------|---------|
-   |Název     | asaTutorialEventHub        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
+   |Name     | asaTutorialEventHub        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
    |Předplatné     |   \<Your subscription\>      |   Vyberte předplatné Azure, ve kterém chcete vytvořit centrum událostí.      |
    |Skupina prostředků     |   MyASADemoRG      |  Vyberte **Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet.       |
    |Umístění     |   USA – západ 2      |    Umístění, kde můžete nasadit obor názvů centra událostí.     |
@@ -103,7 +103,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
    * Nastavte hodnotu klíče *EventHubName* na hodnotu EntityPath v připojovacím řetězci.
    * Nastavte hodnotu klíče *Microsoft.ServiceBus.ConnectionString* na připojovací řetězec bez hodnoty EntityPath. Nezapomeňte odebrat středník, který předchází hodnotu EntityPath.
 
-4. Uložte soubor.
+4. Soubor uložte.
 
 5. Dále otevřete příkazové okno a přejděte do složky, do které jste extrahovali aplikaci TelcoGenerator. Potom zadejte následující příkaz:
 
@@ -118,7 +118,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
 
    Po několika sekundách aplikace začne zobrazovat záznamy telefonních hovorů na obrazovce, když je odešle do centra událostí. Data telefonních hovorů obsahují následující pole:
 
-   |**Záznam**  |**Definice**  |
+   |**Záznam**  |**Definition**  |
    |---------|---------|
    |CallrecTime    |  Časové razítko pro počáteční čas volání.       |
    |SwitchNum     |  Telefonní ústředna použitá pro spojení volání. V tomto příkladu jsou přepínače řetězce reprezentující zemi nebo oblast původu (USA, Čína, Spojené království, Německo nebo Austrálie).       |
