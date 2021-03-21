@@ -9,10 +9,10 @@ ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 538d414ce606b944fcea7adbb1c817386e13090e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178571"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
@@ -49,7 +49,7 @@ az webapp up --location westeurope --name <app_name> --html
 ```
 
 <details>
-<summary>Řešení potíží</summary>
+<summary>Poradce při potížích</summary>
 <ul>
 <li>Pokud <code>az</code> příkaz není rozpoznaný, ujistěte se, že máte nainstalované rozhraní příkazového řádku Azure, jak je popsané v tématu <a href="#1-prepare-your-environment">Příprava prostředí</a>.</li>
 <li>Nahraďte <code>&lt;app-name&gt;</code> názvem, který je jedinečný v rámci všech Azure ( <em> platné znaky jsou <code>a-z</code> , <code>0-9</code> a <code>-</code> </em> ). Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.</li>

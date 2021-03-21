@@ -12,17 +12,17 @@ ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
 ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102519618"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Řešení potíží s nasazením místního modelu
 
 Zkuste místní nasazení modelu jako první krok při řešení potíží s nasazením do Azure Container Instances (ACI) nebo Azure Kubernetes Service (AKS).  Použití místní webové služby usnadňuje vystavování a opravy běžných chyb nasazení webové služby Azure Machine Learning Docker.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure** Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 * Option A (**doporučeno**) – místní ladění na Azure Machine Learning výpočetní instanci

@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: cb066ecc1dc11985c0ccb0fa687a15d6b038b9fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8cc4bc6907f83ce062fed82dde17815fc4debd67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321551"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719732"
 ---
 Podívejte se na seznam SKU a informace o cenách níže. 
 
@@ -32,9 +32,8 @@ Podívejte se na seznam SKU a informace o cenách níže.
 | Custom Vision – školení   | `CustomVision.Training`   |
 | Tvář                       | `Face`                    |
 | Rozpoznávání formulářů            | `FormRecognizer`          |
-| Rozpoznávání rukopisu             | `InkRecognizer`           |
 
-#### <a name="search"></a>Search
+#### <a name="search"></a>Hledat
 
 | Služba            | Druh                  |
 |--------------------|-----------------------|
@@ -48,14 +47,13 @@ Podívejte se na seznam SKU a informace o cenách níže.
 
 | Služba            | Druh                 |
 |--------------------|----------------------|
-| Hlasové služby    | `SpeechServices`     |
+| Služby Speech    | `SpeechServices`     |
 | Rozpoznávání řeči | `SpeakerRecognition` |
 
 #### <a name="language"></a>Jazyk
 
 | Služba            | Druh                |
 |--------------------|---------------------|
-| Porozumění formuláři | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
 | Analýza textu     | `TextAnalytics`     |

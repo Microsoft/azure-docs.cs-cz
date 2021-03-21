@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0182f744e038bc8080b9fb96bfdb1eeda16b86c0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017283"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674848"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Správa datových assetů v Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>Úvod
 Azure Data Catalog je navržená pro zjišťování zdrojů dat, abyste mohli snadno zjistit a pochopit zdroje dat, které potřebujete k analýze, a rozhodování. Tyto možnosti zjišťování mají největší dopad, když vy a jiní uživatelé můžete najít a pochopit nejširší škálu dostupných zdrojů dat. U těchto prvků je výchozím chováním Data Catalog, aby všechny registrované zdroje dat byly viditelné a zjistitelné všemi uživateli katalogu.
 

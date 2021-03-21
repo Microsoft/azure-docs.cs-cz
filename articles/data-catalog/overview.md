@@ -6,14 +6,15 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 9b7a5d5ca6cbad897839c8e28c9e3efd1eeabaf0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e128e9f7515e572fc0be4b92ef03d8d98529ac66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68736978"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674899"
 ---
 # <a name="what-is-azure-data-catalog"></a>Co je Azure Data Catalog?
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Azure Data Catalog je plně spravovaná cloudová služba. Umožňuje uživatelům zjistit zdroje dat, které potřebují, a porozumět zdrojům dat, které hledají. Zároveň Data Catalog pomáhá organizacím vytěžit více z jejich stávajících investic.
 

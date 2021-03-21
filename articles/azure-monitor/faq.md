@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 5b9b0c6a0fe08ccff9da59539b926270cd0e1d44
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032850"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606952"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -705,6 +705,10 @@ Kolekce protokolů z kontejnerů v oboru názvů Kube-System je ve výchozím na
 
 Informace o tom, jak upgradovat agenta, najdete v tématu [Správa agentů](containers/container-insights-manage-agent.md).
 
+### <a name="why-are-log-lines-larger-than-16kb-split-into-multiple-records-in-log-analytics"></a>Proč jsou řádky protokolu větší než 16 KB rozdělené do několika záznamů v Log Analytics?
+
+Agent pro zachycení stdout a stderr kontejnerů používá [ovladač protokolování souborů JSON Docker](https://docs.docker.com/config/containers/logging/json-file/) . Tento ovladač protokolování rozdělí řádky protokolu [větší než 16 KB](https://github.com/moby/moby/pull/22982) do více řádků při kopírování z stdout nebo stderr do souboru.
+
 ### <a name="how-do-i-enable-multi-line-logging"></a>Návody povolit víceřádkové protokolování?
 
 V současné době kontejnerové poznatky nepodporují víceřádkové protokolování, ale k dispozici jsou alternativní řešení. Můžete nakonfigurovat všechny služby pro zápis ve formátu JSON a potom Docker/Moby je zapíše jako jeden řádek.
@@ -821,6 +825,29 @@ Pokud jste nakonfigurovali Azure Monitor s pracovním prostorem Log Analytics po
 
 V rámci této podmínky budete po otevření virtuálního počítače vyzváni v možnosti **vyzkoušet nyní** a v levém podokně vyberte **přehledy** , i když už je nainstalovaný na virtuálním počítači.  Nebudete ale mít k možnost, která by normálně probíhala v případě, že tento virtuální počítač nebyl připojen k virtuálnímu počítači Insights. 
 
+## <a name="sql-insights-preview"></a>SQL Insights (Náhled)
+
+### <a name="what-versions-of-sql-server-are-supported"></a>Jaké verze SQL Server podporovány?
+Podporované verze SQL najdete v tématu [podporované verze](insights/sql-insights-overview.md#supported-versions) .
+
+### <a name="what-sql-resource-types-are-supported"></a>Jaké typy prostředků SQL se podporují?
+
+- Azure SQL Database Pouze samostatná databáze, nikoli databáze v Elastický fond.
+- Spravovaná instance Azure SQL 
+- Virtuální počítače Azure SQL ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms), [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) a virtuální počítače azure, na kterých SQL Server nainstalovaná.
+
+### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>Jaké operační systémy pro počítač se systémem SQL Server jsou podporované?
+Libovolný operační systém, který podporuje spuštěnou podporovanou verzi SQL.
+
+### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>Jaký operační systém pro vzdálený monitorovací server je podporován?
+
+Ubuntu 18,04 je v současnosti jediným podporovaným operačním systémem.
+
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Kde budou data monitorování uložená v Log Analytics 
+Všechna data monitorování se ukládají do tabulky **InsightsMetrics** . Sloupec **Origin** má hodnotu *Solutions.AZM.MS/telegraf/SqlInsights*. Sloupec **oboru názvů** obsahuje hodnoty, které začínají na *sqlserver_*.
+
+### <a name="how-often-is-data-collected"></a>Jak často se shromažďují data? 
+Podrobnosti o četnosti shromažďování různých dat najdete v tématu [data shromážděná službou SQL Insights](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) .
 
 ## <a name="next-steps"></a>Další kroky
 Pokud tady na váš dotaz neodpovíte, můžete na následující fóra najít další otázky a odpovědi.

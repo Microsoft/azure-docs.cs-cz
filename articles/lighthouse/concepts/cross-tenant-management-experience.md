@@ -4,10 +4,10 @@ description: Správa delegovaných prostředků v Azure umožňuje prostředí p
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177915"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
@@ -46,7 +46,7 @@ Poskytujeme také rozhraní API, která jsou specifická pro provádění úloh 
 
 ## <a name="enhanced-services-and-scenarios"></a>Rozšířené služby a scénáře
 
-Většinu úkolů a služeb je možné provádět na delegovaných prostředcích ve spravovaných klientech. Níže jsou uvedeny některé z klíčových scénářů, ve kterých může být Správa mezi klienty obzvláště efektivní.
+Většinu úloh a služeb je možné provádět na delegovaných prostředcích napříč spravovanými tenanty. Níže jsou uvedeny některé z klíčových scénářů, ve kterých může být Správa mezi klienty obzvláště efektivní.
 
 [ARC Azure](../../azure-arc/index.yml):
 

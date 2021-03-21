@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490972"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>O dotazovacím jazyku pro digitální vlákna Azure
@@ -59,7 +59,7 @@ Podporovány jsou následující operátory:
 
 Podporují se následující funkce kontroly a přetypování typů:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | `IS_DEFINED` | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . `DateTime`, typy objektů a pole nejsou podporovány. |
 | `IS_OF_MODEL` | Vrátí logickou hodnotu, která označuje, jestli zadaný typ vlákna odpovídá zadanému typu modelu. |
@@ -72,7 +72,7 @@ Podporují se následující funkce kontroly a přetypování typů:
 
 Podporovány jsou následující řetězcové funkce:
 
-| Funkce | Popis |
+| Funkce | Description |
 | -------- | ----------- |
 | `STARTSWITH(x, y)` | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým. |
 | `ENDSWITH(x, y)` | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým. |

@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5ae1bdfeeffdb904ba80ed42919e4f51411871c3
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103016147"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití webhooků Azure k monitorování oznámení úlohy Media Services pomocí .NET
@@ -45,7 +45,7 @@ V tomto článku se dozvíte, jak
 
 Můžete najít Definice různých Media Services .NET Azure Functions (včetně toho, co je uvedeno v tomto článku) [zde](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující:
 
@@ -404,7 +404,7 @@ V této části se zobrazí kód, který přidá oznámení Webhooku k úkolu. M
            </appSettings>
      ```
 
-4. Aktualizujte soubor Program.cs pomocí následujícího kódu:
+4. Aktualizujte soubor program. cs pomocí následujícího kódu:
 
     ```csharp
             using System;

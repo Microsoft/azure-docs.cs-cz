@@ -7,10 +7,10 @@ ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
 ms.openlocfilehash: 83994c1b6e150342a777a079d79d6a594d30c3ff
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041599"
 ---
 # <a name="data-synced-from-your-itsm-product"></a>Data synchronizovaná z produktu ITSM
@@ -34,7 +34,7 @@ ServiceDeskWorkItemType_s = incident
 
 - ServiceDeskConnectionName
 - ID oddělení služeb
-- State
+- Stav
 - Naléhavost
 - Dopad
 - Priorita
@@ -67,7 +67,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Nadpis
 - Typ
 - Kategorie
-- State
+- Stav
 - Eskalace
 - Stav konfliktu
 - Naléhavost
@@ -83,7 +83,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Plánované koncové datum
 - Datum zahájení práce
 - Datum ukončení práce
-- Popis
+- Description
 - Počítač
 
 ## <a name="servicenow-example"></a>Příklad ServiceNow 
@@ -92,7 +92,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | Log Analytics pole | Pole ServiceNow |
 |:--- |:--- |
 | ServiceDeskId_s| Číslo |
-| IncidentState_s | State |
+| IncidentState_s | Stav |
 | Urgency_s |Naléhavost |
 | Impact_s |Dopad|
 | Priority_s | Priorita |
@@ -120,7 +120,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | Title_s|  Krátký popis |
 | Type_s|  Typ |
 | Category_s|  Kategorie |
-| CRState_s|  State|
+| CRState_s|  Stav|
 | Urgency_s|  Naléhavost |
 | Priority_s| Priorita|
 | Risk_s| Riziko|
@@ -131,7 +131,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | PlannedEndDate_t  | Plánované koncové datum |
 | WorkStartDate_t  | Skutečné datum zahájení |
 | WorkEndDate_t | Skutečné datum ukončení|
-| Description_s | Popis |
+| Description_s | Description |
 | Počítač  | Položka konfigurace |
 
 ## <a name="next-steps"></a>Další kroky

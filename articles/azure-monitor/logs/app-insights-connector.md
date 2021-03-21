@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c21ed461280dfa617c852fe6c18c30e5d697b704
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031272"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení pro správu Application Insights Connector (zastaralé)
@@ -41,14 +41,14 @@ Při použití řešení můžete:
 
 Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďována data pro Application Insights Connector agenti. Všechna data, která řešení používá, přichází přímo z Azure.
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporováno | Description |
 | --- | --- | --- |
-| [Agenti systému Windows](./../agents/agent-windows.md) | Ne | Řešení neshromažďuje informace od agentů systému Windows. |
-| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace od agentů systému Linux. |
-| [Skupina pro správu SCOM](../agents/om-agents.md) | Ne | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
-| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Ne | Řešení neumožňuje shromažďování informací z Azure Storage. |
+| [Agenti systému Windows](./../agents/agent-windows.md) | No | Řešení neshromažďuje informace od agentů systému Windows. |
+| [Agenti systému Linux](../vm/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace od agentů systému Linux. |
+| [Skupina pro správu SCOM](../agents/om-agents.md) | No | Řešení neshromažďuje informace od agentů v připojené skupině pro správu systému SCOM. |
+| [Účet úložiště Azure](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | Řešení neumožňuje shromažďování informací z Azure Storage. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud chcete získat přístup k informacím o Application Insights Connector, musíte mít předplatné Azure.
 - Musíte mít minimálně jeden nakonfigurovaný prostředek Application Insights.

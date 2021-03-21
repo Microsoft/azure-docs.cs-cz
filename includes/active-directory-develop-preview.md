@@ -5,11 +5,11 @@ ms.date: 10/22/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: include
-ms.openlocfilehash: 9998fc6a1b37562c55e366c47d404d0668231cfe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ea53e8148744bdb5934c0d1bc853edff005ccc3f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995148"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674511"
 ---
-je ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce můžou být nepodporované nebo mají omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+je ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce můžou být nepodporované nebo mají omezené možnosti. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.

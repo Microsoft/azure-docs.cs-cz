@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4454afbe543f374ebd745af7cd59be1ab745036f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658345"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670883"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Řešení potíží: připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat.
 
@@ -28,7 +28,7 @@ Problém vyřešíte tak, že se nejdřív pokusíte [resetovat bránu Azure VPN
 
 Ověřte typ brány VPN Azure.
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 
 2. Informace o typu najdete na stránce s **přehledem** služby VPN Gateway.
     
@@ -110,5 +110,5 @@ Funkce Perfect Forward Secrecy může způsobit problémy s odpojením. Pokud m�
 
 ## <a name="next-steps"></a>Další kroky
 
--   [Konfigurace připojení typu Site-to-site k virtuální síti](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+-   [Konfigurace připojení typu Site-to-site k virtuální síti](./tutorial-site-to-site-portal.md)
 -   [Konfigurace zásad IPsec/IKE pro připojení VPN typu Site-to-site](vpn-gateway-ipsecikepolicy-rm-powershell.md)

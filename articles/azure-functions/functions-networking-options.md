@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 0267184a921c92c3dc092908a09467ef3a090175
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c35780ae2c4741454685d7d9740a660e965df19e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463030"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606986"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -81,34 +81,15 @@ Informace o tom, jak nastavit integraci virtuální sítě, najdete v tématu [i
 
 ## <a name="connect-to-service-endpoint-secured-resources"></a>Připojit k zabezpečeným prostředkům koncového bodu služby
 
-Pokud chcete zajistit vyšší úroveň zabezpečení, můžete omezit počet služeb Azure na virtuální síť pomocí koncových bodů služby. Abyste mohli získat přístup k prostředku, musíte aplikaci Function App integrovat s touto virtuální sítí. Tato konfigurace je podporovaná ve všech plánech, které podporují integraci virtuálních sítí.
+Pokud chcete zajistit vyšší úroveň zabezpečení, můžete omezit počet služeb Azure na virtuální síť pomocí koncových bodů služby. Abyste mohli získat přístup k prostředku, musíte aplikaci Function App integrovat s touto virtuální sítí. Tato konfigurace je podporovaná ve všech [plánech](functions-scale.md#networking-features) , které podporují integraci virtuálních sítí.
 
 Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť 
 
-Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage. Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu. Tato funkce aktuálně funguje pro všechny skladové položky podporované ve virtuální síti Windows, které zahrnují Standard a Premium, s výjimkou v případě pružných razítek, kde jsou virtuální sítě dostupné jenom pro SKU úrovně Premium. Pokud chcete nastavit funkci s účtem úložiště omezeným na soukromou síť:
+Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage. Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu. 
 
-1. Vytvořte funkci s účtem úložiště bez povolených koncových bodů služby.
-1. Nakonfigurujte funkci pro připojení k vaší virtuální síti.
-1. Vytvořte nebo nakonfigurujte jiný účet úložiště.  Toto je účet úložiště, který se zabezpečuje s koncovými body služby a spojíme naši funkci.
-1. [Vytvořte sdílenou složku](../storage/files/storage-how-to-create-file-share.md#create-file-share) v účtu zabezpečeného úložiště.
-1. Povolte koncové body služby nebo privátní koncový bod pro účet úložiště.  
-    * Pokud používáte připojení privátního koncového bodu, bude účet úložiště potřebovat soukromý koncový bod `file` pro `blob` subprostředky a.  Pokud používáte některé možnosti, jako je Durable Functions, budete potřebovat `queue` a `table` přistupovat přes připojení privátního koncového bodu.
-    * Pokud používáte koncové body služby, povolte pro účty úložiště podsíť vyhrazenou pro vaše aplikace Function App.
-1. Zkopírujte soubor a obsah objektu BLOB z účtu úložiště Function App do zabezpečeného účtu úložiště a sdílené složky.
-1. Zkopírujte připojovací řetězec pro tento účet úložiště.
-1. Aktualizujte **nastavení aplikace** v části **Konfigurace** pro aplikaci Function App na následující:
-    - `AzureWebJobsStorage` do připojovacího řetězce pro zabezpečený účet úložiště.
-    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` do připojovacího řetězce pro zabezpečený účet úložiště.
-    - `WEBSITE_CONTENTSHARE` na název sdílené složky vytvořené v zabezpečeném účtu úložiště.
-    - Vytvořte nové nastavení s názvem `WEBSITE_CONTENTOVERVNET` a hodnotou `1` .
-    - Pokud účet úložiště používá připojení privátního koncového bodu, ověřte nebo přidejte následující nastavení.
-        - `WEBSITE_VNET_ROUTE_ALL` s hodnotou `1` .
-        - `WEBSITE_DNS_SERVER` s hodnotou `168.63.129.16` 
-1. Uložte nastavení aplikace.  
-
-Aplikace Function App se restartuje a bude teď připojená k zabezpečenému účtu úložiště.
+Tato funkce v současné době funguje pro všechny SKU podporované virtuální sítě Windows ve vyhrazeném (App Service) plánu a plánu Premium. Plán spotřeby se nepodporuje. Informace o tom, jak nastavit funkci s účtem úložiště omezeným na privátní síť, najdete v tématu [omezení účtu úložiště na virtuální síť](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network).
 
 ## <a name="use-key-vault-references"></a>Použití odkazů na službu Key Vault
 
@@ -173,6 +154,8 @@ Další informace najdete v dokumentaci k [App Service pro Hybrid Connections](.
 Omezení odchozích IP adres jsou k dispozici v plánu Premium, App Service plánu nebo App Service Environment. Můžete nakonfigurovat odchozí omezení pro virtuální síť, ve které je nasazený App Service Environment.
 
 Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s virtuální sítí, může aplikace ve výchozím nastavení dál provádět odchozí volání do Internetu. Přidáním nastavení aplikace `WEBSITE_VNET_ROUTE_ALL=1` vynutíte odeslání veškerého odchozího provozu do vaší virtuální sítě, kde je možné použít pravidla skupiny zabezpečení sítě k omezení provozu.
+
+Informace o tom, jak řídit odchozí IP adresu pomocí virtuální sítě, najdete v tématu [kurz: řízení Azure Functions odchozí IP adresy pomocí brány NAT služby Azure Virtual Network](functions-how-to-use-nat-gateway.md). 
 
 ## <a name="automation"></a>Automation
 Následující rozhraní API vám umožní programově spravovat integrace místní virtuální sítě:

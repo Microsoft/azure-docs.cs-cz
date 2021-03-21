@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a21b6f5e7d2976bda0efd37577b7cca90469aea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ed101282a69120162d6e3b526693c0a83df45b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686440"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607105"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace chování přihlášení Azure Active Directory pro aplikace pomocí zásad zjišťování domovské sféry
 
@@ -91,7 +91,7 @@ Některé aplikace neposkytují způsob konfigurace vysílané žádosti o ově�
 
 ### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>Zásada zjišťování domovské sféry, která zabraňuje automatické akceleraci
 
-Některé aplikace Microsoftu a SaaS automaticky zahrnují domain_hints (například `https://outlook.com/contoso.com` výsledky žádosti o přihlášení s `&domain_hint=contoso.com` připojením), které můžou rušit zavedení spravovaných přihlašovacích údajů, jako je Fido.  Pomocí [zásad zjišťování domovské sféry](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) můžete v rámci zavedení spravovaných přihlašovacích údajů ignorovat doporučení k doméně z určitých aplikací nebo pro určité domény.  
+Některé aplikace Microsoftu a SaaS automaticky zahrnují domain_hints (například `https://outlook.com/contoso.com` výsledky žádosti o přihlášení s `&domain_hint=contoso.com` připojením), které můžou rušit zavedení spravovaných přihlašovacích údajů, jako je Fido.  Pomocí [zásad zjišťování domovské sféry](/graph/api/resources/homeRealmDiscoveryPolicy) můžete v rámci zavedení spravovaných přihlašovacích údajů ignorovat doporučení k doméně z určitých aplikací nebo pro určité domény.  
 
 ## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Povolit přímé ROPC ověřování federovaných uživatelů pro starší verze aplikací
 
@@ -129,7 +129,7 @@ Následuje příklad definice zásady HRD:
    }
 ```
 
-Typ zásady je "[HomeRealmDiscoveryPolicy](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy)".
+Typ zásady je "[HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy)".
 
 **AccelerateToFederatedDomain** je nepovinný. Pokud má **AccelerateToFederatedDomain** hodnotu false, zásada nemá žádný vliv na automatickou akceleraci. Pokud má **AccelerateToFederatedDomain** hodnotu true a v tenantovi je jenom jedna ověřená a federované doména, budou se uživatelé přihlašovat přímo k federovanému IDP. Pokud má hodnotu true a v tenantovi je víc než jedna ověřená doména, musí se zadat **PreferredDomain** .
 
@@ -169,7 +169,7 @@ Pomocí rutin Azure AD PowerShellu projdeme několik scénářů, mezi které pa
 
 - Seznam aplikací, pro které je nakonfigurovaná zásada
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty služby ve službě Azure AD.
 

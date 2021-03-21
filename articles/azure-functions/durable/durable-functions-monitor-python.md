@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 62b3c9bb1c6fd53d9f11227a9d7e774d56859d04
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102434759"
 ---
 # <a name="monitor-scenario-in-durable-functions---github-issue-monitoring-sample"></a>Scénář monitorování ve Durable Functions – ukázka monitorování problémů na GitHubu
 
 Model monitorování odkazuje na flexibilní opakovaný proces v pracovním postupu – například dotazování do splnění určitých podmínek. Tento článek vysvětluje ukázku, která používá Durable Functions k implementaci monitorování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Dokončení článku rychlý Start](quickstart-python-vscode.md)
 * [Klonovat nebo stáhnout ukázkový projekt z GitHubu](https://github.com/Azure/azure-functions-durable-python/tree/main/samples/)
