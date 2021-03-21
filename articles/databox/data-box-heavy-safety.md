@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021533"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Bezpečné instalace a provozování Azure Data Box Heavy
@@ -67,7 +67,7 @@ Tady jsou ikony, které najdete, když provedete kontrolu bezpečnostních opat�
 * Využijte mechanickou pomoc nebo jinou vhodnou pomoc při přesunu a zvedání vybavení.
 
 
-![Ikona upozornění přetížení ikona riskantní ikony upozornění ikona ](./media/data-box-heavy-safety/warning-icon.png) ![ ](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![ nebezpečí ](./media/data-box-heavy-safety/tip-hazard-icon.png)![ ](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **WARNING!**
+![Ikona upozornění přetížení ikona riskantní ikony upozornění ikona ](./media/data-box-heavy-safety/warning-icon.png) ![ ](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![ nebezpečí ](./media/data-box-heavy-safety/tip-hazard-icon.png)![ ](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) 
 * Data Box Heavy se nedá použít jako tabulka nebo pracovní prostor. Přidání jakéhokoliv typu zatížení může způsobit potenciální nebezpečí, které by mohlo vést k zranění nebo poškození vlastností.
 * Zařízení připojená k racku se nepoužívají jako poličky nebo pracovní prostory. Neumísťujte Data Box Heavy nad vybavení připojená k racku. Přidání jakéhokoliv typu zatížení do rozšířené jednotky připojené k racku může způsobit riziko, které by mohlo vést k poškození, smrti nebo škodám produktu.
 

@@ -12,10 +12,10 @@ ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
 ms.openlocfilehash: a84627b2b426385d21ad72b85780db86e7dd5ee3
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101096068"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesun služby Azure Key Vault do jiného předplatného
@@ -47,7 +47,7 @@ Další informace o Azure Key Vault a Azure Active Directory najdete v tématu
 
 Některé objekty služby (uživatelé a aplikace) jsou vázány na konkrétního tenanta. Pokud přesunete Trezor klíčů do předplatného jiného tenanta, může se stát, že nebudete moct obnovit přístup k určitému instančnímu objektu. Ujistěte se, že v tenantovi existují všechny základní instanční objekty, u kterých přesouváte Trezor klíčů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Přístup na úrovni [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) nebo vyšší pro aktuální předplatné, ve kterém existuje Trezor klíčů. Roli můžete přiřadit pomocí [Azure Portal](../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../role-based-access-control/role-assignments-cli.md)nebo [PowerShellu](../../role-based-access-control/role-assignments-powershell.md).
 * Přístup na úrovni [přispěvatele](../../role-based-access-control/built-in-roles.md#contributor) nebo vyšší pro předplatné, ve kterém chcete Trezor klíčů přesunout. Roli můžete přiřadit pomocí [Azure Portal](../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../role-based-access-control/role-assignments-cli.md)nebo [PowerShellu](../../role-based-access-control/role-assignments-powershell.md).

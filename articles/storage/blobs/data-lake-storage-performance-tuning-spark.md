@@ -10,17 +10,17 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: c99d57ddd86ecff71c35ad6c0f2c2561e279b4b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95912803"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: Spark, HDInsight & Azure Data Lake Storage Gen2
 
 Při ladění výkonu Sparku je potřeba vzít v úvahu počet aplikací, které budou v clusteru spuštěny.  Ve výchozím nastavení můžete spouštět 4 aplikace souběžně na vašem clusteru HDI (Poznámka: výchozí nastavení se může změnit).  Můžete se rozhodnout použít méně aplikací, abyste mohli přepsat výchozí nastavení a používat pro tyto aplikace více clusterů.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](../common/storage-account-create.md).

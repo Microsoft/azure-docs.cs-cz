@@ -10,17 +10,17 @@ ms.collection: linux
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
 ms.openlocfilehash: 533d2881688598430ca05e964595352edf993dff
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101675998"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>Rychlý Start: WildFly na CentOS 8
 
 V tomto rychlém startu se dozvíte, jak nasadit samostatný uzel WildFly virtuálního počítače CentOS 8. Je ideální pro vývoj a testování podnikových aplikací v jazyce Java v Azure. K nasazení tohoto rychlého startu není předplatné aplikačního serveru nutné.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si [účet zdarma vytvořit](https://azure.microsoft.com/pricing/free-trial).
 

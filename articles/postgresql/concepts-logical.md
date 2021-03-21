@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.openlocfilehash: 0ea58050c5dc952392df56b4fb556a0998eef165
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96938898"
 ---
 # <a name="logical-decoding"></a>Logické dekódování
@@ -82,7 +82,7 @@ V následujícím příkladu používáme rozhraní SQL s modulem plug-in wal2js
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. Vydejte příkazy SQL. Příklad:
+2. Vydejte příkazy SQL. Například:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

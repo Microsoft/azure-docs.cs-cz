@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak sledovat náklady na 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 6a2a9bef9e54ef7deda123aad34cf0c576fd158f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98892333"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Sledovat náklady spojené s testovacím prostředím v Azure DevTest Labs
@@ -28,7 +28,7 @@ Chcete-li zobrazit graf trendu odhadovaných nákladů měsíčně, postupujte p
 
     **Odhadovaná hodnota nákladů** je aktuální odhadované náklady v kalendářním měsíci. Předpokládané **náklady** jsou odhadované náklady na celý aktuální kalendářní měsíc, vypočítané pomocí nákladů testovacího prostředí za předchozích pět dnů.
 
-    Náklady se zaokrouhlují na nejbližší celé číslo. Příklad: 
+    Náklady se zaokrouhlují na nejbližší celé číslo. Například: 
 
    * 5,01 zaokrouhlí na 6 
    * 5,50 zaokrouhlí na 6

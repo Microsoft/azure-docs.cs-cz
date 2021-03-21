@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017164"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Vytvoření a Správa balíčku pro podporu pro řady StorSimple 8000
@@ -78,7 +78,7 @@ Pomocí rutiny Export-HcsSupportPackage můžete použít následující paramet
 Po vygenerování balíčku pro podporu může být nutné upravit balíček pro odebrání citlivých informací. To může zahrnovat názvy svazků, IP adresy zařízení a názvy záloh ze souborů protokolu.
 
 > [!IMPORTANT]
-> Balíček podpory, který byl vygenerován prostřednictvím Windows PowerShell pro StorSimple, lze upravit pouze. Balíček vytvořený v Azure Portal nelze upravovat pomocí služby StorSimple Device Manager.
+> Balíček podpory, který byl vygenerován prostřednictvím Windows PowerShell pro StorSimple, lze upravit pouze. Balíček vytvořený v Azure Portal nelze upravovat pomocí služby StorSimple Správce zařízení.
 
 Chcete-li upravit balíček podpory před tím, než ho nahrajete na podpora Microsoftu lokalitu, nejprve dešifrujte balíček podpory, upravte soubory a pak ho znovu zašifrujte. Proveďte následující kroky.
 
@@ -147,5 +147,5 @@ PS C:\WINDOWS\system32>
 
 * Informace o [informacích shromažďovaných v balíčku pro podporu](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
 * Naučte se [používat balíčky podpory a protokoly zařízení k řešení potíží s nasazením zařízení](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).
-* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Naučte se [používat službu StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

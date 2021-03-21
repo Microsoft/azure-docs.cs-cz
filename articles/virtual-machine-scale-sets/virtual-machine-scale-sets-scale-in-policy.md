@@ -11,10 +11,10 @@ ms.date: 02/26/2020
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
 ms.openlocfilehash: 9ca6310705d54d563aae746ab2dbfe6cb412e6a9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747792"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Použití vlastních zásad škálování v rámci Azure Virtual Machine Scale Sets
@@ -53,11 +53,11 @@ V modelu sady škálování virtuálního počítače je definována zásada šk
 
 Zásadu škálování na úrovni lze definovat v modelu sady škálování virtuálních počítačů následujícími způsoby:
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
  
 Následující kroky definují zásadu škálování při vytváření nové sady škálování. 
  
-1. Přejít na **Virtual Machine Scale Sets** .
+1. Přejít na **Virtual Machine Scale Sets**.
 1. Vyberte **+ Přidat** a vytvořte novou sadu škálování.
 1. Přejít na kartu **škálování** . 
 1. Vyhledejte část **zásady škálování na úrovni** .
@@ -83,7 +83,7 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 ```
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Vytvořte skupinu prostředků a pak vytvořte novou sadu škálování se zásadou škálování nastavenou jako *OldestVM* .
+Vytvořte skupinu prostředků a pak vytvořte novou sadu škálování se zásadou škálování nastavenou jako *OldestVM*.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
@@ -96,7 +96,7 @@ New-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Následující příklad přidá zásadu škálování při vytváření nové sady škálování. Nejdřív vytvořte skupinu prostředků a pak vytvořte novou sadu škálování se zásadou škálování na *OldestVM* . 
+Následující příklad přidá zásadu škálování při vytváření nové sady škálování. Nejdřív vytvořte skupinu prostředků a pak vytvořte novou sadu škálování se zásadou škálování na *OldestVM*. 
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -131,14 +131,14 @@ Stejný postup platí při použití ' NewestVM ' v výše popsané zásadě šk
 
 Změna zásad škálování je stejná jako při použití zásady škálování na více míst. Například pokud ve výše uvedeném příkladu chcete změnit zásadu z ' OldestVM ' na ' NewestVM ', můžete tak učinit:
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Zásady škálování existující sady škálování můžete upravit pomocí Azure Portal. 
  
 1. V existující sadě škálování virtuálního počítače vyberte v nabídce vlevo možnost **škálování** .
 1. Vyberte kartu **zásady škálování** na více míst.
 1. V rozevíracím seznamu vyberte zásadu škálování.
-1. Po dokončení vyberte **Uložit** . 
+1. Po dokončení vyberte **Uložit**. 
 
 ### <a name="using-api"></a>Pomocí rozhraní API
 
@@ -211,12 +211,12 @@ Níže uvedené příklady ukazují, jak bude sada škálování virtuálních p
 | Událost                 | ID instancí v zóna 1  | ID instancí v zóna 2  | ID instancí v zóna 3  | Výběr se škálováním na více míst                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Počáteční               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
-| Horizontální navýšení kapacity              | 3, 4, 5, 10            | **_2_* _, 6, 9, 11      | 1, 7, 8                | Vyberte si mezi Zóna 1 a 2, a to i v případě, že Zóna 3 má nejstarší virtuální počítač. Odstraňte VM2 z Zóna 2, protože se jedná o nejstarší virtuální počítač v této zóně.   |
-| Horizontální navýšení kapacity              | _*_3_*_ , 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Vyberte Zóna 1, i když má Zóna 3 nejstarší virtuální počítač. Odstraňte VM3 z Zóna 1, protože se jedná o nejstarší virtuální počítač v této zóně.                  |
-| Horizontální navýšení kapacity              | 4, 5, 10               | 6, 9, 11               | _*_1_*_ , 7, 8          | Zóny jsou vyvážené. Odstraní VM1 v Zóna 3, protože se jedná o nejstarší virtuální počítač v sadě škálování.                                               |
-| Horizontální navýšení kapacity              | _*_4_*_ , 5, 10         | 6, 9, 11               | 7, 8                   | Vyberte si mezi Zóna 1 a Zóna 2. Odstraňte VM4 v Zóna 1, protože se jedná o nejstarší virtuální počítač v obou zónách.                              |
-| Horizontální navýšení kapacity              | 5, 10                  | _*_6_*_ , 9, 11         | 7, 8                   | Vyberte Zóna 2, i když má Zóna 1 nejstarší virtuální počítač. Odstraní VM6 v Zóna 1, protože se jedná o nejstarší virtuální počítač v této zóně.                    |
-| Horizontální navýšení kapacity              | _*_5_*_ , 10            | 9, 11                  | 7, 8                   | Zóny jsou vyvážené. Odstraní VM5 v Zóna 1, protože se jedná o nejstarší virtuální počítač v sadě škálování.                                                |
+| Horizontální navýšení kapacity              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Vyberte si mezi Zóna 1 a 2, a to i v případě, že Zóna 3 má nejstarší virtuální počítač. Odstraňte VM2 z Zóna 2, protože se jedná o nejstarší virtuální počítač v této zóně.   |
+| Horizontální navýšení kapacity              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Vyberte Zóna 1, i když má Zóna 3 nejstarší virtuální počítač. Odstraňte VM3 z Zóna 1, protože se jedná o nejstarší virtuální počítač v této zóně.                  |
+| Horizontální navýšení kapacity              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Zóny jsou vyvážené. Odstraní VM1 v Zóna 3, protože se jedná o nejstarší virtuální počítač v sadě škálování.                                               |
+| Horizontální navýšení kapacity              | ***4***, 5, 10         | 6, 9, 11               | 7, 8                   | Vyberte si mezi Zóna 1 a Zóna 2. Odstraňte VM4 v Zóna 1, protože se jedná o nejstarší virtuální počítač v obou zónách.                              |
+| Horizontální navýšení kapacity              | 5, 10                  | ***6***, 9, 11         | 7, 8                   | Vyberte Zóna 2, i když má Zóna 1 nejstarší virtuální počítač. Odstraní VM6 v Zóna 1, protože se jedná o nejstarší virtuální počítač v této zóně.                    |
+| Horizontální navýšení kapacity              | ***5***, 10            | 9, 11                  | 7, 8                   | Zóny jsou vyvážené. Odstraní VM5 v Zóna 1, protože se jedná o nejstarší virtuální počítač v sadě škálování.                                                |
 
 U virtuálních počítačů, které nejsou v rozsahu, vybere zásada nejstarší virtuální počítač v rámci sady škálování pro odstranění. Pro odstranění se přeskočí kterýkoli chráněný virtuální počítač.
 
@@ -225,12 +225,12 @@ U virtuálních počítačů, které nejsou v rozsahu, vybere zásada nejstarš�
 | Událost                 | ID instancí v zóna 1  | ID instancí v zóna 2  | ID instancí v zóna 3  | Výběr se škálováním na více míst                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Počáteční               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
-| Horizontální navýšení kapacity              | 3, 4, 5, 10            | 2, 6, 9, _*_11_*_      | 1, 7, 8                | Vyberte si mezi Zóna 1 a 2. Odstraňte VM11 z Zóna 2, protože se jedná o nejnovější virtuální počítač v obou zónách.                                |
-| Horizontální navýšení kapacity              | 3, 4, 5, _*_10_*_      | 2, 6, 9                | 1, 7, 8                | Vyberte Zóna 1, protože mají více virtuálních počítačů než ostatní dvě zóny. Odstraní VM10 z Zóna 1, protože to je nejnovější virtuální počítač v této zóně.          |
-| Horizontální navýšení kapacity              | 3, 4, 5                | 2, 6, _*_9_*_          | 1, 7, 8                | Zóny jsou vyvážené. Odstraní VM9 v Zóna 2, protože to je nejnovější virtuální počítač v sadě škálování.                                                |
-| Horizontální navýšení kapacity              | 3, 4, 5                | 2, 6                   | 1, 7, _*_8_*_          | Vyberte si mezi Zóna 1 a Zóna 3. Odstraní VM8 v Zóna 3, protože se jedná o nejnovější virtuální počítač v této zóně.                                      |
-| Horizontální navýšení kapacity              | 3, 4, _*_5_*_          | 2, 6                   | 1, 7                   | Vyberte Zóna 1, i když má Zóna 3 nejnovější virtuální počítač. Odstraní VM5 v Zóna 1, protože se jedná o nejnovější virtuální počítač v této zóně.                    |
-| Horizontální navýšení kapacity              | 3, 4                   | 2, 6                   | 1, _ *_7_**             | Zóny jsou vyvážené. Odstraní VM7 v Zóna 3, protože to je nejnovější virtuální počítač v sadě škálování.                                                |
+| Horizontální navýšení kapacity              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Vyberte si mezi Zóna 1 a 2. Odstraňte VM11 z Zóna 2, protože se jedná o nejnovější virtuální počítač v obou zónách.                                |
+| Horizontální navýšení kapacity              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Vyberte Zóna 1, protože mají více virtuálních počítačů než ostatní dvě zóny. Odstraní VM10 z Zóna 1, protože to je nejnovější virtuální počítač v této zóně.          |
+| Horizontální navýšení kapacity              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Zóny jsou vyvážené. Odstraní VM9 v Zóna 2, protože to je nejnovější virtuální počítač v sadě škálování.                                                |
+| Horizontální navýšení kapacity              | 3, 4, 5                | 2, 6                   | 1, 7, ***8***          | Vyberte si mezi Zóna 1 a Zóna 3. Odstraní VM8 v Zóna 3, protože se jedná o nejnovější virtuální počítač v této zóně.                                      |
+| Horizontální navýšení kapacity              | 3, 4, ***5***          | 2, 6                   | 1, 7                   | Vyberte Zóna 1, i když má Zóna 3 nejnovější virtuální počítač. Odstraní VM5 v Zóna 1, protože se jedná o nejnovější virtuální počítač v této zóně.                    |
+| Horizontální navýšení kapacity              | 3, 4                   | 2, 6                   | 1, ***7***             | Zóny jsou vyvážené. Odstraní VM7 v Zóna 3, protože to je nejnovější virtuální počítač v sadě škálování.                                                |
 
 U virtuálních počítačů, které nejsou ve více oblastech, vybírá zásada nejnovější virtuální počítač v rámci sady škálování pro odstranění. Pro odstranění se přeskočí kterýkoli chráněný virtuální počítač. 
 

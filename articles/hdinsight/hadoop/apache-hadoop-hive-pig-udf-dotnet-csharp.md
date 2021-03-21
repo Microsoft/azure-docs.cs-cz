@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
 ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946553"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Použití uživatelem definovaných funkcí jazyka C# s Apache Hive a Apache prasetem v Apache Hadoop ve službě HDInsight
@@ -21,7 +21,7 @@ Naučte se používat uživatelsky definované funkce jazyka C# s [Apache Hive](
 
 Podregistr i prase mohou předat data externím aplikacím ke zpracování. Tento proces se označuje jako _streamování_. Při použití aplikace .NET se data předávají do aplikace na vstupu a aplikace vrátí výsledky na STDOUT. Chcete-li číst a zapisovat ze standardního vstupu a STDOUT, můžete použít `Console.ReadLine()` a `Console.WriteLine()` z konzolové aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Znalost psaní a sestavování kódu v jazyce C#, který cílí na .NET Framework 4,5.
 
@@ -57,7 +57,7 @@ Vytvoření projektu v jazyce C# pro Apache Hive systému souborů UDF:
 
 4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *HiveCSharp* a přejděte do **umístění** , do kterého chcete nový projekt uložit, nebo ho vytvořte. Potom vyberte **Vytvořit**.
 
-5. V integrovaném vývojovém prostředí sady Visual Studio nahraďte obsah *program.cs* následujícím kódem:
+5. V integrovaném vývojovém prostředí sady Visual Studio nahraďte obsah *programu. cs* následujícím kódem:
 
     ```csharp
     using System;
@@ -124,7 +124,7 @@ Vytvoření projektu v jazyce C# pro Apache Hive systému souborů UDF:
 
 4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *PigUDF* a přejděte na nebo vytvořte **umístění** , do kterého chcete nový projekt uložit. Potom vyberte **Vytvořit**.
 
-5. V integrovaném vývojovém prostředí sady Visual Studio nahraďte obsah *program.cs* následujícím kódem:
+5. V integrovaném vývojovém prostředí sady Visual Studio nahraďte obsah *programu. cs* následujícím kódem:
 
     ```csharp
     using System;

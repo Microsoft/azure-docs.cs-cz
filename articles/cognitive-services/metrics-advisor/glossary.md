@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: 6c461983053a145dfda58b9e3d26b39db0c339e5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893416"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>Glosář Poradce pro metriky běžných slovníků a konceptů
@@ -31,9 +31,9 @@ Datový kanál je metrika, kterou Poradce pro metriky ingestuje ze zdroje dat, j
 * nula nebo více dimenzí
 * jedna nebo více měr. 
 
-## <a name="metric"></a>Metrika
+## <a name="metric"></a>Metric
 
-Metrika je kvantifikovaná míra, která se používá k monitorování a vyhodnocení stavu konkrétního obchodního procesu. Může se jednat o kombinaci více hodnot časových řad rozdělených do dimenzí. Například metrika *stavu webu* může obsahovat rozměry *počtu uživatelů* a *trhu en-US* .
+Metrika je kvantifikovaná míra, která se používá k monitorování a vyhodnocení stavu konkrétního obchodního procesu. Může se jednat o kombinaci více hodnot časových řad rozdělených do dimenzí. Například metrika *stavu webu* může obsahovat rozměry *počtu uživatelů* a *trhu en-US*.
 
 ## <a name="dimension"></a>Dimenze
 
@@ -139,29 +139,29 @@ Poradce metrik nabízí několik [metod detekce](how-tos/configure-metrics.md#an
 
 Detekce anomálií s využitím více algoritmů strojového učení.
 
-**Citlivost** : číselnou hodnotu pro úpravu tolerance detekce anomálií. Vizuálně, čím větší je hodnota, tím užší je horní a dolní hranice kolem časové řady.
+**Citlivost**: číselnou hodnotu pro úpravu tolerance detekce anomálií. Vizuálně, čím větší je hodnota, tím užší je horní a dolní hranice kolem časové řady.
 
 ### <a name="hard-threshold"></a>Tvrdý práh
 
 Hodnoty mimo horní nebo dolní meze jsou anomálie.
 
-**Minimum** : dolní mez
+**Minimum**: dolní mez
 
-**Max** : horní mez
+**Max**: horní mez
 
 ### <a name="change-threshold"></a>Změnit prahovou hodnotu
 
 Použijte hodnotu předchozí bod a určete, zda je tento bod anomálií.
 
-**Změna procenta** : v porovnání s předchozím bodem je aktuální bod anomálií, pokud je procentuální hodnota změny větší než tento parametr.
+**Změna procenta**: v porovnání s předchozím bodem je aktuální bod anomálií, pokud je procentuální hodnota změny větší než tento parametr.
 
-**Změnit přes body** : kolik bodů se má prohledat zpátky.
+**Změnit přes body**: kolik bodů se má prohledat zpátky.
 
 ### <a name="common-parameters"></a>Společné parametry
 
-**Směr** : bod je anomálie jenom v případě, že se odchylka vyskytuje ve směru *nahoru* , *dolů* nebo v *obou* .
+**Směr**: bod je anomálie jenom v případě, že se odchylka vyskytuje ve směru *nahoru*, *dolů* nebo v *obou*.
 
-Nejedná se o **platnou anomálii, dokud** : datový bod je pouze anomálie v případě, že zadané procento předchozích bodů se také anomálií.
+Nejedná se o **platnou anomálii, dokud**: datový bod je pouze anomálie v případě, že zadané procento předchozích bodů se také anomálií.
 
 ## <a name="alert-settings"></a>Nastavení výstrah
 
@@ -173,17 +173,17 @@ Můžete také vytvořit výstrahu napříč metrikami. Například výstraha, k
 
 Rozsah výstrahy odkazuje na obor, na který se výstraha vztahuje. Nabízejí se čtyři možnosti:
 
-**Anomálie všech řad** : výstrahy se aktivují pro anomálie ve všech řadách v rámci metriky.
+**Anomálie všech řad**: výstrahy se aktivují pro anomálie ve všech řadách v rámci metriky.
 
-**Anomálie ve skupině řady** : výstrahy se aktivují jenom pro anomálie v konkrétních dimenzích skupiny řad. Počet určených rozměrů by měl být menší než celkové číslo dimenze.
+**Anomálie ve skupině řady**: výstrahy se aktivují jenom pro anomálie v konkrétních dimenzích skupiny řad. Počet určených rozměrů by měl být menší než celkové číslo dimenze.
 
-**Anomálie v oblíbených řadách** : výstrahy se aktivují jenom pro anomálie, které se přidají jako oblíbené položky. Můžete zvolit skupinu řad jako oblíbenou položku pro každou konfiguraci zjišťování.
+**Anomálie v oblíbených řadách**: výstrahy se aktivují jenom pro anomálie, které se přidají jako oblíbené položky. Můžete zvolit skupinu řad jako oblíbenou položku pro každou konfiguraci zjišťování.
 
-**Anomálie v horní části N všech řad** : výstrahy se aktivují jenom pro anomálie v horních n řadách. Můžete nastavit parametry pro určení počtu časových razítek, která se mají vzít v úvahu, a kolik anomálií musí být v nich pro odeslání výstrahy.
+**Anomálie v horní části N všech řad**: výstrahy se aktivují jenom pro anomálie v horních n řadách. Můžete nastavit parametry pro určení počtu časových razítek, která se mají vzít v úvahu, a kolik anomálií musí být v nich pro odeslání výstrahy.
 
 ### <a name="severity"></a>Závažnost
 
-Závažnost je taková, kterou funkce Advisor používá k popisu závažnosti incidentu, včetně *vysokého* , *středního* a *nízkého* výkonu.
+Závažnost je taková, kterou funkce Advisor používá k popisu závažnosti incidentu, včetně *vysokého*, *středního* a *nízkého* výkonu.
 
 V současné době poradce metrik používá následující faktory pro měření závažnosti výstrahy:
 1. Poměr hodnot a množství anomálií v metrikě.
@@ -200,7 +200,7 @@ Chování při odložení lze nastavit na úrovni metrik nebo na úrovni řady.
 
 ### <a name="ingestion-time-offset"></a>Časový posun příjmu
 
-Ve výchozím nastavení se data ingestují podle členitosti (například *denně* ). Pomocí kladného celého čísla můžete zpozdit přijímání dat zadanou hodnotou. Pomocí záporného čísla můžete posunout příjem hodnoty určenou hodnotou.
+Ve výchozím nastavení se data ingestují podle členitosti (například *denně*). Pomocí kladného celého čísla můžete zpozdit přijímání dat zadanou hodnotou. Pomocí záporného čísla můžete posunout příjem hodnoty určenou hodnotou.
 
 ### <a name="max-ingestion-per-minute"></a>Maximální příjem dat za minutu
 
@@ -238,7 +238,7 @@ Pokud je tato možnost nastavena na hodnotu nula, každé časové razítko, *kt
 
 ## <a name="data-feed-permissions"></a>Oprávnění datového kanálu
 
-K dispozici jsou dvě role pro správu oprávnění datového kanálu: *správce* a *prohlížeč* . 
+K dispozici jsou dvě role pro správu oprávnění datového kanálu: *správce* a *prohlížeč*. 
 
 * *Správce* má úplnou kontrolu nad datovým kanálem a metrikami, které jsou v něm obsažené. Můžou aktivovat, pozastavit, odstranit datový kanál a dělat aktualizace kanálů a konfigurací. *Správce* je obvykle vlastníkem metrik.
 

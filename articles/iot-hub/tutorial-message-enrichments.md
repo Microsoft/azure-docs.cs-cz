@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199777"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Kurz: použití rozšíření zpráv Azure IoT Hub
@@ -36,7 +36,7 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 > * Spusťte aplikaci, která simuluje zařízení IoT odesílající zprávy do centra.
 > * Zobrazte výsledky a ověřte, že rozšíření zprávy fungují podle očekávání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -77,7 +77,7 @@ Pokud jste to ještě neudělali, otevřete [okno Azure Cloud Shell](https://she
 
 Tady jsou zdroje vytvořené skriptem. *Obohaceno* znamená, že prostředek je pro zprávy s obohacením. *Původní* znamená, že prostředek je pro zprávy, které nejsou obohaceny.
 
-| Název | Hodnota |
+| Name | Hodnota |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | název kontejneru | původně  |
@@ -279,7 +279,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Vytvoření a konfigurace pomocí šablony Správce prostředků
 Šablonu Správce prostředků můžete použít k vytvoření a konfiguraci prostředků, směrování zpráv a rozšíření zpráv.
 
-1. Přihlaste se k portálu Azure. Výběrem **+ vytvořit prostředek zobrazíte** vyhledávací pole. Zadejte *nasazení šablony* a vyhledejte ho. V podokně výsledků vyberte možnost **template Deployment (nasadit pomocí vlastní šablony)**.
+1. Přihlaste se k webu Azure Portal. Výběrem **+ vytvořit prostředek zobrazíte** vyhledávací pole. Zadejte *nasazení šablony* a vyhledejte ho. V podokně výsledků vyberte možnost **template Deployment (nasadit pomocí vlastní šablony)**.
 
    ![Template deployment v Azure Portal](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -297,7 +297,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 
    Tady jsou zdroje vytvořené pomocí načtení šablony. **Obohaceno** znamená, že prostředek je pro zprávy s obohacením. **Původní** znamená, že prostředek je pro zprávy, které nejsou obohaceny. Jedná se o stejné hodnoty, které se používají ve skriptu rozhraní příkazového řádku Azure CLI.
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | název kontejneru | původně  |
@@ -336,7 +336,7 @@ Teď, když jsou pro koncový bod nakonfigurované rozšíření zpráv, spusťt
 
 Aplikace simulovaného zařízení je jedním z aplikací při stažení. Aplikace odesílá zprávy pro každou z různých metod směrování zpráv v [kurzu směrování](tutorial-routing.md), který zahrnuje Azure Storage.
 
-Dvojím kliknutím na soubor řešení **IoT_SimulatedDevice. sln** otevřete kód v aplikaci Visual Studio a pak otevřete **program.cs**. Nahraďte název služby IoT Hub pro značku `{your hub name}` . Formát názvu hostitele služby IoT Hub je **{název vašeho centra}. Azure-Devices.NET**. V tomto kurzu se název hostitele centra ContosoTestHubMsgEn.azure-devices.net. Potom nahraďte klíč zařízení, který jste předtím uložili, když jste spustili skript, který vytvoří prostředky pro značku `{your device key}` .
+Dvojím kliknutím na soubor řešení **IoT_SimulatedDevice. sln** otevřete kód v aplikaci Visual Studio a pak otevřete **program. cs**. Nahraďte název služby IoT Hub pro značku `{your hub name}` . Formát názvu hostitele služby IoT Hub je **{název vašeho centra}. Azure-Devices.NET**. V tomto kurzu se název hostitele centra ContosoTestHubMsgEn.azure-devices.net. Potom nahraďte klíč zařízení, který jste předtím uložili, když jste spustili skript, který vytvoří prostředky pro značku `{your device key}` .
 
 Pokud nemáte klíč zařízení, můžete ho načíst z portálu. Po přihlášení klikněte na **skupiny prostředků**, vyberte svoji skupinu prostředků a potom vyberte Centrum IoT. Podívejte se na zařízení **IoT** pro vaše testovací zařízení a vyberte své zařízení. Vyberte ikonu kopírování vedle **primárního klíče** a zkopírujte ji do schránky.
 

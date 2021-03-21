@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779318"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analýza statistik využití pomocí pokročilých sestav HTTP služby Azure CDN
@@ -33,7 +33,7 @@ Tento dokument vysvětluje rozšířené vytváření sestav protokolu HTTP v Mi
     ![Tlačítko Spravovat okno profilu CDN](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     Otevře se portál pro správu CDN.
-2. Najeďte myší na kartu **Analýza** a potom najeďte myší na rozšířený informační rámeček **sestav http** .  Klikněte na **Rozsáhlá platforma http** .
+2. Najeďte myší na kartu **Analýza** a potom najeďte myší na rozšířený informační rámeček **sestav http** .  Klikněte na **Rozsáhlá platforma http**.
    
     ![Portál pro správu CDN – nabídka pokročilých sestav](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
@@ -48,7 +48,7 @@ Podrobné informace o provozu a šířce pásma pro jednotlivé oblasti jsou k d
 
 Pro každý typ geografické sestavy založené na mapě je níže uveden stručný popis.
 
-| Report Name | Popis |
+| Report Name | Description |
 | --- | --- |
 | Mapa světa |Tato sestava vám umožní zobrazit celosvětovou poptávku pro obsah CDN. Každá země nebo oblast je Barevně odlišená na mapě světa, aby označovala procento přístupů, které pocházejí z dané oblasti. |
 | Mapa USA |Tato sestava vám umožní zobrazit v USA požadavek na obsah CDN. Každý stav je na této mapě barevně odlišený, aby označoval procento přístupů, které pocházejí z dané oblasti. |
@@ -71,7 +71,7 @@ Data, která byla použita k vygenerování pruhového grafu, lze zobrazit pod n
 
 Stručný popis je k dispozici pro oba typy sestav níže.
 
-| Report Name | Popis |
+| Report Name | Description |
 | --- | --- |
 | Hlavní města |Tato sestava řadí města podle počtu přístupů, které pocházejí z dané oblasti. |
 | Hlavní země |Tato sestava řadí země nebo oblasti podle počtu přístupů, které pocházejí z dané země nebo oblasti. |

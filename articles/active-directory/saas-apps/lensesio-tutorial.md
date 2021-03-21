@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458604"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k portálu DataOps pro Lenses.io
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat portál [lenses.IO](https://lenses.io/
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure AD](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -50,10 +50,10 @@ Pokud chcete nakonfigurovat integraci Lenses.io do služby Azure AD, přidejte L
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém podokně vyberte službu **Azure Active Directory** .
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Vyberte **Nová aplikace**.
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **lenses.IO** .
-1. Z panelu výsledků vyberte **lenses.IO**a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. Z panelu výsledků vyberte **lenses.IO** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Lenses.io
 
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte je pomocí skutečné přihlašovací adresy URL, adresy URL odpovědi a identifikátoru základní adresy URL vaší instance portálu čočky. Další informace najdete v [dokumentaci k LENSES.IO SSO](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0) .
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** přejít do části **podpisový certifikát SAML** . Najděte **federační metadata XML**a potom vyberte **Stáhnout** a stáhněte a uložte certifikát na svém počítači.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** přejít do části **podpisový certifikát SAML** . Najděte **federační metadata XML** a potom vyberte **Stáhnout** a stáhněte a uložte certifikát na svém počítači.
 
     ![Snímek obrazovky, který zobrazuje odkaz na stažení certifikátu.](common/metadataxml.png)
 
@@ -103,7 +103,7 @@ Můžete zjistit, jak rozptylová skla používá mapování členství ve skupi
 
 **Chcete-li vytvořit testovacího uživatele:**
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel**.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **název** zadejte **B. Simon**.  
@@ -113,9 +113,9 @@ Můžete zjistit, jak rozptylová skla používá mapování členství ve skupi
 
 **Vytvoření skupiny:**
 
-1. Přejít na **Azure Active Directory**a pak vyberte **skupiny**.
+1. Přejít na **Azure Active Directory** a pak vyberte **skupiny**.
 1. V horní části obrazovky vyberte možnost **Nová skupina**.
-1. Ve **vlastnostech skupiny**proveďte tyto kroky:
+1. Ve **vlastnostech skupiny** proveďte tyto kroky:
    1. V poli **typ skupiny** vyberte **zabezpečení**.
    1. Do pole **název skupiny** zadejte **LensesUsers**.
    1. Vyberte **Vytvořit**.
@@ -123,7 +123,7 @@ Můžete zjistit, jak rozptylová skla používá mapování členství ve skupi
 
 **Přiřazení skupiny k testovacímu uživateli:**
 
-1. Přejít na **Azure Active Directory**a pak vyberte **Uživatelé**.
+1. Přejít na **Azure Active Directory** a pak vyberte **Uživatelé**.
 1. Vyberte testovacího uživatele **B. Simon**.
 1. Vyberte **skupiny**.
 1. V horní části obrazovky vyberte **Přidat členství**.
@@ -134,7 +134,7 @@ Můžete zjistit, jak rozptylová skla používá mapování členství ve skupi
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Lenses.io.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **lenses.IO**.
 1. Na stránce Přehled aplikace v části **Spravovat** vyberte **Uživatelé a skupiny**.
 
@@ -166,7 +166,7 @@ V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupov�
 
 Když na přístupovém panelu vyberete dlaždici Lenses.io, měli byste se automaticky přihlásit k portálu Lenses.io. Další informace najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Nastavení jednotného přihlašování v instanci Lenses.io](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 

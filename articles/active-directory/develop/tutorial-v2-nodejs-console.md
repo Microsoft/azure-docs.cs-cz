@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: v-doeris
 ms.openlocfilehash: 33d3712e25a06419e0ccc5914cdddfae7d85a371
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101645785"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-in-a-nodejs-console-app"></a>Kurz: volání rozhraní API Microsoft Graph v konzolové aplikaci Node.js
@@ -31,7 +31,7 @@ Postupujte podle kroků v tomto kurzu:
 > - Přidání metody pro volání webového rozhraní API
 > - Otestování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Node.js](https://nodejs.org/en/download/)
 - [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu

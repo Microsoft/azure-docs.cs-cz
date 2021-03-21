@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
 ms.openlocfilehash: c554f3582e67622a5a1739c9e410328c902d491b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94655897"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>Připojení dat z firewallu webových aplikací Azure (WAF)
@@ -21,7 +21,7 @@ ms.locfileid: "94655897"
 Webové aplikace jsou stále více zaměřené na škodlivé útoky, které využívají často známá ohrožení zabezpečení. Firewall webových aplikací Azure (WAF) zajišťuje centralizovanou ochranu webových aplikací před běžným zneužitím a hrozbami, jako je vkládání kódu a skriptování mezi weby. Azure WAF se dá nasadit do služby [azure Application Gateway](../web-application-firewall/ag/ag-overview.md) , služby front-in [Azure](../web-application-firewall/afds/afds-overview.md) a prostřednictvím zásad WAF pro [Azure Content Delivery Network (CDN)](../web-application-firewall/cdn/cdn-overview.md) (aktuálně ve verzi Public Preview).
 Protokoly Azure WAF můžete připojit ke službě Azure Sentinel a umožnit vám zobrazovat data protokolu v sešitech, použít je k vytváření vlastních výstrah a začlenit je k vylepšení šetření.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V pracovním prostoru Azure Sentinel musíte mít oprávnění ke čtení a zápisu.
 

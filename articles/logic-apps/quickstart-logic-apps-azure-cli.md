@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
 ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033370"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Rychlý Start: vytváření a Správa aplikací logiky pomocí Azure CLI
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak vytvářet a spravovat Logic Apps pomoc
 
 Pokud s Logic Apps začínáte, můžete se také seznámit s tím, jak vytvořit své první aplikace logiky [prostřednictvím Azure Portal](quickstart-create-first-logic-app-workflow.md), [v aplikaci Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)a [v Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) nainstalované na místním počítači.
@@ -92,7 +92,7 @@ Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/ext/logic/lo
 | --------- | ----- | ----------- |
 | Definice pracovního postupu | `--definition` | Soubor JSON s [definicí pracovního postupu](#workflow-definition)vaší aplikace logiky |
 | Umístění | `--location -l` | Oblast Azure, ve které se nachází vaše aplikace logiky |
-| Název | `--name -n` | Název vaší aplikace logiky Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `()` ) a tečky ( `.` ). Název musí být také v různých oblastech jedinečný. |
+| Name | `--name -n` | Název vaší aplikace logiky Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `()` ) a tečky ( `.` ). Název musí být také v různých oblastech jedinečný. |
 | Název skupiny prostředků | `--resource-group -g` | [Skupina prostředků Azure](../azure-resource-manager/management/overview.md) , ve které chcete vytvořit aplikaci logiky. Než začnete, [vytvořte skupinu prostředků](#example---create-resource-group) , pokud ji ještě nemáte k dispozici pro vaši aplikaci logiky. |
 
 Můžete také zahrnout další [volitelné parametry](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create-optional-parameters) pro konfiguraci ovládacích prvků přístupu aplikace logiky, koncových bodů, účtu integrace, prostředí integrační služby, stavu a značek prostředků.

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5dd1f157984cdb300cc3b375d71654e5da54d1ae
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898126"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Nastavení privátního cloudu CloudSimple jako lokality pro zotavení po havárii pro místní úlohy VMware
@@ -46,7 +46,7 @@ Následující části popisují, jak nasadit řešení zotavení po havárii po
 3. [Nastavení ZVM a VRA v privátním cloudu CloudSimple](#set-up-zvm-and-vra-on-your-private-cloud)
 4. [Nastavení skupiny virtuálních ochran Zerto](#set-up-zerto-virtual-protection-group)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete povolit virtuální replikaci Zerto z místního prostředí do svého privátního cloudu, proveďte následující požadavky.
 
@@ -93,6 +93,6 @@ Pokud chcete povolit virtuální replikaci Zerto z místního prostředí do sv�
 6. V případě potřeby upravte nastavení sítě pro jednotlivé virtuální počítače a vytvořte VPG.
 7. Po dokončení replikace test převzetí služeb při selhání.
 
-## <a name="reference"></a>Referenční informace
+## <a name="reference"></a>Reference
 
 [Dokumentace k Zerto](https://www.zerto.com/myzerto/technical-documentation/)

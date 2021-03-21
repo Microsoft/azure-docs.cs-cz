@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895626"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Zabezpečení vstupního omezeného zařízení pomocí služby Azure AD a Azure Maps rozhraní REST API
@@ -30,27 +30,27 @@ Tato příručka popisuje, jak zabezpečit veřejné aplikace nebo zařízení, 
 
 Vytvořte aplikaci založenou na zařízeních ve službě Azure AD a povolte přihlášení k Azure AD. Této aplikaci bude udělen přístup k rozhraním REST API Azure Maps.
 
-1. V Azure Portal v seznamu služeb Azure vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **Nová registrace** .  
+1. V Azure Portal v seznamu služeb Azure vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **Nová registrace**.  
 
     > [!div class="mx-imgBorder"]
     > ![Registrace aplikace](./media/how-to-manage-authentication/app-registration.png)
 
-2. Zadejte **název** , **v tomto adresáři organizace vyberte účty jenom** jako **podporovaný typ účtu** . V části **identifikátory URI pro přesměrování** zadejte **veřejný klient/nativní (mobilní & Desktop)** a pak přidejte `https://login.microsoftonline.com/common/oauth2/nativeclient` k hodnotě. Další podrobnosti najdete v tématu aplikace Azure AD [Desktop, která volá webová rozhraní API: registrace aplikace](../active-directory/develop/scenario-desktop-app-registration.md). Pak aplikaci **Zaregistrujte** .
+2. Zadejte **název**, **v tomto adresáři organizace vyberte účty jenom** jako **podporovaný typ účtu**. V části **identifikátory URI pro přesměrování** zadejte **veřejný klient/nativní (mobilní & Desktop)** a pak přidejte `https://login.microsoftonline.com/common/oauth2/nativeclient` k hodnotě. Další podrobnosti najdete v tématu aplikace Azure AD [Desktop, která volá webová rozhraní API: registrace aplikace](../active-directory/develop/scenario-desktop-app-registration.md). Pak aplikaci **Zaregistrujte** .
 
     > [!div class="mx-imgBorder"]
     > ![Přidat podrobnosti registrace aplikace pro název a identifikátor URI pro přesměrování](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. Přejděte k **ověřování** a povolte **považovat aplikaci za veřejného klienta** . Tím se povolí ověřování kódu zařízení pomocí služby Azure AD.
+3. Přejděte k **ověřování** a povolte **považovat aplikaci za veřejného klienta**. Tím se povolí ověřování kódu zařízení pomocí služby Azure AD.
     
     > [!div class="mx-imgBorder"]
     > ![Povolit registraci aplikace jako veřejného klienta](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, Projděte si aplikaci. Pak vyberte **oprávnění API**  >  **Přidat oprávnění** . V části **rozhraní API moje organizace používá** , vyhledejte a vyberte **Azure Maps** .
+4.  Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, Projděte si aplikaci. Pak vyberte **oprávnění API**  >  **Přidat oprávnění**. V části **rozhraní API moje organizace používá**, vyhledejte a vyberte **Azure Maps**.
 
     > [!div class="mx-imgBorder"]
     > ![Přidat oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/app-permissions.png)
 
-5. Zaškrtněte políčko vedle pole přístup k **Azure Maps** a pak vyberte **Přidat oprávnění** .
+5. Zaškrtněte políčko vedle pole přístup k **Azure Maps** a pak vyberte **Přidat oprávnění**.
 
     > [!div class="mx-imgBorder"]
     > ![Výběr oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/select-app-permissions.png)

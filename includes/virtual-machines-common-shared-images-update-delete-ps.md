@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 32978257c3e209dc78a29c6e8ae0d1c4ae016a5b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95563984"
 ---
 ## <a name="update-resources"></a>Aktualizace prostředků
@@ -20,12 +20,12 @@ ms.locfileid: "95563984"
 Existují určitá omezení, která je možné aktualizovat. Následující položky lze aktualizovat: 
 
 Galerie sdílených imagí:
-- Popis
+- Description
 
 Definice Image:
 - Doporučené vCPU
 - Doporučená paměť
-- Popis
+- Description
 - Datum konce životnosti
 
 Verze Image:

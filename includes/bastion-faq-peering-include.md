@@ -9,10 +9,10 @@ ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 57b0bb9ab8ceb34021a38db0d0abf2c9c919e808
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94356640"
 ---
 ### <a name="can-i-still-deploy-multiple-bastion-hosts-across-peered-virtual-networks"></a>Můžu I nadále nasazovat víc hostitelů bastionu napříč partnerskými virtuálními sítěmi?
@@ -34,7 +34,7 @@ Ujistěte se, že má uživatel oprávnění **ke čtení** pro virtuální poč
 * Role čtecího modulu v prostředku Azure bastionu
 * Role čtecího modulu na Virtual Network (není nutné, pokud není k dispozici žádná Partnerská virtuální síť).
 
-|Oprávnění|Popis|Typ oprávnění|
+|Oprávnění|Description|Typ oprávnění|
 |---|---| ---|
 |Microsoft. Network/bastionHosts/Read |Načte hostitele bastionu.|Akce|
 |Microsoft. Network/virtualNetworks/BastionHosts/Action |Získá odkazy na hostitele bastionu v Virtual Network.|Akce|

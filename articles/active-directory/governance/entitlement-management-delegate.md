@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 204d83b96e3cbe26759d678126d8826d0b2e492e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100577855"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegování a role v Azure AD – Správa nároků
@@ -90,7 +90,7 @@ Vybraný schvalovatel a žadatel balíčku pro přístup mají také práva, i k
 
 V následující tabulce jsou uvedeny úkoly, které mohou provádět role správy oprávnění.
 
-| Úkol | správce | Tvůrce katalogu | Vlastník katalogu | Přístup ke Správci balíčků | Přístup správce přiřazení balíčku |
+| Úkol | Správce | Tvůrce katalogu | Vlastník katalogu | Přístup ke Správci balíčků | Přístup správce přiřazení balíčku |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Delegovat na tvůrce katalogu](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |  |
 | [Přidání připojené organizace](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |  |

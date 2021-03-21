@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
 ms.openlocfilehash: cc55cd17a547b9c63f2c26479d5797fae016d8d7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044064"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Nasazení Azure Monitor ve velkém měřítku pomocí Azure Policy
@@ -129,7 +129,7 @@ Virtual Machine [Insights](vm/vminsights-overview.md) je hlavním nástrojem v A
 
 Přehledy virtuálních počítačů zahrnují následující integrované iniciativy, které instalují oba agenty, aby umožňovaly úplné monitorování. 
 
-|Název |Popis |
+|Název |Description |
 |:---|:---|
 |Povolit přehledy virtuálních počítačů | Nainstaluje agenta Log Analytics a agenta závislostí na virtuální počítače Azure a hybridní virtuální počítače připojené pomocí ARC Azure. |
 |Povolit Azure Monitor pro Virtual Machine Scale Sets | Nainstaluje agenta Log Analytics a agenta závislostí do sady škálování virtuálních počítačů Azure. |
@@ -162,7 +162,7 @@ Můžete mít scénáře, kdy chcete nainstalovat agenta Log Analytics, ale ne a
 > Neexistuje žádný důvod k tomu, aby bylo možné nasadit agenta závislostí sami, protože vyžaduje, aby agent Log Analytics doručovat data do Azure Monitor.
 
 
-|Název |Popis |
+|Název |Description |
 |-----|------------|
 |Audit – nasazení agenta Log Analytics – image virtuálního počítače (OS) není v seznamu |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |
 |Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Nasaďte agenta Log Analytics pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |

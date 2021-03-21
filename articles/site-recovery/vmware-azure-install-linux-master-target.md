@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
 ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019238"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro účely navrácení služeb po obnovení
@@ -29,7 +29,7 @@ Tento článek poskytuje pokyny k instalaci hlavního cíle systému Linux.
 
 Komentáře nebo dotazy můžete vystavit na konci tohoto článku nebo na [stránce s dotazy k Microsoft Q&pro Azure Recovery Services](/answers/topics/azure-site-recovery.html).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Chcete-li vybrat hostitele, do kterého chcete nasadit hlavní cíl, určete, zda bude navrácení služeb po obnovení na existující místní virtuální počítač nebo na nový virtuální počítač. 
     * Pro existující virtuální počítač by měl mít hostitel hlavního cíle přístup k úložištím dat virtuálního počítače.

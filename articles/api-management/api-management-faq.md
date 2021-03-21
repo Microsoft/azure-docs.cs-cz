@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: eea3c8525d31a3ca551e9cbc7d21d7dde163b5cc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94697981"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
@@ -49,7 +49,7 @@ Získejte odpovědi na běžné otázky, vzory a osvědčené postupy pro Azure 
 Když je funkce ve verzi Preview, znamená to, že aktivně hledáte zpětnou vazbu o tom, jak funkce funguje. Funkce ve verzi Preview je funkčně dokončená, ale je možné, že v reakci na zpětnou vazbu od zákazníků provedeme zásadní změnu. Doporučujeme, abyste nemuseli záviset na funkci, která je ve verzi Preview v produkčním prostředí.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Jak můžu zabezpečit připojení mezi bránou služby API Management a back-endovými službami?
-Máte několik možností, jak zabezpečit spojení mezi API Management bránou a vašimi back-end službami. Můžete:
+Máte několik možností, jak zabezpečit spojení mezi API Management bránou a vašimi back-end službami. Další možnosti:
 
 * Použijte ověřování HTTP Basic. Další informace najdete v tématu [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 * Vzájemné ověřování TLS použijte, jak je popsáno v tématu [zabezpečení back-endové služby pomocí ověřování klientského certifikátu v Azure API Management](api-management-howto-mutual-certificates.md).
@@ -57,7 +57,7 @@ Máte několik možností, jak zabezpečit spojení mezi API Management bránou 
 * Připojte svoji instanci API Management k Azure Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Jak můžu zkopírovat instanci služby API Management do nové instance?
-Máte několik možností, pokud chcete zkopírovat instanci API Management do nové instance. Můžete:
+Máte několik možností, pokud chcete zkopírovat instanci API Management do nové instance. Další možnosti:
 
 * Použijte funkci zálohování a obnovení v API Management. Další informace najdete v tématu [implementace zotavení po havárii pomocí zálohování a obnovení služby v Azure API Management](api-management-howto-disaster-recovery-backup-restore.md).
 * Vytvořte vlastní funkci zálohování a obnovení pomocí [REST API API Management](/rest/api/apimanagement/). Použijte REST API k uložení a obnovení entit z instance služby, kterou chcete.
@@ -77,7 +77,7 @@ Skupiny správců jsou neměnné systémové skupiny. Správci předplatného Az
 Pokud se zásada, kterou chcete přidat, zobrazuje v editoru zásad šedě nebo je vystínovaná, ujistěte se, že jste ve správném rozsahu pro danou zásadu. Jednotlivé příkazy zásad jsou navržené tak, aby je bylo možné použít v určitých oborech a oddílech zásad. Pokud chcete zkontrolovat oddíly a obory zásad, přečtěte si část použití zásad v tématu [zásady API Management](./api-management-policies.md).
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Návody nastavit více prostředí v jednom rozhraní API?
-K nastavení více prostředí, například testovací prostředí a produkční prostředí, v jednom rozhraní API máte dvě možnosti. Můžete:
+K nastavení více prostředí, například testovací prostředí a produkční prostředí, v jednom rozhraní API máte dvě možnosti. Další možnosti:
 
 * Hostování různých rozhraní API na stejném tenantovi.
 * Hostovat stejná rozhraní API v různých klientech.

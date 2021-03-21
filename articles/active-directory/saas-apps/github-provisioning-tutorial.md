@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
 ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359258"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu pro Automatické zřizování uživatelů
@@ -71,7 +71,7 @@ Tato část vás provede připojením k rozhraní API pro zřizování uživatel
 
     ![Snímek obrazovky se zobrazí přihlašovací stránka GitHubu.](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. V Azure Portal zadejte **adresu URL klienta** a klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k vaší aplikaci GitHub. Pokud se připojení nepovede, ujistěte se, že váš účet GitHub má oprávnění správce a **Adresa URL tenanta** je zavedená správně, a pak zkuste znovu provést krok autorizovat ( **můžete být v** `https://api.github.com/scim/v2/organizations/<Organization_name>` rámci svého účtu GitHubu, který můžete najít **Settings**  >  **Organizations** ).
+7. V Azure Portal zadejte **adresu URL klienta** a klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k vaší aplikaci GitHub. Pokud se připojení nepovede, ujistěte se, že váš účet GitHub má oprávnění správce a **Adresa URL tenanta** je zavedená správně, a pak zkuste znovu provést krok autorizovat ( **můžete být v** `https://api.github.com/scim/v2/organizations/<Organization_name>` rámci svého účtu GitHubu, který můžete najít   >  ).
 
     ![Snímek obrazovky se zobrazí stránka organizace v GitHubu.](./media/github-provisioning-tutorial/GitHub3.png)
 

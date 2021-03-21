@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: erhopf
 ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97032962"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Názvy vlastních subdomén pro Cognitive Services
@@ -72,15 +72,15 @@ Ano. Toto je seznam regionálních koncových bodů, které můžete použít s 
 |---------------|--------|----------|
 | Veřejná | Globální (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Austrálie – východ | `https://australiaeast.api.cognitive.microsoft.com` |
-| | Brazil South | `https://brazilsouth.api.cognitive.microsoft.com` |
+| | Brazílie – jih | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Střední Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
-| | Střední USA | `https://centralus.api.cognitive.microsoft.com` |
+| | USA – střed | `https://centralus.api.cognitive.microsoft.com` |
 | | Východní Asie | `https://eastasia.api.cognitive.microsoft.com` |
 | | East US | `https://eastus.api.cognitive.microsoft.com` |
 | | USA – východ 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Francie – střed | `https://francecentral.api.cognitive.microsoft.com` |
 | | Indie – střed | `https://centralindia.api.cognitive.microsoft.com` |
-| | Japan East | `https://japaneast.api.cognitive.microsoft.com` |
+| | Japonsko – východ | `https://japaneast.api.cognitive.microsoft.com` |
 | | Jižní Korea – střed | `https://koreacentral.api.cognitive.microsoft.com` |
 | | USA – středosever | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Severní Evropa | `https://northeurope.api.cognitive.microsoft.com` |

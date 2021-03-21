@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.openlocfilehash: 80edac3106a79a706ee1ef18c48d41d1ad6c3eaf
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101724587"
 ---
 # <a name="create-a-basic-audio-transform"></a>Vytvoří základní transformaci zvuku.
@@ -27,7 +27,7 @@ ms.locfileid: "101724587"
 
 Tento článek ukazuje, jak vytvořit základní transformaci zvuku.  V rámci verze 2020-05-01 se přidal základní režim `#Microsoft.Media.AudioAnalyzerPreset` .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postupujte podle kroků v části [Vytvoření účtu Media Services](./create-account-howto.md) a vytvořte potřebný Media Services účet a skupinu prostředků pro vytvoření assetu.
 

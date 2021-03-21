@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 0ed5a4aa8993f52d42b97288cd143e6114ff36ff
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033302"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Určení prostředků v manifestu služby
@@ -199,7 +199,7 @@ Do pole níže přidejte následující parametry:
   </Parameters>
 ```
 
-Při nasazování aplikace můžete tyto hodnoty předat jako ApplicationParameters.  Příklad:
+Při nasazování aplikace můžete tyto hodnoty předat jako ApplicationParameters.  Například:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -207,7 +207,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Poznámka: Pokud je hodnota zadaná pro daný ApplicationParameter prázdná, vrátíme se k výchozí hodnotě poskytnuté v ServiceManifest pro odpovídající koncový bod.
 
-Příklad:
+Například:
 
 Pokud jste zadali ServiceManifest
 

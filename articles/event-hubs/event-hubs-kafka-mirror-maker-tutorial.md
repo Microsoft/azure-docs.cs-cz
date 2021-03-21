@@ -4,10 +4,10 @@ description: Tento článek poskytuje informace o tom, jak pomocí Kafka nástro
 ms.topic: how-to
 ms.date: 01/04/2021
 ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97861004"
 ---
 # <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>Použití Apache Kafka nástroje MirrorMaker s Event Hubs
@@ -37,7 +37,7 @@ Koncový bod služby Azure Event Hubs Kafka vám umožňuje připojit se k Azure
 
 Apache Kafka 1 můžete v Apache Kafka na Event Hubs použít jednosměrně. Nástroje MirrorMaker 2 lze použít v obou směrech, ale konfigurace [ `MirrorCheckpointConnector` a `MirrorHeartbeatConnector` , které jsou v nástroje MirrorMaker 2](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0) , musí být nakonfigurovány tak, aby odkazovaly na zprostředkovatele Apache Kafka a nikoli na Event Hubs. V tomto kurzu se dozvíte, jak nakonfigurovat nástroje MirrorMaker 1.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 

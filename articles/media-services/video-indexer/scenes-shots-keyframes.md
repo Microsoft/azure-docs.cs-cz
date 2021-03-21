@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93041900"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scény, snímky a klíčové snímky
@@ -46,7 +46,7 @@ K extrakci klíčových snímků s vysokým rozlišením pro vaše video musíte
 
 #### <a name="with-the-video-indexer-website"></a>S webem Video Indexer
 
-K extrakci klíčových snímků pomocí Video Indexer webu Nahrajte video a zaindexujte ho. Po dokončení úlohy indexování klikněte na tlačítko **Stáhnout** a vyberte **artefakty (ZIP)** . Tato akce stáhne složku artefaktů do vašeho počítače. 
+K extrakci klíčových snímků pomocí Video Indexer webu Nahrajte video a zaindexujte ho. Po dokončení úlohy indexování klikněte na tlačítko **Stáhnout** a vyberte **artefakty (ZIP)**. Tato akce stáhne složku artefaktů do vašeho počítače. 
 
 ![Snímek obrazovky, který zobrazuje rozevírací seznam stáhnout s vybranými artefakty](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
