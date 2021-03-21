@@ -12,10 +12,10 @@ ms.date: 02/22/2021
 ms.author: nitinme
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c8d3c5b10c670e7aa4f1fd00f47ef47e772416cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101706856"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrace vašich obličejových dat na jiný obličejový odběr
@@ -24,7 +24,7 @@ V této příručce se dozvíte, jak přesunout data obličeje, jako je uložen�
 
 Tato strategie migrace se vztahuje také na objekty LargePersonGroup a LargeFaceList. Pokud nejste obeznámeni s koncepty v této příručce, přečtěte si téma jejich definice v příručce věnovaném [koncepcím rozpoznávání obličeje](../concepts/face-recognition.md) . Tato příručka používá klientskou knihovnu rozhraní .NET s jazykem C#.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Potřebujete následující položky:
 
@@ -42,7 +42,7 @@ Tato příručka používá jednoduchou konzolovou aplikaci ke spuštění migra
 
 ## <a name="create-face-clients"></a>Vytváření klientů obličeje
 
-V metodě **Main** v *program.cs* vytvořte dvě instance [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) pro své zdrojové a cílové předplatné. V tomto příkladu se jako cíl používá odběr obličeje v Východní Asie oblasti jako zdroj a Západní USA předplatné. Tento příklad ukazuje, jak migrovat data z jedné oblasti Azure do jiné. 
+V metodě **Main** v *programu program. cs* vytvořte dvě instance [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) pro své zdrojové a cílové předplatné. V tomto příkladu se jako cíl používá odběr obličeje v Východní Asie oblasti jako zdroj a Západní USA předplatné. Tento příklad ukazuje, jak migrovat data z jedné oblasti Azure do jiné. 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

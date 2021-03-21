@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 51814ba36eec7b1f7d8b95ce80210d93b4cbec3f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 85d5d5b484163c4c65e7ec14c5d5ce5aea339669
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564216"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593199"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -247,7 +247,7 @@ S Synchronizace souborů Azure by se neměla používat žádná další řešen
 
 Vzhledem k tomu, že agent Synchronizace souborů Azure běží na počítači s Windows serverem, který se připojuje ke sdíleným složkám Azure, výkon efektivní synchronizace závisí na několika faktorech v infrastruktuře: Windows Server a základní konfigurace disku, Šířka pásma sítě mezi serverem a úložištěm Azure, velikost souboru, celková velikost datové sady a aktivita v datové sadě. Vzhledem k tomu, že Synchronizace souborů Azure pracuje na úrovni souboru, jsou výkonnostní charakteristiky řešení založeného na Synchronizace souborů Azure lépe měřeny v počtu objektů (souborů a adresářů) zpracovaných za sekundu.
 
-Změny provedené ve sdílené složce Azure pomocí Azure Portal nebo SMB se hned nedetekuje a replikují jako změny koncového bodu serveru. Soubory Azure ještě nemají oznámení o změnách ani deníky, takže neexistuje způsob, jak automaticky iniciovat relaci synchronizace při změně souborů. V systému Windows Server Synchronizace souborů Azure používá [Deník USN systému Windows](https://docs.microsoft.com/windows/win32/fileio/change-journals) k automatickému zahájení relace synchronizace při změně souborů
+Změny provedené ve sdílené složce Azure pomocí Azure Portal nebo SMB se hned nedetekuje a replikují jako změny koncového bodu serveru. Soubory Azure ještě nemají oznámení o změnách ani deníky, takže neexistuje způsob, jak automaticky iniciovat relaci synchronizace při změně souborů. V systému Windows Server Synchronizace souborů Azure používá [Deník USN systému Windows](/windows/win32/fileio/change-journals) k automatickému zahájení relace synchronizace při změně souborů
 
 Pokud chcete zjistit změny sdílené složky Azure, Synchronizace souborů Azure má naplánovanou úlohu s názvem úloha detekce změn. Úloha detekce změn vytvoří výčet všech souborů ve sdílené složce a pak ji porovná s verzí synchronizace pro daný soubor. Když úloha zjišťování změn zjistí, že se soubory změnily, Synchronizace souborů Azure zahájí relaci synchronizace. Úloha zjišťování změn je zahájena každých 24 hodin. Vzhledem k tomu, že úloha zjišťování změn funguje při vytváření výčtu všech souborů ve sdílené složce Azure, zjišťování změn trvá déle než v menších oborech názvů. Pro velké obory názvů může trvat déle než jednou za 24 hodin, abyste zjistili, které soubory se změnily.
 

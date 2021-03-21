@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/18/2021
 ms.author: jgao
-ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 130deea4e5998d696065df4854a47bf7ffd1183c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175647"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594238"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Použití skriptů pro nasazení v šablonách ARM
 
@@ -162,11 +162,11 @@ Podrobnosti hodnoty vlastnosti:
   > [!NOTE]
   > Azure Portal nemůže analyzovat skript nasazení s více řádky. K nasazení šablony se skriptem nasazení z Azure Portal můžete buď zřetězit příkazy prostředí PowerShell pomocí středníků na jeden řádek, nebo použít `primaryScriptUri` vlastnost s externím souborem skriptu.
 
-- `primaryScriptUri`: Zadejte veřejně přístupnou adresu URL ke skriptu primárního nasazení s podporovanými příponami souborů.
-- `supportingScriptUris`: Určete pole veřejně přístupných adres URL k podpůrným souborům, které jsou volány buď `scriptContent` nebo `primaryScriptUri` .
+- `primaryScriptUri`: Zadejte veřejně přístupnou adresu URL ke skriptu primárního nasazení s podporovanými příponami souborů. Další informace najdete v tématu [použití externích skriptů](#use-external-scripts).
+- `supportingScriptUris`: Určete pole veřejně přístupných adres URL k podpůrným souborům, které jsou volány buď `scriptContent` nebo `primaryScriptUri` . Další informace najdete v tématu [použití externích skriptů](#use-external-scripts).
 - `timeout`: Zadejte maximální povolenou dobu spuštění skriptu určenou ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**.
 - `cleanupPreference`. Určete předvolbu čisticích prostředků nasazení, když se spuštění skriptu dostane do stavu terminálu. Výchozí nastavení je **vždy**, což znamená odstranění prostředků navzdory stavu terminálu (úspěšné, neúspěšné, zrušené). Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
-- `retentionInterval`: Zadejte interval, po který služba uchovává prostředky skriptu nasazení poté, co spuštění skriptu nasazení dosáhne stavu terminálu. Prostředky skriptu nasazení budou odstraněny po uplynutí této doby. Doba trvání vychází ze [vzoru ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Interval uchovávání dat je mezi 1 a 26 hodinami (PT26H). Tato vlastnost se používá v případě, že `cleanupPreference` je nastavena na hodnotu- **vypršení platnosti**. Vlastnost- **vypršení platnosti** není aktuálně povolena. Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
+- `retentionInterval`: Zadejte interval, po který služba uchovává prostředky skriptu nasazení poté, co spuštění skriptu nasazení dosáhne stavu terminálu. Prostředky skriptu nasazení budou odstraněny po uplynutí této doby. Doba trvání vychází ze [vzoru ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Interval uchovávání dat je mezi 1 a 26 hodinami (PT26H). Tato vlastnost se používá v případě, že `cleanupPreference` je nastavena na hodnotu- **vypršení platnosti**. Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>Další ukázky
 
@@ -212,7 +212,7 @@ Kromě vložených skriptů můžete použít také externí soubory skriptu. Po
 
 Další informace najdete v [příkladu šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
-Soubory externího skriptu musí být přístupné. Informace o zabezpečení souborů skriptu uložených v účtech úložiště Azure najdete v tématu [nasazení privátní šablony ARM pomocí tokenu SAS](./secure-template-with-sas-token.md).
+Soubory externího skriptu musí být přístupné. Pokud chcete zabezpečit soubory skriptů, které jsou uložené v účtech Azure Storage, vygenerujte token SAS a zahrňte ho do identifikátoru URI pro šablonu. Nastavte čas vypršení platnosti, abyste měli dostatek času na dokončení nasazení. Další informace najdete v tématu [nasazení privátní šablony ARM pomocí tokenu SAS](./secure-template-with-sas-token.md).
 
 Zodpovídáte za zajištění integrity skriptů, které jsou odkazovány pomocí skriptu nasazení, a to buď `primaryScriptUri` nebo `supportingScriptUris` . Odkazovat pouze na skripty, kterým důvěřujete.
 
@@ -313,7 +313,7 @@ Služba skriptu nastaví stav zřizování prostředků na **neúspěšné** , p
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Předání zabezpečených řetězců skriptu nasazení
 
-Nastavení proměnných prostředí (objekt EnvironmentVariable) ve vašich kontejnerových instancích vám umožní poskytnout dynamickou konfiguraci aplikace nebo skriptu spouštěného kontejnerem. Skript nasazení zpracovává nezabezpečené a zabezpečené proměnné prostředí stejným způsobem jako instance kontejneru Azure. Další informace najdete v tématu [nastavení proměnných prostředí v instancích kontejnerů](../../container-instances/container-instances-environment-variables.md#secure-values).
+Nastavení proměnných prostředí (objekt EnvironmentVariable) ve vašich kontejnerových instancích vám umožní poskytnout dynamickou konfiguraci aplikace nebo skriptu spouštěného kontejnerem. Skript nasazení zpracovává nezabezpečené a zabezpečené proměnné prostředí stejným způsobem jako instance kontejneru Azure. Další informace najdete v tématu [nastavení proměnných prostředí v instancích kontejnerů](../../container-instances/container-instances-environment-variables.md#secure-values). Příklad naleznete v tématu [Sample Templates](#sample-templates).
 
 Maximální povolená velikost pro proměnné prostředí je 64 KB.
 
@@ -566,7 +566,7 @@ Po úspěšném otestování skriptu ho můžete použít jako skript nasazení 
 
 ## <a name="deployment-script-error-codes"></a>Kódy chyb skriptu nasazení
 
-| Kód chyby | Popis |
+| Kód chyby | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Definice prostředku skriptu nasazení v šabloně obsahuje neplatné názvy vlastností. |
 | DeploymentScriptResourceConflict | Nelze odstranit prostředek skriptu nasazení, který je v neterminálu, a provádění nepřekročilo 1 hodinu. Nebo nemůžete znovu spustit stejný skript nasazení se stejným identifikátorem prostředku (stejné předplatné, název skupiny prostředků a názvem prostředku), ale zároveň s jiným obsahem textu skriptu. |

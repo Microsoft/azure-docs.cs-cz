@@ -1,20 +1,20 @@
 ---
 title: Programové vytváření předplatných Azure pro Smlouvu s partnerem Microsoftu s využitím nejnovějších rozhraní API
-description: Naučte se programově vytvářet předplatná Azure pro Smlouvu s partnerem Microsoftu s využitím nejnovějších verzí rozhraní REST API, Azure CLI a Azure PowerShellu.
+description: Naučte se vytvářet předplatná Azure pro partnerské smlouvy Microsoftu pomocí nejnovějších verzí REST API, Azure CLI, Azure PowerShell a Azure Resource Manager šablon.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: de1183c1364fcb7e5483559899c2939df15d26b6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 5a731aab924e63eac468a22862f35aeff76bc068
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215762"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593947"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-partner-agreement-with-the-latest-apis"></a>Programové vytváření předplatných Azure pro Smlouvu s partnerem Microsoftu s využitím nejnovějších rozhraní API
 
@@ -38,7 +38,7 @@ V následujících příkladech se používají rozhraní REST API. PowerShell a
 
 Pomocí následujícího požadavku zobrazte seznam všech fakturačních účtů, ke kterým máte přístup.
 
-### <a name="rest"></a>[REST](#tab/rest-getBillingAccount-MPA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
@@ -70,18 +70,16 @@ V odpovědi rozhraní API se zobrazí seznam fakturačních účtů.
 
 Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftPartnerAgreement*. Zkopírujte `name` tohoto účtu. Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
 
-<!--
-### [PowerShell](#tab/azure-powershell-getBillingAccounts-MPA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
--->
+K získání této hodnoty použijte prosím rozhraní příkazového řádku Azure nebo REST API.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getBillingAccounts-MPA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-> az billing account list
+az billing account list
 ```
-Zobrazí se seznam všech fakturačních účtů, ke kterým máte přístup. 
+Zobrazí se seznam všech fakturačních účtů, ke kterým máte přístup.
 
 ```json
 [
@@ -114,7 +112,7 @@ Pomocí vlastnosti DisplayName Identifikujte fakturační účet, pro který chc
 
 Proveďte následující požadavek, ve kterém zadáte údaj `name` zkopírovaný z prvního kroku (```99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```). Zobrazí se seznam všech zákazníků ve fakturačním účtu, pro které můžete vytvářet předplatná Azure.
 
-### <a name="rest"></a>[REST](#tab/rest-getCustomers)
+### <a name="rest"></a>[REST](#tab/rest)
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers?api-version=2020-05-01
@@ -153,17 +151,14 @@ V odpovědi rozhraní API se zobrazí zákazníci ve fakturačním účtu s plá
 
 Pomocí vlastnosti `displayName` identifikujte zákazníka, pro kterého chcete vytvářet předplatná. Zkopírujte `id` tohoto zákazníka. Pokud například chcete vytvořit předplatné pro zákazníka `Fabrikam toys`, zkopírujte `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalších krocích.
 
-<!--
-### [PowerShell](#tab/azure-powershell-getCustomers)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
--->
+K získání této hodnoty použijte prosím rozhraní příkazového řádku Azure nebo REST API.
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getCustomers)
-
-```json
-> az billing customer list --account-name 99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
+```azurecli
+az billing customer list --account-name 99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
 ```
 
 V odpovědi rozhraní API se zobrazí zákazníci ve fakturačním účtu s plány Azure. Pro tyto zákazníky můžete vytvářet předplatná.
@@ -202,7 +197,7 @@ Tato část je volitelná a určená pouze pro nepřímé poskytovatele.
 
 Pokud jste nepřímý poskytovatel v dvouúrovňovém modelu CSP, můžete při vytváření předplatných pro zákazníky určit prodejce.
 
-### <a name="rest"></a>[REST](#tab/rest-getIndirectResellers)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Proveďte následující požadavek s údajem `id` zkopírovaným v druhém kroku (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Zobrazí se seznam všech prodejců, kteří jsou pro příslušného zákazníka k dispozici.
 
@@ -234,18 +229,16 @@ V odpovědi rozhraní API se zobrazí prodejci pro tohoto zákazníka:
 
 Pomocí vlastnosti `description` určete prodejce, který bude přidružený k předplatnému. Zkopírujte `resellerId` tohoto prodejce. Pokud například chcete přidružit prodejce `Wingtip`, zkopírujte `3xxxxx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
 
-<!--
-### [PowerShell](#tab/azure-powershell-getIndirectResellers)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
--->
+K získání této hodnoty použijte prosím rozhraní příkazového řádku Azure nebo REST API.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getIndirectResellers)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Proveďte následující požadavek s `name` kopírováním z prvního kroku ( ```99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx``` ) a zákazníka `name` zkopírovaného z předchozího kroku ( ```acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ).
 
-```azurecli-interactive
- > az billing customer show --expand "enabledAzurePlans,resellers" --account-name "99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --name "acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```azurecli
+ az billing customer show --expand "enabledAzurePlans,resellers" --account-name "99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --name "acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 V odpovědi rozhraní API se zobrazí prodejci pro tohoto zákazníka:
@@ -282,7 +275,7 @@ Pomocí vlastnosti `description` určete prodejce, který bude přidružený k p
 
 Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* pro *Fabrikam toys* a přidruží k tomuto předplatnému prodejce *Wingtip*. Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
 
-### <a name="rest"></a>[REST](#tab/rest-MPA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 ```json
 PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01
@@ -340,19 +333,19 @@ Probíhající stav se vrátí jako stav `Accepted` u položky `provisioningStat
 
 V textu požadavku pro rozhraní API zadejte volitelnou hodnotu *resellerId* zkopírovanou v druhém kroku.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MPA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-AzSubscriptionAlias`, spusťte `Install-Module Az.Subscription`. Pokud chcete nainstalovat novější modulu PowerShellGet, projděte si téma [Získání modulu PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
 Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`. 
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Workload 'Production"
 ```
 
 V rámci odpovědi příkazu se vrátí údaj subscriptionId.
 
-```azurepowershell
+```json
 {
   "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
   "name": "sampleAlias",
@@ -366,19 +359,19 @@ V rámci odpovědi příkazu se vrátí údaj subscriptionId.
 
 Ve volání `New-AzSubscriptionAlias` uveďte volitelnou hodnotu *resellerId* zkopírovanou v druhém kroku.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-MPA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Nejdřív spuštěním příkazů `az extension add --name account` a `az extension add --name alias` nainstalujte rozšíření.
 
 Spusťte následující příkaz [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create). 
 
-```azurecli-interactive
+```azurecli
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --display-name "Dev Team Subscription" --workload "Production"
 ```
 
 V rámci odpovědi příkazu se vrátí údaj subscriptionId.
 
-```azurecli
+```json
 {
   "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
   "name": "sampleAlias",
@@ -391,6 +384,113 @@ V rámci odpovědi příkazu se vrátí údaj subscriptionId.
 ```
 
 Ve volání `az account alias create` zadejte volitelnou hodnotu *resellerId* zkopírovanou v druhém kroku.
+
+---
+
+## <a name="use-arm-template"></a>Použití šablony ARM
+
+Předchozí část ukázala, jak vytvořit předplatné pomocí PowerShellu, rozhraní příkazového řádku nebo REST API. Pokud potřebujete automatizovat vytváření předplatných, zvažte použití šablony Azure Resource Manager (šablona ARM).
+
+Následující šablona vytvoří předplatné. Pro `billingScope` Zadejte ID zákazníka. Pro `targetManagementGroup` Zadejte skupinu pro správu, ve které chcete vytvořit odběr.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        },
+        "targetManagementGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the target management group to place the subscription."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]",
+                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Nasaďte šablonu na [úrovni skupiny pro správu](../../azure-resource-manager/templates/deploy-to-management-group.md).
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+S textem žádosti:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      },
+      "targetManagementGroup": {
+        "value": "mg2"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
+  -targetManagementGroup mg2
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx' targetManagementGroup=mg2
+```
 
 ---
 

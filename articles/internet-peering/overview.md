@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 12/15/2020
 ms.author: prmitiki
 ms.openlocfilehash: 8f960e58d47963cbb239d498af52e7adfc77caa9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97586862"
 ---
 # <a name="internet-peering-overview"></a>Přehled internetového partnerského vztahu
@@ -46,7 +46,7 @@ Pokud jste už navázali partnerské vztahy s Microsoftem, označují se jako **
 ## <a name="peering-policy"></a>Zásady peeringu
 Microsoft má selektivní, ale obecně otevřené zásady partnerského vztahu. Partnerské vztahy jsou vybrány na základě výkonu, schopnosti a tam, kde se vzájemně využívají výhody, a podléhají určitým technickým, obchodním a zákonným požadavkům. Podrobnosti najdete v tématu [zásady partnerského vztahu](policy.md).
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 Nejčastější dotazy týkající se partnerských vztahů najdete v tématu [Internet peering – Nejčastější dotazy](faqs.md).
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,15 +1,15 @@
 ---
 title: Podrobnosti dodržování předpisů v souladu s předpisy pro NIST SP 800-53 R4
 description: Podrobnosti o integrované iniciativě NIST SP 800-53 R4 dodržování předpisů Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 51fb6b2226e1dd05403171789985cbd9709b905c
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 35562ff72c054cc3295af5e1e0f971aa36d9e473
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633814"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606527"
 ---
 # <a name="details-of-the-nist-sp-800-53-r4-regulatory-compliance-built-in-initiative"></a>Podrobnosti o integrované iniciativě NIST SP 800-53 R4 dodržování předpisů
 
@@ -3519,7 +3519,7 @@ Tato integrovaná iniciativa se nasadí jako součást [ukázky NIST SP 800-53 R
 |[Spravované řízení společnosti Microsoft 1670 – Oprava chyby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc6108469-57ee-4666-af7e-79ba61c7ae0c) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1670.json) |
 |[Spravované řízení společnosti Microsoft 1671 – Oprava chyby](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5c5bbef7-a316-415b-9b38-29753ce8e698) |Společnost Microsoft implementuje tento systém a kontrolu integrity informací |ověřen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Regulatory%20Compliance/MicrosoftManagedControl1671.json) |
 |[Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc3f317a7-a95c-4547-b7e7-11017ebdf2fe) |Auditujte, jestli existují chybějící aktualizace zabezpečení systému a důležité aktualizace, které byste měli nainstalovat, abyste měli jistotu, že jsou vaše virtuální počítače s Windows a Linux zabezpečené. |AuditIfNotExists, zakázáno |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssMissingSystemUpdates_Audit.json) |
-|[Na počítače by se měly nainstalovat aktualizace systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86b3d65f-7626-441e-b690-81a8b71cff60) |Chybějící aktualizace systému zabezpečení na vašich serverech se monitorují Azure Security Center jako doporučení. |AuditIfNotExists, zakázáno |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_MissingSystemUpdates_Audit.json) |
+|[Na počítače by se měly nainstalovat aktualizace systému](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86b3d65f-7626-441e-b690-81a8b71cff60) |Chybějící aktualizace systému zabezpečení na vašich serverech se monitorují Azure Security Center jako doporučení. |AuditIfNotExists, zakázáno |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_MissingSystemUpdates_Audit.json) |
 |[Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15) |Servery, které nesplňují nakonfigurované směrné plány, se budou monitorovat Azure Security Center jako doporučení. |AuditIfNotExists, zakázáno |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_OSVulnerabilities_Audit.json) |
 |[V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4) |Auditujte ohrožení zabezpečení operačního systému ve službě Virtual Machine Scale Sets, abyste je chránili před útoky. |AuditIfNotExists, zakázáno |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssOSVulnerabilities_Audit.json) |
 |[Ohrožení zabezpečení vašich databází SQL by mělo být opraveno](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffeedbf84-6b99-488c-acc2-71c829aa5ffc) |Sledujte výsledky kontroly ohrožení zabezpečení a doporučení pro napravení ohrožení zabezpečení databáze. |AuditIfNotExists, zakázáno |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SQLDbVulnerabilities_Audit.json) |

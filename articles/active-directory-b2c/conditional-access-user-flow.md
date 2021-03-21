@@ -12,10 +12,10 @@ author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 6325a890ea297a3aa2bdad76a1d95c10448a7b61
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033902"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Přidání podmíněného přístupu do toků uživatelů v Azure Active Directory B2C
@@ -86,7 +86,7 @@ Při použití podmíněného přístupu Azure AD Vezměte v úvahu následujíc
 - V Azure AD B2C tenantech jsou k dispozici pouze podmnožina zásad [podmíněného přístupu Azure AD](../active-directory/conditional-access/overview.md) .
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 

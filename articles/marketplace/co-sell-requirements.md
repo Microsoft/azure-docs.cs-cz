@@ -6,17 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 3/12/2021
-ms.openlocfilehash: fa8f2b5e952ddd188f99d130c2154d4602191c2b
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.reviewer: stmummer
+ms.date: 3/17/2021
+ms.openlocfilehash: e67219e0b029ce401ffc05c009a5cc4a96680a9f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225060"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593386"
 ---
 # <a name="co-sell-requirements"></a>Požadavky na společný prodej
 
-Tento článek popisuje požadavky na různé úrovně stavu společného prodeje. Nejnovější seznam typů nabídek, které podporují společný prodej, najdete v tématu  [Konfigurace společného prodeje pro nabídku komerčního tržiště](commercial-marketplace-co-sell.md). Přehled společného prodeje najdete v tématu [společný prodej s prodejními týmy a partnery společnosti Microsoft](marketplace-co-sell.md).
+Tento článek popisuje požadavky na různé úrovně stavu společného prodeje. Nejnovější seznam typů nabídek, které podporují společný prodej, najdete v tématu  [Konfigurace společného prodeje pro nabídku komerčního tržiště](co-sell-configure.md). Přehled společného prodeje najdete v tématu [společný prodej s prodejními týmy a partnery společnosti Microsoft](co-sell-overview.md).
 
 V této tabulce jsou uvedené všechny možné stavy spoluprodeji:
 
@@ -25,7 +26,7 @@ V této tabulce jsou uvedené všechny možné stavy spoluprodeji:
 | Není připravený společný prodej | Nebyly splněny minimální [požadavky na stav připravenosti na společný prodej](#requirements-for-co-sell-ready-status) . |
 | Připravený společný prodej | Splnění všech [požadavků na stav připravenosti na společný prodej](#requirements-for-co-sell-ready-status) bylo dosaženo. |
 | Azure IP – společný prodej motivovaní | Kromě [těchto dalších požadavků](#requirements-for-azure-ip-co-sell-incentivized-status)se splnily požadavky na společný prodej. |
-| Aplikace pro výrobce ISV Connect Premium  | Tento stav platí pro nabídky Dynamics 365 a Power Apps a označuje, že byly splněny všechny [požadavky pro tento stav](#requirements-for-biz-apps-isv-connect-premium-incentive-status) . |
+| Business Applications spoluprodeji motivovaní | Tento stav se vztahuje na nabídky Dynamics 365 a Power Apps v [programu Microsoft Business Applications ISV Connect](business-applications-isv-program.md) a označuje, že byly splněny všechny [požadavky pro tento stav](#requirements-for-business-applications-co-sell-incentivized-status) . |
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>Požadavky na společný prodej – stav připravenosti
@@ -37,15 +38,15 @@ Aby bylo možné dosáhnout stavu připraveného pro společný prodej, je nutn�
 - Mít [v partnerském centru ID MPN a aktivní účet komerčního tržiště](./partner-center-portal/create-account.md).
 - Ujistěte se, že máte v partnerském centru kompletní [obchodní profil](/partner-center/create-a-marketing-profile) . Jako kvalifikovaný partner Microsoftu vám váš obchodní profil pomůže prezentovat vaši firmu zákazníkům, kteří hledají vaše jedinečná řešení a odbornosti, aby vyhledali své obchodní potřeby. výsledkem jsou [referenčníky](/partner-center/referrals).
 - Dokončete **společný prodej pomocí karty Microsoft** a publikujte nabídku na komerčním webu Marketplace.
-- Zadejte prodejní kontakt pro každý společný prodej s nárokem na geografickou oblast a požadované náklady na vyúčtování.
+- Poskytněte prodejní kontakt pro každý společný prodej oprávněného geografického a povinného vyúčtování.
 
 **Partneři služeb**:
 
 - V případě nabídek typu _řešení služby_ musíte mít aktivní Gold Competency v jakékoli oblasti kompetence.
- 
+
 **Business Applications nezávislý výrobce softwaru**:
 
-- Dynamics 365 Customer Engagement & PowerApps a Dynamics 365 finance & Ops (s výjimkou Dynamics 365 Business Central) a PowerApps řešení vyžadují registraci ISV Connect.
+- Dynamics 365 & PowerApps (kromě řešení Dynamics 365 Business Central) vyžadují registraci ISV Connect.
 
 ### <a name="complete-the-co-sell-with-microsoft-tab"></a>Dokončete společný prodej pomocí karty Microsoftu.
 
@@ -82,13 +83,9 @@ Požadavek 2 – předání technického ověření Microsoftu pro řešení zal
 Požadavek 3 – poskytnutí referenčního diagramu architektury:
 - Nahrajte diagram referenční architektury se svými společnými dokumenty v partnerském centru pro kontrolu. Pokyny k vytvoření tohoto diagramu najdete v tématu [diagram referenční architektury](reference-architecture-diagram.md). Informace o nahrávání diagramu najdete v tématu věnovaném [konfiguraci společného prodeje pro nabídku komerčního tržiště](commercial-marketplace-co-sell.md).
 
-## <a name="requirements-for-biz-apps-isv-connect-premium-incentive-status"></a>Požadavky na aplikace pro výrobce ISV Connect status Premium
+## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>Požadavky na Business Applications společný prodej motivovaní stav
 
-Tento stav platí pro řešení založená na protokolu IP, aplikace a služby postavené na Dynamics 365 nebo v aplikacích Power.
-
-Nemusíte dosahovat stav připravenosti na společný prodej (uvedený výše), abyste mohli využívat aplikace \ prodejce ISV Connect Standard motivační. Ale jakmile aplikace dosáhne stavu připraveného pro společný prodej, může se zvážit pro aplikace \ prodejce ISV připojit stav Premium motivační na základě posledních 12 měsíců podílu výnosů a společného prodeje výsledků nebo prahových hodnot.
-
-Požadavek – musíte mít aktivní registraci na úrovni Premium [ISV Connect](business-applications-isv-program.md) .
+Tento stav se vztahuje na řešení založená na IP adrese postavená na Dynamics 365 nebo v aplikacích Power Apps (kromě Dynamics 365 Business Central), které jsou zaregistrované v programu ISV Connect. Nabídky ale musí také doplňovat požadavky na úplný prodej stavu připravenosti (popsaný výše), aby prodejci Microsoftu mohli nabídnout souběžný prodej této nabídky.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,10 +10,10 @@ ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 5e17943d7867bfd6b93d95b6ec0b6e0049a784ef
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103555786"
 ---
 # <a name="samples"></a>ukázky
@@ -22,7 +22,7 @@ Komunikační služby Azure mají k dispozici mnoho ukázek, které můžete pou
 
 ## <a name="application-samples"></a>Ukázky aplikací
 
-| Název vzorku                                                                                          | Popis                                                         | Dostupné jazyky/platformy      |
+| Název vzorku                                                                                          | Description                                                         | Dostupné jazyky/platformy      |
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :--------------------------------- |
 | [Ukázka volání Hero skupiny](./calling-hero-sample.md)                                                | Poskytuje ukázku vytvoření skupiny volající aplikace.          | Web, iOS                           |
 | [Ukázka volání webu](./web-calling-sample.md)                                                        | Podrobný návod pro volání funkcí služby ACS v rámci webu. | Web                                |

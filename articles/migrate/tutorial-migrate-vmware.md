@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: bebc2e629193944c840948c9c573462a43e3032e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 0dcb750871eeae504ddb3d4e3851c834bcad125c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201710"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604538"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
 
@@ -202,6 +202,8 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
 - Pro zvýšení odolnosti:
     - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
     - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+- Pro zvýšení výkonu:
+    - Ve výchozím nastavení jsou datové disky vytvořeny s ukládáním do mezipaměti hostitele nastaveným na hodnotu None. Zkontrolujte a upravte ukládání datových disků do mezipaměti pro potřeby vašich úloh. [Další informace](../virtual-machines/premium-storage-performance.md#disk-caching).  
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).

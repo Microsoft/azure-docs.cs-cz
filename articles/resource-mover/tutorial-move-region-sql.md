@@ -9,10 +9,10 @@ ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 4678a6128be13ac61dc4ac67bbd1a17e99c6d24d
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99820225"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Kurz: Přesunutí prostředků Azure SQL Database do jiné oblasti
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -  Ověřte, že máte přístup *vlastníka* k předplatnému obsahujícímu prostředky, které chcete přesunout.
     - Při prvním přidání prostředku pro konkrétní dvojici zdroje a cíle v rámci předplatného Azure vytvoří [Správce prostředků spravovanou identitu přiřazenou systémem](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (dříve známou jako služba zjištění spravované služby (MSI)), která je pro předplatné důvěryhodná.
@@ -50,7 +50,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 ## <a name="check-sql-requirements"></a>Ověřit požadavky SQL
 
 1. [Ověřte, jestli](support-matrix-move-region-sql.md) jsou funkce databáze nebo elastického fondu podporované pro přesun do jiné oblasti.
-2. V cílové oblasti vytvořte cílový server pro každý zdrojový server. [Přečtěte si další informace](../azure-sql/database/active-geo-replication-security-configure.md#how-to-configure-logins-and-users).
+2. V cílové oblasti vytvořte cílový server pro každý zdrojový server. [Další informace](../azure-sql/database/active-geo-replication-security-configure.md#how-to-configure-logins-and-users).
 4. Pokud jsou databáze šifrované pomocí transparentního šifrování dat (TDE) a používáte vlastní šifrovací klíč v Azure Key Vault, [Přečtěte si, jak](../key-vault/general/move-region.md) přesunout trezory klíčů do jiné oblasti.
 5. Je-li povolena synchronizace dat SQL, je přesouvání členských databází podporováno. Po přesunutí musíte nastavit synchronizaci dat SQL s novou cílovou databází.
 6. Před přesunutím odebrat Pokročilá nastavení zabezpečení dat. Po přesunutí [nakonfigurujte nastavení](../azure-sql/database/azure-defender-for-sql.md) na úrovni SQL Server v cílové oblasti.
@@ -101,7 +101,7 @@ Vyberte prostředky, které chcete přesunout.
 > 
 > - SQL Server je nyní v *nedokončeném stavu ručního přiřazení* .
 > - Další přidané prostředky jsou ve stavu *Příprava čeká na vyřízení* .
-> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Přečtěte si další informace](remove-move-resources.md).
+> - Pokud chcete odebrat prostředek z kolekce přesunutí, metoda pro to závisí na tom, kde se nacházíte v procesu přesunutí. [Další informace](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Vyřešit závislosti
 

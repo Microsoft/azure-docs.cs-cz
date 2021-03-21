@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/17/2021
 ms.author: banders
-ms.openlocfilehash: 477dff9db28672f8231710af34786ac387f43b71
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c666602f764e8274cb2a30df204e97479c85ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050337"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583050"
 ---
 # <a name="view-azure-reservations"></a>Zobrazení rezervací Azure
 
@@ -39,7 +39,7 @@ Pokud chcete správu rezervací umožnit ostatním, máte dvě možnosti:
     1. Vyberte uživatele a pak vyberte **Uložit**.
 
 - Přidání uživatele jako správce fakturace pro smlouvu Enterprise nebo Smlouvu se zákazníkem Microsoftu:
-    - V případě smlouvy Enterprise přidejte uživatele s rolí _Podnikový správce_, kteří mohou zobrazovat a spravovat všechny objednávky rezervací související se smlouvou Enterprise. Uživatelé s rolí _Podnikový správce (jen pro čtení)_ mohou rezervaci jenom zobrazit. Správci oddělení a vlastníci účtů mohou rezervace zobrazovat _jenom v případě_, že je k nim explicitně přidáte pomocí řízení přístupu (IAM). Další informace najdete v článku [Správa rolí Azure Enterprise](../manage/understand-ea-roles.md).
+    - V případě smlouvy Enterprise přidejte uživatele s rolí _Podnikový správce_, kteří mohou zobrazovat a spravovat všechny objednávky rezervací související se smlouvou Enterprise. Správci podnikové sítě zobrazují a spravují rezervace ve **cost management + fakturace**, nikoli v **rezervacích**. Uživatelé s rolí _Podnikový správce (jen pro čtení)_ mohou rezervaci jenom zobrazit. Správci oddělení a vlastníci účtů mohou rezervace zobrazovat _jenom v případě_, že je k nim explicitně přidáte pomocí řízení přístupu (IAM). Další informace najdete v článku [Správa rolí Azure Enterprise](../manage/understand-ea-roles.md).
 
         _Podnikoví správci můžou převzít vlastnictví objednávky rezervace a mohou k rezervaci přidávat další uživatele pomocí řízení přístupu (IAM)._
     - V případě Smlouvy se zákazníkem Microsoftu mohou všechny nákupy rezervací realizované prostřednictvím konkrétního fakturačního profilu spravovat uživatelé s rolí vlastníka nebo přispěvatele tohoto fakturačního profilu. Čtenáři fakturačního profilu a správci faktur mohou zobrazovat všechny rezervace, které se pro daný fakturační profil platí. Nemohou ale v rezervacích dělat změny.

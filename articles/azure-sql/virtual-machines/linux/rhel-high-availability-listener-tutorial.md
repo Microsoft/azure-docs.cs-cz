@@ -8,10 +8,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 83fde9e957cb2011ce585603e51d331be171bc08
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97586207"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure
@@ -98,7 +98,7 @@ Sonda definuje, jak Azure ověřuje, které instance SQL Server aktuálně vlast
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název, který představuje test. Například **SQLAlwaysOnEndPointProbe**. |
-   | **Protokol** |**PROTOKOLU** |
+   | **Protokol** |**TCP** |
    | **Port** |Můžete použít libovolný dostupný port. Například *59999*. |
    | **Interval** |*5* |
    | **Prahová hodnota pro poškozený stav** |*2* |
@@ -127,7 +127,7 @@ Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vy
    | Nastavení | Hodnota |
    | --- | --- |
    | **Název** |Textový název reprezentující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
-   | **Protokol** |**PROTOKOLU** |
+   | **Protokol** |**TCP** |
    | **Port** |*1433* |
    | **Back-endový port** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
    | **Sonda** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |
@@ -175,7 +175,7 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
     sudo pcs constraint list --full
     ```
 
-    Měli byste vidět následující výstup:
+    Měl by se zobrazit následující výstup:
 
     ```output
     Location Constraints:

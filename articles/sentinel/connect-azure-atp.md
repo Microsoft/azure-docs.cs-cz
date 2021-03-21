@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 1fe36dc7b3c04f033c1b693b657e07bcf42e3223
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101714999"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Připojení dat z programu Microsoft Defender k identitě (dříve Rozšířená ochrana před internetovými útoky Azure)
@@ -31,7 +31,7 @@ Tento článek popisuje, jak streamovat výstrahy zabezpečení z [Microsoft Def
 
 Pro přeposílání upozornění na stav kromě výstrah zabezpečení Integrujte program Microsoft Defender pro identitu se serverem syslog. Další informace najdete v dokumentaci k [Microsoft Defenderu pro identitu](/defender-for-identity/setting-syslog). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Uživatel s oprávněními globálního správce nebo správce zabezpečení
 - Musíte být zákazníkem verze Preview programu Microsoft Defender pro identitu a povolit integraci mezi Microsoft Defenderem a identitou a Microsoft Cloud App Security. Další informace najdete v tématu [Microsoft Defender pro integraci identity](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection).

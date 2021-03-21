@@ -4,10 +4,10 @@ description: Sledování výkonu aplikací pro virtuální počítače Azure a A
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101711477"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Nasazení agenta Azure Monitor Application Insights na virtuální počítače Azure a Azure Virtual Machine Scale Sets
@@ -189,7 +189,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions/ApplicationMonitoringWindows
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Přečtěte si tipy pro řešení potíží pro rozšíření Application Insights Monitoring Agent pro aplikace .NET běžící na virtuálních počítačích Azure a službě Virtual Machine Scale Sets.
 

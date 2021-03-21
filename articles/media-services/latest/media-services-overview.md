@@ -78,7 +78,7 @@ Návody obsahují ukázky kódu, které demonstrují, jak dokončit úlohu. V t�
 * [Vytvoření účtu – rozhraní příkazového řádku](./create-account-howto.md)
 * [Přístup k rozhraním API – rozhraní příkazového řádku](./access-api-howto.md)
 * [Kódování pomocí protokolu HTTPS jako vstup úlohy – .NET](job-input-from-http-how-to.md)  
-* [Monitorování událostí – portál](monitor-events-portal-how-to.md)
+* [Monitorování událostí – portál](monitoring/monitor-events-portal-how-to.md)
 * [Dynamické šifrování pomocí více DRM – technologie .NET](protect-with-drm.md) 
 * [Postup kódování pomocí vlastního transformačního rozhraní příkazového řádku](custom-preset-cli-howto.md)
 

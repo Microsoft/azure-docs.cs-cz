@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 4b1c311132cc812ccb2bbbc95c4b7414b108008c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102499199"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS).
@@ -19,7 +19,7 @@ Azure Storage šifruje všechna data v účtu úložiště v klidovém umístěn
 * Podpora šifrování datových disků je omezená na AKS clustery se systémem Kubernetes verze 1,17 a vyšší.
 * Šifrování operačního systému a datového disku pomocí klíčů spravovaných zákazníkem se dá povolit jenom při vytváření clusteru AKS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Pokud používáte Key Vault k šifrování spravovaných disků, musíte povolit ochranu pomocí obnovitelného odstranění a vyprázdnění pro *Azure Key Vault* .
 * Potřebujete Azure CLI verze 2.11.1 nebo novější.
 

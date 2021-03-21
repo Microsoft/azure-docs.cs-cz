@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ec3f53e6f69614028c013efa5f0e6852cbc3f8ae
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631636"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Posílání zpráv a příjem zpráv z Azure Service Bus front (.NET)
@@ -38,7 +38,7 @@ Spusťte Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NET Cor
 
 ### <a name="add-code-to-send-messages-to-the-queue"></a>Přidat kód pro posílání zpráv do fronty
 
-1. V *program.cs* přidejte následující příkazy v `using` horní části definice oboru názvů před deklaraci třídy:
+1. V *programu program. cs* přidejte následující `using` příkazy v horní části definice oboru názvů před deklaraci třídy:
 
     ```csharp
     using System;

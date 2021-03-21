@@ -9,16 +9,16 @@ ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: devx-track-python
 ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98630043"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Odeslání zpráv do Azure Service Bus tématu a příjem zpráv z předplatných do tématu (Python)
 V tomto článku se dozvíte, jak pomocí Pythonu odesílat zprávy Service Bus tématu a přijímat zprávy z odběru tématu. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Předplatné Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md). Poznamenejte si připojovací řetězec, název tématu a název předplatného. Pro tento rychlý Start budete používat jenom jedno předplatné. 
 - Python 2,7 nebo vyšší, s nainstalovaným balíčkem [Azure Python SDK] [balíček Azure Python]. Další informace najdete v příručce pro [instalaci Pythonu](/azure/developer/python/azure-sdk-install).

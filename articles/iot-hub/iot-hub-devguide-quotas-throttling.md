@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 3de9eccd001e421ef3255f83630716df12b7a2ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595256"
+ms.locfileid: "104656987"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -87,7 +87,7 @@ Například můžete použít simulované zařízení k 200 posílání zpráv t
 
 Operace v registru identit zařízení jsou určené pro použití za běhu ve scénářích správy a zřizování zařízení. Načítání a aktualizace velkého počtu identit zařízení je podporované prostřednictvím [úloh importu a exportu](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
 
-Při inicializaci operací identity prostřednictvím [hromadných operací zařízení](iot-hub-bulk-identity-mgmt.md)platí stejné limity omezení. Pokud například chcete odeslat hromadnou operaci pro vytváření zařízení 50 a máte IoT Hub S1 s 1 jednotkou, budou přijímány pouze dvě z těchto hromadných požadavků za minutu. Důvodem je, že omezení operace identity pro u IoT Hub S1 s 1 jednotkou je 100/min/jednotku. V takovém případě by se třetí žádost (a mimo ni) ve stejné minutě zamítla, protože tento limit už byl dosažen. 
+Při inicializaci operací identity prostřednictvím [hromadných operací aktualizace registru](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry) (*nikoli* úloh hromadného importu a exportu) platí stejné limity omezení. Pokud například chcete odeslat hromadnou operaci pro vytváření zařízení 50 a máte IoT Hub S1 s 1 jednotkou, budou přijímány pouze dvě z těchto hromadných požadavků za minutu. Důvodem je, že omezení operace identity pro u IoT Hub S1 s 1 jednotkou je 100/min/jednotku. V takovém případě by se třetí žádost (a mimo ni) ve stejné minutě zamítla, protože tento limit už byl dosažen. 
 
 ### <a name="device-connections-throttle"></a>Omezení připojení zařízení
 

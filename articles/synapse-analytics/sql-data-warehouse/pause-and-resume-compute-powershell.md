@@ -2,21 +2,21 @@
 title: 'Rychlý Start: pozastavení a obnovení výpočetní kapacity ve vyhrazeném fondu SQL (dřív SQL DW) s Azure PowerShell'
 description: Můžete použít Azure PowerShell k pozastavení a obnovení vyhrazeného fondu SQL (dříve SQL DW). výpočetní prostředky.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 03/20/2019
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 0851bbf990e78e32a1b4330719ad82bd6a7d3703
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 74c30a843ef5edd54c7cd19f3fd49acfe782f488
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103600900"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602175"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve vyhrazeném fondu SQL (dřív SQL DW) s Azure PowerShell
 

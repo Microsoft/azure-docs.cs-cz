@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100526421"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>Kurz: Konfigurace analyzovatelné pro Automatické zřizování uživatelů
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v analyzovatelné i Azure A
 > * Udržování uživatelských atributů synchronizovaných mezi službou Azure AD a analyzovatelné
 > * Zřizování skupin a členství ve skupinách v analyzovatelné
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

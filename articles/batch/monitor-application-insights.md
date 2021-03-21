@@ -4,12 +4,12 @@ description: Naučte se, jak instrumentovat aplikaci Azure Batch .NET pomocí kn
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9decb99c3de798df43dedc2441208066d18e3a13
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933558"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605779"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí Application Insights
 
@@ -23,16 +23,16 @@ Ukázkové řešení jazyka C# s kódem, který se doprovází do tohoto článk
 > Jako alternativu můžete nakonfigurovat řešení Batch tak, aby zobrazovalo Application Insightsá data, jako jsou čítače výkonu virtuálních počítačů v Batch Explorer. [Batch Explorer](https://github.com/Azure/BatchExplorer) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který vám umožní vytvářet, ladit a monitorovat Azure Batch aplikace. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows. Rychlé kroky pro povolení Application Insights dat v Batch Explorer najdete v části [úložiště Batch-Insights](https://github.com/Azure/batch-insights) . 
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)
 
 * [Účet Batch a propojený účet úložiště](batch-account-create-portal.md)
 
 * [Prostředek Application Insights](../azure-monitor/app/create-new-resource.md )
   
-   * Pomocí Azure Portal vytvořte *prostředek*Application Insights. Vyberte typ *Obecné* **aplikace**.
+   * Pomocí Azure Portal vytvořte *prostředek* Application Insights. Vyberte typ *Obecné* **aplikace**.
 
-   * Zkopírujte [klíč instrumentace](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) z portálu. Je potřeba ho později v tomto článku.
+   * Zkopírujte [klíč instrumentace](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key) z portálu. Je potřeba ho později v tomto článku.
   
   > [!NOTE]
   > Můžete se vám [účtovat](https://azure.microsoft.com/pricing/details/application-insights/) data uložená v Application Insights. To zahrnuje diagnostická data a monitorování, která jsou popsána v tomto článku.
@@ -54,9 +54,9 @@ Chcete-li instrumentovat svůj kód, vaše řešení musí vytvořit Application
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
 ```
-Do souboru TopNWords.cs také přidejte klíč instrumentace.
+Do souboru ukázce topnwords. cs přidejte taky klíč instrumentace.
 
-Příklad v TopNWords.cs používá následující [volání instrumentace](../azure-monitor/app/api-custom-events-metrics.md) z rozhraní Application Insights API:
+Příklad v ukázce topnwords. cs používá následující [volání instrumentace](../azure-monitor/app/api-custom-events-metrics.md) z rozhraní Application Insights API:
 * `TrackMetric()` -Sleduje, jak dlouho potřebuje výpočetní uzel stáhnout požadovaný textový soubor.
 * `TrackTrace()` – Přidá volání ladění do kódu.
 * `TrackEvent()` – Sleduje zajímavé události k zachycení.
@@ -177,7 +177,7 @@ Chcete-li povolit inicializátor telemetrie, soubor ApplicationInsights.config v
 
 ## <a name="update-the-job-and-tasks-to-include-application-insights-binaries"></a>Aktualizace úlohy a úloh pro zahrnutí Application Insights binárních souborů
 
-Aby Application Insights správně běžela na výpočetních uzlech, ujistěte se, že jsou binární soubory správně umístěny. Přidejte požadované binární soubory do kolekce souborů prostředků úlohy tak, aby se stáhly v době, kdy se úloha spustí. Následující fragmenty kódu jsou podobné kódu v Job.cs.
+Aby Application Insights správně běžela na výpočetních uzlech, ujistěte se, že jsou binární soubory správně umístěny. Přidejte požadované binární soubory do kolekce souborů prostředků úlohy tak, aby se stáhly v době, kdy se úloha spustí. Následující fragmenty kódu jsou podobné kódu v úloze Job. cs.
 
 Nejdřív vytvořte statický seznam Application Insights souborů k nahrání.
 
@@ -287,7 +287,7 @@ Vytvoření ukázkového grafu:
    * Nastavte **typ grafu** na **Grid**.
    * Nastavte **agregaci** na **průměr**.
    * Nastavte **Seskupit podle** na **NodeId**.
-   * V **metrikách**vyberte **vlastní**  >  **stahování objektů BLOB během několika sekund**.
+   * V **metrikách** vyberte **vlastní**  >  **stahování objektů BLOB během několika sekund**.
    * Upravte **paletu barev** zobrazení podle vašeho výběru. 
 
 ![Doba stahování objektu BLOB na uzel](./media/monitor-application-insights/blobdownloadtime.png)

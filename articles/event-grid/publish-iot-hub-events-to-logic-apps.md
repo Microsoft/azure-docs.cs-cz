@@ -9,10 +9,10 @@ ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3772988e9bf4f733323adae6c0527c8b811c4d04
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98624452"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech služby Azure IoT Hub s využitím služeb Event Grid a Logic Apps
@@ -23,7 +23,7 @@ Tento článek vás provede ukázkovou konfigurací, která používá IoT Hub a
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps, jako je například Office 365 Outlook nebo Outlook.com. Tento e-mailový účet se používá k posílání oznámení o událostech.
 

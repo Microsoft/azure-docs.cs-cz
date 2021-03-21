@@ -9,12 +9,12 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: a94064be54c1d957d6e7acb030ffae6a39634f55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d0bee3229bb397fcceb219d506feadb5c542db65
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101183"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595638"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky pro jazyk Java: poznámky k verzi a prostředky
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "93101183"
 > * [Python](table-sdk-python.md)
  
 
-|   |   |
+|   | Odkazy  |
 |---|---|
 |**Stažení sady SDK**|[Možnosti stažení](https://github.com/azure/azure-storage-java#download)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Java API](https://azure.github.io/azure-storage-java/)|
@@ -43,7 +43,7 @@ ms.locfileid: "93101183"
 * Verze pro obecné dostupnosti
 
 ## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení
-Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců** , aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi.
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců**, aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi.
 
 Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
 

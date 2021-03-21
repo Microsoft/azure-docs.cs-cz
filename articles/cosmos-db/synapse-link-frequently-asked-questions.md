@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 120bec65c92e2a13022682265b83bfe0f69d8ed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692262"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592077"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,6 +33,10 @@ Když plánujete nakonfigurovat Azure Cosmos DB účet ve více oblastech s podp
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Můžu povolit připojení Azure synapse jenom pro určitou oblast a ne pro všechny oblasti v nastavení účtu s více oblastmi?
 
 Pokud je pro účet ve více oblastech povolený odkaz Azure synapse, vytvoří se analytické úložiště ve všech oblastech. Podkladová data jsou optimalizována pro propustnost a transakční konzistenci v transakčním úložišti.
+
+### <a name="is-analytical-store-supported-in-all-azure-cosmos-db-regions"></a>Je analytické úložiště podporované ve všech oblastech Azure Cosmos DB?
+
+Ano.
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Podporuje se zálohování a obnovení pro účty s povoleným propojením Azure synapse?
 
@@ -165,6 +169,10 @@ Tato funkce v současné době není k dispozici.
 ### <a name="can-i-do-spark-structured-streaming-from-analytical-store"></a>Můžu se strukturované streamování Sparku z analytického úložiště udělat?
 
 V současné době je podpora strukturovaného streamování Sparku pro Azure Cosmos DB implementovaná pomocí funkce změny kanálu transakčního úložiště a zatím není podporovaná z analytického úložiště.
+
+### <a name="is-streaming-supported"></a>Podporuje streamování?
+
+Streamování dat z analytického úložiště nepodporujeme.
 
 ## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 

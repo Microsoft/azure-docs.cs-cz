@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 426c735dfd0d015cdc1a734edde9d336fb88cfbc
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97486735"
 ---
 Jako součást požadavků pro tento rychlý Start jste stáhli vzorový kód do složky. Pomocí těchto kroků prověřte a upravte vzorový kód.
@@ -12,11 +12,11 @@ Jako součást požadavků pro tento rychlý Start jste stáhli vzorový kód do
 
     Šablona nasazení odkazuje na manifest nasazení pro hraniční zařízení, kde jsou proměnné použity pro některé vlastnosti. Soubor *. env* obsahuje hodnoty pro tyto proměnné.
 1. Přejít do složky *Src/Cloud-to-Device-Console-App* Tady vidíte *appsettings.jsv* souboru a několik dalších souborů:
-    * ***C2D-Console-App. csproj** _ – soubor projektu pro Visual Studio Code.
-    _ ***operations.jsv** _ – seznam operací, které má program spustit.
-    _ ***Program.cs** _ – ukázkový kód programu. Tento kód:
+    * ***C2D-Console-App. csproj*** – soubor projektu pro Visual Studio Code.
+    * ***operations.jsv*** seznamu operací, které má program spustit.
+    * ***Program. cs*** – ukázkový kód programu Tento kód:
 
-        _ Načte nastavení aplikace.
+        * Načte nastavení aplikace.
         * Vyvolá přímé metody, které zveřejňuje živá analýza videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](../../../direct-methods.md). 
         * Pozastaví, aby bylo možné kontrolovat výstup programu v okně **terminálu** a prozkoumávat události vygenerované modulem v okně **výstup** .
         * Vyvolá přímé metody pro vyčištění prostředků.

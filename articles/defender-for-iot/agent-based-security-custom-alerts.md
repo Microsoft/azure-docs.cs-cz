@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/16/2021
 ms.author: shhazam
 ms.openlocfilehash: 5d0eeb046d7a4ba474a1ed4a2cfb07a07f1c3888
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103493301"
 ---
 # <a name="defender-for-iot-devices-custom-security-alerts"></a>Defender pro vlastní výstrahy zabezpečení pro zařízení IoT
@@ -31,7 +31,7 @@ Následující seznamy programu Defender pro výstrahy IoT můžete definovat po
 
 ## <a name="agent-based-security-custom-alerts"></a>Vlastní výstrahy zabezpečení založené na agentech
 
-| Závažnost | Název upozornění | Zdroj dat | Popis | Navrhovaná náprava |
+| Závažnost | Název upozornění | Zdroj dat | Description | Navrhovaná náprava |
 |--|--|--|--|--|
 | Nízká | Vlastní výstraha – počet aktivních připojení je mimo povolený rozsah. | Klasický Defender – IoT-Micro-agent, Azure RTO | Počet aktivních připojení v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. | Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených připojení. |
 | Nízká | Vlastní výstraha – odchozí připojení vytvořené na IP adresu není povolené. | Klasický Defender – IoT-Micro-agent, Azure RTO | Odchozí připojení bylo vytvořeno na IP adresu, která je mimo povolený seznam IP adres. | Prozkoumejte protokoly zařízení. Zjistěte, kde připojení pochází, a zjistěte, jestli je neškodný nebo škodlivý. Pokud máte škodlivou, odstraňte možný malware a porozumět zdroji. Pokud je neškodný, přidejte zdroj do seznamu povolených IP adres. |

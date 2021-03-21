@@ -10,10 +10,10 @@ ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: 4f3ecb6c9aa4ec200cd1a53b82d7c81a2c8d4dcd
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100546784"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Rychlý Start: Začínáme s Azure Stack Edge pro s grafickým procesorem 
@@ -23,7 +23,7 @@ Tento rychlý Start podrobně popisuje požadavky a kroky potřebné k nasazení
 Celkový postup by měl trvat přibližně 1,5 hodin. Podrobné pokyny najdete v tématu [kurz: Příprava na nasazení Azure Stack pro grafický procesor Edge pro](azure-stack-edge-gpu-deploy-prep.md#deployment-configuration-checklist). 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před nasazením se ujistěte, že jsou splněné následující předpoklady:
 

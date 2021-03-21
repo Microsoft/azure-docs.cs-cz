@@ -5,10 +5,10 @@ ms.date: 01/29/2021
 ms.topic: quickstart
 ms.custom: devx-track-python
 ms.openlocfilehash: e3c55cc14a8ac980318fd0de9485a3e0ca31b582
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100101753"
 ---
 # <a name="quickstart-create-a-management-group-with-python"></a>Rychlý Start: Vytvoření skupiny pro správu pomocí Pythonu
@@ -17,7 +17,7 @@ Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, 
 
 První skupina pro správu vytvořená v adresáři může trvat až 15 minut, než se dokončí. Při nastavování služby skupiny pro správu v Azure pro váš adresář existují procesy, které se spouštějí poprvé. Po dokončení procesu obdržíte oznámení. Další informace najdete v tématu [počáteční nastavení skupin pro správu](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

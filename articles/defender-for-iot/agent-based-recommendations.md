@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/16/2021
 ms.author: shhazam
 ms.openlocfilehash: e746f37fdf3b67467c1844ebea9191679d52d6d1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491261"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>Doporučení zabezpečení pro zařízení IoT
@@ -32,7 +32,7 @@ V tomto článku najdete seznam doporučení, která se můžou aktivovat na za�
 
 Doporučení k zařízením poskytují přehledy a návrhy na vylepšení stav zabezpečení zařízení.
 
-| Závažnost | Název | Zdroj dat | Popis |
+| Závažnost | Name | Zdroj dat | Description |
 |--|--|--|--|
 | Střední | Otevřít porty na zařízení | Klasický Defender – IoT-Micro Agent| V zařízení byl nalezen koncový bod naslouchání. |
 | Střední | Opravňující zásady brány firewall nalezené v jednom z řetězů. | Klasický Defender – IoT-Micro Agent| Byly nalezeny povolené zásady brány firewall (vstup/výstup). Zásada brány firewall by měla ve výchozím nastavení odepřít veškerý provoz a definovat pravidla, která budou umožňovat potřebnou komunikaci do a ze zařízení. |
@@ -44,7 +44,7 @@ Doporučení k zařízením poskytují přehledy a návrhy na vylepšení stav z
 
 Provozní doporučení poskytují přehledy a návrhy na vylepšení konfigurace agenta zabezpečení.
 
-| Závažnost | Název | Zdroj dat | Popis |
+| Závažnost | Name | Zdroj dat | Description |
 |--|--|--|--|
 | Nízká | Agent odesílá nevyužité zprávy. | Klasický Defender – IoT-Micro Agent| 10% nebo více zpráv zabezpečení bylo méně než 4 KB za posledních 24 hodin. |
 | Nízká | Konfigurace se zdvojeným zabezpečením není optimální | Klasický Defender – IoT-Micro Agent| Konfigurace s dvojitou bezpečností není optimální. |

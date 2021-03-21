@@ -9,10 +9,10 @@ ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100361005"
 ---
 # <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Kurz: přesouvání šifrovaných virtuálních počítačů Azure napříč oblastmi
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 **Požadavek** |**Podrobnosti**
 --- | ---
@@ -183,7 +183,7 @@ Vyberte prostředky následujícím způsobem:
 > - Prostředky, které přidáte, jsou umístěny do stavu *Příprava čeká na vyřízení* .
 > - Skupina prostředků pro virtuální počítače se přidá automaticky.
 > - Pokud upravíte položky **Konfigurace cíle** tak, aby používaly prostředek, který již existuje v cílové oblasti, stav prostředku je nastaven na *potvrzení čeká na vyřízení*, protože pro něj nemusíte iniciovat jeho přesunutí.
-> - Pokud chcete odebrat prostředek, který byl přidán, metoda, která bude záviset na tom, kde se nacházíte v procesu přesunutí. [Přečtěte si další informace](remove-move-resources.md).
+> - Pokud chcete odebrat prostředek, který byl přidán, metoda, která bude záviset na tom, kde se nacházíte v procesu přesunutí. [Další informace](remove-move-resources.md).
 
 
 ## <a name="resolve-dependencies"></a>Vyřešit závislosti
