@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a4c93b12ad654e54a7f3c7ee0e75507d5cb45e90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907814"
 ---
 # <a name="split-data-module"></a>Modul rozdělení dat
@@ -30,7 +30,7 @@ Tento modul je užitečný v případě, že potřebujete oddělit data do sad p
 > Než zvolíte režim rozdělování, přečtěte si všechny možnosti a určete typ rozdělení, který potřebujete.
 > Pokud změníte rozdělovací režim, všechny ostatní možnosti se můžou resetovat.
 
-1. Přidejte modul **rozdělit data** do kanálu v návrháři. Tento modul můžete najít v části **transformace dat**v kategorii **Ukázka a rozdělení** .
+1. Přidejte modul **rozdělit data** do kanálu v návrháři. Tento modul můžete najít v části **transformace dat** v kategorii **Ukázka a rozdělení** .
 
 1. **Režim rozdělení**: v závislosti na typu dat a způsobu, jakým je chcete rozdělit, vyberte jeden z následujících režimů. Každý režim rozdělování má různé možnosti.
 
@@ -48,7 +48,7 @@ Tento modul je užitečný v případě, že potřebujete oddělit data do sad p
 
 1. Přidejte modul [rozdělit data](./split-data.md) do kanálu v návrháři a připojte datovou sadu, kterou chcete rozdělit.
   
-1. V případě **rozdělení režimu**vyberte **rozdělit řádky**. 
+1. V případě **rozdělení režimu** vyberte **rozdělit řádky**. 
 
 1. **Zlomek řádků v první výstupní sadě dat**: pomocí této možnosti určíte, kolik řádků bude přejít na první (levou stranu) výstup. Všechny ostatní řádky budou umístěny do druhého výstupu (na pravé straně).
 
@@ -62,7 +62,7 @@ Tento modul je užitečný v případě, že potřebujete oddělit data do sad p
 
    Zadání počáteční hodnoty způsobí, že výsledky budou reprodukovatelné. Pokud potřebujete výsledky operace rozdělení zopakovat, měli byste pro generátor náhodných čísel zadat počáteční hodnotu. V opačném případě je náhodné osazení nastaveno na **hodnotu 0**, což znamená, že počáteční počáteční hodnota se získá ze systémových hodin. V důsledku toho může být distribuce dat mírně odlišná pokaždé, když provedete rozdělení. 
 
-1. **Stratified Split**: tuto možnost nastavte na **hodnotu true** , chcete-li zajistit, aby dvě výstupní datové sady obsahovaly reprezentativní vzorek hodnot ve *sloupci vrstvy* nebo ve *sloupci klíč rozdělení*na více úrovní. 
+1. **Stratified Split**: tuto možnost nastavte na **hodnotu true** , chcete-li zajistit, aby dvě výstupní datové sady obsahovaly reprezentativní vzorek hodnot ve *sloupci vrstvy* nebo ve *sloupci klíč rozdělení* na více úrovní. 
 
    V případě vzorkování stratified jsou data rozdělena tak, že každá výstupní datová sada získá zhruba stejné procento každé cílové hodnoty. Například můžete chtít zajistit, aby vaše školicí a testovací sady byly zhruba vyvážené s ohledem na výsledek nebo do jiného sloupce (například pohlaví).
 
@@ -73,7 +73,7 @@ Tento modul je užitečný v případě, že potřebujete oddělit data do sad p
 
 1. Přidejte do svého kanálu modul [rozdělení dat](./split-data.md) a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.  
   
-1. V případě **rozdělení režimu**vyberte možnost **rozdělení regulárního výrazu**.
+1. V případě **rozdělení režimu** vyberte možnost **rozdělení regulárního výrazu**.
 
 1. V poli **regulární výraz** zadejte platný regulární výraz. 
   
@@ -107,7 +107,7 @@ První výsledná datová sada obsahuje všechny řádky, ve kterých indexový 
 
 1. Přidejte do svého kanálu modul [rozdělení dat](./split-data.md) a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.
   
-1. V případě **rozdělení režimu**vyberte **relativní výraz**.
+1. V případě **rozdělení režimu** vyberte **relativní výraz**.
   
 1. Do pole **relační výraz** zadejte výraz, který provádí operaci porovnání v jednom sloupci.
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898220"
 ---
 # <a name="summarize-data"></a>Sumarizace dat
@@ -46,20 +46,20 @@ Modul vypočítá důležité skóre pro jednotlivé sloupce a vrátí řádek s
 
 Sestava z modulu může zahrnovat následující statistiky. 
 
-|Název sloupce|Description|
+|Název sloupce|Popis|
 |------|------|  
 |**Funkce**|Název sloupce|
-|**Počet**|Počet všech řádků|
+|**Výpočtu**|Počet všech řádků|
 |**Počet jedinečných hodnot**|Počet jedinečných hodnot ve sloupci|
 |**Chybějící počet hodnot**|Počet jedinečných hodnot ve sloupci|
 |**Dlouhé**|Nejnižší hodnota ve sloupci|  
-|**Max**|Nejvyšší hodnota ve sloupci|
+|**Počet**|Nejvyšší hodnota ve sloupci|
 |**Průměrná**|Střední hodnota všech hodnot sloupců|
 |**Střední odchylka**|Střední odchylka hodnot sloupců|
 |**1. kvartil**|Hodnota při první kvartil|
 |**Svisl**|Hodnota sloupce mediánu|
 |**třetí kvartil**|Hodnota při třetí kvartil|
-|**Mode**|Režim hodnot sloupců|
+|**Režim**|Režim hodnot sloupců|
 |**Rozsah**|Celé číslo představující počet hodnot mezi maximální a minimální hodnotou|
 |**Odchylka vzorku**|Variance pro sloupec; Viz Poznámka|
 |**Vzorová směrodatná odchylka**|Směrodatná odchylka pro sloupec; Viz Poznámka|

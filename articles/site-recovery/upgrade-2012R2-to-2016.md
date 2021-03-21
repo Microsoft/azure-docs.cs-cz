@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
 ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250062"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Upgrade Windows Server serveru/System Center 2012 R2 VMM na Windows Server/VMM 2016 
@@ -38,14 +38,14 @@ V tomto článku se dozvíte, jak upgradovat následující konfigurace ve vaše
 Před upgradem Vezměte na vědomí následující: –
 
 - Pokud máte hostitele s Windows Serverem 2012 R2, které nespravuje SCVMM, a jde o nastavení samostatného prostředí, při pokusu o provedení upgradu dojde k přerušení replikace.
-- Pokud jste vybrali možnost*Neukládat moje klíče ve službě Active Directory pod správu distribuovaných klíčů*při instalaci SCVMM 2012 R2 na první místo, upgrade se neúspěšně dokončí.
+- Pokud jste vybrali možnost *Neukládat moje klíče ve službě Active Directory pod správu distribuovaných klíčů* při instalaci SCVMM 2012 R2 na první místo, upgrade se neúspěšně dokončí.
 
 - Pokud používáte System Center 2012 R2 VMM, 
 
-    - Podívejte se na informace o databázi v nástroji VMM: nastavení **konzoly VMM**  ->  **settings**  ->  **Obecné**  ->  **připojení k databázi**
+    - Podívejte se na informace o databázi v nástroji VMM: nastavení **konzoly VMM**  ->    ->  **Obecné**  ->  **připojení k databázi**
     - Ověřte účty služeb používané pro System Center Virtual Machine Manager službu agenta.
     - Ujistěte se, že máte zálohu databáze VMM.
-    - Poznamenejte si název databáze zapojených serverů SCVMM. To se dá udělat tak, že přejdete na nastavení **konzoly VMM**  ->  **Settings**  ->  **Obecné**  ->  **připojení k databázi** .
+    - Poznamenejte si název databáze zapojených serverů SCVMM. To se dá udělat tak, že přejdete na nastavení **konzoly VMM**  ->    ->  **Obecné**  ->  **připojení k databázi** .
     - Poznamenejte si ID služby VMM primárního serveru 2012R2 i serveru VMM pro obnovení. ID VMM můžete najít v registru "HKLM: \ SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup".
     - Ujistěte se, že nový SCVMMs, který přidáte do clusteru, má stejné názvy jako předtím. 
 
@@ -75,7 +75,7 @@ Před upgradem hostitelů se systémem Windows Server 2012 R2 je třeba upgradov
 
 1.  Odinstalujte poskytovatele ASR tak, že přejdete na ovládací panel > programy-> programy a funkce – >Microsoft Azure Site Recovery a kliknete na odinstalovat.
 2. [Uchování databáze SCVMM a upgrade operačního systému](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. V panelu **Přidat nebo odebrat programy**vyberte možnost odinstalovat **Nástroj VMM**  >  **Uninstall**. b. Vyberte **Odebrat funkce**a pak vyberte V**mm Server pro správu a konzolu VMM**. c. V **Možnosti databáze**vyberte **Zachovat databázi**. d. Zkontrolujte souhrn a klikněte na **odinstalovat**.
+3. V panelu **Přidat nebo odebrat programy** vyberte možnost odinstalovat **Nástroj VMM**  >  . b. Vyberte **Odebrat funkce** a pak vyberte V **mm Server pro správu a konzolu VMM**. c. V **Možnosti databáze** vyberte **Zachovat databázi**. d. Zkontrolujte souhrn a klikněte na **odinstalovat**.
 
 4. [Instalace nástroje VMM 2016](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Spusťte SCVMM a zaškrtněte na kartě **prostředky infrastruktury** stav všech hostitelů. Kliknutím na **aktualizovat** získáte nejnovější stav. Měl by se zobrazit stav "vyžaduje pozornost". 

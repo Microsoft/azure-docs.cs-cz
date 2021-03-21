@@ -6,10 +6,10 @@ ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87089613"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Windows do Service Fabric
@@ -47,7 +47,7 @@ Vyberte **Service Fabric aplikace**, pojmenujte ji "MyFirstContainer" a kliknět
 
 Z šablon **Hostované kontejnery a aplikace** vyberte **Kontejner**.
 
-Do pole **název Image**zadejte "MCR.Microsoft.com/Windows/ServerCore/IIS:windowsservercore-ltsc2016", [Server jádra Windows serveru a základní bitovou kopii služby IIS](https://hub.docker.com/_/microsoft-windows-servercore-iis).
+Do pole **název Image** zadejte "MCR.Microsoft.com/Windows/ServerCore/IIS:windowsservercore-ltsc2016", [Server jádra Windows serveru a základní bitovou kopii služby IIS](https://hub.docker.com/_/microsoft-windows-servercore-iis).
 
 Nakonfigurujte mapování portů kontejneru na porty hostitele tak, aby se příchozí požadavky na službu na portu 80 mapovaly na port 80 v kontejneru.  Nastavte **Port kontejneru** na 80 a **Port hostitele** také na 80.  
 
@@ -96,7 +96,7 @@ Zkopírujte následující skript do schránky a otevřete **Integrované skript
 
 Po zadání hodnot pro proměnné stiskněte klávesu **F5** ke spuštění skriptu.
 
-Po spuštění skriptu a vytvoření clusteru Najděte `ClusterEndpoint` ve výstupu. Příklad:
+Po spuštění skriptu a vytvoření clusteru Najděte `ClusterEndpoint` ve výstupu. Například:
 
 ```powershell
 ...

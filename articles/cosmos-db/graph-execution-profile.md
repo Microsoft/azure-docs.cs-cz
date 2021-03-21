@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: chrande
 ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087481"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Vyhodnocování dotazů Gremlin s využitím kroku profilu spuštění
@@ -139,12 +139,12 @@ V následujícím příkladu je zobrazený příklad výstupu s poznámkami, kte
 ## <a name="execution-profile-response-objects"></a>Objekty odezvy profilu spuštění
 
 Odezva funkce executionProfile () bude vracet hierarchii objektů JSON s následující strukturou:
-  - **Objekt operace Gremlin** : představuje celou spuštěnou operaci Gremlin. Obsahuje následující vlastnosti.
+  - **Objekt operace Gremlin**: představuje celou spuštěnou operaci Gremlin. Obsahuje následující vlastnosti.
     - `gremlin`: Explicitní příkaz Gremlin, který byl proveden.
     - `totalTime`: Čas (v milisekundách), po který se krok uskutečnil. 
     - `metrics`: Pole obsahující všechny operátory modulu runtime Cosmos DB, které byly provedeny pro splnění dotazu. Tento seznam je seřazen v pořadí podle spuštění.
     
-  - **Cosmos DB operátory runtime** : představují všechny součásti celé operace Gremlin. Tento seznam je seřazen v pořadí podle spuštění. Každý objekt obsahuje následující vlastnosti:
+  - **Cosmos DB operátory runtime**: představují všechny součásti celé operace Gremlin. Tento seznam je seřazen v pořadí podle spuštění. Každý objekt obsahuje následující vlastnosti:
     - `name`: Název operátoru. Toto je typ kroku, který byl vyhodnocen a proveden. Další informace najdete v následující tabulce.
     - `time`: Množství času v milisekundách, které daný operátor trval.
     - `annotations`: Obsahuje další informace, které jsou specifické pro operátor, který byl proveden.

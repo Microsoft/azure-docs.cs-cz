@@ -9,10 +9,10 @@ ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 1ce983ee739a4a124a93c7913f092b23dfec3cbd
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98900849"
 ---
 ## <a name="what-is-a-replication-task"></a>Co je úloha replikace?
@@ -78,7 +78,7 @@ Jedná se o Azure Functions aplikaci, která je nakonfigurovaná tak, aby běže
 Replikační aplikace, které musí mít přístup Event Hubs vázaný na virtuální síť Azure (VNet), musí používat plán Azure Functions Premium a musí být nakonfigurované pro připojení ke stejné virtuální síti, což je také jedna z dostupných možností.
 
 
-|       | Nasazení | Vizualizace  
+|       | Nasadit | Vizualizace  
 |-------|------------------|--------------|---------------|
 | **Plán spotřeby Azure Functions** | [![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2FAconsumption%2Fazuredeploy.json)|[![Vizualizace](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fconsumption%2Fazuredeploy.json)
 | **Plán Azure Functions Premium** |[![Nasadit do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json) | [![Vizualizace](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json)
@@ -127,7 +127,7 @@ Pomocné metody umožňují snadnou replikaci mezi Event Hubs a Service Bus:
 | Service Bus | Service Bus | `Azure.Messaging.Replication.ServiceBusReplicationTasks.ForwardToServiceBus`
 
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 Informace o tom, jak můžete monitorovat aplikaci pro replikaci, najdete v [části monitorování](../articles/azure-functions/configure-monitoring.md) v dokumentaci k Azure Functions.
 
@@ -140,4 +140,4 @@ Pro okamžité diagnostické poznatky můžete pracovat s nástrojem [Live Metri
 * [Nasazení Azure Functions](../articles/azure-functions/functions-deployment-technologies.md)
 * [Diagnostika Azure Functions](../articles/azure-functions/functions-diagnostics.md)
 * [Možnosti Azure Functions sítě](../articles/azure-functions/functions-networking-options.md)
-* [Azure Application Insights](../articles/azure-monitor/app/app-insights-overview.md)
+* [Application Insights Azure](../articles/azure-monitor/app/app-insights-overview.md)

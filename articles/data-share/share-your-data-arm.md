@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
 ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487683"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>Rychlý Start: sdílení dat pomocí šablony Azure Data Share a ARM
@@ -77,14 +77,14 @@ Je to proto, že se nasazení pokouší vytvořit datovou sadu, aby bylo možné
     * **E-mail pozvánky**: zadejte přihlašovací e-mailovou adresu příjemce pro sdílení dat.  E-mailový alias nefunguje.
 
     Pro zbývající nastavení použijte výchozí hodnotu.
-1. vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**a s vybranou volbou **koupit**.
+1. vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře** a s vybranou volbou **koupit**.
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Otevřete účet pro sdílení dat, který jste vytvořili.
 1. V nabídce vlevo vyberte **Odeslat sdílené složky**.  V seznamu se zobrazí účet úložiště.
-1. Vyberte účet úložiště.  V části **Podrobnosti**se zobrazí nastavení synchronizace, jak jste nakonfigurovali v šabloně.
+1. Vyberte účet úložiště.  V části **Podrobnosti** se zobrazí nastavení synchronizace, jak jste nakonfigurovali v šabloně.
 
     ![Nastavení synchronizace účtu úložiště Azure Data Share](./media/share-your-data-arm/azure-data-share-storage-account-synchronization-settings.png)
 1. V horní části vyberte **pozvánky** . Zobrazí se vám e-mailová adresa, kterou jste zadali při nasazení šablony. **Stav** bude čeká na **vyřízení**.

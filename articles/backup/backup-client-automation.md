@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak pomocí PowerShellu nastavit Azur
 ms.topic: conceptual
 ms.date: 12/2/2019
 ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90987103"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
@@ -58,7 +58,7 @@ Následující kroky vás provedou vytvořením trezoru Recovery Services. Recov
 
 K zobrazení seznamu všech trezorů v rámci aktuálního předplatného použijte **příkaz Get-AzRecoveryServicesVault** . Tento příkaz můžete použít ke kontrole vytvoření nového trezoru nebo k zobrazení, které trezory jsou k dispozici v rámci předplatného.
 
-V seznamu je spuštěný příkaz, **Get-AzRecoveryServicesVault**a všechny trezory v rámci předplatného.
+V seznamu je spuštěný příkaz, **Get-AzRecoveryServicesVault** a všechny trezory v rámci předplatného.
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -97,7 +97,7 @@ MARSAgentInstaller.exe /q
 
 Tím se nainstaluje Agent se všemi výchozími možnostmi. Instalace na pozadí trvá několik minut. Pokud nezadáte možnost */Nu* , otevře se na konci instalace okno **web Windows Update** , kde můžete vyhledat jakékoli aktualizace. Po nainstalování se Agent zobrazí v seznamu nainstalovaných programů.
 
-Seznam nainstalovaných programů zobrazíte tak, že přejdete do části **Ovládací panely**programy programy  >  **Programs**  >  **a funkce**.
+Seznam nainstalovaných programů zobrazíte tak, že přejdete do části **Ovládací panely** programy programy  >    >  **a funkce**.
 
 ![Agent nainstalován](./media/backup-client-automation/installed-agent-listing.png)
 

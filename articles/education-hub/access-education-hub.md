@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 995956e23e211d2182159f6e61abbbf184983ab0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102009"
 ---
 # <a name="accessing-the-azure-education-hub"></a>Přístup k Centrum Education Azure
@@ -32,7 +32,7 @@ Pokud chcete získat přístup k Azure Centrum Education, měli byste už obdrž
    > [!IMPORTANT]
    > Potvrďte, že se přihlašujete pomocí organizačního nebo pracovního účtu (jako je vaše instituce @domain.edu ). Pokud ano, vyberte nejprve tuto možnost na levé straně okna. Tím přejdete na jinou přihlašovací obrazovku.
 
-    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Otevřete okno privátního prohlížeče." border="false":::
+    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Přihlašovací dialogové okno organizace" border="false":::
 
 1. Až budete přihlášeni, budete přesměrováni na Azure Portal. Pokud chcete najít Centrum Education, přejděte do nabídky **všechny služby** a vyhledejte **vzdělávání**.
    Když se poprvé přihlásíte, zobrazí se stránka Začínáme.

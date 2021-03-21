@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
 ms.openlocfilehash: af7900faff18d526686b80f23b9de3b3bce5ec5c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93309608"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Vytváření kanálů CI/CD pro aplikace AI pomocí Azure Pipelines, Docker a Kubernetes
@@ -60,7 +60,7 @@ Následující diagram a kroky popisují architekturu kanálu CI/CD:
 10. Žádosti uživatelů o aplikaci procházejí serverem DNS.
 11. Server DNS předává požadavky do nástroje pro vyrovnávání zatížení a odesílá odpovědi zpět uživatelům.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Vědecké zpracování týmových dat (TDSP)](./index.yml)
 - [Azure Machine Learning (AML)](../index.yml)

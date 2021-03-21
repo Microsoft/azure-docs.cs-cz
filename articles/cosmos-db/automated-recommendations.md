@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
 ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087821"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Automatizovaná doporučení pro Azure Cosmos DB
@@ -27,9 +27,9 @@ Doporučení pro Azure Cosmos DB můžete zobrazit následujícími způsoby:
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="Zobrazit doporučení z Azure Cosmos DBho podokna":::
 
-- Doporučení můžete také najít prostřednictvím [Azure Advisor](../advisor/advisor-overview.md) v kategoriích podle různých sad, jako jsou náklady, zabezpečení, spolehlivost, výkon a provozní kvalita. Můžete vybrat konkrétní předplatná a filtrovat podle typu prostředku, který je **Azure Cosmos DB účtů** .  Když vyberete konkrétní doporučení, zobrazí se akce, které můžete využít k výhodám vašich úloh.
+- Doporučení můžete také najít prostřednictvím [Azure Advisor](../advisor/advisor-overview.md) v kategoriích podle různých sad, jako jsou náklady, zabezpečení, spolehlivost, výkon a provozní kvalita. Můžete vybrat konkrétní předplatná a filtrovat podle typu prostředku, který je **Azure Cosmos DB účtů**.  Když vyberete konkrétní doporučení, zobrazí se akce, které můžete využít k výhodám vašich úloh.
 
-   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Zobrazit doporučení z Azure Cosmos DBho podokna":::
+   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Zobrazit doporučení z Azure Advisorho podokna":::
 
 Ne všechna doporučení zobrazená v podokně Azure Cosmos DB jsou k dispozici v Azure Advisor a naopak. To je proto, že na základě typu doporučení, které odpovídají, do podokna Azure Advisor, Azure Cosmos DBho podokna nebo obojího.
 

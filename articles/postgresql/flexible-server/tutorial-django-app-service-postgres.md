@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490097"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Kurz: nasazení aplikace v Django s využitím App Service a Azure Database for PostgreSQLm flexibilním serverem (Preview)
@@ -57,7 +57,7 @@ cd djangoapp
 
 # <a name="download"></a>[Stáhnout](#tab/download)
 
-Přejděte na [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) , vyberte **klonovat**a pak vyberte **Stáhnout ZIP**.
+Přejděte na [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) , vyberte **klonovat** a pak vyberte **Stáhnout ZIP**.
 
 Rozbalte soubor ZIP do složky s názvem *djangoapp*.
 
@@ -161,7 +161,7 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
 
 1. V prohlížeči otevřete adresu URL *http: \/ / \<app-name> . azurewebsites.NET*. Aplikace by měla zobrazovat zprávu "nejsou k dispozici žádná hlasování", protože v databázi zatím nejsou žádná konkrétní hlasování.
 
-1. Přejděte na *http: \/ / \<app-name> . azurewebsites.NET/admin*. Přihlaste se pomocí přihlašovacích údajů naduživatelem z předchozí části ( `root` a `postgres1` ). V části **cyklické dotazování**vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
+1. Přejděte na *http: \/ / \<app-name> . azurewebsites.NET/admin*. Přihlaste se pomocí přihlašovacích údajů naduživatelem z předchozí části ( `root` a `postgres1` ). V části **cyklické dotazování** vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
 
 1. Přejděte znovu na *http: \/ / \<app-name> . azurewebsites.NET/* a potvrďte, že se teď otázky zobrazují uživateli. Odpovězte na otázky, ale chcete v databázi generovat nějaká data.
 
@@ -200,7 +200,7 @@ Otestujte aplikaci místně pomocí následujících kroků:
 
 1. V prohlížeči otevřete *http: \/ /localhost: 8000* , ve kterém by se měla zobrazit zpráva "žádné dotazy nejsou k dispozici".
 
-1. Přejít na *http: \/ /localhost: 8000/admin* a přihlaste se pomocí uživatele s oprávněními, kterého jste vytvořili dříve. V části **cyklické dotazování**znovu vyberte **Přidat** další **otázky** a vytvořte otázku dotazování s některými možnostmi.
+1. Přejít na *http: \/ /localhost: 8000/admin* a přihlaste se pomocí uživatele s oprávněními, kterého jste vytvořili dříve. V části **cyklické dotazování** znovu vyberte **Přidat** další **otázky** a vytvořte otázku dotazování s některými možnostmi.
 
 1. Přejít na *http: \/ /localhost: 8000* znovu a odpovědět na dotaz pro otestování aplikace.
 
@@ -270,11 +270,11 @@ Přejděte na *http: \/ / \<app-name> . azurewebsites.NET* a otestujte aplikaci 
 
 V [Azure Portal](https://portal.azure.com)vyhledejte název aplikace a ve výsledcích vyberte aplikaci.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Příklad výstupu vývojového serveru Django":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="V Azure Portal přejděte do vaší aplikace Python Django":::
 
 Ve výchozím nastavení na portálu se zobrazí stránka **Přehled** vaší aplikace, která poskytuje obecné zobrazení výkonu. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Příklad výstupu vývojového serveru Django":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Správa aplikace Python Django na stránce Přehled v Azure Portal":::
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

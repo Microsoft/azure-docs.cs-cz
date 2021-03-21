@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a78abea5bcc5925cb2e137d918c7217ae92b118e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044319"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure z příkazového řádku
@@ -101,9 +101,9 @@ V této části vytvoříte místní <abbr title="Logický kontejner pro jednu n
     
     <br/>   
     <details>  
-    <summary><strong>Volitelné: kód pro HttpExample.cs</strong></summary>  
+    <summary><strong>Volitelné: kód pro HttpExample. cs</strong></summary>  
     
-    *HttpExample.cs* obsahuje `Run` metodu, která přijímá data požadavku v `req` proměnné, je [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , který je upraven pomocí **HttpTriggerAttribute**, který definuje chování triggeru.
+    *HttpExample. cs* obsahuje `Run` metodu, která přijímá data žádosti v `req` proměnné je [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , který je upravený pomocí **HttpTriggerAttribute**, který definuje chování triggeru.
 
     :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
         

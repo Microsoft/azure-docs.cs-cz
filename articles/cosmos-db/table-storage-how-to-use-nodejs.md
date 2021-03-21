@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
 ms.openlocfilehash: 2d40b70d49b1934c9dd2d911369245b1b2e4f2ff
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079695"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
@@ -43,7 +43,7 @@ Pokud chcete používat službu Azure Storage nebo Azure Cosmos DB, potřebujete
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Instalace balíčku pomocí Node Package Manageru (NPM)
 
 1. Použijte rozhraní příkazového řádku, jako je **PowerShell** (Windows), **Terminál** (Mac) nebo **Bash** (Unix), a přejděte do složky, ve které jste vytvořili svou aplikaci.
-2. Do příkazového okna zadejte **npm install azure-storage** . Výstup příkazu je podobný následujícímu příkladu.
+2. Do příkazového okna zadejte **npm install azure-storage**. Výstup příkazu je podobný následujícímu příkladu.
 
    ```bash
     azure-storage@0.5.0 node_modules\azure-storage
@@ -58,7 +58,7 @@ Pokud chcete používat službu Azure Storage nebo Azure Cosmos DB, potřebujete
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
    ```
 
-3. Můžete ručně spustit příkaz **ls** a ověřit, že se vytvořila složka **node_modules** . Uvnitř této složky najdete balíček **azure-storage** obsahující knihovny, které potřebujete pro přístup k úložišti.
+3. Můžete ručně spustit příkaz **ls** a ověřit, že se vytvořila složka **node_modules**. Uvnitř této složky najdete balíček **azure-storage** obsahující knihovny, které potřebujete pro přístup k úložišti.
 
 ### <a name="import-the-package"></a>Import balíčku
 
@@ -133,7 +133,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-Pokud chcete přidat entitu, nejprve vytvořte objekt definující vlastnosti entity. Všechny entity musí obsahovat **PartitionKey** a **RowKey** , což jsou jedinečné identifikátory entity.
+Pokud chcete přidat entitu, nejprve vytvořte objekt definující vlastnosti entity. Všechny entity musí obsahovat **PartitionKey** a **RowKey**, což jsou jedinečné identifikátory entity.
 
 * **PartitionKey** – Určuje oddíl, ve kterém je entita uložená.
 * **RowKey** – Jednoznačně identifikuje entitu v rámci oddílu.
@@ -269,7 +269,7 @@ Operace přidané do dávky můžete prozkoumat zobrazením vlastnosti `operatio
 
 ## <a name="retrieve-an-entity-by-key"></a>Načtení entity podle klíče
 
-Pokud chcete vrátit konkrétní entitu na základě hodnot **PartitionKey** a **RowKey** , použijte metodu **retrieveEntity** .
+Pokud chcete vrátit konkrétní entitu na základě hodnot **PartitionKey** a **RowKey**, použijte metodu **retrieveEntity**.
 
 ```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
@@ -300,7 +300,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-Vzhledem k tomu, že se nepoužila klauzule **select** , vrátí se všechna pole. Pokud chcete provést dotaz na tabulku, použijte **queryEntities** . Následující příklad pomocí tohoto dotazu vrátí entity z tabulky mytable.
+Vzhledem k tomu, že se nepoužila klauzule **select**, vrátí se všechna pole. Pokud chcete provést dotaz na tabulku, použijte **queryEntities**. Následující příklad pomocí tohoto dotazu vrátí entity z tabulky mytable.
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -310,12 +310,12 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-V případě úspěchu bude `result.entries` obsahovat pole entit, které odpovídají dotazu. Pokud dotaz nedokáže vrátit všechny entity, token `result.continuationToken` bude mít jinou hodnotu než *null* a můžete ho použít jako třetí parametr metody **queryEntities** pro načtení dalších výsledků. V počátečním dotazu jako třetí parametr použijte hodnotu *null* .
+V případě úspěchu bude `result.entries` obsahovat pole entit, které odpovídají dotazu. Pokud dotaz nedokáže vrátit všechny entity, token `result.continuationToken` bude mít jinou hodnotu než *null* a můžete ho použít jako třetí parametr metody **queryEntities** pro načtení dalších výsledků. V počátečním dotazu jako třetí parametr použijte hodnotu *null*.
 
 ### <a name="query-a-subset-of-entity-properties"></a>Dotaz na podmnožinu vlastností entity
 
 Dotaz na tabulku dokáže z entity načíst pouze několik polí.
-Díky tomu se snižuje šířka pásma a může se zlepšit výkon dotazů, zejména u velkých entit. Použijte klauzuli **select** a předejte názvy polí, které se mají vrátit. Například následující dotaz vrátí pouze pole **description** a **dueDate** .
+Díky tomu se snižuje šířka pásma a může se zlepšit výkon dotazů, zejména u velkých entit. Použijte klauzuli **select** a předejte názvy polí, které se mají vrátit. Například následující dotaz vrátí pouze pole **description** a **dueDate**.
 
 ```javascript
 var query = new azure.TableQuery()
@@ -326,7 +326,7 @@ var query = new azure.TableQuery()
 
 ## <a name="delete-an-entity"></a>Odstranění entity
 
-Entitu můžete odstranit pomocí jejího klíče oddílu a řádku. V tomto příkladu objekt **task1** obsahuje hodnoty **RowKey** a **PartitionKey** entity, která se má odstranit. Objekt se pak předá do metody **deleteEntity** .
+Entitu můžete odstranit pomocí jejího klíče oddílu a řádku. V tomto příkladu objekt **task1** obsahuje hodnoty **RowKey** a **PartitionKey** entity, která se má odstranit. Objekt se pak předá do metody **deleteEntity**.
 
 ```javascript
 var task = {
@@ -358,7 +358,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 });
 ```
 
-Pokud si nejste jisti, jestli tabulka existuje, použijte **deleteTableIfExists** .
+Pokud si nejste jisti, jestli tabulka existuje, použijte **deleteTableIfExists**.
 
 ## <a name="use-continuation-tokens"></a>Použití tokenů pro pokračování
 
@@ -417,7 +417,7 @@ var host = tableSvc.host;
 
 Všimněte si, že musíte zadat také informace o hostiteli, které se vyžadují při pokusu držitele SAS o přístup k tabulce.
 
-Klientská aplikace pak provádí operace s tabulkou pomocí SAS a metody **TableServiceWithSAS** . Následující příklad se připojí k tabulce a provede dotaz. Informace o formátu tableSAS najdete v článku [udělení omezeného přístupu k prostředkům Azure Storage pomocí článku sdílené přístupové podpisy (SAS)](../storage/common/storage-sas-overview.md) .
+Klientská aplikace pak provádí operace s tabulkou pomocí SAS a metody **TableServiceWithSAS**. Následující příklad se připojí k tabulce a provede dotaz. Informace o formátu tableSAS najdete v článku [udělení omezeného přístupu k prostředkům Azure Storage pomocí článku sdílené přístupové podpisy (SAS)](../storage/common/storage-sas-overview.md) .
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;

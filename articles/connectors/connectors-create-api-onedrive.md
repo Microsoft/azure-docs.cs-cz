@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040230"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Přístup k souborům v konektoru OneDrive a jejich správa pomocí Azure Logic Apps
@@ -28,7 +28,7 @@ Další informace o Logic Apps najdete v tématu [co jsou Logic Apps](../logic-a
 
 ## <a name="connect-to-onedrive"></a>Připojení k OneDrivu
 
-Předtím, než vaše aplikace logiky bude mít přístup k jakékoli službě, musíte nejprve vytvořit *připojení* ke službě. Připojení zajišťuje připojení mezi aplikací logiky a jinou službou. Pokud se například chcete připojit k OneDrivu, budete nejdřív potřebovat *připojení*k OneDrivu. Pokud chcete vytvořit připojení, zadejte přihlašovací údaje, které běžně používáte pro přístup ke službě, ke které se chcete připojit. Pokud tedy máte na OneDrivu, zadejte přihlašovací údaje k účtu OneDrive a vytvořte připojení.
+Předtím, než vaše aplikace logiky bude mít přístup k jakékoli službě, musíte nejprve vytvořit *připojení* ke službě. Připojení zajišťuje připojení mezi aplikací logiky a jinou službou. Pokud se například chcete připojit k OneDrivu, budete nejdřív potřebovat *připojení* k OneDrivu. Pokud chcete vytvořit připojení, zadejte přihlašovací údaje, které běžně používáte pro přístup ke službě, ke které se chcete připojit. Pokud tedy máte na OneDrivu, zadejte přihlašovací údaje k účtu OneDrive a vytvořte připojení.
 
 ### <a name="create-the-connection"></a>Vytvoření připojení
 
@@ -50,7 +50,7 @@ Trigger je událost, která se dá použít ke spuštění pracovního postupu d
 
    V tomto příkladu se aplikace logiky spustí, když se aktualizuje soubor v zvolené složce. Pokud chcete zobrazit výsledky této aktivační události, přidejte další akci, která vám pošle e-mail. Přidejte například *e-mailovou* akci pro Office 365 Outlook, která vás pošle e-mailem při aktualizaci souboru.
 
-3. Vyberte tlačítko **Upravit** a nastavte hodnoty **frekvence** a **interval** . Například pokud chcete, aby se Trigger dotazoval každých 15 minut, nastavte **četnost** na **minuty**a nastavte **interval** na **15**. 
+3. Vyberte tlačítko **Upravit** a nastavte hodnoty **frekvence** a **interval** . Například pokud chcete, aby se Trigger dotazoval každých 15 minut, nastavte **četnost** na **minuty** a nastavte **interval** na **15**. 
 
    ![Dialogové okno s názvem "při úpravě souboru" zobrazuje pět polí označených jako "složka", "frekvence", "INTERVAL", "TIMEZONE" a "čas spuštění". Existují rozevírací seznamy pro pole četnost a časové pásmo.](./media/connectors-create-api-onedrive/trigger-properties.png)
 
@@ -60,7 +60,7 @@ Trigger je událost, která se dá použít ke spuštění pracovního postupu d
 
 Akce je operace prováděná pracovním postupem, který je definován v aplikaci logiky. [Přečtěte si další informace o akcích](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Vyberte znaménko plus. Zobrazí se několik možností: **přidat akci**, **Přidat podmínku**nebo jednu z **dalších** možností.
+1. Vyberte znaménko plus. Zobrazí se několik možností: **přidat akci**, **Přidat podmínku** nebo jednu z **dalších** možností.
 
    ![Snímek obrazovky ukazuje čtyři tlačítka: "+ nový krok", "přidat akci", "Přidat podmínku", a "... Další ".](./media/connectors-create-api-onedrive/add-action.png)
 
@@ -70,7 +70,7 @@ Akce je operace prováděná pracovním postupem, který je definován v aplikac
 
    ![Dialogové okno s názvem "Zobrazit Microsoft spravované A P I" obsahuje pole, které obsahuje "OneDrive". Níže je uveden seznam osmi akcí. První je "OneDrive – vytvořit soubor" a je vybraný.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
-4. V našem příkladu vyberte **OneDrive – vytvořit soubor**. Pokud již existuje připojení, vyberte **cestu ke složce** , kam chcete soubor vložit, zadejte **název souboru**a zvolte požadovaný **obsah souboru** :  
+4. V našem příkladu vyberte **OneDrive – vytvořit soubor**. Pokud již existuje připojení, vyberte **cestu ke složce** , kam chcete soubor vložit, zadejte **název souboru** a zvolte požadovaný **obsah souboru** :  
 
    ![Dialogové okno s názvem "vytvořit soubor" zobrazuje tři pole označená "cesta ke složce", "název souboru" a "obsah složky". Vedle pole cesta ke složce je tlačítko procházení adresáře.](./media/connectors-create-api-onedrive/sample-action.png)
 

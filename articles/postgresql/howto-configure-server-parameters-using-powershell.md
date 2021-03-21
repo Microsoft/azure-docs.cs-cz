@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 24106e40a78d4b5607c352ffd49a310533760a66
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489944"
 ---
 # <a name="customize-azure-database-for-postgresql-server-parameters-using-powershell"></a>Přizpůsobení parametrů Azure Database for PostgreSQL serveru pomocí PowerShellu
@@ -50,7 +50,7 @@ Definice všech uvedených parametrů naleznete v části Reference PostgreSQL v
 
 Chcete-li zobrazit podrobnosti o konkrétním parametru konfigurace pro server, spusťte `Get-AzPostgreSqlConfiguration` rutinu a zadejte parametr **Name** .
 
-Tento příklad ukazuje podrobnosti parametru konfigurace serveru **pomalého \_ dotazu \_ ** pro server **mydemoserver** v části Skupina prostředků **myresourcegroup**.
+Tento příklad ukazuje podrobnosti parametru konfigurace serveru **pomalého \_ dotazu \_** pro server **mydemoserver** v části Skupina prostředků **myresourcegroup**.
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -60,7 +60,7 @@ Get-AzPostgreSqlConfiguration -Name slow_query_log -ResourceGroupName myresource
 
 Můžete také změnit hodnotu určitého parametru konfigurace serveru, který aktualizuje základní konfigurační hodnotu pro modul PostgreSQL serveru. Pokud chcete aktualizovat konfiguraci, použijte `Update-AzPostgreSqlConfiguration` rutinu.
 
-Pokud chcete aktualizovat parametr konfigurace serveru s **pomalým \_ dotazem \_ ** na serveru **mydemoserver** v části Skupina prostředků **myresourcegroup**.
+Pokud chcete aktualizovat parametr konfigurace serveru s **pomalým \_ dotazem \_** na serveru **mydemoserver** v části Skupina prostředků **myresourcegroup**.
 
 ```azurepowershell-interactive
 Update-AzPostgreSqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver -Value On

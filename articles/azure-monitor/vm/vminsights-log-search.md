@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 28ee7f3d327c09f5837c7dc9e2f39c0f2ca4d888
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046529"
 ---
 # <a name="how-to-query-logs-from-vm-insights"></a>Dotazování protokolů z virtuálních počítačů Insights
@@ -111,7 +111,7 @@ Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základ�
 |:--|:--|
 |MaliciousIp |Adresa RemoteIp |
 |IndicatorThreadType |Zjištěného indikátoru hrozby je jedna z následujících hodnot: *botnetu*, *C2*, *CryptoMining*, *adres darknetu*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *seznamu ke zhlédnutí*.   |
-|Popis |Popis pozorované hrozby. |
+|Description |Popis pozorované hrozby. |
 |TLPLevel |Úroveň TLP (provoz Light Protocol) je jedna z definovaných hodnot, *bílá*, *zelená*, *oranžová* a *červená*. |
 |Spolehlivost |Hodnoty jsou *0 – 100*. |
 |Závažnost |Hodnoty jsou *0 – 5*, přičemž *5* je nejzávažnější a *0* není u sebe závažná. Výchozí hodnota je *3*.  |
@@ -232,7 +232,7 @@ Záznamy s typem *VMProcess* mají data inventáře pro procesy připojené k pr
 |Group (Skupina) | Název skupiny procesů Procesy ve stejné skupině jsou logicky související, například součást stejné produktové nebo systémové komponenty. |
 |StartTime | Čas spuštění fondu procesů |
 |FirstPid | První PID ve fondu procesů |
-|Popis | Popis procesu |
+|Description | Popis procesu |
 |CompanyName | Název společnosti |
 |Vnitřní | Interní název |
 |ProductName | Název produktu |
@@ -441,7 +441,7 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 |Počítač | Plně kvalifikovaný název domény počítače | 
 |Zdroj | *vm.azm.ms* |
 |Obor názvů | Kategorie čítače výkonu | 
-|Název | Název čítače výkonu |
+|Name | Název čítače výkonu |
 |Val | Shromážděná hodnota | 
 |Značky | Související podrobnosti o záznamu Značky používané s různými typy záznamů najdete v následující tabulce.  |
 |ID agenta | Jedinečný identifikátor pro každého agenta počítače |
@@ -450,7 +450,7 @@ Záznamy s typem *InsightsMetrics* mají údaje o výkonu z hostovaného operač
 
 Čítače výkonu, které jsou aktuálně shromážděny do tabulky *InsightsMetrics* , jsou uvedeny v následující tabulce:
 
-| Obor názvů | Název | Popis | Jednotka | Značky |
+| Obor názvů | Název | Description | Jednotka | Značky |
 |:---|:---|:---|:---|:---|
 | Počítač    | Tep             | Prezenční signál počítače                        | | |
 | Memory (Paměť)      | AvailableMB           | Bajty dostupné paměti                    | Megabajty      | memorySizeMB – celková velikost paměti|

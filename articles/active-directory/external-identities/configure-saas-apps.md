@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90705506"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
@@ -48,7 +48,7 @@ Pokud chcete uživatelům povolit, aby se přihlásili pomocí svého účtu org
 
    ![Konfigurace jednotného přihlašování pro aplikaci](media/configure-saas-apps/configure-app-sso.png)
 
-4. Pokud chcete stáhnout certifikát, který se má použít pro konfiguraci Dropboxu, vyberte **Konfigurovat Dropbox**a pak v seznamu vyberte **adresu URL jednotného přihlašování SAML** .
+4. Pokud chcete stáhnout certifikát, který se má použít pro konfiguraci Dropboxu, vyberte **Konfigurovat Dropbox** a pak v seznamu vyberte **adresu URL jednotného přihlašování SAML** .
 
    ![Stahuje se certifikát pro konfiguraci Dropboxu.](media/configure-saas-apps/download-certificate.png)
 
@@ -86,13 +86,13 @@ Uživatelům můžete povolit, aby mohli k účtu Azure AD ověřovat uživatele
 
    b. Do pole **identifikátor uživatele** zadejte **User. mail** (pro jednotné přihlašování pro účty hosta).
 
-   c. V části **podpisový certifikát SAML**klikněte na **vytvořit nový certifikát**.
+   c. V části **podpisový certifikát SAML** klikněte na **vytvořit nový certifikát**.
 
    d. Pokud chcete začít konfigurovat tenanta Box.com, aby používal Azure AD jako zprostředkovatele identity, Stáhněte si soubor metadat a uložte ho na místní disk.
 
    e. Předejte soubor metadat do týmu podpory box, který nakonfiguruje jednotné přihlašování za vás.
 
-3. Pro automatické uživatelské nastavení Azure AD v levém podokně vyberte **zřizování**a potom vyberte **autorizovat**.
+3. Pro automatické uživatelské nastavení Azure AD v levém podokně vyberte **zřizování** a potom vyberte **autorizovat**.
 
    ![Autorizace Azure AD pro připojení k boxu](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 

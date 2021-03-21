@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.subservice: tables
 ms.openlocfilehash: 8f3bd2a998066804bfb589e3262ac5e68db601fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93306937"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Návrh škálovatelných a výkonných tabulek
@@ -98,7 +98,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 </td>
 </tr>
 <tr>
-<td>Prodej</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014 – 08-22T00:50:44Z</td>
 <td>

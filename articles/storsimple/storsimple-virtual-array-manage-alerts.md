@@ -16,17 +16,17 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 12fcc9996697f3bbba35826d79bec238bfb0f8b3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993009"
 ---
-# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Použití Device Manager StorSimple ke správě výstrah pro virtuální pole StorSimple
+# <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Použití Správce zařízení StorSimple ke správě výstrah pro virtuální pole StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Funkce výstrahy ve službě StorSimple Device Manager poskytuje způsob, jak zkontrolovat a vymazat výstrahy související s virtuálními poli StorSimple na základě v reálném čase. Pomocí upozornění v okně **souhrnu služby** můžete centrálně monitorovat problémy se stavem StorSimple virtuálních polí a celkového řešení Microsoft Azure StorSimple.
+Funkce výstrahy ve službě StorSimple Správce zařízení poskytuje způsob, jak zkontrolovat a vymazat výstrahy související s virtuálními poli StorSimple na základě v reálném čase. Pomocí upozornění v okně **souhrnu služby** můžete centrálně monitorovat problémy se stavem StorSimple virtuálních polí a celkového řešení Microsoft Azure StorSimple.
 
 V tomto kurzu se dozvíte, jak nakonfigurovat upozornění na výstrahy, běžné podmínky upozornění, úrovně závažnosti výstrahy a jak zobrazovat a sledovat výstrahy. Kromě toho zahrnuje rychlé referenční tabulky výstrah, které umožňují rychle vyhledat konkrétní výstrahu a vhodně reagovat.
 
@@ -43,7 +43,7 @@ Po povolení e-mailových oznámení pro virtuální pole budou členové seznam
 
 #### <a name="to-enable-email-notification-for-alerts"></a>Povolení e-mailových oznámení pro výstrahy
 
-1. Přejděte do služby StorSimple Device Manager a v části **Správa** vyberte a klikněte na **zařízení**. V zobrazeném seznamu zařízení vyberte a klikněte na své zařízení.
+1. Přejděte do služby StorSimple Správce zařízení a v části **Správa** vyberte a klikněte na **zařízení**. V zobrazeném seznamu zařízení vyberte a klikněte na své zařízení.
    
     ![nastavení výstrah](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
 2. Otevře se okno **Nastavení** . V části **nastavení zařízení** vyberte **Obecné**. Otevře se okno **Obecné nastavení** .
@@ -56,12 +56,12 @@ Po povolení e-mailových oznámení pro virtuální pole budou členové seznam
    3. Do pole **Další příjemci e-mailu** zadejte e-mailové adresy všech dalších příjemců, kteří by měli dostávat oznámení o výstrahách. Zadejte jména ve formátu *někdo \@ Somewhere.com*. Oddělte e-mailové adresy pomocí středníků. Na jedno virtuální zařízení můžete nakonfigurovat maximálně 20 e-mailových adres.
       
        ![Snímek obrazovky s nastavením popsaným v tomto kroku zobrazuje podrobnosti nastavení výstrah.](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
-   4. Pokud chcete poslat testovací e-mailové oznámení, klikněte na **Odeslat zkušební e-mail**. Služba StorSimple Device Manager zobrazí stavové zprávy, když přepošle oznámení o testu.
+   4. Pokud chcete poslat testovací e-mailové oznámení, klikněte na **Odeslat zkušební e-mail**. Služba StorSimple Správce zařízení zobrazí stavové zprávy, když přepošle oznámení o testu.
       
        ![Snímek obrazovky s ověřováním testovacího e-mailu se zobrazí v dialogovém okně.](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
-      > Pokud zprávu o testovacím oznámení nelze odeslat, Služba StorSimple Device Manager zobrazí příslušnou zprávu. Klikněte na **OK**, počkejte pár minut a pak zkuste poslat zprávu testovacího oznámení znovu.
+      > Pokud zprávu o testovacím oznámení nelze odeslat, Služba StorSimple Správce zařízení zobrazí příslušnou zprávu. Klikněte na **OK**, počkejte pár minut a pak zkuste poslat zprávu testovacího oznámení znovu.
       >
       >
    5. V dolní části stránky klikněte na **Uložit** a uložte konfiguraci. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
@@ -72,7 +72,7 @@ Po povolení e-mailových oznámení pro virtuální pole budou členové seznam
 
 Vaše virtuální pole StorSimple generuje výstrahy v reakci na nejrůznější podmínky. Níže jsou uvedené nejběžnější typy podmínek upozornění:
 
-* **Problémy s připojením** – tyto výstrahy se objevují v případě problémů s přenosem dat. Problémy s komunikací mohou nastat během přenosu dat do účtu služby Azure Storage a z důvodu nedostatku připojení mezi virtuálními zařízeními a službou StorSimple Device Manager. Problémy s komunikací jsou závažné, aby je bylo možné opravit, protože došlo k mnoha bodům selhání. Předtím, než budete pokračovat na pokročilejší řešení potíží, byste měli nejdřív ověřit, že je k dispozici připojení k síti a přístup k Internetu. Informace o portech a nastaveních brány firewall najdete v [požadavcích na systém StorSimple Virtual Array](storsimple-ova-system-requirements.md). Pomoc s řešením potíží najdete v tématu [řešení potíží pomocí rutiny Test-Connection](./storsimple-8000-troubleshoot-deployment.md).
+* **Problémy s připojením** – tyto výstrahy se objevují v případě problémů s přenosem dat. Problémy s komunikací mohou nastat během přenosu dat do účtu služby Azure Storage a z důvodu nedostatku připojení mezi virtuálními zařízeními a službou StorSimple Správce zařízení. Problémy s komunikací jsou závažné, aby je bylo možné opravit, protože došlo k mnoha bodům selhání. Předtím, než budete pokračovat na pokročilejší řešení potíží, byste měli nejdřív ověřit, že je k dispozici připojení k síti a přístup k Internetu. Informace o portech a nastaveních brány firewall najdete v [požadavcích na systém StorSimple Virtual Array](storsimple-ova-system-requirements.md). Pomoc s řešením potíží najdete v tématu [řešení potíží pomocí rutiny Test-Connection](./storsimple-8000-troubleshoot-deployment.md).
 * **Problémy s výkonem** – tyto výstrahy jsou způsobeny tím, že systém nepracuje optimálně, například když se nachází v případě vysoké zátěže.
 
 Kromě toho se můžou zobrazovat výstrahy související se zabezpečením, aktualizacemi nebo selháními úloh.
@@ -87,7 +87,7 @@ Výstrahy mají různé úrovně závažnosti v závislosti na tom, jaký vliv b
 
 ## <a name="view-and-track-alerts"></a>Zobrazení a sledování výstrah
 
-Okno s přehledem služby StorSimple Device Manager poskytuje rychlý přehled o počtu upozornění na virtuálních zařízeních uspořádaných podle úrovně závažnosti.
+Okno s přehledem služby StorSimple Správce zařízení poskytuje rychlý přehled o počtu upozornění na virtuálních zařízeních uspořádaných podle úrovně závažnosti.
 
 ![Řídicí panel výstrah](./media/storsimple-virtual-array-manage-alerts/alerts14.png)
 
