@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 6c9b4a9ee1a778ba7a534377f8b2abe9d9a7e18a
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: eea5c800d7aa9c8d1e6c0c507136b86ab8bf21f3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504726"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604028"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Úvod ke spravovaným diskům Azure
 
@@ -100,7 +100,7 @@ Tento disk má maximální kapacitu 4 095 GiB.
 
 ### <a name="temporary-disk"></a>Dočasný disk
 
-Většina virtuálních počítačů obsahuje dočasný disk, což není spravovaný disk. Dočasný disk poskytuje krátkodobé úložiště pro aplikace a procesy a je určen pouze k ukládání dat, jako jsou například stránky nebo soubory odkládacích souborů. Data na dočasném disku mohou být ztracena během [události údržby](./understand-vm-reboots.md) nebo při [opětovném nasazení virtuálního počítače](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Během úspěšného standardního restartování virtuálního počítače se uchovávají data na dočasném disku. Další informace o virtuálních počítačích bez dočasných disků najdete v tématu [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
+Většina virtuálních počítačů obsahuje dočasný disk, což není spravovaný disk. Dočasný disk poskytuje krátkodobé úložiště pro aplikace a procesy a je určen pouze k ukládání dat, jako jsou například stránky nebo soubory odkládacích souborů. Data na dočasném disku mohou být ztracena během [události údržby](./understand-vm-reboots.md) nebo při [opětovném nasazení virtuálního počítače](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Během úspěšného standardního restartování virtuálního počítače se uchovávají data na dočasném disku. Další informace o virtuálních počítačích bez dočasných disků najdete v tématu [velikosti virtuálních počítačů Azure bez místního dočasného disku](azure-vms-no-temp-disk.md).
 
 Na virtuálních počítačích se systémem Azure Linux je dočasný disk typicky/dev/sdb a na virtuálních počítačích s Windows dočasný disk je ve výchozím nastavení D: Pokud na hostiteli nepovolíte šifrování, dočasný disk není zašifrovaný šifrováním na straně serveru.
 

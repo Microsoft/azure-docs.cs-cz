@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/08/2020
-ms.openlocfilehash: 279d432dbc5770cc89486c517b8fcbe6392b03d1
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.date: 03/17/2021
+ms.openlocfilehash: c1e0dffafafa76e90ec57ce1a00fb8e155ff4edf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103012186"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608091"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování a transformace dat v úložišti objektů BLOB v Azure pomocí Azure Data Factory
 
@@ -389,7 +389,7 @@ V `storeSettings` nastaveních ve zdrojovém kopírování založeném na formá
 | modifiedDatetimeEnd      | Platí to samé jako výše.                                               | No                                            |
 | enablePartitionDiscovery | U souborů, které jsou rozdělené na oddíly, určete, jestli se mají analyzovat oddíly z cesty k souboru, a přidejte je jako další zdrojové sloupce.<br/>Povolené hodnoty jsou **false** (výchozí) a **true**. | No                                            |
 | partitionRootPath | Pokud je povoleno zjišťování oddílů, zadejte absolutní kořenovou cestu, aby bylo možné číst rozdělené složky jako sloupce dat.<br/><br/>Pokud není zadaný, ve výchozím nastavení<br/>– Pokud použijete cestu k souboru v datové sadě nebo v seznamu souborů na zdroji, je kořenová cesta oddílu cestou nakonfigurovanou v datové sadě.<br/>– Když použijete filtr složky se zástupnými znaky, kořenová cesta oddílu je dílčí cesta před prvním zástupným znakem.<br/>– Při použití předpony je kořenová cesta oddílu podcestou před poslední znak "/". <br/><br/>Předpokládejme například, že nakonfigurujete cestu v datové sadě jako kořen/složka/rok = 2020/měsíc = 08/Day = 27:<br/>– Pokud zadáte kořenovou cestu oddílu jako "root/složka/Year = 2020", aktivita kopírování vygeneruje další dva sloupce `month` a `day` hodnoty "08" a "27" společně se sloupci uvnitř souborů.<br/>-Pokud není zadána kořenová cesta oddílu, nebude vygenerován žádný sloupec navíc. | No                                            |
-| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No                                            |
+| maxConcurrentConnections |Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení.| No                                            |
 
 > [!NOTE]
 > V případě textového formátu Parquet/s oddělovači je typ **BlobSource** pro zdroj aktivity kopírování, který je uveden v další části, stále podporován, jak je z důvodu zpětné kompatibility. Doporučujeme, abyste nový model používali, dokud uživatelské rozhraní pro vytváření Data Factory nepřešlo na vygenerování těchto nových typů.
@@ -449,7 +449,7 @@ Následující vlastnosti jsou podporovány pro Azure Blob Storage v `storeSetti
 | typ                     | `type`Vlastnost v poli `storeSettings` musí být nastavena na hodnotu `AzureBlobStorageWriteSettings` . | Yes      |
 | copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | No       |
 | blockSizeInMB | Zadejte velikost bloku (v megabajtech), která se používá k zápisu dat pro objekty blob bloku. Přečtěte si další informace o objektech [blob bloku](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Povolená hodnota je *mezi 4 MB a 100 MB*. <br/>Ve výchozím nastavení Data Factory automaticky určuje velikost bloku na základě typu zdrojového úložiště a dat. Pro nebinární kopírování do úložiště objektů BLOB je výchozí velikost bloku 100 MB, takže se může vejít do velikosti (nejvíce) 4,95 TB dat. Nemusí být optimální, pokud vaše data nejsou velká, zejména při použití modulu Integration runtime v místním prostředí s nedostatečnými síťovými připojeními, které mají za následek časový limit operace nebo problémy s výkonem. Velikost bloku můžete explicitně zadat, přičemž zajistěte, aby `blockSizeInMB*50000` byla data ukládána dostatečně veliké. V opačném případě se spuštění aktivity kopírování nezdaří. | No |
-| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No       |
+| maxConcurrentConnections |Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení.| No       |
 
 **Příklad:**
 
@@ -681,7 +681,7 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 |:--- |:--- |:--- |
 | typ | `type`Vlastnost zdroje aktivity kopírování musí být nastavena na hodnotu `BlobSource` . | Yes |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že když `recursive` je nastaveno na `true` a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky.<br/>Povolené hodnoty jsou `true` (výchozí) a `false` . | No |
-| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No |
+| maxConcurrentConnections |Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení.| No |
 
 **Příklad:**
 
@@ -721,7 +721,7 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 |:--- |:--- |:--- |
 | typ | `type`Vlastnost jímky aktivity kopírování musí být nastavena na `BlobSink` . | Yes |
 | copyBehavior | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru se zdrojovou složkou je shodná s relativní cestou cílového souboru do cílové složky.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | No |
-| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No |
+| maxConcurrentConnections |Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení.| No |
 
 **Příklad:**
 

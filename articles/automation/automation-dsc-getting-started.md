@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 04/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 95072970004ae53663f130a78af36a84a6fab685
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99051494"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Začínáme s konfigurací stavu Azure Automation
@@ -18,7 +18,7 @@ Tento článek poskytuje podrobný návod, jak provádět nejběžnější úloh
 
 Pokud chcete ukázkové prostředí, které už je nastavené, bez kroků popsaných v tomto článku, můžete použít [šablonu spravovaného uzlu Azure Automation](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Tato šablona nastavuje kompletní prostředí Konfigurace stavu (DSC), včetně virtuálního počítače Azure spravovaného pomocí konfigurace stavu (DSC).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení příkladů v tomto článku jsou potřeba následující:
 

@@ -8,10 +8,10 @@ ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 0a8536deac0103215cf362c07eb54bbf84701a6b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103016572"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Nastavení přípravného prostředí v Azure jaře cloudu
@@ -20,7 +20,7 @@ ms.locfileid: "103016572"
 
 Tento článek vysvětluje, jak nastavit pracovní nasazení pomocí modelu nasazení Blue-zelený v Azure jaře cloudu. Nasazení s modrou zeleným prostředím je model průběžného doručování Azure DevOps, který se spoléhá na udržení existující (modré) verze v době, kdy je nasazená nová (zelená) jedna. V tomto článku se dozvíte, jak umístit toto pracovní nasazení do produkčního prostředí beze změny produkčního nasazení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Instance jarního cloudu Azure na cenové úrovni Standard
 * [Rozšíření Azure jaře Cloud](/cli/azure/azure-cli-extensions-overview) pro rozhraní příkazového řádku Azure

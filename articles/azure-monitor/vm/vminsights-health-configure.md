@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 0f6599bb9f379cf471dafbb83a7deefbb05c0dbe
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6bda6c9e5f6e23e9e15c12fd507645fc72159302
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052207"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583441"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>Konfigurace monitorování ve stavu hosta virtuálních počítačů Insights (Preview)
 Stav hosta pro virtuální počítač Insights umožňuje zobrazit stav virtuálního počítače podle definice sady měření výkonu, které jsou v pravidelných intervalech vzorkované. Tento článek popisuje, jak můžete upravit výchozí monitorování pomocí Azure Portal. Popisuje také základní koncepty monitorování požadovaných ke [konfiguraci monitorování pomocí pravidla shromažďování dat](vminsights-health-configure-dcr.md).
 
 ## <a name="open-monitor-configuration"></a>Otevřít konfiguraci monitorování
-Otevřete okno Konfigurace monitorování Azure Portal tím, že vyberete monitor a pak kartu **Konfigurace** .
+Otevřete konfiguraci monitorování v Azure Portal tím, že vyberete monitor a pak kartu **Konfigurace** .
 
 [![Konfigurace podrobností monitorování](media/vminsights-health-overview/monitor-details-configuration.png)](media/vminsights-health-overview/monitor-details-configuration.png#lightbox)
 

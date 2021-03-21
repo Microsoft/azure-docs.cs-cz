@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97360148"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Přesunutí virtuálního počítače s SQL Server do jiné oblasti v rámci Azure pomocí Azure Site Recovery
@@ -65,7 +65,7 @@ Připravte zdrojový virtuální počítač SQL Server i cílovou oblast pro př
     - Azure Site Recovery automaticky zjistí a vytvoří virtuální síť, když povolíte replikaci pro zdrojový virtuální počítač. Můžete také předem vytvořit síť a přiřadit ji k virtuálnímu počítači v toku uživatele pro povolení replikace. V cílové oblasti musíte ručně vytvořit všechny další prostředky.
 - Pokud chcete vytvořit nejčastěji používané síťové prostředky, které jsou relevantní pro vás na základě konfigurace zdrojového virtuálního počítače, přečtěte si následující dokumentaci: 
     - [Skupiny zabezpečení sítě](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [Nástroj pro vyrovnávání zatížení](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
+    - [Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
     - [Veřejná IP adresa](../../../virtual-network/virtual-network-public-ip-address.md)
     - Další síťové součásti najdete v [dokumentaci k síti](../../../virtual-network/virtual-networks-overview.md).
 - Ruční vytvoření neprodukční sítě v cílové oblasti, pokud chcete otestovat konfiguraci před provedením finálního přesunu do cílové oblasti. Tento krok doporučujeme, protože zajišťuje minimální interferenci s produkční sítí. 

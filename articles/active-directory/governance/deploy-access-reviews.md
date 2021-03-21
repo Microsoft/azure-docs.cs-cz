@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97932431"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Plánování nasazení kontrol přístupu Azure Active Directory
@@ -75,7 +75,7 @@ Následující videa můžou být užitečná, když se seznámíte s recenzemi 
 
 * [Kontrola přístupu pomocí přístupu](https://youtu.be/tIKdQhdHLXU)
 
-### <a name="licenses"></a>Licence
+### <a name="licenses"></a>Licenses
 
 Potřebujete platnou licenci Azure AD Premium (P2) pro každou osobu, jinou než globální správce nebo Správce uživatelů, kteří budou vytvářet nebo provádět kontroly přístupu. Další informace najdete v tématu [licenční požadavky kontroly přístupu](access-reviews-overview.md).
 
@@ -241,12 +241,12 @@ Chcete-li vytvořit zásadu kontroly přístupu, je nutné mít následující i
 
 **Příklad plánu kontroly přístupu**
 
-| Komponenta| Hodnota |
+| Součást| Hodnota |
 | - | - |
 | **Prostředky ke kontrole**| Přístup k Microsoft Dynamics |
 | **Frekvence kontroly**| Měsíčně |
 | **Kdo provádí kontrolu**| Správci programu Dynamics Business Group |
-| **Zveřejnění**| Před kontrolou aliasu Dynamics-Pms e-mailem 24 hodin<p>Zahrnutí vlastní zprávy do kontrolorů k zabezpečení jejich nákupu |
+| **Oznámení**| Před kontrolou aliasu Dynamics-Pms e-mailem 24 hodin<p>Zahrnutí vlastní zprávy do kontrolorů k zabezpečení jejich nákupu |
 | **Časová osa**| 48 hodin z oznámení |
 |**Automatické akce**| Odebrání přístupu z libovolného účtu, který nemá v 90 dnech žádné interaktivní přihlášení, odebráním uživatele ze skupiny zabezpečení Dynamics-Access. <p>*Provede akce, pokud se nekontrolují v časové ose.* |
 | **Ruční akce**| Recenzenti mohou odebrat schválení před automatickými akcemi v případě potřeby. |
@@ -310,7 +310,7 @@ Jednomu skupině se dá udělit přístup ke všem odpovídajícím prostředků
 
 Členství ve skupině je možné zkontrolovat: 
 
-* Správci
+* Administrators
 
 * Vlastníci skupiny
 
@@ -419,7 +419,7 @@ Po přípravě strategie a plánu pro kontrolu přístupu k prostředkům integr
 
 Aby bylo možné snížit riziko zastaralého přístupu, můžou správci povolit pravidelné kontroly uživatelů, kteří mají aktivní přiřazení k balíčku přístupu. Postupujte podle pokynů v následujícím odkazu:
 
-| Články s návody| Popis |
+| Články s návody| Description |
 | - | - |
 | [Vytvořit kontroly přístupu](entitlement-management-access-reviews-create.md)| Povolit recenze balíčku přístupu |
 | [Provést kontroly přístupu](entitlement-management-access-reviews-review-access.md)| Provede kontroly přístupu pro ostatní uživatele, kteří jsou přiřazeni k balíčku přístupu. |
@@ -433,7 +433,7 @@ Aby bylo možné snížit riziko zastaralého přístupu, můžou správci povol
 
 Přístup k skupinám a aplikacím pro zaměstnance a hosty se nejspíš v průběhu času mění. Aby mohli správci snížit riziko související se zastaralými přiřazeními přístupu, můžou vytvořit kontroly přístupu pro členy skupiny nebo přístup k aplikacím. Postupujte podle pokynů v následujícím odkazu:
 
-| Články s návody| Popis |
+| Články s návody| Description |
 | - | - |
 | [Vytvořit kontroly přístupu](create-access-review.md)| Vytvořte jednu nebo více kontrol přístupu pro členy skupiny nebo přístup k aplikaci. |
 | [Provést kontroly přístupu](perform-access-review.md)| Provede kontrolu přístupu pro členy skupiny nebo uživatelů s přístupem k aplikaci. |
@@ -450,7 +450,7 @@ Pokud chcete snížit riziko související se zastaralými přiřazeními rolí,
 
 Postupujte podle pokynů na následujících odkazech:
 
-| Články s návody | Popis |
+| Články s návody | Description |
 | - | - |
  [Vytvořit kontroly přístupu](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Vytváření kontrol přístupu pro privilegované role Azure AD v PIM |
 | [Vlastní kontrola přístupu](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
@@ -465,7 +465,7 @@ Pokud chcete snížit riziko související se zastaralými přiřazeními rolí,
 
 Postupujte podle pokynů na následujících odkazech:
 
-| Články s návody| Popis |
+| Články s návody| Description |
 | - | -|
 | [Vytvořit kontroly přístupu](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Vytváření kontrol přístupu pro privilegované role prostředků Azure v PIM |
 | [Vlastní kontrola přístupu](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Pokud máte přiřazenou roli správce, schvalte nebo odepřete přístup k vaší roli. |
@@ -496,7 +496,7 @@ Při vytváření nových dotazů Graph API pro automatizaci doporučujeme použ
 
 Aktivity kontrol přístupu se zaznamenávají a jsou dostupné z [protokolů auditu Azure AD](../reports-monitoring/concept-audit-logs.md). Můžete filtrovat data auditu v kategorii, typu aktivity a rozsahu kalendářních dat. Tady je ukázkový dotaz:
 
-| Kategorie| Zásada |
+| Kategorie| Zásady |
 | - | - |
 | Typ aktivity| Vytvoření kontroly přístupu |
 | | Aktualizovat kontrolu přístupu |

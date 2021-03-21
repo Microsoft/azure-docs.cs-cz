@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.openlocfilehash: 8a36062a2d29bcec10279d73211526a0dcba619e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702109"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>Protokolování auditu Azure Database for PostgreSQL – škálovatelné (Citus)
@@ -42,7 +42,7 @@ Aby bylo možné spustit protokolování, je nutné nakonfigurovat parametry pgA
 
 > [!NOTE]
 > Nastavení na `pgaudit.log_client` zapnuto bude přesměrovat protokoly do klientského procesu (například psql) místo zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané. <br> <br>
-> `pgaudit.log_level` je povoleno pouze `pgaudit.log_client` v případě, že je zapnuto.
+> Nastavení `pgaudit.log_level` je povolené pouze v případě, že je povolené nastavení `pgaudit.log_client`.
 
 > [!NOTE]
 > V Azure Database for PostgreSQL-Citus se `pgaudit.log` nedá nastavit pomocí `-` zástupce znaménka (minus), jak je popsáno v dokumentaci pgAudit. Všechny požadované třídy příkazů (čtení, zápis atd.) by měly být jednotlivě určeny.

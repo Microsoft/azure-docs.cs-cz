@@ -10,17 +10,17 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
 ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177518"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Službu Azure Import/Export můžete použít k exportu dat z úložiště objektů blob v Azure.
 
 Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu Azure bezpečně exportovat velké objemy dat z úložiště objektů BLOB v Azure. Služba vyžaduje, abyste dodali prázdné jednotky v datacentru Azure. Služba exportuje data z vašeho účtu úložiště na jednotky a pak dohraje jednotky zpátky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než vytvoříte úlohu exportu pro přenos dat z Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadavků pro tuto službu.
 Musíte:
@@ -399,7 +399,7 @@ Tento *volitelný* krok vám pomůže určit počet jednotek vyžadovaných úlo
 
     Parametry jsou popsány v následující tabulce:
 
-    |Parametr příkazového řádku|Popis|
+    |Parametr příkazového řádku|Description|
     |--------------------------|-----------------|
     |**/logdir:**|Nepovinný parametr. Adresář protokolu. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud tento parametr nezadáte, použije se jako adresář protokolu aktuální adresář.|
     |**SN**|Povinná hodnota. Název účtu úložiště pro úlohu exportu|
@@ -453,7 +453,7 @@ Number of drives needed:        3
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Popis |
+   | Volič | Cesta objektu BLOB | Description |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |

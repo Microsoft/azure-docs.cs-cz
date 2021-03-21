@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 04/19/2020
 ms.author: alkemper
 ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979840"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrace s kanálem CI/CD
@@ -33,7 +33,7 @@ Následující příklad ukazuje, jak zahrnout konfigurační data aplikace jako
 
 K provedení kroků v tomto kurzu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) je vynikající možnost dostupná na platformách Windows, MacOS a Linux.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud jste místně sestavili, Stáhněte a nainstalujte [Azure CLI](/cli/azure/install-azure-cli) , pokud jste to ještě neudělali.
 
@@ -49,7 +49,7 @@ Aby bylo možné vytvořit cloudové sestavení pomocí Azure DevOps, ujistěte 
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. Otevřete *program.cs* a aktualizujte `CreateWebHostBuilder` metodu pro použití exportovaného souboru JSON voláním `config.AddJsonFile()` metody.  Přidejte `System.Reflection` také obor názvů.
+1. Otevřete *program. cs* a aktualizujte `CreateWebHostBuilder` metodu tak, aby používala exportovaný soubor JSON zavoláním `config.AddJsonFile()` metody.  Přidejte `System.Reflection` také obor názvů.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

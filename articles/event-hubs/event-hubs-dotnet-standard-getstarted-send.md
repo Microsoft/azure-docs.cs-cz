@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 36551a52bc095a37aa5176ab945dd5d27c640954
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504606"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET (Azure. Messaging. EventHubs) 
@@ -58,7 +58,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro ode
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
 
-1. `using`Do horní části souboru **program.cs** přidejte následující příkazy:
+1. `using`Do horní části souboru **program. cs** přidejte následující příkazy:
 
     ```csharp
     using System;
@@ -148,7 +148,7 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního 
 
 ### <a name="update-the-main-method"></a>Aktualizace metody Main 
 
-1. Do `using` horní části souboru **program.cs** přidejte následující příkazy.
+1. Přidejte následující `using` příkazy do horní části souboru **program. cs** .
 
     ```csharp
     using System;

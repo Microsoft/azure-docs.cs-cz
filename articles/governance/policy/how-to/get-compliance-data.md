@@ -1,14 +1,14 @@
 ---
 title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
-ms.date: 10/05/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577125"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598537"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -26,7 +26,7 @@ Než začnete se zaměřením na dodržování předpisů, Podívejme se na to, 
 
 ## <a name="evaluation-triggers"></a>Aktivační události vyhodnocení
 
-Výsledky dokončeného cyklu vyhodnocení jsou k dispozici ve `Microsoft.PolicyInsights` zprostředkovateli prostředků prostřednictvím `PolicyStates` `PolicyEvents` operací a. Další informace o operacích REST API Azure Policy Insights najdete v tématu [Azure Policy Insights](/rest/api/policy-insights/).
+Výsledky dokončeného cyklu vyhodnocení jsou k dispozici ve `Microsoft.PolicyInsights` zprostředkovateli prostředků prostřednictvím `PolicyStates` `PolicyEvents` operací a. Další informace o operacích REST API Azure Policy Insights najdete v tématu [Azure Policy Insights](/rest/api/policy/).
 
 K vyhodnocení přiřazených zásad a iniciativ dojde v důsledku různých událostí:
 
@@ -237,13 +237,13 @@ Pokud je zjištěno, že prostředek není **kompatibilní**, existuje mnoho mo�
 
 ## <a name="command-line"></a>Příkazový řádek
 
-Stejné informace, které jsou k dispozici na portálu, lze načíst pomocí REST API (včetně [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell a Azure CLI. Úplné podrobnosti o REST API najdete v referenčních informacích k [Azure Policy Insights](/rest/api/policy-insights/) . Referenční stránky REST API mají zeleně stisknuté tlačítko vyzkoušet u každé operace, která vám umožní vyzkoušet si ho přímo v prohlížeči.
+Stejné informace, které jsou k dispozici na portálu, lze načíst pomocí REST API (včetně [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell a Azure CLI. Úplné podrobnosti o REST API najdete v referenčních informacích k [Azure Policy](/rest/api/policy/) . Referenční stránky REST API mají zeleně stisknuté tlačítko vyzkoušet u každé operace, která vám umožní vyzkoušet si ho přímo v prohlížeči.
 
 Použijte ARMClient nebo podobný nástroj pro zpracování ověřování v Azure pro REST API příklady.
 
 ### <a name="summarize-results"></a>Shrnutí výsledků
 
-Díky REST API je souhrn možné provádět pomocí kontejneru, definice nebo přiřazení. Tady je příklad sumarizace na úrovni předplatného, který používá Shrnutí Azure Policyho přehledu [pro předplatné](/rest/api/policy-insights/policystates/summarizeforsubscription):
+Díky REST API je souhrn možné provádět pomocí kontejneru, definice nebo přiřazení. Tady je příklad sumarizace na úrovni předplatného, který používá Shrnutí Azure Policyho přehledu [pro předplatné](/rest/api/policy/policystates/summarizeforsubscription):
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
@@ -353,7 +353,7 @@ Vaše výsledky budou vypadat přibližně jako v následujícím příkladu:
 }
 ```
 
-Další informace o dotazování na události zásad najdete v článku referenční informace o [událostech Azure Policy](/rest/api/policy-insights/policyevents) .
+Další informace o dotazování na události zásad najdete v článku referenční informace o [událostech Azure Policy](/rest/api/policy/policyevents) .
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -648,7 +648,7 @@ $policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/v
 $policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
 ```
 
-Výstup `$policyEvents` objektu vypadá následovně:
+Výstup `$policyEvents` objektu vypadá jako následující výstup:
 
 ```output
 Timestamp                  : 9/19/2020 5:18:53 AM

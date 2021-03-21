@@ -2,14 +2,14 @@
 title: Postup zakázání funkcí v Azure Functions
 description: Naučte se, jak zakázat a povolit funkce v Azure Functions.
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cbb84308507ea15f1c44c00122a9a59472f12a88
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1ad484804f66a2e2d4d0f1da4a37cf0d6c485f38
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551039"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584733"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Postup zakázání funkcí v Azure Functions
 
@@ -20,13 +20,26 @@ Doporučený způsob, jak funkci zakázat, je nastavení aplikace ve formátu `A
 > [!NOTE]  
 > Když zakážete funkci aktivovanou protokolem HTTP pomocí metod popsaných v tomto článku, koncový bod může být dostupný i při spuštění na místním počítači.  
 
-## <a name="use-the-azure-cli"></a>Použití Azure CLI
+## <a name="disable-a-function"></a>Vypnutí funkce
 
-V Azure CLI pomocí [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) příkazu vytvořte a upravte nastavení aplikace. Následující příkaz zakáže funkci s názvem `QueueTrigger` vytvořením nastavení aplikace s názvem `AzureWebJobs.QueueTrigger.Disabled` nastaveným na `true` . 
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+Použijte tlačítka **Povolit** a **Zakázat** na stránce **Přehled** funkce. Tato tlačítka fungují změnou hodnoty `AzureWebJobs.<FUNCTION_NAME>.Disabled` nastavení aplikace. Toto nastavení specifické pro tuto funkci je vytvořeno při prvním zakázání. 
+
+![Přepínač stavu funkce](media/disable-function/function-state-switch.png)
+
+I když publikujete do aplikace Function App z místního projektu, můžete i nadále používat portál k zakázání funkcí v aplikaci Function App. 
+
+> [!NOTE]  
+> Funkce testování integrované na portálu ignoruje `Disabled` nastavení. To znamená, že zakázaná funkce se pořád spustí při spuštění z okna **test** na portálu. 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+V Azure CLI pomocí [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) příkazu vytvořte a upravte nastavení aplikace. Následující příkaz zakáže funkci pojmenovanou `QueueTrigger` vytvořením nastavení aplikace s názvem `AzureWebJobs.QueueTrigger.Disabled` a nastavením na `true` . 
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <myFunctionApp> \
---resource-group <myResourceGroup> \
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
@@ -38,16 +51,55 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=false
 ```
 
-## <a name="use-the-portal"></a>Použití portálu
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Můžete také použít tlačítka **Povolit** a **Zakázat** na stránce **Přehled** funkce. Tato tlačítka fungují změnou hodnoty `AzureWebJobs.<FUNCTION_NAME>.Disabled` nastavení aplikace. Toto nastavení specifické pro tuto funkci je vytvořeno při prvním zakázání. 
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting)Příkaz přidá nebo aktualizuje nastavení aplikace. Následující příkaz zakáže funkci pojmenovanou `QueueTrigger` vytvořením nastavení aplikace s názvem `AzureWebJobs.QueueTrigger.Disabled` a nastavením na `true` . 
 
-![Přepínač stavu funkce](media/disable-function/function-state-switch.png)
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "true"}
+```
 
-I když publikujete do aplikace Function App z místního projektu, můžete i nadále používat portál k zakázání funkcí v aplikaci Function App. 
+Pokud chcete funkci znovu povolit, spusťte znovu stejný příkaz s hodnotou `false` .
 
-> [!NOTE]  
-> Funkce testování integrované na portálu ignoruje `Disabled` nastavení. To znamená, že zakázaná funkce se pořád spustí při spuštění z okna **test** na portálu. 
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "false"}
+```
+---
+
+## <a name="functions-in-a-slot"></a>Funkce ve slotu
+
+Ve výchozím nastavení se nastavení aplikace vztahují také na aplikace spuštěné v slotech nasazení. Nastavení aplikace, které používá slot, ale můžete přepsat nastavením aplikace na konkrétní pozici. Například můžete chtít, aby funkce byla aktivní v produkčním prostředí, ale ne během testování nasazení, například funkce aktivované časovačem. 
+
+Zakázání funkce pouze v přípravném slotu:
+
+# <a name="portal"></a>[Azure Portal](#tab/portal)
+
+Přejděte do instance slotu aplikace Functions tak, že vyberete možnosti **sloty nasazení** v části **nasazení**, vyberete svou patici a vyberete **funkce** v instanci slot.  Zvolte funkci a pak použijte tlačítka **Povolit** a **Zakázat** na stránce **přehledu** této funkce. Tato tlačítka fungují změnou hodnoty `AzureWebJobs.<FUNCTION_NAME>.Disabled` nastavení aplikace. Toto nastavení specifické pro tuto funkci je vytvořeno při prvním zakázání. 
+
+Můžete také přímo přidat nastavení aplikace s názvem `AzureWebJobs.<FUNCTION_NAME>.Disabled` s hodnotou `true` v **konfiguraci** pro instanci slot. Když přidáte nastavení aplikace specifické pro slot, nezapomeňte zaškrtnout políčko **nastavení slotu nasazení** . Tím se v průběhu zahození zachová hodnota nastavení pomocí slotu.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=true
+```
+Pokud chcete funkci znovu povolit, spusťte znovu stejný příkaz s hodnotou `false` .
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=false
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Azure PowerShell aktuálně tuto funkci nepodporuje.
+
+---
+
+Další informace najdete v tématu [Azure Functions sloty nasazení](functions-deployment-slots.md).
 
 ## <a name="localsettingsjson"></a>local.settings.json
 

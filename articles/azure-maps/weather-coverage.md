@@ -10,10 +10,10 @@ services: azure-maps
 ms.custom: references_regions
 manager: philmea
 ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905481"
 ---
 # <a name="azure-maps-weather-services-preview-coverage"></a>Pokrytí pokrytí Azure Maps počasí Services (Preview)
@@ -84,7 +84,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Svatý Kryštof a Nevis                    | ✓ |   | |✓| 
 | Svatá Lucie                              | ✓ |   | |✓| 
 | Svatý Martin (Francie)                             | ✓ |   | |✓| 
-| Saint-Pierre a Miquelon                | ✓ |   | |✓| 
+| Saint Pierre a Miquelon                | ✓ |   | |✓| 
 | Svatý Vincenc a Grenadiny         | ✓ |   | |✓| 
 | Svatý Eustach                           | ✓ |   | |✓|  
 | Svatý Martin (Nizozemsko)                             | ✓ |   | |✓| 
@@ -92,7 +92,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Surinam                                 | ✓ |   | |✓| 
 | Trinidad a Tobago                      | ✓ |   | |✓| 
 | Ostrovy Turks a Caicos                 | ✓ |   | |✓| 
-| Menší odlehlé ostrovy USA                    | ✓ |   | |✓| 
+| Odlehlé ostrovy USA                    | ✓ |   | |✓| 
 | Americké Panenské ostrovy                      | ✓ |   | ✓|✓| 
 | USA                            | ✓ | ✓ | ✓| ✓| 
 | Uruguay                                  | ✓ |   | |✓| 
@@ -196,7 +196,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Fidži                              | ✓ |   | | ✓| 
 | Francouzská Polynésie                  | ✓ |   | | ✓| 
 | Guam                              | ✓ |   |  ✓| ✓| 
-| Heardův ostrov a MacDonaldovy ostrovy | ✓ |   | | ✓| 
+| Heardův ostrov a McDonaldovy ostrovy | ✓ |   | | ✓| 
 | Hongkong – zvláštní administrativní oblast                     | ✓ |   | | ✓| 
 | Indie                             | ✓ |   | | ✓| 
 | Indonésie                         | ✓ |   | | ✓| 
@@ -298,7 +298,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Slovensko               | ✓ | ✓ |  ✓| ✓| 
 | Slovinsko               | ✓ | ✓ |  ✓| ✓| 
 | Španělsko                  | ✓ | ✓ |  ✓| ✓| 
-| Svalbard               | ✓ |   | | ✓|
+| Špicberky               | ✓ |   | | ✓|
 | Švédsko                 | ✓ | ✓ |  ✓| ✓| 
 | Švýcarsko            | ✓ | ✓ | ✓| ✓| 
 | Turecko                 | ✓ |   | | ✓| 

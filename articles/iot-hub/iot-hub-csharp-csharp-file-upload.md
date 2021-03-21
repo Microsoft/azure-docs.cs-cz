@@ -11,10 +11,10 @@ ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 43cafb8c5efe0581fe7c4136aa41980b3d817be2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99981404"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (.NET)
@@ -27,7 +27,7 @@ V tomto kurzu se seznámíte s kódem v tématu [posílání zpráv z cloudu do 
 
 * Pomocí IoT Hub oznámení o nahrávání souborů můžete aktivovat zpracování souboru v back-endu vaší aplikace.
 
-[Odeslání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-dotnet.md) a [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-csharp-csharp-c2d.md) kurzu zobrazuje základní funkce zasílání zpráv typu zařízení-Cloud a Cloud-zařízení IoT Hub. Kurz [Konfigurace směrování zpráv pomocí IoT Hub](tutorial-routing.md) popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení-cloud do Microsoft Azure úložiště objektů BLOB. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Příklad:
+[Odeslání telemetrie ze zařízení do rychlého startu centra IoT](quickstart-send-telemetry-dotnet.md) a [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-csharp-csharp-c2d.md) kurzu zobrazuje základní funkce zasílání zpráv typu zařízení-Cloud a Cloud-zařízení IoT Hub. Kurz [Konfigurace směrování zpráv pomocí IoT Hub](tutorial-routing.md) popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení-cloud do Microsoft Azure úložiště objektů BLOB. V některých scénářích ale nemůžete snadno namapovat data, která zařízení odesílají do relativně malých zpráv ze zařízení do cloudu, které IoT Hub přijmout. Například:
 
 * Velké soubory, které obsahují obrázky
 
@@ -50,7 +50,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace .NET:
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Visual Studio
 
@@ -70,7 +70,7 @@ V této části upravíte aplikaci zařízení, kterou jste vytvořili v části
 
     ![Zobrazit, kde aktualizovat vlastnost image pro kopírování do výstupního adresáře](./media/iot-hub-csharp-csharp-file-upload/image-properties.png)
 
-1. V souboru **program.cs** přidejte do horní části souboru následující příkazy:
+1. V souboru **program. cs** přidejte do horní části souboru následující příkazy:
 
     ```csharp
     using System.IO;
@@ -127,7 +127,7 @@ V této části napíšete konzolovou aplikaci .NET, která přijímá zprávy s
 
     Tento krok stáhne, nainstaluje a přidá odkaz na [balíček NuGet sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) v projektu **ReadFileUploadNotification** .
 
-1. V souboru **program.cs** pro tento projekt přidejte do horní části souboru následující příkaz:
+1. V souboru **program. cs** pro tento projekt přidejte do horní části souboru následující příkaz:
 
     ```csharp
     using Microsoft.Azure.Devices;

@@ -5,39 +5,45 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0a0eaa18f5b120fcc9cbf0e4da470ee46772c925
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e8d191dfed5b33116dadaf34b17d5f6525060e13
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470400"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721213"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Známé problémy s virtuálními počítači řady H a N
 
-Tento článek popisuje nejběžnější problémy a řešení při použití prostředí HPC [řady H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) a virtuálních počítačů GPU.
+Tento článek se pokusí vypsat nedávné běžné problémy a jejich řešení při použití prostředí HPC [řady H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) a virtuálních počítačů GPU.
+
+## <a name="mofed-installation-on-ubuntu"></a>Instalace MOFED na Ubuntu
+V Ubuntu-18,04 je jádro verze 5.4.0-1041-Azure nekompatibilní s verzemi MOFED 5.2-2 a 5.2-1.0.4.0. Doporučujeme vrátit se k jádru verze 5.4.0-1040-Azure nebo použít image z Marketplace se starším jádrem a neaktualizovat jádro. Očekává se, že tento problém bude vyřešen novějším MOFED (TBD).
 
 ## <a name="known-issues-on-hbv3"></a>Známé problémy v HBv3
-- InfiniBand se momentálně podporuje jenom u virtuálního počítače 120 Core (Standard_HB120rs_v3). Podpora na jiné velikosti virtuálních počítačů bude brzy povolená.
-- Ve všech oblastech HBv3-Series nepodporuje Azure akcelerované sítě. Tato funkce bude brzy povolená.
+- V současné době se InfiniBand podporuje jenom na virtuálním počítači 120 Core (Standard_HB120rs_v3).
+- V současné době není služba akcelerovaná síť Azure podporovaná ve všech oblastech HBv3-Series.
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Urychlené síťové služby na neHBv2ch, HC, a NDv2
 
-[Akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jsou teď dostupné na velikostech virtuálních počítačů s podporou RDMA a INFINIBAND a SR [-IOV, která](../../hb-series.md) [je v](../../hc-series.md)paměti [.](../../ndv2-series.md) [](../../hbv2-series.md) Tato možnost teď umožňuje vylepšenou dobu (až 30 GB/s) a latence v síti Ethernet Azure. I když se jedná o možnosti RDMA přes síť InfiniBand, můžou některé změny platformy pro tuto funkci ovlivnit chování určitých MPI implementací při spouštění úloh přes InfiniBand. Konkrétně rozhraní InfiniBand na některých virtuálních počítačích může mít trochu odlišný název (mlx5_1 na rozdíl od dřívější mlx5_0) a to může vyžadovat seování příkazových řádků MPI zvláště při použití rozhraní UCX (obvykle se jedná o OpenMP a HPC-X).
-Další podrobnosti najdete v tomto [článku na blogu](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) s pokyny, jak vyřešit všechny zjištěné problémy.
+[Akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jsou teď dostupné na velikostech virtuálních počítačů s podporou RDMA a INFINIBAND a SR [-IOV, která](../../hb-series.md) [je v](../../hc-series.md)paměti [.](../../ndv2-series.md) [](../../hbv2-series.md) Tato možnost teď umožňuje vylepšenou dobu (až 30 GB/s) a latence v síti Ethernet Azure. I když se jedná o možnosti RDMA přes síť InfiniBand, můžou některé změny platformy pro tuto funkci ovlivnit chování určitých MPI implementací při spouštění úloh přes InfiniBand. Konkrétně rozhraní InfiniBand na některých virtuálních počítačích může mít trochu odlišný název (mlx5_1 na rozdíl od dřívější mlx5_0) a to může vyžadovat seování příkazových řádků MPI zvláště při použití rozhraní UCX (obvykle se jedná o OpenMP a HPC-X). Nejjednodušší řešení v současné době může používat nejnovější prostředí HPC-X na imagích virtuálních počítačů CentOS-HPC nebo zakázat urychlené síťové služby, pokud není potřeba.
+Další podrobnosti najdete v tomto [článku TechCommunity](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) s pokyny, jak řešit všechny zjištěné problémy.
 
-## <a name="infiniband-driver-installation-on-n-series-vms"></a>Instalace ovladače InfiniBand na virtuálních počítačích řady N-Series
+## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>Instalace ovladače InfiniBand na virtuálních počítačích bez SR-IOV
 
-NC24r_v3 a ND40r_v2 mají povolený rozhraní SR-IOV, zatímco NC24r a NC24r_v2 nejsou povolené rozhraní SR-IOV. Některé podrobnosti o bifurcation [najdete tady](../../sizes-hpc.md#rdma-capable-instances).
-InfiniBand (IB) je možné nakonfigurovat na velikosti virtuálních počítačů s podporou SR-IOV pomocí ovladačů OFED, zatímco velikosti virtuálních počítačů bez SR-IOV vyžadují ovladače ND. Tato podpora IB je k dispozici správně v [CentOS-HPC VMIs](configure.md). Ubuntu najdete [tady pokyny](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) k instalaci ovladačů OFED a ND, jak je popsáno v [dokumentaci](enable-infiniband.md#vm-images-with-infiniband-drivers).
+V současné době H16r, H16mr a NC24r nemají povolený SR-IOV. [Tady](../../sizes-hpc.md#rdma-capable-instances)jsou některé podrobnosti o bifurcation Stack InfiniBand.
+InfiniBand je možné nakonfigurovat na velikosti virtuálních počítačů s podporou SR-IOV pomocí ovladačů OFED, zatímco velikosti virtuálních počítačů bez SR-IOV vyžadují ovladače ND. Tato podpora IB je k dispozici odpovídajícím způsobem pro [CentOS, RHEL a Ubuntu](configure.md).
 
 ## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>Duplikovat MAC pomocí Cloud-init s Ubuntu na virtuálních počítačích řady H-Series a N-Series
 
-Při pokusu o uvedení rozhraní IB došlo k známému problému s Ubuntu imagí Cloud-init na virtuálních počítačích. K tomu může dojít buď při restartování virtuálního počítače, nebo při pokusu o vytvoření image virtuálního počítače po generalizaci. Spouštěcí protokoly virtuálních počítačů mohou zobrazovat chybu, například: "spuštění síťové služby... RuntimeError: našla se duplicitní adresa MAC. eth1 i ib0 mají Mac.
+Při pokusu o uvedení rozhraní IB došlo k známému problému s Ubuntu imagí Cloud-init na virtuálních počítačích. K tomu může dojít buď při restartování virtuálního počítače, nebo při pokusu o vytvoření image virtuálního počítače po generalizaci. Spouštěcí protokoly virtuálních počítačů mohou zobrazovat chybu, například:
+```console
+“Starting Network Service...RuntimeError: duplicate mac found! both 'eth1' and 'ib0' have mac”.
+```
 
-Tento "duplicitní počítač MAC s cloudem-init na Ubuntu" je známý problém. Alternativní řešení:
+Tento "duplicitní počítač MAC s cloudem-init na Ubuntu" je známý problém. Tato akce bude vyřešena v novějších jádrech. Pokud dojde k problému, je alternativním řešením:
 1) Nasazení image virtuálního počítače (Ubuntu 18,04) Marketplace
 2) Nainstalujte potřebné softwarové balíčky, aby bylo možné povolit IB ([pokyny najdete tady](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)).
 3) Úpravou waagent. conf změňte EnableRDMA = y.
@@ -56,13 +62,13 @@ Tento "duplicitní počítač MAC s cloudem-init na Ubuntu" je známý problém.
     EOF
     ```
 
-## <a name="dram-on-hb-series"></a>DRAM v řadě 7000
-
-Virtuální počítače s více procesory můžou v současnosti vystavovat 228 GB paměti RAM pro virtuální počítače hosta. Podobně 458 GB na HBv2 a 448 GB na virtuálních počítačích s HBv3. Důvodem je známé omezení hypervisoru Azure, které zabraňuje tomu, aby se stránky přiřazují do místní adresy DRAM pro virtuální počítače AMD CCX (domény NUMA) rezervované pro virtuální počítač hosta.
-
 ## <a name="qp0-access-restriction"></a>Omezení přístupu qp0
 
 Aby nedocházelo k hardwarovému přístupu nízké úrovně, který může mít za následek ohrožení zabezpečení, spárování fronty 0 není pro virtuální počítače hosta k dispozici. To by mělo mít vliv pouze na akce, které jsou obvykle spojeny s správou síťového rozhraní ConnectX-5, a spuštění některé diagnostiky InfiniBand jako ibdiagnet, ale nejedná se o samotné aplikace koncového uživatele.
+
+## <a name="dram-on-hb-series-vms"></a>DRAM na virtuálních počítačích s nejvyšší řadou
+
+Virtuální počítače s více procesory můžou v současnosti vystavovat 228 GB paměti RAM pro virtuální počítače hosta. Podobně 458 GB na HBv2 a 448 GB na virtuálních počítačích s HBv3. Důvodem je známé omezení hypervisoru Azure, které zabraňuje tomu, aby se stránky přiřazují do místní adresy DRAM pro virtuální počítače AMD CCX (domény NUMA) rezervované pro virtuální počítač hosta.
 
 ## <a name="gss-proxy"></a>Proxy služby GSS
 

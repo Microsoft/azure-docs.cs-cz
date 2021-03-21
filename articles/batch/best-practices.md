@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1040762c171af486c7f5d66daca44ec65602aff
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 697ac5d213bbe2e52134cad519f69c233f1cd593
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561834"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583271"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -23,35 +23,29 @@ Tento článek popisuje shromažďování osvědčených postupů a užitečnýc
 
 ### <a name="pool-configuration-and-naming"></a>Konfigurace fondu a názvy
 
-- **Režim přidělování fondů** Při vytváření účtu Batch si můžete vybrat mezi dvěma režimy přidělování fondů: předplatné **služby Batch** nebo **uživatele**. Ve většině případů byste měli použít výchozí režim služby Batch, ve kterém se fondy přidělují na pozadí v předplatných spravovaných dávkou. V alternativním režimu Předplatné uživatele se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Účty předplatného uživatele se primárně používají k zajištění důležité, ale malé podmnožiny scénářů. Další informace o režimu předplatného uživatele najdete v [Další konfiguraci pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+- **Režim přidělování fondů:** Při vytváření účtu Batch si můžete vybrat mezi dvěma režimy přidělování fondů: předplatné **služby Batch** nebo **uživatele**. Ve většině případů byste měli použít výchozí režim služby Batch, ve kterém se fondy přidělují na pozadí v předplatných spravovaných dávkou. V alternativním režimu Předplatné uživatele se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Účty předplatného uživatele se primárně používají k zajištění důležité, ale malé podmnožiny scénářů. Další informace o režimu předplatného uživatele najdete v [Další konfiguraci pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
-- **' virtualMachineConfiguration ' nebo ' cloudServiceConfiguration '.**
-    V současné době můžete vytvářet fondy pomocí konfigurace. nové fondy by měly být nakonfigurované pomocí ' virtualMachineConfiguration ' a ne ' cloudServiceConfiguration '. Všechny aktuální a nové funkce dávky budou podporovány fondy konfigurací virtuálních počítačů. Fondy konfigurací Cloud Services nepodporují všechny funkce a neplánují se žádné nové funkce. [Po 29. února 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)už nebudete moct vytvářet nové fondy ' cloudServiceConfiguration ' ani přidávat nové uzly do stávajících fondů. Další informace najdete v tématu [migrace konfigurace fondu Batch z Cloud Services do virtuálního počítače](batch-pool-cloud-service-to-virtual-machine-configuration.md).
+- **' virtualMachineConfiguration ' nebo ' cloudServiceConfiguration ':** V současné době můžete vytvářet fondy pomocí konfigurace. nové fondy by měly být nakonfigurované pomocí ' virtualMachineConfiguration ' a ne ' cloudServiceConfiguration '. Všechny aktuální a nové funkce dávky budou podporovány fondy konfigurací virtuálních počítačů. Fondy konfigurací Cloud Services nepodporují všechny funkce a neplánují se žádné nové funkce. [Po 29. února 2024](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)už nebudete moct vytvářet nové fondy ' cloudServiceConfiguration ' ani přidávat nové uzly do stávajících fondů. Další informace najdete v tématu [migrace konfigurace fondu Batch z Cloud Services do virtuálního počítače](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
-- **Při určování úlohy na mapování fondu zvažte čas spuštění úlohy a úlohy.**
-    Pokud máte úlohy skládající se hlavně z krátkých spuštěných úloh a očekávaného celkového počtu úloh je malý, takže celková Očekávaná doba běhu úlohy není dlouhá, nepřiřazujte nový fond pro každou úlohu. Čas přidělení uzlů sníží dobu běhu úlohy.
+- **Při určování úlohy na mapování fondu zvažte čas spuštění úlohy a úlohy:** Pokud máte úlohy skládající se hlavně z krátkých spuštěných úloh a očekávaného celkového počtu úloh je malý, takže celková Očekávaná doba běhu úlohy není dlouhá, nepřiřazujte nový fond pro každou úlohu. Čas přidělení uzlů sníží dobu běhu úlohy.
 
-- **Fondy by měly mít více než jeden výpočetní uzel.**
-    V jednotlivých uzlech není zaručeno, že vždy bude k dispozici. I když nejsou běžné, selhání hardwaru, aktualizace operačního systému a hostitel jiných problémů, můžou způsobit, že jednotlivé uzly budou offline. Pokud vaše úloha Batch vyžaduje deterministický a zaručený průběh, měli byste přidělit fondy s více uzly.
+- **Fondy by měly mít více než jeden výpočetní uzel:** V jednotlivých uzlech není zaručeno, že vždy bude k dispozici. I když nejsou běžné, selhání hardwaru, aktualizace operačního systému a hostitel jiných problémů, můžou způsobit, že jednotlivé uzly budou offline. Pokud vaše úloha Batch vyžaduje deterministický a zaručený průběh, měli byste přidělit fondy s více uzly.
 
-- **Nepoužívejte názvy prostředků znovu.**
-    Prostředky Batch (úlohy, fondy atd.) se často přidávají a procházejí v průběhu času. Můžete například vytvořit fond v pondělí, odstranit ho v úterý a pak vytvořit další fond ve čtvrtek. Každému novému prostředku, který vytvoříte, by se měl udělit jedinečný název, který jste předtím nepoužívali. To lze provést pomocí identifikátoru GUID (buď jako celého názvu prostředku, nebo jako jeho části), nebo vložením času vytvoření prostředku v názvu prostředku. Batch podporuje [DisplayName (zobrazovaný](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)název), který se dá použít k poskytnutí snadno čitelného názvu prostředku, i když je skutečný identifikátor prostředku něco, co není pro člověka vhodné. Použití jedinečných názvů usnadňuje odlišení konkrétního prostředku v protokolech a metrikách. Pokud někdy budete potřebovat případ podpory pro určitý prostředek, odeberete taky nejednoznačnost.
+- Nepoužívejte **názvy prostředků znovu:** Prostředky Batch (úlohy, fondy atd.) se často přidávají a procházejí v průběhu času. Můžete například vytvořit fond v pondělí, odstranit ho v úterý a pak vytvořit další fond ve čtvrtek. Každému novému prostředku, který vytvoříte, by se měl udělit jedinečný název, který jste předtím nepoužívali. To lze provést pomocí identifikátoru GUID (buď jako celého názvu prostředku, nebo jako jeho části), nebo vložením času vytvoření prostředku v názvu prostředku. Batch podporuje [DisplayName (zobrazovaný](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)název), který se dá použít k poskytnutí snadno čitelného názvu prostředku, i když je skutečný identifikátor prostředku něco, co není pro člověka vhodné. Použití jedinečných názvů usnadňuje odlišení konkrétního prostředku v protokolech a metrikách. Pokud někdy budete potřebovat případ podpory pro určitý prostředek, odeberete taky nejednoznačnost.
 
-- **Kontinuita při údržbě fondu a selhání.**
-    Doporučujeme, aby vaše úlohy dynamicky používaly fondy. Pokud vaše úlohy používají stejný fond pro všechno, může se stát, že se vaše úlohy nespustí, pokud dojde k nějakému problému s fondem. To je obzvláště důležité pro časově citlivé úlohy. Pokud chcete tento problém vyřešit, vyberte nebo vytvořte fond dynamicky, když naplánujete každou úlohu, nebo máte možnost přepsat název fondu, abyste mohli obejít špatný fond.
+- **Kontinuita při údržbě fondu a selhání:** Doporučujeme, aby vaše úlohy dynamicky používaly fondy. Pokud vaše úlohy používají stejný fond pro všechno, může se stát, že se vaše úlohy nespustí, pokud dojde k nějakému problému s fondem. To je obzvláště důležité pro časově citlivé úlohy. Pokud chcete tento problém vyřešit, vyberte nebo vytvořte fond dynamicky, když naplánujete každou úlohu, nebo máte možnost přepsat název fondu, abyste mohli obejít špatný fond.
 
-- **Provozní kontinuita při údržbě fondu a selhání** Existuje mnoho možných příčin, které mohou zabránit, aby se fond rozrůst na požadovanou velikost, kterou si přejete, jako je například vnitřní chyba, omezení kapacity atd. Z tohoto důvodu byste měli být připravení změnit cílení úloh v jiném fondu (případně s jinou velikostí virtuálního počítače, který v případě potřeby podporuje dávku přes [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)). Nepoužívejte identifikátor statického fondu s očekáváním, že se nikdy neodstraní a nikdy se nezmění.
+- **Provozní kontinuita při údržbě fondu a selhání:** Existuje mnoho důvodů, proč fond nemusí dosáhnout velikosti, kterou si přejete, například interní chyby, omezení kapacity atd. Z tohoto důvodu byste měli být připravení změnit cílení úloh v jiném fondu (případně s jinou velikostí virtuálního počítače, který v případě potřeby podporuje dávku přes [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)). Nepoužívejte identifikátor statického fondu s očekáváním, že se nikdy neodstraní a nikdy se nezmění.
 
 ### <a name="pool-lifetime-and-billing"></a>Doba života fondu a fakturace
 
 Doba života fondu se může lišit v závislosti na metodě přidělování a parametrech, které se vztahují ke konfiguraci fondu. Fondy můžou mít v libovolném časovém okamžiku libovolnou dobu života a proměnlivý počet výpočetních uzlů ve fondu. Vaše zodpovědnost za správu výpočetních uzlů ve fondu buď výslovně, nebo prostřednictvím funkcí poskytovaných službou ([Automatické škálování nebo automatického](nodes-and-pools.md#automatic-scaling-policy) [fondu](nodes-and-pools.md#autopools)).
 
-- **Udržujte fondy v čerstvém stavu.**
-    Změňte velikost fondů na nulu každých několik měsíců, abyste měli jistotu, že získáte [nejnovější aktualizace agenta uzlů a opravy chyb](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Váš fond nebude dostávat aktualizace agenta uzlu, pokud není znovu vytvořen, nebo se změnila velikost na 0 výpočetních uzlů. Než znovu vytvoříte nebo změníte velikost fondu, doporučujeme, abyste si stáhli všechny protokoly agenta uzlů pro účely ladění, jak je popsáno v části [uzly](#nodes) .
+- **Udržujte fondy v čerstvém stavu:** Změňte velikost fondů na nulu každých několik měsíců, abyste měli jistotu, že získáte [nejnovější aktualizace agenta uzlů a opravy chyb](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Váš fond nebude dostávat aktualizace agenta uzlu, pokud není znovu vytvořen, nebo se změnila velikost na 0 výpočetních uzlů. Než znovu vytvoříte nebo změníte velikost fondu, doporučujeme, abyste si stáhli všechny protokoly agenta uzlů pro účely ladění, jak je popsáno v části [uzly](#nodes) .
 
-- **Opětovné vytvoření fondu** Na podobném upozornění se nedoporučuje každý den odstranit a znovu vytvořit fondy. Místo toho vytvořte nový fond a aktualizujte stávající úlohy tak, aby odkazovaly na nový fond. Po přesunutí všech úkolů do nového fondu odstraňte starý fond.
+- **Opětovné vytvoření fondu:** Na podobném upozornění se nedoporučuje každý den odstranit a znovu vytvořit fondy. Místo toho vytvořte nový fond a aktualizujte stávající úlohy tak, aby odkazovaly na nový fond. Po přesunutí všech úkolů do nového fondu odstraňte starý fond.
 
-- **Efektivita fondu a fakturace** Samotný Batch se neúčtují žádné další poplatky, ale za využité výpočetní prostředky se vám účtují poplatky. Účtují se vám všechny výpočetní uzly ve fondu bez ohledu na stav, ve kterém se nachází. To zahrnuje všechny poplatky potřebné ke spuštění uzlu, například náklady na úložiště a síť. Další informace o osvědčených postupech najdete v tématu [Analýza nákladů a rozpočty pro Azure Batch](budget.md).
+- **Efektivita fondu a fakturace:** Samotný Batch se neúčtují žádné další poplatky, ale za využité výpočetní prostředky se vám účtují poplatky. Účtují se vám všechny výpočetní uzly ve fondu bez ohledu na stav, ve kterém se nachází. To zahrnuje všechny poplatky potřebné ke spuštění uzlu, například náklady na úložiště a síť. Další informace o osvědčených postupech najdete v tématu [Analýza nákladů a rozpočty pro Azure Batch](budget.md).
 
 ### <a name="pool-allocation-failures"></a>Selhání přidělení fondů
 
@@ -73,7 +67,7 @@ Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure
 
 ### <a name="azure-region-dependency"></a>Závislost oblasti Azure
 
-Doporučujeme, abyste nezávislí na jedné oblasti Azure v případě, že máte časově citlivou nebo produkční úlohu. V některých případech dochází k problémům, které mohou ovlivnit celou oblast. Například pokud vaše zpracování potřebuje spustit v určitou dobu, zvažte možnost škálovat fond v hlavní oblasti *dobře před časem zahájení*. Pokud se škálování fondu nepovede, můžete se vrátit k vertikálnímu navýšení kapacity fondu v oblasti zálohování (nebo oblastech). Fondy napříč několika účty v různých oblastech poskytují připravenou a snadno dostupnou zálohu, pokud se něco pokazilo s jiným fondem. Další informace najdete v tématu [Návrh aplikace pro zajištění vysoké dostupnosti](high-availability-disaster-recovery.md).
+Neměli byste spoléhat na jednu oblast Azure, pokud máte úlohy, které jsou časově závislé nebo produkční. V některých případech dochází k problémům, které mohou ovlivnit celou oblast. Například pokud vaše zpracování potřebuje spustit v určitou dobu, zvažte možnost škálovat fond v hlavní oblasti *dobře před časem zahájení*. Pokud se škálování fondu nepovede, můžete se vrátit k vertikálnímu navýšení kapacity fondu v oblasti zálohování (nebo oblastech). Fondy napříč několika účty v různých oblastech poskytují připravenou a snadno dostupnou zálohu, pokud se něco pokazilo s jiným fondem. Další informace najdete v tématu [Návrh aplikace pro zajištění vysoké dostupnosti](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Úlohy
 
@@ -133,7 +127,7 @@ Běžným příkladem je úloha kopírování souborů do výpočetního uzlu. J
 
 ### <a name="avoid-short-execution-time"></a>Vyhnout se krátké době provádění
 
-Úlohy, které se spouštějí jenom po dobu jedné až dvou sekund, nejsou ideální. Měli byste se pokusit o významné množství práce v jednotlivých úkolech (minimálně 10 sekund, což je víc než hodiny nebo dny). Pokud je každý úkol spuštěný na jednu minutu (nebo více), pak se režijní náklady na plánování za zlomek celkového výpočetního času budou malé.
+Úlohy, které se spouštějí jenom po dobu jedné až dvou sekund, nejsou ideální. Zkuste provést významnou práci v jednotlivých úkolech (minimálně 10 sekund, což je víc než hodiny nebo dny). Pokud je každý úkol spuštěný na jednu minutu (nebo více), pak se režijní náklady na plánování za zlomek celkového výpočetního času budou malé.
 
 ### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>Použití oboru fondu pro krátké úlohy v uzlech Windows
 

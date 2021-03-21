@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103600944"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
@@ -128,7 +128,7 @@ K transformaci deklarací lze použít následující funkce.
 | **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. Pro transformaci deklarace NameID je spojení omezené na ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |
 | **ToLowercase ()** | Převede znaky vybraného atributu na malá písmena. |
 | **ToUppercase ()** | Převede znaky vybraného atributu na velká písmena. |
-| **Obsahuje ()** | Vytvoří výstup atributu nebo konstanty, pokud vstup odpovídá zadané hodnotě. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota e-mailová adresa uživatele, pokud obsahuje doménu " @contoso.com ", jinak chcete vytvořit výstup hlavního názvu uživatele. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. email<br/>*Hodnota*: " @contoso.com "<br/>Parametr 2 (výstup): User. email<br/>Parametr 3 (výstup, pokud se neshoduje): User. userPrincipalName |
+| **Obsahuje ()** | Vytvoří výstup atributu nebo konstanty, pokud vstup odpovídá zadané hodnotě. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota e-mailová adresa uživatele, pokud obsahuje doménu " @contoso.com ", jinak chcete vytvořit výstup hlavního názvu uživatele. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User.email<br/>*Hodnota*: " @contoso.com "<br/>Parametr 2 (výstup): user.email<br/>Parametr 3 (výstup, pokud se neshoduje): User. userPrincipalName |
 | **EndWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstupní hodnota končí zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud ID zaměstnance končí na "000", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. ČísloZaměstnance<br/>*Hodnota*: "000"<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
 | **StartWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstup začíná zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud země nebo oblast začíná řetězcem "US", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. Country<br/>*Hodnota*: US<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
 | **Extract () – po porovnání** | Vrátí podřetězec poté, co odpovídá zadané hodnotě.<br/>Pokud je například hodnota vstupu "Finance_BSimon", odpovídá hodnota "Finance_", takže výstup deklarace identity je "BSimon". |
@@ -155,7 +155,7 @@ Typ uživatele může být:
 - **Externí hosté**: uživatel typu Host patří do externí organizace, která nemá službu Azure AD.
 
 
-Jedním z situací, kdy je to užitečné, je, že je zdroj deklarace identity jiný pro hosta a zaměstnance, který přistupuje k aplikaci. Možná budete chtít určit, že pokud je uživatel zaměstnancem, NameID je od uživatele. e-mail, ale pokud je uživatel hostem, pak je NameID ze zdroje User. extensionAttribute1.
+Jedním z situací, kdy je to užitečné, je, že je zdroj deklarace identity jiný pro hosta a zaměstnance, který přistupuje k aplikaci. Možná budete chtít určit, že pokud je uživatel zaměstnancem, NameID je zdrojem z user.email, ale pokud je uživatel hostem, pak je NameID od uživatele. extensionAttribute1.
 
 Přidání podmínky deklarace identity:
 

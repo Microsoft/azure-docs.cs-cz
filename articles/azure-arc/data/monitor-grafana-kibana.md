@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 12/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 3693c30a34601512770f5d9071f5d786410fb00e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cb53aba300b933c78d9ac2f5fc5cf8054f3413e3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92360373"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669997"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Zobrazení protokolů a metrik pomocí Kibana a Grafana
 
@@ -22,43 +22,51 @@ Webové řídicí panely Kibana a Grafana umožňují získat jasný přehled o 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="retrieve-the-ip-address-of-your-cluster"></a>Načtení IP adresy vašeho clusteru
 
-Pro přístup k řídicím panelům budete potřebovat načíst IP adresu vašeho clusteru. Metoda načtení správné IP adresy se liší v závislosti na tom, jak jste zvolili nasazení Kubernetes. Projděte si následující možnosti, abyste našli ten správný.
+## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Monitorování spravovaných instancí Azure SQL v Arc Azure
 
-### <a name="azure-virtual-machine"></a>Virtuální počítač Azure
+Pokud chcete získat přístup k řídicím panelům protokoly a monitorování pro spravovanou instanci SQL s povoleným obloukem, spusťte následující `azdata` příkaz CLI.
 
-Pokud chcete načíst veřejnou IP adresu, použijte následující příkaz:
+```bash
 
-```azurecli
-az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
+azdata arc sql endpoint list -n <name of SQL instance>
+
+```
+Příslušné řídicí panely Grafana:
+
+* "Metriky spravované instance Azure SQL"
+* "Metriky hostitelských uzlů"
+* "Metriky" hostitele pro lusky "
+
+
+> [!NOTE]
+>  Až se zobrazí výzva k zadání uživatelského jména a hesla, zadejte uživatelské jméno a heslo, které jste zadali v době, kdy jste vytvořili řadič dat ARC Azure.
+
+> [!NOTE]
+>  Zobrazí se výzva s upozorněním certifikátu, protože certifikáty používané ve verzi Preview jsou certifikáty podepsané svým držitelem.
+
+
+## <a name="monitor-azure-database-for-postgresql-hyperscale-on-azure-arc"></a>Monitorování Azure Database for PostgreSQLho škálování na ARC Azure
+
+Pokud chcete získat přístup k řídicím panelům protokolů a monitorování pro PostgreSQL, spusťte následující `azdata` příkaz CLI.
+
+```bash
+
+azdata arc postgres endpoint list -n <name of postgreSQL instance>
+
 ```
 
-### <a name="kubeadm-cluster"></a>Cluster Kubeadm
+Příslušné řídicí panely postgreSQL:
 
-Pokud chcete načíst IP adresu clusteru, použijte následující příkaz:
+* "Postgres metriky"
+* "Postgres metriky tabulky"
+* "Metriky hostitelských uzlů"
+* "Metriky" hostitele pro lusky "
 
-```console
-kubectl cluster-info
-```
-
-
-### <a name="aks-or-other-load-balanced-cluster"></a>AKS nebo jiný cluster s vyrovnáváním zatížení
-
-Pokud chcete monitorovat prostředí v AKS nebo jiném clusteru s vyrovnáváním zatížení, musíte získat IP adresu služby proxy pro správu. Pomocí tohoto příkazu načtěte **externí IP** adresu:
-
-```console
-kubectl get svc mgmtproxy-svc-external -n <namespace>
-
-#Example:
-#kubectl get svc mgmtproxy-svc-external -n arc
-NAME                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)           AGE
-mgmtproxy-svc-external   LoadBalancer   10.0.186.28   52.152.148.25   30777:30849/TCP   19h
-```
 
 ## <a name="additional-firewall-configuration"></a>Další konfigurace brány firewall
 
-Možná zjistíte, že pro přístup k koncovým bodům Kibana a Grafana budete muset otevřít porty na bráně firewall.
+V závislosti na tom, kde je řadič dat nasazený, možná zjistíte, že v bráně firewall musíte otevřít porty pro přístup k koncovým bodům Kibana a Grafana.
 
 Tady je příklad toho, jak to udělat pro virtuální počítač Azure. Pokud jste Kubernetes nasadili pomocí skriptu, budete ho muset provést.
 
@@ -78,44 +86,6 @@ Jakmile budete mít název NSG, můžete pravidlo přidat pomocí následující
 az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 600 -g azurearcvm-rg --access Allow --description 'Allow Kibana and Grafana ports' --destination-address-prefixes '*' --destination-port-ranges 30777 --direction Inbound --protocol Tcp --source-address-prefixes '*' --source-port-ranges '*'
 ```
 
-## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Monitorování spravovaných instancí Azure SQL v Arc Azure
-
-Teď, když máte IP adresu a vystavené porty byste měli mít přístup k Grafana a Kibana.
-
-> [!NOTE]
->  Až se zobrazí výzva k zadání uživatelského jména a hesla, zadejte uživatelské jméno a heslo, které jste zadali v době, kdy jste vytvořili řadič dat ARC Azure.
-
-> [!NOTE]
->  Zobrazí se výzva s upozorněním certifikátu, protože certifikáty používané ve verzi Preview jsou certifikáty podepsané svým držitelem.
-
-Pro přístup k řídicím panelům protokolování a monitorování pro spravovanou instanci Azure SQL použijte následující vzor adresy URL:
-
-```html
-https://<external-ip-from-above>:30777/grafana
-https://<external-ip-from-above>:30777/kibana
-```
-
-Důležité jsou tyto řídicí panely:
-
-* "Metriky spravované instance Azure SQL"
-* "Metriky hostitelských uzlů"
-* "Metriky" hostitele pro lusky "
-
-## <a name="monitor-azure-database-for-postgresql-hyperscale---azure-arc"></a>Monitorování Azure Database for PostgreSQL škálování – Azure ARC
-
-Použijte následující vzor adresy URL pro přístup k řídicím panelům protokolování a monitorování pro PostgreSQL s měřítkem:
-
-```html
-https://<external-ip-from-above>:30777/grafana
-https://<external-ip-from-above>:30777/kibana
-```
-
-Důležité jsou tyto řídicí panely:
-
-* "Postgres metriky"
-* "Postgres metriky tabulky"
-* "Metriky hostitelských uzlů"
-* "Metriky" hostitele pro lusky "
 
 ## <a name="next-steps"></a>Další kroky
 - Zkuste [nahrávat metriky a protokoly a Azure monitor](upload-metrics-and-logs-to-azure-monitor.md)

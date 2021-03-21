@@ -1,18 +1,18 @@
 ---
-title: Postup při plánování nasazení serverů s povoleným rozšířením Azure ARC na úrovni
+title: Postup plánování a nasazení serverů s podporou ARC Azure
 description: Naučte se, jak povolit velké množství počítačů pro servery s podporou ARC Azure a zjednodušit tak konfiguraci základních funkcí zabezpečení, správy a monitorování v Azure.
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 63e224180cff8cab6e700bc72b8a5c39a7f26857
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 401725dcfed85a6675c95434270dd7dbff482b6e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103461296"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591176"
 ---
-# <a name="plan-and-deploy-arc-enabled-servers-at-scale"></a>Plánování a nasazení serverů s podporou ARC v měřítku
+# <a name="plan-and-deploy-arc-enabled-servers"></a>Plánování a nasazení serverů s povoleným ARC
 
-Nasazení služby IT infrastruktury nebo obchodní aplikace je výzvou k jakékoli společnosti. Aby se zajistilo, že bude dobře fungovat a nemusíte mít žádné nedokončené překvapením a neplánované náklady, budete ho muset důkladně naplánovat, abyste měli jistotu, že jste připravení. Chcete-li naplánovat nasazení serverů s podporou ARC Azure na škálování, měla by pokrývat kritéria návrhu a nasazení, která je potřeba splnit, aby bylo možné úspěšně dokončit úlohy pro podporu nasazení v rámci škálování.
+Nasazení služby IT infrastruktury nebo obchodní aplikace je výzvou k jakékoli společnosti. Aby se zajistilo, že bude dobře fungovat a nemusíte mít žádné nedokončené překvapením a neplánované náklady, budete ho muset důkladně naplánovat, abyste měli jistotu, že jste připravení. Chcete-li naplánovat nasazení serverů s podporou ARC Azure v jakémkoli měřítku, měl by pokrývat kritéria návrhu a nasazení, která je potřeba splnit, aby bylo možné úlohy úspěšně dokončit.
 
 Aby nasazení mohlo pokračovat plynule, měl by váš plán vytvořit jasné porozumění:
 
@@ -27,7 +27,7 @@ Aby nasazení mohlo pokračovat plynule, měl by váš plán vytvořit jasné po
 
 Účelem tohoto článku je zajistit úspěšné nasazení serverů s podporou ARC Azure v různých produkčních fyzických serverech nebo virtuálních počítačích ve vašem prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * V počítačích je spuštěný [podporovaný operační systém](agent-overview.md#supported-operating-systems) pro agenta připojeného počítače.
 * Vaše počítače mají připojení z vaší místní sítě nebo jiného cloudového prostředí k prostředkům v Azure, a to buď přímo, nebo prostřednictvím proxy server.
@@ -71,7 +71,7 @@ V dalším kroku přidáme do základu ve fázi 1, když připravujete a nasadí
 
 |Úkol |Podrobnosti |Doba trvání |
 |-----|-------|---------|
-| Stažení předem definovaného instalačního skriptu | Přečtěte si a přizpůsobte předem definovaný instalační skript pro nasazení připojeného strojového agenta v rámci škálování, aby se podporovaly požadavky na automatizované nasazení.<br><br> Ukázka prostředků připojování v měřítku:<br><br> <ul><li> [Základní skript pro nasazení ve velkém měřítku](onboard-service-principal.md)</ul></li> <ul><li>[Připojování VMware vSphere virtuálních počítačů s Windows serverem v měřítku](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Připojování virtuálních počítačů se systémem VMware vSphere Linux v měřítku](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Připojování instancí AWS EC2 pomocí Ansible v měřítku](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[Nasazení během škálování pomocí vzdálené komunikace PowerShellu](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (jenom Windows)</ul></li>| Jeden nebo více dní v závislosti na požadavcích, organizační procesy (například změna a Release Management) a použitá metoda automatizace. |
+| Stažení předem definovaného instalačního skriptu | Přečtěte si a přizpůsobte předem definovaný instalační skript pro nasazení připojeného strojového agenta v rámci škálování, aby se podporovaly požadavky na automatizované nasazení.<br><br> Ukázka na škále připojování prostředků:<br><br> <ul><li> [Skript základního nasazení se škálováním](onboard-service-principal.md)</ul></li> <ul><li>[Škálování při připojování VMware vSphere virtuálních počítačů s Windows serverem](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Škálování při připojování VMware vSphere virtuálních počítačů se systémem Linux](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Škálování instancí AWS EC2 na škále s využitím Ansible](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[Škálování nasazení pomocí vzdálené komunikace PowerShellu](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (jenom Windows)</ul></li>| Jeden nebo více dní v závislosti na požadavcích, organizační procesy (například změna a Release Management) a použitá metoda automatizace. |
 | [Vytvoření instančního objektu](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Vytvořte instanční objekt pro připojení počítačů neinteraktivně pomocí Azure PowerShell nebo na portálu.| Jedna hodina |
 | Nasazení agenta připojeného počítače na cílové servery a počítače |Pomocí nástroje pro automatizaci nasaďte skripty na vaše servery a připojte je k Azure.| Jeden nebo více dní v závislosti na plánu vydání a při dvoufázové zavedení. |
 

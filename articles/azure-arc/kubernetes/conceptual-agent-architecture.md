@@ -9,10 +9,10 @@ ms.author: shasb
 description: Tento článek poskytuje přehled architektury agentů Kubernetes s povoleným ARC Azure.
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121894"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Architektura agenta Kubernetes povoleného ARC Azure
@@ -85,7 +85,7 @@ Většina Prem Datacenter vynutila striktní Síťová pravidla, která zabraňu
 
 ## <a name="understand-connectivity-modes"></a>Principy režimů připojení
 
-| Režim připojení | Popis |
+| Režim připojení | Description |
 | ----------------- | ----------- |
 | Plně připojeno | Agenti můžou konzistentně komunikovat s Azure s malým zpožděním při rozšiřování konfigurací GitOps, vynucování zásad Azure Policy a gatekeeper a shromažďování metrik úloh a protokolů v Azure Monitor. |
 | Částečně připojeno | Certifikát MSI vydaný v `clusteridentityoperator` je platný až 90 dní před vypršením platnosti certifikátu. Po vypršení platnosti přestane prostředek Kubernetes s povoleným ARC Azure fungovat. Pokud chcete znovu aktivovat všechny funkce ARC Azure v clusteru, odstraňte a znovu vytvořte prostředky a agenty s povoleným Kubernetes ARC Azure. Během 90 dnů připojte cluster alespoň jednou za 30 dní. |

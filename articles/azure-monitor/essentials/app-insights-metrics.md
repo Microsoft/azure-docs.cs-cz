@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
-ms.openlocfilehash: bd28fa9f20775be659de6cef99f9ceda29fe52cc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bae7980137c1da5e1755450863af4f9029d6ed62
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049130"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583458"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights metriky založené na protokolu
 
@@ -95,6 +95,8 @@ Metriky prohlížeče jsou shromažďovány sadou Application Insights JavaScrip
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Doba načítání stránky v prohlížeči (browserTimings/totalDuration)
 
+Čas od žádosti uživatele do načtení DOM, šablon stylů, skriptů a imagí.
+
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
 |Milisekund|Average, min, Max|Žádné|
@@ -110,6 +112,8 @@ browserTimings
 ```
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>Doba zpracování klienta (browserTiming/processingDuration)
+
+Doba mezi přijetím posledního bajtu dokumentu, dokud není načten DOM. Je možné, že se stále zpracovávají asynchronní požadavky.
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
@@ -127,6 +131,8 @@ browserTimings
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Doba připojení k síti načítání stránky (browserTimings/networkDuration)
 
+Doba mezi požadavkem uživatele a připojením k síti. Zahrnuje vyhledávání DNS a přenosové připojení.
+
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
 |Milisekund|Average, min, Max|Žádné|
@@ -143,6 +149,8 @@ browserTimings
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Doba přijetí odezvy (browserTimings/receiveDuration)
 
+Čas mezi prvním a posledním bajtů nebo až do odpojení
+
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|
 |Milisekund|Average, min, Max|Žádné|
@@ -158,6 +166,8 @@ browserTimings
 ```
 
 ### <a name="send-request-time-browsertimingssendduration"></a>Čas žádosti o odeslání (browserTimings/sendDuration)
+
+Doba mezi síťovým připojením a přijetím prvního bajtu.
 
 |Jednotka měření|Podporované agregace|Předem agregované dimenze|
 |---|---|---|

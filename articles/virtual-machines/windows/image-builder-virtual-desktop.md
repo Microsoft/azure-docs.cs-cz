@@ -10,10 +10,10 @@ ms.service: virtual-machines-windows
 ms.collection: windows
 ms.subservice: imaging
 ms.openlocfilehash: 01b253747791fc29abf4434bebfd85865099f9ee
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103602014"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Vytvoření image virtuálního počítače s Windows pomocí nástroje Azure VM Image Builder a PowerShellu
@@ -71,7 +71,7 @@ Tento článek je určený jako kopírování a vkládání cvičení.
 
 - Sítě – `Set-NetAdapterAdvancedProperty` . Tato funkce se nastavuje ve skriptu optimalizace, ale AIB sestavení se nezdařila, protože odpojuje síť, jedná se o komentář. Probíhá šetření.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte mít nainstalované nejnovější rutiny Azure PowerShell. Podrobnosti o instalaci najdete [tady](https://docs.microsoft.com/powershell/azure/overview) :.
 

@@ -9,10 +9,10 @@ ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4dd216f4018feca8c3461104a5beb220d90fd743
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97932839"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>Rychlý Start: Azure Key Vault klientské knihovny certifikátů pro .NET (SDK v4)
@@ -27,7 +27,7 @@ Další informace o Key Vault a certifikátech najdete v tématech:
 - [Přehled Key Vault](../general/overview.md)
 - [Přehled certifikátů](about-certificates.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/dotnet) .
 * [.NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core)
@@ -124,7 +124,7 @@ Klientská knihovna certifikátů Azure Key Vault pro .NET umožňuje správu ce
 
 ### <a name="add-directives"></a>Přidat direktivy
 
-Do horní části *program.cs* přidejte následující direktivy:
+Do horní části *programu. cs* přidejte následující direktivy:
 
 ```csharp
 using System;
@@ -183,7 +183,7 @@ await client.PurgeDeletedCertificateAsync("myCertificate");
 
 Upravte konzolovou aplikaci .NET Core tak, aby spolupracovala s Key Vault, a to provedením následujících kroků:
 
-- Nahraďte kód v *program.cs* následujícím kódem:
+- Nahraďte kód v *programu program. cs* následujícím kódem:
 
     ```csharp
     using System;

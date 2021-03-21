@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
 ms.openlocfilehash: 998b0cb04d465f675423e2472a7ca8c6441b1fed
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103010401"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrace na monitorování připojení z Network Performance Monitor
@@ -41,7 +41,7 @@ Migrace pomáhá získat následující výsledky:
     * **Koncová ztráta a latence**: monitorování připojení bude toto nastavení zasílané a jednodušší než NPM, aby uživatelé nemuseli konfigurovat, které okruhy a partnerské vztahy monitorují. V této cestě budou automaticky zjištěny okruhy, data budou k dispozici v metrikách (rychlejší než LA, kde NPM výsledky uloženy). Topologie bude fungovat stejně jako.
     * **Měření šířky pásma**: při spuštění metrik souvisejících s šířkou pásma se přístup založený na službě npm Log Analytics neúčinný při monitorování šířky pásma pro zákazníky ExpressRoute. Tato funkce není nyní k dispozici v monitorování připojení.
     
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Ujistěte se, že ve vašem předplatném a oblasti pracovního prostoru Log Analytics je povolená možnost Network Watcher. 
 * V případě, že se virtuální počítač Azure patřící do jiné oblasti nebo předplatného, než je Log Analytics pracovního prostoru, používá jako koncový bod, ujistěte se, že pro toto předplatné a oblast jsou povolené Network Watcher.   

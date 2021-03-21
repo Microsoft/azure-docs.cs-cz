@@ -10,14 +10,14 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 68114893ed3db858d00ca7811b1a83395ff02507
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: e8efa094ef6bd888c21f71e44f1810614bc87e75
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495294"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719671"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python](https://www.python.org/downloads/) 2,7, 3,5 nebo novější.
@@ -101,11 +101,11 @@ Přístupové tokeny jsou krátkodobé přihlašovací údaje, které je potřeb
 
 ## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>Vytvoření identity a vydání přístupového tokenu v rámci stejné žádosti
 
-Použijte `create_user_with_token` metodu k vytvoření identity komunikačních služeb a vydání přístupového tokenu pro něj. Parametr `scopes` definuje sadu primitivních hodnot, které budou autorizovat tento přístupový token. Podívejte se na [seznam podporovaných akcí](../../concepts/authentication.md).
+Použijte `create_user_and_token` metodu k vytvoření identity komunikačních služeb a vydání přístupového tokenu pro něj. Parametr `scopes` definuje sadu primitivních hodnot, které budou autorizovat tento přístupový token. Podívejte se na [seznam podporovaných akcí](../../concepts/authentication.md).
 
 ```python
 # Issue an identity and an access token with the "voip" scope for the new identity
-identity_token_result = client.create_user_with_token(["voip"])
+identity_token_result = client.create_user_and_token(["voip"])
 identity = identity_token_result[0].identifier
 token = identity_token_result[1].token
 expires_on = identity_token_result[1].expires_on.strftime('%d/%m/%y %I:%M %S %p')

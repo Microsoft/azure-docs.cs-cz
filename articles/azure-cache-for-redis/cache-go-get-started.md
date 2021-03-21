@@ -8,10 +8,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
 ms.openlocfilehash: 04b582b5ef31e61039c5513ea2a4aa60f1c638e7
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121333"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>Rychlý Start: použití mezipaměti Azure pro Redis s nástrojem přejít
@@ -22,7 +22,7 @@ V tomto článku se naučíte, jak vytvořit REST API v nástroji, které budou 
 
 Pokud chcete přeskočit přímo na kód, Projděte si [rychlý Start](https://github.com/Azure-Samples/azure-redis-cache-go-quickstart/) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Přejít](https://golang.org/doc/install) (nejlépe verze 1,13 nebo vyšší)

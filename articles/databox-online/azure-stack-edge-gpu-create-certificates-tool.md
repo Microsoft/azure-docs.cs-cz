@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: a04243093b89b6a2498efc48f80cbd7a47d57337
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102437719"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Vytvoření certifikátů pro Azure Stack Edge pro pomocí nástroje pro kontrolu připravenosti centra Azure Stack 
@@ -37,7 +37,7 @@ K vyžádání následujících certifikátů můžete použít nástroj pro kon
 - Certifikát sítě VPN
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete vytvořit zástupce pro nasazení zařízení Azure Stack Edge pro, ujistěte se, že: 
 
@@ -73,7 +73,7 @@ Pomocí těchto kroků Připravte certifikáty zařízení Azure Stack Edge pro:
     
 4. Pokud chcete vytvořit žádost o certifikát, zadejte následující informace. Pokud vygenerujete certifikát sítě VPN, některé z těchto vstupů se nevztahují.
     
-    |Vstup |Popis  |
+    |Vstup |Description  |
     |---------|---------|
     |`OutputRequestPath`|Cesta k souboru v místním klientovi, kde chcete vytvořit žádosti o certifikát.        |
     |`DeviceName`|Název zařízení na stránce **zařízení** v místním webovém uživatelském rozhraní vašeho zařízení. <br> Toto pole není vyžadováno pro certifikát sítě VPN.         |

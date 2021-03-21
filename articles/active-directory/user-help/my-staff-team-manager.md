@@ -1,5 +1,5 @@
 ---
-title: Správa hesel a telefonních čísel pomocí mých zaměstnanců (Preview) – Azure AD | Microsoft Docs
+title: Správa hesel a telefonních čísel pomocí mých zaměstnanců – Azure AD | Microsoft Docs
 description: Spravovat hesla a telefonní čísla uživatelů pomocí mých zaměstnanců
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ ms.topic: end-user-help
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/14/2020
+ms.date: 03/17/2021
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b435c56f53001275fbdb1a3b3cfae25536a9a63
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537086"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583594"
 ---
-# <a name="delegate-user-management-with-my-staff-preview"></a>Delegování správy uživatelů pomocí mých zaměstnanců (Preview)
+# <a name="delegate-user-management-with-my-staff"></a>Delegování správy uživatelů pomocí mých zaměstnanců
 
 Vaše organizace může pomocí **mých zaměstnanců** delegovat úkoly správy uživatelů na číselné údaje, jako je Správce úložiště nebo vedoucí týmu, aby pomohli svým pracovníkům přístup k aplikacím, které potřebují. Pokud váš člen týmu nemá přístup k aplikaci, protože zapomene heslo, dojde ke ztrátě produktivity. Tím se také zařídí náklady na podporu a v procesech správy dojde k kritickým bodům.  Členové týmu, kteří nemají přístup ke svému účtu, můžou při práci s pracovníky získat přístup jenom v několika kliknutích, a to bez nutnosti pomáhat s správcem.
 

@@ -6,18 +6,21 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: b65697c224f612a1bc9d5bfa193355832cafd73f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddeab4838feb07d1101993cab4ebc86581b4d8b1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799243"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674695"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog koncepce pro vývojáře
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 Microsoft **Azure Data Catalog** je plně spravovaná cloudová služba, která poskytuje možnosti pro zjišťování zdrojů dat a pro metadata crowdsourcingový zdrojů dat. Vývojáři můžou službu používat přes rozhraní REST API. Porozumění konceptům implementovaným ve službě je důležité, aby se vývojáři mohli úspěšně integrovat s **Azure Data Catalog**.
 
 ## <a name="key-concepts"></a>Klíčové koncepty 
-**Azure Data Catalog** koncepční model vychází ze čtyř klíčových konceptů: **katalogu**, **uživatelů**, **assetů**a **poznámek**.
+**Azure Data Catalog** koncepční model vychází ze čtyř klíčových konceptů: **katalogu**, **uživatelů**, **assetů** a **poznámek**.
 
 ![Ilustrace Azure Data Catalog koncepčního modelu](./media/data-catalog-developer-concepts/concept2.png)
 
@@ -38,7 +41,7 @@ Azure Data Catalog používá Azure Active Directory pro správu identit a pří
 ### <a name="assets"></a>Prostředky
 **Katalog** obsahuje datové assety. **Prostředky** jsou jednotka podrobností spravovaná katalogem.
 
-Členitost assetů se liší podle zdroje dat. V případě SQL Server nebo Oracle Database může být Assetem tabulka nebo zobrazení. V případě SQL Server Analysis Services může být Assetem míra, dimenze nebo klíčový ukazatel výkonu (KPI). V případě SQL Server Reporting Services je Assetem sestava.
+Členitost assetů se liší podle zdroje dat. V případě SQL Server nebo Oracle Database může být Assetem tabulka nebo zobrazení. V případě Služba Analysis Services serveru SQL může být Assetem míra, dimenze nebo klíčový ukazatel výkonu (KPI). V případě SQL Server Reporting Services je Assetem sestava.
 
 **Asset** je věcí, kterou přidáte nebo odeberete z katalogu. Je to jednotka výsledku, kterou vrátíte ze služby **Search**.
 
@@ -111,7 +114,7 @@ Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným 
 <tr><td><b>Typ anotace (název vnořeného zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr>
 
 <tr><td>Popis ("popisy")</td><td></td><td></td><td>Tato vlastnost obsahuje popis prostředku. Každý uživatel systému může přidat svůj vlastní popis.  Pouze tento uživatel může upravit objekt Description.  (Správci a vlastníci prostředků mohou odstranit objekt Description, ale Neupravovat ho). Systém uchovává popisy uživatelů samostatně.  Proto je k dispozici pole popisů každého assetu (jeden pro každého uživatele, který přispěl ke své znalosti o assetu, kromě možného toho, který obsahuje informace odvozené ze zdroje dat).</td></tr>
-<tr><td></td><td>Popis</td><td>řetězec</td><td>Krátký popis (2-3 řádků) prostředku</td></tr>
+<tr><td></td><td>description</td><td>řetězec</td><td>Krátký popis (2-3 řádků) prostředku</td></tr>
 
 <tr><td>Tag ("značky")</td><td></td><td></td><td>Tato vlastnost definuje značku pro určitý Asset. Každý uživatel systému může do prostředku přidat více značek.  Pouze uživatel, který vytvořil objekty značek, je může upravovat.  (Správci a vlastníci prostředků mohou odstranit objekt značky, ale Neupravovat ho). Systém uchovává značky uživatelů samostatně.  Proto je v každém prostředku pole objektů značek.</td></tr>
 <tr><td></td><td>značka</td><td>řetězec</td><td>Značka popisující prostředek.</td></tr>
@@ -124,7 +127,7 @@ Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným 
 
 <tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>Tato vlastnost obsahuje popis sloupce.  Každý uživatel systému může přidat vlastní popisy pro více sloupců (maximálně jeden pro každý sloupec). Pouze uživatel, který vytvořil objekty ColumnDescription, je může upravit.  (Správci a vlastníci prostředků mohou odstranit objekt ColumnDescription, ale ne ho upravovat). Systém uchovává popisy sloupců těchto uživatelů samostatně.  Proto je k dispozici pole objektů ColumnDescription u každého assetu (jeden pro každý sloupec pro každého uživatele, který přispěl jejich znalosti o sloupci kromě možného toho, který obsahuje informace odvozené ze zdroje dat).  ColumnDescription se dá volně svázat se schématem, aby se mohl dostat mimo synchronizaci. ColumnDescription může popsat sloupec, který už ve schématu neexistuje.  Je až do zapisovače, aby bylo možné zachovat popis a schéma v synchronizaci.  Zdroj dat může mít také informace o popiscích sloupců a jsou další objekty ColumnDescription, které by se vytvořily při spuštění tohoto nástroje.</td></tr>
 <tr><td></td><td>columnName</td><td>Řetězec</td><td>Název sloupce, na který tento popis odkazuje</td></tr>
-<tr><td></td><td>Popis</td><td>Řetězec</td><td>krátký popis (2-3 řádků) sloupce.</td></tr>
+<tr><td></td><td>description</td><td>Řetězec</td><td>krátký popis (2-3 řádků) sloupce.</td></tr>
 
 <tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>Tato vlastnost obsahuje značku pro sloupec. Každý uživatel systému může do daného sloupce přidat více značek a může přidat značky pro více sloupců. Pouze uživatel, který vytvořil objekty ColumnTag, je může upravit. (Správci a vlastníci prostředků mohou odstranit objekt ColumnTag, ale ne ho upravovat). Systém zachovává značky sloupců těchto uživatelů samostatně.  Proto je pro každý Asset k dispozici pole ColumnTag objektů.  ColumnTag se dá volně svázat se schématem, aby se mohl dostat mimo synchronizaci. ColumnTag může popsat sloupec, který už ve schématu neexistuje.  Je až do zapisovače, aby bylo možné zachovat značku sloupce a schéma v synchronizaci.</td></tr>
 <tr><td></td><td>columnName</td><td>Řetězec</td><td>Název sloupce, na který se tato značka odkazuje</td></tr>
@@ -176,7 +179,7 @@ Společné typy lze použít jako typy pro vlastnosti, ale nejsou položkami.
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>Back-end neprovádí žádné ověření poskytovaných vlastností proti Azure Active Directory během publikování.</td></tr>
 <tr><td></td><td>názvu</td><td>řetězec</td><td>Jedinečná e-mailová adresa uživatele Je nutné zadat, pokud není zadáno objectId nebo v kontextu vlastnosti "lastRegisteredBy", jinak volitelné.</td></tr>
-<tr><td></td><td>Objektu</td><td>Identifikátor GUID</td><td>Uživatel nebo skupina zabezpečení Azure Active Directory identitu. Nepovinný parametr. Je nutné zadat, pokud není zadán hlavní název uživatele (UPN), jinak volitelné.</td></tr>
+<tr><td></td><td>objectId</td><td>Identifikátor GUID</td><td>Uživatel nebo skupina zabezpečení Azure Active Directory identitu. Nepovinný parametr. Je nutné zadat, pokud není zadán hlavní název uživatele (UPN), jinak volitelné.</td></tr>
 <tr><td></td><td>firstName</td><td>řetězec</td><td>Křestní jméno uživatele (pro účely zobrazení). Nepovinný parametr. Platné pouze v kontextu vlastnosti "lastRegisteredBy". Nelze zadat při poskytování objektu zabezpečení pro role, oprávnění a odborníky.</td></tr>
 <tr><td></td><td>lastName</td><td>řetězec</td><td>Poslední jméno uživatele (pro účely zobrazení). Nepovinný parametr. Platné pouze v kontextu vlastnosti "lastRegisteredBy". Nelze zadat při poskytování objektu zabezpečení pro role, oprávnění a odborníky.</td></tr>
 
@@ -236,16 +239,16 @@ Azure Data Catalog používá dva autorizační mechanismy:
 * Autorizace na základě oprávnění
 
 ### <a name="roles"></a>Role
-Existují tři role: **správce**, **vlastník**a **Přispěvatel**.  Každá role má svůj rozsah a práva, které jsou shrnuty v následující tabulce.
+Existují tři role: **správce**, **vlastník** a **Přispěvatel**.  Každá role má svůj rozsah a práva, které jsou shrnuty v následující tabulce.
 
-<table><tr><td><b>Role</b></td><td><b>Rozsah</b></td><td><b>Rights</b></td></tr><tr><td>Správce</td><td>Katalog (všechny prostředky a poznámky v katalogu)</td><td>Čtení odstranit ViewRoles
+<table><tr><td><b>Role</b></td><td><b>Scope</b></td><td><b>Rights</b></td></tr><tr><td>Správce</td><td>Katalog (všechny prostředky a poznámky v katalogu)</td><td>Čtení odstranit ViewRoles
 
 ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Vlastník</td><td>Každý prostředek (kořenová položka)</td><td>Čtení odstranit ViewRoles
 
 ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Přispěvatel</td><td>Každý jednotlivý prostředek a Poznámka</td><td>Přečíst aktualizace odstranit ViewRoles Poznámka: všechna práva se odvolají, pokud je právo Číst u položky odvoláno od přispěvatele.</td></tr></table>
 
 > [!NOTE]
-> Oprávnění **ke čtení**, **aktualizaci**, **odstranění**a **ViewRoles** se vztahují na jakékoli položky (Asset nebo anotace), zatímco **TakeOwnership**, **ChangeOwnership**, **ChangeVisibility**a **ViewPermissions** se vztahují jenom na kořenový prostředek.
+> Oprávnění **ke čtení**, **aktualizaci**, **odstranění** a **ViewRoles** se vztahují na jakékoli položky (Asset nebo anotace), zatímco **TakeOwnership**, **ChangeOwnership**, **ChangeVisibility** a **ViewPermissions** se vztahují jenom na kořenový prostředek.
 > 
 > Právo **Odstranit** platí pro položku a všechny podpoložky nebo jednu položku pod ní. Například odstranění assetu odstraní také všechny poznámky k tomuto prostředku.
 > 

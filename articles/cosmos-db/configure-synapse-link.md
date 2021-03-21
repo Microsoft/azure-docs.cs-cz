@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: dde6af75b751037c10d7786fa5b0b03ae31d969e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 64b9b6690eafe8f28fdf9711cd0534f4d7d96908
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222611"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584580"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurace a používání Azure Synapse Linku pro Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -23,6 +23,7 @@ Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API 
 
 * [Povolit synapse odkaz na účty Azure Cosmos DB](#enable-synapse-link)
 * [Vytvoření kontejneru Azure Cosmos DB s povoleným analytickým úložištěm](#create-analytical-ttl)
+* [Volitelná aktualizace hodnoty TTL úložiště analýzy pro kontejner Azure Cosmos DB](#update-analytical-ttl)
 * [Připojení databáze Azure Cosmos DB k pracovnímu prostoru synapse](#connect-to-cosmos-database)
 * [Dotaz na analytické úložiště pomocí synapse Spark](#query-analytical-store-spark)
 * [Dotaz na analytické úložiště s využitím fondu SQL bez serveru](#query-analytical-store-sql-on-demand)
@@ -32,7 +33,7 @@ Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API 
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos DB.
 
@@ -50,6 +51,21 @@ Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API 
 
 > [!NOTE]
 > Zapnutím odkazu synapse se analytické úložiště automaticky nezapne. Jakmile povolíte synapse odkaz na účet Cosmos DB, povolíte při vytváření na kontejnerech analytické úložiště, abyste mohli začít replikovat data operace do analytického úložiště. 
+
+### <a name="azure-cli"></a>Azure CLI
+
+Následující odkazy ukazují, jak povolit synapse odkaz pomocí Azure CLI:
+
+* [Vytvoření nového účtu Azure Cosmos DB s povoleným odkazem na synapse](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create-optional-parameters&preserve-view=true)
+* [Aktualizace existujícího účtu Azure Cosmos DB pro povolení odkazu synapse](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_update-optional-parameters&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+* [Vytvoření nového účtu Azure Cosmos DB s povoleným odkazem na synapse](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount?view=azps-5.5.0#description&preserve-view=true)
+* [Aktualizace existujícího účtu Azure Cosmos DB pro povolení odkazu synapse](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccount?view=azps-5.5.0&preserve-view=true)
+
+
+Následující odkazy ukazují, jak povolit synapse odkaz pomocí prostředí PowerShell:
 
 ## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> Vytvoření kontejneru Azure Cosmos s analytickým úložištěm
 
@@ -159,11 +175,27 @@ except exceptions.CosmosResourceExistsError:
     print('A container with already exists')
 ```
 
-### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Aktualizace doby analytického úložiště na Live
+### <a name="azure-cli"></a>Azure CLI
 
-Po povolení analytického úložiště s konkrétní hodnotou TTL můžete tuto hodnotu později aktualizovat na jinou platnou hodnotu. Tuto hodnotu můžete aktualizovat pomocí webu Azure Portal nebo sad SDK. Informace o různých možnostech konfigurace analytického standardu TTL najdete v článku věnovaném [hodnotám analytického TTL](analytical-store-introduction.md#analytical-ttl) .
+Následující odkazy ukazují, jak vytvořit kontejnery s povoleným analytickým úložištěm pomocí rozhraní příkazového řádku Azure:
 
-#### <a name="azure-portal"></a>portál Azure
+* [Rozhraní API pro Azure Cosmos DB Mongo DB](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_create-examples&preserve-view=true)
+* [Rozhraní API služby Azure Cosmos DB pro SQL](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+Následující odkazy ukazují, jak vytvořit kontejnery s povoleným analytickým úložištěm pomocí prostředí PowerShell:
+
+* [Rozhraní API pro Azure Cosmos DB Mongo DB](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection?view=azps-5.5.0#description&preserve-view=true)
+* [Rozhraní API služby Azure Cosmos DB pro SQL](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+
+
+## <a name="optional---update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Volitelné – aktualizace doby provozu v analytickém úložišti
+
+Po povolení analytického úložiště s určitou hodnotou TTL je vhodné později aktualizovat na jinou platnou hodnotu. Tuto hodnotu můžete aktualizovat pomocí Azure Portal, rozhraní příkazového řádku Azure CLI, PowerShellu nebo sady SDK pro Cosmos DB. Informace o různých možnostech konfigurace analytického standardu TTL najdete v článku věnovaném [hodnotám analytického TTL](analytical-store-introduction.md#analytical-ttl) .
+
+
+### <a name="azure-portal"></a>portál Azure
 
 Pokud jste vytvořili kontejner analytického úložiště s povoleným Azure Portal, obsahuje výchozí analytickou hodnotu TTL-1. Tuto hodnotu můžete aktualizovat pomocí následujících kroků:
 
@@ -178,7 +210,7 @@ Pokud jste vytvořili kontejner analytického úložiště s povoleným Azure Po
   * Vyberte **zapnuto (žádné výchozí)** nebo **Vyberte a nastavte** hodnotu TTL.
   * Kliknutím na **Uložit** uložte změny.
 
-#### <a name="net-sdk"></a>.NET SDK
+### <a name="net-sdk"></a>.NET SDK
 
 Následující kód ukazuje, jak aktualizovat hodnotu TTL pro analytické úložiště pomocí sady .NET SDK:
 
@@ -190,7 +222,7 @@ containerResponse.Resource. AnalyticalStorageTimeToLiveInSeconds = 60 * 60 * 24 
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-#### <a name="java-v4-sdk"></a>Sada Java v4 SDK
+### <a name="java-v4-sdk"></a>Sada Java v4 SDK
 
 Následující kód ukazuje, jak aktualizovat hodnotu TTL pro analytické úložiště pomocí sady Java v4 SDK:
 
@@ -203,6 +235,26 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds (60 * 60 * 24 * 180 );
 // Update container settings
 container.replace(containerProperties).block();
 ```
+
+### <a name="python-v4-sdk"></a>Sada Python v4 SDK
+
+V současné době se nepodporuje.
+
+
+### <a name="azure-cli"></a>Azure CLI
+
+Následující odkazy ukazují, jak aktualizovat kontejnery analytická hodnota TTL pomocí Azure CLI:
+
+* [Rozhraní API pro Azure Cosmos DB Mongo DB](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_update&preserve-view=true)
+* [Rozhraní API služby Azure Cosmos DB pro SQL](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_update&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+Následující odkazy ukazují, jak aktualizovat kontejnery analytická hodnota TTL pomocí prostředí PowerShell:
+
+* [Rozhraní API pro Azure Cosmos DB Mongo DB](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection?view=azps-5.5.0&preserve-view=true)
+* [Rozhraní API služby Azure Cosmos DB pro SQL](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer?view=azps-5.5.0&preserve-view=true)
+
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Připojení k pracovnímu prostoru synapse
 

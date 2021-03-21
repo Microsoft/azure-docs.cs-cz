@@ -4,14 +4,14 @@ description: Naučte se kopírovat data z cloudového nebo místního zdroje HTT
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: f3184602bad8aabf654c8fa94d33372d08c11a66
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 247bec30e9933dfd75b7c31cbce15ff043959243
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573196"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588881"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
@@ -47,7 +47,7 @@ Tento konektor HTTP můžete použít k těmto akcím:
 > [!TIP]
 > Chcete-li otestovat požadavek HTTP na načtení dat před konfigurací konektoru HTTP v Data Factory, přečtěte si informace o specifikaci rozhraní API pro požadavky na hlavičku a tělo. K ověření můžete použít nástroje, jako je například nástroj pro odeslání nebo webový prohlížeč.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -66,7 +66,8 @@ Pro propojenou službu HTTP jsou podporovány následující vlastnosti:
 | typ | Vlastnost **Type** musí být nastavena na hodnotu **HttpServer**. | Yes |
 | url | Základní adresa URL webového serveru. | Yes |
 | enableServerCertificateValidation | Určete, jestli se při připojení ke koncovému bodu HTTP má povolit ověřování certifikátu TLS/SSL serveru. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte tuto vlastnost na **false**. | No<br /> (výchozí hodnota je **true**) |
-| authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows** a **ClientCertificate**. <br><br> Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v částech uvedených v této tabulce. | Yes |
+| authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows** a **ClientCertificate**. Uživatel s podporou OAuth není podporován. Ve vlastnosti můžete také nakonfigurovat ověřovací hlavičky `authHeader` . Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v částech uvedených v této tabulce. | Yes |
+| authHeaders | Další hlavičky požadavků HTTP pro ověřování.<br/> Pokud například chcete použít ověřování pomocí klíče rozhraní API, můžete jako typ ověřování vybrat "anonymní" a v hlavičce zadat klíč rozhraní API. | No |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Použití ověřování Basic, Digest nebo Windows
@@ -163,6 +164,35 @@ Pokud pro ověřování používáte **certThumbprint** a certifikát se instalu
 }
 ```
 
+### <a name="using-authentication-headers"></a>Použití ověřovacích hlaviček
+
+Kromě toho můžete nakonfigurovat hlavičky požadavků pro ověřování spolu s vestavěnými typy ověřování.
+
+**Příklad: použití ověřování pomocí klíče rozhraní API**
+
+```json
+{
+    "name": "HttpLinkedService",
+    "properties": {
+        "type": "HttpServer",
+        "typeProperties": {
+            "url": "<HTTP endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . 
@@ -224,7 +254,7 @@ Následující vlastnosti jsou podporovány pro protokol HTTP v `storeSettings` 
 | additionalHeaders         | Další hlavičky požadavku HTTP                             | No       |
 | částmi              | Tělo požadavku HTTP                               | No       |
 | httpRequestTimeout           | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**. | No       |
-| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No       |
+| maxConcurrentConnections |Horní limit souběžných připojení navázaných na úložiště dat během spuštění aktivity. Zadejte hodnotu pouze v případě, že chcete omezit souběžná připojení.| No       |
 
 **Příklad:**
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
 ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935814"
 ---
 # <a name="develop-custom-commands-applications"></a>Vývoj aplikací pro vlastní příkazy
@@ -221,7 +221,7 @@ Začněte úpravou stávajícího `TurnOn` příkazu pro zapnutí a vypnutí ví
 
 #### <a name="modify-example-sentences"></a>Upravit ukázkové věty
 
-Pro příkazy, které používají parametry, je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Příklad:
+Pro příkazy, které používají parametry, je užitečné přidat ukázkové věty, které pokrývají všechny možné kombinace. Například:
 
 * Úplné informace o parametru: `turn {OnOff} the {SubjectDevice}`
 * Informace o částečném parametru: `turn it {OnOff}`
@@ -242,7 +242,7 @@ turn something
 Vyberte **Uložit**.
 
 > [!TIP]
-> V editoru example-vět použijte složené závorky, které odkazují na vaše parametry. Například `turn {OnOff} the {SubjectDevice}`.
+> V editoru example-vět použijte složené závorky, které odkazují na vaše parametry. Například, `turn {OnOff} the {SubjectDevice}`.
 > Použijte kartu pro automatické dokončování dříve vytvořených parametrů.
 
 #### <a name="modify-completion-rules-to-include-parameters"></a>Upravit pravidla dokončení pro zahrnutí parametrů
@@ -365,7 +365,7 @@ Chcete-li přesunout obsah, Začněte přidáním nového webového koncového b
 |----|----|
 | **Název** | `getDevices` |
 | **Adresa URL** | `https://aka.ms/speech/cc-sampledevices` |
-| **Metoda** | **GET** |
+| **Metoda** | **Čtěte** |
 
 
 Pokud navrhovaná hodnota pro adresu URL nefunguje, nakonfigurujte a hostovat webový koncový bod, který vrátí soubor JSON, který se skládá ze seznamu zařízení, která lze ovládat. Webový koncový bod by měl vrátit soubor JSON zformátovaný následujícím způsobem:
@@ -396,7 +396,7 @@ Potom přejdete na stránku nastavení parametru **SubjectDevice** . Nastavte n�
 | ----| ---- |
 | **Konfigurace** | **Přijmout předdefinované vstupy z externího katalogu** |                               
 | **Koncový bod katalogu** | `getDevices` |
-| **Metoda** | **GET** |
+| **Metoda** | **Čtěte** |
 
 Pak vyberte **Uložit**.
 

@@ -3,14 +3,14 @@ title: Spravovat plány v Azure Automation
 description: V tomto článku se dozvíte, jak vytvořit a pracovat s plánem v Azure Automation.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f40e3d555d6e1472b9d2368a114ee27d588f6383
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149473"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669555"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Spravovat plány v Azure Automation
 
@@ -38,7 +38,7 @@ Rutiny v následující tabulce vytvářejí a spravují plány automatizace pom
 
 ## <a name="create-a-schedule"></a>Vytvořit plán
 
-Můžete vytvořit nový plán pro Runbooky v Azure Portal nebo pomocí PowerShellu. Abyste se vyhnuli vlivu na vaše Runbooky a procesy, které automatizují, měli byste nejprve otestovat všechny Runbooky s propojenými plány s účtem služby Automation vyhrazeným pro testování. Test ověří, zda budou naplánované Runbooky nadále fungovat správně. Pokud se zobrazí problém, můžete řešit problémy a před migrací aktualizované verze Runbooku do produkčního prostředí provést nějaké změny.
+Můžete vytvořit nový plán pro vaše Runbooky z Azure Portal, pomocí PowerShellu nebo pomocí šablony Azure Resource Manager (ARM). Abyste se vyhnuli vlivu na vaše Runbooky a procesy, které automatizují, měli byste nejprve otestovat všechny Runbooky s propojenými plány s účtem služby Automation vyhrazeným pro testování. Test ověří, zda budou naplánované Runbooky nadále fungovat správně. Pokud se zobrazí problém, můžete řešit problémy a před migrací aktualizované verze Runbooku do produkčního prostředí provést nějaké změny.
 
 > [!NOTE]
 > Váš účet Automation automaticky nezíská žádné nové verze modulů, pokud jste je neaktualizovali ručně, a to tak, že vyberete možnost [aktualizovat moduly Azure](../automation-update-azure-modules.md) z **modulů**. Azure Automation používá nejnovější moduly v účtu Automation při spuštění nové naplánované úlohy. 

@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
 ms.openlocfilehash: bf0624e0667c9fc6998fb28898a3376ca409180d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103565003"
 ---
 # <a name="consume-pipeline-endpoints-from-client-applications"></a>Využívání koncových bodů kanálu od klientských aplikací
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak integrovat klientské aplikace s koncovými bo
 
 Tento článek je součástí studia (Classic) pro Azure Machine Learning řady migrace. Další informace o migraci na Azure Machine Learning najdete v [článku Přehled migrace](migrate-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Pracovní prostor služby Azure Machine Learning. [Vytvořte pracovní prostor Azure Machine Learning](../how-to-manage-workspace.md#create-a-workspace).

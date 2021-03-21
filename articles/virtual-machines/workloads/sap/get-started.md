@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a212975817eefe75443bad98ccb72e0a8c3bf58c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5ab23b9c2ba4b4ef3c20188b2207d7718c30cfe6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038624"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599880"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -82,7 +82,8 @@ V této části najdete dokumenty ke službě Microsoft Power BI Integration do 
 
 
 ## <a name="change-log"></a>Protokol změn
-
+- 03/17/2021: Změna v [ha pro SAP HANA na virtuálních počítačích Azure v SLES](./sap-hana-high-availability.md), [ha pro SAP HANA na virtuálních počítačích Azure v RHEL](./sap-hana-high-availability-rhel.md) a [ha pro SAP HANA horizontálního NAvýšení kapacity s ANFem na RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) za účelem přidání instrukcí pro replikaci systému Hana s povoleným aktivním/čtením v clusteru Pacemaker
+- 03/15/2021: změňte [instanci SAP ASCS/SCS se službou WSFC a sdílenou složkou](./sap-high-availability-guide-wsfc-file-share.md),[Nainstalujte instanci SAP ASCS/SCS s](./sap-high-availability-installation-wsfc-file-share.md) protokolem WSFC a sdílenou složkou a [SAP ASCS/SCS multi-SID s WSFC a sdílením souborů](./sap-ascs-ha-multi-sid-wsfc-file-share.md) a vyjasněte, že instance SAP ASCS/SCS a sdílená složka SOFS musí být nasazeny v samostatných clusterech.
 - 03/03/2021: Změna v [Průvodci ha pro SAP ASCS/SCS s WSFC a Azure NetApp Files (SMB)](./high-availability-guide-windows-netapp-files-smb.md) pro přidání příkazu postupovat opatrněji, který vyžaduje zvýšená oprávnění pro uživatele, který používá SWPM, během instalace systému SAP
 - 02/11/2021: změny [vysoké dostupnosti IBM DB2 LUW na virtuálních počítačích Azure na serveru Red Hat Enterprise Linux](./high-availability-guide-rhel-ibm-db2-luw.md) pro změnu příkazů clusteru Pacemaker pro RHEL 8. x
 - 02/03/2021: Změna [Nastavení Pacemaker v RHEL v Azure](./high-availability-guide-rhel-pacemaker.md) na aktualizaci pcmk_host_map v příkazu stonith Create

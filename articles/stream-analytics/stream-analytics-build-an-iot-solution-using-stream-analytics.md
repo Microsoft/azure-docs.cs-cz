@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016146"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavte řešení IoT pomocí Stream Analytics
@@ -27,7 +27,7 @@ Po dokončení tohoto řešení můžete provádět následující akce:
 * K vývoji řešení streamování pro zákazníky můžete využít Stream Analytics s jistotou.
 * K řešení problémů použijte prostředí pro monitorování a protokolování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto řešení potřebujete následující předpoklady:
 * [Předplatné Azure](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -42,7 +42,7 @@ Toto řešení pracuje se dvěma datovými proudy. Senzory nainstalované ve vst
 ### <a name="entry-data-stream"></a>Záznam datového streamu
 Datový proud záznamu obsahuje informace o automobilůch při zadávání telefonních stanic. Události data ukončení jsou živé streamování do fronty centra událostí z webové aplikace obsažené v ukázkové aplikaci.
 
-| TollID | EntryTime | LicensePlate | State | Značka | Model | VehicleType | VehicleWeight | Placená | Značka |
+| TollID | EntryTime | LicensePlate | Stav | Značka | Modelování | VehicleType | VehicleWeight | Placená | Značka |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -58,9 +58,9 @@ Tady je krátký popis sloupců:
 | TollID |ID kabiny pro telefonní číslo, které jedinečně identifikuje telefonní kabinu |
 | EntryTime |Datum a čas vstupu vozidla na telefonní kabinu v UTC |
 | LicensePlate |Číslo licenční tabulky vozidla |
-| State |Stav v USA |
+| Stav |Stav v USA |
 | Značka |Výrobce automobilu |
-| Model |Číslo modelu automobilu |
+| Modelování |Číslo modelu automobilu |
 | VehicleType |1 pro osobní vozidla nebo 2 pro komerční vozidla |
 | WeightType |Hmotnost vozidla v tunách; 0 pro osobní vozidla |
 | Placená |Hodnota mýtné v USD |

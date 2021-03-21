@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.openlocfilehash: 5e53f9e89dd9718111da4f8016bc3e5a7f791627
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103496571"
 ---
 # <a name="identity-model"></a>Model identit
@@ -63,7 +63,7 @@ Přístupový token je vždycky platný po dobu 24 hodin. Po vypršení platnost
 
 Identita vyžaduje způsob, jak požádat o nový přístupový token ze služby na straně serveru. Parametr *Scope* definuje neprázdnou sadu primitivních elementů, které lze použít. Komunikační služby Azure podporují následující obory pro přístupové tokeny.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
 |Chat|  Udělí možnost zúčastnit se chatu.|
 |VoIP|  Udělí možnost volat identity a telefonní čísla.|

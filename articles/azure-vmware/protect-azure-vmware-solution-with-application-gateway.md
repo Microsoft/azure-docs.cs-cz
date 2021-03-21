@@ -4,10 +4,10 @@ description: Nakonfigurujte Azure Application Gateway, aby bezpečně vystavil v
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.openlocfilehash: f92027ee46fdaae275939acaea10e144b6bde101
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103601912"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Použití Azure Application Gateway k ochraně webových aplikací v řešení VMware Azure
@@ -37,7 +37,7 @@ Diagram znázorňuje scénář testování, který slouží k ověření Applica
 
 Instance Application Gateway je nasazena v centru ve vyhrazené podsíti. Má veřejnou IP adresu Azure. Doporučuje se aktivovat [Azure DDoS Protection Standard](../ddos-protection/ddos-protection-overview.md) pro virtuální síť. Webový server je hostovaný na privátním cloudu řešení Azure VMware za NSX T0 a T1 Gateway. Řešení Azure VMware používá [Global REACH ExpressRoute](../expressroute/expressroute-global-reach.md) k umožnění komunikace s rozbočovačem a místními systémy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným.
 - Je nasazený a spuštěný privátní cloud řešení Azure VMware.

@@ -3,14 +3,14 @@ title: Správa serveru-Azure Portal-Azure Database for MariaDB
 description: Naučte se spravovat Azure Database for MariaDB Server z Azure Portal.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: b492e04629f23c991c1c5d69dd5e2c472676d37a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664397"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Správa serveru Azure Database for MariaDB pomocí Azure Portal
@@ -90,7 +90,7 @@ Server můžete odstranit, pokud ho už nepotřebujete.
 
 1. V Azure Portal vyberte svůj server. V okně **Přehled** vyberte **Odstranit**.
 
-    ![odstranění](./media/howto-create-manage-server-portal/overview-delete.png)
+    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
 2. Zadáním názvu serveru do vstupního pole potvrďte, že se jedná o server, který chcete odstranit.
 

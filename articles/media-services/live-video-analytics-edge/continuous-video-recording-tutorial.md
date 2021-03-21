@@ -4,10 +4,10 @@ description: V tomto kurzu se naučíte používat Azure Live video Analytics na
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: 2dde1c9d917881d7a16dbc853e4af416dffe5d7b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702415"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nepřetržité nahrávání videa do cloudu a přehrávání z cloudu
@@ -33,7 +33,7 @@ Než začnete, přečtěte si tyto články:
 * [Koncepty Media graphu](media-graph-concept.md) 
 * [Scénáře nepřetržitého nahrávání videí](continuous-video-recording-concept.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předpoklady pro tento kurz:
 
@@ -126,7 +126,7 @@ Pak přejděte do složky src/Cloud-to-Device-Console-App Tady se zobrazí appse
 
 * **C2D-Console-App. csproj**: soubor projektu pro Visual Studio Code.
 * **operations.js**: Tento soubor obsahuje seznam různých operací, které byste spustili.
-* **Program.cs**: vzorový programový kód, který:
+* **Program. cs**: ukázkový kód programu, který:
     * Načte nastavení aplikace.
     * Vyvolá přímé metody vystavené živým analýzou videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](direct-methods.md).
     * Pozastaví, abyste prozkoumali výstup programu v okně **terminálu** a události generované modulem v okně **výstup** .

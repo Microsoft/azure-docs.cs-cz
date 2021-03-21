@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: d2973d95cf797123e02fd48dc2dfab1b172e05f5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102499458"
 ---
 # <a name="monitoring-azure-table-storage"></a>Monitorování úložiště tabulek v Azure
@@ -73,7 +73,7 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Přejděte na svůj účet úložiště.
 

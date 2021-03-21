@@ -4,15 +4,15 @@ description: Při vytváření virtuálního počítače v Azure Marketplace se 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-author: iqshahmicrosoft
-ms.author: iqshah
+author: kriti-ms
+ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: a74170af61c05d07a189b5ceb61dc0c9b7e14298
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 2975d1f1558bc7f9e4a12c18882e43a163b97982
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200428"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593420"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Běžné dotazy k virtuálnímu počítači v Azure Marketplace
 
@@ -56,7 +56,7 @@ K tomuto problému obvykle dochází, pokud jste vytvořili virtuální počíta
 
 Tato část popisuje, jak vytvořit a nasadit image virtuálního počítače (VM) zadaného uživatelem. To můžete provést tak, že zadáte image virtuálního pevného disku operačního systému a datového disku z virtuálního pevného disku nasazeného v Azure. Tyto kroky nasadí virtuální počítač pomocí zobecněného virtuálního pevného disku.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 2. Nahrajte na účet Azure Storage svůj zobecněný virtuální pevný disk s operačním systémem a virtuální pevné disky s daty.
 3. Na domovské stránce vyberte vytvořit prostředek, vyhledejte "nasazení šablony" a vyberte vytvořit.
 4. V editoru vyberte vytvořit vlastní šablonu.
@@ -470,6 +470,17 @@ $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAdd
 # deploying VM with existing VHD
 New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName"
 ```
+
+## <a name="how-do-i-test-a-hidden-preview-image"></a>Návody otestovat skrytý obrázek ve verzi Preview?
+
+Skryté image ve verzi Preview můžete nasadit pomocí šablon pro rychlý Start.
+Pokud chcete nasadit image ve verzi Preview, 
+1. Přejděte na příslušnou šablonu pro rychlý Start pro [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux) nebo [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows), vyberte nasadit do Azure. To by mělo být Azure Portal.
+2. V Azure Portal vyberte "Upravit šablonu".
+3. V šabloně JSON vyhledejte element imagereference a aktualizujte PublisherId, hodnotami OfferId, skuId a verzi image. Pokud chcete otestovat image Preview, přidejte do hodnotami OfferId "-PREVIEW".
+ ![image](https://user-images.githubusercontent.com/79274470/110191995-71c7d500-7de0-11eb-9f3c-6a42f55d8f03.png)
+4. Kliknutí na Uložit
+5. Vyplňte zbytek podrobností. Zkontrolovat a vytvořit
 
 
 ## <a name="next-steps"></a>Další kroky

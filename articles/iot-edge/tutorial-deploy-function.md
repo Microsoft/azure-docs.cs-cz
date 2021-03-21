@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: 85bc54402237ff8e9c82c43ab9cdbe2dc6658af1
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103464101"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: nasazení Azure Functions jako IoT Edgech modulů
@@ -38,7 +38,7 @@ Funkce Azure, kterou vytvoříte v tomto kurzu, filtruje data o teplotě vygener
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pomocí kontejnerů Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
@@ -99,9 +99,9 @@ V současné době Visual Studio Code může vyvíjet moduly C pro zařízení s
 
 Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici před jejich přesměrováním na IoT Hub.
 
-1. V Visual Studio Code otevřete **moduly**  >  **CSharpFunction**  >  **CSharpFunction.cs**.
+1. V Visual Studio Code otevřete **modules**  >  **CSharpFunction**  >  **CSharpFunction. cs**.
 
-1. Obsah souboru **CSharpFunction.cs** nahraďte následujícím kódem. Tento kód obdrží telemetrii o teplotě okolí a počítače a přesměruje zprávu na IoT Hub, pokud je teplota počítače nad stanovenou prahovou hodnotou.
+1. Obsah souboru **CSharpFunction. cs** nahraďte následujícím kódem. Tento kód obdrží telemetrii o teplotě okolí a počítače a přesměruje zprávu na IoT Hub, pokud je teplota počítače nad stanovenou prahovou hodnotou.
 
    ```csharp
    using System;

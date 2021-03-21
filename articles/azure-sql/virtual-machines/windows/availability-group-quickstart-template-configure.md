@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359910"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Použití šablon pro rychlý Start Azure ke konfiguraci skupiny dostupnosti pro SQL Server na virtuálním počítači Azure
@@ -27,7 +27,7 @@ ms.locfileid: "97359910"
 
 Tento článek popisuje, jak pomocí šablon Azure pro rychlý Start částečně automatizovat nasazení konfigurace skupiny dostupnosti Always On pro SQL Server virtuálních počítačů v Azure. V tomto procesu se používají dvě šablony pro rychlý Start Azure: 
 
-   | Template (Šablona) | Popis |
+   | Template (Šablona) | Description |
    | --- | --- |
    | [101-SQL-VM-AG-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Vytvoří cluster s podporou převzetí služeb při selhání Windows a připojí k němu SQL Server virtuální počítače. |
    | [101-SQL-VM-aglistener-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Vytvoří naslouchací proces skupiny dostupnosti a nakonfiguruje interní nástroj pro vyrovnávání zatížení. Tuto šablonu lze použít pouze v případě, že byl vytvořen cluster s podporou převzetí služeb při selhání systému Windows pomocí šablony **101-SQL-VM-AG-Setup** . |

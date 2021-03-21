@@ -5,208 +5,195 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
-ms.date: 02/15/2021
+ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 49bf89d38edef6a9186cbdb5bb89a763339385b4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9567ec2458a01825568cb853728f71db10228ee3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175817"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608254"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Nastavte si Azure Percept DK a nasaďte svůj první model AI.
 
-Začínáme s Azure Percept DK a Azure Percept Studio pomocí prostředí pro instalaci Azure Percept DK k připojení zařízení k Azure a nasazení vašeho prvního modelu AI. Po ověření, že je váš účet Azure kompatibilní s Azure Percept Studio, dokončete prostředí pro instalaci, abyste zajistili, že vaše Azure Percept DK je nakonfigurovaná tak, aby se vytvořila kontrola konceptů.
+Dokončete prostředí instalace Azure Percept DK a nakonfigurujte sadu dev SDK a nasaďte svůj první model AI. Po ověření, že je váš účet Azure kompatibilní s Azure Percept, budete:
 
-Pokud dojde k jakýmkoli problémům během tohoto rychlé zprovoznění, vyhledejte možná řešení v průvodci [odstraňováním potíží](./troubleshoot-dev-kit.md) .
+- Připojení sady pro vývoj k Wi-Fi síti
+- Nastavení přihlášení SSH pro vzdálený přístup k sadě dev SDK
+- Vytvoření nové IoT Hub pro použití s Azure Percept
+- Připojte sadu dev SDK k vašemu IoT Hub a účtu Azure
 
-## <a name="prerequisites"></a>Požadavky
+Pokud během tohoto procesu dojde k problémům, vyhledejte možná řešení v [Průvodci odstraňováním potíží s instalací](./how-to-troubleshoot-setup.md) .
 
-- Azure Percept DK.
-- Hostitelský počítač se systémem Windows, Linux nebo OS X se schopností Wi-Fi a webovým prohlížečem.
-- Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Účet Azure musí mít v předplatném roli Vlastník nebo Přispěvatel. Přečtěte si další informace o [definicích rolí Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles).
+## <a name="prerequisites"></a>Předpoklady
 
-### <a name="prerequisite-check"></a>Kontrola požadovaných součástí
+- Azure Percept DK (dev Kit).
+- Hostitelský počítač se systémem Windows, Linux nebo OS X s možností Wi-Fi a webovým prohlížečem.
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Účet Azure musí mít v rámci předplatného roli **vlastníka** nebo **přispěvatele** . Pomocí následujících kroků ověřte roli účtu Azure. Další informace o definicích rolí Azure najdete v dokumentaci k [řízení přístupu na základě role v Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#azure-roles).
 
-Pokud chcete ověřit, jestli je váš účet Azure v předplatném vlastník nebo přispěvatel, postupujte podle těchto kroků.
+    > [!CAUTION]
+    > Pokud máte více účtů Azure, může váš prohlížeč ukládat přihlašovací údaje z jiného účtu. Aby nedocházelo k nejasnostem, doporučujeme, abyste před spuštěním instalačního programu zavřeli všechna nepoužívaná okna prohlížeče a přihlásili se k [Azure Portal](https://portal.azure.com/) . Další informace o tom, jak zajistit, že jste se přihlásili ke správnému účtu, najdete v [Průvodci řešením potíží s instalací](./how-to-troubleshoot-setup.md) .
 
-1. Přejít na Azure Portal a přihlaste se pomocí stejného účtu Azure, který máte v úmyslu používat s Azure Percept Studio. 
+### <a name="check-your-azure-account-role"></a>Kontrolovat roli účtu Azure
 
-    > [!NOTE]
-    > Pokud máte více účtů Azure, může váš prohlížeč ukládat přihlašovací údaje z jiného účtu. Další informace o tom, jak zajistit, že jste se přihlásili ke správnému účtu, najdete v Průvodci odstraňováním potíží.
+Pokud chcete ověřit, jestli je váš účet Azure v rámci předplatného "vlastník" nebo "Přispěvatel", postupujte podle následujících kroků:
 
-1. Rozbalte hlavní nabídku v levém horním rohu obrazovky a klikněte na odběry nebo vyberte odběry z nabídky ikon na domovské stránce. 
-    <!---
-    :::image type="content" source="./media/quickstart-percept-dk-setup/prereq-01-subscription.png" alt-text="supscription icon in Azure portal.":::
-    --->
-1. V seznamu vyberte své předplatné. Pokud v seznamu nevidíte své předplatné, ujistěte se, že jste přihlášeni pomocí správného účtu Azure. 
-    <!---
-    :::image type="content" source="./media/quickstart-percept-dk-setup/prereq-02-sub-list.png" alt-text="supscription list in Azure portal.":::
-    --->
-Pokud chcete vytvořit nové předplatné, postupujte podle [těchto kroků](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription).
+1. Přejít na [Azure Portal](https://portal.azure.com/) a přihlaste se pomocí stejného účtu Azure, který máte v úmyslu používat se službou Azure Percept.
 
-1. V nabídce předplatné vyberte řízení přístupu (IAM).
-1. Klikněte na tlačítko Zobrazit můj přístup.
-1. Kontrolovat roli
-    - Pokud se zobrazí role čtenář nebo když se zobrazí zpráva s oznámením, že nemáte oprávnění k zobrazení rolí, budete muset ve vaší organizaci postupovat podle potřebného procesu, aby se vám pozměnila role účtu.
-    - Pokud se role zobrazuje jako vlastník nebo přispěvatel, váš účet bude fungovat s Azure Percept Studio. 
+1. Klikněte na ikonu **odběry** (vypadá to jako žlutý klíč).
+
+1. V seznamu vyberte své předplatné. Pokud vaše předplatné nevidíte, ujistěte se, že jste přihlášeni pomocí správného účtu Azure. Pokud chcete vytvořit nové předplatné, postupujte podle [těchto kroků](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription).
+
+1. V nabídce předplatné vyberte **řízení přístupu (IAM)**.
+1. Klikněte na **Zobrazit můj přístup**.
+1. Ověřte roli:
+    - Pokud je vaše role uvedená jako **Čtenář** nebo pokud se zobrazí zpráva s oznámením, že nemáte oprávnění k zobrazení rolí, budete muset při zvýšení úrovně role účtu použít nezbytný postup ve vaší organizaci.
+    - Pokud je vaše role uvedená jako **vlastník** nebo **Přispěvatel**, váš účet bude fungovat s Azure Percept a můžete pokračovat v instalaci.
 
 ## <a name="launch-the-azure-percept-dk-setup-experience"></a>Spustit prostředí pro instalaci Azure Percept DK
 
-<!---
-> [!NOTE]
-> Connecting over ethernet? See [this how-to guide](<link needed>) for detailed instructions.
---->
-1. Připojte svůj hostitelský počítač přímo k přístupovému bodu sítě Wi-Fi pro vývojovou sadu. To se provádí stejně jako připojení k jakékoli jiné síti Wi-Fi.
-    - **název sítě**: SCZ-xxxx (kde "XXXX" jsou poslední čtyři číslice síťové adresy MAC sady dev Kit.)
-    - **heslo**: dá se najít na úvodní kartě, která se dodává se sadou dev Kit.
+1. Připojte hostitelský počítač přímo k Wi-Fi přístupovému bodu sady dev Kit. Chcete-li se připojit k libovolné jiné Wi-Fi síti, otevřete v počítači nastavení sítě a Internetu, klikněte na následující síť a po zobrazení výzvy zadejte heslo k síti:
+
+    - **Název sítě**: v závislosti na verzi operačního systému pro vývojovou sadu je název Wi-Fiho bodu přístupu buď **SCZ-xxxx** , nebo **APD-xxxx** (kde "XXXX" jsou poslední čtyři číslice adresy MAC sady dev Kit.)
+    - **Heslo**: dá se najít na úvodní kartě, která se dodává se sadou dev Kit.
 
     > [!WARNING]
-    > I když jste připojeni k přístupovému bodu Wi-Fi v Azure Percept, váš hostitelský počítač dočasně ztratí připojení k Internetu. Aktivní videokonference, volání na webu nebo jiné síťové prostředí bude přerušeno, dokud se nedokončí krok 3 v prostředí pro instalaci Azure Percept DK.
+    > I když jste připojení k Azure Percept Wi-Fi DK přístupového bodu, váš hostitelský počítač dočasně ztratí připojení k Internetu. Aktivní videokonference, streamování na webu nebo jiné síťové prostředí se přeruší.
 
-1. Po připojení k přístupovému bodu Wi-Fi sady dev Kit bude hostitelské zařízení automaticky spouštět prostředí pro instalaci Azure Percept DK v novém okně prohlížeče. Pokud se automaticky neotevře, můžete ho spustit ručně otevřením okna prohlížeče a přechodem na [http://10.1.1.1](http://10.1.1.1) . 
-
-1. Teď, když jste spustili prostředí pro instalaci Azure Percept, jste připraveni pokračovat v prostředí pro instalaci. 
-
-    > [!NOTE]
-    > Webová služba prostředí pro instalaci Azure Percept DK se vypne po 30 minutách nepoužívání a po dokončení instalačního prostředí. Pokud k tomu dojde, doporučuje se restartovat vývojovou sadu, aby se předešlo problémům s připojením k přístupovému bodu sítě Wi-Fi sady dev SDK.
-
-## <a name="complete-the-azure-percept-dk-setup-experience"></a>Dokončete prostředí pro instalaci Azure Percept DK
-
-1. Začněte – na úvodní obrazovce klikněte na **Další** .
+1. Po připojení k Wi-Fi přístupového bodu sady dev Kit bude hostitelský počítač automaticky spouštět prostředí pro instalaci v novém okně prohlížeče s **. New. Device/** v adresním řádku. Pokud se karta neotevře automaticky, spusťte instalační program tak, že přejdete na [http://10.1.1.1](http://10.1.1.1) . Ujistěte se, že je váš prohlížeč přihlášený se stejnými přihlašovacími údaji účtu Azure, které máte v úmyslu používat s Azure Percept.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-01-welcome.png" alt-text="Úvodní stránka.":::
 
-1. Připojení k Wi-Fi – na stránce připojení k síti klikněte na **připojit k nové síti Wi** -Fi, abyste připojili své DevKit k síti Wi-Fi.
+    > [!CAUTION]
+    > Webová služba Experience pro instalaci se ukončí po 30 minutách nepoužívání. Pokud k tomu dojde, restartujte vývojovou sadu, abyste se vyhnuli problémům s připojením k Wi-Fimu přístupovému bodu sady pro vývojáře.
 
-    Pokud jste tuto vývojářskou sadu dříve připojili k vaší síti Wi-Fi nebo pokud jste už připojení k prostředí nastavení Azure Percept DK prostřednictvím sítě Wi-Fi, klikněte na odkaz **Přeskočit** .
+## <a name="complete-the-azure-percept-dk-setup-experience"></a>Dokončete prostředí pro instalaci Azure Percept DK
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-02-connect-to-wi-fi.png" alt-text="Připojte se k Wi-Fi.":::
+1. Na **úvodní** obrazovce klikněte na **Další** .
 
-1. Vyberte síť Wi-Fi z dostupných připojení a připojte se. (Bude vyžadovat vaše místní heslo Wi-Fi)
+1. Na stránce **připojení k síti** klikněte na **připojit k nové síti Wi-Fi**.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-03-select-wi-fi.png" alt-text="Vyberte síť Wi-Fi."::: 
+    Pokud jste už vývojářskou sadu připojili k vaší Wi-Fi síti, klikněte na **Přeskočit**.
 
-1. Zkopírování IP adresy – Jakmile se vaše DevKit úspěšně připojí k vaší síti, zapište **adresu IPv4** zobrazenou na stránce. **Tuto IP adresu budete potřebovat později v této úvodní příručce**. 
+1. Ze seznamu dostupných sítí vyberte svou Wi-Fiovou síť a klikněte na **připojit**. Po zobrazení výzvy zadejte své síťové heslo.
+
+1. Po úspěšném připojení sady pro vývojáře k vaší síti, na stránce se zobrazí adresa IPv4 přiřazená k sadě pro vývojáře. **Zapište adresu IPv4 zobrazenou na stránce.** Pro řešení potíží a aktualizace zařízení budete potřebovat IP adresu při připojování k vývojové sadě přes protokol SSH.
+
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-04-success-wi-fi.png" alt-text="Zkopírujte IP adresu.":::
 
     > [!NOTE]
     > IP adresa se může změnit při každém spuštění zařízení.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-04-success-wi-fi.png" alt-text="Zkopírujte IP adresu.":::
-
-1. Přečtěte si a přijměte licenční smlouvu – přečtěte si licenční smlouvu, vyberte si, že **jste si přečetli licenční smlouvu a souhlasíte s nimi** (musí se posunout na konec smlouvy) a klikněte na **Další**.
+1. Přečtěte si licenční smlouvu, vyberte, že **jste si přečetli licenční smlouvu a souhlasíte** s ní (musíte se posouvat do dolní části smlouvy) a kliknout na **Další**.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-05-eula.png" alt-text="Přijmout smlouvu EULA.":::
 
-1. Vytvoření přihlašovacího účtu SSH – nastavte SSH pro vzdálený přístup k vašemu DevKit. Vytvořte uživatelské jméno a heslo SSH. 
+1. Zadejte název a heslo účtu SSH a **zapište přihlašovací údaje pro pozdější použití**.
 
     > [!NOTE]
-    > SSH (Secure Shell) je síťový protokol používaný pro zabezpečenou komunikaci mezi hostitelským zařízením a vývojářskou sadou. Další informace o SSH najdete v [tomto článku](https://en.wikipedia.org/wiki/SSH_(Secure_Shell)).
+    > SSH (Secure Shell) je síťový protokol, který umožňuje vzdálené připojení k vývojové sadě prostřednictvím hostitelského počítače.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-06-ssh-login.png" alt-text="Vytvořte účet SSH."::: 
+1. Na další stránce klikněte na **nastavit jako nové zařízení** a vytvořte tak nové zařízení v rámci svého účtu Azure.
 
-1. Zahajte proces připojení sady dev Kit – na další obrazovce klikněte na **připojit k novému zařízení** a zahajte proces připojení sady pro vývoj k Azure IoT Hub. 
+1. Kliknutím na **Kopírovat** zkopírujte kód vašeho zařízení. Potom klikněte na **Přihlásit se k Azure**.
 
-    <!---
-    Connecting with an existing IoT Edge device connection string? See this [how-to guide](<link needed>) for reference.
-    --->
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-07-connect-device.png" alt-text="Připojte se k Azure."::: 
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-08-copy-code.png" alt-text="Zkopírujte kód zařízení.":::
 
-1. Zkopírování kódu zařízení – kliknutím na odkaz **Kopírovat** zkopírujte kód zařízení. Pak klikněte na **Přihlásit se k Azure**. 
+1. Otevře se nová karta prohlížeče s oknem, ve kterém se říká **ENTER Code**. Vložte kód do okna a klikněte na tlačítko **Další**. Nezavírejte kartu **Vítejte** s prostředím nastavení.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-08-copy-code.png" alt-text="Zkopírujte kód zařízení."::: 
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-09-enter-code.png" alt-text="Zadejte kód zařízení.":::
 
-1. Vložení kódu zařízení – otevře se nová karta prohlížeče s oknem, které se zeptá na kopírovaný kód zařízení. Vložte kód do okna a klikněte na tlačítko **Další**.
+1. Přihlaste se k Azure Percept pomocí přihlašovacích údajů k účtu Azure, které použijete v sadě SDK pro vývojáře. Po dokončení ponechte kartu prohlížeč otevřenou.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-09-enter-code.png" alt-text="Zadejte kód zařízení."::: 
-
-1. Přihlášení k Azure – další okno vyžaduje, abyste se přihlásili pomocí účtu Azure, který jste ověřili na začátku rychlé zprovoznění. Zadejte přihlašovací údaje pro přihlášení a klikněte na **Další**. 
-
-    > [!NOTE]
+    > [!CAUTION]
     > Váš prohlížeč může automaticky ukládat do mezipaměti další přihlašovací údaje. Dvakrát ověřte, že se přihlašujete pomocí správného účtu.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-10-azure-sign-in.png" alt-text="Přihlaste se k Azure.":::
- 
-1. Nezavírejte na tomto kroku kartu prohlížeče Experience pro instalaci. po přihlášení se zobrazí obrazovka s potvrzením, že jste se přihlásili. I když říkáte, že okno zavřete, doporučujeme **, abyste nezavřeli žádná okna**. 
+    Po úspěšném přihlášení do Azure procent na zařízení se vraťte na kartu **Vítejte** a pokračujte v instalaci.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-11-sign-in-success.png" alt-text="Přihlášení bylo úspěšné."::: 
+1. Po zobrazení stránky **přiřazení zařízení k vaší službě Azure IoT Hub** na kartě **Vítejte** proveďte jednu z následujících akcí:
 
-1. Vraťte se na kartu prohlížeče hostující prostředí instalace.
-1. Vyberte možnost IoT Hub
-    - Pokud již máte IoT Hub a je uvedena na této stránce, můžete ji vybrat a **Přejít ke kroku 17**.
-    - Pokud nemáte IoT Hub nebo chcete vytvořit novou, přejděte na konec seznamu a klikněte na **vytvořit novou IoT Hub Azure**.
+    - Pokud už máte IoT Hub chcete použít se službou Azure Percept a je uvedená na této stránce, vyberte ji a přejděte ke kroku 15.
+    - Pokud nemáte IoT Hub nebo chcete vytvořit nový, klikněte na **vytvořit nový IoT Hub Azure**.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-13-iot-hub-select.png" alt-text="Vyberte IoT Hub."::: 
+    > [!IMPORTANT]
+    > Pokud máte IoT Hub, ale v seznamu se nezobrazuje, možná jste se k Azure Percept přihlásili pomocí nesprávných přihlašovacích údajů. Nápovědu najdete v [Průvodci odstraňováním potíží s instalací](./how-to-troubleshoot-setup.md) .
 
-1. Vytvořte novou IoT Hub – vyplňte všechna pole na této stránce. 
-    - Vyberte předplatné Azure, které budete používat se službou Azure Percept Studio.
-    - Vyberte existující skupinu prostředků. Pokud jeden neexistuje, klikněte na vytvořit nový a postupujte podle pokynů. 
-    - Vyberte oblast Azure. 
-    - Zadejte nový IoT Hub název
-    - Výběr cenové úrovně (obvykle se bude shodovat s předplatným)
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-13-iot-hub-select.png" alt-text="Vyberte IoT Hub.":::
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-14-create-iot-hub.png" alt-text="Vytvoří nový IoT Hub."::: 
+1. Chcete-li vytvořit nový IoT Hub, vyplňte následující pole:
 
-1. Počkat na nasazení IoT Hub – může to trvat několik minut.
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-15-iot-hub-deploy.png" alt-text="Nasazení IoT Hub."::: 
-
-1. Zaregistrovat vývojovou sadu – po dokončení nasazení klikněte na tlačítko **Registrovat** .
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-16-iot-hub-success.png" alt-text="IoT Hub se úspěšně nasadilo."::: 
-
-1. Pojmenujte sadu dev Kit – zadejte název zařízení pro vývojáře a klikněte na **Další**.
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-17-device-name.png" alt-text="Pojmenujte zařízení."::: 
-
-1. Počkat na stažení výchozích modelů AI – Tato akce bude trvat několik minut.
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-18-finalize.png" alt-text="Dokončuje se instalace."::: 
-
-1. Viz Vision AI v akci – váš DevKit se úspěšně připojil k vašemu Azure IoT Hub a získal výchozí model detekce objektů AI. Kamera ve službě Azure Percept Vision teď může Inferencing rozpoznávat objekty bez připojení ke cloudu. 
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-2-preview-video-output.png" alt-text="Klikněte na náhled výstup videa."::: 
-       
-    > [!NOTE]
-    > Proces zprovoznění a připojení zařízení WiFi přístup k vašemu hostitelskému počítači se v tomto okamžiku vypne, ale vaše vývojová sada zůstane připojená k Internetu.   Můžete restartovat prostředí pro zprovoznění pomocí nástroje pro vývoj v sadě pro vývojáře, který vám umožní přejít zpět k registraci zařízení a znovu ho připojit k jinému centru IOT přidruženému ke stejnému nebo jinému předplatnému Azure.
-
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="Upozornění na odpojení prostředí instalačního programu."::: 
-
-1. Pokračujte Azure Portal – vraťte se do okna Možnosti instalace a klikněte na tlačítko **pokračovat k Azure Portal** a začněte vytvářet vlastní modely AI v Azure Percept studiu.
+    - Vyberte předplatné Azure, které budete používat se službou Azure Percept.
+    - Vyberte existující skupinu prostředků. Pokud jeden neexistuje, klikněte na **vytvořit nový** a postupujte podle pokynů.
+    - Vyberte oblast Azure, která je nejblíže vašemu fyzickému umístění.
+    - Zadejte nový IoT Hub název.
+    - Vyberte cenovou úroveň S1 (Standard).
 
     > [!NOTE]
-    > Ověřte, že váš hostitelský počítač už není připojený k přístupovému bodu sady pro vývojáře v nastavení Wi-Fi a že se teď znovu připojí k místní síti Wi-Fi.
+    > Pokud pro aplikace Edge AI potřebujete vyšší [propustnost zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling#message-throughput) , můžete kdykoli [upgradovat IoT Hub na vyšší úroveň Standard](https://docs.microsoft.com/azure/iot-hub/iot-hub-upgrade) na portálu Azure Portal. Vrstvy B a F nepodporují Azure Percept.
 
-    :::image type="content" source="./media/quickstart-percept-dk-setup/main-20-azure-portal-continue.png" alt-text="Přejít na Azure Percept Studio."::: 
+1. Nasazení IoT Hub může trvat několik minut. Po dokončení nasazení klikněte na **zaregistrovat**.
 
-## <a name="view-your-device-in-the-azure-percept-studio-and-deploy-common-prebuilt-sample-apps"></a>Zobrazení zařízení v Azure Percept studiu a nasazení běžných předem připravených ukázkových aplikací
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-16-iot-hub-success.png" alt-text="IoT Hub se úspěšně nasadilo.":::
 
-1. Zobrazte si seznam zařízení na stránce s přehledem [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) . Stránka s přehledem Azure Percept je váš bod spuštění pro přístup k mnoha různým pracovním postupům pro počáteční i pokročilý model a vývoj řešení AI.
+1. Zadejte název zařízení pro vývojovou sadu a klikněte na **Další**.
+
+1. Počkejte, až se stáhnou moduly zařízení – to může trvat několik minut.
+
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-18-finalize.png" alt-text="Dokončuje se instalace.":::
+
+1. Po zobrazení **nastavení zařízení se dokončí.** , vaše sada dev SDK se úspěšně připojila k vašemu IoT Hub a stáhla potřebný software. Vaše sada pro vývoj se automaticky odpojí od Wi-Fi přístupového bodu, což vede k těmto dvěma oznámením:
+
+    <!---
+    > [!NOTE]
+    > The onboarding process and connection to the device Wifi access to your host computer shuts down at this point, but your dev kit will stay connected to the internet.   You can restart the onboarding experience with a dev kit reboot, which will allow you to go back through the onboarding and reconnect the device to a different IOT hub associated with the same or a different Azure Subscription..
+    --->
+
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-19-0-warning.png" alt-text="Upozornění na odpojení prostředí instalačního programu.":::
+
+1. Připojte hostitelský počítač k síti Wi-Fi, ke které jste v DevKit připojili v kroku 2.
+
+1. Klikněte na **pokračovat na Azure Portal**.
+
+    :::image type="content" source="./media/quickstart-percept-dk-setup/main-20-azure-portal-continue.png" alt-text="Přejít na Azure Percept Studio.":::
+
+## <a name="view-your-dev-kit-video-stream-and-deploy-a-sample-model"></a>Zobrazení streamu videa sady dev Kit a nasazení ukázkového modelu
+
+1. [Stránka s přehledem Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) je váš bod spuštění pro přístup k mnoha různým pracovním postupům pro vývoj řešení pro počáteční i pokročilý hraniční systém AI. Začněte tím, že v nabídce vlevo kliknete na **zařízení** .
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-01-get-device-list.png" alt-text="Zobrazte si seznam zařízení.":::
-    
-1. Ověřte, jestli je zařízení, které jste právě vytvořili, připojené, a klikněte na něj.
+
+1. Ověřte, že je vaše sada dev SDK uvedena jako **připojená** a kliknutím na ni zobrazte stránku zařízení.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-02-select-device.png" alt-text="Vyberte své zařízení.":::
 
-1. Podívejte se na datový proud zařízení, abyste viděli, co vaše kamera vývojářské sady zobrazuje. Výchozí model detekce objektu se nasadí mimo pole a detekuje několik běžných objektů.
+1. Klikněte na **Zobrazit datový proud zařízení**. Pokud si video stream svého zařízení poprvé prohlížíte, zobrazí se oznámení, že nový model se nasazuje v pravém horním rohu. Může to trvat několik minut.
 
-    > [!NOTE]
-    > Když to uděláte poprvé na novém zařízení, zobrazí se oznámení, že nový modul se nasazuje v pravém horním rohu.  Po konkurenci budete moct okno spustit s datovým proudem videa kamery. 
-    
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-1-start-video-stream.png" alt-text="Podívejte se na video stream.":::
-    
+
+    Po nasazení modelu se zobrazí další oznámení s odkazem na **Stream zobrazení** . Kliknutím na odkaz zobrazíte Stream videa z kamery Azure Percept Vision v novém okně prohlížeče. Sada dev SDK je předem načtena s modelem AI, který automaticky provádí detekci objektů mnoha běžných objektů.
+
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-03-2-object-detection.png" alt-text="Viz detekce objektu.":::
 
-1. Prozkoumejte předem připravené ukázkové modely AI.   Azure Precept Studio má řadu běžných předem připravených ukázek, které je možné nasadit jediným kliknutím.   Vyberte nasadit ukázkový model a zobrazte a nasaďte je.
+1. Azure Percept Studio má také řadu ukázkových modelů AI. Pokud chcete nasadit Vzorový model do sady dev SDK, přejděte zpátky na stránku zařízení a klikněte na **nasadit ukázkový model**.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-04-explore-prebuilt.png" alt-text="Prozkoumejte předem připravené modely.":::
-    
-1. Nasaďte na připojené zařízení novou předem vytvořenou ukázku. Vyberte ukázku z knihovny a klikněte na nasadit do zařízení.
+
+1. V knihovně vyberte Vzorový model a klikněte na **nasadit do zařízení**.
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-05-2-select-journey.png" alt-text="Viz detekce objektu v akci.":::
 
+1. Po úspěšném nasazení modelu se zobrazí oznámení s odkazem na **Stream zobrazení** v pravém horním rohu obrazovky. Pokud chcete zobrazit Inferencing modelu v akci, klikněte na odkaz v oznámení nebo se vraťte na stránku zařízení a klikněte na **Zobrazit datový proud zařízení**. Všechny modely dřív spuštěné v sadě dev Kit se teď nahradí novým modelem.
+
+## <a name="video-walkthrough"></a>Video s návodem
+
+Pro vizuální návod kroků popsaných výše se prosím podívejte na následující video (spouštěcí prostředí začíná na 0:50):
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/-dmcE2aQkDE]
+
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí podobného toku můžete vyzkoušet [předem připravené modely řeči](./tutorial-no-code-speech.md).
+> [!div class="nextstepaction"]
+> [Vytvoření řešení pro vize bez kódu](./tutorial-nocode-vision.md)

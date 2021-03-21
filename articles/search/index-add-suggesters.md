@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 748ad9fdab781ba03135f026ab846099fe50c51f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030777"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604402"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
@@ -66,7 +66,7 @@ Volba analyzátoru určuje, jak jsou pole s tokeny a následně předem opravena
 
 Při vyhodnocování analyzátorů zvažte použití [rozhraní analyzovat text API](/rest/api/searchservice/test-analyzer) , kde najdete informace o tom, jak jsou výrazy zpracovávány. Po sestavení indexu můžete vyzkoušet různé analyzátory na řetězci a zobrazit tak výstup tokenu.
 
-Pole, která používají [vlastní analyzátory](index-add-custom-analyzers.md) nebo [předdefinované analyzátory](index-add-custom-analyzers.md#predefined-analyzers-reference) (s výjimkou standardního Lucene), jsou výslovně zakázána, aby nedocházelo k špatným výsledkům.
+Pole, která používají [vlastní analyzátory](index-add-custom-analyzers.md) nebo [předdefinované analyzátory](index-add-custom-analyzers.md#built-in-analyzers) (s výjimkou standardního Lucene), jsou výslovně zakázána, aby nedocházelo k špatným výsledkům.
 
 > [!NOTE]
 > Pokud potřebujete obejít omezení analyzátoru, například pokud potřebujete klíčové slovo nebo ngram Analyzer pro určité scénáře dotazování, měli byste pro stejný obsah použít dvě samostatná pole. Tím umožníte, aby jedno z polí mělo možnost navrhovat, zatímco druhá je možné nastavit pomocí vlastní konfigurace analyzátoru.

@@ -9,10 +9,10 @@ ms.date: 03/03/2020
 ms.author: martinek
 ms.custom: references_regions
 ms.openlocfilehash: 3310d4a7d86db9dee7d5f71fc9410545817886f3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511225"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): Spárované oblasti Azure
@@ -52,7 +52,7 @@ No. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 | Asia-Pacific |Východní Asie (Hongkong) | Jihovýchodní Asie (Singapur) |
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
 | Austrálie |Austrálie – střed |Austrálie – střed 2 |
-| Brazílie |Brazil South |Středojižní USA |
+| Brazílie |Brazílie – jih |Středojižní USA |
 | Kanada |Střední Kanada |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
 | Čína |Čína – sever 2 |Čína – východ 2|
@@ -64,7 +64,7 @@ No. Zákazníci můžou využívat služby Azure k navržení odolné služby, a
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Jižní Korea – střed |Jižní Korea – jih |
 | Severní Amerika |East US |USA – západ |
-| Severní Amerika |USA – východ 2 |Střední USA |
+| Severní Amerika |USA – východ 2 |USA – střed |
 | Severní Amerika |USA – středosever |Středojižní USA |
 | Severní Amerika |Západní USA 2 |USA – středozápad |
 | Norsko | Norsko – východ | Norsko – západ |

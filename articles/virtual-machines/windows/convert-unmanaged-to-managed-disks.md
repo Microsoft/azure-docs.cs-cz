@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.openlocfilehash: 3f586c8907ded618b4cc4aaaadf3c87471cda0b5
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102550718"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na spravované disky
@@ -86,7 +86,7 @@ Pokud jsou virtuální počítače, které chcete převést na spravované disky
    ```
 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud při převodu dojde k chybě nebo pokud je virtuální počítač ve stavu selhání kvůli problémům s předchozím převodem, spusťte `ConvertTo-AzVMManagedDisk` rutinu znovu. Jednoduchý opakování obvykle odblokuje situaci.
 Před převodem se ujistěte, že jsou všechna rozšíření virtuálních počítačů ve stavu "zřizování proběhlo úspěšně", nebo převod selže s kódem chyby 409.

@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak nakonfigurovat monitorování pro clus
 ms.topic: conceptual
 ms.date: 03/05/2021
 ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102506408"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Konfigurace Azure Red Hat OpenShift v4. x s využitím kontejneru Insights
@@ -29,7 +29,7 @@ Container Insights podporuje monitorování Azure Red Hat OpenShift v4. x, jak j
 - Živá data (Preview)
 - [Shromažďování metrik](container-insights-update-metrics.md) z uzlů clusteru a lusků a jejich ukládání do databáze Azure Monitorch metrik
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure CLI verze 2.0.72 nebo novější  
 

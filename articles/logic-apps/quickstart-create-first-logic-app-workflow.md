@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
 ms.openlocfilehash: d90b9e38158d951990fffc21a43317c688da12c9
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052038"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu Logic Apps – Azure Portal
@@ -28,7 +28,7 @@ Pokud se chcete dozvědět, jak vytvořit a spravovat svou první aplikaci logik
 * [Vytváření a Správa aplikací logiky v Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)
 * [Vytváření a Správa aplikací logiky v aplikaci Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud ho ještě nemáte, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

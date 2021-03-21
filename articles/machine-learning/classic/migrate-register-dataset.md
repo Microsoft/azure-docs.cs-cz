@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 02/04/2021
 ms.openlocfilehash: 4c04dd5a2b41b3db54b20c9e514767453951cc35
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103564903"
 ---
 # <a name="migrate-a-studio-classic-dataset-to-azure-machine-learning"></a>Migrace datové sady studia (Classic) do Azure Machine Learning
@@ -30,7 +30,7 @@ Máte tři možnosti, jak datovou sadu migrovat na Azure Machine Learning. Pře�
 > [!NOTE]
 > Azure Machine Learning také podporuje [pracovní postupy](../how-to-create-register-datasets.md) pro vytváření a správu datových sad jako první. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Pracovní prostor služby Azure Machine Learning. [Vytvořte pracovní prostor Azure Machine Learning](../how-to-manage-workspace.md#create-a-workspace).
@@ -101,7 +101,7 @@ Po stažení datového souboru můžete datovou sadu zaregistrovat v Azure Machi
 
 Pokud vaše data jsou již ve službě cloudového úložiště a chcete uchovávat data v jejím nativním umístění. Můžete použít kteroukoli z následujících možností:
 
-|Metoda ingestování|Popis|
+|Metoda ingestování|Description|
 |---| --- |
 |Registrace Azure Machine Learning datové sady|Ingestování dat z místních a online zdrojů dat (objekt blob, ADLS Gen1, ADLS Gen2, sdílení souborů, databáze SQL). <br><br>Vytvoří odkaz na zdroj dat, který je laxně vytvářená vyhodnocen za běhu. Tuto možnost použijte, pokud opakovaně přistupujete k této datové sadě a chcete povolit pokročilé funkce dat, jako je například Správa verzí dat a monitorování.
 |Importovat data modul|Ingestování dat z online zdrojů dat (objekt blob, ADLS Gen1, ADLS Gen2, sdílení souborů, databáze SQL). <br><br> Datová sada je importována pouze do aktuálního spuštění kanálu návrháře.

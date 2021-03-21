@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/08/2021
 tags: connectors
 ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102449624"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí SSH a Azure Logic Apps
@@ -54,12 +54,12 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
   | Akce | Podpora bloků dat | Přepsat podporu velikosti bloku |
   |--------|------------------|-----------------------------|
   | **Kopírovat soubor** | Ne | Nelze použít |
-  | **Vytvořit soubor** | Ano | Ano |
+  | **Vytvořit soubor** | Yes | Yes |
   | **Vytvořit složku** | Nelze použít | Nelze použít |
   | **Odstranit soubor** | Nelze použít | Nelze použít |
   | **Extrakce archivu do složky** | Nelze použít | Nelze použít |
-  | **Získat obsah souboru** | Ano | Ano |
-  | **Získání obsahu souboru pomocí cesty** | Ano | Ano |
+  | **Získat obsah souboru** | Yes | Yes |
+  | **Získání obsahu souboru pomocí cesty** | Yes | Yes |
   | **Získat metadata souboru** | Nelze použít | Nelze použít |
   | **Získat metadata souboru pomocí cesty** | Nelze použít | Nelze použít |
   | **Zobrazit seznam souborů ve složce** | Nelze použít | Nelze použít |
@@ -87,7 +87,7 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Uloží připojení do serveru SFTP *po dobu až 1 hodiny*, což zvyšuje výkon a snižuje počet pokusů o připojení k serveru. Pokud chcete nastavit dobu trvání tohoto chování při ukládání do mezipaměti, upravte vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) v konfiguraci SSH na vašem serveru SFTP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

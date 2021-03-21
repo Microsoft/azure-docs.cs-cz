@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 6474cb10cdb516bae0386b92e40ecd6f17250691
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: b559ce31aff7040a61f6a2f788652ffd192420c4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225441"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593794"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Vytvoření triggeru, který spouští kanál v reakci na událost úložiště
 
@@ -49,7 +49,7 @@ V této části se dozvíte, jak vytvořit Trigger události úložiště v uži
    > Aktivační událost události úložiště aktuálně podporuje pouze účty úložiště Azure Data Lake Storage Gen2 a obecné účely verze 2. Z důvodu omezení Azure Event Grid Azure Data Factory podporuje maximálně 500 triggerů událostí úložiště na jeden účet úložiště.
 
    > [!NOTE]
-   > Pokud chcete vytvořit a upravit novou aktivační událost události úložiště, účet Azure použitý k přihlášení do Data Factory a publikování triggeru události úložiště musí mít v účtu úložiště odpovídající oprávnění řízení přístupu na základě role (Azure RBAC). Nevyžadují se žádné další oprávnění: instanční objekt pro Azure Data Factory _nepotřebuje zvláštní_ oprávnění pro účet úložiště ani Event Grid. Další informace o řízení přístupu najdete v části [řízení přístupu na základě rolí](#role-based-access-control) .
+   > Pokud chcete vytvořit novou nebo upravit existující Trigger události úložiště, účet Azure použitý k přihlášení do Data Factory a publikování triggeru události úložiště musí mít v účtu úložiště odpovídající oprávnění řízení přístupu na základě role (Azure RBAC). Nevyžadují se žádné další oprávnění: instanční objekt pro Azure Data Factory _nepotřebuje zvláštní_ oprávnění pro účet úložiště ani Event Grid. Další informace o řízení přístupu najdete v části [řízení přístupu na základě rolí](#role-based-access-control) .
 
 1. **Cesta k objektu BLOB začíná** a **cesta k objektu BLOB končí** vlastností umožňuje zadat kontejnery, složky a názvy objektů blob, pro které chcete události přijímat. Aktivační procedura události úložiště vyžaduje, aby byla definovaná aspoň jedna z těchto vlastností. Můžete použít celou řadu vzorů pro **cestu objektu BLOB** , která začíná a má **cestu k objektu BLOB končící** vlastností, jak je znázorněno v příkladech dále v tomto článku.
 
@@ -67,12 +67,12 @@ V této části se dozvíte, jak vytvořit Trigger události úložiště v uži
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image3.png" alt-text="Snímek obrazovky se stránkou náhledu triggeru události úložiště":::
 
-1. Pokud chcete k této aktivační události připojit kanál, přejděte na plátno kanálu a klikněte na **Přidat Trigger** a vyberte **Nový/upravit**. Jakmile se zobrazí boční navigace, klikněte na rozevírací seznam **vybrat aktivační událost...** a vyberte aktivační událost, kterou jste vytvořili. Klikněte na **Další: data Preview** a potvrďte, že je konfigurace správná, a pak **vedle** ověřit, jestli je verze Preview dat správná.
+1. Pokud chcete k této aktivační události připojit kanál, přejděte na plátno kanálu a klikněte na **Trigger** a vyberte **Nový/upravit**. Jakmile se zobrazí boční navigace, klikněte na rozevírací seznam **vybrat aktivační událost...** a vyberte aktivační událost, kterou jste vytvořili. Klikněte na **Další: data Preview** a potvrďte, že je konfigurace správná, a pak **vedle** ověřit, jestli je verze Preview dat správná.
 
 1. Pokud váš kanál obsahuje parametry, můžete je zadat v aktivační události spuštění na straně parametru navigace. Aktivační procedura události úložiště zachytí cestu ke složce a název objektu blob do vlastností `@triggerBody().folderPath` a `@triggerBody().fileName` . Chcete-li použít hodnoty těchto vlastností v kanálu, je nutné namapovat vlastnosti na parametry kanálu. Po mapování vlastností na parametry můžete získat přístup k hodnotám zachyceným triggerem prostřednictvím `@pipeline().parameters.parameterName` výrazu v celém kanálu. Podrobné vysvětlení najdete v tématu [metadata triggeru odkazů v kanálech](how-to-use-trigger-parameterization.md) .
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image4.png" alt-text="Snímek obrazovky s vlastnostmi mapování triggeru událostí úložiště na parametry kanálu":::
-    
+
     V předchozím příkladu je aktivační událost nakonfigurovaná tak, aby se aktivovala v případě, že se ve složce _– testování událostí_ v kontejnerech ve _vzorových_ událostech vytvoří cesta objektu BLOB končící na. csv. Vlastnosti **FolderPath** a **filename** zachytí umístění nového objektu BLOB. Například při přidání MoviesDB.csv do cesty Sample-data/testování událostí `@triggerBody().folderPath` má hodnotu `sample-data/event-testing` a `@triggerBody().fileName` má hodnotu `moviesDB.csv` . Tyto hodnoty jsou mapovány v příkladu na parametry kanálu `sourceFolder` a `sourceFile` , které lze použít v celém kanálu jako `@pipeline().parameters.sourceFolder` a v `@pipeline().parameters.sourceFile` uvedeném pořadí.
 
 1. Až budete hotovi, klikněte na **Dokončit** .

@@ -12,10 +12,10 @@ ms.date: 02/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 62bae22b6a4bb06b1e97c18e52ad614fd2439902
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103489317"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
@@ -63,11 +63,11 @@ Element **ContentDefinition** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | Ano | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
+| Id | Yes | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
 
 Element **ContentDefinition** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML5 pro definici obsahu. |
 | RecoveryUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML pro zobrazení chyby související s definicí obsahu. Aktuálně se nepoužívá, hodnota musí být `~/common/default_page_error.html` . |
@@ -79,7 +79,7 @@ Element **ContentDefinition** obsahuje následující prvky:
 
 Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C používá identifikátor stránky k načtení a spuštění prvků uživatelského rozhraní a JavaScriptu na straně klienta. Formát hodnoty je `urn:com:microsoft:aad:b2c:elements:page-name:version` . Následující tabulka obsahuje seznam identifikátorů stránek, které můžete použít.
 
-| Identifikátor stránky | Popis |
+| Identifikátor stránky | Description |
 | ----- | ----------- |
 | `globalexception` | Zobrazí chybovou stránku, pokud dojde k výjimce nebo chybě. |
 | `providerselection`, `idpselection` | Zobrazuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybrat během přihlašování.  |
@@ -168,7 +168,7 @@ Následující příklad ukazuje identifikátory definice obsahu a odpovídajíc
 
 Element **metadata** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Metadata vztahující se k definici obsahu. |
 
@@ -176,7 +176,7 @@ Element **Item** elementu **metadata** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Klíč | Ano | Klíč metadat.  |
+| Klíč | Yes | Klíč metadat.  |
 
 #### <a name="metadata-keys"></a>Klíče metadat
 
@@ -184,13 +184,13 @@ Definice obsahu podporuje následující položky metadat:
 
 | Klíč | Povinné | Popis |
 | --------- | -------- | ----------- |
-| DisplayName | Ne | Řetězec, který obsahuje název definice obsahu. |
+| DisplayName | No | Řetězec, který obsahuje název definice obsahu. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 Element **LocalizedResourcesReferences** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | Seznam lokalizovaných odkazů na prostředky pro definici obsahu. |
 
@@ -198,8 +198,8 @@ Element **LocalizedResourcesReference** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Jazyk | Ano | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
-| LocalizedResourcesReferenceId | Ano | Identifikátor elementu **LocalizedResources** |
+| Jazyk | Yes | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
+| LocalizedResourcesReferenceId | Yes | Identifikátor elementu **LocalizedResources** |
 
 Následující příklad ukazuje definici obsahu pro registraci nebo přihlašování s odkazem na lokalizaci pro angličtinu, francouzštinu a španělštinu:
 
@@ -225,7 +225,7 @@ Další informace o tom, jak přidat podporu lokalizace do definic obsahu, nalez
 
 Atribut ID elementu **ContentDefinition** určuje typ stránky, která se vztahuje k definici obsahu. Prvek definuje kontext, který bude použita vlastní šablona HTML5/CSS. V následující tabulce jsou popsány sady ID definic obsahu rozpoznávané architekturou prostředí identity a typy stránek, které se na ně vztahují. Můžete vytvořit vlastní definice obsahu s libovolným ID.
 
-| ID | Výchozí šablona | Popis |
+| ID | Výchozí šablona | Description |
 | -- | ---------------- | ----------- |
 | **rozhraní API. Chyba** | [výjimka. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka** – zobrazí chybovou stránku, když dojde k výjimce nebo chybě. |
 | **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Stránka Výběr zprostředkovatele identity** – zobrazí seznam zprostředkovatelů identity, ze kterých si uživatelé můžou během přihlašování vybírat. Tyto možnosti jsou obvykle poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: b4b38112e32a55739ea14d5ff06e327819171557
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014548"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Zjišťování neoprávněných vniknutí k síti pomocí Network Watcher a open source nástrojů
@@ -26,7 +26,7 @@ Zachytávání paketů představují klíčovou komponentu pro implementaci syst
 
 Jedním z těchto open source nástrojů je Suricata, modul pro identifikaci, který používá RuleSets k monitorování síťového provozu a aktivuje výstrahy vždy, když dojde k podezřelým událostem. Suricata nabízí vícevláknový modul, což znamená, že může provádět analýzu síťového provozu se zvýšenou rychlostí a efektivitou. Další podrobnosti o Suricata a jejích funkcích najdete na webu na adrese https://suricata-ids.org/ .
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Tento článek vysvětluje, jak nastavit prostředí pro provádění zjišťování neoprávněných vniknutí k síti pomocí Network Watcher, Suricata a elastického zásobníku. Network Watcher poskytuje zachytávání paketů používaných k provádění zjišťování neoprávněných vniknutí do sítě. Suricata zpracovává pakety a aktivuje výstrahy na základě paketů, které odpovídají daným RuleSet hrozbám. Tyto výstrahy se ukládají do souboru protokolu na místním počítači. Pomocí elastického zásobníku se protokoly vygenerované Suricata můžou indexovat a používat k vytvoření řídicího panelu Kibana, který vám poskytne vizuální znázornění protokolů a způsob, jak rychle získat přehled o potenciálních ohroženích zabezpečení sítě.  
 

@@ -4,10 +4,10 @@ description: Analyzuje rozdíly a podobnosti mezi dvěma typy front, které nab�
 ms.topic: article
 ms.date: 11/04/2020
 ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928303"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus – porovnání a kontrast
@@ -101,7 +101,7 @@ Tato část porovnává rozšířené možnosti poskytované frontami úložišt
 | Místní aktualizace |**Ano** |**Ano** |
 | Protokol transakcí na straně serveru |**Ano** |**Ne** |
 | Metriky úložiště |**Ano**<br/><br/>**Minutové metriky** poskytují metriky v reálném čase pro dostupnost, TPS, počty volání rozhraní API, počty chyb a další. Jsou všechny v reálném čase, agregované za minutu a nahlášeny během několika minut od toho, co se právě stalo v produkčním prostředí. Další informace najdete v tématu [o metrikách analýza úložiště](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Ano**<br/><br/>(hromadné dotazy voláním [Getqueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
-| Správa stavu |**Ne** |**Ano**<br/><br/>[Microsoft. ServiceBus. Messaging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Řízení stavu |**Ne** |**Ano**<br/><br/>[Microsoft. ServiceBus. Messaging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft. ServiceBus. Messaging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
 | Přeposílání zpráv |**Ne** |**Ano** |
 | Vyprázdnit funkci Queue |**Ano** |**Ne** |
 | Skupiny zpráv |**Ne** |**Ano**<br/><br/>(pomocí relací zasílání zpráv) |
@@ -170,7 +170,7 @@ Tato část popisuje funkce pro ověřování a autorizaci podporované frontami
 
 | Kritéria porovnání | Fronty úložiště | Fronty služby Service Bus |
 | --- | --- | --- |
-| Ověřování |**Symetrický klíč** |**Symetrický klíč** |
+| Authentication |**Symetrický klíč** |**Symetrický klíč** |
 | Model zabezpečení |Delegovaný přístup prostřednictvím tokenů SAS. |SAS |
 | Federace zprostředkovatele identity |**Ne** |**Ano** |
 

@@ -8,10 +8,10 @@ ms.author: alkemper
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.openlocfilehash: c415eaeab2edd0a1b324bba4266266201cb50cbf
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96929680"
 ---
 # <a name="enable-staged-rollout-of-features-for-targeted-audiences"></a>Povolení připraveného zavedení funkcí pro cílové cílové skupiny
@@ -46,7 +46,7 @@ V tomto okamžiku můžete použít příznak funkce k povolení nebo zakázán�
    dotnet add package Microsoft.FeatureManagement.AspNetCore
    ```
 
-1. Přidat soubor *TestTargetingContextAccessor.cs* :
+1. Přidejte soubor *TestTargetingContextAccessor. cs* :
 
     ```csharp
     using Microsoft.AspNetCore.Http;
@@ -91,7 +91,7 @@ V tomto okamžiku můžete použít příznak funkce k povolení nebo zakázán�
     }
     ```
 
-1. Do *Startup.cs* přidejte odkaz na obor názvů *Microsoft. FeatureManagement. FeatureFilters* :
+1. V části *Startup. cs* přidejte odkaz na obor názvů *Microsoft. FeatureManagement. FeatureFilters* :
 
     ```csharp
     using Microsoft.FeatureManagement.FeatureFilters;
@@ -133,7 +133,7 @@ Celá metoda *ConfigureServices* bude vypadat takto:
 
 1. V Azure Portal přejdete do konfiguračního úložiště aplikace a vyberete **správce funkcí**.
 
-1. Vyberte kontextovou nabídku pro příznak funkce *beta* , který jste vytvořili v rychlém startu. Vyberte **Edit** (Upravit).
+1. Vyberte kontextovou nabídku pro příznak funkce *beta* , který jste vytvořili v rychlém startu. Vyberte **Upravit**.
 
     > [!div class="mx-imgBorder"]
     > ![Upravit příznak funkce beta verze](./media/edit-beta-feature-flag.png)

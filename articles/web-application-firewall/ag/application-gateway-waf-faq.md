@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 1fbe930780ff026be748bc42104f821ee9e5c443
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 890688dba70a7fa654e97652b3e474b919f9a077
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785098"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585379"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Nejčastější dotazy k firewallu webových aplikací Azure na Application Gateway
 
@@ -34,7 +34,7 @@ Monitorujte WAF prostřednictvím diagnostického protokolování. Další infor
 
 ## <a name="does-detection-mode-block-traffic"></a>Blokuje režim detekce přenos dat?
 
-Ne. V režimu detekce se protokoluje pouze provoz, který aktivuje pravidlo WAF.
+No. V režimu detekce se protokoluje pouze provoz, který aktivuje pravidlo WAF.
 
 ## <a name="can-i-customize-waf-rules"></a>Můžu přizpůsobit pravidla WAF?
 
@@ -53,6 +53,20 @@ WAF v současné době podporuje počítačový [2.2.9](application-gateway-crs-
 * Detekce běžných neobvyklých konfigurací aplikací (tj. Apache, IIS atd.)
 
 Další informace najdete v tématu [OWASP chyby zabezpečení nejvyšší úrovně 10](https://owasp.org/www-project-top-ten/).
+
+## <a name="what-content-types-does-waf-support"></a>Jaké typy obsahu podporuje WAF?
+
+Application Gateway WAF podporují následující typy obsahu pro spravovaná pravidla:
+
+* application/json
+* aplikace/XML
+* Application/x-www-form-urlencoded
+* multipart/form-data
+
+A pro vlastní pravidla:
+
+* Application/x-www-form-urlencoded
+* multipart/form-data
 
 ## <a name="does-waf-support-ddos-protection"></a>Podporuje WAF ochranu DDoS?
 
