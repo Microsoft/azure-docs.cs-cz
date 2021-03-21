@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/14/2020
 ms.custom: mvc
 ms.openlocfilehash: 4d2b0fbb377beacdb75a1a5552855936bee2b205
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041307"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-server-assessment"></a>Kurz: zjišťování serverů běžících v prostředí VMware s Azure Migrate: posouzení serveru
@@ -47,7 +47,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 **Servery** | Všechny verze operačních systémů Windows a Linux jsou podporované pro zjišťování konfigurace a metadat výkonu. <br/><br/> Aby bylo možné provádět zjišťování aplikací na serverech, jsou podporovány všechny verze operačních systémů Windows a Linux. [Zde](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) najdete verzi operačního systému podporovanou pro analýzu závislostí bez agentů.<br/><br/> Aby bylo možné provést zjišťování nainstalovaných aplikací a analýzu závislostí bez agentů, musí být na serverech nainstalovány a spuštěny nástroje VMware (novější než 10.2.0). Windows servery musí mít nainstalované prostředí PowerShell verze 2,0 nebo novější.<br/><br/> Pokud chcete zjistit SQL Server instance a databáze, podívejte se [sem](migrate-support-matrix-vmware.md#requirements-for-discovery-of-sql-server-instances-and-databases) na podporované verze a edice SQL Server, podporované verze operačního systému Windows a mechanismy ověřování.
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 ## <a name="prepare-an-azure-user-account"></a>Příprava uživatelského účtu Azure
 
@@ -274,7 +274,7 @@ V **kroku 3: poskytnutí přihlašovacích údajů serveru pro inventarizaci sof
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Panel 3 – Správce konfigurace zařízení pro podrobnosti o serveru":::
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Chcete-li vyzkoušet tuto funkci, použijte [**Tento odkaz**](https://aka.ms/AzureMigrate/SQL) k vytvoření projektu v oblasti **Austrálie – východ** . Pokud projekt již máte v Austrálii – východ a chcete si vyzkoušet tuto funkci, ujistěte se, že jste tyto [**požadavky**](how-to-discover-sql-existing-project.md) dokončili na portálu.
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 Pokud chcete tyto funkce využít, můžete zadat přihlašovací údaje serveru podle následujících kroků. Zařízení se pokusí automaticky mapovat přihlašovací údaje na servery, aby se prováděly funkce zjišťování.
 

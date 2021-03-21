@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak můžete nakonfigurovat agenta kontejn
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.openlocfilehash: d866fec2013daf9b8edfdbfd703c7b1098ae91bd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708386"
 ---
 # <a name="configure-agent-data-collection-for-container-insights"></a>Konfigurace shromažďování dat agenta pro službu Container Insights
