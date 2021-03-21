@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 411a8e46151a762bcd270fb676f78a91f760ac4f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653792"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-gmsa-powershell-cmdlets"></a>Rutiny prostředí PowerShell pro gMSA Azure AD Connectho zřizování cloudu
@@ -61,7 +61,7 @@ Pro použití těchto rutin jsou vyžadovány následující předpoklady.
 ## <a name="using-set-aadcloudsyncpermissions"></a>Použití Set-AADCloudSyncPermissions 
 `Set-AADCloudSyncPermissions` podporuje následující typy oprávnění, které jsou stejné jako oprávnění, která používá Azure AD Connect. Podporovány jsou následující typy oprávnění: 
 
-|Typ oprávnění|Popis|
+|Typ oprávnění|Description|
 |-----|-----|
 |BasicRead| Azure AD Connect oprávnění k [DisBasicRead](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#configure-basic-read-only-permissions)|
 |PasswordHashSync|Azure AD Connect oprávnění k [DisPasswordHashSync](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-password-hash-synchronization)|

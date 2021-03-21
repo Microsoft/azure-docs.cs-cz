@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: f76d3b81c2d5425f7bb91c5c86a79faa097794e3
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434996"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Otestování rozhraní portálu pro Azure Managed Applications
 
 Po [vytvoření createUiDefinition.jspro soubor](create-uidefinition-overview.md) pro spravovanou aplikaci je nutné otestovat činnost koncového uživatele. Pro zjednodušení testování použijte prostředí izolovaného prostoru (sandbox), které načte váš soubor na portálu. Nemusíte ve skutečnosti nasazovat spravovanou aplikaci. Sandbox prezentuje vaše uživatelské rozhraní v aktuálním, samoobslužném portálu pro celou obrazovku. Nebo můžete použít skript pro otestování rozhraní. Oba přístupy jsou uvedené v tomto článku. Izolovaný prostor (sandbox) je doporučený způsob, jak zobrazit náhled rozhraní.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **createUiDefinition.jsv** souboru. Pokud tento soubor nemáte, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
@@ -36,7 +36,7 @@ Po [vytvoření createUiDefinition.jspro soubor](create-uidefinition-overview.md
 
    ![Zobrazit formulář](./media/test-createuidefinition/show-ui-form.png)
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se formulář po výběru **náhledu** nezobrazí, může dojít k chybě syntaxe. Vyhledejte červený indikátor na pravém posuvníku a přejděte k němu.
 

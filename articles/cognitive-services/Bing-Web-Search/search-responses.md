@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 3dda95312a0b9191ddc11de62959f308ee19fff4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94380976"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>rozhraní API Bingu pro vyhledávání na webu struktury odpovědí a typů odpovědí  
@@ -43,7 +43,7 @@ Když odešlete Vyhledávání na webu Bingu požadavek hledání, vrátí [`Sea
 }, ...
 ```
 
-Vyhledávání na webu Bingu obvykle vrací podmnožinu odpovědí. Pokud se například termín dotazu *dodinghies* , může odpověď zahrnovat `webPages` , `images` a `rankingResponse` . Pokud jste nepoužívali [responseFilter](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) k odfiltrování webových stránek, odpověď vždy obsahuje `webpages` odpovědi a `rankingResponse` .
+Vyhledávání na webu Bingu obvykle vrací podmnožinu odpovědí. Pokud se například termín dotazu *dodinghies*, může odpověď zahrnovat `webPages` , `images` a `rankingResponse` . Pokud jste nepoužívali [responseFilter](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) k odfiltrování webových stránek, odpověď vždy obsahuje `webpages` odpovědi a `rankingResponse` .
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -309,7 +309,7 @@ Matematický výraz může obsahovat následující symboly:
 
 Matematický výraz může obsahovat následující konstanty:
 
-|Symbol|Popis|
+|Symbol|Description|
 |------------|-----------------|
 |Pi|3,14159...|
 |Chýlení|Chýlení|
@@ -319,7 +319,7 @@ Matematický výraz může obsahovat následující konstanty:
 
 Matematický výraz může obsahovat následující funkce:
 
-|Symbol|Popis|
+|Symbol|Description|
 |------------|-----------------|
 |Seřadit|Druhá odmocnina|
 |Sin [x]; cos [x]; Tan [x]<br />CSc [x], SEK [x], COT [x]|Trigonometrické funkce (s argumenty v radiánech)|
@@ -333,7 +333,7 @@ Matematické výrazy, které obsahují proměnné (například 4x + 6 = 18, kde 
 
 ## <a name="timezone-answer"></a>Odpověď časového pásma
 
-Pokud uživatel zadá dotaz na čas nebo datum, odpověď může obsahovat odpověď [časového pásma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) . Tato odpověď podporuje implicitní nebo explicitní dotazy. Implicitní dotaz, jako je například *čas?* , vrátí místní čas na základě umístění uživatele. Explicitní dotaz, jako je například *čas v Seattlu?* , vrátí místní čas pro Seattle, WA.
+Pokud uživatel zadá dotaz na čas nebo datum, odpověď může obsahovat odpověď [časového pásma](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) . Tato odpověď podporuje implicitní nebo explicitní dotazy. Implicitní dotaz, jako je například *čas?*, vrátí místní čas na základě umístění uživatele. Explicitní dotaz, jako je například *čas v Seattlu?*, vrátí místní čas pro Seattle, WA.
 
 `timeZone`Odpověď poskytuje název umístění, aktuální datum a čas UTC v zadaném umístění a posun UTC. Pokud se hranice umístění nachází v několika časových pásmech, odpověď obsahuje aktuální datum a čas UTC všech časových pásem v rámci hranice. Například vzhledem k tomu, že stav Florida spadá do dvou časových pásem, odpověď obsahuje místní datum a čas obou časových pásem.  
 
@@ -424,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion odpověď
 
-Pokud Bing určí, že uživatel může chtít hledat něco jiného, odpověď zahrnuje objekt [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) . Pokud uživatel například vyhledá *Carlos pero* , Bing může určit, že uživatel pravděpodobně hledal místo toho, aby Carlos Pena (na základě předchozích hledání ostatních *carlosho pera* ). Následuje ukázka reakce na kontrolu pravopisu.
+Pokud Bing určí, že uživatel může chtít hledat něco jiného, odpověď zahrnuje objekt [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) . Pokud uživatel například vyhledá *Carlos pero*, Bing může určit, že uživatel pravděpodobně hledal místo toho, aby Carlos Pena (na základě předchozích hledání ostatních *carlosho pera*). Následuje ukázka reakce na kontrolu pravopisu.
 
 ```json
 "spellSuggestions": {
@@ -440,7 +440,7 @@ Pokud Bing určí, že uživatel může chtít hledat něco jiného, odpověď z
 
 Odpovědi z rozhraní API Bingu pro vyhledávání na webu mohou obsahovat následující hlavičky:
 
-| Záhlaví | Popis |
+| Hlavička | Description |
 |-|-|
 |`X-MSEdge-ClientID`|Jedinečné ID, které Bingu přiřadilo uživateli|
 |`BingAPIs-Market`|Trh, který se použil ke splnění žádosti|

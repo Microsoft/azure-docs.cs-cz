@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 82b5892b027627871e5492e3c6cd3776a923632b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102553438"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Kurz: Vytvoření brány NAT pomocí Azure Portal
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte bránu NAT a přidružte ji k virtuální síti.
 > * Připojte se k virtuálnímu počítači a ověřte IP adresu NAT.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

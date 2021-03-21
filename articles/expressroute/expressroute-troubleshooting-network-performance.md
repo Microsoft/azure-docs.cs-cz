@@ -9,10 +9,10 @@ ms.date: 01/07/2021
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 35e080e0fe45c18ad6a6d5392e0c78b116853c3e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027464"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
@@ -99,7 +99,7 @@ Existují tři základní kroky pro použití této sady nástrojů pro testová
 
     Podrobné výsledky testů iPerf a PSPing jsou v jednotlivých textových souborech v adresáři nástrojů AzureCT na adrese "C:\ACTTools.".
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Pokud test výkonnosti neposkytuje očekávané výsledky, zjistíte, proč by měl být progresivní postup s podrobnými kroky. S ohledem na počet komponent v cestě bude systematický přístup poskytovat rychlejší cestu k řešení, než je možné proejít. Pomocí systematického řešení můžete zabránit v provádění zbytečných testů vícekrát.
 
 >[!NOTE]
@@ -148,7 +148,7 @@ V případě sítě WAN vám budou pokaždé, když sdílíte výsledky testová
 
 Pokud se v Azure rozhodnete, že problém izolujete v co nejpodrobněji, je čas si projít [dokumentaci k síti Azure][Network Docs] a pak Pokud pořád potřebujeme [otevřít lístek podpory][Ticket Link].
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 ### <a name="latencybandwidth-expectations"></a>Očekávání při latenci a šířce pásma
 >[!TIP]
 > Zeměpisná latence (v mílích nebo kilometrech) mezi koncovými body, které testujete, je nejmnohem největší součástí latence. I když se jedná o latenci zařízení (fyzické a virtuální komponenty, počet směrování atd.), je zeměpisně prověřená největší součást celkové latence při obchodování s připojeními WAN. Je také důležité si uvědomit, že vzdálenost v rámci optické dráhy není rovna vzdálenosti lineární nebo silniční mapy. Tato vzdálenost je neuvěřitelně těžko se dostat s přesností. V důsledku toho používáme pro Internet kalkulačku na dálku a víte, že tato metoda je všeobecně nepřesná míra, ale je dostačující pro nastavení Obecné očekávaného očekávání.
@@ -183,12 +183,12 @@ Nastavení testu:
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | Západní USA 2        |    191 km |   5 MS | 262,0 Mbit/s |  3,74 Gbits/s |
 | Seattle | USA – západ          |  1 094 km |  18 MS |  82,3 Mbit/s |  3,70 Gbits/s |
-| Seattle | Střední USA       |  2 357 km |  40 MS |  38,8 Mbit/s |  2,55 Gbits/s |
+| Seattle | USA – střed       |  2 357 km |  40 MS |  38,8 Mbit/s |  2,55 Gbits/s |
 | Seattle | Středojižní USA |  2 877 km |  51 MS |  30,6 Mbit/s |  2,49 Gbits/s |
 | Seattle | USA – středosever |  2 792 km |  55 MS |  27,7 Mbit/s |  2,19 Gbits/s |
 | Seattle | USA – východ 2        |  3 769 km |  73 MS |  21,3 Mbit/s |  1,79 Gbits/s |
 | Seattle | East US          |  3 699 km |  74 MS |  21,1 Mbit/s |  1,78 Gbits/s |
-| Seattle | Japan East       |  7 705 km | 106 MS |  14,6 Mbit/s |  1,22 Gbits/s |
+| Seattle | Japonsko – východ       |  7 705 km | 106 MS |  14,6 Mbit/s |  1,22 Gbits/s |
 | Seattle | Spojené království – jih         |  7 708 km | 146 MS |  10,6 Mbit/s |   896 Mbit/s |
 | Seattle | West Europe      |  7 834 km | 153 MS |  10,2 Mbit/s |   761 Mbit/s |
 | Seattle | Austrálie – východ   | 12 484 km | 165 MS |   9,4 Mbit/s |   794 Mbit/s |

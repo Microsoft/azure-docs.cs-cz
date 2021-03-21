@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 090797549cc61aa27945114e5ef8b666226b66e2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94956989"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Správa řadičů zařízení StorSimple
@@ -29,10 +29,10 @@ V tomto kurzu se dozvíte o různých operacích, které můžete provádět na 
 
 Tento kurz obsahuje podrobné pokyny pro správu řadičů zařízení pomocí těchto kroků:
 
-* Okno **řadiče** pro vaše zařízení ve službě StorSimple Device Manager.
+* Okno **řadiče** pro vaše zařízení ve službě StorSimple Správce zařízení.
 * Windows PowerShell pro StorSimple.
 
-Doporučujeme spravovat řadiče zařízení prostřednictvím služby StorSimple Device Manager. Pokud se akce dá provést jenom pomocí Windows PowerShell pro StorSimple, kurz si ho poznamenejte.
+Doporučujeme spravovat řadiče zařízení prostřednictvím služby StorSimple Správce zařízení. Pokud se akce dá provést jenom pomocí Windows PowerShell pro StorSimple, kurz si ho poznamenejte.
 
 Po přečtení tohoto kurzu budete moct:
 
@@ -49,12 +49,12 @@ Za předpokladu, že je k dispozici pasivní kontroler, není restartování za�
 > * **Spuštěný kontroler by se nikdy neměl fyzicky odebrat, protože by došlo ke ztrátě redundance a zvýšenému rizika výpadku.**
 > * Následující postup se vztahuje jenom na fyzické zařízení StorSimple. Informace o tom, jak spustit, zastavit a restartovat StorSimple Cloud Appliance, najdete v tématu [práce s cloudovým zařízením](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance).
 
-Jeden řadič zařízení můžete restartovat nebo vypnout pomocí Azure Portal služby Device Manager StorSimple nebo Windows PowerShell pro StorSimple.
+Jeden řadič zařízení můžete restartovat nebo vypnout pomocí Azure Portal služby Správce zařízení StorSimple nebo Windows PowerShell pro StorSimple.
 
 Pokud chcete spravovat řadiče zařízení z Azure Portal, proveďte následující kroky.
 
 #### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Restartování nebo vypnutí řadiče v Azure Portal
-1. Ve službě StorSimple Device Manager můžete přejít na **zařízení**. Vyberte zařízení ze seznamu zařízení. 
+1. Ve službě StorSimple Správce zařízení můžete přejít na **zařízení**. Vyberte zařízení ze seznamu zařízení. 
 
     ![Zvolte zařízení](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
@@ -160,4 +160,4 @@ V této části jsme si vyložili některé z nejčastějších dotazů týkají
 
 ## <a name="next-steps"></a>Další kroky
 * Pokud narazíte na problémy s řadiči zařízení StorSimple, které nemůžete vyřešit pomocí postupů uvedených v tomto kurzu, [kontaktujte podpora Microsoftu](storsimple-8000-contact-microsoft-support.md).
-* Další informace o používání služby StorSimple Device Manager najdete v části [používání služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Další informace o používání služby StorSimple Správce zařízení najdete v části [používání služby StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

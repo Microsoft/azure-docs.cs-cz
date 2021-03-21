@@ -8,10 +8,10 @@ ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 9f72d54fda8f66c2fce35f0520b51406aa276bb0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92892749"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Měřená fakturace pro SaaS s využitím komerční služby měření na webu Marketplace
@@ -37,7 +37,7 @@ Porozumění hierarchii nabídky je důležité, pokud je k dispozici pro defino
 
 - Každá nabídka SaaS je nakonfigurována k prodeji buď prostřednictvím Microsoft, nebo ne.  Po publikování nabídky nejde tuto možnost změnit.
 - Každý SaaS nabídka, která je nakonfigurovaná pro prodej prostřednictvím Microsoftu, může mít jeden nebo víc plánů.  Uživatel se přihlásí k odběru nabídky SaaS, ale v rámci plánu je zakoupený prostřednictvím Microsoftu.
-- K jednotlivým plánům je přiřazený cenový model: **paušální sazba** nebo **na uživatele** . Všechny plány v nabídce musí být přidruženy ke stejnému cenovému modelu. Nemůžete například mít nabídku s plány pro cenový model s paušální sazbou a další model cenového modelu podle uživatele.
+- K jednotlivým plánům je přiřazený cenový model: **paušální sazba** nebo **na uživatele**. Všechny plány v nabídce musí být přidruženy ke stejnému cenovému modelu. Nemůžete například mít nabídku s plány pro cenový model s paušální sazbou a další model cenového modelu podle uživatele.
 - V rámci každého plánu nakonfigurovaného pro model fakturace paušálních sazeb se zahrnuje aspoň jeden opakovaný poplatek (který může být $0):
     - Opakovaný **měsíční** poplatek: paušální měsíční poplatek, který se předem hradí při měsíčním opakování, když uživatel zakoupí plán.
     - Periodický **roční** poplatek: paušální roční poplatek, který je předem zaplacen na roční opakování, když uživatel zakoupí plán.
@@ -73,12 +73,12 @@ V závislosti na vybraném plánu bude moct zákaznická předplatná Azure pro 
 
 Každá fakturační dimenze definuje vlastní jednotku, kterou ISV může generovat události využití.  Fakturační dimenze se také používají ke komunikaci se zákazníkem podle toho, jak se budou fakturovat za použití softwaru.  Jsou definovány takto:
 
-- **ID** : neproměnlivý identifikátor dimenze, na který se odkazuje při generování událostí použití.
-- **Zobrazovaný název** : zobrazovaný název přidružený k dimenzi, například "odeslané textové zprávy".
-- Měrná **jednotka** : Popis fakturační jednotky, například zpráva "na textovou zprávu" nebo "za 100 e-mailů".
-- **Cena za jednotku v USD** : cena za jednu jednotku dimenze.  Může být 0. 
-- **Měsíční množství zahrnuté v základu** : Počet zahrnutých dimenzí za měsíc pro zákazníky, kteří platí pro opakovaný měsíční poplatek, musí být celé číslo. Může být 0 nebo neomezený.
-- **Roční množství zahrnuté v základu** : množství dimenze zahrnuté v každém roce pro zákazníky, kteří platíte do periodického ročního poplatku, musí být celé číslo. Může být 0 nebo neomezeno.
+- **ID**: neproměnlivý identifikátor dimenze, na který se odkazuje při generování událostí použití.
+- **Zobrazovaný název**: zobrazovaný název přidružený k dimenzi, například "odeslané textové zprávy".
+- Měrná **jednotka**: Popis fakturační jednotky, například zpráva "na textovou zprávu" nebo "za 100 e-mailů".
+- **Cena za jednotku v USD**: cena za jednu jednotku dimenze.  Může být 0. 
+- **Měsíční množství zahrnuté v základu**: Počet zahrnutých dimenzí za měsíc pro zákazníky, kteří platí pro opakovaný měsíční poplatek, musí být celé číslo. Může být 0 nebo neomezený.
+- **Roční množství zahrnuté v základu**: množství dimenze zahrnuté v každém roce pro zákazníky, kteří platíte do periodického ročního poplatku, musí být celé číslo. Může být 0 nebo neomezeno.
 
 Fakturační dimenze se sdílejí napříč všemi plány nabídky.  Některé atributy platí pro dimenzi napříč všemi plány a další atributy jsou specifické pro plán.
 

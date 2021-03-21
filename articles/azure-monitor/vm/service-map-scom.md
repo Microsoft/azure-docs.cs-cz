@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
 ms.openlocfilehash: 3a7d0d49313cb524a5bf39add5c9a55862dcad47
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046886"
 ---
 # <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>Integrace System Center Operations Manager s funkcí mapa pro službu VM Insights
@@ -19,7 +19,7 @@ V části VM Insights můžete zobrazit zjištěné součásti aplikace na virtu
 >[!NOTE]
 >Pokud jste již nasadili Service Map, můžete zobrazit své mapy v nástroji VM Insights, které obsahují další funkce pro monitorování stavu a výkonu virtuálních počítačů. Funkce map pro službu VM Insights je určena k nahrazení samostatného řešení Service Map. Další informace najdete v tématu [Přehled virtuálních počítačů Insights](../vm/vminsights-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * System Center Operations Manager skupina pro správu (2012 R2 nebo novější).
 * Pracovní prostor Log Analytics nakonfigurovaný tak, aby podporoval službu VM Insights.

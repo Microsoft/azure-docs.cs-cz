@@ -17,10 +17,10 @@ ms.workload: infrastructure
 ms.date: 12/11/2020
 ms.author: kumud
 ms.openlocfilehash: cb3a4b6a726ee9163582b15586c65fc750712c63
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97368241"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Kurz: Omezení síťového přístupu k prostředkům PaaS s využitím koncových bodů služby pro virtuální síť pomocí webu Azure Portal
@@ -53,7 +53,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
    |----|----|
    |Předplatné| Vyberte své předplatné.|
    |Skupina prostředků | Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
-   |Název| Zadejte *myVirtualNetwork* |
+   |Name| Zadejte *myVirtualNetwork* |
    |Oblast| Vyberte **(US) východní USA** |
 
    ![Zadání základních informací o virtuální síti](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
@@ -114,7 +114,7 @@ Ve výchozím nastavení mohou všechny instance virtuálních počítačů v po
     |----|----|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | V seznamu vyberte *myResourceGroup*|
-    |Název| Zadejte **myNsgPrivate** |
+    |Name| Zadejte **myNsgPrivate** |
     |Umístění| Vyberte **východní USA** |
 
 5. Klikněte na tlačítko **zkontrolovat + vytvořit** a po úspěšné kontrole ověřování klikněte na tlačítko **vytvořit**.
@@ -147,7 +147,7 @@ Ve výchozím nastavení mohou všechny instance virtuálních počítačů v po
     |Protokol|Libovolný|
     |Akce|**Změnit výchozí na *Odepřít*** |
     |Priorita|110|
-    |Název|Změnit na *Odepřít – Internet – vše*|
+    |Name|Změnit na *Odepřít – Internet – vše*|
 
 11. Vytvořte *příchozí pravidlo zabezpečení* , které umožní provoz protokol RDP (Remote Desktop Protocol) (RDP) do podsítě odkudkoli. Toto pravidlo přepíše výchozí pravidlo zabezpečení, které zakazuje veškerý příchozí provoz z internetu. Připojení ke vzdálené ploše jsou pro podsíť povolená z důvodu testování připojení v pozdějším kroku. 
 12. V části **Nastavení** vyberte **příchozí pravidla zabezpečení**.
@@ -162,7 +162,7 @@ Ve výchozím nastavení mohou všechny instance virtuálních počítačů v po
     |Protokol|Libovolný|
     |Akce|Povolit|
     |Priorita|120|
-    |Název|Změnit na *Allow-RDP-All*|
+    |Name|Změnit na *Allow-RDP-All*|
 
    >[!WARNING] 
    > Port RDP 3389 je přístupný z Internetu. Tento postup se doporučuje jenom pro testování. V *produkčních prostředích* doporučujeme používat VPN nebo privátní připojení.

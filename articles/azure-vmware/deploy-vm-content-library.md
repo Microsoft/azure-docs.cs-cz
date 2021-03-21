@@ -4,10 +4,10 @@ description: Vytvořte knihovnu obsahu pro nasazení virtuálního počítače v
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382000"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v řešení Azure VMware
@@ -16,7 +16,7 @@ Knihovna obsahu uchovává a spravuje obsah ve formě položek knihovny. Jedna p
 
 V tomto článku Vás provedeme postupem vytvoření knihovny obsahu.  Pak provedeme nasazením virtuálního počítače pomocí Image ISO z knihovny obsahu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu je nutný segment NSX-T (logický přepínač) a spravovaná služba DHCP.  Další informace najdete v článku [Správa DHCP v Azure VMware Solution](manage-dhcp.md) .
 

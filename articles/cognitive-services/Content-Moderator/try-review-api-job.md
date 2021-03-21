@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 924c21037a464770fac13c9b45ddcf261ff5a058
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905132"
 ---
 # <a name="define-and-use-moderation-jobs-api-console"></a>Definování a použití úloh moderování (konzola rozhraní API)
@@ -115,7 +115,7 @@ Zadejte parametry volání REST jako v předchozí části. Pro tento krok je id
 
 ### <a name="examine-the-new-reviews"></a>Prozkoumejte nové revize (y)
 
-Pokud vaše úloha s obsahem skončila vytvořením recenze, můžete ji zobrazit v [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com). Vyberte **zkontrolovat**  >  **Image** / **Text** / **video** textu obrazu (v závislosti na obsahu, který jste použili). Měl by se zobrazit obsah, který je připravený pro lidskou kontrolu. Po revizi lidského moderátora zkontroluje automaticky přiřazené značky a data předpovědi a odešle konečné rozhodnutí o moderování. rozhraní API úlohy odešle všechny tyto informace do určeného koncového bodu zpětného volání.
+Pokud vaše úloha s obsahem skončila vytvořením recenze, můžete ji zobrazit v [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com). Vyberte **zkontrolovat**  >   /  / **video** textu obrazu (v závislosti na obsahu, který jste použili). Měl by se zobrazit obsah, který je připravený pro lidskou kontrolu. Po revizi lidského moderátora zkontroluje automaticky přiřazené značky a data předpovědi a odešle konečné rozhodnutí o moderování. rozhraní API úlohy odešle všechny tyto informace do určeného koncového bodu zpětného volání.
 
 ## <a name="next-steps"></a>Další kroky
 

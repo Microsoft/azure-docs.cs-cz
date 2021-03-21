@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
 ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789023"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>Vytvoření a sloučení CSR v Key Vault
@@ -104,7 +104,7 @@ Pomocí těchto kroků přidejte certifikát od certifikačních autorit, které
 ## <a name="add-more-information-to-the-csr"></a>Přidat další informace zástupci oddělení IT
 
 Pokud chcete přidat další informace při vytváření CSR, definujte je v části **Subject**. Můžete chtít přidat informace, jako například:
-- Country (Země)
+- Země
 - Město
 - Kraj
 - Organizace

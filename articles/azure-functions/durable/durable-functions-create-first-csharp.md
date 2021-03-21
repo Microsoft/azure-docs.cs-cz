@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008160"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první trvalé funkce v jazyce C\#
@@ -23,7 +23,7 @@ V tomto článku se naučíte, jak používat Visual Studio Code k místnímu vy
 
 ![Snímek obrazovky ukazuje Visual Studio Code okno s trvalou funkcí.](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -88,7 +88,7 @@ Následující kroky používají šablonu k vytvoření trvalého kódu funkce 
 
 Do projektu se přidá třída obsahující nové funkce. VS Code taky přidá připojovací řetězec účtu úložiště, který se má *local.settings.jsna* , a odkaz na [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) balíček NuGet na soubor projektu *. csproj* .
 
-Otevřete nový soubor *HelloOrchestration.cs* pro zobrazení obsahu. Tato trvalá funkce je příklad řetězení jednoduchých funkcí s následujícími metodami:  
+Otevřete nový soubor *HelloOrchestration. cs* pro zobrazení obsahu. Tato trvalá funkce je příklad řetězení jednoduchých funkcí s následujícími metodami:  
 
 | Metoda | FunctionName | Description |
 | -----  | ------------ | ----------- |
@@ -167,7 +167,7 @@ V tomto článku se naučíte, jak se v rámci sady Visual Studio 2019 místně 
 
 ![Snímek obrazovky ukazuje okno sady Visual Studio 2019 s trvalou funkcí.](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -181,7 +181,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Šablona Azure Functions vytvoří projekt, který se dá publikovat do aplikace Function App v Azure. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 
-1. V aplikaci Visual Studio vyberte v nabídce soubor možnost **Nový**  >  **projekt** . **File**
+1. V sadě Visual Studio zvolte v nabídce **Soubor** možnost **Nový** > **Projekt**.
 
 1. V dialogovém okně **vytvořit nový projekt** vyhledejte `functions` , vyberte šablonu **Azure Functions** a vyberte **Další**. 
 
@@ -261,7 +261,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
     }
     ```
 
-5. Chcete-li zastavit ladění, stiskněte klávesy **SHIFT + F5**.
+5. Pokud chcete zastavit ladění, stiskněte **Shift + F5**.
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 

@@ -8,16 +8,16 @@ ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 2629e9c6e048620d9490a1e091a16c138fd1e615
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99525428"
 ---
-# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online zálohování a obnovení dat na vyžádání v Azure Cosmos DB
+# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online zálohování a obnovení dat na vyžádání ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB automaticky provede zálohování vašich dat v pravidelných intervalech. Automatické zálohování se provádí bez vlivu na výkon nebo dostupnost databázových operací. Všechny zálohy se ukládají samostatně ve službě úložiště. Automatické zálohování jsou užitečná ve scénářích, kdy omylem odstraníte nebo aktualizujete svůj účet, databázi nebo kontejner Azure Cosmos a později vyžadujete obnovení dat. Existují dva režimy zálohování:
+Azure Cosmos DB automaticky v pravidelných intervalech zálohuje vaše data. Automatické zálohování nemá vliv na výkon ani dostupnost databázových operací. Všechny zálohy se ukládají odděleně ve službě úložiště. Automatické zálohování je užitečné ve scénářích, kdy omylem odstraníte nebo aktualizujete svůj účet Azure Cosmos, databázi nebo kontejner a později potřebujete provést obnovení dat. Existují dva režimy zálohování:
 
 * **Režim periodické zálohy** – tento režim je výchozím režimem zálohování pro všechny existující účty. V tomto režimu se zálohování provádí v pravidelných intervalech a data se obnoví tím, že se vytvoří žádost s týmem podpory. V tomto režimu nakonfigurujete interval zálohování a uchování pro svůj účet. Maximální doba uchování sahá na měsíc. Minimální interval zálohování může být jedna hodina.  Další informace najdete v článku [pravidelný režim zálohování](configure-periodic-backup-restore.md) .
 

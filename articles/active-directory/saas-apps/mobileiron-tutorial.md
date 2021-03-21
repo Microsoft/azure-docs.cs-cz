@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2021
 ms.author: jeedes
 ms.openlocfilehash: c47092b1488a79805db69308bcb9a8efde1c0d58
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Kurz: Azure Active Directory integrace s MobileIron
@@ -26,7 +26,7 @@ ms.locfileid: "101653010"
 * Umožněte uživatelům, aby se automaticky přihlásili k MobileIron pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

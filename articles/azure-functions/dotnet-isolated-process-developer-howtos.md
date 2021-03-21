@@ -5,10 +5,10 @@ ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
 ms.openlocfilehash: 9751d5d354d738a64d6b02e8153464491d78ec14
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103201371"
 ---
 # <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>Vývoj a publikování funkcí rozhraní .NET 5 pomocí Azure Functions 
@@ -20,7 +20,7 @@ Pokud nepotřebujete podporovat .NET 5,0 nebo spouštět funkce mimo proces, mů
 >[!NOTE]
 >Vývoj funkcí izolovaného procesu .NET v Azure Portal není aktuálně podporován. K vytvoření aplikace Function App v Azure, která podporuje spouštění aplikací .NET 5,0, je nutné použít buď Azure CLI, nebo publikování Visual Studio Code.   
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -105,7 +105,7 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
     ``` 
 
-    `func new` Vytvoří soubor kódu HttpExample.cs.
+    `func new` Vytvoří soubor kódu HttpExample. cs.
 ::: zone-end  
 
 ::: zone pivot="development-environment-vscode"  

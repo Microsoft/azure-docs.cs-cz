@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920448"
 ---
 # <a name="object-functions-for-arm-templates"></a>Funkce objektů pro šablony ARM
@@ -33,10 +33,10 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč, nebo řetězec ob
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| kontejner |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
-| itemToFind |Ano |řetězec nebo int |Hodnota, která se má najít |
+| kontejner |Yes |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu, která se má najít. |
+| itemToFind |Yes |řetězec nebo int |Hodnota, která se má najít |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -145,12 +145,12 @@ Vytvoří objekt z klíčů a hodnot. `createObject`Funkce není podporována n�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| key1 |Ne |řetězec |Název klíče |
-| Hodnota1 |Ne |int, Boolean, String, Object nebo Array |Hodnota klíče |
-| Další klíče |Ne |řetězec |Další názvy klíčů |
-| Další hodnoty |Ne |int, Boolean, String, Object nebo Array |Další hodnoty klíčů |
+| key1 |No |řetězec |Název klíče |
+| Hodnota1 |No |int, Boolean, String, Object nebo Array |Hodnota klíče |
+| Další klíče |No |řetězec |Další názvy klíčů |
+| Další hodnoty |No |int, Boolean, String, Object nebo Array |Další hodnoty klíčů |
 
 Funkce přijímá pouze sudý počet parametrů. Každý klíč musí mít stejnou hodnotu.
 
@@ -219,9 +219,9 @@ Určuje, zda je pole, objekt nebo řetězec prázdný.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ano |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
+| itemToTest |Yes |pole, objekt nebo řetězec |Hodnota, která zkontroluje, jestli je prázdná |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -300,11 +300,11 @@ Vrátí jedno pole nebo objekt se společnými prvky z parametrů.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo objekt |První hodnota, která má být použita pro hledání běžných prvků. |
-| arg2 |Ano |pole nebo objekt |Druhá hodnota, která má být použita pro vyhledání běžných prvků. |
-| Další argumenty |Ne |pole nebo objekt |Další hodnoty, které se mají použít pro hledání běžných prvků. |
+| arg1 |Yes |pole nebo objekt |První hodnota, která má být použita pro hledání běžných prvků. |
+| arg2 |Yes |pole nebo objekt |Druhá hodnota, která má být použita pro vyhledání běžných prvků. |
+| Další argumenty |No |pole nebo objekt |Další hodnoty, které se mají použít pro hledání běžných prvků. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -407,9 +407,9 @@ Převede platný řetězec JSON na datový typ JSON.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec |Hodnota, která má být převedena do formátu JSON. Řetězec musí být správně formátovaný řetězec JSON. |
+| arg1 |Yes |řetězec |Hodnota, která má být převedena do formátu JSON. Řetězec musí být správně formátovaný řetězec JSON. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -538,9 +538,9 @@ Vrátí počet prvků v poli, znaky v řetězci nebo vlastnosti na kořenové ú
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
+| arg1 |Yes |pole, řetězec nebo objekt |Pole, které se má použít pro získání počtu prvků, řetězec, který se má použít pro získání počtu znaků, nebo objekt, který se má použít pro získání počtu vlastností na úrovni root. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -690,11 +690,11 @@ Vrátí jedno pole nebo objekt se všemi prvky z parametrů. Duplicitní hodnoty
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole nebo objekt |První hodnota, která se má použít pro spojování prvků. |
-| arg2 |Ano |pole nebo objekt |Druhá hodnota, která se má použít pro spojování prvků. |
-| Další argumenty |Ne |pole nebo objekt |Další hodnoty, které se mají použít pro spojování prvků. |
+| arg1 |Yes |pole nebo objekt |První hodnota, která se má použít pro spojování prvků. |
+| arg2 |Yes |pole nebo objekt |Druhá hodnota, která se má použít pro spojování prvků. |
+| Další argumenty |No |pole nebo objekt |Další hodnoty, které se mají použít pro spojování prvků. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

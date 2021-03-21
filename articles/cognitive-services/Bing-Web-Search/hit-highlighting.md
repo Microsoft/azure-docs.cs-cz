@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: 32c3279cacddf10e77e8d245ba525ab766efd6fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351874"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Zvýraznění textu pomocí značek dekorace
@@ -56,7 +56,7 @@ Pokud žádost neurčila dekorace, `expression` pole by obsahovalo `log10(2)` .
 
 Pokud `textDecorations` je `true` , Bing může do zobrazovaných řetězců odpovědí zahrnout následující značky. Pokud neexistuje odpovídající značka HTML, buňka tabulky je prázdná.
 
-|Kódování Unicode|HTML|Popis
+|Kódování Unicode|HTML|Description
 |-|-|-
 |U + E000|\<b>|Označuje začátek termínu dotazu (zvýrazňování přístupů).
 |U + E001|\</b>|Označuje konec termínu dotazu.

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
 ms.openlocfilehash: 70cac6ef566ef52409cd9667708c2fc297e046f7
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656610"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Nastavení upozornění na události protokolu prostředků z VPN Gateway
@@ -20,7 +20,7 @@ Tento článek vám pomůže nastavit výstrahy na základě událostí protokol
 
 V Azure jsou k dispozici následující protokoly prostředků:
 
-|***Název** _ | _*_Popis_*_ |
+|***Název** _ | _ *_Popis_** |
 |--- | --- |
 |GatewayDiagnosticLog | Obsahuje protokoly prostředků pro události konfigurace brány, primární změny a události údržby. |
 |TunnelDiagnosticLog | Obsahuje události změny stavu tunelu. Události připojení a odpojení tunelu mají souhrnný důvod změny stavu, pokud je to možné. |
@@ -33,7 +33,7 @@ V Azure jsou k dispozici následující protokoly prostředků:
 Následující příklad kroků vytvoří výstrahu pro událost odpojení, která zahrnuje tunel VPN typu Site-to-site:
 
 
-1. V Azure Portal vyhledejte _ *Log Analytics** v části **všechny služby** a vyberte **Log Analytics pracovní prostory**.
+1. V Azure Portal vyhledejte **Log Analytics** v části **všechny služby** a vyberte **Log Analytics pracovní prostory**.
 
    ![Výběry pro přechodu na Log Analytics pracovní prostory](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Vytvořit")
 

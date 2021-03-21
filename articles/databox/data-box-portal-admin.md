@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/18/2020
 ms.author: alkohli
 ms.openlocfilehash: 46a18cb2b6e1682427d5674be28b240f35b120fe
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97678648"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí Azure Portal můžete spravovat Azure Data Box a Azure Data Box Heavy
@@ -206,7 +206,7 @@ Po změně stavu zařízení na portálu budete upozorněni prostřednictvím e-
 
 Zde jsou stavy pro pořadí importu.
 
-|Stav objednávky |Popis |
+|Stav objednávky |Description |
 |---------|---------|
 |Objednáno     | Došlo k úspěšnému zadání objednávky. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není k dispozici okamžitě, bude zpracováno, jakmile bude zařízení k dispozici. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud pořadí nelze splnit do 90 dnů, objednávka se zruší a vy budete upozorněni.         |
 |Zpracováno     | Proběhlo zpracování objednávky. Zařízení je připravené k odeslání v datovém centru podle objednávky.         |
@@ -225,7 +225,7 @@ Zde jsou stavy pro pořadí importu.
 
 Zde jsou stavy pro export objednávky.
 
-|Stav objednávky |Popis |
+|Stav objednávky |Description |
 |---------|---------|
 |Objednáno     | Objednávka exportu se úspěšně nastavila. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není dostupné okamžitě, bude objednávka zpracována, až bude zařízení dostupné. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka zrušena a budete upozorněni.         |
 |Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste zrušili objednávku (můžete zrušit pouze před zpracováním objednávky), nebo došlo k chybě a služba zrušila pořadí. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka také zrušena a budete upozorněni.     |
@@ -248,7 +248,7 @@ Zde jsou stavy pro export objednávky.
 
 Pokud používáte samoobslužné expedici, po dokončení kopírování a před přijetím zařízení se zobrazí následující stavy (místo těch, které jsou uvedené v předchozí tabulce):
 
-|Stav objednávky |Popis |
+|Stav objednávky |Description |
 |---------|---------|
 |Připraveno k vyzvednutí v datacentru Azure      |Zařízení je připravené k vyzvednutí v datacentru Azure.        |
 |Vyzvednuto    |Zařízení jste si vybrali.         |

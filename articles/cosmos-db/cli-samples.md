@@ -9,10 +9,10 @@ ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7c7baf4de56edd25537f93095bfa6ae0402214e2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93073175"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>Ukázky v Azure CLI pro rozhraní API pro Azure Cosmos DB Core (SQL)
@@ -28,7 +28,7 @@ Ukázky Azure CLI pro další rozhraní API najdete v ukázkách [CLI pro Cassan
 
 Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Oblasti přidání nebo převzetí služeb při selhání](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Přidání oblasti, změna priority převzetí služeb při selhání, aktivace ručního převzetí služeb při selhání|
 | [Klíče účtu a připojovací řetězce](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Vypíše klíče účtu, klíče jen pro čtení, znovu vygeneruje klíče a seznam připojovacích řetězců.|
@@ -39,7 +39,7 @@ Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
 ## <a name="core-sql-api-samples"></a>Core (SQL) – ukázky rozhraní API
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos, databáze a kontejneru](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kontejner pro rozhraní API jádra (SQL). |
 | [Vytvoření účtu Azure Cosmos, databáze a kontejneru pomocí automatického škálování](scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kontejner s funkcí automatického škálování pro rozhraní API jádra (SQL). |

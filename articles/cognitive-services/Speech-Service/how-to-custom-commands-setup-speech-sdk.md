@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026023"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integrace s klientskou aplikací pomocí sady Speech SDK
@@ -25,7 +25,7 @@ V tomto článku se naučíte, jak pomocí sady Speech SDK spuštěné v aplikac
 - Publikování vlastní aplikace příkazů a získání identifikátoru aplikace (ID aplikace)
 - Vytvoření klientské aplikace Univerzální platforma Windows (UWP) pomocí sady Speech SDK, která vám umožní komunikovat s vlastními aplikacemi příkazů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku je nutná vlastní aplikace příkazů. Pokud jste ještě nevytvořili aplikaci Custom Commands, můžete postupovat podle těchto rychlých startů:
 > [!div class = "checklist"]
@@ -406,7 +406,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 
 ## <a name="try-it-out"></a>Vyzkoušet
 
-1. V řádku nabídek vyberte sestavení sestavit **Build**  >  **řešení** a sestavte aplikaci. Kód by se měl zkompilovat bez chyb.
+1. V řádku nabídek vyberte sestavení sestavit   >  **řešení** a sestavte aplikaci. Kód by se měl zkompilovat bez chyb.
 
 1. Zvolte **ladění**  >  **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci. Zobrazí se okno **HelloWorld** .
 

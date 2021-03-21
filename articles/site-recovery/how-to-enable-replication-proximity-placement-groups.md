@@ -6,10 +6,10 @@ manager: gaggupta
 ms.topic: how-to
 ms.date: 02/11/2021
 ms.openlocfilehash: 681b635099d450f061e0bcdb5b2c5d60d56c20a3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100380720"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikace virtuálních počítačů Azure spuštěných ve skupinách umístění bezkontaktní komunikace do jiné oblasti
@@ -81,7 +81,7 @@ Po povolení replikace pro virtuální počítač se dá nastavit skupina umíst
 
 ## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače ve skupinách umístění pro Proximity přes PowerShell
 
-### <a name="prerequisites"></a>Požadavky 
+### <a name="prerequisites"></a>Předpoklady 
 
 1. Ujistěte se, že máte Azure PowerShell AZ Module. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 2. Minimální Azure PowerShell AZ verze by měl být 4.1.0. Chcete-li zjistit aktuální verzi, použijte následující příkaz –

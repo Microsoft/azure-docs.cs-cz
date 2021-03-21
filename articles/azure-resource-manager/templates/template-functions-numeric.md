@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359706"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>Číselné funkce pro šablony ARM
@@ -35,10 +35,10 @@ Vrátí součet dvou poskytnutých celých čísel. `add`Funkce není v bicep po
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-|operand1 |Ano |int |První číslo, které se má přidat |
-|Operand2 |Ano |int |Druhé číslo, které se má přidat |
+|operand1 |Yes |int |První číslo, které se má přidat |
+|Operand2 |Yes |int |Druhé číslo, které se má přidat |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -106,10 +106,10 @@ Vrátí index iterační smyčky.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| opakovat | Ne | řetězec | Název smyčky pro získání iterace. |
-| posun |Ne |int |Číslo, které se má přidat do hodnoty iterace založené na nule |
+| opakovat | No | řetězec | Název smyčky pro získání iterace. |
+| posun |No |int |Číslo, které se má přidat do hodnoty iterace založené na nule |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -180,10 +180,10 @@ Vrátí celočíselnou část dvou poskytnutých celých čísel. `div`Funkce ne
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |int |Číslo, které se má rozdělit. |
-| Operand2 |Ano |int |Číslo, které se používá k rozdělení. Nemůže být 0. |
+| operand1 |Yes |int |Číslo, které se má rozdělit. |
+| Operand2 |Yes |int |Číslo, které se používá k rozdělení. Nemůže být 0. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -251,9 +251,9 @@ Převede hodnotu na číslo s plovoucí desetinnou čárkou. Tuto funkci použij
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo int |Hodnota, která má být převedena na číslo s plovoucí desetinnou čárkou. |
+| arg1 |Yes |řetězec nebo int |Hodnota, která má být převedena na číslo s plovoucí desetinnou čárkou. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -294,9 +294,9 @@ Převede zadanou hodnotu na celé číslo.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ano |řetězec nebo int |Hodnota, která má být převedena na celé číslo. |
+| valueToConvert |Yes |řetězec nebo int |Hodnota, která má být převedena na celé číslo. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -353,9 +353,9 @@ Vrátí maximální hodnotu z pole celých čísel nebo seznam celých čísel o
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá maximální hodnotu |
+| arg1 |Yes |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá maximální hodnotu |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -423,9 +423,9 @@ Vrátí minimální hodnotu z pole celých čísel nebo seznam celých čísel o
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá minimální hodnotu. |
+| arg1 |Yes |pole celých čísel nebo seznam celých čísel oddělených čárkami |Kolekce, která získá minimální hodnotu. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -493,10 +493,10 @@ Vrátí zbytek celočíselného dělení pomocí dvou poskytnutých celých čí
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |int |Číslo, které se má rozdělit. |
-| Operand2 |Ano |int |Číslo, které se používá k rozdělení, nemůže být 0. |
+| operand1 |Yes |int |Číslo, které se má rozdělit. |
+| Operand2 |Yes |int |Číslo, které se používá k rozdělení, nemůže být 0. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -564,10 +564,10 @@ Vrací násobení dvou poskytnutých celých čísel. `mul`Funkce není v bicep 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |int |První číslo, které se má vynásobit |
-| Operand2 |Ano |int |Druhé číslo, které se má vynásobit |
+| operand1 |Yes |int |První číslo, které se má vynásobit |
+| Operand2 |Yes |int |Druhé číslo, které se má vynásobit |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -635,10 +635,10 @@ Vrátí odčítání dvou poskytnutých celých čísel. `sub`Funkce není v bic
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Povinné | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ano |int |Číslo, které je odečteno od. |
-| Operand2 |Ano |int |Číslo, které se odečte. |
+| operand1 |Yes |int |Číslo, které je odečteno od. |
+| Operand2 |Yes |int |Číslo, které se odečte. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

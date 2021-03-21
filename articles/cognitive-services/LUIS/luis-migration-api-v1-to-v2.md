@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
 ms.openlocfilehash: 867ae2cc7567077786bb0840cd11c47b786be423
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95018748"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Průvodce migrací rozhraní API V1 na v2 pro aplikace LUIS
@@ -136,8 +136,8 @@ LUIS navrhuje projevy z existujícího [koncového bodu projevy](luis-how-to-rev
 
 | verze | route |
 |--|--|
-|1|Ukázka **/Luis/v1.0/** auto/Apps/{appId}/Entities/{EntityId}/**sample**|
-|1|Ukázka **/Luis/v1.0/** auto/Apps/{appId}/intents/{intentId}/**sample**|
+|1|Ukázka **/Luis/v1.0/** auto/Apps/{appId}/Entities/{EntityId}/|
+|1|Ukázka **/Luis/v1.0/** auto/Apps/{appId}/intents/{intentId}/|
 |2|/Luis/**API**/v2.0/Apps/{appId}/**verze**/{versionId}/Entities/{EntityId}/–**Návrh**|
 |2|/Luis/**API**/v2.0/Apps/{appId}/**verze**/{versionId}/intents/{intentId}/–**Návrh**|
 

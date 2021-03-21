@@ -9,10 +9,10 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: a6bc500516de7e554c38a335ea57519a39c8f602
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95487499"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Vytvoření efektivního prostředí pro kotvu pomocí prostorových kotev Azure
@@ -48,11 +48,11 @@ Systémy vizuálního sledování používané na hybridních a rozšířených 
 
 - *Vytvořte* kotvy v umístěních, která mají stabilní vizuální funkce (tj. funkce, které se často nemění).
 
-- *Don't* Nevytvářejte kotvy na velkých prázdných površích, které nemají žádné rozlišující charakteristiky.
+-  Nevytvářejte kotvy na velkých prázdných površích, které nemají žádné rozlišující charakteristiky.
 
-- *Don't* Nevytvářejte kotvy na vysoce odrážejících materiálech.
+-  Nevytvářejte kotvy na vysoce odrážejících materiálech.
 
-- *Don't* Nevytvářejte kotvy na površích, kde se vzor opakuje, například koberc nebo Wallpaper.
+-  Nevytvářejte kotvy na površích, kde se vzor opakuje, například koberc nebo Wallpaper.
 
 ![Příklady dobré prostředí pro kotvy a chybné prostředí pro kotvy](./media/stable-visual.png)
 
@@ -76,7 +76,7 @@ Podobně v prostředích, kde se vizuální funkce mění, protože většina ob
 
 V mnoha případech je kotva vstupním bodem pro prostředí vaší aplikace. Budete chtít rychle a spolehlivě projít tento krok, aby mohli uživatelé zadat své prostředí. Doba útraty, jak budou uživatelé najít vaše kotvy, je důležitým krokem pro návrh. Je vhodné si představit, jak najít kotvy v rámci dvou hlavních scénářů: *cílů* a *místností*.
 
-### <a name="targets"></a>Cíle
+### <a name="targets"></a>Targets
 
 V cílovém scénáři je umístění kotvy dobře známé. Například v aplikaci pro malování s fiktivní hybridní realitou si jeden uživatel umístí virtuální plátno na zeď. Dává ostatním uživatelům v místnosti pokyn, aby svá zařízení odkazovali na stejné místo na zdi, aby nalezla kotvu a zahájila prostředí.
 

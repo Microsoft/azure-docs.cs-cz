@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97107256"
 ---
 # <a name="storage-configuration"></a>Konfigurace úložiště
@@ -175,14 +175,14 @@ Při vytváření instance pomocí `azdata arc sql mi create` nebo jsou k `azdat
 
 Následující tabulka uvádí cesty uvnitř kontejneru spravované instance Azure SQL, který je namapovaný na trvalý svazek pro data a protokoly:
 
-|Název parametru, krátký název|Cesta uvnitř kontejneru MSSQL-MIAA|Popis|
+|Název parametru, krátký název|Cesta uvnitř kontejneru MSSQL-MIAA|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|Obsahuje adresáře pro instalaci MSSQL a další systémové procesy. Adresář MSSQL obsahuje výchozí data (včetně transakčních protokolů), protokol chyb & záložní adresáře.|
 |`--storage-class-logs`, `-scl`|/var/log|Obsahuje adresáře, které ukládají výstup konzoly (stderr, stdout), další informace o protokolování procesů uvnitř kontejneru.|
 
 Následující tabulka uvádí cesty uvnitř kontejneru instance PostgreSQL, který je namapovaný na trvalý svazek pro data a protokoly:
 
-|Název parametru, krátký název|Cesta uvnitř kontejneru Postgres|Popis|
+|Název parametru, krátký název|Cesta uvnitř kontejneru Postgres|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt/postgresql|Obsahuje data a adresáře protokolu pro instalaci Postgres.|
 |`--storage-class-logs`, `-scl`|/var/log|Obsahuje adresáře, které ukládají výstup konzoly (stderr, stdout), další informace o protokolování procesů uvnitř kontejneru.|
@@ -210,7 +210,7 @@ Každé v případě, který obsahuje stavová data, se v této verzi používá
 |Typ prostředku|Počet stavových lusků|Požadovaný počet trvalých svazků|
 |---|---|---|
 |Kontroler dat|4 ( `control` , `controldb` , `logsdb` , `metricsdb` )|4 * 2 = 8|
-|Azure SQL Managed Instance|1|2|
+|Spravovaná instance Azure SQL|1|2|
 |Instance Azure Database for PostgreSQL|1| 2|
 |Škálování Azure PostgreSQL|1 + W (W = počet pracovních procesů)|2 * (1 + W)|
 
@@ -219,10 +219,10 @@ Následující tabulka zobrazuje celkový počet trvalých svazků potřebných 
 |Typ prostředku|Počet instancí|Požadovaný počet trvalých svazků|
 |---|---|---|
 |Kontroler dat|1|4 * 2 = 8|
-|Azure SQL Managed Instance|5|5 * 2 = 10|
+|Spravovaná instance Azure SQL|5|5 * 2 = 10|
 |Instance Azure Database for PostgreSQL|5| 5 * 2 = 10|
 |Škálování Azure PostgreSQL|2 (počet pracovních procesů = 4 na instanci)|2 * 2 * (1 + 4) = 20|
-|***Celkový počet trvalých svazků** _||8 + 10 + 10 + 20 = 48|
+|***Celkový počet trvalých svazků***||8 + 10 + 10 + 20 = 48|
 
 Tento výpočet se dá použít k naplánování úložiště pro cluster Kubernetes na základě Správce úložiště nebo prostředí. Například pokud se místní zřídí úložiště používá pro cluster Kubernetes s pěti uzly (5), pak pro ukázkové nasazení nad každým uzlem je potřeba aspoň úložiště pro 10 trvalých svazků. Podobně při zřizování clusteru Azure Kubernetes Service (AKS) s pěti (5) uzly vyzvednutím vhodné velikosti virtuálního počítače pro fond uzlů, aby bylo možné připojit 10 datových disků, je důležité. Další podrobnosti o tom, jak nastavit velikost uzlů pro úložiště pro uzly AKS, najdete [tady](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs).
 
@@ -238,6 +238,6 @@ Pro veřejné cloudové spravované služby Kubernetes můžete provádět násl
 
 |Veřejné cloudové služby|Doporučení|
 |---|---|
-|_ *Služba Azure Kubernetes (AKS)**|Služba Azure Kubernetes (AKS) má dva typy úložiště – Azure Files a Azure Managed Disks. Každý typ úložiště má dvě úrovně cen a výkonu: Standard (HDD) a Premium (SSD). Proto jsou čtyři třídy úložiště poskytované v AKS `azurefile` (úroveň Azure Files úrovně Standard), `azurefile-premium` (vrstva Azure Files Premium), (disky Azure na úrovni Premium) `default` a `managed-premium` (vrstva Azure disks úrovně Premium). Výchozí třída úložiště je `default` (standardní vrstva Azure Disks). Existují výrazné **[cenové rozdíly](https://azure.microsoft.com/en-us/pricing/details/storage/)** mezi typy a úrovněmi, které by měly být přihlédnuto k vašemu rozhodnutí. Pro produkční úlohy s vysokým výkonem doporučujeme použít `managed-premium` pro všechny třídy úložiště. Pro úlohy pro vývoj a testování, testování konceptu atd., kde náklady jsou zváženy, `azurefile` je možnost nejlevnější. Všechny čtyři možnosti se dají použít pro situace, kdy je potřeba vzdálené sdílené úložiště, protože to jsou všechna zařízení úložiště připojená k síti v Azure. Přečtěte si další informace o [AKS Storage](../../aks/concepts-storage.md).|
+|**Azure Kubernetes Service (AKS)**|Služba Azure Kubernetes (AKS) má dva typy úložiště – Azure Files a Azure Managed Disks. Každý typ úložiště má dvě úrovně cen a výkonu: Standard (HDD) a Premium (SSD). Proto jsou čtyři třídy úložiště poskytované v AKS `azurefile` (úroveň Azure Files úrovně Standard), `azurefile-premium` (vrstva Azure Files Premium), (disky Azure na úrovni Premium) `default` a `managed-premium` (vrstva Azure disks úrovně Premium). Výchozí třída úložiště je `default` (standardní vrstva Azure Disks). Existují výrazné **[cenové rozdíly](https://azure.microsoft.com/en-us/pricing/details/storage/)** mezi typy a úrovněmi, které by měly být přihlédnuto k vašemu rozhodnutí. Pro produkční úlohy s vysokým výkonem doporučujeme použít `managed-premium` pro všechny třídy úložiště. Pro úlohy pro vývoj a testování, testování konceptu atd., kde náklady jsou zváženy, `azurefile` je možnost nejlevnější. Všechny čtyři možnosti se dají použít pro situace, kdy je potřeba vzdálené sdílené úložiště, protože to jsou všechna zařízení úložiště připojená k síti v Azure. Přečtěte si další informace o [AKS Storage](../../aks/concepts-storage.md).|
 |**AWS Elastic Kubernetes Service (EKS)**| Elastická Kubernetes služba Amazon má jednu primární třídu úložiště založenou na [ovladači úložiště EBS CSI](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html). Tento postup se doporučuje pro produkční úlohy. K dispozici je nový [ovladač úložiště systému souborů EFS CSI](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) , který je možné přidat do clusteru EKS, ale v tuto chvíli je ve fázi beta verze a může se změnit. I když AWS říká, že tento ovladač úložiště je pro produkční prostředí podporovaný, nedoporučujeme ho používat, protože je stále ve verzi beta a může se změnit. Třída úložiště EBS je výchozí a je volána `gp2` . Přečtěte si další informace o [EKS Storage](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html).|
 |**Google Kubernetes Engine (GKE)**|Modul Google Kubernetes Engine (GKE) má jen jednu třídu úložiště nazvanou `standard` , která se používá pro [GCE trvalé disky](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk). Pouze jediným z nich je také výchozí hodnota. I když je pro GKE [místní a statický svazek](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) , který můžete použít s přímým připojením SSD, nedoporučujeme ho používat, protože ho nespravuje ani nepodporuje Google. Přečtěte si další informace o [GKE Storage](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes).
