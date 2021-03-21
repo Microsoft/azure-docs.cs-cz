@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: vytvoření vyhrazeného modulu HARDWAROVÉho zabezpečení Azure pomocí Azure PowerShell'
-description: Vytvoření vyhrazeného modulu HSM Azure pomocí Azure PowerShell
+description: Vytvoření služby Azure Dedicated HSM s využitím Azure PowerShellu
 services: dedicated-hsm
 author: msmbaldwin
 ms.author: mbaldwin
@@ -10,10 +10,10 @@ ms.devlang: azurepowershell
 ms.date: 11/13/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: eebfb257d0324cf2771bd3af979ddbebb8429fb7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94905619"
 ---
 # <a name="quickstart-create-an-azure-dedicated-hsm-with-azure-powershell"></a>Rychlý Start: vytvoření vyhrazeného modulu HARDWAROVÉho zabezpečení Azure pomocí Azure PowerShell
@@ -27,7 +27,7 @@ Tento článek popisuje, jak můžete vytvořit vyhrazený modul HARDWAROVÉho z
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > I když je modul PowerShell **AZ. DedicatedHsm** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Až bude tento modul PowerShellu všeobecně dostupný, bude součástí budoucna ve výchozím nastavení AZ PowerShell Module releases a Available v rámci Azure Cloud Shell.
+  > I když je modul PowerShell **AZ. DedicatedHsm** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Jakmile bude tento powershellový modul obecně dostupný, stane se součástí budoucích verzí modulu Az PowerShellu a bude ve výchozím nastavení dostupný v rámci Azure Cloud Shellu.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.DedicatedHsm

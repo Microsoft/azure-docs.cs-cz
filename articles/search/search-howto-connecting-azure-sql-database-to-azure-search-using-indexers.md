@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358622"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Připojení a indexování obsahu Azure SQL pomocí indexeru Azure Kognitivní hledání
@@ -348,7 +348,7 @@ Tato nastavení se používají v `parameters.configuration` objektu v definici 
     }
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Otázka: můžu použít službu Azure SQL indexer s databázemi SQL běžícími na virtuálních počítačích s IaaS v Azure?**
 
@@ -360,7 +360,7 @@ Ne přímo. Nedoporučujeme ani podporovat přímé připojení, protože by to 
 
 **Otázka: můžu použít službu Azure SQL indexer s jinými databázemi než SQL Server spuštěnou v IaaS v Azure?**
 
-Ne. Tento scénář nepodporujeme, protože nebyl testován indexer na jiné databáze než SQL Server.  
+No. Tento scénář nepodporujeme, protože nebyl testován indexer na jiné databáze než SQL Server.  
 
 **Otázka: je možné vytvořit více indexerů, které jsou spuštěny podle plánu?**
 

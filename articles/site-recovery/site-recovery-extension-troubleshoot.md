@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009700"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Řešení potíží s rozšířením virtuálního počítače Azure
@@ -45,7 +45,7 @@ Kód chyby: "151099"
 
 K této chybě může dojít, pokud Agent hosta Azure ve virtuálním počítači není ve stavu připraveno.
 
-Stav agenta hosta Azure můžete zjistit v [Azure Portal](https://portal.azure.com/). Přejít na virtuální počítač, který se pokoušíte chránit, a zkontroluje stav ve vlastnostech nastavení **virtuálního počítače**  >  **Settings**  >  **Properties**  >  **Stav agenta**. Ve většině případů je stav agenta připravený po restartování virtuálního počítače. Pokud se ale nemůžete restartovat nebo máte problém, proveďte následující kroky pro řešení potíží:
+Stav agenta hosta Azure můžete zjistit v [Azure Portal](https://portal.azure.com/). Přejít na virtuální počítač, který se pokoušíte chránit, a zkontroluje stav ve vlastnostech nastavení **virtuálního počítače**  >    >    >  **Stav agenta**. Ve většině případů je stav agenta připravený po restartování virtuálního počítače. Pokud se ale nemůžete restartovat nebo máte problém, proveďte následující kroky pro řešení potíží:
 
 - [Agent je nainstalovaný na virtuálním počítači, ale nereaguje (pro virtuální počítače s Windows).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 - [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače se systémem Linux).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)

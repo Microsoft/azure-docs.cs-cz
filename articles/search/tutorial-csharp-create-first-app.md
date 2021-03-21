@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 02/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695120"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Kurz: Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK
@@ -59,7 +59,7 @@ Hotovou verzi kódu najdete v následujícím projektu:
 
 Tento kurz byl aktualizován tak, aby používal balíček Azure.Search.Documents (verze 11). Starší verzi sady .NET SDK najdete v tématu [Ukázka kódu Microsoft. Azure. Search (verze 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Vytvoří](search-create-service-portal.md) nebo [najde existující vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
 
@@ -130,7 +130,7 @@ Sada tříd **hotelů**, **Address** a **Room** je známá jako [*komplexní typ
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na **modely**  >  **Přidat**  >  **novou položku**.
 
-1. Vyberte **Třída** a pojmenujte ji Hotel.cs. Nahraďte veškerý obsah Hotel.cs následujícím kódem. Všimněte si, že **adresa** a členové **místnosti** třídy, tato pole jsou samotné třídy, takže budete potřebovat také modely pro ně.
+1. Vyberte **třídu** a pojmenujte položku hotelu. cs. Celý obsah hotelu. cs nahraďte následujícím kódem. Všimněte si, že **adresa** a členové **místnosti** třídy, tato pole jsou samotné třídy, takže budete potřebovat také modely pro ně.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -181,7 +181,7 @@ Sada tříd **hotelů**, **Address** a **Room** je známá jako [*komplexní typ
     }
     ```
 
-1. Opakujte stejný postup vytvoření modelu pro třídu **adres** a pojmenujte soubor Address.cs. Nahraďte obsah následujícím.
+1. Opakujte stejný postup vytvoření modelu pro třídu **adres** a pojmenujte soubor Address. cs. Nahraďte obsah následujícím.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -208,7 +208,7 @@ Sada tříd **hotelů**, **Address** a **Room** je známá jako [*komplexní typ
     }
     ```
 
-1. A znovu použijte stejný postup k vytvoření třídy **Room** a pojmenujte soubor Room.cs.
+1. A znovu použijte stejný postup k vytvoření třídy **Room** a pojmenujte soubor Room. cs.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -418,7 +418,7 @@ Tím se dokončí naše zobrazení. V tomto okamžiku jsou oba modely i zobrazen
 
 V tomto kroku změňte obsah **domovského kontroleru**.
 
-1. Otevřete soubor HomeController.cs a nahraďte příkazy **using** následujícím příkazem.
+1. Otevřete soubor HomeController. cs a nahraďte příkazy **using** následujícím příkazem.
 
     ```csharp
     using Azure;

@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019412"
 ---
 # <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>Posílání zabezpečených nabízených oznámení z Azure Notification Hubs
@@ -56,13 +56,13 @@ V tomto kurzu se dozvíte, jak bezpečně odeslat nabízené oznámení. Kurz se
 
 ## <a name="modify-the-windows-phone-project"></a>Úprava Windows Phoneho projektu
 
-1. V projektu **NotifyUserWindowsPhone** přidejte následující kód pro App.XAML.cs k registraci úlohy Push na pozadí. Přidejte následující řádek kódu na konec metody `OnLaunched()`:
+1. V projektu **NotifyUserWindowsPhone** přidejte následující kód do souboru App. XAML. cs a zaregistrujte úlohu nabízených oznámení na pozadí. Přidejte následující řádek kódu na konec metody `OnLaunched()`:
 
     ```csharp
     RegisterBackgroundTask();
     ```
 
-2. Stále v App.xaml.cs přidejte následující kód hned za `OnLaunched()` metodu:
+2. Pořád v souboru App. XAML. cs přidejte následující kód hned za `OnLaunched()` metodu:
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -80,7 +80,7 @@ V tomto kurzu se dozvíte, jak bezpečně odeslat nabízené oznámení. Kurz se
     }
     ```
 
-3. Do `using` horní části souboru App.XAML.cs přidejte následující příkazy:
+3. Do `using` horní části souboru App. XAML. cs přidejte následující příkazy:
 
     ```csharp
     using Windows.Networking.PushNotifications;

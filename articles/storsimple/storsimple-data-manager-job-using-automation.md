@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 3d0103857b6f759560129dbe8e693ec6c0d7291e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961205"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Aktivace úlohy s využitím služby Azure Automation
@@ -22,7 +22,7 @@ Tento článek vysvětluje, jak můžete pomocí funkce transformace dat v rámc
  
 Tento článek podrobně popisuje, jak vytvořit sadu Azure Automation Runbook a pak ji použít k zahájení úlohy transformace dat. Další informace o tom, jak iniciovat transformaci dat pomocí sady .NET SDK, najdete v tématu [použití sady .NET SDK pro aktivaci úloh transformace dat](storsimple-data-manager-dotnet-jobs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 

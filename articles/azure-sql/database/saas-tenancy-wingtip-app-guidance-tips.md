@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: aa9215fa001fb117000eb6a68867ddd46fac9b92
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780321"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s ukázkami lístků Wingtip SaaS Apps
@@ -25,17 +25,17 @@ Tento článek obsahuje obecné pokyny pro spouštění ukázkových lístků Wi
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Stažení a odblokování skriptů SaaS lístků Wingtip
 
-Obsah spustitelného souboru (skripty, knihovny DLL) může systém Windows zablokovat, pokud jsou soubory zip staženy z externího zdroje a extrahovány. Při extrakci skriptů ze souboru ZIP **postupujte podle následujících kroků, abyste před extrahováním odblokoval soubor. zip** . Tím se zajistí, že se skripty můžou spouštět.
+Obsah spustitelného souboru (skripty, knihovny DLL) může systém Windows zablokovat, pokud jsou soubory zip staženy z externího zdroje a extrahovány. Při extrakci skriptů ze souboru ZIP **postupujte podle následujících kroků, abyste před extrahováním odblokoval soubor. zip**. Tím se zajistí, že se skripty můžou spouštět.
 
 1. Pro model architektury databáze, který chcete prozkoumat, přejděte na úložiště GitHub lístky Wingtip SaaSs.
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
-2. Klikněte na **klonovat nebo stáhnout** .
+2. Klikněte na **klonovat nebo stáhnout**.
 3. Klikněte na **Stáhnout ZIP** a uložte soubor.
-4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti** . Název souboru zip bude odpovídat názvu úložiště. dodatečné. _WingtipTicketsSaaS-DbPerTenant-master.zip_ )
-5. Na kartě **Obecné** vyberte **odblokovat** .
-6. Klikněte na **OK** .
+4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název souboru zip bude odpovídat názvu úložiště. dodatečné. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
+5. Na kartě **Obecné** vyberte **odblokovat**.
+6. Klikněte na **OK**.
 7. Extrahujte soubory.
 
 Skripty jsou umístěny v *.. \\ Složka výukových modulů* .
@@ -57,7 +57,7 @@ Nastavení těchto hodnot jednoduše zabráníte v aktualizaci těchto hodnot sp
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>Spouštění skriptů stisknutím klávesy F5
 
-Několik skriptů používá *$PSScriptRoot* k procházení složek a *$PSScriptRoot* se vyhodnocuje jenom v případě, že se skripty spouštějí stisknutím klávesy **F5** .  Zvýrazňování a spuštění výběru ( **F8** ) může mít za následek chyby, takže při spouštění skriptů stiskněte klávesu **F5** .
+Několik skriptů používá *$PSScriptRoot* k procházení složek a *$PSScriptRoot* se vyhodnocuje jenom v případě, že se skripty spouštějí stisknutím klávesy **F5**.  Zvýrazňování a spuštění výběru (**F8**) může mít za následek chyby, takže při spouštění skriptů stiskněte klávesu **F5** .
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>Procházení skriptů k vyzkoušení implementace
 
@@ -67,10 +67,10 @@ Tipy pro zkoumání a krokování prostřednictvím skriptů PowerShellu:
 
 - Otevřete **demo-** skripty v prostředí PowerShell ISE.
 - Spustit nebo pokračovat s **F5** (použití **klávesy F8** není doporučeno, protože při spuštění výběrů skriptu není vyhodnocena *$PSScriptRoot* ).
-- Pokud chcete umístit zarážky, klikněte na řádek nebo ho vyberte a stiskněte klávesu **F9** .
-- Funkci nebo volání skriptu můžete vynechat stisknutím klávesy **F10** .
-- Na funkci nebo volání skriptu můžete přejít stisknutím klávesy **F11** .
-- Aktuální funkci nebo vlání skriptu můžete ukončit stisknutím kombinace **Shift + F11** .
+- Pokud chcete umístit zarážky, klikněte na řádek nebo ho vyberte a stiskněte klávesu **F9**.
+- Funkci nebo volání skriptu můžete vynechat stisknutím klávesy **F10**.
+- Na funkci nebo volání skriptu můžete přejít stisknutím klávesy **F11**.
+- Aktuální funkci nebo vlání skriptu můžete ukončit stisknutím kombinace **Shift + F11**.
 
 
 ## <a name="explore-database-schema-and-execute-sql-queries-using-ssms"></a>Prozkoumání databázového schématu a spouštění dotazů SQL pomocí SSMS
@@ -87,14 +87,14 @@ Aby bylo zajištěno úspěšné ukázkové připojení, všechny servery mají 
 
 
 1. Otevřete *SSMS* a připojte se k tenantovi. Název serveru závisí na vzoru architektury databáze, který jste vybrali (podrobnosti najdete níže):
-    - **Samostatná aplikace:** servery jednotlivých tenantů (např. *contosoconcerthall – &lt; User &gt; . Database.Windows.NET* )
+    - **Samostatná aplikace:** servery jednotlivých tenantů (např. *contosoconcerthall – &lt; User &gt; . Database.Windows.NET*)
     - **Databáze na tenanta:** *tenants1-DPT- &lt; User &gt; . Database.Windows.NET*
     - **Víceklientské databáze:** *tenants1-MT- &lt; User &gt; . Database.Windows.NET*
-2. Klikněte na **připojit**  >  **databázový stroj...** :
+2. Klikněte na **připojit**  >  **databázový stroj...**:
 
    ![katalogový server](./media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Ukázková pověření: login = *Developer* , Password = *P \@ ssword1*
+3. Ukázková pověření: login = *Developer*, Password = *P \@ ssword1*
 
     Následující obrázek ukazuje přihlášení k *databázi pro každý model klienta* .
     ![vázán](./media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

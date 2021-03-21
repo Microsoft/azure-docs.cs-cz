@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b939f10d2c3bcf3aeba7422809a1038b2a75f123
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Kurz: Azure Active Directory integrace se softwarem rally
@@ -30,7 +30,7 @@ Integrace softwaru rally s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se softwarem rally potřebujete následující položky:
 
@@ -61,13 +61,13 @@ Pokud chcete nakonfigurovat integraci rally softwaru do služby Azure AD, musít
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Rally Software** , vyberte **Rally Software** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Rally Software**, vyberte **Rally Software** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Rally software v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s Rally softwarem na základě testovacího uživatele s názvem **Britta Simon** .
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s Rally softwarem na základě testovacího uživatele s názvem **Britta Simon**.
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v softwaru rally.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí rally softwaru, musíte dokončit tyto stavební bloky:
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí rally softwaru, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **softwarových aplikací rally** vyberte **jednotné přihlašování** .
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **softwarových aplikací rally** vyberte **jednotné přihlašování**.
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -126,27 +126,27 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí rally so
 
 1. Přihlaste se ke svému tenantovi **rally softwaru** .
 
-2. Na panelu nástrojů v horní části klikněte na **Nastavení** a pak vyberte **předplatné** .
+2. Na panelu nástrojů v horní části klikněte na **Nastavení** a pak vyberte **předplatné**.
    
     ![Předplatné](./media/rally-software-tutorial/ic769531.png "Předplatné")
 
 3. Klikněte na tlačítko **Akce** . V pravém horním rohu panelu nástrojů vyberte **Upravit odběr** .
 
-4. Na stránce **odběr** proveďte následující kroky a potom klikněte na **Uložit & zavřít** :
+4. Na stránce **odběr** proveďte následující kroky a potom klikněte na **Uložit & zavřít**:
    
-    ![Authentication](./media/rally-software-tutorial/ic769542.png "Ověřování")
+    ![Authentication](./media/rally-software-tutorial/ic769542.png "Authentication")
    
     a. V rozevíracím seznamu ověřování vyberte **ověřování rally nebo jednotné přihlašování** .
 
-    b. Do textového pole **Adresa URL poskytovatele identity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal. 
+    b. Do textového pole **Adresa URL poskytovatele identity** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal. 
 
-    c. Do textového pole pro **odhlášení jednotného přihlašování** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole pro **odhlášení jednotného přihlašování** vložte hodnotu **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -158,27 +158,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon** .
+    a. Do pole **název** zadejte **BrittaSimon**.
   
     b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit** .
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k rally softwaru.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** , vyberte možnost **všechny aplikace** a pak vyberte **Rally Software** .
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Rally Software**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Rally Software** .
+2. V seznamu aplikace vyberte **Rally Software**.
 
     ![Odkaz na software rally v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -200,23 +200,23 @@ Aby se uživatelé Azure AD mohli přihlásit, musí se zřídit pro rally softw
 
 1. Přihlaste se ke svému tenantovi rally softwaru.
 
-2. Přejděte na **nastavení \> Uživatelé** a potom klikněte na **+ Přidat nový** .
+2. Přejděte na **nastavení \> Uživatelé** a potom klikněte na **+ Přidat nový**.
    
     ![Uživatelé](./media/rally-software-tutorial/ic781039.png "Uživatelé")
 
-3. Zadejte název do textového pole nové uživatel a pak klikněte na **Přidat s podrobnostmi** .
+3. Zadejte název do textového pole nové uživatel a pak klikněte na **Přidat s podrobnostmi**.
 
 4. V části **vytvořit uživatele** proveďte následující kroky:
    
-    ![Vytvořit uživatele](./media/rally-software-tutorial/ic781040.png "Vytvořit uživatele")
+    ![Vytvoření uživatele](./media/rally-software-tutorial/ic781040.png "Vytvořit uživatele")
 
-    a. Do textového pole **uživatelské jméno** zadejte jméno uživatele, jako je **Brittsimon** .
+    a. Do textového pole **uživatelské jméno** zadejte jméno uživatele, jako je **Brittsimon**.
    
     b. Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je brittasimon@contoso.com .
 
-    c. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta** .
+    c. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
 
-    d. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon** .
+    d. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
     e. Klikněte na **Save & Close** (Uložit a zavřít).
 
@@ -229,7 +229,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici rally software na přístupovém panelu, měli byste se automaticky přihlásit k softwaru rally, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

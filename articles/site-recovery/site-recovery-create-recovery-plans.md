@@ -4,10 +4,10 @@ description: Naučte se vytvářet a přizpůsobovat plány obnovení pro zotave
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009717"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Vytvoření a přizpůsobení plánů obnovení
@@ -20,7 +20,7 @@ Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení pro přev
 2. V části **vytvořit plán obnovení** zadejte název plánu.
 3. Zvolte zdroj a cíl na základě počítačů v plánu a vyberte **Správce prostředků** pro model nasazení. Zdrojové umístění musí mít počítače, u kterých je povolené převzetí služeb při selhání a obnovení. 
 
-    **Převzetí služeb při selhání** | **Zdroj** | **Cílové** 
+    **Převzetí služeb při selhání** | **Zdroj** | **Cíl** 
    --- | --- | ---
    Azure do Azure | Výběr oblasti Azure | Výběr oblasti Azure
    Z VMware do Azure | Vyberte konfigurační server. | Vybrat Azure
@@ -53,7 +53,7 @@ Vytvoříte další skupiny a přidáte počítače do různých skupin, abyste 
 
 Plán obnovení můžete přizpůsobit přidáním skriptu nebo ruční akce. Poznámky:
 
-- Pokud provádíte replikaci do Azure, můžete do plánu obnovení integrovat Runbooky Azure Automation. [Přečtěte si další informace](site-recovery-runbook-automation.md).
+- Pokud provádíte replikaci do Azure, můžete do plánu obnovení integrovat Runbooky Azure Automation. [Další informace](site-recovery-runbook-automation.md).
 - Pokud provádíte replikaci virtuálních počítačů Hyper-V, které spravuje System Center VMM, můžete vytvořit skript na místním serveru VMM a zahrnout ho do plánu obnovení.
 - Když přidáte skript, přidá novou sadu akcí pro skupinu. Například sada předběžných kroků pro skupinu 1 se vytvoří se *skupinou název 1: předběžné kroky*. Všechny předběžné kroky jsou uvedeny v této sadě. Skript můžete do primární lokality přidat jenom v případě, že máte nasazený server VMM.
 - Pokud přidáte ruční akci, při spuštění plánu obnovení se zastaví v okamžiku, kdy jste vložili ruční akci. Zobrazí se dialogové okno s výzvou, abyste určili, že ruční akce byla dokončena.
@@ -63,9 +63,9 @@ Plán obnovení můžete přizpůsobit přidáním skriptu nebo ruční akce. Po
     **Scénář** | **Převzetí služeb při selhání** | **Vráceny**
     --- | --- | --- 
     Azure do Azure  | Runbook | Runbook
-    Z VMware do Azure | Runbook | Není k dispozici 
+    Z VMware do Azure | Runbook | NA 
     Hyper-V s VMM do Azure | Runbook | Skript
-    Z lokality Hyper-V do Azure | Runbook | Není k dispozici
+    Z lokality Hyper-V do Azure | Runbook | NA
     VMM do sekundárního VMM | Skript | Skript
 
 1. V plánu obnovení klikněte na krok, ke kterému má být akce přidána, a určete, kdy má být provedena akce:

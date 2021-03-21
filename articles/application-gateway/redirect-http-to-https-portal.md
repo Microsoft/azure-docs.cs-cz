@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397276"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Vytvoření služby Application Gateway s použitím přesměrování HTTP na HTTPS pomocí Azure Portal
@@ -77,7 +77,7 @@ Pro komunikaci mezi prostředky, které vytvoříte, je potřeba virtuální sí
      ![Vytvoření nové aplikační brány](./media/create-url-route-portal/application-gateway-create.png)
 
 5. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-6. Klikněte na **Vybrat virtuální síť** , klikněte na **vytvořit novou** a zadejte tyto hodnoty pro virtuální síť:
+6. Klikněte na **Vybrat virtuální síť**, klikněte na **vytvořit novou** a zadejte tyto hodnoty pro virtuální síť:
 
    - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
    - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
@@ -87,9 +87,9 @@ Pro komunikaci mezi prostředky, které vytvoříte, je potřeba virtuální sí
      ![Vytvoření virtuální sítě](./media/create-url-route-portal/application-gateway-vnet.png)
 
 7. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
-8. V části **Konfigurace protokolu IP** , ujistěte se, že **typ IP adresy** je **veřejný** a je vybraná možnost **vytvořit nový** . Jako název zadejte *myAGPublicIPAddress* . U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-9. V části **Konfigurace naslouchacího procesu** vyberte **https** , pak vyberte **Vybrat soubor** , přejděte k souboru *c:\appgwcert.pfx* a vyberte **otevřít**.
-10. Jako *appgwcert* název certifikátu a Azure123456 zadejte appgwcert *.* jako heslo.
+8. V části **Konfigurace protokolu IP**, ujistěte se, že **typ IP adresy** je **veřejný** a je vybraná možnost **vytvořit nový** . Jako název zadejte *myAGPublicIPAddress* . U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
+9. V části **Konfigurace naslouchacího procesu** vyberte **https**, pak vyberte **Vybrat soubor** , přejděte k souboru *c:\appgwcert.pfx* a vyberte **otevřít**.
+10. Jako  název certifikátu a Azure123456 zadejte appgwcert *.* jako heslo.
 11. Ponechte bránu firewall webových aplikací zakázanou a pak vyberte **OK**.
 12. Zkontrolujte nastavení na stránce Souhrn a pak vyberte **OK** a vytvořte tak síťové prostředky a aplikační bránu. Vytvoření aplikační brány může trvat několik minut, než budete pokračovat k další části, počkejte, než se nasazení dokončí úspěšně.
 
@@ -113,7 +113,7 @@ Nejprve přidejte naslouchací proces s názvem *MyListener* pro port 80.
 2. Vyberte **naslouchací procesy** a pak vyberte **+ základní**.
 3. Jako název zadejte *MyListener* .
 4. Zadejte *httpPort* pro nový název portu front-end a *80* pro port.
-5. Zajistěte, aby byl protokol nastavený na **http** , a pak vyberte **OK**.
+5. Zajistěte, aby byl protokol nastavený na **http**, a pak vyberte **OK**.
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>Přidání pravidla směrování s konfigurací přesměrování
 
@@ -125,7 +125,7 @@ Nejprve přidejte naslouchací proces s názvem *MyListener* pro port 80.
 6. V případě **cíle přesměrování** vyberte **naslouchací proces**.
 7. Zajistěte, aby byl **cílový naslouchací proces** nastavený na **appGatewayHttpListener**.
 8. Pro **řetězec dotazu include** a možnost **zahrnout cestu** vyberte *Ano*.
-9. Vyberte **Add** (Přidat).
+9. Vyberte **Přidat**.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 

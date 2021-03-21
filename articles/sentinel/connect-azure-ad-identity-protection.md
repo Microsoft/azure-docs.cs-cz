@@ -10,17 +10,17 @@ ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
 ms.openlocfilehash: f420e80f10072c440f5401c042d6370a061b1a7f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98632237"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>Připojení dat z Azure Active Directory (Azure AD) Identity Protection
 
 Můžete streamovat protokoly z [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) do Azure Sentinel a streamovat výstrahy do Azure Sentinel a zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Azure Active Directory Identity Protection poskytuje konsolidované zobrazení v rizikových uživatelích, detekci rizik a ohrožení zabezpečení, s možností okamžitě opravit riziko a nastavit zásady pro automatické napravení budoucích událostí. Služba je postavená na zkušenostech Microsoftu s ochranou identit spotřebitelů a díky signálům z více než 13 000 000 000 přihlášení denně získá obrovský přesnost. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít [předplatné Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/).
 - Musíte mít uživatele s oprávněními globálního správce nebo správce zabezpečení.

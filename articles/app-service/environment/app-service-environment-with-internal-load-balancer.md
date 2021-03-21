@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021516"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Použití interního Load Balancer s App Service Environment
@@ -58,12 +58,12 @@ Vytvoření pomocného mechanismu pro interního nástroje se neliší od normá
 
 V podokně Virtual Network existuje možnost konfigurace virtuální sítě, která umožňuje vybrat mezi externí VIP nebo interní VIP. Výchozí hodnota je Externí. Pokud máte nastavenou hodnotu externí, váš přístupový protokol používá internetovou IP adresu s přístupem. Pokud vyberete možnost Interní, vaše služba ASE bude mít nakonfigurovaný interní nástroj pro vyrovnávání zatížení s IP adresou v rámci vaší virtuální sítě. 
 
-Po výběru interního výběru možnosti přidat další IP adresy do pomocného mechanismu služby dojde k odebrání a místo toho musíte zadat subdoménu pomocného mechanismu. V rámci služby pomocného objektu s externí virtuální IP adresou se název pomocného mechanismu používá v subdoméně pro aplikace vytvořené v tomto pomocném formuláři. Pokud má vaše pomocného programu název **_contosotest_* _ a vaše aplikace v tomto pomocném programu má název _*_MyTest_*_, bude poddoménou formát _*_contosotest.p.azurewebsites.NET_*_ a adresa URL této aplikace je _*_MyTest.contosotest.p.azurewebsites.NET_*_. Pokud nastavíte typ VIP na interní, název pomocného mechanismu se v subdoméně pro pomocného mechanismu názvů nepoužije. Subdoménu zadáte explicitně. Pokud je vaše subdoména _*_contoso.corp.NET_*_ a v tomto pomocném objektu s názvem _*_timereporting_*_ jste vytvořili aplikaci, adresa URL této aplikace je _*_timereporting.contoso.corp.NET_*_.
+Po výběru interního výběru možnosti přidat další IP adresy do pomocného mechanismu služby dojde k odebrání a místo toho musíte zadat subdoménu pomocného mechanismu. V rámci služby pomocného objektu s externí virtuální IP adresou se název pomocného mechanismu používá v subdoméně pro aplikace vytvořené v tomto pomocném formuláři. Pokud má váš správce přihlášený s názvem ***contosotest** _ a vaše aplikace v tomto pomocném programu má název _*_MyTest_*_, bude poddoménou formát _*_contosotest.p.azurewebsites.NET_*_ a adresa URL této aplikace je _* _MyTest.contosotest.p.azurewebsites.NET_* *. Pokud nastavíte typ VIP na interní, název pomocného mechanismu se v subdoméně pro pomocného mechanismu názvů nepoužije. Subdoménu zadáte explicitně. Pokud je vaše subdoména ***contoso.corp.NET**_ a v tomto pomocném poli s názvem _*_timereporting_*_ jste vytvořili aplikaci, adresa URL této aplikace je _ *_timereporting.contoso.corp.NET_* *.
 
 ## <a name="apps-in-an-ilb-ase"></a>Aplikace v pomocném protokolu interního nástroje
 Vytvoření aplikace v pomocném okně interního nástroje je stejné jako vytvoření aplikace v pomocném mechanismu. 
 
-1. V Azure Portal vyberte _ *vytvořit Resource-> web a mobilní zařízení-> web** nebo **mobilní** **aplikace nebo aplikaci API**.
+1. V Azure Portal vyberte **vytvořit prostředek-> web a mobilní zařízení-> web** nebo **mobilní** **aplikace nebo aplikaci API**.
 2. Zadejte název aplikace.
 3. Vyberte své předplatné.
 4. Vyberte nebo vytvořte skupinu prostředků.

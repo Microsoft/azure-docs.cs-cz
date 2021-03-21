@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96743101"
 ---
-# <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Povolení a používání Multi-Factor Authentication Azure AD se staršími aplikacemi pomocí hesel aplikací
+# <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Povolení a používání vícefaktorového ověřování Azure AD ve starších verzích aplikací s využitím hesel aplikací
 
 Některé starší, neprohlížečové aplikace, jako je Office 2010 nebo starší, a Apple Mail před iOS 11 nerozumí pozastavení nebo přerušení procesu ověřování. Pokud je pro Azure AD povolený Multi-Factor Authentication a pokusí se použít některou z těchto starších aplikací, které nepoužívají prohlížeč, nemůže se úspěšně ověřit. Pokud chcete používat tyto aplikace zabezpečeným způsobem s Multi-Factor Authentication Azure AD povolenými pro uživatelské účty, můžete použít hesla aplikací. Tato hesla aplikace nahradila tradiční heslo, aby mohla aplikace obejít službu Multi-Factor Authentication a správně pracovat.
 
@@ -83,7 +83,7 @@ V tomto scénáři použijete následující přihlašovací údaje:
 
 Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Funkce hesla aplikací musí být povolená, aby je uživatelé mohli používat. Pokud chcete uživatelům poskytnout možnost vytvářet hesla aplikací, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyhledejte a vyberte **Azure Active Directory** a pak zvolte **Uživatelé**.
 3. Na navigačním panelu v horní části okna *uživatele* vyberte **Multi-Factor Authentication** .
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
