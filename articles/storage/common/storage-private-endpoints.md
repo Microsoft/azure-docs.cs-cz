@@ -6,16 +6,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 13e274a0d43ba4399e039d1280aa5ada3c94afe5
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3fcc58f626622bcc728265e782906226859e1bf9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601470"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600458"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Použití privátních koncových bodů pro Azure Storage
 
@@ -53,6 +53,16 @@ Svůj účet úložiště můžete zabezpečit tak, aby přijímal jenom připoj
 
 ## <a name="creating-a-private-endpoint"></a>Vytvoření privátního koncového bodu
 
+Postup vytvoření privátního koncového bodu pomocí webu Azure Portal najdete [v tématu připojení soukromě k účtu úložiště z prostředí účtu úložiště v Azure Portal](../../private-link/tutorial-private-endpoint-storage-portal.md).
+
+Pokud chcete vytvořit privátní koncový bod pomocí PowerShellu nebo rozhraní příkazového řádku Azure, přečtěte si některý z těchto článků. Oba z nich využívají webovou aplikaci Azure jako cílovou službu, ale kroky pro vytvoření privátního odkazu jsou pro účet Azure Storage stejné.
+
+- [Vytvoření privátního koncového bodu pomocí Azure CLI](../../private-link/create-private-endpoint-cli.md)
+
+- [Vytvoření privátního koncového bodu pomocí Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
+
+
+
 Při vytváření privátního koncového bodu je nutné zadat účet úložiště a službu úložiště, ke které se připojí. 
 
 Potřebujete samostatný soukromý koncový bod pro každý prostředek úložiště, ke kterému potřebujete přistupovat, konkrétně [objekty blob](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [soubory](../files/storage-files-introduction.md), [fronty](../queues/storage-queues-introduction.md), [tabulky](../tables/table-storage-overview.md)nebo [statické weby](../blobs/storage-blob-static-website.md). V případě privátního koncového bodu jsou tyto služby úložiště definované jako **cílový dílčí prostředek** přidruženého účtu úložiště. 
@@ -64,13 +74,6 @@ Pokud vytvoříte privátní koncový bod pro prostředek úložiště Data Lake
 > Ujistěte se, že jste vytvořili účet úložiště pro obecné účely v2 (Standard nebo Premium).
 
 Pro přístup pro čtení do sekundární oblasti s účtem úložiště nakonfigurovaným pro geograficky redundantní úložiště musíte oddělit soukromé koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro **převzetí služeb při selhání**. Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci. Další informace o možnostech redundance úložiště najdete v tématu [Azure Storage redundance](storage-redundancy.md).
-
-Podrobnější informace o vytvoření privátního koncového bodu pro účet úložiště najdete v následujících článcích:
-
-- [Připojte soukromě k účtu úložiště z prostředí účtu úložiště v Azure Portal](../../private-link/tutorial-private-endpoint-storage-portal.md)
-- [Vytvoření privátního koncového bodu pomocí centra privátního spojení v Azure Portal](../../private-link/create-private-endpoint-portal.md)
-- [Vytvoření privátního koncového bodu pomocí Azure CLI](../../private-link/create-private-endpoint-cli.md)
-- [Vytvoření privátního koncového bodu pomocí Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
 
 <a id="connecting-to-private-endpoints"></a>
 

@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b8c6c6e33577fe3d49d8f0c7a94a941827f5cf68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe132c5f80e138ef47db758ad42c04b8e854ca00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523430"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674797"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Registrace zdrojů dat v Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>Úvod
 Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém registrace a zjišťování pro podnikové zdroje dat. Jinými slovy Data Catalog pomáhá lidem zjišťovat, pochopit a používat zdroje dat a pomáhá organizacím získat větší hodnotu z jejich stávajících dat. Prvním krokem k provedení zjistitelnosti zdroje dat prostřednictvím Data Catalog je registrace zdroje dat.
 
@@ -38,7 +41,7 @@ Při registraci zdroje dat extrahuje nástroj registrace informace o struktuře 
 Pro všechny objekty tato strukturální metadata obsahují umístění objektu, aby uživatelé, kteří data zjišťují, mohli tyto informace použít pro připojení k objektu v nástrojích klienta podle svého výběru. Další strukturální metadata obsahují název a typ objektu a název a název sloupce nebo sloupce a datový typ.
 
 ## <a name="descriptive-metadata"></a>Popisná metadata
-Kromě základních strukturálních metadat, která jsou extrahována ze zdroje dat, nástroj pro registraci zdroje dat extrahuje popisné metadata. Pro SQL Server Analysis Services a SQL Server Reporting Services se tato metadata odebírají z vlastností popisu zveřejněných těmito službami. Pro SQL Server jsou extrahovány hodnoty zadané pomocí \_ Rozšířené vlastnosti Popis MS. Pro Oracle Database Nástroj pro registraci zdroje dat extrahuje sloupec komentáře ze \_ zobrazení komentáře na kartě všechny \_ .
+Kromě základních strukturálních metadat, která jsou extrahována ze zdroje dat, nástroj pro registraci zdroje dat extrahuje popisné metadata. Pro Služba Analysis Services serveru SQL a SQL Server Reporting Services se tato metadata odebírají z vlastností popisu zveřejněných těmito službami. Pro SQL Server jsou extrahovány hodnoty zadané pomocí \_ Rozšířené vlastnosti Popis MS. Pro Oracle Database Nástroj pro registraci zdroje dat extrahuje sloupec komentáře ze \_ zobrazení komentáře na kartě všechny \_ .
 
 Kromě popisných metadat, která jsou extrahována ze zdroje dat, mohou uživatelé zadat popisná metadata pomocí nástroje pro registraci zdroje dat. Uživatelé můžou přidávat značky a můžou identifikovat odborníky na registrované objekty. Všechna tato popisné metadata se zkopírují do služby Data Catalog spolu se strukturálními metadaty.
 
@@ -74,7 +77,7 @@ Registrace zdroje dat umožňuje zjistitelnost v Data Catalog při použití met
 
 Když se znovu zaregistrujete už registrovaný zdroj dat, provede se sloučení operace Upsert: stávající objekty se aktualizují a vytvoří se nové objekty. Všechna metadata, která poskytuje uživatelé prostřednictvím portálu Data Catalog, jsou zachována.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Vzhledem k tomu, že kopíruje strukturální a popisné metadata ze zdroje dat do služby katalogu, registruje zdroj dat v Data Catalog usnadňuje zjišťování a pochopení dat. Po zaregistrování zdroje dat ho můžete opatřit poznámkami, spravovat a zjišťovat pomocí portálu Data Catalog.
 
 ## <a name="next-steps"></a>Další kroky

@@ -12,10 +12,10 @@ ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: b1889a693c08ce78a8bd06b6fe348c0c67bf3812
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103465670"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Saviynt s využitím Azure Active Directory B2C
@@ -30,7 +30,7 @@ V tomto ukázkovém kurzu nastavíte Saviynt tak, aby poskytovalo podrobné ří
 
 - Zabezpečení na úrovni dat k určení, jestli uživatel může provádět určitou operaci na konkrétním uživateli. Například správce helpdesku pro oblast UK může spravovat pouze uživatele ve Velké Británii.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -54,7 +54,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek znázorňující diagram architektury saviynt](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Delegovaný správce spustí uživatelskou operaci spravovat Azure AD B2C pomocí Saviynt.
 | 2. | Saviynt ověří pomocí svého autorizačního modulu, pokud může provést konkrétní operace.

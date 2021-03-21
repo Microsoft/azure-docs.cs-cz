@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
 ms.date: 03/09/2021
 ms.openlocfilehash: 7796fc7e2032559ca3ff5c738c46fe025719942d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102556617"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps
@@ -50,7 +50,7 @@ Tento článek popisuje, jak pro vaši aplikaci logiky nastavit oba druhy spravo
 * [Omezení spravovaných identit pro Logic Apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Služby Azure, které podporují ověřování Azure AD se spravovanými identitami](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). Spravovaná identita i cílový prostředek Azure, ke kterému potřebujete přístup, musí používat stejné předplatné Azure.
 

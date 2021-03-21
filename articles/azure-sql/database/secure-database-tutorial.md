@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: 8cdf95dd3c0e801896328136b15e4bd4efe53005
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102563808"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Kurz: zabezpečení databáze v Azure SQL Database
@@ -44,7 +44,7 @@ Další informace najdete v článcích [Přehled zabezpečení Azure SQL Databa
 > [!TIP]
 > Následující Microsoft Learn modul vám pomůže získat zdarma informace o tom, jak [zabezpečit databázi v Azure SQL Database](/learn/modules/secure-your-azure-sql-database/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 

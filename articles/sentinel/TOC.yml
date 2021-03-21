@@ -21,7 +21,7 @@
       href: tutorial-monitor-your-data.md
     - name: Šetření incidentů
       href: tutorial-investigate-cases.md
-    - name: Reakce na hrozby
+    - name: Použití služby Automation k reakci na hrozby
       href: tutorial-respond-threats-playbook.md
     - name: Vytváření dotazů KQL (informace o modulu)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
@@ -37,6 +37,14 @@
           href: resource-context-rbac.md
     - name: Pokročilá detekce útoků s více fázemi
       href: fusion.md
+    - name: Automatizace (společnosti)
+      items:
+        - name: SPOLEČNOSTI v Azure Sentinel
+          href: automation-in-azure-sentinel.md
+        - name: Pravidla automatizace pro zpracování incidentů
+          href: automate-incident-handling-with-automation-rules.md
+        - name: Pokročilá automatizace pomocí playbooky
+          href: automate-responses-with-playbooks.md
     - name: Identifikace pokročilých hrozeb pomocí UEBA
       href: identify-threats-with-entity-behavior-analytics.md
     - name: Import analýzy hrozeb do Azure Sentinelu

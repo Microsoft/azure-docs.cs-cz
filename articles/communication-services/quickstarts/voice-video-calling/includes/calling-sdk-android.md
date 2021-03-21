@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
 ms.openlocfilehash: 8d4e573cefd595669d9cb2cf9a7b83595eea7971
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103622017"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -207,7 +207,7 @@ public Call retrieveIncomingCall() {
 ### <a name="overview"></a>Přehled
 Mobilní nabízená oznámení jsou místní oznámení, která vidíte na mobilních zařízeních. Pro volání se budeme soustředit na nabízená oznámení VoIP (Voice over Internet Protocol). Zaregistruje se na nabízená oznámení, zpracuje nabízená oznámení a pak zruší registraci nabízených oznámení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Účet Firebase nastavený s povoleným cloudovým zasíláním zpráv (FCM) a službou Firebase Cloud Messaging Service připojenou k instanci centra oznámení Azure. Další informace najdete v tématu [oznámení o komunikačních službách](../../../concepts/notifications.md) .
 Kromě toho kurz předpokládá, že k sestavení aplikace používáte Android Studio verze 3,6 nebo vyšší.

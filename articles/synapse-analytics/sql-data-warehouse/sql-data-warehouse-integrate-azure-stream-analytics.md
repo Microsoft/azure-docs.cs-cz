@@ -2,21 +2,21 @@
 title: Použít Azure Stream Analytics ve vyhrazeném fondu SQL
 description: Tipy pro použití Azure Stream Analytics s vyhrazeným fondem SQL ve službě Azure synapse pro vývoj řešení v reálném čase.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 9/25/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 023cf55a01f34277dd5c5707d0d123f54c1674df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "96458229"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600084"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Použití Azure Stream Analytics s vyhrazeným fondem SQL ve službě Azure synapse Analytics
 
@@ -24,7 +24,7 @@ Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dos
 
 V tomto článku se dozvíte, jak použít vyhrazený fond SQL jako výstupní jímku pro příjem dat s vysokou propustností s Azure Stream Analytics úlohami.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure Stream Analytics úlohy – Chcete-li vytvořit úlohu Azure Stream Analytics, postupujte podle kroků v kurzu [Začínáme s Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) :  
 
@@ -52,8 +52,8 @@ Zadejte tyto hodnoty:
 
 * *Alias pro výstup*: zadejte popisný název pro tento výstup úlohy.
 * *Předplatné*:
-  * Pokud je vyhrazený fond SQL ve stejném předplatném, jaké má Stream Analytics úloha, klikněte na ***Vyberte Azure synapse Analytics z vašich předplatných** _.
-  _ Pokud je vyhrazený fond SQL v jiném předplatném, klikněte na možnost zadat nastavení Azure synapse Analytics ručně.
+  * Pokud je vyhrazený fond SQL ve stejném předplatném, jaké má Stream Analytics úloha, klikněte na ***Vybrat Azure synapse Analytics z vašich předplatných***.
+  * Pokud je vyhrazený fond SQL v jiném předplatném, klikněte na možnost zadat nastavení Azure synapse Analytics ručně.
 * *Databáze*: v rozevíracím seznamu vyberte cílovou databázi.
 * *Uživatelské jméno*: zadejte uživatelské jméno účtu, který má pro databázi oprávnění k zápisu.
 * *Heslo*: zadejte heslo pro zadaný uživatelský účet.
@@ -100,23 +100,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>Krok 5
 
-V úloze Azure Portal for Stream Analytics klikněte na název vaší úlohy.  Klikněte na tlačítko **_test_* _ v podokně _*_Podrobnosti výstupu_*_ .
+V úloze Azure Portal for Stream Analytics klikněte na název vaší úlohy.  Klikněte na tlačítko ***test** _ v podokně *_Podrobnosti výstupu_* _ *.
 
 ![Tlačítko Test na výstupu details v ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) případě úspěšného připojení k databázi se zobrazí oznámení na portálu.
 
 ### <a name="step-6"></a>Krok 6
 
-Klikněte na nabídku _*_dotaz_*_ v části _*_topologie úlohy_*_ a změňte dotaz na vložení dat do výstupního proudu, který jste vytvořili.  Kliknutím na tlačítko _*_testovat vybraný dotaz_*_ otestujete dotaz.  Po úspěšném testu dotazu klikněte na tlačítko _*_Uložit dotaz_*_ .
+Klikněte na nabídku ***dotaz** _ v části _*_topologie úlohy_*_ a změňte dotaz na vložení dat do výstupního proudu, který jste vytvořili.  Kliknutím na tlačítko _*_testovat vybraný dotaz_*_ otestujete dotaz.  Po úspěšném testu dotazu klikněte na tlačítko _ *_Uložit dotaz_**.
 
 ![Uložit dotaz](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>Krok 7
 
-Spusťte úlohu Azure Stream Analytics.  V nabídce _*_Přehled_*_ klikněte na tlačítko _*_Start_*_ .
+Spusťte úlohu Azure Stream Analytics.  Klikněte na tlačítko ***Start** _ v nabídce _ *_Overview_**.
 
 ![Spuštění úlohy Stream Analytics](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-V podokně spuštění úlohy klikněte na tlačítko _ *_Start_**.
+Klikněte na tlačítko ***Start*** v podokně úloha spuštění.
 
 ![Klikněte na tlačítko Start](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 

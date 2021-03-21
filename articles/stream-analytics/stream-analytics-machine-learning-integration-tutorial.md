@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1ebe62c1b90e09b36dd75b5bda4054cca08d5759
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102441206"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Analýza mínění s využitím Azure Stream Analytics a Azure Machine Learning Studio (Classic)
@@ -30,7 +30,7 @@ To, co se naučíte v tomto článku, můžete použít ve scénářích, jako j
 
 Úloha Stream Analytics, kterou vytvoříte, používá model mínění Analytics jako uživatelsky definovanou funkci (UDF) pro ukázková textová data z úložiště objektů BLOB. Výstup (výsledek analýzy mínění) se zapíše do stejného úložiště objektů BLOB v jiném souboru CSV. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že jste provedli následující akce:
 

@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: peiliu
 ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103622089"
 ---
 Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications C# pro SMS k posílání zpráv SMS.
@@ -25,7 +25,7 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 
 [API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-net-pr/tree/feature/communication/sdk/communication/Azure.Communication.Sms#todo-update-to-public) | [Package (NuGet)](#todo-nuget) | [Samples](#todo-samples)-->
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Nejnovější verze [klientské knihovny .NET Core](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
@@ -41,7 +41,7 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové aplikace v C#
 
-V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `SmsQuickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program.cs**.
+V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `SmsQuickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: **program. cs**.
 
 ```console
 dotnet new console -o SmsQuickstart
@@ -62,7 +62,7 @@ Stále v adresáři aplikace nainstalujte knihovnu klienta služby Azure Communi
 dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
 ```
 
-Přidejte `using` do horní části **program.cs** direktivu, aby zahrnovala `Azure.Communication` obor názvů.
+Přidejte do `using` horní části **programu. cs** direktivu, aby zahrnovala `Azure.Communication` obor názvů.
 
 ```csharp
 
@@ -87,7 +87,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce klien
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
- Otevřete **program.cs** v textovém editoru a nahraďte tělo `Main` metody kódem pro inicializaci `SmsClient` s připojovacím řetězcem. Následující kód načte připojovací řetězec pro prostředek z proměnné prostředí s názvem `COMMUNICATION_SERVICES_CONNECTION_STRING` . Naučte se [Spravovat připojovací řetězec prostředku](../../create-communication-resource.md#store-your-connection-string).
+ V textovém editoru otevřete **program program. cs** a nahraďte tělo `Main` metody kódem pro inicializaci `SmsClient` pomocí připojovacího řetězce. Následující kód načte připojovací řetězec pro prostředek z proměnné prostředí s názvem `COMMUNICATION_SERVICES_CONNECTION_STRING` . Naučte se [Spravovat připojovací řetězec prostředku](../../create-communication-resource.md#store-your-connection-string).
 
 
 ```csharp
@@ -100,7 +100,7 @@ SmsClient smsClient = new SmsClient(connectionString);
 
 ## <a name="send-a-11-sms-message"></a>Poslat zprávu SMS 1:1
 
-Chcete-li odeslat zprávu SMS jednomu příjemci, zavolejte `Send` `SendAsync` funkci nebo z SmsClient. Přidejte tento kód na konec `Main` metody v **program.cs**:
+Chcete-li odeslat zprávu SMS jednomu příjemci, zavolejte `Send` `SendAsync` funkci nebo z SmsClient. Přidejte tento kód na konec `Main` metody v **programu program. cs**:
 
 ```csharp
 SmsSendResult sendResult = smsClient.Send(

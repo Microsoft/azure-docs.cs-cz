@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
 ms.openlocfilehash: 7d58a8239c728f70efe3584c2649e196dffd791f
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102501086"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopírování a přesun Custom Visionch projektů
@@ -26,7 +26,7 @@ Rozhraní API **[ExportProject](https://southcentralus.dev.cognitive.microsoft.c
 
 Pokud vaše aplikace nebo firma závisí na použití Custom Vision projektu, doporučujeme zkopírovat model do jiného účtu Custom Vision v jiné oblasti. Pokud dojde k oblastnímu výpadku, máte přístup k projektu v oblasti, kam byl zkopírován.
 
-##  <a name="prerequisites"></a>Požadavky
+##  <a name="prerequisites"></a>Předpoklady
 
 - Dva prostředky Azure Custom Vision. Pokud je nemáte, můžete přejít na Azure Portal a [vytvořit nový prostředek Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Školicí klíče a adresy URL koncových bodů vašich Custom Visionch prostředků. Tyto hodnoty najdete na kartě **Přehled** prostředku na Azure Portal.

@@ -29,6 +29,8 @@
       href: tutorial-create-nat-gateway-portal.md
     - name: Integrace veřejného nástroje pro vyrovnávání zatížení brány NAT
       href: tutorial-nat-gateway-load-balancer-public-portal.md
+    - name: Integrace interního nástroje pro vyrovnávání zatížení brány NAT
+      href: tutorial-nat-gateway-load-balancer-internal-portal.md
 - name: ukázky
   items:
     - name: Azure CLI

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
 ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177857"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
@@ -18,7 +18,7 @@ ms.locfileid: "102177857"
 
 Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat ze seznamu SharePointu Online. Článek se vytvoří na [aktivitě kopírování v Azure Data Factory](copy-activity-overview.md), která představuje obecný přehled aktivity kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor seznamu SharePointu Online se podporuje pro následující aktivity:
 
@@ -32,7 +32,7 @@ Konkrétně tento konektor online v SharePointovém seznamu používá ověřov�
 > [!TIP]
 > Tento konektor podporuje kopírování dat ze **seznamu** SharePointu Online, ale ne ze souboru. Přečtěte si, jak kopírovat soubor z oddílu [Kopírovat soubor ze SharePointu Online](#copy-file-from-sharepoint-online) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Konektor online seznamu SharePointu používá pro připojení k SharePointu ověřování instančního objektu. Pomocí těchto kroků ji nastavte:
 
@@ -76,12 +76,12 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 
 | **Vlastnost**        | **Popis**                                              | **Povinné** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| typ                | Vlastnost Type musí být nastavená na: **SharePointOnlineList**.  | Ano          |
-| siteUrl             | Adresa URL webu SharePointu Online, např `https://contoso.sharepoint.com/sites/siteName` . | Ano          |
-| servicePrincipalId  | ID aplikace (klienta) aplikace zaregistrované v Azure Active Directory. | Ano          |
-| servicePrincipalKey | Klíč aplikace Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano          |
-| tenantId            | ID tenanta, pod kterým se vaše aplikace nachází.          | Ano          |
-| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne           |
+| typ                | Vlastnost Type musí být nastavená na: **SharePointOnlineList**.  | Yes          |
+| siteUrl             | Adresa URL webu SharePointu Online, např `https://contoso.sharepoint.com/sites/siteName` . | Yes          |
+| servicePrincipalId  | ID aplikace (klienta) aplikace zaregistrované v Azure Active Directory. | Yes          |
+| servicePrincipalKey | Klíč aplikace Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes          |
+| tenantId            | ID tenanta, pod kterým se vaše aplikace nachází.          | Yes          |
+| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No           |
 
 **Příklad:**
 
@@ -109,8 +109,8 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** datové sady musí být nastavená na **SharePointOnlineLResource**. | Ano |
-| listName | Název seznamu SharePointu Online | Ano |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **SharePointOnlineLResource**. | Yes |
+| listName | Název seznamu SharePointu Online | Yes |
 
 **Příklad**
 
@@ -142,9 +142,9 @@ Pro kopírování dat ze seznamu SharePointu Online jsou v části **zdroje** ak
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SharePointOnlineListSource**. | Ano |
-| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | Ne |
-| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | Ne |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SharePointOnlineListSource**. | Yes |
+| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | No |
+| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | No |
 
 **Příklad**
 

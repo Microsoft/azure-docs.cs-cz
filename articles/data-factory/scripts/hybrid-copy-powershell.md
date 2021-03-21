@@ -8,10 +8,10 @@ author: linda33wj
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
 ms.openlocfilehash: 34c5497a8b059260dfe60e8015e62c0f1511f021
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100373381"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>Použití PowerShellu k vytvoření kanálu Data Factory pro kopírování dat z SQL Server do Azure
@@ -22,7 +22,7 @@ Tento ukázkový skript PowerShellu vytvoří v Azure Data Factory kanál, kter�
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **SQL Server**. V této ukázce použijete databázi SQL Server jako **zdrojové** úložiště dat.
 - **Účet Azure Storage**. V této ukázce použijete úložiště objektů BLOB v Azure jako **cílové úložiště nebo** úložiště dat jímky. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.

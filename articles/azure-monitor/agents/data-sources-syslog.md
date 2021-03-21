@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036723"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Shromáždění zdrojů dat syslog pomocí agenta Log Analytics
@@ -221,7 +221,7 @@ Záznamy syslog mají typ **SYSLOG** a mají vlastnosti v následující tabulce
 ## <a name="log-queries-with-syslog-records"></a>Dotazy protokolu se záznamy syslog
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy syslog.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:--- |:--- |
 | Syslog |Všechny Syslogy. |
 | Syslog &#124;, kde SeverityLevel = = "Error" |Všechny záznamy syslog se závažností chyby. |

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: 01b30fed23b33719f08e93907075eee757343b1c
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461735"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Kurz: vývoj modulu IoT Edge C# pomocí kontejnerů Linux
@@ -35,7 +35,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz ukazuje, jak vytvořit modul v **jazyce C#** pomocí **Visual Studio Code** a nasadit ho do IoT Edgeho zařízení. Pokud vyvíjíte moduly pomocí kontejnerů Windows, použijte místo toho [vývoj modulu C# IoT Edge pomocí kontejnerů Windows](tutorial-csharp-module-windows.md) .
 
@@ -106,7 +106,7 @@ V současné době Visual Studio Code může vyvíjet moduly C# pro zařízení 
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-1. V Průzkumníku vs Code otevřete **moduly**  >  **CSharpModule**  >  **program.cs**.
+1. V Průzkumníku vs Code otevřete **modules**  >  **CSharpModule**  >  **program. cs**.
 
 2. Nahoře v oboru názvů **CSharpModule** přidejte tři příkazy **using** pro typy, které se použijí později:
 

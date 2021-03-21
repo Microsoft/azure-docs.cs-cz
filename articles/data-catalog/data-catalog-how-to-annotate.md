@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fa1b542c54fc962f8c12a2142884c677afb259
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081232"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674644"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Postup přidání poznámek ke zdrojům dat v Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>Úvod
 
@@ -57,7 +59,7 @@ Při výběru více tabulek a zobrazení budou na portálu Data Catalog zobrazen
 ## <a name="annotations-and-discovery"></a>Poznámky a zjišťování
 Stejně jako metadata extrahovaná ze zdroje dat během registrace se přidají do indexu hledání Data Catalog, uživatelsky zadaná metadata se také indexují. To znamená, že nejenom anotace usnadňují uživatelům pochopení dat, která zjišťují, poznámky také usnadňují uživatelům vyhledávání datových assetů s poznámkami, a to pomocí podmínek, které jim dávají smysl.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Registrace zdroje dat pomocí Data Catalog zajišťuje, aby byla data zjistitelná zkopírováním strukturních a popisných metadat ze zdroje dat do služby katalogu. Po zaregistrování zdroje dat můžou uživatelé poskytnout poznámky, které usnadňují zjišťování a pochopení v rámci portálu Data Catalog.
 
 ## <a name="see-also"></a>Viz také

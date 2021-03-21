@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
 ms.openlocfilehash: fd66aa1f10a32d94d515a1f0aa25c25331796a8d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035683"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Archivace dat z pracovního prostoru Log Analytics do Azure Storage pomocí aplikace logiky
@@ -38,7 +38,7 @@ SecurityEvent
 
 Při exportu dat podle plánu použijte v dotazu funkci ingestion_time (), abyste se ujistili, že nebudete mít pozdě přijíždějící data. Pokud jsou data zpožděna kvůli problémům se sítí nebo platformou, bude při použití času příjmu zajištěno, že budou zahrnuty do dalšího spuštění aplikace logiky. Příklad najdete v tématu o [akci přidání protokolů Azure monitor](#add-azure-monitor-logs-action) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené požadavky, které je nutné před dokončením tohoto postupu dokončit.
 
 - Log Analytics pracovní prostor. Uživatel, který vytváří aplikaci logiky, musí mít k pracovnímu prostoru oprávnění alespoň pro čtení. 

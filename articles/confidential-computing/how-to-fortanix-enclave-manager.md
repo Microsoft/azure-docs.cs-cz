@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
 ms.openlocfilehash: 5bc1ff4a288e492613f02a8b095c5ef80436d18e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102558742"
 ---
 # <a name="how-to-run-an-application-with-fortanix-confidential-computing-manager"></a>Postupy: spuštění aplikace s Fortanix důvěrného Computing Manageru
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak převést Image aplikace na tajnou bitovou kopii 
  Pro podporu specifickou pro Fortanix se připojte k [komunitě pracovní rezervy Fortanix](https://fortanix.com/community/) a použijte #enclavemanager kanálu.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud nemáte účet Fortanix důvěrného Computing Manageru, před tím, než začnete, se [Zaregistrujte](https://em.fortanix.com/auth/sign-up) .
 1. Soukromý registr [Docker](https://docs.docker.com/) pro nabízení převedených imagí aplikace

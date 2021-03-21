@@ -6,16 +6,21 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: fc75bfc3b79cd6aed51a44fc47787532a9d61e8b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 692033e323880db1699d7265a991775d41b05f7f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713010"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656001"
 ---
 # <a name="what-is-document-translation-preview"></a>Co je překlad dokumentu (Preview)?
 
 Překlad dokumentů je cloudová funkce služby [Azure Translator](../translator-info-overview.md) , která je součástí řady rozhraní REST API služby Azure pro rozpoznávání. Rozhraní API pro překlad dokumentů Převádí dokumenty do a z 90 jazyků a dialektů a současně zachovává strukturu dokumentů a formát dat.
+
+Tato dokumentace obsahuje následující typy článků:  
+
+* [**Rychlé starty**](get-started-with-document-translation.md) jsou pokyny Začínáme, které vám pomohou při provádění požadavků na službu.
+* Návody obsahují pokyny k použití této funkce v konkrétnějším nebo přizpůsobeném [**způsobu.**](create-sas-tokens.md)  
 
 ## <a name="document-translation-key-features"></a>Funkce klíče pro překlad dokumentu
 
@@ -38,7 +43,7 @@ V průvodci návodem se dozvíte, jak rychle začít používat překladatele do
 
 Překlad dokumentu podporuje následující typy souborů dokumentů:
 
-| Typ souboru| Přípona souboru|Popis|
+| Typ souboru| Přípona souboru|Description|
 |---|---|--|
 |Adobe PDF|.pdf|Formát formátu PDF aplikace Adobe Acrobat|
 |HTML|.html,|Technologie Hyper Text Markup Language.|
@@ -55,7 +60,7 @@ Překlad dokumentu podporuje následující typy souborů dokumentů:
 
 Překlad dokumentu podporuje následující typy souborů glosáře:
 
-| Typ souboru| Přípona souboru|Popis|
+| Typ souboru| Přípona souboru|Description|
 |---|---|--|
 |Formát souborů pro výměnu lokalizace|.xlf. , XLIFF| Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.|
 |Tabulátory nebo hodnoty oddělené tabulátorem|. TSV/. Tab| soubor nezpracovaných dat oddělený tabulátorem používaný tabulkovými aplikacemi.|
@@ -64,5 +69,3 @@ Překlad dokumentu podporuje následující typy souborů glosáře:
 
 > [!div class="nextstepaction"]
 > [Začínáme s překladem dokumentů](get-started-with-document-translation.md)
->
->

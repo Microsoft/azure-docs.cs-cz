@@ -4,16 +4,18 @@ description: 'Rychlý Start: Naučte se vytvořit řídicí panel v Azure Portal
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 12/4/2020
-ms.openlocfilehash: ede915df5cd2967c3b6b700bcb9174c89af8f233
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745651"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613183"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Rychlý Start: Vytvoření řídicího panelu Azure Portal pomocí Azure CLI
 
-Řídicí panel v Azure Portal je cílené a organizované zobrazení vašich cloudových prostředků.
+Řídicí panel v Azure Portal je cílené a organizované zobrazení vašich cloudových prostředků. Tento článek se zaměřuje na proces použití rozhraní příkazového řádku Azure k vytvoření řídicího panelu.
+Řídicí panel zobrazuje výkon virtuálního počítače a také některé statické informace a odkazy.
+
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -103,19 +105,7 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-Ověřte, že se v Azure Portal zobrazí data o virtuálním počítači.
-
-1. Na webu Azure Portal vyberte **Řídicí panel**.
-
-   ![Azure Portal navigace na řídicí panel](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. Na stránce řídicí panel vyberte **jednoduchý řídicí panel virtuálních počítačů**.
-
-   ![Přejít na panel jednoduchého virtuálního počítače](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Prohlédněte si řídicí panel. Můžete vidět, že část obsahu je statická, ale existují i grafy, které ukazují výkon virtuálního počítače.
-
-   ![Kontrola jednoduchého řídicího panelu virtuálních počítačů](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

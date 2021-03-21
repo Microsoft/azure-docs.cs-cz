@@ -4,14 +4,14 @@ description: Popisuje kritické otevřené problémy a řešení pro virtuální
 ms.service: storsimple
 author: v-dalc
 ms.topic: article
-ms.date: 01/22/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e50f866c0bd44ca54c2f4df78b9507aa7077169
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b2c2af4267140370c2aa9421a67cb3a6f413165f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452556"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657548"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 1,3
 
@@ -31,6 +31,11 @@ Aktualizace 1,3 odpovídá 10.0.10319.0 verze softwaru.
 Tato aktualizace obsahuje následující vylepšení: KB4540725
 
 - TLS (Transport Layer Security) 1,2 je povinná aktualizace a je nutné ji nainstalovat. Z této verze dostávají protokol TLS 1,2 standardní protokol pro veškerou komunikaci Azure Portal.
+  
+   Pokud se zobrazí následující upozornění, musíte software v zařízení aktualizovat, než budete pokračovat:
+
+   Minimálně u jednoho zařízení StorSimple je spuštěná starší verze softwaru. Nejnovější dostupná aktualizace pro TLS 1,2 je povinná aktualizace a měla by být na těchto zařízeních nainstalovaná hned. Pro veškerou komunikaci Azure Portal a bez této aktualizace se používá TLS 1,2, zařízení nebude moct komunikovat se službou StorSimple.
+
 - Opravy chyb uvolňování paměti zlepšují výkon cyklu uvolňování paměti, když jsou zařízení a účet úložiště ve dvou vzdálených oblastech.
 - Opravte chyby zálohování z důvodu vypršení časových limitů objektu BLOB.
 - Aktualizované opravy zabezpečení operačního systému/. NET Framework:
@@ -65,4 +70,4 @@ Hledáte starší poznámku k verzi? Přejít na:
 - [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,4](./storsimple-virtual-array-update-04-release-notes.md)
 - [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,3](./storsimple-ova-update-03-release-notes.md)
 - [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,1 a 0,2](./storsimple-ova-update-01-release-notes.md)
-- [Poznámky k verzi pro StorSimple Virtual Array General Availability](/azure/storsimple/storsimple-ova-pp-release-notes)
+- [Poznámky k verzi pro StorSimple Virtual Array General Availability](./storsimple-virtual-array-update-06-release-notes.md)

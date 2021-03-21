@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
 ms.openlocfilehash: b59f8343c9dff07a32accd471f70ddf9f5309b8d
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103463081"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>Kurz: konfigurace zařízení Azure IoT Edge
@@ -35,7 +35,7 @@ V této části kurzu se dozvíte, jak:
 > * Vytvořte zařízení IoT Edge.
 > * Vytvořte virtuální počítač Azure pro simulaci zařízení IoT Edge.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Každý článek v sérii vychází z práce v předchozím článku. Pokud jste dorazili přímo do tohoto článku, přečtěte si [první článek](tutorial-machine-learning-edge-01-intro.md) v řadě.
 

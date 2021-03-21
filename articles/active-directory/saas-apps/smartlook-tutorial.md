@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: jeedes
 ms.openlocfilehash: f8d488118dc5e69f5c48aef0d408f5fd0e5d4b2b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102494730"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartlook"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Smartlook
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Smartlook s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Smartlook svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -92,7 +92,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Smartlook několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ------------------- | --------- |
     | urn: Oasis: names: TC: SAML: atribut: Subject-ID | User. userPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | uživatel. pošta |
