@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3a07670e3348f74fb5c6eaec57f5e9da627e8c09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 048a089209ef7c5f20c96f77593e2cf39590147e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586728"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600515"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Kurz: Vizualizace a monitorování dat
 
@@ -33,7 +33,7 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 > * Použití vestavěných sešitů
 > * Vytváření nových sešitů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pro skupinu prostředků pracovního prostoru Azure Sentinel musíte mít alespoň oprávnění čtenář nebo přispěvatel sešitu.
 
@@ -76,6 +76,17 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 
    ![Přepnout sešity](./media/tutorial-monitor-data/switch-workbooks.png)
 
+
+## <a name="print-a-workbook-or-save-as-pdf"></a>Tisk sešitu nebo uložení ve formátu PDF
+
+Pokud chcete sešit vytisknout nebo ho uložit jako PDF, použijte nabídku Možnosti napravo od nadpisu sešitu.
+
+1. Vyberte možnosti > :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **Tisk obsahu**. 
+2. Na obrazovce tisk upravte podle potřeby nastavení tisku nebo vyberte **Uložit jako PDF** a uložte ho místně.
+
+Například:
+
+:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Vytiskněte sešit nebo ho uložte jako PDF.":::
 
 ## <a name="how-to-delete-workbooks"></a>Odstraňování sešitů
 

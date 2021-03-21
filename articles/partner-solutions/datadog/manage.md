@@ -7,10 +7,10 @@ ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.openlocfilehash: 1a76f79f31d1f4518c069afb7fccbad5bd22d4e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101744701"
 ---
 # <a name="manage-the-datadog-resource"></a>Správa prostředku služby Datadog
@@ -77,7 +77,7 @@ Azure Portal poskytuje zobrazení klíčů rozhraní API jen pro čtení. Pokud 
 
 Integrace služby Azure služby Datadog poskytuje možnost instalace agenta služby Datadog na virtuální počítač nebo App Service. Pokud není vybraný výchozí klíč, instalace agenta služby Datadog se nezdařila.
 
-## <a name="monitor-virtual-machines-using-the-datadog-agent"></a>Monitorování virtuálních počítačů pomocí agenta služby Datadog
+## <a name="monitor-virtual-machines-using-the-datadog-agent"></a>Monitorování virtuálních počítačů s využitím agenta Datadog
 
 Agenty služby Datadog můžete na virtuální počítače nainstalovat jako rozšíření. V části Konfigurace organizace služby Datadog v levém podokně klikněte na **Agent virtuálního počítače** . Tato obrazovka zobrazuje seznam všech virtuálních počítačů v rámci předplatného.
 

@@ -4,10 +4,10 @@ description: Naučte se vytvářet a nasazovat privátní cloud řešení Azure 
 ms.topic: tutorial
 ms.date: 02/22/2021
 ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103462163"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Kurz: nasazení privátního cloudu řešení Azure VMware
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření privátního cloudu řešení Azure VMware
 > * Ověření nasazení privátního cloudu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Odpovídající práva správce a oprávnění k vytvoření privátního cloudu. V předplatném musíte mít minimální úroveň přispěvatele.

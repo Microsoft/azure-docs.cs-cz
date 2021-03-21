@@ -3,13 +3,13 @@ title: Vytvoření řídicího panelu Azure Portal pomocí šablony Azure Resour
 description: Naučte se vytvořit řídicí panel Azure Portal pomocí šablony Azure Resource Manager.
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/15/2020
-ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/15/2021
+ms.openlocfilehash: a3ab8767e09256ed8235dbd980ea3336a6f0fb1d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745719"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658317"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Rychlý Start: Vytvoření řídicího panelu v Azure Portal pomocí šablony ARM
 
@@ -30,9 +30,13 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 Řídicí panel, který vytvoříte v další části tohoto rychlého startu, vyžaduje existující virtuální počítač. Pomocí následujících kroků vytvořte virtuální počítač.
 
-1. V Azure Portal vyberte Cloud Shell.
+1. V Azure Portal vyberte **Cloud Shell**.
 
     ![Výběr Cloud shellu na pásu Azure Portal](media/quick-create-template/cloud-shell.png)
+
+1. V okně **Cloud Shell** vyberte **PowerShell**.
+
+    ![V okně terminálu vyberte PowerShell.](media/quick-create-template/powershell.png)
 
 1. Zkopírujte následující příkaz a zadejte ho do příkazového řádku, abyste mohli vytvořit skupinu prostředků.
 
@@ -85,19 +89,7 @@ Azure Portal se použila k nasazení šablony. Kromě webu Azure Portal můžete
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-Zkontrolujte, zda byl řídicí panel úspěšně vytvořen a zda můžete zobrazit data z virtuálního počítače.
-
-1. Na webu Azure Portal vyberte **Řídicí panel**.
-
-    ![Azure Portal navigace na řídicí panel](media/quick-create-template/navigate-to-dashboards.png)
-
-1. Na stránce řídicí panel vyberte **jednoduchý řídicí panel virtuálních počítačů**.
-
-    ![Přejít na panel jednoduchého virtuálního počítače](media/quick-create-template/select-simple-vm-dashboard.png)
-
-1. Zkontrolujte řídicí panel, který vytvořila šablona ARM. Můžete vidět, že část obsahu je statická, ale existují i grafy, které ukazují výkon virtuálního počítače, který jste vytvořili na začátku.
-
-    ![Kontrola jednoduchého řídicího panelu virtuálních počítačů](media/quick-create-template/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -4,12 +4,12 @@ description: Naučte se vytvořit připojení SSH s uzly clusteru Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 7455b98348f2b8c40f2ffc125abe1297af88fbd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4c068dc1521d19793d42b6788d0439dd11499a91
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034451"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605898"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Připojení pomocí SSH k uzlům clusteru Azure Kubernetes Service (AKS) kvůli údržbě nebo řešení potíží
 
@@ -141,14 +141,14 @@ Pokud chcete vytvořit připojení SSH k uzlu AKS, spusťte pomocníka pod clust
 1. Spusťte `debian` Image kontejneru a připojte k ní relaci terminálu. Tento kontejner se dá použít k vytvoření relace SSH s jakýmkoli uzlem v clusteru AKS:
 
     ```console
-    kubectl run -it --rm aks-ssh --image=debian
+    kubectl run -it --rm aks-ssh --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
     ```
 
     > [!TIP]
     > Pokud používáte uzly Windows serveru, přidejte do příkazu selektor uzlů pro naplánování kontejneru Debian na uzlu se systémem Linux:
     >
     > ```console
-    > kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"v1","spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}'
+    > kubectl run -it --rm aks-ssh --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --overrides='{"apiVersion":"v1","spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}'
     > ```
 
 1. Jakmile je relace Terminálové služby připojena ke kontejneru, nainstalujte klienta SSH pomocí nástroje `apt-get` :

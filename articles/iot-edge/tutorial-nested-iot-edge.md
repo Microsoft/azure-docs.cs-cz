@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
 ms.openlocfilehash: c1b30a1eafe9af92c1ef3f81773d213ccf96555c
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103462027"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Kurz: vytvoření hierarchie zařízení IoT Edge (Preview)
@@ -49,7 +49,7 @@ V tomto kurzu se pro jednoduchost používá dvě hierarchie zařízení, která
 
 ![Struktura hierarchie kurzu, která obsahuje dvě zařízení: horní vrstva zařízení a nižší vrstva](./media/tutorial-nested-iot-edge/tutorial-hierarchy-diagram.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete vytvořit hierarchii IoT Edgech zařízení, budete potřebovat:
 
@@ -473,7 +473,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -486,7 +486,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Na kartě proměnné prostředí zadejte následující dvojici název-hodnota proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -649,7 +649,7 @@ V [Azure Portal](https://ms.portal.azure.com/):
 
 1. Do modulu Edge hub přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -768,7 +768,7 @@ sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azur
 
 `azureiotedge-diagnostics`Hodnota je načtena z registru kontejneru, který je propojen s modulem registru. Tento kurz má ve výchozím nastavení nastavené na https://mcr.microsoft.com:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | - | - |
 | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 

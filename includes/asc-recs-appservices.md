@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 4817a68ad74ed9a51f8b9ea67f3d271bbaa3423b
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466173"
 ---
 V této kategorii je **31** doporučení.
 
-|Doporučení |Popis |Závažnost |
+|Doporučení |Description |Závažnost |
 |---|---|---|
 |Aplikace API by měla být přístupná jen přes protokol HTTPS |Použití protokolu HTTPS zajišťuje ověřování serveru nebo služby a chrání data při přenosu z útoků s odposloucháváním síťové vrstvy.<br />(Související zásady: [aplikace API by měla být přístupná jen přes protokol HTTPS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb7ddfbdc-1260-477d-91fd-98bd9be789a6)) |Střední |
 |Je potřeba povolit Azure Defender pro App Service. |Azure Defender pro App Service využívá škálování cloudu a viditelnost, kterou má Azure jako poskytovatel cloudu, ke sledování běžných útoků na webové aplikace.<br>Azure Defender pro App Service může zjišťovat útoky na vaše aplikace a identifikovat nově vznikající útoky.<br><br>Důležité: Oprava toto doporučení bude mít za následek poplatky za ochranu vašich App Servicech plánů. Pokud v tomto předplatném nemáte žádné plány App Service, neúčtují se žádné poplatky.<br>Pokud v budoucnu vytvoříte v tomto předplatném nějaké plány App Service, budou automaticky chráněny a v této době začnou platit poplatky.<br> <a href='https://docs.microsoft.com/azure/security-center/security-center-app-services'>Přečtěte si další informace o Azure Defenderu pro App Service.</a><br />(Související zásady: [mělo by se povolit Azure Defender pro App Service](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)) |Vysoká |

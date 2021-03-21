@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: 51baf009543208fbbfe091238d0215a24761641d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031952"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>Povolení přehledů virtuálních počítačů pomocí Azure Policy
@@ -20,7 +20,7 @@ Pokud nejste obeznámeni s Azure Policy, získáte stručný úvod k [nasazení 
 > [!NOTE]
 > Pokud chcete používat Azure Policy se službou Azure Virtual Machine Scale Sets nebo pokud chcete pracovat s Azure Policy přímo k povolení virtuálních počítačů Azure, přečtěte si téma [nasazení Azure monitor se škálováním pomocí Azure Policy](../deploy-scale.md#vm-insights).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](./vminsights-configure-workspace.md).
 - V části [podporované operační systémy](./vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
 
@@ -47,7 +47,7 @@ Na stránce **parametry** vyberte **pracovní prostor Log Analytics** , který b
    > [!NOTE]
    > Pokud je tento pracovní prostor nad rámec přiřazení, udělte Log Analytics oprávnění *Přispěvatel* k ID objektu zabezpečení přiřazení zásad. Pokud to neuděláte, může se zobrazit chyba nasazení, například `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
 
-[![Stejných](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
+[![Pracovní prostor](media/vminsights-enable-policy/assignment-workspace.png)](media/vminsights-enable-policy/assignment-workspace.png#lightbox)
 
 Kliknutím na tlačítko **zkontrolovat + vytvořit** zkontrolujte podrobnosti přiřazení a teprve potom kliknutím na **vytvořit** vytvořte. V tomto okamžiku nevytvářejte úlohu nápravy, protože pravděpodobně budete potřebovat více úloh nápravy, aby bylo možné povolit stávající virtuální počítače. Viz [napravení výsledků dodržování předpisů](#remediate-compliance-results) níže.
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 22be45403a7863328c5f6f2c883886296b734914
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: d510fa35163a4c4a79352f5f35af9c384bf85304
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549086"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596310"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Nejčastější dotazy týkající se Linux Virtual Machines
 Tento článek popisuje některé běžné otázky týkající se virtuálních počítačů s Linux vytvořenými v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Windows najdete v části [Nejčastější dotazy týkající se Windows Virtual Machines](../windows/faq.md)
@@ -31,7 +31,7 @@ Azure Managed Disks jsou doporučené nabídky diskového úložiště pro použ
 ## <a name="how-can-i-access-my-virtual-machine"></a>Jak můžu získat přístup k virtuálnímu počítači?
 Navažte vzdálené připojení pro přihlášení k virtuálnímu počítači pomocí Secure Shell (SSH). Přečtěte si pokyny k připojení [ze systému Windows](ssh-from-windows.md) nebo [Linux a Mac](mac-create-ssh-keys.md). SSH ve výchozím nastavení umožňuje maximálně 10 souběžných připojení. Toto číslo můžete navýšit upravením konfiguračního souboru.
 
-Pokud máte problémy, podívejte se na [řešení potíží s připojením Secure Shell (SSH)](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).
+Pokud máte problémy, podívejte se na [řešení potíží s připojením Secure Shell (SSH)](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>Můžu k ukládání dat použít dočasný disk (adresář/dev/sdb1)?
 Nepoužívejte dočasný disk (adresář/dev/sdb1) k ukládání dat. Pouze pro dočasné úložiště. Nehrozí riziko ztráty dat, která se nedají obnovit.
