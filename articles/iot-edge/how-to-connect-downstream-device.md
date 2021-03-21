@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199622"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojení podřízeného zařízení k bráně služby Azure IoT Edge
@@ -39,7 +39,7 @@ Tento článek pojednává o základních konceptech připojení k zařízením 
 
 V tomto článku se pojmem *brána brány* a brána *IoT Edge* odkazují na IoT Edge zařízení nakonfigurované jako transparentní brána.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * K vygenerování certifikátu certifikační autority zařízení v části [konfigurace IoT Edgeho zařízení, které budou fungovat jako transparentní brána](how-to-create-transparent-gateway.md) na vašem zařízení pro příjem dat, je třeba použít kořenový soubor certifikátu certifikační autority. Vaše zařízení pro příjem dat používá tento certifikát k ověření identity zařízení brány. Pokud jste použili ukázkové certifikáty, kořenový certifikát certifikační autority se nazývá **Azure-IoT-test-Only. root. ca. CERT. pem**.
 * Přidaný připojovací řetězec odkazuje na zařízení brány, jak je vysvětleno v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
@@ -171,7 +171,7 @@ V této části se seznámíte s ukázkovou aplikací pro připojení klienta za
 3. V okně **vlastnosti/launchSettings.jsv** souboru aktualizujte proměnné **DEVICE_CONNECTION_STRING** a **CA_CERTIFICATE_PATH** . Pokud chcete použít certifikát nainstalovaný v úložišti důvěryhodných certifikátů v hostitelském systému, ponechte tuto proměnnou prázdnou.
 4. Pokyny, jak spustit ukázku na vašem zařízení, najdete v dokumentaci k sadě SDK.
 
-Chcete-li programově nainstalovat důvěryhodný certifikát do úložiště certifikátů prostřednictvím aplikace .NET, přečtěte si funkci **InstallCACert ()** v souboru **EdgeDownstreamDevice/program.cs** . Tato operace je idempotentní, takže ji můžete spustit vícekrát se stejnými hodnotami, a to bez dalšího efektu.
+Chcete-li programově nainstalovat důvěryhodný certifikát do úložiště certifikátů prostřednictvím aplikace .NET, přečtěte si funkci **InstallCACert ()** v souboru **EdgeDownstreamDevice/program. cs** . Tato operace je idempotentní, takže ji můžete spustit vícekrát se stejnými hodnotami, a to bez dalšího efektu.
 
 ### <a name="c"></a>C
 

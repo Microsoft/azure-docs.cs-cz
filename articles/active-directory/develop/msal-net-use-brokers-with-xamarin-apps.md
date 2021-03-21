@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199581"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Použití Microsoft Authenticator nebo Portál společnosti Intune v aplikacích Xamarin
@@ -65,7 +65,7 @@ Další informace najdete v tématu [Povolení přístupu k řetězci klíčů](
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>Krok 3: aktualizace AppDelegate pro zpracování zpětného volání
 
-Když MSAL.NET volá zprostředkovatele, zprostředkovatel volá zpět do vaší aplikace prostřednictvím `OpenUrl` metody `AppDelegate` třídy. Vzhledem k tomu, že MSAL čeká na odpověď zprostředkovatele, musí vaše aplikace spolupracovat a volat MSAL.NET zpátky. Pokud chcete tuto spolupráci povolit, aktualizujte soubor *AppDelegate.cs* tak, aby přepsal následující metodu.
+Když MSAL.NET volá zprostředkovatele, zprostředkovatel volá zpět do vaší aplikace prostřednictvím `OpenUrl` metody `AppDelegate` třídy. Vzhledem k tomu, že MSAL čeká na odpověď zprostředkovatele, musí vaše aplikace spolupracovat a volat MSAL.NET zpátky. Pokud chcete tuto spolupráci povolit, aktualizujte soubor *AppDelegate. cs* a přepište následující metodu.
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
@@ -91,23 +91,23 @@ Tato metoda je vyvolána při každém spuštění aplikace. Používá se jako 
 
 ### <a name="step-4-set-uiviewcontroller"></a>Krok 4: nastavte UIViewController ()
 
-Stále v souboru *AppDelegate.cs* nastavte okno objektu. Obvykle není nutné nastavovat okno objektu pro Xamarin iOS, ale k posílání a přijímání odpovědí od zprostředkovatele budete potřebovat okno objektu.
+Stále v souboru *AppDelegate. cs* nastavte okno objektu. Obvykle není nutné nastavovat okno objektu pro Xamarin iOS, ale k posílání a přijímání odpovědí od zprostředkovatele budete potřebovat okno objektu.
 
 Nastavení okna objektu:
 
-1. V souboru *AppDelegate.cs* nastavte `App.RootViewController` na nový `UIViewController()` . Toto přiřazení zajišťuje, že volání do služby Broker zahrnuje `UIViewController` . Pokud je toto nastavení nesprávně přiřazeno, může se zobrazit tato chyba:
+1. V souboru *AppDelegate. cs* nastavte `App.RootViewController` na nový `UIViewController()` . Toto přiřazení zajišťuje, že volání do služby Broker zahrnuje `UIViewController` . Pokud je toto nastavení nesprávně přiřazeno, může se zobrazit tato chyba:
 
       `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 
 1. Při `AcquireTokenInteractive` volání použijte `.WithParentActivityOrWindow(App.RootViewController)` a pak předejte odkaz na okno objektu, které budete používat.
 
-    V *App.cs*:
+    V *App. cs*:
 
     ```csharp
        public static object RootViewController { get; set; }
     ```
 
-    V *AppDelegate.cs*:
+    V *AppDelegate. cs*:
 
     ```csharp
        LoadApplication(new App());
