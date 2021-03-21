@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-python, devx-track-js
 ms.openlocfilehash: a8a6d09819aaa65645da3d4d697866609c226723
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461130"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-using-linux-containers"></a>Kurz: vývoj a nasazení modulu Node.js IoT Edge pomocí kontejnerů Linux
@@ -35,7 +35,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz ukazuje, jak vytvořit modul v **Node.js** pomocí **Visual Studio Code** a jak ho nasadit na IoT Edge zařízení.
 

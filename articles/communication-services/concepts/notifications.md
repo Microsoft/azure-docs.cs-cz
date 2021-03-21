@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8910797631dd86d75619c7a4691a25e88b8a9e09
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495823"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657038"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
 
@@ -31,7 +31,7 @@ Komunikační služby Azure se integrují s [Azure Event Grid](https://azure.mic
 
 :::image type="content" source="./media/notifications/acs-events-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují s Event Grid.":::
 
-Přečtěte si další informace o [zpracování událostí v komunikačních službách Azure](./event-handling.md).
+Přečtěte si další informace o [zpracování událostí v komunikačních službách Azure](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services).
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Doručování nabízených oznámení prostřednictvím Azure Notification Hubs
 

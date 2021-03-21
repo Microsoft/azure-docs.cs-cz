@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - devx-track-java
 ms.openlocfilehash: 3f24f38db7704557894d866b789890763f9e1316
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103463251"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>Kurz: vývoj modulu Java IoT Edge pomocí kontejnerů Linux
@@ -36,7 +36,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz ukazuje, jak vytvořit modul v **jazyce Java** pomocí **Visual Studio Code** a jak ho nasadit do IoT Edgeho zařízení. IoT Edge nepodporuje moduly Java sestavené jako kontejnery Windows.
 

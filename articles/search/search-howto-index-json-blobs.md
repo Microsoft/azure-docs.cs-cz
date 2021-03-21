@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.openlocfilehash: 8156966e9a1c000701a5cc1c68a70c4ee048c738
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259046"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indexování objektů BLOB JSON pomocí indexeru objektů BLOB v Azure Kognitivní hledání
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak [nakonfigurovat indexer objektů BLOB](search-
 
 Indexer objektů BLOB poskytuje **`parsingMode`** parametr pro optimalizaci výstupu vyhledávacího dokumentu založeného na režimech analýzy struktury sestávají z následujících možností:
 
-| parsingMode | Dokument JSON | Popis |
+| parsingMode | Dokument JSON | Description |
 |--------------|-------------|--------------|
 | **`json`** | Jedna na objekt BLOB | výchozí Analyzuje objekty blob JSON jako jeden blok textu. Každý objekt BLOB JSON se bude jednat o jediný dokument hledání. |
 | **`jsonArray`** | Víc na objekt BLOB | Analyzuje pole JSON v objektu blob, kde se každý prvek pole stal samostatným dokumentem hledání.  |

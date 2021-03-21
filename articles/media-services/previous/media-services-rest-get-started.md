@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: ccf4bc18270dcdbcae02f7b45bea2a05ed663227
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103008871"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST
@@ -38,7 +38,7 @@ Kliknutím na obrázek zobrazíte jeho plnou velikost.
 
 [![Diagram znázorňující některé z nejčastěji používaných objektů v datovém modelu Azure Media Services objektů pro vývoj aplikací pro video na vyžádání.](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro zahájení vývoje pomocí Media Services s rozhraními REST API je potřeba splnit následující požadavky.
 
 * Účet Azure: Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).

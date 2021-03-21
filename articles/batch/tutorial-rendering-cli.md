@@ -6,10 +6,10 @@ ms.date: 12/30/2020
 ms.custom: mvc, devx-track-azurecli
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5165e5feb566a4b9081f40b681b92aafa143869f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491737"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch
@@ -25,7 +25,7 @@ Azure Batch nabízí možnosti vykreslování v cloudovém měřítku a s platba
 
 V tomto kurzu vykreslíte scénu 3ds Max s využitím služby Batch a rendereru se sledováním paprsků [Arnold](https://www.autodesk.com/products/arnold/overview). Fond služby Batch používá bitovou kopii Azure Marketplace s předem nainstalovanými grafickými a vykreslovacími aplikacemi, které poskytují licencování s platbami na základě využití.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. **Licencování s platbami na základě využití se nepodporuje, pokud používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.**
 

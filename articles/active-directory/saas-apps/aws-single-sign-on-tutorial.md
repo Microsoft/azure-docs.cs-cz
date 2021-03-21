@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2021
+ms.date: 03/12/2021
 ms.author: jeedes
-ms.openlocfilehash: e890ff1cb64961c7747b8865b68504ff0a266a3e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d0b9e45dc5de0cd4550cf4b9f944fd33ebd7e7e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599689"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720686"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s jednotným přihlašováním AWS
 
@@ -72,7 +72,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V Azure Portal na stránce integrace aplikace **jednotného přihlašování AWS** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -80,9 +80,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Klikněte na **nahrát soubor metadat**.
 
-    ![image1](common/upload-metadata.png)
-
-    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
+    b. Kliknutím na **logo složky** vyberte soubor metadat, který jste stáhli v části **Konfigurace jednotného přihlašování AWS** (bod 8), a klikněte na **Přidat**.
 
     ![image2](common/browse-upload-metadata.png)
 
@@ -148,15 +146,45 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-aws-single-sign-on-sso"></a>Konfigurace jednotného přihlašování AWS jednotného přihlašování
 
-1. Otevřete **konzolu AWS SSO** . 
+1. Pokud chcete automatizovat konfiguraci v rámci jednotného přihlašování AWS, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **nastavit jednotné přihlašování AWS** , které vás přesměrují na aplikaci AWS Single Signing. Odtud zadejte přihlašovací údaje správce pro přihlášení k AWS jednotnému přihlašování. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-10.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Pokud chcete nastavit jednotné přihlašování AWS ručně, v jiném okně webového prohlížeče se přihlaste ke svému webu AWS jednotného přihlašování jako správce.
+
+1. Přejít na **služby – > zabezpečení, identita & dodržování předpisů – > AWS jednotné přihlašování**.
 2. V levém navigačním podokně vyberte **Nastavení**.
 3. Na stránce **Nastavení** Najděte **zdroj identity** a klikněte na **změnit**.
-4. Na stránce změnit adresář vyberte **externí zprostředkovatel identity**.
-5. V části **metadata poskytovatele služeb** Najděte **metadata SAML pro AWS SSO** a vyberte **Stáhnout soubor metadat** a Stáhněte si soubor metadat a uložte ho do svého počítače.
-6. V části **metadata poskytovatele identity** klikněte na **Procházet** a nahrajte soubor metadat, který jste stáhli z Azure Portal.
-7. Klikněte na tlačítko **Další: zkontrolovat**.
-8. Do textového pole zadejte **Potvrdit** a potvrďte změnu adresáře.
-9. Klikněte na tlačítko **Dokončit**.
+
+    ![Snímek obrazovky pro službu změny zdroje identity](./media/aws-single-sign-on-tutorial/settings.png)
+
+4. V části změnit zdroj identity vyberte **externí zprostředkovatel identity**.
+
+    
+    ![Snímek obrazovky s výběrem části externí zprostředkovatel identity](./media/aws-single-sign-on-tutorial/external-identity-provider.png)
+
+
+1. V části **Konfigurace externího zprostředkovatele identity** proveďte níže uvedené kroky:
+
+    ![Snímek obrazovky s oddílem metadat pro stažení a nahrání](./media/aws-single-sign-on-tutorial/upload-metadata.png)
+
+    a. V části **metadata poskytovatele služeb** Najděte **AWS SSO SSO metadata SAML** a vyberte **Stáhnout soubor metadat** , abyste si stáhli soubor metadat a uložili ho do počítače a pomocí tohoto souboru metadat nahrajte Azure Portal.
+
+    b. Zkopírujte hodnotu **URL přihlašování SSO AWS jednotného přihlašování** , vložte tuto hodnotu do textového pole **přihlašovací adresa URL** v **základní části Konfigurace SAML** v Azure Portal.
+
+    c. V části **metadata poskytovatele identity** klikněte na **Procházet** a nahrajte soubor metadat, který jste stáhli z Azure Portal.
+
+    d. Klikněte na tlačítko **Další: zkontrolovat**.
+
+8. Do textového pole zadejte **přijmout** pro změnu zdroje identity.
+
+    ![Snímek obrazovky s potvrzením konfigurace](./media/aws-single-sign-on-tutorial/accept.png)
+
+9. Klikněte na **změnit zdroj identity**.
 
 ### <a name="create-aws-single-sign-on-test-user"></a>Vytvořit testovacího uživatele jednotného přihlašování AWS
 

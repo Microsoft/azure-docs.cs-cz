@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103014951"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
@@ -475,7 +475,7 @@ Tato ukázka programově spolupracuje s MediaPlayer. MediaPlayer vytvoří insta
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 ```
 
-Soubor ProgrammaticAdPage.xaml.cs vytvoří AdHandlerPlugin, přidá TimelineMarker, který určí, kdy se má AD zobrazit, a potom přidá obslužnou rutinu pro událost MarkerReached, která načte RemoteAdSource určující identifikátor URI do OBROVSKÉho souboru a potom přehraje reklamu.
+Soubor ProgrammaticAdPage. XAML. cs vytvoří AdHandlerPlugin, přidá TimelineMarker, který určí, kdy se má AD zobrazit, a potom přidá obslužnou rutinu pro událost MarkerReached, která načte RemoteAdSource určující identifikátor URI do OBROVSKÉho souboru a potom přehraje reklamu.
 
 ```csharp
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage

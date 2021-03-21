@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/07/2021
 ms.author: memildin
 ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439574"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
@@ -48,7 +48,7 @@ V tuto chvíli nejsou k dispozici žádné možnosti vynucování. Adaptivní ř
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Podporované počítače:|![](./media/icons/yes-icon.png)Počítače Azure a jiné než Azure se systémem Windows a Linux<br>![Počítače s ](./media/icons/yes-icon.png) [obloukem Azure ARC](../azure-arc/index.yml)|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a **Čtenář** můžou zobrazovat skupiny i seznamy známých aplikací, které jsou v bezpečí.<br>Role **Přispěvatel** a **Správce zabezpečení** můžou upravovat skupiny i seznamy známých aplikací, které jsou v bezpečí.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 

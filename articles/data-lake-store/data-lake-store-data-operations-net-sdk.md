@@ -8,10 +8,10 @@ ms.date: 01/03/2020
 ms.author: twooley
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: faa539119bbb8d73e66788b8ba472cf0db26a2e4
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102431733"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Operace systému souborů při Data Lake Storage Gen1 pomocí sady .NET SDK
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak provádět operace systému souborů na Data L
 
 Pokyny k provádění operací správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace správy účtů pro data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Visual Studio 2013 nebo vyšší**. Pokyny v tomto článku používají Visual Studio 2019.
 

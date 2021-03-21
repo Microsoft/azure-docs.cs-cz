@@ -6,10 +6,10 @@ manager: gwallace
 ms.topic: article
 ms.date: 01/08/2021
 ms.openlocfilehash: 19ece696dabc81e643e8a904d506d22e40eaa099
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102499148"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověření pomocí Azure Container Registry ze služby Azure Kubernetes Service
@@ -149,7 +149,7 @@ nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 * Spuštěním příkazu [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) ověřte, že je registr přístupný z clusteru AKS.
 * Další informace o [diagnostice ACR](../container-registry/container-registry-diagnostics-audit-logs.md)
 * Další informace o [stavu ACR](../container-registry/container-registry-check-health.md)

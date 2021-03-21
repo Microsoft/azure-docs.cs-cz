@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: d7cfb4cf9b6b061f5fb53667e968cb0403f22bfc
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 9e5a6737d2e37392efd305910ff5370adc84940f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562548"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596735"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -84,7 +84,7 @@ Verze 3 poskytuje:
  
 - nepřetržitá podpora živé události
 - Rozhraní REST API pro platformu ARM, klientské sady SDK pro .NET Core, Node.js, Python, Java, přejít a Ruby.
-- Spravované klíče zákazníka, integrace důvěryhodných úložišť, podpora privátních odkazů a [Další](https://review.docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- Spravované klíče zákazníka, integrace důvěryhodných úložišť, podpora privátních odkazů a [Další](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
 
 #### <a name="action-required"></a>Požadována akce
 
@@ -123,7 +123,6 @@ Aktualizujte prosím na nejnovější klientské sady SDK v základu kódu pomoc
 - **[Důvěryhodné úložiště](concept-trusted-storage.md)**: Media Services lze nakonfigurovat pro přístup Azure Storage pomocí spravované identity přidružené k účtu Media Services. Při přístupu k účtům úložiště pomocí spravované identity můžou zákazníci nakonfigurovat více omezujících seznamů ACL sítě v účtu úložiště bez blokování Media Servicesch scénářů.
 
 - **[Spravované identity](concept-managed-identities.md)**: zákazníci můžou povolit spravovanou identitu přiřazenou systémem pro účet Media Services, aby mohli poskytovat přístup k trezorům klíčů (pro spravované klíče zákazníka) a účtům úložiště (pro důvěryhodné úložiště).
-
 
 ### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Aktualizované ukázky Node.js TypeScript pomocí sady isomorphic SDK pro JavaScript
 
@@ -373,7 +372,7 @@ Teď můžete určit seznam filtrů Asset nebo Account, které se vztahují na L
 
 V národních cloudech Azure se teď podporuje Media Services V3. Ne všechny funkce jsou zatím dostupné ve všech cloudech. Podrobnosti najdete v tématu [cloudy a oblasti, ve kterých existuje Azure Media Services V3](azure-clouds-regions.md).
 
-Do schémat Azure Event Grid byla přidána událost [Microsoft. Media. JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) pro Media Services.
+Do schémat Azure Event Grid byla přidána událost [Microsoft. Media. JobOutputProgress](monitoring/media-services-event-schemas.md#monitoring-job-output-progress) pro Media Services.
 
 ## <a name="january-2019"></a>Leden 2019
 

@@ -4,12 +4,12 @@ description: Naučte se, jak vytvořit řídicí panel v Azure Portal pomocí Az
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 07/24/2020
-ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 1b001c8f1ab73d23441697c93202cf1f6ea65687
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745736"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613320"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Rychlý Start: Vytvoření řídicího panelu Azure Portal pomocí prostředí PowerShell
 
@@ -23,7 +23,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> I když je modul PowerShellu **AZ. Portal** ve verzi Preview, musíte ho z rutiny nainstalovat samostatně z nástroje AZ PowerShell Module `Install-Module` . Až bude tento modul PowerShellu všeobecně dostupný, bude součástí budoucna k tomu, že vydává verze modulu PowerShell a jsou dostupné nativně z Azure Cloud Shell.
+> I když je modul PowerShell **AZ. Portal** ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShell pomocí `Install-Module` rutiny. Až bude tento modul PowerShellu všeobecně dostupný, bude součástí budoucna k tomu, že vydává verze modulu PowerShell a jsou dostupné nativně z Azure Cloud Shell.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Portal
@@ -146,19 +146,7 @@ Ověřte, že se řídicí panel úspěšně vytvořil.
 Get-AzPortalDashboard -Name $dashboardName -ResourceGroupName $resourceGroupName
 ```
 
-Ověřte, že se v Azure Portal zobrazí data o virtuálním počítači.
-
-1. Na webu Azure Portal vyberte **Řídicí panel**.
-
-   ![Azure Portal navigace na řídicí panel](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. Na stránce řídicí panel vyberte **jednoduchý řídicí panel virtuálních počítačů**.
-
-   ![Přejít na panel jednoduchého virtuálního počítače](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Prohlédněte si řídicí panel. Můžete vidět, že část obsahu je statická, ale existují i grafy, které ukazují výkon virtuálního počítače.
-
-   ![Kontrola jednoduchého řídicího panelu virtuálních počítačů](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

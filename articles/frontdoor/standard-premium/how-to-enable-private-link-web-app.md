@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: tyao
 ms.openlocfilehash: 805c3ba0360fcffe2bfd4217c0ef625fe61e5d64
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030575"
 ---
 # <a name="connect-azure-front-door-premium-to-a-web-app-origin-with-private-link"></a>Připojit přední dveře Azure ke zdroji webové aplikace pomocí privátního odkazu
 
 Tento článek vás provede postupem konfigurace SKU Azure front-end Premium pro soukromou připojení k vaší webové aplikaci pomocí služby privátního propojení Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Vytvořte službu [privátního propojení](../../private-link/create-private-link-service-portal.md) pro vaše zdrojové webové servery.

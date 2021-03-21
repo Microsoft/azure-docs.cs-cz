@@ -10,10 +10,10 @@ ms.date: 03/16/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: 9ceba84cb3bbe52dc5ba51d0f4945f5bad0a5034
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103573931"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Kurz: Příprava na nasazení Azure Stack Edge pro  
@@ -45,7 +45,7 @@ Pokud chcete nasadit Azure Stack Edge pro, přečtěte si následující kurzy v
 
 Teď můžete začít nastavovat Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční prostředek, vaše zařízení Azure Stack Edge pro a síť datacenter.
 

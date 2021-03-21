@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: f82e0c3f76dba05c3404b11e07c7130119ce0b9d
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103015654"
 ---
 # <a name="media-encoder-standard-schema"></a>Schéma Media Encoderu Standard
@@ -94,7 +94,7 @@ Ve výchozím nastavení platí, že pokud odešlete vstup do kodéru, který ob
 
 | Název | Typ | Description |
 | --- | --- | --- |
-| **Profil**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = "auto" |**xs: String** |Může to být jedna z následujících hodnot typu **xs:** **auto**, **směrný plán**, **hlavní**, **Vysoká**. |
+| **Profilu**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = "auto" |**xs: String** |Může to být jedna z následujících hodnot typu **xs:** **auto**, **směrný plán**, **hlavní**, **Vysoká**. |
 | **Obsah**<br/><br/> minOccurs = "0"<br/><br/> výchozí nastavení = "auto" |**xs: String** | |
 | **Rychlostí**<br/><br/> minOccurs = "0" |**xs: int** |Přenosová rychlost použitá pro tuto vrstvu videa zadaná v KB/s. |
 | **MaxBitrate**<br/><br/> minOccurs = "0" |**xs: int** |Maximální přenosová rychlost použitá pro tuto vrstvu videa zadaná v KB/s. |
@@ -117,7 +117,7 @@ Ve výchozím nastavení platí, že pokud odešlete vstup do kodéru, který ob
 
 | Název | Typ | Description |
 | --- | --- | --- |
-| **Profil**<br/><br/> minOccurs = "0"<br/><br/> default = "AACLC" |**xs: String** |Může to být jedna z následujících hodnot: **AACLC**, **HEAACV1** nebo **HEAACV2**. |
+| **Profilu**<br/><br/> minOccurs = "0"<br/><br/> default = "AACLC" |**xs: String** |Může to být jedna z následujících hodnot: **AACLC**, **HEAACV1** nebo **HEAACV2**. |
 
 ### <a name="attributes"></a>Atributy
 

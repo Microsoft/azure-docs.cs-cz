@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
 ms.openlocfilehash: 4e01b1ca9a3858ff31ad9b5da1d1159209c44330
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103464053"
 ---
 # <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Kurz: vývoj modulů C# IoT Edge pomocí kontejnerů Windows
@@ -40,7 +40,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz ukazuje, jak vytvořit modul v jazyce C# pomocí sady Visual Studio 2019 a jak ho nasadit na zařízení s Windows. Pokud vyvíjíte moduly pomocí kontejnerů pro Linux, použijte místo toho [modul pro vývoj C# IoT Edge pomocí kontejnerů Linux](tutorial-csharp-module.md) .
 
@@ -129,7 +129,7 @@ Manifest nasazení sdílí přihlašovací údaje pro váš registr kontejneru s
 
 Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spolu s výstupní frontou. Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hraničních zařízeních před jejich přesměrováním do služby IoT Hub. Aktualizujte modul tak, aby analyzoval data o teplotě v každé zprávě a odeslal zprávu do centra IoT pouze v případě, že teplota překročí určitou prahovou hodnotu.
 
-1. V aplikaci Visual Studio vyberte **CSharpModule**  >  **program.cs**.
+1. V aplikaci Visual Studio vyberte **CSharpModule**  >  **program. cs**.
 
 1. Nahoře v oboru názvů **CSharpModule** přidejte tři příkazy **using** pro typy, které se použijí později:
 

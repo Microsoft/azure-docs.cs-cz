@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
 ms.openlocfilehash: 825204fe40125a65e8e6f27c6973417813700a9e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101744724"
 ---
 # <a name="migrate-default-hive-metastore-db-to-external-metastore-db"></a>Migrovat výchozí metastore Hive DB do externí databáze metastore
@@ -30,7 +30,7 @@ Vzhledem k tomu, že výchozí metastore DB má omezené výpočetní kapacitu, 
 
 Zdrojové a cílové databáze musí používat stejnou verzi HDInsight a stejné účty úložiště. Pokud upgradujete verze HDInsight z 3,6 na 4,0, proveďte nejprve kroky v tomto článku. Pak [postupujte podle oficiálních kroků upgradu](./apache-hive-migrate-workloads.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud používáte [Azure Data Lake Storage Gen1](../overview-data-lake-storage-gen1.md), umístění tabulek podregistru jsou nejspíš závislá na konfiguracích HDFS clusteru pro Azure Data Lake Storage Gen1. Spuštěním následující akce skriptu zajistěte, aby tato umístění byla v ostatních clusterech přenosná. Viz [akce skriptu na běžícím clusteru](../hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster).
 

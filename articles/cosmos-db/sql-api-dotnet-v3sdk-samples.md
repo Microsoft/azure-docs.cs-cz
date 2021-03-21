@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 30ccd5783b3fa9524072235a58b3c8708962ef1c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102433977"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>Příklady pro rozhraní SQL API pro Azure Cosmos DB.NET V3 SDK (Microsoft. Azure. Cosmos)
@@ -34,7 +34,7 @@ ms.locfileid: "102433977"
 * Odkazy na úlohy v jednotlivých ukázkových souborech projektů v C#
 * Odkazy na související referenční obsah rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Visual Studio 2019 s nainstalovaným pracovním postupem vývoje Azure
 

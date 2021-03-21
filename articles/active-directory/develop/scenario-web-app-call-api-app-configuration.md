@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: aa377547f7f4961e199ec8d62bf0f1435296f983
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582312"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104669300"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webová aplikace, která volá webová rozhraní API: Konfigurace kódu
 
@@ -28,15 +28,11 @@ Jak je znázorněno ve [webové aplikaci, která se podepisuje ve scénáři už
 
 [Webová aplikace, která se podepisuje do scénářů uživatelů,](scenario-web-app-sign-user-overview.md) je popsaná pouze v prvním kroku. Tady se dozvíte, jak upravit webovou aplikaci tak, aby nepodepisuje jenom uživatele v aplikaci, ale také teď volá webová rozhraní API.
 
-## <a name="libraries-that-support-web-app-scenarios"></a>Knihovny, které podporují scénáře webové aplikace
+## <a name="microsoft-libraries-supporting-web-apps"></a>Knihovny Microsoftu podporující webové aplikace
 
-Následující knihovny v knihovně Microsoft Authentication Library (MSAL) podporují tok autorizačního kódu pro webové aplikace:
+Webové aplikace podporují následující knihovny Microsoftu:
 
-| Knihovna MSAL | Description |
-|--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podpora .NET Framework a platforem .NET Core. Nepodporováno jsou Univerzální platforma Windows (UWP), Xamarin. iOS a Xamarin. Android, protože tyto platformy slouží k vytváření veřejných klientských aplikací. <br/><br/>Pro ASP.NET Core Web Apps a webová rozhraní API je MSAL.NET zapouzdřený v knihovně vyšší úrovně s názvem [Microsoft. identity. Web](https://aka.ms/ms-identity-web). |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL pro Python | Podpora webových aplikací v Pythonu |
-| ![MSAL v Javě](media/sample-v2-code/logo_java.png) <br/> MSAL pro Javu | Podpora webových aplikací v jazyce Java. |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 Vyberte kartu pro platformu, které vás zajímá:
 
@@ -99,7 +95,7 @@ Místo tajného kódu klienta můžete zadat klientský certifikát. Následují
 
 ## <a name="startupcs"></a>Startup.cs
 
-Vaše webová aplikace bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zpřístupňuje `ITokenAcquisition` službu, kterou můžete použít v rámci kontroleru a akcí stránky. Jak se ale zobrazí v následujících dvou možnostech, dá se to udělat víckrát. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs*:
+Vaše webová aplikace bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zpřístupňuje `ITokenAcquisition` službu, kterou můžete použít v rámci kontroleru a akcí stránky. Jak se ale zobrazí v následujících dvou možnostech, dá se to udělat víckrát. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` při *spuštění. cs*:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -129,7 +125,7 @@ Pokud nechcete získat token sami, *Microsoft. identity. Web* poskytuje dva mech
 Pokud chcete volat Microsoft Graph, *Microsoft. identity. Web* vám umožní přímo použít `GraphServiceClient` (zveřejněné v sadě Microsoft Graph SDK) ve svých akcích rozhraní API. Postup vystavení Microsoft Graph:
 
 1. Do projektu přidejte balíček NuGet [Microsoft. identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) .
-1. Přidejte `.AddMicrosoftGraph()` po `.EnableTokenAcquisitionToCallDownstreamApi()` v souboru *Startup.cs* . `.AddMicrosoftGraph()` má několik přepsání. Pomocí přepsání, které přebírá konfigurační oddíl jako parametr, se kód změní na:
+1. Přidejte `.AddMicrosoftGraph()` za `.EnableTokenAcquisitionToCallDownstreamApi()` soubor *Startup. cs* . `.AddMicrosoftGraph()` má několik přepsání. Pomocí přepsání, které přebírá konfigurační oddíl jako parametr, se kód změní na:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -179,7 +175,7 @@ Chcete-li volat webové rozhraní API jiné než Microsoft Graph, *Microsoft. id
 
 Stejně jako u webových rozhraní API můžete zvolit různé implementace mezipaměti tokenů. Podrobnosti najdete v tématu věnovaném [serializaci mezipaměti Microsoft. identity. Web-token](https://aka.ms/ms-id-web/token-cache-serialization) na GitHubu.
 
-Následující obrázek znázorňuje různé možnosti *Microsoft. identity. Web* a jejich dopad na soubor *Startup.cs* :
+Následující obrázek znázorňuje různé možnosti *Microsoft. identity. Web* a jejich dopad na *spouštěcí soubor. cs* :
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Blokový diagram znázorňující možnosti konfigurace služby ve spouštěcí tečkě C S pro volání webového rozhraní API a určení implementace mezipaměti tokenů":::
 
@@ -218,9 +214,9 @@ Microsoft. identity. Web zjednodušuje váš kód nastavením správných nastav
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET zpracovává podobně ASP.NET Core, s tím rozdílem, že konfigurace OpenID připojení a odběr k `OnAuthorizationCodeReceived` události dochází v souboru [app_start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Koncepty jsou také podobné těm v ASP.NET Core, s výjimkou toho, že v ASP.NET je nutné zadat `RedirectUri` v [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Tato konfigurace je trochu méně robustní než ta v ASP.NET Core, protože ji budete muset při nasazení aplikace změnit.
+ASP.NET zpracovává podobně ASP.NET Core, s tím rozdílem, že konfigurace OpenID připojení a odběr k `OnAuthorizationCodeReceived` události dochází v souboru [app_start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Koncepty jsou také podobné těm v ASP.NET Core, s výjimkou toho, že v ASP.NET je nutné zadat `RedirectUri` v [Web.config#L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Tato konfigurace je trochu méně robustní než ta v ASP.NET Core, protože ji budete muset při nasazení aplikace změnit.
 
-Zde je kód pro Startup.Auth.cs:
+Zde je kód pro Startup. auth. cs:
 
 ```csharp
 public partial class Startup
@@ -391,7 +387,7 @@ Použití kontrolních výrazů klienta je pokročilý scénář, podrobně popi
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Kurz ASP.NET Core používá vkládání závislostí a umožňuje určit implementaci mezipaměti tokenů v souboru Startup.cs pro vaši aplikaci. Microsoft. identity. Web přichází s předem vytvořenými serializátory mezipaměti tokenů, které jsou popsané v tématu [serializace mezipaměti tokenů](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application). Zajímavou možností je zvolit ASP.NET Core [distribuované mezipaměti paměti](/aspnet/core/performance/caching/distributed#distributed-memory-cache):
+Kurz ASP.NET Core používá vkládání závislostí, které umožňuje určit implementaci mezipaměti tokenů v souboru Startup. cs pro vaši aplikaci. Microsoft. identity. Web přichází s předem vytvořenými serializátory mezipaměti tokenů, které jsou popsané v tématu [serializace mezipaměti tokenů](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application). Zajímavou možností je zvolit ASP.NET Core [distribuované mezipaměti paměti](/aspnet/core/performance/caching/distributed#distributed-memory-cache):
 
 ```csharp
 // Use a distributed token cache by adding:

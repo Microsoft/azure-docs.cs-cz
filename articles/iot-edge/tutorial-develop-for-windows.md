@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103463353"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>Kurz: vývoj IoT Edgech modulů pomocí kontejnerů Windows
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Sestavte projekt jako kontejner a uložte ho do služby Azure Container Registry.
 > * Nasaďte kód do zařízení IoT Edge.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vývojový počítač:
 
@@ -153,7 +153,7 @@ Jakmile se nový projekt načte v okně aplikace Visual Studio, je nutné se sez
     > [!TIP]
     > V části pověření registru se adresa vyplní z informací, které jste zadali při vytváření řešení. Proměnné uživatelského jména a hesla se ale ukládají do souboru. env. Jedná se o zabezpečení, protože soubor. ENV je v Gitu ignorován, ale šablona nasazení ne.
 * Projekt modulu IoT Edge s názvem **IotEdgeModule1**.
-  * Soubor **program.cs** obsahuje výchozí kód modulu C#, který je součástí šablony projektu. Výchozí modul přebírá ze zdroje vstup a předá ho IoT Hub.
+  * Soubor **program. cs** obsahuje výchozí kód modulu C#, který je součástí šablony projektu. Výchozí modul přebírá ze zdroje vstup a předá ho IoT Hub.
   * Informace o modulu **module.js** o blokování souborů, včetně úplného úložiště imagí, verze image a souboru Dockerfile, který se má použít pro každou podporovanou platformu.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Zadejte přihlašovací údaje registru pro agenta IoT Edge.
@@ -188,7 +188,7 @@ Každý modul může mít v kódu deklarovaných víc *vstupních* a *výstupní
 
 Vzorový kód jazyka C#, který je součástí šablony projektu, používá [třídu ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) ze sady SDK IoT Hub pro .NET.
 
-1. V souboru **program.cs** Najděte metodu **SetInputMessageHandlerAsync** .
+1. V souboru **program. cs** Najděte metodu **SetInputMessageHandlerAsync** .
 
 2. Metoda [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) nastaví vstupní frontu pro příjem příchozích zpráv. Projděte si tuto metodu a podívejte se, jak inicializuje vstupní frontu s názvem **input1**.
 

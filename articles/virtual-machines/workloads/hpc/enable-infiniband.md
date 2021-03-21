@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: cd4d928217ceba80fa5ea0252a6ed20803a812d3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 089976f2009e006f53dd2a77f09f57d5090429b7
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666950"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721241"
 ---
 # <a name="enable-infiniband"></a>Povolení sítí Infiniband
 
@@ -22,9 +22,9 @@ Virtuální [počítače s](../../sizes-hpc.md) [podporou RDMA](../../sizes-hpc.
 Existují různé způsoby, jak povolit InfiniBand ve velikostech virtuálních počítačů podporujících virtuální počítače.
 
 ## <a name="vm-images-with-infiniband-drivers"></a>Image virtuálních počítačů s ovladači InfiniBand
-V tématu [image virtuálních počítačů](configure.md#vm-images) najdete seznam podporovaných imagí virtuálních počítačů na webu Marketplace, které jsou předem načtené pomocí ovladačů InfiniBand (pro virtuální počítače SR-IOV nebo non-SR-IOV), nebo se dají nakonfigurovat pomocí vhodných ovladačů.
-Pro [virtuální počítače podporující](../../sizes-hpc.md#rdma-capable-instances)rozhraní SR-IOV, který podporuje RDMA, je [CentOS-HPC verze 7,6 nebo novější](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) verze imagí virtuálních počítačů na webu Marketplace nejjednodušší způsob, jak začít.
-Image virtuálních počítačů s Ubuntu se dají nakonfigurovat pomocí správných ovladačů pro virtuální počítače s rozhraním SR-IOV i bez SR-IOV, a to podle [pokynů uvedených tady](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351).
+V tématu [image virtuálních počítačů](configure.md#vm-images) najdete seznam podporovaných imagí virtuálních počítačů na webu Marketplace, které jsou předem načtené pomocí ovladačů InfiniBand (pro virtuální počítače SR-IOV nebo non-SR-IOV), nebo se dají nakonfigurovat pomocí vhodných ovladačů pro [virtuální počítače podporující RDMA](../../sizes-hpc.md#rdma-capable-instances).
+- Image virtuálních počítačů [CentOS-HPC](configure.md#centos-hpc-vm-images) na webu Marketplace představují nejjednodušší způsob, jak začít.
+- Image virtuálních počítačů s [Ubuntu](configure.md#ubuntu-vm-images) se dají konfigurovat pomocí správných ovladačů IB.
 
 ## <a name="infiniband-driver-vm-extensions"></a>Rozšíření virtuálních počítačů s ovladačem InfiniBand
 V systému Linux lze pomocí [rozšíření INFINIBANDDRIVERLINUX VM](../../extensions/hpc-compute-infiniband-linux.md) nainstalovat ovladače Mellanox OFED a povolit InfiniBand na virtuálních počítačích s podporou SR-IOV a N-Series.
@@ -68,6 +68,6 @@ sudo systemctl restart waagent
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o instalaci různých [podporovaných knihoven MPI](setup-mpi.md) a jejich optimálních konfiguracích na virtuálních počítačích.
-- Seznamte se s přehledem a [řadou HC](hc-series-overview.md) - [Series](hb-series-overview.md) – přehled s optimální konfigurací úloh pro zajištění výkonu a škálovatelnosti.
-- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Přečtěte si přehled [HBv3-Series](hbv3-series-overview.md) Overview a [HC-Series](hc-series-overview.md).
+- Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

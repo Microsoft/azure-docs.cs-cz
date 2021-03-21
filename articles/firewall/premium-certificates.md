@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: victorh
 ms.openlocfilehash: 47ebc752dedd72bbdedc02908911f1686584acda
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102615495"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Certifikáty verze Preview Azure Firewall Premium 
@@ -203,7 +203,7 @@ Write-Host "================"
 
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud je certifikát certifikační autority platný, ale v rámci kontroly TLS nemáte přístup k plně kvalifikovanému názvu domény nebo adresám URL, podívejte se na následující položky:
 

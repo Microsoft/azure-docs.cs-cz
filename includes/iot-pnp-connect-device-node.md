@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 43ba9abc17217eea399ed4614002b001534da859
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f6a5c2732663a8b3a9149554c173ea3a019400e0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510581"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612808"
 ---
 V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení, jak ji připojit k centru IoT a použít nástroj Azure IoT Explorer k zobrazení telemetrie, kterou posílá. Ukázková aplikace je napsaná v Node.js a je obsažená v sadě SDK pro zařízení Azure IoT pro Node.js. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
@@ -53,7 +53,7 @@ Pomocí sady SDK pro zařízení sestavíte zahrnutý vzorový kód. Vytvořená
 
 ## <a name="run-the-sample-device"></a>Spuštění ukázkového zařízení
 
-Tato ukázka implementuje jednoduché zařízení IoT technologie Plug and Play termostat. Model, který tento ukázkový implementuje, nepoužívá [komponenty](../articles/iot-pnp/concepts-components.md)IoT technologie Plug and Play. [Soubor modelu DTDL pro zařízení termostata](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) definuje telemetrii, vlastnosti a příkazy, které zařízení implementuje.
+Tato ukázka implementuje jednoduché zařízení IoT technologie Plug and Play termostat. Model, který tento ukázkový implementuje, nepoužívá [komponenty](../articles/iot-pnp/concepts-modeling-guide.md)IoT technologie Plug and Play. [Soubor modelu DTDL pro zařízení termostata](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) definuje telemetrii, vlastnosti a příkazy, které zařízení implementuje.
 
 Otevřete soubor _simple_thermostat.js_ . V tomto souboru vidíte postup:
 

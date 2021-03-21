@@ -7,10 +7,10 @@ ms.author: bwren
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.openlocfilehash: a929563df3e7e98575056d07519abfda0d6ac13b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102032955"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>Streamování dat monitorování Azure do centra událostí nebo externího partnera
@@ -47,15 +47,15 @@ Data, která nemůžete přímo zasílat do centra událostí, můžete zapisova
 
 Směrování dat monitorování do centra událostí pomocí Azure Monitor vám umožní snadnou integraci s externími nástroji pro SIEM a monitorování. Mezi příklady nástrojů s Azure Monitor integrací patří následující:
 
-| Nástroj | Hostovaná v Azure | Popis |
+| Nástroj | Hostovaná v Azure | Description |
 |:---|:---| :---|
-|  IBM QRadar | Ne | Protokol Microsoft Azure DSM a Microsoft Azure centra událostí je k dispozici ke stažení na [webu podpory IBM](https://www.ibm.com/support). Další informace o integraci s Azure najdete v části [QRADAR DSM Configuration](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
-| Splunk | Ne | [Microsoft Azure Add-On pro Splunk](https://splunkbase.splunk.com/app/3757/) je open source projekt dostupný v Splunkbase. <br><br> Pokud do instance Splunk nemůžete nainstalovat doplněk, pokud například používáte proxy server nebo běží v cloudu Splunk, můžete tyto události pře do kolektoru událostí Splunk HTTP pomocí [funkce Azure Functions pro Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), která se aktivuje novými zprávami v centru událostí. |
-| SumoLogic | Ne | Pokyny k nastavení SumoLogic pro využívání dat z centra událostí jsou k dispozici v tématu [shromáždění protokolů pro aplikaci Azure audit z centra událostí](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
-| ArcSight | Ne | ArcSight Azure Event hub Smart Connector je k dispozici jako součást [kolekce inteligentních konektorů ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
-| Server syslogu | Ne | Pokud chcete streamovat data Azure Monitor přímo na server syslog, můžete použít [řešení založené na funkci Azure Functions](https://github.com/miguelangelopereira/azuremonitor2syslog/).
-| LogRhythm | Ne| Pokyny k nastavení LogRhythm pro shromažďování protokolů z centra událostí jsou k dispozici [zde](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
-|Logz.io | Ano | Další informace najdete v tématu [Začínáme s monitorováním a protokolováním pomocí LOGZ.IO pro aplikace Java běžící v Azure](/azure/developer/java/fundamentals/java-get-started-with-logzio) .
+|  IBM QRadar | No | Protokol Microsoft Azure DSM a Microsoft Azure centra událostí je k dispozici ke stažení na [webu podpory IBM](https://www.ibm.com/support). Další informace o integraci s Azure najdete v části [QRADAR DSM Configuration](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | No | [Microsoft Azure Add-On pro Splunk](https://splunkbase.splunk.com/app/3757/) je open source projekt dostupný v Splunkbase. <br><br> Pokud do instance Splunk nemůžete nainstalovat doplněk, pokud například používáte proxy server nebo běží v cloudu Splunk, můžete tyto události pře do kolektoru událostí Splunk HTTP pomocí [funkce Azure Functions pro Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), která se aktivuje novými zprávami v centru událostí. |
+| SumoLogic | No | Pokyny k nastavení SumoLogic pro využívání dat z centra událostí jsou k dispozici v tématu [shromáždění protokolů pro aplikaci Azure audit z centra událostí](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | No | ArcSight Azure Event hub Smart Connector je k dispozici jako součást [kolekce inteligentních konektorů ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
+| Server syslogu | No | Pokud chcete streamovat data Azure Monitor přímo na server syslog, můžete použít [řešení založené na funkci Azure Functions](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+| LogRhythm | No| Pokyny k nastavení LogRhythm pro shromažďování protokolů z centra událostí jsou k dispozici [zde](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
+|Logz.io | Yes | Další informace najdete v tématu [Začínáme s monitorováním a protokolováním pomocí LOGZ.IO pro aplikace Java běžící v Azure](/azure/developer/java/fundamentals/java-get-started-with-logzio) .
 
 Další partneři mohou být také k dispozici. Úplnější seznam všech partnerů Azure Monitor a jejich schopností najdete v tématu [Azure monitor integrace partnerů](../partners.md).
 

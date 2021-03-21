@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/15/2021
 ms.author: jeedes
 ms.openlocfilehash: 864415f421f4fbecf31fd52a624ac568b4cf9c80
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103574809"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-managed-user"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím podnikového spravovaného uživatele GitHubu
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat podnikový spravovaného uživatele Gi
 * Umožněte svým uživatelům, aby se automaticky přihlásili k webu GitHub Enterprise Managed User pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

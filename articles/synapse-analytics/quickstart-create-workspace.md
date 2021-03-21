@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f2ed99af288b72a4c53f07d3cd7ba8b46974c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d38f1f294f60b73e8f1e69169a75333eb175c9f6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693624"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600152"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
 Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure synapse pomocí Azure Portal.
@@ -35,7 +35,7 @@ Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure sy
 
 > [!NOTE]
 > Po vytvoření pracovního prostoru Azure synapse nebudete moct pracovní prostor přesunout do jiného tenanta Azure Active Directory. Pokud to uděláte prostřednictvím migrace předplatného nebo jiné akce, můžete ztratit přístup k artefaktům v tomto pracovním prostoru.
-> V současné době nemůžete v rámci předplatného [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview) vytvořit pracovní prostor analýzy synapse.
+> V současné době nemůžete v rámci předplatného [Cloud Solution Provider (CSP)](/partner-center/csp-overview) vytvořit pracovní prostor analýzy synapse.
 
 ## <a name="open-synapse-studio"></a>Otevřít synapse Studio
 

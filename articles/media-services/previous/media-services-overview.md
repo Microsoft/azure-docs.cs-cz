@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: 6e68e53387aa50b99bab8ed4cdba7f1e97fc48c0
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103008225"
 ---
 # <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services
@@ -44,7 +44,7 @@ Před nahráním videa nebo obrázku do Media Services musíte mít všechna spr
 
 Informace o dodržování předpisů, ochraně osobních údajů a zabezpečení v Media Services najdete na webu Microsoft [Trust Center](https://www.microsoft.com/trust-center/?rtc=1). Pro závazky společnosti Microsoft, postupy pro zpracování a uchovávání dat, včetně toho, jak odstranit vaše data, přečtěte si [prohlášení o zásadách ochrany osobních údajů](https://privacy.microsoft.com/PrivacyStatement)od Microsoftu, [podmínky používání služeb Online Services](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("OST") a [doplněk pro zpracování dat](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA). Pomocí Media Services souhlasíte s tím, že DPA a prohlášením o zásadách ochrany osobních údajů.
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete začít používat Azure Media Services, potřebujete následující:
 

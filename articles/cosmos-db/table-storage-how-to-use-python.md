@@ -11,10 +11,10 @@ ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
 ms.openlocfilehash: 12ee827f297729682b0a5e1b1808afe312c657a4
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102499063"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí Pythonu
@@ -37,7 +37,7 @@ Tato ukázka předvádí použití [sady Table SDK služby Azure Cosmos DB pro P
 
 Při procházení scénářů v této ukázce můžete využít [referenční informace k sadě SDK služby Azure Cosmos DB pro rozhraní Python API](/python/api/overview/azure/cosmosdb).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 

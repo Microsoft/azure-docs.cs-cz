@@ -12,10 +12,10 @@ ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 9341646f32f6a2e05397b072d3f63186964fbd88
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258978"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Zabezpečený přístup k místním rozhraním API pomocí Azure Proxy aplikací služby AD
@@ -38,7 +38,7 @@ Azure Proxy aplikací služby AD tvoří páteřní síť řešení, pracuje jak
 
 Vzhledem k tomu, že služba Azure Proxy aplikací služby AD ověřování a autorizace jsou postaveny na službě Azure AD, můžete použít podmíněný přístup Azure AD a zajistit tak, aby přístup k rozhraním API publikovaným pomocí proxy aplikací mohli jenom důvěryhodná zařízení. Použijte službu Azure AD JOIN nebo službu Azure AD Hybrid připojenou pro stolní počítače a Intune spravovanou pro zařízení. Můžete také využít výhod Azure Active Directory Premium funkcí jako Azure AD Multi-Factor Authentication a na základě strojového učení – zabezpečení [Azure Identity Protection](../identity-protection/overview-identity-protection.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle tohoto návodu, budete potřebovat:
 
@@ -136,7 +136,7 @@ Aplikaci AppProxyNativeAppSample jste teď zaregistrovali v Azure Active Directo
 
 ## <a name="configure-the-native-app-code"></a>Konfigurace nativního kódu aplikace
 
-Posledním krokem je konfigurace nativní aplikace. Následující fragment kódu ze souboru *Form1.cs* v ukázkové aplikaci NativeClient způsobí, že knihovna MSAL získá token pro vyžádání volání rozhraní API a připojí ho jako nosič k hlavičce aplikace.
+Posledním krokem je konfigurace nativní aplikace. Následující fragment kódu ze souboru *Form1. cs* v ukázkové aplikaci NativeClient způsobí, že knihovna MSAL získá token pro vyžádání volání rozhraní API a připojí ho jako nosič k hlavičce aplikace.
 
    ```
    // Acquire Access Token from AAD for Proxy Application

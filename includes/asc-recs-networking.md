@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 2c096953fd89b902d1567399e36fc0fbf1b89572
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466147"
 ---
 V této kategorii je **14** doporučení.
 
-|Doporučení |Popis |Závažnost |
+|Doporučení |Description |Závažnost |
 |---|---|---|
 |Přístup k účtům úložiště pomocí brány firewall a konfigurací virtuální sítě by měl být omezený. |Zkontrolujte nastavení přístupu k síti v nastavení brány firewall účtu úložiště. Doporučuje se nakonfigurovat Síťová pravidla, aby bylo možné získat přístup k účtu úložiště jenom aplikacím ze povolených sítí. Aby bylo možné v připojeních z konkrétních internetových nebo místních klientů přistupovat k provozu z konkrétních virtuálních sítí Azure nebo do rozsahů veřejných IP adres sítě.<br />(Související zásady: [účty úložiště by měly omezovat přístup k síti](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f34c877ad-507e-4c82-993e-3452a6e0ad3c).) |Nízká |
 |Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích. |Azure Security Center analyzovaly způsoby komunikace internetového provozu u virtuálních počítačů, které jsou uvedené níže, a zjistili jsme, že stávající pravidla v skupin zabezpečení sítě, která jsou k nim přidružená, jsou přesná, což vede k většímu potenciálnímu prostoru pro útok.<br>K tomu obvykle dochází, pokud tato IP adresa nekomunikuje pravidelně s tímto prostředkem. Další možností je, že IP adresa byla označena jako škodlivá Security Center zdroji informací o hrozeb. <a href="https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening">Víc se uč</a><br />(Související zásady: [doporučení adaptivního posílení zabezpečení sítě by se měla použít u virtuálních počítačů s internetem](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f08e6af2d-db70-460a-bfe9-d5bd474ba9d6).) |Vysoká |

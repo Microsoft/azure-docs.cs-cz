@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: eeb41967ac7e2b73bfb32933f7f019a5722fdc9b
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 72015dd23da60644c3ecb0bbe9616b35ff1acbcb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454428"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596782"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Kurz: použití dynamického šifrování DRM a služby doručování licencí
 
@@ -49,7 +49,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující položky:
 
@@ -103,7 +103,7 @@ V tomto kurzu vytvoříme vstup úlohy na základě souboru, který je ingestný
 
 ## <a name="wait-for-the-job-to-complete"></a>Čekání na dokončení úlohy
 
-Dokončení úlohy trvá déle. V takovém případě chcete být upozorněni. Následující ukázka kódu ukazuje, jak se má služba dotazovat na stav **úlohy**. Cyklické dotazování není doporučeným osvědčeným postupem pro produkční aplikace kvůli možné latenci. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid. Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
+Dokončení úlohy trvá déle. V takovém případě chcete být upozorněni. Následující ukázka kódu ukazuje, jak se má služba dotazovat na stav **úlohy**. Cyklické dotazování není doporučeným osvědčeným postupem pro produkční aplikace kvůli možné latenci. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid. Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](monitoring/job-state-events-cli-how-to.md).
 
 **Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud se úloha dokončí v rámci chyby, zobrazí se **chybový** stav. Pokud dojde ke zrušení úlohy, po dokončení operace se akce **zruší** a **zruší** .
 

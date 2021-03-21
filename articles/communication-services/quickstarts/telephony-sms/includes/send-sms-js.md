@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: bertong
 ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103622065"
 ---
 Začínáme s komunikačními službami Azure pomocí klientské knihovny služby Communications JavaScript pro službu SMS pro posílání zpráv SMS.
@@ -25,7 +25,7 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 
 [API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-js-pr/tree/feature/communication/sdk/communication/communication-sms) | [Package (NPM)](https://www.npmjs.com/package/@azure/communication-sms) | [Samples](#todo-samples)-->
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Aktivní LTS a verze LTS údržby (Doporučené 8.11.1 a 10.14.1).
