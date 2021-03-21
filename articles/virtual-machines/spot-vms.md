@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 0ed079dbfef50ae74914998c6b2e558b7e41aeae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fb53fc37227e040ed7bd7fc8e47de9aed538bc2e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101673949"
+ms.locfileid: "104721388"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>Použít Azure na místě Virtual Machines 
 
@@ -25,7 +25,7 @@ Množství dostupné kapacity se může lišit v závislosti na velikosti, oblas
 
 ## <a name="eviction-policy"></a>Zásady vyřazení
 
-Virtuální počítače je možné vyřadit na základě kapacity nebo maximální ceny, kterou jste nastavili. Při vytváření virtuálního počítače se službou Azure na místě můžete nastavit zásady vyřazení, aby se nastavilo zrušení *přidělení* (výchozí nastavení) nebo *odstranění*. 
+Virtuální počítače je možné vyřadit na základě kapacity nebo maximální ceny, kterou jste nastavili. Při vytváření virtuálního počítače se službou Azure na místě můžete nastavit zásady vyřazení, aby se *navráceno* (výchozí) nebo *Odstranit*. 
 
 Zásada zrušení *přidělení* přesune váš virtuální počítač do stavu Zastaveno (přidělení zrušeno), což vám umožní později ho znovu nasadit. Neexistuje však záruka, že přidělení bude úspěšné. Navrácené virtuální počítače se budou počítat s vaší kvótou a za základní disky se vám budou účtovat náklady na úložiště. 
 
@@ -58,9 +58,9 @@ Službu Azure spot Virtual Machines lze nasadit do jakékoli oblasti s výjimkou
 
 V současné době jsou podporovány následující [typy nabídek](https://azure.microsoft.com/support/legal/offer-details/) :
 
--   Smlouva Enterprise
--   003P kódu nabídky s průběžnými platbami
--   Financovan
+-   Smlouva Enterprise 
+-   Kód nabídky s průběžnými platbami (003P)
+-   Sponzorované (0036P a 0136P)
 - Pro poskytovatele cloudových služeb (CSP) se obraťte na svého partnera.
 
 

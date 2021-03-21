@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d1a7407c947c1c5bae1eed00acb0f216722f3d09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08243fd06de289941d8e6a9197ccb349614af056
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121030"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675953"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>Příprava mobilních aplikací na produkci
 
@@ -34,18 +34,9 @@ Pro každý typ knihovny Microsoft Authentication Library (MSAL) můžete najít
 - [MSAL wiki pro iOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
 - [Wiki MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
-## <a name="mitigate-and-investigate-issues"></a>Zmírnění a zkoumání problémů
-
-Pro lepší diagnostiku problémů ve vaší aplikaci Shromážděte data. Informace o typech dat, která můžete shromažďovat, najdete v tématu [protokolování v aplikacích MSAL](./msal-logging.md).
-
-Zde jsou některé návrhy pro shromažďování dat:
-
-- Uživatelé můžou požádat o pomoc, když budou mít problémy. Osvědčeným postupem je zaznamenat a dočasně ukládat protokoly. Zadejte umístění, kam mohou uživatelé nahrávat protokoly. MSAL poskytuje rozšíření protokolování pro zachycení podrobných informací o ověřování.
-
-- Pokud je telemetrie k dispozici, povolte ji prostřednictvím MSAL, abyste mohli shromažďovat data o tom, jak se uživatelé přihlásí k vaší aplikaci.
-
-## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
+
+## <a name="next-steps"></a>Další kroky
 
 Další ukázky najdete v tématu [desktopové a mobilní veřejné klientské aplikace](sample-v2-code.md#desktop-and-mobile-public-client-apps).

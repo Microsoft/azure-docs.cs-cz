@@ -4,10 +4,10 @@ description: Pochopte podporované služby a schéma událostí pro protokoly pr
 ms.topic: reference
 ms.date: 09/01/2020
 ms.openlocfilehash: 661cba2d78dbb176bb04e6831cf8e045a285535e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033091"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Společné schéma pro protokoly prostředků Azure a schématu pro konkrétní služby
@@ -22,7 +22,7 @@ Kombinace typu prostředku (k dispozici ve `resourceId` Vlastnosti) a `category`
 
 ## <a name="top-level-common-schema"></a>Společné schéma nejvyšší úrovně
 
-| Název | Požadováno/volitelné | Popis |
+| Name | Požadováno/volitelné | Description |
 |---|---|---|
 | time | Vyžadováno | Časové razítko (UTC) události. |
 | resourceId | Vyžadováno | ID prostředku prostředku, který vyvolal událost. Pro služby tenanta se jedná o formulář/tenants/tenant-ID/Providers/Provider-Name. |
@@ -79,9 +79,9 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | DDoS Protection | [Protokolování pro Azure DDoS Protection Standard](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Vyhrazená služba Power BI | [Protokolování Power BI Embedded v Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datový model pro Azure Backup](../../backup/backup-azure-reports-data-model.md)|
-| Search |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
+| Hledat |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
 | Service Bus |[Protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| Databáze SQL | [Protokolování Azure SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
+| SQL Database | [Protokolování Azure SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Schéma Traffic Managerho protokolu](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuální sítě | Schéma není k dispozici. |

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: d990deca3f435f0b1e3fbdd3388371a11813662a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 98f13df2c4da993147ba3ef4157340910fcbc5d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948236"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719972"
 ---
 V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syn
 
 Pokud chcete přeskočit přímo na vzorový kód, přečtěte si [ukázky rychlý Start pro Python](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python/text-to-speech) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -102,7 +102,7 @@ Pro mnoho scénářů ve vývoji aplikací pro rozpoznávání řeči pravděpod
 * Integrujte výsledek s jinými službami nebo rozhraními API.
 * Úprava zvukových dat, psaní vlastních `.wav` hlaviček atd.
 
-Tuto změnu je jednoduché provést v předchozím příkladu. Nejprve odeberte `AudioConfig` , protože budete spravovat chování výstupu ručně z tohoto bodu dále pro zvýšené řízení. Pak předejte `None` `AudioConfig` v `SpeechSynthesizer` konstruktoru. 
+Tuto změnu je jednoduché provést v předchozím příkladu. Nejprve odeberte `AudioConfig` , protože budete spravovat chování výstupu ručně z tohoto bodu dále pro zvýšené řízení. Pak předejte `None` `AudioConfig` v `SpeechSynthesizer` konstruktoru.
 
 > [!NOTE]
 > Předání `None` pro `AudioConfig` místo toho, aby ho nemuseli vynechat jako v příkladu výstupu mluvčího, ve výchozím nastavení nebude přehrávat zvuk na aktuálním aktivním výstupním zařízení.
@@ -206,3 +206,11 @@ Pokud chcete přepnout na neuronové hlas, změňte na `name` jednu z [možnost�
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>Získat události pozice obličeje
+
+Řeč může být dobrým způsobem, jak řídit animaci výrazů obličeje.
+Často se [visemes](../../../how-to-speech-synthesis-viseme.md) používají k reprezentování klíčových pozic v pozorovaném řeči, jako je například pozice sad LIP, vidlice a jazyka při vytváření konkrétního foném.
+Můžete se přihlásit k odběru události viseme v sadě Speech SDK.
+Pak můžete použít události viseme k animaci plochy znaku při přehrávání zvukového řeči.
+Naučte [se, jak získat události viseme](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

@@ -10,10 +10,10 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
 ms.openlocfilehash: b62c3c4be4fdffd9f509b86d248cd028518ae89a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181937"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby Soubory Azure pomocí služby Azure Import/Export
@@ -22,7 +22,7 @@ Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu
 
 Služba import/export podporuje pouze import souborů Azure do Azure Storage. Export souborů Azure se nepodporuje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před vytvořením úlohy importu pro přenos dat do souborů Azure pečlivě zkontrolujte a dokončete následující seznam požadovaných součástí. Musíte:
 

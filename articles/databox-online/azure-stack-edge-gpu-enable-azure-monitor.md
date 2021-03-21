@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: c2f66895fccd14dcffd8c5570f1d5f46933090aa
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439183"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Povolení Azure Monitor na zařízení GPU pro Azure Stack Edge pro
@@ -24,7 +24,7 @@ Monitorování kontejnerů na zařízení GPU Azure Stack Edge pro je velmi důl
 Tento článek popisuje kroky potřebné k povolení Azure Monitor na zařízení a shromáždění protokolů kontejneru v pracovním prostoru Log Analytics. Úložiště metrik Azure Monitor se v současnosti nepodporuje u zařízení s grafickým procesorem Azure Stack Edge pro. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete potřebovat:
 

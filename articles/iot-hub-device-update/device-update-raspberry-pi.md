@@ -7,10 +7,10 @@ ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
 ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102443450"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Kurz aktualizace zařízení pro Azure IoT Hub pomocí referenční image Malina 3 B +
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte, jak:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Přístup k IoT Hub. Doporučuje se použít úroveň S1 (Standard) nebo vyšší.
 
 ## <a name="download-image"></a>Stáhnout obrázek

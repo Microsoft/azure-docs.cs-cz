@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: alkohli
 ms.openlocfilehash: bdd44bf81e34b60ee648b71c6dc3bde5a96d3deb
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102443008"
 ---
 # <a name="proactive-log-collection-on-your-azure-stack-edge-device"></a>Proaktivní shromažďování protokolů na zařízení Azure Stack Edge
@@ -60,7 +60,7 @@ Ve výchozím nastavení je povoleno shromažďování proaktivního protokolu. 
 Po povolení kolekce proaktivního protokolu se protokoly odesílají automaticky, když se na zařízení zjistí jedna z následujících událostí:  
 
 
-|Výstraha/chyba/podmínka  |Popis  |
+|Výstraha/chyba/podmínka  |Description  |
 |---------|---------|
 |AcsUnhealthyCondition     |Služby konzistentní s Azure nejsou v pořádku.         |
 |IOTEdgeAgentNotRunningCondition      |Agent IoT Edge neběží.         |

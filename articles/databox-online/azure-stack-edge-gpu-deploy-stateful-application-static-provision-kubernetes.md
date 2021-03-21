@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: alkohli
 ms.openlocfilehash: 01ba8e1f22deb376fd461be24d3f66f0a7f5e1ae
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102610480"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Použití kubectl ke spuštění stavové aplikace Kubernetes s PersistentVolume na zařízení Azure Stack Edge pro
@@ -26,7 +26,7 @@ Tento postup je určený pro uživatele, kteří si zkontrolovali [Kubernetes ú
 Azure Stack Edge pro podporuje taky spouštění kontejnerů Azure SQL Edge a ty se dají nasadit podobným způsobem, jak je popsáno zde pro MySQL. Další informace najdete v tématu [Azure SQL Edge](../azure-sql-edge/overview.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct nasadit stavovou aplikaci, proveďte na svém zařízení a klientovi, který budete používat pro přístup k zařízení, následující požadavky:
 

@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199488"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607887"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Posílání zpráv z cloudu na zařízení ze služby IoT Hub
 
@@ -91,6 +91,8 @@ Jak je vysvětleno v [koncových bodech](iot-hub-devguide-endpoints.md), služba
 | UserId       | `{iot hub name}` |
 | Třída  | `application/vnd.microsoft.iothub.feedback.json` |
 
+Systém pošle zpětnou vazbu, když dávka dosáhne až 64 zpráv, nebo v 15 sekundách od posledního odeslání, podle toho, co nastane dřív. 
+
 Tělo je pole záznamů serializovaných ve formátu JSON, z nichž každá má následující vlastnosti:
 
 | Vlastnost           | Popis |
@@ -98,7 +100,7 @@ Tělo je pole záznamů serializovaných ve formátu JSON, z nichž každá má 
 | EnqueuedTimeUtc    | Časové razítko, které indikuje, kdy došlo k výsledku zprávy (například centrum přijalo zprávu o zpětné vazbě nebo původní zpráva vypršela) |
 | OriginalMessageId  | Parametr *MessageID* zprávy typu cloud-zařízení, na kterou se vztahují tyto informace o zpětné vazbě |
 | StatusCode         | Požadovaný řetězec, který se používá ve zprávách zpětné vazby, které jsou generovány službou IoT Hub: <br/> *Success* <br/> *Platnost vypršela* <br/> *DeliveryCountExceeded* <br/> *Zamítnuto* <br/> *Odstraněna* |
-| Popis        | Hodnoty řetězce pro *StatusCode* |
+| Description        | Hodnoty řetězce pro *StatusCode* |
 | DeviceId           | *DeviceID* cílového zařízení zprávy typu cloud-zařízení, na které se vztahuje tato zpětná vazba |
 | DeviceGenerationId | *DeviceGenerationId* cílového zařízení zprávy typu cloud-zařízení, na které se vztahuje tato zpětná vazba |
 

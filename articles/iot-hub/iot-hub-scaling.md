@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 ms.openlocfilehash: 7940ac3a67a0562aa0b7a21690deec30220a48a3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102434708"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Volba vhodné vrstvy služby IoT Hub pro vaše řešení
@@ -42,17 +42,17 @@ Pro jednu IoT Hub lze zvolit pouze jeden typ [edice](https://azure.microsoft.com
 
 | Schopnost | Základní úroveň | Úroveň Free/Standard |
 | ---------- | ---------- | ------------- |
-| [Telemetrie ze zařízení do cloudu](iot-hub-devguide-messaging.md) | Ano | Ano |
-| [Identita vázaná na zařízení](iot-hub-devguide-identity-registry.md) | Ano | Ano |
-| [Směrování zpráv](iot-hub-devguide-messages-read-custom.md), [rozšiřování zpráv](iot-hub-message-enrichments-overview.md)a [integrace Event Grid](iot-hub-event-grid.md) | Ano | Ano |
-| [Protokoly HTTP, AMQP a MQTT](iot-hub-devguide-protocols.md) | Ano | Ano |
-| [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Ano | Ano |
-| [Monitorování a diagnostika](monitor-iot-hub.md) | Ano | Ano |
-| [Zasílání zpráv z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md) |   | Ano |
-| [Vlákna zařízení](iot-hub-devguide-device-twins.md), [vlákna modulu](iot-hub-devguide-module-twins.md)a [Správa zařízení](iot-hub-device-management-overview.md) |   | Ano |
-| [Datové proudy zařízení (Preview)](iot-hub-device-streams-overview.md) |   | Ano |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ano |
-| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Ano |
+| [Telemetrie ze zařízení do cloudu](iot-hub-devguide-messaging.md) | Yes | Yes |
+| [Identita vázaná na zařízení](iot-hub-devguide-identity-registry.md) | Yes | Yes |
+| [Směrování zpráv](iot-hub-devguide-messages-read-custom.md), [rozšiřování zpráv](iot-hub-message-enrichments-overview.md)a [integrace Event Grid](iot-hub-event-grid.md) | Yes | Yes |
+| [Protokoly HTTP, AMQP a MQTT](iot-hub-devguide-protocols.md) | Yes | Yes |
+| [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Yes | Yes |
+| [Monitorování a diagnostika](monitor-iot-hub.md) | Yes | Yes |
+| [Zasílání zpráv z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md) |   | Yes |
+| [Vlákna zařízení](iot-hub-devguide-device-twins.md), [vlákna modulu](iot-hub-devguide-module-twins.md)a [Správa zařízení](iot-hub-device-management-overview.md) |   | Yes |
+| [Datové proudy zařízení (Preview)](iot-hub-device-streams-overview.md) |   | Yes |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
+| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
 
 IoT Hub také nabízí bezplatnou úroveň, která je určena pro testování a vyhodnocení. Má všechny možnosti úrovně Standard, ale omezené odchylky pro zasílání zpráv. Nemůžete upgradovat z úrovně Free na Basic nebo Standard.
 
@@ -77,37 +77,37 @@ Rozdíl v podporovaných možnostech mezi úrovněmi Basic a Standard IoT Hub zn
 
 | Rozhraní API | Základní úroveň | Úroveň Free/Standard |
 | --- | ---------- | ------------- |
-| [Odstranit zařízení](/javascript/api/azure-iot-digitaltwins-service/registrymanager#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | Ano | Ano |
-| [Získat zařízení](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | Ano | Ano |
-| [Odstranit modul](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) | Ano | Ano |
-| [Získat modul](/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule) | Ano | Ano |
-| [Získat statistiku registru](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getdevicestatistics-msrest-requestoptionsbase-) | Ano | Ano |
-| [Získat statistiku služeb](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getservicestatistics-msrest-requestoptionsbase-) | Ano | Ano |
-| [Vytvořit nebo aktualizovat zařízení](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatedevice-string--device--servicecallback-device--) | Ano | Ano |
-| [Vytvořit nebo aktualizovat modul](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | Ano | Ano |
-| [IoT Hub dotazů](/dotnet/api/microsoft.azure.devices.registrymanager) | Ano | Ano |
-| [Vytvořit soubor SAS SAS pro nahrání souboru](/rest/api/iothub/device/createfileuploadsasuri) | Ano | Ano |
-| [Přijmout oznámení vázané na zařízení](/rest/api/iothub/device/receivedeviceboundnotification) | Ano | Ano |
-| [Událost odeslání zařízení](/rest/api/iothub/device/senddeviceevent) | Ano | Ano |
+| [Odstranit zařízení](/javascript/api/azure-iot-digitaltwins-service/registrymanager#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | Yes | Yes |
+| [Získat zařízení](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | Yes | Yes |
+| [Odstranit modul](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) | Yes | Yes |
+| [Získat modul](/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule) | Yes | Yes |
+| [Získat statistiku registru](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getdevicestatistics-msrest-requestoptionsbase-) | Yes | Yes |
+| [Získat statistiku služeb](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getservicestatistics-msrest-requestoptionsbase-) | Yes | Yes |
+| [Vytvořit nebo aktualizovat zařízení](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatedevice-string--device--servicecallback-device--) | Yes | Yes |
+| [Vytvořit nebo aktualizovat modul](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | Yes | Yes |
+| [IoT Hub dotazů](/dotnet/api/microsoft.azure.devices.registrymanager) | Yes | Yes |
+| [Vytvořit soubor SAS SAS pro nahrání souboru](/rest/api/iothub/device/createfileuploadsasuri) | Yes | Yes |
+| [Přijmout oznámení vázané na zařízení](/rest/api/iothub/device/receivedeviceboundnotification) | Yes | Yes |
+| [Událost odeslání zařízení](/rest/api/iothub/device/senddeviceevent) | Yes | Yes |
 | Událost odeslání modulu | Jenom AMQP a MQTT | Jenom AMQP a MQTT |
-| [Aktualizovat stav nahrávání souboru](/rest/api/iothub/device/updatefileuploadstatus) | Ano | Ano |
-| [Operace hromadného zařízení](/javascript/api/azure-iot-digitaltwins-service/registrymanager#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Ano, s výjimkou možností IoT Edge | Ano |
-| [Zrušit import úlohy exportu](/rest/api/iothub/service/jobs/cancelimportexportjob) | Ano | Ano |
-| [Vytvořit úlohu exportu importu](/rest/api/iothub/service/jobs/createimportexportjob) | Ano | Ano |
-| [Získat úlohu exportu importu](/rest/api/iothub/service/jobs/getimportexportjob) | Ano | Ano |
-| [Získat úlohy exportu importu](/rest/api/iothub/service/jobs/getimportexportjobs) | Ano | Ano |
-| [Vyprázdnit frontu příkazů](/javascript/api/azure-iot-digitaltwins-service/registrymanager#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Ano |
-| [Získat dvojitou dvojici zařízení](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) |   | Ano |
-| [Získat nevlákenný modul](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Ano |
-| [Vyvolat metodu zařízení](./iot-hub-devguide-direct-methods.md) |   | Ano |
-| [Aktualizovat dvojitou dvojici zařízení](./iot-hub-devguide-device-twins.md) |   | Ano |
-| [Aktualizovat modul na vlákna](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Ano |
-| [Opustit oznámení vázané na zařízení](/rest/api/iothub/device/abandondeviceboundnotification) |   | Ano |
-| [Dokončit oznámení vázané na zařízení](/rest/api/iothub/device/completedeviceboundnotification) |   | Ano |
-| [Zrušit úlohu](/rest/api/media/jobs/canceljob) |   | Ano |
-| [Vytvoření úlohy](/rest/api/media/jobs/create) |   | Ano |
-| [Získat úlohu](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob) |   | Ano |
-| [Dotazy na úlohy](/javascript/api/azure-iot-digitaltwins-service/jobclient#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Ano |
+| [Aktualizovat stav nahrávání souboru](/rest/api/iothub/device/updatefileuploadstatus) | Yes | Yes |
+| [Operace hromadného zařízení](/javascript/api/azure-iot-digitaltwins-service/registrymanager#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Ano, s výjimkou možností IoT Edge | Yes |
+| [Zrušit import úlohy exportu](/rest/api/iothub/service/jobs/cancelimportexportjob) | Yes | Yes |
+| [Vytvořit úlohu exportu importu](/rest/api/iothub/service/jobs/createimportexportjob) | Yes | Yes |
+| [Získat úlohu exportu importu](/rest/api/iothub/service/jobs/getimportexportjob) | Yes | Yes |
+| [Získat úlohy exportu importu](/rest/api/iothub/service/jobs/getimportexportjobs) | Yes | Yes |
+| [Vyprázdnit frontu příkazů](/javascript/api/azure-iot-digitaltwins-service/registrymanager#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Yes |
+| [Získat dvojitou dvojici zařízení](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) |   | Yes |
+| [Získat nevlákenný modul](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Yes |
+| [Vyvolat metodu zařízení](./iot-hub-devguide-direct-methods.md) |   | Yes |
+| [Aktualizovat dvojitou dvojici zařízení](./iot-hub-devguide-device-twins.md) |   | Yes |
+| [Aktualizovat modul na vlákna](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Yes |
+| [Opustit oznámení vázané na zařízení](/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
+| [Dokončit oznámení vázané na zařízení](/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
+| [Zrušit úlohu](/rest/api/media/jobs/canceljob) |   | Yes |
+| [Vytvoření úlohy](/rest/api/media/jobs/create) |   | Yes |
+| [Získat úlohu](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob) |   | Yes |
+| [Dotazy na úlohy](/javascript/api/azure-iot-digitaltwins-service/jobclient#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Yes |
 
 ## <a name="message-throughput"></a>Propustnost zprávy
 

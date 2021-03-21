@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102433246"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
@@ -20,7 +20,7 @@ Můžete spravovat [modely](concepts-models.md) , které vaše instance digitál
 
 Mezi operace správy patří nahrávání, ověřování, načítání a odstraňování modelů. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -142,7 +142,7 @@ Stav vyřazení modelu z provozu je obsažen v `ModelData` záznamech vrácenýc
 
 Můžete odstranit všechny modely ve vaší instanci najednou, nebo je můžete udělat jednotlivě.
 
-Příklad, jak odstranit všechny modely, najdete v ukázkové aplikaci použité v tomto [*kurzu: Prozkoumejte základy s ukázkovou klientskou aplikací*](tutorial-command-line-app.md). Soubor *CommandLoop.cs* to dělá ve `CommandDeleteAllModels` funkci.
+Příklad, jak odstranit všechny modely, najdete v ukázkové aplikaci použité v tomto [*kurzu: Prozkoumejte základy s ukázkovou klientskou aplikací*](tutorial-command-line-app.md). Tento soubor *CommandLoop. cs* funguje ve `CommandDeleteAllModels` funkci.
 
 Zbývající část této části rozdělí model na více podrobností a ukazuje, jak to udělat pro jednotlivý model.
 

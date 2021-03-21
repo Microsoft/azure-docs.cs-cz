@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 129a718175fdda80d4d6852e3d3b4cea609da64d
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492404"
 ---
 # <a name="metrics-overview"></a>Přehled metrik
@@ -41,7 +41,7 @@ Další informace o podporovaných typech agregace a agregacích časových řad
 
 V metrikách žádostí rozhraní API chatu jsou k dispozici následující operace:
 
-| Operace/trasa    | Popis                                                                                    |
+| Operace/trasa    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | GetChatMessage       | Získá zprávu podle ID zprávy. |
 | ListChatMessages     | Načte seznam zpráv chatu z vlákna. |
@@ -68,7 +68,7 @@ Pokud se u operace, která není rozpoznaná, dostane požadavek, obdržíte odp
 
 V metrikách žádostí na rozhraní API služby SMS jsou k dispozici následující operace:
 
-| Operace/trasa    | Popis                                                                                    |
+| Operace/trasa    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | SMSMessageSent       | Odešle zprávu SMS. |
 | SMSDeliveryReportsReceived     | Načte sestavy doručení SMS. |
@@ -81,7 +81,7 @@ V metrikách žádostí na rozhraní API služby SMS jsou k dispozici následuj�
 
 V metrikách žádosti rozhraní API pro ověřování jsou dostupné tyto operace:
 
-| Operace/trasa    | Popis                                                                                    |
+| Operace/trasa    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | CreateIdentity       | Vytvoří identitu představující jednoho uživatele. |
 | DeleteIdentity       | Odstraní identitu. |

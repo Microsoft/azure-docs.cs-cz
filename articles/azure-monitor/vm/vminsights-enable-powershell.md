@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: b51a49abda76a4d1433336cf73dc9a0dd6e40787
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031855"
 ---
 # <a name="enable-vm-insights-using-powershell"></a>Povolení přehledů virtuálních počítačů pomocí PowerShellu
@@ -18,7 +18,7 @@ Tento článek popisuje, jak ve virtuálních počítačích Azure povolit přeh
 - Virtuální počítač Azure
 - Sada škálování virtuálních počítačů Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](./vminsights-configure-workspace.md).
 - V části [podporované operační systémy](./vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 

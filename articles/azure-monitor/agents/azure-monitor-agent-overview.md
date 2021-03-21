@@ -4,13 +4,14 @@ description: Přehled agenta Azure Monitor (AMA), který shromažďuje data moni
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 0487e5bd8109c02605e785e74d45589dd5fde5b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/16/2021
+ms.custom: references_regions
+ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039593"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608210"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Přehled agenta Azure Monitor (Preview)
 Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného operačního systému virtuálních počítačů a doručuje je do Azure Monitor. V tomto článku najdete přehled agenta Azure Monitor, včetně postupu jeho instalace a konfigurace shromažďování dat.
@@ -60,6 +61,35 @@ Během veřejné verze Preview agenta Azure Monitor platí následující omezen
   - *. control.monitor.azure.com
 
 
+## <a name="supported-regions"></a>Podporované oblasti
+Agent Azure Monitor aktuálně podporuje prostředky v následujících oblastech:
+
+- Východní Asie
+- Southeast Asia
+- Austrálie – střed
+- Austrálie – východ
+- Austrálie – jihovýchod
+- Střední Kanada
+- Severní Evropa
+- Západní Evropa
+- Francie – střed
+- Německo – středozápad
+- Indie – střed
+- Japonsko – východ
+- Jižní Korea – střed
+- Jižní Afrika – sever
+- Švýcarsko – sever
+- Spojené království – jih
+- Spojené království – západ
+- Střední USA
+- East US
+- USA – východ 2
+- USA – středosever
+- Středojižní USA
+- USA – západ
+- Západní USA 2
+- USA – středozápad
+
 ## <a name="coexistence-with-other-agents"></a>Koexistence s ostatními agenty
 Agent Azure Monitor může společně s existujícími agenty fungovat, abyste mohli nadále používat stávající funkce během hodnocení nebo migrace. To je důležité hlavně z důvodu omezení ve verzi Public Preview v části Podpora stávajících řešení. Měli byste být opatrní při shromažďování duplicitních dat, protože by to mohlo zkosit výsledky dotazu a mít za následek další poplatky za přijímání a uchovávání dat.
 
@@ -75,7 +105,7 @@ V následující tabulce jsou uvedeny typy dat, které můžete v současnosti s
 
 Agent Azure Monitor odesílá data do Azure Monitor metrik nebo Log Analytics pracovní prostor podporující protokoly Azure Monitor.
 
-| Zdroj dat | Cíle | Popis |
+| Zdroj dat | Cíle | Description |
 |:---|:---|:---|
 | Výkon        | Metriky Azure Monitoru<br>Pracovní prostor služby Log Analytics | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
 | Protokoly událostí systému Windows | Pracovní prostor služby Log Analytics | Informace odesílané systému protokolování událostí systému Windows. |

@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: daa89380894a57e58191edd95303a2160846da04
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492689"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Řešení potíží v komunikačních službách Azure
@@ -161,7 +161,7 @@ V Android Studio přejděte do Průzkumníka souborů zařízení tak, že vyber
 
 Služba Azure Communication Services, která volá klientskou knihovnu, používá následující chybové kódy, které vám pomůžou vyřešit problémy s voláním. Tyto kódy chyb jsou zpřístupněny prostřednictvím `call.callEndReason` vlastnosti po ukončení volání.
 
-| Kód chyby | Popis | Akce, která se má provést |
+| Kód chyby | Description | Akce, která se má provést |
 | -------- | ---------------| ---------------|
 | 403 | Zakázáno/ověřování se nezdařilo. | Ujistěte se, že token komunikačních služeb je platný a nevypršela jeho platnost. |
 | 404 | Volání nebylo nalezeno. | Ujistěte se, že počet volání (nebo volání, které se připojujete) existuje. |

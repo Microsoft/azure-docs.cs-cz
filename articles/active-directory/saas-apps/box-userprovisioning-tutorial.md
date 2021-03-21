@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: jeedes
 ms.openlocfilehash: df4031a590eb4547d4327cebe96ccbe63d21785a
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102437804"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace boxu pro Automatické zřizování uživatelů
@@ -24,7 +24,7 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v poli a Azure A
 > [!NOTE]
 > Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s polem budete potřebovat následující položky:
 

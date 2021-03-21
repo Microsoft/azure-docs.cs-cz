@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 4a0d3e017f36f580024b77fbd23145d7447f336d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 86ea4ce4d596875e455d7b86250882713a14337f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564401"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720147"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
 
@@ -136,14 +136,16 @@ Některé z těchto souborů se napíší jenom jednou, když se vytvoří uzly 
 
 Pro každý úkol, který běží na uzlu, jako je stdout a stderr, se zapisují jiné soubory. Pokud je ve stejném uzlu spuštěn velký počet úloh nebo jsou soubory úlohy příliš velké, může doplňovat dočasnou jednotku.
 
-Velikost dočasné jednotky závisí na velikosti virtuálního počítače. Jediným aspektem při výběru velikosti virtuálního počítače je zajistit, aby na dočasném disku bylo dost místa.
+Po spuštění uzlu se navíc na disku s operačním systémem pro vytváření uživatelů vyžaduje malé množství místa.
+
+Velikost dočasné jednotky závisí na velikosti virtuálního počítače. Při výběru velikosti virtuálního počítače je potřeba zvážit, že dočasná jednotka má dostatek místa pro plánované zatížení.
 
 - V Azure Portal při přidávání fondu je možné zobrazit úplný seznam velikostí virtuálních počítačů a sloupec "velikost disku prostředku".
 - Články popisující všechny velikosti virtuálních počítačů mají tabulky se sloupcem dočasné úložiště; například [výpočetní optimalizované velikosti virtuálních počítačů](../virtual-machines/sizes-compute.md)
 
 Pro soubory vytvářené jednotlivými úlohami je možné určit dobu uchovávání dat pro každou úlohu, která určuje, jak dlouho jsou soubory úlohy zachované, než se automaticky vyčistí. Dobu uchovávání můžete snížit, abyste snížili požadavky na úložiště.
 
-Pokud dojde volné místo na dočasném disku (nebo se velmi blízko z místa), uzel se přesune do [nepoužitelného](/rest/api/batchservice/computenode/get#computenodestate) stavu a bude hlášena chyba uzlu s oznámením, že disk je plný.
+Pokud dojde místo na dočasném nebo operačním systému mimo prostor (nebo je velmi blízko volného místa), uzel se přesune do [nepoužitelného](/rest/api/batchservice/computenode/get#computenodestate) stavu a v případě chyby uzlu se zobrazí zpráva s oznámením, že disk je plný.
 
 Pokud si nejste jistí, co zabírá místo na uzlu, vyzkoušejte vzdálenou komunikaci uzlu a prozkoumání ručně, kde se místo dokončí. Můžete také využít [rozhraní API soubory služby Batch](/rest/api/batchservice/file/listfromcomputenode) k prohlédnutí souborů ve spravovaných složkách služby Batch (například výstupy úloh). Všimněte si, že toto rozhraní API obsahuje jenom soubory ve spravovaných adresářích Batch. Pokud vaše úkoly vytvořily soubory jinde, neuvidíte je.
 

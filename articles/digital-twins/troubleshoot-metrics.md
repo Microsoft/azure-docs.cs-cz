@@ -8,10 +8,10 @@ ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 63817c8a65678579ce535a3c2e667e4eb0971a63
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102434062"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Řešení potíží se službou Azure Digital autovlákna: metriky
@@ -55,7 +55,7 @@ Tyto metriky můžete nakonfigurovat tak, aby se mohly sledovat při přístupu 
 
 Pokud ho chcete nastavit, použijte funkci [výstrahy](troubleshoot-alerts.md) v Azure monitor. Můžete definovat prahové hodnoty pro tyto metriky, abyste zobrazili upozornění, když metrika dosáhne určitého procenta jeho publikovaného limitu.
 
-| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | TwinCount | Počet zdvojených (Náhled) | Počet | Celkem | Celkový počet vláken v instanci digitálních vláken Azure Pomocí této metriky můžete určit, jestli se k [limitu služby](reference-service-limits.md#functional-limits) přiblížíte, aby se dosáhlo maximálního počtu vláken povolených na jednu instanci. |  Žádné |
 | ModelCount | Počet modelů (Preview) | Počet | Celkem | Celkový počet modelů v instanci digitálních vláken Azure Pomocí této metriky můžete určit, jestli se blížíte [limitu služby](reference-service-limits.md#functional-limits) pro maximální počet modelů povolených na jednu instanci. | Žádné |
@@ -64,7 +64,7 @@ Pokud ho chcete nastavit, použijte funkci [výstrahy](troubleshoot-alerts.md) v
 
 Metriky, které se musí dělat s požadavky rozhraní API:
 
-| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | Žádosti rozhraní API | Počet | Celkem | Počet požadavků rozhraní API provedených pro digitální vlákna čtení, zápisu, odstranění a dotazování. |  Přihlašovací <br>NázevOperace <br>Protokol <br>Stavový kód, <br>Třída stavového kódu, <br>Stavový text |
 | ApiRequestsFailureRate | Frekvence neúspěšných požadavků rozhraní API | Procento | Průměr | Procento požadavků rozhraní API, které služba obdrží pro vaši instanci, která poskytuje kód odpovědi interní chyby (500) pro digitální vlákna čtení, zápisu, odstranění a dotazování. | Přihlašovací <br>NázevOperace <br>Protokol <br>Stavový kód, <br>Třída stavového kódu, <br>Stavový text
@@ -74,7 +74,7 @@ Metriky, které se musí dělat s požadavky rozhraní API:
 
 Metriky, které je potřeba provést s fakturací:
 
-| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Operace s rozhraním API pro fakturaci | Počet | Celkem | Metrika fakturace pro počet všech požadavků rozhraní API provedených vůči službě Azure Digital requests. | Meter ID |
 | BillingMessagesProcessed | Zpracované účtovací zprávy | Počet | Celkem | Metrika fakturace počtu zpráv odeslaných z digitálních vláken Azure do externích koncových bodů.<br><br>Aby bylo možné považovat za jednu zprávu pro účely účtování, datová část nesmí být větší než 1 KB. Datové části větší než tato se budou počítat jako další zprávy v přírůstcích po 1 KB (takže zpráva mezi 1 a 2 KB se bude počítat jako 2 zprávy, mezi 2 a 3 KB budou 3 zprávy atd.).<br>Toto omezení platí také pro odpovědi, takže volání, které vrátí 1,5 KB v těle odpovědi, se například bude účtovat jako 2 operace. | Meter ID |
@@ -86,7 +86,7 @@ Další podrobnosti o tom, jak se účtují digitální vlákna Azure, najdete v
 
 Metriky, které se musí dělat s daty příchozího přenosu dat:
 
-| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | Události příchozího přenosu dat | Počet | Celkem | Počet příchozích událostí telemetrie do digitálních vláken Azure. | Výsledek |
 | IngressEventsFailureRate | Frekvence neúspěšných událostí příchozího přenosu dat | Procento | Průměr | Procento příchozích událostí telemetrie, pro které služba vrací kód odpovědi vnitřní chyba (500). | Výsledek |
@@ -96,7 +96,7 @@ Metriky, které se musí dělat s daty příchozího přenosu dat:
 
 Metriky, které se musí dělat s směrováním:
 
-| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Popis | Dimenze |
+| Metric | Zobrazovaný název metriky | Jednotka | Typ agregace| Description | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | Směrované zprávy | Počet | Celkem | Počet zpráv směrovaných do služby Azure Endpoint koncových bodů, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |
 | RoutingFailureRate | Frekvence neúspěšných směrování | Procento | Průměr | Procento událostí, kvůli kterým dojde k chybě při směrování z digitálních vláken Azure do služby Azure Endpoint Services, jako je například centrum událostí, Service Bus nebo Event Grid. | Typ koncového bodu, <br>Výsledek |

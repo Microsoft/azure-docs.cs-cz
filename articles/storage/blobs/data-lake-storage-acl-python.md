@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: ba864aa1aa2462f21e05ab5e779c8e715d6bb973
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100654090"
 ---
 # <a name="use-python-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Použití Pythonu ke správě seznamů ACL v Azure Data Lake Storage Gen2
@@ -24,7 +24,7 @@ Dědičnost seznamů ACL je již k dispozici pro nové podřízené položky, kt
 
 [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-file-datalake/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  |  [Rekurzivní ukázky](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)  |  seznamů ACL Reference k rozhraní [API](/python/api/azure-storage-file-datalake/azure.storage.filedatalake)  |  Mapování Gen1 na [Gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-python/issues)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -211,6 +211,6 @@ Příklad, který zpracovává seznam ACL rekurzivně v dávkách zadáním veli
 - [ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
 - [Mapování Gen1 na Gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 - [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-- [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-python/issues)
+- [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-sdk-for-python/issues)
 - [Model řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)
 - [Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

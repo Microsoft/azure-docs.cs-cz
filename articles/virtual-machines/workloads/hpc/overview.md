@@ -6,14 +6,14 @@ ms.author: amverma
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: overview
-ms.date: 07/29/2020
+ms.date: 03/18/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 15d05632e5ebf6e45a61adebbbbf647efca2a1a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 65b37a8c07e083f5e9809812e2d4446cc48717d1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666896"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720589"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>Vysoce výkonné výpočetní prostředí na InfiniBand s povolenými virtuálními počítači řady H-Series a N-Series
 
@@ -32,19 +32,19 @@ Další informace o nastavení InfiniBand na virtuálních počítačích s podp
 
 ### <a name="message-passing-interface"></a>Rozhraní pro předávání zpráv
 
-Povolené rozhraní SR-IOV s podporou H-Series a N-series podporují skoro všechny MPI knihovny a verze. Některé z nejběžnějších podporovaných knihoven MPI jsou: Intel MPI, OpenMPs, MPICH, MVAPICH2, Platform MPI a všechny operace vzdáleného přímého přístupu do paměti (RDMA).
+Povolené rozhraní SR-IOV s podporou H-Series a N-series podporují skoro všechny MPI knihovny a verze. Některé z nejčastěji používaných knihoven MPI jsou: Intel MPI, OpenMPs, HPC-X, MVAPICH2, MPICH, Platform MPI. Všechny operace vzdáleného přímého přístupu do paměti (RDMA) jsou podporovány.
 Další informace o instalaci různých podporovaných knihoven MPI a jejich optimální konfiguraci najdete v tématu [Nastavení MPI](setup-mpi.md) .
 
 ## <a name="get-started"></a>Začínáme
 
 Prvním krokem je výběr typu virtuálních počítačů [řady H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) optimální pro úlohy na základě specifikací virtuálních počítačů a [Možnosti RDMA](../../sizes-hpc.md#rdma-capable-instances).
 Potom nakonfigurujte virtuální počítač tak, že povolíte InfiniBand. Existují různé metody, včetně použití optimalizovaných imagí virtuálních počítačů s vloženými ovladačů. Podrobnosti najdete v tématu [optimalizace pro Linux](configure.md) a [Povolení InfiniBand](enable-infiniband.md) .
-Pro úlohy distribuovaných uzlů, které jsou pro úlohy distribuovaného uzlu třetí, je důležité vybrat a nakonfigurovat MPI. Podrobnosti najdete v tématu [Nastavení MPI](setup-mpi.md) .
-Čtvrtá, z hlediska výkonu a škálovatelnosti můžete optimálně nakonfigurovat úlohy podle pokynů, které jsou specifické pro rodinu virtuálních počítačů, jako jsou například přehledy v rámci řady [7000](hb-series-overview.md) a [Přehled pro řady HC](hc-series-overview.md).
+Třetí pro úlohy distribuovaných uzlů volba a konfigurace MPI je kritická. Podrobnosti najdete v tématu [Nastavení MPI](setup-mpi.md) .
+Čtvrtá, z hlediska výkonu a škálovatelnosti můžete optimálně nakonfigurovat úlohy podle pokynů, které jsou specifické pro rodinu virtuálních počítačů, jako jsou například [HBv3-Series Overview](hbv3-series-overview.md) a [HC-Series Overview](hc-series-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [konfiguraci a optimalizaci](configure.md) virtuálních počítačů řady [H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) s podporou InfiniBand.
-- Seznamte se s přehledem a [řadou HC](hc-series-overview.md) - [Series](hb-series-overview.md) – přehled s optimální konfigurací úloh pro zajištění výkonu a škálovatelnosti.
-- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- V přehledu [HBv3-Series](hb-series-overview.md) Overview a [HC-Series](hc-series-overview.md) najdete informace o optimální konfiguraci úloh pro zajištění výkonu a škálovatelnosti.
+- Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

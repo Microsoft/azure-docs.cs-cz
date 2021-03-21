@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
 ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102521233"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Postup vytvoření sdílené složky systému souborů NFS
@@ -24,7 +24,7 @@ Sdílené složky Azure jsou plně spravované sdílené složky, které jsou v 
 ### <a name="regional-availability"></a>Regionální dostupnost
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Ke sdíleným složkám NFS se dá dostat jenom z důvěryhodných sítí. Připojení ke sdílené složce systému souborů NFS musí pocházet z jednoho z následujících zdrojů:
     - Buď [vytvořte privátní koncový bod](storage-files-networking-endpoints.md#create-a-private-endpoint) (doporučeno), nebo [omezte přístup ke svému veřejnému koncovému bodu](storage-files-networking-endpoints.md#restrict-public-endpoint-access).
     - [Nakonfigurujte síť VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md).

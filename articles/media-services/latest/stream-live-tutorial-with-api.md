@@ -23,7 +23,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující položky:
 
@@ -57,7 +57,7 @@ Soubor. gitignore je již nakonfigurován, aby nedocházelo k publikování obsa
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Kontrola kódu, který provádí živé streamování
 
-Tato část prověřuje funkce definované v souboru [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) projektu *LiveEventWithDVR* .
+Tato část prověřuje funkce definované v souboru [program. cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) projektu *LiveEventWithDVR* .
 
 Ukázka vytvoří jedinečnou příponu pro každý prostředek, aby nedošlo ke kolizi názvů, pokud spustíte ukázku několikrát bez vyčištění.
 

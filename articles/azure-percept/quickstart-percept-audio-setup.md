@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 02/18/2021
 ms.custom: template-quickstart
 ms.openlocfilehash: 660f03ce248a27a00fdd443964fbdba2fe3adeb0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179268"
 ---
 # <a name="azure-percept-audio-setup"></a>Nastavení služby Azure Percept audio
 
 Azure Percept audio funguje se službou Azure Percept DK mimo box. Nevyžaduje se žádné jedinečné nastavení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Percept DK (DevKit)
 - Zvuk Azure Percept

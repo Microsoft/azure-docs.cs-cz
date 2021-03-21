@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/30/2020
 ms.openlocfilehash: 7302f61fce6763fdbb41c2b4899dea749ac3225f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031068"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Připojit Configuration Manager k Azure Monitor
@@ -18,7 +18,7 @@ Prostředí Microsoft Endpoint Configuration Manager můžete připojit, aby se 
 > [!IMPORTANT]
 > Od verze Configuration Manager 2010 se tato funkce už nepoužívá.<!-- 8269855 --> Další informace najdete v tématu [odebrané a zastaralé funkce pro Configuration Manager](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Azure Monitor podporuje Configuration Manager aktuální větev verze 1606 a vyšší.
 

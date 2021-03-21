@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/15/2021
 ms.openlocfilehash: 91569780aa71861e07c7e96bec5eac879642760d
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103496214"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům z Azure Portal
 
 V Azure Portal můžete nakonfigurovat, vypsat a stáhnout [protokoly pomalých dotazů Azure Database for MySQL](concepts-server-logs.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Postup v tomto článku vyžaduje, abyste měli [Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md).
 
 ## <a name="configure-logging"></a>Konfigurovat protokolování

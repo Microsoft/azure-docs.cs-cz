@@ -8,18 +8,18 @@ ms.author: ddematheu2
 ms.date: 03/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 41d959468e3183af00d2ab514e7c1bf0a134a1f8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: bb70f799a308282a20a5b76ea841c3a1ae5e8b49
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490466"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612201"
 ---
 ## <a name="download-code"></a>Stáhnout kód
 
 Najděte finální kód pro tento rychlý Start na [GitHubu](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/trusted-authentication-service) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Visual Studio Code](https://code.visualstudio.com/) na jedné z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms)
@@ -104,7 +104,7 @@ const connectionString = 'INSERT YOUR RESOURCE CONNECTION STRING'
 
 Dále upravíte naši původní funkci k vygenerování `User Access Tokens` .
 
-`User Access Tokens` jsou generovány vytvořením uživatele z `createUser` metody. Po vytvoření uživatele můžeme použít `issueToken` metodu k vygenerování tokenu pro tohoto uživatele, který vrátí funkce Azure.
+`User Access Tokens` jsou generovány vytvořením uživatele z `createUser` metody. Po vytvoření uživatele můžeme použít `getToken` metodu k vygenerování tokenu pro tohoto uživatele, který vrátí funkce Azure.
 
 V tomto příkladu nastavíme rozsah tokenu na `voip` . Pro vaši aplikaci můžou být nutné další obory. Další informace o [oborech](../../quickstarts/access-tokens.md)
 
@@ -114,7 +114,7 @@ module.exports = async function (context, req) {
 
     const user = await tokenClient.createUser();
 
-    const userToken = await tokenClient.issueToken(user, ["voip"]);
+    const userToken = await tokenClient.getToken(user, ["voip"]);
 
     context.res = {
         body: userToken

@@ -13,19 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/02/2019
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e8778e50dcb881647696c6e901bf1058b9d6ac43
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95996555"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720334"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Změna hesla účtu služby ADSync
 Změníte-li heslo účtu služby ADSync, synchronizační služba nebude moci správně spustit, dokud neodstraníte šifrovací klíč a znovu znovu spustíte heslo účtu služby ADSync. 
+
+>[!IMPORTANT]
+> Použijete-li příkaz připojit se sestavou z 2017. března nebo staršího, neměli byste heslo resetovat na účet služby, protože systém Windows odstraní šifrovací klíče z bezpečnostních důvodů. Účet nemůžete změnit na žádný jiný účet, aniž byste museli přeinstalovat Azure AD Connect. Pokud provedete upgrade na sestavení z verze 2017. dubna nebo novější, je podporováno, abyste změnili heslo účtu služby, ale nemůžete změnit použitý účet. 
 
 Azure AD Connect jako součást synchronizačních služeb používá šifrovací klíč k ukládání hesel účtu služby služba AD DS Connector a účtu služby ADSync.  Tyto účty se šifrují předtím, než se uloží do databáze. 
 

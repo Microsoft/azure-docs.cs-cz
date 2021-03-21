@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 398f11c6e55cb62e0b29c148494cf3d590200b9d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5a8d270ffdef1f9ae68814fa023284c68216d3ff
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834174"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612623"
 ---
 V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení pomocí komponent, připojit ji k centru IoT a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná v jazyce C a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk C. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
@@ -21,7 +21,7 @@ V tomto kurzu jste:
 > * Spusťte ukázkovou aplikaci zařízení a ověřte, že se připojí ke službě IoT Hub.
 > * Zkontrolujte zdrojový kód.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](iot-pnp-prerequisites.md)]
 
@@ -160,7 +160,7 @@ Po spuštění ukázky klienta zařízení použijte nástroj Azure IoT Explorer
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tato ukázka implementuje zařízení adaptéru technologie Plug and Play pro řízení teploty pro IoT. Tato ukázka implementuje model s [více komponentami](../articles/iot-pnp/concepts-components.md). [Soubor modelu DTDL (Digital Real Definition Language) pro zařízení s teplotou](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) definuje telemetrii, vlastnosti a příkazy, které zařízení implementuje.
+Tato ukázka implementuje zařízení adaptéru technologie Plug and Play pro řízení teploty pro IoT. Tato ukázka implementuje model s [více komponentami](../articles/iot-pnp/concepts-modeling-guide.md). [Soubor modelu DTDL (Digital Real Definition Language) pro zařízení s teplotou](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) definuje telemetrii, vlastnosti a příkazy, které zařízení implementuje.
 
 ### <a name="iot-plug-and-play-helper-functions"></a>Pomocné funkce IoT technologie Plug and Play
 

@@ -9,16 +9,16 @@ ms.date: 03/10/2021
 ms.topic: troubleshooting
 ms.service: azure-communication-services
 ms.openlocfilehash: 2c6ac34d8daf00578cb1d03833a28eb8535708b7
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103493638"
 ---
 # <a name="faq--known-issues"></a>Nejčastější dotazy/známé problémy
 Tento článek poskytuje informace o známých problémech a nejčastějších dotazech týkajících se komunikačních služeb Azure.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="why-is-the-quality-of-my-video-degraded"></a>Proč kvalita videa je degradovaná?
 

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: fc0c304a3fea81f44e01d3e815f34e44728ea42e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031856"
 ---
 # <a name="enable-vm-insights-using-resource-manager-templates"></a>Povolení přehledů virtuálních počítačů pomocí šablon Správce prostředků
@@ -19,7 +19,7 @@ Tento článek popisuje, jak povolit přehledy virtuálních počítačů pro vi
 - Sada škálování virtuálních počítačů Azure
 - Hybridní virtuální počítač připojený pomocí ARC Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](./vminsights-configure-workspace.md). 
 - V části [podporované operační systémy](./vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 

@@ -3,17 +3,17 @@ title: Správa nákladů na Azure s využitím automatizace
 description: Tento článek vysvětluje, jak můžete spravovat náklady na Azure s využitím automatizace.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: a54b8243b5a680168b2e5806dd58c0fa4109728f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2a39f77e3e7409d23ab7506b525f65e01082e99e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670269"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720113"
 ---
 # <a name="manage-costs-with-automation"></a>Správa nákladů s využitím automatizace
 
@@ -47,7 +47,7 @@ Použití [rozhraní API pro podrobnosti využití](/rest/api/consumption/usageD
 
 [Rozhraní API pro podrobnosti využití](/rest/api/consumption/usageDetails) poskytuje snadný způsob získání nezpracovaných a neagregovaných nákladových dat, která odpovídají vyúčtování Azure. Toto rozhraní API je užitečné v případě, že vaše organizace potřebuje řešení pro načítání dat prostřednictvím kódu programu. Použití tohoto rozhraní API zvažte, pokud chcete analyzovat menší sady nákladových dat. Pokud ale máte rozsáhlejší datové sady, měli byste použít jiná řešení uvedená výše. Data v podrobnostech o využití se poskytují na základě měřičů pro jednotlivé dny. Používají se při výpočtu měsíčního vyúčtování. Všeobecně dostupná verze (GA) těchto rozhraní API je `2019-10-01`. Verzi `2019-04-01-preview` použijte pro přístup k verzi Preview pro rezervace a nákupy na Azure Marketplace s využitím rozhraní API.
 
-Pokud chcete pravidelně získávat velké objemy exportovaných dat, přečtěte si článek o [opakovaném načítání datových sad s velkými náklady s exporty](ingest-azure-usage-at-scale.md).
+Pokud chcete pravidelně získávat velké objemy exportovaných dat, přečtěte si článek [o opakovaném načítání datových sad s velkými náklady s exporty](ingest-azure-usage-at-scale.md).
 
 ### <a name="usage-details-api-suggestions"></a>Návrhy rozhraní API pro podrobnosti využití
 
@@ -74,6 +74,10 @@ Ceny pro podrobnosti využití – soubory využití uvádějí škálované inf
   - Zahrnuté množství – příklad: Prvních 100 jednotek je zdarma a pak se účtuje 10 USD za jednotku.
   - Reservations
   - Zaokrouhlení, ke kterému dochází během výpočtu – zaokrouhlování bere v úvahu spotřebované množství, ceny po úrovních a ceny zahrnutého množství a škálovanou jednotkovou cenu.
+
+### <a name="a-single-resource-might-have-multiple-records-for-a-single-day"></a>Jeden prostředek může mít několik záznamů za jeden den.
+
+Poskytovatelé prostředků Azure emitují využití a účtují poplatky do fakturačního systému a naplní `Additional Info` pole záznamů o využití. V některých případech mohou poskytovatelé prostředků vysílat použití pro daný den a na základě záznamů v poli záznamů o využití musí záznamy používat v různých datových centrech `Additional Info` . Může to způsobit, že se v souboru využití v jednom dni zobrazí několik záznamů o měřiči nebo prostředku. V takové situaci nejsou přeúčtovány. Několik záznamů představuje celkové náklady na měřič pro prostředek v daném dni.
 
 ## <a name="example-usage-details-api-requests"></a>Příklady požadavků na rozhraní API pro podrobnostmi využití
 

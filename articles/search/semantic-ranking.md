@@ -1,48 +1,61 @@
 ---
 title: Sémantické hodnocení
 titleSuffix: Azure Cognitive Search
-description: Popisuje algoritmus sémantického hodnocení v Kognitivní hledání.
+description: Přečtěte si, jak algoritmus sémantického hodnocení funguje v Azure Kognitivní hledání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 01c4d6475ec23b8a55d91e18f49cab27760aa907
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/18/2021
+ms.openlocfilehash: bb65a53f1ba6e97a39bd0c0170c5c41da38aee8b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604283"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720504"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Sémantické hodnocení v Azure Kognitivní hledání
 
 > [!IMPORTANT]
-> Funkce sémantického vyhledávání jsou ve verzi Public Preview dostupné jenom v rámci verze Preview REST API. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)a nemají zaručenou stejnou implementaci při obecné dostupnosti. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
+> Funkce sémantického vyhledávání jsou ve verzi Public Preview dostupné jenom v rámci verze Preview REST API. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)a nemají zaručenou stejnou implementaci při obecné dostupnosti. Tyto funkce jsou Fakturovatelné. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
 
-Sémantické hodnocení je rozšířením kanálu spuštění dotazu, který vylepšuje přesnost a vrácení zpět změnou pořadí horních shod počáteční sady výsledků. Sémantické hodnocení je zajištěné špičkovými modely pro čtení z uměleckého porozumění, které jsou výukou pro dotazy vyjádřené v přirozeném jazyce na rozdíl od jazykového porovnání klíčových slov. Na rozdíl od [výchozího algoritmu řazení podobnosti](index-ranking-similarity.md)používá sémantický klasifikátor kontext a význam slov k určení relevance.
+Sémantické hodnocení je rozšířením kanálu spuštění dotazu, který vylepšuje přesnost a vrácení zpět změnou pořadí horních shod počáteční sady výsledků. Sémantické hodnocení je zajištěné špičkovými modely pro čtení počítačů, školení pro dotazy vyjádřené v přirozeném jazyce na rozdíl od jazykového porovnání klíčových slov. Na rozdíl od [výchozího algoritmu řazení podobnosti](index-ranking-similarity.md)používá sémantický klasifikátor kontext a význam slov k určení relevance.
 
-## <a name="how-semantic-ranking-works"></a>Jak sémantické hodnocení funguje
+Sémantické hodnocení je náročné na prostředky i čas. Aby bylo možné dokončit zpracování v rámci očekávané latence operace dotazu, jsou vstupy konsolidovány a zjednodušeny, takže Shrnutí a analýza lze dokončit co nejrychleji.
 
-Sémantické hodnocení je náročné na prostředky i čas. Aby bylo možné dokončit zpracování v rámci očekávané latence operace dotazu, model přebírá jako vstup pouze prvních 50 dokumentů vrácených z výchozího [algoritmu řazení podobnosti](index-ranking-similarity.md). Výsledky počátečního hodnocení můžou zahrnovat víc než 50 shod, ale jenom prvních 50 se přeřadí sémanticky. 
+## <a name="preparation-for-semantic-ranking"></a>Příprava pro sémantické hodnocení
 
-Pro sémantické hodnocení používá model porozumění strojovým účelům čtení i přenosu, aby bylo možné dokumenty znovu vyhodnotit na základě toho, jak dobře se každý z nich shoduje s záměrem dotazu.
+Před vyhodnocením relevance musí být obsah zmenšen na množství parametrů, které je možné efektivně zvládnout sémantickým hodnocením. Snížení obsahu zahrnuje následující posloupnost kroků.
 
-### <a name="preparation-passage-extraction-phase"></a>Fáze přípravy (extrakce pasáže)
+1. Snížení obsahu začíná pomocí počátečních výsledků vrácených výchozím [algoritmem řazení podobnosti](index-ranking-similarity.md) používaného pro hledání klíčových slov. Výsledky hledání můžou zahrnovat až 1 000 shod, ale sémantické hodnocení zpracuje jenom prvních 50. 
 
-U každého dokumentu od počátečních výsledků existuje cvičení extrakce pasáže, které identifikuje klíčové pasáže. Toto je možnost cvičení, které snižuje obsah na množství, které lze zpracovat rychle.
+   V závislosti na tom, kolik shod bylo nalezeno, mohou být počáteční výsledky mnohem menší než 50. Bez ohledu na počet dokumentů je počáteční sada výsledků dokument corpus pro sémantické hodnocení.
 
-1. Pro každý z dokumentů 50 se každé pole v parametru searchFields vyhodnocuje v po sobě jdoucích pořadí. Obsah z každého pole je konsolidován do jednoho dlouhého řetězce. 
+1. V rámci dokumentu corpus je obsah každého pole v "searchFields" extrahován a sloučen do dlouhého řetězce.
 
-1. Dlouhý řetězec se pak ořízne tak, aby celková délka nepřesahoval 8 000 tokeny. Z tohoto důvodu doporučujeme umístit Stručná pole jako první, aby byla vložena do řetězce. Pokud máte velmi velké dokumenty s poli s velkým objemem textu, cokoli po omezení tokenu se ignoruje.
+1. Všechny řetězce, které jsou příliš dlouhé, jsou oříznuty, aby celková délka splňovala vstupní požadavky modelu sumarizace. Toto oříznutí cvičení je důvod, proč je důležité umístit Stručná pole jako první do "searchFields", aby se zajistilo jejich zahrnutí do řetězce. Pokud máte velmi velké dokumenty s textovými poli, vše po překročení maximálního limitu se ignoruje.
 
-1. Každý dokument je nyní reprezentován jedním dlouhým řetězcem, který je až 8 000 tokenů. Tyto řetězce jsou odesílány do modelu shrnutí, čímž se dále zkrátí řetězec. Model Shrnutí vyhodnocuje dlouhý řetězec pro klíčové věty nebo pasáže, které nejlépe shrnují dokument nebo odpovídají na otázku.
+Každý dokument je nyní reprezentován jedním dlouhým řetězcem.
 
-1. Výstupem této fáze je titulek (a volitelně odpověď). Popisek je nejvýše 128 tokenů na jeden dokument a je považován za nejvýraznějšího zástupce dokumentu.
+> [!NOTE]
+> Vstupy parametrů pro modely jsou tokeny bez znaků nebo slov. Tokenizace je určena v rámci přiřazení analyzátoru v polích, která lze prohledávat. Pro přehledy o tom, jak jsou řetězce v tokenech, můžete zkontrolovat výstup tokenu analyzátoru pomocí [REST API analyzátoru testů](/rest/api/searchservice/test-analyzer).
+>
+> V této verzi Preview dlouhé řetězce můžou mít velikost maximálně 8 000 tokenů. Pokud se při hledání nepovede doručovat očekávanou odpověď hluboko v rámci dokumentu, získáte informace o tom, proč je oříznutí obsahu užitečné. 
 
-### <a name="scoring-and-ranking-phases"></a>Fáze bodování a hodnocení
+## <a name="summarization"></a>Souhrn
 
-V této fázi jsou všechny titulky 50 vyhodnocovány k vyhodnocení relevance.
+Po zmenšení řetězce je teď možné předat parametry prostřednictvím porozumění strojového porozumění a reprezentace jazyka, abyste zjistili, které věty a fráze nejlépe shrnují model v souvislosti s dotazem.
+
+Vstupy do sumarizace jsou dlouhé řetězce z přípravné fáze. Z tohoto vstupu model Shrnutí vyhodnocuje obsah a hledá nejdůležitější pasáže.
+
+Výstupem je [sémantický titulek](semantic-how-to-query-request.md), v prostém textu a s nejzajímavější. Popisek je menší než dlouhý řetězec, obvykle méně než 200 slov na dokument, a je považována za největšího zástupce dokumentu. 
+
+Pokud jste zadali parametr odpovědi, bude vrácena i [sémantická odpověď](semantic-answers.md) , pokud byl dotaz považován za otázku a pokud se pasáž nachází v dlouhém řetězci, který vypadá jako plausible odpověď na otázku.
+
+## <a name="scoring-and-ranking"></a>Bodování a hodnocení
+
+V tuto chvíli teď máte titulky pro každý dokument. Popisky jsou vyhodnocovány pro relevanci dotazu.
 
 1. Bodování je určeno vyhodnocením každého titulu pro koncepční a sémantickou relevanci vzhledem k poskytnutému dotazu.
 
@@ -50,13 +63,14 @@ V této fázi jsou všechny titulky 50 vyhodnocovány k vyhodnocení relevance.
 
    :::image type="content" source="media/semantic-search-overview/semantic-vector-representation.png" alt-text="Vektorová reprezentace pro kontext" border="true":::
 
-1. Výstup této fáze je @search.rerankerScore přiřazen ke každému dokumentu. Po určení skóre všech dokumentů jsou uvedeny v sestupném pořadí a zahrnuty do datové části odpovědi na dotaz.
+1. Výstup této fáze je @search.rerankerScore přiřazen ke každému dokumentu. Po určení skóre všech dokumentů jsou uvedeny v sestupném pořadí a zahrnuty do datové části odpovědi na dotaz. Datová část obsahuje odpovědi, prostý text a zvýrazněné titulky a všechna pole, která jste označili jako získatelné nebo zadaná v klauzuli SELECT.
 
 ## <a name="next-steps"></a>Další kroky
 
-Sémantické hodnocení se nabízí na úrovních Standard, v určitých oblastech. Další informace a registraci najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing). Nový typ dotazu povoluje hodnocení relevance a struktury odpovědí sémantického hledání. Začněte tím, [že vytvoříte sémantický dotaz](semantic-how-to-query-request.md).
+Sémantické hodnocení se nabízí na úrovních Standard, v určitých oblastech. Další informace o dostupných a zaregistrování najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing). Nový typ dotazu povoluje hodnocení relevance a struktury odpovědí sémantického hledání. Začněte tím, [že vytvoříte sémantický dotaz](semantic-how-to-query-request.md).
 
-Případně si můžete projít některé z následujících článků a získat související informace.
+Případně si přečtěte následující články o výchozím hodnocení. Sémantické hodnocení závisí na pořadí podobnosti, které vrací počáteční výsledky. Znalost provádění dotazů a hodnocení vám poskytne širokou znalost toho, jak celý proces funguje.
 
-+ [Přehled sémantického hledání](semantic-search-overview.md)
-+ [Vrátí sémantickou odpověď.](semantic-answers.md)
++ [Fulltextové vyhledávání v Azure Kognitivní hledání](search-lucene-query-architecture.md)
++ [Podobnost a bodování v Azure Kognitivní hledání](index-similarity-and-scoring.md)
++ [Analyzátory pro zpracování textu v Azure Kognitivní hledání](search-analyzers.md)

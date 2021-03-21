@@ -13,17 +13,17 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033618"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
 Microsoft Graph umožňuje správu prostředků v adresáři Azure AD B2C. Následující operace Microsoft Graph API se podporují pro správu prostředků Azure AD B2C, včetně uživatelů, poskytovatelů identity, toků uživatelů, uživatelských zásad a klíčů zásad. Každé propojení v následujících částech cílí na odpovídající stránku v rámci referenčního Microsoft Graph rozhraní API pro tuto operaci. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat MS Graph API a pracovat s prostředky ve vašem tenantovi Azure AD B2C, budete potřebovat registraci aplikace, která jim uděluje oprávnění. Pokud chcete vytvořit registraci aplikace, kterou může vaše aplikace pro správu používat, postupujte podle pokynů v článku [správa Azure AD B2C s Microsoft Graph](microsoft-graph-get-started.md) . 
 
@@ -181,7 +181,7 @@ Vzorový kód používá [sadu Microsoft Graph SDK](/graph/sdks/sdks-overview), 
 
 Jakýkoli požadavek na rozhraní Microsoft Graph API vyžaduje přístupový token pro ověřování. Řešení využívá balíček NuGet [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) , který poskytuje obálku Microsoft Authentication Library (MSAL) založenou na scénáři ověřování pro použití s Microsoft Graph SDK.
 
-`RunAsync`Metoda v souboru _program.cs_ :
+`RunAsync`Metoda v souboru _program. cs_ :
 
 1. Přečte nastavení aplikace z _appsettings.jsv_ souboru.
 1. Inicializuje poskytovatele ověřování pomocí procesu [udělení přihlašovacích údajů klienta OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) . Pomocí toku udělení přihlašovacích údajů klienta může aplikace získat přístupový token pro volání rozhraní Microsoft Graph API.
@@ -203,7 +203,7 @@ Jakýkoli požadavek na rozhraní Microsoft Graph API vyžaduje přístupový to
     GraphServiceClient graphClient = new GraphServiceClient(authProvider);
     ```
 
-Inicializovaná *GraphServiceClient* se pak použije v _UserService.cs_ k provádění operací správy uživatelů. Například získání seznamu uživatelských účtů v tenantovi:
+Inicializovaná *GraphServiceClient* se pak použije v _userservice předefinovala smazání. cs_ k provedení operací správy uživatelů. Například získání seznamu uživatelských účtů v tenantovi:
 
 ```csharp
 public static async Task ListUsers(GraphServiceClient graphClient)

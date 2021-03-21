@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
 ms.openlocfilehash: e708536395807fc74dc5bfd73836e050832cca39
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103493335"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Autorizaci přístupu ke spravované identitě ke zdroji komunikace ve vývojovém prostředí
@@ -22,7 +22,7 @@ Klientská knihovna Azure identity poskytuje podporu ověřování tokenů služ
 
 Výhodou klientské knihovny Azure identity je to, že umožňuje použít stejný kód k ověřování napříč více službami, ať už vaše aplikace běží ve vývojovém prostředí nebo v Azure. Klientská knihovna identit Azure ověřuje objekt zabezpečení. Když váš kód běží v Azure, je objekt zabezpečení spravovaná identita pro prostředky Azure. Ve vývojovém prostředí neexistuje spravovaná identita, takže Klientská knihovna ověřuje buď uživatele, nebo registrovanou aplikaci pro účely testování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
  - Azure CLI [Průvodce instalací](https://docs.microsoft.com/cli/azure/install-azure-cli)
  - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free)

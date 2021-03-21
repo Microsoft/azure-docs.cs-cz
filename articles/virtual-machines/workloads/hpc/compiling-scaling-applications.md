@@ -5,19 +5,25 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9185f502a7d9dd7ab00a149fb2f3365372b350cc
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470750"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721295"
 ---
 # <a name="scaling-hpc-applications"></a>Škálování aplikací HPC
 
 Optimální výkon a škálování aplikací HPC v Azure v rámci škálování vyžaduje vyladění výkonu a experimenty optimalizace pro konkrétní zatížení. Tato část a stránky specifické pro řady virtuálních počítačů nabízejí obecné pokyny pro škálování aplikací.
+
+## <a name="application-setup"></a>Nastavení aplikace
+[Úložiště azurehpc](https://github.com/Azure/azurehpc) obsahuje mnoho příkladů:
+- Nastavování a spouštění [aplikací](https://github.com/Azure/azurehpc/tree/master/apps) optimálně.
+- Konfigurace [systémů souborů a clusterů](https://github.com/Azure/azurehpc/tree/master/examples).
+- [Kurzy](https://github.com/Azure/azurehpc/tree/master/tutorials) , jak snadno začít s některými běžnými pracovními postupy aplikací.
 
 ## <a name="optimally-scaling-mpi"></a>Optimální škálování MPI 
 
@@ -48,6 +54,9 @@ Následující návrhy se vztahují na optimální efektivitu škálování apli
 - Pro významně větší běhy se doporučuje používat UD nebo Hybrid RC + UD Transports. K tomuto internímu účelu patří spousta knihoven MPI/knihoven za běhu (například UCX nebo MVAPICH2). Ověřte konfiguraci přenosu pro rozsáhlá spuštění.
 
 ## <a name="compiling-applications"></a>Kompilování aplikací
+<br>
+<details>
+<summary>Kliknutím rozbalíte</summary>
 
 I když není nutné, kompilování aplikací s příslušnými příznaky optimalizace poskytuje nejlepší výkon při škálování na virtuálních počítačích s více instancemi a pro řady HC.
 
@@ -96,6 +105,7 @@ V případě HPC doporučuje AMD kompilátor RSZ 7,3 nebo novější. Starší v
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ```
+</details>
 
 ## <a name="next-steps"></a>Další kroky
 
