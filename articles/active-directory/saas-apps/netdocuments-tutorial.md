@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/12/2021
 ms.author: jeedes
 ms.openlocfilehash: 48ba2810c0aaf304042580cdf6579df54fd9ccd6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101645664"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s NetDocuments
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat NetDocuments s Azure Active Directory 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k NetDocuments svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -178,7 +178,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k NetDocuments, musí se zřídi
 
 2. V pravém horním rohu vyberte jméno>**správce**.
    
-    ![Správce](./media/netdocuments-tutorial/user-admin.png "správce")
+    ![Správce](./media/netdocuments-tutorial/user-admin.png "Správce")
 
 3. Vyberte **Uživatelé a skupiny**.
    

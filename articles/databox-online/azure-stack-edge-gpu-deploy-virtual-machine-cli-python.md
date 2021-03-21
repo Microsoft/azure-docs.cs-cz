@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
 ms.openlocfilehash: 43853f2eba05794540a72fe64e748fcafd9073d2
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102637896"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Nasazení virtuálních počítačů na zařízení GPU Azure Stack Edge pro pomocí Azure CLI a Pythonu
@@ -45,7 +45,7 @@ Souhrnný přehled pracovního postupu nasazení je následující:
 
 Podrobné vysvětlení diagramu pracovního postupu najdete v tématu [nasazení virtuálních počítačů na zařízení Azure Stack Edge pro pomocí Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). Informace o tom, jak se připojit k Azure Resource Manager, najdete v tématu [připojení k Azure Resource Manager pomocí Azure PowerShell](azure-stack-edge-gpu-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete vytvářet a spravovat virtuální počítač na zařízení Azure Stack Edge pro pomocí Azure CLI a Pythonu, musíte se ujistit, že jste dokončili požadavky uvedené v následujících krocích:
 

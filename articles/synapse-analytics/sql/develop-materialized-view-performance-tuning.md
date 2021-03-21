@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.openlocfilehash: e6c3987e2de7f9592a1f7f6086657592e1bf0c16
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676600"
 ---
 # <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Optimalizace výkonu s materializovaná zobrazeními pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
@@ -37,7 +37,7 @@ Většina standardních požadavků zobrazení se pořád vztahuje na materializ
 |Zobrazení obsahu                    | Vygenerováno pokaždé, když je použito zobrazení.   | Předzpracovaná a uložená v Azure Data Warehouse během vytváření zobrazení. Aktualizováno při přidání dat do podkladových tabulek.
 |Aktualizace dat                    | Vždy Aktualizováno                               | Vždy Aktualizováno
 |Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalá                                         | Rychlý  
-|Dodatečné úložiště                   | Ne                                           | Ano
+|Dodatečné úložiště                   | No                                           | Yes
 |Syntax                          | CREATE VIEW                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
 
 ## <a name="benefits-of-materialized-views"></a>Výhody materializovaná zobrazení

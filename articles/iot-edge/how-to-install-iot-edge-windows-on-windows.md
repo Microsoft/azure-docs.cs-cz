@@ -11,10 +11,10 @@ ms.date: 12/18/2020
 ms.author: kgremban
 monikerRange: iotedge-2018-06
 ms.openlocfilehash: bb87d09b67658f9a3d7c68f635bfcd9a29de675c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103201634"
 ---
 # <a name="install-and-manage-azure-iot-edge-with-windows-containers"></a>Instalace a Správa Azure IoT Edge pomocí kontejnerů Windows
@@ -32,7 +32,7 @@ V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge
 >
 >Zvažte použití nové metody pro spuštění IoT Edge na zařízeních s Windows [Azure IoT Edge pro Linux ve Windows](iot-edge-for-linux-on-windows.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Zařízení s Windows
 

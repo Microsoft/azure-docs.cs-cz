@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: ac36f5d6d1f57fd8453c54bcc8cf19dd964f47f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357891"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Kurz: Konfigurace Pingboard pro Automatické zřizování uživatelů

@@ -4,10 +4,10 @@ description: V tomto rychlém startu budete postupovat podle pokynů pro povolen
 ms.date: 02/05/2021
 ms.topic: quickstart
 ms.openlocfilehash: ec1b010771790339a13777624f04c7bd2db01f11
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594362"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Rychlý Start: vytvoření sdíleného dotazu v diagramu prostředků pomocí Azure CLI
@@ -16,7 +16,7 @@ Prvním krokem při použití Azure Resource graphu pomocí [Azure CLI](/cli/azu
 
 Na konci tohoto procesu se přidá rozšíření k instalaci Azure CLI a vytvoří se sdílený dotaz pro diagram prostředků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

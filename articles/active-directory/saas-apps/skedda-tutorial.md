@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/06/2021
 ms.author: jeedes
 ms.openlocfilehash: ef23fb932ec8a81ba149a6449650ccca6dab60f9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020634"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skedda"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Skedda
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Skedda s Azure Active Directory (Azure
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Skedda svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 

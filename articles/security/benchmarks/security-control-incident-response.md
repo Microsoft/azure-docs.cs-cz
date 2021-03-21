@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: fb4c4c5a0cf6610af17aabc562c42d2e0eb4e6a4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94409089"
 ---
 # <a name="security-control-incident-response"></a>Řízení zabezpečení: reakce na incidenty
@@ -24,7 +24,7 @@ Chraňte informace o organizaci a také její pověst, a to tím, že vyvíjíte
 |--|--|--|
 | 10.1 | 19,1, 19,2, 19,3 | Zákazník |
 
-Vytvořte si Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány odpovědí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů z detekce až po přezkoumání po jednotlivých událostech.  
+Vytvořte si Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte, aby existovaly písemné plány reakcí na incidenty, které definují všechny role pracovníků, a také fáze zpracování nebo správy incidentů od jejich detekce až po přezkoumání po jejich ukončení.  
 
 - [Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -36,11 +36,11 @@ Vytvořte si Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 10,2 | 19,8 | Zákazník |
+| 10,2 | 19.8 | Zákazník |
 
 Security Center přiřadí každému upozornění závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění. 
 
-Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data.  Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
+Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data.  Je vaší zodpovědností určit prioritu nápravy upozornění v závislosti na důležitosti prostředků Azure a prostředí, ve kterém k incidentu došlo.
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
@@ -50,7 +50,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 10,3 | 19 | Zákazník |
+| 10.3 | 19 | Zákazník |
 
 Provádějte cvičení a otestujte možnosti reakce na incidenty v pravidelných tempo, které vám pomůžou ochránit vaše prostředky Azure. Identifikujte slabá místa a mezery a podle potřeby upravte plán.
 
@@ -76,7 +76,7 @@ Vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průb
 
 - [Postup konfigurace průběžného exportu](../../security-center/continuous-export.md)
 
-- [Jak streamovat výstrahy do Azure Sentinel](../../sentinel/connect-azure-security-center.md)
+- [Streamování upozornění do služby Azure Sentinel](../../sentinel/connect-azure-security-center.md)
 
 ## <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatizujte reakci na výstrahy zabezpečení
 

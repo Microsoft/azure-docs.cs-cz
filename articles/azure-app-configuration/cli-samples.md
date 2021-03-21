@@ -8,17 +8,17 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 90782263d82a93e77fe45efa3ae0ef48fa2d11ae
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96929119"
 ---
 # <a name="azure-cli-samples"></a>Ukázky Azure CLI
 
 Následující tabulka obsahuje odkazy na skripty bash pro konfiguraci aplikací Azure pomocí Azure CLI.
 
-| Skript | Popis |
+| Skript | Description |
 |-|-|
 |**Vytvořit**||
 | [Vytvoření úložiště konfigurace aplikace](./scripts/cli-create-service.md) | Vytvoří skupinu prostředků a instanci úložiště konfigurace aplikace.  |

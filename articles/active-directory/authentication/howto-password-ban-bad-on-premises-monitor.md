@@ -13,10 +13,10 @@ ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96741758"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Monitorování a kontrola protokolů pro místní prostředí ochrany heslem služby Azure AD
@@ -41,7 +41,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události zaznamenané různými součástmi agenta řadiče domény spadají do těchto rozsahů:
 
-|Komponenta |Rozsah ID události|
+|Součást |Rozsah ID události|
 | --- | --- |
 |Knihovna DLL filtru hesel agenta řadiče domény| 10000-19999|
 |Proces hostování služby agenta DC| 20000-29999|
@@ -240,7 +240,7 @@ Protokolování textu je ve výchozím nastavení zakázáno. Aby se změny tét
 
 Software služby agenta DC nainstaluje objekt čítače výkonu s názvem **ochrana heslem Azure AD**. Nyní jsou k dispozici následující čítače výkonu:
 
-|Název čítače výkonu | Popis|
+|Název čítače výkonu | Description|
 | --- | --- |
 |Zpracovaná hesla |Tento čítač zobrazuje celkový počet zpracovaných a odmítnutých hesel od posledního restartování.|
 |Hesla přijata |Tento čítač zobrazuje celkový počet hesel, která byla přijata od posledního restartování.|
@@ -314,7 +314,7 @@ Všimněte si, že protokol trasování je ve výchozím nastavení vypnutý.
 
 Události jsou protokolovány různými součástmi proxy serveru pomocí následujících rozsahů:
 
-|Komponenta |Rozsah ID události|
+|Součást |Rozsah ID události|
 | --- | --- |
 |Proces hostování služby proxy| 10000-19999|
 |Základní obchodní logika služby proxy| 20000-29999|

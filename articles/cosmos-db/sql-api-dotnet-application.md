@@ -10,10 +10,10 @@ ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010341"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Kurz: vývoj webové aplikace ASP.NET Core MVC pomocí Azure Cosmos DB pomocí sady .NET SDK
@@ -44,11 +44,11 @@ Tento kurz zahrnuje:
 > [!TIP]
 > V tomto kurzu se předpokládá, že máte předchozí zkušenosti s používáním ASP.NET Core MVC a Azure App Service. Pokud ASP.NET Core nebo požadované [nástroje](#prerequisites)nepoužíváte, doporučujeme si stáhnout kompletní ukázkový projekt z [GitHubu][GitHub], přidat požadované balíčky NuGet a spustit ho. Po sestavení projektu si můžete projít tento článek, abyste získali přehled o kódu v kontextu projektu.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
-* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -80,7 +80,7 @@ V další části vytvoříte novou ASP.NET Core aplikaci MVC.
 
    Visual Studio vytvoří prázdnou aplikaci MVC.
 
-1. **Debug**  >  Pro místní spuštění aplikace ASP.NET vyberte ladit **Spustit ladění** nebo F5.
+1.   >  Pro místní spuštění aplikace ASP.NET vyberte ladit **Spustit ladění** nebo F5.
 
 ## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>Krok 3: Přidání balíčku Azure Cosmos DB NuGet do projektu
 
@@ -88,7 +88,7 @@ Teď, když máme většinu ASP.NET Core rozhraní MVC, které potřebujeme pro 
 
 1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 
-1. Ve **Správci balíčků NuGet** vyhledejte a vyberte **Microsoft. Azure. Cosmos**. Vyberte **Install** (Nainstalovat).
+1. Ve **Správci balíčků NuGet** vyhledejte a vyberte **Microsoft. Azure. Cosmos**. Vyberte **Nainstalovat**.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Nainstalovat balíček NuGet":::
 
@@ -108,9 +108,9 @@ Nyní přidáme do této aplikace MVC modely, zobrazení a řadiče.
 
 1. V **Průzkumník řešení** klikněte pravým tlačítkem na složku **modely** , vyberte **Přidat**  >  **třídu**.
 
-1. V **položce Přidat novou položku** pojmenujte novou třídu *Item.cs* a vyberte **Přidat**.
+1. V položce **Přidat novou položku** pojmenujte novou *položku třídy. cs* a vyberte **Přidat**.
 
-1. Obsah třídy *Item.cs* nahraďte následujícím kódem:
+1. Obsah třídy *Item. cs* nahraďte následujícím kódem:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
@@ -221,7 +221,7 @@ Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Az
 
 1. Klikněte pravým tlačítkem na složku **služby** a vyberte **Přidat**  >  **třídu**. Pojmenujte novou třídu *CosmosDbService* a vyberte **Přidat**.
 
-1. Obsah *CosmosDbService.cs* nahraďte následujícím kódem:
+1. Obsah *CosmosDbService. cs* nahraďte následujícím kódem:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
@@ -231,7 +231,7 @@ Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Az
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. Ve svém řešení otevřete soubor *Startup.cs* a přidejte následující metodu **InitializeCosmosClientInstanceAsync**, která přečte konfiguraci a inicializuje klienta.
+1. Otevřete soubor *Startup. cs* ve vašem řešení a přidejte následující metodu **InitializeCosmosClientInstanceAsync**, která přečte konfiguraci a inicializuje klienta.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
@@ -267,7 +267,7 @@ Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Az
 
 1. Pojmenujte svůj nový kontroler *ItemController*.
 
-1. Obsah *ItemController.cs* nahraďte následujícím kódem:
+1. Obsah *ItemController. cs* nahraďte následujícím kódem:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs":::
 
@@ -305,7 +305,7 @@ Nyní, když je aplikace dokončena a správně funguje se službou Azure Cosmos
 
 1. Pokud chcete tuto aplikaci publikovat, klikněte pravým tlačítkem na projekt v **Průzkumník řešení** a vyberte **publikovat**.
 
-1. V **rozevíracím App Service vybrat cíl publikování** vyberte možnost **App Service**.
+1. V **rozevíracím App Service vybrat cíl publikování** vyberte možnost .
 
 1. Pokud chcete použít existující profil App Service, zvolte **Vybrat existující** a pak vyberte **publikovat**.
 
@@ -319,7 +319,7 @@ Další možností je vytvořit nový profil:
 
 1. Jako v předchozím postupu klikněte pravým tlačítkem myši na projekt v **Průzkumník řešení** a vyberte **publikovat**.
   
-1. V **rozevíracím App Service vybrat cíl publikování** vyberte možnost **App Service**.
+1. V **rozevíracím App Service vybrat cíl publikování** vyberte možnost .
 
 1. V **rozevíracím výběru vybrat cíl publikování** vyberte **vytvořit novou** a vyberte **publikovat**.
 

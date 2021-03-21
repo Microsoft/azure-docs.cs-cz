@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 99c957e5bf6ffe69c94e109796590f5ab975c3cf
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656882"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Principy digitálních dvojčat IoT Plug and Play
@@ -113,7 +113,7 @@ Následující fragment kódu ukazuje, že digitální dvojitě formátovaná ja
 
 Následující tabulka popisuje pole v objektu digitálního vlákna JSON:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna zařízení |
 | `{propertyName}` | Hodnota vlastnosti ve formátu JSON |

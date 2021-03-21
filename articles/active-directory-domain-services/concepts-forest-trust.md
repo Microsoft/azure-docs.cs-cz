@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620201"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Jak vztahy důvěryhodnosti fungují pro doménové struktury prostředků v Azure Active Directory Domain Services
@@ -271,7 +271,7 @@ Subsystém zabezpečení LSA poskytuje služby v režimu jádra i v uživatelsk�
 
 ### <a name="management-tools"></a>Nástroje pro správu
 
-Správci můžou *domény a vztahy důvěryhodnosti služby Active Directory* používat *Netdom* *k* vystavení, vytváření, odebírání a úpravám vztahů důvěryhodnosti.
+Správci můžou *domény a vztahy důvěryhodnosti služby Active Directory* používat  *k* vystavení, vytváření, odebírání a úpravám vztahů důvěryhodnosti.
 
 * *Domény a vztahy důvěryhodnosti služby Active Directory* je konzola MMC (Microsoft Management Console), která slouží ke správě vztahů důvěryhodnosti domén, úrovní funkčnosti domény a doménové struktury a přípon hlavního názvu uživatele.
 * Nástroje příkazového řádku *netdom* a *Nltest* lze použít k vyhledání, zobrazení, vytvoření a správě vztahů důvěryhodnosti. Tyto nástroje komunikují přímo s autoritou LSA na řadiči domény.

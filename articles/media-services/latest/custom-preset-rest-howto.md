@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 2c0416e2787bc69465e18a71f6b9912f7571c24d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98956085"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Jak kódovat pomocí vlastní transformace – REST
@@ -32,7 +32,7 @@ Při vytváření vlastních přednastavení platí následující požadavky:
 * Všechny hodnoty pro výšku a šířku v obsahu AVC musí být násobkem 4.
 * V Azure Media Services V3 jsou všechny přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi rozhraními API v2, která jako jednotku používala kilobity za sekundu. Pokud je například přenosová rychlost v v2 zadaná jako 128 (kilobit/s), ve verzi V3 by se nastavila na 128000 (bity za sekundu).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - [Vytvořte účet Media Services](./create-account-howto.md). <br/>Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
 - [Nakonfigurujte metodu post pro Azure Media Services REST API volání](media-rest-apis-with-postman.md).<br/>Nezapomeňte postupovat podle posledního kroku v tématu [získání tokenu Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 

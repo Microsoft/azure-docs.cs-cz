@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98802349"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Rychlý Start: V12 klientské knihovny Azure Blob Storage pomocí Xamarin
@@ -36,7 +36,7 @@ Odkazy odkazů:
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
@@ -114,7 +114,7 @@ Následující kód deklaruje několik proměnných úrovně třídy. Pro komuni
 
 Jsou to kromě připojovacího řetězce pro účet úložiště nastaveného v části [Konfigurace připojovacího řetězce úložiště](#configure-your-storage-connection-string) .
 
-Přidejte tento kód jako proměnné úrovně třídy do souboru *MainPage.XAML.cs* :
+Přidejte tento kód jako proměnné úrovně třídy do souboru *MainPage. XAML. cs* :
 
 ```csharp
 string storageConnectionString = "{set in the Configure your storage connection string section}";
@@ -134,7 +134,7 @@ Určete název nového kontejneru. Následující kód připojí hodnotu identif
 
 Vytvořte instanci třídy [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) . Pak zavolejte metodu [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) a vytvořte kontejner v účtu úložiště.
 
-Přidejte tento kód do souboru *MainPage.XAML.cs* :
+Přidejte tento kód do souboru *MainPage. XAML. cs* :
 
 ```csharp
 protected async override void OnAppearing()
@@ -159,7 +159,7 @@ Následující fragment kódu:
 1. Vytvoří `MemoryStream` text.
 1. Nahraje text do objektu BLOB voláním funkce [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) třídy [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) a jejím předáním do souboru FileName a `MemoryStream` textu. Tato metoda vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, pokud už existoval.
 
-Přidejte tento kód do souboru *MainPage.XAML.cs* :
+Přidejte tento kód do souboru *MainPage. XAML. cs* :
 
 ```csharp
 async void Upload_Clicked(object sender, EventArgs e)
@@ -179,7 +179,7 @@ async void Upload_Clicked(object sender, EventArgs e)
 
 Seznam objektů BLOB v kontejneru zavoláním metody [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) . V tomto případě byl do kontejneru přidán pouze jeden objekt blob, takže operace výpisu vrátí pouze jeden objekt BLOB.
 
-Přidejte tento kód do souboru *MainPage.XAML.cs* :
+Přidejte tento kód do souboru *MainPage. XAML. cs* :
 
 ```csharp
 async void List_Clicked(object sender, EventArgs e)
@@ -198,7 +198,7 @@ async void List_Clicked(object sender, EventArgs e)
 
 Stáhněte dřív vytvořený objekt BLOB voláním metody [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) . Vzorový kód zkopíruje `Stream` reprezentace objektu BLOB nejprve do `MemoryStream` a potom do, `StreamReader` aby se text mohl zobrazit.
 
-Přidejte tento kód do souboru *MainPage.XAML.cs* :
+Přidejte tento kód do souboru *MainPage. XAML. cs* :
 
 ```csharp
 async void Download_Clicked(object sender, EventArgs e)
@@ -227,7 +227,7 @@ Následující kód vyčistí prostředky, které aplikace vytvořila, odstraně
 
 Aplikace před odstraněním objektu BLOB a kontejneru nejprve vyzve k potvrzení. Tato možnost je vhodná pro ověření, že se prostředky správně vytvořily, než se odstraní.
 
-Přidejte tento kód do souboru *MainPage.XAML.cs* :
+Přidejte tento kód do souboru *MainPage. XAML. cs* :
 
 ```csharp
 async void Delete_Clicked(object sender, EventArgs e)

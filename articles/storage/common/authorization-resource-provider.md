@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92789671"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy
@@ -44,16 +44,16 @@ Azure poskytuje předdefinované role, které udělují oprávnění k volání 
 
 Předdefinované role, které udělují oprávnění k volání operací správy úložiště, zahrnují role popsané v následující tabulce:
 
-|    Role Azure    |    Popis    |    Zahrnuje přístup k klíčům účtu?    |
+|    Role Azure    |    Description    |    Zahrnuje přístup k klíčům účtu?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Vlastník** | Může spravovat všechny prostředky úložiště a přistupovat k prostředkům.  | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
 | **Přispěvatel**  | Může spravovat všechny prostředky úložiště, ale nemůže spravovat přístup k prostředkům. | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
-| **Čtenář** | Může zobrazit informace o účtu úložiště, ale nemůže zobrazit klíče účtu. | Ne. |
+| **Čtenář** | Může zobrazit informace o účtu úložiště, ale nemůže zobrazit klíče účtu. | No. |
 | **Přispěvatel účtů úložiště** | Může spravovat účet úložiště, získávat informace o skupinách prostředků a prostředcích předplatného a vytvářet a spravovat nasazení skupin prostředků předplatného. | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
 | **Správce uživatelského přístupu** | Může spravovat přístup k účtu úložiště.   | Ano, umožňuje objektu zabezpečení přiřazovat jakákoli oprávnění sami a ostatním. |
 | **Přispěvatel virtuálních počítačů** | Může spravovat virtuální počítače, ale ne účet úložiště, ke kterému jsou připojené.   | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
 
-Třetí sloupec v tabulce uvádí, zda integrovaná role podporuje **Microsoft. Storage/storageAccounts/klíče listkey/Action** . Tato akce udělí oprávnění ke čtení a obnovení klíčů účtu úložiště. Oprávnění pro přístup k prostředkům správy Azure Storage nezahrnují také oprávnění k přístupu k datům. Pokud ale uživatel má přístup k klíčům účtu, pak může použít klíče účtu pro přístup k Azure Storage dat prostřednictvím autorizace pomocí sdíleného klíče.
+Třetí sloupec v tabulce uvádí, zda integrovaná role podporuje **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Tato akce udělí oprávnění ke čtení a obnovení klíčů účtu úložiště. Oprávnění pro přístup k prostředkům správy Azure Storage nezahrnují také oprávnění k přístupu k datům. Pokud ale uživatel má přístup k klíčům účtu, pak může použít klíče účtu pro přístup k Azure Storage dat prostřednictvím autorizace pomocí sdíleného klíče.
 
 ### <a name="custom-roles-for-management-operations"></a>Vlastní role pro operace správy
 

@@ -7,10 +7,10 @@ ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.openlocfilehash: 39f73dd002091451ae832516d525499eae98564d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95021367"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>Umělá inteligentní funkce v Language Understanding (LUIS)
@@ -39,7 +39,7 @@ Pro aplikaci LUIS je k dispozici zpracování přirozeného jazyka následujíc�
     * [Tokenizace](luis-language-support.md#tokenization)
     * Nastavení morfologie prostřednictvím diakritických znamének, interpunkčních znamének a [rozhraní](luis-reference-application-settings.md) Word Forms API
 * Předběžná nebo následná zpracování dotazů utterance poskytovaných jinými [Cognitive Services](../what-are-cognitive-services.md) , jako jsou:
-    * [NAT](../translator/translator-info-overview.md)
+    * [Překlad](../translator/translator-info-overview.md)
 
 ## <a name="natural-language-understanding-nlu"></a>Principy přirozeného jazyka (NLU)
 

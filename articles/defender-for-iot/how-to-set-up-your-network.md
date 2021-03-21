@@ -8,10 +8,10 @@ ms.date: 02/18/2021
 ms.topic: how-to
 ms.service: azure
 ms.openlocfilehash: 0f85eebbfa8fcdfd9ad6e31a564f27b5d9bfbdfc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101733240"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>O programu Azure Defender pro síť IoT
@@ -106,7 +106,7 @@ Ověřte, že vaše zásada zabezpečení vaší organizace umožňuje přístup
 | DNS |  | VSTUPNĚ-VÝSTUPNÍ | 53 | DNS | Port serveru DNS | Místní Konzola pro správu a senzor | Server DNS |
 | LDAP | TCP | VSTUPNĚ-VÝSTUPNÍ | 389 | Active Directory | Připojení mezi platformou CyberX a platformou správy ke službě Active Directory | Místní Konzola pro správu a senzor | Server LDAP |
 | LDAPS | TCP | VSTUPNĚ-VÝSTUPNÍ | 636 | Active Directory | Připojení mezi platformou CyberX a platformou správy ke službě Active Directory | Místní Konzola pro správu a senzor | Server LDAPs |
-| SNMP | UDP | MIMO | 161 | Sledování | Vzdálené sběrače SNMP. | Místní Konzola pro správu a senzor | Server SNMP |
+| SNMP | UDP | MIMO | 161 | Monitorování | Vzdálené sběrače SNMP. | Místní Konzola pro správu a senzor | Server SNMP |
 | Rozhraní WMI | UDP | MIMO | 135 | Monitorování | Monitorování koncového bodu systému Windows | Elektrické | Příslušný prvek sítě |
 | Tunelové propojení | TCP | IN | 9000 <br /><br />– nad portem 443 <br /><br />Od koncového uživatele k místní konzole pro správu. <br /><br />– Port 22 od senzoru k místní konzole pro správu  | Monitorování | Tunelové propojení | Elektrické | Místní Konzola pro správu |
 
@@ -466,7 +466,7 @@ Ukázkový soubor PCAP (několik minut) můžete zaznamenat připojením přenos
 
 :::image type="content" source="media/how-to-set-up-your-network/wireshark-validation.png" alt-text="Snímek obrazovky s ověřováním Wireshark":::
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pro řešení potíží použijte tyto části:
 

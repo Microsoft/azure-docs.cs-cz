@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: 2c528859ea5abc6267c10a2ede9c2ca99f84e22f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946804"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení aplikace Excel k Apache Hadoopu ve službě Azure HDInsight pomocí konektoru Microsoft Hive ODBC Driver
@@ -20,7 +20,7 @@ ms.locfileid: "98946804"
 
 Data přidružená k clusteru HDInsight můžete připojit z Excelu k Microsoft Power Query doplňku pro Excel. Další informace najdete v tématu [připojení Excelu k HDInsight pomocí Power Query](./apache-hadoop-connect-excel-power-query.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento článek, musíte mít následující položky:
 
@@ -48,7 +48,7 @@ Následující kroky ukazují, jak vytvořit zdroj dat pro podregistr ODBC.
    | Vlastnost | Popis |
    | --- | --- |
    |  Název zdroje dat |Zadejte název zdroje dat. |
-   |  Hostitelé: |Zadejte `HDInsightClusterName.azurehdinsight.net`. Například `myHDICluster.azurehdinsight.net`. Poznámka: `HDInsightClusterName-int.azurehdinsight.net` podporuje se, pokud je klientský virtuální počítač v partnerském vztahu ke stejné virtuální síti. |
+   |  Hostitelé: |Zadejte `HDInsightClusterName.azurehdinsight.net`. Například, `myHDICluster.azurehdinsight.net`. Poznámka: `HDInsightClusterName-int.azurehdinsight.net` podporuje se, pokud je klientský virtuální počítač v partnerském vztahu ke stejné virtuální síti. |
    |  Port |Použijte **443**. (Tento port se změnil z 563 na 443.) |
    |  databáze |Použijte **výchozí nastavení**. |
    |  Mechanismus |Výběr **služby Windows Azure HDInsight** |

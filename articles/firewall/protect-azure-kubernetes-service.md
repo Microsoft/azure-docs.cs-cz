@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: victorh
 ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98107850"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Zajištění ochrany nasazení služby Azure Kubernetes Service (AKS) s využitím služby Azure Firewall
@@ -24,7 +24,7 @@ Pro účely správy a provozu musí uzly v clusteru AKS přistupovat k určitým
 
 Postupujte podle pokynů v tomto článku a poskytněte vám dodatečnou ochranu pro cluster Azure Kubernetes pomocí Azure Firewall.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Nasazený cluster Azure Kubernetes se spuštěnou aplikací.
 
@@ -51,8 +51,8 @@ Azure Firewall poskytuje značku plně kvalifikovaného názvu domény AKS pro z
 
    | Cílový koncový bod                                                             | Protokol | Port    | Použití  |
    |----------------------------------------------------------------------------------|----------|---------|------|
-   | **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
-   | **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+   | **`*:1194`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Nebo* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
+   | **`*:9000`** <br/> *Nebo* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Nebo* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Nebo* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
 
    - Port UDP 123 pro synchronizaci času NTP (Network Time Protocol) (uzly Linux).
    - Port UDP 53 pro DNS se vyžaduje i v případě, že máte k dispozici přímý přístup k serveru rozhraní API.

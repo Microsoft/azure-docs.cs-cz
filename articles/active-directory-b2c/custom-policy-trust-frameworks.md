@@ -11,15 +11,15 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99592836"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Přehled Azure AD B2C vlastní zásady
 
-Vlastní zásady jsou konfigurační soubory, které definují chování klienta Azure Active Directory B2C (Azure AD B2C). I když jsou [toky uživatelů](user-flow-overview.md) předdefinované na portálu Azure AD B2C pro nejběžnější úlohy identity, můžou vlastní zásady plně upravit vývojář identity, aby dokončili mnoho různých úloh.
+Vlastní zásady jsou konfigurační soubory, které definují chování tenanta Azure Active Directory B2C (Azure AD B2C). I když jsou [toky uživatelů](user-flow-overview.md) předdefinované na portálu Azure AD B2C pro nejběžnější úlohy identity, můžou vlastní zásady plně upravit vývojář identity, aby dokončili mnoho různých úloh.
 
 Vlastní zásady jsou plně konfigurovatelné a řízené zásadami. Vlastní zásady orchestrují vztah důvěryhodnosti mezi entitami ve standardních formátech protokolů, jako jsou OpenID Connect, OAuth, SAML a několik nestandardních, například REST APIch výměn deklarací z systému na systém. Rozhraní vytváří uživatelsky přívětivé prostředí s bílým označením.
 
@@ -138,7 +138,7 @@ V rámci Azure AD B2C vlastní zásady můžete integrovat vlastní obchodní lo
 - Pro lepší uživatelské prostředí se ujistěte, že vlastní šablony HTML jsou globálně nasazené pomocí [online doručování obsahu](../cdn/index.yml). Azure Content Delivery Network (CDN) umožňuje zkrátit dobu načítání, ušetřit šířku pásma a zvýšit rychlost odezvy.
 - Pokud chcete provést změnu na cestu uživatele, zkopírujte celou cestu uživatele ze základní zásady do zásady rozšíření. Zadejte jedinečné ID cesty uživatele pro cestu k uživateli, kterou jste zkopírovali. Pak v [zásadách předávající strany](relyingparty.md)změňte [výchozí prvek cesty uživatele](relyingparty.md#defaultuserjourney) tak, aby odkazoval na novou cestu uživatele.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Při vývoji pomocí zásad Azure AD B2C můžete při provádění cesty uživatele spustit chyby nebo výjimky. Lze prozkoumat pomocí Application Insights.
 

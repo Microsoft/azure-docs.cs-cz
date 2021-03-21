@@ -1,14 +1,14 @@
 ---
-title: Co je nového? Poznámky k verzi – služba Azure blockchain
+title: Co je nového Poznámky k verzi – služba Azure blockchain
 description: Zjistěte, co je nového ve službě Azure blockchain, jako je například nejnovější zpráva k vydání verze, verze, známé problémy a nadcházející změny.
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 6a3113a2d28e704b188d701da13493ecd8263cab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94335022"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Co je nového ve službě Azure blockchain?
@@ -69,7 +69,7 @@ Dvě fáze vám pomůžou optimalizovat scénáře, kdy je člen vytvořen v dlo
 V kvoru v 2.6.0 volání funkce *ETH. estimateGas* bez zadání dalšího parametru *hodnoty* způsobí výjimku *selhání obslužné rutiny metody* . Tým kvora byl upozorněn a na konci července 2020 byla opravena. Dokud není k dispozici oprava, můžete použít následující alternativní řešení:
 
 - Vyhněte se použití *ETH. estimateGas* , protože může ovlivnit výkon. Další informace o potížích s výkonem ETH. estimateGas najdete v tématu [volání funkce ETH. estimateGas snižuje výkon](#calling-ethestimategas-function-reduces-performance). Zahrňte hodnotu plynu pro každou transakci. Většina knihoven bude volat ETH. estimateGas, pokud není poskytnuta hodnota plynů, což způsobí selhání kvora v 2.6.0.
-- Pokud potřebujete volat *ETH. estimateGas* , tým kvora navrhne, abyste jako alternativní řešení předávali další *hodnotu* parametru jako *0* .
+- Pokud potřebujete volat *ETH. estimateGas*, tým kvora navrhne, abyste jako alternativní řešení předávali další *hodnotu* parametru jako *0* .
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>Dolování se zastaví, pokud je méně než čtyři uzly validátoru.
 

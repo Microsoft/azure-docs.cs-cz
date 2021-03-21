@@ -9,10 +9,10 @@ ms.date: 12/07/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d6b8b35b36830568d6ff8c46a381fec0cfc57e84
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96854158"
 ---
 :::image type="content" source="media/event-grid-event-hubs-functions-synapse-analytics/overview.png" alt-text="Přehled aplikace":::
@@ -37,7 +37,7 @@ V tomto článku proveďte následující kroky:
 ## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto kurzu potřebujete:
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 - [Visual studio 2019](https://www.visualstudio.com/vs/) s pracovními postupy pro: vývoj desktopových aplikací pro .NET, vývoj pro Azure, vývoj pro ASP.NET a vývoj webů Node.js, vývoj a vývoj v Pythonu
 - Stáhněte si [vzorový projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) do svého počítače.
     - WindTurbineDataGenerator – jednoduchý Vydavatel, který odesílá ukázková data turbínu do centra událostí s povoleným zachycením
@@ -55,7 +55,7 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
 
 ### <a name="use-azure-cli-to-deploy-the-infrastructure"></a>Nasazení infrastruktury pomocí Azure CLI
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 2. V horní části vyberte tlačítko **Cloud Shell** .
 
     :::image type="content" source="media/event-grid-event-hubs-functions-synapse-analytics/azure-portal.png" alt-text="Azure Portal":::

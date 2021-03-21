@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
 ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018065"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure Portal
@@ -22,7 +22,7 @@ V tomto rychlém startu vytvoříte privátní koncový bod pro webovou aplikaci
 
 Pro různé druhy služeb Azure, jako je Azure SQL a Azure Storage, je možné vytvořit privátní koncové body.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Webovou aplikaci Azure s **PremiumV2** nebo vyšším plánem služby App Service nasazeným ve vašem předplatném Azure.  
@@ -90,7 +90,7 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
 
 V této části vytvoříte virtuální počítač, který se použije k otestování privátního koncového bodu.
 
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >    >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
    
 2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
@@ -132,7 +132,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
 
 V této části vytvoříte privátní koncový bod pro webovou aplikaci, kterou jste vytvořili v části požadavky.
 
-1. V levé horní části obrazovky na portálu vyberte vytvořit privátní síťové připojení **k prostředkům**  >  **Networking**  >  **Private Link** nebo zadejte do vyhledávacího pole **privátní odkaz**.
+1. V levé horní části obrazovky na portálu vyberte vytvořit privátní síťové připojení **k prostředkům**  >    >  nebo zadejte do vyhledávacího pole **privátní odkaz**.
 
 2. Vyberte **Vytvořit**.
 

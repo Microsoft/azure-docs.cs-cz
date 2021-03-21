@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: c0738e7033f0aa39ca5f12a44c06d086175eb8fe
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98731440"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Kurz: Konfigurace správy tisku v cloudu PaperCut pro Automatické zřizování uživatelů
@@ -33,7 +33,7 @@ Tento kurz popisuje kroky, které je třeba provést v PaperCut cloudové správ
 > * Odebrat uživatele ve správě tisku PaperCut cloudu, když už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a PaperCut cloudovou správou tisku
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

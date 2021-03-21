@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010812"
 ---
 Při vytváření brány virtuální sítě musíte určit SKU brány, které chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA. Skladové jednotky brány virtuální sítě v Zóny dostupnosti Azure najdete v tématu [skladové položky brány zóny dostupnosti Azure](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).

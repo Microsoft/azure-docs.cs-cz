@@ -11,10 +11,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/20/2020
 ms.openlocfilehash: a079504872eaf3840416a99e784c4d33a6828b0c
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94992025"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Podnikové zabezpečení a zásady správného řízení pro Azure Machine Learning
@@ -97,7 +97,7 @@ Když nasazujete modely jako webové služby, můžete povolit TLS (Transport La
 
 ## <a name="vulnerability-scanning"></a>Kontrola ohrožení zabezpečení
 
-[Azure Security Center](../security-center/security-center-introduction.md) poskytuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudy. Pro Azure Machine Learning byste měli povolit kontrolu [Azure Container Registry](../container-registry/container-registry-intro.md) prostředků a prostředků služby Azure Kubernetes. Další informace najdete v tématu [Azure Container Registry skenování imagí Security Center](../security-center/defender-for-container-registries-introduction.md) a [integrace služby Azure Kubernetes Services s Security Center](../security-center/defender-for-kubernetes-introduction.md).
+[Azure Security Center](../security-center/security-center-introduction.md) zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Pro Azure Machine Learning byste měli povolit kontrolu [Azure Container Registry](../container-registry/container-registry-intro.md) prostředků a prostředků služby Azure Kubernetes. Další informace najdete v tématu [Azure Container Registry skenování imagí Security Center](../security-center/defender-for-container-registries-introduction.md) a [integrace služby Azure Kubernetes Services s Security Center](../security-center/defender-for-kubernetes-introduction.md).
 
 ## <a name="audit-and-manage-compliance"></a>Auditování a správa dodržování předpisů
 

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98681951"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Import a export nastavení konfigurace Azure AD Connect 
@@ -77,10 +77,10 @@ Postup migrace nastavení:
 
    ![Snímek obrazovky zobrazující adresáře Azure AD Connect](media/how-to-connect-import-export-config/migrate1.png)
 
-1. Spusťte skript, jak je znázorněno zde, a uložte celý konfigurační adresář serveru nižší úrovně. Zkopírujte tento adresář do nového přípravného serveru. Je nutné zkopírovat celou složku **exportovanou-ServerConfiguration-** _ na nový server.
+1. Spusťte skript, jak je znázorněno zde, a uložte celý konfigurační adresář serveru nižší úrovně. Zkopírujte tento adresář do nového přípravného serveru. Je nutné zkopírovat celou složku **exportovanou-ServerConfiguration-*** na nový server.
 
    ![Snímek obrazovky, který zobrazuje skript v prostředí Windows PowerShell. ](media/how-to-connect-import-export-config/migrate2.png)
-    ![ Snímek obrazovky, který ukazuje kopírování exportované složky-ServerConfiguration-_.](media/how-to-connect-import-export-config/migrate3.png)
+    ![ Snímek obrazovky, který ukazuje kopírování exportované složky-ServerConfiguration-*.](media/how-to-connect-import-export-config/migrate3.png)
 
 1. Spusťte **Azure AD Connect** dvojitým kliknutím na ikonu na ploše. Přijměte licenční podmínky pro software společnosti Microsoft a na další stránce vyberte možnost **přizpůsobit**.
 1. Zaškrtněte políčko **importovat nastavení synchronizace** . Vyberte **Procházet** a přejděte do složky zkopírované do exportovaného-ServerConfiguration-*. Vyberte MigratedPolicy.jspro import migrovaných nastavení.

@@ -12,10 +12,10 @@ ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101644251"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Kurz: konfigurace bez klíčů pomocí Azure Active Directory B2C
@@ -50,7 +50,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek znázorňuje diagram architektury bez klíčů](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Krok | Popis |
+|Krok | Description |
 |:-----| :-----------|
 | 1. | Uživatel dorazí na přihlašovací stránku. Uživatelé vyberou přihlášení, zaregistrují se a vstoupí do uživatelského jména.
 | 2. | Aplikace pošle atributy uživatele Azure AD B2C k ověření identity.

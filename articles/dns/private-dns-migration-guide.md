@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
 ms.openlocfilehash: 72d046cde70d1224eb1fd47f527c9e49c6b002f6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102500457"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrace starších Azure DNS privátních zón do nového modelu prostředků
@@ -25,7 +25,7 @@ az account set --subscription <SubscriptionId>
 az network dns zone list --query "[?zoneType=='Private']"
 ```
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že máte nainstalovanou nejnovější verzi Azure PowerShell. Další informace o Azure PowerShell (AZ) a o tom, jak ji nainstalovat, najdete v tématu. https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 

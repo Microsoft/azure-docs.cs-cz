@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8aa45294de4ef644c20ef66b7163706dca9759d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996521"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Upgrade z nástroje DirSync
@@ -40,7 +40,7 @@ Pokud neupgradujete z nástroje DirSync, přečtěte si související dokumentac
 ## <a name="upgrade-from-dirsync"></a>Upgrade z nástroje DirSync
 V závislosti na aktuálním nasazení nástroje DirSync můžete upgradovat různými způsoby. Pokud je očekávaná doba upgradu kratší než tři hodiny, pak doporučujeme provést místní upgrade. Pokud je očekávaná doba upgradu delší než tři hodiny, pak doporučujeme provést paralelní nasazení na jiném serveru. Pokud máte více než 50 000 objektů, potrvá upgrade odhadem déle než tři hodiny.
 
-| Scénář |
+| Scenario |
 | --- |
 | [Místní upgrade](#in-place-upgrade) |
 | [Paralelní nasazení](#parallel-deployment) |

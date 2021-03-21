@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 89abdcf4c76c92c2ed967594527d323b2cd8be32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837885"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96741180"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Kurz: Konfigurace vlastního zakázaného hesla pro Azure Active Directory ochranu heslem
 
@@ -72,7 +72,7 @@ Pokud chcete povolit seznam vlastních zakázaných hesel a přidávat do něj p
 
     * Vlastní seznam zakázaných hesel může obsahovat až 1000 podmínek.
     * Vlastní seznam zakázaných hesel rozlišuje velká a malá písmena.
-    * Vlastní seznam zakázaných hesel je považován za běžné nahrazení znaků, například "o" a "0" nebo "a" a "@".
+    * Vlastní seznam zakázaných hesel je považován za běžné nahrazení znaků, například "o" a "0" nebo "a" \@ .
     * Minimální délka řetězce je 4 znaky a maximální délka je 16 znaků.
 
     Určete vlastní hesla, která chcete zakázat, jak je znázorněno v následujícím příkladu.
@@ -124,4 +124,4 @@ V tomto kurzu jste povolili a nakonfigurovali vlastní seznamy ochrany heslem pr
 > * Testování změn hesel pomocí zakázaného hesla
 
 > [!div class="nextstepaction"]
-> [Povolit Multi-Factor Authentication Azure AD založené na rizicích](./tutorial-enable-azure-mfa.md)
+> [Zapnutí vícefaktorového ověřování Azure AD na základě rizikové události](./tutorial-enable-azure-mfa.md)

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: sethm
 ms.openlocfilehash: fb3c95b74128f1da7b29a290e17fefe21987dd76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019411"
 ---
 ## <a name="webapi-project"></a>Projekt WebAPI
 
 1. V aplikaci Visual Studio otevřete projekt **projekt appbackend** , který jste vytvořili v kurzu pro **upozorňování uživatelů** .
-2. V Notifications.cs nahraďte celou třídu **oznámení** následujícím kódem. Nezapomeňte nahradit zástupné symboly připojovacím řetězcem (s úplným přístupem) pro vaše centrum oznámení a názvem centra. Tyto hodnoty můžete získat z [Azure Portal](https://portal.azure.com). Tento modul teď představuje různá zabezpečená oznámení, která se odešlou. V úplné implementaci budou oznámení uložená v databázi. pro zjednodušení v tomto případě je ukládáme do paměti.
+2. V části Notifications. cs nahraďte celou třídu **oznámení** následujícím kódem. Nezapomeňte nahradit zástupné symboly připojovacím řetězcem (s úplným přístupem) pro vaše centrum oznámení a názvem centra. Tyto hodnoty můžete získat z [Azure Portal](https://portal.azure.com). Tento modul teď představuje různá zabezpečená oznámení, která se odešlou. V úplné implementaci budou oznámení uložená v databázi. pro zjednodušení v tomto případě je ukládáme do paměti.
 
    ```csharp
     public class Notification
@@ -56,7 +56,7 @@ ms.locfileid: "96019411"
     }
     ```
 
-3. V NotificationsController.cs nahraďte kód uvnitř definice třídy **NotificationsController** následujícím kódem. Tato součást implementuje způsob, jak zařízení správně načte oznámení, a poskytuje způsob (pro účely tohoto kurzu) pro aktivaci zabezpečeného nabízeného oznámení pro vaše zařízení. Všimněte si, že při odesílání oznámení do centra oznámení pošleme nezpracované oznámení s ID oznámení (bez skutečné zprávy):
+3. V NotificationsController. cs nahraďte kód uvnitř definice třídy **NotificationsController** následujícím kódem. Tato součást implementuje způsob, jak zařízení správně načte oznámení, a poskytuje způsob (pro účely tohoto kurzu) pro aktivaci zabezpečeného nabízeného oznámení pro vaše zařízení. Všimněte si, že při odesílání oznámení do centra oznámení pošleme nezpracované oznámení s ID oznámení (bez skutečné zprávy):
 
    ```csharp
     public NotificationsController()

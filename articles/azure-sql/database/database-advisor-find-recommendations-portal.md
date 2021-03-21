@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500882"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
@@ -29,7 +29,7 @@ Pokud chcete zobrazit a použít doporučení pro výkon, budete potřebovat spr
 
 Pomocí následujících kroků můžete najít doporučení týkající se výkonu Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Přejít na **všechny služby**  >  **databáze SQL** a vyberte svou databázi.
 3. Přejděte do **doporučení ke zvýšení výkonu** a zobrazte dostupná doporučení pro vybranou databázi.
 
@@ -39,9 +39,9 @@ Doporučení týkající se výkonu se zobrazují v tabulce podobné tomu na ná
 
 Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do následujících kategorií:
 
-| Dopad | Popis |
+| Dopad | Description |
 |:--- |:--- |
-| Vysoké |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
+| Vysoká |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
 | Střední |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
 | Nízká |Doporučení pro nízký dopad by měla poskytovat lepší výkon než bez, ale vylepšení nemusí být významná. |
 
@@ -156,7 +156,7 @@ Po úspěšném dokončení implementace doporučení (v současné době platí
 
 ![Sledovat dopad na výkon](./media/database-advisor-find-recommendations-portal/query-insights.png)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Azure SQL Database poskytuje doporučení pro zlepšení výkonu databáze. Díky skriptům T-SQL získáte pomoc při optimalizaci databáze a nakonec se zlepší výkon dotazů.
 

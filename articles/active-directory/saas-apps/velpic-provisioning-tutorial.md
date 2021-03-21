@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.openlocfilehash: cdd4fb96a42d154ccd8b508950283978ddf58ef4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94354899"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Kurz: Konfigurace VELPIC pro Automatické zřizování uživatelů
@@ -66,7 +66,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
     ![Zřizování VELPIC](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. V části **přihlašovací údaje správce** zadejte **adresu URL klienta&tajného tokenu** VELPIC. (Tyto hodnoty najdete pod účtem VELPIC: **Správa**  >  **Integrace**  >  **Modul plug-in**  >  **SCIM** )
+5. V části **přihlašovací údaje správce** zadejte **adresu URL klienta&tajného tokenu** VELPIC. (Tyto hodnoty najdete pod účtem VELPIC: **Správa**  >  **Integrace**  >  **Modul plug-in**  >  **SCIM**)
 
     ![Autorizační hodnoty](./media/velpic-provisioning-tutorial/Velpic2.png)
 

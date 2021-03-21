@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 01/07/2021
 ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027768"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Jak monitorovat normalizovaná RU/s pro kontejner Azure Cosmos nebo účet
@@ -22,7 +22,7 @@ Azure Monitor pro Azure Cosmos DB poskytuje zobrazení metrik pro monitorování
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Co očekávat a když je normalizované RU/s vyšší
 
-Když normalizovaná spotřeba RU/s dosáhne 100% pro daný rozsah klíčů oddílu a klient v tomto časovém intervalu (1 sekund) vydává požadavky na určitý rozsah klíčů oddílu, obdrží v něm chybu s omezeným počtem. Klient by měl respektovat navrhovanou dobu čekání a opakovat požadavek. Sada SDK usnadňuje zpracování této situace opakováním předem nakonfigurovaných časů tím, že se bude čekat správně.  Není nutné, abyste viděli chybu omezení míry RU, protože normalizované RU dosáhlo 100%. Vzhledem k tomu, že normalizované RU je jediná hodnota, která představuje maximální využití pro všechny rozsahy klíčů oddílu, může být jeden rozsah klíčů oddílu zaneprázdněný, ale ostatní rozsahy klíčů oddílu můžou požadavky zpracovat bez problémů. Například jedna operace, například uložená procedura, která spotřebovává všechny důležité/s na rozsah klíče oddílu, povede k krátkému nárůstu normalizované spotřeby RU/s. V takových případech nedojde k žádným okamžitému omezení rychlosti, pokud je rychlost požadavků nízká nebo se požadavky provedou na jiné oddíly v různých rozsahech klíčů oddílu. 
+Když normalizovaná spotřeba RU/s dosáhne 100% pro daný rozsah klíčů oddílu a klient v tomto časovém intervalu (1 sekund) vydává požadavky na určitý rozsah klíčů oddílu, obdrží v něm chybu s omezeným počtem. Klient by měl respektovat navrhovanou dobu čekání a opakovat požadavek. Sada SDK usnadňuje zpracování této situace opakováním předem nakonfigurovaných časů tím, že se bude čekat správně.  Není nutné, abyste viděli chybu omezení míry RU, protože normalizované RU dosáhlo 100%. Vzhledem k tomu, že normalizované RU je jediná hodnota, která představuje maximální využití pro všechny rozsahy klíčů oddílu, může být jeden rozsah klíčů oddílu zaneprázdněný, ale ostatní rozsahy klíčů oddílu můžou požadavky zpracovat bez problémů. Například jedna operace, například uložená procedura, která spotřebovává všechny důležité/s na rozsah klíče oddílu, povede k krátkému nárůstu normalizované spotřeby RU/s. V takových případech se neobjeví žádné chyby s okamžitým omezením četnosti, pokud je četnost žádostí nízká nebo se žádosti podávají na jiné oddíly v různých rozsazích klíčů oddílů. 
 
 Metriky Azure Monitor vám pomůžou najít operace na stavový kód pro SQL API pomocí metriky **celkových požadavků** . Později můžete tyto požadavky filtrovat pomocí kódu stavu 429 a rozdělit je podle **typu operace**.  
 
