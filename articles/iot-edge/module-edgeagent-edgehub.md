@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 951111b217b7ace3f12676edf6febfa7266094df
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103489942"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Vlastnosti IoT Edge agenta a modulu IoT Edge centra pro vlákna
@@ -35,33 +35,33 @@ Pro agenta IoT Edge je volána `$edgeAgent` nefunkční modul a koordinuje komun
 
 | Vlastnost | Popis | Povinné |
 | -------- | ----------- | -------- |
-| schemaVersion | Buď "1,0" nebo "1,1". Verze 1,1 byla představena s IoT Edge verzí 1.0.10 a doporučuje se. | Ano |
-| Runtime. Type | Musí být "Docker" | Ano |
-| Runtime. Settings. minDockerVersion | Nastavte na minimální verzi Docker, kterou vyžaduje tento manifest nasazení. | Ano |
-| Runtime. Settings. loggingOptions | Dokument JSON obsahující možnosti protokolování pro kontejner agenta IoT Edge. [Možnosti protokolování Docker](https://docs.docker.com/engine/admin/logging/overview/) | Ne |
-| Runtime. Settings. registryCredentials<br>. {registryId}. username | Uživatelské jméno registru kontejneru. Pro Azure Container Registry je uživatelské jméno obvykle název registru.<br><br> Přihlašovací údaje registru jsou nezbytné pro všechny image privátních modulů. | Ne |
-| Runtime. Settings. registryCredentials<br>. {registryId}. heslo | Heslo pro registr kontejneru | Ne |
-| Runtime. Settings. registryCredentials<br>. {registryId}. adresa | Adresa registru kontejneru. Pro Azure Container Registry adresa je obvykle *{název registru}. azurecr. IO*. | Ne |  
-| systemModules. edgeAgent. Type | Musí být "Docker" | Ano |
-| systemModules. edgeAgent. Settings. Image | Identifikátor URI obrázku agenta IoT Edge. V současné době se agent IoT Edge nemůže sám aktualizovat. | Ano |
-| systemModules. edgeAgent. Settings<br>.createOptions | Dokument JSON obsahující možnosti pro vytvoření kontejneru agenta IoT Edge. [Možnosti vytvoření Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Ne |
+| schemaVersion | Buď "1,0" nebo "1,1". Verze 1,1 byla představena s IoT Edge verzí 1.0.10 a doporučuje se. | Yes |
+| Runtime. Type | Musí být "Docker" | Yes |
+| Runtime. Settings. minDockerVersion | Nastavte na minimální verzi Docker, kterou vyžaduje tento manifest nasazení. | Yes |
+| Runtime. Settings. loggingOptions | Dokument JSON obsahující možnosti protokolování pro kontejner agenta IoT Edge. [Možnosti protokolování Docker](https://docs.docker.com/engine/admin/logging/overview/) | No |
+| Runtime. Settings. registryCredentials<br>. {registryId}. username | Uživatelské jméno registru kontejneru. Pro Azure Container Registry je uživatelské jméno obvykle název registru.<br><br> Přihlašovací údaje registru jsou nezbytné pro všechny image privátních modulů. | No |
+| Runtime. Settings. registryCredentials<br>. {registryId}. heslo | Heslo pro registr kontejneru | No |
+| Runtime. Settings. registryCredentials<br>. {registryId}. adresa | Adresa registru kontejneru. Pro Azure Container Registry adresa je obvykle *{název registru}. azurecr. IO*. | No |  
+| systemModules. edgeAgent. Type | Musí být "Docker" | Yes |
+| systemModules. edgeAgent. Settings. Image | Identifikátor URI obrázku agenta IoT Edge. V současné době se agent IoT Edge nemůže sám aktualizovat. | Yes |
+| systemModules. edgeAgent. Settings<br>.createOptions | Dokument JSON obsahující možnosti pro vytvoření kontejneru agenta IoT Edge. [Možnosti vytvoření Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | systemModules.edgeAgent.configuration.id | ID nasazení, které tento modul nasadilo. | IoT Hub tuto vlastnost nastavuje při použití manifestu pomocí nasazení. Není součástí manifestu nasazení. |
-| systemModules. edgeHub. Type | Musí být "Docker" | Ano |
-| systemModules. edgeHub. status | Musí být spuštěno. | Ano |
-| systemModules.edgeHub.restartPolicy | Musí být vždycky | Ano |
-| systemModules.edgeHub.startupOrder | Celočíselná hodnota, pro kterou má být modul v pořadí spouštění. 0 je první a maximální celé číslo (4294967295) je poslední. Pokud hodnota není zadaná, výchozí hodnota je maximální celé číslo.  | Ne |
-| systemModules. edgeHub. Settings. Image | Identifikátor URI obrázku IoT Edgeového centra | Ano |
-| systemModules. edgeHub. Settings<br>.createOptions | Dokument JSON obsahující možnosti pro vytvoření kontejneru centra IoT Edge. [Možnosti vytvoření Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Ne |
+| systemModules. edgeHub. Type | Musí být "Docker" | Yes |
+| systemModules. edgeHub. status | Musí být spuštěno. | Yes |
+| systemModules.edgeHub.restartPolicy | Musí být vždycky | Yes |
+| systemModules.edgeHub.startupOrder | Celočíselná hodnota, pro kterou má být modul v pořadí spouštění. 0 je první a maximální celé číslo (4294967295) je poslední. Pokud hodnota není zadaná, výchozí hodnota je maximální celé číslo.  | No |
+| systemModules. edgeHub. Settings. Image | Identifikátor URI obrázku IoT Edgeového centra | Yes |
+| systemModules. edgeHub. Settings<br>.createOptions | Dokument JSON obsahující možnosti pro vytvoření kontejneru centra IoT Edge. [Možnosti vytvoření Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | systemModules.edgeHub.configuration.id | ID nasazení, které tento modul nasadilo. | IoT Hub tuto vlastnost nastavuje při použití manifestu pomocí nasazení. Není součástí manifestu nasazení. |
-| Aktualizuj. {moduleId}. verze | Uživatelsky definovaný řetězec představující verzi tohoto modulu. | Ano |
-| Aktualizuj. {moduleId}. Type | Musí být "Docker" | Ano |
-| Aktualizuj. {moduleId}. status | {"Running" \| "zastaveno"} | Ano |
-| Aktualizuj. {moduleId}. restartPolicy | {"nikdy" \| "Chyba" při \| nesprávném stavu "" \| Always "} | Ano |
-| Aktualizuj. {moduleId}. startupOrder | Celočíselná hodnota, pro kterou má být modul v pořadí spouštění. 0 je první a maximální celé číslo (4294967295) je poslední. Pokud hodnota není zadaná, výchozí hodnota je maximální celé číslo.  | Ne |
-| Aktualizuj. {moduleId}. imagePullPolicy | {"on-Create" \| "nikdy"} | Ne |
-| Aktualizuj. {moduleId}. env | Seznam proměnných prostředí, které se mají předat modulu. Má formát `"<name>": {"value": "<value>"}` | Ne |
-| Aktualizuj. {moduleId}. Settings. Image | Identifikátor URI k imagi modulu | Ano |
-| Aktualizuj. {moduleId}. Settings. createOptions | Dokument JSON obsahující možnosti pro vytvoření kontejneru modulu. [Možnosti vytvoření Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Ne |
+| Aktualizuj. {moduleId}. verze | Uživatelsky definovaný řetězec představující verzi tohoto modulu. | Yes |
+| Aktualizuj. {moduleId}. Type | Musí být "Docker" | Yes |
+| Aktualizuj. {moduleId}. status | {"Running" \| "zastaveno"} | Yes |
+| Aktualizuj. {moduleId}. restartPolicy | {"nikdy" \| "Chyba" při \| nesprávném stavu "" \| Always "} | Yes |
+| Aktualizuj. {moduleId}. startupOrder | Celočíselná hodnota, pro kterou má být modul v pořadí spouštění. 0 je první a maximální celé číslo (4294967295) je poslední. Pokud hodnota není zadaná, výchozí hodnota je maximální celé číslo.  | No |
+| Aktualizuj. {moduleId}. imagePullPolicy | {"on-Create" \| "nikdy"} | No |
+| Aktualizuj. {moduleId}. env | Seznam proměnných prostředí, které se mají předat modulu. Má formát `"<name>": {"value": "<value>"}` | No |
+| Aktualizuj. {moduleId}. Settings. Image | Identifikátor URI k imagi modulu | Yes |
+| Aktualizuj. {moduleId}. Settings. createOptions | Dokument JSON obsahující možnosti pro vytvoření kontejneru modulu. [Možnosti vytvoření Docker](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | Aktualizuj. {moduleId}. Configuration. ID | ID nasazení, které tento modul nasadilo. | IoT Hub tuto vlastnost nastavuje při použití manifestu pomocí nasazení. Není součástí manifestu nasazení. |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent hlášené vlastnosti
@@ -111,9 +111,9 @@ Pro IoT Edge se volá modul, který se zavolá, `$edgeHub` a koordinuje komunika
 
 | Vlastnost | Popis | Vyžadováno v manifestu nasazení |
 | -------- | ----------- | -------- |
-| schemaVersion | Buď "1,0" nebo "1,1". Verze 1,1 byla představena s IoT Edge verzí 1.0.10 a doporučuje se. | Ano |
+| schemaVersion | Buď "1,0" nebo "1,1". Verze 1,1 byla představena s IoT Edge verzí 1.0.10 a doporučuje se. | Yes |
 | tras. RouteName | Řetězec představující trasu centra IoT Edge. Další informace naleznete v tématu [Declare Routes](module-composition.md#declare-routes). | `routes`Element může být přítomen, ale prázdný. |
-| storeAndForwardConfiguration.timeToLiveSecs | Čas v sekundách, po který IoT Edge hub udržuje zprávy, pokud je odpojený od koncových bodů směrování, ať už IoT Hub nebo místní modul. Hodnota může být libovolné kladné celé číslo. | Ano |
+| storeAndForwardConfiguration.timeToLiveSecs | Čas v sekundách, po který IoT Edge hub udržuje zprávy, pokud je odpojený od koncových bodů směrování, ať už IoT Hub nebo místní modul. Hodnota může být libovolné kladné celé číslo. | Yes |
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub hlášené vlastnosti
 

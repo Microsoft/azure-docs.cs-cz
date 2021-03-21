@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 7cfc8fc24aea938b997fead4ca762ce7178e3386
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490615"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Kurz: Příprava webové aplikace pro komunikační služby Azure (Node.js)
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Přidejte na svůj web balíčky služby Azure Communication Services.
 > * Publikujte svůj web na statické weby Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Bezplatný účet vám poskytne $200 kreditů Azure k vyzkoušení libovolné kombinace služeb.
 - [Visual Studio Code](https://code.visualstudio.com/) pro úpravu kódu v místním vývojovém prostředí.

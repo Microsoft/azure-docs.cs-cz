@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 11d8e8d918b408881f211605ce6c713615f0aa93
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b99c2efcb746a056adc76fdc161c8d8a8e2799e1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022628"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670116"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro HoloLens v Unity, která používá prostorové kotvy Azure
 
@@ -29,13 +29,13 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-- Potřebujete počítač s Windows s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a> a sadou <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> nebo novější. Vaše instalace sady Visual Studio musí zahrnovat úlohu **vývoje Univerzální platforma Windows** a komponentu **Windows 10 SDK (10.0.18362.0 nebo novější)** . Musíte taky nainstalovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> a <a href="https://git-lfs.github.com/">Git LFS</a>.
+- Potřebujete počítač s Windows s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a> a sadou <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> nebo novější. Použijte **unity 2020 LTS** se systémem ASA sdk verze 2,9 nebo novější (který používá [modul plug-in Unity XR](https://docs.unity3d.com/Manual/XRPluginArchitecture.html)) nebo **Unity 2019 LTS** se službou ASA SDK verze 2,8 nebo starší. Vaše instalace sady Visual Studio musí zahrnovat úlohu **vývoje Univerzální platforma Windows** a komponentu **Windows 10 SDK (10.0.18362.0 nebo novější)** . Musíte taky nainstalovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> a <a href="https://git-lfs.github.com/">Git LFS</a>.
 - Potřebujete zařízení HoloLens, na kterém je povolený [vývojářský režim](/windows/mixed-reality/using-visual-studio) . V zařízení musí být nainstalovaná [aktualizace Windows 10 květen 2020](/windows/mixed-reality/whats-new/release-notes-may-2020) . Chcete-li provést aktualizaci na nejnovější verzi na HoloLens, otevřete aplikaci **Nastavení** , pokračujte na **aktualizace & zabezpečení** a pak vyberte **Vyhledat aktualizace**.
-- V aplikaci musíte povolit funkci **SpatialPerception** . Toto nastavení je v **nastavení sestavení**  >  **Player Settings**  >  Možnosti nastavení **publikování** přehrávače nastavení  >  **Capabilities**.
+- V aplikaci musíte povolit funkci **SpatialPerception** . Toto nastavení je v **nastavení sestavení**  >    >  Možnosti nastavení **publikování** přehrávače nastavení  >  .
 - V aplikaci musíte povolit **virtuální realitu podporovanou** sadou **Windows Mixed reality SDK**. Toto nastavení se nachází v nastavení **sestavení**  >  **přehrávače** nastavení  >  **XR**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -46,7 +46,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
-Otevřete **nastavení sestavení** výběrem **File**  >  **nastavení sestavení** souboru.
+Otevřete **nastavení sestavení** výběrem   >  **nastavení sestavení** souboru.
 
 V části **platforma** vyberte **Univerzální platforma Windows**. Změňte **cílové zařízení** na **HoloLens**.
 

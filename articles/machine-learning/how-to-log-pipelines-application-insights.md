@@ -11,10 +11,10 @@ ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 7ed27eba66b3d18bed8017934fce85928b961392
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102520043"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Shromažďování souborů protokolu kanálu Machine Learning v Application Insights pro výstrahy a ladění
@@ -24,7 +24,7 @@ Knihovna Pythonu [OpenCensus](https://opencensus.io/quickstart/python/) se dá p
 
 V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k dispozici historii výjimek a chybových zpráv. Vzhledem k tomu, že Application Insights se integruje s výstrahami Azure, můžete také vytvořit výstrahy na základě Application Insights dotazů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Podle pokynů vytvořte pracovní prostor [Azure Machine Learning](./how-to-manage-workspace.md) a [vytvořte svůj první kanál](./how-to-create-machine-learning-pipelines.md) .
 * [Nakonfigurujte vývojové prostředí](./how-to-configure-environment.md) pro instalaci sady Azure Machine Learning SDK.

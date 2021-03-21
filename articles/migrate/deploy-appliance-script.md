@@ -7,10 +7,10 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.date: 04/16/2020
 ms.openlocfilehash: abf34a5ea83e74b0bd2a074108c5ef1014941093
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041327"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Nastavení zařízení pomocí skriptu
@@ -23,7 +23,7 @@ Zařízení pro virtuální počítače VMware a Hyper-V můžete nasadit pomoc�
 - K nastavení zařízení pro fyzické servery můžete použít jenom skript. Postupujte podle [tohoto článku](how-to-set-up-appliance-physical.md).
 - Pokud chcete zařízení nastavit v cloudu Azure Government, postupujte podle pokynů v [tomto článku](deploy-appliance-script-government.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Skript nastaví zařízení Azure Migrate na stávajícím fyzickém počítači nebo VIRTUÁLNÍm počítači.
 

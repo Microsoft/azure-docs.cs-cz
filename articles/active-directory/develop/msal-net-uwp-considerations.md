@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122472"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Důvody pro použití Univerzální platforma Windows s MSAL.NET
@@ -42,7 +42,7 @@ Základní implementace WAB na platformě UWP nefunguje správně v podnikových
 
 Tomuto problému se můžete vyhnout tak, že použijete alternativní metodu, jako je uživatelské jméno – heslo a telefonní ověřování, ale prostředí není dobré.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Někteří zákazníci oznámili následující chybu při přihlašování v konkrétních podnikových prostředích, ve kterých ví, že mají připojení k Internetu a že připojení funguje s veřejnou sítí.
 
@@ -61,7 +61,7 @@ Další informace najdete v tématu [zprostředkovatel webového ověřování �
 ## <a name="next-steps"></a>Další kroky
 Následující ukázky poskytují další informace.
 
-Ukázka | Platforma | Popis 
+Ukázka | Platforma | Description 
 |------ | -------- | -----------|
 |[Active-Directory-dotnet-Native-UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Klientská aplikace UWP, která používá MSAL.NET. Přistupuje k Microsoft Graph pro uživatele, který se ověřuje pomocí koncového bodu Azure AD 2,0. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[Active-Directory-Xamarin-Native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Aplikace Xamarin Forms, která ukazuje, jak používat MSAL k ověřování osobních účtů Microsoft a Azure AD prostřednictvím platformy Microsoft Identity Platform. Také ukazuje, jak získat přístup k Microsoft Graph a zobrazuje výsledný token. <br>![Diagram, který ukazuje, jak používat MSAL k ověřování osobních účtů Microsoft a Azure AD prostřednictvím platformy Microsoft Identity Platform.](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

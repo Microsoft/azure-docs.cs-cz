@@ -13,10 +13,10 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
 ms.openlocfilehash: b6dfb4cb697e7d66c7db323df9786ff7ad45e1d7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101672332"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure

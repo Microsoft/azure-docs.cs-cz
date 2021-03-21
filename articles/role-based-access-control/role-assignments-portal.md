@@ -11,10 +11,10 @@ ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal
 ms.openlocfilehash: e25bbe4e1a96e4efaaa13732aea571d26d4b006e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555284"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Přiřazení rolí Azure pomocí Azure Portal
@@ -23,7 +23,7 @@ ms.locfileid: "100555284"
 
 Pokud potřebujete přiřadit role správce v Azure Active Directory, přečtěte si téma [zobrazení a přiřazení rolí správce v Azure Active Directory](../active-directory/roles/manage-roles-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
@@ -82,7 +82,7 @@ Pokud potřebujete přiřadit role správce v Azure Active Directory, přečtět
 
 1. V seznamu **přiřadit přístup k** vyberte typ objektu zabezpečení, ke kterému chcete přiřadit přístup.
 
-    | Typ | Popis |
+    | Typ | Description |
     | --- | --- |
     | **Uživatel, skupina nebo instanční objekt** | Pokud chcete přiřadit roli uživateli, skupině nebo objektu služby (aplikace), vyberte tento typ. |
     | **Spravovaná identita přiřazená uživatelem** | Pokud chcete přiřadit roli k [spravované identitě přiřazené uživateli](../active-directory/managed-identities-azure-resources/overview.md), vyberte tento typ. |

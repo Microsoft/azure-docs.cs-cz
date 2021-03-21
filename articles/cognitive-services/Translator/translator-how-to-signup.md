@@ -11,17 +11,17 @@ ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101712925"
 ---
 # <a name="create-a-translator-resource"></a>Vytvoření prostředku překladatele
 
 V tomto článku se dozvíte, jak vytvořit prostředek překladatele v Azure Portal. [Azure Translator](translator-info-overview.md) je cloudová služba strojového překladu, která je součástí Cognitive Services řady rozhraní REST API pro [Azure](../what-are-cognitive-services.md) . Prostředky Azure jsou instance služby, které vytvoříte. Všechny požadavky rozhraní API na služby Azure vyžadují pro ověřování přístupu adresu URL **koncového bodu** a **klíč předplatného** jen pro čtení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat aktivní [**účet Azure**](https://azure.microsoft.com/free/cognitive-services/).  Pokud ho nemáte, můžete si [**vytvořit bezplatné předplatné na 12 měsíců**](https://azure.microsoft.com/free/).
 

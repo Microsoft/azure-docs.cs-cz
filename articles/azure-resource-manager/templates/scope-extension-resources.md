@@ -4,10 +4,10 @@ description: Popisuje, jak použít vlastnost Scope při nasazování typů pros
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492157"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>Nastavení oboru pro prostředky rozšíření v šablonách ARM

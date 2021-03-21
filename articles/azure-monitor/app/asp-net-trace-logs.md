@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
 ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98937560"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET/.NET Core a Python v Application Insights
@@ -136,7 +136,7 @@ Pro každý zdroj můžete nastavit následující parametry:
 ## <a name="use-the-trace-api-directly"></a>Přímé použití rozhraní API trasování
 Rozhraní API pro trasování Application Insights můžete volat přímo. Toto rozhraní API používají adaptéry protokolování.
 
-Příklad:
+Například:
 
 ```csharp
 TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
@@ -146,7 +146,7 @@ telemetry.TrackTrace("Slow response - database01");
 
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.
 
-Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
+Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
 
   ```csharp
   TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
@@ -191,7 +191,7 @@ Můžete například:
 >Pokud vaše aplikace odesílá spoustu dat a používáte sadu SDK Application Insights pro ASP.NET verze 2.0.0-beta3 nebo novější, může funkce *adaptivního vzorkování* fungovat a odesílat jenom část telemetrie. [Další informace o vzorkování.](./sampling.md)
 >
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 ### <a name="how-do-i-do-this-for-java"></a>Návody to udělat pro Java?
 V případě instrumentace bez kódu Java (doporučeno) protokoly se shromažďují mimo pole, použijte [agenta Java 3,0](./java-in-process-agent.md).
 

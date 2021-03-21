@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 342125da35868b2b0f71609c4114cc561821eb1a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 88cfddb12de0949d56e4b8f9c3e363e4c8f75676
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121129"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657755"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s webovou aplikací ASP.NET 
 
@@ -22,36 +22,36 @@ V tomto rychlém startu použijete Visual Studio 2019 k vytvoření webové apli
 
 Pokud chcete přeskočit přímo na kód, přečtěte si [rychlý start ASP.NET](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/aspnet) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohami vývoje **ASP.NET a web** a **vývoj pro Azure** .
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. Otevřete Visual Studio a pak vyberte **soubor**  > **Nový**  >  **projekt**.
+1. Otevřete Visual Studio a pak vyberte **soubor**  >  **Nový**  >  **projekt**.
 
-2. V dialogovém okně **Nový projekt** postupujte takto:
+2. V dialogovém okně **vytvořit nový projekt** proveďte následující kroky:
 
     ![Vytvoření projektu](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. V seznamu **Šablony** rozbalte uzel **Visual C#**.
+    a. Do vyhledávacího pole zadejte _webovou aplikaci C# ASP.NET_.
 
-    b. Vyberte **Cloud**.
+    b. Vyberte **Webová aplikace v ASP.NET (.NET Framework)**.
 
-    c. Vyberte **Webová aplikace ASP.NET**.
+    c. Vyberte **Další**.
 
-    d. Zkontrolujte, že je vybrané rozhraní **.NET Framework 4.5.2** nebo vyšší.
+3. Do pole **název projektu** zadejte název projektu. V tomto příkladu jsme použili **ContosoTeamStats**.
 
-    e. Do pole **Název** zadejte název projektu. V tomto příkladu jsme použili **ContosoTeamStats**.
+4. Ověřte, zda je vybrána možnost **.NET Framework 4.6.1** nebo vyšší.
 
-    f. Vyberte **OK**.
+5. Vyberte **Vytvořit**.
    
-3. Jako typ projektu vyberte **MVC**.
+6. Jako typ projektu vyberte **MVC**.
 
-4. Ujistěte se, že v nastavení **Ověřování** je zadáno **Bez ověřování**. V závislosti na verzi sady Visual Studio může být výchozí hodnotou nastavení **Ověřování** něco jiného. Chcete-li ji změnit, vyberte **Změnit ověřování** a pak **Bez ověřování**.
+7. Ujistěte se, že v nastavení **Ověřování** je zadáno **Bez ověřování**. V závislosti na verzi sady Visual Studio může být výchozí hodnotou nastavení **Ověřování** něco jiného. Chcete-li ji změnit, vyberte **Změnit ověřování** a pak **Bez ověřování**.
 
-5. Vyberte **OK** a vytvořte projekt.
+8. Vyberte **Vytvořit** a vytvořte projekt.
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 
@@ -125,10 +125,11 @@ Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu 
 
 1. V **Průzkumníku řešení** rozbalte složku **Kontrolery** a otevřete soubor *HomeController.cs*.
 
-2. Na začátek souboru přidejte dva příkazy `using` pro podporu klienta mezipaměti a nastavení aplikace.
+2. `using`Do horní části souboru přidejte následující příkazy, které budou podporovat klienta mezipaměti, nastavení aplikace a tvůrce řetězců.
 
     ```csharp
     using System.Configuration;
+    using System.Text;
     using StackExchange.Redis;
     ```
 

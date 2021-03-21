@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 ms.openlocfilehash: 390c804692029d7cdee8f78325b441592879582b
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103488580"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Rychlý Start: získání telefonního čísla pomocí Azure Portal
@@ -22,7 +22,7 @@ ms.locfileid: "103488580"
 
 Začněte s komunikačními službami Azure pomocí Azure Portal k nákupu telefonního čísla.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Aktivní prostředek služby Communication Services.](../create-communication-resource.md)
@@ -112,7 +112,7 @@ Na stránce **čísla** můžete vybrat telefonní číslo a nakonfigurovat ho.
 
 Vyberte funkce z dostupných možností a potom kliknutím na **Potvrdit** použijte svůj výběr.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Běžné otázky a problémy:
 

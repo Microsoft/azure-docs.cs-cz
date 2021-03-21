@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.openlocfilehash: d0877059dca01bf01df7a4f2aeaa5114278ecc97
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040273"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Role, oprávnění a zabezpečení v Azure Monitor
@@ -69,7 +69,7 @@ Lidé, kteří mají přiřazenou roli Přispěvatel monitorování, můžou zob
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>Oprávnění monitorování a vlastní role Azure
 Pokud výše uvedené předdefinované role nevyhovují přesně vašim potřebám vašeho týmu, můžete [vytvořit vlastní roli Azure](../role-based-access-control/custom-roles.md) s podrobnějšími oprávněními. Níže jsou uvedené běžné operace Azure RBAC pro Azure Monitor s jejich popisy.
 
-| Operace | Popis |
+| Operace | Description |
 | --- | --- |
 | Microsoft. Insights/ActionGroups/[čtení, zápis, odstranění] |Skupiny akcí čtení, zápisu a odstranění. |
 | Microsoft. Insights/Upozorněníprotokoluaktivit/[čtení, zápis, odstranění] |Čtení, zápis a odstraňování výstrah protokolu aktivit. |

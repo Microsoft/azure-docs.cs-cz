@@ -4,15 +4,15 @@ description: Přečtěte si, jak přidružit ID partnera pro příjem kreditu (P
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.openlocfilehash: 4c18aae38570ab3fd84df7d45fb18e35404158be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100372089"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Propojte své ID partnera a sledujte svůj dopad na delegovaných prostředcích. 
 
-Pokud jste členem [Microsoft Partner Network](https://partner.microsoft.com/), můžete propojit ID partnera s přihlašovacími údaji, které jste použili ke správě delegovaných prostředků zákazníků, a umožnit tak Microsoftu identifikovat a rozpoznávat partnery, kteří chtějí zákazníky v Azure řídit. Tento odkaz taky umožňuje partnerům [CSP (Cloud Solution Provider)](/partner-center/csp-overview) přijímat [kredity s získanými partnery pro spravované služby (PEC)](/partner-center/partner-earned-credit) pro zákazníky, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](/partner-center/azure-plan-get-started).
+Pokud jste členem [Microsoft Partner Network](https://partner.microsoft.com/), můžete propojit ID partnera s přihlašovacími údaji, které jste použili ke správě delegovaných prostředků zákazníků, a umožnit tak Microsoftu identifikovat a rozpoznávat partnery, kteří chtějí zákazníky v Azure řídit. Toto propojení také umožňuje partnerům [CSP (Cloud Solution Provider)](/partner-center/csp-overview) získávat [kredit pro partnery (PEC) za spravované služby](/partner-center/partner-earned-credit) a zákazníky, kteří [podepsali Smlouvu se zákazníkem Microsoftu (MCA)](/partner-center/confirm-customer-agreement) a jsou [v rámci daného plánu Azure](/partner-center/azure-plan-get-started).
 
 Pokud chcete získat rozpoznávání pro aktivity Azure Lighthouse, musíte [propojit ID MPN](../../cost-management-billing/manage/link-partner-id.md) s alespoň jedním uživatelským účtem ve vašem tenantovi a zajistit, aby měl propojený účet přístup ke každému z vašich poregistračních předplatných.
 

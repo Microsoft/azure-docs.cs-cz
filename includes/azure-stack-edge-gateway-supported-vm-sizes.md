@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/09/2020
 ms.author: alkohli
 ms.openlocfilehash: ae7cb05aeda296ffb3aa9d7f6e2c88fe59364975
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99475032"
 ---
 Velikost virtuálního počítače určuje množství výpočetních prostředků (jako je CPU, GPU a paměť), které jsou k dispozici pro virtuální počítač. Virtuální počítače byste měli vytvořit pomocí velikosti virtuálního počítače, která je vhodná pro úlohu. I když všechny počítače budou spuštěné na stejném hardwaru, velikosti počítačů mají různá omezení pro přístup k disku. To vám může pomáhat spravovat celkový přístup k disku v rámci virtuálních počítačů. Pokud se zatížení zvýší, můžete také změnit velikost stávajícího virtuálního počítače.

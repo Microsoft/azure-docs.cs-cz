@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050539"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104675821"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní šablonami HTML v Azure Active Directory B2C
 
@@ -116,7 +116,7 @@ Tady je přehled tohoto procesu:
 1. Nastavte sdílení prostředků mezi zdroji (CORS) pro vaši webovou aplikaci.
 1. Nasměrujte zásady na svůj vlastní identifikátor URI obsahu zásad.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -215,7 +215,7 @@ Pokud chcete vytvořit veřejný kontejner ve službě BLOB Storage, proveďte n
 Pomocí následujících kroků nakonfigurujte úložiště objektů BLOB pro sdílení prostředků mezi zdroji:
 
 1. V nabídce vyberte **CORS**.
-1. V případě **povolených zdrojů** zadejte `https://your-tenant-name.b2clogin.com` . Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Například `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta použijte všechna malá písmena.
+1. V případě **povolených zdrojů** zadejte `https://your-tenant-name.b2clogin.com` . Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta použijte všechna malá písmena.
 1. U **povolených metod** vyberte obojí `GET` a `OPTIONS` .
 1. U **povolených hlaviček** zadejte hvězdičku (*).
 1. U **zveřejněných hlaviček** zadejte hvězdičku (*).
@@ -266,7 +266,7 @@ Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte 
 1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions.xml*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **ContentDefinitions** , který jste zkopírovali jako podřízený prvek **BuildingBlocks** elementu.
 1. Vyhledejte element **ContentDefinition** , který obsahuje `Id="api.signuporsignin"` soubor ve formátu XML, který jste zkopírovali.
-1. Změňte hodnotu **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. Například `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
+1. Změňte hodnotu **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. Například, `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
     Vaše vlastní zásada by měla vypadat jako následující fragment kódu:
 
@@ -363,26 +363,31 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 Ukázkové šablony pro přizpůsobení uživatelského rozhraní můžete najít tady:
 
 ```bash
-git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
+git clone https://github.com/azure-ad-b2c/html-templates
 ```
 
 Tento projekt obsahuje následující šablony:
-- [Mořská modrá](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/ocean_blue)
-- [Břidlicová šedá](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
+- [Mořská modrá](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/AzureBlue)
+- [Břidlicová šedá](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/MSA)
+- [Standardním](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/classic)
+- [Prostředky šablon](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/src)
 
 Postup použití ukázky:
 
-1. Naklonujte úložiště na místním počítači. Vyberte složku šablony `/ocean_blue` nebo `/slate_gray` .
-1. Nahrajte všechny soubory ve složce šablony a `/assets` složce do úložiště objektů blob, jak je popsáno v předchozích částech.
-1. Potom otevřete každý `\*.html` soubor v kořenovém adresáři `/ocean_blue` nebo `/slate_gray` nahraďte všechny výskyty relativních adres URL adresami URL souborů CSS, obrázků a písem, které jste nahráli v kroku 2. Příklad:
+1. Naklonujte úložiště na místním počítači. Vyberte složku šablony `/AzureBlue` , `/MSA` nebo `/classic` .
+1. Nahrajte všechny soubory ve složce šablony a `/src` složce do úložiště objektů blob, jak je popsáno v předchozích částech.
+1. Potom otevřete všechny `\*.html` soubory ve složce šablony. Potom nahraďte všechny instance `https://login.microsoftonline.com` adres URL adresou URL, kterou jste nahráli v kroku 2. Například:
+    
+    Z:
     ```html
-    <link href="./css/assets.css" rel="stylesheet" type="text/css" />
+    https://login.microsoftonline.com/templates/src/fonts/segoeui.WOFF
     ```
 
-    Záměr
+    Do:
     ```html
-    <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
+    https://your-storage-account.blob.core.windows.net/your-container/templates/src/fonts/segoeui.WOFF
     ```
+    
 1. Uložte `\*.html` soubory a nahrajte je do úložiště objektů BLOB.
 1. Nyní upravte zásady tak, aby odkazovaly na soubor HTML, jak bylo uvedeno dříve.
 1. Pokud se zobrazí chybějící písma, obrázky nebo šablony stylů CSS, zkontrolujte odkazy v zásadách rozšíření a v \* souborech. html.

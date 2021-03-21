@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: bced45474a3a851bc5785f662c0b2e50ae3a380c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491074"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender pro službu IoT – směrný plán a vlastní kontroly
@@ -66,7 +66,7 @@ Konfigurace vlastních kontrol standardních hodnot:
 
 ## <a name="baseline-custom-check-properties"></a>Vlastnosti vlastní kontroly směrného plánu
 
-| Název| Status | Platné hodnoty| Výchozí hodnoty| Popis |
+| Name| Status | Platné hodnoty| Výchozí hodnoty| Description |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Požadováno: true |Platné hodnoty: **logická hodnota** |Výchozí hodnota: **false** |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
 |baselineCustomChecksFilePath |Požadováno: true|Platné hodnoty: **řetězec**, **hodnota null** |Výchozí hodnota: **null** |Úplná cesta k základní konfiguraci XML|

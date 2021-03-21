@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
 ms.openlocfilehash: 3c1af1128b99cbd3263ddffc834eb27ab9dec564
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103489841"
 ---
 # <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>Rychlý Start: Defender-IoT-Micro Agent pro Azure RTO (Preview)
 
 Tento článek obsahuje vysvětlení požadavků před začátkem a vysvětluje, jak povolit službu Defender-IoT-Micro-Agent pro Azure RTO ve IoT Hub. Pokud v tuto chvíli nemáte IoT Hub, přečtěte si téma [vytvoření IoT Hub pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md) pro začátek.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 ### <a name="supported-devices"></a>Podporovaná zařízení
 

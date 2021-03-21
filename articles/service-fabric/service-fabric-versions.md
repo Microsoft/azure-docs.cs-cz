@@ -4,10 +4,10 @@ description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetn�
 ms.topic: troubleshooting
 ms.date: 06/15/2020
 ms.openlocfilehash: 3e859a04ffb0b885aab0f31e83afad8380cbcc95
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103010197"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Upgrade verze clusteru Azure Service Fabric
