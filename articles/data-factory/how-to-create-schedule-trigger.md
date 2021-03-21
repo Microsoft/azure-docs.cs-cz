@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: f10dac4e70a1edb05f2f2c02c48b9ae16c4f6823
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177806"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Vytvoření triggeru, který bude spouštět kanál podle plánu
@@ -350,7 +350,7 @@ Následující definice JSON ukazuje, jak vytvořit aktivační událost plánov
 
 Následující tabulka obsahuje přehled hlavních elementů schématu souvisejících s opakováním a plánováním aktivační události:
 
-| Vlastnost JSON | Popis |
+| Vlastnost JSON | Description |
 |:--- |:--- |
 | **Spuštění** | Hodnota data a času. V případě jednoduchých plánů se hodnota vlastnosti **startTime** vztahuje pouze na první výskyt. U složitějších plánů aktivační událost nezačíná dřív než v čas určený hodnotou **startTime**. <br> Pro časové pásmo UTC je formát `'yyyy-MM-ddTHH:mm:ssZ'` pro jiné časové pásmo formát `'yyyy-MM-ddTHH:mm:ss'` . |
 | **endTime** | Koncové datum a čas pro aktivační událost. Aktivační událost se nebude spouštět po zadaném koncovém datu a času. Hodnota této vlastnosti nemůže být v minulosti. Tato vlastnost je nepovinná.  <br> Pro časové pásmo UTC je formát `'yyyy-MM-ddTHH:mm:ssZ'` pro jiné časové pásmo formát `'yyyy-MM-ddTHH:mm:ss'` . |
@@ -369,12 +369,12 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 | Vlastnost JSON | Typ | Vyžadováno | Výchozí hodnota | Platné hodnoty | Příklad |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **Spuštění** | Řetězec | Ano | Žádné | Data a časy podle normy ISO 8601 | pro časové pásmo UTC `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> pro jiné časové pásmo `"2013-01-09T09:30:00-08:00"` |
-| **Údaj** | Řetězec | Ano | Žádné | [Hodnoty časového pásma](#time-zone-option)  | `"UTC"` |
-| **vzorec** | Objekt | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **doba** | Číslo | Ne | 1 | 1 až 1 000 | `"interval":10` |
-| **endTime** | Řetězec | Ano | Žádné | Hodnota data a času představující čas v budoucnosti. | pro časové pásmo UTC `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> pro jiné časové pásmo `"endTime" : "2013-02-09T09:30:00-08:00"`|
-| **CXL** | Objekt | Ne | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **Spuštění** | Řetězec | Yes | Žádné | Data a časy podle normy ISO 8601 | pro časové pásmo UTC `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> pro jiné časové pásmo `"2013-01-09T09:30:00-08:00"` |
+| **Údaj** | Řetězec | Yes | Žádné | [Hodnoty časového pásma](#time-zone-option)  | `"UTC"` |
+| **vzorec** | Objekt | Yes | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **doba** | Číslo | No | 1 | 1 až 1 000 | `"interval":10` |
+| **endTime** | Řetězec | Yes | Žádné | Hodnota data a času představující čas v budoucnosti. | pro časové pásmo UTC `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> pro jiné časové pásmo `"endTime" : "2013-02-09T09:30:00-08:00"`|
+| **CXL** | Objekt | No | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="time-zone-option"></a>Možnost časového pásma
 
@@ -382,14 +382,14 @@ Tady jsou některá časová pásma podporovaná pro aktivační události plán
 
 | Časové pásmo | Časový posun UTC (nejedná se o letní) | Hodnota časového pásma | Sledování letního ukládání | Formát časového razítka |
 | :--- | :--- | :--- | :--- | :--- |
-| Koordinovaný světový čas | 0 | `UTC` | Ne | `'yyyy-MM-ddTHH:mm:ssZ'`|
-| Tichomořského času (PT) | -8 | `Pacific Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
-| Střední čas (CT) | -6 | `Central Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
-| Východní čas (ET) | -5 | `Eastern Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
-| Střední čas (GMT) | 0 | `GMT Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
-| Střední Evropa (běžný čas) | +1 | `W. Europe Standard Time` | Ano | `'yyyy-MM-ddTHH:mm:ss'` |
-| Indie (běžný čas) (TIS) | + 5:30 | `India Standard Time` | Ne | `'yyyy-MM-ddTHH:mm:ss'` |
-| Čína (běžný čas) | + 8 | `China Standard Time` | Ne | `'yyyy-MM-ddTHH:mm:ss'` |
+| Koordinovaný světový čas | 0 | `UTC` | No | `'yyyy-MM-ddTHH:mm:ssZ'`|
+| Tichomořského času (PT) | -8 | `Pacific Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Střední čas (CT) | -6 | `Central Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Východní čas (ET) | -5 | `Eastern Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Střední čas (GMT) | 0 | `GMT Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Střední Evropa (běžný čas) | +1 | `W. Europe Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Indie (běžný čas) (TIS) | + 5:30 | `India Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
+| Čína (běžný čas) | + 8 | `China Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
 
 Tento seznam je neúplný. Úplný seznam možností časového pásma najdete v části [Stránka pro vytváření aktivační události](#data-factory-ui) portálu Data Factory Portal.
 
@@ -419,7 +419,7 @@ Pokud je zadaných více elementů **schedule**, pořadí jejich vyhodnocování
 
 Následující tabulka obsahuje podrobný popis elementů **schedule**:
 
-| Element JSON | Popis | Platné hodnoty |
+| Element JSON | Description | Platné hodnoty |
 |:--- |:--- |:--- |
 | **minuty** | Minuty v hodině, ve kterých se aktivační událost spouští. | <ul><li>Integer</li><li>Pole celých čísel</li></ul>
 | **hodin** | Hodiny dne, ve kterých se aktivační událost spouští. | <ul><li>Integer</li><li>Pole celých čísel</li></ul> |
@@ -433,7 +433,7 @@ Tato část obsahuje příklady plánů opakování se zaměřením na objekt **
 
 V příkladech se předpokládá, že vlastnost **interval** má hodnotu 1 a vlastnost **frequency** má správnou hodnotu s ohledem na definici plánu. Například nemůžete mít hodnotu **frekvence** "Day" a zároveň mají v objektu **Schedule** změnu "monthDays". Tato a podobná omezení jsou popsaná v tabulce v předchozí části.
 
-| Příklad | Popis |
+| Příklad | Description |
 |:--- |:--- |
 | `{"hours":[5]}` | Spuštění každý den v 5:00. |
 | `{"minutes":[15], "hours":[5]}` | Spuštění každý den v 5:15. |

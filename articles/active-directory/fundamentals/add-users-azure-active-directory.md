@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f1b122cb005f47e9816db3b403a35f4f502248
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 36455b3f6395216bd1ed26c8bd193f0e3ca10b5b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426820"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594593"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí Azure Active Directory
 
@@ -75,7 +75,7 @@ Pokud máte prostředí s Azure Active Directory (Cloud) i se službou Windows S
 Existující uživatele můžete odstranit pomocí portálu Azure Active Directory.
 
 >[!Note]
->Abyste mohli odstraňovat uživatele ve vaší organizaci, musíte mít přiřazenou roli globálního správce nebo Správce uživatelů. Globální správci můžou odstranit všechny uživatele, včetně jiných správců. Správci uživatelů mohou odstranit všechny uživatele, kteří nejsou správci, helpdesk a další Správce uživatelů. Další informace najdete v tématu [oprávnění role správce v Azure AD](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
+>Abyste mohli odstraňovat uživatele ve vaší organizaci, musíte mít přiřazenou roli globálního správce nebo Správce uživatelů. Globální správci můžou odstranit všechny uživatele, včetně jiných správců. Správci uživatelů mohou odstranit všechny uživatele, kteří nejsou správci, helpdesk a další Správce uživatelů. Další informace najdete v tématu [oprávnění role správce v Azure AD](../roles/permissions-reference.md).
 
 Pokud chcete uživatele odstranit, postupujte podle těchto kroků:
 

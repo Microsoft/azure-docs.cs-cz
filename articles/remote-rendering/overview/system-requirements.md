@@ -7,10 +7,10 @@ ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
 ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101705156"
 ---
 # <a name="system-requirements"></a>Požadavky na systém
@@ -67,7 +67,7 @@ Informace o řešení problémů se sítí najdete v [Průvodci odstraňováním
 
 Virtuální počítače pro vzdálené vykreslování používají sdílené IP adresy z následujících rozsahů IP adres:
 
-| Název             | Oblast         | Předpona IP adresy         |
+| Name             | Oblast         | Předpona IP adresy         |
 |------------------|:---------------|:------------------|
 | Austrálie – východ   | australiaeast  | 20.53.44.240/28   |
 | East US          | eastus         | 20.62.129.224/28  |
@@ -90,7 +90,7 @@ Zajistěte, aby brány firewall (na zařízení, ve směrovačích atd.) nebloko
 
 Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblokují následující porty:
 
-| Port              | Protokol | Povolit    | Popis |
+| Port              | Protokol | Povolit    | Description |
 |-------------------|----------|----------|-------------|
 | 50051             | TCP      | Odesílaná | Počáteční připojení (HTTP handshake) |
 | 8266              | UDP      | Odesílaná | Přenos dat |

@@ -3,12 +3,12 @@ title: Proměnné prostředí modulu runtime úloh
 description: Doprovodné materiály k proměnnou prostředí modulu runtime úlohy a referenční informace pro Azure Batch Analytics.
 ms.topic: conceptual
 ms.date: 12/30/2020
-ms.openlocfilehash: c1d9ffb3fe6775b061863656adcb7f45f8840997
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: dbdc13e28a3a0c772480d2602f147e0d3354ff48
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830883"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669980"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Proměnné prostředí Azure Batch runtime
 
@@ -36,7 +36,7 @@ Příkazové řádky spouštěné úkoly na výpočetních uzlech nejsou spoušt
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-| Název proměnné                     | Popis                                                              | Dostupnost | Příklad |
+| Název proměnné                     | Description                                                              | Dostupnost | Příklad |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Název účtu Batch, ke kterému úkol patří                  | Všechny úlohy.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Adresa URL účtu Batch. | Všechny úlohy. | `https://myaccount.westus.batch.azure.com` |
@@ -61,6 +61,8 @@ Příkazové řádky spouštěné úkoly na výpočetních uzlech nejsou spoušt
 | AZ_BATCH_TASK_ID                | Číslo ID aktuálního úkolu. | Všechny úlohy s výjimkou spouštěcího úkolu. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Cesta k adresáři, která je stejná pro primární úlohu a každý dílčí úkol úlohy s [více instancemi](batch-mpi.md). Cesta existuje na každém uzlu, na kterém je spuštěna úloha s více instancemi, a je přístup pro čtení a zápis dostupný pro příkazy úkolu spuštěné v tomto uzlu ( [příkaz koordinace](batch-mpi.md#coordination-command) i [příkaz aplikace](batch-mpi.md#application-command)). Dílčí úkoly nebo primární úlohy, které se spouštějí na jiných uzlech, nemají vzdálený přístup k tomuto adresáři (nejedná se o sdílený síťový adresář). | Primární a dílčí úkoly s více instancemi. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | Úplná cesta [pracovního adresáře úkolu](files-and-directories.md) na uzlu. Aktuálně spuštěná úloha má k tomuto adresáři přístup pro čtení a zápis. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_WORKING_DIR       | Úplná cesta [pracovního adresáře úkolu](files-and-directories.md) na uzlu. Aktuálně spuštěná úloha má k tomuto adresáři přístup pro čtení a zápis. | Všechny úlohy. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_RESERVED_EPHEMERAL_DISK_SPACE_BYTES | Aktuální prahová hodnota místa na disku, na které bude virtuální počítač označený `DiskFull` . | Všechny úlohy. | 1000000 |
 | CCP_NODES                       | Seznam uzlů a počet jader na uzel, které jsou přiděleny k [úloze s více instancemi](batch-mpi.md). Uzly a jádra jsou uvedené ve formátu. `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, kde je počet uzlů následován jednou nebo více IP adresami uzlu a počtem jader pro každý z nich. |  Primární a dílčí úkoly s více instancemi. |`2 10.0.0.4 1 10.0.0.5 1` |
 
 ## <a name="next-steps"></a>Další kroky

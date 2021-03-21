@@ -8,10 +8,10 @@ ms.date: 02/05/2021
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 844530c6d1650b5fddd27b10c775c4364a3f5147
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102124461"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Strukturovaný aplikační protokol pro jarní cloud Azure
@@ -23,16 +23,16 @@ Pro zlepšení prostředí dotazů protokolu musí být protokol aplikace ve for
 
 **Požadavky na schéma JSON:**
 
-| Klíč JSON      | Typ hodnoty JSON|  Vyžadováno | Sloupec v Log Analytics| Popis |
+| Klíč JSON      | Typ hodnoty JSON|  Vyžadováno | Sloupec v Log Analytics| Description |
 | --------------| ------------|-----------|-----------------|--------------------------|
-| časové razítko     | řetězec      |     Ano   | AppTimestamp    | časové razítko ve formátu UTC  |
+| časové razítko     | řetězec      |     Yes   | AppTimestamp    | časové razítko ve formátu UTC  |
 | Nástroj        | řetězec      |     No    | Nástroj          | Nástroj                   |
 | úroveň         | řetězec      |     No    | CustomLevel     | úroveň protokolování                |
 | vlákno        | řetězec      |     No    | Thread          | vlákno                   |
 | zpráva       | řetězec      |     No    | Zpráva         | Zpráva protokolu              |
 | Trasování zásobníku    | řetězec      |     No    | Trasování zásobníku      | trasování zásobníku výjimek    |
 | exceptionClass| řetězec      |     No    | ExceptionClass  | název třídy výjimky     |
-| MDC           | vnořený kód JSON |     Ne    |                 | mapovaný kontext diagnostiky|
+| MDC           | vnořený kód JSON |     No    |                 | mapovaný kontext diagnostiky|
 | MDC. traceId   | řetězec      |     No    | TraceId         |ID trasování pro distribuované trasování|
 | MDC. spanId    | řetězec      |     No    | SpanId          |ID rozsahu pro distribuované trasování |
 |               |             |           |                 |                          |

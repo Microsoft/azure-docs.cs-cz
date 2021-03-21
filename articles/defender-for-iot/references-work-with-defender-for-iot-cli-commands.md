@@ -8,10 +8,10 @@ ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100636556"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Práce s příkazy CLI Defenderu for IoT
@@ -113,7 +113,7 @@ Následující tabulka popisuje příkazy, které jsou k dispozici pro konfigura
 |Blink|`network blink`| Vyhledejte připojení tím, že se indikátory rozhraní zablikají. |
 |Překonfigurujte síť. |`network edit-settings`| Povolí změnu v parametrech konfigurace sítě. |
 |Zobrazit nastavení sítě |`network list`|Zobrazí parametry síťového adaptéru. |
-|Ověření konfigurace sítě |`network validate` |Zobrazí výstupní nastavení sítě. <br /> <br />Příklad: <br /> <br />Aktuální nastavení sítě: <br /> rozhraní: eth0 <br /> IP adresa: 10.100.100.1 <br />podsíť: 255.255.255.0 <br />Výchozí brána: 10.100.100.254 <br />DNS: 10.100.100.254 <br />rozhraní monitorování: eth1|
+|Ověření konfigurace sítě |`network validate` |Zobrazí výstupní nastavení sítě. <br /> <br />Například: <br /> <br />Aktuální nastavení sítě: <br /> rozhraní: eth0 <br /> IP adresa: 10.100.100.1 <br />podsíť: 255.255.255.0 <br />Výchozí brána: 10.100.100.254 <br />DNS: 10.100.100.254 <br />rozhraní monitorování: eth1|
 |Import certifikátu |`certificate import FILE` |Importuje certifikát HTTPS. Je nutné zadat úplnou cestu, která vede k \* souboru. CRT. |
 |Zobrazit datum |`date` |Vrátí aktuální datum na hostiteli ve formátu GMT. |
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: c49a85c71c9b877be7e143f5caf27dc307fe0c12
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 82a5e90221a77b891df78984c7fddfd63b6532aa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381265"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585413"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Připojení virtuální sítě mezi klienty k virtuálnímu centru WAN
 
@@ -30,7 +30,7 @@ Postup pro tuto konfiguraci se provádí pomocí kombinace Azure Portal a PowerS
 
 ## <a name="before-you-begin"></a>Než začnete
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít kroky v tomto článku, musíte mít ve svém prostředí již nastavenou následující konfiguraci:
 
@@ -90,7 +90,7 @@ V následujících krocích přepínáte mezi kontextem těchto dvou odběrů p�
 1. Připojte virtuální síť k centru.
 
    ```azurepowershell-interactive
-   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $[local variable name]
+   New-AzVirtualHubVnetConnection -ResourceGroupName "[parent resource group name]" -VirtualHubName "[virtual hub name]" -Name "[name of connection]" -RemoteVirtualNetwork $remote
    ```
 
 1. Nové připojení můžete zobrazit buď v PowerShellu, nebo v Azure Portal.

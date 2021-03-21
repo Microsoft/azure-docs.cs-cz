@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: 307183292b60a6556df69a4e5541cbfb5e13098f
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 8526d7c1c436074fbf6f838caf232e1abee06339
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201563"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670371"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Pomocí plánované údržby můžete naplánovat časová období údržby pro cluster Azure Kubernetes Service (AKS) (Preview).
 
-V clusteru AKS se automaticky provedla pravidelná údržba. Ve výchozím nastavení tato práce může nastat kdykoli. Plánovaná údržba umožňuje naplánovat týdenní časová období údržby, která aktualizují vaši řídicí plochu a minimalizuje dopad na úlohy. Po naplánování proběhne veškerá údržba během vybraného okna. V clusteru můžete naplánovat jedno nebo více týdenních oken tím, že v určitém dni zadáte den nebo časový rozsah. Okna údržby se konfigurují pomocí Azure CLI.
+V clusteru AKS se automaticky provedla pravidelná údržba. Ve výchozím nastavení tato práce může nastat kdykoli. Plánovaná údržba umožňuje naplánovat týdenní časová období údržby, která aktualizují vaši řídicí plochu, a také kubeá prostředí v instanci VMSS a minimalizuje dopad úloh. Po naplánování proběhne veškerá údržba během vybraného okna. V clusteru můžete naplánovat jedno nebo více týdenních oken tím, že v určitém dni zadáte den nebo časový rozsah. Okna údržby se konfigurují pomocí Azure CLI.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -107,7 +107,7 @@ Místo použití parametrů můžete použít také soubor JSON pro vytvoření 
         "notAllowedTime": [
           {
             "start": "2021-05-26T03:00:00Z",
-            "end": "2021-05-30T012:00:00Z"
+            "end": "2021-05-30T12:00:00Z"
           }
         ]
 }

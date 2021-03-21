@@ -12,10 +12,10 @@ ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cc9e0be90c138ba33e1b4dfe11ea6f9c8b7da297
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033550"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>Zabezpečení vícefaktorového ověřování Multi-Factor Authentication (MFA)
@@ -24,7 +24,7 @@ ms.locfileid: "102033550"
 
 V případě služby Azure Active Directory (Azure AD) Multi-Factor Authentication (MFA) si uživatelé mohou přijmout automatizované hlasové volání na telefonním čísle, které se registrují k ověření. Uživatelé se zlými úmysly mohou tuto metodu využít vytvořením několika účtů a voláním telefonního hovoru bez dokončení procesu registrace MFA. Tato řada neúspěšných přihlášení by mohla vyčerpat povolený počet pokusů o registraci a zabránit ostatním uživatelům v registraci nových účtů ve vašem tenantovi Azure AD B2C. K ochraně proti těmto útokům můžete použít Azure Monitor k monitorování selhání ověřování na telefonu a zmírnění falešných podpisů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, vytvořte [pracovní prostor Log Analytics](azure-monitor.md).
 

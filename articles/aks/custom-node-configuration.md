@@ -7,10 +7,10 @@ ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 7b39242a7d7208b33a070e86088b25e9414ead04
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101714625"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Přizpůsobení konfigurace uzlů pro fondy uzlů Azure Kubernetes Service (AKS) (Preview)
@@ -59,7 +59,7 @@ az extension update --name aks-preview
 
 Podporované parametry Kubelet a přijaté hodnoty jsou uvedeny níže.
 
-| Parametr | Povolené hodnoty/interval | Výchozí | Popis |
+| Parametr | Povolené hodnoty/interval | Výchozí | Description |
 | --------- | ----------------------- | ------- | ----------- |
 | `cpuManagerPolicy` | žádná, statická | žádné | Statické zásady umožňují kontejnerům v [garantovaných luskech](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) s CELOČÍSELNým procesorem požádá o přístup k exkluzivním procesorům na uzlu. |
 | `cpuCfsQuota` | true, false | true |  Povolí nebo zakáže vynucení kvót CFS procesoru pro kontejnery, které určují omezení procesoru. | 
@@ -77,7 +77,7 @@ Podporovaná nastavení operačního systému a přijaté hodnoty jsou uvedené 
 
 Když obsluhuje spoustu provozu, je běžné, že provoz, který zadáváte, pochází z velkého počtu místních souborů. Můžete vylepšit níže uvedená nastavení jádra a předdefinovaná omezení, která vám umožní zvládnout víc za cenu některé systémové paměti.
 
-| Nastavení | Povolené hodnoty/interval | Výchozí | Popis |
+| Nastavení | Povolené hodnoty/interval | Výchozí | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `fs.file-max` | 8192 – 12000500 | 709620 | Maximální počet souborů – popisovačů, které bude přidělovat jádro systému Linux, zvýšením této hodnoty můžete zvýšit maximální povolený počet otevřených souborů. |
 | `fs.inotify.max_user_watches` | 781250 – 2097152 | 1048576 | Maximální počet hodinky souborů povolených systémem. Každé *sledování* je zhruba 90 bajtů v 32 jádru a zhruba 160 bajtů v 64 případě 16bitového jádra. | 
@@ -89,7 +89,7 @@ Když obsluhuje spoustu provozu, je běžné, že provoz, který zadáváte, poc
 
 U uzlů agentů, u kterých se očekává, že budou zpracovávat velmi velký počet souběžných relací, můžete použít podmnožinu možností TCP a sítě níže, kterou můžete upravit na jeden fond uzlů. 
 
-| Nastavení | Povolené hodnoty/interval | Výchozí | Popis |
+| Nastavení | Povolené hodnoty/interval | Výchozí | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `net.core.somaxconn` | 4096 – 3240000 | 16384 | Maximální počet žádostí o připojení, které se dají zařadit do fronty pro kterýkoli příslušný naslouchací soket. Horní limit hodnoty parametru nevyřízených položek předaných funkci [naslouchání (2)](http://man7.org/linux/man-pages/man2/listen.2.html) . Pokud je argument nevyřízených položek větší než `somaxconn` , pak se tiše zkrátí na tento limit.
 | `net.core.netdev_max_backlog` | 1000 – 3240000 | 1000 | Maximální počet paketů zařazených do fronty na vstupní straně, když rozhraní přijímá pakety rychleji než jádra, může je zpracovat. |
@@ -114,7 +114,7 @@ U uzlů agentů, u kterých se očekává, že budou zpracovávat velmi velký p
 
 Podobně jako u omezení deskriptorů souborů je počet pracovních procesů nebo vláken, které proces může vytvořit, omezený nastavením jádra i omezeními uživatele. Omezení počtu uživatelů na AKS je neomezené. 
 
-| Nastavení | Povolené hodnoty/interval | Výchozí | Popis |
+| Nastavení | Povolené hodnoty/interval | Výchozí | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `kernel.threads-max` | 20 - 513785 | 55601 | Procesy mohou aktivovat pracovní vlákna. Maximální počet všech vláken, která lze vytvořit, je nastaven s nastavením jádra `kernel.threads-max` . | 
 
@@ -122,7 +122,7 @@ Podobně jako u omezení deskriptorů souborů je počet pracovních procesů ne
 
 Níže uvedená nastavení lze použít k ladění provozu subsystému virtuálního počítače v jádru Linux a nezměněných `writeout` dat na disk.
 
-| Nastavení | Povolené hodnoty/interval | Výchozí | Popis |
+| Nastavení | Povolené hodnoty/interval | Výchozí | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `vm.max_map_count` |  65530 – 262144 | 65530 | Tento soubor obsahuje maximální počet oblastí rozvržení paměti, které může proces mít. Oblasti mapy paměti se používají jako vedlejší účinky volání `malloc` , přímo pomocí, a a `mmap` `mprotect` `madvise` také při načítání sdílených knihoven. | 
 | `vm.vfs_cache_pressure` | 1 - 500 | 100 | Tato procentuální hodnota určuje, jakou má jádro jádra uvolnit paměť, která se používá pro ukládání objektů Directory a inode do mezipaměti. |

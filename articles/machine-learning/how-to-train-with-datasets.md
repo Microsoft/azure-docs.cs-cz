@@ -13,10 +13,10 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
 ms.openlocfilehash: 15bad877be00e143ce6f6956a4e1f23378c275c0
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102521777"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Výuka modelů s Azure Machine Learningmi datovými sadami 
@@ -27,7 +27,7 @@ Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure
 
 Pokud nejste připraveni k zpřístupnění dat pro školení modelů, ale chcete načíst data do poznámkového bloku pro zkoumání dat, přečtěte si téma Jak [Prozkoumat data v datové sadě](how-to-create-register-datasets.md#explore-data). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytváření a školení s datovými sadami potřebujete:
 
@@ -260,7 +260,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 + [Poznámkové bloky datové sady](https://aka.ms/dataset-tutorial) ukazují a rozšiřují koncepty v tomto článku.
 + Podívejte se, jak [parametrize datové sady v kanálech ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 * **Inicializace datové sady se nezdařila: časový limit čekání na bod připojení vypršel**: 
   * Pokud nemáte žádná pravidla odchozích [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md) a používáte `azureml-sdk>=1.12.0` , aktualizujete `azureml-dataset-runtime` a jeho závislosti na nejnovější podverzi, nebo pokud ji používáte v běhu, vytvořte znovu prostředí, aby bylo možné provést nejnovější opravu s opravou. 

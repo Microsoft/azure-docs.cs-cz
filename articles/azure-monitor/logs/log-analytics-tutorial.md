@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
 ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041140"
 ---
 # <a name="log-analytics-tutorial"></a>Kurz Log Analytics
@@ -28,7 +28,7 @@ Tento kurz vás provede rozhraním Log Analytics, který vám pomůže začít s
 > V tomto kurzu se používá funkce Log Analytics k sestavení a spuštění dotazu namísto práce s samotným dotazem. Budete využívat Log Analytics funkce pro vytvoření jednoho dotazu a použití dalšího ukázkového dotazu. Až budete připraveni zjistit syntaxi dotazů a začít přímo upravovat samotný dotaz, Projděte si [kurz dotazovacího jazyka Kusto](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor). V tomto kurzu se seznámíte s několika příklady dotazů, které můžete upravovat a spouštět v Log Analytics s využitím několika funkcí, které se v tomto kurzu naučíte.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto kurzu se používá ukázkové [prostředí Log Analytics](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), které zahrnuje spoustu ukázkových dat podporujících Ukázkové dotazy. Můžete také použít vlastní předplatné Azure, ale možná nebudete mít data ve stejných tabulkách.
 
 ## <a name="open-log-analytics"></a>Otevřít Log Analytics

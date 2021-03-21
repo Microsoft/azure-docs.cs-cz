@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 5a3fcc10f318f2a8065550a48eb2bfb4bbdd4915
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102218396"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Zabezpečený přístup ke spravovaným HSM
@@ -22,7 +22,7 @@ Azure Key Vault spravovaný modul HSM je cloudová služba, která chrání šif
 
 V tomto kurzu se seznámíte s jednoduchým příkladem, který vám ukáže, jak dosáhnout oddělení povinností a řízení přístupu pomocí Azure RBAC a spravované místní RBAC (HSM). Další informace o spravovaném modelu řízení přístupu HSM najdete v tématu [spravované řízení přístupu HSM](access-control.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku musíte mít následující položky:
 

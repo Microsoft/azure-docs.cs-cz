@@ -1,35 +1,29 @@
 ---
 title: Přidat vlastní analyzátory do polí řetězců
 titleSuffix: Azure Cognitive Search
-description: Nakonfigurujte textové tokenizátory musíte nejdřív a filtry znaků používané v Azure Kognitivní hledání fulltextových vyhledávacích dotazech.
+description: Nakonfigurujte textové tokenizátory musíte nejdřív a filtry znaků, aby se při indexování a dotazech prováděla analýza textu řetězců.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: fef73a9b98fef40aaceeacca43836d4b2f3c5de0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.date: 03/17/2021
+ms.openlocfilehash: 831e57a68c79c245b96baec0fc3d062c4c9112c5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630203"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604436"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání vlastních analyzátorů do polí řetězců v indexu služby Azure Kognitivní hledání
 
-*Vlastní analyzátor* je konkrétní typ [analyzátoru textu](search-analyzers.md) , který se skládá z uživatelsky definované kombinace stávajících provádějících tokenizaci a volitelných filtrů. Kombinací tokenizátory musíte nejdřív a filtrů novými způsoby můžete přizpůsobit zpracování textu v rámci vyhledávacího modulu, abyste dosáhli konkrétních výsledků. Můžete například vytvořit vlastní analyzátor s *filtrem znaků* pro odebrání značek HTML před tím, než budou textové vstupy vyraženy.
+*Vlastní analyzátor* je kombinací provádějících tokenizaci, jednoho nebo více filtrů tokenů a jednoho nebo více filtrů znaků, které definujete v indexu vyhledávání, a pak odkazuje na definice polí, které vyžadují vlastní analýzu. Provádějících tokenizaci zodpovídá za rozdělení textu na tokeny a filtry tokenů pro úpravu tokenů emitovaných provádějících tokenizaci. Filtry znaků připraví vstupní text před jeho zpracováním pomocí provádějících tokenizaci. 
 
- Můžete definovat několik vlastních analyzátorů, které budou měnit kombinaci filtrů, ale každé pole může použít pouze jeden analyzátor pro analýzu indexů a jeden pro analýzu vyhledávání. Ilustraci toho, co vypadá jako analyzátor zákazníka, najdete v tématu [vlastní příklad analyzátoru](search-analyzers.md#Custom-analyzer-example).
+Vlastní analyzátor vám umožní řídit proces převodu textu na indexovaelné a prohledávatelný tokeny tím, že vám umožní vybrat typy analýz nebo filtrování, které se mají vyvolat, a pořadí, ve kterém se vyskytují. Pokud chcete použít vestavěný analyzátor s vlastními možnostmi, jako je například změna maxTokenLength na úrovni Standard, vytvořili byste vlastní analyzátor s uživatelsky definovaným názvem, abyste mohli tyto možnosti nastavit.
 
-## <a name="overview"></a>Přehled
+Mezi případy, kdy mohou být vlastní analyzátory užitečné:
 
- Role [fulltextového vyhledávacího modulu](search-lucene-query-architecture.md)v jednoduchých případech je zpracování a ukládání dokumentů způsobem, který umožňuje efektivní dotazování a načítání. Na vysoké úrovni se vše rozbalí k extrakci důležitých slov z dokumentů, jejich vložení do indexu a následnému použití indexu k vyhledání dokumentů, které odpovídají slovům daného dotazu. Proces extrakce slov z dokumentů a vyhledávacích dotazů se nazývá *lexikální analýza*. Komponenty, které provádějí lexikální analýzy, se nazývají *analyzátory*.
-
- V Azure Kognitivní hledání můžete vybrat ze sady předdefinovaných nezávislá analyzátorů v tabulce [analyzátory](#AnalyzerTable) nebo analyzátorů specifických pro jednotlivé jazyky, které jsou uvedené v části [analyzátory jazyka &#40;službě Azure kognitivní hledání REST API&#41;](index-add-language-analyzers.md). Máte také možnost definovat vlastní analyzátory.  
-
- Vlastní analyzátor umožňuje převzít kontrolu nad procesem převodu textu na indexovaelné a prohledávatelný tokeny. Je to uživatelsky definovaná konfigurace, která se skládá z jednoho předdefinovaného provádějících tokenizaci, jednoho nebo více filtrů tokenů a jednoho nebo více filtrů znaků. Provádějících tokenizaci zodpovídá za rozdělení textu na tokeny a filtry tokenů pro úpravu tokenů emitovaných provádějících tokenizaci. Filtry znaků jsou aplikovány na pro přípravu vstupního textu před jeho zpracováním pomocí provádějících tokenizaci. Například znakový filtr může nahradit určité znaky nebo symboly.
-
- K oblíbeným scénářům povoleným vlastními analyzátory patří:  
+- Použití filtrů znaků k odebrání kódu HTML před tím, než jsou textové vstupy vypsány tokeny, nebo nahraďte určité znaky nebo symboly.
 
 - Fonetické vyhledávání. Přidejte fonetický filtr, který umožní hledání na základě zvukového slova, nikoli způsobu jeho pravopisu.  
 
@@ -41,21 +35,28 @@ ms.locfileid: "97630203"
 
 - Skládání ASCII. Přidáním standardního filtru skládání ASCII můžete normalizovat diakritická znaménka, jako je ö nebo ê, ve hledaných výrazech.  
 
-  Tato stránka poskytuje seznam podporovaných analyzátorů, tokenizátory musíte nejdřív, filtrů tokenů a znakových filtrů. Můžete také najít popis změn definice indexu s příkladem použití. Další informace o základní technologii, která se využívá v implementaci Azure Kognitivní hledání, najdete v tématu [Přehled balíčků analýz (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html). Příklady konfigurací analyzátoru najdete v tématu [Přidání analyzátorů do Azure kognitivní hledání](search-analyzers.md#examples).
+Pokud chcete vytvořit vlastní analyzátor, zadejte ho v části analyzátory v indexu v době návrhu a pak na něj odkázat pole s možností prohledávání, Edm. String buď pomocí vlastnosti Analyzer, nebo z dvojice "indexAnalyzer" a "searchAnalyzer".
 
-## <a name="validation-rules"></a>Ověřovací pravidla  
- Názvy analyzátorů, tokenizátory musíte nejdřív, filtrů tokenů a filtrů znaků musí být jedinečné a nesmí být stejné jako jakékoli předdefinované analyzátory, tokenizátory musíte nejdřív, filtry tokenů nebo filtry znaků. Přečtěte si [odkaz na vlastnost](#PropertyReference) pro názvy, které se už používají.
+> [!NOTE]  
+> Vlastní analyzátory, které vytvoříte, nejsou ve Azure Portal zveřejněny. Jediným způsobem, jak přidat vlastní analyzátor, je kód, který definuje index. 
 
-## <a name="create-custom-analyzers"></a>Vytvořit vlastní analyzátory
- Vlastní analyzátory můžete definovat při vytváření indexu. V této části je popsána syntaxe pro určení vlastního analyzátoru. Můžete se také seznámit se syntaxí, a to kontrolou ukázkových definic v části [Přidání analyzátorů v Azure kognitivní hledání](search-analyzers.md#examples).  
+## <a name="create-a-custom-analyzer"></a>Vytvoření vlastního analyzátoru
 
- Definice analyzátoru zahrnuje název, typ, jeden nebo více filtrů znaků, maximálně jeden provádějících tokenizaci a jeden nebo více filtrů tokenů pro zpracování po pořizování tokenů. Char filers se před tokenizace aplikuje. Filtry tokenů a filtry znaků jsou aplikovány zleva doprava.
+Definice analyzátoru zahrnuje název, typ, jeden nebo více filtrů znaků, maximálně jeden provádějících tokenizaci a jeden nebo více filtrů tokenů pro zpracování po pořizování tokenů. Filtry znaků jsou aplikovány před tokenizace. Filtry tokenů a filtry znaků jsou aplikovány zleva doprava.
 
- `tokenizer_name`Je název provádějících tokenizaci, `token_filter_name_1` a `token_filter_name_2` jsou názvy filtrů tokenů a `char_filter_name_1` a `char_filter_name_2` jsou názvy filtrů znaků (pro platné hodnoty viz tabulka [tokenizátory musíte nejdřív](#Tokenizers), [filtry tokenů](#TokenFilters) a filtry znaků).
+- Názvy ve vlastním analyzátoru musí být jedinečné a nesmí být stejné jako žádné integrované analyzátory, tokenizátory musíte nejdřív, filtry tokenů nebo filtry znaků. Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků. 
 
-Definice analyzátoru je součástí většího indexu. Informace o zbývajících částech indexu najdete v tématu [Vytvoření rozhraní API pro index](/rest/api/searchservice/create-index) .
+- Typ musí být #Microsoft. Azure. Search. CustomAnalyzer.
 
-```
+- "charFilters" může být jeden nebo více filtrů z [filtrů znaků](#CharFilter)zpracovaných před vyřazením, v uvedeném pořadí. Některé filtry znaků mají možnosti, které lze nastavit v části "charFilter". Filtry znaků jsou volitelné.
+
+- "provádějících tokenizaci" je právě jeden [provádějících tokenizaci](#tokenizers). Hodnota je povinná. Pokud potřebujete více než jeden provádějících tokenizaci, můžete vytvořit více vlastních analyzátorů a přiřadit je podle pole v rámci schématu indexu.
+
+- "tokenFilters" může být jedním nebo více filtry z [filtrů tokenů](#TokenFilters)zpracovaných po tokenizace v zadaném pořadí. Pro filtry tokenů, které mají možnosti, přidejte k určení konfigurace oddíl "tokenFilter". Filtry tokenů jsou nepovinné.
+
+Analyzátory nesmí poskytovat tokeny delší než 300 znaků nebo se indexování nezdaří. Pro zkrácení dlouhého tokenu nebo jeho vyloučení použijte **TruncateTokenFilter** a **LengthTokenFilter** . Reference najdete v tématu [**filtry tokenů**](#TokenFilters) .
+
+```json
 "analyzers":(optional)[
    {
       "name":"name of analyzer",
@@ -107,12 +108,9 @@ Definice analyzátoru je součástí většího indexu. Informace o zbývající
 ]
 ```
 
-> [!NOTE]  
->  Vlastní analyzátory, které vytvoříte, nejsou ve Azure Portal zveřejněny. Jediným způsobem, jak přidat vlastní analyzátor, je kód, který při definování indexu volá rozhraní API.  
+V rámci definice indexu můžete umístit tuto část kamkoli do těla žádosti o vytvoření indexu, ale obvykle na konci:  
 
- V rámci definice indexu můžete umístit tuto část kamkoli do těla žádosti o vytvoření indexu, ale obvykle na konci:  
-
-```
+```json
 {
   "name": "name_of_index",
   "fields": [ ],
@@ -127,18 +125,17 @@ Definice analyzátoru je součástí většího indexu. Informace o zbývající
 }
 ```
 
-Definice pro filtry znaků, tokenizátory musíte nejdřív a filtry tokenů jsou přidány do indexu pouze v případě, že nastavujete vlastní možnosti. Pokud chcete použít existující filtr nebo provádějících tokenizaci tak, jak jsou, zadejte ho podle názvu v definici analyzátoru.
-
-<a name="Testing custom analyzers"></a>
+Definice analyzátoru je součástí většího indexu. Definice pro filtry znaků, tokenizátory musíte nejdřív a filtry tokenů jsou přidány do indexu pouze v případě, že nastavujete vlastní možnosti. Pokud chcete použít existující filtr nebo provádějících tokenizaci tak, jak jsou, zadejte ho podle názvu v definici analyzátoru. Další informace najdete v tématu [vytvoření indexu (REST)](/rest/api/searchservice/create-index). Další příklady najdete v tématu [Přidání analyzátorů v Azure kognitivní hledání](search-analyzers.md#examples).
 
 ## <a name="test-custom-analyzers"></a>Testování vlastních analyzátorů
 
-Můžete použít **operaci analyzátoru testů** v [REST API](/rest/api/searchservice/test-analyzer) k zobrazení, jak analyzátor přerušuje daný text na tokeny.
+Pomocí nástroje [Test Analyzer (REST)](/rest/api/searchservice/test-analyzer) můžete zjistit, jak analyzátor přerušuje daný text na tokeny.
 
 **Žádost**
-```
+
+```http
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
-  Content-Type: application/json
+    Content-Type: application/json
     api-key: [admin key]
 
   {
@@ -146,8 +143,10 @@ Můžete použít **operaci analyzátoru testů** v [REST API](/rest/api/searchs
      "text": "Vis-à-vis means Opposite"
   }
 ```
+
 **Response** (Odpověď)
-```
+
+```http
   {
     "tokens": [
       {
@@ -180,147 +179,77 @@ Můžete použít **operaci analyzátoru testů** v [REST API](/rest/api/searchs
 
 ## <a name="update-custom-analyzers"></a>Aktualizace vlastních analyzátorů
 
-Jakmile je definován analyzátor, provádějících tokenizaci, filtr tokenu nebo filtr znaků, nelze jej změnit. Nové lze přidat do existujícího indexu pouze v případě, že `allowIndexDowntime` je příznak nastaven na hodnotu true v žádosti o aktualizaci indexu:
+Jakmile je definován analyzátor, provádějících tokenizaci, filtr tokenů nebo filtr znaků, nelze jej změnit. Nové lze přidat do existujícího indexu pouze v případě, že `allowIndexDowntime` je příznak nastaven na hodnotu true v žádosti o aktualizaci indexu:
 
-```
+```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
 Tato operace převezme váš index po dobu nejméně pár sekund do offline režimu, což způsobí, že vaše požadavky na indexování a dotazy selžou. Dostupnost a zápis indexu může být po několik minut od aktualizace indexu nebo delší pro hodně velkých indexů narušeno, ale tyto účinky jsou dočasné a mohou se na jejich základě vyřešit sami.
 
- <a name="ReferenceIndexAttributes"></a>
+<a name="built-in-analyzers"></a>
 
-## <a name="analyzer-reference"></a>Referenční informace k analyzátoru
+## <a name="built-in-analyzers"></a>Předdefinované analyzátory
 
-V následujících tabulkách jsou uvedeny vlastnosti konfigurace pro analyzátory, tokenizátory musíte nejdřív, filtry tokenů a část filtru znaků definice indexu. Struktura analyzátoru, provádějících tokenizaci nebo filtru ve vašem indexu se skládá z těchto atributů. Informace o přiřazení hodnot naleznete v [odkazu na vlastnost](#PropertyReference).
-
-### <a name="analyzers"></a>Analyzátory
-
-V případě analyzátorů se atributy indexu liší v závislosti na tom, zda používáte předdefinované nebo vlastní analyzátory.
-
-#### <a name="predefined-analyzers"></a>Předdefinované analyzátory
-
-| Typ | Popis |
-| ---- | ----------- |  
-|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
-|Typ|Typ analyzátoru ze seznamu podporovaných analyzátorů. Podívejte se do sloupce **analyzer_type** v níže uvedené tabulce [analyzátorů](#AnalyzerTable) .|  
-|Možnosti|Musí se jednat o platné možnosti předdefinovaného analyzátoru uvedeného v tabulce [analyzátory](#AnalyzerTable) níže.|  
-
-#### <a name="custom-analyzers"></a>Vlastní analyzátory
-
-| Typ | Popis |
-| ---- | ----------- |  
-|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
-|Typ|Musí být "#Microsoft. Azure. Search. CustomAnalyzer".|  
-|CharFilters|Nastavte buď na jeden z předdefinovaných filtrů znaků uvedených v tabulce [filtrů znaků](#char-filters-reference) , nebo na vlastní filtr znaků zadaný v definici indexu.|  
-|Provádějících tokenizaci|Povinná hodnota. Nastavte buď na jednu z předdefinovaných tokenizátory musíte nejdřív uvedených v tabulce [tokenizátory musíte nejdřív](#Tokenizers) , nebo na vlastní provádějících tokenizaci zadané v definici indexu.|  
-|TokenFilters|Nastavte buď na jeden z předdefinovaných filtrů tokenů uvedených v tabulce [filtrů tokenů](#TokenFilters) , nebo na vlastní filtr tokenu zadaný v definici indexu.|  
-
-> [!NOTE]
-> Je nutné, abyste vlastní analyzátor nakonfigurovali tak, aby nevytvořil tokeny delší než 300 znaků. U dokumentů s takovými tokeny se indexování nezdařila. Pokud je chcete oříznout nebo je ignorovat, použijte **TruncateTokenFilter** a **LengthTokenFilter** .  Podívejte se na [**filtry tokenů**](#TokenFilters) pro referenci.
-
-<a name="CharFilter"></a>
-
-### <a name="char-filters"></a>Filtry znaků
-
- Filtr znaků slouží k přípravě vstupního textu před jeho zpracováním pomocí provádějících tokenizaci. Například může nahradit určité znaky nebo symboly. Ve vlastním analyzátoru můžete mít více filtrů znaků. Filtry znaků jsou spouštěny v pořadí, ve kterém jsou uvedeny.  
-
-| Typ | Popis |
-| ---- | ----------- | 
-|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
-|Typ|Typ filtru znaků ze seznamu podporovaných filtrů znaků. Viz **char_filter_type** sloupec v tabulce [filtry znaků](#char-filters-reference) níže.|  
-|Možnosti|Musí být platné možnosti pro daný typ [filtru znaků](#char-filters-reference) .|  
-
-### <a name="tokenizers"></a>Tokenizátory musíte nejdřív
-
- Provádějících tokenizaci rozdělí souvislý text na sekvenci tokenů, jako je například porušení věty na slova.  
-
- Můžete zadat přesně jeden provádějících tokenizaci na vlastní analyzátor. Pokud potřebujete více než jeden provádějících tokenizaci, můžete vytvořit více vlastních analyzátorů a přiřadit je podle pole v rámci schématu indexu.  
-Vlastní analyzátor může použít předdefinované provádějících tokenizaci buď s výchozími, nebo s přizpůsobenými možnostmi.  
-
-| Typ | Popis |
-| ---- | ----------- | 
-|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
-|Typ|Provádějících tokenizaci název ze seznamu podporovaných tokenizátory musíte nejdřív. Viz **tokenizer_type** sloupec v tabulce [tokenizátory musíte nejdřív](#Tokenizers) níže.|  
-|Možnosti|Musí se jednat o platné možnosti daného typu provádějících tokenizaci uvedeného v tabulce [tokenizátory musíte nejdřív](#Tokenizers) .|  
-
-### <a name="token-filters"></a>Filtry tokenů
-
- Filtr tokenu slouží k odfiltrování nebo úpravě tokenů generovaných objektem provádějících tokenizaci. Můžete například zadat filtr malých písmen, který převede všechny znaky na malá písmena.   
-Ve vlastním analyzátoru můžete mít více filtrů tokenů. Filtry tokenů jsou spouštěny v pořadí, ve kterém jsou uvedeny.  
-
-| Typ | Popis |
-| ---- | ----------- |  
-|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
-|Typ|Název filtru tokenů ze seznamu podporovaných filtrů tokenů. Viz sloupec **token_filter_type** v následující tabulce [filtrů tokenů](#TokenFilters) .|  
-|Možnosti|Musí se jednat o [filtry tokenů](#TokenFilters) daného typu filtru tokenu.|  
-
-<a name="PropertyReference"></a>  
-
-## <a name="property-reference"></a>Odkaz na vlastnost
-
-Tato část poskytuje platné hodnoty pro atributy zadané v definici vlastního analyzátoru, provádějících tokenizaci, filtru znaků nebo filtru tokenů ve vašem indexu. Analyzátory, tokenizátory musíte nejdřív a filtry implementované pomocí Apache Lucene mají odkazy na dokumentaci k rozhraní API pro Lucene.
-
-<a name="AnalyzerTable"></a>
-
-###  <a name="predefined-analyzers-reference"></a>Odkazy na předdefinované analyzátory
+Pokud chcete použít vestavěný analyzátor s vlastními možnostmi, je vytvoření vlastního analyzátoru mechanizmus, podle kterého tyto možnosti zadáte. Naproti tomu, pokud chcete použít vestavěný analyzátor tak, jak je, stačí na definici pole [odkazovat podle názvu](search-analyzers.md#how-to-specify-analyzers) .
 
 |**analyzer_name**|**analyzer_type**  <sup>1</sup>|**Popis a možnosti**|  
-|-|-|-|  
+|-----------------|-------------------------------|---------------------------|  
 |[klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| (typ platí pouze v případě, že jsou k dispozici možnosti) |Zachází s celým obsahem pole jako s jedním tokenem. To je užitečné pro data, jako jsou kódy PSČ, ID a některé názvy produktů.|  
-|[vzorku](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|Flexibilní oddělení textu do výrazů pomocí vzoru regulárního výrazu.<br /><br /> **Možnosti**<br /><br /> malá písmena (typ: bool) – určuje, zda jsou výrazy v malých písmenech. Výchozí hodnota je true.<br /><br /> [vzor](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (typ: String) – vzor regulárního výrazu, který odpovídá oddělovačům tokenů. Výchozí hodnota je `\W+` , která odpovídá znakům jiným než Word.<br /><br /> [Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: String) – příznaky regulárního výrazu. Výchozí hodnota je prázdný řetězec. Povolené hodnoty: CANON_EQ, CASE_INSENSITIVE, komentáře, DOTALL, LITERÁLy, VÍCEŘÁDKOVé UNICODE_CASE, UNIX_LINES<br /><br /> stopslova (typ: pole řetězců) – seznam stopslova. Výchozí hodnota je prázdný seznam.|  
+|[vzorku](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|Flexibilní oddělení textu do výrazů pomocí vzoru regulárního výrazu. </br></br>**Možnosti** </br></br>malá písmena (typ: bool) – určuje, zda jsou výrazy v malých písmenech. Výchozí hodnota je true. </br></br>[vzor](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (typ: String) – vzor regulárního výrazu, který odpovídá oddělovačům tokenů. Výchozí hodnota je `\W+` , která odpovídá znakům jiným než Word. </br></br>[Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: String) – příznaky regulárního výrazu. Výchozí hodnota je prázdný řetězec. Povolené hodnoty: CANON_EQ, CASE_INSENSITIVE, komentáře, DOTALL, LITERÁLy, VÍCEŘÁDKOVé UNICODE_CASE, UNIX_LINES </br></br>stopslova (typ: pole řetězců) – seznam stopslova. Výchozí hodnota je prázdný seznam.|  
 |[pouh](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(typ platí pouze v případě, že jsou k dispozici možnosti) |Vydělí text bez písmen a převede je na malá písmena. |  
-|[standardní](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />(Označuje se také jako standardní. Lucene)|StandardAnalyzer|Nástroj pro standardní Lucene, který se skládá ze standardního filtru provádějících tokenizaci, malých písmen a filtru stop.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí hodnota je 255. Tokeny delší než maximální délka jsou rozděleny. Maximální délka tokenu, kterou lze použít, je 300 znaků.<br /><br /> stopslova (typ: pole řetězců) – seznam stopslova. Výchozí hodnota je prázdný seznam.|  
+|[standardní](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) </br>(Označuje se také jako standardní. Lucene)|StandardAnalyzer|Nástroj pro standardní Lucene, který se skládá ze standardního filtru provádějících tokenizaci, malých písmen a filtru stop. </br></br>**Možnosti** </br></br>maxTokenLength (typ: int) – maximální délka tokenu. Výchozí hodnota je 255. Tokeny delší než maximální délka jsou rozděleny. Maximální délka tokenu, kterou lze použít, je 300 znaků. </br></br>stopslova (typ: pole řetězců) – seznam stopslova. Výchozí hodnota je prázdný seznam.|  
 |standardasciifolding. Lucene|(typ platí pouze v případě, že jsou k dispozici možnosti) |Standard Analyzer s filtrem skládání ASCII. |  
-|[Stop](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|Vydělí text v nepísmenech, aplikuje na ně filtry pro malé a stopslovo tokeny.<br /><br /> **Možnosti**<br /><br /> stopslova (typ: pole řetězců) – seznam stopslova. Výchozím nastavením je předdefinovaný seznam pro angličtinu. |  
+|[Stop](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|Vydělí text v nepísmenech, aplikuje na ně filtry pro malé a stopslovo tokeny. </br></br>**Možnosti** </br></br>stopslova (typ: pole řetězců) – seznam stopslova. Výchozím nastavením je předdefinovaný seznam pro angličtinu. |  
 |[typy](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html)|(typ platí pouze v případě, že jsou k dispozici možnosti) |Analyzátor, který používá prázdné znaky provádějících tokenizaci. Tokeny, které jsou delší než 255 znaků, jsou rozděleny.|  
 
- <sup>1</sup> typy analyzátoru jsou vždycky pevně uvedené v kódu s "#Microsoft. Azure. Search" tak, že "PatternAnalyzer" by ve skutečnosti byly zadané jako "#Microsoft. Azure. Search. PatternAnalyzer". Odebrali jsme předponu pro zkrácení, ale ve vašem kódu se vyžaduje předpona. 
- 
-Analyzer_type je k dispozici pouze pro analyzátory, které lze přizpůsobit. Pokud nejsou k dispozici žádné možnosti, stejně jako v případě analyzátoru klíčového slova není k dispozici žádný přidružený #Microsoft. typ Azure. Search.
+ <sup>1</sup> typy analyzátoru jsou vždycky pevně uvedené v kódu s "#Microsoft. Azure. Search" tak, že "PatternAnalyzer" by ve skutečnosti byly zadané jako "#Microsoft. Azure. Search. PatternAnalyzer". Odebrali jsme předponu pro zkrácení, ale ve vašem kódu se vyžaduje předpona.
 
+Analyzer_type je k dispozici pouze pro analyzátory, které lze přizpůsobit. Pokud nejsou k dispozici žádné možnosti, stejně jako v případě analyzátoru klíčového slova není k dispozici žádný přidružený #Microsoft. typ Azure. Search.
 
 <a name="CharFilter"></a>
 
-###  <a name="char-filters-reference"></a>Reference pro filtry znaků
+## <a name="character-filters"></a>Filtry znaků
 
 V následující tabulce jsou filtry znaků implementované pomocí Apache Lucene propojeny s dokumentací k rozhraní API Lucene.
 
 |**char_filter_name**|**char_filter_type** <sup>1</sup>|**Popis a možnosti**|  
-|-|-|-|
+|--------------------|---------------------------------|---------------------------|
 |[html_strip](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/HTMLStripCharFilter.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Filtr znaků, který se pokusí vydělit konstrukce jazyka HTML.|  
-|[mapování](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|Filtr znaků, který aplikuje mapování definované s možností mapování Porovnávání je hladec (nejdelší porovnávání vzorů v daném bodu WINS). Nahrazení může být prázdný řetězec.<br /><br /> **Možnosti**<br /><br /> mapování (typ: pole řetězců) – seznam mapování v následujícím formátu: "A =>b" (všechny výskyty znaku "a" jsou nahrazeny znakem "b"). Povinná hodnota.|  
-|[pattern_replace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|Filtr znaků, který nahradí znaky ve vstupním řetězci. Pomocí regulárního výrazu identifikuje sekvence znaků, které mají být zachovány, a vzor pro nahrazení, který identifikuje znaky, které mají být nahrazeny. Například input text = "AA BB AA BB", vzor = "(AA) \\ \s + (BB)" nahrazení = "$ 1 # $2", výsledek = "AA # BB AA # BB".<br /><br /> **Možnosti**<br /><br /> Pattern (typ: String) – povinný.<br /><br /> náhrada (typ: String) – povinné.|  
+|[mapování](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|Filtr znaků, který aplikuje mapování definované s možností mapování Porovnávání je hladec (nejdelší porovnávání vzorů v daném bodu WINS). Nahrazení může být prázdný řetězec.  </br></br>**Možnosti**  </br></br> mapování (typ: pole řetězců) – seznam mapování v následujícím formátu: "A =>b" (všechny výskyty znaku "a" jsou nahrazeny znakem "b"). Povinná hodnota.|  
+|[pattern_replace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|Filtr znaků, který nahradí znaky ve vstupním řetězci. Pomocí regulárního výrazu identifikuje sekvence znaků, které mají být zachovány, a vzor pro nahrazení, který identifikuje znaky, které mají být nahrazeny. Například input text = "AA BB AA BB", vzor = "(AA) \\ \s + (BB)" nahrazení = "$ 1 # $2", výsledek = "AA # BB AA # BB".  </br></br>**Možnosti**  </br></br>Pattern (typ: String) – povinný.  </br></br>náhrada (typ: String) – povinné.|  
 
  <sup>1</sup> typy filtru znaků jsou vždy předpony v kódu s "#Microsoft. Azure. Search" tak, že "MappingCharFilter" by ve skutečnosti byly zadány jako "#Microsoft. Azure. Search. MappingCharFilter. Odebrali jsme předponu, aby se snížila šířka tabulky, ale nezapomeňte ji zahrnout do kódu. Všimněte si, že char_filter_type je k dispozici pouze pro filtry, které lze přizpůsobit. Pokud neexistují žádné možnosti, jako je například případ s html_strip, není k dispozici žádný přidružený #Microsoft. typ Azure. Search.
 
-<a name="Tokenizers"></a>
+<a name="tokenizers"></a>
 
-###  <a name="tokenizers-reference"></a>Odkaz na tokenizátory musíte nejdřív
+## <a name="tokenizers"></a>Tokenizátory musíte nejdřív
 
-V následující tabulce jsou tokenizátory musíte nejdřív implementované pomocí Apache Lucene propojeny s dokumentací k rozhraní API pro Lucene.
+Provádějících tokenizaci rozdělí souvislý text na sekvenci tokenů, jako je například porušení věty na slova. V následující tabulce jsou tokenizátory musíte nejdřív implementované pomocí Apache Lucene propojeny s dokumentací k rozhraní API pro Lucene.
 
 |**tokenizer_name**|**tokenizer_type** <sup>1</sup>|**Popis a možnosti**|  
-|-|-|-|  
-|[klasický](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Gramatika založená na provádějících tokenizaci, která je vhodná pro zpracování většiny dokumentů v evropském jazyce.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
-|[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|Tokenizes vstup z okraje do n-gramů dané velikosti (y).<br /><br /> **Možnosti**<br /><br /> minGram (typ: int) – výchozí hodnota: 1, maximum: 300.<br /><br /> maxGram (typ: int) – výchozí: 2, maximum: 300. Musí být větší než minGram.<br /><br /> tokenChars (typ: pole řetězců) – třídy znaků, které mají být v tokenech uchovávány. Povolené hodnoty: <br />"Letter", "číslice", "prázdný", "interpunkce", "symbol". Výchozí hodnota je prázdné pole – zachová všechny znaky. |  
-|[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|Vygeneruje celý vstup jako jeden token.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 256, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
+|------------------|-------------------------------|---------------------------|  
+|[klasický](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Gramatika založená na provádějících tokenizaci, která je vhodná pro zpracování většiny dokumentů v evropském jazyce.  </br></br>**Možnosti**  </br></br>maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
+|[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|Tokenizes vstup z okraje do n-gramů dané velikosti (y).  </br></br> **Možnosti**  </br></br>minGram (typ: int) – výchozí hodnota: 1, maximum: 300.  </br></br>maxGram (typ: int) – výchozí: 2, maximum: 300. Musí být větší než minGram.  </br></br>tokenChars (typ: pole řetězců) – třídy znaků, které mají být v tokenech uchovávány. Povolené hodnoty: </br>"Letter", "číslice", "prázdný", "interpunkce", "symbol". Výchozí hodnota je prázdné pole – zachová všechny znaky. |  
+|[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|Vygeneruje celý vstup jako jeden token.  </br></br>**Možnosti**  </br></br>maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 256, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
 |[jednotky](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LetterTokenizer.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Vydělí text bez písmen. Tokeny, které jsou delší než 255 znaků, jsou rozděleny.|  
 |[malá](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseTokenizer.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Vydělí text bez písmen a převede je na malá písmena. Tokeny, které jsou delší než 255 znaků, jsou rozděleny.|  
-| microsoft_language_tokenizer| MicrosoftLanguageTokenizer| Vydělí text pomocí pravidel specifických pro jazyk.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu, výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny. Tokeny delší než 300 znaků jsou nejprve rozděleny na tokeny o délce 300 a následně jsou jednotlivé tokeny rozděleny na základě maxTokenLength sady.<br /><br />isSearchTokenizer (typ: bool) – nastavte na hodnotu true, pokud se použije jako vyhledávací provádějících tokenizaci, nastavte na hodnotu false, pokud se používá jako indexovací provádějících tokenizaci. <br /><br /> Language (typ: String) – jazyk, který se má použít, výchozí "Angličtina". Mezi povolené hodnoty patří:<br />bengálština, bulharština, Katalánština "," chineseSimplified "," chineseTraditional "," chorvatština "," Čeština "," Dánština "," Holandština "," Angličtina "," francouzština "," Němčina "," Řečtina "," gudžarátština "," Hindština "," Italština "Malajština", "malajalámština", "maráthština", "norwegianBokmaal", "Polština", "portugalština", "portugueseBrazilian", "paňdžábština", "Rumunština", "ruština", "serbianCyrillic", "serbianLatin", "slovinské", "španělština", "Švédština", "tamilština", "telugština", "Thajština", "ukrajinština", "urdština", "Vietnamština" |
-| microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| Rozděluje text pomocí pravidel specifických pro jazyk a zkracuje slova na jejich základní formy.<br /><br /> **Možnosti**<br /><br />maxTokenLength (typ: int) – maximální délka tokenu, výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny. Tokeny delší než 300 znaků jsou nejprve rozděleny na tokeny o délce 300 a následně jsou jednotlivé tokeny rozděleny na základě maxTokenLength sady.<br /><br /> isSearchTokenizer (typ: bool) – nastavte na hodnotu true, pokud se použije jako vyhledávací provádějících tokenizaci, nastavte na hodnotu false, pokud se používá jako indexovací provádějících tokenizaci.<br /><br /> Language (typ: String) – jazyk, který se má použít, výchozí "Angličtina". Mezi povolené hodnoty patří:<br />"Arabština", "bengálština", "Bulharština", "Katalánština", "chorvatština", "Čeština", "Dánská", "Holandština", "Angličtina", "finština", "francouzština", "Němčina", "Řečtina", "gudžarátština", "Hebrejština", "Hindština", "Maďarština", "Čeština", "gudžarátština", "Italština" Litevština "," Malajština "," malajalámština "," maráthština "," norwegianBokmaal "," Polština "," portugalština "," portugueseBrazilian "," paňdžábština "," Rumunština "," ruština "," serbianCyrillic "," serbianLatin "," Slovenština "," Slovinština "," španělština "," Švédština "," tamilština "," telugština "," Turečtina "," ukrajinština "," urdština " |
-|[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|Tokenizes vstup do n-gramů dané velikosti (y).<br /><br /> **Možnosti**<br /><br /> minGram (typ: int) – výchozí hodnota: 1, maximum: 300.<br /><br /> maxGram (typ: int) – výchozí: 2, maximum: 300. Musí být větší než minGram. <br /><br /> tokenChars (typ: pole řetězců) – třídy znaků, které mají být v tokenech uchovávány. Povolené hodnoty: "písmeno", "číslice", "prázdný", "interpunkce", "symbol". Výchozí hodnota je prázdné pole – zachová všechny znaky. |  
-|[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|Provádějících tokenizaci pro hierarchie jako cesty.<br /><br /> **Možnosti**<br /><br /> oddělovač (typ: String) – výchozí: '/.<br /><br /> nahrazení (typ: String) – Pokud je nastaveno, nahradí znak oddělovače. Výchozí hodnota je stejná jako hodnota oddělovače.<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 300, maximum: 300. Cesty delší než maxTokenLength jsou ignorovány.<br /><br /> Reverse (Type: bool) – Pokud má hodnotu true, vygeneruje token v opačném pořadí. Výchozí hodnota: false.<br /><br /> Skip (Type: bool) – počáteční tokeny, které se mají přeskočit Výchozí hodnota je 0.|  
-|[vzorku](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|Tento provádějících tokenizaci používá porovnávání vzorů regulárního výrazu pro vytváření jedinečných tokenů.<br /><br /> **Možnosti**<br /><br /> [vzor](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (typ: String) – vzor regulárního výrazu, který odpovídá oddělovačům tokenů. Výchozí hodnota je `\W+` , která odpovídá znakům jiným než Word. <br /><br /> [Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: String) – příznaky regulárního výrazu. Výchozí hodnota je prázdný řetězec. Povolené hodnoty: CANON_EQ, CASE_INSENSITIVE, komentáře, DOTALL, LITERÁLy, VÍCEŘÁDKOVé UNICODE_CASE, UNIX_LINES<br /><br /> Group (typ: int) – skupina, do které se mají extrahovat tokeny Výchozí hodnota je-1 (rozdělená).|
-|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|Rozdělí text podle [pravidel segmentace textu Unicode](https://unicode.org/reports/tr29/).<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
-|[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenizes adresy URL a e-maily jako jeden token.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
+| microsoft_language_tokenizer| MicrosoftLanguageTokenizer| Vydělí text pomocí pravidel specifických pro jazyk.  </br></br>**Možnosti**  </br></br>maxTokenLength (typ: int) – maximální délka tokenu, výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny. Tokeny delší než 300 znaků jsou nejprve rozděleny na tokeny o délce 300 a následně jsou jednotlivé tokeny rozděleny na základě maxTokenLength sady.  </br></br>isSearchTokenizer (typ: bool) – nastavte na hodnotu true, pokud se použije jako vyhledávací provádějících tokenizaci, nastavte na hodnotu false, pokud se používá jako indexovací provádějících tokenizaci. </br></br>Language (typ: String) – jazyk, který se má použít, výchozí "Angličtina". Mezi povolené hodnoty patří: </br>bengálština, bulharština, Katalánština "," chineseSimplified "," chineseTraditional "," chorvatština "," Čeština "," Dánština "," Holandština "," Angličtina "," francouzština "," Němčina "," Řečtina "," gudžarátština "," Hindština "," Italština "Malajština", "malajalámština", "maráthština", "norwegianBokmaal", "Polština", "portugalština", "portugueseBrazilian", "paňdžábština", "Rumunština", "ruština", "serbianCyrillic", "serbianLatin", "slovinské", "španělština", "Švédština", "tamilština", "telugština", "Thajština", "ukrajinština", "urdština", "Vietnamština" |
+| microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| Rozděluje text pomocí pravidel specifických pro jazyk a zkracuje slova na jejich základní formy. </br></br>**Možnosti** </br></br>maxTokenLength (typ: int) – maximální délka tokenu, výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny. Tokeny delší než 300 znaků jsou nejprve rozděleny na tokeny o délce 300 a následně jsou jednotlivé tokeny rozděleny na základě maxTokenLength sady. </br></br> isSearchTokenizer (typ: bool) – nastavte na hodnotu true, pokud se použije jako vyhledávací provádějících tokenizaci, nastavte na hodnotu false, pokud se používá jako indexovací provádějících tokenizaci. </br></br>Language (typ: String) – jazyk, který se má použít, výchozí "Angličtina". Mezi povolené hodnoty patří: </br>"Arabština", "bengálština", "Bulharština", "Katalánština", "chorvatština", "Čeština", "Dánská", "Holandština", "Angličtina", "finština", "francouzština", "Němčina", "Řečtina", "gudžarátština", "Hebrejština", "Hindština", "Maďarština", "Čeština", "gudžarátština", "Italština" Litevština "," Malajština "," malajalámština "," maráthština "," norwegianBokmaal "," Polština "," portugalština "," portugueseBrazilian "," paňdžábština "," Rumunština "," ruština "," serbianCyrillic "," serbianLatin "," Slovenština "," Slovinština "," španělština "," Švédština "," tamilština "," telugština "," Turečtina "," ukrajinština "," urdština " |
+|[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|Tokenizes vstup do n-gramů dané velikosti (y). </br></br>**Možnosti** </br></br>minGram (typ: int) – výchozí hodnota: 1, maximum: 300. </br></br>maxGram (typ: int) – výchozí: 2, maximum: 300. Musí být větší než minGram. </br></br>tokenChars (typ: pole řetězců) – třídy znaků, které mají být v tokenech uchovávány. Povolené hodnoty: "písmeno", "číslice", "prázdný", "interpunkce", "symbol". Výchozí hodnota je prázdné pole – zachová všechny znaky. |  
+|[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|Provádějících tokenizaci pro hierarchie jako cesty. **Možnosti** </br></br>oddělovač (typ: String) – výchozí: '/. </br></br>nahrazení (typ: String) – Pokud je nastaveno, nahradí znak oddělovače. Výchozí hodnota je stejná jako hodnota oddělovače. </br></br>maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 300, maximum: 300. Cesty delší než maxTokenLength jsou ignorovány. </br></br>Reverse (Type: bool) – Pokud má hodnotu true, vygeneruje token v opačném pořadí. Výchozí hodnota: false. </br></br>Skip (Type: bool) – počáteční tokeny, které se mají přeskočit Výchozí hodnota je 0.|  
+|[vzorku](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|Tento provádějících tokenizaci používá porovnávání vzorů regulárního výrazu pro vytváření jedinečných tokenů. </br></br>**Možnosti** </br></br> [vzor](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (typ: String) – vzor regulárního výrazu, který odpovídá oddělovačům tokenů. Výchozí hodnota je `\W+` , která odpovídá znakům jiným než Word. </br></br>[Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: String) – příznaky regulárního výrazu. Výchozí hodnota je prázdný řetězec. Povolené hodnoty: CANON_EQ, CASE_INSENSITIVE, komentáře, DOTALL, LITERÁLy, VÍCEŘÁDKOVé UNICODE_CASE, UNIX_LINES </br></br>Group (typ: int) – skupina, do které se mají extrahovat tokeny Výchozí hodnota je-1 (rozdělená).|
+|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|Rozdělí text podle [pravidel segmentace textu Unicode](https://unicode.org/reports/tr29/). </br></br>**Možnosti** </br></br>maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
+|[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenizes adresy URL a e-maily jako jeden token. </br></br>**Možnosti** </br></br> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
 |[typy](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(typ platí pouze v případě, že jsou k dispozici možnosti) |Vydělí text na prázdný znak. Tokeny, které jsou delší než 255 znaků, jsou rozděleny.|  
 
  <sup>1</sup> typy provádějících tokenizaci jsou vždycky pevně uvedené v kódu s "#Microsoft. Azure. Search" tak, že "ClassicTokenizer" by ve skutečnosti byly zadány jako "#Microsoft. Azure. Search. ClassicTokenizer". Odebrali jsme předponu, aby se snížila šířka tabulky, ale nezapomeňte ji zahrnout do kódu. Všimněte si, že tokenizer_type je k dispozici pouze pro tokenizátory musíte nejdřív, které lze přizpůsobit. Pokud nejsou k dispozici žádné možnosti, jako je například případ s písmenem provádějících tokenizaci, neexistuje žádný přidružený #Microsoft. typ Azure. Search.
 
 <a name="TokenFilters"></a>
 
-###  <a name="token-filters-reference"></a>Odkazy na filtry tokenů
+## <a name="token-filters"></a>Filtry tokenů
+
+Filtr tokenu slouží k odfiltrování nebo úpravě tokenů generovaných objektem provádějících tokenizaci. Můžete například zadat filtr malých písmen, který převede všechny znaky na malá písmena. Ve vlastním analyzátoru můžete mít více filtrů tokenů. Filtry tokenů jsou spouštěny v pořadí, ve kterém jsou uvedeny. 
 
 V následující tabulce jsou filtry tokenů implementované pomocí Apache Lucene propojeny s dokumentací k rozhraní API Lucene.
 
@@ -344,7 +273,7 @@ V následující tabulce jsou filtry tokenů implementované pomocí Apache Luce
 |[keyword_repeat](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/KeywordRepeatFilter.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Vygeneruje každý příchozí token dvakrát jednou jako klíčové slovo a jednou jako jiné než klíčové slovo. |  
 |[kstem](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/en/KStemFilter.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Vysoce výkonný kstem filtr pro angličtinu |  
 |[length](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/LengthFilter.html)|LengthTokenFilter|Odebere slova, která jsou příliš dlouhá nebo příliš krátká.<br /><br /> **Možnosti**<br /><br /> min (typ: int) – minimální číslo. Výchozí hodnota: 0, maximum: 300.<br /><br /> Max (typ: int) – maximální počet. Výchozí: 300, maximum: 300.|  
-|[počtu](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/LimitTokenCountFilter.html)|Microsoft. Azure. Search. LimitTokenFilter|Omezuje počet tokenů při indexování.<br /><br /> **Možnosti**<br /><br /> maxTokenCount (typ: int) – maximální počet tokenů, které mají být vyprodukovány. Výchozí hodnota je 1.<br /><br /> consumeAllTokens (typ: bool) – zda jsou všechny tokeny ze vstupu využívány i v případě, že je dosaženo maxTokenCount. Výchozí hodnotou je hodnota false.|  
+|[limit](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/LimitTokenCountFilter.html)|Microsoft. Azure. Search. LimitTokenFilter|Omezuje počet tokenů při indexování.<br /><br /> **Možnosti**<br /><br /> maxTokenCount (typ: int) – maximální počet tokenů, které mají být vyprodukovány. Výchozí hodnota je 1.<br /><br /> consumeAllTokens (typ: bool) – zda jsou všechny tokeny ze vstupu využívány i v případě, že je dosaženo maxTokenCount. Výchozí hodnotou je hodnota false.|  
 |[malá](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)|(typ platí pouze v případě, že jsou k dispozici možnosti)  |Normalizuje text tokenu na malá písmena. |  
 |[nGram_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenFilter.html)|NGramTokenFilterV2|Generuje n-gramů dané velikosti (y).<br /><br /> **Možnosti**<br /><br /> minGram (typ: int) – výchozí hodnota: 1, maximum: 300.<br /><br /> maxGram (typ: int) – výchozí: 2, maximum 300. Musí být větší než minGram.|  
 |[pattern_capture](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternCaptureGroupTokenFilter.html)|PatternCaptureTokenFilter|Používá regulární výrazy jazyka Java k vygenerování více tokenů, jeden pro každou skupinu zachycení v jednom nebo více vzorcích.<br /><br /> **Možnosti**<br /><br /> vzory (typ: pole řetězců) – seznam vzorů, které se mají pro každý token porovnat. Povinná hodnota.<br /><br /> preserveOriginal (typ: bool) – nastavte na hodnotu true, chcete-li vrátit původní token, i když jedna ze vzorů odpovídá, výchozí hodnota: true |  
@@ -370,8 +299,8 @@ V následující tabulce jsou filtry tokenů implementované pomocí Apache Luce
 
  <sup>1</sup> typy filtru tokenů jsou vždycky pevně uvedené v kódu s "#Microsoft. Azure. Search" tak, že "ArabicNormalizationTokenFilter" by ve skutečnosti byly zadané jako "#Microsoft. Azure. Search. ArabicNormalizationTokenFilter".  Odebrali jsme předponu, aby se snížila šířka tabulky, ale nezapomeňte ji zahrnout do kódu.  
 
+## <a name="see-also"></a>Viz také
 
-## <a name="see-also"></a>Viz také  
- [Rozhraní REST API pro Azure Kognitivní hledání](/rest/api/searchservice/)   
- [Příklady analyzátorů v Azure Kognitivní hledání >](search-analyzers.md#examples)    
- [Vytvoření indexu &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/create-index)
+- [Rozhraní REST API pro Azure Kognitivní hledání](/rest/api/searchservice/)
+- [Analyzátory v Azure Kognitivní hledání (příklady)](search-analyzers.md#examples)
+- [Vytvoření indexu (REST)](/rest/api/searchservice/create-index)

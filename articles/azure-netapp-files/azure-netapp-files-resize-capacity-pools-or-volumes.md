@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 869f46207b940521ee0b66b5afa9c6e2718ab04f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012472"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594474"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Změna velikosti fondu kapacity nebo svazku
 Velikost fondu kapacity nebo svazku můžete podle potřeby změnit. 
@@ -39,6 +39,21 @@ Velikost svazku můžete podle potřeby změnit. Spotřeba kapacity svazku se po
 1. V okně Spravovat účet NetApp klikněte na **svazky**. 
 2. Klikněte pravým tlačítkem na název svazku, u kterého chcete změnit velikost, nebo klikněte na "..." ikona na konci řádku svazku, ve kterém se zobrazí místní nabídka.
 3. Pro změnu velikosti nebo odstranění svazku použijte možnosti místní nabídky.
+
+## <a name="resize-a-cross-region-replication-destination-volume"></a>Změna velikosti cílového svazku replikace mezi oblastmi 
+
+V relaci [replikace mezi oblastmi](cross-region-replication-introduction.md) se automaticky změní velikost cílového svazku na základě velikosti zdrojového svazku. V takovém případě nemusíte velikost cílového svazku samostatně měnit. Toto chování automatické změny velikosti se použije v případě, že jsou svazky v aktivním vztahu replikace nebo když je partnerský vztah replikace přerušený pomocí [operace opětovné synchronizace](cross-region-replication-manage-disaster-recovery.md#resync-replication). 
+
+Následující tabulka popisuje chování při změně velikosti cílového svazku na základě [stavu zrcadlení](cross-region-replication-display-health-status.md):
+
+|  Stav zrcadlení  | Chování při změně velikosti cílového svazku |
+|-|-|
+| *Zrcadleno* | Když je cílový svazek inicializovaný a je připravený pro příjem aktualizací zrcadlení, změna velikosti zdrojového svazku automaticky změní velikost cílových svazků. |
+| *Loženo* | Když změníte velikost zdrojového svazku a dojde k *přerušení* stavu zrcadlení, cílový svazek se automaticky změní na velikost [operace opětovné synchronizace](cross-region-replication-manage-disaster-recovery.md#resync-replication).  |
+| *Neinicializováno* | Když změníte velikost zdrojového svazku a stav zrcadlení je stále *Neinicializovaný*, změna velikosti cílového svazku se musí provést ručně. V takovém případě se doporučuje počkat na dokončení inicializace (tj. když se stav *zrcadlení zrcadlí),* aby se změnila velikost zdrojového svazku. | 
+
+> [!IMPORTANT]
+> Ujistěte se, že máte dostatečnou rezervu v fondech kapacit pro zdroj i cílové svazky replikace mezi oblastmi. Při změně velikosti zdrojového svazku se automaticky změní velikost cílového svazku. Pokud ale fond kapacit hostující cílový svazek nemá dost místa, změna velikosti zdrojového i cílového svazku se nezdaří.
 
 ## <a name="next-steps"></a>Další kroky
 

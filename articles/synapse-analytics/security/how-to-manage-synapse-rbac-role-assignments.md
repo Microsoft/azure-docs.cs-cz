@@ -9,10 +9,10 @@ ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: bed0c00b8cb5718456302dff06e98ff2f7f2b4e8
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102185"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Jak spravovat přiřazení rolí RBAC synapse v synapse studiu
@@ -65,7 +65,7 @@ Chcete-li přiřadit roli pro jemnější rozsah, vyberte **položku pracovní p
 
 ![Přidat přiřazení role položky pracovního prostoru – vybrat typ položky](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-Vyberte konkrétní **položku** , která se má použít jako obor, a pak vyberte **roli** , kterou chcete přiřadit z rozevírací nabídky.  Rozevírací seznam obsahuje jenom role, které jsou platné pro vybraný typ položky. [Přečtěte si další informace](./synapse-workspace-synapse-rbac.md).  
+Vyberte konkrétní **položku** , která se má použít jako obor, a pak vyberte **roli** , kterou chcete přiřadit z rozevírací nabídky.  Rozevírací seznam obsahuje jenom role, které jsou platné pro vybraný typ položky. [Další informace](./synapse-workspace-synapse-rbac.md).  
 
 ![Přidat přiřazení role položky pracovního prostoru – vybrat roli](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  
