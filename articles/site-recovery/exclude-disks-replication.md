@@ -4,10 +4,10 @@ description: Postup vyloučení disků z replikace do Azure pomocí Azure Site R
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008255"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Vyloučení disků z zotavení po havárii
@@ -56,13 +56,13 @@ Příklady četnosti změn dat, které jsou skvělými kandidáty pro vyloučen�
 
 ## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Příklad 1: Vyloučení disku s databází tempdb systému SQL Server
 
-Pojďme se podívat na to, jak zpracovat vyloučení disku, převzetí služeb při selhání a převzetí služeb při selhání pro zdroj SQL Server Windows VM- **SalesDB** _, pro který chceme databázi tempdb vyloučit. 
+Pojďme se podívat na to, jak zpracovat vyloučení disku, převzetí služeb při selhání a převzetí služeb při selhání pro zdroj SQL Server Windows VM-* * SalesDB * * *, pro které chceme databázi tempdb vyloučit. 
 
 ### <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
 
 Tyto disky máme na zdrojovém virtuálním počítači s Windows SalesDB.
 
-_ *Název disku** | **Disk hostovaného operačního systému** | **Písmeno jednotky** | **Datový typ disku**
+**Název disku** | **Disk hostovaného operačního systému** | **Písmeno jednotky** | **Datový typ disku**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Disk s operačním systémem.
 DB-Disk1| Disk1 | D:\ | Systémová databáze SQL a uživatel Databáze1.

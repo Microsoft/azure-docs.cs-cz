@@ -1,5 +1,5 @@
 ---
-title: Sondy stavu pro škálování a zajištění vysoké dostupnosti pro vaši službu
+title: Zajištění vysoké dostupnosti a škálování služby s využitím sond stavu
 titleSuffix: Azure Load Balancer
 description: V tomto článku se dozvíte, jak pomocí sond stavu monitorovat instance za Azure Load Balancer
 services: load-balancer
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96780939"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru

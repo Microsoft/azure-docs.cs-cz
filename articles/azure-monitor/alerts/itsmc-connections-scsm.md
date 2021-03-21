@@ -6,10 +6,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
 ms.openlocfilehash: 3f80c42be217d062510c687075cf46b4e7539419
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045339"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>Připojit System Center Service Manager ke konektoru pro správu služeb IT
@@ -18,7 +18,7 @@ Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi va
 
 Následující části obsahují podrobné informace o tom, jak připojit System Center Service Manager produkt k ITSMC v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 

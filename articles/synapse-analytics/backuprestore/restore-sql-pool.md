@@ -12,10 +12,10 @@ ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 86150107273b247bef2c74e5b8c5272d7148587e
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94332063"
 ---
 # <a name="restore-an-existing-dedicated-sql-pool"></a>Obnovení existujícího vyhrazeného fondu SQL
@@ -44,7 +44,7 @@ V tomto článku se dozvíte, jak obnovit existující vyhrazený fond SQL ve sl
 
     Pokud obnovujete geografickou zálohu, stačí vybrat pracovní prostor umístěný ve zdrojové oblasti a vyhrazený fond SQL, který chcete obnovit. 
 
-9. Vyberte **zkontrolovat + vytvořit**.
+9. Vyberte **Zkontrolovat a vytvořit**.
 
 ## <a name="restore-an-existing-dedicated-sql-pool-through-the-azure-portal"></a>Obnovení existujícího vyhrazeného fondu SQL prostřednictvím Azure Portal
 
@@ -60,7 +60,7 @@ V tomto článku se dozvíte, jak obnovit existující vyhrazený fond SQL ve sl
 
     Pokud chcete provést geografické obnovení, vyberte pracovní prostor a vyhrazený fond SQL, který chcete obnovit. 
 
-5. Vyberte **zkontrolovat + vytvořit**.
+5. Vyberte **Zkontrolovat a vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 

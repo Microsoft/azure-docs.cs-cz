@@ -12,10 +12,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 09/02/2020
 ms.openlocfilehash: 2e01e74f5086f7f1eb7e85661fbd35f452d8dae8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790198"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Urychlení analýzy velkých objemů dat v reálném čase pomocí konektoru Spark
@@ -38,7 +38,7 @@ Konektor Spark umožňuje používat databáze v Azure SQL Database, Azure SQL M
 | Scala                                 | 2,10 nebo novější            |
 | Ovladač Microsoft JDBC pro SQL Server  | 6,2 nebo novější             |
 | Microsoft SQL Server                  | SQL Server 2008 nebo novější |
-| Databáze Azure SQL                    | Podporováno                |
+| Azure SQL Database                    | Podporováno                |
 | Spravovaná instance Azure SQL            | Podporováno                |
 
 Konektor Spark využívá ovladač Microsoft JDBC pro SQL Server k přesouvání dat mezi uzly Spark Worker a databázemi:

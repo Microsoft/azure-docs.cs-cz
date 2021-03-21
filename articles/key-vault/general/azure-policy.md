@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927749"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrace služby Azure Key Vault se službou Azure Policy
@@ -29,9 +29,9 @@ Příklady scénářů použití:
 
 ## <a name="types-of-policy-effects-and-guidance"></a>Typy efektů a pokynů pro zásady
 
-**Audit** : když je účinek zásady nastavený na audit, zásada nezpůsobí žádné změny v prostředí. Upozorní vás jenom na součásti, jako jsou certifikáty, které nejsou v souladu s definicemi zásad v rámci zadaného oboru, tak, že tyto komponenty označíte jako nedodržující předpisy na řídicím panelu pro dodržování zásad. Pokud není vybraný žádný efekt zásad, audit je výchozí.
+**Audit**: když je účinek zásady nastavený na audit, zásada nezpůsobí žádné změny v prostředí. Upozorní vás jenom na součásti, jako jsou certifikáty, které nejsou v souladu s definicemi zásad v rámci zadaného oboru, tak, že tyto komponenty označíte jako nedodržující předpisy na řídicím panelu pro dodržování zásad. Pokud není vybraný žádný efekt zásad, audit je výchozí.
 
-**Odepřít** : Pokud je účinek zásady nastavený na odepřít, zásada bude blokovat vytváření nových komponent, jako jsou certifikáty, a zablokovat nové verze existujících součástí, které neodpovídají definici zásad. Stávající nekompatibilní prostředky v rámci trezoru klíčů nejsou ovlivněny. Možnosti auditu budou i nadále fungovat.
+**Odepřít**: Pokud je účinek zásady nastavený na odepřít, zásada bude blokovat vytváření nových komponent, jako jsou certifikáty, a zablokovat nové verze existujících součástí, které neodpovídají definici zásad. Stávající nekompatibilní prostředky v rámci trezoru klíčů nejsou ovlivněny. Možnosti auditu budou i nadále fungovat.
 
 ## <a name="available-built-in-policy-definitions"></a>Dostupné definice zásad "předdefinované"
 
@@ -91,9 +91,9 @@ Vaše služba se může setkat s výpadkem, pokud se nedostatečně monitorovan�
 
 Pokud se chcete ujistit, že vaše klíče nebyly aktivní po dobu delší, než je zadaný počet dní, můžete pomocí této zásady Auditovat, jak dlouho byl klíč aktivní.
 
-**Pokud má klíč nastavené datum aktivace** , tato zásada vypočítá počet dní, které uplynuly od **data aktivace** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
+**Pokud má klíč nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data aktivace** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
 
-**Pokud klíč nemá nastavené datum aktivace** , tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
+**Pokud klíč nemá nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
 
 ### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>Klíče by měly být zadaného kryptografického typu RSA nebo ES (Preview).
 
@@ -139,9 +139,9 @@ Požadavky na dodržování předpisů vaší organizace můžete spravovat tak,
 
 Pokud chcete zajistit, aby vaše tajná data nebyla aktivní déle než zadaný počet dní, můžete pomocí této zásady Auditovat, jak dlouho byl váš tajný klíč aktivní.
 
-**Pokud má váš tajný kód nastavené datum aktivace** , tato zásada vypočítá počet dní, které uplynuly od **data aktivace** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
+**Pokud má váš tajný kód nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data aktivace** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
 
-**Pokud váš tajný klíč nemá nastavené datum aktivace** , tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
+**Pokud váš tajný klíč nemá nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
 
 ### <a name="secrets-should-have-content-type-set-preview"></a>Tajné klíče by měly mít nastaven typ obsahu (Preview)
 
@@ -175,15 +175,15 @@ Můžete spravovat Trezor klíčů používaný více týmy, které obsahují ce
 ### <a name="select-a-policy-definition"></a>Výběr definice zásady
 
 1. Přihlaste se k webu Azure Portal. 
-1. Na panelu hledání vyhledejte "zásady" a vyberte **zásady** .
+1. Na panelu hledání vyhledejte "zásady" a vyberte **zásady**.
 
     ![Snímek obrazovky, který zobrazuje panel hledání.](../media/policy-img1.png)
 
-1. V okně zásady vyberte **definice** .
+1. V okně zásady vyberte **definice**.
 
     ![Snímek obrazovky, který zvýrazní možnost definice](../media/policy-img2.png)
 
-1. V Filtr kategorie zrušte výběr **Vybrat vše** a vyberte **Key Vault** . 
+1. V Filtr kategorie zrušte výběr **Vybrat vše** a vyberte **Key Vault**. 
 
     ![Snímek obrazovky, který zobrazuje filtr kategorie a vybranou kategorii Key Vault.](../media/policy-img3.png)
 
@@ -226,7 +226,7 @@ Můžete spravovat Trezor klíčů používaný více týmy, které obsahují ce
 
     ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img11.png)
 
-## <a name="feature-limitations"></a>Omezení funkcí
+## <a name="feature-limitations"></a>Omezení funkce
 
 Přiřazení zásady s účinkem "Odepřít" může trvat až 30 minut (průměrnou velikost) a 1 hodinu (nejhorší případ), aby bylo možné začít odmítat vytváření prostředků, které nedodržují předpisy. Vyhodnocení zásad pro existující součásti v trezoru může trvat až 1 hodinu (průměrnou velikost) a 2 hodiny (nejhorší případ), než se výsledky dodržování předpisů zobrazí v uživatelském rozhraní portálu. Pokud se výsledky dodržování předpisů zobrazují jako Nezahájeno, může to být způsobeno následujícími důvody:
 - Hodnocení zásad ještě není dokončené. Počáteční latence hodnocení může v nejhorším scénáři trvat až 2 hodiny. 

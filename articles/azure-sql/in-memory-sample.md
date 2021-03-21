@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786577"
 ---
 # <a name="in-memory-sample"></a>Ukázka In-Memory
@@ -25,7 +25,7 @@ Technologie In-Memory v Azure SQL Database umožňují zvýšit výkon aplikace 
 
 V tomto článku se zobrazí dvě ukázky, které ilustrují použití In-Memory OLTP a také indexy columnstore v Azure SQL Database.
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 - [Přehled OLTP v paměti a scénáře použití](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (zahrnuje odkazy na případové studie zákazníků a informace o tom, jak začít)
 - [Dokumentace pro In-Memory OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
@@ -53,7 +53,7 @@ Další zjednodušený, ale vizuální opravení výkonu pro In-Memory OLTP, naj
 
 3. Zkopírujte [skript Transact-SQL OLTP v paměti](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skript T-SQL vytvoří potřebné objekty In-Memory v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
 
-4. Vložte skript T-SQL do SSMS a potom spusťte skript. `MEMORY_OPTIMIZED = ON`Klauzule CREATE TABLE příkazy jsou klíčové. Příklad:
+4. Vložte skript T-SQL do SSMS a potom spusťte skript. `MEMORY_OPTIMIZED = ON`Klauzule CREATE TABLE příkazy jsou klíčové. Například:
 
 ```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
@@ -74,7 +74,7 @@ Výsledkem **0** znamená, že In-Memory nejsou podporovány a **1** znamená, �
 
 ### <a name="about-the-created-memory-optimized-items"></a>O vytvořených paměťově optimalizovaných položkách
 
-**Tabulky** : ukázka obsahuje následující paměťově optimalizované tabulky:
+**Tabulky**: ukázka obsahuje následující paměťově optimalizované tabulky:
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -82,7 +82,7 @@ Výsledkem **0** znamená, že In-Memory nejsou podporovány a **1** znamená, �
 - Demo. DemoSalesOrderHeaderSeed
 - Demo. DemoSalesOrderDetailSeed
 
-Paměťově optimalizované tabulky můžete kontrolovat pomocí **Průzkumník objektů** v SSMS. V případě, že kliknete pravým tlačítkem myši na **tabulka**  >  **Filter**  >  , **nastavení filtru** filtru  >  **je optimalizován** Hodnota se rovná 1.
+Paměťově optimalizované tabulky můžete kontrolovat pomocí **Průzkumník objektů** v SSMS. V případě, že kliknete pravým tlačítkem myši na **tabulka**  >    >  ,**nastavení filtru** filtru  >  **je optimalizován** Hodnota se rovná 1.
 
 Nebo můžete zadat dotaz na zobrazení katalogu, například:
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**Nativně kompilovaná uložená procedura** : SalesLT.usp_InsertSalesOrder_inmem můžete zkontrolovat pomocí dotazu zobrazení katalogu:
+**Nativně kompilovaná uložená procedura**: SalesLT.usp_InsertSalesOrder_inmem můžete zkontrolovat pomocí dotazu zobrazení katalogu:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -122,7 +122,7 @@ Můžete ale chtít začít s mnohem menšími hodnotami jako-N10 a-R50, abyste 
 
 V této části se zobrazuje skript T-SQL, který je vložený do našeho ostress.exe příkazového řádku. Skript používá položky, které byly vytvořeny pomocí skriptu T-SQL, který jste nainstalovali dříve.
 
-Následující skript vloží ukázkovou prodejní objednávku s pěti položkami řádků do následujících paměťově optimalizovaných *tabulek* :
+Následující skript vloží ukázkovou prodejní objednávku s pěti položkami řádků do následujících paměťově optimalizovaných *tabulek*:
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -150,7 +150,7 @@ begin;
 end
 ```
 
-Chcete-li nastavit *_ondisk* verzi předchozího skriptu T-SQL pro ostress.exe, nahraďte oba výskyty *_inmem* dílčího řetězce *_ondisk* . Tyto náhrady mají vliv na názvy tabulek a uložených procedur.
+Chcete-li nastavit *_ondisk* verzi předchozího skriptu T-SQL pro ostress.exe, nahraďte oba výskyty *_inmem* dílčího řetězce *_ondisk*. Tyto náhrady mají vliv na názvy tabulek a uložených procedur.
 
 #### <a name="install-rml-utilities-and-ostress"></a>Instalace RML nástrojů a `ostress`
 
@@ -158,7 +158,7 @@ V ideálním případě byste měli naplánovat spuštění ostress.exe na virtu
 
 Na virtuálním počítači nebo na jakémkoli zvoleném hostiteli nainstalujte nástroje RML (replay Markup Language). Mezi tyto nástroje patří ostress.exe.
 
-Další informace naleznete v tématech:
+Další informace naleznete v tématu:
 
 - ostress.exe diskuzi v [ukázkové databázi pro In-Memory OLTP](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp).
 - [Ukázková databáze pro In-Memory OLTP](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp)
@@ -215,7 +215,7 @@ Po dokončení spuštění *_inmem* proveďte následující kroky pro *_ondisk*
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Úpravou ostress.exe příkazového řádku nahraďte *_inmem* všechny _inmem *_ondisk* .
+2. Úpravou ostress.exe příkazového řádku nahraďte  všechny _inmem *_ondisk*.
 
 3. Spusťte znovu ostress.exe pro druhý čas a zachyťte výsledek trvání.
 
@@ -363,7 +363,7 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - [Použití In-Memory OLTP v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
-#### <a name="tools"></a>nástroje
+#### <a name="tools"></a>Nástroje
 
 - [Azure Portal](https://portal.azure.com/)
 

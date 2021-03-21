@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
 ms.openlocfilehash: d1931614356a313334d712713965346e843a403d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93425026"
 ---
 ## <a name="invoke-the-function-on-azure"></a>Vyvolání funkce v Azure
@@ -21,7 +21,7 @@ Zkopírujte úplnou **adresu URL pro vyvolání** zobrazenou ve výstupu příka
 
 ![Výstup funkce spuštěné v Azure v prohlížeči](./media/functions-run-remote-azure-cli/function-test-cloud-browser.png)
 
-# <a name="curl"></a>[Curl](#tab/curl)
+# <a name="curl"></a>[curl](#tab/curl)
 
 Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání** a přidejte parametr `&name=Functions` . Výstupem příkazu by měl být text "Hello".
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421919"
 ---
 # <a name="convert-to-csv-module"></a>Převést na modul CSV
@@ -48,9 +48,9 @@ Když datovou sadu převedete na CSV, uloží se sdílený svazek clusteru do pr
 
 Vyberte kartu **výstupy** v pravém panelu **převést na sdílený svazek clusteru** a v části **výstupy portů** vyberte jednu z těchto ikon.  
 
-+ **Registrovat datovou sadu** : vyberte ikonu a uložte soubor CSV zpátky do pracovního prostoru Azure ml jako samostatnou datovou sadu. Datovou sadu můžete najít jako modul ve stromu modulu pod částí **Moje datové sady** .
++ **Registrovat datovou sadu**: vyberte ikonu a uložte soubor CSV zpátky do pracovního prostoru Azure ml jako samostatnou datovou sadu. Datovou sadu můžete najít jako modul ve stromu modulu pod částí **Moje datové sady** .
 
- + **Zobrazit výstup** : vyberte ikonu oka a postupujte podle pokynů pro procházení složky **Results_dataset** a stáhněte data.csv soubor.
+ + **Zobrazit výstup**: vyberte ikonu oka a postupujte podle pokynů pro procházení složky **Results_dataset** a stáhněte data.csv soubor.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,13 +4,13 @@ description: Ukazuje, jak předat tajný klíč z trezoru klíčů jako parametr
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.openlocfilehash: 8983d51d90e07e21ac4c9489c7ed553530278d3c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97672701"
 ---
-# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazení
+# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití trezoru klíčů Azure Key Vault k předávání hodnoty zabezpečeného parametru během nasazování
 
 Namísto vložení zabezpečené hodnoty (například hesla) přímo do šablony nebo souboru parametrů můžete načíst hodnotu z [Azure Key Vault](../../key-vault/general/overview.md) během nasazení. Hodnotu načtete odkazem na Trezor klíčů a tajný kód v souboru parametrů. Hodnota se nikdy nezveřejňuje, protože odkazujete jenom na její ID trezoru klíčů. Trezor klíčů může existovat v jiném předplatném, než je skupina prostředků, do které nasazujete.
 

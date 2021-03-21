@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: d4099ecf6e6bcc6654391e54292878393fb22914
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421341"
 ---
 # <a name="cross-validate-model"></a>Křížové ověření modelu
 
 Tento článek popisuje, jak použít modul pro různé ověřování modelu v Návrháři Azure Machine Learning. *Křížové ověřování* je technika často používaná ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených prostřednictvím těchto dat.  
 
-Modul pro různé ověřování modelu přijímá jako vstupní datovou sadu s popisem, společně s nevlakovou klasifikací nebo regresní model. Rozdělí datovou sadu na určitý počet podmnožin ( *skládání* ), sestaví model na každé přeložení a potom vrátí sadu statistik přesnosti pro každé skládání. Porovnáním statistik přesnosti pro všechna skládání můžete interpretovat kvalitu sady dat. Pak můžete pochopit, jestli je model náchylný k proměnlivosti dat.  
+Modul pro různé ověřování modelu přijímá jako vstupní datovou sadu s popisem, společně s nevlakovou klasifikací nebo regresní model. Rozdělí datovou sadu na určitý počet podmnožin (*skládání*), sestaví model na každé přeložení a potom vrátí sadu statistik přesnosti pro každé skládání. Porovnáním statistik přesnosti pro všechna skládání můžete interpretovat kvalitu sady dat. Pak můžete pochopit, jestli je model náchylný k proměnlivosti dat.  
 
 Model vzájemného ověřování také vrací předpovězené výsledky a pravděpodobnosti pro datovou sadu, abyste mohli posoudit spolehlivost předpovědi.  
 
@@ -86,7 +86,7 @@ První výstup modulu poskytuje zdrojová data pro každý řádek spolu s někt
 
 Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modul modelu křížového ověřování. Vyberte **Vizualizace výsledků skóre**.
 
-| Nový název sloupce      | Popis                              |
+| Nový název sloupce      | Description                              |
 | -------------------- | ---------------------------------------- |
 | Vyhodnocené popisky        | Tento sloupec se přidá na konec datové sady. Obsahuje předpokládanou hodnotu pro každý řádek. |
 | Pravděpodobnost skóre | Tento sloupec se přidá na konec datové sady. Označuje odhadovanou pravděpodobnost hodnoty v **popiscích skóre**. |
@@ -109,9 +109,9 @@ Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modu
 
 Modul obsahuje také následující metriky pro každé skládání v závislosti na typu modelu, který vyhodnocujete: 
 
-+ **Modely klasifikace** : přesnost, odvolání, F-SKORE, AUC, přesnost  
++ **Modely klasifikace**: přesnost, odvolání, F-SKORE, AUC, přesnost  
 
-+ **Regresní modely** : střední chyba, hlavní střední hodnota, chyba, relativní absolutní chyba, relativní natažená chyba a koeficient určení
++ **Regresní modely**: střední chyba, hlavní střední hodnota, chyba, relativní absolutní chyba, relativní natažená chyba a koeficient určení
 
 
 ## <a name="technical-notes"></a>Technické poznámky  

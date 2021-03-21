@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: 206ff6f888229356743bebb816cf03e4f7a7504b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778703"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Správa vypršení platnosti služby Azure Blob Storage v Azure CDN
@@ -31,7 +31,7 @@ ms.locfileid: "92778703"
 
 [Služba BLOB Storage](../storage/common/storage-introduction.md#blob-storage) v Azure Storage je jedním z několika zdrojů založených na platformě Azure integrovaných se službou Azure Content DELIVERY Network (CDN). Veškerý veřejně přístupný obsah objektu BLOB se dá v Azure CDN Uložit do mezipaměti, dokud neuplyne jeho hodnota TTL (Time to Live). Hodnota TTL je určena `Cache-Control` hlavičkou v odpovědi HTTP ze zdrojového serveru. Tento článek popisuje několik způsobů, jak můžete nastavit `Cache-Control` hlavičku objektu BLOB v Azure Storage.
 
-Nastavení mezipaměti můžete také ovládat z Azure Portal nastavením pravidel ukládání do mezipaměti CDN. Pokud vytvoříte pravidlo ukládání do mezipaměti a nastavíte jeho chování ukládání do mezipaměti pro **přepsání** nebo **obejít mezipaměť** , budou nastavení ukládání do mezipaměti uvedená v tomto článku ignorována. Informace o obecných konceptech mezipaměti najdete v tématu [Jak funguje ukládání do mezipaměti](cdn-how-caching-works.md).
+Nastavení mezipaměti můžete také ovládat z Azure Portal nastavením pravidel ukládání do mezipaměti CDN. Pokud vytvoříte pravidlo ukládání do mezipaměti a nastavíte jeho chování ukládání do mezipaměti pro **přepsání** nebo **obejít mezipaměť**, budou nastavení ukládání do mezipaměti uvedená v tomto článku ignorována. Informace o obecných konceptech mezipaměti najdete v tématu [Jak funguje ukládání do mezipaměti](cdn-how-caching-works.md).
 
 > [!TIP]
 > U objektu blob můžete nastavit možnost Nepoužívat hodnotu TTL. V takovém případě Azure CDN automaticky použije výchozí hodnotu TTL 7 dní, pokud jste nastavili pravidla ukládání do mezipaměti v Azure Portal. Výchozí hodnota TTL se vztahuje pouze na obecné optimalizace doručování webů. Pro optimalizace velkých souborů je výchozí hodnota TTL jeden den a optimalizace datových proudů médií je výchozí hodnota TTL jeden rok.
@@ -47,22 +47,22 @@ Upřednostňovanou metodou pro nastavení záhlaví objektu BLOB `Cache-Control`
 > [!NOTE] 
 > Pravidla ukládání do mezipaměti jsou k dispozici pouze pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** . Pro **Azure CDN Premium ze profilů Verizon** je nutné použít [modul Azure CDN Rules](./cdn-verizon-premium-rules-engine.md) na portálu pro **správu** pro podobné funkce.
 
-**Přejděte na stránku pravidla ukládání do mezipaměti CDN** :
+**Přejděte na stránku pravidla ukládání do mezipaměti CDN**:
 
 1. V Azure Portal vyberte profil CDN a pak vyberte koncový bod pro objekt BLOB.
 
-2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti** .
+2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti**.
 
    ![Tlačítko pravidla ukládání do mezipaměti CDN](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
-   Zobrazí se stránka **Pravidla ukládání do mezipaměti** .
+   Zobrazí se stránka **Pravidla ukládání do mezipaměti**.
 
    ![Stránka ukládání do mezipaměti CDN](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
 
 **Nastavení hlaviček Cache-Control služby Blob Storage pomocí globálních pravidel ukládání do mezipaměti:**
 
-1. V části **globální pravidla ukládání do** mezipaměti nastavte **chování při ukládání řetězce dotazu** na **Ignorovat řetězce dotazů** a nastavte **chování ukládání do mezipaměti** pro **přepsání** .
+1. V části **globální pravidla ukládání do** mezipaměti nastavte **chování při ukládání řetězce dotazu** na **Ignorovat řetězce dotazů** a nastavte **chování ukládání do mezipaměti** pro **přepsání**.
       
 2. V poli **Doba vypršení platnosti mezipaměti** zadejte 3600 do pole **sekund** nebo 1 v poli **hodiny** . 
 
@@ -70,21 +70,21 @@ Upřednostňovanou metodou pro nastavení záhlaví objektu BLOB `Cache-Control`
 
    Toto globální pravidlo ukládání do mezipaměti nastavuje dobu trvání mezipaměti jednu hodinu a ovlivňuje všechny požadavky na koncový bod. Přepíše všechny `Cache-Control` `Expires` hlavičky protokolu HTTP, které jsou odesílány ze zdrojového serveru zadaného koncovým bodem.   
 
-3. Vyberte **Uložit** .
+3. Vyberte **Uložit**.
  
 **Nastavení hlaviček Cache-Control souboru BLOB pomocí vlastních pravidel ukládání do mezipaměti:**
 
 1. V části **vlastní pravidla ukládání do mezipaměti** vytvořte dvě podmínky shody:
 
-     A. U první podmínky shody nastavte **podmínku Match** na **path** a zadejte `/blobcontainer1/*` **hodnotu shody** . Nastavte **chování ukládání do mezipaměti** pro **přepsání** a do pole **hodiny** zadejte 4.
+     A. U první podmínky shody nastavte **podmínku Match** na **path** a zadejte `/blobcontainer1/*` **hodnotu shody**. Nastavte **chování ukládání do mezipaměti** pro **přepsání** a do pole **hodiny** zadejte 4.
 
-    B. U podmínky druhé shody nastavte **podmínku Match** na **path** a zadejte `/blobcontainer1/blob1.txt` **hodnotu shody** . Nastavte **chování ukládání do mezipaměti** pro **přepsání** a zadáním 2 do pole **hodiny** .
+    B. U podmínky druhé shody nastavte **podmínku Match** na **path** a zadejte `/blobcontainer1/blob1.txt` **hodnotu shody**. Nastavte **chování ukládání do mezipaměti** pro **přepsání** a zadáním 2 do pole **hodiny** .
 
     ![Příklad vlastních pravidel ukládání do mezipaměti CDN](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
     První vlastní pravidlo ukládání do mezipaměti nastaví dobu trvání mezipaměti pro všechny soubory objektů BLOB ve `/blobcontainer1` složce na zdrojovém serveru určeném vaším koncovým bodem na čtyři hodiny. Druhé pravidlo přepíše první pravidlo `blob1.txt` pouze pro soubor objektu BLOB a nastaví pro něj dobu trvání mezipaměti dvě hodiny.
 
-2. Vyberte **Uložit** .
+2. Vyberte **Uložit**.
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Nastavení hlaviček Cache-Control pomocí Azure PowerShell
@@ -93,7 +93,7 @@ Upřednostňovanou metodou pro nastavení záhlaví objektu BLOB `Cache-Control`
 
 [Azure PowerShell](/powershell/azure/) je jedním z nejrychlejších a nejúčinnějších způsobů správy služeb Azure. Pomocí `Get-AzStorageBlob` rutiny Získejte odkaz na objekt BLOB a pak nastavte `.ICloudBlob.Properties.CacheControl` vlastnost. 
 
-Příklad:
+Například:
 
 ```powershell
 # Create a storage context
@@ -117,7 +117,7 @@ $blob.ICloudBlob.SetProperties()
 ## <a name="setting-cache-control-headers-by-using-net"></a>Nastavení hlaviček Cache-Control pomocí .NET
 Chcete-li zadat hlavičku objektu BLOB `Cache-Control` pomocí kódu .NET, nastavte vlastnost [CloudBlob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) pomocí [Azure Storage klientské knihovny pro rozhraní .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md) .
 
-Příklad:
+Například:
 
 ```csharp
 class Program
@@ -158,7 +158,7 @@ Pomocí [Průzkumník služby Azure Storage](https://azure.microsoft.com/feature
 Aktualizace vlastnosti *CacheControl* objektu blob pomocí Průzkumník služby Azure Storage:
    1. Vyberte objekt BLOB a potom v místní nabídce vyberte možnost **vlastnosti** . 
    2. Přejděte dolů na vlastnost *CacheControl* .
-   3. Zadejte hodnotu a pak vyberte **Uložit** .
+   3. Zadejte hodnotu a pak vyberte **Uložit**.
 
 
 ![Vlastnosti Průzkumník služby Azure Storage](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)

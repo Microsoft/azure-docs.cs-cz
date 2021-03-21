@@ -10,10 +10,10 @@ ms.date: 09/8/2020
 ms.author: duau
 ms.custom: subject-armqs
 ms.openlocfilehash: 24460167e2279e7d3001d0bc16d050beb5b55289
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790997"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Rychlý Start: vytvoření zóny Azure DNS a záznamu pomocí šablony ARM
@@ -22,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak pomocí šablony Azure Resource Manager
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-dns-new-zone%2Fazuredeploy.json)
 
@@ -66,7 +66,7 @@ Další šablony, které souvisejí s Azure Traffic Manager, najdete v tématu [
 
 1. Pro zkopírování skriptu PowerShellu vyberte **Kopírovat** z předchozího bloku kódu.
 
-1. Klikněte pravým tlačítkem na Podokno konzole prostředí a pak vyberte **Vložit** .
+1. Klikněte pravým tlačítkem na Podokno konzole prostředí a pak vyberte **Vložit**.
 
 1. Zadejte hodnoty.
 
@@ -80,7 +80,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 
@@ -88,11 +88,11 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 1. Skupina prostředků by měla obsahovat následující zdroje informací:
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Výstup nasazení prostředí PowerShell pro Správce prostředků Azure DNS zóny":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Skupina prostředků nasazení zóny DNS":::
 
 1. Vyberte zónu DNS s příponou, `azurequickstart.org` abyste ověřili, jestli je zóna správně vytvořená, s použitím záznamu, který `A` odkazuje na hodnotu `1.2.3.4` a `1.2.3.5` .
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Výstup nasazení prostředí PowerShell pro Správce prostředků Azure DNS zóny":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Nasazení zóny DNS":::
 
 1. Zkopírujte jeden z názvů názvového serveru z předchozího kroku.
 
@@ -102,7 +102,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
    nslookup www.<dns zone name> <name server name>
    ```
 
-   Příklad:
+   Například:
 
    ```cmd
    nslookup www.2lwynbseszpam.azurequickstart.org ns1-09.azure-dns.com.
@@ -110,7 +110,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
    Měl by se zobrazit něco podobného jako na následujícím snímku obrazovky:
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Výstup nasazení prostředí PowerShell pro Správce prostředků Azure DNS zóny":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Nástroj nslookup pro zónu DNS":::
 
 Název hostitele se `www.2lwynbseszpam.azurequickstart.org` překládá na `1.2.3.4` a `1.2.3.5` stejně jako jste nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
 

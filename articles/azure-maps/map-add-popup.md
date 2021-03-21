@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 903574a8c8696f10d9903a685bab8d12b3e6395f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92891032"
 ---
 # <a name="add-a-popup-to-the-map"></a>Přidat místní nabídku na mapu
@@ -271,7 +271,7 @@ Automaticky otevíraná okna lze otevřít, zavřít a přetáhnout. Automaticky
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Překryvné události" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-V CodePen ( <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>Popup events</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>se podívejte na místní Azure Maps události pera.
+V CodePen ( <a href='https://codepen.io/azuremaps/pen/BXrpvB/'></a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'></a>se podívejte na místní Azure Maps události pera.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky

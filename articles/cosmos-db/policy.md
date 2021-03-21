@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93080647"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Použití Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB
@@ -127,7 +127,7 @@ Snímek obrazovky ukazuje následující výsledky vyhodnocení dodržování p�
 - Žádná ze dvou účtů nedodržuje zásady, které vyžadují, aby byl účet nakonfigurovaný pro více umístění pro zápis.
 - Žádná ze dvou účtů nedodržuje zásady, které byly nasazeny do povolených oblastí Azure.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Vyhledat Azure Cosmos DB předdefinované definice zásad":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Výsledky dodržování předpisů pro přiřazení Azure Policy v seznamu":::
 
 Chcete-li opravit prostředky, které nedodržují předpisy, přečtěte si [článek o nápravě prostředků pomocí Azure Policy](../governance/policy/how-to/remediate-resources.md).
 

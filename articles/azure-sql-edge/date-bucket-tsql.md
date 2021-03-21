@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93073515"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -41,19 +41,19 @@ DATE_BUCKET (datePart, number, date, origin)
   
 |*datePart*|Zkratky|  
 |---|---|
-|**day**|**DD** , **d**|  
-|**týden**|**týden** , **WW**| 
-|**month**|**mm** , **m**|
-|**první**|**QQ** , **q**|  
-|**jednolet**|**YY** , **RRRR**|  
+|**dnu**|**DD**, **d**|  
+|**týden**|**týden**, **WW**| 
+|**month**|**mm**, **m**|
+|**první**|**QQ**, **q**|  
+|**year**|**YY**, **RRRR**|  
 |**hodiny**|**hh**|  
-|**minute**|**mi** , **n**|  
-|**second**|**SS** , **s**|  
+|**minute**|**mi**, **n**|  
+|**second**|**SS**, **s**|  
 |**komponentu**|**Arial**|  
 
-*číslo*
+*Automatické*
 
-Celé číslo, které určuje šířku kontejneru v kombinaci s argumentem *datePart* . To představuje šířku kontejnerů DataParts od počátečního času. **`This argument cannot be a negative integer value`** . 
+Celé číslo, které určuje šířku kontejneru v kombinaci s argumentem *datePart* . To představuje šířku kontejnerů DataParts od počátečního času. **`This argument cannot be a negative integer value`**. 
 
 *date*
 
@@ -64,7 +64,7 @@ Výraz, který může být přeložen na jednu z následujících hodnot:
 + **DateTimeOffset**
 + **datetime2**
 + **smalldatetime**
-+ **time**
++ **interval**
 
 Pro *Datum* `DATE_BUCKET` bude akceptovat výraz sloupce, výraz nebo uživatelsky definovaná proměnná, pokud se přeloží na některý z výše uvedených typů dat.
 
@@ -77,7 +77,7 @@ Volitelný výraz, který lze přeložit na jednu z následujících hodnot:
 + **DateTimeOffset**
 + **datetime2**
 + **smalldatetime**
-+ **time**
++ **interval**
 
 Datový typ `Origin` by měl odpovídat datovému typu `Date` parametru. 
 
@@ -125,7 +125,7 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>Argument DatePart
 
-**DAYOFYEAR** , **Day** a **Weekday** vrací stejnou hodnotu. Každé *DatePart* a jeho zkratky vrací stejnou hodnotu.
+**DAYOFYEAR**, **Day** a **Weekday** vrací stejnou hodnotu. Každé *DatePart* a jeho zkratky vrací stejnou hodnotu.
   
 ## <a name="number-argument"></a>Argument Number
 
@@ -200,7 +200,7 @@ Tyto příklady používají jako argumenty pro parametry *Number* a *Date* růz
   
 #### <a name="specifying-user-defined-variables-as-number-and-date"></a>Určení uživatelem definovaných proměnných jako číslo a datum  
 
-Tento příklad určuje uživatelsky definované proměnné jako argumenty pro *číslo* a *Datum* :
+Tento příklad určuje uživatelsky definované proměnné jako argumenty pro *číslo* a *Datum*:
   
 ```sql
 DECLARE @days int = 365,
@@ -250,7 +250,7 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 
 #### <a name="specifying-scalar-system-function-as-date"></a>Určení skalární systémové funkce jako data
 
-Tento příklad určuje `SYSDATETIME` pro *Datum* . Přesná hodnota vrácená v závislosti na den a čas provedení příkazu:
+Tento příklad určuje `SYSDATETIME` pro *Datum*. Přesná hodnota vrácená v závislosti na den a čas provedení příkazu:
   
 ```sql
 SELECT Date_Bucket(wk, 10, SYSDATETIME());  
@@ -284,7 +284,7 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>Určení funkce agregovaného okna jako čísla
 
-V tomto příkladu se používá agregovaná funkce okna jako argument pro *Number* .
+V tomto příkladu se používá agregovaná funkce okna jako argument pro *Number*.
   
 ```sql
 Select 

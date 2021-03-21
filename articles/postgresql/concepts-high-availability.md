@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
 ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485439"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Vysoká dostupnost v Azure Database for PostgreSQL – jeden server
@@ -24,7 +24,7 @@ Azure Database for PostgreSQL je vhodný pro provoz důležitých databází, kt
 | ------------ | ----------- |
 | <b>Server databáze PostgreSQL | Azure Database for PostgreSQL poskytuje zabezpečení, izolaci, zabezpečování prostředků a možnost rychlého restartování pro databázové servery. Tyto možnosti usnadňují operace, jako je škálování a operace obnovení databázového serveru, po výpadku, který se má stát v sekundách. <br/> Změny dat na databázovém serveru se většinou vyskytují v kontextu transakce databáze. Všechny změny v databázi se zaznamenávají synchronně ve formě protokolů zápisu předem (WAL) na Azure Storage –, který je připojený k databázovému serveru. Během procesu [kontrolního bodu](https://www.postgresql.org/docs/11/sql-checkpoint.html) databáze jsou datové stránky z paměti databázového serveru také vyprázdněny do úložiště. |
 | <b>Vzdálené úložiště | Všechny fyzické datové soubory PostgreSQL a soubory WAL jsou uloženy na Azure Storage, který je navržen tak, aby ukládal tři kopie dat v rámci oblasti, aby se zajistila redundance dat, dostupnost a spolehlivost. Vrstva úložiště je také nezávislá na databázovém serveru. Dá se odpojit od serveru databáze, který selhal, a během několika sekund se znovu připojí k novému databázovému serveru. Také Azure Storage nepřetržitě monitorovat všechny chyby úložiště. Pokud je zjištěno poškození bloku, je automaticky vyřešen vytvořením instance nové kopie úložiště. |
-| <b>Brány | Brána funguje jako proxy databáze a směruje všechna připojení klientů k databázovému serveru. |
+| <b>brána | Brána funguje jako proxy databáze a směruje všechna připojení klientů k databázovému serveru. |
 
 ## <a name="planned-downtime-mitigation"></a>Omezení zmírňování plánovaných výpadků
 Azure Database for PostgreSQL je navržena tak, aby poskytovala vysokou dostupnost během plánovaných výpadků. 
@@ -49,7 +49,7 @@ Tady je několik plánovaných scénářů údržby:
 K neplánovanému výpadku může dojít v důsledku neočekávaných selhání, včetně základní hardwarové chyby, potíží se sítí a softwarových chyb. Pokud dojde k neočekávanému výpadku databázového serveru, nový databázový server se automaticky zřídí během několika sekund. Vzdálené úložiště se automaticky připojí k novému databázovému serveru. PostgreSQL Engine provádí operaci obnovení pomocí WAL a souborů databáze a otevírá databázový server, aby se klienti mohli připojit. Nepotvrzené transakce jsou ztraceny a musí je aplikace opakovat. I když nemůžete zabránit neplánovaným výpadkům, Azure Database for PostgreSQL zmírnit výpadky automatickým prováděním operací obnovení na databázovém serveru a vrstvách úložiště bez nutnosti zásahu člověka. 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="zobrazení elastického škálování v Azure PostgreSQL":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="zobrazení vysoké dostupnosti v Azure PostgreSQL":::
 
 1. Servery Azure PostgreSQL s možnostmi rychlého škálování.
 2. Brána, která slouží jako proxy ke směrování připojení klienta ke správnému databázovému serveru
@@ -73,7 +73,7 @@ Tady je několik scénářů selhání, které vyžadují akci uživatele při o
 
 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Azure Database for PostgreSQL poskytuje možnost rychlého restartování databázových serverů, redundantního úložiště a efektivního směrování z brány. Pro dodatečnou ochranu dat můžete nakonfigurovat zálohování na geograficky replikované a také nasadit jednu nebo více replik pro čtení v jiných oblastech. Díky funkcím vysoké dostupnosti Azure Database for PostgreSQL chrání vaše databáze před Nejčastějšími výpadky a nabízí špičkovou smlouvu SLA, která se poskytuje s financemi [99,99% z provozu](https://azure.microsoft.com/support/legal/sla/postgresql). Všechny tyto možnosti dostupnosti a spolehlivosti umožňují, aby Azure byl ideální platformou pro spouštění důležitých podnikových aplikací.
 

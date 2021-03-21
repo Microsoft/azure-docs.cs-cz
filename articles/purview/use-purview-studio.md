@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.openlocfilehash: ca25bbb72ff853f819f3e8ce4e0092ddb762b156
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102183807"
 ---
 # <a name="use-purview-studio"></a>Použití sady Purview Studio
 
 Tento článek obsahuje přehled některých hlavních funkcí služby Azure dosah.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktivní účet dosah je už vytvořený v Azure Portal a uživatel má oprávnění pro přístup k dosah studiu.
 

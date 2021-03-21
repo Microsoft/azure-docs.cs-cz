@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/22/2020
 ms.openlocfilehash: 0414aaad5a1cf6edb9c2152eed70f8753946cca1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546428"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-mysql--single-server"></a>Přehled připojení a dotazování pro Azure Database for MySQL – jeden server
@@ -20,7 +20,7 @@ Následující dokument obsahuje odkazy na příklady, které ukazují, jak se p
 
 ## <a name="quickstarts"></a>Rychlé starty
 
-| Rychlý start | Popis |
+| Rychlé zprovoznění | Description |
 |---|---|
 |[MySQL Workbench](connect-workbench.md)|Tento rychlý Start ukazuje, jak se pomocí klienta MySQL Workbench připojit k databázi. Příkazy MySQL pak můžete použít k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
 |[Azure Cloud Shell](./quickstart-create-mysql-server-database-using-azure-cli.md#connect-to-azure-database-for-mysql-server-using-mysql-command-line-client)|Tento článek ukazuje, jak spustit **mysql.exe** v [Azure Cloud Shell](../cloud-shell/overview.md) pro připojení k vašemu serveru a následné spuštění příkazů pro dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|

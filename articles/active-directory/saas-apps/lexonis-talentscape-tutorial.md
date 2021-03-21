@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/10/2021
 ms.author: jeedes
 ms.openlocfilehash: 2c57751256501427f6c3e3efc9ab945250ac5148
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103202647"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lexonis-talentscape"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s TalentScapeem Lexonis
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Lexonis TalentScape s Azure Active Dir
 * Umožněte uživatelům, aby se automaticky přihlásili k Lexonis TalentScape s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

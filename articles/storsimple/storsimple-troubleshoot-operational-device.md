@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 6cd1d981737db1e7c852931ecc2449e0afc03530
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94956785"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Řešení potíží s operačním StorSimple zařízením
@@ -45,7 +45,7 @@ Průvodce instalací neprovede operace týkající se shromažďování hesel a 
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>Chyby, ke kterým dochází během následných spuštění Průvodce instalací
 Následující tabulka popisuje chyby, se kterými se můžete setkat při spuštění Průvodce instalací na provozním zařízení, možných příčin chyb a doporučených akcích k jejich vyřešení. 
 
-| Ne. | Chybová zpráva nebo podmínka | Možné příčiny | Doporučená akce |
+| No. | Chybová zpráva nebo podmínka | Možné příčiny | Doporučená akce |
 |:--- |:--- |:--- |:--- |
 | 1 |Chyba 350032: Toto zařízení již bylo deaktivováno. |Tato chyba se zobrazí, pokud spustíte Průvodce instalací na zařízení, které je deaktivováno. |Pro další kroky [kontaktujte podpora Microsoftu](./storsimple-8000-contact-microsoft-support.md) . Deaktivované zařízení nejde umístit do služby. Aby bylo možné zařízení znovu aktivovat, může být vyžadováno obnovení továrního nastavení. |
 | 2 |Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (výjimka z HRESULT: 0x80070001) |Aktualizace serveru DNS se nezdařila. Nastavení DNS jsou globální nastavení a používají se ve všech povolených síťových rozhraních. |Povolte rozhraní a znovu použijte nastavení DNS. To může rušit síť pro jiná povolená rozhraní, protože tato nastavení jsou globální. |

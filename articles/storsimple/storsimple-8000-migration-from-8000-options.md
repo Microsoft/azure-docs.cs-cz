@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 4839f8211e678f5fc2fb3572c7eaa545fbee6c6c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961188"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Možnosti migrace dat z řady StorSimple 8000
@@ -29,9 +29,9 @@ Zákazníci, kteří používají řadu StorSimple 8000, mají možnosti Azure n
 
 #### <a name="migrate-to-azure-file-sync"></a>Migrace do Synchronizace souborů Azure
 
-Tato značka nové možnosti migrace umožňuje zákazníkům ukládat sdílené složky ve své organizaci do souborů Azure. Tyto sdílené soubory jsou potom centralizované pro místní přístup pomocí Azure File Sync (AFS). AFS se dá nasadit na hostitele Windows serveru. Skutečná migrace dat se pak provede jako kopie hostitele nebo pomocí nástroje pro migraci.
+Tato značka nové možnosti migrace umožňuje zákazníkům ukládat sdílené složky ve své organizaci do souborů Azure. Tyto sdílené soubory jsou potom centralizované pro místní přístup pomocí Synchronizace souborů Azure (AFS). AFS se dá nasadit na hostitele Windows serveru. Skutečná migrace dat se pak provede jako kopie hostitele nebo pomocí nástroje pro migraci.
 
-Další informace o tom, jak migrovat data na Azure File Sync, najdete v článku [migrace StorSimple 8100 a 8600 do Azure File Sync](../storage/files/storage-files-migration-storsimple-8000.md).
+Další informace o tom, jak migrovat data na Synchronizace souborů Azure, najdete v článku [migrace StorSimple 8100 a 8600 do synchronizace souborů Azure](../storage/files/storage-files-migration-storsimple-8000.md).
 
 ### <a name="third-party-options"></a>Možnosti třetích stran
 
@@ -89,7 +89,7 @@ A. I když mohou služby fungovat i nadále, společnost Microsoft již nebude m
 
 A. V závislosti na jejich scénáři mají uživatelé řady StorSimple 8000 následující možnosti migrace:
 
-* **Migrace na Azure File Sync**: tuto možnost použijte, pokud chcete přepnout do nativního formátu Azure. Azure File Sync můžete použít pro centralizovanou správu sdílených složek.
+* **Migrace na synchronizace souborů Azure**: tuto možnost použijte, pokud chcete přepnout do nativního formátu Azure. Synchronizace souborů Azure můžete použít pro centralizovanou správu sdílených složek.
 
 * **Další možnosti**: můžete kontaktovat podpora Microsoftu a diskutovat na možnosti migrace, které tady nejsou uvedené.
 
@@ -101,9 +101,9 @@ A. Ano. Migrace na jiná řešení úložiště pomocí hostitelské kopie dat j
 
 A. Migrace z 8000 Series je plně podporovaná operace. Společnost Microsoft ve skutečnosti doporučuje, abyste si před zahájením migrace vydosáhli podpory. Migrace je aktuálně pomocná operace. Pokud máte v úmyslu migrovat data ze zařízení řady StorSimple 8000, [obraťte se na podporu StorSimple](mailto:storsimp@microsoft.com).
 
-### <a name="q-what-is-the-pricing-model-for-migration-to-azure-file-sync"></a>Otázka: Jaký je cenový model pro migraci do Azure File Sync?
+### <a name="q-what-is-the-pricing-model-for-migration-to-azure-file-sync"></a>Otázka: Jaký je cenový model pro migraci do Synchronizace souborů Azure?
 
-A. Při použití Azure File Sync může platit poplatky za předplatné služby. Zákazníci budou muset platit i průběžné náklady na úložiště. Odhad najdete v tématu [ceny pro AFS]( https://azure.microsoft.com/pricing/details/storage/files/) .
+A. Při použití Synchronizace souborů Azure může platit poplatky za předplatné služby. Zákazníci budou muset platit i průběžné náklady na úložiště. Odhad najdete v tématu [ceny pro AFS]( https://azure.microsoft.com/pricing/details/storage/files/) .
 
 ### <a name="q-how-long-does-it-take-to-complete-a-migration"></a>Otázka: Jak dlouho trvá dokončení migrace?
 
@@ -111,4 +111,4 @@ A. Čas k migraci dat závisí na množství dat a vybrané možnosti upgradu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Migrace dat z řady StorSimple 8000 na Azure File Sync](../storage/files/storage-files-migration-storsimple-8000.md)
+* [Migrace dat z řady StorSimple 8000 na Synchronizace souborů Azure](../storage/files/storage-files-migration-storsimple-8000.md)

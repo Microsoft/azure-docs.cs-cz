@@ -8,10 +8,10 @@ ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: e37c5a748a8e99f49e3535946268427139bbbf44
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102184419"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Použití veřejné Standard Load Balancer ve službě Azure Kubernetes (AKS)
@@ -346,7 +346,7 @@ Hlavní příčinou vyčerpání SNAT je i anti-vzor pro způsob, jakým se u od
 4. Vyhodnotí, zda jsou následovány příslušné [vzory](#design-patterns) .
 5. Vyhodnoťte, jestli se má vyčerpání portů SNAT zmírnit pomocí [dalších odchozích IP adres a dalších přidělených odchozích portů](#configure-the-allocated-outbound-ports) .
 
-### <a name="design-patterns"></a>Způsoby návrhu
+### <a name="design-patterns"></a>Vzory návrhu
 Kdykoli je to možné, využijte výhod opětovného použití připojení a sdružování připojení. Tyto vzory se vyhne problémům s vyčerpáním prostředků a mají za následek předvídatelné chování. Primitivní prvky pro tyto vzory se dají najít v řadě vývojových knihoven a architektur.
 
 - Atomické žádosti (jedna žádost na připojení) obecně není vhodným návrhem. Taková omezení pro antipatterny se omezují na škálování, snižuje výkon a snižuje spolehlivost. Místo toho můžete znovu použít připojení HTTP/S a snížit tak počet připojení a přidružené porty SNAT. Škálování aplikace se zvýší a vylepšit výkon kvůli snížení nákladů na handshake, režijních a kryptografických operací při použití TLS.

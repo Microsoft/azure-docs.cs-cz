@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 81feb5b95578cedea7bf368aa1e0d6c2e9117077
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102456007"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Vysoká dostupnost pomocí Media Services a videa na vyžádání (VOD)
@@ -36,7 +36,7 @@ K dispozici je ukázka, kterou můžete použít k seznámení s vysokou dostupn
 
 Mezi služby použité v tomto příkladu architektury patří:
 
-| Ikona | Název | Popis |
+| Ikona | Název | Description |
 | :--: | ---- | ----------- |
 |![Toto je ikona účtu Media Services.](media/media-services-high-availability-encoding/azure-media-services.svg)| Účet Media Services | **Popis:**<br>Media Services účet je výchozím bodem pro správu, šifrování, kódování, analýzu a streamování mediálního obsahu v Azure. Je spojen s prostředkem účtu Azure Storage. Účet a všechny přidružené úložiště musí být ve stejném předplatném Azure.<br><br>**VOD použít:**<br>Jedná se o služby, které používáte ke kódování a doručování videí a zvukových prostředků.  Pro zajištění vysoké dostupnosti byste nastavili aspoň dva Media Services účty, z nichž každá je v jiné oblasti. [Přečtěte si další informace o Azure Media Services](media-services-overview.md). |
 |![Toto je ikona účtu úložiště.](media/media-services-high-availability-encoding/storage-account.svg)| Účet úložiště | **Popis:**<br>Účet úložiště Azure obsahuje všechny datové objekty Azure Storage: objekty blob, soubory, fronty, tabulky a disky. Data jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS.<br><br>Každý Media Services účet by měl v každé oblasti účet úložiště ve stejné oblasti.<br><br>**VOD použít:**<br>Vstupní a výstupní data můžete ukládat pro zpracování VOD a streamování. [Přečtěte si další informace o Azure Storage](../../storage/common/storage-introduction.md). |

@@ -11,10 +11,10 @@ ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 29b34041042f00d72b8a9fe86e31bd80f8c77dc2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953946"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co je Azure Active Directory B2C?
@@ -23,7 +23,7 @@ Azure Active Directory B2C poskytuje jako službu identitu od firmy po zákazní
 
 ![Azure AD B2C infografika zprostředkovatelů identit a podřízených aplikací](./media/overview/azureadb2c-overview.png)
 
-Azure Active Directory B2C (Azure AD B2C) je řešení pro správu přístupu k identitám zákazníků (CIAM), které podporuje miliony uživatelů a miliard ověřování za den. Postará o škálování a bezpečnost ověřovací platformy, monitorování a automatické zpracování hrozeb, jako je například odepření služby, postřik hesel nebo útoky hrubou silou.
+Azure Active Directory B2C (Azure AD B2C) je řešení pro správu identit a přístupů uživatelů (CIAM) schopné zajistit podporu milionů uživatelů a miliard ověření za den. Postará o škálování a bezpečnost ověřovací platformy, monitorování a automatické zpracování hrozeb, jako je například odepření služby, postřik hesel nebo útoky hrubou silou.
 
 ## <a name="custom-branded-identity-solution"></a>Řešení identity vlastní značky
 
