@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98882276"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>Migrace zařízení StorSimple 1200 do Synchronizace souborů Azure
@@ -210,13 +210,13 @@ Dokončili jste migraci sdílené složky nebo skupiny sdílených složek do sp
 Můžete zkusit spustit několik z těchto kopií paralelně. Doporučujeme, abyste v jednom okamžiku zpracovali obor jedné sdílené složky Azure.
 
 > [!WARNING]
-> Po přesunutí všech dat StorSimple do Windows serveru a dokončení migrace se vraťte do složky ***všechny** synchronizační skupiny _ v Azure Portal a upravte Procentuální hodnotu volného místa na úrovni cloudu tak, aby lépe vyhovovala využití mezipaměti, řekněme, že 20%. 
+> Po přesunutí všech dat StorSimple do Windows serveru a dokončení migrace se vraťte do ***všech***  skupin synchronizace v Azure Portal a nastavte hodnotu hlasitosti volného místa na úrovni cloudu na něco většího, než je procento využití mezipaměti, řekněme 20%. 
 
 Zásada pro volné místo svazku ve vrstvách cloudu funguje na úrovni svazku s potenciálně synchronizovanými koncovými body serveru. Pokud zapomenete upravit volné místo na jednom koncovém bodu serveru, bude synchronizace dál používat nejvíce omezující pravidlo a pokusí se zachovávat 99% volného místa na disku, takže místní mezipaměť nefunguje, protože byste mohli očekávat. Pokud se nejedná o váš cíl jenom pro svazek, který obsahuje jenom zřídka používané, archivní data.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s názvem "svazek je plný" *. Pokud se jedná o tento případ, bude vaše rychlost stahování nejspíš lepší než rychlost nahrávání. Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje.
+Nejpravděpodobnějším problémem, ke kterému můžete spustit, je, že příkaz Robocopy se na straně serveru Windows nezdařil s *názvem "svazek je plný"* . Pokud se jedná o tento případ, bude vaše rychlost stahování nejspíš lepší než rychlost nahrávání. Vrstvení cloudu slouží jednou za hodinu k vyvádění obsahu z místního disku Windows serveru, který se synchronizuje.
 
 Umožněte synchronizaci v průběhu a vrstvení cloudu uvolněte místo na disku. Můžete si všimnout, že v Průzkumníkovi souborů na vašem Windows serveru.
 

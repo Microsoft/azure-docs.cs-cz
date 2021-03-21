@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0dc36b817d5b5cdf731edecd64e1879c153d866a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015126"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s Azure Stream Analytics dotazy
@@ -102,7 +102,7 @@ Tentokrát se data ve výstupu naformátují a vyplní podle očekávání.
 
 ![VYBRAT do konečné tabulky Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 

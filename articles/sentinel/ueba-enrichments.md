@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 01/04/2021
 ms.author: yelevin
 ms.openlocfilehash: daba8fc1f645b51dc8668c806be63744b6ae0842
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97901694"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Reference k rozšíření UEBA pro Azure Sentinel
@@ -35,7 +35,7 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 ## <a name="user-insights-table"></a>Tabulka přehledů uživatelů
 
-| Název rozšíření | Popis | Ukázková hodnota |
+| Název rozšíření | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **Zobrazovaný název účtu**<br>*(AccountDisplayName)* | Zobrazovaný název účtu uživatele | Správce, Hayden Cook |
 | **Doména účtu**<br>*(AccountDomain)* | Název domény účtu uživatele |  |
@@ -49,11 +49,11 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 ## <a name="device-insights-table"></a>Tabulka Insights pro zařízení
 
-| Název rozšíření | Popis | Ukázková hodnota |
+| Název rozšíření | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **Prohlížeč**<br>*Prohlížeee* | Prohlížeč použitý v akci | Edge, Chrome |
 | **Řada zařízení**<br>*(DeviceFamily)* | Rodina zařízení použitá v akci. | Windows |
-| **Typ zařízení**<br>*DeviceType* | Typ klientského zařízení, který se používá v akci | Plocha |
+| **Typ zařízení**<br>*DeviceType* | Typ klientského zařízení, který se používá v akci | Desktop |
 | **U**<br>*U* | Poskytovatel internetových služeb, který se používá v akci. |  |
 | **Operační systém**<br>*OperatingSystem* | Operační systém použitý v akci. | Windows 10 |
 | **Popis indikátoru technologie Intel Threat**<br>*(ThreatIntelIndicatorDescription)* | Popis zjištěného indikátoru hrozeb vyřešený z IP adresy použité v akci | Hostitel je členem botnetu: azorult. |
@@ -66,7 +66,7 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 #### <a name="action-performed"></a>Provedena akce
 
-| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Popis | Ukázková hodnota |
+| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **Uživatel poprvé provede akci.**<br>*(FirstTimeUserPerformedAction)* | 180 | Akce byla provedena poprvé uživatelem. | True, false |
 | **Neobvyklá akce uživatelem**<br>*(ActionUncommonlyPerformedByUser)* | 10 | Tuto akci obvykle neprovádí uživatel. | True, false |
@@ -77,7 +77,7 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 #### <a name="app-used"></a>Použitá aplikace
 
-| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Popis | Ukázková hodnota |
+| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **První aplikace, kterou uživatel použil při prvním použití**<br>*(FirstTimeUserUsedApp)* | 180 | Uživatel tuto aplikaci použil poprvé. | True, false |
 | **Aplikace neběžně používaná uživatelem**<br>*(AppUncommonlyUsedByUser)* | 10 | Uživatel tuto aplikaci běžně nepoužívá. | True, false |
@@ -88,7 +88,7 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 #### <a name="browser-used"></a>Použitý prohlížeč
 
-| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Popis | Ukázková hodnota |
+| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **Při prvním připojení uživatele přes prohlížeč**<br>*(FirstTimeUserConnectedViaBrowser)* | 30 | V prohlížeči byl uživatel pozorován poprvé. | True, false |
 | **Prohlížeč neběžně používaný uživatelem**<br>*(BrowserUncommonlyUsedByUser)* | 10 | Prohlížeč je běžně nepoužívá. | True, false |
@@ -99,7 +99,7 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 #### <a name="country-connected-from"></a>Země připojená
 
-| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Popis | Ukázková hodnota |
+| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **První připojení uživatele z země**<br>*(FirstTimeUserConnectedFromCountry)* | 90 | Geografické umístění, jak bylo vyřešeno z IP adresy, bylo uživatelem připojeno poprvé. | True, false |
 | **Země, která není běžně připojená uživatelem**<br>*(CountryUncommonlyConnectedFromByUser)* | 10 | Geografické umístění, jak je vyřešeno z IP adresy, není většinou připojeno uživatelem. | True, false |
@@ -110,7 +110,7 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 #### <a name="device-used-to-connect"></a>Zařízení používané pro připojení
 
-| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Popis | Ukázková hodnota |
+| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **Při prvním připojení uživatele ze zařízení**<br>*(FirstTimeUserConnectedFromDevice)* | 30 | Zdrojové zařízení bylo uživatelem připojeno poprvé. | True, false |
 | **Zařízení neběžně využívané uživatelem**<br>*(DeviceUncommonlyUsedByUser)* | 10 | Zařízení obvykle nepoužívá uživatel. | True, false |
@@ -121,7 +121,7 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 #### <a name="other-device-related"></a>Další související zařízení
 
-| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Popis | Ukázková hodnota |
+| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **Uživatel poprvé přihlášený k zařízení**<br>*(FirstTimeUserLoggedOnToDevice)* | 180 | Cílové zařízení bylo uživatelem připojeno poprvé. | True, false |
 | **Rodina zařízení se v tenantovi neběžně používá**<br>*(DeviceFamilyUncommonlyUsedInTenant)* | 30 | Rodina zařízení se v organizaci běžně nepoužívá. | True, false |
@@ -129,7 +129,7 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 #### <a name="internet-service-provider-used-to-connect"></a>Poskytovatel internetových služeb, který se používá pro připojení
 
-| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Popis | Ukázková hodnota |
+| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **První připojení uživatele přes poskytovatele internetových služeb**<br>*(FirstTimeUserConnectedViaISP)* | 30 | Poskytovatel internetových služeb byl během prvního zjištěn uživatelem. | True, false |
 | **Poskytovatel internetových služeb, který neběžně používá uživatel**<br>*(ISPUncommonlyUsedByUser)* | 10 | Uživatel ho většinou nepoužívá. | True, false |
@@ -140,7 +140,7 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 #### <a name="resource-accessed"></a>Byl získán přístup k prostředku.
 
-| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Popis | Ukázková hodnota |
+| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **Prostředek pro první použití uživatele**<br>*(FirstTimeUserAccessedResource)* | 180 | Tento uživatel použil prostředek poprvé. | True, false |
 | **Prostředek, ke kterému neběžně přistupoval uživatel**<br>*(ResourceUncommonlyAccessedByUser)* | 10 | K prostředku se běžně nepoužívá uživatel. | True, false |
@@ -151,11 +151,11 @@ První dvě tabulky, **přehledy uživatelů** a **zařízení**, obsahují info
 
 #### <a name="miscellaneous"></a>Různé
 
-| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Popis | Ukázková hodnota |
+| Název rozšíření | [Směrný plán](#baseline-explained) (dny) | Description | Ukázková hodnota |
 | --- | --- | --- | --- |
 | **Čas posledního provedení akce uživatelem**<br>*(LastTimeUserPerformedAction)* | 180 | Čas, kdy uživatel naposledy provedl stejnou akci. | <Timestamp> |
 | **Podobná akce nebyla provedena v minulosti.**<br>*(SimilarActionWasn'tPerformedInThePast)* | 30 | Uživatel neprovedl žádnou akci ve stejném zprostředkovateli prostředků. | True, false |
-| **Umístění zdrojové IP adresy**<br>*(SourceIPLocation)* | *–* | Země byla vyřešena ze zdrojové IP adresy akce. | [Surrey, Anglie] |
+| **Umístění zdrojové IP adresy**<br>*(SourceIPLocation)* | *NENÍ K DISPOZICI* | Země byla vyřešena ze zdrojové IP adresy akce. | [Surrey, Anglie] |
 | **Nespolečný velký objem operací**<br>*(UncommonHighVolumeOfOperations)* | 7 | Uživatel provedl nárůst podobných operací v rámci stejného zprostředkovatele. | True, false |
 | **Neobvyklý počet selhání podmíněného přístupu Azure AD**<br>*(UnusualNumberOfAADConditionalAccessFailures)* | 5 | Kvůli podmíněnému přístupu se nepovedlo ověřit neobvyklý počet uživatelů. | True, false |
 | **Byl přidán neobvyklý počet zařízení.**<br>*(UnusualNumberOfDevicesAdded)* | 5 | Uživatel přidal neobvyklý počet zařízení. | True, false |

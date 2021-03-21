@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: eaa4a219a1020639c930f8a07bfcaa1c45d0cef8
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102219008"
 ---
 # <a name="set-up-autoscale-for-microservice-applications"></a>Nastavení automatického škálování pro aplikace mikroslužeb
@@ -20,7 +20,7 @@ ms.locfileid: "102219008"
 
 Automatické škálování je integrovaná funkce Azure jarního cloudu, která pomáhá aplikacím mikroslužeb při změnách na vyžádání vykonat jejich nejlepší výkon. To zahrnuje úpravu počtu virtuálních procesorů, paměti a instancí aplikací. Tento článek popisuje, jak nastavit nastavení automatického škálování pro vaše aplikace pomocí portál Microsoft Azure nebo rozhraní příkazového řádku Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li provést tyto postupy, potřebujete:
 

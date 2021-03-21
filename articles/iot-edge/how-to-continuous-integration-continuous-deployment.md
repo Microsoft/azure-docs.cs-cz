@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: d9db9997af20fee226214eb12ad32729cab55caa
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199256"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Průběžná integrace a průběžné nasazování pro Azure IoT Edge zařízení
@@ -40,7 +40,7 @@ Pokud není uvedeno jinak, postupy v tomto článku nezkoumá všechny funkce do
 * [Proměnné prostředí](/azure/devops/pipelines/process/variables?tabs=yaml#environment-variables)
 * [Výstupní proměnné](/azure/devops/pipelines/process/variables?tabs=yaml#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Úložiště Azure Repos. Pokud ho ještě nemáte, můžete [v projektu vytvořit nové úložiště Git](/azure/devops/repos/git/create-new-repo). V tomto článku jsme vytvořili úložiště s názvem **IoTEdgeRepo**.
 * Řešení IoT Edge potvrzené a vložené do úložiště. Chcete-li vytvořit nové ukázkové řešení pro testování tohoto článku, postupujte podle kroků v tématu [vývoj a ladění modulů v Visual Studio Code](how-to-vs-code-develop-module.md) nebo [vývoj a ladění modulů C# v aplikaci Visual Studio](./how-to-visual-studio-develop-module.md). V tomto článku jsme vytvořili řešení v našem úložišti s názvem **IoTEdgeSolution**, které obsahuje kód pro modul s názvem **filtermodule**.

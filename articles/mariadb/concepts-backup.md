@@ -3,14 +3,14 @@ title: Zálohování a obnovení – Azure Database for MariaDB
 description: Přečtěte si o automatických zálohách a obnovení serveru Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 1d5fc158d2e37223e048c4106206ddba4602fabb
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659933"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Zálohování a obnovení v Azure Database for MariaDB
@@ -21,7 +21,7 @@ Azure Database for MariaDB automaticky vytvoří zálohy serveru a uloží je v 
 
 Azure Database for MariaDB zabírají úplné a rozdílové zálohy a zálohy protokolu transakcí. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně je můžete nakonfigurovat až 35 dní. Všechny zálohy se šifrují s využitím 256bitového šifrování AES.
 
-Tyto záložní soubory nejsou vystavené uživateli a nelze je exportovat. Tyto zálohy lze použít pouze pro operace obnovení v Azure Database for MariaDB. Pomocí [mysqldump](howto-migrate-dump-restore.md) můžete zkopírovat databázi.
+Tyto záložní soubory nejsou přístupné uživatelům a není možné je exportovat. Tyto zálohy lze použít pouze pro operace obnovení v Azure Database for MariaDB. Pomocí [mysqldump](howto-migrate-dump-restore.md) můžete zkopírovat databázi.
 
 ### <a name="backup-frequency"></a>Frekvence zálohování
 

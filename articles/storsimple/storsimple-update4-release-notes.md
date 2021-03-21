@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 060a52b61dcd43fe0d05b2a8ef594c0ab9f2cc9e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954048"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 4
@@ -69,7 +69,7 @@ Následující tabulka poskytuje souhrn problémů, které byly opraveny v Updat
 | Ne | Doporučené | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- |
 | 1 |Převzetí služeb při selhání |V dřívější verzi se po převzetí služeb při selhání objevil problém týkající se vyčištění na webu zákazníka. Tento problém je opravený v této verzi. |Yes |Yes |
-| 2 |Místně připojené svazky |V předchozí verzi došlo k potížím se souvisejícím vytvářením svazků pro místně připnuté svazky, které by způsobily selhání vytvoření svazku. Tento problém byl způsobený kořenem a opravil v této verzi. |Yes |Ne |
+| 2 |Místně připojené svazky |V předchozí verzi došlo k potížím se souvisejícím vytvářením svazků pro místně připnuté svazky, které by způsobily selhání vytvoření svazku. Tento problém byl způsobený kořenem a opravil v této verzi. |Yes |No |
 | 3 |Balíček pro podporu |V předchozí verzi byly problémy související s balíčkem podpory, které by způsobily výjimku System. OutOfMemory nebo jiné chyby, což vedlo k chybě při vytváření balíčku pro podporu. Tyto chyby jsou v této verzi opravené. |Yes |Yes |
 | 4 |Monitorování |V předchozí verzi došlo k potížím souvisejícím s monitorováním grafů pro místně připnuté svazky, ve kterých se spotřeba zobrazila v EB. Tato chyba je vyřešena v této verzi. |Yes |Yes |
 | 5 |Migrace |V předchozí verzi bylo k dispozici několik problémů souvisejících s spolehlivostí migrace z 5000-7000 řad na zařízení 8000 series. Tyto problémy byly řešeny v této verzi. |Yes |Yes |

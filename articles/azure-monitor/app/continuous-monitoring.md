@@ -4,10 +4,10 @@ description: Poskytuje pokyny pro rychlé nastavení nepřetržitého monitorov�
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86517123"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidání průběžného monitorování do kanálu pro vydávání verzí
@@ -20,11 +20,11 @@ Díky průběžnému monitorování můžou kanály vydávání verzí zahrnovat
 
 1. V [Azure DevOps](https://dev.azure.com)vyberte organizaci a projekt.
    
-1. V levé nabídce stránky projektu vyberte možnost **Pipelines**  >  **vydané verze**kanálů. 
+1. V levé nabídce stránky projektu vyberte možnost   >  **vydané verze** kanálů. 
    
 1. Přetáhněte šipku vedle tlačítka **Nový** a vyberte **Nový kanál vydání**. Nebo, pokud ještě nemáte kanál, vyberte na zobrazené stránce **Nový kanál** .
    
-1. V podokně **Vybrat šablonu** vyhledejte a vyberte **nasazení Azure App Service s nepřetržitým monitorováním**a pak vyberte **použít**. 
+1. V podokně **Vybrat šablonu** vyhledejte a vyberte **nasazení Azure App Service s nepřetržitým monitorováním** a pak vyberte **použít**. 
 
    ![Nový kanál verze Azure Pipelines](media/continuous-monitoring/001.png)
 
@@ -47,7 +47,7 @@ Díky průběžnému monitorování můžou kanály vydávání verzí zahrnovat
 
 ## <a name="modify-alert-rules"></a>Upravit pravidla upozornění
 
-Dopředné: **nasazení Azure App Service se šablonou nepřetržitého monitorování** má čtyři pravidla výstrahy **: dostupnost**, **neúspěšné požadavky**, **Doba odezvy serveru**a **výjimky serveru**. Můžete přidat další pravidla nebo změnit nastavení pravidla tak, aby splňovalo potřeby úrovně služeb. 
+Dopředné: **nasazení Azure App Service se šablonou nepřetržitého monitorování** má čtyři pravidla výstrahy **: dostupnost**, **neúspěšné požadavky**, **Doba odezvy serveru** a **výjimky serveru**. Můžete přidat další pravidla nebo změnit nastavení pravidla tak, aby splňovalo potřeby úrovně služeb. 
 
 Úprava nastavení pravidla výstrahy:
 
@@ -71,19 +71,19 @@ Když do kanálu pro vydání přidáte brány nasazení, výstraha, která pře
 
 Přidání bran nasazení:
 
-1. Na hlavní stránce kanálu vyberte v části **fáze**možnost **podmínky před nasazením** nebo symbol **podmínky po nasazení** . v závislosti na tom, kterou fázi potřebuje nepřetržitý monitorovací bránu.
+1. Na hlavní stránce kanálu vyberte v části **fáze** možnost **podmínky před nasazením** nebo symbol **podmínky po nasazení** . v závislosti na tom, kterou fázi potřebuje nepřetržitý monitorovací bránu.
    
    ![Podmínky před nasazením](media/continuous-monitoring/004.png)
    
 1. V podokně Konfigurace **podmínek před nasazením** nastavte možnost **brány** na **povoleno**.
    
-1. Vedle pole **brány nasazení**vyberte **Přidat**.
+1. Vedle pole **brány nasazení** vyberte **Přidat**.
    
 1. V rozevírací nabídce vyberte možnost **dotaz Azure monitor výstrahy** . Tato možnost umožňuje přístup k výstrahám Azure Monitor i Application Insights.
    
    ![Výstrahy Azure Monitor dotazů](media/continuous-monitoring/005.png)
    
-1. V části **Možnosti vyhodnocení**zadejte hodnoty, jako je **čas mezi opakovaným vyhodnocením bran** a **časovým limitem, po kterém selžou**. 
+1. V části **Možnosti vyhodnocení** zadejte hodnoty, jako je **čas mezi opakovaným vyhodnocením bran** a **časovým limitem, po kterém selžou**. 
 
 ## <a name="view-release-logs"></a>Zobrazit protokoly verzí
 
@@ -93,7 +93,7 @@ V protokolech vydaných verzí uvidíte chování brány nasazení a další kro
    
 1. Vyberte libovolnou verzi. 
    
-1. V části **fáze**výběrem libovolné fáze zobrazíte souhrn vydaných verzí. 
+1. V části **fáze** výběrem libovolné fáze zobrazíte souhrn vydaných verzí. 
    
 1. Pokud chcete zobrazit protokoly, vyberte v souhrnu verzí možnost **Zobrazit protokoly** , v libovolné fázi vyberte hypertextový odkaz **úspěšný** nebo **neúspěšný** , nebo najeďte myší na libovolnou fázi a vyberte **protokoly**. 
    

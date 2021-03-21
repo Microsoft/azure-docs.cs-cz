@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97895559"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Nejčastější dotazy týkající se řešení VMware podle CloudSimple
@@ -121,7 +121,7 @@ Všechny infrastruktury CloudSimple jsou nepřetržitě monitorovány platformou
 CloudSimple nabízí úložiště VMware síti vSAN pro všechny aplikace, které obsahuje všechny privátní cloudy.  Každý vSphere se vytvoří s vlastním úložištěm dat síti vSAN.  Podrobnosti najdete v tématu [komponenty VMware privátního cloudu – úložiště síti vSAN](vmware-components.md#vsan-storage).
 
 **Je šifrování dat podporováno?**
-Yes.  Úložiště síti vSAN můžete nastavit v privátním cloudu, abyste mohli používat klíčovou management server (KMS) nasazenou místně nebo v Azure k šifrování dat uložených v síti vSAN.
+Ano.  Úložiště síti vSAN můžete nastavit v privátním cloudu, abyste mohli používat klíčovou management server (KMS) nasazenou místně nebo v Azure k šifrování dat uložených v síti vSAN.
 
 **Jak se zpracovávají neúspěšné disky?**
 
@@ -131,7 +131,7 @@ CloudSimple nepřetržitě monitoruje všechny hardwarové součásti privátní
 
 **Návody provádět rozsáhlé nahrávání nebo migraci aplikací a dat z místního prostředí?**
 
-CloudSimple poskytuje nativní řešení VMware vSphere.  Všechny nástroje VMware pro migraci hromadných dat se dají použít spolu s Vaším privátním cloudem.  Mezi možnosti patří:
+CloudSimple poskytuje nativní řešení VMware vSphere.  Všechny nástroje VMware pro migraci hromadných dat se dají použít spolu s Vaším privátním cloudem.  Vaše možnosti jsou:
 
 * HCX VMware pro hromadnou migraci dat.
 * Studená migrace dat pomocí úložiště vMotion z místního prostředí do CloudSimple.

@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: ec10abfd6f2fc221a9e86203b2faa0d173d67675
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100379586"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrace úloh agenta SQL Server do ADF pomocí SSMS
@@ -34,7 +34,7 @@ Obecně platí, že pro vybrané úlohy agenta SQL s použitelnými typy kroků 
 
 - Vygenerujte šablony Azure Resource Manager (ARM) v místní výstupní složce a přímo nebo později nasaďte do objektu pro vytváření dat. Další informace o šablonách ADF Správce prostředků najdete v tématu [typy prostředků Microsoft. DataFactory](/azure/templates/microsoft.datafactory/allversions).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Funkce popsaná v tomto článku vyžaduje SQL Server Management Studio verze 18,5 nebo vyšší. Pokud chcete získat nejnovější verzi SSMS, přečtěte si téma [stažení SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 

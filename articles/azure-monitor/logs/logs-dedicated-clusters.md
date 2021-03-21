@@ -6,10 +6,10 @@ author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
 ms.openlocfilehash: 1fbb8f82366ee961d10ce8a6bc098128bad6555a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041004"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
@@ -520,7 +520,7 @@ Pomocí následujícího volání REST odstraňte cluster:
   - Pokud vytvoříte cluster a obdržíte chybu "<název oblasti> nepodporuje dvojité šifrování pro clustery", můžete cluster i nadále vytvořit bez šifrování dvojitým šifrováním přidáním `"properties": {"isDoubleEncryptionEnabled": false}` do textu žádosti REST.
   - Nastavení dvojitého šifrování nelze změnit po vytvoření clusteru.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 - Pokud při vytváření clusteru dojde k chybě, může to být tím, že jste cluster odstranili za posledních 14 dní a je ve stavu obnovitelného odstranění. Název clusteru zůstane rezervovaný během období obnovitelného odstranění a nemůžete vytvořit nový cluster s tímto názvem. Název se uvolní po uplynutí doby tichého odstranění, kdy se cluster trvale odstraní.
 

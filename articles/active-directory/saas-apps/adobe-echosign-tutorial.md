@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: jeedes
 ms.openlocfilehash: 7162c38aae2fec4ea21aae56fa8c3649f7a55425
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101649947"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Kurz: Azure Active Directory integrací pomocí Adobe Sign
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat znaménko Adobe pomocí Azure Active D
 * Umožněte, aby se vaši uživatelé automaticky přihlásili pomocí svých účtů Azure AD do programu Adobe Sign.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
  

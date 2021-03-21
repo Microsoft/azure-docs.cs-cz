@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
 ms.openlocfilehash: 7884f8baa24180fcb94f77a45c3457ba62d3f351
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018135"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro Azure Stream Analytics úlohy
@@ -57,7 +57,7 @@ Následující příklad ukazuje, jak nastavit upozornění, když vaše úloha 
 
 Následující výstrahy jsou doporučeny pro sledování výkonu Stream Analytics úlohy. Tyto metriky by se měly vyhodnocovat každou minutu za poslední období 5 minut.
 
-|Metrika|Podmínka|Časová agregace|Prahová hodnota|Nápravné akce|
+|Metric|Podmínka|Časová agregace|Prahová hodnota|Nápravné akce|
 |-|-|-|-|-|
 |Využití SU%|Větší než|Maximum|80|Existuje několik faktorů, které zvyšují využití SU%. Můžete škálovat pomocí paralelního zpracování dotazů nebo zvýšit počet jednotek streamování. Další informace najdete v tématu [Využití paralelizace dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
 |Běhové chyby|Větší než|Celkem|0|Projděte si protokoly aktivit nebo prostředků a proveďte příslušné změny ve vstupech, dotazech nebo výstupech.|

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 490fa46deabc822e416705fe9bf9c5cdb58f8cd6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936753"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions možností hostování
@@ -32,7 +32,7 @@ Následuje souhrn výhod tří hlavních plánů hostování pro funkce:
 | --- | --- |  
 |**[Plán Consumption](consumption-plan.md)**| Automatické škálování a Plaťte jenom za výpočetní prostředky, když jsou vaše funkce spuštěné.<br/><br/>V plánu spotřeby se instance hostitele Functions dynamicky přidávají a odstraňují na základě počtu příchozích událostí.<br/><br/> ✔ Výchozí plán hostování.<br/>Plaťte ✔ jenom v případě, že jsou vaše funkce spuštěné.<br/>✔ Škáluje automaticky, a to i během období vysokého zatížení.|  
 |**[Plán Premium](functions-premium-plan.md)**|Automatické škálování na základě poptávky pomocí předem zadržených pracovních procesů, které spouštějí aplikace bez prodlevy po nečinnosti, běží na výkonnějších instancích a připojuje se k virtuálním sítím. <br/><br/>Vezměte v úvahu plán Azure Functions Premium v následujících situacích: <br/><br/>✔ Vaše aplikace Function App běží nepřetržitě nebo téměř nepřetržitě.<br/>✔ Máte vysoký počet malých spuštění a vysoké vykonání vyúčtování, ale v plánu spotřeby je málo sekund.<br/>✔ Budete potřebovat více možností procesoru nebo paměti, než jaké poskytuje plán spotřeby.<br/>✔ Váš kód musí běžet delší dobu, než je maximální doba běhu povolená v plánu spotřeby.<br/>✔ Vyžadujete funkce, které nejsou dostupné v plánu spotřeby, jako je třeba připojení k virtuální síti.|  
-|**[Vyhrazený plán](dedicated-plan.md)** |Spusťte své funkce v rámci plánu App Service v pravidelných [App Servicech](https://azure.microsoft.com/pricing/details/app-service/windows/)tarifech.<br/><br/>Je nejvhodnější pro dlouhotrvající scénáře, kdy [Durable Functions](durable/durable-functions-overview.md) nelze použít. Vezměte v úvahu App Service plán v následujících situacích:<br/><br/>✔ Máte existující, nevyužité virtuální počítače, které už používají jiné instance App Service.<br/>✔ Chcete zadat vlastní image, na které se mají spouštět vaše funkce. <br/>✔ Prediktivní škálování a náklady jsou požadovány.|  
+|**[Plán Dedicated](dedicated-plan.md)** |Spusťte své funkce v rámci plánu App Service v pravidelných [App Servicech](https://azure.microsoft.com/pricing/details/app-service/windows/)tarifech.<br/><br/>Je nejvhodnější pro dlouhotrvající scénáře, kdy [Durable Functions](durable/durable-functions-overview.md) nelze použít. Vezměte v úvahu App Service plán v následujících situacích:<br/><br/>✔ Máte existující, nevyužité virtuální počítače, které už používají jiné instance App Service.<br/>✔ Chcete zadat vlastní image, na které se mají spouštět vaše funkce. <br/>✔ Prediktivní škálování a náklady jsou požadovány.|  
 
 Srovnávací tabulky v tomto článku také obsahují následující možnosti hostování, které poskytují nejvyšší množství řízení a izolace, ve kterém se spouštějí aplikace Function App.  
 
@@ -51,9 +51,9 @@ Následující tabulka uvádí podporované operační systémy a podporu jazyko
 | --- | --- | --- | --- |
 | **[Plán Consumption](consumption-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Bez podpory  |
 | **[Plán Premium](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
-| **[Vyhrazený plán](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Plán Dedicated](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 | **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
-| **[Kubernetes](functions-kubernetes-keda.md)** | neuvedeno | neuvedeno |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Kubernetes](functions-kubernetes-keda.md)** | Není k dispozici | Není k dispozici |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 
 <sup>1</sup> Linux je jediným podporovaným operačním systémem pro zásobník modulu runtime Pythonu. <br/>
 <sup>2</sup> Windows je jediným podporovaným operačním systémem běhového zásobníku PowerShellu.<br/>
@@ -81,7 +81,7 @@ Následující tabulka porovnává chování různých plánů hostování.
 | -- | -- |
 | **[&nbsp;Plán spotřeby](consumption-plan.md)** | Aplikace se můžou při nečinnosti škálovat na nulu, což znamená, že některé požadavky můžou při spuštění mít další latenci.  Plán spotřeby má několik optimalizací, které vám pomůžou snižovat čas na studený start, včetně přijímání předem zatepléch zástupných funkcí, které už mají spuštěné hostitele funkcí a jazyka. |
 | **[Plán Premium](functions-premium-plan.md)** | Trvalé zahřívání instancí, aby nedocházelo k žádnému studenému startu. |
-| **[Vyhrazený plán](dedicated-plan.md)** | Při spuštění ve vyhrazeném plánu může hostitel služby Functions běžet průběžně, což znamená, že se ve skutečnosti nejedná o problém s studeným startem. |
+| **[Plán Dedicated](dedicated-plan.md)** | Při spuštění ve vyhrazeném plánu může hostitel služby Functions běžet průběžně, což znamená, že se ve skutečnosti nejedná o problém s studeným startem. |
 | **[ASE](dedicated-plan.md)** | Při spuštění ve vyhrazeném plánu může hostitel služby Functions běžet průběžně, což znamená, že se ve skutečnosti nejedná o problém s studeným startem. |
 | **[Kubernetes](functions-kubernetes-keda.md)**  | V závislosti na konfiguraci KEDA se dají aplikace nakonfigurovat tak, aby se zabránilo studenému startu. Pokud je konfigurace nastavena na hodnotu nula, je pro nové události k dispočátečnímu startu. 
 

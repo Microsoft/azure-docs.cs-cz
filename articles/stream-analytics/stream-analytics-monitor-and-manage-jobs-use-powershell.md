@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.openlocfilehash: 6b404516c513dea0888974ffb4fa3d8d43db6c44
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015177"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorování a správa úloh Stream Analytics pomocí rutin Azure PowerShell
@@ -540,7 +540,7 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 
 Tento příkaz prostředí PowerShell testuje stav připojení výstupního výstupu v StreamingJob.  
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html). 
 
 ## <a name="next-steps"></a>Další kroky

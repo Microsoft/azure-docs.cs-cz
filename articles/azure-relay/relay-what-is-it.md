@@ -4,10 +4,10 @@ description: Tento článek obsahuje přehled služby Azure Relay, která umož�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955378"
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?

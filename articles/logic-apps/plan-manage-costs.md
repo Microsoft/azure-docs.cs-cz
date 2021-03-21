@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 01/29/2021
 ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101709627"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Plánování a Správa nákladů na Azure Logic Apps
@@ -19,7 +19,7 @@ Tento článek vám pomůže plánovat a spravovat náklady na Azure Logic Apps.
 
 Mějte na paměti, že náklady na Logic Apps jsou jenom částmi měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak odhadnout a spravovat náklady na Logic Apps, účtují se vám všechny služby a prostředky Azure, které se používají ve vašem předplatném Azure, včetně všech služeb třetích stran. Až budete obeznámeni se správou nákladů na Logic Apps, můžete použít podobné metody pro správu nákladů na všechny služby Azure používané ve vašem předplatném.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 <!--Note for Azure service writer: This section covers prerequisites for the Cost Management's Cost Analysis feature. Add other prerequisites needed for your service after the Cost Management prerequisites. -->
 

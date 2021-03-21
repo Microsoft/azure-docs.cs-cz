@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 802f732e8d62f5df861be525316b3c31ab4d0655
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94957924"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Správa služby StorSimple Data Manager v Azure Portal
@@ -44,7 +44,7 @@ Chcete-li vytvořit službu StorSimple Data Manager, proveďte následující kr
 
    3. Vyberte existující skupinu prostředků nebo vytvořte novou skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
-   4. Zadejte **umístění** služby, které slouží k uložení účtů úložiště a služby StorSimple data Manager. Služba StorSimple Device Manager, Služba Data Manager a přidružený účet úložiště by měly být všechny v podporovaných oblastech.
+   4. Zadejte **umístění** služby, které slouží k uložení účtů úložiště a služby StorSimple data Manager. Služba StorSimple Správce zařízení, Služba Data Manager a přidružený účet úložiště by měly být všechny v podporovaných oblastech.
     
    5. Pokud chcete na řídicím panelu získat odkaz na tuto službu, vyberte **Připnout na řídicí panel**.
     
@@ -76,7 +76,7 @@ K vytvoření definice úlohy proveďte následující kroky.
 
 6. Vzhledem k tomu, že se jedná o novou Data Manager službu, nejsou nakonfigurovaná žádná úložiště dat. V části **Konfigurovat zdroj dat** zadejte podrobnosti zařízení řady StorSimple 8000 a data, která vás zajímají.
 
-   Pokud chcete přidat Device Manager StorSimple jako úložiště dat, klikněte na **Přidat nový** v rozevíracím seznamu úložiště dat a pak klikněte na **Přidat úložiště dat**.
+   Pokud chcete přidat Správce zařízení StorSimple jako úložiště dat, klikněte na **Přidat nový** v rozevíracím seznamu úložiště dat a pak klikněte na **Přidat úložiště dat**.
 
     ![Přidat nové úložiště dat](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
@@ -84,15 +84,15 @@ K vytvoření definice úlohy proveďte následující kroky.
     
    2. Zadejte popisný název úložiště zdrojových dat.
     
-   3. V rozevíracím seznamu vyberte předplatné přidružené k vaší službě StorSimple Device Manager.
+   3. V rozevíracím seznamu vyberte předplatné přidružené k vaší službě StorSimple Správce zařízení.
     
-   4. Zadejte název StorSimple Device Manager **prostředku**.
+   4. Zadejte název StorSimple Správce zařízení **prostředku**.
 
-   5. Zadejte **šifrovací klíč dat služby** pro službu StorSimple Device Manager. 
+   5. Zadejte **šifrovací klíč dat služby** pro službu StorSimple Správce zařízení. 
 
       ![Konfigurace zdrojového úložiště dat 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-      Po dokončení klikněte na **OK** . Tím uložíte úložiště dat. Znovu použít tuto StorSimple Device Manager v jiných definicích úlohy bez zadání těchto parametrů. Po kliknutí na **OK** může trvat několik sekund, než se nově vytvořené zdrojové úložiště dat zobrazí v rozevíracím seznamu.
+      Po dokončení klikněte na **OK** . Tím uložíte úložiště dat. Znovu použít tuto StorSimple Správce zařízení v jiných definicích úlohy bez zadání těchto parametrů. Po kliknutí na **OK** může trvat několik sekund, než se nově vytvořené zdrojové úložiště dat zobrazí v rozevíracím seznamu.
 
 7. V rozevíracím seznamu pro **úložiště dat** vyberte úložiště dat, které jste vytvořili. 
 

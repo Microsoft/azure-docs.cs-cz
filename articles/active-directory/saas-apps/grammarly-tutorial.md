@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: 13b62646728eb03a7470d9bb57741bcb90cc24fb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92447700"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s gramaticky
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte, jak gramaticky integrovat s Azure Active Directory (
 * Umožněte uživatelům, aby se automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -101,7 +101,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -113,17 +113,17 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k gramatické úrovni.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **gramaticky**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-grammarly-sso"></a>Konfigurace gramatického jednotného přihlašování
 
-Pokud chcete jednotné přihlašování nakonfigurovat na **gramaticky**, musíte zkopírovat **adresu URL pro přihlášení**, **identifikátor Azure AD**a stažený **certifikát (Base64)** na panel pro správu s gramatickým načtením. [Přečtěte si, jak](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
+Pokud chcete jednotné přihlašování nakonfigurovat na **gramaticky**, musíte zkopírovat **adresu URL pro přihlášení**, **identifikátor Azure AD** a stažený **certifikát (Base64)** na panel pro správu s gramatickým načtením. [Přečtěte si, jak](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-).
 
 ### <a name="create-grammarly-test-user"></a>Vytvořit gramaticky testovacího uživatele
 

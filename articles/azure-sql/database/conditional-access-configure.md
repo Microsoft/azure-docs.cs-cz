@@ -13,10 +13,10 @@ ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
 ms.openlocfilehash: c18d235977f1256a10e813fa8e02aa3590366fe1
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936409"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Podmíněný přístup s Azure SQL Database a Azure synapse Analytics
@@ -27,7 +27,7 @@ ms.locfileid: "97936409"
 
 Následující kroky ukazují, jak nakonfigurovat Azure SQL Database, spravovanou instanci SQL nebo Azure synapse, aby se vynutily zásady podmíněného přístupu.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Aby bylo možné podporovat ověřování Azure Active Directory (Azure AD), musíte v Azure synapse nakonfigurovat Azure SQL Database, spravovanou instanci Azure SQL nebo vyhrazený fond SQL. Konkrétní postup najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL Database nebo Azure synapse](authentication-aad-configure.md).  
 - Pokud je povolená Multi-Factor Authentication, musíte se připojit pomocí podporovaného nástroje, jako je například nejnovější SQL Server Management Studio (SSMS). Další informace najdete v tématu [konfigurace Azure SQL Database Multi-Factor Authentication pro SQL Server Management Studio](authentication-mfa-ssms-configure.md).  
@@ -54,7 +54,7 @@ Následující kroky ukazují, jak nakonfigurovat Azure SQL Database, spravovano
 5. Vyberte **řízení přístupu**, vyberte **udělit** a pak zkontrolujte zásadu, kterou chcete použít. V tomto příkladu vybereme možnost **vyžadovat službu Multi-Factor Authentication**.  
    ![vybrat udělit přístup](./media/conditional-access-configure/grant-access.png)  
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Vybraná aplikace (Azure SQL Database) pomocí Azure AD Premium nyní vynutila vybrané zásady podmíněného přístupu, **požadované vícefaktorové ověřování.**
 

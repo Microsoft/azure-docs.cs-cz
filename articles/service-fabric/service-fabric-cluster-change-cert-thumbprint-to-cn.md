@@ -4,10 +4,10 @@ description: Přečtěte si, jak převést certifikát clusteru Azure Service Fa
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97900786"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Převod certifikátů clusteru z deklarací založených na kryptografických otiskech na běžné názvy

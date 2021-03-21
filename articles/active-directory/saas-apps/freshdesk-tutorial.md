@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/20/2021
 ms.author: jeedes
 ms.openlocfilehash: e1394eafdfd733b5d69a4d4abbb6b218b4c8c10d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101651900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Kurz: Azure Active Directory integrace s Freshdesku
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Freshdesku s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Freshdesku svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
  

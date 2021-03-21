@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
 ms.openlocfilehash: e04884c078bd9a5693ddcbc4e71470bb23e13d60
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199794"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Jak odebrat aplikaci registrovanou na platformě Microsoft identity
@@ -29,7 +29,7 @@ V následujících částech se dozvíte, jak:
 * Odebrání aplikace vytvořené vámi nebo vaší organizací
 * Odebrání aplikace vytvořené jinou organizací
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Aplikace zaregistrovaná v Tenantovi Azure AD](quickstart-register-app.md)
 

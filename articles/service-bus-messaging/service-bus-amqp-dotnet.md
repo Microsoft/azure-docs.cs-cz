@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak použít Azure Service Bus z aplikace 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 20800363327aefda073cd484dc737b28e60466a7
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98632846"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Použití Service Bus z rozhraní .NET s AMQP 1,0
@@ -86,7 +86,7 @@ Pro usnadnění interoperability s klienty non-.NET používejte pouze typy .NET
 | Identifikátor URI |Popis řetězce (viz následující tabulka) |Hodnota AMQP |
 | DateTimeOffset |Popsaná dlouho (viz následující tabulka) |Hodnota AMQP |
 | TimeSpan |Popsaná doba (viz následující) |Hodnota AMQP |
-| Datový proud |binární |Data AMQP (můžou být vícenásobná). Oddíly dat obsahují nezpracované bajty přečtené z objektu Stream. |
+| Stream |binární |Data AMQP (můžou být vícenásobná). Oddíly dat obsahují nezpracované bajty přečtené z objektu Stream. |
 | Jiný objekt |binární |Data AMQP (můžou být vícenásobná). Obsahuje serializovaný binární soubor objektu, který používá DataContractSerializer nebo serializátor poskytnutý aplikací. |
 
 | Typ .NET | Typ AMQP mapovaného typu | Poznámky |

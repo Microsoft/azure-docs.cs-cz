@@ -13,10 +13,10 @@ ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97937089"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory
@@ -120,7 +120,7 @@ Pohotovostní zásada podmíněného přístupu je **zásada zálohování** , k
 * Nakonfigurujte sadu záložních zásad, pokud dojde k výpadku jednoho typu přihlašovacích údajů nebo jednoho mechanismu řízení přístupu, který má vliv na přístup k vašim aplikacím. Nakonfigurujte zásady ve stavu pouze sestavy, který vyžaduje připojení k doméně jako řízení, jako zálohu aktivní zásady, která vyžaduje poskytovatele vícefaktorového ověřování od jiného výrobce.
 * Pomocí postupů uvedených v dokumentu White Paper s [pokyny k heslům](https://aka.ms/passwordguidance) snížíte riziko chybných aktérů, které se týkají pokusů o hesla.
 * Nasaďte [Azure ad Self-Service resetování hesla (SSPR)](./tutorial-enable-sspr.md) a [ochranu heslem Azure AD](./howto-password-ban-bad-on-premises-deploy.md) , abyste se ujistili, že uživatelé nepoužívají běžné heslo a výrazy, které se rozhodnete zakázat.
-* Používejte zásady, které omezují přístup v rámci aplikací, Pokud nedosáhnete určité úrovně ověřování, místo toho, abyste museli jednoduše vracet přístup k úplnému přístupu. Příklad:
+* Používejte zásady, které omezují přístup v rámci aplikací, Pokud nedosáhnete určité úrovně ověřování, místo toho, abyste museli jednoduše vracet přístup k úplnému přístupu. Například:
   * Nakonfigurujte zásady zálohování, které odesílají deklaraci omezené relace na Exchange a SharePoint.
   * Pokud vaše organizace používá Microsoft Cloud App Security, zvažte návrat k zásadám, které MCAS a pak MCAS povolí přístup jen pro čtení, ale ne nahrávání.
 * Pojmenujte zásady, abyste se ujistili, že je budete moct snadno najít při přerušení. Do názvu zásady zahrňte tyto prvky:

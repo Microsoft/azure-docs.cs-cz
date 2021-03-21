@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 48f00d964a87790b8d8c9b1d8eceaed26d15199e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95531963"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Správa prostředků služby Azure Blob Storage pomocí Průzkumníka služby Storage
@@ -160,7 +160,7 @@ Následující kroky ukazují, jak zadat úroveň veřejného přístupu pro kon
 5. V dialogovém okně **nastavit úroveň veřejného přístupu kontejneru** zadejte požadovanou úroveň přístupu.
 
    ![Nastavit možnosti úrovně veřejného přístupu][14]
-6. Vyberte **Apply** (Použít).
+6. Vyberte **Použít**.
 
 ## <a name="managing-blobs-in-a-blob-container"></a>Správa objektů BLOB v kontejneru objektů BLOB
 

@@ -13,10 +13,10 @@ ms.date: 03/02/2021
 ms.author: aahi
 keywords: místní, Docker, kontejner
 ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040188"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Instalace a spuštění kontejnerů Docker pro LUIS
@@ -360,7 +360,7 @@ Po nahrání protokolu [Zkontrolujte koncový bod](./luis-concept-review-endpoin
 
 Chcete-li vypnout kontejner, v prostředí příkazového řádku, kde je kontejner spuštěn, stiskněte **kombinaci kláves CTRL + C**.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud spouštíte kontejner s povoleným výstupním [připojením](luis-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 

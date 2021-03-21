@@ -3,14 +3,14 @@ title: Privátní Link-Azure Portal-Azure Database for MariaDB
 description: Postup konfigurace privátního odkazu pro Azure Database for MariaDB z Azure Portal
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659620"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB pomocí portálu

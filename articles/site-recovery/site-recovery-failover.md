@@ -5,10 +5,10 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 6737f64773f91ede1631d42cd7f28c7d961c0454
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368617"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Spuštění převzetí služeb při selhání z místního prostředí do Azure
@@ -32,7 +32,7 @@ Pokud se chcete připojit k virtuálním počítačům Azure pomocí protokolu R
 
 **Po převzetí služeb při selhání** | **Umístění** | **Akce**
 --- | --- | ---
-**Virtuální počítač Azure s Windows** | Místní počítač před převzetím služeb při selhání | Pokud chcete získat přístup k virtuálnímu počítači Azure přes Internet, povolte RDP a ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné**a že protokol RDP je povolený pro všechny profily v povolených aplikacích **brány Windows Firewall**  >  **Allowed Apps**.<br/><br/> Pokud chcete získat přístup k virtuálnímu počítači Azure přes připojení typu Site-to-site, povolte na počítači protokol RDP a zajistěte, aby byl v **bráně Windows Firewall**  ->  **povolené aplikace a funkce**pro **domény a privátní** sítě povolený protokol RDP.<br/><br/> <br/><br/> Odeberte všechny statické trvalé trasy a proxy WinHTTP. Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Windows Update se může spustit, když převezmete služby při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se aktualizace nedokončí.
+**Virtuální počítač Azure s Windows** | Místní počítač před převzetím služeb při selhání | Pokud chcete získat přístup k virtuálnímu počítači Azure přes Internet, povolte RDP a ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné** a že protokol RDP je povolený pro všechny profily v povolených aplikacích **brány Windows Firewall**  >  .<br/><br/> Pokud chcete získat přístup k virtuálnímu počítači Azure přes připojení typu Site-to-site, povolte na počítači protokol RDP a zajistěte, aby byl v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě povolený protokol RDP.<br/><br/> <br/><br/> Odeberte všechny statické trvalé trasy a proxy WinHTTP. Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Windows Update se může spustit, když převezmete služby při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se aktualizace nedokončí.
 **Virtuální počítač Azure se systémem Linux** | Místní počítač před převzetím služeb při selhání | Ujistěte se, že je služba Secure Shell na virtuálním počítači nastavená tak, aby se automaticky spouštěla při spuštění systému.<br/><br/> Zkontrolujte, jestli pravidla brány firewall umožňují službě SSH připojit se k ní.
 
 
@@ -48,8 +48,8 @@ Spusťte plán obnovení převzetí služeb při selhání následujícím způs
 
     ![Snímek obrazovky z Azure Site Recovery zobrazující podokno ADRP s převzetím služeb při selhání vybrané z nabídky další.](./media/site-recovery-failover/Failover.png)
 
-3. V **Failover**  >  části**směr převzetí**služeb při selhání přenechejte výchozí nastavení, pokud se chystáte replikovat do Azure.
-4. V části **převzetí služeb při selhání**vyberte **bod obnovení** , u kterého chcete převzít služby při selhání.
+3. V   >  části **směr převzetí** služeb při selhání přenechejte výchozí nastavení, pokud se chystáte replikovat do Azure.
+4. V části **převzetí služeb při selhání** vyberte **bod obnovení** , u kterého chcete převzít služby při selhání.
 
     - **Nejnovější**: použijte nejnovější bod. Tato operace zpracuje všechna data, která jsou odeslána do služby Site Recovery Service, a vytvoří bod obnovení pro každý počítač. Tato možnost poskytuje nejnižší cíl bodu obnovení (RPO), protože virtuální počítač vytvořený po převzetí služeb při selhání má všechna data, která se replikují do Site Recovery při aktivaci převzetí služeb při selhání.
     Počítejte s tím, že pokud zdrojová oblast nefunguje, není možné žádné další zpracování protokolu. Proto budete muset převzít převzetí služeb při selhání na nejnovější zpracovaný bod obnovení. Podívejte se na další bod, kde najdete další informace.

@@ -12,10 +12,10 @@ ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963959"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Kurz: vytvoření certifikátu podepsaného svým držitelem pomocí skriptů pro nasazení
@@ -36,7 +36,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Microsoft Learn modul, který pokrývá skripty nasazení, najdete v tématu věnovaném [rozšiřování šablon ARM pomocí skriptů nasazení](/learn/modules/extend-resource-manager-template-deployment-scripts/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -324,7 +324,7 @@ Skript nasazení přidá certifikát do trezoru klíčů. Konfigurace zásad př
 
 ## <a name="debug-the-failed-script"></a>Ladění neúspěšného skriptu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Je to název projektu s připojením **RG** . Ve skupině prostředků se zobrazí dva další prostředky. Tyto prostředky se označují jako *prostředky skriptu nasazení*.
 
     ![Prostředky skriptu pro nasazení Správce prostředků šablon](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

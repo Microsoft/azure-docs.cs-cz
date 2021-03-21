@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.openlocfilehash: 2427fbdaa497ccb6d9a46330dcc6eb872e1d28ac
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102214163"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
@@ -120,7 +120,7 @@ QnA Maker spravovaná je bezplatná služba a propustnost se momentálně omezen
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
-|Upgrade|Důvod|
+|Upgradovat|Důvod|
 |--|--|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) SKU správy QnA Maker|Chcete mít ve znalostní bázi více QnA párů nebo zdrojů dokumentů.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU a zkontroluje Kognitivní hledání vrstvu a [vytvoří kognitivní hledání repliky](../../../search/search-capacity-planning.md) .|Vaše znalostní báze potřebuje k obsluze více požadavků z klientské aplikace, jako je například robot pro chat.|

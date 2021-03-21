@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e5c85d2c3049ea8718d0a9e0e574c13d0d99394c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200274"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Správa certifikátů na zařízení IoT Edge
@@ -33,7 +33,7 @@ Další informace o různých typech certifikátů a jejich rolích najdete v t�
 >[!NOTE]
 >Pojem "Kořenová CA", který se používá v celém tomto článku, odkazuje na veřejný certifikát certifikační autority pro vaše řešení IoT. Nemusíte používat kořen certifikátu pro neoprávněnou certifikační autoritu nebo kořen certifikační autority vaší organizace. V mnoha případech je ve skutečnosti veřejný certifikát zprostředkující certifikační autority.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Zařízení IoT Edge.
 

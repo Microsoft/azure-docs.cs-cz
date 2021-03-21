@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
 ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96178017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Kurz: Azure Active Directory integrace s nástrojem Správce hesel & digitálního trezoru
@@ -102,7 +102,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho správce hesel Keep & aplikace digitálního trezoru očekává, že se v odpovědi SAML vrátí několik dalších atributů. Tyto jsou uvedeny v následující tabulce. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------| --------- |
     | První | User. křestní jméno |
     | Poslední | User. příjmení |
@@ -135,7 +135,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **správce hesel úložiště & digitální trezor**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-1. Vyberte možnost **Přidat uživatele**. V **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte možnost **Přidat uživatele**. V části **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 1. V části **Uživatelé a skupiny** vyberte v seznamu uživatelů možnost **B. Simon** . Pak zvolte **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat ze seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, vybere se **výchozí role přístupu** .
 1. V **Přidat přiřazení** vyberte **přiřadit**.

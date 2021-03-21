@@ -13,10 +13,10 @@ ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955395"
 ---
 # <a name="what-is-identity-protection"></a>Co je ochrana identit?
@@ -47,7 +47,7 @@ V jeho [blogovém příspěvku v říjnu od 2018](https://techcommunity.microsof
 
 Identity Protection identifikuje rizika v následujících klasifikacích:
 
-| Typ detekce rizika | Popis |
+| Typ detekce rizika | Description |
 | --- | --- |
 | Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN). |
 | Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
@@ -107,15 +107,15 @@ Správci podmíněného přístupu můžou také vytvářet zásady, které při
 
 | Schopnost | Podrobnosti  | Aplikace Azure AD Free/Microsoft 365 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | No | No |Ano | 
-| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | No |  No |Ano |
-| Sestavy zabezpečení | Přehled |  No | No |Ano |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | No | No |Yes | 
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | No |  No |Yes |
+| Sestavy zabezpečení | Přehled |  No | No |Yes |
 | Sestavy zabezpečení | Rizikoví uživatelé  | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Full access|
 | Sestavy zabezpečení | Riziková přihlášení  | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Full access|
 | Sestavy zabezpečení | Detekce rizik   | No | Omezené informace. Žádný zásobník podrobností| Full access|
-| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | No | No |Ano |
-| Oznámení | Týdenní výtah| No | No | Ano | 
-| | Zásady registrace MFA | No | No | Ano |
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | No | No |Yes |
+| Oznámení | Týdenní výtah| No | No | Yes | 
+| | Zásady registrace MFA | No | No | Yes |
 
 Další informace o těchto propracovaných sestavách najdete v článku [Postupy: šetření rizik](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 

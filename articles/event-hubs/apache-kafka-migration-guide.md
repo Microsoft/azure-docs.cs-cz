@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak migrovat klienty z Apache Kafka do 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d9f3775a85df5a881c2c38566628e4e1d4d8c40e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90061440"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrace na službu Azure Event Hubs pro ekosystémy Apache Kafka
@@ -16,7 +16,7 @@ Azure Event Hubs zpřístupňuje koncový bod Apache Kafka, který umožňuje p�
 ## <a name="pre-migration"></a>Před migrací 
 
 ### <a name="create-an-azure-account"></a>Vytvoření účtu Azure
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ### <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 Pokud chcete vytvořit obor názvů Event Hubs a centrum událostí, postupujte podle podrobných pokynů v článku [vytvoření centra událostí](event-hubs-create.md) . 

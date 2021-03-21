@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c456e7788280b7ca5328342e1cd848ba3a583a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95972755"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect synchronizace: konfigurace upřednostňovaného umístění dat pro prostředky Microsoft 365
@@ -155,7 +155,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Vyberte zdrojový atribut | Není zaškrtnuto | Aktualizace |
+    |Direct | preferredDataLocation | Vyberte zdrojový atribut | Nezaškrtnuto | Aktualizace |
 
 7. Pokud chcete vytvořit příchozí pravidlo, vyberte **Přidat**.
 
@@ -183,7 +183,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
-    | sourceObjectType | VÝŠI | Uživatel |
+    | sourceObjectType | VÝŠI | User |
     | cloudMastered | NOTEQUAL | Ano |
 
     Filtr oboru určuje, na které objekty služby Azure AD se toto pravidlo odchozí synchronizace použije. V tomto příkladu používáme stejný filtr pro vytváření oborů z "out do Azure AD – identita uživatele" OOB (dopředný) – pravidlo synchronizace. Zabraňuje použití synchronizačního pravidla pro **uživatelské** objekty, které nejsou synchronizované z místní služby Active Directory. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
@@ -192,7 +192,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Není zaškrtnuto | Aktualizace |
+    | Direct | preferredDataLocation | preferredDataLocation | Nezaškrtnuto | Aktualizace |
 
 7. Pokud chcete vytvořit odchozí pravidlo, zavřete **Přidat** .
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027257"
 ---
 # <a name="http-features"></a>Funkce protokolu HTTP
@@ -57,7 +57,7 @@ Podporují se následující integrovaná rozhraní API HTTP.
 
 # <a name="python"></a>[Python](#tab/python)
 
-**__init__ . py**
+**__init__. py**
 
 ```python
 import logging
@@ -140,7 +140,7 @@ Popis všech vestavěných rozhraní API HTTP najdete v [referenčních informac
 
 ### <a name="async-operation-tracking"></a>Sledování asynchronních operací
 
-Výše uvedená odpověď protokolu HTTP je navržena tak, aby pomáhala implementaci dlouhotrvajících asynchronních rozhraní API HTTP pomocí Durable Functions. Tento model se někdy označuje jako *uživatelský vzor cyklického dotazování* . Tok klienta/serveru funguje takto:
+Výše uvedená odpověď protokolu HTTP je navržena tak, aby pomáhala implementaci dlouhotrvajících asynchronních rozhraní API HTTP pomocí Durable Functions. Tento model se někdy označuje jako *uživatelský vzor cyklického dotazování*. Tok klienta/serveru funguje takto:
 
 1. Klient vydá požadavek HTTP na spuštění dlouhotrvajícího procesu, jako je funkce Orchestrator.
 1. Cílový aktivační procedura HTTP vrátí odpověď HTTP 202 s hlavičkou umístění, která má hodnotu "statusQueryGetUri".
