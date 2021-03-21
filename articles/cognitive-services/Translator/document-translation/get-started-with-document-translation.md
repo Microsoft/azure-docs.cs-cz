@@ -7,17 +7,17 @@ ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
 ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102486654"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Začínáme s překladem dokumentů (Preview)
 
  V tomto článku se naučíte používat překlad dokumentů s metodami REST API HTTP. Překlad dokumentů je cloudová funkce služby [Azure Translator](../translator-info-overview.md) .  Rozhraní API pro překlad dokumentů umožňuje překlad celých dokumentů při zachování struktury zdrojového dokumentu a formátování textu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!NOTE]
 > Obecně platí, že při vytváření prostředku služby vnímání v Azure Portal máte možnost vytvořit klíč předplatného s více službami nebo klíč předplatného s jednou službou. Překlad dokumentů se ale v současné době podporuje jenom v prostředku překladatele (s jednou službou) a **není** zahrnutý do prostředku Cognitive Services (Multi-Service).
@@ -91,8 +91,8 @@ V [**účtu služby Azure Blob Storage**](https://ms.portal.azure.com/#create/Mi
 ### <a name="c"></a>[C#](#tab/csharp)
 
 * Vytvoření nového projektu
-* Nahraďte Program.cs kódem jazyka C# zobrazeným níže.
-* Nastavte koncový bod. klíč předplatného a hodnoty URL kontejneru v Program.cs.
+* Nahraďte program. cs kódem C# uvedeným níže.
+* Nastavte koncový bod. klíč předplatného a hodnoty URL kontejneru v programu program. cs.
 * K zpracování dat JSON přidejte [Newtonsoft.Jsv balíčku pomocí rozhraní .NET CLI](https://www.nuget.org/packages/Newtonsoft.Json/).
 * Spusťte program z adresáře projektu.
 
@@ -186,7 +186,7 @@ Požadavek na překlad dokumentu Batch se odešle do koncového bodu služby tra
 
 Každá žádost o rozhraní API pro překladatele dokumentu obsahuje následující hlavičky:
 
-|Hlavička protokolu HTTP|Popis|
+|Hlavička protokolu HTTP|Description|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Požadováno**: hodnota je klíč předplatného Azure pro váš překladatel nebo Cognitive Services prostředek.|
 |Typ obsahu|**Požadováno**: Určuje typ obsahu datové části. Přijaté hodnoty jsou Application/JSON nebo charset = UTF-8.|

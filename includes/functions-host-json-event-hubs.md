@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: fe80a71125d43220e408eab7b07aeedcafa0a526
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102473793"
 ---
 ### <a name="functions-2x-and-higher"></a>Functions 2.x a novější
@@ -32,7 +32,7 @@ ms.locfileid: "102473793"
 }  
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |batchCheckpointFrequency|1|Počet dávek události, které mají být zpracovány před vytvořením kontrolního bodu centra EventHub.|
 |eventProcessorOptions/maxBatchSize|10|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
@@ -57,7 +57,7 @@ ms.locfileid: "102473793"
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
 |maxBatchSize|64|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
 |prefetchCount|Není k dispozici|Výchozí předběžné načtení, které bude používat základní `EventProcessorHost` .| 

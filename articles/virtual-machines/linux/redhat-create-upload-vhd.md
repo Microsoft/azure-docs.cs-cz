@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
 ms.openlocfilehash: ff22010f12a7d76e60b629c4c1c4e24946d4af5a
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102552962"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat En
 
 V této části se dozvíte, jak připravit virtuální počítač s [RHEL 6](#rhel-6-using-hyper-v-manager), [RHEL 7](#rhel-7-using-hyper-v-manager)nebo [RHEL 8](#rhel-8-using-hyper-v-manager) pomocí Správce technologie Hyper-V.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V této části se předpokládá, že už jste získali soubor ISO z webu Red Hat a nainstalovali jste image RHEL na virtuální pevný disk (VHD). Další podrobnosti o tom, jak použít Správce technologie Hyper-V k instalaci image operačního systému, najdete v tématu [instalace role Hyper-v a konfigurace virtuálního počítače](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 **Poznámky k instalaci RHEL**
@@ -942,7 +942,7 @@ V této části se dozvíte, jak pomocí KVM připravit [RHEL 6](#rhel-6-using-k
 
 V této části se dozvíte, jak připravit [RHEL 6](#rhel-6-using-vmware) nebo [RHEL 7](#rhel-6-using-vmware)  distribuce z VMware.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V této části se předpokládá, že jste už nainstalovali virtuální počítač s RHEL ve VMware. Podrobnosti o tom, jak nainstalovat operační systém ve VMware, najdete v tématu [Instalační příručka k hostovanému operačnímu systému VMware](https://partnerweb.vmware.com/GOSIG/home.html).
 
 * Při instalaci operačního systému Linux doporučujeme místo LVM použít standardní oddíly, což je často výchozí nastavení pro mnoho instalací. Tím se zabrání konfliktům LVM názvů s klonováným virtuálním počítačem, zejména pokud se disk s operačním systémem někdy potřebuje připojit k jinému virtuálnímu počítači, aby se mohl problém vyřešit. LVM nebo RAID se dá použít na datových discích, pokud jsou preferované.

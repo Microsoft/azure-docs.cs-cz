@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
 ms.openlocfilehash: 8301b45fe778bd3df7fc665db2662ba81d3e644f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966101"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,3
@@ -40,7 +40,7 @@ Aktualizace 0,3 je primárně sestavení pro opravu chyb. V této verzi jsme vy�
 ## <a name="issues-fixed-in-the-update-03"></a>Problémy opravené v aktualizaci 0,3
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Příznak | Problém |
+| No. | Funkce | Problém |
 | --- | --- | --- |
 | 1 |Zálohování |Došlo k potížím v dřívější verzi, kde se zálohování nepovedlo dokončit pro sdílenou složku. Pokud k tomuto problému došlo, úloha zálohování se nezdařila a v StorSimple Manager službě se vyvolala kritická výstraha, která uživatele upozorní. Tento problém neovlivnil data sdílených složek ani přístup k datům. V této verzi se identifikovala a opravila hlavní příčina. <br></br> Oprava se nepoužije zpět na sdílené složky, u kterých se tento problém již zobrazuje. Zákazníci, kteří mají tento problém, by měli nejdřív použít aktualizaci 0,3 a pak kontaktovat podpora Microsoftu k provedení úplné zálohy systému za účelem vyřešení problému. Místo kontaktování podpora Microsoftu můžou zákazníci také obnovit novou sdílenou složku ze zálohy v pořádku pro příslušné sdílené složky. |
 | 2 |iSCSI |Ve starší verzi se objevil problém, kdy svazky při kopírování dat do svazku ve virtuálním poli StorSimple zmizí. Tento problém byl opravený v této verzi. <br></br> Opravy se projeví pouze u nově vytvořených svazků. Opravy se nepoužijí zpětně na svazky, které tento problém již vidí. Zákazníkům se doporučuje přenést svazky do režimu online prostřednictvím portálu Azure Classic, zálohovat tyto svazky a pak tyto svazky obnovit na nové svazky. |
@@ -48,7 +48,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 ## <a name="known-issues-in-the-update-03"></a>Známé problémy v aktualizaci 0,3
 Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje vydané verze zaznamenané z předchozích verzí. 
 
-| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
+| No. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Aktualizace |Virtuální zařízení vytvořená ve verzi Preview nejde aktualizovat na podporovanou obecnou verzi dostupnosti. |U těchto virtuálních zařízení je potřeba převzít služby při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
 | **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální zařízení StorSimple, nesmíte tento datový disk rozbalit ani zmenšit. Při pokusu o provedení dojde ke ztrátě všech dat v místních vrstvách zařízení. | |
@@ -68,7 +68,7 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 ## <a name="next-step"></a>Další krok
 [Nainstalujte aktualizaci 0,3](./storsimple-virtual-array-install-update-06.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 Hledáte starší poznámku k verzi? Přejít na: 
 
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,1 a 0,2](storsimple-ova-update-01-release-notes.md)

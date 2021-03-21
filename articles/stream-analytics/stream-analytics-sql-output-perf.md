@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 8baa33c8d9622ff76db04345f5c6c465f026e261
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020226"
 ---
 # <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>Zvýšení výkonu propustnosti Azure SQL Database z Azure Stream Analytics
@@ -51,6 +51,6 @@ Pokud je míra příchozích událostí nízká, může snadno vytvořit velikos
 
 K dalšímu takovému scénáři dochází při psaní do neclusterovaných indexů columnstore (NCCI), kde menší hromadné vložení může vytvořit příliš mnoho segmentů, což může způsobit selhání indexu. V takovém případě doporučujeme místo toho použít clusterovaný index columnstore.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V souhrnu se funkce děleného výstupu v Azure Stream Analytics pro výstup SQL zarovnala paralelnímu využití úlohy s dělenou tabulkou v SQL Azure by vám mělo poskytnout významné vylepšení propustnosti. Využití Azure Data Factory pro orchestraci přesunu dat z tabulky In-Memory do tabulek založených na disku může mít za způsob nárůstu propustnosti velikosti. Pokud je to proveditelné, vylepšení hustoty zpráv může být také významným faktorem při zvyšování celkové propustnosti.

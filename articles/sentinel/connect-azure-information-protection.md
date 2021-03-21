@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
 ms.openlocfilehash: 82ea47037902ce3a9449f71a9edf62cb80863d4b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94655982"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Připojení dat z Azure Information Protection
@@ -35,7 +35,7 @@ Pokud se však protokolování informací z Azure Information Protection chystá
     
     Když změníte pracovní prostor, budou se teď v pracovním prostoru, který používáte pro Azure Sentinel, ukládat data nových sestav pro Azure Information Protection a historická data nejsou dostupná pro Azure Sentinel. Pokud je navíc nakonfigurovaný předchozí pracovní prostor pro vlastní dotazy, výstrahy nebo rozhraní REST API, je potřeba je překonfigurovat pro pracovní prostor Azure Sentinel, pokud ho budete chtít používat pro Azure Information Protection. Pro klienty a služby, které používají Azure Information Protection, není potřeba žádná další konfigurace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Jedna z následujících rolí správce Azure AD pro vašeho tenanta: 
     - Správce Azure Information Protection

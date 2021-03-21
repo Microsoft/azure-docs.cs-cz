@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 571314009b6f58e5c2ab6aac02cfebc82c53f42f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351857"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrování odpovědí, které odpověď na hledání zahrnuje  
@@ -58,7 +58,7 @@ Pokud chcete filtrovat odpovědi vrácené bingem, použijte při volání rozhr
 
 Můžete filtrovat typy odpovědí, které Bing obsahuje v odpovědi (například obrázky, videa a novinky) pomocí parametru dotazu [responseFilter](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) , který je seznam odpovědí oddělených čárkami. Odpověď bude obsahovat odpověď v případě, že Bing najde relevantní obsah. 
 
-Pokud chcete vyloučit konkrétní odpovědi z odpovědi, jako jsou obrázky, přiřaďte `-` k typu odpovědi znak. Příklad:
+Pokud chcete vyloučit konkrétní odpovědi z odpovědi, jako jsou obrázky, přiřaďte `-` k typu odpovědi znak. Například:
 
 ```
 &responseFilter=-images,-videos

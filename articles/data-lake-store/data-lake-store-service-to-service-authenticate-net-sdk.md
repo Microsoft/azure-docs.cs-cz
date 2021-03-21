@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 19b4ac619ec3e72c787efc8e9f043f42dbd8b09b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010295"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování služba-služba s Azure Data Lake Storage Gen1 pomocí sady .NET SDK
@@ -24,7 +24,7 @@ ms.locfileid: "96010295"
 
 V tomto článku se dozvíte, jak používat sadu .NET SDK k ověřování služby Service-to-Service pomocí Azure Data Lake Storage Gen1. Ověřování koncových uživatelů s Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [ověřování koncových uživatelů pomocí Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Visual Studio 2013 nebo vyšší**. Níže uvedené pokyny používají Visual Studio 2019.
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).

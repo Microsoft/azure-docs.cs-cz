@@ -8,10 +8,10 @@ ms.devlang: node
 ms.topic: quickstart
 ms.date: 01/11/2021
 ms.openlocfilehash: 97fcff4706d6da968c93426f85569fed9af95aac
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102197805"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub (Node.js)
@@ -20,7 +20,7 @@ ms.locfileid: "102197805"
 
 V tomto rychlém startu se naučíte základní pracovní postup vývoje aplikací pro zařízení IoT. Pomocí Azure CLI vytvoříte Azure IoT Hub a simulované zařízení, potom pro přístup k zařízení a odeslání telemetrie do centra použijete sadu Azure IoT Node.js SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Pokud ještě nemáte předplatné Azure, [vytvořte ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ještě před tím, než začnete.
 - Azure CLI Všechny příkazy v tomto rychlém startu můžete spustit pomocí Azure Cloud Shell interaktivního prostředí CLI, které běží v prohlížeči. Pokud používáte Cloud Shell, nemusíte nic instalovat. Pokud dáváte přednost používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.76 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz az --version. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 - [Node.js 10 +](https://nodejs.org). Pokud používáte Azure Cloud Shell, neaktualizujte nainstalovanou verzi Node.js. Azure Cloud Shell už má nejnovější Node.js verzi.

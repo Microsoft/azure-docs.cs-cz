@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
 ms.openlocfilehash: 670460759a9495de735da35ae9f3d8388e59e0e5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350615"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Postup stránky pomocí výsledků z rozhraní API pro vyhledávání Bingu
@@ -27,7 +27,7 @@ ms.locfileid: "96350615"
 
 Když odešlete volání webu Bing web, Custom, image, News nebo Vyhledávání videí rozhraní API, Bing vrátí podmnožinu celkového počtu výsledků, které mohou být pro dotaz relevantní. K získání odhadovaného celkového počtu dostupných výsledků získáte přístup k poli objektu odpovědi `totalEstimatedMatches` . 
 
-Příklad: 
+Například: 
 
 ```json
 {

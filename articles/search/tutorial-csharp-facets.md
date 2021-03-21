@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 44a05ed5b4386f2787a1c84dfeb61a5d539c7cb5
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789799"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Kurz: Přidání naomezující navigace pomocí sady .NET SDK
@@ -35,7 +35,7 @@ Hotovou verzi kódu v tomto kurzu najdete v následujícím projektu:
 
 * [4 – Přidání vlastností – navigace (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/4-add-facet-navigation)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [2a – řešení pro přidání stránkování (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging) . Tento projekt může být vlastní verze sestavená z předchozího kurzu nebo kopie z GitHubu.
 
@@ -87,7 +87,7 @@ Aby se vlastnost modelu nacházela v hledání omezující vlastnosti, musí bý
     }
     ```
 
-1. V rámci tohoto kurzu nebudeme měnit žádné značky, takže zavřete soubor hotel.cs beze změny.
+1. V rámci tohoto kurzu nebudeme měnit žádné značky, proto zavřete soubor hotelu. cs nezměněný.
 
     > [!Note]
     > Při hledání omezující vlastnosti dojde k chybě, pokud pole požadované ve vyhledávání není správně označeno.
@@ -102,7 +102,7 @@ Je to úloha kontroleru, která předáte seznam omezujících vlastností do zo
 
 ### <a name="add-filter-strings-to-the-searchdata-model"></a>Přidání řetězců filtru do modelu SearchData
 
-1. Otevřete soubor SearchData.cs a přidejte do třídy **SearchData** vlastnosti řetězce pro uložení řetězců filtru omezující vlastnosti.
+1. Otevřete soubor SearchData. cs a přidejte do třídy **SearchData** vlastnosti řetězce pro uložení řetězců filtru omezující vlastnosti.
 
     ```cs
     public string categoryFilter { get; set; }

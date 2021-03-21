@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/02/2018
 robots: noindex
 ms.openlocfilehash: 8142ec51f93a066faafa1f3e44d0f87517187425
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100387236"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Přesun dat z Sybase pomocí Azure Data Factory
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat Sybase můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje jenom přesun dat z úložiště dat Sybase do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat Sybase. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Služba Data Factory podporuje připojení k místním zdrojům Sybase pomocí brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 
 Brána se vyžaduje i v případě, že je databáze Sybase hostovaná na virtuálním počítači Azure s IaaS. Bránu můžete nainstalovat na stejný virtuální počítač s IaaS jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.

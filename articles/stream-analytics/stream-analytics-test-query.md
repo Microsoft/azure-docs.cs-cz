@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: eff9103f476e6074ab46198ff8cc78588675569f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020039"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testování úlohy Azure Stream Analytics na portálu
@@ -22,7 +22,7 @@ V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení
 
 Azure Stream Analytics automaticky načítá události ze vstupů streamování. Můžete spustit dotazy ve výchozí ukázce nebo nastavit konkrétní časový rámec pro ukázku.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyhledejte a vyberte svou stávající úlohu Stream Analytics.
 
@@ -70,7 +70,7 @@ Azure Stream Analytics automaticky načítá události ze vstupů streamování.
 
 Místo používání živých dat můžete použít ukázková data z místního souboru a otestovat svůj Azure Stream Analytics dotaz.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
    
 2. Vyhledejte existující úlohu Stream Analytics a vyberte ji.
 
@@ -113,7 +113,7 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 6. Rozhraní API pro ukázková data se omezuje po pěti žádostech v intervalu 15 minut. Po skončení období od 15 minut můžete provádět další požadavky na ukázková data. Toto omezení se použije na úrovni předplatného.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 1.  Pokud se zobrazí tato chyba "při načítání výsledků došlo k potížím se síťovým připojením. Zkontrolujte prosím nastavení sítě a brány firewall. ", postupujte podle následujících kroků:
 

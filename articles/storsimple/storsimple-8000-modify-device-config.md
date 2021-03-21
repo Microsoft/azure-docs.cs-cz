@@ -1,6 +1,6 @@
 ---
 title: Úprava konfigurace zařízení řady StorSimple 8000 | Microsoft Docs
-description: Popisuje, jak používat službu StorSimple Device Manager k překonfigurování zařízení StorSimple, které už je nasazené.
+description: Popisuje, jak používat službu StorSimple Správce zařízení k překonfigurování zařízení StorSimple, které už je nasazené.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,17 +15,17 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 5eb5c351462279fe5c4f790e052f73201d211cfb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961171"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Změna konfigurace zařízení StorSimple pomocí služby StorSimple Device Manager
+# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Změna konfigurace zařízení StorSimple pomocí služby StorSimple Správce zařízení
 
 ## <a name="overview"></a>Přehled
 
-Část Azure Portal **nastavení zařízení** v okně **Nastavení** obsahuje všechny parametry zařízení, které můžete znovu nakonfigurovat na zařízení StorSimple, které spravuje služba StorSimple Device Manager. V tomto kurzu se dozvíte, jak můžete pomocí okna **Nastavení** provádět následující úlohy na úrovni zařízení:
+Část Azure Portal **nastavení zařízení** v okně **Nastavení** obsahuje všechny parametry zařízení, které můžete znovu nakonfigurovat na zařízení StorSimple, které spravuje služba StorSimple Správce zařízení. V tomto kurzu se dozvíte, jak můžete pomocí okna **Nastavení** provádět následující úlohy na úrovni zařízení:
 
 * Upravit popisný název zařízení
 * Úprava nastavení času zařízení
@@ -42,7 +42,7 @@ Pomocí Azure Portal můžete změnit název zařízení a přiřadit mu jedine�
 
 ![Název zařízení v obecných nastaveních](./media/storsimple-8000-modify-device-config/modify-general-settings3.png)
 
-K StorSimple zařízení, které je připojené ke službě StorSimple Device Manager, se přiřadí výchozí název. Výchozí název obvykle odráží sériové číslo zařízení. Například výchozí název zařízení, který je delší než 15 znaků, například 8600-SHX0991003G44HT, označuje následující:
+K StorSimple zařízení, které je připojené ke službě StorSimple Správce zařízení, se přiřadí výchozí název. Výchozí název obvykle odráží sériové číslo zařízení. Například výchozí název zařízení, který je delší než 15 znaků, například 8600-SHX0991003G44HT, označuje následující:
 
 * **8600**  – označuje model zařízení.
 * **SHX** – označuje pracoviště výroby.
@@ -168,4 +168,4 @@ Provedením následujících kroků prohodíte nebo znovu přiřadíte virtuáln
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si, jak [nakonfigurovat funkci MPIO pro zařízení StorSimple](storsimple-8000-configure-mpio-windows-server.md).
-* Naučte se [používat službu StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Naučte se [používat službu StorSimple Správce zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

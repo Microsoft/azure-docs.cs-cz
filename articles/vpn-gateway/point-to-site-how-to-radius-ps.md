@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: cherylmc
 ms.openlocfilehash: 9d962d3a4757b4c7b2d217f91aaf73d6ad4164d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94964843"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-site k virtuální síti pomocí ověřování RADIUS: PowerShell
@@ -284,7 +284,7 @@ V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, 
 
 * Pomocí příkazu ipconfig zkontrolujte IPv4 adresu přiřazenou adaptéru Ethernet na počítači, ze kterého se připojujete. Pokud je IP adresa v rámci rozsahu adres virtuální sítě, ke které se připojujete, nebo v rámci rozsahu adres VPNClientAddressPool, tato situace se označuje jako překrývající se adresní prostor. Když se adresní prostor tímto způsobem překrývá, síťový provoz nemá přístup do Azure a zůstane v místní síti.
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 Tyto nejčastější dotazy platí pro P2S pomocí ověřování RADIUS.
 

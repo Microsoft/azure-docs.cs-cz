@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009496"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit Durable Functions jako WebJobs
@@ -21,13 +21,13 @@ Ve verzi 3. x sady WebJobs SDK je hostitel implementací `IHost` a ve verzi 2. x
 
 Ukázka řetězení Durable Functions je k dispozici v sadě WebJobs SDK 2. x: Stáhněte nebo naklonujte [úložiště Durable Functions](https://github.com/azure/azure-functions-durable-extension/)a zarezervujte větev *v1* a pokračujte na složku *Samples \\ webjobssdk \\ Chaining* .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste obeznámeni se základy sady WebJobs SDK, vývojem knihovny tříd C# pro Azure Functions a Durable Functions. Pokud potřebujete Úvod do těchto témat, přečtěte si následující zdroje informací:
 
 * [Začínáme se sadou WebJobs SDK](../../app-service/webjobs-sdk-get-started.md)
 * [Vytvoření první funkce pomocí sady Visual Studio](../functions-create-your-first-function-visual-studio.md)
-* [Odolná služba Functions](durable-functions-sequence.md)
+* [Durable Functions](durable-functions-sequence.md)
 
 Postup dokončení kroků v tomto článku:
 
@@ -119,7 +119,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Durable Functions v kontextu WebJobs se trochu liší od Durable Functions v kontextu Azure Functions. Je důležité vědět o rozdílech při psaní kódu.
 

@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
 ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94989186"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database a SQL Managed instance
@@ -73,7 +73,7 @@ Autorizace odkazuje na oprávnění přiřazená uživateli v rámci databáze v
 
 Osvědčeným postupem je v případě potřeby vytvořit vlastní role. Přidejte uživatele do role s nejnižšími oprávněními potřebnými k provedení jejich pracovní funkce. Nepřiřazujte oprávnění přímo uživatelům. Účet správce serveru je členem předdefinované role db_owner, která má rozsáhlá oprávnění a měla by být udělována pouze malým uživatelům s administrativními cly. Pro aplikace použijte příkaz [Spustit jako](/sql/t-sql/statements/execute-as-clause-transact-sql) a určete kontext spuštění volaného modulu nebo použijte [aplikační role](/sql/relational-databases/security/authentication-access/application-roles) s omezenými oprávněními. Tento postup zajišťuje, že aplikace, která se připojuje k databázi, má nejnižší oprávnění, která aplikace potřebuje. Tyto osvědčené postupy také podporují oddělení povinností.
 
-### <a name="row-level-security"></a>Zabezpečení na úrovni řádku
+### <a name="row-level-security"></a>Zabezpečení na úrovni řádků
 
 Row-Level Security umožňuje zákazníkům řídit přístup k řádkům v databázové tabulce na základě charakteristik uživatele, který spouští dotaz (například členství ve skupině nebo kontext spuštění). Row-Level zabezpečení lze také použít k implementaci vlastních konceptů zabezpečení na základě popisků. Další informace najdete v tématu [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security).
 

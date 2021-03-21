@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102485482"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
@@ -108,7 +108,7 @@ Každá možnost konfigurace je uvedená výše na novém řádku, pokud nechcet
 
 Dostupné možnosti konfigurace jsou
 
-| Název | Typ | Popis
+| Název | Typ | Description
 |------|------|----------------
 | src | řetězec **[povinné]** | Úplná adresa URL, ze které se má načíst sada SDK Tato hodnota se používá pro atribut src dynamicky přidávaného &lt; skriptu nebo &gt; značky. Můžete použít veřejné umístění CDN nebo vlastní soukromý hostovaný.
 | name | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota `appInsights` . Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
@@ -171,7 +171,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Název | Výchozí | Popis |
+| Name | Výchozí | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Povinné**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |

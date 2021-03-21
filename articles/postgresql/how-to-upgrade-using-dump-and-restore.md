@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
 ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96493657"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>Upgrade databáze PostgreSQL pomocí výpisu a obnovení
@@ -23,13 +23,13 @@ Server PostgreSQL nasazený v Azure Database for PostgreSQL-Single server může
 
 | **Databáze/scénář** | **Výpis stavu nebo obnovení (offline)** | **DMS (online)** |
 | ------ | :------: | :-----: |
-| Máte malou databázi a můžete si dovolit nevýpadky při upgradu  | X | |
-| Malé databáze (< 10 GB)  | X | X | 
-| Malé a střední databáze (10 GB až 100 GB) | X | X |
-| Velké databáze (> 100 GB) |  | X |
-| Může umožnit výpadkům upgradovat (bez ohledu na velikost databáze). | X |  |
-| Je možné adresovat [požadavky](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md#prerequisites)DMS, včetně restartování? |  | X |
-| Může během procesu upgradu zabránit v DDLs a neprotokolovaných tabulkách? | |  X |
+| Máte malou databázi a můžete si dovolit nevýpadky při upgradu  | × | |
+| Malé databáze (< 10 GB)  | × | × | 
+| Malé a střední databáze (10 GB až 100 GB) | × | × |
+| Velké databáze (> 100 GB) |  | × |
+| Může umožnit výpadkům upgradovat (bez ohledu na velikost databáze). | × |  |
+| Je možné adresovat [požadavky](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md#prerequisites)DMS, včetně restartování? |  | × |
+| Může během procesu upgradu zabránit v DDLs a neprotokolovaných tabulkách? | |  × |
 
 Tato příručka obsahuje několik metod offline migrace a příklady, které ukazují, jak můžete migrovat ze zdrojového serveru na cílový server, na kterém běží vyšší verze PostgreSQL.
 
@@ -66,7 +66,7 @@ V této příručce se k ilustraci s příklady používají následující zdro
  | ------- | ------- |
  | Zdrojový server (v 9,5) | pg-95.postgres.database.azure.com |
  | Zdrojová databáze | bench5gb |
- | Velikost zdrojové databáze | 5 GB |
+ | Velikost zdrojové databáze | 5 GB |
  | Zdrojové uživatelské jméno | pg@pg-95 |
  | Cílový server (V11) | pg-11.postgres.database.azure.com |
  | Cílová databáze | bench5gb |
@@ -115,9 +115,9 @@ Pokud nemáte klienta PostgreSQL nebo chcete použít Azure Cloud Shell, můžet
 
 | **Velikost databáze** | **Přibližně doba trvání** | 
 | ----- | ------ |
-| 1 GB  | 1-2 minut |
-| 5 GB | 8-10 minut |
-| 10 GB | 15-20 minut |
+| 1 GB  | 1-2 minut |
+| 5 GB | 8-10 minut |
+| 10 GB | 15-20 minut |
 | 50 GB | 1 – 1,5 hodiny |
 | 100 GB | 2,5 – 3 hodiny|
    

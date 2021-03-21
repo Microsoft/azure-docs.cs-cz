@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101645921"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Sledovat chování uživatele v Azure AD B2C pomocí Application Insights
@@ -49,7 +49,7 @@ Při použití Application Insights Vezměte v úvahu následující skutečnost
 - Pokud chcete zaznamenat relaci uživatele, můžete pro sjednocení událostí použít ID korelace.
 - Zavolejte Application Insights Technical profil přímo z [cesty uživatele](userjourneys.md) nebo z [dílčí cesty](subjourneys.md). Nepoužívejte profil Application Insights Technical Profile jako [technický profil ověřování](validation-technical-profile.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f70cf96baed274eaf260832bd83ab0e2c91f3683
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967036"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,5
@@ -47,10 +47,10 @@ Aktualizace 0,5 je primárně sestavení pro opravu chyb. Hlavní vylepšení a 
 
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Příznak | Problém |
+| No. | Funkce | Problém |
 | --- | --- | --- |
 | 1 |Odolnost proti zálohování| V dřívějších verzích byly zálohy opakovány pouze pro určité výjimky. Tato verze obsahuje opravu pro zajištění větší odolnosti před opakováním všech výjimek zálohování.|
-| 2 |Monitorování| Monitorování využití úložiště pro řady virtuálních zařízení StorSimple se od 30. června 2017 už nepoužívá. Tato akce má vliv na grafy monitorování ve službě StorSimple Device Manager běžící na virtuálních polích StorSimple (1200 modelu). Tato verze obsahuje aktualizace, které umožňují uživateli pokračovat ve využívání monitorování využívání úložiště u virtuálních polí po 30. června 2017.|
+| 2 |Monitorování| Monitorování využití úložiště pro řady virtuálních zařízení StorSimple se od 30. června 2017 už nepoužívá. Tato akce má vliv na grafy monitorování ve službě StorSimple Správce zařízení běžící na virtuálních polích StorSimple (1200 modelu). Tato verze obsahuje aktualizace, které umožňují uživateli pokračovat ve využívání monitorování využívání úložiště u virtuálních polí po 30. června 2017.|
 | 3 |Souborový server| V dřívějších verzích mohl uživatel omylem zkopírovat šifrované soubory do virtuálního pole. Tato verze obsahuje opravu, která neumožňuje kopírování šifrovaných souborů do virtuálního pole. Pokud zařízení obsahuje před aktualizací existující šifrované soubory, zálohy budou pokračovat, dokud se všechny šifrované soubory ze systému neodstraní. |
 
 
@@ -58,7 +58,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
 Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje vydané verze zaznamenané z předchozích verzí.
 
-| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
+| No. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Aktualizace |Virtuální zařízení vytvořená ve verzi Preview nejde aktualizovat na podporovanou obecnou verzi dostupnosti. |U těchto virtuálních zařízení je potřeba převzít služby při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
 | **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální zařízení StorSimple, nesmíte tento datový disk rozbalit ani zmenšit. Při pokusu o provedení dojde ke ztrátě všech dat v místních vrstvách zařízení. | |
@@ -72,7 +72,7 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 | **10pruhový.** |Azure PowerShell |Virtuální zařízení StorSimple se nedají spravovat prostřednictvím Azure PowerShell v této verzi. |Veškerá správa virtuálních zařízení by se měla provádět prostřednictvím Azure Portal a místního webového uživatelského rozhraní. |
 | **odst.** |Změna hesla |Konzola zařízení Virtual Array podporuje pouze vstup ve formátu klávesnice en-US. | |
 | **12,5.** |CHAP |Po vytvoření nelze odstranit přihlašovací údaje protokolu CHAP. Pokud navíc upravíte přihlašovací údaje protokolu CHAP, musíte svazky převést do režimu offline a pak je převést do režimu online, aby se změna projevila. |Tento problém je řešen v pozdější verzi. |
-| **13,5.** |Server iSCSI |Zobrazené úložiště pro svazek iSCSI se může lišit v StorSimple Device Manager službě a hostiteli iSCSI. |Hostitel iSCSI má zobrazení systému souborů.<br></br>Zařízení vidí bloky přidělené v případě, že byl svazek v maximální velikosti. |
+| **13,5.** |Server iSCSI |Zobrazené úložiště pro svazek iSCSI se může lišit v StorSimple Správce zařízení službě a hostiteli iSCSI. |Hostitel iSCSI má zobrazení systému souborů.<br></br>Zařízení vidí bloky přidělené v případě, že byl svazek v maximální velikosti. |
 | **čtrnáct.** |Souborový server |Pokud k souboru ve složce je přidružen alternativní datový proud (ADS), nejsou tyto reklamy zálohovány ani obnoveny prostřednictvím zotavení po havárii, klonování a obnovení na úrovni položek. | |
 | **15.** |Souborový server |Symbolické odkazy nejsou podporovány. | |
 | **16bitovém.** |Souborový server |Soubory chráněné systémem Windows systém souborů EFS (Encrypting File System) (EFS) při zkopírování nebo uložení na souborový server virtuálních polí StorSimple mají za následek nepodporovanou konfiguraci.  | |
@@ -80,7 +80,7 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 ## <a name="next-step"></a>Další krok
 [Nainstalujte aktualizaci 0,5](storsimple-virtual-array-install-update-05.md) na virtuální pole StorSimple.
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 Hledáte starší poznámku k verzi? Přejít na:
 
 * [Zpráva k vydání verze pro StorSimple Virtual Array Update 0,4](storsimple-virtual-array-update-04-release-notes.md)

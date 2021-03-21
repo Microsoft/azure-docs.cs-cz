@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102551313"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
@@ -27,7 +27,7 @@ V této příručce se dozvíte, jak:
 * Pomocí *průběžného exportu dat* Streamujte telemetrii z IoT Central aplikace.
 * Vytvořte prostředí Azure Databricks pro analýzu a vykreslení telemetrie zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 

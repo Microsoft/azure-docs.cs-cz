@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
 ms.openlocfilehash: 347fc931dcc7f794fe7376daaac21ce7ed9198df
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102184731"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>Kurz: integrace Zscaler Private Access (ZPA) s Azure Active Directory
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Zscaler Private Access (ZPA) s Azure A
 * Umožněte uživatelům, aby se automaticky přihlásili k Zscaler privátnímu přístupu (ZPA) pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

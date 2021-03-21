@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
 ms.openlocfilehash: 8e1fc816e32e563161e1604bdcd7a7006353e4ed
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047379"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Vytvoření pracovního prostoru Log Analytics pomocí Azure CLI 2,0
@@ -117,7 +117,7 @@ Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zp
 
 ![Příklad výsledku po dokončení nasazení](media/quick-create-workspace-cli/template-output-01.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Když vytvoříte pracovní prostor, který byl odstraněn za posledních 14 dní a ve [stavu "obnovitelného odstranění](../logs/delete-workspace.md#soft-delete-behavior)", může mít operace v závislosti na konfiguraci pracovního prostoru jiný výsledek:
 1. Pokud zadáte stejný název pracovního prostoru, skupinu prostředků, předplatné a oblast jako v odstraněném pracovním prostoru, váš pracovní prostor se obnoví včetně dat, konfigurace a připojených agentů.
 2. Pokud použijete stejný název pracovního prostoru, ale v jiné skupině prostředků, předplatném nebo oblasti dojde k chybě, zobrazí se chyba název pracovního prostoru *"pracovní prostor" Name "není jedinečný nebo je v* *konfliktu*. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:

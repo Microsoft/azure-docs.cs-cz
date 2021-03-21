@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100579583"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
@@ -262,7 +262,7 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
 | [TrackException volání][api] |**Výjimky**<br/>Výpis zásobníku<br/>**Vlastnosti** |
-| Sada SDK nemůže shromažďovat data. Příklad: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
+| Sada SDK nemůže shromažďovat data. Například: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
 
 Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 

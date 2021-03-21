@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 2ed458ee0267a65bb7551940fc522509dc310311
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966611"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení Java pro IoT Hub Device Provisioning Service
@@ -22,7 +22,7 @@ ms.locfileid: "94966611"
 
 V tomto rychlém startu vytvoříte simulované zařízení X. 509 na počítači se systémem Windows. Pomocí ukázkového kódu pro zařízení v jazyce Java můžete propojit toto simulované zařízení se službou IoT Hub s využitím individuální registrace ve službě Device Provisioning (DPS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Seznamte se s koncepty [zřizování](about-iot-dps.md#provisioning-process) .
 - Dokončení [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md).

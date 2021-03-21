@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94962990"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Opětovné nasazení balíčků SSIS do Azure SQL Database s využitím Azure Database Migration Service
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Vyhodnoťte zdrojové SSIS projekty/balíčky.
 > * Migrujte projekty a balíčky SSIS do Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení těchto kroků potřebujete:
 

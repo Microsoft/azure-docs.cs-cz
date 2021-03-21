@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
 ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046988"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Používání řešení Service Map v Azure
@@ -153,7 +153,7 @@ V seznamu skupin klikněte na nabídku se třemi tečkami vedle názvu skupiny.
 
 Některé procesy obsluhují konkrétní role na počítačích: webové servery, aplikační servery, databáze a tak dále. Service Map v oknech procesu a počítače s ikonami rolí, které vám pomůžou identifikovat na první pohled roli a proces, který server hraje.
 
-| Ikona role | Popis |
+| Ikona role | Description |
 |:--|:--|
 | ![Webový server](media/service-map/role-web-server.png) | Webový server |
 | ![Aplikační server](media/service-map/role-application-server.png) | Aplikační server |
@@ -551,7 +551,7 @@ Další informace o shromažďování a používání dat naleznete v tématu [p
 
 Přečtěte si další informace o [hledání v protokolu](../logs/log-query-overview.md) v Log Analytics k načtení dat shromažďovaných pomocí Service map.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud máte nějaké problémy s instalací nebo spuštěním Service Map, může vám tato část pomohlo. Pokud se vám problém stále nedaří vyřešit, kontaktujte podporu Microsoftu.
 
@@ -570,7 +570,7 @@ Může být užitečné nejprve nainstalovat [nejnovější knihovny modulu runt
 
 V následující tabulce jsou uvedena čísla kódů a navrhovaná řešení.
 
-| Kód | Popis | Řešení |
+| Kód | Description | Řešení |
 |:--|:--|:--|
 | 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která není nainstalovaná. | Projděte si nejnovější protokol instalačního programu knihovny.<br><br>Pokud odkaz na `Windows8.1-KB2999226-x64.msu` je následovaný řádkem, nemáte `Error 0x80240017: Failed to execute MSU package,` požadavky na instalaci KB2999226. Postupujte podle pokynů v části Požadavky v článku věnovaném komponentě [Universal C Runtime ve Windows](https://support.microsoft.com/kb/2999226). Instalace požadovaných součástí možná bude vyžadovat několik spuštění služby Windows Update a restartování.<br><br>Znovu spusťte instalační program Microsoft Dependency Agenta. |
 

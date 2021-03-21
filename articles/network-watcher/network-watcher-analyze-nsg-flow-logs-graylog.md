@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
 ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94965540"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Správa a analýza protokolů toku skupin zabezpečení sítě v Azure pomocí Network Watcher a Graylogu
@@ -30,7 +30,7 @@ V síti můžete mít mnoho skupin zabezpečení sítě s povoleným protokolov�
 > [!Warning]
 > Následující kroky fungují s protokoly toku verze 1. Podrobnosti najdete v tématu [Úvod do protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Následující pokyny nebudou fungovat s verzí 2 souborů protokolu bez úprav.
 
-## <a name="scenario"></a>Scénář
+## <a name="scenario"></a>Scenario
 
 Protokol toků skupin zabezpečení sítě je povolený pomocí Network Watcher. Flow se zaznamenávají do úložiště objektů BLOB v Azure. Modul plug-in Logstash se používá k připojení a zpracování protokolů toku ze služby Blob Storage a jejich posílání do Graylogu. Jakmile se protokoly toků ukládají v Graylogu, dají se analyzovat a vizuálně přizpůsobovat do přizpůsobených řídicích panelů.
 
@@ -224,7 +224,7 @@ Teď, když je spuštěný Graylogu, můžete využít některé z jeho funkcí 
 
 Můžete kliknout na název řídicího panelu, abyste ho viděli, ale teď je prázdný, protože jsme nepřidali žádné widgety. Snadný a užitečný typ widgetu, který se má přidat na řídicí panel, jsou grafy **rychlých hodnot** , které zobrazují seznam hodnot vybraného pole a jejich distribuci.
 
-1. V horním navigačním panelu přejděte zpět na výsledky hledání vstupu UDP, který přijímá protokoly toku **Search** .
+1. V horním navigačním panelu přejděte zpět na výsledky hledání vstupu UDP, který přijímá protokoly toku  .
 
 2. Na panelu **výsledků hledání** na levou stranu obrazovky najděte kartu **pole** , která obsahuje seznam různých polí každé zprávy řazené kolekce členů příchozího toku.
 

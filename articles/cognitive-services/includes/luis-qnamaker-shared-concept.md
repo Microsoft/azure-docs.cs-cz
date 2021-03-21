@@ -8,10 +8,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
 ms.openlocfilehash: b2b405e7f6babf84ef8297310a5a7a34c3f2dc11
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102623326"
 ---
 Cognitive Services poskytuje dvě služby pro zpracování v přirozeném jazyce, [Language Understanding](../luis/what-is-luis.md) a [QnA maker](../qnamaker/overview/overview.md), každý s jiným účelem. Informace o tom, kdy používat jednotlivé služby a jak se vzájemně přidávají

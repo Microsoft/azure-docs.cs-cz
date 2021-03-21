@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95016747"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy při výběru ID časové řady
@@ -32,11 +32,11 @@ Výběr vhodného ID časové řady je kritický. Výběr ID časové řady je n
 > * *Neproměnlivá* vlastnost: po vytvoření ji nelze změnit.
 
 > [!TIP]
-> Pokud je zdrojem událostí IoT Hub, vaše ID časové řady bude pravděpodobně ***iothub-Connection-Device-ID** _.
+> Pokud je zdrojem událostí centrum IoT, ID vaší časové řady bude pravděpodobně ***iothub-ID zařízení-připojení***.
 
 Klíčové osvědčené postupy, které je potřeba provést, zahrnují:
 
-_ Vyberte klíč oddílu s velkým počtem jedinečných hodnot (například stovky nebo tisíce). V mnoha případech to může být ID zařízení, ID senzoru nebo ID značky ve formátu JSON.
+* Vyberte klíč oddílu s velkým počtem jedinečných hodnot (například stovky nebo tisíce). V mnoha případech to může být ID zařízení, ID senzoru nebo ID značky ve formátu JSON.
 * ID časové řady by mělo být jedinečné na úrovni uzlu na úrovni listu [modelu časové řady](./concepts-model-overview.md).
 * Omezení počtu znaků pro řetězec názvu vlastnosti časové řady je 128. Pro hodnotu vlastnosti ID časové řady je limit znaků 1 024.
 * Pokud hodnota jedinečné vlastnosti pro ID časové řady chybí, bude zpracována jako hodnota null a bude se jednat o stejné pravidlo omezení jedinečnosti.

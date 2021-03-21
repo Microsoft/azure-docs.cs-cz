@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
 ms.openlocfilehash: f02edf8e192f4d32f8bd2583d46bbb17c86d2049
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102454800"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Postup vytvoření síťového virtuálního zařízení ve službě Azure Virtual WAN hub (Preview)
@@ -25,7 +25,7 @@ Dokumentaci k nasazení **Cisco SD-WAN** v Azure Virtual WAN najdete v článku 
 
 Dokumentaci k nasazení **VMware SD-WAN** v rámci Azure Virtual WAN najdete v [Průvodci nasazením pro VMware SD-WAN ve virtuálním centru sítě WAN](https://kb.vmware.com/s/article/82746) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -56,7 +56,7 @@ Centrum je virtuální síť, která může obsahovat brány pro funkce typu Sit
    **Podrobnosti o projektu**
 
    * Oblast (dříve označovaná jako umístění)
-   * Název
+   * Name
    * Privátní adresní prostor centra Minimální adresní prostor je/24 pro vytvoření centra, což znamená, že při vytváření dojde k chybě z rozsahu od/25 do/32. Azure Virtual WAN, což je spravovaná služba Microsoftu, vytvoří ve virtuálním centru příslušné podsítě pro různé brány nebo služby. (Například: Síťová virtuální zařízení, brány VPN, brány ExpressRoute, uživatelské VPN/brány, brány firewall, směrování atd.). Není potřeba, aby uživatel explicitně naplánoval adresní prostor podsítě pro služby ve virtuálním centru, protože Microsoft to dělá jako součást služby.
 1. Vyberte **zkontrolovat + vytvořit** k ověření.
 1. Vyberte **vytvořit** a vytvořte tak centrum.

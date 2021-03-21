@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 36b96581d98465b860b630fe2f9a8aa64cf0f64f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94964928"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple for Cloud Solutions Provider – Nejčastější dotazy
@@ -50,7 +50,7 @@ Ano. Model je model zvýhodněné slevy stejně jako jiné služby založené na
 Stejné SKU, které jsou k dispozici pro samostatné služby StorSimple Services. 
 
 ### <a name="is-there-any-difference-between-the-storsimple-directly-purchased-from-microsoft-under-ea-and-storsimple-as-a-part-of-csp"></a>Je nějaký rozdíl mezi StorSimple přímo koupeným od Microsoftu v části EA a StorSimple jako součást CSP?
-Ne. V rámci CSP můžou zákazníci také zakoupit další služby nabízené partnerem CSP spolu s StorSimple Virtual Array (SVA) v rámci jedné faktury. Mějte na paměti, že pro navýšení fyzického zařízení řady StorSimple 8000 je potřeba, aby si zákazníci mohli projít trasou EA. 
+No. V rámci CSP můžou zákazníci také zakoupit další služby nabízené partnerem CSP spolu s StorSimple Virtual Array (SVA) v rámci jedné faktury. Mějte na paměti, že pro navýšení fyzického zařízení řady StorSimple 8000 je potřeba, aby si zákazníci mohli projít trasou EA. 
 
 ### <a name="in-which-markets-is-storsimple-available-for-csp-at-launch"></a>Na kterých trzích je StorSimple k dispozici pro CSP při spuštění?
 StorSimple Virtual Array pro CSP je k dispozici na všech trzích, kde je dnes k dispozici StorSimple. Další informace najdete v [seznamu oblastí, kde je StorSimple k dispozici](https://azure.microsoft.com/regions/services/).
@@ -75,7 +75,7 @@ K účtu Customers můžete přidat odběry virtuálních polí StorSimple prost
 Ano. S StorSimple Virtual Array pro CSP je nejlepší způsob, jak partneři získat přístup k Azure Portal by měli být prostřednictvím [partnerského centra](https://partnercenter.microsoft.com/) , kde můžou spravovat zákazníky a předplatná. Pro správu předplatných StorSimple by se měl partner nebo zákazník (v závislosti na udělených oprávněních) přihlásit k Azure Portal. 
 
 ### <a name="is-microsoft-shipping-a-new-portal-for-storsimple-for-csp"></a>Dodává se Microsoftu nový portál pro StorSimple pro CSP? 
-Ne. Pomocí Azure Portal budete moct spravovat virtuální pole StorSimple ve zprostředkovateli CSP.
+No. Pomocí Azure Portal budete moct spravovat virtuální pole StorSimple ve zprostředkovateli CSP.
 
 ### <a name="i-have-provisioned-a-standalone-storsimple-subscription-for-my-customer-do-i-have-to-use-the-azure-portal-to-administer-my-device"></a>Zřídil (a) jsem samostatné předplatné StorSimple pro svého zákazníka. Musím pro správu mého zařízení použít Azure Portal? 
 Ano. 

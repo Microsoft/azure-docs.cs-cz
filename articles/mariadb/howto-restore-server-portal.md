@@ -3,14 +3,14 @@ title: Zálohování a obnovení-Azure Portal-Azure Database for MariaDB
 description: Tento článek popisuje, jak obnovit server v Azure Database for MariaDB pomocí Azure Portal.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 06da58b5c82af39abbaa1cbc15a217c25d7808f9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 4a5f2cc4cbf73f5c13533a94f1454022d3538880
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664813"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for MariaDB pomocí Azure Portal
@@ -18,7 +18,7 @@ ms.locfileid: "98664813"
 ## <a name="backup-happens-automatically"></a>K zálohování dochází automaticky
 Azure Database for MariaDB servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto průvodce budete potřebovat:
 - [Server a databáze Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
@@ -37,7 +37,7 @@ Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úrov
 Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for MariaDB serveru](quickstart-create-mariadb-server-database-using-azure-portal.md).
 
 Dobu uchovávání záloh můžete na serveru změnit pomocí následujících kroků:
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte server Azure Database for MariaDB. Tato akce otevře stránku s **přehledem** .
 

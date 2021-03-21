@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
 ms.openlocfilehash: 0b048e0cb282332c47dade7f13162012d4a0f526
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101654096"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s uniFLOW online
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat uniFLOW online s Azure Active Director
 * Umožněte uživatelům, aby se přihlásili k uniFLOW online pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -100,7 +100,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho uniFLOW aplikace online očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | -----------| --------------- |
     | DisplayName | User. DisplayName |
     | zdívek | User. onpremisessamaccountname |

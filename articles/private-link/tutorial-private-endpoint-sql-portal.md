@@ -9,10 +9,10 @@ ms.date: 10/20/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 8bb227bdc4bbcdf986c2ed64e1f89e1dfa289b83
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102554968"
 ---
 # <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>Kurz: připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure Portal
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření serveru SQL Azure a privátního koncového bodu.
 > * Otestujte připojení k privátnímu koncovému bodu SQL serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

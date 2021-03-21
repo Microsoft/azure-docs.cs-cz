@@ -7,16 +7,16 @@ ms.date: 2/17/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
 ms.openlocfilehash: a0894047db1ed7687a1a0f5f87fc4020ddf7c694
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101679239"
 ---
 # <a name="create-device-groups-in-device-update-for-iot-hub"></a>Vytvoření skupin zařízení v aktualizaci zařízení pro IoT Hub
 Aktualizace zařízení pro IoT Hub umožňuje nasadit aktualizaci do skupiny zařízení IoT.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Pro IoT Hub povolený přístup k IoT Hub s aktualizací zařízení](create-device-update-account.md). Doporučujeme pro IoT Hub použít úroveň S1 (Standard) nebo vyšší. 
 * Zařízení IoT (nebo simulátor) zřízené pro aktualizaci zařízení v IoT Hub.

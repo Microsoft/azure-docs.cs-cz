@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
 ms.openlocfilehash: b2e1ffb3cbd513766945864e33589c46284bf942
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102200933"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>Konfigurace vývojového prostředí pro skripty pro nasazení v šablonách ARM
 
 Naučte se vytvářet vývojové prostředí pro vývoj a testování skriptů nasazení šablon ARM pomocí Image skriptu nasazení. Můžete buď vytvořit [instanci kontejneru Azure](../../container-instances/container-instances-overview.md) , nebo použít [Docker](https://docs.docker.com/get-docker/). V tomto článku jsou uvedeny obě možnosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-powershell-container"></a>Azure PowerShell kontejner
 

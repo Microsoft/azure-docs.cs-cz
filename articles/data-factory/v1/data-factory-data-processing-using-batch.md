@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ec04000e678cd3fc55f4681781f91b6d98ea41f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730860"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a dávky
@@ -83,7 +83,7 @@ Ukázkové řešení je záměrně jednoduché. Je navržený tak, aby vám uká
 
 **Čas:** Pokud jste obeznámeni se základy Azure, Data Factory a Batch a dokončili jste následující požadavky, bude dokončení tohoto řešení trvat jednu až dvě hodiny.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 #### <a name="azure-subscription"></a>Předplatné Azure
 Pokud nemáte předplatné Azure, můžete rychle vytvořit bezplatný zkušební účet. Další informace najdete v článku [bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 

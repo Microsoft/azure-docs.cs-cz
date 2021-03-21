@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047498"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>Přidání vrstvy dlaždice na mapu (Android SDK)
@@ -39,7 +39,7 @@ Adresa URL dlaždice předaná do vrstvy dlaždice musí být adresa URL protoko
 * `{subdomain}` – Zástupný symbol pro hodnoty subdomény, pokud je zadána hodnota subdomény.
 * `azmapsdomain.invalid` – Zástupný symbol pro zarovnání domény a ověřování žádostí dlaždic se stejnými hodnotami, které používá mapa. Tuto hodnotu použijte při volání služby dlaždice hostované Azure Maps.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps Android SDK](how-to-use-android-map-control-library.md) , aby se načetla mapa.
 

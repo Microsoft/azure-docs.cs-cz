@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 4534584144f54618d7f3dd39cf5e40bc0464fb21
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102454981"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a Správa centra oznámení pomocí PowerShellu
@@ -36,7 +36,7 @@ Pokud také potřebujete vytvořit nový obor názvů služby Service Bus pro va
 
 Správa Center oznámení není podporovaná přímo rutinami, které jsou součástí Azure PowerShell. Nejlepším přístupem z PowerShellu je odkazování na sestavení Microsoft.Azure.NotificationHubs.dll. Sestavení je distribuováno pomocí [Microsoft Azure Notification Hubs balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Azure je platforma založená na předplatném. Další informace o získání předplatného najdete v tématu [možnosti nákupu], [nabídky členů]nebo [bezplatné zkušební verze].
 - Počítač se Azure PowerShell. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell].

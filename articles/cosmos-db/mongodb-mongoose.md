@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
 ms.openlocfilehash: 8958699ae279d2613f8dbadca802ee2137407e75
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94442391"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Připojení aplikace Node.js Mongoose k Azure Cosmos DB
@@ -39,11 +39,11 @@ Pojďme vytvořit účet Cosmos. Pokud již máte účet, který chcete použít
 
 ### <a name="create-a-database"></a>Vytvoření databáze 
 V této aplikaci se budeme zabývat dvěma způsoby vytváření kolekcí v Azure Cosmos DB: 
-- **Ukládání každého objektového modelu do samostatné kolekce** : doporučujeme [vytvořit databázi s vyhrazenou propustností](set-throughput.md#set-throughput-on-a-database). Použití tohoto modelu kapacity vám poskytne lepší náklady na efektivitu.
+- **Ukládání každého objektového modelu do samostatné kolekce**: doporučujeme [vytvořit databázi s vyhrazenou propustností](set-throughput.md#set-throughput-on-a-database). Použití tohoto modelu kapacity vám poskytne lepší náklady na efektivitu.
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text=" KurzNode.js – snímek obrazovky Azure Portal, který ukazuje, jak vytvořit databázi v Průzkumník dat pro účet Azure Cosmos DB pro použití s modulem Mongoose Node":::
 
-- **Ukládání všech objektových modelů do jedné kolekce Cosmos DB** : Chcete-li uložit všechny modely do jedné kolekce, stačí vytvořit novou databázi bez výběru možnosti pro zajištění propustnosti. Použití tohoto modelu kapacity vytvoří každou kolekci s vlastní kapacitou propustnosti pro každý objektový model.
+- **Ukládání všech objektových modelů do jedné kolekce Cosmos DB**: Chcete-li uložit všechny modely do jedné kolekce, stačí vytvořit novou databázi bez výběru možnosti pro zajištění propustnosti. Použití tohoto modelu kapacity vytvoří každou kolekci s vlastní kapacitou propustnosti pro každý objektový model.
 
 Po vytvoření databáze použijete název v `COSMOSDB_DBNAME` proměnné prostředí níže.
 

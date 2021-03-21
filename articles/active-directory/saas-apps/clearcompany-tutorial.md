@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.openlocfilehash: b3c7fafba99caa15fe9e5adbeb765e8788e61bbf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>Kurz: Azure Active Directory integrace s ClearCompany
@@ -30,7 +30,7 @@ Integrace ClearCompany s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s ClearCompany potřebujete následující položky:
 

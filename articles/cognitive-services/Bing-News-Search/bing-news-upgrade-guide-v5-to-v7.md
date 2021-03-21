@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
 ms.openlocfilehash: a114cb24d79189f9e370fae1962f60ca97241d90
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351363"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Průvodce upgradem rozhraní Vyhledávání zpráv API
@@ -42,7 +42,7 @@ Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní 
 
 - Kódy chyb 5 nahradily následujícími možnými `code` hodnotami a `subCode` .
 
-|Kód|Podřízeného kódu|Popis
+|Kód|Podřízeného kódu|Description
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError vždy, když dojde ke kterékoli z podmínek dílčího kódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud je chyba HttpNotAllowed, kód stavu HTTP 410.

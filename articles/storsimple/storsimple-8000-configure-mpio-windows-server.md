@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 3d44fada1eddf2d3f80bec085d8a5bf751197eb1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968804"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurace funkce Multipath I/O pro zařízení StorSimple
@@ -86,7 +86,7 @@ Aby bylo možné identifikovat svazky StorSimple, musí být nakonfigurováno fu
 4. Po zobrazení výzvy restartujte server.
 5. V dialogovém okně **vlastnosti MPIO** klikněte na kartu **zařízení s funkcí MPIO** . klikněte na tlačítko **Přidat**.
     </br>![MPIO – vlastnosti zařízení MPIO](./media/storsimple-configure-mpio-windows-server/IC741004.png)
-6. V dialogovém okně **Přidat podporu funkce MPIO** zadejte do pole **ID hardwaru zařízení** sériové číslo zařízení. Pokud chcete získat sériové číslo zařízení, přejděte ke službě StorSimple Device Manager. Přejděte na **zařízení > řídicím panelu**. Sériové číslo zařízení se zobrazí v pravém podokně **rychlý přehled** řídicího panelu zařízení.
+6. V dialogovém okně **Přidat podporu funkce MPIO** zadejte do pole **ID hardwaru zařízení** sériové číslo zařízení. Pokud chcete získat sériové číslo zařízení, přejděte ke službě StorSimple Správce zařízení. Přejděte na **zařízení > řídicím panelu**. Sériové číslo zařízení se zobrazí v pravém podokně **rychlý přehled** řídicího panelu zařízení.
     </br>
     ![Přidat podporu funkce MPIO](./media/storsimple-configure-mpio-windows-server/IC741005.png)
 7. Po zobrazení výzvy restartujte server.
@@ -190,4 +190,4 @@ Následující postup popisuje, jak přidat relace, když se zařízení StorSim
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [používání služby StorSimple Device Manager k úpravě konfigurace zařízení StorSimple](storsimple-8000-modify-device-config.md).
+Přečtěte si další informace o [používání služby StorSimple Správce zařízení k úpravě konfigurace zařízení StorSimple](storsimple-8000-modify-device-config.md).

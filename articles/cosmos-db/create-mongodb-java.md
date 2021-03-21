@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: f91cf5103fa8bf324fe372d2f12736a426fe8aed
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101656529"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Rychlý Start: Vytvoření konzolové aplikace pomocí Java a rozhraní MongoDB API v Azure Cosmos DB
@@ -30,7 +30,7 @@ ms.locfileid: "101656529"
 
 V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB pro účet rozhraní MongoDB API z Azure Portal a přidáte data pomocí aplikace Java SDK naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) spolu s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - [Java Development Kit (JDK) verze 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). 
 - [Maven](https://maven.apache.org/download.cgi). Nebo spusťte `apt-get install maven` instalaci Maven.

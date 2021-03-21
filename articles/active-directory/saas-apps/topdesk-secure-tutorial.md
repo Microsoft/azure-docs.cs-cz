@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
 ms.openlocfilehash: 5ed23889d8648c65ea0887d2f0f3406b50291f12
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101654289"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Kurz: Azure Active Directory integrace s TOPdesk – Secure
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat TOPdesk-Secure s Azure Active Director
 * Umožněte uživatelům, aby se automaticky přihlásili k TOPdesk (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
  

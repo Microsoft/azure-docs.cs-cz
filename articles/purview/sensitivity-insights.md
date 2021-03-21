@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
 ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676568"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Přehledy o vašich datech v Azure dosah s popisem citlivosti
@@ -32,7 +32,7 @@ V této příručce se dozvíte, jak:
 >
 > Chcete-li zobrazit popisky citlivosti Power BI assety, zobrazte Asset v [Data Catalog dosah](how-to-search-catalog.md).
 > 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s dosah přehledy, ujistěte se, že jste dokončili následující kroky:
 
@@ -78,7 +78,7 @@ Dosah používá stejné klasifikace, označované také jako [typy citlivých i
 
    Hlavní stránka s **popisem citlivosti popisky** zobrazuje následující oblasti:
 
-   |Plošný  |Popis  |
+   |Plošný  |Description  |
    |---------|---------|
    |**Přehled zdrojů s popisky citlivosti**     |Zobrazí dlaždice, které poskytují: <br>– Počet odběrů nalezených ve vašich datech. <br>– Počet jedinečných popisků citlivosti použitých na vaše data <br>– Počet zdrojů s použitými popisky citlivosti <br>– Počet souborů a tabulek nalezených s použitými popisky citlivosti|
    |**Hlavní zdroje s popisky dat (posledních 30 dní)**     | Zobrazuje trend, za posledních 30 dní, z počtu zdrojů s použitými popisky citlivosti.       |

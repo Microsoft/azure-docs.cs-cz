@@ -10,10 +10,10 @@ ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 62981686c7aadc713c4abc78075be8613fe0af45
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199302"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Monitorování připojení zařízení s využitím Azure CLI
@@ -24,7 +24,7 @@ Pomocí rozšíření Azure CLI IoT můžete zobrazit zprávy, které vaše zař
 
 [Další podrobnosti najdete v referenčních informacích k rozšířením Azure CLI.](/cli/azure/ext/azure-iot/iot/central)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Rozhraní příkazového řádku Azure je nainstalované a má verzi 2.7.0 nebo vyšší. Ověřte verzi rozhraní příkazového řádku Azure spuštěním `az --version` . Informace o tom, jak nainstalovat a aktualizovat z [dokumentů Azure CLI](/cli/azure/install-azure-cli)
 + Pracovní nebo školní účet v Azure, který se přidal jako uživatel do aplikace IoT Central.

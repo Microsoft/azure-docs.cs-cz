@@ -4,10 +4,10 @@ description: V tomto rychlém startu se dozvíte, jak začít pracovat se služb
 ms.topic: quickstart
 ms.date: 04/27/2020
 ms.openlocfilehash: 57edf1721249f839f5c781756b3e09bf59888dab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730282"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
@@ -23,7 +23,7 @@ Můžete si prohlédnout následující video s podrobnými kroky, jak začít s
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure, který má aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 

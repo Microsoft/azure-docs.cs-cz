@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2019
 ms.author: vikancha
 ms.openlocfilehash: c4c6bee6d3f9e423d83458ad48d213fe65223514
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102551756"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
@@ -355,7 +355,7 @@ fi
 
 Pak vytvořte záznam pro skript pro aktualizaci v nástroji, `/etc/rc.d/rc3.d` aby se skript vyvolal jako kořenový při spuštění.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 * Můžete nastavit režim trvalosti pomocí `nvidia-smi` , takže výstup příkazu je rychlejší, když potřebujete zadat dotaz na karty. Chcete-li nastavit režim trvalosti, spusťte příkaz `nvidia-smi -pm 1` . Všimněte si, že pokud se virtuální počítač restartuje, nastavení režimu zmizí. Vždy můžete skriptovat nastavení režimu, které se spustí při spuštění.
 * Pokud jste ovladače NVIDIA CUDA aktualizovali na nejnovější verzi a zjistíte, že připojení RDMA už nefunguje, [přeinstalujte ovladače RDMA pro opětovné](#rdma-network-connectivity) vytvoření tohoto připojení. 

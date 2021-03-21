@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 8591220eb80d9c60ed7873be546007449ab46f89
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96463039"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Javy

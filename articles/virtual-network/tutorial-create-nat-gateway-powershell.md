@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 03/09/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 884697cee84c05916fe19fb8f9435de86bda291e
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102620225"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell"></a>Kurz: Vytvoření brány NAT pomocí Azure PowerShell
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte bránu NAT a přidružte ji k virtuální síti.
 > * Připojte se k virtuálnímu počítači a ověřte IP adresu NAT.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell lokálně nainstalované nebo Azure Cloud Shell

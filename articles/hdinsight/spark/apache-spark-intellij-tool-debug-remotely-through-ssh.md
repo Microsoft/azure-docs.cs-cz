@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
 ms.openlocfilehash: ccd642578c8c35ac6b5f23397788ad1e7f83a1f5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942606"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Ladění aplikací Apache Spark v clusteru HDInsight pomocí Azure Toolkit for IntelliJ prostřednictvím SSH
 
 Tento článek poskytuje podrobné pokyny, jak pomocí nástrojů služby HDInsight v [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij) ladit aplikace vzdáleně v clusteru HDInsight. Chcete-li ladit projekt, můžete také zobrazit [ladění aplikací HDInsight Spark pomocí Azure Toolkit for IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) videa.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](../spark/apache-spark-jupyter-spark-sql-use-portal.md).
 

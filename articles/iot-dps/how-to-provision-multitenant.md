@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101727426"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Postupy zřizování pro architekturu s více tenanty 
@@ -36,7 +36,7 @@ Tento článek používá ukázku simulovaného zařízení ze [sady Azure IoT C
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Dokončení [nastavení IoT Hub Device Provisioning Service pomocí](./quick-setup-auto-provision.md) nástroje pro rychlý Start Azure Portal
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]

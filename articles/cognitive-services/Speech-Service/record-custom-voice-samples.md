@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101722309"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam ukázek hlasu pro vytvoření vlastního hlasu
@@ -112,7 +112,7 @@ V rámci autorského zákona může být čtení textu s copyrightem objektu act
 
 Naštěstí je možné tyto problémy zcela vyhnout. Existuje mnoho zdrojů textu, které můžete použít bez oprávnění nebo licence.
 
-|Zdroj textu|Popis|
+|Zdroj textu|Description|
 |-|-|
 |[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|Přibližně 1100 vět vybraných z ochrany autorského práva fungují speciálně pro použití v projektech syntézy řeči. Vynikající počáteční bod.|
 |Už funguje<br>v části Copyright|Obvykle funguje publikace před 1923. V anglickém jazyce [Gutenberg Project](https://www.gutenberg.org/) nabízí desítky tisíců takových děl. Možná se budete chtít soustředit na novější práci, protože jazyk bude přiblížný k moderní angličtině.|

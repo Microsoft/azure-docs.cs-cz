@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
 ms.openlocfilehash: d736c09fc1c9490f79dfc526895970e01b8b45cc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94963177"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Nasazení místního zařízení StorSimple na portálu pro státní správu
@@ -42,7 +42,7 @@ K dokončení této instalace a procesu konfigurace budete potřebovat oprávně
 ## <a name="deployment-steps"></a>Kroky nasazení
 Pomocí níže uvedených požadovaných kroků zařízení StorSimple nakonfigurujte a připojte ke službě Správce zařízení StorSimple. Kromě požadovaných kroků jsou k dispozici volitelné kroky a postupy, které může být nutné provést během nasazování. Informace o tom, kdy je vhodné provést jednotlivé volitelné kroky, jsou vždy uvedeny v příslušných požadovaných krocích nasazení.
 
-| Krok | Popis |
+| Krok | Description |
 | --- | --- |
 | **POŽADOVANÝ** |Požadavky je nutné splnit v rámci přípravy na nasazení. |
 | [Kontrolní seznam konfigurace nasazení](#deployment-configuration-checklist) |Kontrolní seznam použijte ke shromáždění a zaznamenání informací před nasazením a během nasazení. |
@@ -99,7 +99,7 @@ Než začnete, ujistěte se, že:
 Pomocí následujících kroků nasaďte zařízení StorSimple v datovém centru.
 
 ## <a name="step-1-create-a-new-service"></a>Krok 1: Vytvoření nové služby
-Služba Správce zařízení StorSimple může spravovat více zařízení StorSimple. Provedením následujících kroků vytvořte novou instanci služby StorSimple Device Manager.
+Služba Správce zařízení StorSimple může spravovat více zařízení StorSimple. Provedením následujících kroků vytvořte novou instanci služby StorSimple Správce zařízení.
 
 [!INCLUDE [storsimple-8000-create-new-service-gov](../../includes/storsimple-8000-create-new-service-gov.md)]
 
@@ -144,7 +144,7 @@ Proveďte následující kroky na portálu pro státní správu a vytvořte kont
 Po vytvoření kontejneru svazků můžete v zařízení StorSimple zřídit svazek úložiště pro své servery. Pomocí následujících kroků na portálu pro státní správu vytvořte svazek.
 
 > [!IMPORTANT]
-> StorSimple Device Manager můžou vytvářet jenom dynamicky zřízené svazky.  Nelze však vytvářet částečně zřizované svazky.
+> StorSimple Správce zařízení můžou vytvářet jenom dynamicky zřízené svazky.  Nelze však vytvářet částečně zřizované svazky.
 
 [!INCLUDE [storsimple-8000-create-volume](../../includes/storsimple-8000-create-volume-u2.md)]
 
@@ -174,7 +174,7 @@ Toto je volitelný krok, který je potřeba provést pouze v případě, že jst
 
 Pokud potřebujete vytvořit účet služby Azure Storage v jiné oblasti, postupujte podle pokynů v tématu [Účty Azure Storage](../storage/common/storage-account-create.md).
 
-Proveďte následující kroky na portálu pro státní správu na stránce **služby StorSimple Device Manager** .
+Proveďte následující kroky na portálu pro státní správu na stránce **služby StorSimple Správce zařízení** .
 
 [!INCLUDE [storsimple-configure-new-storage-account-u1](../../includes/storsimple-8000-configure-new-storage-account-u2.md)]
 
@@ -198,4 +198,4 @@ Proveďte následující kroky na portálu pro státní správu, abyste vytvoři
 
 ## <a name="next-steps"></a>Další kroky
 * Konfigurace [virtuálního zařízení](storsimple-8000-cloud-appliance-u2.md)
-* Ke správě zařízení StorSimple použijte [službu StorSimple Device Manager](storsimple-8000-manager-service-administration.md) .
+* Ke správě zařízení StorSimple použijte [službu StorSimple Správce zařízení](storsimple-8000-manager-service-administration.md) .

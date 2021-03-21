@@ -8,10 +8,10 @@ ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.openlocfilehash: 9eebc77c5b3d9402c766320fddfdaf05d50b574f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102485397"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>Rozhraní API Azure Cosmos DB pro MongoDB (verze serveru 4,0): podporované funkce a syntaxe
@@ -40,78 +40,78 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 | Příkaz | Podporováno |
 |---------|---------|
-| [Změna datových proudů](mongodb-change-streams.md) | Ano |
-| delete | Ano |
-| platnost | Ne |
-| find | Ano |
-| findAndModify | Ano |
-| getLastError | Ano |
-| getMore | Ano |
-| getPrevError | Ne |
-| insert | Ano |
-| parallelCollectionScan | Ne |
-| resetError | Ne |
-| update | Ano |
+| [Změna datových proudů](mongodb-change-streams.md) | Yes |
+| delete | Yes |
+| platnost | No |
+| find | Yes |
+| findAndModify | Yes |
+| getLastError | Yes |
+| getMore | Yes |
+| getPrevError | No |
+| insert | Yes |
+| parallelCollectionScan | No |
+| resetError | No |
+| update | Yes |
 
 ### <a name="transaction-commands"></a>Příkazy transakcí
 
 | Příkaz | Podporováno |
 |---------|---------|
-| abortTransaction | Ano |
-| commitTransaction | Ano |
+| abortTransaction | Yes |
+| commitTransaction | Yes |
 
 ### <a name="authentication-commands"></a>Příkazy pro ověření
 
 | Příkaz | Podporováno |
 |---------|---------|
-| authenticate | Ano |
-| getnonce | Ano |
-| logout | Ano |
+| authenticate | Yes |
+| getnonce | Yes |
+| logout | Yes |
 
 ### <a name="administration-commands"></a>Příkazy pro správu
 
 | Příkaz | Podporováno |
 |---------|---------|
-| cloneCollectionAsCapped | Ne |
-| collMod | Ne |
-| connectionStatus | Ne |
-| convertToCapped | Ne |
-| copydb | Ne |
-| vytvoření | Ano |
-| createIndexes | Ano |
-| currentOp | Ano |
-| drop | Ano |
-| dropDatabase | Ano |
-| dropIndexes | Ano |
-| filemd5 | Ano |
-| killCursors | Ano |
-| killOp | Ne |
-| listCollections | Ano |
-| listDatabases | Ano |
-| listIndexes | Ano |
-| reIndex | Ano |
-| Přejmenujte | Ne |
+| cloneCollectionAsCapped | No |
+| collMod | No |
+| connectionStatus | No |
+| convertToCapped | No |
+| copydb | No |
+| vytvoření | Yes |
+| createIndexes | Yes |
+| currentOp | Yes |
+| drop | Yes |
+| dropDatabase | Yes |
+| dropIndexes | Yes |
+| filemd5 | Yes |
+| killCursors | Yes |
+| killOp | No |
+| listCollections | Yes |
+| listDatabases | Yes |
+| listIndexes | Yes |
+| reIndex | Yes |
+| Přejmenujte | No |
 
 ### <a name="diagnostics-commands"></a>Příkazy pro diagnostiku
 
 | Příkaz | Podporováno |
 |---------|---------|
-| buildInfo | Ano |
-| collStats | Ano |
-| connPoolStats | Ne |
-| connectionStatus | Ne |
-| dataSize | Ne |
-| dbHash | Ne |
-| dbStats | Ano |
-| částech | Ano |
-| funkce | Ne |
-| hostInfo | Ano |
-| listDatabases | Ano |
-| listCommands | Ne |
-| modulu | Ne |
-| serverStatus | Ne |
-| top | Ne |
-| whatsmyuri | Ano |
+| buildInfo | Yes |
+| collStats | Yes |
+| connPoolStats | No |
+| connectionStatus | No |
+| dataSize | No |
+| dbHash | No |
+| dbStats | Yes |
+| částech | Yes |
+| funkce | No |
+| hostInfo | Yes |
+| listDatabases | Yes |
+| listCommands | No |
+| modulu | No |
+| serverStatus | No |
+| top | No |
+| whatsmyuri | Yes |
 
 ## <a name="aggregation-pipeline"></a><a name="aggregation-pipeline"></a>Agregovaný kanál
 
@@ -119,236 +119,236 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 
 | Příkaz | Podporováno |
 |---------|---------|
-| aggregate | Ano |
-| count | Ano |
-| distinct | Ano |
-| mapReduce | Ne |
+| aggregate | Yes |
+| count | Yes |
+| distinct | Yes |
+| mapReduce | No |
 
 ### <a name="aggregation-stages"></a>Fáze agregace
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $addFields | Ano |
-| $bucket | Ne |
-| $bucketAuto | Ne |
-| $changeStream | Ano |
-| $collStats | Ne |
-| $count | Ano |
-| $currentOp | Ne |
-| $facet | Ano |
-| $geoNear | Ano |
-| $graphLookup | Ano |
-| $group | Ano |
-| $indexStats | Ne |
-| $limit | Ano |
-| $listLocalSessions | Ne |
-| $listSessions | Ne |
-| $lookup | Ano |
-| $match | Ano |
-| $out | Ano |
-| $project | Ano |
-| $redact | Ano |
-| $replaceRoot | Ano |
-| $replaceWith | Ne |
-| $sample | Ano |
-| $skip | Ano |
-| $sort | Ano |
-| $sortByCount | Ano |
-| $unwind | Ano |
+| $addFields | Yes |
+| $bucket | No |
+| $bucketAuto | No |
+| $changeStream | Yes |
+| $collStats | No |
+| $count | Yes |
+| $currentOp | No |
+| $facet | Yes |
+| $geoNear | Yes |
+| $graphLookup | Yes |
+| $group | Yes |
+| $indexStats | No |
+| $limit | Yes |
+| $listLocalSessions | No |
+| $listSessions | No |
+| $lookup | Yes |
+| $match | Yes |
+| $out | Yes |
+| $project | Yes |
+| $redact | Yes |
+| $replaceRoot | Yes |
+| $replaceWith | No |
+| $sample | Yes |
+| $skip | Yes |
+| $sort | Yes |
+| $sortByCount | Yes |
+| $unwind | Yes |
 
 ### <a name="boolean-expressions"></a>Logické výrazy
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $and | Ano |
-| $not | Ano |
-| $or | Ano |
+| $and | Yes |
+| $not | Yes |
+| $or | Yes |
 
 ### <a name="conversion-expressions"></a>Výrazy převodu
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $convert | Ano |
-| $toBool | Ano |
-| $toDate | Ano |
-| $toDecimal | Ano |
-| $toDouble | Ano |
-| $toInt | Ano |
-| $toLong | Ano |
-| $toObjectId | Ano |
-| $toString | Ano |
+| $convert | Yes |
+| $toBool | Yes |
+| $toDate | Yes |
+| $toDecimal | Yes |
+| $toDouble | Yes |
+| $toInt | Yes |
+| $toLong | Yes |
+| $toObjectId | Yes |
+| $toString | Yes |
 
 ### <a name="set-expressions"></a>Nastavovací výrazy
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $setEquals | Ano |
-| $setIntersection | Ano |
-| $setUnion | Ano |
-| $setDifference | Ano |
-| $setIsSubset | Ano |
-| $anyElementTrue | Ano |
-| $allElementsTrue | Ano |
+| $setEquals | Yes |
+| $setIntersection | Yes |
+| $setUnion | Yes |
+| $setDifference | Yes |
+| $setIsSubset | Yes |
+| $anyElementTrue | Yes |
+| $allElementsTrue | Yes |
 
 ### <a name="comparison-expressions"></a>Porovnávací výrazy
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $cmp | Ano |
-| $eq | Ano | 
-| $gt | Ano | 
-| $gte | Ano | 
-| $lt | Ano |
-| $lte | Ano | 
-| $ne | Ano | 
-| $in | Ano | 
-| $nin | Ano | 
+| $cmp | Yes |
+| $eq | Yes | 
+| $gt | Yes | 
+| $gte | Yes | 
+| $lt | Yes |
+| $lte | Yes | 
+| $ne | Yes | 
+| $in | Yes | 
+| $nin | Yes | 
 
 ### <a name="arithmetic-expressions"></a>Aritmetické výrazy
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $abs | Ano |
-| $add | Ano |
-| $ceil | Ano |
-| $divide | Ano |
-| $exp | Ano |
-| $floor | Ano |
-| $ln | Ano |
-| $log | Ano |
-| $log10 | Ano |
-| $mod | Ano |
-| $multiply | Ano |
-| $pow | Ano |
-| $sqrt | Ano |
-| $subtract | Ano |
-| $trunc | Ano |
+| $abs | Yes |
+| $add | Yes |
+| $ceil | Yes |
+| $divide | Yes |
+| $exp | Yes |
+| $floor | Yes |
+| $ln | Yes |
+| $log | Yes |
+| $log10 | Yes |
+| $mod | Yes |
+| $multiply | Yes |
+| $pow | Yes |
+| $sqrt | Yes |
+| $subtract | Yes |
+| $trunc | Yes |
 
 ### <a name="string-expressions"></a>Řetězcové výrazy
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $concat | Ano |
-| $indexOfBytes | Ano |
-| $indexOfCP | Ano |
-| $ltrim | Ano |
-| $rtrim | Ano |
-| $trim | Ano |
-| $split | Ano |
-| $strLenBytes | Ano |
-| $strLenCP | Ano |
-| $strcasecmp | Ano |
-| $substr | Ano |
-| $substrBytes | Ano |
-| $substrCP | Ano |
-| $toLower | Ano |
-| $toUpper | Ano |
+| $concat | Yes |
+| $indexOfBytes | Yes |
+| $indexOfCP | Yes |
+| $ltrim | Yes |
+| $rtrim | Yes |
+| $trim | Yes |
+| $split | Yes |
+| $strLenBytes | Yes |
+| $strLenCP | Yes |
+| $strcasecmp | Yes |
+| $substr | Yes |
+| $substrBytes | Yes |
+| $substrCP | Yes |
+| $toLower | Yes |
+| $toUpper | Yes |
 
 ### <a name="text-search-operator"></a>Operátor hledání textu
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $meta | Ne |
+| $meta | No |
 
 ### <a name="array-expressions"></a>Maticové výrazy
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $arrayElemAt | Ano |
-| $arrayToObject | Ano |
-| $concatArrays | Ano |
-| $filter | Ano |
-| $indexOfArray | Ano |
-| $isArray | Ano |
-| $objectToArray | Ano |
-| $range | Ano |
-| $reverseArray | Ano |
-| $reduce | Ano |
-| $size | Ano |
-| $slice | Ano |
-| $zip | Ano |
-| $in | Ano |
+| $arrayElemAt | Yes |
+| $arrayToObject | Yes |
+| $concatArrays | Yes |
+| $filter | Yes |
+| $indexOfArray | Yes |
+| $isArray | Yes |
+| $objectToArray | Yes |
+| $range | Yes |
+| $reverseArray | Yes |
+| $reduce | Yes |
+| $size | Yes |
+| $slice | Yes |
+| $zip | Yes |
+| $in | Yes |
 
 ### <a name="variable-operators"></a>Operátory proměnných
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $map | Ano |
-| $let | Ano |
+| $map | Yes |
+| $let | Yes |
 
 ### <a name="system-variables"></a>Systémové proměnné
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $ $CURRENT | Ano |
-| $ $DESCEND | Ano |
-| $ $KEEP | Ano |
-| $ $PRUNE | Ano |
-| $ $REMOVE | Ano |
-| $ $ROOT | Ano |
+| $ $CURRENT | Yes |
+| $ $DESCEND | Yes |
+| $ $KEEP | Yes |
+| $ $PRUNE | Yes |
+| $ $REMOVE | Yes |
+| $ $ROOT | Yes |
 
 ### <a name="literal-operator"></a>Operátor literálu
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $literal | Ano |
+| $literal | Yes |
 
 ### <a name="date-expressions"></a>Datumové výrazy
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $dayOfYear | Ano |
-| $dayOfMonth | Ano |
-| $dayOfWeek | Ano |
-| $year | Ano |
-| $month | Ano | 
-| $week | Ano |
-| $hour | Ano |
-| $minute | Ano | 
-| $second | Ano |
-| $millisecond | Ano | 
-| $dateToString | Ano |
-| $isoDayOfWeek | Ano |
-| $isoWeek | Ano |
-| $dateFromParts | Ne | 
-| $dateToParts | Ne |
-| $dateFromString | Ne |
-| $isoWeekYear | Ano |
+| $dayOfYear | Yes |
+| $dayOfMonth | Yes |
+| $dayOfWeek | Yes |
+| $year | Yes |
+| $month | Yes | 
+| $week | Yes |
+| $hour | Yes |
+| $minute | Yes | 
+| $second | Yes |
+| $millisecond | Yes | 
+| $dateToString | Yes |
+| $isoDayOfWeek | Yes |
+| $isoWeek | Yes |
+| $dateFromParts | No | 
+| $dateToParts | No |
+| $dateFromString | No |
+| $isoWeekYear | Yes |
 
 ### <a name="conditional-expressions"></a>Podmíněné výrazy
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $cond | Ano |
-| $ifNull | Ano |
-| $switch | Ano |
+| $cond | Yes |
+| $ifNull | Yes |
+| $switch | Yes |
 
 ### <a name="data-type-operator"></a>Operátor datového typu
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $type | Ano |
+| $type | Yes |
 
 ### <a name="accumulator-expressions"></a>Výrazy akumulovaných
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $sum | Ano |
-| $avg | Ano |
-| $first | Ano |
-| $last | Ano |
-| $max | Ano |
-| $min | Ano |
-| $push | Ano |
-| $addToSet | Ano |
-| $stdDevPop | Ano |
-| $stdDevSamp | Ano |
+| $sum | Yes |
+| $avg | Yes |
+| $first | Yes |
+| $last | Yes |
+| $max | Yes |
+| $min | Yes |
+| $push | Yes |
+| $addToSet | Yes |
+| $stdDevPop | Yes |
+| $stdDevSamp | Yes |
 
 ### <a name="merge-operator"></a>Operátor sloučení
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $mergeObjects | Ano |
+| $mergeObjects | Yes |
 
 ## <a name="data-types"></a>Typy dat
 
@@ -359,24 +359,24 @@ V [případě upgradu](mongodb-version-upgrade.md)nebudou dokumenty zapsané př
 | Příkaz | Podporováno |
 |---------|---------|
 | dvojité | Ano |
-| Řetězec | Ano |
-| Objekt | Ano |
-| Pole | Ano |
-| Binární data | Ano | 
-| ObjectId | Ano |
-| Logická hodnota | Ano |
-| Date (Datum) | Ano |
-| Null | Ano |
-| 32 bitové celé číslo (int) | Ano |
-| Timestamp | Ano |
-| 64-bitové celé číslo (Long) | Ano |
-| MinKey | Ano |
-| MaxKey | Ano |
-| Decimal128 | Ano | 
-| Regulární výraz | Ano |
-| JavaScript | Ano |
-| JavaScript (s rozsahem)| Ano |
-| Nedefinované | Ano |
+| Řetězec | Yes |
+| Objekt | Yes |
+| Pole | Yes |
+| Binární data | Yes | 
+| ObjectId | Yes |
+| Logická hodnota | Yes |
+| Date (Datum) | Yes |
+| Null | Yes |
+| 32 bitové celé číslo (int) | Yes |
+| Timestamp | Yes |
+| 64-bitové celé číslo (Long) | Yes |
+| MinKey | Yes |
+| MaxKey | Yes |
+| Decimal128 | Yes | 
+| Regulární výraz | Yes |
+| JavaScript | Yes |
+| JavaScript (s rozsahem)| Yes |
+| Nedefinované | Yes |
 
 ## <a name="indexes-and-index-properties"></a>Index a vlastnosti indexu
 
@@ -384,24 +384,24 @@ V [případě upgradu](mongodb-version-upgrade.md)nebudou dokumenty zapsané př
 
 | Příkaz | Podporováno |
 |---------|---------|
-| Index jednoho pole | Ano |
-| Složený index | Ano |
-| Multikey index | Ano |
-| Textový index | Ne |
-| 2dsphere | Ano |
-| 2D index | Ne |
-| Index s hodnotou hash | Ano |
+| Index jednoho pole | Yes |
+| Složený index | Yes |
+| Multikey index | Yes |
+| Textový index | No |
+| 2dsphere | Yes |
+| 2D index | No |
+| Index s hodnotou hash | Yes |
 
 ### <a name="index-properties"></a>Vlastnosti indexu
 
 | Příkaz | Podporováno |
 |---------|---------|
-| TTL | Ano |
-| Jedinečná | Ano |
-| Částečné | Ne |
-| Nerozlišuje malá a velká písmena. | Ne |
-| Řídké | Ne |
-| Pozadí | Ano |
+| TTL | Yes |
+| Jedinečná | Yes |
+| Částečné | No |
+| Nerozlišuje malá a velká písmena. | No |
+| Řídké | No |
+| Pozadí | Yes |
 
 ## <a name="operators"></a>Operátory
 
@@ -409,28 +409,28 @@ V [případě upgradu](mongodb-version-upgrade.md)nebudou dokumenty zapsané př
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $or | Ano |
-| $and | Ano |
-| $not | Ano |
-| $nor | Ano | 
+| $or | Yes |
+| $and | Yes |
+| $not | Yes |
+| $nor | Yes | 
 
 ### <a name="element-operators"></a>Operátory elementu
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $exists | Ano |
-| $type | Ano |
+| $exists | Yes |
+| $type | Yes |
 
 ### <a name="evaluation-query-operators"></a>Operátory dotazování pro vyhodnocení
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $expr | Ne |
-| $jsonSchema | Ne |
-| $mod | Ano |
-| $regex | Ano |
+| $expr | No |
+| $jsonSchema | No |
+| $mod | Yes |
+| $regex | Yes |
 | $text | Ne (není podporováno. Místo toho použijte $regex.)| 
-| $where | Ne | 
+| $where | No | 
 
 V $regexch dotazech jsou výrazy ukotvené zleva povoleny hledání v indexu. Použití modifikátorů „i“ (rozlišování malých a velkých písmen) a „m“ (více řádků) ale způsobí, že se kolekce prohledává ve všech výrazech.
 
@@ -444,23 +444,23 @@ V první části se použije index k omezení hledání na dokumenty, které za�
 
 | Příkaz | Podporováno | 
 |---------|---------|
-| $all | Ano | 
-| $elemMatch | Ano | 
-| $size | Ano | 
+| $all | Yes | 
+| $elemMatch | Yes | 
+| $size | Yes | 
 
 ### <a name="comment-operator"></a>Operátor komentáře
 
 | Příkaz | Podporováno | 
 |---------|---------|
-| $comment | Ano | 
+| $comment | Yes | 
 
 ### <a name="projection-operators"></a>Operátory projekce
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $elemMatch | Ano |
-| $meta | Ne |
-| $slice | Ano |
+| $elemMatch | Yes |
+| $meta | No |
+| $slice | Yes |
 
 ### <a name="update-operators"></a>Aktualizační operátory
 
@@ -468,64 +468,64 @@ V první části se použije index k omezení hledání na dokumenty, které za�
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $inc | Ano |
-| $mul | Ano |
-| $rename | Ano |
-| $setOnInsert | Ano |
-| $set | Ano |
-| $unset | Ano |
-| $min | Ano |
-| $max | Ano |
-| $currentDate | Ano |
+| $inc | Yes |
+| $mul | Yes |
+| $rename | Yes |
+| $setOnInsert | Yes |
+| $set | Yes |
+| $unset | Yes |
+| $min | Yes |
+| $max | Yes |
+| $currentDate | Yes |
 
 #### <a name="array-update-operators"></a>Operátory pro aktualizaci matic
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $ | Ano |
-| $[]| Ano |
-| $[<identifier>]| Ano |
-| $addToSet | Ano |
-| $pop | Ano |
-| $pullAll | Ano |
-| $pull | Ano |
-| $push | Ano |
-| $pushAll | Ano |
+| $ | Yes |
+| $[]| Yes |
+| $[<identifier>]| Yes |
+| $addToSet | Yes |
+| $pop | Yes |
+| $pullAll | Yes |
+| $pull | Yes |
+| $push | Yes |
+| $pushAll | Yes |
 
 #### <a name="update-modifiers"></a>Aktualizovat modifikátory
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $each | Ano |
-| $slice | Ano |
-| $sort | Ano |
-| $position | Ano |
+| $each | Yes |
+| $slice | Yes |
+| $sort | Yes |
+| $position | Yes |
 
 #### <a name="bitwise-update-operator"></a>Operátor pro bitovou aktualizaci
 
 | Příkaz | Podporováno |
 |---------|---------|
-| $bit | Ano | 
-| $bitsAllSet | Ne |
-| $bitsAnySet | Ne |
-| $bitsAllClear | Ne |
-| $bitsAnyClear | Ne |
+| $bit | Yes | 
+| $bitsAllSet | No |
+| $bitsAnySet | No |
+| $bitsAllClear | No |
+| $bitsAnyClear | No |
 
 ### <a name="geospatial-operators"></a>Geoprostorové operátory
 
 Operátor | Podporováno | 
 --- | --- |
-$geoWithin | Ano |
-$geoIntersects | Ano | 
-$near | Ano |
-$nearSphere | Ano |
-$geometry | Ano |
-$minDistance | Ano |
-$maxDistance | Ano |
-$center | Ne |
-$centerSphere | Ne |
-$box | Ne |
-$polygon | Ne |
+$geoWithin | Yes |
+$geoIntersects | Yes | 
+$near | Yes |
+$nearSphere | Yes |
+$geometry | Yes |
+$minDistance | Yes |
+$maxDistance | Yes |
+$center | No |
+$centerSphere | No |
+$box | No |
+$polygon | No |
 
 ## <a name="sort-operations"></a>Operace řazení
 
