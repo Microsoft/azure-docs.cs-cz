@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 11/30/2020
 ms.openlocfilehash: 014bcd6fc519c267cdf17e9e98b850425c25ead6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459324"
 ---
 # <a name="prepare-your-azure-container-technical-assets"></a>Příprava technických prostředků kontejneru Azure
@@ -43,7 +43,7 @@ Vyberte jedno z následujících skriptovacích prostředí, které vám pomůž
 
 Doporučujeme přidat tyto nástroje do vašeho vývojového prostředí:
 
-- [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

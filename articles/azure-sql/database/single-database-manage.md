@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93319286"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Vytváření a Správa serverů a samostatných databází v Azure SQL Database
@@ -123,9 +123,9 @@ Chcete-li vytvořit a spravovat servery, databáze a brány firewall pomocí jaz
 
 | Příkaz | Popis |
 | --- | --- |
-|[VYTVOŘIT DATABÁZI](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)|Vytvoří novou izolovanou databázi. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
+|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)|Vytvoří novou izolovanou databázi. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
 | [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Upraví databázi nebo elastický fond. |
-|[ZRUŠIT DATABÁZI](/sql/t-sql/statements/drop-database-transact-sql)|Odstraní databázi.|
+|[DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql)|Odstraní databázi.|
 |[sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edici edice (Service úrovně), cíl služby (cenová úroveň) a název elastického fondu, pokud existuje, pro Azure SQL Database nebo vyhrazený fond SQL ve službě Azure synapse Analytics. Pokud se přihlásíte k hlavní databázi na serveru v SQL Database, vrátí informace na všech databázích. Pro Azure synapse Analytics musíte být připojeni k hlavní databázi.|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Vrátí CPU, vstupně-výstupní operace a spotřebu paměti pro databázi v Azure SQL Database. Jeden řádek existuje každých 15 sekund, a to i v případě, že v databázi neexistuje žádná aktivita.|
 |[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Vrátí využití CPU a data úložiště pro databázi v Azure SQL Database. Data se shromažďují a agregují v intervalu pěti minut.|

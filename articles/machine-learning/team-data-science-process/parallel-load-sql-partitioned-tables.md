@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 456e881d84697f4542f972ac0798cc95a3455b3c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93322408"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Sestavování a optimalizace tabulek pro rychlý paralelní import dat do SQL Server na virtuálním počítači Azure
@@ -25,7 +25,7 @@ Tento článek popisuje, jak vytvořit dělené tabulky pro rychlé paralelní h
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Vytvoření nové databáze a sady skupin souborů
 * [Vytvořte novou databázi](/sql/t-sql/statements/create-database-transact-sql), pokud již neexistuje.
 * Přidejte do databáze skupiny souborů databáze, ve které jsou uloženy rozdělené fyzické soubory. 
-* To lze provést pomocí příkazu [Create Database](/sql/t-sql/statements/create-database-transact-sql) , pokud databáze [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options) již existuje.
+* To lze provést pomocí příkazu [Create Database](/sql/t-sql/statements/create-database-transact-sql) , pokud databáze [](/sql/t-sql/statements/alter-database-transact-sql-set-options) již existuje.
 * Přidejte jeden nebo více souborů (podle potřeby) do každé skupiny souborů databáze.
   
   > [!NOTE]

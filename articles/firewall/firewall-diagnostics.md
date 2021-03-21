@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
 ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788260"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Monitorování protokolů a metrik Azure Firewallu
@@ -24,7 +24,7 @@ Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste si přečíst [Azure firewall protokoly a metriky](logs-and-metrics.md) pro přehled diagnostických protokolů a metrik, které jsou k dispozici pro Azure firewall.
 

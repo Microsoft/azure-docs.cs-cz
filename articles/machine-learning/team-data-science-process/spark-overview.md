@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1dd82fb00c55e3676929999f204eae8755671038
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93314746"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Přehled vědeckého zpracování dat pomocí Sparku v Azure HDInsight
@@ -156,13 +156,13 @@ Jupyter Notebook můžete spustit z Azure Portal. Ve svém řídicím panelu naj
 
 ![Řídicí panely clusteru](./media/spark-overview/spark-jupyter-on-portal.png)
 
-*_`https://CLUSTERNAME.azurehdinsight.net/jupyter`_* Pro přístup k poznámkovým blokům Jupyter můžete také přejít na * _. V části této adresy URL nahraďte název clusteru názvem vašeho vlastního clusteru. Pro přístup k poznámkovým blokům potřebujete heslo pro účet správce.
+Můžete také přejít k ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** poznámkovým blokům Jupyter a získat k nim přístup. V části této adresy URL nahraďte název clusteru názvem vašeho vlastního clusteru. Pro přístup k poznámkovým blokům potřebujete heslo pro účet správce.
 
 ![Procházet Jupyter poznámkové bloky](./media/spark-overview/spark-jupyter-notebook.png)
 
 Pokud chcete zobrazit adresář obsahující několik příkladů předbalených poznámkových bloků, které používají rozhraní PySpark API, vyberte PySpark. Poznámkové bloky obsahující ukázky kódu pro tuto sadu Sparku jsou k dispozici na [GitHubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) .
 
-Poznámkové bloky můžete nahrát přímo z [GitHubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) na server Jupyter notebook v clusteru Spark. Na domovské stránce Jupyter klikněte na tlačítko _ *nahrát* * v pravé části obrazovky. Otevře se Průzkumník souborů. Sem můžete vložit adresu URL webu GitHub (nezpracovaný obsah) poznámkového bloku a kliknout na **otevřít**.
+Poznámkové bloky můžete nahrát přímo z [GitHubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) na server Jupyter notebook v clusteru Spark. Na domovské stránce Jupyter klikněte na tlačítko **nahrát** v pravé části obrazovky. Otevře se Průzkumník souborů. Sem můžete vložit adresu URL webu GitHub (nezpracovaný obsah) poznámkového bloku a kliknout na **otevřít**.
 
 V seznamu souborů Jupyter se znovu zobrazí název souboru s tlačítkem **Odeslat** . Klikněte na toto tlačítko **nahrát** . Nyní jste naimportovali Poznámkový blok. Zopakováním těchto kroků nahrajte další poznámkové bloky z tohoto návodu.
 
@@ -175,7 +175,7 @@ Nyní můžete:
 
 * Přečtěte si kód kliknutím na Poznámkový blok.
 * Každou buňku spustíte stisknutím **klávesy SHIFT + ENTER**.
-* Kliknutím na spustit v **buňce** spustíte celý Poznámkový blok  ->  **Run**.
+* Kliknutím na spustit v **buňce** spustíte celý Poznámkový blok  ->  .
 * Použijte automatickou vizualizaci dotazů.
 
 > [!TIP]
@@ -192,4 +192,4 @@ Teď, když jste nastavili cluster HDInsight Spark a nahráli Jupyter poznámkov
 
 **Spotřeba modelu:** Informace o tom, jak určit skóre modelů klasifikace a regrese vytvořených v tomto tématu, najdete v tématu [skóre a vyhodnocení modelů strojového učení](spark-model-consumption.md)s využitím Sparku.
 
-**Křížové ověřování a mazání pomocí parametrů** : viz [Pokročilá kontrola a modelování dat pomocí Sparku](spark-advanced-data-exploration-modeling.md) , jak lze modely vyškolené pomocí křížového ověřování a s možnostími úklidu Hyper-Parameter.
+**Křížové ověřování a mazání pomocí parametrů**: viz [Pokročilá kontrola a modelování dat pomocí Sparku](spark-advanced-data-exploration-modeling.md) , jak lze modely vyškolené pomocí křížového ověřování a s možnostími úklidu Hyper-Parameter.

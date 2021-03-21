@@ -12,10 +12,10 @@ ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452233"
 ---
 # <a name="string-claims-transformations"></a>Transformace deklarací řetězců
@@ -198,7 +198,7 @@ Určete, zda jedna deklarace identity řetězce je shodná s jinou. Výsledkem j
 | InputParameter | ignoreCase | boolean | Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců. |
 | OutputClaim | outputClaim | boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
-Pomocí této transformace deklarací identity zjistíte, jestli je deklarace identity rovna jiné deklaraci identity. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace **e-mailu** stejná jako **ověřená deklarace identity e-mailu** .
+Pomocí této transformace deklarací identity zjistíte, jestli je deklarace identity rovna jiné deklaraci identity. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace **e-mailu** rovna deklaraci identity **Verified.email** .
 
 ```xml
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">

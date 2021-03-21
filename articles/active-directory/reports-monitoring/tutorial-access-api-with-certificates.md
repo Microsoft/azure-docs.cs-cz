@@ -18,10 +18,10 @@ ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130047"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: získání dat pomocí rozhraní API pro vytváření sestav Azure Active Directory s certifikáty
@@ -34,7 +34,7 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu získat příst
 
 1. Chcete-li získat přístup k přihlašovacím datům, ujistěte se, že máte klienta Azure Active Directory s licencí Premium (P1/P2). Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . Všimněte si, že pokud jste před upgradem nedostali žádná data, bude trvat několik dní, než se data zobrazí v sestavách po upgradu na licenci Premium. 
 
-2. Vytvořte nebo přepněte na uživatelský účet v roli **globální správce** , **Správce zabezpečení** , **čtecí modul zabezpečení** nebo **čtenáře sestav** pro daného klienta. 
+2. Vytvořte nebo přepněte na uživatelský účet v roli **globální správce**, **Správce zabezpečení**, **čtecí modul zabezpečení** nebo **čtenáře sestav** pro daného klienta. 
 
 3. Dokončete [požadavky pro přístup k rozhraní API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md). 
 
@@ -45,7 +45,7 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu získat příst
     - Přístupové tokeny od uživatele, klíče aplikace a certifikáty pomocí ADAL
     - Rozhraní Graph API zpracovávající stránkové výsledky
 
-6. Pokud je to poprvé pomocí modulu **install-MSCloudIdUtilsModule** , jinak ho importujte pomocí příkazu **Import-Module** PowerShell. Vaše relace by měla vypadat podobně jako tato obrazovka: ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Pokud je to poprvé pomocí modulu **install-MSCloudIdUtilsModule**, jinak ho importujte pomocí příkazu **Import-Module** PowerShell. Vaše relace by měla vypadat podobně jako tato obrazovka: ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. K vytvoření testovacího certifikátu použijte rutinu **New-SelfSignedCertificate** prostředí PowerShell rutiny.
 
@@ -62,11 +62,11 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu získat příst
 
 ## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty
 
-1. Přejděte na [Azure Portal](https://portal.azure.com), vyberte **Azure Active Directory** , vyberte **Registrace aplikací** a zvolte svou aplikaci ze seznamu. 
+1. Přejděte na [Azure Portal](https://portal.azure.com), vyberte **Azure Active Directory**, vyberte **Registrace aplikací** a zvolte svou aplikaci ze seznamu. 
 
-2. V okně **Spravovat** oddíl v nabídce Správa vyberte **certifikáty & tajných** kódů a vyberte **nahrát certifikát** .
+2. V okně **Spravovat** oddíl v nabídce Správa vyberte **certifikáty & tajných** kódů a vyberte **nahrát certifikát**.
 
-3. Vyberte soubor certifikátu z předchozího kroku a vyberte **Přidat** . 
+3. Vyberte soubor certifikátu z předchozího kroku a vyberte **Přidat**. 
 
 4. Poznamenejte si ID aplikace a kryptografický otisk certifikátu, který jste právě zaregistrovali ve vaší aplikaci. Pokud chcete najít kryptografický otisk, na stránce aplikace na portálu klikněte na **certifikáty & tajných** kódů v části **Spravovat** oddíl. Kryptografický otisk bude v seznamu **certifikáty** .
 

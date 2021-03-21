@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861234"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>Použití sestavy přihlášení ke kontrole událostí Multi-Factor Authentication služby Azure AD
@@ -119,7 +119,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 Následující tabulka může pomoct řešit události pomocí stažené verze sestavy aktivity z předchozích kroků portálu nebo příkazů PowerShellu. Tyto kódy výsledku se nezobrazí přímo v Azure Portal.
 
-| Výsledek volání | Popis | Obecný popis |
+| Výsledek volání | Description | Obecný popis |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | Zadán kód PIN | Uživatel zadal kód PIN.  Pokud ověření proběhlo úspěšně, zadali jste správný PIN kód.  Pokud je ověřování odepřeno, zadali jste nesprávný kód PIN nebo je uživatel nastaven na standardní režim. |
 | SUCCESS_NO_PIN | Pouze zadání # | Pokud je uživatel nastavený na režim připnutí a ověřování je odepřeno, znamená to, že uživatel nezadal PIN kód a zadali jste jenom #.  Pokud je uživatel nastavený na standardní režim a ověřování je úspěšné, znamená to, že uživatel zadal jenom #, což je správné nastavení v režimu Standard. |
@@ -171,7 +171,7 @@ Následující tabulka může pomoct řešit události pomocí stažené verze s
 
 K dispozici jsou následující další informace a sestavy pro události MFA, včetně těch pro MFA Server:
 
-| Sestava | Umístění | Popis |
+| Sestava | Umístění | Description |
 |:--- |:--- |:--- |
 | Historie blokovaného uživatele | Azure AD > Security > MFA > blokování nebo odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
 | Využití pro místní součásti | Zpráva o aktivitě > > MFA služby Azure AD > Security | Poskytuje informace o celkovém využití MFA serveru prostřednictvím rozšíření NPS, ADFS a MFA serveru. |

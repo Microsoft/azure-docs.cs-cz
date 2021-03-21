@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f2294ccb1d958b229a71e45bb502b8134d8d5c7f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305670"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Fáze přijetí zákazníků v životním cyklu procesu vědeckého zpracování dat týmu
@@ -34,13 +34,13 @@ Tady je vizuální znázornění životního cyklu TDSP:
 
 
 ## <a name="goal"></a>Cíl
-**Finalizace dodávek projektu** : Ověřte, že kanál, model a jejich nasazení v produkčním prostředí odpovídají cílům zákazníka.
+**Finalizace dodávek projektu**: Ověřte, že kanál, model a jejich nasazení v produkčním prostředí odpovídají cílům zákazníka.
 
 ## <a name="how-to-do-it"></a>Jak to provést
 V této fázi jsou řešeny dva hlavní úkoly:
 
-   * **Ověření systému** : Ověřte, že nasazený model a kanál splňují požadavky zákazníka.
-   * **Projektový ruka-vypnuto** : projekt je možné předat do entity, ve které se spouští systém v produkčním prostředí.
+   * **Ověření systému**: Ověřte, že nasazený model a kanál splňují požadavky zákazníka.
+   * **Projektový ruka-vypnuto**: projekt je možné předat do entity, ve které se spouští systém v produkčním prostředí.
 
 Zákazník by měl ověřit, že systém splňuje své obchodní potřeby a že odpoví na otázky s přijatelnou přesností pro nasazení systému do produkčního prostředí pro použití jejich aplikací klienta. Všechna dokumentace se dokončuje a přezkoumávají. Projekt je předán do entity zodpovědné za operace. Tato entita může být například tým pro odborníky na IT nebo zákazníky nebo agent zákazníka, který je zodpovědný za provoz systému v produkčním prostředí. 
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861302"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Plánování nasazení Multi-Factor Authentication služby Azure AD
@@ -35,7 +35,7 @@ K rychlému zobrazení Multi-Factor Authentication Azure AD v akci a pak se vra�
 
 Před zahájením nasazení Multi-Factor Authentication služby Azure AD existují nezbytné položky, které byste měli vzít v úvahu.
 
-| Scénář | Požadavek |
+| Scenario | Požadavek |
 | --- | --- |
 | **Pouze cloudové** prostředí identity s moderním ověřováním | **Žádné další úlohy požadavků** |
 | **Hybridní** scénáře identity | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) je nasazený a identity uživatelů se synchronizují nebo federované s použitím místní Active Directory Domain Services Azure Active Directory. |
@@ -231,7 +231,7 @@ Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure
 ### <a name="create-conditional-access-policy"></a>Vytvořit zásady podmíněného přístupu
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce.
-1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup** zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >    >  **podmíněný přístup** zabezpečení.
 1. Vyberte **nové zásady**.
    ![Vytvoření zásady podmíněného přístupu pro povolení MFA pro uživatele Azure Portal v pilotní skupině](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Zadejte smysluplný název pro zásady.
@@ -357,7 +357,7 @@ Sestavy pro Azure AD MFA
 
 Služba Azure AD Multi-Factor Authentication poskytuje sestavy prostřednictvím Azure Portal:
 
-| Sestava | Umístění | Popis |
+| Sestava | Umístění | Description |
 | --- | --- | --- |
 | Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |
 

@@ -1,6 +1,6 @@
 ---
 title: Správa svazků ve virtuálním poli StorSimple | Microsoft Docs
-description: Popisuje StorSimple Device Manager a vysvětluje, jak ho použít ke správě svazků ve virtuálním poli StorSimple.
+description: Popisuje StorSimple Správce zařízení a vysvětluje, jak ho použít ke správě svazků ve virtuálním poli StorSimple.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 79e3ce8c1605e5d68ff44901f53854d2f5f10abc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96014376"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Použití služby Správce zařízení StorSimple ke správě svazků ve službě StorSimple Virtual Array
 
 ## <a name="overview"></a>Přehled
 
-V tomto kurzu se dozvíte, jak pomocí služby StorSimple Device Manager vytvářet a spravovat svazky ve virtuálním poli StorSimple.
+V tomto kurzu se dozvíte, jak pomocí služby StorSimple Správce zařízení vytvářet a spravovat svazky ve virtuálním poli StorSimple.
 
-Služba StorSimple Device Manager je rozšíření v Azure Portal, které umožňuje spravovat řešení StorSimple z jediného webového rozhraní. Kromě správy sdílených složek a svazků můžete pomocí služby StorSimple Device Manager zobrazovat a spravovat zařízení, zobrazovat výstrahy a zobrazovat a spravovat zásady zálohování a katalog záloh.
+Služba StorSimple Správce zařízení je rozšíření v Azure Portal, které umožňuje spravovat řešení StorSimple z jediného webového rozhraní. Kromě správy sdílených složek a svazků můžete pomocí služby StorSimple Správce zařízení zobrazovat a spravovat zařízení, zobrazovat výstrahy a zobrazovat a spravovat zásady zálohování a katalog záloh.
 
 ## <a name="volume-types"></a>Typy svazků
 
@@ -39,7 +39,7 @@ StorSimple svazky mohou být:
 ### <a name="provisioned-capacity"></a>Zřízená kapacita
 V následující tabulce najdete maximální zřízenou kapacitu pro každý typ svazku.
 
-| **Identifikátor omezení**                                       | **Omezení**     |
+| **Identifikátor omezení**                                       | **Počtu**     |
 |------------------------------------------------------------|---------------|
 | Minimální velikost vrstveného svazku                            | 500 GB        |
 | Maximální velikost vrstveného svazku                            | 5 TB          |

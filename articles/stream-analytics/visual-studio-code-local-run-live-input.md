@@ -7,15 +7,15 @@ ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
 ms.openlocfilehash: dd4966ee75e9dc0ff401823e4291f8d299c8893c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93122890"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Test Stream Analytics dotazy místně proti vstupu živého datového proudu pomocí Visual Studio Code
 
-Můžete použít Azure Stream Analytics nástroje pro Visual Studio Code k otestování Stream Analytics úloh místně proti vstupu do živého streamu. Vstup může pocházet ze zdroje, jako je Azure Event Hubs nebo Azure IoT Hub. Výsledky výstupu se odesílají jako soubory JSON do složky ve vašem projektu s názvem **LocalRunOutputs** .
+Můžete použít Azure Stream Analytics nástroje pro Visual Studio Code k otestování Stream Analytics úloh místně proti vstupu do živého streamu. Vstup může pocházet ze zdroje, jako je Azure Event Hubs nebo Azure IoT Hub. Výsledky výstupu se odesílají jako soubory JSON do složky ve vašem projektu s názvem **LocalRunOutputs**.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -29,7 +29,7 @@ Můžete použít Azure Stream Analytics nástroje pro Visual Studio Code k otes
 
    ![Přidat vstup ze složky Inputs](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-   Můžete také vybrat **CTRL + SHIFT + P** a otevřít paletu příkazů a zadat **ASA: přidat vstup** .
+   Můžete také vybrat **CTRL + SHIFT + P** a otevřít paletu příkazů a zadat **ASA: přidat vstup**.
 
    ![Přidat vstup Stream Analytics v Visual Studio Code](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -37,7 +37,7 @@ Můžete použít Azure Stream Analytics nástroje pro Visual Studio Code k otes
 
    ![Jako vstupní možnost vyberte IoT Hub.](./media/quick-create-visual-studio-code/iot-hub.png)
 
-3. Pokud jste přidali vstup z palety příkazů, vyberte Stream Analytics skript dotazu, který bude používat vstup. Měl by se automaticky naplnit cestou k souboru **myASAproj. asaql** .
+3. Pokud jste přidali vstup z palety příkazů, vyberte Stream Analytics skript dotazu, který bude používat vstup. Měl by se automaticky naplnit cestou k souboru **myASAproj. asaql**.
 
    ![Vyberte Stream Analytics skript v Visual Studio Code](./media/quick-create-visual-studio-code/asa-script.png)
 
@@ -57,7 +57,7 @@ Aby se zajistilo, že vstupní data přicházejí, vyberte v horním řádku mo�
 
 ## <a name="run-queries-locally"></a>Spustit dotazy místně
 
-Vraťte se do editoru dotazů a vyberte **spustit místně** . Pak v rozevíracím seznamu vyberte **použít živý vstup** .
+Vraťte se do editoru dotazů a vyberte **spustit místně**. Pak v rozevíracím seznamu vyberte **použít živý vstup** .
 
 ![V editoru dotazů vyberte spustit místně.](./media/vscode-local-run/run-locally.png)
 
@@ -65,7 +65,7 @@ Vraťte se do editoru dotazů a vyberte **spustit místně** . Pak v rozevírac�
 
 Výsledek se zobrazí v pravém okně a každé 3 sekundy se aktualizuje. Můžete znovu vybrat možnost **Spustit** pro otestování. Můžete také vybrat **otevřít ve složce** a zobrazit soubory výsledků v Průzkumníkovi souborů a otevřít je pomocí Visual Studio Code nebo nástroje, jako je Excel. Všimněte si, že soubory výsledků jsou k dispozici pouze ve formátu JSON.
 
-Výchozí čas, kdy se má úloha začít vytvářet výstup, je nastavená na hodnotu **nyní** . Čas můžete přizpůsobit tak, že v okně výsledků vyberete tlačítko **čas spuštění výstupu** .
+Výchozí čas, kdy se má úloha začít vytvářet výstup, je nastavená na hodnotu **nyní**. Čas můžete přizpůsobit tak, že v okně výsledků vyberete tlačítko **čas spuštění výstupu** .
 
 ![Zobrazit výsledky místního spuštění](./media/vscode-local-run-live-input/vscode-livetesting.gif)
 

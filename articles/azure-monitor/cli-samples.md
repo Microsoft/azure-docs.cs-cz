@@ -7,16 +7,16 @@ ms.author: bwren
 ms.date: 05/16/2018
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8eaf8c2e140f0b323db0c20a2e9946884c51df04
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102039168"
 ---
 # <a name="azure-monitor-cli-samples"></a>Ukázky Azure Monitor CLI
 V tomto článku se dozvíte, jak vzorkovat příkazy rozhraní příkazového řádku (CLI), které vám pomůžou při přístupu k funkcím Azure Monitor. Azure Monitor umožňuje automatické škálování Cloud Services, Virtual Machines a Web Apps a odesílání oznámení o výstrahách nebo volání webových adres URL na základě hodnot nakonfigurovaných dat telemetrie.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud jste rozhraní příkazového řádku Azure ještě nenainstalovali, postupujte podle pokynů pro [instalaci rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Můžete také použít [Azure Cloud Shell](/azure/cloud-shell) ke spuštění CLI jako interaktivní prostředí v prohlížeči. Podívejte se na úplný odkaz na všechny dostupné příkazy v [odkazu Azure monitor CLI](/cli/azure/monitor). 
 

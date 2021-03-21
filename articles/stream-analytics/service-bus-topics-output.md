@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: bee6e5547ad78554467f23968230721ba029aba6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102451758"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus výstup témat z Azure Stream Analytics
@@ -19,7 +19,7 @@ Fronty Service Bus poskytují metodu komunikace 1:1 od odesílatele k přijíma�
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vytvoření výstupu Service Bus tématu.
 
-| Název vlastnosti | Popis |
+| Název vlastnosti | Description |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k přesměrování výstupu dotazu do tohoto Service Bus tématu. |
 | Obor názvů Service Bus |Kontejner pro sadu entit zasílání zpráv. Při vytváření nového centra událostí jste také vytvořili Service Bus obor názvů. |

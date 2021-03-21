@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: feb28b1d448d0146046ed789d1389a3a42f344de
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94557663"
 ---
 # <a name="secure-boot"></a>Zabezpečené spouštění
@@ -57,6 +57,6 @@ Další informace o tom, co máme k zajištění integrity a zabezpečení platf
 
 - [Zabezpečení firmwaru](firmware.md)
 - [Měřené ověření spouštění a ověřování hostitele](measured-boot-host-attestation.md)
-- [Cerberus projektu](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Šifrování neaktivních uložených dat](encryption-atrest.md)
 - [Zabezpečení hypervisoru](hypervisor.md)

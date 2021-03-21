@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96451780"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Dočasné tabulky v synapse SQL
@@ -33,7 +33,7 @@ Ve vyhrazeném prostředku fondu SQL nabízí dočasné tabulky přínos pro zv�
 
 ### <a name="create-a-temporary-table"></a>Vytvoření dočasné tabulky
 
-Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#` příponou.  Příklad:
+Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#` příponou.  Například:
 
 ```sql
 CREATE TABLE #stats_ddl

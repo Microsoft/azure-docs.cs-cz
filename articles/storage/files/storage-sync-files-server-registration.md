@@ -1,6 +1,6 @@
 ---
-title: Správa registrovaných serverů pomocí Azure File Sync | Microsoft Docs
-description: Naučte se registrovat a odregistrovat Windows Server pomocí Azure File Sync služby synchronizace úložiště.
+title: Správa registrovaných serverů pomocí Synchronizace souborů Azure | Microsoft Docs
+description: Naučte se registrovat a odregistrovat Windows Server pomocí Synchronizace souborů Azure služby synchronizace úložiště.
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,25 +8,25 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 194b0f2ff94197fe11c189e97dbc65c9d0367932
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013917"
 ---
-# <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí Azure File Sync
+# <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí Synchronizace souborů Azure
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
 
-Následující článek ukazuje, jak zaregistrovat a spravovat server pomocí služby synchronizace úložiště. Informace o tom, jak nasadit Azure File Sync kompletní, najdete v tématu [nasazení Azure File Sync](storage-sync-files-deployment-guide.md) .
+Následující článek ukazuje, jak zaregistrovat a spravovat server pomocí služby synchronizace úložiště. Informace o tom, jak nasadit Synchronizace souborů Azure kompletní, najdete v tématu [nasazení synchronizace souborů Azure](storage-sync-files-deployment-guide.md) .
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Registrace nebo zrušení registrace serveru pomocí služby synchronizace úložiště
-Registrace serveru pomocí Azure File Sync vytvoří vztah důvěryhodnosti mezi Windows serverem a Azure. Tento vztah se pak dá použít k vytvoření *koncových bodů serveru* na serveru, který představuje konkrétní složky, které se mají synchronizovat se sdílenou složkou Azure (označovanou také jako *koncový bod cloudu*). 
+Registrace serveru pomocí Synchronizace souborů Azure vytvoří vztah důvěryhodnosti mezi Windows serverem a Azure. Tento vztah se pak dá použít k vytvoření *koncových bodů serveru* na serveru, který představuje konkrétní složky, které se mají synchronizovat se sdílenou složkou Azure (označovanou také jako *koncový bod cloudu*). 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Pokud chcete zaregistrovat server se službou synchronizace úložiště, musíte nejdřív připravit server s nezbytnými požadavky:
 
-* Na serveru musí běžet podporovaná verze Windows serveru. Další informace najdete v tématu [Azure File Sync požadavky na systém a interoperabilita](storage-sync-files-planning.md#windows-file-server-considerations).
-* Ujistěte se, že je nasazená služba synchronizace úložiště. Další informace o tom, jak nasadit službu synchronizace úložiště, najdete v tématu [nasazení Azure File Sync](storage-sync-files-deployment-guide.md).
+* Na serveru musí běžet podporovaná verze Windows serveru. Další informace najdete v tématu [synchronizace souborů Azure požadavky na systém a interoperabilita](storage-sync-files-planning.md#windows-file-server-considerations).
+* Ujistěte se, že je nasazená služba synchronizace úložiště. Další informace o tom, jak nasadit službu synchronizace úložiště, najdete v tématu [nasazení synchronizace souborů Azure](storage-sync-files-deployment-guide.md).
 * Ujistěte se, že je server připojený k Internetu a že je k dispozici Azure.
 * Zakažte konfiguraci rozšířeného zabezpečení IE pro správce pomocí uživatelského rozhraní Správce serveru.
     
@@ -58,25 +58,25 @@ Pokud chcete zaregistrovat server se službou synchronizace úložiště, musít
 ```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>Registrace serveru se službou synchronizace úložiště
-Předtím, než se server dá použít jako *koncový bod serveru* ve *skupině synchronizace* Azure File Sync, musí být zaregistrovaný ve *službě synchronizace úložiště*. Server lze registrovat současně pouze s jednou službou synchronizace úložiště.
+Předtím, než se server dá použít jako *koncový bod serveru* ve *skupině synchronizace* synchronizace souborů Azure, musí být zaregistrovaný ve *službě synchronizace úložiště*. Server lze registrovat současně pouze s jednou službou synchronizace úložiště.
 
 #### <a name="install-the-azure-file-sync-agent"></a>Instalace agenta Synchronizace souborů Azure
-1. [Stáhněte agenta Azure File Sync](https://go.microsoft.com/fwlink/?linkid=858257).
-2. Spusťte instalační program agenta Azure File Sync.
+1. [Stáhněte agenta synchronizace souborů Azure](https://go.microsoft.com/fwlink/?linkid=858257).
+2. Spusťte instalační program agenta Synchronizace souborů Azure.
     
-    ![První podokno instalačního programu agenta Azure File Sync](media/storage-sync-files-server-registration/install-afs-agent-1.png)
+    ![První podokno instalačního programu agenta Synchronizace souborů Azure](media/storage-sync-files-server-registration/install-afs-agent-1.png)
 
-3. Nezapomeňte povolit aktualizace agenta Azure File Sync pomocí Microsoft Update. Je důležité, protože důležité opravy zabezpečení a vylepšení funkcí balíčku serveru jsou dodávány prostřednictvím Microsoft Update.
+3. Nezapomeňte povolit aktualizace agenta Synchronizace souborů Azure pomocí Microsoft Update. Je důležité, protože důležité opravy zabezpečení a vylepšení funkcí balíčku serveru jsou dodávány prostřednictvím Microsoft Update.
 
-    ![Ujistěte se, že je povolená možnost Microsoft Update v podokně Microsoft Update instalačního programu agenta Azure File Sync](media/storage-sync-files-server-registration/install-afs-agent-2.png)
+    ![Ujistěte se, že je povolená možnost Microsoft Update v podokně Microsoft Update instalačního programu agenta Synchronizace souborů Azure](media/storage-sync-files-server-registration/install-afs-agent-2.png)
 
 4. Pokud server nebyl dřív zaregistrován, uživatelské rozhraní pro registraci serveru se po dokončení instalace okamžitě zobrazí.
 
 > [!Important]  
-> Pokud je server členem clusteru s podporou převzetí služeb při selhání, musí být agent Azure File Sync nainstalovaný na všech uzlech v clusteru.
+> Pokud je server členem clusteru s podporou převzetí služeb při selhání, musí být agent Synchronizace souborů Azure nainstalovaný na všech uzlech v clusteru.
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>Registrace serveru pomocí uživatelského rozhraní pro registraci serveru
-1. Pokud se uživatelské rozhraní pro registraci serveru nespouštělo hned po dokončení instalace agenta Azure File Sync, můžete ho spustit ručně spuštěním příkazu `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` .
+1. Pokud se uživatelské rozhraní pro registraci serveru nespouštělo hned po dokončení instalace agenta Synchronizace souborů Azure, můžete ho spustit ručně spuštěním příkazu `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` .
 2. Pro přístup k předplatnému Azure klikněte na *Přihlásit* se. 
 
     ![Otevření dialogového okna registračního uživatelského rozhraní serveru](media/storage-sync-files-server-registration/server-registration-ui-1.png)
@@ -90,7 +90,7 @@ Předtím, než se server dá použít jako *koncový bod serveru* ve *skupině 
     ![Přihlašovací dialogové okno](media/storage-sync-files-server-registration/server-registration-ui-3.png)
 
 > [!Important]  
-> Pokud je server členem clusteru s podporou převzetí služeb při selhání, musí každý server spustit registraci serveru. Po zobrazení registrovaných serverů na webu Azure Portal Azure File Sync automaticky rozpoznává každý uzel jako člena stejného clusteru s podporou převzetí služeb při selhání a odpovídajícím způsobem seskupuje jejich dohromady.
+> Pokud je server členem clusteru s podporou převzetí služeb při selhání, musí každý server spustit registraci serveru. Po zobrazení registrovaných serverů na webu Azure Portal Synchronizace souborů Azure automaticky rozpoznává každý uzel jako člena stejného clusteru s podporou převzetí služeb při selhání a odpovídajícím způsobem seskupuje jejich dohromady.
 
 #### <a name="register-the-server-with-powershell"></a>Registrace serveru pomocí PowerShellu
 Můžete taky provést registraci serveru přes PowerShell. 
@@ -103,10 +103,10 @@ Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -St
 Zrušení registrace serveru pomocí služby synchronizace úložiště vyžaduje několik kroků. Pojďme se podívat, jak správně zrušit registraci serveru.
 
 > [!Warning]  
-> Nepokoušejte se řešit potíže se synchronizací, vrstvením cloudu nebo jakýmkoli jiným aspektem Azure File Sync zrušením registrace a registrace serveru nebo odebráním a opětovným vytvořením koncových bodů serveru, pokud je neexplicitně nevydá pokyn pro inženýra společnosti Microsoft. Zrušení registrace serveru a odebrání koncových bodů serveru je destruktivní operace a vrstvený soubor na svazcích s koncovými body serveru se po opětovném vytvoření zaregistrovaného serveru a koncových bodů serveru znovu nepřipojí ke svým umístěním ve sdílené složce Azure, což způsobí chyby synchronizace. Všimněte si také, že vrstvené soubory, které existují mimo obor názvů koncového bodu serveru, mohou být trvale ztraceny. Vrstvené soubory můžou existovat v rámci koncových bodů serveru i v případě, že se vrstva cloudu nikdy nepovolila.
+> Nepokoušejte se řešit potíže se synchronizací, vrstvením cloudu nebo jakýmkoli jiným aspektem Synchronizace souborů Azure zrušením registrace a registrace serveru nebo odebráním a opětovným vytvořením koncových bodů serveru, pokud je neexplicitně nevydá pokyn pro inženýra společnosti Microsoft. Zrušení registrace serveru a odebrání koncových bodů serveru je destruktivní operace a vrstvený soubor na svazcích s koncovými body serveru se po opětovném vytvoření zaregistrovaného serveru a koncových bodů serveru znovu nepřipojí ke svým umístěním ve sdílené složce Azure, což způsobí chyby synchronizace. Všimněte si také, že vrstvené soubory, které existují mimo obor názvů koncového bodu serveru, mohou být trvale ztraceny. Vrstvené soubory můžou existovat v rámci koncových bodů serveru i v případě, že se vrstva cloudu nikdy nepovolila.
 
 #### <a name="optional-recall-all-tiered-data"></a>Volitelné Odvolat všechna vrstvená data
-Pokud byste chtěli, aby byly soubory, které jsou aktuálně vrstveny po odebrání Azure File Sync (tj. Jedná se o produkční, nikoli test, prostředí), odvoláte všechny soubory na každém svazku, který obsahuje koncové body serveru. Zakažte vrstvení cloudu pro všechny koncové body serveru a pak spusťte následující rutinu PowerShellu:
+Pokud byste chtěli, aby byly soubory, které jsou aktuálně vrstveny po odebrání Synchronizace souborů Azure (tj. Jedná se o produkční, nikoli test, prostředí), odvoláte všechny soubory na každém svazku, který obsahuje koncové body serveru. Zakažte vrstvení cloudu pro všechny koncové body serveru a pak spusťte následující rutinu PowerShellu:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -148,19 +148,19 @@ Teď, když jsou všechna data odvolána a server byl odebrán ze všech skupin 
 
     ![Zrušit registraci serveru](media/storage-sync-files-server-registration/unregister-server-1.png)
 
-## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>Zajištění, že Azure File Sync je dobrým sousedem ve vašem datovém centru 
-Vzhledem k tomu, že Azure File Sync bude jenom zřídka jediná služba běžící ve vašem datovém centru, možná budete chtít omezit využití sítě a úložiště Azure File Sync.
+## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>Zajištění, že Synchronizace souborů Azure je dobrým sousedem ve vašem datovém centru 
+Vzhledem k tomu, že Synchronizace souborů Azure bude jenom zřídka jediná služba běžící ve vašem datovém centru, možná budete chtít omezit využití sítě a úložiště Synchronizace souborů Azure.
 
 > [!Important]  
-> Nastavení omezení je příliš nízké, bude mít vliv na výkon Azure File Sync synchronizace a odvolání.
+> Nastavení omezení je příliš nízké, bude mít vliv na výkon Synchronizace souborů Azure synchronizace a odvolání.
 
-### <a name="set-azure-file-sync-network-limits"></a>Nastavit Azure File Sync omezení sítě
-Využití sítě Azure File Sync můžete omezit pomocí `StorageSyncNetworkLimit` rutin.
+### <a name="set-azure-file-sync-network-limits"></a>Nastavit Synchronizace souborů Azure omezení sítě
+Využití sítě Synchronizace souborů Azure můžete omezit pomocí `StorageSyncNetworkLimit` rutin.
 
 > [!Note]  
 > Omezení sítě se nevztahují, když je k vrstvenému souboru přistupoval.
 
-Můžete například vytvořit nové omezení omezení, abyste zajistili, že Azure File Sync nepoužívá více než 10 MB/s v rozmezí od 9 do 9:00 do 5 hodin (17:00h) během pracovního týdne: 
+Můžete například vytvořit nové omezení omezení, abyste zajistili, že Synchronizace souborů Azure nepoužívá více než 10 MB/s v rozmezí od 9 do 9:00 do 5 hodin (17:00h) během pracovního týdne: 
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -180,7 +180,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ```
 
 ### <a name="use-windows-server-storage-qos"></a>Použití technologie QoS pro úložiště Windows serveru 
-Pokud je Azure File Sync hostovaný na virtuálním počítači, který běží na hostiteli virtualizace Windows serveru, můžete použít QoS úložiště (kvalitu služby úložiště) a regulovat spotřebu v/v úložiště. Zásadu QoS úložiště je možné nastavit buď jako maximální (nebo jako limit, jako je StorageSyncNetwork limit), nebo jako minimum (nebo rezervace). Nastavení minimální hodnoty, než je maximum, umožňuje Azure File Sync nárůstu využití dostupné šířky pásma úložiště, pokud jiné úlohy je nepoužívají. Další informace najdete v tématu [kvalita služby úložiště](/windows-server/storage/storage-qos/storage-qos-overview).
+Pokud je Synchronizace souborů Azure hostovaný na virtuálním počítači, který běží na hostiteli virtualizace Windows serveru, můžete použít QoS úložiště (kvalitu služby úložiště) a regulovat spotřebu v/v úložiště. Zásadu QoS úložiště je možné nastavit buď jako maximální (nebo jako limit, jako je StorageSyncNetwork limit), nebo jako minimum (nebo rezervace). Nastavení minimální hodnoty, než je maximum, umožňuje Synchronizace souborů Azure nárůstu využití dostupné šířky pásma úložiště, pokud jiné úlohy je nepoužívají. Další informace najdete v tématu [kvalita služby úložiště](/windows-server/storage/storage-qos/storage-qos-overview).
 
 ## <a name="see-also"></a>Viz také
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)

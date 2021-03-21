@@ -11,10 +11,10 @@ manager: cpendle
 ms.custom: mvc
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 3c0f95c1252b6895b4604d14e5565395beab8952
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102039644"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>Rychlý Start: Vytvoření aplikace pro Android pomocí Azure Maps
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak přidat Azure Maps do aplikace pro Android. Pr
 * Odkaz na knihovny Azure Maps z projektu.
 * Přidejte do aplikace ovládací prvek Azure Maps.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Vytvořte účet Azure Maps tím, že se přihlásíte k [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)

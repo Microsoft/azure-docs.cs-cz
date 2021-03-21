@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 05978b7300c401a0658d6c3316f37735fcb70c20
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Kurz: Azure Active Directory integrace s Trisotech Digital Enterprise Server
@@ -130,7 +130,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí serveru 
 
     ![Snímek obrazovky ukazuje konfigurace poskytovatele uživatelských služeb, kde můžete zadat hodnoty, které jsou popsány.](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
-    a. Z rozevíracího seznamu v **metodě ověřování**vyberte **zabezpečený kód kontrolního výrazu (SAML 2)** .
+    a. Z rozevíracího seznamu v **metodě ověřování** vyberte **zabezpečený kód kontrolního výrazu (SAML 2)** .
 
     b. Do textového pole **Adresa URL metadat** vložte hodnotu **URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
 
@@ -146,7 +146,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí serveru 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -170,7 +170,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Trisotech Digital Enterprise serveru.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Trisotech Digital Enterprise Server**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace** a pak vyberte **Trisotech Digital Enterprise Server**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -205,7 +205,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici Server Trisotech Digital Enterprise na přístupovém panelu byste se měli automaticky přihlášeni k serveru Trisotech Digital Enterprise, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 

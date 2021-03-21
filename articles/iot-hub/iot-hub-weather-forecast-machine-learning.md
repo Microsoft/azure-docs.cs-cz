@@ -11,10 +11,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
 ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452339"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Předpověď počasí s využitím dat ze senzorů ze služby IoT Hub v Azure Machine Learning Studio (Classic)
@@ -231,7 +231,7 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V úloze Stream Analytics v levém podokně vyberte **Přehled** . Pak vyberte **Spustit**  >  **nyní**  >  **Start**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
+V úloze Stream Analytics v levém podokně vyberte **Přehled** . Pak vyberte **Spustit**  >  **nyní**  >  . Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
 ![Spuštění úlohy Stream Analytics](media/iot-hub-weather-forecast-machine-learning/run-stream-analytics-job.png)
 
@@ -248,7 +248,7 @@ Spusťte klientskou aplikaci, která začne shromažďovat a odesílat data o te
 
    ![Získání výsledku předpovědi počasí pomocí Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Úspěšně jste používali Azure Machine Learning Studio (Classic) k získání pravděpodobnosti deště na základě dat o teplotě a vlhkosti, které vaše centrum IoT obdrží.
 

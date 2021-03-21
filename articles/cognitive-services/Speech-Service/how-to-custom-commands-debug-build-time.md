@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: aeb90e8e064c44f4d17f920261ed58310f0e55f0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95025697"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Ladění chyb při vytváření vlastní aplikace příkazů
@@ -54,7 +54,7 @@ LUIS má integrované záměry ano/ne. V případě ukázkových vět, které ma
 | Klíčové slovo | Odchylky | 
 | ------- | --------- | 
 | Yes | Ujistěte se, OK |
-| Ne | Ne, ne | 
+| No | Ne, ne | 
 
 ### <a name="common-sample-sentences"></a>Společné ukázkové věty
 Vlastní příkazy neumožňují společné ukázkové věty sdílené mezi různými příkazy. Školení aplikace může selhat, pokud jsou některé ukázkové věty v jednom příkazu již definovány v jiném příkazu. 

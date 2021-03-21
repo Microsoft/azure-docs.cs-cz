@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490318"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps připojení ke službě IoT Hub a poštovní schránce
@@ -70,7 +70,7 @@ Vytvořte oboru názvů a frontu Service Bus. Později v tomto tématu vytvoří
 
 ### <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Busu
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte **+ vytvořit Service Bus pro**  >  **integraci**prostředků  >  **Service Bus**.
+1. V [Azure Portal](https://portal.azure.com/)vyberte **+ vytvořit Service Bus pro**  >  **integraci** prostředků  >  .
 
 1. V podokně **vytvořit obor názvů** zadejte následující informace:
 
@@ -96,9 +96,9 @@ Vytvořte oboru názvů a frontu Service Bus. Později v tomto tématu vytvoří
 
    ![Přidat frontu služby Service Bus do Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. Zpátky v podokně **obor názvů Service Bus** v části **entity**vyberte **fronty**. Otevřete Service Busovou frontu ze seznamu a pak vyberte **zásady sdíleného přístupu**  >  **+ Přidat**.
+1. Zpátky v podokně **obor názvů Service Bus** v části **entity** vyberte **fronty**. Otevřete Service Busovou frontu ze seznamu a pak vyberte **zásady sdíleného přístupu**  >  **+ Přidat**.
 
-1. Zadejte název zásady, zaškrtněte **Spravovat**a pak vyberte **vytvořit**.
+1. Zadejte název zásady, zaškrtněte **Spravovat** a pak vyberte **vytvořit**.
 
    ![Přidat zásadu fronty služby Service Bus do Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/2-add-service-bus-queue-azure-portal.png)
 
@@ -110,7 +110,7 @@ Přidáním vlastního koncového bodu pro frontu Service Bus do služby IoT Hub
 
 1. Otevřete Centrum IoT. Nejjednodušší způsob, jak se dostat do služby IoT Hub, je vybrat **skupiny prostředků** v podokně prostředek, vybrat skupinu prostředků a pak ze seznamu prostředků vybrat centrum IoT.
 
-1. V části **zasílání zpráv**vyberte **směrování zpráv**. V podokně **směrování zpráv** vyberte kartu **vlastní koncové body** a pak vyberte **+ Přidat**. V rozevíracím seznamu vyberte **fronta služby Service Bus**.
+1. V části **zasílání zpráv** vyberte **směrování zpráv**. V podokně **směrování zpráv** vyberte kartu **vlastní koncové body** a pak vyberte **+ Přidat**. V rozevíracím seznamu vyberte **fronta služby Service Bus**.
 
    ![Snímek obrazovky, který zvýrazní možnost fronty služby Service Bus.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
@@ -176,7 +176,7 @@ V předchozí části nastavíte službu IoT Hub pro směrování zpráv, které
 
    ![Pokud chcete začít vytvářet aplikaci logiky v Azure Portal, vyberte Service Bus.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
 
-1. V části **triggery**vyberte, **kdy se jedna nebo více zpráv dostane do fronty (automatické dokončování)**.
+1. V části **triggery** vyberte, **kdy se jedna nebo více zpráv dostane do fronty (automatické dokončování)**.
 
    ![Vyberte Trigger vaší aplikace logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
 
@@ -189,7 +189,7 @@ V předchozí části nastavíte službu IoT Hub pro směrování zpráv, které
 
       ![Vytvořte připojení ke službě Service Bus pro vaši aplikaci logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 
-   1. Na poslední obrazovce pro **název fronty**vyberte z rozevíracího seznamu frontu, kterou jste vytvořili. Zadejte `175` pro **maximální počet zpráv**.
+   1. Na poslední obrazovce pro **název fronty** vyberte z rozevíracího seznamu frontu, kterou jste vytvořili. Zadejte `175` pro **maximální počet zpráv**.
 
       ![Zadejte maximální počet zpráv pro připojení služby Service Bus ve vaší aplikaci logiky.](media/iot-hub-monitoring-notifications-with-azure-logic-apps/8-specify-maximum-message-count-for-service-bus-connection-logic-app-azure-portal.png)
 
@@ -199,7 +199,7 @@ V předchozí části nastavíte službu IoT Hub pro směrování zpráv, které
 
 1. Vytvořte připojení služby SMTP.
 
-   1. Vyberte **Nový krok**. V části **zvolit akci**vyberte kartu **vše** .
+   1. Vyberte **Nový krok**. V části **zvolit akci** vyberte kartu **vše** .
 
    1. Do `smtp` vyhledávacího pole zadejte, ve výsledku hledání vyberte službu **SMTP** a pak vyberte **Odeslat e-mail**.
 
@@ -218,7 +218,7 @@ V předchozí části nastavíte službu IoT Hub pro směrování zpráv, které
 
       ![Zvolit pole pro připojení k e-mailu SMTP](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
 
-   1. Zadejte svou e-mailovou adresu **z** a **do**a `High temperature detected` pro **Předmět** a **text**. Pokud se otevře dialogové okno **Přidat dynamický obsah z aplikací a konektorů, které se používají v tomto okně Flow** , vyberte **Skrýt** a zavřete ho. V tomto kurzu nepoužíváte dynamický obsah.
+   1. Zadejte svou e-mailovou adresu **z** a **do** a `High temperature detected` pro **Předmět** a **text**. Pokud se otevře dialogové okno **Přidat dynamický obsah z aplikací a konektorů, které se používají v tomto okně Flow** , vyberte **Skrýt** a zavřete ho. V tomto kurzu nepoužíváte dynamický obsah.
 
       ![Vyplnit pole emailu pro připojení SMTP](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
 
@@ -226,11 +226,11 @@ V předchozí části nastavíte službu IoT Hub pro směrování zpráv, které
 
 1. Volitelné Pokud jste museli zakázat protokol TLS pro navázání spojení s vaším poskytovatelem e-mailu a chcete ho znovu povolit, postupujte podle následujících kroků:
 
-   1. V podokně **Aplikace logiky** v části **vývojové nástroje**vyberte **připojení rozhraní API**.
+   1. V podokně **Aplikace logiky** v části **vývojové nástroje** vyberte **připojení rozhraní API**.
 
    1. V seznamu připojení rozhraní API vyberte připojení SMTP.
 
-   1. V podokně **připojení SMTP API** v části **Obecné**vyberte **Upravit připojení rozhraní API**.
+   1. V podokně **připojení SMTP API** v části **Obecné** vyberte **Upravit připojení rozhraní API**.
 
    1. V podokně **Upravit připojení rozhraní API** vyberte **Povolit SSL?**, znovu zadejte heslo pro váš e-mailový účet a vyberte **Uložit**.
 

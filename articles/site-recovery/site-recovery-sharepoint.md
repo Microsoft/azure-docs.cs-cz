@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013747"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
@@ -34,7 +34,7 @@ Můžete se podívat na následující video o obnovování vícevrstvé aplikac
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že rozumíte následujícímu:
 
@@ -102,7 +102,7 @@ Podle [těchto pokynů](./vmware-azure-tutorial.md) spusťte replikaci virtuáln
 Pro internetové weby vytvořte v předplatném Azure [profil Traffic Manager typu priorita](../traffic-manager/quickstart-create-traffic-manager-profile.md) . Pak následujícím způsobem nakonfigurujte DNS a profil Traffic Manager.
 
 
-| **,** | **Zdroj** | **Cílové**|
+| **,** | **Zdroj** | **Cíl**|
 | --- | --- | --- |
 | Veřejná služba DNS | Veřejné DNS pro weby služby SharePoint <br/><br/> Např.: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | Místní DNS | sharepointonprem.contoso.com | Veřejná IP adresa v místní farmě |

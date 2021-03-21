@@ -5,10 +5,10 @@ ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9955f911f9a92d7b353a8f3d022af7884b5a6aae
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090133"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Azure CLI
@@ -40,7 +40,7 @@ Azure CLI slouží k vytváření a správě prostředků Azure z příkazového
 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásad
 
-V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte definici **Auditovat virtuální počítače, které nepoužívají spravované disky** . Tato definice zásady identifikuje prostředky, které nesplňují podmínky nastavené v definici zásady.
+V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte definici **Auditovat virtuální počítače, které nepoužívají spravované disky**. Tato definice zásady identifikuje prostředky, které nesplňují podmínky nastavené v definici zásady.
 
 Spuštěním následujícího příkazu vytvořte přiřazení zásady:
 
@@ -50,9 +50,9 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 Předchozí příkaz používá následující informace:
 
-- **Name** – skutečný název přiřazení. V tomto příkladu je použitý název _audit-vm-manageddisks_ .
-- **DisplayName** – zobrazovaný název přiřazení zásady. V takovém případě použijete _přiřazení audit virtuálních počítačů bez spravovaných disků_ .
-- **Policy** – ID definice zásady, kterou používáte k vytvoření tohoto přiřazení. V tomto případě se jedná o ID _virtuálních počítačů auditu definice zásad, které nepoužívají spravované disky_ . ID definice zásady získáte spuštěním příkazu `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`.
+- **Name** – skutečný název přiřazení. V tomto příkladu je použitý název _audit-vm-manageddisks_.
+- **DisplayName** – zobrazovaný název přiřazení zásady. V takovém případě použijete _přiřazení audit virtuálních počítačů bez spravovaných disků_.
+- **Policy** – ID definice zásady, kterou používáte k vytvoření tohoto přiřazení. V tomto případě se jedná o ID _virtuálních počítačů auditu definice zásad, které nepoužívají spravované disky_. ID definice zásady získáte spuštěním příkazu `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`.
 - **Scope** – Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Může sahat od předplatného až po skupiny prostředků. Nezapomeňte nahradit &lt;scope&gt; názvem vaší skupiny prostředků.
 
 ## <a name="identify-non-compliant-resources"></a>Zjištění nevyhovujících prostředků

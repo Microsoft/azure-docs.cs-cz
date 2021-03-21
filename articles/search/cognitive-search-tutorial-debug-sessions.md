@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/02/2021
 ms.openlocfilehash: ed988baec46152d55cf63aec09fce7a298157212
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99509138"
 ---
 # <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>Kurz: ladění dovednosti pomocí relací ladění
@@ -27,7 +27,7 @@ V tomto článku použijete **relace ladění** k vyhledání a opravě 1) mapov
 > Relace ladění je funkce ve verzi Preview, která se poskytuje bez smlouvy o úrovni služeb, a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, vydejte tyto požadavky:
 

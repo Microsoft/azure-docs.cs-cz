@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.openlocfilehash: 59e6e73c99569b0a35c56d65c1a7ccdfcb394c0f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026416"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Škálování skupiny serverů Citus (Scale-Scale)
@@ -27,14 +27,14 @@ Pokud chcete přidat uzly, klikněte na kartu **COMPUTE + Storage** ve skupině 
 Klikněte na tlačítko **Uložit** , aby se změna hodnoty projevila.
 
 > [!NOTE]
-> Po zvýšení a uložení nelze počet uzlů pracovních procesů snížit pomocí posuvníku.
+> Po zvýšení počtu a uložení pracovních uzlů nelze jejich počet snížit pomocí posuvníku.
 
 > [!NOTE]
 > Aby bylo možné využít nově přidaných uzlů, je nutné znovu [vyrovnávat distribuovanou tabulku horizontálních oddílů](howto-hyperscale-scale-rebalance.md), což znamená přesunutí některých [horizontálních oddílů](concepts-hyperscale-distributed-data.md#shards) z existujících uzlů do nových.
 
-## <a name="increase-or-decrease-vcores-on-nodes"></a>Zvětšení nebo zmenšení virtuální jádra na uzlech
+## <a name="increase-or-decrease-vcores-on-nodes"></a>Zvýšení nebo snížení počtu virtuálních jader v uzlech
 
-Kromě přidávání nových uzlů můžete zvýšit možnosti existujících uzlů. Navýšení a snížení kapacity výpočetní kapacity může být užitečné při experimentech s výkonem a na krátkodobé nebo dlouhodobé změny v požadavcích na provoz.
+Kromě přidání nových uzlů můžete zvýšit možnosti stávajících uzlů. Navýšení a snížení kapacity výpočetní kapacity může být užitečné při experimentech s výkonem a na krátkodobé nebo dlouhodobé změny v požadavcích na provoz.
 
 Chcete-li změnit virtuální jádra pro všechny pracovní uzly, upravte posuvník **virtuální jádra** v části **konfigurace (na jeden pracovní uzel)**. Virtuální jádra uzlu koordinátora se dá upravovat nezávisle. V části **konfigurace (uzel koordinátora)** upravte posuvník **virtuální jádra** .
 

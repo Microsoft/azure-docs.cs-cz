@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305965"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Analýza mezi klienty pomocí extrahované aplikace pro jednoho tenanta
@@ -93,7 +93,7 @@ V následujících krocích nasadíte úložiště analýzy, které se nazývá 
     - Pokud chcete použít SQL Database s úložištěm sloupců, nastavte **$DemoScenario**  =  **3** .  
 3. Stisknutím klávesy **F5** Spusťte ukázkový skript (který volá skript *Deploy-TenantAnalytics \<XX> . ps1* ), který vytvoří úložiště analýzy tenanta. 
 
-Teď, když jste nasadili aplikaci a nastavili ji s zajímavými daty tenanta, použijte [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) k propojení **tenants1-DPT- &lt; User &gt;** a **Catalog-DPT- &lt; User &gt;** Servers pomocí Login = *Developer* , Password = *P \@ ssword1*. Další pokyny najdete v [úvodním kurzu](./saas-dbpertenant-wingtip-app-overview.md) .
+Teď, když jste nasadili aplikaci a nastavili ji s zajímavými daty tenanta, použijte [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) k propojení **tenants1-DPT- &lt; User &gt;** a **Catalog-DPT- &lt; User &gt;** Servers pomocí Login = *Developer*, Password = *P \@ ssword1*. Další pokyny najdete v [úvodním kurzu](./saas-dbpertenant-wingtip-app-overview.md) .
 
 ![Snímek obrazovky, který zobrazuje informace potřebné pro připojení k SQL Server.](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -107,7 +107,7 @@ V Průzkumník objektů proveďte následující kroky:
 Rozbalením uzlu analytického úložiště se podívejte na následující položky databáze Průzkumník objektů SSMS:
 
 - Tabulky **TicketsRawData** a **EventsRawData** uchovávají nezpracovaná extrahovaná data z databází tenantů.
-- Tabulky schématu hvězdiček jsou **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** a **dim_Dates**.
+- Tabulky schématu hvězdiček jsou **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** a **dim_Dates**.
 - Uložená procedura slouží k naplnění tabulek schématu hvězdiček z nezpracovaných tabulek dat.
 
 ![Snímek obrazovky s položkami databáze zobrazenými ve Průzkumník objektů SSMS](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
@@ -181,7 +181,7 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 
 6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: fact_Tickets, dim_Events, dim_Venues, dim_Customers a dim_Dates. Pak vyberte **načíst**. 
 
-Blahopřejeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
+Gratulujeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
 
 Začnete analýzou dat o prodeji lístků, abyste viděli variaci využití v rámci míst. Vyberte následující možnosti v Power BI k vykreslení pruhového grafu celkového počtu lístků prodávaných každým jejich konáním. V důsledku náhodné variace generátoru lístků se vaše výsledky můžou lišit.
  
@@ -236,7 +236,7 @@ V tomto kurzu jste se naučili:
 > - Dotazování analytické databáze 
 > - Použití Power BI pro vizualizaci dat ke sledování trendů v datech tenanta 
 
-Blahopřejeme!
+Gratulujeme!
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

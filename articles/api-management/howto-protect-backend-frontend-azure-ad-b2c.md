@@ -15,10 +15,10 @@ ms.date: 02/18/2021
 ms.author: wieastbu
 ms.custom: fasttrack-new, fasttrack-update, devx-track-js
 ms.openlocfilehash: 812b54d10ea3cc3c405f534e36ac66abf3466808
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102449284"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrana SPA back-endu pomocí OAuth 2,0, Azure Active Directory B2C a Azure API Management
@@ -42,7 +42,7 @@ V zájmu důkladné ochrany pak pomocí EasyAuth ověří token znovu uvnitř ba
 > * Volání koncových bodů autorizace Azure Active Directory B2C přes knihovny Microsoft Identity Platform Librarys (MSAL.js)
 > * Uložení jednostránkové aplikace HTML/Vanilla JS a její obsluha z koncového bodu Azure Blob Storage
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 

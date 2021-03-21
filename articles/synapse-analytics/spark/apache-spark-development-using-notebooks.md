@@ -11,10 +11,10 @@ ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
 ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101671592"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a údržba poznámkových bloků synapse Studio v Azure synapse Analytics
@@ -104,7 +104,7 @@ V rozevíracím seznamu na horním panelu příkazů můžete nastavit primárn�
 
 V jednom poznámkovém bloku můžete použít více jazyků zadáním správného příkazu jazyka Magic na začátku buňky. V následující tabulce jsou uvedeny příkazy Magic pro přepínání jazyků buněk.
 
-|Magic – příkaz |Jazyk | Popis |  
+|Magic – příkaz |Jazyk | Description |  
 |---|------|-----|
 |%% pyspark| Python | Spustí dotaz **Pythonu** v kontextu Sparku.  |
 |%% Spark| Scala | Spustí dotaz **Scala** proti kontextu Spark.  |  
@@ -149,10 +149,10 @@ Funkce IntelliSense mají různé úrovně splatnosti pro různé jazyky. Pomoc�
 
 |Jazyky| Zvýrazňování syntaxe | Značka chyby syntaxe  | Dokončování kódu syntaxe | Dokončování kódu proměnné| Dokončování kódu systémové funkce| Dokončování kódu uživatelské funkce| Inteligentní odsazení | Skládání kódu|
 |--|--|--|--|--|--|--|--|--|
-|PySpark (Python)|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Spark (Scala)|Ano|Ano|Ano|Ano|-|-|-|Ano|
-|SparkSQL|Ano|Ano|-|-|-|-|-|-|
-|.NET for Spark (C#)|Ano|-|-|-|-|-|-|-|
+|PySpark (Python)|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Spark (Scala)|Yes|Yes|Yes|Yes|-|-|-|Yes|
+|SparkSQL|Yes|Yes|-|-|-|-|-|-|
+|.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formátování textové buňky pomocí tlačítek panelu nástrojů
 

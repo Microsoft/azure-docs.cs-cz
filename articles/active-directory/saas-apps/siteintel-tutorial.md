@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92509960"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SiteIntel
@@ -48,10 +48,10 @@ Pokud chcete nakonfigurovat integraci SiteIntel do služby Azure AD, musíte př
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém podokně vyberte **Azure Active Directory**.
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V poli **Přidat z Galerie** zadejte **SiteIntel**.
-1. V seznamu výsledků vyberte **SiteIntel**a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V seznamu výsledků vyberte **SiteIntel** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-siteintel"></a>Konfigurace a testování jednotného přihlašování Azure AD pro SiteIntel
 
@@ -77,7 +77,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SiteIntel** přejít do části **Spravovat** a pak vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte vedle **základní konfigurace SAML**na možnost **Upravit** (ikona pera).
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte vedle **základní konfigurace SAML** na možnost **Upravit** (ikona pera).
 
    ![Snímek obrazovky s podoknem nastavení jednotného přihlašování pomocí SAML](common/edit-urls.png)
 
@@ -89,7 +89,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
     c. Do pole **stav přenosu** zadejte adresu URL v následujícím formátu: `https://<CLIENT>.siteintel.com`
 
-1. Chcete-li nakonfigurovat aplikaci v režimu iniciované SP, vyberte možnost **nastavit další adresy URL**a proveďte následující kroky:
+1. Chcete-li nakonfigurovat aplikaci v režimu iniciované SP, vyberte možnost **nastavit další adresy URL** a proveďte následující kroky:
 
    * Do pole **přihlašovací adresa URL** zadejte adresu URL v následujícím formátu: `https://<CLIENT>.siteintel.com`
 
@@ -130,7 +130,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     ![Snímek obrazovky s tlačítkem Přidat uživatele](common/add-assign-user.png)
 
-1. V podokně **Uživatelé a skupiny** vyberte **B. Simon**a pak vyberte tlačítko **Vybrat** v dolní části obrazovky.
+1. V podokně **Uživatelé a skupiny** vyberte **B. Simon** a pak vyberte tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v podokně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak vyberte tlačítko **Vybrat** .
 1. V podokně **Přidat přiřazení** vyberte tlačítko **přiřadit** .
 
@@ -148,7 +148,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici **SiteIntel** , měli byste se automaticky přihlásit k SiteIntel, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 - [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

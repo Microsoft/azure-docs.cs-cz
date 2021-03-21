@@ -10,10 +10,10 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101670694"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
@@ -157,7 +157,7 @@ Když najedete myší na uzel grafu, zobrazí se popis tlačítka, když dojde k
 
 Na kartě graf úlohy mají fáze popis a zobrazí se malá ikona, pokud má úlohy, které splňují následující podmínky:
 
-|Podmínka|Popis|
+|Podmínka|Description|
 |-|-|
 |Zkosit data|velikost přečtených dat > Průměrná velikost čtení dat všech úkolů v této fázi * 2 a velikost pro čtení dat > 10 MB|
 |Časové zkosení|čas spuštění > Průměrná doba provádění všech úkolů v této fázi * 2 a doba spuštění > 2 minuty|

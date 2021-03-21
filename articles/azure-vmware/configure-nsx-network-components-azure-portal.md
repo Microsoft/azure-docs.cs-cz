@@ -4,10 +4,10 @@ description: Naučte se používat konzolu řešení Azure VMware ke konfiguraci
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716917"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Konfigurace síťových součástí NSX v řešení Azure VMware
@@ -27,7 +27,7 @@ K dispozici máte čtyři možnosti konfigurace komponent NSX-T v konzole řeše
  
 :::image type="content" source="media/configure-nsx-network-components-azure-portal/nsxt-workload-networking.png" alt-text="Snímek obrazovky zobrazující čtyři možnosti v konzole řešení Azure VMware pro konfiguraci NSX-T.":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Virtuální počítače vytvořené nebo migrované do privátního cloudu řešení Azure VMware by měly být připojené k segmentu. 
 
 ## <a name="create-an-nsx-t-segment-in-the-azure-portal"></a>Vytvoření segmentu NSX-T v Azure Portal

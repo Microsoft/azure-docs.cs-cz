@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
 ms.openlocfilehash: d38ff5c8f33bda5b12f6267e7a8cdf477db6c7d7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511439"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s pulsem zabezpečenými počítači
@@ -98,7 +98,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -110,10 +110,10 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k pulsům zabezpečeným počítačům.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Pulse Secure počítače**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
@@ -156,13 +156,13 @@ Na následující stránce proveďte následující kroky:
 
     a. Do textového pole zadejte **název serveru** .
 
-    b. Jako **metadata**vyberte **SAML verze 2,0** a **režim konfigurace** .
+    b. Jako **metadata** vyberte **SAML verze 2,0** a **režim konfigurace** .
 
     c. Zkopírujte hodnotu **ID zabezpečené entity Connect** a vložte ji do pole **Adresa URL identifikátoru** v DIALOGOVÉM okně **základní konfigurace SAML** v Azure Portal.
 
-    d. Z **rozevíracího seznamu ID entity zprostředkovatele identity**vyberte hodnotu ID entity Azure AD.
+    d. Z **rozevíracího seznamu ID entity zprostředkovatele identity** vyberte hodnotu ID entity Azure AD.
 
-    e. Z **rozevíracího seznamu Adresa URL pro přihlášení k jedné Sign-On službě zprostředkovatele identity**vyberte hodnotu URL pro přihlášení Azure AD.
+    e. Z **rozevíracího seznamu Adresa URL pro přihlášení k jedné Sign-On službě zprostředkovatele identity** vyberte hodnotu URL pro přihlášení Azure AD.
 
     f. **Jediným odhlášením** je volitelné nastavení. Pokud je vybraná tato možnost, po odhlášení se zobrazí výzva k zadání nového ověřování. Pokud tuto možnost nevyberete a nezavřeli jste prohlížeč, můžete se znovu připojit bez ověřování.
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 999682c9bf4a4d70d886f0e85cede99f215aa046
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694722"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Obnovení virtuálního počítače s využitím Azure CLI
@@ -72,7 +72,7 @@ Pokud má zálohovaný virtuální počítač spravované disky a záměr obnovo
         --sku Standard_LRS
     ```
 
-2. Obnovte disk z bodu obnovení pomocí příkazu [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks). Nahraďte *mystorageaccount* názvem účtu úložiště, který jste vytvořili v předchozím příkazu. Nahraďte *myrecoverypointname názvem* názvem bodu obnovení, který jste získali ve výstupu z předchozího příkazu [AZ Backup RecoveryPoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) . ***Zadejte taky cílovou skupinu prostředků, do které se spravované disky obnoví**.
+2. Obnovte disk z bodu obnovení pomocí příkazu [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks). Nahraďte *mystorageaccount* názvem účtu úložiště, který jste vytvořili v předchozím příkazu. Nahraďte *myrecoverypointname názvem* názvem bodu obnovení, který jste získali ve výstupu z předchozího příkazu [AZ Backup RecoveryPoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) . ***Zadejte taky cílovou skupinu prostředků, do které se budou spravované disky obnovují***.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -86,7 +86,7 @@ Pokud má zálohovaný virtuální počítač spravované disky a záměr obnovo
     ```
 
     > [!WARNING]
-    > Pokud není k dispozici příkaz _ *target-Resource-Group**, budou spravované disky obnoveny jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky k době obnovení, protože doba potřebná k obnovení disků zcela závisí na daném účtu úložiště. Výhody okamžitého obnovení získáte jenom v případě, že je zadaný parametr Target-Resource-Group. Pokud je záměrem obnovit spravované disky jako nespravované, Neposkytněte parametr **target-Resource-Group** a místo toho zadejte parametr **Restore-as-unmanaged-disk** , jak je uvedeno níže. Tento parametr je k dispozici z AZ 3.4.0 a dál.
+    > Pokud není zadaná **cílová skupina prostředků** , pak se spravované disky obnoví jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky k době obnovení, protože doba potřebná k obnovení disků zcela závisí na daném účtu úložiště. Výhody okamžitého obnovení získáte jenom v případě, že je zadaný parametr Target-Resource-Group. Pokud je záměrem obnovit spravované disky jako nespravované, Neposkytněte parametr **target-Resource-Group** a místo toho zadejte parametr **Restore-as-unmanaged-disk** , jak je uvedeno níže. Tento parametr je k dispozici z AZ 3.4.0 a dál.
 
     ```azurecli-interactive
     az backup restore restore-disks \

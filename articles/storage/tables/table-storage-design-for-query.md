@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: 43ae21d97bc9d8292270ae62006e649f4bcf540b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93316148"
 ---
 # <a name="design-for-querying"></a>Návrh pro dotazování
@@ -46,13 +46,13 @@ V následujících příkladech se předpokládá, že služba Table Service ukl
 
 Článek [Přehled služby Azure Table Storage](table-storage-overview.md) popisuje některé klíčové funkce Table Service Azure, které mají přímý vliv na návrh pro dotazy. Výsledkem jsou následující obecné pokyny pro navrhování Table service dotazů. Všimněte si, že syntaxe filtru použitá v níže uvedených příkladech pochází z REST API Table service, další informace najdete v tématu věnovaném [dotazům v entitě](/rest/api/storageservices/Query-Entities).  
 
-* * **Bodový dotaz** _ je nejúčinnější vyhledávání, které se má použít, a doporučuje se ho použít pro vyhledávání ve velkém objemech nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může použít indexy k velmi efektivnímu vyhledání jednotlivých entit zadáním hodnot _ *PartitionKey* * a **RowKey** . Například: $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ ' 2 ')  
-* Druhým nejlepším je * **dotaz na rozsah** _, který používá _ *PartitionKey* * a filtry na rozsah hodnot **RowKey** pro vrácení více než jedné entity. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty **RowKey** identifikují podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ "Sales" and RowKey GE 'S "and RowKey lt t"  
-* Třetí nejlepší je * **prověřování oddílu** _, které používá _ *PartitionKey* * a filtry pro jinou neklíčovou vlastnost a která může vracet více než jednu entitu. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ ' Sales ' a LastName EQ ' Smith '  
-* Funkce * **prověřování v tabulce** _ neobsahuje _ *PartitionKey* * a je velmi neefektivní, protože prohledává všechny oddíly, které tvoří tabulku, a také všechny odpovídající entity. Provede kontrolu tabulky bez ohledu na to, zda filtr používá **RowKey**. Příklad: $filter = příjmení EQ ' Novák '  
+* ***Bodový dotaz** _ je nejúčinnější vyhledávání, které se má použít, a doporučuje se ho použít pro vyhledávání ve velkém objemech nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může použít indexy k velmi efektivnímu vyhledání jednotlivých entit zadáním hodnot _ *PartitionKey** a **RowKey** . Například: $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ ' 2 ')  
+* Druhým nejlepším je ***dotaz na rozsah** _, který používá _ *PartitionKey** a filtry na rozsah hodnot **RowKey** pro vrácení více než jedné entity. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty **RowKey** identifikují podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ "Sales" and RowKey GE 'S "and RowKey lt t"  
+* Třetí nejlepší je ***prověřování oddílu** _, které používá _ *PartitionKey** a filtry pro jinou neklíčovou vlastnost a která může vracet více než jednu entitu. Hodnota **PartitionKey** identifikuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Například: $filter = PartitionKey EQ ' Sales ' a LastName EQ ' Smith '  
+* Funkce ***prověřování v tabulce** _ neobsahuje _ *PartitionKey** a je velmi neefektivní, protože prohledává všechny oddíly, které tvoří tabulku, a také všechny odpovídající entity. Provede kontrolu tabulky bez ohledu na to, zda filtr používá **RowKey**. Příklad: $filter = příjmení EQ ' Novák '  
 * Dotazy, které vracejí více entit, je vrátí seřazené v pořadí **PartitionKey** a **RowKey** . Chcete-li se vyhnout vyřazování entit v klientovi, vyberte **RowKey** , který definuje nejběžnější pořadí řazení.  
 
-Všimněte si, že použití " **nebo** " k určení filtru založeného na hodnotách **RowKey** má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto byste se měli vyhnout dotazům, které používají filtry jako: $filter = PartitionKey EQ ' Sales ' a (RowKey EQ ' 121 ' nebo RowKey EQ ' 322 ')  
+Všimněte si, že použití "**nebo**" k určení filtru založeného na hodnotách **RowKey** má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto byste se měli vyhnout dotazům, které používají filtry jako: $filter = PartitionKey EQ ' Sales ' a (RowKey EQ ' 121 ' nebo RowKey EQ ' 322 ')  
 
 Příklady kódu na straně klienta, který používá klientskou knihovnu pro úložiště ke spouštění efektivních dotazů, najdete v těchto tématech:  
 

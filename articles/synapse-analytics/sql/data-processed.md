@@ -1,5 +1,5 @@
 ---
-title: Správa nákladů pro fond SQL bez serveru
+title: Správa nákladů pro bezserverový fond SQL
 description: Tento dokument popisuje, jak spravovat náklady na SQL fond bez serveru a jak se zpracovávají data při dotazování na data v úložišti Azure.
 services: synapse analytics
 author: filippopovic
@@ -10,10 +10,10 @@ ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8a26f8ced5e91810f8cadff0a27796dc817e6517
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491564"
 ---
 # <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Správa nákladů pro fond SQL bez serveru ve službě Azure synapse Analytics
@@ -71,23 +71,23 @@ Představte si tři tabulky.
 - Tabulka population_parquet má stejná data jako population_csv tabulka. Je zajištěno 1 TB souborů Parquet. Tato tabulka je menší než předchozí, protože data jsou komprimována ve formátu Parquet.
 - Tabulka very_small_csv se zálohuje o 100 KB souborů CSV.
 
-**Dotaz 1** : Vyberte Sum (populace) z population_csv
+**Dotaz 1**: Vyberte Sum (populace) z population_csv
 
 Tento dotaz čte a analyzuje celé soubory, aby získal hodnoty pro sloupec populace. Uzly zpracovávají fragmenty této tabulky a součet obyvatel pro jednotlivé fragmenty se přenáší mezi uzly. Konečný součet se převede do vašeho koncového bodu. 
 
 Tento dotaz zpracovává 5 TB dat a snižuje režijní náklady na převod součtů fragmentů.
 
-**Dotaz 2** : Vyberte Sum (populace) z population_parquet
+**Dotaz 2**: Vyberte Sum (populace) z population_parquet
 
 Při dotazování na komprimované a sloupcové formáty, jako je Parquet, je méně dat čteno než v dotazu 1. Vidíte tento výsledek, protože fond SQL bez serveru čte jeden komprimovaný sloupec místo celého souboru. V tomto případě je čtena 0,2 TB. (Pět sloupců stejné velikosti je 0,2 TB.) Uzly zpracovávají fragmenty této tabulky a součet obyvatel pro jednotlivé fragmenty se přenáší mezi uzly. Konečný součet se převede do vašeho koncového bodu. 
 
 Tento dotaz zpracovává 0,2 TB a zvyšuje velkou režii pro přenos součtů fragmentů.
 
-**Dotaz 3** : vyberte * z population_parquet
+**Dotaz 3**: vyberte * z population_parquet
 
 Tento dotaz přečte všechny sloupce a převede všechna data v nekomprimovaném formátu. Pokud je kompresní formát 5:1, zpracuje dotaz 6 TB, protože čte 1 TB a převede 5 TB nekomprimovaných dat.
 
-**Dotaz 4** : Vyberte počet (*) z very_small_csv
+**Dotaz 4**: Vyberte počet (*) z very_small_csv
 
 Tento dotaz čte celé soubory. Celková velikost souborů v úložišti pro tuto tabulku je 100 KB. Uzly zpracovávají fragmenty této tabulky a součet pro jednotlivé fragmenty se přenáší mezi uzly. Konečný součet se převede do vašeho koncového bodu. 
 

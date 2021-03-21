@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: justinha
 ms.openlocfilehash: 5b48d326efad889adbcf25d487ee27b8200f558f
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693913"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy konfigurace sítě v Azure Active Directory Domain Services
@@ -41,7 +41,7 @@ Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následuj�
 | Priorita | Název | Port | Protokol | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Všechny | Povolit |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Libovolný | Odepřít<sup>1</sup> |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Všechny | Odepřít<sup>1</sup> |
 | 65000    | AllVnetInBound | Všechny | Všechny | VirtualNetwork | VirtualNetwork | Povolit |
 | 65001    | AllowAzureLoadBalancerInBound | Všechny | Všechny | AzureLoadBalancer | Všechny | Povolit |
 | 65500    | DenyAllInBound | Všechny | Všechny | Všechny | Všechny | Odepřít |

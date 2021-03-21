@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b5a9d1781bd0498ac6ad74439b1572c52e3c345a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459256"
 ---
 # <a name="optimize-performance-by-upgrading-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Optimalizujte výkon tím, že upgradujete vyhrazený fond SQL (dřív SQL DW) ve službě Azure synapse Analytics.
@@ -65,7 +65,7 @@ Nyní můžete bez problémů upgradovat na vyhrazený fond SQL (dříve SQL DW)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+- Přihlaste se na [Azure Portal](https://portal.azure.com/).
 - Ujistěte se, že vyhrazený fond SQL (dřív SQL DW) je spuštěný – musí se migrovat na Gen2.
 
 ### <a name="powershell-upgrade-commands"></a>Příkazy upgradu PowerShellu
@@ -182,7 +182,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Vytvoření bodu obnovení definovaného uživatelem pomocí Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte do vyhrazeného fondu SQL (dříve SQL DW), pro který chcete vytvořit bod obnovení.
 
@@ -196,7 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Obnovení aktivní nebo pozastavené databáze pomocí Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Přejděte do vyhrazeného fondu SQL (dříve SQL DW), ze kterého chcete obnovit.
 3. V horní části přehledu vyberte **obnovit**.
 

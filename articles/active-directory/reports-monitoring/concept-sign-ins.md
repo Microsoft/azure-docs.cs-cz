@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93122839"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
@@ -177,11 +177,11 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 
 **Podmíněný přístup** – stav použitých pravidel podmíněného přístupu
 
-- **Nepoužito** : pro uživatele a aplikaci během přihlašování nebyly aplikovány žádné zásady.
+- **Nepoužito**: pro uživatele a aplikaci během přihlašování nebyly aplikovány žádné zásady.
 
-- **Úspěch** : jedna nebo více zásad podmíněného přístupu použitých pro uživatele a aplikaci (ale ne nutně i v ostatních podmínkách) během přihlašování. 
+- **Úspěch**: jedna nebo více zásad podmíněného přístupu použitých pro uživatele a aplikaci (ale ne nutně i v ostatních podmínkách) během přihlašování. 
 
-- **Selhání** : přihlášení splnilo podmínku pro uživatele a aplikaci alespoň pro jednu zásadu podmíněného přístupu a udělení těchto ovládacích prvků není splněno nebo je nastaveno pro blokování přístupu.
+- **Selhání**: přihlášení splnilo podmínku pro uživatele a aplikaci alespoň pro jednu zásadu podmíněného přístupu a udělení těchto ovládacích prvků není splněno nebo je nastaveno pro blokování přístupu.
 
 
 
@@ -228,21 +228,21 @@ Na každém řádku v seznamu aktivit přihlašování se zobrazí:
 Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 
 - ID uživatele
-- Uživatel
+- User
 - Uživatelské jméno
 - ID aplikace
 - Aplikace
 - Klient
 - Umístění
 - IP adresa
-- Datum
+- Date (Datum)
 - Vyžaduje se MFA
 - Stav přihlášení
 
 > [!NOTE]
 > IP adresy se vydávají takovým způsobem, že mezi IP adresou neexistuje konečné připojení a kde je počítač s touto adresou fyzicky umístěný. Mapování IP adres je složité, protože mobilní poskytovatelé a sítě VPN vydávají IP adresy z centrálních fondů, které jsou často příliš daleko od místa, kde je klientské zařízení skutečně použito. V současné době se v sestavách Azure AD převádějí IP adresa na fyzické místo, což je nejlepší úsilí na základě trasování, dat registru, zpětného vyhledávání a dalších informací.
 
-Na stránce **Uživatelé** zobrazíte úplný přehled všech přihlášení uživatelů kliknutím na **Přihlášení** v části **Aktivita** .
+Na stránce **Uživatelé** zobrazíte úplný přehled všech přihlášení uživatelů kliknutím na **Přihlášení** v části **Aktivita**.
 
 ![Snímek obrazovky ukazuje část aktivity, kde můžete vybrat přihlášení.](./media/concept-sign-ins/08.png "Aktivita přihlášení")
 
@@ -254,7 +254,7 @@ S použitím zobrazení dat přihlašování zaměřeného na aplikace můžete 
 * Jaké jsou tři hlavní aplikace ve vaší organizaci?
 * Jak funguje moje nejnovější aplikace?
 
-Vstupním bodem k těmto datům jsou tři hlavní aplikace ve vaší organizaci. Data jsou obsažena v posledních 30 dnech sestavy v části **Přehled** v části **podnikové aplikace** .
+Vstupním bodem k těmto datům jsou tři hlavní aplikace ve vaší organizaci. Data jsou obsažena v posledních 30 dnech sestavy v části **Přehled** v části **podnikové aplikace**.
 
 ![Snímek obrazovky ukazuje, kde můžete vybrat přehled.](./media/concept-sign-ins/10.png "Aktivita přihlášení")
 
@@ -264,7 +264,7 @@ Grafy využití aplikace týdenní agregovaná přihlášení k vašim horním t
 
 Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 
-![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Přehledy")
+![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Vytváření sestav")
 
 Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se podrobný seznam aktivit přihlašování.
 
