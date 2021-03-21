@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: alkohli
 ms.openlocfilehash: 4d6c77b3e8920cabc397cdcbc235baefa031e5ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97655488"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpečení a ochrana dat v zařízení Azure Data Box
@@ -95,7 +95,7 @@ Azure Data Box shromažďuje a zobrazuje osobní údaje v následujících klí�
   - Ulice a číslo
   - City (Město)
   - PSČ
-  - State
+  - Stav
   - Provincie/kraj/oblast
   - Číslo účtu dopravce
   - Sledovací číslo zásilky
@@ -111,7 +111,7 @@ Další informace najdete v Zásadách ochrany osobních údajů společnosti Mi
 
 V zařízení Data Box jsou implementovány následující pokyny pro zabezpečení:
 
-|Pokyn   |Popis   |
+|Pokyn   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Ochrana před vodou a prachem         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Odolnost před nešetrným zacházením při přepravě          |

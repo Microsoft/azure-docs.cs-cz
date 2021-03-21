@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
 ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101733206"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Kurz: vytvoření nové podřízené zóny DNS
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným.  Pokud účet nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Stávající zóna nadřazených Azure DNS.  

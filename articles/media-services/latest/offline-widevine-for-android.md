@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955203"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Online streamování Widevine pro Android s Media Services V3
@@ -47,7 +47,7 @@ Pro sestavování aplikací pro Android Player se vytvoří osnova tří možnos
 > [!NOTE]
 > Offline DRM se účtuje jenom při vytváření jediné žádosti o licenci při stažení obsahu. Neúčtují se žádné chyby.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Před implementací offline DRM pro Widevine v zařízeních s Androidem byste měli nejdřív:
 

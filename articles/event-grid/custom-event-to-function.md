@@ -4,10 +4,10 @@ description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI nebo portálu 
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4fe4753de41443a0537636933364c7b69b25cb27
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791723"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Rychlý Start: směrování vlastních událostí do funkce Azure pomocí Event Grid

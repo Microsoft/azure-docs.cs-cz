@@ -5,13 +5,13 @@ ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896219"
 ---
-# <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
+# <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Používání značek k uspořádání prostředků Azure a hierarchie správy
 
 Značky můžete použít pro prostředky Azure, skupiny prostředků a odběry k logickému uspořádání do taxonomie. Každá značka se skládá z názvu a páru hodnot. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 

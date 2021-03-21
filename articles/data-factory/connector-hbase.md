@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 02f4b88b1dab99b3b052f59f91f7869d8aedc77f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100388358"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopírování dat z HBA pomocí Azure Data Factory 
@@ -18,7 +18,7 @@ ms.locfileid: "100388358"
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z adaptérů HBA. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
 Tento konektor HBA je podporován pro následující činnosti:
 
@@ -29,7 +29,7 @@ Data z adaptérů HBA můžete kopírovat do libovolného podporovaného úloži
 
 Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

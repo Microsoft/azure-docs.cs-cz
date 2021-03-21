@@ -10,10 +10,10 @@ ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 97f9d0e0037090a8c058eb6e2393451d975e79c6
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103472258"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Jak nastavit řízení přístupu pro pracovní prostor synapse 
@@ -43,7 +43,7 @@ Pokud chcete zabezpečit pracovní prostor synapse, postupujte podle vzoru pro k
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je názvy dle vašeho výběru.
 
-|Nastavení | Standardní název | Popis |
+|Nastavení | Standardní název | Description |
 | :------ | :-------------- | :---------- |
 | **Pracovní prostor synapse** | `workspace1` |  Název, který bude mít pracovní prostor synapse. |
 | **Účet ADLSGEN2** | `storage1` | Účet ADLS, který se má používat s vaším pracovním prostorem. |

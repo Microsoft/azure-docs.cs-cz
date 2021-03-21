@@ -9,15 +9,15 @@ ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
 ms.openlocfilehash: 5f2b77c7d8e1a2da9517183043231b717b6cceab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734023"
 ---
 ### <a name="general-query-limits"></a>Obecné limity dotazů
 
-| Omezení | Popis |
+| Omezení | Description |
 |:---|:---|
 | Dotazovací jazyk | Azure Monitor používá stejný [dotazovací jazyk Kusto](/azure/kusto/query/) jako Azure Průzkumník dat. Viz [rozdíly v jazyce Azure monitor protokolu dotazu](/azure/data-explorer/kusto/query/) pro prvky jazyka KQL, které nejsou v Azure monitor podporovány. |
 | Oblast Azure | Dotazy protokolů můžou mít nadměrné nároky na to, kdy data jsou Log Analytics pracovní prostory ve více oblastech Azure. Podrobnosti najdete v tématu [omezení dotazů](../articles/azure-monitor/logs/scope.md#query-scope-limits) . |
@@ -27,7 +27,7 @@ ms.locfileid: "101734023"
 Azure Monitor má několik omezení omezování ochrany proti uživatelům, kteří odesílají nadměrný počet dotazů. Takové chování může potenciálně přetížit systémové prostředky back-endu a ohrozit odezvu služby. Následující omezení jsou navržená tak, aby chránila zákazníky před přerušením a zajistila konzistenci úrovně služeb. Omezení uživatelů a omezení jsou navržena tak, aby ovlivnila pouze extrémní využití a neměla by být relevantní pro obvyklé využití.
 
 
-| Measure | Omezení na uživatele | Popis |
+| Measure | Omezení na uživatele | Description |
 |:---|:---|:---|
 | Souběžné dotazy | 5 | Pokud již existuje 5 dotazů, které jsou spuštěny pro uživatele, všechny nové dotazy jsou umístěny do fronty souběžnosti pro jednotlivé uživatele. Když jeden ze spuštěných dotazů skončí, další dotaz se načte z fronty a spustí se. Nezahrnuje dotazy z pravidel výstrah.
 | Čas ve frontě souběžnosti | 3 minuty | Pokud dotaz zůstane ve frontě déle než 3 minuty bez spuštění, bude ukončen chybovou odpovědí HTTP s kódem 429. |

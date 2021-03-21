@@ -10,10 +10,10 @@ ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
 ms.openlocfilehash: 2192cdb3072edba2e5597a697feef99ba4d2070d
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210253"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Nastavte pracovní postup akcí GitHubu pro nasazení statického webu v Azure Storage
@@ -24,7 +24,7 @@ Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovn
 > Pokud používáte službu [Azure Static Web Apps](../../static-web-apps/index.yml), nemusíte ručně nastavit pracovní postup akcí GitHubu.
 > Statická Web Apps Azure pro vás automaticky vytvoří pracovní postup akcí GitHubu. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předplatné Azure a účet GitHubu. 
 

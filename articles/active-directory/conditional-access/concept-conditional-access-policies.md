@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 35d2bf33b4a22c14abfb61a87a3697b05188ed31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169677"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579089"
 ---
 # <a name="building-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
@@ -106,6 +106,8 @@ Blok přístupu zablokuje přístup pouze v rámci zadaných přiřazení. Ovlá
 - Vyžadovat zařízení připojené k hybridní službě Azure AD
 - Vyžadovat klientskou aplikaci schválenou
 - Vyžadování zásad ochrany aplikací
+- Vyžadovat změnu hesla
+- Vyžadování podmínek použití
 
 Správci se mohou rozhodnout, že budou vyžadovat jeden z předchozích ovládacích prvků nebo všechny vybrané ovládací prvky pomocí následujících možností. Výchozí nastavení pro více ovládacích prvků vyžaduje všechny.
 
@@ -150,7 +152,7 @@ V článku [společné zásady podmíněného přístupu](concept-conditional-ac
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
 
-[Plánování nasazení služby Azure AD založené na cloudu Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Plánování nasazení cloudové služby Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 
 [Správa dodržování předpisů zařízením pomocí Intune](/intune/device-compliance-get-started)
 

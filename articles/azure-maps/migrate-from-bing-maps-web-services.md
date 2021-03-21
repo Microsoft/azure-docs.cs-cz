@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97679066"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Kurz: migrace webové služby z map Bing
@@ -66,9 +66,9 @@ Nezapomeňte si také projít následující Příručky k osvědčeným postup�
 -   [Osvědčené postupy pro hledání](./how-to-use-best-practices-for-search.md)
 -   [Osvědčené postupy pro směrování](./how-to-use-best-practices-for-routing.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -163,7 +163,7 @@ Rozhraní API pro invertování Azure Maps obsahuje některé další funkce, kt
 
 Následující tabulka odkazuje na hodnoty typu entity mapy Bing na ekvivalentní názvy vlastností v Azure Maps.
 
-| Typ entity mapy Bing | Srovnatelný Azure Maps typ entity               | Popis                                |
+| Typ entity mapy Bing | Srovnatelný Azure Maps typ entity               | Description                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Adresa*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Včetně*                             |
@@ -234,12 +234,12 @@ Rozhraní API pro směrování Azure Maps podporuje také směrování nákladn�
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)               | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                 | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                 | **–**                                    |
+| `vehicleTrailers` (`vt`)                 | **NENÍ K DISPOZICI**                                    |
 | `vehicleSemi` (`semi`)                   | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)             | **–**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)          | **–**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)         | **–**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)     | **–**                                    |
+| `vehicleMaxGradient` (`vmg`)             | **NENÍ K DISPOZICI**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)          | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)         | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)     | **NENÍ K DISPOZICI**                                    |
 | `vehicleHazardousMaterials` (`vhm`)      | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)        | `vehicleLoadType`                          |
 
@@ -300,12 +300,12 @@ Rozhraní API směrování Azure Maps také podporuje parametr směrování nák
 | `vehicleLength` (`vl`)                  | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)              | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                | **–**                                    |
+| `vehicleTrailers` (`vt`)                | **NENÍ K DISPOZICI**                                    |
 | `vehicleSemi` (`semi`)                  | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)            | **–**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)         | **–**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)        | **–**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)    | **–**                                    |
+| `vehicleMaxGradient` (`vmg`)            | **NENÍ K DISPOZICI**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)         | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)        | **NENÍ K DISPOZICI**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)    | **NENÍ K DISPOZICI**                                    |
 | `vehicleHazardousMaterials` (`vhm`)     | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)       | `vehicleLoadType`                          |
 

@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: dd7b19a2c9e872b811c1aab6e504accb7de383b2
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896473"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Problémy s nasazením pro Azure Cloud Services (Classic): nejčastější dotazy

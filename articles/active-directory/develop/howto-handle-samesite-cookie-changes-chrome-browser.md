@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c4f054259aa7c3f2a9fdfaeeadd64f26dd9bea
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116967"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "94444907"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Zpracování změn souborů cookie SameSite v prohlížeči Chrome
 
@@ -81,11 +81,8 @@ Podrobnosti o tom, jak zpracovávat soubory cookie SameSite v ASP.NET a ASP.NET 
 
 Další informace o SameSite a scénáři webové aplikace:
 
-> [!div class="nextstepaction"]
-> [Nejčastější dotazy k Google Chrome na SameSite](https://www.chromium.org/updates/same-site/faq)
+- [Nejčastější dotazy k Google Chrome na SameSite](https://www.chromium.org/updates/same-site/faq)
 
-> [!div class="nextstepaction"]
-> [Stránka Chróm SameSite](https://www.chromium.org/updates/same-site)
+- [Stránka Chróm SameSite](https://www.chromium.org/updates/same-site)
 
-> [!div class="nextstepaction"]
-> [Scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md)
+- [Scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md)

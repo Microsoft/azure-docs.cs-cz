@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 973025dfd8c0141ed0884539fe5207cc64ec822c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541857"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>Konfigurace parametrů serveru v Azure Database for MySQL pomocí prostředí PowerShell
@@ -22,7 +22,7 @@ Pomocí prostředí PowerShell můžete vypsat, zobrazit a aktualizovat parametr
 >[!Note]
 > Parametry serveru je možné aktualizovat globálně na úrovni serveru pomocí [Azure CLI](./howto-configure-server-parameters-using-cli.md), [PowerShellu](./howto-configure-server-parameters-using-powershell.md) nebo webu [Azure Portal](./howto-server-parameters.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce budete potřebovat:
 

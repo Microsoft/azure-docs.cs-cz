@@ -11,17 +11,17 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654026"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Element **ClaimsSchema** definuje typy deklarací identity, na které se dá odkazovat v rámci zásad. Schéma deklarací identity je místo, kde deklarujete deklarace identity. Deklarace identity může být křestní jméno, příjmení, zobrazovaný název, telefonní číslo a další. Element ClaimsSchema obsahuje seznam elementů **ClaimType** . Element **ClaimType** obsahuje atribut **ID** , což je název deklarace identity.
+Element **ClaimsSchema** definuje typy deklarací identity, na které je možné v rámci zásad odkazovat. Ve schématu deklarací identity deklarujete deklarace identity. Deklarace identity může být křestní jméno, příjmení, zobrazovaný název, telefonní číslo a další. Element ClaimsSchema obsahuje seznam elementů **ClaimType** . Element **ClaimType** obsahuje atribut **ID** , což je název deklarace identity.
 
 ```xml
 <BuildingBlocks>
@@ -44,11 +44,11 @@ Element **ClaimType** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Id | Ano | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
+| Id | Yes | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
 
 Element **ClaimType** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizována](localization.md). |
 | DataType | 1:1 | Typ deklarace identity. |
@@ -66,7 +66,7 @@ PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput
 
 Element **DataType** podporuje následující hodnoty:
 
-| Typ | Popis |
+| Typ | Description |
 | ------- | ----------- |
 |boolean|Představuje logickou `true` hodnotu (nebo `false` ).|
 |date| Představuje okamžitý čas, obvykle vyjádřený jako datum dne. Hodnota data dodržuje konvenci ISO 8601.|
@@ -84,7 +84,7 @@ Element **DataType** podporuje následující hodnoty:
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | Protokol | 1: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
 
@@ -92,8 +92,8 @@ Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Název | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
-| PartnerClaimType | Ano | Název typu deklarace, který se má použít |
+| Název | Yes | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
+| PartnerClaimType | Yes | Název typu deklarace, který se má použít |
 
 V následujícím příkladu, když architektura prostředí identity komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, je **přidaná deklarace identity** namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` OpenIdConnect a OAuth2, na kterou je tato deklarace namapovaná `family_name` .
 
@@ -128,7 +128,7 @@ Element **Maske** obsahuje následující atributy:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | `Type` | Ano | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex` . `Simple`Hodnota označuje, že je použita jednoduchá textová maska pro úvodní část deklarace řetězce. `Regex`Hodnota označuje, že regulární výraz je použit na deklaraci řetězce jako celek.  Pokud `Regex` je zadána hodnota, volitelný atribut musí být také definován s regulárním výrazem, který má být použit. |
-| `Regex` | Ne | Pokud **`Type`** je nastaven na `Regex` , zadejte regulární výraz, který se má použít.
+| `Regex` | No | Pokud **`Type`** je nastaven na `Regex` , zadejte regulární výraz, který se má použít.
 
 Následující příklad konfiguruje deklaraci **PhoneNumber** s `Simple` maskou:
 
@@ -167,11 +167,11 @@ Element **omezení** může obsahovat následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MergeBehavior | Ne | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. `Prepend`Hodnota je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. `ReplaceAll`Hodnota je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
+| MergeBehavior | No | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. `Prepend`Hodnota je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. `ReplaceAll`Hodnota je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
 
 Element **omezení** obsahuje následující prvky:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | Výčet | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
 | Vzor | 1:1 | Regulární výraz, který má být použit. |
@@ -184,9 +184,9 @@ Prvek **výčtu** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Text | Ano | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
-|Hodnota | Ano | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
-| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
+| Text | Yes | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
+|Hodnota | Yes | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
+| SelectByDefault | No | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
 
 Následující příklad konfiguruje deklaraci identity rozevíracího seznamu **měst** s výchozí hodnotou nastavenou na `New York` :
 
@@ -213,8 +213,8 @@ Prvek **vzoru** může obsahovat následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| RegularExpression | Ano | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
-| HelpText | Ne | Chybová zpráva pro uživatele, pokud se chyba kontroly regulárního výrazu nezdařila. |
+| RegularExpression | Yes | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
+| HelpText | No | Chybová zpráva pro uživatele, pokud se chyba kontroly regulárního výrazu nezdařila. |
 
 V následujícím příkladu je nakonfiguruje deklarace **e-mailu** pomocí ověřování vstupu regulárního výrazu a textu v nápovědě:
 
@@ -243,7 +243,7 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 
 K dispozici jsou typy vstupu uživatele dostupné pro **UserInputType** prvky:
 
-| UserInputType | Podporovaný deklarace ClaimType | Popis |
+| UserInputType | Podporovaný deklarace ClaimType | Description |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Rozevírací seznam pro vícenásobný výběr. Hodnota deklarace je reprezentovaná v řetězci oddělovače (čárky) vybraných hodnot. |
 |DateTimeDropdown | `date`, `dateTime` |Rozevírací seznam pro výběr dne, měsíce a roku. |

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 3aa7ab2fd3217377e9c56c8c71a1c1acc959bcd9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 1dd2768c7541312b68e2a44a35fc4260d67c5655
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472279"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586994"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>4. část: připojení sdílené složky z virtuálního počítače připojeného k doméně
 
@@ -28,7 +28,7 @@ Přihlaste se ke klientovi pomocí pověření, ke kterým jste udělili oprávn
 
 Než budete moci připojit sdílenou složku, ujistěte se, že jste prošli následujícími požadavky:
 
-- Pokud připojujete sdílenou složku z klienta, který dříve připojil sdílenou složku pomocí klíče účtu úložiště, ujistěte se, že jste odpojili sdílenou složku, odebrali trvalá pověření klíče účtu úložiště a aktuálně používají služba AD DS pověření pro ověřování. Pokyny k vymazání připojené sdílené složky s klíčem účtu úložiště najdete na stránce s [nejčastějšími dotazy](https://docs.microsoft.com/azure/storage/files/storage-files-faq#ad-ds--azure-ad-ds-authentication).
+- Pokud připojujete sdílenou složku z klienta, který dříve připojil sdílenou složku pomocí klíče účtu úložiště, ujistěte se, že jste odpojili sdílenou složku, odebrali trvalá pověření klíče účtu úložiště a aktuálně používají služba AD DS pověření pro ověřování. Pokyny k vymazání připojené sdílené složky s klíčem účtu úložiště najdete na stránce s [nejčastějšími dotazy](./storage-files-faq.md#ad-ds--azure-ad-ds-authentication).
 - Váš klient musí mít přehled o vašem služba AD DS. Pokud je váš počítač nebo virtuální počítač ze sítě spravované pomocí služba AD DS, bude nutné povolit VPN, aby se dosáhlo služba AD DS ověřování.
 
 Zástupné hodnoty nahraďte vlastními hodnotami a pak pomocí následujícího příkazu připojte sdílenou složku Azure. Vždy je nutné se připojit pomocí níže uvedené cesty. Použití CNAME pro připojení k souboru se nepodporuje pro ověřování na základě identity (služba AD DS nebo Azure služba AD DS).

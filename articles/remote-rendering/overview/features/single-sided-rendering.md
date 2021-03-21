@@ -7,10 +7,10 @@ ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fea9deae3948b36732b5ea5203fceea6bec07fb9
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594074"
 ---
 # <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: vykreslování
@@ -24,7 +24,7 @@ Nastavení *:::no-loc text="single-sided"::: vykreslování* umožňuje přizpů
 > [!CAUTION]
 > :::no-loc text="single-sided":::Nastavení vykreslování je experimentální funkce. V budoucnu se může znovu odebrat. Neměňte prosím výchozí nastavení, pokud skutečně neřeší kritickou chybu ve vaší aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 :::no-loc text="single-sided":::Nastavení vykreslení má pouze efekt pro sítě, které byly [převedeny](../../how-tos/conversion/configure-model-conversion.md) s `opaqueMaterialDefaultSidedness` možností nastavenou na `SingleSided` . Ve výchozím nastavení je tato možnost nastavena na hodnotu `DoubleSided` .
 

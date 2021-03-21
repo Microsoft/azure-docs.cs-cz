@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732033"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Odeslání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs
@@ -24,7 +24,7 @@ Data shromážděná z hostovaného operačního systému, který je možné ode
 * Protokoly událostí systému Windows, včetně protokolů aplikace v protokolu událostí systému Windows
 * Protokolů infrastruktury Azure Diagnostics
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Windows Diagnostics Extension 1,6 nebo vyšší. V tématu [Azure Diagnostics verze schématu konfigurace rozšíření a historie](diagnostics-extension-versions.md) Historie verzí a [Azure Diagnostics rozšíření](diagnostics-extension-overview.md) pro podporované prostředky.
 * Obor názvů Event Hubs musí být vždy zřízen. Podrobnosti najdete v tématu [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .

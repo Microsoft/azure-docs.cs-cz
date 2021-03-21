@@ -12,10 +12,10 @@ ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
 ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210814"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro prostředky a pracovní postupy služby Azure Machine Learning
@@ -32,7 +32,7 @@ Přečtěte si, jak nastavit ověřování pro váš pracovní prostor Azure Mac
 > [!IMPORTANT]
 > Bez ohledu na použitou pracovní postup ověřování se řízení přístupu na základě role Azure (Azure RBAC) používá k vymezení úrovně přístupu (autorizace) povoleného pro prostředky. Například správce nebo proces automatizace může mít přístup k vytvoření výpočetní instance, ale ne k jeho použití, zatímco ho pracovník IT může použít, ale nemůže ho odstranit ani vytvořit. Další informace najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [výpočetní instanci Azure Machine Learning](concept-azure-machine-learning-architecture.md#compute-instance) s již nainstalovanou sadou SDK.

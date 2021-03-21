@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 2ec88e4e97d45b27c0226198491b3adec6448496
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000891"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 1,0
@@ -30,9 +30,9 @@ Aktualizace 1,0 odpovídá **10.0.10296.0** verze softwaru.
 
 ## <a name="whats-new-in-update-10"></a>Co je nového v aktualizaci 1,0
 
-**Aktualizace 1,0 obsahuje změny související s ověřováním služby StorSimple Device Manager a měli byste je nasadit do svého nejbližšího.** Tato aktualizace obsahuje následující vylepšení a opravy chyb:
+**Aktualizace 1,0 obsahuje změny související s ověřováním služby StorSimple Správce zařízení a měli byste je nasadit do svého nejbližšího.** Tato aktualizace obsahuje následující vylepšení a opravy chyb:
 
- - **Použití Azure Active Directory (AAD) k ověření ve službě StorSimple Device Manager Service** – od aktualizace 1,0 a vyšší, se k ověřování pomocí služby StorSimple Device Manager používá Azure Active Directory. Starý ověřovací mechanismus bude od prosince 2017 zastaralý. Všichni uživatelé musí ve svých pravidlech firewallu zahrnovat nové adresy URL pro ověřování. Další informace najdete na adrese URL pro ověřování uvedené v článku [požadavky na síť pro virtuální pole StorSimple](storsimple-ova-system-requirements.md).
+ - **Použití Azure Active Directory (AAD) k ověření ve službě StorSimple Správce zařízení Service** – od aktualizace 1,0 a vyšší, se k ověřování pomocí služby StorSimple Správce zařízení používá Azure Active Directory. Starý ověřovací mechanismus bude od prosince 2017 zastaralý. Všichni uživatelé musí ve svých pravidlech firewallu zahrnovat nové adresy URL pro ověřování. Další informace najdete na adrese URL pro ověřování uvedené v článku [požadavky na síť pro virtuální pole StorSimple](storsimple-ova-system-requirements.md).
  
     Pokud adresa URL pro ověření není v pravidlech brány firewall zahrnutá, zobrazí se uživatelům kritická výstraha, že jejich zařízení StorSimple nebylo možné ověřit pomocí služby. Pokud se uživatelům zobrazí tato výstraha, musí zahrnovat novou adresu URL pro ověření. Další informace najdete na webu výstrahy týkající se [StorSimple sítě](storsimple-virtual-array-manage-alerts.md).
 
@@ -47,9 +47,9 @@ Aktualizace 1,0 odpovídá **10.0.10296.0** verze softwaru.
 
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Funkce | Problém |
+| No. | Funkce | Problém |
 | --- | --- | --- |
-| 1 |Ověřování pomocí AAD| Tato verze obsahuje změny, které umožňují ověřování AAD pomocí Device Manager StorSimple.|
+| 1 |Ověřování pomocí AAD| Tato verze obsahuje změny, které umožňují ověřování AAD pomocí Správce zařízení StorSimple.|
 | 2 |Uvolnění paměti| Tento problém se nahlásil na zákaznické stránce, kde se zařízení a účty úložiště nacházejí v různých oblastech, a zákazník oznámil občasné chyby sítě a tím má vliv na fakturaci. V této verzi byl tento problém vyřešen. |
 | 3 |Výkon| Tato verze obsahuje změny, které vedou k vylepšení výkonu při obnovení nebo čtení nebo na úrovni cloudu.|
 | 4 |Aktualizace| Došlo k potížím s aktualizací v dřívější verzi, která vedla k selhání zálohování na zákaznickém webu. Tento problém je opravený v této verzi.|
@@ -58,7 +58,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
 Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje vydané verze zaznamenané z předchozích verzí.
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| No. | Funkce | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Aktualizace |Virtuální pole vytvořená ve verzi Preview nelze aktualizovat na podporovanou verzi obecné dostupnosti. |U těchto virtuálních polí je potřeba převzít služby při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
 | **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální pole StorSimple, nesmíte tento datový disk zvětšit ani zmenšit. Při pokusu o provedení dojde ke ztrátě všech dat v místních vrstvách zařízení. | |
@@ -72,7 +72,7 @@ Následující tabulka obsahuje souhrn známých problémů pro virtuální pole
 | **10pruhový.** |Azure PowerShell |Virtuální pole StorSimple se nedají spravovat prostřednictvím Azure PowerShell v této verzi. |Veškerá správa virtuálních zařízení by se měla provádět prostřednictvím Azure Portal a místního webového uživatelského rozhraní. |
 | **odst.** |Změna hesla |Konzola zařízení Virtual Array podporuje pouze vstup ve formátu klávesnice en-US. | |
 | **12,5.** |CHAP |Po vytvoření nelze odstranit přihlašovací údaje protokolu CHAP. Pokud navíc upravíte přihlašovací údaje protokolu CHAP, musíte svazky převést do režimu offline a pak je převést do režimu online, aby se změna projevila. |Tento problém je řešen v pozdější verzi. |
-| **13,5.** |Server iSCSI |Zobrazené úložiště pro svazek iSCSI se může lišit v StorSimple Device Manager službě a hostiteli iSCSI. |Hostitel iSCSI má zobrazení systému souborů.<br></br>Zařízení vidí bloky přidělené v případě, že byl svazek v maximální velikosti. |
+| **13,5.** |Server iSCSI |Zobrazené úložiště pro svazek iSCSI se může lišit v StorSimple Správce zařízení službě a hostiteli iSCSI. |Hostitel iSCSI má zobrazení systému souborů.<br></br>Zařízení vidí bloky přidělené v případě, že byl svazek v maximální velikosti. |
 | **čtrnáct.** |Souborový server |Pokud k souboru ve složce je přidružen alternativní datový proud (ADS), nejsou tyto reklamy zálohovány ani obnoveny prostřednictvím zotavení po havárii, klonování a obnovení na úrovni položek. | |
 | **15.** |Souborový server |Symbolické odkazy nejsou podporovány. | |
 | **16bitovém.** |Souborový server |Soubory chráněné systémem Windows systém souborů EFS (Encrypting File System) (EFS) při zkopírování nebo uložení na souborový server virtuálních polí StorSimple mají za následek nepodporovanou konfiguraci.  | |

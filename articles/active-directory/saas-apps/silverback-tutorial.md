@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a70b6bb50b397429af1af41869bbe9ecf7e8bad9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Kurz: Azure Active Directory integrace s Silverback
@@ -30,7 +30,7 @@ Integrace Silverback s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Silverback potřebujete následující položky:
 
@@ -118,7 +118,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Silverba
 
 1. V jiném webovém prohlížeči se přihlaste k serveru Silverback jako správce.
 
-2. Přejděte k **Admin**  >  **poskytovateli ověřování** správce.
+2. Přejděte k   >  **poskytovateli ověřování** správce.
 
 3. Na stránce **nastavení zprostředkovatele ověřování** proveďte následující kroky:
 
@@ -222,7 +222,7 @@ Aby se uživatelé Azure AD mohli přihlásit k Silverback, musí se zřídit v 
     například Klikněte na **Uložit**.
 
 > [!NOTE]
-> Pokud nechcete každého uživatele sami vytvořit, zaškrtněte v části **Admin** zprostředkovatel ověřování správce políčko **dynamického vytvoření uživatele**  >  **Authentication Provider**.
+> Pokud nechcete každého uživatele sami vytvořit, zaškrtněte v části zprostředkovatel ověřování správce políčko **dynamického vytvoření uživatele**  >  .
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

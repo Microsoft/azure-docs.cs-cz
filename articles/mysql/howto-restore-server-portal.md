@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 9bc31cf8fee2669634ff366caac77cb090baf075
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000296"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for MySQL pomocí Azure Portal
@@ -18,7 +18,7 @@ ms.locfileid: "96000296"
 ## <a name="backup-happens-automatically"></a>K zálohování dochází automaticky
 Azure Database for MySQL servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení tohoto průvodce budete potřebovat:
 - [Server a databáze Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
@@ -37,7 +37,7 @@ Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úrov
 Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-portal.md).
 
 Dobu uchovávání záloh můžete na serveru změnit pomocí následujících kroků:
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte server Azure Database for MySQL. Tato akce otevře stránku s **přehledem** .
 3. V nabídce v části **Nastavení** vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
 Na snímku obrazovky níže byl zvýšen na 34 dní.

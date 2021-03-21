@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 0ff11c9601fb55e27d8780185d77c177e9d9201b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100584636"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>Monitorování mezipaměti Azure pro Redis
@@ -127,7 +127,7 @@ Můžete nakonfigurovat odesílání upozornění na základě metrik a protokol
 
 Pokud chcete nakonfigurovat pravidla upozornění pro vaši mezipaměť, klikněte v **nabídce prostředek** na **pravidla výstrah** .
 
-![Sledování](./media/cache-how-to-monitor/redis-cache-monitoring.png)
+![Monitorování](./media/cache-how-to-monitor/redis-cache-monitoring.png)
 
 Další informace o konfiguraci a používání výstrah najdete v tématu [Přehled výstrah](../azure-monitor/alerts/alerts-classic-portal.md).
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 9eba74bcf2b4b047b3ed881342db4f7b1011f928
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100585753"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
@@ -25,7 +25,7 @@ Pomocí rozhraní TelemetryClient API můžete ručně instrumentovat a monitoro
 
 Proveďte následující úlohy a nastavte monitorování pro aplikaci nebo službu.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte předplatné Azure nebo [zdarma získejte nové předplatné][azure-free-offer]. Pokud vaše organizace již má předplatné Azure, správce vás do něj může přidat pomocí [těchto pokynů][add-aad-user].
 
@@ -383,7 +383,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Můžete vytvořit několik prostředků Application Insights a do každého odeslat různá data pomocí příslušných klíčů instrumentace ("ikey").
 
- Příklad:
+ Například:
 
 ```javascript
 let appInsights = require("applicationinsights");

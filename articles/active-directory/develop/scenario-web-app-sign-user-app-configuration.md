@@ -12,27 +12,23 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f315f473c3ba9efd4e01f9424f01884a46011dbb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582243"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578362"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webová aplikace, která podepisuje uživatele: Konfigurace kódu
 
 Přečtěte si, jak nakonfigurovat kód pro webovou aplikaci, která se přihlásí uživatelům.
 
-## <a name="libraries-for-protecting-web-apps"></a>Knihovny pro ochranu webových aplikací
+## <a name="microsoft-libraries-supporting-web-apps"></a>Knihovny Microsoftu podporující webové aplikace
 
 <!-- This section can be in an include for web app and web APIs -->
-Knihovny, které slouží k ochraně webové aplikace (a webového rozhraní API):
+K ochraně webové aplikace (a webového rozhraní API) se používají následující knihovny Microsoftu:
 
-| Platforma | Knihovna | Description |
-|----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [Rozšíření modelu identity pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Rozšíření Microsoft Identity Model pro .NET, které používá přímo ASP.NET a ASP.NET Core, navrhuje sadu knihoven DLL spouštěných v .NET Framework i .NET Core. Z webové aplikace ASP.NET nebo ASP.NET Core můžete ověřování tokenu řídit pomocí třídy **TokenValidationParameters** (konkrétně v některých partnerských scénářích). V praxi je složitá složitost zapouzdřená do knihovny [Microsoft. identity. Web](https://aka.ms/ms-identity-web) . |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL v Javě](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Podpora webových aplikací v jazyce Java |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Podpora webových aplikací v Pythonu |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 Vyberte kartu, která odpovídá platformě, na kterou zajímáte:
 
@@ -51,6 +47,12 @@ Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné p
 # <a name="java"></a>[Java](#tab/java)
 
 Fragmenty kódu v tomto článku a níže se extrahují z [webové aplikace Java Calling Sample v Microsoft graphu](https://github.com/Azure-Samples/ms-identity-java-webapp) v MSAL Java.
+
+Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné podrobnosti implementace.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Fragmenty kódu v tomto článku a níže jsou extrahovány z [Node.js webové aplikace Signing Users in](https://github.com/Azure-Samples/ms-identity-node) Sample v uzlu MSAL.
 
 Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné podrobnosti implementace.
 
@@ -177,6 +179,37 @@ aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 
 V Azure Portal musí identifikátory URI odpovědi, které zaregistrujete na **ověřovací** stránce vaší aplikace, odpovídat `redirectUri` instancím, které aplikace definuje. To znamená, že by měly být `http://localhost:8080/msal4jsample/secure/aad` a `http://localhost:8080/msal4jsample/graph/me` .
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Tady se nachází parametry konfigurace. `index.js`
+
+```javascript
+
+const REDIRECT_URI = "http://localhost:3000/redirect";
+
+const config = {
+    auth: {
+        clientId: "Enter_the_Application_Id_Here",
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/",
+        clientSecret: "Enter_the_Client_Secret_Here"
+    },
+    system: {
+        loggerOptions: {
+            loggerCallback(loglevel, message, containsPii) {
+                console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: msal.LogLevel.Verbose,
+        }
+    }
+};
+```
+
+V Azure Portal musí identifikátory URI odpovědi, které zaregistrujete na ověřovací stránce vaší aplikace, odpovídat instancím redirectUri, které aplikace definuje ( `http://localhost:3000/redirect` ).
+
+> [!NOTE]
+> V tomto rychlém startu se navrhuje Uložit tajný klíč klienta do konfiguračního souboru pro zjednodušení. Ve vaší produkční aplikaci byste chtěli použít jiné způsoby ukládání tajného kódu, jako je například Trezor klíčů nebo proměnná prostředí.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Tady je konfigurační soubor Pythonu v [app_config. py](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app_config.py):
@@ -207,7 +240,7 @@ Inicializační kód se liší v závislosti na platformě. Pro ASP.NET Core a A
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-V ASP.NET Core Web Apps (a webová rozhraní API) je aplikace chráněná, protože máte `[Authorize]` atribut na řadičích nebo na akcích kontroleru. Tento atribut kontroluje, jestli je uživatel ověřený. Kód, který inicializuje aplikaci, je v souboru *Startup.cs* .
+V ASP.NET Core Web Apps (a webová rozhraní API) je aplikace chráněná, protože máte `[Authorize]` atribut na řadičích nebo na akcích kontroleru. Tento atribut kontroluje, jestli je uživatel ověřený. Kód, který inicializuje aplikaci, je v souboru *Startup. cs* .
 
 Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure AD v 2.0), budete muset přidat následující kód. Komentáře v kódu by měly být vysvětlivekné.
 
@@ -246,7 +279,7 @@ Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure
      }).AddMicrosoftIdentityUI();
     ```
 
-3. V `Configure` metodě v *Startup.cs* povolte ověřování pomocí volání `app.UseAuthentication();`
+3. V `Configure` metodě v *Startup. cs* povolte ověřování pomocí volání `app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -319,6 +352,15 @@ Podrobnosti naleznete v `doFilter()` metodě v [AuthFilter. Java](https://github
 
 Podrobnosti o toku autorizačního kódu, který tato metoda aktivuje, najdete v [toku autorizačního kódu platformy Microsoft a OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+const msal = require('@azure/msal-node');
+
+// Create msal application object
+const cca = new msal.ConfidentialClientApplication(config);
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Ukázka Pythonu používá baňky. Inicializace baněk a MSAL Pythonu se provádí v [App. py # L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28).
@@ -354,6 +396,10 @@ Přejděte k dalšímu článku v tomto scénáři, [Přihlaste se a odhlaste](.
 # <a name="java"></a>[Java](#tab/java)
 
 Přejděte k dalšímu článku v tomto scénáři, [Přihlaste se a odhlaste](./scenario-web-app-sign-user-sign-in.md?tabs=java)se.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Přejděte k dalšímu článku v tomto scénáři, [přihlaste](./scenario-web-app-sign-user-sign-in.md?tabs=nodejs)se.
 
 # <a name="python"></a>[Python](#tab/python)
 

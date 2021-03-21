@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: b50aadfa16ed95bacb5247187c15489a1b017d39
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98676570"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: nahrání obrazových dat v cloudu pomocí Azure Storage
@@ -41,7 +41,7 @@ V první části tohoto kurzu se naučíte:
 > * Konfigurace nastavení aplikace
 > * Interakce s webovou aplikací
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
@@ -246,7 +246,7 @@ Vyberte oblast **nahrát fotografie** a určete a nahrajte soubor nebo přetáhn
 
 ![Nahrávání fotek v .NET](media/storage-upload-process-images/figure1.png)
 
-V ukázkovém kódu `UploadFileToStorage` úloha v souboru *Storagehelper.cs* slouží k nahrání imagí do kontejneru *images* v rámci účtu úložiště pomocí metody [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) . Úlohu `UploadFileToStorage` obsahuje následující vzorek kódu.
+V ukázkovém kódu se `UploadFileToStorage` úloha v souboru *Storagehelper. cs* používá k nahrání imagí do kontejneru *images* v rámci účtu úložiště pomocí metody [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) . Úlohu `UploadFileToStorage` obsahuje následující vzorek kódu.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,

@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
 ms.openlocfilehash: e7b696ba052b2aca9e14628327c07275845607ad
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540582"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Registrace připojení služby partnerského vztahu pomocí Azure CLI
@@ -23,7 +23,7 @@ Azure peering Service je síťová služba, která vylepšuje připojení zákaz
 
 - Tento článek vyžaduje verzi rozhraní příkazového řádku Azure 2.0.28 nebo novější. Spuštěním příkazu [az version](/cli/azure/reference-index#az_version) zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud chcete upgradovat na nejnovější verzi, spusťte [az upgrade](/cli/azure/reference-index#az_upgrade).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Musíte mít následující:
 

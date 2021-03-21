@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: c0bd2f6a021baae80dafcc3d544e1062d8e022e8
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94653330"
 ---
 # <a name="fqdn-tags-overview"></a>Přehled značek plně kvalifikovaného názvu domény
@@ -28,7 +28,7 @@ Následující tabulka uvádí aktuální plně kvalifikované názvy domén, kt
 
 ## <a name="current-fqdn-tags"></a>Aktuální značky plně kvalifikovaného názvu domény
 
-|FQDN – značka  |Popis  |
+|FQDN – značka  |Description  |
 |---------|---------|
 |Windows Update     |Povolte odchozí přístup k Microsoft Update, jak je popsáno v tématu [jak nakonfigurovat bránu firewall pro aktualizace softwaru](/mem/configmgr/sum/get-started/install-a-software-update-point).|
 |Program Diagnostika|Povolí odchozí přístup ke všem [koncovým bodům diagnostiky Windows](/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|

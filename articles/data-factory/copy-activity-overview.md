@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
 ms.openlocfilehash: d52a0bba5fddaa865b8fad74b778ba7a3838b2a4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100387899"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
@@ -178,7 +178,7 @@ Informace o tom, jak aktivita kopírování mapuje vaše zdrojová data do jímk
 
 ## <a name="add-additional-columns-during-copy"></a>Přidat další sloupce během kopírování
 
-Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Příklad:
+Kromě kopírování dat ze zdrojového úložiště dat do jímky můžete také nakonfigurovat a přidat další datové sloupce pro kopírování do jímky. Například:
 
 - Při kopírování ze zdroje založeného na souborech uložte relativní cestu k souboru jako další sloupec, ze kterého se data pocházejí.
 - Duplikuje zadaný zdrojový sloupec jako jiný sloupec. 

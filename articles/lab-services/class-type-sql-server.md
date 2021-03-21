@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 50f71ee1ce59f5809fe8905c58f0399cf484f11a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659705"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Nastavení testovacího prostředí pro správu a vývoj pomocí SQL Server
@@ -20,7 +20,7 @@ V tomto článku si ukážeme, jak nastavit šablonu virtuálního počítače v
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](./tutorial-setup-lab-account.md). Můžete použít i existující účet testovacího prostředí.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](./tutorial-setup-lab-account.md). Můžete použít i existující účet testovacího prostředí.
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 

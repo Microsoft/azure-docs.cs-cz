@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
 ms.openlocfilehash: 8ca8770944a12c6e0dd3e4f95d286758ebee5f9e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100387270"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
@@ -27,7 +27,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 
 Data z místního úložiště dat PostgreSQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako jímky aktivitou kopírování najdete v části [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory v současné době podporuje přesun dat z databáze PostgreSQL do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do databáze PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Služba Data Factory podporuje připojení k místním zdrojům PostgreSQL pomocí brány Správa dat. Další informace o Správa dat bráně a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními umístěními a v cloudovém](data-factory-move-data-between-onprem-and-cloud.md) článku.
 

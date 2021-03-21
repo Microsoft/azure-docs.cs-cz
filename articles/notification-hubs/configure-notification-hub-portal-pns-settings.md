@@ -13,10 +13,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94887259"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Rychlý Start: nastavení nabízených oznámení v centru oznámení
@@ -81,7 +81,7 @@ Pro projekt Google Firebase Cloud Messaging (FCM) budete potřebovat **klíč ro
    az notification-hub credential gcm update --resource-group spnhubrg --namespace-name spnhubns    --notification-hub-name spfcmtutorial1nhub --google-api-key myKey
    ```
 
-2. Aplikace pro Android potřebuje připojovací řetězec pro připojení k centru oznámení.  Pomocí příkazu [AZ Notification-hub Authorization-Rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) zobrazíte seznam dostupných zásad přístupu.  K získání připojovacích řetězců zásad přístupu použijte příkaz [AZ Notification-Center Authorization-Rule list-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) .  Chcete- **primaryConnectionString** li **secondaryConnectionString** `--query` získat primární připojovací řetězec přímo, zadejte v parametru parametr primaryConnectionString nebo secondaryConnectionString.
+2. Aplikace pro Android potřebuje připojovací řetězec pro připojení k centru oznámení.  Pomocí příkazu [AZ Notification-hub Authorization-Rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) zobrazíte seznam dostupných zásad přístupu.  K získání připojovacích řetězců zásad přístupu použijte příkaz [AZ Notification-Center Authorization-Rule list-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) .  Chcete-  li  `--query` získat primární připojovací řetězec přímo, zadejte v parametru parametr primaryConnectionString nebo secondaryConnectionString.
 
    ```azurecli
    #list access policies for a notification hub
@@ -129,7 +129,7 @@ Nastavení služby Microsoft Push Notification Service (MPNS) pro Windows Phone:
 1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Windows Phone (MPNS)** .
 1. Povolit buď neověřené, nebo ověřené nabízené oznámení:
 
-   a. Pokud chcete povolit neověřená nabízená oznámení, vyberte **Povolit neověřené nabízené** oznámení  >  **Save**.
+   a. Pokud chcete povolit neověřená nabízená oznámení, vyberte **Povolit neověřené nabízené** oznámení  >  .
 
       ![Snímek obrazovky, který ukazuje, jak povolit neověřená nabízená oznámení](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97674510"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Vytváření a Správa replik pro čtení z Azure CLI, REST API
@@ -34,7 +34,7 @@ Ke konfiguraci správné úrovně protokolování použijte parametr podpory rep
 ## <a name="azure-cli"></a>Azure CLI
 Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazového řádku Azure CLI.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli)
 - [Server Azure Database for PostgreSQL](quickstart-create-server-up-azure-cli.md) , který bude primárním serverem.
@@ -64,7 +64,7 @@ Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazov�
 
 Příkaz [AZ Postgres Server Replica Create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Popis  |
+| Nastavení | Příklad hodnoty | Description  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
 | name | mydemoserver – replika | Název nového serveru repliky, který se vytvoří. |

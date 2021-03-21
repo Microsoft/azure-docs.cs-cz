@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
 ms.openlocfilehash: def9e4f1b3f1c4e8f88f77dfe6906a8c96a94744
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389463"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Rychlý Start: použití šablony ARM k vytvoření Azure Database for MySQL-flexibilního serveru (Preview)
@@ -23,7 +23,7 @@ Azure Database for MySQL-flexibilní Server (Preview) je spravovaná služba, po
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 

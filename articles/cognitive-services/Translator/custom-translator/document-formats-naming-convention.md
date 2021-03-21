@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 9598d3c1d339d1c37b02892cc83164acae447434
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895845"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Formáty dokumentů a pokyny k konvenci pojmenování
@@ -22,7 +22,7 @@ Každý soubor, který se používá pro vlastní překlad, musí mít délku al
 
 Tato tabulka obsahuje všechny podporované formáty souborů, které můžete použít k sestavení systému překladu:
 
-| Formát            | Rozšíření   | Popis                                                                                                                                                                                                                                                                    |
+| Formát            | Rozšíření   | Description                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | . XLF, . XLIFF | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |
 | TMX               | . TMX         | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seodec18
 ms.openlocfilehash: a4f7ba288bc27d6079deea9caf0ea315a55d0745
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004039"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Framework v Azure
@@ -20,7 +20,7 @@ V tomto rychlém startu se dozvíte, jak nasadit první webovou aplikaci v ASP.N
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu nainstalujte <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> s úlohou **vývoje ASP.NET a web** .
 
@@ -83,7 +83,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
    | Nastavení | Navrhovaná hodnota | Description |
    |-|-|-|
-   | Hosting Plan (Plán hostování)| myAppServicePlan | Název plánu služby App Service. |
+   | Plán Hosting| myAppServicePlan | Název plánu služby App Service. |
    | Umístění | West Europe | Datacentrum, které je hostitelem webové aplikace. |
    | Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
 
