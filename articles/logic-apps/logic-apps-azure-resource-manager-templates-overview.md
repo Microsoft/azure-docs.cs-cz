@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 2e1536d4f2ea7d71691c611e9127109c154f3266
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec72431d927fd59677075e7adfdf7df171574882
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99807339"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772939"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
@@ -207,7 +207,7 @@ Tady je struktura v souboru parametrů, která obsahuje odkaz na Trezor klíčů
       "<secured-parameter-name>": {
          "reference": {
             "keyVault": {
-               "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/Microsoft.KeyVault/vaults/<key-vault-name>",
+               "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/Microsoft.KeyVault/vaults/<key-vault-name>"
             },
             "secretName: "<secret-name>"
          }
@@ -331,11 +331,11 @@ Tady jsou atributy, které jsou specifické pro vaši definici prostředků apli
 | Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
 | `state` | Ano | Řetězec | Stav vaší aplikace logiky při nasazení, kde je vaše aplikace logiky `Enabled` živá a `Disabled` to znamená, že vaše aplikace logiky je neaktivní. Pokud například nejste připraveni k tomu, aby vaše aplikace logiky přešla do provozu, ale chcete nasadit koncept verze, můžete použít `Disabled` možnost. |
-| `integrationAccount` | No | Objekt | Pokud vaše aplikace logiky používá účet pro integraci, který ukládá artefakty pro scénáře B2B (Business-to-Business), tento objekt obsahuje `id` atribut, který určuje ID pro účet pro integraci. |
-| `definition` | Yes | Objekt | Základní definice pracovního postupu aplikace logiky, což je stejný objekt, který se zobrazuje v zobrazení kódu a je plně popsán v tématu [Referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . V této definici pracovního postupu `parameters` objekt deklaruje parametry pro hodnoty, které mají být použity v prostředí Logic App runtime. Další informace najdete v tématu [definice a parametry pracovního postupu](#workflow-definition-parameters). <p><p>Chcete-li zobrazit atributy v definici pracovního postupu vaší aplikace logiky, přepněte z "zobrazení návrhu" na "zobrazení kódu" v Azure Portal nebo v aplikaci Visual Studio nebo pomocí nástroje, jako je například [Azure Resource Explorer](https://resources.azure.com). |
-| `parameters` | No | Objekt | [Hodnoty parametrů definice pracovního postupu](#workflow-definition-parameters) , které se mají použít v prostředí Logic App runtime Definice parametrů těchto hodnot se zobrazí uvnitř [objektu parametrů definice pracovního postupu](#workflow-definition-parameters). Také Pokud vaše aplikace logiky používá [spravované konektory](../connectors/apis-list.md) pro přístup k jiným službám a systémům, tento objekt obsahuje `$connections` objekt, který nastaví hodnoty připojení, které se mají použít za běhu. |
-| `accessControl` | No | Objekt | Pro zadání atributů zabezpečení pro vaši aplikaci logiky, jako je například omezení přístupu IP k aktivačním událostem žádosti nebo vstupy a výstupy historie spouštění. Další informace najdete v tématu [zabezpečený přístup k Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
-| `runtimeConfiguration` | No | Objekt | Pro zadání `operationOptions` vlastností, které řídí způsob, jakým se aplikace logiky chová za běhu. Aplikaci logiky můžete například spustit v [režimu vysoké propustnosti](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode). |
+| `integrationAccount` | Ne | Objekt | Pokud vaše aplikace logiky používá účet pro integraci, který ukládá artefakty pro scénáře B2B (Business-to-Business), tento objekt obsahuje `id` atribut, který určuje ID pro účet pro integraci. |
+| `definition` | Ano | Objekt | Základní definice pracovního postupu aplikace logiky, což je stejný objekt, který se zobrazuje v zobrazení kódu a je plně popsán v tématu [Referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . V této definici pracovního postupu `parameters` objekt deklaruje parametry pro hodnoty, které mají být použity v prostředí Logic App runtime. Další informace najdete v tématu [definice a parametry pracovního postupu](#workflow-definition-parameters). <p><p>Chcete-li zobrazit atributy v definici pracovního postupu vaší aplikace logiky, přepněte z "zobrazení návrhu" na "zobrazení kódu" v Azure Portal nebo v aplikaci Visual Studio nebo pomocí nástroje, jako je například [Azure Resource Explorer](https://resources.azure.com). |
+| `parameters` | Ne | Objekt | [Hodnoty parametrů definice pracovního postupu](#workflow-definition-parameters) , které se mají použít v prostředí Logic App runtime Definice parametrů těchto hodnot se zobrazí uvnitř [objektu parametrů definice pracovního postupu](#workflow-definition-parameters). Také Pokud vaše aplikace logiky používá [spravované konektory](../connectors/apis-list.md) pro přístup k jiným službám a systémům, tento objekt obsahuje `$connections` objekt, který nastaví hodnoty připojení, které se mají použít za běhu. |
+| `accessControl` | Ne | Objekt | Pro zadání atributů zabezpečení pro vaši aplikaci logiky, jako je například omezení přístupu IP k aktivačním událostem žádosti nebo vstupy a výstupy historie spouštění. Další informace najdete v tématu [zabezpečený přístup k Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
+| `runtimeConfiguration` | Ne | Objekt | Pro zadání `operationOptions` vlastností, které řídí způsob, jakým se aplikace logiky chová za běhu. Aplikaci logiky můžete například spustit v [režimu vysoké propustnosti](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode). |
 |||||
 
 Další informace o definicích prostředků pro tyto Logic Apps objekty najdete v tématu [typy prostředků Microsoft. Logic](/azure/templates/microsoft.logic/allversions):

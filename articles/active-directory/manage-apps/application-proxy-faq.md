@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b76934d3f16ec5f87ed1380135d22bc5d943652c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102487742"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779763"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -45,7 +45,7 @@ Důvodem může být to, že služba aktualizace nepracuje správně nebo pokud 
 Služba aktualizace je v pořádku, pokud je spuštěná a v protokolu událostí nejsou zaznamenány žádné chyby (protokoly aplikací a služeb – > Microsoft-> AadApplicationProxy-> aktualizace – > správce). 
 
 > [!IMPORTANT]
-> Pro automatický upgrade jsou vydané jenom hlavní verze. Doporučujeme, abyste konektor aktualizovali ručně podle pravidelného plánu. Další informace o nových verzích, typu vydání (stažení, automatický upgrade), opravách chyb a nových funkcích najdete v tématu [Azure proxy aplikací služby AD: Historie vydání verze](application-proxy-release-version-history.md).
+> Pro automatický upgrade jsou vydané jenom hlavní verze. Doporučujeme, abyste konektor aktualizovali ručně pouze v případě, že je to nezbytné. Například nemůžete čekat na hlavní vydání, protože musíte opravit známý problém nebo chcete použít novou funkci. Další informace o nových verzích, typu vydání (stažení, automatický upgrade), opravách chyb a nových funkcích najdete v tématu [Azure proxy aplikací služby AD: Historie vydání verze](application-proxy-release-version-history.md).
 
 Postup ručního upgradu konektoru:
 
@@ -207,7 +207,7 @@ Další informace najdete [v tématu Povolení vzdáleného přístupu ke služb
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Můžu použít Azure Proxy aplikací služby AD jako proxy server AD FS (jako je proxy webových aplikací)?
 
-No. Služba Azure Proxy aplikací služby AD je navržená tak, aby spolupracovala s Azure AD a nesplňovala požadavky, které by fungovaly jako proxy AD FS.
+Ne. Služba Azure Proxy aplikací služby AD je navržená tak, aby spolupracovala s Azure AD a nesplňovala požadavky, které by fungovaly jako proxy AD FS.
 
 ## <a name="websocket"></a>WebSocket
 

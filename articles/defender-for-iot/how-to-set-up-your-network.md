@@ -1,18 +1,14 @@
 ---
 title: Nastavení sítě
 description: Seznamte se s architekturou řešení, přípravou sítě, požadavky a dalšími informacemi potřebnými k tomu, abyste měli jistotu, že jste úspěšně nastavili síť pro práci s Azure Defenderem pro zařízení IoT.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 02/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 0f85eebbfa8fcdfd9ad6e31a564f27b5d9bfbdfc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ed75995b7cbc3b051d77942698a5d0d948e6eef0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101733240"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781802"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>O programu Azure Defender pro síť IoT
 
@@ -466,7 +462,7 @@ Ukázkový soubor PCAP (několik minut) můžete zaznamenat připojením přenos
 
 :::image type="content" source="media/how-to-set-up-your-network/wireshark-validation.png" alt-text="Snímek obrazovky s ověřováním Wireshark":::
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pro řešení potíží použijte tyto části:
 

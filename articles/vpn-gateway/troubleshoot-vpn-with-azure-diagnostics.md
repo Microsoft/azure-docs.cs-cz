@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: stegag
-ms.openlocfilehash: 4e65dcd448a2ab2fad635cab12f41d858416becf
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 232e084e44696c6aa88a9dd33092c48a96e35f85
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104726051"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771991"
 ---
 # <a name="troubleshoot-azure-vpn-gateway-using-diagnostic-logs"></a>Řešení potíží s Azure VPN Gateway pomocí diagnostických protokolů
 
@@ -25,10 +25,10 @@ V Azure jsou k dispozici následující protokoly:
 |***Název** _ | _ *_Popis_** |
 |---        | ---               |
 |**GatewayDiagnosticLog** | Obsahuje protokoly diagnostiky pro události konfigurace brány, primární změny a události údržby. |
-|**TunnelDiagnosticLog** | Obsahuje události změny stavu tunelu. Události připojení a odpojení tunelu mají souhrnný důvod změny stavu, pokud je to možné. |
-|**RouteDiagnosticLog** | Zaznamená změny do statických tras a událostí protokolu BGP, ke kterým dojde v bráně. |
+|**TunnelDiagnosticLog** | Obsahuje události změny stavu tunelu. Události připojení/odpojení tunelu mají souhrnný důvod změny stavu, pokud je k dispozici. |
+|**RouteDiagnosticLog** | Protokoluje změny statických tras a událostí protokolu BGP, ke kterým dojde v bráně. |
 |**IKEDiagnosticLog** | Protokoluje zprávy řízení IKE a události v bráně. |
-|**P2SDiagnosticLog** | Protokoluje zprávy a události řízení Point-to-site v bráně. |
+|**P2SDiagnosticLog** | Zaznamená v bráně zprávy řízení Point-to-site a události. |
 
 Všimněte si, že v těchto tabulkách je dostupných několik sloupců. V tomto článku prezentujeme jenom ty nejdůležitější pro snazší využití protokolu.
 
@@ -38,7 +38,7 @@ Informace o tom, jak nastavit události diagnostického protokolu z Azure VPN Ga
 
 ## <a name="gatewaydiagnosticlog"></a><a name="GatewayDiagnosticLog"></a>GatewayDiagnosticLog
 
-Změny konfigurace se auditují v tabulce **GatewayDiagnosticLog** . Všimněte si, že může trvat několik minut, než se změny, které spustíte, projeví v protokolech.
+Změny konfigurace se auditují v tabulce **GatewayDiagnosticLog** . Může to trvat několik minut, než se změny, které spustíte, projeví v protokolech.
 
 Tady máte vzorový dotaz jako referenci.
 
@@ -53,13 +53,13 @@ Tento dotaz na **GatewayDiagnosticLog** zobrazí více sloupců.
 
 |***Název** _ | _ *_Popis_** |
 |---        | ---               |
-|**TimeGenerated** | časové razítko každé události, v časovém pásmu UTC|
-|**OperationName** |událost, ke které došlo. Může to být buď *SetGatewayConfiguration, SetConnectionConfiguration, HostMaintenanceEvent, GatewayTenantPrimaryChanged, MigrateCustomerSubscription, GatewayResourceMove, ValidateGatewayConfiguration* .|
+|**TimeGenerated** | časové razítko každé události v časovém pásmu UTC.|
+|**OperationName** |událost, ke které došlo. Může to být buď *SetGatewayConfiguration, SetConnectionConfiguration, HostMaintenanceEvent, GatewayTenantPrimaryChanged, MigrateCustomerSubscription, GatewayResourceMove, ValidateGatewayConfiguration*.|
 |**Zpráva** | Podrobnosti o tom, jaká operace se děje, a zobrazí seznam úspěšných nebo neúspěšných výsledků.|
 
 Následující příklad ukazuje aktivitu zaznamenanou při použití nové konfigurace:
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-26-set-gateway.png" alt-text="Nastavte příklad operace brány.":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-26-set-gateway.png" alt-text="Příklad operace set Gateway zjištěná v GatewayDiagnosticLog":::
 
 
 Všimněte si, že SetGatewayConfiguration se protokoluje při každém změně konfigurace v VPN Gateway nebo bráně místní sítě.
@@ -83,7 +83,7 @@ Tento dotaz na **TunnelDiagnosticLog** zobrazí více sloupců.
 
 |***Název** _ | _ *_Popis_** |
 |---        | ---               |
-|**TimeGenerated** | časové razítko každé události, v časovém pásmu UTC|
+|**TimeGenerated** | časové razítko každé události v časovém pásmu UTC.|
 |**OperationName** | událost, ke které došlo. Může to být buď *TunnelConnected* nebo *TunnelDisconnected*.|
 | **Instance \_ s** | instance role brány, která aktivovala událost. Může to být buď GatewayTenantWorker \_ \_ 0, nebo GatewayTenantWorker \_ v \_ 1, což jsou názvy dvou instancí brány.|
 | **Prostředek** | označuje název brány sítě VPN. |
@@ -92,7 +92,7 @@ Tento dotaz na **TunnelDiagnosticLog** zobrazí více sloupců.
 
 Příklad výstupu:
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-16-tunnel-connected.png" alt-text="Příklad události připojené k tunelu":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-16-tunnel-connected.png" alt-text="Příklad události připojené k tunelu, která se zobrazuje v TunnelDiagnosticLog":::
 
 
 **TunnelDiagnosticLog** je velmi užitečné k odstraňování potíží s minulými událostmi týkajícími se neočekávaných odpojení sítě VPN. Jeho odlehčená povaha nabízí možnost analýzy velkých časových rozsahů za několik dní s malým úsilím.
@@ -101,7 +101,7 @@ Pouze po identifikaci časového razítka odpojení můžete přejít na podrobn
 
 Rady pro odstraňování potíží:
 - Pokud se na jedné instanci brány zobrazuje událost odpojení, za několik sekund následuje událost připojení k **jiné** instanci brány a prohlížíte při převzetí služeb při selhání brány. Obvykle se jedná o očekávané chování z důvodu údržby instance brány. Další informace o tomto chování najdete v tématu [o redundanci Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable#about-azure-vpn-gateway-redundancy).
-- Stejné chování se projeví, pokud úmyslně spustíte resetování brány na Azure, což způsobí restartování instance aktivní brány. Další informace o tomto chování najdete v tématu [resetování VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-resetgw-classic) .
+- Stejné chování se projeví, pokud úmyslně spustíte resetování brány na Azure, což způsobí restartování instance aktivní brány. Další informace o tomto chování najdete v tématu [resetování VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-resetgw-classic).
 - Pokud se u jedné instance brány zobrazuje událost odpojení, po několika sekundách událost připojení ke **stejné** instanci brány, můžete se podívat na poruchau sítě, která způsobuje časový limit DPD, nebo odpojení chybně odeslané místním zařízením.
 
 ## <a name="routediagnosticlog"></a><a name="RouteDiagnosticLog"></a>RouteDiagnosticLog
@@ -120,8 +120,8 @@ Tento dotaz na **RouteDiagnosticLog** zobrazí více sloupců.
 
 |***Název** _ | _ *_Popis_** |
 |---        | ---               |
-|**TimeGenerated** | časové razítko každé události, v časovém pásmu UTC|
-|**OperationName** | událost, ke které došlo. Může být buď *StaticRouteUpdate, BgpRouteUpdate, BgpConnectedEvent, BgpDisconnectedEvent*|
+|**TimeGenerated** | časové razítko každé události v časovém pásmu UTC.|
+|**OperationName** | událost, ke které došlo. Může být buď *StaticRouteUpdate, BgpRouteUpdate, BgpConnectedEvent, BgpDisconnectedEvent*.|
 | **Zpráva** | Podrobnosti o tom, jaká operace se děje.|
 
 Výstup bude zobrazovat užitečné informace o připojených nebo odpojených partnerských vztazích protokolu BGP a vyměňovaných trasách.
@@ -129,7 +129,7 @@ Výstup bude zobrazovat užitečné informace o připojených nebo odpojených p
 Příklad:
 
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-31-bgp-route.png" alt-text="Příklady tras protokolu BGP.":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-31-bgp-route.png" alt-text="Příklad aktivity protokolu BGP Route Exchange, která se zobrazuje v RouteDiagnosticLog":::
 
 
 ## <a name="ikediagnosticlog"></a><a name="IKEDiagnosticLog"></a>IKEDiagnosticLog
@@ -153,19 +153,19 @@ Tento dotaz na **IKEDiagnosticLog** zobrazí více sloupců.
 
 |***Název** _ | _ *_Popis_** |
 |---        | ---               |
-|**TimeGenerated** | časové razítko každé události, v časovém pásmu UTC|
-| **RemoteIP** | IP adresa místního zařízení VPN. V reálných scénářích je užitečné filtrovat podle IP adresy relevantního místního zařízení, které má více než jednu. |
-|**LocalIP** | IP adresa VPN Gateway řešíme. V reálných scénářích je užitečné filtrovat podle IP adresy příslušné brány VPN, ale v předplatném je víc než jedna. |
-|**Událost** | obsahuje diagnostickou zprávu užitečnou pro řešení potíží. Obvykle začínají klíčovým slovem a odkazují na akce prováděné pomocí Azure Gateway **\[ Send \]** indikuje událost, která je způsobená paketem IPSec odesílaným **\[ obdrženou \]** bránou Azure. indikuje, že událost v důsledku přijetí paketu přijatého z **\[ místního \]** zařízení znamená, že brána Azure zavedla akci místně. |
+|**TimeGenerated** | časové razítko každé události v časovém pásmu UTC.|
+| **RemoteIP** | IP adresa místního zařízení VPN. V reálných scénářích je užitečné filtrovat podle IP adresy relevantního místního zařízení, které má více než jeden. |
+|**LocalIP** | IP adresa VPN Gateway řešíme. V reálných scénářích je užitečné filtrovat podle IP adresy příslušné brány VPN, ale ve vašem předplatném je víc než jeden. |
+|**Událost** | obsahuje diagnostickou zprávu užitečnou pro řešení potíží. Obvykle začínají klíčovým slovem a odkazují na akce prováděné bránou Azure. **\[ odeslání \]** indikuje událost způsobenou paketem IPSec odesílaným bránou Azure.  **\[ Přijato \]** znamená, že událost v důsledku příjmu paketu přijatého z místního zařízení.  **\[ Místní \]** označuje akci prováděnou místně bránou Azure. |
 
 
-Všimněte si, že RemoteIP, LocalIP a sloupce událostí nejsou k dispozici v původním seznamu sloupců v databázi AzureDiagnostics, ale přidají se do dotazu analýzou výstupu sloupce "zpráva", aby se zjednodušila jeho analýza.
+Všimněte si, že sloupce RemoteIP, LocalIP a Event nejsou v původním seznamu sloupců v databázi AzureDiagnostics k dispozici, ale přidají se do dotazu analýzou výstupu sloupce "zpráva", aby se zjednodušila jeho analýza.
 
 Tipy pro řešení potíží:
 
 - Aby bylo možné identifikovat začátek vyjednávání protokolu IPSec, je nutné najít počáteční \_ zprávu o INICIALIZACI SA. Takovou zprávu může odeslat kterákoli strana tunelu. Ten, kdo pošle první paket, se v terminologii protokolu IPsec nazývá "iniciátor", zatímco druhá strana se stala "respondér". První zpráva o \_ INICIALIZACI SA je vždy ta, kde rCookie = 0.
 
-- Pokud se nepovede tunelové propojení IPsec navázat, Azure se bude pokoušet opakovat každých několik sekund. Z tohoto důvodu problémy s řešením "VPN down" je velmi praktické na IKEdiagnosticLog, protože nemusíte čekat na určitou dobu k reprodukování problému. Selhání se také bude teoreticky vždycky opakovat pokaždé, když se pokusíme, abyste mohli kdykoliv přiblížit jedno "ukázkové" "pokusy o neúspěšné vyjednávání.
+- Pokud se nepovede tunelové propojení IPsec navázat, Azure se bude pokoušet opakovat každých několik sekund. Z tohoto důvodu jsou problémy s řešením "VPN down" velmi pohodlné na IKEdiagnosticLog, protože nemusíte čekat na určitou dobu k reprodukování problému. Selhání se také bude teoreticky vždycky opakovat pokaždé, když se pokusíme, abyste mohli kdykoliv přiblížit jedno "ukázkové" "pokusy o neúspěšné vyjednávání.
 
 - Inicializace SA \_ obsahuje parametry protokolu IPSec, které chce partner použít pro toto vyjednávání protokolu IPSec. Oficiální dokument   
 [Výchozí parametry protokolu IPSec/IKE](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec) obsahují seznam parametrů protokolu IPSec podporovaných bránou Azure s výchozími nastaveními.
@@ -173,7 +173,7 @@ Tipy pro řešení potíží:
 
 ## <a name="p2sdiagnosticlog"></a><a name="P2SDiagnosticLog"></a>P2SDiagnosticLog
 
-Poslední dostupná tabulka pro diagnostiku VPN je **P2SDiagnosticLog**. Tato aktivita sleduje aktivitu pro Point-to-site.
+Poslední dostupná tabulka pro diagnostiku VPN je **P2SDiagnosticLog**. Tato tabulka sleduje aktivitu pro Point-to-site.
 
 Tady máte vzorový dotaz jako referenci.
 
@@ -187,17 +187,17 @@ Tento dotaz na **P2SDiagnosticLog** zobrazí více sloupců.
 
 |***Název** _ | _ *_Popis_** |
 |---        | ---               |
-|**TimeGenerated** | časové razítko každé události, v časovém pásmu UTC|
-|**OperationName** | událost, ke které došlo. Bude *P2SLogEvent*|
+|**TimeGenerated** | časové razítko každé události v časovém pásmu UTC.|
+|**OperationName** | událost, ke které došlo. Bude *P2SLogEvent*.|
 | **Zpráva** | Podrobnosti o tom, jaká operace se děje.|
 
 Ve výstupu se zobrazí všechna místa na nastaveních lokality, která brána používá, a také zásady protokolu IPsec.
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-28-p2s-log-event.png" alt-text="Příklad P2S protokolů.":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-28-p2s-log-event.png" alt-text="Příklad připojení typu Point-to-site, které se zobrazuje v P2SDiagnosticLog":::
 
 V případě, že se klient připojí přes IKEv2 nebo OpenVPN Point do lokality, bude v tabulce protokolovat aktivitu paketů, konverzace EAP/RADIUS a úspěšné nebo neúspěšné výsledky uživatele.
 
-:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-29-eap.png" alt-text="Příklad protokolů EAP.":::
+:::image type="content" source="./media/troubleshoot-vpn-with-azure-diagnostics/image-29-eap.png" alt-text="Příklad ověřování EAP, které se zobrazilo v P2SDiagnosticLog":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 9a4ed5542945b8d281ec750d9bbd3a8f444e44d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 37f3748b4f0f3db47bbd6fbe9bc06a307781c2f8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96752256"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786800"
 ---
 # <a name="add-assessment-tools"></a>Přidání nástrojů pro vyhodnocení
 
@@ -25,23 +25,23 @@ Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate]
 1. V projektu Azure Migrate klikněte na **Přehled**.
 2. Vyberte scénář posouzení:
 
-    - Pokud chcete zjišťovat a hodnotit počítače a úlohy pro migraci do Azure, vyberte **vyhodnotit a migrovat servery**.
+    - Pokud chcete zjišťovat, hodnotit a migrovat servery (fyzické nebo virtuální) z vašeho datového centra nebo jiných cloudů do Azure, vyberte **vyhledat, vyhodnotit a migrovat**. Pomocí tohoto cíle migrace teď můžete taky zjišťovat SQL Server z prostředí VMware a vyhodnocovat z něj vyhodnocení.
     - Pro vyhodnocení místních SQL Server databází vyberte možnost **vyhodnotit a migrovat databáze**.
     - Pokud chcete vyhodnotit nebo migrovat místní webové aplikace, vyberte **Prozkoumat další**  >  **Web Apps**.
     - Pokud chcete vyhodnotit infrastrukturu virtuálních klientských počítačů, vyberte **Prozkoumat další**  >  **Infrastruktura virtuálních klientských počítačů**.
 
     ![Možnosti výběru scénáře posouzení](./media/how-to-assess/assess-scenario.png)
 
-## <a name="select-a-server-assessment-tool"></a>Výběr nástroje pro vyhodnocení serveru 
+## <a name="select-a-discovery-and-assessment-tool"></a>Výběr nástroje pro zjišťování a vyhodnocení 
 
 
 1. Přidat nástroj:
 
-    - Pokud jste vytvořili Azure Migrate projekt pomocí možnosti **zhodnotit a migrovat servery** na portálu, nástroj pro vyhodnocení Azure Migrate serveru se automaticky přidá do projektu. Pokud chcete přidat další nástroje pro posouzení, vyberte na **serverech** vedle **nástrojů pro posouzení** možnost **Přidat další nástroje**.
-    
+    - Pokud jste vytvořili projekt Azure Migrate pomocí možnosti **zhodnotit a migrovat servery** na portálu, nástroj pro zjišťování a hodnocení Azure Migrate je automaticky přidán do projektu. Pokud chcete přidat další nástroje pro posouzení, v **systému Windows, Linux a SQL Server** klikněte vedle **nástrojů pro posouzení** na **Přidat další nástroje**.
+
          ![Tlačítko pro přidání dalších nástrojů pro posouzení](./media/how-to-assess/add-assessment-tool.png)
 
-    - Pokud jste vytvořili projekt pomocí jiné možnosti a zatím nemáte žádné nástroje pro posouzení, v nástroji servery pro   >  **vyhodnocení** vyberte **možnost klikněte sem**.
+    - Pokud jste vytvořili projekt pomocí jiné možnosti a ještě nemáte žádné nástroje pro posouzení, v nástrojích pro **Windows, Linux a SQL Server**  >  **Assessment Tools** vyberte **klikněte sem**.
 
         ![Tlačítko pro přidání prvního nástroje pro posouzení](./media/how-to-assess/no-assessment-tool.png)
 
@@ -83,4 +83,4 @@ Pokud jste vytvořili Azure Migrate projekt pomocí možnosti **Prozkoumat dalš
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjištění místních počítačů pro posouzení pomocí nástroje Azure Migrate Server Assessment Tool pro virtuální počítače [VMware](./tutorial-discover-vmware.md) , [Hyper-V](./tutorial-discover-hyper-v.md)nebo [fyzické servery](./tutorial-discover-physical.md)
+Zjišťování místních serverů pro posouzení pomocí nástroje Azure Migrate Discovery and Assessment Tool pro [VMware](./tutorial-discover-vmware.md), [Hyper-V](./tutorial-discover-hyper-v.md)nebo [fyzické servery](./tutorial-discover-physical.md)

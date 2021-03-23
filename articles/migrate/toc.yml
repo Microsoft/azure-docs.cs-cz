@@ -236,6 +236,9 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.migrate/
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Migrace v architektuře přechodu na cloud

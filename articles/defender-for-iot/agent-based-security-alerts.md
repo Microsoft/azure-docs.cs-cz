@@ -1,25 +1,14 @@
 ---
 title: Výstrahy zabezpečení založené na agentech
-titleSuffix: Azure Defender for IoT
 description: Přečtěte si o výstrahách zabezpečení a doporučené nápravě pomocí programu Defender pro funkce a služby zařízení IoT.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/16/2021
-ms.author: shhazam
-ms.openlocfilehash: 9e4a65e67200a682313dae8e326128edce3367d1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b586eb4bebfc584e6cec4c27df859dbebb817e2d
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495755"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784930"
 ---
 # <a name="defender-for-iot-devices-security-alerts"></a>Defender pro výstrahy zabezpečení zařízení IoT
 
@@ -33,7 +22,7 @@ Další informace najdete v tématu [přizpůsobitelná upozornění](concept-cu
 
 ## <a name="agent-based-security-alerts"></a>Výstrahy zabezpečení založené na agentech
 
-| Name | Závažnost | Zdroj dat | Description | Navrhované kroky k nápravě |
+| Name | Závažnost | Zdroj dat | Popis | Navrhované kroky k nápravě |
 |--|--|--|--|--|
 | **Vysoká** závažnost |  |  |  |
 | Binární příkazový řádek | Vysoká | Klasický Defender – IoT-Micro Agent | Byl zjištěn binární soubor LA Linux, který byl spuštěn z příkazového řádku. Tento proces může být legitimní aktivity nebo indikace, že dojde k ohrožení zabezpečení vašeho zařízení. | Projděte si příkaz s uživatelem, který ho spustil, a zkontrolujte, jestli se jedná o něco oprávněného spuštění na zařízení. Pokud ne, požádejte o upozornění svůj tým zabezpečení informací. |

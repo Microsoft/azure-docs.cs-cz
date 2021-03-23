@@ -1,18 +1,14 @@
 ---
 title: Práce s příkazy CLI Defenderu for IoT
 description: Tento článek popisuje Defender pro příkazy IoT CLI pro senzory a místní konzoly pro správu.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9cd3f4325db2bc45ddcd6cc011dd4993e385a43c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100636556"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778674"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Práce s příkazy CLI Defenderu for IoT
 
@@ -258,7 +254,7 @@ Pomocí příkazu můžete použít následující atributy `directions` :
 ## <a name="system-actions"></a>Systémové akce
 Následující tabulka popisuje příkazy, které jsou k dispozici pro provádění různých systémových akcí v programu Defender pro IoT:
 
-|Name|Kód|Description|
+|Name|Kód|Popis|
 |----|----|-----------|
 |Zobrazit datum|`date`|Vrátí aktuální datum na hostiteli ve formátu GMT.|
 |Restartujte hostitele.|`system reboot`|Restartuje hostitelské zařízení.|
@@ -287,7 +283,7 @@ Příkaz podporuje následující vstupní příznaky:
 | --klíč | \*Soubor. Key. Délka klíče by měla být minimálně 2 048 bitů. |
 | --řetěz | Cesta k souboru řetězu certifikátů (volitelné). |
 | --Pass | Heslo použité k šifrování certifikátu (volitelné). |
-| --heslo-sada | Výchozí hodnota je **false**, **nepoužívá** se. <br />Nastavte na **hodnotu true** , pokud chcete použít předchozí přístupové heslo, které jste zadali v předchozím certifikátu (volitelné). |  |
+| --heslo-sada | Výchozí hodnota je **false**, **nepoužívá** se. <br />Nastavte na **hodnotu true** , pokud chcete použít předchozí přístupové heslo, které jste zadali v předchozím certifikátu (volitelné). | 
 
 Při použití nástroje:
 

@@ -3,16 +3,16 @@ title: Transformace dat pomocí aktivity prasete v Azure Data Factory
 description: Zjistěte, jak můžete pomocí aktivity prasete v Azure Data Factory v1 spouštět skripty prasete na vyžádání nebo vlastním clusteru HDInsight.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2f59734b5452b5a06b49583954f8851e84e8f84d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 85c34bfc306b49bb826a342846bf5e4557e3052f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100387168"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786358"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity prasete v Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -79,15 +79,15 @@ Aktivita prasete v HDInsight v [kanálu](data-factory-create-pipelines.md) Data 
 
 | Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| name |Název aktivity |Yes |
-| description |Text popisující, k čemu se aktivita používá |No |
-| typ |HDinsightPig |Yes |
-| vztahují |Jeden nebo více vstupů spotřebovaných aktivitou prasete |No |
-| činnosti |Jeden nebo více výstupů vyprodukovaných aktivitou prasete |Yes |
-| linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory |Yes |
-| script |Zadat vložený skript prasete |No |
-| scriptPath |Uložte skript prasete do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |No |
-| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro vepřové prostředí. |No |
+| name |Název aktivity |Ano |
+| description |Text popisující, k čemu se aktivita používá |Ne |
+| typ |HDinsightPig |Ano |
+| vztahují |Jeden nebo více vstupů spotřebovaných aktivitou prasete |Ne |
+| činnosti |Jeden nebo více výstupů vyprodukovaných aktivitou prasete |Ano |
+| linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory |Ano |
+| script |Zadat vložený skript prasete |Ne |
+| scriptPath |Uložte skript prasete do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |Ne |
+| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro vepřové prostředí. |Ne |
 
 ## <a name="example"></a>Příklad
 Podívejme se na příklad analýzy herních protokolů, u kterých chcete zjistit čas strávený hráči, které hrají hry spuštěné vaší společností.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: a4303f43dffa98f842bd3daf9e3a0cd5214932b1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ee28837d3e687d78b645a1ab18a9add1f8e57fcc
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100585359"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771256"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Krok 1: nasazení serveru pro překládání protokolů
 
@@ -229,5 +229,7 @@ Zvolením démona syslog zobrazíte příslušný popis.
 ## <a name="next-steps"></a>Další kroky
 
 V tomto dokumentu jste zjistili, jak nasadit agenta Log Analytics pro připojení zařízení CEF ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+
+- Přečtěte si o [mapování polí CEF a CommonSecurityLog](cef-name-mapping.md).
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).

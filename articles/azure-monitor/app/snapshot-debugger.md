@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: bd196e60fed8a18064bfa59e343e51a878a11237
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b0c26aa95d8c3aba5df164fb0707b4833accd052
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217393"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786477"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 Pokud dojde k výjimce, můžete automaticky shromáždit snímek ladění z živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnných v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger v [Azure Application Insights](./app-insights-overview.md) monitorují telemetrii výjimek z vaší webové aplikace. Shromažďuje snímky na vašich vyvolané výjimce, takže budete mít k dispozici informace potřebné k diagnostice problémů v produkčním prostředí. Zahrňte do aplikace [balíček NuGet pro kolektor snímků](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) a volitelně nakonfigurujte parametry kolekce v [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimkách](./asp-net-exceptions.md) na portálu Application Insights.
@@ -24,7 +24,10 @@ Snímky ladění se ukládají po dobu 15 dnů. Tyto zásady uchovávání infor
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Povolit pro aplikaci Application Insights Snapshot Debugger
 Kolekce snímků je k dispozici pro:
 * Aplikace .NET Framework a ASP.NET spuštěné .NET Framework 4,5 nebo novější.
-* Aplikace .NET Core 2,0 a ASP.NET Core 2,0, které běží v systému Windows.
+* Aplikace .NET Core a ASP.NET Core s platformou .NET Core 2,1 (LTS) nebo 3,1 (LTS) ve Windows.
+* Aplikace .NET 5,0 ve Windows.
+
+Nedoporučujeme používat .NET Core 2,0, 2,2 nebo 3,0, protože nepodporují.
 
 Podporují se následující prostředí:
 

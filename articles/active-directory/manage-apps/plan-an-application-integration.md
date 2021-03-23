@@ -1,22 +1,22 @@
 ---
-title: Začínáme s integrací Azure AD s aplikacemi
+title: Začínáme s integrací Azure Active Directory s aplikacemi
 description: Tento článek je úvodní příručka pro integraci Azure Active Directory (AD) s místními aplikacemi a cloudových aplikací.
 services: active-directory
 author: kenwith
 manager: daveba
 ms.service: active-directory
+ms.subservice: app-mgmt
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2018
+ms.date: 03/19/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 8b321acb00e6e9b4b6cca117afba8bf0c9432719
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: de06bb4f97568eaa40b0b09e9bc2b50608424aa8
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258462"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775591"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Průvodce integrací Azure Active Directory s aplikacemi Začínáme
 
@@ -47,7 +47,7 @@ Před integrací aplikací se službou Azure AD je důležité znát, kde jste a
   * Jak jsou vaše skupiny uspořádány?
   * Kteří členy skupiny jsou?
   * Jaká oprávnění a přiřazení rolí dělají skupiny v současné době?
-* Budete potřebovat vyčistit databáze uživatelů a skupin před integrací?  (Jedná se o poměrně důležitou otázku. Uvolnění paměti, uvolnění paměti.)
+* Budete potřebovat vyčistit databáze uživatelů a skupin před integrací?  (Jedná se o důležitou otázku. Uvolnění paměti, uvolnění paměti.)
 
 ### <a name="access-management-inventory"></a>Inventář správy přístupu
 * Jak aktuálně spravujete přístup uživatelů k aplikacím? Je potřeba změnit?  Měli jste za přístup k jiným způsobům správy přístupu, jako je například se službou [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) ?
@@ -66,8 +66,19 @@ Následující články popisují různé způsoby integrace aplikací s Azure A
 * [Používání aplikací v galerii aplikací Azure](what-is-single-sign-on.md)
 * [Integrace seznamu kurzů pro aplikace SaaS](../saas-apps/tutorial-list.md)
 
+## <a name="capabilities-for-apps-not-listed-in-the-azure-ad-gallery"></a>Možnosti pro aplikace, které nejsou uvedené v galerii Azure AD
+
+Můžete přidat libovolnou aplikaci, která již existuje ve vaší organizaci, nebo jakoukoli aplikaci třetí strany od dodavatele, který ještě není součástí Galerie Azure AD. V závislosti na vaší [licenční smlouvě](https://azure.microsoft.com/pricing/details/active-directory/)jsou k dispozici tyto možnosti:
+
+- Samoobslužná integrace všech aplikací, které podporují zprostředkovatele identity [Security Assertion Markup Language (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) (SP-inicied nebo IDP)
+- Samoobslužná integrace jakékoli webové aplikace, která má přihlašovací stránku založenou na jazyce HTML pomocí [jednotného přihlašování založeného na heslech](sso-options.md#password-based-sso)
+- Samoobslužné připojení aplikací, které používají [systém pro protokol SCIM (Domain Identity Management) pro zřizování uživatelů](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+- Možnost Přidat odkazy na libovolnou aplikaci ve [Spouštěči aplikací Office 365](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) nebo ve [složkách moje aplikace](sso-options.md#linked-sign-on)
+
+Pokud hledáte pokyny pro vývojáře, jak integrovat vlastní aplikace do služby Azure AD, přečtěte si téma [scénáře ověřování pro Azure AD](../develop/authentication-vs-authorization.md). Když vyvíjíte aplikaci, která používá moderní protokol, jako je [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) k ověřování uživatelů, můžete ji zaregistrovat na platformě Microsoft identity pomocí prostředí [Registrace aplikací](../develop/quickstart-register-app.md) v Azure Portal.
+
 ### <a name="authentication-types"></a>Typy ověřování
-Každá z vašich aplikací může mít různé požadavky na ověřování. Pomocí služby Azure AD je možné podpisové certifikáty použít s aplikacemi, které používají protokoly SAML 2,0, WS-Federation nebo OpenID Connect, a také jednotné přihlašování pomocí hesla. Další informace o typech ověřování aplikací pro použití s Azure AD najdete v tématu [Správa certifikátů pro federované jednotné Sign-On v rámci Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) a [jednotného přihlašování založené na heslech](what-is-single-sign-on.md).
+Každá z vašich aplikací může mít různé požadavky na ověřování. Pomocí služby Azure AD je možné podpisové certifikáty použít s aplikacemi, které používají protokol SAML 2,0, WS-Federation nebo OpenID Connect a jednotné přihlašování k heslu. Další informace o typech ověřování aplikací najdete v tématu [Správa certifikátů pro federované jednotné Sign-On v Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) a [jednotné přihlašování založené na heslech](what-is-single-sign-on.md).
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Povolení jednotného přihlašování s Aplikace Azure AD proxy
 Pomocí služby Microsoft Azure AD Application proxy můžete zajistit zabezpečený přístup k aplikacím, které se nacházejí v privátní síti, odkudkoli a na jakémkoli zařízení. Po instalaci konektoru proxy aplikací ve vašem prostředí je možné ho snadno nakonfigurovat pomocí Azure AD.
@@ -85,11 +96,9 @@ Následující články popisují způsoby, kterými můžete spravovat přístu
 * [Sdílení účtů](../enterprise-users/users-sharing-accounts.md)
 
 ## <a name="next-steps"></a>Další kroky
-Podrobné informace můžete stáhnout Azure Active Directory plány nasazení z [GitHubu](../fundamentals/active-directory-deployment-plans.md). Pro aplikace v galerii si můžete stáhnout plány nasazení pro jednotné přihlašování, podmíněný přístup a zřizování uživatelů prostřednictvím [Azure Portal](https://portal.azure.com). 
+Podrobné informace můžete stáhnout Azure Active Directory plány nasazení z [GitHubu](../fundamentals/active-directory-deployment-plans.md). Pro aplikace v galerii si můžete stáhnout plány nasazení pro jednotné přihlašování, podmíněný přístup a zřizování uživatelů prostřednictvím [Azure Portal](https://portal.azure.com).
 
 Stažení plánu nasazení z Azure Portal:
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Vyberte možnost **podnikové aplikace** vybrat  |    |  **plán nasazení** aplikace.
-
-Poskytněte prosím svůj názor na plány nasazení prostřednictvím [průzkumu plánu nasazení](https://aka.ms/DeploymentPlanFeedback).

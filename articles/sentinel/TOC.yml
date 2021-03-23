@@ -323,6 +323,8 @@
           href: /azure/azure-monitor/logs/query-optimization
     - name: Rozšiřování UEBA
       href: ueba-enrichments.md
+    - name: Mapování polí protokolu CEF
+      href: cef-name-mapping.md
 - name: Zdroje a prostředky
   items:
     - name: Užitečné materiály

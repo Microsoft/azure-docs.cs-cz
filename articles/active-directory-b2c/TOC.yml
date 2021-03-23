@@ -496,6 +496,7 @@
       href: custom-policy-developer-notes.md
     - name: Verze rozložení stránky
       href: page-layout.md
+      displayName: Page version
     - name: Rezidence dat a dostupnost oblastí
       href: data-residency.md
     - name: Sestavení pro zajištění odolnosti

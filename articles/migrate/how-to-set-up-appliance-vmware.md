@@ -1,30 +1,30 @@
 ---
 title: Nastavení zařízení Azure Migrate pro VMware
-description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů VMware.
+description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci serverů v prostředí VMware.
 author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: bac82b2939e5b6a674c75be2cd330dd0fa4b8487
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1217b51ea91758d25b76394b27d3b21b2e9808b3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035752"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780867"
 ---
-# <a name="set-up-an-appliance-for-vmware-vms"></a>Nastavení zařízení pro virtuální počítače VMware
+# <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Nastavení zařízení pro servery v prostředí VMware
 
-Podle tohoto článku nastavte zařízení Azure Migrate pro posouzení pomocí nástroje [Azure Migrate: Nástroj pro vyhodnocení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool) a migraci bez agenta pomocí nástroje [Azure Migrate: Server pro migraci](migrate-services-overview.md#azure-migrate-server-migration-tool) .
+Podle tohoto článku můžete nastavit zařízení Azure Migrate pro posouzení pomocí nástroje [Azure Migrate: zjišťování a vyhodnocení](migrate-services-overview.md#azure-migrate-server-assessment-tool) a pro migraci bez agenta pomocí nástroje [Azure Migrate: Server pro migraci](migrate-services-overview.md#azure-migrate-server-migration-tool) .
 
-[Zařízení Azure Migrate](migrate-appliance.md) je jednoduché zařízení, které používá Azure Migrate: posouzení serveru a migrace serveru pro zjišťování serverů se systémem v vCenter Server, posílání konfigurace serveru a metadat výkonu do Azure a pro replikaci serverů pomocí migrace bez agenta.
+[Zařízení Azure Migrate](migrate-appliance.md) je jednoduché zařízení, které používá Azure Migrate: zjišťování a vyhodnocení a migrace serveru pro zjišťování serverů se systémem vCenter Server, posílání konfigurace serveru a metadat výkonu do Azure a pro replikaci serverů pomocí migrace bez agenta.
 
 Zařízení můžete nasadit pomocí několika metod:
 
 - Vytvořte server na vCenter Server pomocí stažené šablony vajíček. Tato metoda je popsaná v tomto článku.
 - Nastavte zařízení na existujícím serveru pomocí skriptu instalačního programu PowerShell. [Tato metoda](deploy-appliance-script.md) by se měla použít, pokud nemůžete použít šablonu vajíček nebo pokud jste v Azure Government.
 
-Po vytvoření zařízení zkontrolujete, že se může připojit k Azure Migrate: posouzení serveru, zaregistrujte ho v projektu Azure Migrate a nakonfigurujte zařízení tak, aby zahájilo zjišťování.
+Po vytvoření zařízení zkontrolujete, že se může připojit k Azure Migrate: zjišťování a posouzení, zaregistrujte ho v projektu Azure Migrate a nakonfigurujte zařízení tak, aby se spustilo zjišťování.
 
 ## <a name="deploy-with-ova"></a>Nasazení pomocí vajíček
 
@@ -36,8 +36,8 @@ K nastavení zařízení pomocí šablony vajíček:
 
 ### <a name="1-generate-the-azure-migrate-project-key"></a>1. vygenerujte klíč projektu Azure Migrate.
 
-1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
-2. V možnosti **zjišťovat počítače**  >  **jsou vaše počítače virtualizované?** vyberte **Ano, pomocí VMware vSphere hypervisor**.
+1. V Azure Migrate **cíle migrace**  >    >  Vyberte **zjišťování a hodnocení**. 
+2. V možnosti **zjišťovat servery**  >  **jsou vaše servery virtualizované?** vyberte **Ano, pomocí VMware vSphere hypervisor**.
 3. V **1: vygenerujte Azure Migrate klíč projektu**, zadejte název Azure Migrate zařízení, které nastavíte pro zjišťování serverů v prostředí VMware. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
 1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťování.
 1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu Azure Migrate** .
@@ -95,7 +95,7 @@ Nastavte zařízení poprvé.
 
 1. V klientské konzole vSphere klikněte pravým tlačítkem na server a pak vyberte **otevřít konzolu**.
 2. Zadejte jazyk, časové pásmo a heslo pro zařízení.
-3. Otevřete prohlížeč na jakémkoli počítači, který se může připojit k serveru zařízení, a otevřete adresu URL Správce konfigurace zařízení: `https://appliance name or IP address: 44368` .
+3. Otevřete prohlížeč na jakémkoli serveru, který se může připojit k serveru zařízení, a otevřete adresu URL Správce konfigurace zařízení: `https://appliance name or IP address: 44368` .
 
    Alternativně můžete otevřít Configuration Manager z plochy serveru zařízení tak, že vyberete zástupce Configuration Manageru.
 1. Přijměte **licenční podmínky** a přečtěte si informace třetích stran.
@@ -117,7 +117,7 @@ Nastavte zařízení poprvé.
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
-1. Vložte **klíč projektu Azure Migrate** zkopírovaný z portálu. Pokud tento klíč nemáte, Projděte si část **vyhodnocení serveru> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
+1. Vložte **klíč projektu Azure Migrate** zkopírovaný z portálu. Pokud tento klíč nemáte, podívejte se na **zjišťování a posouzení> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
 1. K ověření pomocí Azure budete potřebovat kód zařízení. Kliknutím na **přihlášení** se otevře modální okno s kódem zařízení, jak je znázorněno níže.
 
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Modální zobrazení kódu zařízení":::
@@ -141,7 +141,7 @@ Zařízení se musí připojit k vCenter Server, aby bylo možné zjistit údaje
 
 1. V **kroku 1: zadejte vCenter Server přihlašovací údaje**, klikněte na **Přidat přihlašovací údaje** , abyste zadali popisný název pro přihlašovací údaje, přidejte **uživatelské jméno** a **heslo** pro účet vCenter Server, který bude zařízení používat pro zjišťování serverů, na kterých vCenter Server.
     - Měli byste mít nastaven účet s požadovanými oprávněními, jak je popsáno výše v tomto článku.
-    - Chcete-li omezit obor zjišťování na konkrétní objekty VMware (vCenter Server datových center, clustery, složku clusterů, hostitele, složku hostitelů nebo jednotlivé virtuální počítače), přečtěte si pokyny v [tomto článku](set-discovery-scope.md) a omezte účet používaný v Azure Migrate.
+    - Chcete-li omezit obor zjišťování na konkrétní objekty VMware (vCenter Server datových center, clustery, složku clusterů, hostitele, složku hostitelů nebo jednotlivé servery), přečtěte si pokyny v [tomto článku](set-discovery-scope.md) a omezte účet používaný v Azure Migrate.
 1. V **kroku 2: zadejte vCenter Server podrobnosti**, klikněte na **Přidat zdroj zjišťování** , abyste v rozevíracím seznamu vybrali popisný název pro přihlašovací údaje, zadejte **IP adresu nebo plně kvalifikovaný název domény** vCenter Server. **Port** můžete ponechat výchozí (443) nebo zadejte vlastní port, na kterém vCenter Server naslouchá, a klikněte na **Uložit**.
 1. Po kliknutí na **Uložit** se zařízení pokusí ověřit připojení k vCenter Server s poskytnutými přihlašovacími údaji a zobrazit **stav ověření** v tabulce proti vCenter Server IP adrese nebo plně kvalifikovanému názvu domény.
 1. Můžete znovu **ověřit** připojení k vCenter Server kdykoli před zahájením zjišťování.

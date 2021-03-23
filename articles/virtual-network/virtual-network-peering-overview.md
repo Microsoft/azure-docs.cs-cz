@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1356c896abff8c525df283251240d027123405fc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216746"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778285"
 ---
 # <a name="virtual-network-peering"></a>Peering virtuálních sítí
 
@@ -25,8 +25,8 @@ Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení 
 
 Azure podporuje následující typy partnerských vztahů:
 
-* Partnerský vztah virtuální sítě: Propojte virtuální sítě v rámci stejné oblasti Azure.
-* Globální partnerské vztahy virtuálních sítí: propojení virtuálních sítí napříč oblastmi Azure.
+* **Partnerský vztah virtuální sítě**: Propojte virtuální sítě v rámci stejné oblasti Azure.
+* **Globální partnerské vztahy virtuálních sítí**: propojení virtuálních sítí napříč oblastmi Azure.
 
 Mezi výhody partnerských vztahů virtuálních sítí (místních i globálních) patří:
 

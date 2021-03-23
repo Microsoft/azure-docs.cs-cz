@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 53f873013a6f16ce5a28ee5d915afa556057f643
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94827916f28c9028d46bf7b5461a4fbd941b2a96
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98744281"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773398"
 ---
 # <a name="apply-the-remote-desktop-extension-to-azure-cloud-services-extended-support"></a>Použití rozšíření Vzdálená plocha na Azure Cloud Services (Rozšířená podpora)
 
@@ -27,8 +27,9 @@ Azure Portal používá rozšíření vzdálené plochy k povolení vzdálené p
 2. Vyberte **Přidat**.
 3. Vyberte role, pro které se má povolit vzdálená plocha.
 4. Vyplňte požadovaná pole pro uživatelské jméno, heslo, vypršení platnosti a certifikát (není nutné).
+> Značte Heslo pro vzdálenou plochu musí být delší než 8-123 znaků a musí splňovat alespoň 3 požadavky na složitost hesla z následujících hodnot: 1) obsahuje velké písmeno 2) obsahuje malé písmeno 3), které obsahuje číselnou číslici 4). obsahuje speciální znak 5) řídicí znaky nejsou povoleny.
 
-    :::image type="content" source="media/remote-desktop-2.png" alt-text="Obrázek ukazuje vložení informací potřebných pro připojení ke vzdálené ploše.":::
+   :::image type="content" source="media/remote-desktop-2.png" alt-text="Obrázek ukazuje vložení informací potřebných pro připojení ke vzdálené ploše.":::
 
 5. Po dokončení vyberte **Uložit**. Než budou instance rolí připravené na příjem připojení, bude chvíli trvat.
 

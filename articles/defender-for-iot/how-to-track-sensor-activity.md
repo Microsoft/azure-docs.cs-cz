@@ -1,18 +1,14 @@
 ---
 title: Sledování aktivity senzorů
 description: Časová osa události prezentuje časovou osu aktivity zjištěné v síti, včetně výstrah a akcí správy výstrah, událostí sítě a uživatelských operací, jako je přihlášení uživatele a odstranění uživatele.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 195908001fbd247ed2e0fa007bc8dcd5ebf28e60
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523596"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781615"
 ---
 # <a name="track-sensor-activity"></a>Sledování aktivity senzorů
 

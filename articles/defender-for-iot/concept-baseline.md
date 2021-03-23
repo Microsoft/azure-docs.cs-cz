@@ -1,24 +1,14 @@
 ---
 title: Základní a vlastní kontroly
 description: Přečtěte si o konceptu Azure Defenderu pro směrný plán IoT.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/07/2019
-ms.author: mlottner
-ms.openlocfilehash: bced45474a3a851bc5785f662c0b2e50ae3a380c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1b8b9d62918e40262da6b3df48d0fece842e050f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491074"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779354"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender pro službu IoT – směrný plán a vlastní kontroly
 
@@ -66,7 +56,7 @@ Konfigurace vlastních kontrol standardních hodnot:
 
 ## <a name="baseline-custom-check-properties"></a>Vlastnosti vlastní kontroly směrného plánu
 
-| Name| Status | Platné hodnoty| Výchozí hodnoty| Description |
+| Name| Status | Platné hodnoty| Výchozí hodnoty| Popis |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Požadováno: true |Platné hodnoty: **logická hodnota** |Výchozí hodnota: **false** |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
 |baselineCustomChecksFilePath |Požadováno: true|Platné hodnoty: **řetězec**, **hodnota null** |Výchozí hodnota: **null** |Úplná cesta k základní konfiguraci XML|

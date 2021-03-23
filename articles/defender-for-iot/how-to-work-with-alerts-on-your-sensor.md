@@ -1,22 +1,18 @@
 ---
-title: Práce s výstrahami na senzoru
+title: O výstrahách senzorů
 description: Pracujte s výstrahami, které vám pomůžou zlepšit zabezpečení a provoz vaší sítě.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 00207ffb8480ae99c2f1aad74183fca9ea45ee17
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 178d3aedb44c29f53aab481894defeb4b9355d39
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523545"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781343"
 ---
-# <a name="work-with-alerts-on-your-sensor"></a>Práce s výstrahami na senzoru
+# <a name="about-sensor-alerts"></a>O výstrahách senzorů
 
-Pracujte s výstrahami, které vám pomůžou zlepšit zabezpečení a provoz vaší sítě. Výstrahy obsahují informace o:
+Výstrahy vám pomůžou zlepšit zabezpečení a provoz vaší sítě. Výstrahy obsahují informace o:
 
 - Odchylky od autorizované síťové aktivity
 
@@ -48,7 +44,7 @@ K dispozici jsou další nástroje, které vám pomůžou zdokonalit a urychlit 
 
 Výstrahy se aktivují, když senzory zjišťují změny v síťovém provozu a chování, které vyžadují vaši pozornost. Tento článek popisuje druh výstrah, které každý modul spouští.
 
-| Typ upozornění | Description |
+| Typ upozornění | Popis |
 |-|-|
 | Upozornění na porušení zásad | Aktivováno, když modul porušení zásad detekuje odchylku od dříve zjištěného provozu. Například: <br /> – Zjistilo se nové zařízení.  <br /> – V zařízení se zjistila nová konfigurace. <br /> – Zařízení, které není definované jako programové zařízení, provede změnu v programování. <br /> – Změnila se verze firmwaru. |
 | Výstrahy porušení protokolu | Aktivováno, když modul porušení protokolu detekuje struktury paketů nebo hodnoty polí, které nevyhovují specifikaci protokolu. | 

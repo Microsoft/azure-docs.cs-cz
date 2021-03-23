@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433297"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779966"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -237,6 +237,9 @@ Bez filtrování se koncovým bodům dostanou nejrůznější události z digit�
 * Události životního cyklu aktivované při vytváření nebo odstraňování vazeb
 
 Odesílaným událostem můžete omezit přidáváním **filtru** pro koncový bod do trasy události.
+
+>[!NOTE]
+> Filtry rozlišují **Velká** a malá písmena a musí se shodovat s případem datové části (což nemusí nutně odpovídat modelu Case).
 
 Chcete-li přidat filtr, můžete použít požadavek PUT na *protokol https://{The-Azure-Digital-reprops-název_hostitele}/eventRoutes/{Event-Route-Name}? API-Version = 2020-10-31* s následujícím textem:
 

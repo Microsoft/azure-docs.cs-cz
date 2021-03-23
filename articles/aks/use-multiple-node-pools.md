@@ -3,13 +3,13 @@ title: Použití více fondů uzlů ve službě Azure Kubernetes Service (AKS)
 description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 02/11/2021
+ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218481"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773500"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa více fondů uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
@@ -134,7 +134,7 @@ Zatížení může vyžadovat rozdělení uzlů clusteru do samostatných fondů
 * Pokud po vytvoření clusteru rozšíříte virtuální síť, musíte aktualizovat svůj cluster (provádět všechny spravované operace clster, ale operace fondu uzlů se nepočítají) před přidáním podsítě mimo původní CIDR. AKS se v tomto fondu agentů zobrazí chyba, přestože jsme ho původně povolili. Pokud si nejste jisti, jak sjednotit soubor clusteru a lístek podpory. 
 * Zásady sítě Calico se nepodporují. 
 * Zásady sítě Azure se nepodporují.
-* Kube-proxy očekává jeden souvislý CIDR a použije ho pro tři optmizations. Zobrazit tento [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) a--cluster-CIDR [sem zobrazíte](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) podrobnosti. V Azure CNI se vaše podsíť prvního fondu uzlů dostane k Kube-proxy. 
+* Kube-proxy očekává jeden souvislý CIDR a použije ho pro tři optmizations. Zobrazit tento [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) a--cluster-CIDR [sem zobrazíte](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) podrobnosti. V Azure CNI se vaše podsíť prvního fondu uzlů dostane k Kube-proxy. 
 
 Pokud chcete vytvořit fond uzlů s vyhrazenou podsítí, předejte ID prostředku podsítě jako další parametr při vytváření fondu uzlů.
 
@@ -716,33 +716,11 @@ az deployment group create \
 
 Aktualizace clusteru AKS může trvat několik minut v závislosti na nastaveních fondu uzlů a operacích, které definujete v šabloně Správce prostředků.
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Přiřazení veřejné IP adresy na uzel pro vaše fondy uzlů (Preview)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools"></a>Přiřazení veřejné IP adresy na uzel pro vaše fondy uzlů
 
-> [!WARNING]
-> Abyste mohli používat funkci veřejné IP adresy na uzel, musíte nainstalovat rozšíření CLI Preview 0.4.43 nebo novější.
+AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Scénáře ale můžou vyžadovat, aby uzly ve fondu uzlů přijímaly vlastní vyhrazené veřejné IP adresy. Běžným scénářem je použití herních úloh, kde konzola potřebuje vytvořit přímé připojení k virtuálnímu počítači v cloudu, aby se minimalizovaly segmenty směrování. Tento scénář lze dosáhnout v AKS pomocí veřejné IP adresy uzlu.
 
-AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Scénáře ale můžou vyžadovat, aby uzly ve fondu uzlů přijímaly vlastní vyhrazené veřejné IP adresy. Běžným scénářem je použití herních úloh, kde konzola potřebuje vytvořit přímé připojení k virtuálnímu počítači v cloudu, aby se minimalizovaly segmenty směrování. Tento scénář je možné dosáhnout v AKS registrací pro funkci verze Preview, veřejné IP adresy uzlu (Preview).
-
-K instalaci a aktualizaci nejnovějšího rozšíření AKS-Preview použijte následující příkazy rozhraní příkazového řádku Azure:
-
-```azurecli
-az extension add --name aks-preview
-az extension update --name aks-preview
-az extension list
-```
-
-Zaregistrujte funkci veřejné IP adresy uzlu pomocí následujícího příkazu Azure CLI:
-
-```azurecli-interactive
-az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
-```
-Registrace funkce může trvat několik minut.  Stav můžete zjistit pomocí následujícího příkazu:
-
-```azurecli-interactive
- az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
-```
-
-Po úspěšné registraci vytvořte novou skupinu prostředků.
+Nejdřív vytvořte novou skupinu prostředků.
 
 ```azurecli-interactive
 az group create --name myResourceGroup2 --location eastus
@@ -760,12 +738,9 @@ Pro existující clustery AKS můžete také přidat nový fond uzlů a pro své
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
-> [!Important]
-> Během období Preview Azure Instance Metadata Service v současné době nepodporuje načítání veřejných IP adres pro SKU virtuálních počítačů úrovně Standard. Z důvodu tohoto omezení nemůžete použít příkazy kubectl k zobrazení veřejných IP adres přiřazených k uzlům. IP adresy se ale přiřazují a fungují tak, jak mají. Veřejné IP adresy pro vaše uzly jsou připojené k instancím ve vaší sadě škálování virtuálních počítačů.
-
 Veřejné IP adresy pro uzly můžete vyhledat různými způsoby:
 
-* Použití příkazu příkazového řádku Azure [AZ VMSS list-instance-Public-IP][az-list-ips]
+* Použijte příkaz Azure CLI [AZ VMSS list-instance-Public-IP][az-list-ips].
 * Použijte [Příkazy PowerShellu nebo bash][vmss-commands]. 
 * Veřejné IP adresy můžete zobrazit také v Azure Portal zobrazením instancí v sadě škálování virtuálního počítače.
 
@@ -818,20 +793,20 @@ Používejte [skupiny umístění pro Proximity][reduce-latency-ppg] , abyste sn
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_upgrades
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_delete
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-group-create]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create
+[az-group-delete]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete
+[az-deployment-group-create]: /cli/azure/deployment/group?view=azure-cli-latest&preserve-view=true#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
@@ -844,5 +819,5 @@ Používejte [skupiny umístění pro Proximity][reduce-latency-ppg] , abyste sn
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
-[az-list-ips]: /cli/azure/vmss.md#az-vmss-list-instance-public-ips
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md

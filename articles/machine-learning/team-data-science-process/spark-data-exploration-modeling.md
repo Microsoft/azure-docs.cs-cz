@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 531e5cf274d40eae19075514d50aec5a6524aeec
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028083"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775336"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Zkoumání a modelování dat pomocí Spark
 
@@ -24,7 +24,7 @@ Naučte se používat HDInsight Spark k výuce modelů strojového učení pro p
 
 Tato ukázka předvádí různé kroky v rámci [vědeckého zpracování týmových dat](./index.yml). K načtení, prozkoumávání a přípravě dat se používá podmnožina datové sady NYC taxislužby Trip a tarif 2013. Pak se pomocí Sparku MLlib zaměří binární klasifikace a regresní modely, aby se předpovídá, jestli se pro danou cestu má vyplatit tip, a odhadněte částku tipu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto Názorného postupu potřebujete účet Azure a cluster HDInsight 1,6 (nebo Spark 2,0). Pokyny, jak tyto požadavky naplnit, najdete v tématu [Přehled vědeckého zpracování dat pomocí Sparku ve službě Azure HDInsight](spark-overview.md) . Toto téma také obsahuje popis zde používaných dat taxislužby NYC 2013 a pokyny, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark. 
 
@@ -495,7 +495,8 @@ Doba potřebná k provedení výše uvedené buňky: 0,24 sekunda
 
 ### <a name="feature-scaling"></a>měření rozsahu prvků,
 
-Škálování funkcí, označované také jako normalizace dat, zajišťuje, že funkce s rozšířenými vyplacenými hodnotami nejsou ve funkci cíl předány nadměrnému vážení. Kód pro škálování funkcí používá [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) ke škálování funkcí na odchylku jednotek. Poskytuje je MLlib pro použití v lineární regresi s stochastického gradientem (SGD), oblíbeným algoritmem pro školení široké škály dalších modelů strojového učení, jako jsou například regulární regrese nebo Podpora vektorových počítačů (SVM).
+Škálování funkcí, označované také jako normalizace dat, zajišťuje, že funkce s rozšířenými vyplacenými hodnotami nejsou ve funkci cíl předány nadměrnému vážení. Kód pro škálování funkcí používá [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.classification.LogisticRegressionWithLBFGS.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS
+) ke škálování funkcí na odchylku jednotek. Poskytuje je MLlib pro použití v lineární regresi s stochastického gradientem (SGD), oblíbeným algoritmem pro školení široké škály dalších modelů strojového učení, jako jsou například regulární regrese nebo Podpora vektorových počítačů (SVM).
 
 > [!NOTE]
 > Našli jsme LinearRegressionWithSGD algoritmus, který bude citlivý na škálování funkcí.

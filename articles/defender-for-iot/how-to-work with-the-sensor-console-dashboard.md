@@ -1,18 +1,14 @@
 ---
 title: Práce s řídicím panelem konzoly snímače
 description: Řídicí panel vám umožní rychle zobrazit stav zabezpečení vaší sítě. Poskytuje přehled o hrozbách pro celý systém na časové ose spolu s informacemi o souvisejících zařízeních.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 11/03/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: c9afc22cd123a782c9ee0247952c78c72ee916c0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9bc650e9c306d12ef63994852816c96e1bdf40a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523630"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781530"
 ---
 # <a name="the-dashboard"></a>Řídicí panel
 
@@ -46,7 +42,7 @@ Měřidlo nepotvrzených výstrah (UA) ve středu stránky indikuje počet takov
 
 Každé pole stav je popsané v této části.
 
-| Stavové pole a měřidla | Description |
+| Stavové pole a měřidla | Popis |
 | -------------- | -------------- |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/critical-alert-status-box-v2.png" alt-text="Kritické výstrahy"::: | **Kritické výstrahy** – pole v horní polovině stránky indikuje počet kritických výstrah. Toto políčko zaškrtněte, pokud chcete zobrazit popisy výstrah na časové ose a v seznamu pod měřidly.                              |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/major-alert-status-box-v2.png" alt-text="Hlavní upozornění"::: | **Hlavní upozornění** – pole v pravém horním rohu stránky indikuje počet hlavních výstrah. Toto políčko zaškrtněte, pokud chcete zobrazit popisy výstrah na časové ose a v seznamu pod měřidly.                                     |

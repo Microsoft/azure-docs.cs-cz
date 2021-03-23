@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b84b7387411e7df8e092a2e810591697319f9554
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93321332"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774673"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 
@@ -35,7 +35,8 @@ Běžný způsob, jak provést optimalizaci pomocí parametrů, je zde hledání
 
 Používané modely zahrnují logistické a lineární regrese, náhodné doménové struktury a provedené stromy s barevným přechodem:
 
-* [Lineární regrese s SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) je model lineární regrese, který používá metodu STOCHASTICKÉHO (SGD) a pro optimalizaci a škálování funkcí k předpovídání placených částek za špičku. 
+* [Lineární regrese s SGD](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html#pyspark.mllib.regression.LinearRegressionWithSGD
+) je model lineární regrese, který používá metodu STOCHASTICKÉHO (SGD) a pro optimalizaci a škálování funkcí k předpovídání placených částek za špičku. 
 * [Logistické regrese s LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) nebo "logit" regresí je regresní model, který lze použít, když je závislá proměnná kategorií k provedení klasifikace dat. LBFGS je Broyden algoritmus pro optimalizaci v kvazi-Newton, který odpovídá algoritmu – Fletcher – Goldfarb-Shanno (BFGS) pomocí omezeného množství počítačové paměti a který se běžně používá ve službě Machine Learning.
 * [Náhodné doménové struktury](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou komplety rozhodovacích stromů.  Kombinují mnoho rozhodovacích stromů, aby se snížilo riziko přebudování. Náhodné doménové struktury se používají pro regresi a klasifikaci a mohou zpracovávat funkce kategorií a lze je rozšířit na nastavení třídy s více třídami. Nevyžadují škálování funkcí a můžou zachytit nelinearitu a interakce funkcí. Náhodné doménové struktury jsou jedním z nejčastěji úspěšných modelů strojového učení pro účely klasifikace a regrese.
 * Probíhající se rozGBTSelné [stromy](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) () jsou komplety rozhodovacích stromů. GBTS rozhodovací stromy pro vlaky iterativním způsobem, aby se minimalizovala funkce ztráty. GBTS se používá pro regresi a klasifikaci a může zpracovávat funkce kategorií, nevyžadují škálování funkcí a dokáže zachytit nelinearitu a interakce funkcí. Lze je také použít v nastavení třídy s více třídami.
