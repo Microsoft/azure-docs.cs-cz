@@ -1,19 +1,14 @@
 ---
 title: O integraci ServiceNow
-titleSuffix: Azure Defender for IoT
 description: Program Defender for IoT ICS pro ServiceNow poskytuje analytikům SOC, kteří mají multidimenzionální přehled o specializovaných protokolech a zařízeních IoT nasazených v průmyslových prostředích, spolu s analýzou chování s funkcí ICS pro rychlé odhalení podezřelého nebo neobvyklého chování.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e39c3d018003983f6dc5b5e16a9791de84d6005
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98557650"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786001"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>Defender pro aplikaci správy služby ICS pro IoT pro ServiceNow
 
@@ -329,7 +324,7 @@ Tento článek popisuje informace o výstrahách zařízení nabízených do Ser
 | Vytvořeno | Čas a datum, kdy byla výstraha vygenerována. |
 | Modul | Modul, který zjistil událost. |
 | Nadpis | Název výstrahy. |
-| Description | Popis výstrahy |
+| Popis | Popis výstrahy |
 | Protokol | Protokol zjištěný v provozu. |
 | Závažnost | Závažnost výstrahy definovaná v programu Defender pro IoT |
 | Náplně | Název senzoru, který zjistil provoz. |
@@ -349,7 +344,7 @@ Vyberte položku ve sloupci vytvořeno pro zobrazení informací o výstrahách 
 
 Tento článek popisuje typ výstrah, které jednotlivé moduly aktivují.
 
-| Typ upozornění | Description |
+| Typ upozornění | Popis |
 |--|--|
 | Upozornění na porušení zásad | Aktivováno, když modul porušení zásad detekuje odchylku od dříve zjištěného provozu. Například: <br /><br />– Zjistilo se nové zařízení. <br /><br />– V zařízení se zjistila nová konfigurace. <br /><br />– Zařízení, které není definované jako programové zařízení, provede změnu v programování. <br /><br />– Změnila se verze firmwaru. |
 | Výstrahy porušení protokolu | Aktivováno, když modul porušení protokolu detekuje struktury paketů nebo hodnoty polí, které nevyhovují specifikaci protokolu. |

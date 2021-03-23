@@ -3,16 +3,16 @@ title: Monitorování a Správa datových kanálů – Azure
 description: Naučte se používat aplikaci pro monitorování a správu k monitorování a správě datových továrn a kanálů Azure.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: be11f742eb99d25cb0e41a3dd0888d62417837dd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3a9eb73aab381f90ae51300bff1250348916c2ab
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100380368"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779592"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a správu
 > [!div class="op_single_selector"]
@@ -154,7 +154,7 @@ Okna aktivit můžou být v jednom z následujících stavů:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Description</th>
+    <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekající</td><td>ScheduleTime</td><td>Čas nepřijde o spuštění okna aktivity.</td>

@@ -2,13 +2,13 @@
 title: Zobrazení a filtrování informací o prostředcích Azure
 description: Filtrujte informace a používejte různá zobrazení k lepšímu pochopení vašich prostředků Azure.
 ms.topic: how-to
-ms.date: 09/11/2020
-ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/16/2021
+ms.openlocfilehash: bb48d0b0a7bf6017fbf407a95c33ef17729e34e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738629"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771630"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Zobrazení a filtrování informací o prostředcích Azure
 
@@ -48,7 +48,7 @@ Odstranění zobrazení:
 
 1. Vyberte **Spravovat zobrazení** a pak **Procházet všechna zobrazení**.
 
-1. V podokně **uložená zobrazení pro všechny prostředky** vyberte zobrazení a pak vyberte ikonu **Odstranit** ikona ![ Odstranit zobrazení ](media/manage-filter-resource-views/icon-delete.png) .
+1. V podokně **uložená zobrazení** vyberte zobrazení a pak vyberte ikonu **Odstranit** ikona ![ zobrazení ](media/manage-filter-resource-views/icon-delete.png) .
 
 ## <a name="export-information-from-a-view"></a>Export informací ze zobrazení
 
@@ -64,7 +64,7 @@ Při pohybu na portálu uvidíte další oblasti, kde můžete exportovat inform
 
 ## <a name="summarize-resources-with-visuals"></a>Sumarizace prostředků pomocí vizuálů
 
-Zobrazení, která jsme prohlédli zatím, byla _zobrazením seznamu_, ale existují také _Souhrnná zobrazení_ , která obsahují vizuály. Tato zobrazení můžete uložit a používat stejně jako seznam zobrazení. Filtry se chovají mezi dvěma typy zobrazení. Existují standardní zobrazení, jako je například zobrazení **umístění** , které je relevantní pro konkrétní služby, jako je například zobrazení **stavu** pro Azure Storage.
+Zobrazení, která jsme prohlédli zatím, byla _zobrazením seznamu_, ale existují také _Souhrnná zobrazení_ , která obsahují vizuály. Tato zobrazení můžete uložit a používat stejně jako u zobrazení seznamu. Filtry se chovají mezi dvěma typy zobrazení. Existují standardní zobrazení, jako je například zobrazení **umístění** , které je relevantní pro konkrétní služby, jako je například zobrazení **stavu** pro Azure Storage.
 
 :::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Souhrn prostředků v zobrazení mapy":::
 

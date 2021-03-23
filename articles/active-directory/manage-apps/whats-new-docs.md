@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601759"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775506"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
@@ -141,7 +141,6 @@ Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V to
 
 ### <a name="new-articles"></a>Nové články
 - [Konfigurace jednotného přihlašování pomocí SAML](configure-saml-single-sign-on.md)
-- [Používání Azure AD pro aplikace, které nejsou uvedené v galerii aplikací](non-gallery-apps.md)
 - [Získat hned přidat aplikaci z Azure Marketplace](get-it-now-azure-marketplace.md)
 - [Rychlý Start: Konfigurace vlastností aplikace ve vašem tenantovi Azure Active Directory (Azure AD)](add-application-portal-configure.md)
 - [Rychlý Start: nastavení jednotného přihlašování (SSO) pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)](add-application-portal-setup-sso.md)

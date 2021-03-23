@@ -6,18 +6,18 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: b3975d30fca1f7f542f27742ef8408b1feecc146
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1d9918786b22faddaeb07a12f0840b36a11ffe4d
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101727188"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778377"
 ---
 # <a name="assessment-overview-migrate-to-azure-vmware-solution"></a>Přehled posouzení (migrace do řešení VMware Azure)
 
 [Azure Migrate](migrate-services-overview.md) poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh. Také sleduje vaše soukromé a veřejné cloudové instance do Azure. Centrum nabízí Azure Migrate nástroje pro posouzení a migraci a také nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců.
 
-Vyhodnocování serveru je nástroj v Azure Migrate, který vyhodnocuje místní servery pro migraci na virtuální počítače Azure IaaS a řešení Azure VMware (AVS). Tento článek poskytuje informace o tom, jak se počítají vyhodnocení řešení Azure VMware Solution (AVS).
+Nástroj pro zjišťování a vyhodnocení v Azure Migrate vyhodnocuje místní servery pro migraci na virtuální počítače Azure a řešení Azure VMware (AVS). Tento článek poskytuje informace o tom, jak se počítají vyhodnocení řešení Azure VMware Solution (AVS).
 
 > [!NOTE]
 > Posouzení řešení Azure VMware (AVS) se dá vytvořit jenom pro virtuální počítače VMware.
@@ -26,10 +26,11 @@ Vyhodnocování serveru je nástroj v Azure Migrate, který vyhodnocuje místní
 
 Hodnocení, která vytvoříte pomocí Azure Migrate, jsou snímkem dat v určitém časovém okamžiku. Existují dva typy hodnocení, které můžete vytvořit pomocí Azure Migrate:
 
-| **Typ posouzení** | **Podrobnosti** |
-| - | - |
-| **Virtuální počítač Azure** | Posouzení vhodnosti místních serverů k migraci na virtuální počítače Azure. Můžete vyhodnotit místní servery běžící v prostředí[VMware](how-to-set-up-appliance-vmware.md) nebo [Hyper-V](how-to-set-up-appliance-hyper-v.md) a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure pomocí tohoto typu posouzení. [Další informace](concepts-assessment-calculation.md) |
-| **Azure VMware Solution (AVS)** | Posouzení migrace místních virtuálních počítačů VMware nebo serverů do[ Řešení Azure VMware (AVS)](../azure-vmware/introduction.md).  Pomocí tohoto typu posouzení můžete vyhodnotit místní servery běžící v prostředí [VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md) |
+**Typ posouzení** | **Podrobnosti**
+--- | --- 
+**Virtuální počítač Azure** | Posouzení vhodnosti místních serverů k migraci na virtuální počítače Azure. Místní servery můžete vyhodnotit v prostředí [VMware](how-to-set-up-appliance-vmware.md) a [Hyper-V](how-to-set-up-appliance-hyper-v.md) a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure pomocí tohoto typu posouzení.
+**Azure SQL** | Vyhodnotí migraci místních SQL serverů z prostředí VMware do Azure SQL Database nebo spravované instance Azure SQL.
+**Azure VMware Solution (AVS)** | Posouzení vhodnosti místních serverů k migraci do služby [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Posouzení řešení Azure VMware (AVS) poskytuje dvě možnosti pro kritéria změny velikosti:
 
@@ -42,18 +43,18 @@ Posouzení řešení Azure VMware (AVS) poskytuje dvě možnosti pro kritéria z
 
 Existuje několik způsobů, jak spustit posouzení.
 
-- Posuzuje počítače pomocí metadat serveru shromažďovaných odlehčeným Azure Migrate zařízením. Zařízení zjišťuje místní počítače. Pak odešle metadata a data o výkonu počítače do Azure Migrate. To umožňuje přesnější přesnost.
-- Vyhodnotit počítače pomocí metadat serveru, která jsou importovaná ve formátu hodnot oddělených čárkami (CSV).
+- Posuzuje servery pomocí metadat serveru shromažďovaných odlehčeným Azure Migrate zařízením. Zařízení zjišťuje místní servery. Pak odešle metadata serveru a data o výkonu do Azure Migrate. To umožňuje přesnější přesnost.
+- Vyhodnoťte servery pomocí metadat serveru, která jsou importovaná ve formátu hodnot oddělených čárkami (CSV).
 
 ## <a name="how-do-i-assess-with-the-appliance"></a>Návody posoudit pomocí zařízení?
 
 Pokud nasazujete zařízení Azure Migrate pro zjišťování místních serverů, proveďte následující kroky:
 
 1. Nastavte Azure a vaše místní prostředí pro práci s Azure Migrate.
-2. Pro vaše první posouzení vytvořte projekt Azure a přidejte do něj Nástroj pro vyhodnocení serveru.
-3. Nasaďte odlehčené zařízení Azure Migrate. Zařízení nepřetržitě zjišťuje místní počítače a odesílá data a údaje o výkonu počítačů do Azure Migrate. Nasaďte zařízení jako virtuální počítač. Nemusíte nic instalovat na počítače, které chcete vyhodnotit.
+2. Pro vaše první posouzení vytvořte projekt Azure a přidejte do něj Nástroj pro zjišťování a vyhodnocení.
+3. Nasaďte odlehčené zařízení Azure Migrate. Zařízení nepřetržitě zjišťuje místní servery a odesílá údaje o metadatech a výkonu serveru do Azure Migrate. Nasaďte zařízení jako virtuální počítač. Nemusíte nic instalovat na servery, které chcete vyhodnotit.
 
-Jakmile zařízení spustí zjišťování počítačů, můžete shromáždit počítače, které chcete vyhodnotit, do skupiny a spustit posouzení pro skupinu s typem posouzení **Řešení Azure VMware (AVS)**.
+Jakmile zařízení zahájí zjišťování serveru, můžete shromáždit servery, které chcete vyhodnotit do skupiny, a spustit posouzení pro skupinu s typem posouzení **Řešení Azure VMware (AVS)**.
 
 Pomocí [následujícího postupu vytvořte](how-to-create-azure-vmware-solution-assessment.md)první posouzení služby Azure VMware Solution (AVS).
 
@@ -62,7 +63,7 @@ Pomocí [následujícího postupu vytvořte](how-to-create-azure-vmware-solution
 Pokud vydáváte servery pomocí souboru CSV, nepotřebujete zařízení. Místo toho proveďte následující kroky:
 
 1. Nastavte Azure pro práci s Azure Migrate.
-2. Pro vaše první posouzení vytvořte projekt Azure a přidejte do něj Nástroj pro vyhodnocení serveru.
+2. Pro vaše první posouzení vytvořte projekt Azure a přidejte do něj Nástroj pro zjišťování a vyhodnocení.
 3. Stáhněte si šablonu sdíleného svazku clusteru a přidejte do ní data serveru.
 4. Importujte šablonu do Azure Migrate.
 5. Zjišťování serverů přidaných pomocí importu, jejich shromáždění do skupiny a spuštění posouzení pro skupinu s typem posouzení **Řešení Azure VMware (AVS)**.
@@ -97,7 +98,7 @@ Následující údaje o výkonu se shromažďují, ale nepoužívají se při ur
 
 ## <a name="how-are-avs-assessments-calculated"></a>Jak se počítají vyhodnocování funkce AVS?
 
-Při výpočtu posouzení používá nástroj AVS metadata a data o výkonu místních počítačů. Pokud nasadíte zařízení Azure Migrate, posouzení použije data, která zařízení shromáždí. Pokud ale spustíte posouzení importované pomocí souboru CSV, poskytnete metadata pro tento výpočet.
+Při výpočtu posouzení používá nástroj AVS metadata a data o výkonu místních serverů. Pokud nasadíte zařízení Azure Migrate, posouzení použije data, která zařízení shromáždí. Pokud ale spustíte posouzení importované pomocí souboru CSV, poskytnete metadata pro tento výpočet.
 
 K výpočtům dochází v těchto třech fázích:
 
@@ -105,7 +106,7 @@ K výpočtům dochází v těchto třech fázích:
 2. **Vypočítat počet uzlů a využití služby AVS v uzlech**: odhadovaný počet uzlů služby AVS, které jsou nutné ke spuštění virtuálních počítačů VMware a předpokládaného využití procesoru, paměti a úložiště napříč všemi uzly.
 3. **Odhad měsíčních nákladů**: Odhadované měsíční náklady na všechny uzly řešení Azure VMware (AVS), na kterých běží místní virtuální počítače.
 
-Výpočty jsou v předchozím pořadí. Počítačový Server se přesune do pozdější fáze pouze v případě, že předá předchozí. Pokud třeba server neprojde fází připravenosti na službu AVS, je pro Azure označený jako nevhodný. Pro tento server se neprovádí výpočty velikosti a nákladů.
+Výpočty jsou v předchozím pořadí. Server se přesune do pozdější fáze pouze v případě, že předá předchozí. Pokud třeba server neprojde fází připravenosti na službu AVS, je pro Azure označený jako nevhodný. Pro tento server se neprovádí výpočty velikosti a nákladů.
 
 ## <a name="whats-in-an-azure-vmware-solution-avs-assessment"></a>Co je v posouzení řešení Azure VMware (AVS)?
 
@@ -119,9 +120,9 @@ Co je je součástí posouzení služby AVS:
 | **Typ uzlu** | Určuje [typ uzlu služby AVS](../azure-vmware/concepts-private-clouds-clusters.md) , který se používá pro použití v Azure. Výchozí typ uzlu je AV36. V budoucnu může být k dispozici více typů uzlů.  Azure Migrate doporučí, aby se virtuální počítače přenesly do služby AVS požadovaným počtem uzlů. |
 | **Nastavení FTT, úroveň RAID** | Určuje platnou kombinaci chyb pro tolerovat kombinaci a RAID. Vybraná možnost FTT v kombinaci s úrovní RAID a požadavkem na místní disk virtuálních počítačů určí celkové úložiště síti vSAN, které se v prostředí AVS vyžaduje. Celkové dostupné úložiště po výpočtech zahrnuje i místo vyhrazené pro objekty pro správu, jako jsou vCenter a b) 25% časová rezerva úložiště požadovaná pro síti vSAN operace. |
 | **Kritérium určení velikosti** | Nastaví kritéria, která se mají použít k určení paměti, požadavků na procesor a úložiště pro uzly služby AVS. Můžete se rozhodnout pro přizpůsobení velikosti na *základě výkonu* nebo *jako místní,* aniž byste museli zvážit historii výkonu. Chcete-li jednoduše vyzvednutí a posunování, vyberte možnost místní. Pokud chcete získat velikost na základě využití, vyberte na základě výkonu. |
-| **Historie výkonu** | Nastaví dobu trvání, která se má vzít v úvahu při vyhodnocování dat výkonu počítačů. Tato vlastnost je platná pouze v případě, že kritéria změny velikosti jsou *založená na výkonu*. |
+| **Historie výkonu** | Nastaví dobu trvání, která se má vzít v úvahu při vyhodnocování dat výkonu serverů. Tato vlastnost je platná pouze v případě, že kritéria změny velikosti jsou *založená na výkonu*. |
 | **Percentilové využití** | Určuje hodnotu percentilu sady ukázek výkonu, která má být považována za správné určení velikosti. Tato vlastnost je platná pouze v případě, že je velikost na základě výkonu. |
-| **Faktor komfortu** | Azure Migrate při posuzování počítá s rezervou (faktor komfortu). Tato vyrovnávací paměť je aplikována na data o využití počítače pro virtuální počítače (CPU, paměť a disk). Důvodem použití faktoru komfortu jsou problémy, jako jsou sezónní využití, krátká historie výkonu a pravděpodobný růst budoucího využití. Například z virtuálního počítače s 10 jádry a 20% využitím je normálně ve výsledku virtuální počítač se 2 jádry. S faktorem komfortu 2,0× je však výsledkem virtuální počítač se 4 jádry. |
+| **Faktor komfortu** | Azure Migrate při posuzování počítá s rezervou (faktor komfortu). Tato vyrovnávací paměť je aplikována na data o využití serveru pro virtuální počítače (CPU, paměť a disk). Důvodem použití faktoru komfortu jsou problémy, jako jsou sezónní využití, krátká historie výkonu a pravděpodobný růst budoucího využití. Například z virtuálního počítače s 10 jádry a 20% využitím je normálně ve výsledku virtuální počítač se 2 jádry. S faktorem komfortu 2,0× je však výsledkem virtuální počítač se 4 jádry. |
 | **Nabídka** | Zobrazí [nabídku Azure](https://azure.microsoft.com/support/legal/offer-details/) , kterou jste si zaregistrovali. Azure Migrate odhadne náklady odpovídajícím způsobem. |
 | **Měna** | Zobrazuje fakturační měnu vašeho účtu. |
 | **Sleva (%)** | Obsahuje seznam všech slev specifických pro předplatné, které obdržíte nad nabídkou Azure. Výchozí nastavení je 0 %. |
@@ -132,39 +133,39 @@ Co je je součástí posouzení služby AVS:
 
 ## <a name="azure-vmware-solution-avs-suitability-analysis"></a>Analýza vhodnosti řešení Azure VMware (AVS)
 
-Posouzení služby AVS vyhodnocuje každý místní virtuální počítač a jeho vhodnost pro funkci AVS kontrolou vlastností počítače. Každý vyhodnocený počítač se také přiřadí jedné z následujících kategorií vhodnosti:
+Posouzení služby AVS vyhodnocuje každý místní virtuální počítač a jeho vhodnost pro funkci AVS kontrolou vlastností serveru. Každý vyhodnocený server přiřadí taky jednu z následujících kategorií vhodnosti:
 
-- **Připraveno k funkci AVS**: počítač se dá migrovat tak, jak je, do Azure (AVS) bez jakýchkoli změn. Spustí se v programu AVS s plnou podporou AVS.
+- **Připraveno k funkci AVS**: Server se dá migrovat tak, jak je, do Azure (AVS) bez jakýchkoli změn. Spustí se v programu AVS s plnou podporou AVS.
 - **Připraveno s podmínkami**: virtuální počítač může mít problémy s kompatibilitou s aktuální verzí vSphere a vyžadovat nástroje VMware a další nastavení před tím, než bude možné dosáhnout plné funkčnosti z virtuálního počítače v prostředí AVS.
 - **Není připravené na službu AVS**: virtuální počítač se nespustí v prostředí AVS. Pokud má například místní virtuální počítač VMware připojené externí zařízení, například disk CD-ROM, operace VMware VMotion selže (Pokud používáte VMware VMotion).
-- **Připravenost neznámá**: Azure Migrate nedokázala určit připravenost počítače kvůli nedostatečným metadatům shromážděným z místního prostředí.
+- **Připravenost neznámá**: Azure Migrate nedokázala určit připravenost serveru kvůli nedostatečným metadatům shromážděným z místního prostředí.
 
-Posouzení zkontroluje vlastnosti počítače a určí připravenost Azure na místním počítači.
+Posouzení zkontroluje vlastnosti serveru a určí připravenost na Azure na místním serveru.
 
-### <a name="machine-properties"></a>Vlastnosti počítače
+### <a name="server-properties"></a>Vlastnosti serveru
 
 Posouzení zkontroluje následující vlastnost místního virtuálního počítače, aby zjistila, jestli se dá spustit na řešení Azure VMware (AVS).
 
 | **Vlastnost** | **Podrobnosti** | **Stav připravenosti na funkci AVS** |
 | - | - | - |
-| **Internet Protocol** | Azure v současné době nepodporuje koncové adresování Internetu s koncovým protokolem IPv6. Pokud se na vašem počítači zjistí používání protokolu IPv6 a potřebujete pokyny k nápravě, obraťte se na místní tým MSFT AVS GBB. | Podmíněně připravené Internet Protocol |
+| **Internet Protocol** | Azure v současné době nepodporuje koncové adresování Internetu s koncovým protokolem IPv6. Pokud se server detekuje s protokolem IPv6, kontaktujte svůj místní tým protokolu MSFT AVS GBB, kde najdete pokyny k nápravě. | Podmíněně připravené Internet Protocol |
 
 ### <a name="guest-operating-system"></a>Hostovaný operační systém
 
 V současné době nejsou v současnosti posuzování pro funkci AVS v rámci analýzy vhodnosti kontrolovat operační systém. Všechny operační systémy běžící na místních virtuálních počítačích se nejspíš budou spouštět v řešení Azure VMware (AVS).
 
-Spolu s vlastnostmi virtuálního počítače vyhodnocení vyhledá v hostovaném operačním systému počítačů, aby zjistila, jestli se dá spustit na Azure.
+Spolu s vlastnostmi virtuálního počítače vyhodnocení vyhledá v hostovaném operačním systému serverů, abyste zjistili, jestli ho můžete spustit v Azure.
 
 ## <a name="sizing"></a>Velikosti
 
-Když je počítač označený jako připravený pro funkci AVS, vyhodnocování služby AVS vytvoří doporučení pro změnu velikosti uzlů, která zahrnují identifikaci příslušných požadavků na místní virtuální počítač a vyhledání celkového počtu požadovaných uzlů služby AVS. Tato doporučení se liší v závislosti na zadaných vlastnostech posouzení.
+Když je server označený jako připravený pro funkci AVS, vyhodnocování služby AVS vytvoří doporučení pro změnu velikosti uzlů, která zahrnují identifikaci příslušných požadavků na místní virtuální počítač a vyhledání celkového počtu požadovaných uzlů služby AVS. Tato doporučení se liší v závislosti na zadaných vlastnostech posouzení.
 
-- Pokud hodnocení používá určení *velikosti na základě výkonu*, Azure Migrate považuje historii výkonu počítače za vhodné, aby se pro službu AVS zajistila vhodná doporučení pro změnu velikosti. Tato metoda je užitečná hlavně v případě, že jste přestali využívat místní virtuální počítač, ale využití je nízké a vy chcete ušetřit náklady tak, aby se virtuální počítač ve službě AVS nastavil na správné velikosti. Tato metoda vám pomůže optimalizovat velikosti během migrace.
-- Pokud nechcete brát v úvahu údaje o výkonu pro změny velikosti virtuálních počítačů a chcete, aby místní počítače byly v rámci služby AVS, můžete nastavit kritéria pro změnu velikosti na * místní *. Hodnocení pak bude na základě místních konfigurací měnit velikost virtuálních počítačů bez zvážení dat o využití.
+- Pokud hodnocení používá určení *velikosti na základě výkonu*, Azure Migrate považuje historii výkonu serveru za účelem provedení vhodného doporučení pro změnu velikosti pro funkci AVS. Tato metoda je užitečná hlavně v případě, že jste přestali využívat místní virtuální počítač, ale využití je nízké a vy chcete ušetřit náklady tak, aby se virtuální počítač ve službě AVS nastavil na správné velikosti. Tato metoda vám pomůže optimalizovat velikosti během migrace.
+- Pokud nechcete brát v úvahu údaje o výkonu pro změny velikosti virtuálních počítačů a chcete místní servery považovat za nefunkční, můžete nastavit kritéria pro změnu velikosti na * místní *. Hodnocení pak bude na základě místních konfigurací měnit velikost virtuálních počítačů bez zvážení dat o využití.
 
 ### <a name="ftt-sizing-parameters"></a>Parametry změny velikosti FTT
 
-Modul úložiště používaný v rozhraní AVS je síti vSAN. zásady úložiště síti vSAN definují požadavky na úložiště pro virtuální počítače. Tyto zásady pro vaše virtuální počítače zaručují požadovanou úroveň služeb, protože určují, jak se virtuálním počítačům přiděluje úložiště. Dostupné kombinace FTT-Raid:
+Modul úložiště používaný v rozhraní AVS je síti vSAN. zásady úložiště síti vSAN definují požadavky na úložiště pro vaše servery. Tyto zásady pro vaše virtuální počítače zaručují požadovanou úroveň služeb, protože určují, jak se virtuálním počítačům přiděluje úložiště. Dostupné kombinace FTT-Raid:
 
 | **Tolerované chyby (FTT)** | **Konfigurace RAID** | **Minimální požadovaný počet hostitelů** | **Důležité informace o nastavení velikosti** |
 | - | - | - | - |
@@ -254,7 +255,7 @@ V závislosti na procentu dostupných datových bodů se hodnocení spolehlivost
 
 Tady je několik důvodů, proč hodnocení může získat nízkou spolehlivost:
 
-- Nevytvořili jste profil svého prostředí po dobu, po kterou vytváříte posouzení. Pokud například vytvoříte hodnocení s trváním výkonu nastaveným na jeden den, musíte počkat alespoň den po zahájení zjišťování všech datových bodů, které se mají shromáždit.
+- Po dobu trvání, pro kterou vytváříte hodnocení, jste neprofilovali své prostředí. Pokud například vytvoříte hodnocení s trváním výkonu nastaveným na jeden den, musíte počkat alespoň den po zahájení zjišťování všech datových bodů, které se mají shromáždit.
 - Posouzení nemůže shromáždit údaje o výkonu pro některé nebo všechny virtuální počítače v období posouzení. Pro hodnocení s vysokou mírou jistoty Prosím zajistěte:
 
   - Virtuální počítače jsou napájené po dobu trvání posouzení.
@@ -281,8 +282,8 @@ Jelikož jsou ceny za Azure VMware Solution (AVS) na jeden uzel, celkové nákla
 
 V sestavě připravenosti pro Azure pro hodnocení služby Azure VMware Solution (AVS) uvidíte následující navrhované nástroje:
 
-- **VMware HCX nebo Enterprise**: pro počítače VMware je řešení Azure Hybrid Cloud Extension (HCX) navrhovaným nástrojem pro migraci, který vaše místní úlohy migruje do privátního cloudu řešení Azure VMware (AVS). [Další informace](../azure-vmware/tutorial-deploy-vmware-hcx.md)
-- **Neznámý:** V případě počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci neznámý. I když používáte počítače VMware, doporučuje se použít řešení VMware Hybrid Cloud Extension (HCX).
+- **VMware HCX nebo Enterprise**: pro servery VMware je řešení Azure Hybrid Cloud Extension (HCX) navrhovaným nástrojem pro migraci, který vaše místní úlohy migruje do privátního cloudu řešení Azure VMware (AVS). [Další informace](../azure-vmware/tutorial-deploy-vmware-hcx.md)
+- **Neznámé**: u serverů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci známý. I když se pro servery VMware doporučuje používat řešení VMware Hybrid Cloud Extension (HCX).
 
 ## <a name="next-steps"></a>Další kroky
 

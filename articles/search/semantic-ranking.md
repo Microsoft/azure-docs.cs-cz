@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: bb65a53f1ba6e97a39bd0c0170c5c41da38aee8b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1406f865d60e6715b5f6a974225dc48958e8da6d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720504"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775166"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Sémantické hodnocení v Azure Kognitivní hledání
 
@@ -51,7 +51,7 @@ Vstupy do sumarizace jsou dlouhé řetězce z přípravné fáze. Z tohoto vstup
 
 Výstupem je [sémantický titulek](semantic-how-to-query-request.md), v prostém textu a s nejzajímavější. Popisek je menší než dlouhý řetězec, obvykle méně než 200 slov na dokument, a je považována za největšího zástupce dokumentu. 
 
-Pokud jste zadali parametr odpovědi, bude vrácena i [sémantická odpověď](semantic-answers.md) , pokud byl dotaz považován za otázku a pokud se pasáž nachází v dlouhém řetězci, který vypadá jako plausible odpověď na otázku.
+Pokud jste zadali parametr odpovědi, bude vrácena i [sémantická odpověď](semantic-answers.md) , pokud byl dotaz považován za otázku a v případě, že se pasáž nachází v dlouhém řetězci, který pravděpodobně poskytne odpověď na otázku.
 
 ## <a name="scoring-and-ranking"></a>Bodování a hodnocení
 

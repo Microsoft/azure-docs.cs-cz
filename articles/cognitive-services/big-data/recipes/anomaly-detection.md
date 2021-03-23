@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a583d74ae0bf421a7a863a65442d250489a2f8f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94366277"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775387"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktivní údržba s Cognitive Services pro velké objemy dat
 
@@ -60,7 +60,7 @@ assert (location is not None)
 Nyní načtěte soubor IoTSignals do datového rámce. Otevřete nový Poznámkový blok v pracovním prostoru synapse a vytvořte ze souboru datový rámec.
 
 ```python
-df_device_info = spark.read.csv("wasbs://publicwasb@mmlspark.blob.core.windows.net/iot/IoTSignals.csv", header=True, inferSchema=True)
+df_signals = spark.read.csv("wasbs://publicwasb@mmlspark.blob.core.windows.net/iot/IoTSignals.csv", header=True, inferSchema=True)
 ```
 
 ### <a name="run-anomaly-detection-using-cognitive-services-on-spark"></a>Spuštění detekce anomálií pomocí Cognitive Services ve Sparku

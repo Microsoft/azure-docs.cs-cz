@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 14197516c0669055f756614b9559f1423703c6a8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21553adf81d5b34813785db7cd6bbe3caf71c210
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102055364"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780479"
 ---
 # <a name="create-an-azure-sql-assessment"></a>Vytvoření posouzení Azure SQL
 
@@ -18,7 +18,7 @@ Jako součást cesty k migraci do Azure vyhodnocujete vaše místní úlohy a m�
 V tomto článku se dozvíte, jak vyhodnotit zjištěné instance SQL ve přípravě na migraci do Azure SQL pomocí nástroje Azure Migrate: Discovery and Assessment Tool.
 
 > [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
+> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. 
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -135,27 +135,27 @@ Odhad měsíčních nákladů zahrnuje náklady na výpočetní prostředky a ú
 
         **Připravenost Azure SQL DB** | **Připravenost Azure SQL MI** | **Doporučený typ nasazení** | **Počítá se konfigurace Azure SQL a odhad nákladů?**
          --- | --- | --- | --- |
-        Připraveno | Připraveno | Azure SQL DB nebo Azure SQL MI další [informace](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) | Yes
-        Připraveno | Nepřipraveno nebo neznámo | Azure SQL DB | Yes
-        Nepřipraveno nebo neznámo | Připraveno | Azure SQL MI | Yes
-        Nepřipraveno | Nepřipraveno | Možná připravené na virtuální počítač Azure další [informace](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | No
-        Nepřipraveno nebo neznámo | Nepřipraveno nebo neznámo | Neznámý | No
+        Připraveno | Připraveno | Azure SQL DB nebo Azure SQL MI další [informace](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) | Ano
+        Připraveno | Nepřipraveno nebo neznámo | Azure SQL DB | Ano
+        Nepřipraveno nebo neznámo | Připraveno | Azure SQL MI | Ano
+        Nepřipraveno | Nepřipraveno | Možná připravené na virtuální počítač Azure další [informace](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | Ne
+        Nepřipraveno nebo neznámo | Nepřipraveno nebo neznámo | Neznámý | Ne
     
     - **Cílový typ nasazení** (jak je vybraný ve vlastnostech posouzení): **Azure SQL DB**
     
         **Připravenost Azure SQL DB** | **Počítá se konfigurace Azure SQL a odhad nákladů?**
         --- | --- |
-        Připraveno | Yes
+        Připraveno | Ano
         Nepřipraveno | Ne
-        Není známo | No
+        Není známo | Ne
     
     - **Cílový typ nasazení** (jak je vybraný ve vlastnostech posouzení): **Azure SQL mi**
     
         **Připravenost Azure SQL MI** | **Počítá se konfigurace Azure SQL a odhad nákladů?**
          --- | --- |
-        Připraveno | Yes
+        Připraveno | Ano
         Nepřipraveno | Ne
-        Není známo | No
+        Není známo | Ne
 
 4. Kliknutím na název instance přejdete k podrobnostem o počtu uživatelských databází, podrobnostech instancí, včetně vlastností instance, výpočetním (vymezeném na instanci) a podrobnostech úložiště zdrojové databáze.
 5. Kliknutím na počet uživatelských databází zkontrolujte seznam databází a jejich podrobnosti. Příklad (odhad a náklady pouze pro příklad): :::image type="content" source="./media/tutorial-assess-sql/assessment-db.png" alt-text="Podrobnosti instance SQL":::

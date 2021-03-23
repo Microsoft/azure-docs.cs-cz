@@ -1,19 +1,14 @@
 ---
 title: Prozkoumat doporučení pro srovnávací testy modelu CI
-titleSuffix: Azure Defender for IoT
 description: Proveďte základní a pokročilé šetření na základě doporučení standardních hodnot operačního systému.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/21/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 2f68ebedb229f7295bc9c5dcc3b3349808970e8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 01ca6e1fecddff9800872a3e5495a5cac578a74f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99809756"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782023"
 ---
 # <a name="investigate-os-baseline-based-on-cis-benchmark-recommendation"></a>Doporučení pro zkoumání standardních hodnot operačního systému (na základě srovnávacího testu pro CI) 
 

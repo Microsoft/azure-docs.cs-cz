@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: d03ae5062cc81b3e042ed3b714838e14929dbba2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598012"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778215"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 
@@ -145,7 +145,7 @@ Microsoft poskytne služby až do úrovně využití, která je součástí zako
 
 ## <a name="requesting-a-quota-increase"></a>Žádost o navýšení kvóty
 
-O navýšení kvóty můžete požádat kdykoli, a to odesláním [online žádosti](https://g.microsoftonline.com/0WAEP00en/6). Pro zpracování žádosti zadejte následující informace:
+O navýšení kvóty můžete požádat kdykoli, a to odesláním [online žádosti](https://ms.portal.azure.com/). Pro zpracování žádosti zadejte následující informace:
 
 - Účet Microsoft nebo pracovní nebo školní účet přidružený k vlastníkovi účtu vašeho předplatného. Tato e-mailová adresa se používá pro přihlášení k portálu Microsoft Azure a správě vašich předplatných. Ujistěte se také, že tento účet je přidružený k registraci EA.
 - Prostředky a objemy, pro které vyžadujete zvýšení kvóty.

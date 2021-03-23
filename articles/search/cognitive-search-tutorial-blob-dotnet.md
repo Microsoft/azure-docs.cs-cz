@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6cbfa01788f1897264b4197798aa5879cf724db3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98745713"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770950"
 ---
-# <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Kurz: prohledávatelný obsah generovaný AI z objektů blob Azure pomocí sady .NET SDK
+# <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití .NET a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
 Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. 
 

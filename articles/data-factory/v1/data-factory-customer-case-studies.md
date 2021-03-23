@@ -3,16 +3,16 @@ title: Azure Data Factory – případové studie zákazníků
 description: Přečtěte si, jak někteří naši zákazníci používali Azure Data Factory.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 43148cdd0790ad03a1521e46fcf6d2684cbdc24a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 98814ce9fbf1171ff57b9e82e5cb1af33f9756ce
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376543"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779694"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory – případové studie zákazníků
 Data Factory je cloudová služba pro správu informací, která automatizuje přesun a transformaci dat. Zákazníci v mnoha odvětvích používají Data Factory a další služby Azure k vytváření analytických kanálů a řešení jejich obchodních problémů.  Zjistěte přímo od našich zákazníků, jak a proč používají Data Factory.

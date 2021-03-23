@@ -1,26 +1,26 @@
 ---
 title: Nastavení zařízení Azure Migrate pro fyzické servery
-description: Přečtěte si, jak nastavit zařízení Azure Migrate pro posouzení fyzického serveru.
-author: vikram1988
-ms.author: vibansa
+description: Přečtěte si, jak nastavit zařízení Azure Migrate pro zjišťování fyzického serveru a jeho posouzení.
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 04/15/2020
-ms.openlocfilehash: 73c3d529978c91946632ed599f02b8938830621e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/13/2021
+ms.openlocfilehash: 9052cbd3dc728b50b62c33f3a11a5e36a7504f29
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97705315"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771562"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Nastavení zařízení pro fyzické servery
 
-Tento článek popisuje, jak nastavit zařízení Azure Migrate, pokud vyhodnotili fyzické servery pomocí nástroje Azure Migrate: Server Assessment Tool.
+Tento článek popisuje, jak nastavit zařízení Azure Migrate, pokud vyhodnotili fyzické servery pomocí nástroje Azure Migrate: Discovery and Assessment Tool.
 
-Zařízení Azure Migrate je jednoduché zařízení, které využije Azure Migrate Server Assessment k tomu, abyste mohli provádět následující akce:
+Zařízení Azure Migrate je odlehčené zařízení, které používá Azure Migrate: zjišťování a posouzení, které provádí následující akce:
 
 - Objevte místní servery.
-- Odesílat metadata a data o výkonu pro zjištěné servery pro Azure Migrate posouzení serveru.
+- Odesílat metadata a data o výkonu pro zjištěné servery pro Azure Migrate: zjišťování a posouzení.
 
 [Přečtěte si další informace](migrate-appliance.md) o zařízení Azure Migrate.
 
@@ -28,19 +28,20 @@ Zařízení Azure Migrate je jednoduché zařízení, které využije Azure Migr
 ## <a name="appliance-deployment-steps"></a>Postup nasazení zařízení
 
 Nastavení zařízení:
-- Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
+
+- Zadejte název zařízení a vygenerujte klíč projektu na portálu.
 - Stáhněte si soubor ZIP pomocí skriptu Azure Migrate Installer z Azure Portal.
 - Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
 - Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
-- Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
+- Nakonfigurujete zařízení poprvé a zaregistrujete ho do projektu pomocí klíče projektu.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
+### <a name="generate-the-project-key"></a>Vygenerovat klíč projektu
 
-1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
-2. V možnosti **zjišťovat počítače**  >  **jsou virtualizované počítače?** vyberte **fyzické nebo jiné (AWS, GCP, Xen atd.)**.
-3. V **1: vygenerujte Azure Migrate klíč projektu**, zadejte název pro Azure Migrate zařízení, které nastavíte pro zjišťování fyzických nebo virtuálních serverů. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
-1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťovacích počítačů.
-1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu Azure Migrate** .
+1. V **cíli migrace** se  >  **systémy Windows, Linux a SQL Server**  >  **Azure Migrate: zjišťování a posouzení** vyberte **Vyhledat**.
+2. V možnosti **zjišťovat servery**  >  **jsou virtualizované vaše servery?** vyberte **fyzické nebo jiné (AWS, GCP, Xen atd.)**.
+3. V části **1: generovat klíč projektu** zadejte název zařízení Azure Migrate, které nastavíte pro zjišťování fyzických nebo virtuálních serverů. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
+1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Nezavírejte stránku zjišťovací servery během vytváření prostředků.
+1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu** .
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
 ### <a name="download-the-installer-script"></a>Stažení instalačního skriptu
@@ -56,7 +57,7 @@ V **2: Stáhněte zařízení Azure Migrate** a klikněte na **Stáhnout**.
 
 Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
-1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
+1. Na serverech, na které jste stáhli soubor, otevřete okno příkazového řádku správce.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro soubor zip:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklad použití pro veřejný cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
@@ -77,7 +78,7 @@ Skript instalačního programu provede následující akce:
 
 Spusťte skript následujícím způsobem:
 
-1. Extrahujte soubor zip do složky na serveru, který bude hostitelem zařízení.  Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
+1. Extrahujte soubor zip do složky na serveru, který bude hostitelem zařízení.  Ujistěte se, že nespouštíte skript na serveru, který má existující zařízení Azure Migrate.
 2. Na výše uvedeném serveru s oprávněním správce (zvýšené) spusťte PowerShell.
 3. Změňte adresář PowerShellu na složku, do které byl obsah extrahován ze staženého souboru ZIP.
 4. Spusťte skript s názvem **AzureMigrateInstaller.ps1** spuštěním následujícího příkazu:
@@ -97,7 +98,7 @@ Pokud přecházíte mezi všemi problémy, získáte přístup k protokolům skr
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že se virtuální počítač zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
+Ujistěte se, že se zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
 
 ### <a name="configure-the-appliance"></a>Konfigurace zařízení
 
@@ -109,16 +110,16 @@ Nastavte zařízení poprvé.
 2. Přijměte **licenční podmínky** a přečtěte si informace třetích stran.
 1. Ve webové aplikaci > **nastavení požadavků** postupujte takto:
     - **Připojení**: aplikace kontroluje, jestli má server přístup k Internetu. Pokud server používá proxy server:
-        - Klikněte na **nastavit proxy server** na a zadejte adresu proxy serveru (ve formuláři http://ProxyIPAddress nebo na http://ProxyFQDN) naslouchajícím portu.
+        - Klikněte na **nastavení proxy serveru** a zadejte adresu proxy serveru (ve formuláři http://ProxyIPAddress nebo na http://ProxyFQDN) naslouchajícím portu.
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
         - Podporuje se jen proxy protokolu HTTP.
         - Pokud jste přidali podrobnosti proxy serveru nebo zakážete proxy server nebo ověřování, kliknutím na **Uložit** spusťte kontrolu připojení znovu.
     - **Časová synchronizace**: čas je ověřený. Čas v zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování serveru fungovalo správně.
-    - **Instalovat aktualizace**: posouzení Azure Migrate serveru kontroluje, jestli má zařízení nainstalované nejnovější aktualizace. Po dokončení kontroly můžete kliknout na **Zobrazit služby zařízení** a zobrazit stav a verze komponent spuštěných na zařízení.
+    - **Instalovat aktualizace**: Azure Migrate: zjišťování a posouzení kontroluje, jestli má zařízení nainstalované nejnovější aktualizace. Po dokončení kontroly můžete kliknout na **Zobrazit služby zařízení** a zobrazit stav a verze komponent spuštěných na zařízení.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
-1. Vložte **klíč projektu Azure Migrate** zkopírovaný z portálu. Pokud tento klíč nemáte, Projděte si část **vyhodnocení serveru> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
+1. Vložte **klíč projektu** zkopírovaný z portálu. Pokud nemáte klíč, podívejte se na **Azure Migrate: zjišťování a hodnocení> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
 1. K ověření pomocí Azure budete potřebovat kód zařízení. Kliknutím na **přihlášení** se otevře modální okno s kódem zařízení, jak je znázorněno níže.
 
     ![Modální zobrazení kódu zařízení](./media/tutorial-discover-vmware/device-code.png)
@@ -140,10 +141,10 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
 1. V **kroku 1: zadejte přihlašovací údaje pro zjišťování fyzických nebo virtuálních serverů s Windows a Linux**, klikněte na **Přidat přihlašovací údaje**.
 1. Pro Windows Server vyberte typ zdroje jako **Windows Server**, zadejte popisný název pro přihlašovací údaje, přidejte uživatelské jméno a heslo. Klikněte na **Uložit**.
 1. Pokud používáte ověřování založené na heslech pro server Linux, vyberte typ zdroje jako server pro **Linux (založený na heslech)**, zadejte popisný název pro přihlašovací údaje a přidejte uživatelské jméno a heslo. Klikněte na **Uložit**.
-1. Pokud používáte ověřování pomocí klíče SSH pro Linux Server, můžete vybrat typ zdroje jako **Server Linux (založený na klíči SSH)**, zadat popisný název pro přihlašovací údaje, přidat uživatelské jméno a vybrat soubor privátního klíče SSH. Klikněte na **Uložit**.
+1. Pokud používáte ověřování pomocí klíče SSH pro Linux Server, můžete vybrat typ zdroje jako **Server Linux (založený na klíči SSH)**, zadat popisný název pro přihlašovací údaje, přidat uživatelské jméno, Procházet a vybrat soubor privátního klíče SSH. Klikněte na **Uložit**.
 
     - Azure Migrate podporuje privátní klíč SSH generovaný pomocí příkazu ssh-keygen s využitím algoritmů RSA, DSA, ECDSA a ed25519.
-    - Aktuálně Azure Migrate nepodporuje klíč SSH založený na hesle. Použijte prosím klíč SSH bez hesla.
+    - V současné době Azure Migrate nepodporuje klíč SSH založený na heslech. Použijte klíč SSH bez přístupového hesla.
     - V současné době Azure Migrate nepodporuje soubor privátního klíče SSH generovaný pomocí výstupu.
     - Azure Migrate podporuje formát OpenSSH souboru privátního klíče SSH, jak je znázorněno níže:
     
@@ -155,13 +156,13 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
     ![Výběry pro přidání zdroje zjišťování](./media/tutorial-assess-physical/add-discovery-source-physical.png)
 
     - Pokud zvolíte možnost **přidat jednu položku**, můžete zvolit typ operačního systému, zadat popisný název pro přihlašovací údaje, přidat **IP adresu serveru nebo plně kvalifikovaný název domény** a kliknout na **Uložit**.
-    - Pokud zvolíte možnost **Přidat více položek**, můžete najednou přidat několik záznamů zadáním **IP adresy serveru nebo plně kvalifikovaného názvu domény** s popisným názvem pro přihlašovací údaje v textovém poli. **Ověřte** přidané záznamy a klikněte na **Uložit**.
+    - Pokud zvolíte možnost **Přidat více položek**, můžete najednou přidat několik záznamů zadáním **IP adresy serveru nebo plně kvalifikovaného názvu domény** s popisným názvem pro přihlašovací údaje v textovém poli. Ověřte * přidané záznamy a klikněte na **Uložit**.
     - Pokud zvolíte možnost **importovat sdílený svazek clusteru** _(ve výchozím nastavení je vybraný)_, můžete si stáhnout soubor šablony CSV a tento soubor naplnit pomocí **IP adresy serveru nebo plně kvalifikovaného názvu domény** a popisného názvu pro přihlašovací údaje. Pak soubor naimportujete do zařízení, **ověříte** záznamy v souboru a kliknete na **Uložit**.
 
 1. Když kliknete na Uložit, zařízení se pokusí ověřit připojení k serverům, které jste přidali, a zobrazit v tabulce **stav ověření** na každém serveru.
     - Pokud se ověření serveru nepovede, zkontrolujte chybu kliknutím na tlačítko **ověření** ve sloupci Stav v tabulce. Opravte problém a znovu ověřte.
     - Pokud chcete odebrat server, klikněte na **Odstranit**.
-1. Před zahájením zjišťování můžete znovu **ověřit** připojení k serverům.
+1. Připojení k serverům můžete kdykoli znovu **ověřit** před spuštěním zjišťování.
 1. Kliknutím na **Spustit zjišťování zahajte** zjišťování úspěšně ověřených serverů. Po úspěšném spuštění zjišťování můžete zjistit stav zjišťování proti každému serveru v tabulce.
 
 
@@ -172,9 +173,9 @@ Spustí se zjišťování. Bude trvat přibližně 2 minuty na server, aby se me
 Po dokončení zjišťování můžete ověřit, že se servery zobrazují na portálu.
 
 1. Otevřete řídicí panel služby Azure Migrate.
-2. V **Azure Migrate-servery**  >  **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
+2. V **Azure Migrate – Windows, Linux a SQL Server**  >  **Azure Migrate: stránka zjišťování a posouzení** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušení [fyzických serverů](tutorial-assess-physical.md) s vyhodnocením Azure Migrate serveru.
+Vyzkoušejte si [posouzení fyzických serverů](tutorial-assess-physical.md) pomocí Azure Migrate: zjišťování a posouzení.

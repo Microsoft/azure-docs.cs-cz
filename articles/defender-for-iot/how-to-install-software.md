@@ -1,18 +1,14 @@
 ---
 title: Instalace Defenderu pro IoT
 description: Přečtěte si, jak nainstalovat senzor a místní konzolu pro správu pro Azure Defender pro IoT.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 175f006adbc18d21e0f0c5d859737aedb00bc457
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5bdb292750ea041be68a22519583511f58b3b517
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103574658"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782244"
 ---
 # <a name="defender-for-iot-installation"></a>Instalace Defenderu pro IoT
 
@@ -851,7 +847,7 @@ Postup instalace softwaru:
 
 1. Přihlašovací údaje pro přihlášení se generují automaticky a prezentují. Tyto přihlašovací údaje Uchovávejte na bezpečném místě, protože jsou nutné pro přihlášení a správu.
 
-    | Uživatelské jméno | Description |
+    | Uživatelské jméno | Popis |
     |--|--|
     | Podpora | Administrativní uživatel pro správu uživatelů. |
     | CyberX | Ekvivalent kořene pro přístup k zařízení. |
@@ -986,7 +982,7 @@ Ověřte, zda máte přístup k webovému uživatelskému rozhraní konzoly:
 
    :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Snímek obrazovky zobrazující přístup ke konzole pro správu":::
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="you-cant-connect-by-using-a-web-interface"></a>Nemůžete se připojit pomocí webového rozhraní.
 

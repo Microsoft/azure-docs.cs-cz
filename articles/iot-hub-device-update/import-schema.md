@@ -6,31 +6,31 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 13044b8f087b403f83516a32a490d2dee8db700f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 989535d0bd6f514e63c7cea9e5fd71912f8fb08b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054602"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780153"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Import aktualizací do aktualizace zařízení pro IoT Hub – schéma a další informace
 Pokud chcete importovat aktualizaci do aktualizace zařízení pro IoT Hub, ujistěte se, že jste nejdřív zkontrolovali [Koncepty](import-concepts.md) [a návod.](import-update.md) Pokud vás zajímá podrobnosti schématu používaného při vytváření manifestu importu a také informace o souvisejících objektech, přečtěte si níže.
 
 ## <a name="import-manifest-schema"></a>Importovat schéma manifestu
 
-| Název | Typ | Description | Omezení |
+| Název | Typ | Popis | Omezení |
 | --------- | --------- | --------- | --------- |
 | UpdateID naformátovat | `UpdateId` předmětů | Aktualizujte identitu. |
 | Typ aktualizace | řetězec | Typ aktualizace: <br/><br/> * Určete `microsoft/apt:1` , kdy se má provést aktualizace založená na balíčku pomocí agenta reference.<br/> * Zadejte `microsoft/swupdate:1` při provádění aktualizace na základě bitové kopie pomocí referenčního agenta.<br/> * Určete `microsoft/simulator:1` při použití simulátoru ukázkového agenta.<br/> * Zadejte vlastní typ při vývoji vlastního agenta. | Formát: <br/> `{provider}/{type}:{typeVersion}`<br/><br/> Maximálně 32 znaků celkem |
-| InstalledCriteria | řetězec | Řetězec, který je interpretován agentem k určení, jestli se aktualizace úspěšně použila:  <br/> * Zadejte **hodnotu** SWVersion pro typ aktualizace `microsoft/swupdate:1` .<br/> * Zadejte `{name}-{version}` pro typ aktualizace `microsoft/apt:1` , jehož název a verzi jsou získány ze souboru apt.<br/> * Zadejte hodnotu hash souboru aktualizace pro typ aktualizace `microsoft/simulator:1` .<br/> * Zadejte vlastní řetězec při vývoji vlastního agenta.<br/> | Maximálně 64 znaků |
-| Kompatibilita | Pole `CompatibilityInfo` objektů | Informace o kompatibilitě zařízení kompatibilního s touto aktualizací. | Maximálně 10 položek |
+| InstalledCriteria | řetězec | Řetězec, který je interpretován agentem k určení, jestli se aktualizace úspěšně použila:  <br/> * Zadejte **hodnotu** SWVersion pro typ aktualizace `microsoft/swupdate:1` .<br/> * Zadejte `{name}-{version}` pro typ aktualizace `microsoft/apt:1` , jehož název a verzi jsou získány ze souboru apt.<br/> * Zadejte vlastní řetězec při vývoji vlastního agenta.<br/> | Maximálně 64 znaků |
+| Kompatibilita | Pole `CompatibilityInfo` [objektů](#compatibilityinfo-object) | Informace o kompatibilitě zařízení kompatibilního s touto aktualizací. | Maximálně 10 položek |
 | CreatedDateTime | Datum a čas | Datum a čas, kdy byla aktualizace vytvořena. | Formát data a času s oddělovači ISO 8601, v UTC |
 | ManifestVersion | řetězec | Importovat verzi schématu manifestu. Zadejte `2.0` , který bude kompatibilní s `urn:azureiot:AzureDeviceUpdateCore:1` rozhraním a rozhraním `urn:azureiot:AzureDeviceUpdateCore:4` . | Musí být `2.0` |
 | Soubory | Pole `File` objektů | Aktualizovat soubory datové části | Maximálně 5 souborů |
 
 ## <a name="updateid-object"></a>Objekt UpdateID naformátovat
 
-| Název | Typ | Description | Omezení |
+| Název | Typ | Popis | Omezení |
 | --------- | --------- | --------- | --------- |
 | Poskytovatel | řetězec | Část poskytovatele identity aktualizace. | 1-64 znaků, alfanumerických, teček a pomlček. |
 | Name | řetězec | Název součásti identity aktualizace. | 1-64 znaků, alfanumerických, teček a pomlček. |
@@ -38,7 +38,7 @@ Pokud chcete importovat aktualizaci do aktualizace zařízení pro IoT Hub, ujis
 
 ## <a name="file-object"></a>Objekt File
 
-| Název | Typ | Description | Omezení |
+| Název | Typ | Popis | Omezení |
 | --------- | --------- | --------- | --------- |
 | Bitmap | řetězec | Název souboru | Musí být jedinečné v rámci aktualizace. |
 | SizeInBytes | Int64 | Velikost souboru v bajtech | Maximálně 800 MB na jeden soubor nebo 800 MB souhrnně na aktualizaci |
@@ -46,14 +46,14 @@ Pokud chcete importovat aktualizaci do aktualizace zařízení pro IoT Hub, ujis
 
 ## <a name="compatibilityinfo-object"></a>Objekt CompatibilityInfo
 
-| Název | Typ | Description | Omezení |
+| Název | Typ | Popis | Omezení |
 | --- | --- | --- | --- |
 | DeviceManufacturer | řetězec | Výrobce zařízení, se kterým je aktualizace kompatibilní. | 1-64 znaků, alfanumerických, teček a pomlček. |
 | DeviceModel | řetězec | Model zařízení, se kterým je aktualizace kompatibilní. | 1-64 znaků, alfanumerických, teček a pomlček. |
 
 ## <a name="hashes-object"></a>Hash – objekt
 
-| Name | Požaduje se | Typ | Description |
+| Name | Požaduje se | Typ | Popis |
 | --------- | --------- | --------- | --------- |
 | SHA256 | True | řetězec | Hodnota hash souboru s kódováním base64 pomocí algoritmu SHA-256. |
 

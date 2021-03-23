@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: d07b52d8abeab34d565ebde4bac58eec66780dce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/21/2021
+ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98179261"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770967"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání rozpoznávání dovednosti v Azure Portal
 
-Dovednosti je funkce založená na AI, která využívá modely hloubkového učení k extrakci informací a struktury z velkých nerozlišených textových nebo obrázkových souborů, takže obsah může být indexován i prohledávatelný v Azure Kognitivní hledání. 
+Tento rychlý Start ukazuje podporu dovednosti na portálu, která ukazuje, jak optické rozpoznávání znaků (OCR) a rozpoznávání entit lze použít k vytvoření vyhledávaného textového obsahu z obrázků a souborů aplikace.
 
-V tomto rychlém startu spojíte služby a data v cloudu Azure, abyste mohli vytvořit dovednosti. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** v Azure Portal, aby se všechno načetlo dohromady. Konečným výsledkem je index s možností vyhledávání naplněný daty vytvořeným zpracováním AI, na kterých se můžete dotazovat na portálu ([Průzkumník hledání](search-explorer.md)).
+V rámci přípravy vytvoříte několik prostředků a nahrajete ukázkové obrázky a soubory obsahu aplikace. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** v Azure Portal, aby se všechno načetlo dohromady. Konečným výsledkem je index s možností vyhledávání naplněný daty vytvořeným zpracováním AI, na kterých se můžete dotazovat na portálu ([Průzkumník hledání](search-explorer.md)).
+
+Chcete začít s kódem? Viz [kurz: použití Rest a AI ke generování vyhledávaného obsahu z objektů blob Azure](cognitive-search-tutorial-blob.md) nebo [kurzu: k vygenerování vyhledávaného obsahu z objektů blob Azure použijte .NET a AI](cognitive-search-tutorial-blob-dotnet.md) .
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -44,7 +46,7 @@ V následujících krocích nastavte kontejner objektů BLOB v Azure Storage, ab
 
    + Vyberte stejnou oblast jako Azure Kognitivní hledání, abyste se vyhnuli poplatkům za šířku pásma. 
 
-   + Vyberte typ účtu StorageV2 (pro obecné účely v2), pokud chcete vyzkoušet funkci Knowledge Store později v jiném návodu. V opačném případě vyberte libovolný typ.
+   + Vyberte StorageV2 (obecné účely v2).
 
 1. Otevřete stránky služby BLOB Services a vytvořte kontejner. Můžete použít výchozí úroveň veřejného přístupu. 
 

@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: d4b0a4107b3894d65dd8e168cd58566d4a4b5090
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e0656c06f446ed6241b64040f063ed7ba419a942
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720487"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771307"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Sémantické vyhledávání v Azure Kognitivní hledání
 
 > [!IMPORTANT]
 > Sémantické vyhledávání je ve verzi Public Preview, dostupné jenom v rámci verze Preview REST API. Funkce ve verzi Preview se nabízejí tak, jak jsou, v části s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)a nemají zaručenou stejnou implementaci při obecné dostupnosti. Tyto funkce jsou Fakturovatelné. Další informace najdete v tématu [dostupnost a ceny](semantic-search-overview.md#availability-and-pricing).
 
-Sémantické vyhledávání je kolekce funkcí souvisejících s dotazy, které podporují vysoce kvalitní a přirozené možnosti dotazů. 
+Sémantické vyhledávání je kolekce funkcí souvisejících s dotazy, které přidávají výsledkům vyhledávání sémantickou relevanci a jazykové porozumění. *Sémantické hodnocení* vyhledává kontext a souvislost mezi podmínkami a zvyšuje shody, které dávají dotazu větší smysl. Při použití jazyka se vyhledává *popisy* a *odpovědi* v rámci vašeho obsahu, které shrnují odpovídající dokument nebo odpovídají na otázku, která se pak dá vykreslit na stránce s výsledky hledání, aby bylo lépe produktivní.
 
-Mezi tyto možnosti patří sémantické přeřazení výsledků hledání, jakož i extrakce titulků a odpovědí, které mají sémantický důraz na relevantní výrazy a fráze. Špičkové modely předem používané pro extrakci a hodnocení. Pro zajištění rychlého výkonu, který uživatelé očekávají od hledání, se sémantické sumarizace a hodnocení aplikují jenom na prvních 50 výsledků, které se vyhodnotí jako [výchozí algoritmus bodování podobnosti](index-similarity-and-scoring.md#similarity-ranking-algorithms). Použití těchto výsledků jako corpus dokumentu, sémantické hodnocení vede ke změně skóre výsledků na základě sémantické síly shody.
+Špičkové modely s předvýukou se používají pro Shrnutí a hodnocení. Pro zajištění rychlého výkonu, který uživatelé očekávají od hledání, se sémantické sumarizace a hodnocení aplikují jenom na prvních 50 výsledků, které se vyhodnotí jako [výchozí algoritmus bodování podobnosti](index-similarity-and-scoring.md#similarity-ranking-algorithms). Použití těchto výsledků jako corpus dokumentu, sémantické hodnocení vede ke změně skóre výsledků na základě sémantické síly shody.
 
 Základní technologie pochází z Bingu a Microsoft Research a je integrovaná do infrastruktury Kognitivní hledání jako doplňková funkce. Další informace o sémantickém vyhledávání v oblasti výzkumu a AI pro zálohování najdete v tématu [jak AI z Bingu používá Azure kognitivní hledání (blog Microsoft Research)](https://www.microsoft.com/research/blog/the-science-behind-semantic-search-how-ai-from-bing-is-powering-azure-cognitive-search/).
 

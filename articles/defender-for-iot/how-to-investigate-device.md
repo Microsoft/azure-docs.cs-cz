@@ -1,24 +1,14 @@
 ---
 title: Prozkoumat podezřelé zařízení
 description: Tato příručka vysvětluje, jak pomocí programu Defender pro IoT prozkoumat podezřelé zařízení IoT pomocí Log Analytics.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/04/2020
-ms.author: mlottner
-ms.openlocfilehash: 096549c37c9f1feb04cd9214e1835956dae53735
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 32cc8d82a867ead533cbaa6802bffb4494398412
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100516834"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782006"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Prozkoumat podezřelé zařízení IoT
 

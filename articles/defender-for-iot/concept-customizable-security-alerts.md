@@ -1,24 +1,14 @@
 ---
 title: Vlastní výstrahy zabezpečení pro IoT Hub
 description: Přečtěte si o přizpůsobitelných výstrahách zabezpečení a doporučené nápravě pomocí programu Defender pro funkce a službu IoT Hub.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/16/2021
-ms.author: shhazam
-ms.openlocfilehash: 04198432f2b600a3c703d5e4f253656f116000db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7a58bcdb759c3f31290cc7930eba6ca52fcc17b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100636522"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784726"
 ---
 # <a name="defender-for-iot-hub-custom-security-alerts"></a>Defender pro IoT Hub vlastní výstrahy zabezpečení
 
@@ -30,7 +20,7 @@ Následující seznamy programu Defender pro výstrahy IoT je možné definovat 
 
 ## <a name="built-in-custom-alerts-in-the-iot-hub"></a>Integrované vlastní výstrahy v IoT Hub
 
-| Závažnost | Název upozornění | Zdroj dat | Description | Navrhovaná náprava |
+| Závažnost | Název upozornění | Zdroj dat | Popis | Navrhovaná náprava |
 |--|--|--|--|--|
 | Nízká | Vlastní upozornění – počet zpráv v cloudu na zařízení v protokolu AMQP je mimo povolený rozsah. | IoT Hub | Počet zpráv z cloudu na zařízení (AMQP Protocol) v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |  |
 | Nízká | Vlastní výstraha – počet odmítnutých zpráv v cloudu na zařízení v protokolu AMQP je mimo povolený rozsah. | IoT Hub | Počet zpráv z cloudu na zařízení (Protokol AMQP) zamítnutý zařízením v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah. |  |

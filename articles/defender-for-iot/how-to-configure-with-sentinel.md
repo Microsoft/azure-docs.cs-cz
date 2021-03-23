@@ -1,23 +1,14 @@
 ---
 title: Konfigurace Azure Sentinel pro Defender pro IoT
 description: Vysvětluje, jak nakonfigurovat Azure Sentinel pro příjem dat z vašeho programu Defender pro řešení IoT.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/28/2020
-ms.author: shhazam
-ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b481dd31b73e741d265a569076f1ddc076ad4a45
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98247331"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778946"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>Připojení dat z programu Defender pro IoT do Azure Sentinel 
 

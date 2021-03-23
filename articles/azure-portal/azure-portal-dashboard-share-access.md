@@ -3,24 +3,19 @@ title: Sdílení řídicích panelů Azure Portal pomocí řízení přístupu n
 description: Tento článek vysvětluje, jak sdílet řídicí panel v Azure Portal pomocí řízení přístupu na základě role v Azure.
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
 ms.topic: how-to
-ms.date: 03/23/2020
-ms.openlocfilehash: de2efd75d07c3dc7df771aad1bd9c73453dad212
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/19/2021
+ms.openlocfilehash: 336bfe9792c5ba4246458368e008a8c50833ed03
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745974"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771532"
 ---
 # <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>Sdílení řídicích panelů Azure pomocí řízení přístupu na základě role v Azure
 
-Po nakonfigurování řídicího panelu ho můžete publikovat a sdílet s ostatními uživateli ve vaší organizaci. Ostatním uživatelům umožníte zobrazit váš řídicí panel pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md). Přiřaďte roli uživatele nebo skupiny uživatelů. Tato role definuje, jestli můžou uživatelé zobrazit nebo upravit publikovaný řídicí panel.
+Po nakonfigurování řídicího panelu ho můžete publikovat a sdílet s ostatními uživateli ve vaší organizaci. Ostatním uživatelům umožníte zobrazit váš řídicí panel pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md). Přiřazení jednoho uživatele nebo skupiny uživatelů k roli. Tato role definuje, jestli můžou uživatelé zobrazit nebo upravit publikovaný řídicí panel.
 
-Všechny publikované řídicí panely se implementují jako prostředky Azure. Existují jako spravovatelné položky v rámci vašeho předplatného a jsou součástí skupiny prostředků. Z perspektivy řízení přístupu se řídicí panely neliší od jiných prostředků, jako je třeba virtuální počítač nebo účet úložiště.
-
-> [!TIP]
-> Jednotlivé dlaždice na řídicím panelu vynutily vlastní požadavky na řízení přístupu na základě zobrazovaných prostředků. Řídicí panel můžete široce sdílet a přitom chránit data v jednotlivých dlaždicích.
-> 
-> 
+Všechny publikované řídicí panely se implementují jako prostředky Azure. Existují jako spravovatelné položky v rámci vašeho předplatného a jsou součástí skupiny prostředků. Z perspektivy řízení přístupu se řídicí panely neliší od jiných prostředků, jako je třeba virtuální počítač nebo účet úložiště. Jednotlivé dlaždice na řídicím panelu vynutily vlastní požadavky na řízení přístupu na základě zobrazovaných prostředků. Řídicí panel můžete široce sdílet a přitom chránit data v jednotlivých dlaždicích.
 
 ## <a name="understanding-access-control-for-dashboards"></a>Principy řízení přístupu pro řídicí panely
 
@@ -34,9 +29,9 @@ Oprávnění, která přiřadíte z předplatného, do prostředku. Publikovaný
 
 Řekněme, že máte předplatné Azure a různé členy týmu mají k předplatnému přiřazené role *vlastníka*, *přispěvatele* nebo *čtenáře* . Uživatelé, kteří jsou vlastníci nebo přispěvatelé, můžou v rámci předplatného vypisovat, zobrazovat, vytvářet, upravovat nebo odstraňovat řídicí panely. Uživatelé, kteří čtenáři můžou vypisovat a zobrazovat řídicí panely, ale nemůžou je upravovat ani odstraňovat. Uživatelé s přístupem ke čtenářům můžou provádět místní úpravy publikovaného řídicího panelu, například při odstraňování problému, ale nemůžou tyto změny publikovat zpátky na server. Můžou vytvořit soukromou kopii řídicího panelu pro sebe sama.
 
-Můžete také přiřadit oprávnění ke skupině prostředků, která obsahuje několik řídicích panelů nebo k jednotlivým řídicím panelům. Můžete se třeba rozhodnout, že skupina uživatelů by měla mít omezená oprávnění v rámci předplatného, ale větší přístup k určitému řídicímu panelu. Přiřaďte tyto uživatele k roli pro tento řídicí panel.
+Můžete přiřadit oprávnění ke skupině prostředků, která obsahuje několik řídicích panelů nebo na jednotlivé řídicí panely. Můžete se třeba rozhodnout, že skupina uživatelů by měla mít omezená oprávnění v rámci předplatného, ale větší přístup k určitému řídicímu panelu. Přiřaďte tyto uživatele k roli pro tento řídicí panel.
 
-## <a name="publish-dashboard"></a>Publikování řídicího panelu
+## <a name="publish-a-dashboard"></a>Publikování řídicího panelu
 
 Řekněme, že nakonfigurujete řídicí panel, který chcete sdílet se skupinou uživatelů v rámci vašeho předplatného. Následující kroky ukazují, jak sdílet řídicí panel se skupinou, která se nazývá Správce úložiště. Svou skupinu si můžete pojmenovat, ať už chcete. Další informace najdete v tématu [Správa skupin v Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
@@ -58,19 +53,15 @@ Váš řídicí panel je teď publikovaný. Pokud jsou oprávnění zděděná z
 
 Skupině uživatelů můžete přiřadit roli pro tento řídicí panel.
 
-1. Po publikování řídicího panelu vyberte možnost **sdílení nebo zrušení** **sdílení** pro přístup ke **sdílení a řízení přístupu**.
+1. Po publikování řídicího panelu vyberte **Spravovat sdílení**.
 
-1. V možnosti **sdílení a řízení přístupu** vyberte **Spravovat uživatele**.
-
-    ![Správa uživatelů řídicího panelu](./media/azure-portal-dashboard-share-access/manage-users-for-access-control.png)
-
-1. Vyberte **přiřazení rolí** , abyste viděli existující uživatele, kteří už mají přiřazenou roli pro tento řídicí panel.
+1. V **Access Control** vyberte **přiřazení rolí** , abyste viděli existující uživatele, kteří už mají přiřazenou roli pro tento řídicí panel.
 
 1. Chcete-li přidat nového uživatele nebo skupinu, vyberte možnost **Přidat** a **Přidat přiřazení role**.
 
     ![Přidat uživatele pro přístup k řídicímu panelu](./media/azure-portal-dashboard-share-access/manage-users-existing-users.png)
 
-1. Vyberte roli, která představuje oprávnění pro udělení. V tomto příkladu vyberte **Přispěvatel**.
+1. Vyberte roli, která představuje oprávnění pro udělení, jako je například **Přispěvatel**.
 
 1. Vyberte uživatele nebo skupinu, které chcete přiřadit k roli. Pokud v seznamu nevidíte uživatele nebo skupinu, které jste hledali, použijte vyhledávací pole. Seznam dostupných skupin závisí na skupinách, které jste vytvořili ve službě Active Directory.
 

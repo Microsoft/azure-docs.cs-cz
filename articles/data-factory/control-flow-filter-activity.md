@@ -3,16 +3,16 @@ title: Filtrovat aktivitu v Azure Data Factory
 description: Aktivita filtru filtruje vstupy.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 035ee5a5f1fe193fcb4579f1d46472ad9cd0b8b5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 97693d9f31b01bf6187843586f6971c92fe79bff
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100385587"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786188"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Filtrovat aktivitu v Azure Data Factory
 Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupní pole. 
@@ -35,10 +35,10 @@ Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupn
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název `Filter` aktivity | Řetězec | Yes
-typ | Musí být nastavené na **Filter**. | Řetězec | Yes
-pomocné | Podmínka, která se má použít pro filtrování vstupu. | Výraz | Yes
-položek | Vstupní pole, ve kterém se má použít filtr | Výraz | Yes
+name | Název `Filter` aktivity | Řetězec | Ano
+typ | Musí být nastavené na **Filter**. | Řetězec | Ano
+pomocné | Podmínka, která se má použít pro filtrování vstupu. | Výraz | Ano
+položek | Vstupní pole, ve kterém se má použít filtr | Výraz | Ano
 
 ## <a name="example"></a>Příklad
 

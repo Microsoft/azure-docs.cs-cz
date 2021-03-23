@@ -4,12 +4,12 @@ description: Prohlášení o zásadách uchovávání a ochrany osobních údaj�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6a7545d4d927418e6153ce3bf439fc8c3e2dc702
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579583"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774911"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -294,6 +294,10 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 
 > [!NOTE]
 > IP adresa klienta se používá k odvodit zeměpisnou polohu, ale ve výchozím nastavení se data IP už neukládají a do přidruženého pole se zapisují všechny nuly. Chcete-li získat další informace o zpracování osobních údajů, doporučujeme tento [článek](../logs/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat údaje o IP adrese, Projděte si tyto možnosti podle [článku](./ip-collection.md) .
+
+## <a name="can-i-modify-or-update-data-after-it-has-been-collected"></a>Můžu data po shromáždění upravovat nebo aktualizovat?
+
+Ne, data jsou jen pro čtení a je možné je odstranit jenom pomocí funkce vyprázdnění. Další informace najdete [v pokynech k osobním údajům uloženým v Log Analytics a Application Insights](../logs/personal-data-mgmt.md#delete).
 
 ## <a name="credits"></a>Kredity
 Tento produkt zahrnuje data GeoLite2 vytvořená v MaxMind, která jsou dostupná z [https://www.maxmind.com](https://www.maxmind.com) .

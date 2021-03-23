@@ -144,7 +144,7 @@
               displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: Použití integrované licence Microsoft Defenderu pro koncový bod
-          displayName: 'ATP, mdatp, wdatp'
+          displayName: 'ATP, mdatp, wdatp, mde, mdfe'
           href: security-center-wdatp.md
         - name: Definování seznamů bezpečných aplikací pro počítače
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'

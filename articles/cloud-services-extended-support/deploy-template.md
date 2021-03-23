@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: b3fd8dcd5f2e73b798f6e9529b5811b9935bc393
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e2a0859227ad790763dc9ae07cb408a72538f90
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605762"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773364"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Nasazení cloudové služby (rozšířené podpory) pomocí šablon ARM
 
@@ -45,7 +45,7 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
 ## <a name="deploy-a-cloud-service-extended-support"></a>Nasazení cloudové služby (Rozšířená podpora)
 
 > [!NOTE]
-> Alternativním způsobem, jak nasadit cloudovou službu (rozšířené podpoře), je prostřednictvím [Azure Portal](https://portal.azure.com). Vygenerovanou [šablonu ARM](generate-template-portal.md) si můžete stáhnout prostřednictvím portálu pro budoucí nasazení.
+> Snadnější a rychlejší způsob, jak vygenerovat šablonu ARM a soubor parametrů, je prostřednictvím [Azure Portal](https://portal.azure.com). Vygenerovanou [šablonu ARM](generate-template-portal.md) si můžete stáhnout přes portál a vytvořit tak cloudovou službu přes PowerShell.
  
 1. Vytvořte virtuální síť. Název virtuální sítě musí odpovídat odkazům v souboru konfigurace služby (. cscfg). Pokud používáte existující virtuální síť, vynechejte tento oddíl ze šablony ARM.
 
@@ -191,7 +191,9 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
     ```
 
 6. Volitelné Vytvořte profil rozšíření pro přidání rozšíření do cloudové služby. V tomto příkladu přidáme rozšíření Remote Desktop a Windows Azure Diagnostics.
-    
+   > [!Note] 
+   > Heslo pro vzdálenou plochu musí být delší než 8-123 znaků a musí splňovat alespoň 3 požadavky na složitost hesla z následujících hodnot: 1) obsahuje velké písmeno 2) obsahuje malé písmeno 3), které obsahuje číselnou číslici 4). obsahuje speciální znak 5) řídicí znaky nejsou povoleny.
+
     ```json
         "extensionProfile": {
           "extensions": [

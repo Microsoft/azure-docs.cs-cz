@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102486654"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773041"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Začínáme s překladem dokumentů (Preview)
 
@@ -20,7 +20,10 @@ ms.locfileid: "102486654"
 ## <a name="prerequisites"></a>Předpoklady
 
 > [!NOTE]
-> Obecně platí, že při vytváření prostředku služby vnímání v Azure Portal máte možnost vytvořit klíč předplatného s více službami nebo klíč předplatného s jednou službou. Překlad dokumentů se ale v současné době podporuje jenom v prostředku překladatele (s jednou službou) a **není** zahrnutý do prostředku Cognitive Services (Multi-Service).
+>
+> 1. Obecně platí, že při vytváření prostředku služby vnímání v Azure Portal máte možnost vytvořit klíč předplatného s více službami nebo klíč předplatného s jednou službou. Překlad dokumentů se ale v současné době podporuje jenom v prostředku překladatele (s jednou službou) a **není** zahrnutý do prostředku Cognitive Services (Multi-Service).
+> 2. Překlad dokumentů je aktuálně k dispozici v **plánu standardní služby S1**. _Podívejte se na téma_ [ceny Cognitive Services – Překladatel](https://azure.microsoft.com/pricing/details/cognitive-services/translator/).
+>
 
 Abyste mohli začít, budete potřebovat:
 
@@ -29,8 +32,6 @@ Abyste mohli začít, budete potřebovat:
 * Prostředek služby [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) **(nejedná se** o prostředek Cognitive Services).
 
 * [**Účet úložiště objektů BLOB v Azure**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Vytvoříte kontejnery pro ukládání a uspořádání dat objektů BLOB v rámci svého účtu úložiště.
-
-* Formulář dokončeného [**překladu dokumentů (Preview)**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) , který umožní vašemu předplatnému Azure používat novou funkci překladu dokumentů.
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>Získání vlastního názvu domény a klíče předplatného
 
@@ -186,7 +187,7 @@ Požadavek na překlad dokumentu Batch se odešle do koncového bodu služby tra
 
 Každá žádost o rozhraní API pro překladatele dokumentu obsahuje následující hlavičky:
 
-|Hlavička protokolu HTTP|Description|
+|Hlavička protokolu HTTP|Popis|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Požadováno**: hodnota je klíč předplatného Azure pro váš překladatel nebo Cognitive Services prostředek.|
 |Typ obsahu|**Požadováno**: Určuje typ obsahu datové části. Přijaté hodnoty jsou Application/JSON nebo charset = UTF-8.|

@@ -1,19 +1,14 @@
 ---
 title: O integraci Splunk
-titleSuffix: Azure Defender for IoT
 description: Za účelem řešení nedostatečného přehledu o zabezpečení a odolnosti sítě typu "společnost Defender pro IoT vyvinula aplikaci pro monitorování hrozeb pro IoT, IIoT a ICS pro Splunk, nativní integraci mezi Defendery pro IoT a Splunk, která umožňuje jednotný přístup k IT a zabezpečení.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/4/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 91d877d644b4b5ca7231f5f81f9163a0fd3cbe25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 28bdc6deaac09d795c45460bb211126a105b80c8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98557586"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785916"
 ---
 # <a name="defender-for-iot-and-ics-threat-monitoring-application-for-splunk"></a>Defender pro aplikaci monitorování hrozeb pro IoT a ICS pro Splunk
 
@@ -158,7 +153,7 @@ Vytvoření pravidla předávání:
     | **Výběr závažnosti** | Minimální incident úrovně zabezpečení k přeposílání. Pokud je například vybraná možnost podverze, budou se předávány méně závažné výstrahy a veškerá výstraha nad touto úrovní závažnosti. |
     | **Protokoly** | Ve výchozím nastavení jsou vybrány všechny protokoly. Pokud chcete vybrat konkrétní protokol, vyberte **konkrétní** a vyberte protokol, pro který se toto pravidlo použije. |
     | **Motoru** | Ve výchozím nastavení jsou zapojeny všechny bezpečnostní moduly. Pokud chcete vybrat konkrétní modul zabezpečení, pro který se toto pravidlo používá, vyberte **konkrétní** a vyberte modul. |
-    | **Systémová oznámení** | Online nebo offline stav předávaného senzoru Tato možnost je k dispozici pouze v případě, že jste přihlášeni do centrálního správce. |                                            |
+    | **Systémová oznámení** | Online nebo offline stav předávaného senzoru Tato možnost je k dispozici pouze v případě, že jste přihlášeni do centrálního správce. |
 
 1. Pokud chcete, aby aplikace Defender pro IoT odesílala informace o prostředcích do Splunk, vyberte **akci** a pak vyberte **Odeslat do Splunk serveru**.
 

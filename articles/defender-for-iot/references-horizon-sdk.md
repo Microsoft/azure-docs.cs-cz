@@ -1,19 +1,14 @@
 ---
 title: Horizon SDK
-titleSuffix: Azure Defender for IoT
 description: Sada Horizon SDK umožňuje vývojářům v programu Azure Defender navrhovat moduly plug-in, které dekódují síťový provoz, aby je bylo možné zpracovat pomocí automatizovaného Defenderu pro programy analýzy sítě IoT.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 500f1d78a6a2ab91284c993a5c56ef8e679db83f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523358"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782482"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Nesektorový speciální protokol pro Horizont
 
@@ -326,7 +321,7 @@ Tato část popisuje základní parametry.
 
 Tato část popisuje další pole.
 
-| Popisek parametru | Description |
+| Popisek parametru | Popis |
 |-----------------|--------|
 | **seznamy povolených** | Hodnoty protokolu můžete indexovat a zobrazovat v sestavách dolování dat. Tyto sestavy odrážejí vaše standardní hodnoty v síti. :::image type="content" source="media/references-horizon-sdk/data-mining.png" alt-text="Ukázka zobrazení dolování dat."::: <br /> Další informace najdete v tématu věnovaném [připojení ke službě indexování (směrný plán)](#connect-to-an-indexing-service-baseline) k podrobnostem. |
 | **Firmwar** | Můžete extrahovat informace o firmwaru, definovat hodnoty indexu a aktivovat výstrahy firmwaru pro protokol plug-in. Další informace najdete v tématu o [extrakci dat firmwaru](#extract-firmware-data) . |
@@ -817,7 +812,7 @@ Přidejte parametr **výstrahy** do modulu `config.json` Plug-in.
 
 Tato část popisuje pole konfigurace JSON. 
 
-| Název pole | Description | Možné hodnoty |
+| Název pole | Popis | Možné hodnoty |
 |--|--|--|
 | **ID** | Představuje jedno ID výstrahy. V tomto kontextu musí být jedinečný. | Číselná hodnota 0-10000 |
 | **zpráva** | Informace zobrazené uživateli Toto pole umožňuje používat různá pole. | Použijte libovolné pole z vašeho protokolu nebo jakýkoli protokol nižší vrstvy. |
@@ -1146,7 +1141,7 @@ V tomto souboru můžete nakonfigurovat tyto vlastnosti:
 
 ### <a name="fields"></a>Pole
 
-| Pole | Description |
+| Pole | Popis |
 |--|--|
 | key | Určuje klíč. |
 | hodnota | Určuje pole implementace, které se má použít, aby se daly zadat data. |
@@ -1618,7 +1613,7 @@ Okno **Přehled** konzoly Horizontal poskytuje informace o modulu plug-in, kter�
 
 :::image type="content" source="media/references-horizon-sdk/overview.png" alt-text="Přehled konzole horizontu":::
 
-| Pole | Description |
+| Pole | Popis |
 |--|--|
 | Aplikace | Název modulu plug-in, který jste nahráli. |
 | :::image type="content" source="media/references-horizon-sdk/switch.png" alt-text="Přepínač Zapnuto a vypnuto."::: | Zapne **nebo** **vypne** modul plug-in. Defender pro IoT nebude při přepínání mimo modul plug-in zpracovávat provoz protokolu definovaný v modulu plug-in. |

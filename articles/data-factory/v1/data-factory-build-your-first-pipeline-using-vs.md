@@ -3,17 +3,17 @@ title: Sestavení prvního objektu pro vytváření dat (Visual Studio)
 description: V tomto kurzu vytvoříte pomocí sady Visual Studio ukázkový kanál služby Azure Data Factory.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 2ae8e24b10a6661f5a18f3d04e243232436b2911
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7431dcbdcd94b74482786625a052bc5abc31c164
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100377444"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783162"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Kurz: Vytvoření datové továrny pomocí sady Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -559,7 +559,7 @@ Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením
 
 ## <a name="see-also"></a>Viz také
 
-| Téma | Description |
+| Téma | Popis |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Azure Data Factory. |

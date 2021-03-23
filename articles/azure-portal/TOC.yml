@@ -35,11 +35,11 @@
           href: azure-portal-dashboards.md
         - name: Sdílení řídicího panelu Azure
           href: azure-portal-dashboard-share-access.md
+        - name: Použití vlastní dlaždice Markdown
+          href: azure-portal-markdown-tile.md
         - name: Programové vytvoření řídicího panelu Azure
           href: azure-portal-dashboards-create-programmatically.md
           displayName: 'Azure CLI, az portal dashboard, az portal'
-        - name: Použití vlastní dlaždice Markdown
-          href: azure-portal-markdown-tile.md
     - name: Série videí s postupy pro Azure Portal
       href: azure-portal-video-series.md
     - name: Vytváření a správa žádostí o podporu

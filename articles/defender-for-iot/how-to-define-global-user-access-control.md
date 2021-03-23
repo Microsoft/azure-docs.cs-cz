@@ -1,18 +1,14 @@
 ---
 title: Definování globálního řízení přístupu uživatelů
 description: Ve velkých organizacích můžou být uživatelská oprávnění složitá a můžou být určená globální strukturou organizace, a to i se standardní strukturou lokalit a zón.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 399eee06d472204eaf6dbc333f15cee7c4373739
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f5f8df56a5dcb4152fc0ae9fcae3d504d6cf3e2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522270"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784284"
 ---
 # <a name="define-global-access-control"></a>Definování globálního řízení přístupu
 
