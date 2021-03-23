@@ -4,7 +4,7 @@ description: Tento článek popisuje seznam možností konfigurace YAML pro při
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 11/29/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a41a788a84770201996fd369d9b47031674afee3
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85367253"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799543"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>YAML možnosti konfigurace pro přizpůsobení úloh sestavení
+
+> [!Note]
+> Od 1. března 2022 bude rozšíření Microsoft Security Code Analysis (MSCA) vyřazeno. Stávající zákazníci MSCA si budou mít přístup k MSCA do 1. března 2022. Alternativní možnosti v Azure DevOps najdete v [nástrojích pro analýzu zdrojového kódu OWASP](https://owasp.org/www-community/Source_Code_Analysis_Tools) . Zákazníci, kteří plánují migraci na GitHub, si můžete zaregistrovat v [rozšířeném zabezpečení GitHubu](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security).
 
 V tomto článku jsou uvedené všechny možnosti konfigurace YAML dostupné v každé z úloh sestavení. Článek začíná úkoly nástroje pro analýzu kódu zabezpečení. Končí úlohami po zpracování.
 

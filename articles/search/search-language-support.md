@@ -1,70 +1,148 @@
 ---
 title: Indexování ve více jazycích pro jiné než anglické vyhledávací dotazy
 titleSuffix: Azure Cognitive Search
-description: Azure Kognitivní hledání podporuje jazyky 56, které využívají analyzátory jazyka z aplikace Lucene a technologie pro zpracování přirozeného jazyka od Microsoftu.
+description: Vytvořte index, který podporuje vícejazyčný obsah, a pak vytvořte dotazy vymezené tomuto obsahu.
 manager: nitinme
-author: yahnoosh
-ms.author: jlembicz
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 588de9c9cae114b5f5396db17f7ecb19bcde25c6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/22/2021
+ms.openlocfilehash: 627ec77af4e492b4f22404972729cecdb1c40f06
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93423075"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801600"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Vytvoření indexu pro více jazyků v Azure Kognitivní hledání
 
-Indexy mohou zahrnovat pole obsahující obsah z více jazyků, například vytváření jednotlivých polí pro řetězce specifické pro jazyk. Pro dosažení nejlepších výsledků při indexování a dotazování přiřaďte analyzátor jazyka, který poskytuje příslušná jazyková pravidla. 
+Klíčovým požadavkem v aplikaci pro vyhledávání ve více jazycích je schopnost vyhledávat a načítat výsledky v jazyce uživatele. V Azure Kognitivní hledání jeden ze způsobů, jak splňovat jazykové požadavky vícejazyčné aplikace, je vytvořit vyhrazená pole pro ukládání řetězců do konkrétního jazyka a pak omezit fulltextové vyhledávání jenom na ta pole v době dotazu.
 
-Azure Kognitivní hledání nabízí velký výběr jazykových analyzátorů z aplikací Lucene a Microsoft, které je možné přiřadit k jednotlivým polím pomocí vlastnosti Analyzer. Můžete také zadat analyzátor jazyka na portálu, jak je popsáno v tomto článku.
++ V části definice polí nastavte analyzátor jazyka, který vyvolá jazyková pravidla cílového jazyka. Úplný seznam podporovaných analyzátorů najdete v tématu [Přidání analyzátorů jazyka](index-add-language-analyzers.md).
 
-## <a name="add-analyzers-to-fields"></a>Přidat analyzátory do polí
++ V požadavku na dotaz nastavte parametry pro určení rozsahu fulltextového vyhledávání na konkrétní pole a pak ořízněte výsledky všech polí, která neposkytují obsah kompatibilní s vyhledávacím prostředím, které chcete poskytnout.
 
-Analyzátor jazyka je určen při vytvoření pole. Přidáním analyzátoru do existující definice pole je třeba přepsat (a znovu načíst) index nebo vytvořit nové pole stejné jako původní, ale s přiřazením analyzátoru. Nepoužívané pole pak můžete odstranit na pohodlí.
+Úspěch této techniky se přestavuje na základě integrity obsahu polí. Azure Kognitivní hledání nepřevádí řetězce ani neprovádí detekci jazyka jako součást provádění dotazu. Ujistěte se, že pole obsahují řetězce, které očekáváte.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyhledejte vyhledávací službu.
-1. Kliknutím na **Přidat index** na panelu příkazů v horní části řídicího panelu služby spustíte nový index nebo otevřete existující index pro nastavení analyzátoru pro nová pole, která přidáváte do existujícího indexu.
-1. Zahajte definici pole zadáním názvu.
-1. Vyberte datový typ EDM. String. Pouze řetězcová pole jsou fulltextově prohledávatelné.
-1. Nastavením atributu s **možností prohledávání** Povolte vlastnost Analyzer. Pole musí být založené na textu, aby bylo možné používat analyzátor jazyka.
-1. Vyberte jeden z dostupných analyzátorů. 
+## <a name="define-fields-for-content-in-different-languages"></a>Definovat pole pro obsah v různých jazycích
 
-![Přiřazovat analyzátory jazyka během definice pole](media/search-language-support/select-analyzer.png "Přiřazovat analyzátory jazyka během definice pole")
+V Azure Kognitivní hledání dotazy cílí na jeden index. Vývojáři, kteří chtějí poskytnout řetězce pro konkrétní jazyk v rámci jednoho vyhledávacího prostředí, obvykle definují vyhrazená pole pro ukládání hodnot: jedno pole pro anglické řetězce, jeden pro francouzštinu a tak dále.
 
-Ve výchozím nastavení používají všechna hledaná pole [standardní analyzátor Lucene](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , který je Language-nezávislá. Pokud chcete zobrazit úplný seznam podporovaných analyzátorů, přečtěte si téma [Přidání analyzátorů jazyka do indexu služby Azure kognitivní hledání](index-add-language-analyzers.md).
+Vlastnost analyzátoru definice pole se používá k nastavení [analyzátoru jazyka](index-add-language-analyzers.md). Použije se při indexování i provádění dotazů.
 
-V portálu se analyzátory mají použít tak, jak jsou. Pokud budete vyžadovat přizpůsobení nebo konkrétní konfiguraci filtrů a tokenizátory musíte nejdřív, měli byste v kódu [vytvořit vlastní analyzátor](index-add-custom-analyzers.md) . Portál nepodporuje výběr a konfiguraci vlastních analyzátorů.
+```JSON
+{
+  "name": "hotels-sample-index",
+  "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft"
+    },
+    {
+      "name": "Description_fr",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "fr.microsoft"
+    },
+```
 
-## <a name="query-language-specific-fields"></a>Konkrétní dotazovací jazyk – pole
+## <a name="build-and-load-an-index"></a>Sestavení a načtení indexu
 
-Jakmile je analyzátor jazyka vybrán pro pole, bude použit spolu s každou vydanou žádostí o indexování a hledání daného pole. Když je dotaz vydán pro více polí pomocí různých analyzátorů, dotaz se zpracuje nezávisle přiřazenými analyzátory pro každé pole.
+Mezilehlého (a možná zjevné) kroku je, že před [vytvořením dotazu musíte sestavit a naplnit index](search-get-started-dotnet.md) . Tento krok uvádíme pro úplnost. Jedním ze způsobů, jak určit dostupnost indexu, je kontrola seznamu indexů na [portálu](https://portal.azure.com).
 
-Pokud je znám jazyk agenta, který vydává dotaz, může být požadavek na hledání vymezen na konkrétní pole pomocí parametru dotazu **searchFields** . Následující dotaz se vydá jenom s popisem v polštině:
+> [!TIP]
+> Rozpoznání jazyka a překlad textu se podporují během příjmu dat prostřednictvím [rozšíření AI](cognitive-search-concept-intro.md) a [dovednosti](cognitive-search-working-with-skillsets.md). Pokud máte zdroj dat Azure se smíšeným jazykem a obsahem, můžete vyzkoušet funkce pro detekci a překlad jazyka pomocí [Průvodce importem dat](cognitive-search-quickstart-blob.md).
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
+## <a name="constrain-the-query-and-trim-results"></a>Omezení výsledků dotazu a oříznutí
 
-Dotaz na index můžete z portálu pomocí [**Průzkumníka služby Search**](search-explorer.md) vložit do dotazu, který se podobá výše uvedenému.
+Parametry dotazu slouží k omezení vyhledávání na konkrétní pole a následnému oříznutí výsledků všech polí, která nejsou pro váš scénář vhodná. 
+
+| Parametry | Účel |
+|-----------|--------------|
+| **searchFields** | Omezí úplné hledání textu na seznam pojmenovaných polí. |
+| **$select** | Ořízne odpověď tak, aby zahrnovala pouze pole, která zadáte. Ve výchozím nastavení jsou vrácena všechna pole, která lze načíst. Parametr **$Select** vám umožní zvolit, která z nich se má vrátit. |
+
+Vzhledem k tomu, že je výsledkem omezení vyhledávání pole obsahující francouzsky řetězce, byste použili **searchFields** k zacílení dotazu na pole obsahující řetězce v daném jazyce.
+
+Určení analyzátoru pro požadavek na dotaz není nutné. Analyzátor jazyka na definici pole bude vždy použit při zpracování dotazu. U dotazů, které určují více polí vyvolaných různými analyzátory jazyka, se výrazy nebo fráze zpracují nezávisle přiřazenými analyzátory pro každé pole.
+
+Ve výchozím nastavení vrátí hledání všechna pole, která jsou označena jako získatelné. V takovém případě můžete chtít vyloučit pole, která neodpovídají jazykově specifickému hledanému prostředí, které chcete poskytnout. Konkrétně, pokud jste omezili hledání na pole se francouzskými řetězci, pravděpodobně budete chtít vyloučit pole s anglickým řetězcem z vašich výsledků. Použití parametru dotazu **$Select** vám poskytne kontrolu nad tím, která pole se vrátí do volající aplikace.
+
+#### <a name="example-in-rest"></a>Příklad v REST
+
+```http
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "animaux acceptés",
+    "searchFields": "Tags, Description_fr",
+    "select": "HotelName, Description_fr, Address/City, Address/StateProvince, Tags",
+    "count": "true"
+}
+```
+
+#### <a name="example-in-c"></a>Příklad v jazyce C #
+
+```csharp
+private static void RunQueries(SearchClient srchclient)
+{
+    SearchOptions options;
+    SearchResults<Hotel> response;
+
+    options = new SearchOptions()
+    {
+        IncludeTotalCount = true,
+        Filter = "",
+        OrderBy = { "" }
+    };
+
+    options.Select.Add("HotelId");
+    options.Select.Add("HotelName");
+    options.Select.Add("Description_fr");
+    options.SearchFields.Add("Tags");
+    options.SearchFields.Add("Description_fr");
+
+    response = srchclient.Search<Hotel>("*", options);
+    WriteDocuments(response);
+}
+```
 
 ## <a name="boost-language-specific-fields"></a>Posílit pole specifická pro konkrétní jazyk
 
-Někdy není známý jazyk agenta, který vydává dotaz, a v takovém případě lze dotaz vydat pro všechna pole současně. V případě potřeby je možné pomocí [profilů vyhodnocování](index-add-scoring-profiles.md)definovat preference pro výsledky v určitém jazyce. V následujícím příkladu se shody zjištěné v popisu v angličtině budou v porovnání s výsledky v polštině a francouzštině vyhodnoceny jako vyšší:
+Někdy není známý jazyk agenta, který vydává dotaz, a v takovém případě lze dotaz vydat pro všechna pole současně. Preference IA pro výsledky v určitém jazyce může být definovaná pomocí [profilů vyhodnocování](index-add-scoring-profiles.md). V následujícím příkladu se shody zjištěné v popisu v angličtině budou větší vzhledem k odpovídajícím hodnotám v jiných jazycích:
 
-```http
-    "scoringProfiles": [
-      {
-        "name": "englishFirst",
-        "text": {
-          "weights": { "description_en": 2 }
-        }
+```JSON
+  "scoringProfiles": [
+    {
+      "name": "englishFirst",
+      "text": {
+        "weights": { "description": 2 }
       }
-    ]
+    }
+  ]
 ```
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
+Do žádosti o vyhledávání byste pak zahrnuli profil vyhodnocování:
+
+```http
+POST /indexes/hotels/docs/search?api-version=2020-06-30
+{
+  "search": "pets allowed",
+  "searchFields": "Tags, Description",
+  "select": "HotelName, Tags, Description",
+  "scoringProfile": "englishFirst",
+  "count": "true"
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste vývojářem rozhraní .NET, Všimněte si, že můžete nakonfigurovat jazykové analyzátory pomocí [sady Azure kognitivní hledání .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) a vlastnosti [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) .
++ [Analyzátory jazyka](index-add-language-analyzers.md)
++ [Jak funguje fulltextové vyhledávání ve službě Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Rozhraní API pro vyhledávání v dokumentech](/rest/api/searchservice/search-documents)
++ [Přehled rozšíření AI](cognitive-search-concept-intro.md)
++ [Dovednosti – přehled](cognitive-search-working-with-skillsets.md)

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 03/22/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 11d9b38d71d428a3c6c829b508318389338f5a15
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102506697"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800342"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště
 
@@ -23,7 +23,7 @@ Microsoft usiluje o to, aby byly služby Azure vždycky dostupné. Může ale do
 
 Azure Storage podporuje převzetí služeb při selhání účtu v geograficky redundantních účtech úložiště. S převzetím služeb při selhání můžete zahájit proces převzetí služeb při selhání pro váš účet úložiště, pokud primární koncový bod nebude k dispozici. Převzetí služeb při selhání aktualizuje sekundární koncový bod tak, aby se stal primárním koncovým bodem pro váš účet úložiště. Až se převzetí služeb při selhání dokončí, můžou klienti začít zapisovat do nového primárního koncového bodu.
 
-Převzetí služeb při selhání účtu je k dispozici pro účty úložiště pro obecné účely verze 1, účty úložiště pro obecné účely verze 2 a účty úložiště objektů blob v nasazeních Azure Resource Manageru. Převzetí služeb při selhání účtu je podporované pro všechny veřejné oblasti, ale v současnosti není dostupné v svrchovaných nebo národních cloudech.
+Převzetí služeb při selhání účtu je k dispozici pro účty úložiště pro obecné účely verze 1, účty úložiště pro obecné účely verze 2 a účty úložiště objektů blob v nasazeních Azure Resource Manageru. Převzetí služeb při selhání účtu je podporované pro všechny veřejné oblasti, ale v současnosti není dostupné v svrchovaných nebo národních cloudech. Pro účty úložiště s povoleným hierarchickým oborem názvů se převzetí služeb při selhání účtu nepodporuje.
 
 Tento článek popisuje koncepty a procesy spojené s převzetím služeb při selhání a popisuje, jak připravit účet úložiště k obnovení s minimálním dopadem na zákazníky. Informace o tom, jak iniciovat převzetí služeb při selhání účtu v Azure Portal nebo PowerShellu, najdete v tématu [spuštění převzetí služeb při selhání](storage-initiate-account-failover.md).
 
@@ -67,6 +67,8 @@ Microsoft také doporučuje navrhovat aplikace, aby se připravila možnost selh
 ## <a name="understand-the-account-failover-process"></a>Pochopení procesu převzetí služeb při selhání účtu
 
 Převzetí služeb při selhání účtu spravovaného zákazníkem vám umožní převzít služby při selhání celého účtu úložiště do sekundární oblasti, pokud primární z nějakého důvodu nebude k dispozici. Když vynutíte převzetí služeb při selhání sekundární oblastí, můžou klienti po dokončení převzetí služeb při selhání začít zapisovat data do sekundárního koncového bodu. Převzetí služeb při selhání obvykle trvá přibližně hodinu.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ### <a name="how-an-account-failover-works"></a>Jak funguje převzetí služeb při selhání
 

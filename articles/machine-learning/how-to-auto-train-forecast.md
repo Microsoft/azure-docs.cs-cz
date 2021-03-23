@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 66fa56b45e8d3cff7a8ace300a450b9c41df9bc0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 161d565aa1d2dd08434ebd8ea155ac5a92e09ac0
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588711"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802909"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
@@ -128,11 +128,11 @@ Automatizované strojové učení automaticky zkouší různé modely a algoritm
 >[!Tip]
 > Tradiční regresní modely jsou testovány také jako součást systému doporučení pro předpovědi experimentů. Úplný seznam modelů najdete v [tabulce podporovaných modelů](how-to-configure-auto-train.md#supported-models) . 
 
-Modely| Description | Výhody
+Modely| Popis | Výhody
 ----|----|---
 Prophet (Preview)|Prophet funguje nejlépe s časovou řadou, která má silné sezónní účinky a několik období historických dat. Pokud chcete tento model využít, nainstalujte ho místně pomocí `pip install fbprophet` . | Přesná & rychlá, robustní k vydaným hodnotám, chybějící data a výrazné změny v časové řadě.
 Auto-ARIMA (Preview)|Pokud jsou data stacionární, provede automaticky regresivní integrovaný klouzavý průměr (ARIMA). To znamená, že jeho statistické vlastnosti, jako je střední hodnota a rozptyl, jsou v celé sadě konstantní. Například při překlopení mince je pravděpodobnost, že se vám povede k získání hlav, 50%, bez ohledu na to, jestli jste překlopi dnes, zítra nebo příštího roku.| Skvělé pro univariate Series, protože minulé hodnoty se používají k předpovědi budoucích hodnot.
-ForecastTCN (Preview)| ForecastTCN je neuronové síťový model navržený tak, aby se vypořádat s nejnáročnějšími úkoly prognózování, zachytávání nelineárních místních a globálních trendů ve vašich datech a také vztahů mezi časovými řadami.|Umožňuje využití složitých trendů ve vašich datech a umožňuje se snadno škálovat na největší z datových sad.
+ForecastTCN (Preview)| ForecastTCN je neuronové síťový model navržený tak, aby se vypořádat s nejnáročnějšími úkoly předpovědi. Zachycuje nelineární místní a globální trendy vašich dat a vztahů mezi časovými řadami.|Umožňuje využití složitých trendů ve vašich datech a umožňuje se snadno škálovat na největší z datových sad.
 
 ### <a name="configuration-settings"></a>Nastavení konfigurace
 
@@ -146,11 +146,12 @@ Následující tabulka shrnuje tyto další parametry. Vzory návrhu syntaxe naj
 |`forecast_horizon`|Definuje, kolik období má být předáno předpovědi. Horizont je v jednotkách časové řady. Jednotky jsou založené na časovém intervalu vašich školicích dat, například měsíčně, týdně, kdy by měl prognóza předpovědět.|✓|
 |`enable_dnn`|[Povolte prognózování hluboké]().||
 |`time_series_id_column_names`|Názvy sloupců, které slouží k jednoznačné identifikaci časových řad v datech s více řádky se stejným časovým razítkem. Pokud nejsou definovány identifikátory časových řad, předpokládá se, že datová sada bude jedna časová řada. Další informace o jednotlivých časových řadách najdete v [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
-|`freq`| Frekvence datových řad časové řady. Tento parametr představuje období, se kterým se mají události očekávat, například denně, týdně, ročně atd. Frekvence musí být [PANDAS odsazený alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects).||
+|`freq`| Frekvence datových řad časové řady. Tento parametr představuje období, se kterým se mají události očekávat, například denně, týdně, ročně atd. Frekvence musí být [PANDAS odsazený alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects). Přečtěte si další informace o [frekvence]. (#frequency--Target-data-agregace)||
 |`target_lags`|Počet řádků pro prodlevu cílových hodnot na základě frekvence dat Prodleva je vyjádřena jako seznam nebo jedno celé číslo. Je nutné použít prodlevu v případě, že vztah mezi nezávislými proměnnými a závislou proměnnou se ve výchozím nastavení neshoduje nebo koreluje. ||
 |`feature_lags`| Funkce pro prodlevu se automaticky určí pomocí automatického ML, pokud `target_lags` jsou nastavené a `feature_lags` nastavené na `auto` . Povolení funkcí prodlevy může pomoci zlepšit přesnost. Funkce prodlevy jsou ve výchozím nastavení zakázané. ||
 |`target_rolling_window_size`|*n* historická období, která se mají použít ke generování předpokládaných hodnot, <= velikost sady školení Pokud tento parametr vynecháte, *n* je úplná velikost sady školení. Tento parametr zadejte, pokud chcete při výuce modelu vzít v úvahu jen určitou velikost historie. Přečtěte si další informace o [agregaci cílového souhrnného okna](#target-rolling-window-aggregation).||
-|`short_series_handling_config`| Umožňuje krátkou manipulaci s časovou řadou, aby nedocházelo k selhání během školení z důvodu nedostatečného množství dat. Ve výchozím nastavení je zpracování krátkých řad nastaveno na hodnotu `auto` . Přečtěte si další informace o [zpracování krátkých řad](#short-series-handling).|
+|`short_series_handling_config`| Umožňuje krátkou manipulaci s časovou řadou, aby nedocházelo k selhání během školení z důvodu nedostatečného množství dat. Ve výchozím nastavení je zpracování krátkých řad nastaveno na hodnotu `auto` . Přečtěte si další informace o [zpracování krátkých řad](#short-series-handling).||
+|`target_aggregation_function`| Funkce, která se má použít k agregaci cílového sloupce časové řady, aby odpovídala frekvenci určené prostřednictvím `freq` parametru. Aby `freq` bylo možné použít, musí být parametr nastaven `target_aggregation_function` . Výchozí hodnota `None` ; pro většinu scénářů použití `sum` je dostačující.<br> Další informace o [agregaci cílového sloupce](#frequency--target-data-aggregation). 
 
 
 Následující kód: 
@@ -258,12 +259,36 @@ Pokud pro váš experiment používáte Azure Machine Learning Studio, přečtě
 
 Další volitelné konfigurace jsou k dispozici pro úlohy předpovědi, jako je například umožnění hloubkového učení a určení cílové agregované kumulativní okna. 
 
+### <a name="frequency--target-data-aggregation"></a>Frekvence & agregace cílových dat
+
+Využijte frekvenci, `freq` parametr, aby se předešlo chybám způsobeným nedovolenými daty, což jsou data, která nenásledují jako tempoá data, jako jsou hodiny nebo denní data. 
+
+Pro velmi nepravidelná data nebo pro různé obchodní potřeby můžou uživatelé volitelně nastavit požadovanou četnost prognóz, `freq` a určit, `target_aggregation_function` aby se do cílového sloupce časové řady naplánovala agregovaná. Využijte tato dvě nastavení v objektu, která vám pomůžou `AutoMLConfig` ušetřit čas při přípravě dat. 
+
+Při `target_aggregation_function` použití parametru
+* Hodnoty cílového sloupce jsou agregovány na základě zadané operace. Obvykle `sum` je vhodný pro většinu scénářů.
+
+* Číselné prediktivní sloupce ve vašich datech jsou agregovány součtem, průměrem, minimální hodnotou a maximální hodnotou. V důsledku toho automatizované ML generuje nové sloupce s příponou s názvem agregační funkce a použije vybranou agregační operaci. 
+
+* Pro sloupce kategorií prediktivních dat se data agreguje podle režimu, nejvýraznější kategorie v okně.
+
+* Sloupce prediktivního data jsou agregovány minimální hodnotou, maximální hodnotou a režimem. 
+
+Mezi podporované agregační operace pro hodnoty cílového sloupce patří:
+
+|Funkce | description
+|---|---
+|`sum`| Součet cílových hodnot
+|`mean`| Střední hodnota nebo průměr cílových hodnot
+|`min`| Minimální hodnota cíle  
+|`max`| Maximální hodnota cíle  
+
 ### <a name="enable-deep-learning"></a>Povolit hloubkové učení
 
 > [!NOTE]
 > Podpora DNN pro prognózování v automatizovaných Machine Learning je ve **verzi Preview** a není podporovaná pro místní běhy.
 
-Můžete také využít obsáhlý Learning s hlubokými neuronové sítěmi hluboké, abyste vylepšili skóre svého modelu. Obsáhlý Learning v automatizovaném ML umožňuje prognózování dat univariate a lineární časových řad.
+Můžete také použít obsáhlý Learning s hlubokými neuronové sítěmi hluboké, abyste vylepšili skóre svého modelu. Obsáhlý Learning v automatizovaném ML umožňuje prognózování dat univariate a lineární časových řad.
 
 Modely hloubkového učení mají tři vnitřní možnosti:
 1. Můžou se učit z libovolného mapování ze vstupů na výstupy.
@@ -283,10 +308,10 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Pokud chcete povolit DNN pro experiment AutoML vytvořený v Azure Machine Learning studiu, přečtěte si téma [Nastavení typu úlohy v tématu Postup](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-Podrobný příklad kódu, který využívá hluboké, najdete v [poznámkovém bloku pro vytváření předpovědí pro produkci nápojů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) .
+Podrobný příklad kódu, který se používá jako hluboké, najdete v [poznámkovém bloku pro vytváření předpovědí produkce nápoje](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) .
 
 ### <a name="target-rolling-window-aggregation"></a>Cílová agregace návratového okna
-Nejlepší informace, které může vytvořit předpověď, jsou často poslední hodnotou cíle.  Cílová agregace kumulovaných oken vám umožní přidat do funkcí hromadnou agregaci hodnot dat. Vytváření a používání těchto dalších funkcí jako dodatečných kontextových dat pomáhá s přesností modelu vlaku.
+Nejlepší informace, které může vytvořit předpověď, jsou často poslední hodnotou cíle.  Cílová agregace kumulovaných oken vám umožní přidat do funkcí hromadnou agregaci hodnot dat. Vytváření a používání těchto funkcí jako dodatečných kontextových dat pomáhá s přesností modelu vlaku.
 
 Řekněme například, že chcete předpovědět spotřebu energie. Pro tepelné změny v zahřívanách prostorech můžete chtít přidat funkci postupného okna na tři dny. V tomto příkladu vytvořte toto okno nastavením `target_rolling_window_size= 3` v `AutoMLConfig` konstruktoru. 
 
@@ -294,11 +319,11 @@ V tabulce je zobrazen výsledný inženýr funkcí, který nastane při použit�
 
 ![cílové posuvné okno](./media/how-to-auto-train-forecast/target-roll.svg)
 
-Podívejte se na příklad kódu Pythonu s využitím [agregované agregační funkce](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)pro souhrnné okno.
+Podívejte se na příklad kódu Pythonu, který používá [agregovanou agregační funkci pro souhrnné okno](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb).
 
 ### <a name="short-series-handling"></a>Zpracování krátkých řad
 
-Automatizované ML považuje časovou řadu za **krátkou řadu** , pokud není k dispozici dostatek datových bodů, aby bylo možné provádět fáze vlaků a ověření modelu vývoje. Počet datových bodů se u každého experimentu liší a závisí na max_horizon, počtu rozdělení křížového ověření a délce lookbackí modelu, což je maximální historie, která je potřeba k vytvoření funkcí časové řady. Přesný výpočet najdete v [dokumentaci short_series_handling_configuration reference](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters#short-series-handling-configuration).
+Automatizované ML považuje časovou řadu za **krátkou řadu** , pokud není k dispozici dostatek datových bodů, aby bylo možné provádět fáze vlaků a ověření modelu vývoje. Počet datových bodů se u každého experimentu liší a závisí na max_horizon, počtu rozdělení křížového ověření a délce lookbackí modelu, což je maximální historie, která je potřeba k vytvoření funkcí časové řady. Přesný výpočet naleznete v [dokumentaci short_series_handling_configuration reference](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters#short-series-handling-configuration).
 
 Automatizované ML nabízí ve výchozím nastavení krátké zpracování řady s `short_series_handling_configuration` parametrem v `ForecastingParameters` objektu. 
 

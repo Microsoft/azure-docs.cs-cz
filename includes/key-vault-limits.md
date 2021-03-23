@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
-ms.openlocfilehash: d934d40cad5f4eec929cfd273b6e30ea291e48d5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010948"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104803428"
 ---
 Služba Azure Key Vault podporuje dva typy prostředků: trezory a spravované HSM. Následující dvě části popisují omezení služby pro každé z nich.
 
@@ -50,6 +50,17 @@ Tato část popisuje omezení služby pro typ prostředku `vaults` .
 Informace o tom, jak zpracovávat omezení v případě překročení těchto limitů, najdete v tématu [Azure Key Vault pokyny k omezování](../articles/key-vault/general/overview-throttling.md).
 
 <sup>1</sup> limit pro všechny typy transakcí v rámci celého předplatného je pětkrát na limit trezoru klíčů. Například modul HSM – ostatní transakce v rámci předplatného jsou omezeny na 5 000 transakcí za 10 sekund na jedno předplatné.
+
+#### <a name="backup-keys-secrets-certificates"></a>Klíče pro zálohování, tajné klíče a certifikáty
+
+Při zálohování objektu trezoru klíčů, jako je tajný klíč, klíč nebo certifikát, bude operace zálohování stahovat objekt jako zašifrovaný objekt BLOB. Tento objekt BLOB není možné dešifrovat mimo Azure. Pokud chcete získat použitelná data z tohoto objektu blob, musíte obnovit objekt blob do trezoru klíčů v rámci stejného předplatného Azure a geografické oblasti Azure.
+
+| Typ transakcí | Maximální povolená verze objektů trezoru klíčů |
+| --- | --- |
+| Zálohovat jednotlivý klíč, tajný kód, certfiicate |500 |
+
+> [!NOTE]
+> Při pokusu o zálohování objektu klíče, tajného kódu nebo certifikátu s více verzemi, než je překročen limit, dojde k chybě. Není možné odstranit předchozí verze klíče, tajného kódu ani certifikátu. 
 
 #### <a name="azure-private-link-integration"></a>Integrace s privátními propojeními Azure
 

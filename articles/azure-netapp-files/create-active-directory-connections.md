@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ccc88cabfa81e2d911546fae776f581885ed8fa6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183875"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801246"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Vytváření a Správa připojení ke službě Active Directory pro Azure NetApp Files
 
@@ -206,6 +206,18 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
         ```
         
         Můžete také použít [příkazy rozhraní příkazového řádku Azure](/cli/azure/feature) `az feature register` a `az feature show` zaregistrovat funkci a zobrazit stav registrace. 
+
+     * **Uživatelé oprávnění zabezpečení**   <!-- SMB CA share feature -->   
+        `SeSecurityPrivilege`Pro uživatele, kteří vyžadují zvýšené oprávnění pro přístup k Azure NetApp Files svazků, můžete udělit oprávnění zabezpečení (). Zadané uživatelské účty budou moci provádět určité akce s Azure NetApp Files sdílené složky SMB, které pro uživatele domény vyžadují oprávnění zabezpečení, které se ve výchozím nastavení nepřiřazuje.   
+
+        Například uživatelské účty používané pro instalaci SQL Server v některých scénářích musí být udělena zvýšená oprávnění zabezpečení. Pokud k instalaci SQL Server používáte účet bez oprávnění správce (doména) a účet nemá přiřazená oprávnění zabezpečení, měli byste k účtu přidat oprávnění zabezpečení.  
+
+        > [!IMPORTANT]
+        > Účet domény, který se používá pro instalaci SQL Server, už musí existovat, než ho přidáte do pole **uživatelé oprávnění zabezpečení** . Když přidáte účet instalátoru SQL Server pro uživatele s **oprávněním zabezpečení**, služba Azure NetApp Files může účet ověřit tím, že se obrátí na řadič domény. Příkaz se nemusí zdařit, pokud se nemůže připojit k řadiči domény.  
+
+        Další informace o `SeSecurityPrivilege` a SQL Server najdete v tématu [instalace SQL Server se nezdařila, pokud účet nastavení nemá určitá uživatelská práva](/troubleshoot/sql/install/installation-fails-if-remove-user-right).
+
+        ![Snímek obrazovky s polem oprávnění zabezpečení pro uživatele v okně připojení služby Active Directory.](../media/azure-netapp-files/security-privilege-users.png) 
 
      * **Uživatelé zásad zálohování**  
         Můžete zahrnout další účty, které vyžadují zvýšená oprávnění k účtu počítače vytvořenému pro použití s Azure NetApp Files. U zadaných účtů bude povoleno změnit oprávnění systému souborů NTFS na úrovni souboru nebo složky. Můžete například zadat účet neprivilegované služby, který se používá k migraci dat do sdílené složky SMB v Azure NetApp Files.  

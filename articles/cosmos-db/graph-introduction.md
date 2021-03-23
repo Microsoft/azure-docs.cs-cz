@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 03/22/2021
 ms.author: chrande
-ms.openlocfilehash: 806904943f4e4a20734d595f835dc9450afdded5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffe11fafa6ba217572f9d12d40324a5201b62630
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100547271"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801685"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Úvod do rozhraní Gremlin API v Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -26,11 +26,14 @@ Tento článek obsahuje přehled rozhraní Azure Cosmos DB API Gremlin a vysvět
 Rozhraní Gremlin API Azure Cosmos DB kombinuje sílu algoritmů databázové databáze s vysoce škálovatelnou a spravovanou infrastrukturou, aby poskytovala jedinečné a flexibilní řešení nejběžnějších problémů s daty, která souvisí s nedostatečnou flexibilitou a relačními přístupy.
 
 > [!NOTE]
-> [Režim kapacity bez serveru](serverless.md) je teď k dispozici v Azure Cosmos DB rozhraní API pro Gremlin.
+> Azure Cosmos DB Graph Engine úzce sleduje specifikace Apache TinkerPop. Existují však určité rozdíly v podrobnostech implementace, které jsou specifické pro Azure Cosmos DB. Některé funkce podporované Apache TinkerPop nejsou k dispozici v Azure Cosmos DB. Další informace o nepodporovaných funkcích najdete v článku [Kompatibilita s Apache TinkerPop](gremlin-support.md) .
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Funkce rozhraní Gremlin API pro Azure Cosmos DB
- 
+
 Azure Cosmos DB je plně spravovaná databáze grafu, která nabízí globální distribuci, elastické škálování úložiště a propustnosti, automatické indexování a dotazování, nastavitelné úrovně konzistence a podporu standardu TinkerPop.
+
+> [!NOTE]
+> [Režim kapacity bez serveru](serverless.md) je teď k dispozici v Azure Cosmos DB rozhraní API pro Gremlin.
 
 Níže jsou uvedené odlišné funkce Azure Cosmos DB Gremlin API nabízí:
 

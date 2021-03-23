@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 954f4edcd10d701d00d9cd23280aaac7c287992d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1be74ceeb1f4808a8df8f56b71b66aa870cdd91d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91997465"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800869"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí konfigurace aplikace Azure
 
@@ -22,7 +22,7 @@ V tomto rychlém startu použijete Azure App Configuration k centralizaci úlož
 ## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-- Python 2,7 nebo 3,5 nebo novější – informace o nastavení Pythonu ve Windows najdete v [dokumentaci k Pythonu v systému Windows]( https://docs.microsoft.com/windows/python/) .
+- Python 2,7 nebo 3,6 nebo novější – informace o nastavení Pythonu ve Windows najdete v [dokumentaci k Pythonu v systému Windows]( https://docs.microsoft.com/windows/python/) .
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 

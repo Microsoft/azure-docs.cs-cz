@@ -63,6 +63,8 @@
       href: how-to-compression.md
     - name: Povolit privátní propojení
       items:
+        - name: Připojení k internímu nástroji pro vyrovnávání zatížení
+          href: how-to-enable-private-link-internal-load-balancer.md
         - name: Připojení k účtu úložiště
           href: how-to-enable-private-link-storage-account.md
         - name: Připojení k webové aplikaci

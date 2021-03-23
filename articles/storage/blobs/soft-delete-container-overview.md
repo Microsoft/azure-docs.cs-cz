@@ -10,16 +10,16 @@ ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: f157b44e92289d0e9c5b88108550c144344c5206
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 54e703b096ea4e3572a6fc00aa6b7b2b99c4bcad
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211137"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800740"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Obnovitelné odstranění pro kontejnery (Preview)
 
-Obnovitelné odstranění pro kontejnery (Preview) chrání vaše data proti náhodnému nebo škodlivému odstranění. Pokud je pro účet úložiště povolené obnovitelné odstranění kontejneru, všechny odstraněné kontejnery a jejich obsah se uchovávají v Azure Storage po dobu, kterou určíte. Během doby uchování můžete obnovit dříve odstraněné kontejnery. Obnovení kontejneru obnoví všechny objekty BLOB v tomto kontejneru při jeho odstranění.
+Obnovitelné odstranění pro kontejnery (Preview) chrání vaše data proti náhodnému nebo škodlivému odstranění. Pokud pro účet úložiště povolíte obnovitelné odstranění kontejnerů, všechny odstraněné kontejnery i jejich obsah se budou po vámi zadanou dobu uchovávat ve službě Azure Storage. Během doby uchovávání můžete dříve odstraněné kontejnery obnovit. Obnovením kontejneru se obnoví všechny objekty blob, které kontejner obsahoval v době odstranění.
 
 V rámci koncové ochrany dat objektů BLOB doporučuje společnost Microsoft povolit následující funkce ochrany dat:
 
@@ -35,6 +35,9 @@ V rámci koncové ochrany dat objektů BLOB doporučuje společnost Microsoft po
 Pokud povolíte obnovitelné odstranění kontejneru, můžete zadat dobu uchování pro odstraněné kontejnery, které jsou v rozmezí od 1 do 365 dnů. Výchozí doba uchování je 7 dní. Během doby uchování můžete odstraněné kontejnery obnovit voláním operace **obnovení kontejneru** .
 
 Při obnovení kontejneru se obnoví také objekty blob kontejneru a všechny verze objektů BLOB. Pomocí podmíněného odstranění kontejneru ale můžete obnovit objekty blob jenom v případě, že jste kontejner sám odstranili. K obnovení odstraněného objektu BLOB v případě, že se jeho nadřazený kontejner neodstranil, je nutné použít měkké odstranění nebo správu verzí objektů BLOB.
+
+> [!WARNING]
+> Obnovitelné odstranění kontejneru může obnovit pouze celé kontejnery a objekty blob, které byly obsaženy v době odstranění. Odstraněné objekty blob nelze obnovit v rámci kontejneru pomocí obnovitelného odstranění kontejneru.
 
 Následující diagram znázorňuje, jak se odstraněný kontejner dá obnovit, když je povolené podmíněné odstranění kontejneru:
 

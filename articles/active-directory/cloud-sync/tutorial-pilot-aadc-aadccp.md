@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3395afbe95b2a7f35893a0ce7f60c3871597acd0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98614549"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798710"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>Pilotní cloudová synchronizace pro existující synchronizovanou doménovou strukturu AD 
 
@@ -208,20 +208,7 @@ V případě, že pilotní projekt nefunguje podle očekávání, můžete se vr
 1.  Zakažte konfiguraci zřizování v Azure Portal. 
 2.  Pomocí nástroje Editor pravidel synchronizace zakažte všechna vlastní pravidla synchronizace vytvořená pro zřizování cloudu. Při vypnutí by se měla u všech konektorů způsobit Úplná synchronizace.
 
-## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Konfigurace Azure AD Connect synchronizace pro vyloučení pilotní organizační jednotky
-Jakmile ověříte, že uživatelé z pilotní organizační jednotky budou úspěšně spravováni cloudovou synchronizací, můžete znovu nakonfigurovat Azure AD Connect pro vyloučení pilotní organizační jednotky, která byla vytvořena výše.  Agent zřizování cloudu zpracuje synchronizaci pro tyto uživatele po přeposílání.  K určení oboru Azure AD Connect použijte následující postup.
 
- 1. Na serveru se systémem Azure AD Connect dvakrát klikněte na ikonu Azure AD Connect.
- 2. Klikněte na **Konfigurovat** .
- 3. Vyberte možnost **přizpůsobit možnosti synchronizace** a klikněte na tlačítko Další.
- 4. Přihlaste se ke službě Azure AD a klikněte na **Další**.
- 5. Na obrazovce **připojit adresáře** klikněte na **Další**.
- 6. Na obrazovce **filtrování domén a organizačních jednotek** vyberte možnost **synchronizovat vybrané domény a organizační jednotky**.
- 7. Rozbalte doménu a zrušte **Výběr** organizační jednotky **procesorů** .  Klikněte na **Next** (Další).
-![oboru](media/tutorial-existing-forest/scope-1.png)</br>
- 9. Na obrazovce **volitelné funkce** klikněte na **Další**.
- 10. Na obrazovce **připraveno ke konfiguraci** klikněte na **Konfigurovat**.
- 11. Po dokončení klikněte na tlačítko **konec**. 
 
 ## <a name="next-steps"></a>Další kroky 
 

@@ -1,14 +1,14 @@
 ---
 title: Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
 description: Servery s podporou ARC Azure můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687902"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799577"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou Azure Arc
 
@@ -42,6 +42,9 @@ Funkce rozšíření virtuálních počítačů jsou k dispozici pouze v seznamu
 V této verzi podporujeme následující rozšíření virtuálních počítačů na počítačích s Windows a Linux.
 
 Další informace o balíčku agenta připojeného počítače Azure a podrobnostech o komponentě agenta rozšíření najdete v tématu [Přehled agenta](agent-overview.md#agent-component-details).
+
+> [!NOTE]
+> Poslední podpora rozšíření virtuálního počítače DSC byla pro servery s podporou ARC odebrána. Případně doporučujeme použít rozšíření vlastních skriptů ke správě konfigurace po nasazení vašeho serveru nebo počítače.
 
 ### <a name="windows-extensions"></a>Rozšíření Windows
 

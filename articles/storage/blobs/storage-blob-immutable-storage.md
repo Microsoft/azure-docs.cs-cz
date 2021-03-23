@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 8d04d1bd758480ec33a7480e4045d28ed750f22e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d1d77e508e627520878dcc27b5a643473d11dd1d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430934"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800716"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů blob s využitím neměnného úložiště
 
@@ -63,13 +63,15 @@ Další informace o tom, jak nastavit a uzamknout zásady uchovávání informac
 ## <a name="time-based-retention-policies"></a>Zásady uchovávání informací podle času
 
 > [!IMPORTANT]
-> Zásady uchovávání informací založené na čase musí být *uzamčené* , aby objekt BLOB byl ve stavu kompatibilním s neproměnlivým stavem (Write and Delete Protected) pro SEK-4 (f) a další zákonné dodržování předpisů. Doporučujeme zásady uzamknout v rozumné době, většinou méně než 24 hodin. Počáteční stav použitých zásad uchovávání dat je *odemčený*, což vám umožní otestovat funkci a provést změny zásad před jejich uzamknutím. I když *odemčený* stav poskytuje ochranu neměnnosti, nedoporučujeme používat *odemčený* stav pro jiné účely, než krátkodobé testy funkcí. 
+> Zásady uchovávání informací založené na čase musí být *uzamčené* , aby objekt BLOB byl ve stavu kompatibilním s neproměnlivým stavem (Write and Delete Protected) pro SEK-4 (f) a další zákonné dodržování předpisů. Společnost Microsoft doporučuje, abyste tyto zásady v rozumné době v dostatečném čase nezamkli, obvykle méně než 24 hodin. Počáteční stav použitých zásad uchovávání dat je *odemčený*, což vám umožní otestovat funkci a provést změny zásad před jejich uzamknutím. I když *odemčený* stav poskytuje ochranu neměnnosti, nedoporučuje se používat *odemčený* stav pro jiné účely než krátkodobé testy funkcí.
+>
+> Jakmile jsou zásady uchovávání informací založené na čase uzamčené, zásada se nedá odebrat a maximálně pět zvýšení k efektivnímu období uchování je povolené. Dobu uchování nelze snížit.
 
 Pokud jsou na kontejneru aplikovány zásady uchovávání informací založené na čase, všechny objekty BLOB v kontejneru zůstanou v neměnném stavu po dobu trvání *efektivní* doby uchování. Efektivní doba uchovávání objektů BLOB se rovná rozdílu mezi **časem vytvoření** objektu BLOB a intervalem uchování zadaným uživatelem. Vzhledem k tomu, že uživatelé mohou interval uchovávání informací prodloužit, používá funkce Immutable Storage při výpočtu účinné doby uchovávání informací poslední hodnotu uživatelem zadaného intervalu.
 
 Předpokládejme například, že uživatel vytvoří zásady uchovávání dat s intervalem uchování na pět let. Stávající objekt BLOB v tomto kontejneru, _testblob1_, byl vytvořen před rokem; Efektivní doba uchování pro _testblob1_ je tedy čtyři roky. Když se do kontejneru nahraje nový objekt blob, _testblob2_, efektivní doba uchování pro _testblob2_ je pět let od doby jeho vytvoření.
 
-Odemčené zásady uchovávání informací založené na čase se doporučují jenom pro testování funkcí a zásady musí být uzamčené, aby byly kompatibilní s SEK-4 (f) a dalšími předpisy pro dodržování předpisů. Jakmile jsou zásady uchovávání informací založené na čase uzamčené, zásada se nedá odebrat a maximálně pět zvýšení k efektivnímu období uchování je povolené.
+Odemčené zásady uchovávání informací založené na čase se doporučují jenom pro testování funkcí a zásady musí být uzamčené, aby byly kompatibilní s SEK-4 (f) a dalšími předpisy pro dodržování předpisů.
 
 Následující omezení platí pro zásady uchovávání informací:
 

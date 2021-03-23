@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s CI-CD, Azure DevOps a GitHubem v ADF
+title: Řešení potíží s CI-CD, DevOps Azure a GitHubem v ADF
 description: K odstraňování potíží s CI-CD v ADF použijte různé metody.
 author: ssabat
 ms.author: susabat
@@ -7,14 +7,14 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/12/2021
-ms.openlocfilehash: 4be015b1a8ba4b6fc6ea3acc74318f9a8b298e8e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2b6f97f0966cb2c92dbd88c4a70188282ed3ed27
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418092"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802029"
 ---
-# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Řešení potíží s CI-CD, Azure DevOps a GitHubem v ADF 
+# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>Řešení potíží s CI-CD, DevOps Azure a GitHubem v ADF 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -101,8 +101,7 @@ Při pokusu o publikování změn Data Factory se zobrazí následující chybov
         "details": null
     }
 `
-
-#### <a name="symptom"></a>Příznak
+### <a name="cause"></a>Příčina
 
 Ododpojili jste konfiguraci Gitu a znovu ji nastavili s vybraným příznakem importovat prostředky, který nastaví Data Factory jako "synchronizované". To znamená, že se nemění žádné změny k publikování.
 
@@ -150,11 +149,7 @@ Vytvořili jste roli zákazníka jako uživatel a neměli jste potřebná opráv
 
 Aby bylo možné tento problém vyřešit, musíte do své role přidat následující oprávnění: *Microsoft. DataFactory/Factory/queryFeaturesValue/Action*. Toto oprávnění by mělo být ve výchozím nastavení zahrnuto v roli "Data Factory Přispěvatel".
 
-###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Automatické publikování pro CI/CD bez kliknutí na tlačítko publikovat  
-
-#### <a name="issue"></a>Problém
-
-Ruční publikování pomocí kliknutí na tlačítko na portálu ADF nepovoluje automatickou operaci CI/CD.
+###  <a name="cannot-automate-publishing-for-cicd"></a>Nejde automatizovat publikování pro CI/CD. 
 
 #### <a name="cause"></a>Příčina
 
@@ -178,15 +173,14 @@ Azure Resource Manager omezuje velikost šablony na 4 MB. Omezte velikost šablo
 
 U malých až středních řešení je jednodušší pochopit a spravovat jedinou šablonu. Všechny prostředky a hodnoty vidíte v jednom souboru. Ve složitějších scénářích umožňují propojené šablony rozdělit řešení do specializovaných komponent. Dodržujte prosím osvědčené postupy na [používání propojených a vnořených šablon](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell).
 
-### <a name="cannot-connect-to-git-enterprise-cloud"></a>Nejde se připojit k GIT Enterprise Cloud 
+### <a name="cannot-connect-to-git-enterprise"></a>Nejde se připojit k GIT Enterprise  
 
 ##### <a name="issue"></a>Problém
 
-Nemůžete se připojit k systému GIT Enterprise Cloud z důvodu problémů s oprávněními. Zobrazí se chyba, jako je například **422 – nedokončená entita.**
+Nemůžete se připojit k GIT Enterprise kvůli problémům s oprávněními. Zobrazí se chyba, jako je například **422 – nedokončená entita.**
 
 #### <a name="cause"></a>Příčina
 
-* Používáte Git Enterprise na serveru Prem. 
 * Nenakonfigurovali jste OAuth pro ADF. 
 * Vaše adresa URL je chybně nakonfigurovaná.
 
@@ -194,7 +188,7 @@ Nemůžete se připojit k systému GIT Enterprise Cloud z důvodu problémů s o
 
 Nejprve udělíte přístup OAuth k ADF. Pak je nutné použít správnou adresu URL pro připojení k GITU Enterprise. Konfigurace musí být nastavená na organizace zákazníků. Například ADF se pokusí *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ....* při prvním selhání a selhání. Pak se to pokusí *https://hostname/api/v3/orgs/ <org> / <repo> ...* a úspěch. 
  
-### <a name="recover-from-a-deleted-data-factory"></a>Obnovení z odstraněné datové továrny
+### <a name="cannot-recover-from-a-deleted-data-factory"></a>Nejde provést obnovení z odstraněné datové továrny.
 
 #### <a name="issue"></a>Problém
 Zákazník odstranil datovou továrnu nebo skupinu prostředků obsahující Data Factory. Chtěli bychom se seznámit s tím, jak obnovit odstraněnou datovou továrnu.
@@ -211,7 +205,7 @@ Postup obnovení odstraněných Data Factory se správou zdrojových kódů najd
 
  * Vytvoří nový Azure Data Factory.
 
- * Překonfigurujte Git se stejnými nastaveními, ale ujistěte se, že jste importovali existující Data Factory prostředky do vybraného úložiště a zvolíte možnost Nová větev.
+ * Překonfigurujte Git se stejnými nastaveními, ale nezapomeňte importovat stávající prostředky Data Factory do vybraného úložiště a pak vyberte Nová větev.
 
  * Vytvořte žádost o přijetí změn, která sloučí změny do větve pro spolupráci a publikuje ji.
 

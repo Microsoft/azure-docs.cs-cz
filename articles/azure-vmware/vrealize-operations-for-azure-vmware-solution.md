@@ -3,12 +3,12 @@ title: Nastavení operací vRealize pro řešení Azure VMware
 description: Naučte se, jak nastavit operace vRealize pro privátní cloud řešení Azure VMware.
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8015bb61a7401b4c97807e0256e06d4967c39026
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738425"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802484"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Nastavení operací vRealize pro řešení Azure VMware
 
@@ -61,7 +61,7 @@ Po nasazení instance můžete nakonfigurovat operace vRealize pro shromažďov�
 
 ## <a name="known-limitations"></a>Známá omezení
 
-- **Cloudadmin \@ vSphere. místní** uživatel v řešení Azure VMware má [omezená oprávnění](concepts-role-based-access-control.md).  Virtuální počítače v řešení Azure VMware nepodporují shromažďování paměti hosta pomocí nástrojů VMware.  Využití aktivní a spotřebované paměti bude v tomto případě nadále fungovat.
+- **Cloudadmin \@ vSphere. místní** uživatel v řešení Azure VMware má [omezená oprávnění](concepts-identity.md).  Virtuální počítače v řešení Azure VMware nepodporují shromažďování paměti hosta pomocí nástrojů VMware.  Využití aktivní a spotřebované paměti bude v tomto případě nadále fungovat.
 - Optimalizace úloh pro obchodní záměr založený na hostiteli nefunguje, protože řešení Azure VMware spravují konfigurace clusteru, včetně nastavení DRS.
 - Optimalizace zatížení pro umístění mezi clustery v rámci SDDC pomocí podnikového záměru založeného na clusteru je plně podporovaná s vRealize Operations Manager 8,0 a vyššími. Optimalizace úloh ale neví o fondech zdrojů a umístí virtuální počítače na úrovni clusteru. Uživatel ji může ručně opravit v rozhraní řešení Azure VMware vCenter Server.
 - K vRealize Operations Manager se nemůžete přihlásit pomocí vCenter Server přihlašovacích údajů Azure VMware. 

@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 1f9169d4f3f6361e557c41a4d612cf6c439257fb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 23c5d138463a52f4ff4c52b4a919b71a87b7fd6d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722510"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802875"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurace připojení ze služby Azure Kognitivní hledání indexer pro SQL Server na virtuálním počítači Azure
 
@@ -87,9 +87,12 @@ Rozsah IP adres `AzureCognitiveSearch` [značky služby](../virtual-network/serv
 
 ### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Zahrnutí IP adres portálu Azure Kognitivní hledání
 
-Pokud k vytvoření indexeru použijete Azure Portal, logika portálu Azure Kognitivní hledání také potřebuje přístup k vašemu VIRTUÁLNÍmu počítači s SQL Azure během vytváření. IP adresy portálu Azure Kognitivní hledání můžete najít pomocí příkazového testu `stamp2.search.ext.azure.com` , který je doménou Traffic Manageru.
+Pokud k vytvoření indexeru používáte Azure Portal, musíte portálu udělit příchozí přístup k vašemu virtuálnímu počítači s SQL Azure. Příchozí pravidlo v bráně firewall vyžaduje, abyste zadali IP adresu portálu.
 
-Clustery v různých oblastech se připojují k tomuto Traffic Manageru. Může se stát, že příkaz k odeslání bude mít IP adresu a doménu z `stamp2.search.ext.azure.com` , ale pokud se vaše služba nachází v jiné oblasti, IP adresa a název domény se budou lišit. Pro Azure Portal ve vaší oblasti je správná IP adresa vrácená pomocí nástroje test.
+Pro získání IP adresy portálu, `stamp2.ext.search.windows.net` která je doménou Traffic Manageru. Vyprší časový limit žádosti, ale IP adresa se zobrazí ve zprávě o stavu. Příklad: ve zprávě "příkazu" příkazového testu "azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48]" je IP adresa "52.252.175.48".
+
+> [!NOTE]
+> Clustery v různých oblastech se připojují k různým správcům provozu. Bez ohledu na název domény je k dispozici správná IP adresa z příkazového testu pro použití při definování pravidla příchozího připojení brány firewall pro Azure Portal ve vaší oblasti.
 
 ## <a name="next-steps"></a>Další kroky
 

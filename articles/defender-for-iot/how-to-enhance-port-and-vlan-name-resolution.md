@@ -1,20 +1,16 @@
 ---
 title: Vylepšení rozlišování názvů sítě VLAN a portů
 description: Přizpůsobte názvy portů a sítí VLAN na senzorech k rozšíření rozlišení zařízení.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de6fbe70d5a5359ad4e4c276642b9b9ed0cef00f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98803581"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784165"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>Vylepšení rozlišování názvů sítě VLAN a portů
+# <a name="enhance-port-vlan-and-os-resolution"></a>Vylepšení portu, sítě VLAN a rozlišení operačního systému
 
 Můžete přizpůsobit porty a názvy sítí VLAN na senzorech a rozšířit tak rozlišení zařízení.
 
@@ -72,7 +68,7 @@ Názvy sítí VLAN můžou obsahovat až 50 znaků ASCII.
 > Názvy sítí VLAN nejsou synchronizovány mezi senzorem a konzolou pro správu. Název je nutné definovat také v konzole pro správu.  
 U přepínačů Cisco přidejte následující řádek do konfigurace rozsahu: `monitor session 1 destination interface XX/XX encapsulation dot1q` . V tomto příkazu je *xx/xx* název a číslo portu.
 
-Konfigurace sítí VLAN:
+Konfigurace názvů sítí VLAN:
 
 1. V postranní nabídce vyberte **nastavení systému**.
 
@@ -81,6 +77,21 @@ Konfigurace sítí VLAN:
     :::image type="content" source="media/how-to-enrich-asset-information/edit-vlan.png" alt-text="Pomocí nastavení systému upravte své sítě VLAN.":::
 
 3. Vedle každého ID sítě VLAN přidejte jedinečný název.
+
+## <a name="improve-device-operating-system-classification-data-enhancement"></a>Vylepšení klasifikace operačního systému zařízení: vylepšení dat
+
+Senzory průběžně automaticky objevují nová zařízení a také změny dříve zjištěných zařízení, včetně typů operačních systémů.
+
+Za určitých okolností se konflikty můžou zjistit ve zjištěných operačních systémech. K tomu může dojít například v případě, že máte verzi operačního systému, která odkazuje buď na stolní nebo serverové systémy. Pokud k tomu dojde, obdržíte oznámení s nepovinnými klasifikacemi operačních systémů.
+
+:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="Vylepšete data.":::
+
+Prozkoumejte doporučení, aby bylo možné rozšířit klasifikaci operačního systému. Tato klasifikace se zobrazí v inventáři zařízení, sestavách dolování dat a dalších zobrazeních. Zajištění aktuálnosti těchto informací může zlepšit přesnost výstrah, hrozeb a sestav analýzy rizik.
+
+Přístup k doporučením operačního systému:
+
+1. Vyberte **nastavení systému**.
+1. Vyberte **vylepšení dat**.
 
 ## <a name="next-steps"></a>Další kroky
 

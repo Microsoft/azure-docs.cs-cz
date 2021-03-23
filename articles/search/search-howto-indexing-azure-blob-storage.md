@@ -7,18 +7,20 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/22/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 74813fabec4d5fe43cd158bb4aa359c2a3b0188a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f70ae726cf41395e46760dc5cf7da5b4d61478a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988723"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802892"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Jak nakonfigurovat indexování objektů BLOB v Kognitivní hledání
 
-V tomto článku se dozvíte, jak nakonfigurovat indexer objektů BLOB pro indexování textových dokumentů (jako jsou soubory PDF, systém Microsoft Office dokumenty a další) v Azure Kognitivní hledání. Pokud neznáte koncepty indexeru, začněte s [indexery ve službě Azure kognitivní hledání](search-indexer-overview.md) a [vytvořte indexer vyhledávání](search-howto-create-indexers.md) před začnete do indexování objektů BLOB.
+Indexer objektů BLOB se používá k ingestování obsahu z úložiště objektů BLOB v Azure do indexu Kognitivní hledání. Indexery objektů BLOB se často používají při [obohacení AI](cognitive-search-concept-intro.md), kde připojené [dovednosti](cognitive-search-working-with-skillsets.md) přidávají image a zpracování přirozeného jazyka pro vytváření prohledávatelných obsahu. Můžete ale také použít indexery objektů BLOB bez rozšíření AI a ingestovat obsah z textových dokumentů, jako jsou soubory PDF, systém Microsoft Office dokumenty a formáty souborů.
+
+V tomto článku se dozvíte, jak nakonfigurovat indexer objektů BLOB pro kterýkoli scénář. Pokud neznáte koncepty indexeru, začněte s [indexery ve službě Azure kognitivní hledání](search-indexer-overview.md) a [vytvořte indexer vyhledávání](search-howto-create-indexers.md) před začnete do indexování objektů BLOB.
 
 <a name="SupportedFormats"></a>
 
@@ -30,7 +32,7 @@ Indexer objektů BLOB v Azure Kognitivní hledání může extrahovat text z ná
 
 ## <a name="data-source-definitions"></a>Definice zdrojů dat
 
-Rozdíl mezi indexerem objektů BLOB a jakýmkoli jiným indexerem je definice zdroje dat, která je přiřazena indexeru. Zdroj dat zapouzdřuje všechny vlastnosti, které určují typ, připojení a umístění obsahu, který se má indexovat.
+Hlavním rozdílem mezi indexerem objektů BLOB a jakýmkoli jiným indexerem je definice zdroje dat, která je přiřazená indexeru. Definice zdroje dat určuje typ zdroje dat ("Type": "azureblobu") a další vlastnosti pro ověřování a připojení k obsahu, který se má indexovat.
 
 Definice zdroje dat objektu BLOB vypadá podobně jako v následujícím příkladu:
 
@@ -72,7 +74,7 @@ SAS by měl mít v kontejneru oprávnění list a Read. Další informace o sdí
 
 ## <a name="index-definitions"></a>Definice indexu
 
-Index určuje pole v dokumentu, atributech a dalších konstrukcích, které prohledají možnosti vyhledávání. Následující příklad vytvoří jednoduchý index pomocí [indexu Create (REST API)](/rest/api/searchservice/create-index). 
+Index určuje pole v dokumentu, atributech a dalších konstrukcích, které prohledají možnosti vyhledávání. Všechny indexery vyžadují, abyste zadali definici indexu hledání jako cíl. Následující příklad vytvoří jednoduchý index pomocí [indexu Create (REST API)](/rest/api/searchservice/create-index). 
 
 ```http
 POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -90,7 +92,7 @@ api-key: [admin key]
 
 Definice indexu vyžadují, aby jedno pole v `"fields"` kolekci fungovalo jako klíč dokumentu. Definice indexu by měly také zahrnovat pole pro obsah a metadata.
 
-**`content`** Pole se používá k uložení textu extrahovaného z objektů BLOB. Vaše definice tohoto pole může vypadat podobně jako v předchozím příkladu. Tento název nemusíte používat, ale umožňuje využít výhod mapování implicitních polí. Indexer objektů BLOB může odeslat obsah objektu blob do pole Content EDM. String v indexu, ale nevyžadují se žádné mapování polí.
+**`content`** Pole je běžné pro obsah objektu BLOB. Obsahuje text extrahovaný z objektů BLOB. Vaše definice tohoto pole může vypadat podobně jako v předchozím příkladu. Tento název nemusíte používat, ale umožňuje využít výhod mapování implicitních polí. Indexer objektů BLOB může odeslat obsah objektu blob do pole Content EDM. String v indexu, aniž by se vyžadovalo mapování polí.
 
 Můžete také přidat pole pro všechna metadata objektů blob, která chcete v indexu. Indexer může číst vlastnosti vlastních metadat, standardní vlastnosti [metadat](#indexing-blob-metadata) a vlastnosti [metadat specifické pro obsah](search-blob-metadata-properties.md) . Další informace o indexech najdete v tématu [vytvoření indexu](search-what-is-an-index.md).
 
