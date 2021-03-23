@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 458f4d3f29cb08a94095167ed45133f5cd70f5f4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737163"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869187"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Nainstalovat nástroj pro vytváření snímků konzistentního vzhledem k aplikacím Azure (Preview)
 
@@ -239,71 +239,6 @@ databázi, podle potřeby změňte IP adresu, uživatelská jména a hesla:
     ENV : <IP_address_of_host>:
     USER: AZACSNAP
     ```
-
-### <a name="additional-instructions-for-using-the-log-trimmer-sap-hana-20-and-later"></a>Další pokyny pro použití operace oříznutí protokolu (SAP HANA 2,0 a novější)
-
-Pokud používáte protokol oříznutí, pak následující příklady příkazů nastaví uživatele (AZACSNAP) v databázích TENANTA v databázovém systému SAP HANA 2,0. Nezapomeňte podle potřeby změnit IP adresu, uživatelská jména a hesla:
-
-1. Připojte se k databázi TENANTA, abyste mohli vytvořit uživatele, podrobnosti konkrétního tenanta jsou `<IP_address_of_host>` a `<SYSTEM_USER_PASSWORD>` .  Také si poznamenejte port ( `30015` ) vyžadovaný ke komunikaci s databází klienta.
-
-    ```bash
-    hdbsql -n <IP_address_of_host>:30015 - i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD>
-    ```
-
-    ```output  
-    Welcome to the SAP HANA Database interactive terminal.
-
-    Type: \h for help with commands
-    \q to quit
-
-    hdbsql TENANTDB=>
-    ```
-
-1. Vytvoření uživatele
-
-    Tento příklad vytvoří uživatele AZACSNAP v SYSTEMDB.
-
-    ```sql
-    hdbsql TENANTDB=> CREATE USER AZACSNAP PASSWORD <AZACSNAP_PASSWORD_CHANGE_ME> NO FORCE_FIRST_PASSWORD_CHANGE;
-    ```
-
-1. Udělení uživatelských oprávnění
-
-    V tomto příkladu se nastaví oprávnění pro uživatele AZACSNAP, aby bylo možné provést snímek úložiště konzistentního s databází.
-
-    ```sql
-    hdbsql TENANTDB=> GRANT BACKUP ADMIN, CATALOG READ, MONITORING TO AZACSNAP;
-    ```
-
-1. *Volitelné* – zabránit vypršení platnosti hesla uživatele
-
-    > [!NOTE]
-    > Než tuto změnu provedete, Projděte si podnikové zásady.
-
-   Tento příklad zakáže vypršení platnosti hesla pro uživatele AZACSNAP, aniž by došlo k tomu, že platnost hesla uživatele vyprší, aby se snímky správně nezobrazovaly.  
-
-   ```sql
-   hdbsql TENANTDB=> ALTER USER AZACSNAP DISABLE PASSWORD LIFETIME;
-   ```
-
-> [!NOTE]  
-> Tento postup opakujte pro všechny databáze tenantů. Je možné získat podrobnosti o připojení pro všechny klienty pomocí následujícího dotazu SQL pro SYSTEMDB.
-
-```sql
-SELECT HOST, SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%'
-```
-
-Podívejte se na následující příklad dotazu a výstupu.
-
-```bash
-hdbsql -jaxC -n 10.90.0.31:30013 -i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD> " SELECT HOST,SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%' "
-```
-
-```output
-sapprdhdb80,30013,SYSTEMDB
-sapprdhdb80,30015,H81
-sapprdhdb80,30041,H82
-```
 
 ### <a name="using-ssl-for-communication-with-sap-hana"></a>Použití protokolu SSL ke komunikaci s SAP HANA
 

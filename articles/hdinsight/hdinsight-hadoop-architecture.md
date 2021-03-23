@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f69917b574c0be8fdacf05934b05544a4f491a9c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945901"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864189"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsightu
 
@@ -42,7 +42,7 @@ NodeManagers spustí úlohy, které tvoří aplikaci, a pak oznámí jejich prů
 
 Všechny typy clusterů HDInsight nasazují PŘÍZi. Správce prostředků je nasazen pro vysokou dostupnost s primární a sekundární instancí, která běží na prvním a druhém hlavním uzlu v rámci clusteru. V jednom okamžiku je aktivní jenom jedna instance Správce prostředků. Instance NodeManager se spouštějí napříč dostupnými pracovními uzly v clusteru.
 
-![Apache PŘÍZe v Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+:::image type="content" source="./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png" alt-text="Apache PŘÍZe v Azure HDInsight" border="false":::
 
 ## <a name="soft-delete"></a>Obnovitelné odstranění
 

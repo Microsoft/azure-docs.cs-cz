@@ -4,12 +4,12 @@ description: Přečtěte si o službě Azure HDInsight v/v cache a o tom, jak je
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9df585c102e2c7307e949e38b6b69147372c38dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940126"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866297"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Zvýšení výkonu Apache Spark úloh pomocí Azure HDInsight v/v cache
 
@@ -37,14 +37,14 @@ Služba Azure HDInsight IO cache je ve výchozím nastavení deaktivována ve ve
 
 1. Vyberte **Akce** (**Akce služby** v HDI 3,6) a **aktivujte**.
 
-    ![Povolení služby mezipaměti v/v v Ambari](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Povolení služby mezipaměti v/v v Ambari")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png " alt-text="Povolení služby mezipaměti v/v v Ambari" border="true":::
 
 1. Potvrďte restart všech ovlivněných služeb v clusteru.
 
 > [!NOTE]  
 > I když se na indikátoru průběhu zobrazuje aktivováno, mezipaměť v/v není ve skutečnosti povolená, dokud nerestartujete ostatní ovlivněné služby.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
   
 Po povolení vstupně-výstupních operací můžete získat chyby místa na disku při spouštění úloh Spark. K těmto chybám dochází, protože Spark používá k ukládání dat v průběhu operace přerozdělování také úložiště na místním disku. Spark může vyrazit z prostoru SSD, když je povolená vstupně-výstupní mezipaměť a prostor pro úložiště Spark se zmenší. Velikost místa využitého v/v mezipaměti je výchozím nastavením na polovinu celkového prostoru SSD. Využití místa na disku pro vstupně-výstupní mezipaměť je konfigurovatelné v Ambari. Pokud získáte chyby místa na disku, snižte velikost prostoru SSD používaného pro vstupně-výstupní mezipaměť a restartujte službu. Chcete-li změnit nastavení prostoru pro vstupně-výstupní operace, proveďte následující kroky:
 
@@ -52,7 +52,7 @@ Po povolení vstupně-výstupních operací můžete získat chyby místa na dis
 
 1. Vyberte karty **Konfigurace** a **Upřesnit** .
 
-    ![Upravit pokročilou konfiguraci HDFS](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "Upravit pokročilou konfiguraci HDFS")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png " alt-text="Upravit pokročilou konfiguraci HDFS" border="true":::
 
 1. Posuňte se dolů a rozbalte **vlastní oblast základní-lokalita** .
 
@@ -60,13 +60,13 @@ Po povolení vstupně-výstupních operací můžete získat chyby místa na dis
 
 1. Změňte hodnotu v poli.
 
-    ![Upravit procento plného využití mezipaměti v/v](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "Upravit procento plného využití mezipaměti v/v")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png " alt-text="Upravit procento plného využití mezipaměti v/v" border="true":::
 
 1. V pravém horním rohu vyberte **Uložit** .
 
 1. Vyberte **znovu** restartovat  >  **všechny ovlivněné**.
 
-    ![Apache Ambari restartuje všechny ovlivněné](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Restartovat všechny ovlivněné")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png " alt-text="Apache Ambari restartuje všechny ovlivněné" border="true":::
 
 1. Vyberte **Potvrdit restartování vše**.
 

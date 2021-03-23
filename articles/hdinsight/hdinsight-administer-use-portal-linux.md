@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: e21361b6d491f53f41754831d2bdf896ef2719db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 33171527f03b0cc386f683f55f6cf9a70913abdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101091426"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871210"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 
@@ -36,7 +36,7 @@ Na stránce **clustery HDInsight** se zobrazí seznam stávajících clusterů. 
 
 Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showClusters) .  Tím otevřete zobrazení **přehledu** , které bude vypadat podobně jako na následujícím obrázku:
 
-![Základy clusteru HDInsight Azure Portal](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
+:::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png" alt-text="Základy clusteru HDInsight Azure Portal":::
 
 **Horní nabídka:**  
 
@@ -58,7 +58,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project** a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
     |Diagnostikovat a řešit problémy|Zobrazit informace o řešení potíží.|
     |Rychlé zprovoznění|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
-    |Nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
+    |nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
 
   - **Nabídka Nastavení**  
 
@@ -173,7 +173,7 @@ Z [domovské stránky clusteru](#homePage):
 
 1. Vyberte **řídicí panely clusteru**.
 
-    ![Nabídka clusteru Apache Hadoop HDInsight](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
+    :::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png" alt-text="Nabídka clusteru Apache Hadoop HDInsight":::
 
 1. Na nové stránce vyberte **Ambari domů** .
 1. Zadejte uživatelské jméno a heslo clusteru.  Výchozí uživatelské jméno clusteru je _admin_.

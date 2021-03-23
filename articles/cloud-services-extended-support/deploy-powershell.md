@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 08a8dde815a6dea5d69e5e2a385cbaa03fba681a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0c1b67e42e7988a836ec58ac022b11d736210bca
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99832690"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865617"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Nasazení cloudové služby (Rozšířená podpora) pomocí Azure PowerShell
 
@@ -88,7 +88,7 @@ Projděte si [požadavky nasazení](deploy-prerequisite.md) pro Cloud Services (
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-9. Vytvoření trezoru klíčů Tato Key Vault bude sloužit k ukládání certifikátů, které jsou přidruženy k rolím cloudové služby (Rozšířená podpora). Ujistěte se, že jste povolili zásady přístupu (na portálu) pro přístup k Azure Virtual Machines pro nasazení a Azure Resource Manager pro nasazení šablony. Key Vault se musí nacházet ve stejné oblasti a předplatném jako cloudová služba a musí mít jedinečný název. Další informace najdete v tématu [použití certifikátů s Azure Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md).
+9. Vytvoření trezoru klíčů Tato Key Vault bude sloužit k ukládání certifikátů, které jsou přidruženy k rolím cloudové služby (Rozšířená podpora). Key Vault se musí nacházet ve stejné oblasti a předplatném jako cloudová služba a musí mít jedinečný název. Další informace najdete v tématu [použití certifikátů s Azure Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosOrg” -Location “East US” 
@@ -97,6 +97,7 @@ Projděte si [požadavky nasazení](deploy-prerequisite.md) pro Cloud Services (
 10. Aktualizujte zásady přístupu Key Vault a udělte jim oprávnění k certifikátu pro svůj uživatelský účet. 
 
     ```powershell
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -EnabledForDeployment
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
     ```
 

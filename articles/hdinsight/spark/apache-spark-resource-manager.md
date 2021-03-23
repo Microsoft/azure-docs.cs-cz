@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/12/2021
-ms.openlocfilehash: ff7cfe8ad09201df20db89e14f8c175e678e5107
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7027e4af9c11db628990d42430c6877340de3534
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929802"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868439"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků pro cluster Apache Spark ve službě Azure HDInsight
 
@@ -28,7 +28,7 @@ Pomocí uživatelského rozhraní PŘÍZe můžete monitorovat aplikace, které 
 
 2. Z **řídicích panelů clusteru** vyberte možnost **příze**. Po zobrazení výzvy zadejte přihlašovací údaje správce pro cluster Spark.
 
-    ![Spustit rozhraní PŘÍZe](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
+    :::image type="content" source="./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png" alt-text="Spustit rozhraní PŘÍZe" border="true":::
 
    > [!TIP]  
    > Alternativně můžete také spustit rozhraní PŘÍZe z uživatelského rozhraní Ambari. V uživatelském rozhraní Ambari přejděte do části **nepříze**  >  **Rychlé odkazy**  >  **aktivní**  >  **Správce prostředků uživatelského rozhraní**.
@@ -43,15 +43,15 @@ Tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všech
 
 1. V uživatelském rozhraní Ambari přejděte na **Spark2**  >  **config**  >  **Customers Custom Spark2-Defaults**.
 
-    ![Nastavení parametrů pomocí Ambari Custom](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Nastavení parametrů pomocí Ambari Custom")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png " alt-text="Nastavení parametrů pomocí Ambari Custom" border="true":::
 
 1. Výchozí hodnoty jsou vhodné k souběžnému spuštění čtyř aplikací Spark v clusteru. Tyto hodnoty můžete změnit z uživatelského rozhraní, jak je znázorněno na následujícím snímku obrazovky:
 
-    ![Nastavení parametrů pomocí Ambari](./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png "Nastavení parametrů pomocí Ambari")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png " alt-text="Nastavení parametrů pomocí Ambari" border="true":::
 
 1. Kliknutím na **Uložit** uložte změny konfigurace. V horní části stránky budete vyzváni k restartování všech ovlivněných služeb. Vyberte **restartovat**.
 
-    ![Restartovat služby](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-restart-services.png" alt-text="Restartovat služby" border="true":::
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Změna parametrů aplikace spuštěné v Jupyter Notebook
 
@@ -93,11 +93,11 @@ Spark Thrift Server používá přidělování dynamických prováděcích modul
 
 * Rozbalením kategorie **Advanced spark2-Thrift-sparkconf** aktualizujte parametry `spark.dynamicAllocation.maxExecutors` a `spark.dynamicAllocation.minExecutors` .
 
-    ![Konfigurace serveru Spark Thrift](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Konfigurace serveru Spark Thrift")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png " alt-text="Konfigurace serveru Spark Thrift" border="true":::
 
 * Rozbalením kategorie **Custom spark2-Thrift-sparkconf** aktualizujte parametry `spark.executor.cores` a `spark.executor.memory` .
 
-    ![Konfigurace parametru serveru Spark Thrift](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Konfigurace parametru serveru Spark Thrift")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png " alt-text="Konfigurace parametru serveru Spark Thrift" border="true":::
 
 ### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>Změna paměti ovladače serveru Spark Thrift
 
@@ -113,38 +113,38 @@ Z důvodu dynamického přidělování Spark jsou jediné prostředky, které js
 
 2. Na další stránce vyberte **Spark2 servery Thrift**.
 
-    ![Restartovat Thrift Server1](./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png "Restartovat Thrift Server1")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png " alt-text="Restartovat Thrift Server1" border="true":::
 
 3. Měli byste vidět dva hlavních, na kterých běží server Spark2 Thrift. Vyberte jednu z hlavních.
 
-    ![Restartovat Thrift Server2](./media/apache-spark-resource-manager/restart-thrift-server-2.png "Restartovat Thrift Server2")
+    :::image type="content" source="./media/apache-spark-resource-manager/restart-thrift-server-2.png " alt-text="Restartovat Thrift Server2" border="true":::
 
 4. Na další stránce jsou uvedeny všechny služby běžící na tomto hlavnímu uzlu. V seznamu vyberte rozevírací tlačítko vedle Spark2 Thrift Server a pak vyberte **zastavit**.
 
-    ![Restartovat Thrift Server3](./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png "Restartovat Thrift Server3")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png " alt-text="Restartovat Thrift Server3" border="true":::
 5. Tyto kroky opakujte i na ostatních hlavnímu uzlu.
 
 ## <a name="restart-the-jupyter-service"></a>Restartujte službu Jupyter.
 
 Spusťte webové uživatelské rozhraní Ambari, jak je znázorněno na začátku článku. V levém navigačním podokně vyberte **Jupyter**, vyberte **Akce služby** a pak vyberte **restartovat vše**. Tím se spustí služba Jupyter ve všech hlavních.
 
-![Restartujte Jupyter.](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Restartujte Jupyter.")
+:::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png " alt-text="Restartujte Jupyter." border="true":::
 
 ## <a name="monitor-resources"></a>Sledování prostředků
 
 Spusťte uživatelské rozhraní příze, jak je znázorněno na začátku článku. V tabulce metriky clusteru v horní části obrazovky ověřte hodnoty **využité paměti** a **Celkový počet sloupců paměti** . Pokud jsou tyto dvě hodnoty blízko, nemusí být k dispozici dostatek prostředků ke spuštění další aplikace. Totéž platí pro sloupce **virtuální jádra použité** a **virtuální jádra celkem** . Pokud je v hlavním zobrazení aplikace nechali v **přijatém** stavu a nepřechází do stavu **spuštěno** ani **selhání** , může to být také označením, že není dostatek prostředků ke spuštění.
 
-![Omezení prostředků](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Omezení prostředků")
+:::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-resource-limit.png " alt-text="Omezení prostředků" border="true":::
 
 ## <a name="kill-running-applications"></a>Ukončit běžící aplikace
 
 1. V uživatelském rozhraní příze na levém panelu vyberte **Spustit**. V seznamu spuštěných aplikací určete aplikaci, která se má ukončit, a vyberte **ID**.
 
-    ![Kill app1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "Kill app1")
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-kill-app1.png " alt-text="Kill app1" border="true":::
 
 2. V pravém horním rohu vyberte **ukončit aplikaci** a pak vyberte **OK**.
 
-    ![Kill app2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Kill app2")
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-kill-app2.png " alt-text="Kill app2" border="true":::
 
 ## <a name="see-also"></a>Viz také
 

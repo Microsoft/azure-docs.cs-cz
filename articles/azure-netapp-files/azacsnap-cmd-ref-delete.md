@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 0e2e4beebedb93524da43c5a3fad750b0295f5cd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f2c767d45bb08e25a057c7db1f380ceb250f607
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632724"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864903"
 ---
 # <a name="delete-using-azure-application-consistent-snapshot-tool-preview"></a>Odstranění pomocí nástroje pro vytváření snímků konzistentního vzhledem k aplikacím Azure (Preview)
 
@@ -36,11 +36,11 @@ Pomocí příkazu je možné odstranit snímky svazků a položky katalogu datab
 
 `-c delete`Příkaz má následující možnosti:
 
-- `--delete hana` Při použití s možnostmi `--hanasid <SID>` se `--hanabackupid <HANA backup id>` odstraní položky z katalogu SAP HANA Backup, které odpovídají kritériím.
+- `--delete hana` Při použití s možnostmi `--dbsid <SID>` se `--hanabackupid <HANA backup id>` odstraní položky z katalogu SAP HANA Backup, které odpovídají kritériím.
 
 - `--delete storage` Při použití s možností `--snapshot <snapshot name>` odstraní snímek z back-endového systému úložiště.
 
-- `--delete sync` Pokud se použije s možnostmi `--hanasid <SID>` a `--hanabackupid <HANA backup id>` Získá název snímku úložiště z katalogu záloh pro `<HANA backup id>` , a pak položku odstraní v katalogu záloh _a_ snímku ze všech svazků, které obsahují pojmenovaný snímek.
+- `--delete sync` Pokud se použije s možnostmi `--dbsid <SID>` a `--hanabackupid <HANA backup id>` Získá název snímku úložiště z katalogu záloh pro `<HANA backup id>` , a pak položku odstraní v katalogu záloh _a_ snímku ze všech svazků, které obsahují pojmenovaný snímek.
 
 - `--delete sync` Při použití s nástrojem se `--snapshot <snapshot name>` zkontroluje, jestli všechny položky v katalogu záloh pro `<snapshot name>` , získá ID zálohy SAP Hana a odstraní jak položku v katalogu záloh, _tak_ i snímek z libovolného svazku obsahujícího pojmenovaný snímek.
 
@@ -51,7 +51,7 @@ Pomocí příkazu je možné odstranit snímky svazků a položky katalogu datab
 ### <a name="delete-a-snapshot-using-sync-option"></a>Odstranění snímku pomocí `sync` Možnosti
 
 ```bash
-azacsnap -c delete --delete sync --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete sync --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]
@@ -67,7 +67,7 @@ azacsnap -c delete --delete sync --snapshot hana_hourly.2020-01-22_2358
 ### <a name="delete-a-snapshot-using-hana-option"></a>Odstranění snímku pomocí `hana` Možnosti
 
 ```bash
-azacsnap -c delete --delete hana --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete hana --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]

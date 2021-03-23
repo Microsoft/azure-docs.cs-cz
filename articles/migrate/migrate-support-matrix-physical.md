@@ -1,21 +1,21 @@
 ---
-title: Podpora pro posouzení fyzického serveru v Azure Migrate
-description: Přečtěte si o podpoře fyzického serveru hodnocení pomocí Azure Migrate zjišťování a hodnocení.
+title: Podpora fyzického zjišťování a hodnocení v Azure Migrate
+description: Přečtěte si o podpoře fyzického zjišťování a hodnocení pomocí Azure Migrate zjišťování a hodnocení.
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 18176c5a79eda080c72b387781e6c7c9b0c66673
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: b62160861f686c6ea5a8ebfd03d904da2ad5d80a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773194"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869442"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>Matice podpory pro zjišťování a hodnocení fyzických serverů 
 
-Tento článek shrnuje požadavky a požadavky na podporu při vyhodnocování fyzických serverů pro migraci do Azure pomocí nástroje [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool. Pokud chcete migrovat fyzické servery do Azure, přečtěte si [matici podpora migrace](migrate-support-matrix-physical-migration.md).
+Tento článek shrnuje požadavky a požadavky na podporu při vyhodnocování fyzických serverů pro migraci do Azure pomocí nástroje [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool. Pokud chcete migrovat fyzické servery do Azure, přečtěte si [matici podpora migrace](migrate-support-matrix-physical-migration.md).
 
 Chcete-li vyhodnotit fyzické servery, vytvořte projekt a přidejte do projektu nástroj Azure Migrate: Discovery and Assessment. Po přidání nástroje nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení nepřetržitě zjišťuje místní servery a do Azure odesílá metadata a data o výkonu serverů. Po dokončení zjišťování budete shromažďovat zjištěné servery do skupin a spustit posouzení pro skupinu.
 
@@ -23,7 +23,7 @@ Chcete-li vyhodnotit fyzické servery, vytvořte projekt a přidejte do projektu
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Omezení hodnocení** | V jednom [projektu](migrate-support-matrix.md#azure-migrate-projects)můžete zjistit a posoudit až 35 000 fyzických serverů.
+**Omezení hodnocení** | V jednom [projektu](migrate-support-matrix.md#project)můžete zjistit a posoudit až 35 000 fyzických serverů.
 **Omezení projektu** | V předplatném Azure můžete vytvořit více projektů. Kromě fyzických serverů může projekt zahrnovat i servery na VMware a Hyper-V, a to až do mezních hodnot pro každé z nich.
 **Zjišťování** | Zařízení Azure Migrate může zjistit až 1000 fyzických serverů.
 **Posouzení** | Do jedné skupiny můžete přidat až 35 000 serverů.<br/><br/> V jednom posouzení můžete posoudit až 35 000 serverů.
@@ -84,4 +84,4 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Příprava na posouzení fyzického serveru](./tutorial-discover-physical.md).
+[Příprava na fyzické zjišťování a posouzení](./tutorial-discover-physical.md).

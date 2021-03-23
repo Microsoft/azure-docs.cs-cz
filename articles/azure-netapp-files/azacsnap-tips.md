@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 08edd86fd19e7698a791e411f42a2a89084a91f7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6465acc0d4ce760e0bf89c73dace7c8c66d37c49
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737129"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869935"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>Tipy a triky pro používání nástroje pro vytváření snímků konzistentního vzhledem k aplikacím Azure (Preview)
 
@@ -47,6 +47,27 @@ az role definition create --role-definition '{ \
   "AssignableScopes": ["/subscriptions/<insert your subscription id>"] \
 }'
 ```
+
+Aby bylo možné úspěšně fungovat možnosti obnovení, musí být objekt služby AzAcSnap také schopný vytvářet svazky.  V takovém případě definice role vyžaduje další akci, proto by měl úplný instanční objekt vypadat jako v následujícím příkladu.
+
+```bash
+az role definition create --role-definition '{ \
+  "Name": "Azure Application Consistent Snapshot tool", \
+  "IsCustom": "true", \
+  "Description": "Perform snapshots and restores on ANF volumes.", \
+  "Actions": [ \
+    "Microsoft.NetApp/*/read", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write" \
+  ], \
+  "NotActions": [], \
+  "DataActions": [], \
+  "NotDataActions": [], \
+  "AssignableScopes": ["/subscriptions/<insert your subscription id>"] \
+}'
+```
+
 
 ## <a name="take-snapshots-manually"></a>Pořizovat snímky ručně
 

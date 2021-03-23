@@ -4,12 +4,12 @@ description: Přehled různých komponent vysoké dostupnosti používaných clu
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 93d2317c85f93ce8a22f2d434fbc081a88265a74
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945302"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863713"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby vysoké dostupnosti podporované službou Azure HDInsight
 
@@ -34,7 +34,7 @@ Tato infrastruktura se skládá z řady služeb a softwarových komponent, kter�
 - Služba s vysokou dostupností na podřízené úrovni
 - Hlavní služba vysoké dostupnosti
 
-![infrastruktura vysoké dostupnosti](./media/hdinsight-high-availability-components/high-availability-architecture.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/high-availability-architecture.png" alt-text="infrastruktura vysoké dostupnosti" border="false":::
 
 K dispozici jsou také další služby vysoké dostupnosti, které jsou podporovány v části Open Source součásti pro spolehlivost Apache. Tyto součásti jsou také k dispozici v clusterech HDInsight:
 
@@ -91,7 +91,7 @@ Hlavní-ha-Service se spouští jenom na aktivním hlavnímu uzlu, zastaví slu�
 
 ### <a name="the-failover-process"></a>Proces převzetí služeb při selhání
 
-![proces převzetí služeb při selhání](./media/hdinsight-high-availability-components/failover-steps.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/failover-steps.png" alt-text="proces převzetí služeb při selhání" border="false":::
 
 Monitor stavu běží na každém hlavnímu uzlu spolu s hlavním řadičem pro převzetí služeb při selhání pro odesílání oznámení prezenčního signálu do kvora Zookeeper. Hlavnímu uzlu se v tomto scénáři považuje za službu HA. Monitor stavu zkontroluje, jestli je každá služba vysoké dostupnosti v pořádku a jestli je připravená k zapojení do volby vedoucího vedení. Pokud ano, bude tento hlavnímu uzlu konkurovat ve volbách. Pokud ne, ukončí volbu, dokud nebude znovu připravena.
 

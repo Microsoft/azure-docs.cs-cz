@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 161c5779926acad8814ec057f24e36f371738483
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928644"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864359"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí šablony ARM
 
@@ -34,7 +34,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 [![Nasazení služby rozpoznávání do Azure](../media/template-deployments/deploy-to-azure.svg "Nasazení služby rozpoznávání do Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud nemáte předplatné Azure, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services).
 
@@ -137,9 +137,10 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>Další kroky
+## <a name="see-also"></a>Viz také
 
-* [Ověřování požadavků do Azure Cognitive Services](authentication.md)
-* [Co je Azure Cognitive Services?](./what-are-cognitive-services.md)
-* [Podpora přirozeného jazyka](language-support.md)
-* [Podpora kontejneru Docker](cognitive-services-container-support.md)
+* Informace o tom, jak bezpečně pracovat s Cognitive Services, najdete v tématu **[ověření požadavků do Azure Cognitive Services](authentication.md)** .
+* V tématu **[co je Azure Cognitive Services?](./what-are-cognitive-services.md)** získáte seznam různých kategorií v rámci Cognitive Services.
+* Seznam přirozených jazyků, které Cognitive Services podporuje, najdete v článku **[Podpora přirozeného jazyka](language-support.md)** .
+* Pokud chcete pochopit, jak používat Cognitive Services on-Prem, přečtěte si téma **[použití Cognitive Services jako kontejnerů](cognitive-services-container-support.md)** .
+* Odhad nákladů na používání Cognitive Services najdete v tématu **[plánování a Správa nákladů na Cognitive Services](plan-manage-costs.md)** .

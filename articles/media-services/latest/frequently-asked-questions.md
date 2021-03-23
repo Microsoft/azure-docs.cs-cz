@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a9394a5e117a577c903eccdf91cf22d0c359df2b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d1c2fd2ac7f809b4a70a0edffbddfb6e733fed57
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581112"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871397"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 
@@ -47,12 +47,6 @@ Přečtěte si téma [řízení přístupu na základě role v Azure (Azure RBAC
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Návody Stream do zařízení Apple iOS?
 
 Ujistěte se, že máte **(Format = M3U8-AAPL)** na konci vaší cesty (po **/manifest** části adresy URL), aby server zdroje dat pro streamování vrátil HTTP Live Streaming (HLS) pro spotřebu na nativních zařízeních Apple iOS. Podrobnosti najdete v tématu [doručování obsahu](dynamic-packaging-overview.md).
-
-### <a name="how-do-i-configure-media-reserved-units"></a>Návody nakonfigurovat rezervované jednotky médií?
-
-Pro analýzy zvuku a úlohy analýzy videí, které se spouštějí Media Services V3 nebo Video Indexer, doporučujeme zřídit účet s 10 rezervovanými jednotkami médií (MRUs). Pokud potřebujete více než 10 S3 MRUs, otevřete lístek podpory pomocí [Azure Portal](https://portal.azure.com/).
-
-Podrobnosti najdete v tématu [škálování zpracování médií](media-reserved-units-cli-how-to.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Jaká je doporučená metoda pro zpracování videí?
 

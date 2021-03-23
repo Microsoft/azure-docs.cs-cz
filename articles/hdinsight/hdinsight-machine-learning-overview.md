@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 18be3fa8851c2dbaab622c770d02f4db252a231c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 492663ca35ed04da09e7f0d198444a4d40178e2b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945253"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867521"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning v HDInsight
 
@@ -26,7 +26,7 @@ Knihovna Microsoft Machine Learning pro Apache Spark je [MMLSpark](https://githu
 
 [R](https://www.r-project.org/) je aktuálně nejoblíbenější statistická programovací jazyk na světě. Je to open-source nástroj pro vizualizaci dat s komunitou více než 2 500 000 uživatelů a rostoucím počtem. Díky svému prosperující uživatelské základu a více než 8 000 balíčkům, R je pravděpodobně volba pro mnoho společností, které potřebují strojové učení. Můžete vytvořit cluster HDInsight se službami ML, který je připravený k použití s obrovskými datovými sadami a modely. Tato funkce poskytuje odborníci na data a statistiku se známým rozhraním jazyka R, které umožňuje škálování na vyžádání prostřednictvím služby HDInsight bez režie instalace a údržby clusteru.
 
-![Školení pro předpověď s R serverem](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
+:::image type="content" source="./media/hdinsight-machine-learning-overview/training-for-prediction.png" alt-text="Školení pro předpověď s R serverem" border="false":::
 
 Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R.  V uzlech clusteru můžete také spouštět skripty jazyka R pomocí výpočetních kontextů Hadoop v mapě Hadoop pro horizontální navýšení nebo Spark.
 
@@ -36,7 +36,7 @@ Pomocí služby ML Services ve službě HDInsight se systémem Spark můžete pa
 
 Azure Machine Learning poskytuje nástroje pro modelování prediktivních analýz a plně spravovanou službu, kterou můžete použít k nasazení prediktivních modelů jako připravených webových služeb. Azure Machine Learning je kompletní řešení prediktivní analýzy v cloudu, které můžete použít k vytváření, testování, zprovoznění a správě prediktivních modelů. Vyberte si z velké knihovny algoritmů, použijte webové Studio pro vytváření modelů a jednoduše nasaďte model jako webovou službu.
 
-![Přehled Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
+:::image type="content" source="./media/hdinsight-machine-learning-overview/azure-machine-learning.png" alt-text="Přehled Microsoft Azure Machine Learning" border="false":::
 
 Vytvářejte funkce pro data v clusteru HDInsight Hadoop pomocí [dotazů na podregistry](../machine-learning/team-data-science-process/create-features-hive.md). Konstrukce *funkcí* se snaží zvýšit prediktivní výkon výukových algoritmů vytvořením funkcí z nezpracovaných dat, která usnadňují proces učení. Pomocí [modulu import dat](../machine-learning/classic/import-data.md)můžete spouštět dotazy HiveQL z Azure Machine Learning Studio (Classic) a přistupovat k datům zpracovávaným v podregistru a uložit je do úložiště objektů BLOB.
 

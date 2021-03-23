@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d85aad16049dee6496cb1eaf9def5451625ab876
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 21433e1a0441ef458dd5f8ea4b968211ef82cd46
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773466"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865600"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Předpoklady pro nasazení služby Azure Cloud Services (Rozšířená podpora)
 
@@ -133,7 +133,7 @@ Nasazení, která využila staré moduly plug-in, potřebují odebrat nastavení
 
 ## <a name="key-vault-creation"></a>Vytváření Key Vault 
 
-Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud Services (Rozšířená podpora). Přidejte certifikáty do Key Vault a pak na ně nastavte odkazy na kryptografické otisky certifikátů v konfiguračním souboru služby. Pro přístup k Azure Virtual Machines for Deployment a Azure Resource Manager pro nasazení šablony je taky potřeba povolit Key Vault zásady přístupu (na portálu), aby mohl prostředek Cloud Services (Rozšířená podpora) získat certifikát uložený jako tajné kódy z Key Vault. Trezor klíčů můžete vytvořit v [Azure Portal](../key-vault/general/quick-create-portal.md) nebo pomocí [prostředí PowerShell](../key-vault/general/quick-create-powershell.md). Trezor klíčů se musí vytvořit ve stejné oblasti a předplatném jako cloudová služba. Další informace najdete v tématu [použití certifikátů s Azure Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md).
+Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud Services (Rozšířená podpora). Přidejte certifikáty do Key Vault a pak na ně nastavte odkazy na kryptografické otisky certifikátů v konfiguračním souboru služby. Pro Azure Virtual Machines for Deployment je taky potřeba povolit zásady přístupu Key Vault (na portálu), aby mohl prostředek Cloud Services (Rozšířená podpora) získat certifikát uložený jako tajné klíče z Key Vault. Trezor klíčů můžete vytvořit v [Azure Portal](../key-vault/general/quick-create-portal.md) nebo pomocí [prostředí PowerShell](../key-vault/general/quick-create-powershell.md). Trezor klíčů se musí vytvořit ve stejné oblasti a předplatném jako cloudová služba. Další informace najdete v tématu [použití certifikátů s Azure Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Další kroky 
 - Přečtěte si [požadavky na nasazení](deploy-prerequisite.md) pro Cloud Services (Rozšířená podpora).

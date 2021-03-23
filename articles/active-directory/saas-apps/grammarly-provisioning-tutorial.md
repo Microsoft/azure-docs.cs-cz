@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2021
 ms.author: Zhchia
-ms.openlocfilehash: acfe74577f58cbdc0b1fe235e7fc1f661543fd90
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ca01289ce66afe642081e5be17373e640dd1e46d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609071"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864801"
 ---
 # <a name="tutorial-configure-grammarly-for-automatic-user-provisioning"></a>Kurz: Konfigurace gramatiky pro Automatické zřizování uživatelů
 
@@ -85,7 +85,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek obrazovky, který ukazuje režim zřizování nastavený na automatické.](common/provisioning-automatic.png)
 
-1. V části **přihlašovací údaje správce** zadejte svou GRAMATICKOU **adresu URL tenanta** a informace o **tajném tokenu** . Vyberte **Test připojení** , aby se služba Azure AD mohla připojit k gramaticky. Pokud se připojení nepovede, zajistěte, aby měl váš gramatický účet oprávnění správce, a zkuste to znovu.
+1. V části **přihlašovací údaje správce** zadejte do pole zadejte **adresu URL tenanta** `https://sso.grammarly.com/scim/v2` a do pole **tajný token** zadejte token, který se poskytuje gramaticky (viz krok 2 výše). Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k gramaticky. Pokud se připojení nepovede, zajistěte, aby měl váš gramatický účet oprávnění správce, a zkuste to znovu.
 
     ![Snímek obrazovky zobrazující pole Adresa URL tenanta a tajný klíč tokenu](common/provisioning-testconnection-tenanturltoken.png)
 

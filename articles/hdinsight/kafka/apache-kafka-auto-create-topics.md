@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: b416623d6637cfe8e2c1cd795dd62553f8c0aed4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3766d41959383d802e50aafbf59b9841d1c8d74e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933205"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870683"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Postup konfigurace Apache Kafka v HDInsight pro automatické vytváření témat
 
@@ -25,31 +25,31 @@ Pokud chcete povolit automatické vytváření témat pro existující cluster p
 
 1. Z **řídicích panelů clusteru** vyberte **Ambari Home (domů**).
 
-    ![Obrázek portálu s vybraným řídicím panelem clusteru](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png" alt-text="Obrázek portálu s vybraným řídicím panelem clusteru" border="true":::
 
     Po zobrazení výzvy proveďte ověření pomocí přihlašovacích údajů přihlášení (admin) pro cluster. Místo toho se můžete připojit k Amabri přímo z `https://CLUSTERNAME.azurehdinsight.net/` místa, kde `CLUSTERNAME` je název vašeho clusteru Kafka.
 
 1. V seznamu na levé straně stránky vyberte službu Kafka.
 
-    ![Karta seznam služeb Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/hdinsight-service-list.png" alt-text="Karta seznam služeb Apache Ambari" border="true":::
 
 1. V polovině stránky vyberte konfigurace.
 
-    ![Karta konfigurace služby Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/hdinsight-service-config.png" alt-text="Karta konfigurace služby Apache Ambari" border="true":::
 
 1. Do pole Filtr zadejte hodnotu `auto.create` .
 
-    ![Pole vyhledávacího filtru Apache Ambari](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png" alt-text="Pole vyhledávacího filtru Apache Ambari" border="true":::
 
     Toto nastavení filtruje seznam vlastností a zobrazí `auto.create.topics.enable` nastavení.
 
 1. Změňte hodnotu `auto.create.topics.enable` na `true` a pak vyberte **Save (Uložit**). Přidejte poznámku a pak znovu vyberte **Uložit** .
 
-    ![Obrázek automatického vytváření. Create. témata. povolit položku](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png" alt-text="Obrázek automatického vytváření. Create. témata. povolit položku" border="true":::
 
 1. Vyberte službu Kafka, vyberte __restartovat__ a pak vyberte __restartovat všechny ovlivněné__. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
 
-    !["Apache Ambari restartovat všechny ovlivněné"](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/restart-all-affected.png" alt-text="&quot;Apache Ambari restartovat všechny ovlivněné&quot;" border="true":::
 
 > [!NOTE]  
 > Hodnoty Ambari můžete nastavit také pomocí REST API Ambari. To je všeobecně obtížnější, protože je třeba provést více volání REST pro načtení aktuální konfigurace, její úpravy atd. Další informace najdete v tématu [Správa clusterů HDInsight pomocí dokumentu REST API Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md) .

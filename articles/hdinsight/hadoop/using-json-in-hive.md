@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 5bc9acea219e5d111700840149a26c127b47514d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d3c5077450dd4ec59f5ea7bc8f37879f9aa775bf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943060"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868932"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive ve službě Azure HDInsight
 
@@ -93,7 +93,7 @@ Příkaz **Select** vrátí pouze jeden řádek.
 
 Zde je výstup příkazu **Select** :
 
-![HDInsight – sloučení dokumentu JSON](./media/using-json-in-hive/hdinsight-flatten-json.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-flatten-json.png" alt-text="HDInsight – sloučení dokumentu JSON" border="true":::
 
 ## <a name="analyze-json-documents-in-hive"></a>Analyzovat dokumenty JSON v podregistru
 
@@ -119,7 +119,7 @@ FROM StudentsOneLine;
 
 Toto je výstup při spuštění tohoto dotazu v okně konzoly:
 
-![Apache Hive Získá objekt JSON typu UDF.](./media/using-json-in-hive/hdinsight-get-json-object.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-get-json-object.png" alt-text="Apache Hive Získá objekt JSON typu UDF." border="true":::
 
 K dispozici jsou omezení get_json_object systému souborů UDF:
 
@@ -141,7 +141,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Výstup tohoto skriptu v konzole podregistru:
 
-![Apache Hive výsledků dotazu JSON](./media/using-json-in-hive/hdinsight-json-tuple.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-json-tuple.png" alt-text="Apache Hive výsledků dotazu JSON" border="true":::
 
 `json_tuple`Systém UDF používá syntaxi [zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) v podregistru, která umožňuje \_ řazené kolekci členů JSON vytvořit virtuální tabulku použitím funkce UDT na každý řádek původní tabulky. Komplexní JSON se přestanou nepraktický z důvodu opakovaného použití **bočního zobrazení**. **JSON_TUPLE** navíc nemůže zpracovat vnořené JSON.
 

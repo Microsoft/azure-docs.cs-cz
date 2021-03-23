@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 903cb3323b9441ec8bb382054f065760875e3e89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ba5a05515284612e17d5aba4cc673c7e78f7ba1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632687"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869918"
 ---
 # <a name="troubleshoot-azure-application-consistent-snapshot-tool-preview"></a>Řešení potíží s nástrojem pro vytváření snímků konzistentním s aplikacemi Azure (Preview)
 
@@ -54,6 +54,13 @@ Příklad výstupu ze `/var/log/messages` souboru.
 ```output
 Dec 17 09:01:13 azacsnap-rhel azacsnap: Database # 1 (PR1) : completed ok
 ```
+
+## <a name="failed-communication-with-azure-netapp-files"></a>Komunikace s Azure NetApp Files se nezdařila
+
+Při ověřování komunikace s Azure NetApp Files může být komunikace neúspěšná nebo vypršel časový limit.  Zkontrolujte, jestli pravidla brány firewall neblokují odchozí přenosy ze systému, na kterém běží AzAcSnap, na následující adresy a porty TCP/IP:-
+
+- (https://) Správa. Azure. com: 443
+- (https://) Login. microsoftonline. com: 443 
 
 ## <a name="failed-communication-with-sap-hana"></a>Komunikace s SAP HANA se nezdařila
 

@@ -4,12 +4,12 @@ description: Ke konfiguraci a optimalizaci adaptérů Apache HBA použijte webov
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/01/2021
-ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7e54b1347e4c67b99ba87b15c2c15d9d28244ce7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99428196"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864767"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache HBA s Apache Ambari ve službě Azure HDInsight
 
@@ -28,7 +28,7 @@ Velikost haldy HBA určuje maximální velikost haldy, která bude použita v me
 
 1. Změňte výchozí hodnotu na 5 000 MB.
 
-    !["Apache Ambari Hbas velikost haldy paměti"](./media/optimize-hbase-ambari/ambari-hbase-heapsize.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/ambari-hbase-heapsize.png" alt-text="&quot;Apache Ambari Hbas velikost haldy paměti&quot;" border="true":::
 
 ## <a name="optimize-read-heavy-workloads"></a>Optimalizace úloh pro čtení a vysoké zatížení
 
@@ -40,7 +40,7 @@ Bloková mezipaměť je mezipaměť pro čtení. Jeho velikost je ovládána `hf
 
 1. Chcete-li tento parametr změnit, přejděte na kartu **Nastavení** na kartě **Konfigurace** HBA a pak vyhledejte **% z RegionServer přidělených pro vyrovnávací paměti pro čtení**.
 
-    ![Velikost mezipaměti bloků paměti Apache HBA](./media/optimize-hbase-ambari/hbase-block-cache-size.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/hbase-block-cache-size.png" alt-text="Velikost mezipaměti bloků paměti Apache HBA" border="true":::
 
 1. Chcete-li změnit hodnotu, vyberte ikonu **Upravit** .
 
@@ -58,7 +58,7 @@ Pro optimalizaci pro náhodná čtení můžete snížit horní a dolní limit s
 
 `hbase.client.scanner.caching`Nastavení definuje počet řádků načtených z disku při `next` volání metody na skeneru.  Výchozí hodnota je 100. Čím vyšší je počet vzdálených volání z klienta na server oblasti, což vede k rychlejšímu prověřování. Toto nastavení ale taky zvýší tlak paměti na straně klienta.
 
-![Apache HBA počet načtených řádků](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-num-rows-fetched.png" alt-text="Apache HBA počet načtených řádků" border="true":::
 
 > [!IMPORTANT]  
 > Nenastavujte hodnotu tak, aby čas mezi voláním další metody na skeneru byl větší než časový limit skeneru. Doba trvání časového limitu skeneru je definována `hbase.regionserver.lease.period` vlastností.
@@ -71,7 +71,7 @@ Následující konfigurace jsou důležité pro zlepšení výkonu náročných 
 
 HBA ukládají data do interního formátu souboru s názvem *HFile*. Vlastnost `hbase.hregion.max.filesize` definuje velikost jednoho HFile pro oblast.  Oblast je rozdělena do dvou oblastí, pokud je součet všech HFiles v oblasti větší než toto nastavení.
 
-!["Apache Hbas HRegion Max velikost souboru"](./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png" alt-text="&quot;Apache Hbas HRegion Max velikost souboru&quot;" border="true":::
 
 Čím větší je velikost souboru oblasti, tím menší je počet rozdělení. Velikost souboru můžete zvětšit a určit tak hodnotu, která bude mít za následek maximální výkon zápisu.
 
@@ -85,7 +85,7 @@ HBA ukládají data do interního formátu souboru s názvem *HFile*. Vlastnost 
 
     S výchozími hodnotami velikosti vyprázdnění a násobitele bloku jsou aktualizace zablokované, pokud setSize paměťového úložiště je 128 × 4 = 512 MB. Chcete-li snížit počet blokování aktualizací, zvyšte hodnotu `hbase.hregion.memstore.block.multiplier` .
 
-![Multiplikátor bloku oblasti Apache HBA](./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png" alt-text="Multiplikátor bloku oblasti Apache HBA" border="true":::
 
 ## <a name="define-memstore-size"></a>Definovat velikost setSize paměťového úložiště
 
@@ -95,7 +95,7 @@ Velikost setSize paměťového úložiště je definována `hbase.regionserver.g
 
 Využití vyrovnávací paměti pro místní přidělování setSize paměťového úložiště je určeno vlastností `hbase.hregion.memstore.mslab.enabled` . Pokud je povoleno (true), toto nastavení zabrání fragmentaci haldy během operace silného zápisu. Výchozí hodnotou je hodnota true.
 
-![HBA. hregion. setSize paměťového úložiště. mslab. Enabled](./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png" alt-text="HBA. hregion. setSize paměťového úložiště. mslab. Enabled" border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

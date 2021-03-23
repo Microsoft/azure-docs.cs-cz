@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: db19b1ae017fa7981747b0e7b4c82e97efc61ed3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 479a8fac111be6e5b1ae2c6ea21fff801ba26f83
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878880"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863577"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Postup konfigurace protokolu BGP u bran Azure VPN Gateway
 
@@ -79,13 +79,15 @@ V tomto kroku vytvoříte bránu VPN s odpovídajícími parametry protokolu BGP
 
    * Pole **IP adresy protokolu BGP APIPA Azure** je volitelné. Pokud vaše místní zařízení VPN používají pro protokol BGP adresu APIPa, musíte vybrat adresu z rozsahu adres APIPa vyhrazené Azure pro VPN, který je od **169.254.21.0** do **169.254.22.255**. V tomto příkladu se používá 169.254.21.11.
 
-   * Pokud vytváříte bránu VPN typu aktivní-aktivní, v části BGP se zobrazí další **druhá vlastní IP adresa protokolu BGP APIPA v Azure**. Zadejte jinou adresu z povoleného rozsahu APIPa (**169.254.21.0** to **169.254.22.255**).
+   * Pokud vytváříte bránu VPN typu aktivní-aktivní, v části BGP se zobrazí další **druhá vlastní IP adresa protokolu BGP APIPA v Azure**. V poli povolený rozsah APIPa (**169.254.21.0** to **169.254.22.255**) vyberte jinou IP adresu. Druhá IP adresa musí být jiná než první adresa.
 
    > [!IMPORTANT]
    >
    > * Ve výchozím nastavení Azure přiřadí privátní IP adresu z rozsahu předpony GatewaySubnet automaticky jako IP adresu BGP Azure na bráně Azure VPN. Vlastní IP adresa APIPa Azure je nutná v případě, že místní zařízení VPN používají adresu APIPa (169.254.0.1 až 169.254.255.254) jako IP adresu protokolu BGP. Azure VPN Gateway zvolí vlastní adresu APIPa, pokud odpovídající prostředek místní síťové brány (místní síť) má adresu APIPa jako IP adresa partnerského uzlu protokolu BGP. Pokud brána místní sítě používá běžnou IP adresu (ne APIPa), Azure VPN Gateway se vrátí k privátní IP adrese z rozsahu GatewaySubnet.
    >
    > * Adresy protokolu BGP APIPa se nesmí překrývat mezi místními zařízeními VPN a všemi připojenými branami Azure VPN.
+   >
+   > * Když se adresy APIPa používají ve službě Azure VPN Gateway, brány nespouštějí relace partnerských vztahů protokolu BGP se zdrojovými IP adresami APIPa. Místní zařízení VPN musí iniciovat připojení partnerského vztahu protokolu BGP.
    >
 
 1. Vyberte možnost **zkontrolovat + vytvořit** a spusťte ověřování. Po úspěšném ověření vyberte **vytvořit** a nasaďte bránu VPN. Pro úplné vytvoření a nasazení brány může trvat až 45 minut. Stav nasazení můžete zobrazit na stránce Přehled pro vaši bránu.

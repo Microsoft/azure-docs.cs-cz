@@ -4,12 +4,12 @@ description: Různé výjimky OutOfMemoryError pro cluster Apache Spark ve služ
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dd33972810ab3b0d51bbd82282d0e6cf6cd9d96c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946341"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868660"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
 
@@ -59,7 +59,7 @@ Nejpravděpodobnější příčinou této výjimky je, že virtuálním počíta
 
 1. Ujistěte se, že cluster HDInsight, který se má použít, má dostatek prostředků v podobě paměti a jader k obsluze aplikace Spark. To lze určit zobrazením oddílu metriky clusteru v uživatelském rozhraní PŘÍZe clusteru pro hodnoty **využité paměti** vs. **Celková velikost paměti** a virtuální jádra a **Celkový počet** **využitých** dat. virtuální jádra.
 
-    ![zobrazení základní paměti příze](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
+    :::image type="content" source="./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png" alt-text="zobrazení základní paměti příze" border="true":::
 
 1. Nastavte následující konfigurace Sparku na odpovídající hodnoty. Vyrovnávat požadavky na aplikace s dostupnými prostředky v clusteru. Tyto hodnoty by neměly překročit 90% dostupné paměti a jader zobrazených pomocí PŘÍZe a měly by taky splňovat minimální požadavky na paměť aplikace Spark:
 
@@ -117,11 +117,11 @@ Velikost paměti serveru Spark můžete zvýšit úpravou `SPARK_DAEMON_MEMORY` 
 
 To můžete provést v uživatelském rozhraní prohlížeče Ambari, a to tak, že vyberete oddíl Spark2/config/Advanced Spark2-env.
 
-![Oddíl Advanced spark2-ENV](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png" alt-text="Oddíl Advanced spark2-ENV" border="true":::
 
 Přidejte následující vlastnost pro změnu paměti serveru Spark historie z 1G na 4G: `SPARK_DAEMON_MEMORY=4g` .
 
-![Spark – vlastnost](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png" alt-text="Spark – vlastnost" border="true":::
 
 Ujistěte se, že jste všechny zasažené služby restartovali z Ambari.
 

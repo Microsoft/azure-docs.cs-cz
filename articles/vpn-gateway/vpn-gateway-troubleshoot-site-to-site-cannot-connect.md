@@ -5,14 +5,14 @@ services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 09/16/2019
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 4454afbe543f374ebd745af7cd59be1ab745036f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cebb05b35379573fc9797e89dee3c0c2bf3de6e2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670883"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867283"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Řešení potíží: připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat.
 
@@ -81,9 +81,7 @@ Zkontrolujte a odeberte uživatelsky definované směrování (UDR) nebo skupiny
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>Krok 5. Ověřte adresu externího rozhraní zařízení místní sítě VPN.
 
-- Pokud je internetová IP adresa zařízení VPN zahrnutá v definici **místní sítě** v Azure, může docházet ke občasnému odpojení.
-- Externí rozhraní zařízení musí být přímo na internetu. Mezi Internetem a zařízením by neměl být žádný překlad síťových adres ani brána firewall.
-- Chcete-li nakonfigurovat clustery brány firewall tak, aby měly virtuální IP adresu, je nutné cluster přerušit a vystavit zařízení VPN přímo veřejnému rozhraní, se kterým může Brána používat rozhraní.
+Pokud je internetová IP adresa zařízení VPN zahrnutá v definici **místní sítě** v Azure, může docházet ke občasnému odpojení.
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>Krok 6. Ověření, že se podsítě přesně shodují (brány založené na zásadách Azure)
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: d3c8a08a14b23492c4bf032dd2b722c59bdf80ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de17bf02392f0bb05820fabba3f9057e067391cf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930088"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865906"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight
 
@@ -33,7 +33,7 @@ Jupyter Notebook je interaktivní prostředí poznámkového bloku, které podpo
 
 2. Z webové stránky Jupyter vyberte **Nový**  >  **PySpark** a vytvořte Poznámkový blok.
 
-   ![Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL")
+   :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL" border="true":::
 
    Vytvoří se nový Poznámkový blok a otevře se s názvem bez názvu ( `Untitled.ipynb` ).
 
@@ -44,7 +44,7 @@ Jupyter Notebook je interaktivní prostředí poznámkového bloku, které podpo
 
 Aplikace mohou vytvářet datový rámec přímo ze souborů nebo složek na vzdáleném úložišti, jako je například Azure Storage nebo Azure Data Lake Storage; z tabulky podregistru; nebo z jiných zdrojů dat, které podporuje Spark, například Cosmos DB, Azure SQL DB, DW a tak dále. Následující snímek obrazovky ukazuje snímek souboru HVAC.csv použitého v tomto kurzu. Tento soubor CSV je součástí všech clusterů HDInsight Spark. Data zaznamenávají změny teploty několika budov.
 
-![Snímek dat pro interaktivní dotaz Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Snímek dat pro interaktivní dotaz Spark SQL")
+:::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png " alt-text="Snímek dat pro interaktivní dotaz Spark SQL" border="true":::
 
 1. Vložte následující kód do prázdné buňky Jupyter Notebook a stisknutím kláves **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
 
@@ -55,7 +55,7 @@ Aplikace mohou vytvářet datový rámec přímo ze souborů nebo složek na vzd
 
     Po spuštění interaktivního dotazu v Jupyter se název okna nebo karty webového prohlížeče zobrazí jako **(Zaneprázdněn)** společně s názvem poznámkového bloku. Zobrazí se také plný kroužek vedle textu **PySpark** v pravém horním rohu. Po dokončení úlohy se změní na prázdný kruh.
 
-    ![Stav interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Stav interaktivního dotazu Spark SQL")
+    :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png " alt-text="Stav interaktivního dotazu Spark SQL" border="true":::
 
 1. Všimněte si vráceného ID relace. Z obrázku výše je ID relace 0. V případě potřeby můžete načíst podrobnosti o relaci tak, že přejdete na `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` místo, kde název_clusteru je název vašeho clusteru Spark a ID je číslo ID vaší relace.
 
@@ -80,11 +80,11 @@ Po vytvoření tabulky můžete nad daty spustit interaktivní dotaz.
 
    Zobrazí se následující tabulkový výstup.
 
-     ![Výstup tabulky pro interaktivní výsledek dotazu Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Výstup tabulky pro interaktivní výsledek dotazu Spark")
+     :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png " alt-text="Výstup tabulky pro interaktivní výsledek dotazu Spark" border="true":::
 
 2. Výsledky můžete také zobrazit v dalších vizualizacích. Pokud chcete výstup zobrazit v podobě plošného grafu, vyberte **Oblast** a pak nastavte další hodnoty následujícím způsobem.
 
-    ![Plošný graf interaktivního dotazu Spark – výsledek](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Plošný graf interaktivního dotazu Spark – výsledek")
+    :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png " alt-text="Plošný graf interaktivního dotazu Spark – výsledek" border="true":::
 
 3. V řádku nabídek poznámkového bloku přejděte na **soubor**  >  **Uložit a kontrolní bod**.
 
@@ -96,7 +96,7 @@ Se službou HDInsight jsou vaše data a Jupyter poznámkové bloky uložené v A
 
 Otevřete cluster na webu Azure Portal a vyberte **Odstranit**.
 
-![Odstranit cluster HDInsight](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
+:::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png " alt-text="Odstranit cluster HDInsight" border="true":::
 
 Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight Spark i výchozí účet úložiště.
 

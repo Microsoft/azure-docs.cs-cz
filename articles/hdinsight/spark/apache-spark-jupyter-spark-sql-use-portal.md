@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
-ms.openlocfilehash: 18225703b2a390f64b4bebd58b0167dd77c454d0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 145dffea50040c86a4af9d77ba8f68cccc8d2958
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930382"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866042"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí Azure Portal
 
@@ -35,7 +35,7 @@ Pomocí Azure Portal vytvoříte cluster HDInsight, který jako úložiště clu
 
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
-    ![Azure Portal vytvoření prostředku](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-resource.png "Vytvořit prostředek na webu Azure Portal")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-resource.png " alt-text="Azure Portal vytvořit prostředek" border="true":::správy zdrojového "Border =" true ":::
 
 1. Vyberte **Analytics**  >  **Azure HDInsight** a přejdete na stránku **vytvořit cluster HDInsight** .
 
@@ -53,7 +53,7 @@ Pomocí Azure Portal vytvoříte cluster HDInsight, který jako úložiště clu
     |Heslo přihlášení clusteru| Zadejte přihlašovací heslo clusteru. |
     |Uživatelské jméno Secure Shell (SSH)| Zadejte uživatelské jméno SSH. V tomto rychlém startu se používá uživatelské jméno SSH **sshuser**. Ve výchozím nastavení má tento účet stejné heslo jako účet *Uživatelské jméno přihlášení clusteru*. |
 
-    ![Snímek obrazovky s vybraným kartou základy vám ukáže vytvořit cluster s přehledem o vytváření H D.](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "Vytvoření clusteru Spark v HDInsight základní konfigurace")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png " alt-text="Snímek obrazovky s vybraným kartou základy vám ukáže vytvořit cluster s přehledem o vytváření H D." border="true":::
 
     Vyberte **Další: >>úložiště** pro pokračování na stránku **úložiště** .
 
@@ -66,7 +66,7 @@ Pomocí Azure Portal vytvoříte cluster HDInsight, který jako úložiště clu
     |Účet primárního úložiště|Použijte automaticky vyplněnou hodnotu.|
     |Kontejner|Použijte automaticky vyplněnou hodnotu.|
 
-    ![Snímek obrazovky s vybraným úložištěm vám ukáže vytvořit cluster s přehledem o vytváření H-D.](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "Vytvoření clusteru Spark v HDInsight základní konfigurace")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png " alt-text="Snímek obrazovky s vybraným úložištěm vám ukáže vytvořit cluster s přehledem o vytváření H-D." border="true":::
 
     Pokračujte výběrem **Zobrazit + vytvořit** .
 
@@ -82,7 +82,7 @@ Jupyter Notebook je interaktivní prostředí poznámkového bloku, které podpo
 
 1. Vyberte **Nový**  >  **PySpark** a vytvořte Poznámkový blok.
 
-   ![Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL" border="true":::
 
    Nový poznámkový blok se vytvoří a otevře s názvem Bez názvu (Bez názvu.pynb).
 
@@ -92,7 +92,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
 
 1. Ověřte, že je jádro připravené. Jádro bude připravené, až se vedle názvu jádra v poznámkovém bloku zobrazí prázdný kroužek. Plný kruh označuje, že je jádro zaneprázdněno.
 
-    ![Snímek obrazovky zobrazuje okno Jupyter s indikátorem PySpark.](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Dotaz na podregistr v HDInsight")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png " alt-text="Snímek obrazovky zobrazuje okno Jupyter s indikátorem PySpark." border="true"::: Indikátor ARK. " Border = "true":::
 
     Při prvním spuštění poznámkového bloku jádro provede některé úlohy na pozadí. Počkejte, až bude jádro připravené.
 
@@ -105,7 +105,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
 
     Když použijete Jupyter Notebook s clusterem HDInsight, získáte předvolbu `sqlContext` , kterou můžete použít ke spouštění dotazů na podregistr pomocí Spark SQL. `%%sql` říká poznámkovému bloku Jupyter, aby ke spuštění dotazu Hive použil přednastavený kontext `sqlContext`. Dotaz načte prvních 10 řádků z tabulky Hive (**hivesampletable**), která je ve výchozím nastavení k dispozici na všech clusterech HDInsight. Získání výsledků trvá přibližně 30 sekund. Výstup vypadá takto:
 
-    ![Snímek obrazovky se zobrazí okno Jupyter pro Poznámkový blok vytvořený v rámci tohoto rychlého startu.](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png "Dotaz na podregistr v HDInsight")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png " alt-text="Snímek obrazovky se zobrazí okno Jupyter pro Poznámkový blok vytvořený v rámci tohoto rychlého startu." border="true"::: je rychlý Start. " Border = "true":::
 
     Při každém spuštění dotazu v Jupyter se v názvu okna webového prohlížeče zobrazí stav **(Busy)** (Zaneprázdněn) společně s názvem poznámkového bloku. Zobrazí se také plný kroužek vedle textu **PySpark** v pravém horním rohu.
 
@@ -118,7 +118,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
 
     Obrazovka by se měla aktualizovat a zobrazit výstup dotazu.
 
-    ![Výstup dotazů na podregistr v HDInsight](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query-output.png "Výstup dotazů na podregistr v HDInsight")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query-output.png " alt-text="Výstup dotazů na podregistr v HDInsight" border="true"::: Přehled "Border =" true ":::
 
 1. V nabídce **Soubor** poznámkového bloku vyberte **Zavřít a zastavit**. Ukončením poznámkového bloku se uvolní prostředky clusteru.
 
@@ -128,7 +128,7 @@ HDInsight ukládá vaše data do Azure Storage nebo Azure Data Lake Storage, tak
 
 Přepněte zpět na web Azure Portal a vyberte **Odstranit**.
 
-![Azure Portal odstranit cluster HDInsight](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-azure-portal-delete-cluster.png "Odstranit cluster HDInsight")
+:::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure Portal odstranit" border="true":::cluster pro dohled clusteru HDInsight "Border =" true ":::
 
 Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight i výchozí účet úložiště.
 

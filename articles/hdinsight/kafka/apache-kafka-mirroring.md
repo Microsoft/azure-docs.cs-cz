@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633f01d813fe4e6c56d88052cbc7440c43f350dc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940846"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870496"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití nástroje MirrorMaker k replikaci témat Apache Kafka s využitím platformy Kafka ve službě HDInsight
 
@@ -34,7 +34,7 @@ Nejužitečnější nastavení zrcadlení pro zotavení po havárii využívá c
 
 Následující diagram znázorňuje proces zrcadlení a způsob komunikace mezi clustery:
 
-![Diagram procesu zrcadlení](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
+:::image type="content" source="./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png" alt-text="Diagram procesu zrcadlení" border="false":::
 
 Primární a sekundární clustery se mohou lišit v počtu uzlů a oddílů a posuny v rámci těchto témat jsou také jiné. Zrcadlení uchovává klíčovou hodnotu, která se používá pro dělení na oddíly, takže pořadí záznamů je zachováno po jednotlivých klíčích.
 
@@ -84,14 +84,14 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
     1. Vyberte **Přidat**.
     1. Na obrazovce **Přidat partnerský vztah** zadejte podrobnosti, jak je znázorněno na snímku obrazovky níže.
 
-        ![HDInsight Kafka Přidání partnerského vztahu virtuální sítě](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/hdi-add-vnet-peering.png" alt-text="HDInsight Kafka Přidání partnerského vztahu virtuální sítě" border="true":::
 
 ### <a name="configure-ip-advertising"></a>Konfigurace reklamy protokolu IP
 
 Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adres zprostředkovatele místo názvů domén.
 
 1. Pro primární cluster přejít na řídicí panel `https://PRIMARYCLUSTERNAME.azurehdinsight.net` Ambari:
-1. Vyberte **služby**  >  **Kafka**. CliSelectck kartu **Konfigurace** .
+1. Vyberte **služby**  >  **Kafka**. Vyberte kartu **Konfigurace** .
 1. Do dolní části **šablony Kafka-ENV** přidejte následující konfigurační řádky. Vyberte **Uložit**.
 
     ```
@@ -107,7 +107,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 1. V části **Uložit změny konfigurace** vyberte **OK** .
 1. Vyberte **restartovat** restart  >  **všech ovlivněných** v oznámení **požadovaná k restartování** . Vyberte **Potvrdit restartování vše**.
 
-    ![Ambari restartování Apache All ovlivnilo](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/ambari-restart-notification.png" alt-text="Ambari restartování Apache All ovlivnilo" border="true":::
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Nakonfigurujte Kafka, aby naslouchal na všech síťových rozhraních.
     
@@ -120,7 +120,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 1. Na řídicím panelu Ambari vyberte **hostitelé** .
 1. Poznamenejte si IP adresy pro zprostředkovatele a uzly Zookeeper. Uzly zprostředkovatele **mají jako první** dvě písmena názvu hostitele a uzly Zookeeper mají **ZK** jako první dvě písmena názvu hostitele.
 
-    ![IP adresy uzlů pro zobrazení Apache Ambari](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/view-node-ip-addresses2.png" alt-text="IP adresy uzlů pro zobrazení Apache Ambari" border="true":::
 
 1. Opakujte předchozí tři kroky pro druhý cluster **Kafka-Secondary-cluster**: Nakonfigurujte reklamu protokolu IP, nastavte naslouchací procesy a poznamenejte si IP adresy zprostředkovatele a Zookeeper.
 
@@ -256,7 +256,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
         1. Změňte hodnotu `auto.create.topics.enable` na true a pak vyberte __Save (Uložit__). Přidejte poznámku a pak znovu vyberte __Uložit__ .
         1. Vyberte službu __Kafka__ , vyberte __restartovat__ a pak vyberte __restartovat všechny ovlivněné__. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
 
-        ![Kafka povolit automatické vytváření témat](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png" alt-text="Kafka povolit automatické vytváření témat" border="true":::
 
 ## <a name="start-mirrormaker"></a>Spustit nástroje MirrorMaker
 

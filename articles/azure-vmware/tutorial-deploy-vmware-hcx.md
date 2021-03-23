@@ -3,12 +3,12 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: d4607483e64e6b7daa45f576f70ce3f5eeef65ca
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801107"
+ms.locfileid: "104869085"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -265,7 +265,7 @@ Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: vid
 1. V části **Vybrat distribuované přepínače pro síťová rozšíření** vyberte přepínače, které obsahují virtuální počítače, které se mají migrovat do řešení Azure VMware na rozšířené síti vrstvy 2. Potom vyberte **Pokračovat**.
 
    > [!NOTE]
-   > Pokud nemigrujete virtuální počítače ve rozšířených sítích úrovně 2, můžete tento krok přeskočit.
+   > Pokud nemigrujete virtuální počítače na rozšířené sítě úrovně 2 (L2), můžete tento krok přeskočit.
    
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="Snímek obrazovky, který zobrazuje výběr distribuovaných virtuálních přepínačů a tlačítka pro pokračování" lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
@@ -376,4 +376,4 @@ Další informace o použití HCX najdete v technické dokumentaci k VMware:
 * [Dokumentace k VMware HCX](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [Migrace Virtual Machines s využitím VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX požadované porty](https://ports.vmware.com/home/VMware-HCX)
-* [Před schválením licenčního klíče nastavte HCX proxy serveru.](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)
+* [Před schválením licenčního klíče nastavte proxy server HCX.](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)

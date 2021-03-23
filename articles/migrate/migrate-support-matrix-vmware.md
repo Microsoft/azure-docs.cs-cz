@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 943223ee99838b2b6d6de7eecb3c3b8c06d3562c
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 520aedd9dbb618788107bc83c5d72ad237acea22
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773585"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870734"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
-Tento článek shrnuje požadavky a požadavky na podporu při zjišťování a hodnocení serverů běžících v prostředí VMware pro migraci do Azure pomocí nástroje [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool. Chcete-li vyhodnotit servery, vytvořte projekt, který do projektu přidá nástroj Azure Migrate: Discovery and Assessment. Po přidání nástroje nasadíte zařízení Azure Migrate. Zařízení nepřetržitě zjišťuje místní servery a odesílá metadata o konfiguraci a výkonu do Azure. Po dokončení zjišťování budete shromažďovat zjištěné servery do skupin a spustit posouzení pro skupinu.
+Tento článek shrnuje požadavky a požadavky na podporu při zjišťování a hodnocení serverů běžících v prostředí VMware pro migraci do Azure pomocí nástroje [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool. Chcete-li vyhodnotit servery, vytvořte projekt, který do projektu přidá nástroj Azure Migrate: Discovery and Assessment. Po přidání nástroje nasadíte zařízení Azure Migrate. Zařízení nepřetržitě zjišťuje místní servery a odesílá metadata o konfiguraci a výkonu do Azure. Po dokončení zjišťování budete shromažďovat zjištěné servery do skupin a spustit posouzení pro skupinu.
 
 Pokud chcete migrovat servery VMware do Azure, přečtěte si [matici podpora migrace](migrate-support-matrix-vmware-migration.md).
 
@@ -25,7 +25,7 @@ Pokud chcete migrovat servery VMware do Azure, přečtěte si [matici podpora mi
 
 **Požadavek** | **Podrobnosti**
 --- | ---
-**Omezení projektu** | V předplatném Azure můžete vytvořit více projektů.<br/><br/> Můžete vyhledat a posoudit až 50 000 serverů z prostředí VMware v jednom [projektu](migrate-support-matrix.md#azure-migrate-projects). Projekt může také zahrnovat fyzické servery a servery z prostředí Hyper-V, a to až do limitů hodnocení.
+**Omezení projektu** | V předplatném Azure můžete vytvořit více projektů.<br/><br/> Můžete vyhledat a posoudit až 50 000 serverů z prostředí VMware v jednom [projektu](migrate-support-matrix.md#project). Projekt může také zahrnovat fyzické servery a servery z prostředí Hyper-V, a to až do limitů hodnocení.
 **Zjišťování** | Zařízení Azure Migrate může na vCenter Server zjistit až 10 000 serverů.
 **Posouzení** | Do jedné skupiny můžete přidat až 35 000 serverů.<br/><br/> V jednom posouzení můžete posoudit až 35 000 serverů.
 
@@ -78,9 +78,6 @@ Kromě zjišťování serverů Azure Migrate: zjišťování a hodnocení může
 **Přístup k portu** | Zařízení Azure Migrate musí být schopné se připojit k portu TCP 443 na hostitelích ESXi, na kterých běží servery, na kterých chcete zjišťování aplikací provést. VCenter Server vrátí připojení hostitele ESXi pro stažení souboru, který obsahuje podrobnosti o inventáři softwaru.
 
 ## <a name="requirements-for-discovery-of-sql-server-instances-and-databases"></a>Požadavky na zjišťování instancí SQL Server a databází
-
-> [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 [Zjišťování aplikací](how-to-discover-applications.md) identifikuje instance SQL Server. Pomocí těchto informací se zařízení pokusí připojit k příslušným instancím SQL Server prostřednictvím přihlašovacích údajů pro ověřování systému Windows nebo přihlašovacích údajů SQL Serverch ověřování uvedených na zařízení. Po připojení zařízení shromáždí údaje o konfiguraci a výkonu SQL Server instance a databáze. Konfigurační data SQL Server se aktualizují každých 24 hodin a data o výkonu se zaznamenávají každých 30 sekund.
 

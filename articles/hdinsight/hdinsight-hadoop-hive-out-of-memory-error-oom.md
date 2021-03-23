@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d1e8f596ee022a59baa89e7f78648c98420eb44b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945710"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868864"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Oprava chyby nedostatku paměti Apache Hive ve službě Azure HDInsight
 
@@ -104,7 +104,7 @@ Naše technické podpory a technické týmy společně nalezly jeden z problém�
 
 Je pravděpodobnější, že připojení k mapě je příčinou chyby nedostatku paměti v haldě Java. Jak je vysvětleno v blogu v příspěvku [nastavení paměti Hadoop příze ve službě HDInsight](/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight), když se tez prováděcí modul používá ke skutečnému využití prostoru haldy, patří do kontejneru TEZ. Podívejte se na následující obrázek popisující paměť kontejneru TEZ.
 
-![Paměťový diagram kontejneru tez: chyba nedostatek paměti v podregistru](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+:::image type="content" source="./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png" alt-text="Paměťový diagram kontejneru tez: chyba nedostatek paměti v podregistru" border="false":::
 
 Jak ukazuje Blogový příspěvek, definuje následující dvě nastavení paměti paměť kontejneru pro haldu: **podregistr. TEZ. Container. Size** a **podregistr. TEZ. Java. výslovný**. Z našeho prostředí neznamená výjimka nedostatku paměti, že velikost kontejneru je příliš malá. Znamená to, že velikost haldy Java (podregistr. TEZ. Java. výslovný) je moc malá. Takže kdykoli se zobrazí nedostatek paměti, můžete se pokusit zvětšit **podregistr. TEZ. Java. výslovný**. V případě potřeby možná budete muset zvětšit **podregistr. TEZ. Container. Size**. Nastavení **Java. výslovný** by mělo být přibližně 80% **kontejneru. Size**.
 

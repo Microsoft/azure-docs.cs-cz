@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: d14b96843b489b28fc7d83348e39638272c06da5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6ef11e9c7907f57b3b8de0a042e1035bce638cf4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942765"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863271"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Příklad streamování Apache Spark (DStream) s Apache Kafka v HDInsight
 
@@ -28,7 +28,7 @@ Naučte se používat [Apache Spark](https://spark.apache.org/) ke streamování
 
 Apache Kafka v HDInsight neposkytuje přístup ke zprostředkovatelům Kafka prostřednictvím veřejného Internetu. Cokoli, co se mluví do Kafka, musí být ve stejné virtuální síti Azure jako uzly v clusteru Kafka. V tomto příkladu se clustery Kafka a Spark nacházejí ve službě Azure Virtual Network. Následující diagram znázorňuje komunikaci mezi clustery:
 
-![Diagram clusterů Spark a Kafka ve virtuální síti Azure](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png" alt-text="Diagram clusterů Spark a Kafka ve virtuální síti Azure" border="false":::
 
 > [!NOTE]  
 > I když je Kafka sám o komunikaci v rámci virtuální sítě, další služby v clusteru, jako jsou SSH a Ambari, jsou dostupné přes Internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
@@ -37,28 +37,28 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
 
 1. Pomocí následujícího tlačítka se přihlaste do Azure a otevřete šablonu na webu Azure Portal.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Šablona Azure Resource Manager se nachází na adrese **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** .
+   Šablona Azure Resource Manager se nachází na adrese **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** .
 
-    > [!WARNING]  
-    > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Tato šablona vytvoří cluster Kafka se třemi pracovními uzly.
+   > [!WARNING]
+   > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Tato šablona vytvoří cluster Kafka se třemi pracovními uzly.
 
-    Tato šablona vytvoří cluster HDInsight 3,6 pro Kafka i Spark.
+   Tato šablona vytvoří cluster HDInsight 3,6 pro Kafka i Spark.
 
 1. K naplnění položek v části **vlastní nasazení** použijte následující informace:
 
-    |Vlastnost |Hodnota |
-    |---|---|
-    |Skupina prostředků|Vytvořte skupinu nebo vyberte některou existující.|
-    |Umístění|Vyberte umístění geograficky blízko vás.|
-    |Základní název clusteru|Tato hodnota se používá jako základní název pro clustery Spark a Kafka. Například zadáním **hdistreaming** se vytvoří cluster Spark s názvem __Spark-Hdistreaming__ a cluster Kafka s názvem **Kafka-hdistreaming**.|
-    |Uživatelské jméno přihlášení clusteru|Uživatelské jméno správce pro clustery Spark a Kafka.|
-    |Heslo přihlášení clusteru|Heslo uživatele správce pro clustery Spark a Kafka.|
-    |Uživatelské jméno SSH|Uživatel SSH, který se má vytvořit pro clustery Sparku a Kafka.|
-    |Heslo SSH|Heslo pro uživatele SSH pro clustery Spark a Kafka|
+   |Vlastnost |Hodnota |
+   |---|---|
+   |Skupina prostředků|Vytvořte skupinu nebo vyberte některou existující.|
+   |Umístění|Vyberte umístění geograficky blízko vás.|
+   |Základní název clusteru|Tato hodnota se používá jako základní název pro clustery Spark a Kafka. Například zadáním **hdistreaming** se vytvoří cluster Spark s názvem __Spark-Hdistreaming__ a cluster Kafka s názvem **Kafka-hdistreaming**.|
+   |Uživatelské jméno přihlášení clusteru|Uživatelské jméno správce pro clustery Spark a Kafka.|
+   |Heslo přihlášení clusteru|Heslo uživatele správce pro clustery Spark a Kafka.|
+   |Uživatelské jméno SSH|Uživatel SSH, který se má vytvořit pro clustery Sparku a Kafka.|
+   |Heslo SSH|Heslo pro uživatele SSH pro clustery Spark a Kafka|
 
-    ![Parametry vlastního nasazení HDInsight](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
+   :::image type="content" source="./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png" alt-text="Parametry vlastního nasazení HDInsight":::
 
 1. Přečtěte si **podmínky a ujednání** a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 
@@ -66,7 +66,7 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
 
 Po vytvoření prostředků se zobrazí stránka Souhrn.
 
-![Shrnutí skupiny prostředků pro virtuální síť a clustery](./media/hdinsight-apache-spark-with-kafka/hdinsight-group-blade.png)
+:::image type="content" source="./media/hdinsight-apache-spark-with-kafka/hdinsight-group-blade.png" alt-text="Shrnutí skupiny prostředků pro virtuální síť a clustery":::
 
 > [!IMPORTANT]  
 > Všimněte si, že názvy clusterů HDInsight jsou **Spark-Base** a **Kafka-BASE**, kde Base je název, který jste zadali pro šablonu. Tyto názvy použijete v pozdějších krocích při připojování ke clusterům.

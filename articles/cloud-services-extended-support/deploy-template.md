@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1e2a0859227ad790763dc9ae07cb408a72538f90
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773364"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865583"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Nasazení cloudové služby (rozšířené podpory) pomocí šablon ARM
 
@@ -141,7 +141,7 @@ V tomto kurzu se dozvíte, jak vytvořit nasazení cloudové služby (rozšíře
     ```
  
 
-4. Přidejte odkaz na Trezor klíčů v  `OsProfile`   části šablony ARM. Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud Services (Rozšířená podpora). Přidejte certifikáty do Key Vault a pak v souboru konfigurace služby (. cscfg) odkázat na kryptografické otisky certifikátů. Také je nutné povolit Key Vault pro příslušná oprávnění, aby prostředek Cloud Services (Rozšířená podpora) mohl získat certifikát uložený jako tajné klíče z Key Vault. Trezor klíčů musí být umístěný ve stejné oblasti a předplatném jako cloudová služba a musí mít jedinečný název. Další informace najdete v tématu [používání certifikátů s Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md).
+4. Přidejte odkaz na Trezor klíčů v  `OsProfile`   části šablony ARM. Key Vault slouží k ukládání certifikátů, které jsou přidruženy k Cloud Services (Rozšířená podpora). Přidejte certifikáty do Key Vault a pak v souboru konfigurace služby (. cscfg) odkázat na kryptografické otisky certifikátů. Musíte taky povolit Key Vault zásady přístupu pro Azure Virtual Machines for Deployment (na portálu), aby Cloud Services (Rozšířená podpora) mohl načíst certifikát uložený jako tajné klíče z Key Vault. Trezor klíčů musí být umístěný ve stejné oblasti a předplatném jako cloudová služba a musí mít jedinečný název. Další informace najdete v tématu [používání certifikátů s Cloud Services (Rozšířená podpora)](certificates-and-key-vault.md).
      
     ```json
     "osProfile": { 

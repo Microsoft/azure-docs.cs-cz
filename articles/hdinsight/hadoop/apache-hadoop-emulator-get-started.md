@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 60f4e4998e1077ca373f47a0cdf35c9d7a064605
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946623"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866671"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop izolovaným prostorem (sandbox), emulátor na virtuálním počítači
 
@@ -39,7 +39,7 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 1. V nabídce **soubor** klikněte na položku **importovat zařízení** a pak zadejte obrázek izolovaného prostoru (Hortonworks).
 1. Vyberte izolovaný prostor Hortonworks, klikněte na **Start** a pak na **normální Start**. Po dokončení procesu spuštění virtuálního počítače se zobrazí pokyny pro přihlášení.
 
-    ![normální začátek VirtualBox Manageru](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    :::image type="content" source="./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png" alt-text="normální začátek VirtualBox Manageru" border="true":::
 
 1. Otevřete webový prohlížeč a přejděte na zobrazenou adresu URL (obvykle `http://127.0.0.1:8888` ).
 
