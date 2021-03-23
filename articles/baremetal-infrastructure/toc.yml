@@ -1,0 +1,89 @@
+- name: Azure BareMetal Infrastructure
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je infrastruktura BareMetal?
+      href: concepts-baremetal-infrastructure-overview.md
+    - name: Seznámení s podmínkami
+      href: know-baremetal-terms.md
+    - name: Připojit jednotky instance BareMetal v Azure
+      displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
+      href: connect-baremetal-infrastructure.md
+- name: Úlohy
+  items:
+    - name: Typy úloh služby BareMetal
+      href: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - name: SAP HANA v Azure (velké instance)
+      items:
+        - name: Certifikace
+          href: /azure/virtual-machines/workloads/sap/hana-certification?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Dostupné skladové položky pro HLI
+          href: /azure/virtual-machines/workloads/sap/hana-available-skus?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Velikosti
+          href: /azure/virtual-machines/workloads/sap/hana-sizing?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Požadavky na onboarding
+          href: /azure/virtual-machines/workloads/sap/hana-onboarding-requirements?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Rozšiřující uzly a datové vrstvy SAP HANA
+          href: /azure/virtual-machines/workloads/sap/hana-data-tiering-extension-nodes?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Provozní model a zodpovědnosti
+          href: /azure/virtual-machines/workloads/sap/hana-operations-model?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Kompatibilní operační systémy
+          href: /azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Podporované scénáře HLI
+          href: /azure/virtual-machines/workloads/sap/hana-supported-scenario?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Architektura
+          items:
+            - name: Obecná architektura
+              href: /azure/virtual-machines/workloads/sap/hana-architecture?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Architektura sítě
+              href: /azure/virtual-machines/workloads/sap/hana-network-architecture?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Architektura úložiště
+              href: /azure/virtual-machines/workloads/sap/hana-storage-architecture?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Infrastruktura a možnosti připojení
+          items:
+            - name: Nasazení HLI
+              href: /azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Připojení virtuálních počítačů Azure k Velkým instancím HANA
+              href: /azure/virtual-machines/workloads/sap/hana-connect-azure-vm-large-instances?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Připojení virtuální sítě k Velkým instancím HANA s využitím ExpressRoute
+              href: /azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Další požadavky na síť
+              href: /azure/virtual-machines/workloads/sap/hana-additional-network-requirements?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Instalace SAP HANA
+          items:
+            - name: Ověření konfigurace
+              href: /azure/virtual-machines/workloads/sap/hana-installation?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Ukázková instalace HANA
+              href: /azure/virtual-machines/workloads/sap/hana-example-installation?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Vysoká dostupnost a zotavení po havárii
+          items:
+            - name: Možnosti a aspekty
+              href: /azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Zálohování a obnovení
+              href: /azure/virtual-machines/workloads/sap/hana-backup-restore?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Principy a příprava
+              href: /azure/virtual-machines/workloads/sap/hana-concept-preparation?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Postup převzetí služeb při selhání pro zotavení po havárii
+              href: /azure/virtual-machines/workloads/sap/hana-failover-procedure?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Řešení potíží a monitorování
+          items:
+            - name: Sledování HLI
+              href: /azure/virtual-machines/workloads/sap/troubleshooting-monitoring?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Sledování a řešení potíží na straně HANA
+              href: /azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+        - name: Postup
+          items:
+            - name: Nastavení vysoké dostupnosti s využitím techniky STONITH
+              href: /azure/virtual-machines/workloads/sap/ha-setup-with-stonith?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Zálohování operačního systému pro SKU typu II
+              href: /azure/virtual-machines/workloads/sap/os-backup-type-ii-skus?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Povolení Kdump pro Velké instance HANA
+              href: /azure/virtual-machines/workloads/sap/hana-large-instance-enable-kdump?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Upgrade operačního systému pro Velké instance HANA
+              href: /azure/virtual-machines/workloads/sap/os-upgrade-hana-large-instance?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Nastavení serveru SMT pro SUSE Linux
+              href: /azure/virtual-machines/workloads/sap/hana-setup-smt?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Migrace HLI do virtuálního počítače Azure
+              href: /azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+            - name: Nákup rezervace pro Velké instance SAP HANA
+              href: /azure/cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity

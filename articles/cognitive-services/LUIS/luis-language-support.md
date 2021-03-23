@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 724b94a44ae289063bbb1c6ebf53b38c0a617b88
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97845457"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799323"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyků a oblastí pro LUIS
 
@@ -44,7 +44,7 @@ LUIS rozumí projevy v následujících jazycích:
 | Korejština |`ko-KR` |✔|-|-|Jenom klíčová fráze|
 | Maráthština | `mr-IN`|-|-|-|-|
 | Portugalština (Brazílie) |`pt-BR` |✔| ✔ |✔ |Ne všechny dílčí kultury|
-| Španělština (Mexiko)|`es-MX` |-|-|✔|✔|
+| Španělština (Mexiko)|`es-MX` |-|✔|✔|✔|
 | Španělština (Španělsko) |`es-ES` |✔| ✔ |✔|✔|
 | Tamilština | `ta-IN`|-|-|-|-|
 | Telugština | `te-IN`|-|-|-|-|

@@ -1,18 +1,14 @@
 ---
 title: Přehled portfolia agenta a podpora operačního systému (Preview)
 description: Azure Defender pro IoT poskytuje velké portfolio agentů na základě typu zařízení.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
-ms.service: azure
-ms.openlocfilehash: f731b034b5d4f795bae51107e9ff4e2e90788d7d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6c65ad33439002bd651c4c926b6452868f6137ba
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120143"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784760"
 ---
 # <a name="agent-portfolio-overview-and-os-support-preview"></a>Přehled portfolia agenta a podpora operačního systému (Preview)
 

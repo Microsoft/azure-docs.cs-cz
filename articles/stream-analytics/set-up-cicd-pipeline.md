@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dbd6a1a0c8643adc4918cc15e214e903dfb1ccb6
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466393"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775931"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Vytvoření kanálu CI/CD pro úlohu Stream Analytics pomocí Azure DevOps
 
@@ -20,13 +20,13 @@ V tomto článku se dozvíte, jak vytvořit kanály [sestavení](/azure/devops/p
 
 ## <a name="commit-your-stream-analytics-project"></a>Potvrzení projektu Stream Analytics
 
-Než začnete, potvrďte kompletní Stream Analytics projekty jako zdrojové soubory do úložiště [Azure DevOps](/azure/devops/user-guide/source-control) . Na toto [ukázkové úložiště](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) a [Stream Analytics zdrojový kód projektu](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) můžete odkazovat v Azure Pipelines.
+Než začnete, potvrďte kompletní Stream Analytics projekty jako zdrojové soubory do úložiště [Azure DevOps](/azure/devops/user-guide/source-control) . Na toto [ukázkové úložiště](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo) a [Stream Analytics zdrojový kód projektu](https://dev.azure.com/ASA-CICD-sample/_git/azure-streamanalytics-cicd-demo) můžete odkazovat v Azure Pipelines.
 
 Kroky v tomto článku používají Visual Studio Code projekt Stream Analytics. Pokud používáte projekt sady Visual Studio, postupujte podle kroků v části [Automatizace sestavení, testování a nasazení Azure Stream Analytics úlohy pomocí nástrojů CI/CD](cicd-tools.md).
 
 ## <a name="create-a-build-pipeline"></a>Vytvoření kanálu buildu
 
-V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku můžete odkazovat v Azure DevOps na tento ukázkový [profil automatického sestavení a testování](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) .
+V této části se dozvíte, jak vytvořit kanál sestavení. Na tuto ukázku můžete odkazovat v Azure DevOps na tento ukázkový [profil automatického sestavení a testování](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_build) .
 
 1. Otevřete webový prohlížeč a přejděte do projektu v Azure DevOps.  
 
@@ -155,7 +155,7 @@ Soubor souhrnu testů a soubory šablon Azure Resource Manager lze nalézt v č�
 
 ## <a name="release-with-azure-pipelines"></a>Vydání pomocí Azure Pipelines
 
-V této části se dozvíte, jak vytvořit kanál pro vydávání verzí. Na tento ukázkový [kanál verze](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2&preserve-view=true) můžete odkazovat v Azure DevOps.
+V této části se dozvíte, jak vytvořit kanál pro vydávání verzí. Na tento ukázkový [kanál verze](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2) můžete odkazovat v Azure DevOps.
 
 Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics Visual Studio Code.
 

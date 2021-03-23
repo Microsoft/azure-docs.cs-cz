@@ -3,16 +3,16 @@ title: Případ použití Data Factory – doporučení pro produkty
 description: Seznamte se s případem použití implementovaným pomocí Azure Data Factory společně s jinými službami.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b20eef90cebab59f823e1766d28eb355f317463d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 44c66f5fa89e7293667c930bfd1720d72dc26bf4
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100387185"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785066"
 ---
 # <a name="use-case---product-recommendations"></a>Případ použití – doporučení pro produkty
 Azure Data Factory je jedna z mnoha služeb, které se používají k implementaci Cortana Intelligence Suite akcelerátorů řešení.  Podrobnosti o této sadě najdete na stránce [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) . V tomto dokumentu popisujeme běžný případ použití, který uživatelé Azure už vyřešili a implementovali pomocí Azure Data Factory a dalších služeb Cortana Intelligence komponent.

@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 0a7be682f921efdfae486e8f6545758964a941ae
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90ad35757834c14abdffb017ff31b3296074ca24
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098855"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802433"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-the-azure-cli"></a>Nasazení Azure spot Virtual Machines pomocí Azure CLI
 
@@ -33,7 +33,7 @@ Pokud chcete vytvořit Virtual Machines Azure, musíte mít spuštěnou verzi Az
 
 Přihlaste se k Azure pomocí [AZ Login](/cli/azure/reference-index#az-login).
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
@@ -41,7 +41,7 @@ az login
 
 Tento příklad ukazuje, jak nasadit virtuální počítač se systémem Linux na platformě Linux, který nebude vyřazení na základě ceny. Zásada vyřazení je nastavená tak, aby se virtuální počítač nastavil jako neplatný, aby se mohl později restartovat. Pokud chcete odstranit virtuální počítač a příslušný disk, když je virtuální počítač vyřazený, nastavte `--eviction-policy` na `Delete` .
 
-```azurecli
+```azurecli-interactive
 az group create -n mySpotGroup -l eastus
 az vm create \
     --resource-group mySpotGroup \
@@ -58,7 +58,7 @@ az vm create \
 
 Po vytvoření virtuálního počítače se můžete dotazovat, aby se zobrazila maximální fakturovaná cena za všechny virtuální počítače ve skupině prostředků.
 
-```azurecli
+```azurecli-interactive
 az vm list \
    -g mySpotGroup \
    --query '[].{Name:name, MaxPrice:billingProfile.maxPrice}' \
@@ -67,21 +67,55 @@ az vm list \
 
 ## <a name="simulate-an-eviction"></a>Simulace vyřazení
 
-Můžete [simulovat vyřazení](/rest/api/compute/virtualmachines/simulateeviction) virtuálních počítačů se systémem Azure na místě, abyste mohli otestovat, jak dobře bude vaše aplikace schopná vyřadit do náhlého vyřazení. 
+Můžete simulovat vyřazení virtuálních počítačů se systémem Azure pomocí REST, PowerShellu nebo rozhraní příkazového řádku a otestovat tak, jak dobře bude aplikace reagovat na náhlé vyřazení.
 
-Pro vaše informace nahraďte následující údaje: 
+Ve většině případů budete chtít použít REST API [Virtual Machines-simulovat vyřazení](/rest/api/compute/virtualmachines/simulateeviction) , které vám pomůže s automatizovaným testováním aplikací. Pro REST `Response Code: 204` to znamená, že simulované vyřazení bylo úspěšné. Simulované vyřazení můžete kombinovat s [naplánovanou službou Event Service](scheduled-events.md), abyste mohli automatizovat, jak bude vaše aplikace reagovat po vyřazení virtuálního počítače.
 
-- `subscriptionId`
-- `resourceGroupName`
-- `vmName`
+Pokud chcete zobrazit naplánované události v akci, podívejte se na [Azure pátek – s využitím azure Scheduled Events pro přípravu údržby virtuálních počítačů](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance).
 
 
-```rest
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+### <a name="quick-test"></a>Rychlý test
+
+Pro rychlý test k zobrazení, jak bude simulovaná vyřazení fungovat, si projdeme dotazování naplánované služby událostí, abyste viděli, co vypadá při simulaci vyřazení pomocí Azure CLI.
+
+Naplánovaná služba událostí je pro vaši službu povolená, když poprvé vytvoříte žádost o události. 
+
+Vzdáleně na svůj virtuální počítač a otevřete příkazový řádek. 
+
+Do příkazového řádku na svém VIRTUÁLNÍm počítači zadejte:
+
 ```
-`Response Code: 204` znamená, že simulované vyřazení bylo úspěšné. 
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+```
 
-**Další kroky**
+Tato první odpověď může trvat až 2 minuty. Od této chvíle by se měly zobrazit výstup téměř okamžitě.
+
+Z počítače, ve kterém je nainstalované rozhraní příkazového řádku Azure (jako je váš místní počítač), simulujte vyřazení pomocí [AZ VM simulace-vyřazení](https://docs.microsoft.com/cli/azure/vm#az_vm_simulate_eviction). Název skupiny prostředků a název virtuálního počítače nahraďte vlastními. 
+
+```azurecli-interactive
+az vm simulate-eviction --resource-group mySpotRG --name mySpot
+```
+
+Výstup odpovědi bude v `Status: Succeeded` případě úspěšného provedení žádosti.
+
+Rychle se vraťte ke vzdálenému připojení k virtuálnímu počítači na místě a znovu spusťte dotaz na Scheduled Events koncový bod. Opakujte následující příkaz, dokud nezískáte výstup, který obsahuje další informace:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+```
+
+Když naplánovaná událost získá oznámení vyřazení, dostanete odpověď, která bude vypadat podobně jako v tomto příkladu:
+
+```output
+{"DocumentIncarnation":1,"Events":[{"EventId":"A123BC45-1234-5678-AB90-ABCDEF123456","EventStatus":"Scheduled","EventType":"Preempt","ResourceType":"VirtualMachine","Resources":["myspotvm"],"NotBefore":"Tue, 16 Mar 2021 00:58:46 GMT","Description":"","EventSource":"Platform"}]}
+```
+
+Můžete vidět, že `"EventType":"Preempt"` a prostředek je prostředek virtuálního počítače `"Resources":["myspotvm"]` . 
+
+Můžete také zjistit, jestli se virtuální počítač vyřadí, a to tak, že zkontrolujete, že `"NotBefore"` virtuální počítač nebude vyřazený před uplynutím této doby, takže to znamená, že vaše okno vaší aplikace bude možné řádně zavřít.
+
+
+## <a name="next-steps"></a>Další kroky
 
 Můžete také vytvořit virtuální počítač se službou Azure na místě pomocí [Azure PowerShell](../windows/spot-powershell.md), [portálu](../spot-portal.md)nebo [šablony](spot-template.md).
 

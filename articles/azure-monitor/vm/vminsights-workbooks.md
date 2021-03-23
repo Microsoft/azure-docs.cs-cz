@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: bebe9424df24792f7450620657c5e2da5f08196a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 874df4301165aaf253dd0f4316adee7ab9ce7ce5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046512"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798846"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Vytváření interaktivních sestav – přehledy virtuálních počítačů pomocí sešitů
 
@@ -25,17 +25,17 @@ Sešity jsou užitečné pro scénáře, jako například:
 
 Následující tabulka shrnuje sešity, které virtuální počítač Insights zahrnuje, abyste mohli začít.
 
-| sešit | Description | Obor |
+| sešit | Popis | Obor |
 |----------|-------------|-------|
-| Výkon | Poskytuje přizpůsobitelnou verzi našeho horního zobrazení seznamu a grafů v jednom sešitu, který využívá všechny čítače výkonu Log Analytics, které jste povolili.| Ve velkém měřítku |
-| Čítače výkonu | Zobrazení grafu na nejvyšší úrovni napříč celou sadou čítačů výkonu. | Ve velkém měřítku |
-| Připojení | Připojení poskytují podrobné zobrazení příchozích a odchozích připojení z monitorovaných virtuálních počítačů. | Ve velkém měřítku |
-| Aktivní porty | Obsahuje seznam procesů, které jsou svázané s porty na monitorovaných virtuálních počítačích a jejich aktivitou ve zvoleném časovém období. | Ve velkém měřítku |
-| Otevřené porty | Poskytuje počet otevřených portů na monitorovaných virtuálních počítačích a podrobnosti o těchto otevřených portech. | Ve velkém měřítku |
-| Neúspěšná připojení | Zobrazit počet neúspěšných připojení na monitorovaných virtuálních počítačích, trend selhání a v případě, že procento chyb roste v čase. | Ve velkém měřítku |
-| Zabezpečení a audit | Analýza provozu protokolu TCP/IP, která hlásí celkový počet připojení, škodlivá připojení, kde se koncové body IP nacházejí globálně.  Pokud chcete povolit všechny funkce, budete muset povolit detekci zabezpečení. | Ve velkém měřítku |
-| Provoz TCP | Seřazená sestava pro vaše monitorované virtuální počítače a jejich odeslané, přijímané a celkové síťové přenosy v mřížce a zobrazené jako Trendová čára. | Ve velkém měřítku |
-| Porovnání provozu | V těchto sešitech můžete porovnávat trendy síťových přenosů pro jeden počítač nebo skupinu počítačů. | Ve velkém měřítku |
+| Výkon | Poskytuje přizpůsobitelnou verzi našeho horního zobrazení seznamu a grafů v jednom sešitu, který využívá všechny čítače výkonu Log Analytics, které jste povolili.| Několik virtuálních počítačů |
+| Čítače výkonu | Zobrazení grafu na nejvyšší úrovni napříč celou sadou čítačů výkonu. | Několik virtuálních počítačů |
+| Připojení | Připojení poskytují podrobné zobrazení příchozích a odchozích připojení z monitorovaných virtuálních počítačů. | Několik virtuálních počítačů |
+| Aktivní porty | Obsahuje seznam procesů, které jsou svázané s porty na monitorovaných virtuálních počítačích a jejich aktivitou ve zvoleném časovém období. | Několik virtuálních počítačů |
+| Otevřené porty | Poskytuje počet otevřených portů na monitorovaných virtuálních počítačích a podrobnosti o těchto otevřených portech. | Několik virtuálních počítačů |
+| Neúspěšná připojení | Zobrazit počet neúspěšných připojení na monitorovaných virtuálních počítačích, trend selhání a v případě, že procento chyb roste v čase. | Několik virtuálních počítačů |
+| Zabezpečení a audit | Analýza provozu protokolu TCP/IP, která hlásí celkový počet připojení, škodlivá připojení, kde se koncové body IP nacházejí globálně.  Pokud chcete povolit všechny funkce, budete muset povolit detekci zabezpečení. | Několik virtuálních počítačů |
+| Provoz TCP | Seřazená sestava pro vaše monitorované virtuální počítače a jejich odeslané, přijímané a celkové síťové přenosy v mřížce a zobrazené jako Trendová čára. | Několik virtuálních počítačů |
+| Porovnání provozu | V těchto sešitech můžete porovnávat trendy síťových přenosů pro jeden počítač nebo skupinu počítačů. | Několik virtuálních počítačů |
 | Výkon | Poskytuje přizpůsobitelnou verzi našeho zobrazení výkonu, která využívá všechny čítače výkonu Log Analytics, které jste povolili. | Jeden virtuální počítač | 
 | Připojení | Připojení poskytují podrobné zobrazení příchozích a odchozích připojení z virtuálního počítače. | Jeden virtuální počítač |
  

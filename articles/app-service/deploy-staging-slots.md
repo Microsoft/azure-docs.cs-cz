@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c779e95b790d91b801d5d35b4702191f5e7986d5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100594235"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802960"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -214,6 +214,7 @@ Můžete také přizpůsobit chování zahřívání pomocí jednoho nebo obou n
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Cesta k nástroji test pro zahřívání webu. Toto nastavení aplikace přidejte zadáním vlastní cesty, která začíná lomítkem jako hodnotou. Příklad: `/statuscheck`. Výchozí hodnota je `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Platné kódy odpovědí HTTP pro operaci zahřívání. Přidejte toto nastavení aplikace s čárkami odděleným seznamem kódů HTTP. Příklad je `200,202` . Pokud vrácený stavový kód není v seznamu, operace zahřívání a swap se zastaví. Ve výchozím nastavení jsou všechny kódy odpovědí platné.
+- `WEBSITE_WARMUP_PATH`: Relativní cesta k webu, která by měla být otestována pomocí testu při každém restartování lokality (nikoli jenom během zahození slotu). Příklady hodnot jsou `/statuscheck` nebo kořenová cesta `/` .
 
 > [!NOTE]
 > `<applicationInitialization>`Prvek konfigurace je součástí spuštění každé aplikace, zatímco dvě nastavení aplikace pro zahřívání se vztahují jenom na zahození slotu.

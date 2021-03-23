@@ -4,7 +4,7 @@ description: Přečtěte si o rozšíření Microsoft Security Code Analysis Ext
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a3af3307892e82ecd0697124954e99837ad5eb9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4443bdbc134f222256c6af8bb1f52c684cdb4624
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94515689"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801192"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informace o analýze kódu zabezpečení společnosti Microsoft
+
+> [!Note]
+> Od 1. března 2022 bude rozšíření Microsoft Security Code Analysis (MSCA) vyřazeno. Stávající zákazníci MSCA si budou mít přístup k MSCA do 1. března 2022. Alternativní možnosti v Azure DevOps najdete v [nástrojích pro analýzu zdrojového kódu OWASP](https://owasp.org/www-community/Source_Code_Analysis_Tools) . Zákazníci, kteří plánují migraci na GitHub, si můžete zaregistrovat v [rozšířeném zabezpečení GitHubu](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security).
 
 Díky rozšíření Microsoft Security Code Analysis může týmy přidat analýzu kódu zabezpečení do svých kanálů Azure DevOps průběžné integrace a doručování (CI/CD). Tuto analýzu doporučuje odborníci na [zabezpečení SDL (Secure Development Lifecycle)](https://www.microsoft.com/securityengineering/sdl/practices) v Microsoftu.
 

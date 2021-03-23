@@ -46,8 +46,6 @@
       href: concepts-storage.md
     - name: Přístup a identita pro privátní cloud
       href: concepts-identity.md
-    - name: Řízení přístupu na základě role ve vSphere
-      href: concepts-role-based-access-control.md
     - name: Monitorování a oprava privátních cloudů
       href: concepts-monitor-repair-private-cloud.md
     - name: Upgrady privátních cloudů

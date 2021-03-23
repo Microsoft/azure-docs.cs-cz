@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: fb00f0fe16342bf603d534c34a860278dc21deac
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595971"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773075"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -186,22 +186,24 @@ Určuje maximální počet pracovních procesů jazyka s výchozí hodnotou `1` 
 |---|------------|
 |\_počet pracovních \_ procesů \_ funkcí|2|
 
-## <a name="python_threadpool_thread_count"></a>\_ \_ počet vláken fondu vláken v Pythonu \_
-
-Určuje maximální počet vláken, která by pracovník jazyka Python použil k provedení vyvolání funkcí s výchozí hodnotou `1` pro verzi Pythonu `3.8` a níže. V případě verze Pythonu `3.9` a vyšší je hodnota nastavena na `None` . Všimněte si, že toto nastavení nezaručuje počet vláken, která by byla nastavena při spuštění. Nastavení umožňuje Pythonu rozšířit počet vláken na zadanou hodnotu. Nastavení platí pouze pro aplikace Python Functions. Nastavení se navíc vztahuje na vyvolání synchronních funkcí a nikoli pro korutiny.
-
-|Klíč|Ukázková hodnota|Max. hodnota|
-|---|------------|---------|
-|\_ \_ počet vláken fondu vláken v Pythonu \_|2|32|
-
-
 ## <a name="functions_worker_runtime"></a>FUNKCE \_ \_ modulu runtime pracovního procesu
 
-Běhový modul runtime jazyka, který se má načíst do aplikace Function App.  Bude odpovídat jazyku používanému ve vaší aplikaci (například "dotnet"). V případě funkcí v různých jazycích je budete muset publikovat do více aplikací, z nichž každá má odpovídající běhovou hodnotu pracovního procesu.  Platné hodnoty jsou `dotnet` (C#/f #), `node` (JavaScript/TypeScript), `java` (Java), `powershell` (PowerShell) a `python` (Python).
+Běhový modul runtime jazyka, který se má načíst do aplikace Function App.  To odpovídá jazyku používanému ve vaší aplikaci (například `dotnet` ). Od verze 2. x Azure Functions runtime může daná aplikace Function App podporovat jenom jeden jazyk.   
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|FUNKCE \_ \_ modulu runtime pracovního procesu|dotnet|
+|FUNKCE \_ \_ modulu runtime pracovního procesu|node|
+
+Platné hodnoty:
+
+| Hodnota | Language (Jazyk) |
+|---|---|
+| `dotnet` | [Jazyk C# (knihovna tříd)](functions-dotnet-class-library.md)<br/>[C# (skript)](functions-reference-csharp.md) |
+| `dotnet-isolated` | [C# (izolovaný proces)](dotnet-isolated-process-guide.md) |
+| `java` | [Java](functions-reference-java.md) |
+| `node` | [JavaScript](functions-reference-node.md)<br/>[TypeScript](functions-reference-node.md#typescript) |
+| `powershell` | [PowerShell](functions-reference-powershell.md) |
+| `python` | [Python](functions-reference-python.md) |
 
 ## <a name="pip_extra_index_url"></a>\_přídavná \_ \_ Adresa URL indexu PIP
 
@@ -212,6 +214,14 @@ Hodnota tohoto nastavení označuje adresu URL vlastního indexu balíčku pro a
 |\_přídavná \_ \_ Adresa URL indexu PIP|http://my.custom.package.repo/simple |
 
 Další informace najdete v tématu [vlastní závislosti](functions-reference-python.md#remote-build-with-extra-index-url) v referenční příručce pro vývojáře v Pythonu.
+
+## <a name="python_threadpool_thread_count"></a>\_ \_ počet vláken fondu vláken v Pythonu \_
+
+Určuje maximální počet vláken, která by pracovník jazyka Python použil k provedení vyvolání funkcí s výchozí hodnotou `1` pro verzi Pythonu `3.8` a níže. V případě verze Pythonu `3.9` a vyšší je hodnota nastavena na `None` . Všimněte si, že toto nastavení nezaručuje počet vláken, která by byla nastavena při spuštění. Nastavení umožňuje Pythonu rozšířit počet vláken na zadanou hodnotu. Nastavení platí pouze pro aplikace Python Functions. Nastavení se navíc vztahuje na vyvolání synchronních funkcí a nikoli pro korutiny.
+
+|Klíč|Ukázková hodnota|Max. hodnota|
+|---|------------|---------|
+|\_ \_ počet vláken fondu vláken v Pythonu \_|2|32|
 
 ## <a name="scale_controller_logging_enabled"></a>\_ \_ zapnuté protokolování řadiče škálování \_
 

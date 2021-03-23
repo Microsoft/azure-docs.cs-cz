@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 33172004ac4361de51b92389fbf56bd699f7124f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096441"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802739"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>Nasazení služby Azure spot Virtual Machines pomocí Azure PowerShell
 
@@ -76,20 +76,53 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="simulate-an-eviction"></a>Simulace vyřazení
 
-Můžete [simulovat vyřazení](/rest/api/compute/virtualmachines/simulateeviction) virtuálních počítačů se systémem Azure na místě, abyste mohli otestovat, jak dobře bude vaše aplikace schopná vyřadit do náhlého vyřazení. 
+Můžete simulovat vyřazení virtuálních počítačů se systémem Azure pomocí REST, PowerShellu nebo rozhraní příkazového řádku a otestovat tak, jak dobře bude aplikace reagovat na náhlé vyřazení.
 
-Pro vaše informace nahraďte následující údaje: 
+Ve většině případů budete chtít použít REST API [Virtual Machines-simulovat vyřazení](/rest/api/compute/virtualmachines/simulateeviction) , které vám pomůže s automatizovaným testováním aplikací. Pro REST `Response Code: 204` to znamená, že simulované vyřazení bylo úspěšné. Simulované vyřazení můžete kombinovat s [naplánovanou službou Event Service](scheduled-events.md), abyste mohli automatizovat, jak bude vaše aplikace reagovat po vyřazení virtuálního počítače.
 
-- `subscriptionId`
-- `resourceGroupName`
-- `vmName`
+Pokud chcete zobrazit naplánované události v akci, podívejte se na [Azure pátek – s využitím azure Scheduled Events pro přípravu údržby virtuálních počítačů](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance).
 
 
-```rest
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+### <a name="quick-test"></a>Rychlý test
+
+Pro rychlý test k zobrazení, jak bude simulovaná vyřazení fungovat, si projdeme dotazování naplánované služby událostí, abyste viděli, co vypadá při simulaci vyřazení pomocí prostředí PowerShell.
+
+Naplánovaná služba událostí je pro vaši službu povolená, když poprvé vytvoříte žádost o události. 
+
+Vzdáleně na svůj virtuální počítač a otevřete příkazový řádek. 
+
+Do příkazového řádku na svém VIRTUÁLNÍm počítači zadejte:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
-`Response Code: 204` znamená, že simulované vyřazení bylo úspěšné. 
+Tato první odpověď může trvat až 2 minuty. Od této chvíle by se měly zobrazit výstup téměř okamžitě.
+
+Z počítače s nainstalovanou modulem AZ PowerShell (jako je váš místní počítač) Simulujte vyřazení pomocí rutiny [set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm). Název skupiny prostředků a název virtuálního počítače nahraďte vlastními. 
+
+```azurepowershell-interactive
+Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction
+```
+
+Výstup odpovědi bude v `Status: Succeeded` případě úspěšného provedení žádosti.
+
+Rychle se vraťte ke vzdálenému připojení k virtuálnímu počítači na místě a znovu spusťte dotaz na Scheduled Events koncový bod. Opakujte následující příkaz, dokud nezískáte výstup, který obsahuje další informace:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+```
+
+Když naplánovaná událost získá oznámení vyřazení, dostanete odpověď, která bude vypadat podobně jako v tomto příkladu:
+
+```output
+{"DocumentIncarnation":1,"Events":[{"EventId":"A123BC45-1234-5678-AB90-ABCDEF123456","EventStatus":"Scheduled","EventType":"Preempt","ResourceType":"VirtualMachine","Resources":["myspotvm"],"NotBefore":"Tue, 16 Mar 2021 00:58:46 GMT","Description":"","EventSource":"Platform"}]}
+```
+
+Můžete vidět, že `"EventType":"Preempt"` a prostředek je prostředek virtuálního počítače `"Resources":["myspotvm"]` . 
+
+Můžete také zjistit, jestli se virtuální počítač vyřadí, a to tak, že zkontrolujete jeho `"NotBefore"` hodnotu. Virtuální počítač nebude vyřazený před uplynutím časového limitu `NotBefore` . to znamená, že vaše okno vaší aplikace bude řádně uzavřeno.
+
 
 ## <a name="next-steps"></a>Další kroky
 

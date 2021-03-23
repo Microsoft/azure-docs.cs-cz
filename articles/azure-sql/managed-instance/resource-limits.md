@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee0c673027892e6d3ee55b6ec5f67a30d88be683
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97770957"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780340"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled limitů prostředků služby Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -76,7 +76,7 @@ Služba SQL Managed instance má dvě úrovně služeb: [pro obecné účely](..
 | Maximální počet souborů databáze na instanci | Až 280, pokud nedošlo k dosažení limitu velikosti úložiště instance nebo [místa přidělení úložiště na disku Azure Premium](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files) . | 32 767 souborů na databázi, pokud nebylo dosaženo limitu velikosti úložiště instance. |
 | Maximální velikost datového souboru | Omezeno na aktuálně dostupnou velikost úložiště instance (max. 2 TB-8 TB) a [místo přidělení diskového úložiště Azure Premium](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files). | Omezeno na velikost úložiště aktuálně dostupné instance (až do velikosti 1 TB až 4 TB). |
 | Maximální velikost souboru protokolu | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. |
-| Data/protokol IOPS (přibližná) | Až 30-40 K IOPS na instanci *, 500-7500 na jeden soubor<br/>\*[Zvětšením velikosti souboru získat více IOPS](#file-io-characteristics-in-general-purpose-tier)| 10 K-200 K (4000 IOPS/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
+| Data/protokol IOPS (přibližná) | Až 30-40 K IOPS na instanci *, 500-7500 na jeden soubor<br/>\*[Zvětšením velikosti souboru získat více IOPS](#file-io-characteristics-in-general-purpose-tier)| 16 k-320 K (4000 IOPS/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
 | Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 120 MB/s na instanci<br/>22-65 MB/s na databázi<br/>\*[Zvětšením velikosti souboru získáte lepší vstupně-výstupní operace.](#file-io-characteristics-in-general-purpose-tier) | 4 MB/s na vCore<br/>Maximální 96 MB/s |
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[Zvětšením velikosti souboru získáte lepší vstupně-výstupní operace.](#file-io-characteristics-in-general-purpose-tier) | Neomezeno. |
 | Latence v/v úložiště (přibližná) | 5-10 MS | 1-2 MS |

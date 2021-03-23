@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
-ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cb3c74a2176ee7fcac53afb5185e8c62e66f4dfb
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91541998"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798795"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entity na jazykovou verzi v modelu LUIS
 
@@ -40,7 +40,7 @@ Není-li uvedeno jinak, jsou předem připravené entity k dispozici ve všech n
 |Korejština|[ko – KR](#korean-entity-support)||
 |Portugalština|[pt-BR (Brazílie)](#portuguese-brazil-entity-support)||
 |Španělština|[ES-ES (Španělsko)](#spanish-spain-entity-support), [ES-MX (Mexiko)](#spanish-mexico-entity-support)||
-|Turečtina|[Turečtina](#turkish-entity-support)|V turečtině nejsou podporované předem připravené entity|
+|Turečtina|[Turečtina](#turkish-entity-support)||
 
 ## <a name="prediction-endpoint-runtime"></a>Modul runtime koncového bodu předpovědi
 
@@ -268,6 +268,8 @@ Podporovány jsou následující entity:
 [Teplota](luis-reference-prebuilt-temperature.md):<br>Fahrenheita<br>Kelvin<br>rankine<br>delisle<br>Celsia   |    V2, V3   |
 [Adresa URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
+KeyPhrase není k dispozici ve všech podkulturách portugalštiny (Brazílie) – ```pt-BR``` .
+
 ## <a name="spanish-spain-entity-support"></a>Španělština (Španělsko) podpora entit
 
 Podporovány jsou následující entity:
@@ -314,34 +316,25 @@ Podporovány jsou následující entity:
 
 Zobrazit poznámky u [zastaralých předem definovaných entit](luis-reference-prebuilt-deprecated.md)
 
-KeyPhrase není k dispozici ve všech podkulturách portugalštiny (Brazílie) – ```pt-BR``` .
-
 ## <a name="turkish-entity-support"></a>Podpora pro tureckou entitu
 
-**V turečtině nejsou podporovány žádné předem připravené entity.**
-
-<!--
-
-| Prebuilt entity | tr-tr |
+| Předem vytvořená entita | tr-tr |
 | --------------- | :---: |
-[Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
+[Stáří](luis-reference-prebuilt-age.md):<br>year<br>month<br>týden<br>day   |    -   |
+[Měna (peníze)](luis-reference-prebuilt-currency.md):<br>měny<br>zlomková jednotka (např. haléře)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
-[Dimension](luis-reference-prebuilt-dimension.md):<br>volume<br>area<br>weight<br>information (ex: bit/byte)<br>length (ex: meter)<br>speed (ex: mile per hour)  |    -   |
-[Email](luis-reference-prebuilt-email.md)   |    -   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
+[Dimenze](luis-reference-prebuilt-dimension.md):<br>svazků<br>oblast<br>hmotnost<br>informace (např. bitů/Byte)<br>Délka (např. měřič)<br>rychlost (např. km za hodinu)  |    -   |
+[E-mail](luis-reference-prebuilt-email.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[Number](luis-reference-prebuilt-number.md)   |    -   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
-[Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    -   |
-[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
-[URL](luis-reference-prebuilt-url.md)   |    -   |
+[Číselná](luis-reference-prebuilt-number.md)   |    -   |
+[Řádová číslovka](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Procento](luis-reference-prebuilt-percentage.md)   |    -   |
+[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    -   |
+[Teplota](luis-reference-prebuilt-temperature.md):<br>Fahrenheita<br>Kelvin<br>rankine<br>delisle<br>Celsia   |    -   |
+[Adresa URL](luis-reference-prebuilt-url.md)   |    -   |
 
+<!---
 See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.md)
-
-
 KeyPhrase is not available.
 -->
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4d75e60d0e497dcdd2aa121f8da73f11a7e2af5b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 50c6b4f309eb78acee0cfa59d1b540adba65cab2
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103015212"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774809"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2
 
@@ -40,6 +40,7 @@ Chcete-li nastavit oprávnění na úrovni souborů a adresářů, přečtěte s
 |.NET |[Použití .NET k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-dotnet.md)|
 |Java|[Použití jazyka Java k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-java.md)|
 |Python|[Použití Pythonu k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-python.md)|
+|JavaScript (Node.js)|[Použití sady JavaScript SDK v Node.js k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-javascript.md)|
 |PowerShell|[Použití PowerShellu k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-powershell.md)|
 |Azure CLI|[Použití rozhraní příkazového řádku Azure k nastavení seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-acl-cli.md)|
 |REST API |[Cesta – aktualizace](/rest/api/storageservices/datalakestoragegen2/path/update)|
@@ -206,7 +207,7 @@ Pro nový kontejner Data Lake Storage Gen2 je maska pro seznam ACL přístupu ko
 |--|--|--|
 |Vlastnící uživatel|`rwx`|`r-w`|
 |Vlastnící skupina|`r-x`|`r--`|
-|Jiné|`---`|`---`|
+|Ostatní|`---`|`---`|
 
 Soubory neobdrží bit X, protože to není podstatné pro soubory v systému pouze v úložišti. 
 
@@ -261,7 +262,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Je třeba povolit podporu pro seznamy ACL?
 
-No. Řízení přístupu prostřednictvím seznamů ACL je povolené pro účet úložiště, pokud je zapnutá funkce hierarchického oboru názvů (HNS).
+Ne. Řízení přístupu prostřednictvím seznamů ACL je povolené pro účet úložiště, pokud je zapnutá funkce hierarchického oboru názvů (HNS).
 
 Pokud je funkce HNS vypnutá, pravidla autorizace služby Azure Azure RBAC se pořád použijí.
 
@@ -331,7 +332,7 @@ Pokud máte pro instanční objekt správný identifikátor OID, přejděte na s
 
 ### <a name="can-i-set-the-acl-of-a-container"></a>Můžu nastavit seznam řízení přístupu kontejneru?
 
-No. Kontejner nemá seznam ACL. Můžete ale nastavit seznam řízení přístupu kořenového adresáře kontejneru. Každý kontejner má kořenový adresář a sdílí stejný název jako kontejner. Například pokud má kontejner název `my-container` , pak kořenový adresář má název `myContainer/` . 
+Ne. Kontejner nemá seznam ACL. Můžete ale nastavit seznam řízení přístupu kořenového adresáře kontejneru. Každý kontejner má kořenový adresář a sdílí stejný název jako kontejner. Například pokud má kontejner název `my-container` , pak kořenový adresář má název `myContainer/` . 
 
 Azure Storage REST API obsahuje operaci s názvem [seznam ACL kontejneru](/rest/api/storageservices/set-container-acl), ale tato operace se nedá použít k nastavení seznamu ACL kontejneru nebo kořenového adresáře kontejneru. Místo toho se tato operace používá k označení, zda mohou být objekty BLOB v kontejneru [přístupné veřejně](anonymous-read-access-configure.md). 
 

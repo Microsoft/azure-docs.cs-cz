@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8b3224333a3915b7827242004d1dec0f4695f479
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f451d08dfbde643d91705f54296e9757a51c9d88
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581911"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798389"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Nastavení toku resetování hesla v Azure Active Directory B2C
 
@@ -35,6 +35,9 @@ ms.locfileid: "104581911"
 ![Tok resetování hesla](./media/add-password-reset-policy/password-reset-flow.png)
 
 Tok resetování hesla se vztahuje na místní účty v Azure AD B2C, které používají [e-mailovou adresu](identity-provider-local.md#email-sign-in) nebo [uživatelské jméno](identity-provider-local.md#username-sign-in) s heslem pro přihlášení.
+
+> [!TIP]
+> Tok samoobslužného resetování hesla umožňuje uživatelům změnit heslo, když si uživatel zapomene heslo a chce ho resetovat. Zvažte konfiguraci [toku změny hesla](add-password-change-policy.md) na podporu případů, kdy uživatel zná heslo a chce ho změnit.
 
 Běžný postup po migraci uživatelů na Azure AD B2C s náhodnými hesly spočívá v tom, že uživatelé ověřují své e-mailové adresy a resetují hesla během jejich prvního přihlášení. Je také běžné vynutit, aby uživatel resetoval heslo poté, co správce změní heslo; Pokud chcete tuto funkci povolit, přečtěte si téma [vynucení resetování hesla](force-password-reset.md) .
 

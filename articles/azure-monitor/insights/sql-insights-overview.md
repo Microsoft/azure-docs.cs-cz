@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: d01f80a803c5b0f9da067dd23ab8cdb4cc591a79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b9c5db14bec87b30e51d39b1430ecc1f3cbef855
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609388"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798285"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>Monitorování nasazení SQL pomocí SQL Insights (Preview)
 SQL Insights monitoruje výkon a stav nasazení SQL.  Může přispět k předvídatelnému výkonu a dostupnosti důležitých úloh, které jste vytvořili kolem back-endu SQL, a to tak, že identifikují problémová místa a problémy s výkonem. SQL Insights ukládá data do [protokolů Azure monitor](../logs/data-platform-logs.md), což umožňuje poskytovat výkonnou agregaci a filtrování a analyzovat trendy dat v čase. Tato data můžete zobrazit z Azure Monitor v zobrazeních, která jako součást této nabídky dodáváme, a můžete se podívat přímo na data protokolu, abyste mohli spouštět dotazy a analyzovat trendy.
@@ -59,7 +59,7 @@ Podrobný postup, jak povolit SQL Insights, najdete v tématu [Povolení SQL Ins
 
 
 ## <a name="data-collected-by-sql-insights"></a>Data shromážděná službou SQL Insights
-Ve verzi Public Preview podporuje SQL Insights jenom vzdálenou metodu monitorování. Agent telegraf není nainstalován v SQL Server. Používá modul plug-in SQL Server Input pro telegraf a používá tři skupiny dotazů pro různé typy monitorování SQL serveru: Azure SQL DB, Azure SQL Managed instance, SQL Server běžící na virtuálním počítači Azure. 
+Ve verzi Public Preview podporuje SQL Insights jenom vzdálenou metodu monitorování. [Agent telegraf](https://www.influxdata.com/time-series-platform/telegraf/) není nainstalován v SQL Server. Používá [modul plug-in SQL Server Input pro telegraf](https://www.influxdata.com/integration/microsoft-sql-server/) a používá tři skupiny dotazů pro různé typy monitorování SQL serveru: Azure SQL DB, Azure SQL Managed instance, SQL Server běžící na virtuálním počítači Azure. 
 
 Následující tabulky shrnují následující:
 
@@ -75,44 +75,44 @@ Můžete upravit, které dotazy jsou spouštěny, a četnost shromažďování d
 
 | Název dotazu | Zobrazení dynamické správy | Obor názvů | Ve výchozím nastavení povoleno | Výchozí frekvence shromažďování |
 |:---|:---|:---|:---|:---|
-| AzureSQLDBWaitStats |  sys.dm_db_wait_stats | sqlserver_azuredb_waitstats | No | NA |
-| AzureSQLDBResourceStats | sys.dm_db_resource_stats | sqlserver_azure_db_resource_stats | Yes | 60 sekund |
-| AzureSQLDBResourceGovernance | sys.dm_user_db_resource_governance | sqlserver_db_resource_governance | Yes | 60 sekund |
-| AzureSQLDBDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | sqlserver_database_io | Yes | 60 sekund |
-| AzureSQLDBServerProperties | sys.dm_os_job_object<br>sys.database_files<br>tabulce. databáze<br>tabulce. [database_service_objectives] | sqlserver_server_properties | Yes | 60 sekund |
-| AzureSQLDBOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 sekund |
-| AzureSQLDBMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 sekund |
-| AzureSQLDBPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Yes | 60 sekund |
-| AzureSQLDBRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | No | NA |
-| AzureSQLDBSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | No | NA  |
+| AzureSQLDBWaitStats |  sys.dm_db_wait_stats | sqlserver_azuredb_waitstats | Ne | NA |
+| AzureSQLDBResourceStats | sys.dm_db_resource_stats | sqlserver_azure_db_resource_stats | Ano | 60 sekund |
+| AzureSQLDBResourceGovernance | sys.dm_user_db_resource_governance | sqlserver_db_resource_governance | Ano | 60 sekund |
+| AzureSQLDBDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | sqlserver_database_io | Ano | 60 sekund |
+| AzureSQLDBServerProperties | sys.dm_os_job_object<br>sys.database_files<br>tabulce. databáze<br>tabulce. [database_service_objectives] | sqlserver_server_properties | Ano | 60 sekund |
+| AzureSQLDBOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Ano | 60 sekund |
+| AzureSQLDBMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Ano | 60 sekund |
+| AzureSQLDBPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Ano | 60 sekund |
+| AzureSQLDBRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Ne | NA |
+| AzureSQLDBSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Ne | NA  |
 
 ### <a name="azure-sql-managed-instance-data"></a>Data spravované instance Azure SQL 
 
 | Název dotazu | Zobrazení dynamické správy | Obor názvů | Ve výchozím nastavení povoleno | Výchozí frekvence shromažďování |
 |:---|:---|:---|:---|:---|
-| AzureSQLMIResourceStats | sys.server_resource_stats | sqlserver_azure_db_resource_stats | Yes | 60 sekund |
-| AzureSQLMIResourceGovernance | sys.dm_instance_resource_governance | sqlserver_instance_resource_governance | Yes | 60 sekund |
-| AzureSQLMIDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Yes | 60 sekund |
-| AzureSQLMIServerProperties | sys.server_resource_stats | sqlserver_server_properties | Yes | 60 sekund |
-| AzureSQLMIOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 sekund |
-| AzureSQLMIMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 sekund |
-| AzureSQLMIPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Yes | 60 sekund |
-| AzureSQLMIRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | No | NA |
-| AzureSQLMISchedulers | sys.dm_os_schedulers | sqlserver_schedulers | No | NA |
+| AzureSQLMIResourceStats | sys.server_resource_stats | sqlserver_azure_db_resource_stats | Ano | 60 sekund |
+| AzureSQLMIResourceGovernance | sys.dm_instance_resource_governance | sqlserver_instance_resource_governance | Ano | 60 sekund |
+| AzureSQLMIDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Ano | 60 sekund |
+| AzureSQLMIServerProperties | sys.server_resource_stats | sqlserver_server_properties | Ano | 60 sekund |
+| AzureSQLMIOsWaitstats | sys.dm_os_wait_stats | sqlserver_waitstats | Ano | 60 sekund |
+| AzureSQLMIMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Ano | 60 sekund |
+| AzureSQLMIPerformanceCounters | sys.dm_os_performance_counters<br>sys.databases | sqlserver_performance | Ano | 60 sekund |
+| AzureSQLMIRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Ne | NA |
+| AzureSQLMISchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Ne | NA |
 
 ### <a name="sql-server-data"></a>Data SQL Server
 
 | Název dotazu | Zobrazení dynamické správy | Obor názvů | Ve výchozím nastavení povoleno | Výchozí frekvence shromažďování |
 |:---|:---|:---|:---|:---|
-| SQLServerPerformanceCounters | sys.dm_os_performance_counters | sqlserver_performance | Yes | 60 sekund |
-| SQLServerWaitStatsCategorized | sys.dm_os_wait_stats | sqlserver_waitstats | Yes | 60 sekund | 
-| SQLServerDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Yes | 60 sekund |
-| SQLServerProperties | sys.dm_os_sys_info | sqlserver_server_properties | Yes | 60 sekund |
-| SQLServerMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Yes | 60 sekund |
-| SQLServerSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | No | NA |
-| SQLServerRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | No | NA |
-| SQLServerVolumeSpace | sys.master_files | sqlserver_volume_space | Yes | 60 sekund |
-| SQLServerCpu | sys.dm_os_ring_buffers | sqlserver_cpu | Yes | 60 sekund |
+| SQLServerPerformanceCounters | sys.dm_os_performance_counters | sqlserver_performance | Ano | 60 sekund |
+| SQLServerWaitStatsCategorized | sys.dm_os_wait_stats | sqlserver_waitstats | Ano | 60 sekund | 
+| SQLServerDatabaseIO | sys.dm_io_virtual_file_stats<br>sys.master_files | sqlserver_database_io | Ano | 60 sekund |
+| SQLServerProperties | sys.dm_os_sys_info | sqlserver_server_properties | Ano | 60 sekund |
+| SQLServerMemoryClerks | sys.dm_os_memory_clerks | sqlserver_memory_clerks | Ano | 60 sekund |
+| SQLServerSchedulers | sys.dm_os_schedulers | sqlserver_schedulers | Ne | NA |
+| SQLServerRequests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | sqlserver_requests | Ne | NA |
+| SQLServerVolumeSpace | sys.master_files | sqlserver_volume_space | Ano | 60 sekund |
+| SQLServerCpu | sys.dm_os_ring_buffers | sqlserver_cpu | Ano | 60 sekund |
 | SQLServerAvailabilityReplicaStates | sys.dm_hadr_availability_replica_states<br>sys.availability_replicas<br>sys.availability_groups<br>sys.dm_hadr_availability_group_states | sqlserver_hadr_replica_states | | 60 sekund |
 | SQLServerDatabaseReplicaStates | sys.dm_hadr_database_replica_states<br>sys.availability_replicas | sqlserver_hadr_dbreplica_states | | 60 sekund |
 

@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá klienta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 33a492eb3c8c175bfcdc6a13cb467ed2f180c1e1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a18f230c1b7b1eb2c953542e276127f4f47cbb39
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702874"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802518"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -57,7 +57,7 @@ V následující tabulce je uveden seznam místních nástrojů používaných n
 
 ### <a name="validation-frequency"></a>Frekvence ověřování
 
-Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí přiřazení hostů se nastavení této konfigurace znovu zkontrolují v intervalu 15 minut. Výsledky se odešlou do poskytovatele prostředků konfigurace hosta, až se audit dokončí. Když dojde k [aktivaci vyhodnocení](../how-to/get-compliance-data.md#evaluation-triggers) zásad, stav počítače se zapíše do poskytovatele prostředků konfigurace hosta. Tato aktualizace způsobí Azure Policy vyhodnocení vlastností Azure Resource Manager. Vyhodnocení Azure Policy na vyžádání načte nejnovější hodnotu z poskytovatele prostředků konfigurace hosta. Neaktivuje ale nové auditování konfigurace v rámci počítače.
+Klient konfigurace hosta kontroluje nová nebo změněná přiřazení hostů každých 5 minut. Po přijetí přiřazení hostů se nastavení této konfigurace znovu zkontrolují v intervalu 15 minut. Výsledky se odešlou do poskytovatele prostředků konfigurace hosta, až se audit dokončí. Když dojde k [aktivaci vyhodnocení](../how-to/get-compliance-data.md#evaluation-triggers) zásad, stav počítače se zapíše do poskytovatele prostředků konfigurace hosta. Tato aktualizace způsobí Azure Policy vyhodnocení vlastností Azure Resource Manager. Vyhodnocení Azure Policy na vyžádání načte nejnovější hodnotu z poskytovatele prostředků konfigurace hosta. Neaktivuje ale nové auditování konfigurace v rámci počítače. Stav se zapisuje současně do grafu prostředků Azure.
 
 ## <a name="supported-client-types"></a>Podporované typy klientů
 

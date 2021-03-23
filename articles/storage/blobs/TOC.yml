@@ -153,6 +153,8 @@
               href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ochrana dat
           items:
+            - name: Přehled
+              href: data-protection-overview.md
             - name: Obnovitelné odstranění pro kontejnery
               href: soft-delete-container-overview.md
             - name: Správa verzí

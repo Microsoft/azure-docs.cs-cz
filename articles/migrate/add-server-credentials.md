@@ -1,40 +1,40 @@
 ---
-title: Zadání přihlašovacích údajů serveru pro zjišťování aplikací, závislostí a instancí SQL Server a databází
+title: Zadání přihlašovacích údajů serveru pro zjišťování inventáře softwaru, závislostí a instancí SQL Server a databází
 description: Přečtěte si, jak zadat přihlašovací údaje serveru pro Správce konfigurace zařízení.
-author: vikram1988
-ms.author: vibansa
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 01/26/2021
-ms.openlocfilehash: 2359855ce3949eb022a03f6e8e2dbc05f98907db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/18/2021
+ms.openlocfilehash: 990ca661eb6ec17c7f8aca246c15f89fcf8975a8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054595"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785219"
 ---
-# <a name="provide-server-credentials-to-discover-applications-dependencies-and-sql-server-instances-and-databases"></a>Zadání přihlašovacích údajů serveru pro zjišťování aplikací, závislostí a instancí SQL Server a databází
+# <a name="provide-server-credentials-to-discover-software-inventory-dependencies-and-sql-server-instances-and-databases"></a>Zadání přihlašovacích údajů serveru pro zjišťování inventáře softwaru, závislostí a instancí SQL Server a databází
 
 V tomto článku se dozvíte, jak přidat více přihlašovacích údajů serveru do Správce konfigurace zařízení k provádění inventáře softwaru (zjišťování nainstalovaných aplikací), analýzy závislostí bez agentů a zjišťování SQL Server instancí a databází.
 
 > [!Note]
 > Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
-[Zařízení Azure Migrate](migrate-appliance.md) je jednoduché zařízení, které používá Azure Migrate: posouzení serveru pro zjišťování místních serverů běžících v prostředí VMware a posílání metadat konfigurace serveru a výkonu do Azure. Zařízení se taky dá použít k provádění inventáře softwaru, analýze závislostí bez agentů a zjišťování instancí SQL Server a databází.
+[Zařízení Azure Migrate](migrate-appliance.md) je odlehčené zařízení, které používá Azure Migrate: zjišťování a vyhodnocení pro zjišťování místních serverů běžících v prostředí VMware a posílání konfigurace serveru a metadat výkonu do Azure. Zařízení se taky dá použít k provádění inventáře softwaru, analýze závislostí bez agentů a zjišťování instancí SQL Server a databází.
 
-Pokud chcete tyto funkce využít, můžete zadat přihlašovací údaje serveru podle následujících kroků. Zařízení se pokusí automaticky mapovat přihlašovací údaje na servery, aby se prováděly funkce zjišťování.
+Pokud chcete tyto funkce použít, můžete zadat přihlašovací údaje serveru podle následujících kroků. Zařízení se pokusí automaticky mapovat přihlašovací údaje na servery, aby se prováděly funkce zjišťování.
 
 ## <a name="add-credentials-for-servers-running-in-vmware-environment"></a>Přidání přihlašovacích údajů pro servery běžící v prostředí VMware
 
 ### <a name="types-of-server-credentials-supported"></a>Typy přihlašovacích údajů serveru jsou podporované.
 
-Do Správce konfigurace zařízení můžete přidat několik přihlašovacích údajů serveru, které můžou být domény, nedoménová (Windows nebo Linux) nebo SQL Server přihlašovací údaje pro ověřování.
+V nástroji Správce konfigurace zařízení můžete přidat několik přihlašovacích údajů k serveru, které můžou být domény, nedoménová (Windows nebo Linux) nebo SQL Server přihlašovací údaje pro ověřování.
 
 Typy přihlašovacích údajů serveru, které jsou podporované, jsou uvedené v následující tabulce:
 
-Typ přihlašovacích údajů | Description
+Typ přihlašovacích údajů | Popis
 --- | ---
-**Přihlašovací údaje domény** | **Přihlašovací údaje domény** můžete přidat tak, že vyberete možnost z rozevírací nabídky v modálním seznamu **Přidat pověření** . <br/><br/> Pokud chcete zadat přihlašovací údaje k doméně, musíte zadat **název domény** , který musí být zadaný ve formátu plně kvalifikovaného názvu domény (např. prod.corp.contoso.com). <br/><br/> Také je nutné zadat popisný název pro přihlašovací údaje, uživatelské jméno a heslo. <br/><br/> Přidaná pověření domény budou automaticky ověřena pro pravost proti službě Active Directory domény. K tomu je potřeba zabránit jakémukoli uzamčení účtu, když se zařízení pokusí mapovat přihlašovací údaje domény proti zjištěným serverům. <br/><br/> Zařízení se nebude pokoušet mapovat přihlašovací údaje domény, jejichž ověření se nezdařilo. Aby bylo možné pokračovat v inventarizaci softwaru, musíte mít aspoň jedno úspěšně ověřené přihlašovací údaje do domény nebo aspoň jedno nedoménové přihlašovací údaje.<br/><br/>Přihlašovací údaje domény mapované na servery Windows se budou používat k provádění inventáře softwaru a dají se také použít ke zjišťování instancí a databází SQL Server _(Pokud jste v SQL serverech nakonfigurovali režim ověřování systému Windows)_.<br/> [Přečtěte si další informace](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authentication-in-sql-server) o typech režimů ověřování podporovaných na serverech SQL.
+**Přihlašovací údaje domény** | **Přihlašovací údaje domény** můžete přidat tak, že vyberete možnost z rozevírací nabídky v modálním seznamu **Přidat pověření** . <br/><br/> Pokud chcete zadat přihlašovací údaje k doméně, musíte zadat **název domény** , který musí být zadaný ve formátu plně kvalifikovaného názvu domény (například prod.corp.contoso.com). <br/><br/> Také je nutné zadat popisný název pro přihlašovací údaje, uživatelské jméno a heslo. <br/><br/> Přidaná pověření domény budou automaticky ověřena pro pravost proti službě Active Directory domény. K tomu je potřeba zabránit jakémukoli uzamčení účtu, když se zařízení pokusí mapovat přihlašovací údaje domény proti zjištěným serverům. <br/><br/> Zařízení se nebude pokoušet mapovat přihlašovací údaje domény, jejichž ověření se nezdařilo. Aby bylo možné pokračovat v inventarizaci softwaru, musíte mít aspoň jedno úspěšně ověřené přihlašovací údaje do domény nebo aspoň jedno nedoménové přihlašovací údaje.<br/><br/>Přihlašovací údaje domény mapované na servery Windows se budou používat k provádění inventáře softwaru a dají se také použít ke zjišťování instancí a databází SQL Server _(Pokud jste v SQL serverech nakonfigurovali režim ověřování systému Windows)_.<br/> [Přečtěte si další informace](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authentication-in-sql-server) o typech režimů ověřování podporovaných na serverech SQL.
 **Přihlašovací údaje jiného typu než doména (Windows/Linux)** | Pokud chcete přidat **Windows (jiný systém než doménu)** nebo **Linux (nedoménová)** , vyberte v rozevíracím seznamu v modálním políčku **Přidat pověření** možnost požadovaná možnost. <br/><br/> Je nutné zadat popisný název pro přihlašovací údaje, uživatelské jméno a heslo.
 **SQL Server přihlašovací údaje pro ověřování** | Přihlašovací údaje pro **ověření SQL Server** můžete přidat tak, že vyberete možnost z rozevírací nabídky v modální části **Přidat pověření** . <br/><br/> Je nutné zadat popisný název pro přihlašovací údaje, uživatelské jméno a heslo. <br/><br/> Tento typ přihlašovacích údajů můžete přidat, pokud chcete zjišťovat SQL Server instance a databáze běžící v prostředí VMware, pokud jste nakonfigurovali SQL Server režim ověřování na SQL serverech.<br/> [Přečtěte si další informace](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authentication-in-sql-server) o typech režimů ověřování podporovaných na serverech SQL.<br/><br/> Musíte zadat aspoň jedno úspěšně ověřené přihlašovací údaje do domény nebo aspoň jedno přihlašovací údaje pro Windows (mimo doménu), aby zařízení mohlo dokončit inventář softwaru, aby bylo možné zjistit, jestli je SQL Server nainstalovaný na serverech, než použije přihlašovací údaje pro SQL Server pro zjišťování SQL Server instancí a databází.
 
@@ -55,7 +55,7 @@ Funkce | přihlašovací údaje pro Windows. | Přihlašovací údaje pro Linux
 - Doporučuje se vytvořit vyhrazený uživatelský účet domény s [požadovanými oprávněními](add-server-credentials.md#required-permissions), která je vymezená pro provádění inventáře softwaru, analýzu závislostí bez agentů a zjišťování SQL Server instancí a databází na požadovaných serverech.
 - Pro zahájení inventáře softwaru doporučujeme zadat aspoň jedno úspěšně ověřené přihlašovací údaje do domény nebo aspoň jedno nedoménové přihlašovací údaje.
 - Pokud chcete zjistit SQL Server instance a databáze, můžete zadat přihlašovací údaje domény, pokud jste na SQL serverech nakonfigurovali režim ověřování systému Windows.
--  Přihlašovací údaje pro ověření SQL Server můžete zadat také v případě, že jste nakonfigurovali SQL Server režim ověřování na serverech SQL, ale doporučujeme vám poskytnout aspoň jedno úspěšně ověřené přihlašovací údaje k doméně nebo aspoň jedno přihlašovací údaje pro Windows (mimo doménu), aby zařízení mohlo nejdřív dokončit inventář softwaru.
+- Přihlašovací údaje pro ověření SQL Server můžete zadat také v případě, že jste nakonfigurovali SQL Server režim ověřování na serverech SQL, ale doporučujeme vám poskytnout aspoň jedno úspěšně ověřené přihlašovací údaje k doméně nebo aspoň jedno přihlašovací údaje pro Windows (mimo doménu), aby zařízení mohlo nejdřív dokončit inventář softwaru.
 
 ## <a name="credentials-handling-on-appliance"></a>Manipulace s přihlašovacími údaji na zařízení
 

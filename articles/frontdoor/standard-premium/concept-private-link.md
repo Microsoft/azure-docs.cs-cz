@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 88c000c96e632f970db075fafb13ea5eb4bbddfc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715509"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799923"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Zabezpečte svůj původ pomocí privátního odkazu v Azure front-Premium Standard/Premium (Preview).
 
@@ -30,7 +30,7 @@ ms.locfileid: "101715509"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-SKU služby Azure front-end Premium se může připojit k původnímu webu za webovou aplikací a účtem úložiště pomocí služby privátního propojení a odebrat nutnost zpřístupnění vašeho zdroje veřejnosti.
+SKU služby Azure front-Premium se může připojit k vašemu zdroji prostřednictvím služby privátního propojení. Vaše aplikace se můžou hostovat do vaší privátní virtuální sítě nebo za službu PaaS, jako je webová aplikace a účet úložiště, a tím odebrat nutnost zpřístupnění zdroje veřejnosti.
 
 :::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="Architektura privátních koncových bodů pro přední dvířka":::
 

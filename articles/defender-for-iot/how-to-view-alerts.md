@@ -1,20 +1,19 @@
 ---
-title: Zobrazení upozornění
+title: Filtrování a správa výstrah ze stránky s výstrahami
 description: Zobrazit výstrahy podle různých kategorií a pomocí funkcí pro vyhledávání pomůžou najít výstrahy, které vás zajímají.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/02/2020
+ms.date: 3/22/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 391d1872124c7332bdaa6008a244490b47df4bf7
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523664"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781581"
 ---
-# <a name="view-alerts"></a>Zobrazení upozornění
+# <a name="filter-and-manage-alerts-from-the-alerts-page"></a>Filtrování a správa výstrah ze stránky s výstrahami 
 
 Tento článek popisuje, jak zobrazit výstrahy aktivované senzorem a jak je spravovat pomocí nástrojů výstrah.
 
@@ -32,7 +31,7 @@ Zobrazení výstrah:
 
 Výstrahy můžete zobrazit podle různých kategorií v hlavním zobrazení **výstrahy** . Vyberte výstrahu, chcete-li zkontrolovat podrobnosti a spravovat událost.
 
-| Seřadit podle typu | Description |
+| Seřadit podle typu | Popis |
 |--|--|
 | **Důležité výstrahy** | Výstrahy seřazené podle důležitosti. |
 | **Připnuté výstrahy** | Upozorňuje, že uživatel připnul k dalšímu šetření. Připnuté výstrahy nejsou archivovány a jsou uloženy po dobu 14 dní v připnuté složce. |

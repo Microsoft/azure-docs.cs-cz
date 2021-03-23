@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 04de6dce6cbab4dc0716ae841707b1d61d6bc375
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4aed956fc7052f844080b830aa4cc3b2a07235a1
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93073753"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799390"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Běžné případy použití Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ Případy použití IoT obvykle sdílejí některé vzorce v tom, jak jejich př
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="Referenční architektura IoT Azure Cosmos DB" border="false":::
 
-Azure Event Hubs může ingestovat nárůsty dat, protože nabízí příjem dat s vysokou propustností s nízkou latencí. Data ingestovaná, která je potřeba zpracovat pro účely přehledu v reálném čase, je možné rozfiltrovat na Azure Stream Analytics pro analýzy v reálném čase. Data je možné načíst do Azure Cosmos DB pro dotazování ad hoc. Jakmile se data načtou do Azure Cosmos DB, data jsou připravená k dotazování. Kromě toho je možné číst nová data a změny stávajících dat v kanálu změn. Změna kanálu je trvalá, připojovat pouze protokol, který ukládá změny do kontejnerů Cosmos v sekvenčním pořadí. Všechna data nebo pouze změny dat v Azure Cosmos DB lze použít jako součást analýz v reálném čase. Kromě toho je možné data dále zdokonalovat a zpracovávat připojením Azure Cosmos DB dat ke službě HDInsight pro prase, podregistr nebo mapování/snížení úloh.  Data v kontrastu se pak načtou zpátky do Azure Cosmos DB pro vytváření sestav.   
+Azure Event Hubs může ingestovat nárůsty dat, protože nabízí příjem dat s vysokou propustností s nízkou latencí. Data ingestovaná, která je potřeba zpracovat pro účely přehledu v reálném čase, je možné rozfiltrovat na Azure Stream Analytics pro analýzy v reálném čase. Data je možné načíst do Azure Cosmos DB pro dotazování ad hoc. Jakmile se data načtou do Azure Cosmos DB, data jsou připravená k dotazování. Kromě toho je možné číst nová data a změny stávajících dat v kanálu změn. Změna kanálu je trvalá, připojovat pouze protokol, který ukládá změny do kontejnerů Cosmos v sekvenčním pořadí. Pak se všechna data nebo jenom změny dat v Azure Cosmos DB jako součást analýz v reálném čase dají použít jako referenční data. Kromě toho je možné data dále zdokonalovat a zpracovávat připojením Azure Cosmos DB dat ke službě HDInsight pro prase, podregistr nebo mapování/snížení úloh.  Data v kontrastu se pak načtou zpátky do Azure Cosmos DB pro vytváření sestav.   
 
 Ukázkové řešení IoT s využitím Azure Cosmos DB, EventHubs a zaplavení najdete na webu [GitHub úložiště s příklady HDInsight-](https://github.com/hdinsight/hdinsight-storm-examples/)zaplave.
 

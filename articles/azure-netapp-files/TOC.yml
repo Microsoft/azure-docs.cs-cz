@@ -61,6 +61,8 @@
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
             - name: Výhody použití Azure NetApp Files s Windows Virtual Desktopem
               href: solutions-windows-virtual-desktop.md
+            - name: Výhody použití Azure NetApp Files pro nasazení SQL Server
+              href: solutions-benefits-azure-netapp-files-sql-server.md
     - name: Nejčastější dotazy k Azure NetApp Files
       href: azure-netapp-files-faqs.md
     - name: Co je nástroj Azure Application Consistent Snapshot
@@ -179,3 +181,5 @@
       href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: Videa
       href: azure-netapp-files-videos.md
+    - name: Porovnání souborů a Azure NetApp Files Azure
+      href: ../storage/files/storage-files-netapp-comparison.md

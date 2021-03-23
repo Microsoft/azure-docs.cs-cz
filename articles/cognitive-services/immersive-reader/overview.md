@@ -12,12 +12,12 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: čtenáři, nástroje pro jazyky, zobrazované obrázky, vylepšení čtení, čtení obsahu, překlad
-ms.openlocfilehash: 6affc0a2b94c7ea950a8995981d63470722d981f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599523"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801566"
 ---
 # <a name="what-is-immersive-reader"></a>Co je Asistivní čtečka?
 
@@ -25,8 +25,8 @@ ms.locfileid: "104599523"
 
 Tato dokumentace obsahuje následující typy článků:  
 
-* **[Rychlé starty](quickstarts/client-libraries.md)** jsou podrobné pokyny, které vám umožní volat službu a získat výsledky.
-* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném **[způsobu.](how-to-create-immersive-reader.md)**  
+* **[Rychlé starty](quickstarts/client-libraries.md)** jsou pokyny Začínáme, které vám pomohou při provádění požadavků na službu.
+* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném **[způsobu.](how-to-create-immersive-reader.md)**
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Použití moderního čtecího zařízení ke zlepšení usnadnění čtení 
 

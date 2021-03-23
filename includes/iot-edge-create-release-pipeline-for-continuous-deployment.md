@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: 9572f4c663c820c76a57cdbdcecff082b150b577
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8009d98ddbfa778cf5f357248ecd943b810e06e3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104761118"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803271"
 ---
 ## <a name="create-a-release-pipeline-for-continuous-deployment"></a>Vytvoření kanálu vydání pro průběžné nasazování
 
@@ -89,6 +89,9 @@ Vytvořte nový kanál a přidejte novou fázi:
     | Vybrat jedno nebo více zařízení | Vyberte, zda chcete, aby byl kanál verze nasazen do jednoho nebo více zařízení. Pokud nasadíte do jednoho zařízení, zadejte **ID zařízení IoT Edge**. Pokud nasazujete na více zařízení, zadejte **podmínku cíle** zařízení. Podmínka cíle je filtr, který odpovídá sadě IoT Edge zařízení v IoT Hub. Pokud chcete jako podmínku použít značky zařízení, je potřeba aktualizovat značky odpovídajících zařízení pomocí IoT Hub s dvojitou podmínkou zařízení. Aktualizujte **ID nasazení IoT Edge** a **prioritu nasazení IoT Edge** v rozšířených nastaveních. Další informace o vytváření nasazení pro více zařízení najdete v tématu [principy IoT Edgeho automatického nasazení](../articles/iot-edge/module-deployment-monitoring.md). |
     | ID zařízení nebo cílová podmínka | V závislosti na předchozím výběru zadejte ID zařízení nebo [cílovou podmínku](../articles/iot-edge/module-deployment-monitoring.md#target-condition) pro nasazení do více zařízení. |
     | Pokročilý | Pro ID nasazení IoT Edge zadejte `$(System.TeamProject)-$(Release.EnvironmentName)` . Tato proměnná mapuje název projektu a verze s vaším ID nasazení IoT Edge. |
+    
+
+    Pokud úloha zahrnuje použití image, která se nachází v soukromém registru, který není viditelný pro veřejný cloud, můžete nastavit proměnnou prostředí **SKIP_MODULE_IMAGE_VALIDATION** na `true` pro přeskočení ověření obrázku. 
 
     ![Přidání úloh Azure IoT Edge pro vaši fázi vývoje](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-quality-assurance-task.png)
 

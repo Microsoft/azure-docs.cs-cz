@@ -7,22 +7,10 @@
     - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
     - name: Průmyslové IoT
-      href: overview-iot-industrial.md
-      items:
-        - name: Co je OPC Twin
-          href: overview-opc-twin.md
-        - name: Co je OPC Vault
-          href: overview-opc-vault.md
-        - name: Co je vydavatel OPC
-          href: overview-opc-publisher.md
-        - name: Co je propojená továrna
-          href: iot-accelerators-connected-factory-features.md
     - name: Simulace zařízení
       href: iot-accelerators-device-simulation-overview.md
 - name: Rychlé starty
   items:
-    - name: Vyzkoušení řešení propojené továrny
-      href: quickstart-connected-factory-deploy.md
     - name: Nasazení akcelerátoru řešení pro simulaci zařízení
       href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
   expanded: true
@@ -37,47 +25,14 @@
 - name: Koncepty
   items:
     - name: Průmyslové IoT
-      items:
-        - name: Architektura využívající technologii OPC Twin
-          href: overview-opc-twin-architecture.md
-        - name: Architektura služby OPC Vault
-          href: overview-opc-vault-architecture.md
 - name: Návody
   items:
     - name: Průmyslové IoT
       items:
         - name: Propojená továrna
-          items:
-            - name: Použití řídicího panelu
-              href: iot-accelerators-connected-factory-dashboard.md
-            - name: Konfigurace akcelerátoru řešení
-              href: iot-accelerators-connected-factory-configure.md
-            - name: Přizpůsobení akcelerátoru řešení
-              href: iot-accelerators-connected-factory-customize.md
         - name: OPC Twin
-          items:
-            - name: Nasazení služeb OPC Twin
-              href: howto-opc-twin-deploy-existing.md
-            - name: Nasazení modulu OPC Twin do IoT Edge
-              href: howto-opc-twin-deploy-modules.md
-            - name: Nasazení jenom závislostí OPC Twin
-              href: howto-opc-twin-deploy-dependencies.md
         - name: OPC Vault
-          items:
-            - name: Nasazení služby OPC Vault
-              href: howto-opc-vault-deploy.md
-            - name: Správa služby OPC Vault
-              href: howto-opc-vault-manage.md
-            - name: Zabezpečení komunikace zařízení OPC UA s využitím služby OPC Vault
-              href: howto-opc-vault-secure.md
-            - name: Zabezpečený provoz služby OPC Vault
-              href: howto-opc-vault-secure-ca.md
         - name: Vydavatel OPC
-          items:
-            - name: Konfigurace vydavatele OPC
-              href: howto-opc-publisher-configure.md
-            - name: Spuštění vydavatele OPC
-              href: howto-opc-publisher-run.md
     - name: Simulace zařízení
       items:
         - name: Použití existující služby IoT Hub
@@ -122,8 +77,6 @@
       items:
         - name: Úložiště GitHub
           href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: Propojená továrna – nejčastější dotazy
-          href: iot-accelerators-faq-cf.md
     - name: Simulace zařízení
       items:
         - name: Referenční příručka pro vývojáře

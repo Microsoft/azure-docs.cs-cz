@@ -8,20 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a42cb97d123d0943dab02bf1f70fcf306d6bcd96
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21da8f79772d9648836bedec89cb5d7014486dc6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97629118"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798355"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace změny hesla pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou přihlášení pomocí místního účtu, povolit změnu hesla, aniž by museli prokázat svoji identitu prostřednictvím ověření e-mailu. Tok změny hesla zahrnuje následující kroky:
+
+1. Uživatel se přihlásí ke svému místnímu účtu. Pokud je relace stále aktivní, Azure AD B2C autorizuje uživatele a přeskočí k dalšímu kroku.
+1. Uživatel ověří **staré heslo** a pak vytvoří a potvrdí **nové heslo**.
+
+![Tok změny hesla](./media/add-password-change-policy/password-change-flow.png)  
+
+> [!TIP]
+> Tok změny hesla umožňuje uživatelům změnit heslo pouze v případě, že uživatel zná heslo a chce ho změnit. Doporučujeme také povolit [Samoobslužné resetování hesla](add-password-reset-policy.md) , aby bylo možné podporovat případy, kdy uživatel zapomene heslo.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -30,15 +40,6 @@ ms.locfileid: "97629118"
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
-
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou přihlášení pomocí místního účtu, povolit změnu hesla, aniž by museli dokázat ověření pomocí e-mailu. Tok změny hesla zahrnuje následující kroky:
-
-1. Přihlaste se pomocí místního účtu. Pokud je relace stále aktivní, Azure AD B2C autorizuje uživatele a přeskočí k dalšímu kroku.
-1. Uživatelé musí ověřit **staré heslo**, vytvořit a potvrdit **nové heslo**.
-
-![Tok změny hesla](./media/add-password-change-policy/password-change-flow.png)
 
 ## <a name="prerequisites"></a>Předpoklady
 

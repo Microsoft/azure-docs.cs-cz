@@ -5,19 +5,16 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: d1ea328575cf07a22ce39549c34d5cd21e916427
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e4e726f742d46a4b63563f55c191cf21e49d06fc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054589"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778317"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Přehled posouzení (migrace do Azure SQL)
 
 Tento článek poskytuje přehled posouzení pro migraci místních SQL Server instancí z prostředí VMware do databází Azure SQL nebo spravovaných instancí pomocí [nástroje Azure Migrate: Discovery and Assessment Tool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool).
-
-> [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 ## <a name="whats-an-assessment"></a>Co je posouzení?
 Posouzení pomocí nástroje pro zjišťování a hodnocení je časovým snímkem dat a měří připravenost a odhadne dopad migrace místních serverů do Azure.
@@ -28,9 +25,9 @@ Existují tři typy hodnocení, které můžete vytvořit pomocí nástroje Azur
 
 **Typ posouzení** | **Podrobnosti**
 --- | --- 
-**Virtuální počítač Azure** | Posouzení vhodnosti místních serverů k migraci na virtuální počítače Azure. Místní servery můžete vyhodnotit v prostředí [VMware](how-to-set-up-appliance-vmware.md) a [Hyper-V](how-to-set-up-appliance-hyper-v.md) a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure pomocí tohoto typu posouzení.
+**Virtuální počítač Azure** | Posouzení vhodnosti místních serverů k migraci na virtuální počítače Azure. <br/><br/> Místní servery můžete vyhodnotit v prostředí [VMware](how-to-set-up-appliance-vmware.md) a [Hyper-V](how-to-set-up-appliance-hyper-v.md) a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure pomocí tohoto typu posouzení.
 **Azure SQL** | Vyhodnotí migraci místních SQL serverů z prostředí VMware do Azure SQL Database nebo spravované instance Azure SQL.
-**Azure VMware Solution (AVS)** | Posouzení vhodnosti místních serverů k migraci do služby [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Posouzení vhodnosti místních serverů k migraci do služby [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Posouzení pro Azure SQL poskytuje jedno kritérium změny velikosti:
 
@@ -76,34 +73,34 @@ Co je je součástí vlastností posouzení Azure SQL:
 **Vlastnost** | **Podrobnosti**
 --- | ---
 **Cílové umístění** | Oblast Azure, do které chcete migrovat. Doporučení pro konfiguraci a náklady Azure SQL jsou založená na umístění, které zadáte.
-**Cílový typ nasazení** | Cílový typ nasazení, u kterého chcete spustit posouzení: vyberte **Doporučené**, pokud chcete Azure Migrate vyhodnotit připravenost vašich SQL serverů pro migraci na Azure SQL mi a Azure SQL DB a doporučit možnost nasazení s nejlepšími verzemi, cílovou vrstvou, konfigurací Azure SQL a měsíčním odhadem. Vyberte **Azure SQL DB**, pokud chcete vyhodnotit servery SQL pro migraci jenom na Azure SQL Database, a Projděte si cílovou úroveň, konfiguraci a měsíční odhady Azure SQL DB. Vyberte **Azure SQL mi**, pokud chcete vyhodnotit servery SQL pro migraci jenom na Azure SQL Database, a Projděte si cílovou úroveň, konfiguraci Azure SQL mi a měsíční odhady.
-**Rezervovaná kapacita** | Určuje rezervovanou kapacitu tak, aby se odhady nákladů v posouzení braly v úvahu. Pokud vyberete možnost rezervované kapacity, nemůžete zadat "slevu" (%).
-**Kritéria stanovení velikosti** | Tato vlastnost slouží ke správné velikosti konfigurace Azure SQL. Ve výchozím nastavení je to na **základě výkonu** , což znamená, že vyhodnocení bude shromažďovat metriky výkonu SQL Server instance a databáze, aby bylo možné doporučit optimální velikost spravované instance Azure SQL a/nebo Azure SQL Database doporučení na úrovni a konfiguraci.
+**Cílový typ nasazení** | Cílový typ nasazení, na kterém chcete spustit posouzení: <br/><br/> Vyberte **doporučeno**, pokud chcete Azure Migrate vyhodnotit připravenost vašich SQL serverů pro migraci na Azure SQL mi a Azure SQL DB a doporučte si možnost optimálního cílového nasazení, cílovou úroveň, konfiguraci Azure SQL a měsíční odhady.<br/><br/>Vyberte **Azure SQL DB**, pokud chcete vyhodnotit servery SQL pro migraci jenom na Azure SQL Database, a Projděte si cílovou úroveň, konfiguraci a měsíční odhady Azure SQL DB.<br/><br/>Vyberte **Azure SQL mi**, pokud chcete vyhodnotit servery SQL pro migraci jenom na Azure SQL Database, a Projděte si cílovou úroveň, konfiguraci Azure SQL mi a měsíční odhady.
+**Rezervovaná kapacita** | Určuje rezervovanou kapacitu tak, aby se odhady nákladů v posouzení braly v úvahu.<br/><br/> Pokud vyberete možnost rezervované kapacity, nemůžete zadat "slevu" (%).
+**Kritéria stanovení velikosti** | Tato vlastnost slouží ke správné velikosti konfigurace Azure SQL. <br/><br/> Ve výchozím nastavení je to na **základě výkonu** , což znamená, že vyhodnocení bude shromažďovat metriky výkonu SQL Server instance a databáze, aby bylo možné doporučit optimální velikost spravované instance Azure SQL a/nebo Azure SQL Database doporučení na úrovni a konfiguraci.
 **Historie výkonu** | Historie výkonu určuje dobu použitou při vyhodnocování údajů o výkonu.
 **Percentilové využití** | Procento využití Určuje hodnotu percentilu pro vzorek výkonu, který se používá pro snižování.
-**Faktor komfortu** | Vyrovnávací paměť použitá během posouzení. IT účty pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobná zvýšení využití v budoucnu. Například instance 10 jader s 20% využitím obvykle vede k vytvoření instance se dvěma jádry. Výsledkem je faktor komfortu 2,0, ale výsledkem je instance se čtyřmi jádry.
+**Faktor komfortu** | Vyrovnávací paměť použitá během posouzení. IT účty pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobná zvýšení využití v budoucnu.<br/><br/> Například instance 10 jader s 20% využitím obvykle vede k vytvoření instance se dvěma jádry. Výsledkem je faktor komfortu 2,0, ale výsledkem je instance se čtyřmi jádry.
 **Nabídka/licenční program** | [Nabídka Azure](https://azure.microsoft.com/support/legal/offer-details/) , do které jste zaregistrovaní. V současné době můžete vybírat jenom z průběžných plateb a průběžných plateb podle aktuálního využití pro vývoj/testování. Všimněte si, že můžete využít další zlevněnou kapacitu pomocí rezervované kapacity a Zvýhodněné hybridní využití Azure nad nabídkou průběžných plateb.
-**Úroveň služby** | Nejvhodnější možnost úrovně služby, která bude vyhovovat vašim potřebám vaší firmy pro migraci do Azure SQL Database a/nebo spravované instance Azure SQL: Pokud chcete, aby Azure Migrate pro vaše servery doporučit nejlepší úroveň služby, vyberte **doporučeno** . To může být pro obecné účely nebo pro podnikání důležité. Vyberte možnost **pro obecné účely** , pokud chcete konfiguraci Azure SQL navrženou pro úlohy orientované na rozpočet. [Další informace](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) Vyberte **pro důležité obchodní informace** , pokud chcete, aby konfigurace Azure SQL určená pro úlohy s nízkou latencí a vysokou odolností vůči chybám a rychlému převzetí služeb při selhání. [Další informace](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**Úroveň služby** | Nejvhodnější možnost úrovně služby, která bude vyhovovat potřebám vaší firmy pro migraci do Azure SQL Database nebo spravované instance Azure SQL:<br/><br/>**Doporučuje** se, pokud chcete, Azure Migrate doporučit pro vaše servery nejlepší sadu služeb. To může být pro obecné účely nebo pro podnikání důležité. <br/><br/> **Pro obecné účely** Pokud chcete konfiguraci Azure SQL navrženou pro úlohy orientované na rozpočet. [Další informace](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> **Pro důležité obchodní informace** Pokud chcete, aby konfigurace Azure SQL určená pro úlohy s nízkou latencí a vysokou odolností vůči chybám a rychlému převzetí služeb při selhání. [Další informace](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
 **Měna** | Fakturační měna vašeho účtu.
 **Sleva (%)** | Všechny slevy specifické pro předplatné, které obdržíte nad nabídkou Azure. Výchozí nastavení je 0 %.
-**Zvýhodněné hybridní využití Azure** | Určuje, zda již máte licenci SQL Server. Pokud to uděláte a jsou pokryté s aktivními softwarovými zárukami SQL Server předplatných, můžete požádat o Zvýhodněné hybridní využití Azure při přenesení licencí do Azure.
+**Zvýhodněné hybridní využití Azure** | Určuje, zda již máte licenci SQL Server. <br/><br/> Pokud to uděláte a jsou pokryté s aktivními softwarovými zárukami SQL Server předplatných, můžete požádat o Zvýhodněné hybridní využití Azure při přenesení licencí do Azure.
 
 [Projděte si osvědčené postupy](best-practices-assessment.md) pro vytvoření posouzení pomocí Azure Migrate.
 
 ## <a name="calculate-readiness"></a>Vypočítat připravenost
 
 > [!NOTE]
-> Posouzení zahrnuje pouze databáze, které jsou ve stavu online. V případě, že je databáze v jiném stavu, bude hodnocení ignorovat její míru připravenosti a velikost i výpočet nákladů na takovou databázi. Pokud chcete takové databáze hodnotit, změňte jejich stav a po nějaké době hodnocení přepočítejte.
+Posouzení zahrnuje pouze databáze, které jsou ve stavu online. V případě, že je databáze v jiném stavu, bude hodnocení ignorovat její míru připravenosti a velikost i výpočet nákladů na takovou databázi. Pokud chcete takové databáze hodnotit, změňte jejich stav a po nějaké době hodnocení přepočítejte.
 
 ### <a name="azure-sql-readiness"></a>Připravenost Azure SQL
 
 Připravenost Azure SQL pro instance a databáze SQL je založená na kontrole kompatibility funkcí s Azure SQL Database a spravovanou instancí Azure SQL:
-- Posouzení Azure SQL považuje funkce instance SQL Server, které aktuálně používají zdrojové SQL Server úlohy (úlohy agenta SQL, propojené servery atd.) a schémata uživatelských databází (tabulky, zobrazení, triggery, uložené procedury atd.) a identifikují problémy s kompatibilitou.
-- Pokud nejsou zjištěny žádné problémy s kompatibilitou, připravenost je označena jako **připravená** pro cílový typ nasazení (Azure SQL Database nebo Azure SQL Managed instance).
-- Pokud se vyskytnou nekritické problémy s kompatibilitou, jako jsou například degradované nebo nepodporované funkce, které neblokují migraci na konkrétní cílový typ nasazení, připravenost je označena jako **připravená** (ikona s hypertextovými odkazy a modrá informace) s podrobnostmi **Upozornění** a doporučenými pokyny k nápravě.
-- Pokud dojde k problémům s kompatibilitou, které mohou zablokovat migraci na konkrétní cílový typ nasazení, připravenost je označena jako **nepřipravená** s podrobnostmi o **problému** a doporučenými pokyny k nápravě.
+1. Posouzení Azure SQL považuje funkce instance SQL Server, které aktuálně používají zdrojové SQL Server úlohy (úlohy agenta SQL, propojené servery atd.) a schémata uživatelských databází (tabulky, zobrazení, triggery, uložené procedury atd.) a identifikují problémy s kompatibilitou.
+1. Pokud nejsou zjištěny žádné problémy s kompatibilitou, připravenost je označena jako **připravená** pro cílový typ nasazení (Azure SQL Database nebo Azure SQL Managed instance).
+1. Pokud se vyskytnou nekritické problémy s kompatibilitou, jako jsou například degradované nebo nepodporované funkce, které neblokují migraci na konkrétní cílový typ nasazení, připravenost je označena jako **připravená** (ikona s hypertextovými odkazy a modrá informace) s podrobnostmi **Upozornění** a doporučenými pokyny k nápravě.
+1. Pokud dojde k problémům s kompatibilitou, které mohou zablokovat migraci na konkrétní cílový typ nasazení, připravenost je označena jako **nepřipravená** s podrobnostmi o **problému** a doporučenými pokyny k nápravě.
     - Pokud existuje ještě jedna databáze v instanci SQL, která není připravena pro konkrétní cílový typ nasazení, je instance označena jako **nepřipravená** pro daný typ nasazení.
-- Pokud zjišťování stále probíhá nebo dojde k potížím se zjišťováním pro instanci nebo databázi SQL, připravenost je označena jako **neznámá** , protože posouzení nemohlo vypočítat připravenost pro danou instanci SQL.
+1. Pokud zjišťování stále probíhá nebo dojde k potížím se zjišťováním pro instanci nebo databázi SQL, připravenost je označena jako **neznámá** , protože posouzení nemohlo vypočítat připravenost pro danou instanci SQL.
 
 ### <a name="recommended-deployment-type"></a>Doporučený typ nasazení
 
@@ -113,11 +110,11 @@ Pokud ve vlastnostech posouzení SQL Azure vyberete cílový typ nasazení podle
 
  **Připravenost Azure SQL DB** | **Připravenost Azure SQL MI** | **Doporučený typ nasazení** | **Počítá se konfigurace Azure SQL a odhad nákladů?**
  --- | --- | --- | --- |
- Připraveno | Připraveno | Azure SQL DB nebo Azure SQL MI | Yes
- Připraveno | Nepřipraveno nebo neznámo | Azure SQL DB | Yes
- Nepřipraveno nebo neznámo | Připraveno | Azure SQL MI | Yes
- Nepřipraveno | Nepřipraveno | Potenciálně připravený pro virtuální počítač Azure | No
- Nepřipraveno nebo neznámo | Nepřipraveno nebo neznámo | Neznámý | No
+ Připraveno | Připraveno | Azure SQL DB nebo <br/>Azure SQL MI | Ano
+ Připraveno | Nepřipraveno nebo<br/> Neznámý | Azure SQL DB | Ano
+ Nepřipraveno nebo<br/>Neznámý | Připraveno | Azure SQL MI | Ano
+ Nepřipraveno | Nepřipraveno | Potenciálně připravený pro virtuální počítač Azure | Ne
+ Nepřipraveno nebo<br/>Neznámý | Nepřipraveno nebo<br/>Neznámý | Neznámý | Ne
 
 > [!NOTE]
 > Pokud je doporučený typ nasazení vybraný jako **doporučený** ve vlastnostech posouzení, a pokud je zdroj SQL Server dobrý pro Azure SQL DB Single Database i pro SPRAVOVANOU instanci SQL Azure, vyhodnocování doporučuje konkrétní možnost, která optimalizuje vaše náklady a vejde se do hranic velikosti a výkonu.
@@ -171,7 +168,7 @@ Tato tabulka ukazuje hodnocení spolehlivosti, které závisí na procentu dostu
 
 #### <a name="low-confidence-ratings"></a>Hodnocení nízké důvěry
 Tady je několik důvodů, proč hodnocení může získat nízkou spolehlivost:
-- Nevytvořili jste profil svého prostředí po dobu, po kterou vytváříte posouzení. Pokud například vytvoříte hodnocení s trváním výkonu nastaveným na jeden den, musíte počkat alespoň den po zahájení zjišťování všech datových bodů, které se mají shromáždit.
+- Po dobu trvání, pro kterou vytváříte hodnocení, jste neprofilovali své prostředí. Pokud například vytvoříte hodnocení s trváním výkonu nastaveným na jeden den, musíte počkat alespoň den po zahájení zjišťování všech datových bodů, které se mají shromáždit.
 - Hodnocení nemůže shromáždit údaje o výkonu některých nebo všech serverů v daném období hodnocení. Pro hodnocení s vysokou mírou jistoty Prosím zajistěte:
     - Servery jsou napájené po dobu trvání posouzení.
     - Odchozí připojení na portech 443 jsou povolená.

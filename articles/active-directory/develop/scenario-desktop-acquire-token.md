@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c63ee686ae218a696069465bb8d2d1d7413a998e
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99582651"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799084"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -91,20 +91,6 @@ return result;
 
 ```
 
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-result = None
-
-# Firstly, check the cache to see if this end user has signed in before
-accounts = app.get_accounts(username=config["username"])
-if accounts:
-    result = app.acquire_token_silent(config["scope"], account=accounts[0])
-
-if not result:
-    result = app.acquire_token_by_xxx(scopes=config["scope"])
-```
-
 # <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>V MSAL pro iOS a macOS
@@ -145,6 +131,83 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
     }
 }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+V uzlu MSAL získáte tokeny pomocí toku autorizačního kódu s ověřovacím klíčem pro výměnu kódu (PKCE). Uzel MSAL používá mezipaměť tokenů v paměti k zjištění, jestli v mezipaměti nejsou nějaké uživatelské účty. V takovém případě je možné objekt účtu předat `acquireTokenSilent()` metodě pro načtení přístupového tokenu, který je uložený v mezipaměti.
+
+```JavaScript
+
+const msal = require("@azure/msal-node");
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+const msalTokenCache = pca.getTokenCache();
+
+let accounts = await msalTokenCache.getAllAccounts();
+
+    if (accounts.length > 0) {
+
+        const silentRequest = {
+            account: accounts[0], // Index must match the account that is trying to acquire token silently
+            scopes: ["user.read"],
+        };
+    
+        pca.acquireTokenSilent(silentRequest).then((response) => {
+            console.log("\nSuccessful silent token acquisition");
+            console.log("\nResponse: \n:", response);
+            res.sendStatus(200);
+        }).catch((error) => console.log(error));
+    } else {
+        const {verifier, challenge} = await msal.cryptoProvider.generatePkceCodes();
+
+        const authCodeUrlParameters = {
+            scopes: ["User.Read"],
+            redirectUri: "your_redirect_uri",
+            codeChallenge: challenge, // PKCE Code Challenge
+            codeChallengeMethod: "S256" // PKCE Code Challenge Method 
+        };
+        
+        // get url to sign user in and consent to scopes needed for application
+        pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+            console.log(response);
+        
+            const tokenRequest = {
+                code: response["authorization_code"],
+                codeVerifier: verifier // PKCE Code Verifier 
+                redirectUri: "your_redirect_uri",
+                scopes: ["User.Read"],
+            };
+            
+            // acquire a token by exchanging the code
+            pca.acquireTokenByCode(tokenRequest).then((response) => {
+                console.log("\nResponse: \n:", response);
+            }).catch((error) => {
+                console.log(error);
+            });
+        }).catch((error) => console.log(JSON.stringify(error)));
+    }
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_xxx(scopes=config["scope"])
+```
 ---
 
 Tady jsou různé způsoby, jak získat tokeny v desktopové aplikaci.
@@ -154,6 +217,7 @@ Tady jsou různé způsoby, jak získat tokeny v desktopové aplikaci.
 Následující příklad ukazuje minimální kód pro interaktivní získání tokenu pro čtení profilu uživatele pomocí Microsoft Graph.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
+
 ### <a name="in-msalnet"></a>V MSAL.NET
 
 ```csharp
@@ -355,25 +419,6 @@ private static IAuthenticationResult acquireTokenInteractive() throws Exception 
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
-
-MSAL Python neposkytuje přímo metodu pro získání tokenu. Místo toho vyžaduje, aby aplikace odeslala požadavek na autorizaci ve své implementaci toku interakce uživatele, aby získala autorizační kód. Tento kód lze následně předat `acquire_token_by_authorization_code` metodě pro získání tokenu.
-
-```Python
-result = None
-
-# Firstly, check the cache to see if this end user has signed in before
-accounts = app.get_accounts(username=config["username"])
-if accounts:
-    result = app.acquire_token_silent(config["scope"], account=accounts[0])
-
-if not result:
-    result = app.acquire_token_by_authorization_code(
-         request.args['code'],
-         scopes=config["scope"])
-
-```
-
 # <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>V MSAL pro iOS a macOS
@@ -408,6 +453,70 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
     // Get access token from result
     let accessToken = authResult.accessToken
 })
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+V uzlu MSAL získáte tokeny pomocí toku autorizačního kódu s ověřovacím klíčem pro výměnu kódu (PKCE). Proces má dva kroky: nejprve aplikace získá adresu URL, kterou lze použít ke generování autorizačního kódu. Tato adresa URL se dá otevřít v prohlížeči podle volby, kde uživatel může zadat svoje přihlašovací údaje a bude přesměrován zpátky na `redirectUri` (zaregistrované během registrace aplikace) pomocí autorizačního kódu. Za druhé, aplikace předá autorizační kód přijatý metodě, `acquireTokenByCode()` která ho vyměňuje pro přístupový token.
+
+```JavaScript
+const msal = require("@azure/msal-node");
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+
+const {verifier, challenge} = await msal.cryptoProvider.generatePkceCodes();
+
+const authCodeUrlParameters = {
+    scopes: ["User.Read"],
+    redirectUri: "your_redirect_uri",
+    codeChallenge: challenge, // PKCE Code Challenge
+    codeChallengeMethod: "S256" // PKCE Code Challenge Method 
+};
+
+// get url to sign user in and consent to scopes needed for application
+pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+    console.log(response);
+
+    const tokenRequest = {
+        code: response["authorization_code"],
+        codeVerifier: verifier // PKCE Code Verifier 
+        redirectUri: "your_redirect_uri",
+        scopes: ["User.Read"],
+    };
+    
+    // acquire a token by exchanging the code
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+    }).catch((error) => {
+        console.log(error);
+    });
+}).catch((error) => console.log(JSON.stringify(error)));
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+MSAL Python neposkytuje přímo metodu pro získání tokenu. Místo toho vyžaduje, aby aplikace odeslala požadavek na autorizaci ve své implementaci toku interakce uživatele, aby získala autorizační kód. Tento kód lze následně předat `acquire_token_by_authorization_code` metodě pro získání tokenu.
+
+```Python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_authorization_code(
+         request.args['code'],
+         scopes=config["scope"])
+
 ```
 ---
 
@@ -586,13 +695,17 @@ private static IAuthenticationResult acquireTokenIwa() throws Exception {
 }
 ```
 
-# <a name="python"></a>[Python](#tab/python)
-
-Tento tok se ještě v MSAL Pythonu nepodporuje.
-
 # <a name="macos"></a>[macOS](#tab/macOS)
 
 Tento tok se nevztahuje na macOS.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Tento tok se v uzlu MSAL ještě nepodporuje.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Tento tok se ještě v MSAL Pythonu nepodporuje.
 
 ---
 
@@ -882,6 +995,41 @@ private static IAuthenticationResult acquireTokenUsernamePassword() throws Excep
 }
 ```
 
+# <a name="macos"></a>[macOS](#tab/macOS)
+
+Tento tok není podporován v MSAL pro macOS.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Tento extrakce pochází z [ukázek pro vývoj uzlů MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/username-password). V následujícím fragmentu kódu se uživatelské jméno a heslo pevně zakódované jenom pro ilustraci. To by mělo být zabráněno v produkčním prostředí. Místo toho se doporučuje základní uživatelské rozhraní, které vyzve uživatele k zadání uživatelského jména nebo hesla. 
+
+```JavaScript
+const msal = require("@azure/msal-node");
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+
+// For testing, enter your username and password below.
+// In production, replace this with a UI prompt instead.
+const usernamePasswordRequest = {
+    scopes: ["user.read"],
+    username: "", // Add your username here
+    password: "", // Add your password here
+};
+
+pca.acquireTokenByUsernamePassword(usernamePasswordRequest).then((response) => {
+    console.log("acquired token by password grant");
+}).catch((error) => {
+    console.log(error);
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Tento extrakce pochází ze [vzorků pro vývoj v Pythonu MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/).
@@ -911,10 +1059,6 @@ if not result:
     result = app.acquire_token_by_username_password(
         config["username"], config["password"], scopes=config["scope"])
 ```
-
-# <a name="macos"></a>[macOS](#tab/macOS)
-
-Tento tok není podporován v MSAL pro macOS.
 
 ---
 
@@ -1094,6 +1238,39 @@ private static IAuthenticationResult acquireTokenDeviceCode() throws Exception {
 }
 ```
 
+# <a name="macos"></a>[macOS](#tab/macOS)
+
+Tento tok se nevztahuje na macOS.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Tento extrakce pochází z [ukázek pro vývoj uzlů MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/device-code).
+
+```JavaScript
+const msal = require('@azure/msal-node');
+
+const msalConfig = {
+    auth: {
+        clientId: "your_client_id_here",
+        authority: "your_authority_here",
+    }
+};
+
+const pca = new msal.PublicClientApplication(msalConfig);
+
+const deviceCodeRequest = {
+    deviceCodeCallback: (response) => (console.log(response.message)),
+    scopes: ["user.read"],
+    timeout: 20,
+};
+
+pca.acquireTokenByDeviceCode(deviceCodeRequest).then((response) => {
+    console.log(JSON.stringify(response));
+}).catch((error) => {
+    console.log(JSON.stringify(error));
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Tento extrakce pochází ze [vzorků pro vývoj v Pythonu MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/).
@@ -1144,10 +1321,6 @@ if not result:
         # or you may even turn off the blocking behavior,
         # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
 ```
-
-# <a name="macos"></a>[macOS](#tab/macOS)
-
-Tento tok se nevztahuje na macOS.
 
 ---
 

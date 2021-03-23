@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: f57114fc4cb76c500cc422966635273c3a923046
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181612"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800759"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Kurz: Konfigurace RingCentral pro Automatické zřizování uživatelů
 
@@ -46,15 +46,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace RingCentral pro podporu zřizování pomocí Azure AD
 
-1. Přihlaste se ke [konzole pro správu RingCentral](https://login.ringcentral.com/sw.html). Přejděte na **nástroje > integrace adresáře**.
-
-    ![Konzola pro správu RingCentral](media/ringcentral-provisioning-tutorial/admin.png)
-
-2.  V části **vybrat poskytovatele adresářů** zvolte **SCIM** . (V budoucnu bude k dispozici možnost s názvem Azure Active Directory). Klikněte na **Povolit službu SCIM**.
-
-    ![RingCentral přidat SCIM](media/ringcentral-provisioning-tutorial/scim.png)
-
-3.  Kontaktujte tým podpory RingCentral na adrese matthew.hunt@ringcentral.com pro **ověřovací token SCIM**. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace RingCentral ve Azure Portal.
+K autorizaci v části pověření správce v kroku 5 se vyžaduje účet správce [RingCentral](https://www.ringcentral.com/office/plansandpricing.html) .
 
 > [!NOTE]
 > Pokud chcete přiřadit licence uživatelům, přečtěte si [zde](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)odkaz na video.
@@ -94,9 +86,13 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://platform.ringcentral.com/scim/v2` **adresu URL tenanta**. Zadejte hodnotu **SCIM tokenu ověřování** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k RingCentral. Pokud se připojení nepovede, ujistěte se, že má váš účet RingCentral oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** klikněte na **autorizovat**. Budete přesměrováni na přihlašovací stránku RingCentral. Zadejte svůj E-mail, telefonní číslo a heslo a klikněte na tlačítko **Přihlásit** se. Na stránce **žádost o přístup k** RingCentral klikněte na **autorizovat** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k RingCentral. Pokud se připojení nepovede, ujistěte se, že má váš účet RingCentral oprávnění správce, a zkuste to znovu.
 
-    ![Snímek obrazovky s adresou URL tenanta a textovými poli tajného tokenu s možností testovacího připojení s názvem.](./media/ringcentral-provisioning-tutorial/provisioning.png)
+   ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
+
+   ![Access](./media/ringcentral-provisioning-tutorial/authorize.png)
+
+   ![Autorizovat](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 
@@ -151,6 +147,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 ## <a name="change-log"></a>Protokol změn
 
 * 09/10/2020 – byla odebrána podpora atributů DisplayName a Manager.
+* 03/15/2021 – byla aktualizována metoda autorizace z trvalého nosných tokenů do toku udělení kódu OAuth.
 
 ## <a name="additional-resources"></a>Další zdroje informací
 

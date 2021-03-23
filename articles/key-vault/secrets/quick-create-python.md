@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 1eb3728e9697cefc3621221e4a918656efcba3c6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 14ea63e3b52d0673d6f64a5963a4de7a038f7021
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936630"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800461"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Rychlý Start: Azure Key Vaulta klíčová knihovna klienta pro Python
 
@@ -24,14 +24,14 @@ Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro Python 
 ## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Python 2.7 + nebo 3.5.3 +](/azure/developer/python/configure-local-development-environment)
+- [Python 2.7 + nebo 3.6 +](/azure/developer/python/configure-local-development-environment)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
 V tomto rychlém startu se předpokládá, že používáte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) v okně terminálu Linux.
 
 
 ## <a name="set-up-your-local-environment"></a>Nastavení místního prostředí
-Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](/java/api/overview/azure/identity-readme).
+Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](/python/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

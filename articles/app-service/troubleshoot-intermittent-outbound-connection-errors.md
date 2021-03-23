@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 989f47c0ff60865a8e8be15e089cdcf96ab2550c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2b4719561ad94d54267410d0af28db6ee8d82b00
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94968294"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799101"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Řešení chyb občasného odchozího připojení v Azure App Service
 
@@ -88,8 +88,8 @@ Níže jsou uvedené oblíbené knihovny používané pro sdružování připoje
 
 Sdružování připojení HTTP
 
-* [Správa připojení Apache](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
-* [PoolingHttpClientConnectionManager třídy](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
+* [Správa připojení Apache](https://hc.apache.org/httpcomponents-client-5.0.x/)
+* [PoolingHttpClientConnectionManager třídy](https://hc.apache.org/httpcomponents-client-5.0.x/)
 
 #### <a name="php"></a>PHP
 
@@ -125,13 +125,13 @@ I když PHP nepodporuje sdružování připojení, můžete zkusit použít trva
 
 Vyloučení odchozích omezení TCP je snazší, protože limity jsou nastaveny podle velikosti pracovního procesu. Můžete si prohlédnout omezení pro [Číselná omezení mezi virtuálními počítači izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Název omezení|Description|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
+|Název omezení|Popis|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
 |---|---|---|---|---|---|
 |Připojení|Počet připojení napříč celým virtuálním počítačem|1920|3968|8064|16 000|
 
 Aby nedocházelo k odchozím limitům TCP, můžete buď zvětšit velikost vašich pracovních procesů, nebo horizontální horizontální navýšení kapacity.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pochopení dvou typů omezení odchozího připojení a toho, co vaše aplikace dělá, by mělo usnadnit řešení potíží. Pokud víte, že vaše aplikace provede mnoho volání stejného účtu úložiště, můžete mít podezření na omezení SNAT. Pokud vaše aplikace vytvoří hodně volání koncových bodů po internetu, měli byste se domnívat, že jste dosáhli limitu počtu virtuálních počítačů.
 
@@ -157,7 +157,7 @@ Připojení TCP a porty SNAT přímo nesouvisejí. Rozpoznávání využití př
 * Limit připojení TCP nastane na úrovni instance pracovního procesu. Služba Vyrovnávání zatížení sítě Azure nepoužívá metriku připojení TCP pro omezení portů SNAT.
 * Omezení připojení TCP jsou popsaná v části [Číselná omezení pro různé virtuální počítače izolovaného prostoru (sandbox) – připojení TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Název omezení|Description|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
+|Název omezení|Popis|Malé (a1)|Střední (a2)|Velký (a3)|Izolovaná úroveň (pomocného mechanismu)|
 |---|---|---|---|---|---|
 |Připojení|Počet připojení napříč celým virtuálním počítačem|1920|3968|8064|16 000|
 

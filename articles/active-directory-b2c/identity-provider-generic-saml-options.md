@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 43c57950d317de42df666ddd25cbcb2e9a4c9611
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 32f9df410dabf1902e9a7d9aadbf47288bfa90f5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488869"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798234"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Konfigurace možností zprostředkovatele identity SAML pomocí Azure Active Directory B2C
 
@@ -85,9 +85,11 @@ Níže je příklad služby jednotného přihlašování k metadatům Azure AD s
 </IDPSSODescriptor>
 ```
 
-Odpovědi SAML jsou přenášeny do Azure AD B2C prostřednictvím vazby HTTP POST. Metadata zásad Azure AD B2C nastaví `AssertionConsumerService` vazbu na `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST` .
+### <a name="assertion-consumer-service"></a>Služba příjemce kontrolního výrazu
 
-Následuje příklad Assertion Consumer Service elementu Azure AD B2C metadat zásad.
+Služba pro příjem kontrolního výrazu (nebo ACS) je, kde je možné odesílat a přijímat odpovědi zprostředkovatele identity SAML pomocí Azure AD B2C. Odpovědi SAML jsou přenášeny do Azure AD B2C prostřednictvím vazby HTTP POST. Umístění služby ACS odkazuje na základní zásady předávající strany. Pokud je například předávající zásada *B2C_1A_signup_signin*, je služba ACS základní zásadou *B2C_1A_signup_signin*, například *B2C_1A_TrustFrameworkBase*.
+
+Následuje příklad Assertion Consumer Service elementu Azure AD B2C metadat zásad. 
 
 ```xml
 <SPSSODescriptor AuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

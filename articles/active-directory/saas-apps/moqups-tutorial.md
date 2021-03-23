@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: jeedes
-ms.openlocfilehash: ac31323547ec2d0b6330b0b1c13dd9f219f224e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c6db83dd46d988b5e8b4122a9e89e3c36136ad89
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104726815"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798985"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moqups"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Moqups
 
@@ -127,7 +127,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-moqups-sso"></a>Konfigurace jednotného přihlašování Moqups
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **Moqups** , musíte odeslat **adresu URL federačních metadat aplikace** [týmu podpory Moqups](mailto:support@moqups.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+1. Přihlaste se k webu Moqups jako správce.
+
+1.  Přejít na **účet** a vybrat kartu **integrace** .
+
+1. V části **ověřování SAML** vložte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
+
+    ![Snímek obrazovky pro konfigurační oddíl](./media/moqups-tutorial/saml-authentication.png)
+
+1. Klikněte na tlačítko **Konfigurovat** .
 
 ### <a name="create-moqups-test-user"></a>Vytvořit testovacího uživatele Moqups
 

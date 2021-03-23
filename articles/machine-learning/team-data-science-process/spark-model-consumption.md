@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 659f61734001163ada6fd26caabe2fb007892f61
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86027439"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774486"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Modely strojového učení založené na zprovoznění Spark
 
@@ -266,7 +266,8 @@ Doba potřebná k provedení výše v buňce: 5,37 sekund
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Vytváření RDD objektů s poli funkcí pro vstup do modelů
 Tato část obsahuje kód, který ukazuje, jak indexovat kategorií textová data jako objekt RDD a jedno horké kódování, aby bylo možné ho použít ke školení a testování MLlib logistické analýzy a modelů založených na stromové struktuře. Indexovaná data jsou uložena v objektech [odolné distribuované datové sady (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) . RDD jsou základní abstrakcí ve Sparku. Objekt RDD představuje neměnné kolekce prvků, které mohou být ovládány paralelně s Sparkem.
 
-Obsahuje také kód, který ukazuje, jak škálovat data pomocí `StandardScalar` MLlib, který je k dispozici pro použití v lineární regresi s stochastického přechodem (SGD), oblíbeným algoritmem pro školení široké škály modelů strojového učení. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) se používá k horizontálnímu navýšení kapacity funkcí na jednotkovou odchylku. Škálování funkcí, označované také jako normalizace dat, zajišťuje, že funkce s rozšířenými vyplacenými hodnotami nejsou ve funkci cíl předány nadměrnému vážení. 
+Obsahuje také kód, který ukazuje, jak škálovat data pomocí `StandardScalar` MLlib, který je k dispozici pro použití v lineární regresi s stochastického přechodem (SGD), oblíbeným algoritmem pro školení široké škály modelů strojového učení. [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.tree.RandomForest.html#pyspark.mllib.tree.RandomForest
+) se používá k horizontálnímu navýšení kapacity funkcí na jednotkovou odchylku. Škálování funkcí, označované také jako normalizace dat, zajišťuje, že funkce s rozšířenými vyplacenými hodnotami nejsou ve funkci cíl předány nadměrnému vážení. 
 
 ```python
 # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c641e24a498a6263d6a7c2325eed099b75a82caa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f4817e53cb36bc96add19d855750a73a151b4891
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426429"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772293"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s rozhraním Azure Cosmos DB API pro tabulky a Azure Table Storage s využitím .NET SDK
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -179,4 +179,4 @@ Nyní se můžete přihlásit k Azure Portal a ověřit, zda data v tabulce exis
 Teď můžete přejít k dalšímu kurzu a Naučte se migrovat data na účet Azure Cosmos DB rozhraní API pro tabulky. 
 
 > [!div class="nextstepaction"]
->[Migrace dat do služby Azure Comsos DB rozhraní API pro tabulky](../cosmos-db/table-import.md)
+>[Migrace dat do Azure Cosmos DB rozhraní API pro tabulky](../cosmos-db/table-import.md)

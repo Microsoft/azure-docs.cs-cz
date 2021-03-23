@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2020
+ms.date: 03/19/2021
 ms.author: yelevin
-ms.openlocfilehash: b8a304d523052f1fe839f94608806df51d35fdf9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 951c616961ff68b810ca135d09a6f6253cb2b7ba
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589918"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773551"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Kurz: Dodávaná detekce hrozeb
 
@@ -57,7 +57,9 @@ K dispozici jsou následující typy šablon:
     Tyto šablony jsou založené na speciálních algoritmech strojového učení od Microsoftu, takže nemůžete vidět interní logiku, jak fungují a kdy se spouštějí. Vzhledem k tomu, že je logika skrytá a proto není přizpůsobitelná, můžete vytvořit pouze jedno pravidlo s každou šablonou tohoto typu.
 
     > [!IMPORTANT]
-    > Šablony pravidel analýzy chování Machine Learning jsou momentálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
+    > - Šablony pravidel analýzy chování Machine Learning jsou momentálně ve **verzi Preview**. Další právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti, najdete v tématu dodatečné [podmínky použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview.
+    >
+    > - Když vytvoříte a povolíte všechna pravidla založená na šablonách analýzy chování ML, **poskytnete Microsoftu oprávnění ke kopírování poslaných dat mimo geografickou pracovní prostor Azure Sentinel** , jak je to nutné pro zpracování pomocí strojového učení a modelů.
 
 - **Plánované**
 

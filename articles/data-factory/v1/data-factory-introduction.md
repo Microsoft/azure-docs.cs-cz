@@ -3,16 +3,16 @@ title: Úvod do Data Factory, služba pro integraci dat
 description: Dozvíte se, že Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 1cee5f92af4e23a6bc0d195bc13bc3f11f53443d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 220c1969055ffaa5d1bea41ab547efd4596f8a20
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100382969"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786460"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -135,7 +135,7 @@ Datové kanály ve službě Azure Data Factory můžete vytvořit pomocí někte
 
 Pokud chcete zjistit, jak sestavit datové továrny s datovými kanály, postupujte podle podrobných pokynů v následujících kurzech:
 
-| Kurz | Description |
+| Kurz | Popis |
 | --- | --- |
 | [Přesun dat mezi dvěma cloudovými úložišti dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Vytvořte datovou továrnu s kanálem, který přesouvá data z úložiště objektů blob do SQL Database. |
 | [Transformace dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md) |Sestavíte svou první datovou továrnu Azure s datovým kanálem, který zpracovává data pomocí skriptu Hive v clusteru Azure HDInsight (Hadoop). |

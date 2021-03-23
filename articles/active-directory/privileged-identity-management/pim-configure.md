@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 09/29/2020
+ms.date: 03/19/2021
 ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d42611705b7756ed2fd0c7a488339f0f638fb5b4
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92370181"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802161"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -83,7 +83,7 @@ Privileged Identity Management podporuje následující scénáře:
 
 Chcete-li lépe pochopit Privileged Identity Management a dokumentaci, měli byste si projít následující výrazy.
 
-| Termín nebo koncept | Kategorie přiřazení role | Description |
+| Termín nebo koncept | Kategorie přiřazení role | Popis |
 | --- | --- | --- |
 | způsobil | Typ | Přiřazení role, které vyžaduje, aby uživatel prováděl jednu nebo více akcí pro použití role. Pokud uživatel nastavil nárok na roli, to znamená, že může roli aktivovat, když potřebují provádět privilegované úlohy. Neexistuje žádný rozdíl v přístupu pro někoho, kdo má trvalé přiřazení oprávnění oproti oprávněné roli. Jediným rozdílem je, že někteří lidé nepotřebují přístup ke všemu času. |
 | active | Typ | Přiřazení role, které nevyžaduje, aby uživatel prováděl žádnou akci pro použití role. Uživatelé přiřazení jako aktivní mají oprávnění přiřazená k roli. |
@@ -92,8 +92,8 @@ Chcete-li lépe pochopit Privileged Identity Management a dokumentaci, měli bys
 | Aktivujte | Stav | Uživatel, který má oprávněné přiřazení role, provedl akce pro aktivaci role a je teď aktivní.  Po aktivaci může uživatel tuto roli použít pro předem nakonfigurovanou časovou dobu, než se bude muset znovu aktivovat. |
 | trvalé oprávněné | Doba trvání | Přiřazení role, kde má uživatel vždy nárok na aktivaci role. |
 | trvalé aktivní | Doba trvání | Přiřazení role, kde může uživatel vždy používat roli bez provedení jakýchkoli akcí. |
-| vypršet nárok | Doba trvání | Přiřazení role, kde má uživatel nárok na aktivaci role během zadaného počátečního a koncového data. |
-| vyprší aktivní | Doba trvání | Přiřazení role, kde může uživatel používat roli bez provádění všech akcí v zadaném počátečním a koncovém datu. |
+| způsobilo na základě časové meze | Doba trvání | Přiřazení role, kde má uživatel nárok na aktivaci role pouze v počátečním a koncovém datu. |
+| aktivní časová vazba | Doba trvání | Přiřazení role, kde může uživatel používat roli pouze v počátečním a koncovém datu. |
 | přístup JIT (just-in-time) |  | Model, ve kterém uživatelé obdrží dočasná oprávnění k provádění privilegovaných úloh, což zabrání škodlivým nebo neoprávněným uživatelům získat přístup po vypršení platnosti oprávnění. Přístup se udělí jenom v případě, že ho uživatelé potřebují. |
 | Princip minimálního přístupu k oprávněním |  | Doporučený postup zabezpečení, při kterém je každý uživatel k dispozici pouze s minimálními oprávněními potřebnými k provádění úloh, které mají autorizaci provádět. Tento postup minimalizuje počet globálních správců a místo toho používá konkrétní role správce pro určité scénáře. |
 

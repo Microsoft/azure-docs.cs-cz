@@ -3,16 +3,16 @@ title: Sestavení prvního objektu pro vytváření dat (REST)
 description: V tomto kurzu vytvoříte pomocí rozhraní REST API služby Data Factory ukázkový kanál služby Azure Data Factory.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 9aa3e7f2b5f382e1212955479d8e35f91b458bf0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: eb9ce65985521fb3f82032f04aec62538a157639
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100392013"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785458"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí rozhraní REST API služby Data Factory
 > [!div class="op_single_selector"]
@@ -483,7 +483,7 @@ V tomto kurzu jste vytvořili objekt pro zpracování dat Azure, který zpracov�
 V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru Azure HDInsight na vyžádání spouští skript Hive. Pokud chcete zjistit, jak pomocí aktivity kopírování zkopírovat data z Azure Blob do Azure SQL, projděte si článek [Kurz: Kopírování dat z Azure Blob do Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Viz také
-| Téma | Description |
+| Téma | Popis |
 |:--- |:--- |
 | [Rozhraní REST API služby Data Factory – referenční informace](/rest/api/datafactory/) |Tady najdete rozsáhlou dokumentaci o rutinách služby Data Factory. |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |

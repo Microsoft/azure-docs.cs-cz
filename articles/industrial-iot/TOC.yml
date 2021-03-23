@@ -1,0 +1,64 @@
+- name: Dokumentace k průmyslovému IoT v Azure
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je průmyslový IoT?
+      href: overview-what-is-industrial-iot.md
+    - name: Co je Vydavatel OPC?
+      href: overview-what-is-opc-publisher.md
+    - name: Co je průmyslová platforma IoT?
+      href: overview-what-is-industrial-iot-platform.md
+- name: Kurzy
+  items:
+    - name: Samostatné kurzy pro vydavatele OPC
+      items:
+        - name: Nasazení samostatného režimu vydavatele OPC
+          href: tutorial-publisher-deploy-opc-publisher-standalone.md
+        - name: Konfigurace vydavatele OPC
+          href: tutorial-publisher-configure-opc-publisher.md
+        - name: Optimalizace výkonu a paměti pro vydavatele OPC
+          href: tutorial-publisher-performance-memory-tuning-opc-publisher.md
+    - name: Kurzy k platformám IIoT (Orchestration Mode)
+      items:
+        - name: Nasazení platformy IIoT
+          href: tutorial-deploy-industrial-iot-platform.md
+        - name: Konfigurace součástí IIoT
+          href: tutorial-configure-industrial-iot-components.md
+        - name: Vyžádat IIoT data do ADX
+          href: tutorial-industrial-iot-azure-data-explorer.md
+        - name: Vizualizace a analýza dat pomocí Time Series Insights
+          href: tutorial-visualize-data-time-series-insights.md
+- name: Reference
+  items:
+    - name: Argumenty příkazového řádku
+      href: reference-command-line-arguments.md
+    - name: Formát konfiguračního souboru telemetrie vydavatele OPC
+      href: reference-opc-publisher-telemetry-format.md
+- name: Zdroje informací
+  items:
+    - name: Úložiště GitHub pro OPC vydavatele
+      href: 'https://github.com/Azure/Industrial-IoT'
+    - name: Úložiště GitHub platformy IIoT
+      href: 'https://github.com/Azure/iot-edge-opc-publisher'
+    - name: Možnosti pomoci a podpory
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: Glosář IoT
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: Služby Azure IoT
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: Služba IoT Hub Device Provisioning
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: Akcelerátory řešení IoT
+          href: ./index.yml
+        - name: IoT Plug and Play
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml

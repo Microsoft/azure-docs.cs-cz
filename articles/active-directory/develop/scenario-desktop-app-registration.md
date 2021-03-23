@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 66f11b7a5124f0b9b834b79368d57443ab33e850
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578341"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798931"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: registrace aplikace
 
@@ -50,6 +50,7 @@ Určete identifikátor URI pro přesměrování vaší aplikace [nakonfigurován
   > Jako osvědčený postup zabezpečení doporučujeme explicitně nastavit `https://login.microsoftonline.com/common/oauth2/nativeclient` nebo `http://localhost` jako identifikátor URI přesměrování. Některé knihovny ověřování, jako je MSAL.NET, používají výchozí hodnotu `urn:ietf:wg:oauth:2.0:oob` , pokud není zadán jiný identifikátor URI pro přesměrování, což se nedoporučuje. Tato výchozí hodnota se aktualizuje jako zásadní změna v další hlavní verzi.
 
 - Pokud vytváříte nativní cíl-C nebo aplikaci SWIFT pro macOS, zaregistrujte identifikátor URI přesměrování na základě identifikátoru sady prostředků vaší aplikace v následujícím formátu: `msauth.<your.app.bundle.id>://auth` . Nahraďte `<your.app.bundle.id>` identifikátorem sady prostředků vaší aplikace.
+- Pokud vytváříte Node.js elektronickou aplikaci, použijte k tomu vlastní protokol souborů místo identifikátoru URI pro přesměrování webu (https://), aby bylo možné zpracovat krok přesměrování v případě instance `msal://redirect` . Název vlastního protokolu souboru by neměl být vypsaný jako odhad a měl by postupovat podle návrhů ve [specifikaci OAuth 2.0 pro nativní aplikace](https://tools.ietf.org/html/rfc8252#section-7.1).
 - Pokud vaše aplikace používá integrované ověřování systému Windows nebo uživatelské jméno a heslo, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. Tyto toky dovedou k přenosu koncového bodu Microsoft Identity Platform v 2.0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
 - Aby bylo možné rozlišovat [tok kódu zařízení](scenario-desktop-acquire-token.md#device-code-flow), [integrované ověřování systému Windows](scenario-desktop-acquire-token.md#integrated-windows-authentication)a [uživatelské jméno a heslo](scenario-desktop-acquire-token.md#username-and-password) z aplikace důvěrné klientské aplikace pomocí toku přihlašovacích údajů klienta, který se používá v [aplikacích DÉMONA](scenario-daemon-overview.md), žádný z nich vyžaduje identifikátor URI přesměrování, který je nakonfigurován jako veřejná klientská aplikace. Chcete-li dosáhnout této konfigurace:
 

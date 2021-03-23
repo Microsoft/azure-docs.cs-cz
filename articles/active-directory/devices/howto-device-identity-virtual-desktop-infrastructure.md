@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96029343"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798880"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -48,16 +48,16 @@ Než nakonfigurujete identity zařízení ve službě Azure AD pro vaše prostř
 
 | Typ identity zařízení | Infrastruktura identity | Zařízení s Windows | Verze platformy VDI | Podporováno |
 | --- | --- | --- | --- | --- |
-| k hybridní službě Azure AD. | Federované<sup>3</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
+| k hybridní službě Azure AD. | Federované<sup>3</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
 |   |   | Aktuální Windows | Bez trvalého přihlášení | Ano<sup>5</sup> |
 |   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
-|   | Spravované<sup>4</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Yes |
-|   |   | Aktuální Windows | Bez trvalého přihlášení | No |
+|   | Spravované<sup>4</sup> | Aktuální Windows a Windows nižší úrovně | Trvalý | Ano |
+|   |   | Aktuální Windows | Bez trvalého přihlášení | Ne |
 |   |   | Windows nižší úrovně | Bez trvalého přihlášení | Ano<sup>6</sup> |
-| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | No |
-|   |   |   | Bez trvalého přihlášení | No |
-|   | Spravované | Aktuální Windows | Trvalý | No |
-|   |   |   | Bez trvalého přihlášení | No |
+| Připojené k Azure AD | Federovaní | Aktuální Windows | Trvalý | Ne |
+|   |   |   | Bez trvalého přihlášení | Ne |
+|   | Spravované | Aktuální Windows | Trvalý | Ne |
+|   |   |   | Bez trvalého přihlášení | Ne |
 | Registrováno v Azure AD | Federované/spravované | Windows Current/Windows nižší úrovně | Trvalá/netrvalá | Neuvedeno |
 
 <sup>1</sup> **Aktuální zařízení Windows** reprezentují Windows 10, Windows Server 2016 V1803 nebo novější a Windows Server 2019.
@@ -79,6 +79,8 @@ Správci by měli na základě infrastruktury identit odkazovat na následujíc�
 - [Konfigurace služby Hybrid Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)
 - [Konfigurace hybridního Azure Active Directory JOIN pro spravované prostředí](hybrid-azuread-join-managed-domains.md)
 
+### <a name="non-persistent-vdi"></a>Netrvalá Infrastruktura virtuálních počítačů
+
 Při nasazení trvalé infrastruktury virtuálních počítačů (VDI) Společnost Microsoft doporučuje, aby správci IT implementovali následující pokyny. V takovém případě bude mít váš adresář spoustu zastaralých hybridních zařízení připojených k Azure AD, která byla zaregistrovaná z vaší netrvalé platformy VDI, což má za následek vyšší tlak na vaši kvótu tenanta a riziko přerušení služby kvůli vyřazení kvóty tenanta.
 
 - Pokud se spoléháte na nástroj pro přípravu systému (sysprep.exe) a pokud pro instalaci používáte image starší než Windows 10 1809, ujistěte se, že image není ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojené k hybridní službě Azure AD.
@@ -92,6 +94,15 @@ Při nasazení trvalé infrastruktury virtuálních počítačů (VDI) Společno
 - Definujte a implementujte proces pro [správu zastaralých zařízení](manage-stale-devices.md).
    - Jakmile budete mít strategii pro identifikaci netrvalých hybridních zařízení připojených k Azure AD (například pomocí předpony zobrazovaného názvu počítače), měli byste být na vyčištění těchto zařízení spolehlivější, abyste se ujistili, že se váš adresář nespotřebovává s velkým počtem zastaralých zařízení.
    - Pro netrvalá nasazení VDI ve Windows aktuální a nižší úrovni byste měli odstranit zařízení, která mají **ApproximateLastLogonTimestamp** starší než 15 dní.
+
+### <a name="persistent-vdi"></a>Trvalá Infrastruktura virtuálních počítačů
+
+Po nasazení trvalé infrastruktury virtuálních počítačů Microsoft doporučuje, aby správci IT implementovali následující pokyny. V důsledku tohoto selhání dojde k problémům s nasazením a ověřením. 
+
+- Pokud se spoléháte na nástroj pro přípravu systému (sysprep.exe) a pokud pro instalaci používáte image starší než Windows 10 1809, ujistěte se, že image není ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojené k hybridní službě Azure AD.
+- Pokud při vytváření dalších virtuálních počítačů spoléháte na snímek virtuálního počítače, ujistěte se, že snímek není z virtuálního počítače, který je už zaregistrovaný ve službě Azure AD, jako připojení k hybridní službě Azure AD.
+
+Kromě toho doporučujeme, abyste implementovali proces pro [správu zastaralých zařízení](manage-stale-devices.md). Tím se zajistí, že se váš adresář nespotřebovává s velkým počtem zastaralých zařízení, pokud vaše virtuální počítače pravidelně resetujete.
  
 ## <a name="next-steps"></a>Další kroky
 

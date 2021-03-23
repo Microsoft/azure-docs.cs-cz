@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj Azure Batchch řešení.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 697ac5d213bbe2e52134cad519f69c233f1cd593
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ef94b07a5131726c42a94088fd3ee1f413dbec7
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583271"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802348"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -31,7 +31,12 @@ Tento článek popisuje shromažďování osvědčených postupů a užitečnýc
 
 - **Fondy by měly mít více než jeden výpočetní uzel:** V jednotlivých uzlech není zaručeno, že vždy bude k dispozici. I když nejsou běžné, selhání hardwaru, aktualizace operačního systému a hostitel jiných problémů, můžou způsobit, že jednotlivé uzly budou offline. Pokud vaše úloha Batch vyžaduje deterministický a zaručený průběh, měli byste přidělit fondy s více uzly.
 
-- Nepoužívejte **názvy prostředků znovu:** Prostředky Batch (úlohy, fondy atd.) se často přidávají a procházejí v průběhu času. Můžete například vytvořit fond v pondělí, odstranit ho v úterý a pak vytvořit další fond ve čtvrtek. Každému novému prostředku, který vytvoříte, by se měl udělit jedinečný název, který jste předtím nepoužívali. To lze provést pomocí identifikátoru GUID (buď jako celého názvu prostředku, nebo jako jeho části), nebo vložením času vytvoření prostředku v názvu prostředku. Batch podporuje [DisplayName (zobrazovaný](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)název), který se dá použít k poskytnutí snadno čitelného názvu prostředku, i když je skutečný identifikátor prostředku něco, co není pro člověka vhodné. Použití jedinečných názvů usnadňuje odlišení konkrétního prostředku v protokolech a metrikách. Pokud někdy budete potřebovat případ podpory pro určitý prostředek, odeberete taky nejednoznačnost.
+- **Nepoužívejte image s blížícím se datem ukončení životního cyklu (konce řádku).**
+    Důrazně se doporučuje vyhnout se imagí s blížícím se koncem životnosti konce řádku (Batch support data). Tato data je možné zjistit prostřednictvím [ `ListSupportedImages` rozhraní API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), [PowerShellu](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images). Je vaší zodpovědností pravidelně aktualizovat vaše zobrazení konce řádku dat týkajících se vašich fondů a migrovat úlohy před tím, než dojde k datu konce řádku. Pokud používáte vlastní image se zadaným agentem uzlu, budete se muset ujistit, že budete dodržovat data konce životnosti služby Batch pro image, pro kterou je vaše vlastní image odvozená nebo zarovnaná s.
+
+- **Nepoužívejte názvy prostředků znovu.**
+    Prostředky Batch (úlohy, fondy atd.) se často přidávají a procházejí v průběhu času. Můžete například vytvořit fond v pondělí, odstranit ho v úterý a pak vytvořit další fond ve čtvrtek. Každému novému prostředku, který vytvoříte, by se měl udělit jedinečný název, který jste předtím nepoužívali. To lze provést pomocí identifikátoru GUID (buď jako celého názvu prostředku, nebo jako jeho části), nebo vložením času vytvoření prostředku v názvu prostředku. Batch podporuje [DisplayName (zobrazovaný](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)název), který se dá použít k poskytnutí snadno čitelného názvu prostředku, i když je skutečný identifikátor prostředku něco, co není pro člověka vhodné. Použití jedinečných názvů usnadňuje odlišení konkrétního prostředku v protokolech a metrikách. Pokud někdy budete potřebovat případ podpory pro určitý prostředek, odeberete taky nejednoznačnost.
+
 
 - **Kontinuita při údržbě fondu a selhání:** Doporučujeme, aby vaše úlohy dynamicky používaly fondy. Pokud vaše úlohy používají stejný fond pro všechno, může se stát, že se vaše úlohy nespustí, pokud dojde k nějakému problému s fondem. To je obzvláště důležité pro časově citlivé úlohy. Pokud chcete tento problém vyřešit, vyberte nebo vytvořte fond dynamicky, když naplánujete každou úlohu, nebo máte možnost přepsat název fondu, abyste mohli obejít špatný fond.
 

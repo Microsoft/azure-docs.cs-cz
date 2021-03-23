@@ -4,7 +4,7 @@ description: Přečtěte si nejčastější dotazy a zjistěte informace o rozš
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,21 +12,25 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bff42b9b82104909c79b75c7b1de51c9ddb6e0d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879911"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801311"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+> [!Note]
+> Od 1. března 2022 bude rozšíření Microsoft Security Code Analysis (MSCA) vyřazeno. Stávající zákazníci MSCA si budou mít přístup k MSCA do 1. března 2022. Alternativní možnosti v Azure DevOps najdete v [nástrojích pro analýzu zdrojového kódu OWASP](https://owasp.org/www-community/Source_Code_Analysis_Tools) . Zákazníci, kteří plánují migraci na GitHub, si můžete zaregistrovat v [rozšířeném zabezpečení GitHubu](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security).
+
 Máte nějaké otázky? Další informace najdete v následujících nejčastějších dotazech.
 
 ## <a name="general-faq"></a>Obecné nejčastější dotazy
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Můžu nainstalovat rozšíření na mou instanci sady Visual Studio Team Foundation Server místo v instanci Azure DevOps?
 
-No. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio Team Foundation Server.
+Ne. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio Team Foundation Server.
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Musím v mém buildu spustit analýzu kódu zabezpečení od Microsoftu? 
 
@@ -55,7 +59,7 @@ Patrné rozdíly:
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Můžu spustit úlohu sestavení, jako je třeba skener přihlašovacích údajů v rámci několika úložišť v sestavení Azure DevOps?
 
-No. Používání nástrojů pro bezpečné vývoj v různých úložištích v jednom kanálu se nepodporuje.
+Ne. Používání nástrojů pro bezpečné vývoj v různých úložištích v jednom kanálu se nepodporuje.
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>Zadaný výstupní soubor se nevytváří nebo nejde najít zadaný výstupní soubor.
 
@@ -90,7 +94,7 @@ Po jejich instalaci budou úkoly sestavení zabezpečení poskytované rozšíř
 
 ### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Mění se v instalaci rozšíření moje existující Azure Pipelines? 
 
-No. Instalace rozšíření zpřístupňuje úlohy sestavení zabezpečení pro přidání do vašich kanálů. Stále je nutné přidat nebo aktualizovat definice sestavení, aby nástroje mohly pracovat s procesem sestavení.
+Ne. Instalace rozšíření zpřístupňuje úlohy sestavení zabezpečení pro přidání do vašich kanálů. Stále je nutné přidat nebo aktualizovat definice sestavení, aby nástroje mohly pracovat s procesem sestavení.
 
 ## <a name="task-specific-faq"></a>Nejčastější dotazy ke konkrétním úlohám
 

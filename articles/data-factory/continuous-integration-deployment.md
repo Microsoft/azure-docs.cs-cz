@@ -4,15 +4,15 @@ description: Naučte se používat průběžnou integraci a doručování k pře
 ms.service: data-factory
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 2176e74c46dc395672701555624aceb1b9563358
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: aa2c5801e61fb73219934c5d38e894520c41ab26
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592111"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784029"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuální integrace a průběžné doručování ve službě Azure Data Factory
 

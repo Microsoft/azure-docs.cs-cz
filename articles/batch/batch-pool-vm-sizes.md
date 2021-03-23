@@ -2,14 +2,14 @@
 title: Volba velikostí a imagí virtuálních počítačů pro fondy
 description: Jak vybrat dostupné velikosti virtuálních počítačů a verze operačního systému pro výpočetní uzly ve fondech Azure Batch
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455191"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800478"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Volba velikosti a obrázku virtuálního počítače pro výpočetní uzly ve fondu Azure Batch
 
@@ -35,11 +35,13 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny [
 | DC | Nepodporováno |
 | Dv2, DSv2 | Všechny velikosti |
 | Dv3, Dsv3 | Všechny velikosti |
-| Dav4, Dasv4 | Všechny velikosti |
+| Dav4 | Všechny velikosti |
+| Dasv4 | Všechny velikosti |
 | Ddv4, Ddsv4 |  Všechny velikosti |
 | Dv4, Dsv4 | Nepodporováno |
 | Ev3, Esv3 | Všechny velikosti kromě E64is_v3 |
-| Eav4, Easv4 | Všechny velikosti |
+| Eav4 | Všechny velikosti |
+| Easv4 | Všechny velikosti |
 | Edv4, Edsv4 |  Všechny velikosti |
 | Ev4, Esv4 | Nepodporováno |
 | F, FS | Všechny velikosti |
@@ -56,7 +58,7 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny [
 | NC | Všechny velikosti |
 | NCv2 | Všechny velikosti |
 | NCv3 | Všechny velikosti |
-| NCasT4_v3 | Všechny velikosti |
+| NCasT4_v3 | Žádný – zatím není k dispozici |
 | ND | Všechny velikosti |
 | NDv2 | Žádný – zatím není k dispozici |
 | NV | Všechny velikosti |
@@ -100,6 +102,8 @@ Pomocí některého z následujících rozhraní API vraťte seznam imagí virtu
 - Služba Batch REST API: [seznam podporovaných imagí](/rest/api/batchservice/account/listsupportedimages)
 - PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [AZ Batch Pool Supported-images](/cli/azure/batch/pool/supported-images)
+
+Důrazně se doporučuje vyhnout se imagí s blížícím se koncem životnosti konce řádku (Batch support data). Tato data je možné zjistit prostřednictvím [ `ListSupportedImages` rozhraní API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), [PowerShellu](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images). Další informace o výběru imagí virtuálních počítačů ve fondu služby Batch najdete v [Průvodci doporučenými postupy pro dávku](best-practices.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

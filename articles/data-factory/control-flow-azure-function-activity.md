@@ -3,16 +3,16 @@ title: Aktivita funkce Azure v Azure Data Factory
 description: Naučte se používat aktivitu Azure Functions ke spuštění funkce Azure ve Data Factoryovém kanálu.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 615fb1b9f5a9d87a8d69778930b7359823e1ec39
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13f00907737a99bc5dcd8c21d660ce83aa681908
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738017"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783791"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -42,7 +42,7 @@ Návratový typ funkce Azure musí být platný `JObject` . (Mějte na paměti, 
 | propojená služba | Propojená služba funkce Azure pro odpovídající Function App Azure  | Odkaz na propojenou službu | ano |
 | název funkce  | Název funkce v Azure Function App, kterou tato aktivita volá | Řetězec | ano |
 | method  | Metoda REST API pro volání funkce | Typy podporované řetězcem: "GET", "POST", "PUT"   | ano |
-| header  | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: "hlavičky": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Řetězec (nebo výraz s hodnotou resultType řetězce) | No |
+| header  | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: "hlavičky": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne |
 | text  | tělo, které se odesílá spolu s požadavkem na metodu rozhraní API funkce  | Řetězec (nebo výraz s hodnotou resultType String) nebo objekt.   | Vyžadováno pro metody PUT/POST |
 |   |   |   | |
 

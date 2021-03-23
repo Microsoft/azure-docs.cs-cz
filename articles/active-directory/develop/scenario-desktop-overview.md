@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: feedc0065419162237c4f4826fe275a6fd947e53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ea6ecf456bbcea01bf4c1eef5377d918bf0918fd
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98753721"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798948"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scénář: desktopová aplikace, která volá webová rozhraní API
 
@@ -30,6 +30,7 @@ Pokud jste to ještě neudělali, vytvořte svou první aplikaci dokončením ry
 - [Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows](./quickstart-v2-windows-desktop.md)
 - [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro UWP](./quickstart-v2-uwp.md)
 - [Rychlý Start: získání tokenu a volání Microsoft Graph API z nativní aplikace macOS](./quickstart-v2-ios.md)
+- [Rychlý Start: získání tokenu a volání Microsoft Graph API z Node.js & elektronovou aplikací](./quickstart-v2-nodejs-desktop.md)
 
 ## <a name="overview"></a>Přehled
 
@@ -39,6 +40,7 @@ Napíšete desktopovou aplikaci a chcete se přihlašovat do vaší aplikace a v
 
   - Pokud vaše desktopová aplikace podporuje grafické ovládací prvky, například, pokud se jedná o aplikaci Windows. Form, aplikaci WPF nebo nativní aplikaci macOS.
   - Nebo, pokud se jedná o aplikaci .NET Core a souhlasíte s tím, že je interakce ověřování s Azure Active Directory (Azure AD) provedena v prohlížeči systému.
+  - Nebo, pokud se jedná o Node.js elektronickou aplikaci, která běží na instanci Chromu.
 
 - U hostovaných aplikací pro Windows je také možné, že aplikace běžící na počítačích připojených k doméně systému Windows nebo službě Azure AD byly připojeny k tichému získání tokenu pomocí integrovaného ověřování systému Windows.
 - A konečně, i když se to nedoporučuje, můžete použít uživatelské jméno a heslo ve veřejných klientských aplikacích. Je stále potřeba v některých scénářích, jako je DevOps. Použití omezení pro vaši aplikaci. Například se nemůže přihlásit uživatel, který potřebuje službu [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) (podmíněný přístup). Vaše aplikace navíc nebude využívat jednotné přihlašování (SSO).

@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: c7be10e14daf3ee769e86d51f648cc6b656a416a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5450e4846c3c49c89830ae65c50a95ee0c8d6eb
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89302124"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803311"
 ---
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Ověření IoT Edge CI/CD pomocí kanálů sestavení a vydání
 
@@ -36,3 +36,5 @@ Chcete-li spustit úlohu sestavení, můžete buď Odeslat potvrzení do úloži
 6. Kliknutím na **vývojové** fáze zobrazíte protokoly verzí.
 
     ![Protokoly vydaných verzí](./media/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment/release-logs.png)
+
+7. Pokud se váš kanál nedaří, začněte tím, že prohlížíte protokoly. Protokoly můžete zobrazit tak, že přejdete na souhrn spuštění kanálu a vyberete úlohu a úlohu. Pokud dojde k selhání určité úlohy, Projděte si protokoly pro tuto úlohu. Podrobné pokyny pro konfiguraci a používání protokolů najdete v tématu [Kontrola protokolů pro diagnostiku problémů s kanály](/azure/devops/pipelines/troubleshooting/review-logs).

@@ -4,15 +4,15 @@ description: Naučte se, jak vytvořit Trigger v Azure Data Factory, který v re
 ms.service: data-factory
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: b559ce31aff7040a61f6a2f788652ffd192420c4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: deaa414a17240e8cdbdad7f4ba9b3e596b4f191f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593794"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780323"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Vytvoření triggeru, který spouští kanál v reakci na událost úložiště
 
@@ -83,11 +83,11 @@ Následující tabulka poskytuje přehled prvků schématu, které souvisejí s 
 
 | **Element JSON** | **Popis** | **Typ** | **Povolené hodnoty** | **Povinné** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **oboru** | ID prostředku Azure Resource Manager účtu úložiště. | Řetězec | ID Azure Resource Manager | Yes |
+| **oboru** | ID prostředku Azure Resource Manager účtu úložiště. | Řetězec | ID Azure Resource Manager | Ano |
 | **událost** | Typ událostí, které způsobují, že se aktivační událost aktivuje. | Pole    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Ano, libovolná kombinace těchto hodnot. |
 | **blobPathBeginsWith** | Cesta objektu BLOB musí začínat vzorem poskytnutým pro aktivaci triggeru. Například `/records/blobs/december/` aktivuje Trigger jenom pro objekty blob ve složce v `december` `records` kontejneru. | Řetězec   | | Zadejte hodnotu alespoň pro jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith` . |
 | **blobPathEndsWith** | Cesta objektu BLOB musí končit vzorem poskytnutým pro aktivaci triggeru. Například `december/boxes.csv` aktivuje Trigger jenom pro objekty BLOB s názvem `boxes` ve `december` složce. | Řetězec   | | Je nutné zadat hodnotu alespoň pro jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith` . |
-| **ignoreEmptyBlobs** | Bez ohledu na to, zda objekty BLOB s nulovým bajtem budou aktivovat spuštění kanálu. Ve výchozím nastavení je tato hodnota nastavena na true (pravda). | Logická hodnota | true nebo false | No |
+| **ignoreEmptyBlobs** | Bez ohledu na to, zda objekty BLOB s nulovým bajtem budou aktivovat spuštění kanálu. Ve výchozím nastavení je tato hodnota nastavena na true (pravda). | Logická hodnota | true nebo false | Ne |
 
 ## <a name="examples-of-storage-event-triggers"></a>Příklady triggerů událostí úložiště
 
@@ -96,7 +96,7 @@ V této části najdete příklady nastavení triggeru události úložiště.
 > [!IMPORTANT]
 > Je nutné zahrnout `/blobs/` segment cesty, jak je znázorněno v následujících příkladech, kdykoli zadáte kontejner a složku, kontejner a soubor, nebo kontejner, složku a soubor. V případě **blobPathBeginsWith** bude uživatelské rozhraní Data Factory automaticky přidávat `/blobs/` mezi složku a název kontejneru ve formátu JSON triggeru.
 
-| Vlastnost | Příklad | Description |
+| Vlastnost | Příklad | Popis |
 |---|---|---|
 | **Cesta objektu BLOB začíná na** | `/containername/` | Přijímá události pro libovolný objekt BLOB v kontejneru. |
 | **Cesta objektu BLOB začíná na** | `/containername/blobs/foldername/` | Přijímá události pro všechny objekty BLOB v `containername` kontejneru a `foldername` složce. |

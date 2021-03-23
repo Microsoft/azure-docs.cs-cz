@@ -290,8 +290,10 @@
               href: application-proxy-understand-cors-issues.md
 - name: Referenční informace
   items:
-    - name: Nejčastější dotazy k proxy aplikací
+    - name: Nejčastější dotazy k proxy aplikacím
       href: application-proxy-faq.md
+    - name: Nejčastější dotazy k certifikátům správy aplikací
+      href: application-management-certs-faq.md
     - name: Historie verzí Proxy aplikací
       href: application-proxy-release-version-history.md
     - name: 'Důvody, proč se aplikace zobrazují v podnikových aplikacích'
