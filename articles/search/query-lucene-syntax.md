@@ -8,22 +8,22 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97516592"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801583"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Syntaxe dotazů Lucene v Azure Kognitivní hledání
 
 Při vytváření dotazů můžete pro specializované formuláře dotazů použít syntaxi [analyzátoru dotazů Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) : zástupný znak, přibližné vyhledávání, vyhledávání blízkých výrazů, regulární výrazy. Většina syntaxe analyzátoru dotazů Lucene se [v Azure kognitivní hledání implementuje beze změny](search-lucene-query-architecture.md), s výjimkou *hledání rozsahů* , které jsou vytvořené pomocí **`$filter`** výrazů. 
 
-Úplná syntaxe Lucene se používá pro výrazy dotazů předané v **`search`** parametru žádosti [hledání dokumentů (REST API)](/rest/api/searchservice/search-documents) , a nelze je zaměňovat se [syntaxí OData](query-odata-filter-orderby-syntax.md) použitými pro [**`$filter`**](search-filters.md) [**`$orderby`**](search-query-odata-orderby.md) výrazy a v rámci stejné žádosti. Parametry OData mají odlišnou syntaxi a pravidla pro sestavování dotazů, uvozovacích řetězců a tak dále.
+Chcete-li použít úplnou syntaxi Lucene, nastavte parametr queryType na "Full" a předejte výraz dotazu vzor pro zástupné znaky, přibližné vyhledávání nebo jeden z dalších formulářů dotazů, které jsou podporovány úplnou syntaxí. V REST jsou výrazy dotazu k dispozici v **`search`** parametru žádosti [hledání dokumentů (REST API)](/rest/api/searchservice/search-documents) .
 
 ## <a name="example-full-syntax"></a>Příklad (Úplná syntaxe)
 
-Nastavte **`queryType`** parametr pro zadání úplného Lucene. Následující příklad vyvolá vyhledávání v terénu a vyzvyšování podmínek. Tento dotaz vyhledá hotely, kde pole kategorie obsahuje výraz "rozpočet". Všechny dokumenty, které obsahují frázi "naposledy renovated", jsou seřazeny výše v důsledku hodnoty zvýšení termínu (3).  
+Následující příklad je požadavek na hledání vytvořený pomocí úplné syntaxe. Tento konkrétní příklad ukazuje vyhledávání v poli a termín zvyšování skóre. Hledá hotely, kde pole kategorie obsahuje výraz "rozpočet". Všechny dokumenty, které obsahují frázi "naposledy renovated", jsou seřazeny výše v důsledku hodnoty zvýšení termínu (3).  
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,9 +34,9 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-**`searchMode`** Parametr je v tomto příkladu relevantní. Vždy, když jsou operátory na dotazu, je obecně nutné nastavit, aby bylo `searchMode=all` zajištěno, že *všechna* kritéria jsou shodná.  
+I když není specifické pro žádný typ dotazu, **`searchMode`** parametr je v tomto příkladu relevantní. Vždy, když jsou operátory na dotazu, je obecně nutné nastavit, aby bylo `searchMode=all` zajištěno, že *všechna* kritéria jsou shodná.  
 
-Další příklady naleznete v tématu [Příklady syntaxe dotazů Lucene](search-query-lucene-examples.md). Podrobnosti o požadavku a parametrech dotazu naleznete v tématu [Search Documents (REST API)](/rest/api/searchservice/Search-Documents).
+Další příklady naleznete v tématu [Příklady syntaxe dotazů Lucene](search-query-lucene-examples.md). Podrobnosti o požadavku a parametrech dotazu, včetně searchMode, najdete v tématu [Search Documents (REST API)](/rest/api/searchservice/Search-Documents).
 
 ## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Základy syntaxe  
 

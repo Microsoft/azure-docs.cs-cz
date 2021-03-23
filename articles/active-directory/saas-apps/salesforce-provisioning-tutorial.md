@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a4d3f3f9465b8813cdf6ee26760d819d73a08c1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5df0a5fc054a12e3fa2ef1e352645c57c357b01
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94353100"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798727"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace Salesforce pro Automatické zřizování uživatelů
 
@@ -27,6 +27,9 @@ Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenant Azure Active Directory
 * Tenant Salesforce.com
+
+> [!Note]
+> Role by se neměly při importu rolí ručně upravovat v Azure Active Directory.
 
 > [!IMPORTANT]
 > Pokud používáte zkušební účet Salesforce.com, nebudete moct nakonfigurovat automatizované zřizování uživatelů. Zkušební účty nemají povolený přístup k rozhraní API, dokud se nezakoupí. Toto omezení můžete obejít pomocí bezplatného [vývojářského účtu](https://developer.salesforce.com/signup) k dokončení tohoto kurzu.

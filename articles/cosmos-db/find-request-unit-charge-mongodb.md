@@ -5,15 +5,15 @@ author: ThomasWeiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 03/19/2021
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: e488d1acfe116409caf571e7878e454628a9dea9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b2944c1d29849ea44b5afd878d5b0e030358cc5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201332"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801821"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>Vyhledá poplatky za jednotky žádosti pro operace spouštěné v rozhraní Azure Cosmos DB API pro MongoDB.
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -34,13 +34,17 @@ Poplatek za RU je vystavený pomocí [příkazu vlastní databáze](https://docs
 
 1. Otevřete podokno **Průzkumník dat** a pak vyberte kontejner, na kterém chcete pracovat.
 
-1. Vyberte **Nový dotaz**.
+1. Vyberte **...** vedle názvu kontejneru a vyberte **Nový dotaz**.
 
 1. Zadejte platný dotaz a pak vyberte **Spustit dotaz**.
 
-1. Vyberte možnost **statistiky dotazů** a zobrazte si skutečný poplatek za požadavek na vámi prováděnou žádost.
+1. Vyberte možnost **statistiky dotazů** a zobrazte si skutečný poplatek za požadavek na vámi prováděnou žádost. Tento editor dotazů umožňuje spouštět a zobrazovat poplatky za jednotky požadavků pouze pro predikáty dotazů. Tento editor nelze použít pro příkazy pro manipulaci s daty, jako jsou příkazy INSERT.
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Snímek obrazovky s požadavkem na požadavek na dotaz MongoDB v Azure Portal":::
+   :::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Snímek obrazovky s požadavkem na požadavek na dotaz MongoDB v Azure Portal":::
+
+1. Pokud chcete získat poplatky za požadavky na příkazy pro manipulaci s daty, spusťte `getLastRequestStatistics` příkaz z uživatelského rozhraní založeného na prostředí, jako je Mongo Shell, [Robo 3T](mongodb-robomongo.md), [MongoDB kompas](mongodb-compass.md)nebo rozšíření vs Code pomocí skriptování prostředí.
+
+   `db.runCommand({getLastRequestStatistics: 1})`
 
 ## <a name="use-the-mongodb-net-driver"></a>Použití ovladače MongoDB .NET
 

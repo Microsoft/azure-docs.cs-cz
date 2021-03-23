@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-python
-ms.openlocfilehash: 0eeb1333952533cdf392b93a926f256097557151
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b4c25ceb2e7b3f224dccdd7d24d86389100c8a2e
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97585492"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801906"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Rychlý Start: V12 klientské knihovny Azure Queue Storage pro Python
 
@@ -40,7 +40,7 @@ Další prostředky:
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Účet Azure Storage – [Vytvoření účtu úložiště](../common/storage-account-create.md)
-- [Python](https://www.python.org/downloads/) pro váš operační systém – 2,7, 3,5 nebo novější
+- [Python](https://www.python.org/downloads/) pro váš operační systém – 2,7 nebo 3.6 +
 
 ## <a name="setting-up"></a>Nastavení
 

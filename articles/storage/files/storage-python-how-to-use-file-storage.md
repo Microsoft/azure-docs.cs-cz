@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 8bef69037fad8bf8ee9537e90f26ca967560b9d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d45ce3a782d7ee145f769283b82e34647c78f26e
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91876093"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799866"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Vývoj pro Soubory Azure pomocí Pythonu
 
@@ -37,11 +37,11 @@ Naučte se základy používání Pythonu k vývoji aplikací nebo služeb, kter
 
 # <a name="python-v12"></a>[Python V12](#tab/python)
 
-[Klientská knihovna Azure File Storage V12. x pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share) vyžaduje Python 2,7 nebo 3,5.
+[Klientská knihovna Azure File Storage V12. x pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share) vyžaduje Python 2,7 nebo 3.6 +.
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[Sada SDK Azure Storage pro Python](https://github.com/azure/azure-storage-python) vyžaduje Python 2,7, 3,3, 3,4, 3,5 nebo 3,6.
+[Sada SDK Azure Storage pro Python](https://github.com/azure/azure-storage-python) vyžaduje Python 2,7 nebo 3.6 +.
 
 ---
 

@@ -1,15 +1,15 @@
 ---
 title: Použití vlastní dlaždice Markdownu na řídicích panelech Azure
 description: Přečtěte si, jak přidat dlaždici Markdownu na řídicí panel Azure pro zobrazení statického obsahu.
-ms.date: 01/08/2020
+ms.date: 03/19/2021
 ms.topic: how-to
 ms.custom: devx-track-js
-ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8324b736565cfa353e48cf49b76e2784866f47f7
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745753"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774452"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Použití dlaždice Markdownu na řídicích panelech Azure pro zobrazení vlastního obsahu
 
@@ -21,7 +21,7 @@ Dlaždici Markdownu můžete přidat do řídicích panelů Azure a zobrazit tak
 
    ![Snímek obrazovky s postranním panelem portálu](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. Pokud jste vytvořili nějaké vlastní řídicí panely, v zobrazení řídicího panelu použijte rozevírací seznam a vyberte řídicí panel, ve kterém se má vlastní dlaždice Markdownu zobrazit. Výběrem ikony Upravit otevřete **galerii dlaždic**.
+1. V zobrazení řídicího panelu vyberte řídicí panel, kde se má zobrazit vlastní dlaždice Markdownu, a pak vyberte **Upravit**.
 
    ![Snímek obrazovky zobrazující zobrazení pro úpravy řídicího panelu](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
@@ -53,8 +53,8 @@ Dlaždici Markdownu můžete přidat do řídicích panelů Azure a zobrazit tak
 Na dlaždici Markdownu můžete použít libovolnou kombinaci prostého textu, syntaxe Markdownu a obsahu HTML. Azure Portal používá open source knihovnu s názvem _označenou_ k transformaci vašeho obsahu na HTML, který se zobrazí na dlaždici. KÓD HTML vytvořený pomocí _označení_ je před jeho vykreslením předem zpracován portálem. Tento krok vám pomůže zajistit, aby vaše přizpůsobení neovlivnilo zabezpečení nebo rozložení portálu. Během tohoto předběžného zpracování se odeberou všechny součásti HTML, které představují potenciální hrozbu. Portál nepovoluje následující typy obsahu:
 
 * JavaScript – `<script>` značky a vložená hodnocení JavaScriptu se odeberou.
-* prvky IFrame – `<iframe>` značky budou odebrány.
-* Styly – `<style>` značky budou odebrány. Vložené atributy stylu u elementů HTML nejsou oficiálně podporovány. Může dojít k tomu, že některé vložené prvky stylu fungují za vás, ale pokud jsou v konfliktu s rozložením portálu, mohou přestat fungovat kdykoli. Dlaždice Markdownu je určená pro základní a statický obsah, který používá výchozí styly portálu.
+* prvky IFrame – `<iframe>` značky se odeberou.
+* Styly – `<style>` značky se odeberou. Vložené atributy stylu u elementů HTML nejsou oficiálně podporovány. Může dojít k tomu, že některé vložené prvky stylu fungují za vás, ale pokud jsou v konfliktu s rozložením portálu, mohou přestat fungovat kdykoli. Dlaždice Markdownu je určená pro základní a statický obsah, který používá výchozí styly portálu.
 
 ## <a name="next-steps"></a>Další kroky
 

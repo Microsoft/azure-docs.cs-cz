@@ -1,24 +1,15 @@
 ---
 title: Defender – IoT-Micro-Agent pro Azure RTO API
 description: Referenční rozhraní API pro Defender-IoT-Micro-Agent pro Azure RTO.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: 9a285636ba10f7ca0668f597d0e9016cff73494a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e7000a7e6d8ba332432f1ececa12bd9543e9e4a7
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494287"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779388"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>Defender – IoT-Micro-Agent pro Azure RTO API (Preview)
 
@@ -34,19 +25,19 @@ Toto rozhraní API je určené pro použití s Defenderem-IoT-Micro-Agent pro Az
 UINT nx_azure_iot_security_module_enable(NX_AZURE_IOT *nx_azure_iot_ptr);
 ```
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 Tato rutina umožňuje subsystém Azure IoT Defender – IoT-Micro-agent. Interní Stavový počítač spravuje shromažďování událostí zabezpečení a odesílá je do Azure IoT Hub. Pro správu shromažďování dat je vyžadována pouze jedna instance NX_AZURE_IOT_SECURITY_MODULE.
 
 ### <a name="parameters"></a>Parametry
 
-| Název | Description |
+| Název | Popis |
 |---------|---------|
 | nx_azure_iot_ptr [in]    | Ukazatel na `NX_AZURE_IOT` .  |
 
 ### <a name="return-values"></a>Vrácené hodnoty
 
-|Vrácené hodnoty  |Description |
+|Vrácené hodnoty  |Popis |
 |---------|---------|
 |NX_AZURE_IOT_SUCCESS|   Modul zabezpečení Azure IoT se úspěšně povolil.     |
 |NX_AZURE_IOT_FAILURE   |  Kvůli vnitřní chybě se nepovedlo povolit modul zabezpečení Azure IoT.    |
@@ -67,19 +58,19 @@ Vlákna
 UINT nx_azure_iot_security_module_disable(NX_AZURE_IOT *nx_azure_iot_ptr);
 ```
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 Tato rutina zakáže podsystém Azure IoT Defender – IoT-Micro-agent.
 
 ### <a name="parameters"></a>Parametry
 
-| Název | Description |
+| Název | Popis |
 |---------|---------|
 | nx_azure_iot_ptr [in]    | Ukazatel na `NX_AZURE_IOT` . Pokud je hodnota NULL, je zakázaná instance singleton. |
 
 ### <a name="return-values"></a>Vrácené hodnoty
 
-|Vrácené hodnoty  |Description |
+|Vrácené hodnoty  |Popis |
 |---------|---------|
 |NX_AZURE_IOT_SUCCESS     |   Po úspěšném zakázání modulu zabezpečení Azure IoT došlo k úspěšnému vypnutí.      |
 |NX_AZURE_IOT_INVALID_PARAMETER   |  Instance Azure IoT Hub se liší od složené instance s jedním prvkem.       |

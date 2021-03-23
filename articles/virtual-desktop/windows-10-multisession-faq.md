@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aafac1133b2bee54624d5f0b00061c5332fcd90b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c03d3f9769aec0736d23f18372701e08ad93dac
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631876"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802790"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
@@ -33,9 +33,13 @@ Windows 10 Enterprise Multi-Session je virtuální edice Windows 10 Enterprise. 
 
 Windows 10 Enterprise multi-session nemůže běžet v místních produkčních prostředích, protože je optimalizovaná pro službu Virtual Desktop systému Windows pro Azure. Je v souladu s licenční smlouvou pro provozování více relací Windows 10 Enterprise mimo Azure pro produkční účely. Windows 10 Enterprise multi-session se neaktivuje proti místním službám správy klíčů (KMS).
 
+## <a name="can-i-upgrade-a-windows-10-vm-to-windows-10-enterprise-multi-session"></a>Můžu upgradovat virtuální počítač s Windows 10 na více relací Windows 10 Enterprise?
+
+Ne. V současné době není možné upgradovat stávající virtuální počítač, na kterém běží Windows 10 Professional nebo Enterprise, na více než Windows 10 Enterprise víc relací. Pokud navíc nasadíte virtuální počítač s Windows 10 Enterprise s více relacemi a pak aktualizujete kód Product Key na jinou edici, nebudete moct virtuální počítač přepnout zpátky na Windows 10 Enterprise multi-session a bude potřeba virtuální počítač znovu nasadit.
+
 ## <a name="how-do-i-customize-the-windows-10-enterprise-multi-session-image-for-my-organization"></a>Návody přizpůsobit image pro více relací Windows 10 Enterprise pro moji organizaci?
 
-Můžete spustit virtuální počítač v Azure s Windows 10 Enterprise multi-session a přizpůsobit ho tak, že nainstalujete obchodní aplikace, Sysprep/generalize a pak vytvoříte image pomocí Azure Portal.
+Virtuální počítač v Azure můžete spustit s více relacemi Windows 10 Enterprise a přizpůsobit ho tak, že nainstalujete obchodní aplikace, Sysprep/generalizaci a pak vytvoříte image pomocí Azure Portal.
 
 Pokud chcete začít, vytvořte v Azure virtuální počítač s více relacemi Windows 10 Enterprise. Místo spuštění virtuálního počítače v Azure si můžete virtuální pevný disk stáhnout přímo. Potom budete moct použít stažený disk VHD k vytvoření nového virtuálního počítače 1. generace v počítači s Windows 10 s povolenou technologií Hyper-V.
 

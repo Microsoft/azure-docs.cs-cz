@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/08/2021
-ms.openlocfilehash: d45dae8b0b3725555bd83a05032339671a9595be
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 03/22/2021
+ms.openlocfilehash: ede812dc2ce063ec38423db73f4b269a7618e00c
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454360"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799611"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Povolený Azure Security Center zdarma vs Azure Defender
 Azure Defender je pro prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky začneme účtovat za využití.
@@ -48,6 +48,7 @@ Security Center se nabízí ve dvou režimech:
 - [Pokud agent Log Analytics nahlásí do několika pracovních prostorů, bude se mi účtovat dvakrát?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
 - [Pokud agent Log Analytics nahlásí do více pracovních prostorů, je pro všechny z nich dostupná příjem dat 500 MB.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
 - [Počítá se příjem dat o volném 500 MB pro celý pracovní prostor nebo výhradně pro každý počítač?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+- [Jaké datové typy jsou zahrnuté do limitu volných dat 500 MB?](#what-data-types-are-included-in-the-500-mb-free-data-limit)
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Jak mohu sledovat, kdo v organizaci povolil změny v Azure Defenderu v Security Center?
 K předplatným Azure může mít několik správců oprávnění ke změně nastavení cen. Chcete-li zjistit, který uživatel provedl změnu, použijte protokol aktivit Azure.
@@ -78,7 +79,7 @@ Pro povolení služby Azure Defender pro vaše předplatné můžete použít n�
 |                                                 |                                                                                                                                                    |
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Můžu Azure Defender povolit pro podmnožinu serverů v mém předplatném?
-No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
+Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, budou všechny servery v tomto předplatném chráněny pomocí Azure Defenderu. 
 
 Alternativou je povolení Azure Defenderu pro servery na úrovni pracovního prostoru Log Analytics. Pokud to uděláte, budou se chránit a fakturovat jenom servery, které se budou hlásit do tohoto pracovního prostoru. Některé možnosti však nebudou k dispozici. Mezi ně patří přístup k virtuálnímu počítači za běhu, detekce sítě, dodržování legislativních předpisů, adaptivní posílení zabezpečení sítě, adaptivní řízení aplikací a další. 
 
@@ -88,7 +89,7 @@ Pokud jste už získali licenci na Microsoft Defender pro koncový bod, nebudete
 Pokud chcete potvrdit svoji slevu, obraťte se na tým podpory Security Center a poskytněte příslušnému ID pracovního prostoru relevantní informace o licenci, oblasti a licence pro jednotlivé příslušné licence.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Má předplatné Azure Defender pro servery povolené, mám platit za Nespuštěné servery? 
-No. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, nebudou se vám účtovat žádné počítače, které jsou v nepřiděleném stavu napájení, zatímco jsou v tomto stavu. Počítače se účtují podle jejich stavu napájení, jak je znázorněno v následující tabulce:
+Ne. Pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md) v rámci předplatného, nebudou se vám účtovat žádné počítače, které jsou v nepřiděleném stavu napájení, zatímco jsou v tomto stavu. Počítače se účtují podle jejich stavu napájení, jak je znázorněno v následující tabulce:
 
 | State        | Popis                                                                                                                                      | Využití instance se účtuje |
 |--------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
@@ -114,6 +115,24 @@ Ano. Pokud jste agenta Log Analytics nakonfigurovali tak, aby odesílal data do 
 Pro každý počítač připojený k pracovnímu prostoru získáte 500 MB bezplatného příjmu dat za den. Konkrétně pro datové typy zabezpečení přímo shromažďované nástrojem Azure Security Center.
 
 Tento objem dat představuje denní průměr napříč všemi uzly. Takže i když některé počítače odesílají 100-MB a jiné odesílají 800-MB, pokud celková hodnota nepřekročí limit **[počet počítačů] × 500-MB** , nebude se vám účtovat žádná další.
+
+### <a name="what-data-types-are-included-in-the-500-mb-free-data-limit"></a>Jaké datové typy jsou zahrnuté do limitu volných dat 500 MB?
+
+Fakturace Security Center je úzce vázaná na účtování Log Analytics. Security Center poskytuje přidělení 500 MB/uzel/den pro následující podmnožinu [datových typů zabezpečení](/azure/azure-monitor/reference/tables/tables-category.md#security):
+- WindowsEvent
+- SecurityAlert
+- SecurityBaseline
+- SecurityBaselineSummary
+- SecurityDetection
+- SecurityEvent
+- WindowsFirewall
+- MaliciousIPCommunication
+- LinuxAuditLog
+- SysmonEvent
+- ProtectionStatus
+- Aktualizace a UpdateSummary datové typy, pokud řešení Update Management není spuštěné v pracovním prostoru nebo je povolené cílení řešení
+
+Pokud je pracovní prostor ve starší verzi na cenové úrovni pro jednotlivé uzly, Security Center a Log Analytics alokace se zkombinují a společně se aplikují na všechna fakturovatelná ingestovaná data.
 
 ## <a name="next-steps"></a>Další kroky
 Tento článek vysvětluje Security Center cenové možnosti. Související materiály najdete v tématech:

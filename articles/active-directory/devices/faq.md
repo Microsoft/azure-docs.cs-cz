@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 509d267dcdaef58a9792609a60c8a9401e90e867
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eb468dba1156087bdeb6086f5bc24b214e576e18
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199719"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773296"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -267,7 +267,7 @@ Toto chování:
 
 **A:** Když uživatelé přidají své účty do aplikací na zařízení připojeném k doméně, může se zobrazit výzva k **Přidání účtu do Windows?** Pokud na příkazovém řádku zadají **Ano** , zařízení se zaregistruje do služby Azure AD. Typ vztahu důvěryhodnosti je označený jako registrovaný pro Azure AD. Když ve vaší organizaci povolíte hybridní připojení k Azure AD, zařízení taky získá připojenou hybridní službu Azure AD. Pak se dvě stavy zařízení zobrazí pro stejné zařízení. 
 
-Připojení k hybridní službě Azure AD má přednost před stavem zaregistrovánm službou Azure AD. Takže se vaše zařízení považuje za hybridní službu Azure AD připojené k ověřování a vyhodnocení podmíněného přístupu. Záznam zařízení registrovaných v Azure AD můžete bezpečně odstranit z portálu Azure AD. Naučte se [Tento duální stav na počítači s Windows 10 vyhnout nebo ho vyčistit](hybrid-azuread-join-plan.md#review-things-you-should-know). 
+Ve většině případů má připojení ke službě Azure AD přednost hybridního připojení ke službě Azure AD. Výsledkem je, že vaše zařízení se považuje za hybridní službu Azure AD připojené k jakémukoli ověřování a vyhodnocení podmíněného přístupu. V některých případech ale může tento duální stav způsobit nedeterministické vyhodnocení zařízení a způsobit problémy s přístupem. Důrazně doporučujeme upgradovat na Windows 10 verze 1803 a novější, kde jsme automaticky vyčistili stav zaregistrován službou Azure AD. Naučte se, jak [Tento duální stav vyvarovat nebo vyčistit na počítači s Windows 10](hybrid-azuread-join-plan.md#review-things-you-should-know). 
 
 ---
 

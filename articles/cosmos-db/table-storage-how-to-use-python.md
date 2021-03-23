@@ -10,12 +10,12 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 12ee827f297729682b0a5e1b1808afe312c657a4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 847e100dfaa922c359b321f17d77d2d0c67afc9b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499063"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802858"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí Pythonu
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -41,9 +41,9 @@ Při procházení scénářů v této ukázce můžete využít [referenční in
 
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
-* [Python](https://www.python.org/downloads/) 2,7, 3,3, 3,4, 3,5 nebo 3,6
+* [Python](https://www.python.org/downloads/) 2,7 nebo 3.6 +.
 * [Sada Table SDK služby Azure Cosmos DB pro Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Tato sada SDK umožňuje připojení ke službě Azure Table Storage i k rozhraní Table API služby Azure Cosmos DB.
-* [Účet služby Azure Storage](../storage/common/storage-account-create.md) nebo [účet služby Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
+* Účet [Azure Storage](../storage/common/storage-account-create.md) nebo účet [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/).
 
 ## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
 

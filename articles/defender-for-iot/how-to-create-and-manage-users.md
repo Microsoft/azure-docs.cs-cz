@@ -1,18 +1,14 @@
 ---
 title: Vytváření a správa uživatelů
 description: Vytvářejte a spravujte uživatele senzorů a místní konzoly pro správu. Uživatelům je možné přiřadit roli správce, analytika zabezpečení nebo uživatel s oprávněním jen pro čtení.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 03/03/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: dff379c99fa7383c7f7844cf8d195a345e88a335
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2afc3cb2b9cfc0ac6b75c98198d9f0965b6dc04c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466265"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779014"
 ---
 # <a name="about-defender-for-iot-console-users"></a>O programu Defender pro uživatele konzoly IoT
 
@@ -185,7 +181,7 @@ Konfigurace služby Active Directory:
 
 4. Nastavte parametry serveru služby Active Directory následujícím způsobem:
 
-   | Parametr serveru | Description |
+   | Parametr serveru | Popis |
    |--|--|
    | Plně kvalifikovaný název domény řadiče domény | Nastavte plně kvalifikovaný název domény (FQDN) přesně tak, jak se zobrazuje na vašem serveru LDAP. Zadejte například `host1.subdomain.domain.com`. |
    | Port řadiče domény | Zadejte port, na kterém je nakonfigurovaný protokol LDAP. |

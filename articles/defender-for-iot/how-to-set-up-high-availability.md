@@ -1,18 +1,14 @@
 ---
 title: Nastavení vysoké dostupnosti
 description: Tím, že nainstalujete místní zařízení s vysokou dostupností konzoly pro správu, Zvyšte odolnost vašeho Defenderu pro nasazení IoT. Nasazení s vysokou dostupností zajišťuje, že spravované senzory budou průběžně hlásit aktivní místní konzole pro správu.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: eb5f2c6293042f44de5e3c061c6d379bee6e5b06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d0e09cd37fbae91d1903ca8f175c0592b567da6e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523885"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781649"
 ---
 # <a name="about-high-availability"></a>O vysoké dostupnosti
 

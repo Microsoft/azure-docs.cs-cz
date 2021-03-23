@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 04446243ed827cca4972a4b606c4930e74a2c704
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88648560"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774962"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Požadavky na návrh pro sady škálování
 Tento článek popisuje požadavky návrhu pro Virtual Machine Scale Sets. Informace o tom, co Virtual Machine Scale Sets, najdete v tématu [Virtual Machine Scale Sets Overview](./overview.md).
@@ -67,4 +67,4 @@ Sada škálování nakonfigurovaná s uživatelsky spravovanými účty úloži�
 
 Sada škálování vytvořená na vlastní imagi (vámi vytvořená vámi) může mít kapacitu až 600 virtuálních počítačů, pokud je nakonfigurovaná pomocí služby Azure Managed disks. Pokud je sada škálování nakonfigurovaná s uživatelskými účty úložiště, musí se v rámci jednoho účtu úložiště vytvořit všechny virtuální pevné disky s operačním systémem. Výsledkem je, že maximální doporučený počet virtuálních počítačů v sadě škálování postavené na vlastní imagi a v uživatelsky spravovaném úložišti je 20. Pokud vypnete přezřizování, můžete přejít až na 40.
 
-Pro více virtuálních počítačů, než jsou tato omezení povolena, je nutné nasadit více sad škálování, jak je znázorněno v [této šabloně](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
+Pro více virtuálních počítačů, než jsou tato omezení povolena, je nutné nasadit více sad škálování, jak je znázorněno v [této šabloně](https://azure.microsoft.com/resources/templates/301-custom-images-at-scale/).

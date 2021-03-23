@@ -255,8 +255,8 @@
           href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: Nástroje a ukázkové projekty
       items:
-        - name: Služba simulátoru zařízení
-          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+        - name: Kolekce po publikování digitálních vláken Azure
+          href: 'https://github.com/microsoft/azure-digital-twins-postman-samples'
         - name: Komplexní ukázky služby Azure Digital Twins
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Průzkumník Azure Digital Twins (ukázka)
@@ -275,6 +275,8 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: Vlastní swaggery pro konektor Logic Apps
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+        - name: Služba simulátoru zařízení
+          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
     - name: DTDL
       items:
         - name: Rozšíření DTDL pro VS Code

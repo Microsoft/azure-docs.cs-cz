@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 84213832e59c50c85d9731ced39bbce6264df47e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f4019a28e98e06ad4a115e57b2cc9d3fb6f0a807
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590904"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802926"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
 Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn nejnovějších nových funkcí a vylepšení. 
 
-## <a name="march-2021"></a>Březen 2021 
+## <a name="march-2021"></a>Březen 2021
+
+* Sdílené složky SMB – nepřetržitá dostupnost (ve verzi Preview)  
+
+    Transparentní převzetí služeb při selhání ve službě SMB umožňuje operace údržby služby Azure NetApp Files bez přerušení připojení k serverovým aplikacím, které ukládají a získávají přístup k datům na svazcích SMB. Pro podporu transparentního převzetí služeb při selhání pomocí protokolu SMB Azure NetApp Files nyní podporuje možnost sdílené složky nepřetržité dostupnosti SMB pro použití s SQL Server aplikacemi přes SMB běžící na virtuálních počítačích Azure. Tato funkce je v současnosti podporovaná ve Windows SQL Server. Linux SQL Server se momentálně nepodporuje. Povolení této funkce přináší významné SQL Server vylepšení výkonu a škálování a cenová výhoda pro [jednu instanci, Always-On instanci clusteru s podporou převzetí služeb při selhání a Always-On nasazení skupin dostupnosti](azure-netapp-files-solution-architectures.md#sql-server). Podívejte se [na výhody použití Azure NetApp Files k nasazení SQL Server](solutions-benefits-azure-netapp-files-sql-server.md).
 
 * [Automatická změna velikosti cílového svazku replikace mezi oblastmi](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 
@@ -33,7 +37,7 @@ Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn n
 
 ## <a name="december-2020"></a>Prosinec 2020
 
-* [Nástroj pro snímek konzistentní vzhledem k aplikacím Azure](azacsnap-introduction.md) (Public Preview)    
+* [Nástroj pro snímek konzistentní vzhledem k aplikacím Azure](azacsnap-introduction.md) (Preview)    
 
     Nástroj pro vytváření snímků konzistentního vzhledem k aplikacím Azure (AzAcSnap) je nástroj příkazového řádku, který umožňuje zjednodušit ochranu dat pro databáze třetích stran (SAP HANA) v prostředích Linux (například SUSE a RHEL).   
 
@@ -53,7 +57,7 @@ Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn n
 
 ## <a name="september-2020"></a>Září 2020
 
-* [Azure NetApp Files replikace mezi oblastmi](cross-region-replication-introduction.md) (Public Preview)
+* [Azure NetApp Files replikace mezi oblastmi](cross-region-replication-introduction.md) (Preview)
 
   Azure NetApp Files teď podporuje replikaci mezi jednotlivými oblastmi. Díky této nové funkci pro zotavení po havárii můžete své Azure NetApp Files svazky replikovat z jedné oblasti Azure do jiné díky rychlému a nákladově efektivnímu způsobu ochrany vašich dat před nepředvídatelnými místními chybami. Replikace Azure NetApp Files mezi oblastmi využije technologii® NetApp SnapMirror; v komprimovaném, efektivním formátu se přes síť odesílají jenom změněné bloky. Tato proprietární technologie minimalizuje množství dat potřebných k replikaci napříč různými oblastmi, takže šetří náklady na přenos dat. Také zkracuje čas replikace, takže můžete dosáhnout menšího cíle bodu obnovení (RPO).
 

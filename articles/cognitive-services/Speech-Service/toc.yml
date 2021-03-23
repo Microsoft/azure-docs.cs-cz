@@ -39,30 +39,30 @@
           href: migrate-v2-to-v3.md
         - name: Posouzení výslovnosti
           href: how-to-pronunciation-assessment.md
+        - name: Přizpůsobení
+          items:
+            - name: Co je Custom Speech?
+              href: custom-speech-overview.md
+            - name: Testování modelu s využitím zvukových souborů v sadě Speech Studio
+              href: quickstarts/speech-studio-test-model.md
+            - name: Příprava dat pro službu Custom Speech
+              href: how-to-custom-speech-test-and-train.md
+            - name: Kontrola dat služby Custom Speech
+              href: how-to-custom-speech-inspect-data.md
+            - name: Vyhodnocení a vylepšení přesnosti služby Custom Speech
+              href: how-to-custom-speech-evaluate-data.md
+            - name: Trénování a nasazení modelu Custom Speech
+              href: how-to-custom-speech-train-model.md
+            - name: CI/CD pro Custom Speech
+              href: how-to-custom-speech-continuous-integration-continuous-deployment.md
+            - name: Vytváření přepisů pořízených lidmi
+              href: how-to-custom-speech-human-labeled-transcriptions.md
+            - name: Životní cyklus modelu a koncového bodu
+              href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: Kurzy
       items:
         - name: Zlepšení přesnosti s využitím modelů tenantů
           href: tutorial-tenant-model.md
-    - name: Přizpůsobení
-      items:
-        - name: Co je Custom Speech?
-          href: custom-speech-overview.md
-        - name: Testování modelu s využitím zvukových souborů v sadě Speech Studio
-          href: quickstarts/speech-studio-test-model.md
-        - name: Příprava dat pro službu Custom Speech
-          href: how-to-custom-speech-test-and-train.md
-        - name: Kontrola dat služby Custom Speech
-          href: how-to-custom-speech-inspect-data.md
-        - name: Vyhodnocení a vylepšení přesnosti služby Custom Speech
-          href: how-to-custom-speech-evaluate-data.md
-        - name: Trénování a nasazení modelu Custom Speech
-          href: how-to-custom-speech-train-model.md
-        - name: CI/CD pro Custom Speech
-          href: how-to-custom-speech-continuous-integration-continuous-deployment.md
-        - name: Vytváření přepisů pořízených lidmi
-          href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Životní cyklus modelu a koncového bodu
-          href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: Referenční informace
       items:
         - name: C++
@@ -116,25 +116,25 @@
           href: long-audio-api.md
         - name: Získání událostí pozice obličeje pro sadu LIP – synchronizace
           href: how-to-speech-synthesis-viseme.md
-    - name: Přizpůsobení
-      items:
-        - name: Portál služby Vlastní hlas
+        - name: Přizpůsobení
           items:
-            - name: Co je vlastní neuronové hlas?
-              href: custom-neural-voice.md
-            - name: Začínáme se službou Custom Voice
-              displayName: 'custom voice, neural voice'
-              href: how-to-custom-voice.md
-            - name: Příprava dat
-              href: how-to-custom-voice-prepare-data.md
-            - name: Vytváření a využití modelů Custom Voice
-              href: how-to-custom-voice-create-voice.md
-            - name: Záznam hlasových ukázek
-              href: record-custom-voice-samples.md
-        - name: Vytvoření zvukového obsahu
-          items:
+            - name: Portál služby Vlastní hlas
+              items:
+                - name: Co je vlastní neuronové hlas?
+                  href: custom-neural-voice.md
+                - name: Začínáme se službou Custom Voice
+                  displayName: 'custom voice, neural voice'
+                  href: how-to-custom-voice.md
+                - name: Příprava dat
+                  href: how-to-custom-voice-prepare-data.md
+                - name: Vytváření a využití modelů Custom Voice
+                  href: how-to-custom-voice-create-voice.md
+                - name: Záznam hlasových ukázek
+                  href: record-custom-voice-samples.md
             - name: Vytvoření zvukového obsahu
-              href: how-to-audio-content-creation.md
+              items:
+                - name: Vytvoření zvukového obsahu
+                  href: how-to-audio-content-creation.md
     - name: Zodpovědné využití AI
       items:
         - name: Vlastní neuronové hlas

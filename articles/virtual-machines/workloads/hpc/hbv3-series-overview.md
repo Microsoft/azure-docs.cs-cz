@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b1f2800c3787cd28437afa70b78ef8388461e413
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d1abd03f517f9e0b13a2994418cbae5cfbe22454
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721165"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801858"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>Přehled virtuálních počítačů s HBv3-Series 
 
@@ -32,6 +32,9 @@ V důsledku toho se Server spouští se 4 doménami NUMA (2 na jeden soket), kte
 Pro zajištění toho, aby měl hypervisor Azure fungovat, aniž by došlo ke konfliktu s virtuálním počítačem, vyhrazujeme si 8 fyzických jader na server. 
 
 Počítejte s tím, že velikosti virtuálních počítačů s omezeními omezují jenom počet fyzických jader vystavených pro virtuální počítač. Všechny globální sdílené prostředky (RAM, propustnost paměti, mezipaměť L3, GMI a připojení xGMI, InfiniBand, síť Ethernet Azure, místní SSD) zůstávají konstantní. To umožňuje zákazníkovi vybrat velikost virtuálního počítače, která je nejlépe přizpůsobená dané sadě úloh nebo požadavků na licencování softwaru.
+
+Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hypervisor (žlutá) a virtuální počítač HBv3-Series (zelený).
+![Oddělení jader rezervovaných pro virtuální počítač s hypervisorem Azure a HBv3-Series](./media/architecture/hbv3-segregation-cores.png)
 
 ## <a name="infiniband-networking"></a>InfiniBand sítě
 Virtuální počítače s HBv3 také vypracují síťové adaptéry NVIDIA Mellanox HDR InfiniBand (ConnectX-6), které fungují až 200 gigabitů za sekundu. Síťové rozhraní se předá přes SRIOV k virtuálnímu počítači a povoluje tak použití síťového provozu k obejít hypervisor. V důsledku toho zákazníci načtou standardní ovladače Mellanox OFED na virtuální počítače HBv3, protože by to byly holé prostředí.

@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 03/12/2021
 ms.author: apimpm
-ms.openlocfilehash: 3f91ca21512b8cddcac7fe71fa3eec07e1a8745a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1a835d26b4c41c92b9849856a2f31b3550947bd8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720079"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801889"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>Zásady API Management k ověřování žádostí a odpovědí
 
@@ -87,20 +87,20 @@ V následujícím příkladu je datová část JSON v požadavcích a odpovědí
 
 | Název         | Popis                                                                                                                                   | Povinné |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| ověřit – obsah | Kořenový element.                                                                                                                               | Yes      |
-| obsah | Přidejte jeden nebo více těchto prvků pro ověření typu obsahu v žádosti nebo odpovědi a proveďte určenou akci.  | No |
+| ověřit – obsah | Kořenový element.                                                                                                                               | Ano      |
+| obsah | Přidejte jeden nebo více těchto prvků pro ověření typu obsahu v žádosti nebo odpovědi a proveďte určenou akci.  | Ne |
 
 ### <a name="attributes"></a>Atributy
 
 | Název                       | Popis                                                                                                                                                            | Povinné | Výchozí |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| Neurčený typ Content-Type-Action | [Akce](#actions) , která se má provést pro žádosti nebo odpovědi s typem obsahu, který není zadaný ve schématu rozhraní API. |  Yes     | –   |
-| maximální velikost | Maximální délka těla žádosti nebo odpovědi v bajtech, která je zaregistrována v `Content-Length` hlavičce. Pokud je text požadavku nebo tělo odpovědi komprimováno, je tato hodnota dekomprimovaná délka. Maximální povolená hodnota: 102 400 bajtů (100 KB).  | Yes       | –   |
-| velikost – překročení – akce | [Akce](#actions) , která se má provést pro žádosti nebo odpovědi, jejichž tělo překračuje velikost určenou v `max-size` . |  Yes     | –   |
-| chyby – název proměnné | Název proměnné v nástroji `context.Variables` pro chyby ověření protokolu na.  |   Yes    | –   |
-| typ | Typ obsahu, pro který se má provést ověření těla, u kterého se kontroluje v `Content-Type` záhlaví Tato hodnota rozlišuje malá a velká písmena. Pokud je prázdné, platí pro každý typ obsahu určený ve schématu rozhraní API. |   No    |  –  |
-| ověřit jako | Ověřovací modul, který se použije k ověření těla žádosti nebo odpovědi s typem odpovídajícího obsahu. V současné době je jediná podporovaná hodnota "JSON".   |  Yes     |  –  |
-| akce | [Akce](#actions) , která se má provést pro žádosti nebo odpovědi, jejichž tělo neodpovídá zadanému typu obsahu.  |  Yes      | –   |
+| Neurčený typ Content-Type-Action | [Akce](#actions) , která se má provést pro žádosti nebo odpovědi s typem obsahu, který není zadaný ve schématu rozhraní API. |  Ano     | –   |
+| maximální velikost | Maximální délka těla žádosti nebo odpovědi v bajtech, která je zaregistrována v `Content-Length` hlavičce. Pokud je text požadavku nebo tělo odpovědi komprimováno, je tato hodnota dekomprimovaná délka. Maximální povolená hodnota: 102 400 bajtů (100 KB).  | Ano       | –   |
+| velikost – překročení – akce | [Akce](#actions) , která se má provést pro žádosti nebo odpovědi, jejichž tělo překračuje velikost určenou v `max-size` . |  Ano     | –   |
+| chyby – název proměnné | Název proměnné v nástroji `context.Variables` pro chyby ověření protokolu na.  |   Ano    | –   |
+| typ | Typ obsahu, pro který se má provést ověření těla, u kterého se kontroluje v `Content-Type` záhlaví Tato hodnota rozlišuje malá a velká písmena. Pokud je prázdné, platí pro každý typ obsahu určený ve schématu rozhraní API. |   Ne    |  –  |
+| ověřit jako | Ověřovací modul, který se použije k ověření těla žádosti nebo odpovědi s typem odpovídajícího obsahu. V současné době je jediná podporovaná hodnota "JSON".   |  Ano     |  –  |
+| akce | [Akce](#actions) , která se má provést pro žádosti nebo odpovědi, jejichž tělo neodpovídá zadanému typu obsahu.  |  Ano      | –   |
 
 ### <a name="usage"></a>Využití
 
@@ -115,7 +115,7 @@ Tyto zásady se dají použít v následujících [oddílech](./api-management-h
 Tato `validate-parameters` zásada ověřuje parametry hlaviček, dotazů nebo cest v požadavcích proti schématu rozhraní API.
 
 > [!IMPORTANT]
-> Pokud jste importovali rozhraní API pomocí rozhraní API pro správu před verzí `2021-01-01-preview` , `validate-parameters` nemusí tato zásada fungovat. Možná budete muset znovu naimportovat rozhraní API pomocí rozhraní API pro správu `2021-01-01-preview` nebo novější verze.
+> Pokud jste importovali rozhraní API pomocí rozhraní API pro správu před verzí `2021-01-01-preview` , `validate-parameters` nemusí tato zásada fungovat. Možná budete muset znovu [naimportovat rozhraní API](/rest/api/apimanagement/2021-01-01-preview/apis/createorupdate) pomocí rozhraní API pro správu `2021-01-01-preview` nebo novější verze.
 
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
@@ -145,6 +145,7 @@ V tomto příkladu jsou všechny parametry dotazů a cest ověřovány v režimu
         <parameter name="User-Agent" action="ignore" />
         <parameter name="Host" action="ignore" />
         <parameter name="Referrer" action="ignore" />
+    </headers>   
 </validate-parameters>
 ```
 
@@ -152,21 +153,21 @@ V tomto příkladu jsou všechny parametry dotazů a cest ověřovány v režimu
 
 | Název         | Popis                                                                                                                                   | Povinné |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| ověřit – parametry | Kořenový element. Určuje výchozí akce ověřování pro všechny parametry v požadavcích.                                                                                                                              | Yes      |
-| záhlaví | Přidejte tento prvek pro přepsání výchozích ověřovacích akcí pro parametry hlaviček v požadavcích.   | No |
-| query | Přidejte tento prvek pro přepsání výchozích ověřovacích akcí pro parametry dotazu v požadavcích.  | No |
-| program | Přidejte tento prvek pro přepsání výchozích akcí ověření pro parametry cesty URL v požadavcích.  | No |
-| parameter | Přidejte jeden nebo více prvků pro pojmenované parametry pro přepsání konfigurace na vyšší úrovni akcí ověření. | No |
+| ověřit – parametry | Kořenový element. Určuje výchozí akce ověřování pro všechny parametry v požadavcích.                                                                                                                              | Ano      |
+| záhlaví | Přidejte tento prvek pro přepsání výchozích ověřovacích akcí pro parametry hlaviček v požadavcích.   | Ne |
+| query | Přidejte tento prvek pro přepsání výchozích ověřovacích akcí pro parametry dotazu v požadavcích.  | Ne |
+| program | Přidejte tento prvek pro přepsání výchozích akcí ověření pro parametry cesty URL v požadavcích.  | Ne |
+| parameter | Přidejte jeden nebo více prvků pro pojmenované parametry pro přepsání konfigurace na vyšší úrovni akcí ověření. | Ne |
 
 ### <a name="attributes"></a>Atributy
 
 | Název                       | Popis                                                                                                                                                            | Povinné | Výchozí |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| zadaný parametr-parametru-action | [Akce](#actions) , která se má provést pro parametry požadavku zadané ve schématu rozhraní API <br/><br/> V případě, že je k dispozici v `headers` `query` prvku,, nebo `path` , Přepisuje hodnota `specified-parameter-action` v `validate-parameters` elementu.  |  Yes     | –   |
-| Neurčený parametr-Action | [Akce](#actions) , která se má provést pro parametry žádosti, které nejsou zadané ve schématu rozhraní API. <br/><br/>V případě, že je k dispozici v `headers` `query` prvku nebo, Přepisuje hodnota `unspecified-parameter-action` v `validate-parameters` elementu. |  Yes     | –   |
-| chyby – název proměnné | Název proměnné v nástroji `context.Variables` pro chyby ověření protokolu na.  |   Yes    | –   |
-| name | Název parametru pro přepsání akce ověření pro. Tato hodnota rozlišuje malá a velká písmena.  | Yes | – |
-| akce | [Akce](#actions) , která má být provedena pro parametr se shodným názvem. Pokud je parametr zadaný ve schématu rozhraní API, přepíše tato hodnota konfiguraci vyšší úrovně `specified-parameter-action` . Pokud parametr není zadán ve schématu rozhraní API, tato hodnota přepisuje konfiguraci vyšší úrovně `unspecified-parameter-action` .| Yes | – | 
+| zadaný parametr-parametru-action | [Akce](#actions) , která se má provést pro parametry požadavku zadané ve schématu rozhraní API <br/><br/> V případě, že je k dispozici v `headers` `query` prvku,, nebo `path` , Přepisuje hodnota `specified-parameter-action` v `validate-parameters` elementu.  |  Ano     | –   |
+| Neurčený parametr-Action | [Akce](#actions) , která se má provést pro parametry žádosti, které nejsou zadané ve schématu rozhraní API. <br/><br/>V případě, že je k dispozici v `headers` `query` prvku nebo, Přepisuje hodnota `unspecified-parameter-action` v `validate-parameters` elementu. |  Ano     | –   |
+| chyby – název proměnné | Název proměnné v nástroji `context.Variables` pro chyby ověření protokolu na.  |   Ano    | –   |
+| name | Název parametru pro přepsání akce ověření pro. Tato hodnota rozlišuje malá a velká písmena.  | Ano | – |
+| akce | [Akce](#actions) , která má být provedena pro parametr se shodným názvem. Pokud je parametr zadaný ve schématu rozhraní API, přepíše tato hodnota konfiguraci vyšší úrovně `specified-parameter-action` . Pokud parametr není zadán ve schématu rozhraní API, tato hodnota přepisuje konfiguraci vyšší úrovně `unspecified-parameter-action` .| Ano | – | 
 
 ### <a name="usage"></a>Využití
 
@@ -200,18 +201,18 @@ Tato `validate-headers` zásada ověřuje hlavičky odpovědí proti schématu r
 
 | Název         | Popis                                                                                                                                   | Povinné |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| ověřit – hlavičky | Kořenový element. Určuje výchozí akce ověřování pro všechny hlavičky v odpovědích.                                                                                                                              | Yes      |
-| header | Přidejte jeden nebo více prvků pro pojmenovaná záhlaví k přepsání výchozích ověřovacích akcí pro hlavičky v odpovědích. | No |
+| ověřit – hlavičky | Kořenový element. Určuje výchozí akce ověřování pro všechny hlavičky v odpovědích.                                                                                                                              | Ano      |
+| header | Přidejte jeden nebo více prvků pro pojmenovaná záhlaví k přepsání výchozích ověřovacích akcí pro hlavičky v odpovědích. | Ne |
 
 ### <a name="attributes"></a>Atributy
 
 | Název                       | Popis                                                                                                                                                            | Povinné | Výchozí |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| zadáno – hlavička – akce | [Akce](#actions) , která se má provést pro hlavičky odpovědí zadané ve schématu rozhraní API  |  Yes     | –   |
-| Neurčeno – hlavička – akce | [Akce](#actions) , která se má provést pro hlavičky odpovědí, které nejsou zadány ve schématu rozhraní API.  |  Yes     | –   |
-| chyby – název proměnné | Název proměnné v nástroji `context.Variables` pro chyby ověření protokolu na.  |   Yes    | –   |
-| name | Název záhlaví, pro které se má přepsat akce ověření. Tato hodnota rozlišuje malá a velká písmena. | Yes | – |
-| akce | [Akce](#actions) , která se má provést pro hlavičku se shodným názvem Pokud je hlavička určena ve schématu rozhraní API, tato hodnota Přepisuje hodnotu `specified-header-action` v `validate-headers` elementu. V opačném případě Přepisuje hodnotu `unspecified-header-action` v elementu Validate-Headers. | Yes | – | 
+| zadáno – hlavička – akce | [Akce](#actions) , která se má provést pro hlavičky odpovědí zadané ve schématu rozhraní API  |  Ano     | –   |
+| Neurčeno – hlavička – akce | [Akce](#actions) , která se má provést pro hlavičky odpovědí, které nejsou zadány ve schématu rozhraní API.  |  Ano     | –   |
+| chyby – název proměnné | Název proměnné v nástroji `context.Variables` pro chyby ověření protokolu na.  |   Ano    | –   |
+| name | Název záhlaví, pro které se má přepsat akce ověření. Tato hodnota rozlišuje malá a velká písmena. | Ano | – |
+| akce | [Akce](#actions) , která se má provést pro hlavičku se shodným názvem Pokud je hlavička určena ve schématu rozhraní API, tato hodnota Přepisuje hodnotu `specified-header-action` v `validate-headers` elementu. V opačném případě Přepisuje hodnotu `unspecified-header-action` v elementu Validate-Headers. | Ano | – | 
 
 ### <a name="usage"></a>Využití
 
@@ -243,17 +244,17 @@ Tato `validate-status-code` zásada ověřuje stavové kódy HTTP v odpovědích
 
 | Název         | Popis                                                                                                                                   | Povinné |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| ověřit – stav-kód | Kořenový element.                                                                                                | Yes      |
-| Stavový kód | Přidejte jeden nebo více prvků pro stavový kód HTTP, abyste popsali výchozí akci ověření pro stavové kódy v odpovědích. | No |
+| ověřit – stav-kód | Kořenový element.                                                                                                | Ano      |
+| Stavový kód | Přidejte jeden nebo více prvků pro stavový kód HTTP, abyste popsali výchozí akci ověření pro stavové kódy v odpovědích. | Ne |
 
 ### <a name="attributes"></a>Atributy
 
 | Název                       | Popis                                                                                                                                                            | Povinné | Výchozí |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| Neurčeno – stav-kód-akce | [Akce](#actions) , která se má provést pro stavové kódy HTTP v odpovědích, které nejsou zadané ve schématu rozhraní API.  |  Yes     | –   |
-| chyby – název proměnné | Název proměnné v nástroji `context.Variables` pro chyby ověření protokolu na.  |   Yes    | –   |
-| kód | Stavový kód HTTP pro přepsání akce ověření pro. | Yes | – |
-| akce | [Akce](#actions) , která se má provést pro shodný stavový kód, který není určený ve schématu rozhraní API. Pokud je stavový kód zadán ve schématu rozhraní API, toto přepsání se neprojeví. | Yes | – | 
+| Neurčeno – stav-kód-akce | [Akce](#actions) , která se má provést pro stavové kódy HTTP v odpovědích, které nejsou zadané ve schématu rozhraní API.  |  Ano     | –   |
+| chyby – název proměnné | Název proměnné v nástroji `context.Variables` pro chyby ověření protokolu na.  |   Ano    | –   |
+| kód | Stavový kód HTTP pro přepsání akce ověření pro. | Ano | – |
+| akce | [Akce](#actions) , která se má provést pro shodný stavový kód, který není určený ve schématu rozhraní API. Pokud je stavový kód zadán ve schématu rozhraní API, toto přepsání se neprojeví. | Ano | – | 
 
 ### <a name="usage"></a>Využití
 

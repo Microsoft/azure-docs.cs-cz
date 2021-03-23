@@ -3,12 +3,12 @@ title: Kurz – partnerské místní prostředí do privátního cloudu
 description: Naučte se, jak vytvořit partnerský vztah ExpressRoute Global Reach k privátnímu cloudu v řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ae92bf89a08c5fade8757e3ee596c4ed4a5e6389
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 08a461ab7d441eb813d435086dfcea121ef4a7f1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494145"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786902"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Kurz: partnerských místních prostředí do privátního cloudu
 
@@ -37,7 +37,7 @@ Než povolíte připojení mezi dvěma okruhy ExpressRoute pomocí ExpressRoute 
 >[!IMPORTANT]
 >V souvislosti s těmito požadavky je váš místní okruh ExpressRoute _okruhem 1_ a váš ExpressRoute okruh privátního cloudu je v jiném předplatném a _okruhu_ s popiskem 2.
 
-## <a name="create-an-expressroute-authorization-key-in-the-on-premises-circuit"></a>Vytvoření autorizačního klíče ExpressRoute v místním okruhu
+## <a name="create-an-expressroute-authorization-key-in-the-private-cloud-expressroute-circuit"></a>Vytvoření autorizačního klíče ExpressRoute v okruhu ExpressRoute privátního cloudu
 
 [!INCLUDE [request-authorization-key](includes/request-authorization-key.md)]
  

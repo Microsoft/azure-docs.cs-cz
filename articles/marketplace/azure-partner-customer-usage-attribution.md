@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/19/2021
+ms.date: 03/22/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 79f3276347aa64655f0c9086db5f152c4ff5fbcf
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: ed7f27b0b8fde902f4ae9b65b9f6b4ada78f79c6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771086"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799186"
 ---
 # <a name="azure-customer-usage-attribution"></a>Přidělení zákaznického využití Azure
 
@@ -39,7 +39,9 @@ Sledování využití Azure z aplikací Azure publikovaných na komerčním webu
 Pokud používáte rozhraní Azure Resource Manager API, budete muset přidat ID sledování podle [pokynů níže](#use-resource-manager-apis) , abyste ho předávali Azure Resource Manager, jak kód nasazuje prostředky. Toto ID se zobrazuje v partnerském centru na stránce technické konfigurace vašeho plánu. 
 
 > [!NOTE]
-> U stávajících aplikací Azure se v březnu 2021 provedla jednorázová migrace, která aktualizuje ID sledování v technické konfiguraci jednotlivých plánů. Využití z minulých nasazení těchto nabídek zůstane sledováno v systémech Microsoftu.
+> U stávajících aplikací Azure začala jednorázová migrace v březnu 2021, která aktualizuje ID sledování v technické konfiguraci jednotlivých plánů. Využití z minulých nasazení těchto nabídek zůstane sledováno v systémech Microsoftu.
+>
+>Při aktualizaci nabídek již nemusíte do hlavního souboru šablony přidávat typ prostředku **Microsoft. Resources/Deployments** .
 
 ## <a name="other-use-cases"></a>Jiné případy použití 
 

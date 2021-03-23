@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak řešit potíže se změnami na virtu�
 services: automation
 ms.subservice: change-inventory-management
 keywords: Změna, sledování, sledování změn, inventář, automatizace
-ms.date: 12/05/2018
+ms.date: 03/21/2021
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 980740d387f9e953d1ea764327c8aa13f8650948
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100587939"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775798"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Řešení potíží se změnami na virtuálním počítači Azure
 
@@ -208,15 +208,15 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
 14. V části **Akce** zadejte název akce, například **správce e-mailu**. 
 
-15. Jako **typ akce** vyberte **e-mail/SMS/Push/Voice**. 
+15. Jako **typ akce** vyberte **E-mail/zpráva SMS/nabízení/hlas**. 
 
 16. Pokud chcete zobrazit **Podrobnosti**, vyberte **Upravit podrobnosti**.
 
-    ![Přidání skupiny akcí](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+    :::image type="content" source="./media/automation-tutorial-troubleshoot-changes/add-action-group.png" alt-text="Využití a odhadované náklady." lightbox="./media/automation-tutorial-troubleshoot-changes/add-action-group.png":::
 
-17. V podokně E-mail/SMS/oznámení/hlas zadejte název, zaškrtněte políčko **e-mail** a zadejte platnou e-mailovou adresu. Po dokončení klikněte na tlačítko **OK** v podokně a pak klikněte na tlačítko **OK** na stránce Přidat skupinu akcí.
+17. V podokně **e-mail/zpráva SMS/oznámení/hlas** zadejte název, zaškrtněte políčko **e-mail** a zadejte platnou e-mailovou adresu. Po dokončení klikněte na tlačítko **OK** v podokně a pak klikněte na tlačítko **OK** na stránce **Přidat skupinu akcí** .
 
-18. Pokud chcete přizpůsobit předmět e-mailu s výstrahou, vyberte **přizpůsobit akce**. 
+18. Pokud chcete přizpůsobit předmět e-mailu s výstrahou, vyberte **přizpůsobit akce**.
 
 19. V možnosti **vytvořit pravidlo** vyberte **Předmět e-mailu** a pak zvolte **vytvořit pravidlo upozornění**. Pravidlo vás upozorní na úspěšné nasazení aktualizací a poskytne informace o tom, které počítače byly součástí dané hromadné postupné aktualizace. Na následujícím obrázku je příklad e-mailu přijatý při zastavení služby W3SVC.
 

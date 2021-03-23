@@ -5,12 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c96651fa48acc2f88658148c7e60be2f3fa09da
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96008272"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800155"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric zavádí model stavu, který poskytuje bohatě, flexibilní a rozšiřitelné vyhodnocení stavu a vytváření sestav. Model umožňuje monitorovat stav clusteru a služby, které jsou v něm spuštěné, do téměř v reálném čase. Můžete snadno získat informace o stavu a opravit případné problémy, které se budou zastarat, a způsobit obrovské výpadky. V typickém modelu odesílají služby sestavy na základě místních zobrazení a tyto informace jsou agregované tak, aby poskytovaly celkové zobrazení na úrovni clusteru.
@@ -79,6 +79,7 @@ Ve výchozím nastavení Service Fabric používá striktní pravidla (vše mus�
 
 ### <a name="cluster-health-policy"></a>Zásady stavu clusteru
 [Zásady stavu clusteru](/dotnet/api/system.fabric.health.clusterhealthpolicy) se používají k vyhodnocení stavu clusteru a stavu uzlu. Zásady je možné definovat v manifestu clusteru. Pokud není k dispozici, je použita výchozí zásada (počet nedovolených selhání).
+
 Zásada stavu clusteru obsahuje:
 
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Určuje, jestli se mají při hodnocení stavu považovat zprávy o stavu s varováním za chyby. Výchozí hodnota: false.
@@ -87,18 +88,33 @@ Zásada stavu clusteru obsahuje:
 * [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). Mapování zásad stavu aplikace lze použít při vyhodnocení stavu clusteru k popisu speciálních typů aplikací. Ve výchozím nastavení jsou všechny aplikace vloženy do fondu a vyhodnocovány pomocí MaxPercentUnhealthyApplications. Pokud se některé typy aplikací mají zpracovávat odlišně, můžou se vycházet z globálního fondu. Místo toho jsou vyhodnocovány proti procentům přidruženým k názvu typu aplikace na mapě. Například v clusteru existují tisíce aplikací různých typů a několik instancí aplikace pro řízení speciálního typu aplikace. Řídicí aplikace by nikdy neměly být v chybě. Můžete zadat globální MaxPercentUnhealthyApplications na 20% pro tolerovatcí některé chyby, ale pro typ aplikace "ControlApplicationType" nastaví MaxPercentUnhealthyApplications na 0. Tímto způsobem platí, že pokud některé z mnoha aplikací nejsou v pořádku, ale pod globálním procentem není v pořádku, cluster se vyhodnotí jako varování. Stav upozornění nemá vliv na upgrade clusteru ani na jiné monitorování aktivované chybovým stavem. I když ale jedna aplikace ovládacího prvku v chybě způsobí, že cluster není v pořádku, což aktivuje odvolání nebo pozastaví upgrade clusteru v závislosti na konfiguraci upgradu.
   Pro typy aplikací definované v mapě se všechny instance aplikace vyberou z globálního fondu aplikací. Jsou vyhodnocovány na základě celkového počtu aplikací typu aplikace pomocí konkrétního MaxPercentUnhealthyApplications z mapy. Všechny zbývající aplikace zůstanou v globálním fondu a vyhodnocují se pomocí MaxPercentUnhealthyApplications.
 
-Následující příklad je výňatek z manifestu clusteru. Chcete-li definovat položky v mapě typu aplikace, zadejte předponu názvu parametru pomocí "ApplicationTypeMaxPercentUnhealthyApplications-" následovaný názvem typu aplikace.
+  Následující příklad je výňatek z manifestu clusteru. Chcete-li definovat položky v mapě typu aplikace, zadejte předponu názvu parametru pomocí "ApplicationTypeMaxPercentUnhealthyApplications-" následovaný názvem typu aplikace.
 
-```xml
-<FabricSettings>
-  <Section Name="HealthManager/ClusterHealthPolicy">
-    <Parameter Name="ConsiderWarningAsError" Value="False" />
-    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
-    <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
-    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
-  </Section>
-</FabricSettings>
-```
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
+
+* [NodeTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap). Mapování zásad stavu uzlu lze použít při vyhodnocení stavu clusteru k popisu speciálních typů uzlů. Typy uzlů jsou vyhodnocovány proti procentům přidruženým k názvu typu uzlu v mapě. Nastavení této hodnoty nemá žádný vliv na Globální fond uzlů používaných pro `MaxPercentUnhealthyNodes` . Cluster má například stovky uzlů různých typů a několik typů uzlů, které hostují důležitou práci. Žádný uzel v tomto typu by neměl být mimo provoz. Můžete zadat globální `MaxPercentUnhealthyNodes` až 20% pro tolerování některých selhání pro všechny uzly, ale pro typ uzlu nastavte na `SpecialNodeType` `MaxPercentUnhealthyNodes` 0. Tímto způsobem platí, že pokud některý z mnoha uzlů není v pořádku, ale pod globálním procentem není v pořádku, cluster se vyhodnotí jako ve stavu varování. Stav upozornění nebude mít vliv na upgrade clusteru ani na jiné monitorování aktivované chybovým stavem. Ale i jeden uzel typu `SpecialNodeType` v chybovém stavu způsobí, že cluster není v pořádku a může vrátit zpět nebo pozastavit upgrade clusteru v závislosti na konfiguraci upgradu. Naopak když nastavíte globální `MaxPercentUnhealthyNodes` omezení na 0 a nastavíte `SpecialNodeType` maximální procento uzlů, které nejsou v pořádku, na 100 s jedním uzlem typu `SpecialNodeType` v chybovém stavu, bude cluster stále v chybovém stavu, protože globální omezení je v tomto případě přísnější. 
+
+  Následující příklad je výňatek z manifestu clusteru. Chcete-li definovat položky v mapě typu uzlu, zadejte předponu názvu parametru pomocí "NodeTypeMaxPercentUnhealthyNodes-" a za ním název typu uzlu.
+
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="NodeTypeMaxPercentUnhealthyNodes-SpecialNodeType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
 
 ### <a name="application-health-policy"></a>Zásada stavu aplikace
 [Zásady stavu aplikace](/dotnet/api/system.fabric.health.applicationhealthpolicy) popisují, jak se provádí vyhodnocení agregací událostí a podřízených stavů pro aplikace a jejich podřízené objekty. Může být definován v manifestu aplikace, **ApplicationManifest.xml** v balíčku aplikace. Pokud nejsou zadány žádné zásady, Service Fabric předpokládá, že entita není v pořádku, pokud má zprávu o stavu nebo podřízenou položku ve stavu upozornění nebo chyba.

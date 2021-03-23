@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/18/2020
+ms.date: 03/22/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 079dcdc9d1667809779489c5d1126bc85cafb881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fa9861dd1ffbdd33f59abe76c7ebbd1befe3e7a6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96511306"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799424"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivace mých rolí Azure AD v PIM
 
@@ -110,11 +110,7 @@ Pokud nepotřebujete aktivovat roli, která vyžaduje schválení, můžete žá
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Po aktivaci role nedojde k udělení oprávnění
 
-Když v Privileged Identity Management aktivujete roli, aktivace se nemusí okamžitě rozšířit na všechny portály, které vyžadují privilegovanou roli. Někdy se může stát, že i přes rozšíření změny může kvůli webovému ukládání do mezipaměti na portálu dojít k tomu, že se změna neuplatní okamžitě. Pokud je vaše aktivace zpožděná, tady je to, co byste měli dělat.
-
-1. Odhlaste se z webu Azure Portal a pak se znovu přihlaste.
-
-1. V Privileged Identity Management ověřte, že jste uvedeni jako člen role.
+Když v Privileged Identity Management aktivujete roli, aktivace se nemusí okamžitě rozšířit na všechny portály, které vyžadují privilegovanou roli. Někdy se může stát, že i přes rozšíření změny může kvůli webovému ukládání do mezipaměti na portálu dojít k tomu, že se změna neuplatní okamžitě. Pokud je vaše aktivace zpožděná, odhlaste se z portálu, který se pokoušíte provést, a pak se znovu přihlaste. V Azure Portal vás PIM odhlásí a vrátí se automaticky.
 
 # <a name="previous-version"></a>[Předchozí verze](#tab/previous)
 
@@ -216,13 +212,7 @@ Pokud nepotřebujete aktivovat roli, která vyžaduje schválení, můžete žá
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Po aktivaci role nedojde k udělení oprávnění
 
-Když v Privileged Identity Management aktivujete roli, aktivace se nemusí okamžitě rozšířit na všechny portály, které vyžadují privilegovanou roli. Někdy se může stát, že i přes rozšíření změny může kvůli webovému ukládání do mezipaměti na portálu dojít k tomu, že se změna neuplatní okamžitě. Pokud je vaše aktivace zpožděná, tady je to, co byste měli dělat.
-
-1. Odhlaste se z webu Azure Portal a pak se znovu přihlaste.
-
-    Při aktivaci role Azure AD se zobrazí fáze aktivace. Po dokončení všech fází se zobrazí odkaz **Odhlásit se**. Tento odkaz můžete použít k odhlášení. Tato akce vyřeší většinu případů zpoždění aktivace.
-
-1. V Privileged Identity Management ověřte, že jste uvedeni jako člen role.
+Při aktivaci role v Privileged Identity Management se aktivace může zpozdit na jiné portály pro správu, než na Azure Portal, jako je například portál Office 365. Pokud je vaše aktivace zpožděná, odhlaste se z portálu, ve kterém jste, a pak se znovu přihlaste. Pak použijte Privileged Identity Management k ověření, že jste uvedeni jako člen role.
 
  ---
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 91f4f90658281282cdcb01b091bd9c9647d8d702
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6a8de9b373a14eab45df28b28bb3f94314c1d89a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100635481"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801076"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -89,8 +89,32 @@ Před vytvořením svazku SMB je potřeba vytvořit připojení ke službě Acti
     * Jako typ protokolu pro svazek vyberte **SMB** . 
     * V rozevíracím seznamu vyberte připojení ke **službě Active Directory** .
     * Zadejte název sdíleného svazku do pole  **název sdílené složky**.
+    * Pokud chcete povolit nepřetržitou dostupnost pro svazek SMB, vyberte možnost **Povolit nepřetržitou dostupnost**.    
 
-    ![Zadat protokol SMB](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
+        > [!IMPORTANT]   
+        > Funkce nepřetržité dostupnosti SMB je aktuálně ve verzi Public Preview. Pro přístup k této funkci musíte odeslat žádost pořadníku pomocí **[sdílených složek Azure NETAPP Files SMB nepřetržité dostupnosti Public Preview stránky pro odeslání pořadníku](https://aka.ms/anfsmbcasharespreviewsignup)**. Před použitím funkce nepřetržité dostupnosti počkejte na oficiální e-mail s potvrzením od Azure NetApp Files týmu.   
+        > 
+        > Měli byste povolit nepřetržitou dostupnost jenom pro úlohy SQL. Používání sdílených složek SMB pro jiné úlohy než *SQL Server se nepodporuje* . Tato funkce je v současnosti podporovaná ve Windows SQL Server. Linux SQL Server se momentálně nepodporuje. Pokud k instalaci SQL Server používáte účet bez oprávnění správce (doména), ujistěte se, že má účet přiřazená požadovaná oprávnění zabezpečení. Pokud účet domény nemá požadovaná oprávnění zabezpečení ( `SeSecurityPrivilege` ) a oprávnění nelze nastavit na úrovni domény, můžete oprávnění účtu udělit pomocí pole **uživatelé oprávnění zabezpečení** připojení služby Active Directory. Viz téma [vytvoření připojení ke službě Active Directory](create-active-directory-connections.md#create-an-active-directory-connection).
+
+    <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
+    <!-- 
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+
+        Check the status of the feature registration: 
+
+        > [!NOTE]
+        > The **RegistrationState** may be in the `Registering` state for up to 60 minutes before changing to`Registered`. Wait until the status is `Registered` before continuing.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+        
+        You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
+    --> 
+
+    ![Snímek obrazovky s popisem karty protokolu pro vytvoření svazku protokolu SMB.](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
 5. Kliknutím na tlačítko **zkontrolovat + vytvořit** zkontrolujte podrobnosti o svazku.  Pak kliknutím na **vytvořit** vytvořte svazek SMB.
 

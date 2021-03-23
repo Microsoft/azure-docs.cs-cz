@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/22/2021
+ms.openlocfilehash: f33490e273104105502ecc8f4f255c354a2d2f3b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98611028"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800019"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -137,7 +137,7 @@ V závislosti na tom, jaké rozhraní API používáte, může kontejner Azure C
 | --- | --- |
 | Maximální délka názvu databáze nebo kontejneru | 255 |
 | Maximální počet uložených procedur na kontejner | 100 <sup>*</sup>|
-| Maximální počet UDF na kontejner | 0,25 <sup>*</sup>|
+| Maximální počet UDF na kontejner | 50 <sup>*</sup>|
 | Maximální počet cest v zásadách indexování| 100 <sup>*</sup>|
 | Maximální počet jedinečných klíčů na kontejner|10pruhový <sup>*</sup>|
 | Maximální počet cest na jedinečné omezení klíče|16bitovém <sup>*</sup>|

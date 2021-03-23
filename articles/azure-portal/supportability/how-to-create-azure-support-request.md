@@ -3,13 +3,13 @@ title: Jak vytvořit žádost o podporu Azure
 description: Zákazníci, kteří potřebují pomoc, můžou pomocí Azure Portal najít samoobslužná řešení a vytvářet a spravovat žádosti o podporu.
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.date: 06/25/2020
-ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/16/2021
+ms.openlocfilehash: 395fc0d5905389ffb8f68d8bbc4c6f8b3a871d36
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100652390"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774863"
 ---
 # <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
@@ -42,7 +42,7 @@ Pokud chcete vytvořit žádost o podporu, musíte být [vlastníkem](../../role
 
 Spuštění žádosti o podporu odkudkoli v Azure Portal:
 
-1. Vyberte **?** v globálním záhlaví. Pak vyberte **help + podpora**.
+1. Vyberte **?** v globální hlavičce vyberte možnost **help + podpora**.
 
    ![Nápověda a podpora](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -52,7 +52,7 @@ Spuštění žádosti o podporu odkudkoli v Azure Portal:
 
 ### <a name="go-to-help--support-from-a-resource-menu"></a>Přejít na pomoc a podpora z nabídky prostředků
 
-K zahájení žádosti o podporu v kontextu prostředku teď pracujete s:
+Pokud chcete zahájit žádost o podporu v kontextu prostředku, se kterým právě pracujete:
 
 1. V nabídce prostředek v části Podpora a **řešení potíží** vyberte **Nová žádost o podporu**.
 

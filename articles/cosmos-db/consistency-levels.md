@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a480c8f2dfdda0ce7a1eb879554fb79c96adbe1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/22/2021
+ms.openlocfilehash: 0a203531e026d00b274ac98784076d33b22666d8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97347808"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800138"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,15 +51,19 @@ Výchozí úroveň konzistence můžete v účtu Azure Cosmos nakonfigurovat kdy
 
 Azure Cosmos DB zaručuje, že 100 procento žádostí o čtení odpovídá záruku konzistence pro zvolenou úroveň konzistence. Přesné definice pěti úrovní konzistence v Azure Cosmos DB používání jazyka TLA + Specification jsou k dispozici v úložišti GitHub [Azure-Cosmos-tla](https://github.com/Azure/azure-cosmos-tla) .
 
-Sémantika pěti úrovní konzistence je popsána zde:
+Sémantika pěti úrovní konzistence je popsána v následujících částech.
 
-- **Strong**: silná konzistence nabízí záruku linearizability. Linearizability odkazuje na obsluhu souběžných požadavků. U čtení je zaručeno, že vrátí nejnovější potvrzenou verzi položky. Klient nikdy nevidí nepotvrzené nebo částečné zápisy. Uživatelům se vždycky ručí, že si přečtou poslední potvrzený zápis.
+### <a name="strong-consistency"></a>Silná konzistence
+
+Silná konzistence nabízí záruku linearizovatelnosti. Linearizability odkazuje na obsluhu souběžných požadavků. U čtení je zaručeno, že vrátí nejnovější potvrzenou verzi položky. Klient nikdy nevidí nepotvrzené nebo částečné zápisy. Uživatelům se vždycky ručí, že si přečtou poslední potvrzený zápis.
 
   Následující obrázek znázorňuje silnou konzistenci se hudebními poznámkami. Po zapsání dat do oblasti "Západní USA 2" se při čtení dat z jiných oblastí zobrazí nejnovější hodnota:
 
   :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Ilustrace silné úrovně konzistence":::
 
-- **Ohraničená neaktuálnost**: čtení jsou zaručena, aby se zaručila záruka konzistentní s předponou. Čtení můžou na konci zápisu zajímat maximálně *"K"* verzí (to znamená "aktualizace") položky nebo časového intervalu *"T"* , podle toho, co je dosaženo jako první. Jinými slovy, pokud vyberete možnost ohraničená neaktuálnost, lze nakonfigurovat "zastaralost" dvěma způsoby:
+### <a name="bounded-staleness-consistency"></a>Konzistence Omezená neaktuálnost
+
+V ohraničené konzistenci neaktuálnosti mají čtení zaručenou záruku konzistence. Čtení můžou na konci zápisu zajímat maximálně *"K"* verzí (to znamená "aktualizace") položky nebo časového intervalu *"T"* , podle toho, co je dosaženo jako první. Jinými slovy, pokud vyberete možnost ohraničená neaktuálnost, lze nakonfigurovat "zastaralost" dvěma způsoby:
 
 - Počet verzí položky (*KB*)
 - Čtení s časovým intervalem (*T*) může odvést zpoždění za zápisy.
@@ -79,7 +83,9 @@ V rámci okna zastaralost poskytuje ohraničená neaktuálnost následující z�
 
   :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Ilustrace úrovně konzistence s ohraničenou kostarou":::
 
-- **Relace**: v rámci jediného čtení klientské relace jsou zaručené respektování konzistentní předpony, monotónní čtení, monotónní zápisu, čtení a zápisů a záruky za zápis. Předpokládá se jedna relace "zapisovače" nebo sdílení tokenu relace pro více modulů pro zápis.
+### <a name="session-consistency"></a>Konzistence Relace
+
+V konzistenci relace je v rámci jedné klientské relace čtení zaručeno respektovat konzistentní předpony, monotónní čtení, monotónní zápisy, čtení a zápisy a záruky za čtení za běhu. Předpokládá se jedna relace "zapisovače" nebo sdílení tokenu relace pro více modulů pro zápis.
 
 Klientům mimo relaci, která provádí zápis, se zobrazí následující záruky:
 
@@ -92,7 +98,9 @@ Klientům mimo relaci, která provádí zápis, se zobrazí následující záru
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Ilustrace úrovně konzistence relace":::
 
-- **Konzistentní předpona**: vrácené aktualizace obsahují předponu všech aktualizací bez mezer. Konzistentní předpony úrovně konzistence, které nemají nikdy vidět zápisy mimo pořadí.
+### <a name="consistent-prefix-consistency"></a>Konzistence Konzistentní předpona
+
+V možnosti konzistentní předpona, vrácené aktualizace obsahují předponu všech aktualizací bez mezer. Konzistentní předpony úrovně konzistence, které nemají nikdy vidět zápisy mimo pořadí.
 
 Pokud byla zápisy provedena v pořadí `A, B, C` , klient uvidí buď `A` , `A,B` nebo `A,B,C` , ale nikdy mimo pořadí, například `A,C` nebo `B,A,C` . Konzistentní předpona poskytuje latence zápisu, dostupnost a propustnost čtení srovnatelné s tím, že má konečnou konzistenci, ale také poskytuje pořadí záruk, které vyhovuje potřebám scénářů, ve kterých je pořadí důležité.
 
@@ -107,7 +115,9 @@ Následující obrázek znázorňuje konzistenci předpon konzistence se hudebn�
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Obrázek konzistentní předpony":::
 
-- Kdy **: neexistuje** záruka na řazení pro čtení. Pokud nedojde k žádným dalším operacím zápisu, repliky se nakonec konvergují.  
+### <a name="eventual-consistency"></a>Případná konzistence
+
+V konečné konzistenci není zaručeno řazení pro čtení. Pokud nedojde k žádným dalším operacím zápisu, repliky se nakonec konvergují.  
 Konečná konzistence představuje slabší formu konzistence, protože klient může číst hodnoty, které jsou starší než ty, které se předtím četly. Konečná konzistence je ideální, pokud aplikace nevyžaduje žádné záruky na řazení. Mezi příklady patří počet re, podobně jako u jiných než vlákenných komentářů. Následující obrázek znázorňuje konečnou konzistenci se hudebními poznámkami.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="viIllustration s konečnou konzistencí":::

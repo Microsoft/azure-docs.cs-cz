@@ -5,12 +5,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a5788e5ac64c1c74a06c94c5634a05315ee098b8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041140"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799288"
 ---
 # <a name="log-analytics-tutorial"></a>Kurz Log Analytics
 Log Analytics je nástroj v Azure Portal, který umožňuje upravovat a spouštět dotazy protokolu z dat shromažďovaných službou Azure Monitor protokoly a interaktivně analyzovat jejich výsledky. Pomocí Log Analytics dotazů můžete načíst záznamy, které odpovídají konkrétním kritériím, identifikovat trendy, analyzovat vzorce a poskytovat nejrůznější přehledy o vašich datech. 
@@ -72,7 +72,7 @@ Příkaz **WHERE** se přidá do dotazu s hodnotou, kterou jste vybrali. Výsled
 ## <a name="time-range"></a>Časové rozmezí
 Všechny tabulky v pracovním prostoru Log Analytics mají sloupec s názvem **TimeGenerated** , což je čas vytvoření záznamu. Všechny dotazy mají časový rozsah, který omezí výsledky na záznamy s hodnotou **TimeGenerated** v daném rozsahu. Časový rozsah lze nastavit buď v dotazu, nebo pomocí selektoru v horní části obrazovky.
 
-Ve výchozím nastavení bude dotaz vracet záznamy za posledních 24 hodin. Vyberte rozevírací seznam **časový rozsah** a změňte jej na **7 dní**. Kliknutím na tlačítko **Spustit** znovu vrátíte výsledky. Můžete vidět, že se vrátí výsledky, ale tady se zobrazí zpráva, že nevidíme všechny výsledky. Důvodem je to, že Log Analytics může vracet maximálně 10 000 záznamů a náš dotaz vrátil více záznamů. 
+Ve výchozím nastavení bude dotaz vracet záznamy za posledních 24 hodin. Vyberte rozevírací seznam **časový rozsah** a změňte jej na **7 dní**. Kliknutím na tlačítko **Spustit** znovu vrátíte výsledky. Můžete vidět, že se vrátí výsledky, ale tady se zobrazí zpráva, že nevidíme všechny výsledky. Důvodem je to, že Log Analytics může vracet maximálně 30 000 záznamů a náš dotaz vrátil více záznamů. 
 
 [![Časový rozsah](media/log-analytics-tutorial/query-results-max.png)](media/log-analytics-tutorial/query-results-max.png#lightbox)
 

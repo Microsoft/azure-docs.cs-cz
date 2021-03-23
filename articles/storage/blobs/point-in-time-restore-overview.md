@@ -10,12 +10,12 @@ ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: da869091fb1f7bf31a29ba1bc6db8c1c42254dc4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b959038753dd15282de357da746ef9b0e0cf2be5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618079"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802263"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Obnovení bodu v čase pro objekty blob bloku
 
@@ -53,9 +53,11 @@ Operace **obnovit rozsahy objektů BLOB** vrátí ID obnovení, které jedinečn
 
 Obnovení k bodu v čase vyžaduje, aby byly povolené následující funkce Azure Storage, než můžete povolit obnovení k bodu v čase:
 
-- [Obnovitelné odstranění](./soft-delete-blob-overview.md)
+- [Obnovitelné odstranění](soft-delete-blob-overview.md)
 - [Změnit kanál](storage-blob-change-feed.md)
 - [Správa verzí objektů BLOB](versioning-overview.md)
+
+Povolení těchto funkcí může mít za následek další poplatky. Ujistěte se, že rozumíte dopadům fakturace před povolením obnovení k časovému okamžiku a požadovaných funkcí.
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Doba uchování pro obnovení k určitému bodu v čase
 
@@ -88,6 +90,8 @@ Obnovení bodu v čase pro objekty blob bloku má následující omezení a zná
 > Pokud obnovíte objekty blob bloku do bodu, který je starší než 22. září 2020, vstoupí v platnost omezení pro obnovení k určitému bodu v čase. Společnost Microsoft doporučuje zvolit bod obnovení, který se rovná nebo je vyšší než 22. září 2020, aby využil všeobecně dostupné funkce obnovení k určitému bodu v čase.
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
+
+K povolení obnovení k bodu v čase se neúčtují žádné poplatky. Povolení obnovení k časovému okamžiku ale umožňuje také vytvářet verze objektů blob, obnovitelné odstranění a změny informačního kanálu, z nichž každá z nich může mít za následek další poplatky.
 
 Fakturace pro obnovení k bodu v čase závisí na množství zpracovaných dat k provedení operace obnovení. Množství zpracovaných dat vychází z počtu změn, ke kterým došlo mezi bodem obnovení a současným okamžikem. Například za předpokladu poměrně konstantní frekvence změny pro blokování dat objektů BLOB v účtu úložiště, operace obnovení, která se vrátí za čas 1 den, by cena obnovení, která se vrátí za čas po dobu 10 dní, byla 1 desetinná.
 

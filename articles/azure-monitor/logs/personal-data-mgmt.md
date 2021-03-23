@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: ff6d532d3c391ffecfbfb54a761c73ff24c823d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 03c4babc8fa70c951d80b720c4d4693968011532
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040256"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772259"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Doprovodné materiály pro osobní údaje uložené ve službách Log Analytics a Application Insights
 
 Log Analytics je úložiště dat, kde se pravděpodobně nacházejí osobní údaje. Application Insights ukládá data do oddílu Log Analytics. Tento článek pojednává o tom, kde v Log Analytics a Application Insights taková data se obvykle nacházejí, a možnosti, které jsou k dispozici pro zpracování takových dat.
 
 > [!NOTE]
-> Pro účely tohoto článku se _data protokolů_ vztahují na data odesílaná do log Analyticsho pracovního prostoru, zatímco _data aplikací_ odkazují na data shromážděná pomocí Application Insights.
+> Pro účely tohoto článku se _data protokolů_ vztahují na data odesílaná do log Analyticsho pracovního prostoru, zatímco _data aplikací_ odkazují na data shromážděná pomocí Application Insights. Pokud používáte prostředek Application Insights na základě pracovního prostoru, budou se tyto informace vztahovat na data protokolu, ale pokud používáte prostředek klasického Application Insights, uplatní se data aplikací.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
+
 
 ## <a name="strategy-for-personal-data-handling"></a>Strategie pro zpracování osobních údajů
 
@@ -27,7 +28,7 @@ I když bude vaše společnost až do vaší společnosti, abyste nakonec určil
 
 * Pokud je to možné, zastavte shromažďování, zmatení, anonymizovat nebo jinak upravte shromažďovaná data, aby se vyloučila, aby se považovala za "soukromá". _To je_ nejjednodušeji upřednostňovaný přístup, takže ušetříte potřebu vytvořit velmi náročnou a ovlivněnou strategii zpracování dat.
 * Pokud není to možné, pokuste se normalizovat data a snížit dopad na datovou platformu a výkon. Například místo protokolování explicitního ID uživatele vytvořte vyhledávací data, která budou korelovat uživatelské jméno a jejich podrobnosti s interním ID, které lze následně zaznamenat jinam. To znamená, že pokud jeden z vašich uživatelů požaduje odstranění jejich osobních údajů, je možné, že bude stačit jenom odstranit řádek v tabulce vyhledávání odpovídající tomuto uživateli. 
-* Nakonec, pokud musí být shromážděna soukromá data, sestavte proces kolem cesty rozhraní API pro vyprázdnění a stávající cestu rozhraní API pro dotaz tak, aby splňovala jakékoli závazky, které byste mohli vyexportovat a odstranit všechna soukromá data přidružená k uživateli. 
+* Nakonec, pokud musí být shromážděna soukromá data, sestavte proces kolem cesty rozhraní API pro vyprázdnění a stávající cestu rozhraní API pro dotaz tak, aby splňovala jakékoli závazky, které byste mohli vyexportovat a odstranit všechna soukromá data přidružená k uživateli.
 
 ## <a name="where-to-look-for-private-data-in-log-analytics"></a>Kde hledat soukromá data v Log Analytics?
 

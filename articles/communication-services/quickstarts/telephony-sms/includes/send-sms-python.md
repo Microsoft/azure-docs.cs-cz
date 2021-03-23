@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: e8424f6b5b7617b00de6dedbece3325f3c5513c8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b975b129f4384c09006a22b1ab124b1906a869d3
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622334"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104803233"
 ---
 Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications Pythonu SMS k posílání zpráv SMS.
 
@@ -28,7 +28,7 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 ## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- [Python](https://www.python.org/downloads/) 2,7, 3,5 nebo novější.
+- [Python](https://www.python.org/downloads/) 2,7 nebo 3.6 +.
 - Aktivní prostředek komunikační služby a připojovací řetězec. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
 - Telefonní číslo s povoleným SMS. [Získejte telefonní číslo](../get-phone-number.md).
 
@@ -72,7 +72,7 @@ pip install azure-communication-sms --pre
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce klientské knihovny SMS služby Azure Communications Services pro Python.
 
-| Název                                  | Description                                                  |
+| Název                                  | Popis                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Tato třída je potřebná pro všechny funkce SMS. Vytvoří se jeho instance s informacemi o předplatném a použije se k posílání zpráv SMS.                                                                                                                 |
 | SmsSendResult               | Tato třída obsahuje výsledek ze služby SMS.                                          |
