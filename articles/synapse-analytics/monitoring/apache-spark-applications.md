@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea08c82ed5772be7e3a6094f5477c4450975c1fa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99584504"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775844"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Monitorování aplikací Apache Spark pomocí nástroje synapse Studio
 
@@ -157,9 +157,16 @@ Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Pokud chce
    ![informace o neúspěšné úloze](./media/how-to-monitor-spark-applications/failed-job-info.png)
 
 ## <a name="compare-apache-spark-applications"></a>Porovnání aplikací Apache Spark
-Klikněte na tlačítko **Porovnat aplikace** a vyberte aplikaci pro porovnání výkonu, uživatelé mohou intuitivní zobrazení rozdílů mezi těmito dvěma aplikacemi.
+
+Existují dva způsoby, jak porovnat aplikace. Můžete porovnat volbou **aplikace porovnat** nebo kliknutím na tlačítko **porovnat v poznámkovém bloku** je zobrazit v poznámkovém bloku.
+
+### <a name="compare-by-choose-an-application"></a>Porovnat volbou aplikace
+
+Klikněte na tlačítko **Porovnat aplikace** a vyberte aplikaci pro porovnání výkonu, můžete intuitivním rozdílem mezi těmito dvěma aplikacemi zobrazit rozdíl.
 
 ![porovnat aplikace](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+![Podrobnosti porovnat aplikace](./media/how-to-monitor-spark-applications/details-compare-applications.png)
 
 1. Pomocí myši najeďte na aplikaci a zobrazí se ikona **Porovnat aplikace** .
 
@@ -167,7 +174,7 @@ Klikněte na tlačítko **Porovnat aplikace** a vyberte aplikaci pro porovnání
 
 3. Kliknutím na tlačítko **Zvolit aplikaci** otevřete stránku **Zvolit aplikaci porovnání** .
 
-4. Když zvolíte aplikaci porovnání, uživatelé musí buď zadat adresu URL aplikace, nebo zvolit ze seznamu opakování. Pak klikněte na tlačítko **OK** . 
+4. Při výběru aplikace pro porovnání musíte zadat adresu URL aplikace, nebo si vybrat ze seznamu opakování. Pak klikněte na tlačítko **OK** . 
 
    ![zvolit aplikaci porovnání](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
 
@@ -175,6 +182,15 @@ Klikněte na tlačítko **Porovnat aplikace** a vyberte aplikaci pro porovnání
 
    ![výsledek porovnání](./media/how-to-monitor-spark-applications/comparison-result.png)
 
+### <a name="compare-by-compare-in-notebook"></a>Porovnat porovnáním poznámkového bloku
+
+Kliknutím na tlačítko **porovnat v poznámkovém bloku** na stránce **Porovnat aplikace** otevřete Poznámkový blok. Výchozím názvem souboru. ipynb je **přesoučasná analýza aplikace**.
+
+![porovnat v poznámkovém bloku](./media/how-to-monitor-spark-applications/compare-in-notebook.png)
+
+V poznámkovém bloku: znovu aktuální soubor analýzy aplikace můžete spustit přímo po nastavení fondu a jazyka Spark.
+
+![přesoučasná analýza aplikace](./media/how-to-monitor-spark-applications/recurrent-application-analytics.png)
 
 ## <a name="next-steps"></a>Další kroky
 

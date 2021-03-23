@@ -4,14 +4,14 @@ description: Vysvětluje, jak nakonfigurovat další nastavení pro mezipaměť,
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: v-erkel
-ms.openlocfilehash: 06feefe3a934d1ee02793fab442852e5ef40899a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563371"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773228"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurovat další nastavení mezipaměti HPC Azure
 
@@ -75,6 +75,8 @@ Pokud potřebujete pro svou mezipaměť nastavit vlastní server DNS, použijte 
   > [!NOTE]
   > The cache will use only the first DNS server it successfully finds. -->
 
+Zvažte použití testovací mezipaměti pro kontrolu a upřesnění nastavení DNS předtím, než ho použijete v produkčním prostředí.
+
 ### <a name="refresh-storage-target-dns"></a>Aktualizovat cílový DNS úložiště
 
 Pokud server DNS aktualizuje IP adresy, budou se k dočasnému nedostupné cíle úložiště NFS. Přečtěte si, jak aktualizovat vlastní IP adresy systému DNS v [úpravách cílů úložiště](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only).
@@ -94,10 +96,10 @@ Tato funkce je dostupná jenom pro cíle Azure Blob Storage a její konfiguraci 
 
 Snímky jsou pořízeny každých 8 hodin, ve formátu UTC 0:00, 08:00 a 16:00.
 
-Mezipaměť HPC Azure ukládá každý den, týdně a měsíčně snímky, dokud se nenahradí novými. Omezení jsou:
+Mezipaměť HPC Azure ukládá každý den, týdně a měsíčně snímky, dokud se nenahradí novými. Omezení uchování snímku:
 
 * Až 20 denních snímků
 * Až 8 týdenních snímků
 * Až 3 měsíční snímky
 
-Přihlaste se k snímkům z `.snapshot` adresáře v oboru názvů cílů služby Blob Storage.
+Přihlaste se k snímkům z `.snapshot` adresáře v kořenovém adresáři připojeného cíle úložiště objektů BLOB.

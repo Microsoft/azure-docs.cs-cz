@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c42c6465af8e895d833332be847c134b97ee8ddc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100557147"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781292"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: vytvoření toků uživatelů v Azure Active Directory B2C
 
@@ -25,8 +25,9 @@ V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření uživatelského toku pro registraci a přihlašování
+> * Povolení samoobslužného resetování hesel
 > * Vytvoření toku uživatele upravujícího profil
-> * Vytvoření toku uživatele pro resetování hesla
+
 
 V tomto kurzu se dozvíte, jak vytvořit několik doporučených uživatelských toků pomocí Azure Portal. Pokud hledáte informace o tom, jak ve své aplikaci nastavit tok přihlašovacích údajů vlastníka prostředku (ROPC), přečtěte si téma [Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C](add-ropc-policy.md).
 
@@ -85,6 +86,24 @@ Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i
 > [!NOTE]
 > Prostředí "spuštění toku uživatele" není aktuálně kompatibilní s typem adresy URL odpovědi zabezpečeného hesla pomocí toku autorizačního kódu. Pokud chcete pro tyto typy aplikací používat zkušenosti s uživatelským tokem, zaregistrujte adresu URL odpovědi typu web a povolte implicitní tok, jak je popsáno [zde](tutorial-register-spa.md).
 
+## <a name="enable-self-service-password-reset"></a>Povolení samoobslužného resetování hesel
+
+Povolení [samoobslužného resetování hesla](add-password-reset-policy.md) pro uživatelský tok registrace nebo přihlašování:
+
+1. Vyberte uživatelský tok registrace nebo přihlašování, který jste vytvořili.
+1. V části **Nastavení** v levé nabídce vyberte **vlastnosti**.
+1. V části **složitost hesla** vyberte **Samoobslužné resetování hesla**.
+1. Vyberte **Uložit**.
+
+### <a name="test-the-user-flow"></a>Testování toku uživatele
+
+1. Vyberte tok uživatele, který jste vytvořili, a otevřete jeho stránku Přehled a pak vyberte **Spustit tok uživatele**.
+1. V poli **aplikace** vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
+1. Vyberte **Spustit tok uživatele**.
+1. Na stránce registrace nebo přihlášení vyberte **zapomenuté heslo?**.
+1. Ověřte e-mailovou adresu účtu, který jste vytvořili dříve, a pak vyberte **pokračovat**.
+1. Teď máte možnost změnit heslo pro uživatele. Změňte heslo a vyberte **pokračovat**. Token se vrátí do `https://jwt.ms` a měl by se vám zobrazovat.
+
 ## <a name="create-a-profile-editing-user-flow"></a>Vytvoření toku uživatele upravujícího profil
 
 Pokud chcete uživatelům umožnit úpravy svého profilu v aplikaci, použijte uživatelský tok upravující profil.
@@ -103,26 +122,6 @@ Pokud chcete uživatelům umožnit úpravy svého profilu v aplikaci, použijte 
 1. V poli **aplikace** vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Klikněte na **Spustit tok uživatele** a pak se přihlaste pomocí účtu, který jste vytvořili dříve.
 1. Teď máte příležitost změnit zobrazované jméno a název úlohy pro uživatele. Klikněte na **Pokračovat**. Token se vrátí do `https://jwt.ms` a měl by se vám zobrazovat.
-
-## <a name="create-a-password-reset-user-flow"></a>Vytvoření toku uživatele pro resetování hesla
-
-Pokud chcete uživatelům vaší aplikace povolit resetování hesla, použijte uživatelský tok pro resetování hesla.
-
-1. V nabídce přehled Azure AD B2C tenanta vyberte **toky uživatelů** a pak vyberte **Nový tok uživatele**.
-1. Na stránce **vytvořit tok uživatele** vyberte tok uživatele **resetování hesla** . 
-1. V části **vybrat verzi** vyberte **doporučeno** a pak vyberte **vytvořit**.
-1. Zadejte **název** toku uživatele. Například *passwordreset1*.
-1. U **zprostředkovatelů identity** povolte možnost **resetovat heslo pomocí e-mailové adresy**.
-2. V části deklarace identity aplikace klikněte na **Zobrazit další** a vyberte deklarace identity, které chcete vrátit do vaší aplikace, do své aplikace. Vyberte například **ID objektu uživatele**.
-3. Klikněte na **OK**.
-4. Kliknutím na **vytvořit** přidejte tok uživatele. K názvu se automaticky připojí předpona *B2C_1* .
-
-### <a name="test-the-user-flow"></a>Testování toku uživatele
-
-1. Vyberte tok uživatele, který jste vytvořili, a otevřete jeho stránku Přehled a pak vyberte **Spustit tok uživatele**.
-1. V poli **aplikace** vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-1. Klikněte na **Spustit tok uživatele**, ověřte e-mailovou adresu účtu, který jste vytvořili dříve, a vyberte **pokračovat**.
-1. Teď máte možnost změnit heslo pro uživatele. Změňte heslo a vyberte **pokračovat**. Token se vrátí do `https://jwt.ms` a měl by se vám zobrazovat.
 
 ## <a name="next-steps"></a>Další kroky
 

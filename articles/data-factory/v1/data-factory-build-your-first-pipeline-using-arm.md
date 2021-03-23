@@ -3,16 +3,16 @@ title: Sestavení prvního objektu pro vytváření dat (šablona Správce prost
 description: V tomto kurzu vytvoříte ukázkový kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: deeed3890094961b0934a6e093b9f5025990d1a3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f4f5156870ec5119c71a0acc77786c71ab8b7e62
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100392098"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783043"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Kanál v tomto kurzu má jednu aktivitu: **aktivitu HDInsight Hive**. Tato aktiv
 
 ## <a name="in-this-tutorial"></a>V tomto kurzu
 
-| Entita | Description |
+| Entita | Popis |
 | --- | --- |
 | Propojená služba Azure Storage |Propojí účet služby Azure Storage s datovou továrnou. Účet služby Azure Storage v této ukázce obsahuje vstupní a výstupní data pro kanál. |
 | Propojená služba HDInsightu na vyžádání |Propojí cluster HDInsight na vyžádání k datové továrně. Cluster se automaticky vytvoří, abyste mohli zpracovat data, a po dokončení zpracování se odstraní. |
@@ -616,7 +616,7 @@ Tato šablona vytvoří objekt pro vytváření dat s názvem GatewayUsingArmDF,
 
 ## <a name="see-also"></a>Viz také
 
-| Téma | Description |
+| Téma | Popis |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Azure Data Factory. |

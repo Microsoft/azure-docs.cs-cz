@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e61d2ff3807b65022d72414615af9fa729359358
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: df826a682eec15d09b60857e63c363b0f9941c01
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715713"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779932"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
 
@@ -151,6 +151,9 @@ Můžete omezit typy odesílaných událostí tak, že definujete konkrétnějš
 Pokud chcete přidat filtr událostí při vytváření trasy události, použijte část _Přidání filtru tras událostí_ na stránce *vytvořit trasu* události. 
 
 Můžete buď vybrat některé z běžných možností filtru Basic, nebo použít rozšířené možnosti filtru k psaní vlastních filtrů.
+
+>[!NOTE]
+> Filtry rozlišují **Velká** a malá písmena a musí se shodovat s případem datové části (což nemusí nutně odpovídat modelu Case).
 
 #### <a name="use-the-basic-filters"></a>Použít základní filtry
 

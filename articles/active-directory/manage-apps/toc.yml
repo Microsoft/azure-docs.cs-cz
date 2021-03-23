@@ -59,8 +59,6 @@
       items:
         - name: Začínáme s integrací aplikací
           href: plan-an-application-integration.md
-        - name: 'Plánování aplikací, které nejsou uvedené v galerii'
-          href: non-gallery-apps.md
         - name: Plánování nasazení pro Moje aplikace
           href: my-apps-deployment-plan.md
     - name: Jednotné přihlašování

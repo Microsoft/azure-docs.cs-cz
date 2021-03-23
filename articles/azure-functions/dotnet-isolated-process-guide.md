@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: b4cf3699243e990b5e7b7478ba643067ac456020
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: be11c32cf06b9873e10247d7ccc4a84133a6c688
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584699"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774928"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Průvodce pro spouštění funkcí v .NET 5,0 v Azure
 
@@ -68,37 +68,36 @@ Tyto balíčky rozšíření najdete v části [Microsoft. Azure. Functions. Wor
 
 ## <a name="start-up-and-configuration"></a>Spuštění a konfigurace 
 
-Při použití izolovaných funkcí .NET máte přístup ke spuštění aplikace Function App, která je obvykle v programu program. cs. Zodpovídáte za vytvoření a spuštění vlastní instance hostitele. V takovém případě máte také přímý přístup ke konfiguračnímu kanálu vaší aplikace. Můžete mnohem snadněji vložit závislosti a spustit middleware při spuštění mimo proces. 
+Při použití izolovaných funkcí .NET máte přístup ke spuštění aplikace Function App, která je obvykle v programu program. cs. Zodpovídáte za vytvoření a spuštění vlastní instance hostitele. V takovém případě máte také přímý přístup ke konfiguračnímu kanálu vaší aplikace. Při spuštění mimo proces můžete mnohem snadněji přidat konfigurace, vložit závislosti a spustit vlastní middleware. 
 
-Následující kód ukazuje příklad `HostBuilder` kanálu:
+Následující kód ukazuje příklad kanálu [HostBuilder] :
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_startup":::
 
-`HostBuilder`Používá se k sestavení a vrácení plně inicializované `IHost` instance, která se spouští asynchronně, aby se spustila aplikace Function App. 
+[HostBuilder] se používá k sestavení a vrácení plně inicializované instance [IHost] , která se spouští asynchronně, aby se spustila aplikace Function App. 
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_host_run":::
 
 ### <a name="configuration"></a>Konfigurace
 
-Přístup k kanálu tvůrce hostitele znamená, že při inicializaci můžete nastavit všechny konfigurace specifické pro danou aplikaci. Tyto konfigurace se vztahují na vaši aplikaci Function App spuštěnou v samostatném procesu. Chcete-li provést změny v konfiguraci hostitele nebo triggeru funkcí a vazeb, je stále nutné použít [host.jsv souboru](functions-host-json.md).      
+Metoda [ConfigureFunctionsWorkerDefaults] se používá k přidání nastavení potřebného k tomu, aby aplikace Function App běžela mimo proces, což zahrnuje následující funkce:
 
-<!--The following example shows how to add configuration `args`, which are read as command-line arguments: 
- 
-:::code language="csharp" 
-                .ConfigureAppConfiguration(c =>
-                {
-                    c.AddCommandLine(args);
-                })
-                :::
++ Výchozí sada převaděčů.
++ Nastavte výchozí [JsonSerializerOptions] pro ignorování velkých a malých písmen u názvů vlastností.
++ Integrace s protokolováním Azure Functions.
++ Middleware a funkce pro výstup vazeb.
++ Middleware provádění funkce
++ Výchozí podpora gRPC 
 
-The `ConfigureAppConfiguration` method is used to configure the rest of the build process and application. This example also uses an [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), which makes it easier to add multiple configuration items. Because `ConfigureAppConfiguration` returns the same instance of [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true), you can also just call it multiple times to add multiple configuration items.-->  
-Můžete získat přístup k úplné sadě konfigurací z i [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_defaults" :::   
 
-Další informace o konfiguraci najdete v tématu [konfigurace v ASP.NET Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true). 
+Přístup k kanálu pro tvůrce hostitele znamená, že můžete také nastavit všechny konfigurace specifické pro aplikaci během inicializace. Metodu [ConfigureAppConfiguration] můžete zavolat na [HostBuilder] jednou nebo vícekrát pro přidání konfigurací vyžadovaných vaší aplikací Function App. Další informace o konfiguraci aplikací najdete v tématu [konfigurace v ASP.NET Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true). 
+
+Tyto konfigurace se vztahují na vaši aplikaci Function App spuštěnou v samostatném procesu. Chcete-li provést změny v konfiguraci hostitele nebo triggeru funkcí a vazeb, je stále nutné použít [host.jsv souboru](functions-host-json.md).   
 
 ### <a name="dependency-injection"></a>Injektáž závislostí
 
-Vkládání závislostí je zjednodušené, v porovnání s knihovnami tříd .NET. Místo toho, abyste museli vytvářet spouštěcí třídu pro registraci služeb, stačí zavolat `ConfigureServices` na tvůrce hostitele a použít rozšiřující metody pro [`IServiceCollection`](/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=dotnet-plat-ext-5.0&preserve-view=true) Vložení konkrétních služeb. 
+Vkládání závislostí je zjednodušené, v porovnání s knihovnami tříd .NET. Místo toho, abyste museli vytvářet spouštěcí třídu pro registraci služeb, stačí volat [ConfigureServices] na tvůrci hostitele a použít rozšiřující metody v [IServiceCollection] pro vkládání konkrétních služeb. 
 
 Následující příklad vloží závislost služby typu Singleton:  
  
@@ -106,21 +105,23 @@ Následující příklad vloží závislost služby typu Singleton:
 
 Další informace najdete v tématu [vkládání závislostí v ASP.NET Core](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
-<!--### Middleware
+### <a name="middleware"></a>Middleware
 
-.NET isolated also supports middleware registration, again by using a model similar to what exists in ASP.NET. This model gives you the ability to inject logic into the invocation pipeline, and before and after functions execute.
+Rozhraní .NET izolované také podporuje registraci middlewaru pomocí modelu podobného tomu, co existuje v ASP.NET. Tento model poskytuje možnost vložit logiku do kanálu volání a před a po spuštění funkcí.
 
-While the full middleware registration set of APIs is not yet exposed, we do support middleware registration and have added an example to the sample application under the Middleware folder.
+Metoda rozšíření [ConfigureFunctionsWorkerDefaults] má přetížení, které umožňuje registraci vlastního middlewaru, jak je vidět v následujícím příkladu.  
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::-->
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/CustomMiddleware/Program.cs" id="docsnippet_middleware_register" :::
+
+Úplnější příklad použití vlastního middlewaru ve vaší aplikaci Function App najdete v tématu [Ukázka vlastního middlewarového odkazu](https://github.com/Azure/azure-functions-dotnet-worker/blob/main/samples/CustomMiddleware).
 
 ## <a name="execution-context"></a>Kontext spuštění
 
-Rozhraní .NET izolované předá `FunctionContext` objekt vašim metodám funkce. Tento objekt umožňuje získat [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) instanci pro zápis do protokolů voláním `GetLogger` metody a zadáním `categoryName` řetězce. Další informace najdete v tématu [protokolování](#logging). 
+Rozhraní .NET izolované předá objekt [FunctionContext] metodám vaší funkce. Tento objekt umožňuje získat instanci [ILogger] k zápisu do protokolů voláním metody [getprotokolovacího] nástroje a zadáním `categoryName` řetězce. Další informace najdete v tématu [protokolování](#logging). 
 
 ## <a name="bindings"></a>Vazby 
 
-Vazby jsou definovány pomocí atributů v metodách, parametrech a návratových typech. Metoda Function je metoda s `Function` atributem a triggerem použitým pro vstupní parametr, jak je znázorněno v následujícím příkladu:
+Vazby jsou definovány pomocí atributů v metodách, parametrech a návratových typech. Metoda Function je metoda s `Function` atributem a aktivační atribut aplikovaný na vstupní parametr, jak je znázorněno v následujícím příkladu:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
@@ -128,9 +129,11 @@ Atribut Trigger určuje typ triggeru a váže vstupní data k parametru metody. 
 
 `Function`Atribut označuje metodu jako vstupní bod funkce. Název musí být v rámci projektu jedinečný, musí začínat písmenem a obsahovat jenom písmena, číslice, `_` a `-` až 127 znaků. Šablony projektu často vytvářejí metodu s názvem `Run` , ale název metody může být libovolný platný název metody jazyka C#.
 
-Vzhledem k tomu, že projekty izolované .NET běží v samostatném pracovním procesu, vazby nemůžou využívat bohatou vazbu tříd, jako jsou `ICollector<T>` , `IAsyncCollector<T>` a `CloudBlockBlob` . K dispozici není žádná přímá podpora pro typy děděné ze základních sad SDK služby, jako jsou [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) a [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). Namísto toho vazby spoléhají na řetězce, pole a Serializovatelné typy, jako jsou například obyčejné staré objekty třídy (POCOs). 
+Vzhledem k tomu, že projekty izolované .NET běží v samostatném pracovním procesu, vazby nemůžou využívat bohatou vazbu tříd, jako jsou `ICollector<T>` , `IAsyncCollector<T>` a `CloudBlockBlob` . K dispozici není žádná přímá podpora pro typy děděné ze základních sad SDK služby, jako jsou [DocumentClient] a [BrokeredMessage]. Namísto toho vazby spoléhají na řetězce, pole a Serializovatelné typy, jako jsou například obyčejné staré objekty třídy (POCOs). 
 
-Pro aktivační události HTTP je nutné použít `HttpRequestData` a `HttpResponseData` pro přístup k datům žádosti a odpovědi. Důvodem je to, že nemáte přístup k původním objektům požadavků HTTP a odpovědí při spuštění mimo proces. 
+U aktivačních událostí HTTP musíte pro přístup k datům žádosti a odpovědi použít [HttpRequestData] a [HttpResponseData] . Důvodem je to, že nemáte přístup k původním objektům požadavků HTTP a odpovědí při spuštění mimo proces.
+
+Úplnou sadu referenčních ukázek pro použití triggerů a vazeb při spuštění mimo proces naleznete v [referenční ukázce rozšíření vazby](https://github.com/Azure/azure-functions-dotnet-worker/blob/main/samples/Extensions). 
 
 ### <a name="input-bindings"></a>Vstupní vazby
 
@@ -146,13 +149,13 @@ Chcete-li zapisovat do výstupní vazby, je nutné použít výstupní vazbu atr
 
 Data zapsaná do výstupní vazby jsou vždy návratovou hodnotou funkce. Pokud potřebujete zapisovat do více než jedné výstupní vazby, je nutné vytvořit vlastní návratový typ. Tento návratový typ musí mít atribut výstupní vazby použit pro jednu nebo více vlastností třídy. Následující příklad zapisuje do odpovědi HTTP a výstupní vazby fronty:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Function1/Function1.cs" id="docsnippet_multiple_outputs":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/MultiOutput/MultiOutput.cs" id="docsnippet_multiple_outputs":::
 
 ### <a name="http-trigger"></a>HTTP trigger
 
-Aktivační události protokolu HTTP přeloží příchozí zprávu požadavku HTTP do `HttpRequestData` objektu, který je předán funkci. Tento objekt poskytuje data z požadavku, včetně `Headers` ,, `Cookies` , `Identities` `URL` a volitelné zprávy `Body` . Tento objekt je reprezentace objektu požadavku HTTP a nikoli samotného požadavku. 
+Aktivační události protokolu HTTP přeloží příchozí zprávu požadavku HTTP do objektu [HttpRequestData] , který je předán funkci. Tento objekt poskytuje data z požadavku, včetně `Headers` ,, `Cookies` , `Identities` `URL` a volitelné zprávy `Body` . Tento objekt je reprezentace objektu požadavku HTTP a nikoli samotného požadavku. 
 
-Podobně funkce vrátí `HttpReponseData` objekt, který poskytuje data použitá k vytvoření odpovědi HTTP, včetně zprávy `StatusCode` , `Headers` a volitelně zprávy `Body` .  
+Podobně funkce vrátí objekt [HttpReponseData], který poskytuje data použitá k vytvoření odpovědi HTTP, včetně zprávy `StatusCode` , `Headers` a volitelně také zprávy `Body` .  
 
 Následující kód je Trigger HTTP. 
 
@@ -160,15 +163,15 @@ Následující kód je Trigger HTTP.
 
 ## <a name="logging"></a>protokolování
 
-V izolovaném rozhraní .NET můžete zapisovat do protokolů pomocí [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) instance získané z `FunctionContext` objektu předaného do funkce. Zavolejte `GetLogger` metodu a předejte řetězcovou hodnotu, která je název pro kategorii, do které jsou protokoly zapisovány. Kategorie je obvykle název konkrétní funkce, ze které se zapisují protokoly. Další informace o kategoriích najdete v [článku monitorování](functions-monitoring.md#log-levels-and-categories). 
+V izolovaném rozhraní .NET můžete zapisovat do protokolů pomocí instance [ILogger] získané z objektu [FunctionContext] předaného do funkce. Zavolejte metodu [Getprotokolovacího] nástroje a předejte řetězcovou hodnotu, která je název pro kategorii, do které jsou protokoly zapisovány. Kategorie je obvykle název konkrétní funkce, ze které se zapisují protokoly. Další informace o kategoriích najdete v [článku monitorování](functions-monitoring.md#log-levels-and-categories). 
 
-Následující příklad ukazuje, jak získat `ILogger` protokoly a zapsat je uvnitř funkce:
+Následující příklad ukazuje, jak získat protokoly [ILogger] a Write uvnitř funkce:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
-Použijte různé metody `ILogger` pro zápis různých úrovní protokolu, například `LogWarning` nebo `LogError` . Další informace o úrovních protokolu naleznete v [článku monitorování](functions-monitoring.md#log-levels-and-categories).
+Pomocí různých metod [ILogger] můžete zapisovat různé úrovně protokolů, například `LogWarning` nebo `LogError` . Další informace o úrovních protokolu naleznete v [článku monitorování](functions-monitoring.md#log-levels-and-categories).
 
-K [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) dispozici je také při použití [Injektáže závislosti](#dependency-injection).
+K dispozici je také [ILogger] při použití [Injektáže závislosti](#dependency-injection).
 
 ## <a name="differences-with-net-class-library-functions"></a>Rozdíly s funkcemi knihovny tříd .NET
 
@@ -178,13 +181,13 @@ Tato část popisuje aktuální stav rozdílů funkčního a chování, které b
 | ---- | ---- | ---- |
 | Verze rozhraní .NET | LTS (.NET Core 3,1) | Aktuální (.NET 5,0) |
 | Základní balíčky | [Microsoft. NET. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) | [Microsoft. Azure. Functions. Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/)<br/>[Microsoft. Azure. Functions. Worker. SDK](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk) | 
-| Balíčky rozšíření vazby | [`Microsoft.Azure.WebJobs.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | Položk [`Microsoft.Azure.Functions.Worker.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) | 
-| protokolování | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) předáno do funkce | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) získáno z `FunctionContext` |
+| Balíčky rozšíření vazby | [Microsoft. Azure. WebJobs. Extensions. *](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | V části [Microsoft. Azure. Functions. Worker. Extensions. *](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) | 
+| protokolování | [ILogger] předaný do funkce | [ILogger] získaný z [FunctionContext] |
 | Tokeny zrušení | [Podporováno](functions-dotnet-class-library.md#cancellation-tokens) | Nepodporováno |
 | Výstupní vazby | Výstupní parametry | Vrácené hodnoty |
-| Typy výstupních vazeb |  `IAsyncCollector`, [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet&preserve-view=true), [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true)a jiné typy specifické pro klienta | Jednoduché typy, Serializovatelné typy JSON a pole. |
+| Typy výstupních vazeb |  `IAsyncCollector`, [DocumentClient], [BrokeredMessage]a jiné typy specifické pro klienta | Jednoduché typy, Serializovatelné typy JSON a pole. |
 | Více výstupních vazeb | Podporováno | [Podporováno](#multiple-output-bindings) |
-| HTTP trigger | [`HttpRequest`](/dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true)/[`ObjectResult`](/dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true) | `HttpRequestData`/`HttpResponseData` |
+| HTTP trigger | [HttpRequest] / [ObjectResult] | [HttpRequestData] / [HttpResponseData] |
 | Odolná služba Functions | [Podporováno](durable/durable-functions-overview.md) | Nepodporováno | 
 | Imperativní vazby | [Podporováno](functions-dotnet-class-library.md#binding-at-runtime) | Nepodporováno |
 | function.jsartefaktu | Dojde | Negenerováno |
@@ -202,3 +205,21 @@ Informace o řešení problémů s funkcemi izolovaného procesu .NET najdete na
 
 + [Další informace o aktivačních událostech a vazbách](functions-triggers-bindings.md)
 + [Další informace o osvědčených postupech pro Azure Functions](functions-best-practices.md)
+
+
+[HostBuilder]: /dotnet/api/microsoft.extensions.hosting.hostbuilder?view=dotnet-plat-ext-5.0&preserve-view=true
+[IHost]: /dotnet/api/microsoft.extensions.hosting.ihost?view=dotnet-plat-ext-5.0&preserve-view=true
+[ConfigureFunctionsWorkerDefaults]: /dotnet/api/microsoft.extensions.hosting.workerhostbuilderextensions.configurefunctionsworkerdefaults?view=azure-dotnet&preserve-view=true#Microsoft_Extensions_Hosting_WorkerHostBuilderExtensions_ConfigureFunctionsWorkerDefaults_Microsoft_Extensions_Hosting_IHostBuilder_
+[ConfigureAppConfiguration]: /dotnet/api/microsoft.extensions.hosting.hostbuilder.configureappconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true
+[IServiceCollection]: /dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=dotnet-plat-ext-5.0&preserve-view=true
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostbuilder.configureservices?view=dotnet-plat-ext-5.0&preserve-view=true
+[FunctionContext]: /dotnet/api/microsoft.azure.functions.worker.functioncontext?view=azure-dotnet&preserve-view=true
+[ILogger]: /dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true
+[Getprotokolovací nástroj]: /dotnet/api/microsoft.azure.functions.worker.functioncontextloggerextensions.getlogger?view=azure-dotnet&preserve-view=true
+[DocumentClient]: /dotnet/api/microsoft.azure.documents.client.documentclient
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[HttpRequestData]: /dotnet/api/microsoft.azure.functions.worker.http.httprequestdata?view=azure-dotnet&preserve-view=true
+[HttpResponseData]: /dotnet/api/microsoft.azure.functions.worker.http.httpresponsedata?view=azure-dotnet&preserve-view=true
+[HttpRequest]: /dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true
+[ObjectResult]: /dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true
+[JsonSerializerOptions]: /api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true

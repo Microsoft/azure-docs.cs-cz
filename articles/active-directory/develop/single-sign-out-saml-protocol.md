@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2017
+ms.date: 03/22/2021
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 040e49ee870704107e1d4118f1484119d98a9ebf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97703411"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781207"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Jeden Sign-Out protokol SAML
 
-Azure Active Directory (Azure AD) podporuje profil jednotného přihlašování webového prohlížeče SAML 2,0. Aby jednotné přihlašování fungovalo správně, musí se **LogoutURL** pro aplikaci během registrace aplikace explicitně zaregistrovat ve službě Azure AD. Azure AD používá LogoutURL k přesměrování uživatelů poté, co se odhlásí.
+Azure Active Directory (Azure AD) podporuje profil jednotného přihlašování webového prohlížeče SAML 2,0. Aby jednotné přihlašování fungovalo správně, musí se **LogoutURL** pro aplikaci během registrace aplikace explicitně zaregistrovat ve službě Azure AD. Pokud se aplikace [přidá do Galerie aplikací Azure](v2-howto-app-gallery-listing.md) , tato hodnota se ve výchozím nastavení dá nastavit. V opačném případě musí být hodnota určena a uživatelem přidaná aplikace do svého tenanta služby Azure AD. Azure AD používá LogoutURL k přesměrování uživatelů poté, co se odhlásí. 
 
 Azure AD podporuje vazbu přesměrování (HTTP GET), nikoli vazbu POST HTTP.
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 694868f2a75cc66bf9e3ede9d12e30a2cc3d7af9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8a64956deb7849568e70e94c9b58170df60db1e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185933"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775730"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Ukončení šifrování TLS s využitím certifikátů služby Key Vault
 
@@ -47,10 +47,19 @@ Application Gateway integrace s Key Vault vyžaduje proces konfigurace se třemi
 
 1. **Konfigurace trezoru klíčů**
 
-   Pak buď importujte existující certifikát, nebo vytvořte nový v trezoru klíčů. Certifikát budou používat aplikace, které běží přes Aplikační bránu. V tomto kroku můžete použít taky tajný klíč trezoru klíčů, který je uložený jako soubor PFX s kódováním bez hesla (Base-64). Pro možnost autorecovery, která je k dispozici pro objekty typu certifikátu v trezoru klíčů, doporučujeme použít typ certifikátu. Po vytvoření certifikátu nebo tajného klíče v trezoru klíčů Definujte zásady přístupu, aby bylo možné udělení identity *získat* přístup k tajnému kódu.
+   Pak buď importujte existující certifikát, nebo vytvořte nový v trezoru klíčů. Certifikát budou používat aplikace, které běží přes Aplikační bránu. V tomto kroku můžete použít taky Key Vault tajný klíč, který taky umožňuje ukládat soubor PFX s kódováním bez hesla, který je v kódování Base-64. Pro možnost autorenew, která je k dispozici pro tento typ objektů v Key Vault, doporučujeme použít typ certifikát. Po vytvoření certifikátu nebo tajného klíče musíte v Key Vault definovat zásady přístupu, aby bylo možné udělit identitě přístup k tajným klíčům.
    
    > [!IMPORTANT]
-   > Application Gateway v současné době vyžaduje Key Vault povolení přístupu ze všech sítí, aby bylo možné tuto integraci využít. Nepodporuje Key Vault Integration, pokud je Key Vault nastavená jenom na soukromé koncové body a výběr přístupu k síti. Podpora pro privátní a vybrané sítě je v rámci sady Works pro úplnou integraci Key Vault s Application Gateway. 
+   > Od 15. března 2021 Key Vault rozpozná Azure Application Gateway jako jednu z důvěryhodných služeb, což vám umožní vytvořit zabezpečenou hranici sítě v Azure. Díky tomu máte možnost Odepřít přístup k provozu ze všech sítí (včetně internetového provozu), abyste Key Vault, ale pořád ho zpřístupnili pro Application Gateway prostředků v rámci vašeho předplatného. 
+
+   > Následujícím způsobem můžete Application Gateway nakonfigurovat v omezené síti Key Vault. <br />
+   > a) v části okno síť Key Vault. <br />
+   > b) na kartě Brána firewall a virtuální sítě vyberte možnost privátní koncový bod a vybrané sítě. <br/>
+   > c) pak pomocí služby Virtual Networks přidejte virtuální síť a podsíť vaší Application Gateway. Během procesu také nakonfigurujte koncový bod služby Microsoft. klíčů trezoru tak, že vyberete jeho zaškrtávací políčko. <br/>
+   > d) nakonec vyberte Ano, pokud chcete, aby důvěryhodné služby mohly obejít bránu firewall Key Vault. <br/>
+   > 
+   > ![Key Vault firewall](media/key-vault-certs/key-vault-firewall.png)
+
 
    > [!NOTE]
    > Pokud službu Application Gateway nasadíte přes šablonu ARM, ať už pomocí Azure CLI nebo PowerShellu, nebo přes aplikaci Azure nasazenou z Azure Portal, certifikát SSL je uložený v trezoru klíčů jako soubor PFX s kódováním base64. Musíte dokončit kroky v části [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/templates/key-vault-parameter.md). 

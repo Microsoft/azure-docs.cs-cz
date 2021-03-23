@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5ac0f0677be6b641d496a941c5a8e1343fd017bc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103562554"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775761"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -156,13 +156,6 @@ Další informace najdete v tématu [řešení problémů s cílovým úložišt
     Některé systémy používají pro tyto služby různá čísla portů – Prohlédněte si dokumentaci k systému úložiště, abyste si je jisti.
 
   * Zkontrolujte nastavení brány firewall a ujistěte se, že jsou povolené přenosy na všech těchto požadovaných portech. Nezapomeňte zkontrolovat brány firewall používané v Azure a také místní brány firewall ve vašem datovém centru.
-
-* **Přístup k adresáři:** Povolte `showmount` příkaz v systému úložiště. Azure HPC Cache používá tento příkaz ke kontrole, zda konfigurace cíle úložiště odkazuje na platný export, a také k tomu, aby se zajistilo, že více připojení nemá přístup ke stejným podadresářům (riziko kolizí souborů).
-
-  > [!NOTE]
-  > Pokud váš systém úložiště NFS používá operační systém ONTAP 9,2 NetApp, **nepovolujte `showmount`** ho. Pro pomoc [se obraťte na službu a podporu společnosti Microsoft](hpc-cache-support-ticket.md) .
-
-  Další informace o přístupu k výpisu adresářů najdete v [článku věnovaném řešení potíží s](troubleshoot-nas.md#enable-export-listing)cílovým úložištěm NFS.
 
 * **Root Access** (čtení a zápis): mezipaměť se připojuje k back-endovému systému jako ID uživatele 0. Ověřte tato nastavení v systému úložiště:
   

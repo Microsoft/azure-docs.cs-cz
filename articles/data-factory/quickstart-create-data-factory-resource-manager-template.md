@@ -5,16 +5,16 @@ ms.service: data-factory
 tags: azure-resource-manager
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan, jingwang
+ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: f3e76bf16b702adb26183209d36189a53b695c40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c579b6d723533e751e08a80a578195c03e945607
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100373840"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783332"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Rychlý Start: vytvoření Azure Data Factory pomocí šablony ARM
 
@@ -108,7 +108,7 @@ Další příklady šablon Azure Data Factory najdete v [galerii šablon rychlý
     1. Na stránce **kontejnery** vyberte kontejner objektů blob, který jste vytvořili.
         1. Název kontejneru objektů BLOB je v objektu Format-BLOB \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Kontejner objektů blob":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="Kontejner objektů BLOB":::
 
 ### <a name="upload-a-file"></a>Nahrání souboru
 

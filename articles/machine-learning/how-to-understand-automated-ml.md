@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 6d8c56bc306a7ab0bf118d04f64d6523fc385cdd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520774"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773109"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -91,6 +91,8 @@ weighted_accuracy|Vážená přesnost je přesnost, kdy je každý vzorek váže
 Automatizované ML nerozlišuje mezi binárními a více třídami metriky. Stejné metriky ověřování jsou hlášeny, zda má datová sada dvě třídy nebo více než dvě třídy. Některé metriky jsou však určeny pro klasifikaci s více třídami. Při použití na binární datovou sadu tyto metriky nepovažují žádnou třídu za `true` třídu, jak je možné očekávat. Metriky, které jsou jasně určeny pro více tříd, jsou s příponou `micro` , `macro` nebo `weighted` . Mezi příklady patří,,, `average_precision_score` `f1_score` `precision_score` `recall_score` a `AUC` .
 
 Například namísto výpočtu odvolání jako `tp / (tp + fn)` je průměrně vyvolaná hodnota ve více třídách ( `micro` , `macro` nebo `weighted` ) v obou třídách binární datové sady klasifikace. To je ekvivalentní k výpočtu odvolání pro `true` třídu a `false` třídu samostatně a pak přebírání průměru dvou.
+
+Automatizované ML nepočítá binární metriky, což je metrika pro binární datové sady klasifikace. Tyto metriky se ale dají ručně vypočítat pomocí [matrice nejasnosti](#confusion-matrix) , kterou pro konkrétní běh vygenerovala automatizovaná ml. Můžete například vypočítat přesnost, `tp / (tp + fp)` s falešně pozitivními a falešně pozitivními hodnotami, které jsou uvedené v grafu nejasností 2x2.
 
 ## <a name="confusion-matrix"></a>Konfuzní matice
 

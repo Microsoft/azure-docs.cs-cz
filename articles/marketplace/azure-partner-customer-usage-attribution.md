@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/09/2021
+ms.date: 03/19/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 8f84d77b5a424d5f7273c7e748c35c52882819c6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 79f3276347aa64655f0c9086db5f152c4ff5fbcf
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102608389"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771086"
 ---
 # <a name="azure-customer-usage-attribution"></a>Přidělení zákaznického využití Azure
 
@@ -30,7 +30,7 @@ Existují sekundární případy použití pro označení zákaznického využit
 >[!IMPORTANT]
 >- Označení zákaznického využití není určené ke sledování práce integrátorů systémů, poskytovatelů spravovaných služeb nebo nástrojů určených primárně pro nasazení a správu prostředků Azure.
 >- Přidělení zákaznického využití je pro nová nasazení a nepodporuje sledování již nasazených prostředků.
->- Ne všechny služby Azure jsou kompatibilní se zákaznickým využitím. Služba Azure Kubernetes Services (AKS) a VM Scale Sets známé problémy, které způsobují nahlášení využití.
+>- Ne všechny služby Azure jsou kompatibilní se zákaznickým využitím. Služba Azure Kubernetes Services (AKS), VM Scale Sets a Azure Batch, má známé problémy, které způsobují nahlášení využití.
 
 ## <a name="commercial-marketplace-azure-apps"></a>Aplikace Azure pro komerční tržiště
 
@@ -274,7 +274,7 @@ Pokud vaše šablona není uvedená na komerčním webu Marketplace a obsahuje r
 
 #### <a name="does-the-customer-receive-reporting-as-well"></a>Obdrží zákazník hlášení také?
 
-No. Zákazníci mohou sledovat využití všech prostředků nebo skupin prostředků v rámci Azure Portal. Zákazníkům se nezobrazuje využití rozdělené podle ID sledování CUA.
+Ne. Zákazníci mohou sledovat využití všech prostředků nebo skupin prostředků v rámci Azure Portal. Zákazníkům se nezobrazuje využití rozdělené podle ID sledování CUA.
 
 #### <a name="is-customer-usage-attribution-similar-to-the-digital-partner-of-record-dpor-or-partner-admin-link-pal"></a>Podobá se využívání zákazníků záznamu partnera DPOR (Digital Partner of Record) nebo partnerského odkazu pro správce (PAL)?
 

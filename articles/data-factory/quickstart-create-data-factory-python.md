@@ -3,18 +3,18 @@ title: 'Rychlý Start: vytvoření Azure Data Factory pomocí Pythonu'
 description: Pomocí datové továrny zkopírujte data z jednoho umístění v úložišti objektů BLOB v Azure do jiného umístění.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/15/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: f92a09e78d65f3723b9dfa83574f603dc113ebeb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1c44e0daf3111f75d50f2d084e73b5dc28bf9497
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100372361"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783281"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rychlé zprovoznění: Vytvoření datové továrny a kanálu pomocí Pythonu
 

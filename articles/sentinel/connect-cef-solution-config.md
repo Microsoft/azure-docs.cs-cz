@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 368bae515697599dba35a913ebdb9f2b4065c152
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 60ce503d4a89f245f28d5034924cb8c89c926b3f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711905"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771290"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>Krok 2: konfigurace řešení zabezpečení pro posílání zpráv CEF
 
@@ -80,5 +80,7 @@ Pokud pro konkrétní řešení zabezpečení neexistuje konektor, použijte ná
 ## <a name="next-steps"></a>Další kroky
 
 V tomto dokumentu jste zjistili, jak připojit zařízení CEF ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+
+- Přečtěte si o [mapování polí CEF a CommonSecurityLog](cef-name-mapping.md).
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).

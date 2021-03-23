@@ -1,17 +1,17 @@
 ---
 title: Nejčastější dotazy k Azure Migrate zařízením
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
-author: vikram1988
-ms.author: vibansa
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 5a050d9aab9e8665c6048391488e57c9b4af10a5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/22/2021
+ms.openlocfilehash: 74d8018ea4cb2cad5b6726b8abb6bf2f17b8e57c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043061"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778521"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -24,13 +24,13 @@ Tento článek obsahuje odpovědi na běžné otázky týkající se zařízení
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Co je zařízení Azure Migrate?
 
-Zařízení Azure Migrate je odlehčené zařízení, které Azure Migrate: Nástroj pro vyhodnocení serveru používá ke zjišťování a vyhodnocení fyzických nebo virtuálních serverů z místního prostředí nebo jakéhokoli cloudu. Azure Migrate: Nástroj pro migraci serveru používá také zařízení pro migraci místních virtuálních počítačů VMware bez agenta.
+Zařízení Azure Migrate je odlehčené zařízení, které nástroj Azure Migrate: zjišťování a hodnocení používá ke zjišťování a hodnocení fyzických nebo virtuálních serverů z místního prostředí nebo jakéhokoli cloudu. Azure Migrate: Nástroj pro migraci serveru používá také zařízení pro migraci místních serverů, které běží v prostředí VMware, bez agenta.
 
 Zde jsou další informace o zařízení Azure Migrate:
 
-- Zařízení je nasazené místně jako virtuální počítač nebo fyzický počítač.
-- Zařízení zjišťuje místní počítače a průběžně odesílá metadata a data o výkonu počítače do Azure Migrate.
-- Zjišťování zařízení je bez agenta. Na zjištěných počítačích není nic nainstalované.
+- Zařízení je nasazené místně jako fyzický server nebo virtualizovaný Server.
+- Zařízení zjišťuje místní servery a průběžně odesílá metadata a data o výkonu serveru do Azure Migrate.
+- Zjišťování zařízení je bez agenta. Na zjištěných serverech není nainstalována žádná instalace.
 
 [Přečtěte si další informace](migrate-appliance.md) o zařízení.
 
@@ -54,11 +54,11 @@ Zařízení se může připojit přes Internet nebo pomocí Azure ExpressRoute.
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Má analýza zařízení vliv na výkon?
 
-Zařízení Azure Migrate profilování místních počítačů neustále měří údaje o výkonu. Tato profilace má téměř žádný vliv na profilování počítačů.
+Profily zařízení Azure Migrate místní servery neustále měří údaje o výkonu. Tato profilace má téměř žádný dopad na profilování serverů.
 
-## <a name="can-i-harden-the-appliance-vm"></a>Můžu posílit svůj virtuální počítač zařízení?
+## <a name="can-i-harden-the-appliance"></a>Můžu zařízení posílit?
 
-Když použijete staženou šablonu k vytvoření virtuálního počítače zařízení, můžete do šablony přidat komponenty (například antivirový program), pokud necháte zachovat pravidla komunikace a brány firewall požadovaná pro Azure Migrate zařízení.
+Když použijete staženou šablonu k vytvoření zařízení, můžete do šablony přidat komponenty (například antivirový program), pokud ponecháte pravidla komunikace a brány firewall požadovaná pro Azure Migrate zařízení.
 
 ## <a name="what-network-connectivity-is-required"></a>Jaké síťové připojení je potřeba?
 
@@ -66,24 +66,24 @@ Zařízení potřebuje přístup k adresám URL Azure. [Zkontrolujte](migrate-ap
 
 ## <a name="what-data-does-the-appliance-collect"></a>Jaká data shromažďuje zařízení?
 
-Informace o datech, která Azure Migrate zařízení shromažďuje na virtuálních počítačích, najdete v následujících článcích:
+Informace o datech, která Azure Migrate zařízení shromažďuje na serverech, najdete v následujících článcích:
 
-- **Virtuální počítač VMware**: [Projděte si](migrate-appliance.md#collected-data---vmware) shromážděná data.
-- **Virtuální počítač Hyper-V**: [Projděte si](migrate-appliance.md#collected-data---hyper-v) shromážděná data.
+- **Servery v prostředí VMware**: [Projděte si](migrate-appliance.md#collected-data---vmware) shromážděná data.
+- **Servery v prostředí Hyper-V**: [Projděte si](migrate-appliance.md#collected-data---hyper-v) shromážděná data.
 - **Fyzické nebo virtuální servery**:[Prohlédněte si](migrate-appliance.md#collected-data---physical) shromážděná data.
 
 ## <a name="how-is-data-stored"></a>Jak se data ukládají?
 
-Data shromažďovaná zařízením Azure Migrate se ukládají do umístění Azure, ve kterém jste vytvořili projekt Azure Migrate.
+Data shromažďovaná zařízením Azure Migrate se ukládají do umístění Azure, ve kterém jste projekt vytvořili.
 
 Zde jsou další informace o tom, jak jsou data uložená:
 
-- Shromážděná data jsou bezpečně uložená v CosmosDB v předplatném Microsoftu. Data jsou odstraněna při odstranění Azure Migrate projektu. Úložiště zpracovává Azure Migrate. Nemůžete konkrétně zvolit účet úložiště pro shromážděná data.
-- Pokud používáte [vizualizaci závislostí](concepts-dependency-visualization.md), shromažďovaná data se ukládají v pracovním prostoru Azure Log Analytics vytvořeném ve vašem předplatném Azure. Data se odstraní při odstranění pracovního prostoru Log Analytics v rámci vašeho předplatného. 
+- Shromážděná data jsou bezpečně uložená v CosmosDB v předplatném Microsoftu. Data se odstraní při odstranění projektu. Úložiště zpracovává Azure Migrate. Nemůžete konkrétně zvolit účet úložiště pro shromážděná data.
+- Pokud používáte [vizualizaci závislostí](concepts-dependency-visualization.md), shromažďovaná data se ukládají v pracovním prostoru Azure Log Analytics vytvořeném ve vašem předplatném Azure. Data se odstraní při odstranění pracovního prostoru Log Analytics v rámci vašeho předplatného.
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Kolik dat se nahrává během nepřetržitého profilace?
 
-Objem dat odesílaných do Azure Migrate závisí na několika parametrech. Například Azure Migrate projekt, který má 10 počítačů (každý s jedním diskem a jednou síťovou kartou), odesílá přibližně 50 MB dat za den. Tato hodnota je přibližná; Skutečná hodnota se liší v závislosti na počtu datových bodů pro disky a síťové karty. Pokud se zvýší počet počítačů, disků nebo síťových karet, navýšení přenášených dat je nelineární.
+Objem dat odesílaných do Azure Migrate závisí na několika parametrech. Například projekt, který má 10 serverů (každý s jedním diskem a jednou síťovou kartou), odesílá přibližně 50 MB dat za den. Tato hodnota je přibližná; Skutečná hodnota se liší v závislosti na počtu datových bodů pro disky a síťové karty. Pokud se zvýší počet serverů, disků nebo síťových karet, navýšení přenášených dat je nelineární.
 
 ## <a name="is-data-encrypted-at-rest-and-in-transit"></a>Jsou data v klidovém stavu zašifrovaná a přenosná?
 
@@ -98,47 +98,47 @@ Ano, pro:
 Tento postup popisuje, jak se zařízení připojuje k VMware vCenter Server:
 
 1. Zařízení se připojí k vCenter Server (port 443) pomocí přihlašovacích údajů, které jste zadali při nastavení zařízení.
-2. Zařízení používá VMware PowerCLI k dotazování vCenter Server ke shromažďování metadat o virtuálních počítačích, které jsou spravované pomocí vCenter Server.
-3. Zařízení shromažďuje konfigurační data o virtuálních počítačích (jádrech, paměti, discích, síťových rozhraních) a historii výkonu každého virtuálního počítače za minulý měsíc.
-4. Shromážděná metadata se odesílají do Azure Migrate: Nástroj pro vyhodnocení serveru (přes Internet prostřednictvím protokolu HTTPS) pro posouzení.
+2. Zařízení používá VMware PowerCLI k dotazování vCenter Server ke shromažďování metadat o serverech spravovaných pomocí vCenter Server.
+3. Zařízení shromažďuje konfigurační data o serverech (jádra, paměti, discích, síťových rozhraních) a historii výkonu každého serveru za minulý měsíc.
+4. Shromážděná metadata se odesílají do Azure Migrate: Nástroj pro zjišťování a vyhodnocení (přes Internet prostřednictvím protokolu HTTPS) pro posouzení.
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Může se zařízení Azure Migrate připojit k více serverům vCenter?
 
-No. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjistit virtuální počítače ve více instancích vCenter Server, je nutné nasadit více zařízení. 
+Ne. Mezi [zařízením Azure Migrate](migrate-appliance.md) a vCenter Server existuje mapování 1:1. Chcete-li zjišťovat servery ve více instancích vCenter Server, je nutné nasadit více zařízení.
 
-## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Může Azure Migrate projekt mít více zařízení?
+## <a name="can-a-project-have-multiple-appliances"></a>Může mít projekt více zařízení?
 
 K projektu může být zaregistrováno více zařízení. Jedno zařízení lze však zaregistrovat pouze v jednom projektu.
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Může se zařízení Azure Migrate/zařízení replikace připojit ke stejnému vCenter?
 
-Ano. Do stejného serveru vCenter můžete přidat Azure Migrate zařízení (používá se pro vyhodnocení a migraci VMware bez agentů) a zařízení replikace (používané pro migraci virtuálních počítačů VMware na základě agenta). Ujistěte se ale, že nenastavujete obě zařízení na jednom virtuálním počítači a že se v tuto chvíli nepodporuje.
+Ano. Do stejného serveru vCenter můžete přidat Azure Migrate zařízení (používá se pro vyhodnocení a migraci VMware bez agentů) a replikační zařízení (používá se pro migraci serverů se systémem VMware na základě agentů). Ujistěte se však, že nenastavujete obě zařízení na stejném serveru a že v tuto chvíli není podporována.
 
-## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Kolik virtuálních počítačů nebo serverů můžu zjistit pomocí zařízení?
+## <a name="how-many-servers-can-i-discover-with-an-appliance"></a>Kolik serverů můžu zjistit pomocí zařízení?
 
-Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuálních počítačů Hyper-V, a až 1000 fyzické servery s jedním zařízením. Pokud máte ve svém místním prostředí více počítačů, přečtěte si o [škálování posouzení technologie Hyper-V](scale-hyper-v-assessment.md), [škálování posouzení VMware](scale-vmware-assessment.md)a [škálování posouzení fyzického serveru](scale-physical-assessment.md).
+Můžete zjistit až 10 000 serverů v prostředí VMware, až 5 000 serverů v prostředí Hyper-V, a až 1000 fyzické servery s jedním zařízením. Pokud máte v místním prostředí více serverů, přečtěte si o škálování posouzení [technologie Hyper-V](scale-hyper-v-assessment.md), [škálování vyhodnocení VMware](scale-vmware-assessment.md)a [škálování posouzení fyzického serveru](scale-physical-assessment.md).
 
 ## <a name="can-i-delete-an-appliance"></a>Můžu odstranit zařízení?
 
 Odstranění zařízení z projektu v současné době se nepodporuje.
 
-Jediným způsobem, jak zařízení odstranit, je odstranit skupinu prostředků, která obsahuje Azure Migrate projektu, který je přidružený k danému zařízení.
+Jediným způsobem, jak zařízení odstranit, je odstranit skupinu prostředků, která obsahuje projekt přidružený k danému zařízení.
 
 Odstraněním skupiny prostředků se ale odstraní taky další registrovaná zařízení, zjištěná inventarizace, posouzení a všechny ostatní součásti Azure ve skupině prostředků, která je přidružená k projektu.
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>Můžu zařízení používat s jiným předplatným nebo projektem?
 
-Pokud chcete zařízení používat s jiným předplatným nebo projektem, budete muset znovu nakonfigurovat stávající zařízení spuštěním skriptu instalačního programu PowerShellu pro konkrétní scénář (VMware/Hyper-V/fyzický) na počítači zařízení. Skript vyčistí existující součásti a nastavení zařízení, aby se nasadilo nové zařízení. Než začnete používat nově nasazeného Správce konfigurace zařízení, nezapomeňte prosím vymazat mezipaměť prohlížeče.
+Pokud chcete zařízení používat s jiným předplatným nebo projektem, budete muset znovu nakonfigurovat stávající zařízení spuštěním skriptu instalačního programu PowerShellu pro konkrétní scénář (VMware/Hyper-V/fyzický) na zařízení. Skript vyčistí existující součásti a nastavení zařízení, aby se nasadilo nové zařízení. Než začnete používat nově nasazeného Správce konfigurace zařízení, ujistěte se, že jste vymazali mezipaměť prohlížeče.
 
-Také nelze znovu použít existující klíč projektu Azure Migrate na znovu nakonfigurovaném zařízení. Abyste dokončili registraci zařízení, ujistěte se, že jste vygenerovali nový klíč z požadovaného předplatného nebo projektu.
+Také nelze znovu použít existující klíč projektu na překonfigurované zařízení. Abyste dokončili registraci zařízení, ujistěte se, že jste vygenerovali nový klíč z požadovaného předplatného nebo projektu.
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Můžu zařízení nastavit na virtuálním počítači Azure?
 
-No. V tuto chvíli není tato možnost podporovaná.
+Ne. V tuto chvíli není tato možnost podporovaná.
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>Můžu na hostiteli ESXi zjistit?
 
-No. Pokud chcete zjistit virtuální počítače VMware, musíte mít vCenter Server.
+Ne. Chcete-li zjistit servery v prostředí VMware, je nutné mít vCenter Server.
 
 ## <a name="how-do-i-update-the-appliance"></a>Návody aktualizovat zařízení?
 
@@ -148,11 +148,11 @@ Pomocí těchto automatických aktualizací se aktualizují jenom zařízení a 
 
 ## <a name="can-i-check-agent-health"></a>Můžu kontrolovat stav agenta?
 
-Ano. Na portálu navštivte stránku **Stav agenta** pro Azure Migrate: Server Assessment nebo Azure Migrate: Nástroj pro migraci serveru. Tady můžete kontrolovat stav připojení mezi Azure a agenty zjišťování a vyhodnocení na zařízení.
+Ano. Na portálu navštivte stránku **Stav agenta** pro nástroj Azure Migrate: zjišťování a vyhodnocení nebo Azure Migrate: Server pro migraci. Tady můžete kontrolovat stav připojení mezi Azure a agenty zjišťování a vyhodnocení na zařízení.
 
 ## <a name="can-i-add-multiple-server-credentials-on-vmware-appliance"></a>Můžu na zařízení VMware přidat víc přihlašovacích údajů k serveru?
 
-Ano, teď podporujeme více přihlašovacích údajů serveru, aby bylo možné provádět inventář softwaru (zjišťování nainstalovaných aplikací), analýzu závislostí bez agentů a zjišťování SQL Server instancí a databází. [Přečtěte si další informace](tutorial-discover-vmware.md#provide-server-credentials) o tom, jak zadat přihlašovací údaje pro Správce konfigurace zařízení.
+Ano, teď podporujeme více přihlašovacích údajů serveru, aby bylo možné provádět inventář softwaru (zjišťování nainstalovaných aplikací), analýzu závislostí bez agenta a zjišťování instancí SQL Server a databází. [Přečtěte si další informace](tutorial-discover-vmware.md#provide-server-credentials) o tom, jak zadat přihlašovací údaje pro Správce konfigurace zařízení.
 
 ## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>Jaký typ přihlašovacích údajů serveru můžu přidat na zařízení VMware?
 V nástroji Configuration Manager pro zařízení můžete zadat přihlašovací údaje doména/Windows (ne-doména)/Linux (nedoménová)/SQL Server. [Přečtěte si další informace](add-server-credentials.md) o tom, jak zadat přihlašovací údaje a jak je zpracovat.

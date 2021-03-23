@@ -1,18 +1,14 @@
 ---
 title: Práce s oznámeními zařízení
 description: Oznámení obsahují informace o aktivitě sítě, které by mohly vyžadovat vaši pozornost, spolu s doporučeními pro zpracování této aktivity.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0c2fc5a4c01a8a31512cd43c340bf3fadc259b1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523562"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781326"
 ---
 # <a name="work-with-device-notifications"></a>Práce s oznámeními zařízení
 
@@ -24,11 +20,7 @@ Oznámení obsahují informace o aktivitě sítě, které by mohly vyžadovat va
 
 Reakce na oznámení vylepšuje informace poskytované v mapě zařízení, inventáři zařízení a dotazech a sestavách dolování dat. Poskytuje také přehled o legitimních změnách sítě a potenciálních síťových konfiguracích.
 
-Přístup k oznámením:
-
-- Vyberte **nastavení systému** a pak vyberte **vylepšení dat**.
-
-## <a name="notifications-vs-alerts"></a>Oznámení vs. výstrahy
+**Oznámení vs. výstrahy**
 
 Kromě přijímání oznámení o síťové aktivitě může docházet k *upozorněním*. Oznámení obsahují informace o změnách sítě nebo nevyřešených vlastnostech zařízení, které nepředstavují hrozbu. Výstrahy obsahují informace o odchylce sítě a změnách, které by mohly představovat hrozbu pro síť.
 
@@ -48,7 +40,7 @@ Postup zobrazení oznámení:
 
 Pomocí vyhledávacích filtrů můžete zobrazit oznámení, která vás zajímají.
 
-| Filtrovat podle | Description |
+| Filtrovat podle | Popis |
 |--|--|
 | Filtrovat podle typu | Zobrazit oznámení, která pokrývají určitou oblast zájmu. Můžete například zobrazit pouze oznámení o neaktivních zařízeních. |
 | Filtrovat podle rozsahu kalendářních dat | Zobrazí oznámení, která pokrývají konkrétní časový rozsah. Můžete například zobrazit oznámení odesílaná pouze za poslední týden. |
@@ -58,7 +50,7 @@ Pomocí vyhledávacích filtrů můžete zobrazit oznámení, která vás zajím
 
 Následující tabulka popisuje typy oznámení, které můžete obdržet, spolu s možnostmi jejich zpracování. Informace o zařízení můžete aktualizovat pomocí Doporučené hodnoty nebo oznámení zavřít. Po zavření oznámení se informace o zařízení neaktualizují o Doporučené informace. Pokud se znovu zjistí provoz, oznámení se pošle znovu.
 
-| Typy událostí oznámení | Description | Odpovědi |
+| Typy událostí oznámení | Popis | Odpovědi |
 |--|--|--|
 | Zjistila se nová IP adresa. | K zařízení je přidružená nová IP adresa. Je možné zjistit pět scénářů: <br /><br /> K zařízení se přidružil další IP adresa. Toto zařízení je také přidruženo k existující adrese MAC.<br /><br /> Zjistila se nová IP adresa pro zařízení, které používá existující adresu MAC. V současné době zařízení nekomunikuje pomocí IP adresy.<br /> <br /> Zjistila se nová IP adresa pro zařízení, které používá název pro rozhraní NetBIOS. <br /><br /> Jako rozhraní pro správu zařízení přidruženého k adrese MAC byla zjištěna IP adresa. <br /><br /> Zjistila se nová IP adresa pro zařízení, které používá virtuální IP adresu. | **Nastavení další IP adresy na zařízení** (sloučení zařízení) <br /> <br />**Nahradit existující IP adresu** <br /> <br /> **Zrušit**<br /> Odeberte oznámení. |
 | Neaktivní zařízení | V zařízení se nezjistil provoz po dobu delší než 60 dní. | **Odstranit** <br /> Pokud toto zařízení není součástí vaší sítě, odeberte ho. <br /><br />**Zrušit** <br /> Pokud je zařízení součástí vaší sítě, odeberte oznámení. Pokud je zařízení neaktivní (například kvůli omylu odpojenému odpojení od sítě), zavřete oznámení a znovu připojte zařízení. |
@@ -85,18 +77,6 @@ Zobrazení oznámení a zpracování oznámení:
 2. Dejte senzorovi pokyn, aby na vybraná zařízení použili nově zjištěné informace výběrem možnosti **informace**. Nebo Dejte senzoru pokyn, aby ignoroval nově zjištěné informace výběrem možnosti **Zavřít**. Zobrazí se počet oznámení, která lze současně zjistit a zavřít, spolu s počtem oznámení, která je nutné zpracovat jednotlivě.
 
 **Nové IP adresy** a žádné nakonfigurované **podsítě** nemůžou být zpracovávány současně. Vyžadují ruční potvrzení.
-
-## <a name="improve-device-os-classification-data-enhancement"></a>Vylepšení klasifikace operačního systému zařízení: vylepšení dat 
-
-Senzor nepřetržitě automatické zjišťování nových zařízení. Také automatické zjišťování změn u dříve zjištěných zařízení, včetně typů operačních systémů.
-
-Za určitých okolností se konflikty můžou zjistit ve zjištěných operačních systémech. K tomu může dojít, protože máte verzi operačního systému, která odkazuje na stolní nebo serverové systémy. Pokud k tomu dojde, obdržíte oznámení s nepovinnými klasifikacemi OS.
-
-:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="Vylepšete data.":::
-
-Prozkoumejte doporučení, aby bylo možné rozšířit klasifikaci OS. Tyto informace se zobrazí v inventáři zařízení, sestavách dolování dat a dalších zobrazeních. Může také zlepšit přesnost výstrah, hrozeb a analýzy rizik.
-
-Když přijmete doporučení, informace o typu operačního systému se ve snímači aktualizují.
 
 ## <a name="see-also"></a>Viz také
 

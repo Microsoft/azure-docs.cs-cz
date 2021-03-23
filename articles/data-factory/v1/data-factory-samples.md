@@ -3,16 +3,16 @@ title: Azure Data Factory – ukázky
 description: Poskytuje podrobnosti o ukázkách, které dodávají službu Azure Data Factory.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 82c871e8914d70dde7f2586b7dbf6556ebd2621f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d78cc9d99bd7ace2d214c2a2a1d7f75a74df098
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100387032"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785049"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – ukázky
 > [!NOTE]
@@ -42,7 +42,7 @@ ms.locfileid: "100387032"
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 Následující šablony Azure Resource Manager můžete najít Data Factory na GitHubu.
 
-| Template (Šablona) | Description |
+| Template (Šablona) | Popis |
 | --- | --- |
 | [Kopírování z Azure Blob Storage do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Při nasazení této šablony se vytvoří objekt pro vytváření dat Azure s kanálem, který kopíruje data ze zadaného úložiště objektů BLOB v Azure do Azure SQL Database. |
 | [Kopírování z Salesforce do Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Při nasazení této šablony se vytvoří objekt pro vytváření dat Azure s kanálem, který kopíruje data ze zadaného účtu Salesforce do úložiště objektů BLOB v Azure. |

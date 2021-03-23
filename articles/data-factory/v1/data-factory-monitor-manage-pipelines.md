@@ -3,16 +3,16 @@ title: Monitorování a Správa kanálů pomocí Azure Portal a PowerShellu
 description: Naučte se, jak pomocí Azure Portal a Azure PowerShell monitorovat a spravovat datové továrny Azure a kanály, které jste vytvořili.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0744a7d915d6bee868b160abc29964d58947dd28
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576378"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779626"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí Azure Portal a PowerShellu
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu** můžete zobrazit vš
 
 <table>
 <tr>
-    <th align="left">Stav</th><th align="left">Podstav</th><th align="left">Description</th>
+    <th align="left">Stav</th><th align="left">Podstav</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekající</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>

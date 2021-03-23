@@ -1,31 +1,31 @@
 ---
-title: Zjištění instancí virtuálních počítačů s GCP pomocí posouzení serveru Azure Migrate
-description: Naučte se zjišťovat instance virtuálních počítačů s GCP pomocí posouzení serveru Azure Migrate.
+title: Zjištění serverů v GCP instancích pomocí zjišťování a posouzení Azure Migrate
+description: Naučte se zjišťovat servery na GCP s využitím zjišťování a hodnocením Azure Migrate.
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5d57705ca0d49db1fb1d67e20beb609f21b1d5b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98541423"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771426"
 ---
-# <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Kurz: zjištění instancí Google Cloud Platform (GCP) pomocí posouzení serveru
+# <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>Kurz: zjištění instancí Google Cloud Platform (GCP) pomocí Azure Migrate: Discovery and Assessment
 
 Jako součást cesty migrace do Azure zjistíte, že vaše servery jsou vyhodnoceny a migrace.
 
-V tomto kurzu se dozvíte, jak zjistit instance Google Cloud Platform (GCP) pomocí nástroje Azure Migrate: Server Assessment Tool s použitím odlehčeného zařízení Azure Migrate. Zařízení nasadíte na instanci virtuálního počítače s GCP, abyste mohli průběžně zjišťovat metadata o počítači a výkonu.
+V tomto kurzu se dozvíte, jak zjišťovat instance Google Cloud Platform (GCP) pomocí nástroje Azure Migrate: Discovery and Assessment Tool s použitím odlehčeného zařízení Azure Migrate. Zařízení nasadíte na server v GCP, abyste mohli průběžně zjišťovat metadata o počítači a výkonu.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavte účet Azure.
-> * Připravte instance virtuálních počítačů GCP pro zjišťování.
-> * Jak vytvořit projekt Azure Migrate.
+> * Příprava serveru na GCP pro zjišťování.
+> * Vytvořte projekt.
 > * Nastavte zařízení Azure Migrate.
 > * Spusťte nepřetržité zjišťování.
 
@@ -40,15 +40,16 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
 **Požadavek** | **Podrobnosti**
 --- | ---
-**Náplně** | Potřebujete instanci virtuálního počítače GCP, na které se má spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016.<br/> _Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje_.<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externí virtuální přepínač.<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
-**Instance virtuálních počítačů s Windows** | Povolí příchozí připojení na portu WinRM 5985 (HTTP), takže zařízení může vyžádat metadata o konfiguraci a výkonu.
-**Instance virtuálních počítačů se systémem Linux** | Povolí příchozí připojení na portu 22 (TCP).
+**Náplně** | Potřebujete server na GCP, na kterém chcete spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016.<br/> _Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje_.<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externí virtuální přepínač.<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
+**Instance Windows serveru** | Povolí příchozí připojení na portu WinRM 5985 (HTTP), takže zařízení může vyžádat metadata o konfiguraci a výkonu.
+**Instance serveru Linux** | Povolí příchozí připojení na portu 22 (TCP).
 
 ## <a name="prepare-an-azure-user-account"></a>Příprava uživatelského účtu Azure
 
-Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zařízení, budete potřebovat účet s tímto:
-- Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
-- Oprávnění k registraci aplikací Azure Active Directory (AAD).
+Pokud chcete vytvořit projekt a zaregistrovat Azure Migrate zařízení, budete potřebovat účet s:
+
+* Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
+* Oprávnění k registraci aplikací Azure Active Directory (AAD).
 
 Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
@@ -56,7 +57,7 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 
     ![Vyhledávací pole pro hledání předplatného Azure](./media/tutorial-discover-gcp/search-subscription.png)
 
-2. Na stránce **předplatná** vyberte předplatné, ve kterém chcete vytvořit projekt Azure Migrate. 
+2. Na stránce **předplatná** vyberte předplatné, ve kterém chcete vytvořit projekt.
 3. V předplatném vyberte **řízení přístupu (IAM)**  >  **Kontrola přístupu**.
 4. V části **kontrolovat přístup** vyhledejte příslušný uživatelský účet.
 5. V nabídce **Přidat přiřazení role** klikněte na **Přidat**.
@@ -77,21 +78,21 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 
 ## <a name="prepare-gcp-instances"></a>Příprava instancí GCP
 
-Nastavte účet, který zařízení může použít pro přístup k instancím virtuálních počítačů GCP.
+Nastavte účet, který zařízení může použít pro přístup k serverům v GCP.
 
-- Pro **Windows servery**:
-    - Nastavte místní uživatelský účet na počítačích, které nejsou připojené k doméně, a účet domény na počítačích, které nejsou připojené k doméně, které chcete zahrnout do zjišťování. Přidejte uživatelský účet do následujících skupin: 
-        - Uživatelé vzdálené správy
-        - Uživatelé sledování výkonu
-        - Uživatelé protokolu výkonu.
-- Pro **servery se systémem Linux**:
-    - Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. Pokud nemůžete poskytnout kořenový účet, použijte alternativní postup, kde najdete další informace v tabulce [podpory](migrate-support-matrix-physical.md#physical-server-requirements) .
-    - Azure Migrate používá ověřování hesla při zjišťování instancí AWS. Instance AWS ve výchozím nastavení nepodporují ověřování hesla. Než budete moct zjistit instanci, musíte povolit ověřování hesla.
+* Pro **Windows servery**:
+    * Nastavte místní uživatelský účet na serverech, které nejsou připojené k doméně, a účet domény na serverech připojených k doméně, které chcete zahrnout do zjišťování. Přidejte uživatelský účet do následujících skupin: 
+        * Uživatelé vzdálené správy
+        * Uživatelé sledování výkonu
+        * Uživatelé protokolu výkonu.
+* Pro **servery se systémem Linux**:
+    * Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. Pokud nemůžete poskytnout kořenový účet, použijte alternativní postup, kde najdete další informace v tabulce [podpory](migrate-support-matrix-physical.md#physical-server-requirements) .
+    * Azure Migrate používá ověřování hesla při zjišťování instancí AWS. Instance AWS ve výchozím nastavení nepodporují ověřování hesla. Než budete moct zjistit instanci, musíte povolit ověřování hesla.
         1. Přihlaste se ke každému počítači se systémem Linux.
         2. Otevřete sshd_config soubor: VI/etc/ssh/sshd_config
         3. V souboru vyhledejte řádek **PasswordAuthentication** a změňte hodnotu na **Ano**.
         4. Uložte soubor a zavřete ho. Restartujte službu SSH.
-    - Pokud ke zjištění virtuálních počítačů se systémem Linux používáte uživatele root, ujistěte se, že se na virtuálních počítačích povoluje přihlašovací jméno uživatele root.
+    * Pokud k zjištění serverů Linux používáte uživatele root, ujistěte se, že je na serverech povolených přihlašovacích údajů uživatele root.
         1. Přihlaste se ke každému počítači se systémem Linux
         2. Otevřete sshd_config soubor: VI/etc/ssh/sshd_config
         3. V souboru vyhledejte řádek **PermitRootLogin** a změňte hodnotu na **Ano**.
@@ -99,18 +100,18 @@ Nastavte účet, který zařízení může použít pro přístup k instancím v
 
 ## <a name="set-up-a-project"></a>Nastavení projektu
 
-Nastavte nový projekt Azure Migrate.
+Nastavte nový projekt.
 
 1. Na webu Azure Portal v části **Všechny služby** vyhledejte **Azure Migrate**.
 2. V části **Služby** vyberte **Azure Migrate**.
 3. V **přehledu** vyberte **vytvořit projekt**.
-5. V nástroji **vytvořit projekt** vyberte své předplatné Azure a skupinu prostředků. Vytvořte skupinu prostředků, pokud ji nemáte.
-6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
+4. V nástroji **vytvořit projekt** vyberte své předplatné Azure a skupinu prostředků. Vytvořte skupinu prostředků, pokud ji nemáte.
+5. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
 
    ![Pole pro název a oblast projektu](./media/tutorial-discover-gcp/new-project.png)
 
-7. Vyberte **Vytvořit**.
-8. Počkejte několik minut, než se projekt Azure Migrate nasadí. **Azure Migrate: Nástroj pro vyhodnocení serveru** se ve výchozím nastavení přidá do nového projektu.
+6. Vyberte **Vytvořit**.
+7. Počkejte několik minut, než se projekt nasadí. Nástroj **Azure Migrate: Discovery and Assessment** Tool je ve výchozím nastavení přidán do nového projektu.
 
 ![Stránka zobrazující Nástroj pro vyhodnocení serveru přidaný ve výchozím nastavení](./media/tutorial-discover-gcp/added-tool.png)
 
@@ -119,27 +120,28 @@ Nastavte nový projekt Azure Migrate.
 
 ## <a name="set-up-the-appliance"></a>Nastavení zařízení
 
-Zařízení Azure Migrate je jednoduché zařízení, které využije Azure Migrate Server Assessment k tomu, abyste mohli provádět následující akce:
+Zařízení Azure Migrate je odlehčené zařízení, které používá Azure Migrate: zjišťování a posouzení, které provádí následující akce:
 
-- Objevte místní servery.
-- Odesílat metadata a data o výkonu pro zjištěné servery pro Azure Migrate posouzení serveru.
+* Objevte místní servery.
+* Odesílat metadata a data o výkonu pro zjištěné servery pro Azure Migrate: zjišťování a posouzení.
 
 [Přečtěte si další informace](migrate-appliance.md) o zařízení Azure Migrate.
 
 Nastavení zařízení:
-1. Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
+
+1. Zadejte název zařízení a vygenerujte klíč projektu na portálu.
 1. Stáhněte si soubor ZIP pomocí skriptu Azure Migrate Installer z Azure Portal.
 1. Extrahujte obsah ze souboru ZIP. Spusťte konzolu PowerShellu s oprávněními správce.
 1. Spusťte skript prostředí PowerShell pro spuštění webové aplikace zařízení.
-1. Nakonfigurujte zařízení poprvé a zaregistrujte ho pomocí Azure Migrate projektu pomocí klíče Azure Migrate projektu.
+1. Nakonfigurujete zařízení poprvé a zaregistrujete ho do projektu pomocí klíče projektu.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. vygenerujte klíč projektu Azure Migrate.
+### <a name="1-generate-the-project-key"></a>1. vygenerujte klíč projektu.
 
-1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
-2. V možnosti **zjišťovat počítače**  >  **jsou virtualizované počítače?** vyberte **fyzické nebo jiné (AWS, GCP, Xen atd.)**.
-3. V **1: vygenerujte Azure Migrate klíč projektu**, zadejte název pro Azure Migrate zařízení, které nastavíte pro zjišťování virtuálních serverů GCP. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
-4. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Nezavírejte stránku najít počítače během vytváření prostředků.
-5. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu Azure Migrate** .
+1. V **cíli migrace** se  >  **systémy Windows, Linux a SQL Server**  >  **Azure Migrate: zjišťování a posouzení** vyberte **Vyhledat**.
+2. V možnosti **zjišťovat servery**  >  **jsou virtualizované vaše servery?** vyberte **fyzické nebo jiné (AWS, GCP, Xen atd.)**.
+3. V části **1: vygenerovat klíč projektu** zadejte název zařízení Azure Migrate, které nastavíte pro zjišťování virtuálních serverů GCP. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
+4. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Nezavírejte stránku zjišťovací servery během vytváření prostředků.
+5. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu** .
 6. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
 ### <a name="2-download-the-installer-script"></a>2. Stáhněte si instalační skript.
@@ -200,7 +202,7 @@ Pokud přecházíte mezi všemi problémy, získáte přístup k protokolům skr
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
-Ujistěte se, že se virtuální počítač zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
+Ujistěte se, že se zařízení může připojit k adresám URL Azure pro cloudy [veřejné](migrate-appliance.md#public-cloud-urls) a [státní správy](migrate-appliance.md#government-cloud-urls) .
 
 ### <a name="4-configure-the-appliance"></a>4. konfigurace zařízení
 
@@ -212,16 +214,16 @@ Nastavte zařízení poprvé.
 2. Přijměte **licenční podmínky** a přečtěte si informace třetích stran.
 1. Ve webové aplikaci > **nastavení požadavků** postupujte takto:
     - **Připojení**: aplikace kontroluje, jestli má server přístup k Internetu. Pokud server používá proxy server:
-        - Klikněte na **nastavit proxy server** na a zadejte adresu proxy serveru (ve formuláři http://ProxyIPAddress nebo na http://ProxyFQDN) naslouchajícím portu.
+        - Klikněte na **nastavení proxy serveru** a zadejte adresu proxy serveru (ve formuláři http://ProxyIPAddress nebo na http://ProxyFQDN) naslouchajícím portu.
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
         - Podporuje se jen proxy protokolu HTTP.
         - Pokud jste přidali podrobnosti proxy serveru nebo zakážete proxy server nebo ověřování, kliknutím na **Uložit** spusťte kontrolu připojení znovu.
     - **Časová synchronizace**: čas je ověřený. Čas v zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování serveru fungovalo správně.
-    - **Instalovat aktualizace**: posouzení Azure Migrate serveru kontroluje, jestli má zařízení nainstalované nejnovější aktualizace. Po dokončení kontroly můžete kliknout na **Zobrazit služby zařízení** a zobrazit stav a verze komponent spuštěných na zařízení.
+    - **Instalovat aktualizace**: Azure Migrate: zjišťování a posouzení kontroluje, jestli má zařízení nainstalované nejnovější aktualizace. Po dokončení kontroly můžete kliknout na **Zobrazit služby zařízení** a zobrazit stav a verze komponent spuštěných na zařízení.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
-1. Vložte **klíč projektu Azure Migrate** zkopírovaný z portálu. Pokud tento klíč nemáte, Projděte si část **vyhodnocení serveru> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
+1. Vložte **klíč projektu** zkopírovaný z portálu. Pokud nemáte klíč, podívejte se na **Azure Migrate: zjišťování a hodnocení> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
 1. K ověření pomocí Azure budete potřebovat kód zařízení. Kliknutím na **přihlášení** se otevře modální okno s kódem zařízení, jak je znázorněno níže.
 
     ![Modální zobrazení kódu zařízení](./media/tutorial-discover-vmware/device-code.png)
@@ -245,7 +247,7 @@ Nyní se z zařízení připojte k serverům GCP, které se mají zjistit, a spu
 1. Pokud používáte ověřování pomocí klíče SSH pro Linux Server, můžete vybrat typ zdroje jako **Server Linux (založený na klíči SSH)**, zadat popisný název pro přihlašovací údaje, přidat uživatelské jméno a vybrat soubor privátního klíče SSH. Klikněte na **Uložit**.
 
     - Azure Migrate podporuje privátní klíč SSH generovaný pomocí příkazu ssh-keygen s využitím algoritmů RSA, DSA, ECDSA a ed25519.
-    - Aktuálně Azure Migrate nepodporuje klíč SSH založený na hesle. Použijte prosím klíč SSH bez hesla.
+    - V současné době Azure Migrate nepodporuje klíč SSH založený na heslech. Použijte klíč SSH bez přístupového hesla.
     - V současné době Azure Migrate nepodporuje soubor privátního klíče SSH generovaný pomocí výstupu.
     - Azure Migrate podporuje formát OpenSSH souboru privátního klíče SSH, jak je znázorněno níže:
     
@@ -257,13 +259,13 @@ Nyní se z zařízení připojte k serverům GCP, které se mají zjistit, a spu
 4. Můžete buď **přidat jednu položku** najednou, nebo **Přidat více položek** do jednoho přechodu. K dispozici je také možnost zadat podrobnosti o serveru prostřednictvím **importu CSV**.
 
     - Pokud zvolíte možnost **přidat jednu položku**, můžete zvolit typ operačního systému, zadat popisný název pro přihlašovací údaje, přidat **IP adresu serveru nebo plně kvalifikovaný název domény** a kliknout na **Uložit**.
-    - Pokud zvolíte možnost **Přidat více položek**, můžete najednou přidat několik záznamů zadáním **IP adresy serveru nebo plně kvalifikovaného názvu domény** s popisným názvem pro přihlašovací údaje v textovém poli. **Ověřte** přidané záznamy a klikněte na **Uložit**.
+    - Pokud zvolíte možnost **Přidat více položek**, můžete najednou přidat několik záznamů zadáním **IP adresy serveru nebo plně kvalifikovaného názvu domény** s popisným názvem pro přihlašovací údaje v textovém poli. Ověřte * přidané záznamy a klikněte na **Uložit**.
     - Pokud zvolíte možnost **importovat sdílený svazek clusteru** _(ve výchozím nastavení je vybraný)_, můžete si stáhnout soubor šablony CSV a tento soubor naplnit pomocí **IP adresy serveru nebo plně kvalifikovaného názvu domény** a popisného názvu pro přihlašovací údaje. Pak soubor naimportujete do zařízení, **ověříte** záznamy v souboru a kliknete na **Uložit**.
 
 5. Když kliknete na Uložit, zařízení se pokusí ověřit připojení k serverům, které jste přidali, a zobrazit v tabulce **stav ověření** na každém serveru.
     - Pokud se ověření serveru nepovede, zkontrolujte chybu kliknutím na tlačítko **ověření** ve sloupci Stav v tabulce. Opravte problém a znovu ověřte.
     - Pokud chcete odebrat server, klikněte na **Odstranit**.
-6. Před zahájením zjišťování můžete znovu **ověřit** připojení k serverům.
+6. Připojení k serverům můžete kdykoli znovu **ověřit** před spuštěním zjišťování.
 7. Kliknutím na **Spustit zjišťování zahajte** zjišťování úspěšně ověřených serverů. Po úspěšném spuštění zjišťování můžete zjistit stav zjišťování proti každému serveru v tabulce.
 
 
@@ -274,9 +276,9 @@ Spustí se zjišťování. Bude trvat přibližně 2 minuty na server, aby se me
 Po dokončení zjišťování můžete ověřit, že se servery zobrazují na portálu.
 
 1. Otevřete řídicí panel služby Azure Migrate.
-2. V **Azure Migrate-servery**  >  **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
+2. V **Azure Migrate – Windows, Linux a SQL Server**  >  **Azure Migrate: stránka zjišťování a posouzení** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Posuzuje servery GCP](tutorial-assess-gcp.md) pro migraci na virtuální počítače Azure.
-- [Zkontrolujte data](migrate-appliance.md#collected-data---physical) , která zařízení shromažďuje během zjišťování.
+* [Posuzuje servery GCP](tutorial-assess-gcp.md) pro migraci na virtuální počítače Azure.
+* [Zkontrolujte data](migrate-appliance.md#collected-data---physical) , která zařízení shromažďuje během zjišťování.

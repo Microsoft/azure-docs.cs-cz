@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 3/5/2021
-ms.openlocfilehash: 190658e23ee02651e64c3718824315c0265c0f04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 21d839df04c868d2c21932f96a6b72a32b0404e5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556532"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771851"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -72,7 +72,7 @@ Následující parametry lze využít ke konfiguraci Privátní DNS zóny.
 
 - Výchozí hodnota je "System". Pokud je argument--Private-DNS-Zone vynechán, AKS vytvoří zónu Privátní DNS ve skupině prostředků uzlu.
 - Možnost None znamená, že AKS nevytvoří zónu Privátní DNS.  To vyžaduje, abyste zanesli vlastní server DNS a nakonfigurovali překlad DNS pro privátní plně kvalifikovaný název domény.  Pokud neprovedete konfiguraci překladu DNS, dá se služba DNS přeložit jenom v rámci uzlů agentů a po nasazení způsobí problémy s clusterem. 
-- CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID vyžaduje, abyste v tomto formátu pro globální cloud Azure vytvořili zónu Privátní DNS: `privatelink.<region>.azmk8s.io` . Budete potřebovat ID prostředku, které Privátní DNS zóna dopředá.  Navíc budete potřebovat identitu přiřazenou uživatelem nebo instanční objekt s alespoň `private dns zone contributor` rolí.
+- CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID vyžaduje, abyste v tomto formátu pro globální cloud Azure vytvořili zónu Privátní DNS: `privatelink.<region>.azmk8s.io` . Budete potřebovat ID prostředku, které Privátní DNS zóna dopředá.  Navíc budete potřebovat identitu přiřazenou uživatelem nebo instanční objekt s alespoň `private dns zone contributor` `vnet contributor` rolemi a.
 - "plně kvalifikovaný název domény (FQDN) lze využít s" CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID "pouze k poskytnutí možností subdomény `privatelink.<region>.azmk8s.io`
 
 ### <a name="prerequisites"></a>Předpoklady

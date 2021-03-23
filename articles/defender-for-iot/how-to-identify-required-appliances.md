@@ -1,18 +1,14 @@
 ---
 title: Identifikace požadovaných zařízení
 description: Seznamte se s hardwarem a virtuálním zařízením pro certifikovaného Defenderu pro senzory IoT a místní konzolu pro správu.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 2ad5bf08542cd98f7acae36827b1a7b284a893b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 242e88e92d6197fd018c56fa55a4dd8166f5d027
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149290"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782754"
 ---
 # <a name="identify-required-appliances"></a>Identifikace požadovaných zařízení
 
@@ -109,7 +105,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 ### <a name="appliance-bom"></a>Kusovník zařízení
 
-| PN | Description | Množství |
+| PN | Popis | Množství |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC technický ředitel Server | 1 |
 | P19766-B21 | Evropa – lokalizace více jazyků | 1 |
@@ -180,7 +176,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 ### <a name="appliance-bom"></a>Kusovník zařízení
 
-| PN | Description | Množství |
+| PN | Popis | Množství |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF technický ředitel Server | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF technický ředitel Server | 1 |
@@ -216,7 +212,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 | Náraz | 10ms 10G, poloviční sinus, tři pro každou osu. (Kladné & záporné Pulse) – DIN kolejnice |
 
 ### <a name="appliance-bom"></a>Kusovník zařízení
-| Produkt | Description |
+| Produkt | Popis |
 |--|--|
 | P25828-B21 | HPE Edgeline EL300 v2 – sblížený hraniční systém |
 | P25828-B21 B19 | HPE EL300 v2 – sblížený hraniční systém |
@@ -248,7 +244,7 @@ Tato část popisuje hardwarové specifikace pro následující zařízení:
 
 | Typ | Enterprise |
 |--|--|
-| Description | Virtuální zařízení pro podnikové typy nasazení |
+| Popis | Virtuální zařízení pro podnikové typy nasazení |
 | Virtuální procesory | 8 |
 | Memory (Paměť) | 32 GB |
 | Storage | 1,8 TB |
@@ -272,27 +268,6 @@ Tato část podrobně popisuje další zařízení, která byla certifikována s
 Po zakoupení zařízení si přečtěte tento software v **programu Defender for IoT**  >  **Network snímače ISO**  >   .
 
 :::image type="content" source="media/how-to-prepare-your-network/azure-defender-for-iot-sensor-download-software-screen.png" alt-text="Síťové senzory ISO.":::
-
-## <a name="enterprise-deployment-dell-poweredge-r340-xl"></a>Podnikové nasazení: Dell PowerEdge R340 XL
-
-| Součást | Technické specifikace |
-|--|--|
-| Skříň | rackový server 1U
-| Dimenze | 42,8 x 434,0 x 596 (mm)/1,67 "x 17,09" x 23,5 "(in) |
-| Hmotnost | Maximální 29,98 kg/13.6 kg |
-| Procesor | Intel Xeon E-2144G 3,6 GHz, 8 min cache, 4C/8T, Turbo (71 W) |
-| Sad | Intel C246 |
-| Memory (Paměť) | 32 GB = 2 × 16 až GB 2666MT/s DDR4 ECC UDIMM |
-| Storage | 3 × 2 – TB 7,2 K ot./min. SATA 6 až 2 GB 512n 3,5-in Hot-Plug hard disk-RAID 5 |
-| Síťový adaptér | Na desce: 2 × 1-GB Broadcom BCM5720<br>On-Board dvěma: karta portů iDRAC 1-GB Broadcom BCM5720 <br><br>Externí: 1 x Intel Ethernet i350 QP 1-GB Server Adapter, nízký profil |
-| Správa | iDRAC devět Enterprise |
-| Přístup k zařízení | Dvě zadní USB 3,0 <br> Jeden front-USB 3,0 |
-| Napájení | Spotřeba napájení typu Dual horké 350 W |
-| Podpora racku | ReadyRails II klouzavé kolejnice pro připojení nástroje bez nástrojů v sestavách na 4 koncových skříních se čtvercovými nebo nezávitými otvory nebo nástrojem připojenými k nástroji ve 4-post vláknech s podporou pro správu kabelů bez nástrojů. |
-
-## <a name="dell-r340-bom"></a>Dell R340 BOM
-
-:::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 BOM.":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,16 +3,16 @@ title: Použití parametrů a výrazů v Azure Data Factory
 description: V tomto článku najdete informace o výrazech a funkcích, které můžete použít při vytváření entit Data Factory.
 author: ssabat
 ms.author: susabat
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 8f22645eafa0969eac3d6c4c0645909f8c650cad
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 090c738d06b9b8acd53a4c194e97fa3a0515e1d6
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199815"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783383"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Jak používat parametry, výrazy a funkce v Azure Data Factory
 
@@ -226,7 +226,7 @@ Tyto funkce jsou užitečné v rámci podmínek, které je možné použít k vy
 | [tolik](control-flow-expression-language-functions.md#less) | Ověřte, zda je první hodnota menší než druhá hodnota. |
 | [lessOrEquals](control-flow-expression-language-functions.md#lessOrEquals) | Ověřte, zda je první hodnota menší nebo rovna druhé hodnotě. |
 | [mění](control-flow-expression-language-functions.md#not) | Zkontroluje, jestli je výraz nepravdivý. |
-| [nebo](control-flow-expression-language-functions.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
+| [ani](control-flow-expression-language-functions.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
   
 ### <a name="conversion-functions"></a>Převodní funkce  
 
