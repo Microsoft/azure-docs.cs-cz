@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: v-erkel
-ms.openlocfilehash: 78010ef2d93b23a12fc7f3e988a536b4993b4dd4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0c505937d4adbe2596e91ed7269676e60ada8253
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471874"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772571"
 ---
 # <a name="edit-storage-targets"></a>Úprava cílů úložiště
 
@@ -76,7 +76,7 @@ Použijte stránku **oboru názvů** pro mezipaměť prostředí Azure HPC. Na s
 
 Klikněte na název cesty, kterou chcete změnit, a vytvořte novou cestu v zobrazeném okně pro úpravy.
 
-![Snímek obrazovky se stránkou s oborem názvů po kliknutí na cestu k oboru názvů objektů BLOB – pole pro úpravy se zobrazí v podokně vpravo](media/edit-namespace-blob.png)
+![Snímek obrazovky se stránkou s oborem názvů po kliknutí na cestu k oboru názvů objektů BLOB – pole pro úpravy se zobrazí v podokně vpravo](media/update-namespace-blob.png)
 
 Po provedení změn aktualizujte cíl úložiště kliknutím na tlačítko **OK** . Kliknutím na tlačítko **Storno** zahodíte změny.
 

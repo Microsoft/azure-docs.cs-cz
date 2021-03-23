@@ -1,18 +1,14 @@
 ---
 title: Aktualizace dat analýzy hrozeb
 description: Datový balíček Analýza hrozeb je k dispozici pro každý nový Defender pro verzi IoT nebo v případě potřeby mezi verzemi.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/14/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: ddf2eb2fab6281e76bac0a958024b639d18a7ccc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 386d59d33c4f9695b8fc5243dab345321cff4a5f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100521403"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784046"
 ---
 # <a name="threat-intelligence-research-and-packages"></a>Analýzy a balíčky pro analýzu hrozeb
 

@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: 2aba44f6c2f10ead1827e1b1411f3824a0ec2d6c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101658550"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773245"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování prostředků jednoúčelové databáze ve službě Azure SQL Database
 
@@ -112,7 +112,7 @@ else {
 - Když se downgrade databáze s povolenou [geografickou replikací](active-geo-replication-configure-portal.md) , downgrade primárních databází na požadovanou úroveň služby a výpočetní velikost před přechodem na sekundární databázi (Obecné pokyny pro nejlepší výkon). Při downgradu na jinou edici je požadavek, aby byla primární databáze nejprve downgradovaná.
 - Nabídky služeb pro obnovení se u různých úrovní služby liší. Pokud se chystáte přejít na úroveň **Basic** , je k dispozici nižší doba uchovávání záloh. Viz [zálohy Azure SQL Database](automated-backups-overview.md).
 - Nové vlastnosti databáze nejsou aplikovány, dokud nebudou změny dokončeny.
-- Když je pro škálování databáze potřeba kopírování dat (viz [latence](#latency)) při změně úrovně služby, vysoké využití prostředků souběžně s operací škálování může způsobit delší dobu škálování. S [urychleným obnovením databáze (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts.md)není vrácení dlouhotrvajících transakcí v nevýznamném zdroji zpoždění, ale vysoké využití prostředků může mít méně výpočetní prostředky, úložiště a šířku pásma sítě pro škálování, zejména pro menší výpočetní velikosti.
+- Když je pro škálování databáze potřeba kopírování dat (viz [latence](#latency)) při změně úrovně služby, vysoké využití prostředků souběžně s operací škálování může způsobit delší dobu škálování. S [urychleným obnovením databáze (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts)není vrácení dlouhotrvajících transakcí v nevýznamném zdroji zpoždění, ale vysoké využití prostředků může mít méně výpočetní prostředky, úložiště a šířku pásma sítě pro škálování, zejména pro menší výpočetní velikosti.
 
 ## <a name="billing"></a>Fakturace
 

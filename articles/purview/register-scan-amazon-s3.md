@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 03/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438724"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773449"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Konektor Azure dosah pro Amazon S3
 
@@ -49,29 +49,30 @@ V následující tabulce jsou namapovány oblasti, ve kterých se data ukládaj�
 | Oblast úložiště | Oblast vyhledávání |
 | ------------------------------- | ------------------------------------- |
 | USA – východ (Ohio)                  | USA – východ (Ohio)                        |
-| USA – východ (N. ) – Virginia           | USA – východ (Ohio)                        |
+| USA – východ (N. ) – Virginia           | USA – východ (Ohio) nebo USA – východ (N. ) – Virginia                       |
 | USA – západ (N. Kalifornii         | USA – východ (Ohio)                        |
 | USA – západ (Oregon)                | USA – východ (Ohio)                        |
 | Afrika (kapverdské město)              | Evropa (Frankfurt)                    |
-| Asie a Tichomoří (Hongkong)        | Evropa (Frankfurt)                    |
-| Asie a Tichomoří (Bombaj)           | Evropa (Frankfurt)                    |
-| Asie a Tichomoří (Ósaka-Local)      | Evropa (Frankfurt)                    |
-| Asie a Tichomoří (Soul)            | Evropa (Frankfurt)                    |
-| Asie a Tichomoří (Singapur)        | Evropa (Frankfurt)                    |
-| Asie a Tichomoří (Sydney)           | Evropa (Frankfurt)                    |
-| Asie a Tichomoří (Tokio)            | Evropa (Frankfurt)                    |
+| Asie a Tichomoří (Hongkong)        | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Bombaj)           | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Ósaka-Local)      | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Soul)            | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Singapur)        | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                   |
+| Asie a Tichomoří (Sydney)           | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                  |
+| Asie a Tichomoří (Tokio)            | Evropa (Frankfurt) nebo Asie a Tichomoří (Sydney)                 |
 | Kanada (střed)                | USA – východ (Ohio)                        |
 | Čína (Peking)                 | Nepodporováno                    |
 | Čína (NingXia)                 | Nepodporováno                   |
 | Evropa (Frankfurt)              | Evropa (Frankfurt)                    |
-| Evropa (Irsko)                | Evropa (Frankfurt)                    |
-| Evropa (Londýn)                 | Evropa (Frankfurt)                    |
+| Evropa (Irsko)                | Evropa (Frankfurt) nebo Evropa (Irsko)                   |
+| Evropa (Londýn)                 | Evropa (Frankfurt) nebo Evropa (Irsko)                   |
 | Evropa (Milán)                  | Evropa (Frankfurt)                    |
 | Evropa (Paříž)                  | Evropa (Frankfurt)                    |
 | Evropa (Stockholm)              | Evropa (Frankfurt)                    |
 | Střední východ (Bahrajn)           | Evropa (Frankfurt)                    |
 | Jižní Amerika (Svatý Paulo)       | USA – východ (Ohio)                        |
 | | |
+
 ## <a name="prerequisites"></a>Předpoklady
 
 Před přidáním vašich bloků Amazon S3 jako zdrojů dat dosah a kontrolou dat S3 ověřte, že jste provedli následující požadavky.
@@ -120,7 +121,7 @@ Další informace o přihlašovacích údajích dosah najdete v [dokumentaci ke 
 
 1. Vyberte **jiný účet AWS** a zadejte následující hodnoty:
 
-    |Pole  |Description  |
+    |Pole  |Popis  |
     |---------|---------|
     |**Account ID**     |    Zadejte ID účtu Microsoft. Příklad: `615019938638`     |
     |**Externí ID**     |   V části Možnosti vyberte **vyžadovat externí ID...** a potom do určeného pole zadejte své externí ID. <br>Příklad: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`    <br><br>Externí ID můžete najít při.  |
@@ -187,7 +188,7 @@ AWS intervaly podporují více typů šifrování. U kontejnerů, které použí
 
 1. Na kartě **vytvořit**  >  **vizuální Editor** zásad Definujte zásadu s následujícími hodnotami:
 
-    |Pole  |Description  |
+    |Pole  |Popis  |
     |---------|---------|
     |**Služba**     |  Zadejte a vyberte službu **správy klíčů**.       |
     |**Akce**     | V části **úroveň přístupu** vyberte možnost **zapsat** . tím se rozbalí oddíl **Write** .<br>Po rozbalení vyberte jenom možnost **dešifrování** .        |
@@ -351,7 +352,7 @@ Po přidání sad jako zdrojů dat dosah můžete nakonfigurovat kontrolu tak, a
 
     Pokud se rozhodnete vytvořit novou sadu pravidel pro vlastní skenování, pomocí Průvodce definujte následující nastavení:
 
-    |Podokno  |Description  |
+    |Podokno  |Popis  |
     |---------|---------|
     |**Sada pravidel nové kontroly** /<br>**Popis pravidla skenování**    |   Zadejte smysluplný název a volitelný popis pro sadu pravidel.      |
     |**Vybrat typy souborů**     | Vyberte všechny typy souborů, které chcete zahrnout do kontroly, a pak vyberte **pokračovat**.<br><br>Chcete-li přidat nový typ souboru, vyberte možnost **nový typ souboru** a definujte následující: <br>– Přípona souboru, kterou chcete přidat <br>– Volitelný popis  <br>– Zda má obsah souboru vlastní oddělovač, nebo se jedná o typ systémového souboru. Pak zadejte vlastní oddělovač nebo vyberte typ systémového souboru. <br><br>Vyberte **vytvořit** a vytvořte vlastní typ souboru.     |

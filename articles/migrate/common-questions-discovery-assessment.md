@@ -1,17 +1,17 @@
 ---
 title: Dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
-author: vineetvikram
-ms.author: vivikram
+author: rashijoshi
+ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f9fe4109d2b21f7c44ba340db53dc24311652441
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032564"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782346"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -28,18 +28,15 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se zjišťován
 Projděte si podporované oblasti pro [veřejný cloud](migrate-support-matrix.md#supported-geographies-public-cloud) a [cloud pro státní správu](migrate-support-matrix.md#supported-geographies-azure-government).
 
 
-## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Kolik virtuálních počítačů je možné zjistit pomocí zařízení?
+## <a name="how-many-servers-can-i-discover-with-an-appliance"></a>Kolik serverů můžu zjistit pomocí zařízení?
 
-Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuálních počítačů Hyper-V a až 1000 fyzických serverů pomocí jediného zařízení. Pokud máte více počítačů, přečtěte si o [škálování posouzení technologie Hyper-V](scale-hyper-v-assessment.md), [škálování vyhodnocení VMware](scale-vmware-assessment.md)nebo [škálování posouzení fyzického serveru](scale-physical-assessment.md).
+Můžete zjistit až 10 000 serverů z prostředí VMware, až 5 000 serverů z prostředí Hyper-V a až 1000 fyzických serverů pomocí jediného zařízení. Pokud máte více serverů, přečtěte si o [škálování posouzení technologie Hyper-V](scale-hyper-v-assessment.md), [škálování vyhodnocení VMware](scale-vmware-assessment.md)nebo [škálování posouzení fyzického serveru](scale-physical-assessment.md).
 
 ## <a name="how-do-i-choose-the-assessment-type"></a>Jaký zvolit typ hodnocení?
 
-- **Posouzení virtuálních počítačů Azure** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure. [Další informace](concepts-assessment-calculation.md)
+- **Posouzení virtuálních počítačů Azure** použijte, když chcete vyhodnotit servery z místního prostředí [VMware](how-to-set-up-appliance-vmware.md) a [Hyper-V](how-to-set-up-appliance-hyper-v.md) a [fyzických serverů](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure. [Další informace](concepts-assessment-calculation.md)
 
 - Typ posouzení **Azure SQL** použijte, pokud chcete vyhodnotit místní SQL Server z prostředí VMware pro migraci do Azure SQL Database nebo spravované instance Azure SQL. [Další informace](concepts-assessment-calculation.md)
-
-    > [!Note]
-    > Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 - Posouzení **Řešení Azure VMware (AVS)** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md) pomocí tohoto typu posouzení. [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
@@ -48,10 +45,10 @@ Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuá
 
 ## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Proč chybí data o výkonu pro některé nebo všechny servery v sestavě pro vyhodnocení virtuálních počítačů Azure a/nebo služby AVS?
 
-Pokud zařízení Azure Migrate nemůže shromáždit údaje o výkonu místních virtuálních počítačů, v sestavě posouzení na základě výkonu se zobrazí PercentageOfCoresUtilizedMissing nebo PercentageOfMemoryUtilizedMissing. Zkontrolujte následující:
+Pro hodnocení "na základě výkonu" Export zprávy o vyhodnocení uvádí "PercentageOfCoresUtilizedMissing" nebo "PercentageOfMemoryUtilizedMissing", když zařízení Azure Migrate nemůže shromažďovat údaje o výkonu pro místní servery. Zkontrolujte následující:
 
-- Byly virtuální počítače po dobu trvání, pro kterou vytváříte posouzení, zapnuté?
-- Pokud chybí pouze čítače paměti a snažíte se vyhodnotit virtuální počítače Hyper-V. V tomto scénáři Povolte prosím na virtuálních počítačích dynamickou paměť a přepočítejte hodnocení, aby odráželo nejnovější změny. Zařízení může shromažďovat hodnoty využití paměti pro virtuální počítače Hyper-V pouze v případě, že je virtuální počítač povolený dynamickou pamětí.
+- Pokud jsou servery zapnuté po dobu, po kterou vytváříte posouzení
+- Pokud chybí pouze čítače paměti a pokoušíte se vyhodnocovat servery v prostředí technologie Hyper-V. V tomto scénáři Povolte prosím na serverech dynamickou paměť a přepočítejte hodnocení, aby odráželo nejnovější změny. Zařízení může shromažďovat hodnoty využití paměti pro servery v prostředí Hyper-V pouze v případě, že je na serveru povolená dynamická paměť.
 
 - Pokud chybí všechny čítače výkonu, zajistěte, aby odchozí připojení na portech 443 (HTTPS) byla povolená.
 
@@ -89,11 +86,6 @@ Míra spolehlivosti posouzení na základě výkonu se počítá na základě pr
 
 - Pro hodnocení Azure SQL se od spuštění zjišťování vytvořilo málo instancí nebo databází SQL. Pokud například vytváříte posouzení historie výkonu za poslední měsíc, ale v prostředí bylo vytvořeno několik instancí SQL nebo databází pouze před týdnem. V takovém případě nebudou údaje o výkonu pro nové servery k dispozici po celou dobu trvání a hodnocení spolehlivosti bude nízké. [Další informace](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
 
-## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Chci vyzkoušet novou funkci hodnocení Azure SQL ve službě Azure Migrate
-Pokud chcete tuto funkci vyzkoušet, použijte [tento odkaz](https://go.microsoft.com/fwlink/?linkid=2155668L) a vytvořte projekt v oblasti **Austrálie – východ**.
-- Začněte tím, že si projdete kurzy [zjišťování](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) a [hodnocení](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql).
-- Upozorňujeme, že zjišťování a hodnocení instancí a databází SQL Serveru v prostředí VMware je v současné době ve verzi Preview.
-
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Při vytváření hodnocení Azure SQL se některé servery nezobrazují
 
 - Hodnocení Azure SQL je možné provádět pouze na spuštěných serverech se zjištěnými instancemi SQL. Pokud se vám nezobrazují servery a instance SQL, které chcete hodnotit, nějakou dobu počkejte, než se dokončí zjišťování, a pak vytvořte hodnocení. 
@@ -117,7 +109,7 @@ Zjišťování SQL se provádí jednou za 24 hodin a možná budete muset počka
 ## <a name="my-assessment-is-in-outdated-state"></a>Moje hodnocení je ve stavu Zastaralé
 
 ### <a name="azure-vmavs-assessment"></a>Virtuální počítač Azure/posouzení služby AVS
-Pokud existují místní změny virtuálních počítačů, které jsou ve skupině, která je vyhodnocena, je posouzení označeno jako zastaralé. Posouzení může být označeno jako zastaralé v důsledku jedné nebo více změn v níže uvedených vlastnostech:
+Pokud dojde k místním změnám na serverech, které jsou ve skupině, která je vyhodnocena, posouzení bude označeno jako zastaralé. Posouzení může být označeno jako zastaralé v důsledku jedné nebo více změn v níže uvedených vlastnostech:
 - Počet jader procesoru
 - Přidělená paměť
 - Typ spuštění nebo firmware
@@ -129,7 +121,7 @@ Pokud existují místní změny virtuálních počítačů, které jsou ve skupi
 
 **Přepočítejte** prosím hodnocení, aby odráželo nejnovější změny v posouzení.
 
-### <a name="azure-sql-assessment"></a>Posouzení Azure SQL
+### <a name="azure-sql-assessment"></a>Hodnocení Azure SQL
 Pokud dojde ke změnám místních instancí nebo databází SQL, které jsou v hodnocené skupině, hodnocení se označí jako **zastaralé**:
 - Na serveru se přidala nebo odebrala instance SQL.
 - V instanci SQL se přidala nebo odebrala databáze SQL.
@@ -166,18 +158,18 @@ Pro spravovanou instanci Azure SQL se nepřidaly žádné náklady na úložišt
 - Hodnocení služby AVS je možné provádět pouze pro skupiny, které obsahují pouze počítače VMware. Pokud chcete provést hodnocení služby AVS, odeberte ze skupiny všechny jiné počítače než VMware.
 - Pokud ve službě Azure Migrate spouštíte hodnocení služby AVS poprvé, doporučujeme vytvořit novou skupinu počítačů VMware.
 
-## <a name="i-cant-see-some-vm-types-in-azure-government"></a>V Azure Government nevidím některé typy virtuálních počítačů.
+## <a name="i-cant-see-some-vm-types-and-sizes-in-azure-government"></a>V Azure Government nevidím některé typy virtuálních počítačů a velikosti.
 
-Typy virtuálních počítačů podporované pro posouzení a migraci závisí na dostupnosti v umístění Azure Government. Můžete [zkontrolovat a porovnat](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) typy virtuálních počítačů v Azure Government.
+Typy a velikosti virtuálních počítačů podporované pro posouzení a migraci závisí na dostupnosti v umístění Azure Government. Můžete [zkontrolovat a porovnat](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) typy virtuálních počítačů v Azure Government.
 
-## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>Změnila se velikost virtuálního počítače. Můžu znovu spustit posouzení?
+## <a name="the-size-of-my-server-changed-can-i-run-an-assessment-again"></a>Změnila se velikost mého serveru. Můžu znovu spustit posouzení?
 
-Zařízení Azure Migrate průběžně shromažďuje informace o místním prostředí.  Posouzení je snímkem v čase místních virtuálních počítačů. Pokud změníte nastavení na virtuálním počítači, který chcete vyhodnotit, použijte k aktualizaci posouzení nejnovější změny pomocí možnosti Přepočítat.
+Zařízení Azure Migrate průběžně shromažďuje informace o místním prostředí.  Posouzení je snímkem v čase místních serverů. Pokud změníte nastavení na serveru, který chcete vyhodnotit, použijte k aktualizaci posouzení nejnovější změny pomocí možnosti Přepočítat.
 
-## <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>Návody zjistit virtuální počítače ve víceklientském prostředí?
+## <a name="how-do-i-discover-servers-in-a-multitenant-environment"></a>Návody zjišťovat servery ve víceklientském prostředí?
 
-- **VMware**: Pokud je prostředí sdílené mezi klienty a nechcete zjistit virtuální počítače tenanta v rámci předplatného jiného tenanta, vytvořte vCenter Server přihlašovací údaje VMware, které budou mít přístup jenom k virtuálním počítačům, které chcete zjišťovat. Pak tyto přihlašovací údaje použijte při zahájení zjišťování v zařízení Azure Migrate.
-- **Hyper-v**: zjišťování používá přihlašovací údaje hostitele Hyper-v. Pokud virtuální počítače sdílejí stejného hostitele Hyper-V, není v současnosti žádný způsob, jak zjišťování oddělit.  
+- **VMware**: Pokud je prostředí sdíleno mezi klienty a nechcete zjišťovat servery tenanta v rámci předplatného jiného tenanta, vytvořte vCenter Server přihlašovací údaje VMware, které budou mít přístup pouze k serverům, které chcete zjišťovat. Pak tyto přihlašovací údaje použijte při zahájení zjišťování v zařízení Azure Migrate.
+- **Hyper-v**: zjišťování používá přihlašovací údaje hostitele Hyper-v. Pokud servery sdílejí stejného hostitele Hyper-V, neexistuje v současnosti žádný způsob, jak zjišťování oddělit.  
 
 ## <a name="do-i-need-vcenter-server"></a>Potřebuji vCenter Server?
 
@@ -185,9 +177,9 @@ Ano, Azure Migrate vyžaduje vCenter Server v prostředí VMware, aby bylo možn
 
 ## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Jaké jsou možnosti změny velikosti ve vyhodnocování virtuálních počítačů Azure?
 
-Při změně velikosti v místním prostředí Azure Migrate nepovažují údaje o výkonu virtuálních počítačů za účelem posouzení. Azure Migrate vyhodnocuje velikosti virtuálních počítačů na základě místních konfigurací. Při změně velikosti na základě výkonu je velikost založena na datech využití.
+Při změně velikosti místních Azure Migrate neuvažují data o výkonu serveru pro posouzení. Azure Migrate vyhodnocuje velikosti virtuálních počítačů na základě místních konfigurací. Při změně velikosti na základě výkonu je velikost založena na datech využití.
 
-Například pokud má místní virtuální počítač čtyři jádra a 8 GB paměti v 50% využití CPU a 50% využití paměti:
+Například pokud má místní server čtyři jádra a 8 GB paměti v 50% využití CPU a 50% využití paměti:
 - Při změně velikosti v místním prostředí se doporučuje použít SKU virtuálního počítače Azure se čtyřmi jádry a 8 GB paměti.
 - Velikost na základě výkonu doporučí SKU virtuálních počítačů, které mají dvě jádra a 4 GB paměti, protože je zváženo procento využití.
 
@@ -230,7 +222,7 @@ V případě počítačů importovaných prostřednictvím souboru CSV není vý
 
 ## <a name="what-is-dependency-visualization"></a>Co je Vizualizace závislostí?
 
-Vizualizace závislostí vám může posuzovat skupiny virtuálních počítačů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Další informace](concepts-dependency-visualization.md).
+Vizualizace závislostí vám může posuzovat skupiny serverů, které se budou migrovat s větší jistotou. Vizualizace závislostí křížově kontroluje závislosti počítačů před spuštěním posouzení. Pomáhá zajistit, aby nic nezůstalo a při migraci do Azure pomáhá zabránit neočekávanému výpadku. Azure Migrate používá řešení Service Map v Azure Monitor k povolení Vizualizace závislostí. [Další informace](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Analýza závislostí na základě agenta není v Azure Government k dispozici. Můžete použít analýzu závislostí bez agentů.
@@ -241,7 +233,7 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 
 **Požadavek** | **Bez agenta** | **Založené na agentovi**
 --- | --- | ---
-Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
+Podpora | Tato možnost je v současnosti ve verzi Preview a je dostupná jenom pro servery v prostředí VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
 Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)a [Agent závislostí](../azure-monitor/agents/agents-overview.md#dependency-agent). 
 Předpoklady | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
 Log Analytics | Nevyžadují se. | Azure Migrate používá řešení [Service map](../azure-monitor/vm/service-map.md) v [protokolech Azure monitor](../azure-monitor/logs/log-query-overview.md) pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#agent-based-analysis).
@@ -257,7 +249,7 @@ Ano, [zařízení Azure Migrate](migrate-appliance.md) musí být nasazeno.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>Platíte za vizualizaci závislostí?
 
-No. Přečtěte si další informace o [cenách Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/).
+Ne. Přečtěte si další informace o [cenách Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>Co mám nainstalovat pro vizualizaci závislostí založenou na agentech?
 
@@ -296,9 +288,9 @@ Pro vizualizaci založenou na agentech můžete vizualizovat závislosti po dobu
 
 U vizualizace bez agentů můžete zobrazit mapu závislostí jednoho serveru po dobu od 1 hodiny do 30 dnů.
 
-## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Můžu vizualizovat závislosti pro skupiny více než 10 virtuálních počítačů?
+## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-servers"></a>Můžu vizualizovat závislosti pro skupiny více než 10 serverů?
 
-Můžete [vizualizovat závislosti](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) pro skupiny, které mají až 10 virtuálních počítačů. Pokud máte skupinu s více než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.
+Můžete [vizualizovat závislosti](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) pro skupiny, které mají až 10 serverů. Pokud máte skupinu, která má více než 10 serverů, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54fd6c0c085c0055f3114fde606f8f7d2f2e055e
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98747487"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772055"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
 
@@ -99,5 +99,7 @@ V tomto dokumentu jste zjistili, jak Azure Sentinel shromažďuje protokoly CEF 
 - Krok 3: [ověření připojení](connect-cef-verify.md)
 
 Další informace o tom, co dělat s daty, která jste shromáždili v Azure Sentinel, najdete v následujících článcích:
+
+- Přečtěte si o [mapování polí CEF a CommonSecurityLog](cef-name-mapping.md).
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](./tutorial-detect-threats-built-in.md).

@@ -1,18 +1,14 @@
 ---
 title: Import informací o zařízení
 description: Defender pro senzory IoT monitoruje a analyzuje zrcadlený provoz. V těchto případech můžete chtít importovat data pro rozšíření informací o zařízeních, která jsou už zjištěná.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 333ffbf4107dfd005ba7e7fae6a079a618e0c645
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: eb82a3e5d360913acfead06adc03194d80f7fccb
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522236"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785626"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Import informací o zařízení do snímače
 

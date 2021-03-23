@@ -1,24 +1,14 @@
 ---
 title: Předdefinovaný & vlastní seznam výstrah
 description: Přečtěte si o výstrahách zabezpečení a doporučené nápravě pomocí programu Defender pro funkce a službu IoT Hub.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/16/2021
-ms.author: shhazam
-ms.openlocfilehash: ef33851600c576494e4e0903c6ab8ffefc9a1a59
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73b3a1ca3e52f571ab7b531235650b6bda870691
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100636488"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784556"
 ---
 # <a name="defender-for-iot-hub-security-alerts"></a>Defender pro IoT Hub výstrahy zabezpečení
 
@@ -32,7 +22,7 @@ Další informace najdete v tématu [přizpůsobitelná upozornění](concept-cu
 
 ## <a name="built-in-alerts-for-iot-hub"></a>Integrované výstrahy pro IoT Hub
 
-| Závažnost | Název | Description | Navrhovaná náprava |
+| Závažnost | Název | Popis | Navrhovaná náprava |
 |--|--|--|--|
 | **Střední** závažnost |  |  |  |
 | Nový certifikát se přidal do IoT Hub. | Střední | \' \' Do IoT Hub \' % {DescIoTHubName} se přidal certifikát s názvem% {DescCertificateName} \' . Pokud tato akce byla provedena neoprávněnou stranou, může to znamenat škodlivou aktivitu. | 1. Ujistěte se, že certifikát přidala oprávněná strana. <br> 2. Pokud ho nepřidala autorizovaný účastník, odeberte ho a upozorněte ho do organizačního týmu zabezpečení. |

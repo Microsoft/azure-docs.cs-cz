@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 7c9b4032346e61eb3bfd21c0c4067e2364bc28af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670832"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780731"
 ---
 # <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>Kontejnerizace ASP.NET aplikace a migrace do služby Azure Kubernetes Service
 
@@ -59,7 +59,7 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
 **Požadavek** | **Podrobnosti**
 --- | ---
-**Určení počítače pro instalaci nástroje** | Počítač s Windows, který se má nainstalovat a spustit Azure Migrate: Nástroj pro vytvoření kontejneru aplikace Počítač s Windows může být server (Windows Server 2016 nebo novější) nebo operační systém klienta (Windows 10), což znamená, že nástroj může běžet i na ploše. <br/><br/> Počítač s Windows, na kterém je spuštěný nástroj, by měl mít síťové připojení k serverům nebo virtuálním počítačům, které hostují aplikace ASP.NET, aby byly kontejnery.<br/><br/> Zajistěte, aby na počítači s Windows, na kterém běží Azure Migrate: Nástroj pro vyřazení aplikací pro ukládání artefaktů aplikací, bylo k dispozici 6 GB volného místa. <br/><br/> Počítač s Windows by měl mít přístup k Internetu, a to přímo nebo prostřednictvím proxy serveru. <br/> <br/>Nainstalujte nástroj Microsoft Nasazení webu na počítač, na kterém běží pomocný nástroj kontejneru aplikace a aplikační server, pokud ještě není nainstalovaný. Nástroj si můžete stáhnout [tady](https://aka.ms/webdeploy3.6) .
+**Určení počítače pro instalaci nástroje** | Počítač s Windows, který se má nainstalovat a spustit Azure Migrate: Nástroj pro vytvoření kontejneru aplikace Počítač s Windows může být server (Windows Server 2016 nebo novější) nebo operační systém klienta (Windows 10), což znamená, že nástroj může běžet i na ploše. <br/><br/> Počítač s Windows, na kterém nástroj běží, by měl mít síťové připojení k serverům nebo virtuálním počítačům hostujícím kontejnerizované aplikace ASP.NET.<br/><br/> Zajistěte, aby na počítači s Windows, na kterém běží Azure Migrate: Nástroj pro vyřazení aplikací pro ukládání artefaktů aplikací, bylo k dispozici 6 GB volného místa. <br/><br/> Tento počítač s Windows by měl mít přístup k internetu, a to buď přímo, nebo prostřednictvím proxy serveru. <br/> <br/>Nainstalujte nástroj Microsoft Nasazení webu na počítač, na kterém běží pomocný nástroj kontejneru aplikace a aplikační server, pokud ještě není nainstalovaný. Nástroj si můžete stáhnout [tady](https://aka.ms/webdeploy3.6) .
 **Aplikační servery** | Povolit vzdálenou komunikaci PowerShellu na aplikačních serverech: Přihlaste se k aplikačnímu serveru a postupujte podle [těchto](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting) pokynů, abyste mohli zapnout vzdálenou komunikaci PowerShellu. <br/><br/> Pokud aplikační server používá systém Windows Server 2008 R2, ujistěte se, že je na aplikačním serveru nainstalováno prostředí PowerShell 5,1. Pokud si chcete stáhnout a nainstalovat PowerShell 5,1 na aplikační server, postupujte [podle pokynů.](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure) <br/><br/> Nainstalujte nástroj Microsoft Nasazení webu na počítač, na kterém běží pomocný nástroj kontejneru aplikace a aplikační server, pokud ještě není nainstalovaný. Nástroj si můžete stáhnout [tady](https://aka.ms/webdeploy3.6) .
 **Aplikace ASP.NET** | Nástroj aktuálně podporuje <br/><br/> -ASP.NET aplikace pomocí rozhraní Microsoft .NET Framework 3,5 nebo novějšího.<br/> – Aplikační servery se systémem Windows Server 2008 R2 nebo novějším (aplikační servery by měly používat PowerShell verze 5,1). <br/> -Aplikace spuštěné v Internetová informační služba (IIS) 7,5 nebo novější. <br/><br/> Nástroj aktuálně nepodporuje <br/><br/> – Aplikace vyžadující ověřování systému Windows (AKS nepodporuje aktuálně gMSA). <br/> – Aplikace, které závisí na dalších službách systému Windows hostovaných mimo službu IIS.
 
@@ -105,7 +105,7 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vaše
 3. Spusťte instalační skript pomocí příkazu.
 
    ```powershell
-   .\App ContainerizationInstaller.ps1
+   .\AppContainerizationInstaller.ps1
    ```
 
 ## <a name="launch-the-app-containerization-tool"></a>Spustit nástroj pro kontejnery aplikací
@@ -152,7 +152,7 @@ Klikněte na **Přihlásit** se a přihlaste se k účtu Azure.
 Nástroj pro pomoc kontejneru aplikací se vzdáleně připojuje k aplikačním serverům pomocí zadaných přihlašovacích údajů a pokusí se zjistit aplikace ASP.NET hostované na aplikačních serverech.
 
 1. Zadejte **IP adresu nebo plně kvalifikovaný název domény a přihlašovací údaje** serveru, na kterém běží aplikace ASP.NET, která se má použít pro vzdálené připojení k serveru pro zjišťování aplikací.
-    - Zadaná pověření musí být pro místního správce (Windows) na aplikačním serveru.
+    - Zadané přihlašovací údaje musí být místního správce (Windows) na aplikačním serveru.
     - U doménových účtů (uživatel musí být správcem na aplikačním serveru), prefixujte uživatelské jméno s názvem domény ve formátu *<doména \ uživatelské_jméno>*.
     - Můžete spustit zjišťování aplikací pro až pět serverů v čase.
 

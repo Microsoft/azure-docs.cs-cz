@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/07/2020
+ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706f759243fd9edbd5f47633cb2638d6b06beec1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 71eaccd615f5c3460e7b48b2e92d5f874c8de12e
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376356"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772106"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -56,6 +56,86 @@ Další informace o [automatickém upgradu](how-to-connect-install-automatic-upg
 >Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](./how-to-upgrade-previous-version.md) .
 >
 >Informace o historii verzí v vyřazených verzích najdete v článku [archiv Historie vydání verze Azure AD Connect](reference-connect-version-history-archive.md) .
+
+
+## <a name="1624"></a>1.6.2.4
+
+>[!NOTE]
+> - Tato verze bude dostupná jenom pro stažení.
+> - Upgrade na tuto verzi bude vyžadovat úplnou synchronizaci z důvodu změn pravidel synchronizace.
+> - Tato verze vyhodnotí server AADConnect do nového koncového bodu v2. Všimněte si, že tento koncový bod není podporovaný v německém národním cloudu, v rámci čínského národního cloudu a v cloudu pro státní správu USA, a pokud potřebujete nasadit tuto verzi v těchto cloudech, musíte podle [těchto pokynů](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) přejít zpátky na koncový bod v1. V důsledku tohoto selhání dojde k chybám při synchronizaci.
+
+### <a name="release-status"></a>Stav verze
+3/19/2021: vydáno ke stažení
+
+### <a name="functional-changes"></a>Funkční změny
+
+ - Aktualizovaná výchozí pravidla synchronizace pro omezení členství v zapsaných skupinách zpět na 50 tis členové.
+   - Přidala se nová výchozí pravidla synchronizace pro omezení počtu členství ve skupině zpětný zápis skupin (na limit počtu členů se zpětným zápisem skupiny) a synchronizace skupin na Azure Active Directory (z limitu počtu členů služby AAD-skupina writeup).
+   - Přidání atributu členu do pravidla "out do AD-Group SOAInAAD-Exchange" pro omezení členů v zapsaných skupinách zpět na 50 tis
+ - Aktualizovaná pravidla synchronizace pro podporu zpětného zápisu skupin v2 – Pokud je pravidlo in z AAD-Group SOAInAAD naklonované a upgraduje se AADConnect.
+     – Aktualizované pravidlo bude ve výchozím nastavení zakázané a targetWritebackType bude mít hodnotu null.
+     - AADConnect zruší všechny cloudové skupiny (včetně skupin zabezpečení Azure Active Directory povolených pro zpětný zápis) jako distribučních skupin.
+   – Pokud je pravidlo "out to AD-Group SOAInAAD" naklonované a aktualizuje se AADConnect.
+     - Aktualizované pravidlo bude ve výchozím nastavení zakázáno. Bude se ale aktivovat nové pravidlo synchronizace "out do AD-Group SOAInAAD-Exchange", které se přidá.
+     - V závislosti na prioritě klonovaného vlastního pravidla synchronizace bude AADConnect přesměrovat atributy pro poštu a Exchange.
+     - Pokud naklonované vlastní pravidlo synchronizace neflowe některé atributy pošty a Exchange, nové pravidlo synchronizace Exchange tyto atributy přidá.
+ - Přidání podpory pro [synchronizaci hodnot hash selektivního hesla](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-selective-password-hash-synchronization)
+ - Přidala se nová [rutina synchronizace s jedním objektem](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-single-object-sync). Pomocí této rutiny můžete řešit potíže s konfigurací Azure AD Connect synchronizace. 
+ - Agent AADConnectHealth se aktualizoval na 3.1.83.0.
+ - Nová verze [modulu ADSyncTools PowerShellu](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adsynctools), který obsahuje několik nových nebo vylepšených rutin. 
+ 
+   - Clear-ADSyncToolsMsDsConsistencyGuid
+   - ConvertFrom-ADSyncToolsAadDistinguishedName
+   - ConvertFrom-ADSyncToolsImmutableID
+   - ConvertTo-ADSyncToolsAadDistinguishedName
+   - ConvertTo-ADSyncToolsCloudAnchor
+   - ConvertTo-ADSyncToolsImmutableID
+   - Export-ADSyncToolsAadDisconnectors
+   - Export-ADSyncToolsObjects
+   - Export-ADSyncToolsRunHistory
+   - Get-ADSyncToolsAadObject
+   - Get-ADSyncToolsMsDsConsistencyGuid
+   - Import-ADSyncToolsObjects
+   - Import-ADSyncToolsRunHistory
+   - Remove-ADSyncToolsAadObject
+   - Search-ADSyncToolsADobject
+   - Set-ADSyncToolsMsDsConsistencyGuid
+   - Trace-ADSyncToolsADImport
+   - Trace-ADSyncToolsLdapQuery
+
+ - Bylo aktualizováno protokolování chyb pro chyby získání tokenu.
+ - Aktualizované odkazy "Další informace" na stránce konfigurace poskytují více podrobností o propojených informacích.
+ - Odebrání explicitního sloupce ze stránky vyhledávání CS ve starém uživatelském rozhraní synchronizace
+ - Do toku zpětného zápisu skupiny bylo přidáno další uživatelské rozhraní, které uživateli vyzve k zadání přihlašovacích údajů nebo ke konfiguraci vlastních oprávnění pomocí modulu ADSyncConfig, pokud přihlašovací údaje ještě nejsou v dřívějším kroku k dispozici.
+ - Automaticky vytvoří MSA pro účet služby ADSync na řadiči domény. 
+ -  Přidala se možnost nastavit a získat Azure Active Directory se zpětným zápisem skupiny funkcí DirSync v2 ve stávajících rutinách:
+    - Set-ADSyncAADCompanyFeature
+    - Get-ADSyncAADCompanyFeature
+ - Přidání dvou rutin ke čtení verze rozhraní AWS API
+    - Get-ADSyncAADConnectorImportApiVersion – získání verze rozhraní API pro import AWS
+    - Get-ADSyncAADConnectorExportApiVersion – získání verze rozhraní API pro export AWS
+
+ - Změny pravidel synchronizace jsou nyní sledovány, což pomáhá při odstraňování potíží se změnami ve službě. Rutina Get-ADSyncRuleAudit načte sledované změny.
+ - Aktualizovali jsme rutinu Add-ADSyncADDSConnectorAccount v [modulu PowerShellu ADSyncConfig](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account#using-the-adsyncconfig-powershell-module) , aby uživatel ve skupině ADSyncAdmin mohl změnit účet konektoru služba AD DS. 
+
+### <a name="bug-fixes"></a>Opravy chyb
+ - Aktualizace zakázané barvy popředí pro splnění požadavků na světlost na bílém pozadí. Přidání dalších podmínek pro navigační strom pro nastavení barvy textu v popředí na bílou, je-li vybrána zakázaná stránka pro splnění požadavků na světlost.
+ - Zvyšte členitost rutiny Set-ADSyncPasswordHashSyncPermissions – aktualizovaný skript KOSMETICE Permissions (set-ADSyncPasswordHashSyncPermissions), aby zahrnoval volitelný parametr "ADobjectDN". 
+ - Oprava chyb usnadnění. Čtečka obrazovky by nyní popsala prvek UX, který obsahuje seznam doménových struktur jako "**seznam doménových** struktur" místo "**seznamu seznamu domén**".
+ - Aktualizovaný výstup čtečky obrazovky pro některé položky v průvodci Azure AD Connect. Aktualizace barvy najetí myší na tlačítko pro splnění požadavků na kontrast Aktualizovala se barva názvu Synchronization Service Manager, aby splňovala požadavky na kontrast.
+ - Opravili jsme problém s instalací AADConnect z exportované konfigurace s vlastními atributy rozšíření – přidejte podmínku, která při použití pravidla synchronizace přeskočí kontrolu atributů rozšíření v cílovém schématu.
+ - Pokud je povolená funkce zpětného zápisu skupiny, přidají se do instalace příslušná oprávnění.
+ - Opravit duplicitní výchozí prioritu pravidla synchronizace při importu
+ - Opravili jsme problém, který způsobil chybu přípravy během rozdílového importu API v2 pro konfliktní objekt, který byl opraven prostřednictvím portálu Health.
+ - Opravili jsme problém v synchronizačním modulu, který způsobil, že objekty CS mají nekonzistentní stav propojení.
+ - Do výstupního Get-ADSyncConnectorStatistics se přidaly čítače importu.
+ - V některých rohových případech během průvodce pass2 byla opravena nedosažitelná doména a zrušení výběru.
+ - Změna importu a exportu zásad do selhání, pokud má vlastní pravidlo duplicitní prioritu 
+ - Opravili jsme chybu v logice výběru domény.
+ - Řeší problém se sestavou 1.5.18.0, pokud jako zdrojový kotvu použijete mS-DS-ConsistencyGuid a naklonujte ho v části z pravidla spojování AD-Group.
+ - Pokud je k dispozici nová instalace AADConnect, použije se prahová hodnota pro odstranění exportu uložená v cloudu, pokud je k dispozici a nedošlo k žádné jiné předané.
+ - Opraven problém, kdy AADConnect nepřečte změny ve službě AD DisplayName u zařízení připojených k hybridnímu připojení
 
 ## <a name="15450"></a>1.5.45.0
 

@@ -3,12 +3,12 @@ title: Aktualizace platformy pro řešení Azure VMware
 description: Seznamte se s aktualizacemi platformy pro řešení Azure VMware.
 ms.topic: reference
 ms.date: 03/16/2021
-ms.openlocfilehash: 73bd1d088f9055ebd80a28c6247ea9dfa6229093
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce25df2cb221c032f6dd430f292522fe86e69ceb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586229"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771766"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Aktualizace platformy pro řešení Azure VMware
 
@@ -16,7 +16,7 @@ Důležité aktualizace řešení Azure VMware se použijí od března 2021. Dos
 
 ## <a name="march-15-2021"></a>15. března 2021 
 
-- Služba řešení Azure VMware provede pracovní údržbu do 19. března 20201 k aktualizaci vCenter serveru ve vašem privátním cloudu na verzi vCenter Server 6,7 Update 3l.
+- Služba řešení Azure VMware provede pracovní údržbu do 19. března 2021 k aktualizaci vCenter serveru ve vašem privátním cloudu na verzi vCenter Server 6,7 Update 3l.
 
 - Během této doby nebude VMware vCenter k dispozici a nebude možné spravovat virtuální počítače (zastavit, spustit, vytvořit, odstranit). Škálování privátního cloudu (přidávání/odebírání serverů a clusterů) bude také nedostupné. Technologie VMware s vysokou dostupností (HA) bude nadále fungovat, aby poskytovala ochranu pro stávající virtuální počítače. 
  

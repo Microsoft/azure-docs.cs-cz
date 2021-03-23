@@ -1,18 +1,14 @@
 ---
 title: Urychlení pracovních postupů výstrah
 description: Vylepšete pracovní postupy výstrah a incidentů.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 0a445abe0f448c28742282aedd1a886fae0f5a43
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c12d1135b7a7bc87a38a609aeeb6ada8caa9a25e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100526285"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779116"
 ---
 # <a name="accelerate-alert-workflows"></a>Urychlení pracovních postupů výstrah
 
@@ -81,16 +77,29 @@ Tato pole by se měla nakonfigurovat v partnerském řešení, aby se zobrazil n
 ### <a name="default-alert-groups"></a>Výchozí skupiny výstrah
 
 Následující skupiny výstrah jsou automaticky definovány:
-|  |  |  |
-|--|--|--|
-| Neobvyklé chování komunikace | Vlastní výstrahy | Vzdálený přístup |
-| Neobvyklé chování komunikace HTTP | Zjišťování | Příkazy pro restartování a zastavení |
-| Authentication | Změna firmwaru | Prohledávání |
-| Neoprávněné chování komunikace | Neplatné příkazy | Provoz senzorů |
-| Anomálie šířky pásma | Přístup k internetu | Podezření na malware |
-| Přetečení vyrovnávací paměti | Selhání operace | Podezření na škodlivou aktivitu |
-| Selhání příkazu | Provozní problémy |  |
-| Změny konfigurace | Plánování |  |
+
+- Neobvyklé chování komunikace
+- Vlastní výstrahy
+- Vzdálený přístup
+- Neobvyklé chování komunikace HTTP
+- Zjišťování
+- Příkazy pro restartování a zastavení
+- Authentication
+- Změna firmwaru
+- Prohledávání
+- Neoprávněné chování komunikace
+- Neplatné příkazy
+- Provoz senzorů
+- Anomálie šířky pásma
+- Přístup k internetu
+- Podezření na malware
+- Přetečení vyrovnávací paměti 
+- Selhání operace
+- Podezření na škodlivou aktivitu
+- Selhání příkazu
+- Provozní problémy
+- Změny konfigurace
+- Plánování
 
 Skupiny výstrah jsou předdefinované. Pokud chcete získat podrobnosti o výstrahách spojených se skupinami výstrah a o vytváření vlastních skupin výstrah, obraťte se na [Podpora Microsoftu](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c8f35-1b8e-f274-ec11-c6efdd6dd099).
 

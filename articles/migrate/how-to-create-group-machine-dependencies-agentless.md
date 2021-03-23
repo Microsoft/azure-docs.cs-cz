@@ -1,24 +1,24 @@
 ---
-title: Nastavení analýzy závislostí bez agentů v serveru Azure Migrate Assessment
-description: Nastavte analýzu závislostí bez agentů v Azure Migrate Server Assessment.
+title: Nastavení analýzy závislostí bez agentů v Azure Migrate
+description: Nastavte analýzu závislostí bez agentů v Azure Migrate.
 author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: c3aa2aea764af8469152b007e60427724fea398a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7966750d7c3e0f12bb9404a4d78bbc27e4075c52
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045849"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786579"
 ---
 # <a name="analyze-server-dependencies-agentless"></a>Analyzovat závislosti serveru (bez agenta)
 
-Tento článek popisuje, jak nastavit analýzu závislostí bez agentů pomocí Azure Migrate: posouzení serveru. [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat a pochopit závislosti mezi servery pro účely posouzení a migrace do Azure.
+Tento článek popisuje, jak nastavit analýzu závislostí bez agentů pomocí nástroje Azure Migrate: Discovery and Assessment Tool. [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat a pochopit závislosti mezi servery pro účely posouzení a migrace do Azure.
 
 > [!IMPORTANT]
-> Analýza závislostí bez agentů je momentálně ve verzi Preview pro servery, které běží ve vašem prostředí VMware, zjištěné nástrojem Azure Migrate: Nástroj pro vyhodnocení serveru.
+> Analýza závislostí bez agentů je momentálně ve verzi Preview pro servery, které běží v prostředí VMware, zjištěné nástrojem Azure Migrate: Discovery and Assessment Tool.
 > Tuto verzi Preview pokrývá zákaznická podpora a je možné ji použít pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů pomocí 
 
 ## <a name="before-you-start"></a>Než začnete
 
-- Ujistěte se, že jste [vytvořili Azure Migrate projekt](./create-manage-projects.md) pomocí Azure Migrate: Nástroj pro vyhodnocení serveru byl do něj přidán.
+- Ujistěte se, že jste [vytvořili projekt](./create-manage-projects.md) s nástrojem Azure Migrate: byl přidán Nástroj pro zjišťování a vyhodnocení.
 - Zkontrolujte [požadavky VMware](migrate-support-matrix-vmware.md#vmware-requirements) a proveďte analýzu závislostí.
 - Před nastavením zařízení zkontrolujte [požadavky na zařízení](migrate-support-matrix-vmware.md#azure-migrate-appliance-requirements) .
 - Než povolíte analýzu závislostí na serverech, [Zkontrolujte požadavky na analýzu závislostí](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) .
@@ -41,7 +41,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů pomocí 
 2. Zkontrolujte adresy URL Azure, které bude zařízení potřebovat pro přístup k [veřejným](migrate-appliance.md#public-cloud-urls) a [státním cloudům](migrate-appliance.md#government-cloud-urls).
 3. [Zkontrolujte data](migrate-appliance.md#collected-data---vmware) , která zařízení shromažďuje během zjišťování a posouzení.
 4. [Poznamenejte si](migrate-support-matrix-vmware.md#port-access-requirements) požadavky na přístup k portu pro dané zařízení.
-5. [Nasaďte zařízení Azure Migrate](how-to-set-up-appliance-vmware.md) a spusťte zjišťování. Chcete-li nasadit zařízení, Stáhněte a importujte šablonu vajíček do VMware a vytvořte na svém vCenter Server Server se systémem. Po nasazení zařízení je potřeba ho zaregistrovat v projektu Azure Migrate a nakonfigurovat ho tak, aby zahájil zjišťování.
+5. [Nasaďte zařízení Azure Migrate](how-to-set-up-appliance-vmware.md) a spusťte zjišťování. Chcete-li nasadit zařízení, Stáhněte a importujte šablonu vajíček do VMware a vytvořte na svém vCenter Server Server se systémem. Po nasazení zařízení je potřeba ho zaregistrovat v projektu a nakonfigurovat ho tak, aby zahájil zjišťování.
 6. Při konfiguraci zařízení musíte v nástroji Configuration Manager pro zařízení zadat následující:
     - Podrobnosti vCenter Server, ke kterým se chcete připojit
     - vCenter Server rozsah přihlašovacích údajů, aby se zjistily servery ve vašem prostředí VMware.
@@ -50,7 +50,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů pomocí 
 ## <a name="verify-permissions"></a>Ověření oprávnění
 
 - Pro zjišťování a hodnocení musíte [vytvořit účet vCenter Server jen pro čtení](./tutorial-discover-vmware.md#prepare-vmware) . Účet jen pro čtení potřebuje oprávnění povolená pro **Virtual Machines**  >  **operace hostů**, aby bylo možné komunikovat se servery za účelem shromažďování dat o závislostech.
-- Potřebujete uživatelský účet, aby mohl server Assessment získat přístup k serveru a shromažďovat data o závislostech. [Přečtěte si](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) o požadavcích na účet pro servery s Windows a Linux.
+- Potřebujete uživatelský účet, aby Azure Migrate mohl získat přístup k serveru a shromažďovat data o závislostech. [Přečtěte si](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) o požadavcích na účet pro servery s Windows a Linux.
 
 ### <a name="add-credentials-and-initiate-discovery"></a>Přidat pověření a iniciovat zjišťování
 
@@ -67,7 +67,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů pomocí 
 
 Vyberte servery, na kterých chcete povolit zjišťování závislostí.
 
-1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
+1. V **Azure Migrate: zjišťování a hodnocení** klikněte na **zjištěné servery**.
 2. Vyberte **název zařízení** , jehož zjišťování chcete zkontrolovat.
 1. Stav ověření serverů můžete zobrazit ve sloupci **závislosti (bez agenta)** .
 1. Klikněte na rozevírací seznam **Analýza závislostí** .
@@ -81,7 +81,7 @@ Po povolení analýzy závislostí na serverech můžete vizualizovat závislost
 
 ## <a name="visualize-dependencies"></a>Vizualizace závislostí
 
-1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
+1. V **Azure Migrate: zjišťování a hodnocení** klikněte na **zjištěné servery**.
 1. Vyberte **název zařízení** , jehož zjišťování chcete zkontrolovat.
 1. Vyhledejte server, jehož závislosti chcete zkontrolovat.
 1. Ve sloupci **závislosti (bez agenta)** klikněte na **Zobrazit závislosti.**
@@ -100,7 +100,7 @@ Po povolení analýzy závislostí na serverech můžete vizualizovat závislost
 
 ## <a name="export-dependency-data"></a>Exportovat data závislostí
 
-1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
+1. V **Azure Migrate: zjišťování a hodnocení** klikněte na **zjištěné servery**.
 2. Klikněte na rozevírací seznam **Analýza závislostí** .
 3. Klikněte na **exportovat závislosti aplikací**.
 4. Na stránce **exportovat závislosti aplikací** vyberte název zařízení, který zjišťuje požadované servery.
@@ -132,7 +132,7 @@ Cílový port | Číslo portu na cílovém serveru
 
 Vyberte servery, na kterých chcete zastavit zjišťování závislostí.
 
-1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
+1. V **Azure Migrate: zjišťování a hodnocení** klikněte na **zjištěné servery**.
 1. Vyberte **název zařízení** , jehož zjišťování chcete zkontrolovat.
 1. Klikněte na rozevírací seznam **Analýza závislostí** .
 1. Klikněte na **odebrat servery**.
@@ -157,7 +157,7 @@ Stáhněte modul PowerShell z [Azure PowerShellho úložiště ukázek](https://
     Connect-AzAccount -EnvironmentName AzureUSGovernment
     ```
 
-2. Vyberte předplatné, ve kterém jste vytvořili Azure Migrate projekt. 
+2. Vyberte předplatné, ve kterém jste projekt vytvořili. 
 
     ```PowerShell
     select-azsubscription -subscription "Fabrikam Demo Subscription"
@@ -171,7 +171,7 @@ Stáhněte modul PowerShell z [Azure PowerShellho úložiště ukázek](https://
 
 ### <a name="enable-or-disable-dependency-data-collection"></a>Povolit nebo zakázat shromažďování dat závislostí
 
-1. Pomocí následujících příkazů Získejte seznam zjištěných serverů v projektu Azure Migrate. V následujícím příkladu je název projektu FabrikamDemoProject a skupina prostředků, do které patří, je FabrikamDemoRG. Seznam serverů bude uložen v FabrikamDemo_VMs.csv
+1. Seznam zjištěných serverů v projektu získáte pomocí následujících příkazů. V následujícím příkladu je název projektu FabrikamDemoProject a skupina prostředků, do které patří, je FabrikamDemoRG. Seznam serverů bude uložen v FabrikamDemo_VMs.csv
 
     ```PowerShell
     Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
@@ -212,7 +212,7 @@ Azure Migrate nabízí šablonu Power BI, kterou můžete použít k vizualizaci
         Connect-AzAccount -EnvironmentName AzureUSGovernment
         ```
 
-    - Vyberte předplatné, ve kterém jste vytvořili Azure Migrate projekt.
+    - Vyberte předplatné, ve kterém jste projekt vytvořili.
 
         ```PowerShell
         select-azsubscription -subscription "Fabrikam Demo Subscription"

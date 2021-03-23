@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/19/2021
+ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99627762"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772463"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Dělení a horizontální škálování ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -63,8 +63,6 @@ Azure Cosmos DB transparentně a automaticky spravuje umístění logických odd
 Azure Cosmos DB pro rozprostření logických oddílů mezi fyzickými oddíly používá dělení na základě hodnoty hash. Azure Cosmos DB hodnota hash hodnot klíče oddílu položky. Výsledek s hodnotou hash Určuje fyzický oddíl. Pak Azure Cosmos DB přiděluje klíčové místo hodnot hash klíče oddílu rovnoměrně napříč fyzickými oddíly.
 
 Transakce (v uložených procedurách nebo triggerech) jsou povoleny pouze proti položkám v jednom logickém oddílu.
-
-Další informace o tom, [jak Azure Cosmos DB spravuje oddíly](partitioning-overview.md), najdete v tématu. (Není nutné porozumět interním podrobnostem pro sestavování a spouštění aplikací, ale zde jste přidaní pro čtečku zajímá.)
 
 ## <a name="replica-sets"></a>Sady replik
 

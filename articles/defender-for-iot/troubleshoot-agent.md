@@ -1,24 +1,14 @@
 ---
 title: Řešení potíží s spuštěním agenta zabezpečení (Linux)
 description: Řešení potíží při práci s Azure Defenderem pro agenty zabezpečení IoT pro Linux
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 7be6cf1df15d7afd7cb9447be68ff70ff7b14d03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c9c36b822ab6acb9f9a48d4ba809ad32f6f4695
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449216"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782584"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Průvodce odstraňováním potíží s agenty zabezpečení (Linux)
 
@@ -91,19 +81,18 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 ```
 
 | Kód chyby | Chybový kód chyby | Podrobnosti o chybě | Opravit C | Opravit C # |
-|:-----------|:---------------|:--------|:------------|:------------|
-| Místní konfigurace | Chybějící konfigurace | V místním konfiguračním souboru chybí konfigurace. Chybová zpráva by měla uvádět, který klíč chybí. | Přidejte chybějící klíč do/var/LocalConfiguration.jsv souboru. Podrobnosti najdete v části [cs-localconfig-reference](azure-iot-security-local-configuration-c.md) .| Do souboru General.config přidejte chybějící klíč. Podrobnosti najdete v tématu [c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) . |
-| Místní konfigurace | Nejde analyzovat konfiguraci. | Hodnotu konfigurace nelze analyzovat. Chybová zpráva by měla obsahovat stav, který klíč nelze analyzovat. Hodnotu konfigurace nelze analyzovat buď proto, že hodnota není v očekávaném typu, nebo je hodnota mimo rozsah. | Opravte hodnotu klíče v/var/LocalConfiguration.jsv souboru tak, aby odpovídala schématu LocalConfiguration. Podrobnosti najdete v tématu [c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) . |  Opravte hodnotu klíče v souboru General.config tak, aby odpovídala schématu. Podrobnosti najdete v části [cs-localconfig-reference](azure-iot-security-local-configuration-c.md) .|
-| Místní konfigurace | Formát souboru | Nepovedlo se analyzovat konfigurační soubor. | Konfigurační soubor je poškozený, Stáhněte agenta a znovu ho nainstalujte. | |
-| Vzdálená konfigurace | Časový limit | Agentovi se nepovedlo načíst v rámci časového limitu vlákna azureiotsecurity modulu. | Ujistěte se, že je konfigurace ověřování správná, a zkuste to znovu. | Agentovi se nepovedlo načíst v rámci časového limitu vlákna modulu azureiotsecurity. | Ujistěte se, že je konfigurace ověřování správná, a zkuste to znovu. |
-| Authentication | Soubor neexistuje. | Soubor v dané cestě neexistuje. | Ujistěte se, že soubor v dané cestě existuje, nebo přejděte na **LocalConfiguration.jsv** souboru a změňte konfiguraci **FilePath** . | Zajistěte, aby soubor v dané cestě existoval, nebo přejděte do souboru **Authentication.config** a změňte konfiguraci **FilePath** .|
+|--|--|--|--|--|
+| Místní konfigurace | Chybějící konfigurace | V místním konfiguračním souboru chybí konfigurace. Chybová zpráva by měla uvádět, který klíč chybí. | Přidejte chybějící klíč do/var/LocalConfiguration.jsv souboru. Podrobnosti najdete v části [cs-localconfig-reference](azure-iot-security-local-configuration-c.md) . | Do souboru General.config přidejte chybějící klíč. Podrobnosti najdete v tématu [c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) . |
+| Místní konfigurace | Nejde analyzovat konfiguraci. | Hodnotu konfigurace nelze analyzovat. Chybová zpráva by měla obsahovat stav, který klíč nelze analyzovat. Hodnotu konfigurace nelze analyzovat buď proto, že hodnota není v očekávaném typu, nebo je hodnota mimo rozsah. | Opravte hodnotu klíče v/var/LocalConfiguration.jsv souboru tak, aby odpovídala schématu LocalConfiguration. Podrobnosti najdete v tématu [c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) . | Opravte hodnotu klíče v souboru General.config tak, aby odpovídala schématu. Podrobnosti najdete v části [cs-localconfig-reference](azure-iot-security-local-configuration-c.md) . |
+| Místní konfigurace | Formát souboru | Nepovedlo se analyzovat konfigurační soubor. | Konfigurační soubor je poškozený, Stáhněte agenta a znovu ho nainstalujte. | - |
+| Vzdálená konfigurace | Časový limit | Agentovi se nepovedlo načíst v rámci časového limitu vlákna azureiotsecurity modulu. | Ujistěte se, že je konfigurace ověřování správná, a zkuste to znovu. | Agentovi se nepovedlo načíst v rámci časového limitu vlákna modulu azureiotsecurity. Ujistěte se, že je konfigurace ověřování správná, a zkuste to znovu. |
+| Authentication | Soubor neexistuje. | Soubor v dané cestě neexistuje. | Ujistěte se, že soubor v dané cestě existuje, nebo přejděte na **LocalConfiguration.jsv** souboru a změňte konfiguraci **FilePath** . | Zajistěte, aby soubor v dané cestě existoval, nebo přejděte do souboru **Authentication.config** a změňte konfiguraci **FilePath** . |
 | Authentication | Oprávnění souboru | Agent nemá dostatečná oprávnění k otevření souboru. | Udělte uživateli **asciotagent** oprávnění ke čtení souboru v dané cestě. | Ujistěte se, že je soubor přístupný. |
 | Authentication | Formát souboru | Daný soubor nemá správný formát. | Ujistěte se, že je soubor ve správném formátu. Podporované typy souborů jsou. pfx a. pem. | Ujistěte se, že je soubor platným souborem certifikátu. |
-| Authentication | Neautorizováno | Agent nemohl provést ověření proti IoT Hub s danými přihlašovacími údaji. | Ověřte konfiguraci ověřování v souboru LocalConfiguration, Projděte konfiguraci ověřování a ujistěte se, že jsou všechny podrobnosti správné, ověřte, že tajný klíč v souboru odpovídá ověřené identitě. | Ověřte konfiguraci ověřování v Authentication.config, Projděte si konfiguraci ověřování a ujistěte se, že jsou všechny podrobnosti správné, a ověřte, že tajný klíč v souboru odpovídá ověřené identitě.
-| Authentication | Nenalezeno | Zařízení/modul se našel. | Ověřit konfiguraci ověřování – Ujistěte se, že je název hostitele správný, že zařízení existuje v IoT Hub a má neazureiotsecurityý modul. |  Ověřit konfiguraci ověřování – Ujistěte se, že je název hostitele správný, že zařízení existuje v IoT Hub a má neazureiotsecurityý modul. |
-| Authentication | Chybějící konfigurace | V souboru *Authentication.config* chybí konfigurace. Chybová zpráva by měla uvádět, který klíč chybí. | Do *LocalConfiguration.js* souboru přidejte chybějící klíč.| Do souboru *Authentication.config* přidejte chybějící klíč. Podrobnosti najdete v tématu [c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) . |
-| Authentication | Nejde analyzovat konfiguraci. | Hodnotu konfigurace nelze analyzovat. Chybová zpráva by měla obsahovat stav, který klíč nelze analyzovat. Hodnotu konfigurace nelze analyzovat, protože buď hodnota není očekávaného typu, nebo je hodnota mimo rozsah. |Opravte hodnotu klíče v **LocalConfiguration.jsv** souboru. |Opravte hodnotu klíče v souboru **Authentication.config** tak, aby odpovídala schématu. Další informace najdete v tématu [cs-localconfig-reference](azure-iot-security-local-configuration-c.md) .|
-|
+| Authentication | Neautorizováno | Agent nemohl provést ověření proti IoT Hub s danými přihlašovacími údaji. | Ověřte konfiguraci ověřování v souboru LocalConfiguration, Projděte konfiguraci ověřování a ujistěte se, že jsou všechny podrobnosti správné, ověřte, že tajný klíč v souboru odpovídá ověřené identitě. | Ověřte konfiguraci ověřování v Authentication.config, Projděte si konfiguraci ověřování a ujistěte se, že jsou všechny podrobnosti správné, a ověřte, že tajný klíč v souboru odpovídá ověřené identitě. |
+| Authentication | Nenalezeno | Zařízení/modul se našel. | Ověřit konfiguraci ověřování – Ujistěte se, že je název hostitele správný, že zařízení existuje v IoT Hub a má neazureiotsecurityý modul. | Ověřit konfiguraci ověřování – Ujistěte se, že je název hostitele správný, že zařízení existuje v IoT Hub a má neazureiotsecurityý modul. |
+| Authentication | Chybějící konfigurace | V souboru *Authentication.config* chybí konfigurace. Chybová zpráva by měla uvádět, který klíč chybí. | Do *LocalConfiguration.js* souboru přidejte chybějící klíč. | Do souboru *Authentication.config* přidejte chybějící klíč. Podrobnosti najdete v tématu [c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) . |
+| Authentication | Nejde analyzovat konfiguraci. | Hodnotu konfigurace nelze analyzovat. Chybová zpráva by měla obsahovat stav, který klíč nelze analyzovat. Hodnotu konfigurace nelze analyzovat, protože buď hodnota není očekávaného typu, nebo je hodnota mimo rozsah. | Opravte hodnotu klíče v **LocalConfiguration.jsv** souboru. | Opravte hodnotu klíče v souboru **Authentication.config** tak, aby odpovídala schématu. Další informace najdete v tématu [cs-localconfig-reference](azure-iot-security-local-configuration-c.md) .|
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,17 +1,17 @@
 ---
 title: Šifrování v infrastruktuře – Azure Portal-Azure Database for PostgreSQL
 description: Naučte se nastavit a spravovat dvojité šifrování infrastruktury pro vaše Azure Database for PostgreSQL.
-author: mksuni
-ms.author: sumuth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: ea486b534ac3e703849ddb3922d7c3a428dd076b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/14/2021
+ms.openlocfilehash: 0b1079a084072556ae79a18a12f6b35f74c92775
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93242224"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771647"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Dvojité šifrování infrastruktury pro Azure Database for PostgreSQL
 
@@ -23,7 +23,7 @@ Naučte se, jak nastavit a spravovat dvojité šifrování infrastruktury pro v�
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---portal"></a>Vytvoření serveru Azure Database for PostgreSQL s využitím šifrování infrastruktury – portál
 
-Pomocí těchto kroků můžete vytvořit Azure Database for MySQL server s šifrováním s dvojitou infrastrukturou v Azure Portal:
+Pomocí těchto kroků můžete vytvořit Azure Database for PostgreSQL Server s šifrováním s dvojitou infrastrukturou v Azure Portal:
 
 1. V levém horním rohu portálu vyberte **vytvořit prostředek** (+).
 
@@ -45,7 +45,7 @@ Pomocí těchto kroků můžete vytvořit Azure Database for MySQL server s šif
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---cli"></a>Vytvoření serveru Azure Database for PostgreSQL s použitím šifrování infrastruktury – rozhraní příkazového řádku
 
-Pomocí těchto kroků vytvořte Azure Database for MySQL server s dvojitým šifrováním infrastruktury z CLI:
+Pomocí těchto kroků vytvořte Azure Database for PostgreSQL Server s dvojitým šifrováním infrastruktury z CLI:
 
 Tento příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v `westus` umístění.
 

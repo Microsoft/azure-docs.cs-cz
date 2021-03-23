@@ -1,18 +1,14 @@
 ---
 title: Vytváření sestav dolování dat
 description: Generujte obsáhlé a podrobné informace o síťových zařízeních na různých vrstvách, jako jsou protokoly, verze firmwaru nebo programovací příkazy.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 99754959e7a3a08b4d763b85b0b9315476969774
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522475"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779065"
 ---
 # <a name="sensor-data-mining-queries"></a>Dotazy dolování dat ze senzorů
 
@@ -138,7 +134,7 @@ Vytvoření sestavy dolování dat:
 
 Následující tabulka popisuje možnosti správy pro dolování dat:
 
-| Obrázek ikony | Description |
+| Obrázek ikony | Popis |
 |--|--|
 | :::image type="icon" source="media/how-to-generate-reports/edit-a-simulation-icon.png" border="false"::: | Upravte parametry sestavy. |
 | :::image type="icon" source="media/how-to-generate-reports/export-as-pdf-icon.png" border="false"::: | Exportovat jako PDF |

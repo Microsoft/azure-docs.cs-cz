@@ -1,24 +1,14 @@
 ---
 title: Vytváření vlastních výstrah
 description: Pochopení, vytváření a přiřazování vlastních výstrah zařízení pro službu zabezpečení Azure Defender for IoT.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/04/2020
-ms.author: mlottner
-ms.openlocfilehash: e59bcca9561c33610170f4bc3674eef307cf0de9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 836619fa200983bc91d26db4d063e8545b11a1b5
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99809032"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781037"
 ---
 # <a name="create-custom-alerts"></a>Vytváření vlastních výstrah
 

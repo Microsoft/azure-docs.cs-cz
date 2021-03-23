@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/19/2020
-ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 232475c50ab56fe6fb7a39a3497a8de3947fe851
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96753684"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780306"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Vyhodnocení velkého počtu fyzických serverů pro migraci do Azure
 
-Tento článek popisuje, jak pomocí nástroje pro vyhodnocení serveru Azure Migrate vyhodnotit velký počet místních fyzických serverů pro migraci do Azure.
+Tento článek popisuje, jak vyhodnotit velké počty místních fyzických serverů pro migraci do Azure pomocí nástroje Azure Migrate Discovery and Assessment Tool.
 
 [Azure Migrate](migrate-services-overview.md) poskytuje centrum nástrojů, které vám pomůžou zjišťovat, vyhodnocovat a migrovat aplikace, infrastrukturu a úlohy do Microsoft Azure. Centrum zahrnuje nástroje pro Azure Migrate a nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců. 
 
@@ -36,7 +36,7 @@ V tomto článku získáte informace o těchto tématech:
 Při plánování posouzení velkého počtu fyzických serverů je třeba zvážit několik věcí:
 
 - **Plánování Azure Migrate projektů**: Zjistěte, jak nasadit Azure Migrate projekty. Například pokud jsou datová centra v různých geografických oblastech nebo potřebujete ukládat metadata pro zjišťování, hodnocení nebo migraci v různých zeměpisných oblastech, možná budete potřebovat více projektů.
-- **Zařízení pro plánování**: Azure Migrate používá místní zařízení Azure Migrate nasazené na počítači s Windows k průběžnému zjišťování serverů pro účely posouzení a migrace. Zařízení monitoruje změny prostředí, jako je například přidání virtuálních počítačů, disků nebo síťových adaptérů. Do Azure taky odesílají metadata a data o výkonu. Potřebujete zjistit, kolik zařízení se má nasadit.
+- **Zařízení pro plánování**: Azure Migrate používá místní zařízení Azure Migrate nasazené na Windows serveru pro průběžné zjišťování serverů pro účely posouzení a migrace. Zařízení monitoruje změny prostředí, například přidávání serverů, disků nebo síťových adaptérů. Do Azure taky odesílají metadata a data o výkonu. Potřebujete zjistit, kolik zařízení se má nasadit.
 
 
 ## <a name="planning-limits"></a>Omezení plánování
@@ -57,7 +57,7 @@ Pro plánování použijte omezení shrnutá v této tabulce.
 
 ## <a name="prepare-for-assessment"></a>Příprava na posouzení
 
-Připravte si Azure a fyzické servery pro posouzení serveru. 
+Příprava Azure a fyzických serverů pro nástroj pro zjišťování a hodnocení:  
 
 1. Ověřte [požadavky a omezení podpory fyzického serveru](migrate-support-matrix-physical.md).
 2. Nastavte oprávnění pro účet Azure pro interakci s Azure Migrate.
@@ -70,7 +70,7 @@ Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto k
 V souladu s požadavky na plánování udělejte toto:
 
 1. Jak vytvořit projekt Azure Migrate.
-2. Přidejte do projektů Nástroj pro vyhodnocení Azure Migrate serveru.
+2. Přidejte do projektů Nástroj pro zjišťování a vyhodnocení Azure Migrate.
 
 [Další informace](./create-manage-projects.md)
 

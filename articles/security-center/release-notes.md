@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/11/2021
+ms.date: 03/22/2021
 ms.author: memildin
-ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149629"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786077"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -26,7 +26,6 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 > Pokud hledáte položky starší než šest měsíců, najdete je v archivu, kde najdete novinky [v Azure Security Center](release-notes-archive.md).
 
 
-
 ## <a name="march-2021"></a>Březen 2021
 
 Aktualizace v březnu zahrnují:
@@ -38,6 +37,7 @@ Aktualizace v březnu zahrnují:
 - [Data doporučení se dají zobrazit v Azure Resource graphu s "prozkoumat v ARG".](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [Aktualizace zásad pro nasazení automatizace pracovního postupu](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Dvě starší verze doporučení už Nezapisovat data přímo do protokolu aktivit Azure](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
+- [Vylepšení stránky doporučení](#recommendations-page-enhancements)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Správa Azure Firewall integrovaná do Security Center
@@ -140,6 +140,22 @@ Existují dvě starší verze doporučení:
 
 Pokud jste přistupovali k informacím o těchto dvou doporučeních v kategorii "doporučení typu TaskDiscovery" protokolu aktivit, nebude už k dispozici.
 
+
+### <a name="recommendations-page-enhancements"></a>Vylepšení stránky doporučení 
+
+Vypnuli jsme vylepšenou verzi seznamu doporučení, abychom mohli na první pohled zobrazit další informace.
+
+Nyní na stránce uvidíte:
+
+1. Maximální skóre a aktuální skóre pro jednotlivé ovládací prvky zabezpečení.
+1. Ikony, které nahrazují značky, jako je **Rychlá oprava** a **verze Preview**
+1. Nový sloupec, který ukazuje [iniciativu k zásadám](security-policy-concept.md) souvisejícím s jednotlivými doporučeními – viditelné, pokud je zakázaná možnost seskupit podle ovládacích prvků.
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Vylepšení stránky s doporučeními pro Azure Security Center – březen 2021" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements-initiatives.png" alt-text="Vylepšení Azure Security Centerch doporučení &quot;Flat&quot; list-březen 2021" lightbox="media/release-notes/recommendations-grid-enhancements-initiatives.png":::
+
+Další informace najdete v [doporučeních pro zabezpečení v Azure Security Center](security-center-recommendations.md).
 
 
 ## <a name="february-2021"></a>Únor 2021

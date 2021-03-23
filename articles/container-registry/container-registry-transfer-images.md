@@ -4,12 +4,12 @@ description: Přenos kolekcí imagí nebo jiných artefaktů z jednoho registru 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: 30e6c0fa7a33c7a83543fee297c582b15bce4c8b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4fe36366011fb790d25419ac46a54c4bf5ad94bf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606765"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785814"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
 
@@ -368,8 +368,9 @@ IMPORT_RUN_RES_ID=$(az deployment group show \
   --name importPipelineRun \
   --query 'properties.outputResources[0].id' \
   --output tsv)
+```
 
-When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
+Po úspěšném dokončení nasazení ověřte import artefaktů, a to tak, že v registru cílového kontejneru vydáte seznam úložišť. Například spusťte příkaz [AZ ACR úložištì list][az-acr-repository-list]:
 
 ```azurecli
 az acr repository list --name <target-registry-name>

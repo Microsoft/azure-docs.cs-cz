@@ -1,19 +1,19 @@
 ---
 title: H-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady H-Series.
-author: ju-shim
+author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 7a5ff47bb5de6d54564a86c0700ad69aa450887d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b3e3beb51256bbf22d29d74b51c52ca3a6bee0c4
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566137"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774775"
 ---
 # <a name="h-series"></a>H-series
 
@@ -40,10 +40,21 @@ Virtuální počítače H-Series jsou optimalizované pro aplikace řízené vys
 
 <sup>1</sup> pro MPI aplikace je v síti FDR InfiniBand povolena vyhrazená síť s back-end službou RDMA.
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
 > [!NOTE]
-> V rámci [virtuálních počítačů podporujících RDMA](sizes-hpc.md#rdma-capable-instances)není sada H-Series povolená – SR-IOV. Proto se podporované [image virtuálních počítačů](./workloads/hpc/configure.md#vm-images), požadavky na [ovladače InfiniBand](./workloads/hpc/enable-infiniband.md) a podporované [knihovny MPI](./workloads/hpc/setup-mpi.md) liší od virtuálních počítačů s podporou SR-IOV.
+> V rámci [virtuálních počítačů podporujících RDMA](sizes-hpc.md#rdma-capable-instances)nejsou u řady H-IOV povoleny funkce SR-IOV. Proto se podporované [image virtuálních počítačů](./workloads/hpc/configure.md#vm-images), požadavky na [ovladače InfiniBand](./workloads/hpc/enable-infiniband.md) a podporované [knihovny MPI](./workloads/hpc/setup-mpi.md) liší od virtuálních počítačů s podporou SR-IOV.
+
+## <a name="software-specifications"></a>Specifikace softwaru
+
+| Specifikace softwaru     |Virtuální počítač řady HC-Series           |
+|-----------------------------|-----------------------|
+| Maximální velikost úlohy MPI            | 4800 jader (300 virtuálních počítačů v jedné sadě škálování virtuálních počítačů s singlePlacementGroup = true)  |
+| Podpora MPI                 | Intel MPI 5. x, MS-MPI  |
+| Podpora operačního systému pro non-SRIOV RDMA   | CentOS/RHEL 6,5-7,4, SLES 12 SP4 +, WinServer 2012-2016  |
+| Podpora nástroje Orchestrator        | CycleCloud, Batch, AKS  |
+
+[!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes"></a>Jiné velikosti
 
@@ -56,7 +67,6 @@ Virtuální počítače H-Series jsou optimalizované pro aplikace řízené vys
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [konfiguraci virtuálních počítačů](./workloads/hpc/configure.md), [Povolení INFINIBAND](./workloads/hpc/enable-infiniband.md), [Nastavení MPI](./workloads/hpc/setup-mpi.md) a optimalizaci aplikací HPC pro Azure v [úlohách HPC](./workloads/hpc/overview.md).
-- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Přečtěte si o nejnovějších oznámeních, příkladech úloh HPC a výsledcích výkonu na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).
 - Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

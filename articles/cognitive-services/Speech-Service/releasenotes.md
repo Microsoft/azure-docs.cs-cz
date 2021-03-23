@@ -11,18 +11,22 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8f3e8d72db6679a766991160c303948557719bb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1bd91ca63034f77553abb00f4fbf05431a45bd55
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657735"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773381"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
 ## <a name="speech-sdk-1160-2021-march-release"></a>Sada Speech SDK 1.16.0:2021-březen verze
 
 **Poznámka**: sada Speech SDK v systému Windows závisí na sdílených Microsoft Visual C++ distribuovatelné pro Visual Studio 2015, 2017 a 2019. Stáhněte si ho [sem](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+
+**Známé problémy**
+
+**C++/c #/Java**: `DialogServiceConnector` nelze použít `CustomCommandsConfig` pro přístup k aplikaci vlastních příkazů a místo toho dojde k chybě připojení. Můžete to vyřešit ručním přidáním ID aplikace do žádosti pomocí `config.SetServiceProperty("X-CommandsAppId", "your-application-id", ServicePropertyChannel.UriQueryParameter)` . Očekávané chování `CustomCommandsConfig` bude obnoveno v příští verzi.
 
 **Souhrn nejdůležitějších**
 - Menší nároky na paměť a na disku díky tomu, že sada SDK je efektivnější – tentokrát se zaměřujete na Android.

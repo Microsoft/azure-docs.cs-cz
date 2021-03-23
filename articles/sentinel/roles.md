@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a3b7d4f60877d1301f03aa4f015695a6a4639be
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104580704"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772548"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění ve službě Azure Sentinel
 
@@ -56,7 +56,7 @@ Uživatelům s konkrétními požadavky na úlohy může být potřeba přiřadi
 
 - Práce s playbooky pro automatizaci reakcí na hrozby
 
-    Sentinel Azure používá **playbooky** pro automatickou reakci na hrozby. Playbooky jsou postavené na **Azure Logic Apps** a jsou samostatným prostředkem Azure. Je možné, že budete chtít přiřadit konkrétním členům vašeho týmu operací zabezpečení možnost použít Logic Apps pro operace orchestrace, automatizace a odezva zabezpečení (společnosti). Roli [Přispěvatel aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-contributor) nebo [operátora aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-operator) můžete použít k přiřazení explicitního oprávnění pro použití playbooky.
+    Sentinel Azure používá **playbooky** pro automatickou reakci na hrozby. Playbooky jsou postavené na **Azure Logic Apps** a jsou samostatným prostředkem Azure. Je možné, že budete chtít přiřadit konkrétním členům vašeho týmu operací zabezpečení možnost použít Logic Apps pro operace orchestrace, automatizace a odezva zabezpečení (společnosti). Roli [Přispěvatel aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-contributor) můžete použít k přiřazení explicitního oprávnění pro použití playbooky.
 
 - Připojení zdrojů dat ke službě Azure Sentinel
 

@@ -1,28 +1,28 @@
 ---
-title: Vyhodnocení instancí AWS pro migraci do Azure pomocí posouzení serveru Azure Migrate
-description: Přečtěte si, jak získat přístup k instancím AWS pro migraci do Azure pomocí posouzení serveru Azure Migrate.
+title: Vyhodnocení instancí AWS pro migraci do Azure pomocí Azure Migrate
+description: Naučte se přistupovat k AWS instancím pro migraci do Azure pomocí Azure Migrate.
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: fe2deba007f987af466fcec53e1670e9d0b0460f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 942adacf5b9a3b1b717e28def5752591ef22ec52
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98567503"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782329"
 ---
 # <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>Kurz: vyhodnocení instancí AWS pro migraci do Azure
 
 Jako součást cesty k migraci do Azure vyhodnocujete vaše místní úlohy a měříte připravenost k cloudu, identifikaci rizik a odhadu nákladů a složitosti.
 
-V tomto článku se dozvíte, jak vyhodnocovat instance Amazon Web Services (AWS) pro migraci do Azure pomocí nástroje Azure Migrate: Server Assessment Tool.
+V tomto článku se dozvíte, jak vyhodnocovat instance Amazon Web Services (AWS) pro migraci do Azure pomocí nástroje Azure Migrate: Discovery and Assessment Tool.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-- Spusťte posouzení na základě metadat počítače a informací o konfiguraci.
+- Spusťte posouzení na základě metadat serveru a informací o konfiguraci.
 - Spusťte posouzení na základě údajů o výkonu.
 
 > [!NOTE]
@@ -34,36 +34,36 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 ## <a name="prerequisites"></a>Požadavky
 
 - Než budete postupovat podle kroků v tomto kurzu, dokončete první kurz v této sérii a [Zjistěte svůj místní inventář](tutorial-discover-aws.md). 
-- Ujistěte se, že instance AWS neběží na Windows serveru 2003 nebo SUSE Linux. Posouzení není pro tyto počítače podporováno.
+- Ujistěte se, že instance AWS neběží na Windows serveru 2003 nebo SUSE Linux. Posouzení není pro tyto servery podporováno.
 
 
 ## <a name="decide-which-assessment-to-run"></a>Rozhodněte, které posouzení se má spustit.
 
 
-Rozhodněte, jestli chcete spustit posouzení pomocí kritérií pro změnu velikosti na základě dat konfigurace počítače/metadat, která se shromažďují místně, nebo na dynamická data o výkonu.
+Rozhodněte, jestli chcete spustit posouzení pomocí kritérií velikosti na základě dat konfigurace serveru/metadat, která se shromažďují místně, nebo na dynamických datech výkonu.
 
 **Posouzení** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
-**Jako v místním prostředí** | Vyhodnoťte na základě dat nebo metadat konfigurace počítače.  | Doporučená velikost virtuálního počítače Azure je založena na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku Azure je založený na tom, co jste vybrali v nastavení typ úložiště v posouzení.
+**Jako v místním prostředí** | Vyhodnocení na základě dat nebo metadat konfigurace serveru.  | Doporučená velikost virtuálního počítače Azure je založena na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku Azure je založený na tom, co jste vybrali v nastavení typ úložiště v posouzení.
 **Na základě výkonu** | Vyhodnoťte na základě shromážděných dynamických údajů o výkonu. | Doporučená velikost virtuálního počítače Azure vychází z dat využití procesoru a paměti.<br/><br/> Doporučený typ disku vychází z IOPS a propustnosti místních disků.
 
 ## <a name="run-an-assessment"></a>Spuštění posouzení
 
 Proveďte posouzení následujícím způsobem:
 
-1. Na stránce **servery** > **serverech se systémem Windows a Linux** klikněte na možnost **zhodnotit a migrovat servery**.
+1. Na stránce **přehled** > **Windows, Linux a SQL Server** klikněte na možnost **zhodnotit a migrovat servery**.
 
    ![Umístění tlačítka pro posouzení a migraci serverů](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
-2. V **Azure Migrate: vyhodnocování serveru** klikněte na **vyhodnotit**.
+2. V **Azure Migrate: zjišťování a hodnocení** klikněte na **vyhodnotit**.
 
     ![Umístění tlačítka pro vyhodnocení](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
 
 3. V   >  případě vyhodnocení **typu vyhodnocení** serverů vyberte **virtuální počítač Azure**.
 4. Ve **zdroji zjišťování**:
 
-    - Pokud jste v zařízení zjistili počítače, vyberte **počítače zjištěné z Azure Migrate zařízení**.
-    - Pokud jste zjistili počítače pomocí importovaného souboru CSV, vyberte **importovat počítače**. 
+    - Pokud jste zjistili servery, které používají zařízení, vyberte **servery zjištěné z Azure Migrate zařízení**.
+    - Pokud jste servery zjistili pomocí importovaného souboru CSV, vyberte **importované servery**. 
     
 1. Klikněte na **Upravit** a zkontrolujte vlastnosti posouzení.
 
@@ -80,7 +80,7 @@ Proveďte posouzení následujícím způsobem:
         - Pokud vyberete možnost použití rezervované instance, nemůžete zadat hodnotu "**sleva (%)**" nebo **Doba provozu virtuálního počítače**. 
         - [Další informace](https://aka.ms/azurereservedinstances).
  1. Ve **velikosti virtuálního počítače**:
-     - V části **kritéria změny velikosti** vyberte, pokud chcete vyhodnotit vyhodnocení pro data konfigurace počítače/metadata nebo na data založená na výkonu. Pokud používáte údaje o výkonu:
+     - V části **kritéria změny velikosti** vyberte, pokud chcete vyhodnotit vyhodnocení pro data konfigurace serveru/metadata nebo na data založená na výkonu. Pokud používáte údaje o výkonu:
         - V části **Historie výkonu** určete dobu trvání dat, na které chcete vyhodnotit základ posouzení.
         - V části **využití percentilu** zadejte hodnotu percentilu, kterou chcete použít pro vzorek výkonu. 
     - V poli **série virtuálních počítačů** určete řadu virtuálních počítačů Azure, které chcete zvážit.
@@ -94,7 +94,7 @@ Proveďte posouzení následujícím způsobem:
         Memory (Paměť) | 8 GB | 16 GB
    
 1. V **ceně**:
-    - Pokud jste zaregistrovaní, zadejte v **nabídce** nabídku [Azure](https://azure.microsoft.com/support/legal/offer-details/) . Posouzení serveru odhaduje náklady na tuto nabídku.
+    - Pokud jste zaregistrovaní, zadejte v **nabídce** nabídku [Azure](https://azure.microsoft.com/support/legal/offer-details/) . Posouzení odhaduje náklady na tuto nabídku.
     - V části **Měna** vyberte fakturační měnu vašeho účtu.
     - V části **sleva (%)** přidejte do nabídky Azure všechny slevy specifické pro předplatné, které obdržíte. Výchozí nastavení je 0 %.
     - V části **Doba provozu virtuálního počítače** zadejte dobu (ve dnech měsíčně za hodinu za den), po kterou budou virtuální počítače běžet.
@@ -110,17 +110,15 @@ Proveďte posouzení následujícím způsobem:
 
 1. V **vyhodnocování serverů** > klikněte na **Další**.
 
-1. V části **Vybrat počítače pro vyhodnocení**  >  **názvu vyhodnocení** > zadejte název posouzení. 
+1. V části **Vybrat servery pro vyhodnocení**  >  **názvu vyhodnocení** > zadejte název posouzení. 
 
 1. V **Vyberte nebo vytvořte skupinu** > vyberte **vytvořit novou** a zadejte název skupiny. 
     
-    :::image type="content" source="./media/tutorial-assess-physical/assess-group.png" alt-text="Přidání virtuálních počítačů do skupiny":::
-
 1. Vyberte zařízení a vyberte virtuální počítače, které chcete do skupiny přidat. Potom klikněte na **Další**.
 
 1. V části **Revize + vytvořit posouzení** zkontrolujte podrobnosti posouzení a kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
 
-1. Po vytvoření můžete posouzení zobrazit v části **Servery** > **Azure Migrate: Hodnocení serverů** > **Posouzení**.
+1. Po vytvoření posouzení ho zobrazte na **serverech**  >  **Azure Migrate: zjišťování a posouzení posouzení**  >  .
 
 1. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
     > [!NOTE]
@@ -136,7 +134,7 @@ Posouzení popisuje:
 
 Zobrazení posouzení:
 
-1. V části **servery**  >  **Azure Migrate: vyhodnocování serveru** klikněte na číslo vedle **posouzení**.
+1. V **systémech Windows, Linux a SQL Server**  >  **Azure Migrate: zjišťování a hodnocení** klikněte na číslo vedle **posouzení**.
 2. Výběrem posouzení v části **Posouzení** ho otevřete. Příklad (odhad a náklady pouze pro příklad): 
 
     ![Souhrn posouzení](./media/tutorial-assess-aws/assessment-summary.png)
@@ -161,7 +159,7 @@ Souhrn posouzení zobrazuje odhadované náklady na výpočetní prostředky a �
 
 1. Zkontrolujte měsíční celkové náklady. Náklady se sčítají pro všechny virtuální počítače v hodnocené skupině.
 
-    - Odhad nákladů vychází z doporučení týkajících se velikosti počítače, jeho disků a vlastností.
+    - Odhad nákladů vychází z doporučení pro velikost serveru, jeho disků a jeho vlastností.
     - Zobrazí se odhadované měsíční náklady na výpočetní prostředky a úložiště.
     - Odhad nákladů slouží ke spuštění místních virtuálních počítačů na virtuálních počítačích Azure. Odhad nebere v úvahu náklady na PaaS nebo SaaS.
 
@@ -170,7 +168,7 @@ Souhrn posouzení zobrazuje odhadované náklady na výpočetní prostředky a �
 
 ### <a name="review-confidence-rating"></a>Kontrola hodnocení spolehlivosti
 
-Posouzení serveru přiřadí hodnocení spolehlivosti pro posouzení na základě výkonu. Hodnocení je od jedné hvězdičky (nejnižší) až pěti hvězdiček (nejvyšší).
+Azure Migrate přiřadí hodnocení spolehlivosti pro posouzení na základě výkonu. Hodnocení je od jedné hvězdičky (nejnižší) až pěti hvězdiček (nejvyšší).
 
 ![Hodnocení spolehlivosti](./media/tutorial-assess-aws/confidence-rating.png)
 
@@ -194,5 +192,5 @@ Hodnocení spolehlivosti je následující.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vyhledá závislosti počítačů pomocí [Mapování závislostí](concepts-dependency-visualization.md).
+- Vyhledá závislosti serveru pomocí [Mapování závislostí](concepts-dependency-visualization.md).
 - Nastavte mapování závislostí [na základě agenta](how-to-create-group-machine-dependencies.md) .

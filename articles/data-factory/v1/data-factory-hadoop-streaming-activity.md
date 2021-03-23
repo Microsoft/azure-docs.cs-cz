@@ -3,16 +3,16 @@ title: Transformace dat pomocí aktivity streamování Hadoop – Azure
 description: Přečtěte si, jak můžete pomocí aktivity streamování Hadoop v Azure Data Factory transformovat data spuštěním programů pro streamování Hadoop na vyžádání nebo vlastním clusterem HDInsight.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 532ece3bcc8c62771511fb2608e824de846b54fe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 964af993fdcf17bca2caa812bf39ab63e650e807
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100383088"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782618"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity streamování Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]

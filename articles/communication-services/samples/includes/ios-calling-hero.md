@@ -10,16 +10,20 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 1318c47bcded47159006977db09604bb53674973
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: cea425a3f133c54fecda06daa57e6e5e6d22a5d8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487912"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104783542"
 ---
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Skupina komunikačních služeb Azure, která **volá Hero Sample pro iOS** , ukazuje, jak se komunikační služby volající klientské knihovny pro iOS dají použít k sestavení skupinového volání, které zahrnuje hlasové a video. V tomto rychlém startu se dozvíte, jak nastavit a spustit ukázku. Pro kontext je k dispozici přehled ukázky.
+
+## <a name="download-code"></a>Stažení kódu
+
+Vyhledá finální kód pro tento rychlý Start na [GitHubu](https://github.com/Azure-Samples/communication-services-ios-calling-hero).
 
 ## <a name="overview"></a>Přehled
 
@@ -29,7 +33,7 @@ Ukázka vypadá takto:
 
 :::image type="content" source="../media/calling/landing-page-ios.png" alt-text="Snímek obrazovky znázorňující cílovou stránku ukázkové aplikace":::
 
-Když stisknete tlačítko spustit nové volání, aplikace pro iOS vytvoří nové volání a spojí ho. Aplikace také umožňuje připojit stávající volání služby Azure Communication Services zadáním ID existujícího volání.
+Když stisknete tlačítko spustit nové volání, aplikace pro iOS vytvoří nové volání a spojí ho. Aplikace umožňuje připojit stávající volání služby Azure Communication Services zadáním ID existujícího volání. K týmu se můžete připojit také tak, že zadáte odkaz na spojení, který najdete na schůzi schůzky.  (Odkaz na připojení má následující formát: `https://teams.microsoft.com/l/meetup-join/` ). Další informace o spolupráci týmů najdete v [Koncepční dokumentaci pro týmy spolupráce](../../concepts/teams-interop.md).
 
 Po připojení k volání se zobrazí výzva, abyste aplikaci udělili oprávnění k přístupu k fotoaparátu a mikrofonu. Zobrazí se také výzva k zadání zobrazovaného názvu.
 
@@ -46,12 +50,12 @@ Součásti hlavní volající obrazovky:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Počítač Mac se systémem [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532)spolu s platným certifikátem pro vývojáře nainstalovaným do řetězce klíčů.
 - Prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../../quickstarts/create-communication-resource.md).
-- Funkce Azure, která spouští [logiku důvěryhodné služby](../../tutorials/trusted-service-tutorial.md) pro načtení přístupových tokenů.
+- Funkce Azure, která spouští [koncový bod ověřování](../../tutorials/trusted-service-tutorial.md) pro načtení přístupových tokenů.
 
 ## <a name="running-sample-locally"></a>Místní spuštění ukázky
 
@@ -60,8 +64,8 @@ Ukázku volání skupiny lze spustit místně pomocí XCode. Vývojáři mohou a
 ### <a name="before-running-the-sample-for-the-first-time"></a>Před prvním spuštěním ukázky
 
 1. Nainstalujte závislosti spuštěním `pod install` .
-2. Otevřete `ACSCall.xcworkspace` v Xcode.
-3. Aktualizace `AppSettings.plist` . Nastavte hodnotu `acsTokenFetchUrl` klíče na adresu URL vašeho koncového bodu ověřování.
+2. Otevřete `AzureCalling.xcworkspace` v Xcode.
+3. Aktualizace `AppSettings.plist` . Nastavte hodnotu `communicationTokenFetchUrl` klíče na adresu URL vašeho koncového bodu ověřování.
 
 ### <a name="run-sample"></a>Spustit ukázku
 
@@ -69,9 +73,9 @@ Sestavte a spusťte ukázku v XCode.
 
 ## <a name="optional-securing-an-authentication-endpoint"></a>Volitelné Zabezpečení koncového bodu ověřování
 
-V případě demonstračních účely Tato ukázka ve výchozím nastavení používá k načtení tokenu služby Azure Communication Services veřejně přístupný koncový bod. V produkčních scénářích doporučujeme použít vlastní zabezpečený koncový bod ke zřízení vlastních tokenů.
+Pro demonstrační účely Tato ukázka ve výchozím nastavení používá k načtení přístupového tokenu služby Azure Communication Services veřejně přístupný koncový bod. V produkčních scénářích doporučujeme použít vlastní zabezpečený koncový bod ke zřízení vlastních tokenů.
 
-V případě další konfigurace Tato ukázka podporuje připojení ke koncovému bodu chráněného **Azure Active Directory** (Azure AD), takže přihlášení uživatele vyžaduje, aby aplikace mohla načíst token služby Azure Communication Services. Viz následující postup:
+V případě další konfigurace Tato ukázka podporuje připojení ke koncovému bodu chráněného **Azure Active Directory** (Azure AD), takže přihlášení uživatele vyžaduje, aby aplikace mohla načíst přístupový token služby Azure Communication Services. Viz následující postup:
 
 1. Povolte Azure Active Directory ověřování ve vaší aplikaci.  
    - [Registrace aplikace v rámci Azure Active Directory (použití nastavení platformy iOS/macOS)](../../../active-directory/develop/tutorial-v2-ios.md) 
@@ -81,7 +85,7 @@ V případě další konfigurace Tato ukázka podporuje připojení ke koncovém
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Konfigurace Azure Active Directory Azure Portal.":::
 
 3. Otevřete `AppSettings.plist` v Xcode přidejte následující klíčové hodnoty:
-   - `acsTokenFetchUrl`: Adresa URL pro vyžádání tokenu služby Azure Communication Services 
+   - `communicationTokenFetchUrl`: Adresa URL pro vyžádání tokenu služby Azure Communication Services 
    - `isAADAuthEnabled`: Logická hodnota určující, zda je vyžadováno ověřování tokenu služby Azure Communication Services.
    - `aadClientId`: ID aplikace (klienta)
    - `aadTenantId`: Vaše ID adresáře (tenant)
@@ -94,6 +98,9 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 ## <a name="next-steps"></a>Další kroky
 
+>[!div class="nextstepaction"]
+>[Stažení ukázky z GitHubu](https://github.com/Azure-Samples/communication-services-ios-calling-hero)
+
 Další informace najdete v následujících článcích:
 
 - Seznamte se s [použitím volání klientské knihovny](../../quickstarts/voice-video-calling/calling-client-samples.md)
@@ -101,4 +108,6 @@ Další informace najdete v následujících článcích:
 
 ### <a name="additional-reading"></a>Další materiály ke čtení
 
+- [GitHub pro komunikaci Azure](https://github.com/Azure/communication) – další příklady a informace najdete na oficiální stránce GitHubu.
 - [Ukázky](./../overview.md) – další ukázky a příklady najdete na stránce s přehledem ukázek.
+- [Funkce volání komunikace Azure](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features) – Další informace o volání sady iOS SDK –[volání sady SDK pro iOS komunikace Azure](https://github.com/Azure/Communication/releases/)

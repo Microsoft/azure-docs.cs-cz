@@ -3,16 +3,16 @@ title: Spustit aktivitu kanálu v Azure Data Factory
 description: Zjistěte, jak můžete pomocí aktivity spustit kanál vyvolat jeden Data Factory kanál z jiného kanálu Data Factory.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9bcf8fd62e3b20701136d7912074afb37d567e2f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a24bd6988a9bc8f15723ebf931f2751a09c42e26
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100383343"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783740"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Spustit aktivitu kanálu v Azure Data Factory
 
@@ -62,11 +62,11 @@ Aktivita spuštění kanálu umožňuje kanálu služby Data Factory volat jiný
 
 Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity spustit kanál | Řetězec | Yes
-typ | Musí být nastavené na: **ExecutePipeline**. | Řetězec | Yes
-kanálu | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Yes
-parameters | Parametry, které se mají předat vyvolanému kanálu | Objekt JSON, který mapuje názvy parametrů na hodnoty argumentu | No
-waitOnCompletion | Definuje, zda provádění aktivit čeká na dokončení zpracování závislého kanálu. Výchozí hodnota je false. | Logická hodnota | No
+name | Název aktivity spustit kanál | Řetězec | Ano
+typ | Musí být nastavené na: **ExecutePipeline**. | Řetězec | Ano
+kanálu | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Ano
+parameters | Parametry, které se mají předat vyvolanému kanálu | Objekt JSON, který mapuje názvy parametrů na hodnoty argumentu | Ne
+waitOnCompletion | Definuje, zda provádění aktivit čeká na dokončení zpracování závislého kanálu. Výchozí hodnota je false. | Logická hodnota | Ne
 
 ## <a name="sample"></a>Ukázka
 Tento scénář má dva kanály:

@@ -4,12 +4,12 @@ description: Naučte se zabezpečit cluster pomocí rozsahu IP adres pro příst
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20c3d46e9a19c66c727e5a21bccd6caa0dc5f0ba
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98890628"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771919"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Zabezpečený přístup k serveru rozhraní API pomocí rozsahů povolených IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo nově
 
 Funkce rozsahů povolených IP adres serveru API má následující omezení:
 - U clusterů vytvořených po uplynutí verze Preview se rozsahy IP adres serveru API v říjnu 2019 nepřesunuly, ale v nástroji pro vyrovnávání zatížení *Standard* SKU se podporují jenom tyto rozsahy IP adres serveru API. Stávající clustery s nakonfigurovanými rozsahy služby Load Balancer *základní* skladové položky a povolenými rozsahy IP adres serveru API budou nadále fungovat, jak je, ale nelze je migrovat do nástroje pro vyrovnávání zatížení *Standard* SKU. Tyto existující clustery budou i nadále fungovat, pokud se upgradují jejich verze Kubernetes nebo řídicí plocha. Rozsahy IP adres autorizovaných serverem API se pro privátní clustery nepodporují.
-- Tato funkce není kompatibilní s clustery, které používají [veřejné IP adresy pro fondy uzlů uzlů v rámci funkce Preview](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview).
+- Tato funkce není kompatibilní s clustery, které používají [veřejnou IP adresu na uzel](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools).
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Přehled povolených IP adres serveru rozhraní API
 

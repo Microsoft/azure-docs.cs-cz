@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/22/2021
 ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6bb478038d398226db38dc20e49ed7a14e5d5d0a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d234e57f7c11b0d9f2cd212bde93a8b8e478ef41
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592802"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781360"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Verze JavaScriptu a rozložení stránky v Azure Active Directory B2C
 
@@ -155,7 +155,7 @@ Pokud přizpůsobíte rozhraní aplikace pomocí JavaScriptu, postupujte podle t
     - Nepoužívejte JavaScript přímo pro volání Azure AD B2Cch koncových bodů.
 - Můžete vložit JavaScript nebo můžete propojit s externími soubory JavaScriptu. Při použití externího souboru JavaScriptu je nutné použít absolutní adresu URL, nikoli relativní adresu URL.
 - Rozhraní JavaScript:
-    - Azure AD B2C používá specifickou verzi jQuery. Nezahrnujte jinou verzi jQuery. Používání více než jedné verze na stejné stránce způsobuje problémy.
+    - Azure AD B2C používá [specifickou verzi jQuery](page-layout.md#jquery-version). Nezahrnujte jinou verzi jQuery. Používání více než jedné verze na stejné stránce způsobuje problémy.
     - Použití RequireJS se nepodporuje.
     - Azure AD B2C nepodporuje většinu platforem JavaScript.
 - Nastavení Azure AD B2C lze číst voláním `window.SETTINGS` , `window.CONTENT` objektů, jako je aktuální jazyk uživatelského rozhraní. Neměňte hodnotu těchto objektů.

@@ -1,0 +1,23 @@
+### YamlMime:Landing
+title: Dokumentace k platformě Azure pro průmysl IoT
+summary: Platforma Azure pro průmyslové IoT je sada modulů a služeb od Microsoftu, které jsou nasazené v Azure.
+metadata:
+  description: Přečtěte si o
+  ms.service: industrial-iot
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 12/7/2020
+  ms.openlocfilehash: 236cbb059919646910b2cacd53da3f9311225d69
+  ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104787036"
+landingContent:
+- title: O platformě Azure pro průmyslové IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je platforma pro průmyslový IoT (IIoT)?
+      url: overview-what-is-industrial-iot-platform.md

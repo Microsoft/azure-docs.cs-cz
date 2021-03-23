@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 41476c5f8165729caa6780f8e74eb6c3ae30a59c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: cca4612d3b22296209b4adfc6be97cbe95477aa3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102614628"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786664"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
@@ -20,7 +20,7 @@ ms.locfileid: "102614628"
 
 ## <a name="update-march-2021"></a>Aktualizace (březen 2021)
 - Podpora poskytování více přihlašovacích údajů serveru v zařízení Azure Migrate pro zjišťování nainstalovaných aplikací (inventář softwaru), analýzy závislostí bez agentů a zjišťování SQL Server instancí a databází v prostředí VMware. [Další informace](tutorial-discover-vmware.md#provide-server-credentials)
-- Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. [Další informace](concepts-azure-sql-assessment-calculation.md)<br/>Pokud chcete tuto funkci vyzkoušet, použijte [tento odkaz](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Začněte tím, že si projdete kurzy [zjišťování](tutorial-discover-vmware.md) a [hodnocení](tutorial-assess-sql.md).
+- Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. [Další informace](concepts-azure-sql-assessment-calculation.md) Začněte tím, že najdete kurzy pro [zjišťování](tutorial-discover-vmware.md) a [hodnocení](tutorial-assess-sql.md) .
 - Migrace VMware bez agentů teď podporuje souběžnou replikaci 500 virtuálních počítačů na vCenter.
 - Azure Migrate teď automaticky nainstaluje do virtuálních počítačů VMware agenta virtuálních počítačů Azure při jejich migraci do Azure pomocí metody migrace VMware bez agentů.
 

@@ -4,7 +4,7 @@ description: Tento článek popisuje osvědčené postupy, které je třeba zvá
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
-ms.date: 06/12/2019
+ms.date: 03/21/2021
 ms.topic: article
 ms.service: security
 ms.subservice: security-develop
@@ -13,15 +13,16 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102548440"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782397"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
-V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
+
+V tomto článku jsou k dispozici bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
 
 V tomto článku jsou uvedené tyto fáze SDL:
 
@@ -29,6 +30,7 @@ V tomto článku jsou uvedené tyto fáze SDL:
 - Ověření
 
 ## <a name="implementation"></a>Implementace
+
 Cílem fáze implementace je vytvořit osvědčené postupy pro včasnou prevenci a zjistit a odebrat problémy zabezpečení z kódu.
 Předpokládejme, že se vaše aplikace bude používat způsobem, který jste nechtěli použít. To vám pomůže chránit proti náhodnému nebo úmyslnému zneužití vaší aplikace.
 
@@ -89,11 +91,11 @@ To znamená, že přístup k vašim skutečným datům má méně lidí, což sn
 
 Aby bylo možné chránit před hrubou silou a odhadem na základě slovníku, je nutné implementovat zásady silného hesla, aby uživatelé mohli vytvářet složitá hesla (například 12 znaků minimální délky a vyžadovat alfanumerické a speciální znaky).
 
-Rozhraní identity můžete použít k vytvoření a prosazování zásad hesel. Azure AD B2C vám pomůže se správou hesel tím, že poskytuje [předdefinované zásady](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Samoobslužné resetování hesla](../../active-directory-b2c/user-flow-self-service-password-reset.md)a další služby.
+Azure Active Directory B2C vám pomůže se správou hesel tím, že poskytuje [Samoobslužné resetování hesla](../../active-directory-b2c/add-password-reset-policy.md), [vynucené resetování hesla](../../active-directory-b2c/force-password-reset.md)a další služby.
 
 Aby se zabránilo útokům na výchozí účty, ověřte, že jsou všechny klíče a hesla nahraditelný a že jsou vygenerované nebo nahrazené po instalaci prostředků.
 
-Pokud aplikace musí automaticky generovat hesla, ujistěte se, že vygenerovaná hesla jsou náhodná a že mají vysokou entropii.
+Pokud aplikace musí vygenerovat hesla, ujistěte se, že vygenerovaná hesla jsou náhodná a že mají vysokou entropii.
 
 ### <a name="validate-file-uploads"></a>Ověřit nahrávání souborů
 
@@ -108,6 +110,7 @@ Ochrana proti malwaru pomáhá identifikovat a odstraňovat viry, spyware a dal�
 Nepoužívejte v prohlížeči ukládání citlivého obsahu do mezipaměti. Prohlížeče můžou ukládat informace pro ukládání do mezipaměti a historii. Soubory uložené v mezipaměti se ukládají do složky, jako je například složka dočasných souborů Internetu, v případě aplikace Internet Explorer. Když se tyto stránky označují znovu, prohlížeč zobrazí stránky ze své mezipaměti. Pokud se uživateli zobrazí citlivé informace (adresa, podrobnosti kreditní karty, číslo sociálního pojištění, uživatelské jméno), mohou být informace uloženy v mezipaměti prohlížeče a lze je získat prozkoumáním mezipaměti prohlížeče nebo pouhým stisknutím tlačítka **zpět** v prohlížeči.
 
 ## <a name="verification"></a>Ověření
+
 Fáze ověření zahrnuje komplexní úsilí, které zajistí, že kód bude vyhovovat zabezpečení a ochraně osobních údajů principy, které byly vytvořeny v předchozích fázích.
 
 ### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>Vyhledání a oprava chyb zabezpečení v závislostech aplikace
@@ -151,6 +154,7 @@ Zajištění zabezpečení vaší aplikace je důležité jako testování jaké
 [Sada Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/index.html) (AzSK) obsahuje SVTs pro několik služeb platformy Azure. Tyto SVTs pravidelně spouštíte, abyste měli jistotu, že vaše předplatné Azure a různé prostředky, které tvoří vaši aplikaci, jsou v zabezpečeném stavu. Tyto testy můžete automatizovat také pomocí funkce rozšíření průběžná integrace/průběžné nasazování (CI/CD) v AzSK, která zpřístupňuje SVTs jako rozšíření sady Visual Studio.
 
 ## <a name="next-steps"></a>Další kroky
+
 V následujících článcích doporučujeme kontrolu zabezpečení a aktivity, které vám pomůžou navrhovat a nasazovat zabezpečené aplikace.
 
 - [Návrh zabezpečených aplikací](secure-design.md)

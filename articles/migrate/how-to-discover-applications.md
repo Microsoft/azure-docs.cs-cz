@@ -1,21 +1,21 @@
 ---
-title: Vyhledávání aplikací na místních serverech pomocí Azure Migrate
-description: Naučte se zjišťovat aplikace, role a funkce na místních serverech pomocí vyhodnocení Azure Migrate serveru.
-author: vikram1988
-ms.author: vibansa
+title: Zjištění inventáře softwaru na místních serverech pomocí Azure Migrate
+description: Naučte se zjišťovat inventář softwaru na místních serverech pomocí Azure Migrate zjišťování a hodnocení.
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 06/10/2020
-ms.openlocfilehash: 8266b585881546b37bbb21b82780ab26d85dada7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/18/2021
+ms.openlocfilehash: 47ea06fa2143f9a5dc5808ccb98fc80c87fefd93
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048076"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786698"
 ---
-# <a name="discover-installed-applications-roles-and-features-software-inventory-and-sql-server-instances-and-databases"></a>Zjišťování nainstalovaných aplikací, rolí a funkcí (inventář softwaru) a instancí SQL Server a databází
+# <a name="discover-installed-software-inventory-and-sql-server-instances-and-databases"></a>Zjištění nainstalovaného inventáře softwaru a SQL Server instancí a databází
 
-Tento článek popisuje, jak zjišťovat nainstalované aplikace, role a funkce (inventář softwaru) a SQL Server instance a databáze na serverech, na kterých běží v prostředí VMware, pomocí Azure Migrate: Nástroj pro vyhodnocení serveru.
+Tento článek popisuje, jak zjistit nainstalovaný inventář softwaru a SQL Server instance a databáze na serverech, na kterých běží v prostředí VMware, pomocí Azure Migrate: Discovery and Assessment Tool.
 
 Provádění inventáře softwaru pomáhá identifikovat a přizpůsobit cestu migrace do Azure pro vaše úlohy. Inventář softwaru používá zařízení Azure Migrate k provádění zjišťování pomocí přihlašovacích údajů serveru. Je to zcela bez agenta – na servery nejsou nainstalované žádné agenty, aby bylo možné tato data shromažďovat.
 
@@ -24,7 +24,7 @@ Provádění inventáře softwaru pomáhá identifikovat a přizpůsobit cestu m
 
 ## <a name="before-you-start"></a>Než začnete
 
-- Ujistěte se, že jste [vytvořili Azure Migrate projekt](./create-manage-projects.md) pomocí Azure Migrate: Nástroj pro vyhodnocení serveru byl do něj přidán.
+- Ujistěte se, že jste [vytvořili projekt](./create-manage-projects.md) s nástrojem Azure Migrate: byl přidán Nástroj pro zjišťování a vyhodnocení.
 - Projděte si [požadavky VMware](migrate-support-matrix-vmware.md#vmware-requirements) a proveďte inventarizaci softwaru.
 - Před nastavením zařízení zkontrolujte [požadavky na zařízení](migrate-support-matrix-vmware.md#azure-migrate-appliance-requirements) .
 - Před zahájením inventáře softwaru na serverech zkontrolujte [požadavky na zjišťování aplikací](migrate-support-matrix-vmware.md#application-discovery-requirements) .
@@ -35,7 +35,7 @@ Provádění inventáře softwaru pomáhá identifikovat a přizpůsobit cestu m
 2. Zkontrolujte adresy URL Azure, které bude zařízení potřebovat pro přístup k [veřejným](migrate-appliance.md#public-cloud-urls) a [státním cloudům](migrate-appliance.md#government-cloud-urls).
 3. [Zkontrolujte data](migrate-appliance.md#collected-data---vmware) , která zařízení shromažďuje během zjišťování a posouzení.
 4. [Poznamenejte si](migrate-support-matrix-vmware.md#port-access-requirements) požadavky na přístup k portu pro dané zařízení.
-5. [Nasaďte zařízení Azure Migrate](how-to-set-up-appliance-vmware.md) a spusťte zjišťování. Chcete-li nasadit zařízení, Stáhněte a importujte šablonu vajíček do VMware a vytvořte na svém vCenter Server Server se systémem. Po nasazení zařízení je potřeba ho zaregistrovat v projektu Azure Migrate a nakonfigurovat ho tak, aby zahájil zjišťování.
+5. [Nasaďte zařízení Azure Migrate](how-to-set-up-appliance-vmware.md) a spusťte zjišťování. Chcete-li nasadit zařízení, Stáhněte a importujte šablonu vajíček do VMware a vytvořte na svém vCenter Server Server se systémem. Po nasazení zařízení je potřeba ho zaregistrovat v projektu a nakonfigurovat ho tak, aby zahájil zjišťování.
 6. Při konfiguraci zařízení musíte v nástroji Configuration Manager pro zařízení zadat následující:
     - Podrobnosti vCenter Server, ke kterým se chcete připojit
     - vCenter Server rozsah přihlašovacích údajů, aby se zjistily servery ve vašem prostředí VMware.
@@ -61,22 +61,22 @@ Provádění inventáře softwaru pomáhá identifikovat a přizpůsobit cestu m
 
 Po dokončení inventáře softwaru můžete zkontrolovat a vyexportovat inventář v Azure Portal.
 
-1. V **Azure Migrate-servery**  >  **Azure Migrate: vyhodnocování serveru** klikněte na zobrazený počet a otevřete stránku **zjištěné servery** .
+1. V **Azure Migrate – Windows, Linux a SQL servery**  >  **Azure Migrate: zjišťování a posouzení** kliknutím na zobrazený počet otevřete stránku **zjištěné servery** .
 
     > [!NOTE]
     > V této fázi můžete volitelně taky povolit analýzu závislostí pro zjištěné servery, abyste mohli vizualizovat závislosti mezi servery, které chcete vyhodnotit. [Přečtěte si další informace](concepts-dependency-visualization.md) o analýze závislostí.
 
-2. Ve sloupci **zjištěné aplikace** kliknutím na zobrazený počet zkontrolujte zjištěné aplikace, role a funkce.
+2. V části sloupec **inventáře softwaru** kliknutím na zobrazený počet zkontrolujte zjištěné aplikace, role a funkce.
 4. Pokud chcete exportovat inventář, klikněte na stránce **zjištěné servery** na **exportovat inventář aplikací**.
 
-Inventář aplikací je exportován a stažen ve formátu aplikace Excel. V listu **inventáře aplikací** se zobrazí všechny aplikace zjištěné napříč všemi servery.
+Inventář softwaru je exportován a stažen ve formátu aplikace Excel. V listu **inventáře softwaru** se zobrazí všechny aplikace zjištěné napříč všemi servery.
 
 ## <a name="discover-sql-server-instances-and-databases"></a>Zjištění instancí a databází SQL Server
 
-- Zjišťování aplikací také identifikuje instance SQL Server spuštěných ve vašem prostředí VMware.
+- Inventář softwaru také identifikuje SQL Server instance spuštěné ve vašem prostředí VMware.
 - Pokud jste v nástroji Configuration Manager pro zařízení nezadali přihlašovací údaje pro ověřování systému Windows nebo SQL Server pověření, přidejte přihlašovací údaje, aby je zařízení mohl používat k připojení k příslušným SQL Server instancí.
 
-Po připojení zařízení shromáždí údaje o konfiguraci a výkonu SQL Server instance a databáze. Konfigurační data SQL Server se aktualizují jednou za 24 hodin a data o výkonu se zaznamenávají každých 30 sekund. Proto jakékoli změny vlastností instance SQL Server a databází, jako je stav databáze, úroveň kompatibility atd. může trvat až 24 hodin, než se aktualizuje na portálu.
+Po připojení zařízení shromáždí údaje o konfiguraci a výkonu SQL Server instance a databáze. Konfigurační data SQL Server se aktualizují každých 24 hodin a data o výkonu se zaznamenávají každých 30 sekund. Proto jakékoli změny vlastností instance SQL Server a databází, jako je stav databáze, úroveň kompatibility atd. může trvat až 24 hodin, než se aktualizuje na portálu.
 
 ## <a name="next-steps"></a>Další kroky
 

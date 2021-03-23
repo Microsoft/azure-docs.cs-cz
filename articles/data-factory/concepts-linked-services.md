@@ -3,16 +3,16 @@ title: Propojené služby v Azure Data Factory
 description: Přečtěte si o propojených službách v Data Factory. Propojené služby propojí výpočetní a datové úložiště s datovou továrnou.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 768af9e8568a3842b642a3ebd447d9df8064e840
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aaa690a4205951bd251a5230721e34fcb960a3b1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100389922"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782737"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Propojené služby v Azure Data Factory
 
@@ -64,10 +64,10 @@ Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu J
 
 Vlastnost | Popis | Vyžadováno |
 -------- | ----------- | -------- |
-name | Název propojené služby. Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Yes |
-typ | Typ propojené služby. Například: AzureBlobStorage (úložiště dat) nebo AzureBatch (COMPUTE). Podívejte se na popis pro typeProperties. | Yes |
-typeProperties | Vlastnosti typu jsou pro každé úložiště dat nebo výpočetní prostředky odlišné. <br/><br/> Podporované typy úložiště dat a jejich vlastnosti typu najdete v článku [Přehled konektoru](copy-activity-overview.md#supported-data-stores-and-formats) . Přejděte do článku konektor úložiště dat, kde se dozvíte o vlastnostech typu specifických pro úložiště dat. <br/><br/> Podporované typy výpočtů a jejich vlastnosti typu najdete v tématu [propojené služby COMPUTE](compute-linked-services.md). | Yes |
-connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No
+name | Název propojené služby. Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
+typ | Typ propojené služby. Například: AzureBlobStorage (úložiště dat) nebo AzureBatch (COMPUTE). Podívejte se na popis pro typeProperties. | Ano |
+typeProperties | Vlastnosti typu jsou pro každé úložiště dat nebo výpočetní prostředky odlišné. <br/><br/> Podporované typy úložiště dat a jejich vlastnosti typu najdete v článku [Přehled konektoru](copy-activity-overview.md#supported-data-stores-and-formats) . Přejděte do článku konektor úložiště dat, kde se dozvíte o vlastnostech typu specifických pro úložiště dat. <br/><br/> Podporované typy výpočtů a jejich vlastnosti typu najdete v tématu [propojené služby COMPUTE](compute-linked-services.md). | Ano |
+connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne
 
 ## <a name="linked-service-example"></a>Příklad propojené služby
 
