@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 09fbc97b84365cc1d6d40b8e1147e1b8e951cc1f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 78e54543c94cd6e8434023b61516242c2491f353
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780697"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863594"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
-Tento článek vám pomůže řešit problémy s vizualizací a vizualizací závislostí s [Azure Migrate: zjišťování a posouzení](migrate-services-overview.md#azure-migrate-server-assessment-tool).
+Tento článek vám pomůže řešit problémy s vizualizací a vizualizací závislostí s [Azure Migrate: zjišťování a posouzení](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool).
 
 
 ## <a name="assessment-readiness-issues"></a>Problémy s připraveností na posouzení
@@ -222,7 +222,7 @@ Po migraci serverů se zapnutou vizualizací závislostí na Azure se můžou se
 V rámci analýzy závislostí bez agenta se názvy procesů zachycují na základě nejlepšího úsilí. V některých případech, i když jsou zachyceny názvy zdrojového a cílového serveru a cílový port, není možné určit názvy procesů na obou koncích závislosti. V takových případech je proces označený jako "Neznámý proces".
 
 ## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-azure-migrate"></a>Můj pracovní prostor Log Analytics není uveden při pokusu o konfiguraci pracovního prostoru v Azure Migrate
-Azure Migrate v současné době podporuje vytvoření pracovního prostoru OMS v oblastech USA – východ, Jihovýchodní Asie a Evropa – západ. Pokud je pracovní prostor vytvořen mimo Azure Migrate v jakékoli jiné oblasti, nelze jej aktuálně přidružit k projektu Azure Migrate.
+Azure Migrate v současné době podporuje vytvoření pracovního prostoru OMS v oblastech USA – východ, Jihovýchodní Asie a Evropa – západ. Pokud je pracovní prostor vytvořen mimo Azure Migrate v jakékoli jiné oblasti, nelze jej aktuálně přidružit k projektu.
 
 
 ## <a name="capture-network-traffic"></a>Zaznamenání síťového provozu

@@ -5,28 +5,27 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: f40d9a1285f1eb625a9e33387f2cc9fafcbc3322
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4abe8e07a8311bab9b6e98746d0fc05bd2e89395
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098396"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956107"
 ---
 # <a name="advanced-development-with-azure-percept"></a>Pokročilý vývoj s využitím Azure Percept
-S Azure Percept můžou vývojáři softwaru a odborníci přes data používat pokročilé pracovní postupy kódu pro správu životního cyklu AI. Díky rostoucí Open Source knihovně můžou pomocí ukázek začít pracovat s cestou pro vývoj AI a vytvářet řešení připravená pro produkci.
 
-## <a name="get-started-with-the-advanced-development-tutorials"></a>Začínáme s kurzy pro pokročilé vývojové prostředí
+S Azure Percept můžou vývojáři softwaru a odborníci přes data používat pokročilé pracovní postupy kódu pro správu životního cyklu AI. Díky rostoucí Open Source knihovně můžou pomocí ukázek začít pracovat s cestou pro vývoj AI a sestavovat řešení připravená pro produkční prostředí.
 
-Seznamte se se všemi dostupnými [modely AI pro Azure Percept](./overview-ai-models.md).
+## <a name="get-started-with-advanced-development"></a>Začněte s pokročilým vývojem
 
-Podrobné pokyny, kurzy a příklady pro tyto věci najdete v tématu [Azure PERCEPT DK Advanced Development GitHub](https://github.com/microsoft/azure-percept-advanced-development) .
+V tématu [Azure PERCEPT DK Advanced Development GitHub](https://github.com/microsoft/azure-percept-advanced-development) najdete aktuální pokyny, kurzy a příklady pro věci, jako je:
 
-* Zavedení vlastního modelu AI do zařízení
-* Aktualizace modelu, který už podporujeme s učením přenosu
-* A další
+- Nasazení vlastního modelu AI do Azure Percept DK
+- Aktualizace podporovaného modelu pomocí učení přenosu
+- A další
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se se všemi dostupnými [modely AI pro Azure Percept](./overview-ai-models.md). Pokud žádný z těchto modelů nevyhovuje vašim potřebám, můžete použít pokročilou jízdu kódu k převedení vlastního modelu nebo počítačového kanálu do Percept DK, a pokud se domníváte, že by pomohly ostatní, otevřete žádost o získání dat.
+Přečtěte si další informace o dostupných [modelech AI pro Azure Percept](./overview-ai-models.md). Pokud žádný z těchto modelů nevyhovuje vašim potřebám, použijte cestu k rozšířenému kódu, pomocí které můžete přenést svůj vlastní model nebo počítačový kanál do Percept DK. Pokud máte příspěvek, který byste si myslíte, že by vám pomohly ostatní, můžete si také zdarma otevřít žádost o získání dat.

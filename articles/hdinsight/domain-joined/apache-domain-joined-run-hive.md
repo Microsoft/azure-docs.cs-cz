@@ -4,12 +4,12 @@ description: Naučte se konfigurovat zásady Apache Ranger pro podregistr ve slu
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15c406576b373577a2a3a50108acad7ccbf36699
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705700"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863254"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Apache Hivu ve službě HDInsight s balíčkem zabezpečení podniku
 
@@ -30,7 +30,7 @@ Přečtěte si, jak nakonfigurovat zásady Apache Ranger pro Apache Hive. V tomt
 
 2. Přihlaste se pomocí doménového uživatelského jména a hesla správce clusteru:
 
-    ![Domovská stránka HDInsight ESP Ranger](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png" alt-text="Domovská stránka HDInsight ESP Ranger" border="true":::
 
     V současné době Ranger funguje pouze s Yarn a Hivem.
 
@@ -57,7 +57,7 @@ V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable.
     |Vybrat uživatele|hiveuser1|
     |Oprávnění|vybrali|
 
-    ![Konfigurace zásad podregistru HDInsight ESP Ranger](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png" alt-text="Konfigurace zásad podregistru HDInsight ESP Ranger" border="true":::
 
     > [!NOTE]  
     > Pokud uživatel domény v části Select User (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
@@ -101,7 +101,7 @@ V poslední části jste nakonfigurovali dvě zásady.  Uživatel hiveuser1 má 
 
 1. Na kartě **data** přejděte k části **získání dat**  >  **z jiných zdrojů**  >  **z rozhraní ODBC** a spusťte **z okna rozhraní ODBC** .
 
-    ![Průvodce otevřením datového připojení](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png" alt-text="Průvodce otevřením datového připojení" border="true":::
 
 1. V rozevíracím seznamu vyberte název zdroje dat, který jste vytvořili v poslední části, a pak vyberte **OK**.
 

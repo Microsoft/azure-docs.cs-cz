@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c81eb092fa59cb890093e1e9acd0511e39b5047b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939518"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864206"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
@@ -30,7 +30,7 @@ Příklad kanálu počká, dokud nepřijde nová časová data období, a pak ul
 
 Příklad kanálu znázorňuje následující diagram.
 
-![Přehled datového kanálu pro HDI let](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png" alt-text="Přehled datového kanálu pro HDI let" border="false":::
 
 ## <a name="apache-oozie-solution-overview"></a>Přehled řešení Apache Oozie
 
@@ -40,7 +40,7 @@ Oozie popisuje jeho kanály z pohledu *akcí*, *pracovních postupů* a *koordin
 
 Následující diagram znázorňuje návrh vysoké úrovně v tomto ukázkovém kanálu Oozie.
 
-![Oozie let – Ukázkový datový kanál](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png" alt-text="Oozie let – Ukázkový datový kanál" border="false":::
 
 ## <a name="provision-azure-resources"></a>Zřizování prostředků Azure
 
@@ -131,11 +131,11 @@ Ukázková data jsou nyní k dispozici. Kanál ale vyžaduje ke zpracování dv�
 
 2. V seznamu služeb vyberte **podregistr**.
 
-    ![Seznam pro výběr podregistru služeb Apache Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png" alt-text="Seznam pro výběr podregistru služeb Apache Ambari":::
 
 3. Vyberte **Přejít k zobrazení** vedle popisku zobrazení podregistru 2,0.
 
-    ![Seznam Shrnutí Apache Hive Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png" alt-text="Seznam Shrnutí Apache Hive Ambari":::
 
 4. V oblasti text dotazu vložte následující příkazy k vytvoření `rawFlights` tabulky. `rawFlights`Tabulka poskytuje schéma-čtení pro soubory CSV ve `/example/data/flights` složce v Azure Storage.
 
@@ -164,7 +164,7 @@ Ukázková data jsou nyní k dispozici. Kanál ale vyžaduje ke zpracování dv�
 
 5. Vyberte **provést** a vytvořte tabulku.
 
-    ![dotaz na podregistr služby HDI Ambari](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png" alt-text="dotaz na podregistr služby HDI Ambari":::
 
 6. Chcete-li vytvořit `flights` tabulku, nahraďte text v oblasti textu dotazu následujícími příkazy. `flights`Tabulka je tabulka spravovaná na základě podregistru, která v rámci roku, měsíce a dne v měsíci načte data do oddílů. Tato tabulka bude obsahovat všechna historická data letového řádu s nejnižší členitosti ve zdrojových datech jednoho řádku na jeden let.
 
@@ -253,18 +253,18 @@ Pak aktualizujte hodnoty pro konkrétní prostředí. Tabulka pod textem shrnuje
     INSERT OVERWRITE TABLE flights
     PARTITION (YEAR, MONTH, DAY_OF_MONTH)
     SELECT 
-        FL_DATE,
-        CARRIER,
-        FL_NUM,
-        ORIGIN,
-        DEST,
-        DEP_DELAY,
-        ARR_DELAY,
-        ACTUAL_ELAPSED_TIME,
-        DISTANCE,
+          FL_DATE,
+          CARRIER,
+          FL_NUM,
+          ORIGIN,
+          DEST,
+          DEP_DELAY,
+          ARR_DELAY,
+          ACTUAL_ELAPSED_TIME,
+          DISTANCE,
         YEAR,
-        MONTH,
-        DAY_OF_MONTH
+          MONTH,
+          DAY_OF_MONTH
     FROM rawflights
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
@@ -278,17 +278,17 @@ Pak aktualizujte hodnoty pro konkrétní prostředí. Tabulka pod textem shrnuje
     CREATE EXTERNAL TABLE ${hiveTableName}
     (
         YEAR INT,
-        MONTH INT,
-        DAY_OF_MONTH INT,
-        CARRIER STRING,
-        AVG_DEP_DELAY FLOAT,
-        AVG_ARR_DELAY FLOAT,
-        TOTAL_DISTANCE FLOAT
+          MONTH INT,
+          DAY_OF_MONTH INT,
+          CARRIER STRING,
+          AVG_DEP_DELAY FLOAT,
+          AVG_ARR_DELAY FLOAT,
+          TOTAL_DISTANCE FLOAT
     )
     ROW FORMAT DELIMITED
     FIELDS TERMINATED BY '\t' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
     INSERT OVERWRITE TABLE ${hiveTableName}
-    SELECT  year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
+    SELECT     year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
             avg(arr_delay) avg_arr_delay, sum(distance) total_distance 
     FROM flights
     GROUP BY year, month, day_of_month, carrier 
@@ -415,7 +415,7 @@ Pomocí spojovacího bodu služby z relace bash Nasaďte svůj pracovní postup 
 
 1. Sledujte stav pomocí webové konzoly Oozie. V rámci Ambari vyberte možnost **Oozie**, **Rychlé odkazy** a pak **Oozie webové konzole**. Na kartě **úlohy pracovního postupu** vyberte **všechny úlohy**.
 
-    ![pracovní postupy webové konzoly HDI Oozie](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png" alt-text="pracovní postupy webové konzoly HDI Oozie":::
 
 1. Po ÚSPĚŠNÉm provedení dotazu do tabulky SQL Database můžete zobrazit vložené řádky. Pomocí Azure Portal přejděte do podokna pro SQL Database, vyberte **nástroje** a otevřete **Editor dotazů**.
 
@@ -593,11 +593,11 @@ Pokud chcete kanál spustit se koordinátorem, pokračujte podobným způsobem j
 
 5. Ověřte stav pomocí webové konzoly Oozie, tentokrát vyberte kartu **úlohy koordinátora** a pak klikněte na  **všechny úlohy**.
 
-    ![Oozie úlohy koordinátora webové konzoly](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png" alt-text="Oozie úlohy koordinátora webové konzoly":::
 
 6. Vyberte instanci koordinátora pro zobrazení seznamu plánovaných akcí. V takovém případě byste měli vidět čtyři akce s nominálními časy v rozsahu od 1/1/2017 do 1/4/2017.
 
-    ![Úloha koordinátora webové konzoly Oozie](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png" alt-text="Úloha koordinátora webové konzoly Oozie":::
 
     Každá akce v tomto seznamu odpovídá instanci pracovního postupu, která zpracovává data o jednom dni, přičemž začátek tohoto dne je určen jmenovitým časem.
 

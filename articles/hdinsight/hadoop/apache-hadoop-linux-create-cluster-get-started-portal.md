@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
-ms.openlocfilehash: cd3e997bf2fda5f586fdb1ee4dcedff1adbf41f3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92520be7e9d2bb83cb61856fe3df38487445ad9a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946604"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863883"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý Start: Vytvoření clusteru Apache Hadoop ve službě Azure HDInsight pomocí Azure Portal
 
@@ -31,52 +31,52 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí webu Azure Portal
 
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
-    ![Vytvoření clusteru HDInsight prostředku](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png "Vytvoření clusteru HDInsight prostředku")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png" alt-text="Vytvoření clusteru HDInsight prostředku" border="true":::
 
 1. Vyberte **Analytics**  >  **Azure HDInsight** a přejdete na stránku **vytvořit cluster HDInsight** .
 
 1. Na kartě **základy** zadejte následující informace:
 
-    |Vlastnost  |Popis  |
-    |---------|---------|
-    |Předplatné    |  V rozevíracím seznamu vyberte předplatné Azure, které se používá pro cluster. |
-    |Skupina prostředků     | V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**.|
-    |Název clusteru   | Zadejte globálně jedinečný název. Název může obsahovat až 59 znaků včetně písmen, číslic a spojovníků. První a poslední znak jména nesmí být spojovníky. |
-    |Oblast    | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.  Pro dosažení lepšího výkonu zvolte co nejbližší umístění. |
-    |Typ clusteru| Vyberte **možnost vybrat typ clusteru**. Pak jako typ clusteru vyberte **Hadoop** .|
-    |Verze|V rozevíracím seznamu vyberte **verzi**. Pokud si nejste jisti, co si můžete vybrat, použijte výchozí verzi.|
-    |Přihlašovací uživatelské jméno a heslo clusteru    | Výchozí přihlašovací jméno je **admin**. Heslo musí mít minimálně 10 znaků a musí obsahovat aspoň jedno číslo, jedno velké písmeno a jedno malé písmeno, jeden jiný než alfanumerický znak (kromě znaků) \) . Ujistěte se, že **nezadáváte** běžné heslo, jako je například Pass@word1.|
-    |Uživatelské jméno Secure Shell (SSH) | Výchozí uživatelské jméno je **sshuser**.  Pro uživatelské jméno SSH můžete zadat jiný název. |
-    |Použít heslo přihlášení clusteru pro SSH| Toto políčko zaškrtněte, pokud chcete pro uživatele SSH použít stejné heslo jako ten, který jste zadali pro uživatele přihlášení clusteru.|
+   |Vlastnost  |Popis  |
+   |---------|---------|
+   |Předplatné    |  V rozevíracím seznamu vyberte předplatné Azure, které se používá pro cluster. |
+   |Skupina prostředků     | V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**.|
+   |Název clusteru   | Zadejte globálně jedinečný název. Název může obsahovat až 59 znaků včetně písmen, číslic a spojovníků. První a poslední znak jména nesmí být spojovníky. |
+   |Oblast    | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.  Pro dosažení lepšího výkonu zvolte co nejbližší umístění. |
+   |Typ clusteru| Vyberte **možnost vybrat typ clusteru**. Pak jako typ clusteru vyberte **Hadoop** .|
+   |Verze|V rozevíracím seznamu vyberte **verzi**. Pokud si nejste jisti, co si můžete vybrat, použijte výchozí verzi.|
+   |Přihlašovací uživatelské jméno a heslo clusteru    | Výchozí přihlašovací jméno je **admin**. Heslo musí mít minimálně 10 znaků a musí obsahovat aspoň jedno číslo, jedno velké písmeno a jedno malé písmeno, jeden jiný než alfanumerický znak (kromě znaků) \) . Ujistěte se, že **nezadáváte** běžné heslo, jako je například Pass@word1.|
+   |Uživatelské jméno Secure Shell (SSH) | Výchozí uživatelské jméno je **sshuser**.  Pro uživatelské jméno SSH můžete zadat jiný název. |
+   |Použít heslo přihlášení clusteru pro SSH| Toto políčko zaškrtněte, pokud chcete pro uživatele SSH použít stejné heslo jako ten, který jste zadali pro uživatele přihlášení clusteru.|
 
-    ![Začínáme s HDInsight Linux poskytují základní hodnoty clusteru](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics.png "Zadejte základní hodnoty pro vytvoření clusteru HDInsight.")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics.png" alt-text="Začínáme s HDInsight Linux poskytují základní hodnoty clusteru" border="true":::
 
-    Vyberte **Další: >>úložiště** pro přechod k nastavení úložiště.
+   Vyberte **Další: >>úložiště** pro přechod k nastavení úložiště.
 
 1. Na kartě **úložiště** zadejte následující hodnoty:
 
-    |Vlastnost  |Popis  |
-    |---------|---------|
-    |Typ primárního úložiště|Použijte výchozí hodnotu **Azure Storage**.|
-    |Metoda výběru|Použijte výchozí hodnotu **vybrat ze seznamu**.|
-    |Účet primárního úložiště|Pomocí rozevíracího seznamu vyberte existující účet úložiště, nebo vyberte **vytvořit novou**. Pokud vytvoříte nový účet, musí mít název délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.|
-    |Kontejner|Použijte automaticky vyplněnou hodnotu.|
+   |Vlastnost  |Popis  |
+   |---------|---------|
+   |Typ primárního úložiště|Použijte výchozí hodnotu **Azure Storage**.|
+   |Metoda výběru|Použijte výchozí hodnotu **vybrat ze seznamu**.|
+   |Účet primárního úložiště|Pomocí rozevíracího seznamu vyberte existující účet úložiště, nebo vyberte **vytvořit novou**. Pokud vytvoříte nový účet, musí mít název délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.|
+   |Kontejner|Použijte automaticky vyplněnou hodnotu.|
 
-    ![Začínáme s HDInsight Linux poskytují hodnoty úložiště clusteru](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png "Zadejte hodnoty úložiště pro vytvoření clusteru HDInsight.")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png" alt-text="Začínáme s HDInsight Linux poskytují hodnoty úložiště clusteru" border="true":::
 
-    Každý cluster má [účet Azure Storage](../hdinsight-hadoop-use-blob-storage.md), [Azure Data Lake Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)nebo [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  závislost. Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být společně umístěné ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
+   Každý cluster má [účet Azure Storage](../hdinsight-hadoop-use-blob-storage.md), [Azure Data Lake Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)nebo [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) závislost. Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být společně umístěné ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
 
-    Vyberte kartu **Revize + vytvořit** .
+   Vyberte kartu **Revize + vytvořit** .
 
 1. Na kartě **Revize + vytvořit** ověřte hodnoty, které jste vybrali v předchozích krocích.
 
-    ![Souhrn clusteru HDInsight Linux Začínáme](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png "Souhrn clusteru HDInsight Linux Začínáme")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png" alt-text="Souhrn clusteru HDInsight Linux Začínáme" border="true":::
 
 1. Vyberte **Vytvořit**. Vytvoření clusteru trvá přibližně 20 minut.
 
-    Po vytvoření clusteru se zobrazí stránka přehledu clusteru na webu Azure Portal.
+   Po vytvoření clusteru se zobrazí stránka přehledu clusteru na webu Azure Portal.
 
-    ![Počáteční nastavení clusteru HDInsight Linux](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png "Vlastnosti clusteru HDInsight")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png" alt-text="Počáteční nastavení clusteru HDInsight Linux" border="true":::
 
 ## <a name="run-apache-hive-queries"></a>Spuštění dotazů Apache Hive
 
@@ -87,37 +87,37 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí webu Azure Portal
 
 1. Pokud chcete otevřít Ambari, vyberte **Řídicí panel clusteru**, jak je znázorněno na předchozím snímku obrazovky.  Můžete také přejít na  `https://ClusterName.azurehdinsight.net` místo, kde `ClusterName` je cluster, který jste vytvořili v předchozí části.
 
-    ![Řídicí panel clusteru HDInsight Linux Začínáme](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png "Řídicí panel clusteru HDInsight Linux Začínáme")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png" alt-text="Řídicí panel clusteru HDInsight Linux Začínáme" border="true":::
 
 2. Zadejte uživatelské jméno a heslo Hadoop, které jste zadali při vytváření clusteru. Výchozí uživatelské jméno **admin**.
 
 3. Otevřete **Zobrazení Hive**, jak je znázorněno na následujícím snímku obrazovky:
 
-    ![Výběr zobrazení podregistru z Ambari](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "Nabídka prohlížeče podregistru HDInsight")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png" alt-text="Výběr zobrazení podregistru z Ambari" border="true":::
 
 4. Na kartě **DOTAZ** vložte následující příkazy HiveQL do pracovního listu:
 
-    ```sql
-    SHOW TABLES;
-    ```
+   ```sql
+   SHOW TABLES;
+   ```
 
-    ![Editor dotazů zobrazení podregistru HDInsight](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "Editor dotazů zobrazení podregistru HDInsight")
+    :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png" alt-text="Editor dotazů zobrazení podregistru HDInsight" border="true":::
 
-5. Vyberte **Execute** (Provést). Karta **VÝSLEDKY** se zobrazí pod kartou **DOTAZ** a zobrazí informace o úloze. 
+5. Vyberte **Execute** (Provést). Karta **VÝSLEDKY** se zobrazí pod kartou **DOTAZ** a zobrazí informace o úloze.
 
-    Po dokončení dotazu se na kartě **dotaz** zobrazí výsledky operace. Zobrazí jedna tabulka s názvem **hivesampletable**. Tato vzorová tabulka Hive obsahuje všechny clustery HDInsight.
+   Po dokončení dotazu se na kartě **dotaz** zobrazí výsledky operace. Zobrazí jedna tabulka s názvem **hivesampletable**. Tato vzorová tabulka Hive obsahuje všechny clustery HDInsight.
 
-    ![Výsledky zobrazení Apache Hive HDInsight](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "Výsledky zobrazení Apache Hive HDInsight")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png" alt-text="Výsledky zobrazení Apache Hive HDInsight" border="true":::
 
 6. Opakujte kroky 4 a 5 a spusťte následující dotaz:
 
-    ```sql
-    SELECT * FROM hivesampletable;
-    ```
+   ```sql
+   SELECT * FROM hivesampletable;
+   ```
 
 7. Výsledky dotazu můžete také uložit. Vyberte tlačítko s nabídkou na pravé straně a určete, jestli chcete stáhnout výsledky jako soubor CSV nebo je uložit do účtu úložiště přidruženého ke clusteru.
 
-    ![Uložit výsledek Apache Hive dotazu](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Uložit výsledek Apache Hive dotazu")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png" alt-text="Uložit výsledek Apache Hive dotazu" border="true":::
 
 Po dokončení úlohy podregistru můžete [Exportovat výsledky do Azure SQL Database nebo SQL Server databáze](apache-hadoop-use-sqoop-mac-linux.md), můžete také [vizualizovat výsledky pomocí aplikace Excel](apache-hadoop-connect-excel-power-query.md). Další informace o použití podregistru v HDInsight najdete v tématu [použití Apache Hive a HiveQL s Apache Hadoop v HDInsight k analýze ukázkového souboru Apache log4j](hdinsight-use-hive.md).
 
@@ -132,7 +132,7 @@ Po dokončení rychlého startu možná budete chtít cluster odstranit. Ve slu�
 
 1. Vraťte se na kartu prohlížeče s webem Azure Portal. Měli byste být na stránce s přehledem clusteru. Pokud chcete odstranit jenom cluster, ale zachovat výchozí účet úložiště, vyberte **Odstranit**.
 
-    ![Cluster pro odstranění Azure HDInsight](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "Odstranit cluster Azure HDInsight")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png" alt-text="Cluster pro odstranění Azure HDInsight" border="true":::
 
 2. Pokud chcete odstranit cluster i výchozí účet úložiště, vyberte název skupiny prostředků (zvýrazněný na předchozím snímku obrazovky) a otevřete stránku skupiny prostředků.
 
