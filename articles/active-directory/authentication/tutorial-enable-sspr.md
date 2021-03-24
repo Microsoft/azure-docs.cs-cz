@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 03/23/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd1a68b06814d13c386b873ed715f3b03a7b827
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 253aa080b9c160141a274c57e0895291c78d2048
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198485"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887763"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Kurz: povolení odemknutí účtu nebo resetování hesla uživateli pomocí samoobslužného resetování hesla Azure Active Directory
 
@@ -138,6 +138,22 @@ Pokud už nechcete používat funkci SSPR, kterou jste nakonfigurovali v rámci 
 1. Vyhledejte a vyberte **Azure Active Directory** a potom v nabídce na levé straně zvolte **resetování hesla** .
 1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno* vyberte možnost **žádná**.
 1. Pokud chcete použít změnu SSPR, vyberte **Uložit**.
+
+## <a name="faqs"></a>Nejčastější dotazy
+
+V této části jsou vysvětleny běžné otázky od správců a koncových uživatelů, kteří se pokoušejí SSPR:
+
+- Proč můžou federované uživatelé počkat až 2 minuty, než se vaše heslo před tím, než bude moct použít hesla synchronizovaná z místního **prostředí, vynulovat** ?
+
+  Pro federované uživatele, jejichž hesla se synchronizují, je zdroj autority pro hesla místní. V důsledku toho SSPR aktualizuje pouze místní hesla. Synchronizace hodnot hash hesel zpět do služby Azure AD je naplánována každé 2 minuty.
+
+- Když nově vytvořený uživatel, který je předem vyplněný pomocí SSPR dat, jako je telefon a e-mail, navštíví stránku registrace SSPR, **neztratí přístup k vašemu účtu.** Zobrazuje se jako název stránky. Proč se zpráva nelíbí ostatním uživatelům, kteří mají předem vyplněné SSPR data?
+
+  Uživatel, který vidí ke **svému účtu neztratí přístup** je členem SSPR/kombinované registrační skupiny, které jsou nakonfigurovány pro tenanta. Uživatelé, kteří nevidíte, **neztratí přístup k vašemu účtu!** nebyly součástí SSPR/kombinovaných registračních skupin.
+
+- Když někteří uživatelé procházejí SSPR procesem a obnovili své heslo, proč nevidí indikátor síly hesla?
+
+  Uživatelé, kteří nevidí slabý nebo silný sílu hesla, mají povolený synchronizovaný zpětný zápis hesla. Vzhledem k tomu, že SSPR nemůže určit zásady hesel místního prostředí zákazníka, nemůže ověřit sílu nebo slabinu hesla. 
 
 ## <a name="next-steps"></a>Další kroky
 

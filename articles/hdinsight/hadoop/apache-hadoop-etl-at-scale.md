@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: fc488cecb762ff13bcb2999bb06521ebb70b44fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f11b31ba698c193029834caada2e5c4cf3ef2902
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946583"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866637"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -18,7 +18,7 @@ Extrakce, transformace a načítání (ETL) je proces, při kterém jsou data z�
 
 Použití HDInsight v procesu ETL je shrnuto pomocí tohoto kanálu:
 
-![Přehled ETL HDInsight v škálování](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+:::image type="content" source="./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png" alt-text="Přehled ETL HDInsight v škálování" border="false":::
 
 Následující části obsahují všechny fáze ETL a jejich přidružené součásti.
 

@@ -3,12 +3,12 @@ title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ae9af51ad3b2eb237f8655c996a1345140a8a635
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72772743eba23ea7c2a93f5037ac84b671256a66
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99070640"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887695"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -214,10 +214,11 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker ./Config
+AuditBitLocker
 ```
 
-Uložte tento soubor s názvem `config.ps1` do složky projektu. Spusťte ji v PowerShellu tak, že ji spustíte `./config.ps1` v terminálu. Vytvoří se nový soubor MOF.
+Spusťte tento skript v terminálu PowerShellu nebo uložte tento soubor s názvem `config.ps1` do složky projektu.
+Spusťte ji v PowerShellu tak, že ji spustíte `./config.ps1` v terminálu. Vytvoří se nový soubor MOF.
 
 `Node AuditBitlocker`Příkaz není technicky vyžadován, ale vytváří soubor s názvem `AuditBitlocker.mof` , nikoli jako výchozí `localhost.mof` . Pokud má název souboru. mof postupovat podle konfigurace, usnadňuje uspořádání mnoha souborů při škálování.
 
@@ -234,7 +235,7 @@ Spuštěním následujícího příkazu vytvořte balíček pomocí konfigurace 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditBitlocker' `
-  -Configuration './Config/AuditBitlocker.mof'
+  -Configuration './AuditBitlocker/AuditBitlocker.mof'
 ```
 
 Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete balíček otestovat z prostředí pracovní stanice nebo průběžné integrace a prostředí průběžného nasazování (CI/CD). Rutina GuestConfiguration `Test-GuestConfigurationPackage` zahrnuje stejného agenta ve vývojovém prostředí, které se používá v počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně před vydáním do fakturovaných cloudových prostředí.
@@ -257,10 +258,16 @@ Test-GuestConfigurationPackage `
 Rutina podporuje také vstup z kanálu PowerShellu. Přesměrování výstupu `New-GuestConfigurationPackage` rutiny do `Test-GuestConfigurationPackage` rutiny.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./AuditBitlocker/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-Dalším krokem je publikování souboru do Azure Blob Storage. Příkaz `Publish-GuestConfigurationPackage` vyžaduje `Az.Storage` modul.
+Dalším krokem je publikování souboru do Azure Blob Storage. Pro účet úložiště neexistují žádné zvláštní požadavky, ale je vhodné hostovat soubor v oblasti blízko vašich počítačů. Pokud nemáte účet úložiště, použijte následující příklad. Níže uvedené příkazy, včetně `Publish-GuestConfigurationPackage` , vyžadují `Az.Storage` modul.
+
+```azurepowershell-interactive
+# Creates a new resource group, storage account, and container
+New-AzResourceGroup -name myResourceGroupName -Location WestUS
+New-AzStorageAccount -ResourceGroupName myResourceGroupName -Name myStorageAccountName -SkuName 'Standard_LRS' -Location 'WestUs' | New-AzStorageContainer -Name guestconfiguration -Permission Blob
+```
 
 Parametry `Publish-GuestConfigurationPackage` rutiny:
 
@@ -416,111 +423,6 @@ Pokud řešení komunity ještě neexistuje, vyžaduje prostředek DSC vlastní 
 > Rozšiřitelnost konfigurace hosta je scénář "Přineste si vlastní licenci". Před použitím se ujistěte, že jste splnili podmínky a ujednání všech nástrojů třetích stran.
 
 Po instalaci prostředku DSC do vývojového prostředí použijte parametr **FilesToInclude** pro `New-GuestConfigurationPackage` zahrnutí obsahu pro platformu třetí strany v artefaktu obsahu.
-
-### <a name="step-by-step-creating-a-content-artifact-that-uses-third-party-tools"></a>Krok za krokem, vytvoření artefaktu obsahu, který používá nástroje třetích stran
-
-Pouze `New-GuestConfigurationPackage` rutina vyžaduje změnu z podrobných pokynů pro artefakty obsahu DSC. V tomto příkladu použijte `gcInSpec` modul k prodloužení konfigurace hosta pro audit počítačů s Windows pomocí INSPEC Platform a nikoli integrovaného modulu používaného v systému Linux. Modul komunity je udržován jako [Open source projekt v GitHubu](https://github.com/microsoft/gcinspec).
-
-Nainstalujte požadované moduly do vývojového prostředí:
-
-```azurepowershell-interactive
-# Update PowerShellGet if needed to allow installing PreRelease versions of modules
-Install-Module PowerShellGet -Force
-
-# Install GuestConfiguration module prerelease version
-Install-Module GuestConfiguration -allowprerelease
-
-# Install commmunity supported gcInSpec module
-Install-Module gcInSpec
-```
-
-Nejprve vytvořte soubor YaML používaný nespecifikací. Soubor poskytuje základní informace o prostředí. Příklad je uveden níže:
-
-```YaML
-name: wmi_service
-title: Verify WMI service is running
-maintainer: Microsoft Corporation
-summary: Validates that the Windows Service 'winmgmt' is running
-copyright: Microsoft Corporation
-license: MIT
-version: 1.0.0
-supports:
-  - os-family: windows
-```
-
-Uložte tento soubor s názvem `wmi_service.yml` do složky s názvem `wmi_service` v adresáři projektu.
-
-Pak vytvořte soubor Ruby s abstrakcí jazyka INSPEC, který se používá k auditování počítače.
-
-```Ruby
-control 'wmi_service' do
-  impact 1.0
-  title 'Verify windows service: winmgmt'
-  desc 'Validates that the service, is installed, enabled, and running'
-
-  describe service('winmgmt') do
-    it { should be_installed }
-    it { should be_enabled }
-    it { should be_running }
-  end
-end
-
-```
-
-Uložte tento soubor `wmi_service.rb` do nové složky s názvem v `controls` `wmi_service` adresáři.
-
-Nakonec vytvořte konfiguraci, importujte modul prostředků **GuestConfiguration** a pomocí `gcInSpec` prostředku nastavte název INSPEC Profile.
-
-```powershell
-# Define the configuration and import GuestConfiguration
-Configuration wmi_service
-{
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
-    node 'wmi_service'
-    {
-        gcInSpec wmi_service
-        {
-            InSpecProfileName       = 'wmi_service'
-            InSpecVersion           = '3.9.3'
-            WindowsServerVersion    = '2016'
-        }
-    }
-}
-
-# Compile the configuration to create the MOF files
-wmi_service -out ./Config
-```
-
-Nyní byste měli mít strukturu projektu, jak je uvedeno níže:
-
-```file
-/ wmi_service
-    / Config
-        wmi_service.mof
-    / wmi_service
-        wmi_service.yml
-        / controls
-            wmi_service.rb 
-```
-
-Podpůrné soubory musí být zabaleny dohromady. Dokončený balíček používá konfigurace hosta k vytvoření Azure Policych definic.
-
-`New-GuestConfigurationPackage`Rutina vytvoří balíček. Pro obsah třetích stran přidejte do balíčku obsah INSPEC pomocí parametru **FilesToInclude** . Nemusíte zadávat **ChefProfilePath** jako balíčky pro Linux.
-
-- **Název**: název konfiguračního balíčku hosta.
-- **Konfigurace**: úplná cesta k kompilované konfiguraci dokumentu.
-- **Cesta**: cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
-- **FilesoInclude**: úplná cesta k profilu INSPEC.
-
-Spuštěním následujícího příkazu vytvořte balíček pomocí konfigurace uvedené v předchozím kroku:
-
-```azurepowershell-interactive
-New-GuestConfigurationPackage `
-  -Name 'wmi_service' `
-  -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'  `
-  -Path './package' 
-```
 
 ## <a name="policy-lifecycle"></a>Životní cyklus zásad
 

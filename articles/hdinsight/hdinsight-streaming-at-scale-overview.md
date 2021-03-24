@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 2b2dfe9da55548f2648f847a9d7c2cb3478e6bad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bf036ff413f720f54deef1a62b502668d1d8ac6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931701"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871992"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
 
@@ -18,7 +18,7 @@ ms.locfileid: "98931701"
 
 V aplikaci pro streamování jeden nebo víc zdrojů dat generuje události (někdy v milionech za sekundu), které je potřeba rychle přijmout, aniž by se musely vyhodit žádné užitečné informace. Příchozí události jsou zpracovávány pomocí *ukládání do vyrovnávací paměti služby Stream*, označovaného také jako služba *Event queuing*, například [Apache Kafka](kafka/apache-kafka-introduction.md) nebo [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po shromáždění událostí můžete data analyzovat pomocí analytického systému v reálném čase v rámci vrstvy *zpracování streamu* , jako je například [Apache Storm](storm/apache-storm-overview.md) nebo [streamování Apache Spark](spark/apache-spark-streaming-overview.md). Zpracovaná data mohou být uložena v dlouhodobém systému úložiště, například [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)a zobrazená v reálném čase na řídicím panelu Business Intelligence, jako je například [Power BI](https://powerbi.microsoft.com), Tableau nebo vlastní webová stránka.
 
-![Vzory streamování Azure HDInsight](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+:::image type="content" source="./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png" alt-text="Vzory streamování Azure HDInsight":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 

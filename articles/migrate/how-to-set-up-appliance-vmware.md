@@ -6,16 +6,16 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1217b51ea91758d25b76394b27d3b21b2e9808b3
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 64be28838abb5d5021f0a8cefc0eed2c2516498b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780867"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865226"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Nastavení zařízení pro servery v prostředí VMware
 
-Podle tohoto článku můžete nastavit zařízení Azure Migrate pro posouzení pomocí nástroje [Azure Migrate: zjišťování a vyhodnocení](migrate-services-overview.md#azure-migrate-server-assessment-tool) a pro migraci bez agenta pomocí nástroje [Azure Migrate: Server pro migraci](migrate-services-overview.md#azure-migrate-server-migration-tool) .
+Podle tohoto článku můžete nastavit zařízení Azure Migrate pro posouzení pomocí nástroje [Azure Migrate: zjišťování a vyhodnocení](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) a pro migraci bez agenta pomocí nástroje [Azure Migrate: Server pro migraci](migrate-services-overview.md#azure-migrate-server-migration-tool) .
 
 [Zařízení Azure Migrate](migrate-appliance.md) je jednoduché zařízení, které používá Azure Migrate: zjišťování a vyhodnocení a migrace serveru pro zjišťování serverů se systémem vCenter Server, posílání konfigurace serveru a metadat výkonu do Azure a pro replikaci serverů pomocí migrace bez agenta.
 
@@ -24,23 +24,23 @@ Zařízení můžete nasadit pomocí několika metod:
 - Vytvořte server na vCenter Server pomocí stažené šablony vajíček. Tato metoda je popsaná v tomto článku.
 - Nastavte zařízení na existujícím serveru pomocí skriptu instalačního programu PowerShell. [Tato metoda](deploy-appliance-script.md) by se měla použít, pokud nemůžete použít šablonu vajíček nebo pokud jste v Azure Government.
 
-Po vytvoření zařízení zkontrolujete, že se může připojit k Azure Migrate: zjišťování a posouzení, zaregistrujte ho v projektu Azure Migrate a nakonfigurujte zařízení tak, aby se spustilo zjišťování.
+Po vytvoření zařízení zkontrolujete, že se může připojit k Azure Migrate: zjišťování a posouzení, zaregistrujte ho do projektu a nakonfigurujte zařízení tak, aby se spouštělo zjišťování.
 
 ## <a name="deploy-with-ova"></a>Nasazení pomocí vajíček
 
 K nastavení zařízení pomocí šablony vajíček:
-1. Zadejte název zařízení a vygenerujte Azure Migrate klíč projektu na portálu.
+1. Zadejte název zařízení a vygenerujte klíč projektu na portálu.
 1. Stáhněte soubor šablony vajíček a naimportujte ho do vCenter Server. Ověřte, jestli je VAJÍČKa zabezpečená.
 1. Vytvořte virtuální počítač zařízení ze souboru s VAJÍČKy a ověřte, že se může připojit k Azure Migrate.
-1. Nakonfigurujete zařízení poprvé a zaregistrujete ho do projektu pomocí klíče projektu Azure Migrate.
+1. Nakonfigurujete zařízení poprvé a zaregistrujete ho do projektu pomocí klíče projektu.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. vygenerujte klíč projektu Azure Migrate.
+### <a name="1-generate-the-project-key"></a>1. vygenerujte klíč projektu.
 
 1. V Azure Migrate **cíle migrace**  >    >  Vyberte **zjišťování a hodnocení**. 
 2. V možnosti **zjišťovat servery**  >  **jsou vaše servery virtualizované?** vyberte **Ano, pomocí VMware vSphere hypervisor**.
-3. V **1: vygenerujte Azure Migrate klíč projektu**, zadejte název Azure Migrate zařízení, které nastavíte pro zjišťování serverů v prostředí VMware. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
+3. V části **1: vygenerovat klíč projektu** zadejte název zařízení Azure Migrate, které nastavíte pro zjišťování serverů v prostředí VMware. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
 1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťování.
-1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu Azure Migrate** .
+1. Po úspěšném vytvoření prostředků Azure se vygeneruje **klíč projektu** .
 1. Zkopírujte klíč, protože ho budete potřebovat k dokončení registrace zařízení během jeho konfigurace.
 
 ### <a name="2-download-the-ova-template"></a>2. Stáhněte si šablonu pro VAJÍČKu
@@ -117,7 +117,7 @@ Nastavte zařízení poprvé.
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>Zaregistrovat zařízení ve Azure Migrate
 
-1. Vložte **klíč projektu Azure Migrate** zkopírovaný z portálu. Pokud tento klíč nemáte, podívejte se na **zjišťování a posouzení> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
+1. Vložte **klíč projektu** zkopírovaný z portálu. Pokud tento klíč nemáte, podívejte se na **zjišťování a posouzení> zjistit> spravovat existující zařízení**, vyberte název zařízení, který jste zadali v době generování klíče, a zkopírujte odpovídající klíč.
 1. K ověření pomocí Azure budete potřebovat kód zařízení. Kliknutím na **přihlášení** se otevře modální okno s kódem zařízení, jak je znázorněno níže.
 
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Modální zobrazení kódu zařízení":::
@@ -154,8 +154,6 @@ V **kroku 3: poskytnutí přihlašovacích údajů serveru pro inventarizaci sof
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="Panel 3 – Správce konfigurace zařízení pro podrobnosti o serveru":::
 
-> [!Note]
-> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 Pokud chcete tyto funkce využít, můžete zadat přihlašovací údaje serveru podle následujících kroků. Zařízení se pokusí automaticky mapovat přihlašovací údaje na servery, aby se prováděly funkce zjišťování.
 

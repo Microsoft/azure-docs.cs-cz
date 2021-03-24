@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ac71d8d7830f1d740d0156886a364b1d53ab247f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d78b106464bfbd3c86b9899a5c3543eed5dc0924
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100519554"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888953"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine Learning a nástroje pro datové vědy na Azure Data věda Virtual Machines
 Azure Data věda Virtual Machines (DSVMs) mají bohatou sadu nástrojů a knihoven pro strojové učení, které jsou dostupné v oblíbených jazycích, jako je Python, R nebo Helena.
@@ -99,7 +99,7 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecná knihovna strojového učení      |
 | Jak je nakonfigurovaná nebo nainstalovaná?      |  Instalace s podporou GPU   |
-| Jak ji použít nebo spustit      | Jako knihovna Pythonu (2,7 a 3,5), balíček R a nástroj příkazového řádku na cestě ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` pro Windows a `/dsvm/tools/xgboost/xgboost` pro Linux)    |
+| Jak ji použít nebo spustit      | Jako knihovna Pythonu (2,7 a 3.6 +), balíček R a nástroj příkazového řádku na cestě ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` pro Windows a `/dsvm/tools/xgboost/xgboost` pro Linux)    |
 | Odkazy na ukázky      | Ukázky jsou součástí virtuálních počítačů, v `/dsvm/tools/xgboost/demo` systémech Linux a `C:\dsvm\tools\xgboost\demo` Windows.   |
 | Související nástroje      | LightGBM, MXNet   |
 

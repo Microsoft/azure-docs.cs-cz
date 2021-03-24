@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 998154376895d8bcfc7cf36665a6a36f5c43e3b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b6ae6c003284b93390bb4f53345d3ba0f8d35e21
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594984"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952554"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – flexibilní Server
 
@@ -53,7 +53,6 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | datový typ pro hierarchické struktury podobné stromu|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | Kontrola obsahu databázových stránek na nízké úrovni|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | Prověřte sdílenou mezipaměť vyrovnávací paměti|
-> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | Plánovač úloh pro PostgreSQL|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | Projděte si mapu volného místa (FSM).|
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | data předteplého vztahu|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | sledovat statistiku spuštění všech provedených příkazů SQL|
@@ -103,7 +102,6 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | datový typ pro hierarchické struktury podobné stromu|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | Kontrola obsahu databázových stránek na nízké úrovni|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | Prověřte sdílenou mezipaměť vyrovnávací paměti|
-> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | Plánovač úloh pro PostgreSQL|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | Projděte si mapu volného místa (FSM).|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | data předteplého vztahu|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | sledovat statistiku spuštění všech provedených příkazů SQL|
@@ -131,28 +129,6 @@ Následující rozšíření jsou k dispozici v Azure Database for PostgreSQL-fl
 [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) vám umožní připojit se z jednoho serveru PostgreSQL k druhému nebo do jiné databáze na stejném serveru. Flexibilní Server podporuje příchozí i odchozí připojení k jakémukoli PostgreSQL serveru. Odesílající server musí umožňovat odchozí připojení k přijímacímu serveru. Obdobně musí přijímající server umožňovat připojení z odesílajícího serveru. 
 
 Pokud plánujete použít tato dvě rozšíření, doporučujeme servery nasadit pomocí [Integrace virtuální](concepts-networking.md) sítě. Ve výchozím nastavení Integration VNet umožňuje připojení mezi servery ve virtuální síti. Můžete také použít [skupiny zabezpečení sítě VNet](../../virtual-network/manage-network-security-group.md) k přizpůsobení přístupu.
-
-## <a name="pg_cron"></a>pg_cron
-
-[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36) je jednoduchý cron Plánovač úloh pro PostgreSQL, který běží uvnitř databáze jako rozšíření. Pomocí rozšíření pg_cron lze spouštět úlohy naplánované údržby v rámci databáze PostgreSQL. Například můžete spustit pravidelný podtlak tabulky nebo odebrat staré datové úlohy.
-
-`pg_cron` může spustit více úloh paralelně, ale současně se spustí současně s jednou instancí úlohy. Pokud se má druhý běh spustit před tím, než se poprvé dokončí, druhý běh se zařadí do fronty a spustí se hned po dokončení prvního spuštění. Tím se zajistí, že se úlohy spouštějí přesně stejně jako naplánované a neběží souběžně s sebou.
-
-Několik příkladů:
-
-Odstranění starých dat v sobotu v 3:10:30 (GMT)
-```
-SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
-```
-Spuštění vaku každý den v 10:10:00 (GMT)
-```
-SELECT cron.schedule('0 10 * * *', 'VACUUM');
-```
-
-Postup pro odplánování všech úloh z pg_cron
-```
-SELECT cron.unschedule(jobid) FROM cron.job;
-```
 
 ## <a name="pg_prewarm"></a>pg_prewarm
 

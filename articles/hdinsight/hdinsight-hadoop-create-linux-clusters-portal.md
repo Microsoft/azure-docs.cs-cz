@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 98d18044693bc6f4d23e04e9403e71686df39451
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945820"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872196"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal
 
@@ -32,13 +32,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
-    ![Vytvoření nového clusteru v Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Vytvoření nového clusteru v Azure Portal")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png" alt-text="Vytvoření nového clusteru v Azure Portal":::
 
 1. Vyberte **Analytics**  >  **Azure HDInsight** a přejdete na stránku **vytvořit cluster HDInsight** .
 
 ## <a name="basics"></a>Základy
 
-![Základy vytváření clusterů HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Vytvoření nového clusteru v Azure Portal")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png" alt-text="Základy vytváření clusterů HDInsight":::
 
 Na kartě **základy** zadejte následující informace:
 
@@ -63,7 +63,7 @@ Vyberte **Další: >>úložiště** pro přechod na další kartu.
 > [!WARNING] 
 > Od 15. června 2020 nebudou moct zákazníci vytvořit nový instanční objekt pomocí služby HDInsight. Viz téma [Vytvoření instančního objektu a certifikátů](../active-directory/develop/howto-create-service-principal-portal.md) pomocí Azure Active Directory.
 
-![Vytvoření úložiště clusteru HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Vytvoření nového clusteru v Azure Portal – úložiště")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png" alt-text="Vytvoření úložiště clusteru HDInsight":::
 
 ### <a name="primary-storage"></a>Primární úložiště
 
@@ -90,7 +90,7 @@ Vyberte **Další: zabezpečení + síťové >>** , abyste mohli přejít na dal
 
 ## <a name="security--networking"></a>Zabezpečení a sítě
 
-![Vytvoření sítě zabezpečení clusteru HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png "Vytvoření sítě zabezpečení clusteru HDInsight")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png" alt-text="Vytvoření sítě zabezpečení clusteru HDInsight":::
 
 Na kartě **zabezpečení + sítě** zadejte následující informace:
 
@@ -107,7 +107,7 @@ Vyberte **Další: Konfigurace + cenové >>** pro přechod na další kartu.
 
 ## <a name="configuration--pricing"></a>Konfigurace a ceny
 
-![Vytvoření konfigurace clusteru HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png "Karta konfigurace a ceny")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png" alt-text="Vytvoření konfigurace clusteru HDInsight":::
 
 Na kartě **Konfigurace + ceny** zadejte následující informace:
 
@@ -123,7 +123,7 @@ Vyberte **zkontrolovat + vytvořit >>** a ověřte konfiguraci clusteru a přejd
 
 ## <a name="review--create"></a>Kontrola a vytvoření
 
-![Shrnutí clusteru pro vytvoření HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Zadat počet uzlů clusteru")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png" alt-text="Shrnutí clusteru pro vytvoření HDInsight":::
 
 Zkontrolujte nastavení. Vyberte **Vytvořit**. Cluster se vytvoří.
 
@@ -133,7 +133,7 @@ Vytvoření clusteru nějakou dobu trvá, obvykle přibližně 20 minut. Sledujt
 
 Po dokončení procesu vytváření vyberte **Přejít k prostředku** z oznámení o **úspěšném nasazení** . V okně clusteru jsou uvedeny následující informace.
 
-![HDI Azure Portal clusteru – Přehled](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Vlastnosti clusteru")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png" alt-text="HDI Azure Portal clusteru – Přehled":::
 
 Některé ikony v okně jsou vysvětleny takto:
 

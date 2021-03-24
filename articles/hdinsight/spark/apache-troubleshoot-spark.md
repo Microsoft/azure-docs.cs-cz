@@ -6,12 +6,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: af488cd253e8a8ebedd838aa5286185ea556f69d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b54b9d932505ada890ac21c1b8de3178ad2f0042
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942499"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867504"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparkem s využitím služby Azure HDInsight
 
@@ -25,49 +25,49 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se zabránilo `OutofMemor
 
 1. Přejděte do   >  **Konfigurace** Spark2.
 
-    ![Vyberte kartu konfigurace.](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png" alt-text="Vyberte kartu konfigurace." border="true":::
 
 1. V seznamu konfigurací vyberte a rozbalte **Custom-spark2-Defaults**.
 
 1. Vyhledejte nastavení hodnoty, které je třeba upravit, například **spark.executor. Memory**. V tomto případě je hodnota **9728m** příliš vysoká.
 
-    ![Výběr možnosti vlastní-Spark-výchozí](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png" alt-text="Výběr možnosti vlastní-Spark-výchozí" border="true":::
 
 1. Nastavte hodnotu na Doporučené nastavení. Pro toto nastavení se doporučuje hodnota **2048m** .
 
 1. Uložte hodnotu a pak konfiguraci uložte. Vyberte **Uložit**.
 
-    ![Změnit hodnotu na 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png" alt-text="Změnit hodnotu na 2048m" border="true":::
 
     Zapište si poznámku týkající se změn konfigurace a pak vyberte **Uložit**.
 
-    ![Zadejte poznámku k provedeným změnám.](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png" alt-text="Zadejte poznámku k provedeným změnám." border="true":::
 
     Budete upozorněni, pokud některé konfigurace vyžadují pozornost. Poznamenejte si položky a pak vyberte **pokračovat**.
 
-    ![Přesto vyberte pokračovat.](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png" alt-text="Přesto vyberte pokračovat." border="true":::
 
 1. Při každém uložení konfigurace se zobrazí výzva k restartování služby. Vyberte **restartovat**.
 
-    ![Vybrat restartování](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png" alt-text="Vybrat restartování" border="true":::
 
     Potvrďte restart.
 
-    ![Vyberte potvrdit restartování](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png" alt-text="Vyberte potvrdit restartování" border="true":::
 
     Můžete zkontrolovat spuštěné procesy.
 
-    ![Zkontrolovat spuštěné procesy](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png" alt-text="Zkontrolovat spuštěné procesy" border="true":::
 
 1. Můžete přidat konfigurace. V seznamu konfigurací vyberte **Custom-spark2-Defaults** a pak vyberte **Přidat vlastnost**.
 
-    ![Výběr vlastnosti přidat](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png" alt-text="Výběr vlastnosti přidat" border="true":::
 
 1. Definujte novou vlastnost. Můžete definovat jednu vlastnost pomocí dialogového okna pro konkrétní nastavení, jako je například datový typ. Nebo můžete definovat více vlastností pomocí jedné definice na řádek.
 
     V tomto příkladu je vlastnost **Spark. Driver. Memory** definovaná s hodnotou **4G**.
 
-    ![Definovat novou vlastnost](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png" alt-text="Definovat novou vlastnost" border="true":::
 
 1. Uložte konfiguraci a pak službu restartujte, jak je popsáno v krocích 6 a 7.
 
@@ -77,7 +77,7 @@ Tyto změny jsou v clusteru v rozsahu, ale můžou být přepsány při odeslán
 
 V první buňce Jupyter Notebook za direktivou **%% Configure** zadejte konfigurace Sparku v platném formátu JSON. Podle potřeby změňte skutečné hodnoty:
 
-![Přidat konfiguraci](./media/apache-troubleshoot-spark/add-configuration-cell.png)
+:::image type="content" source="./media/apache-troubleshoot-spark/add-configuration-cell.png" alt-text="Přidat konfiguraci" border="true":::
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Jak na clusterech nakonfigurovat aplikaci Apache Spark pomocí Apache Livy?
 

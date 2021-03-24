@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ef916e0e8b32c96382a731d4a307e2b2a98ba1ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1c2be47060004d464003c00cbbddb3b58a136e3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96753854"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871142"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Sestavení plánu migrace s využitím Azure Migrate
 
@@ -31,33 +31,33 @@ Reakce na změny dodržování předpisů v legislativě | Příprava na nové t
 Nové požadavky na svrchovanost dat | Škálování na splnění požadavků na trh
 Snížení výpadků a vylepšení stability IT | Škálování pro splnění geografických požadavků
 
-Identifikace vaší motivace vám pomůže připnout vaše strategické cíle migrace. V dalším kroku se identifikujte a naplánujete cestu migrace, která se přizpůsobí vašim úlohám. [Azure Migrate: Nástroj pro vyhodnocení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool) vám pomůže vyhodnotit místní úlohy a poskytuje pokyny a nástroje, které vám pomůžou s migrací.
+Identifikace vaší motivace vám pomůže připnout vaše strategické cíle migrace. V dalším kroku se identifikujte a naplánujete cestu migrace, která se přizpůsobí vašim úlohám. [Azure Migrate: nástroj Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool vám pomůže posoudit místní úlohy a poskytuje pokyny a nástroje, které vám pomohou s migrací.
 
 ## <a name="understand-your-digital-estate"></a>Pochopení vaší digitální nemovitosti
 
-Začněte tím, že identifikujete místní infrastrukturu, aplikace a závislosti. To vám pomůže identifikovat úlohy pro migraci do Azure a shromažďovat optimalizované projekce nákladů. Nástroj pro vyhodnocení serveru vám pomůže identifikovat úlohy, které používáte, závislosti mezi úlohami a optimalizací úloh.
+Začněte tím, že identifikujete místní infrastrukturu, aplikace a závislosti. To vám pomůže identifikovat úlohy pro migraci do Azure a shromažďovat optimalizované projekce nákladů. Nástroj pro zjišťování a hodnocení vám pomůže identifikovat úlohy, které používáte, závislosti mezi úlohami a optimalizací úloh.
 
 ### <a name="workloads-in-use"></a>Používané úlohy
 
-Azure Migrate využívá odlehčené Azure Migrate zařízení k provádění zjišťování místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, dalších virtualizovaných počítačů a fyzických serverů pomocí bez agenta. Průběžné zjišťování shromažďuje informace o konfiguraci počítače a metadata o výkonu a také data aplikací. Toto zařízení shromáždí z místních počítačů: 
+Azure Migrate využívá odlehčené Azure Migrate zařízení k provádění zjišťování místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, dalších virtualizovaných serverů a fyzických serverů pomocí bez agenta. Průběžné zjišťování shromažďuje informace o konfiguraci serveru a metadata o výkonu a také data aplikací. Toto zařízení shromažďuje z místních serverů: 
 
-- Metadata počítačů, disků a síťových adaptérů.
+- Metadata serveru, disku a síťových adaptérů.
 
 - Nainstalované aplikace, role a funkce.
 
 - Údaje o výkonu, včetně využití procesoru a paměti, vstupně-výstupních operací disku a propustnosti.
 
-Po shromáždění dat můžete exportovat seznam inventáře aplikací a vyhledat aplikace a SQL Server instancí spuštěných na vašich počítačích. K pochopení SQL Server připravenosti můžete použít nástroj Azure Migrate: vyhodnocení databáze.
+Po shromáždění dat můžete exportovat seznam inventáře aplikací a vyhledat aplikace a SQL Server instance spuštěné na serverech. K pochopení SQL Server připravenosti můžete použít nástroj Azure Migrate: vyhodnocení databáze.
 
  ![Inventář aplikací na portálu](./media/concepts-migration-planning/application-inventory-portal.png)
 
  ![Export inventáře aplikací](./media/concepts-migration-planning/application-inventory-export.png)
 
-Společně s daty zjištěnými pomocí nástroje pro vyhodnocení serveru můžete použít data databáze správy konfigurace (CMDB) k sestavení zobrazení serveru a databáze a porozumět tomu, jak jsou vaše servery distribuované napříč obchodními jednotkami, vlastníky aplikací, geografickými oblastmi atd. To pomáhá určit, které úlohy se mají upřednostnit při migraci. 
+Společně s daty zjištěnými pomocí nástroje zjišťování a hodnocení můžete použít data databáze správy konfigurace (CMDB) k sestavení zobrazení serveru a databáze a porozumět tomu, jak jsou servery distribuovány napříč obchodními jednotkami, vlastníky aplikací, geografickými oblastmi atd. To pomáhá určit, které úlohy se mají upřednostnit při migraci. 
 
 ### <a name="dependencies-between-workloads"></a>Závislosti mezi úlohami
 
-Po zjištění serveru můžete [analyzovat závislosti, analyzovat](concepts-dependency-visualization.md)a identifikovat závislosti mezi servery a strategie optimalizace pro přesun vzájemně závislých serverů do Azure. Tato vizualizace pomáhá pochopit, jestli se konkrétní počítače používají, nebo jestli je možné je vyřadit z provozu místo migrace.  Analýza závislostí pomáhá zajistit, že nic není v provozu a že během migrace dojde k neočekávanému výpadku. Díky inventarizaci vašich aplikací a analýzám závislostí můžete vytvořit vysoce spolehlivé skupiny serverů a začít je vyhodnotit.
+Po zjištění serveru můžete [analyzovat závislosti, analyzovat](concepts-dependency-visualization.md)a identifikovat závislosti mezi servery a strategie optimalizace pro přesun vzájemně závislých serverů do Azure. Tato vizualizace pomáhá pochopit, zda jsou některé servery používány, nebo pokud je možné je vyřadit z provozu místo migrace.  Analýza závislostí pomáhá zajistit, že nic není v provozu a že během migrace dojde k neočekávanému výpadku. Díky inventarizaci vašich aplikací a analýzám závislostí můžete vytvořit vysoce spolehlivé skupiny serverů a začít je vyhodnotit.
 
  ![Mapování závislostí](./media/concepts-migration-planning/expand-client-group.png)
 
@@ -72,10 +72,10 @@ Azure poskytuje flexibilitu při změně velikosti cloudové kapacity v průběh
 
 Sestavu posouzení můžete vyexportovat a vyfiltrovat podle těchto kategorií, abyste pochopili připravenost na Azure:
 
-- **Připraveno pro Azure**: počítače se dají migrovat tak, jak jsou, do Azure bez jakýchkoli změn. 
-- **Podmíněně připravené pro Azure**: počítače se dají migrovat do Azure, ale potřebují menší změny v souladu s pokyny k nápravě, které jsou uvedené v posouzení.
-- **Nepřipraveno pro Azure**: počítače nejde migrovat do Azure tak, jak jsou. Před migrací musí být problémy vyřešené v souladu s pokyny k nápravě. 
-- **Připravenost neznámá**: Azure Migrate nemůže určit připravenost počítače z důvodu nedostatečných metadat.
+- **Připraveno pro Azure**: servery je možné migrovat tak, jak jsou, do Azure bez jakýchkoli změn. 
+- **Podmíněně připravené pro Azure**: servery je možné migrovat do Azure, ale potřebují menší změny v souladu s pokyny k nápravě, které jsou k dispozici v posouzení.
+- **Nepřipraveno pro Azure**: servery nejde migrovat do Azure tak, jak jsou. Před migrací musí být problémy vyřešené v souladu s pokyny k nápravě. 
+- **Připravenost neznámá**: Azure Migrate nemůže určit připravenost serveru z důvodu nedostatečných metadat.
 
 Pomocí vyhodnocení databáze můžete vyhodnotit připravenost SQL Serverch dat pro migraci na Azure SQL Database nebo na spravované instance Azure SQL. Posouzení znázorňuje procento stavu připravenosti migrace pro každou instanci SQL serveru. U každé instance můžete navíc zobrazit doporučený cíl v Azure, potenciální blokující migrace, počet nezměněných změn, připravenost pro Azure SQL DB nebo Azure SQL VM a úroveň kompatibility. Můžete Dig hlouběji a pochopit dopad migračních bloků a doporučení pro jejich opravu.
 
@@ -83,7 +83,7 @@ Pomocí vyhodnocení databáze můžete vyhodnotit připravenost SQL Serverch da
 
 ### <a name="sizing-recommendations"></a>Doporučení pro změnu velikosti
 
-Když je počítač označený jako připravený pro Azure, vyhodnocování serveru vytvoří doporučení pro změnu velikosti, která identifikují SKU virtuálního počítače Azure a typ disku pro vaše počítače. Můžete získat doporučení pro velikost na základě historie výkonu (k optimalizaci prostředků při migraci) nebo na základě místních nastavení počítače bez historie výkonu. V rámci vyhodnocení databáze můžete zobrazit doporučení pro SKU databáze, cenovou úroveň a úroveň výpočtů.  
+Když je server označený jako připravený pro Azure, zjišťování a hodnocení vydává doporučení pro změnu velikosti, která identifikují SKU virtuálního počítače Azure a typ disku pro vaše servery. Můžete získat doporučení pro velikost na základě historie výkonu (k optimalizaci prostředků při migraci) nebo na základě místních nastavení serveru bez historie výkonu. V rámci vyhodnocení databáze můžete zobrazit doporučení pro SKU databáze, cenovou úroveň a úroveň výpočtů.  
 
 ### <a name="get-compute-costs"></a>Získat výpočetní náklady
 
@@ -93,18 +93,18 @@ Možnost změny velikosti na základě výkonu v Azure Migrate hodnocení vám p
 - **Zvýhodněné hybridní využití Azure**: s [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)můžete přenést místní licence k Windows serveru s aktivním softwarem Software Assurance nebo předplatným systému Linux, do Azure a kombinovat s možnostmi rezervovaných instancí.
 - **Smlouva Enterprise**: [smlouvy Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) můžou nabízet úspory pro služby a předplatná Azure.
 - **Nabídky**: existuje několik [nabídek Azure](https://azure.microsoft.com/support/legal/offer-details/). Například [průběžné platby dle aktuálního využití pro vývoj/testování](https://azure.microsoft.com/pricing/dev-test/)nebo [Enterprise pro vývoj/testování nabídku](https://azure.microsoft.com/offers/ms-azr-0148p/)pro zajištění nižších sazeb pro virtuální počítače pro vývoj a testování
-- **Doba provozu virtuálního počítače**: můžete zkontrolovat dny za měsíc a hodiny za den, kdy se virtuální počítače Azure spouštějí. Vypnutí počítačů, když se nepoužívají, může snížit vaše náklady (neplatí pro služby RIs).
+- **Doba provozu virtuálního počítače**: můžete zkontrolovat dny za měsíc a hodiny za den, kdy se virtuální počítače Azure spouštějí. Vypnutí serverů, když se nepoužívají, může snížit náklady (neplatí pro vzdálené servery).
 - **Cílová oblast**: můžete vytvořit posouzení v různých oblastech, abyste zjistili, jestli může být migrace do konkrétní oblasti cenově výhodnější. 
 
 ### <a name="visualize-data"></a>Vizualizace dat
 
-Na portálu můžete zobrazit sestavy posouzení serveru (s informacemi o připravenosti na Azure a rozdělení měsíčních nákladů). Hodnocení můžete také exportovat a rozšířit svůj plán migrace pomocí dalších vizualizací. Můžete vytvořit více hodnocení s různými kombinacemi vlastností a zvolit sadu vlastností, které jsou pro vaši firmu nejvhodnější.  
+Na portálu můžete zobrazit sestavy zjišťování a hodnocení (s informacemi o připravenosti na Azure a rozdělení měsíčních nákladů). Hodnocení můžete také exportovat a rozšířit svůj plán migrace pomocí dalších vizualizací. Můžete vytvořit více hodnocení s různými kombinacemi vlastností a zvolit sadu vlastností, které jsou pro vaši firmu nejvhodnější.  
 
  ![Přehled hodnocení](./media/concepts-migration-planning/assessment-summary.png)
 
 ### <a name="evaluate-gapsblockers"></a>Vyhodnotit mezery/blokování
 
-Jak se podíváte na aplikace a úlohy, které chcete migrovat, identifikujte pro ně omezení výpadku a vyhledáte všechny provozní závislosti mezi vašimi aplikacemi a základní infrastrukturou. Tato analýza vám pomůže naplánovat migrace, které vyhovují vašemu cíli doby obnovení (RTO), a zajistěte minimální ztrátu dat. Před migrací doporučujeme zkontrolovat a zmírnit problémy s kompatibilitou nebo nepodporované funkce, které mohou blokovat migraci serveru nebo databáze SQL. K tomu může pomáhat Azure Migrate sestava posouzení serveru a Azure Migrate vyhodnocení databáze. 
+Jak se podíváte na aplikace a úlohy, které chcete migrovat, identifikujte pro ně omezení výpadku a vyhledáte všechny provozní závislosti mezi vašimi aplikacemi a základní infrastrukturou. Tato analýza vám pomůže naplánovat migrace, které vyhovují vašemu cíli doby obnovení (RTO), a zajistěte minimální ztrátu dat. Před migrací doporučujeme zkontrolovat a zmírnit problémy s kompatibilitou nebo nepodporované funkce, které mohou blokovat migraci serveru nebo databáze SQL. K tomu může pomáhat Tato sestava zjišťování Azure Migrate a hodnocení a Azure Migrate vyhodnocení databáze. 
 
 ### <a name="prioritize-workloads"></a>Stanovení priorit úloh
 
@@ -118,12 +118,12 @@ Několik doporučení:
 
     **Stav** | **Akce**
     --- | ---
-    **Virtuální počítače připravené pro Azure** | Exportujte sestavu posouzení a vyfiltrujte všechny počítače se stavem *připraveným pro Azure*. Může se jednat o první skupinu počítačů, které získáte a přesunete do Azure, pomocí nástroje [Azure Migrate: Server pro migraci](migrate-services-overview.md#azure-migrate-server-migration-tool) .
-    **Operační systémy ukončení podpory** | Exportujte sestavu posouzení a filtrujte všechny počítače se systémem Windows Server 2008 R2/Windows Server 2008. Tyto operační systémy jsou na konci podpory a jenom Azure poskytuje zdarma tři roky aktualizací zabezpečení, když je migrujete do Azure. Pokud kombinujete Zvýhodněné hybridní využití Azure a použijete služby vzdálené instalace, může být úspory mnohem vyšší.
+    **Virtuální počítače připravené pro Azure** | Exportujte sestavu posouzení a vyfiltrujte všechny servery se stavem *připraveným pro Azure*. To může být první skupina serverů, které jste najímat a posunuli do Azure, pomocí nástroje [Azure Migrate: Server pro migraci](migrate-services-overview.md#azure-migrate-server-migration-tool) .
+    **Operační systémy ukončení podpory** | Exportujte sestavu posouzení a vyfiltrujte všechny servery se systémem Windows Server 2008 R2/Windows Server 2008. Tyto operační systémy jsou na konci podpory a jenom Azure poskytuje zdarma tři roky aktualizací zabezpečení, když je migrujete do Azure. Pokud kombinujete Zvýhodněné hybridní využití Azure a použijete služby vzdálené instalace, může být úspory mnohem vyšší.
     **Migrace SQL Server** | Použijte doporučení pro vyhodnocení databáze k migraci databází, které jsou připravené k Azure SQL Database, pomocí nástroje Azure Migrate: Database Migration Tool. Migrujte databáze připravené pro virtuální počítač Azure SQL pomocí nástroje Azure Migrate: Server pro migraci.
     **Software na konci podpory** | Exportujte inventář aplikací a vyfiltrujte veškerý software a rozšíření, která se můžou dostat do konce podpory. Nastavte prioritu těchto aplikací pro migraci.
-    **Místně zřízené počítače** | Exportujte sestavu posouzení a vyfiltrujte počítače s nízkým využitím procesoru (%) a využití paměti (%).  Migrujte na virtuální počítač Azure ve správné velikosti a ušetříte náklady na nevyužité prostředky.
-    **Předem zřízené počítače** | Exportovat sestavu posouzení a vyfiltrovat pro počítače s vysokým využitím procesoru (%) a využití paměti (%).  Vyřešte omezení kapacity, Zabraňte poškození přetížení počítačů a zvyšte výkon migrací těchto počítačů do Azure. V Azure Využijte možnosti automatického škálování pro splnění požadavků.<br/><br/> Analyzujte sestavy hodnocení a prozkoumejte omezení úložiště. Analyzujte vstupně-výstupní operace disku a propustnost a doporučený typ disku.
+    **Zřízené servery** | Exportujte sestavu posouzení a vyfiltrujte servery s nízkým využitím procesoru (%) a využití paměti (%).  Migrujte na virtuální počítač Azure ve správné velikosti a ušetříte náklady na nevyužité prostředky.
+    **Předem zřízené servery** | Exportovat sestavu posouzení a vyfiltrovat pro servery s vysokým využitím procesoru (%) a využití paměti (%).  Vyřešte omezení kapacity, Zabraňte poškození nadomezených serverů a zvyšte výkon migrací těchto serverů do Azure. V Azure Využijte možnosti automatického škálování pro splnění požadavků.<br/><br/> Analyzujte sestavy hodnocení a prozkoumejte omezení úložiště. Analyzujte vstupně-výstupní operace disku a propustnost a doporučený typ disku.
 
 - **Začněte malým a pak se zajděte na velké**: Začněte přesunutím aplikací a úloh, které představují minimální riziko a složitost, a Sestavujte důvěru v strategii migrace. Analyzujte doporučení pro vyhodnocení Azure Migrate společně s úložištěm CMDB, abyste našli a migrovali úlohy pro vývoj a testování, které mohou být kandidáty na pilotní migrace. Zpětná vazba a učení z pilotních migrací můžou být užitečné při zahájení migrace produkčních úloh.  
 - V **souladu** s: Azure udržuje největší portfolio dodržování předpisů v oboru, a to z hlediska šířky a hloubky nabídek. Použijte požadavky na dodržování předpisů k určení priorit migrace, aby aplikace a úlohy splňovaly vaše národní, regionální a standardní standardy a zákony. To platí hlavně pro organizace, které zabývají podnikovým procesem, uchovávají citlivé informace nebo jsou v silně regulovaných odvětvích. V těchto typech organizací, standardů a předpisů Abound a se mohou často měnit, takže je obtížné je udržet.  

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: ed6d5d676fd2c6eefd3288b7609446eb61611ed6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a05037505c122bb974e6da3d11a6f25a715a6843
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100517973"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869425"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Koncepty serveru v Azure Database for MySQL
 
@@ -62,7 +62,13 @@ Během tohoto časového serveru nelze na serveru provádět žádné operace sp
 
 ## <a name="how-do-i-manage-a-server"></a>Návody spravovat Server?
 
-Azure Database for MySQL servery můžete spravovat pomocí Azure Portal nebo rozhraní příkazového řádku Azure.
+Můžete spravovat vytváření, odstraňování, konfiguraci parametrů serveru (My. CNF), škálování, sítě, zabezpečení, vysokou dostupnost, zálohování & obnovení a monitorování serverů Azure Database for MySQL pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI. Kromě toho jsou k dispozici následující uložené procedury v Azure Database for MySQL k provádění určitých úloh správy databáze vyžadovaných jako oprávnění SUPERUŽIVATELE není na serveru podporováno.
+
+|**Název uložené procedury**|**Vstupní parametry**|**Výstupní parametry**|**Poznámka k použití**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|–|Ekvivalent [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu Ukončí připojení přidružené k poskytnutému processlist_id po ukončení všech příkazů, které připojení provádí.|
+|*mysql.az_kill_query*|processlist_id|–|Ekvivalent [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu Ukončí příkaz, který připojení právě provádí. Ponechá připojení aktivní.|
+|*mysql.az_load_timezone*|N/A|N/A|Načte [tabulky časového pásma](howto-server-parameters.md#working-with-the-time-zone-parameter) , které umožňují `time_zone` nastavit parametr na pojmenované hodnoty (např. "US/Tichomoří").|
 
 ## <a name="next-steps"></a>Další kroky
 

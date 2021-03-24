@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: fae95e6f3a73d7539f81e1486c4ad021f181aa11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69a4955f28bbd42cd7bf5651bd057412e15303de
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176327"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952911"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
@@ -37,9 +37,6 @@ Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé c
 * Nainstalujte [Azure CLI](/cli/azure/install-azure-cli) verze 2.8.0 nebo novější.
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Vytvoření nového clusteru s smlouvou SLA pro dobu provozu
-
-> [!NOTE]
-> Pokud v současné době povolíte smlouvu SLA pro dobu provozu, neexistuje žádný způsob, jak ho z clusteru odebrat.
 
 Pokud chcete vytvořit nový cluster s smlouvou SLA pro dobu provozu, použijte rozhraní příkazového řádku Azure.
 
@@ -106,6 +103,15 @@ Pomocí [`az aks update`][az-aks-update] příkazu aktualizujte stávající clu
     "tier": "Paid"
   },
   ```
+
+## <a name="opt-out-of-uptime-sla"></a>Výslovný souhlas s smlouvou SLA pro dobu provozu
+
+Cluster můžete aktualizovat tak, aby se změnil na úroveň Free, a odsouhlasit smlouvu SLA pro provozuschopnost.
+
+```azurecli-interactive
+# Update an existing cluster to opt out of Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --no-uptime-sla
+ ```
 
 ## <a name="clean-up"></a>Vyčištění
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2078ba177d68cfaa0a91b79611d92e5c68e4e245
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942731"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868409"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu se systémem Apache Kafka ve službě HDInsight
 
@@ -363,7 +363,7 @@ streams:
 
 Projekt obsahuje soubor s názvem `dev.properties`, který se používá pro předávání parametrů využívaných topologiemi. Definuje následující vlastnosti:
 
-| Soubor dev.properties | Description |
+| Soubor dev.properties | Popis |
 | --- | --- |
 | `kafka.zookeeper.hosts` | [Apache Zookeeper](https://zookeeper.apache.org/) hostitelé pro cluster Kafka. |
 | `kafka.broker.hosts` | Hostitelé zprostředkovatelů Kafka (pracovní uzly). |
@@ -377,7 +377,7 @@ Apache Kafka ve službě HDInsight neposkytuje přístup ke zprostředkovatelům
 
 Následující diagram znázorňuje tok komunikace mezi Stormem a systémem Kafka:
 
-![Diagram clusterů Storm a Kafka ve virtuální síti Azure](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png" alt-text="Diagram clusterů Storm a Kafka ve virtuální síti Azure":::
 
 > [!NOTE]  
 > K dalším službám v clusteru, jako jsou SSH a [Apache Ambari](https://ambari.apache.org/) , se dá dostat přes Internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
@@ -415,7 +415,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
       | Uživatelské jméno SSH | Uživatel SSH, který se má pro clustery vytvořit. |
       | Heslo SSH | Heslo uživatele SSH. |
    
-      ![Obrázek parametrů šablony](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
+      :::image type="content" source="./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png" alt-text="Obrázek parametrů šablony":::
 
 3. Přečtěte si **podmínky a ujednání** a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 

@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 57a3d76f24c33984a883e926a8d4c68736e9f121
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99594430"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869884"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrace Apache Spark a Apache Hive pomocí konektoru skladu s podregistru v Azure HDInsight
 
@@ -23,7 +23,7 @@ Apache Hive nabízí podporu pro databázové transakce, které jsou atomické, 
 
 Apache Spark má strukturované rozhraní API pro streamování, které poskytuje možnosti streamování, které nejsou dostupné v Apache Hive. Počínaje HDInsight 4,0 Apache Spark 2.3.1 a Apache Hive 3.1.0 mít samostatné metaúložiště. Samostatné metaúložiště může zajistit obtížnou interoperabilitu. Konektor pro skladiště podregistru usnadňuje používání Sparku a úlů společně. Knihovna umožní načítá data z procesů LLAP démonů do paralelního vykonavatele. Díky tomuto procesu je efektivnější a přizpůsobitelnější než standardní připojení JDBC z Sparku do podregistru.
 
-![Architektura konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+:::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png" alt-text="Architektura konektoru skladu podregistru" border="true":::
 
 Mezi operace podporované konektorem skladu podregistru patří:
 
@@ -72,7 +72,7 @@ Konektor Warehouse pro podregistr potřebuje samostatné clustery pro úlohy Spa
 
 1. Rozbalte **vlastní spark2 – výchozí**.
 
-    ![Konfigurace Spark2 Apache Ambari](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png" alt-text="Konfigurace Spark2 Apache Ambari" border="true":::
 
 1. Vyberte **Přidat vlastnost...** a přidejte následující konfigurace:
 
@@ -103,11 +103,11 @@ Kromě konfigurací uvedených v předchozí části přidejte následující ko
     
     * Ve webovém prohlížeči přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` umístění název_clusteru, kde je název clusteru interaktivních dotazů. Klikněte na **HiveServer2 Interactive (interaktivní**). Zobrazí se plně kvalifikovaný název domény (FQDN) hlavního uzlu, na kterém běží LLAP, jak je znázorněno na snímku obrazovky. Nahraďte `<llap-headnode>` touto hodnotou.
 
-        ![Hlavní uzel konektoru skladu podregistru](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="Hlavní uzel konektoru skladu podregistru" border="true":::
 
     * Pomocí [příkazu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) se připojte ke clusteru interaktivních dotazů. Vyhledejte `default_realm` parametr v `/etc/krb5.conf` souboru. Nahraďte `<AAD-DOMAIN>` touto hodnotou jako řetězec velkými písmeny, jinak se přihlašovací údaje nenaleznou.
 
-        ![Doména AAD konektoru skladu v podregistru](./media/apache-hive-warehouse-connector/aad-domain.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Doména AAD konektoru skladu v podregistru" border="true":::
 
     * Například `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` .
     
@@ -211,21 +211,21 @@ kinit USERNAME
     hive.executeQuery("SELECT * FROM demo").show()
     ```
 
-    ![Ukázková tabulka před použitím zásad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png" alt-text="Ukázková tabulka před použitím zásad Ranger" border="true":::
 
 1. Použijte zásadu maskování sloupců, která zobrazuje jenom poslední čtyři znaky sloupce.  
     1. Přejít do uživatelského rozhraní správce Ranger na adrese `https://LLAPCLUSTERNAME.azurehdinsight.net/ranger/` .
     1. Klikněte na podregistr Service pro váš cluster v **podregistru**.
-        ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png" alt-text="Ranger Service Manager" border="true":::
     1. Klikněte na kartu **maskování** a pak **přidejte nové zásady** .
 
-        ![seznam zásad podregistru Ranger konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png" alt-text="seznam zásad podregistru Ranger konektoru skladu podregistru" border="true":::
 
     1. Zadejte požadovaný název zásad. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat** a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na **Přidat**.
-                ![vytvořit zásadu](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+                :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png" alt-text="vytvořit zásadu" border="true":::
 1. Znovu zobrazte obsah tabulky. Po použití zásad Ranger uvidíme jenom poslední čtyři znaky sloupce.
 
-    ![Ukázková tabulka po použití zásad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png" alt-text="Ukázková tabulka po použití zásad Ranger" border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

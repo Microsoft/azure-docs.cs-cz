@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cadf5b7d92e26e561e570f824295e69ca421e16
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 34aaafcd03e737b1e59529f8001e0c008bd39b70
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644509"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888868"
 ---
 # <a name="integrate-with-sharepoint-saml"></a>Integrace se službou SharePoint (SAML)
 
@@ -68,8 +68,8 @@ V tomto kroku vytvoříte v tenantovi Azure AD aplikaci, která používá proxy
 
  1. Vytvořte novou aplikaci Azure Proxy aplikací služby AD s vlastní doménou. Podrobné pokyny najdete v tématu [vlastní domény v Azure proxy aplikací služby AD](./application-proxy-configure-custom-domain.md).
 
-    - Interní adresa URL: https://portal.contoso.com/
-    - Externí adresa URL: https://portal.contoso.com/
+    - Interní adresa URL: ' https://portal.contoso.com/ '
+    - Externí adresa URL: ' https://portal.contoso.com/ '
     - Předběžné ověření: Azure Active Directory
     - Přeložit adresy URL v hlavičkách: ne
     - Přeložit adresy URL v těle aplikace: ne
@@ -84,4 +84,4 @@ V tomto kroku vytvoříte v tenantovi Azure AD aplikaci, která používá proxy
  
 ## <a name="step-3-test-your-application"></a>Krok 3: testování aplikace
 
-Pomocí prohlížeče z počítače v externí síti přejděte na adresu URL ( https://portal.contoso.com/) kterou jste nakonfigurovali během kroku publikování. Ujistěte se, že se můžete přihlásit pomocí zkušebního účtu, který jste nastavili.
+Pomocí prohlížeče z počítače v externí síti přejděte na odkaz, který jste nakonfigurovali během kroku publikování. Ujistěte se, že se můžete přihlásit pomocí zkušebního účtu, který jste nastavili.

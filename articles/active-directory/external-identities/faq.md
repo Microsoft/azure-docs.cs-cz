@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 02/12/2021
+ms.date: 03/08/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7879b233bf94442de2cad83de8adfe54b6b81e0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3308c2263f80a0772a389900e08c81cfe8da32a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100365510"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952622"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Nejčastější dotazy k Azure Active Directory spolupráci B2B
 
@@ -83,6 +83,7 @@ Ano. Služba Multi-Factor Authentication a e-mailové e-mailové účty se podpo
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Podporujete resetování hesla pro uživatele spolupráce Azure AD B2B?
 Pokud je váš tenant služby Azure AD domovským adresářem pro uživatele, můžete [resetovat heslo uživatele](../fundamentals/active-directory-users-reset-password-azure-portal.md) z Azure Portal. Nemůžete ale přímo obnovit heslo pro uživatele typu Host, který se přihlásí pomocí účtu spravovaného jiným adresářem služby Azure AD nebo externím zprostředkovatelem identity. Heslo může resetovat jenom uživatel typu Host nebo správce v domovském adresáři uživatele. Tady je několik příkladů, jak funguje resetování hesla pro uživatele typu Host:
  
+* Uživatelé typu Host v tenantovi Azure AD s označením Host (UserType = = Host) se nemůžou registrovat pro SSPR prostřednictvím [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Tento typ uživatele typu Host může provádět pouze SSPR prostřednictvím [https://aka.ms/sspr](https://aka.ms/sspr) . 
 * Uživatelé typu Host, kteří se přihlásí pomocí účet Microsoft (například guestuser@live.com ), mohou resetovat vlastní hesla pomocí účet Microsoft samoobslužného resetování hesla (SSPR). Přečtěte si informace [o resetování hesla účet Microsoft](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Uživatelé typu Host, kteří se přihlásí pomocí účtu Google nebo jiného externího zprostředkovatele identity, můžou resetovat svoje vlastní hesla pomocí metody SSPR zprostředkovatele identity. Uživatel typu host s účtem Google guestuser@gmail.com může například resetovat heslo podle pokynů v tématu [Změna nebo resetování hesla](https://support.google.com/accounts/answer/41078).
 * Pokud je tenant identity tenanta JIT (just-in-time) nebo "virová" tenant (což znamená, že se jedná o samostatného nespravovaného tenanta Azure), může heslo resetovat jenom uživatel typu Host. Někdy organizace [převezme správu virového tenanta](../enterprise-users/domains-admin-takeover.md) , které se vytvoří, když zaměstnanci použijí své pracovní e-mailové adresy k registraci služeb. Až organizace převezme klienta virového, může resetování hesla uživatele nebo povolení SSPR jenom správce v této organizaci. V případě potřeby můžete jako pozvánku do organizace odebrat uživatelský účet hosta z adresáře a znovu odeslat pozvánku.
@@ -119,7 +120,7 @@ Pokud má partner tenanta Azure AD federovaného do místní ověřovací infras
 Odstraňujeme rozdíly mezi spoluprací B2B a B2C (Business-to-Consumer), z nichž jsou identity podporované. Použitá identita není dobrým důvodem pro výběr mezi použitím B2B nebo pomocí B2C. Informace o volbě možnosti spolupráce najdete v tématu [porovnání spolupráce B2B a B2C v Azure Active Directory](compare-with-b2c.md).
 
 ### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>Může se místní účet Azure AD B2C pozvat do tenanta Azure AD pro spolupráci B2B?
-No. Místní účet Azure AD B2C lze použít pouze pro přihlášení k tenantovi Azure AD B2C. Účet se nedá použít k přihlášení do tenanta Azure AD. Pozvání Azure AD B2C místního účtu do tenanta Azure AD pro spolupráci B2B není podporované.
+Ne. Místní účet Azure AD B2C lze použít pouze pro přihlášení k tenantovi Azure AD B2C. Účet se nedá použít k přihlášení do tenanta Azure AD. Pozvání Azure AD B2C místního účtu do tenanta Azure AD pro spolupráci B2B není podporované.
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Jaké aplikace a služby podporují uživatele typu Host Azure B2B?
 Všechny aplikace integrované s Azure AD můžou podporovat uživatele typu Host Azure B2B, ale musí používat koncový bod nastavený jako tenant k ověřování uživatelů typu Host. Je také možné, že budete muset [přizpůsobit deklarace identity](claims-mapping.md) v tokenu SAML, který je vydaný, když se uživatel typu Host ověří do aplikace. 

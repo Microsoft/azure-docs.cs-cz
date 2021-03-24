@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca3ba61de13e0e451b43dc9c8ea40db33fed859a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931102"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869663"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Průvodce nastavením velikosti clusterů Azure HDInsight Interactive Query (LLAPa registru)
 
@@ -29,7 +29,7 @@ Tento dokument popisuje určení velikosti clusteru HDInsight Interactive Query 
 ***Poznámka: všechny doporučené konfigurace jsou založené na pracovním uzlu typ D14 v2.***  
 
 ### <a name="configuration"></a>**Rozšířeného**    
-| Konfigurační klíč      | Doporučená hodnota  | Description |
+| Konfigurační klíč      | Doporučená hodnota  | Popis |
 | :---        |    :----:   | :---     |
 | příz. NodeManager. Resource. paměť-MB | 102400 (MB) | Celková velikost paměti (v MB) pro všechny kontejnery PŘÍZe na uzlu | 
 | příze. Scheduler. maximum – přidělení-MB | 102400 (MB) | Maximální přidělení pro každou žádost kontejneru v RM v MB. Požadavky na paměť vyšší než tato hodnota se projeví |
@@ -47,7 +47,7 @@ Tento dokument popisuje určení velikosti clusteru HDInsight Interactive Query 
 
 ### <a name="llap-architecturecomponents"></a>**LLAP architektury/komponenty:**  
 
-![Architektura LLAP/součásti](./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png "Architektura/komponenty LLAP")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png " alt-text="Architektura LLAP/součásti" border="true":::
 
 ### <a name="llap-daemon-size-estimations"></a>**Odhad velikosti LLAP démona:** 
 
@@ -81,7 +81,7 @@ Výchozí cluster HDInsight má čtyři procesy démony LLAP spuštěné na čty
 
 **Posuvník uživatelského rozhraní Ambari pro proměnnou konfigurace podregistru `hive.server2.tez.sessions.per.default.queue` :**
 
-![Maximální počet souběžných dotazů LLAP](./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png "LLAP maximální počet souběžných dotazů")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png " alt-text="Maximální počet souběžných dotazů LLAP" border="true":::
 
 #### <a name="5-tez-container-and-tez-application-master-size"></a>**5. tez kontejner a velikost hlavní aplikace tez**    
 Konfigurace: ***TEZ. am. Resource. Memory. MB, podregistr. TEZ. Container. Size***  
@@ -165,7 +165,7 @@ Pro D14 v2 je tato hodnota 19 × 3 GB = **57 GB** .
 
 `Ambari environment variable for LLAP heap size:`
 
-![Velikost haldy LLAP](./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png "Velikost haldy LLAP")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png " alt-text="Velikost haldy LLAP" border="true":::
 
 Pokud je mezipaměť SSD zakázaná, mezipaměť v paměti je množství paměti, které zbývá po pořízení velikosti a velikosti haldy z kontejneru LLAP démona.
 
@@ -197,11 +197,11 @@ Proměnné prostředí Ambari: ***num_llap_nodes, num_llap_nodes_for_llap_daemon
 
 **num_llap_nodes** – určuje počet uzlů, které používá služba Llap podregistru, zahrnuje uzly se spuštěným llap démonem, hlavním serverem služby Llap a tez hlavní aplikační sadu (tez am).  
 
-![' Počet uzlů pro službu LLAP '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png "Počet uzlů pro službu LLAP")  
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png " alt-text="' Počet uzlů pro službu LLAP '" border="true":::  
 
 **num_llap_nodes_for_llap_daemons** – zadaný počet uzlů, které se používají jenom pro procesy démon llap Velikosti kontejneru démona LLAP jsou nastaveny na maximální šířku uzlu, takže výsledkem bude jeden démon LLAP na každém uzlu.
 
-![' Počet uzlů pro procesy démon LLAP '](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png "Počet uzlů pro procesy démon LLAP")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png " alt-text="' Počet uzlů pro procesy démon LLAP '" border="true":::
 
 Doporučuje se, aby obě hodnoty byly stejné jako počet pracovních uzlů v clusteru interaktivních dotazů.
 

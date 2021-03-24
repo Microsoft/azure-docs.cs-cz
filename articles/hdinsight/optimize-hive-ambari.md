@@ -4,12 +4,12 @@ description: Ke konfiguraci a optimalizaci Apache Hive použijte webové uživat
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69a4e769677b6f0200f4157305a3a125f82ee76d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939255"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864813"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Optimalizace Apache Hive s Apache Ambari v Azure HDInsight
 
@@ -26,11 +26,11 @@ Podregistr poskytuje dva spouštěcí moduly: Apache Hadoop MapReduce a Apache T
 
 1. Na kartě **Konfigurace** podregistru zadejte **spouštěcí modul** do pole Filtr.
 
-    ![Spouštěcí modul hledání Apache Ambari](./media/optimize-hive-ambari/ambari-search-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-search-execution.png" alt-text="Spouštěcí modul hledání Apache Ambari" border="true":::
 
 1. Výchozí hodnota vlastnosti **optimalizace** je **tez**.
 
-    ![Optimalizace – modul Apache Tez](./media/optimize-hive-ambari/optimization-apache-tez.png)
+    :::image type="content" source="./media/optimize-hive-ambari/optimization-apache-tez.png" alt-text="Optimalizace – modul Apache Tez" border="true":::
 
 ## <a name="tune-mappers"></a>Ladit mapovače
 
@@ -47,7 +47,7 @@ Pokud třeba chcete nastavit čtyři úlohy mapovače pro velikost dat 128 MB, n
 
 1. Nastavte oba parametry na **33 554 432** bajtů (32 MB).
 
-    ![Velikosti seskupení tez Apache Ambari](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-tez-grouping-size.png" alt-text="Velikosti seskupení tez Apache Ambari" border="true":::
 
 Tyto změny mají vliv na všechny úlohy tez napříč serverem. Chcete-li získat optimální výsledek, vyberte příslušné hodnoty parametrů.
 
@@ -63,11 +63,11 @@ Ve výchozím nastavení je v tomto příkladu čtyři reduktorů.
 
 1. Chcete-li změnit parametr, přejděte na kartu **Konfigurace** podregistru a na stránce nastavení vyhledejte parametr **data na omezení** .
 
-    ![Data Apache Ambari na zmenšení](./media/optimize-hive-ambari/ambari-data-per-reducer.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-data-per-reducer.png" alt-text="Data Apache Ambari na zmenšení" border="true":::
 
 1. Vyberte **Upravit** pro úpravu hodnoty na 128 MB (134 217 728 bajtů) a pak stiskněte **ENTER** pro uložení.
 
-    ![Ambari data na redukci – upraveno](./media/optimize-hive-ambari/data-per-reducer-edited.png)
+    :::image type="content" source="./media/optimize-hive-ambari/data-per-reducer-edited.png" alt-text="Ambari data na redukci – upraveno" border="true":::
   
     Při zadání velikosti 1 024 MB s 128 MB dat na redukci je osm reduktorů (1024/128).
 
@@ -81,7 +81,7 @@ Dotaz na podregistr se spustí v jedné nebo několika fázích. Pokud je možn�
 
 1. Chcete-li omezit počet úloh, které mají být spuštěny paralelně, upravte `hive.exec.parallel.thread.number` vlastnost. Výchozí hodnota je 8.
 
-    ![Apache Hive exec paralelní zobrazení](./media/optimize-hive-ambari/apache-hive-exec-parallel.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-hive-exec-parallel.png" alt-text="Apache Hive exec paralelní zobrazení" border="true":::
 
 ## <a name="enable-vectorization"></a>Povolit vektorování
 
@@ -91,7 +91,7 @@ Podregistr zpracovává řádek data řádku. Rozvektorování směruje podregis
 
 1. Chcete-li povolit parametrizované spouštění pro možnost zmenšení dotazu, nastavte `hive.vectorized.execution.reduce.enabled` parametr na hodnotu true. Výchozí hodnota je False.
 
-    ![Apache Hive vektorové spuštění](./media/optimize-hive-ambari/hive-vectorized-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-vectorized-execution.png" alt-text="Apache Hive vektorové spuštění" border="true":::
 
 ## <a name="enable-cost-based-optimization-cbo"></a>Povolit optimalizaci na základě nákladů (CBO)
 
@@ -99,7 +99,7 @@ Ve výchozím nastavení používá podregistr sadu pravidel pro vyhledání jed
 
 Pokud chcete povolit CBO, přejděte na nastavení konfigurace **podregistru**  >    >   a vyhledejte **optimalizaci na základě nákladů** a pak přepněte přepínací tlačítko na **zapnuto**.
 
-![Optimalizátor založený na cenách HDInsight](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
+:::image type="content" source="./media/optimize-hive-ambari/hdinsight-cbo-config.png" alt-text="Optimalizátor založený na cenách HDInsight" border="true":::
 
 Následující dodatečné parametry konfigurace zvyšují výkon dotazů na podregistr, pokud je povolená možnost CBO:
 
@@ -107,19 +107,19 @@ Následující dodatečné parametry konfigurace zvyšují výkon dotazů na pod
 
     Při nastavení na hodnotu true používá podregistr ve svých metastore statistiku k zodpovězení jednoduchých dotazů `count(*)` , jako je.
 
-    ![Apache Hive výpočetní dotaz s použitím statistik](./media/optimize-hive-ambari/hive-compute-query-using-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-compute-query-using-stats.png" alt-text="Apache Hive výpočetní dotaz s použitím statistik" border="true":::
 
 * `hive.stats.fetch.column.stats`
 
     Statistiky sloupce se vytvoří, když je povolený CBO. Pro optimalizaci dotazů používá podregistr statistiku sloupce, které jsou uložené v metastore. Načtení statistiky sloupců pro každý sloupec trvá déle, pokud je počet sloupců vysoký. Když se nastaví na false, toto nastavení zakáže načítání statistik sloupce z metastore.
 
-    ![Statistiky sloupce Apache Hive sady statistik](./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png" alt-text="Statistiky sloupce Apache Hive sady statistik" border="true":::
 
 * `hive.stats.fetch.partition.stats`
 
     Základní statistické údaje o oddílech, jako je počet řádků, velikost dat a velikost souboru, jsou uloženy v metastore. Pokud je nastavená hodnota true, Statistika oddílu se načte z metastore. V případě hodnoty false je velikost souboru načtena ze systému souborů. A počet řádků je načten ze schématu řádku.
 
-    ![Statistiky podregistru – Statistika oddílů sady](./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png" alt-text="Statistiky podregistru – Statistika oddílů sady" border="true":::
 
 ## <a name="enable-intermediate-compression"></a>Povolit mezilehlé komprese
 
@@ -131,16 +131,16 @@ K dispozici jsou tyto typy komprese:
 
 | Formát | Nástroj | Algoritmus | Přípona souboru | Rozdělitelné? |
 | --- | --- | --- | --- | --- |
-| GZIP | GZIP | DEFLATE | `.gz` | No |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
+| GZIP | GZIP | DEFLATE | `.gz` | Ne |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Ano |
 | LZO | `Lzop` | LZO | `.lzo` | Ano, pokud je indexovaný |
-| Snappy | – | Snappy | Snappy | No |
+| Snappy | – | Snappy | Snappy | Ne |
 
 Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, jinak se vytvoří několik mapovačů. Pokud jsou vstupní data text, `bzip2` je to nejlepší možnost. V případě formátu ORC je přichycení nejrychlejší možnost komprese.
 
 1. Chcete-li povolit mezilehlé komprese, přejděte na kartu **Konfigurace** podregistru a nastavte `hive.exec.compress.intermediate` parametr na hodnotu true. Výchozí hodnota je False.
 
-    ![' Podregistr exec Compressed Intermediate '](./media/optimize-hive-ambari/hive-exec-compress-intermediate.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-exec-compress-intermediate.png" alt-text="' Podregistr exec Compressed Intermediate '" border="true":::
 
     > [!NOTE]  
     > Chcete-li zkomprimovat mezilehlé soubory, vyberte Kompresní kodek s nižšími náklady na procesor, a to i v případě, že kodek nemá vysoký kompresní výstup.
@@ -157,7 +157,7 @@ Jako obecné pravidlo je důležité mít rozdělenou část kompresní metody, 
 
     d. Vyberte **Přidat**.
 
-    ![Přidat vlastní vlastnost Apache Hive](./media/optimize-hive-ambari/hive-custom-property.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property.png" alt-text="Přidat vlastní vlastnost Apache Hive" border="true":::
 
     Toto nastavení komprimuje mezilehlé soubory pomocí přichycení. Po přidání této vlastnosti se tato vlastnost zobrazí v podokně vlastní podregistr-Web.
 
@@ -172,7 +172,7 @@ Konečný výstup podregistru je také možné zkomprimovat.
 
 1. Chcete-li zvolit výstupní Kompresní kodek, přidejte `mapred.output.compression.codec` vlastní vlastnost do podokna vlastní web podregistr, jak je popsáno v kroku 3 v předchozí části.
 
-    ![Add2 vlastní vlastnosti Apache Hive](./media/optimize-hive-ambari/hive-custom-property2.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property2.png" alt-text="Add2 vlastní vlastnosti Apache Hive" border="true":::
 
 ## <a name="enable-speculative-execution"></a>Povolit spekulativní provádění
 
@@ -182,7 +182,7 @@ Spekulativní provádění by nemělo být zapnuté pro dlouhotrvající MapRedu
 
 * Chcete-li povolit spekulativní provádění, přejděte na kartu **Konfigurace** podregistru a nastavte `hive.mapred.reduce.tasks.speculative.execution` parametr na hodnotu true. Výchozí hodnota je False.
 
-    ![' Mapred podregistru snižuje spekulativní provádění úkolů '](./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png" alt-text="' Mapred podregistru snižuje spekulativní provádění úkolů '" border="true":::
 
 ## <a name="tune-dynamic-partitions"></a>Ladit dynamické oddíly
 
@@ -202,7 +202,7 @@ Místní režim umožňuje podregistru provádět všechny úlohy v jednom poč�
 
 Chcete-li povolit místní režim, přidejte `hive.exec.mode.local.auto` parametr do panelu vlastní podregistr-site, jak je vysvětleno v kroku 3 oddílu [Povolení mezilehlé komprese](#enable-intermediate-compression) .
 
-![Místní auto v režimu Apache Hive exec](./media/optimize-hive-ambari/hive-exec-mode-local-auto.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-exec-mode-local-auto.png" alt-text="Místní auto v režimu Apache Hive exec" border="true":::
 
 ## <a name="set-single-mapreduce-multigroup-by"></a>Nastavit jeden MapReduce pro více skupin podle
 
@@ -210,7 +210,7 @@ Pokud je tato vlastnost nastavená na hodnotu true, vytvoří se ve více skupin
 
 Chcete-li toto chování povolit, přidejte `hive.multigroupby.singlereducer` parametr do podokna vlastní podregistr-site, jak je vysvětleno v kroku 3 oddílu [Povolení mezilehlé komprese](#enable-intermediate-compression) .
 
-![Jeden MapReduce pro více skupin v podmnožině](./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png" alt-text="Jeden MapReduce pro více skupin v podmnožině" border="true":::
 
 ## <a name="additional-hive-optimizations"></a>Další optimalizace pro podregistr
 

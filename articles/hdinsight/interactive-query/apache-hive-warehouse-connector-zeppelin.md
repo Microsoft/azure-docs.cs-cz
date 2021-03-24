@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 4859ff098bf3fdffbecc70608cb147d17d9d7f59
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7957041c9d445f4239b8f0100128a531d982b451
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941174"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871550"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrace Apache Zeppelin s použitím konektoru datového skladu pro podregistr ve službě Azure HDInsight
 
@@ -97,11 +97,11 @@ Pro přístup k tabulkám podregistru z Zeppelin pomocí překladače Livy jsou 
 
     * Ve webovém prohlížeči přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` umístění název_clusteru, kde je název clusteru interaktivních dotazů. Klikněte na **HiveServer2 Interactive (interaktivní**). Zobrazí se plně kvalifikovaný název domény (FQDN) hlavního uzlu, na kterém běží LLAP, jak je znázorněno na snímku obrazovky. Nahraďte `<llap-headnode>` touto hodnotou.
 
-        ![Hlavní uzel konektoru skladu podregistru](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="Hlavní uzel konektoru skladu podregistru" border="true":::
 
     * Pomocí [příkazu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) se připojte ke clusteru interaktivních dotazů. Vyhledejte `default_realm` parametr v `/etc/krb5.conf` souboru. Nahraďte `<AAD-DOMAIN>` touto hodnotou jako řetězec velkými písmeny, jinak se přihlašovací údaje nenaleznou.
 
-        ![Doména AAD konektoru skladu v podregistru](./media/apache-hive-warehouse-connector/aad-domain.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Doména AAD konektoru skladu v podregistru" border="true":::
 
     * Například `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` .
 

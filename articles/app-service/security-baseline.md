@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd612e7e3c54a000d989c5a2f3a633d06d6d11cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3193acf8ef19cdac97f6733a657610801d614f32
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101718296"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952299"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Základní hodnoty zabezpečení Azure pro App Service
 
@@ -265,9 +265,9 @@ Přečtěte si podrobné výstrahy a doporučení zabezpečení v Security Cente
 
 Doporučuje se vytvořit proces s automatizovanými nástroji pro monitorování konfigurací síťových prostředků a rychlé rozpoznávání změn.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Export doporučení a výstrah zabezpečení](../security-center/continuous-export.md)
 
@@ -285,7 +285,7 @@ Doporučuje se vytvořit proces s automatizovanými nástroji pro monitorování
 
 Pro připojení k různým zdrojům dat a konektorům na základě vašich podnikových požadavků použijte Microsoft Azure Sentinel (SIEM), škálovatelnou, cloudovou a nativní správu událostí zabezpečení (). Můžete také povolit a začlenit data do systému SIEM (Security Information Management) jiného výrobce, jako je například Barracuda v Azure Marketplace.
 
-- [Protokolování aktivity pomocného protokolu](https://docs.microsoft.com/azure/app-service/environment/using-an-ase#logging)
+- [Protokolování aktivity pomocného protokolu](./environment/using-an-ase.md#logging)
 
 - [Postup povolení nastavení diagnostiky pro Azure App Service](troubleshoot-diagnostic-logs.md)
 
@@ -305,7 +305,7 @@ Možnost "co, kdo a kdy" pro jakékoli operace zápisu (PUT, POST, DELETE) prov�
 
 Kromě toho Azure Key Vault poskytuje centralizovanou správu tajných kódů pomocí zásad přístupu a historie auditu. 
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Postup povolení nastavení diagnostiky pro Azure App Service](troubleshoot-diagnostic-logs.md)
 
@@ -322,7 +322,7 @@ Kromě toho Azure Key Vault poskytuje centralizovanou správu tajných kódů po
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurace uchovávání úložiště protokolu zabezpečení
 
 **Doprovodné** materiály: v Azure monitor nastavte dobu uchování protokolu pro pracovní prostory Log Analytics přidružené k vašim App Service prostředkům podle předpisů pro dodržování předpisů vaší organizace.
-- [Postup nastavení parametrů uchovávání protokolů](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Odpovědnost:** Zákazník
 
@@ -338,7 +338,7 @@ Pokud jste nasadili Firewall webových aplikací (WAF), můžete monitorovat út
 
 Pro integraci s různými zdroji dat a konektory podle požadavků použijte Azure Sentinel, škálovatelnou a cloudovou správu událostí zabezpečení (SIEM). Volitelně můžete povolit a začlenit data do řešení pro správu událostí zabezpečení třetí strany v Azure Marketplace.
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/activity-log)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/essentials/activity-log.md)
 
 - [Postup povolení Application Insights](../azure-monitor/app/app-insights-overview.md)
 
@@ -372,9 +372,9 @@ Pomocí protokolu brány firewall webových aplikací v reálném čase s nasaze
 
 **Doprovodné** materiály: Azure Active Directory (Azure AD) mají předdefinované role, které se musí explicitně přiřadit a dotazovat na ně. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Použití spravovaných identit pro App Service a Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
+- [Použití spravovaných identit pro App Service a Azure Functions](./overview-managed-identity.md?tabs=dotnet&context=azure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context)
 
 - [Přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md)
 
@@ -390,7 +390,7 @@ Obecně se vyhnete implementaci výchozích hesel pro přístup uživatelů při
 
 Zakáže anonymní přístup, pokud ho nepotřebujete podporovat. 
 
-- [Zprostředkovatelé identity jsou ve výchozím nastavení k dispozici v Azure App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [Zprostředkovatelé identity jsou ve výchozím nastavení k dispozici v Azure App Service](./overview-authentication-authorization.md#identity-providers)
 
 - [Ověřování a autorizace v Azure App Service a Azure Functions](overview-authentication-authorization.md)
 
@@ -437,7 +437,7 @@ Aplikace App Service používají federované identity, ve kterých poskytovatel
 
 Pokud povolíte ověřování a autorizaci jedním z těchto poskytovatelů, je k dispozici koncový bod přihlášení pro ověřování uživatelů a ověření tokenů ověřování od poskytovatele.
 
-- [Pochopení ověřování a autorizace v Azure App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [Pochopení ověřování a autorizace v Azure App Service](./overview-authentication-authorization.md#identity-providers)
 
 - [Další informace o ověřování a autorizaci v Azure App Service](overview-authentication-authorization.md)
 
@@ -451,7 +451,7 @@ Pokud povolíte ověřování a autorizaci jedním z těchto poskytovatelů, je 
 
 Implementace vícefaktorového ověřování pro Azure AD. Správci musí zajistit, aby byly účty předplatného na portálu chráněné. Předplatné je zranitelné vůči útokům, protože spravuje prostředky, které jste vytvořili. 
 
-- [Vícefaktorové ověřování zabezpečení Azure](/azure/security/develop/secure-aad-app)
+- [Vícefaktorové ověřování zabezpečení Azure](/previous-versions/azure/security/develop/secure-aad-app)
 
 - [Postup povolení vícefaktorového ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -517,7 +517,7 @@ Ochrana před hrozbami v Security Center poskytuje komplexní obranu pro vaše p
 
 **Doprovodné** materiály: Objevte zastaralé účty pomocí protokolů poskytovaných službou Azure Active Directory (Azure AD). Pomocí kontrol přístupu Azure identity můžete efektivně spravovat členství ve skupinách a přístup k podnikovým aplikacím a také přiřazení rolí. Pravidelně kontrolujte přístup uživatelů, abyste měli jistotu, že budou mít přístup jenom zamýšlení uživatelé. 
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -533,7 +533,7 @@ Přístup ke zdrojům aktivit přihlašování, auditu a rizikového protokolov�
 
 - [Jak nakonfigurovat Azure App Service aplikace tak, aby používaly přihlášení k Azure AD](configure-authentication-provider-aad.md)
 
-- [Integrace protokolů aktivit Azure do služby Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrace protokolů aktivit Azure do služby Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -561,7 +561,7 @@ Pomocí Azure AD Identity Protection můžete nakonfigurovat automatizované odp
 
 **Doprovodné** materiály: není k dispozici; Customer Lockbox se pro Azure App Service nepodporuje.
 
-- [Seznam služeb podporovaných Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Odpovědnost:** Zákazník
 
@@ -661,7 +661,7 @@ Tajné kódy poskytnuté zákazníkem jsou v klidovém stavu zašifrované a ukl
 
 Všimněte si, že i když se místně připojené disky můžou na webech jako dočasné úložiště (například D:\Local a% TMP%), nejsou v klidovém stavu šifrované.
 
-- [Porozumět ovládacím prvkům ochrany dat pro Azure App Service](https://docs.microsoft.com/azure/app-service/security-recommendations#data-protection)
+- [Porozumět ovládacím prvkům ochrany dat pro Azure App Service](./security-recommendations.md#data-protection)
 
 - [Vysvětlení šifrování Azure Storage v klidovém umístění](../storage/common/storage-service-encryption.md)
 
@@ -673,7 +673,7 @@ Všimněte si, že i když se místně připojené disky můžou na webech jako 
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na jakékoli změny v produkčních App Servicech aplikacích a dalších důležitých nebo souvisejících prostředcích.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Odpovědnost:** Zákazník
 
@@ -689,7 +689,7 @@ Všimněte si, že i když se místně připojené disky můžou na webech jako 
 
 Pokud chcete zabezpečit App Service aplikace, přečtěte si a sledujte doporučení Security Center.
 
-- [Postup přidání průběžného ověřování zabezpečení do kanálu CI/CD](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&amp;view=azure-devops)
+- [Postup přidání průběžného ověřování zabezpečení do kanálu CI/CD](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&preserve-view=true)
 
 - [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -719,7 +719,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?preserve-view=true&amp;view=azps-4.8.0)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&preserve-view=true)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -840,7 +840,7 @@ Pomocí WebJobs v App Service můžete monitorovat neschválené softwarové apl
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 - [Spouštění úloh na pozadí pomocí WebJobs v Azure App Service](webjobs-create.md)
 
@@ -864,7 +864,7 @@ Podobně použijte WebJobs v App Service k inventarizaci neschválených softwar
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Odpovědnost:** Zákazník
 
@@ -926,7 +926,7 @@ Použijte předdefinované definice zásad, jako například:
 
 Doporučuje se dokumentovat v procesu použití integrovaných definic zásad pro standardizované účely.   
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&amp;view=azps-4.8.0)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&preserve-view=true)
 
 - [Jak nakonfigurovat a spravovat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -952,9 +952,9 @@ Doporučuje se dokumentovat v procesu použití integrovaných definic zásad pr
 
 Pomocí stávajícího kanálu průběžné integrace (CI) a průběžného doručování (CD) nasaďte známou zabezpečenou konfiguraci.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?preserve-view=true&amp;view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/?preserve-view=true&amp;view=azure-devops)
+- [Dokumentace k Azure Repos](/azure/devops/repos/?view=azure-devops&preserve-view=true)
 
 **Odpovědnost:** Zákazník
 
@@ -1060,7 +1060,7 @@ Další informace jsou k dispozici na odkazovaných odkazech.
 
 - [Obnovení aplikace běžící v Azure App Service](web-sites-restore.md)
 
-- [Principy šifrování neaktivních uložených dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#encryption-at-rest-in-microsoft-cloud-services) 
+- [Principy šifrování neaktivních uložených dat v Azure](../security/fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services) 
 
 - [Model šifrování a tabulka správy klíčů](../security/fundamentals/encryption-atrest.md)
 
@@ -1188,5 +1188,5 @@ Navíc můžete jasně označit předplatná (například produkci, neprodukčn�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v článku [Přehled Azure Security Benchmark v2](/azure/security/benchmarks/overview).
-- Další informace o [základních úrovních zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Další informace najdete v článku [Přehled Azure Security Benchmark v2](../security/benchmarks/overview.md).
+- Další informace o [základních úrovních zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

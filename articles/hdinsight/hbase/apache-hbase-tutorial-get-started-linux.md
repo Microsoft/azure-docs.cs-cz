@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50216b83475e92cbabb5ed78c3836264ceff4600
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705666"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866603"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: použití Apache HBA v Azure HDInsight
 
@@ -64,11 +64,11 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí [prostředí Ap
 
 Pro většinu osob se data zobrazí v tabulkovém formátu:
 
-![Tabulková data HDInsight Apache HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+:::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png" alt-text="Tabulková data HDInsight Apache HBA" border="false":::
 
 V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com/bigtable/)) vypadají stejná data jako:
 
-![BigTable data o službě HDInsight Apache HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+:::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png" alt-text="BigTable data o službě HDInsight Apache HBA" border="false":::
 
 **Použití prostředí HBase**
 
@@ -111,7 +111,7 @@ V rámci adaptérů HBA (implementace [cloudu BigTable](https://cloud.google.com
     scan 'Contacts'
     ```
 
-    ![Prostředí HDInsight Apache Hadoop HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    :::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png" alt-text="Prostředí HDInsight Apache Hadoop HBA" border="false":::
 
 1. `get`K načtení obsahu řádku použijte příkaz. Zadejte následující příkaz:
 
@@ -331,7 +331,7 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 1. V horní části stránky vyberte **Rychlé odkazy** , přejděte na aktivní odkaz na uzel Zookeeper a pak vyberte **HBase Master uživatelské rozhraní**.  Uživatelské rozhraní se otevře na nové kartě prohlížeče:
 
-   ![HMaster uživatelské rozhraní HDInsight Apache HBA](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   :::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png" alt-text="HMaster uživatelské rozhraní HDInsight Apache HBA" border="false":::
 
    Hlavní uživatelské rozhraní HBase obsahuje tyto části:
 

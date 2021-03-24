@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: deaa414a17240e8cdbdad7f4ba9b3e596b4f191f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: ae8b1eab81e3c898c25a613f552a49c8de64f49d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780323"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889123"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Vytvoření triggeru, který spouští kanál v reakci na událost úložiště
 
@@ -43,10 +43,10 @@ V této části se dozvíte, jak vytvořit Trigger události úložiště v uži
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image1.png" alt-text="Snímek obrazovky se stránkou autora k vytvoření nového triggeru události úložiště v Data Factory uživatelském rozhraní.":::
 
-1. V rozevíracím seznamu předplatného Azure vyberte svůj účet úložiště nebo ručně použijte jeho ID prostředku účtu úložiště. Vyberte kontejner, ve kterém chcete události provést. Výběr kontejneru je nepovinný, ale nezapomeňte, že výběr všech kontejnerů může vést k velkému počtu událostí.
+1. V rozevíracím seznamu předplatného Azure vyberte svůj účet úložiště nebo ručně použijte jeho ID prostředku účtu úložiště. Vyberte kontejner, ve kterém chcete události provést. Je vyžadován výběr kontejneru, ale je třeba mít na vědomí, že výběr všech kontejnerů může vést k velkému počtu událostí.
 
    > [!NOTE]
-   > Aktivační událost události úložiště aktuálně podporuje pouze účty úložiště Azure Data Lake Storage Gen2 a obecné účely verze 2. Z důvodu omezení Azure Event Grid Azure Data Factory podporuje maximálně 500 triggerů událostí úložiště na jeden účet úložiště.
+   > Aktivační událost události úložiště aktuálně podporuje pouze účty úložiště Azure Data Lake Storage Gen2 a obecné účely verze 2. Z důvodu omezení Azure Event Grid Azure Data Factory podporuje maximálně 500 triggerů událostí úložiště na jeden účet úložiště. Pokud jste dosáhli limitu, požádejte prosím podporu o doporučení a zvyšte limit při vyhodnocování pomocí Event Grid týmu. 
 
    > [!NOTE]
    > Pokud chcete vytvořit novou nebo upravit existující Trigger události úložiště, účet Azure použitý k přihlášení do Data Factory a publikování triggeru události úložiště musí mít v účtu úložiště odpovídající oprávnění řízení přístupu na základě role (Azure RBAC). Nevyžadují se žádné další oprávnění: instanční objekt pro Azure Data Factory _nepotřebuje zvláštní_ oprávnění pro účet úložiště ani Event Grid. Další informace o řízení přístupu najdete v části [řízení přístupu na základě rolí](#role-based-access-control) .
@@ -54,7 +54,7 @@ V této části se dozvíte, jak vytvořit Trigger události úložiště v uži
 1. **Cesta k objektu BLOB začíná** a **cesta k objektu BLOB končí** vlastností umožňuje zadat kontejnery, složky a názvy objektů blob, pro které chcete události přijímat. Aktivační procedura události úložiště vyžaduje, aby byla definovaná aspoň jedna z těchto vlastností. Můžete použít celou řadu vzorů pro **cestu objektu BLOB** , která začíná a má **cestu k objektu BLOB končící** vlastností, jak je znázorněno v příkladech dále v tomto článku.
 
     * **Cesta objektu BLOB začíná na:** Cesta objektu BLOB musí začínat cestou složky. Platné hodnoty zahrnují `2018/` a `2018/april/shoes.csv` . Toto pole nelze vybrat, pokud není vybrán kontejner.
-    * **Cesta objektu BLOB končí na:** Cesta objektu BLOB musí končit názvem souboru nebo příponou. Platné hodnoty zahrnují `shoes.csv` a `.csv` . Název kontejneru a složky jsou volitelné, ale pokud jsou zadané, musí být odděleny `/blobs/` segmentem. Například kontejner pojmenovaný ' Orders ' může mít hodnotu `/orders/blobs/2018/april/shoes.csv` . Chcete-li určit složku v jakémkoli kontejneru, vynechejte úvodní znak "/". Například spustí `april/shoes.csv` událost pro libovolný soubor s názvem `shoes.csv` ve složce a s názvem ' duben ' v jakémkoli kontejneru.
+    * **Cesta objektu BLOB končí na:** Cesta objektu BLOB musí končit názvem souboru nebo příponou. Platné hodnoty zahrnují `shoes.csv` a `.csv` . Názvy kontejnerů a složek, jsou-li zadány, musí být odděleny `/blobs/` segmentem. Například kontejner pojmenovaný ' Orders ' může mít hodnotu `/orders/blobs/2018/april/shoes.csv` . Chcete-li určit složku v jakémkoli kontejneru, vynechejte úvodní znak "/". Například spustí `april/shoes.csv` událost pro libovolný soubor s názvem `shoes.csv` ve složce a s názvem ' duben ' v jakémkoli kontejneru.
     * Všimněte si, že cesta objektu BLOB **začíná** na a **končí** na, což je jediné porovnávání vzorů povolené v triggeru události úložiště. Pro typ triggeru se nepodporují jiné typy zástupných znaků.
 
 1. Vyberte, jestli má aktivační událost reagovat na událost **vytvořeného objektu BLOB** , událost **odstranění objektu BLOB** nebo obojí. V zadaném umístění úložiště spustí každá událost Data Factory kanály přidružené k triggeru.

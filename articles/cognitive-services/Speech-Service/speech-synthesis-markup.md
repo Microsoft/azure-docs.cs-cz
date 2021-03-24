@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 124e3ef734e03606372dc07059841b77c3a548de
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ffa8528da454fd29c937a2d49accdda617fe62dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584563"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869017"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -44,7 +44,7 @@ Při použití SSML Pamatujte na to, že speciální znaky, jako jsou uvozovky, 
 
 ## <a name="supported-ssml-elements"></a>Podporované elementy SSML
 
-Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvky slouží k úpravě roztečí, Prosody, objemu a dalších. Následující části podrobně popisují, jak se jednotlivé prvky používají, a když je prvek povinný nebo volitelný.  
+Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvky slouží k úpravě roztečí, Prosody, objemu a dalších. Následující části podrobně popisují, jak se jednotlivé prvky používají, a když je prvek povinný nebo volitelný.
 
 > [!IMPORTANT]
 > Nezapomeňte použít dvojité uvozovky kolem hodnot atributů. Standardy pro správný formát platná XML vyžadují, aby hodnoty atributu byly uzavřeny do dvojitých uvozovek. Například je ve `<prosody volume="90">` správném formátu platný prvek, ale není `<prosody volume=90>` . SSML nesmí rozpoznat hodnoty atributu, které nejsou v uvozovkách.
@@ -100,7 +100,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 ## <a name="use-multiple-voices"></a>Použít více hlasů
 
-V rámci `speak` elementu můžete zadat více hlasů pro výstup textu na řeč. Tyto hlasy můžou být v různých jazycích. U každého hlasu musí být text zabalen do `voice` elementu. 
+V rámci `speak` elementu můžete zadat více hlasů pro výstup textu na řeč. Tyto hlasy můžou být v různých jazycích. U každého hlasu musí být text zabalen do `voice` elementu.
 
 **Atributy**
 
@@ -213,7 +213,7 @@ V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu spe
 * `zh-CN-XiaoxuanNeural` Tisk
 * `zh-CN-XiaoruiNeural` Tisk
 
-Intenzita stylu projevování může být dále změněna, aby lépe vyhovovala vašemu případu použití. Můžete zadat silnější nebo měkčí styl s `styledegree` cílem usnadnit tak vyjádření a subdued řeči. 
+Intenzita stylu projevování může být dále změněna, aby lépe vyhovovala vašemu případu použití. Můžete zadat silnější nebo měkčí styl s `styledegree` cílem usnadnit tak vyjádření a subdued řeči.
 
 V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu speaking:
 * `zh-CN-XiaoxiaoNeural`
@@ -250,7 +250,7 @@ Výše uvedené změny se aplikují na úrovni věty a styly a aktéry rolí se 
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
-| Hlas                   | Styl                     | Description                                                 |
+| Hlas                   | Styl                     | Popis                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Vyjadřuje formální, jistý a autoritativní tón pro doručování zpráv. |
 |                         | `style="newscast-casual"` | Vyjadřuje všestranný a příležitostný tón pro obecné doručování zpráv.        |
@@ -275,11 +275,11 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
 |                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
 |                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.          |
-|                         | `style="affectionate"`    | Vyjadřuje teplý a affectionate tón s vyšší roztečí a spotřebou r. Mluvčí je ve stavu, ve kterém se přilákat na pozornost naslouchacího procesu. Osobní preference mluvčího je často endearingá.          |     
-|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
-|                         | `style="lyrical"`         | Vyjadřuje emoce v Melodic a Sentimental         |   
-| `zh-CN-YunyangNeural`   | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  | 
-| `zh-CN-YunyeNeural`     | `style="calm"`            | Vyjadřuje studenou, získanou a složenou polohu při mluvení. Tónů, rozteč a Prosody je v porovnání s jinými typy řeči mnohem jednotnější.    | 
+|                         | `style="affectionate"`    | Vyjadřuje teplý a affectionate tón s vyšší roztečí a spotřebou r. Mluvčí je ve stavu, ve kterém se přilákat na pozornost naslouchacího procesu. Osobní preference mluvčího je často endearingá.          |
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |
+|                         | `style="lyrical"`         | Vyjadřuje emoce v Melodic a Sentimental         |
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Vyjadřuje studenou, získanou a složenou polohu při mluvení. Tónů, rozteč a Prosody je v porovnání s jinými typy řeči mnohem jednotnější.    |
 |                         | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
 |                         | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
 |                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
@@ -301,22 +301,22 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
 |                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
 |                         | `style="embarrassed"`     | Vyjadřuje nejistý a váhají tón, když je mluvčí Uncomfortable.   |
-|                         | `style="affectionate"`    | Vyjadřuje teplý a affectionate tón s vyšší roztečí a spotřebou r. Mluvčí je ve stavu, ve kterém se přilákat na pozornost naslouchacího procesu. Osobní preference mluvčího je často endearingá.          |     
-|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
+|                         | `style="affectionate"`    | Vyjadřuje teplý a affectionate tón s vyšší roztečí a spotřebou r. Mluvčí je ve stavu, ve kterém se přilákat na pozornost naslouchacího procesu. Osobní preference mluvčího je často endearingá.          |
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |
 | `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
 |                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
 |                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
 |                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
 |                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
 |                         | `style="depressed"`       | Vyjadřuje melancholic a despondent tón s nižší roztečí a energií.    |
-|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |  
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |
 | `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Vyjadřuje dostáváme a tón s vyšší roztečí a r-spotřebou.                         |
 |                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
 |                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
 |                         | `style="disgruntled"`     | Vyjadřuje Disdainful a stížnost. Řeč tohoto emoce zobrazuje nerekreační a dočasné.              |
 |                         | `style="serious"`         | Vyjadřuje striktní a příkazový tón. Mluvčí často zazní a mnohem méně odlehčená pomocí tempo.    |
 |                         | `style="depressed"`       | Vyjadřuje melancholic a despondent tón s nižší roztečí a energií.    |
-|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |   
+|                         | `style="gentle"`          | Vyjádření mírného, zdvořiléého a příjemnýho tónu s nižší roztečí a r-energií         |
 | `zh-CN-XiaoruiNeural`    | `style="sad"`             | Vyjadřuje sorrowful tón s vyšší roztečí, nižší intenzitou a nižší spotřebou r. Běžné indikátory tohoto emoce by byly během řeči whimpers nebo Crying.            |
 |                         | `style="angry"`           | Vyjadřuje Angry a nespokojeni tón s nižší roztečí, vyšší intenzitou a vyšší spotřebou r. Mluvčí je ve stavu, ve kterém se irate, je zastavený a poškozený.       |
 |                         | `style="fearful"`         | Vyjadřuje děsili a nervový tón s vyšší roztečí, vyšší energií energie a vyšší rychlostí. Mluvčí je ve stavu tenseness a uneasiness.                          |
@@ -398,7 +398,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Volitelné |
 | `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách, tato hodnota by měla být nastavena na hodnotu menší než 5000ms. Příklady platných hodnot jsou `2s` a. `500ms` | Volitelné |
 
-| Obsahem                      | Description |
+| Obsahem                      | Popis |
 |-------------------------------|-------------|
 | Žádná, nebo pokud není zadána žádná hodnota | 0 MS        |
 | x – slabý                        | 250 ms      |
@@ -418,10 +418,10 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 ```
 ## <a name="add-silence"></a>Přidat tichou
 
-Použijte `mstts:silence` element pro vložení pauz před nebo za text nebo mezi 2 sousedícími větami. 
+Použijte `mstts:silence` element pro vložení pauz před nebo za text nebo mezi 2 sousedícími větami.
 
 > [!NOTE]
->Rozdíl mezi `mstts:silence` a `break` je, který `break` lze přidat na libovolné místo v textu, ale ticha funguje pouze na začátku nebo konci vstupního textu nebo na hranici 2 sousedících vět.  
+>Rozdíl mezi `mstts:silence` a `break` je, který `break` lze přidat na libovolné místo v textu, ale ticha funguje pouze na začátku nebo konci vstupního textu nebo na hranici 2 sousedících vět.
 
 
 **Syntax**
@@ -434,18 +434,18 @@ Použijte `mstts:silence` element pro vložení pauz před nebo za text nebo mez
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `type` | Určuje umístění tichého navýšení: <ul><li>Přední – na začátku textu </li><li>Zakončení – na konci textu </li><li>Sentenceboundary – mezi sousedními větami </li></ul> | Vyžadováno |
+| `type` | Určuje umístění tichého navýšení: <ul><li>`Leading` – na začátku textu </li><li>`Tailing` – na konci textu </li><li>`Sentenceboundary` – mezi sousedními větami </li></ul> | Vyžadováno |
 | `Value` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách, tato hodnota by měla být nastavena na hodnotu menší než 5000ms. Příklady platných hodnot jsou `2s` a. `500ms` | Vyžadováno |
 
 **Příklad** V tomto příkladu `mtts:silence` se používá k přidání 200 MS ticha mezi dvěma větami.
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
-<voice name="en-US-AriaNeural"> 
-<mstts:silence  type="Sentenceboundary" value="200ms"/> 
-If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
-A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
-</voice> 
-</speak> 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<voice name="en-US-AriaNeural">
+<mstts:silence  type="Sentenceboundary" value="200ms"/>
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way.
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time.
+</voice>
+</speak>
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>Zadat odstavce a věty
@@ -533,7 +533,7 @@ Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, č�
 Někdy může služba převod textu na řeč přesně vyslovit slovo. Například název společnosti nebo zdravotní podmínky. Vývojáři mohou definovat způsob, jakým jsou jednotlivé entity čteny v SSML pomocí `phoneme` `sub` značek a. Pokud však potřebujete definovat způsob čtení více entit, můžete vytvořit vlastní lexikon pomocí `lexicon` značky.
 
 > [!NOTE]
-> Vlastní lexikon aktuálně podporuje kódování UTF-8. 
+> Vlastní lexikon aktuálně podporuje kódování UTF-8.
 
 > [!NOTE]
 > Vlastní lexikon se pro tyto 5 hlasy nepodporuje (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural a MT-MT-GarceNeural).
@@ -557,18 +557,18 @@ Chcete-li definovat způsob čtení více entit, můžete vytvořit vlastní lex
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
       alphabet="ipa" xml:lang="en-US">
   <lexeme>
-    <grapheme>BTW</grapheme> 
-    <alias>By the way</alias> 
+    <grapheme>BTW</grapheme>
+    <alias>By the way</alias>
   </lexeme>
   <lexeme>
-    <grapheme> Benigni </grapheme> 
+    <grapheme> Benigni </grapheme>
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
 </lexicon>
@@ -580,11 +580,11 @@ Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost fráze 
 
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>ScotlandMV</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>ScotlandMV</alias>
   </lexeme>
   <lexeme>
-    <grapheme>ScotlandMV</grapheme> 
+    <grapheme>ScotlandMV</grapheme>
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
@@ -592,8 +592,8 @@ Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost fráze 
 Můžete také přímo poskytnout očekávanou `alias` zkratku nebo zkrácený termín. Například:
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>Scotland Media Wave</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>Scotland Media Wave</alias>
   </lexeme>
 ```
 
@@ -610,8 +610,8 @@ Po publikování vlastního slovníku ho můžete odkázat z SSML.
 > `lexicon`Element musí být uvnitř `voice` elementu.
 
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
-          xmlns:mstts="http://www.w3.org/2001/mstts" 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+          xmlns:mstts="http://www.w3.org/2001/mstts"
           xml:lang="en-US">
     <voice name="en-US-JennyNeural">
         <lexicon uri="http://www.example.com/customlexicon.xml"/>
@@ -621,7 +621,7 @@ Po publikování vlastního slovníku ho můžete odkázat z SSML.
 </speak>
 ```
 
-Při použití tohoto vlastního slovníku se "BTW" přečte jako "způsobem". "Neškodné" se budou číst pomocí poskytnutého IPAu "bɛ ˈ ni ː nji".  
+Při použití tohoto vlastního slovníku se "BTW" přečte jako "způsobem". "Neškodné" se budou číst pomocí poskytnutého IPAu "bɛ ˈ ni ː nji".
 
 **Omezení**
 - Velikost souboru: maximální limit velikosti souboru lexikonu je 100 KB, pokud je tato velikost mimo tuto velikost, požadavek na Shrnutí se nezdaří.
@@ -637,7 +637,7 @@ Můžete použít `sapi` jako hodnotu pro `alphabet` atribut s vlastními lexiko
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
@@ -681,7 +681,7 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 ### <a name="change-speaking-rate"></a>Změna míry projevení
 
-Míru speakace lze použít na hlasy neuronové a standardní hlasy na úrovni slova nebo věty. 
+Míru speakace lze použít na hlasy neuronové a standardní hlasy na úrovni slova nebo věty.
 
 **Příklad**
 
@@ -736,7 +736,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-AriaNeural">
         <prosody contour="(60%,-60%) (100%,+80%)" >
-            Were you the only person in the room? 
+            Were you the only person in the room?
         </prosody>
     </voice>
 </speak>
@@ -782,7 +782,7 @@ Níže jsou podporované typy obsahu pro `interpret-as` `format` atributy a. Atr
 **Příklad**
 
 Modul Shrnutí řeči připraví následující příklad jako "první požadavek byl v říjnu Nineteenth 20 10 s počátečním příchodem na 12 35 odp."
- 
+
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-JennyNeural">
@@ -871,7 +871,12 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete vš
 
 ## <a name="bookmark-element"></a>Element Bookmark
 
-`bookmark`Element umožňuje vložit záložky do SSML a získat posunutí zvuku každé záložky zvukového datového proudu pro asynchronní oznámení.
+Element Bookmark umožňuje vložit vlastní značky v SSML a získat posun každé značky ve zvukovém streamu.
+Prvky záložky nebudeme číst.
+Element Bookmark lze použít k odkazování na konkrétní umístění v rámci textu nebo sekvence značek.
+
+> [!NOTE]
+> `bookmark` element funguje pouze pro `en-US-AriaNeural` hlas v oblasti západní USA ( `westus` ) pro nyní.
 
 **Syntax**
 
@@ -883,15 +888,16 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete vš
 
 | Atribut | Popis                                   | Požadováno/volitelné                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
-| `mark`     | Určuje text záložky `bookmark` prvku. | Povinná hodnota. |
+|  `mark`   | Určuje referenční text `bookmark` elementu. | Povinná hodnota. |
 
 **Příklad**
 
+Jako příklad můžete chtít, abyste věděli, jaký je časový posun každého slova v květu, jak je uvedeno níže.
+
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-GuyNeural">
-        <bookmark mark='bookmark_one'/> one.
-        <bookmark mark='bookmark_two'/> two. three. four.
+    <voice name="en-US-AriaNeural">
+        We are selling <bookmark mark='flower_1'/>roses and <bookmark mark='flower_2'/>daisies.
     </voice>
 </speak>
 ```
@@ -903,6 +909,10 @@ Můžete se přihlásit k odběru `BookmarkReached` události v sadě Speech SDK
 > [!NOTE]
 > `BookmarkReached` událost je k dispozici pouze od verze sady Speech SDK 1.16.0.
 
+`BookmarkReached` události jsou vyvolány, protože výstupní zvuková data budou k dispozici, což bude rychlejší než přehrávání do výstupního zařízení.
+
+* `AudioOffset` oznamuje uplynulý čas výstupu zvuku mezi začátkem syntézy a prvkem záložky. To se měří v jednotkách se stovkami (HNS) s 10 000, který odpovídá 1 milisekundu.
+* `Text` je odkazový text elementu Bookmark, což je řetězec, který jste nastavili v `mark` atributu.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -917,6 +927,12 @@ synthesizer.BookmarkReached += (s, e) =>
 };
 ```
 
+Pro příklad SSML výše se událost spustí `BookmarkReached` dvakrát a výstup konzoly bude
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="c"></a>[C++](#tab/cpp)
 
 Další informace najdete v tématu <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>.
@@ -924,11 +940,17 @@ Další informace najdete v tématu <a href="https://docs.microsoft.com/cpp/cogn
 ```cpp
 synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
 {
-    cout << "bookmark reached. "
+    cout << "Bookmark reached. "
         // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
         << "Audio offset: " << e.AudioOffset / 10000 << "ms, "
-        << "Bookmark text: " << e.Text << "." << endl;
+        << "bookmark text: " << e.Text << "." << endl;
 };
+```
+
+Pro příklad SSML výše se událost spustí `BookmarkReached` dvakrát a výstup konzoly bude
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -943,6 +965,12 @@ synthesizer.BookmarkReached.addEventListener((o, e) -> {
 });
 ```
 
+Pro příklad SSML výše se událost spustí `BookmarkReached` dvakrát a výstup konzoly bude
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Další informace najdete v tématu <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>.
@@ -953,14 +981,26 @@ speech_synthesizer.bookmark_reached.connect(lambda evt: print(
     "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
 ```
 
+Pro příklad SSML výše se událost spustí `bookmark_reached` dvakrát a výstup konzoly bude
+```text
+Bookmark reached, audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Další informace najdete v tématu <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached` </a>.
 
 ```javascript
 synthesizer.bookmarkReached = function (s, e) {
-    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms. Bookmark text: " + e.text);
+    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms, bookmark text: " + e.text);
 }
+```
+
+Pro příklad SSML výše se událost spustí `bookmarkReached` dvakrát a výstup konzoly bude
+```text
+(Bookmark reached), Audio offset: 825ms, bookmark text: flower_1.
+(Bookmark reached), Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
@@ -972,6 +1012,12 @@ Další informace najdete v tématu <a href="https://docs.microsoft.com/objectiv
     // The unit of AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to converted to milliseconds.
     NSLog(@"Bookmark reached. Audio offset: %fms, bookmark text: %@.", eventArgs.audioOffset/10000., eventArgs.text);
 }];
+```
+
+Pro příklad SSML výše se událost spustí `BookmarkReached` dvakrát a výstup konzoly bude
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="swift"></a>[Swift](#tab/swift)

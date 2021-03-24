@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fea189952b1452c680255ceb99e38609775a8bd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4b85397eeda651678fe66c6e78199dd25630dcc4
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502684"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889878"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Nastavení omezení přístupu Azure App Service
 
@@ -97,26 +97,25 @@ Pomocí koncových bodů služby můžete nakonfigurovat aplikaci pomocí aplika
 > [!NOTE]
 > - Koncové body služby se aktuálně nepodporují u webových aplikací, které používají virtuální IP adresu IP SSL (Secure Sockets Layer) (VIP).
 >
-#### <a name="set-a-service-tag-based-rule-preview"></a>Nastavení pravidla na základě značky služby (Preview)
+#### <a name="set-a-service-tag-based-rule"></a>Nastavení pravidla na základě značek služby
 
-* V kroku 4 v rozevíracím seznamu **typ** vyberte možnost **značka služby (Preview)**.
+* V kroku 4 v rozevíracím seznamu **typ** vyberte možnost **značka služby**.
 
-   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png" alt-text="Snímek obrazovky s vybraným typem značky služby v podokně Přidat omezení":::
+   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png?v2" alt-text="Snímek obrazovky s vybraným typem značky služby v podokně Přidat omezení":::
 
 Každá značka služby představuje seznam rozsahů IP adres ze služeb Azure. Seznam těchto služeb a odkazy na konkrétní rozsahy najdete v [dokumentaci ke značce služby][servicetags].
 
-V pravidlech omezení přístupu v průběhu fáze Preview se podporuje následující seznam značek služeb:
+V pravidlech omezení přístupu se podporují všechny dostupné značky služeb. V zájmu jednoduchosti jsou k dispozici pouze seznam nejběžnějších značek prostřednictvím Azure Portal. Pomocí Azure Resource Managerch šablon nebo skriptování můžete nakonfigurovat pokročilejší pravidla, například pravidla s rozsahem podle regionu. Tyto značky jsou k dispozici prostřednictvím Azure Portal:
+
 * ActionGroup
+* ApplicationInsightsAvailability
 * AzureCloud
 * AzureCognitiveSearch
-* AzureConnectors
 * AzureEventGrid
 * AzureFrontDoor. back-end
 * AzureMachineLearning
-* AzureSignalR
 * AzureTrafficManager
 * LogicApps
-* ServiceFabric
 
 ### <a name="edit-a-rule"></a>Upravit pravidlo
 
@@ -137,6 +136,31 @@ Pokud chcete pravidlo odstranit, na stránce **omezení přístupu** vyberte tř
 
 ## <a name="access-restriction-advanced-scenarios"></a>Pokročilé scénáře omezení přístupu
 Následující části popisují některé pokročilé scénáře použití omezení přístupu.
+
+### <a name="filter-by-http-header"></a>Filtrovat podle hlavičky HTTP
+
+V rámci kteréhokoli pravidla můžete přidat další filtry hlaviček protokolu HTTP. Podporovány jsou následující názvy hlaviček protokolu http:
+* X-předané – pro
+* X-předávaný-Host
+* X – Azure – FDID
+* X-FD – HealthProbe
+
+Pro každý název záhlaví můžete přidat až 8 hodnot oddělených čárkou. Filtry hlaviček protokolu HTTP se vyhodnocují po samotném pravidle a obě podmínky musí být splněné, aby se pravidlo použilo.
+
+### <a name="multi-source-rules"></a>Pravidla pro více zdrojů
+
+Pravidla s více zdroji umožňují kombinovat až 8 rozsahů IP adres nebo 8 značek služeb v jednom pravidle. Tuto hodnotu můžete použít, pokud máte více než 512 rozsahů IP adres nebo chcete vytvořit logická pravidla, kde je více rozsahů IP adres kombinováno jedním filtrem hlaviček protokolu HTTP.
+
+Pravidla s více zdroji jsou definována stejným způsobem, jakým definujete pravidla s jedním zdrojem, ale každý rozsah je oddělen čárkou.
+
+Příklad PowerShellu:
+
+  ```azurepowershell-interactive
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Multi-source rule" -IpAddress "192.168.1.0/24,192.168.10.0/24,192.168.100.0/24" `
+    -Priority 100 -Action Allow
+  ```
+
 ### <a name="block-a-single-ip-address"></a>Blokovat jednu IP adresu
 
 Když přidáte vaše první pravidlo omezení přístupu, služba přidá explicitní pravidlo *Odepřít všechna* pravidla s prioritou 2147483647. V praxi je explicitní pravidlo *Odepřít všechna* pravidla, které se má spustit, a blokuje přístup k jakékoli IP adrese, která není explicitně povolená pravidlem *Povolit* .
@@ -151,17 +175,20 @@ Kromě toho, že je možné řídit přístup k vaší aplikaci, můžete omezit
 
 :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-scm-browse.png" alt-text="Snímek obrazovky se stránkou omezení přístupu v Azure Portal, která ukazuje, že pro web SCM nebo aplikaci nejsou nastavená žádná omezení přístupu.":::
 
-### <a name="restrict-access-to-a-specific-azure-front-door-instance-preview"></a>Omezení přístupu ke konkrétní instanci front-dveří Azure (Preview)
-Přenos z front Azure do vaší aplikace pochází z dobře známé sady rozsahů IP adres definovaných ve značce služby AzureFrontDoor. back-end. Pomocí pravidla omezení značek služby můžete omezit provoz tak, aby se nacházely jenom z front-dveří Azure. Aby se zajistil provoz jenom z vaší konkrétní instance, budete muset dál vyfiltrovat příchozí požadavky na základě jedinečné hlavičky HTTP, kterou odesílají přední dveře Azure. Během období Preview můžete to dosáhnout pomocí PowerShellu nebo REST/ARM. 
+### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>Omezení přístupu ke konkrétní instanci front-dveří Azure
+Přenos z front Azure do vaší aplikace pochází z dobře známé sady rozsahů IP adres definovaných ve značce služby AzureFrontDoor. back-end. Pomocí pravidla omezení značek služby můžete omezit provoz tak, aby se nacházely jenom z front-dveří Azure. Aby se zajistil provoz jenom z vaší konkrétní instance, budete muset dál vyfiltrovat příchozí požadavky na základě jedinečné hlavičky HTTP, kterou odesílají přední dveře Azure.
 
-* Příklad PowerShellu (ID front-dveří najdete v Azure Portal):
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png" alt-text="Snímek obrazovky se stránkou omezení přístupu v Azure Portal, kde se dozvíte, jak přidat omezení pro front-in Azure":::
 
-   ```azurepowershell-interactive
-    $frontdoorId = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
-      -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
-      -HttpHeader @{'x-azure-fdid' = $frontdoorId}
-    ```
+Příklad PowerShellu:
+
+  ```azurepowershell-interactive
+  $afd = Get-AzFrontDoor -Name "MyFrontDoorInstanceName"
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
+    -HttpHeader @{'x-azure-fdid' = $afd.FrontDoorId}
+  ```
+
 ## <a name="manage-access-restriction-rules-programmatically"></a>Programové řízení pravidel omezení přístupu
 
 Omezení přístupu můžete přidat programově pomocí některého z následujících postupů: 
@@ -181,7 +208,7 @@ Omezení přístupu můžete přidat programově pomocí některého z následuj
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > Při práci se značkami služeb, hlavičkám http nebo pravidly pro více zdrojů je potřeba mít minimálně verzi 5.1.0. Verzi nainstalovaného modulu můžete ověřit pomocí: **Get-InstalledModule-Name AZ** .
+   > Při práci se značkami služeb, hlavičkám http nebo pravidly pro více zdrojů je potřeba mít minimálně verzi 5.7.0. Verzi nainstalovaného modulu můžete ověřit pomocí: **Get-InstalledModule-Name AZ** .
 
 Hodnoty můžete také nastavit ručně jedním z následujících způsobů:
 

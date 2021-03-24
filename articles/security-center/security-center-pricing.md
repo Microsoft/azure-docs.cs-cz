@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/22/2021
-ms.openlocfilehash: ede812dc2ce063ec38423db73f4b269a7618e00c
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.date: 03/23/2021
+ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799611"
+ms.locfileid: "104889446"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Povolený Azure Security Center zdarma vs Azure Defender
 Azure Defender je pro prvních 30 dnů zdarma. Po uplynutí 30 dnů se můžete rozhodnout, že budete službu dál používat, a automaticky začneme účtovat za využití.
@@ -48,7 +48,8 @@ Security Center se nabízí ve dvou režimech:
 - [Pokud agent Log Analytics nahlásí do několika pracovních prostorů, bude se mi účtovat dvakrát?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
 - [Pokud agent Log Analytics nahlásí do více pracovních prostorů, je pro všechny z nich dostupná příjem dat 500 MB.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
 - [Počítá se příjem dat o volném 500 MB pro celý pracovní prostor nebo výhradně pro každý počítač?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
-- [Jaké datové typy jsou zahrnuté do limitu volných dat 500 MB?](#what-data-types-are-included-in-the-500-mb-free-data-limit)
+- [Jaké datové typy jsou zahrnuté do denního snížení limitu dat 500 MB?](#what-data-types-are-included-in-the-500-mb-data-daily-allowance)
+
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Jak mohu sledovat, kdo v organizaci povolil změny v Azure Defenderu v Security Center?
 K předplatným Azure může mít několik správců oprávnění ke změně nastavení cen. Chcete-li zjistit, který uživatel provedl změnu, použijte protokol aktivit Azure.
@@ -116,7 +117,7 @@ Pro každý počítač připojený k pracovnímu prostoru získáte 500 MB bezpl
 
 Tento objem dat představuje denní průměr napříč všemi uzly. Takže i když některé počítače odesílají 100-MB a jiné odesílají 800-MB, pokud celková hodnota nepřekročí limit **[počet počítačů] × 500-MB** , nebude se vám účtovat žádná další.
 
-### <a name="what-data-types-are-included-in-the-500-mb-free-data-limit"></a>Jaké datové typy jsou zahrnuté do limitu volných dat 500 MB?
+### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>Jaké datové typy jsou zahrnuté do denního snížení limitu dat 500 MB?
 
 Fakturace Security Center je úzce vázaná na účtování Log Analytics. Security Center poskytuje přidělení 500 MB/uzel/den pro následující podmnožinu [datových typů zabezpečení](/azure/azure-monitor/reference/tables/tables-category.md#security):
 - WindowsEvent

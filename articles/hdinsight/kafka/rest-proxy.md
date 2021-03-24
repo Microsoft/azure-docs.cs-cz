@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: a9a007d33226c508e193368b08b189001bf53401
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc3cbe5d0d7cf5e5a78112ae5df63ebb88a97f5a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944073"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864835"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interakce s Apache Kafka clustery ve službě Azure HDInsight pomocí proxy REST
 
@@ -22,7 +22,7 @@ Informace o operacích podporovaných Kafka REST API najdete v tématu [Referenc
 
 ## <a name="background"></a>Pozadí
 
-![Návrh proxy serveru REST Kafka](./media/rest-proxy/rest-proxy-architecture.png)
+:::image type="content" source="./media/rest-proxy/rest-proxy-architecture.png" alt-text="Návrh proxy serveru REST Kafka" border="false":::
 
 Úplnou specifikaci operací podporovaných rozhraním API najdete v tématu [rozhraní API služby REST proxy serveru Apache Kafka](/rest/api/hdinsight-kafka-rest-proxy).
 
@@ -49,10 +49,10 @@ Pokud přenesete vlastní virtuální síť a řízení síťového provozu pomo
 1. Vytvořte skupinu zabezpečení Azure AD. Přidejte aplikaci, kterou jste zaregistrovali ve službě Azure AD, do skupiny zabezpečení jako **člena** skupiny. Tato skupina zabezpečení se použije k určení, které aplikace můžou pracovat s proxy REST. Další informace o vytváření skupin Azure AD najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
     Ověřte, že je skupina typu **zabezpečení**.
-    ![Skupina zabezpečení](./media/rest-proxy/rest-proxy-group.png)
+    :::image type="content" source="./media/rest-proxy/rest-proxy-group.png" alt-text="Skupina zabezpečení" border="true":::
 
     Ověřte, že je aplikace členem skupiny.
-    ![Ověřit členství](./media/rest-proxy/rest-proxy-membergroup.png)
+    :::image type="content" source="./media/rest-proxy/rest-proxy-membergroup.png" alt-text="Ověřit členství" border="true":::
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>Vytvoření clusteru Kafka s povolenou službou REST proxy
 
@@ -60,17 +60,17 @@ Následující postup používá Azure Portal. Příklad použití rozhraní př
 
 1. V pracovním postupu vytváření clusteru Kafka na kartě **zabezpečení + sítě** zaškrtněte možnost **Povolit proxy REST Kafka** .
 
-     ![Snímek obrazovky s vybraným zabezpečením a sítí zobrazí stránku vytvořit cluster s informacemi o clusteru v D.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     :::image type="content" source="./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png" alt-text="Snímek obrazovky s vybraným zabezpečením a sítí zobrazí stránku vytvořit cluster s informacemi o clusteru v D." border="true":::
 
 1. Klikněte na **Vybrat skupinu zabezpečení**. V seznamu skupin zabezpečení vyberte skupinu zabezpečení, kterou chcete mít přístup k proxy REST. Pomocí vyhledávacího pole můžete najít příslušnou skupinu zabezpečení. Klikněte na tlačítko **Vybrat** v dolní části.
 
-     ![Snímek obrazovky s možností výběru skupiny zabezpečení zobrazí stránku vytvořit cluster s příponou H D Insight.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     :::image type="content" source="./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png" alt-text="Snímek obrazovky s možností výběru skupiny zabezpečení zobrazí stránku vytvořit cluster s příponou H D Insight." border="true":::
 
 1. Dokončete zbývající kroky k vytvoření clusteru, jak je popsáno v tématu [Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal](./apache-kafka-get-started.md).
 
 1. Po vytvoření clusteru přejděte do vlastností clusteru a zaznamenejte adresu URL proxy serveru Kafka REST.
 
-     ![Zobrazit adresu URL proxy serveru REST](./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
+     :::image type="content" source="./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png" alt-text="Zobrazit adresu URL proxy serveru REST" border="true":::
 
 ## <a name="client-application-sample"></a>Ukázka klientské aplikace
 

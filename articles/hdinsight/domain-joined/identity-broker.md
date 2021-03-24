@@ -4,12 +4,12 @@ description: Přečtěte si o službě Azure HDInsight ID Broker, která zjednod
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 47ba11260c3b58566963e5a3ffac80ca461a8a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5bc5bc702dbd54bbad43aa4e1c6c8650c18e088
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946827"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863186"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID Broker (HIB)
 
@@ -34,7 +34,7 @@ Pomocí následující tabulky můžete určit nejlepší možnost ověřování
 
 Následující diagram znázorňuje moderní tok ověřování založený na protokolu OAuth pro všechny uživatele, včetně federovaných uživatelů po povolení služby HDInsight ID Broker:
 
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Diagram znázorňující tok ověřování pomocí služby HDInsight ID Broker.":::
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Diagram znázorňující tok ověřování pomocí služby HDInsight ID Broker." border="false":::
 
 V tomto diagramu musí klient (tj. prohlížeč nebo aplikace) nejdřív získat token OAuth. Pak prezentuje token bráně v požadavku HTTP. Pokud jste se už přihlásili k jiným službám Azure, jako je Azure Portal, můžete se k vašemu clusteru HDInsight přihlásit pomocí jednotného přihlašování.
 
@@ -42,8 +42,7 @@ Stále se může jednat o mnoho starších verzí aplikací, které podporují j
 
 Následující diagram znázorňuje základní tok ověřování pro federované uživatele. Nejdřív se brána pokusí dokončit ověřování pomocí [ROPC toku](../../active-directory/develop/v2-oauth-ropc.md). V případě, že se do služby Azure AD nesynchronizují žádné hodnoty hash hesel, vrátí se ke zjištění AD FSho koncového bodu a dokončí ověřování tím, že se přistoupí ke koncovému bodu AD FS.
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagram znázorňující architekturu se základním ověřováním":::
-
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagram znázorňující architekturu se základním ověřováním" border="false":::
 
 ## <a name="enable-hdinsight-id-broker"></a>Povolit HDInsight ID Broker
 
@@ -55,7 +54,7 @@ Vytvoření clusteru Balíček zabezpečení podniku s povoleným zprostředkova
 
 Funkce služby HDInsight ID Broker přidá do clusteru jeden virtuální počítač navíc. Tento virtuální počítač je uzlem zprostředkovatele služby HDInsight ID a zahrnuje součásti serveru pro podporu ověřování. Uzel služby HDInsight ID je připojený k doméně Azure služba AD DS.
 
-![Diagram, který ukazuje možnost povolit zprostředkovatele ID HDInsight.](./media/identity-broker/identity-broker-enable.png)
+:::image type="content" source="./media/identity-broker/identity-broker-enable.png" alt-text="Diagram, který ukazuje možnost povolit zprostředkovatele ID HDInsight." border="true":::
 
 ### <a name="use-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
 

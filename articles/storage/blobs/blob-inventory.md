@@ -10,12 +10,12 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: a625ad780d01f3d19d26f2b9626ead3ae455b86b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8310de465a6416102a7ce4e614ead7029e6be87a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631468"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950922"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Použití inventáře Azure Storage objektů BLOB pro správu dat objektů BLOB (Preview)
 
@@ -26,7 +26,7 @@ Funkce inventáře objektů blob Azure Storage poskytuje přehled o datech objek
 Inventář objektů BLOB se podporuje pro účty pro obecné účely verze 2 (GPv2) i Premium Block BLOB Storage. Tato funkce je podporována s povolenou funkcí [hierarchického oboru názvů](data-lake-storage-namespace.md) nebo bez ní.
 
 > [!IMPORTANT]
-> Inventář Bob je momentálně ve **verzi Preview**. Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
+> Inventář objektů BLOB je momentálně ve **verzi Preview**. Přečtěte si další [podmínky použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Preview pro právní podmínky, které se vztahují na funkce Azure, které jsou ve verzi beta, Preview nebo jinak ještě nedostupné ve všeobecné dostupnosti.
 
 ### <a name="preview-regions"></a>Oblasti verze Preview
 
@@ -92,9 +92,9 @@ Kliknutím na kartu **zobrazení kódu** v části **inventář objektů BLOB** 
 
 | Název parametru | Typ parametru        | Poznámky | Povinné? |
 |----------------|-----------------------|-------|-----------|
-| destination    | Řetězec                | Cílový kontejner, ve kterém budou všechny soubory inventáře vygenerovány. Cílový kontejner již musí existovat. | Yes |
-| enabled        | Logická hodnota               | Používá se k zakázání celé zásady. Při nastavení na **hodnotu true** přepíše pole povolená úroveň pravidla tento parametr. V případě zakázání bude inventář všech pravidel zakázán. | Yes |
-| pravidla          | Pole objektů pravidel | V zásadě je vyžadováno alespoň jedno pravidlo. Podporuje se až 10 pravidel. | Yes |
+| destination    | Řetězec                | Cílový kontejner, ve kterém budou všechny soubory inventáře vygenerovány. Cílový kontejner již musí existovat. | Ano |
+| enabled        | Logická hodnota               | Používá se k zakázání celé zásady. Při nastavení na **hodnotu true** přepíše pole povolená úroveň pravidla tento parametr. V případě zakázání bude inventář všech pravidel zakázán. | Ano |
+| pravidla          | Pole objektů pravidel | V zásadě je vyžadováno alespoň jedno pravidlo. Podporuje se až 10 pravidel. | Ano |
 
 ## <a name="inventory-rules"></a>Pravidla inventáře
 
@@ -104,9 +104,9 @@ Každé pravidlo v zásadě má několik parametrů:
 
 | Název parametru | Typ parametru                 | Poznámky | Povinné? |
 |----------------|--------------------------------|-------|-----------|
-| name           | Řetězec                         | Název pravidla může obsahovat až 256 alfanumerických znaků s rozlišením malých a velkých písmen. Název musí být v rámci zásady jedinečný. | Yes |
-| enabled        | Logická hodnota                        | Příznak umožňující povolit nebo zakázat pravidlo. Výchozí hodnota je **true (pravda**). | Yes |
-| definice     | Definice pravidla inventáře JSON | Každá definice se skládá ze sady filtrů pravidel. | Yes |
+| name           | Řetězec                         | Název pravidla může obsahovat až 256 alfanumerických znaků s rozlišením malých a velkých písmen. Název musí být v rámci zásady jedinečný. | Ano |
+| enabled        | Logická hodnota                        | Příznak umožňující povolit nebo zakázat pravidlo. Výchozí hodnota je **true (pravda**). | Ano |
+| definice     | Definice pravidla inventáře JSON | Každá definice se skládá ze sady filtrů pravidel. | Ano |
 
 Příznak globálního **soupisu povoleného objektu BLOB** má přednost před *povoleným* parametrem v pravidle.
 
@@ -116,10 +116,10 @@ K dispozici je několik filtrů pro přizpůsobení sestavy inventáře objektů
 
 | Název filtru         | Typ filtru                     | Poznámky | Povinné? |
 |---------------------|---------------------------------|-------|-----------|
-| blobTypes           | Pole předdefinovaných hodnot výčtu | Platné hodnoty jsou `blockBlob` a `appendBlob` pro hierarchické účty s povoleným oborem názvů, a, `blockBlob` `appendBlob` a `pageBlob` pro další účty. | Yes |
-| prefixMatch         | Pole až deseti řetězců, pro které mají být předpony spárovány. Předpona musí začínat názvem kontejneru, například "container1/foo". | Pokud nedefinujete *prefixMatch* nebo neposkytnete prázdnou předponu, pravidlo se vztahuje na všechny objekty BLOB v účtu úložiště. | No |
-| includeSnapshots    | Logická hodnota                         | Určuje, zda by měl inventář zahrnovat snímky. Výchozí hodnota je **false**. | No |
-| includeBlobVersions | Logická hodnota                         | Určuje, jestli by měl inventář obsahovat verze objektů BLOB. Výchozí hodnota je **false**. | No |
+| blobTypes           | Pole předdefinovaných hodnot výčtu | Platné hodnoty jsou `blockBlob` a `appendBlob` pro hierarchické účty s povoleným oborem názvů, a, `blockBlob` `appendBlob` a `pageBlob` pro další účty. | Ano |
+| prefixMatch         | Pole až deseti řetězců, pro které mají být předpony spárovány. Předpona musí začínat názvem kontejneru, například "container1/foo". | Pokud nedefinujete *prefixMatch* nebo neposkytnete prázdnou předponu, pravidlo se vztahuje na všechny objekty BLOB v účtu úložiště. | Ne |
+| includeSnapshots    | Logická hodnota                         | Určuje, zda by měl inventář zahrnovat snímky. Výchozí hodnota je **false**. | Ne |
+| includeBlobVersions | Logická hodnota                         | Určuje, jestli by měl inventář obsahovat verze objektů BLOB. Výchozí hodnota je **false**. | Ne |
 
 Kliknutím na kartu **zobrazení kódu** v části **inventář objektů BLOB** Azure Portal zobrazte pravidla pro inventarizaci. Filtry jsou zadané v definici pravidla.
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f7f481ae0e0c75b14d894080f791161346cd93f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694478"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952401"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Jak vytvářet, importovat a exportovat terminologie glosáře
 
@@ -80,6 +80,9 @@ Všimněte si, že názvy termínů rozlišují malá a velká písmena. Napří
 4. Až dokončíte vyplňování souboru. csv, vyberte soubor, který chcete importovat, a pak vyberte **OK**.
 
 5. Systém nahraje soubor a přidá všechny tyto požadavky do vašeho katalogu.
+ 
+   > [!Important]
+   > E-mailová adresa pro Stewards a odborníky by měla být primární adresou uživatele ze skupiny AAD. Alternativní e-maily, hlavní název uživatele a e-maily, které nejsou AAD, se zatím nepodporují. 
 
 ## <a name="export-terms-from-glossary-with-custom-attributes"></a>Exportovat výrazy z glosáře s vlastními atributy
 

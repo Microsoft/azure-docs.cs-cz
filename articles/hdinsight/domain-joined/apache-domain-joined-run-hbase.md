@@ -4,12 +4,12 @@ description: Kurz – Přečtěte si, jak nakonfigurovat zásady Apache Ranger p
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: deefda126602e9b276b74752330a14cc3eb2aa95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a18e0b252facb4f00d9ba5c9b6bfe9fe6aefe1ef
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933719"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866994"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Kurz: Konfigurace zásad Apache HBA v HDInsight pomocí Balíček zabezpečení podniku
 
@@ -86,7 +86,7 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí [prostředí Ap
     scan 'Customers'
     ```
 
-    ![Výstup prostředí HDInsight Hadoop HBA](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png" alt-text="Výstup prostředí HDInsight Hadoop HBA" border="true":::
 
 ## <a name="create-ranger-policies"></a>Vytvoření zásad Ranger
 
@@ -94,11 +94,11 @@ Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
 
 1. Otevřete **Uživatelské rozhraní správce Ranger**. Klikněte na **\<ClusterName> _hbase** pod položkou **HBA**.
 
-   ![Uživatelské rozhraní správce HDInsight Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png" alt-text="Uživatelské rozhraní správce HDInsight Apache Ranger" border="true":::
 
 2. Na obrazovce **seznam zásad** se zobrazí všechny zásady Ranger vytvořené pro tento cluster. Může být uvedena jedna předem nakonfigurovaná zásada. Klikněte na **Přidat novou zásadu**.
 
-    ![Seznam zásad HBA pro Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png" alt-text="Seznam zásad HBA pro Apache Ranger" border="true":::
 
 3. Na obrazovce **vytvořit zásadu** zadejte následující hodnoty:
 
@@ -117,7 +117,7 @@ Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
    * `*` označuje nula nebo více výskytů znaků.
    * `?` označuje jeden znak.
 
-   ![Zásady Apache Ranger vytvořit prodej](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png" alt-text="Zásady Apache Ranger vytvořit prodej" border="true":::
 
    >[!NOTE]
    >Pokud uživatel domény v části **Select User** (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
@@ -136,7 +136,7 @@ Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
    |Vybrat uživatele  | marketing_user1 |
    |Oprávnění  | Číst |
 
-   ![Zásady Apache Ranger vytvořit marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png" alt-text="Zásady Apache Ranger vytvořit marketing" border="true":::  
 
 6. Kliknutím na **Přidat** uložte zásadu.
 
@@ -226,7 +226,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zob
 
 1. Zobrazte události přístupu k auditu v uživatelském rozhraní Ranger.
 
-   ![Audit zásad uživatelského rozhraní HDInsight Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png" alt-text="Audit zásad uživatelského rozhraní HDInsight Ranger" border="true":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

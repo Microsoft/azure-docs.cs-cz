@@ -3,17 +3,17 @@ title: Hotpatch pro edici Windows serveru Azure (Preview)
 description: Informace o tom, jak hotpatch edice Windows serveru Azure funguje a jak ji povolit
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: automanage
+ms.subservice: hotpatch
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92b8bf240dfd73cc9191675db07f20816b7156a8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687562"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953387"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>Hotpatch pro nové virtuální počítače (Preview)
 
@@ -129,21 +129,21 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="patch-installation"></a>Instalace opravy
 
-V rámci verze Preview je [Automatické opravy hosta virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) povolené automaticky pro všechny virtuální počítače vytvořené pomocí _Windows serveru 2019 Datacenter: edice Azure_. Automatické opravy hosta virtuálního počítače jsou povolené:
+V rámci verze Preview je [Automatické opravy hosta virtuálního počítače](../virtual-machines/automatic-vm-guest-patching.md) povolené automaticky pro všechny virtuální počítače vytvořené pomocí _Windows serveru 2019 Datacenter: edice Azure_. Automatické opravy hosta virtuálního počítače jsou povolené:
 * Opravy klasifikované jako kritické nebo zabezpečení se automaticky stáhnou a aplikují na virtuálním počítači.
 * Opravy se aplikují v době mimo špičku v časovém pásmu virtuálního počítače.
-* Orchestrace opravy se spravuje v Azure a opravy se používají po [principech dostupnosti – první](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching).
+* Orchestrace opravy se spravuje v Azure a opravy se používají po [principech dostupnosti – první](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching).
 * Stav virtuálního počítače, jak je určený prostřednictvím signálů stavu platformy, se monitoruje, aby se zjistilo selhání oprav.
 
 ### <a name="how-does-automatic-vm-guest-patching-work"></a>Jak funguje automatická oprava hosta virtuálního počítače?
 
-Když je na virtuálním počítači povolená [Automatická oprava hosta virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) , stáhnou se a automaticky nasadí dostupné kritické aktualizace a opravy zabezpečení. Tento proces se při vydání nových oprav automaticky odstartuje každý měsíc. Vyhodnocení a instalace opravy jsou automatické a proces zahrnuje restartování virtuálního počítače podle potřeby.
+Když je na virtuálním počítači povolená [Automatická oprava hosta virtuálního počítače](../virtual-machines/automatic-vm-guest-patching.md) , stáhnou se a automaticky nasadí dostupné kritické aktualizace a opravy zabezpečení. Tento proces se při vydání nových oprav automaticky odstartuje každý měsíc. Vyhodnocení a instalace opravy jsou automatické a proces zahrnuje restartování virtuálního počítače podle potřeby.
 
 S hotpatch povolenou na _Windows serveru 2019 Datacenter: virtuální počítače edice Azure_ , většina měsíčních aktualizací zabezpečení se doručuje jako hotpatches, které nevyžadují restartování. Nejnovější kumulativní aktualizace odeslané v měsících plánovaného nebo neplánovaného směrného plánu budou vyžadovat restartování virtuálního počítače. Další důležité aktualizace nebo opravy zabezpečení můžou být taky dostupné pravidelně, což může vyžadovat restartování virtuálního počítače.
 
 Tento virtuální počítač se automaticky vyhodnocuje za několik dní a v rámci každých 30 dnů několikrát určí příslušné opravy pro daný virtuální počítač. Toto automatické posouzení zajišťuje, že všechny chybějící opravy budou zjištěny při nejbližší možné příležitosti.
 
-Opravy se instalují do 30 dnů od měsíčních verzí oprav, podle [principů dostupnosti – první](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching). Opravy se instalují jenom v době mimo špičku pro virtuální počítač v závislosti na časovém pásmu virtuálního počítače. Aby se aktualizace nainstalovaly automaticky, musí být virtuální počítač spuštěný v době mimo špičku. Pokud je virtuální počítač vypnutý během pravidelného posouzení, vyhodnotí se a příslušné opravy se nainstalují automaticky během příštího pravidelného posouzení, když je virtuální počítač zapnutý. Další pravidelné hodnocení obvykle proběhne během několika dnů.
+Opravy se instalují do 30 dnů od měsíčních verzí oprav, podle [principů dostupnosti – první](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching). Opravy se instalují jenom v době mimo špičku pro virtuální počítač v závislosti na časovém pásmu virtuálního počítače. Aby se aktualizace nainstalovaly automaticky, musí být virtuální počítač spuštěný v době mimo špičku. Pokud je virtuální počítač vypnutý během pravidelného posouzení, vyhodnotí se a příslušné opravy se nainstalují automaticky během příštího pravidelného posouzení, když je virtuální počítač zapnutý. Další pravidelné hodnocení obvykle proběhne během několika dnů.
 
 Aktualizace definic a další opravy, které nejsou klasifikovány jako kritické nebo zabezpečení, se neinstalují prostřednictvím automatických oprav hostů virtuálních počítačů.
 
@@ -151,7 +151,7 @@ Aktualizace definic a další opravy, které nejsou klasifikovány jako kritick�
 
 Pokud chcete zobrazit stav opravy pro váš virtuální počítač, přejděte do části **aktualizace hosta +** Host pro váš virtuální počítač v Azure Portal. V části **aktualizace operačního systému hosta** klikněte na přejít do hotpatch (Preview) a zobrazte nejnovější stav opravy pro váš virtuální počítač.
 
-Na této obrazovce se zobrazí stav hotpatch pro váš virtuální počítač. Můžete si také projít, jestli máte k dispozici nějaké opravy pro váš virtuální počítač, který není nainstalovaný. Jak je popsáno výše v části "opravit instalaci", všechny aktualizace zabezpečení a kritické aktualizace se na VIRTUÁLNÍm počítači automaticky nainstalují pomocí [automatických oprav hostů na virtuálním](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) počítači a nevyžadují se žádné další akce. Opravy s jinými klasifikací aktualizací se neinstalují automaticky. Místo toho se dají zobrazit v seznamu dostupných oprav na kartě aktualizace dodržování předpisů. Historii nasazení aktualizací na VIRTUÁLNÍm počítači můžete zobrazit také prostřednictvím historie aktualizací. Zobrazí se historie aktualizací za posledních 30 dní spolu s podrobnostmi o instalaci opravy.
+Na této obrazovce se zobrazí stav hotpatch pro váš virtuální počítač. Můžete si také projít, jestli máte k dispozici nějaké opravy pro váš virtuální počítač, který není nainstalovaný. Jak je popsáno výše v části "opravit instalaci", všechny aktualizace zabezpečení a kritické aktualizace se na VIRTUÁLNÍm počítači automaticky nainstalují pomocí [automatických oprav hostů na virtuálním](../virtual-machines/automatic-vm-guest-patching.md) počítači a nevyžadují se žádné další akce. Opravy s jinými klasifikací aktualizací se neinstalují automaticky. Místo toho se dají zobrazit v seznamu dostupných oprav na kartě aktualizace dodržování předpisů. Historii nasazení aktualizací na VIRTUÁLNÍm počítači můžete zobrazit také prostřednictvím historie aktualizací. Zobrazí se historie aktualizací za posledních 30 dní spolu s podrobnostmi o instalaci opravy.
 
 
 :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="Správa hotpatch":::
@@ -225,5 +225,5 @@ Pro spuštění virtuálního počítače s Windows serverem Azure Edition s pov
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o Azure Update Management [tady](https://docs.microsoft.com/azure/automation/update-management/overview).
-* Další informace o automatických opravách hosta virtuálního počítače [najdete tady](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) .
+* Přečtěte si o Azure Update Management [tady](../automation/update-management/overview.md).
+* Další informace o automatických opravách hosta virtuálního počítače [najdete tady](../virtual-machines/automatic-vm-guest-patching.md) .

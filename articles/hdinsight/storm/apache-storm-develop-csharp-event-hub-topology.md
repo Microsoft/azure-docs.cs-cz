@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4393c6797f5a164a063b55f8994d7d37d278f3c4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ee483872535c58bde521cf0a751058fdc2fecd40
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929184"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871448"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs s využitím Apache Storm v HDInsight (C#)
 
@@ -126,7 +126,7 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
    | archiv |Odeslat |
    | modulu |Naslouchat |
 
-    ![Snímek obrazovky okna zásady přístupu ke sdílení](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png" alt-text="Snímek obrazovky okna zásady přístupu ke sdílení" border="true":::
 
 2. Vyberte zásady **čtecího zařízení** a **zapisovače** . Zkopírujte a uložte hodnotu primárního klíče pro obě zásady, protože se tyto hodnoty použijí později.
 
@@ -168,15 +168,15 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 1. Z **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt **EventHubReader** a vyberte **Odeslat pro** zaplavení v HDInsight.
 
-    ![Snímek obrazovky Průzkumník řešení se zvýrazněnou možností odeslat na HDInsight ve službě HDInsight](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png" alt-text="Snímek obrazovky Průzkumník řešení se zvýrazněnou možností odeslat na HDInsight ve službě HDInsight" border="true":::
 
 2. V dialogovém okně **Odeslat topologii** vyberte svůj **cluster** pro zaplavení. Rozbalte **Další konfigurace**, vyberte **cesty k souborům Java**, vyberte **...** a vyberte adresář, který obsahuje soubor JAR, který jste předtím stáhli. Nakonec klikněte na **Odeslat**.
 
-    ![Snímek obrazovky dialogového okna pro odeslání topologie](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png" alt-text="Snímek obrazovky dialogového okna pro odeslání topologie" border="true":::
 
 3. Po odeslání topologie se zobrazí **prohlížeč topologie** pro vyplavení. Pokud chcete zobrazit informace o topologii, vyberte topologii **EventHubReader** v levém podokně.
 
-    ![Snímek obrazovky s prohlížečem topologií s více podsystému](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png" alt-text="Snímek obrazovky s prohlížečem topologií s více podsystému" border="true":::
 
 4. Z **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt **EventHubWriter** a vyberte **Odeslat pro** zaplavení v HDInsight.
 
@@ -200,7 +200,7 @@ Event Hubs je zdroj dat pro tento příklad. Použijte informace v části Vytvo
 
 Chcete-li zastavit topologie, vyberte každou topologii v **prohlížeči topologie** neplní a klikněte na tlačítko **ukončit**.
 
-![Snímek obrazovky s prohlížečem topologie s více podsystému, se zvýrazněným tlačítkem Kill](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png" alt-text="Snímek obrazovky s prohlížečem topologie s více podsystému, se zvýrazněným tlačítkem Kill" border="true":::
 
 ## <a name="delete-your-cluster"></a>Odstranění clusteru
 

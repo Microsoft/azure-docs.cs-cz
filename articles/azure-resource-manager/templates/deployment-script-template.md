@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/23/2021
 ms.author: jgao
-ms.openlocfilehash: 130deea4e5998d696065df4854a47bf7ffd1183c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9f4c21a4b7e58c4eed3a62ea844eb11ccf4ecb49
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594238"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889378"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Použití skriptů pro nasazení v šablonách ARM
 
@@ -131,6 +131,9 @@ Následující kód JSON je příklad. Další informace najdete v tématu nejno
 > [!NOTE]
 > Příklad je určen pro demonstrační účely. Vlastnosti `scriptContent` a `primaryScriptUri` nemohou koexistovat v šabloně.
 
+> [!NOTE]
+> _ScriptContent_ zobrazuje skript s více řádky.  Azure Portal a kanál Azure DevOps nedokáže analyzovat skript nasazení s více řádky. Můžete buď zřetězit příkazy prostředí PowerShell (pomocí středníků nebo _\\ r \\ n_ nebo _\\ n_) na jeden řádek, nebo použít `primaryScriptUri` vlastnost s externím souborem skriptu. K dispozici je mnoho bezplatných řídicích a řídicích nástrojů řetězce JSON. Příklad: [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html).
+
 Podrobnosti hodnoty vlastnosti:
 
 - `identity`: Rozhraní API pro nasazení skriptů verze 2020-10-01 nebo novější je uživatelem přiřazená identita volitelná, pokud nepotřebujete ve skriptu provádět žádné akce specifické pro Azure.  Pro rozhraní API verze 2019-10-01-Preview je požadovaná spravovaná identita, protože služba skriptu nasazení ji používá ke spouštění skriptů. V současné době je podporována pouze spravovaná identita přiřazená uživatelem.
@@ -159,9 +162,6 @@ Podrobnosti hodnoty vlastnosti:
 
 - `environmentVariables`: Určete proměnné prostředí, které se mají předat skriptu. Další informace najdete v tématu [vývoj skriptů nasazení](#develop-deployment-scripts).
 - `scriptContent`: Zadejte obsah skriptu. Pokud chcete spustit externí skript, použijte `primaryScriptUri` místo toho. Příklady najdete v tématu [použití vloženého skriptu](#use-inline-scripts) a [použití externího skriptu](#use-external-scripts).
-  > [!NOTE]
-  > Azure Portal nemůže analyzovat skript nasazení s více řádky. K nasazení šablony se skriptem nasazení z Azure Portal můžete buď zřetězit příkazy prostředí PowerShell pomocí středníků na jeden řádek, nebo použít `primaryScriptUri` vlastnost s externím souborem skriptu.
-
 - `primaryScriptUri`: Zadejte veřejně přístupnou adresu URL ke skriptu primárního nasazení s podporovanými příponami souborů. Další informace najdete v tématu [použití externích skriptů](#use-external-scripts).
 - `supportingScriptUris`: Určete pole veřejně přístupných adres URL k podpůrným souborům, které jsou volány buď `scriptContent` nebo `primaryScriptUri` . Další informace najdete v tématu [použití externích skriptů](#use-external-scripts).
 - `timeout`: Zadejte maximální povolenou dobu spuštění skriptu určenou ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**.
@@ -566,7 +566,7 @@ Po úspěšném otestování skriptu ho můžete použít jako skript nasazení 
 
 ## <a name="deployment-script-error-codes"></a>Kódy chyb skriptu nasazení
 
-| Kód chyby | Description |
+| Kód chyby | Popis |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Definice prostředku skriptu nasazení v šabloně obsahuje neplatné názvy vlastností. |
 | DeploymentScriptResourceConflict | Nelze odstranit prostředek skriptu nasazení, který je v neterminálu, a provádění nepřekročilo 1 hodinu. Nebo nemůžete znovu spustit stejný skript nasazení se stejným identifikátorem prostředku (stejné předplatné, název skupiny prostředků a názvem prostředku), ale zároveň s jiným obsahem textu skriptu. |

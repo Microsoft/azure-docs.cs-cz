@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: moderátor obsahu, moderátor obsahu Azure, moderátor online, software pro filtrování obsahu, služba pro moderování obsahu, Moderování obsahu
-ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a53611fdad84f06661f3b8928296b6a45851cea4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560369"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867266"
 ---
 # <a name="what-is-azure-content-moderator"></a>Co je Azure Content Moderator?
 
@@ -26,6 +26,13 @@ ms.locfileid: "97560369"
 Azure Content Moderator je služba AI, která umožňuje zpracovávat obsah, který je potenciálně urážlivý, rizikové nebo jinak nežádoucí. Obsahuje službu pro moderování obsahu s podporou AI, která prohledává text, obrázky a videa a automaticky používá příznaky obsahu a také nástroj pro kontrolu online prostředí moderátora pro tým lidských kontrolorů.
 
 Do své aplikace můžete chtít sestavit software pro filtrování obsahu, aby bylo možné dodržovat předpisy nebo zachovat zamýšlené prostředí pro vaše uživatele.
+
+Tato dokumentace obsahuje následující typy článků:  
+
+* [**Rychlé starty**](client-libraries.md) jsou pokyny Začínáme, které vám pomohou při provádění požadavků na službu.  
+* Návody obsahují pokyny k používání služby v konkrétnějším nebo přizpůsobeném [**způsobu.**](try-text-api.md)  
+* [**Koncepty**](text-moderation-api.md) poskytují podrobné vysvětlení funkcí a funkcí služby.  
+* [**Kurzy**](ecommerce-retail-catalog-moderation.md) jsou delší než příručky, které ukazují, jak používat službu jako součást v širších obchodních řešeních.  
 
 ## <a name="where-its-used"></a>Kde se používá
 

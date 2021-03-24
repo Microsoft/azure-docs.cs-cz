@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c700cce5f50fda7f7a5773e07549e93da1c9f7a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97964421"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956250"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Vytvoření plánů pro nabídku virtuálního počítače
 
@@ -221,6 +221,8 @@ Datové disky (vyberte **přidat datový disk (maximum 16)**) jsou taky identifi
 Bez ohledu na to, jaký operační systém používáte, přidejte jenom minimální počet datových disků, které řešení vyžaduje. Během nasazení nemohou zákazníci odebrat disky, které jsou součástí bitové kopie, ale mohou vždy přidávat disky během nebo po nasazení.
 
 Vyberte **Uložit koncept**, pak v levém horním rohu vyberte **← plán** , abyste viděli plán, který jste právě vytvořili.
+
+Po publikování image virtuálního počítače můžete image odstranit z úložiště Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

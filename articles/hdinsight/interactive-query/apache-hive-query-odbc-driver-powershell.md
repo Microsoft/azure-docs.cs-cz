@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 34ee7eb25b1d106ea8bb53197d69ca5a9d528773
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941366"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871601"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Kurz: dotazování Apache Hive pomocí rozhraní ODBC a prostředí PowerShell
 
@@ -42,7 +42,7 @@ Následující kroky ukazují, jak vytvořit zdroj dat Apache Hive ODBC.
 
 1. V systému Windows přejděte k   >  **Možnosti spustit nástroje pro správu systému Windows**  >  **ODBC zdroje dat (32bitová verze)/(64bitová verze)**.  Otevře se okno **Správce zdrojů dat ODBC** .
 
-    ![Správce zdroje dat OBDC](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurace DSN pomocí Správce zdrojů dat ODBC")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png " alt-text="Správce zdroje dat OBDC" border="true":::
 
 1. Na kartě **uživatelský název DSN** vyberte **Přidat** a otevřete tak okno **vytvořit nový zdroj dat** .
 
@@ -68,7 +68,7 @@ Následující kroky ukazují, jak vytvořit zdroj dat Apache Hive ODBC.
    |  Počet načtených řádků na blok |Při načítání velkého počtu záznamů může být nutné vyladit tento parametr, aby bylo zajištěno optimální výkon. |
    |  Výchozí délka sloupce řetězce, délka binárního sloupce, škála desetinných sloupců |Délky datových typů a jejich přesnost mohou ovlivnit způsob, jakým jsou vrácena data. Způsobují nesprávné informace, které mají být vráceny z důvodu ztráty přesnosti a zkrácení. |
 
-    ![Rozšířené možnosti konfigurace DSN](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Rozšířené možnosti konfigurace DSN")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png " alt-text="Rozšířené možnosti konfigurace DSN" border="true":::
 
 1. Vyberte **test** pro otestování zdroje dat. Pokud je zdroj dat správně nakonfigurován, výsledek testu zobrazí **úspěch**.  
 

@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: feb77339c9c7f36eb17b43dfe2c220dfb54efa25
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b24276974eba76aa841cdd7f02145210713474eb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720521"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872281"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace modulu runtime a procesu démon zabezpečení IoT Edge
 
@@ -203,7 +203,7 @@ Mezi hlavní rozdíly mezi 1,2 a staršími verzemi patří:
 * Název balíčku se změnil z **iotedge** na **aziot-Edge**.
 * Balíček **libiothsm-STD** se už nepoužívá. Pokud jste použili standardní balíček, který je součástí verze IoT Edge, pak můžete vaše konfigurace přenést do nové verze. Pokud jste používali jinou implementaci libiothsm-STD, bude nutné překonfigurovat všechny uživatelské certifikáty, jako je certifikát identity zařízení, certifikační autorita zařízení a sada Trust.
 * V rámci verze 1,2 byla představena nová služba identity **aziot-identity-Service** . Tato služba zpracovává zřizování a správu identit pro IoT Edge a další součásti zařízení, které potřebují komunikovat s IoT Hub, jako je třeba aktualizace zařízení Azure IoT Hub. <!--TODO: add link to ADU when available -->
-* Výchozí konfigurační soubor má nový název a umístění. Ve `/etc/iotedge/config.yaml` výchozím nastavení se teď ve výchozím nastavení očekávají informace o konfiguraci zařízení `/etc/aziot/congig.toml` . `iotedge config import`Příkaz lze použít k usnadnění migrace informací o konfiguraci o staré umístění a syntaxi na nové.
+* Výchozí konfigurační soubor má nový název a umístění. Ve `/etc/iotedge/config.yaml` výchozím nastavení se teď ve výchozím nastavení očekávají informace o konfiguraci zařízení `/etc/aziot/config.toml` . `iotedge config import`Příkaz lze použít k usnadnění migrace informací o konfiguraci o staré umístění a syntaxi na nové.
 * Všechny moduly, které používají rozhraní API úlohy IoT Edge k šifrování nebo dešifrování trvalých dat, nelze po aktualizaci dešifrovat. IoT Edge dynamicky vygeneruje hlavní klíč identity a šifrovací klíč pro interní použití. Tento klíč se přenese do nové služby. IoT Edge v 1.2 vygeneruje nový.
 
 Před automatizací všech procesů aktualizace ověřte, že funguje na testovacích počítačích.
