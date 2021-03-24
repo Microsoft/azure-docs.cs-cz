@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bwren
-ms.openlocfilehash: 89264bc17180aaf47611aef73c9fd20427bce104
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4d546401baa7edc7725e3fdb23065009895f9c1e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772276"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027427"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -93,7 +93,7 @@ Pokud chcete změnit Log Analytics cenové úrovně vašeho pracovního prostoru
     
 3. Po kontrole odhadovaných nákladů na základě posledních 31 dnů využití se rozhodnete změnit cenovou úroveň kliknutím na **Vybrat**.  
 
-[Cenovou úroveň můžete také nastavit prostřednictvím Azure Resource Manager](../samples/resource-manager-workspace.md) pomocí `sku` parametru ( `pricingTier` v Azure Resource Manager šabloně). 
+[Cenovou úroveň můžete také nastavit prostřednictvím Azure Resource Manager](./resource-manager-workspace.md) pomocí `sku` parametru ( `pricingTier` v Azure Resource Manager šabloně). 
 
 ## <a name="legacy-pricing-tiers"></a>Starší cenové úrovně
 
@@ -145,7 +145,7 @@ Pokud chcete nastavit výchozí dobu uchovávání pro váš pracovní prostor,
 
 Když je doba uchování nižší, před odebráním dat starším než je nové nastavení uchování se odklade několik dní. 
 
-Stránka pro **uchovávání dat** umožňuje nastavení uchovávání dat: 30, 31, 60, 90, 120, 180, 270, 365, 550 a 730 dnů. Pokud je vyžadováno jiné nastavení, které lze nakonfigurovat pomocí [Azure Resource Manager](../samples/resource-manager-workspace.md) pomocí `retentionInDays` parametru. Když nastavíte uchovávání dat na 30 dní, můžete spustit okamžitou mazání starších dat pomocí `immediatePurgeDataOn30Days` parametru (neodstraníme dobu odkladu na několik dní). To může být užitečné pro scénáře související s dodržováním předpisů, které jsou nezbytné k okamžitému odstranění dat. Tato funkce okamžitého vyprázdnění se zveřejňuje jenom přes Azure Resource Manager. 
+Stránka pro **uchovávání dat** umožňuje nastavení uchovávání dat: 30, 31, 60, 90, 120, 180, 270, 365, 550 a 730 dnů. Pokud je vyžadováno jiné nastavení, které lze nakonfigurovat pomocí [Azure Resource Manager](./resource-manager-workspace.md) pomocí `retentionInDays` parametru. Když nastavíte uchovávání dat na 30 dní, můžete spustit okamžitou mazání starších dat pomocí `immediatePurgeDataOn30Days` parametru (neodstraníme dobu odkladu na několik dní). To může být užitečné pro scénáře související s dodržováním předpisů, které jsou nezbytné k okamžitému odstranění dat. Tato funkce okamžitého vyprázdnění se zveřejňuje jenom přes Azure Resource Manager. 
 
 Pracovní prostory s dobou uchování 30 dnů můžou uchovávat data po dobu 31 dnů. Pokud je nutné, aby data byla uchovávána pouze po dobu 30 dnů, použijte Azure Resource Manager k nastavení uchování na 30 dní a s `immediatePurgeDataOn30Days` parametrem.  
 
@@ -322,7 +322,7 @@ Počet jednotek ve vašem vyúčtování je v jednotkách typu počet měsíců,
 
 
 > [!TIP]
-> Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](../log-query/query-optimization.md#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , zadejte dotaz na datový typ použití (viz níže).
+> Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](./query-optimization.md#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , zadejte dotaz na datový typ použití (viz níže).
 
 ## <a name="understanding-ingested-data-volume"></a>Principy ingestných objemů dat
 
@@ -406,7 +406,7 @@ find where TimeGenerated > ago(24h) project _IsBillable, Computer
 ```
 
 > [!TIP]
-> Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](../log-query/query-optimization.md#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , pak na něj zadejte dotaz na datový typ použití.
+> Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](./query-optimization.md#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , pak na něj zadejte dotaz na datový typ použití.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Objem dat podle prostředku Azure, skupiny prostředků nebo předplatného
 
@@ -445,7 +445,7 @@ V případě potřeby můžete také `_ResourceId` plně analyzovat v případě
 ```
 
 > [!TIP]
-> Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](../log-query/query-optimization.md#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky v rámci předplatného, skupiny prostředků nebo názvu prostředku, pak dotaz na datový typ použití.
+> Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](./query-optimization.md#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky v rámci předplatného, skupiny prostředků nebo názvu prostředku, pak dotaz na datový typ použití.
 
 > [!WARNING]
 > Některá pole datového typu použití, ale stále ve schématu, jsou zastaralá a jejich hodnoty se už neplní. Jedná se o **počítač** a pole související s ingestování (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** a **AverageProcessingTimeMs**).
@@ -479,7 +479,7 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 
 | Zdroj velkého objemu dat | Postup snížení objemu dat |
 | -------------------------- | ------------------------- |
-| Přehledy o kontejnerech         | [Nakonfigurujte službu Container Insights](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost) tak, aby shromáždila pouze data, která požadujete. |
+| Přehledy o kontejnerech         | [Nakonfigurujte službu Container Insights](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost) tak, aby shromáždila pouze data, která požadujete. |
 | Události zabezpečení            | Vyberte [běžné nebo minimální události zabezpečení](../../security-center/security-center-enable-data-collection.md#data-collection-tier). <br> Změňte zásady auditu zabezpečení tak, aby se shromažďovaly jenom potřebné události. Zaměřte se hlavně na potřebu shromažďovat události pro <br> - [audit platformy Filtering Platform](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [audit registru](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [audit systému souborů](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [audit objektu jádra](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [audit manipulace s popisovačem](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> – audit vyměnitelného úložiště |
 | Čítače výkonu       | Změňte [konfiguraci čítačů výkonu](../agents/data-sources-performance-counters.md) tak, aby se: <br> – Snížila četnost shromažďování dat <br> – Snížil počet čítačů výkonu |
 | Protokoly událostí                 | Změňte [konfiguraci protokolů událostí](../agents/data-sources-windows-events.md) tak, aby se: <br> – Snížil počet shromažďovaných protokolů událostí <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace*. |
@@ -487,8 +487,8 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 | AzureDiagnostics           | Změnit [kolekci protokolů prostředků](../essentials/diagnostic-settings.md#create-in-azure-portal) na: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
 | Data řešení z počítačů, které řešení nepotřebují | K shromažďování dat z požadovaných skupin počítačů použijte [cílení na řešení](../insights/solution-targeting.md) . |
 | Application Insights | Zkontrolovat možnosti pro [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [Analýza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | K ladění nastavení auditování použijte [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) . |
-| Azure Sentinel | Zkontrolujte všechny [zdroje dat Sentinel](https://docs.microsoft.com/azure/sentinel/connect-data-sources) , které jste nedávno povolili jako zdroje dalšího objemu dat. |
+| [Analýza SQL](../insights/azure-sql.md) | K ladění nastavení auditování použijte [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) . |
+| Azure Sentinel | Zkontrolujte všechny [zdroje dat Sentinel](../../sentinel/connect-data-sources.md) , které jste nedávno povolili jako zdroje dalšího objemu dat. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Získávání uzlů, které se účtují v cenové úrovni podle počtu uzlů
 

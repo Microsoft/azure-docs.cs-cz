@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7cd1c6b0b11ba291a36f49a2a9990a2755cdd74b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 444639d9e36b67f25ed9b82bd68102273c66ae00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561921"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951228"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rychlý Start: integrace účtu Azure Storage s Azure CDN
 
@@ -118,4 +118,4 @@ V předchozích krocích jste ve skupině prostředků vytvořili profil a konco
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: použití sítě CDN pro statický obsah serveru z webové aplikace](cdn-add-to-web-app.md)
+> [Kurz: použití CDN k poskytování statického obsahu z webové aplikace](cdn-add-to-web-app.md)

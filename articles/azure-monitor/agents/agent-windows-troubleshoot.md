@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ab67602ebba2ae5446ecc0052ef4b03bba1e1bf
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100609194"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952979"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Řešení potíží s agentem Log Analytics pro Windows 
 
@@ -19,7 +19,7 @@ Tento článek poskytuje nápovědu k řešení chyb, se kterými se můžete se
 Pokud žádný z těchto kroků nefunguje za vás, jsou k dispozici i tyto kanály podpory:
 
 * Zákazníci s výhodami Premier Support můžou otevřít žádost o podporu pomocí [Premier](https://premier.microsoft.com/).
-* Zákazníci se smlouvou o podpoře Azure můžou na [Azure Portal](https://manage.windowsazure.com/?getsupport=true)otevřít žádost o podporu.
+* Zákazníci se smlouvou o podpoře Azure můžou na [Azure Portal](https://azure.microsoft.com/support/options/)otevřít žádost o podporu.
 * Navštivte stránku Log Analytics zpětnou vazbu pro kontrolu odeslaných nápadů a chyb [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) nebo pro nové soubory. 
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Nástroj pro řešení potíží s Log Analytics
@@ -68,10 +68,10 @@ Ověřte, že je brána firewall nebo proxy server nakonfigurovaná tak, aby pov
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Odchozí|Yes |  
-|*.oms.opinsights.azure.com |Port 443 |Odchozí|Yes |  
-|*.blob.core.windows.net |Port 443 |Odchozí|Yes |  
-|*. agentsvc.azure-automation.net |Port 443 |Odchozí|Yes |  
+|*.ods.opinsights.azure.com |Port 443 |Odchozí|Ano |  
+|*.oms.opinsights.azure.com |Port 443 |Odchozí|Ano |  
+|*.blob.core.windows.net |Port 443 |Odchozí|Ano |  
+|*. agentsvc.azure-automation.net |Port 443 |Odchozí|Ano |  
 
 Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). Pokud plánujete použít Azure Automation Hybrid Runbook Worker k připojení a registraci ve službě Automation pro použití sad Runbook nebo řešení správy ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v tématu [Konfigurace sítě pro Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
@@ -89,7 +89,7 @@ Existuje několik způsobů, jak můžete ověřit, zda agent úspěšně komuni
 
     Pokud počítač úspěšně komunikuje se službou, dotaz by měl vrátit výsledek. Pokud dotaz nevrátil výsledek, nejdřív ověřte, že agent je nakonfigurovaný tak, aby nahlásil správnému pracovnímu prostoru. Pokud je správně nakonfigurována, přejděte ke kroku 3 a vyhledejte v protokolu událostí systému Windows, zda má agent protokolovat, jaký problém by mohl bránit v komunikaci s Azure Monitor.
 
-- Další metodou identifikace problému s připojením je spuštění nástroje **TestCloudConnectivity** . Nástroj je ve výchozím nastavení nainstalován s agentem ve složce *%systemroot%\Program Files\Microsoft monitoring Agent\Agent*. Z příkazového řádku se zvýšenými oprávněními přejděte do složky a spusťte nástroj. Nástroj vrátí výsledky a zvýrazní, kde se test nezdařil (například pokud se jednalo o konkrétní port nebo adresu URL, která byla zablokována). 
+- Další metodou identifikace problému s připojením je spuštění nástroje **TestCloudConnectivity** . Nástroj je ve výchozím nastavení nainstalován s agentem ve složce *%systemroot%\Program Files\Microsoft monitoring Agent\Agent*. Na příkazovém řádku se zvýšenými oprávněními přejděte do této složky a spusťte tento nástroj. Nástroj vrátí výsledky a zvýrazní, kde se test nezdařil (například pokud se jednalo o konkrétní port nebo adresu URL, která byla zablokována). 
 
     ![Výsledky spuštění nástroje TestCloudConnection](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 

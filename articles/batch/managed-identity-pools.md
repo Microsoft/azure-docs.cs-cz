@@ -2,14 +2,14 @@
 title: Konfigurace spravovaných identit ve fondech Batch
 description: Naučte se, jak povolit uživatelsky přiřazené spravované identity ve fondech služby Batch a jak používat spravované identity v rámci uzlů.
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4a59383d119f88bb3ee180f629ba0a6ea6ac2f44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7fab213ac1545c0bff9b74bc46504717b6038e8e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100417252"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950157"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Konfigurace spravovaných identit ve fondech Batch
 
@@ -100,3 +100,4 @@ Další informace najdete v tématu [použití spravovaných identit pro prostř
 
 - Přečtěte si další informace o [spravovaných identitách pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 - Naučte se používat [klíče spravované zákazníky s identitami spravovanými uživatelem](batch-customer-managed-key.md).
+- Naučte se, jak [ve fondu Batch povolit automatické otočení certifikátu](automatic-certificate-rotation.md).

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 75911e91bb61b84d2e9315421f794739f2b5088b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433246"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953693"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -179,7 +179,7 @@ Co **můžete** udělat:
 * Číst vlastnosti
 * Čtení odchozích relací
 * Přidávání a odstraňování příchozích vztahů (jako v, jiné vlákna můžou stále tvořit vztahy *k* tomuto zdvojení)
-  - `target`V definici vztahu stále může odrážet DTMI odstraněného modelu. Vztah bez definovaného cíle může také fungovat zde.
+  - `target`V definici vztahu stále může odrážet DTMI odstraněného modelu. Vztah bez definovaného cíle může také fungovat zde.      
 * Odstranit relace
 * Odstranit dvojitou
 

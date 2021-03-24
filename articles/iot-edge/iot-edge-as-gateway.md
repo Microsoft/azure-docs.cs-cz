@@ -4,19 +4,19 @@ description: Pomocí Azure IoT Edge můžete vytvořit transparentní, neprůhle
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ca8f02b375420590bcf1cc732c067a165e22b3fa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: aa8b7372af91fc7cb194dfc3a6212cb4ce1fa0a2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492706"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027342"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Jak se dá zařízení IoT Edge využít jako brána
 
@@ -24,12 +24,7 @@ ms.locfileid: "103492706"
 
 Zařízení IoT Edge můžou fungovat jako brány a zajistit tak připojení mezi ostatními zařízeními v síti a IoT Hub.
 
-Modul IoT Edge hub funguje jako IoT Hub, takže může zpracovávat připojení ze všech zařízení, která mají identitu s IoT Hub, včetně dalších zařízení IoT Edge. Tento typ vzoru brány se nazývá *transparentní* , protože zprávy mohou být předávány ze zařízení pro příjem dat, a to IoT Hub, jako kdyby mezi nimi existovala brána.
-
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-Od verze 1,2 IoT Edge můžou transparentní brány zpracovávat podřízená připojení z jiných zařízení IoT Edge.
-::: moniker-end
+Modul IoT Edge hub funguje jako IoT Hub, takže může zpracovávat připojení z dalších zařízení, která mají identitu se stejným centrem IoT Hub. Tento typ vzoru brány se nazývá *transparentní* , protože zprávy mohou být předávány ze zařízení pro příjem dat, a to IoT Hub, jako kdyby mezi nimi existovala brána.
 
 Pro zařízení, která se nemůžou připojovat k IoT Hub vlastním, IoT Edge brány můžou toto připojení poskytnout. Tento typ vzoru brány se nazývá *Překlad* , protože IoT Edge zařízení musí před přesměrováním do IoT Hub provést zpracování příchozích zpráv pro příchozí zařízení. Tyto scénáře vyžadují u IoT Edge brány další moduly, které zpracovávají kroky zpracování.
 
@@ -51,17 +46,19 @@ Další informace o tom, jak centrum IoT Edge spravuje komunikaci mezi navazují
 
 <!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
-
-IoT Edge zařízení nemohou být podřízená bráně IoT Edge.
-
 ![Diagram – model transparentní brány](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+>[!NOTE]
+>V IoT Edge verze 1,1 a starší IoT Edge zařízení nemůžou být podřízená bráně IoT Edge.
+>
+>Od verze 1,2 IoT Edge můžou transparentní brány zpracovávat připojení ze zařízení IoT Edge pro příjem dat. Další informace získáte po přepnutí na verzi [IoT Edge 1,2](?view=iotedge-2020-11&preserve-view=true) tohoto článku.
 
 ::: moniker-end
 
-<!-- 1.2.0 -->
+<!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
-Počínaje verzí 1.2.0 se zařízení můžou přes transparentní brány připojit IoT Edge.
+Od verze 1,2 IoT Edge můžou transparentní brány zpracovávat připojení ze zařízení IoT Edge pro příjem dat.
 
 <!-- TODO add a downstream IoT Edge device to graphic -->
 

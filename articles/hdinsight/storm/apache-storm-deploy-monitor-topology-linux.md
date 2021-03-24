@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 417819cad3bc2ee258381426dfcee7c800b69d42
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fb57992c8e26560061faf68443c4993801f9713d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929168"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871567"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a Správa topologií Apache Storm v Azure HDInsight
 
@@ -43,7 +43,7 @@ Pomocí nástrojů Data Lake pro Visual Studio můžete odesílat do clusteru s 
 
 1. V okně **Konfigurovat nový projekt** zadejte **název projektu** a přejděte na nebo vytvořte **umístění** , do kterého chcete nový projekt uložit. Potom vyberte **Vytvořit**.
 
-    ![Konfigurace nového okna projektu, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
+    :::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png" alt-text="Konfigurace nového okna projektu, Visual Studio" border="true":::
 
 1. Z **Průzkumník serveru** klikněte pravým tlačítkem myši na **Azure** a vyberte **připojit se k Microsoft Azure předplatného...** a dokončete proces přihlašování.
 
@@ -83,7 +83,7 @@ Topologii můžete programově nasadit pomocí služby Nimbus. [https://github.c
 
 Při odesílání topologie pomocí sady Visual Studio se zobrazí okno **zobrazení topologií** s více podmnožinami. Vyberte topologii ze seznamu a zobrazte informace o spuštěné topologii.
 
-![Monitorování topologie, okna zobrazení topologií s více topologiemi, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png" alt-text="Monitorování topologie, okna zobrazení topologií s více topologiemi, Visual Studio" border="true":::
 
 > [!NOTE]  
 > **Topologie** **přePrůzkumník serveru** můžete zobrazit také z. Rozbalte **Azure**  >  **HDInsight**, klikněte pravým tlačítkem na cluster HDInsight a pak vyberte **Zobrazit topologie** přeplavování.
@@ -169,7 +169,7 @@ Uživatelské rozhraní funkce pro zaplavení poskytuje webové rozhraní pro pr
 
 Hlavní stránka uživatelského rozhraní pro zaplavení poskytuje následující informace:
 
-| Sekce | Description |
+| Sekce | Popis |
 | --- | --- |
 | Souhrn clusteru| Základní informace o clusteru zaplavení. |
 | Nimbus souhrn | Seznam základních informací Nimbus. |
@@ -179,13 +179,13 @@ Hlavní stránka uživatelského rozhraní pro zaplavení poskytuje následujíc
 
 Hlavní stránka uživatelského rozhraní se bude podobat této webové stránce:
 
-![Hlavní stránka, uživatelské rozhraní, Apache Storm topologie, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png" alt-text="Hlavní stránka, uživatelské rozhraní, Apache Storm topologie, Azure" border="true":::
 
 #### <a name="topology-summary"></a>Souhrn topologie
 
 Výběrem odkazu v části **Souhrn topologie** se zobrazí následující informace o topologii:
 
-| Sekce | Description |
+| Sekce | Popis |
 | --- | --- |
 | Souhrn topologie | Základní informace o topologii. |
 | Akce topologie| Akce správy, které lze provést pro topologii. Dostupné akce jsou popsány dále v této části. |
@@ -198,11 +198,11 @@ Výběrem odkazu v části **Souhrn topologie** se zobrazí následující infor
 
 Stránka Souhrn topologie s více podsítěmi vypadá podobně jako tato webová stránka:
 
-![Stránka souhrnu topologie, uživatelské rozhraní pro vyplavení, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png" alt-text="Stránka souhrnu topologie, uživatelské rozhraní pro vyplavení, Apache Storm, Azure" border="true":::
 
 V části **Akce topologie** můžete vybrat následující tlačítka k provedení akce:
 
-| Tlačítko | Description |
+| Tlačítko | Popis |
 | --- | --- |
 | Aktivovat | Obnoví zpracování deaktivované topologie. |
 | Deaktivovat | Pozastaví běžící topologii. |
@@ -216,7 +216,7 @@ V části **Akce topologie** můžete vybrat následující tlačítka k provede
 
 Výběr Spout z částí **spoutů** nebo **šrouby** zobrazí následující informace o vybrané položce:
 
-| Sekce | Description |
+| Sekce | Popis |
 | --- | --- |
 | Souhrn komponenty | Základní informace o Spout nebo šroubu |
 | Akce komponenty | **Ladění** a **zastavování tlačítek ladění** . |
@@ -229,7 +229,7 @@ Výběr Spout z částí **spoutů** nebo **šrouby** zobrazí následující in
 
 Stránka souhrnu šroubového šroubu bude vypadat podobně jako tato webová stránka:
 
-![Stránka souhrnu šroubů, uživatelské rozhraní pro vyplavení, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+:::image type="content" source="./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png" alt-text="Stránka souhrnu šroubů, uživatelské rozhraní pro vyplavení, Apache Storm, Azure" border="true":::
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>Monitorování a Správa topologie pomocí REST API
 
@@ -246,7 +246,7 @@ Základní identifikátor URI pro REST API v clusterech HDInsight se systémem L
 
 Plně kvalifikovaný název domény (FQDN) pro hlavní uzel clusteru můžete najít několika způsoby:
 
-| Metoda zjišťování plně kvalifikovaného názvu domény | Description |
+| Metoda zjišťování plně kvalifikovaného názvu domény | Popis |
 | --- | --- |
 | Relace SSH | Použijte příkaz `headnode -f` z relace SSH do clusteru. |
 | Ambari Web | Na webové stránce clusteru Ambari ( `https://CLUSTERNAME.azurehdinsight.net` ) vyberte **služby** v horní části stránky a pak vyberte možnost přestránkovat . Na kartě **Souhrn** vyberte možnost **Server uživatelského rozhraní**. V horní části stránky se zobrazí plně kvalifikovaný název domény uzlu, který je hostitelem uživatelského rozhraní a REST API. |

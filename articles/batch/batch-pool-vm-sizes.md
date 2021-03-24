@@ -2,25 +2,20 @@
 title: Volba velikostí a imagí virtuálních počítačů pro fondy
 description: Jak vybrat dostupné velikosti virtuálních počítačů a verze operačního systému pro výpočetní uzly ve fondech Azure Batch
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 2c3b90d6188dc6660233ae659fb4280dc1d4f2a5
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800478"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027376"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Volba velikosti a obrázku virtuálního počítače pro výpočetní uzly ve fondu Azure Batch
 
 Když vyberete velikost uzlu pro fond Azure Batch, můžete si vybrat z téměř všech velikostí virtuálních počítačů dostupných v Azure. Azure nabízí řadu velikostí pro virtuální počítače s operačním systémem Linux a Windows pro různé úlohy.
 
 ## <a name="supported-vm-series-and-sizes"></a>Podporované řady a velikosti virtuálních počítačů
-
-Pro výběr velikosti virtuálního počítače pro fond dávek je k dispozici několik výjimek a omezení:
-
-- Některé řady virtuálních počítačů nebo velikosti virtuálních počítačů se v dávce nepodporují.
-- Některé velikosti virtuálních počítačů jsou omezené a je potřeba je nejdřív povolit, než je budete moct přidělit.
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Fondy v konfiguraci virtuálního počítače
 
@@ -32,16 +27,14 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny [
 | A | Všechny velikosti *kromě* Standard_A0, Standard_A8, Standard_A9, Standard_A10 Standard_A11 |
 | Av2 | Všechny velikosti |
 | B | Nepodporováno |
-| DC | Nepodporováno |
+| DCsv2 | Všechny velikosti |
 | Dv2, DSv2 | Všechny velikosti |
 | Dv3, Dsv3 | Všechny velikosti |
-| Dav4 | Všechny velikosti |
-| Dasv4 | Všechny velikosti |
+| Dav4, Dasv4 | Všechny velikosti |
 | Ddv4, Ddsv4 |  Všechny velikosti |
 | Dv4, Dsv4 | Nepodporováno |
 | Ev3, Esv3 | Všechny velikosti kromě E64is_v3 |
-| Eav4 | Všechny velikosti |
-| Easv4 | Všechny velikosti |
+| Eav4, Easv4 | Všechny velikosti |
 | Edv4, Edsv4 |  Všechny velikosti |
 | Ev4, Esv4 | Nepodporováno |
 | F, FS | Všechny velikosti |
@@ -50,6 +43,7 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny [
 | H | Všechny velikosti |
 | HB | Všechny velikosti |
 | HBv2 | Všechny velikosti |
+| HBv3 | Standard_HB120rs_v3 (Další velikosti ještě nejsou k dispozici) |
 | HC | Všechny velikosti |
 | Ls | Všechny velikosti |
 | Lsv2 | Všechny velikosti |
@@ -58,7 +52,7 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny [
 | NC | Všechny velikosti |
 | NCv2 | Všechny velikosti |
 | NCv3 | Všechny velikosti |
-| NCasT4_v3 | Žádný – zatím není k dispozici |
+| NCasT4_v3 | Všechny velikosti |
 | ND | Všechny velikosti |
 | NDv2 | Žádný – zatím není k dispozici |
 | NV | Všechny velikosti |
