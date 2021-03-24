@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s využitím nadřízeného kamene | Microsoft Docs'
-description: Naučte se konfigurovat jednotné přihlašování mezi Azure Active Directory a základním kamenem OnDemand.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s jedním Sign-Onm kamenem | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednotného přihlašování.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 03/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 0994126c4e31d880a792904b0c086a56f6bd90fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f7167df523ca6f84eacd92fc7af1011e8b3b00b6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98727721"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950331"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) se základním kamenem OnDemand
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s jednoduchým základem Sign-On
 
-V tomto kurzu se dozvíte, jak integrovat OnDemand OnDemand pomocí Azure Active Directory (Azure AD). Když integrujete základní platformu OnDemand s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat jednotné Sign-On s Azure Active Directory (Azure AD). Při integraci jednotného Sign-On s Azure AD můžete:
 
-* Řízení ve službě Azure AD, která má přístup k platformě OnDemand.
-* Umožněte uživatelům, aby se automaticky přihlásili k platformě OnDemand OnDemand pomocí svých účtů Azure AD.
+* Řízení ve službě Azure AD, která má přístup k jednotnému přihlašování na základě kamenů
+* Umožněte uživatelům, aby se automaticky přihlásili k základním Sign-Onům pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak integrovat OnDemand OnDemand pomocí Azure Active
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Předplatné s povoleným jednoduchým přihlašováním (SSO) s podporou OnDemand.
+* Předplatné s jednou Sign-On jednotným přihlašováním (SSO) s podporou jednotného přihlašování.
 
 > [!NOTE]
 > Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
@@ -40,39 +40,39 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Základní kámen OnDemand podporuje jednotné přihlašování iniciované v **SP**
-* Základ OnDemand OnDemand podporuje [automatizované zřizování uživatelů](cornerstone-ondemand-provisioning-tutorial.md)
+* Základní Sign-On jednotného přihlašování s podporou **SP** .
+* Jednoduchá podpora pro uživatele v základní Sign-On podporuje [automatizované zřizování uživatelů](cornerstone-ondemand-provisioning-tutorial.md).
 
 
-## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Přidání nadzákladu OnDemand z Galerie
+## <a name="adding-cornerstone-single-sign-on-from-the-gallery"></a>Přidání jednoho Sign-Onového kamene z Galerie
 
-Pokud chcete nakonfigurovat integraci základní platformy OnDemand do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat nadřízenou platformu OnDemand z galerie.
+Pokud chcete nakonfigurovat integraci samostatného Sign-On do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat základní Sign-On z galerie.
 
 1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **kamene OnDemand** .
-1. Z panelu výsledků vyberte základní **kámen OnDemand** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **jednotné přihlašování** .
+1. Vyberte možnost **jednotné přihlašování** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-sso-for-cornerstone-ondemand"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro základní platformu OnDemand
+## <a name="configure-and-test-azure-ad-sso-for-cornerstone-single-sign-on"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro samostatný Sign-On
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD s využitím OnDemand OnDemand pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v základním kamenem OnDemand.
+Konfigurace a testování jednotného přihlašování služby Azure AD pomocí jednotného základu Sign-On pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci jednotného přihlašování na základě kamenů.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD se základem OnDemand OnDemand, proveďte následující kroky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s jednotným přihlašováním, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-2. **[Konfigurovat základní nastavení OnDemand SSO](#configure-cornerstone-ondemand-sso)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace
-    1. **[Vytvoření uživatele](#create-cornerstone-ondemand-test-user)** s podporou vícefaktorového testování – Pokud chcete mít protějšek B. Simon v nadřízeném OnDemand, který je propojený s reprezentací uživatele v Azure AD.
+2. **[Nakonfigurovat jednotné základní Sign-On jednotné přihlašování](#configure-cornerstone-single-sign-on-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace
+    1. **[Vytvořit jednoho Sign-Onho testovacího uživatele](#create-cornerstone-single-sign-on-test-user)** pro každého nadřízeného, aby měl protějšek B. Simon v základní Sign-On, která je propojená s reprezentací uživatele v Azure AD.
 3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace aplikace **OnDemand na základě kamenů** , najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikace **jednotného přihlašování** k aplikaci, najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
@@ -80,18 +80,20 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<company>.csod.com/samldefault.aspx?ouid=2`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<PORTAL_NAME>.csod.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<company>.csod.com/samldefault.aspx?ouid=2`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<PORTAL_NAME>.csod.com/samldefault.aspx?ouid=<OUID>`
+
+    c. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<PORTAL_NAME>.csod.com/samldefault.aspx?ouid=<OUID>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot se obraťte na [tým podpory klientů s podporou OnDemand](mailto:moreinfo@csod.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi, identifikátoru a adresy URL pro přihlášení. Pokud chcete získat tyto hodnoty, obraťte se na [jednoho Sign-On tým podpory klientů](mailto:moreinfo@csod.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. V části **nastavit OnDemand základní kámen** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+6. V části **nastavení jednotného přihlašování** pro základní kámen zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -109,41 +111,72 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k platformě OnDemand.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k jednotnému přihlašování.
 
 1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte možnost **základ OnDemand**.
+1. V seznamu aplikace vyberte základní **jednotné přihlašování**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-cornerstone-ondemand-sso"></a>Konfigurace základu pro jednotné přihlašování
+## <a name="configure-cornerstone-single-sign-on-sso"></a>Konfigurace jednotného Sign-On jednotného přihlašování
 
-Pokud chcete nakonfigurovat jednotné přihlašování na bázi **OnDemand OnDemand** , je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal na [tým podpory pro OnDemand](mailto:moreinfo@csod.com)nadřízeného. Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+1. Přihlaste se k jednomu základnímu Sign-On jako správce.
 
-### <a name="create-cornerstone-ondemand-test-user"></a>Vytvořit uživatele s OnDemandm základem pro testování
+1. Přejít k **nástrojům > pro správu**.
 
-Cílem této části je vytvořit uživatele s názvem B. Simon v základním kameni OnDemand. Základní kámen OnDemand podporuje automatické zřizování uživatelů, které je ve výchozím nastavení povolené. Další podrobnosti najdete v [tématu](./cornerstone-ondemand-provisioning-tutorial.md) konfigurace automatického zřizování uživatelů.
+    ![screeenshot pro stránku správy](./media/cornerstone-ondemand-tutorial/admin.png)
+
+1. V **konfigurační nástroje** vyberte panel **Edge** .
+
+    ![screeenshot pro panel EDGE.](./media/cornerstone-ondemand-tutorial/edge-panel.png)
+
+1. V části **Integration** vyberte jeden Sign-On.
+
+    ![screeenshot možnost pro jednu Sign-On.](./media/cornerstone-ondemand-tutorial/single-sign-on.png)
+
+1. Klikněte na tlačítko **Přidat jednotné přihlašování** . V zobrazeném okně vyberte **příchozí SAML** a pak klikněte na **Přidat**.
+
+    ![screeenshot pro příchozí SAML.](./media/cornerstone-ondemand-tutorial/inbound.png)
+
+1. Na následující stránce proveďte níže uvedené kroky:
+
+    ![screeenshot pro oddíl konfigurace pro základní kámen](./media/cornerstone-ondemand-tutorial/configuration.png)
+
+    a. V části **Obecné vlastnosti** klikněte na **nahrát soubor** a nahrajte soubor **certifikátu (Base64)** , který jste stáhli z Azure Portal.
+
+    b. Zaškrtněte políčko **Povolit** a v textovém poli **IDP adresa URL** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+
+    c. Klikněte na **Uložit**.
+
+### <a name="create-cornerstone-single-sign-on-test-user"></a>Vytvořit jednoho Sign-On testovacího uživatele v základním základu
+
+Cílem této části je vytvořit uživatele s názvem B. Simon v rámci jednotného přihlašování od základu. Základní základní Sign-On podporuje automatické zřizování uživatelů, které je ve výchozím nastavení povolené. Další podrobnosti najdete v [tématu](./cornerstone-ondemand-provisioning-tutorial.md) konfigurace automatického zřizování uživatelů.
 
 **Pokud potřebujete ručně vytvořit uživatele, proveďte následující kroky:**
 
-Pokud chcete nakonfigurovat zřizování uživatelů, pošlete informace (např.: jméno, E-mail) o uživateli Azure AD, kterého chcete zřídit [týmu podpory OnDemand](mailto:moreinfo@csod.com).
+1. Přihlaste se k jednomu základnímu Sign-On jako správce.
 
->[!NOTE]
->K zřizování uživatelských účtů Azure AD můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů nebo rozhraní API pro základní platformu OnDemand OnDemand.
+1. Přejděte na **správce – > uživatelů** a v dolní části stránky klikněte na **Přidat uživatele** .
+
+    ![screeenshot pro testovacího uživatele pro vytváření kamenů.](./media/cornerstone-ondemand-tutorial/user-1.png)
+
+1. Vyplňte požadovaná pole na stránce **Přidat nového uživatele** a klikněte na **Uložit**.
+
+    ![screeenshot pro vytvoření testovacího uživatele s požadovanými poli](./media/cornerstone-ondemand-tutorial/user-2.png)
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k základnímu přihlašování, kde můžete spustit tok přihlášení. 
+* Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na základní adresu URL jednotného Sign-On pro přihlášení, kde můžete spustit tok přihlášení. 
 
-* Přejít přímo na základní adresu URL pro přihlášení k OnDemand-on a spustit tok přihlášení.
+* Přejít na základní Sign-On adresu URL jednotného přihlašování přímo a zahájit tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici OnDemand OnDemand v části Moje aplikace, přesměruje se na přihlašovací adresu URL pro OnDemandal. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Sign-On v okně moje aplikace na základní kámen, tato akce se přesměruje na zákrokovou adresu URL jednotného přihlašování Sign-On. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete využívání kamenů, můžete vyhovět řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+Jakmile nakonfigurujete základní Sign-On, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 00ddc7cd806a9275de7b4ec579bdef62bdf8062d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5e2ab0b9d7f61539a16fc685134bef6c9047229d
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102603235"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987852"
 ---
 V závislosti na operačním systému klienta se postupy pro vzdálené připojení k zařízení liší.
 
@@ -95,7 +95,7 @@ Pomocí těchto kroků se můžete vzdáleně připojit z klienta NFS.
  
 2. Pro připojení pomocí vzdáleného klienta zadejte:
 
-    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser -UseSSL`
+    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
     Po zobrazení výzvy zadejte heslo, které jste použili k přihlášení do zařízení.
  
