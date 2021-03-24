@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f0673523c74a0ea298e7d2d520952c3e98877e91
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c950903522d42b3c279cb89f3a6031043fd49bf3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930050"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868796"
 ---
 # <a name="manage-spark-application-dependencies"></a>Správa závislostí sparkových aplikací
 
@@ -43,7 +43,7 @@ Když se relace Spark spustí v Jupyter Notebook v jádru Spark pro Scala, můž
 
 Po nalezení balíčku z úložiště Maven Shromážděte hodnoty pro ID **skupiny**, **ArtifactId** a **verzi**. Zřetězí tři hodnoty oddělené dvojtečkou (**:**).
 
-   ![Zřetězení schématu balíčku](./media/apache-spark-manage-dependencies/spark-package-schema.png "Zřetězení schématu balíčku")
+   Schéma :::image type="content" source="./media/apache-spark-manage-dependencies/spark-package-schema.png " alt-text="balíčku" border="true":::balíčku schématu "Border =" true ":::
 
 Ujistěte se, že hodnoty, které shromáždíte, odpovídají vašemu clusteru. V tomto případě používáme balíček spark Cosmos DB Connector pro Scala 2,11 a Spark 2,3 pro HDInsight 3,6 v clusteru Spark. Pokud si nejste jistí, spusťte `scala.util.Properties.versionString` v jádře kódu v jádru Spark, abyste získali verzi Scala clusteru. Spusťte `sc.version` pro získání verze clusteru Spark.
 
@@ -70,7 +70,7 @@ import com.microsoft.azure.cosmosdb.spark._
 ### <a name="use-azure-toolkit-for-intellij"></a>Použít Azure Toolkit for IntelliJ
 [Azure Toolkit for IntelliJ modul plug-in](./apache-spark-intellij-tool-plugin.md) poskytuje prostředí uživatelského rozhraní pro odeslání aplikace Spark Scala do clusteru HDInsight. Poskytuje `Referenced Jars` a `Referenced Files` vlastnosti ke konfiguraci knihovnych cest jar při odesílání aplikace Spark. Podívejte se na další podrobnosti o [použití modulu plug-in Azure Toolkit for IntelliJ pro HDInsight](./apache-spark-intellij-tool-plugin.md#run-a-spark-scala-application-on-an-hdinsight-spark-cluster).
 
-![Dialogové okno pro odeslání Sparku](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
+:::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png" alt-text="Dialogové okno pro odeslání Sparku" border="true":::
 
 ## <a name="jar-libs-for-cluster"></a>JAR knihovny pro cluster
 V některých případech můžete chtít nakonfigurovat závislosti jar na úrovni clusteru, aby bylo možné každou aplikaci nastavit se stejnými závislostmi ve výchozím nastavení. Přístup je přidání vašich studijních cest do ovladače Spark a do cesty třídy prováděcího modulu.
@@ -89,11 +89,11 @@ V některých případech můžete chtít nakonfigurovat závislosti jar na úro
     spark.executor.extraClassPath=/usr/libs/sparklibs/*
     ```
 
-   ![Změna výchozí konfigurace Sparku](./media/apache-spark-manage-dependencies/change-spark-default-config.png "Změna výchozí konfigurace Sparku")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/change-spark-default-config.png " alt-text="Změna výchozí konfigurace" border="true":::valifikátor konfigurace "Border =" true ":::
 
 3. Uložte změněné konfigurace a restartujte ovlivněné služby.
 
-   ![Restartovat ovlivněné služby](./media/apache-spark-manage-dependencies/restart-impacted-services.png "Restartovat ovlivněné služby")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/restart-impacted-services.png " alt-text="Restarted Services" border="true":::vybrané Services Border = "true":::
 
 Kroky můžete automatizovat pomocí [akcí skriptů](../hdinsight-hadoop-customize-cluster-linux.md). Dobrým odkazem je akce skriptu pro [Přidání vlastních knihoven podregistru](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh) . Při změně konfigurace služby Spark se ujistěte, že používáte rozhraní API Ambari místo úprav konfiguračních souborů přímo. 
 

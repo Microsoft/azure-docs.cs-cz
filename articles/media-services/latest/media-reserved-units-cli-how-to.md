@@ -2,29 +2,27 @@
 title: Škálování rezervovaných jednotek médií (MRUs) CLI
 description: V tomto tématu se dozvíte, jak pomocí rozhraní příkazového řádku škálovat zpracování médií pomocí Azure Media Services.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: a07c4a20b854e09daf3b320b8c99757ca99b2578
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 06c0c6333b84697415ef598d4c5e853d5c006f08
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213806"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870156"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>Postup škálování rezervovaných jednotek médií
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 V tomto článku se dozvíte, jak škálovat rezervované jednotky médií (MRSs) pro rychlejší kódování.
+
+> [!WARNING]
+> Tento příkaz už nebude fungovat pro účty Media Services, které jsou vytvořené pomocí verze 2020-05-01 rozhraní API nebo novějšího. Pro tyto účty už nejsou potřebné rezervované jednotky médií, protože systém bude automaticky škálovat nahoru a dolů na základě zatížení. Pokud nevidíte možnost spravovat MRUs v Azure Portal, používáte účet, který byl vytvořen s rozhraním API 2020-05-01 nebo novějším.
 
 ## <a name="prerequisites"></a>Předpoklady
 

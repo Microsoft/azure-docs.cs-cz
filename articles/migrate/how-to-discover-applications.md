@@ -6,21 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: 47ea06fa2143f9a5dc5808ccb98fc80c87fefd93
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: d68c3729e8a63f8342cd51b62413aec3276c6165
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786698"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871006"
 ---
 # <a name="discover-installed-software-inventory-and-sql-server-instances-and-databases"></a>Zjištění nainstalovaného inventáře softwaru a SQL Server instancí a databází
 
 Tento článek popisuje, jak zjistit nainstalovaný inventář softwaru a SQL Server instance a databáze na serverech, na kterých běží v prostředí VMware, pomocí Azure Migrate: Discovery and Assessment Tool.
 
 Provádění inventáře softwaru pomáhá identifikovat a přizpůsobit cestu migrace do Azure pro vaše úlohy. Inventář softwaru používá zařízení Azure Migrate k provádění zjišťování pomocí přihlašovacích údajů serveru. Je to zcela bez agenta – na servery nejsou nainstalované žádné agenty, aby bylo možné tato data shromažďovat.
-
-> [!NOTE]
-> Inventář softwaru je momentálně ve verzi Preview pro servery, na kterých běží jenom prostředí VMware, a je omezený jenom na zjišťování. V současné době nenabízíme posuzování na základě aplikací.<br/> Zjišťování a hodnocení instancí SQL Server a databází spuštěných ve vašem prostředí VMware je teď ve verzi Preview. Pokud chcete tuto funkci vyzkoušet, použijte [**tento odkaz**](https://aka.ms/AzureMigrate/SQL) a vytvořte projekt v oblasti **Austrálie – východ**. Pokud již máte projekt v oblasti Austrálie – východ a chcete tuto funkci vyzkoušet, na portálu se ujistěte, že jste splnili tyto [**požadavky**](how-to-discover-sql-existing-project.md).
 
 ## <a name="before-you-start"></a>Než začnete
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 414dc161d7cba2e89d15c47b8da5abdfb7cb3338
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4323884b2dee3eeccfe71ec7817d92467450e88e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712160"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950021"
 ---
 # <a name="use-the-session-management-rest-api"></a>Použití rozhraní REST API pro správu relací
 
@@ -20,13 +20,13 @@ Pokud chcete používat funkci vzdáleného vykreslování Azure, musíte vytvo�
 
 Odkaz na [REST API najdete tady a definice](/rest/api/mixedreality/2021-01-01preview/remoterendering) Swagger [tady](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality).
 Ve složce *Scripts* poskytujeme skript prostředí PowerShell *RenderingSession.ps1*, který ukazuje použití naší služby v [úložišti ukázek ARR](https://github.com/Azure/azure-remote-rendering) . Skript a jeho konfigurace jsou popsané tady: [Příklady skriptů PowerShellu](../samples/powershell-example-scripts.md).
-Poskytujeme také sady SDK pro [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixedreality/Azure.MixedReality.RemoteRendering), Java a Python.
+Poskytujeme také sady SDK pro [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/remoterendering/Azure.MixedReality.RemoteRendering/README.md) a [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/remoterendering/azure-mixedreality-remoterendering/README.md).
 
 > [!IMPORTANT]
 > Latence je důležitým faktorem při použití vzdáleného vykreslování. Nejlepších výsledků dosáhnete, když vytvoříte relace v oblasti, která je pro vás nejblíže. [Test latence Azure](https://www.azurespeed.com/Azure/Latency) se dá použít k určení, které oblasti jsou pro vás nejblíže.
 
 > [!IMPORTANT]
-> Sada SDK modulu runtime ARR je nutná pro připojení klientského zařízení k relaci vykreslování. Tyto sady SDK jsou k dispozici v [rozhraní .NET](/dotnet/api/microsoft.azure.remoterendering?view=remoterendering) a [C++](/cpp/api/remote-rendering/). Kromě připojení ke službě můžete tyto sady SDK také použít ke spouštění a zastavování relací.
+> Sada SDK modulu runtime ARR je nutná pro připojení klientského zařízení k relaci vykreslování. Tyto sady SDK jsou k dispozici v [rozhraní .NET](/dotnet/api/microsoft.azure.remoterendering) a [C++](/cpp/api/remote-rendering/). Kromě připojení ke službě můžete tyto sady SDK také použít ke spouštění a zastavování relací.
 
 ## <a name="next-steps"></a>Další kroky
 

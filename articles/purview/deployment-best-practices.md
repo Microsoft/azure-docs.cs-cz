@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e02ad9187743603d46259d70965e49d6839ecd71
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97695849"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949834"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Osvědčené postupy pro nasazení Azure dosah
 
@@ -150,7 +150,7 @@ V dosah existuje několik oblastí, ve kterých správci katalogu potřebují za
 
 ### <a name="plan-and-implement-different-integration-points-with-purview"></a>Plánování a implementace různých integračních bodů pomocí dosah
 
-Je pravděpodobný, že vyspělá organizace už má existující katalog dat. Klíčovou otázkou je, jestli se má nadále používat stávající technologie a synchronizovat s dosah. Dosah umožňuje publikovat informace prostřednictvím rozhraní API pro Atlas, ale ve skutečnosti nejsou určené pro podporu tohoto druhu scénáře. Některé organizace se můžou zpočátku rozhodnout, že budou používat dosah, a to migrací na stávající datové prostředky z jiných řešení Data Catalog. Dá se to udělat prostřednictvím rozhraní API pro Atlas jako jednosměrný přístup. K synchronizaci mezi různými technologiemi katalogu by se nemělo brát v úvahu v dlouhodobém designu. K tomu obvykle dochází v případě, že každá organizační jednotka může nadále používat stávající řešení pro starší datové prostředky, zatímco dosah se používá k prohledávání s novějšími zdroji dat.
+Je pravděpodobný, že vyspělá organizace už má existující katalog dat. Klíčovou otázkou je, jestli se má nadále používat stávající technologie a synchronizovat s dosah. Pro zpracování synchronizace se stávajícími produkty v organizaci dosah poskytuje rozhraní REST API pro Atlas. Rozhraní API pro Atlas poskytují výkonný a flexibilní mechanismus pro zpracování scénářů nabízených oznámení a vyžádání. Informace se dají publikovat do dosah s využitím rozhraní Atlas API pro zavádění nebo nabízení nejnovějších aktualizací z jiného systému do dosah. Informace, které jsou k dispozici v dosah, se dají přečíst taky pomocí rozhraní API pro Atlas a pak se znovu synchronizují s existujícími produkty. 
 
 Pro jiné scénáře integrace, jako je vytváření lístků, vlastní uživatelské rozhraní a orchestrace, můžete použít rozhraní API pro Atlas a koncové body Kafka. Obecně existují čtyři integrační body s dosah:
 
