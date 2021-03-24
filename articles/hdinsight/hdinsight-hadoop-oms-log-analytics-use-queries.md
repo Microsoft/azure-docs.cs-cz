@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cf97039983ecec44a7c3a32e178fdcf9f9c45ff
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576339"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872179"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Dotazování protokolů Azure Monitor pro monitorování clusterů HDInsight
 
@@ -37,13 +37,13 @@ Naučte se hledat konkrétní metriky pro cluster HDInsight.
     search *
     ```
 
-    ![Ambari Analytics – vyhledávání všech metrik](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Prohledat všechny metriky")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png" alt-text="Ambari Analytics – vyhledávání všech metrik":::
 
 1. V nabídce vlevo vyberte kartu **Filtr** .
 
 1. V části **typ** vyberte **prezenční signál**. Pak vyberte **použít & spustit**.
 
-    ![metriky specifické pro hledání v Log Analytics](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Vyhledat konkrétní metriky")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png" alt-text="metriky specifické pro hledání v Log Analytics":::
 
 1. Všimněte si, že dotaz v textovém poli se změní na:
 
@@ -54,13 +54,13 @@ Naučte se hledat konkrétní metriky pro cluster HDInsight.
 
 1. Můžete Dig hlouběji pomocí možností dostupných v levé nabídce. Například:
 
-    - Postup zobrazení protokolů z konkrétního uzlu:
+   - Postup zobrazení protokolů z konkrétního uzlu:
 
-        ![Vyhledat konkrétní chyby output1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "Vyhledat konkrétní chyby output1")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png" alt-text="Vyhledat konkrétní chyby output1":::
 
-    - Postup zobrazení protokolů v určitých časech:
+   - Postup zobrazení protokolů v určitých časech:
 
-        ![Vyhledat konkrétní chyby output2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Vyhledat konkrétní chyby output2")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png" alt-text="Vyhledat konkrétní chyby output2":::
 
 1. Vyberte **použít & spustit** a zkontrolujte výsledky. Všimněte si také, že dotaz byl aktualizován na:
 
@@ -102,11 +102,11 @@ Prvním krokem k vytvoření výstrahy je doručení dotazu, na základě které
 
 1. V horní části stránky vyberte **nové pravidlo výstrahy** .
 
-    ![Zadejte dotaz pro vytvoření alert1.](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Zadejte dotaz pro vytvoření alert1.")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png" alt-text="Nové pravidlo výstrahy":::
 
 1. V okně **vytvořit pravidlo** zadejte dotaz a další podrobnosti pro vytvoření výstrahy a pak vyberte **vytvořit pravidlo upozornění**.
 
-    ![Zadejte dotaz pro vytvoření alert2.](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Zadejte dotaz pro vytvoření alert2.")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png" alt-text="Definujte podmínku upozornění.":::
 
 ### <a name="edit-or-delete-an-existing-alert"></a>Úprava nebo odstranění existující výstrahy
 
@@ -120,7 +120,7 @@ Prvním krokem k vytvoření výstrahy je doručení dotazu, na základě které
 
 1. Máte následující možnosti: **Uložit**, **Zahodit**, **Zakázat** a **Odstranit**.
 
-    ![Protokoly Azure Monitor HDInsight upozornění odstranit úpravu](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    :::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png" alt-text="Protokoly Azure Monitor HDInsight upozornění odstranit úpravu":::
 
 Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../azure-monitor/alerts/alerts-metric.md).
 

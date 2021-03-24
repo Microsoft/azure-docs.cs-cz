@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: d36c8f1f592bbe714a9e31cad8131523049f29ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3bfcfbe59ccc15278b30470c6a060a9c1dd609c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931363"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871740"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsightu
 
@@ -18,7 +18,7 @@ HDInsight umožňuje převzít kontrolu nad daty a metadaty pomocí externích �
 
 Apache Hive metastore v HDInsight je důležitou součástí architektury Apache Hadoop. Metastore je centrální úložiště schémat. Metastore používají jiné nástroje pro přístup k velkým datům, jako jsou Apache Spark, interaktivní dotazy (LLAP), presto nebo Apache prasete. HDInsight používá jako metastore Hive Azure SQL Database.
 
-![Architektura úložiště metadat podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png" alt-text="Architektura úložiště metadat podregistru HDInsight" border="false":::
 
 Existují dva způsoby, jak můžete nastavit metastore pro clustery HDInsight:
 
@@ -56,7 +56,7 @@ HDInsight podporuje také vlastní metaúložiště, které se doporučují pro 
 
 * Cluster a externí metastore musí být hostované ve stejné oblasti.
 
-![Případ použití úložiště metadat podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png" alt-text="Případ použití úložiště metadat podregistru HDInsight" border="false":::
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Vytvoření a konfigurace Azure SQL Database pro vlastní metastore
 
@@ -66,15 +66,15 @@ Při vytváření clusteru se musí služba HDInsight připojit k externímu met
 
 Privátní koncové body pro úložiště SQL se podporují jenom v clusterech vytvořených pomocí `outbound` ResourceProviderConnection. Další informace najdete v této [dokumentaci](./hdinsight-private-link.md).
 
-![tlačítko nastavit bránu firewall serveru](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png" alt-text="tlačítko nastavit bránu firewall serveru":::
 
-![povolení přístupu ke službám Azure](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png" alt-text="povolení přístupu ke službám Azure":::
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Vybrat vlastní metastore při vytváření clusteru
 
 Cluster můžete kdykoli nasměrovat na dříve vytvořenou Azure SQL Database. Při vytváření clusteru prostřednictvím portálu je tato možnost zadaná v **Nastavení úložiště > metastore**.
 
-![Azure Portal úložiště metadat podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png" alt-text="Azure Portal úložiště metadat podregistru HDInsight":::
 
 ## <a name="hive-metastore-guidelines"></a>Pokyny pro metastore Hive
 

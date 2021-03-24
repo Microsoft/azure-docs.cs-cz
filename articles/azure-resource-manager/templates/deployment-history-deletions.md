@@ -2,13 +2,13 @@
 title: Odstranění historie nasazení
 description: Popisuje, jak Azure Resource Manager automaticky odstranit nasazení z historie nasazení. Nasazení se odstraní, když se historie blíží k překročení limitu 800.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: fc4f7f33cdd7ccce3158aa95bd002f12c8c44c00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91652478"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951959"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatické odstraňování z historie nasazení
 
@@ -53,6 +53,12 @@ Pokud chcete pomocí Azure CLI odstranit zámek, spusťte následující příka
 lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
 az lock delete --ids $lockid
 ```
+
+## <a name="required-permissions"></a>Požadovaná oprávnění
+
+Odstranění jsou požadována v rámci identity uživatele, který šablonu nasadil. Chcete-li odstranit nasazení, musí mít uživatel přístup k akci **Microsoft. Resources/Deployments/Delete** . Pokud uživatel nemá požadovaná oprávnění, nasazení se z historie neodstraní.
+
+Pokud aktuální uživatel nemá požadovaná oprávnění, při příštím nasazení se znovu pokusí o automatické odstranění.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Odhlásit automatické odstranění
 

@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: a30768f4904c9e5be2edc020f12260cf3a54c889
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 47569309f35848e82488abd549751f6f1e5a1baa
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425885"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954866"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -27,8 +27,8 @@ Zavádíme taky novou roli [operátora clusteru HDInsight](../role-based-access-
 
 | Role                                  | Měsíci                                                                                       | Po přechodu dál       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Čtenář                                | – Přístup pro čtení, včetně tajných klíčů.                                                                   | – Přístup pro čtení, **s výjimkou** tajných klíčů |           |   |   |
-| Operátor clusteru HDInsight<br>(Nová role) | –                                                                                              | – Přístup pro čtení a zápis, včetně tajných klíčů         |   |   |
+| Čtenář                                | – Přístup pro čtení, včetně tajných klíčů.                                                                   | – Přístup pro čtení, **s výjimkou** tajných klíčů | 
+| Operátor clusteru HDInsight<br>(Nová role) | –                                                                                              | – Přístup pro čtení a zápis, včetně tajných klíčů         | 
 | Přispěvatel                           | – Přístup pro čtení a zápis, včetně tajných klíčů.<br>– Vytvářejte a spravujte všechny typy prostředků Azure.<br>-Spouštění akcí skriptu.     | Beze změny |
 | Vlastník                                 | – Přístup pro čtení a zápis včetně tajných klíčů.<br>– Úplný přístup ke všem prostředkům<br>– Delegovat přístup jiným uživatelům.<br>-Spouštění akcí skriptu. | Beze změny |
 

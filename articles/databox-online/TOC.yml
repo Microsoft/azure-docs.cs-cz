@@ -240,8 +240,12 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Vytvoření image virtuálního počítače
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: Použít zobecněnou bitovou kopii systému Windows
+              href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
             - name: Podporované typy a velikosti virtuálních počítačů
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
+            - name: Připojit ke konzole virtuálních počítačů
+              href: azure-stack-edge-gpu-connect-virtual-machine-console.md
         - name: Správa certifikátů
           items:
             - name: Požadavky
@@ -310,7 +314,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Sdílené poznámky k verzi
       items:
-        - name: 2101 – aktuální
+        - name: 2103 – aktuální
+          href: azure-stack-edge-gpu-2103-release-notes.md
+        - name: 2101
           href: azure-stack-edge-gpu-2101-release-notes.md
         - name: 2010
           href: azure-stack-edge-gpu-2010-release-notes.md

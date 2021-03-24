@@ -5,18 +5,18 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: e31a696dfb443c20566f13f5a228eefac7af5ecc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b644adb98de5ef5e3af6e1c8d45ea1a207d05cc7
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595919"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956124"
 ---
 # <a name="azure-percept-ai-models"></a>Modely AI pro Azure Percept
 
-Azure Percept umožňuje vyvíjet a nasazovat modely AI přímo do Azure Percept DK z [Azure Percept studia](https://go.microsoft.com/fwlink/?linkid=2135819). Nasazení modelu využívá [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/#iotedge-overview).
+Azure Percept umožňuje vyvíjet a nasazovat modely AI přímo do [Azure PERCEPT DK](./overview-azure-percept-dk.md) z [Azure Percept studia](https://go.microsoft.com/fwlink/?linkid=2135819). Nasazení modelu využívá [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/#iotedge-overview).
 
 ## <a name="sample-ai-models"></a>Ukázkové modely AI
 
@@ -27,7 +27,7 @@ Azure Percept Studio obsahuje ukázkové modely pro následující aplikace:
 - Obecné zjišťování objektů
 - zjišťování produktů na polici
 
-S předem vyškolenými modely není nutné vytvářet žádné kódování ani školicí shromažďování dat. Jednoduše nasaďte požadovaný model do Azure Percept DK z portálu a otevřete Stream videa DevKit, abyste viděli model Inferencing v akci. K Inferencing telemetrie se dá dostat taky prostřednictvím nástroje [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases) .
+S předem vyškolenými modely není nutné vytvářet žádné kódování ani školicí shromažďování dat. Jednoduše [Nasaďte požadovaný model](./how-to-deploy-model.md) do Azure Percept DK z portálu a otevřete [Stream videa](./how-to-view-video-stream.md) DevKit, abyste viděli model Inferencing v akci. K [Inferencing telemetrie](./how-to-view-telemetry.md) se dá dostat taky prostřednictvím nástroje [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases) .
 
 ## <a name="reference-solutions"></a>Referenční řešení
 
@@ -37,9 +37,9 @@ K dispozici je také [řešení pro počítání odkazů lidí](https://github.c
 
 ## <a name="custom-no-code-solutions"></a>Vlastní řešení bez kódu
 
-Prostřednictvím Azure Percept studia můžete vyvíjet vlastní řešení pro [vize](./tutorial-nocode-vision.md) a rozpoznávání řeči, nevyžaduje se žádné kódování.
+Prostřednictvím Azure Percept studia můžete vyvíjet vlastní řešení pro [vize](./tutorial-nocode-vision.md) a [rozpoznávání řeči](./tutorial-no-code-speech.md) , nevyžaduje se žádné kódování.
 
-Pro vlastní řešení Vision jsou k dispozici oba modely pro detekci a klasifikaci AI. Jednoduše nahrajte a označte své školicí obrázky, které se dají přímo s Azure Percept Vision SoM v Azure Percept DK, pokud je to potřeba. Školení a vyhodnocení modelu se snadno provádí v [Custom Vision](https://www.customvision.ai/), což je součástí [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/#overview).
+Pro vlastní řešení Vision jsou k dispozici oba modely pro detekci a klasifikaci AI. Jednoduše nahrajte a označte své školicí obrázky, které je možné v případě potřeby přímo s Azure Percept Vision SoM Azure Percept DK. Školení a vyhodnocení modelu se snadno provádí v [Custom Vision](https://www.customvision.ai/), což je součástí [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/#overview).
 
 </br>
 
@@ -58,6 +58,6 @@ Předem vytvořená klíčová slova a příkazy hlasového asistenta jsou k dis
 
 Podrobné pokyny, kurzy a příklady pro tyto věci najdete v tématu [Azure PERCEPT DK Advanced Development GitHub](https://github.com/microsoft/azure-percept-advanced-development) .
 
-* Zavedení vlastního modelu AI do zařízení
-* Aktualizace modelu, který už podporujeme s učením přenosu
-* A další
+- Nasazení vlastního modelu AI do Azure Percept DK
+- Aktualizace podporovaného modelu pomocí učení přenosu
+- A další

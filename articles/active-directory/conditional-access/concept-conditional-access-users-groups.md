@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b878abbead68b3268891e1f35087e5942969730c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4e1f4c7272c3db3b1e4cd834a621b66f519c6f69
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579055"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952809"
 ---
 # <a name="conditional-access-users-and-groups"></a>Podmíněný přístup: uživatelé a skupiny
 
@@ -38,7 +38,7 @@ Při vytváření zásad podmíněného přístupu jsou k dispozici následujíc
    - Všichni uživatelé typu Host a externí uživatelé
       - Tento výběr zahrnuje všechny hosty a externí uživatele B2B včetně všech uživatelů s `user type` atributem nastaveným na `guest` . Tento výběr platí také pro všechny přihlášené externí uživatele z jiné organizace, jako je například poskytovatel Cloud Solution Provider (CSP). 
    - Role adresáře
-      - Umožňuje správcům vybrat konkrétní integrované role adresáře Azure AD, které se používají k určení přiřazení zásad. Organizace můžou například vytvořit přísnější zásadu pro uživatele, kteří mají přiřazenou roli globálního správce. Jiné typy rolí se nepodporují, včetně rolí adresáře správy s rozsahem jednotky, vlastních rolí.
+      - Umožňuje správcům vybrat konkrétní integrované role adresáře Azure AD, které se používají k určení přiřazení zásad. Organizace můžou například vytvořit přísnější zásadu pro uživatele, kteří mají přiřazenou roli globálního správce. Jiné typy rolí nejsou podporované, včetně rolí pro správu v oboru jednotky a vlastní role.
    - Uživatelé a skupiny
       - Umožňuje zaměřit se na konkrétní skupiny uživatelů. Organizace můžou například vybrat skupinu, která obsahuje všechny členy oddělení lidských zdrojů, když je jako cloudová aplikace vybraná aplikace pro HR. Skupina může být libovolný typ skupiny v Azure AD, včetně dynamických nebo přiřazených skupin zabezpečení a distribuce. Zásady se použijí pro vnořené uživatele a skupiny.
 

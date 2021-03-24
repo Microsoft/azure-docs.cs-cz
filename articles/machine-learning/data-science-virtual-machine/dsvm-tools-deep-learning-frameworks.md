@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 0bfdea6c0bbbe40e4c72ab9da70a1b16d4bc4d3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ee0e8d8fa660313cb007d53c2bbbfc9b19feec9
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175664"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889769"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Rozhraní pro hloubkové učení a AI pro Azure Data Science VM
 Architektury hloubkového učení na DSVM jsou uvedené níže.
@@ -27,7 +27,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Podporované verze | |
 | Podporované edice DSVM      | Ubuntu 16.04    |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Caffe je nainstalován v `/opt/caffe` .   Ukázky jsou v `/opt/caffe/examples` .|
-| Jak ji spustit      | pomocí X2Go se přihlaste k VIRTUÁLNÍmu počítači a potom spusťte nový terminál a zadejte následující:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Otevře se nové okno prohlížeče s ukázkami poznámkových bloků. Binární soubory jsou nainstalované v/opt/Caffe/Build/Install/bin..<br/><br/>Nainstalovaná verze Caffe vyžaduje Python 2,7 a nebude fungovat s Python 3,5, který je ve výchozím nastavení aktivovaný. Pokud chcete přejít na Python 2,7, spusťte příkaz `source activate root` a přepněte se do prostředí Anaconda.|    
+| Jak ji spustit      | pomocí X2Go se přihlaste k VIRTUÁLNÍmu počítači a potom spusťte nový terminál a zadejte následující:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Otevře se nové okno prohlížeče s ukázkami poznámkových bloků. Binární soubory jsou nainstalované v/opt/Caffe/Build/Install/bin..<br/><br/>Nainstalovaná verze Caffe vyžaduje Python 2,7 a nebude fungovat s Python 3,6, který je ve výchozím nastavení aktivovaný. Pokud chcete přejít na Python 2,7, spusťte příkaz `source activate root` a přepněte se do prostředí Anaconda.|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 

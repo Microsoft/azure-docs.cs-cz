@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: 7f249bb0e81bf3a371b8743a304ef49baffaed7a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 05199968339329632c2e68e9604e3f5308e8b12b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941385"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871652"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Vizualizace interaktivních dotazů Apache Hive dat pomocí Microsoft Power BI pomocí přímého dotazování v HDInsight
 
 Tento článek popisuje, jak připojit Microsoft Power BI k clusterům s interaktivními dotazy Azure HDInsight a vizualizovat Apache Hive data pomocí přímých dotazů. Zadaný příklad načte data z `hivesampletable` tabulky podregistru do Power BI. `hivesampletable`Tabulka podregistru obsahuje data o využití mobilních telefonů. Pak vykreslíte data o využití na světové mapě:
 
-![HDInsight Power BI sestavy mapy](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png" alt-text="HDInsight Power BI sestavy mapy" border="true":::
 
 Pomocí [ovladače Apache Hive ODBC](../hadoop/apache-hadoop-connect-hive-power-bi.md) můžete provádět import prostřednictvím obecného konektoru odbc v Power BI Desktop. Nedoporučuje se ale pro úlohy BI, které neinteraktivní charakterují modul dotazů na podregistr. Konektor [HDInsight Interactive pro dotazy](./apache-hadoop-connect-hive-power-bi-directquery.md) a [konektor HDInsight Apache Spark](/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepšími možnostmi pro jejich výkon.
 
@@ -34,7 +34,7 @@ Před provedením tohoto článku musíte mít následující položky:
 
 2. V řádku nabídek přejděte na **Domů**  >  **získat data**  >  **Další..**..
 
-    ![HDInsight Power BI získat data více](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png" alt-text="HDInsight Power BI získat data více" border="true":::
 
 3. V okně **získat data** zadejte do vyhledávacího pole **HDInsight** .  
 
@@ -50,7 +50,7 @@ Před provedením tohoto článku musíte mít následující položky:
     |databáze |Zadejte **výchozí nastavení** tohoto článku.|
     |Režim připojení dat |Pro tento článek vyberte **DirectQuery** .|
 
-    ![Interaktivní dotaz HDInsight Power BI DirectQuery Connect](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png" alt-text="Interaktivní dotaz HDInsight Power BI DirectQuery Connect" border="true":::
 
 7. Zadejte přihlašovací údaje HTTP a pak vyberte **připojit**. Výchozí uživatelské jméno je **admin**.
 
@@ -58,7 +58,7 @@ Před provedením tohoto článku musíte mít následující položky:
 
 9. V hlavním okně vyberte **načíst** .
 
-    ![Interaktivní dotaz HDInsight Power BI hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png" alt-text="Interaktivní dotaz HDInsight Power BI hivesampletable" border="true":::
 
 ## <a name="visualize-data-on-a-map"></a>Vizualizace dat na mapě
 
@@ -66,7 +66,7 @@ Pokračujte od posledního postupu.
 
 1. V podokně vizualizace vyberte **Mapa**, ikona zeměkoule. V hlavním okně se pak zobrazí obecná mapa.
 
-    ![Sestava přizpůsobení Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png" alt-text="Sestava přizpůsobení Power BI HDInsight" border="true":::
 
 2. V podokně pole vyberte Country ( **země** ) a **devicemake**(země). Mapa světa s datovými body se po chvíli objeví v hlavním okně.
 

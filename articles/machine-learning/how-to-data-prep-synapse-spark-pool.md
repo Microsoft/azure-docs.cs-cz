@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: d7cc948d3631e69882eb252672e5a3eb5d5f9751
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 9ced4da7f71a0499e538e499644d89240611f1ea
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104867436"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956209"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Připojení fondů Apache Spark (využívajících Azure synapse Analytics) pro tahání dat (Preview)
 
@@ -127,6 +127,21 @@ ws.compute_targets['Synapse Spark pool alias']
 
 ## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>Spuštění synapse Spark fondu pro úlohy přípravy dat
 
+Chcete-li zahájit přípravu dat pomocí fondu Apache Spark, zadejte název Apache Spark fondu:
+
+> [!IMPORTANT]
+> Pokud chcete pokračovat v používání Apache Sparkho fondu, musíte určit, který výpočetní prostředek se má použít v rámci svých úloh datových tahání `%synapse` , s jedním řádkem kódu a `%%synapse` více řádky. 
+
+```python
+%synapse start -c SynapseSparkPoolAlias
+```
+
+Po spuštění relace můžete ověřit metadata relace.
+
+```python
+%synapse meta
+```
+
 Můžete určit [Azure Machine Learning prostředí](concept-environments.md) , které chcete použít během relace Apache Spark. Projeví se pouze závislosti conda zadané v prostředí. Image Docker není podporovaná.
 
 >[!WARNING]
@@ -146,21 +161,11 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-Pokud chcete zahájit přípravu dat pomocí fondu Apache Spark, zadejte název Apache Spark fondu a zadejte ID předplatného, skupinu prostředků pracovního prostoru Machine Learning, název pracovního prostoru Machine Learning a prostředí, které chcete použít během relace Apache Spark. 
-
-> [!IMPORTANT]
-> Pokud chcete pokračovat v používání Apache Sparkho fondu, musíte určit, který výpočetní prostředek se má použít v rámci svých úloh datových tahání `%synapse` , s jedním řádkem kódu a `%%synapse` více řádky. 
+Pokud chcete začít přípravu dat s Apache Spark fondem a vlastním prostředím, zadejte název fondu Apache Spark a prostředí, které chcete použít během relace Apache Spark. Navíc můžete zadat ID předplatného, skupinu prostředků pracovního prostoru Machine Learning a název pracovního prostoru Machine Learning.
 
 ```python
-%synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
+%synapse start -c SynapseSparkPoolAlias -e myenv -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName
 ```
-
-Po spuštění relace můžete ověřit metadata relace.
-
-```python
-%synapse meta
-```
-
 ## <a name="load-data-from-storage"></a>Načtení dat z úložiště
 
 Jakmile se spustí relace Apache Spark, přečtěte si data, která chcete připravit. Načítání dat je podporované pro Azure Blob Storage a Azure Data Lake Storage generace 1 a 2.
@@ -226,14 +231,22 @@ df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows
 
 ### <a name="read-in-data-from-registered-datasets"></a>Čtení dat z registrovaných datových sad
 
-Můžete také získat existující registrovanou datovou sadu v pracovním prostoru a provést přípravu dat jejich převedením na datový rámec Spark.  
+Můžete také získat existující registrovanou datovou sadu v pracovním prostoru a provést přípravu dat jejich převedením na datový rámec Spark.
 
-Následující příklad získá registrovanou TabularDataset, `blob_dset` , který odkazuje na soubory v úložišti objektů BLOB a převede je na datový rámec Spark. Když převedete datové sady na datový rámec Spark, můžete využívat knihovny pro `pyspark` zkoumání a přípravu dat.  
+Následující příklad ověřuje pracovní prostor, získá registrovanou TabularDataset, `blob_dset` , který odkazuje na soubory v úložišti objektů BLOB a převede je na datový rámec Spark. Když převedete datové sady na datový rámec Spark, můžete využívat knihovny pro `pyspark` zkoumání a přípravu dat.  
 
 ``` python
 
 %%synapse
 from azureml.core import Workspace, Dataset
+
+subscription_id = "<enter your subscription ID>"
+resource_group = "<enter your resource group>"
+workspace_name = "<enter your workspace name>"
+
+ws = Workspace(workspace_name = workspace_name,
+               subscription_id = subscription_id,
+               resource_group = resource_group)
 
 dset = Dataset.get_by_name(ws, "blob_dset")
 spark_df = dset.to_spark_dataframe()
