@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/05/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: cc1d375de9f45369f6d2902b106a1740f316ad8d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41f6c8e260968eacd04249b3f887d4865907df0d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948104"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879681"
 ---
 [Referenční dokumentace](/javascript/api/@azure/arm-cognitiveservices/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -116,7 +116,9 @@ node index.js
 
 ## <a name="see-also"></a>Viz také
 
-* [Referenční dokumentace k sadě Azure Management SDK](/javascript/api/@azure/arm-cognitiveservices/)
-* [Co je Azure Cognitive Services?](../../what-are-cognitive-services.md)
-* [Ověřování požadavků do Azure Cognitive Services](../../authentication.md)
-* [Vytvoření nového prostředku pomocí webu Azure Portal](../../cognitive-services-apis-create-account.md)
+* Informace o tom, jak bezpečně pracovat s Cognitive Services, najdete v tématu **[ověření požadavků do Azure Cognitive Services](../../authentication.md)** .
+* V tématu **[co je Azure Cognitive Services?](../../what-are-cognitive-services.md)** získáte seznam různých kategorií v rámci Cognitive Services.
+* Seznam přirozených jazyků, které Cognitive Services podporuje, najdete v článku **[Podpora přirozeného jazyka](../../language-support.md)** .
+* Pokud chcete pochopit, jak používat Cognitive Services on-Prem, přečtěte si téma **[použití Cognitive Services jako kontejnerů](../../cognitive-services-container-support.md)** .
+* Odhad nákladů na používání Cognitive Services najdete v tématu **[plánování a Správa nákladů na Cognitive Services](../../plan-manage-costs.md)** .
+* Další podrobnosti o sadě Management SDK najdete v **[referenční dokumentaci k sadě Azure Management SDK](/javascript/api/@azure/arm-cognitiveservices/)** .

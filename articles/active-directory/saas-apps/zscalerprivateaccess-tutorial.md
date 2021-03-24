@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 347fc931dcc7f794fe7376daaac21ce7ed9198df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 58e2a19f2d57eafc7d2967141d584dc7a22fe76c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184731"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955665"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>Kurz: integrace Zscaler Private Access (ZPA) s Azure Active Directory
 
@@ -163,8 +163,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Přejděte přímo na adresu URL pro přihlášení Zscaler Private Access (ZPA) a zahajte tok přihlášení.
 
-* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Zscaler Private Access (ZPA) v části Moje aplikace, přesměruje se na adresu URL pro přihlášení Zscaler Private Access (ZPA). Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici Zscaler Private Access (ZPA) v části Moje aplikace, přesměruje se na adresu URL pro přihlášení Zscaler Private Access (ZPA). Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Zscaler Private Access (ZPA) můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování Zscaler Private Access (ZPA) můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

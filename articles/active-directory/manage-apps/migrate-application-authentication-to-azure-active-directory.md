@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 629f71c429d6af8583cb15b9ebc96efe6867f78b
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 1e05a7af3f0b95470432b4fb9602e1b41da9f72f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888885"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952962"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Migrace ověřování aplikace na Azure Active Directory
 
@@ -573,7 +573,7 @@ Můžete se seznámit s uživateli, jak zjišťovat jejich aplikace:
 
 Uživatelé si můžou stáhnout **prohlížeč spravovaný přes Intune**:
 
-- **Pro zařízení s Androidem** z [Google Play Storu](/azure/active-directory/authentication/howto-mfa-userstates)
+- **Pro zařízení s Androidem** z [Google Play Storu](https://play.google.com/store/apps/details?id=com.microsoft.intune)
 
 - **Pro zařízení Apple**, z [App Storu Apple](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) nebo si můžou stáhnout [mobilní aplikaci Moje aplikace pro iOS](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653)
 

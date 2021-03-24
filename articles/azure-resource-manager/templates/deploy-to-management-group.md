@@ -3,12 +3,12 @@ title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 79020e8e24cb43697a44ac9accd4e777bffe959e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 603b7e32e6f4e1181a8ef2df67382b5e21ed6715
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594202"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889803"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Nasazení skupin pro správu pomocí šablon ARM
 
@@ -327,7 +327,7 @@ Z nasazení na úrovni skupiny pro správu můžete cílit na předplatné v rá
     "resources": [
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2020-10-01",
             "name": "nestedSub",
             "location": "[parameters('nestedLocation')]",
             "subscriptionId": "[parameters('nestedSubId')]",
@@ -343,7 +343,7 @@ Z nasazení na úrovni skupiny pro správu můžete cílit na předplatné v rá
                     "resources": [
                         {
                             "type": "Microsoft.Resources/resourceGroups",
-                            "apiVersion": "2020-06-01",
+                            "apiVersion": "2020-10-01",
                             "name": "[parameters('nestedRG')]",
                             "location": "[parameters('nestedLocation')]"
                         }
@@ -353,7 +353,7 @@ Z nasazení na úrovni skupiny pro správu můžete cílit na předplatné v rá
         },
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2020-10-01",
             "name": "nestedRG",
             "subscriptionId": "[parameters('nestedSubId')]",
             "resourceGroup": "[parameters('nestedRG')]",

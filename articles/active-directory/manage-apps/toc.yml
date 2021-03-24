@@ -236,8 +236,6 @@
               href: application-proxy-qlik.md
     - name: Řešení potíží
       items:
-        - name: Řešení potíží s přidáváním aplikací
-          href: troubleshoot-adding-apps.md
         - name: Řešení potíží s jednotným přihlašováním založeném na heslech
           href: troubleshoot-password-based-sso.md
         - name: Řešení potíží s jednotným přihlašováním založeným na SAML

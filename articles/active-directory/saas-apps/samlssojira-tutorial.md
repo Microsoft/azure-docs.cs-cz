@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 450db7c01de4ea7db0133ceca962941ae1a927e5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 827a05a8dfbf05b0dacb0bd812fb964567f39b3f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173065"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954203"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Kurz: Azure Active Directory integrace se službou SAML SSO pro JIRA podle rezoluce GmbH
 
@@ -243,7 +243,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni ke službě SAML SSO pro JIRA podle rezoluce GmbH, pro kterou jste si nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici SAML SSO for JIRA by v části Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlašovacích údajů a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit ke službě SAML SSO pro JIRA podle rezoluce GmbH, pro kterou jste si nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít aplikaci Microsoft moje aplikace. Když kliknete na dlaždici SAML SSO for JIRA by v části Moje aplikace, pokud je nakonfigurovaná v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlašovacích údajů a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit ke službě SAML SSO pro JIRA podle rezoluce GmbH, pro kterou jste si nastavili jednotné přihlašování. Další informace o mých aplikacích najdete v tématu [Úvod do mých aplikací](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="enable-sso-redirection-for-jira"></a>Povolit přesměrování jednotného přihlašování pro JIRA
 
@@ -268,4 +268,4 @@ Po aktivaci možnosti se zobrazí výzva k zadání uživatelského jména a hes
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete jednotné přihlašování SAML pro JIRA podle rezoluce GmbH, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Jakmile nakonfigurujete jednotné přihlašování SAML pro JIRA podle rezoluce GmbH, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

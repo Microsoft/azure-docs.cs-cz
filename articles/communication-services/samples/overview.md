@@ -9,12 +9,12 @@ ms.author: rifox
 ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5e17943d7867bfd6b93d95b6ec0b6e0049a784ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a5b3a94a0b1253b946239cd26113e9dfc955dd9a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103555786"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955954"
 ---
 # <a name="samples"></a>ukázky
 
@@ -22,9 +22,9 @@ Komunikační služby Azure mají k dispozici mnoho ukázek, které můžete pou
 
 ## <a name="application-samples"></a>Ukázky aplikací
 
-| Název vzorku                                                                                          | Description                                                         | Dostupné jazyky/platformy      |
+| Název vzorku                                                                                          | Popis                                                         | Dostupné jazyky/platformy      |
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :--------------------------------- |
-| [Ukázka volání Hero skupiny](./calling-hero-sample.md)                                                | Poskytuje ukázku vytvoření skupiny volající aplikace.          | Web, iOS                           |
+| [Ukázka volání Hero skupiny](./calling-hero-sample.md)                                                | Poskytuje ukázku vytvoření skupiny volající aplikace.          | Web, iOS, Android                           |
 | [Ukázka volání webu](./web-calling-sample.md)                                                        | Podrobný návod pro volání funkcí služby ACS v rámci webu. | Web                                |
 | [Ukázka chatu Hero](./chat-hero-sample.md)                                                            | V této části najdete ukázku vytvoření aplikace chatu.                   | Web & C# .NET                      |
 | [Lékařská aplikace Contoso](https://github.com/Azure-Samples/communication-services-contoso-med-app)       | Ukázková aplikace, která demonstruje tok pacienta.                     | Web & Node.js                      |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 6361a9c337f5d3897cf15d4739b0410d3e820e57
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600934"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889531"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Instalace a zřízení Azure IoT Edge pro Linux na zařízení s Windows (Preview)
 
@@ -52,7 +52,9 @@ V tomto článku jsou uvedené kroky pro nastavení IoT Edge na zařízení s Wi
 
    1. Stáhněte si [instalační program centra pro správu systému Windows](https://aka.ms/wacdownload).
 
-   1. Spusťte stažený instalační program a postupujte podle pokynů Průvodce instalací pro instalaci centra pro správu systému Windows. Po instalaci otevřete centrum pro správu systému Windows.
+   1. Spusťte stažený instalační program a postupujte podle pokynů Průvodce instalací pro instalaci centra pro správu systému Windows. 
+
+   1. Po instalaci pomocí podporovaného prohlížeče otevřete centrum pro správu systému Windows. Mezi podporované prohlížeče patří Microsoft Edge (Windows 10, verze 1709 nebo novější), Google Chrome a Microsoft Edge Insider.
 
    1. Při prvním použití centra pro správu Windows se zobrazí výzva k výběru certifikátu, který se má použít. Jako certifikát vyberte **klienta centra pro správu systému Windows** .
 
@@ -61,12 +63,6 @@ V tomto článku jsou uvedené kroky pro nastavení IoT Edge na zařízení s Wi
       ![Vyberte ikonu ozubeného kolečka v pravém horním rohu řídicího panelu pro přístup k nastavení.](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. V nabídce **Nastavení** v části **Brána** vyberte **rozšíření**.
-
-   1. Vyberte kartu **informační kanály** a vyberte **Přidat**.
-
-   1. https://aka.ms/wac-insiders-feedDo textového pole zadejte a vyberte **Přidat**.
-
-   1. Po přidání informačního kanálu přejděte na kartu **rozšíření k dispozici** . Aktualizace seznamu rozšíření může chvíli trvat.
 
    1. Na kartě **rozšíření k dispozici** vyhledejte v seznamu rozšíření **Azure IoT Edge** . Zvolte ho a potom na seznam rozšíření vyberte příkazový řádek **instalace** .
 
@@ -346,6 +342,9 @@ Ověřte, že IoT Edge pro Linux v systému Windows byl úspěšně nainstalová
    ```azurepowershell-interactive
    Ssh-EflowVm
    ```
+
+   >[!NOTE]
+   >Jediným účtem povoleným pro SSH k virtuálnímu počítači je uživatel, který ho vytvořil.
 
 1. Po přihlášení můžete pomocí následujícího příkazu pro Linux vyhledat seznam spuštěných IoT Edge modulů:
 
